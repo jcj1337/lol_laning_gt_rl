@@ -52,7 +52,7 @@ class LaneEnv:
     """
     2-player Markov game environment.
 
-    Global state (from YOUR perspective):
+    Global state (from your perspective):
       w   in {-2,-1,0,1,2}
       m_self, m_opp in {0,1,2}
       v_self, v_opp in {0,1}
@@ -96,9 +96,6 @@ class LaneEnv:
         return +e if (a, b) in wins else -e
 
     def p_gank(self, w: int, v: int, a: int) -> float:
-        """
-        p_gank = (1 - v) * clamp(q0 + q1*1[w==2] + q2*1[a==SH], 0, 1)
-        """
         base = self.p.q0 + self.p.q1 * I(w == 2) + self.p.q2 * I(a == SH)
         base = max(0.0, min(1.0, base))
         return (1 - v) * base
