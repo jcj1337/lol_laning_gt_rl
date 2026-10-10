@@ -1,0 +1,536 @@
+{
+ "horizon": 32,
+ "results": {
+  "gank_loss=3.0": {
+   "param": "gank_loss",
+   "value": 3.0,
+   "states": 905,
+   "mixed_states": 56,
+   "eq_path_crashes_A": 0.0,
+   "vision_share": {
+    "small": 0.0,
+    "medium": 0.0,
+    "large": 0.0
+   },
+   "probes": {
+    "A 2-stack at river": 2.094999999999998,
+    "A one wave at river": -1.6950000000000005
+   },
+   "exploitability_per_turn": {
+    "uniform": 0.22238256495023964,
+    "always_shove": 0.3646875,
+    "always_slowpush": 0.1734374999999999,
+    "defensive_freeze": 0.11671875,
+    "stack_then_shove": 0.1734374999999999
+   }
+  },
+  "gank_loss=5.0": {
+   "param": "gank_loss",
+   "value": 5.0,
+   "states": 905,
+   "mixed_states": 52,
+   "eq_path_crashes_A": 0.0,
+   "vision_share": {
+    "small": 0.9259259259259259,
+    "medium": 0.0,
+    "large": 0.9
+   },
+   "probes": {
+    "A 2-stack at river": 2.8249999999999966,
+    "A one wave at river": -2.8250000000000024
+   },
+   "exploitability_per_turn": {
+    "uniform": 0.3706376082503992,
+    "always_shove": 0.6078125,
+    "always_slowpush": 0.1515625000000001,
+    "defensive_freeze": 0.05781249999999985,
+    "stack_then_shove": 0.1515625000000001
+   }
+  },
+  "gank_loss=7.0": {
+   "param": "gank_loss",
+   "value": 7.0,
+   "states": 905,
+   "mixed_states": 50,
+   "eq_path_crashes_A": 0.0,
+   "vision_share": {
+    "small": 0.9259259259259259,
+    "medium": 0.0,
+    "large": 0.9
+   },
+   "probes": {
+    "A 2-stack at river": 3.5549999999999935,
+    "A one wave at river": -3.955000000000003
+   },
+   "exploitability_per_turn": {
+    "uniform": 0.5188926515505593,
+    "always_shove": 0.8509375000000001,
+    "always_slowpush": 0.1871874999999999,
+    "defensive_freeze": 0.05593750000000008,
+    "stack_then_shove": 0.1871874999999999
+   }
+  },
+  "gank_base=0.1": {
+   "param": "gank_base",
+   "value": 0.1,
+   "states": 905,
+   "mixed_states": 50,
+   "eq_path_crashes_A": 0.0,
+   "vision_share": {
+    "small": 0.0,
+    "medium": 0.0,
+    "large": 0.0
+   },
+   "probes": {
+    "A 2-stack at river": 2.824999999999996,
+    "A one wave at river": -2.8250000000000024
+   },
+   "exploitability_per_turn": {
+    "uniform": 0.3706376082503993,
+    "always_shove": 0.6078125,
+    "always_slowpush": 0.15156250000000013,
+    "defensive_freeze": 0.05781249999999985,
+    "stack_then_shove": 0.15156250000000013
+   }
+  },
+  "gank_base=0.15": {
+   "param": "gank_base",
+   "value": 0.15,
+   "states": 905,
+   "mixed_states": 52,
+   "eq_path_crashes_A": 0.0,
+   "vision_share": {
+    "small": 0.9259259259259259,
+    "medium": 0.0,
+    "large": 0.9
+   },
+   "probes": {
+    "A 2-stack at river": 2.8249999999999966,
+    "A one wave at river": -2.8250000000000024
+   },
+   "exploitability_per_turn": {
+    "uniform": 0.3706376082503992,
+    "always_shove": 0.6078125,
+    "always_slowpush": 0.1515625000000001,
+    "defensive_freeze": 0.05781249999999985,
+    "stack_then_shove": 0.1515625000000001
+   }
+  },
+  "gank_base=0.2": {
+   "param": "gank_base",
+   "value": 0.2,
+   "states": 905,
+   "mixed_states": 54,
+   "eq_path_crashes_A": 0.0,
+   "vision_share": {
+    "small": 0.9259259259259259,
+    "medium": 0.0,
+    "large": 0.9
+   },
+   "probes": {
+    "A 2-stack at river": 2.825000000000003,
+    "A one wave at river": -2.8249999999999966
+   },
+   "exploitability_per_turn": {
+    "uniform": 0.3706376082503992,
+    "always_shove": 0.6078125,
+    "always_slowpush": 0.15156250000000024,
+    "defensive_freeze": 0.05781250000000018,
+    "stack_then_shove": 0.15156250000000024
+   }
+  },
+  "gank_position=0.05": {
+   "param": "gank_position",
+   "value": 0.05,
+   "states": 905,
+   "mixed_states": 36,
+   "eq_path_crashes_A": 0.0,
+   "vision_share": {
+    "small": 0.0,
+    "medium": 0.0,
+    "large": 0.0
+   },
+   "probes": {
+    "A 2-stack at river": 5.012500000000002,
+    "A one wave at river": -0.7624999999999973
+   },
+   "exploitability_per_turn": {
+    "uniform": 0.23310449820601192,
+    "always_shove": 0.43320312499999997,
+    "always_slowpush": 0.2453125000000001,
+    "defensive_freeze": 0.15273437500000003,
+    "stack_then_shove": 0.2453125000000001
+   }
+  },
+  "gank_position=0.1": {
+   "param": "gank_position",
+   "value": 0.1,
+   "states": 905,
+   "mixed_states": 52,
+   "eq_path_crashes_A": 0.0,
+   "vision_share": {
+    "small": 0.9259259259259259,
+    "medium": 0.0,
+    "large": 0.9
+   },
+   "probes": {
+    "A 2-stack at river": 2.8249999999999966,
+    "A one wave at river": -2.8250000000000024
+   },
+   "exploitability_per_turn": {
+    "uniform": 0.3706376082503992,
+    "always_shove": 0.6078125,
+    "always_slowpush": 0.1515625000000001,
+    "defensive_freeze": 0.05781249999999985,
+    "stack_then_shove": 0.1515625000000001
+   }
+  },
+  "gank_position=0.15": {
+   "param": "gank_position",
+   "value": 0.15,
+   "states": 905,
+   "mixed_states": 50,
+   "eq_path_crashes_A": 0.0,
+   "vision_share": {
+    "small": 0.9259259259259259,
+    "medium": 0.0,
+    "large": 0.9
+   },
+   "probes": {
+    "A 2-stack at river": 0.6375000000000008,
+    "A one wave at river": -4.8874999999999975
+   },
+   "exploitability_per_turn": {
+    "uniform": 0.5083660069536561,
+    "always_shove": 0.78359375,
+    "always_slowpush": 0.05781250000000021,
+    "defensive_freeze": 0.0,
+    "stack_then_shove": 0.05781250000000021
+   }
+  },
+  "vision_reduction=0.25": {
+   "param": "vision_reduction",
+   "value": 0.25,
+   "states": 905,
+   "mixed_states": 50,
+   "eq_path_crashes_A": 0.0,
+   "vision_share": {
+    "small": 0.0,
+    "medium": 0.0,
+    "large": 0.0
+   },
+   "probes": {
+    "A 2-stack at river": 2.8249999999999966,
+    "A one wave at river": -2.8250000000000024
+   },
+   "exploitability_per_turn": {
+    "uniform": 0.37068844604837053,
+    "always_shove": 0.6078125,
+    "always_slowpush": 0.1515625000000001,
+    "defensive_freeze": 0.05781249999999985,
+    "stack_then_shove": 0.1515625000000001
+   }
+  },
+  "vision_reduction=0.5": {
+   "param": "vision_reduction",
+   "value": 0.5,
+   "states": 905,
+   "mixed_states": 52,
+   "eq_path_crashes_A": 0.0,
+   "vision_share": {
+    "small": 0.9259259259259259,
+    "medium": 0.0,
+    "large": 0.9
+   },
+   "probes": {
+    "A 2-stack at river": 2.8249999999999966,
+    "A one wave at river": -2.8250000000000024
+   },
+   "exploitability_per_turn": {
+    "uniform": 0.3706376082503992,
+    "always_shove": 0.6078125,
+    "always_slowpush": 0.1515625000000001,
+    "defensive_freeze": 0.05781249999999985,
+    "stack_then_shove": 0.1515625000000001
+   }
+  },
+  "vision_reduction=0.75": {
+   "param": "vision_reduction",
+   "value": 0.75,
+   "states": 905,
+   "mixed_states": 54,
+   "eq_path_crashes_A": 0.0,
+   "vision_share": {
+    "small": 0.9259259259259259,
+    "medium": 0.0,
+    "large": 0.9
+   },
+   "probes": {
+    "A 2-stack at river": 2.8249999999999966,
+    "A one wave at river": -2.8250000000000024
+   },
+   "exploitability_per_turn": {
+    "uniform": 0.3706376082503992,
+    "always_shove": 0.6078125,
+    "always_slowpush": 0.302734375,
+    "defensive_freeze": 0.05781249999999985,
+    "stack_then_shove": 0.302734375
+   }
+  },
+  "freeze_break_threshold=4": {
+   "param": "freeze_break_threshold",
+   "value": 4,
+   "states": 621,
+   "mixed_states": 26,
+   "eq_path_crashes_A": 0.0,
+   "vision_share": {
+    "small": 0.9259259259259259,
+    "medium": 0.0
+   },
+   "probes": {
+    "A 2-stack at river": 2.8249999999999966,
+    "A one wave at river": -2.8250000000000024
+   },
+   "exploitability_per_turn": {
+    "uniform": 0.38476542831704125,
+    "always_shove": 0.6453125000000001,
+    "always_slowpush": 0.1515625000000001,
+    "defensive_freeze": 0.05781249999999985,
+    "stack_then_shove": 0.1515625000000001
+   }
+  },
+  "freeze_break_threshold=5": {
+   "param": "freeze_break_threshold",
+   "value": 5,
+   "states": 905,
+   "mixed_states": 52,
+   "eq_path_crashes_A": 0.0,
+   "vision_share": {
+    "small": 0.9259259259259259,
+    "medium": 0.0,
+    "large": 0.9
+   },
+   "probes": {
+    "A 2-stack at river": 2.8249999999999966,
+    "A one wave at river": -2.8250000000000024
+   },
+   "exploitability_per_turn": {
+    "uniform": 0.3706376082503992,
+    "always_shove": 0.6078125,
+    "always_slowpush": 0.1515625000000001,
+    "defensive_freeze": 0.05781249999999985,
+    "stack_then_shove": 0.1515625000000001
+   }
+  },
+  "freeze_break_threshold=6": {
+   "param": "freeze_break_threshold",
+   "value": 6,
+   "states": 907,
+   "mixed_states": 46,
+   "eq_path_crashes_A": 0.0,
+   "vision_share": {
+    "small": 0.9259259259259259,
+    "medium": 0.0,
+    "large": 0.9
+   },
+   "probes": {
+    "A 2-stack at river": 1.9999999999999962,
+    "A one wave at river": -2.8250000000000024
+   },
+   "exploitability_per_turn": {
+    "uniform": 0.3765448368769283,
+    "always_shove": 0.6078125,
+    "always_slowpush": 0.1515625000000001,
+    "defensive_freeze": 0.05781249999999985,
+    "stack_then_shove": 0.1515625000000001
+   }
+  },
+  "shove_damage=0": {
+   "param": "shove_damage",
+   "value": 0,
+   "states": 32,
+   "mixed_states": 0,
+   "eq_path_crashes_A": 0.0,
+   "vision_share": {},
+   "probes": {
+    "A 2-stack at river": 4.7499999999999964,
+    "A one wave at river": 2.3749999999999964
+   },
+   "exploitability_per_turn": {
+    "uniform": 0.13671874999999997,
+    "always_shove": 0.29687499999999983,
+    "always_slowpush": 0.04687499999999997,
+    "defensive_freeze": 0.0,
+    "stack_then_shove": 0.04687499999999997
+   }
+  },
+  "shove_damage=1": {
+   "param": "shove_damage",
+   "value": 1,
+   "states": 905,
+   "mixed_states": 52,
+   "eq_path_crashes_A": 0.0,
+   "vision_share": {
+    "small": 0.9259259259259259,
+    "medium": 0.0,
+    "large": 0.9
+   },
+   "probes": {
+    "A 2-stack at river": 2.8249999999999966,
+    "A one wave at river": -2.8250000000000024
+   },
+   "exploitability_per_turn": {
+    "uniform": 0.3706376082503992,
+    "always_shove": 0.6078125,
+    "always_slowpush": 0.1515625000000001,
+    "defensive_freeze": 0.05781249999999985,
+    "stack_then_shove": 0.1515625000000001
+   }
+  },
+  "shove_damage=2": {
+   "param": "shove_damage",
+   "value": 2,
+   "states": 903,
+   "mixed_states": 54,
+   "eq_path_crashes_A": 0.0,
+   "vision_share": {
+    "small": 0.9259259259259259,
+    "medium": 0.0,
+    "large": 0.9
+   },
+   "probes": {
+    "A 2-stack at river": -3.5749999999999984,
+    "A one wave at river": -5.974999999999998
+   },
+   "exploitability_per_turn": {
+    "uniform": 0.3666990756988524,
+    "always_shove": 0.6078125,
+    "always_slowpush": 0.1515625000000001,
+    "defensive_freeze": 0.05781249999999985,
+    "stack_then_shove": 0.1515625000000001
+   }
+  },
+  "tower_damage=0": {
+   "param": "tower_damage",
+   "value": 0,
+   "states": 937,
+   "mixed_states": 6,
+   "eq_path_crashes_A": 0.0,
+   "vision_share": {
+    "small": 0.6341463414634146,
+    "medium": 0.0,
+    "large": 0.9
+   },
+   "probes": {
+    "A 2-stack at river": 2.886249999999997,
+    "A one wave at river": -2.8250000000000024
+   },
+   "exploitability_per_turn": {
+    "uniform": 0.3387521972519607,
+    "always_shove": 0.50625,
+    "always_slowpush": 0.1515625000000001,
+    "defensive_freeze": 0.05781249999999985,
+    "stack_then_shove": 0.1515625000000001
+   }
+  },
+  "tower_damage=1": {
+   "param": "tower_damage",
+   "value": 1,
+   "states": 905,
+   "mixed_states": 52,
+   "eq_path_crashes_A": 0.0,
+   "vision_share": {
+    "small": 0.9259259259259259,
+    "medium": 0.0,
+    "large": 0.9
+   },
+   "probes": {
+    "A 2-stack at river": 2.8249999999999966,
+    "A one wave at river": -2.8250000000000024
+   },
+   "exploitability_per_turn": {
+    "uniform": 0.3706376082503992,
+    "always_shove": 0.6078125,
+    "always_slowpush": 0.1515625000000001,
+    "defensive_freeze": 0.05781249999999985,
+    "stack_then_shove": 0.1515625000000001
+   }
+  },
+  "tower_damage=2": {
+   "param": "tower_damage",
+   "value": 2,
+   "states": 899,
+   "mixed_states": 0,
+   "eq_path_crashes_A": 0.0,
+   "vision_share": {
+    "small": 0.9230769230769231,
+    "medium": 0.0,
+    "large": 0.9
+   },
+   "probes": {
+    "A 2-stack at river": 2.8249999999999966,
+    "A one wave at river": -2.8250000000000024
+   },
+   "exploitability_per_turn": {
+    "uniform": 0.4215056521755286,
+    "always_shove": 0.6265625,
+    "always_slowpush": 0.1515625000000001,
+    "defensive_freeze": 0.05781249999999985,
+    "stack_then_shove": 0.1515625000000001
+   }
+  },
+  "wave_hp=2": {
+   "param": "wave_hp",
+   "value": 2,
+   "states": 905,
+   "mixed_states": 52,
+   "eq_path_crashes_A": 0.0,
+   "vision_share": {
+    "small": 0.9259259259259259,
+    "medium": 0.0,
+    "large": 0.9
+   },
+   "probes": {
+    "A 2-stack at river": 2.8249999999999966,
+    "A one wave at river": -2.8250000000000024
+   },
+   "exploitability_per_turn": {
+    "uniform": 0.3706376082503992,
+    "always_shove": 0.6078125,
+    "always_slowpush": 0.1515625000000001,
+    "defensive_freeze": 0.05781249999999985,
+    "stack_then_shove": 0.1515625000000001
+   }
+  },
+  "wave_hp=3": {
+   "param": "wave_hp",
+   "value": 3,
+   "states": 1629,
+   "mixed_states": 78,
+   "eq_path_crashes_A": 0.0,
+   "vision_share": {
+    "medium": 0.0,
+    "large": 0.8823529411764706,
+    "small": 0.9166666666666666
+   },
+   "probes": {
+    "A 2-stack at river": 4.324999999999997,
+    "A one wave at river": -4.85
+   },
+   "exploitability_per_turn": {
+    "uniform": 0.4373474282242255,
+    "always_shove": 0.7335937500000002,
+    "always_slowpush": 0.15156250000000004,
+    "defensive_freeze": 0.0703124999999998,
+    "stack_then_shove": 0.15156250000000004
+   }
+  }
+ },
+ "environment": {
+  "python": "3.13.9",
+  "numpy": "2.5.3",
+  "scipy": "1.18.1",
+  "platform": "Windows-11-10.0.26200-SP0",
+  "timestamp": "2026-10-10 05:43:28"
+ }
+}

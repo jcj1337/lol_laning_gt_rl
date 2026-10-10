@@ -1,0 +1,205 @@
+{
+ "stage_games_vs_support_enumeration": {
+  "games": 905,
+  "max_abs_diff": 8.881784197001252e-16
+ },
+ "tree_minimax": [
+  {
+   "root": "symmetric start",
+   "depth": 2,
+   "backward_induction": 0.0,
+   "tree_minimax": 0.0,
+   "abs_diff": 0.0,
+   "seconds": 0.0017713999841362238
+  },
+  {
+   "root": "symmetric start",
+   "depth": 3,
+   "backward_induction": 0.0,
+   "tree_minimax": 0.0,
+   "abs_diff": 0.0,
+   "seconds": 0.012060800101608038
+  },
+  {
+   "root": "symmetric start",
+   "depth": 4,
+   "backward_induction": 0.0,
+   "tree_minimax": 0.0,
+   "abs_diff": 0.0,
+   "seconds": 0.04908440005965531
+  },
+  {
+   "root": "A 2-stack at river",
+   "depth": 2,
+   "backward_induction": 2.075,
+   "tree_minimax": 2.075,
+   "abs_diff": 0.0,
+   "seconds": 0.004397700075060129
+  },
+  {
+   "root": "A 2-stack at river",
+   "depth": 3,
+   "backward_induction": 1.4749999999999996,
+   "tree_minimax": 1.4749999999999996,
+   "abs_diff": 0.0,
+   "seconds": 0.03222790011204779
+  },
+  {
+   "root": "A 2-stack at river",
+   "depth": 4,
+   "backward_induction": 1.2499999999999998,
+   "tree_minimax": 1.2499999999999998,
+   "abs_diff": 0.0,
+   "seconds": 0.1538855000399053
+  },
+  {
+   "root": "A medium wave near B tower",
+   "depth": 2,
+   "backward_induction": -0.1499999999999999,
+   "tree_minimax": -0.1499999999999999,
+   "abs_diff": 0.0,
+   "seconds": 0.006113699870184064
+  },
+  {
+   "root": "A medium wave near B tower",
+   "depth": 3,
+   "backward_induction": -0.15000000000000002,
+   "tree_minimax": -0.15000000000000002,
+   "abs_diff": 0.0,
+   "seconds": 0.020558299962431192
+  },
+  {
+   "root": "A medium wave near B tower",
+   "depth": 4,
+   "backward_induction": -0.3750000000000001,
+   "tree_minimax": -0.3750000000000001,
+   "abs_diff": 0.0,
+   "seconds": 0.11546660005114973
+  },
+  {
+   "root": "B wave at A freeze line",
+   "depth": 2,
+   "backward_induction": 0.475,
+   "tree_minimax": 0.475,
+   "abs_diff": 0.0,
+   "seconds": 0.0033587999641895294
+  },
+  {
+   "root": "B wave at A freeze line",
+   "depth": 3,
+   "backward_induction": 0.475,
+   "tree_minimax": 0.475,
+   "abs_diff": 0.0,
+   "seconds": 0.012080900138244033
+  },
+  {
+   "root": "B wave at A freeze line",
+   "depth": 4,
+   "backward_induction": 0.475,
+   "tree_minimax": 0.475,
+   "abs_diff": 0.0,
+   "seconds": 0.06784329982474446
+  },
+  {
+   "root": "two-packet siege, A vision",
+   "depth": 2,
+   "backward_induction": -0.375,
+   "tree_minimax": -0.375,
+   "abs_diff": 0.0,
+   "seconds": 0.0014796999748796225
+  },
+  {
+   "root": "two-packet siege, A vision",
+   "depth": 3,
+   "backward_induction": -0.7999999999999999,
+   "tree_minimax": -0.7999999999999999,
+   "abs_diff": 0.0,
+   "seconds": 0.008601699955761433
+  },
+  {
+   "root": "two-packet siege, A vision",
+   "depth": 4,
+   "backward_induction": -0.8749999999999998,
+   "tree_minimax": -0.8749999999999998,
+   "abs_diff": 0.0,
+   "seconds": 0.031879200134426355
+  }
+ ],
+ "equilibrium_exploitability": [
+  {
+   "K": 16,
+   "expl_A": 0.0,
+   "expl_B": 0.0,
+   "max_gap": 2.220446049250313e-16
+  },
+  {
+   "K": 32,
+   "expl_A": 0.0,
+   "expl_B": 0.0,
+   "max_gap": 6.661338147750939e-16
+  },
+  {
+   "K": 64,
+   "expl_A": 0.0,
+   "expl_B": 0.0,
+   "max_gap": 1.7763568394002505e-15
+  }
+ ],
+ "monte_carlo": [
+  {
+   "A": "equilibrium",
+   "B": "equilibrium",
+   "exact": 0.0,
+   "mc_mean": -0.00375,
+   "mc_stderr": 0.24861770185325444,
+   "z": -0.015083399018037026
+  },
+  {
+   "A": "equilibrium",
+   "B": "uniform",
+   "exact": 11.711268140664593,
+   "mc_mean": 11.6925,
+   "mc_stderr": 0.2475076785682367,
+   "z": -0.07582851882883403
+  },
+  {
+   "A": "always_shove",
+   "B": "equilibrium",
+   "exact": -17.074926394303443,
+   "mc_mean": -16.62825,
+   "mc_stderr": 0.2561594569818286,
+   "z": 1.7437435243123884
+  },
+  {
+   "A": "always_slowpush",
+   "B": "equilibrium",
+   "exact": -1.4999999999999991,
+   "mc_mean": -1.84625,
+   "mc_stderr": 0.24250330863320094,
+   "z": -1.4278155706474185
+  },
+  {
+   "A": "defensive_freeze",
+   "B": "equilibrium",
+   "exact": 0.0,
+   "mc_mean": -0.2625,
+   "mc_stderr": 0.24963393742273562,
+   "z": -1.051539717356125
+  },
+  {
+   "A": "stack_then_shove",
+   "B": "equilibrium",
+   "exact": -1.4999999999999991,
+   "mc_mean": -1.3125,
+   "mc_stderr": 0.2536997276810844,
+   "z": 0.7390626774172092
+  }
+ ],
+ "environment": {
+  "python": "3.13.9",
+  "numpy": "2.5.3",
+  "scipy": "1.18.1",
+  "platform": "Windows-11-10.0.26200-SP0",
+  "timestamp": "2026-10-10 05:43:48"
+ }
+}

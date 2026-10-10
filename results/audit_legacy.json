@@ -1,0 +1,21 @@
+{
+ "episodes": 2000,
+ "steps": 80000,
+ "distinct_state_keys": 13291,
+ "distinct_float_gold_values": 420,
+ "fraction_steps_not_zero_sum": 0.537875,
+ "mean_abs_reward_sum": 0.8853974999998973,
+ "crash_bonus_steps": 2211,
+ "crash_bonus_on_consecutive_steps": 532,
+ "freeze_deny_bonus_per_episode": 2.1900000000001993,
+ "state_keys_seen_at_different_times": 61282,
+ "freeze_from_enemy_tower_moves_wave_to": 0,
+ "q_update_signature": "(self, s: Tuple[int, int, int, int, int, int], a: int, r: float, s_next: Tuple[int, int, int, int, int, int]) -> None",
+ "environment": {
+  "python": "3.13.9",
+  "numpy": "2.5.3",
+  "scipy": "1.18.1",
+  "platform": "Windows-11-10.0.26200-SP0",
+  "timestamp": "2026-10-10 05:42:25"
+ }
+}

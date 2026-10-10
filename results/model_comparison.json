@@ -1,0 +1,717 @@
+{
+ "horizon": 32,
+ "variants": {
+  "default (lanchester floor, SP hold)": {
+   "overrides": {},
+   "value": 0.0,
+   "reachable_states": 905,
+   "mixed_states": 52,
+   "scenarios": {
+    "reference": {
+     "pass": true,
+     "detail": "after one turn: A front @+1 hp4 (stacks 1); packets destroyed A/B = [0, 1]"
+    },
+    "small_wave_pushed_back": {
+     "pass": true,
+     "detail": "packets destroyed A/B = [1, 0]; B front now at global +1 hp1"
+    },
+    "freeze_holds": {
+     "pass": true,
+     "detail": "B crash hp per turn [0, 0, 0]; deepest B packet position -1 (A tower at -2)"
+    },
+    "freeze_broken": {
+     "pass": true,
+     "detail": "B crash hp on turn 1: 4"
+    },
+    "slowpush_stacks": {
+     "pass": true,
+     "detail": "A front hp by turn: [2, 3, 3, 4, 4, 5, 5, 5]"
+    },
+    "shove_contests_slowpush": {
+     "pass": true,
+     "detail": "A front hp by turn: [2, 2, 2, 2, 2, 2, 2, 2]"
+    },
+    "large_wave_crashes_through": {
+     "pass": true,
+     "detail": "A crash hp: [4, 0]"
+    },
+    "small_wave_intercepted": {
+     "pass": true,
+     "detail": "A crash hp: [0, 0]"
+    },
+    "two_packet_siege_bounce": {
+     "pass": true,
+     "detail": "B front hp [2, 4, 2, 2], global positions [3, 3, 1, 4]"
+    },
+    "one_packet_siege_no_bounce": {
+     "pass": true,
+     "detail": "B front hp [2, 2, 2]"
+    },
+    "tower_consumes_one_per_turn": {
+     "pass": true,
+     "detail": "A siege after each turn: [1, 0]"
+    }
+   },
+   "scenarios_passed": 11,
+   "eq_path_crashes_A": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "eq_path_action_freq_A": {
+    "SP": 0.53125,
+    "SH": 0.0,
+    "F": 0.46875
+   },
+   "dominant_action_states_A": {
+    "SP": 416,
+    "F": 227,
+    "SH": 20
+   },
+   "eq_support_counts_A": {
+    "SP": 486,
+    "F": 301,
+    "SH": 170
+   },
+   "probe_values": {
+    "A surplus hp1 at river": -3.5500000000000025,
+    "A one wave hp2 at river": -2.8250000000000024,
+    "A 2-stack hp6 at river": 2.8249999999999966,
+    "B wave held at A freeze line": 0.475
+   },
+   "baseline_exploitability": {
+    "uniform": 11.860403464012775,
+    "always_shove": 19.45,
+    "always_slowpush": 4.850000000000003,
+    "defensive_freeze": 1.8499999999999952,
+    "stack_then_shove": 4.850000000000003
+   }
+  },
+  "lanchester_ceil": {
+   "overrides": {
+    "damage_law": "lanchester_ceil"
+   },
+   "value": 0.0,
+   "reachable_states": 879,
+   "mixed_states": 28,
+   "scenarios": {
+    "reference": {
+     "pass": true,
+     "detail": "after one turn: A front @+1 hp4 (stacks 1); packets destroyed A/B = [0, 1]"
+    },
+    "small_wave_pushed_back": {
+     "pass": true,
+     "detail": "packets destroyed A/B = [1, 0]; B front now at global +1 hp1"
+    },
+    "freeze_holds": {
+     "pass": true,
+     "detail": "B crash hp per turn [0, 0, 0]; deepest B packet position -1 (A tower at -2)"
+    },
+    "freeze_broken": {
+     "pass": true,
+     "detail": "B crash hp on turn 1: 4"
+    },
+    "slowpush_stacks": {
+     "pass": true,
+     "detail": "A front hp by turn: [2, 3, 3, 4, 4, 5, 5, 5]"
+    },
+    "shove_contests_slowpush": {
+     "pass": true,
+     "detail": "A front hp by turn: [2, 2, 2, 2, 2, 2, 2, 2]"
+    },
+    "large_wave_crashes_through": {
+     "pass": true,
+     "detail": "A crash hp: [4, 0]"
+    },
+    "small_wave_intercepted": {
+     "pass": true,
+     "detail": "A crash hp: [0, 0]"
+    },
+    "two_packet_siege_bounce": {
+     "pass": true,
+     "detail": "B front hp [2, 4, 2, 2], global positions [3, 3, 1, 4]"
+    },
+    "one_packet_siege_no_bounce": {
+     "pass": true,
+     "detail": "B front hp [2, 2, 2]"
+    },
+    "tower_consumes_one_per_turn": {
+     "pass": true,
+     "detail": "A siege after each turn: [1, 0]"
+    }
+   },
+   "scenarios_passed": 11,
+   "eq_path_crashes_A": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "eq_path_action_freq_A": {
+    "SP": 0.53125,
+    "SH": 0.0,
+    "F": 0.46875
+   },
+   "dominant_action_states_A": {
+    "SP": 437,
+    "F": 214,
+    "SH": 42
+   },
+   "eq_support_counts_A": {
+    "SP": 475,
+    "F": 265,
+    "SH": 167
+   },
+   "probe_values": {
+    "A surplus hp1 at river": -3.1750000000000025,
+    "A one wave hp2 at river": -2.8250000000000024,
+    "A 2-stack hp6 at river": 2.8249999999999966,
+    "B wave held at A freeze line": 0.475
+   },
+   "baseline_exploitability": {
+    "uniform": 11.277730941772456,
+    "always_shove": 19.45,
+    "always_slowpush": 5.225000000000003,
+    "defensive_freeze": 2.224999999999995,
+    "stack_then_shove": 5.225000000000003
+   }
+  },
+  "linear attrition": {
+   "overrides": {
+    "damage_law": "linear"
+   },
+   "value": 0.0,
+   "reachable_states": 653,
+   "mixed_states": 26,
+   "scenarios": {
+    "reference": {
+     "pass": false,
+     "detail": "after one turn: A front @+1 hp2 (stacks 0); packets destroyed A/B = [0, 1]"
+    },
+    "small_wave_pushed_back": {
+     "pass": true,
+     "detail": "packets destroyed A/B = [1, 0]; B front now at global +1 hp1"
+    },
+    "freeze_holds": {
+     "pass": true,
+     "detail": "B crash hp per turn [0, 0, 0]; deepest B packet position -1 (A tower at -2)"
+    },
+    "freeze_broken": {
+     "pass": true,
+     "detail": "B crash hp on turn 1: 4"
+    },
+    "slowpush_stacks": {
+     "pass": false,
+     "detail": "A front hp by turn: [2, 2, 2, 2, 2, 2, 2, 2]"
+    },
+    "shove_contests_slowpush": {
+     "pass": true,
+     "detail": "A front hp by turn: [2, 2, 2, 2, 0, 2, 0, 2]"
+    },
+    "large_wave_crashes_through": {
+     "pass": true,
+     "detail": "A crash hp: [4, 0]"
+    },
+    "small_wave_intercepted": {
+     "pass": true,
+     "detail": "A crash hp: [0, 0]"
+    },
+    "two_packet_siege_bounce": {
+     "pass": true,
+     "detail": "B front hp [2, 4, 2, 2], global positions [3, 3, 1, 4]"
+    },
+    "one_packet_siege_no_bounce": {
+     "pass": true,
+     "detail": "B front hp [2, 2, 2]"
+    },
+    "tower_consumes_one_per_turn": {
+     "pass": true,
+     "detail": "A siege after each turn: [1, 0]"
+    }
+   },
+   "scenarios_passed": 9,
+   "eq_path_crashes_A": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "eq_path_action_freq_A": {
+    "SP": 0.53125,
+    "SH": 0.0,
+    "F": 0.46875
+   },
+   "dominant_action_states_A": {
+    "SP": 298,
+    "F": 199
+   },
+   "eq_support_counts_A": {
+    "SP": 401,
+    "F": 228,
+    "SH": 50
+   },
+   "probe_values": {
+    "A surplus hp1 at river": -6.3249999999999975,
+    "A one wave hp2 at river": -6.3249999999999975,
+    "A 2-stack hp6 at river": -3.5999999999999988,
+    "B wave held at A freeze line": 0.475
+   },
+   "baseline_exploitability": {
+    "uniform": 12.735773652029456,
+    "always_shove": 19.45,
+    "always_slowpush": 1.4999999999999991,
+    "defensive_freeze": 0.0,
+    "stack_then_shove": 1.4999999999999991
+   }
+  },
+  "pressure comparison": {
+   "overrides": {
+    "damage_law": "pressure"
+   },
+   "value": 0.0,
+   "reachable_states": 1326,
+   "mixed_states": 368,
+   "scenarios": {
+    "reference": {
+     "pass": false,
+     "detail": "after one turn: A front @+1 hp6 (stacks 2); packets destroyed A/B = [0, 1]"
+    },
+    "small_wave_pushed_back": {
+     "pass": false,
+     "detail": "packets destroyed A/B = [1, 0]; B front now at global +2 hp2"
+    },
+    "freeze_holds": {
+     "pass": true,
+     "detail": "B crash hp per turn [0, 0, 0]; deepest B packet position -1 (A tower at -2)"
+    },
+    "freeze_broken": {
+     "pass": true,
+     "detail": "B crash hp on turn 1: 4"
+    },
+    "slowpush_stacks": {
+     "pass": true,
+     "detail": "A front hp by turn: [2, 4, 4, 6, 6, 6, 6, 6]"
+    },
+    "shove_contests_slowpush": {
+     "pass": false,
+     "detail": "A front hp by turn: [2, 4, 4, 6, 6, 6, 6, 6]"
+    },
+    "large_wave_crashes_through": {
+     "pass": true,
+     "detail": "A crash hp: [0, 4]"
+    },
+    "small_wave_intercepted": {
+     "pass": true,
+     "detail": "A crash hp: [0, 0]"
+    },
+    "two_packet_siege_bounce": {
+     "pass": true,
+     "detail": "B front hp [2, 4, 4, 4], global positions [3, 3, 2, 0]"
+    },
+    "one_packet_siege_no_bounce": {
+     "pass": true,
+     "detail": "B front hp [2, 1, 2]"
+    },
+    "tower_consumes_one_per_turn": {
+     "pass": true,
+     "detail": "A siege after each turn: [1, 0]"
+    }
+   },
+   "scenarios_passed": 8,
+   "eq_path_crashes_A": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "eq_path_action_freq_A": {
+    "SP": 0.1875,
+    "SH": 0.71875,
+    "F": 0.09375
+   },
+   "dominant_action_states_A": {
+    "SP": 413,
+    "SH": 109,
+    "F": 327
+   },
+   "eq_support_counts_A": {
+    "SP": 682,
+    "SH": 507,
+    "F": 505
+   },
+   "probe_values": {
+    "A surplus hp1 at river": 0.15215027727932084,
+    "A one wave hp2 at river": 4.499999999999999,
+    "A 2-stack hp6 at river": 6.374999999999998,
+    "B wave held at A freeze line": 0.37500000000000006
+   },
+   "baseline_exploitability": {
+    "uniform": 10.453736538667625,
+    "always_shove": 23.400000000000002,
+    "always_slowpush": 9.85,
+    "defensive_freeze": 6.849999999999998,
+    "stack_then_shove": 9.85
+   }
+  },
+  "SP half speed": {
+   "overrides": {
+    "slowpush_mode": "half"
+   },
+   "value": 0.0,
+   "reachable_states": 503,
+   "mixed_states": 122,
+   "scenarios": {
+    "reference": {
+     "pass": false,
+     "detail": "after one turn: A front @-4 hp2 (stacks 0); packets destroyed A/B = [0, 1]"
+    },
+    "small_wave_pushed_back": {
+     "pass": true,
+     "detail": "packets destroyed A/B = [1, 0]; B front now at global +1 hp1"
+    },
+    "freeze_holds": {
+     "pass": true,
+     "detail": "B crash hp per turn [0, 0, 0]; deepest B packet position -1 (A tower at -2)"
+    },
+    "freeze_broken": {
+     "pass": true,
+     "detail": "B crash hp on turn 1: 4"
+    },
+    "slowpush_stacks": {
+     "pass": false,
+     "detail": "A front hp by turn: [1, 2, 1, 2, 1, 2, 1, 2]"
+    },
+    "shove_contests_slowpush": {
+     "pass": true,
+     "detail": "A front hp by turn: [2, 2, 2, 2, 0, 2, 0, 2]"
+    },
+    "large_wave_crashes_through": {
+     "pass": true,
+     "detail": "A crash hp: [4, 0]"
+    },
+    "small_wave_intercepted": {
+     "pass": true,
+     "detail": "A crash hp: [0, 0]"
+    },
+    "two_packet_siege_bounce": {
+     "pass": true,
+     "detail": "B front hp [2, 4, 2, 2], global positions [3, 3, 1, 4]"
+    },
+    "one_packet_siege_no_bounce": {
+     "pass": true,
+     "detail": "B front hp [2, 2, 2]"
+    },
+    "tower_consumes_one_per_turn": {
+     "pass": true,
+     "detail": "A siege after each turn: [1, 0]"
+    }
+   },
+   "scenarios_passed": 9,
+   "eq_path_crashes_A": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "eq_path_action_freq_A": {
+    "SP": 0.53125,
+    "SH": 0.0,
+    "F": 0.46875
+   },
+   "dominant_action_states_A": {
+    "SP": 242,
+    "F": 52,
+    "SH": 12
+   },
+   "eq_support_counts_A": {
+    "SP": 378,
+    "F": 150,
+    "SH": 97
+   },
+   "probe_values": {
+    "A surplus hp1 at river": -5.225,
+    "A one wave hp2 at river": -9.662989024315628,
+    "A 2-stack hp6 at river": -6.62509338530536,
+    "B wave held at A freeze line": 0.475
+   },
+   "baseline_exploitability": {
+    "uniform": 14.975054168701174,
+    "always_shove": 19.45,
+    "always_slowpush": 1.4999999999999991,
+    "defensive_freeze": 0.0,
+    "stack_then_shove": 1.4999999999999991
+   }
+  },
+  "SP creep": {
+   "overrides": {
+    "slowpush_mode": "creep"
+   },
+   "value": 0.0,
+   "reachable_states": 503,
+   "mixed_states": 122,
+   "scenarios": {
+    "reference": {
+     "pass": true,
+     "detail": "after one turn: A front @+1 hp4 (stacks 1); packets destroyed A/B = [0, 1]"
+    },
+    "small_wave_pushed_back": {
+     "pass": true,
+     "detail": "packets destroyed A/B = [1, 0]; B front now at global +1 hp1"
+    },
+    "freeze_holds": {
+     "pass": true,
+     "detail": "B crash hp per turn [0, 0, 0]; deepest B packet position -1 (A tower at -2)"
+    },
+    "freeze_broken": {
+     "pass": true,
+     "detail": "B crash hp on turn 1: 4"
+    },
+    "slowpush_stacks": {
+     "pass": false,
+     "detail": "A front hp by turn: [1, 2, 1, 2, 1, 2, 1, 2]"
+    },
+    "shove_contests_slowpush": {
+     "pass": true,
+     "detail": "A front hp by turn: [2, 2, 2, 2, 0, 2, 0, 2]"
+    },
+    "large_wave_crashes_through": {
+     "pass": true,
+     "detail": "A crash hp: [4, 0]"
+    },
+    "small_wave_intercepted": {
+     "pass": true,
+     "detail": "A crash hp: [0, 0]"
+    },
+    "two_packet_siege_bounce": {
+     "pass": true,
+     "detail": "B front hp [2, 4, 2, 2], global positions [3, 3, 1, 4]"
+    },
+    "one_packet_siege_no_bounce": {
+     "pass": true,
+     "detail": "B front hp [2, 2, 2]"
+    },
+    "tower_consumes_one_per_turn": {
+     "pass": true,
+     "detail": "A siege after each turn: [1, 0]"
+    }
+   },
+   "scenarios_passed": 10,
+   "eq_path_crashes_A": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "eq_path_action_freq_A": {
+    "SP": 0.53125,
+    "SH": 0.0,
+    "F": 0.46875
+   },
+   "dominant_action_states_A": {
+    "SP": 230,
+    "F": 55,
+    "SH": 12
+   },
+   "eq_support_counts_A": {
+    "SP": 378,
+    "F": 150,
+    "SH": 97
+   },
+   "probe_values": {
+    "A surplus hp1 at river": -5.225,
+    "A one wave hp2 at river": -9.662989024315628,
+    "A 2-stack hp6 at river": -6.62509338530536,
+    "B wave held at A freeze line": 0.475
+   },
+   "baseline_exploitability": {
+    "uniform": 14.975054168701174,
+    "always_shove": 19.45,
+    "always_slowpush": 1.4999999999999991,
+    "defensive_freeze": 0.0,
+    "stack_then_shove": 1.4999999999999991
+   }
+  },
+  "no tower damage": {
+   "overrides": {
+    "tower_damage": 0
+   },
+   "value": 0.0,
+   "reachable_states": 937,
+   "mixed_states": 6,
+   "scenarios": {
+    "reference": {
+     "pass": true,
+     "detail": "after one turn: A front @+1 hp4 (stacks 1); packets destroyed A/B = [0, 1]"
+    },
+    "small_wave_pushed_back": {
+     "pass": true,
+     "detail": "packets destroyed A/B = [1, 0]; B front now at global +1 hp1"
+    },
+    "freeze_holds": {
+     "pass": true,
+     "detail": "B crash hp per turn [0, 0, 0]; deepest B packet position -1 (A tower at -2)"
+    },
+    "freeze_broken": {
+     "pass": true,
+     "detail": "B crash hp on turn 1: 4"
+    },
+    "slowpush_stacks": {
+     "pass": true,
+     "detail": "A front hp by turn: [2, 3, 3, 4, 4, 5, 5, 5]"
+    },
+    "shove_contests_slowpush": {
+     "pass": true,
+     "detail": "A front hp by turn: [2, 2, 2, 2, 2, 2, 2, 2]"
+    },
+    "large_wave_crashes_through": {
+     "pass": true,
+     "detail": "A crash hp: [5, 0]"
+    },
+    "small_wave_intercepted": {
+     "pass": false,
+     "detail": "A crash hp: [1, 0]"
+    },
+    "two_packet_siege_bounce": {
+     "pass": true,
+     "detail": "B front hp [2, 4, 2, 2], global positions [3, 3, 1, 4]"
+    },
+    "one_packet_siege_no_bounce": {
+     "pass": true,
+     "detail": "B front hp [2, 2, 2]"
+    },
+    "tower_consumes_one_per_turn": {
+     "pass": true,
+     "detail": "A siege after each turn: [1, 0]"
+    }
+   },
+   "scenarios_passed": 10,
+   "eq_path_crashes_A": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "eq_path_action_freq_A": {
+    "SP": 0.53125,
+    "SH": 0.0,
+    "F": 0.46875
+   },
+   "dominant_action_states_A": {
+    "SP": 402,
+    "F": 256,
+    "SH": 50
+   },
+   "eq_support_counts_A": {
+    "SP": 491,
+    "F": 291,
+    "SH": 161
+   },
+   "probe_values": {
+    "A surplus hp1 at river": -3.5500000000000025,
+    "A one wave hp2 at river": -2.8250000000000024,
+    "A 2-stack hp6 at river": 2.886249999999997,
+    "B wave held at A freeze line": 0.475
+   },
+   "baseline_exploitability": {
+    "uniform": 10.840070312062743,
+    "always_shove": 16.2,
+    "always_slowpush": 4.850000000000003,
+    "defensive_freeze": 1.8499999999999952,
+    "stack_then_shove": 4.850000000000003
+   }
+  },
+  "posture caps (SP river, F -1)": {
+   "overrides": {
+    "posture_cap": [
+     0,
+     null,
+     -1
+    ]
+   },
+   "value": 0.0,
+   "reachable_states": 905,
+   "mixed_states": 40,
+   "scenarios": {
+    "reference": {
+     "pass": true,
+     "detail": "after one turn: A front @+1 hp4 (stacks 1); packets destroyed A/B = [0, 1]"
+    },
+    "small_wave_pushed_back": {
+     "pass": true,
+     "detail": "packets destroyed A/B = [1, 0]; B front now at global +1 hp1"
+    },
+    "freeze_holds": {
+     "pass": true,
+     "detail": "B crash hp per turn [0, 0, 0]; deepest B packet position -1 (A tower at -2)"
+    },
+    "freeze_broken": {
+     "pass": true,
+     "detail": "B crash hp on turn 1: 4"
+    },
+    "slowpush_stacks": {
+     "pass": true,
+     "detail": "A front hp by turn: [2, 3, 3, 4, 4, 5, 5, 5]"
+    },
+    "shove_contests_slowpush": {
+     "pass": true,
+     "detail": "A front hp by turn: [2, 2, 2, 2, 2, 2, 2, 2]"
+    },
+    "large_wave_crashes_through": {
+     "pass": true,
+     "detail": "A crash hp: [4, 0]"
+    },
+    "small_wave_intercepted": {
+     "pass": true,
+     "detail": "A crash hp: [0, 0]"
+    },
+    "two_packet_siege_bounce": {
+     "pass": true,
+     "detail": "B front hp [2, 4, 2, 2], global positions [3, 3, 1, 4]"
+    },
+    "one_packet_siege_no_bounce": {
+     "pass": true,
+     "detail": "B front hp [2, 2, 2]"
+    },
+    "tower_consumes_one_per_turn": {
+     "pass": true,
+     "detail": "A siege after each turn: [1, 0]"
+    }
+   },
+   "scenarios_passed": 11,
+   "eq_path_crashes_A": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "eq_path_action_freq_A": {
+    "SP": 0.53125,
+    "SH": 0.0,
+    "F": 0.46875
+   },
+   "dominant_action_states_A": {
+    "SP": 434,
+    "F": 204,
+    "SH": 19
+   },
+   "eq_support_counts_A": {
+    "SP": 492,
+    "F": 286,
+    "SH": 167
+   },
+   "probe_values": {
+    "A surplus hp1 at river": -3.5500000000000025,
+    "A one wave hp2 at river": -2.8250000000000024,
+    "A 2-stack hp6 at river": 2.8249999999999966,
+    "B wave held at A freeze line": 0.35000000000000003
+   },
+   "baseline_exploitability": {
+    "uniform": 11.339556673475691,
+    "always_shove": 19.45,
+    "always_slowpush": 4.850000000000003,
+    "defensive_freeze": 1.8499999999999952,
+    "stack_then_shove": 4.850000000000003
+   }
+  }
+ },
+ "environment": {
+  "python": "3.13.9",
+  "numpy": "2.5.3",
+  "scipy": "1.18.1",
+  "platform": "Windows-11-10.0.26200-SP0",
+  "timestamp": "2026-10-10 05:42:30"
+ }
+}
