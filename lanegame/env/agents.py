@@ -356,12 +356,16 @@ def agent_chooser(agent, rng: np.random.Generator) -> Optional[Chooser]:
     return lambda k, pre_state, side, opts_self, opts_opp: f(k, pre_state, side, opts_self, opts_opp, rng)
 
 
-def play_episode(env: LaneEnv, agent_a, agent_b, seed, record: bool = False, root=None, k0: int = 0) -> EpisodeLog:
+def play_episode(env: LaneEnv, agent_a, agent_b, seed, record: bool = False, root=None, k0: int = 0,
+                 champ=None) -> EpisodeLog:
     """One complete episode. `seed` (int, SeedSequence or None) is split into the environment's chance
-    stream and the two agents' sampling streams. `record=True` keeps every turn's `info` in the log."""
+    stream and the two agents' sampling streams. `record=True` keeps every turn's `info` in the log.
+    Continuing time: a game never ends by itself, so the environment must have `max_turns` (else ValueError)."""
+    if env.continuing and env.max_turns is None:
+        raise ValueError("continuing time: play_episode needs LaneEnv(max_turns=...) (a game has no terminal state)")
     ss, env_seed, rng_a, rng_b = episode_streams(seed)
     env.choosers = (agent_chooser(agent_a, rng_a), agent_chooser(agent_b, rng_b))
-    oa, ob = env.reset(seed=env_seed, root=root, k0=k0)
+    oa, ob = env.reset(seed=env_seed, root=root, k0=k0, champ=champ)
     log = EpisodeLog(seed=ss.entropy, k0=env.k0, horizon=env.horizon,
                      names=(getattr(agent_a, "name", "A"), getattr(agent_b, "name", "B")))
     while True:

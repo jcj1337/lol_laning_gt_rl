@@ -15,10 +15,12 @@ from .agents import (Agent, AgentPolicy, ChampionRuleAgent, ChampionScriptAgent,
                      play_episode, run_episodes)
 from .core import Chooser, LaneEnv, Observation, StepResult, greedy_chooser
 from .observation import feature_names, legal_mask, legal_set, n_actions, obs_size, observe
-from .trace import TRACE_SCHEMA, TRACE_VERSION, EpisodeLog, EpisodeStats, read_trace, trace_dict, write_trace
+from .trace import (TRACE_SCHEMA, TRACE_VERSION, TRACE_VERSION_M4, EpisodeLog, EpisodeStats, read_trace, trace_dict,
+                    write_trace)
 
 __all__ = ["LaneEnv", "Observation", "StepResult", "Chooser", "greedy_chooser",
            "observe", "legal_mask", "legal_set", "obs_size", "n_actions", "feature_names",
            "Agent", "ScriptedAgent", "ChampionRuleAgent", "ChampionScriptAgent", "champion_suite", "LegacyChampionAgent", "UniformAgent", "champion_agents", "GreedyObservationAgent", "AgentPolicy", "as_policy", "agent_chooser",
            "episode_streams", "play_episode", "run_episodes",
-           "EpisodeLog", "EpisodeStats", "trace_dict", "write_trace", "read_trace", "TRACE_SCHEMA", "TRACE_VERSION"]
+           "EpisodeLog", "EpisodeStats", "trace_dict", "write_trace", "read_trace", "TRACE_SCHEMA", "TRACE_VERSION",
+           "TRACE_VERSION_M4"]

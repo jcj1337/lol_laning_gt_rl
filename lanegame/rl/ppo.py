@@ -16,6 +16,16 @@ remaining, so the value function can represent the finite horizon.
 
 Steps whose legal set has a single action (an absent champion) carry no policy gradient (log-probability 0
 whatever the logits); they are kept for the value function and excluded from the policy and entropy averages.
+
+Continuing time (rulesets "m2c" and "m4", M4 design §10.4). The game has no terminal state, so `terminated` is never
+set; a training game ends only at its time limit `game_length`, a TRUNCATION bootstrapped with the critic's value of
+the true pre-reset observation, and rollouts are fixed-length segments of `segment_length` turns that bootstrap the
+value of the current observation when they cut a game. gamma = cfg.gamma (0.99) is part of the game. With an exact
+critic the truncated and segmented lambda-return targets have the infinite-horizon expectation; with an imperfect
+critic V_hat the one-step target at a boundary state s' errs by exactly gamma (V_hat(s') - V(s')), which propagates
+backwards with weight (gamma lambda)^j. Bootstrapping therefore APPROXIMATES the continuation value; it is not
+unbiased. `compute_gae` is unchanged: termination drops the successor value, truncation keeps it, and both stop the
+lambda-recursion. `PPOConfig.continuing(game_cfg)` is the preset.
 """
 
 from __future__ import annotations
@@ -59,10 +69,33 @@ class PPOConfig:
                                            # variance reduction (same expected returns); see lanegame.env.core
     skill_levels: Optional[tuple] = None   # if set, each training episode draws (skill_a, skill_b) from these
                                            # levels independently (skill is observed, so one policy conditions on it)
+    # ---- continuing time (M4 design §10.4); None = the legacy whole-episode rollouts
+    segment_length: Optional[int] = None   # rollout length per environment (overrides n_steps when set)
+    game_length: Optional[int] = None      # time limit of one training game (a bootstrapped truncation); the first
+                                           # game of each environment gets a seeded random length in [1, game_length]
+    start_archive: Optional[str] = None    # JSON archive of witnessed start states (lanegame.rl.starts)
+    start_mix: float = 0.0                 # beta: P(a training game starts from a uniformly drawn archive state)
+
+    @classmethod
+    def continuing(cls, game_cfg, **kw) -> "PPOConfig":
+        """The continuing-time preset (design §10.4): gamma = game_cfg.gamma, lambda = 0.95, segments of 128 turns,
+        games of 512 turns. reward_scale 0.1 and vf_clip 0.5 are provisional (returns of order 1 / (1 - gamma) times
+        +-0.1-0.3 resources; retuned in the S5 smoke stage)."""
+        if not game_cfg.continuing:
+            raise ValueError("PPOConfig.continuing needs a continuing-time game configuration")
+        base = dict(gamma=game_cfg.gamma, gae_lambda=0.95, segment_length=128, game_length=512, reward_scale=0.1,
+                    vf_clip=0.5)
+        base.update(kw)
+        return cls(**base)
+
+    @property
+    def rollout_length(self) -> int:
+        """Steps per environment per rollout: segment_length when set, else n_steps."""
+        return self.segment_length if self.segment_length is not None else self.n_steps
 
     @property
     def batch_size(self) -> int:
-        return self.n_envs * self.n_steps
+        return self.n_envs * self.rollout_length
 
     @property
     def n_updates(self) -> int:
@@ -83,6 +116,19 @@ class PPOConfig:
         if d.get("skill_levels") is not None:
             d["skill_levels"] = tuple(d["skill_levels"])
         return cls(**d)
+
+
+def check_time_semantics(game_cfg, cfg: "PPOConfig") -> None:
+    """Continuing time needs a game length (a game never ends by itself); a training gamma different from the game's
+    optimizes a different objective, which is allowed only as a stated choice (a warning is issued)."""
+    if not game_cfg.continuing:
+        return
+    if cfg.game_length is None or cfg.game_length < 1:
+        raise ValueError("continuing time: PPOConfig.game_length (the bootstrapped time limit) must be set")
+    if cfg.gamma != game_cfg.gamma:
+        import warnings
+        warnings.warn(f"training gamma {cfg.gamma} differs from the game's gamma {game_cfg.gamma}: the policy "
+                      "optimizes a different objective (design §10.2); report it")
 
 
 def compute_gae(rewards: np.ndarray, values: np.ndarray, next_values: np.ndarray, terminated: np.ndarray,

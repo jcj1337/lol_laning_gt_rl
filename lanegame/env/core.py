@@ -46,6 +46,19 @@ has none). Observations carry `champ` as well.
 
 The lane step is deterministic, so it can be cached by (state, k mod phase_period, a, b). The cache here is
 bounded (LRU, `cache_size` entries; 0 disables it); the unbounded cache of `LaneGame` is for enumeration.
+
+Continuing time (rulesets "m2c" and "m4", `cfg.time_mode == "continuing"`; M4 design §10). There is no terminal
+state: `terminated` is always False, `horizon` is None and is never used, and an episode ends only by truncation at
+`max_turns` (a time limit of the run, not of the game: training bootstraps it, evaluation truncates a discounted
+sum). `reset(k0)` accepts any k0 >= 0 and records only k0 mod phase_period, so `env.k` counts turns from that
+phase; the dynamics and the observation depend on k only through k mod phase_period. Stepping after a truncation
+raises until `reset`.
+
+Ruleset "m4" (`GameConfig.m4()`): one step is `champions_m4.resolve_turn_m4`; `env.champ` is the M4State (positions,
+centi-HP, absence, XP, items, spendable gold, tower damage). The reward is the exact ledger difference
+`reward_units / gold_scale` (farm + plate gold + kill bounty); `info` carries the integer components
+(`farm_units`, `plate_units`, `bounty_units`, `reward_units`) whose identity is exact, and the M4 events (levels, XP,
+purchases, tower damage, plates, Freeze maintenance, the tower-adjacent shot).
 """
 
 from __future__ import annotations
@@ -83,6 +96,7 @@ class Observation:
     vector: np.ndarray           # own-perspective features, float32, length env.obs_size
     mask: np.ndarray             # bool, length env.n_actions, True exactly on `legal`
     champ: Optional[object] = None   # champion mode: the shared ChampState (perfect information)
+    cfg: Optional[GameConfig] = None   # the configuration being played (skills are part of it)
 
 
 @dataclass(eq=False)
@@ -113,8 +127,11 @@ class LaneEnv:
         self.gank_reward = gank_reward
         if max_turns is not None and max_turns <= 0:
             raise ValueError("max_turns must be positive (or None)")
+        if cfg.continuing and gank_reward != "realized":
+            raise ValueError("continuing rulesets are champion games: gank_reward must be 'realized'")
         self.cfg = cfg
         self.max_turns = max_turns
+        self._ctx = None
         self.choosers = choosers
         self.n_actions = n_actions(cfg)
         self.obs_size = obs_size(cfg)
@@ -130,8 +147,18 @@ class LaneEnv:
 
     # ------------------------------------------------------------------ introspection
     @property
-    def horizon(self) -> int:
-        return self.cfg.horizon
+    def horizon(self) -> Optional[int]:
+        """The terminal horizon K (finite time); None under continuing time."""
+        return None if self.cfg.continuing else self.cfg.horizon
+
+    @property
+    def continuing(self) -> bool:
+        return self.cfg.continuing
+
+    @property
+    def turns(self) -> int:
+        """Turns played since the last reset."""
+        return self._k - self._k0
 
     @property
     def k(self) -> int:
@@ -185,14 +212,25 @@ class LaneEnv:
         """Start an episode at decision index k0 (default: the standard initial state at k0 = 0).
 
         `seed` seeds the environment's chance generator (int, SeedSequence or None for fresh entropy).
-        Champion mode: `champ` is the starting champion state (default: both at their own tower, full HP)."""
-        if not 0 <= k0 < self.cfg.horizon:
+        Champion mode: `champ` is the starting champion state (default: both at their own tower, full HP; M4: the
+        M4State of champions_m4.initial_m4). Continuing time: any k0 >= 0, of which only k0 mod phase_period is kept."""
+        if self.cfg.continuing:
+            if k0 < 0:
+                raise ValueError(f"k0 must be >= 0; got {k0}")
+            k0 = int(k0) % self.cfg.phase_period
+        elif not 0 <= k0 < self.cfg.horizon:
             raise ValueError(f"k0 must be in [0, {self.cfg.horizon}); got {k0}")
         if champ is not None and not self.cfg.champion_mode:
             raise ValueError("a champion state was given but the configuration is not in champion mode")
         self._rng = np.random.default_rng(seed)
         self._state = initial_state(self.cfg) if root is None else root
-        if self.cfg.champion_mode:
+        if self.cfg.is_m4:
+            from ..champions_m4 import M4State, context, initial_m4
+            if champ is not None and not isinstance(champ, M4State):
+                raise TypeError("ruleset m4: the champion state must be a champions_m4.M4State")
+            self._champ = initial_m4(self.cfg) if champ is None else champ
+            self._ctx = context(self.cfg)
+        elif self.cfg.champion_mode:
             from ..champions import initial_champions
             self._champ = initial_champions(self.cfg) if champ is None else champ
         self._k = self._k0 = int(k0)
@@ -211,6 +249,9 @@ class LaneEnv:
             raise ValueError(f"illegal action {b} for B at turn {self._k} (legal: {lb})")
         cfg, s, k = self.cfg, self._state, self._k
         champ_before, ct = self._champ, None
+
+        if cfg.is_m4:
+            return self._step_m4(a, b)
 
         # ---- MOVE stage: deterministic lane step, farm, plates (exactly LaneGame.transition's numbers;
         #      champion mode: champions.resolve_turn)
@@ -269,7 +310,7 @@ class LaneEnv:
         if ct is not None:
             self._champ = ct.champ
         self._k = k + 1
-        terminated = self._k >= cfg.horizon
+        terminated = (not cfg.continuing) and self._k >= cfg.horizon
         truncated = (not terminated) and self.max_turns is not None and (self._k - self._k0) >= self.max_turns
         self._done = terminated or truncated
         obs = self._observe()
@@ -340,6 +381,62 @@ class LaneEnv:
             })
         return StepResult(obs, (reward, -reward), terminated, truncated, info)
 
+    # ------------------------------------------------------------------ ruleset m4
+    def _step_m4(self, a: int, b: int) -> StepResult:
+        from ..champions import N_CHANCE, U_GANK
+        from ..champions_m4 import resolve_turn_m4
+        cfg, s, k, champ_before = self.cfg, self._state, self._k, self._champ
+        la, lb = self._legal
+        u = self._rng.random(N_CHANCE)
+        ct = resolve_turn_m4(s, champ_before, k, a, b, cfg, lane_step=self._lane_turn, u=u, ctx=self._ctx)
+        res = ct.lane
+        s2 = res.state
+        self._state, self._champ = s2, ct.champ
+        self._k = k + 1
+        truncated = self.max_turns is not None and (self._k - self._k0) >= self.max_turns
+        self._done = truncated
+        obs = self._observe()
+        scale = self._ctx.scale
+        fu, pu, bu = ct.farm_units, ct.plate_units, ct.bounty_units
+        reward = ct.reward
+        trivial = ((0.0, False),)
+        info = {
+            "k": k, "phase": k % cfg.phase_period,
+            "actions": (a, b), "action_labels": (cfg.label(a), cfg.label(b)), "legal": (la, lb),
+            "reward": reward, "reward_units": ct.reward_units,
+            "farm_payoff": (fu[0] - fu[1]) / scale, "plate_payoff": (pu[0] - pu[1]) / scale,
+            "gank_payoff": 0.0, "crash_payoff": 0.0, "bounty_payoff": (bu[0] - bu[1]) / scale,
+            "farm_units": fu, "plate_units": pu, "bounty_units": bu, "earned_units": ct.earned_units,
+            "farm": ct.farm, "farm_available": ct.farm_available, "plates": ct.plate_gold,
+            "plate_count": ct.plates_broken,
+            "gank_p": ct.gank_p, "gank_draws": (float(u[U_GANK[0]]), float(u[U_GANK[1]])), "ganked": ct.ganked,
+            "crash_hp": res.crash_hp, "crash_options": (trivial, trivial), "choices": (0, 0),
+            "choice_default_used": False, "exposure": ct.exposure, "objectives": ct.objectives,
+            "vision_set": res.vision_set, "vision": (s2.va, s2.vb), "plates_pending": (s2.ap, s2.bp),
+            "thinned": res.thinned, "events": res.events, "kills": res.kills,
+            "state_before": s.to_list(), "state_pre_choice": s2.to_list(), "state_after": s2.to_list(),
+            "behaviors": ct.behaviors, "behavior_labels": tuple(BEHAVIOR_NAMES[x] for x in ct.behaviors),
+            "effective_objectives": ct.effective_objectives, "champ_start": ct.start, "champ_end": ct.end,
+            "farm_spot": ct.farm_spot, "away": ct.away, "recalled": ct.recalled,
+            "recall_interrupted": ct.interrupted, "threatened": ct.threatened,
+            "trade_attempted": tuple(x == B_TRADE for x in ct.behaviors), "trade_connected": ct.connected,
+            "hit_p": ct.hit_p, "double_p": ct.double_p, "tower_p": ct.tower_p, "adjacent_shot": ct.adjacent_shot,
+            "trade_damage": ct.trade_damage, "tower_damage": ct.tower_damage, "damage_taken": ct.damage_taken,
+            "gank_damage_p": ct.gank_damage_p, "gank_damage": ct.gank_damage, "died": ct.died, "bounty": ct.bounty,
+            "chance": [float(x) for x in u], "modes": ct.modes, "champion_reach": ct.reach,
+            "lane_codes": ct.lane_codes, "champ_before": champ_before.to_list(), "champ_after": ct.champ.to_list(),
+            # ---- M4 events
+            "waves": ct.waves, "effective_waves": ct.effective_waves, "freeze_maintained": ct.freeze_maintained,
+            "levels_before": ct.levels_before, "levels": ct.levels_after, "xp_gain": ct.xp_gain,
+            "xp_discarded": ct.xp_discarded, "level_up": ct.level_up,
+            "xp": (ct.champ.a.xp, ct.champ.b.xp), "items": (ct.champ.a.items, ct.champ.b.items),
+            "gold": (ct.champ.a.gold, ct.champ.b.gold), "tower_dmg": (ct.champ.a.tower_dmg, ct.champ.b.tower_dmg),
+            "tower_hits": ct.tower_hits, "tower_damage_dealt": ct.tower_damage_dealt,
+            "plates_broken": ct.plates_broken, "plate_gold": ct.plate_gold, "purchases": ct.purchases,
+            "returned": ct.returned, "gold_unspendable": ct.gold_clamped,
+        }
+        return StepResult(obs, (reward, -reward), False, truncated, info)
+
     # ------------------------------------------------------------------ internals
     def _require_episode(self) -> None:
         if self._state is None:
@@ -353,8 +450,8 @@ class LaneEnv:
         ma[list(la)] = True
         mb = np.zeros(n, dtype=bool)
         mb[list(lb)] = True
-        return (Observation(k, A, s, la, observe(s, k, A, cfg, ch), ma, ch),
-                Observation(k, B, s, lb, observe(s, k, B, cfg, ch), mb, ch))
+        return (Observation(k, A, s, la, observe(s, k, A, cfg, ch), ma, ch, cfg),
+                Observation(k, B, s, lb, observe(s, k, B, cfg, ch), mb, ch, cfg))
 
     def _lane_turn(self, s: State, k: int, a: int, b: int, reach=None) -> TurnResult:
         if self._cache_size <= 0:

@@ -33,6 +33,15 @@ A grid value is clipped at 1 only if two packets of one side share a cell with m
 them (a capped front with a queued reinforcement at the same position), which the "block" cap rule permits
 near the bases but which never happens at the lane. The legal-action mask is computed by the engine's own
 `legal_actions`; there is no second legality rule.
+
+Historical note (M4 design §12.3): exhaustive enumeration of the reachable lane shows that this grid is NOT injective
+in rare queue-heavy states (rears co-located with the front; cells above hp_cap clipped): 96 observation classes hold
+more than one lane state and 85 colliding pairs transition differently. The statement above that "nothing
+decision-relevant is hidden" is therefore false in those states. The legacy layout is kept unchanged because the
+pinned M2/M3 results and checkpoints depend on it; the M4 ruleset uses the lossless layout of observation_m4.
+
+Continuing time (ruleset "m2c", `time_features=False`): the two countdown entries k/K and (K - k)/K are dropped and
+everything else shifts down by two; the phase one-hot stays. Ruleset "m4" uses lanegame.env.observation_m4.
 """
 
 from __future__ import annotations
@@ -62,14 +71,20 @@ def champ_features(cfg: GameConfig) -> int:
 
 
 def obs_size(cfg: GameConfig) -> int:
-    n = 2 + cfg.phase_period + 2 * (2 * cfg.base + 1) + 2 * SIDE_FEATURES
+    if cfg.is_m4:
+        from .observation_m4 import m4_obs_size
+        return m4_obs_size(cfg)
+    n = (2 if cfg.time_features else 0) + cfg.phase_period + 2 * (2 * cfg.base + 1) + 2 * SIDE_FEATURES
     if cfg.champion_mode:
         n += 2 * champ_features(cfg)
     return n
 
 
 def feature_names(cfg: GameConfig) -> List[str]:
-    names = ["turn_fraction", "turns_remaining_fraction"]
+    if cfg.is_m4:
+        from .observation_m4 import m4_feature_names
+        return m4_feature_names(cfg)
+    names = ["turn_fraction", "turns_remaining_fraction"] if cfg.time_features else []
     names += [f"phase_{p}" for p in range(cfg.phase_period)]
     names += [f"own_minions_x{x:+d}" for x in range(-cfg.base, cfg.base + 1)]
     names += [f"enemy_minions_x{x:+d}" for x in range(-cfg.base, cfg.base + 1)]
@@ -93,7 +108,10 @@ def _side_features(fx, fh, rears, siege, vision, plates, cfg: GameConfig, v: lis
 
 def observe(state: State, k: int, side: int, cfg: GameConfig, champ=None) -> np.ndarray:
     """Own-perspective feature vector of side `side` at decision index k (float32, values in [0, 1]).
-    Champion mode needs the champion state `champ` (lanegame.champions.ChampState)."""
+    Champion mode needs the champion state `champ` (lanegame.champions.ChampState; M4: champions_m4.M4State)."""
+    if cfg.is_m4:
+        from .observation_m4 import observe_m4
+        return observe_m4(state, k, side, cfg, champ)
     K = cfg.horizon
     P = cfg.phase_period
     base = cfg.base
@@ -101,12 +119,15 @@ def observe(state: State, k: int, side: int, cfg: GameConfig, champ=None) -> np.
     cap = float(cfg.hp_cap)
     w = cfg.wave_hp / cap
     v = [0.0] * obs_size(cfg)              # a Python list is filled far faster than a float32 array
-    v[0] = k / K
-    v[1] = (K - k) / K
-    v[2 + (k % P)] = 1.0
+    t0 = 0
+    if cfg.time_features:
+        v[0] = k / K
+        v[1] = (K - k) / K
+        t0 = 2
+    v[t0 + (k % P)] = 1.0
     own = state.side(side)
     enemy = state.side(1 - side)
-    g0 = 2 + P                      # own grid
+    g0 = t0 + P                     # own grid
     g1 = g0 + cells                 # enemy grid
     fx, fh, rears = own[0], own[1], own[2]
     if fh > 0:

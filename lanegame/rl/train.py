@@ -10,6 +10,13 @@ Reproducibility: everything random derives from `PPOConfig.seed`: torch's initia
 the opponent/seat (and, with `skill_levels`, skill) generator, and one SeedSequence child per episode (split as in `lanegame.env.play_episode`
 into the environment's chance stream and the two agents' streams). With `torch_threads = 1` a run is
 bit-for-bit repeatable on one machine.
+
+Continuing time (rulesets "m2c" / "m4", M4 design §10.4): rollouts are segments of `PPOConfig.rollout_length` turns,
+a game is reset only at its time limit (a truncation bootstrapped from the PRE-reset final observation), the first
+game of each environment has a seeded random length in [1, game_length] so that the batch is not lock-stepped in
+game age, and games start from rho_train (s0, or with probability start_mix a uniformly drawn archived state). The
+opponent of a game is drawn when the game starts and may not change before it ends: `collect` raises otherwise.
+The extra generators of continuing time are spawned after the legacy ones, so legacy runs draw exactly as before.
 """
 
 from __future__ import annotations
@@ -29,7 +36,7 @@ from ..env.agents import episode_streams
 from ..env.trace import EpisodeLog
 from .agent import NetAgent, save_checkpoint
 from .network import MaskedCategorical, PolicyValueNet
-from .ppo import PPOConfig, compute_gae, explained_variance, ppo_update
+from .ppo import PPOConfig, check_time_semantics, compute_gae, explained_variance, ppo_update
 
 
 class OpponentSampler:
@@ -59,6 +66,7 @@ class Collector:
     """`n_envs` environments stepped in lock-step; the learner's actions come from one batched forward pass."""
 
     def __init__(self, game_cfg: GameConfig, cfg: PPOConfig, sampler: OpponentSampler, seed: int):
+        check_time_semantics(game_cfg, cfg)
         self.cfg, self.game_cfg, self.sampler = cfg, game_cfg, sampler
         self._gank_reward = "expected" if cfg.expected_gank_reward else "realized"
         self.envs = [LaneEnv(game_cfg, max_turns=cfg.max_turns, cache_size=cfg.lane_cache, gank_reward=self._gank_reward)
@@ -68,6 +76,8 @@ class Collector:
         self._episode_seeds = root.spawn(1)[0]
         self._episodes_started = 0
         n = cfg.n_envs
+        self.times = GameTimes(game_cfg, cfg, root, n)                # continuing time only (no draws otherwise)
+        self._game_opp = [None] * n
         self.opp, self.seat, self.opp_rng = [None] * n, [0] * n, [None] * n
         self.obs = [None] * n                                         # (obs_A, obs_B) per environment
         self.logs: List[Optional[EpisodeLog]] = [None] * n
@@ -85,16 +95,22 @@ class Collector:
             lv = self.cfg.skill_levels
             game = self.game_cfg.with_(skill_a=float(lv[int(self.rng.integers(len(lv)))]),
                                        skill_b=float(lv[int(self.rng.integers(len(lv)))]))
-            self.envs[i] = LaneEnv(game, max_turns=self.cfg.max_turns, cache_size=self.cfg.lane_cache)
+            self.envs[i] = LaneEnv(game, max_turns=self.cfg.max_turns, cache_size=self.cfg.lane_cache,
+                                   gank_reward=self._gank_reward)
         self.opp_rng[i] = rng_b if self.seat[i] == 0 else rng_a
-        self.obs[i] = self.envs[i].reset(seed=env_ss)
+        self._game_opp[i] = self.opp[i]
+        self.obs[i] = self.times.reset(i, self.envs[i], env_ss)
         names = ("learner", getattr(self.opp[i], "name", "opponent"))
-        self.logs[i] = EpisodeLog(seed=None, k0=0, horizon=self.game_cfg.horizon,
+        self.logs[i] = EpisodeLog(seed=None, k0=0, horizon=self.envs[i].horizon,
                                   names=names if self.seat[i] == 0 else names[::-1])
         self.ret[i] = 0.0
 
     def collect(self, net: PolicyValueNet, generator: torch.Generator):
-        cfg, T, N = self.cfg, self.cfg.n_steps, self.cfg.n_envs
+        cfg, T, N = self.cfg, self.cfg.rollout_length, self.cfg.n_envs
+        for i in range(N):
+            if self.opp[i] is not self._game_opp[i]:
+                raise RuntimeError(f"environment {i}: the opponent changed during a game; matchups may change only "
+                                   "at game boundaries")
         m, n_act = self.envs[0].obs_size, self.envs[0].n_actions
         obs_buf = np.zeros((T, N, m), dtype=np.float32)
         mask_buf = np.zeros((T, N, n_act), dtype=bool)
@@ -152,6 +168,51 @@ class Collector:
             next_val[T - 1, live] = v[live]
         return {"obs": obs_buf, "mask": mask_buf, "actions": act_buf, "logprobs": logp_buf, "values": val_buf,
                 "rewards": rew_buf, "terminated": term_buf, "truncated": trunc_buf, "next_values": next_val}, finished
+
+
+class GameTimes:
+    """Per-game time limits and start states under continuing time (M4 design §10.4); a pass-through reset for
+    finite time. The first game of environment i is `first_lengths[i]` turns long, a seeded draw from
+    [1, game_length]; every later game lasts game_length turns. With start_mix = beta > 0 a game starts from a
+    uniformly drawn archived (witnessed) state with probability beta, else from s0."""
+
+    def __init__(self, game_cfg: GameConfig, cfg: PPOConfig, root: np.random.SeedSequence, n_envs: int):
+        self.continuing = game_cfg.continuing
+        self.games_started = [0] * n_envs
+        self.first_lengths: List[int] = []
+        self.archive = []
+        self.start_counts = {"initial": 0, "archive": 0}
+        if not self.continuing:
+            return
+        self.game_length = int(cfg.game_length)
+        len_ss, start_ss = root.spawn(2)
+        rng = np.random.default_rng(len_ss)
+        self.first_lengths = [int(x) for x in rng.integers(1, self.game_length + 1, size=n_envs)]
+        self.start_rng = np.random.default_rng(start_ss)
+        self.start_mix = float(cfg.start_mix)
+        if cfg.start_archive:
+            from ..env.starts import load_archive
+            self.archive = load_archive(cfg.start_archive, game_cfg)
+        if self.start_mix > 0 and not self.archive:
+            raise ValueError("start_mix > 0 needs a non-empty start_archive")
+
+    def reset(self, i: int, env: LaneEnv, env_seed):
+        if not self.continuing:
+            return env.reset(seed=env_seed)
+        env.max_turns = self.first_lengths[i] if self.games_started[i] == 0 else self.game_length
+        self.games_started[i] += 1
+        if self.start_mix > 0 and self.start_rng.random() < self.start_mix:
+            st = self.archive[int(self.start_rng.integers(len(self.archive)))]
+            self.start_counts["archive"] += 1
+            return env.reset(seed=env_seed, root=st.lane, k0=st.phase, champ=st.champ)
+        self.start_counts["initial"] += 1
+        return env.reset(seed=env_seed)
+
+    def describe(self) -> dict:
+        if not self.continuing:
+            return {"time": "finite"}
+        return {"time": "continuing", "game_length": self.game_length, "first_lengths": self.first_lengths,
+                "start_mix": self.start_mix, "archive_states": len(self.archive), "starts": dict(self.start_counts)}
 
 
 @dataclass
@@ -237,5 +298,5 @@ def train_ppo(game_cfg: GameConfig, cfg: PPOConfig, sampler: OpponentSampler, ou
     if out_dir:
         save_checkpoint(os.path.join(out_dir, "final.pt"), net, game_cfg,
                         {"name": name, "ppo": cfg.to_dict(), "steps": steps, "opponents": sampler.describe(),
-                         "elapsed_s": res.elapsed})
+                         "elapsed_s": res.elapsed, "time_semantics": collector.times.describe()})
     return res

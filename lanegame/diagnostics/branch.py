@@ -92,7 +92,7 @@ def observation(cfg: GameConfig, snap: Snapshot, seat: int):
     mask = np.zeros(n_actions(c), dtype=bool)
     mask[list(legal)] = True
     return Observation(snap.k, seat, snap.lane, legal, observe(snap.lane, snap.k, seat, c, snap.champ), mask,
-                       snap.champ)
+                       snap.champ, c)
 
 
 def restore(env: LaneEnv, snap: Snapshot, seed):

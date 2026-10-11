@@ -141,3 +141,7 @@ def approximate_best_response(cfg: GameConfig, target, ppo_cfg: PPOConfig, eval_
             "train_steps": ppo_cfg.n_updates * ppo_cfg.batch_size,
             "train_seed": ppo_cfg.seed, "train_elapsed_s": res.elapsed, "value": ev["mean"], "stderr": ev["stderr"],
             "ci95": ev["ci95"], "eval": ev, "curve": curve, "agent": br}
+
+
+# continuing-time evaluation (M4 design §10.5; NumPy only, re-exported here)
+from ..env.discounted import evaluate_discounted, per_turn_bound, tail_bound, tail_constant  # noqa: E402,F401

@@ -23,6 +23,15 @@ Trace schema ("lanegame.episode", version 1):
   }
 }
 
+Version 2 ("lanegame.episode", TRACE_VERSION_M4 = 2) is written for the M4 ruleset: "champion_fields" are the
+M4Side fields ["pos", "hp", "absent", "xp", "items", "gold", "tower_dmg"] (hp in centi-HP, gold in ledger units,
+tower_dmg in centi-units), "ruleset": "m4", "gold_scale", and the episode adds "m4": per-side totals (XP gained,
+levels and items at the end, purchases, plates broken, plate gold, tower damage dealt, Freeze turns chosen and
+maintained, tower-adjacent shots, gold_unspendable) and "reward_units" (the exact integer payoff to A). Each M4
+turn record carries the M4 events of LaneEnv.step's info (effective waves, Freeze maintenance, levels, XP, items,
+gold, tower hits and damage, plates, purchases, returns, the ledger components in integer units). Version 1 traces
+(every legacy ruleset and "m2c") are unchanged and still readable.
+
 Champion mode adds "champion_fields": ["pos", "hp", "absent"] and, per turn, the behaviors, chosen and
 effective siege objectives, champion cells at the start and end, farm spots, Yield threats, Trade
 attempts and contacts, modes, the champions' wave-contribution lines and the champion state before and
@@ -49,6 +58,9 @@ CHAMP_COUNTERS = ("recalls_interrupted", "trades_landed", "trade_damage_dealt", 
                   "gank_damage_taken", "deaths", "bounty")
 TRACE_SCHEMA = "lanegame.episode"
 TRACE_VERSION = 1
+TRACE_VERSION_M4 = 2
+M4_COUNTERS = ("xp_gain", "purchases", "plates_broken", "plate_gold", "tower_damage_dealt", "freeze_turns",
+               "freeze_maintained", "adjacent_shots", "gold_unspendable", "level_ups")
 
 
 def _pair():
@@ -85,6 +97,9 @@ class EpisodeLog:
     deaths: List[int] = field(default_factory=lambda: [0, 0])
     bounty: List[float] = field(default_factory=_pair)                 # kill bounty received
     turns: Optional[List[dict]] = None
+    m4: Optional[Dict[str, list]] = None                               # M4 ruleset: per-side totals (M4_COUNTERS)
+    m4_final: Optional[dict] = None                                    # M4: levels, items, gold, tower_dmg at the end
+    reward_units: int = 0                                              # M4: exact payoff to A in ledger units
 
     def add(self, result, record: bool = False) -> None:
         info = result.info
@@ -111,6 +126,24 @@ class EpisodeLog:
                 self.gank_damage_taken[s] += int(info["gank_damage"][s])
                 self.deaths[s] += int(info["died"][s])
                 self.bounty[s] += float(info["bounty"][s])
+        if "xp_gain" in info:
+            if self.m4 is None:
+                self.m4 = {c: [0, 0] for c in M4_COUNTERS}
+            m = self.m4
+            self.reward_units += int(info["reward_units"])
+            for s in (0, 1):
+                m["xp_gain"][s] += int(info["xp_gain"][s])
+                m["purchases"][s] += int(info["purchases"][s])
+                m["plates_broken"][s] += int(info["plates_broken"][s])
+                m["plate_gold"][s] += float(info["plate_gold"][s])
+                m["tower_damage_dealt"][s] += int(info["tower_damage_dealt"][s])
+                m["freeze_turns"][s] += int(info["waves"][s] == 2)
+                m["freeze_maintained"][s] += int(info["freeze_maintained"][s])
+                m["adjacent_shots"][s] += int(info["adjacent_shot"][s] and info["tower_damage"][s] > 0)
+                m["gold_unspendable"][s] += int(info["gold_unspendable"][s])
+                m["level_ups"][s] += int(info["level_up"][s])
+            self.m4_final = {"levels": list(info["levels"]), "items": list(info["items"]),
+                             "gold": list(info["gold"]), "tower_dmg": list(info["tower_dmg"]), "xp": list(info["xp"])}
         oa, ob = info["crash_options"]
         i, j = info["choices"]
         self.crash_resources[0] += oa[i][0]
@@ -138,16 +171,25 @@ class EpisodeLog:
              "trade_damage_dealt": list(self.trade_damage_dealt), "tower_damage_taken": list(self.tower_damage_taken),
              "damage_taken": list(self.damage_taken), "gank_damage_taken": list(self.gank_damage_taken),
              "deaths": list(self.deaths), "bounty": list(self.bounty)}
+        if self.m4 is not None:
+            d["m4"] = {k: list(v) for k, v in self.m4.items()}
+            d["m4_final"] = self.m4_final
+            d["reward_units"] = self.reward_units
         if self.turns is not None:
             d["turns"] = self.turns
         return d
 
 
 def trace_dict(log: EpisodeLog, cfg: GameConfig) -> dict:
-    d = {"schema": TRACE_SCHEMA, "version": TRACE_VERSION, "config": cfg.to_dict(),
+    d = {"schema": TRACE_SCHEMA, "version": TRACE_VERSION_M4 if cfg.is_m4 else TRACE_VERSION, "config": cfg.to_dict(),
          "n_actions": n_actions(cfg), "actions": {str(a): cfg.label(a) for a in cfg.action_codes()},
          "obs_size": obs_size(cfg), "features": feature_names(cfg), "state_fields": STATE_FIELDS}
-    if cfg.champion_mode:
+    if cfg.is_m4:
+        from ..champions_m4 import M4_SIDE_FIELDS
+        d["ruleset"] = "m4"
+        d["champion_fields"] = list(M4_SIDE_FIELDS)
+        d["gold_scale"] = cfg.gold_scale
+    elif cfg.champion_mode:
         d["champion_fields"] = ["pos", "hp", "absent"]
     d["episode"] = log.to_dict()
     return d
@@ -162,6 +204,7 @@ def read_trace(path: str) -> dict:
     with open(path, encoding="utf-8") as f:
         d = json.load(f)
     assert d.get("schema") == TRACE_SCHEMA, f"not a {TRACE_SCHEMA} file"
+    assert d.get("version") in (TRACE_VERSION, TRACE_VERSION_M4), f"unknown trace version {d.get('version')}"
     d["config_obj"] = GameConfig.from_dict(d["config"])
     return d
 

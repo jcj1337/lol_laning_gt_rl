@@ -32,6 +32,11 @@ Accounting. `env_turns` counts environment steps; `agent_transitions` counts tra
 (`PPOConfig.total_steps`) and the learning-rate schedule are in agent transitions, so that methods collecting a
 different number of samples per game can be compared at equal sample counts.
 
+Continuing time (rulesets "m2c" / "m4"): segments of `PPOConfig.rollout_length` turns, per-game time limits with a
+seeded random first-game length per environment, starts from rho_train, truncations bootstrapped from the pre-reset
+observation (as in lanegame.rl.train; `GameTimes`). A matchup may change only at a game boundary: `collect` raises if
+an environment's matchup differs from the one drawn when its game started.
+
 Checkpoints. Snapshots (out_dir/snapshots/snap_<transitions>.pt) and the final network carry the step counts,
 seed, configurations, model spec and snapshot identity; an existing non-empty run directory is refused unless
 `overwrite=True`, and no checkpoint file is ever replaced silently.
@@ -54,8 +59,9 @@ from ..env.agents import episode_streams
 from ..env.trace import EpisodeLog
 from .agent import NetAgent, save_checkpoint
 from .network import MaskedCategorical, PolicyValueNet
-from .ppo import PPOConfig, compute_gae, explained_variance, ppo_update
+from .ppo import PPOConfig, check_time_semantics, compute_gae, explained_variance, ppo_update
 from .selfplay import SnapshotPool
+from .train import GameTimes
 
 LEARNER = None                   # controller of a seat played by the current (trainable) network
 CURRENT, HISTORICAL = "current", "historical"
@@ -135,6 +141,7 @@ class SharedCollector:
     def __init__(self, game_cfg: GameConfig, cfg: PPOConfig, sampler: MatchupSampler, seed: int):
         if cfg.expected_gank_reward and game_cfg.champion_mode:
             raise ValueError("expected_gank_reward applies to legacy configurations only")
+        check_time_semantics(game_cfg, cfg)
         self.cfg, self.game_cfg, self.sampler = cfg, game_cfg, sampler
         self._gank_reward = "expected" if cfg.expected_gank_reward else "realized"
         self._env_cache: List[Dict[Tuple[float, float], LaneEnv]] = [{} for _ in range(cfg.n_envs)]
@@ -149,6 +156,8 @@ class SharedCollector:
         self.logs: List[Optional[EpisodeLog]] = [None] * n
         self.skills: List[Tuple[float, float]] = [(game_cfg.skill_a, game_cfg.skill_b)] * n
         self.payoff = np.zeros(n)
+        self.times = GameTimes(game_cfg, cfg, root, n)                # continuing time only (no draws otherwise)
+        self._game_match: List[Optional[Matchup]] = [None] * n
         for i in range(n):
             self._reset(i)
 
@@ -173,16 +182,21 @@ class SharedCollector:
         self.skills[i] = skills
         self.envs[i] = self._env(i, skills)
         self.agent_rng[i] = (rng_a, rng_b)
-        self.obs[i] = self.envs[i].reset(seed=env_ss)
+        self._game_match[i] = self.match[i]
+        self.obs[i] = self.times.reset(i, self.envs[i], env_ss)
         names = tuple("learner" if c is LEARNER else c.name for c in self.match[i].controllers)
-        self.logs[i] = EpisodeLog(seed=None, k0=0, horizon=self.game_cfg.horizon, names=names)
+        self.logs[i] = EpisodeLog(seed=None, k0=0, horizon=self.envs[i].horizon, names=names)
         self.payoff[i] = 0.0
 
     def collect(self, net: PolicyValueNet, generator: torch.Generator):
         """One rollout of `n_steps` environment steps per environment with the network's current (fixed)
         parameters. Returns (time-major arrays over T x 2N slots, finished episodes, counts)."""
-        cfg, T, N = self.cfg, self.cfg.n_steps, self.cfg.n_envs
+        cfg, T, N = self.cfg, self.cfg.rollout_length, self.cfg.n_envs
         S = 2 * N
+        for i in range(N):
+            if self.match[i] is not self._game_match[i]:
+                raise RuntimeError(f"environment {i}: the matchup changed during a game; matchups may change only at "
+                                   "game boundaries")
         m, n_act = self.envs[0].obs_size, self.envs[0].n_actions
         obs_buf = np.zeros((T, S, m), dtype=np.float32)
         mask_buf = np.zeros((T, S, n_act), dtype=bool)
@@ -390,5 +404,6 @@ def train_shared(game_cfg: GameConfig, cfg: PPOConfig, scfg: SharedConfig, out_d
                         {**meta_base, "name": name, "kind": "final", "snapshot_id": f"final@{res.agent_transitions}",
                          "agent_transitions": res.agent_transitions, "env_turns": res.env_turns, "update": u,
                          "steps": res.agent_transitions, "elapsed_s": res.elapsed,
-                         "opponents": sampler.describe()}, exist_ok=overwrite)
+                         "opponents": sampler.describe(), "time_semantics": collector.times.describe()},
+                        exist_ok=overwrite)
     return res
