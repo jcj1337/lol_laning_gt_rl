@@ -33,12 +33,12 @@ mechanic:
 | Mechanic | Verdict | Key evidence |
 |---|---|---|
 | Recall | **Reasonable behavior** (unprofitable on average) | Recall vs the policy at legal HP ≤ 2 states: −0.02 to −0.47; "recall at HP ≤ 2" overlay −0.14 to −0.47 per game, "at HP ≤ 1" +0.03 ± 0.18 (break-even) |
-| Yield, Safe | **Reasonable behavior** | vs Hold when the opponent trades: −0.07 to −0.25; Safe vs Hold in danger −0.02 to −0.28 |
+| Yield, Safe | **Reasonable behavior** | vs Hold when the opponent trades: −0.07 to −0.24; Safe vs Hold in danger −0.02 to −0.28 |
 | HP | **Valued** | ≈ 0.22–0.30 resources per HP point; 1 HP is worth about the same as being dead |
-| Siege (crash → Apply Pressure), wave timing | **Training problem: profitable but not discovered** | 1M-step attackers exploit every target with Shove→crash→Pressure (+1.6 to +2.6, 1.3–2.6 plates per game); once a siege exists Pressure beats Hold (+0.2 to +0.8); the policies' rare-action probabilities collapse in the first 25–50k transitions and siege states are never visited again |
+| Siege (crash → Apply Pressure), wave timing | **Training problem: profitable but not discovered** | 1M-step attackers found a Shove→crash→Pressure plan against 4 of 9 main-study targets (M3b and 100/0) and 1 of 10 long-run targets (+1.6 to +2.6, 1.3–2.6 plates per game); shoving in the last 4 turns beats all 9 policies (+0.11 to +0.60); once a siege exists Pressure beats Hold (+0.2 to +0.8); the policies' rare-action probabilities collapse in the first 25–50k transitions and siege states are never visited again |
 | Freeze | **Mechanics limitation** (not a bug) | in all 72 reachable Freeze-legal states a one-turn Freeze is *identical* to Slow Push (difference 0.000); a permanent Freeze rule changes nothing (±0.00) |
 | Forward positioning | **Mechanics (structural)** | position follows the wave; forward cells require one's wave to be forward, i.e. shoving |
-| Skill-conditioned Trade | **Persists, but worth little** | Trade rises with own skill in 4/6 shared runs (0/3 M3b); Trade − Hold ≈ 0 at both skill extremes |
+| Skill-conditioned Trade | **Persists, but worth little** | Trade rises with own skill in 4/6 shared runs at 307k (0/3 M3b) and 9/10 long runs; Trade − Hold ≈ 0 at both skill extremes |
 
 The decisive distinction is between one-step and multi-step deviations. Unconditional rules that use the missing
 mechanics all *lose* against the policies (shove+pressure every turn −2.3 to −2.6; punish-shove −0.3 to −1.0;
@@ -58,8 +58,10 @@ is established as less exploitable.
 **4. Does longer self-play help, and do historical opponents?** Longer training (1,024k transitions, 5 seeds per
 condition) helps against fixed learned opponents (+0.5 to +0.6 against the published M3b policy, vs +0.2 to +0.3 at
 307k) and against the main-study policies (+0.50 to +0.61), shows no forgetting or cycling in any run, learns more
-Shove (8–24% of turns) and stronger skill-conditioned aggression, but still never sieges. Historical opponents give
-no measurable benefit: 80/20 − 100/0 = −0.12 ± 0.45 in cross-play (80/20 wins 6 of 25 seed pairings).
+Shove (8–24% of turns) and stronger skill-conditioned aggression, becomes less exploitable in 9 of 10 runs (one
+attacker per target), but still never sieges, and the one run that did not learn to shove stays exploitable by the
+siege plan (+2.41). Historical opponents give no measurable benefit: 80/20 − 100/0 = −0.12 ± 0.45 in cross-play
+(80/20 wins 6 of 25 seed pairings) and −0.33 ± 1.32 in exploitability.
 
 ---
 
@@ -168,9 +170,10 @@ was reached in only 1–12 of 24 attempts per policy.
 **Does the policy miss profitable opportunities?** In 21–75% of states (by scenario and family) at least one legal
 action beats the policy's own mixture significantly after a Bonferroni correction for the number of legal actions;
 the mean best advantage is +0.08 to +0.33 per state (siege states +1.1 to +2.2). The improving action is mostly a
-Shove (Hold), and the policy puts 0.0–0.3% on it. But averaged over all 963 states, Shove − Slow
-Push is +0.00 ± 0.04 (M3b, 318 states), +0.01 ± 0.04 (100/0, 328), +0.10 ± 0.04 (80/20, 317): a Shove helps in some states and hurts in
-about as many. The policies are locally improvable by *state-conditional* wave timing, not by more Shoves.
+Shove (Hold), on which the policy typically puts < 1%. But averaged over all 963 states, Shove − Slow Push is
++0.00 ± 0.04 (M3b, 318 states), +0.01 ± 0.04 (100/0, 328) and +0.10 ± 0.04 (80/20, 317): for M3b and 100/0 a Shove
+helps in some states and hurts in about as many. The policies are locally improvable mainly by *state-conditional*
+wave timing, not by shoving more often.
 
 **Critic check** (`calibration.md`). At these states the shared-policy value heads agree with the Monte Carlo value
 of the policy (bias −0.14 to +0.18, correlation 0.59–0.99) except in the rarely visited Recall-legal low-HP states
@@ -201,7 +204,8 @@ policy (1,000 held-out episodes per seat, ± 0.05–0.08 per policy):
 | **late_shove28: from turn 28 on, same** | **+0.45 ± 0.16** | **+0.42 ± 0.68** | **+0.54 ± 0.06** |
 
 (95% t over 3 seeds.) Recall at HP ≤ 2 cuts deaths from ~1.8 to 0.3–0.6 per game but costs more in farm and turns
-away than it saves; at HP ≤ 1 it breaks even. Every unconditional use of the missing wave mechanics loses.
+away than it saves; at HP ≤ 1 it breaks even. Every rule that applies the wave mechanics regardless of the time
+left loses; the one rule conditioned on the end of the game (late_shove28) wins (D.3).
 
 ### D.2 What the strong attackers do (`attacker_behavior.md`)
 
@@ -238,8 +242,8 @@ neither seat ever experiences a siege, and no gradient ever reaches the Pressure
 |---|---|---|
 | Recall unused | **Reasonable equilibrium behavior** | unprofitable at HP ≤ 2 (counterfactual and overlay), break-even at HP 1; HP is valued, recall is simply expensive (2 turns away, must start at cell ≤ −1) |
 | Yield / Safe unused | **Reasonable equilibrium behavior** | retreating gives up more farm than the HP it saves is worth (≈ 0.25 per HP) |
-| Siege objectives and wave timing unused | **Training issue** | a profitable multi-turn plan exists (+1.6 to +2.6 against every family) and PPO finds it when it trains against a fixed target for 1M steps; a one-line rule (Shove in the last 4 turns) beats all 9 policies by +0.11 to +0.60; self-play never visits sieges after the first ~50k transitions |
-| Freeze unused | **Mechanics limitation** (design, not a defect) | Freeze becomes legal only when the enemy wave is already in contact with one's own, and then it is identical to Slow Push; it never mattered in 72 reachable states or as a game-long rule |
+| Siege objectives and wave timing unused | **Training issue** | a profitable multi-turn plan exists (+1.6 to +2.6; found against M3b and 100/0 targets) and PPO finds it when it trains against a fixed target for 1M steps; a one-line rule (Shove in the last 4 turns) beats all 9 policies by +0.11 to +0.60; self-play never visits sieges after the first ~50k transitions |
+| Freeze unused | **Mechanics limitation** (design, not a defect) | Freeze is legal only once the enemy front is at own −1 or closer; in all 72 reachable Freeze-legal states found, that front was already fighting one's own front, and a one-turn Freeze was identical to Slow Push; a game-long Freeze rule changed nothing |
 | No forward positioning | **Mechanics (structural)** | a champion's cell follows its wave; forward cells require one's wave to be forward, which is the wave-timing issue above |
 | Hold/Trade mixture | **Reasonable equilibrium behavior** | Trade − Hold ≈ 0 in every scenario and skill matchup |
 
@@ -280,11 +284,13 @@ intermediate checkpoint is not a separately trained shorter attacker).
   2 of 9 targets (sp100_s2, sp80_s2). From-scratch attackers, which never reached parity
   at 102k, end at +0.71 to +2.47.
 - **Discovery is a rare event.** Two warm attackers on the same target end at +0.31 vs +1.80 (sp100_s1) and
-  +2.63 vs +0.62 (m3b_s1): the large values are the attackers that found the siege plan (D.2), after 200–600k steps. A single attacker per target underestimates exploitability.
+  +2.63 vs +0.62 (m3b_s1): the large values are the attackers that found the siege plan (D.2), after 200–600k steps. A single attacker per
+  target underestimates exploitability.
 - **Rankings do not transfer across budgets** (Spearman −0.03 with 102k, +0.17 with 307k).
 - **Methods.** 80/20 has the lowest mean bound and the smallest spread (+0.71 to +1.20), but its interval overlaps
-  the others and its three targets happen to be the ones no attacker sieged; with 3 seeds and unsaturated attackers
-  this is not an established difference.
+  the others, and no attacker found the siege plan against any 80/20 target (nor against m3b_s2 and sp100_s2), which
+  may be luck of discovery as much as robustness; with 3 seeds and unsaturated attackers this is not an established
+  difference.
 
 The exact legacy calibration of the previous study (K = 16, exact exploitability) remains the only certified
 robustness measurement and is not repeated here; it concerns a different game and is not mixed with these numbers.
@@ -334,7 +340,29 @@ and objective-legal turns at ≈ 0: longer self-play learned more wave pressure 
 **Skill-conditioned aggression persists and strengthens:** Trade probability at skill 0.2 vs 0.8 / 0.8 vs 0.2 is
 0.32–0.66 / 0.56–0.84, rising with own skill in 9 of 10 runs (equal in one).
 
-**Exploitability.** (filled in from `long_exploit` below)
+**Exploitability** (`long_exploit`; one warm-started Phase D attacker of 1,024k steps per target, training seed 920,
+evaluated with 500 held-out episodes per seat; targets: each run's final policy and its snapshot nearest 307k):
+
+| condition | snapshot ≈ 307k | final 1,024k | final − 307k (paired) |
+|---|---|---|---|
+| 100/0 | +0.78 ± 0.30 (+0.46, +0.77, +0.62, +1.05, +0.97) | +0.71 ± 1.18 (+0.14, +0.31, +0.40, **+2.41**, +0.31) | −0.06 ± 1.01 |
+| 80/20 | +0.91 ± 0.29 (+1.13, +0.89, +1.17, +0.72, +0.65) | +0.38 ± 0.23 (+0.50, +0.65, +0.26, +0.22, +0.28) | **−0.53 ± 0.32** |
+
+The final policies are less exploitable than their own 307k snapshots in 9 of 10 runs, by this attacker. The
+exception, long_sp100_s3 (+2.41), is the one long policy that never learned to Shove (P(Shove) 0.010), and its
+attacker found the siege exploit (2.41 plates, 1.33 crashes per game, Shove 0.39 from turn 24). 80/20 − 100/0 for
+the final policies: −0.33 ± 1.32 (per seed +0.37, +0.34, −0.14, −2.18, −0.03); the difference is
+not established (medians +0.28 for 80/20, +0.31 for 100/0). Caveat: a single attacker per target, and Phase D
+showed that one attacker can miss the siege plan (same-target attackers differed by up to 2.0); these are weaker
+lower bounds than Phase D's maxima over 2–3 attackers, and the attackers' last increment (512k → 1,024k) is still
++0.12 ± 0.15 (100/0) and +0.13 ± 0.15 (80/20).
+
+**Answers to the Phase E questions.** (1) Pure shared self-play showed no forgetting or cycling at 1M transitions.
+(2) Hence the historical mixture had nothing to prevent; it neither helped nor measurably hurt. (3) Longer training
+improved performance against fixed learned opponents (by +0.2 to +0.3, plateauing after ~800k). (4) It reduced the
+exploitability of most policies (−0.53 ± 0.32 for 80/20, 4 of 5 for 100/0), but not of a policy that never learned to
+shove. (5) The 100/0 vs 80/20 difference did not become more consistent (6/25 pairings, intervals spanning 0).
+(6) More Shove emerged (8–24% of turns), sieges did not. (7) Skill-conditioned aggression persisted (9/10 runs).
 
 ---
 
@@ -363,7 +391,9 @@ and objective-legal turns at ≈ 0: longer self-play learned more wave pressure 
   reachable, but their distribution is not the policies' own.
 - **Attackers.** Lower bounds only; 11/21 curves unsaturated; one or two attackers per target; the LR schedule
   depends on the budget.
-- **Seeds.** 3 training seeds for the main-study comparisons (t₂ = 4.30), 5 for Phase E.
+- **Seeds.** 3 training seeds for the main-study comparisons (t₂ = 4.30), 5 for Phase E; Phase E exploitability
+  uses one attacker per target.
+- **Compute.** Phase D attackers cost 8 min each (1 thread); a 3-attacker probe of 10 targets costs ~1 h of 6 cores.
 - **Model.** HP matters only through death; Recall is legal only at cell ≤ −1; the lane's symmetric 2-cycle makes
   sieges unreachable without deliberate shoving. These are design choices of the current environment.
 

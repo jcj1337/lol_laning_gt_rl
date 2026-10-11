@@ -78,10 +78,22 @@ Lower bounds +0.71 to +2.63 (previously +0.11 to +1.15 at 307k); condition means
 +1.75 +- 1.86, 80/20 +1.01 +- 0.64; 11/21 curves unsaturated; Spearman with earlier budgets -0.03 / +0.17;
 same-target attackers differ by up to 2.0.
 
-## Phase E: long self-play (running)
+## Phase E: long self-play (done; `long_selfplay.md`)
 
 10 runs (100/0 and 80/20, seeds 0-4, 1,024,000 agent transitions) trained in 7.5 min (7 processes; the
-`train_long.md` header says 10 processes: it prints the driver's default). Evaluation and 20 attackers running.
+`train_long.md` header says 10 processes: it prints the driver's default). Evaluation: 1,395 head-to-head jobs + 30
+audits; 20 warm attackers x 1,024k (finals and ~307k snapshots, seed 920).
+- Improvement against fixed learned opponents until ~800k (vs pub_sprand_s1 +0.5 to +0.6; final vs own 307k snapshot
+  +0.34 to +0.42); cross-play vs the 9 main policies +0.50 to +0.61.
+- No forgetting or cycling (0 of 450 older-wins pairs; monotone 0.98-1.00).
+- 80/20 - 100/0: -0.12 +- 0.45 in cross-play (6/25 pairings), -0.33 +- 1.32 in exploitability: no benefit.
+- Shove 8-24% of turns in 9/10 runs; still no sieges, no Recall. Skill-conditioned Trade in 9/10 runs.
+- Exploitability (one attacker per target): finals below their 307k snapshots in 9/10 runs (80/20 -0.53 +- 0.32);
+  outlier long_sp100_s3 (+2.41, siege exploit) is the one run that never learned to shove.
+- Also added: `lanegame/experiments/rl/attacker_behavior.py` (where the attackers shove), the late-shove overlay rules
+  (`overlay_late`), and fixed Markdown headers containing a literal `|` in three generated tables.
+
+Full suite after all changes: **500 passed** (476 + 24 new; 9.3 min with experiments running alongside).
 
 ## Tests
 
