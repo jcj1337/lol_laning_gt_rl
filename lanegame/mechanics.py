@@ -35,6 +35,10 @@ and at the end of the turn:
                         NEXT vision_turns turns, never this one; otherwise it counts down.
                         In "choice" mode the crash-reward choice sets it afterwards.)
 
+Plate modes: "crash" (opportunities per crash, lapse with the siege), "tower" (a finite budget per tower) and
+"durability" (M4 ruleset only, design §11): the lane step grants and claims no plate opportunities (ap / bp stay 0);
+plates are paid by the M4 resolver from the persistent tower-damage counters, fed by TurnResult.tower_hits.
+
 Economic accounting. Every HP of minions that leaves the lane is recorded
 exactly once, with its cause: killed in a fight (by enemy minions, the enemy
 champion or the enemy tower, including defenders fighting crashed minions under
@@ -76,6 +80,10 @@ class TurnResult:
     plates: Tuple[int, int] = (0, 0)  # plates claimed this turn, per side
     thinned: Tuple[int, int] = (0, 0)  # enemy HP thinned this turn, per side (the thinner)
     vision_set: Tuple[bool, bool] = (False, False)   # vision established this turn, per side
+    # minion damage dealt to the ENEMY tower this turn, per side, in minion-damage units: on every tick the crashed
+    # mass already under the enemy tower at the start of the tick hits it for minion_damage(mass) (M4 design §11.2;
+    # "mass" tower mode only, 0 otherwise). Computed in every configuration, read only by the M4 ruleset.
+    tower_hits: Tuple[int, int] = (0, 0)
 
 
 def wave_actions(state: State, s: int, cfg: GameConfig) -> Tuple[int, ...]:
@@ -214,7 +222,7 @@ def thinning_target(P, s: int, cfg: GameConfig) -> Optional[List[int]]:
 
 
 def _tick(P, siege, acts, t, crash_hp, cfg: GameConfig, trace=None, ev=None, k=0, reach=None,
-          kills=None, thin_left=None, plates=None, champion_reach=None):
+          kills=None, thin_left=None, plates=None, champion_reach=None, hits=None):
     contact = _fronts_in_contact(P)
     T = cfg.tower
     bases = (base_of(acts[A]), base_of(acts[B]))
@@ -227,6 +235,10 @@ def _tick(P, siege, acts, t, crash_hp, cfg: GameConfig, trace=None, ev=None, k=0
         reach_line = tuple(champion_reach)
     block = cfg.cap_rule == "block"
     siege_tick_start = list(siege)
+    if hits is not None and cfg.tower_mode == "mass":
+        for s in (A, B):
+            if siege_tick_start[s] > 0:
+                hits[s] += minion_damage(siege_tick_start[s], cfg)
 
     # ---- 1. movement ----
     for s in (A, B):
@@ -428,8 +440,9 @@ def step_turn(state: State, k: int, act_a: int, act_b: int, cfg: GameConfig,
     # Contest exposure: the champion travels with its leading wave and stays under the
     # enemy tower while its crashed minions are still there (the game caps it for Safe).
     reach = [cfg.tower if siege[s] > 0 else (P[s][0][0] if P[s] else -cfg.tower) for s in (A, B)]
+    hits = [0, 0]
     for t in range(cfg.ticks_per_turn):
-        _tick(P, siege, acts, t, crash_hp, cfg, trace, ev, k, reach, kills, thin_left, plates, champion_reach)
+        _tick(P, siege, acts, t, crash_hp, cfg, trace, ev, k, reach, kills, thin_left, plates, champion_reach, hits)
 
     if cfg.tower_mode == "packet":
         for s in (A, B):
@@ -468,7 +481,7 @@ def step_turn(state: State, k: int, act_a: int, act_b: int, cfg: GameConfig,
     exposure = tuple(min(cfg.tower, max(-cfg.tower, r)) for r in reach)
     thinned = (ev["thinned_hp"][B], ev["thinned_hp"][A])      # thinned[s] = enemy HP removed by s
     return TurnResult(nxt, (crash_hp[A], crash_hp[B]), trace, ev, exposure, kills,
-                      (claimed[A], claimed[B]), thinned, (vision_set[A], vision_set[B]))
+                      (claimed[A], claimed[B]), thinned, (vision_set[A], vision_set[B]), (hits[A], hits[B]))
 
 
 def initial_state(cfg: GameConfig) -> State:

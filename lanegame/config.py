@@ -356,6 +356,40 @@ class GameConfig:
     death_turns: int = 3
     kill_bounty: float = 0.5
 
+    # ---- ruleset contract (docs/m4_implementation_plan.md WP0). Every default reproduces the legacy game. ----
+    #   "legacy"  GameConfig(), .v1(), .v2(), .champions(): finite horizon K, terminal, countdown observed, gamma = 1
+    #   "m2c"     .champions_continuing(): M2 champion mechanics with M4 time semantics. A TEST FIXTURE for the
+    #             continuing-time machinery only; never a research ruleset
+    #   "m4"      .m4(): the integrated M4 ruleset (docs/m4_integrated_design.md), lanegame.champions_m4
+    ruleset: str = "legacy"
+    time_mode: str = "finite"             # "finite" (terminal at the horizon) or "continuing" (no terminal state)
+    time_features: bool = True            # k/K and (K - k)/K in the (legacy-layout) observation
+    gamma: float = 1.0                    # discount of the game objective; part of the game under "continuing"
+
+    # ---- M4 economy (design §13). Each default means "off"; validate() rejects any change outside ruleset "m4". ----
+    xp_per_hp: int = 0                    # XP per enemy minion HP dying within xp_range of a present champion (m4: 2)
+    xp_range: int = 3                     # cells (design §7.3)
+    xp_base: int = 8                      # XP to advance from level L to L + 1: xp_base + xp_step (L - 1)
+    xp_step: int = 3
+    level_cap: int = 18
+    hp_base: int = 600                    # H(1) in centi-HP; H(L) = round(hp_base hp_growth^(L - 1))
+    hp_growth: float = 1.05
+    ap_level_growth: float = 1.05         # AP(L, N) = round(10^4 ap_level_growth^(L - 1) item_mult^N) basis points
+    item_mult: float = 1.20
+    item_tiers: int = 0                   # sequential offensive tiers (m4: 2); 0 = no items
+    item_prices: Tuple[float, ...] = (4.0, 6.0)   # resources per tier, bought automatically at base (design §8.5)
+    freeze_maintenance: bool = False      # m4: a Freeze holds only while maintained (design §6.3)
+    chase_rule: str = "m2"                # "m2" (legacy target e -/+ trade_range) or "contact_cell" (design §7.4)
+    tower_adjacent_p: float = 0.0         # tower shot on a connected trader ending next to the enemy tower (m4: 0.5)
+    tower_adjacent_p_busy: float = 0.0    # ... while its own crashed minions are under that tower (m4: 0.25)
+    gank_damage_scale: str = "none"       # "none" (centi = 100 x trials), "victim_level" (m4), "attacker_level"
+    plate_thresholds: Tuple[int, ...] = (1600, 3600, 6000)   # durability plate thresholds, centi-units (design §11)
+    plate_gold: float = 1.0               # resources per durability plate
+    pressure_tower_damage: int = 400      # centi-units per effective Apply Pressure turn at attack power 1.0
+    plate_gold_requires_presence: bool = False    # design §16 A9 (alternative); False = paid while away too
+    gold_unit: float = 1e-6               # resource per ledger unit (micro-resources, design §8.6)
+    rear_count_max: int = 4               # largest rear-packet count in one cell (observation scale; exceeded -> error)
+
     # ------------------------------------------------------------------ presets
     @classmethod
     def v1(cls, **kw) -> "GameConfig":
@@ -387,7 +421,40 @@ class GameConfig:
         base.update(kw)
         return cls(**base)
 
+    @classmethod
+    def champions_continuing(cls, **kw) -> "GameConfig":
+        """TEST FIXTURE ("m2c"): the M2 champion game with M4 time semantics (continuing, no countdown, gamma 0.99).
+        Its per-turn dynamics equal champions() (plan WP1, T1.10). Never a research ruleset."""
+        base = dict(champion_mode=True, ruleset="m2c", time_mode="continuing", time_features=False, gamma=0.99)
+        base.update(kw)
+        return cls(**base)
+
+    @classmethod
+    def m4(cls, **kw) -> "GameConfig":
+        """The M4 ruleset (docs/m4_integrated_design.md): continuing time, Freeze maintenance, XP and levels 1-18,
+        centi-HP, attack power, one two-tier item track bought at base, durability plates, the contact-cell chase
+        and the tower-adjacent shot. Played through lanegame.env (lanegame.champions_m4)."""
+        base = dict(champion_mode=True, ruleset="m4", time_mode="continuing", time_features=False, gamma=0.99,
+                    xp_per_hp=2, item_tiers=2, freeze_maintenance=True, chase_rule="contact_cell",
+                    tower_adjacent_p=0.5, tower_adjacent_p_busy=0.25, gank_damage_scale="victim_level",
+                    plate_mode="durability")
+        base.update(kw)
+        return cls(**base)
+
     # ------------------------------------------------------------------ helpers
+    @property
+    def continuing(self) -> bool:
+        """Continuing time (rulesets "m2c" and "m4"): no terminal state, no countdown, discounted objective."""
+        return self.time_mode == "continuing"
+
+    @property
+    def is_m4(self) -> bool:
+        return self.ruleset == "m4"
+
+    @property
+    def gold_scale(self) -> int:
+        """Ledger units per resource (10^6 for micro-resources)."""
+        return int(round(1.0 / self.gold_unit))
     @property
     def hp_cap(self) -> int:
         return self.wave_hp * (1 + self.max_stacks)
@@ -443,6 +510,7 @@ class GameConfig:
         return ACTION_SHORT[a] if self.positioning else WAVE_SHORT[wave_of(a)]
 
     def validate(self) -> None:
+        self._validate_ruleset()
         assert self.base > self.tower > 0
         assert self.spawn_interval % self.ticks_per_turn == 0
         assert self.damage_law in ("lanchester", "lanchester_ceil", "linear", "pressure")
@@ -456,7 +524,7 @@ class GameConfig:
         assert self.vision_turns >= 0
         assert -self.tower < self.freeze_line < self.tower
         assert self.siege_cap >= self.hp_cap
-        assert self.plate_mode in ("crash", "tower")
+        assert self.plate_mode in ("crash", "tower", "durability")
         assert self.plates_per_tower >= 0 and self.plates_per_turn >= 0 and self.plate_value >= 0
         assert len(self.plate_grant) == self.max_stacks + 1 and min(self.plate_grant) >= 0
         assert self.plates_cap >= max(self.plate_grant)
@@ -484,6 +552,97 @@ class GameConfig:
             assert self.retreat_farm_reach >= 0
             assert len(self.champ_gank_behavior) == len(CHAMP_BEHAVIORS)
 
+    # ------------------------------------------------------------------ ruleset contract (plan WP0)
+    def _validate_ruleset(self) -> None:
+        """The contract table of plan WP0. Raises ValueError naming the offending field."""
+        def bad(field: str, why: str):
+            raise ValueError(f"ruleset {self.ruleset!r}: {field} {why}")
+
+        if self.ruleset not in RULESETS:
+            bad("ruleset", f"must be one of {RULESETS}")
+        if self.time_mode not in ("finite", "continuing"):
+            bad("time_mode", "must be 'finite' or 'continuing'")
+        if self.ruleset == "legacy":
+            if self.time_mode != "finite":
+                bad("time_mode", "must be 'finite' (legacy presets are pinned)")
+            if self.time_features is not True:
+                bad("time_features", "must be True (legacy presets are pinned)")
+            if self.gamma != 1.0:
+                bad("gamma", "must be 1.0 (legacy presets are pinned)")
+        else:
+            if self.time_mode != "continuing":
+                bad("time_mode", "must be 'continuing'")
+            if self.time_features is not False:
+                bad("time_features", "must be False (no countdown under continuing time)")
+            if not 0.0 < self.gamma < 1.0:
+                bad("gamma", "must be in (0, 1) under continuing time")
+            if not self.champion_mode:
+                bad("champion_mode", "must be True")
+        if self.ruleset in ("legacy", "m2c"):
+            for f in M4_ECONOMY_FIELDS:
+                if getattr(self, f) != _FIELD_DEFAULTS[f]:
+                    bad(f, f"is an M4 economy field and must stay at its off default {_FIELD_DEFAULTS[f]!r}")
+            if self.plate_mode == "durability":
+                bad("plate_mode", "'durability' is M4 only")
+            return
+        # ---- ruleset "m4"
+        if not self.positioning:
+            bad("positioning", "must be True")
+        if self.plate_mode != "durability":
+            bad("plate_mode", "must be 'durability' (crash-plate opportunities are off under M4, design §11.4)")
+        if not (isinstance(self.xp_per_hp, int) and self.xp_per_hp >= 1):
+            bad("xp_per_hp", "must be a positive integer (XP is an integer state)")
+        if self.xp_range < 0 or self.xp_base < 1 or self.xp_step < 0 or self.level_cap < 1:
+            bad("xp_range/xp_base/xp_step/level_cap", "out of range")
+        if self.hp_base < 1 or self.hp_growth <= 0 or self.ap_level_growth <= 0 or self.item_mult <= 0:
+            bad("hp_base/hp_growth/ap_level_growth/item_mult", "must be positive")
+        if self.item_tiers < 0 or len(self.item_prices) != self.item_tiers or any(p <= 0 for p in self.item_prices):
+            bad("item_prices", f"must hold item_tiers = {self.item_tiers} positive prices")
+        if self.chase_rule not in ("m2", "contact_cell"):
+            bad("chase_rule", "must be 'm2' or 'contact_cell'")
+        if self.gank_damage_scale not in ("none", "victim_level", "attacker_level"):
+            bad("gank_damage_scale", "must be 'none', 'victim_level' or 'attacker_level'")
+        if not (0.0 <= self.tower_adjacent_p <= 1.0 and 0.0 <= self.tower_adjacent_p_busy <= 1.0):
+            bad("tower_adjacent_p", "probabilities must be in [0, 1]")
+        th = self.plate_thresholds
+        if not th or any(not isinstance(x, int) for x in th) or th[0] <= 0 or any(b <= a for a, b in zip(th, th[1:])):
+            bad("plate_thresholds", "must be strictly increasing positive integers (centi-units)")
+        if not (isinstance(self.pressure_tower_damage, int) and self.pressure_tower_damage >= 0):
+            bad("pressure_tower_damage", "must be a non-negative integer (centi-units)")
+        if self.rear_count_max < 1:
+            bad("rear_count_max", "must be >= 1")
+        if self.siege_engage:
+            bad("siege_engage", "must be False (the evaluation bound counts no siege fights, design §10.5.3)")
+        self._validate_exact_economy()
+
+    def _validate_exact_economy(self) -> None:
+        """Design §8.6: every earned amount must be an exact integer multiple of the ledger unit. Each economic
+        parameter is read as an exact rational from its decimal string; a per-HP farm value, a plate value, the
+        bounty or a price that is not a multiple of gold_unit is rejected."""
+        from fractions import Fraction
+
+        def q(x) -> Fraction:
+            return Fraction(repr(float(x)))
+
+        scale = Fraction(1) / q(self.gold_unit)
+        if scale.denominator != 1:
+            raise ValueError(f"ruleset 'm4': gold_unit {self.gold_unit!r} is not 1/integer")
+
+        def check(name: str, value: Fraction):
+            if (value * scale).denominator != 1:
+                raise ValueError(f"ruleset 'm4': {name} = {float(value)!r} is not an integer multiple of "
+                                 f"gold_unit {self.gold_unit!r} (design §8.6)")
+
+        for v, name in ((self.plate_gold, "plate_gold"), (self.kill_bounty, "kill_bounty")):
+            check(name, q(v))
+        for i, p in enumerate(self.item_prices):
+            check(f"item_prices[{i}]", q(p))
+        for value, name in exact_farm_values(self):
+            check(name, value)
+        if sum(int(q(p) * scale) for p in self.item_prices) > 2 ** 24:
+            raise ValueError("ruleset 'm4': the summed item prices exceed 2^24 ledger units; the float32 gold feature "
+                             "would no longer decode exactly (design §12.2)")
+
     def with_(self, **kw) -> "GameConfig":
         return replace(self, **kw)
 
@@ -496,3 +655,42 @@ class GameConfig:
         def tup(x):
             return tuple(tup(i) for i in x) if isinstance(x, list) else x
         return cls(**{k: tup(v) for k, v in d.items()})
+
+
+# ---------------------------------------------------------------------- ruleset contract tables (plan WP0)
+RULESETS = ("legacy", "m2c", "m4")
+M4_ECONOMY_FIELDS = ("xp_per_hp", "xp_range", "xp_base", "xp_step", "level_cap", "hp_base", "hp_growth",
+                     "ap_level_growth", "item_mult", "item_tiers", "item_prices", "freeze_maintenance", "chase_rule",
+                     "tower_adjacent_p", "tower_adjacent_p_busy", "gank_damage_scale", "plate_thresholds",
+                     "plate_gold", "pressure_tower_damage", "plate_gold_requires_presence", "gold_unit",
+                     "rear_count_max")
+_FIELD_DEFAULTS = {f.name: f.default for f in GameConfig.__dataclass_fields__.values()}
+
+
+def exact_safe_base(x: int, cfg: GameConfig):
+    """Exact rational Safe-posture collection base at own cell x: clip(collect_safe - slope (min(x, T) + T), 0, 1)."""
+    from fractions import Fraction
+    v = Fraction(repr(float(cfg.collect_safe))) - Fraction(repr(float(cfg.collect_safe_slope))) * (min(x, cfg.tower) + cfg.tower)
+    return min(Fraction(1), max(Fraction(0), v))
+
+
+def exact_farm_values(cfg: GameConfig):
+    """Every per-HP farm value f * base * (1 - zone) * t the champion collection rule can produce (design §8.6), as
+    exact rationals with a label. Kill cells are enumerated over a superset of the reachable range."""
+    from fractions import Fraction
+
+    def q(x):
+        return Fraction(repr(float(x)))
+
+    f = q(cfg.farm_per_hp)
+    bases = {"contest": q(cfg.collect_contest), "contest_enemy_tower": q(cfg.collect_contest_enemy_tower)}
+    for x in range(-cfg.base, cfg.base + cfg.thin_reach + 1):
+        bases[f"safe@{x}"] = exact_safe_base(x, cfg)
+    zones = {"unzoned": Fraction(1), "zoned": 1 - q(cfg.zone_contest), "zoned_under_tower": 1 - q(cfg.zone_under_tower)}
+    trades = {"": Fraction(1), "_trading": q(cfg.trade_farm_factor)}
+    out = []
+    for bn, b in bases.items():
+        for zn, z in zones.items():
+            for tn, t in trades.items():
+                out.append((f * b * z * t, f"farm_per_hp x {bn} x {zn}{tn}"))
+    return out
