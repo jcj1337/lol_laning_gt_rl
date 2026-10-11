@@ -51,6 +51,9 @@ pip install torch                                     # PPO needs PyTorch (optio
 python -m lanegame rl-train --opponents hold_farmer,aggressive_trader --steps 100000 --out results/rl/checkpoints/demo
 python -m lanegame rl-eval results/rl/checkpoints/demo/final.pt   # both seats, held-out seeds, 95% CIs
 python -m lanegame experiments-rl scripted legacy selfplay evaluation   # M3a-M3c experiments (results/rl/)
+python -m lanegame rl-shared --current-fraction 0.8 --skill-levels 0.2,0.5,0.8 --out results/rl/checkpoints/demo_shared
+                                                      # shared-policy self-play, 80% current / 20% past versions
+python -m lanegame experiments-rl openai_five          # the OpenAI Five-inspired study (results/rl/openai_five/)
 python -m lanegame experiments-siege all              # regenerate every siege-study result (results/siege/)
 python -m lanegame experiments all                    # regenerate the farming-revision results (results/revision/)
 python -m lanegame experiments-v1 all                 # regenerate the original Phase 1 results (results/)
@@ -79,7 +82,8 @@ lanegame/                 engine (pure Python + NumPy/SciPy, no presentation cod
                           tower shots, ganks with HP damage, death and respawn
   env/                    simultaneous-move RL environment (roadmap M1): LaneEnv, own-view observations and
                           masks, scripted agents, exact-policy bridge, episode traces, optional PettingZoo adapter
-  rl/                     masked PPO, frozen-snapshot self-play, evaluation and approximate best responses (M3; torch)
+  rl/                     masked PPO, frozen-snapshot self-play, shared-policy self-play with a current / historical
+                          mixture (shared.py), evaluation and approximate best responses (M3; torch)
   experiments/champions/  champion-mode validation (results/champions/)
   experiments/rl/         RL experiments (results/rl/; checkpoints in results/rl/checkpoints/, not tracked)
   experiments/siege/      the siege study's experiments (results/siege/)

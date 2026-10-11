@@ -13,6 +13,9 @@
   python -m lanegame experiments-rl scripted | legacy | selfplay | evaluation                    (PPO, results/rl/; needs torch)
   python -m lanegame rl-train --opponents hold_farmer,aggressive_trader [--steps 100000 --seed 0 --out results/rl/checkpoints/run]
   python -m lanegame rl-selfplay [--init results/rl/checkpoints/run/final.pt --steps 200000 --seed 0 --out ...]
+  python -m lanegame rl-shared [--current-fraction 0.8 --steps 307200 --seed 0 --skill-levels 0.2,0.5,0.8 --out ...]
+                                             (shared-policy self-play, current / historical mixture; lanegame.rl.shared)
+  python -m lanegame experiments-rl openai_five                    (the OpenAI Five-inspired study, results/rl/openai_five/)
   python -m lanegame rl-eval CHECKPOINT [--opponents ... --episodes 500 --skill 0.5,0.5]
   python -m lanegame rl-br CHECKPOINT [--steps 100000 --seed 0]          (approximate best response to a frozen policy)
   python -m lanegame experiments all | before_after model_comparison ...   (previous revision, results/revision/)
@@ -40,7 +43,7 @@ EXPERIMENTS_V1 = ["audit_legacy", "model_comparison", "horizon_benchmark", "base
 EXPERIMENTS_SIEGE = ["benchmark", "timing", "controlled", "siege_options", "crash_value", "vision_sweep",
                      "ablations", "sensitivity", "equilibrium", "verification", "figures"]
 EXPERIMENTS_CHAMPIONS = ["invariants", "tournament", "skill", "concerns", "benchmark"]
-EXPERIMENTS_RL = ["scripted", "legacy", "selfplay", "evaluation", "br_warm", "figures"]
+EXPERIMENTS_RL = ["scripted", "legacy", "selfplay", "evaluation", "br_warm", "figures", "openai_five"]
 
 
 def _cfg(args, **kw) -> GameConfig:
@@ -273,6 +276,18 @@ def cmd_rl_selfplay(args):
     print(f"self-play {res.train.history[-1]['steps']} steps in {res.train.elapsed:.0f}s; pool {[a.name for a in res.pool.snapshots]}")
 
 
+def cmd_rl_shared(args):
+    from .rl import PPOConfig, SharedConfig, train_shared
+    cfg = _rl_cfg(args)
+    levels = tuple(float(x) for x in args.skill_levels.split(",")) if args.skill_levels else None
+    ppo = PPOConfig(total_steps=args.steps, n_envs=args.n_envs, seed=args.seed, skill_levels=levels)
+    res = train_shared(cfg, ppo, SharedConfig(current_fraction=args.current_fraction, snapshot_every=args.snapshot_every,
+                                              pool_size=args.pool), out_dir=args.out,
+                       name=os.path.basename(args.out.rstrip("/\\")))
+    print(f"shared self-play: {res.agent_transitions} agent transitions, {res.env_turns} environment turns in "
+          f"{res.elapsed:.0f}s; pool {[a.name for a in res.pool.snapshots]}")
+
+
 def cmd_rl_eval(args):
     from .rl import head_to_head, load_agent
     cfg = GameConfig.champions(horizon=args.horizon)
@@ -367,6 +382,18 @@ def main(argv=None):
     s.add_argument("--p-latest", type=float, default=0.35)
     s.add_argument("--out", default=os.path.join("results", "rl", "checkpoints", "rl_selfplay"))
     s.set_defaults(fn=cmd_rl_selfplay)
+    s = sub.add_parser("rl-shared")
+    s.add_argument("--current-fraction", type=float, default=0.8, help="share of current-policy games (OpenAI Five: 0.8)")
+    s.add_argument("--steps", type=int, default=307_200, help="budget in agent transitions")
+    s.add_argument("--n-envs", type=int, default=8)
+    s.add_argument("--seed", type=int, default=0)
+    s.add_argument("--horizon", type=int, default=32)
+    s.add_argument("--skill")
+    s.add_argument("--skill-levels", help="per-episode skills per seat drawn from these levels, e.g. 0.2,0.5,0.8")
+    s.add_argument("--pool", type=int, default=8)
+    s.add_argument("--snapshot-every", type=int, default=25_600, help="agent transitions between snapshots")
+    s.add_argument("--out", default=os.path.join("results", "rl", "checkpoints", "rl_shared"))
+    s.set_defaults(fn=cmd_rl_shared)
     s = sub.add_parser("rl-eval")
     s.add_argument("checkpoint")
     s.add_argument("--opponents", default="hold_farmer,yield_farmer,aggressive_trader,safe_player,shover,"

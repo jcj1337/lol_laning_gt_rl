@@ -57,7 +57,11 @@ class NetAgent:
         return obs.legal[sample(rng, p)]
 
 
-def save_checkpoint(path: str, net: PolicyValueNet, game_cfg: GameConfig, metadata: Optional[dict] = None) -> None:
+def save_checkpoint(path: str, net: PolicyValueNet, game_cfg: GameConfig, metadata: Optional[dict] = None,
+                    exist_ok: bool = True) -> None:
+    """`exist_ok=False` refuses to replace an existing file (FileExistsError) instead of overwriting it."""
+    if not exist_ok and os.path.exists(path):
+        raise FileExistsError(f"refusing to overwrite the checkpoint {path}")
     os.makedirs(os.path.dirname(path) or ".", exist_ok=True)
     torch.save({"format": "lanegame.rl.checkpoint", "version": 1, "spec": net.spec(),
                 "state_dict": net.state_dict(), "game_config": game_cfg.to_dict(), "metadata": metadata or {}}, path)
