@@ -14,6 +14,8 @@ League of Legends wave management is the testbed. Two players manage minion wave
 | 2. Quantitative research | Bayesian opponent modelling, exploitation vs. exploitability, risk-constrained policies, misspecification, sensitivity | next |
 | 3. Interactive dashboard | React/TypeScript site for exploring strategies and results | planned |
 
+The transition from the exact game to multi-agent reinforcement learning is planned in [docs/rl_research_roadmap.md](docs/rl_research_roadmap.md); Milestone 1, a simultaneous-move RL environment around the existing game (`lanegame/env/`), and Milestone 2a, champion state, positioning and behaviors (`GameConfig.champions()`), are implemented.
+
 ## The current model at a glance (siege revision)
 
 - **Actions.** Each turn both players simultaneously choose a *wave-management* action (Slow Push, Shove, Freeze) and a *positioning* action (Contest, Safe). A player whose crashed minions are under the enemy tower at the start of the turn also chooses a *siege objective* with Contest: **Apply Pressure** (claim a tower plate and thin the defender's wave gathering behind the tower) or **Establish Vision** (a persistent gank-risk reduction from the next turn on); Safe during a siege means disengaging. Up to 6 actions per player per turn; no information about the opponent's current choice.
@@ -42,6 +44,7 @@ python -m lanegame scenarios                          # 23 traced mechanics scen
 python -m lanegame reach --horizon 24                 # lane and siege events reachable from the standard start, with witnesses
 python -m lanegame strategy --min-crash-hp 4          # Vision -> Shove -> Crash -> Pressure witness with a turn-by-turn trace
 python -m lanegame exploit --horizon 24               # exploitability of the siege baselines
+python -m lanegame env-demo --a aggressive --b passive_safe --episodes 200 --seed 42   # two scripted agents through the RL environment
 python -m lanegame experiments-siege all              # regenerate every siege-study result (results/siege/)
 python -m lanegame experiments all                    # regenerate the farming-revision results (results/revision/)
 python -m lanegame experiments-v1 all                 # regenerate the original Phase 1 results (results/)
@@ -66,6 +69,9 @@ lanegame/                 engine (pure Python + NumPy/SciPy, no presentation cod
   simulate.py             seeded Monte Carlo with realized gank outcomes
   scenarios.py, render.py named behavioral scenarios (23) and text traces of the lane
   io.py                   JSON export format for solutions (version 3)
+  champions.py            champion mode (roadmap M2a): persistent champion cells, Hold/Yield/Trade/Safe, physical reach
+  env/                    simultaneous-move RL environment (roadmap M1): LaneEnv, own-view observations and
+                          masks, scripted agents, exact-policy bridge, episode traces, optional PettingZoo adapter
   experiments/siege/      the siege study's experiments (results/siege/)
   experiments/            the farming revision's experiments, pinned to GameConfig.v2() (results/revision/)
   experiments/v1/         the original Phase 1 experiments, pinned to GameConfig.v1() (results/)

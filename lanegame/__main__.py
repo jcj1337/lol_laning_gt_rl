@@ -6,6 +6,8 @@
   python -m lanegame simulate --a equilibrium --b uniform [--model ...] [--episodes 2000 --seed 0]
   python -m lanegame reach [--model siege|revised|v1] [--horizon 32]
   python -m lanegame strategy [--horizon 24] [--vision-turns 6]   (Vision -> Shove -> Crash -> Pressure witness)
+  python -m lanegame env-demo [--model siege|revised|v1|champions] --a aggressive --b passive_safe [--episodes 200 --seed 42 --exact --trace t.json]
+                                             (two scripted agents through the RL environment, lanegame.env)
   python -m lanegame experiments-siege all | controlled siege_options ... (siege model, results/siege/)
   python -m lanegame experiments all | before_after model_comparison ...   (previous revision, results/revision/)
   python -m lanegame experiments-v1 all | audit_legacy model_comparison ... (original model, results/)
@@ -37,6 +39,8 @@ def _cfg(args, **kw) -> GameConfig:
         return GameConfig.v1(**kw)
     if args.model == "revised":
         return GameConfig.v2(**kw)
+    if args.model == "champions":
+        return GameConfig.champions(**kw)
     return GameConfig(**kw)
 
 
@@ -146,6 +150,45 @@ def cmd_strategy(args):
                   f"(unprotected {row['gank_p_without_vision']:.3f})  | {row['lane_after']}")
 
 
+def cmd_env_demo(args):
+    """Two scripted agents play seeded episodes through the simultaneous-move environment (lanegame.env)."""
+    from .env import LaneEnv, ScriptedAgent, champion_agents, run_episodes, write_trace
+    cfg = _cfg(args, horizon=args.horizon)
+    env = LaneEnv(cfg, cache_size=args.cache)
+    if cfg.champion_mode:
+        agents = champion_agents(cfg)
+        pick = lambda n: agents.get(n) or agents.get(f"legacy:{n}") or (_ for _ in ()).throw(
+            SystemExit(f"unknown champion-mode agent {n!r}; choose from {sorted(agents)}"))
+        stats = run_episodes(env, pick(args.a), pick(args.b), args.episodes, args.seed, record_first=bool(args.trace))
+        print(f"[champions] K = {args.horizon}, seed {args.seed}, realized ganks, zero-sum rewards (payoff to A); "
+              f"no exact solver in champion mode")
+        print(stats.format())
+        if args.trace:
+            write_trace(stats.first_log, cfg, args.trace)
+            print("wrote", args.trace)
+        return
+    sol = None
+    if "equilibrium" in (args.a, args.b):
+        from .solver import solve_equilibrium
+        print(f"solving the {args.model} game at K = {args.horizon} for the equilibrium policy "
+              f"(minutes and gigabytes at K = 32 for the siege model) ...")
+        sol = solve_equilibrium(LaneGame(cfg))
+    pa, pb = _policy(args.a, sol, 0, args), _policy(args.b, sol, 1, args)
+    stats = run_episodes(env, ScriptedAgent(pa), ScriptedAgent(pb), args.episodes, args.seed, record_first=bool(args.trace))
+    print(f"[{args.model}] K = {args.horizon}, seed {args.seed}, realized ganks, zero-sum rewards (payoff to A)")
+    print(stats.format())
+    if args.exact:
+        from .best_response import evaluate
+        g = LaneGame(cfg)
+        layers = sol.layers if sol is not None else g.reachable()
+        exact = evaluate(g, layers, pa, pb)
+        z = (stats.mean - exact) / stats.stderr if stats.stderr > 0 else float("nan")
+        print(f"  exact expected payoff {exact:+.4f}; Monte Carlo {stats.mean:+.4f} +- {stats.stderr:.4f} (z = {z:+.2f})")
+    if args.trace:
+        write_trace(stats.first_log, cfg, args.trace)
+        print("wrote", args.trace)
+
+
 def _run_experiments(names, available, package):
     names = available if "all" in names else names
     for n in names:
@@ -192,6 +235,20 @@ def main(argv=None):
     s.add_argument("--episodes", type=int, default=2000)
     s.add_argument("--seed", type=int, default=0)
     add("reach", cmd_reach)
+    s = sub.add_parser("env-demo")
+    s.add_argument("--model", choices=["siege", "revised", "v1", "champions"], default="siege")
+    s.add_argument("--horizon", type=int, default=32)
+    s.set_defaults(fn=cmd_env_demo)
+    s.add_argument("--a", default="aggressive", help="policy of player A: a baseline name or 'equilibrium' "
+                   "(champion mode: hold, yield, trade, safe, shove_hold, shove_trade, hold_vision, freeze_hold, "
+                   "uniform, or a legacy baseline name)")
+    s.add_argument("--b", default="passive_safe")
+    s.add_argument("--episodes", type=int, default=200)
+    s.add_argument("--seed", type=int, default=42)
+    s.add_argument("--exact", action="store_true",
+                   help="also compute the exact expected payoff of the pair (enumerates the reachable game; K <= 16 is cheap)")
+    s.add_argument("--trace", help="write the first episode's trace (lanegame.episode JSON) to this path")
+    s.add_argument("--cache", type=int, default=0, help="bounded LRU cache of lane steps, in entries (0 = off)")
     s = sub.add_parser("strategy")
     s.add_argument("--horizon", type=int, default=24)
     s.add_argument("--vision-turns", type=int, default=6)

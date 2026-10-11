@@ -214,7 +214,7 @@ def thinning_target(P, s: int, cfg: GameConfig) -> Optional[List[int]]:
 
 
 def _tick(P, siege, acts, t, crash_hp, cfg: GameConfig, trace=None, ev=None, k=0, reach=None,
-          kills=None, thin_left=None, plates=None):
+          kills=None, thin_left=None, plates=None, champion_reach=None):
     contact = _fronts_in_contact(P)
     T = cfg.tower
     bases = (base_of(acts[A]), base_of(acts[B]))
@@ -223,6 +223,8 @@ def _tick(P, siege, acts, t, crash_hp, cfg: GameConfig, trace=None, ev=None, k=0
     # How far forward (own coordinates) each champion acts on its wave: Contest follows
     # the wave everywhere; Safe only reaches fights at or behind its safe line.
     reach_line = tuple(T if cfg.posture_cap[a] is None else cfg.posture_cap[a] for a in bases)
+    if champion_reach is not None:         # champion mode: the champions' actual reach (lanegame.champions)
+        reach_line = tuple(champion_reach)
     block = cfg.cap_rule == "block"
     siege_tick_start = list(siege)
 
@@ -392,8 +394,12 @@ def _tick(P, siege, acts, t, crash_hp, cfg: GameConfig, trace=None, ev=None, k=0
 
 
 def step_turn(state: State, k: int, act_a: int, act_b: int, cfg: GameConfig,
-              record: bool = False) -> TurnResult:
-    """Advance the lane through decision turn k (ticks 2k+1 .. 2k+2)."""
+              record: bool = False, champion_reach: Optional[Tuple[int, int]] = None) -> TurnResult:
+    """Advance the lane through decision turn k (ticks 2k+1 .. 2k+2).
+
+    `champion_reach` (champion mode only; None = the legacy rule) overrides, per side, the furthest
+    own-perspective position at which the champion acts on its leading wave (shove damage, the push that
+    breaks a freeze, the shove of a siege-engaging defender). Posture then plays no role in the lane step."""
     P = [[], []]
     for s in (A, B):
         fx, fh, rears, sg, _, _ = state.side(s)
@@ -423,7 +429,7 @@ def step_turn(state: State, k: int, act_a: int, act_b: int, cfg: GameConfig,
     # enemy tower while its crashed minions are still there (the game caps it for Safe).
     reach = [cfg.tower if siege[s] > 0 else (P[s][0][0] if P[s] else -cfg.tower) for s in (A, B)]
     for t in range(cfg.ticks_per_turn):
-        _tick(P, siege, acts, t, crash_hp, cfg, trace, ev, k, reach, kills, thin_left, plates)
+        _tick(P, siege, acts, t, crash_hp, cfg, trace, ev, k, reach, kills, thin_left, plates, champion_reach)
 
     if cfg.tower_mode == "packet":
         for s in (A, B):

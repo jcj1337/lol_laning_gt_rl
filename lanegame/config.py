@@ -89,6 +89,44 @@ ACTION_SHORT = {a: f"{WAVE_SHORT[wave_of(a)]}-{'CS'[posture_of(a)]}"
                 + (f"+{OBJECTIVE_SHORT[objective_of(a)]}" if objective_of(a) else "")
                 for a in range(N_ACTIONS)}
 
+# ---- champion mode (roadmap M2a): a = wave + 3 * behavior + 15 * objective, plus ABSENT ----
+# Behaviors HOLD (Farm-Hold), YIELD (Farm-Yield), TRADE, SAFE are operational; RECALL and the ABSENT
+# code are reserved for M2b and never legal before then. Legacy configurations keep the codes above.
+B_HOLD, B_YIELD, B_TRADE, B_SAFE, B_RECALL = 0, 1, 2, 3, 4
+CHAMP_BEHAVIORS = (B_HOLD, B_YIELD, B_TRADE, B_SAFE)      # operational behaviors
+N_BEHAVIOR_SLOTS = 5
+CHAMP_ABSENT = 3 * N_BEHAVIOR_SLOTS * N_OBJECTIVES        # 45
+N_CHAMP_ACTIONS = CHAMP_ABSENT + 1                        # 46
+
+
+def champ_act(wave: int, behavior: int, objective: int = NONE) -> int:
+    """Champion-mode action code for (wave management, behavior, siege objective)."""
+    return wave + 3 * behavior + 15 * objective
+
+
+def champ_wave(a: int) -> int:
+    return a % 3
+
+
+def champ_behavior(a: int) -> int:
+    return (a % 15) // 3
+
+
+def champ_objective(a: int) -> int:
+    return a // 15
+
+
+BEHAVIOR_NAMES = {B_HOLD: "Hold", B_YIELD: "Yield", B_TRADE: "Trade", B_SAFE: "Safe", B_RECALL: "Recall"}
+BEHAVIOR_SHORT = {B_HOLD: "H", B_YIELD: "Y", B_TRADE: "T", B_SAFE: "S", B_RECALL: "R"}
+CHAMP_ACTION_NAMES = {a: f"{WAVE_NAMES[champ_wave(a)]}+{BEHAVIOR_NAMES[champ_behavior(a)]}"
+                      + (f"+{OBJECTIVE_NAMES[champ_objective(a)]}" if champ_objective(a) else "")
+                      for a in range(CHAMP_ABSENT)}
+CHAMP_ACTION_NAMES[CHAMP_ABSENT] = "Absent"
+CHAMP_ACTION_SHORT = {a: f"{WAVE_SHORT[champ_wave(a)]}-{BEHAVIOR_SHORT[champ_behavior(a)]}"
+                      + (f"+{OBJECTIVE_SHORT[champ_objective(a)]}" if champ_objective(a) else "")
+                      for a in range(CHAMP_ABSENT)}
+CHAMP_ACTION_SHORT[CHAMP_ABSENT] = "ABSENT"
+
 # Crash-size categories.
 SMALL, MEDIUM, LARGE = 0, 1, 2
 SIZE_NAMES = {SMALL: "small", MEDIUM: "medium", LARGE: "large"}
@@ -231,6 +269,25 @@ class GameConfig:
     # wave under each base action; None = follows it all the way (Contest).
     posture_cap: Tuple = (None, None, None, -1, -1, -1)
 
+    # ---- champion layer (roadmap M2a; lanegame/champions.py). Off in every legacy preset. ----
+    # In champion mode each player controls a champion with a persistent cell (own coordinates -T..T),
+    # HP and an absence timer (both dormant until M2b-M2d) and a per-seat mechanical skill (no effect until
+    # M2c). Actions are (wave management, behavior, siege objective); see champions.py for the turn order.
+    champion_mode: bool = False
+    champion_hp: int = 6                  # maximum (and, in M2a, constant) champion HP
+    champion_speed: int = 2               # cells a champion can move per decision turn
+    champion_absent_max: int = 3          # largest absence timer (observation scale; recall 2, death 3 later)
+    skill_a: float = 0.5                  # mechanical skill of the player in seat A, in [0, 1]
+    skill_b: float = 0.5                  # ... seat B
+    safe_line: int = -1                   # Safe (and a threatened Yield) retreats to at most this cell
+    trade_range: int = 1                  # a Trade connects when the champions end within this distance
+    farm_reach: int = 1                   # a champion collects only kills within this many cells of it
+    trade_farm_factor: float = 0.5        # collection multiplier of a champion whose Trade connected
+    # gank action term per behavior (Hold, Yield, Trade, Safe), plus a term for Shove with any non-Safe
+    # behavior: Hold reproduces the legacy Contest terms (SP 0.02, SH 0.05, F 0.02), Safe the Safe terms (0)
+    champ_gank_behavior: Tuple[float, float, float, float] = (0.02, 0.02, 0.05, 0.0)
+    champ_gank_shove: float = 0.03
+
     # ------------------------------------------------------------------ presets
     @classmethod
     def v1(cls, **kw) -> "GameConfig":
@@ -251,6 +308,14 @@ class GameConfig:
         two turns of 50% vision, 1 HP/tick tower fire, no plates, no thinning. Reproduces its report exactly."""
         base = dict(siege_mode="choice", vision_turns=2, vision_reduction=0.5, plate_grant=(0, 0, 0),
                     plates_per_tower=0, thin_damage=0, tower_siege_damage=1)
+        base.update(kw)
+        return cls(**base)
+
+    @classmethod
+    def champions(cls, **kw) -> "GameConfig":
+        """Champion mode (roadmap M2a): the siege model's lane plus the champion layer of lanegame.champions.
+        Not exactly solvable; played through lanegame.env."""
+        base = dict(champion_mode=True)
         base.update(kw)
         return cls(**base)
 
@@ -292,7 +357,10 @@ class GameConfig:
         return self.stacks(min(hp, self.hp_cap))
 
     def action_codes(self) -> Tuple[int, ...]:
-        """Every action code that can be legal somewhere in this configuration."""
+        """Every action code that can be legal somewhere in this configuration (champion mode: the full
+        46-slot space, of which the Recall and ABSENT codes are reserved and never legal in M2a)."""
+        if self.champion_mode:
+            return tuple(range(N_CHAMP_ACTIONS))
         if not self.positioning:
             return (SP, SH, F)
         if self.objectives:
@@ -300,7 +368,10 @@ class GameConfig:
         return tuple(range(N_BASE_ACTIONS))
 
     def label(self, a: int) -> str:
-        """Short action label: 'SH-C', 'SH-C+P' etc., or 'SH' when positioning is disabled."""
+        """Short action label: 'SH-C', 'SH-C+P' etc., or 'SH' when positioning is disabled; champion mode
+        'SH-T+P' (Shove + Trade + Pressure) etc."""
+        if self.champion_mode:
+            return CHAMP_ACTION_SHORT[a]
         return ACTION_SHORT[a] if self.positioning else WAVE_SHORT[wave_of(a)]
 
     def validate(self) -> None:
@@ -329,6 +400,13 @@ class GameConfig:
                   self.zone_contest, self.zone_under_tower):
             assert 0.0 <= c <= 1.0
         assert self.farm_per_hp >= 0 and self.collect_safe_slope >= 0
+        if self.champion_mode:
+            assert self.objectives and self.tower_mode == "mass", "champion mode builds on the siege model"
+            assert self.champion_hp >= 1 and self.champion_speed >= 1 and self.champion_absent_max >= 1
+            assert 0.0 <= self.skill_a <= 1.0 and 0.0 <= self.skill_b <= 1.0
+            assert -self.tower <= self.safe_line <= self.tower
+            assert self.trade_range >= 0 and self.farm_reach >= 0 and 0.0 <= self.trade_farm_factor <= 1.0
+            assert len(self.champ_gank_behavior) == len(CHAMP_BEHAVIORS)
 
     def with_(self, **kw) -> "GameConfig":
         return replace(self, **kw)
