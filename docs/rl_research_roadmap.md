@@ -217,6 +217,11 @@ Specification in section F.
 
 ### M4. Economic progression (L, delivered as three tasks)
 
+> **Superseded (2026-10-11).** M4 is now one integrated, separately versioned ruleset. Its specification is
+> [m4_integrated_design.md](m4_integrated_design.md), with the plan in [m4_implementation_plan.md](m4_implementation_plan.md)
+> and the review in [m4_design_audit.md](m4_design_audit.md); see section O. The three-task plan below and
+> section G are kept for the record only.
+
 Specification in section G.
 
 **M4a. Experience and levels (S/M).** Proximity XP from `TurnResult.kills`, three levels, level term in the trade formula. **M4b. Spendable gold and items (M).** Gold ledger, two upgrade tracks of two tiers, purchase decisions on absence turns, no reward effect. **M4c. Plate durability (M).** Persistent tower damage counter, plate thresholds with increasing durability, plate rewards on breaks, late-game plate removal; `plate_mode="durability"` in champion configurations only.
@@ -403,6 +408,10 @@ On the champion game no Nash guarantee is claimed. Claims take the form "policy 
 ---
 
 ## G. Economic progression plan (M4)
+
+> **Superseded by section O and [m4_integrated_design.md](m4_integrated_design.md).** The three levels, the two item
+> tracks with hit-chance bonuses, the per-turn plate removal (`plates_fall_turn = 24`) and the 32-turn calibration
+> targets below are no longer the plan.
 
 ### G.1 Experience and levels (M4a)
 
@@ -832,3 +841,35 @@ from sections E and F above:
 - The M3a calibration on the legacy game (K = 16, exact) shows PPO reaching 23-94% of the exact best-response
   gain (more with the optional, exact `gank_reward="expected"` variance reduction), and frozen-snapshot self-play
   that does NOT reduce exact exploitability: section F.2 step 2 should be followed by PSRO (step 5) before scaling.
+
+---
+
+## O. M4 amendment: integrated economy, wave dynamics and continuing time (design 2026-10-11)
+
+The diagnostics study ([openai_five_diagnostics_report.md](openai_five_diagnostics_report.md)) found limits in the
+game design that PPO tuning cannot remove:
+
+- Freeze is inert in every reachable state (§D.5).
+- Recall restores HP only, at a high price.
+- The 32-turn terminal horizon rewards a late Shove.
+- Sieges are profitable but never visited in self-play.
+
+M4 therefore replaces section G with **one integrated ruleset**, `GameConfig.m4()`. The legacy exact game and
+`GameConfig.champions()` stay unchanged and pinned.
+
+| Document | Content |
+|---|---|
+| [m4_integrated_design.md](m4_integrated_design.md) | the mathematical specification: state, resolution order, Freeze maintenance, gold and XP, levels 1–18, fixed-point HP and attack power, one item track with automatic purchase at base, persistent tower damage with three plates, continuing time with γ = 0.99, observation, parameters, invariants, ten worked scenarios |
+| [m4_implementation_plan.md](m4_implementation_plan.md) | work packages WP0–WP10, the tests per package, integration tests, legacy pins, validation stages S0–S6, conditions before training |
+| [m4_design_audit.md](m4_design_audit.md) | contradictions, exploits, redundancies, snowballing, parameters needing experiments, ranked alternatives |
+
+Differences from section G:
+
+- levels 1–18 instead of three;
+- attack power and max HP scale with level and item tier, while hit probability depends on skill only;
+- one item track instead of two;
+- no plate removal at a fixed turn;
+- no terminal turn at all.
+
+**Next milestone:** M4.2 = WP0 + WP1 (ruleset scaffold, legacy pins, continuing time with segment PPO and discounted
+evaluation), then WP2–WP7.

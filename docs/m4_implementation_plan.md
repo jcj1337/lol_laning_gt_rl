@@ -1,0 +1,388 @@
+# M4 Implementation Plan: Integrated Champion Economy and Wave Dynamics
+
+*Status: plan for review, 2026-10-11 (milestone M4.1, design only). Nothing here is implemented. The rules are
+specified in [m4_integrated_design.md](m4_integrated_design.md) (cited as "design §n"); the concerns in
+[m4_design_audit.md](m4_design_audit.md) (cited as "audit §n"). Coordinates are own-perspective (own tower −2, the lane
+cell 0, enemy tower +2). Code references are to branch `research/openai-five-diagnostics` at 4e68c75.*
+
+---
+
+## 1. Principles
+
+1. **One integrated ruleset, built in dependency order.** M4 is a single versioned ruleset, `GameConfig.m4()`. The
+   work packages below are an order of construction. They are not separately released mechanics. No intermediate
+   package is a research target, and no PPO result is reported until the validation gate (§7) passes.
+2. **Legacy configurations are frozen.** `GameConfig()`, `.v2()` and `.v1()` must stay bit-identical, and so must
+   the exact solver, the K = 16 / K = 32 pinned values and `GameConfig.champions()` (M2/M3 and the OpenAI Five
+   studies). Every new field defaults to the legacy behaviour. Every new code path is reached only through
+   `cfg.ruleset == "m4"`. The M2 `champions.resolve_turn` is not edited; M4 gets its own resolver, which reuses M2's
+   pure helpers.
+3. **No new actions.** M4 changes state, transitions, observations and time semantics. The 46-code action space and
+   the legality functions stay unchanged, apart from the Freeze-maintenance substitution (design §6.3), which is a
+   resolution rule and does not affect the mask.
+4. **Integer state for everything that gates a threshold.** HP and tower damage are stored in integer centi-units,
+   XP as an integer and items as an integer. Gold is a float ledger with an explicit tolerance (design §8.6).
+5. **Tests before training.** Each package ships its unit tests. Cross-mechanic integration tests and the
+   calibration measurements of §7 must pass before any PPO run longer than a smoke test.
+
+## 2. Architecture
+
+```
+lanegame/
+  config.py            + M4 fields (legacy defaults), GameConfig.m4(), validate() branches          [WP0]
+  progression.py       NEW: XP/level/HP/AP tables, damage, purchase, gold clamp (pure functions)   [WP2]
+  mechanics.py         + TurnResult.tower_hits (additive), plate_mode "durability" accepted        [WP3]
+  champions.py         unchanged except for importable helpers (no behaviour change; golden test) [WP4]
+  champions_m4.py      NEW: M4ChampSide / M4State, resolve_turn_m4 (design §5 steps 0-15)          [WP4-WP6]
+  env/core.py          ruleset dispatch, continuing time (no terminal), M4 info fields             [WP1, WP7]
+  env/observation.py   M4 layout (no countdown), feature names                                     [WP1, WP7]
+  env/agents.py        M4 scripted agents (freezer, breaker, recaller-on-gold, presser)            [WP8]
+  env/trace.py         trace schema version 2 (M4 state and events)                                [WP7]
+  rl/ppo.py            PPOConfig.gamma per preset, segment fields, reward scale                    [WP1]
+  rl/train.py          segment collection, staggered starts, (fix: gank_reward passthrough)        [WP1]
+  rl/shared.py         same for the shared collector                                               [WP1]
+  rl/evaluate.py       discounted evaluation over a window, start-state distributions              [WP1]
+  diagnostics/branch.py  discounted / bootstrapped returns, M4 Snapshot                            [WP9]
+  experiments/m4/      NEW: calibration and validation drivers (results/m4/)                       [WP10]
+tests/
+  test_m4_*.py         NEW, one file per package (below)
+  test_legacy_pins.py  NEW: golden hashes of legacy observe/step/solver outputs                     [WP0]
+```
+
+### 2.1 Interface contracts
+
+| Contract | Signature (proposed) | Guarantees |
+|---|---|---|
+| Ruleset switch | `cfg.ruleset in ("legacy", "m4")`; `GameConfig.m4(**kw)` | `"legacy"` reproduces every pinned result; `validate()` rejects M4 fields that are set while `ruleset == "legacy"` |
+| Progression tables | `level_of(xp) -> int`, `hp_max(L) -> int` (centi-HP), `hp_unit(L) -> int`, `attack_power(L, N) -> int` (basis points), `hit_damage(base, L, N) -> int`, `next_price(N) -> float or None` | pure, integer, precomputed at import, identical on every platform (tables in design §8.2 are the oracle) |
+| Lane step | `step_turn(...)` unchanged signature; `TurnResult.tower_hits: Tuple[int, int]` (minion damage to the enemy tower this turn, minion-damage units) | `tower_hits` is computed in every mode and read only by M4; all other fields are bit-identical |
+| M4 state | `M4Side(pos, hp, absent, xp, items, gold, tower_dmg)`, `M4State(a, b)`, `.mirror()`, `to_list/from_list` | own-perspective; `mirror()` swaps sides; invariants of design §3.4 hold after every step |
+| M4 turn | `resolve_turn_m4(lane, m4, k, a, b, cfg, lane_step=None, u=None) -> M4Turn` | same chance-vector layout as M2 (`N_CHANCE = 10`, no new uniforms); `M4Turn` has every M2 `ChampTurn` field plus `xp_gain`, `level_up`, `tower_damage_dealt`, `plates_broken`, `plate_gold`, `purchases`, `freeze_maintained` |
+| Environment | `LaneEnv(cfg, max_turns=...)`; `step` returns `terminated=False` always under M4; `truncated` when `max_turns` is reached | reward `(r, −r)`; `info` decomposes `r`; the observation has no countdown |
+| Evaluation | `evaluate_discounted(cfg, x, y, episodes, seed, gamma, window, starts)` | estimates `E Σ_{t<W} γ^t r_t` with the tail bound reported (design §10.5) |
+
+## 3. Work packages
+
+Each package lists its scope, its files, its dependencies and its required tests. Sizes: S ≤ 1 session,
+M ≈ 1–2 sessions.
+
+### WP0 — Ruleset scaffold and legacy pins (S)
+
+- `config.py`: add every M4 field from the parameter table (design §13), each with a legacy default; `ruleset`
+  field; `GameConfig.m4()` preset (built on `champions()`); `validate()` branches. `to_dict`/`from_dict` round-trip
+  the new fields; old run directories still load, because missing keys take the defaults.
+- `tests/test_legacy_pins.py`, which must pass before and after every later package:
+  - SHA-256 of `observe()` vectors and of `step_turn` outputs over a fixed set of 2,000 (state, k, a, b) tuples
+    for v1, v2, the siege default and `champions()`;
+  - the K = 16 solver values of the three conftest fixtures (already pinned) and `results/siege/solution_K32.json`
+    metadata;
+  - a 200-episode seeded `champions()` rollout digest (rewards, info fields), and one M3b checkpoint's
+    `head_to_head` against `hold_farmer` at fixed seeds (bit-identical).
+- **Tests:** round-trip of `m4()` through JSON; `validate()` rejects inconsistent combinations (e.g. M4 with
+  `positioning=False`); the pin file.
+
+### WP1 — Continuing time, segments and discounted evaluation (M)
+
+Depends on WP0. This package is built and validated first, because every later measurement depends on it.
+
+- `env/core.py`:
+  - when `cfg.time_mode == "continuing"`, `terminated` is always False and `truncated` is set only by `max_turns`;
+  - `reset(k0)` accepts any `k0 ≥ 0` and records only `k0 mod P`;
+  - `horizon` is not used.
+- `env/observation.py`: `time_features=False` drops `k/K` and `(K−k)/K` and keeps the phase one-hot.
+- `rl/ppo.py`: `PPOConfig` gains `segment_length` (default None = legacy), `game_length` (time limit of one game,
+  default None) and preset constructors `PPOConfig.m4()` (γ = cfg.gamma = 0.99, λ = 0.95, reward_scale and vf_clip
+  retuned for returns of order 1/(1−γ); design §10.4). `compute_gae` is already correct for truncation and is
+  unchanged.
+- `rl/train.py` / `rl/shared.py`:
+  - rollouts are fixed-length segments;
+  - a game is reset only at its time limit, which is a truncation, so its value is bootstrapped from the final
+    observation (code exists, train.py:288–297);
+  - the first game of each environment gets a random length in `[1, game_length]`, so environments are not in
+    lock-step;
+  - matchup/controller changes happen only at game boundaries (shared.py:217–219 relies on it);
+  - fix train.py:240, which drops `gank_reward`.
+- `rl/evaluate.py`:
+  - `evaluate_discounted` (design §10.5): paired seeds, both seats, window W, γ, start-state distribution
+    (`"initial"` or an archive of states);
+  - `head_to_head` keeps its legacy behaviour.
+- `env/agents.py`: `play_episode` requires `max_turns` under continuing time (no infinite loop).
+- **Tests (`test_m4_time.py`):**
+  1. never `terminated` over 2,000 turns of random legal play;
+  2. `truncated` exactly at `max_turns`;
+  3. the observation is invariant under `k → k + P` (no countdown);
+  4. the GAE bootstrap at a time-limit truncation equals the hand-computed value on a 3-step toy trajectory
+     (extends test_rl.py:65–91);
+  5. a segment cut mid-game bootstraps from `V(s_T)` and a game truncation from `V(s_final)`, never from the
+     next game's first observation;
+  6. the discounted evaluator matches the closed form on a constant-reward agent pair;
+  7. the legacy pins.
+- **Stepping-stone check (not a research result):** run `champions()` mechanics with continuing time
+  (`GameConfig.champions(time_mode="continuing", time_features=False)`, an M2 variant used only for this check)
+  for a 300k-transition smoke run, and confirm that the late-game Shove overlay of the diagnostics report (D.3)
+  has no time-conditioned analogue: the policy cannot condition on time, and Shove's rate is stationary across
+  windows.
+
+### WP2 — Progression tables (S)
+
+Depends on WP0. Can be built in parallel with WP1.
+
+- `progression.py`:
+  - integer tables `HP_MAX[L]`, `HP_UNIT[L]`, `AP[L][N]`, `XP_CUM[L]`;
+  - `level_of`, `hit_damage`, `level_up_hp`, `next_price`, `gold_cap`, `purchase(items, gold) -> (items', gold',
+    bought)`.
+- **Tests (`test_m4_progression.py`):**
+  - the tables equal design §8.2 / §9.2 exactly;
+  - `level_of` is monotone, `level_of(XP_CUM[L]) == L` and `level_of(XP_CUM[L] − 1) == L − 1`, and the cap holds
+    at 18 for every xp ≥ 544;
+  - `hit_damage(2, …) ∈ {2·hit_damage(1, …) − 1, 2·hit_damage(1, …), 2·hit_damage(1, …) + 1}`;
+  - AP is monotone in L and in N;
+  - no value exceeds int32;
+  - `purchase` is idempotent once it can no longer buy, never buys beyond tier 2, never leaves gold negative,
+    and buys tier 1 before tier 2.
+
+### WP3 — Lane additions: tower hits and durability mode (S)
+
+Depends on WP0.
+
+- `mechanics.py`:
+  - `TurnResult.tower_hits[s] = Σ_ticks minion_damage(m_s(t))` over the ticks whose start-of-tick mass
+    `m_s(t) > 0` (design §11.2);
+  - `validate()` accepts `plate_mode="durability"`, under which crash-plate opportunities are never granted and
+    Apply Pressure claims nothing in the lane step (`ap`/`bp` stay 0).
+- **Tests (`test_m4_tower.py`):**
+  - tower hits for crashes of 4, 8 and 12 HP equal 4, 9 and 18 (design §11.2);
+  - tower hits are 0 without a siege;
+  - every legacy `step_turn` output is unchanged (pins);
+  - under durability mode, Apply Pressure leaves `ap`/`bp` at 0.
+
+### WP4 — M4 champion state and resolution skeleton (M)
+
+Depends on WP2 and WP3.
+
+- `champions_m4.py`: `M4Side`, `M4State`, `initial_m4`, `resolve_turn_m4` steps 0–10 of design §5, with:
+  - the **contact-cell chase rule** (design §7.4) in place of M2's `target = e − rng`;
+  - **Freeze maintenance**: a Freeze that is not maintained resolves as Slow Push (design §6.3);
+  - M2's farming (gold), exposure and gank occurrence, reused as functions.
+- `champions.py`: if helpers need to be exposed, only as moves with no behaviour change (the pins prove it).
+- **Tests (`test_m4_resolve.py`):**
+  - with every M4 economy switched off, the M4 resolver reproduces M2 `resolve_turn` on 5,000 random
+    (lane, champ, a, b, u) tuples, except where the chase rule or Freeze maintenance differs. Every difference
+    must be explained by one of the two rules: the test classifies them and fails on any unexplained difference;
+  - chase: a trader at its own tower cell connects with an enemy at that tower's adjacent cell (the M2 defect,
+    design §7.4);
+  - maintenance: a connected-trading freezer, or one standing 2 cells from the freeze line, does not hold the
+    enemy front;
+  - an absent freezer never holds;
+  - mirror equivariance of `resolve_turn_m4` under `mirror_chance`.
+
+### WP5 — Combat and progression in the resolver (M)
+
+Depends on WP4.
+
+- Steps 9–12 of design §5:
+  - centi-HP trade damage scaled by the attacker's AP;
+  - gank and tower-shot damage scaled by the victim's HP unit;
+  - the tower-adjacent shot;
+  - simultaneous damage, then the death check, then XP and level-ups with the added-max-HP rule.
+- **Tests (`test_m4_combat.py`):**
+  - with mechanical skill fixed, changing N or L changes only the damage values and never `hit_p` or `double_p`;
+  - damage equals `hit_damage(D, L, N)` for D ∈ {1, 2};
+  - gank damage equals `X · hp_unit(L_victim)`;
+  - the level-up HP rule, including multiple level-ups in one turn;
+  - a lethal turn kills even when XP crosses a threshold (death first);
+  - XP is gained by present champions only (away 0, channeling > 0);
+  - XP range 3 vs gold reach 1 on constructed kill positions;
+  - the caps: xp clamps at 544, `hp ≤ hp_max(L)`, and no overflow after 10,000 random turns.
+
+### WP6 — Tower durability, plates, gold ledger, items, recall/death purchases (M)
+
+Depends on WP5.
+
+- Steps 11 and 13–15 of design §5:
+  - tower damage from minions and Pressure;
+  - plate thresholds and plate gold;
+  - the gold ledger;
+  - automatic purchase at the end of the last absent turn;
+  - return with full HP at the new max.
+- **Tests (`test_m4_economy.py`):**
+  - a plate is paid exactly once when its threshold is crossed, and several plates crossed in one turn are all
+    paid;
+  - the tower damage counter never decreases and clamps at θ₃;
+  - a purchase happens only at the end of an absent turn whose timer reaches 0, after that turn's gold credit;
+    it is irreversible and never duplicated (two consecutive return turns are impossible);
+  - spending does not change the reward;
+  - `Σ_t r_t` equals (earned_A − earned_B) exactly over a 500-turn rollout;
+  - the gold clamp never removes gold that could still buy something;
+  - death and recall both route through the purchase step;
+  - no tier is bought while the champion is present.
+
+### WP7 — Environment integration, observation and trace (M)
+
+Depends on WP1 and WP6.
+
+- `env/core.py`: `ruleset == "m4"` dispatch to `resolve_turn_m4`; `info` adds xp, level, items, gold, tower
+  damage, plates broken, plate gold, purchases, freeze maintenance, level-ups.
+- `env/observation.py`: the M4 layout (design §12), feature names, mask (unchanged legality).
+- `env/trace.py`: version 2 with the M4 fields. Version 1 traces are still readable.
+- **Tests (`test_m4_env.py`):**
+  - observation entries are in [0, 1] and the length matches `feature_names`;
+  - `observe(lane, k, B, cfg, m4) == observe(lane.mirror(), k, A, swap_seats(cfg), m4.mirror())`;
+  - the mask equals the legal set;
+  - `info` decomposes the reward exactly;
+  - CRN: identical action sequences and seeds give identical trajectories;
+  - a 10,000-turn random-legal-play soak finds no invariant violation (design §14).
+
+### WP8 — M4 scripted agents and constructed scenarios (S/M)
+
+Depends on WP7.
+
+- Agents:
+  - `freezer`: Freeze when legal, Hold/Safe within 1 cell of the freeze line, Trade when its duel edge is positive;
+  - `freeze_breaker`: Shove + Hold;
+  - `xp_keeper`: Safe when the enemy is freezing, else Hold;
+  - `gold_recaller`: Recall when gold ≥ next price and HP ≤ h* and the own wave is not under threat;
+  - `presser`: Shove, Pressure when sieging;
+  - `hold_farmer` and `aggressive_trader`, carried over.
+- `scenarios_m4.py`: deterministic constructed states for the ten design scenarios (design §15), each with a
+  replayable witness from the standard start (a scripted prefix), as the earlier reachability work did.
+- **Tests:** each witness reaches its scenario state; each scenario's mechanical assertions (below, §4) hold.
+
+### WP9 — Diagnostics port (S)
+
+Depends on WP7.
+
+- `diagnostics/branch.py`:
+  - the `Snapshot` carries `M4State`;
+  - `rollout` returns the discounted return over a window, optionally plus `γ^W V(s_W)` from a critic;
+  - `audit.py` replaces `ret_to_go`/`turns_left` with discounted values.
+- Drop the turn-relative overlays (`late_shove`, k-bins) for M4; use phase-relative bins instead.
+- **Tests:** a snapshot restore replays exactly; paired candidates share chance streams (existing spy test,
+  ported).
+
+### WP10 — Calibration and validation drivers (M)
+
+Depends on WP8 and WP9. Scripted and analytical only: no PPO.
+
+`experiments/m4/calibrate.py` writes JSON before Markdown under `results/m4/` and covers the measurements of §7.
+
+## 4. Integration tests (cross-mechanic; `test_m4_integration.py`)
+
+Each test runs on a constructed scenario (WP8) with fixed chance vectors, unless it is marked statistical.
+
+1. **Freeze ≠ Slow Push.** Start from the parked configuration (enemy front at own −1, own front just killed),
+   reproducing design §6.4's table. Against a Slow Push front of 5–7 HP, and against a Shove front of 2–5 HP, the
+   enemy front crashes strictly later under a maintained Freeze than under Slow Push, in every start phase where
+   §6.4 reports a difference. Against a 3–4 HP Slow Push front both actions leave it parked for 24 turns: that
+   equality is asserted too, as the documented lane-stable case.
+2. **Freeze cannot hold everything.** A front of ≥ 10 HP (6 HP or more with a reaching Shove) is never held. An
+   8–9 HP Slow Push front crashes within 8 turns despite a maintained Freeze.
+3. **Shove breaks a Freeze without automatic punishment.** With the enemy front at 3–5 HP, a Shove + Hold breaker
+   whose champion is within reach breaks the freeze within 6 turns when no trade and no gank happen (chance vector
+   all 1.0). Its HP and gold efficiency on those turns equal those of the same Shove from the same position without
+   a Freeze. The same breaker with its champion out of reach (end cell < 0) breaks later or not at all.
+4. **Gold/XP separation.** Under the held freeze, a Safe opponent at own −1 earns XP and no gold. One at +1 earns
+   both. One at −2 earns neither.
+5. **XP denial needs commitment.** An `xp_keeper` at −1 loses XP only on turns when the freezer ends its turn at
+   0 or further forward, i.e. is no longer covered by its tower.
+6. **Item affects damage only.** For a grid of (L, N) pairs and fixed skills, `hit_p`/`double_p` are identical and
+   the damage scales as `AP`.
+7. **Level-up in combat.** Constructed turn: survivor at 50 centi-HP gains a level → `hp = 50 + Δhp_max`; a
+   champion at 50 taking 128 dies even though its XP crosses a threshold.
+8. **Recall purchase timing.** Recall on turn t with gold ≥ 4: the item is bought at the end of t + 1, the champion
+   plays t + 2 with N = 1, full HP at the current level's maximum; gold earned by plates during t, t + 1 counts.
+9. **Death purchase timing.** Death on turn t: purchase at the end of t + 3; play on t + 4.
+10. **Crash → bounce → plates.** The `presser` vs `hold_farmer` (statistical, 200 paired seeds):
+    - tower damage is monotone;
+    - plate gold is paid once per threshold;
+    - the bounce wave reaches the presser's side within the predicted window;
+    - Freeze is legal for the presser on some turns after a bounce.
+11. **Continuing play.** 2,000-turn games:
+    - no terminal;
+    - the caps are reached;
+    - after both sides are capped and the plates exhausted, the per-turn reward distribution is stationary
+      (blocks of 200 turns agree within sampling error).
+12. **Zero-sum and symmetry.** For every test above, `r_A + r_B = 0` per turn. Swapping seats with
+    `mirror`/`swap_seats` gives the mirrored trajectory.
+
+## 5. Legacy compatibility and migration
+
+- **Exact game.** Untouched (no dependency on `env`; audit confirmed solver.py:97–116 and best_response.py:194–200
+  use `horizon` only through `LaneGame`). The pins of WP0 guard it.
+- **M2/M3/OpenAI Five results.** `GameConfig.champions()` keeps the finite 32-turn horizon, the countdown features
+  and γ = 1. Its checkpoints keep loading: new config keys get their defaults, and the 50-entry observation is
+  unchanged.
+- **No checkpoint migration** from M2 to M4. The observation, dynamics and objective differ, so M4 training starts
+  from scratch. M2 numbers are never compared with M4 numbers as though they measured the same game. Reports
+  cite them as historical context only.
+- **Results layout.** `results/m4/` (calibration), `results/rl/m4/` (training), git-ignored checkpoints under
+  `results/rl/checkpoints/m4/`.
+- **Docs.** The roadmap's section G (three levels, two item tracks, `plates_fall_turn = 24`) is superseded by the
+  M4 amendment (roadmap section O) and this plan.
+
+## 6. Risks
+
+| Risk | Likelihood | Mitigation |
+|---|---|---|
+| Legacy drift through a "harmless" refactor of `champions.py` or `mechanics.py` | medium | pins first (WP0); M4 in a new module; additive fields only |
+| Throughput: XP/level/gold bookkeeping and the longer games slow rollouts (M2 env ~6k turns/s uncached) | medium | integer tables, no per-step allocation; benchmark after WP7 (target ≥ 4k turns/s single thread); keep the LRU lane cache |
+| Evaluation cost: discounted values need W ≈ 460–1,000 turns per game (design §10.5) | high | paired seeds; fewer games with CRN; critic bootstrap at W = 300 as a reported, biased variant |
+| Value scale: returns of order ±10–30 with γ = 0.99 destabilize the critic | medium | reward_scale 0.1, retuned vf_clip, value-target checks in the PPO smoke |
+| Early lock-in: rare actions collapse within ~50k transitions (diagnostics D.4), now with more of them (Freeze, Recall-to-buy) | high | start-state archive (diverse resets incl. freezes and sieges) and slower entropy decay as configurable options; report both with and without |
+| Calibration may make one mechanic dominant (e.g. Recall-on-afford, freezing every bounce) | medium | §7 gates; adjust parameters only for stated mechanical reasons, never to equalize action frequencies |
+| Snowballing makes most games decided early (audit §4) | medium | measure win-margin vs early lead (§7.6); caps and increasing XP thresholds are the built-in brakes |
+
+## 7. Staged validation plan
+
+Each stage must pass before the next starts. All stages except S5 use scripted agents and analytical checks only.
+
+- **S0 — Pins.** The legacy pins pass.
+- **S1 — Mechanics.** The unit and integration tests of §3–§4 pass. A 50,000-turn random-legal soak shows no
+  invariant violation.
+- **S2 — Progression speed.** With mutual `hold_farmer` (M4 agents), 400 seeded 400-turn games:
+  - the median turn at which levels 2/6/11/18 are reached lies within ±25% of the design targets (design §9.3:
+    ≈ 4 / 20 / 59 / 147 under mutual farming, which absorbs about 94% of the available XP);
+  - with the learned-play-like `aggressive_trader` vs `hold_farmer`, report the gap.
+
+  If a target fails, the only adjustable parameter is the XP scale `xp_per_hp`. A miss is reported, not tuned
+  away silently.
+- **S3 — Wave mechanics.** On constructed states and in scripted play:
+  - the exhaustive lane enumeration of the audit (7.3% of Freeze-legal situations differ under M2 lane rules) is
+    repeated with Freeze maintenance, and the fraction is reported;
+  - a breaker breaks within the predicted time;
+  - the freeze breaks with an 8+ HP enemy front;
+  - the freeze/bounce statistics are reported (freeze-legal turns per 100, held turns, breaks).
+- **S4 — Economic sanity.**
+  - Paired counterfactuals (diagnostics `branch`, ported) with scripted continuation policies:
+    - the value of an item tier at a fixed state (bought vs not bought);
+    - the value of a Recall with and without an affordable tier at HP 2/4/6;
+    - the cost of standing at +1 vs −1 under a freeze, with and without a trading freezer.
+  - Report these numbers. Recall-to-buy must be positive in some states and negative in others: if it is
+    positive or negative in every tested state, report it as a design finding before training (audit §2.3).
+- **S5 — PPO smoke and pilot.**
+  - Smoke: 100k transitions, 1 seed; finite values, the critic's explained variance > 0, every action family's
+    logit receives gradient.
+  - Pilot: 1M transitions × 3 seeds of shared self-play (100/0); a learning curve against the M4 scripted suite.
+- **S6 — Research runs** (only after S5). Paired-seed comparisons, multiple seeds (≥ 3, preferably 5),
+  budget-matched ablations (e.g. Freeze maintenance on/off, tower-adjacent shot on/off, item tier count),
+  exploitability probes with ≥ 2 warm + 1 scratch attackers at ≥ 1M steps per target. Report the budget, the
+  attacker count and the per-attacker learning curves; the bound is a lower bound, never a certified Nash
+  exploitability.
+
+## 8. Conditions before expensive training begins
+
+1. S0–S4 pass, and their results are written to `results/m4/`.
+2. The open decisions marked **required** in design §16 have been reviewed, or explicitly accepted at their
+   defaults.
+3. Throughput is measured: M4 environment turns/s and shared-PPO transitions/s on this machine. The budget of the
+   pilot is stated in wall-clock time before it starts.
+4. The evaluation protocol is fixed in advance:
+   - γ;
+   - the window W and the tail bound;
+   - the start-state distribution;
+   - the episodes per pairing;
+   - the attackers per target;
+   - the seeds (disjoint from training streams, tested).
+5. A scripted-baseline table of the M4 suite (round-robin, discounted values) exists as the fixed reference, so
+   the first PPO result can be compared against something.
+6. The legacy pins pass on the commit that runs the experiment.
