@@ -14,7 +14,7 @@ test = ["pytest>=8.0"]
 rl = ["pettingzoo>=1.24", "gymnasium>=0.29", "torch>=2.2"]   # optional: PettingZoo adapter, PPO (lanegame.rl)
 
 [tool.setuptools]
-packages = ["lanegame", "lanegame.env", "lanegame.experiments", "lanegame.experiments.v1", "lanegame.experiments.siege", "lanegame.experiments.champions", "lanegame.experiments.rl", "lanegame.rl"]
+packages = ["lanegame", "lanegame.env", "lanegame.experiments", "lanegame.experiments.v1", "lanegame.experiments.siege", "lanegame.experiments.champions", "lanegame.experiments.rl", "lanegame.rl", "lanegame.diagnostics"]
 
 [tool.pytest.ini_options]
 testpaths = ["tests"]
