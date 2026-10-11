@@ -30,7 +30,7 @@ import numpy as np
 
 from ...config import GameConfig
 from .common import CKPT, SCRIPTED, md_table
-from .openai_five import CONDITIONS, LABEL, SEEDS, SKILLS, WORKERS, _load, _write, fmt_seed_ci, run_dir, seed_ci, \
+from .openai_five import CONDITIONS, LABEL, SEEDS, SKILLS, SNAP_EVERY, WORKERS, _load, _write, fmt_seed_ci, run_dir, seed_ci, \
     snapshots_of
 
 TAG = "main"
@@ -345,13 +345,19 @@ def report(tag: str = TAG):
         print(f"figures failed: {e!r}")
 
 
+def nominal(t: int) -> int:
+    """The snapshot's nominal position: snapshots are taken at the first update boundary past each multiple of
+    SNAP_EVERY, which differs by a few hundred transitions between seeds when rollouts vary in size (sp80)."""
+    return int(round(t / SNAP_EVERY)) * SNAP_EVERY
+
+
 def learning_curves(ev) -> dict:
-    """{condition: {reference: {transitions: [payoff per seed]}}}"""
+    """{condition: {reference: {nominal transitions: [payoff per seed]}}}"""
     out = {c: {o: {} for o in CURVE_REFS} for c in CONDITIONS}
     for c, s, n in _runs():
         for t, _ in ev["snapshots"][n]:
             for o in CURVE_REFS:
-                out[c][o].setdefault(t, []).append(_r(ev, "B", n, t, o)["mean"])
+                out[c][o].setdefault(nominal(t), []).append(_r(ev, "B", n, t, o)["mean"])
     return out
 
 
@@ -552,7 +558,36 @@ def figures(S, tag: str = TAG):
     fig.tight_layout()
     fig.savefig(os.path.join(out, "fig_behavior.png"), dpi=130)
     plt.close(fig)
-    # 5. training diagnostics
+    # 5. skill conditioning: Trade share and payoff by skill difference (own - enemy)
+    fig, axes = plt.subplots(1, 3, figsize=(12.6, 3.5))
+    fig.patch.set_facecolor(SURFACE)
+    diffs = sorted({round(a - b, 1) for a in SKILLS for b in SKILLS})
+    for c, col in zip(CONDITIONS, SERIES):
+        for ax, (ref, what) in zip(axes, (("hold_farmer", "T"), ("pub_sprand_s1", "T"), ("pub_sprand_s1", "rel"))):
+            seed_lines = []
+            for s in SEEDS:
+                ys = []
+                for d in diffs:
+                    cells = [(a, b) for a in SKILLS for b in SKILLS if round(a - b, 1) == d]
+                    if what == "T":
+                        ys.append(np.mean([_r(ev, "F", f"{c}_s{s}", ref, a, b)["x_stats"]["behaviors"].get("T", 0.0)
+                                           for a, b in cells]))
+                    else:                                   # payoff relative to the seed-paired m3b policy
+                        ys.append(np.mean([_r(ev, "F", f"{c}_s{s}", ref, a, b)["mean"] -
+                                           _r(ev, "F", f"m3b_s{s}", ref, a, b)["mean"] for a, b in cells]))
+                seed_lines.append(ys)
+            ys = np.array(seed_lines)
+            ax.plot(diffs, ys.mean(0), color=col, linewidth=2, marker="o", markersize=4, label=LABEL[c])
+            ax.fill_between(diffs, ys.min(0), ys.max(0), color=col, alpha=0.15, linewidth=0)
+    _style(axes[0], "Trade share vs hold_farmer", "own skill − enemy skill", "share of turns")
+    _style(axes[1], "Trade share vs pub_sprand_s1", "own skill − enemy skill", "share of turns")
+    _style(axes[2], "Payoff vs pub_sprand_s1, minus m3b (same seed)", "own skill − enemy skill", "payoff difference")
+    axes[2].axhline(0, color=MUTED, linewidth=0.8)
+    axes[0].legend(fontsize=7, frameon=False)
+    fig.tight_layout()
+    fig.savefig(os.path.join(out, "fig_skill.png"), dpi=130)
+    plt.close(fig)
+    # 6. training diagnostics
     tr = S["train"]
     fig, axes = plt.subplots(1, 3, figsize=(12.6, 3.4))
     fig.patch.set_facecolor(SURFACE)
@@ -686,7 +721,7 @@ def report_extra():
             d = {}
             for s in SEEDS:
                 for t, _ in ev["snapshots"][f"{fam}_s{s}"]:
-                    d.setdefault(t, []).append(_r(ev, "B", f"{fam}_s{s}", t, o)["mean"])
+                    d.setdefault(nominal(t), []).append(_r(ev, "B", f"{fam}_s{s}", t, o)["mean"])
             fams[fam] = d
         steps = sorted({t for d in fams.values() for t in d})
         rows = [[f"{t:,}"] + [fmt_seed_ci(d[t]) if len(d.get(t, [])) == len(SEEDS) else "" for d in fams.values()]
@@ -799,15 +834,75 @@ def behavior_detail(workers: int = WORKERS):
                          f"{f('wave_SH', 'present'):.2f}", f"{f('wave_F', 'present'):.2f}"])
         return rows
 
-    hdr = ["policy family", "pos behind lane", "pos at lane", "pos forward", "Trade | HP behind ≥2",
-           "Trade | HP even", "Trade | HP ahead ≥2", "Trade early (k<11)", "Trade mid", "Trade late (k≥22)",
+    hdr = ["policy family", "pos behind lane", "pos at lane", "pos forward", "Trade if HP behind ≥2",
+           "Trade if HP even", "Trade if HP ahead ≥2", "Trade early (k<11)", "Trade mid", "Trade late (k≥22)",
            "games with a recall", "first recall turn (per seed)", "HP at recall (per seed)", "Shove", "Freeze"]
     lines = ["# Per-turn behavior of the learned policies", "",
              f"Recorded episodes ({DETAIL_EPISODES} per seat, SeedSequence({DETAIL_SEED}), equal skill 0.5). Shares are over "
-             "the policy's present turns; `Trade | HP ...` is the Trade share on turns where both champions are present, "
+             "the policy's present turns; `Trade if HP ...` is the Trade share on turns where both champions are present, "
              "by the policy's HP minus the enemy's; positions are the champion's cell at the start of the turn in own "
              "coordinates (lane cell = 0, own tower = −2).", ""]
     for opp in DETAIL_OPPONENTS:
         lines += [f"## Against {'itself (mirror)' if opp == 'self' else opp}", "", md_table(hdr, fam_rows(opp)), ""]
     _write("behavior_detail", {"results": {f"{k[0]}|{k[1]}": v for k, v in res.items()}, "elapsed_s": elapsed},
            "\n".join(lines))
+
+
+def exploit_strong(factor: int = 3, eval_eps: int = 500, workers: int = 9):
+    """Attacker-strength check: one warm-started attacker per main target with `factor` times the attacker budget.
+    If the lower bounds were limited by the attacker, they rise here; if the ranking of targets changes, the
+    standard-budget comparison is unreliable."""
+    t0 = time.perf_counter()
+    jobs = [(n, p, 2, factor * BR_STEPS, eval_eps, True) for n, p in main_policies().items()]
+    print(f"exploit_strong: {len(jobs)} attackers of {factor * BR_STEPS:,} steps", flush=True)
+    with ProcessPoolExecutor(max_workers=workers) as ex:
+        res = dict(ex.map(_br_job, jobs))
+    elapsed = time.perf_counter() - t0
+    base = _load(f"exploit_{TAG}")["results"]
+    rows, data = [], {}
+    for c, s, n in _runs():
+        r = res[(n, "warm", 2)]
+        std = max(base[f"{n}|warm|0"]["value"], base[f"{n}|warm|1"]["value"])
+        data[n] = {"strong": r["value"], "strong_se": r["stderr"], "standard_best_warm": std, "curve": r["curve"]}
+        rows.append([n, f"{std:+.2f}", f"{r['value']:+.2f} ± {1.96 * r['stderr']:.2f}"])
+    fam = [[LABEL[c], fmt_seed_ci([data[f"{c}_s{s}"]["standard_best_warm"] for s in SEEDS]),
+            fmt_seed_ci([data[f"{c}_s{s}"]["strong"] for s in SEEDS])] for c in CONDITIONS]
+    std_rank = sorted(data, key=lambda n: data[n]["standard_best_warm"])
+    strong_rank = sorted(data, key=lambda n: data[n]["strong"])
+    from scipy.stats import spearmanr
+    rho = float(spearmanr([data[n]["standard_best_warm"] for n in data], [data[n]["strong"] for n in data])[0])
+    md = "\n".join(["# Attacker-strength check", "",
+                    f"One warm-started PPO attacker per target with {factor * BR_STEPS:,} steps ({factor}x the standard "
+                    f"budget), {eval_eps} held-out episodes per seat (SeedSequence({BR_SEED})); {elapsed / 60:.1f} min.", "",
+                    md_table(["target", f"best warm attacker, {BR_STEPS:,} steps", f"warm attacker, {factor * BR_STEPS:,} steps"], rows), "",
+                    md_table(["condition", "standard budget (mean ± 95% t)", f"{factor}x budget"], fam), "",
+                    f"Spearman rank correlation of the 9 targets' exploitability between the two budgets: {rho:+.2f}. "
+                    f"Least to most exploitable, standard: {', '.join(std_rank)}; {factor}x: {', '.join(strong_rank)}.", ""])
+    _write("exploit_strong", {"factor": factor, "steps": factor * BR_STEPS, "results": data, "spearman": rho,
+                              "elapsed_s": elapsed}, md)
+
+
+def exploit_strong_extra(factor: int = 3, eval_eps: int = 500, workers: int = 9):
+    """The attacker-strength check of `exploit_strong` for the additional runs (ablation, equal environment turns)."""
+    t0 = time.perf_counter()
+    pols = extra_policies()
+    jobs = [(n, p, 2, factor * BR_STEPS, eval_eps, True) for n, p in pols.items()]
+    print(f"exploit_strong_extra: {len(jobs)} attackers of {factor * BR_STEPS:,} steps", flush=True)
+    with ProcessPoolExecutor(max_workers=workers) as ex:
+        res = dict(ex.map(_br_job, jobs))
+    elapsed = time.perf_counter() - t0
+    base = _load("exploit_extra")["results"]
+    data, rows = {}, []
+    for n in pols:
+        r = res[(n, "warm", 2)]
+        std = max(base[f"{n}|warm|0"]["value"], base[f"{n}|warm|1"]["value"])
+        data[n] = {"strong": r["value"], "strong_se": r["stderr"], "standard_best_warm": std, "curve": r["curve"]}
+        rows.append([n, f"{std:+.2f}", f"{r['value']:+.2f} ± {1.96 * r['stderr']:.2f}"])
+    fam = [[EXTRA_LABEL[f], fmt_seed_ci([data[f"{f}_s{s}"]["standard_best_warm"] for s in SEEDS]),
+            fmt_seed_ci([data[f"{f}_s{s}"]["strong"] for s in SEEDS])] for f in EXTRA]
+    md = "\n".join(["# Attacker-strength check, additional runs", "",
+                    f"As exploit_strong.md: one warm-started attacker per target with {factor * BR_STEPS:,} steps, "
+                    f"{eval_eps} held-out episodes per seat; {elapsed / 60:.1f} min.", "",
+                    md_table(["target", f"best warm attacker, {BR_STEPS:,} steps", f"warm attacker, {factor * BR_STEPS:,} steps"], rows), "",
+                    md_table(["condition", "standard budget (mean ± 95% t)", f"{factor}x budget"], fam), ""])
+    _write("exploit_strong_extra", {"factor": factor, "results": data, "elapsed_s": elapsed}, md)

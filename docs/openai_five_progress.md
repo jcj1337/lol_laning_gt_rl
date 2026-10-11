@@ -91,4 +91,56 @@ of −0.008 ± 0.016; hold_farmer, uniform, aggressive_trader, opportunistic_tra
   seed, empty pool), as designed.
 - Main budget chosen: 307,200 agent transitions per seed (the published M3b self-play budget; each run < 2 min).
 
-Next: main training (3 conditions x 3 seeds), evaluation, approximate best responses, report.
+- Main training (wall clock 2.3 min, 10 processes): 9 runs, 307,200 agent transitions each;
+  environment turns 307,200 (m3b), 153,600 (sp100), ~169,500 (sp80); historical share of sp80 transitions 0.10.
+- Evaluation (`evaluate`, 1,761 head-to-head jobs, 23 min with the test suite running alongside). Bug fixed in the
+  report: sp80 snapshots fall a few hundred transitions apart across seeds, so learning curves are binned by the
+  nominal snapshot index (multiples of 25,600).
+- Full suite after the implementation: 476 passed (10.5 min, slowed by the concurrent evaluation).
+- Commit 84112de: implementation, tests, driver, adaptation doc, progress log.
+
+Preliminary findings (before exploitability):
+- Fixed scripted opponents: all three conditions comparable; m3b best on its own training suite
+  (+4.27 vs +3.47 / +4.00) and on held-out scripted agents (+5.00 vs +4.72 / +4.79), differences within the
+  3-seed t intervals.
+- Cross-play: family ordering sp80 > sp100 > m3b by small margins; sp80 beats m3b in all 9 seed pairings
+  (+0.04..+0.35, mean +0.20); all new policies ~ parity with the published skill-randomized M3b policies (trained
+  on 512k steps) and beat the published equal-skill M3b policies by 1.2-2.2.
+- Snapshot matrices: no forgetting or cycles inside any run (no older snapshot beats a newer one by 2 SE).
+- Behavior: all learned policies are Hold/Trade mixtures; Yield, Safe, Recall, Freeze and siege objectives
+  essentially unused.
+- Skill: shared self-play policies condition Trade on skills (5 of 6 runs; Trade share 0.20-0.55 across skill
+  pairs), m3b policies do not (0 of 3; flat 0.54-0.57, as in M3c). When mechanically outclassed by a learned
+  reference, shared policies lose 0.2-0.6 less per game than the seed-paired m3b policy (all 6 pairings).
+
+Exploitability (`exploit`, 30 attackers of 102,400 steps, 3.9 min): lower bounds M3b +0.36 ± 0.34, 100/0
++0.35 ± 0.53, 80/20 +0.24 ± 0.70 (per seed +0.04..+0.56); from-scratch attackers never reach parity; calibration
+against pub_sprand_s1 +0.17 / +0.12 (M3c: +0.11).
+
+## Phase F/G (done unless noted)
+
+- `behavior_detail` (recorded traces): shared self-play trades much less when behind in HP (0.25-0.30 vs 0.51 for
+  m3b in mirror games) and late in the game; recall essentially unused; no forward positioning.
+- `exploit_strong` (one warm attacker per target, 307,200 steps, 2.9 min): bounds rise for 5 of 9 targets (up to
+  +1.15), Spearman +0.57 between budgets; condition means +0.53 / +0.70 / +0.64 (indistinguishable); the
+  standard attacker is budget-limited, so standard-budget exploitability does not rank policies reliably.
+- `legacy_exact` (1.6 min): exact exploitability on K = 16 rises in all methods (final 3.43 / 3.38 / 3.93; uniform
+  3.74); 80/20 more exploitable than 100/0 in all 3 seeds from 61k to 143k transitions. The re-run M3b legacy
+  runs reproduce the published series bit for bit.
+- New figure `fig_skill.png`; Markdown header bug (literal `|`) in behavior_detail fixed.
+- 50/50 ablation (`train_ablation`, 1.2 min): performance like 80/20 (cross-play +0.15), most exploitable condition
+  under the 3x attacker (+0.85 ± 0.10).
+- Equal environment turns (`train_envturn`, 1.8 min; sp100 614,400 and sp80 ~553,500 transitions at ~307k turns):
+  clearly stronger than m3b (cross-play +0.31..+0.76 vs the m3b policies, 6/6 runs) and less exploitable (3x
+  attacker +0.32 / +0.46).
+- `evaluate_extra` (1,206 jobs, 15.7 min), `exploit_extra` (27 attackers, 3.6 min), `exploit_strong_extra` (9
+  attackers of 307,200 steps, 2.8 min), `report_extra`.
+- Total RL wall clock ≈ 60 min on ≤ 10 processes; no run longer than 2.5 min.
+
+## Phase H: report (done)
+
+`docs/openai_five_selfplay_report.md` written from the generated tables (`results/rl/openai_five/*.md`), every
+number cross-checked against the JSON results. Behavior-detail and main report regenerated after the fixes.
+
+Remaining issues / not done: resumption inside a run (optimizer and RNG state) is not implemented (the driver
+resumes at run granularity); only 3 seeds per condition; attackers are budget-limited (documented).

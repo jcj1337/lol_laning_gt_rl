@@ -23,7 +23,8 @@ retrained, so an interrupted stage can be resumed by running it again):
 
   python -m lanegame.experiments.rl.openai_five smoke | pilot | train | evaluate | exploit | report
   python -m lanegame.experiments.rl.openai_five legacy_exact | train_ablation | train_envturn | evaluate_extra |
-                                                exploit_extra | report_extra
+                                                exploit_extra | report_extra | exploit_strong |
+                                                exploit_strong_extra | behavior_detail
 """
 
 from __future__ import annotations
@@ -315,6 +316,7 @@ def run():
     train_runs("main", MAIN_BUDGET)
     E.evaluate()
     E.exploit()
+    E.exploit_strong()
     E.behavior_detail()
     E.report()
     legacy_exact()
@@ -323,6 +325,7 @@ def run():
                budgets={"sp100": 2 * MAIN_BUDGET, "sp80": int(1.8 * MAIN_BUDGET)})
     E.evaluate_extra()
     E.exploit_extra()
+    E.exploit_strong_extra()
     E.report_extra()
 
 

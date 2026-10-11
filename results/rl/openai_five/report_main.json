@@ -1,0 +1,274 @@
+{
+ "summary": {
+  "m3b_s0": {
+   "suite_avg": 3.69626794871795,
+   "held_avg": 4.986965729166668,
+   "worst": 0.5343895833333334,
+   "worst_opponent": "hold",
+   "best_scripted_response": -0.5343895833333334,
+   "best_scripted_response_se": 0.06221557638989596,
+   "cross_main_avg": -0.23403619791666674,
+   "vs_pub_sprand_s1": -0.12771458333333333,
+   "br_warm": [
+    0.42456875000000016,
+    0.3951850000000002
+   ],
+   "br_warm_se": [
+    0.0440694102071033,
+    0.044989381882085615
+   ],
+   "br_scratch": -0.4844900000000001,
+   "br_scratch_se": 0.04931226671857546,
+   "br_ppo_best": 0.42456875000000016,
+   "exploit_lb": 0.42456875000000016
+  },
+  "m3b_s1": {
+   "suite_avg": 4.485693189102566,
+   "held_avg": 4.8366375,
+   "worst": 0.6890166666666669,
+   "worst_opponent": "hold",
+   "best_scripted_response": -0.6890166666666669,
+   "best_scripted_response_se": 0.05873969019896021,
+   "cross_main_avg": -0.07617018229166675,
+   "vs_pub_sprand_s1": 0.04325208333333339,
+   "br_warm": [
+    0.20301812500000002,
+    0.122515
+   ],
+   "br_warm_se": [
+    0.04674441703587321,
+    0.046037196388913085
+   ],
+   "br_scratch": -0.4534106250000001,
+   "br_scratch_se": 0.05111823901854251,
+   "br_ppo_best": 0.20301812500000002,
+   "exploit_lb": 0.20301812500000002
+  },
+  "m3b_s2": {
+   "suite_avg": 4.6371210737179505,
+   "held_avg": 5.187625833333332,
+   "worst": 0.8219604166666669,
+   "worst_opponent": "freeze_hold",
+   "best_scripted_response": -0.8219604166666669,
+   "best_scripted_response_se": 0.0620454179037669,
+   "cross_main_avg": -0.009119010416666684,
+   "vs_pub_sprand_s1": 0.11539791666666672,
+   "br_warm": [
+    0.4526137500000001,
+    0.45468250000000004
+   ],
+   "br_warm_se": [
+    0.04860000475686247,
+    0.04988578053582422
+   ],
+   "br_scratch": -0.557933125,
+   "br_scratch_se": 0.0502217203189781,
+   "br_ppo_best": 0.45468250000000004,
+   "exploit_lb": 0.45468250000000004
+  },
+  "sp100_s0": {
+   "suite_avg": 3.197935657051283,
+   "held_avg": 4.6815845833333345,
+   "worst": 0.37602083333333336,
+   "worst_opponent": "hold",
+   "best_scripted_response": -0.37602083333333336,
+   "best_scripted_response_se": 0.057678596915963255,
+   "cross_main_avg": -0.19581054687500005,
+   "vs_pub_sprand_s1": -0.09931249999999998,
+   "br_warm": [
+    0.34545875000000015,
+    0.22223125
+   ],
+   "br_warm_se": [
+    0.0440207078552926,
+    0.04551026337853608
+   ],
+   "br_scratch": -0.3718525000000001,
+   "br_scratch_se": 0.048405136297659516,
+   "br_ppo_best": 0.34545875000000015,
+   "exploit_lb": 0.34545875000000015
+  },
+  "sp100_s1": {
+   "suite_avg": 3.8506814102564126,
+   "held_avg": 4.749353645833334,
+   "worst": 0.6948041666666669,
+   "worst_opponent": "hold",
+   "best_scripted_response": -0.6948041666666669,
+   "best_scripted_response_se": 0.058568532911548975,
+   "cross_main_avg": 0.1020720052083334,
+   "vs_pub_sprand_s1": 0.17356875000000016,
+   "br_warm": [
+    0.02170375000000002,
+    0.13106625
+   ],
+   "br_warm_se": [
+    0.04682502556665353,
+    0.04616898081464331
+   ],
+   "br_scratch": -0.7264006250000002,
+   "br_scratch_se": 0.04873750142534412,
+   "br_ppo_best": 0.13106625,
+   "exploit_lb": 0.13106625
+  },
+  "sp100_s2": {
+   "suite_avg": 3.370198557692308,
+   "held_avg": 4.7359922916666655,
+   "worst": 0.759375,
+   "worst_opponent": "legacy:stack_builder[vision]",
+   "best_scripted_response": -0.759375,
+   "best_scripted_response_se": 0.06519690162764441,
+   "cross_main_avg": 0.09634401041666665,
+   "vs_pub_sprand_s1": 0.1737531250000001,
+   "br_warm": [
+    0.559725625,
+    0.5233125
+   ],
+   "br_warm_se": [
+    0.05164482876015178,
+    0.05050051766383753
+   ],
+   "br_scratch": -0.6765087500000001,
+   "br_scratch_se": 0.04986174898090592,
+   "br_ppo_best": 0.559725625,
+   "exploit_lb": 0.559725625
+  },
+  "sp80_s0": {
+   "suite_avg": 3.6603651442307705,
+   "held_avg": 4.716321562500001,
+   "worst": 0.7311437500000002,
+   "worst_opponent": "hold",
+   "best_scripted_response": -0.7311437500000002,
+   "best_scripted_response_se": 0.05879113428820139,
+   "cross_main_avg": 0.12764375000000006,
+   "vs_pub_sprand_s1": 0.1263458333333335,
+   "br_warm": [
+    0.04099625000000004,
+    0.03909125
+   ],
+   "br_warm_se": [
+    0.045600206521003786,
+    0.04551031488983911
+   ],
+   "br_scratch": -0.6686343750000001,
+   "br_scratch_se": 0.04815699328003419,
+   "br_ppo_best": 0.04099625000000004,
+   "exploit_lb": 0.04099625000000004
+  },
+  "sp80_s1": {
+   "suite_avg": 3.7922235576923096,
+   "held_avg": 4.752747916666668,
+   "worst": 0.6517937500000002,
+   "worst_opponent": "hold",
+   "best_scripted_response": -0.6517937500000002,
+   "best_scripted_response_se": 0.0578455695085372,
+   "cross_main_avg": 0.037031250000000085,
+   "vs_pub_sprand_s1": 0.10026875000000013,
+   "br_warm": [
+    0.10817875,
+    0.11278874999999998
+   ],
+   "br_warm_se": [
+    0.04673945662035562,
+    0.04721785232450834
+   ],
+   "br_scratch": -0.7389356250000002,
+   "br_scratch_se": 0.04881885609789718,
+   "br_ppo_best": 0.11278874999999998,
+   "exploit_lb": 0.11278874999999998
+  },
+  "sp80_s2": {
+   "suite_avg": 4.535316746794873,
+   "held_avg": 4.907160416666667,
+   "worst": 0.7973395833333334,
+   "worst_opponent": "hold",
+   "best_scripted_response": -0.7973395833333334,
+   "best_scripted_response_se": 0.05893122295242417,
+   "cross_main_avg": 0.152044921875,
+   "vs_pub_sprand_s1": 0.20387083333333347,
+   "br_warm": [
+    0.5603381250000001,
+    0.473575
+   ],
+   "br_warm_se": [
+    0.04582202485697083,
+    0.048769904216712456
+   ],
+   "br_scratch": -0.8323593750000002,
+   "br_scratch_se": 0.05293839202373873,
+   "br_ppo_best": 0.5603381250000001,
+   "exploit_lb": 0.5603381250000001
+  },
+  "pub_sp_s0": {
+   "suite_avg": 4.6849187500000005,
+   "held_avg": 4.959824479166667,
+   "worst": 0.6911166666666668,
+   "worst_opponent": "legacy:stack_builder[vision]",
+   "best_scripted_response": -0.6911166666666668,
+   "best_scripted_response_se": 0.06165451324180448,
+   "cross_main_avg": -1.5641472222222224,
+   "vs_pub_sprand_s1": -1.9018270833333337
+  },
+  "pub_sprand_s0": {
+   "suite_avg": 4.952583333333335,
+   "held_avg": 5.215546562499999,
+   "worst": 0.9077583333333334,
+   "worst_opponent": "hold",
+   "best_scripted_response": -0.9077583333333334,
+   "best_scripted_response_se": 0.06265514960927593,
+   "cross_main_avg": -0.16832407407407415,
+   "vs_pub_sprand_s1": -0.15578958333333343
+  },
+  "pub_sp_s1": {
+   "suite_avg": 5.070405368589745,
+   "held_avg": 5.2410725,
+   "worst": 0.9533625000000002,
+   "worst_opponent": "freeze_hold",
+   "best_scripted_response": -0.9533625000000002,
+   "best_scripted_response_se": 0.060421826231580364,
+   "cross_main_avg": -0.008951504629629674,
+   "vs_pub_sprand_s1": -0.025545833333333406
+  },
+  "pub_sprand_s1": {
+   "suite_avg": 4.669778605769232,
+   "held_avg": 5.1379128125,
+   "worst": 0.651091666666667,
+   "worst_opponent": "hold",
+   "best_scripted_response": -0.651091666666667,
+   "best_scripted_response_se": 0.06123062736535684,
+   "cross_main_avg": -0.0788255787037038,
+   "vs_pub_sprand_s1": 0.0,
+   "br_warm": [
+    0.1740950000000001,
+    0.11997250000000008
+   ],
+   "br_warm_se": [
+    0.04715040164967555,
+    0.047577777741331664
+   ],
+   "br_scratch": -0.4684981250000001,
+   "br_scratch_se": 0.04892604159400358,
+   "br_ppo_best": 0.1740950000000001,
+   "exploit_lb": 0.1740950000000001
+  },
+  "pub_sp_s2": {
+   "suite_avg": 4.761545112179489,
+   "held_avg": 4.6611194791666675,
+   "worst": 1.7925062500000002,
+   "worst_opponent": "hold",
+   "best_scripted_response": -1.7925062500000002,
+   "best_scripted_response_se": 0.05642882910977043,
+   "cross_main_avg": -1.6612785879629632,
+   "vs_pub_sprand_s1": -2.2194062500000005
+  },
+  "pub_sprand_s2": {
+   "suite_avg": 4.838210096153848,
+   "held_avg": 5.040765729166667,
+   "worst": 0.7780916666666668,
+   "worst_opponent": "hold",
+   "best_scripted_response": -0.7780916666666668,
+   "best_scripted_response_se": 0.0601480783209645,
+   "cross_main_avg": -0.09125902777777786,
+   "vs_pub_sprand_s1": -0.10298541666666676
+  }
+ }
+}

@@ -1,0 +1,571 @@
+{
+ "runs": [
+  {
+   "condition": "m3b",
+   "seed": 0,
+   "v_star": 0.0,
+   "series": [
+    {
+     "step": 20480,
+     "exploitability": 2.5242944292678344,
+     "exploitability_greedy": 4.9674999999999985
+    },
+    {
+     "step": 40960,
+     "exploitability": 2.6798138094585653,
+     "exploitability_greedy": 4.9674999999999985
+    },
+    {
+     "step": 61440,
+     "exploitability": 3.462481631966543,
+     "exploitability_greedy": 4.9674999999999985
+    },
+    {
+     "step": 81920,
+     "exploitability": 3.8302739188911574,
+     "exploitability_greedy": 4.9674999999999985
+    },
+    {
+     "step": 102400,
+     "exploitability": 3.8704138429202892,
+     "exploitability_greedy": 4.9674999999999985
+    },
+    {
+     "step": 122880,
+     "exploitability": 4.038414377836909,
+     "exploitability_greedy": 4.9674999999999985
+    },
+    {
+     "step": 143360,
+     "exploitability": 4.020790872989858,
+     "exploitability_greedy": 4.9674999999999985
+    },
+    {
+     "step": 163840,
+     "exploitability": 4.057438502059345,
+     "exploitability_greedy": 4.9674999999999985
+    },
+    {
+     "step": 184320,
+     "exploitability": 4.055860118577234,
+     "exploitability_greedy": 4.9674999999999985
+    },
+    {
+     "step": 204800,
+     "exploitability": 4.085448095397507,
+     "exploitability_greedy": 4.9674999999999985
+    }
+   ],
+   "train_s": 66.13946349988692,
+   "env_turns": 204800,
+   "uniform_exploitability": 3.736831931833748,
+   "final_entropy": 0.765497762709856
+  },
+  {
+   "condition": "m3b",
+   "seed": 1,
+   "v_star": 0.0,
+   "series": [
+    {
+     "step": 20480,
+     "exploitability": 2.4661297840209992,
+     "exploitability_greedy": 4.9674999999999985
+    },
+    {
+     "step": 40960,
+     "exploitability": 2.4570805896860834,
+     "exploitability_greedy": 4.9674999999999985
+    },
+    {
+     "step": 61440,
+     "exploitability": 2.488891997277711,
+     "exploitability_greedy": 4.9674999999999985
+    },
+    {
+     "step": 81920,
+     "exploitability": 2.8075939354382085,
+     "exploitability_greedy": 4.9674999999999985
+    },
+    {
+     "step": 102400,
+     "exploitability": 2.705728823795119,
+     "exploitability_greedy": 4.9674999999999985
+    },
+    {
+     "step": 122880,
+     "exploitability": 2.9530057223655484,
+     "exploitability_greedy": 4.9674999999999985
+    },
+    {
+     "step": 143360,
+     "exploitability": 3.082998016453324,
+     "exploitability_greedy": 4.9674999999999985
+    },
+    {
+     "step": 163840,
+     "exploitability": 3.1518315101908407,
+     "exploitability_greedy": 4.9674999999999985
+    },
+    {
+     "step": 184320,
+     "exploitability": 3.2023078579091067,
+     "exploitability_greedy": 4.9674999999999985
+    },
+    {
+     "step": 204800,
+     "exploitability": 3.231837092220203,
+     "exploitability_greedy": 4.9674999999999985
+    }
+   ],
+   "train_s": 66.00678369984962,
+   "env_turns": 204800,
+   "uniform_exploitability": 3.736831931833748,
+   "final_entropy": 0.8712403662502766
+  },
+  {
+   "condition": "m3b",
+   "seed": 2,
+   "v_star": 0.0,
+   "series": [
+    {
+     "step": 20480,
+     "exploitability": 2.582070939808488,
+     "exploitability_greedy": 4.9674999999999985
+    },
+    {
+     "step": 40960,
+     "exploitability": 2.4917680891903067,
+     "exploitability_greedy": 4.9674999999999985
+    },
+    {
+     "step": 61440,
+     "exploitability": 2.9053540596353313,
+     "exploitability_greedy": 4.9674999999999985
+    },
+    {
+     "step": 81920,
+     "exploitability": 2.8535449498044687,
+     "exploitability_greedy": 4.9674999999999985
+    },
+    {
+     "step": 102400,
+     "exploitability": 2.9562960580864095,
+     "exploitability_greedy": 4.9674999999999985
+    },
+    {
+     "step": 122880,
+     "exploitability": 2.784224126826645,
+     "exploitability_greedy": 4.9674999999999985
+    },
+    {
+     "step": 143360,
+     "exploitability": 2.843600029648063,
+     "exploitability_greedy": 4.9674999999999985
+    },
+    {
+     "step": 163840,
+     "exploitability": 2.8911241857964285,
+     "exploitability_greedy": 4.9674999999999985
+    },
+    {
+     "step": 184320,
+     "exploitability": 2.9221911398159195,
+     "exploitability_greedy": 4.9674999999999985
+    },
+    {
+     "step": 204800,
+     "exploitability": 2.963077058830661,
+     "exploitability_greedy": 4.9674999999999985
+    }
+   ],
+   "train_s": 66.12739240005612,
+   "env_turns": 204800,
+   "uniform_exploitability": 3.736831931833748,
+   "final_entropy": 1.120903417468071
+  },
+  {
+   "condition": "sp100",
+   "seed": 0,
+   "v_star": 0.0,
+   "series": [
+    {
+     "step": 20480,
+     "exploitability": 2.9065652687126438,
+     "exploitability_greedy": 6.277499999999998
+    },
+    {
+     "step": 40960,
+     "exploitability": 2.601221890233576,
+     "exploitability_greedy": 5.31625
+    },
+    {
+     "step": 61440,
+     "exploitability": 3.1310140200392214,
+     "exploitability_greedy": 6.277499999999998
+    },
+    {
+     "step": 81920,
+     "exploitability": 3.1521363037943324,
+     "exploitability_greedy": 5.59375
+    },
+    {
+     "step": 102400,
+     "exploitability": 3.392121518243691,
+     "exploitability_greedy": 4.9674999999999985
+    },
+    {
+     "step": 122880,
+     "exploitability": 3.485996201563196,
+     "exploitability_greedy": 4.9674999999999985
+    },
+    {
+     "step": 143360,
+     "exploitability": 3.606707021432126,
+     "exploitability_greedy": 5.437499999999998
+    },
+    {
+     "step": 163840,
+     "exploitability": 3.74913399451788,
+     "exploitability_greedy": 4.9674999999999985
+    },
+    {
+     "step": 184320,
+     "exploitability": 3.8253342630446405,
+     "exploitability_greedy": 4.9674999999999985
+    },
+    {
+     "step": 204800,
+     "exploitability": 3.844009801491597,
+     "exploitability_greedy": 4.9674999999999985
+    }
+   ],
+   "train_s": 30.091494100168347,
+   "env_turns": 102400,
+   "uniform_exploitability": 3.736831931833748,
+   "final_entropy": 0.9748380109667778
+  },
+  {
+   "condition": "sp100",
+   "seed": 1,
+   "v_star": 0.0,
+   "series": [
+    {
+     "step": 20480,
+     "exploitability": 2.6526141168767032,
+     "exploitability_greedy": 4.9674999999999985
+    },
+    {
+     "step": 40960,
+     "exploitability": 2.9108389845961127,
+     "exploitability_greedy": 4.9674999999999985
+    },
+    {
+     "step": 61440,
+     "exploitability": 2.9236958006902776,
+     "exploitability_greedy": 4.9674999999999985
+    },
+    {
+     "step": 81920,
+     "exploitability": 3.2330333774712785,
+     "exploitability_greedy": 4.9674999999999985
+    },
+    {
+     "step": 102400,
+     "exploitability": 3.2550705366506274,
+     "exploitability_greedy": 4.9674999999999985
+    },
+    {
+     "step": 122880,
+     "exploitability": 3.1104847106000513,
+     "exploitability_greedy": 4.9674999999999985
+    },
+    {
+     "step": 143360,
+     "exploitability": 3.071891886723293,
+     "exploitability_greedy": 4.9674999999999985
+    },
+    {
+     "step": 163840,
+     "exploitability": 3.5765207577206493,
+     "exploitability_greedy": 4.9674999999999985
+    },
+    {
+     "step": 184320,
+     "exploitability": 3.6836497747209105,
+     "exploitability_greedy": 4.9674999999999985
+    },
+    {
+     "step": 204800,
+     "exploitability": 3.679749611098132,
+     "exploitability_greedy": 4.9674999999999985
+    }
+   ],
+   "train_s": 30.172326399944723,
+   "env_turns": 102400,
+   "uniform_exploitability": 3.736831931833748,
+   "final_entropy": 0.6424740627408028
+  },
+  {
+   "condition": "sp100",
+   "seed": 2,
+   "v_star": 0.0,
+   "series": [
+    {
+     "step": 20480,
+     "exploitability": 2.4819998687769647,
+     "exploitability_greedy": 4.9674999999999985
+    },
+    {
+     "step": 40960,
+     "exploitability": 2.535686488732754,
+     "exploitability_greedy": 5.723749999999999
+    },
+    {
+     "step": 61440,
+     "exploitability": 2.501087498038551,
+     "exploitability_greedy": 4.184999999999999
+    },
+    {
+     "step": 81920,
+     "exploitability": 2.434182414048726,
+     "exploitability_greedy": 4.0387499999999985
+    },
+    {
+     "step": 102400,
+     "exploitability": 2.2865524623214855,
+     "exploitability_greedy": 4.897499999999998
+    },
+    {
+     "step": 122880,
+     "exploitability": 2.4376275472981397,
+     "exploitability_greedy": 4.9674999999999985
+    },
+    {
+     "step": 143360,
+     "exploitability": 2.4439933390756967,
+     "exploitability_greedy": 4.9674999999999985
+    },
+    {
+     "step": 163840,
+     "exploitability": 2.4911583684396352,
+     "exploitability_greedy": 4.9674999999999985
+    },
+    {
+     "step": 184320,
+     "exploitability": 2.6152265979338756,
+     "exploitability_greedy": 4.9674999999999985
+    },
+    {
+     "step": 204800,
+     "exploitability": 2.6214230365408935,
+     "exploitability_greedy": 4.9674999999999985
+    }
+   ],
+   "train_s": 30.586432700045407,
+   "env_turns": 102400,
+   "uniform_exploitability": 3.736831931833748,
+   "final_entropy": 1.1967361643910408
+  },
+  {
+   "condition": "sp80",
+   "seed": 0,
+   "v_star": 0.0,
+   "series": [
+    {
+     "step": 20480,
+     "exploitability": 2.9065652687126438,
+     "exploitability_greedy": 6.277499999999998
+    },
+    {
+     "step": 41632,
+     "exploitability": 3.981823567529371,
+     "exploitability_greedy": 6.277499999999998
+    },
+    {
+     "step": 62160,
+     "exploitability": 3.3198357189161194,
+     "exploitability_greedy": 6.3562499999999975
+    },
+    {
+     "step": 82480,
+     "exploitability": 3.8727143702047626,
+     "exploitability_greedy": 4.9674999999999985
+    },
+    {
+     "step": 102672,
+     "exploitability": 3.911252508822509,
+     "exploitability_greedy": 4.9674999999999985
+    },
+    {
+     "step": 122928,
+     "exploitability": 3.8917334525695764,
+     "exploitability_greedy": 5.019999999999999
+    },
+    {
+     "step": 144032,
+     "exploitability": 4.059980184439262,
+     "exploitability_greedy": 4.9674999999999985
+    },
+    {
+     "step": 164320,
+     "exploitability": 4.2056889893145355,
+     "exploitability_greedy": 4.9674999999999985
+    },
+    {
+     "step": 184384,
+     "exploitability": 4.205999225226578,
+     "exploitability_greedy": 4.9674999999999985
+    },
+    {
+     "step": 205536,
+     "exploitability": 4.210911677905552,
+     "exploitability_greedy": 4.9674999999999985
+    }
+   ],
+   "train_s": 37.98449860000983,
+   "env_turns": 113152,
+   "uniform_exploitability": 3.736831931833748,
+   "final_entropy": 0.9276127777993679
+  },
+  {
+   "condition": "sp80",
+   "seed": 1,
+   "v_star": 0.0,
+   "series": [
+    {
+     "step": 20480,
+     "exploitability": 2.6526141168767032,
+     "exploitability_greedy": 4.9674999999999985
+    },
+    {
+     "step": 41648,
+     "exploitability": 2.472543137360751,
+     "exploitability_greedy": 4.9674999999999985
+    },
+    {
+     "step": 62128,
+     "exploitability": 3.8894725008730218,
+     "exploitability_greedy": 4.9674999999999985
+    },
+    {
+     "step": 82368,
+     "exploitability": 4.274728055978547,
+     "exploitability_greedy": 4.9674999999999985
+    },
+    {
+     "step": 102656,
+     "exploitability": 4.058091854775901,
+     "exploitability_greedy": 4.9674999999999985
+    },
+    {
+     "step": 122912,
+     "exploitability": 3.4252439659073115,
+     "exploitability_greedy": 4.9674999999999985
+    },
+    {
+     "step": 143696,
+     "exploitability": 3.316250975636374,
+     "exploitability_greedy": 4.9674999999999985
+    },
+    {
+     "step": 164704,
+     "exploitability": 3.1036062696635285,
+     "exploitability_greedy": 4.9674999999999985
+    },
+    {
+     "step": 185120,
+     "exploitability": 3.003318358066356,
+     "exploitability_greedy": 4.9674999999999985
+    },
+    {
+     "step": 205360,
+     "exploitability": 2.990222941545121,
+     "exploitability_greedy": 4.9674999999999985
+    }
+   ],
+   "train_s": 37.85223670001142,
+   "env_turns": 113152,
+   "uniform_exploitability": 3.736831931833748,
+   "final_entropy": 0.9587925896048546
+  },
+  {
+   "condition": "sp80",
+   "seed": 2,
+   "v_star": 0.0,
+   "series": [
+    {
+     "step": 20480,
+     "exploitability": 2.4819998687769647,
+     "exploitability_greedy": 4.9674999999999985
+    },
+    {
+     "step": 41632,
+     "exploitability": 3.855680448303405,
+     "exploitability_greedy": 4.9674999999999985
+    },
+    {
+     "step": 61952,
+     "exploitability": 4.004298606507872,
+     "exploitability_greedy": 4.9674999999999985
+    },
+    {
+     "step": 82032,
+     "exploitability": 4.049613542460945,
+     "exploitability_greedy": 4.9674999999999985
+    },
+    {
+     "step": 102592,
+     "exploitability": 4.431911417755417,
+     "exploitability_greedy": 4.9674999999999985
+    },
+    {
+     "step": 122960,
+     "exploitability": 4.579505740101181,
+     "exploitability_greedy": 4.9674999999999985
+    },
+    {
+     "step": 143408,
+     "exploitability": 4.595100917092836,
+     "exploitability_greedy": 4.9674999999999985
+    },
+    {
+     "step": 164320,
+     "exploitability": 4.586676124175381,
+     "exploitability_greedy": 4.9674999999999985
+    },
+    {
+     "step": 184768,
+     "exploitability": 4.59764340411595,
+     "exploitability_greedy": 4.9674999999999985
+    },
+    {
+     "step": 204976,
+     "exploitability": 4.588731273124982,
+     "exploitability_greedy": 4.9674999999999985
+    }
+   ],
+   "train_s": 37.15702879987657,
+   "env_turns": 112640,
+   "uniform_exploitability": 3.736831931833748,
+   "final_entropy": 0.4426001813262701
+  }
+ ],
+ "reproducibility": [
+  {
+   "seed": 0,
+   "identical": true,
+   "max_abs_diff": 0.0
+  },
+  {
+   "seed": 1,
+   "identical": true,
+   "max_abs_diff": 0.0
+  },
+  {
+   "seed": 2,
+   "identical": true,
+   "max_abs_diff": 0.0
+  }
+ ],
+ "wall_s": 96.1141943000257
+}
