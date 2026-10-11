@@ -11,7 +11,7 @@ Work happens on the local branch `m2-m3-autonomous` (one commit per verified mil
 | M2c Stochastic trading and skill | completed and verified (52 champion + 65 env tests) | see git log |
 | M2d Ganks, death, respawn | completed and verified (67 champion + 65 env tests) | see git log |
 | M2e Validation and benchmarking (gate) | completed and verified (full suite 444 passed, 5 min 20 s; 0 invariant violations in 120,960 turns) | see git log |
-| M3a PPO vs scripted opponents | not started | |
+| M3a PPO vs scripted opponents | completed and verified (14 RL tests; beats best scripted responses) | see git log |
 | M3b Self-play with frozen snapshots | not started | |
 | M3c Evaluation and approximate best responses | not started | |
 
@@ -152,3 +152,45 @@ opportunistic trading, stacking and absence punishment rules) and `tests/test_ch
   are rare when the opponent contests the wave), always-Shove -4.7.
 - **F. Throughput.** 6,100-6,900 turns/s uncached, ~11,500 with the lane cache (scripted agents);
   raw `env.step` 7,200 / 9,200; legacy siege model through the env 11,500.
+- Committed as `e311586`.
+
+### M3a PPO against scripted opponents (implementation)
+
+New package `lanegame/rl/` (PyTorch, optional extra `rl`; `lanegame.env` never imports it):
+
+- `network.py`: `PolicyValueNet` (2 x 128 tanh shared trunk, policy head over 46 logits, value head;
+  orthogonal init, policy gain 0.01); `MaskedCategorical` (illegal logits -> -1e9: probability exactly 0,
+  never sampled, zero entropy contribution; a forced single action has log-prob 0 and zero gradient).
+- `ppo.py`: `PPOConfig` (defaults: 16 envs x 64 steps, 4 epochs, minibatch 256, Adam 3e-4 annealed, gamma 1,
+  lambda 0.95, clip 0.2, value clip 2.0, vf 0.5, entropy 0.01, grad norm 0.5, unscaled rewards, 1 torch
+  thread); `compute_gae` (terminated: no bootstrap; truncated: bootstrap with V(final obs); advantages stop
+  at episode boundaries); `ppo_update` (clipped surrogate and value loss, entropy bonus, grad clipping;
+  forced-action steps excluded from policy/entropy averages, kept for the value loss).
+- `train.py`: `Collector` (n_envs lock-step environments, one batched forward for the learner, random seat
+  per episode, fresh opponent per episode from an `OpponentSampler`, per-episode SeedSequence children,
+  optional per-episode skill randomization) and `train_ppo` (history.jsonl, final.pt, eval hook, update hook).
+- `agent.py`: `NetAgent` (frozen copy; exact masked softmax as `distribution`, so `as_policy` gives exact
+  values on legacy configs), checkpoints (`save_checkpoint` / `load_checkpoint` / `load_agent`).
+- `evaluate.py` (M3c): `head_to_head` (both seats, same seeds, skill follows the player), `round_robin`,
+  `best_scripted_response`, `approximate_best_response`.
+- `selfplay.py` (M3b): `SnapshotPool` (bounded, frozen, keeps the initial anchor), `SelfPlaySampler`
+  (p_scripted / p_latest / uniform over the pool), `train_selfplay` (snapshot every N updates, files with
+  metadata).
+- CLI: `experiments-rl scripted|legacy|selfplay|evaluation`, `rl-train`, `rl-selfplay`, `rl-eval`, `rl-br`.
+- Tests: `tests/test_rl.py` (9) and `tests/test_rl_selfplay.py` (5), 14 tests in ~13 s.
+- Smoke test: 10k steps vs yield_farmer: training return -4.3 -> -0.9 in 3.6 s; 100k steps: +8.6 +- 0.15 in
+  both seats (best scripted response, always Trade: +8.2), ~6,600 learner steps/s.
+
+### M3a results (`results/rl/m3a_scripted.md`, 4.6 min on 10 processes)
+
+- Single opponent, 102,400 steps x 3 seeds, held-out evaluation in both seats (500 episodes per seat):
+  vs yield_farmer +8.28 +- 0.17 (best scripted response, always Trade: +8.17); vs aggressive_trader
+  +4.25 +- 0.99 (best scripted: conservative_recaller +0.65); vs hold_farmer +1.24 +- 0.88 (best scripted:
+  naive hold +0.22). Initial (near-uniform) policy: -4.0, -2.1, -4.3. Every seed beats the best scripted
+  response; ~30 s training per run.
+- Mixture of 13 scripted agents, 204,800 steps x 3 seeds: average +4.32 +- 0.27 over the 13 opponents
+  (best single scripted agent `trade` +3.56; uniform -2.16). Beats every careful farmer (hold_farmer +1.21,
+  punisher +1.03, conservative_recaller +2.73) that no scripted agent beats by more than ~0.2 (except
+  conservative_recaller by hold +0.98); does NOT beat the naive persistent `trade` (-0.12; the best scripted
+  response to it is conservative_recaller +1.11). Behavior mix: Trade 70%, Yield 12%, Hold 10%.
+- Status: M3a completed and verified (14 RL tests; learning demonstrated against every opponent tested).

@@ -10,6 +10,11 @@
                                              (two scripted agents through the RL environment, lanegame.env)
   python -m lanegame experiments-siege all | controlled siege_options ... (siege model, results/siege/)
   python -m lanegame experiments-champions all | invariants tournament skill concerns benchmark   (champion mode, results/champions/)
+  python -m lanegame experiments-rl scripted | legacy | selfplay | evaluation                    (PPO, results/rl/; needs torch)
+  python -m lanegame rl-train --opponents hold_farmer,aggressive_trader [--steps 100000 --seed 0 --out results/rl/checkpoints/run]
+  python -m lanegame rl-selfplay [--init results/rl/checkpoints/run/final.pt --steps 200000 --seed 0 --out ...]
+  python -m lanegame rl-eval CHECKPOINT [--opponents ... --episodes 500 --skill 0.5,0.5]
+  python -m lanegame rl-br CHECKPOINT [--steps 100000 --seed 0]          (approximate best response to a frozen policy)
   python -m lanegame experiments all | before_after model_comparison ...   (previous revision, results/revision/)
   python -m lanegame experiments-v1 all | audit_legacy model_comparison ... (original model, results/)
 
@@ -20,6 +25,7 @@ from __future__ import annotations
 
 import argparse
 import importlib
+import os
 import sys
 import time
 
@@ -34,6 +40,7 @@ EXPERIMENTS_V1 = ["audit_legacy", "model_comparison", "horizon_benchmark", "base
 EXPERIMENTS_SIEGE = ["benchmark", "timing", "controlled", "siege_options", "crash_value", "vision_sweep",
                      "ablations", "sensitivity", "equilibrium", "verification", "figures"]
 EXPERIMENTS_CHAMPIONS = ["invariants", "tournament", "skill", "concerns", "benchmark"]
+EXPERIMENTS_RL = ["scripted", "legacy", "selfplay", "evaluation"]
 
 
 def _cfg(args, **kw) -> GameConfig:
@@ -218,6 +225,78 @@ def cmd_experiments_champions(args):
     _run_experiments(args.names, EXPERIMENTS_CHAMPIONS, "lanegame.experiments.champions")
 
 
+def cmd_experiments_rl(args):
+    _run_experiments(args.names, EXPERIMENTS_RL, "lanegame.experiments.rl")
+
+
+def _rl_opponents(cfg, names):
+    from .env import champion_agents
+    from .rl import load_agent
+    agents = champion_agents(cfg)
+    out = []
+    for n in names.split(","):
+        n = n.strip()
+        if n.endswith(".pt"):
+            out.append(load_agent(n))
+        elif n in agents:
+            out.append(agents[n])
+        else:
+            raise SystemExit(f"unknown opponent {n!r}; a checkpoint path or one of {sorted(agents)}")
+    return out
+
+
+def _rl_cfg(args):
+    cfg = GameConfig.champions(horizon=args.horizon)
+    if getattr(args, "skill", None):
+        a, b = (float(x) for x in args.skill.split(","))
+        cfg = cfg.with_(skill_a=a, skill_b=b)
+    return cfg
+
+
+def cmd_rl_train(args):
+    from .rl import OpponentSampler, PPOConfig, train_ppo
+    cfg = _rl_cfg(args)
+    res = train_ppo(cfg, PPOConfig(total_steps=args.steps, seed=args.seed), OpponentSampler(_rl_opponents(cfg, args.opponents)),
+                    out_dir=args.out, name=os.path.basename(args.out.rstrip("/\\")))
+    print(f"trained {res.history[-1]['steps']} steps in {res.elapsed:.0f}s; wrote {args.out}/final.pt and history.jsonl")
+
+
+def cmd_rl_selfplay(args):
+    from .experiments.rl.common import SCRIPTED, scripted_agents
+    from .rl import PPOConfig, load_checkpoint, train_selfplay
+    cfg = _rl_cfg(args)
+    init = load_checkpoint(args.init)[0] if args.init else None
+    res = train_selfplay(cfg, PPOConfig(total_steps=args.steps, seed=args.seed), list(scripted_agents(cfg, SCRIPTED).values()),
+                         init_net=init, pool_size=args.pool, snapshot_every=args.snapshot_every,
+                         p_scripted=args.p_scripted, p_latest=args.p_latest, out_dir=args.out,
+                         name=os.path.basename(args.out.rstrip("/\\")))
+    print(f"self-play {res.train.history[-1]['steps']} steps in {res.train.elapsed:.0f}s; pool {[a.name for a in res.pool.snapshots]}")
+
+
+def cmd_rl_eval(args):
+    from .rl import head_to_head, load_agent
+    cfg = GameConfig.champions(horizon=args.horizon)
+    x = load_agent(args.checkpoint, greedy=args.greedy)
+    skill = tuple(float(v) for v in args.skill.split(",")) if args.skill else None
+    print(f"{x.name} vs each opponent, both seats, {args.episodes} episodes per seat, seed {args.seed} (payoff to {x.name}, 95% CI)")
+    for y in _rl_opponents(cfg, args.opponents):
+        r = head_to_head(cfg, x, y, args.episodes, args.seed, skill)
+        st = r["x_stats"]
+        print(f"  vs {r['y']:22s} {r['mean']:+.2f} +- {1.96 * r['stderr']:.2f}  win {r['win_rate']:.2f}  "
+              f"seat A {r['seat_A']['mean']:+.2f} B {r['seat_B']['mean']:+.2f}  farm {st['farm']:.2f}  "
+              f"deaths {st.get('deaths', 0):.2f}  trades {st['trades_connected']:.1f}  recalls {st['recalls']:.2f}")
+
+
+def cmd_rl_br(args):
+    from .rl import PPOConfig, approximate_best_response, load_agent
+    cfg = GameConfig.champions(horizon=args.horizon)
+    target = load_agent(args.checkpoint)
+    r = approximate_best_response(cfg, target, PPOConfig(total_steps=args.steps, seed=args.seed),
+                                  eval_episodes=args.episodes, out_dir=args.out, verbose=True)
+    print(f"approximate best response to {r['target']}: {r['value']:+.2f} +- {1.96 * r['stderr']:.2f} "
+          f"({r['train_steps']} training steps, held-out evaluation) -- a lower bound on its exploitability, not a certificate")
+
+
 def main(argv=None):
     p = argparse.ArgumentParser(prog="python -m lanegame")
     sub = p.add_subparsers(dest="cmd", required=True)
@@ -265,6 +344,47 @@ def main(argv=None):
     s = sub.add_parser("experiments-siege")
     s.add_argument("names", nargs="+")
     s.set_defaults(fn=cmd_experiments_siege)
+    s = sub.add_parser("experiments-rl")
+    s.add_argument("names", nargs="+")
+    s.set_defaults(fn=cmd_experiments_rl)
+    s = sub.add_parser("rl-train")
+    s.add_argument("--opponents", default="hold_farmer")
+    s.add_argument("--steps", type=int, default=102_400)
+    s.add_argument("--seed", type=int, default=0)
+    s.add_argument("--horizon", type=int, default=32)
+    s.add_argument("--skill", help="seat skills 'a,b'")
+    s.add_argument("--out", default=os.path.join("results", "rl", "checkpoints", "rl_train"))
+    s.set_defaults(fn=cmd_rl_train)
+    s = sub.add_parser("rl-selfplay")
+    s.add_argument("--init", help="checkpoint to start from (its policy is the first snapshot)")
+    s.add_argument("--steps", type=int, default=204_800)
+    s.add_argument("--seed", type=int, default=0)
+    s.add_argument("--horizon", type=int, default=32)
+    s.add_argument("--skill")
+    s.add_argument("--pool", type=int, default=8)
+    s.add_argument("--snapshot-every", type=int, default=20)
+    s.add_argument("--p-scripted", type=float, default=0.3)
+    s.add_argument("--p-latest", type=float, default=0.35)
+    s.add_argument("--out", default=os.path.join("results", "rl", "checkpoints", "rl_selfplay"))
+    s.set_defaults(fn=cmd_rl_selfplay)
+    s = sub.add_parser("rl-eval")
+    s.add_argument("checkpoint")
+    s.add_argument("--opponents", default="hold_farmer,yield_farmer,aggressive_trader,safe_player,shover,"
+                   "conservative_recaller,opportunistic_trader,vision_player,punisher")
+    s.add_argument("--episodes", type=int, default=500)
+    s.add_argument("--seed", type=int, default=10_000)
+    s.add_argument("--horizon", type=int, default=32)
+    s.add_argument("--skill", help="'m_x,m_y': skill of the evaluated policy and of its opponent (either seat)")
+    s.add_argument("--greedy", action="store_true")
+    s.set_defaults(fn=cmd_rl_eval)
+    s = sub.add_parser("rl-br")
+    s.add_argument("checkpoint")
+    s.add_argument("--steps", type=int, default=102_400)
+    s.add_argument("--seed", type=int, default=0)
+    s.add_argument("--episodes", type=int, default=500)
+    s.add_argument("--horizon", type=int, default=32)
+    s.add_argument("--out")
+    s.set_defaults(fn=cmd_rl_br)
     s = sub.add_parser("experiments-champions")
     s.add_argument("names", nargs="+")
     s.set_defaults(fn=cmd_experiments_champions)

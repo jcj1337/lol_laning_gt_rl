@@ -14,7 +14,7 @@ League of Legends wave management is the testbed. Two players manage minion wave
 | 2. Quantitative research | Bayesian opponent modelling, exploitation vs. exploitability, risk-constrained policies, misspecification, sensitivity | next |
 | 3. Interactive dashboard | React/TypeScript site for exploring strategies and results | planned |
 
-The transition from the exact game to multi-agent reinforcement learning is planned in [docs/rl_research_roadmap.md](docs/rl_research_roadmap.md); Milestone 1, a simultaneous-move RL environment around the existing game (`lanegame/env/`), and Milestone 2a, champion state, positioning and behaviors (`GameConfig.champions()`), are implemented.
+The transition from the exact game to multi-agent reinforcement learning is planned in [docs/rl_research_roadmap.md](docs/rl_research_roadmap.md). Implemented: Milestone 1, a simultaneous-move RL environment around the existing game (`lanegame/env/`); Milestone 2, the champion game (`GameConfig.champions()`: persistent positions, Hold / Yield / Trade / Safe, Recall and absence, stochastic trades with mechanical skill, tower shots, ganks with HP damage, death and respawn), validated in `results/champions/`; and Milestones 3a-3c, masked PPO, frozen-snapshot self-play and an evaluation harness with approximate best responses (`lanegame/rl/`, `results/rl/`). See [docs/m2_m3_implementation_report.md](docs/m2_m3_implementation_report.md).
 
 ## The current model at a glance (siege revision)
 
@@ -38,13 +38,19 @@ The transition from the exact game to multi-agent reinforcement learning is plan
 ```bash
 python -m venv .venv && .venv/Scripts/activate      # macOS/Linux: source .venv/bin/activate
 pip install -r requirements.txt
-python -m pytest                                      # full suite (305 tests), three model generations, ~5 min
+python -m pytest                                      # full suite (458 tests incl. champion mode and RL), ~6 min
 python -m lanegame solve --horizon 32                 # siege model -> results/siege/solution_K32.json (~4 min, 3 GB)
 python -m lanegame scenarios                          # 23 traced mechanics scenarios with PASS/FAIL
 python -m lanegame reach --horizon 24                 # lane and siege events reachable from the standard start, with witnesses
 python -m lanegame strategy --min-crash-hp 4          # Vision -> Shove -> Crash -> Pressure witness with a turn-by-turn trace
 python -m lanegame exploit --horizon 24               # exploitability of the siege baselines
 python -m lanegame env-demo --a aggressive --b passive_safe --episodes 200 --seed 42   # two scripted agents through the RL environment
+python -m lanegame env-demo --model champions --a opportunistic_trader --b hold_farmer   # the champion game (M2)
+python -m lanegame experiments-champions all          # champion-mode validation (results/champions/, ~6 min)
+pip install torch                                     # PPO needs PyTorch (optional extra "rl")
+python -m lanegame rl-train --opponents hold_farmer,aggressive_trader --steps 100000 --out results/rl/checkpoints/demo
+python -m lanegame rl-eval results/rl/checkpoints/demo/final.pt   # both seats, held-out seeds, 95% CIs
+python -m lanegame experiments-rl scripted legacy selfplay evaluation   # M3a-M3c experiments (results/rl/)
 python -m lanegame experiments-siege all              # regenerate every siege-study result (results/siege/)
 python -m lanegame experiments all                    # regenerate the farming-revision results (results/revision/)
 python -m lanegame experiments-v1 all                 # regenerate the original Phase 1 results (results/)
@@ -69,15 +75,20 @@ lanegame/                 engine (pure Python + NumPy/SciPy, no presentation cod
   simulate.py             seeded Monte Carlo with realized gank outcomes
   scenarios.py, render.py named behavioral scenarios (23) and text traces of the lane
   io.py                   JSON export format for solutions (version 3)
-  champions.py            champion mode (roadmap M2a): persistent champion cells, Hold/Yield/Trade/Safe, physical reach
+  champions.py            champion mode (roadmap M2): positions, Hold/Yield/Trade/Safe/Recall, absence, trades, skill,
+                          tower shots, ganks with HP damage, death and respawn
   env/                    simultaneous-move RL environment (roadmap M1): LaneEnv, own-view observations and
                           masks, scripted agents, exact-policy bridge, episode traces, optional PettingZoo adapter
+  rl/                     masked PPO, frozen-snapshot self-play, evaluation and approximate best responses (M3; torch)
+  experiments/champions/  champion-mode validation (results/champions/)
+  experiments/rl/         RL experiments (results/rl/; checkpoints in results/rl/checkpoints/, not tracked)
   experiments/siege/      the siege study's experiments (results/siege/)
   experiments/            the farming revision's experiments, pinned to GameConfig.v2() (results/revision/)
   experiments/v1/         the original Phase 1 experiments, pinned to GameConfig.v1() (results/)
 tests/                    pytest suite (all three models)
 results/                  original Phase 1 outputs; results/revision/ = farming revision; results/siege/ = this study
-docs/                     phase1_implementation_report.md, phase1_revision_report.md, phase1_siege_vision_study.md
+docs/                     phase1_implementation_report.md, phase1_revision_report.md, phase1_siege_vision_study.md,
+                          rl_research_roadmap.md, m2_m3_implementation_report.md, overnight_implementation_log.md
 legacy/                   original Q-learning project (env, agents, notebook), kept unchanged for reference
 ```
 
