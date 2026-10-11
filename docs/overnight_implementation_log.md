@@ -10,7 +10,7 @@ Work happens on the local branch `m2-m3-autonomous` (one commit per verified mil
 | M2b Recall and absence | completed and verified (39 champion + 65 env tests) | see git log |
 | M2c Stochastic trading and skill | completed and verified (52 champion + 65 env tests) | see git log |
 | M2d Ganks, death, respawn | completed and verified (67 champion + 65 env tests) | see git log |
-| M2e Validation and benchmarking (gate) | not started | |
+| M2e Validation and benchmarking (gate) | completed and verified (full suite 444 passed, 5 min 20 s; 0 invariant violations in 120,960 turns) | see git log |
 | M3a PPO vs scripted opponents | not started | |
 | M3b Self-play with frozen snapshots | not started | |
 | M3c Evaluation and approximate best responses | not started | |
@@ -109,3 +109,46 @@ Implemented in `lanegame/champions.py` (+ `config.py`, `env/core.py`, `env/agent
   simultaneous deaths, damage sources adding up, recall vs death, episode end during death, rewards without
   gank loss and with bounties, reproducibility, death cost depending on wave state). Three earlier tests
   updated. 67 champion tests + 65 env tests pass.
+- Committed as `bcb6ba6`.
+
+### M2e Validation and benchmarking (gate)
+
+New: `lanegame/experiments/champions/` (`invariants`, `tournament`, `skill`, `concerns`, `benchmark`;
+`python -m lanegame experiments-champions all`, results in `results/champions/`), the scripted suite
+`lanegame.env.agents.champion_suite()` (hold_farmer, yield_farmer, aggressive_trader, safe_player, shover,
+conservative_recaller, opportunistic_trader, vision_player, punisher; `ChampionScriptAgent` with low-HP recall,
+opportunistic trading, stacking and absence punishment rules) and `tests/test_champion_validation.py` (7 tests).
+
+- **A. Correctness.** Turn-by-turn checker of every rule (bounds, masks = legal sets, absence timeline,
+  movement, HP and damage accounting, zero-sum reward decomposition, no remote farming, no remote siege, away
+  champions take no part, observation purity/injectivity/bounds, mirror equivariance with mirrored chance,
+  replay from recorded chance and from seeds): **120,960 turns over three configurations, 0 violations**.
+  Seat symmetry: hold_farmer self-play +0.006 +- 0.027 over 8,000 independent episodes.
+- **B. Behavior.** 15-agent round robin (225 ordered pairs x 400 episodes, CRN). Final defaults: TRADE-type
+  agents crush passive/evasive play (+8 to +12.5 vs Yield/Safe) but lose slightly to careful farmers
+  (-0.2 to -1.1 vs hold_farmer / punisher / conservative_recaller); shoving and Safe are clearly bad;
+  meta-Nash over the scripted agents: punisher 0.56, HOLD 0.41, TRADE 0.03.
+- **C. Skill.** Hit rate 0.51 -> 0.63 -> 0.76 -> 0.92 for A's skill advantage 0 -> 0.3 -> 0.6 -> 1.0, damage
+  per gank falls monotonically; payoff effect is strategy-dependent (a 0.35-skill trader still beats a
+  0.65-skill Yield farmer by +7.9; skill barely matters there because trades never connect).
+- **D/E. Concerns and degenerate incentives** (`results/champions/concerns.md`); three evidence-based
+  changes to the champion defaults, nothing in the legacy models:
+  1. `kill_bounty` 0 -> **0.5** (half a wave; real kill gold is ~2.4 early waves). With 0 a death cost only
+     ~1-1.5 resources (about the same as a recall plus the walk back), Trade lost to every non-evasive agent,
+     never recalling beat recalling at <= 2 HP, and the scripted meta-game was 100% naive Hold: HP damage
+     had almost no strategic consequence (an explicitly listed degenerate incentive). With 0.5, trading is
+     viable but exploitable and the meta-game mixes; the absence remains the main cost of a death.
+  2. `retreat_farm_reach` (new) **2**: a threatened Yield collects kills within 2 cells at Safe efficiency.
+     With 1 a Yield champion zoned by a persistent trader kept 1.2 of 15.3 available resources (-11.4 per
+     game); the roadmap intended it to "farm at Safe efficiency". Now -8.2; no other matchup changes.
+  3. Gank-damage defense now requires *defensive play* (mode safe or retreat) instead of the Yield/Safe
+     label: an unthreatened Yield stands and farms exactly like Hold but got half of Hold's gank damage for
+     free (YIELD beat HOLD by +0.41 with identical play). Now YIELD vs HOLD = 0.00 exactly.
+  Kept after measurement: `trade_farm_factor 0.5` (1.0 makes Trade dominant: +1.9 vs a recaller, +3.9 vs
+  naive hold; 0.25 makes it useless), `farm_reach 1`, `champion_speed 2` (1 lets traders pin holders:
+  +2.4), tower shot (worth ~1.4 resources to a tower-hugging defender), gank model (removing ganks changes
+  forward strategies by ~1 resource, so exposure matters), Safe zones nothing, Trade chase ignores minions
+  (documented). Degenerate probes: recall spam -13.1, permanent Safe -8.7, Vision is used but rarely (sieges
+  are rare when the opponent contests the wave), always-Shove -4.7.
+- **F. Throughput.** 6,100-6,900 turns/s uncached, ~11,500 with the lane cache (scripted agents);
+  raw `env.step` 7,200 / 9,200; legacy siege model through the env 11,500.

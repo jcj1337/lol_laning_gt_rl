@@ -316,6 +316,10 @@ class GameConfig:
     safe_line: int = -1                   # Safe (and a threatened Yield) retreats to at most this cell
     trade_range: int = 1                  # a Trade connects when the champions end within this distance
     farm_reach: int = 1                   # a champion collects only kills within this many cells of it
+    # A threatened Yield (backing off from a trader) collects kills within retreat_farm_reach cells of its retreat
+    # cell, at Safe efficiency: it gives up some farm, not all (M2e: with 1, a Yield champion zoned by a
+    # persistent trader collected 1.2 of 15.3 available resources per game; with 2 it keeps about a third).
+    retreat_farm_reach: int = 2
     trade_farm_factor: float = 0.5        # collection multiplier of a champion whose Trade connected
     # Ganks as events (M2d). Champion mode replaces the legacy expected-loss gank (gank_loss * p, whose
     # unconditional base gank_base = 0.15 cancelled in the zero-sum payoff) by a gank that occurs with
@@ -324,7 +328,7 @@ class GameConfig:
     #       * (1 - vision_reduction [own vision active at the start of the turn])
     # (e = exposure, dsigma = own minus enemy leading-wave stacks) and, if it occurs, deals
     #   X ~ Binomial(gank_damage_trials, p_e),
-    #   p_e = clip(gank_damage_base + gank_damage_position (e + T) / 2T - gank_damage_defense [Yield or Safe]
+    #   p_e = clip(gank_damage_base + gank_damage_position (e + T) / 2T - gank_damage_defense [Safe or retreating Yield]
     #              - gank_damage_skill (m - 0.5), 0, 1)
     # HP. With 4 trials and 6 HP a full-HP champion never dies to one gank; whether a gank kills depends on HP,
     # position, behavior and skill. There is no unconditional base rate (0.0): a champion under its own tower
@@ -343,11 +347,14 @@ class GameConfig:
     gank_damage_skill: float = 0.2
     # Death (M2d): a champion whose HP reaches 0 dies at the end of the turn (it keeps that turn's farm), sits
     # out the next death_turns turns and returns at its own tower with full HP. Dying on turn t with the
-    # default 3: ABSENT on t+1, t+2, t+3, back on t+4. The cost of a death is the farm, wave control and siege
-    # opportunities given up; kill_bounty (resources to the opponent of the dead champion, default 0) is an
-    # optional, separately reported knob.
+    # default 3: ABSENT on t+1, t+2, t+3, back on t+4. The cost of a death is mainly the farm, wave control and
+    # siege opportunities given up (about 1 to 1.5 resources at the default lane economy); kill_bounty adds a
+    # small kill reward to the opponent (reported separately as bounty_payoff). 0.5 resources = half a wave of
+    # farm (real kill gold is about 2.4 early waves). M2e evidence: with 0, trading lost to every non-evasive
+    # scripted agent and the scripted meta-game was 95% "Hold and never recall", i.e. HP damage had almost no
+    # strategic consequence; with 0.5 trading becomes viable but exploitable and the meta-game mixes.
     death_turns: int = 3
-    kill_bounty: float = 0.0
+    kill_bounty: float = 0.5
 
     # ------------------------------------------------------------------ presets
     @classmethod
@@ -474,6 +481,7 @@ class GameConfig:
             assert 0.0 <= self.skill_a <= 1.0 and 0.0 <= self.skill_b <= 1.0
             assert -self.tower <= self.safe_line <= self.tower
             assert self.trade_range >= 0 and self.farm_reach >= 0 and 0.0 <= self.trade_farm_factor <= 1.0
+            assert self.retreat_farm_reach >= 0
             assert len(self.champ_gank_behavior) == len(CHAMP_BEHAVIORS)
 
     def with_(self, **kw) -> "GameConfig":

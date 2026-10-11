@@ -367,7 +367,7 @@ def test_scripted_champion_episodes_are_zero_sum_reproducible_and_complete():
         l2 = play_episode(env, agents[na], agents[nb], seed=9, record=True)
         assert l1.length == CFG.horizon and l1.actions == l2.actions and l1.rewards == l2.rewards
         for t in l1.turns:
-            assert t["reward"] == pytest.approx(t["farm_payoff"] + t["plate_payoff"] + t["gank_payoff"])
+            assert t["reward"] == pytest.approx(t["farm_payoff"] + t["plate_payoff"] + t["gank_payoff"] + t["bounty_payoff"])
             assert t["crash_payoff"] == 0 and t["actions"][0] in t["legal"][0] and t["actions"][1] in t["legal"][1]
         assert abs(sum(l1.rewards) - l1.payoff) < 1e-9
     st = run_episodes(env, agents["trade"], agents["hold"], 20, seed=1)

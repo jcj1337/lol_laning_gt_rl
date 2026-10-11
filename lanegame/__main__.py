@@ -9,6 +9,7 @@
   python -m lanegame env-demo [--model siege|revised|v1|champions] --a aggressive --b passive_safe [--episodes 200 --seed 42 --exact --trace t.json]
                                              (two scripted agents through the RL environment, lanegame.env)
   python -m lanegame experiments-siege all | controlled siege_options ... (siege model, results/siege/)
+  python -m lanegame experiments-champions all | invariants tournament skill concerns benchmark   (champion mode, results/champions/)
   python -m lanegame experiments all | before_after model_comparison ...   (previous revision, results/revision/)
   python -m lanegame experiments-v1 all | audit_legacy model_comparison ... (original model, results/)
 
@@ -32,6 +33,7 @@ EXPERIMENTS_V1 = ["audit_legacy", "model_comparison", "horizon_benchmark", "base
                   "equilibrium_structure", "sensitivity", "verification", "figures"]
 EXPERIMENTS_SIEGE = ["benchmark", "timing", "controlled", "siege_options", "crash_value", "vision_sweep",
                      "ablations", "sensitivity", "equilibrium", "verification", "figures"]
+EXPERIMENTS_CHAMPIONS = ["invariants", "tournament", "skill", "concerns", "benchmark"]
 
 
 def _cfg(args, **kw) -> GameConfig:
@@ -212,6 +214,10 @@ def cmd_experiments_siege(args):
     _run_experiments(args.names, EXPERIMENTS_SIEGE, "lanegame.experiments.siege")
 
 
+def cmd_experiments_champions(args):
+    _run_experiments(args.names, EXPERIMENTS_CHAMPIONS, "lanegame.experiments.champions")
+
+
 def main(argv=None):
     p = argparse.ArgumentParser(prog="python -m lanegame")
     sub = p.add_subparsers(dest="cmd", required=True)
@@ -259,6 +265,9 @@ def main(argv=None):
     s = sub.add_parser("experiments-siege")
     s.add_argument("names", nargs="+")
     s.set_defaults(fn=cmd_experiments_siege)
+    s = sub.add_parser("experiments-champions")
+    s.add_argument("names", nargs="+")
+    s.set_defaults(fn=cmd_experiments_champions)
     s = sub.add_parser("experiments")
     s.add_argument("names", nargs="+")
     s.set_defaults(fn=cmd_experiments)

@@ -1,0 +1,5488 @@
+{
+ "cells": [
+  {
+   "skill": [
+    0.5,
+    0.5
+   ],
+   "pair": [
+    "aggressive_trader",
+    "aggressive_trader"
+   ],
+   "record": {
+    "names": [
+     "aggressive_trader",
+     "aggressive_trader"
+    ],
+    "episodes": 400,
+    "mean": -0.04688749999999994,
+    "stderr": 0.08394243126408533,
+    "ci95": [
+     -0.2114146652776072,
+     0.1176396652776073
+    ],
+    "std": 1.6788486252817068,
+    "win_rate": 0.4625,
+    "loss_rate": 0.53,
+    "tie_rate": 0.0075,
+    "farm": [
+     4.5718687499999975,
+     4.602506249999998
+    ],
+    "farm_available": [
+     15.25,
+     15.25
+    ],
+    "plates": [
+     0.0,
+     0.0
+    ],
+    "ganks": [
+     2.295,
+     2.155
+    ],
+    "exposure": [
+     -0.323125,
+     -0.29109375
+    ],
+    "trades_attempted": [
+     20.7275,
+     20.7575
+    ],
+    "trades_connected": [
+     14.81,
+     14.695
+    ],
+    "yields_threatened": [
+     1.4875,
+     1.5925
+    ],
+    "recalls": [
+     0.5625,
+     0.4975
+    ],
+    "turns_away": [
+     7.56,
+     7.335
+    ],
+    "behaviors": [
+     {
+      "ABSENT": 0.218671875,
+      "R": 0.065390625,
+      "S": 0.068203125,
+      "T": 0.647734375
+     },
+     {
+      "ABSENT": 0.213671875,
+      "R": 0.064453125,
+      "S": 0.073203125,
+      "T": 0.648671875
+     }
+    ],
+    "objectives": [
+     {
+      "Pressure": 0.0,
+      "Vision": 0.0
+     },
+     {
+      "Pressure": 0.0,
+      "Vision": 0.0
+     }
+    ],
+    "waves": [
+     {
+      "SP": 0.781328125,
+      "SH": 0.0,
+      "F": 0.0
+     },
+     {
+      "SP": 0.786328125,
+      "SH": 0.0,
+      "F": 0.0
+     }
+    ],
+    "turns_per_second": 4830.1418360082025,
+    "recalls_interrupted": [
+     1.53,
+     1.565
+    ],
+    "trades_landed": [
+     7.575,
+     7.63
+    ],
+    "trade_damage_dealt": [
+     9.7225,
+     10.0275
+    ],
+    "tower_damage_taken": [
+     4.545,
+     4.6825
+    ],
+    "damage_taken": [
+     19.7775,
+     19.26
+    ],
+    "gank_damage_taken": [
+     5.205,
+     4.855
+    ],
+    "deaths": [
+     2.2875,
+     2.255
+    ],
+    "bounty": [
+     1.1275,
+     1.14375
+    ]
+   },
+   "hit_rate": [
+    0.5114787305874409,
+    0.5192242259271861
+   ],
+   "damage_per_connected_trade": [
+    0.6564821066846726,
+    0.6823749574685267
+   ],
+   "damage_per_gank": [
+    2.2679738562091503,
+    2.252900232018562
+   ]
+  },
+  {
+   "skill": [
+    0.5,
+    0.5
+   ],
+   "pair": [
+    "aggressive_trader",
+    "hold_farmer"
+   ],
+   "record": {
+    "names": [
+     "aggressive_trader",
+     "hold_farmer"
+    ],
+    "episodes": 400,
+    "mean": -0.3509750000000001,
+    "stderr": 0.08149721383639591,
+    "ci95": [
+     -0.510709539119336,
+     -0.19124046088066413
+    ],
+    "std": 1.6299442767279182,
+    "win_rate": 0.39,
+    "loss_rate": 0.61,
+    "tie_rate": 0.0,
+    "farm": [
+     4.994725000000003,
+     5.645700000000001
+    ],
+    "farm_available": [
+     15.25,
+     15.25
+    ],
+    "plates": [
+     0.0,
+     0.0
+    ],
+    "ganks": [
+     2.71,
+     1.295
+    ],
+    "exposure": [
+     -0.024140625,
+     -0.759375
+    ],
+    "trades_attempted": [
+     26.2825,
+     0.0
+    ],
+    "trades_connected": [
+     19.98,
+     0.0
+    ],
+    "yields_threatened": [
+     0.0,
+     2.4775
+    ],
+    "recalls": [
+     0.8175,
+     1.0125
+    ],
+    "turns_away": [
+     3.9725,
+     6.05
+    ],
+    "behaviors": [
+     {
+      "ABSENT": 0.09859375,
+      "R": 0.025546875,
+      "S": 0.05453125,
+      "T": 0.821328125
+     },
+     {
+      "ABSENT": 0.157421875,
+      "H": 0.5734375,
+      "R": 0.191015625,
+      "S": 0.078125
+     }
+    ],
+    "objectives": [
+     {
+      "Pressure": 0.0,
+      "Vision": 0.0
+     },
+     {
+      "Pressure": 0.0,
+      "Vision": 0.0
+     }
+    ],
+    "waves": [
+     {
+      "SP": 0.90140625,
+      "SH": 0.0,
+      "F": 0.0
+     },
+     {
+      "SP": 0.8425781250000001,
+      "SH": 0.0,
+      "F": 0.0
+     }
+    ],
+    "turns_per_second": 4945.445744676614,
+    "recalls_interrupted": [
+     0.0,
+     5.1
+    ],
+    "trades_landed": [
+     10.165,
+     0.0
+    ],
+    "trade_damage_dealt": [
+     13.1225,
+     0.0
+    ],
+    "tower_damage_taken": [
+     5.1,
+     0.0
+    ],
+    "damage_taken": [
+     11.27,
+     15.495
+    ],
+    "gank_damage_taken": [
+     6.17,
+     2.3725
+    ],
+    "deaths": [
+     0.8325,
+     1.4325
+    ],
+    "bounty": [
+     0.71625,
+     0.41625
+    ]
+   },
+   "hit_rate": [
+    0.5087587587587588,
+    NaN
+   ],
+   "damage_per_connected_trade": [
+    0.6567817817817818,
+    NaN
+   ],
+   "damage_per_gank": [
+    2.2767527675276753,
+    1.8320463320463323
+   ]
+  },
+  {
+   "skill": [
+    0.5,
+    0.5
+   ],
+   "pair": [
+    "hold_farmer",
+    "aggressive_trader"
+   ],
+   "record": {
+    "names": [
+     "hold_farmer",
+     "aggressive_trader"
+    ],
+    "episodes": 400,
+    "mean": 0.28706875000000004,
+    "stderr": 0.08476430125708936,
+    "ci95": [
+     0.1209307195361049,
+     0.4532067804638952
+    ],
+    "std": 1.6952860251417874,
+    "win_rate": 0.555,
+    "loss_rate": 0.445,
+    "tie_rate": 0.0,
+    "farm": [
+     5.612812500000003,
+     5.018243749999999
+    ],
+    "farm_available": [
+     15.25,
+     15.25
+    ],
+    "plates": [
+     0.0,
+     0.0
+    ],
+    "ganks": [
+     1.365,
+     2.6225
+    ],
+    "exposure": [
+     -0.767421875,
+     0.001953125
+    ],
+    "trades_attempted": [
+     0.0,
+     26.41
+    ],
+    "trades_connected": [
+     0.0,
+     20.015
+    ],
+    "yields_threatened": [
+     2.44,
+     0.0
+    ],
+    "recalls": [
+     1.015,
+     0.8075
+    ],
+    "turns_away": [
+     6.0525,
+     3.8625
+    ],
+    "behaviors": [
+     {
+      "ABSENT": 0.157421875,
+      "H": 0.570078125,
+      "R": 0.195078125,
+      "S": 0.077421875
+     },
+     {
+      "ABSENT": 0.09546875,
+      "R": 0.025234375,
+      "S": 0.053984375,
+      "T": 0.8253125
+     }
+    ],
+    "objectives": [
+     {
+      "Pressure": 0.0,
+      "Vision": 0.0
+     },
+     {
+      "Pressure": 0.0,
+      "Vision": 0.0
+     }
+    ],
+    "waves": [
+     {
+      "SP": 0.842578125,
+      "SH": 0.0,
+      "F": 0.0
+     },
+     {
+      "SP": 0.90453125,
+      "SH": 0.0,
+      "F": 0.0
+     }
+    ],
+    "turns_per_second": 5085.807505990807,
+    "recalls_interrupted": [
+     5.2275,
+     0.0
+    ],
+    "trades_landed": [
+     0.0,
+     10.0725
+    ],
+    "trade_damage_dealt": [
+     0.0,
+     13.1875
+    ],
+    "tower_damage_taken": [
+     0.0,
+     5.225
+    ],
+    "damage_taken": [
+     15.7275,
+     11.135
+    ],
+    "gank_damage_taken": [
+     2.54,
+     5.91
+    ],
+    "deaths": [
+     1.425,
+     0.81
+    ],
+    "bounty": [
+     0.405,
+     0.7125
+    ]
+   },
+   "hit_rate": [
+    NaN,
+    0.5032475643267549
+   ],
+   "damage_per_connected_trade": [
+    NaN,
+    0.6588808393704721
+   ],
+   "damage_per_gank": [
+    1.8608058608058609,
+    2.253574833174452
+   ]
+  },
+  {
+   "skill": [
+    0.5,
+    0.5
+   ],
+   "pair": [
+    "opportunistic_trader",
+    "hold_farmer"
+   ],
+   "record": {
+    "names": [
+     "opportunistic_trader",
+     "hold_farmer"
+    ],
+    "episodes": 400,
+    "mean": -0.09883125,
+    "stderr": 0.06538000053281026,
+    "ci95": [
+     -0.22697605104430812,
+     0.02931355104430812
+    ],
+    "std": 1.3076000106562051,
+    "win_rate": 0.3775,
+    "loss_rate": 0.4675,
+    "tie_rate": 0.155,
+    "farm": [
+     8.35118125,
+     8.542512500000003
+    ],
+    "farm_available": [
+     15.25,
+     15.25
+    ],
+    "plates": [
+     0.0,
+     0.0
+    ],
+    "ganks": [
+     2.2125,
+     1.94
+    ],
+    "exposure": [
+     -0.081171875,
+     -0.276015625
+    ],
+    "trades_attempted": [
+     3.72,
+     0.0
+    ],
+    "trades_connected": [
+     2.925,
+     0.0
+    ],
+    "yields_threatened": [
+     0.0,
+     0.795
+    ],
+    "recalls": [
+     0.6725,
+     0.355
+    ],
+    "turns_away": [
+     2.095,
+     1.9625
+    ],
+    "behaviors": [
+     {
+      "ABSENT": 0.044453125,
+      "H": 0.66953125,
+      "R": 0.021015625,
+      "S": 0.031328125,
+      "T": 0.11625,
+      "Y": 0.117421875
+     },
+     {
+      "ABSENT": 0.050234375,
+      "H": 0.86703125,
+      "R": 0.057109375,
+      "S": 0.025625
+     }
+    ],
+    "objectives": [
+     {
+      "Pressure": 0.0,
+      "Vision": 0.0
+     },
+     {
+      "Pressure": 0.0,
+      "Vision": 0.0
+     }
+    ],
+    "waves": [
+     {
+      "SP": 0.955546875,
+      "SH": 0.0,
+      "F": 0.0
+     },
+     {
+      "SP": 0.9497656250000001,
+      "SH": 0.0,
+      "F": 0.0
+     }
+    ],
+    "turns_per_second": 4993.304680833656,
+    "recalls_interrupted": [
+     0.0,
+     1.4725
+    ],
+    "trades_landed": [
+     1.4325,
+     0.0
+    ],
+    "trade_damage_dealt": [
+     1.875,
+     0.0
+    ],
+    "tower_damage_taken": [
+     1.435,
+     0.0
+    ],
+    "damage_taken": [
+     6.0525,
+     5.585
+    ],
+    "gank_damage_taken": [
+     4.6175,
+     3.71
+    ],
+    "deaths": [
+     0.2775,
+     0.4625
+    ],
+    "bounty": [
+     0.23125,
+     0.13875
+    ]
+   },
+   "hit_rate": [
+    0.48974358974358984,
+    NaN
+   ],
+   "damage_per_connected_trade": [
+    0.6410256410256411,
+    NaN
+   ],
+   "damage_per_gank": [
+    2.087005649717514,
+    1.9123711340206186
+   ]
+  },
+  {
+   "skill": [
+    0.5,
+    0.5
+   ],
+   "pair": [
+    "hold_farmer",
+    "hold_farmer"
+   ],
+   "record": {
+    "names": [
+     "hold_farmer",
+     "hold_farmer"
+    ],
+    "episodes": 400,
+    "mean": -0.06267499999999998,
+    "stderr": 0.05859572410291867,
+    "ci95": [
+     -0.17752261924172058,
+     0.052172619241720605
+    ],
+    "std": 1.1719144820583733,
+    "win_rate": 0.325,
+    "loss_rate": 0.3525,
+    "tie_rate": 0.3225,
+    "farm": [
+     9.332549999999975,
+     9.378974999999977
+    ],
+    "farm_available": [
+     15.25,
+     15.25
+    ],
+    "plates": [
+     0.0,
+     0.0
+    ],
+    "ganks": [
+     2.09,
+     2.045
+    ],
+    "exposure": [
+     -0.141875,
+     -0.13421875
+    ],
+    "trades_attempted": [
+     0.0,
+     0.0
+    ],
+    "trades_connected": [
+     0.0,
+     0.0
+    ],
+    "yields_threatened": [
+     0.0,
+     0.0
+    ],
+    "recalls": [
+     0.47,
+     0.465
+    ],
+    "turns_away": [
+     1.27,
+     1.1475
+    ],
+    "behaviors": [
+     {
+      "ABSENT": 0.025,
+      "H": 0.945078125,
+      "R": 0.0146875,
+      "S": 0.015234375
+     },
+     {
+      "ABSENT": 0.021328125,
+      "H": 0.94796875,
+      "R": 0.01453125,
+      "S": 0.016171875
+     }
+    ],
+    "objectives": [
+     {
+      "Pressure": 0.0,
+      "Vision": 0.0
+     },
+     {
+      "Pressure": 0.0,
+      "Vision": 0.0
+     }
+    ],
+    "waves": [
+     {
+      "SP": 0.975,
+      "SH": 0.0,
+      "F": 0.0
+     },
+     {
+      "SP": 0.978671875,
+      "SH": 0.0,
+      "F": 0.0
+     }
+    ],
+    "turns_per_second": 5241.986691732294,
+    "recalls_interrupted": [
+     0.0,
+     0.0
+    ],
+    "trades_landed": [
+     0.0,
+     0.0
+    ],
+    "trade_damage_dealt": [
+     0.0,
+     0.0
+    ],
+    "tower_damage_taken": [
+     0.0,
+     0.0
+    ],
+    "damage_taken": [
+     4.0425,
+     3.94
+    ],
+    "gank_damage_taken": [
+     4.0425,
+     3.94
+    ],
+    "deaths": [
+     0.125,
+     0.0925
+    ],
+    "bounty": [
+     0.04625,
+     0.0625
+    ]
+   },
+   "hit_rate": [
+    NaN,
+    NaN
+   ],
+   "damage_per_connected_trade": [
+    NaN,
+    NaN
+   ],
+   "damage_per_gank": [
+    1.9342105263157898,
+    1.9266503667481663
+   ]
+  },
+  {
+   "skill": [
+    0.5,
+    0.5
+   ],
+   "pair": [
+    "aggressive_trader",
+    "yield_farmer"
+   ],
+   "record": {
+    "names": [
+     "aggressive_trader",
+     "yield_farmer"
+    ],
+    "episodes": 400,
+    "mean": 8.04010000000001,
+    "stderr": 0.06295967281524353,
+    "ci95": [
+     7.916699041282132,
+     8.163500958717886
+    ],
+    "std": 1.2591934563048708,
+    "win_rate": 1.0,
+    "loss_rate": 0.0,
+    "tie_rate": 0.0,
+    "farm": [
+     12.970225000000019,
+     4.787625000000008
+    ],
+    "farm_available": [
+     15.25,
+     15.25
+    ],
+    "plates": [
+     0.0,
+     0.0
+    ],
+    "ganks": [
+     2.6325,
+     0.625
+    ],
+    "exposure": [
+     -0.282421875,
+     -1.68078125
+    ],
+    "trades_attempted": [
+     30.2575,
+     0.0
+    ],
+    "trades_connected": [
+     0.055,
+     0.0
+    ],
+    "yields_threatened": [
+     0.0,
+     29.165
+    ],
+    "recalls": [
+     0.2975,
+     0.0075
+    ],
+    "turns_away": [
+     1.4375,
+     0.0525
+    ],
+    "behaviors": [
+     {
+      "ABSENT": 0.035625,
+      "R": 0.009296875,
+      "S": 0.00953125,
+      "T": 0.945546875
+     },
+     {
+      "ABSENT": 0.00140625,
+      "R": 0.001953125,
+      "S": 0.000390625,
+      "Y": 0.99625
+     }
+    ],
+    "objectives": [
+     {
+      "Pressure": 0.0,
+      "Vision": 0.0
+     },
+     {
+      "Pressure": 0.0,
+      "Vision": 0.0
+     }
+    ],
+    "waves": [
+     {
+      "SP": 0.964375,
+      "SH": 0.0,
+      "F": 0.0
+     },
+     {
+      "SP": 0.99859375,
+      "SH": 0.0,
+      "F": 0.0
+     }
+    ],
+    "turns_per_second": 4975.39124874034,
+    "recalls_interrupted": [
+     0.0,
+     0.055
+    ],
+    "trades_landed": [
+     0.03,
+     0.0
+    ],
+    "trade_damage_dealt": [
+     0.04,
+     0.0
+    ],
+    "tower_damage_taken": [
+     0.005,
+     0.0
+    ],
+    "damage_taken": [
+     4.94,
+     0.545
+    ],
+    "gank_damage_taken": [
+     4.935,
+     0.505
+    ],
+    "deaths": [
+     0.305,
+     0.02
+    ],
+    "bounty": [
+     0.01,
+     0.1525
+    ]
+   },
+   "hit_rate": [
+    0.5454545454545454,
+    NaN
+   ],
+   "damage_per_connected_trade": [
+    0.7272727272727273,
+    NaN
+   ],
+   "damage_per_gank": [
+    1.8746438746438747,
+    0.808
+   ]
+  },
+  {
+   "skill": [
+    0.65,
+    0.35
+   ],
+   "pair": [
+    "aggressive_trader",
+    "aggressive_trader"
+   ],
+   "record": {
+    "names": [
+     "aggressive_trader",
+     "aggressive_trader"
+    ],
+    "episodes": 400,
+    "mean": 0.7785875,
+    "stderr": 0.07461115057640656,
+    "ci95": [
+     0.6323496448702431,
+     0.9248253551297568
+    ],
+    "std": 1.4922230115281312,
+    "win_rate": 0.7075,
+    "loss_rate": 0.2775,
+    "tie_rate": 0.015,
+    "farm": [
+     4.80623125,
+     4.358893749999998
+    ],
+    "farm_available": [
+     15.25,
+     15.25
+    ],
+    "plates": [
+     0.0,
+     0.0
+    ],
+    "ganks": [
+     2.455,
+     2.035
+    ],
+    "exposure": [
+     -0.198359375,
+     -0.418515625
+    ],
+    "trades_attempted": [
+     21.385,
+     20.035
+    ],
+    "trades_connected": [
+     14.55,
+     14.8375
+    ],
+    "yields_threatened": [
+     1.5325,
+     1.47
+    ],
+    "recalls": [
+     0.615,
+     0.4425
+    ],
+    "turns_away": [
+     6.72,
+     8.26
+    ],
+    "behaviors": [
+     {
+      "ABSENT": 0.19078125,
+      "R": 0.07046875,
+      "S": 0.07046875,
+      "T": 0.66828125
+     },
+     {
+      "ABSENT": 0.244296875,
+      "R": 0.060703125,
+      "S": 0.06890625,
+      "T": 0.62609375
+     }
+    ],
+    "objectives": [
+     {
+      "Pressure": 0.0,
+      "Vision": 0.0
+     },
+     {
+      "Pressure": 0.0,
+      "Vision": 0.0
+     }
+    ],
+    "waves": [
+     {
+      "SP": 0.80921875,
+      "SH": 0.0,
+      "F": 0.0
+     },
+     {
+      "SP": 0.755703125,
+      "SH": 0.0,
+      "F": 0.0
+     }
+    ],
+    "turns_per_second": 5049.6411282252,
+    "recalls_interrupted": [
+     1.64,
+     1.5
+    ],
+    "trades_landed": [
+     9.22,
+     5.905
+    ],
+    "trade_damage_dealt": [
+     12.485,
+     7.345
+    ],
+    "tower_damage_taken": [
+     5.23,
+     4.155
+    ],
+    "damage_taken": [
+     18.085,
+     21.34
+    ],
+    "gank_damage_taken": [
+     5.51,
+     4.7
+    ],
+    "deaths": [
+     1.9725,
+     2.635
+    ],
+    "bounty": [
+     1.3175,
+     0.98625
+    ]
+   },
+   "hit_rate": [
+    0.6336769759450172,
+    0.3979780960404381
+   ],
+   "damage_per_connected_trade": [
+    0.8580756013745704,
+    0.4950294860994103
+   ],
+   "damage_per_gank": [
+    2.2443991853360488,
+    2.3095823095823094
+   ]
+  },
+  {
+   "skill": [
+    0.65,
+    0.35
+   ],
+   "pair": [
+    "aggressive_trader",
+    "hold_farmer"
+   ],
+   "record": {
+    "names": [
+     "aggressive_trader",
+     "hold_farmer"
+    ],
+    "episodes": 400,
+    "mean": 0.9715562500000001,
+    "stderr": 0.0857603164890417,
+    "ci95": [
+     0.8034660296814784,
+     1.1396464703185218
+    ],
+    "std": 1.715206329780834,
+    "win_rate": 0.7225,
+    "loss_rate": 0.2775,
+    "tie_rate": 0.0,
+    "farm": [
+     5.464918749999997,
+     5.1346125
+    ],
+    "farm_available": [
+     15.25,
+     15.25
+    ],
+    "plates": [
+     0.0,
+     0.0
+    ],
+    "ganks": [
+     2.82,
+     1.2175
+    ],
+    "exposure": [
+     0.047734375,
+     -0.835859375
+    ],
+    "trades_attempted": [
+     26.465,
+     0.0
+    ],
+    "trades_connected": [
+     18.6925,
+     0.0
+    ],
+    "yields_threatened": [
+     0.0,
+     2.7575
+    ],
+    "recalls": [
+     0.875,
+     0.8075
+    ],
+    "turns_away": [
+     3.7375,
+     7.29
+    ],
+    "behaviors": [
+     {
+      "ABSENT": 0.089453125,
+      "R": 0.02734375,
+      "S": 0.056171875,
+      "T": 0.82703125
+     },
+     {
+      "ABSENT": 0.202578125,
+      "H": 0.525703125,
+      "R": 0.184140625,
+      "S": 0.087578125
+     }
+    ],
+    "objectives": [
+     {
+      "Pressure": 0.0,
+      "Vision": 0.0
+     },
+     {
+      "Pressure": 0.0,
+      "Vision": 0.0
+     }
+    ],
+    "waves": [
+     {
+      "SP": 0.910546875,
+      "SH": 0.0,
+      "F": 0.0
+     },
+     {
+      "SP": 0.797421875,
+      "SH": 0.0,
+      "F": 0.0
+     }
+    ],
+    "turns_per_second": 5406.170442653124,
+    "recalls_interrupted": [
+     0.0,
+     5.085
+    ],
+    "trades_landed": [
+     11.7325,
+     0.0
+    ],
+    "trade_damage_dealt": [
+     15.87,
+     0.0
+    ],
+    "tower_damage_taken": [
+     5.0825,
+     0.0
+    ],
+    "damage_taken": [
+     11.1925,
+     18.245
+    ],
+    "gank_damage_taken": [
+     6.11,
+     2.375
+    ],
+    "deaths": [
+     0.725,
+     2.0075
+    ],
+    "bounty": [
+     1.00375,
+     0.3625
+    ]
+   },
+   "hit_rate": [
+    0.6276581516651063,
+    NaN
+   ],
+   "damage_per_connected_trade": [
+    0.8490036110739602,
+    NaN
+   ],
+   "damage_per_gank": [
+    2.166666666666667,
+    1.9507186858316221
+   ]
+  },
+  {
+   "skill": [
+    0.65,
+    0.35
+   ],
+   "pair": [
+    "hold_farmer",
+    "aggressive_trader"
+   ],
+   "record": {
+    "names": [
+     "hold_farmer",
+     "aggressive_trader"
+    ],
+    "episodes": 400,
+    "mean": 1.2551312500000003,
+    "stderr": 0.08242081928242743,
+    "ci95": [
+     1.0935864442064425,
+     1.416676055793558
+    ],
+    "std": 1.6484163856485488,
+    "win_rate": 0.8,
+    "loss_rate": 0.2,
+    "tie_rate": 0.0,
+    "farm": [
+     6.179762500000002,
+     4.785881250000001
+    ],
+    "farm_available": [
+     15.25,
+     15.25
+    ],
+    "plates": [
+     0.0,
+     0.0
+    ],
+    "ganks": [
+     1.495,
+     2.575
+    ],
+    "exposure": [
+     -0.673125,
+     -0.074375
+    ],
+    "trades_attempted": [
+     0.0,
+     26.6425
+    ],
+    "trades_connected": [
+     0.0,
+     21.4175
+    ],
+    "yields_threatened": [
+     2.11,
+     0.0
+    ],
+    "recalls": [
+     1.0825,
+     0.7825
+    ],
+    "turns_away": [
+     5.0725,
+     3.6925
+    ],
+    "behaviors": [
+     {
+      "ABSENT": 0.1246875,
+      "H": 0.627578125,
+      "R": 0.180703125,
+      "S": 0.06703125
+     },
+     {
+      "ABSENT": 0.0909375,
+      "R": 0.024453125,
+      "S": 0.05203125,
+      "T": 0.832578125
+     }
+    ],
+    "objectives": [
+     {
+      "Pressure": 0.0,
+      "Vision": 0.0
+     },
+     {
+      "Pressure": 0.0,
+      "Vision": 0.0
+     }
+    ],
+    "waves": [
+     {
+      "SP": 0.8753124999999999,
+      "SH": 0.0,
+      "F": 0.0
+     },
+     {
+      "SP": 0.9090624999999999,
+      "SH": 0.0,
+      "F": 0.0
+     }
+    ],
+    "turns_per_second": 5145.019819826476,
+    "recalls_interrupted": [
+     4.7,
+     0.0
+    ],
+    "trades_landed": [
+     0.0,
+     8.455
+    ],
+    "trade_damage_dealt": [
+     0.0,
+     10.5375
+    ],
+    "tower_damage_taken": [
+     0.0,
+     4.695
+    ],
+    "damage_taken": [
+     13.1375,
+     10.6925
+    ],
+    "gank_damage_taken": [
+     2.6,
+     5.9975
+    ],
+    "deaths": [
+     1.0475,
+     0.77
+    ],
+    "bounty": [
+     0.385,
+     0.52375
+    ]
+   },
+   "hit_rate": [
+    NaN,
+    0.394770631492938
+   ],
+   "damage_per_connected_trade": [
+    NaN,
+    0.49200420217112173
+   ],
+   "damage_per_gank": [
+    1.7391304347826086,
+    2.329126213592233
+   ]
+  },
+  {
+   "skill": [
+    0.65,
+    0.35
+   ],
+   "pair": [
+    "opportunistic_trader",
+    "hold_farmer"
+   ],
+   "record": {
+    "names": [
+     "opportunistic_trader",
+     "hold_farmer"
+    ],
+    "episodes": 400,
+    "mean": 0.23229062500000006,
+    "stderr": 0.065639941742248,
+    "ci95": [
+     0.10363633918519397,
+     0.3609449108148062
+    ],
+    "std": 1.3127988348449602,
+    "win_rate": 0.4625,
+    "loss_rate": 0.37,
+    "tie_rate": 0.1675,
+    "farm": [
+     8.444453125000003,
+     8.389662500000004
+    ],
+    "farm_available": [
+     15.25,
+     15.25
+    ],
+    "plates": [
+     0.0,
+     0.0
+    ],
+    "ganks": [
+     2.215,
+     1.895
+    ],
+    "exposure": [
+     -0.063828125,
+     -0.29703125
+    ],
+    "trades_attempted": [
+     3.665,
+     0.0
+    ],
+    "trades_connected": [
+     2.8,
+     0.0
+    ],
+    "yields_threatened": [
+     0.0,
+     0.865
+    ],
+    "recalls": [
+     0.6425,
+     0.2825
+    ],
+    "turns_away": [
+     1.9775,
+     2.24
+    ],
+    "behaviors": [
+     {
+      "ABSENT": 0.04171875,
+      "H": 0.6684375,
+      "R": 0.020078125,
+      "S": 0.030859375,
+      "T": 0.11453125,
+      "Y": 0.124375
+     },
+     {
+      "ABSENT": 0.061171875,
+      "H": 0.8540625,
+      "R": 0.05671875,
+      "S": 0.028046875
+     }
+    ],
+    "objectives": [
+     {
+      "Pressure": 0.0,
+      "Vision": 0.0
+     },
+     {
+      "Pressure": 0.0,
+      "Vision": 0.0
+     }
+    ],
+    "waves": [
+     {
+      "SP": 0.95828125,
+      "SH": 0.0,
+      "F": 0.0
+     },
+     {
+      "SP": 0.938828125,
+      "SH": 0.0,
+      "F": 0.0
+     }
+    ],
+    "turns_per_second": 5034.135370944882,
+    "recalls_interrupted": [
+     0.0,
+     1.5325
+    ],
+    "trades_landed": [
+     1.7,
+     0.0
+    ],
+    "trade_damage_dealt": [
+     2.34,
+     0.0
+    ],
+    "tower_damage_taken": [
+     1.4925,
+     0.0
+    ],
+    "damage_taken": [
+     5.8975,
+     6.1975
+    ],
+    "gank_damage_taken": [
+     4.405,
+     3.8575
+    ],
+    "deaths": [
+     0.255,
+     0.61
+    ],
+    "bounty": [
+     0.305,
+     0.1275
+    ]
+   },
+   "hit_rate": [
+    0.6071428571428572,
+    NaN
+   ],
+   "damage_per_connected_trade": [
+    0.8357142857142857,
+    NaN
+   ],
+   "damage_per_gank": [
+    1.9887133182844245,
+    2.0356200527704487
+   ]
+  },
+  {
+   "skill": [
+    0.65,
+    0.35
+   ],
+   "pair": [
+    "hold_farmer",
+    "hold_farmer"
+   ],
+   "record": {
+    "names": [
+     "hold_farmer",
+     "hold_farmer"
+    ],
+    "episodes": 400,
+    "mean": 0.07540000000000002,
+    "stderr": 0.05811539682709675,
+    "ci95": [
+     -0.03850617778110961,
+     0.18930617778110964
+    ],
+    "std": 1.162307936541935,
+    "win_rate": 0.365,
+    "loss_rate": 0.305,
+    "tie_rate": 0.33,
+    "farm": [
+     9.393399999999984,
+     9.327999999999987
+    ],
+    "farm_available": [
+     15.25,
+     15.25
+    ],
+    "plates": [
+     0.0,
+     0.0
+    ],
+    "ganks": [
+     2.0975,
+     2.0325
+    ],
+    "exposure": [
+     -0.13375,
+     -0.1396875
+    ],
+    "trades_attempted": [
+     0.0,
+     0.0
+    ],
+    "trades_connected": [
+     0.0,
+     0.0
+    ],
+    "yields_threatened": [
+     0.0,
+     0.0
+    ],
+    "recalls": [
+     0.445,
+     0.485
+    ],
+    "turns_away": [
+     1.14,
+     1.235
+    ],
+    "behaviors": [
+     {
+      "ABSENT": 0.02171875,
+      "H": 0.949921875,
+      "R": 0.01390625,
+      "S": 0.014453125
+     },
+     {
+      "ABSENT": 0.0234375,
+      "H": 0.944609375,
+      "R": 0.01515625,
+      "S": 0.016796875
+     }
+    ],
+    "objectives": [
+     {
+      "Pressure": 0.0,
+      "Vision": 0.0
+     },
+     {
+      "Pressure": 0.0,
+      "Vision": 0.0
+     }
+    ],
+    "waves": [
+     {
+      "SP": 0.97828125,
+      "SH": 0.0,
+      "F": 0.0
+     },
+     {
+      "SP": 0.9765625,
+      "SH": 0.0,
+      "F": 0.0
+     }
+    ],
+    "turns_per_second": 5351.43232333,
+    "recalls_interrupted": [
+     0.0,
+     0.0
+    ],
+    "trades_landed": [
+     0.0,
+     0.0
+    ],
+    "trade_damage_dealt": [
+     0.0,
+     0.0
+    ],
+    "tower_damage_taken": [
+     0.0,
+     0.0
+    ],
+    "damage_taken": [
+     3.8075,
+     4.175
+    ],
+    "gank_damage_taken": [
+     3.8075,
+     4.175
+    ],
+    "deaths": [
+     0.095,
+     0.115
+    ],
+    "bounty": [
+     0.0575,
+     0.0475
+    ]
+   },
+   "hit_rate": [
+    NaN,
+    NaN
+   ],
+   "damage_per_connected_trade": [
+    NaN,
+    NaN
+   ],
+   "damage_per_gank": [
+    1.8152562574493445,
+    2.0541205412054118
+   ]
+  },
+  {
+   "skill": [
+    0.65,
+    0.35
+   ],
+   "pair": [
+    "aggressive_trader",
+    "yield_farmer"
+   ],
+   "record": {
+    "names": [
+     "aggressive_trader",
+     "yield_farmer"
+    ],
+    "episodes": 400,
+    "mean": 8.166712500000008,
+    "stderr": 0.06292895414898533,
+    "ci95": [
+     8.043371749867998,
+     8.290053250132019
+    ],
+    "std": 1.2585790829797066,
+    "win_rate": 1.0,
+    "loss_rate": 0.0,
+    "tie_rate": 0.0,
+    "farm": [
+     13.027037500000016,
+     4.740325000000006
+    ],
+    "farm_available": [
+     15.25,
+     15.25
+    ],
+    "plates": [
+     0.0,
+     0.0
+    ],
+    "ganks": [
+     2.6425,
+     0.6125
+    ],
+    "exposure": [
+     -0.2534375,
+     -1.7115625
+    ],
+    "trades_attempted": [
+     30.395,
+     0.0
+    ],
+    "trades_connected": [
+     0.07,
+     0.0
+    ],
+    "yields_threatened": [
+     0.0,
+     29.2575
+    ],
+    "recalls": [
+     0.2775,
+     0.0075
+    ],
+    "turns_away": [
+     1.315,
+     0.0775
+    ],
+    "behaviors": [
+     {
+      "ABSENT": 0.032421875,
+      "R": 0.008671875,
+      "S": 0.0090625,
+      "T": 0.94984375
+     },
+     {
+      "ABSENT": 0.0021875,
+      "R": 0.002421875,
+      "S": 0.00046875,
+      "Y": 0.994921875
+     }
+    ],
+    "objectives": [
+     {
+      "Pressure": 0.0,
+      "Vision": 0.0
+     },
+     {
+      "Pressure": 0.0,
+      "Vision": 0.0
+     }
+    ],
+    "waves": [
+     {
+      "SP": 0.967578125,
+      "SH": 0.0,
+      "F": 0.0
+     },
+     {
+      "SP": 0.9978125,
+      "SH": 0.0,
+      "F": 0.0
+     }
+    ],
+    "turns_per_second": 5296.314741854617,
+    "recalls_interrupted": [
+     0.0,
+     0.07
+    ],
+    "trades_landed": [
+     0.045,
+     0.0
+    ],
+    "trade_damage_dealt": [
+     0.055,
+     0.0
+    ],
+    "tower_damage_taken": [
+     0.0025,
+     0.0
+    ],
+    "damage_taken": [
+     4.6775,
+     0.61
+    ],
+    "gank_damage_taken": [
+     4.675,
+     0.555
+    ],
+    "deaths": [
+     0.275,
+     0.035
+    ],
+    "bounty": [
+     0.0175,
+     0.1375
+    ]
+   },
+   "hit_rate": [
+    0.6428571428571428,
+    NaN
+   ],
+   "damage_per_connected_trade": [
+    0.7857142857142857,
+    NaN
+   ],
+   "damage_per_gank": [
+    1.7691579943235571,
+    0.9061224489795918
+   ]
+  },
+  {
+   "skill": [
+    0.8,
+    0.2
+   ],
+   "pair": [
+    "aggressive_trader",
+    "aggressive_trader"
+   ],
+   "record": {
+    "names": [
+     "aggressive_trader",
+     "aggressive_trader"
+    ],
+    "episodes": 400,
+    "mean": 1.3752125000000002,
+    "stderr": 0.06924590262922939,
+    "ci95": [
+     1.2394905308467106,
+     1.5109344691532898
+    ],
+    "std": 1.3849180525845879,
+    "win_rate": 0.8325,
+    "loss_rate": 0.165,
+    "tie_rate": 0.0025,
+    "farm": [
+     4.946143750000003,
+     4.203431250000001
+    ],
+    "farm_available": [
+     15.25,
+     15.25
+    ],
+    "plates": [
+     0.0,
+     0.0
+    ],
+    "ganks": [
+     2.5425,
+     1.9125
+    ],
+    "exposure": [
+     -0.065703125,
+     -0.541875
+    ],
+    "trades_attempted": [
+     21.7225,
+     19.2925
+    ],
+    "trades_connected": [
+     14.035,
+     14.8
+    ],
+    "yields_threatened": [
+     1.68,
+     1.2775
+    ],
+    "recalls": [
+     0.6975,
+     0.405
+    ],
+    "turns_away": [
+     5.99,
+     9.07
+    ],
+    "behaviors": [
+     {
+      "ABSENT": 0.165390625,
+      "R": 0.08046875,
+      "S": 0.0753125,
+      "T": 0.678828125
+     },
+     {
+      "ABSENT": 0.27078125,
+      "R": 0.060625,
+      "S": 0.065703125,
+      "T": 0.602890625
+     }
+    ],
+    "objectives": [
+     {
+      "Pressure": 0.0,
+      "Vision": 0.0
+     },
+     {
+      "Pressure": 0.0,
+      "Vision": 0.0
+     }
+    ],
+    "waves": [
+     {
+      "SP": 0.834609375,
+      "SH": 0.0,
+      "F": 0.0
+     },
+     {
+      "SP": 0.72921875,
+      "SH": 0.0,
+      "F": 0.0
+     }
+    ],
+    "turns_per_second": 5105.293080342176,
+    "recalls_interrupted": [
+     1.8775,
+     1.535
+    ],
+    "trades_landed": [
+     10.6275,
+     4.1575
+    ],
+    "trade_damage_dealt": [
+     15.01,
+     4.89
+    ],
+    "tower_damage_taken": [
+     6.1325,
+     3.64
+    ],
+    "damage_taken": [
+     16.445,
+     23.18
+    ],
+    "gank_damage_taken": [
+     5.4225,
+     4.53
+    ],
+    "deaths": [
+     1.665,
+     2.93
+    ],
+    "bounty": [
+     1.465,
+     0.8325
+    ]
+   },
+   "hit_rate": [
+    0.7572141075881724,
+    0.28091216216216214
+   ],
+   "damage_per_connected_trade": [
+    1.0694691841824011,
+    0.33040540540540536
+   ],
+   "damage_per_gank": [
+    2.1327433628318584,
+    2.368627450980392
+   ]
+  },
+  {
+   "skill": [
+    0.8,
+    0.2
+   ],
+   "pair": [
+    "aggressive_trader",
+    "hold_farmer"
+   ],
+   "record": {
+    "names": [
+     "aggressive_trader",
+     "hold_farmer"
+    ],
+    "episodes": 400,
+    "mean": 2.1547500000000004,
+    "stderr": 0.08218015627777549,
+    "ci95": [
+     1.9936768936955604,
+     2.3158231063044403
+    ],
+    "std": 1.6436031255555097,
+    "win_rate": 0.905,
+    "loss_rate": 0.095,
+    "tie_rate": 0.0,
+    "farm": [
+     5.9411000000000005,
+     4.7101000000000015
+    ],
+    "farm_available": [
+     15.25,
+     15.25
+    ],
+    "plates": [
+     0.0,
+     0.0
+    ],
+    "ganks": [
+     2.8125,
+     1.2025
+    ],
+    "exposure": [
+     0.093203125,
+     -0.895390625
+    ],
+    "trades_attempted": [
+     26.685,
+     0.0
+    ],
+    "trades_connected": [
+     17.4325,
+     0.0
+    ],
+    "yields_threatened": [
+     0.0,
+     3.06
+    ],
+    "recalls": [
+     0.85,
+     0.6225
+    ],
+    "turns_away": [
+     3.625,
+     8.415
+    ],
+    "behaviors": [
+     {
+      "ABSENT": 0.08671875,
+      "R": 0.0265625,
+      "S": 0.0528125,
+      "T": 0.83390625
+     },
+     {
+      "ABSENT": 0.243515625,
+      "H": 0.485703125,
+      "R": 0.173125,
+      "S": 0.09765625
+     }
+    ],
+    "objectives": [
+     {
+      "Pressure": 0.0,
+      "Vision": 0.0
+     },
+     {
+      "Pressure": 0.0,
+      "Vision": 0.0
+     }
+    ],
+    "waves": [
+     {
+      "SP": 0.91328125,
+      "SH": 0.0,
+      "F": 0.0
+     },
+     {
+      "SP": 0.756484375,
+      "SH": 0.0,
+      "F": 0.0
+     }
+    ],
+    "turns_per_second": 5168.489736798964,
+    "recalls_interrupted": [
+     0.0,
+     4.9175
+    ],
+    "trades_landed": [
+     13.1225,
+     0.0
+    ],
+    "trade_damage_dealt": [
+     18.5675,
+     0.0
+    ],
+    "tower_damage_taken": [
+     4.905,
+     0.0
+    ],
+    "damage_taken": [
+     10.705,
+     20.9875
+    ],
+    "gank_damage_taken": [
+     5.8,
+     2.42
+    ],
+    "deaths": [
+     0.7,
+     2.5475
+    ],
+    "bounty": [
+     1.27375,
+     0.35
+    ]
+   },
+   "hit_rate": [
+    0.7527606482145418,
+    NaN
+   ],
+   "damage_per_connected_trade": [
+    1.0651082747741287,
+    NaN
+   ],
+   "damage_per_gank": [
+    2.062222222222222,
+    2.0124740124740126
+   ]
+  },
+  {
+   "skill": [
+    0.8,
+    0.2
+   ],
+   "pair": [
+    "hold_farmer",
+    "aggressive_trader"
+   ],
+   "record": {
+    "names": [
+     "hold_farmer",
+     "aggressive_trader"
+    ],
+    "episodes": 400,
+    "mean": 2.4343125000000008,
+    "stderr": 0.07194598182655404,
+    "ci95": [
+     2.2932983756199548,
+     2.575326624380047
+    ],
+    "std": 1.4389196365310808,
+    "win_rate": 0.9425,
+    "loss_rate": 0.0575,
+    "tie_rate": 0.0,
+    "farm": [
+     6.873674999999997,
+     4.516862499999995
+    ],
+    "farm_available": [
+     15.25,
+     15.25
+    ],
+    "plates": [
+     0.0,
+     0.0
+    ],
+    "ganks": [
+     1.575,
+     2.5175
+    ],
+    "exposure": [
+     -0.5609375,
+     -0.148359375
+    ],
+    "trades_attempted": [
+     0.0,
+     26.8575
+    ],
+    "trades_connected": [
+     0.0,
+     22.9875
+    ],
+    "yields_threatened": [
+     1.7025,
+     0.0
+    ],
+    "recalls": [
+     1.1875,
+     0.8075
+    ],
+    "turns_away": [
+     3.8125,
+     3.4575
+    ],
+    "behaviors": [
+     {
+      "ABSENT": 0.08203125,
+      "H": 0.695,
+      "R": 0.168125,
+      "S": 0.05484375
+     },
+     {
+      "ABSENT": 0.0828125,
+      "R": 0.025234375,
+      "S": 0.05265625,
+      "T": 0.839296875
+     }
+    ],
+    "objectives": [
+     {
+      "Pressure": 0.0,
+      "Vision": 0.0
+     },
+     {
+      "Pressure": 0.0,
+      "Vision": 0.0
+     }
+    ],
+    "waves": [
+     {
+      "SP": 0.9179687499999999,
+      "SH": 0.0,
+      "F": 0.0
+     },
+     {
+      "SP": 0.9171875,
+      "SH": 0.0,
+      "F": 0.0
+     }
+    ],
+    "turns_per_second": 4929.85528448925,
+    "recalls_interrupted": [
+     4.1925,
+     0.0
+    ],
+    "trades_landed": [
+     0.0,
+     6.505
+    ],
+    "trade_damage_dealt": [
+     0.0,
+     7.67
+    ],
+    "tower_damage_taken": [
+     0.0,
+     4.1325
+    ],
+    "damage_taken": [
+     10.2775,
+     10.14
+    ],
+    "gank_damage_taken": [
+     2.6075,
+     6.0075
+    ],
+    "deaths": [
+     0.53,
+     0.685
+    ],
+    "bounty": [
+     0.3425,
+     0.265
+    ]
+   },
+   "hit_rate": [
+    NaN,
+    0.2829798803697662
+   ],
+   "damage_per_connected_trade": [
+    NaN,
+    0.33365959760739533
+   ],
+   "damage_per_gank": [
+    1.6555555555555554,
+    2.3862959285004965
+   ]
+  },
+  {
+   "skill": [
+    0.8,
+    0.2
+   ],
+   "pair": [
+    "opportunistic_trader",
+    "hold_farmer"
+   ],
+   "record": {
+    "names": [
+     "opportunistic_trader",
+     "hold_farmer"
+    ],
+    "episodes": 400,
+    "mean": 0.580446875,
+    "stderr": 0.06807451178881621,
+    "ci95": [
+     0.4470208318939203,
+     0.7138729181060798
+    ],
+    "std": 1.361490235776324,
+    "win_rate": 0.555,
+    "loss_rate": 0.2775,
+    "tie_rate": 0.1675,
+    "farm": [
+     8.625396875,
+     8.319949999999999
+    ],
+    "farm_available": [
+     15.25,
+     15.25
+    ],
+    "plates": [
+     0.0,
+     0.0
+    ],
+    "ganks": [
+     2.225,
+     1.87
+    ],
+    "exposure": [
+     -0.051875,
+     -0.3053125
+    ],
+    "trades_attempted": [
+     3.3675,
+     0.0
+    ],
+    "trades_connected": [
+     2.46,
+     0.0
+    ],
+    "yields_threatened": [
+     0.0,
+     0.9075
+    ],
+    "recalls": [
+     0.6275,
+     0.2075
+    ],
+    "turns_away": [
+     1.8,
+     2.465
+    ],
+    "behaviors": [
+     {
+      "ABSENT": 0.036640625,
+      "H": 0.681640625,
+      "R": 0.019609375,
+      "S": 0.02890625,
+      "T": 0.105234375,
+      "Y": 0.12796875
+     },
+     {
+      "ABSENT": 0.070546875,
+      "H": 0.848671875,
+      "R": 0.051171875,
+      "S": 0.029609375
+     }
+    ],
+    "objectives": [
+     {
+      "Pressure": 0.0,
+      "Vision": 0.0
+     },
+     {
+      "Pressure": 0.0,
+      "Vision": 0.0
+     }
+    ],
+    "waves": [
+     {
+      "SP": 0.963359375,
+      "SH": 0.0,
+      "F": 0.0
+     },
+     {
+      "SP": 0.929453125,
+      "SH": 0.0,
+      "F": 0.0
+     }
+    ],
+    "turns_per_second": 5134.806729048829,
+    "recalls_interrupted": [
+     0.0,
+     1.43
+    ],
+    "trades_landed": [
+     1.7975,
+     0.0
+    ],
+    "trade_damage_dealt": [
+     2.5825,
+     0.0
+    ],
+    "tower_damage_taken": [
+     1.41,
+     0.0
+    ],
+    "damage_taken": [
+     5.4875,
+     6.62
+    ],
+    "gank_damage_taken": [
+     4.0775,
+     4.0375
+    ],
+    "deaths": [
+     0.195,
+     0.745
+    ],
+    "bounty": [
+     0.3725,
+     0.0975
+    ]
+   },
+   "hit_rate": [
+    0.7306910569105691,
+    NaN
+   ],
+   "damage_per_connected_trade": [
+    1.0497967479674797,
+    NaN
+   ],
+   "damage_per_gank": [
+    1.832584269662921,
+    2.1590909090909087
+   ]
+  },
+  {
+   "skill": [
+    0.8,
+    0.2
+   ],
+   "pair": [
+    "hold_farmer",
+    "hold_farmer"
+   ],
+   "record": {
+    "names": [
+     "hold_farmer",
+     "hold_farmer"
+    ],
+    "episodes": 400,
+    "mean": 0.21315,
+    "stderr": 0.058049403760438024,
+    "ci95": [
+     0.09937316862954149,
+     0.3269268313704585
+    ],
+    "std": 1.1609880752087605,
+    "win_rate": 0.4025,
+    "loss_rate": 0.2725,
+    "tie_rate": 0.325,
+    "farm": [
+     9.446299999999985,
+     9.263149999999989
+    ],
+    "farm_available": [
+     15.25,
+     15.25
+    ],
+    "plates": [
+     0.0,
+     0.0
+    ],
+    "ganks": [
+     2.115,
+     2.025
+    ],
+    "exposure": [
+     -0.12828125,
+     -0.14859375
+    ],
+    "trades_attempted": [
+     0.0,
+     0.0
+    ],
+    "trades_connected": [
+     0.0,
+     0.0
+    ],
+    "yields_threatened": [
+     0.0,
+     0.0
+    ],
+    "recalls": [
+     0.43,
+     0.5225
+    ],
+    "turns_away": [
+     1.0525,
+     1.3775
+    ],
+    "behaviors": [
+     {
+      "ABSENT": 0.019453125,
+      "H": 0.95296875,
+      "R": 0.0134375,
+      "S": 0.014140625
+     },
+     {
+      "ABSENT": 0.02671875,
+      "H": 0.9390625,
+      "R": 0.016328125,
+      "S": 0.017890625
+     }
+    ],
+    "objectives": [
+     {
+      "Pressure": 0.0,
+      "Vision": 0.0
+     },
+     {
+      "Pressure": 0.0,
+      "Vision": 0.0
+     }
+    ],
+    "waves": [
+     {
+      "SP": 0.980546875,
+      "SH": 0.0,
+      "F": 0.0
+     },
+     {
+      "SP": 0.9732812500000001,
+      "SH": 0.0,
+      "F": 0.0
+     }
+    ],
+    "turns_per_second": 5489.28035734714,
+    "recalls_interrupted": [
+     0.0,
+     0.0
+    ],
+    "trades_landed": [
+     0.0,
+     0.0
+    ],
+    "trade_damage_dealt": [
+     0.0,
+     0.0
+    ],
+    "tower_damage_taken": [
+     0.0,
+     0.0
+    ],
+    "damage_taken": [
+     3.575,
+     4.4225
+    ],
+    "gank_damage_taken": [
+     3.575,
+     4.4225
+    ],
+    "deaths": [
+     0.075,
+     0.135
+    ],
+    "bounty": [
+     0.0675,
+     0.0375
+    ]
+   },
+   "hit_rate": [
+    NaN,
+    NaN
+   ],
+   "damage_per_connected_trade": [
+    NaN,
+    NaN
+   ],
+   "damage_per_gank": [
+    1.6903073286052008,
+    2.183950617283951
+   ]
+  },
+  {
+   "skill": [
+    0.8,
+    0.2
+   ],
+   "pair": [
+    "aggressive_trader",
+    "yield_farmer"
+   ],
+   "record": {
+    "names": [
+     "aggressive_trader",
+     "yield_farmer"
+    ],
+    "episodes": 400,
+    "mean": 8.253725000000008,
+    "stderr": 0.0620494436484342,
+    "ci95": [
+     8.132108090449076,
+     8.37534190955094
+    ],
+    "std": 1.240988872968684,
+    "win_rate": 1.0,
+    "loss_rate": 0.0,
+    "tie_rate": 0.0,
+    "farm": [
+     13.079700000000026,
+     4.717225000000004
+    ],
+    "farm_available": [
+     15.25,
+     15.25
+    ],
+    "plates": [
+     0.0,
+     0.0
+    ],
+    "ganks": [
+     2.665,
+     0.57
+    ],
+    "exposure": [
+     -0.23515625,
+     -1.730859375
+    ],
+    "trades_attempted": [
+     30.4975,
+     0.0
+    ],
+    "trades_connected": [
+     0.0375,
+     0.0
+    ],
+    "yields_threatened": [
+     0.0,
+     29.4075
+    ],
+    "recalls": [
+     0.2775,
+     0.005
+    ],
+    "turns_away": [
+     1.21,
+     0.06
+    ],
+    "behaviors": [
+     {
+      "ABSENT": 0.029140625,
+      "R": 0.008671875,
+      "S": 0.009140625,
+      "T": 0.953046875
+     },
+     {
+      "ABSENT": 0.00171875,
+      "R": 0.001328125,
+      "S": 0.000390625,
+      "Y": 0.9965625
+     }
+    ],
+    "objectives": [
+     {
+      "Pressure": 0.0,
+      "Vision": 0.0
+     },
+     {
+      "Pressure": 0.0,
+      "Vision": 0.0
+     }
+    ],
+    "waves": [
+     {
+      "SP": 0.970859375,
+      "SH": 0.0,
+      "F": 0.0
+     },
+     {
+      "SP": 0.99828125,
+      "SH": 0.0,
+      "F": 0.0
+     }
+    ],
+    "turns_per_second": 5040.581207504781,
+    "recalls_interrupted": [
+     0.0,
+     0.0375
+    ],
+    "trades_landed": [
+     0.0275,
+     0.0
+    ],
+    "trade_damage_dealt": [
+     0.035,
+     0.0
+    ],
+    "tower_damage_taken": [
+     0.0075,
+     0.0
+    ],
+    "damage_taken": [
+     4.43,
+     0.5325
+    ],
+    "gank_damage_taken": [
+     4.4225,
+     0.4975
+    ],
+    "deaths": [
+     0.2425,
+     0.025
+    ],
+    "bounty": [
+     0.0125,
+     0.12125
+    ]
+   },
+   "hit_rate": [
+    0.7333333333333334,
+    NaN
+   ],
+   "damage_per_connected_trade": [
+    0.9333333333333335,
+    NaN
+   ],
+   "damage_per_gank": [
+    1.6594746716697937,
+    0.8728070175438597
+   ]
+  },
+  {
+   "skill": [
+    1.0,
+    0.0
+   ],
+   "pair": [
+    "aggressive_trader",
+    "aggressive_trader"
+   ],
+   "record": {
+    "names": [
+     "aggressive_trader",
+     "aggressive_trader"
+    ],
+    "episodes": 400,
+    "mean": 2.2482625,
+    "stderr": 0.07464629491707203,
+    "ci95": [
+     2.1019557619625386,
+     2.3945692380374615
+    ],
+    "std": 1.4929258983414406,
+    "win_rate": 0.9175,
+    "loss_rate": 0.0775,
+    "tie_rate": 0.005,
+    "farm": [
+     5.137421874999998,
+     3.907909374999999
+    ],
+    "farm_available": [
+     15.25,
+     15.25
+    ],
+    "plates": [
+     0.0,
+     0.0
+    ],
+    "ganks": [
+     2.6275,
+     1.7375
+    ],
+    "exposure": [
+     0.076171875,
+     -0.697421875
+    ],
+    "trades_attempted": [
+     22.2975,
+     18.1825
+    ],
+    "trades_connected": [
+     13.755,
+     14.6
+    ],
+    "yields_threatened": [
+     1.4225,
+     1.1975
+    ],
+    "recalls": [
+     0.7675,
+     0.4225
+    ],
+    "turns_away": [
+     5.3875,
+     10.425
+    ],
+    "behaviors": [
+     {
+      "ABSENT": 0.144375,
+      "R": 0.08375,
+      "S": 0.075078125,
+      "T": 0.696796875
+     },
+     {
+      "ABSENT": 0.312578125,
+      "R": 0.058828125,
+      "S": 0.060390625,
+      "T": 0.568203125
+     }
+    ],
+    "objectives": [
+     {
+      "Pressure": 0.0,
+      "Vision": 0.0
+     },
+     {
+      "Pressure": 0.0,
+      "Vision": 0.0
+     }
+    ],
+    "waves": [
+     {
+      "SP": 0.855625,
+      "SH": 0.0,
+      "F": 0.0
+     },
+     {
+      "SP": 0.6874218750000001,
+      "SH": 0.0,
+      "F": 0.0
+     }
+    ],
+    "turns_per_second": 5377.856382093144,
+    "recalls_interrupted": [
+     1.9125,
+     1.46
+    ],
+    "trades_landed": [
+     12.675,
+     2.155
+    ],
+    "trade_damage_dealt": [
+     19.01,
+     2.36
+    ],
+    "tower_damage_taken": [
+     7.115,
+     3.06
+    ],
+    "damage_taken": [
+     14.885,
+     26.4075
+    ],
+    "gank_damage_taken": [
+     5.41,
+     4.3375
+    ],
+    "deaths": [
+     1.385,
+     3.4225
+    ],
+    "bounty": [
+     1.71125,
+     0.6925
+    ]
+   },
+   "hit_rate": [
+    0.9214830970556162,
+    0.1476027397260274
+   ],
+   "damage_per_connected_trade": [
+    1.3820428934932751,
+    0.16164383561643836
+   ],
+   "damage_per_gank": [
+    2.058991436726927,
+    2.4964028776978417
+   ]
+  },
+  {
+   "skill": [
+    1.0,
+    0.0
+   ],
+   "pair": [
+    "aggressive_trader",
+    "hold_farmer"
+   ],
+   "record": {
+    "names": [
+     "aggressive_trader",
+     "hold_farmer"
+    ],
+    "episodes": 400,
+    "mean": 3.5416875000000005,
+    "stderr": 0.07850373779623061,
+    "ci95": [
+     3.3878201739193887,
+     3.6955548260806124
+    ],
+    "std": 1.5700747559246122,
+    "win_rate": 0.9825,
+    "loss_rate": 0.0175,
+    "tie_rate": 0.0,
+    "farm": [
+     6.506137500000003,
+     4.196950000000003
+    ],
+    "farm_available": [
+     15.25,
+     15.25
+    ],
+    "plates": [
+     0.0,
+     0.0
+    ],
+    "ganks": [
+     2.9575,
+     1.125
+    ],
+    "exposure": [
+     0.13953125,
+     -0.96375
+    ],
+    "trades_attempted": [
+     26.98,
+     0.0
+    ],
+    "trades_connected": [
+     15.9575,
+     0.0
+    ],
+    "yields_threatened": [
+     0.0,
+     3.495
+    ],
+    "recalls": [
+     0.7875,
+     0.5175
+    ],
+    "turns_away": [
+     3.4825,
+     9.7175
+    ],
+    "behaviors": [
+     {
+      "ABSENT": 0.08421875,
+      "R": 0.024609375,
+      "S": 0.048046875,
+      "T": 0.843125
+     },
+     {
+      "ABSENT": 0.2875,
+      "H": 0.438359375,
+      "R": 0.163125,
+      "S": 0.111015625
+     }
+    ],
+    "objectives": [
+     {
+      "Pressure": 0.0,
+      "Vision": 0.0
+     },
+     {
+      "Pressure": 0.0,
+      "Vision": 0.0
+     }
+    ],
+    "waves": [
+     {
+      "SP": 0.9157812500000001,
+      "SH": 0.0,
+      "F": 0.0
+     },
+     {
+      "SP": 0.7124999999999999,
+      "SH": 0.0,
+      "F": 0.0
+     }
+    ],
+    "turns_per_second": 5217.4207228019695,
+    "recalls_interrupted": [
+     0.0,
+     4.7025
+    ],
+    "trades_landed": [
+     14.4175,
+     0.0
+    ],
+    "trade_damage_dealt": [
+     21.61,
+     0.0
+    ],
+    "tower_damage_taken": [
+     4.7025,
+     0.0
+    ],
+    "damage_taken": [
+     10.46,
+     24.065
+    ],
+    "gank_damage_taken": [
+     5.7575,
+     2.455
+    ],
+    "deaths": [
+     0.7,
+     3.165
+    ],
+    "bounty": [
+     1.5825,
+     0.35
+    ]
+   },
+   "hit_rate": [
+    0.90349365502115,
+    NaN
+   ],
+   "damage_per_connected_trade": [
+    1.3542221525928246,
+    NaN
+   ],
+   "damage_per_gank": [
+    1.9467455621301777,
+    2.1822222222222223
+   ]
+  },
+  {
+   "skill": [
+    1.0,
+    0.0
+   ],
+   "pair": [
+    "hold_farmer",
+    "aggressive_trader"
+   ],
+   "record": {
+    "names": [
+     "hold_farmer",
+     "aggressive_trader"
+    ],
+    "episodes": 400,
+    "mean": 3.7931875000000006,
+    "stderr": 0.05965030579500803,
+    "ci95": [
+     3.6762729006417847,
+     3.9101020993582165
+    ],
+    "std": 1.1930061159001606,
+    "win_rate": 0.995,
+    "loss_rate": 0.005,
+    "tie_rate": 0.0,
+    "farm": [
+     7.978424999999996,
+     4.4014874999999964
+    ],
+    "farm_available": [
+     15.25,
+     15.25
+    ],
+    "plates": [
+     0.0,
+     0.0
+    ],
+    "ganks": [
+     1.845,
+     2.4675
+    ],
+    "exposure": [
+     -0.373359375,
+     -0.25421875
+    ],
+    "trades_attempted": [
+     0.0,
+     27.8675
+    ],
+    "trades_connected": [
+     0.0,
+     25.3925
+    ],
+    "yields_threatened": [
+     1.09,
+     0.0
+    ],
+    "recalls": [
+     0.89,
+     0.6225
+    ],
+    "turns_away": [
+     2.2075,
+     2.91
+    ],
+    "behaviors": [
+     {
+      "ABSENT": 0.041171875,
+      "H": 0.807109375,
+      "R": 0.116015625,
+      "S": 0.035703125
+     },
+     {
+      "ABSENT": 0.071484375,
+      "R": 0.019453125,
+      "S": 0.038203125,
+      "T": 0.870859375
+     }
+    ],
+    "objectives": [
+     {
+      "Pressure": 0.0,
+      "Vision": 0.0
+     },
+     {
+      "Pressure": 0.0,
+      "Vision": 0.0
+     }
+    ],
+    "waves": [
+     {
+      "SP": 0.9588281249999999,
+      "SH": 0.0,
+      "F": 0.0
+     },
+     {
+      "SP": 0.928515625,
+      "SH": 0.0,
+      "F": 0.0
+     }
+    ],
+    "turns_per_second": 4986.043557647619,
+    "recalls_interrupted": [
+     2.8225,
+     0.0
+    ],
+    "trades_landed": [
+     0.0,
+     3.695
+    ],
+    "trade_damage_dealt": [
+     0.0,
+     4.045
+    ],
+    "tower_damage_taken": [
+     0.0,
+     2.71
+    ],
+    "damage_taken": [
+     6.8575,
+     8.6825
+    ],
+    "gank_damage_taken": [
+     2.8125,
+     5.9725
+    ],
+    "deaths": [
+     0.175,
+     0.6075
+    ],
+    "bounty": [
+     0.30375,
+     0.0875
+    ]
+   },
+   "hit_rate": [
+    NaN,
+    0.14551540809294083
+   ],
+   "damage_per_connected_trade": [
+    NaN,
+    0.15929900561189328
+   ],
+   "damage_per_gank": [
+    1.524390243902439,
+    2.4204660587639313
+   ]
+  },
+  {
+   "skill": [
+    1.0,
+    0.0
+   ],
+   "pair": [
+    "opportunistic_trader",
+    "hold_farmer"
+   ],
+   "record": {
+    "names": [
+     "opportunistic_trader",
+     "hold_farmer"
+    ],
+    "episodes": 400,
+    "mean": 0.911275,
+    "stderr": 0.06938692277709783,
+    "ci95": [
+     0.7752766313568882,
+     1.0472733686431117
+    ],
+    "std": 1.3877384555419567,
+    "win_rate": 0.6425,
+    "loss_rate": 0.1875,
+    "tie_rate": 0.17,
+    "farm": [
+     8.846450000000006,
+     8.291424999999993
+    ],
+    "farm_available": [
+     15.25,
+     15.25
+    ],
+    "plates": [
+     0.0,
+     0.0
+    ],
+    "ganks": [
+     2.1875,
+     1.85
+    ],
+    "exposure": [
+     -0.04140625,
+     -0.3065625
+    ],
+    "trades_attempted": [
+     3.0025,
+     0.0
+    ],
+    "trades_connected": [
+     2.09,
+     0.0
+    ],
+    "yields_threatened": [
+     0.0,
+     0.9125
+    ],
+    "recalls": [
+     0.575,
+     0.1275
+    ],
+    "turns_away": [
+     1.5625,
+     2.65
+    ],
+    "behaviors": [
+     {
+      "ABSENT": 0.030859375,
+      "H": 0.70625,
+      "R": 0.01796875,
+      "S": 0.024921875,
+      "T": 0.093828125,
+      "Y": 0.126171875
+     },
+     {
+      "ABSENT": 0.078828125,
+      "H": 0.84875,
+      "R": 0.04328125,
+      "S": 0.029140625
+     }
+    ],
+    "objectives": [
+     {
+      "Pressure": 0.0,
+      "Vision": 0.0
+     },
+     {
+      "Pressure": 0.0,
+      "Vision": 0.0
+     }
+    ],
+    "waves": [
+     {
+      "SP": 0.969140625,
+      "SH": 0.0,
+      "F": 0.0
+     },
+     {
+      "SP": 0.9211718750000001,
+      "SH": 0.0,
+      "F": 0.0
+     }
+    ],
+    "turns_per_second": 5177.206893853981,
+    "recalls_interrupted": [
+     0.0,
+     1.2575
+    ],
+    "trades_landed": [
+     1.8175,
+     0.0
+    ],
+    "trade_damage_dealt": [
+     2.7475,
+     0.0
+    ],
+    "tower_damage_taken": [
+     1.2525,
+     0.0
+    ],
+    "damage_taken": [
+     4.89,
+     7.0675
+    ],
+    "gank_damage_taken": [
+     3.6375,
+     4.32
+    ],
+    "deaths": [
+     0.155,
+     0.8675
+    ],
+    "bounty": [
+     0.43375,
+     0.0775
+    ]
+   },
+   "hit_rate": [
+    0.8696172248803827,
+    NaN
+   ],
+   "damage_per_connected_trade": [
+    1.3145933014354068,
+    NaN
+   ],
+   "damage_per_gank": [
+    1.662857142857143,
+    2.3351351351351353
+   ]
+  },
+  {
+   "skill": [
+    1.0,
+    0.0
+   ],
+   "pair": [
+    "hold_farmer",
+    "hold_farmer"
+   ],
+   "record": {
+    "names": [
+     "hold_farmer",
+     "hold_farmer"
+    ],
+    "episodes": 400,
+    "mean": 0.37542499999999995,
+    "stderr": 0.05844275779156223,
+    "ci95": [
+     0.260877194728538,
+     0.4899728052714619
+    ],
+    "std": 1.1688551558312446,
+    "win_rate": 0.4525,
+    "loss_rate": 0.22,
+    "tie_rate": 0.3275,
+    "farm": [
+     9.514137499999988,
+     9.204962499999985
+    ],
+    "farm_available": [
+     15.25,
+     15.25
+    ],
+    "plates": [
+     0.0,
+     0.0
+    ],
+    "ganks": [
+     2.12,
+     2.0025
+    ],
+    "exposure": [
+     -0.1196875,
+     -0.1559375
+    ],
+    "trades_attempted": [
+     0.0,
+     0.0
+    ],
+    "trades_connected": [
+     0.0,
+     0.0
+    ],
+    "yields_threatened": [
+     0.0,
+     0.0
+    ],
+    "recalls": [
+     0.3825,
+     0.5025
+    ],
+    "turns_away": [
+     0.915,
+     1.495
+    ],
+    "behaviors": [
+     {
+      "ABSENT": 0.016640625,
+      "H": 0.95890625,
+      "R": 0.011953125,
+      "S": 0.0125
+     },
+     {
+      "ABSENT": 0.031015625,
+      "H": 0.936015625,
+      "R": 0.015703125,
+      "S": 0.017265625
+     }
+    ],
+    "objectives": [
+     {
+      "Pressure": 0.0,
+      "Vision": 0.0
+     },
+     {
+      "Pressure": 0.0,
+      "Vision": 0.0
+     }
+    ],
+    "waves": [
+     {
+      "SP": 0.9833593749999999,
+      "SH": 0.0,
+      "F": 0.0
+     },
+     {
+      "SP": 0.968984375,
+      "SH": 0.0,
+      "F": 0.0
+     }
+    ],
+    "turns_per_second": 5506.523121953066,
+    "recalls_interrupted": [
+     0.0,
+     0.0
+    ],
+    "trades_landed": [
+     0.0,
+     0.0
+    ],
+    "trade_damage_dealt": [
+     0.0,
+     0.0
+    ],
+    "tower_damage_taken": [
+     0.0,
+     0.0
+    ],
+    "damage_taken": [
+     3.29,
+     4.7175
+    ],
+    "gank_damage_taken": [
+     3.29,
+     4.7175
+    ],
+    "deaths": [
+     0.06,
+     0.1925
+    ],
+    "bounty": [
+     0.09625,
+     0.03
+    ]
+   },
+   "hit_rate": [
+    NaN,
+    NaN
+   ],
+   "damage_per_connected_trade": [
+    NaN,
+    NaN
+   ],
+   "damage_per_gank": [
+    1.5518867924528301,
+    2.355805243445693
+   ]
+  },
+  {
+   "skill": [
+    1.0,
+    0.0
+   ],
+   "pair": [
+    "aggressive_trader",
+    "yield_farmer"
+   ],
+   "record": {
+    "names": [
+     "aggressive_trader",
+     "yield_farmer"
+    ],
+    "episodes": 400,
+    "mean": 8.387150000000009,
+    "stderr": 0.059798788084634166,
+    "ci95": [
+     8.269944375354125,
+     8.504355624645893
+    ],
+    "std": 1.1959757616926834,
+    "win_rate": 1.0,
+    "loss_rate": 0.0,
+    "tie_rate": 0.0,
+    "farm": [
+     13.150725000000024,
+     4.672325000000003
+    ],
+    "farm_available": [
+     15.25,
+     15.25
+    ],
+    "plates": [
+     0.0,
+     0.0
+    ],
+    "ganks": [
+     2.705,
+     0.53
+    ],
+    "exposure": [
+     -0.20015625,
+     -1.769375
+    ],
+    "trades_attempted": [
+     30.6525,
+     0.0
+    ],
+    "trades_connected": [
+     0.025,
+     0.0
+    ],
+    "yields_threatened": [
+     0.0,
+     29.5825
+    ],
+    "recalls": [
+     0.255,
+     0.005
+    ],
+    "turns_away": [
+     1.07,
+     0.0525
+    ],
+    "behaviors": [
+     {
+      "ABSENT": 0.02546875,
+      "R": 0.00796875,
+      "S": 0.008671875,
+      "T": 0.957890625
+     },
+     {
+      "ABSENT": 0.001484375,
+      "R": 0.0009375,
+      "S": 0.0003125,
+      "Y": 0.997265625
+     }
+    ],
+    "objectives": [
+     {
+      "Pressure": 0.0,
+      "Vision": 0.0
+     },
+     {
+      "Pressure": 0.0,
+      "Vision": 0.0
+     }
+    ],
+    "waves": [
+     {
+      "SP": 0.97453125,
+      "SH": 0.0,
+      "F": 0.0
+     },
+     {
+      "SP": 0.9985156250000001,
+      "SH": 0.0,
+      "F": 0.0
+     }
+    ],
+    "turns_per_second": 5085.784267205357,
+    "recalls_interrupted": [
+     0.0,
+     0.025
+    ],
+    "trades_landed": [
+     0.0225,
+     0.0
+    ],
+    "trade_damage_dealt": [
+     0.03,
+     0.0
+    ],
+    "tower_damage_taken": [
+     0.005,
+     0.0
+    ],
+    "damage_taken": [
+     4.1175,
+     0.575
+    ],
+    "gank_damage_taken": [
+     4.1125,
+     0.545
+    ],
+    "deaths": [
+     0.205,
+     0.0225
+    ],
+    "bounty": [
+     0.01125,
+     0.1025
+    ]
+   },
+   "hit_rate": [
+    0.8999999999999999,
+    NaN
+   ],
+   "damage_per_connected_trade": [
+    1.2,
+    NaN
+   ],
+   "damage_per_gank": [
+    1.520332717190388,
+    1.028301886792453
+   ]
+  },
+  {
+   "skill": [
+    0.35,
+    0.65
+   ],
+   "pair": [
+    "aggressive_trader",
+    "aggressive_trader"
+   ],
+   "record": {
+    "names": [
+     "aggressive_trader",
+     "aggressive_trader"
+    ],
+    "episodes": 400,
+    "mean": -0.8852375000000001,
+    "stderr": 0.07819800683788508,
+    "ci95": [
+     -1.038505593402255,
+     -0.7319694065977453
+    ],
+    "std": 1.5639601367577016,
+    "win_rate": 0.27,
+    "loss_rate": 0.7275,
+    "tie_rate": 0.0025,
+    "farm": [
+     4.245734375000001,
+     4.777221875
+    ],
+    "farm_available": [
+     15.25,
+     15.25
+    ],
+    "plates": [
+     0.0,
+     0.0
+    ],
+    "ganks": [
+     2.1625,
+     2.3325
+    ],
+    "exposure": [
+     -0.4603125,
+     -0.16234375
+    ],
+    "trades_attempted": [
+     19.745,
+     21.46
+    ],
+    "trades_connected": [
+     14.88,
+     14.58
+    ],
+    "yields_threatened": [
+     1.4575,
+     1.6525
+    ],
+    "recalls": [
+     0.4975,
+     0.605
+    ],
+    "turns_away": [
+     8.465,
+     6.5725
+    ],
+    "behaviors": [
+     {
+      "ABSENT": 0.248984375,
+      "R": 0.06578125,
+      "S": 0.068203125,
+      "T": 0.61703125
+     },
+     {
+      "ABSENT": 0.186484375,
+      "R": 0.0696875,
+      "S": 0.073203125,
+      "T": 0.670625
+     }
+    ],
+    "objectives": [
+     {
+      "Pressure": 0.0,
+      "Vision": 0.0
+     },
+     {
+      "Pressure": 0.0,
+      "Vision": 0.0
+     }
+    ],
+    "waves": [
+     {
+      "SP": 0.7510156250000001,
+      "SH": 0.0,
+      "F": 0.0
+     },
+     {
+      "SP": 0.8135156250000001,
+      "SH": 0.0,
+      "F": 0.0
+     }
+    ],
+    "turns_per_second": 4890.620321225657,
+    "recalls_interrupted": [
+     1.6075,
+     1.625
+    ],
+    "trades_landed": [
+     5.8575,
+     9.34
+    ],
+    "trade_damage_dealt": [
+     7.2275,
+     12.74
+    ],
+    "tower_damage_taken": [
+     3.935,
+     5.44
+    ],
+    "damage_taken": [
+     21.64,
+     17.8475
+    ],
+    "gank_damage_taken": [
+     4.965,
+     5.18
+    ],
+    "deaths": [
+     2.6475,
+     1.94
+    ],
+    "bounty": [
+     0.97,
+     1.32375
+    ]
+   },
+   "hit_rate": [
+    0.39364919354838707,
+    0.6406035665294925
+   ],
+   "damage_per_connected_trade": [
+    0.4857190860215054,
+    0.8737997256515775
+   ],
+   "damage_per_gank": [
+    2.2959537572254334,
+    2.220793140407288
+   ]
+  },
+  {
+   "skill": [
+    0.35,
+    0.65
+   ],
+   "pair": [
+    "aggressive_trader",
+    "hold_farmer"
+   ],
+   "record": {
+    "names": [
+     "aggressive_trader",
+     "hold_farmer"
+    ],
+    "episodes": 400,
+    "mean": -1.5248812500000002,
+    "stderr": 0.07588548112772339,
+    "ci95": [
+     -1.673616793010338,
+     -1.3761457069896623
+    ],
+    "std": 1.5177096225544677,
+    "win_rate": 0.16,
+    "loss_rate": 0.84,
+    "tie_rate": 0.0,
+    "farm": [
+     4.624731250000004,
+     6.1958625000000005
+    ],
+    "farm_available": [
+     15.25,
+     15.25
+    ],
+    "plates": [
+     0.0,
+     0.0
+    ],
+    "ganks": [
+     2.64,
+     1.385
+    ],
+    "exposure": [
+     -0.081484375,
+     -0.675234375
+    ],
+    "trades_attempted": [
+     26.38,
+     0.0
+    ],
+    "trades_connected": [
+     21.4875,
+     0.0
+    ],
+    "yields_threatened": [
+     0.0,
+     2.0975
+    ],
+    "recalls": [
+     0.81,
+     1.1875
+    ],
+    "turns_away": [
+     3.86,
+     4.8525
+    ],
+    "behaviors": [
+     {
+      "ABSENT": 0.0953125,
+      "R": 0.0253125,
+      "S": 0.055,
+      "T": 0.824375
+     },
+     {
+      "ABSENT": 0.11453125,
+      "H": 0.62703125,
+      "R": 0.191953125,
+      "S": 0.066484375
+     }
+    ],
+    "objectives": [
+     {
+      "Pressure": 0.0,
+      "Vision": 0.0
+     },
+     {
+      "Pressure": 0.0,
+      "Vision": 0.0
+     }
+    ],
+    "waves": [
+     {
+      "SP": 0.9046875,
+      "SH": 0.0,
+      "F": 0.0
+     },
+     {
+      "SP": 0.88546875,
+      "SH": 0.0,
+      "F": 0.0
+     }
+    ],
+    "turns_per_second": 5047.065860893639,
+    "recalls_interrupted": [
+     0.0,
+     4.955
+    ],
+    "trades_landed": [
+     8.45,
+     0.0
+    ],
+    "trade_damage_dealt": [
+     10.36,
+     0.0
+    ],
+    "tower_damage_taken": [
+     4.9475,
+     0.0
+    ],
+    "damage_taken": [
+     11.1275,
+     12.72
+    ],
+    "gank_damage_taken": [
+     6.18,
+     2.36
+    ],
+    "deaths": [
+     0.805,
+     0.8975
+    ],
+    "bounty": [
+     0.44875,
+     0.4025
+    ]
+   },
+   "hit_rate": [
+    0.39325189063408955,
+    NaN
+   ],
+   "damage_per_connected_trade": [
+    0.48214077952297846,
+    NaN
+   ],
+   "damage_per_gank": [
+    2.340909090909091,
+    1.7039711191335738
+   ]
+  },
+  {
+   "skill": [
+    0.35,
+    0.65
+   ],
+   "pair": [
+    "hold_farmer",
+    "aggressive_trader"
+   ],
+   "record": {
+    "names": [
+     "hold_farmer",
+     "aggressive_trader"
+    ],
+    "episodes": 400,
+    "mean": -1.1470687499999999,
+    "stderr": 0.0888443676737697,
+    "ci95": [
+     -1.3212037106405885,
+     -0.9729337893594112
+    ],
+    "std": 1.776887353475394,
+    "win_rate": 0.25,
+    "loss_rate": 0.75,
+    "tie_rate": 0.0,
+    "farm": [
+     5.069612500000008,
+     5.552931249999997
+    ],
+    "farm_available": [
+     15.25,
+     15.25
+    ],
+    "plates": [
+     0.0,
+     0.0
+    ],
+    "ganks": [
+     1.295,
+     2.6575
+    ],
+    "exposure": [
+     -0.84703125,
+     0.073515625
+    ],
+    "trades_attempted": [
+     0.0,
+     26.6575
+    ],
+    "trades_connected": [
+     0.0,
+     18.5525
+    ],
+    "yields_threatened": [
+     2.785,
+     0.0
+    ],
+    "recalls": [
+     0.8325,
+     0.835
+    ],
+    "turns_away": [
+     7.365,
+     3.6725
+    ],
+    "behaviors": [
+     {
+      "ABSENT": 0.204140625,
+      "H": 0.518671875,
+      "R": 0.188359375,
+      "S": 0.088828125
+     },
+     {
+      "ABSENT": 0.088671875,
+      "R": 0.02609375,
+      "S": 0.0521875,
+      "T": 0.833046875
+     }
+    ],
+    "objectives": [
+     {
+      "Pressure": 0.0,
+      "Vision": 0.0
+     },
+     {
+      "Pressure": 0.0,
+      "Vision": 0.0
+     }
+    ],
+    "waves": [
+     {
+      "SP": 0.795859375,
+      "SH": 0.0,
+      "F": 0.0
+     },
+     {
+      "SP": 0.911328125,
+      "SH": 0.0,
+      "F": 0.0
+     }
+    ],
+    "turns_per_second": 4981.881907573432,
+    "recalls_interrupted": [
+     5.195,
+     0.0
+    ],
+    "trades_landed": [
+     0.0,
+     11.71
+    ],
+    "trade_damage_dealt": [
+     0.0,
+     16.065
+    ],
+    "tower_damage_taken": [
+     0.0,
+     5.18
+    ],
+    "damage_taken": [
+     18.615,
+     10.9375
+    ],
+    "gank_damage_taken": [
+     2.55,
+     5.7575
+    ],
+    "deaths": [
+     2.075,
+     0.7475
+    ],
+    "bounty": [
+     0.37375,
+     1.0375
+    ]
+   },
+   "hit_rate": [
+    NaN,
+    0.6311817814310741
+   ],
+   "damage_per_connected_trade": [
+    NaN,
+    0.8659210349009568
+   ],
+   "damage_per_gank": [
+    1.9691119691119692,
+    2.1665098777046095
+   ]
+  },
+  {
+   "skill": [
+    0.35,
+    0.65
+   ],
+   "pair": [
+    "opportunistic_trader",
+    "hold_farmer"
+   ],
+   "record": {
+    "names": [
+     "opportunistic_trader",
+     "hold_farmer"
+    ],
+    "episodes": 400,
+    "mean": -0.482725,
+    "stderr": 0.06093658585202122,
+    "ci95": [
+     -0.6021607082699616,
+     -0.36328929173003843
+    ],
+    "std": 1.2187317170404244,
+    "win_rate": 0.24,
+    "loss_rate": 0.595,
+    "tie_rate": 0.165,
+    "farm": [
+     8.241275,
+     8.726500000000001
+    ],
+    "farm_available": [
+     15.25,
+     15.25
+    ],
+    "plates": [
+     0.0,
+     0.0
+    ],
+    "ganks": [
+     2.1675,
+     1.9525
+    ],
+    "exposure": [
+     -0.097890625,
+     -0.249921875
+    ],
+    "trades_attempted": [
+     3.8275,
+     0.0
+    ],
+    "trades_connected": [
+     3.1125,
+     0.0
+    ],
+    "yields_threatened": [
+     0.0,
+     0.715
+    ],
+    "recalls": [
+     0.72,
+     0.4375
+    ],
+    "turns_away": [
+     2.1775,
+     1.625
+    ],
+    "behaviors": [
+     {
+      "ABSENT": 0.045546875,
+      "H": 0.670078125,
+      "R": 0.0225,
+      "S": 0.034296875,
+      "T": 0.119609375,
+      "Y": 0.10796875
+     },
+     {
+      "ABSENT": 0.037109375,
+      "H": 0.88265625,
+      "R": 0.05703125,
+      "S": 0.023203125
+     }
+    ],
+    "objectives": [
+     {
+      "Pressure": 0.0,
+      "Vision": 0.0
+     },
+     {
+      "Pressure": 0.0,
+      "Vision": 0.0
+     }
+    ],
+    "waves": [
+     {
+      "SP": 0.954453125,
+      "SH": 0.0,
+      "F": 0.0
+     },
+     {
+      "SP": 0.962890625,
+      "SH": 0.0,
+      "F": 0.0
+     }
+    ],
+    "turns_per_second": 5347.107035247393,
+    "recalls_interrupted": [
+     0.0,
+     1.3875
+    ],
+    "trades_landed": [
+     1.14,
+     0.0
+    ],
+    "trade_damage_dealt": [
+     1.375,
+     0.0
+    ],
+    "tower_damage_taken": [
+     1.36,
+     0.0
+    ],
+    "damage_taken": [
+     6.0875,
+     4.865
+    ],
+    "gank_damage_taken": [
+     4.7275,
+     3.49
+    ],
+    "deaths": [
+     0.2775,
+     0.2825
+    ],
+    "bounty": [
+     0.14125,
+     0.13875
+    ]
+   },
+   "hit_rate": [
+    0.36626506024096384,
+    NaN
+   ],
+   "damage_per_connected_trade": [
+    0.44176706827309237,
+    NaN
+   ],
+   "damage_per_gank": [
+    2.1810841983852365,
+    1.7874519846350834
+   ]
+  },
+  {
+   "skill": [
+    0.35,
+    0.65
+   ],
+   "pair": [
+    "hold_farmer",
+    "hold_farmer"
+   ],
+   "record": {
+    "names": [
+     "hold_farmer",
+     "hold_farmer"
+    ],
+    "episodes": 400,
+    "mean": -0.203725,
+    "stderr": 0.059757883979285144,
+    "ci95": [
+     -0.32085045259939887,
+     -0.0865995474006011
+    ],
+    "std": 1.1951576795857028,
+    "win_rate": 0.28,
+    "loss_rate": 0.395,
+    "tie_rate": 0.325,
+    "farm": [
+     9.272574999999973,
+     9.437549999999975
+    ],
+    "farm_available": [
+     15.25,
+     15.25
+    ],
+    "plates": [
+     0.0,
+     0.0
+    ],
+    "ganks": [
+     2.09,
+     2.0525
+    ],
+    "exposure": [
+     -0.14890625,
+     -0.1275
+    ],
+    "trades_attempted": [
+     0.0,
+     0.0
+    ],
+    "trades_connected": [
+     0.0,
+     0.0
+    ],
+    "yields_threatened": [
+     0.0,
+     0.0
+    ],
+    "recalls": [
+     0.51,
+     0.4475
+    ],
+    "turns_away": [
+     1.3825,
+     1.04
+    ],
+    "behaviors": [
+     {
+      "ABSENT": 0.027265625,
+      "H": 0.940234375,
+      "R": 0.0159375,
+      "S": 0.0165625
+     },
+     {
+      "ABSENT": 0.018515625,
+      "H": 0.95203125,
+      "R": 0.013984375,
+      "S": 0.01546875
+     }
+    ],
+    "objectives": [
+     {
+      "Pressure": 0.0,
+      "Vision": 0.0
+     },
+     {
+      "Pressure": 0.0,
+      "Vision": 0.0
+     }
+    ],
+    "waves": [
+     {
+      "SP": 0.972734375,
+      "SH": 0.0,
+      "F": 0.0
+     },
+     {
+      "SP": 0.9814843750000001,
+      "SH": 0.0,
+      "F": 0.0
+     }
+    ],
+    "turns_per_second": 5338.4591442502115,
+    "recalls_interrupted": [
+     0.0,
+     0.0
+    ],
+    "trades_landed": [
+     0.0,
+     0.0
+    ],
+    "trade_damage_dealt": [
+     0.0,
+     0.0
+    ],
+    "tower_damage_taken": [
+     0.0,
+     0.0
+    ],
+    "damage_taken": [
+     4.2975,
+     3.6775
+    ],
+    "gank_damage_taken": [
+     4.2975,
+     3.6775
+    ],
+    "deaths": [
+     0.1425,
+     0.065
+    ],
+    "bounty": [
+     0.0325,
+     0.07125
+    ]
+   },
+   "hit_rate": [
+    NaN,
+    NaN
+   ],
+   "damage_per_connected_trade": [
+    NaN,
+    NaN
+   ],
+   "damage_per_gank": [
+    2.05622009569378,
+    1.7917174177831912
+   ]
+  },
+  {
+   "skill": [
+    0.35,
+    0.65
+   ],
+   "pair": [
+    "aggressive_trader",
+    "yield_farmer"
+   ],
+   "record": {
+    "names": [
+     "aggressive_trader",
+     "yield_farmer"
+    ],
+    "episodes": 400,
+    "mean": 7.908962500000007,
+    "stderr": 0.06340892440714133,
+    "ci95": [
+     7.78468100816201,
+     8.033243991838004
+    ],
+    "std": 1.2681784881428264,
+    "win_rate": 1.0,
+    "loss_rate": 0.0,
+    "tie_rate": 0.0,
+    "farm": [
+     12.917912500000018,
+     4.83395000000001
+    ],
+    "farm_available": [
+     15.25,
+     15.25
+    ],
+    "plates": [
+     0.0,
+     0.0
+    ],
+    "ganks": [
+     2.6025,
+     0.6525
+    ],
+    "exposure": [
+     -0.314140625,
+     -1.649296875
+    ],
+    "trades_attempted": [
+     30.1325,
+     0.0
+    ],
+    "trades_connected": [
+     0.0275,
+     0.0
+    ],
+    "yields_threatened": [
+     0.0,
+     29.0825
+    ],
+    "recalls": [
+     0.295,
+     0.01
+    ],
+    "turns_away": [
+     1.5775,
+     0.0325
+    ],
+    "behaviors": [
+     {
+      "ABSENT": 0.040078125,
+      "R": 0.00921875,
+      "S": 0.0090625,
+      "T": 0.941640625
+     },
+     {
+      "ABSENT": 0.000703125,
+      "R": 0.001171875,
+      "S": 0.00046875,
+      "Y": 0.99765625
+     }
+    ],
+    "objectives": [
+     {
+      "Pressure": 0.0,
+      "Vision": 0.0
+     },
+     {
+      "Pressure": 0.0,
+      "Vision": 0.0
+     }
+    ],
+    "waves": [
+     {
+      "SP": 0.959921875,
+      "SH": 0.0,
+      "F": 0.0
+     },
+     {
+      "SP": 0.9992968750000001,
+      "SH": 0.0,
+      "F": 0.0
+     }
+    ],
+    "turns_per_second": 4893.224863727736,
+    "recalls_interrupted": [
+     0.0,
+     0.0275
+    ],
+    "trades_landed": [
+     0.01,
+     0.0
+    ],
+    "trade_damage_dealt": [
+     0.015,
+     0.0
+    ],
+    "tower_damage_taken": [
+     0.005,
+     0.0
+    ],
+    "damage_taken": [
+     5.17,
+     0.4675
+    ],
+    "gank_damage_taken": [
+     5.165,
+     0.4525
+    ],
+    "deaths": [
+     0.3575,
+     0.0075
+    ],
+    "bounty": [
+     0.00375,
+     0.17875
+    ]
+   },
+   "hit_rate": [
+    0.36363636363636365,
+    NaN
+   ],
+   "damage_per_connected_trade": [
+    0.5454545454545454,
+    NaN
+   ],
+   "damage_per_gank": [
+    1.984630163304515,
+    0.6934865900383143
+   ]
+  },
+  {
+   "skill": [
+    0.2,
+    0.8
+   ],
+   "pair": [
+    "aggressive_trader",
+    "aggressive_trader"
+   ],
+   "record": {
+    "names": [
+     "aggressive_trader",
+     "aggressive_trader"
+    ],
+    "episodes": 400,
+    "mean": -1.5064,
+    "stderr": 0.0708678796487858,
+    "ci95": [
+     -1.64530104411162,
+     -1.3674989558883799
+    ],
+    "std": 1.417357592975716,
+    "win_rate": 0.125,
+    "loss_rate": 0.865,
+    "tie_rate": 0.01,
+    "farm": [
+     4.136924999999996,
+     4.970825
+    ],
+    "farm_available": [
+     15.25,
+     15.25
+    ],
+    "plates": [
+     0.0,
+     0.0
+    ],
+    "ganks": [
+     2.015,
+     2.4875
+    ],
+    "exposure": [
+     -0.588203125,
+     -0.04765625
+    ],
+    "trades_attempted": [
+     19.13,
+     21.935
+    ],
+    "trades_connected": [
+     14.7675,
+     14.14
+    ],
+    "yields_threatened": [
+     1.235,
+     1.61
+    ],
+    "recalls": [
+     0.3925,
+     0.6775
+    ],
+    "turns_away": [
+     9.445,
+     6.085
+    ],
+    "behaviors": [
+     {
+      "ABSENT": 0.282890625,
+      "R": 0.058515625,
+      "S": 0.06078125,
+      "T": 0.5978125
+     },
+     {
+      "ABSENT": 0.168984375,
+      "R": 0.072265625,
+      "S": 0.07328125,
+      "T": 0.68546875
+     }
+    ],
+    "objectives": [
+     {
+      "Pressure": 0.0,
+      "Vision": 0.0
+     },
+     {
+      "Pressure": 0.0,
+      "Vision": 0.0
+     }
+    ],
+    "waves": [
+     {
+      "SP": 0.7171093749999999,
+      "SH": 0.0,
+      "F": 0.0
+     },
+     {
+      "SP": 0.8310156249999999,
+      "SH": 0.0,
+      "F": 0.0
+     }
+    ],
+    "turns_per_second": 5236.629799950798,
+    "recalls_interrupted": [
+     1.48,
+     1.635
+    ],
+    "trades_landed": [
+     4.15,
+     10.8775
+    ],
+    "trade_damage_dealt": [
+     4.915,
+     15.55
+    ],
+    "tower_damage_taken": [
+     3.4425,
+     6.28
+    ],
+    "damage_taken": [
+     23.9575,
+     16.66
+    ],
+    "gank_damage_taken": [
+     4.965,
+     5.465
+    ],
+    "deaths": [
+     3.0525,
+     1.7075
+    ],
+    "bounty": [
+     0.85375,
+     1.52625
+    ]
+   },
+   "hit_rate": [
+    0.2810225156593872,
+    0.7692715700141443
+   ],
+   "damage_per_connected_trade": [
+    0.3328254613170814,
+    1.0997171145685998
+   ],
+   "damage_per_gank": [
+    2.464019851116625,
+    2.196984924623116
+   ]
+  },
+  {
+   "skill": [
+    0.2,
+    0.8
+   ],
+   "pair": [
+    "aggressive_trader",
+    "hold_farmer"
+   ],
+   "record": {
+    "names": [
+     "aggressive_trader",
+     "hold_farmer"
+    ],
+    "episodes": 400,
+    "mean": -2.7194000000000007,
+    "stderr": 0.06674097371221924,
+    "ci95": [
+     -2.8502123084759505,
+     -2.588587691524051
+    ],
+    "std": 1.3348194742443849,
+    "win_rate": 0.0325,
+    "loss_rate": 0.9675,
+    "tie_rate": 0.0,
+    "farm": [
+     4.386100000000005,
+     6.927999999999997
+    ],
+    "farm_available": [
+     15.25,
+     15.25
+    ],
+    "plates": [
+     0.0,
+     0.0
+    ],
+    "ganks": [
+     2.665,
+     1.5825
+    ],
+    "exposure": [
+     -0.175546875,
+     -0.553671875
+    ],
+    "trades_attempted": [
+     26.7175,
+     0.0
+    ],
+    "trades_connected": [
+     23.1225,
+     0.0
+    ],
+    "yields_threatened": [
+     0.0,
+     1.7
+    ],
+    "recalls": [
+     0.745,
+     1.2
+    ],
+    "turns_away": [
+     3.665,
+     3.625
+    ],
+    "behaviors": [
+     {
+      "ABSENT": 0.09125,
+      "R": 0.02328125,
+      "S": 0.050546875,
+      "T": 0.834921875
+     },
+     {
+      "ABSENT": 0.07578125,
+      "H": 0.699765625,
+      "R": 0.170234375,
+      "S": 0.05421875
+     }
+    ],
+    "objectives": [
+     {
+      "Pressure": 0.0,
+      "Vision": 0.0
+     },
+     {
+      "Pressure": 0.0,
+      "Vision": 0.0
+     }
+    ],
+    "waves": [
+     {
+      "SP": 0.9087500000000001,
+      "SH": 0.0,
+      "F": 0.0
+     },
+     {
+      "SP": 0.9242187499999999,
+      "SH": 0.0,
+      "F": 0.0
+     }
+    ],
+    "turns_per_second": 5050.89466925586,
+    "recalls_interrupted": [
+     0.0,
+     4.2475
+    ],
+    "trades_landed": [
+     6.3875,
+     0.0
+    ],
+    "trade_damage_dealt": [
+     7.455,
+     0.0
+    ],
+    "tower_damage_taken": [
+     4.22,
+     0.0
+    ],
+    "damage_taken": [
+     10.6675,
+     10.0675
+    ],
+    "gank_damage_taken": [
+     6.4475,
+     2.6125
+    ],
+    "deaths": [
+     0.795,
+     0.44
+    ],
+    "bounty": [
+     0.22,
+     0.3975
+    ]
+   },
+   "hit_rate": [
+    0.2762460806573684,
+    NaN
+   ],
+   "damage_per_connected_trade": [
+    0.3224132338631204,
+    NaN
+   ],
+   "damage_per_gank": [
+    2.419324577861163,
+    1.6508688783570298
+   ]
+  },
+  {
+   "skill": [
+    0.2,
+    0.8
+   ],
+   "pair": [
+    "hold_farmer",
+    "aggressive_trader"
+   ],
+   "record": {
+    "names": [
+     "hold_farmer",
+     "aggressive_trader"
+    ],
+    "episodes": 400,
+    "mean": -2.3199124999999996,
+    "stderr": 0.08105188964729862,
+    "ci95": [
+     -2.478774203708705,
+     -2.161050796291294
+    ],
+    "std": 1.6210377929459723,
+    "win_rate": 0.0825,
+    "loss_rate": 0.9175,
+    "tie_rate": 0.0,
+    "farm": [
+     4.684950000000002,
+     6.04111250000001
+    ],
+    "farm_available": [
+     15.25,
+     15.25
+    ],
+    "plates": [
+     0.0,
+     0.0
+    ],
+    "ganks": [
+     1.2975,
+     2.7275
+    ],
+    "exposure": [
+     -0.89984375,
+     0.1065625
+    ],
+    "trades_attempted": [
+     0.0,
+     26.805
+    ],
+    "trades_connected": [
+     0.0,
+     17.2925
+    ],
+    "yields_threatened": [
+     3.0725,
+     0.0
+    ],
+    "recalls": [
+     0.6725,
+     0.8825
+    ],
+    "turns_away": [
+     8.52,
+     3.505
+    ],
+    "behaviors": [
+     {
+      "ABSENT": 0.245234375,
+      "H": 0.482890625,
+      "R": 0.17375,
+      "S": 0.098125
+     },
+     {
+      "ABSENT": 0.081953125,
+      "R": 0.027578125,
+      "S": 0.0528125,
+      "T": 0.83765625
+     }
+    ],
+    "objectives": [
+     {
+      "Pressure": 0.0,
+      "Vision": 0.0
+     },
+     {
+      "Pressure": 0.0,
+      "Vision": 0.0
+     }
+    ],
+    "waves": [
+     {
+      "SP": 0.754765625,
+      "SH": 0.0,
+      "F": 0.0
+     },
+     {
+      "SP": 0.918046875,
+      "SH": 0.0,
+      "F": 0.0
+     }
+    ],
+    "turns_per_second": 5162.57680306942,
+    "recalls_interrupted": [
+     4.8875,
+     0.0
+    ],
+    "trades_landed": [
+     0.0,
+     12.9075
+    ],
+    "trade_damage_dealt": [
+     0.0,
+     18.5275
+    ],
+    "tower_damage_taken": [
+     0.0,
+     4.8675
+    ],
+    "damage_taken": [
+     21.21,
+     10.48
+    ],
+    "gank_damage_taken": [
+     2.6825,
+     5.6125
+    ],
+    "deaths": [
+     2.5775,
+     0.65
+    ],
+    "bounty": [
+     0.325,
+     1.28875
+    ]
+   },
+   "hit_rate": [
+    NaN,
+    0.746421859187509
+   ],
+   "damage_per_connected_trade": [
+    NaN,
+    1.07141824490386
+   ],
+   "damage_per_gank": [
+    2.067437379576108,
+    2.0577451879010082
+   ]
+  },
+  {
+   "skill": [
+    0.2,
+    0.8
+   ],
+   "pair": [
+    "opportunistic_trader",
+    "hold_farmer"
+   ],
+   "record": {
+    "names": [
+     "opportunistic_trader",
+     "hold_farmer"
+    ],
+    "episodes": 400,
+    "mean": -0.7796437500000001,
+    "stderr": 0.06018565121924041,
+    "ci95": [
+     -0.8976076263897113,
+     -0.6616798736102889
+    ],
+    "std": 1.2037130243848082,
+    "win_rate": 0.1625,
+    "loss_rate": 0.6675,
+    "tie_rate": 0.17,
+    "farm": [
+     8.145143749999995,
+     8.854787499999999
+    ],
+    "farm_available": [
+     15.25,
+     15.25
+    ],
+    "plates": [
+     0.0,
+     0.0
+    ],
+    "ganks": [
+     2.16,
+     1.9925
+    ],
+    "exposure": [
+     -0.112734375,
+     -0.231796875
+    ],
+    "trades_attempted": [
+     3.9875,
+     0.0
+    ],
+    "trades_connected": [
+     3.345,
+     0.0
+    ],
+    "yields_threatened": [
+     0.0,
+     0.6425
+    ],
+    "recalls": [
+     0.7375,
+     0.4775
+    ],
+    "turns_away": [
+     2.2625,
+     1.3875
+    ],
+    "behaviors": [
+     {
+      "ABSENT": 0.04765625,
+      "H": 0.660078125,
+      "R": 0.023046875,
+      "S": 0.035703125,
+      "T": 0.124609375,
+      "Y": 0.10890625
+     },
+     {
+      "ABSENT": 0.0284375,
+      "H": 0.893359375,
+      "R": 0.05703125,
+      "S": 0.021171875
+     }
+    ],
+    "objectives": [
+     {
+      "Pressure": 0.0,
+      "Vision": 0.0
+     },
+     {
+      "Pressure": 0.0,
+      "Vision": 0.0
+     }
+    ],
+    "waves": [
+     {
+      "SP": 0.95234375,
+      "SH": 0.0,
+      "F": 0.0
+     },
+     {
+      "SP": 0.9715624999999999,
+      "SH": 0.0,
+      "F": 0.0
+     }
+    ],
+    "turns_per_second": 5094.9801827176625,
+    "recalls_interrupted": [
+     0.0,
+     1.3475
+    ],
+    "trades_landed": [
+     0.875,
+     0.0
+    ],
+    "trade_damage_dealt": [
+     1.0,
+     0.0
+    ],
+    "tower_damage_taken": [
+     1.295,
+     0.0
+    ],
+    "damage_taken": [
+     6.28,
+     4.3475
+    ],
+    "gank_damage_taken": [
+     4.985,
+     3.3475
+    ],
+    "deaths": [
+     0.305,
+     0.165
+    ],
+    "bounty": [
+     0.0825,
+     0.1525
+    ]
+   },
+   "hit_rate": [
+    0.2615844544095665,
+    NaN
+   ],
+   "damage_per_connected_trade": [
+    0.2989536621823617,
+    NaN
+   ],
+   "damage_per_gank": [
+    2.3078703703703702,
+    1.6800501882057717
+   ]
+  },
+  {
+   "skill": [
+    0.2,
+    0.8
+   ],
+   "pair": [
+    "hold_farmer",
+    "hold_farmer"
+   ],
+   "record": {
+    "names": [
+     "hold_farmer",
+     "hold_farmer"
+    ],
+    "episodes": 400,
+    "mean": -0.32205,
+    "stderr": 0.05902998892708544,
+    "ci95": [
+     -0.43774877829708747,
+     -0.20635122170291254
+    ],
+    "std": 1.1805997785417088,
+    "win_rate": 0.24,
+    "loss_rate": 0.445,
+    "tie_rate": 0.315,
+    "farm": [
+     9.220349999999977,
+     9.484899999999977
+    ],
+    "farm_available": [
+     15.25,
+     15.25
+    ],
+    "plates": [
+     0.0,
+     0.0
+    ],
+    "ganks": [
+     2.0825,
+     2.065
+    ],
+    "exposure": [
+     -0.1546875,
+     -0.1215625
+    ],
+    "trades_attempted": [
+     0.0,
+     0.0
+    ],
+    "trades_connected": [
+     0.0,
+     0.0
+    ],
+    "yields_threatened": [
+     0.0,
+     0.0
+    ],
+    "recalls": [
+     0.5175,
+     0.4075
+    ],
+    "turns_away": [
+     1.475,
+     0.945
+    ],
+    "behaviors": [
+     {
+      "ABSENT": 0.029921875,
+      "H": 0.93703125,
+      "R": 0.016171875,
+      "S": 0.016875
+     },
+     {
+      "ABSENT": 0.016796875,
+      "H": 0.95625,
+      "R": 0.012734375,
+      "S": 0.01421875
+     }
+    ],
+    "objectives": [
+     {
+      "Pressure": 0.0,
+      "Vision": 0.0
+     },
+     {
+      "Pressure": 0.0,
+      "Vision": 0.0
+     }
+    ],
+    "waves": [
+     {
+      "SP": 0.9700781249999999,
+      "SH": 0.0,
+      "F": 0.0
+     },
+     {
+      "SP": 0.983203125,
+      "SH": 0.0,
+      "F": 0.0
+     }
+    ],
+    "turns_per_second": 5036.4645940635655,
+    "recalls_interrupted": [
+     0.0,
+     0.0
+    ],
+    "trades_landed": [
+     0.0,
+     0.0
+    ],
+    "trade_damage_dealt": [
+     0.0,
+     0.0
+    ],
+    "tower_damage_taken": [
+     0.0,
+     0.0
+    ],
+    "damage_taken": [
+     4.5575,
+     3.4825
+    ],
+    "gank_damage_taken": [
+     4.5575,
+     3.4825
+    ],
+    "deaths": [
+     0.1725,
+     0.0575
+    ],
+    "bounty": [
+     0.02875,
+     0.08625
+    ]
+   },
+   "hit_rate": [
+    NaN,
+    NaN
+   ],
+   "damage_per_connected_trade": [
+    NaN,
+    NaN
+   ],
+   "damage_per_gank": [
+    2.1884753901560625,
+    1.6864406779661016
+   ]
+  },
+  {
+   "skill": [
+    0.2,
+    0.8
+   ],
+   "pair": [
+    "aggressive_trader",
+    "yield_farmer"
+   ],
+   "record": {
+    "names": [
+     "aggressive_trader",
+     "yield_farmer"
+    ],
+    "episodes": 400,
+    "mean": 7.767350000000008,
+    "stderr": 0.06579908095015251,
+    "ci95": [
+     7.638383801337709,
+     7.896316198662308
+    ],
+    "std": 1.3159816190030502,
+    "win_rate": 1.0,
+    "loss_rate": 0.0,
+    "tie_rate": 0.0,
+    "farm": [
+     12.849325000000015,
+     4.876975000000012
+    ],
+    "farm_available": [
+     15.25,
+     15.25
+    ],
+    "plates": [
+     0.0,
+     0.0
+    ],
+    "ganks": [
+     2.575,
+     0.6725
+    ],
+    "exposure": [
+     -0.345078125,
+     -1.61625
+    ],
+    "trades_attempted": [
+     29.9875,
+     0.0
+    ],
+    "trades_connected": [
+     0.03,
+     0.0
+    ],
+    "yields_threatened": [
+     0.0,
+     28.9475
+    ],
+    "recalls": [
+     0.28,
+     0.0125
+    ],
+    "turns_away": [
+     1.7225,
+     0.03
+    ],
+    "behaviors": [
+     {
+      "ABSENT": 0.045078125,
+      "R": 0.00875,
+      "S": 0.0090625,
+      "T": 0.937109375
+     },
+     {
+      "ABSENT": 0.000546875,
+      "R": 0.001328125,
+      "S": 0.000390625,
+      "Y": 0.997734375
+     }
+    ],
+    "objectives": [
+     {
+      "Pressure": 0.0,
+      "Vision": 0.0
+     },
+     {
+      "Pressure": 0.0,
+      "Vision": 0.0
+     }
+    ],
+    "waves": [
+     {
+      "SP": 0.954921875,
+      "SH": 0.0,
+      "F": 0.0
+     },
+     {
+      "SP": 0.9994531249999999,
+      "SH": 0.0,
+      "F": 0.0
+     }
+    ],
+    "turns_per_second": 5016.364124103944,
+    "recalls_interrupted": [
+     0.0,
+     0.03
+    ],
+    "trades_landed": [
+     0.005,
+     0.0
+    ],
+    "trade_damage_dealt": [
+     0.0075,
+     0.0
+    ],
+    "tower_damage_taken": [
+     0.02,
+     0.0
+    ],
+    "damage_taken": [
+     5.4375,
+     0.4075
+    ],
+    "gank_damage_taken": [
+     5.4175,
+     0.4
+    ],
+    "deaths": [
+     0.4125,
+     0.0025
+    ],
+    "bounty": [
+     0.00125,
+     0.20625
+    ]
+   },
+   "hit_rate": [
+    0.16666666666666669,
+    NaN
+   ],
+   "damage_per_connected_trade": [
+    0.25,
+    NaN
+   ],
+   "damage_per_gank": [
+    2.103883495145631,
+    0.5947955390334573
+   ]
+  }
+ ],
+ "checks": [
+  {
+   "pair": [
+    "aggressive_trader",
+    "aggressive_trader"
+   ],
+   "quantity": "A's realized hit rate",
+   "values": [
+    0.5114787305874409,
+    0.6336769759450172,
+    0.7572141075881724,
+    0.9214830970556162
+   ],
+   "monotone": true
+  },
+  {
+   "pair": [
+    "aggressive_trader",
+    "aggressive_trader"
+   ],
+   "quantity": "A's damage per gank",
+   "values": [
+    2.2679738562091503,
+    2.2443991853360488,
+    2.1327433628318584,
+    2.058991436726927
+   ],
+   "monotone": true
+  },
+  {
+   "pair": [
+    "aggressive_trader",
+    "hold_farmer"
+   ],
+   "quantity": "A's realized hit rate",
+   "values": [
+    0.5087587587587588,
+    0.6276581516651063,
+    0.7527606482145418,
+    0.90349365502115
+   ],
+   "monotone": true
+  },
+  {
+   "pair": [
+    "aggressive_trader",
+    "hold_farmer"
+   ],
+   "quantity": "A's damage per gank",
+   "values": [
+    2.2767527675276753,
+    2.166666666666667,
+    2.062222222222222,
+    1.9467455621301777
+   ],
+   "monotone": true
+  },
+  {
+   "pair": [
+    "hold_farmer",
+    "aggressive_trader"
+   ],
+   "quantity": "A's damage per gank",
+   "values": [
+    1.8608058608058609,
+    1.7391304347826086,
+    1.6555555555555554,
+    1.524390243902439
+   ],
+   "monotone": true
+  },
+  {
+   "pair": [
+    "opportunistic_trader",
+    "hold_farmer"
+   ],
+   "quantity": "A's realized hit rate",
+   "values": [
+    0.48974358974358984,
+    0.6071428571428572,
+    0.7306910569105691,
+    0.8696172248803827
+   ],
+   "monotone": true
+  },
+  {
+   "pair": [
+    "opportunistic_trader",
+    "hold_farmer"
+   ],
+   "quantity": "A's damage per gank",
+   "values": [
+    2.087005649717514,
+    1.9887133182844245,
+    1.832584269662921,
+    1.662857142857143
+   ],
+   "monotone": true
+  },
+  {
+   "pair": [
+    "hold_farmer",
+    "hold_farmer"
+   ],
+   "quantity": "A's damage per gank",
+   "values": [
+    1.9342105263157898,
+    1.8152562574493445,
+    1.6903073286052008,
+    1.5518867924528301
+   ],
+   "monotone": true
+  },
+  {
+   "pair": [
+    "aggressive_trader",
+    "yield_farmer"
+   ],
+   "quantity": "A's realized hit rate",
+   "values": [
+    0.5454545454545454,
+    0.6428571428571428,
+    0.7333333333333334,
+    0.8999999999999999
+   ],
+   "monotone": true
+  },
+  {
+   "pair": [
+    "aggressive_trader",
+    "yield_farmer"
+   ],
+   "quantity": "A's damage per gank",
+   "values": [
+    1.8746438746438747,
+    1.7691579943235571,
+    1.6594746716697937,
+    1.520332717190388
+   ],
+   "monotone": true
+  }
+ ],
+ "episodes": 400,
+ "seed": 13
+}

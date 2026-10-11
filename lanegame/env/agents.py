@@ -36,8 +36,8 @@ from typing import Callable, List, Optional, Protocol, Sequence, Tuple, runtime_
 
 import numpy as np
 
-from ..config import (B_HOLD, B_SAFE, B_TRADE, B_YIELD, CHAMP_ABSENT, CONTEST, F, NONE, PRESSURE, SH, SP, VISION,
-                      GameConfig, champ_act, objective_of, posture_of, wave_of)
+from ..config import (B_HOLD, B_RECALL, B_SAFE, B_TRADE, B_YIELD, CHAMP_ABSENT, CONTEST, F, NONE, PRESSURE, SH, SP,
+                      VISION, GameConfig, champ_act, objective_of, posture_of, wave_of)
 from ..mechanics import legal_actions
 from ..policy import Policy, greedy_resources
 from .core import Chooser, LaneEnv, Observation
@@ -173,6 +173,75 @@ class ChampionRuleAgent:
         return self.choice(obs.legal)
 
 
+class ChampionScriptAgent(ChampionRuleAgent):
+    """Deterministic, observation-based champion agent with two state-dependent rules on top of a fixed
+    (wave, behavior, objective) preference (roadmap M2e scripted suite):
+
+    * low-HP recall: with HP <= recall_hp it Recalls when Recall is legal, and otherwise walks back with Safe
+      (Slow Push) until it is; recall_hp = 0 disables the rule;
+    * opportunistic trading (`opportunistic=True`): it Trades only when the enemy champion is present and either
+      at <= kill_hp HP or behind by at least lead_hp; otherwise it plays its base behavior, and Yield while its
+      own HP is at most yield_hp;
+    * stacking (`stack_hp`): Shove once its leading wave holds at least stack_hp HP (its base wave otherwise);
+    * punishing absences (`punish=True`): while the enemy champion is away, Shove (and siege with its objective).
+
+    Its action is a function of the observation only (one-hot `distribution`)."""
+
+    def __init__(self, name: str, wave: int = SP, behavior: int = B_HOLD, objective: int = PRESSURE,
+                 freeze: bool = False, recall_hp: int = 2, opportunistic: bool = False, kill_hp: int = 2,
+                 lead_hp: int = 2, yield_hp: int = 3, stack_hp: int = 0, punish: bool = False):
+        super().__init__(name, wave, behavior, objective, freeze)
+        self.recall_hp, self.opportunistic = recall_hp, opportunistic
+        self.kill_hp, self.lead_hp, self.yield_hp = kill_hp, lead_hp, yield_hp
+        self.stack_hp, self.punish = stack_hp, punish
+
+    def choose_action(self, obs: Observation) -> int:
+        legal = obs.legal
+        if legal == ABSENT_ONLY:
+            return CHAMP_ABSENT
+        me, enemy = obs.champ.side(obs.side), obs.champ.side(1 - obs.side)
+        if me.hp <= self.recall_hp:
+            recall = champ_act(SP, B_RECALL)
+            return recall if recall in legal else champ_act(SP, B_SAFE)
+        behavior = self.behavior
+        if self.opportunistic:
+            if enemy.absent == 0 and (enemy.hp <= self.kill_hp or me.hp >= enemy.hp + self.lead_hp):
+                behavior = B_TRADE
+            elif me.hp <= self.yield_hp:
+                behavior = B_YIELD
+        wave = self.wave
+        own_front_hp = obs.state.ah if obs.side == 0 else obs.state.bh
+        if (self.stack_hp and own_front_hp >= self.stack_hp) or (self.punish and enemy.absent > 0):
+            wave = SH
+        rule = ChampionRuleAgent(self.name, wave, behavior, self.objective, self.freeze)
+        return rule.choice(legal)
+
+    def distribution(self, obs: Observation) -> np.ndarray:
+        p = np.zeros(len(obs.legal))
+        p[obs.legal.index(self.choose_action(obs))] = 1.0
+        return p
+
+    def act(self, obs: Observation, rng=None) -> int:
+        return self.choose_action(obs)
+
+
+def champion_suite() -> list:
+    """The scripted champion suite of the M2e validation (each with the low-HP recall rule unless noted):
+    hold_farmer, yield_farmer, aggressive_trader (recalls only at 1 HP), safe_player, shover (Shove + Hold,
+    Pressure when sieging), conservative_recaller (recalls at 4 HP), opportunistic_trader, vision_player
+    (Shove + Hold like the shover, but Establishes Vision instead of Applying Pressure when sieging) and punisher (Hold farmer
+    that Shoves and Applies Pressure while the enemy champion is away)."""
+    return [ChampionScriptAgent("hold_farmer", SP, B_HOLD),
+            ChampionScriptAgent("yield_farmer", SP, B_YIELD),
+            ChampionScriptAgent("aggressive_trader", SP, B_TRADE, recall_hp=1),
+            ChampionScriptAgent("safe_player", SP, B_SAFE),
+            ChampionScriptAgent("shover", SH, B_HOLD),
+            ChampionScriptAgent("conservative_recaller", SP, B_HOLD, recall_hp=4),
+            ChampionScriptAgent("opportunistic_trader", SP, B_HOLD, opportunistic=True),
+            ChampionScriptAgent("vision_player", SH, B_HOLD, VISION),
+            ChampionScriptAgent("punisher", SP, B_HOLD, punish=True)]
+
+
 class LegacyChampionAgent:
     """A legacy `Policy` (wave x Contest/Safe x objective) playing champion mode: its distribution over the
     lane's legacy legal set is mapped action by action, Contest -> Hold and Safe -> Safe, keeping the siege
@@ -203,14 +272,17 @@ class LegacyChampionAgent:
 
 
 def champion_agents(cfg: GameConfig) -> dict:
-    """Named champion-mode agents: fixed behaviors, Shove variants, a freezer, uniform play, and the
-    legacy siege baselines mapped into champion actions (`legacy:<name>`)."""
+    """Named champion-mode agents: fixed behaviors without any recall (hold, yield, trade, safe, ...), uniform
+    play, the M2e scripted suite (`champion_suite`), and the legacy siege baselines mapped into champion
+    actions (`legacy:<name>`)."""
     from ..baselines import siege_baselines
     agents = [ChampionRuleAgent("hold", SP, B_HOLD), ChampionRuleAgent("yield", SP, B_YIELD),
               ChampionRuleAgent("trade", SP, B_TRADE), ChampionRuleAgent("safe", SP, B_SAFE),
               ChampionRuleAgent("shove_hold", SH, B_HOLD), ChampionRuleAgent("shove_trade", SH, B_TRADE),
               ChampionRuleAgent("hold_vision", SP, B_HOLD, VISION), ChampionRuleAgent("freeze_hold", SP, B_HOLD, freeze=True),
               UniformAgent()]
+    agents += champion_suite()
+    agents.append(ChampionScriptAgent("recall_spammer", SP, B_HOLD, recall_hp=10 ** 6))   # recalls whenever legal
     agents += [LegacyChampionAgent(p, cfg) for p in siege_baselines()]
     return {a.name: a for a in agents}
 

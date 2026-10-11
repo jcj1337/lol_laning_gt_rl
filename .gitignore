@@ -6,3 +6,7 @@ __pycache__/
 build/
 dist/
 .ipynb_checkpoints/
+
+# RL network checkpoints (large, regenerable)
+results/rl/checkpoints/
+*.pt

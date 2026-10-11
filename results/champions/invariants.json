@@ -1,0 +1,56 @@
+{
+ "equal skill": {
+  "turns": 40320,
+  "distinct_observations": 27566,
+  "mirror_checks": 5760,
+  "replays": 21,
+  "violations": {},
+  "events": {
+   "trade_landed": 4116,
+   "dive": 3127,
+   "gank": 5159,
+   "death": 1629,
+   "recall": 1377,
+   "recall_interrupted": 963,
+   "plates": 12,
+   "vision_set": 136,
+   "double_death": 44
+  }
+ },
+ "asymmetric skill 0.8 / 0.2": {
+  "turns": 40320,
+  "distinct_observations": 27540,
+  "mirror_checks": 5760,
+  "replays": 21,
+  "violations": {},
+  "events": {
+   "trade_landed": 4113,
+   "dive": 3099,
+   "gank": 5210,
+   "death": 1659,
+   "recall": 1366,
+   "recall_interrupted": 946,
+   "plates": 15,
+   "vision_set": 132,
+   "double_death": 58
+  }
+ },
+ "kill bounty 1, recall 3 turns": {
+  "turns": 40320,
+  "distinct_observations": 28678,
+  "mirror_checks": 5760,
+  "replays": 21,
+  "violations": {},
+  "events": {
+   "trade_landed": 4076,
+   "dive": 3029,
+   "gank": 5097,
+   "death": 1581,
+   "recall": 1368,
+   "recall_interrupted": 907,
+   "plates": 13,
+   "vision_set": 132,
+   "double_death": 40
+  }
+ }
+}

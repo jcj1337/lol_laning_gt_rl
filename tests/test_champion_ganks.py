@@ -71,12 +71,19 @@ def test_gank_damage_distribution_and_its_inputs():
         d = gank_damage_distribution(pe, CFG)
         assert len(d) == CFG.gank_damage_trials + 1 and sum(d) == pytest.approx(1.0)
         assert sum(i * q for i, q in enumerate(d)) == pytest.approx(CFG.gank_damage_trials * pe)
-    assert gank_damage_p(0, B_HOLD, -T, CFG) == pytest.approx(0.2)
-    assert gank_damage_p(0, B_HOLD, 0, CFG) == pytest.approx(0.5) and gank_damage_p(0, B_HOLD, T, CFG) == pytest.approx(0.8)
-    assert gank_damage_p(0, B_SAFE, 0, CFG) == gank_damage_p(0, B_YIELD, 0, CFG) == pytest.approx(0.3)
-    assert gank_damage_p(0, B_TRADE, 0, CFG) == pytest.approx(0.5)
+    assert gank_damage_p(0, False, -T, CFG) == pytest.approx(0.2)
+    assert gank_damage_p(0, False, 0, CFG) == pytest.approx(0.5) and gank_damage_p(0, False, T, CFG) == pytest.approx(0.8)
+    assert gank_damage_p(0, True, 0, CFG) == pytest.approx(0.3)
     hi, lo = CFG.with_(skill_a=1.0), CFG.with_(skill_a=0.0)
-    assert gank_damage_p(0, B_HOLD, 0, hi) < gank_damage_p(0, B_HOLD, 0, CFG) < gank_damage_p(0, B_HOLD, 0, lo)
+    assert gank_damage_p(0, False, 0, hi) < gank_damage_p(0, False, 0, CFG) < gank_damage_p(0, False, 0, lo)
+    # the defense needs defensive play, not the label: an unthreatened Yield is exactly a Hold, a retreating one is not
+    y = resolve_turn(CONTACT, ch(0, 0), 2, champ_act(SP, B_YIELD), H(), CFG)
+    h = resolve_turn(CONTACT, ch(0, 0), 2, H(), H(), CFG)
+    assert y.gank_damage_p == h.gank_damage_p and y.gank_p == h.gank_p
+    r = resolve_turn(CONTACT, ch(0, 0), 2, champ_act(SP, B_YIELD), TR(), CFG)
+    assert r.threatened[0] and r.gank_damage_p[0] < h.gank_damage_p[0]
+    s = resolve_turn(CONTACT, ch(-1, 0), 2, S(), H(), CFG)
+    assert s.gank_damage_p[0] == pytest.approx(gank_damage_p(0, True, s.exposure[0], CFG))
 
 
 def test_full_hp_champion_never_dies_to_one_gank_but_can_escape_unhurt():
@@ -119,7 +126,7 @@ def test_gank_damage_frequencies_match_the_binomial():
 def test_ganks_under_own_tower_are_rare_and_light():
     t = resolve_turn(PUSHED_A, ch(-T, 0), 2, H(), H(), CFG)
     assert t.exposure[0] == -T and t.gank_p[0] <= CFG.champ_gank_behavior[B_HOLD] + CFG.champ_gank_strength * CFG.max_stacks + 1e-12
-    assert sum(i * q for i, q in enumerate(gank_damage_distribution(gank_damage_p(0, B_HOLD, -T, CFG), CFG))) < 1.0
+    assert sum(i * q for i, q in enumerate(gank_damage_distribution(gank_damage_p(0, False, -T, CFG), CFG))) < 1.0
 
 
 # ------------------------------------------------------------------ death and respawn
@@ -163,7 +170,7 @@ def test_damage_sources_add_up_to_a_kill():
     u = list(ONE)
     u[U_TRADE_HIT[1]] = 0.99 * CFG.trade_hit_base
     u[U_GANK[0]] = 0.0
-    pe = gank_damage_p(0, B_HOLD, 0, CFG)
+    pe = gank_damage_p(0, False, 0, CFG)
     u[U_GANK_DAMAGE[0]] = sum(gank_damage_distribution(pe, CFG)[:2]) + 1e-9      # damage exactly 2
     t = resolve_turn(CONTACT, ch(0, 0, hpa=3), 2, H(), TR(), CFG, u=u)
     assert t.trade_damage[1] == 1 and t.gank_damage[0] == 2 and t.died[0]

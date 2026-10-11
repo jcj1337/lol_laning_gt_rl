@@ -1,0 +1,43 @@
+{
+ "hold_farmer vs aggressive_trader cache 0": {
+  "turns_per_second": 6147.336676206881,
+  "episodes_per_second": 192.10427113146503
+ },
+ "hold_farmer vs aggressive_trader cache 20000": {
+  "turns_per_second": 11603.833521636412,
+  "episodes_per_second": 362.6197975511379
+ },
+ "opportunistic_trader vs punisher cache 0": {
+  "turns_per_second": 6852.018526326042,
+  "episodes_per_second": 214.1255789476888
+ },
+ "opportunistic_trader vs punisher cache 20000": {
+  "turns_per_second": 11437.124764605762,
+  "episodes_per_second": 357.41014889393006
+ },
+ "uniform vs uniform cache 0": {
+  "turns_per_second": 6194.5722901151985,
+  "episodes_per_second": 193.58038406609995
+ },
+ "uniform vs uniform cache 20000": {
+  "turns_per_second": 7890.599468694863,
+  "episodes_per_second": 246.58123339671448
+ },
+ "shover vs yield_farmer cache 0": {
+  "turns_per_second": 6889.74661515001,
+  "episodes_per_second": 215.30458172343782
+ },
+ "shover vs yield_farmer cache 20000": {
+  "turns_per_second": 11661.351438923753,
+  "episodes_per_second": 364.4172324663673
+ },
+ "raw step champion cache 0": {
+  "turns_per_second": 7176.390214059576
+ },
+ "raw step champion cache 20000": {
+  "turns_per_second": 9182.2208875931
+ },
+ "legacy siege aggressive vs passive_safe": {
+  "turns_per_second": 11509.207126277634
+ }
+}

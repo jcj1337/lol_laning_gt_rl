@@ -96,15 +96,17 @@ current action, but the simulator resolves the committed pair together:
     collects only kills within farm_reach cells of its end cell. Efficiency is the legacy
     `collection_efficiency` with posture Contest for farm / trading, Safe for retreat / safe; the opponent
     zones a kill only if it is in farm or trading mode and within farm_reach of the kill. A connected
-    trader's collection is multiplied by trade_farm_factor. A channeling or away champion collects nothing
+    trader's collection is multiplied by trade_farm_factor. A threatened Yield (mode "retreat") collects
+    kills within retreat_farm_reach cells of its retreat cell. A channeling or away champion collects nothing
     and zones nothing.
  8. Exposure and gank risk. exposure = max(start cell, end cell): a champion that starts forward stays
     exposed while it retreats (choosing Safe does not erase this turn's exposure). The gank occurrence
     probability has the legacy form (base + position + behavior - wave strength, clipped, times the vision
     factor) with its own champion-mode parameters (champ_gank_*, see GameConfig; no unconditional base rate;
     a channeling champion has Safe's behavior term). An away champion has gank probability 0. A gank that
-    occurs deals Binomial(gank_damage_trials, p_e) HP, p_e rising with exposure and falling for Yield / Safe
-    and with skill (gank_damage_*). Vision lowers only the occurrence.
+    occurs deals Binomial(gank_damage_trials, p_e) HP, p_e rising with exposure and falling with skill and
+    for a champion that actually played defensively (mode safe or retreat; gank_damage_*). Vision lowers only
+    the occurrence.
  9. Chance events, all from the turn's uniform vector u (layout below): each connected trader's damage on
     its target, each diver's tower shot, each present side's gank occurrence (p = gank_p) and gank damage.
     All damage of the turn is simultaneous and summed: trade damage, a tower shot and a gank together can
@@ -247,7 +249,7 @@ def champion_legal_actions(lane: State, champ: ChampState, s: int, cfg: GameConf
 def champion_collection(x: int, mode: str, pos: int, opp_mode: str, opp_pos: int, cfg: GameConfig) -> float:
     """Share of a farm opportunity at own-perspective cell x that a champion in `mode` at `pos` collects
     against an opponent in `opp_mode` at its own cell `opp_pos`."""
-    if mode in (AWAY, CHANNEL) or abs(x - pos) > cfg.farm_reach:
+    if mode in (AWAY, CHANNEL) or abs(x - pos) > (cfg.retreat_farm_reach if mode == RETREAT else cfg.farm_reach):
         return 0.0
     posture = CONTEST if mode in (FARM, TRADING) else SAFE
     zones = opp_mode in (FARM, TRADING) and abs(-x - opp_pos) <= cfg.farm_reach
@@ -271,10 +273,12 @@ def champion_gank_probability(lane: State, s: int, wave: int, behavior: int, cfg
     return p
 
 
-def gank_damage_p(s: int, behavior: int, exposure: int, cfg: GameConfig) -> float:
-    """Per-trial damage probability p_e of a gank on side s (vision plays no part)."""
+def gank_damage_p(s: int, defensive: bool, exposure: int, cfg: GameConfig) -> float:
+    """Per-trial damage probability p_e of a gank on side s (vision plays no part). `defensive`: the champion
+    actually played defensively this turn (Safe, or a Yield that backed off from a trader), not merely chose
+    a behavior that would have; an unthreatened Yield stands and farms exactly like Hold."""
     pe = (cfg.gank_damage_base + cfg.gank_damage_position * (exposure + cfg.tower) / (2 * cfg.tower)
-          - (cfg.gank_damage_defense if behavior in (B_YIELD, B_SAFE) else 0.0)
+          - (cfg.gank_damage_defense if defensive else 0.0)
           - cfg.gank_damage_skill * (skill_of(cfg, s) - 0.5))
     return min(max(pe, 0.0), 1.0)
 
@@ -538,7 +542,7 @@ def resolve_turn(lane: State, champ: ChampState, k: int, a: int, b: int, cfg: Ga
             tower_p[s] = cfg.tower_shot_p_busy if busy else cfg.tower_shot_p
             tower_dmg[s] = cfg.tower_shot_damage if u[U_TOWER[s]] < tower_p[s] else 0
     ganked = tuple(u[U_GANK[s]] < gank[s] for s in (A, B))
-    pe = tuple(0.0 if away[s] else gank_damage_p(s, B_SAFE if interrupted[s] else beh[s], exposure[s], cfg)
+    pe = tuple(0.0 if away[s] else gank_damage_p(s, modes[s] in (RETREAT, SAFE_MODE), exposure[s], cfg)
                for s in (A, B))
     gank_dmg = tuple(_gank_damage(u[U_GANK_DAMAGE[s]], pe[s], cfg) if ganked[s] else 0 for s in (A, B))
     taken = tuple(dealt[1 - s] + tower_dmg[s] + gank_dmg[s] for s in (A, B))
