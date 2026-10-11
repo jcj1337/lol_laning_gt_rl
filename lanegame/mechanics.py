@@ -433,6 +433,8 @@ def step_turn(state: State, k: int, act_a: int, act_b: int, cfg: GameConfig,
         # any plate opportunity opened by a crash during this turn
         if objective_of(acts[s]) == PRESSURE:
             assert siege[s] > 0, "Apply Pressure requires an eligible siege"
+            if cfg.plate_mode == "durability":
+                continue                          # M4: no plate opportunities in the lane (design §11.4)
             claimed[s] = min(cfg.plates_per_turn, plates[s])
             plates[s] -= claimed[s]
             ev["plates"][s] += claimed[s]
