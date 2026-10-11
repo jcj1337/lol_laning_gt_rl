@@ -36,13 +36,16 @@ from typing import Callable, List, Optional, Protocol, Sequence, Tuple, runtime_
 
 import numpy as np
 
-from ..config import (B_HOLD, B_SAFE, B_TRADE, B_YIELD, CONTEST, F, NONE, PRESSURE, SH, SP, VISION, GameConfig,
-                      champ_act, objective_of, posture_of, wave_of)
+from ..config import (B_HOLD, B_SAFE, B_TRADE, B_YIELD, CHAMP_ABSENT, CONTEST, F, NONE, PRESSURE, SH, SP, VISION,
+                      GameConfig, champ_act, objective_of, posture_of, wave_of)
 from ..mechanics import legal_actions
 from ..policy import Policy, greedy_resources
 from .core import Chooser, LaneEnv, Observation
 from .observation import n_actions, obs_size, observe
 from .trace import EpisodeLog, EpisodeStats
+
+
+ABSENT_ONLY = (CHAMP_ABSENT,)          # champion mode: the legal set of an absent champion
 
 
 @runtime_checkable
@@ -151,6 +154,8 @@ class ChampionRuleAgent:
         self.name, self.wave, self.behavior, self.objective, self.freeze = name, wave, behavior, objective, freeze
 
     def choice(self, legal) -> int:
+        if legal == ABSENT_ONLY:
+            return CHAMP_ABSENT
         waves = ([F] if self.freeze else []) + [self.wave, SP]
         for w in waves:
             for o in (self.objective, NONE):
@@ -178,6 +183,8 @@ class LegacyChampionAgent:
         self.name = name or f"legacy:{policy.name}"
 
     def distribution(self, obs: Observation) -> np.ndarray:
+        if obs.legal == ABSENT_ONLY:
+            return np.ones(1)
         legacy = legal_actions(obs.state, obs.side, self.cfg)
         q = np.asarray(self.policy.move(obs.k, obs.state, obs.side, legacy), dtype=float)
         p = np.zeros(len(obs.legal))

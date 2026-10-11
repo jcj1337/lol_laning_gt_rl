@@ -21,8 +21,11 @@ Feature layout (every entry in [0, 1]; `obs_size(cfg)` entries in total):
   enemy side (5)   the same five for the opponent
 
 Champion mode (`cfg.champion_mode`) appends 2 x CHAMP_FEATURES entries, own champion then enemy champion:
-one-hot of the champion's cell in OWN coordinates (2T + 1 cells; the enemy's cell c is shown at -c),
-HP / champion_hp, absent / champion_absent_max, mechanical skill (seat A: skill_a, seat B: skill_b).
+one-hot of the champion's cell in OWN coordinates (2T + 1 cells; the enemy's cell c is shown at -c; an away
+champion is at its own tower), HP / champion_hp, absent / champion_absent_max (the number of further turns
+the champion must sit out, so the return turn is known exactly), mechanical skill (seat A: skill_a, seat B:
+skill_b). Together with the turn features this is the whole environment state: nothing decision-relevant is
+hidden (the only other inputs of a turn are the two actions and the chance draws).
 Then observe(lane, k, 1, cfg, champ) == observe(lane.mirror(), k, 0, swap_seats(cfg), champ.mirror()).
 Legacy vectors are unchanged.
 

@@ -1,4 +1,4 @@
-"""Champion layer (roadmap milestone M2a): champion state, persistent positioning and behaviors.
+"""Champion layer (roadmap milestones M2a, M2b): champion state, persistent positioning, behaviors, Recall and absence.
 
 Champion mode (`GameConfig.champions()`) adds a champion per player on top of the siege model's lane. The
 lane itself (minion movement, merging, fights, thinning, crashes, tower fire, spawns, plates, vision) is
@@ -8,9 +8,12 @@ and is not exactly solvable; the legacy configurations never reach this module.
 
 State (per side, own coordinates as everywhere else: own tower -T, the lane 0, enemy tower +T)
 
-    pos      champion cell, -T .. T (start: own tower, -T)
-    hp       champion HP (champion_hp = 6; constant until M2c/M2d add damage)
-    absent   turns away from the lane (0; recall and death arrive in M2b/M2d)
+    pos      champion cell, -T .. T (start: own tower, -T; -T while away)
+    hp       champion HP (champion_hp = 6; constant until M2c/M2d add damage; restored on return)
+    absent   number of upcoming turns the champion is forced to sit out (0 = present). Recall sets it to
+             recall_turns - 1 (the Recall turn itself is the first missed turn); it counts down by one at
+             the end of every absent turn, and the champion returns, at its own tower with full HP, at the
+             start of the turn after the one on which it reaches 0.
 
 plus the per-seat mechanical skills `cfg.skill_a`, `cfg.skill_b` (game constants, observed by both
 players, no effect until M2c). `ChampState.mirror()` swaps the sides; with asymmetric skills the mirrored
@@ -24,37 +27,58 @@ Actions: a = wave + 3 * behavior + 15 * objective (config.champ_act). Legal sets
     objective  PRESSURE or VISION, only with HOLD or TRADE, only while the side has crashed mass under the
                enemy tower (siege eligible) AND its champion can reach the enemy tower this turn
                (pos + champion_speed >= T). There is no remote siege.
-    reserved   RECALL codes and ABSENT (45) are never legal in M2a.
+    recall     the single code RECALL = champ_act(SP, B_RECALL), legal only when `recall_legal`: the champion
+               is present and stands at or behind recall_line (-1). A champion further forward must first
+               walk back (Safe / Yield), at most champion_speed cells per turn, and recall on a later turn.
+               Whether an enemy threat materializes is decided by the committed pair (step 2b): an enemy
+               TRADE that reaches the recaller interrupts the recall.
+    absent     while absent > 0 the only legal code is ABSENT (45); ABSENT is never legal otherwise.
 
 Unlike the legacy rule (Contest without an objective is not offered during a siege), HOLD and TRADE without
 an objective stay legal during a siege: they mean "stay with my next wave" instead of walking to the tower,
 which changes the champion's position and exposure, so the objective no longer dominates them.
 
+Recall timeline (recall_turns = 2): Recall chosen on turn t and not interrupted -> the champion leaves the
+lane immediately and takes no part in turn t; forced ABSENT on turn t + 1; back at its own tower with full HP
+at the start of turn t + 2, where it chooses a normal action. Exactly recall_turns turns without lane
+participation. The recall itself costs nothing else: its price is the farm, zoning, wave control and siege
+opportunities given up while away, so a recall timed while one's own wave pushes is cheaper than one timed
+into an enemy crash. An interrupted recall (step 2b) wastes the turn: the champion stays where it was,
+channeling (no farm, no wave contribution, no zoning), can be traded and ganked, and plays normally next turn.
+
 Resolution of one turn (`resolve_turn`), from the two committed actions; no player ever sees the other's
 current action, but the simulator resolves the committed pair together:
 
- 1. Wave destinations. The lane is probed once with both champions supporting their waves (the legacy
-    Contest rule). Each side's *farm spot* is its leading wave's cell at the end of that probe, clipped to
-    [-T, T] (its current cell if it has no wave).
+ 0. Away sides. A champion that is absent, or that recalls this turn without being interrupted (2b), is off
+    the lane for the whole turn: its wave plays Slow Push with no champion contribution (reach NO_REACH: no
+    shove damage, no freeze-break push), it has no siege objective, collects no farm, zones nothing, cannot
+    trade or be traded and is not gankable. Minions, towers, plates and vision timers keep running as usual.
+ 1. Wave destinations. The lane is probed once with every present champion supporting its wave (the legacy
+    Contest rule). Each present side's *farm spot* is its leading wave's cell at the end of that probe,
+    clipped to [-T, T] (its current cell if it has no wave).
  2. Targets. First every non-trader's intended cell:
       objective (PRESSURE / VISION)  the enemy tower, +T
       SAFE       min(farm spot, safe_line): follow the wave, never beyond the safe line (a champion
                  that starts forward of it retreats, at most champion_speed cells per turn)
       HOLD/YIELD the farm spot
+      RECALL     stays at its start cell (channeling)
     Then each TRADE champion (without an objective) chases its opponent's reference cell: the opponent's
     intended end cell, or its start cell if the opponent also trades. It stays put if it is already in
     contact (below) with that cell; otherwise it heads for the cell trade_range short of it, or, if the
     reference is the opponent's own tower cell, into that cell (a dive: the only way to reach a champion
-    under its tower). Every champion moves toward its target by at most champion_speed cells.
+    under its tower). A TRADE champion whose opponent is absent has nobody to chase and targets its farm
+    spot, like HOLD. Every champion moves toward its target by at most champion_speed cells.
+ 2b. Recall interruption. A recalling champion whose cell is in contact with an enemy TRADE champion's end
+    cell is interrupted (mode "channel"); otherwise it leaves the lane (step 0, end cell -T).
  3. Evasion. A YIELD or SAFE champion whose would-be end cell is within trade_range of an enemy TRADE
     champion's end cell is *threatened*: it retreats instead, toward the furthest-forward cell out of the
     trader's range (never ahead of its own target, never behind its own tower), again at most
     champion_speed cells. A YIELD champion that is not threatened behaves exactly like HOLD; a threatened
     one gives up its farming position and its wave contribution (mode "retreat"). SAFE is already defensive,
     so evading costs it nothing further. HOLD never evades.
- 4. Trade contact. Two champions are in *contact* when they end within trade_range of each other, except
-    that a champion in its own tower cell is protected: contact with it needs the other champion in that
-    same cell. A TRADE champion *connects* when the champions end in contact. A connected
+ 4. Trade contact. Two present champions are in *contact* when they end within trade_range of each other,
+    except that a champion in its own tower cell is protected: contact with it needs the other champion in
+    that same cell. A TRADE champion *connects* when the champions end in contact. A connected
     trader's siege objective (if any) is suspended for the turn: its attention is on the enemy champion.
     An unconnected trader falls back to farming where it stands, keeping its forward position.
  5. Modes and wave contribution (the champion's own effect on its wave: shove damage, freeze-break push):
@@ -62,19 +86,25 @@ current action, but the simulator resolves the committed pair together:
       trading  connected TRADE: no contribution
       retreat  threatened YIELD: contributes only at or behind min(end, safe_line)
       safe     SAFE: likewise
+      channel  interrupted RECALL: no contribution
+      away     recalled or absent: no contribution
  6. The authoritative lane step: mechanics.step_turn with the effective siege objectives and the
     contributions of 5 as `champion_reach`.
  7. Farming. Every killed HP is a farm opportunity as before (game.turn_farm's accounting); a champion
     collects only kills within farm_reach cells of its end cell. Efficiency is the legacy
     `collection_efficiency` with posture Contest for farm / trading, Safe for retreat / safe; the opponent
     zones a kill only if it is in farm or trading mode and within farm_reach of the kill. A connected
-    trader's collection is multiplied by trade_farm_factor.
+    trader's collection is multiplied by trade_farm_factor. A channeling or away champion collects nothing
+    and zones nothing.
  8. Exposure and gank risk. exposure = max(start cell, end cell): a champion that starts forward stays
     exposed while it retreats. The gank probability keeps the legacy form (base + position + action
     - wave strength, clipped, times the vision factor) with a behavior-based action term
-    (champ_gank_behavior, plus champ_gank_shove for Shove with a non-Safe behavior). In M2a the gank is
-    still a resource loss with that probability (the environment realizes it); HP events come in M2d.
- 9. Champion state after the turn: the end cells; HP and absence unchanged.
+    (champ_gank_behavior, plus champ_gank_shove for Shove with a non-Safe behavior; a channeling champion
+    has Safe's term). An away champion has gank probability 0. Until M2d the gank is still a resource loss with that probability (the environment
+    realizes it).
+ 9. Champion state after the turn: a present champion stands at its end cell. A champion that recalled gets
+    absent = recall_turns - 1, an absent one absent - 1; both stand at -T, and a champion whose timer
+    is now 0 has full HP again (it plays the next turn).
 
 Siege objectives are executed by the lane step only when they are effective (legal, i.e. the champion
 reaches the enemy tower, and not suspended by a connected trade), so plates, thinning and vision always
@@ -86,16 +116,17 @@ from __future__ import annotations
 from dataclasses import dataclass
 from typing import Callable, NamedTuple, Optional, Tuple
 
-from .config import (B_HOLD, B_RECALL, B_SAFE, B_TRADE, B_YIELD, CHAMP_ABSENT, CHAMP_BEHAVIORS, CONTEST, NONE,
-                     PRESSURE, SAFE, SH, VISION, GameConfig, champ_act, champ_behavior, champ_objective,
+from .config import (B_ABSENT, B_HOLD, B_RECALL, B_SAFE, B_TRADE, B_YIELD, CHAMP_ABSENT, CHAMP_BEHAVIORS, CONTEST,
+                     NONE, PRESSURE, SAFE, SH, SP, VISION, GameConfig, champ_act, champ_behavior, champ_objective,
                      champ_wave)
 from .game import collection_efficiency
 from .mechanics import TurnResult, siege_eligible, step_turn, wave_actions
 from .state import State
 
 A, B = 0, 1
-FARM, TRADING, RETREAT, SAFE_MODE = "farm", "trading", "retreat", "safe"
+FARM, TRADING, RETREAT, SAFE_MODE, CHANNEL, AWAY = "farm", "trading", "retreat", "safe", "channel", "away"
 NO_REACH = -10 ** 6                      # contributes to no fight
+RECALL = champ_act(SP, B_RECALL)         # the only legal Recall code (12)
 
 
 class ChampSide(NamedTuple):
@@ -144,14 +175,23 @@ def objective_reachable(lane: State, champ: ChampState, s: int, cfg: GameConfig)
     return siege_eligible(lane, s, cfg) and champ.side(s).pos + cfg.champion_speed >= cfg.tower
 
 
+def recall_legal(champ: ChampState, s: int, cfg: GameConfig) -> bool:
+    """Side s may Recall: present and at or behind recall_line. (An enemy trade that reaches it interrupts the
+    recall at resolution; see resolve_turn step 2b.)"""
+    me = champ.side(s)
+    return me.absent == 0 and me.pos <= cfg.recall_line
+
+
 def champion_legal_actions(lane: State, champ: ChampState, s: int, cfg: GameConfig) -> Tuple[int, ...]:
     """Legal champion-mode action codes of side s, sorted (see the module docstring)."""
     if champ.side(s).absent > 0:
-        raise NotImplementedError("absence (recall, death) is introduced in M2b")
+        return (CHAMP_ABSENT,)
     waves = wave_actions(lane, s, cfg)
     acts = [champ_act(w, b) for b in CHAMP_BEHAVIORS for w in waves]
     if objective_reachable(lane, champ, s, cfg):
         acts += [champ_act(w, b, o) for o in (PRESSURE, VISION) for b in (B_HOLD, B_TRADE) for w in waves]
+    if recall_legal(champ, s, cfg):
+        acts.append(RECALL)
     return tuple(sorted(acts))
 
 
@@ -159,7 +199,7 @@ def champion_legal_actions(lane: State, champ: ChampState, s: int, cfg: GameConf
 def champion_collection(x: int, mode: str, pos: int, opp_mode: str, opp_pos: int, cfg: GameConfig) -> float:
     """Share of a farm opportunity at own-perspective cell x that a champion in `mode` at `pos` collects
     against an opponent in `opp_mode` at its own cell `opp_pos`."""
-    if abs(x - pos) > cfg.farm_reach:
+    if mode in (AWAY, CHANNEL) or abs(x - pos) > cfg.farm_reach:
         return 0.0
     posture = CONTEST if mode in (FARM, TRADING) else SAFE
     zones = opp_mode in (FARM, TRADING) and abs(-x - opp_pos) <= cfg.farm_reach
@@ -191,12 +231,15 @@ class ChampTurn:
     lane: TurnResult                       # the authoritative lane step (with champion contributions)
     champ: ChampState                      # champion state after the turn
     waves: Tuple[int, int]
-    behaviors: Tuple[int, int]
+    behaviors: Tuple[int, int]             # B_ABSENT for an absent side
     objectives: Tuple[int, int]            # chosen
     effective_objectives: Tuple[int, int]  # executed by the lane step (suspended by a connected trade)
     start: Tuple[int, int]                 # champion cells at the start of the turn (own coordinates)
-    end: Tuple[int, int]                   # ... at the end
+    end: Tuple[int, int]                   # ... at the end (-T for an away side)
     farm_spot: Tuple[int, int]
+    away: Tuple[bool, bool]                # absent, or recalled successfully this turn (off the lane)
+    recalled: Tuple[bool, bool]            # chose Recall this turn and left the lane
+    interrupted: Tuple[bool, bool]         # chose Recall this turn and was interrupted by an enemy trade
     threatened: Tuple[bool, bool]          # YIELD or SAFE champion threatened by a TRADE (evaded)
     connected: Tuple[bool, bool]           # TRADE champion in contact
     modes: Tuple[str, str]
@@ -204,8 +247,8 @@ class ChampTurn:
     lane_codes: Tuple[int, int]            # legacy codes given to the lane step
     farm_available: Tuple[float, float]
     farm: Tuple[float, float]              # collected
-    exposure: Tuple[int, int]
-    gank_p: Tuple[float, float]
+    exposure: Tuple[int, int]              # max(start, end) for a present side; -T for an away side
+    gank_p: Tuple[float, float]            # 0 for an away side
 
 
 def _clip(x: int, cfg: GameConfig) -> int:
@@ -235,14 +278,22 @@ def _evasion_cell(target: int, trader_end: int, cfg: GameConfig) -> int:
 
 
 def _decode(a: int) -> Tuple[int, int, int]:
-    if a == CHAMP_ABSENT or champ_behavior(a) == B_RECALL:
-        raise NotImplementedError("Recall and absence are reserved for M2b")
+    """(wave, behavior, objective); ABSENT decodes to (SP, B_ABSENT, NONE)."""
+    if a == CHAMP_ABSENT:
+        return SP, B_ABSENT, NONE
     return champ_wave(a), champ_behavior(a), champ_objective(a)
+
+
+def _after_away(side: ChampSide, recalled: bool, cfg: GameConfig) -> ChampSide:
+    """Champion record at the end of a turn spent away: timer set (Recall) or counted down (absent); at -T;
+    full HP once the timer reaches 0 (it plays the next turn)."""
+    left = cfg.recall_turns - 1 if recalled else side.absent - 1
+    return ChampSide(-cfg.tower, cfg.champion_hp if left == 0 else side.hp, left)
 
 
 def resolve_turn(lane: State, champ: ChampState, k: int, a: int, b: int, cfg: GameConfig,
                  lane_step: Optional[LaneStep] = None) -> ChampTurn:
-    """Resolve decision turn k of champion mode from both committed actions (module docstring, steps 1-9).
+    """Resolve decision turn k of champion mode from both committed actions (module docstring, steps 0-9).
     Legality is the caller's responsibility (the environment checks `champion_legal_actions`)."""
     if lane_step is None:
         def lane_step(s, kk, x, y, reach):
@@ -251,9 +302,12 @@ def resolve_turn(lane: State, champ: ChampState, k: int, a: int, b: int, cfg: Ga
     (wa, ba, oa), (wb, bb, ob) = _decode(a), _decode(b)
     w, beh, obj = (wa, wb), (ba, bb), (oa, ob)
     c0 = (champ.a.pos, champ.b.pos)
+    recalling = (ba == B_RECALL, bb == B_RECALL)
+    absent = (ba == B_ABSENT, bb == B_ABSENT)
 
-    # 1. wave destinations under full champion support (legacy Contest rule)
-    probe = lane_step(lane, k, wa + 6 * oa, wb + 6 * ob, None)
+    # 1. wave destinations under full support of every champion that intends to play the lane
+    off = tuple(recalling[s] or absent[s] for s in (A, B))
+    probe = lane_step(lane, k, wa + 6 * oa, wb + 6 * ob, tuple(NO_REACH if off[s] else T for s in (A, B)))
     spot = []
     for s in (A, B):
         fx, fh = probe.state.side(s)[:2]
@@ -264,15 +318,21 @@ def resolve_turn(lane: State, champ: ChampState, k: int, a: int, b: int, cfg: Ga
     chasers = []
     for s in (A, B):
         c = c0[s]
+        if absent[s]:
+            end[s] = -T
+            continue
+        if recalling[s]:
+            end[s] = c                                                    # channels where it stands
+            continue
         if obj[s] != NONE:
             target = T
-        elif beh[s] == B_TRADE:
+        elif beh[s] == B_TRADE and not absent[1 - s]:
             chasers.append(s)
             continue
         elif beh[s] == B_SAFE:
             target = min(spot[s], cfg.safe_line)
         else:
-            target = spot[s]
+            target = spot[s]                                              # HOLD, YIELD, TRADE with nobody to chase
         end[s] = _move(c, target, cfg)
     for s in chasers:
         o, c = 1 - s, c0[s]
@@ -286,6 +346,15 @@ def resolve_turn(lane: State, champ: ChampState, k: int, a: int, b: int, cfg: Ga
             target = e - rng if c < e else e + rng
         end[s] = _move(c, target, cfg)
 
+    # 2b. recall interruption by an enemy trader that reaches the channeling champion
+    interrupted = tuple(recalling[s] and beh[1 - s] == B_TRADE and in_contact(end[s], end[1 - s], cfg)
+                        for s in (A, B))
+    recalled = tuple(recalling[s] and not interrupted[s] for s in (A, B))
+    away = tuple(absent[s] or recalled[s] for s in (A, B))
+    for s in (A, B):
+        if away[s]:
+            end[s] = -T
+
     # 3. evasion by YIELD and SAFE (the trader's end cell depends on start positions only)
     threatened = [False, False]
     for s in (A, B):
@@ -295,15 +364,18 @@ def resolve_turn(lane: State, champ: ChampState, k: int, a: int, b: int, cfg: Ga
             own_target = spot[s] if beh[s] == B_YIELD else min(spot[s], cfg.safe_line)
             end[s] = _move(c0[s], _evasion_cell(own_target, end[o], cfg), cfg)
 
-    # 4. trade contact
-    in_range = in_contact(end[0], end[1], cfg)
+    # 4. trade contact (both champions present)
+    in_range = not (away[A] or away[B]) and in_contact(end[0], end[1], cfg)
     connected = tuple(beh[s] == B_TRADE and in_range for s in (A, B))
     eff_obj = tuple(NONE if connected[s] else obj[s] for s in (A, B))
 
     # 5. modes and wave contribution
     modes, reach = [], []
     for s in (A, B):
-        if connected[s]:
+        if away[s] or interrupted[s]:
+            modes.append(AWAY if away[s] else CHANNEL)
+            reach.append(NO_REACH)
+        elif connected[s]:
             modes.append(TRADING)
             reach.append(NO_REACH)
         elif beh[s] == B_SAFE or threatened[s]:
@@ -327,11 +399,14 @@ def resolve_turn(lane: State, champ: ChampState, k: int, a: int, b: int, cfg: Ga
             coll[s] += v * champion_collection(x, modes[s], end[s], modes[o], end[o], cfg)
 
     # 8. exposure and gank risk
-    exposure = (max(c0[0], end[0]), max(c0[1], end[1]))
-    gank = tuple(champion_gank_probability(lane, s, w[s], beh[s], cfg, exposure[s]) for s in (A, B))
+    exposure = tuple(-T if away[s] else max(c0[s], end[s]) for s in (A, B))
+    gank = tuple(0.0 if away[s] else
+                 champion_gank_probability(lane, s, w[s], B_SAFE if interrupted[s] else beh[s], cfg, exposure[s])
+                 for s in (A, B))
 
     # 9. champion state after the turn
-    new = ChampState(champ.a._replace(pos=end[0]), champ.b._replace(pos=end[1]))
-    return ChampTurn(res, new, w, beh, obj, eff_obj, c0, (end[0], end[1]), (spot[0], spot[1]),
-                     (threatened[0], threatened[1]), connected, (modes[0], modes[1]), (reach[0], reach[1]),
-                     codes, (avail[0], avail[1]), (coll[0], coll[1]), exposure, gank)
+    sides = tuple(_after_away(champ.side(s), recalled[s], cfg) if away[s] else champ.side(s)._replace(pos=end[s])
+                  for s in (A, B))
+    return ChampTurn(res, ChampState(*sides), w, beh, obj, eff_obj, c0, (end[0], end[1]), (spot[0], spot[1]),
+                     away, recalled, interrupted, (threatened[0], threatened[1]), connected, (modes[0], modes[1]),
+                     (reach[0], reach[1]), codes, (avail[0], avail[1]), (coll[0], coll[1]), exposure, gank)

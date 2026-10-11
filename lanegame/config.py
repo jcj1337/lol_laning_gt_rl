@@ -89,11 +89,13 @@ ACTION_SHORT = {a: f"{WAVE_SHORT[wave_of(a)]}-{'CS'[posture_of(a)]}"
                 + (f"+{OBJECTIVE_SHORT[objective_of(a)]}" if objective_of(a) else "")
                 for a in range(N_ACTIONS)}
 
-# ---- champion mode (roadmap M2a): a = wave + 3 * behavior + 15 * objective, plus ABSENT ----
-# Behaviors HOLD (Farm-Hold), YIELD (Farm-Yield), TRADE, SAFE are operational; RECALL and the ABSENT
-# code are reserved for M2b and never legal before then. Legacy configurations keep the codes above.
-B_HOLD, B_YIELD, B_TRADE, B_SAFE, B_RECALL = 0, 1, 2, 3, 4
-CHAMP_BEHAVIORS = (B_HOLD, B_YIELD, B_TRADE, B_SAFE)      # operational behaviors
+# ---- champion mode (roadmap M2): a = wave + 3 * behavior + 15 * objective, plus ABSENT ----
+# Behaviors HOLD (Farm-Hold), YIELD (Farm-Yield), TRADE, SAFE are the lane behaviors; RECALL is legal only as
+# the single code champ_act(SP, B_RECALL) (= 12) near one's own tower (champions.recall_legal); ABSENT (45) is
+# the only legal code while a champion is away (recall or death). B_ABSENT is the behavior an ABSENT code
+# decodes to; it is not part of the 45-code product. Legacy configurations keep the codes above.
+B_HOLD, B_YIELD, B_TRADE, B_SAFE, B_RECALL, B_ABSENT = 0, 1, 2, 3, 4, 5
+CHAMP_BEHAVIORS = (B_HOLD, B_YIELD, B_TRADE, B_SAFE)      # lane behaviors (present champion)
 N_BEHAVIOR_SLOTS = 5
 CHAMP_ABSENT = 3 * N_BEHAVIOR_SLOTS * N_OBJECTIVES        # 45
 N_CHAMP_ACTIONS = CHAMP_ABSENT + 1                        # 46
@@ -116,8 +118,9 @@ def champ_objective(a: int) -> int:
     return a // 15
 
 
-BEHAVIOR_NAMES = {B_HOLD: "Hold", B_YIELD: "Yield", B_TRADE: "Trade", B_SAFE: "Safe", B_RECALL: "Recall"}
-BEHAVIOR_SHORT = {B_HOLD: "H", B_YIELD: "Y", B_TRADE: "T", B_SAFE: "S", B_RECALL: "R"}
+BEHAVIOR_NAMES = {B_HOLD: "Hold", B_YIELD: "Yield", B_TRADE: "Trade", B_SAFE: "Safe", B_RECALL: "Recall",
+                  B_ABSENT: "Absent"}
+BEHAVIOR_SHORT = {B_HOLD: "H", B_YIELD: "Y", B_TRADE: "T", B_SAFE: "S", B_RECALL: "R", B_ABSENT: "A"}
 CHAMP_ACTION_NAMES = {a: f"{WAVE_NAMES[champ_wave(a)]}+{BEHAVIOR_NAMES[champ_behavior(a)]}"
                       + (f"+{OBJECTIVE_NAMES[champ_objective(a)]}" if champ_objective(a) else "")
                       for a in range(CHAMP_ABSENT)}
@@ -269,14 +272,19 @@ class GameConfig:
     # wave under each base action; None = follows it all the way (Contest).
     posture_cap: Tuple = (None, None, None, -1, -1, -1)
 
-    # ---- champion layer (roadmap M2a; lanegame/champions.py). Off in every legacy preset. ----
+    # ---- champion layer (roadmap M2; lanegame/champions.py). Off in every legacy preset. ----
     # In champion mode each player controls a champion with a persistent cell (own coordinates -T..T),
-    # HP and an absence timer (both dormant until M2b-M2d) and a per-seat mechanical skill (no effect until
-    # M2c). Actions are (wave management, behavior, siege objective); see champions.py for the turn order.
+    # HP, an absence timer and a per-seat mechanical skill. Actions are (wave management, behavior, siege
+    # objective); see champions.py for the turn order.
     champion_mode: bool = False
-    champion_hp: int = 6                  # maximum (and, in M2a, constant) champion HP
+    champion_hp: int = 6                  # maximum champion HP (restored on return from a recall or death)
     champion_speed: int = 2               # cells a champion can move per decision turn
-    champion_absent_max: int = 3          # largest absence timer (observation scale; recall 2, death 3 later)
+    champion_absent_max: int = 3          # largest absence timer (observation scale): >= max(recall_turns - 1, death_turns)
+    # Recall (M2b): a champion at or behind recall_line with no enemy champion in contact may Recall; it leaves
+    # the lane at once, misses recall_turns turns in total (the Recall turn itself included) and returns at its
+    # own tower with full HP. With the default 2: Recall on turn t, forced ABSENT on t + 1, back on t + 2.
+    recall_turns: int = 2
+    recall_line: int = -1
     skill_a: float = 0.5                  # mechanical skill of the player in seat A, in [0, 1]
     skill_b: float = 0.5                  # ... seat B
     safe_line: int = -1                   # Safe (and a threatened Yield) retreats to at most this cell
@@ -357,8 +365,8 @@ class GameConfig:
         return self.stacks(min(hp, self.hp_cap))
 
     def action_codes(self) -> Tuple[int, ...]:
-        """Every action code that can be legal somewhere in this configuration (champion mode: the full
-        46-slot space, of which the Recall and ABSENT codes are reserved and never legal in M2a)."""
+        """Every action slot of this configuration's fixed action space (champion mode: the full 46-slot space;
+        of its Recall codes only champ_act(SP, B_RECALL) is ever legal)."""
         if self.champion_mode:
             return tuple(range(N_CHAMP_ACTIONS))
         if not self.positioning:
@@ -403,6 +411,8 @@ class GameConfig:
         if self.champion_mode:
             assert self.objectives and self.tower_mode == "mass", "champion mode builds on the siege model"
             assert self.champion_hp >= 1 and self.champion_speed >= 1 and self.champion_absent_max >= 1
+            assert self.recall_turns >= 1 and -self.tower <= self.recall_line <= self.tower
+            assert self.champion_absent_max >= self.recall_turns - 1
             assert 0.0 <= self.skill_a <= 1.0 and 0.0 <= self.skill_b <= 1.0
             assert -self.tower <= self.safe_line <= self.tower
             assert self.trade_range >= 0 and self.farm_reach >= 0 and 0.0 <= self.trade_farm_factor <= 1.0

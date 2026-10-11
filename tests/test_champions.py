@@ -8,9 +8,10 @@ import numpy as np
 import pytest
 
 from lanegame import GameConfig, LaneGame
-from lanegame.champions import (FARM, NO_REACH, RETREAT, SAFE_MODE, TRADING, ChampSide, ChampState,
+from lanegame.champions import (FARM, NO_REACH, RECALL, RETREAT, SAFE_MODE, TRADING, ChampSide, ChampState,
                                 champion_collection, champion_gank_probability, champion_legal_actions,
-                                in_contact, initial_champions, objective_reachable, resolve_turn, swap_seats)
+                                in_contact, initial_champions, objective_reachable, recall_legal, resolve_turn,
+                                swap_seats)
 from lanegame.config import (B_HOLD, B_RECALL, B_SAFE, B_TRADE, B_YIELD, CHAMP_ABSENT, CHAMP_BEHAVIORS, CONTEST, F,
                              N_CHAMP_ACTIONS, NONE, PRESSURE, SAFE, SH, SP, VISION, act, champ_act, champ_behavior,
                              champ_objective, champ_wave)
@@ -152,17 +153,24 @@ def test_observation_is_bounded_markov_and_mirror_equivariant():
 
 
 def test_movement_is_bounded_persistent_and_hp_dormant():
+    """Present champions move at most champion_speed cells per turn and keep their cell between turns; an away
+    champion (recall, absence) is at its own tower. No damage source exists without combat (M2c, M2d)."""
+    cfg = CFG
     prev_end = None
-    for lane, champ, k, a, b, r in random_play(CFG, episodes=6, seed=3):
+    for lane, champ, k, a, b, r in random_play(cfg, episodes=6, seed=3):
         i = r.info
         start, end = i["champ_start"], i["champ_end"]
         if k > 0 and prev_end is not None:
             assert start == prev_end                           # position persists between turns
         assert (champ.a.pos, champ.b.pos) == start
         for s in (0, 1):
-            assert abs(end[s] - start[s]) <= CFG.champion_speed and -T <= end[s] <= T
-            assert i["exposure"][s] == max(start[s], end[s])
-        assert all(c[1] == CFG.champion_hp and c[2] == 0 for c in i["champ_after"])
+            assert -T <= end[s] <= T
+            if i["away"][s]:
+                assert end[s] == -T and i["exposure"][s] == -T and i["gank_p"][s] == 0
+            else:
+                assert abs(end[s] - start[s]) <= cfg.champion_speed
+                assert i["exposure"][s] == max(start[s], end[s])
+        assert all(c[1] == cfg.champion_hp for c in i["champ_after"])
         prev_end = None if r.done else end
 
 
@@ -281,12 +289,18 @@ def test_gank_terms_reproduce_legacy_contest_and_safe():
 
 
 # ------------------------------------------------------------------ legality and siege
-def test_masks_match_the_legal_sets_and_reserved_actions_never_appear():
+def test_masks_match_the_legal_sets_and_no_redundant_codes():
     for lane, champ, k, a, b, r in random_play(CFG, episodes=6, seed=11):
         for side in (0, 1):
             legal = champion_legal_actions(lane, champ, side, CFG)
             assert tuple(int(x) for x in np.flatnonzero(legal_mask(lane, side, CFG, champ=champ))) == legal
             assert legal == tuple(sorted(set(legal)))
+            if champ.side(side).absent > 0:
+                assert legal == (CHAMP_ABSENT,)
+                continue
+            recall = recall_legal(champ, side, CFG)
+            assert (RECALL in legal) == recall
+            legal = tuple(x for x in legal if x != RECALL)
             waves = wave_actions(lane, side, CFG)
             assert {champ_wave(x) for x in legal} == set(waves)          # Freeze stays state-dependent
             reach = objective_reachable(lane, champ, side, CFG)
@@ -320,19 +334,14 @@ def test_siege_objectives_need_the_champion_at_the_tower():
     assert t.lane.plates[0] == 1                               # Hold + Pressure does not trade
 
 
-def test_reserved_mechanics_raise():
-    with pytest.raises(NotImplementedError):
-        champion_legal_actions(CONTACT, ChampState(ChampSide(0, 6, 2), ChampSide(0, 6, 0)), 0, CFG)
-    with pytest.raises(NotImplementedError):
-        resolve_turn(CONTACT, ch(0, 0), 2, champ_act(SP, B_RECALL), H(), CFG)
-    with pytest.raises(NotImplementedError):
-        resolve_turn(CONTACT, ch(0, 0), 2, CHAMP_ABSENT, H(), CFG)
+def test_illegal_champion_codes_are_rejected():
+    """Recall with a wave other than Slow Push, ABSENT while present, Yield with an objective: never legal."""
     env = LaneEnv(CFG)
     oa, ob = env.reset(seed=0)
-    with pytest.raises(ValueError):
-        env.step(champ_act(SP, B_RECALL), ob.legal[0])
-    with pytest.raises(ValueError):
-        env.step(champ_act(SP, B_YIELD, PRESSURE), ob.legal[0])
+    assert RECALL in oa.legal and champ_act(SH, B_RECALL) not in oa.legal and CHAMP_ABSENT not in oa.legal
+    for bad in (champ_act(SH, B_RECALL), CHAMP_ABSENT, champ_act(SP, B_YIELD, PRESSURE)):
+        with pytest.raises(ValueError):
+            env.step(bad, ob.legal[0])
 
 
 # ------------------------------------------------------------------ environment
