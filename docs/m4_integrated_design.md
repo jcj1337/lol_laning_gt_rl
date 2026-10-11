@@ -3,6 +3,14 @@
 *Milestone M4.1 (design only), branch `design/m4-integrated` from `research/openai-five-diagnostics` (4e68c75),
 2026-10-11.*
 
+*Revision 1 (review of the same day), with full accounts in audit §1.9–1.11:*
+- *the observation is exactly Markov: lossless lane encoding, exact integer gold (§8.6, §12);*
+- *the evaluation tail bound is derived from the simulator (§10.5.3);*
+- *critic bootstrapping is documented as an approximation (§10.4, §10.5.4);*
+- *the evaluation protocols E1 and E2 are separated (§10.5.1);*
+- *Freeze has prototype evidence and a pre-training gate (§6.6);*
+- *the ruleset contract adds `legacy`, `m2c` and `m4` (§2).*
+
 *Nothing in this document is implemented. It specifies a new, separately versioned ruleset,
 `GameConfig.m4()`. The legacy exact game (`GameConfig()`, `.v2()`, `.v1()`) and the M2 champion game
 (`GameConfig.champions()`) are unchanged, and every pinned result stays reproducible.*
@@ -162,9 +170,24 @@ the chaser's own tower cell (−2). Contact from a tower cell requires the other
 from −1 connects. A freezer standing under its tower can therefore never punish an opponent farming its freeze.
 M4 replaces the chase target (§7.4).
 
+### 1.6 The M2 observation is not exactly Markov
+
+Exhaustive enumeration shows that M2's clipped, summed minion grid maps 96 classes of reachable lane states to
+shared observations. In 85 of the colliding pairs the states transition differently (§12.3). M4 uses a lossless
+lane encoding and an exact gold encoding (§12.1–12.2). The legacy observation is unchanged.
+
 ---
 
 ## 2. Design summary
+
+**Rulesets and configuration contract** (the details and `validate()` rules are in plan WP0):
+
+| `ruleset` | Presets | Time | Countdown in observation | Status |
+|---|---|---|---|---|
+| `"legacy"` | `GameConfig()`, `.v1()`, `.v2()`, `.champions()` | finite horizon K, terminal | yes | frozen; bit-identical pins |
+| `"m2c"` | `GameConfig.champions_continuing()` | continuing | no | **test fixture only**: M2 mechanics with M4 time semantics, used to validate WP1 before any M4 economy exists; never a research ruleset |
+| `"m4"` | `GameConfig.m4()` | continuing | no | the M4 ruleset of this document |
+
 
 | Element | M2 / M3 (`champions()`) | M4 (`m4()`) |
 |---|---|---|
@@ -215,7 +238,7 @@ S = (Λ, φ, C_A, C_B)        with the per-game constants (m_A, m_B) (mechanical
 | `absent` | a_s | int, 0 … 3 | turns still to sit out (M2 semantics) |
 | `xp` | x_s | int, 0 … X(18) = 544 | experience (clamped at the cap) |
 | `items` | N_s | int, 0 … 2 | purchased upgrade tiers |
-| `gold` | g_s | float, 0 … G_rem(N_s) | spendable gold (§8.6) |
+| `gold` | g_s | int μ (10⁻⁶ resource), 0 … G_rem(N_s) ≤ 10⁷ | spendable gold (§8.6) |
 | `tower_dmg` | τ_s | int centi-units, 0 … θ₃ = 6000 | cumulative damage side s has dealt to the **enemy** tower |
 
 The level is derived, not stored: `L_s = level_of(x_s)` (§9.1). So are the max HP `H(L_s)`, the attack power
@@ -458,6 +481,123 @@ same global cell. If it trades back from there, it draws the tower-adjacent shot
 champion at its cell. Punishment requires the freezer to Trade (giving up its own maintenance and half its farm
 for that turn) or a gank to occur.
 
+### 6.6 Does Freeze become strategically meaningful? Prototype evidence and the pre-training gate
+
+Maintenance and persistent tower damage give Freeze a mechanism. They do not by themselves show that Freeze
+matters. That needs multi-turn comparisons, from reachable states, of Freeze against its realistic alternatives.
+The full gate is a pre-training requirement (plan §7, S3). A **prototype of it** has already been run on the
+unchanged engine (`results/m4_design/scripts/freeze_gate.py`, output `freeze_gate.txt`).
+
+**Prototype method.**
+
+- **Engine.** The M2 champion resolver supplies positions, farm spots, evasion, the lane and gold. On top of it the
+  prototype adds the M4 accounting: Freeze maintenance (re-resolved as Slow Push when not maintained), XP within
+  3 cells, tower hits plus Pressure damage, and plates at 16/36/60.
+- **No chance events.** There are no trades, no ganks and no deaths. Gank *exposure* is reported as expected
+  occurrence and expected HP loss, outside the return.
+- **Scenarios.** 113 distinct Freeze-legal states for A (lane, champions and phase), reached from s₀ by 6
+  scripted-shove prefixes and 400 seeded random legal prefixes.
+- **Policies.**
+  - The defender A plays **freeze** (Freeze when legal, maintained), **slowpush**, or **cshove** (conditional Shove:
+    Shove while its own wave is at least as large as the enemy's).
+  - The attacker B plays **park_hold** (Slow Push, Hold), **park_safe** (Slow Push, Safe), **breaker** (Shove,
+    Hold), **presser** (Shove, Hold, Pressure when legal) or **stacker** (Slow Push until 8 HP, then Shove;
+    Pressure).
+  - Every pair is played for 120 turns, scoring the discounted relative return to A (gold plus plate gold,
+    γ = 0.99).
+
+**Results** (means over the 113 scenarios; "F vs best" counts the scenarios where Freeze's return beats or loses to
+the better of Slow Push and conditional Shove by more than 0.05):
+
+| B policy | Freeze | Slow Push | cond. Shove | F − SP: mean (min, max) | F vs best: better / equal / worse | B crashes per 120 turns (F / SP) | B plates (F / SP) | B gold (F / SP) | B XP (F / SP) |
+|---|---|---|---|---|---|---|---|---|---|
+| park_hold | 8.05 | 6.09 | −4.93 | +1.96 (0.00, +11.75) | 55 / 58 / 0 | 3.57 / 3.78 | 1.27 / 1.14 | 24.7 / 27.3 | 451 / 460 |
+| park_safe | 30.15 | 29.62 | 7.35 | +0.54 (−2.60, +2.44) | 46 / 62 / 5 | 3.57 / 3.78 | 1.27 / 1.14 | 0.0 / 0.0 | 450 / 447 |
+| breaker | 10.72 | 10.30 | 8.54 | +0.42 (0.00, +1.25) | 66 / 47 / 0 | 0.61 / 0.28 | 0.00 / 0.00 | 19.7 / 19.9 | 480 / 479 |
+| presser | 10.18 | 10.33 | 8.57 | −0.15 (−1.10, +0.35) | 18 / 47 / 48 | 0.61 / 0.28 | 0.58 / 0.02 | 19.7 / 19.9 | 480 / 479 |
+| stacker | 6.38 | 6.18 | −2.09 | +0.20 (−1.94, +9.08) | 12 / 58 / 43 | 8.39 / 5.81 | 1.27 / 1.14 | 26.0 / 26.6 | 479 / 448 |
+
+**Readings, each a mechanical observation from these runs:**
+
+1. **Freeze is no longer inert.** It differs from Slow Push in 45–58% of the reachable Freeze-legal scenarios over
+   120 turns. The diagnostics' one-turn test found 0%.
+2. **Freeze is advantageous against passive and pure-shove opponents.**
+   - Against park_hold it is never worse and is better in 55 of 113 scenarios (up to +11.75), when the enemy front
+     at A's −1 holds 4–8 HP. It denies creep crashes and plates and keeps B farming under A's tower: B's gold is
+     −2.7 per 120 turns, while B's XP is nearly unchanged (451 vs 460). That is the "lose gold, keep XP" pattern.
+   - The opponent's exposure rises with it: B's expected gank-HP loss is 24.8 vs A's 3.2 per 120 turns, which is
+     outside the return.
+3. **Shove breaks Freeze, and breaking it pays when combined with Pressure.**
+   - Against breaker and presser, Freeze *invites* crashes: 0.61 vs 0.28 per 120 turns, with a median first crash
+     at turn 7 vs never. Holding one's wave at −1 moves the fights to one's own tower, where a reaching Shove's
+     +4 push breaks through.
+   - A pure breaker does not exploit this, so Freeze is still +0.42.
+   - A presser converts it into tower damage (τ 1,150 vs 231) and plates (0.58 vs 0.02). Against the presser,
+     Freeze is worse than the best alternative in 48 of 113 scenarios (down to −1.10).
+4. **Freeze is not beneficial against a stacking wave in most of the scenarios where it matters.**
+   - Holding a 6–8 HP front lets it grow into larger crashes: 8.39 vs 5.81 crashes, worse in 43 scenarios, −1.2 to
+     −1.9.
+   - It helps only where it denies the stack's first crash, at 4–6 HP and particular phases: +8 to +9 in a few
+     scenarios.
+5. **Freeze is irrelevant for parked fronts of ≤ 3–4 HP against passive play** (difference 0.00). The
+   configuration is lane-stable either way (§6.4).
+6. **No action dominates.** Freeze's sign depends on the opponent's policy, which is the precondition for a mixed or
+   state-dependent equilibrium role. Conditional Shove by the defender is the worst defender policy here: it gives
+   up the tower-side farming position.
+
+**Limits of the prototype.**
+
+- **No trades, no tower-adjacent shot, no realized ganks or deaths.** The opponent's forward exposure would make
+  farming a freeze costlier, and the freezer's trades would add to the denial.
+- **Scripted, non-adaptive continuations.** No policy switches to Pressure when it sees a freeze.
+- **The defender always Holds.**
+- **Scenarios from one family of prefixes.**
+- **The +8 to +12 extremes are driven by plates,** so they are sensitive to the plate thresholds.
+
+The prototype therefore shows that the proposed mechanics *can* create meaningful, non-dominant Freeze incentives.
+It does not show that learned play will use them.
+
+**Pre-training gate (plan §7, S3).** The prototype is re-run on the implemented M4 environment with:
+
+- chance events (paired common random numbers);
+- trades and the tower-adjacent shot;
+- levels;
+- adaptive scripted continuations.
+
+It passes if:
+
+- **G1 (distinct).** Freeze ≠ Slow Push (|Δ| > 0.05) in ≥ 20% of ≥ 100 reachable Freeze-legal scenarios, against at
+  least two attacker policies.
+- **G2 (non-trivial sign).** There exist attacker policies against which Freeze beats both alternatives by ≥ 0.2 in
+  some scenarios, *and* attacker policies against which it is ≥ 0.2 worse than the best alternative in some
+  scenarios.
+- **G3 (breakable).** Against a reaching Shove with a front of ≥ 3 HP, a maintained Freeze is broken within the
+  windows of §6.4–6.5.
+
+**Reported, not gated.** For each scenario and policy pair:
+
+- crash delay;
+- gold denial (B's gold, Freeze − Slow Push);
+- XP of both sides;
+- exposure (expected gank occurrence and HP);
+- tower damage and plates;
+- discounted return.
+
+No threshold is placed on how often Freeze *should* be chosen.
+
+**If the gate fails.** G1 failing means Freeze is still inert. G2 failing means it dominates or is never useful.
+Either is reported as a design finding before training, and the smallest corrections are considered in this order:
+
+1. **Allow the freeze to be set up one cell earlier** (`freeze_legal_max = 0`, enemy front at the lane cell), keeping
+   maintenance. Reason: the gate failing G1 would mean the legal window is too short. Earlier legality lengthens it
+   without a new rule, and it is redundant only in contact states (§1.1).
+2. **Apply the siege-wait correction (D7).** Reason: bounces then reach the defender's side sooner, so Freeze-legal
+   states occur more often.
+3. **Adjust p_adj.** Reason: it is the only parameter that changes the cost of contesting a freeze without changing
+   the wave rules.
+
+Each correction is justified only by the specific failure, and each is measured again by the same gate.
+
 ---
 
 ## 7. Positioning, farming (gold) and experience (XP)
@@ -684,10 +824,11 @@ and bounties:
 reaches 0, i.e. on the last turn away, after Recall or death:
 
 ```
-while N_s < 2 and g_s ≥ price[N_s] − ε:     g_s ← max(0, g_s − price[N_s]);  N_s ← N_s + 1
+while N_s < 2 and g_s ≥ price_μ[N_s]:     g_s ← g_s − price_μ[N_s];  N_s ← N_s + 1
 ```
 
-with ε = 10⁻⁹. The new attack power applies from the next turn, the champion's first back in the lane.
+`g_s` and the prices are integers in micro-resources (§8.6): `price_μ = (4,000,000, 6,000,000)`. The comparison is
+exact, with no tolerance. The new attack power applies from the next turn, the champion's first back in the lane.
 
 **Timelines** (M2 defaults recall_turns = 2, death_turns = 3):
 
@@ -731,7 +872,7 @@ reward source (§10.3) and it is never reduced.
 
 - each turn it increases by `E_s,k`;
 - it decreases only by purchases;
-- it is clamped at `G_rem(N_s) = Σ_{i>N_s} price_i` (10.0, 6.0, 0.0 for N = 0, 1, 2).
+- it is clamped at `G_rem(N_s) = Σ_{i>N_s} price_i` (10.0, 6.0 and 0.0 resources for N = 0, 1, 2).
 
 The clamp removes only gold that can never be spent, which keeps the state bounded. The amount clamped is reported
 as `gold_unspendable` (an `info` statistic, not part of the reward).
@@ -743,9 +884,24 @@ as `gold_unspendable` (an `info` statistic, not part of the reward).
 g_s = Σ_k E_s,k − Σ purchases_s − Σ clamped_s
 ```
 
-**Representation.** `g` is a float64 ledger receiving exactly the same increments as the reward. Affordability uses
-the tolerance ε. All purchase thresholds are comparisons, so a 10⁻¹² rounding difference cannot change a decision
-except within ε of a price, where the tolerance resolves it the same way on every IEEE-754 platform.
+**Representation: exact integers in micro-resources (μ = 10⁻⁶ resource).** Every earned amount is an exact multiple
+of 1 μ:
+
+- One HP of farm is worth `f · base · (1 − zone) · t`, a product of the defaults f = 0.25, base ∈ {0.9, 0.5, 0.8,
+  0.6, 0.4, 0.2, 0}, (1 − zone) ∈ {1, 0.7, 0.85} and the trade factor t ∈ {1, 0.5}. Its finest value is
+  0.25 · 0.9 · 0.85 · 0.5 = 0.095625 = 95,625 μ.
+- Kills are whole HP.
+- Plate gold (1.0) and the kill bounty (0.5) are whole numbers of μ.
+
+So the ledger `g_s`, the cumulative earned gold and the reward are all computed as integers in μ. The reward is
+converted to a float only when it is emitted: `r = (E_A,μ − E_B,μ) / 10⁶`.
+
+- `validate()` converts each economic parameter to an exact rational from its decimal string. It **rejects** any
+  configuration whose per-HP farm values, plate values or bounty are not integer multiples of 1 μ, so the exactness
+  is enforced rather than assumed.
+- Consequences: purchase decisions are exact integer comparisons; the ledger identities above hold exactly; the
+  observation can encode g losslessly (§12.2).
+- The legacy rulesets keep their float rewards, unchanged.
 
 ### 8.7 Chance vector
 
@@ -878,56 +1034,164 @@ All of these are state. Their value is whatever future gold they cause, discount
 
 ### 10.4 Training semantics (PPO)
 
-**Games.** A training game starts from s₀, unless a reset distribution is configured (below). It ends only by a
-time limit `game_length` (default 512 turns). That is a **truncation**: the last transition's GAE target bootstraps
-`V(s_final)`. The existing code path does this (train.py:288–297); this guarantees the critic's target is the
-infinite-horizon value.
+**Games.** A training game starts from a state drawn from the training start distribution ρ_train (below). It ends
+only by a time limit `game_length` (default 512 turns). That is a **truncation**, not a game end: the last
+transition's GAE target uses the critic's estimate `V̂(s_final)` of the continuation value. The existing code path
+does this (train.py:288–297).
 
 **Segments.** Rollouts are fixed-length segments of `segment_length` turns (default 128) per environment. A segment
-that ends mid-game bootstraps `V(s_T)` (train.py:298–304). Games and segments are not aligned. The first game of
+that ends mid-game bootstraps `V̂(s_T)` (train.py:298–304). Games and segments are not aligned. The first game of
 each environment gets a random length in [1, game_length], so the batch is not lock-stepped in game age.
 
-**γ, λ.** γ = cfg.gamma = 0.99 and λ = 0.95. `compute_gae` is unchanged: it is already correct for termination
-versus truncation (ppo.py:88–100). M4 never produces `terminated = True`.
+**What bootstrapping does and does not guarantee.** With an exact critic (V̂ = V^π) the truncated and segmented
+λ-return targets have the same expectation as the infinite-horizon targets. With an imperfect critic they do not. At
+a truncation or segment boundary the one-step target's error is exactly `γ (V̂(s′) − V^π(s′))` for the boundary
+state s′, and it propagates backward with weight (γλ)^j. So bootstrapping **approximates** the infinite-horizon
+continuation value. It is the standard treatment of time limits in RL, and it is preferable to treating the limit
+as termination, which would bias the target by `−γ V^π(s′)` and make the value depend on the unobserved time. It is
+**not** unbiased. Three things keep the approximation honest:
 
-**Scale.** Returns are of order ±(0.1 to 0.3)/(1 − γ), i.e. ±10–30 resources. Reward scale (0.1) and value
-clipping are retuned in the smoke stage.
+- every boundary bootstraps from the true pre-reset state, never from the next game's first observation (plan WP1,
+  tests T1.5–T1.8);
+- the game length is ≫ 1/(1 − γ), so few transitions sit near a truncation;
+- the evaluation (§10.5) never uses the critic for headline numbers.
 
-**Reset distribution (optional, configurable, reported).** A fraction of games can start from an archive of states
-recorded in earlier play: sieges, freezes, level and item gaps. This addresses the diagnostics finding that rare
-states are never visited (D.4). It changes only which states are trained on, not the objective.
+**γ, λ.** γ = cfg.gamma = 0.99 and λ = 0.95. `compute_gae` is unchanged (ppo.py:88–100): termination drops the
+successor value, truncation keeps it, and both stop the λ-recursion. M4 never produces `terminated = True`.
+
+**Scale.**
+- Typical per-turn rewards are ±0.1–0.3, so returns are of order ±10–30 resources.
+- The guaranteed per-turn bound is |r| ≤ 8.575 (§10.5.3).
+- Reward scale (0.1) and value clipping are retuned in the smoke stage.
+
+**Training start distribution ρ_train (configurable, always reported).**
+
+- **Default:** ρ_train = δ_{s₀}, every game starting from the standard initial state.
+- **Optional mixture:** ρ_train = (1 − β)·δ_{s₀} + β·Uniform(𝒜_train), where 𝒜_train is an archive of recorded states
+  (sieges, parked waves, level and item gaps).
+- **Archive conditions:**
+  - every archived state carries a witness: the seed and action prefix that reproduce it from s₀, so it is
+    reachable;
+  - the archive's generating policies and β are stated with every result.
+
+ρ_train is a training device, **not part of the objective.** In the exact game an optimal stationary strategy pair
+is optimal from every state simultaneously (§10.1), so a different start distribution does not change the set of
+equilibria. With function approximation it changes which states receive gradient, and therefore which policy is
+learned. That is the purpose of the archive: the diagnostics found rare states unvisited (D.4).
 
 **What truncation does not do.** Truncation is not part of the game and is unobserved, so a policy cannot exploit
 it. A policy that conditioned on "turns until truncation" is impossible: the observation has no time.
 
-### 10.5 Evaluation
+### 10.5 Evaluation: objectives, estimators and guarantees
 
-Head-to-head value estimate, from start distribution ρ (default: s₀):
+#### 10.5.1 Two evaluation protocols, never mixed
+
+- **E1 (primary): the game's objective.** J(π_A, π_B) = E[Σ_k γ^k r_A,k | s₀] from the standard initial state s₀.
+  Every headline result, every policy comparison and every exploitability bound is E1.
+- **E2 (secondary, diagnostic): value over a fixed held-out start archive.** `J_𝒜(π_A, π_B) = mean over s ∈ 𝒜_eval of
+  E[Σ_k γ^k r_A,k | s]`.
+  - 𝒜_eval is disjoint from 𝒜_train, fixed before training, published with its witnesses, and mirror-closed (it
+    contains the mirror of each of its states, so a mirror-symmetric policy pair scores 0).
+  - E2 measures play in rare situations that E1 under-samples.
+  - It is reported separately and labelled. It is never averaged into E1 and never used to rank methods.
+
+A policy trained with archived starts is still evaluated by E1 first. Training with ρ_train ≠ δ_{s₀} is a method
+choice whose effect is judged by E1.
+
+#### 10.5.2 Estimator
 
 ```
-V̂_W = (1/n) Σ_episodes Σ_{k < W} γ^k r_A,k
+V̂_W = (1/n) Σ_episodes Σ_{k < W} γ^k r_A,k        (both seats, paired common random numbers, as in M3)
 ```
 
-Protocol:
+`V̂_W` estimates the truncated value `J_W = E[Σ_{k<W} γ^k r_A,k]`. The total error has two separately reported
+parts:
 
-- both seats, paired common random numbers, as in M3;
-- W = 460 by default (γ^W ≈ 0.0098);
-- tail bound `|V − V_W| ≤ γ^W · r̄/(1 − γ)`, with r̄ the observed 99.9th percentile of |r| (reported);
-- W = 1,000 for headline numbers (γ^W ≈ 4·10⁻⁵).
+- the Monte Carlo error (paired confidence interval);
+- the truncation error `|J − J_W|`, which is bounded **deterministically** (§10.5.3).
 
-**Descriptive statistics.** Also report undiscounted relative gold per window (turns 0–63, 64–127, …), levels,
-items and plates over time. These are not the objective.
+#### 10.5.3 A simulator-derived truncation bound (mathematical guarantee)
 
-**Approximate exploitability.** A PPO best responder trains on the same γ, games and segments against the frozen
-target, then is evaluated by V̂_W. Following the diagnostics lesson:
+All earned amounts are non-negative and `r_A = E_A − E_B`, so for any window
 
-- ≥ 2 warm-started and 1 from-scratch attacker per target, ≥ 1M steps each;
-- learning curves and the last paired increment are reported;
-- the maximum over attackers is a **lower bound**, never a certified Nash exploitability.
+```
+|Σ_{k≥W} γ^k r_A,k| ≤ max_s Σ_{k≥W} γ^k E_s,k .
+```
 
-**Equivalent estimator.** Geometric termination with continuation probability γ has the same expected undiscounted
-sum as the discounted objective. It is a valid, higher-variance cross-check (plan WP1, test 6 checks the evaluator
-against closed forms instead).
+Each of the three components of E_s is bounded from the rules (M4 defaults):
+
+1. **Farm.**
+   - One HP of the enemy's minions is worth at most f·max(base) = 0.25·0.9 = 0.225 resources.
+   - The enemy HP that can die during turns W … W + m − 1 is at most its alive HP at turn W plus the HP it spawns
+     meanwhile: ≤ A_max + 4⌈m/2⌉ ≤ A_max + 2m + 2.
+   - A_max is the largest alive minion HP of one side (lane plus crashed mass) over all reachable states.
+   - **By exhaustive enumeration of the reachable lane, A_max = 32** (`results/m4_design/lane_bounds.txt`). This
+     is a computational proof for the default lane parameters; a test re-checks it whenever they change (plan WP3).
+   - Summation by parts on the cumulative earnings `C_m ≤ a + b·m` gives
+     `Σ_{m≥0} γ^{W+m} G_{W+m} = γ^W (1 − γ) Σ_{m≥1} γ^{m−1} C_m ≤ γ^W (a + b/(1 − γ))`, with a = 0.225·(A_max + 2)
+     and b = 0.45.
+2. **Kill bounty.**
+   - A dead champion sits out death_turns = 3 turns and must play at least one turn before it can die again, so
+     one side's bounties are at least 4 turns apart.
+   - Hence `Σ_{k≥W} γ^k B_s,k ≤ γ^W · 0.5 / (1 − γ⁴)`.
+3. **Plates.** At most 3 per tower, ever, so the plate gold still to come is at most `γ^W · 3 · v_plate`.
+
+Hence
+
+```
+|J − J_W| ≤ γ^W · Ω,    Ω = 0.225(A_max + 2) + 0.45/(1 − γ) + 0.5/(1 − γ⁴) + 3·v_plate
+```
+
+At γ = 0.99, Ω = 68.3:
+
+| W | 460 | 700 | 900 | 1,000 |
+|---|---|---|---|---|
+| guaranteed bound γ^W·Ω | 0.671 | 0.060 | 0.0081 | 0.0030 |
+
+**Windows.**
+- **Headline E1 numbers use W = 1,000.** The guarantee is then ≤ 0.0030 resources, below any Monte Carlo error we
+  can afford.
+- **W = 460 is allowed only for development runs.** There it must be reported with the guaranteed bound
+  (0.671, loose) **and**, separately labelled as an empirical estimate, the tail measured on a subsample extended
+  to W = 1,000. The measured tail is not a guarantee.
+
+**Per-turn bound.** For value-scale design, a single turn's reward is bounded:
+
+- **Farm per turn:**
+  - one fight per tick removes at most the enemy front's HP, at most hp_cap = 12;
+  - tower fire removes at most 1 HP per tick;
+  - thinning removes at most 1 HP per turn;
+  - there are no siege fights (`siege_engage = False`);
+  - so at most 2·12 + 2 + 1 = 27 enemy HP die per turn, worth at most 0.225·27 = 6.075.
+- **Plates per turn:** at most 2. One turn adds at most 2·100·minion_damage(48) + P(18, 2) = 2,400 + 1,320 = 3,720
+  centi to τ, while crossing all three thresholds from below θ₁ needs more than θ₃ − θ₁ = 4,400.
+- **Bounty:** at most 0.5.
+
+So `|r_k| ≤ 6.075 + 2 + 0.5 = 8.575`. The enumeration's largest observed one-turn kill is 15 HP, within the
+analytical 27. This per-turn bound is not used for the tail: γ^W·8.575/(1 − γ) = 857.5·γ^W is about 13 times
+weaker than the cumulative bound.
+
+#### 10.5.4 Bootstrapped evaluation (optional, approximate)
+
+`V̂_W + γ^W V̂_critic(s_W)` can shorten W. It is **not** an unbiased estimate of J:
+
+- its bias is `γ^W E[V̂_critic(s_W) − V^{π_A,π_B}(s_W)]`, unknown, and bounded only by the critic's accuracy;
+- a critic trained in self-play estimates the value of its own policy pair, not of an arbitrary pairing.
+
+It may be reported only as a labelled approximation, never for headline numbers or exploitability bounds.
+
+#### 10.5.5 Descriptive statistics and exploitability
+
+- **Descriptive statistics.** Report undiscounted relative gold per window (turns 0–63, 64–127, …), levels, items
+  and plates over time. These are not the objective.
+- **Approximate exploitability.** A PPO best responder trains on the same γ, games and segments against the frozen
+  target, then is evaluated by E1 with W = 1,000. Its training start distribution is reported like the target's.
+  Following the diagnostics lesson:
+  - ≥ 2 warm-started and 1 from-scratch attacker per target, ≥ 1M steps each;
+  - learning curves and the last paired increment are reported;
+  - the maximum over attackers is a **lower bound**, never a certified Nash exploitability.
+- **Equivalent estimator.** Geometric termination with continuation probability γ has the same expected
+  undiscounted sum as the discounted objective. It is a valid, higher-variance cross-check.
 
 ### 10.6 Long-run behaviour with finite caps
 
@@ -1009,36 +1273,115 @@ S3–S4.
 
 ## 12. Observation and masks
 
-The observation is own-perspective, fixed length and Markov. Every entry is in [0, 1]. It is a function of
-(φ, S, side) only. Layout (66 entries with the default geometry):
+### 12.1 Layout
+
+The observation is own-perspective and fixed length, and every entry is in [0, 1]. It is a function of (φ, S,
+side) only and contains no absolute time. Layout (88 entries with the default geometry):
 
 | Block | Entries | Definition |
 |---|---|---|
 | phase | 4 | one-hot of φ = k mod 4 |
-| own minions | 9 | HP per cell −4 … 4 / 12 (as M2) |
-| enemy minions | 9 | same, mirrored (as M2) |
-| own side | 4 | siege mass / 48, vision / 6, siege eligible, has front |
-| enemy side | 4 | same for the opponent |
-| own tower progress | 4 | τ_own / θ₃; one-hot-free plate count π(τ_own)/3; progress to the next plate `(τ − θ_π)/(θ_{π+1} − θ_π)` (1 if all broken); plates remaining (3 − π)/3 |
+| own lane | 19 | **front cell** one-hot over cells −4 … 4 (all zero = no front); **front HP** / 12; **rear count per cell** n(x) / R_max for x = −4 … 4, with R_max = 4 |
+| enemy lane | 19 | the same for the enemy, mirrored into own coordinates |
+| own side | 3 | siege mass / 48; vision / 6; siege eligible |
+| enemy side | 3 | the same for the opponent |
+| own tower progress | 4 | τ_own / θ₃; plates broken π(τ_own)/3; progress to the next plate `(τ − θ_π)/(θ_{π+1} − θ_π)` (1 if all broken); plates remaining (3 − π)/3 |
 | enemy tower progress | 4 | the same for τ_enemy (damage dealt to *our* tower) |
-| own champion | 14 | cell one-hot (5); h/H(L); H(L)/H(18); absent/3; skill; (L − 1)/17; XP progress `(x − X(L))/n(L)` (0 at L = 18); N/2; min(1, g/price[N]) (0 if N = 2); AP(L, N)/AP(18, 2) |
-| enemy champion | 14 | the same, mirrored |
+| own champion | 16 | cell one-hot (5); h/H(L); H(L)/H(18); absent/3; skill; (L − 1)/17; XP progress `(x − X(L))/n(L)` (0 at L = 18); N/2; **g_μ / 10⁷** (spendable gold, exact, §8.6); **can buy the next tier** `[N < 2 ∧ g ≥ price[N]]`; **can buy both remaining tiers** `[N = 0 ∧ g ≥ price[0] + price[1]]`; AP(L, N)/AP(18, 2) |
+| enemy champion | 16 | the same, mirrored |
+
+**Changes from the first M4.1 draft.**
+
+- *Gold.* The draft feature `min(1, g/price[N])` was not injective. At N = 0, gold 4 and gold 9 gave the same
+  value, although only 9 also pays for most of the second tier, so after one more wave of farm the two states buy
+  different things. It is replaced by the exact balance `g_μ/10⁷`, which is lossless because g ≤ G_rem(0) =
+  10 resources = 10⁷ μ, plus two exact affordability bits.
+- *Lane.* M2's lane grid (HP per cell / 12, clipped at 1) is replaced by a lossless encoding: front cell, front HP
+  and rear counts. §12.3 shows why.
 
 **Removed relative to M2:**
 
 - `k/K` and `(K − k)/K`, the countdown;
-- `plates_pending`, which is always 0 under M4.
+- `plates_pending`, which is always 0 under M4;
+- `has_front`, which is now the "no front" pattern of the front one-hot.
 
 **Mirror property.** `observe(Λ, φ, B, cfg, C) = observe(mirror(Λ), φ, A, swap_seats(cfg), mirror(C))`.
 
-**Completeness.** Together with the actions and the chance vector this is the whole state. Nothing
-decision-relevant is hidden:
-
-- spendable gold is shown only as affordability progress, since gold beyond the next price matters only through
-  the next price after it, and both are derivable;
-- exact g and x are recoverable from the progress features and the level/items, up to float precision.
-
 **Masks.** Unchanged: `legal_mask` = `champion_legal_actions`. No M4 rule adds or removes a legal code.
+
+### 12.2 Markov sufficiency: what is proven and what is approximate
+
+The M4 transition and reward depend only on:
+
+- the state S = (Λ, φ, C_A, C_B) of §3.1;
+- the per-game constants (the two skills, observed);
+- the two actions;
+- the i.i.d. chance vector.
+
+So the observation is a sufficient statistic for decision-making **if S can be recovered from it**.
+
+**Proposition (proven).** On every state reachable from s₀ under the M4 defaults, `observe(φ, S, side)` determines S
+exactly. The proof is constructive: a decoder D reads S back from the float32 vector.
+
+- **Phase:** φ is the index of the phase one-hot.
+- **Lane, per side:**
+  - *Front.* The front cell is the index of the front one-hot. Its HP is `round(12·v)`.
+  - *Rears.* Rear positions come from the counts: `n(x) = round(4·v_x)`. Every rear packet holds exactly W = 4 HP;
+    `step_turn` asserts this (mechanics.py:464–465).
+  - *Siege and vision.* `siege = round(48·v)` and `vision = round(6·v)`. The plate fields are 0 under M4.
+- **Champion, per side:**
+  - *Integer fields.* `pos` from the one-hot; L = 1 + round(17·v); `absent = round(3·v)`; N = round(2·v).
+  - *HP.* `h = round(H(L)·v)`. Distinct h at the same level differ by ≥ 1/H(L) ≥ 1/1,375 ≈ 7·10⁻⁴ in the feature,
+    far above the float32 spacing (≤ 6·10⁻⁸).
+  - *XP.* `x = X(L) + round(n(L)·v)`, with n(L) ≤ 56. Above the cap, x is clamped at 544 (§10.6), so nothing is lost.
+  - *Gold.* `g_μ = round(10⁷·v)`. The float32 rounding error of g_μ/10⁷ ∈ [0, 1] is ≤ 2⁻²⁵ ≈ 3·10⁻⁸, i.e. ≤ 0.3 μ
+    after rescaling. That is below the 0.5 μ needed for exact rounding, so every integer balance is recovered.
+- **Tower:** `τ = round(6000·v)`, a spacing of 1.7·10⁻⁴.
+
+**Two of these steps rest on bounds that are computed, not derived:**
+
+- **R_max = 4 rear packets in one cell.** Measured as the exact maximum over the exhaustive reachable-lane
+  enumeration (`results/m4_design/obs_alias.txt`).
+- **siege ≤ 48.** `siege_cap` truncates any excess (mechanics.py:371–373).
+
+The enumeration covers a superset of M4's lane steps. It uses every legal wave, the objectives NONE and PRESSURE, and
+every champion reach value. M4's Freeze maintenance only substitutes Slow Push, and tower damage never feeds back
+into the lane.
+
+**What holds only approximately, or only conditionally:**
+
+1. **Reachable states and default parameters.** R_max and the decoder's integer bounds were established for the
+   default lane parameters. Any change of the lane geometry, wave HP, caps or spawn timing must re-run the
+   enumeration test (plan WP7, test O1). The environment also checks n(x) ≤ R_max at run time and **raises** if it is
+   exceeded. It never clips silently.
+2. **Information versus learnability.** The encoding is lossless, but some distinctions are numerically tiny. Two
+   gold balances 1 μ apart differ by 10⁻⁷ in the feature. A network cannot be expected to act on such differences,
+   and should not need to: the strategically relevant gold comparisons (can buy now; can buy both) are exact bits.
+   Markov sufficiency is proven for *information*. That a network *uses* that information is an empirical matter.
+3. **Derived features.** AP, H(L)/H(18), the tower plate counts and the affordability bits are deterministic
+   functions of other entries. They add no information and are included only to ease learning.
+4. **Skills.** Skills are game constants, not state. They are observed exactly, so a single policy can condition on
+   them; a game with unobserved skills would be a different, partially observable game.
+
+### 12.3 Aliasing in the M2 observation (historical finding)
+
+The exhaustive enumeration of the reachable lane (20,572 (state, phase) pairs) shows that **M2's lane grid is not
+injective**:
+
+- **Two causes.**
+  - Rear packets can share the front's cell: in 96 side-states, rears queued behind a front that has just crashed
+    become co-located with the new front.
+  - A cell can hold up to 4 rears (16 HP), which the grid clips at 12 HP; this happens in 82 side-states.
+- **Effect.** 96 observation classes contain more than one lane state. In 85 of the colliding pairs the states
+  have **different transitions** for some action pair.
+- **Scale.** This is 0.5% of the reachable lane classes, in rare queue-heavy states.
+
+The M2 observation docstring's statement that "nothing decision-relevant is hidden"
+(env/observation.py:26–28) is therefore false in these states.
+
+The legacy observation is **not changed**, because changing it would break the pinned M2/M3 results and checkpoints.
+The finding should be cited when interpreting M2 learned policies in queue-heavy (siege and bounce) states. M4 uses
+the lossless encoding of §12.1.
 
 ---
 
@@ -1054,7 +1397,9 @@ can only be fixed by experiment (audit §6).
 | `gamma` | γ | per turn | 0.99 | 0.98–0.995 | half-weight at 69 turns covers levels 1–11; exp. sensitivity |
 | `game_length` (training) | — | turns | 512 | 256–1,024 | ≫ 1/(1 − γ); bootstrapped, so not part of the objective |
 | `segment_length` (training) | — | turns | 128 | 64–256 | PPO batch shape |
-| `eval_window` | W | turns | 460 (1,000 headline) | — | tail ≤ 1% (0.004%) of the value scale |
+| `eval_window` | W | turns | 1,000 (headline); 460 (development only) | — | guaranteed truncation error ≤ 0.0030 (resp. 0.671) resources, §10.5.3 |
+| `gold_unit` | μ | resource | 10⁻⁶ | — | every earned amount is an exact multiple (§8.6); enforced by `validate()` |
+| `rear_count_max` | R_max | packets per cell | 4 | — | exhaustive maximum over the reachable lane (§12.2); exceeded → error |
 | `xp_per_hp` | ξ | XP/HP | 2 | 1.5–3 | one wave = 8 XP; anchors §9.1 |
 | `xp_range` | R_xp | cells | 3 | 2–3 | §7.3 (2 needs a new XP-keeping behavior) |
 | `xp_base`, `xp_step` | — | XP | 8, 3 | — | League's 280 + 100(L − 1) per 270-XP wave |
@@ -1101,6 +1446,13 @@ can only be fixed by experiment (audit §6).
    invariant to skill.
 9. **Phase periodicity.** Transitions from (S, φ) are identical for every k with k mod P = φ.
 10. **Legacy pins.** All legacy outputs are bit-identical (plan WP0).
+11. **Exact ledger.** Gold, earned gold and the reward numerator are integers in μ, so invariants 2 and 3 hold with
+    equality, not up to rounding.
+12. **Observation decodability.** `D(observe(φ, S, side)) = S` for every reachable state (§12.2).
+13. **Lane bounds.**
+    - The rear count per cell is at most R_max = 4, siege ≤ 48 and alive HP ≤ A_max = 32 per side. These are
+      established by exhaustive enumeration and checked at run time.
+    - At most 27 enemy HP die per turn (analytical; 15 observed).
 
 ---
 
@@ -1249,7 +1601,12 @@ recommended default and the alternative:
 | D4 | Item prices and tier count | (4, 6), 2 tiers | (3, 5); 3 tiers (A6) | Recall frequency |
 | D5 | Plate thresholds and Pressure damage | (16, 36, 60) units; 4 units per Pressure turn | per-plate value growth; fewer plates | siege incentives |
 | D6 | Ganks scaled by the victim's level | yes | by the attacker's level (jungler = opponent's level) (A7) | snowball strength |
-| D7 | Fronts during an enemy siege (mechanics.py:243–244) | keep the legacy rule (a front at x ≥ −3 waits while the enemy has a siege), documented | wait only at −3, behind the tower, as the comment intends | bounce timing; the default keeps the siege-model calibration |
+| D7 | Fronts during an enemy siege (mechanics.py:243–244) | keep the legacy rule (a front at x ≥ −3 waits while the enemy has a siege), documented | wait only at −3, behind the tower, as the comment intends | bounce timing; the default keeps the siege-model calibration; second Freeze contingency (§6.6) |
+| D8 | Training start distribution | ρ_train = δ_{s₀} for the first pilot; the archive mixture (β = 0.25) run as a reported comparison | archive from the start | which states are learned; never the objective (§10.4) |
+| D9 | Development evaluation window | W = 460 with guaranteed bound 0.67 plus an empirical tail estimate | always W = 1,000 (bound 0.003) | evaluation cost (~2.2×) vs rigor (§10.5.3) |
+
+D1–D7 are rules of the game. D8 and D9 are methodology. None of them blocks M4.2, which implements only the
+ruleset scaffold, the legacy pins and continuing time.
 
 **Alternatives considered, ranked by significance** (the full trade-offs are in the audit, §7):
 
@@ -1272,15 +1629,18 @@ recommended default and the alternative:
   changes the trade variance relative to M2.
 - **A9. Plate gold only for a present champion.** More League-like; makes minion-only plate breaks while away
   worthless.
-- **A10. Freeze legal from the lane cell (x ≤ 0).** Rejected: redundant with Slow Push (the own-front channel
-  never binds), §1.1.
+- **A10. Freeze legal from the lane cell (x ≤ 0).** Not adopted as the default. In contact states it adds Freeze
+  codes that behave like Slow Push (§1.1). It is retained as the **first contingency correction** if the Freeze gate
+  fails G1 (§6.6).
 
 ---
 
 ## 17. Acceptance tests (summary; full list in the plan, §3–§4)
 
-1. Freeze ≠ Slow Push over a 4-turn window in held-freeze states (plan §4.1). In passive states they are equal,
-   which is reported, not hidden.
+1. Freeze ≠ Slow Push in the crash-timing scenarios of §6.4 (plan §4.1). In passive 3–4 HP parked states they
+   are equal, which is asserted and reported, not hidden.
+1a. **Freeze gate G1–G3** on ≥ 100 reachable scenarios with multi-turn continuations (§6.6, plan S3). It covers
+   situations where Freeze is advantageous, where Shove breaks it profitably, and where it is not beneficial.
 2. Freeze cannot hold an enemy front of ≥ 10 HP, and an 8–9 HP front crashes within 8 turns despite it (§4.2).
 3. Shove breaks a freeze with no automatic HP or farm penalty; reach is required (§4.3).
 4. Gold and XP separate by cell under a held freeze (§4.4). XP denial requires the freezer at 0 or beyond (§4.5).
@@ -1291,5 +1651,13 @@ recommended default and the alternative:
 8. Purchases are affordable, irreversible, single, timed at the end of the last absent turn, and never rewarded
    negatively (WP6; §4.8–4.9).
 9. Mirror equivariance and per-turn zero-sum (§4.12).
-10. Truncation bootstraps (WP1 tests 4–5). No countdown; observation invariant under k → k + P.
-11. Legacy pins unchanged (WP0).
+10. Truncation and segment boundaries bootstrap from the correct pre-reset state; the GAE matches closed forms for
+    exact and deliberately biased critics (plan WP1, T1.4–T1.9). No countdown; observation invariant under
+    k → k + P.
+11. Legacy pins unchanged (WP0). The `m2c` fixture's per-turn dynamics equal `champions()` (WP1, T1.10).
+12. Observation decoder round-trip, exhaustive over the reachable lane and on soak states. The 85 M2-aliased pairs
+    are distinguished. Gold balances 4 and 9 at N = 0 are distinguished (plan WP7, O1–O7).
+13. The evaluation tail bound's constants (A_max, K ≤ 27, ≤ 2 plates per turn) are re-checked by enumeration
+    whenever the lane parameters change (plan WP3).
+14. The ledger is exact: integer μ identities over 10,000-turn soaks; `validate()` rejects economies not
+    representable in μ (WP6).

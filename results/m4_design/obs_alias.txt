@@ -1,0 +1,10 @@
+reachable (lane state, phase) pairs: 20572  (223 s)
+front co-located with a rear (side-states): 96
+grid cells above hp_cap (side-states): 82;  max HP in one cell 16;  max rears in one cell 4
+observation classes: 20466;  classes with > 1 lane state: 96
+  aliased: A[front@-3 hp7; rears -; siege 0; vision 0; plates 0] B[front@+1 hp12; rears +1,+0,+0,-4; siege 0; vision 0; plates 0]  (own coordinates) | A[front@-3 hp7; rears -; siege 0; vision 0; plates 0] B[front@+1 hp12; rears +0,+0,-4; siege 0; vision 0; plates 0]  (own coordinates)
+  aliased: A[front@+1 hp7; rears +0,+0,+0,+0,-2; siege 0; vision 0; plates 0] B[no front; rears -; siege 0; vision 0; plates 0]  (own coordinates) | A[front@+1 hp7; rears +0,+0,+0,-2; siege 0; vision 0; plates 0] B[no front; rears -; siege 0; vision 0; plates 0]  (own coordinates)
+  aliased: A[front@-3 hp4; rears -; siege 0; vision 0; plates 0] B[front@+1 hp12; rears +0,-2; siege 5; vision 0; plates 0]  (own coordinates) | A[front@-3 hp4; rears -; siege 0; vision 0; plates 0] B[front@+1 hp12; rears +1,+0,-2; siege 5; vision 0; plates 0]  (own coordinates)
+  aliased: A[front@+1 hp10; rears +1,+0,+0,-4; siege 0; vision 0; plates 0] B[front@-4 hp4; rears -; siege 0; vision 0; plates 0]  (own coordinates) | A[front@+1 hp12; rears +0,+0,-4; siege 0; vision 0; plates 0] B[front@-4 hp4; rears -; siege 0; vision 0; plates 0]  (own coordinates)
+  aliased: A[front@+1 hp10; rears +1,+0,+0,-4; siege 0; vision 0; plates 0] B[front@-4 hp4; rears -; siege 0; vision 0; plates 0]  (own coordinates) | A[front@+1 hp11; rears +1,+0,+0,-4; siege 0; vision 0; plates 0] B[front@-4 hp4; rears -; siege 0; vision 0; plates 0]  (own coordinates)
+colliding pairs with different transitions: 85

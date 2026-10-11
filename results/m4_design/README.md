@@ -12,3 +12,6 @@ repository root with `PYTHONPATH=.`.
 | `freeze_enum.py [legacy\|champ]` | exhaustive lane enumeration: Freeze-legal situations where Freeze ≠ Slow Push (about 10 min) | `freeze_enum_champ_out.txt` |
 | `nodiff.py`, `flows.py`, `flows2.py`, `timing.py` | non-contact equal cases, mutual SP / SH cycles, Freeze-binding frequency, fight and travel times | stdout |
 | `econ_measure.py [n32] [n200]`, `econ_analyze.py` | scripted-agent economy: kills by distance, gold, trades, deaths, XP rates, horizon 32 vs 200 | `econ_results.npz` (git-ignored), stdout |
+| `obs_alias.py` | exhaustive check of the M2 lane grid's injectivity: co-located rears, clipping, colliding observation classes with different transitions (about 4 min) | `obs_alias.txt` |
+| `lane_bounds.py` | exhaustive reachable-lane bounds for the evaluation guarantee: A_max, one-turn kills, siege mass, tower hits (about 5 min) | `lane_bounds.txt` |
+| `freeze_gate.py` | prototype of the pre-training Freeze gate: Freeze vs Slow Push vs conditional Shove over 113 reachable scenarios and 5 attacker policies, M4 accounting on the M2 resolver (about 1 min) | `freeze_gate.txt` |

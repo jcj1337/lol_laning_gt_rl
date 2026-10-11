@@ -1,0 +1,127 @@
+reachable Freeze-legal scenarios (distinct lane+champion+phase): 113
+
+Means over scenarios, H = 120, gamma = 0.99. disc = discounted relative return to A (gold + plates);
+crash@ = median first crash of B into A's tower (None = never, counted as H); tauB = B's damage on A's tower
+B policy   A policy    disc crash@ crashes   tauB platesB  goldA  goldB   xpA   xpB gankHP_A gankHP_B Fturns
+park_hold  freeze      8.05    120    3.57   2550    1.27  39.95  24.66   476   451     3.24    24.76   76.8
+park_hold  slowpush    6.09    120    3.78   2284    1.14  38.95  27.34   477   460     3.91    23.62    0.0
+park_hold  cshove     -4.93    120    0.18     50    0.00  24.97  36.25   487   473    35.61     5.91    0.0
+park_safe  freeze     30.15    120    3.57   2550    1.27  53.32   0.00   476   450     3.24     1.88   76.8
+park_safe  slowpush   29.62    120    3.78   2284    1.14  52.14   0.01   477   447     3.91     1.89    0.0
+park_safe  cshove      7.35    120    0.18     50    0.00  35.35  26.38   487   470    35.61     0.94    0.0
+breaker    freeze     10.72      7    0.61    356    0.00  37.40  19.72   484   480     0.98    56.80   61.6
+breaker    slowpush   10.30    120    0.28     68    0.00  37.07  19.88   484   479     0.96    57.24    0.0
+breaker    cshove      8.54    120    0.27     66    0.00  35.03  20.88   484   439     7.43    38.85    0.0
+presser    freeze     10.18      7    0.61   1150    0.58  37.37  19.69   484   480     0.98    56.78   61.6
+presser    slowpush   10.33    120    0.28    231    0.02  37.10  19.87   484   479     0.96    57.24    0.0
+presser    cshove      8.57    120    0.27    222    0.02  35.07  20.86   484   439     7.41    38.92    0.0
+stacker    freeze      6.38    120    8.39   2550    1.27  38.80  25.98   478   479     3.36    30.78   61.4
+stacker    slowpush    6.18    120    5.81   2284    1.14  38.68  26.56   479   448     3.64    26.95    0.0
+stacker    cshove     -2.09    120    2.88   1120    0.56  27.86  32.90   485   458    29.01    11.27    0.0
+
+Per B policy: in how many scenarios is Freeze better / equal / worse than the best of Slow Push and conditional Shove (discounted relative return, |diff| > 0.05)?
+  park_hold  better  55  equal  58  worse   0   mean diff +1.96  max +11.75  min +0.00
+  park_safe  better  46  equal  62  worse   5   mean diff +0.54  max +2.44  min -2.60
+  breaker    better  66  equal  47  worse   0   mean diff +0.42  max +1.25  min +0.00
+  presser    better  18  equal  47  worse  48   mean diff -0.15  max +0.35  min -1.10
+  stacker    better  12  equal  58  worse  43   mean diff +0.20  max +9.08  min -1.94
+
+Freeze minus Slow Push only (isolates the Freeze action):
+  park_hold  mean +1.96  differs in 55/113  max +11.75  min +0.00
+  park_safe  mean +0.54  differs in 51/113  max +2.44  min -2.60
+  breaker    mean +0.42  differs in 66/113  max +1.25  min +0.00
+  presser    mean -0.15  differs in 66/113  max +0.35  min -1.10
+  stacker    mean +0.20  differs in 55/113  max +9.08  min -1.94
+
+Scenario origins: Counter({'random prefix': 107, 'B shoves': 6})
+
+Scenarios where Freeze differs from Slow Push (|diff| > 0.05) - state at the start, A's view:
+  A front -2:3 rears () | B front at A's -1:6 rears (-2,) | sieges 0/0 contact=True ph=1 | park_hold:+3.32 park_safe:+1.74 breaker:+0.17 presser:-1.09 stacker:-1.60
+  A front -4:4 rears () | B front at A's -1:8 rears (-4,) | sieges 0/0 contact=False ph=2 | park_hold:+3.49 park_safe:+1.83 breaker:+0.17 presser:-1.10 stacker:-1.42
+  A front -4:4 rears () | B front at A's -1:4 rears (-4,) | sieges 0/0 contact=False ph=2 | park_hold:+0.00 park_safe:+0.00 breaker:+1.14 presser:+0.21 stacker:+0.00
+  A front -4:4 rears () | B front at A's -1:5 rears (-4,) | sieges 0/0 contact=False ph=0 | park_hold:+9.08 park_safe:-0.01 breaker:+0.64 presser:-0.31 stacker:+9.08
+  A front -2:2 rears () | B front at A's -1:3 rears (-2,) | sieges 0/0 contact=True ph=3 | park_hold:+8.95 park_safe:-0.01 breaker:+0.86 presser:-0.21 stacker:+8.95
+  A front -4:4 rears () | B front at A's -1:8 rears (-4,) | sieges 0/0 contact=False ph=0 | park_hold:+4.12 park_safe:+2.44 breaker:+0.17 presser:-1.10 stacker:-1.94
+  A front -2:2 rears () | B front at A's -1:7 rears (-2,) | sieges 0/0 contact=True ph=1 | park_hold:+2.70 park_safe:+1.34 breaker:+0.00 presser:+0.00 stacker:-1.55
+  A front -4:4 rears () | B front at A's -1:7 rears (-4,) | sieges 0/0 contact=False ph=2 | park_hold:+3.76 park_safe:+2.26 breaker:+0.33 presser:-0.64 stacker:-1.90
+  A front -2:3 rears () | B front at A's -1:6 rears (-2,) | sieges 0/0 contact=True ph=3 | park_hold:+3.94 park_safe:+2.35 breaker:+0.17 presser:-1.09 stacker:-1.92
+  A front -2:2 rears () | B front at A's -1:2 rears (-2,) | sieges 0/0 contact=True ph=3 | park_hold:+0.00 park_safe:+0.00 breaker:+0.89 presser:-0.33 stacker:+0.00
+  A front -2:1 rears () | B front at A's -2:2 rears (-2,) | sieges 0/0 contact=True ph=1 | park_hold:+2.17 park_safe:+1.27 breaker:+0.00 presser:+0.00 stacker:-1.36
+  A front -1:2 rears (-4,) | B front at A's -1:4 rears (-4,) | sieges 0/0 contact=True ph=0 | park_hold:+0.00 park_safe:+0.00 breaker:+1.15 presser:+0.22 stacker:+0.00
+  A front -1:1 rears (-4,) | B front at A's -1:7 rears (-4,) | sieges 0/0 contact=True ph=0 | park_hold:+3.27 park_safe:+1.94 breaker:+0.00 presser:+0.00 stacker:-1.86
+  A front -2:2 rears () | B front at A's -1:3 rears (-2,) | sieges 0/0 contact=True ph=1 | park_hold:+0.00 park_safe:+0.00 breaker:+0.86 presser:-0.21 stacker:+0.00
+  A front -4:4 rears () | B front at A's -1:6 rears (-4,) | sieges 0/0 contact=False ph=2 | park_hold:+3.30 park_safe:+2.09 breaker:+0.73 presser:-0.22 stacker:-0.28
+  A front -4:4 rears () | B front at A's -1:7 rears (-4,) | sieges 0/0 contact=False ph=0 | park_hold:+3.36 park_safe:+2.13 breaker:+0.33 presser:-0.64 stacker:-0.56
+  A front -4:4 rears () | B front at A's -1:8 rears (-4,) | sieges 0/0 contact=False ph=2 | park_hold:+3.49 park_safe:+1.83 breaker:+0.17 presser:-1.10 stacker:-1.25
+  A front -2:2 rears () | B front at A's -1:7 rears (-2,) | sieges 0/0 contact=True ph=3 | park_hold:+3.67 park_safe:+1.91 breaker:+0.00 presser:+0.00 stacker:-1.34
+  A front -3:1 rears () | B front at A's -2:2 rears (-2,) | sieges 0/3 contact=True ph=1 | park_hold:+2.16 park_safe:+1.26 breaker:+0.00 presser:+0.00 stacker:-1.71
+  A front -4:4 rears () | B front at A's -1:6 rears (-4,) | sieges 0/0 contact=False ph=0 | park_hold:+11.75 park_safe:-2.60 breaker:+0.73 presser:-0.22 stacker:+8.08
+  A front -4:4 rears () | B front at A's -1:3 rears (-4,) | sieges 0/0 contact=False ph=2 | park_hold:+0.00 park_safe:+0.00 breaker:+1.06 presser:+0.13 stacker:+0.00
+  A front -4:4 rears () | B front at A's -1:3 rears (-4,) | sieges 0/0 contact=False ph=0 | park_hold:+0.00 park_safe:+0.00 breaker:+1.06 presser:+0.13 stacker:+0.00
+  A front -4:4 rears () | B front at A's -1:5 rears (-4,) | sieges 0/0 contact=False ph=2 | park_hold:+0.00 park_safe:+0.00 breaker:+0.64 presser:-0.31 stacker:+0.00
+  A front -2:3 rears () | B front at A's -1:4 rears (-2,) | sieges 0/0 contact=True ph=3 | park_hold:+0.00 park_safe:+0.00 breaker:+0.73 presser:-0.21 stacker:+0.00
+  A front -4:4 rears () | B front at A's -1:4 rears (-4,) | sieges 0/0 contact=False ph=0 | park_hold:+0.00 park_safe:+0.00 breaker:+1.14 presser:+0.21 stacker:+0.00
+  A front -1:2 rears (-4,) | B front at A's -1:5 rears (-4,) | sieges 0/0 contact=True ph=0 | park_hold:+0.00 park_safe:+0.00 breaker:+1.24 presser:+0.31 stacker:+0.00
+  A front -1:4 rears () | B front at A's -1:3 rears (-2,) | sieges 0/0 contact=True ph=1 | park_hold:+0.00 park_safe:+0.00 breaker:+0.64 presser:-0.30 stacker:+0.00
+  A front -2:3 rears () | B front at A's -1:6 rears (-2,) | sieges 0/0 contact=True ph=1 | park_hold:+3.32 park_safe:+1.74 breaker:+0.17 presser:-1.09 stacker:-1.60
+  A front -2:2 rears () | B front at A's -1:2 rears (-2,) | sieges 0/0 contact=True ph=1 | park_hold:+0.00 park_safe:+0.00 breaker:+0.89 presser:-0.33 stacker:+0.00
+  A front -2:2 rears () | B front at A's -1:4 rears (-2,) | sieges 0/0 contact=True ph=1 | park_hold:+3.26 park_safe:+2.07 breaker:+0.67 presser:-0.23 stacker:-0.21
+  A front -2:2 rears () | B front at A's -1:4 rears (-2,) | sieges 0/0 contact=True ph=3 | park_hold:+11.64 park_safe:-2.50 breaker:+0.67 presser:-0.23 stacker:+8.13
+  A front -3:1 rears () | B front at A's -2:2 rears (-2,) | sieges 0/1 contact=True ph=1 | park_hold:+2.16 park_safe:+1.26 breaker:+0.00 presser:+0.00 stacker:-1.32
+  A front -2:2 rears () | B front at A's -2:3 rears (-2,) | sieges 0/0 contact=True ph=3 | park_hold:+2.43 park_safe:+1.25 breaker:+0.00 presser:+0.00 stacker:-1.20
+  A front -2:3 rears () | B front at A's -1:3 rears (-2,) | sieges 0/0 contact=True ph=1 | park_hold:+0.00 park_safe:+0.00 breaker:+0.64 presser:-0.30 stacker:+0.00
+  A front -2:1 rears (-4,) | B front at A's -1:5 rears (-4,) | sieges 0/0 contact=True ph=2 | park_hold:+0.00 park_safe:+0.00 breaker:+0.94 presser:-0.12 stacker:+0.00
+  A front -2:3 rears () | B front at A's -1:3 rears (-2,) | sieges 0/0 contact=True ph=3 | park_hold:+0.00 park_safe:+0.00 breaker:+0.64 presser:-0.30 stacker:+0.00
+  A front -2:3 rears () | B front at A's -1:2 rears (-2,) | sieges 0/0 contact=True ph=3 | park_hold:+0.00 park_safe:+0.00 breaker:+1.13 presser:+0.21 stacker:+0.00
+  A front -2:1 rears (-4,) | B front at A's -1:4 rears (-4,) | sieges 0/0 contact=True ph=0 | park_hold:+0.00 park_safe:+0.00 breaker:+0.97 presser:-0.24 stacker:+0.00
+  A front -2:3 rears () | B front at A's -1:2 rears (-2,) | sieges 0/0 contact=True ph=1 | park_hold:+0.00 park_safe:+0.00 breaker:+1.13 presser:+0.21 stacker:+0.00
+  A front -4:4 rears () | B front at A's -1:4 rears (-4,) | sieges 0/0 contact=False ph=0 | park_hold:+0.00 park_safe:+0.00 breaker:+1.14 presser:+0.21 stacker:+0.00
+  A front -4:4 rears () | B front at A's -1:6 rears (-4,) | sieges 0/0 contact=False ph=0 | park_hold:+11.57 park_safe:-2.60 breaker:+1.25 presser:+0.30 stacker:+7.90
+  A front -2:3 rears () | B front at A's -1:5 rears (-2,) | sieges 0/0 contact=True ph=1 | park_hold:+3.58 park_safe:+2.17 breaker:+0.58 presser:-0.38 stacker:-1.88
+  A front -2:1 rears (-4,) | B front at A's -1:5 rears (-4,) | sieges 0/0 contact=True ph=2 | park_hold:+0.00 park_safe:+0.00 breaker:+0.94 presser:-0.12 stacker:+0.00
+  A front -2:1 rears () | B front at A's -1:3 rears (-2,) | sieges 0/0 contact=True ph=3 | park_hold:+11.64 park_safe:-2.50 breaker:+0.94 presser:-0.12 stacker:+8.13
+  A front -2:3 rears () | B front at A's -1:5 rears (-2,) | sieges 0/0 contact=True ph=3 | park_hold:+3.33 park_safe:+2.11 breaker:+0.32 presser:-0.64 stacker:-0.36
+  A front -3:2 rears () | B front at A's -2:3 rears (-2,) | sieges 0/0 contact=True ph=1 | park_hold:+2.17 park_safe:+1.27 breaker:+0.00 presser:+0.00 stacker:-1.36
+  A front -1:2 rears (-4,) | B front at A's -1:4 rears (-4,) | sieges 0/0 contact=True ph=2 | park_hold:+0.00 park_safe:+0.00 breaker:+1.15 presser:+0.22 stacker:+0.00
+  A front -1:4 rears () | B front at A's -1:2 rears (-2,) | sieges 0/0 contact=True ph=1 | park_hold:+0.00 park_safe:+0.00 breaker:+1.13 presser:+0.21 stacker:+0.00
+  A front -1:2 rears (-4,) | B front at A's -1:3 rears (-4,) | sieges 0/0 contact=True ph=0 | park_hold:+0.44 park_safe:+0.71 breaker:+0.35 presser:+0.35 stacker:+0.44
+  A front -3:1 rears () | B front at A's -2:1 rears (-2,) | sieges 0/0 contact=True ph=3 | park_hold:+2.43 park_safe:+1.25 breaker:+0.00 presser:+0.00 stacker:-1.20
+  A front -4:4 rears () | B front at A's -1:4 rears (-4,) | sieges 0/0 contact=False ph=2 | park_hold:+0.00 park_safe:+0.00 breaker:+1.14 presser:+0.21 stacker:+0.00
+  A front -2:3 rears () | B front at A's -1:4 rears (-2,) | sieges 0/0 contact=True ph=1 | park_hold:+0.00 park_safe:+0.00 breaker:+0.73 presser:-0.21 stacker:+0.00
+  A front -2:1 rears (-4,) | B front at A's -1:4 rears (-4,) | sieges 0/0 contact=True ph=2 | park_hold:+0.00 park_safe:+0.00 breaker:+0.97 presser:-0.24 stacker:+0.00
+  A front -2:1 rears () | B front at A's -1:2 rears (-2,) | sieges 0/0 contact=True ph=3 | park_hold:+8.95 park_safe:-0.01 breaker:+0.98 presser:-0.24 stacker:+8.95
+  A front -4:4 rears () | B front at A's -1:5 rears (-4,) | sieges 0/0 contact=False ph=0 | park_hold:+8.91 park_safe:-0.01 breaker:+0.64 presser:-0.31 stacker:+8.91
+  A front -3:2 rears () | B front at A's -2:3 rears (-2,) | sieges 0/0 contact=True ph=1 | park_hold:+2.17 park_safe:+1.27 breaker:+0.00 presser:+0.00 stacker:-1.36
+  A front -4:4 rears () | B front at A's -1:5 rears (-4,) | sieges 0/0 contact=False ph=2 | park_hold:+0.00 park_safe:+0.00 breaker:+0.64 presser:-0.31 stacker:+0.00
+  A front -2:3 rears () | B front at A's -1:4 rears (-2,) | sieges 0/0 contact=True ph=3 | park_hold:+0.00 park_safe:+0.00 breaker:+0.73 presser:-0.21 stacker:+0.00
+  A front -2:1 rears (-4,) | B front at A's -1:5 rears (-4,) | sieges 0/0 contact=True ph=0 | park_hold:+0.00 park_safe:+0.00 breaker:+0.94 presser:-0.12 stacker:+0.00
+  A front -2:2 rears () | B front at A's -2:5 rears (-2,) | sieges 0/0 contact=True ph=3 | park_hold:+2.46 park_safe:+1.28 breaker:+0.00 presser:+0.00 stacker:-1.11
+  A front -3:1 rears () | B front at A's -2:2 rears (-2,) | sieges 0/0 contact=True ph=1 | park_hold:+2.17 park_safe:+1.27 breaker:+0.00 presser:+0.00 stacker:-1.36
+  A front -4:4 rears () | B front at A's -1:7 rears (-4,) | sieges 0/0 contact=False ph=0 | park_hold:+3.19 park_safe:+2.13 breaker:+0.59 presser:-0.38 stacker:-0.73
+  A front -2:3 rears () | B front at A's -1:6 rears (-2,) | sieges 0/0 contact=True ph=1 | park_hold:+3.32 park_safe:+1.74 breaker:+0.17 presser:-1.09 stacker:-1.43
+  A front -4:4 rears () | B front at A's -1:8 rears (-4,) | sieges 0/0 contact=False ph=2 | park_hold:+3.49 park_safe:+1.83 breaker:+0.17 presser:-1.10 stacker:-1.25
+  A front -3:1 rears () | B front at A's -2:4 rears (-2,) | sieges 0/0 contact=True ph=3 | park_hold:+2.52 park_safe:+1.34 breaker:+0.00 presser:+0.00 stacker:-1.12
+  A front -2:1 rears () | B front at A's -1:1 rears (-2,) | sieges 0/0 contact=True ph=1 | park_hold:+2.17 park_safe:+1.27 breaker:+0.00 presser:+0.00 stacker:-1.36
+  A front -2:1 rears (-4,) | B front at A's -1:6 rears (-4,) | sieges 0/0 contact=True ph=0 | park_hold:+0.00 park_safe:+0.00 breaker:+0.75 presser:-0.14 stacker:+0.00
+  A front -2:1 rears (-4,) | B front at A's -1:6 rears (-4,) | sieges 0/0 contact=True ph=2 | park_hold:+0.00 park_safe:+0.00 breaker:+0.75 presser:-0.14 stacker:+0.00
+  A front -4:4 rears () | B front at A's -1:6 rears (-4,) | sieges 0/0 contact=False ph=0 | park_hold:+11.75 park_safe:-2.60 breaker:+1.25 presser:+0.30 stacker:+8.08
+  A front -2:3 rears () | B front at A's -1:5 rears (-2,) | sieges 0/0 contact=True ph=1 | park_hold:+3.58 park_safe:+2.17 breaker:+0.32 presser:-0.64 stacker:-1.88
+  A front -3:1 rears () | B front at A's -2:4 rears (-2,) | sieges 0/0 contact=True ph=1 | park_hold:+2.16 park_safe:+1.26 breaker:+0.00 presser:+0.00 stacker:-1.78
+  A front -2:1 rears () | B front at A's -2:2 rears (-2,) | sieges 0/0 contact=True ph=3 | park_hold:+2.43 park_safe:+1.25 breaker:+0.00 presser:+0.00 stacker:-1.20
+  A front -1:4 rears () | B front at A's -1:1 rears (-2,) | sieges 0/0 contact=True ph=1 | park_hold:+0.45 park_safe:+0.71 breaker:+0.14 presser:+0.14 stacker:+0.45
+  A front -3:2 rears () | B front at A's -2:3 rears (-2,) | sieges 0/0 contact=True ph=3 | park_hold:+2.43 park_safe:+1.25 breaker:+0.00 presser:+0.00 stacker:-1.20
+  A front -3:1 rears () | B front at A's -2:4 rears (-2,) | sieges 0/0 contact=True ph=3 | park_hold:+2.52 park_safe:+1.34 breaker:+0.00 presser:+0.00 stacker:-1.12
+  A front -2:3 rears () | B front at A's -1:5 rears (-2,) | sieges 0/0 contact=True ph=3 | park_hold:+3.33 park_safe:+2.11 breaker:+0.32 presser:-0.64 stacker:-0.36
+  A front -3:2 rears () | B front at A's -2:3 rears (-2,) | sieges 0/0 contact=True ph=1 | park_hold:+2.17 park_safe:+1.27 breaker:+0.00 presser:+0.00 stacker:-1.36
+  A front -2:1 rears (-4,) | B front at A's -1:6 rears (-4,) | sieges 0/0 contact=True ph=0 | park_hold:+0.00 park_safe:+0.00 breaker:+0.75 presser:-0.14 stacker:+0.00
+  A front -2:1 rears () | B front at A's -1:4 rears (-2,) | sieges 0/0 contact=True ph=1 | park_hold:+3.58 park_safe:+2.17 breaker:+0.76 presser:-0.15 stacker:-1.88
+  A front -4:4 rears () | B front at A's -1:3 rears (-4,) | sieges 0/0 contact=False ph=0 | park_hold:+0.00 park_safe:+0.00 breaker:+1.06 presser:+0.13 stacker:+0.00
+  A front -1:2 rears (-4,) | B front at A's -1:3 rears (-4,) | sieges 0/0 contact=True ph=2 | park_hold:+0.44 park_safe:+0.71 breaker:+0.35 presser:+0.35 stacker:+0.44
+  A front -2:1 rears () | B front at A's -1:3 rears (-2,) | sieges 0/0 contact=True ph=1 | park_hold:+3.26 park_safe:+2.07 breaker:+0.94 presser:-0.12 stacker:-0.22
+  A front -3:1 rears () | B front at A's -2:2 rears (-2,) | sieges 0/0 contact=True ph=3 | park_hold:+2.43 park_safe:+1.25 breaker:+0.00 presser:+0.00 stacker:-1.20
+  A front -2:3 rears () | B front at A's -1:5 rears (-2,) | sieges 0/0 contact=True ph=1 | park_hold:+3.58 park_safe:+2.17 breaker:+0.32 presser:-0.64 stacker:-1.88
+  A front -1:4 rears () | B front at A's -1:3 rears (-2,) | sieges 0/0 contact=True ph=1 | park_hold:+0.00 park_safe:+0.00 breaker:+0.64 presser:-0.30 stacker:+0.00
+  A front -2:3 rears () | B front at A's -1:3 rears (-2,) | sieges 0/0 contact=True ph=1 | park_hold:+0.00 park_safe:+0.00 breaker:+0.64 presser:-0.30 stacker:+0.00
+  A front -2:1 rears () | B front at A's -1:1 rears (-2,) | sieges 0/0 contact=True ph=3 | park_hold:+2.43 park_safe:+1.25 breaker:+0.00 presser:+0.00 stacker:-1.20
+  A front -2:1 rears () | B front at A's -2:1 rears (-2,) | sieges 0/0 contact=True ph=3 | park_hold:+2.43 park_safe:+1.25 breaker:+0.00 presser:+0.00 stacker:-1.20
+  A front -2:2 rears () | B front at A's -2:3 rears (-2,) | sieges 0/0 contact=True ph=1 | park_hold:+2.17 park_safe:+1.27 breaker:+0.00 presser:+0.00 stacker:-1.36

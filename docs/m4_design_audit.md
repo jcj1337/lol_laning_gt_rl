@@ -35,6 +35,27 @@ holds without any Freeze (design §1.1, §6.4).
 **Recommendation.** Accept the reformulation. Validate with the plan's test 1 (strictly later crashes under
 Freeze) and S3 (the fraction of Freeze-legal situations that differ, now with maintenance).
 
+**Prototype evidence** (design §6.6; `results/m4_design/freeze_gate.txt`). Freeze was compared with Slow Push and
+conditional Shove over 113 reachable Freeze-legal scenarios, for 120 turns, with M4 accounting on the unchanged
+engine:
+
+- Freeze differs from Slow Push in 45–58% of scenarios.
+- It is better against passive and pure-shove attackers: +1.96 and +0.42 mean, never worse.
+- It is worse against an attacker that shoves and presses (−0.15 mean, worse in 48 of 113, down to −1.10). Holding
+  one's own wave at −1 moves the fights to one's own tower, where a reaching Shove breaks through: crashes 0.61 vs
+  0.28 per 120 turns, plates 0.58 vs 0.02.
+- It is mostly worse against a stacking wave: it lets the wave grow, giving 8.39 vs 5.81 crashes.
+
+So the proposed mechanics *can* make Freeze meaningful without making it dominant.
+
+**What this evidence does not establish:**
+
+- **No trades or ganks.** The prototype draws no chance events, so the tower-adjacent shot is untested.
+- **Non-adaptive attackers.** No scripted attacker reacts to seeing a freeze.
+- **Learned play may not use Freeze.**
+
+The implemented gate (plan S3b, gates G1–G3, required cases F+, SH× and F0) is a precondition for training.
+
 ### 1.2 XP range 3 makes XP nearly "presence-based"
 
 **What was measured.** With every kill at the lane cell in passive play, XP ranges 1, 2 and 3 are identical
@@ -116,6 +137,67 @@ numbers, and it holds about 13% of the discounted weight at γ = 0.99.
 For 3–4 HP parked fronts nothing in the lane distinguishes Freeze from Slow Push, maintained or not. Maintenance
 matters exactly where Freeze matters: medium creeping fronts and small shoved fronts. It is therefore a correct but
 narrow rule. Ablation is planned (plan §7 S6).
+
+### 1.9 Two errors in the first M4.1 draft, corrected in review
+
+**1. The observation was not Markov.**
+
+- *Gold.* The gold feature `min(1, g/price[N])` mapped different strategically relevant balances to the same
+  value: at N = 0, gold 4 and gold 9 looked identical.
+- *Lane.* The inherited M2 lane grid is not injective either. Exhaustive enumeration finds 96 observation classes
+  holding more than one reachable lane state, and 85 colliding pairs with different transitions (design §12.3).
+  The causes are rears co-located with the front, and cells above 12 HP clipped.
+- *Fix (design §12).*
+  - The lane encoding is now lossless: front cell, front HP, and rear counts with R_max = 4 verified exhaustively.
+  - Gold is now an exact integer ledger in μ, with an exact feature and affordability bits.
+  - Markov sufficiency is now **proven** by an explicit decoder on the reachable set, with tests O1–O7. The
+    remaining approximations are stated: bounds verified only for the default lane parameters, and information
+    present ≠ information used by a network.
+
+**2. The evaluation "tail bound" was not a bound.**
+
+- *Error.* `γ^W·r̄/(1 − γ)` with r̄ the observed 99.9th percentile of |r| is an empirical estimate, not a
+  guarantee.
+- *Fix (design §10.5.3).* The bound is now derived from the simulator:
+  - farm per HP ≤ 0.225;
+  - kills over m turns ≤ A_max + 2m + 2, with A_max = 32 by exhaustive enumeration;
+  - bounties ≥ 4 turns apart;
+  - at most 3 plates per tower.
+
+  Together these give |J − J_W| ≤ γ^W·68.3: 0.003 at W = 1,000 and 0.67 at W = 460. W = 1,000 is therefore the
+  headline window. The per-turn bound |r| ≤ 8.575 is proven separately.
+- *Bootstrapping.* Critic bootstrapping, at training truncations and optionally in evaluation, is documented as an
+  approximation whose error is γ(V̂ − V) at the boundary, not as unbiased.
+
+**Assessment.** Neither error would have changed the rules. Both would have weakened the claims built on M4 results:
+
+- policies conditioned on an aliased observation;
+- "bounds" that are not bounds.
+
+### 1.10 Training start distribution versus the objective
+
+Training from an archive of states (recommended in §7) changes which states are learned, not the game. Two risks
+follow:
+
+- reporting archive-trained policies on archive starts, which flatters them;
+- comparing methods trained under different ρ_train on different start distributions.
+
+**Resolved by contract** (design §10.5.1):
+
+- **E1**, the value from s₀, is the only headline protocol.
+- **E2**, a held-out, mirror-closed archive disjoint from the training archive, is diagnostic and reported
+  separately.
+- ρ_train is recorded with every run.
+
+### 1.11 Configuration contract
+
+The first draft's WP1 stepping stone `GameConfig.champions(time_mode="continuing")` contradicted WP0's rule that
+the legacy presets stay pinned and reject M4 fields. Resolved (plan WP0): a separate test-fixture ruleset `"m2c"`
+(`champions_continuing()`):
+
+- it is validated against `champions()` per-step dynamics (T1.10);
+- it is excluded from the legacy pins;
+- it is never used for research results.
 
 ---
 
@@ -255,7 +337,7 @@ values instead of 7) and tower damage (≤ 6,001 values).
 - For learning, the critic must generalize across levels and items. Normalized features (design §12) make level an
   ordinal input, not a one-hot.
 
-**Observation.** 50 → 66 entries. Negligible for the MLP.
+**Observation.** 50 → 88 entries, after the lossless lane and gold encodings (§1.9). Negligible for the MLP.
 
 **Episodes.** Games of 512 turns and evaluation windows of 460–1,000 turns instead of 32.
 
@@ -301,13 +383,16 @@ look-ups per turn; the target is ≥ 4k turns per second (plan §6).
 
 1. **Make rare states trainable from the start.** Reachability, not mechanics, decided the fate of Freeze and
    sieges in M2 (§2.1). Implement the start-state archive and diverse resets as configurable options of WP1, and
-   report every M4 result with and without them. This matters more than any parameter.
+   run every M4 method with and without them. Always evaluate by E1 from s₀ (§1.10). This matters more than any
+   parameter.
 2. **Keep the continuing discounted game. Do not adopt a terminal laning event** (design §16 A1). A terminal
    valuation reintroduces end-of-episode incentives of the kind M4 removes. If γ = 0.99 proves hard to train, lower
    γ to 0.98 (a stated change of objective) before considering a terminal state.
-3. **Reformulate Freeze's purpose in the documentation** as crash and tower denial plus prolonging the parked
-   configuration (§1.1), and test it that way. Do not add a rule that makes Freeze itself move the contact point
-   unless S3 shows Freeze is still inert under M4 incentives.
+3. **Treat Freeze's purpose as crash and tower denial plus prolonging the parked configuration** (§1.1), and test
+   it that way with the pre-training gate (plan S3b). Without trades, the prototype passes G1 and G2 and is
+   consistent with G3; G3 was not checked scenario by scenario. If the gate fails, apply the contingencies of
+   design §6.6 in order: earlier legality, then the D7 siege-wait fix, then p_adj. Do not add a rule that makes
+   Freeze itself move the contact point.
 4. **Adopt two half-strength rolls per trade** (design A8) if S4 shows level or tier values dominated by
    breakpoints (§1.3).
 5. **Measure the tower-adjacent shot by ablation** before treating it as settled (§2.5).
