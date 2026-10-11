@@ -40,7 +40,7 @@ EXPERIMENTS_V1 = ["audit_legacy", "model_comparison", "horizon_benchmark", "base
 EXPERIMENTS_SIEGE = ["benchmark", "timing", "controlled", "siege_options", "crash_value", "vision_sweep",
                      "ablations", "sensitivity", "equilibrium", "verification", "figures"]
 EXPERIMENTS_CHAMPIONS = ["invariants", "tournament", "skill", "concerns", "benchmark"]
-EXPERIMENTS_RL = ["scripted", "legacy", "selfplay", "evaluation"]
+EXPERIMENTS_RL = ["scripted", "legacy", "selfplay", "evaluation", "br_warm", "figures"]
 
 
 def _cfg(args, **kw) -> GameConfig:

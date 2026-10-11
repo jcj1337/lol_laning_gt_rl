@@ -91,3 +91,17 @@ def test_approximate_best_response_runs_and_reports_a_held_out_value():
                                             lane_cache=0), eval_episodes=10, eval_seed=99)
     assert r["train_steps"] == 640 and np.isfinite(r["value"]) and r["eval"]["episodes"] == 20
     assert isinstance(r["agent"], NetAgent) and len(r["curve"]) == 8
+
+
+def test_warm_started_best_response_starts_from_the_target():
+    """A warm start copies the target's weights (the target itself is left untouched) and is flagged."""
+    agents = champion_agents(CFG)
+    target_net = PolicyValueNet(50, 46)
+    before = [p.clone() for p in target_net.parameters()]
+    target = NetAgent(target_net, "target")
+    r = approximate_best_response(CFG, target,
+                                  PPOConfig(total_steps=160, n_envs=4, n_steps=20, minibatch_size=40, epochs=1, seed=2,
+                                            lane_cache=0), eval_episodes=5, eval_seed=7, init_net=target_net)
+    assert r["warm_start"] and all(torch.equal(p, q) for p, q in zip(target_net.parameters(), before))
+    assert all(torch.equal(p, q) for p, q in zip(target.net.parameters(), before))
+    assert agents

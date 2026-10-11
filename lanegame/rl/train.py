@@ -60,7 +60,9 @@ class Collector:
 
     def __init__(self, game_cfg: GameConfig, cfg: PPOConfig, sampler: OpponentSampler, seed: int):
         self.cfg, self.game_cfg, self.sampler = cfg, game_cfg, sampler
-        self.envs = [LaneEnv(game_cfg, max_turns=cfg.max_turns, cache_size=cfg.lane_cache) for _ in range(cfg.n_envs)]
+        self._gank_reward = "expected" if cfg.expected_gank_reward else "realized"
+        self.envs = [LaneEnv(game_cfg, max_turns=cfg.max_turns, cache_size=cfg.lane_cache, gank_reward=self._gank_reward)
+                     for _ in range(cfg.n_envs)]
         root = np.random.SeedSequence(seed)
         self.rng = np.random.default_rng(root.spawn(1)[0])          # opponents and seats
         self._episode_seeds = root.spawn(1)[0]

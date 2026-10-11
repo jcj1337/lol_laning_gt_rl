@@ -25,6 +25,12 @@ through the `choosers` callbacks `(k, pre_state, side, opts_self, opts_opp) -> i
 (most resources) is used and `StepResult.info["choice_default_used"]` records that the trajectory is then
 NOT a faithful rollout of an arbitrary policy. The siege model ("objective" mode) has no such stage.
 
+Variance reduction (legacy configurations only, optional): `gank_reward="expected"` pays the gank term as its
+conditional expectation L * (p_B - p_A) instead of the realized L * (ganked_B - ganked_A). In the legacy game a gank
+changes nothing but the payoff (the lane transition does not depend on it), so every conditional expected reward,
+every expected return and every policy gradient is unchanged (Rao-Blackwellization); only the Bernoulli noise is
+removed. The draws are still made and reported in `info`. Champion mode refuses it (ganks change HP and absence).
+
 Randomness. `reset(seed)` creates the environment's chance generator; it is used only for the gank draws,
 in a fixed order (A then B), and never for agents' action sampling. Two rollouts with the same seed and the
 same action sequences produce identical chance draws; the uniform draws themselves are reported in
@@ -97,8 +103,14 @@ class LaneEnv:
 
     def __init__(self, cfg: GameConfig, max_turns: Optional[int] = None,
                  choosers: Optional[Tuple[Optional[Chooser], Optional[Chooser]]] = None,
-                 cache_size: int = 0):
+                 cache_size: int = 0, gank_reward: str = "realized"):
         cfg.validate()
+        if gank_reward not in ("realized", "expected"):
+            raise ValueError("gank_reward must be 'realized' or 'expected'")
+        if gank_reward == "expected" and cfg.champion_mode:
+            raise ValueError("gank_reward='expected' applies to the legacy configurations only: in champion mode a "
+                             "gank changes the state (HP, death), so its realized outcome cannot be replaced")
+        self.gank_reward = gank_reward
         if max_turns is not None and max_turns <= 0:
             raise ValueError("max_turns must be positive (or None)")
         self.cfg = cfg
@@ -231,7 +243,12 @@ class LaneEnv:
             ga, gb = bool(ct.ganked[A]), bool(ct.ganked[B])
         # legacy: the realized gank costs gank_loss resources; champion mode: the gank's cost is its HP damage and
         # a possible death (absence), so the reward has no gank term, and kill bounties (default 0) are separate
-        gank_payoff = cfg.gank_loss * (int(gb) - int(ga)) if ct is None else 0.0
+        if ct is not None:
+            gank_payoff = 0.0
+        elif self.gank_reward == "expected":                 # legacy only: E[realized | s, a, b] (variance reduction)
+            gank_payoff = cfg.gank_loss * (pb - pa)
+        else:
+            gank_payoff = cfg.gank_loss * (int(gb) - int(ga))
         bounty_payoff = 0.0 if ct is None else ct.bounty[A] - ct.bounty[B]
 
         # ---- CHOICE stage ("choice" siege mode; single trivial option otherwise)

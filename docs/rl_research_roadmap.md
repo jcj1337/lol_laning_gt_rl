@@ -810,3 +810,25 @@ python -m pytest tests/test_champions.py -q      # 25 tests, ~1 s
 python -m pytest tests/test_env.py -q            # M1 compatibility, ~100 s
 python -m pytest -q                              # everything
 ```
+
+---
+
+## N. M2b–M3c outcome (implemented 2026-10-11)
+
+M2b–M2e (Recall and absence, stochastic trading with mechanical skill, ganks with HP damage, death and respawn,
+the validation gate) and M3a–M3c (masked PPO, frozen-snapshot self-play, evaluation with approximate best
+responses) are implemented. The full write-up is [docs/m2_m3_implementation_report.md](m2_m3_implementation_report.md);
+the running log is [docs/overnight_implementation_log.md](overnight_implementation_log.md). Decisions that differ
+from sections E and F above:
+
+- Recall is legal at `pos <= -1` with no state-based threat rule; an enemy Trade that reaches the recaller
+  interrupts it (a state rule made Recall impossible whenever the opponent stood at the lane).
+- Champion mode has its own gank-occurrence parameters with no unconditional base rate; gank damage is
+  Binomial(4, p_e) (0-4 HP), its defensive reduction requires actually playing defensively; skill enters gank
+  damage with a small term.
+- The 2-HP trade chance uses the skill difference (defensive mitigation), not the attacker's skill alone.
+- M2e changed three champion defaults on evidence: `kill_bounty` 0.5, `retreat_farm_reach` 2, defensive-play
+  gank defense.
+- The M3a calibration on the legacy game (K = 16, exact) shows PPO reaching 23-94% of the exact best-response
+  gain (more with the optional, exact `gank_reward="expected"` variance reduction), and frozen-snapshot self-play
+  that does NOT reduce exact exploitability: section F.2 step 2 should be followed by PSRO (step 5) before scaling.

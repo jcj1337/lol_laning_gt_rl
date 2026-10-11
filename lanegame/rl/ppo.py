@@ -55,6 +55,8 @@ class PPOConfig:
     torch_threads: int = 1           # one thread: reproducible and fastest for a 2 x 128 MLP
     max_turns: Optional[int] = None  # truncate training episodes (exercises the bootstrap; None = full games)
     lane_cache: int = 20000          # bounded LRU cache of lane steps per training environment
+    expected_gank_reward: bool = False     # legacy configurations only: LaneEnv(gank_reward="expected"), an exact
+                                           # variance reduction (same expected returns); see lanegame.env.core
     skill_levels: Optional[tuple] = None   # if set, each training episode draws (skill_a, skill_b) from these
                                            # levels independently (skill is observed, so one policy conditions on it)
 

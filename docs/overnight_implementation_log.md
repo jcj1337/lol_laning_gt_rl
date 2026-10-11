@@ -12,8 +12,8 @@ Work happens on the local branch `m2-m3-autonomous` (one commit per verified mil
 | M2d Ganks, death, respawn | completed and verified (67 champion + 65 env tests) | see git log |
 | M2e Validation and benchmarking (gate) | completed and verified (full suite 444 passed, 5 min 20 s; 0 invariant violations in 120,960 turns) | see git log |
 | M3a PPO vs scripted opponents | completed and verified (14 RL tests; beats best scripted responses) | see git log |
-| M3b Self-play with frozen snapshots | not started | |
-| M3c Evaluation and approximate best responses | not started | |
+| M3b Self-play with frozen snapshots | completed and verified (6 tests; 3 seeds x 2 variants + legacy exact) | see git log |
+| M3c Evaluation and approximate best responses | completed and verified (tests; held-out evaluation, scratch + warm BRs) | see git log |
 
 ## Session start
 
@@ -194,3 +194,67 @@ New package `lanegame/rl/` (PyTorch, optional extra `rl`; `lanegame.env` never i
   conservative_recaller by hold +0.98); does NOT beat the naive persistent `trade` (-0.12; the best scripted
   response to it is conservative_recaller +1.11). Behavior mix: Trade 70%, Yield 12%, Hold 10%.
 - Status: M3a completed and verified (14 RL tests; learning demonstrated against every opponent tested).
+- Committed as `6e0597b`.
+
+### M3b results (`results/rl/m3b_selfplay.md`, 3.3 min on 9 processes)
+
+- Champion game, equal skill, 307,200 steps x 3 seeds from the M3a mixture policies (30% scripted, 35% latest
+  snapshot, 35% pool; pool 8; snapshot every 25 updates): steady improvement against every fixed reference
+  (held-out seeds): vs hold_farmer +1.28 -> +2.13, vs aggressive_trader +1.73 -> +2.84, vs punisher
+  +1.13 -> +1.98, vs the frozen initial (M3a) policy +1.32 -> +2.17 (mean of 3 seeds, CIs +-0.3 to 0.5).
+- Skill-randomized variant (skills {0.2, 0.5, 0.8} per seat per episode): at 0.5/0.5 vs hold_farmer +1.55,
+  vs the initial policy +2.35 after 307k steps.
+- **Negative result (certified):** self-play from scratch on the legacy siege model (K = 16, 204,800 steps):
+  the EXACT exploitability of the snapshots falls from ~3.7 (uniform) to 2.52 after 20k steps and then
+  RISES to 3.43 (per seed 4.09 / 3.23 / 2.96); greedy (argmax) snapshots are at 4.97 throughout. The legacy
+  equilibrium is mixed; the PPO policy sharpens (entropy falls) and learns to beat its pool, which is not
+  the same as approaching the equilibrium. Expect the champion-game self-play policies to be exploitable.
+
+### Legacy exact PPO benchmark (`results/rl/m3a_legacy_exact.md`, 0.8 min)
+
+- PPO (102,400 steps x 3 seeds) against single legacy scripted opponents on the siege model K = 16; every
+  value exact (network as a Markov policy, backward induction): share of the exact best-response gain over
+  uniform play achieved by the stochastic PPO policy: passive_safe 23-25%, freeze_contest 31-33%,
+  aggressive 67-75%. Exact best responses (+6.28 vs passive_safe) need long, specific siege sequences
+  (crash small waves, establish vision, pressure); PPO with this budget does not find them. Greedy
+  versions do better (+1.02 vs passive_safe) than the stochastic policies (+0.23). Learned policies have
+  exact exploitability 2.3-3.9 (uniform 3.74). Calibration: PPO best responses are loose lower bounds.
+- Variance reduction (new, optional, legacy configurations only): `LaneEnv(gank_reward="expected")` pays the
+  gank term as its conditional expectation; in the legacy game a gank changes nothing but the payoff, so
+  expected returns and policy gradients are unchanged (Rao-Blackwellization; every deterministic-pair episode
+  then equals the exact value, test `tests/test_env_expected_gank.py`). Share of the exact BR gain with it:
+  passive_safe 37-39% (realized 23-25%), freeze_contest 46-53% (31-33%), aggressive 94% (67-75%).
+- Legacy self-play with the variance-reduced reward: exact exploitability rises to 4.84 (worse than uniform
+  3.74) at entropy 0.01 (final entropy 0.16), ~3.8 at entropy 0.05. Noise is not the cause; frozen-snapshot
+  self-play PPO does not approach the mixed equilibrium here (recommendation: PSRO meta-Nash / average policy).
+
+### M3c results (`results/rl/m3c_evaluation.md` 6.9 min, `results/rl/m3c_br_warm.md` 2.5 min)
+
+- vs 13 scripted agents (held-out seeds, both seats): M3a mixture +4.30 (worst -0.11), equal-skill self-play
+  +4.81 (worst +1.19 +- 0.62 over seeds), skill-randomized self-play +4.78 (worst +0.77): self-play policies
+  beat every scripted agent.
+- PPO cross-play: sp_s1 and the three sprand policies form a strong cluster (~+1.4 average, ~0 among
+  themselves); sp_s0 / sp_s2 lose ~2 to them; all self-play policies beat the M3a policies by ~2.
+- Each self-play policy beats its own earlier snapshots by monotonically less (+2.0 vs its start, 0 vs
+  itself): no cycling visible within the pool.
+- Skill: payoff rises ~1.57 per 0.3 of skill advantage (against hold_farmer and in self-play), but the
+  learned Trade share is flat (0.54-0.55) over all 9 skill pairs: no skill-dependent aggression was
+  learned at this budget. Exposure differences track deaths (away turns count as -2), not positioning.
+  A 0.2-skill equal-skill-trained PPO policy beats the 0.5-skill hold_farmer by +1.21 +- 0.19, but not
+  reliably the 0.8-skill one (+0.28 +- 0.64).
+- Approximate exploitability (max of from-scratch and warm-started PPO responses, 102,400 steps, held-out):
+  M3a mix +2.05 / +2.67 / +2.45; sp +2.67 / +0.25 / +3.24; sprand +0.46 / +0.11 / +0.27. From-scratch
+  responses could not reach parity against the robust targets (-0.5), the warm start (copy of the target)
+  can; both are lower bounds, not certificates. Scripted calibration: hold_farmer +0.61 (best scripted
+  +0.19), punisher +0.48 (best scripted +0.04).
+- Figure: `results/rl/fig_learning_curves.png`.
+- Total RL compute: ~22 min wall clock on 9-10 processes (~3 CPU-hours), well inside the budget.
+
+## Final state
+
+- Final full suite: **462 passed in 5 min 29 s** (395 pre-existing + 49 champion + 18 RL/environment).
+- Report: `docs/m2_m3_implementation_report.md`; roadmap section N points to it; README updated.
+- Nothing pushed; work is on the local branch `m2-m3-autonomous`. Network checkpoints are in
+  `results/rl/checkpoints/` (git-ignored, regenerable with `python -m lanegame experiments-rl ...`).
+- Remaining work (not started, out of scope): M3d PSRO (recommended next), M4 economy, M5 opponent modelling,
+  M6 dashboard.

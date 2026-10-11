@@ -127,12 +127,17 @@ def best_scripted_response(cfg: GameConfig, target, scripted: Dict[str, object],
 
 def approximate_best_response(cfg: GameConfig, target, ppo_cfg: PPOConfig, eval_episodes: int = 500,
                               eval_seed: int = 77_777, out_dir: Optional[str] = None, name: str = "br",
-                              verbose: bool = False) -> dict:
-    """Train a fresh PPO learner against the frozen `target` only, evaluate it on held-out seeds (both seats)."""
-    res = train_ppo(cfg, ppo_cfg, OpponentSampler([target]), out_dir=out_dir, verbose=verbose, name=name)
+                              verbose: bool = False, init_net=None) -> dict:
+    """Train a PPO learner against the frozen `target` only, evaluate it on held-out seeds (both seats).
+    `init_net`: start from these weights (e.g. a copy of the target's own network: a warm start at parity, so
+    that any gain measures exploitability rather than the attacker's learning speed); None = from scratch."""
+    import copy
+    net = copy.deepcopy(init_net) if init_net is not None else None
+    res = train_ppo(cfg, ppo_cfg, OpponentSampler([target]), out_dir=out_dir, verbose=verbose, name=name, net=net)
     br = NetAgent(res.net, name)
     ev = head_to_head(cfg, br, target, eval_episodes, eval_seed)
     curve = [(h["steps"], h["mean_return"]) for h in res.history]
-    return {"target": getattr(target, "name", "target"), "train_steps": ppo_cfg.n_updates * ppo_cfg.batch_size,
+    return {"target": getattr(target, "name", "target"), "warm_start": init_net is not None,
+            "train_steps": ppo_cfg.n_updates * ppo_cfg.batch_size,
             "train_seed": ppo_cfg.seed, "train_elapsed_s": res.elapsed, "value": ev["mean"], "stderr": ev["stderr"],
             "ci95": ev["ci95"], "eval": ev, "curve": curve, "agent": br}
