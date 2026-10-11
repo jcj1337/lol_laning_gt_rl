@@ -4,7 +4,8 @@ Notation (report section E):
   V_K(s) = 0                                    (zero terminal bonus)
   W_k(n) = val[ C_k(n) ],  C_k(n)[i, j] = rho_A(o_i) - rho_B(o_j) + V_{k+1}(s'_{ij})
            value of the CHOICE node n reached after turn k
-  Q_k(s, a, b) = g(s, a, b) + W_k(n(s, a, b))   (g = expected gank payoff to A)
+  Q_k(s, a, b) = g(s, a, b) + W_k(n(s, a, b))   (g = expected immediate payoff to A:
+                                                 farm difference + expected gank payoff)
   V_k(s) = max_{x in Delta(A_s)} min_{y in Delta(B_s)} x^T Q_k(s) y
 
 The same recursion, with the max or min (or both) replaced by an expectation
@@ -33,7 +34,7 @@ def build_q(game: LaneGame, k: int, s: State, choice_value: Callable[[int, Trans
     for i, a in enumerate(la):
         for j, b in enumerate(lb):
             tr = game.transition(s, k, a, b)
-            Q[i, j] = tr.gank_payoff + choice_value(k, tr)
+            Q[i, j] = tr.payoff + choice_value(k, tr)
     return la, lb, Q
 
 

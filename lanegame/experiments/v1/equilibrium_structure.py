@@ -11,12 +11,14 @@ from collections import defaultdict
 
 import numpy as np
 
-from .. import GameConfig, LaneGame
-from ..config import ACTION_SHORT, SIZE_NAMES
-from ..render import state_row
-from ..solver import solve_equilibrium
-from ..state import State
-from .common import md_table, save
+from ... import GameConfig, LaneGame
+from ...config import SIZE_NAMES
+from ...render import state_row
+from ...solver import solve_equilibrium
+from ...state import State
+from ..common import md_table, save
+
+ACTION_SHORT = {0: "SP", 1: "SH", 2: "F"}   # original action labels
 
 W = 2
 SITUATIONS = [
@@ -39,7 +41,7 @@ def fmt_strategy(legal, p):
 
 
 def run(horizon: int = 32) -> dict:
-    g = LaneGame(GameConfig(horizon=horizon))
+    g = LaneGame(GameConfig.v1(horizon=horizon))
     sol = solve_equilibrium(g)
 
     # 1. action support over all reachable (k, s)

@@ -1,0 +1,3224 @@
+{
+ "horizon": 32,
+ "variants": {
+  "revised default (stack_creep, period 2)": {
+   "overrides": {},
+   "seconds": 6.484340500086546,
+   "value": 0.0,
+   "path": {
+    "value": 0.0,
+    "farm": [
+     9.650000000000004,
+     9.650000000000004
+    ],
+    "farm_available": [
+     15.5,
+     15.5
+    ],
+    "farm_missed": [
+     5.849999999999996,
+     5.849999999999996
+    ],
+    "crash_resources": [
+     0.0,
+     0.0
+    ],
+    "gank_loss": [
+     34.70000000000002,
+     34.70000000000002
+    ],
+    "crashes_by_size": {
+     "A": [
+      0.0,
+      0.0,
+      0.0
+     ],
+     "B": [
+      0.0,
+      0.0,
+      0.0
+     ]
+    },
+    "crash_hp": [
+     0.0,
+     0.0
+    ],
+    "vision_choices": [
+     0.0,
+     0.0
+    ],
+    "contest_share": [
+     0.90625,
+     0.90625
+    ],
+    "action_freq": [
+     {
+      "SP-C": 0.84375,
+      "SH-C": 0.0625,
+      "SP-S": 0.09375,
+      "SH-S": 0.0
+     },
+     {
+      "SP-C": 0.84375,
+      "SH-C": 0.0625,
+      "SP-S": 0.09375,
+      "SH-S": 0.0
+     }
+    ],
+    "wave_freq": [
+     {
+      "SP": 0.9375,
+      "SH": 0.0625
+     },
+     {
+      "SP": 0.9375,
+      "SH": 0.0625
+     }
+    ],
+    "support_size": []
+   },
+   "nodes": {
+    "nodes": 14849,
+    "contest": 0.5675732574788132,
+    "wave": [
+     0.6773302298772529,
+     0.30190015040557716,
+     0.02076961971717084
+    ],
+    "freeze_legal_nodes": 4441,
+    "freeze_prob_when_legal": 0.06944563908585223
+   },
+   "vision": {
+    "small": 0.09900990099009901,
+    "medium": 0.0,
+    "large": 0.3048780487804878,
+    "small_nodes": 202,
+    "medium_nodes": 117,
+    "large_nodes": 82
+   },
+   "states": 14849,
+   "distinct": 2480,
+   "mixed": 1030,
+   "max_gap": 1.7763568394002505e-15,
+   "distinct_2K": 2518,
+   "scenarios": {
+    "even_river_fight": {
+     "pass": true,
+     "detail": "crash HP 0; farm collected A 3.308, B 3.308"
+    },
+    "shove_wins_river": {
+     "pass": true,
+     "detail": "HP killed by A 8, by B 4; farm available A 2.00, B 1.00"
+    },
+    "slowpush_stacks": {
+     "pass": true,
+     "detail": "A front hp by turn: [4, 6, 5, 7, 7, 9, 8, 11]"
+    },
+    "shove_contests_slowpush": {
+     "pass": true,
+     "detail": "A front hp by turn: [4, 4, 2, 2, 4, 4, 2, 4]"
+    },
+    "unstacked_wave_waits": {
+     "pass": true,
+     "detail": "positions of A's unstacked front by tick: [0, 0]"
+    },
+    "stacked_wave_creeps": {
+     "pass": true,
+     "detail": "A front position by turn: [1, 1, 1, 1]"
+    },
+    "freeze_holds": {
+     "pass": true,
+     "detail": "B crash hp [0, 0, 0]; deepest B position (own) +1; ticks held 2"
+    },
+    "freeze_broken": {
+     "pass": true,
+     "detail": "freeze broken ticks 1; B crash hp 8"
+    },
+    "large_crash_persists": {
+     "pass": true,
+     "detail": "crash hp 12; A mass under B tower by turn [11, 9, 7, 5, 3, 1, 0, 0]"
+    },
+    "small_crash_clears_quickly": {
+     "pass": true,
+     "detail": "crash hp 4; A mass under B tower by turn [3, 1, 0, 0]"
+    },
+    "tower_farm_contested": {
+     "pass": true,
+     "detail": "A HP killed by B's tower 12; B farm opportunity there 3.00, collected 2.295 (76.5%)"
+    },
+    "tower_farm_safe": {
+     "pass": true,
+     "detail": "A HP killed by B's tower 12; B farm opportunity there 3.00, collected 2.400 (80.0%)"
+    },
+    "bounce": {
+     "pass": true,
+     "detail": "B front hp [4, 8, 7, 10, 9, 12, 10, 9, 8, 8]; B front global position [3, 3, 3, 3, 3, 3, 2, 0, 0, 0]; A mass under B tower [10, 8, 6, 4, 2, 0, 0, 0, 0, 0]"
+    },
+    "safe_lets_wave_go": {
+     "pass": true,
+     "detail": "A crashed True; A exposure with Safe -1 vs with Contest +2"
+    },
+    "freeze_denial": {
+     "pass": true,
+     "detail": "A collects 1.125 of 1.25 (90%), B collects 0.035 of 1.25 (3%)"
+    }
+   },
+   "scenarios_passed": 15,
+   "events": {
+    "crash_small": 9372,
+    "crash_medium": 5592,
+    "crash_large": 1840,
+    "crash_onto_siege": 3576,
+    "freeze_held": 3392,
+    "freeze_broken": 2632,
+    "bounce": 8176,
+    "siege_persists": 75416,
+    "safe_disengages": 157754,
+    "tower_farm": 125236,
+    "farm_contest_vs_safe": 304876,
+    "minions_deleted": 0
+   },
+   "baseline_exploitability": {
+    "uniform": 10.078337909045308,
+    "aggressive": 24.86250000000002,
+    "freeze_contest": 9.445000000000004,
+    "passive_safe": 9.415000000000004,
+    "stack_builder": 5.782499999999996,
+    "release_safe": 7.690000000000004,
+    "contest_slowpush": 6.589999999999999
+   }
+  },
+  "Slow Push hold at river (original rule)": {
+   "overrides": {
+    "slowpush_mode": "hold"
+   },
+   "seconds": 13.873699599877,
+   "value": 0.0,
+   "path": {
+    "value": 0.0,
+    "farm": [
+     9.650000000000004,
+     9.650000000000004
+    ],
+    "farm_available": [
+     15.5,
+     15.5
+    ],
+    "farm_missed": [
+     5.849999999999996,
+     5.849999999999996
+    ],
+    "crash_resources": [
+     0.0,
+     0.0
+    ],
+    "gank_loss": [
+     34.70000000000002,
+     34.70000000000002
+    ],
+    "crashes_by_size": {
+     "A": [
+      0.0,
+      0.0,
+      0.0
+     ],
+     "B": [
+      0.0,
+      0.0,
+      0.0
+     ]
+    },
+    "crash_hp": [
+     0.0,
+     0.0
+    ],
+    "vision_choices": [
+     0.0,
+     0.0
+    ],
+    "contest_share": [
+     0.90625,
+     0.90625
+    ],
+    "action_freq": [
+     {
+      "SP-C": 0.84375,
+      "SH-C": 0.0625,
+      "SP-S": 0.09375,
+      "SH-S": 0.0
+     },
+     {
+      "SP-C": 0.84375,
+      "SH-C": 0.0625,
+      "SP-S": 0.09375,
+      "SH-S": 0.0
+     }
+    ],
+    "wave_freq": [
+     {
+      "SP": 0.9375,
+      "SH": 0.0625
+     },
+     {
+      "SP": 0.9375,
+      "SH": 0.0625
+     }
+    ],
+    "support_size": []
+   },
+   "nodes": {
+    "nodes": 37245,
+    "contest": 0.4995908875492906,
+    "wave": [
+     0.6712191446480745,
+     0.31398420544583666,
+     0.014796649906089084
+    ],
+    "freeze_legal_nodes": 12325,
+    "freeze_prob_when_legal": 0.044714095395723165
+   },
+   "vision": {
+    "large": 0.0,
+    "small": 0.0037105751391465678,
+    "medium": 0.0,
+    "large_nodes": 840,
+    "small_nodes": 539,
+    "medium_nodes": 627
+   },
+   "states": 37245,
+   "distinct": 9354,
+   "mixed": 1983,
+   "max_gap": 1.7763568394002505e-15,
+   "distinct_2K": 99928,
+   "scenarios": {
+    "even_river_fight": {
+     "pass": true,
+     "detail": "crash HP 0; farm collected A 3.308, B 3.308"
+    },
+    "shove_wins_river": {
+     "pass": true,
+     "detail": "HP killed by A 8, by B 4; farm available A 2.00, B 1.00"
+    },
+    "slowpush_stacks": {
+     "pass": true,
+     "detail": "A front hp by turn: [4, 6, 5, 7, 7, 9, 9, 11]"
+    },
+    "shove_contests_slowpush": {
+     "pass": true,
+     "detail": "A front hp by turn: [4, 4, 2, 2, 4, 4, 2, 4]"
+    },
+    "unstacked_wave_waits": {
+     "pass": true,
+     "detail": "positions of A's unstacked front by tick: [0, 0]"
+    },
+    "stacked_wave_creeps": {
+     "pass": false,
+     "detail": "A front position by turn: [0, 0, 0, 0]"
+    },
+    "freeze_holds": {
+     "pass": true,
+     "detail": "B crash hp [0, 0, 0]; deepest B position (own) +1; ticks held 2"
+    },
+    "freeze_broken": {
+     "pass": true,
+     "detail": "freeze broken ticks 1; B crash hp 8"
+    },
+    "large_crash_persists": {
+     "pass": true,
+     "detail": "crash hp 12; A mass under B tower by turn [11, 9, 7, 5, 3, 1, 0, 0]"
+    },
+    "small_crash_clears_quickly": {
+     "pass": true,
+     "detail": "crash hp 4; A mass under B tower by turn [3, 1, 0, 0]"
+    },
+    "tower_farm_contested": {
+     "pass": true,
+     "detail": "A HP killed by B's tower 12; B farm opportunity there 3.00, collected 2.295 (76.5%)"
+    },
+    "tower_farm_safe": {
+     "pass": true,
+     "detail": "A HP killed by B's tower 12; B farm opportunity there 3.00, collected 2.400 (80.0%)"
+    },
+    "bounce": {
+     "pass": true,
+     "detail": "B front hp [4, 8, 7, 10, 9, 12, 10, 9, 8, 8]; B front global position [3, 3, 3, 3, 3, 3, 2, 0, 0, 0]; A mass under B tower [10, 8, 6, 4, 2, 0, 0, 0, 0, 0]"
+    },
+    "safe_lets_wave_go": {
+     "pass": true,
+     "detail": "A crashed True; A exposure with Safe -1 vs with Contest +2"
+    },
+    "freeze_denial": {
+     "pass": true,
+     "detail": "A collects 1.125 of 1.25 (90%), B collects 0.035 of 1.25 (3%)"
+    }
+   },
+   "scenarios_passed": 14,
+   "events": {
+    "crash_small": 33668,
+    "crash_medium": 29004,
+    "crash_large": 33384,
+    "crash_onto_siege": 62004,
+    "freeze_held": 9780,
+    "freeze_broken": 16752,
+    "bounce": 31092,
+    "siege_persists": 395184,
+    "safe_disengages": 400774,
+    "tower_farm": 495836,
+    "farm_contest_vs_safe": 783180,
+    "minions_deleted": 0
+   },
+   "baseline_exploitability": {
+    "uniform": 10.088601289551319,
+    "aggressive": 24.86250000000002,
+    "freeze_contest": 20.395000000000003,
+    "passive_safe": 19.687499999999996,
+    "stack_builder": 17.150000000000006,
+    "release_safe": 7.690000000000004,
+    "contest_slowpush": 17.150000000000006
+   }
+  },
+  "Slow Push creep, 1 cell / spawn interval": {
+   "overrides": {
+    "slowpush_mode": "creep",
+    "slowpush_creep_period": 1
+   },
+   "seconds": 1.6950898000504822,
+   "value": 0.0,
+   "path": {
+    "value": 0.0,
+    "farm": [
+     9.650000000000004,
+     9.650000000000004
+    ],
+    "farm_available": [
+     15.5,
+     15.5
+    ],
+    "farm_missed": [
+     5.849999999999996,
+     5.849999999999996
+    ],
+    "crash_resources": [
+     0.0,
+     0.0
+    ],
+    "gank_loss": [
+     34.70000000000002,
+     34.70000000000002
+    ],
+    "crashes_by_size": {
+     "A": [
+      0.0,
+      0.0,
+      0.0
+     ],
+     "B": [
+      0.0,
+      0.0,
+      0.0
+     ]
+    },
+    "crash_hp": [
+     0.0,
+     0.0
+    ],
+    "vision_choices": [
+     0.0,
+     0.0
+    ],
+    "contest_share": [
+     0.90625,
+     0.90625
+    ],
+    "action_freq": [
+     {
+      "SP-C": 0.84375,
+      "SH-C": 0.0625,
+      "SP-S": 0.09375,
+      "SH-S": 0.0
+     },
+     {
+      "SP-C": 0.84375,
+      "SH-C": 0.0625,
+      "SP-S": 0.09375,
+      "SH-S": 0.0
+     }
+    ],
+    "wave_freq": [
+     {
+      "SP": 0.9375,
+      "SH": 0.0625
+     },
+     {
+      "SP": 0.9375,
+      "SH": 0.0625
+     }
+    ],
+    "support_size": []
+   },
+   "nodes": {
+    "nodes": 6569,
+    "contest": 0.5961128835208506,
+    "wave": [
+     0.6617090593764668,
+     0.2884039286895462,
+     0.049887011933987244
+    ],
+    "freeze_legal_nodes": 2080,
+    "freeze_prob_when_legal": 0.15755181797805876
+   },
+   "vision": {
+    "small": 0.3181818181818182,
+    "medium": 0.0,
+    "small_nodes": 110,
+    "medium_nodes": 60
+   },
+   "states": 6569,
+   "distinct": 684,
+   "mixed": 383,
+   "max_gap": 8.881784197001252e-16,
+   "distinct_2K": 684,
+   "scenarios": {
+    "even_river_fight": {
+     "pass": true,
+     "detail": "crash HP 0; farm collected A 3.308, B 3.308"
+    },
+    "shove_wins_river": {
+     "pass": true,
+     "detail": "HP killed by A 8, by B 4; farm available A 2.00, B 1.00"
+    },
+    "slowpush_stacks": {
+     "pass": false,
+     "detail": "A front hp by turn: [3, 5, 3, 5, 3, 5, 3, 5]"
+    },
+    "shove_contests_slowpush": {
+     "pass": true,
+     "detail": "A front hp by turn: [2, 2, 4, 2, 2, 4, 2, 4]"
+    },
+    "unstacked_wave_waits": {
+     "pass": false,
+     "detail": "positions of A's unstacked front by tick: [1, 1, 1]"
+    },
+    "stacked_wave_creeps": {
+     "pass": false,
+     "detail": "A front position by turn: [1, 1, -2, 0]"
+    },
+    "freeze_holds": {
+     "pass": true,
+     "detail": "B crash hp [0, 0, 0]; deepest B position (own) +1; ticks held 3"
+    },
+    "freeze_broken": {
+     "pass": true,
+     "detail": "freeze broken ticks 1; B crash hp 8"
+    },
+    "large_crash_persists": {
+     "pass": true,
+     "detail": "crash hp 12; A mass under B tower by turn [11, 9, 7, 5, 3, 1, 0, 0]"
+    },
+    "small_crash_clears_quickly": {
+     "pass": true,
+     "detail": "crash hp 4; A mass under B tower by turn [3, 1, 0, 0]"
+    },
+    "tower_farm_contested": {
+     "pass": false,
+     "detail": "A HP killed by B's tower 12; B farm opportunity there 4.75, collected 3.634 (76.5%)"
+    },
+    "tower_farm_safe": {
+     "pass": false,
+     "detail": "A HP killed by B's tower 12; B farm opportunity there 4.75, collected 3.800 (80.0%)"
+    },
+    "bounce": {
+     "pass": true,
+     "detail": "B front hp [4, 8, 7, 10, 9, 12, 10, 9, 8, 8]; B front global position [3, 3, 3, 3, 3, 3, 2, 0, 0, 0]; A mass under B tower [10, 8, 6, 4, 2, 0, 0, 0, 0, 0]"
+    },
+    "safe_lets_wave_go": {
+     "pass": true,
+     "detail": "A crashed True; A exposure with Safe -1 vs with Contest +2"
+    },
+    "freeze_denial": {
+     "pass": true,
+     "detail": "A collects 1.125 of 1.25 (90%), B collects 0.035 of 1.25 (3%)"
+    }
+   },
+   "scenarios_passed": 10,
+   "events": {
+    "crash_small": 3508,
+    "crash_medium": 1500,
+    "crash_large": 0,
+    "crash_onto_siege": 0,
+    "freeze_held": 3972,
+    "freeze_broken": 836,
+    "bounce": 876,
+    "siege_persists": 22144,
+    "safe_disengages": 71578,
+    "tower_farm": 43996,
+    "farm_contest_vs_safe": 136888,
+    "minions_deleted": 0
+   },
+   "baseline_exploitability": {
+    "uniform": 11.646358975365724,
+    "aggressive": 24.86250000000002,
+    "freeze_contest": 3.064999999999999,
+    "passive_safe": 3.064999999999999,
+    "stack_builder": 0.42249999999999965,
+    "release_safe": 3.0749999999999993,
+    "contest_slowpush": 0.42249999999999965
+   }
+  },
+  "Slow Push creep, 1 cell / 2 intervals": {
+   "overrides": {
+    "slowpush_mode": "creep"
+   },
+   "seconds": 3.528300000121817,
+   "value": 0.0,
+   "path": {
+    "value": 0.0,
+    "farm": [
+     9.650000000000004,
+     9.650000000000004
+    ],
+    "farm_available": [
+     15.5,
+     15.5
+    ],
+    "farm_missed": [
+     5.849999999999996,
+     5.849999999999996
+    ],
+    "crash_resources": [
+     0.0,
+     0.0
+    ],
+    "gank_loss": [
+     34.70000000000002,
+     34.70000000000002
+    ],
+    "crashes_by_size": {
+     "A": [
+      0.0,
+      0.0,
+      0.0
+     ],
+     "B": [
+      0.0,
+      0.0,
+      0.0
+     ]
+    },
+    "crash_hp": [
+     0.0,
+     0.0
+    ],
+    "vision_choices": [
+     0.0,
+     0.0
+    ],
+    "contest_share": [
+     0.90625,
+     0.90625
+    ],
+    "action_freq": [
+     {
+      "SP-C": 0.84375,
+      "SH-C": 0.0625,
+      "SP-S": 0.09375,
+      "SH-S": 0.0
+     },
+     {
+      "SP-C": 0.84375,
+      "SH-C": 0.0625,
+      "SP-S": 0.09375,
+      "SH-S": 0.0
+     }
+    ],
+    "wave_freq": [
+     {
+      "SP": 0.9375,
+      "SH": 0.0625
+     },
+     {
+      "SP": 0.9375,
+      "SH": 0.0625
+     }
+    ],
+    "support_size": []
+   },
+   "nodes": {
+    "nodes": 9613,
+    "contest": 0.5728197224116585,
+    "wave": [
+     0.6756474333356447,
+     0.2906118888782494,
+     0.033740677786106885
+    ],
+    "freeze_legal_nodes": 2921,
+    "freeze_prob_when_legal": 0.11104044353229904
+   },
+   "vision": {
+    "small": 0.13709677419354838,
+    "medium": 0.0,
+    "large": 0.08695652173913043,
+    "small_nodes": 124,
+    "medium_nodes": 83,
+    "large_nodes": 23
+   },
+   "states": 9613,
+   "distinct": 1326,
+   "mixed": 661,
+   "max_gap": 8.881784197001252e-16,
+   "distinct_2K": 2142,
+   "scenarios": {
+    "even_river_fight": {
+     "pass": true,
+     "detail": "crash HP 0; farm collected A 3.308, B 3.308"
+    },
+    "shove_wins_river": {
+     "pass": true,
+     "detail": "HP killed by A 8, by B 4; farm available A 2.00, B 1.00"
+    },
+    "slowpush_stacks": {
+     "pass": true,
+     "detail": "A front hp by turn: [4, 6, 5, 7, 7, 9, 8, 11]"
+    },
+    "shove_contests_slowpush": {
+     "pass": true,
+     "detail": "A front hp by turn: [4, 4, 2, 2, 4, 4, 2, 4]"
+    },
+    "unstacked_wave_waits": {
+     "pass": true,
+     "detail": "positions of A's unstacked front by tick: [0, 0]"
+    },
+    "stacked_wave_creeps": {
+     "pass": true,
+     "detail": "A front position by turn: [1, 1, 1, 1]"
+    },
+    "freeze_holds": {
+     "pass": true,
+     "detail": "B crash hp [0, 0, 0]; deepest B position (own) +1; ticks held 2"
+    },
+    "freeze_broken": {
+     "pass": true,
+     "detail": "freeze broken ticks 1; B crash hp 8"
+    },
+    "large_crash_persists": {
+     "pass": true,
+     "detail": "crash hp 12; A mass under B tower by turn [11, 9, 7, 5, 3, 1, 0, 0]"
+    },
+    "small_crash_clears_quickly": {
+     "pass": true,
+     "detail": "crash hp 4; A mass under B tower by turn [3, 1, 0, 0]"
+    },
+    "tower_farm_contested": {
+     "pass": true,
+     "detail": "A HP killed by B's tower 12; B farm opportunity there 3.00, collected 2.295 (76.5%)"
+    },
+    "tower_farm_safe": {
+     "pass": true,
+     "detail": "A HP killed by B's tower 12; B farm opportunity there 3.00, collected 2.400 (80.0%)"
+    },
+    "bounce": {
+     "pass": true,
+     "detail": "B front hp [4, 8, 7, 10, 9, 12, 10, 9, 8, 8]; B front global position [3, 3, 3, 3, 3, 3, 2, 0, 0, 0]; A mass under B tower [10, 8, 6, 4, 2, 0, 0, 0, 0, 0]"
+    },
+    "safe_lets_wave_go": {
+     "pass": true,
+     "detail": "A crashed True; A exposure with Safe -1 vs with Contest +2"
+    },
+    "freeze_denial": {
+     "pass": true,
+     "detail": "A collects 1.125 of 1.25 (90%), B collects 0.035 of 1.25 (3%)"
+    }
+   },
+   "scenarios_passed": 15,
+   "events": {
+    "crash_small": 5856,
+    "crash_medium": 2184,
+    "crash_large": 360,
+    "crash_onto_siege": 496,
+    "freeze_held": 3428,
+    "freeze_broken": 1352,
+    "bounce": 2940,
+    "siege_persists": 35088,
+    "safe_disengages": 103086,
+    "tower_farm": 65812,
+    "farm_contest_vs_safe": 197944,
+    "minions_deleted": 0
+   },
+   "baseline_exploitability": {
+    "uniform": 10.881551046771465,
+    "aggressive": 24.86250000000002,
+    "freeze_contest": 8.03,
+    "passive_safe": 8.435000000000002,
+    "stack_builder": 5.054999999999998,
+    "release_safe": 7.265000000000003,
+    "contest_slowpush": 5.054999999999998
+   }
+  },
+  "Slow Push stack_creep, period 1": {
+   "overrides": {
+    "slowpush_creep_period": 1
+   },
+   "seconds": 2.630503199994564,
+   "value": 0.0,
+   "path": {
+    "value": 0.0,
+    "farm": [
+     9.650000000000004,
+     9.650000000000004
+    ],
+    "farm_available": [
+     15.5,
+     15.5
+    ],
+    "farm_missed": [
+     5.849999999999996,
+     5.849999999999996
+    ],
+    "crash_resources": [
+     0.0,
+     0.0
+    ],
+    "gank_loss": [
+     34.70000000000002,
+     34.70000000000002
+    ],
+    "crashes_by_size": {
+     "A": [
+      0.0,
+      0.0,
+      0.0
+     ],
+     "B": [
+      0.0,
+      0.0,
+      0.0
+     ]
+    },
+    "crash_hp": [
+     0.0,
+     0.0
+    ],
+    "vision_choices": [
+     0.0,
+     0.0
+    ],
+    "contest_share": [
+     0.90625,
+     0.90625
+    ],
+    "action_freq": [
+     {
+      "SP-C": 0.84375,
+      "SH-C": 0.0625,
+      "SP-S": 0.09375,
+      "SH-S": 0.0
+     },
+     {
+      "SP-C": 0.84375,
+      "SH-C": 0.0625,
+      "SP-S": 0.09375,
+      "SH-S": 0.0
+     }
+    ],
+    "wave_freq": [
+     {
+      "SP": 0.9375,
+      "SH": 0.0625
+     },
+     {
+      "SP": 0.9375,
+      "SH": 0.0625
+     }
+    ],
+    "support_size": []
+   },
+   "nodes": {
+    "nodes": 8857,
+    "contest": 0.5905032394930102,
+    "wave": [
+     0.6897065811762967,
+     0.2846206044964489,
+     0.02567281432725498
+    ],
+    "freeze_legal_nodes": 2533,
+    "freeze_prob_when_legal": 0.08976869976174391
+   },
+   "vision": {
+    "small": 0.09821428571428571,
+    "medium": 0.0,
+    "small_nodes": 112,
+    "medium_nodes": 60
+   },
+   "states": 8857,
+   "distinct": 924,
+   "mixed": 669,
+   "max_gap": 1.7763568394002505e-15,
+   "distinct_2K": 924,
+   "scenarios": {
+    "even_river_fight": {
+     "pass": true,
+     "detail": "crash HP 0; farm collected A 3.308, B 3.308"
+    },
+    "shove_wins_river": {
+     "pass": true,
+     "detail": "HP killed by A 8, by B 4; farm available A 2.00, B 1.00"
+    },
+    "slowpush_stacks": {
+     "pass": false,
+     "detail": "A front hp by turn: [4, 6, 5, 7, 6, 8, 4, 4]"
+    },
+    "shove_contests_slowpush": {
+     "pass": true,
+     "detail": "A front hp by turn: [4, 4, 2, 2, 4, 4, 2, 4]"
+    },
+    "unstacked_wave_waits": {
+     "pass": true,
+     "detail": "positions of A's unstacked front by tick: [0, 0]"
+    },
+    "stacked_wave_creeps": {
+     "pass": false,
+     "detail": "A front position by turn: [1, 1, -2, 0]"
+    },
+    "freeze_holds": {
+     "pass": true,
+     "detail": "B crash hp [0, 0, 0]; deepest B position (own) +1; ticks held 2"
+    },
+    "freeze_broken": {
+     "pass": true,
+     "detail": "freeze broken ticks 1; B crash hp 8"
+    },
+    "large_crash_persists": {
+     "pass": true,
+     "detail": "crash hp 12; A mass under B tower by turn [11, 9, 7, 5, 3, 1, 0, 0]"
+    },
+    "small_crash_clears_quickly": {
+     "pass": true,
+     "detail": "crash hp 4; A mass under B tower by turn [3, 1, 0, 0]"
+    },
+    "tower_farm_contested": {
+     "pass": true,
+     "detail": "A HP killed by B's tower 12; B farm opportunity there 3.00, collected 2.295 (76.5%)"
+    },
+    "tower_farm_safe": {
+     "pass": true,
+     "detail": "A HP killed by B's tower 12; B farm opportunity there 3.00, collected 2.400 (80.0%)"
+    },
+    "bounce": {
+     "pass": true,
+     "detail": "B front hp [4, 8, 7, 10, 9, 12, 10, 9, 8, 8]; B front global position [3, 3, 3, 3, 3, 3, 2, 0, 0, 0]; A mass under B tower [10, 8, 6, 4, 2, 0, 0, 0, 0, 0]"
+    },
+    "safe_lets_wave_go": {
+     "pass": true,
+     "detail": "A crashed True; A exposure with Safe -1 vs with Contest +2"
+    },
+    "freeze_denial": {
+     "pass": true,
+     "detail": "A collects 1.125 of 1.25 (90%), B collects 0.035 of 1.25 (3%)"
+    }
+   },
+   "scenarios_passed": 13,
+   "events": {
+    "crash_small": 4672,
+    "crash_medium": 1500,
+    "crash_large": 0,
+    "crash_onto_siege": 0,
+    "freeze_held": 2396,
+    "freeze_broken": 840,
+    "bounce": 1104,
+    "siege_persists": 22624,
+    "safe_disengages": 93910,
+    "tower_farm": 49400,
+    "farm_contest_vs_safe": 179320,
+    "minions_deleted": 0
+   },
+   "baseline_exploitability": {
+    "uniform": 10.0659722578488,
+    "aggressive": 24.86250000000002,
+    "freeze_contest": 5.455,
+    "passive_safe": 5.455,
+    "stack_builder": 4.742500000000002,
+    "release_safe": 7.690000000000004,
+    "contest_slowpush": 0.8699999999999977
+   }
+  },
+  "Slow Push half speed past river": {
+   "overrides": {
+    "slowpush_mode": "half"
+   },
+   "seconds": 1.746290799928829,
+   "value": 0.0,
+   "path": {
+    "value": 0.0,
+    "farm": [
+     9.650000000000004,
+     9.650000000000004
+    ],
+    "farm_available": [
+     15.5,
+     15.5
+    ],
+    "farm_missed": [
+     5.849999999999996,
+     5.849999999999996
+    ],
+    "crash_resources": [
+     0.0,
+     0.0
+    ],
+    "gank_loss": [
+     34.70000000000002,
+     34.70000000000002
+    ],
+    "crashes_by_size": {
+     "A": [
+      0.0,
+      0.0,
+      0.0
+     ],
+     "B": [
+      0.0,
+      0.0,
+      0.0
+     ]
+    },
+    "crash_hp": [
+     0.0,
+     0.0
+    ],
+    "vision_choices": [
+     0.0,
+     0.0
+    ],
+    "contest_share": [
+     0.90625,
+     0.90625
+    ],
+    "action_freq": [
+     {
+      "SP-C": 0.84375,
+      "SH-C": 0.0625,
+      "SP-S": 0.09375,
+      "SH-S": 0.0
+     },
+     {
+      "SP-C": 0.84375,
+      "SH-C": 0.0625,
+      "SP-S": 0.09375,
+      "SH-S": 0.0
+     }
+    ],
+    "wave_freq": [
+     {
+      "SP": 0.9375,
+      "SH": 0.0625
+     },
+     {
+      "SP": 0.9375,
+      "SH": 0.0625
+     }
+    ],
+    "support_size": []
+   },
+   "nodes": {
+    "nodes": 6408,
+    "contest": 0.573309378595707,
+    "wave": [
+     0.6822952480522507,
+     0.2742535016362948,
+     0.04345125031145518
+    ],
+    "freeze_legal_nodes": 2049,
+    "freeze_prob_when_legal": 0.1358885368451951
+   },
+   "vision": {
+    "small": 0.12727272727272726,
+    "medium": 0.0,
+    "small_nodes": 110,
+    "medium_nodes": 60
+   },
+   "states": 6408,
+   "distinct": 670,
+   "mixed": 458,
+   "max_gap": 1.7763568394002505e-15,
+   "distinct_2K": 670,
+   "scenarios": {
+    "even_river_fight": {
+     "pass": true,
+     "detail": "crash HP 0; farm collected A 3.308, B 3.308"
+    },
+    "shove_wins_river": {
+     "pass": true,
+     "detail": "HP killed by A 8, by B 4; farm available A 2.00, B 1.00"
+    },
+    "slowpush_stacks": {
+     "pass": false,
+     "detail": "A front hp by turn: [3, 5, 3, 5, 3, 5, 3, 5]"
+    },
+    "shove_contests_slowpush": {
+     "pass": true,
+     "detail": "A front hp by turn: [2, 2, 4, 2, 2, 4, 2, 4]"
+    },
+    "unstacked_wave_waits": {
+     "pass": false,
+     "detail": "positions of A's unstacked front by tick: [1, 1, -1, 0]"
+    },
+    "stacked_wave_creeps": {
+     "pass": false,
+     "detail": "A front position by turn: [1, 0, 1, 0]"
+    },
+    "freeze_holds": {
+     "pass": true,
+     "detail": "B crash hp [0, 0, 0]; deepest B position (own) +1; ticks held 3"
+    },
+    "freeze_broken": {
+     "pass": true,
+     "detail": "freeze broken ticks 1; B crash hp 8"
+    },
+    "large_crash_persists": {
+     "pass": true,
+     "detail": "crash hp 12; A mass under B tower by turn [11, 9, 7, 5, 3, 1, 0, 0]"
+    },
+    "small_crash_clears_quickly": {
+     "pass": true,
+     "detail": "crash hp 4; A mass under B tower by turn [3, 1, 0, 0]"
+    },
+    "tower_farm_contested": {
+     "pass": false,
+     "detail": "A HP killed by B's tower 12; B farm opportunity there 4.00, collected 3.060 (76.5%)"
+    },
+    "tower_farm_safe": {
+     "pass": false,
+     "detail": "A HP killed by B's tower 12; B farm opportunity there 4.00, collected 3.200 (80.0%)"
+    },
+    "bounce": {
+     "pass": true,
+     "detail": "B front hp [4, 8, 7, 10, 9, 12, 10, 9, 8, 8]; B front global position [3, 3, 3, 3, 3, 3, 2, 0, 0, -1]; A mass under B tower [10, 8, 6, 4, 2, 0, 0, 0, 0, 0]"
+    },
+    "safe_lets_wave_go": {
+     "pass": true,
+     "detail": "A crashed True; A exposure with Safe -1 vs with Contest +2"
+    },
+    "freeze_denial": {
+     "pass": true,
+     "detail": "A collects 1.125 of 1.25 (90%), B collects 0.035 of 1.25 (3%)"
+    }
+   },
+   "scenarios_passed": 10,
+   "events": {
+    "crash_small": 3416,
+    "crash_medium": 1724,
+    "crash_large": 0,
+    "crash_onto_siege": 0,
+    "freeze_held": 5564,
+    "freeze_broken": 836,
+    "bounce": 812,
+    "siege_persists": 22144,
+    "safe_disengages": 70104,
+    "tower_farm": 44288,
+    "farm_contest_vs_safe": 134200,
+    "minions_deleted": 0
+   },
+   "baseline_exploitability": {
+    "uniform": 11.511271684784212,
+    "aggressive": 24.86250000000002,
+    "freeze_contest": 2.8699999999999988,
+    "passive_safe": 2.8699999999999988,
+    "stack_builder": 0.33499999999999996,
+    "release_safe": 2.849999999999999,
+    "contest_slowpush": 0.33499999999999996
+   }
+  },
+  "Slow Push free (no line)": {
+   "overrides": {
+    "slowpush_mode": "free"
+   },
+   "seconds": 0.07284939987584949,
+   "value": 0.0,
+   "path": {
+    "value": 0.0,
+    "farm": [
+     9.707500000000003,
+     9.707500000000003
+    ],
+    "farm_available": [
+     15.5,
+     15.5
+    ],
+    "farm_missed": [
+     5.792499999999997,
+     5.792499999999997
+    ],
+    "crash_resources": [
+     0.0,
+     0.0
+    ],
+    "gank_loss": [
+     34.92500000000002,
+     34.92500000000002
+    ],
+    "crashes_by_size": {
+     "A": [
+      0.0,
+      0.0,
+      0.0
+     ],
+     "B": [
+      0.0,
+      0.0,
+      0.0
+     ]
+    },
+    "crash_hp": [
+     0.0,
+     0.0
+    ],
+    "vision_choices": [
+     0.0,
+     0.0
+    ],
+    "contest_share": [
+     0.9375,
+     0.9375
+    ],
+    "action_freq": [
+     {
+      "SP-C": 0.875,
+      "SH-C": 0.0625,
+      "SP-S": 0.0625,
+      "SH-S": 0.0
+     },
+     {
+      "SP-C": 0.875,
+      "SH-C": 0.0625,
+      "SP-S": 0.0625,
+      "SH-S": 0.0
+     }
+    ],
+    "wave_freq": [
+     {
+      "SP": 0.9375,
+      "SH": 0.0625
+     },
+     {
+      "SP": 0.9375,
+      "SH": 0.0625
+     }
+    ],
+    "support_size": []
+   },
+   "nodes": {
+    "nodes": 556,
+    "contest": 0.42805755395683454,
+    "wave": [
+     0.9694244604316546,
+     0.030575539568345324,
+     0.0
+    ],
+    "freeze_legal_nodes": 85,
+    "freeze_prob_when_legal": 0.0
+   },
+   "vision": {},
+   "states": 556,
+   "distinct": 40,
+   "mixed": 0,
+   "max_gap": 0.0,
+   "distinct_2K": 40,
+   "scenarios": {
+    "even_river_fight": {
+     "pass": true,
+     "detail": "crash HP 0; farm collected A 3.308, B 3.308"
+    },
+    "shove_wins_river": {
+     "pass": true,
+     "detail": "HP killed by A 8, by B 4; farm available A 2.00, B 1.00"
+    },
+    "slowpush_stacks": {
+     "pass": false,
+     "detail": "A front hp by turn: [2, 3, 1, 3, 1, 3, 1, 3]"
+    },
+    "shove_contests_slowpush": {
+     "pass": true,
+     "detail": "A front hp by turn: [1, 2, 4, 2, 2, 4, 2, 4]"
+    },
+    "unstacked_wave_waits": {
+     "pass": false,
+     "detail": "positions of A's unstacked front by tick: [1, -2, -1, 0]"
+    },
+    "stacked_wave_creeps": {
+     "pass": false,
+     "detail": "A front position by turn: [-2, 0, 2, 0]"
+    },
+    "freeze_holds": {
+     "pass": true,
+     "detail": "B crash hp [0, 0, 0]; deepest B position (own) +1; ticks held 4"
+    },
+    "freeze_broken": {
+     "pass": true,
+     "detail": "freeze broken ticks 1; B crash hp 8"
+    },
+    "large_crash_persists": {
+     "pass": true,
+     "detail": "crash hp 12; A mass under B tower by turn [11, 9, 7, 5, 3, 1, 0, 0]"
+    },
+    "small_crash_clears_quickly": {
+     "pass": true,
+     "detail": "crash hp 4; A mass under B tower by turn [3, 1, 0, 0]"
+    },
+    "tower_farm_contested": {
+     "pass": false,
+     "detail": "A HP killed by B's tower 12; B farm opportunity there 4.75, collected 3.634 (76.5%)"
+    },
+    "tower_farm_safe": {
+     "pass": false,
+     "detail": "A HP killed by B's tower 12; B farm opportunity there 4.75, collected 3.800 (80.0%)"
+    },
+    "bounce": {
+     "pass": true,
+     "detail": "B front hp [4, 8, 7, 10, 9, 12, 10, 9, 6, 6]; B front global position [3, 3, 3, 3, 3, 3, 2, 0, -1, -1]; A mass under B tower [10, 8, 6, 4, 2, 0, 0, 0, 0, 0]"
+    },
+    "safe_lets_wave_go": {
+     "pass": true,
+     "detail": "A crashed True; A exposure with Safe -1 vs with Contest +2"
+    },
+    "freeze_denial": {
+     "pass": true,
+     "detail": "A collects 1.125 of 1.25 (90%), B collects 0.035 of 1.25 (3%)"
+    }
+   },
+   "scenarios_passed": 10,
+   "events": {
+    "crash_small": 0,
+    "crash_medium": 0,
+    "crash_large": 0,
+    "crash_onto_siege": 0,
+    "freeze_held": 0,
+    "freeze_broken": 0,
+    "bounce": 0,
+    "siege_persists": 0,
+    "safe_disengages": 6116,
+    "tower_farm": 0,
+    "farm_contest_vs_safe": 10240,
+    "minions_deleted": 0
+   },
+   "baseline_exploitability": {
+    "uniform": 11.03482874234674,
+    "aggressive": 24.86250000000002,
+    "freeze_contest": 2.849999999999999,
+    "passive_safe": 2.849999999999999,
+    "stack_builder": 0.33499999999999996,
+    "release_safe": 2.849999999999999,
+    "contest_slowpush": 0.33499999999999996
+   }
+  },
+  "Freeze legal from the river (original rule)": {
+   "overrides": {
+    "freeze_legal_max": 0
+   },
+   "seconds": 8.274725299794227,
+   "value": 0.0,
+   "path": {
+    "value": 0.0,
+    "farm": [
+     9.650000000000004,
+     9.650000000000004
+    ],
+    "farm_available": [
+     15.5,
+     15.5
+    ],
+    "farm_missed": [
+     5.849999999999996,
+     5.849999999999996
+    ],
+    "crash_resources": [
+     0.0,
+     0.0
+    ],
+    "gank_loss": [
+     34.70000000000002,
+     34.70000000000002
+    ],
+    "crashes_by_size": {
+     "A": [
+      0.0,
+      0.0,
+      0.0
+     ],
+     "B": [
+      0.0,
+      0.0,
+      0.0
+     ]
+    },
+    "crash_hp": [
+     0.0,
+     0.0
+    ],
+    "vision_choices": [
+     0.0,
+     0.0
+    ],
+    "contest_share": [
+     0.90625,
+     0.90625
+    ],
+    "action_freq": [
+     {
+      "SP-C": 0.84375,
+      "SH-C": 0.0625,
+      "SP-S": 0.09375,
+      "SH-S": 0.0,
+      "F-C": 0.0,
+      "F-S": 0.0
+     },
+     {
+      "SP-C": 0.84375,
+      "SH-C": 0.0625,
+      "SP-S": 0.09375,
+      "SH-S": 0.0,
+      "F-C": 0.0,
+      "F-S": 0.0
+     }
+    ],
+    "wave_freq": [
+     {
+      "SP": 0.9375,
+      "SH": 0.0625,
+      "F": 0.0
+     },
+     {
+      "SP": 0.9375,
+      "SH": 0.0625,
+      "F": 0.0
+     }
+    ],
+    "support_size": []
+   },
+   "nodes": {
+    "nodes": 16463,
+    "contest": 0.5633371462808529,
+    "wave": [
+     0.6529630948898929,
+     0.2978446305108649,
+     0.04919227459924243
+    ],
+    "freeze_legal_nodes": 7716,
+    "freeze_prob_when_legal": 0.10495754493614931
+   },
+   "vision": {
+    "small": 0.024390243902439025,
+    "medium": 0.0,
+    "large": 0.04878048780487805,
+    "small_nodes": 205,
+    "medium_nodes": 117,
+    "large_nodes": 82
+   },
+   "states": 16463,
+   "distinct": 2644,
+   "mixed": 1245,
+   "max_gap": 1.404032445861958e-11,
+   "distinct_2K": 2680,
+   "scenarios": {
+    "even_river_fight": {
+     "pass": true,
+     "detail": "crash HP 0; farm collected A 3.308, B 3.308"
+    },
+    "shove_wins_river": {
+     "pass": true,
+     "detail": "HP killed by A 8, by B 4; farm available A 2.00, B 1.00"
+    },
+    "slowpush_stacks": {
+     "pass": true,
+     "detail": "A front hp by turn: [4, 6, 5, 7, 7, 9, 8, 11]"
+    },
+    "shove_contests_slowpush": {
+     "pass": true,
+     "detail": "A front hp by turn: [4, 4, 2, 2, 4, 4, 2, 4]"
+    },
+    "unstacked_wave_waits": {
+     "pass": true,
+     "detail": "positions of A's unstacked front by tick: [0, 0]"
+    },
+    "stacked_wave_creeps": {
+     "pass": true,
+     "detail": "A front position by turn: [1, 1, 1, 1]"
+    },
+    "freeze_holds": {
+     "pass": true,
+     "detail": "B crash hp [0, 0, 0]; deepest B position (own) +1; ticks held 2"
+    },
+    "freeze_broken": {
+     "pass": true,
+     "detail": "freeze broken ticks 1; B crash hp 8"
+    },
+    "large_crash_persists": {
+     "pass": true,
+     "detail": "crash hp 12; A mass under B tower by turn [11, 9, 7, 5, 3, 1, 0, 0]"
+    },
+    "small_crash_clears_quickly": {
+     "pass": true,
+     "detail": "crash hp 4; A mass under B tower by turn [3, 1, 0, 0]"
+    },
+    "tower_farm_contested": {
+     "pass": true,
+     "detail": "A HP killed by B's tower 12; B farm opportunity there 3.00, collected 2.295 (76.5%)"
+    },
+    "tower_farm_safe": {
+     "pass": true,
+     "detail": "A HP killed by B's tower 12; B farm opportunity there 3.00, collected 2.400 (80.0%)"
+    },
+    "bounce": {
+     "pass": true,
+     "detail": "B front hp [4, 8, 7, 10, 9, 12, 10, 9, 8, 8]; B front global position [3, 3, 3, 3, 3, 3, 2, 0, 0, 0]; A mass under B tower [10, 8, 6, 4, 2, 0, 0, 0, 0, 0]"
+    },
+    "safe_lets_wave_go": {
+     "pass": true,
+     "detail": "A crashed True; A exposure with Safe -1 vs with Contest +2"
+    },
+    "freeze_denial": {
+     "pass": true,
+     "detail": "A collects 1.125 of 1.25 (90%), B collects 0.035 of 1.25 (3%)"
+    }
+   },
+   "scenarios_passed": 15,
+   "events": {
+    "crash_small": 9584,
+    "crash_medium": 5624,
+    "crash_large": 1852,
+    "crash_onto_siege": 3576,
+    "freeze_held": 14164,
+    "freeze_broken": 4252,
+    "bounce": 12464,
+    "siege_persists": 97080,
+    "safe_disengages": 199505,
+    "tower_farm": 161320,
+    "farm_contest_vs_safe": 383564,
+    "minions_deleted": 0
+   },
+   "baseline_exploitability": {
+    "uniform": 10.103224058730495,
+    "aggressive": 24.86250000000002,
+    "freeze_contest": 6.776249999999997,
+    "passive_safe": 9.415000000000004,
+    "stack_builder": 5.782499999999996,
+    "release_safe": 8.230000000000004,
+    "contest_slowpush": 6.589999999999999
+   }
+  },
+  "tower: 1 packet per turn (original rule)": {
+   "overrides": {
+    "tower_mode": "packet"
+   },
+   "seconds": 1.1716825000476092,
+   "value": 0.0,
+   "path": {
+    "value": 0.0,
+    "farm": [
+     9.650000000000004,
+     9.650000000000004
+    ],
+    "farm_available": [
+     15.5,
+     15.5
+    ],
+    "farm_missed": [
+     5.849999999999996,
+     5.849999999999996
+    ],
+    "crash_resources": [
+     0.0,
+     0.0
+    ],
+    "gank_loss": [
+     34.70000000000002,
+     34.70000000000002
+    ],
+    "crashes_by_size": {
+     "A": [
+      0.0,
+      0.0,
+      0.0
+     ],
+     "B": [
+      0.0,
+      0.0,
+      0.0
+     ]
+    },
+    "crash_hp": [
+     0.0,
+     0.0
+    ],
+    "vision_choices": [
+     0.0,
+     0.0
+    ],
+    "contest_share": [
+     0.90625,
+     0.90625
+    ],
+    "action_freq": [
+     {
+      "SP-C": 0.84375,
+      "SH-C": 0.0625,
+      "SP-S": 0.09375,
+      "SH-S": 0.0
+     },
+     {
+      "SP-C": 0.84375,
+      "SH-C": 0.0625,
+      "SP-S": 0.09375,
+      "SH-S": 0.0
+     }
+    ],
+    "wave_freq": [
+     {
+      "SP": 0.9375,
+      "SH": 0.0625
+     },
+     {
+      "SP": 0.9375,
+      "SH": 0.0625
+     }
+    ],
+    "support_size": []
+   },
+   "nodes": {
+    "nodes": 3199,
+    "contest": 0.5460564354593767,
+    "wave": [
+     0.6846061973413717,
+     0.2565699539653471,
+     0.05882384869328161
+    ],
+    "freeze_legal_nodes": 903,
+    "freeze_prob_when_legal": 0.208391463975424
+   },
+   "vision": {
+    "small": 0.0,
+    "medium": 0.0,
+    "large": 0.0,
+    "small_nodes": 30,
+    "medium_nodes": 25,
+    "large_nodes": 13
+   },
+   "states": 3199,
+   "distinct": 284,
+   "mixed": 350,
+   "max_gap": 8.881784197001252e-16,
+   "distinct_2K": 284,
+   "scenarios": {
+    "even_river_fight": {
+     "pass": true,
+     "detail": "crash HP 0; farm collected A 3.308, B 3.308"
+    },
+    "shove_wins_river": {
+     "pass": true,
+     "detail": "HP killed by A 8, by B 4; farm available A 2.00, B 1.00"
+    },
+    "slowpush_stacks": {
+     "pass": true,
+     "detail": "A front hp by turn: [4, 6, 5, 7, 7, 9, 8, 11]"
+    },
+    "shove_contests_slowpush": {
+     "pass": true,
+     "detail": "A front hp by turn: [4, 4, 2, 2, 4, 4, 2, 4]"
+    },
+    "unstacked_wave_waits": {
+     "pass": true,
+     "detail": "positions of A's unstacked front by tick: [0, 0]"
+    },
+    "stacked_wave_creeps": {
+     "pass": true,
+     "detail": "A front position by turn: [1, 1, 1, 1]"
+    },
+    "freeze_holds": {
+     "pass": true,
+     "detail": "B crash hp [0, 0, 0]; deepest B position (own) +1; ticks held 2"
+    },
+    "freeze_broken": {
+     "pass": true,
+     "detail": "freeze broken ticks 1; B crash hp 8"
+    },
+    "large_crash_persists": {
+     "pass": false,
+     "detail": "crash hp 12; A mass under B tower by turn [1, 0, 0, 0, 0, 0, 0, 0]"
+    },
+    "small_crash_clears_quickly": {
+     "pass": true,
+     "detail": "crash hp 4; A mass under B tower by turn [1, 0, 0, 0]"
+    },
+    "tower_farm_contested": {
+     "pass": false,
+     "detail": "A HP killed by B's tower 0; B farm opportunity there 3.00, collected 2.295 (76.5%)"
+    },
+    "tower_farm_safe": {
+     "pass": false,
+     "detail": "A HP killed by B's tower 0; B farm opportunity there 3.00, collected 2.400 (80.0%)"
+    },
+    "bounce": {
+     "pass": false,
+     "detail": "B front hp [4, 8, 7, 10, 9, 12, 11, 11, 10, 10]; B front global position [3, 3, 3, 3, 3, 3, 3, 3, 3, 3]; A mass under B tower [11, 10, 9, 8, 7, 6, 5, 4, 3, 2]"
+    },
+    "safe_lets_wave_go": {
+     "pass": true,
+     "detail": "A crashed True; A exposure with Safe -1 vs with Contest +2"
+    },
+    "freeze_denial": {
+     "pass": true,
+     "detail": "A collects 1.125 of 1.25 (90%), B collects 0.035 of 1.25 (3%)"
+    }
+   },
+   "scenarios_passed": 11,
+   "events": {
+    "crash_small": 4644,
+    "crash_medium": 1520,
+    "crash_large": 236,
+    "crash_onto_siege": 128,
+    "freeze_held": 1748,
+    "freeze_broken": 744,
+    "bounce": 0,
+    "siege_persists": 384,
+    "safe_disengages": 34002,
+    "tower_farm": 0,
+    "farm_contest_vs_safe": 61648,
+    "minions_deleted": 0
+   },
+   "baseline_exploitability": {
+    "uniform": 10.083268453729296,
+    "aggressive": 24.86250000000002,
+    "freeze_contest": 7.6099999999999985,
+    "passive_safe": 8.190000000000001,
+    "stack_builder": 5.142499999999996,
+    "release_safe": 7.690000000000004,
+    "contest_slowpush": 5.142499999999996
+   }
+  },
+  "tower fire 2 HP per tick": {
+   "overrides": {
+    "tower_siege_damage": 2
+   },
+   "seconds": 2.8318106001242995,
+   "value": 0.0,
+   "path": {
+    "value": 0.0,
+    "farm": [
+     9.650000000000004,
+     9.650000000000004
+    ],
+    "farm_available": [
+     15.5,
+     15.5
+    ],
+    "farm_missed": [
+     5.849999999999996,
+     5.849999999999996
+    ],
+    "crash_resources": [
+     0.0,
+     0.0
+    ],
+    "gank_loss": [
+     34.70000000000002,
+     34.70000000000002
+    ],
+    "crashes_by_size": {
+     "A": [
+      0.0,
+      0.0,
+      0.0
+     ],
+     "B": [
+      0.0,
+      0.0,
+      0.0
+     ]
+    },
+    "crash_hp": [
+     0.0,
+     0.0
+    ],
+    "vision_choices": [
+     0.0,
+     0.0
+    ],
+    "contest_share": [
+     0.90625,
+     0.90625
+    ],
+    "action_freq": [
+     {
+      "SP-C": 0.84375,
+      "SH-C": 0.0625,
+      "SP-S": 0.09375,
+      "SH-S": 0.0
+     },
+     {
+      "SP-C": 0.84375,
+      "SH-C": 0.0625,
+      "SP-S": 0.09375,
+      "SH-S": 0.0
+     }
+    ],
+    "wave_freq": [
+     {
+      "SP": 0.9375,
+      "SH": 0.0625
+     },
+     {
+      "SP": 0.9375,
+      "SH": 0.0625
+     }
+    ],
+    "support_size": []
+   },
+   "nodes": {
+    "nodes": 7275,
+    "contest": 0.5828580072080389,
+    "wave": [
+     0.7070713534597719,
+     0.2606780474803902,
+     0.03225059905983892
+    ],
+    "freeze_legal_nodes": 2011,
+    "freeze_prob_when_legal": 0.1166698697962845
+   },
+   "vision": {
+    "small": 0.029850746268656716,
+    "medium": 0.0,
+    "large": 0.04878048780487805,
+    "small_nodes": 134,
+    "medium_nodes": 100,
+    "large_nodes": 41
+   },
+   "states": 7275,
+   "distinct": 1002,
+   "mixed": 542,
+   "max_gap": 8.881784197001252e-16,
+   "distinct_2K": 1158,
+   "scenarios": {
+    "even_river_fight": {
+     "pass": true,
+     "detail": "crash HP 0; farm collected A 3.308, B 3.308"
+    },
+    "shove_wins_river": {
+     "pass": true,
+     "detail": "HP killed by A 8, by B 4; farm available A 2.00, B 1.00"
+    },
+    "slowpush_stacks": {
+     "pass": true,
+     "detail": "A front hp by turn: [4, 6, 5, 7, 7, 9, 8, 11]"
+    },
+    "shove_contests_slowpush": {
+     "pass": true,
+     "detail": "A front hp by turn: [4, 4, 2, 2, 4, 4, 2, 4]"
+    },
+    "unstacked_wave_waits": {
+     "pass": true,
+     "detail": "positions of A's unstacked front by tick: [0, 0]"
+    },
+    "stacked_wave_creeps": {
+     "pass": true,
+     "detail": "A front position by turn: [1, 1, 1, 1]"
+    },
+    "freeze_holds": {
+     "pass": true,
+     "detail": "B crash hp [0, 0, 0]; deepest B position (own) +1; ticks held 2"
+    },
+    "freeze_broken": {
+     "pass": true,
+     "detail": "freeze broken ticks 1; B crash hp 8"
+    },
+    "large_crash_persists": {
+     "pass": false,
+     "detail": "crash hp 12; A mass under B tower by turn [10, 6, 2, 0, 0, 0, 0, 0]"
+    },
+    "small_crash_clears_quickly": {
+     "pass": true,
+     "detail": "crash hp 4; A mass under B tower by turn [2, 0, 0, 0]"
+    },
+    "tower_farm_contested": {
+     "pass": true,
+     "detail": "A HP killed by B's tower 12; B farm opportunity there 3.00, collected 2.295 (76.5%)"
+    },
+    "tower_farm_safe": {
+     "pass": true,
+     "detail": "A HP killed by B's tower 12; B farm opportunity there 3.00, collected 2.400 (80.0%)"
+    },
+    "bounce": {
+     "pass": false,
+     "detail": "B front hp [4, 8, 7, 6, 8, 6, 4, 6, 4, 4]; B front global position [3, 3, 3, 2, 1, 0, 0, 0, 0, 0]; A mass under B tower [8, 4, 0, 0, 0, 0, 0, 0, 0, 0]"
+    },
+    "safe_lets_wave_go": {
+     "pass": true,
+     "detail": "A crashed True; A exposure with Safe -1 vs with Contest +2"
+    },
+    "freeze_denial": {
+     "pass": true,
+     "detail": "A collects 1.125 of 1.25 (90%), B collects 0.035 of 1.25 (3%)"
+    }
+   },
+   "scenarios_passed": 13,
+   "events": {
+    "crash_small": 6000,
+    "crash_medium": 2900,
+    "crash_large": 720,
+    "crash_onto_siege": 592,
+    "freeze_held": 2384,
+    "freeze_broken": 1180,
+    "bounce": 640,
+    "siege_persists": 12496,
+    "safe_disengages": 76366,
+    "tower_farm": 43688,
+    "farm_contest_vs_safe": 145824,
+    "minions_deleted": 0
+   },
+   "baseline_exploitability": {
+    "uniform": 10.07555663934838,
+    "aggressive": 24.86250000000002,
+    "freeze_contest": 10.612500000000002,
+    "passive_safe": 10.915000000000003,
+    "stack_builder": 7.182499999999998,
+    "release_safe": 7.690000000000004,
+    "contest_slowpush": 7.947499999999998
+   }
+  },
+  "cap rule: delete overflow HP (original rule)": {
+   "overrides": {
+    "cap_rule": "overflow"
+   },
+   "seconds": 4.33945560012944,
+   "value": 0.0,
+   "path": {
+    "value": 0.0,
+    "farm": [
+     9.650000000000004,
+     9.650000000000004
+    ],
+    "farm_available": [
+     15.5,
+     15.5
+    ],
+    "farm_missed": [
+     5.849999999999996,
+     5.849999999999996
+    ],
+    "crash_resources": [
+     0.0,
+     0.0
+    ],
+    "gank_loss": [
+     34.70000000000002,
+     34.70000000000002
+    ],
+    "crashes_by_size": {
+     "A": [
+      0.0,
+      0.0,
+      0.0
+     ],
+     "B": [
+      0.0,
+      0.0,
+      0.0
+     ]
+    },
+    "crash_hp": [
+     0.0,
+     0.0
+    ],
+    "vision_choices": [
+     0.0,
+     0.0
+    ],
+    "contest_share": [
+     0.90625,
+     0.90625
+    ],
+    "action_freq": [
+     {
+      "SP-C": 0.84375,
+      "SH-C": 0.0625,
+      "SP-S": 0.09375,
+      "SH-S": 0.0
+     },
+     {
+      "SP-C": 0.84375,
+      "SH-C": 0.0625,
+      "SP-S": 0.09375,
+      "SH-S": 0.0
+     }
+    ],
+    "wave_freq": [
+     {
+      "SP": 0.9375,
+      "SH": 0.0625
+     },
+     {
+      "SP": 0.9375,
+      "SH": 0.0625
+     }
+    ],
+    "support_size": []
+   },
+   "nodes": {
+    "nodes": 11619,
+    "contest": 0.5822889957170981,
+    "wave": [
+     0.6816372926675771,
+     0.2959415675944435,
+     0.02242113973798005
+    ],
+    "freeze_legal_nodes": 3323,
+    "freeze_prob_when_legal": 0.07839639561107138
+   },
+   "vision": {
+    "small": 0.05357142857142857,
+    "medium": 0.0,
+    "large": 0.28,
+    "small_nodes": 112,
+    "medium_nodes": 87,
+    "large_nodes": 25
+   },
+   "states": 11619,
+   "distinct": 1622,
+   "mixed": 825,
+   "max_gap": 1.7763568394002505e-15,
+   "distinct_2K": 1622,
+   "scenarios": {
+    "even_river_fight": {
+     "pass": true,
+     "detail": "crash HP 0; farm collected A 3.308, B 3.308"
+    },
+    "shove_wins_river": {
+     "pass": true,
+     "detail": "HP killed by A 8, by B 4; farm available A 2.00, B 1.00"
+    },
+    "slowpush_stacks": {
+     "pass": true,
+     "detail": "A front hp by turn: [4, 6, 5, 7, 7, 9, 8, 11]"
+    },
+    "shove_contests_slowpush": {
+     "pass": true,
+     "detail": "A front hp by turn: [4, 4, 2, 2, 4, 4, 2, 4]"
+    },
+    "unstacked_wave_waits": {
+     "pass": true,
+     "detail": "positions of A's unstacked front by tick: [0, 0]"
+    },
+    "stacked_wave_creeps": {
+     "pass": true,
+     "detail": "A front position by turn: [1, 1, 1, 1]"
+    },
+    "freeze_holds": {
+     "pass": true,
+     "detail": "B crash hp [0, 0, 0]; deepest B position (own) +1; ticks held 2"
+    },
+    "freeze_broken": {
+     "pass": true,
+     "detail": "freeze broken ticks 1; B crash hp 8"
+    },
+    "large_crash_persists": {
+     "pass": true,
+     "detail": "crash hp 12; A mass under B tower by turn [11, 9, 7, 5, 3, 1, 0, 0]"
+    },
+    "small_crash_clears_quickly": {
+     "pass": true,
+     "detail": "crash hp 4; A mass under B tower by turn [3, 1, 0, 0]"
+    },
+    "tower_farm_contested": {
+     "pass": true,
+     "detail": "A HP killed by B's tower 12; B farm opportunity there 3.00, collected 2.295 (76.5%)"
+    },
+    "tower_farm_safe": {
+     "pass": true,
+     "detail": "A HP killed by B's tower 12; B farm opportunity there 3.00, collected 2.400 (80.0%)"
+    },
+    "bounce": {
+     "pass": true,
+     "detail": "B front hp [4, 8, 7, 10, 9, 12, 10, 9, 8, 8]; B front global position [3, 3, 3, 3, 3, 3, 2, 0, 0, 0]; A mass under B tower [10, 8, 6, 4, 2, 0, 0, 0, 0, 0]"
+    },
+    "safe_lets_wave_go": {
+     "pass": true,
+     "detail": "A crashed True; A exposure with Safe -1 vs with Contest +2"
+    },
+    "freeze_denial": {
+     "pass": true,
+     "detail": "A collects 1.125 of 1.25 (90%), B collects 0.035 of 1.25 (3%)"
+    }
+   },
+   "scenarios_passed": 15,
+   "events": {
+    "crash_small": 5756,
+    "crash_medium": 3664,
+    "crash_large": 300,
+    "crash_onto_siege": 0,
+    "freeze_held": 2372,
+    "freeze_broken": 1176,
+    "bounce": 3812,
+    "siege_persists": 40064,
+    "safe_disengages": 122746,
+    "tower_farm": 76480,
+    "farm_contest_vs_safe": 235480,
+    "minions_deleted": 612
+   },
+   "baseline_exploitability": {
+    "uniform": 10.078337909045308,
+    "aggressive": 24.86250000000002,
+    "freeze_contest": 9.645000000000005,
+    "passive_safe": 9.615000000000006,
+    "stack_builder": 5.782499999999996,
+    "release_safe": 7.690000000000004,
+    "contest_slowpush": 6.747499999999998
+   }
+  },
+  "queued packets stand idle (do not fight with the front)": {
+   "overrides": {
+    "queue_fights": false
+   },
+   "seconds": 8.641219699988142,
+   "value": 0.0,
+   "path": {
+    "value": 0.0,
+    "farm": [
+     9.650000000000004,
+     9.650000000000004
+    ],
+    "farm_available": [
+     15.5,
+     15.5
+    ],
+    "farm_missed": [
+     5.849999999999996,
+     5.849999999999996
+    ],
+    "crash_resources": [
+     0.0,
+     0.0
+    ],
+    "gank_loss": [
+     34.70000000000002,
+     34.70000000000002
+    ],
+    "crashes_by_size": {
+     "A": [
+      0.0,
+      0.0,
+      0.0
+     ],
+     "B": [
+      0.0,
+      0.0,
+      0.0
+     ]
+    },
+    "crash_hp": [
+     0.0,
+     0.0
+    ],
+    "vision_choices": [
+     0.0,
+     0.0
+    ],
+    "contest_share": [
+     0.90625,
+     0.90625
+    ],
+    "action_freq": [
+     {
+      "SP-C": 0.84375,
+      "SH-C": 0.0625,
+      "SP-S": 0.09375,
+      "SH-S": 0.0
+     },
+     {
+      "SP-C": 0.84375,
+      "SH-C": 0.0625,
+      "SP-S": 0.09375,
+      "SH-S": 0.0
+     }
+    ],
+    "wave_freq": [
+     {
+      "SP": 0.9375,
+      "SH": 0.0625
+     },
+     {
+      "SP": 0.9375,
+      "SH": 0.0625
+     }
+    ],
+    "support_size": []
+   },
+   "nodes": {
+    "nodes": 18293,
+    "contest": 0.5432874494280374,
+    "wave": [
+     0.6764436240781465,
+     0.30320590229214045,
+     0.020350473629714576
+    ],
+    "freeze_legal_nodes": 5665,
+    "freeze_prob_when_legal": 0.06571424785672882
+   },
+   "vision": {
+    "small": 0.09246575342465753,
+    "medium": 0.0,
+    "large": 0.1889400921658986,
+    "small_nodes": 292,
+    "medium_nodes": 245,
+    "large_nodes": 217
+   },
+   "states": 18293,
+   "distinct": 3838,
+   "mixed": 1253,
+   "max_gap": 1.7763568394002505e-15,
+   "distinct_2K": 37822,
+   "scenarios": {
+    "even_river_fight": {
+     "pass": true,
+     "detail": "crash HP 0; farm collected A 3.308, B 3.308"
+    },
+    "shove_wins_river": {
+     "pass": true,
+     "detail": "HP killed by A 8, by B 4; farm available A 2.00, B 1.00"
+    },
+    "slowpush_stacks": {
+     "pass": true,
+     "detail": "A front hp by turn: [4, 6, 5, 7, 7, 9, 8, 11]"
+    },
+    "shove_contests_slowpush": {
+     "pass": true,
+     "detail": "A front hp by turn: [4, 4, 2, 2, 4, 4, 2, 4]"
+    },
+    "unstacked_wave_waits": {
+     "pass": true,
+     "detail": "positions of A's unstacked front by tick: [0, 0]"
+    },
+    "stacked_wave_creeps": {
+     "pass": true,
+     "detail": "A front position by turn: [1, 1, 1, 1]"
+    },
+    "freeze_holds": {
+     "pass": true,
+     "detail": "B crash hp [0, 0, 0]; deepest B position (own) +1; ticks held 2"
+    },
+    "freeze_broken": {
+     "pass": true,
+     "detail": "freeze broken ticks 1; B crash hp 8"
+    },
+    "large_crash_persists": {
+     "pass": true,
+     "detail": "crash hp 12; A mass under B tower by turn [11, 9, 7, 5, 3, 1, 0, 0]"
+    },
+    "small_crash_clears_quickly": {
+     "pass": true,
+     "detail": "crash hp 4; A mass under B tower by turn [3, 1, 0, 0]"
+    },
+    "tower_farm_contested": {
+     "pass": true,
+     "detail": "A HP killed by B's tower 12; B farm opportunity there 3.00, collected 2.295 (76.5%)"
+    },
+    "tower_farm_safe": {
+     "pass": true,
+     "detail": "A HP killed by B's tower 12; B farm opportunity there 3.00, collected 2.400 (80.0%)"
+    },
+    "bounce": {
+     "pass": true,
+     "detail": "B front hp [4, 8, 7, 10, 9, 12, 10, 9, 8, 8]; B front global position [3, 3, 3, 3, 3, 3, 2, 0, 0, 0]; A mass under B tower [10, 8, 6, 4, 2, 0, 0, 0, 0, 0]"
+    },
+    "safe_lets_wave_go": {
+     "pass": true,
+     "detail": "A crashed True; A exposure with Safe -1 vs with Contest +2"
+    },
+    "freeze_denial": {
+     "pass": true,
+     "detail": "A collects 1.125 of 1.25 (90%), B collects 0.035 of 1.25 (3%)"
+    }
+   },
+   "scenarios_passed": 15,
+   "events": {
+    "crash_small": 14640,
+    "crash_medium": 9700,
+    "crash_large": 4520,
+    "crash_onto_siege": 13508,
+    "freeze_held": 4928,
+    "freeze_broken": 4996,
+    "bounce": 10216,
+    "siege_persists": 130864,
+    "safe_disengages": 195260,
+    "tower_farm": 186872,
+    "farm_contest_vs_safe": 379284,
+    "minions_deleted": 0
+   },
+   "baseline_exploitability": {
+    "uniform": 10.078337909045308,
+    "aggressive": 24.86250000000002,
+    "freeze_contest": 9.610000000000008,
+    "passive_safe": 9.345000000000002,
+    "stack_builder": 5.782499999999996,
+    "release_safe": 7.690000000000004,
+    "contest_slowpush": 6.547499999999997
+   }
+  },
+  "defenders engage crashed minions under tower": {
+   "overrides": {
+    "siege_engage": true
+   },
+   "seconds": 2.123400199925527,
+   "value": 0.0,
+   "path": {
+    "value": 0.0,
+    "farm": [
+     9.650000000000004,
+     9.650000000000004
+    ],
+    "farm_available": [
+     15.5,
+     15.5
+    ],
+    "farm_missed": [
+     5.849999999999996,
+     5.849999999999996
+    ],
+    "crash_resources": [
+     0.0,
+     0.0
+    ],
+    "gank_loss": [
+     34.70000000000002,
+     34.70000000000002
+    ],
+    "crashes_by_size": {
+     "A": [
+      0.0,
+      0.0,
+      0.0
+     ],
+     "B": [
+      0.0,
+      0.0,
+      0.0
+     ]
+    },
+    "crash_hp": [
+     0.0,
+     0.0
+    ],
+    "vision_choices": [
+     0.0,
+     0.0
+    ],
+    "contest_share": [
+     0.90625,
+     0.90625
+    ],
+    "action_freq": [
+     {
+      "SP-C": 0.84375,
+      "SH-C": 0.0625,
+      "SP-S": 0.09375,
+      "SH-S": 0.0
+     },
+     {
+      "SP-C": 0.84375,
+      "SH-C": 0.0625,
+      "SP-S": 0.09375,
+      "SH-S": 0.0
+     }
+    ],
+    "wave_freq": [
+     {
+      "SP": 0.9375,
+      "SH": 0.0625
+     },
+     {
+      "SP": 0.9375,
+      "SH": 0.0625
+     }
+    ],
+    "support_size": []
+   },
+   "nodes": {
+    "nodes": 5453,
+    "contest": 0.4188440157824898,
+    "wave": [
+     0.7616483468253072,
+     0.19756630946569434,
+     0.04078534370899807
+    ],
+    "freeze_legal_nodes": 1410,
+    "freeze_prob_when_legal": 0.157732254783806
+   },
+   "vision": {
+    "small": 0.22321428571428573,
+    "medium": 0.0,
+    "large": 0.6097560975609756,
+    "small_nodes": 224,
+    "medium_nodes": 93,
+    "large_nodes": 41
+   },
+   "states": 5453,
+   "distinct": 612,
+   "mixed": 379,
+   "max_gap": 8.881784197001252e-16,
+   "distinct_2K": 612,
+   "scenarios": {
+    "even_river_fight": {
+     "pass": true,
+     "detail": "crash HP 0; farm collected A 3.308, B 3.308"
+    },
+    "shove_wins_river": {
+     "pass": true,
+     "detail": "HP killed by A 8, by B 4; farm available A 2.00, B 1.00"
+    },
+    "slowpush_stacks": {
+     "pass": true,
+     "detail": "A front hp by turn: [4, 6, 5, 7, 7, 9, 8, 11]"
+    },
+    "shove_contests_slowpush": {
+     "pass": true,
+     "detail": "A front hp by turn: [4, 4, 2, 2, 4, 4, 2, 4]"
+    },
+    "unstacked_wave_waits": {
+     "pass": true,
+     "detail": "positions of A's unstacked front by tick: [0, 0]"
+    },
+    "stacked_wave_creeps": {
+     "pass": true,
+     "detail": "A front position by turn: [1, 1, 1, 1]"
+    },
+    "freeze_holds": {
+     "pass": true,
+     "detail": "B crash hp [0, 0, 0]; deepest B position (own) +1; ticks held 2"
+    },
+    "freeze_broken": {
+     "pass": true,
+     "detail": "freeze broken ticks 1; B crash hp 8"
+    },
+    "large_crash_persists": {
+     "pass": false,
+     "detail": "crash hp 12; A mass under B tower by turn [11, 9, 5, 2, 0, 0, 0, 0]"
+    },
+    "small_crash_clears_quickly": {
+     "pass": true,
+     "detail": "crash hp 4; A mass under B tower by turn [3, 1, 0, 0]"
+    },
+    "tower_farm_contested": {
+     "pass": false,
+     "detail": "A HP killed by B's tower 8; B farm opportunity there 3.00, collected 2.295 (76.5%)"
+    },
+    "tower_farm_safe": {
+     "pass": false,
+     "detail": "A HP killed by B's tower 8; B farm opportunity there 3.00, collected 2.400 (80.0%)"
+    },
+    "bounce": {
+     "pass": false,
+     "detail": "B front hp [0, 4, 2, 4, 3, 1, 3, 1, 3, 1]; B front global position [4, 3, 4, 2, 1, 2, 1, 2, 1]; A mass under B tower [8, 6, 3, 0, 0, 0, 0, 0, 0, 0]"
+    },
+    "safe_lets_wave_go": {
+     "pass": true,
+     "detail": "A crashed True; A exposure with Safe -1 vs with Contest +2"
+    },
+    "freeze_denial": {
+     "pass": true,
+     "detail": "A collects 1.125 of 1.25 (90%), B collects 0.035 of 1.25 (3%)"
+    }
+   },
+   "scenarios_passed": 11,
+   "events": {
+    "crash_small": 9240,
+    "crash_medium": 2888,
+    "crash_large": 720,
+    "crash_onto_siege": 4240,
+    "freeze_held": 2204,
+    "freeze_broken": 1084,
+    "bounce": 0,
+    "siege_persists": 23356,
+    "safe_disengages": 56090,
+    "tower_farm": 41864,
+    "farm_contest_vs_safe": 107344,
+    "minions_deleted": 0
+   },
+   "baseline_exploitability": {
+    "uniform": 10.097616633876763,
+    "aggressive": 24.86250000000002,
+    "freeze_contest": 9.105000000000004,
+    "passive_safe": 9.407500000000004,
+    "stack_builder": 7.823749999999998,
+    "release_safe": 7.690000000000004,
+    "contest_slowpush": 7.823749999999998
+   }
+  },
+  "defenders engage + tower fire 2 HP per tick": {
+   "overrides": {
+    "siege_engage": true,
+    "tower_siege_damage": 2
+   },
+   "seconds": 2.1386236001271755,
+   "value": 0.0,
+   "path": {
+    "value": 0.0,
+    "farm": [
+     9.650000000000004,
+     9.650000000000004
+    ],
+    "farm_available": [
+     15.5,
+     15.5
+    ],
+    "farm_missed": [
+     5.849999999999996,
+     5.849999999999996
+    ],
+    "crash_resources": [
+     0.0,
+     0.0
+    ],
+    "gank_loss": [
+     34.70000000000002,
+     34.70000000000002
+    ],
+    "crashes_by_size": {
+     "A": [
+      0.0,
+      0.0,
+      0.0
+     ],
+     "B": [
+      0.0,
+      0.0,
+      0.0
+     ]
+    },
+    "crash_hp": [
+     0.0,
+     0.0
+    ],
+    "vision_choices": [
+     0.0,
+     0.0
+    ],
+    "contest_share": [
+     0.90625,
+     0.90625
+    ],
+    "action_freq": [
+     {
+      "SP-C": 0.84375,
+      "SH-C": 0.0625,
+      "SP-S": 0.09375,
+      "SH-S": 0.0
+     },
+     {
+      "SP-C": 0.84375,
+      "SH-C": 0.0625,
+      "SP-S": 0.09375,
+      "SH-S": 0.0
+     }
+    ],
+    "wave_freq": [
+     {
+      "SP": 0.9375,
+      "SH": 0.0625
+     },
+     {
+      "SP": 0.9375,
+      "SH": 0.0625
+     }
+    ],
+    "support_size": []
+   },
+   "nodes": {
+    "nodes": 4553,
+    "contest": 0.4849497510071813,
+    "wave": [
+     0.7492689969558665,
+     0.2075599983885388,
+     0.043171004655594536
+    ],
+    "freeze_legal_nodes": 1148,
+    "freeze_prob_when_legal": 0.17121740783704
+   },
+   "vision": {
+    "small": 0.19254658385093168,
+    "medium": 0.0,
+    "large": 0.5,
+    "small_nodes": 161,
+    "medium_nodes": 89,
+    "large_nodes": 28
+   },
+   "states": 4553,
+   "distinct": 476,
+   "mixed": 435,
+   "max_gap": 8.881784197001252e-16,
+   "distinct_2K": 476,
+   "scenarios": {
+    "even_river_fight": {
+     "pass": true,
+     "detail": "crash HP 0; farm collected A 3.308, B 3.308"
+    },
+    "shove_wins_river": {
+     "pass": true,
+     "detail": "HP killed by A 8, by B 4; farm available A 2.00, B 1.00"
+    },
+    "slowpush_stacks": {
+     "pass": true,
+     "detail": "A front hp by turn: [4, 6, 5, 7, 7, 9, 8, 11]"
+    },
+    "shove_contests_slowpush": {
+     "pass": true,
+     "detail": "A front hp by turn: [4, 4, 2, 2, 4, 4, 2, 4]"
+    },
+    "unstacked_wave_waits": {
+     "pass": true,
+     "detail": "positions of A's unstacked front by tick: [0, 0]"
+    },
+    "stacked_wave_creeps": {
+     "pass": true,
+     "detail": "A front position by turn: [1, 1, 1, 1]"
+    },
+    "freeze_holds": {
+     "pass": true,
+     "detail": "B crash hp [0, 0, 0]; deepest B position (own) +1; ticks held 2"
+    },
+    "freeze_broken": {
+     "pass": true,
+     "detail": "freeze broken ticks 1; B crash hp 8"
+    },
+    "large_crash_persists": {
+     "pass": false,
+     "detail": "crash hp 12; A mass under B tower by turn [10, 6, 0, 0, 0, 0, 0, 0]"
+    },
+    "small_crash_clears_quickly": {
+     "pass": true,
+     "detail": "crash hp 4; A mass under B tower by turn [2, 0, 0, 0]"
+    },
+    "tower_farm_contested": {
+     "pass": false,
+     "detail": "A HP killed by B's tower 10; B farm opportunity there 3.00, collected 2.295 (76.5%)"
+    },
+    "tower_farm_safe": {
+     "pass": false,
+     "detail": "A HP killed by B's tower 10; B farm opportunity there 3.00, collected 2.400 (80.0%)"
+    },
+    "bounce": {
+     "pass": false,
+     "detail": "B front hp [0, 4, 2, 4, 3, 1, 3, 1, 3, 1]; B front global position [4, 2, 4, 2, 1, 2, 1, 2, 1]; A mass under B tower [6, 2, 0, 0, 0, 0, 0, 0, 0, 0]"
+    },
+    "safe_lets_wave_go": {
+     "pass": true,
+     "detail": "A crashed True; A exposure with Safe -1 vs with Contest +2"
+    },
+    "freeze_denial": {
+     "pass": true,
+     "detail": "A collects 1.125 of 1.25 (90%), B collects 0.035 of 1.25 (3%)"
+    }
+   },
+   "scenarios_passed": 11,
+   "events": {
+    "crash_small": 6752,
+    "crash_medium": 2076,
+    "crash_large": 444,
+    "crash_onto_siege": 1376,
+    "freeze_held": 2000,
+    "freeze_broken": 900,
+    "bounce": 0,
+    "siege_persists": 6112,
+    "safe_disengages": 46794,
+    "tower_farm": 24684,
+    "farm_contest_vs_safe": 88752,
+    "minions_deleted": 0
+   },
+   "baseline_exploitability": {
+    "uniform": 10.0961435888581,
+    "aggressive": 24.86250000000002,
+    "freeze_contest": 9.497500000000002,
+    "passive_safe": 9.8225,
+    "stack_builder": 8.2025,
+    "release_safe": 7.690000000000004,
+    "contest_slowpush": 8.2025
+   }
+  },
+  "HP units W = 2 (original resolution)": {
+   "overrides": {
+    "wave_hp": 2,
+    "farm_per_hp": 0.5,
+    "freeze_break_threshold": 5,
+    "freeze_break_push": [
+     0,
+     2,
+     0
+    ],
+    "siege_cap": 24
+   },
+   "seconds": 0.3687925999984145,
+   "value": 0.0,
+   "path": {
+    "value": 0.0,
+    "farm": [
+     10.080000000000004,
+     10.080000000000004
+    ],
+    "farm_available": [
+     16.0,
+     16.0
+    ],
+    "farm_missed": [
+     5.919999999999996,
+     5.919999999999996
+    ],
+    "crash_resources": [
+     0.0,
+     0.0
+    ],
+    "gank_loss": [
+     35.00000000000002,
+     35.00000000000002
+    ],
+    "crashes_by_size": {
+     "A": [
+      0.0,
+      0.0,
+      0.0
+     ],
+     "B": [
+      0.0,
+      0.0,
+      0.0
+     ]
+    },
+    "crash_hp": [
+     0.0,
+     0.0
+    ],
+    "vision_choices": [
+     0.0,
+     0.0
+    ],
+    "contest_share": [
+     0.96875,
+     0.96875
+    ],
+    "action_freq": [
+     {
+      "SP-C": 0.9375,
+      "SH-C": 0.03125,
+      "SP-S": 0.03125,
+      "SH-S": 0.0
+     },
+     {
+      "SP-C": 0.9375,
+      "SH-C": 0.03125,
+      "SP-S": 0.03125,
+      "SH-S": 0.0
+     }
+    ],
+    "wave_freq": [
+     {
+      "SP": 0.96875,
+      "SH": 0.03125
+     },
+     {
+      "SP": 0.96875,
+      "SH": 0.03125
+     }
+    ],
+    "support_size": []
+   },
+   "nodes": {
+    "nodes": 1119,
+    "contest": 0.4507499981223661,
+    "wave": [
+     0.8097515311145529,
+     0.13714920979795983,
+     0.05309925908748724
+    ],
+    "freeze_legal_nodes": 139,
+    "freeze_prob_when_legal": 0.4274681361071815
+   },
+   "vision": {
+    "small": 0.16923076923076924,
+    "medium": 0.0,
+    "small_nodes": 65,
+    "medium_nodes": 34
+   },
+   "states": 1119,
+   "distinct": 107,
+   "mixed": 124,
+   "max_gap": 8.881784197001252e-16,
+   "distinct_2K": 107,
+   "scenarios": {
+    "even_river_fight": {
+     "pass": true,
+     "detail": "crash HP 0; farm collected A 3.465, B 3.465"
+    },
+    "shove_wins_river": {
+     "pass": true,
+     "detail": "HP killed by A 4, by B 2; farm available A 2.00, B 1.00"
+    },
+    "slowpush_stacks": {
+     "pass": false,
+     "detail": "A front hp by turn: [2, 3, 2, 3, 2, 3, 2, 2]"
+    },
+    "shove_contests_slowpush": {
+     "pass": true,
+     "detail": "A front hp by turn: [2, 2, 2, 2, 2, 2, 2, 2]"
+    },
+    "unstacked_wave_waits": {
+     "pass": true,
+     "detail": "positions of A's unstacked front by tick: [0, 0]"
+    },
+    "stacked_wave_creeps": {
+     "pass": true,
+     "detail": "A front position by turn: [1, 1, 1, 1]"
+    },
+    "freeze_holds": {
+     "pass": true,
+     "detail": "B crash hp [0, 0, 0]; deepest B position (own) +1; ticks held 2"
+    },
+    "freeze_broken": {
+     "pass": true,
+     "detail": "freeze broken ticks 1; B crash hp 4"
+    },
+    "large_crash_persists": {
+     "pass": false,
+     "detail": "crash hp 6; A mass under B tower by turn [5, 3, 1, 0, 0, 0, 0, 0]"
+    },
+    "small_crash_clears_quickly": {
+     "pass": true,
+     "detail": "crash hp 2; A mass under B tower by turn [1, 0, 0, 0]"
+    },
+    "tower_farm_contested": {
+     "pass": true,
+     "detail": "A HP killed by B's tower 6; B farm opportunity there 3.00, collected 2.295 (76.5%)"
+    },
+    "tower_farm_safe": {
+     "pass": true,
+     "detail": "A HP killed by B's tower 6; B farm opportunity there 3.00, collected 2.400 (80.0%)"
+    },
+    "bounce": {
+     "pass": false,
+     "detail": "B front hp [2, 4, 3, 2, 1, 2, 2, 1, 2, 1]; B front global position [3, 3, 3, 1, 0, 4, 2, 0, 2, 0]; A mass under B tower [4, 2, 0, 0, 0, 0, 0, 0, 0, 0]"
+    },
+    "safe_lets_wave_go": {
+     "pass": true,
+     "detail": "A crashed True; A exposure with Safe -1 vs with Contest +2"
+    },
+    "freeze_denial": {
+     "pass": true,
+     "detail": "A collects 1.350 of 1.50 (90%), B collects 0.070 of 1.50 (5%)"
+    }
+   },
+   "scenarios_passed": 12,
+   "events": {
+    "crash_small": 1448,
+    "crash_medium": 856,
+    "crash_large": 0,
+    "crash_onto_siege": 0,
+    "freeze_held": 700,
+    "freeze_broken": 372,
+    "bounce": 0,
+    "siege_persists": 640,
+    "safe_disengages": 10284,
+    "tower_farm": 6580,
+    "farm_contest_vs_safe": 16328,
+    "minions_deleted": 0
+   },
+   "baseline_exploitability": {
+    "uniform": 9.292012948107688,
+    "aggressive": 23.177500000000006,
+    "freeze_contest": 10.847499999999991,
+    "passive_safe": 10.847499999999991,
+    "stack_builder": 7.542500000000001,
+    "release_safe": 4.2299999999999995,
+    "contest_slowpush": 7.542500000000001
+   }
+  },
+  "attrition: linear (1 per tick)": {
+   "overrides": {
+    "damage_law": "linear"
+   },
+   "seconds": 6.73077329993248,
+   "value": 0.0,
+   "path": {
+    "value": 0.0,
+    "farm": [
+     9.650000000000004,
+     9.650000000000004
+    ],
+    "farm_available": [
+     15.5,
+     15.5
+    ],
+    "farm_missed": [
+     5.849999999999996,
+     5.849999999999996
+    ],
+    "crash_resources": [
+     0.0,
+     0.0
+    ],
+    "gank_loss": [
+     34.70000000000002,
+     34.70000000000002
+    ],
+    "crashes_by_size": {
+     "A": [
+      0.0,
+      0.0,
+      0.0
+     ],
+     "B": [
+      0.0,
+      0.0,
+      0.0
+     ]
+    },
+    "crash_hp": [
+     0.0,
+     0.0
+    ],
+    "vision_choices": [
+     0.0,
+     0.0
+    ],
+    "contest_share": [
+     0.90625,
+     0.90625
+    ],
+    "action_freq": [
+     {
+      "SP-C": 0.84375,
+      "SH-C": 0.0625,
+      "SP-S": 0.09375,
+      "SH-S": 0.0
+     },
+     {
+      "SP-C": 0.84375,
+      "SH-C": 0.0625,
+      "SP-S": 0.09375,
+      "SH-S": 0.0
+     }
+    ],
+    "wave_freq": [
+     {
+      "SP": 0.9375,
+      "SH": 0.0625
+     },
+     {
+      "SP": 0.9375,
+      "SH": 0.0625
+     }
+    ],
+    "support_size": []
+   },
+   "nodes": {
+    "nodes": 14815,
+    "contest": 0.6453341880531223,
+    "wave": [
+     0.583554546195588,
+     0.4011030853737909,
+     0.01534236843062349
+    ],
+    "freeze_legal_nodes": 4241,
+    "freeze_prob_when_legal": 0.05359518705486607
+   },
+   "vision": {
+    "small": 0.04242424242424243,
+    "medium": 0.0,
+    "large": 0.09523809523809523,
+    "small_nodes": 165,
+    "medium_nodes": 93,
+    "large_nodes": 42
+   },
+   "states": 14815,
+   "distinct": 2760,
+   "mixed": 949,
+   "max_gap": 3.219646771412954e-15,
+   "distinct_2K": 13302,
+   "scenarios": {
+    "even_river_fight": {
+     "pass": true,
+     "detail": "crash HP 0; farm collected A 3.308, B 3.308"
+    },
+    "shove_wins_river": {
+     "pass": true,
+     "detail": "HP killed by A 8, by B 4; farm available A 2.00, B 1.00"
+    },
+    "slowpush_stacks": {
+     "pass": false,
+     "detail": "A front hp by turn: [4, 6, 4, 6, 4, 6, 4, 6]"
+    },
+    "shove_contests_slowpush": {
+     "pass": true,
+     "detail": "A front hp by turn: [4, 4, 4, 4, 2, 4, 2, 4]"
+    },
+    "unstacked_wave_waits": {
+     "pass": true,
+     "detail": "positions of A's unstacked front by tick: [0, 0]"
+    },
+    "stacked_wave_creeps": {
+     "pass": true,
+     "detail": "A front position by turn: [1, 1, 1, 1]"
+    },
+    "freeze_holds": {
+     "pass": true,
+     "detail": "B crash hp [0, 0, 0]; deepest B position (own) +1; ticks held 2"
+    },
+    "freeze_broken": {
+     "pass": true,
+     "detail": "freeze broken ticks 1; B crash hp 8"
+    },
+    "large_crash_persists": {
+     "pass": true,
+     "detail": "crash hp 12; A mass under B tower by turn [11, 9, 7, 5, 3, 1, 0, 0]"
+    },
+    "small_crash_clears_quickly": {
+     "pass": true,
+     "detail": "crash hp 4; A mass under B tower by turn [3, 1, 0, 0]"
+    },
+    "tower_farm_contested": {
+     "pass": true,
+     "detail": "A HP killed by B's tower 12; B farm opportunity there 3.00, collected 2.295 (76.5%)"
+    },
+    "tower_farm_safe": {
+     "pass": true,
+     "detail": "A HP killed by B's tower 12; B farm opportunity there 3.00, collected 2.400 (80.0%)"
+    },
+    "bounce": {
+     "pass": false,
+     "detail": "B front hp [4, 8, 7, 10, 9, 12, 10, 8, 10, 8]; B front global position [3, 3, 3, 3, 3, 3, 2, 2, 2, 2]; A mass under B tower [10, 8, 6, 4, 2, 0, 0, 0, 0, 0]"
+    },
+    "safe_lets_wave_go": {
+     "pass": true,
+     "detail": "A crashed True; A exposure with Safe -1 vs with Contest +2"
+    },
+    "freeze_denial": {
+     "pass": true,
+     "detail": "A collects 1.125 of 1.25 (90%), B collects 0.035 of 1.25 (3%)"
+    }
+   },
+   "scenarios_passed": 13,
+   "events": {
+    "crash_small": 7280,
+    "crash_medium": 3740,
+    "crash_large": 1288,
+    "crash_onto_siege": 980,
+    "freeze_held": 2408,
+    "freeze_broken": 1812,
+    "bounce": 7044,
+    "siege_persists": 52224,
+    "safe_disengages": 155798,
+    "tower_farm": 88124,
+    "farm_contest_vs_safe": 302112,
+    "minions_deleted": 0
+   },
+   "baseline_exploitability": {
+    "uniform": 10.030886462507048,
+    "aggressive": 24.86250000000002,
+    "freeze_contest": 13.0275,
+    "passive_safe": 13.055,
+    "stack_builder": 8.385,
+    "release_safe": 7.690000000000004,
+    "contest_slowpush": 8.385
+   }
+  },
+  "attrition: Lanchester ceil": {
+   "overrides": {
+    "damage_law": "lanchester_ceil"
+   },
+   "seconds": 5.1529108001850545,
+   "value": 0.0,
+   "path": {
+    "value": 0.0,
+    "farm": [
+     9.305000000000001,
+     9.305000000000001
+    ],
+    "farm_available": [
+     15.5,
+     15.5
+    ],
+    "farm_missed": [
+     6.1949999999999985,
+     6.1949999999999985
+    ],
+    "crash_resources": [
+     0.0,
+     0.0
+    ],
+    "gank_loss": [
+     33.35000000000001,
+     33.35000000000001
+    ],
+    "crashes_by_size": {
+     "A": [
+      0.0,
+      0.0,
+      0.0
+     ],
+     "B": [
+      0.0,
+      0.0,
+      0.0
+     ]
+    },
+    "crash_hp": [
+     0.0,
+     0.0
+    ],
+    "vision_choices": [
+     0.0,
+     0.0
+    ],
+    "contest_share": [
+     0.71875,
+     0.71875
+    ],
+    "action_freq": [
+     {
+      "SP-C": 0.65625,
+      "SH-C": 0.0625,
+      "SP-S": 0.28125,
+      "SH-S": 0.0
+     },
+     {
+      "SP-C": 0.65625,
+      "SH-C": 0.0625,
+      "SP-S": 0.28125,
+      "SH-S": 0.0
+     }
+    ],
+    "wave_freq": [
+     {
+      "SP": 0.9375,
+      "SH": 0.0625
+     },
+     {
+      "SP": 0.9375,
+      "SH": 0.0625
+     }
+    ],
+    "support_size": []
+   },
+   "nodes": {
+    "nodes": 12198,
+    "contest": 0.5158267453015765,
+    "wave": [
+     0.7383407798735948,
+     0.23332077947788804,
+     0.028338440648517843
+    ],
+    "freeze_legal_nodes": 3392,
+    "freeze_prob_when_legal": 0.10190810702553675
+   },
+   "vision": {
+    "medium": 0.0,
+    "small": 0.07614213197969544,
+    "large": 0.18571428571428572,
+    "medium_nodes": 128,
+    "small_nodes": 197,
+    "large_nodes": 70
+   },
+   "states": 12198,
+   "distinct": 2017,
+   "mixed": 840,
+   "max_gap": 2.6645352591003757e-15,
+   "distinct_2K": 3743,
+   "scenarios": {
+    "even_river_fight": {
+     "pass": true,
+     "detail": "crash HP 0; farm collected A 3.465, B 3.465"
+    },
+    "shove_wins_river": {
+     "pass": true,
+     "detail": "HP killed by A 8, by B 4; farm available A 2.00, B 1.00"
+    },
+    "slowpush_stacks": {
+     "pass": true,
+     "detail": "A front hp by turn: [4, 6, 5, 8, 7, 10, 4, 4]"
+    },
+    "shove_contests_slowpush": {
+     "pass": true,
+     "detail": "A front hp by turn: [4, 4, 4, 4, 4, 4, 4, 4]"
+    },
+    "unstacked_wave_waits": {
+     "pass": true,
+     "detail": "positions of A's unstacked front by tick: [0, 0]"
+    },
+    "stacked_wave_creeps": {
+     "pass": true,
+     "detail": "A front position by turn: [1, 1, 1, 1]"
+    },
+    "freeze_holds": {
+     "pass": true,
+     "detail": "B crash hp [0, 0, 0]; deepest B position (own) +1; ticks held 2"
+    },
+    "freeze_broken": {
+     "pass": true,
+     "detail": "freeze broken ticks 1; B crash hp 8"
+    },
+    "large_crash_persists": {
+     "pass": true,
+     "detail": "crash hp 12; A mass under B tower by turn [11, 9, 7, 5, 3, 1, 0, 0]"
+    },
+    "small_crash_clears_quickly": {
+     "pass": true,
+     "detail": "crash hp 4; A mass under B tower by turn [3, 1, 0, 0]"
+    },
+    "tower_farm_contested": {
+     "pass": true,
+     "detail": "A HP killed by B's tower 12; B farm opportunity there 3.00, collected 2.295 (76.5%)"
+    },
+    "tower_farm_safe": {
+     "pass": true,
+     "detail": "A HP killed by B's tower 12; B farm opportunity there 3.00, collected 2.400 (80.0%)"
+    },
+    "bounce": {
+     "pass": true,
+     "detail": "B front hp [4, 8, 7, 10, 9, 9, 12, 8, 8, 8]; B front global position [3, 3, 3, 3, 3, 3, 1, 0, 0, 0]; A mass under B tower [10, 8, 6, 4, 2, 0, 0, 0, 0, 0]"
+    },
+    "safe_lets_wave_go": {
+     "pass": true,
+     "detail": "A crashed True; A exposure with Safe -1 vs with Contest +2"
+    },
+    "freeze_denial": {
+     "pass": true,
+     "detail": "A collects 1.125 of 1.25 (90%), B collects 0.035 of 1.25 (3%)"
+    }
+   },
+   "scenarios_passed": 15,
+   "events": {
+    "crash_small": 9604,
+    "crash_medium": 4164,
+    "crash_large": 1276,
+    "crash_onto_siege": 2980,
+    "freeze_held": 3888,
+    "freeze_broken": 2104,
+    "bounce": 6260,
+    "siege_persists": 69520,
+    "safe_disengages": 127516,
+    "tower_farm": 115240,
+    "farm_contest_vs_safe": 244524,
+    "minions_deleted": 0
+   },
+   "baseline_exploitability": {
+    "uniform": 11.34909752481294,
+    "aggressive": 24.86250000000002,
+    "freeze_contest": 9.884999999999998,
+    "passive_safe": 10.405,
+    "stack_builder": 6.695000000000001,
+    "release_safe": 4.165,
+    "contest_slowpush": 7.937500000000002
+   }
+  }
+ },
+ "environment": {
+  "python": "3.13.9",
+  "numpy": "2.5.3",
+  "scipy": "1.18.1",
+  "platform": "Windows-11-10.0.26200-SP0",
+  "timestamp": "2026-10-10 20:50:13"
+ }
+}

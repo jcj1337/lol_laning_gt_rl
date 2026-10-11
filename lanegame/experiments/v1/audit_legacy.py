@@ -13,9 +13,10 @@ import os
 import random
 import sys
 
-from .common import md_table, save
+from ..common import md_table, save
 
-LEGACY = os.path.join(os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__)))), "legacy")
+LEGACY = os.path.join(os.path.dirname(os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))),
+                      "legacy")
 
 
 def _load():

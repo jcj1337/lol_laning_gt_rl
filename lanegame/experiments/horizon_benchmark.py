@@ -1,9 +1,9 @@
-"""Horizon benchmark: state counts, runtime, memory, residuals, and how values change with K.
+"""Computational benchmark of the revised model: state counts, transition generation, solve time,
+memory, residuals, and how values and exploitability change with the horizon K.
 
-Safety: before each solve the reachable state count is enumerated with a hard
-cap (max_states); the solver is launched only if the enumeration succeeds.
-Peak memory is measured with tracemalloc (Python allocations, including
-NumPy buffers) around enumeration + solve.
+Safety: enumeration runs with a hard cap (max_states) before solving. Peak memory is the Python
+allocation peak measured with tracemalloc around enumeration + solve (tracemalloc slows Python down,
+so timings are reported from a separate untraced run).
 """
 
 from __future__ import annotations
@@ -11,88 +11,96 @@ from __future__ import annotations
 import time
 import tracemalloc
 
-import numpy as np
-
 from .. import GameConfig, LaneGame
 from ..analysis import path_statistics
 from ..baselines import all_baselines
 from ..best_response import exploitability
-from ..config import ACTION_SHORT
 from ..solver import solve_equilibrium
-from ..state import State
-from .common import md_table, save
+from .common import REVISION, md_table, save
+from .probes import probes
 
-HORIZONS = (16, 32, 64)
-EXTENDED = (128, 256)
-MAX_STATES = 2_000_000
-
-# probe states evaluated with a fixed number of turns remaining (16), placed at k = K - 16
-PROBES = {
-    "A 2-stack hp6 at river": State(0, 6, (-4,), 0, -4, 2, (), 0, 0, 0),
-    "A one wave hp2 at river": State(0, 2, (-4,), 0, -4, 2, (), 0, 0, 0),
-    "B wave held at A freeze line": State(0, 0, (-4,), 0, 1, 2, (), 0, 0, 0),
-}
+HORIZONS = (16, 32, 64, 128)
+MAX_STATES = 3_000_000
+PROBES = ["B wave at A's freeze line, fighting A's wave", "A 2-wave stack at +1, B wave just spawned",
+          "A's 3-wave crash under B's tower"]
 
 
 def bench(K: int) -> dict:
-    g = LaneGame(GameConfig(horizon=K))
-    tracemalloc.start()
+    cfg = GameConfig(horizon=K)
+    # timed run
+    g = LaneGame(cfg)
     t0 = time.perf_counter()
     layers = g.reachable(max_states=MAX_STATES)
     t1 = time.perf_counter()
     sol = solve_equilibrium(g, layers)
     t2 = time.perf_counter()
+    transitions = len(g._cache)
+    # memory run (fresh game, traced)
+    g2 = LaneGame(cfg)
+    tracemalloc.start()
+    l2 = g2.reachable(max_states=MAX_STATES)
+    solve_equilibrium(g2, l2)
     _, peak = tracemalloc.get_traced_memory()
     tracemalloc.stop()
+    del g2, l2
     s0 = g.initial_state()
     la, lb = sol.legal[0][s0]
-    ps = path_statistics(g, sol.policy(0), sol.policy(1))
-    distinct = len({s for l in layers for s in l})
-    d = {
-        "horizon": K, "movement_ticks": K * g.cfg.ticks_per_turn,
-        "spawn_intervals": K * g.cfg.ticks_per_turn / g.cfg.spawn_interval,
-        "reachable_states": sol.stats.states, "max_layer": max(len(l) for l in layers),
-        "distinct_lane_states": distinct,
+    ps = path_statistics(g, sol.policy(0), sol.policy(1)).to_dict(K)
+    t3 = time.perf_counter()
+    expl = {b.name: exploitability(g, layers, b, 0, sol.value).exploitability for b in all_baselines()}
+    t4 = time.perf_counter()
+    pr = probes(cfg.wave_hp)
+    return {
+        "horizon": K, "movement_ticks": K * cfg.ticks_per_turn,
+        "spawn_intervals": K * cfg.ticks_per_turn / cfg.spawn_interval,
+        "decision_nodes": sol.stats.states, "max_layer": max(len(l) for l in layers),
+        "distinct_states": len({s for l in layers for s in l}),
+        "cached_transitions": transitions,
         "move_games": sol.stats.move_games, "choice_games": sol.stats.choice_games,
         "methods": sol.stats.methods, "mixed_states": sol.stats.mixed_states,
         "enumerate_seconds": t1 - t0, "solve_seconds": t2 - t1,
+        "transitions_per_second": transitions / (t1 - t0),
+        "best_response_seconds": (t4 - t3) / len(expl),
         "peak_memory_mb": peak / 1e6, "max_certified_gap": sol.stats.max_gap,
         "value_s0": sol.value,
-        "eq_s0": {"A": {ACTION_SHORT[a]: float(p) for a, p in zip(la, sol.x[0][s0])},
-                  "B": {ACTION_SHORT[b]: float(p) for b, p in zip(lb, sol.y[0][s0])}},
-        "eq_path_gank_loss_per_turn": [x / K for x in ps.gank_loss],
-        "eq_path_crashes": ps.crashes,
-        "baseline_exploitability": {b.name: exploitability(g, layers, b, 0, sol.value).exploitability
-                                    for b in all_baselines()},
+        "eq_s0": {"A": {cfg.label(a): float(p) for a, p in zip(la, sol.x[0][s0])}},
+        "eq_path_per_turn": {"farm": ps["farm"][0] / K, "gank_loss": ps["gank_loss"][0] / K,
+                             "contest": ps["contest_share"][0]},
+        "baseline_exploitability": expl,
+        "probe_values_16_remaining": {n: solve_equilibrium(g, root=pr[n], k0=K - 16).value for n in PROBES},
         "layer_sizes": [len(l) for l in layers],
     }
-    if K >= 16:
-        d["probe_values_16_remaining"] = {n: solve_equilibrium(g, root=s, k0=K - 16).value
-                                          for n, s in PROBES.items()}
-    return d
 
 
-def run(horizons=HORIZONS, extended=EXTENDED) -> dict:
-    res = {K: bench(K) for K in tuple(horizons) + tuple(extended)}
-    rows = [(K, d["movement_ticks"], d["reachable_states"], d["max_layer"], d["distinct_lane_states"],
-             d["move_games"], d["choice_games"], d["methods"].get("lp", 0), d["mixed_states"],
-             round(d["enumerate_seconds"] + d["solve_seconds"], 3), round(d["peak_memory_mb"], 1),
-             f"{d['max_certified_gap']:.1e}") for K, d in res.items()]
-    md = ["# Horizon benchmark", "",
-          md_table(["K", "ticks", "reachable (k,s)", "max layer", "distinct lane states", "move games",
-                    "choice games", "LPs", "mixed states", "seconds", "peak MB", "max gap"], rows), "",
-          "## Values and strategies by horizon", "",
-          md_table(["K", "V*(s0)", "eq at s0 (A)", "eq-path gank loss/turn (A)", "eq-path crashes A (S/M/L)"],
-                   [(K, round(d["value_s0"], 9), d["eq_s0"]["A"], round(d["eq_path_gank_loss_per_turn"][0], 4),
-                     [round(c, 3) for c in d["eq_path_crashes"][0]]) for K, d in res.items()]), "",
-          "## Exploitability of baselines (as A), total and per turn", "",
-          md_table(["K"] + [b.name for b in all_baselines()],
-                   [(K, *[f"{v:.2f} ({v / K:.3f}/turn)" for v in d["baseline_exploitability"].values()])
+def run(horizons=HORIZONS) -> dict:
+    res = {}
+    for K in horizons:
+        print("K", K, flush=True)
+        res[K] = bench(K)
+    names = [b.name for b in all_baselines()]
+    md = ["# Horizon benchmark (revised model)", "",
+          "Single-threaded Python; timings from an untraced run, peak memory from a separate tracemalloc run.", "",
+          md_table(["K", "ticks", "decision nodes", "max layer", "distinct states", "cached transitions",
+                    "transitions/s", "stage games", "choice games", "LPs", "mixed", "enumerate s", "solve s",
+                    "BR s (each)", "peak MB", "max gap"],
+                   [(K, d["movement_ticks"], d["decision_nodes"], d["max_layer"], d["distinct_states"],
+                     d["cached_transitions"], int(d["transitions_per_second"]), d["move_games"], d["choice_games"],
+                     d["methods"].get("lp", 0), d["mixed_states"], round(d["enumerate_seconds"], 2),
+                     round(d["solve_seconds"], 2), round(d["best_response_seconds"], 2),
+                     round(d["peak_memory_mb"], 1), f"{d['max_certified_gap']:.1e}") for K, d in res.items()]), "",
+          "## Values and the equilibrium path by horizon", "",
+          md_table(["K", "V*(s0)", "eq at s0 (A)", "eq-path farm/turn", "eq-path gank loss/turn", "eq-path P(Contest)"],
+                   [(K, round(d["value_s0"], 9), d["eq_s0"]["A"], round(d["eq_path_per_turn"]["farm"], 4),
+                     round(d["eq_path_per_turn"]["gank_loss"], 4), round(d["eq_path_per_turn"]["contest"], 3))
                     for K, d in res.items()]), "",
-          "## Probe-state values with 16 turns remaining (independent of K if the end effect dominates)", "",
-          md_table(["K"] + list(PROBES), [(K, *[round(v, 4) for v in d["probe_values_16_remaining"].values()])
-                                          for K, d in res.items()])]
-    save("horizon_benchmark", {"results": res, "max_states_limit": MAX_STATES}, "\n".join(md))
+          "## Exploitability of baselines (as A): total, and per turn", "",
+          md_table(["K"] + names, [(K, *[f"{d['baseline_exploitability'][n]:.2f} ({d['baseline_exploitability'][n] / K:.3f})"
+                                         for n in names]) for K, d in res.items()]), "",
+          "## Probe values with 16 turns remaining (same phase), by horizon", "",
+          "The dynamics are time-homogeneous up to the phase k mod 4, so these must be identical for every K.", "",
+          md_table(["K"] + PROBES, [(K, *[round(d["probe_values_16_remaining"][n], 6) for n in PROBES])
+                                    for K, d in res.items()])]
+    save("horizon_benchmark", {"results": res, "max_states_limit": MAX_STATES}, "\n".join(md), REVISION)
     return res
 
 

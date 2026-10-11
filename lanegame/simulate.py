@@ -6,6 +6,11 @@ future states in Phase 1. The simulator instead samples every random event
 Generator, so realized payoff distributions are available for later
 risk analysis (Phase 2). For a fixed seed the output is bit-for-bit
 reproducible.
+
+Farm collection is modelled as an expected (fractional) reward in Phase 1:
+2 HP of minions at 90% collection efficiency yield 0.9 * 2 * farm_per_hp
+resources deterministically. The simulator adds that expected amount; it does
+not sample individual last hits.
 """
 
 from __future__ import annotations
@@ -26,6 +31,7 @@ class EpisodeLog:
     crash_resources: tuple
     ganks: tuple                  # number of successful ganks suffered by (A, B)
     actions: List[tuple]          # (a, b) per turn
+    farm: tuple = (0.0, 0.0)      # farm collected (A, B)
 
 
 @dataclass
@@ -33,6 +39,7 @@ class SimulationResult:
     payoffs: np.ndarray           # realized payoff to A per episode
     ganks: np.ndarray             # shape (n, 2)
     crash_resources: np.ndarray   # shape (n, 2)
+    farm: np.ndarray = None       # shape (n, 2)
 
     @property
     def mean(self) -> float:
@@ -44,7 +51,7 @@ class SimulationResult:
 
     def summary(self) -> dict:
         q = np.quantile(self.payoffs, [0.05, 0.25, 0.5, 0.75, 0.95])
-        return {
+        out = {
             "episodes": int(len(self.payoffs)),
             "mean": self.mean, "stderr": self.stderr,
             "std": float(self.payoffs.std(ddof=1)),
@@ -52,6 +59,9 @@ class SimulationResult:
             "mean_ganks": self.ganks.mean(axis=0).tolist(),
             "mean_crash_resources": self.crash_resources.mean(axis=0).tolist(),
         }
+        if self.farm is not None:
+            out["mean_farm"] = self.farm.mean(axis=0).tolist()
+        return out
 
 
 def _sample(rng: np.random.Generator, p: np.ndarray) -> int:
@@ -64,6 +74,7 @@ def play_episode(game: LaneGame, pol_a: Policy, pol_b: Policy, rng: np.random.Ge
     s = game.initial_state() if root is None else root
     payoff = 0.0
     res = [0.0, 0.0]
+    farm = [0.0, 0.0]
     ganks = [0, 0]
     actions = []
     for k in range(k0, game.horizon):
@@ -73,6 +84,10 @@ def play_episode(game: LaneGame, pol_a: Policy, pol_b: Policy, rng: np.random.Ge
         if record:
             actions.append((a, b))
         tr = game.transition(s, k, a, b)
+        # expected farm (deterministic given actions)
+        payoff += tr.farm_payoff
+        farm[0] += tr.farm[0]
+        farm[1] += tr.farm[1]
         # realized gank checks (one per player per decision turn)
         ga = rng.random() < tr.gank_p[0]
         gb = rng.random() < tr.gank_p[1]
@@ -87,7 +102,7 @@ def play_episode(game: LaneGame, pol_a: Policy, pol_b: Policy, rng: np.random.Ge
         payoff += r
         res[0] += tr.options_a[i][0]
         res[1] += tr.options_b[j][0]
-    return EpisodeLog(payoff, tuple(res), tuple(ganks), actions)
+    return EpisodeLog(payoff, tuple(res), tuple(ganks), actions, tuple(farm))
 
 
 def simulate(game: LaneGame, pol_a: Policy, pol_b: Policy, episodes: int, seed: int,
@@ -96,9 +111,11 @@ def simulate(game: LaneGame, pol_a: Policy, pol_b: Policy, episodes: int, seed: 
     pay = np.empty(episodes)
     g = np.empty((episodes, 2))
     cr = np.empty((episodes, 2))
+    fm = np.empty((episodes, 2))
     for e in range(episodes):
         log = play_episode(game, pol_a, pol_b, rng, root, k0)
         pay[e] = log.payoff
         g[e] = log.ganks
         cr[e] = log.crash_resources
-    return SimulationResult(pay, g, cr)
+        fm[e] = log.farm
+    return SimulationResult(pay, g, cr, fm)

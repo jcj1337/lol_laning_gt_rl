@@ -1,27 +1,29 @@
-"""Baseline policies: exact values, exploitability, best-response behaviour and payoff distributions.
+"""Experiment F - baseline policies over combined actions: exact values, exploitability, best responses,
+and realized payoff distributions.
 
-This is the Phase-2 seed experiment: how much can a best-responding opponent
-extract from each predictable policy, what does the exploiting policy look
-like, and what is the realized (sampled) distribution of payoffs?
+These are the starting points for Phase 2 opponent types: how much can a best-responding opponent
+extract from each predictable policy, where does that value come from (farm, crashes, ganks), what does
+the exploiting policy look like, how much does the equilibrium itself earn against each baseline, and how
+noisy are realized outcomes?
 """
 
 from __future__ import annotations
 
 import numpy as np
 
-from .. import GameConfig, LaneGame
+from .. import GameConfig
 from ..analysis import path_statistics
 from ..baselines import all_baselines
-from ..best_response import best_response_value, evaluate, exploitability
+from ..best_response import best_response_value, evaluate
 from ..simulate import simulate
-from ..solver import solve_equilibrium
-from .common import md_table, save
+from .common import REVISION, fmt_freq, md_table, save, solve
+
+K = 32
 
 
-def run(horizon: int = 32, episodes: int = 5000, seed: int = 7) -> dict:
-    g = LaneGame(GameConfig(horizon=horizon))
-    layers = g.reachable()
-    sol = solve_equilibrium(g, layers)
+def run(horizon: int = K, episodes: int = 5000, seed: int = 7) -> dict:
+    cfg = GameConfig(horizon=horizon)
+    g, layers, sol, _ = solve(cfg)
     eqA, eqB = sol.policy(0), sol.policy(1)
     pols = all_baselines()
     names = ["equilibrium"] + [p.name for p in pols]
@@ -31,44 +33,78 @@ def run(horizon: int = 32, episodes: int = 5000, seed: int = 7) -> dict:
 
     per = {}
     for p in pols:
-        ex = exploitability(g, layers, p, 0, sol.value)
         br = best_response_value(g, layers, p, 0)          # B best-responds to baseline A
-        ps = path_statistics(g, p, br.policy)
+        w = br.value(g)
+        bp = path_statistics(g, p, br.policy).to_dict(horizon)
+        ep = path_statistics(g, p, eqB).to_dict(horizon)
         sim_br = simulate(g, p, br.policy, episodes, seed)
-        sim_eq = simulate(g, p, eqB, episodes, seed + 1)
         per[p.name] = {
-            "exploitability": ex.exploitability,
+            "exploitability": sol.value - w,
             "value_vs_equilibrium": evaluate(g, layers, p, eqB),
-            "value_vs_best_response": ex.worst_case_value,
-            "br_path": ps.to_dict(horizon),
+            "value_vs_best_response": w,
+            "br_path": bp, "eq_path": ep,
             "sim_vs_best_response": sim_br.summary(),
-            "sim_vs_equilibrium": sim_eq.summary(),
         }
-    sim_eq_eq = simulate(g, eqA, eqB, episodes, seed + 2).summary()
+    sim_eq = simulate(g, eqA, eqB, episodes, seed + 1).summary()
+    eq_path = path_statistics(g, eqA, eqB).to_dict(horizon)
 
-    md = [f"# Baselines (horizon {horizon})", "",
-          f"Equilibrium value V*(s0) = {sol.value:.3g}. Entries are exact expected payoffs to the row player (A).", "",
-          "## Head-to-head (exact)", "",
-          md_table(["A \\ B"] + names, [(n, *[round(v, 3) for v in row]) for n, row in zip(names, H)]), "",
-          "## Exploitability and exploitation", "",
-          md_table(["baseline (as A)", "exploitability", "vs equilibrium B", "B's best-response actions",
-                    "B crashes vs it (S/M/L)", "A crashes (S/M/L)"],
-                   [(n, round(d["exploitability"], 3), round(d["value_vs_equilibrium"], 3),
-                     {k: round(v, 2) for k, v in d["br_path"]["action_freq"][1].items() if v > 1e-9},
-                     [round(c, 2) for c in d["br_path"]["crashes_by_size"]["B"]],
-                     [round(c, 2) for c in d["br_path"]["crashes_by_size"]["A"]]) for n, d in per.items()]), "",
-          f"## Realized payoff distributions ({episodes} sampled games each, seed {seed})", "",
+    def parts(ps):
+        return (ps["farm"][0] - ps["farm"][1], ps["crash_resources"][0] - ps["crash_resources"][1],
+                -(ps["gank_loss"][0] - ps["gank_loss"][1]))
+
+    md = [f"# Experiment F: baseline policies (K = {horizon})", "",
+          f"Equilibrium value V*(s0) = {sol.value:.3g}. Baselines take the resource option after a crash "
+          "(uniform randomizes it).", "",
+          "- **uniform**: uniform over legal combined actions.",
+          "- **aggressive**: Shove + Contest every turn.",
+          "- **freeze_contest**: Freeze + Contest whenever legal, otherwise Slow Push + Safe.",
+          "- **passive_safe**: Slow Push + Safe every turn.",
+          "- **stack_builder**: Slow Push + Contest until the leading wave has 5+ HP, then Shove + Contest.",
+          "- **release_safe**: Shove + Safe every turn (lets waves walk in, never follows them).",
+          "- **contest_slowpush**: Slow Push + Contest every turn (the original always_slowpush).", "",
+          "## Head-to-head (exact expected payoff to the row player A)", "",
+          md_table(["A \\ B"] + names, [(n, *[round(v, 2) for v in row]) for n, row in zip(names, H)]), "",
+          "## Exploitability and where the exploiter's gain comes from", "",
+          "Decomposition = the baseline's (A minus B) farm, crash resources and gank payoff along the path "
+          "against its best response; they sum to the value against the best response (= -exploitability).", "",
+          md_table(["baseline (as A)", "exploitability", "per turn", "farm", "crash", "gank", "vs equilibrium B",
+                    "B's best response plays"],
+                   [(n, round(d["exploitability"], 2), round(d["exploitability"] / horizon, 3),
+                     *[round(x, 2) for x in parts(d["br_path"])], round(d["value_vs_equilibrium"], 2),
+                     fmt_freq(d["br_path"]["action_freq"][1], 0.02)) for n, d in per.items()]), "",
+          "## Equilibrium vs. best response: how much of the available exploitation does the equilibrium capture?", "",
+          "'captured' = (value the equilibrium earns against the baseline) / exploitability. The equilibrium "
+          "guarantees V* against everything but does not seek out mistakes; the gap is what an opponent model "
+          "could add (the Phase 2 question).", "",
+          md_table(["baseline", "exploitability", "equilibrium earns", "captured"],
+                   [(n, round(d["exploitability"], 2), round(-d["value_vs_equilibrium"], 2),
+                     f"{-d['value_vs_equilibrium'] / d['exploitability']:.0%}" if d["exploitability"] > 1e-9 else "-")
+                    for n, d in per.items()]), "",
+          "## Crash, farm and positioning behaviour along the best-response path (per game)", "",
+          md_table(["baseline", "baseline crashes S/M/L", "best response crashes S/M/L", "baseline farm (avail)",
+                    "best response farm (avail)", "baseline P(Contest)", "best response P(Contest)"],
+                   [(n, "/".join(f"{c:.1f}" for c in d["br_path"]["crashes_by_size"]["A"]),
+                     "/".join(f"{c:.1f}" for c in d["br_path"]["crashes_by_size"]["B"]),
+                     f"{d['br_path']['farm'][0]:.1f} ({d['br_path']['farm_available'][0]:.1f})",
+                     f"{d['br_path']['farm'][1]:.1f} ({d['br_path']['farm_available'][1]:.1f})",
+                     round(d["br_path"]["contest_share"][0], 2), round(d["br_path"]["contest_share"][1], 2))
+                    for n, d in per.items()]), "",
+          f"## Realized payoff distributions ({episodes} sampled games each, seed {seed}; farm is an expected "
+          "reward, ganks are sampled)", "",
           md_table(["matchup", "mean", "stderr", "std", "q05", "q50", "q95", "ganks A/B"],
-                   [("equilibrium vs equilibrium", round(sim_eq_eq["mean"], 3), round(sim_eq_eq["stderr"], 3),
-                     round(sim_eq_eq["std"], 2), sim_eq_eq["quantiles"]["q05"], sim_eq_eq["quantiles"]["q50"],
-                     sim_eq_eq["quantiles"]["q95"], [round(x, 2) for x in sim_eq_eq["mean_ganks"]])]
+                   [("equilibrium vs equilibrium", round(sim_eq["mean"], 3), round(sim_eq["stderr"], 3),
+                     round(sim_eq["std"], 2), sim_eq["quantiles"]["q05"], sim_eq["quantiles"]["q50"],
+                     sim_eq["quantiles"]["q95"], [round(x, 2) for x in sim_eq["mean_ganks"]])]
                    + [(f"{n} vs best response", round(d["sim_vs_best_response"]["mean"], 3),
                        round(d["sim_vs_best_response"]["stderr"], 3), round(d["sim_vs_best_response"]["std"], 2),
-                       d["sim_vs_best_response"]["quantiles"]["q05"], d["sim_vs_best_response"]["quantiles"]["q50"],
-                       d["sim_vs_best_response"]["quantiles"]["q95"],
-                       [round(x, 2) for x in d["sim_vs_best_response"]["mean_ganks"]]) for n, d in per.items()])]
+                       round(d["sim_vs_best_response"]["quantiles"]["q05"], 2),
+                       round(d["sim_vs_best_response"]["quantiles"]["q50"], 2),
+                       round(d["sim_vs_best_response"]["quantiles"]["q95"], 2),
+                       [round(x, 2) for x in d["sim_vs_best_response"]["mean_ganks"]]) for n, d in per.items()]), "",
+          f"Equilibrium path per player: farm {eq_path['farm'][0]:.2f} of {eq_path['farm_available'][0]:.2f} "
+          f"available, gank loss {eq_path['gank_loss'][0]:.2f}, no crashes; P(Contest) {eq_path['contest_share'][0]:.2f}."]
     save("baselines", {"horizon": horizon, "names": names, "head_to_head": H, "baselines": per,
-                       "sim_equilibrium": sim_eq_eq}, "\n".join(md))
+                       "sim_equilibrium": sim_eq, "eq_path": eq_path}, "\n".join(md), REVISION)
     return per
 
 

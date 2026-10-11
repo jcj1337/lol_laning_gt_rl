@@ -1,0 +1,1679 @@
+{
+ "horizon": 32,
+ "scales": [
+  0.0,
+  0.125,
+  0.25,
+  0.5,
+  1.0
+ ],
+ "results": {
+  "0.0": {
+   "value": 0.0,
+   "path": {
+    "value": 0.0,
+    "farm": [
+     0.0,
+     0.0
+    ],
+    "farm_available": [
+     0.0,
+     0.0
+    ],
+    "farm_missed": [
+     0.0,
+     0.0
+    ],
+    "crash_resources": [
+     0.0,
+     0.0
+    ],
+    "gank_loss": [
+     27.875,
+     27.875
+    ],
+    "crashes_by_size": {
+     "A": [
+      0.0,
+      0.0,
+      0.0
+     ],
+     "B": [
+      0.0,
+      0.0,
+      0.0
+     ]
+    },
+    "crash_hp": [
+     0.0,
+     0.0
+    ],
+    "vision_choices": [
+     0.0,
+     0.0
+    ],
+    "contest_share": [
+     0.0,
+     0.0
+    ],
+    "action_freq": [
+     {
+      "SP-C": 0.0,
+      "SH-C": 0.0,
+      "SP-S": 1.0,
+      "SH-S": 0.0
+     },
+     {
+      "SP-C": 0.0,
+      "SH-C": 0.0,
+      "SP-S": 1.0,
+      "SH-S": 0.0
+     }
+    ],
+    "wave_freq": [
+     {
+      "SP": 1.0,
+      "SH": 0.0
+     },
+     {
+      "SP": 1.0,
+      "SH": 0.0
+     }
+    ],
+    "support_size": []
+   },
+   "nodes": {
+    "nodes": 14849,
+    "contest": 0.06331645290147961,
+    "wave": [
+     0.8018901461951212,
+     0.1813376782638527,
+     0.016772175541026082
+    ],
+    "freeze_legal_nodes": 4441,
+    "freeze_prob_when_legal": 0.05607971956962312
+   },
+   "vision": {
+    "small": 0.039603960396039604,
+    "medium": 0.0,
+    "large": 0.0975609756097561,
+    "small_nodes": 202,
+    "medium_nodes": 117,
+    "large_nodes": 82
+   },
+   "states": 14849,
+   "distinct": 2480,
+   "mixed": 435,
+   "max_gap": 4.440892098500626e-16,
+   "seconds": 5.414901399984956,
+   "baselines": {
+    "uniform": {
+     "exploitability": 7.467395566850415,
+     "value_vs_equilibrium": -7.205995380802381,
+     "farm": 0.0,
+     "crash": 0.0130183123923003,
+     "gank": -7.480413879242668
+    },
+    "aggressive": {
+     "exploitability": 22.75,
+     "value_vs_equilibrium": -22.75,
+     "farm": 0.0,
+     "crash": 0.0,
+     "gank": -22.75
+    },
+    "freeze_contest": {
+     "exploitability": 9.549999999999999,
+     "value_vs_equilibrium": 0.0,
+     "farm": 0.0,
+     "crash": -8.0,
+     "gank": -1.5499999999999972
+    },
+    "passive_safe": {
+     "exploitability": 7.825000000000001,
+     "value_vs_equilibrium": 0.0,
+     "farm": 0.0,
+     "crash": -8.0,
+     "gank": 0.17500000000000426
+    },
+    "stack_builder": {
+     "exploitability": 10.699999999999996,
+     "value_vs_equilibrium": -7.074999999999996,
+     "farm": 0.0,
+     "crash": -5.0,
+     "gank": -5.699999999999996
+    },
+    "release_safe": {
+     "exploitability": 0.0,
+     "value_vs_equilibrium": 0.0,
+     "farm": 0.0,
+     "crash": 0.0,
+     "gank": -0.0
+    },
+    "contest_slowpush": {
+     "exploitability": 11.524999999999995,
+     "value_vs_equilibrium": -7.074999999999996,
+     "farm": 0.0,
+     "crash": -8.0,
+     "gank": -3.5249999999999986
+    }
+   },
+   "probes": {
+    "B wave at A's freeze line, fighting A's wave": {
+     "value": 0.24999999999999994,
+     "A": "SP-S 1.00",
+     "B": "SP-S 1.00",
+     "p_contest_A": 0.0,
+     "contest_advantage": -0.09999999999999995,
+     "actions": {
+      "SP-C": {
+       "Q": 0.15,
+       "farm": 0.0,
+       "gank": 0.025000000000000022,
+       "continuation": 0.12499999999999997,
+       "wave": 0,
+       "posture": 0
+      },
+      "SH-C": {
+       "Q": -0.37500000000000006,
+       "farm": 0.0,
+       "gank": -0.1250000000000001,
+       "continuation": -0.24999999999999994,
+       "wave": 1,
+       "posture": 0
+      },
+      "F-C": {
+       "Q": 0.15,
+       "farm": 0.0,
+       "gank": 0.025000000000000022,
+       "continuation": 0.12499999999999997,
+       "wave": 2,
+       "posture": 0
+      },
+      "SP-S": {
+       "Q": 0.24999999999999994,
+       "farm": 0.0,
+       "gank": 0.12499999999999997,
+       "continuation": 0.12499999999999997,
+       "wave": 0,
+       "posture": 1
+      },
+      "SH-S": {
+       "Q": -0.12499999999999997,
+       "farm": 0.0,
+       "gank": 0.12499999999999997,
+       "continuation": -0.24999999999999994,
+       "wave": 1,
+       "posture": 1
+      },
+      "F-S": {
+       "Q": 0.24999999999999994,
+       "farm": 0.0,
+       "gank": 0.12499999999999997,
+       "continuation": 0.12499999999999997,
+       "wave": 2,
+       "posture": 1
+      }
+     }
+    },
+    "A 2-wave stack at +1, B wave just spawned": {
+     "value": 0.20000000000000007,
+     "A": "SH-C 1.00",
+     "B": "SH-S 1.00",
+     "p_contest_A": 1.0,
+     "contest_advantage": 0.3750000000000001,
+     "actions": {
+      "SP-C": {
+       "Q": -0.65,
+       "farm": 0.0,
+       "gank": -0.4000000000000001,
+       "continuation": -0.24999999999999994,
+       "wave": 0,
+       "posture": 0
+      },
+      "SH-C": {
+       "Q": 0.20000000000000007,
+       "farm": 0.0,
+       "gank": -0.5499999999999999,
+       "continuation": 0.75,
+       "wave": 1,
+       "posture": 0
+      },
+      "SP-S": {
+       "Q": -0.17500000000000002,
+       "farm": 0.0,
+       "gank": 0.07499999999999993,
+       "continuation": -0.24999999999999994,
+       "wave": 0,
+       "posture": 1
+      },
+      "SH-S": {
+       "Q": -0.17500000000000002,
+       "farm": 0.0,
+       "gank": 0.07499999999999993,
+       "continuation": -0.24999999999999994,
+       "wave": 1,
+       "posture": 1
+      }
+     }
+    },
+    "A's 3-wave crash under B's tower": {
+     "value": -3.2249999999999983,
+     "A": "SP-S 1.00",
+     "B": "SP-S 1.00",
+     "p_contest_A": 0.0,
+     "contest_advantage": -0.4750000000000001,
+     "actions": {
+      "SP-C": {
+       "Q": -3.6999999999999984,
+       "farm": 0.0,
+       "gank": -0.6000000000000001,
+       "continuation": -3.0999999999999983,
+       "wave": 0,
+       "posture": 0
+      },
+      "SH-C": {
+       "Q": -3.8499999999999983,
+       "farm": 0.0,
+       "gank": -0.75,
+       "continuation": -3.0999999999999983,
+       "wave": 1,
+       "posture": 0
+      },
+      "SP-S": {
+       "Q": -3.2249999999999983,
+       "farm": 0.0,
+       "gank": -0.12499999999999997,
+       "continuation": -3.0999999999999983,
+       "wave": 0,
+       "posture": 1
+      },
+      "SH-S": {
+       "Q": -3.2249999999999983,
+       "farm": 0.0,
+       "gank": -0.12499999999999997,
+       "continuation": -3.0999999999999983,
+       "wave": 1,
+       "posture": 1
+      }
+     }
+    },
+    "B's 3-wave crash under A's tower (A defends)": {
+     "value": 3.2249999999999983,
+     "A": "SP-S 1.00",
+     "B": "SP-S 1.00",
+     "p_contest_A": 0.0,
+     "contest_advantage": -0.10000000000000009,
+     "actions": {
+      "SP-C": {
+       "Q": 3.1249999999999982,
+       "farm": 0.0,
+       "gank": 0.025000000000000022,
+       "continuation": 3.0999999999999983,
+       "wave": 0,
+       "posture": 0
+      },
+      "SH-C": {
+       "Q": 2.9749999999999983,
+       "farm": 0.0,
+       "gank": -0.1250000000000001,
+       "continuation": 3.0999999999999983,
+       "wave": 1,
+       "posture": 0
+      },
+      "SP-S": {
+       "Q": 3.2249999999999983,
+       "farm": 0.0,
+       "gank": 0.12499999999999997,
+       "continuation": 3.0999999999999983,
+       "wave": 0,
+       "posture": 1
+      },
+      "SH-S": {
+       "Q": 3.2249999999999983,
+       "farm": 0.0,
+       "gank": 0.12499999999999997,
+       "continuation": 3.0999999999999983,
+       "wave": 1,
+       "posture": 1
+      }
+     }
+    }
+   }
+  },
+  "0.125": {
+   "value": 0.0,
+   "path": {
+    "value": 0.0,
+    "farm": [
+     3.2650000000000015,
+     3.2650000000000015
+    ],
+    "farm_available": [
+     7.875,
+     7.875
+    ],
+    "farm_missed": [
+     4.6099999999999985,
+     4.6099999999999985
+    ],
+    "crash_resources": [
+     0.0,
+     0.0
+    ],
+    "gank_loss": [
+     28.25,
+     28.25
+    ],
+    "crashes_by_size": {
+     "A": [
+      0.0,
+      0.0,
+      0.0
+     ],
+     "B": [
+      0.0,
+      0.0,
+      0.0
+     ]
+    },
+    "crash_hp": [
+     0.0,
+     0.0
+    ],
+    "vision_choices": [
+     0.0,
+     0.0
+    ],
+    "contest_share": [
+     0.03125,
+     0.03125
+    ],
+    "action_freq": [
+     {
+      "SP-C": 0.0,
+      "SH-C": 0.03125,
+      "SP-S": 0.96875,
+      "SH-S": 0.0
+     },
+     {
+      "SP-C": 0.0,
+      "SH-C": 0.03125,
+      "SP-S": 0.96875,
+      "SH-S": 0.0
+     }
+    ],
+    "wave_freq": [
+     {
+      "SP": 0.96875,
+      "SH": 0.03125
+     },
+     {
+      "SP": 0.96875,
+      "SH": 0.03125
+     }
+    ],
+    "support_size": []
+   },
+   "nodes": {
+    "nodes": 14849,
+    "contest": 0.25275659129937117,
+    "wave": [
+     0.7203096282623108,
+     0.26069028401294153,
+     0.019000087724746817
+    ],
+    "freeze_legal_nodes": 4441,
+    "freeze_prob_when_legal": 0.0635290030679499
+   },
+   "vision": {
+    "small": 0.054455445544554455,
+    "medium": 0.0,
+    "large": 0.18292682926829268,
+    "small_nodes": 202,
+    "medium_nodes": 117,
+    "large_nodes": 82
+   },
+   "states": 14849,
+   "distinct": 2480,
+   "mixed": 1001,
+   "max_gap": 2.220446049250313e-15,
+   "seconds": 5.739240099908784,
+   "baselines": {
+    "uniform": {
+     "exploitability": 7.576040039378892,
+     "value_vs_equilibrium": -7.146792913603202,
+     "farm": -1.0540226313028613,
+     "crash": 0.08027914736619085,
+     "gank": -6.602296555442273
+    },
+    "aggressive": {
+     "exploitability": 23.48500000000001,
+     "value_vs_equilibrium": -23.44875000000001,
+     "farm": -0.7349999999999985,
+     "crash": 0.0,
+     "gank": -22.75
+    },
+    "freeze_contest": {
+     "exploitability": 8.086874999999997,
+     "value_vs_equilibrium": -0.004999999999999949,
+     "farm": -0.011874999999999414,
+     "crash": -8.0,
+     "gank": -0.07499999999999574
+    },
+    "passive_safe": {
+     "exploitability": 7.524999999999997,
+     "value_vs_equilibrium": -0.004999999999999949,
+     "farm": -0.8249999999999993,
+     "crash": -8.0,
+     "gank": 1.3000000000000043
+    },
+    "stack_builder": {
+     "exploitability": 7.2612499999999995,
+     "value_vs_equilibrium": -2.2850000000000015,
+     "farm": 1.888749999999999,
+     "crash": -6.0,
+     "gank": -3.150000000000002
+    },
+    "release_safe": {
+     "exploitability": 1.930000000000001,
+     "value_vs_equilibrium": -0.004999999999999949,
+     "farm": -5.454999999999997,
+     "crash": 0.0,
+     "gank": 3.5250000000000163
+    },
+    "contest_slowpush": {
+     "exploitability": 8.337500000000004,
+     "value_vs_equilibrium": -2.2850000000000015,
+     "farm": 2.2875000000000005,
+     "crash": -8.0,
+     "gank": -2.625
+    }
+   },
+   "probes": {
+    "B wave at A's freeze line, fighting A's wave": {
+     "value": 0.55,
+     "A": "SP-S 1.00",
+     "B": "SP-S 1.00",
+     "p_contest_A": 0.0,
+     "contest_advantage": -0.025000000000000022,
+     "actions": {
+      "SP-C": {
+       "Q": 0.525,
+       "farm": 0.225,
+       "gank": 0.025000000000000022,
+       "continuation": 0.275,
+       "wave": 0,
+       "posture": 0
+      },
+      "SH-C": {
+       "Q": -0.5249999999999999,
+       "farm": 0.45,
+       "gank": -0.1250000000000001,
+       "continuation": -0.8499999999999998,
+       "wave": 1,
+       "posture": 0
+      },
+      "F-C": {
+       "Q": 0.525,
+       "farm": 0.225,
+       "gank": 0.025000000000000022,
+       "continuation": 0.275,
+       "wave": 2,
+       "posture": 0
+      },
+      "SP-S": {
+       "Q": 0.55,
+       "farm": 0.15000000000000002,
+       "gank": 0.12499999999999997,
+       "continuation": 0.275,
+       "wave": 0,
+       "posture": 1
+      },
+      "SH-S": {
+       "Q": -0.4249999999999998,
+       "farm": 0.30000000000000004,
+       "gank": 0.12499999999999997,
+       "continuation": -0.8499999999999999,
+       "wave": 1,
+       "posture": 1
+      },
+      "F-S": {
+       "Q": 0.55,
+       "farm": 0.15000000000000002,
+       "gank": 0.12499999999999997,
+       "continuation": 0.275,
+       "wave": 2,
+       "posture": 1
+      }
+     }
+    },
+    "A 2-wave stack at +1, B wave just spawned": {
+     "value": -1.773750000000001,
+     "A": "SH-C 1.00",
+     "B": "SH-S 1.00",
+     "p_contest_A": 1.0,
+     "contest_advantage": 0.7150000000000003,
+     "actions": {
+      "SP-C": {
+       "Q": -2.686250000000001,
+       "farm": -0.3225,
+       "gank": -0.4000000000000001,
+       "continuation": -1.9637500000000012,
+       "wave": 0,
+       "posture": 0
+      },
+      "SH-C": {
+       "Q": -1.773750000000001,
+       "farm": -0.26,
+       "gank": -0.5499999999999999,
+       "continuation": -0.9637500000000011,
+       "wave": 1,
+       "posture": 0
+      },
+      "SP-S": {
+       "Q": -2.4887500000000014,
+       "farm": -0.6000000000000001,
+       "gank": 0.07499999999999993,
+       "continuation": -1.9637500000000012,
+       "wave": 0,
+       "posture": 1
+      },
+      "SH-S": {
+       "Q": -2.4887500000000014,
+       "farm": -0.6000000000000001,
+       "gank": 0.07499999999999993,
+       "continuation": -1.9637500000000012,
+       "wave": 1,
+       "posture": 1
+      }
+     }
+    },
+    "A's 3-wave crash under B's tower": {
+     "value": -4.446874999999999,
+     "A": "SP-S 1.00",
+     "B": "SP-S 1.00",
+     "p_contest_A": 0.0,
+     "contest_advantage": -0.4450000000000003,
+     "actions": {
+      "SP-C": {
+       "Q": -4.891874999999999,
+       "farm": -0.17,
+       "gank": -0.6000000000000001,
+       "continuation": -4.121874999999999,
+       "wave": 0,
+       "posture": 0
+      },
+      "SH-C": {
+       "Q": -5.041874999999998,
+       "farm": -0.17,
+       "gank": -0.75,
+       "continuation": -4.121874999999998,
+       "wave": 1,
+       "posture": 0
+      },
+      "SP-S": {
+       "Q": -4.446874999999999,
+       "farm": -0.2,
+       "gank": -0.12499999999999997,
+       "continuation": -4.121874999999998,
+       "wave": 0,
+       "posture": 1
+      },
+      "SH-S": {
+       "Q": -4.446874999999999,
+       "farm": -0.2,
+       "gank": -0.12499999999999997,
+       "continuation": -4.121874999999998,
+       "wave": 1,
+       "posture": 1
+      }
+     }
+    },
+    "B's 3-wave crash under A's tower (A defends)": {
+     "value": 4.446874999999999,
+     "A": "SP-S 1.00",
+     "B": "SP-S 1.00",
+     "p_contest_A": 0.0,
+     "contest_advantage": -0.07500000000000018,
+     "actions": {
+      "SP-C": {
+       "Q": 4.371874999999998,
+       "farm": 0.225,
+       "gank": 0.025000000000000022,
+       "continuation": 4.121874999999998,
+       "wave": 0,
+       "posture": 0
+      },
+      "SH-C": {
+       "Q": 4.221874999999998,
+       "farm": 0.225,
+       "gank": -0.1250000000000001,
+       "continuation": 4.121874999999998,
+       "wave": 1,
+       "posture": 0
+      },
+      "SP-S": {
+       "Q": 4.446874999999999,
+       "farm": 0.2,
+       "gank": 0.12499999999999997,
+       "continuation": 4.121874999999998,
+       "wave": 0,
+       "posture": 1
+      },
+      "SH-S": {
+       "Q": 4.446874999999999,
+       "farm": 0.2,
+       "gank": 0.12499999999999997,
+       "continuation": 4.121874999999998,
+       "wave": 1,
+       "posture": 1
+      }
+     }
+    }
+   }
+  },
+  "0.25": {
+   "value": 0.0,
+   "path": {
+    "value": 0.0,
+    "farm": [
+     9.650000000000004,
+     9.650000000000004
+    ],
+    "farm_available": [
+     15.5,
+     15.5
+    ],
+    "farm_missed": [
+     5.849999999999996,
+     5.849999999999996
+    ],
+    "crash_resources": [
+     0.0,
+     0.0
+    ],
+    "gank_loss": [
+     34.70000000000002,
+     34.70000000000002
+    ],
+    "crashes_by_size": {
+     "A": [
+      0.0,
+      0.0,
+      0.0
+     ],
+     "B": [
+      0.0,
+      0.0,
+      0.0
+     ]
+    },
+    "crash_hp": [
+     0.0,
+     0.0
+    ],
+    "vision_choices": [
+     0.0,
+     0.0
+    ],
+    "contest_share": [
+     0.90625,
+     0.90625
+    ],
+    "action_freq": [
+     {
+      "SP-C": 0.84375,
+      "SH-C": 0.0625,
+      "SP-S": 0.09375,
+      "SH-S": 0.0
+     },
+     {
+      "SP-C": 0.84375,
+      "SH-C": 0.0625,
+      "SP-S": 0.09375,
+      "SH-S": 0.0
+     }
+    ],
+    "wave_freq": [
+     {
+      "SP": 0.9375,
+      "SH": 0.0625
+     },
+     {
+      "SP": 0.9375,
+      "SH": 0.0625
+     }
+    ],
+    "support_size": []
+   },
+   "nodes": {
+    "nodes": 14849,
+    "contest": 0.5675732574788132,
+    "wave": [
+     0.6773302298772529,
+     0.30190015040557716,
+     0.02076961971717084
+    ],
+    "freeze_legal_nodes": 4441,
+    "freeze_prob_when_legal": 0.06944563908585223
+   },
+   "vision": {
+    "small": 0.09900990099009901,
+    "medium": 0.0,
+    "large": 0.3048780487804878,
+    "small_nodes": 202,
+    "medium_nodes": 117,
+    "large_nodes": 82
+   },
+   "states": 14849,
+   "distinct": 2480,
+   "mixed": 1030,
+   "max_gap": 1.7763568394002505e-15,
+   "seconds": 5.878759700106457,
+   "baselines": {
+    "uniform": {
+     "exploitability": 10.078337909045308,
+     "value_vs_equilibrium": -9.858957270488288,
+     "farm": -6.078404418851526,
+     "crash": 0.06490417635846055,
+     "gank": -4.064837666552208
+    },
+    "aggressive": {
+     "exploitability": 24.86250000000002,
+     "value_vs_equilibrium": -24.46750000000001,
+     "farm": -5.237500000000009,
+     "crash": 0.0,
+     "gank": -19.624999999999986
+    },
+    "freeze_contest": {
+     "exploitability": 9.445000000000004,
+     "value_vs_equilibrium": -2.8699999999999988,
+     "farm": -4.5450000000000035,
+     "crash": -5.0,
+     "gank": 0.10000000000000142
+    },
+    "passive_safe": {
+     "exploitability": 9.415000000000004,
+     "value_vs_equilibrium": -2.8699999999999988,
+     "farm": -5.365000000000002,
+     "crash": -5.0,
+     "gank": 0.9499999999999993
+    },
+    "stack_builder": {
+     "exploitability": 5.782499999999996,
+     "value_vs_equilibrium": -0.3199999999999998,
+     "farm": 2.4674999999999976,
+     "crash": -6.0,
+     "gank": -2.25
+    },
+    "release_safe": {
+     "exploitability": 7.690000000000004,
+     "value_vs_equilibrium": -2.799999999999999,
+     "farm": -11.689999999999996,
+     "crash": 0.0,
+     "gank": 4.000000000000018
+    },
+    "contest_slowpush": {
+     "exploitability": 6.589999999999999,
+     "value_vs_equilibrium": -0.3199999999999998,
+     "farm": 2.3600000000000003,
+     "crash": -7.0,
+     "gank": -1.9499999999999957
+    }
+   },
+   "probes": {
+    "B wave at A's freeze line, fighting A's wave": {
+     "value": 0.9500000000000001,
+     "A": "SP-C 1.00",
+     "B": "SP-S 1.00",
+     "p_contest_A": 1.0,
+     "contest_advantage": 0.04999999999999993,
+     "actions": {
+      "SP-C": {
+       "Q": 0.9500000000000001,
+       "farm": 0.45,
+       "gank": 0.025000000000000022,
+       "continuation": 0.475,
+       "wave": 0,
+       "posture": 0
+      },
+      "SH-C": {
+       "Q": -0.79,
+       "farm": 0.9,
+       "gank": -0.1250000000000001,
+       "continuation": -1.565,
+       "wave": 1,
+       "posture": 0
+      },
+      "F-C": {
+       "Q": 0.9500000000000001,
+       "farm": 0.45,
+       "gank": 0.025000000000000022,
+       "continuation": 0.475,
+       "wave": 2,
+       "posture": 0
+      },
+      "SP-S": {
+       "Q": 0.9000000000000001,
+       "farm": 0.30000000000000004,
+       "gank": 0.12499999999999997,
+       "continuation": 0.4750000000000001,
+       "wave": 0,
+       "posture": 1
+      },
+      "SH-S": {
+       "Q": -0.8399999999999999,
+       "farm": 0.6000000000000001,
+       "gank": 0.12499999999999997,
+       "continuation": -1.565,
+       "wave": 1,
+       "posture": 1
+      },
+      "F-S": {
+       "Q": 0.9000000000000001,
+       "farm": 0.30000000000000004,
+       "gank": 0.12499999999999997,
+       "continuation": 0.4750000000000001,
+       "wave": 2,
+       "posture": 1
+      }
+     }
+    },
+    "A 2-wave stack at +1, B wave just spawned": {
+     "value": -2.972500000000002,
+     "A": "SH-C 1.00",
+     "B": "SP-C 1.00",
+     "p_contest_A": 1.0,
+     "contest_advantage": 0.02499999999999991,
+     "actions": {
+      "SP-C": {
+       "Q": -3.075000000000002,
+       "farm": -0.5025000000000001,
+       "gank": -0.30000000000000016,
+       "continuation": -2.2725000000000017,
+       "wave": 0,
+       "posture": 0
+      },
+      "SH-C": {
+       "Q": -2.972500000000002,
+       "farm": -0.41500000000000004,
+       "gank": -0.44999999999999996,
+       "continuation": -2.1075000000000017,
+       "wave": 1,
+       "posture": 0
+      },
+      "SP-S": {
+       "Q": -2.997500000000002,
+       "farm": -0.9,
+       "gank": 0.17499999999999988,
+       "continuation": -2.2725000000000017,
+       "wave": 0,
+       "posture": 1
+      },
+      "SH-S": {
+       "Q": -2.997500000000002,
+       "farm": -0.9,
+       "gank": 0.17499999999999988,
+       "continuation": -2.2725000000000017,
+       "wave": 1,
+       "posture": 1
+      }
+     }
+    },
+    "A's 3-wave crash under B's tower": {
+     "value": -5.785115396591309,
+     "A": "SP-S 1.00",
+     "B": "SP-S 1.00",
+     "p_contest_A": 0.0,
+     "contest_advantage": -0.41500000000000004,
+     "actions": {
+      "SP-C": {
+       "Q": -6.200115396591309,
+       "farm": -0.34,
+       "gank": -0.6000000000000001,
+       "continuation": -5.26011539659131,
+       "wave": 0,
+       "posture": 0
+      },
+      "SH-C": {
+       "Q": -6.350115396591309,
+       "farm": -0.34,
+       "gank": -0.75,
+       "continuation": -5.260115396591309,
+       "wave": 1,
+       "posture": 0
+      },
+      "SP-S": {
+       "Q": -5.785115396591309,
+       "farm": -0.4,
+       "gank": -0.12499999999999997,
+       "continuation": -5.260115396591309,
+       "wave": 0,
+       "posture": 1
+      },
+      "SH-S": {
+       "Q": -5.785115396591309,
+       "farm": -0.4,
+       "gank": -0.12499999999999997,
+       "continuation": -5.260115396591309,
+       "wave": 1,
+       "posture": 1
+      }
+     }
+    },
+    "B's 3-wave crash under A's tower (A defends)": {
+     "value": 5.785115396591309,
+     "A": "SP-S 1.00",
+     "B": "SP-S 1.00",
+     "p_contest_A": 0.0,
+     "contest_advantage": -0.05000000000000071,
+     "actions": {
+      "SP-C": {
+       "Q": 5.735115396591309,
+       "farm": 0.45,
+       "gank": 0.025000000000000022,
+       "continuation": 5.260115396591308,
+       "wave": 0,
+       "posture": 0
+      },
+      "SH-C": {
+       "Q": 5.585115396591309,
+       "farm": 0.45,
+       "gank": -0.1250000000000001,
+       "continuation": 5.260115396591309,
+       "wave": 1,
+       "posture": 0
+      },
+      "SP-S": {
+       "Q": 5.785115396591309,
+       "farm": 0.4,
+       "gank": 0.12499999999999997,
+       "continuation": 5.260115396591309,
+       "wave": 0,
+       "posture": 1
+      },
+      "SH-S": {
+       "Q": 5.785115396591309,
+       "farm": 0.4,
+       "gank": 0.12499999999999997,
+       "continuation": 5.260115396591309,
+       "wave": 1,
+       "posture": 1
+      }
+     }
+    }
+   }
+  },
+  "0.5": {
+   "value": 0.0,
+   "path": {
+    "value": 0.0,
+    "farm": [
+     19.530000000000005,
+     19.530000000000005
+    ],
+    "farm_available": [
+     31.0,
+     31.0
+    ],
+    "farm_missed": [
+     11.469999999999995,
+     11.469999999999995
+    ],
+    "crash_resources": [
+     0.0,
+     0.0
+    ],
+    "gank_loss": [
+     35.45000000000002,
+     35.45000000000002
+    ],
+    "crashes_by_size": {
+     "A": [
+      0.0,
+      0.0,
+      0.0
+     ],
+     "B": [
+      0.0,
+      0.0,
+      0.0
+     ]
+    },
+    "crash_hp": [
+     0.0,
+     0.0
+    ],
+    "vision_choices": [
+     0.0,
+     0.0
+    ],
+    "contest_share": [
+     0.96875,
+     0.96875
+    ],
+    "action_freq": [
+     {
+      "SP-C": 0.84375,
+      "SH-C": 0.125,
+      "SP-S": 0.03125,
+      "SH-S": 0.0
+     },
+     {
+      "SP-C": 0.84375,
+      "SH-C": 0.125,
+      "SP-S": 0.03125,
+      "SH-S": 0.0
+     }
+    ],
+    "wave_freq": [
+     {
+      "SP": 0.875,
+      "SH": 0.125
+     },
+     {
+      "SP": 0.875,
+      "SH": 0.125
+     }
+    ],
+    "support_size": []
+   },
+   "nodes": {
+    "nodes": 14849,
+    "contest": 0.8234628585631931,
+    "wave": [
+     0.6582330934318739,
+     0.3221874277809307,
+     0.01957947878719508
+    ],
+    "freeze_legal_nodes": 4441,
+    "freeze_prob_when_legal": 0.06546626446995266
+   },
+   "vision": {
+    "small": 0.13861386138613863,
+    "medium": 0.0,
+    "large": 0.32926829268292684,
+    "small_nodes": 202,
+    "medium_nodes": 117,
+    "large_nodes": 82
+   },
+   "states": 14849,
+   "distinct": 2480,
+   "mixed": 762,
+   "max_gap": 1.7763568394002505e-15,
+   "seconds": 6.20704590016976,
+   "baselines": {
+    "uniform": {
+     "exploitability": 16.7380456610764,
+     "value_vs_equilibrium": -15.87445288441422,
+     "farm": -13.646314608363685,
+     "crash": 0.07873863058776297,
+     "gank": -3.1704696833005848
+    },
+    "aggressive": {
+     "exploitability": 30.32000000000001,
+     "value_vs_equilibrium": -28.003433583959904,
+     "farm": -10.920000000000018,
+     "crash": 0.0,
+     "gank": -19.399999999999984
+    },
+    "freeze_contest": {
+     "exploitability": 16.200000000000003,
+     "value_vs_equilibrium": -12.754999999999992,
+     "farm": -20.749999999999986,
+     "crash": 0.0,
+     "gank": 4.550000000000001
+    },
+    "passive_safe": {
+     "exploitability": 17.025000000000002,
+     "value_vs_equilibrium": -12.754999999999992,
+     "farm": -15.600000000000007,
+     "crash": -5.0,
+     "gank": 3.5749999999999993
+    },
+    "stack_builder": {
+     "exploitability": 5.414999999999997,
+     "value_vs_equilibrium": -0.8249999999999996,
+     "farm": -2.4900000000000055,
+     "crash": -3.0,
+     "gank": 0.07499999999999574
+    },
+    "release_safe": {
+     "exploitability": 19.515000000000004,
+     "value_vs_equilibrium": -12.334999999999992,
+     "farm": -23.83999999999999,
+     "crash": 0.0,
+     "gank": 4.325000000000017
+    },
+    "contest_slowpush": {
+     "exploitability": 6.3749999999999964,
+     "value_vs_equilibrium": -0.8249999999999996,
+     "farm": -1.375,
+     "crash": -5.0,
+     "gank": -7.105427357601002e-15
+    }
+   },
+   "probes": {
+    "B wave at A's freeze line, fighting A's wave": {
+     "value": 1.31,
+     "A": "SP-C 1.00",
+     "B": "SP-C 1.00",
+     "p_contest_A": 1.0,
+     "contest_advantage": 0.26,
+     "actions": {
+      "SP-C": {
+       "Q": 1.31,
+       "farm": 0.28,
+       "gank": 0.37500000000000006,
+       "continuation": 0.655,
+       "wave": 0,
+       "posture": 0
+      },
+      "SH-C": {
+       "Q": -1.2096153846153845,
+       "farm": 0.91,
+       "gank": 0.22499999999999992,
+       "continuation": -2.3446153846153845,
+       "wave": 1,
+       "posture": 0
+      },
+      "F-C": {
+       "Q": 1.31,
+       "farm": 0.28,
+       "gank": 0.37500000000000006,
+       "continuation": 0.655,
+       "wave": 2,
+       "posture": 0
+      },
+      "SP-S": {
+       "Q": 1.05,
+       "farm": -0.07999999999999996,
+       "gank": 0.475,
+       "continuation": 0.6549999999999999,
+       "wave": 0,
+       "posture": 1
+      },
+      "SH-S": {
+       "Q": -1.5296153846153846,
+       "farm": 0.3400000000000001,
+       "gank": 0.475,
+       "continuation": -2.3446153846153845,
+       "wave": 1,
+       "posture": 1
+      },
+      "F-S": {
+       "Q": 1.05,
+       "farm": -0.07999999999999996,
+       "gank": 0.475,
+       "continuation": 0.6549999999999999,
+       "wave": 2,
+       "posture": 1
+      }
+     }
+    },
+    "A 2-wave stack at +1, B wave just spawned": {
+     "value": -4.698146907271105,
+     "A": "SH-C 1.00",
+     "B": "SP-C 1.00",
+     "p_contest_A": 1.0,
+     "contest_advantage": 0.39500000000000046,
+     "actions": {
+      "SP-C": {
+       "Q": -4.773146907271105,
+       "farm": -1.0050000000000001,
+       "gank": -0.30000000000000016,
+       "continuation": -3.468146907271105,
+       "wave": 0,
+       "posture": 0
+      },
+      "SH-C": {
+       "Q": -4.698146907271105,
+       "farm": -0.8300000000000001,
+       "gank": -0.44999999999999996,
+       "continuation": -3.4181469072711046,
+       "wave": 1,
+       "posture": 0
+      },
+      "SP-S": {
+       "Q": -5.093146907271105,
+       "farm": -1.8,
+       "gank": 0.17499999999999988,
+       "continuation": -3.4681469072711053,
+       "wave": 0,
+       "posture": 1
+      },
+      "SH-S": {
+       "Q": -5.093146907271105,
+       "farm": -1.8,
+       "gank": 0.17499999999999988,
+       "continuation": -3.4681469072711053,
+       "wave": 1,
+       "posture": 1
+      }
+     }
+    },
+    "A's 3-wave crash under B's tower": {
+     "value": -8.371382160240799,
+     "A": "SP-S 1.00",
+     "B": "SP-C 1.00",
+     "p_contest_A": 0.0,
+     "contest_advantage": -0.33999999999999986,
+     "actions": {
+      "SP-C": {
+       "Q": -8.711382160240799,
+       "farm": -0.765,
+       "gank": -0.5000000000000002,
+       "continuation": -7.446382160240799,
+       "wave": 0,
+       "posture": 0
+      },
+      "SH-C": {
+       "Q": -8.8613821602408,
+       "farm": -0.765,
+       "gank": -0.65,
+       "continuation": -7.446382160240798,
+       "wave": 1,
+       "posture": 0
+      },
+      "SP-S": {
+       "Q": -8.371382160240799,
+       "farm": -0.9,
+       "gank": -0.025000000000000022,
+       "continuation": -7.446382160240798,
+       "wave": 0,
+       "posture": 1
+      },
+      "SH-S": {
+       "Q": -8.371382160240799,
+       "farm": -0.9,
+       "gank": -0.025000000000000022,
+       "continuation": -7.446382160240798,
+       "wave": 1,
+       "posture": 1
+      }
+     }
+    },
+    "B's 3-wave crash under A's tower (A defends)": {
+     "value": 8.371382160240799,
+     "A": "SP-C 1.00",
+     "B": "SP-S 1.00",
+     "p_contest_A": 1.0,
+     "contest_advantage": 0.0,
+     "actions": {
+      "SP-C": {
+       "Q": 8.371382160240799,
+       "farm": 0.9,
+       "gank": 0.025000000000000022,
+       "continuation": 7.446382160240798,
+       "wave": 0,
+       "posture": 0
+      },
+      "SH-C": {
+       "Q": 8.221382160240799,
+       "farm": 0.9,
+       "gank": -0.1250000000000001,
+       "continuation": 7.446382160240798,
+       "wave": 1,
+       "posture": 0
+      },
+      "SP-S": {
+       "Q": 8.371382160240799,
+       "farm": 0.8,
+       "gank": 0.12499999999999997,
+       "continuation": 7.446382160240799,
+       "wave": 0,
+       "posture": 1
+      },
+      "SH-S": {
+       "Q": 8.371382160240799,
+       "farm": 0.8,
+       "gank": 0.12499999999999997,
+       "continuation": 7.446382160240799,
+       "wave": 1,
+       "posture": 1
+      }
+     }
+    }
+   }
+  },
+  "1.0": {
+   "value": 0.0,
+   "path": {
+    "value": 0.0,
+    "farm": [
+     39.06000000000002,
+     39.06000000000002
+    ],
+    "farm_available": [
+     62.0,
+     62.0
+    ],
+    "farm_missed": [
+     22.939999999999984,
+     22.939999999999984
+    ],
+    "crash_resources": [
+     0.0,
+     0.0
+    ],
+    "gank_loss": [
+     35.45000000000002,
+     35.45000000000002
+    ],
+    "crashes_by_size": {
+     "A": [
+      0.0,
+      0.0,
+      0.0
+     ],
+     "B": [
+      0.0,
+      0.0,
+      0.0
+     ]
+    },
+    "crash_hp": [
+     0.0,
+     0.0
+    ],
+    "vision_choices": [
+     0.0,
+     0.0
+    ],
+    "contest_share": [
+     0.96875,
+     0.96875
+    ],
+    "action_freq": [
+     {
+      "SP-C": 0.84375,
+      "SH-C": 0.125,
+      "SP-S": 0.03125,
+      "SH-S": 0.0
+     },
+     {
+      "SP-C": 0.84375,
+      "SH-C": 0.125,
+      "SP-S": 0.03125,
+      "SH-S": 0.0
+     }
+    ],
+    "wave_freq": [
+     {
+      "SP": 0.875,
+      "SH": 0.125
+     },
+     {
+      "SP": 0.875,
+      "SH": 0.125
+     }
+    ],
+    "support_size": []
+   },
+   "nodes": {
+    "nodes": 14849,
+    "contest": 0.9182274567898724,
+    "wave": [
+     0.6392437468718393,
+     0.3422505697608981,
+     0.018505683367264252
+    ],
+    "freeze_legal_nodes": 4441,
+    "freeze_prob_when_legal": 0.061875904598177635
+   },
+   "vision": {
+    "small": 0.2871287128712871,
+    "medium": 0.0,
+    "large": 0.4146341463414634,
+    "small_nodes": 202,
+    "medium_nodes": 117,
+    "large_nodes": 82
+   },
+   "states": 14849,
+   "distinct": 2480,
+   "mixed": 811,
+   "max_gap": 1.7763568394002505e-15,
+   "seconds": 6.3743565999902785,
+   "baselines": {
+    "uniform": {
+     "exploitability": 30.56102200838034,
+     "value_vs_equilibrium": -28.752677019751467,
+     "farm": -27.78163118180237,
+     "crash": 0.07945658175232903,
+     "gank": -2.8588474083300923
+    },
+    "aggressive": {
+     "exploitability": 41.23999999999999,
+     "value_vs_equilibrium": -36.04923600235817,
+     "farm": -21.840000000000035,
+     "crash": 0.0,
+     "gank": -19.399999999999984
+    },
+    "freeze_contest": {
+     "exploitability": 37.01500000000001,
+     "value_vs_equilibrium": -30.815000000000012,
+     "farm": -41.63999999999997,
+     "crash": 0.0,
+     "gank": 4.6250000000000036
+    },
+    "passive_safe": {
+     "exploitability": 37.01500000000001,
+     "value_vs_equilibrium": -31.225000000000012,
+     "farm": -41.63999999999997,
+     "crash": 0.0,
+     "gank": 4.6250000000000036
+    },
+    "stack_builder": {
+     "exploitability": 8.249999999999998,
+     "value_vs_equilibrium": -1.3849999999999996,
+     "farm": -5.95000000000001,
+     "crash": -3.0,
+     "gank": 0.6999999999999957
+    },
+    "release_safe": {
+     "exploitability": 43.35499999999999,
+     "value_vs_equilibrium": -31.155000000000012,
+     "farm": -47.67999999999998,
+     "crash": 0.0,
+     "gank": 4.325000000000017
+    },
+    "contest_slowpush": {
+     "exploitability": 8.29,
+     "value_vs_equilibrium": -1.3849999999999996,
+     "farm": -3.990000000000002,
+     "crash": -5.0,
+     "gank": 0.6999999999999957
+    }
+   },
+   "probes": {
+    "B wave at A's freeze line, fighting A's wave": {
+     "value": 1.87,
+     "A": "SP-C 1.00",
+     "B": "SP-C 1.00",
+     "p_contest_A": 1.0,
+     "contest_advantage": 0.6200000000000001,
+     "actions": {
+      "SP-C": {
+       "Q": 1.87,
+       "farm": 0.56,
+       "gank": 0.37500000000000006,
+       "continuation": 0.935,
+       "wave": 0,
+       "posture": 0
+      },
+      "SH-C": {
+       "Q": -0.9079834615666305,
+       "farm": 1.82,
+       "gank": 0.22499999999999992,
+       "continuation": -2.9529834615666304,
+       "wave": 1,
+       "posture": 0
+      },
+      "F-C": {
+       "Q": 1.87,
+       "farm": 0.56,
+       "gank": 0.37500000000000006,
+       "continuation": 0.935,
+       "wave": 2,
+       "posture": 0
+      },
+      "SP-S": {
+       "Q": 1.25,
+       "farm": -0.15999999999999992,
+       "gank": 0.475,
+       "continuation": 0.9349999999999999,
+       "wave": 0,
+       "posture": 1
+      },
+      "SH-S": {
+       "Q": -1.7979834615666301,
+       "farm": 0.6800000000000002,
+       "gank": 0.475,
+       "continuation": -2.9529834615666304,
+       "wave": 1,
+       "posture": 1
+      },
+      "F-S": {
+       "Q": 1.25,
+       "farm": -0.15999999999999992,
+       "gank": 0.475,
+       "continuation": 0.9349999999999999,
+       "wave": 2,
+       "posture": 1
+      }
+     }
+    },
+    "A 2-wave stack at +1, B wave just spawned": {
+     "value": -10.094352654230033,
+     "A": "SH-C 1.00",
+     "B": "F-C 1.00",
+     "p_contest_A": 1.0,
+     "contest_advantage": 0.9382095234479184,
+     "actions": {
+      "SP-C": {
+       "Q": -10.412562177677952,
+       "farm": 0.06999999999999995,
+       "gank": -0.17500000000000016,
+       "continuation": -10.307562177677951,
+       "wave": 0,
+       "posture": 0
+      },
+      "SH-C": {
+       "Q": -10.094352654230033,
+       "farm": -1.6600000000000001,
+       "gank": -0.44999999999999996,
+       "continuation": -7.984352654230032,
+       "wave": 1,
+       "posture": 0
+      },
+      "SP-S": {
+       "Q": -11.032562177677951,
+       "farm": -0.9,
+       "gank": 0.17499999999999988,
+       "continuation": -10.307562177677951,
+       "wave": 0,
+       "posture": 1
+      },
+      "SH-S": {
+       "Q": -11.032562177677951,
+       "farm": -0.9,
+       "gank": 0.17499999999999988,
+       "continuation": -10.307562177677951,
+       "wave": 1,
+       "posture": 1
+      }
+     }
+    },
+    "A's 3-wave crash under B's tower": {
+     "value": -13.380567310922864,
+     "A": "SP-S 1.00",
+     "B": "SP-C 1.00",
+     "p_contest_A": 0.0,
+     "contest_advantage": -0.20500000000000185,
+     "actions": {
+      "SP-C": {
+       "Q": -13.585567310922865,
+       "farm": -1.53,
+       "gank": -0.5000000000000002,
+       "continuation": -11.555567310922866,
+       "wave": 0,
+       "posture": 0
+      },
+      "SH-C": {
+       "Q": -13.735567310922864,
+       "farm": -1.53,
+       "gank": -0.65,
+       "continuation": -11.555567310922864,
+       "wave": 1,
+       "posture": 0
+      },
+      "SP-S": {
+       "Q": -13.380567310922864,
+       "farm": -1.8,
+       "gank": -0.025000000000000022,
+       "continuation": -11.555567310922862,
+       "wave": 0,
+       "posture": 1
+      },
+      "SH-S": {
+       "Q": -13.380567310922864,
+       "farm": -1.8,
+       "gank": -0.025000000000000022,
+       "continuation": -11.555567310922862,
+       "wave": 1,
+       "posture": 1
+      }
+     }
+    },
+    "B's 3-wave crash under A's tower (A defends)": {
+     "value": 13.380567310922864,
+     "A": "SP-C 1.00",
+     "B": "SP-S 1.00",
+     "p_contest_A": 1.0,
+     "contest_advantage": 0.09999999999999964,
+     "actions": {
+      "SP-C": {
+       "Q": 13.380567310922864,
+       "farm": 1.8,
+       "gank": 0.025000000000000022,
+       "continuation": 11.555567310922862,
+       "wave": 0,
+       "posture": 0
+      },
+      "SH-C": {
+       "Q": 13.230567310922865,
+       "farm": 1.8,
+       "gank": -0.1250000000000001,
+       "continuation": 11.555567310922864,
+       "wave": 1,
+       "posture": 0
+      },
+      "SP-S": {
+       "Q": 13.280567310922864,
+       "farm": 1.6,
+       "gank": 0.12499999999999997,
+       "continuation": 11.555567310922864,
+       "wave": 0,
+       "posture": 1
+      },
+      "SH-S": {
+       "Q": 13.280567310922864,
+       "farm": 1.6,
+       "gank": 0.12499999999999997,
+       "continuation": 11.555567310922864,
+       "wave": 1,
+       "posture": 1
+      }
+     }
+    }
+   }
+  }
+ },
+ "environment": {
+  "python": "3.13.9",
+  "numpy": "2.5.3",
+  "scipy": "1.18.1",
+  "platform": "Windows-11-10.0.26200-SP0",
+  "timestamp": "2026-10-10 20:00:57"
+ }
+}

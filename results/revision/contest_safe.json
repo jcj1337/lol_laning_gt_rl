@@ -1,0 +1,788 @@
+{
+ "grouped": {
+  "situation": {
+   "A has crashed minions under B's tower": {
+    "n": 1260,
+    "p_contest": 0.2495039345406041,
+    "share_contest_better": 0.22380952380952382,
+    "share_safe_better": 0.7238095238095238,
+    "mean_advantage": -0.12674342797902632
+   },
+   "A has no wave in the lane": {
+    "n": 18,
+    "p_contest": 0.0,
+    "share_contest_better": 0.0,
+    "share_safe_better": 1.0,
+    "mean_advantage": -0.09645833333333331
+   },
+   "A's leading wave at +0": {
+    "n": 968,
+    "p_contest": 0.7065049081885117,
+    "share_contest_better": 0.7014462809917356,
+    "share_safe_better": 0.2892561983471074,
+    "mean_advantage": 0.1269527914633368
+   },
+   "A's leading wave at +1": {
+    "n": 886,
+    "p_contest": 0.7887884016206902,
+    "share_contest_better": 0.7370203160270881,
+    "share_safe_better": 0.1636568848758465,
+    "mean_advantage": 0.2524309514485435
+   },
+   "A's leading wave at +2": {
+    "n": 563,
+    "p_contest": 0.18847618172376,
+    "share_contest_better": 0.15630550621669628,
+    "share_safe_better": 0.7477797513321492,
+    "mean_advantage": -0.08129137111340445
+   },
+   "A's leading wave at -1": {
+    "n": 775,
+    "p_contest": 0.9101853499737832,
+    "share_contest_better": 0.9070967741935484,
+    "share_safe_better": 0.08516129032258064,
+    "mean_advantage": 0.1820243569897951
+   },
+   "A's leading wave at -2": {
+    "n": 1126,
+    "p_contest": 0.733409175708745,
+    "share_contest_better": 0.6492007104795737,
+    "share_safe_better": 0.2468916518650089,
+    "mean_advantage": 0.07778264994219043
+   },
+   "A's leading wave at -3": {
+    "n": 336,
+    "p_contest": 0.5663814258683352,
+    "share_contest_better": 0.4523809523809524,
+    "share_safe_better": 0.4226190476190476,
+    "mean_advantage": 0.019460635242256323
+   },
+   "A's leading wave at -4": {
+    "n": 235,
+    "p_contest": 0.2962614981384639,
+    "share_contest_better": 0.22127659574468084,
+    "share_safe_better": 0.6170212765957447,
+    "mean_advantage": -0.040910338608646686
+   },
+   "B has crashed minions under A's tower": {
+    "n": 1260,
+    "p_contest": 0.45602138995575947,
+    "share_contest_better": 0.31746031746031744,
+    "share_safe_better": 0.5111111111111111,
+    "mean_advantage": -0.001496706047534596
+   }
+  },
+  "vision": {
+   "A has vision": {
+    "n": 513,
+    "p_contest": 0.3985771318750562,
+    "share_contest_better": 0.3762183235867446,
+    "share_safe_better": 0.5672514619883041,
+    "mean_advantage": 0.025986301775503616
+   },
+   "no vision": {
+    "n": 6914,
+    "p_contest": 0.5734025447958389,
+    "share_contest_better": 0.5130170668209431,
+    "share_safe_better": 0.39919004917558576,
+    "mean_advantage": 0.05057915473953378
+   }
+  },
+  "own stacks": {
+   "A front stacks 0": {
+    "n": 5216,
+    "p_contest": 0.5013063366230505,
+    "share_contest_better": 0.4495782208588957,
+    "share_safe_better": 0.47181748466257667,
+    "mean_advantage": 0.004981932113547181
+   },
+   "A front stacks 1": {
+    "n": 1799,
+    "p_contest": 0.7640187313278479,
+    "share_contest_better": 0.6831573096164536,
+    "share_safe_better": 0.2056698165647582,
+    "mean_advantage": 0.16364245682616713
+   },
+   "A front stacks 2": {
+    "n": 248,
+    "p_contest": 0.7245633624423579,
+    "share_contest_better": 0.6693548387096774,
+    "share_safe_better": 0.22580645161290322,
+    "mean_advantage": 0.21025387477997232
+   },
+   "A no front": {
+    "n": 164,
+    "p_contest": 0.0,
+    "share_contest_better": 0.0,
+    "share_safe_better": 1.0,
+    "mean_advantage": -0.057842987804877996
+   }
+  },
+  "enemy stacks": {
+   "B front stacks 0": {
+    "n": 5216,
+    "p_contest": 0.5591538876708415,
+    "share_contest_better": 0.49175613496932513,
+    "share_safe_better": 0.4148773006134969,
+    "mean_advantage": 0.048828680857874965
+   },
+   "B front stacks 1": {
+    "n": 1799,
+    "p_contest": 0.6137407898611721,
+    "share_contest_better": 0.5780989438576987,
+    "share_safe_better": 0.35186214563646473,
+    "mean_advantage": 0.07208455571251084
+   },
+   "B front stacks 2": {
+    "n": 248,
+    "p_contest": 0.5859230012861958,
+    "share_contest_better": 0.532258064516129,
+    "share_safe_better": 0.375,
+    "mean_advantage": 0.08935861815399501
+   },
+   "B no front": {
+    "n": 164,
+    "p_contest": 0.018292682926829267,
+    "share_contest_better": 0.018292682926829267,
+    "share_safe_better": 0.9817073170731707,
+    "mean_advantage": -0.2652207542908764
+   }
+  },
+  "B contests": {
+   "B contests with p <= 0.5": {
+    "n": 3281,
+    "p_contest": 0.2509871433734954,
+    "share_contest_better": 0.1508686376104846,
+    "share_safe_better": 0.7058823529411765,
+    "mean_advantage": -0.09068726663410838
+   },
+   "B contests with p > 0.5": {
+    "n": 4146,
+    "p_contest": 0.8069190655962121,
+    "share_contest_better": 0.7826821032320309,
+    "share_safe_better": 0.1772793053545586,
+    "mean_advantage": 0.15932951531753003
+   }
+  },
+  "freeze": {
+   "A has no wave in the lane": {
+    "nodes": 9,
+    "p_freeze": 0.5555555555555556,
+    "p_freeze_contest": 0.0,
+    "p_freeze_safe": 0.5555555555555556,
+    "freeze_optimal": 1.0,
+    "freeze_contest_optimal": 0.0,
+    "freeze_safe_optimal": 1.0
+   },
+   "A's leading wave at -1": {
+    "nodes": 323,
+    "p_freeze": 0.19925605998723747,
+    "p_freeze_contest": 0.19925605998723747,
+    "p_freeze_safe": 0.0,
+    "freeze_optimal": 0.6625386996904025,
+    "freeze_contest_optimal": 0.6625386996904025,
+    "freeze_safe_optimal": 0.0
+   },
+   "A's leading wave at -2": {
+    "nodes": 790,
+    "p_freeze": 0.08484606147580381,
+    "p_freeze_contest": 0.0427050402977467,
+    "p_freeze_safe": 0.042141021178057125,
+    "freeze_optimal": 0.730379746835443,
+    "freeze_contest_optimal": 0.6265822784810127,
+    "freeze_safe_optimal": 0.19746835443037974
+   },
+   "A's leading wave at -3": {
+    "nodes": 233,
+    "p_freeze": 0.0081621164779176,
+    "p_freeze_contest": 0.0081621164779176,
+    "p_freeze_safe": 0.0,
+    "freeze_optimal": 0.927038626609442,
+    "freeze_contest_optimal": 0.38626609442060084,
+    "freeze_safe_optimal": 0.6995708154506438
+   },
+   "A's leading wave at -4": {
+    "nodes": 94,
+    "p_freeze": 0.37536626665506745,
+    "p_freeze_contest": 0.32191157634625733,
+    "p_freeze_safe": 0.05345469030881008,
+    "freeze_optimal": 0.8085106382978723,
+    "freeze_contest_optimal": 0.7978723404255319,
+    "freeze_safe_optimal": 0.14893617021276595
+   },
+   "B has crashed minions under A's tower": {
+    "nodes": 659,
+    "p_freeze": 0.009579114395376153,
+    "p_freeze_contest": 0.0035093116639649245,
+    "p_freeze_safe": 0.006069802731411229,
+    "freeze_optimal": 0.9514415781487102,
+    "freeze_contest_optimal": 0.6889226100151745,
+    "freeze_safe_optimal": 0.4400606980273141
+   }
+  },
+  "optimal": {
+   "A has crashed minions under B's tower": {
+    "nodes": 1260,
+    "contest_optimal": 0.2761904761904762,
+    "safe_optimal": 0.7761904761904762,
+    "both_optimal": 0.05238095238095238
+   },
+   "A has no wave in the lane": {
+    "nodes": 18,
+    "contest_optimal": 0.0,
+    "safe_optimal": 1.0,
+    "both_optimal": 0.0
+   },
+   "A's leading wave at +0": {
+    "nodes": 968,
+    "contest_optimal": 0.7107438016528925,
+    "safe_optimal": 0.29855371900826444,
+    "both_optimal": 0.009297520661157025
+   },
+   "A's leading wave at +1": {
+    "nodes": 886,
+    "contest_optimal": 0.8363431151241535,
+    "safe_optimal": 0.26297968397291194,
+    "both_optimal": 0.09932279909706546
+   },
+   "A's leading wave at +2": {
+    "nodes": 563,
+    "contest_optimal": 0.2522202486678508,
+    "safe_optimal": 0.8436944937833037,
+    "both_optimal": 0.09591474245115453
+   },
+   "A's leading wave at -1": {
+    "nodes": 775,
+    "contest_optimal": 0.9148387096774193,
+    "safe_optimal": 0.09290322580645162,
+    "both_optimal": 0.007741935483870968
+   },
+   "A's leading wave at -2": {
+    "nodes": 1126,
+    "contest_optimal": 0.7531083481349912,
+    "safe_optimal": 0.35079928952042627,
+    "both_optimal": 0.10390763765541741
+   },
+   "A's leading wave at -3": {
+    "nodes": 336,
+    "contest_optimal": 0.5773809523809523,
+    "safe_optimal": 0.5476190476190477,
+    "both_optimal": 0.125
+   },
+   "A's leading wave at -4": {
+    "nodes": 235,
+    "contest_optimal": 0.3829787234042553,
+    "safe_optimal": 0.7787234042553192,
+    "both_optimal": 0.16170212765957448
+   },
+   "B has crashed minions under A's tower": {
+    "nodes": 1260,
+    "contest_optimal": 0.4888888888888889,
+    "safe_optimal": 0.6825396825396826,
+    "both_optimal": 0.17142857142857143
+   }
+  }
+ },
+ "probes": {
+  "river fight, even (both fresh waves)": {
+   "value": 0.0,
+   "A": "SP-C 1.00",
+   "B": "SP-C 1.00",
+   "p_contest_A": 1.0,
+   "contest_advantage": 0.08499999999999999,
+   "actions": {
+    "SP-C": {
+     "Q": 0.0,
+     "farm": 0.0,
+     "gank": 0.0,
+     "continuation": 0.0,
+     "wave": 0,
+     "posture": 0
+    },
+    "SH-C": {
+     "Q": -1.3075000000000014,
+     "farm": 0.315,
+     "gank": -0.15,
+     "continuation": -1.4725000000000015,
+     "wave": 1,
+     "posture": 0
+    },
+    "SP-S": {
+     "Q": -0.08499999999999999,
+     "farm": -0.31000000000000005,
+     "gank": 0.22500000000000006,
+     "continuation": 0.0,
+     "wave": 0,
+     "posture": 1
+    },
+    "SH-S": {
+     "Q": -0.08499999999999999,
+     "farm": -0.31000000000000005,
+     "gank": 0.22500000000000006,
+     "continuation": 0.0,
+     "wave": 1,
+     "posture": 1
+    }
+   }
+  },
+  "B wave at A's freeze line, fighting A's wave": {
+   "value": 0.9500000000000001,
+   "A": "SP-C 1.00",
+   "B": "SP-S 1.00",
+   "p_contest_A": 1.0,
+   "contest_advantage": 0.04999999999999993,
+   "actions": {
+    "SP-C": {
+     "Q": 0.9500000000000001,
+     "farm": 0.45,
+     "gank": 0.025000000000000022,
+     "continuation": 0.475,
+     "wave": 0,
+     "posture": 0
+    },
+    "SH-C": {
+     "Q": -0.79,
+     "farm": 0.9,
+     "gank": -0.1250000000000001,
+     "continuation": -1.565,
+     "wave": 1,
+     "posture": 0
+    },
+    "F-C": {
+     "Q": 0.9500000000000001,
+     "farm": 0.45,
+     "gank": 0.025000000000000022,
+     "continuation": 0.475,
+     "wave": 2,
+     "posture": 0
+    },
+    "SP-S": {
+     "Q": 0.9000000000000001,
+     "farm": 0.30000000000000004,
+     "gank": 0.12499999999999997,
+     "continuation": 0.4750000000000001,
+     "wave": 0,
+     "posture": 1
+    },
+    "SH-S": {
+     "Q": -0.8399999999999999,
+     "farm": 0.6000000000000001,
+     "gank": 0.12499999999999997,
+     "continuation": -1.565,
+     "wave": 1,
+     "posture": 1
+    },
+    "F-S": {
+     "Q": 0.9000000000000001,
+     "farm": 0.30000000000000004,
+     "gank": 0.12499999999999997,
+     "continuation": 0.4750000000000001,
+     "wave": 2,
+     "posture": 1
+    }
+   }
+  },
+  "B 2-wave stack at A's freeze line": {
+   "value": 4.516434161104374,
+   "A": "SH-C 1.00",
+   "B": "SH-C 1.00",
+   "p_contest_A": 1.0,
+   "contest_advantage": 0.11000000000000032,
+   "actions": {
+    "SP-C": {
+     "Q": 0.6324999999999985,
+     "farm": -0.034999999999999976,
+     "gank": 0.3250000000000002,
+     "continuation": 0.34249999999999825,
+     "wave": 0,
+     "posture": 0
+    },
+    "SH-C": {
+     "Q": 4.516434161104374,
+     "farm": 0.28,
+     "gank": 0.17500000000000002,
+     "continuation": 4.061434161104374,
+     "wave": 1,
+     "posture": 0
+    },
+    "F-C": {
+     "Q": 0.6324999999999985,
+     "farm": -0.034999999999999976,
+     "gank": 0.3250000000000002,
+     "continuation": 0.34249999999999825,
+     "wave": 2,
+     "posture": 0
+    },
+    "SP-S": {
+     "Q": 0.47749999999999837,
+     "farm": -0.29,
+     "gank": 0.4250000000000001,
+     "continuation": 0.3424999999999982,
+     "wave": 0,
+     "posture": 1
+    },
+    "SH-S": {
+     "Q": 4.406434161104373,
+     "farm": -0.07999999999999996,
+     "gank": 0.4250000000000001,
+     "continuation": 4.061434161104374,
+     "wave": 1,
+     "posture": 1
+    },
+    "F-S": {
+     "Q": 0.47749999999999837,
+     "farm": -0.29,
+     "gank": 0.4250000000000001,
+     "continuation": 0.3424999999999982,
+     "wave": 2,
+     "posture": 1
+    }
+   }
+  },
+  "A 2-wave stack at river, B wave just spawned": {
+   "value": -3.211595128277387,
+   "A": "SP-S 0.21, SH-S 0.79",
+   "B": "SP-S 0.71, SH-S 0.29",
+   "p_contest_A": 0.0,
+   "contest_advantage": -0.042000851156825725,
+   "actions": {
+    "SP-C": {
+     "Q": -3.2535959794342126,
+     "farm": 0.1146686526992599,
+     "gank": -0.27500000000000013,
+     "continuation": -3.0932646321334722,
+     "wave": 0,
+     "posture": 0
+    },
+    "SH-C": {
+     "Q": -3.4304014670953142,
+     "farm": -0.014107895629769704,
+     "gank": -0.5499999999999999,
+     "continuation": -2.866293571465545,
+     "wave": 1,
+     "posture": 0
+    },
+    "SP-S": {
+     "Q": -3.211595128277387,
+     "farm": -0.19333049614391445,
+     "gank": 0.07499999999999993,
+     "continuation": -3.0932646321334722,
+     "wave": 0,
+     "posture": 1
+    },
+    "SH-S": {
+     "Q": -3.211595128277387,
+     "farm": -0.4577739948585526,
+     "gank": 0.07499999999999993,
+     "continuation": -2.8288211334188342,
+     "wave": 1,
+     "posture": 1
+    }
+   }
+  },
+  "A 2-wave stack at +1, B wave just spawned": {
+   "value": -2.972500000000002,
+   "A": "SH-C 1.00",
+   "B": "SP-C 1.00",
+   "p_contest_A": 1.0,
+   "contest_advantage": 0.02499999999999991,
+   "actions": {
+    "SP-C": {
+     "Q": -3.075000000000002,
+     "farm": -0.5025000000000001,
+     "gank": -0.30000000000000016,
+     "continuation": -2.2725000000000017,
+     "wave": 0,
+     "posture": 0
+    },
+    "SH-C": {
+     "Q": -2.972500000000002,
+     "farm": -0.41500000000000004,
+     "gank": -0.44999999999999996,
+     "continuation": -2.1075000000000017,
+     "wave": 1,
+     "posture": 0
+    },
+    "SP-S": {
+     "Q": -2.997500000000002,
+     "farm": -0.9,
+     "gank": 0.17499999999999988,
+     "continuation": -2.2725000000000017,
+     "wave": 0,
+     "posture": 1
+    },
+    "SH-S": {
+     "Q": -2.997500000000002,
+     "farm": -0.9,
+     "gank": 0.17499999999999988,
+     "continuation": -2.2725000000000017,
+     "wave": 1,
+     "posture": 1
+    }
+   }
+  },
+  "A 2-wave stack at +1, A has vision": {
+   "value": -1.8350000000000017,
+   "A": "SH-C 1.00",
+   "B": "SP-C 1.00",
+   "p_contest_A": 1.0,
+   "contest_advantage": 0.33749999999999947,
+   "actions": {
+    "SP-C": {
+     "Q": -2.0125000000000015,
+     "farm": -0.5025000000000001,
+     "gank": 0.32499999999999984,
+     "continuation": -1.8350000000000013,
+     "wave": 0,
+     "posture": 0
+    },
+    "SH-C": {
+     "Q": -1.8350000000000017,
+     "farm": -0.41500000000000004,
+     "gank": 0.24999999999999994,
+     "continuation": -1.6700000000000017,
+     "wave": 1,
+     "posture": 0
+    },
+    "SP-S": {
+     "Q": -2.172500000000001,
+     "farm": -0.9,
+     "gank": 0.5624999999999999,
+     "continuation": -1.8350000000000013,
+     "wave": 0,
+     "posture": 1
+    },
+    "SH-S": {
+     "Q": -2.172500000000001,
+     "farm": -0.9,
+     "gank": 0.5624999999999999,
+     "continuation": -1.8350000000000013,
+     "wave": 1,
+     "posture": 1
+    }
+   }
+  },
+  "A's 3-wave crash under B's tower": {
+   "value": -5.785115396591309,
+   "A": "SP-S 1.00",
+   "B": "SP-S 1.00",
+   "p_contest_A": 0.0,
+   "contest_advantage": -0.41500000000000004,
+   "actions": {
+    "SP-C": {
+     "Q": -6.200115396591309,
+     "farm": -0.34,
+     "gank": -0.6000000000000001,
+     "continuation": -5.26011539659131,
+     "wave": 0,
+     "posture": 0
+    },
+    "SH-C": {
+     "Q": -6.350115396591309,
+     "farm": -0.34,
+     "gank": -0.75,
+     "continuation": -5.260115396591309,
+     "wave": 1,
+     "posture": 0
+    },
+    "SP-S": {
+     "Q": -5.785115396591309,
+     "farm": -0.4,
+     "gank": -0.12499999999999997,
+     "continuation": -5.260115396591309,
+     "wave": 0,
+     "posture": 1
+    },
+    "SH-S": {
+     "Q": -5.785115396591309,
+     "farm": -0.4,
+     "gank": -0.12499999999999997,
+     "continuation": -5.260115396591309,
+     "wave": 1,
+     "posture": 1
+    }
+   }
+  },
+  "B's 3-wave crash under A's tower (A defends)": {
+   "value": 5.785115396591309,
+   "A": "SP-S 1.00",
+   "B": "SP-S 1.00",
+   "p_contest_A": 0.0,
+   "contest_advantage": -0.05000000000000071,
+   "actions": {
+    "SP-C": {
+     "Q": 5.735115396591309,
+     "farm": 0.45,
+     "gank": 0.025000000000000022,
+     "continuation": 5.260115396591308,
+     "wave": 0,
+     "posture": 0
+    },
+    "SH-C": {
+     "Q": 5.585115396591309,
+     "farm": 0.45,
+     "gank": -0.1250000000000001,
+     "continuation": 5.260115396591309,
+     "wave": 1,
+     "posture": 0
+    },
+    "SP-S": {
+     "Q": 5.785115396591309,
+     "farm": 0.4,
+     "gank": 0.12499999999999997,
+     "continuation": 5.260115396591309,
+     "wave": 0,
+     "posture": 1
+    },
+    "SH-S": {
+     "Q": 5.785115396591309,
+     "farm": 0.4,
+     "gank": 0.12499999999999997,
+     "continuation": 5.260115396591309,
+     "wave": 1,
+     "posture": 1
+    }
+   }
+  }
+ },
+ "gank_loss_sweep": {
+  "2.0": {
+   "p_contest_nodes": 0.8536455822026061,
+   "p_contest_path": 0.96875,
+   "freeze_when_legal": 0.05600976090174121,
+   "probes": {
+    "river fight, even (both fresh waves)": 0.44437808126392014,
+    "B wave at A's freeze line, fighting A's wave": 0.14,
+    "B 2-wave stack at A's freeze line": 0.26000000000000023,
+    "A 2-wave stack at river, B wave just spawned": 2.220446049250313e-16,
+    "A 2-wave stack at +1, B wave just spawned": 0.33000000000000007,
+    "A 2-wave stack at +1, A has vision": 0.36124999999999985,
+    "A's 3-wave crash under B's tower": -0.12249999999999961,
+    "B's 3-wave crash under A's tower (A defends)": 0.009999999999999787
+   }
+  },
+  "3.5": {
+   "p_contest_nodes": 0.6973852317511091,
+   "p_contest_path": 0.90625,
+   "freeze_when_legal": 0.06256302177725961,
+   "probes": {
+    "river fight, even (both fresh waves)": 0.15250000000000002,
+    "B wave at A's freeze line, fighting A's wave": 0.1100000000000001,
+    "B 2-wave stack at A's freeze line": 0.1849999999999996,
+    "A 2-wave stack at river, B wave just spawned": 0.0,
+    "A 2-wave stack at +1, B wave just spawned": 1.1150000000000002,
+    "A 2-wave stack at +1, A has vision": 1.32125,
+    "A's 3-wave crash under B's tower": -0.27249999999999996,
+    "B's 3-wave crash under A's tower (A defends)": -0.019999999999999574
+   }
+  },
+  "5.0": {
+   "p_contest_nodes": 0.5675732574788132,
+   "p_contest_path": 0.90625,
+   "freeze_when_legal": 0.06944563908585223,
+   "probes": {
+    "river fight, even (both fresh waves)": 0.08499999999999999,
+    "B wave at A's freeze line, fighting A's wave": 0.04999999999999993,
+    "B 2-wave stack at A's freeze line": 0.11000000000000032,
+    "A 2-wave stack at river, B wave just spawned": -0.042000851156825725,
+    "A 2-wave stack at +1, B wave just spawned": 0.02499999999999991,
+    "A 2-wave stack at +1, A has vision": 0.33749999999999947,
+    "A's 3-wave crash under B's tower": -0.41500000000000004,
+    "B's 3-wave crash under A's tower (A defends)": -0.05000000000000071
+   }
+  },
+  "7.0": {
+   "p_contest_nodes": 0.416549898957256,
+   "p_contest_path": 0.03653120713305893,
+   "freeze_when_legal": 0.06831565786282107,
+   "probes": {
+    "river fight, even (both fresh waves)": -0.0050000000000000044,
+    "B wave at A's freeze line, fighting A's wave": 0.01000000000000012,
+    "B 2-wave stack at A's freeze line": 0.009999999999999787,
+    "A 2-wave stack at river, B wave just spawned": -0.20649271844660166,
+    "A 2-wave stack at +1, B wave just spawned": 1.0299999999999998,
+    "A 2-wave stack at +1, A has vision": 1.2425000000000002,
+    "A's 3-wave crash under B's tower": -0.6049999999999995,
+    "B's 3-wave crash under A's tower (A defends)": -0.08999999999999986
+   }
+  },
+  "10.0": {
+   "p_contest_nodes": 0.25046100805966776,
+   "p_contest_path": 0.03125,
+   "freeze_when_legal": 0.06687829821018348,
+   "probes": {
+    "river fight, even (both fresh waves)": -0.14000000000000007,
+    "B wave at A's freeze line, fighting A's wave": -0.050000000000000044,
+    "B 2-wave stack at A's freeze line": -0.14000000000000057,
+    "A 2-wave stack at river, B wave just spawned": -0.4043899259505106,
+    "A 2-wave stack at +1, B wave just spawned": 1.1800000000000006,
+    "A 2-wave stack at +1, A has vision": 1.0550000000000002,
+    "A's 3-wave crash under B's tower": -0.8900000000000006,
+    "B's 3-wave crash under A's tower (A defends)": -0.15000000000000036
+   }
+  }
+ },
+ "freeze_sweep": {
+  "zone 0.0, safe slope 0.1": {
+   "freeze_when_legal": 0.06600921171445691,
+   "contest_nodes": 0.33420868051231856,
+   "probe_A": "SP-C 1.00",
+   "probe_value": 0.55
+  },
+  "zone 0.0, safe slope 0.2": {
+   "freeze_when_legal": 0.06961971772387063,
+   "contest_nodes": 0.5100360722097689,
+   "probe_A": "SP-C 1.00",
+   "probe_value": 0.9500000000000001
+  },
+  "zone 0.0, safe slope 0.3": {
+   "freeze_when_legal": 0.0687710802359792,
+   "contest_nodes": 0.5453228269773172,
+   "probe_A": "SP-C 1.00",
+   "probe_value": 0.9500000000000001
+  },
+  "zone 0.3, safe slope 0.1": {
+   "freeze_when_legal": 0.070849270753024,
+   "contest_nodes": 0.5231344516623672,
+   "probe_A": "SP-C 1.00",
+   "probe_value": 0.6700000000000002
+  },
+  "zone 0.3, safe slope 0.2": {
+   "freeze_when_legal": 0.06944563908585223,
+   "contest_nodes": 0.5675732574788132,
+   "probe_A": "SP-C 1.00",
+   "probe_value": 0.9500000000000001
+  },
+  "zone 0.3, safe slope 0.3": {
+   "freeze_when_legal": 0.06851426053528825,
+   "contest_nodes": 0.5938595305516832,
+   "probe_A": "SP-C 1.00",
+   "probe_value": 0.9500000000000001
+  },
+  "zone 0.6, safe slope 0.1": {
+   "freeze_when_legal": 0.07442509796739642,
+   "contest_nodes": 0.5785973882138399,
+   "probe_A": "SP-C 1.00",
+   "probe_value": 0.79
+  },
+  "zone 0.6, safe slope 0.2": {
+   "freeze_when_legal": 0.0694854766758801,
+   "contest_nodes": 0.5701348199857544,
+   "probe_A": "SP-C 1.00",
+   "probe_value": 0.9100000000000001
+  },
+  "zone 0.6, safe slope 0.3": {
+   "freeze_when_legal": 0.06790404654736619,
+   "contest_nodes": 0.5844105818749264,
+   "probe_A": "SP-C 1.00",
+   "probe_value": 0.9100000000000001
+  }
+ },
+ "environment": {
+  "python": "3.13.9",
+  "numpy": "2.5.3",
+  "scipy": "1.18.1",
+  "platform": "Windows-11-10.0.26200-SP0",
+  "timestamp": "2026-10-10 20:13:33"
+ }
+}

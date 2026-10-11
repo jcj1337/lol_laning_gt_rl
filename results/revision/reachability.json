@@ -1,0 +1,1299 @@
+{
+ "revised": {
+  "states": 14849,
+  "distinct": 2480,
+  "events": {
+   "crash_small": {
+    "transitions": 9372,
+    "first_turn": 6,
+    "witness": "SP-C/SP-C SH-C/SH-C SP-C/SH-C SP-C/SH-C SP-C/SP-C SP-C/SH-C SP-C/SH-C",
+    "witness_choices": [
+     [
+      0,
+      0
+     ],
+     [
+      0,
+      0
+     ],
+     [
+      0,
+      0
+     ],
+     [
+      0,
+      0
+     ],
+     [
+      0,
+      0
+     ],
+     [
+      0,
+      0
+     ]
+    ],
+    "witness_state": "    a4      .      .     b5      .      .      .      .     b4",
+    "replay_ok": true
+   },
+   "crash_medium": {
+    "transitions": 5592,
+    "first_turn": 11,
+    "witness": "SP-C/SP-C SP-C/SH-C SP-C/SH-C SP-C/SH-C SP-C/SP-C SP-C/SP-C SP-C/SP-C SP-C/SP-C SP-C/SP-C SP-C/SP-C SH-C/SP-C SP-C/SH-C",
+    "witness_choices": [
+     [
+      0,
+      0
+     ],
+     [
+      0,
+      0
+     ],
+     [
+      0,
+      0
+     ],
+     [
+      0,
+      0
+     ],
+     [
+      0,
+      0
+     ],
+     [
+      0,
+      0
+     ],
+     [
+      0,
+      0
+     ],
+     [
+      0,
+      0
+     ],
+     [
+      0,
+      0
+     ],
+     [
+      0,
+      0
+     ],
+     [
+      0,
+      0
+     ]
+    ],
+    "witness_state": "     .      .     a2     b6      .      .     b4      .      .",
+    "replay_ok": true
+   },
+   "crash_large": {
+    "transitions": 1840,
+    "first_turn": 15,
+    "witness": "SP-C/SP-C SP-C/SH-C SP-C/SP-C SP-C/SP-C SP-C/SH-C SP-C/SH-C SP-C/SP-C SP-C/SP-C SP-C/SP-C SP-C/SP-C SP-C/SP-C SP-C/SP-C SP-C/SP-C SP-C/SP-C SP-C/SP-C SP-C/SH-C",
+    "witness_choices": [
+     [
+      0,
+      0
+     ],
+     [
+      0,
+      0
+     ],
+     [
+      0,
+      0
+     ],
+     [
+      0,
+      0
+     ],
+     [
+      0,
+      0
+     ],
+     [
+      0,
+      0
+     ],
+     [
+      0,
+      0
+     ],
+     [
+      0,
+      0
+     ],
+     [
+      0,
+      0
+     ],
+     [
+      0,
+      0
+     ],
+     [
+      0,
+      0
+     ],
+     [
+      0,
+      0
+     ],
+     [
+      0,
+      0
+     ],
+     [
+      0,
+      0
+     ],
+     [
+      0,
+      0
+     ]
+    ],
+    "witness_state": "     .      .     a2    b10      .      .     b4      .      .",
+    "replay_ok": true
+   },
+   "crash_onto_siege": {
+    "transitions": 3576,
+    "first_turn": 17,
+    "witness": "SP-C/SP-C SP-C/SH-C SP-C/SP-C SP-C/SP-C SP-C/SH-C SP-C/SH-C SP-C/SP-C SP-C/SP-C SP-C/SP-C SP-C/SP-C SP-C/SP-C SP-C/SP-C SP-C/SP-C SP-C/SP-C SP-C/SP-C SP-C/SP-C F-C/SH-C SP-C/SH-C",
+    "witness_choices": [
+     [
+      0,
+      0
+     ],
+     [
+      0,
+      0
+     ],
+     [
+      0,
+      0
+     ],
+     [
+      0,
+      0
+     ],
+     [
+      0,
+      0
+     ],
+     [
+      0,
+      0
+     ],
+     [
+      0,
+      0
+     ],
+     [
+      0,
+      0
+     ],
+     [
+      0,
+      0
+     ],
+     [
+      0,
+      0
+     ],
+     [
+      0,
+      0
+     ],
+     [
+      0,
+      0
+     ],
+     [
+      0,
+      0
+     ],
+     [
+      0,
+      0
+     ],
+     [
+      0,
+      0
+     ],
+     [
+      0,
+      0
+     ],
+     [
+      0,
+      0
+     ]
+    ],
+    "witness_state": "     .      .    B*6     b4      .      .     b4      .      .",
+    "replay_ok": true
+   },
+   "freeze_held": {
+    "transitions": 3392,
+    "first_turn": 6,
+    "witness": "SP-C/SP-C SH-C/SH-C SP-C/SH-C SP-C/SH-C SP-C/SP-C SH-C/SH-C F-C/SH-C",
+    "witness_choices": [
+     [
+      0,
+      0
+     ],
+     [
+      0,
+      0
+     ],
+     [
+      0,
+      0
+     ],
+     [
+      0,
+      0
+     ],
+     [
+      0,
+      0
+     ],
+     [
+      0,
+      0
+     ]
+    ],
+    "witness_state": "    a4      .      .     b3      .      .      .      .     b4",
+    "replay_ok": true
+   },
+   "freeze_broken": {
+    "transitions": 2632,
+    "first_turn": 6,
+    "witness": "SP-C/SP-C SP-C/SH-C SP-C/SH-C SP-C/SH-C SP-C/SP-C SP-C/SH-C F-C/SH-C",
+    "witness_choices": [
+     [
+      0,
+      0
+     ],
+     [
+      0,
+      0
+     ],
+     [
+      0,
+      0
+     ],
+     [
+      0,
+      0
+     ],
+     [
+      0,
+      0
+     ],
+     [
+      0,
+      0
+     ]
+    ],
+    "witness_state": "    a4      .      .     b6      .      .      .      .     b4",
+    "replay_ok": true
+   },
+   "bounce": {
+    "transitions": 8176,
+    "first_turn": 13,
+    "witness": "SP-C/SP-C SH-C/SH-C SP-C/SH-C SH-C/SH-C SP-C/SP-C SP-C/SH-C F-C/SH-C SP-C/SH-C SP-C/SP-C SP-C/SP-C SP-C/SH-C SP-C/SH-C SP-C/SP-C SP-C/SP-C",
+    "witness_choices": [
+     [
+      0,
+      0
+     ],
+     [
+      0,
+      0
+     ],
+     [
+      0,
+      0
+     ],
+     [
+      0,
+      0
+     ],
+     [
+      0,
+      0
+     ],
+     [
+      0,
+      0
+     ],
+     [
+      0,
+      0
+     ],
+     [
+      0,
+      0
+     ],
+     [
+      0,
+      0
+     ],
+     [
+      0,
+      0
+     ],
+     [
+      0,
+      0
+     ],
+     [
+      0,
+      0
+     ],
+     [
+      0,
+      0
+     ]
+    ],
+    "witness_state": "     .     a4    B*2      .     b4      .     b4      .      .",
+    "replay_ok": true
+   },
+   "siege_persists": {
+    "transitions": 75416,
+    "first_turn": 8,
+    "witness": "SP-C/SP-C SH-C/SH-C SP-C/SH-C SP-C/SH-C SP-C/SP-C SP-C/SH-C F-C/SH-C SP-C/SH-C SP-C/SP-C",
+    "witness_choices": [
+     [
+      0,
+      0
+     ],
+     [
+      0,
+      0
+     ],
+     [
+      0,
+      0
+     ],
+     [
+      0,
+      0
+     ],
+     [
+      0,
+      0
+     ],
+     [
+      0,
+      0
+     ],
+     [
+      0,
+      0
+     ],
+     [
+      0,
+      0
+     ]
+    ],
+    "witness_state": "    a4      .    B*3      .     b4      .      .      .     b4",
+    "replay_ok": true
+   },
+   "safe_disengages": {
+    "transitions": 157754,
+    "first_turn": 1,
+    "witness": "SP-C/SP-C SP-C/SP-S",
+    "witness_choices": [
+     [
+      0,
+      0
+     ]
+    ],
+    "witness_state": "     .      .     a4      .      .      .     b4      .      .",
+    "replay_ok": true
+   },
+   "tower_farm": {
+    "transitions": 125236,
+    "first_turn": 7,
+    "witness": "SP-C/SP-C SP-C/SH-C SP-C/SH-C SP-C/SH-C SP-C/SP-C SP-C/SH-S SP-C/SH-C SP-C/SH-C",
+    "witness_choices": [
+     [
+      0,
+      0
+     ],
+     [
+      0,
+      0
+     ],
+     [
+      0,
+      0
+     ],
+     [
+      0,
+      0
+     ],
+     [
+      0,
+      0
+     ],
+     [
+      0,
+      0
+     ],
+     [
+      0,
+      0
+     ]
+    ],
+    "witness_state": "     .      .   a2b3      .      .      .     b4      .      .",
+    "replay_ok": true
+   },
+   "farm_contest_vs_safe": {
+    "transitions": 304876,
+    "first_turn": 1,
+    "witness": "SP-C/SP-C SP-C/SP-C",
+    "witness_choices": [
+     [
+      0,
+      0
+     ]
+    ],
+    "witness_state": "     .      .     a4      .      .      .     b4      .      .",
+    "replay_ok": true
+   },
+   "minions_deleted": {
+    "transitions": 0,
+    "first_turn": null,
+    "witness": null,
+    "witness_choices": null,
+    "witness_state": null,
+    "replay_ok": null
+   }
+  },
+  "collection_values": {
+   "0.0": 101284,
+   "0.14": 20636,
+   "0.2": 20636,
+   "0.28": 17718,
+   "0.35": 51768,
+   "0.4": 18172,
+   "0.42": 22228,
+   "0.5": 51826,
+   "0.6": 21814,
+   "0.63": 60070,
+   "0.68": 45496,
+   "0.765": 45496,
+   "0.8": 44880,
+   "0.9": 105020
+  }
+ },
+ "v1": {
+  "states": 905,
+  "distinct": 71,
+  "events": {
+   "crash_small": {
+    "transitions": 578,
+    "first_turn": 5,
+    "witness": "SP/SP SP/SH SP/SP SP/SH SP/SP SP/SH",
+    "witness_choices": [
+     [
+      0,
+      0
+     ],
+     [
+      0,
+      0
+     ],
+     [
+      0,
+      0
+     ],
+     [
+      0,
+      0
+     ],
+     [
+      0,
+      0
+     ]
+    ],
+    "witness_state": "     .      .     a2      .     b2      .     b2      .      .",
+    "replay_ok": true
+   },
+   "crash_medium": {
+    "transitions": 400,
+    "first_turn": 9,
+    "witness": "SP/SP SP/SH SP/SP SP/SH SP/SP SP/SP SP/SP SP/SP SP/SP SP/SH",
+    "witness_choices": [
+     [
+      0,
+      0
+     ],
+     [
+      0,
+      0
+     ],
+     [
+      0,
+      0
+     ],
+     [
+      0,
+      0
+     ],
+     [
+      0,
+      0
+     ],
+     [
+      0,
+      0
+     ],
+     [
+      0,
+      0
+     ],
+     [
+      0,
+      0
+     ],
+     [
+      0,
+      0
+     ]
+    ],
+    "witness_state": "     .      .     a2      .     b4      .     b2      .      .",
+    "replay_ok": true
+   },
+   "crash_large": {
+    "transitions": 60,
+    "first_turn": 13,
+    "witness": "SP/SP SP/SH SP/SP SP/SH SP/SP SP/SP SP/SP F/SH SP/SP SP/SP SP/SP SP/SP SP/SP SP/SH",
+    "witness_choices": [
+     [
+      0,
+      0
+     ],
+     [
+      0,
+      0
+     ],
+     [
+      0,
+      0
+     ],
+     [
+      0,
+      0
+     ],
+     [
+      0,
+      0
+     ],
+     [
+      0,
+      0
+     ],
+     [
+      0,
+      0
+     ],
+     [
+      0,
+      0
+     ],
+     [
+      0,
+      0
+     ],
+     [
+      0,
+      0
+     ],
+     [
+      0,
+      0
+     ],
+     [
+      0,
+      0
+     ],
+     [
+      0,
+      0
+     ]
+    ],
+    "witness_state": "     .      .      .     b5      .      .     b2      .      .",
+    "replay_ok": true
+   },
+   "crash_onto_siege": {
+    "transitions": 0,
+    "first_turn": null,
+    "witness": null,
+    "witness_choices": null,
+    "witness_state": null,
+    "replay_ok": null
+   },
+   "freeze_held": {
+    "transitions": 394,
+    "first_turn": 2,
+    "witness": "SP/SP SP/SH F/SH",
+    "witness_choices": [
+     [
+      0,
+      0
+     ],
+     [
+      0,
+      0
+     ]
+    ],
+    "witness_state": "    a2      .      .      .     b1      .      .      .     b2",
+    "replay_ok": true
+   },
+   "freeze_broken": {
+    "transitions": 276,
+    "first_turn": 6,
+    "witness": "SP/SP SP/SH SP/SP SP/SH SP/SP SP/SP F/SH",
+    "witness_choices": [
+     [
+      0,
+      0
+     ],
+     [
+      0,
+      0
+     ],
+     [
+      0,
+      0
+     ],
+     [
+      0,
+      0
+     ],
+     [
+      0,
+      0
+     ],
+     [
+      0,
+      0
+     ]
+    ],
+    "witness_state": "    a2      .      .      .     b3      .      .      .     b2",
+    "replay_ok": true
+   },
+   "bounce": {
+    "transitions": 0,
+    "first_turn": null,
+    "witness": null,
+    "witness_choices": null,
+    "witness_state": null,
+    "replay_ok": null
+   },
+   "siege_persists": {
+    "transitions": 0,
+    "first_turn": null,
+    "witness": null,
+    "witness_choices": null,
+    "witness_state": null,
+    "replay_ok": null
+   },
+   "safe_disengages": {
+    "transitions": 0,
+    "first_turn": null,
+    "witness": null,
+    "witness_choices": null,
+    "witness_state": null,
+    "replay_ok": null
+   },
+   "tower_farm": {
+    "transitions": 0,
+    "first_turn": null,
+    "witness": null,
+    "witness_choices": null,
+    "witness_state": null,
+    "replay_ok": null
+   },
+   "farm_contest_vs_safe": {
+    "transitions": 3575,
+    "first_turn": 1,
+    "witness": "SP/SP SP/SP",
+    "witness_choices": [
+     [
+      0,
+      0
+     ]
+    ],
+    "witness_state": "     .      .     a2      .      .      .     b2      .      .",
+    "replay_ok": true
+   },
+   "minions_deleted": {
+    "transitions": 126,
+    "first_turn": 11,
+    "witness": "SP/SP SP/SH SP/SP SP/SH SP/SP SP/SP SP/SP SP/SP SP/SP SP/SP SP/SP SP/SP",
+    "witness_choices": [
+     [
+      0,
+      0
+     ],
+     [
+      0,
+      0
+     ],
+     [
+      0,
+      0
+     ],
+     [
+      0,
+      0
+     ],
+     [
+      0,
+      0
+     ],
+     [
+      0,
+      0
+     ],
+     [
+      0,
+      0
+     ],
+     [
+      0,
+      0
+     ],
+     [
+      0,
+      0
+     ],
+     [
+      0,
+      0
+     ],
+     [
+      0,
+      0
+     ]
+    ],
+    "witness_state": "     .      .     a2      .     b5      .     b2      .      .",
+    "replay_ok": true
+   }
+  },
+  "collection_values": {
+   "0.35": 2042,
+   "0.63": 3696,
+   "0.765": 1510
+  }
+ },
+ "scenarios": [
+  {
+   "scenario": "even_river_fight",
+   "start": "reachable",
+   "event": "-",
+   "event_reachable_from_s0": "-"
+  },
+  {
+   "scenario": "shove_wins_river",
+   "start": "reachable",
+   "event": "-",
+   "event_reachable_from_s0": "-"
+  },
+  {
+   "scenario": "slowpush_stacks",
+   "start": "reachable",
+   "event": "-",
+   "event_reachable_from_s0": "-"
+  },
+  {
+   "scenario": "shove_contests_slowpush",
+   "start": "reachable",
+   "event": "-",
+   "event_reachable_from_s0": "-"
+  },
+  {
+   "scenario": "unstacked_wave_waits",
+   "start": "constructed",
+   "event": "-",
+   "event_reachable_from_s0": "-"
+  },
+  {
+   "scenario": "stacked_wave_creeps",
+   "start": "constructed",
+   "event": "-",
+   "event_reachable_from_s0": "-"
+  },
+  {
+   "scenario": "freeze_holds",
+   "start": "constructed",
+   "event": "freeze_held",
+   "event_reachable_from_s0": true
+  },
+  {
+   "scenario": "freeze_broken",
+   "start": "constructed",
+   "event": "freeze_broken",
+   "event_reachable_from_s0": true
+  },
+  {
+   "scenario": "large_crash_persists",
+   "start": "constructed",
+   "event": "siege_persists",
+   "event_reachable_from_s0": true
+  },
+  {
+   "scenario": "small_crash_clears_quickly",
+   "start": "constructed",
+   "event": "crash_small",
+   "event_reachable_from_s0": true
+  },
+  {
+   "scenario": "tower_farm_contested",
+   "start": "constructed",
+   "event": "tower_farm",
+   "event_reachable_from_s0": true
+  },
+  {
+   "scenario": "tower_farm_safe",
+   "start": "constructed",
+   "event": "tower_farm",
+   "event_reachable_from_s0": true
+  },
+  {
+   "scenario": "bounce",
+   "start": "constructed",
+   "event": "bounce",
+   "event_reachable_from_s0": true
+  },
+  {
+   "scenario": "safe_lets_wave_go",
+   "start": "constructed",
+   "event": "safe_disengages",
+   "event_reachable_from_s0": true
+  },
+  {
+   "scenario": "freeze_denial",
+   "start": "constructed",
+   "event": "farm_contest_vs_safe",
+   "event_reachable_from_s0": true
+  }
+ ],
+ "timing": {
+  "horizon": 128,
+  "min_remaining": 48,
+  "max_same_phase_value_drift": 0.12500182910956417,
+  "states_in_several_phases": 1972,
+  "support_differs": 243,
+  "examples": [
+   {
+    "state": [
+     -4,
+     4,
+     [],
+     0,
+     1,
+     11,
+     [
+      -4
+     ],
+     0,
+     0,
+     0
+    ],
+    "lane": "    a4      .      .    b11      .      .      .      .     b4",
+    "by_phase": {
+     "0": {
+      "k": 16,
+      "support": [
+       "SP-C"
+      ],
+      "V": 14.922500000000007,
+      "strategy": {
+       "SP-C": 1.0
+      }
+     },
+     "2": {
+      "k": 14,
+      "support": [
+       "SP-S"
+      ],
+      "V": -8.631103439824775,
+      "strategy": {
+       "SP-S": 1.0
+      }
+     }
+    }
+   },
+   {
+    "state": [
+     1,
+     11,
+     [
+      -4
+     ],
+     0,
+     -4,
+     4,
+     [],
+     0,
+     0,
+     0
+    ],
+    "lane": "    a4      .      .      .      .    a11      .      .     b4",
+    "by_phase": {
+     "0": {
+      "k": 16,
+      "support": [
+       "SP-C"
+      ],
+      "V": -14.922500000000007,
+      "strategy": {
+       "SP-C": 1.0
+      }
+     },
+     "2": {
+      "k": 14,
+      "support": [
+       "SP-S"
+      ],
+      "V": 8.631103439824773,
+      "strategy": {
+       "SP-S": 1.0
+      }
+     }
+    }
+   },
+   {
+    "state": [
+     1,
+     10,
+     [
+      -4
+     ],
+     0,
+     -4,
+     4,
+     [],
+     0,
+     0,
+     0
+    ],
+    "lane": "    a4      .      .      .      .    a10      .      .     b4",
+    "by_phase": {
+     "0": {
+      "k": 16,
+      "support": [
+       "SP-C"
+      ],
+      "V": -14.668240466809543,
+      "strategy": {
+       "SP-C": 1.0
+      }
+     },
+     "2": {
+      "k": 14,
+      "support": [
+       "SP-S"
+      ],
+      "V": 8.670035692116702,
+      "strategy": {
+       "SP-S": 1.0
+      }
+     }
+    }
+   },
+   {
+    "state": [
+     -4,
+     4,
+     [],
+     0,
+     1,
+     10,
+     [
+      -4
+     ],
+     0,
+     0,
+     0
+    ],
+    "lane": "    a4      .      .    b10      .      .      .      .     b4",
+    "by_phase": {
+     "0": {
+      "k": 16,
+      "support": [
+       "SP-C"
+      ],
+      "V": 14.668240466809543,
+      "strategy": {
+       "SP-C": 1.0
+      }
+     },
+     "2": {
+      "k": 14,
+      "support": [
+       "SH-S"
+      ],
+      "V": -8.6700356921167,
+      "strategy": {
+       "SH-S": 1.0
+      }
+     }
+    }
+   },
+   {
+    "state": [
+     -3,
+     8,
+     [],
+     0,
+     1,
+     12,
+     [
+      -4
+     ],
+     2,
+     0,
+     0
+    ],
+    "lane": "     .     a8    B*2    b12      .      .      .      .     b4",
+    "by_phase": {
+     "0": {
+      "k": 24,
+      "support": [
+       "SP-C"
+      ],
+      "V": 14.98375,
+      "strategy": {
+       "SP-C": 1.0
+      }
+     },
+     "2": {
+      "k": 26,
+      "support": [
+       "SP-S"
+      ],
+      "V": -6.040000000000004,
+      "strategy": {
+       "SP-S": 1.0
+      }
+     }
+    }
+   },
+   {
+    "state": [
+     1,
+     12,
+     [
+      -4
+     ],
+     2,
+     -3,
+     8,
+     [],
+     0,
+     0,
+     0
+    ],
+    "lane": "    a4      .      .      .      .    a12    A*2     b8      .",
+    "by_phase": {
+     "0": {
+      "k": 24,
+      "support": [
+       "SH-C"
+      ],
+      "V": -14.98375,
+      "strategy": {
+       "SH-C": 1.0
+      }
+     },
+     "2": {
+      "k": 26,
+      "support": [
+       "SP-S"
+      ],
+      "V": 6.040000000000004,
+      "strategy": {
+       "SP-S": 1.0
+      }
+     }
+    }
+   }
+  ]
+ },
+ "vision": {
+  "choice_nodes": 401,
+  "vision_nodes": 45,
+  "median_option_gap": 0.16840909090909095,
+  "share_gap_below_0.25": 0.5286783042394015,
+  "examples": [
+   {
+    "k": 13,
+    "lane": "    a4      .      .      .     a4      .    A*4      .     b4",
+    "options": [
+     [
+      1.0,
+      false
+     ],
+     [
+      0.0,
+      true
+     ]
+    ],
+    "p_vision": 1.0,
+    "option_values": [
+     -3.1717830085859795,
+     -3.077500000000002
+    ]
+   },
+   {
+    "k": 16,
+    "lane": "     .      .     a4      .      .      .    A*9      .      .",
+    "options": [
+     [
+      3.0,
+      false
+     ],
+     [
+      2.0,
+      true
+     ]
+    ],
+    "p_vision": 1.0,
+    "option_values": [
+     -1.8991497227356753,
+     -1.875897615049598
+    ]
+   },
+   {
+    "k": 16,
+    "lane": "     .      .     a4      .      .      .   A*10      .      .",
+    "options": [
+     [
+      3.0,
+      false
+     ],
+     [
+      2.0,
+      true
+     ]
+    ],
+    "p_vision": 1.0,
+    "option_values": [
+     -2.087500000000002,
+     -1.9000000000000017
+    ]
+   },
+   {
+    "k": 17,
+    "lane": "    a4      .      .      .     a4      .    A*8      .     b4",
+    "options": [
+     [
+      1.0,
+      false
+     ],
+     [
+      0.0,
+      true
+     ]
+    ],
+    "p_vision": 1.0,
+    "option_values": [
+     -3.5625000000000018,
+     -3.0625000000000018
+    ]
+   },
+   {
+    "k": 17,
+    "lane": "    a4      .      .      .     a4      .    A*4      .     b4",
+    "options": [
+     [
+      1.0,
+      false
+     ],
+     [
+      0.0,
+      true
+     ]
+    ],
+    "p_vision": 1.0,
+    "option_values": [
+     -2.680987902929734,
+     -2.5775000000000015
+    ]
+   },
+   {
+    "k": 17,
+    "lane": "    a4      .      .      .     a4      .    A*9      .     b4",
+    "options": [
+     [
+      3.0,
+      false
+     ],
+     [
+      2.0,
+      true
+     ]
+    ],
+    "p_vision": 1.0,
+    "option_values": [
+     -1.7600000000000016,
+     -1.2600000000000016
+    ]
+   },
+   {
+    "k": 19,
+    "lane": "    a4      .      .      .     a4      .    A*8      .     b4",
+    "options": [
+     [
+      1.0,
+      false
+     ],
+     [
+      0.0,
+      true
+     ]
+    ],
+    "p_vision": 1.0,
+    "option_values": [
+     -4.281580613964847,
+     -4.178148148148149
+    ]
+   },
+   {
+    "k": 19,
+    "lane": "    a4      .      .      .     a4      .   A*10      .     b4",
+    "options": [
+     [
+      3.0,
+      false
+     ],
+     [
+      2.0,
+      true
+     ]
+    ],
+    "p_vision": 1.0,
+    "option_values": [
+     -2.6481510806995043,
+     -2.398949219798337
+    ]
+   }
+  ]
+ },
+ "environment": {
+  "python": "3.13.9",
+  "numpy": "2.5.3",
+  "scipy": "1.18.1",
+  "platform": "Windows-11-10.0.26200-SP0",
+  "timestamp": "2026-10-10 20:51:04"
+ }
+}

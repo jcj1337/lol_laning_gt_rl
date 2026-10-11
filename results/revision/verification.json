@@ -1,0 +1,162 @@
+{
+ "stage_games_vs_support_enumeration": {
+  "games": 14849,
+  "max_abs_diff": 8.881784197001252e-16,
+  "choice_games": 802,
+  "choice_max_abs_diff": 8.881784197001252e-16,
+  "seconds": 8.340973599813879,
+  "methods": {
+   "saddle": 13805,
+   "choice-trivial": 802,
+   "lp": 1044
+  },
+  "max_gap": 1.7763568394002505e-15
+ },
+ "tree_minimax": [
+  {
+   "root": "symmetric start",
+   "depth": 3,
+   "backward_induction": 0.0,
+   "tree_minimax": 0.0,
+   "abs_diff": 0.0,
+   "seconds": 0.41340649989433587
+  },
+  {
+   "root": "A 3-wave stack at the river",
+   "depth": 2,
+   "backward_induction": 3.615,
+   "tree_minimax": 3.615000000000001,
+   "abs_diff": 8.881784197001252e-16,
+   "seconds": 0.03976730001159012
+  },
+  {
+   "root": "A 2-wave packet near B's tower",
+   "depth": 2,
+   "backward_induction": -0.6224999999999997,
+   "tree_minimax": -0.6224999999999997,
+   "abs_diff": 0.0,
+   "seconds": 0.0636915999930352
+  },
+  {
+   "root": "B wave at A's freeze line",
+   "depth": 2,
+   "backward_induction": 0.9000000000000001,
+   "tree_minimax": 0.9000000000000001,
+   "abs_diff": 0.0,
+   "seconds": 0.04813529993407428
+  },
+  {
+   "root": "crashed mass under B's tower, A vision",
+   "depth": 2,
+   "backward_induction": -0.6125,
+   "tree_minimax": -0.6125,
+   "abs_diff": 0.0,
+   "seconds": 0.023992300033569336
+  }
+ ],
+ "equilibrium_exploitability": [
+  {
+   "K": 16,
+   "expl_A": 0.0,
+   "expl_B": 0.0,
+   "max_gap": 4.440892098500626e-16
+  },
+  {
+   "K": 32,
+   "expl_A": 0.0,
+   "expl_B": 0.0,
+   "max_gap": 1.7763568394002505e-15
+  },
+  {
+   "K": 64,
+   "expl_A": 0.0,
+   "expl_B": 0.0,
+   "max_gap": 2.6645352591003757e-15
+  }
+ ],
+ "monte_carlo": [
+  {
+   "A": "equilibrium",
+   "B": "equilibrium",
+   "exact": 0.0,
+   "mc_mean": 0.0375,
+   "mc_stderr": 0.2592613595402093,
+   "z": 0.14464168538846245
+  },
+  {
+   "A": "equilibrium",
+   "B": "uniform",
+   "exact": 9.858957270488288,
+   "mc_mean": 10.02911625,
+   "mc_stderr": 0.2558066653875809,
+   "z": 0.6651858709541372
+  },
+  {
+   "A": "aggressive",
+   "B": "equilibrium",
+   "exact": -24.46750000000001,
+   "mc_mean": -24.4475,
+   "mc_stderr": 0.2601858334286848,
+   "z": 0.07686813588753112
+  },
+  {
+   "A": "freeze_contest",
+   "B": "equilibrium",
+   "exact": -2.8699999999999988,
+   "mc_mean": -2.873750000000004,
+   "mc_stderr": 0.24204955532118375,
+   "z": -0.015492695266591278
+  },
+  {
+   "A": "passive_safe",
+   "B": "equilibrium",
+   "exact": -2.8699999999999988,
+   "mc_mean": -3.1362500000000035,
+   "mc_stderr": 0.2520217008886431,
+   "z": -1.0564566426668491
+  },
+  {
+   "A": "stack_builder",
+   "B": "equilibrium",
+   "exact": -0.3199999999999998,
+   "mc_mean": -0.018749999999998684,
+   "mc_stderr": 0.2648870814155538,
+   "z": 1.1372770555291873
+  },
+  {
+   "A": "release_safe",
+   "B": "equilibrium",
+   "exact": -2.799999999999999,
+   "mc_mean": -2.9725000000000033,
+   "mc_stderr": 0.24930661219514627,
+   "z": -0.6919190729886413
+  },
+  {
+   "A": "contest_slowpush",
+   "B": "equilibrium",
+   "exact": -0.3199999999999998,
+   "mc_mean": -0.32749999999999885,
+   "mc_stderr": 0.2559921755366441,
+   "z": -0.029297770466134705
+  }
+ ],
+ "v1_reproduction": {
+  "nodes": 905,
+  "mixed": 52,
+  "value": 0.0,
+  "exploitability": {
+   "uniform": 11.860403464012775,
+   "always_shove": 19.45,
+   "always_slowpush": 4.850000000000003,
+   "defensive_freeze": 1.8499999999999952,
+   "stack_then_shove": 4.850000000000003
+  }
+ },
+ "environment": {
+  "python": "3.13.9",
+  "numpy": "2.5.3",
+  "scipy": "1.18.1",
+  "platform": "Windows-11-10.0.26200-SP0",
+  "timestamp": "2026-10-10 20:18:57"
+ }
+}

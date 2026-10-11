@@ -1,0 +1,2133 @@
+{
+ "horizon": 32,
+ "rungs": {
+  "0 original model (v1)": {
+   "change": "-",
+   "config": {
+    "base": 4,
+    "tower": 2,
+    "ticks_per_turn": 2,
+    "spawn_interval": 4,
+    "horizon": 32,
+    "wave_hp": 2,
+    "max_stacks": 2,
+    "cap_rule": "overflow",
+    "queue_fights": true,
+    "positioning": false,
+    "damage_law": "lanchester",
+    "shove_damage": 1,
+    "tower_damage": 1,
+    "pressure_kappa": [
+     0,
+     1,
+     0
+    ],
+    "slowpush_line": 0,
+    "slowpush_mode": "hold",
+    "slowpush_creep_period": 1,
+    "freeze_line": -1,
+    "freeze_break_threshold": 5,
+    "freeze_break_push": [
+     0,
+     2,
+     0
+    ],
+    "freeze_legal_max": 0,
+    "tower_mode": "packet",
+    "tower_consumption_per_turn": 1,
+    "tower_siege_damage": 1,
+    "siege_engage": false,
+    "siege_cap": 12,
+    "crash_options": [
+     [
+      [
+       1.0,
+       false
+      ],
+      [
+       0.0,
+       true
+      ]
+     ],
+     [
+      [
+       2.0,
+       false
+      ],
+      [
+       0.0,
+       true
+      ]
+     ],
+     [
+      [
+       3.0,
+       false
+      ],
+      [
+       2.0,
+       true
+      ]
+     ]
+    ],
+    "vision_turns": 2,
+    "farm_per_hp": 0.0,
+    "collect_contest": 0.9,
+    "collect_contest_enemy_tower": 0.5,
+    "collect_safe": 0.8,
+    "collect_safe_slope": 0.2,
+    "zone_contest": 0.3,
+    "zone_under_tower": 0.15,
+    "gank_base": 0.15,
+    "gank_position": 0.1,
+    "gank_action": [
+     0.0,
+     0.05,
+     -0.02,
+     0.0,
+     0.05,
+     -0.02
+    ],
+    "gank_strength": 0.02,
+    "gank_max": 0.4,
+    "vision_reduction": 0.5,
+    "gank_loss": 5.0,
+    "posture_cap": [
+     null,
+     null,
+     null,
+     null,
+     null,
+     null
+    ]
+   },
+   "value": 0.0,
+   "path": {
+    "value": 0.0,
+    "farm": [
+     0.0,
+     0.0
+    ],
+    "farm_available": [
+     0.0,
+     0.0
+    ],
+    "farm_missed": [
+     0.0,
+     0.0
+    ],
+    "crash_resources": [
+     0.0,
+     0.0
+    ],
+    "gank_loss": [
+     30.249999999999993,
+     30.249999999999993
+    ],
+    "crashes_by_size": {
+     "A": [
+      0.0,
+      0.0,
+      0.0
+     ],
+     "B": [
+      0.0,
+      0.0,
+      0.0
+     ]
+    },
+    "crash_hp": [
+     0.0,
+     0.0
+    ],
+    "vision_choices": [
+     0.0,
+     0.0
+    ],
+    "contest_share": [
+     1.0,
+     1.0
+    ],
+    "action_freq": [
+     {
+      "SP": 0.53125,
+      "SH": 0.0,
+      "F": 0.46875
+     },
+     {
+      "SP": 0.53125,
+      "SH": 0.0,
+      "F": 0.46875
+     }
+    ],
+    "wave_freq": [
+     {
+      "SP": 0.53125,
+      "SH": 0.0,
+      "F": 0.46875
+     },
+     {
+      "SP": 0.53125,
+      "SH": 0.0,
+      "F": 0.46875
+     }
+    ],
+    "support_size": []
+   },
+   "nodes": {
+    "nodes": 905,
+    "contest": 1.0,
+    "wave": [
+     0.5180864168323157,
+     0.1735010790794754,
+     0.30841250408820886
+    ],
+    "freeze_legal_nodes": 378,
+    "freeze_prob_when_legal": 0.738395016401664
+   },
+   "vision": {
+    "small": 0.9259259259259259,
+    "medium": 0.0,
+    "large": 0.9,
+    "small_nodes": 27,
+    "medium_nodes": 23,
+    "large_nodes": 10
+   },
+   "states": 905,
+   "distinct": 71,
+   "mixed": 52,
+   "max_gap": 6.661338147750939e-16,
+   "seconds": 0.11459270003251731,
+   "events": {
+    "crash_small": 578,
+    "crash_medium": 400,
+    "crash_large": 60,
+    "crash_onto_siege": 0,
+    "freeze_held": 394,
+    "freeze_broken": 276,
+    "bounce": 0,
+    "siege_persists": 0,
+    "safe_disengages": 0,
+    "tower_farm": 0,
+    "farm_contest_vs_safe": 3575,
+    "minions_deleted": 126
+   },
+   "events_seconds": 0.1843364997766912,
+   "baselines": {
+    "uniform": {
+     "exploitability": 11.860403464012775,
+     "value_vs_equilibrium": -11.711268140664597,
+     "farm": 0.0,
+     "crash": 0.0,
+     "gank": -11.860403464012773
+    },
+    "aggressive": {
+     "exploitability": 19.45,
+     "value_vs_equilibrium": -17.074926394303443,
+     "farm": 0.0,
+     "crash": 0.0,
+     "gank": -19.450000000000003
+    },
+    "freeze_contest": {
+     "exploitability": 1.8499999999999952,
+     "value_vs_equilibrium": 0.0,
+     "farm": 0.0,
+     "crash": -2.0,
+     "gank": 0.15000000000000213
+    },
+    "passive_safe": {
+     "exploitability": 4.850000000000003,
+     "value_vs_equilibrium": -1.4999999999999991,
+     "farm": 0.0,
+     "crash": -2.0,
+     "gank": -2.849999999999966
+    },
+    "stack_builder": {
+     "exploitability": 4.850000000000003,
+     "value_vs_equilibrium": -1.4999999999999991,
+     "farm": 0.0,
+     "crash": -2.0,
+     "gank": -2.849999999999966
+    },
+    "release_safe": {
+     "exploitability": 19.45,
+     "value_vs_equilibrium": -17.074926394303443,
+     "farm": 0.0,
+     "crash": 0.0,
+     "gank": -19.450000000000003
+    },
+    "contest_slowpush": {
+     "exploitability": 4.850000000000003,
+     "value_vs_equilibrium": -1.4999999999999991,
+     "farm": 0.0,
+     "crash": -2.0,
+     "gank": -2.849999999999966
+    }
+   },
+   "v1_baselines": {
+    "uniform": 11.860403464012775,
+    "always_shove": 19.45,
+    "always_slowpush": 4.850000000000003,
+    "defensive_freeze": 1.8499999999999952,
+    "stack_then_shove": 4.850000000000003
+   }
+  },
+  "1 + farming economy": {
+   "change": "minion kills pay farm_per_hp x collection efficiency (Contest only)",
+   "config": {
+    "base": 4,
+    "tower": 2,
+    "ticks_per_turn": 2,
+    "spawn_interval": 4,
+    "horizon": 32,
+    "wave_hp": 2,
+    "max_stacks": 2,
+    "cap_rule": "overflow",
+    "queue_fights": true,
+    "positioning": false,
+    "damage_law": "lanchester",
+    "shove_damage": 1,
+    "tower_damage": 1,
+    "pressure_kappa": [
+     0,
+     1,
+     0
+    ],
+    "slowpush_line": 0,
+    "slowpush_mode": "hold",
+    "slowpush_creep_period": 1,
+    "freeze_line": -1,
+    "freeze_break_threshold": 5,
+    "freeze_break_push": [
+     0,
+     2,
+     0
+    ],
+    "freeze_legal_max": 0,
+    "tower_mode": "packet",
+    "tower_consumption_per_turn": 1,
+    "tower_siege_damage": 1,
+    "siege_engage": false,
+    "siege_cap": 12,
+    "crash_options": [
+     [
+      [
+       1.0,
+       false
+      ],
+      [
+       0.0,
+       true
+      ]
+     ],
+     [
+      [
+       2.0,
+       false
+      ],
+      [
+       0.0,
+       true
+      ]
+     ],
+     [
+      [
+       3.0,
+       false
+      ],
+      [
+       2.0,
+       true
+      ]
+     ]
+    ],
+    "vision_turns": 2,
+    "farm_per_hp": 0.5,
+    "collect_contest": 0.9,
+    "collect_contest_enemy_tower": 0.5,
+    "collect_safe": 0.8,
+    "collect_safe_slope": 0.2,
+    "zone_contest": 0.3,
+    "zone_under_tower": 0.15,
+    "gank_base": 0.15,
+    "gank_position": 0.1,
+    "gank_action": [
+     0.0,
+     0.05,
+     -0.02,
+     0.0,
+     0.05,
+     -0.02
+    ],
+    "gank_strength": 0.02,
+    "gank_max": 0.4,
+    "vision_reduction": 0.5,
+    "gank_loss": 5.0,
+    "posture_cap": [
+     null,
+     null,
+     null,
+     null,
+     null,
+     null
+    ]
+   },
+   "value": 0.0,
+   "path": {
+    "value": 0.0,
+    "farm": [
+     10.080000000000004,
+     10.080000000000004
+    ],
+    "farm_available": [
+     16.0,
+     16.0
+    ],
+    "farm_missed": [
+     5.919999999999996,
+     5.919999999999996
+    ],
+    "crash_resources": [
+     0.0,
+     0.0
+    ],
+    "gank_loss": [
+     30.499999999999993,
+     30.499999999999993
+    ],
+    "crashes_by_size": {
+     "A": [
+      0.0,
+      0.0,
+      0.0
+     ],
+     "B": [
+      0.0,
+      0.0,
+      0.0
+     ]
+    },
+    "crash_hp": [
+     0.0,
+     0.0
+    ],
+    "vision_choices": [
+     0.0,
+     0.0
+    ],
+    "contest_share": [
+     1.0,
+     1.0
+    ],
+    "action_freq": [
+     {
+      "SP": 0.5,
+      "SH": 0.03125,
+      "F": 0.46875
+     },
+     {
+      "SP": 0.5,
+      "SH": 0.03125,
+      "F": 0.46875
+     }
+    ],
+    "wave_freq": [
+     {
+      "SP": 0.5,
+      "SH": 0.03125,
+      "F": 0.46875
+     },
+     {
+      "SP": 0.5,
+      "SH": 0.03125,
+      "F": 0.46875
+     }
+    ],
+    "support_size": []
+   },
+   "nodes": {
+    "nodes": 905,
+    "contest": 1.0,
+    "wave": [
+     0.4887172869802629,
+     0.2031001883214837,
+     0.30818252469825347
+    ],
+    "freeze_legal_nodes": 378,
+    "freeze_prob_when_legal": 0.7378444043701571
+   },
+   "vision": {
+    "small": 0.9259259259259259,
+    "medium": 0.0,
+    "large": 0.9,
+    "small_nodes": 27,
+    "medium_nodes": 23,
+    "large_nodes": 10
+   },
+   "states": 905,
+   "distinct": 71,
+   "mixed": 54,
+   "max_gap": 4.440892098500626e-16,
+   "seconds": 0.10599460010416806,
+   "events": {
+    "crash_small": 578,
+    "crash_medium": 400,
+    "crash_large": 60,
+    "crash_onto_siege": 0,
+    "freeze_held": 394,
+    "freeze_broken": 276,
+    "bounce": 0,
+    "siege_persists": 0,
+    "safe_disengages": 0,
+    "tower_farm": 0,
+    "farm_contest_vs_safe": 3575,
+    "minions_deleted": 126
+   },
+   "events_seconds": 0.17606079997494817,
+   "baselines": {
+    "uniform": {
+     "exploitability": 13.974934276969869,
+     "value_vs_equilibrium": -13.776364935517574,
+     "farm": -2.3014993624668563,
+     "crash": 0.062492370838299394,
+     "gank": -11.735927285341294
+    },
+    "aggressive": {
+     "exploitability": 24.77749999999999,
+     "value_vs_equilibrium": -21.59624095157258,
+     "farm": -5.527500000000002,
+     "crash": 0.0,
+     "gank": -19.25
+    },
+    "freeze_contest": {
+     "exploitability": 5.390000000000001,
+     "value_vs_equilibrium": -0.06500000000000006,
+     "farm": -5.040000000000001,
+     "crash": 0.0,
+     "gank": -0.34999999999999787
+    },
+    "passive_safe": {
+     "exploitability": 8.389999999999999,
+     "value_vs_equilibrium": -1.564999999999999,
+     "farm": -5.040000000000001,
+     "crash": 0.0,
+     "gank": -3.349999999999966
+    },
+    "stack_builder": {
+     "exploitability": 8.389999999999999,
+     "value_vs_equilibrium": -1.564999999999999,
+     "farm": -5.040000000000001,
+     "crash": 0.0,
+     "gank": -3.349999999999966
+    },
+    "release_safe": {
+     "exploitability": 24.77749999999999,
+     "value_vs_equilibrium": -21.59624095157258,
+     "farm": -5.527500000000002,
+     "crash": 0.0,
+     "gank": -19.25
+    },
+    "contest_slowpush": {
+     "exploitability": 8.389999999999999,
+     "value_vs_equilibrium": -1.564999999999999,
+     "farm": -5.040000000000001,
+     "crash": 0.0,
+     "gank": -3.349999999999966
+    }
+   }
+  },
+  "2 + Contest/Safe positioning": {
+   "change": "6 combined actions; Safe caps exposure at own -1; flat Contest risk",
+   "config": {
+    "base": 4,
+    "tower": 2,
+    "ticks_per_turn": 2,
+    "spawn_interval": 4,
+    "horizon": 32,
+    "wave_hp": 2,
+    "max_stacks": 2,
+    "cap_rule": "overflow",
+    "queue_fights": true,
+    "positioning": true,
+    "damage_law": "lanchester",
+    "shove_damage": 1,
+    "tower_damage": 1,
+    "pressure_kappa": [
+     0,
+     1,
+     0
+    ],
+    "slowpush_line": 0,
+    "slowpush_mode": "hold",
+    "slowpush_creep_period": 1,
+    "freeze_line": -1,
+    "freeze_break_threshold": 5,
+    "freeze_break_push": [
+     0,
+     2,
+     0
+    ],
+    "freeze_legal_max": 0,
+    "tower_mode": "packet",
+    "tower_consumption_per_turn": 1,
+    "tower_siege_damage": 1,
+    "siege_engage": false,
+    "siege_cap": 12,
+    "crash_options": [
+     [
+      [
+       1.0,
+       false
+      ],
+      [
+       0.0,
+       true
+      ]
+     ],
+     [
+      [
+       2.0,
+       false
+      ],
+      [
+       0.0,
+       true
+      ]
+     ],
+     [
+      [
+       3.0,
+       false
+      ],
+      [
+       2.0,
+       true
+      ]
+     ]
+    ],
+    "vision_turns": 2,
+    "farm_per_hp": 0.5,
+    "collect_contest": 0.9,
+    "collect_contest_enemy_tower": 0.5,
+    "collect_safe": 0.8,
+    "collect_safe_slope": 0.2,
+    "zone_contest": 0.3,
+    "zone_under_tower": 0.15,
+    "gank_base": 0.15,
+    "gank_position": 0.1,
+    "gank_action": [
+     0.02,
+     0.05,
+     0.02,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "gank_strength": 0.02,
+    "gank_max": 0.4,
+    "vision_reduction": 0.5,
+    "gank_loss": 5.0,
+    "posture_cap": [
+     null,
+     null,
+     null,
+     -1,
+     -1,
+     -1
+    ]
+   },
+   "value": 0.0,
+   "path": {
+    "value": 0.0,
+    "farm": [
+     10.080000000000004,
+     10.080000000000004
+    ],
+    "farm_available": [
+     16.0,
+     16.0
+    ],
+    "farm_missed": [
+     5.919999999999996,
+     5.919999999999996
+    ],
+    "crash_resources": [
+     0.0,
+     0.0
+    ],
+    "gank_loss": [
+     35.00000000000002,
+     35.00000000000002
+    ],
+    "crashes_by_size": {
+     "A": [
+      0.0,
+      0.0,
+      0.0
+     ],
+     "B": [
+      0.0,
+      0.0,
+      0.0
+     ]
+    },
+    "crash_hp": [
+     0.0,
+     0.0
+    ],
+    "vision_choices": [
+     0.0,
+     0.0
+    ],
+    "contest_share": [
+     0.96875,
+     0.96875
+    ],
+    "action_freq": [
+     {
+      "SP-C": 0.9375,
+      "SH-C": 0.03125,
+      "SP-S": 0.03125,
+      "SH-S": 0.0,
+      "F-C": 0.0,
+      "F-S": 0.0
+     },
+     {
+      "SP-C": 0.9375,
+      "SH-C": 0.03125,
+      "SP-S": 0.03125,
+      "SH-S": 0.0,
+      "F-C": 0.0,
+      "F-S": 0.0
+     }
+    ],
+    "wave_freq": [
+     {
+      "SP": 0.96875,
+      "SH": 0.03125,
+      "F": 0.0
+     },
+     {
+      "SP": 0.96875,
+      "SH": 0.03125,
+      "F": 0.0
+     }
+    ],
+    "support_size": []
+   },
+   "nodes": {
+    "nodes": 1017,
+    "contest": 0.4914623013784378,
+    "wave": [
+     0.7417790613469775,
+     0.1817275431615456,
+     0.07649339549147698
+    ],
+    "freeze_legal_nodes": 405,
+    "freeze_prob_when_legal": 0.1920834153452644
+   },
+   "vision": {
+    "small": 0.0,
+    "medium": 0.0,
+    "large": 0.0,
+    "small_nodes": 27,
+    "medium_nodes": 23,
+    "large_nodes": 10
+   },
+   "states": 1017,
+   "distinct": 79,
+   "mixed": 62,
+   "max_gap": 6.661338147750939e-16,
+   "seconds": 0.2672117000911385,
+   "events": {
+    "crash_small": 1744,
+    "crash_medium": 1416,
+    "crash_large": 240,
+    "crash_onto_siege": 0,
+    "freeze_held": 1852,
+    "freeze_broken": 720,
+    "bounce": 0,
+    "siege_persists": 0,
+    "safe_disengages": 11597,
+    "tower_farm": 0,
+    "farm_contest_vs_safe": 16432,
+    "minions_deleted": 504
+   },
+   "events_seconds": 0.8198332998435944,
+   "baselines": {
+    "uniform": {
+     "exploitability": 11.714453281941362,
+     "value_vs_equilibrium": -8.563269174713476,
+     "farm": -6.172843946043912,
+     "crash": -1.888798586354125,
+     "gank": -3.6528107495434448
+    },
+    "aggressive": {
+     "exploitability": 23.177500000000006,
+     "value_vs_equilibrium": -21.194999999999997,
+     "farm": -5.527500000000002,
+     "crash": 0.0,
+     "gank": -17.64999999999999
+    },
+    "freeze_contest": {
+     "exploitability": 12.254999999999999,
+     "value_vs_equilibrium": -1.6599999999999995,
+     "farm": -3.955000000000002,
+     "crash": -2.0,
+     "gank": -6.300000000000004
+    },
+    "passive_safe": {
+     "exploitability": 15.960000000000004,
+     "value_vs_equilibrium": -2.934999999999999,
+     "farm": -10.660000000000004,
+     "crash": -2.0,
+     "gank": -3.299999999999983
+    },
+    "stack_builder": {
+     "exploitability": 12.134999999999998,
+     "value_vs_equilibrium": -0.26499999999999996,
+     "farm": -3.5100000000000016,
+     "crash": -2.0,
+     "gank": -6.625000000000007
+    },
+    "release_safe": {
+     "exploitability": 4.2299999999999995,
+     "value_vs_equilibrium": -2.934999999999999,
+     "farm": -10.130000000000006,
+     "crash": 0.0,
+     "gank": 5.900000000000009
+    },
+    "contest_slowpush": {
+     "exploitability": 12.134999999999998,
+     "value_vs_equilibrium": -0.26499999999999996,
+     "farm": -3.5100000000000016,
+     "crash": -2.0,
+     "gank": -6.625000000000007
+    }
+   }
+  },
+  "3 + stricter Freeze legality": {
+   "change": "Freeze only with enemy minions at own x <= -1",
+   "config": {
+    "base": 4,
+    "tower": 2,
+    "ticks_per_turn": 2,
+    "spawn_interval": 4,
+    "horizon": 32,
+    "wave_hp": 2,
+    "max_stacks": 2,
+    "cap_rule": "overflow",
+    "queue_fights": true,
+    "positioning": true,
+    "damage_law": "lanchester",
+    "shove_damage": 1,
+    "tower_damage": 1,
+    "pressure_kappa": [
+     0,
+     1,
+     0
+    ],
+    "slowpush_line": 0,
+    "slowpush_mode": "hold",
+    "slowpush_creep_period": 1,
+    "freeze_line": -1,
+    "freeze_break_threshold": 5,
+    "freeze_break_push": [
+     0,
+     2,
+     0
+    ],
+    "freeze_legal_max": -1,
+    "tower_mode": "packet",
+    "tower_consumption_per_turn": 1,
+    "tower_siege_damage": 1,
+    "siege_engage": false,
+    "siege_cap": 12,
+    "crash_options": [
+     [
+      [
+       1.0,
+       false
+      ],
+      [
+       0.0,
+       true
+      ]
+     ],
+     [
+      [
+       2.0,
+       false
+      ],
+      [
+       0.0,
+       true
+      ]
+     ],
+     [
+      [
+       3.0,
+       false
+      ],
+      [
+       2.0,
+       true
+      ]
+     ]
+    ],
+    "vision_turns": 2,
+    "farm_per_hp": 0.5,
+    "collect_contest": 0.9,
+    "collect_contest_enemy_tower": 0.5,
+    "collect_safe": 0.8,
+    "collect_safe_slope": 0.2,
+    "zone_contest": 0.3,
+    "zone_under_tower": 0.15,
+    "gank_base": 0.15,
+    "gank_position": 0.1,
+    "gank_action": [
+     0.02,
+     0.05,
+     0.02,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "gank_strength": 0.02,
+    "gank_max": 0.4,
+    "vision_reduction": 0.5,
+    "gank_loss": 5.0,
+    "posture_cap": [
+     null,
+     null,
+     null,
+     -1,
+     -1,
+     -1
+    ]
+   },
+   "value": 0.0,
+   "path": {
+    "value": 0.0,
+    "farm": [
+     10.080000000000004,
+     10.080000000000004
+    ],
+    "farm_available": [
+     16.0,
+     16.0
+    ],
+    "farm_missed": [
+     5.919999999999996,
+     5.919999999999996
+    ],
+    "crash_resources": [
+     0.0,
+     0.0
+    ],
+    "gank_loss": [
+     35.00000000000002,
+     35.00000000000002
+    ],
+    "crashes_by_size": {
+     "A": [
+      0.0,
+      0.0,
+      0.0
+     ],
+     "B": [
+      0.0,
+      0.0,
+      0.0
+     ]
+    },
+    "crash_hp": [
+     0.0,
+     0.0
+    ],
+    "vision_choices": [
+     0.0,
+     0.0
+    ],
+    "contest_share": [
+     0.96875,
+     0.96875
+    ],
+    "action_freq": [
+     {
+      "SP-C": 0.9375,
+      "SH-C": 0.03125,
+      "SP-S": 0.03125,
+      "SH-S": 0.0
+     },
+     {
+      "SP-C": 0.9375,
+      "SH-C": 0.03125,
+      "SP-S": 0.03125,
+      "SH-S": 0.0
+     }
+    ],
+    "wave_freq": [
+     {
+      "SP": 0.96875,
+      "SH": 0.03125
+     },
+     {
+      "SP": 0.96875,
+      "SH": 0.03125
+     }
+    ],
+    "support_size": []
+   },
+   "nodes": {
+    "nodes": 801,
+    "contest": 0.46141853199932004,
+    "wave": [
+     0.8294889011770555,
+     0.1401733188007812,
+     0.030337780022163308
+    ],
+    "freeze_legal_nodes": 88,
+    "freeze_prob_when_legal": 0.27614274770173647
+   },
+   "vision": {
+    "small": 0.0,
+    "medium": 0.0,
+    "small_nodes": 27,
+    "medium_nodes": 23
+   },
+   "states": 801,
+   "distinct": 61,
+   "mixed": 30,
+   "max_gap": 6.661338147750939e-16,
+   "seconds": 0.13094380008988082,
+   "events": {
+    "crash_small": 1092,
+    "crash_medium": 360,
+    "crash_large": 0,
+    "crash_onto_siege": 0,
+    "freeze_held": 448,
+    "freeze_broken": 48,
+    "bounce": 0,
+    "siege_persists": 0,
+    "safe_disengages": 7228,
+    "tower_farm": 0,
+    "farm_contest_vs_safe": 10176,
+    "minions_deleted": 176
+   },
+   "events_seconds": 0.48627920006401837,
+   "baselines": {
+    "uniform": {
+     "exploitability": 10.494629222407601,
+     "value_vs_equilibrium": -8.613352773474977,
+     "farm": -5.7709289738453435,
+     "crash": -1.7475270256691147,
+     "gank": -2.9761732228932196
+    },
+    "aggressive": {
+     "exploitability": 23.177500000000006,
+     "value_vs_equilibrium": -21.194999999999997,
+     "farm": -5.527500000000002,
+     "crash": 0.0,
+     "gank": -17.64999999999999
+    },
+    "freeze_contest": {
+     "exploitability": 15.960000000000004,
+     "value_vs_equilibrium": -2.934999999999999,
+     "farm": -10.660000000000004,
+     "crash": -2.0,
+     "gank": -3.299999999999983
+    },
+    "passive_safe": {
+     "exploitability": 15.960000000000004,
+     "value_vs_equilibrium": -2.934999999999999,
+     "farm": -10.660000000000004,
+     "crash": -2.0,
+     "gank": -3.299999999999983
+    },
+    "stack_builder": {
+     "exploitability": 12.134999999999998,
+     "value_vs_equilibrium": -0.26499999999999996,
+     "farm": -3.5100000000000016,
+     "crash": -2.0,
+     "gank": -6.625000000000007
+    },
+    "release_safe": {
+     "exploitability": 4.2299999999999995,
+     "value_vs_equilibrium": -2.934999999999999,
+     "farm": -10.130000000000006,
+     "crash": 0.0,
+     "gank": 5.900000000000009
+    },
+    "contest_slowpush": {
+     "exploitability": 12.134999999999998,
+     "value_vs_equilibrium": -0.26499999999999996,
+     "farm": -3.5100000000000016,
+     "crash": -2.0,
+     "gank": -6.625000000000007
+    }
+   }
+  },
+  "4 + mass-based tower fire": {
+   "change": "tower removes 1 HP/tick of crashed mass instead of 1 packet/turn",
+   "config": {
+    "base": 4,
+    "tower": 2,
+    "ticks_per_turn": 2,
+    "spawn_interval": 4,
+    "horizon": 32,
+    "wave_hp": 2,
+    "max_stacks": 2,
+    "cap_rule": "overflow",
+    "queue_fights": true,
+    "positioning": true,
+    "damage_law": "lanchester",
+    "shove_damage": 1,
+    "tower_damage": 1,
+    "pressure_kappa": [
+     0,
+     1,
+     0
+    ],
+    "slowpush_line": 0,
+    "slowpush_mode": "hold",
+    "slowpush_creep_period": 1,
+    "freeze_line": -1,
+    "freeze_break_threshold": 5,
+    "freeze_break_push": [
+     0,
+     2,
+     0
+    ],
+    "freeze_legal_max": -1,
+    "tower_mode": "mass",
+    "tower_consumption_per_turn": 1,
+    "tower_siege_damage": 1,
+    "siege_engage": false,
+    "siege_cap": 24,
+    "crash_options": [
+     [
+      [
+       1.0,
+       false
+      ],
+      [
+       0.0,
+       true
+      ]
+     ],
+     [
+      [
+       2.0,
+       false
+      ],
+      [
+       0.0,
+       true
+      ]
+     ],
+     [
+      [
+       3.0,
+       false
+      ],
+      [
+       2.0,
+       true
+      ]
+     ]
+    ],
+    "vision_turns": 2,
+    "farm_per_hp": 0.5,
+    "collect_contest": 0.9,
+    "collect_contest_enemy_tower": 0.5,
+    "collect_safe": 0.8,
+    "collect_safe_slope": 0.2,
+    "zone_contest": 0.3,
+    "zone_under_tower": 0.15,
+    "gank_base": 0.15,
+    "gank_position": 0.1,
+    "gank_action": [
+     0.02,
+     0.05,
+     0.02,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "gank_strength": 0.02,
+    "gank_max": 0.4,
+    "vision_reduction": 0.5,
+    "gank_loss": 5.0,
+    "posture_cap": [
+     null,
+     null,
+     null,
+     -1,
+     -1,
+     -1
+    ]
+   },
+   "value": 0.0,
+   "path": {
+    "value": 0.0,
+    "farm": [
+     10.080000000000004,
+     10.080000000000004
+    ],
+    "farm_available": [
+     16.0,
+     16.0
+    ],
+    "farm_missed": [
+     5.919999999999996,
+     5.919999999999996
+    ],
+    "crash_resources": [
+     0.0,
+     0.0
+    ],
+    "gank_loss": [
+     35.00000000000002,
+     35.00000000000002
+    ],
+    "crashes_by_size": {
+     "A": [
+      0.0,
+      0.0,
+      0.0
+     ],
+     "B": [
+      0.0,
+      0.0,
+      0.0
+     ]
+    },
+    "crash_hp": [
+     0.0,
+     0.0
+    ],
+    "vision_choices": [
+     0.0,
+     0.0
+    ],
+    "contest_share": [
+     0.96875,
+     0.96875
+    ],
+    "action_freq": [
+     {
+      "SP-C": 0.9375,
+      "SH-C": 0.03125,
+      "SP-S": 0.03125,
+      "SH-S": 0.0
+     },
+     {
+      "SP-C": 0.9375,
+      "SH-C": 0.03125,
+      "SP-S": 0.03125,
+      "SH-S": 0.0
+     }
+    ],
+    "wave_freq": [
+     {
+      "SP": 0.96875,
+      "SH": 0.03125
+     },
+     {
+      "SP": 0.96875,
+      "SH": 0.03125
+     }
+    ],
+    "support_size": []
+   },
+   "nodes": {
+    "nodes": 1495,
+    "contest": 0.48401086563976947,
+    "wave": [
+     0.8762662198498358,
+     0.10747922376370755,
+     0.016254556386456728
+    ],
+    "freeze_legal_nodes": 88,
+    "freeze_prob_when_legal": 0.27614274770173647
+   },
+   "vision": {
+    "small": 0.0,
+    "medium": 0.0,
+    "small_nodes": 77,
+    "medium_nodes": 34
+   },
+   "states": 1495,
+   "distinct": 127,
+   "mixed": 26,
+   "max_gap": 6.661338147750939e-16,
+   "seconds": 0.20269889989867806,
+   "events": {
+    "crash_small": 1176,
+    "crash_medium": 360,
+    "crash_large": 0,
+    "crash_onto_siege": 0,
+    "freeze_held": 448,
+    "freeze_broken": 48,
+    "bounce": 320,
+    "siege_persists": 2048,
+    "safe_disengages": 12938,
+    "tower_farm": 9232,
+    "farm_contest_vs_safe": 21952,
+    "minions_deleted": 176
+   },
+   "events_seconds": 0.9053334000054747,
+   "baselines": {
+    "uniform": {
+     "exploitability": 11.576646357779973,
+     "value_vs_equilibrium": -8.613352773474977,
+     "farm": -6.852916659839094,
+     "crash": -1.747619602829218,
+     "gank": -2.976110095111668
+    },
+    "aggressive": {
+     "exploitability": 23.177500000000006,
+     "value_vs_equilibrium": -21.194999999999997,
+     "farm": -5.527500000000002,
+     "crash": 0.0,
+     "gank": -17.64999999999999
+    },
+    "freeze_contest": {
+     "exploitability": 17.320000000000007,
+     "value_vs_equilibrium": -2.934999999999999,
+     "farm": -12.020000000000005,
+     "crash": -2.0,
+     "gank": -3.299999999999983
+    },
+    "passive_safe": {
+     "exploitability": 17.320000000000007,
+     "value_vs_equilibrium": -2.934999999999999,
+     "farm": -12.020000000000005,
+     "crash": -2.0,
+     "gank": -3.299999999999983
+    },
+    "stack_builder": {
+     "exploitability": 13.665,
+     "value_vs_equilibrium": -0.26499999999999996,
+     "farm": -5.040000000000001,
+     "crash": -2.0,
+     "gank": -6.625000000000007
+    },
+    "release_safe": {
+     "exploitability": 4.2299999999999995,
+     "value_vs_equilibrium": -2.934999999999999,
+     "farm": -10.130000000000006,
+     "crash": 0.0,
+     "gank": 5.900000000000009
+    },
+    "contest_slowpush": {
+     "exploitability": 13.665,
+     "value_vs_equilibrium": -0.26499999999999996,
+     "farm": -5.040000000000001,
+     "crash": -2.0,
+     "gank": -6.625000000000007
+    }
+   }
+  },
+  "5 + no minion deletion at the HP cap": {
+   "change": "full stacks queue reinforcements (which fight with them) instead of deleting HP",
+   "config": {
+    "base": 4,
+    "tower": 2,
+    "ticks_per_turn": 2,
+    "spawn_interval": 4,
+    "horizon": 32,
+    "wave_hp": 2,
+    "max_stacks": 2,
+    "cap_rule": "block",
+    "queue_fights": true,
+    "positioning": true,
+    "damage_law": "lanchester",
+    "shove_damage": 1,
+    "tower_damage": 1,
+    "pressure_kappa": [
+     0,
+     1,
+     0
+    ],
+    "slowpush_line": 0,
+    "slowpush_mode": "hold",
+    "slowpush_creep_period": 1,
+    "freeze_line": -1,
+    "freeze_break_threshold": 5,
+    "freeze_break_push": [
+     0,
+     2,
+     0
+    ],
+    "freeze_legal_max": -1,
+    "tower_mode": "mass",
+    "tower_consumption_per_turn": 1,
+    "tower_siege_damage": 1,
+    "siege_engage": false,
+    "siege_cap": 24,
+    "crash_options": [
+     [
+      [
+       1.0,
+       false
+      ],
+      [
+       0.0,
+       true
+      ]
+     ],
+     [
+      [
+       2.0,
+       false
+      ],
+      [
+       0.0,
+       true
+      ]
+     ],
+     [
+      [
+       3.0,
+       false
+      ],
+      [
+       2.0,
+       true
+      ]
+     ]
+    ],
+    "vision_turns": 2,
+    "farm_per_hp": 0.5,
+    "collect_contest": 0.9,
+    "collect_contest_enemy_tower": 0.5,
+    "collect_safe": 0.8,
+    "collect_safe_slope": 0.2,
+    "zone_contest": 0.3,
+    "zone_under_tower": 0.15,
+    "gank_base": 0.15,
+    "gank_position": 0.1,
+    "gank_action": [
+     0.02,
+     0.05,
+     0.02,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "gank_strength": 0.02,
+    "gank_max": 0.4,
+    "vision_reduction": 0.5,
+    "gank_loss": 5.0,
+    "posture_cap": [
+     null,
+     null,
+     null,
+     -1,
+     -1,
+     -1
+    ]
+   },
+   "value": 0.0,
+   "path": {
+    "value": 0.0,
+    "farm": [
+     10.080000000000004,
+     10.080000000000004
+    ],
+    "farm_available": [
+     16.0,
+     16.0
+    ],
+    "farm_missed": [
+     5.919999999999996,
+     5.919999999999996
+    ],
+    "crash_resources": [
+     0.0,
+     0.0
+    ],
+    "gank_loss": [
+     35.00000000000002,
+     35.00000000000002
+    ],
+    "crashes_by_size": {
+     "A": [
+      0.0,
+      0.0,
+      0.0
+     ],
+     "B": [
+      0.0,
+      0.0,
+      0.0
+     ]
+    },
+    "crash_hp": [
+     0.0,
+     0.0
+    ],
+    "vision_choices": [
+     0.0,
+     0.0
+    ],
+    "contest_share": [
+     0.96875,
+     0.96875
+    ],
+    "action_freq": [
+     {
+      "SP-C": 0.9375,
+      "SH-C": 0.03125,
+      "SP-S": 0.03125,
+      "SH-S": 0.0
+     },
+     {
+      "SP-C": 0.9375,
+      "SH-C": 0.03125,
+      "SP-S": 0.03125,
+      "SH-S": 0.0
+     }
+    ],
+    "wave_freq": [
+     {
+      "SP": 0.96875,
+      "SH": 0.03125
+     },
+     {
+      "SP": 0.96875,
+      "SH": 0.03125
+     }
+    ],
+    "support_size": []
+   },
+   "nodes": {
+    "nodes": 3969,
+    "contest": 0.5334952965428013,
+    "wave": [
+     0.7985991492387244,
+     0.16829042997157884,
+     0.03311042078969703
+    ],
+    "freeze_legal_nodes": 743,
+    "freeze_prob_when_legal": 0.17687114416461308
+   },
+   "vision": {
+    "small": 0.03271028037383177,
+    "medium": 0.0,
+    "large": 0.04666666666666667,
+    "small_nodes": 214,
+    "medium_nodes": 206,
+    "large_nodes": 150
+   },
+   "states": 3969,
+   "distinct": 755,
+   "mixed": 146,
+   "max_gap": 6.661338147750939e-16,
+   "seconds": 1.0033553999383003,
+   "events": {
+    "crash_small": 6036,
+    "crash_medium": 5456,
+    "crash_large": 4184,
+    "crash_onto_siege": 8828,
+    "freeze_held": 2924,
+    "freeze_broken": 3152,
+    "bounce": 1200,
+    "siege_persists": 28552,
+    "safe_disengages": 38010,
+    "tower_farm": 45700,
+    "farm_contest_vs_safe": 69500,
+    "minions_deleted": 0
+   },
+   "events_seconds": 3.0564953999128193,
+   "baselines": {
+    "uniform": {
+     "exploitability": 14.054346197848789,
+     "value_vs_equilibrium": -8.613352773474977,
+     "farm": -6.852916659839082,
+     "crash": -2.8851013518869877,
+     "gank": -4.316328186122686
+    },
+    "aggressive": {
+     "exploitability": 23.177500000000006,
+     "value_vs_equilibrium": -21.194999999999997,
+     "farm": -5.527500000000002,
+     "crash": 0.0,
+     "gank": -17.64999999999999
+    },
+    "freeze_contest": {
+     "exploitability": 18.507500000000007,
+     "value_vs_equilibrium": -2.934999999999999,
+     "farm": -8.695000000000004,
+     "crash": -6.0,
+     "gank": -3.812499999999986
+    },
+    "passive_safe": {
+     "exploitability": 18.375000000000007,
+     "value_vs_equilibrium": -2.934999999999999,
+     "farm": -9.600000000000005,
+     "crash": -6.0,
+     "gank": -2.774999999999981
+    },
+    "stack_builder": {
+     "exploitability": 14.749999999999998,
+     "value_vs_equilibrium": -0.26499999999999996,
+     "farm": -1.4000000000000004,
+     "crash": -6.0,
+     "gank": -7.350000000000005
+    },
+    "release_safe": {
+     "exploitability": 4.2299999999999995,
+     "value_vs_equilibrium": -2.934999999999999,
+     "farm": -10.130000000000006,
+     "crash": 0.0,
+     "gank": 5.900000000000009
+    },
+    "contest_slowpush": {
+     "exploitability": 14.749999999999998,
+     "value_vs_equilibrium": -0.26499999999999996,
+     "farm": -1.4000000000000004,
+     "crash": -6.0,
+     "gank": -7.350000000000005
+    }
+   }
+  },
+  "6 + finer HP units (W = 4)": {
+   "change": "4 HP per wave, same per-wave firepower: fights last a spawn interval",
+   "config": {
+    "base": 4,
+    "tower": 2,
+    "ticks_per_turn": 2,
+    "spawn_interval": 4,
+    "horizon": 32,
+    "wave_hp": 4,
+    "max_stacks": 2,
+    "cap_rule": "block",
+    "queue_fights": true,
+    "positioning": true,
+    "damage_law": "lanchester",
+    "shove_damage": 1,
+    "tower_damage": 1,
+    "pressure_kappa": [
+     0,
+     1,
+     0
+    ],
+    "slowpush_line": 0,
+    "slowpush_mode": "hold",
+    "slowpush_creep_period": 1,
+    "freeze_line": -1,
+    "freeze_break_threshold": 10,
+    "freeze_break_push": [
+     0,
+     4,
+     0
+    ],
+    "freeze_legal_max": -1,
+    "tower_mode": "mass",
+    "tower_consumption_per_turn": 1,
+    "tower_siege_damage": 1,
+    "siege_engage": false,
+    "siege_cap": 48,
+    "crash_options": [
+     [
+      [
+       1.0,
+       false
+      ],
+      [
+       0.0,
+       true
+      ]
+     ],
+     [
+      [
+       2.0,
+       false
+      ],
+      [
+       0.0,
+       true
+      ]
+     ],
+     [
+      [
+       3.0,
+       false
+      ],
+      [
+       2.0,
+       true
+      ]
+     ]
+    ],
+    "vision_turns": 2,
+    "farm_per_hp": 0.25,
+    "collect_contest": 0.9,
+    "collect_contest_enemy_tower": 0.5,
+    "collect_safe": 0.8,
+    "collect_safe_slope": 0.2,
+    "zone_contest": 0.3,
+    "zone_under_tower": 0.15,
+    "gank_base": 0.15,
+    "gank_position": 0.1,
+    "gank_action": [
+     0.02,
+     0.05,
+     0.02,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "gank_strength": 0.02,
+    "gank_max": 0.4,
+    "vision_reduction": 0.5,
+    "gank_loss": 5.0,
+    "posture_cap": [
+     null,
+     null,
+     null,
+     -1,
+     -1,
+     -1
+    ]
+   },
+   "value": 0.0,
+   "path": {
+    "value": 0.0,
+    "farm": [
+     9.650000000000004,
+     9.650000000000004
+    ],
+    "farm_available": [
+     15.5,
+     15.5
+    ],
+    "farm_missed": [
+     5.849999999999996,
+     5.849999999999996
+    ],
+    "crash_resources": [
+     0.0,
+     0.0
+    ],
+    "gank_loss": [
+     34.70000000000002,
+     34.70000000000002
+    ],
+    "crashes_by_size": {
+     "A": [
+      0.0,
+      0.0,
+      0.0
+     ],
+     "B": [
+      0.0,
+      0.0,
+      0.0
+     ]
+    },
+    "crash_hp": [
+     0.0,
+     0.0
+    ],
+    "vision_choices": [
+     0.0,
+     0.0
+    ],
+    "contest_share": [
+     0.90625,
+     0.90625
+    ],
+    "action_freq": [
+     {
+      "SP-C": 0.84375,
+      "SH-C": 0.0625,
+      "SP-S": 0.09375,
+      "SH-S": 0.0
+     },
+     {
+      "SP-C": 0.84375,
+      "SH-C": 0.0625,
+      "SP-S": 0.09375,
+      "SH-S": 0.0
+     }
+    ],
+    "wave_freq": [
+     {
+      "SP": 0.9375,
+      "SH": 0.0625
+     },
+     {
+      "SP": 0.9375,
+      "SH": 0.0625
+     }
+    ],
+    "support_size": []
+   },
+   "nodes": {
+    "nodes": 37245,
+    "contest": 0.4995908875492906,
+    "wave": [
+     0.6712191446480745,
+     0.31398420544583666,
+     0.014796649906089084
+    ],
+    "freeze_legal_nodes": 12325,
+    "freeze_prob_when_legal": 0.044714095395723165
+   },
+   "vision": {
+    "large": 0.0,
+    "small": 0.0037105751391465678,
+    "medium": 0.0,
+    "large_nodes": 840,
+    "small_nodes": 539,
+    "medium_nodes": 627
+   },
+   "states": 37245,
+   "distinct": 9354,
+   "mixed": 1983,
+   "max_gap": 1.7763568394002505e-15,
+   "seconds": 13.12012350000441,
+   "events": {
+    "crash_small": 33668,
+    "crash_medium": 29004,
+    "crash_large": 33384,
+    "crash_onto_siege": 62004,
+    "freeze_held": 9780,
+    "freeze_broken": 16752,
+    "bounce": 31092,
+    "siege_persists": 395184,
+    "safe_disengages": 400774,
+    "tower_farm": 495836,
+    "farm_contest_vs_safe": 783180,
+    "minions_deleted": 0
+   },
+   "events_seconds": 35.16765549988486,
+   "baselines": {
+    "uniform": {
+     "exploitability": 10.088601289551319,
+     "value_vs_equilibrium": -9.922204617413449,
+     "farm": -6.041977896259192,
+     "crash": 0.023476428053673188,
+     "gank": -4.070099821345739
+    },
+    "aggressive": {
+     "exploitability": 24.86250000000002,
+     "value_vs_equilibrium": -24.46750000000001,
+     "farm": -5.237500000000009,
+     "crash": 0.0,
+     "gank": -19.624999999999986
+    },
+    "freeze_contest": {
+     "exploitability": 20.395000000000003,
+     "value_vs_equilibrium": -2.8699999999999988,
+     "farm": -8.945000000000002,
+     "crash": -9.0,
+     "gank": -2.4499999999999886
+    },
+    "passive_safe": {
+     "exploitability": 19.687499999999996,
+     "value_vs_equilibrium": -2.8699999999999988,
+     "farm": -10.600000000000001,
+     "crash": -6.0,
+     "gank": -3.0874999999999844
+    },
+    "stack_builder": {
+     "exploitability": 17.150000000000006,
+     "value_vs_equilibrium": -0.3199999999999998,
+     "farm": -3.4499999999999993,
+     "crash": -7.0,
+     "gank": -6.700000000000003
+    },
+    "release_safe": {
+     "exploitability": 7.690000000000004,
+     "value_vs_equilibrium": -2.799999999999999,
+     "farm": -11.689999999999996,
+     "crash": 0.0,
+     "gank": 4.000000000000018
+    },
+    "contest_slowpush": {
+     "exploitability": 17.150000000000006,
+     "value_vs_equilibrium": -0.3199999999999998,
+     "farm": -3.4499999999999993,
+     "crash": -7.0,
+     "gank": -6.700000000000003
+    }
+   }
+  },
+  "7 + Slow Push 'stack_creep' = revised": {
+   "change": "unstacked waves wait at the river, stacked waves creep",
+   "config": {
+    "base": 4,
+    "tower": 2,
+    "ticks_per_turn": 2,
+    "spawn_interval": 4,
+    "horizon": 32,
+    "wave_hp": 4,
+    "max_stacks": 2,
+    "cap_rule": "block",
+    "queue_fights": true,
+    "positioning": true,
+    "damage_law": "lanchester",
+    "shove_damage": 1,
+    "tower_damage": 1,
+    "pressure_kappa": [
+     0,
+     1,
+     0
+    ],
+    "slowpush_line": 0,
+    "slowpush_mode": "stack_creep",
+    "slowpush_creep_period": 2,
+    "freeze_line": -1,
+    "freeze_break_threshold": 10,
+    "freeze_break_push": [
+     0,
+     4,
+     0
+    ],
+    "freeze_legal_max": -1,
+    "tower_mode": "mass",
+    "tower_consumption_per_turn": 1,
+    "tower_siege_damage": 1,
+    "siege_engage": false,
+    "siege_cap": 48,
+    "crash_options": [
+     [
+      [
+       1.0,
+       false
+      ],
+      [
+       0.0,
+       true
+      ]
+     ],
+     [
+      [
+       2.0,
+       false
+      ],
+      [
+       0.0,
+       true
+      ]
+     ],
+     [
+      [
+       3.0,
+       false
+      ],
+      [
+       2.0,
+       true
+      ]
+     ]
+    ],
+    "vision_turns": 2,
+    "farm_per_hp": 0.25,
+    "collect_contest": 0.9,
+    "collect_contest_enemy_tower": 0.5,
+    "collect_safe": 0.8,
+    "collect_safe_slope": 0.2,
+    "zone_contest": 0.3,
+    "zone_under_tower": 0.15,
+    "gank_base": 0.15,
+    "gank_position": 0.1,
+    "gank_action": [
+     0.02,
+     0.05,
+     0.02,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "gank_strength": 0.02,
+    "gank_max": 0.4,
+    "vision_reduction": 0.5,
+    "gank_loss": 5.0,
+    "posture_cap": [
+     null,
+     null,
+     null,
+     -1,
+     -1,
+     -1
+    ]
+   },
+   "value": 0.0,
+   "path": {
+    "value": 0.0,
+    "farm": [
+     9.650000000000004,
+     9.650000000000004
+    ],
+    "farm_available": [
+     15.5,
+     15.5
+    ],
+    "farm_missed": [
+     5.849999999999996,
+     5.849999999999996
+    ],
+    "crash_resources": [
+     0.0,
+     0.0
+    ],
+    "gank_loss": [
+     34.70000000000002,
+     34.70000000000002
+    ],
+    "crashes_by_size": {
+     "A": [
+      0.0,
+      0.0,
+      0.0
+     ],
+     "B": [
+      0.0,
+      0.0,
+      0.0
+     ]
+    },
+    "crash_hp": [
+     0.0,
+     0.0
+    ],
+    "vision_choices": [
+     0.0,
+     0.0
+    ],
+    "contest_share": [
+     0.90625,
+     0.90625
+    ],
+    "action_freq": [
+     {
+      "SP-C": 0.84375,
+      "SH-C": 0.0625,
+      "SP-S": 0.09375,
+      "SH-S": 0.0
+     },
+     {
+      "SP-C": 0.84375,
+      "SH-C": 0.0625,
+      "SP-S": 0.09375,
+      "SH-S": 0.0
+     }
+    ],
+    "wave_freq": [
+     {
+      "SP": 0.9375,
+      "SH": 0.0625
+     },
+     {
+      "SP": 0.9375,
+      "SH": 0.0625
+     }
+    ],
+    "support_size": []
+   },
+   "nodes": {
+    "nodes": 14849,
+    "contest": 0.5675732574788132,
+    "wave": [
+     0.6773302298772529,
+     0.30190015040557716,
+     0.02076961971717084
+    ],
+    "freeze_legal_nodes": 4441,
+    "freeze_prob_when_legal": 0.06944563908585223
+   },
+   "vision": {
+    "small": 0.09900990099009901,
+    "medium": 0.0,
+    "large": 0.3048780487804878,
+    "small_nodes": 202,
+    "medium_nodes": 117,
+    "large_nodes": 82
+   },
+   "states": 14849,
+   "distinct": 2480,
+   "mixed": 1030,
+   "max_gap": 1.7763568394002505e-15,
+   "seconds": 5.803416900103912,
+   "events": {
+    "crash_small": 9372,
+    "crash_medium": 5592,
+    "crash_large": 1840,
+    "crash_onto_siege": 3576,
+    "freeze_held": 3392,
+    "freeze_broken": 2632,
+    "bounce": 8176,
+    "siege_persists": 75416,
+    "safe_disengages": 157754,
+    "tower_farm": 125236,
+    "farm_contest_vs_safe": 304876,
+    "minions_deleted": 0
+   },
+   "events_seconds": 14.48193969996646,
+   "baselines": {
+    "uniform": {
+     "exploitability": 10.078337909045308,
+     "value_vs_equilibrium": -9.858957270488288,
+     "farm": -6.078404418851526,
+     "crash": 0.06490417635846055,
+     "gank": -4.064837666552208
+    },
+    "aggressive": {
+     "exploitability": 24.86250000000002,
+     "value_vs_equilibrium": -24.46750000000001,
+     "farm": -5.237500000000009,
+     "crash": 0.0,
+     "gank": -19.624999999999986
+    },
+    "freeze_contest": {
+     "exploitability": 9.445000000000004,
+     "value_vs_equilibrium": -2.8699999999999988,
+     "farm": -4.5450000000000035,
+     "crash": -5.0,
+     "gank": 0.10000000000000142
+    },
+    "passive_safe": {
+     "exploitability": 9.415000000000004,
+     "value_vs_equilibrium": -2.8699999999999988,
+     "farm": -5.365000000000002,
+     "crash": -5.0,
+     "gank": 0.9499999999999993
+    },
+    "stack_builder": {
+     "exploitability": 5.782499999999996,
+     "value_vs_equilibrium": -0.3199999999999998,
+     "farm": 2.4674999999999976,
+     "crash": -6.0,
+     "gank": -2.25
+    },
+    "release_safe": {
+     "exploitability": 7.690000000000004,
+     "value_vs_equilibrium": -2.799999999999999,
+     "farm": -11.689999999999996,
+     "crash": 0.0,
+     "gank": 4.000000000000018
+    },
+    "contest_slowpush": {
+     "exploitability": 6.589999999999999,
+     "value_vs_equilibrium": -0.3199999999999998,
+     "farm": 2.3600000000000003,
+     "crash": -7.0,
+     "gank": -1.9499999999999957
+    }
+   }
+  }
+ },
+ "environment": {
+  "python": "3.13.9",
+  "numpy": "2.5.3",
+  "scipy": "1.18.1",
+  "platform": "Windows-11-10.0.26200-SP0",
+  "timestamp": "2026-10-10 19:52:54"
+ }
+}

@@ -1,13 +1,14 @@
 """Serializable output format for solved games (consumed by Phase 2/3).
 
-Schema of `write_solution` (JSON, version 1):
+Schema of `write_solution` (JSON, version 2; version 1 had no combined actions):
 
 {
-  "schema": "lanegame.solution", "version": 1,
+  "schema": "lanegame.solution", "version": 2,
   "config": {...GameConfig fields...},
   "horizon": K, "value": V*_0(s_0),
-  "actions": {"0": "SlowPush", "1": "Shove", "2": "Freeze"},
+  "actions": {"0": "SlowPush+Contest", ..., "5": "Freeze+Safe"},   (code = wave + 3 * posture)
   "state_fields": ["ax","ah","ar","asg","bx","bh","br","bsg","va","vb"],
+                 (asg/bsg: crashed packets in "packet" tower mode, crashed HP in "mass" mode)
   "states": [[...state as list...], ...],              # unique states, index = state id
   "layers": [[state ids at k=0], [ids at k=1], ...],
   "nodes": [ {"k": k, "s": id, "V": value, "gap": certified duality gap,
@@ -66,12 +67,12 @@ def solution_to_dict(sol: EquilibriumSolution, include_q: bool = True) -> Dict:
     for s, i in ids.items():
         states[i] = s.to_list()
     return {
-        "schema": "lanegame.solution", "version": 1,
+        "schema": "lanegame.solution", "version": 2,
         "config": sol.game.cfg.to_dict(),
         "horizon": sol.game.horizon,
         "root": sol.root.to_list(), "k0": sol.k0,
         "value": sol.value,
-        "actions": {str(a): n for a, n in ACTION_NAMES.items()},
+        "actions": {str(a): ACTION_NAMES[a] for a in sol.game.cfg.action_codes()},
         "state_fields": STATE_FIELDS,
         "states": states, "layers": layers, "nodes": nodes, "choices": choices,
         "stats": sol.stats.to_dict(),

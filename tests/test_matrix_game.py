@@ -72,10 +72,13 @@ def test_dominated_row_gets_zero_weight():
     assert sol.x[2] < 1e-12
 
 
-@pytest.mark.parametrize("shape", [(1, 3), (3, 1), (2, 3), (3, 2), (3, 3), (2, 2)])
+@pytest.mark.parametrize("shape", [(1, 3), (3, 1), (2, 3), (3, 2), (3, 3), (2, 2),
+                                   (1, 6), (6, 1), (4, 4), (4, 6), (6, 4), (6, 6), (2, 6)])
 def test_random_games_match_support_enumeration(shape):
+    """Random rectangular games up to 6x6 (the revised model's largest stage game)."""
     rng = np.random.default_rng(1234 + shape[0] * 10 + shape[1])
-    for _ in range(200):
+    n = 200 if max(shape) <= 3 else 60
+    for _ in range(n):
         M = rng.normal(size=shape).round(3)
         sol = solve_matrix_game(M)
         check_solution(M, sol)
@@ -97,3 +100,28 @@ def test_degenerate_game_with_ties():
     sol = solve_matrix_game(M)
     check_solution(M, sol)
     assert sol.value == 0.0
+
+
+def test_random_6x6_games_with_ties_and_integer_payoffs():
+    """Degenerate games (many ties, as in the lane game's stage games) are solved with a valid certificate."""
+    rng = np.random.default_rng(99)
+    for _ in range(60):
+        M = rng.integers(-2, 3, size=(6, 6)).astype(float)
+        sol = solve_matrix_game(M)
+        check_solution(M, sol)
+        assert abs(sol.value - support_enumeration(M)[0]) < 1e-8
+
+
+def test_known_6x6_solution():
+    """Rock-paper-scissors extended with three strictly dominated actions: value 0, RPS mixing."""
+    R = np.array([[0, -1, 1], [1, 0, -1], [-1, 1, 0]], float)
+    M = np.full((6, 6), 0.0)
+    M[:3, :3] = R
+    M[3:, :3] = R - 1.0          # rows 3..5 are strictly dominated by rows 0..2
+    M[:3, 3:] = R + 1.0          # columns 3..5 are strictly dominated (bad for the minimizer)
+    M[3:, 3:] = R
+    sol = solve_matrix_game(M)
+    check_solution(M, sol)
+    assert abs(sol.value) < TOL
+    assert np.allclose(sol.x, [1 / 3] * 3 + [0] * 3, atol=1e-9)
+    assert np.allclose(sol.y, [1 / 3] * 3 + [0] * 3, atol=1e-9)

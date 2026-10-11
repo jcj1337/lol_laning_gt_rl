@@ -4,76 +4,74 @@ A quantitative research project on decision-making under strategic uncertainty. 
 
 > **When should an agent exploit an opponent's predictable behavior, and how much risk should it accept when its opponent model might be wrong?**
 
-League of Legends wave management is the testbed. Two players manage minion waves by choosing to Slow Push, Shove or Freeze. The project models this as a finite-horizon, two-player, zero-sum stochastic game. That gives an exact, unexploitable baseline (the equilibrium) against which opponent-modelling and exploitation strategies can be measured. The mechanics are deliberately stylized; no parameter is claimed to be an empirical League statistic.
+League of Legends wave management is the testbed. Two players manage minion waves and their own positioning. The project models this as a finite-horizon, two-player, zero-sum stochastic game. That gives an exact, unexploitable baseline (the equilibrium) against which opponent-modelling and exploitation strategies can be measured. The mechanics are deliberately stylized; no parameter is claimed to be an empirical League statistic.
 
 ## Roadmap
 
 | Phase | Content | Status |
 |---|---|---|
-| **1. Mathematical foundation** | Stochastic game, mechanics, exact equilibrium solver, best responses, exploitability | **complete** ([report](docs/phase1_implementation_report.md)) |
+| **1. Mathematical foundation** | Stochastic game, mechanics, exact equilibrium solver, best responses, exploitability | **revised** ([revision report](docs/phase1_revision_report.md); original: [Phase 1 report](docs/phase1_implementation_report.md)) |
 | 2. Quantitative research | Bayesian opponent modelling, exploitation vs. exploitability, risk-constrained policies, misspecification, sensitivity | next |
 | 3. Interactive dashboard | React/TypeScript site for exploring strategies and results | planned |
 
-## Phase 1 at a glance
+## The revised model at a glance
 
-- **Model.** Minion waves are explicit packets that spawn every 4 ticks, walk, merge, fight (discrete Lanchester attrition), and crash into towers. Towers consume one packet per decision turn, which produces wave bounces. Legal actions depend on the state (Freeze only with enemy minions on your half). A crash earns a choice between resources and vision. Per-turn gank risk depends on exposure, action, wave size and vision. The payoff is A's resources minus B's.
-- **Solver.** Backward induction with exact stage games: saddle-point detection, otherwise a HiGHS LP, with certified duality gaps. Crash choices are solved as separate choice nodes. Best responses and exploitability are exact for any time-dependent Markov policy.
-- **Verification.** 68 tests cover:
-  - mechanics invariants: packet conservation, no crossing, zero-sum, mirror symmetry;
-  - known matrix games;
-  - an LP-free reference solver and a naive tree-recursion minimax;
-  - zero exploitability (subgame perfection) of the equilibrium;
-  - Monte Carlo vs. exact values.
-- **Performance.** The game is solved exactly for 16, 32 and 64 decision turns in 0.1–0.6 s, and for 256 turns in 2.5 s.
-- **Findings** (default parameters):
-  - **Passive symmetric equilibrium.** Symmetric equilibrium play is passive and never crashes. This is robust across 7 alternative collision models and 23 parameter perturbations.
-  - **Rich off-path play.** Off-path strategy depends on wave position, size and reinforcement timing (52 strictly mixed nodes).
-  - **Exploitation is mostly exposure.** A best responder extracts 1.9–19.5 resources per 32-turn game from simple scripted policies, mostly by letting them overextend.
-  - **Noisy outcomes.** Single-game outcomes have a standard deviation of about 16 resources, so exploitation edges are hard to detect.
+- **Actions.** Each turn both players simultaneously choose a *wave-management* action (Slow Push, Shove, Freeze) and a *positioning* action (Contest, Safe): up to 6 actions each.
+- **Lane.** Minion waves are explicit packets with 4 HP per wave. They spawn every 4 ticks, walk, merge (up to a 3-wave cap; extra waves queue behind and fight with the stack), and fight with discrete Lanchester attrition. Slow Push holds an unstacked wave at the river until reinforcements arrive and then creeps forward. Freeze holds the enemy wave just outside the freezer's tower, is legal only there, and breaks under enough pressure. A crashed wave stays under the tower as HP mass that tower fire removes at 1 HP/tick, so bigger crashes occupy the tower longer. Meanwhile the defender's reinforcements gather behind the tower and bounce back out.
+- **Economy (event-based).** Every HP of minions that dies is a farm opportunity for the side that killed it, including minions killed by a tower. The collector receives it times a *collection efficiency*, which depends on where the minions died, the collector's posture and whether the opponent contests (zoning). A crash also gives the crasher a choice between resources and two turns of vision. Each turn, each player risks a gank whose probability depends on champion exposure (Contest follows the wave; Safe stays at its tower), action, wave strength and vision. The payoff is relative resources, zero-sum.
+- **Solver.** Backward induction with exact stage games (saddle detection, otherwise a HiGHS LP), certified duality gaps, separate crash-choice games, exact best responses and exploitability. The original Phase 1 model is still available, bit-for-bit, as `GameConfig.v1()`.
 
-  See the [Phase 1 report](docs/phase1_implementation_report.md) for the full specification, design history, results and limitations.
+## Main findings (revised default, 32 turns; details and caveats in the report)
+
+- **Farming changes what exploitation means.** In the original model, almost all of every baseline's exploitability came from gank exposure. Now best responses against passive, freezing and stack-building baselines gain mostly through farm and crash differences. Only the always-Shove baseline is still exploited mainly through ganks.
+- **The symmetric equilibrium is an even, contested lane.** The waves fight continuously at the river, both players Contest 91% of turns, and nobody crashes. Off the path, it contests most when its wave fights just in front of its own tower (0.91) and retreats to Safe after crashing or when its wave sits under the enemy tower (0.19–0.25).
+- **Contest has thresholds.** With farming off, the equilibrium is entirely passive (Slow Push + Safe). Contest dominates from about one resource per wave. A gank loss of 7 (instead of 5) flips the equilibrium path back to Safe.
+- **Crashing is not free.** The defender farms crashed minions under its tower, so a 3-wave crash has a negative continuation value for the crasher. It gets more negative as farm becomes more valuable.
+- **Equilibrium play leaves money on the table.** The equilibrium extracts 98% of what a best responder could take from Shove-happy or random opponents, but only 5–36% against passive, freezing or stack-building ones. That gap is the Phase 2 research question.
+- **Outcomes are noisy.** A single game has a standard deviation of about 16 resources, against exploitation edges of 6–25 per game.
 
 ## Quick start
 
 ```bash
 python -m venv .venv && .venv/Scripts/activate      # macOS/Linux: source .venv/bin/activate
 pip install -r requirements.txt
-python -m pytest                                      # 68 tests, ~7 s
-python -m lanegame solve --horizon 32                 # writes results/solution_K32.json
-python -m lanegame scenarios                          # traced mechanics scenarios
+python -m pytest                                      # full suite, both models, ~1 min
+python -m lanegame solve --horizon 32                 # writes results/revision/solution_K32.json
+python -m lanegame scenarios                          # traced mechanics scenarios with PASS/FAIL
+python -m lanegame reach                              # event reachability from the standard start, with witnesses
 python -m lanegame exploit --horizon 32               # exploitability of baseline policies
-python -m lanegame experiments all                    # regenerate every result (~90 s)
+python -m lanegame experiments all                    # regenerate every revision result (results/revision/)
+python -m lanegame experiments-v1 all                 # regenerate the original Phase 1 results (results/)
 ```
+
+Every command accepts `--model v1` to run the original model instead.
 
 ## Repository layout
 
 ```
-lanegame/                 Phase 1 engine (pure Python + NumPy/SciPy, no presentation code)
-  config.py               all model parameters (GameConfig, JSON-serializable)
+lanegame/                 engine (pure Python + NumPy/SciPy, no presentation code)
+  config.py               all model parameters (GameConfig; GameConfig.v1() = original model)
   state.py                Markov state and canonical encoding (own-perspective, mirror = swap)
-  mechanics.py            packet movement, merging, fights, crashes, tower consumption, spawns
-  game.py                 legal actions, gank model, crash-reward choices, reachable states
+  mechanics.py            packet movement, merging, fights, crashes, tower fire, spawns, kill accounting
+  game.py                 legal actions, farming, gank model, crash-reward choices, reachable states
   matrix_game.py          zero-sum matrix games: saddle detection, HiGHS LP, certificates, support enumeration
   solver.py               backward induction -> values, mixed strategies, Q matrices, choice policies
   best_response.py        exact policy evaluation, best responses, exploitability
-  policy.py, baselines.py policy interface; uniform / always-shove / always-slow-push / defensive-freeze / stack-then-shove
-  analysis.py             exact forward occupancy and path statistics
+  policy.py, baselines.py policy interface; revised and original baseline policies
+  analysis.py             exact forward occupancy and path statistics (farm / crash / gank decomposition)
+  reachability.py         which lane events are reachable from the standard start, with witness sequences
   simulate.py             seeded Monte Carlo with realized gank outcomes
   scenarios.py, render.py named behavioral scenarios and text traces of the lane
   io.py                   JSON export format for solutions (for Phase 2/3)
-  experiments/            reproducible experiments (python -m lanegame experiments <name>|all)
-tests/                    pytest suite
-results/                  generated tables (.md), data (.json) and figures (.png)
-docs/                     phase1_implementation_report.md
+  experiments/            revision experiments A-F and benchmarks (results/revision/)
+  experiments/v1/         the original Phase 1 experiments, pinned to GameConfig.v1() (results/)
+tests/                    pytest suite (both models)
+results/                  original Phase 1 outputs (historical); results/revision/ = revised model
+docs/                     phase1_implementation_report.md (original), phase1_revision_report.md (revision)
 legacy/                   original Q-learning project (env, agents, notebook), kept unchanged for reference
 ```
 
-## The original project
+## The original projects
 
-The first version of this repository (now in [legacy/](legacy/)) trained a tabular Q-learning agent on a simplified lane model. Its audit is in section B of the Phase 1 report. In brief:
-- it used float-valued state keys and had no time index;
-- rewards were not zero-sum and some could be collected repeatedly;
-- it used a fixed rock-paper-scissors payoff;
-- it was evaluated only against scripted opponents.
-
-The legacy notebook still runs from inside `legacy/`.
+- **Phase 1, original version.** Wave actions only, with no farming and one-packet-per-turn tower consumption. It is documented in [docs/phase1_implementation_report.md](docs/phase1_implementation_report.md); its results are in `results/` and it is reproducible with `GameConfig.v1()`.
+- **The first Q-learning prototype** is in [legacy/](legacy/), audited in section B of that report.

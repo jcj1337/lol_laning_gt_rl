@@ -4,8 +4,8 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "lanegame"
-version = "1.0.0"
-description = "Finite-horizon zero-sum stochastic game of League of Legends wave management, with an exact equilibrium solver"
+version = "2.0.0"
+description = "Finite-horizon zero-sum stochastic game of League of Legends wave management (farming economy, Contest/Safe positioning), with an exact equilibrium solver"
 requires-python = ">=3.10"
 dependencies = ["numpy>=2.0", "scipy>=1.13", "matplotlib>=3.8"]
 
@@ -13,7 +13,7 @@ dependencies = ["numpy>=2.0", "scipy>=1.13", "matplotlib>=3.8"]
 test = ["pytest>=8.0"]
 
 [tool.setuptools]
-packages = ["lanegame", "lanegame.experiments"]
+packages = ["lanegame", "lanegame.experiments", "lanegame.experiments.v1"]
 
 [tool.pytest.ini_options]
 testpaths = ["tests"]
