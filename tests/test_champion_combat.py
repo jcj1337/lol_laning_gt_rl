@@ -123,9 +123,14 @@ def test_evaded_or_unreachable_trade_deals_nothing_and_farms():
 
 
 def test_trade_against_trade_is_simultaneous():
-    t = resolve_turn(CONTACT, ch(0, 0, hpa=2, hpb=2), 2, TR(), TR(), CFG, u=ZERO)
-    assert t.connected == (True, True) and t.trade_damage == (2, 2)
-    assert t.champ.a.hp == t.champ.b.hp == 1                              # M2c: nonlethal floor
+    """Both trades use the HP at the start of the turn: two champions at 2 HP can kill each other."""
+    u = list(ONE)
+    for s in (0, 1):
+        u[U_TRADE_HIT[s]] = u[U_TRADE_DOUBLE[s]] = 0.0
+    t = resolve_turn(CONTACT, ch(0, 0, hpa=2, hpb=2), 2, TR(), TR(), CFG, u=u)
+    assert t.connected == (True, True) and t.trade_damage == (2, 2) and t.died == (True, True)
+    t = resolve_turn(CONTACT, ch(0, 0, hpa=3, hpb=3), 2, TR(), TR(), CFG, u=u)
+    assert t.died == (False, False) and t.champ.a.hp == t.champ.b.hp == 1
 
 
 def test_partial_escape_and_interrupted_recall_use_their_behavior_terms():
@@ -215,8 +220,8 @@ def test_no_trade_damage_is_guaranteed_and_damage_needs_a_connected_trade():
             if i["trade_connected"][s]:
                 assert i["modes"][s] == TRADING and i["champion_reach"][s] < -10   # no wave contribution
             assert i["trade_damage"][s] in ((0, 1, 2) if i["trade_connected"][s] else (0,))
-            assert i["damage_taken"][s] == i["trade_damage"][1 - s] + i["tower_damage"][s]
-            assert 1 <= i["champ_after"][s][1] <= CFG.champion_hp
+            assert i["damage_taken"][s] == i["trade_damage"][1 - s] + i["tower_damage"][s] + i["gank_damage"][s]
+            assert 0 <= i["champ_after"][s][1] <= CFG.champion_hp
 
 
 def test_chance_stream_is_reproducible_and_action_independent():

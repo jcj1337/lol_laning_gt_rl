@@ -173,12 +173,14 @@ def test_movement_is_bounded_persistent_and_hp_accounted():
                 assert i["exposure"][s] == max(start[s], end[s])
         for s in (0, 1):
             before, after = i["champ_before"][s], i["champ_after"][s]
-            assert 1 <= after[1] <= cfg.champion_hp
-            if after[2] == 0 and (i["away"][s]):
+            assert 0 <= after[1] <= cfg.champion_hp
+            if i["died"][s]:
+                assert before[1] - i["damage_taken"][s] <= 0 and after == [-T, 0, cfg.death_turns]
+            elif after[2] == 0 and i["away"][s]:
                 assert after[1] == cfg.champion_hp                   # returned with full HP
             elif not i["away"][s]:
-                assert after[1] == max(1, before[1] - i["damage_taken"][s])
-        prev_end = None if r.done else end
+                assert after[1] == before[1] - i["damage_taken"][s] > 0
+        prev_end = None if r.done else tuple(c[0] for c in i["champ_after"])   # (a champion that died restarts at -T)
 
 
 def test_resolve_turn_is_mirror_equivariant():
@@ -286,13 +288,18 @@ def test_physical_farm_reach_and_zoning():
     assert zoned < free == pytest.approx(CFG.collect_contest)
 
 
-def test_gank_terms_reproduce_legacy_contest_and_safe():
+def test_gank_terms_have_the_legacy_form_with_champion_parameters():
+    """M2d: the legacy formula (base, exposure, action, wave strength, vision) with the champ_gank_* parameters;
+    with those set to the legacy values, Hold and Safe reproduce the legacy Contest and Safe terms."""
+    as_legacy = CFG.with_(champ_gank_base=CFG.gank_base, champ_gank_position=CFG.gank_position,
+                          champ_gank_strength=CFG.gank_strength, champ_gank_max=CFG.gank_max,
+                          champ_gank_behavior=(0.02, 0.02, 0.05, 0.0), champ_gank_shove=0.03)
     lane = CONTACT._replace(va=2)
     for w in (SP, SH, F):
         for e in range(-T, T + 1):
-            assert champion_gank_probability(lane, 0, w, B_HOLD, CFG, e) == pytest.approx(gank_probability(lane, 0, act(w, CONTEST), CFG, e))
-            assert champion_gank_probability(lane, 0, w, B_SAFE, CFG, e) == pytest.approx(gank_probability(lane, 0, act(w, SAFE), CFG, e))
-            assert champion_gank_probability(lane, 0, w, B_TRADE, CFG, e) >= champion_gank_probability(lane, 0, w, B_HOLD, CFG, e)
+            assert champion_gank_probability(lane, 0, w, B_HOLD, as_legacy, e) == pytest.approx(gank_probability(lane, 0, act(w, CONTEST), CFG, e))
+            assert champion_gank_probability(lane, 0, w, B_SAFE, as_legacy, e) == pytest.approx(gank_probability(lane, 0, act(w, SAFE), CFG, e))
+            assert champion_gank_probability(lane, 0, w, B_TRADE, CFG, e) >= champion_gank_probability(lane, 0, w, B_HOLD, CFG, e)                 >= champion_gank_probability(lane, 0, w, B_SAFE, CFG, e)
 
 
 # ------------------------------------------------------------------ legality and siege

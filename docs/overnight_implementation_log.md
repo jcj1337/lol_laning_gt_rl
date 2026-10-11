@@ -9,7 +9,7 @@ Work happens on the local branch `m2-m3-autonomous` (one commit per verified mil
 |---|---|---|
 | M2b Recall and absence | completed and verified (39 champion + 65 env tests) | see git log |
 | M2c Stochastic trading and skill | completed and verified (52 champion + 65 env tests) | see git log |
-| M2d Ganks, death, respawn | not started | |
+| M2d Ganks, death, respawn | completed and verified (67 champion + 65 env tests) | see git log |
 | M2e Validation and benchmarking (gate) | not started | |
 | M3a PPO vs scripted opponents | not started | |
 | M3b Self-play with frozen snapshots | not started | |
@@ -78,3 +78,34 @@ Implemented in `lanegame/champions.py` (+ `config.py`, `env/core.py`, `env/agent
   interrupted-recall and partial-escape terms, tower shot free/busy, 10,000-draw distribution check within
   4.5 SE, mirror equivariance with mirrored chance, no guaranteed damage, reproducibility and CRN).
   52 champion tests pass in 2.6 s.
+- Committed as `e83618d`.
+
+### M2d Ganks, death, respawn
+
+- Champion mode has its own gank-occurrence parameters (`champ_gank_*`); the legacy `gank_*` fields and
+  the legacy expected-loss model are untouched. Occurrence:
+  `p = clip(0 + 0.12 (e+T)/2T + beh{H .01, Y .01, T .03, S 0} + 0.02 [Shove, non-Safe] - 0.01 dsigma, 0, 0.30) * (1 - 0.75 [vision])`.
+  The legacy unconditional base 0.15 (harmless as an expected loss because it cancelled in the zero-sum
+  payoff) would have produced ~7 HP-damaging ganks per player per game; with base 0 a Hold champion at the
+  lane is ganked ~2.1 times per 32-turn game, a Safe one ~1.0, and a champion under its own tower almost
+  never. Vision at -1 saves 0.0225 per turn: not mandatory when safely positioned.
+- Damage given a gank: `Binomial(4, p_e)`, `p_e = clip(0.2 + 0.6 (e+T)/2T - 0.2 [Yield/Safe] - 0.2 (m - 0.5), 0, 1)`
+  (0 to 4 HP; mean 0.8 at the own tower, 2.0 at the lane, 3.2 under the enemy tower). 4 < 6 HP, so a
+  full-HP champion never dies to one gank. Skill enters gank damage (escape execution) with a small term:
+  the roadmap had left this open; the brief asks skill to improve defensive execution. Vision changes only
+  occurrence (tested).
+- Death: all damage of the turn (trades, tower shot, gank) is summed; HP <= 0 -> dies at the end of the
+  turn (keeps that turn's farm), `absent = death_turns = 3`, HP 0 while away, ABSENT on t+1..t+3, back at
+  the own tower with full HP on t+4. Simultaneous deaths possible. Temporary M2c HP floor removed.
+- Reward in champion mode: farm + plates + `kill_bounty` (default 0) differences. The legacy `gank_loss`
+  term is not charged (no double counting); `info["gank_payoff"]` is always 0 in champion mode.
+- Scripted matchups (400 episodes, K = 32, no recall logic in these agents): Hold vs Hold 0.05 +- 0.04,
+  2.1 ganks, 0.33 deaths per player; Trade vs Hold -0.58 +- 0.06 for the trader (Hold dies 2.7 times but
+  the trader halves its own farm on 31 connected turns); Trade vs Yield +12.0, Trade vs Safe +12.9;
+  Hold vs Safe +9.0; Shove-Hold vs Hold -3.9. Payoff std fell from ~16 to ~1 (no 5-resource gank loss).
+- Tests: new `tests/test_champion_ganks.py` (15 tests: occurrence defaults and ordering, exposure kept while
+  retreating, damage distribution and inputs, no one-gank death from full HP and possible zero damage,
+  vision only on occurrence, 10,000-draw binomial check, ganks under tower, exact death timeline,
+  simultaneous deaths, damage sources adding up, recall vs death, episode end during death, rewards without
+  gank loss and with bounties, reproducibility, death cost depending on wave state). Three earlier tests
+  updated. 67 champion tests + 65 env tests pass.

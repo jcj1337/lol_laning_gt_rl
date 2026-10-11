@@ -9,7 +9,10 @@ One `step` is one decision turn of the exact game, resolved by the existing engi
 are REALIZED (one Bernoulli draw per player per turn from the environment's own generator) instead of
 being charged as expected losses. The per-turn reward to A is therefore
 
-    r = (farm_A - farm_B) + (plates_A - plates_B) + L * (ganked_B - ganked_A) + (crash_A - crash_B),
+    r = (farm_A - farm_B) + (plates_A - plates_B) + L * (ganked_B - ganked_A) + (crash_A - crash_B)
+
+(champion mode: r = (farm_A - farm_B) + (plates_A - plates_B) + (bounty_A - bounty_B); a gank costs HP and
+possibly a death, never resources),
 
 B receives -r (zero-sum by construction), and the expectation of an episode's total over the chance draws
 equals the exact value of the two policies (`best_response.evaluate`), which the tests check.
@@ -27,11 +30,13 @@ in a fixed order (A then B), and never for agents' action sampling. Two rollouts
 same action sequences produce identical chance draws; the uniform draws themselves are reported in
 `info["gank_draws"]` so that policies can be compared on common random numbers.
 
-Champion mode (`GameConfig.champions()`, roadmap M2a). The environment additionally holds the champion
+Champion mode (`GameConfig.champions()`, roadmap M2). The environment additionally holds the champion
 state (`env.champ`, lanegame.champions.ChampState), legality comes from `champion_legal_actions`, and one
-step is `champions.resolve_turn` (persistent positions, Hold / Yield / Trade / Safe, physical reach); farm,
-plates, exposure and gank probabilities come from it, and the gank checks are realized exactly as above.
-There is no crash-choice stage (the siege model has none). Observations carry `champ` as well.
+step is `champions.resolve_turn` (positions, Hold / Yield / Trade / Safe / Recall, absence, trades, tower
+shots, ganks with HP damage, death). Each champion-mode turn draws exactly N_CHANCE uniforms from the
+chance generator (champions.U_* layout), whatever the actions, so two policies are compared on identical
+chance draws turn by turn; `info["chance"]` reports them. There is no crash-choice stage (the siege model
+has none). Observations carry `champ` as well.
 
 The lane step is deterministic, so it can be cached by (state, k mod phase_period, a, b). The cache here is
 bounded (LRU, `cache_size` entries; 0 disables it); the unbounded cache of `LaneGame` is for enumeration.
@@ -224,7 +229,10 @@ class LaneEnv:
             from ..champions import U_GANK
             ua, ub = float(u[U_GANK[A]]), float(u[U_GANK[B]])
             ga, gb = bool(ct.ganked[A]), bool(ct.ganked[B])
-        gank_payoff = cfg.gank_loss * (int(gb) - int(ga))
+        # legacy: the realized gank costs gank_loss resources; champion mode: the gank's cost is its HP damage and
+        # a possible death (absence), so the reward has no gank term, and kill bounties (default 0) are separate
+        gank_payoff = cfg.gank_loss * (int(gb) - int(ga)) if ct is None else 0.0
+        bounty_payoff = 0.0 if ct is None else ct.bounty[A] - ct.bounty[B]
 
         # ---- CHOICE stage ("choice" siege mode; single trivial option otherwise)
         opts_a = crash_options(res.crash_hp[A], cfg)
@@ -239,7 +247,7 @@ class LaneEnv:
             default_used = default_used or d
         s2, crash_payoff = apply_choice(res.state, opts_a[i], opts_b[j], cfg)
 
-        reward = farm_payoff + plate_payoff + gank_payoff + crash_payoff
+        reward = farm_payoff + plate_payoff + gank_payoff + crash_payoff + bounty_payoff
         self._state = s2
         if ct is not None:
             self._champ = ct.champ
@@ -258,6 +266,7 @@ class LaneEnv:
             "plate_payoff": plate_payoff,
             "gank_payoff": gank_payoff,
             "crash_payoff": crash_payoff,
+            "bounty_payoff": bounty_payoff,
             "farm": coll,
             "farm_available": avail,
             "plates": plates,
@@ -301,6 +310,10 @@ class LaneEnv:
                 "trade_damage": ct.trade_damage,
                 "tower_damage": ct.tower_damage,
                 "damage_taken": ct.damage_taken,
+                "gank_damage_p": ct.gank_damage_p,
+                "gank_damage": ct.gank_damage,
+                "died": ct.died,
+                "bounty": ct.bounty,
                 "chance": [float(x) for x in u],
                 "modes": ct.modes,
                 "champion_reach": ct.reach,

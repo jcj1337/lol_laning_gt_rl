@@ -17,7 +17,8 @@ Trace schema ("lanegame.episode", version 1):
      "exposure_sum": [A, B], "trades_attempted": [A, B], "trades_connected": [A, B],
      "yields_threatened": [A, B], "recalls": [A, B], "recalls_interrupted": [A, B], "turns_away": [A, B],
      "trades_landed": [A, B], "trade_damage_dealt": [A, B], "tower_damage_taken": [A, B],
-     "damage_taken": [A, B],                                       # champion mode only (else 0)
+     "damage_taken": [A, B], "gank_damage_taken": [A, B], "deaths": [A, B], "bounty": [A, B],
+                                                                   # champion mode only (else 0)
      "turns": [ {StepResult.info of turn k}, ... ]        # only when recorded
   }
 }
@@ -44,7 +45,8 @@ from ..config import GameConfig
 from ..io import STATE_FIELDS, dump_json
 from .observation import feature_names, n_actions, obs_size
 
-CHAMP_COUNTERS = ("recalls_interrupted", "trades_landed", "trade_damage_dealt", "tower_damage_taken", "damage_taken")
+CHAMP_COUNTERS = ("recalls_interrupted", "trades_landed", "trade_damage_dealt", "tower_damage_taken", "damage_taken",
+                  "gank_damage_taken", "deaths", "bounty")
 TRACE_SCHEMA = "lanegame.episode"
 TRACE_VERSION = 1
 
@@ -79,6 +81,9 @@ class EpisodeLog:
     trade_damage_dealt: List[int] = field(default_factory=lambda: [0, 0])
     tower_damage_taken: List[int] = field(default_factory=lambda: [0, 0])
     damage_taken: List[int] = field(default_factory=lambda: [0, 0])   # every source (trades, tower, ganks)
+    gank_damage_taken: List[int] = field(default_factory=lambda: [0, 0])
+    deaths: List[int] = field(default_factory=lambda: [0, 0])
+    bounty: List[float] = field(default_factory=_pair)                 # kill bounty received
     turns: Optional[List[dict]] = None
 
     def add(self, result, record: bool = False) -> None:
@@ -103,6 +108,9 @@ class EpisodeLog:
                 self.trade_damage_dealt[s] += int(info["trade_damage"][s])
                 self.tower_damage_taken[s] += int(info["tower_damage"][s])
                 self.damage_taken[s] += int(info["damage_taken"][s])
+                self.gank_damage_taken[s] += int(info["gank_damage"][s])
+                self.deaths[s] += int(info["died"][s])
+                self.bounty[s] += float(info["bounty"][s])
         oa, ob = info["crash_options"]
         i, j = info["choices"]
         self.crash_resources[0] += oa[i][0]
@@ -128,7 +136,8 @@ class EpisodeLog:
              "recalls_interrupted": list(self.recalls_interrupted),
              "turns_away": list(self.turns_away), "trades_landed": list(self.trades_landed),
              "trade_damage_dealt": list(self.trade_damage_dealt), "tower_damage_taken": list(self.tower_damage_taken),
-             "damage_taken": list(self.damage_taken)}
+             "damage_taken": list(self.damage_taken), "gank_damage_taken": list(self.gank_damage_taken),
+             "deaths": list(self.deaths), "bounty": list(self.bounty)}
         if self.turns is not None:
             d["turns"] = self.turns
         return d
@@ -285,7 +294,9 @@ class EpisodeStats:
                f"  trades landed A {s['mean_trades_landed'][0]:.2f} B {s['mean_trades_landed'][1]:.2f}; "
                f"trade damage dealt A {s['mean_trade_damage_dealt'][0]:.2f} B {s['mean_trade_damage_dealt'][1]:.2f}; "
                f"tower damage taken A {s['mean_tower_damage_taken'][0]:.2f} B {s['mean_tower_damage_taken'][1]:.2f}; "
-               f"HP lost A {s['mean_damage_taken'][0]:.2f} B {s['mean_damage_taken'][1]:.2f}"]
+               f"HP lost A {s['mean_damage_taken'][0]:.2f} B {s['mean_damage_taken'][1]:.2f} "
+               f"(to ganks A {s['mean_gank_damage_taken'][0]:.2f} B {s['mean_gank_damage_taken'][1]:.2f}); "
+               f"deaths A {s['mean_deaths'][0]:.2f} B {s['mean_deaths'][1]:.2f}"]
               if s["champion_mode"] else []),
             f"  observation size {s['obs_size']}, action space {s['n_actions']}"
             + ("; crash choices by the greedy default" if s["choice_default_used"] else ""),

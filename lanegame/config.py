@@ -317,10 +317,37 @@ class GameConfig:
     trade_range: int = 1                  # a Trade connects when the champions end within this distance
     farm_reach: int = 1                   # a champion collects only kills within this many cells of it
     trade_farm_factor: float = 0.5        # collection multiplier of a champion whose Trade connected
-    # gank action term per behavior (Hold, Yield, Trade, Safe), plus a term for Shove with any non-Safe
-    # behavior: Hold reproduces the legacy Contest terms (SP 0.02, SH 0.05, F 0.02), Safe the Safe terms (0)
-    champ_gank_behavior: Tuple[float, float, float, float] = (0.02, 0.02, 0.05, 0.0)
-    champ_gank_shove: float = 0.03
+    # Ganks as events (M2d). Champion mode replaces the legacy expected-loss gank (gank_loss * p, whose
+    # unconditional base gank_base = 0.15 cancelled in the zero-sum payoff) by a gank that occurs with
+    #   p = clip(champ_gank_base + champ_gank_position (e + T) / 2T + champ_gank_behavior[behavior]
+    #            + champ_gank_shove [Shove, non-Safe] - champ_gank_strength dsigma, 0, champ_gank_max)
+    #       * (1 - vision_reduction [own vision active at the start of the turn])
+    # (e = exposure, dsigma = own minus enemy leading-wave stacks) and, if it occurs, deals
+    #   X ~ Binomial(gank_damage_trials, p_e),
+    #   p_e = clip(gank_damage_base + gank_damage_position (e + T) / 2T - gank_damage_defense [Yield or Safe]
+    #              - gank_damage_skill (m - 0.5), 0, 1)
+    # HP. With 4 trials and 6 HP a full-HP champion never dies to one gank; whether a gank kills depends on HP,
+    # position, behavior and skill. There is no unconditional base rate (0.0): a champion under its own tower
+    # is almost never ganked, one at the lane about once every 14 turns (Hold), one under the enemy tower
+    # about once every 8. Vision lowers only the occurrence.
+    champ_gank_base: float = 0.0
+    champ_gank_position: float = 0.12
+    champ_gank_behavior: Tuple[float, float, float, float] = (0.01, 0.01, 0.03, 0.0)   # Hold, Yield, Trade, Safe
+    champ_gank_shove: float = 0.02
+    champ_gank_strength: float = 0.01
+    champ_gank_max: float = 0.30
+    gank_damage_trials: int = 4
+    gank_damage_base: float = 0.2
+    gank_damage_position: float = 0.6
+    gank_damage_defense: float = 0.2
+    gank_damage_skill: float = 0.2
+    # Death (M2d): a champion whose HP reaches 0 dies at the end of the turn (it keeps that turn's farm), sits
+    # out the next death_turns turns and returns at its own tower with full HP. Dying on turn t with the
+    # default 3: ABSENT on t+1, t+2, t+3, back on t+4. The cost of a death is the farm, wave control and siege
+    # opportunities given up; kill_bounty (resources to the opponent of the dead champion, default 0) is an
+    # optional, separately reported knob.
+    death_turns: int = 3
+    kill_bounty: float = 0.0
 
     # ------------------------------------------------------------------ presets
     @classmethod
@@ -438,7 +465,9 @@ class GameConfig:
             assert self.objectives and self.tower_mode == "mass", "champion mode builds on the siege model"
             assert self.champion_hp >= 1 and self.champion_speed >= 1 and self.champion_absent_max >= 1
             assert self.recall_turns >= 1 and -self.tower <= self.recall_line <= self.tower
-            assert self.champion_absent_max >= self.recall_turns - 1
+            assert self.champion_absent_max >= max(self.recall_turns - 1, self.death_turns)
+            assert self.death_turns >= 0 and self.kill_bounty >= 0 and self.gank_damage_trials >= 0
+            assert 0.0 <= self.champ_gank_max <= 1.0
             assert len(self.trade_hit_behavior) == N_BEHAVIOR_SLOTS
             assert 0.0 <= self.trade_hit_min <= self.trade_hit_max <= 1.0
             assert self.tower_shot_damage >= 0 and 0.0 <= self.tower_shot_p <= 1.0 and 0.0 <= self.tower_shot_p_busy <= 1.0

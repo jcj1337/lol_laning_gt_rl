@@ -1,4 +1,4 @@
-"""Champion layer (roadmap milestones M2a-M2c): champion state, positioning, behaviors, Recall, absence, trading.
+"""Champion layer (roadmap milestone M2): champion state, positioning, behaviors, Recall, trading, ganks, death.
 
 Champion mode (`GameConfig.champions()`) adds a champion per player on top of the siege model's lane. The
 lane itself (minion movement, merging, fights, thinning, crashes, tower fire, spawns, plates, vision) is
@@ -9,11 +9,13 @@ and is not exactly solvable; the legacy configurations never reach this module.
 State (per side, own coordinates as everywhere else: own tower -T, the lane 0, enemy tower +T)
 
     pos      champion cell, -T .. T (start: own tower, -T; -T while away)
-    hp       champion HP, 1 .. champion_hp (6); trades and tower shots remove it (M2c), a return restores it
+    hp       champion HP, 0 .. champion_hp (6); trades, tower shots and ganks remove it, 0 = dead (while
+             away), a return restores it
     absent   number of upcoming turns the champion is forced to sit out (0 = present). Recall sets it to
-             recall_turns - 1 (the Recall turn itself is the first missed turn); it counts down by one at
-             the end of every absent turn, and the champion returns, at its own tower with full HP, at the
-             start of the turn after the one on which it reaches 0.
+             recall_turns - 1 (the Recall turn itself is the first missed turn), death to death_turns (the
+             champion acted on its death turn); it counts down by one at the end of every absent turn, and
+             the champion returns, at its own tower with full HP, at the start of the turn after the one on
+             which it reaches 0.
 
 plus the per-seat mechanical skills `cfg.skill_a`, `cfg.skill_b` (game constants in [0, 1], observed by
 both players; they enter only the execution probabilities of trades, see "Trading"). `ChampState.mirror()` swaps the sides; with asymmetric skills the mirrored
@@ -97,18 +99,21 @@ current action, but the simulator resolves the committed pair together:
     trader's collection is multiplied by trade_farm_factor. A channeling or away champion collects nothing
     and zones nothing.
  8. Exposure and gank risk. exposure = max(start cell, end cell): a champion that starts forward stays
-    exposed while it retreats. The gank probability keeps the legacy form (base + position + action
-    - wave strength, clipped, times the vision factor) with a behavior-based action term
-    (champ_gank_behavior, plus champ_gank_shove for Shove with a non-Safe behavior; a channeling champion
-    has Safe's term). An away champion has gank probability 0. Until M2d the gank is still a resource loss with that probability (the environment
-    realizes it).
- 9. Chance events (M2c), all from the turn's uniform vector u (layout below): each connected trader's
-    damage on its target, each diver's tower shot, and each present side's gank occurrence (p = gank_p).
-    Damage is simultaneous (both trades use the HP at the start of the turn).
-10. Champion state after the turn: a present champion stands at its end cell with its HP minus the damage it
-    took this turn (floored at 1 until M2d introduces death). A champion that recalled gets
-    absent = recall_turns - 1, an absent one absent - 1; both stand at -T, and a champion whose timer
-    is now 0 has full HP again (it plays the next turn).
+    exposed while it retreats (choosing Safe does not erase this turn's exposure). The gank occurrence
+    probability has the legacy form (base + position + behavior - wave strength, clipped, times the vision
+    factor) with its own champion-mode parameters (champ_gank_*, see GameConfig; no unconditional base rate;
+    a channeling champion has Safe's behavior term). An away champion has gank probability 0. A gank that
+    occurs deals Binomial(gank_damage_trials, p_e) HP, p_e rising with exposure and falling for Yield / Safe
+    and with skill (gank_damage_*). Vision lowers only the occurrence.
+ 9. Chance events, all from the turn's uniform vector u (layout below): each connected trader's damage on
+    its target, each diver's tower shot, each present side's gank occurrence (p = gank_p) and gank damage.
+    All damage of the turn is simultaneous and summed: trade damage, a tower shot and a gank together can
+    kill a champion that each alone would not, and both champions can die in the same turn.
+10. Death and champion state after the turn: a present champion whose HP reaches 0 dies: HP 0, at -T,
+    absent = death_turns (the farm of the death turn is kept). Any other present champion stands at its
+    end cell with its HP minus the damage it took. A champion that recalled gets absent = recall_turns - 1,
+    an absent one absent - 1; both stand at -T, and a champion whose timer is now 0 has full HP again (it
+    plays the next turn). The opponent of a champion that died receives kill_bounty (default 0).
 
 Trading (M2c). A connected Trade of side i on side j hits with probability
 
@@ -132,8 +137,9 @@ if its own crashed minions were under that tower this turn (at the start of the 
 
 Chance vector u (N_CHANCE uniforms per turn, drawn by the environment whatever happens, so that two policies
 see identical draws turn by turn): U_TRADE_HIT[i], U_TRADE_DOUBLE[i] for side i's attack, U_TOWER[i] for side
-i's tower shot, U_GANK[i] for side i being ganked, U_GANK_DAMAGE[i] reserved for M2d. An event happens when
-its uniform is below its probability; u = None means no chance event at all.
+i's tower shot, U_GANK[i] for side i being ganked, U_GANK_DAMAGE[i] for the damage of that gank (inverse
+CDF of the binomial). An event happens when its uniform is below its probability; u = None means no chance
+event at all.
 
 Siege objectives are executed by the lane step only when they are effective (legal, i.e. the champion
 reaches the enemy tower, and not suspended by a connected trade), so plates, thinning and vision always
@@ -143,6 +149,7 @@ require the champion at the enemy tower.
 from __future__ import annotations
 
 from dataclasses import dataclass
+from math import comb
 from typing import Callable, NamedTuple, Optional, Sequence, Tuple
 
 from .config import (B_ABSENT, B_HOLD, B_RECALL, B_SAFE, B_TRADE, B_YIELD, CHAMP_ABSENT, CHAMP_BEHAVIORS, CONTEST,
@@ -249,18 +256,44 @@ def champion_collection(x: int, mode: str, pos: int, opp_mode: str, opp_pos: int
 
 
 def champion_gank_probability(lane: State, s: int, wave: int, behavior: int, cfg: GameConfig, exposure: int) -> float:
-    """p = clip(b0 + b_pos (e + T) / 2T + b_beh[behavior] + b_shove [Shove, non-Safe] - b_str dsigma, 0, p_max)
-    times (1 - rho) while side s's vision is active (timer at the START of the turn), as in game.gank_probability."""
+    """P(side s is ganked this turn) = clip(b0 + b_pos (e + T) / 2T + b_beh[behavior] + b_shove [Shove, non-Safe]
+    - b_str dsigma, 0, p_max) times (1 - rho) while side s's vision is active (timer at the START of the turn).
+    The form of game.gank_probability with the champion-mode parameters champ_gank_*."""
     own_h = lane.ah if s == A else lane.bh
     opp_h = lane.bh if s == A else lane.ah
     dsig = cfg.stacks(own_h) - cfg.stacks(opp_h)
     term = cfg.champ_gank_behavior[behavior] + (cfg.champ_gank_shove if wave == SH and behavior != B_SAFE else 0.0)
-    p = (cfg.gank_base + cfg.gank_position * (exposure + cfg.tower) / (2 * cfg.tower) + term
-         - cfg.gank_strength * dsig)
-    p = min(max(p, 0.0), cfg.gank_max)
+    p = (cfg.champ_gank_base + cfg.champ_gank_position * (exposure + cfg.tower) / (2 * cfg.tower) + term
+         - cfg.champ_gank_strength * dsig)
+    p = min(max(p, 0.0), cfg.champ_gank_max)
     if lane.vision_of(s) > 0:
         p *= (1.0 - cfg.vision_reduction)
     return p
+
+
+def gank_damage_p(s: int, behavior: int, exposure: int, cfg: GameConfig) -> float:
+    """Per-trial damage probability p_e of a gank on side s (vision plays no part)."""
+    pe = (cfg.gank_damage_base + cfg.gank_damage_position * (exposure + cfg.tower) / (2 * cfg.tower)
+          - (cfg.gank_damage_defense if behavior in (B_YIELD, B_SAFE) else 0.0)
+          - cfg.gank_damage_skill * (skill_of(cfg, s) - 0.5))
+    return min(max(pe, 0.0), 1.0)
+
+
+def gank_damage_distribution(pe: float, cfg: GameConfig) -> Tuple[float, ...]:
+    """P(gank damage = d), d = 0 .. gank_damage_trials (binomial)."""
+    n = cfg.gank_damage_trials
+    return tuple(comb(n, d) * pe ** d * (1.0 - pe) ** (n - d) for d in range(n + 1))
+
+
+def _gank_damage(u: float, pe: float, cfg: GameConfig) -> int:
+    """Inverse-CDF draw of the gank damage from one uniform."""
+    c = 0.0
+    dist = gank_damage_distribution(pe, cfg)
+    for d, p in enumerate(dist):
+        c += p
+        if u < c:
+            return d
+    return len(dist) - 1
 
 
 def trade_hit_probability(lane: State, s: int, defender_behavior: int, defender_in_tower: bool,
@@ -327,6 +360,10 @@ class ChampTurn:
     tower_damage: Tuple[int, int] = (0, 0)           # HP taken by side i from the enemy tower
     damage_taken: Tuple[int, int] = (0, 0)           # all HP lost by side i this turn
     ganked: Tuple[bool, bool] = (False, False)       # realized gank occurrence
+    gank_damage_p: Tuple[float, float] = (0.0, 0.0)  # per-trial damage probability p_e if ganked
+    gank_damage: Tuple[int, int] = (0, 0)            # HP lost to the gank (0 if none)
+    died: Tuple[bool, bool] = (False, False)         # HP reached 0 this turn
+    bounty: Tuple[float, float] = (0.0, 0.0)         # kill_bounty received by side i (its opponent died)
 
 
 def _clip(x: int, cfg: GameConfig) -> int:
@@ -500,15 +537,26 @@ def resolve_turn(lane: State, champ: ChampState, k: int, a: int, b: int, cfg: Ga
             busy = lane.siege_of(s) > 0 or res.crash_hp[s] > 0
             tower_p[s] = cfg.tower_shot_p_busy if busy else cfg.tower_shot_p
             tower_dmg[s] = cfg.tower_shot_damage if u[U_TOWER[s]] < tower_p[s] else 0
-    taken = tuple(dealt[1 - s] + tower_dmg[s] for s in (A, B))
     ganked = tuple(u[U_GANK[s]] < gank[s] for s in (A, B))
+    pe = tuple(0.0 if away[s] else gank_damage_p(s, B_SAFE if interrupted[s] else beh[s], exposure[s], cfg)
+               for s in (A, B))
+    gank_dmg = tuple(_gank_damage(u[U_GANK_DAMAGE[s]], pe[s], cfg) if ganked[s] else 0 for s in (A, B))
+    taken = tuple(dealt[1 - s] + tower_dmg[s] + gank_dmg[s] for s in (A, B))
+    died = tuple(not away[s] and champ.side(s).hp - taken[s] <= 0 for s in (A, B))
+    bounty = (cfg.kill_bounty * died[B], cfg.kill_bounty * died[A])
 
-    # 10. champion state after the turn (M2c: nonlethal, HP floored at 1 until M2d adds death)
-    sides = tuple(_after_away(champ.side(s), recalled[s], cfg) if away[s] else
-                  champ.side(s)._replace(pos=end[s], hp=max(1, champ.side(s).hp - taken[s]))
-                  for s in (A, B))
+    # 10. death and champion state after the turn
+    def after(s):
+        me = champ.side(s)
+        if away[s]:
+            return _after_away(me, recalled[s], cfg)
+        if died[s]:
+            left = cfg.death_turns
+            return ChampSide(-T, cfg.champion_hp if left == 0 else 0, left)
+        return me._replace(pos=end[s], hp=me.hp - taken[s])
+    sides = (after(A), after(B))
     return ChampTurn(res, ChampState(*sides), w, beh, obj, eff_obj, c0, (end[0], end[1]), (spot[0], spot[1]),
                      away, recalled, interrupted, (threatened[0], threatened[1]), connected, (modes[0], modes[1]),
                      (reach[0], reach[1]), codes, (avail[0], avail[1]), (coll[0], coll[1]), exposure, gank,
                      (hit[0], hit[1]), (dbl[0], dbl[1]), (tower_p[0], tower_p[1]), (dealt[0], dealt[1]),
-                     (tower_dmg[0], tower_dmg[1]), taken, ganked)
+                     (tower_dmg[0], tower_dmg[1]), taken, ganked, pe, gank_dmg, died, bounty)
