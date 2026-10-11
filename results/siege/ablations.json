@@ -1,0 +1,5700 @@
+{
+ "horizon": 24,
+ "results": {
+  "0 previous revision": {
+   "config": {
+    "base": 4,
+    "tower": 2,
+    "ticks_per_turn": 2,
+    "spawn_interval": 4,
+    "horizon": 24,
+    "wave_hp": 4,
+    "max_stacks": 2,
+    "cap_rule": "block",
+    "queue_fights": true,
+    "positioning": true,
+    "damage_law": "lanchester",
+    "shove_damage": 1,
+    "tower_damage": 1,
+    "pressure_kappa": [
+     0,
+     1,
+     0
+    ],
+    "slowpush_line": 0,
+    "slowpush_mode": "stack_creep",
+    "slowpush_creep_period": 2,
+    "freeze_line": -1,
+    "freeze_break_threshold": 10,
+    "freeze_break_push": [
+     0,
+     4,
+     0
+    ],
+    "freeze_legal_max": -1,
+    "tower_mode": "mass",
+    "tower_consumption_per_turn": 1,
+    "tower_siege_damage": 1,
+    "siege_engage": false,
+    "siege_cap": 48,
+    "siege_mode": "choice",
+    "plate_mode": "crash",
+    "plate_grant": [
+     0,
+     0,
+     0
+    ],
+    "plates_cap": 6,
+    "plates_per_tower": 0,
+    "plates_per_turn": 1,
+    "plate_value": 1.0,
+    "thin_damage": 0,
+    "thin_reach": 1,
+    "crash_options": [
+     [
+      [
+       1.0,
+       false
+      ],
+      [
+       0.0,
+       true
+      ]
+     ],
+     [
+      [
+       2.0,
+       false
+      ],
+      [
+       0.0,
+       true
+      ]
+     ],
+     [
+      [
+       3.0,
+       false
+      ],
+      [
+       2.0,
+       true
+      ]
+     ]
+    ],
+    "vision_turns": 2,
+    "vision_reduction": 0.5,
+    "farm_per_hp": 0.25,
+    "collect_contest": 0.9,
+    "collect_contest_enemy_tower": 0.5,
+    "collect_safe": 0.8,
+    "collect_safe_slope": 0.2,
+    "zone_contest": 0.3,
+    "zone_under_tower": 0.15,
+    "gank_base": 0.15,
+    "gank_position": 0.1,
+    "gank_action": [
+     0.02,
+     0.05,
+     0.02,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "gank_strength": 0.02,
+    "gank_max": 0.4,
+    "gank_loss": 5.0,
+    "posture_cap": [
+     null,
+     null,
+     null,
+     -1,
+     -1,
+     -1
+    ]
+   },
+   "nodes": 6693,
+   "mixed": 471,
+   "solve_s": 1.764319899957627,
+   "enumerate_s": 5.1169984000734985,
+   "value": 0.0,
+   "node_avg": {
+    "nodes": 6693,
+    "contest": 0.5448370549460891,
+    "siege_nodes": 0,
+    "p_pressure": 0.0,
+    "p_vision": 0.0,
+    "p_disengage": 0.0
+   },
+   "path": {
+    "value": 0.0,
+    "farm": [
+     7.130000000000002,
+     7.130000000000002
+    ],
+    "farm_available": [
+     11.5,
+     11.5
+    ],
+    "farm_missed": [
+     4.369999999999998,
+     4.369999999999998
+    ],
+    "crash_resources": [
+     0.0,
+     0.0
+    ],
+    "plates": [
+     0.0,
+     0.0
+    ],
+    "plate_count": [
+     0.0,
+     0.0
+    ],
+    "gank_loss": [
+     25.900000000000006,
+     25.900000000000006
+    ],
+    "crashes_by_size": {
+     "A": [
+      0.0,
+      0.0,
+      0.0
+     ],
+     "B": [
+      0.0,
+      0.0,
+      0.0
+     ]
+    },
+    "crash_hp": [
+     0.0,
+     0.0
+    ],
+    "vision_choices": [
+     0.0,
+     0.0
+    ],
+    "pressure_turns": [
+     0.0,
+     0.0
+    ],
+    "vision_turns_set": [
+     0.0,
+     0.0
+    ],
+    "siege_turns": [
+     0.0,
+     0.0
+    ],
+    "siege_safe_turns": [
+     0.0,
+     0.0
+    ],
+    "thinned_hp": [
+     0.0,
+     0.0
+    ],
+    "thin_farm": [
+     0.0,
+     0.0
+    ],
+    "protected_turns": [
+     0.0,
+     0.0
+    ],
+    "p_contest_protected": [
+     null,
+     null
+    ],
+    "p_contest_unprotected": [
+     0.875,
+     0.875
+    ],
+    "bounces": [
+     0.0,
+     0.0
+    ],
+    "bounce_hp": [
+     0.0,
+     0.0
+    ],
+    "sieges_started": [
+     0.0,
+     0.0
+    ],
+    "contest_share": [
+     0.875,
+     0.875
+    ],
+    "action_freq": [
+     {
+      "SP-C": 0.7916666666666666,
+      "SH-C": 0.08333333333333333,
+      "SP-S": 0.125,
+      "SH-S": 0.0
+     },
+     {
+      "SP-C": 0.7916666666666666,
+      "SH-C": 0.08333333333333333,
+      "SP-S": 0.125,
+      "SH-S": 0.0
+     }
+    ],
+    "wave_freq": [
+     {
+      "SP": 0.9166666666666666,
+      "SH": 0.08333333333333333
+     },
+     {
+      "SP": 0.9166666666666666,
+      "SH": 0.08333333333333333
+     }
+    ],
+    "support_size": []
+   },
+   "baselines": {
+    "aggressive": {
+     "exploitability": 18.002500000000005,
+     "value_vs_equilibrium": -17.677500000000002,
+     "farm": -3.577500000000005,
+     "plates": 0.0,
+     "crash": 0.0,
+     "gank": -14.424999999999997
+    },
+    "passive_safe": {
+     "exploitability": 7.264999999999997,
+     "value_vs_equilibrium": -2.189999999999999,
+     "farm": -5.415000000000001,
+     "plates": 0.0,
+     "crash": -4.0,
+     "gank": 2.1499999999999986
+    },
+    "stack_builder": {
+     "exploitability": 4.767499999999997,
+     "value_vs_equilibrium": -0.3199999999999998,
+     "farm": 0.5324999999999998,
+     "plates": 0.0,
+     "crash": -4.0,
+     "gank": -1.2999999999999936
+    },
+    "release_safe": {
+     "exploitability": 5.170000000000001,
+     "value_vs_equilibrium": -2.119999999999999,
+     "farm": -8.370000000000001,
+     "plates": 0.0,
+     "crash": 0.0,
+     "gank": 3.2000000000000064
+    },
+    "contest_slowpush": {
+     "exploitability": 5.1649999999999965,
+     "value_vs_equilibrium": -0.3199999999999998,
+     "farm": 0.6850000000000005,
+     "plates": 0.0,
+     "crash": -5.0,
+     "gank": -0.8499999999999979
+    }
+   },
+   "br_paths": {
+    "aggressive": {
+     "bounces": [
+      0.0,
+      0.0
+     ],
+     "bounce_hp": [
+      0.0,
+      0.0
+     ],
+     "crashes_B": [
+      0.0,
+      0.0,
+      0.0
+     ],
+     "plates": [
+      0.0,
+      0.0
+     ],
+     "thinned": [
+      0.0,
+      0.0
+     ],
+     "vision": [
+      0.0,
+      0.0
+     ],
+     "pressure": [
+      0.0,
+      0.0
+     ],
+     "siege_turns": [
+      0.0,
+      0.0
+     ],
+     "vision_choices": [
+      0.0,
+      0.0
+     ]
+    },
+    "passive_safe": {
+     "bounces": [
+      0.0,
+      0.0
+     ],
+     "bounce_hp": [
+      0.0,
+      0.0
+     ],
+     "crashes_B": [
+      1.0,
+      0.0,
+      1.0
+     ],
+     "plates": [
+      0.0,
+      0.0
+     ],
+     "thinned": [
+      0.0,
+      0.0
+     ],
+     "vision": [
+      0.0,
+      0.0
+     ],
+     "pressure": [
+      0.0,
+      0.0
+     ],
+     "siege_turns": [
+      0.0,
+      0.0
+     ],
+     "vision_choices": [
+      0.0,
+      0.0
+     ]
+    },
+    "stack_builder": {
+     "bounces": [
+      0.0,
+      0.0
+     ],
+     "bounce_hp": [
+      0.0,
+      0.0
+     ],
+     "crashes_B": [
+      1.0,
+      0.0,
+      1.0
+     ],
+     "plates": [
+      0.0,
+      0.0
+     ],
+     "thinned": [
+      0.0,
+      0.0
+     ],
+     "vision": [
+      0.0,
+      0.0
+     ],
+     "pressure": [
+      0.0,
+      0.0
+     ],
+     "siege_turns": [
+      0.0,
+      0.0
+     ],
+     "vision_choices": [
+      0.0,
+      0.0
+     ]
+    },
+    "release_safe": {
+     "bounces": [
+      0.0,
+      0.0
+     ],
+     "bounce_hp": [
+      0.0,
+      0.0
+     ],
+     "crashes_B": [
+      0.0,
+      0.0,
+      0.0
+     ],
+     "plates": [
+      0.0,
+      0.0
+     ],
+     "thinned": [
+      0.0,
+      0.0
+     ],
+     "vision": [
+      0.0,
+      0.0
+     ],
+     "pressure": [
+      0.0,
+      0.0
+     ],
+     "siege_turns": [
+      0.0,
+      0.0
+     ],
+     "vision_choices": [
+      0.0,
+      0.0
+     ]
+    },
+    "contest_slowpush": {
+     "bounces": [
+      1.0,
+      0.0
+     ],
+     "bounce_hp": [
+      8.0,
+      0.0
+     ],
+     "crashes_B": [
+      0.0,
+      1.0,
+      1.0
+     ],
+     "plates": [
+      0.0,
+      0.0
+     ],
+     "thinned": [
+      0.0,
+      0.0
+     ],
+     "vision": [
+      0.0,
+      0.0
+     ],
+     "pressure": [
+      0.0,
+      0.0
+     ],
+     "siege_turns": [
+      0.0,
+      0.0
+     ],
+     "vision_choices": [
+      0.0,
+      0.0
+     ]
+    }
+   },
+   "probe_crash12": {
+    "value": -6.35,
+    "A": {
+     "SP-S": 1.0
+    },
+    "B": {
+     "SP-S": 1.0
+    },
+    "Q_A": {
+     "SP-C": -6.765,
+     "SH-C": -6.914999999999999,
+     "SP-S": -6.35,
+     "SH-S": -6.35
+    }
+   },
+   "pre_crash_12": {
+    "value": -1.6578694833449765,
+    "A": {
+     "SH-C": 1.0
+    },
+    "crash_gain": 0.6110990369408709
+   }
+  },
+  "1 plates alone": {
+   "config": {
+    "base": 4,
+    "tower": 2,
+    "ticks_per_turn": 2,
+    "spawn_interval": 4,
+    "horizon": 24,
+    "wave_hp": 4,
+    "max_stacks": 2,
+    "cap_rule": "block",
+    "queue_fights": true,
+    "positioning": true,
+    "damage_law": "lanchester",
+    "shove_damage": 1,
+    "tower_damage": 1,
+    "pressure_kappa": [
+     0,
+     1,
+     0
+    ],
+    "slowpush_line": 0,
+    "slowpush_mode": "stack_creep",
+    "slowpush_creep_period": 2,
+    "freeze_line": -1,
+    "freeze_break_threshold": 10,
+    "freeze_break_push": [
+     0,
+     4,
+     0
+    ],
+    "freeze_legal_max": -1,
+    "tower_mode": "mass",
+    "tower_consumption_per_turn": 1,
+    "tower_siege_damage": 1,
+    "siege_engage": false,
+    "siege_cap": 48,
+    "siege_mode": "objective",
+    "plate_mode": "crash",
+    "plate_grant": [
+     1,
+     2,
+     3
+    ],
+    "plates_cap": 6,
+    "plates_per_tower": 5,
+    "plates_per_turn": 1,
+    "plate_value": 1.0,
+    "thin_damage": 0,
+    "thin_reach": 1,
+    "crash_options": [
+     [
+      [
+       1.0,
+       false
+      ],
+      [
+       0.0,
+       true
+      ]
+     ],
+     [
+      [
+       2.0,
+       false
+      ],
+      [
+       0.0,
+       true
+      ]
+     ],
+     [
+      [
+       3.0,
+       false
+      ],
+      [
+       2.0,
+       true
+      ]
+     ]
+    ],
+    "vision_turns": 2,
+    "vision_reduction": 0.5,
+    "farm_per_hp": 0.25,
+    "collect_contest": 0.9,
+    "collect_contest_enemy_tower": 0.5,
+    "collect_safe": 0.8,
+    "collect_safe_slope": 0.2,
+    "zone_contest": 0.3,
+    "zone_under_tower": 0.15,
+    "gank_base": 0.15,
+    "gank_position": 0.1,
+    "gank_action": [
+     0.02,
+     0.05,
+     0.02,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "gank_strength": 0.02,
+    "gank_max": 0.4,
+    "gank_loss": 5.0,
+    "posture_cap": [
+     null,
+     null,
+     null,
+     -1,
+     -1,
+     -1
+    ]
+   },
+   "nodes": 15191,
+   "mixed": 561,
+   "solve_s": 4.274450199911371,
+   "enumerate_s": 16.68024339992553,
+   "value": 0.0,
+   "node_avg": {
+    "nodes": 15191,
+    "contest": 0.7532837996065088,
+    "siege_nodes": 4109,
+    "p_pressure": 0.52484858896323,
+    "p_vision": 0.4438310929141674,
+    "p_disengage": 0.03132031812260293
+   },
+   "path": {
+    "value": 0.0,
+    "farm": [
+     7.130000000000002,
+     7.130000000000002
+    ],
+    "farm_available": [
+     11.5,
+     11.5
+    ],
+    "farm_missed": [
+     4.369999999999998,
+     4.369999999999998
+    ],
+    "crash_resources": [
+     0.0,
+     0.0
+    ],
+    "plates": [
+     0.0,
+     0.0
+    ],
+    "plate_count": [
+     0.0,
+     0.0
+    ],
+    "gank_loss": [
+     25.900000000000006,
+     25.900000000000006
+    ],
+    "crashes_by_size": {
+     "A": [
+      0.0,
+      0.0,
+      0.0
+     ],
+     "B": [
+      0.0,
+      0.0,
+      0.0
+     ]
+    },
+    "crash_hp": [
+     0.0,
+     0.0
+    ],
+    "vision_choices": [
+     0.0,
+     0.0
+    ],
+    "pressure_turns": [
+     0.0,
+     0.0
+    ],
+    "vision_turns_set": [
+     0.0,
+     0.0
+    ],
+    "siege_turns": [
+     0.0,
+     0.0
+    ],
+    "siege_safe_turns": [
+     0.0,
+     0.0
+    ],
+    "thinned_hp": [
+     0.0,
+     0.0
+    ],
+    "thin_farm": [
+     0.0,
+     0.0
+    ],
+    "protected_turns": [
+     0.0,
+     0.0
+    ],
+    "p_contest_protected": [
+     null,
+     null
+    ],
+    "p_contest_unprotected": [
+     0.875,
+     0.875
+    ],
+    "bounces": [
+     0.0,
+     0.0
+    ],
+    "bounce_hp": [
+     0.0,
+     0.0
+    ],
+    "sieges_started": [
+     0.0,
+     0.0
+    ],
+    "contest_share": [
+     0.875,
+     0.875
+    ],
+    "action_freq": [
+     {
+      "SP-C": 0.7916666666666666,
+      "SH-C": 0.08333333333333333,
+      "SP-S": 0.125,
+      "SH-S": 0.0
+     },
+     {
+      "SP-C": 0.7916666666666666,
+      "SH-C": 0.08333333333333333,
+      "SP-S": 0.125,
+      "SH-S": 0.0
+     }
+    ],
+    "wave_freq": [
+     {
+      "SP": 0.9166666666666666,
+      "SH": 0.08333333333333333
+     },
+     {
+      "SP": 0.9166666666666666,
+      "SH": 0.08333333333333333
+     }
+    ],
+    "support_size": []
+   },
+   "baselines": {
+    "aggressive": {
+     "exploitability": 18.002500000000005,
+     "value_vs_equilibrium": -17.677500000000002,
+     "farm": -3.577500000000005,
+     "plates": 0.0,
+     "crash": 0.0,
+     "gank": -14.424999999999997
+    },
+    "passive_safe": {
+     "exploitability": 5.524999999999997,
+     "value_vs_equilibrium": -2.189999999999999,
+     "farm": -4.200000000000002,
+     "plates": -2.0,
+     "crash": 0.0,
+     "gank": 0.6750000000000043
+    },
+    "stack_builder": {
+     "exploitability": 2.7874999999999983,
+     "value_vs_equilibrium": -0.3199999999999998,
+     "farm": 1.5124999999999993,
+     "plates": -3.0,
+     "crash": 0.0,
+     "gank": -1.2999999999999972
+    },
+    "release_safe": {
+     "exploitability": 5.170000000000001,
+     "value_vs_equilibrium": -2.119999999999999,
+     "farm": -8.370000000000001,
+     "plates": 0.0,
+     "crash": 0.0,
+     "gank": 3.2000000000000064
+    },
+    "contest_slowpush": {
+     "exploitability": 3.4312499999999972,
+     "value_vs_equilibrium": -0.3199999999999998,
+     "farm": 0.7937500000000028,
+     "plates": -2.0,
+     "crash": 0.0,
+     "gank": -2.2250000000000014
+    }
+   },
+   "br_paths": {
+    "aggressive": {
+     "bounces": [
+      0.0,
+      0.0
+     ],
+     "bounce_hp": [
+      0.0,
+      0.0
+     ],
+     "crashes_B": [
+      0.0,
+      0.0,
+      0.0
+     ],
+     "plates": [
+      0.0,
+      0.0
+     ],
+     "thinned": [
+      0.0,
+      0.0
+     ],
+     "vision": [
+      0.0,
+      0.0
+     ],
+     "pressure": [
+      0.0,
+      0.0
+     ],
+     "siege_turns": [
+      0.0,
+      0.0
+     ],
+     "vision_choices": [
+      0.0,
+      0.0
+     ]
+    },
+    "passive_safe": {
+     "bounces": [
+      1.0,
+      0.0
+     ],
+     "bounce_hp": [
+      8.0,
+      0.0
+     ],
+     "crashes_B": [
+      0.0,
+      1.0,
+      0.0
+     ],
+     "plates": [
+      0.0,
+      2.0
+     ],
+     "thinned": [
+      0.0,
+      0.0
+     ],
+     "vision": [
+      0.0,
+      2.0
+     ],
+     "pressure": [
+      0.0,
+      2.0
+     ],
+     "siege_turns": [
+      0.0,
+      4.0
+     ],
+     "vision_choices": [
+      0.0,
+      0.0
+     ]
+    },
+    "stack_builder": {
+     "bounces": [
+      0.0,
+      0.0
+     ],
+     "bounce_hp": [
+      0.0,
+      0.0
+     ],
+     "crashes_B": [
+      0.0,
+      0.0,
+      1.0
+     ],
+     "plates": [
+      0.0,
+      3.0
+     ],
+     "thinned": [
+      0.0,
+      0.0
+     ],
+     "vision": [
+      0.0,
+      1.0
+     ],
+     "pressure": [
+      0.0,
+      3.0
+     ],
+     "siege_turns": [
+      0.0,
+      4.0
+     ],
+     "vision_choices": [
+      0.0,
+      0.0
+     ]
+    },
+    "release_safe": {
+     "bounces": [
+      0.0,
+      0.0
+     ],
+     "bounce_hp": [
+      0.0,
+      0.0
+     ],
+     "crashes_B": [
+      0.0,
+      0.0,
+      0.0
+     ],
+     "plates": [
+      0.0,
+      0.0
+     ],
+     "thinned": [
+      0.0,
+      0.0
+     ],
+     "vision": [
+      0.0,
+      0.0
+     ],
+     "pressure": [
+      0.0,
+      0.0
+     ],
+     "siege_turns": [
+      0.0,
+      0.0
+     ],
+     "vision_choices": [
+      0.0,
+      0.0
+     ]
+    },
+    "contest_slowpush": {
+     "bounces": [
+      1.0,
+      0.0
+     ],
+     "bounce_hp": [
+      8.0,
+      0.0
+     ],
+     "crashes_B": [
+      0.0,
+      1.0,
+      0.0
+     ],
+     "plates": [
+      0.0,
+      2.0
+     ],
+     "thinned": [
+      0.0,
+      0.0
+     ],
+     "vision": [
+      0.0,
+      2.0
+     ],
+     "pressure": [
+      0.0,
+      2.0
+     ],
+     "siege_turns": [
+      0.0,
+      4.0
+     ],
+     "vision_choices": [
+      0.0,
+      0.0
+     ]
+    }
+   },
+   "probe_crash12": {
+    "value": -1.0639738430583505,
+    "A": {
+     "SP-C+V": 1.0
+    },
+    "B": {
+     "SP-S": 1.0
+    },
+    "Q_A": {
+     "SP-S": -1.6812684666557907,
+     "SH-S": -1.6812684666557907,
+     "SP-C+P": -1.096268466655791,
+     "SH-C+P": -1.2462684666557908,
+     "SP-C+V": -1.0639738430583505,
+     "SH-C+V": -1.2139738430583504
+    }
+   },
+   "pre_crash_12": {
+    "value": -1.315812346437346,
+    "A": {
+     "SP-C": 0.972,
+     "SH-C": 0.028
+    },
+    "crash_gain": 2.220446049250313e-16
+   }
+  },
+  "2 thinning alone": {
+   "config": {
+    "base": 4,
+    "tower": 2,
+    "ticks_per_turn": 2,
+    "spawn_interval": 4,
+    "horizon": 24,
+    "wave_hp": 4,
+    "max_stacks": 2,
+    "cap_rule": "block",
+    "queue_fights": true,
+    "positioning": true,
+    "damage_law": "lanchester",
+    "shove_damage": 1,
+    "tower_damage": 1,
+    "pressure_kappa": [
+     0,
+     1,
+     0
+    ],
+    "slowpush_line": 0,
+    "slowpush_mode": "stack_creep",
+    "slowpush_creep_period": 2,
+    "freeze_line": -1,
+    "freeze_break_threshold": 10,
+    "freeze_break_push": [
+     0,
+     4,
+     0
+    ],
+    "freeze_legal_max": -1,
+    "tower_mode": "mass",
+    "tower_consumption_per_turn": 1,
+    "tower_siege_damage": 1,
+    "siege_engage": false,
+    "siege_cap": 48,
+    "siege_mode": "objective",
+    "plate_mode": "crash",
+    "plate_grant": [
+     0,
+     0,
+     0
+    ],
+    "plates_cap": 6,
+    "plates_per_tower": 5,
+    "plates_per_turn": 1,
+    "plate_value": 1.0,
+    "thin_damage": 1,
+    "thin_reach": 1,
+    "crash_options": [
+     [
+      [
+       1.0,
+       false
+      ],
+      [
+       0.0,
+       true
+      ]
+     ],
+     [
+      [
+       2.0,
+       false
+      ],
+      [
+       0.0,
+       true
+      ]
+     ],
+     [
+      [
+       3.0,
+       false
+      ],
+      [
+       2.0,
+       true
+      ]
+     ]
+    ],
+    "vision_turns": 2,
+    "vision_reduction": 0.5,
+    "farm_per_hp": 0.25,
+    "collect_contest": 0.9,
+    "collect_contest_enemy_tower": 0.5,
+    "collect_safe": 0.8,
+    "collect_safe_slope": 0.2,
+    "zone_contest": 0.3,
+    "zone_under_tower": 0.15,
+    "gank_base": 0.15,
+    "gank_position": 0.1,
+    "gank_action": [
+     0.02,
+     0.05,
+     0.02,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "gank_strength": 0.02,
+    "gank_max": 0.4,
+    "gank_loss": 5.0,
+    "posture_cap": [
+     null,
+     null,
+     null,
+     -1,
+     -1,
+     -1
+    ]
+   },
+   "nodes": 13845,
+   "mixed": 750,
+   "solve_s": 4.165449500083923,
+   "enumerate_s": 9.802045499905944,
+   "value": 0.0,
+   "node_avg": {
+    "nodes": 13845,
+    "contest": 0.7254019989518374,
+    "siege_nodes": 2422,
+    "p_pressure": 0.15938753561371843,
+    "p_vision": 0.6500999326632774,
+    "p_disengage": 0.19051253172300422
+   },
+   "path": {
+    "value": 0.0,
+    "farm": [
+     7.130000000000002,
+     7.130000000000002
+    ],
+    "farm_available": [
+     11.5,
+     11.5
+    ],
+    "farm_missed": [
+     4.369999999999998,
+     4.369999999999998
+    ],
+    "crash_resources": [
+     0.0,
+     0.0
+    ],
+    "plates": [
+     0.0,
+     0.0
+    ],
+    "plate_count": [
+     0.0,
+     0.0
+    ],
+    "gank_loss": [
+     25.900000000000006,
+     25.900000000000006
+    ],
+    "crashes_by_size": {
+     "A": [
+      0.0,
+      0.0,
+      0.0
+     ],
+     "B": [
+      0.0,
+      0.0,
+      0.0
+     ]
+    },
+    "crash_hp": [
+     0.0,
+     0.0
+    ],
+    "vision_choices": [
+     0.0,
+     0.0
+    ],
+    "pressure_turns": [
+     0.0,
+     0.0
+    ],
+    "vision_turns_set": [
+     0.0,
+     0.0
+    ],
+    "siege_turns": [
+     0.0,
+     0.0
+    ],
+    "siege_safe_turns": [
+     0.0,
+     0.0
+    ],
+    "thinned_hp": [
+     0.0,
+     0.0
+    ],
+    "thin_farm": [
+     0.0,
+     0.0
+    ],
+    "protected_turns": [
+     0.0,
+     0.0
+    ],
+    "p_contest_protected": [
+     null,
+     null
+    ],
+    "p_contest_unprotected": [
+     0.875,
+     0.875
+    ],
+    "bounces": [
+     0.0,
+     0.0
+    ],
+    "bounce_hp": [
+     0.0,
+     0.0
+    ],
+    "sieges_started": [
+     0.0,
+     0.0
+    ],
+    "contest_share": [
+     0.875,
+     0.875
+    ],
+    "action_freq": [
+     {
+      "SP-C": 0.7916666666666666,
+      "SH-C": 0.08333333333333333,
+      "SP-S": 0.125,
+      "SH-S": 0.0
+     },
+     {
+      "SP-C": 0.7916666666666666,
+      "SH-C": 0.08333333333333333,
+      "SP-S": 0.125,
+      "SH-S": 0.0
+     }
+    ],
+    "wave_freq": [
+     {
+      "SP": 0.9166666666666666,
+      "SH": 0.08333333333333333
+     },
+     {
+      "SP": 0.9166666666666666,
+      "SH": 0.08333333333333333
+     }
+    ],
+    "support_size": []
+   },
+   "baselines": {
+    "aggressive": {
+     "exploitability": 18.002500000000005,
+     "value_vs_equilibrium": -17.677500000000002,
+     "farm": -3.577500000000005,
+     "plates": 0.0,
+     "crash": 0.0,
+     "gank": -14.424999999999997
+    },
+    "passive_safe": {
+     "exploitability": 4.709999999999998,
+     "value_vs_equilibrium": -2.189999999999999,
+     "farm": -6.160000000000002,
+     "plates": 0.0,
+     "crash": 0.0,
+     "gank": 1.4500000000000064
+    },
+    "stack_builder": {
+     "exploitability": 2.1374999999999984,
+     "value_vs_equilibrium": -0.3199999999999998,
+     "farm": -0.6624999999999988,
+     "plates": 0.0,
+     "crash": 0.0,
+     "gank": -1.4749999999999943
+    },
+    "release_safe": {
+     "exploitability": 5.170000000000001,
+     "value_vs_equilibrium": -2.119999999999999,
+     "farm": -8.370000000000001,
+     "plates": 0.0,
+     "crash": 0.0,
+     "gank": 3.2000000000000064
+    },
+    "contest_slowpush": {
+     "exploitability": 2.3524999999999987,
+     "value_vs_equilibrium": -0.3199999999999998,
+     "farm": -0.9775,
+     "plates": 0.0,
+     "crash": 0.0,
+     "gank": -1.375
+    }
+   },
+   "br_paths": {
+    "aggressive": {
+     "bounces": [
+      0.0,
+      0.0
+     ],
+     "bounce_hp": [
+      0.0,
+      0.0
+     ],
+     "crashes_B": [
+      0.0,
+      0.0,
+      0.0
+     ],
+     "plates": [
+      0.0,
+      0.0
+     ],
+     "thinned": [
+      0.0,
+      0.0
+     ],
+     "vision": [
+      0.0,
+      0.0
+     ],
+     "pressure": [
+      0.0,
+      0.0
+     ],
+     "siege_turns": [
+      0.0,
+      0.0
+     ],
+     "vision_choices": [
+      0.0,
+      0.0
+     ]
+    },
+    "passive_safe": {
+     "bounces": [
+      0.0,
+      0.0
+     ],
+     "bounce_hp": [
+      0.0,
+      0.0
+     ],
+     "crashes_B": [
+      0.0,
+      1.0,
+      0.0
+     ],
+     "plates": [
+      0.0,
+      0.0
+     ],
+     "thinned": [
+      0.0,
+      1.0
+     ],
+     "vision": [
+      0.0,
+      2.0
+     ],
+     "pressure": [
+      0.0,
+      1.0
+     ],
+     "siege_turns": [
+      0.0,
+      3.0
+     ],
+     "vision_choices": [
+      0.0,
+      0.0
+     ]
+    },
+    "stack_builder": {
+     "bounces": [
+      0.0,
+      0.0
+     ],
+     "bounce_hp": [
+      0.0,
+      0.0
+     ],
+     "crashes_B": [
+      0.0,
+      1.0,
+      0.0
+     ],
+     "plates": [
+      0.0,
+      0.0
+     ],
+     "thinned": [
+      0.0,
+      1.0
+     ],
+     "vision": [
+      0.0,
+      2.0
+     ],
+     "pressure": [
+      0.0,
+      1.0
+     ],
+     "siege_turns": [
+      0.0,
+      3.0
+     ],
+     "vision_choices": [
+      0.0,
+      0.0
+     ]
+    },
+    "release_safe": {
+     "bounces": [
+      0.0,
+      0.0
+     ],
+     "bounce_hp": [
+      0.0,
+      0.0
+     ],
+     "crashes_B": [
+      0.0,
+      0.0,
+      0.0
+     ],
+     "plates": [
+      0.0,
+      0.0
+     ],
+     "thinned": [
+      0.0,
+      0.0
+     ],
+     "vision": [
+      0.0,
+      0.0
+     ],
+     "pressure": [
+      0.0,
+      0.0
+     ],
+     "siege_turns": [
+      0.0,
+      0.0
+     ],
+     "vision_choices": [
+      0.0,
+      0.0
+     ]
+    },
+    "contest_slowpush": {
+     "bounces": [
+      0.0,
+      0.0
+     ],
+     "bounce_hp": [
+      0.0,
+      0.0
+     ],
+     "crashes_B": [
+      0.0,
+      1.0,
+      0.0
+     ],
+     "plates": [
+      0.0,
+      0.0
+     ],
+     "thinned": [
+      0.0,
+      1.0
+     ],
+     "vision": [
+      0.0,
+      2.0
+     ],
+     "pressure": [
+      0.0,
+      1.0
+     ],
+     "siege_turns": [
+      0.0,
+      3.0
+     ],
+     "vision_choices": [
+      0.0,
+      0.0
+     ]
+    }
+   },
+   "probe_crash12": {
+    "value": -3.0034693877551017,
+    "A": {
+     "SP-C+V": 1.0
+    },
+    "B": {
+     "SP-S": 1.0
+    },
+    "Q_A": {
+     "SP-S": -3.290969387755102,
+     "SH-S": -3.290969387755102,
+     "SP-C+P": -3.502500000000002,
+     "SH-C+P": -3.6525000000000016,
+     "SP-C+V": -3.0034693877551017,
+     "SH-C+V": -3.153469387755102
+    }
+   },
+   "pre_crash_12": {
+    "value": -2.3386613448355376,
+    "A": {
+     "SP-C": 0.531,
+     "SH-C": 0.469
+    },
+    "crash_gain": 0.0
+   }
+  },
+  "3 Apply Pressure (plates + thinning)": {
+   "config": {
+    "base": 4,
+    "tower": 2,
+    "ticks_per_turn": 2,
+    "spawn_interval": 4,
+    "horizon": 24,
+    "wave_hp": 4,
+    "max_stacks": 2,
+    "cap_rule": "block",
+    "queue_fights": true,
+    "positioning": true,
+    "damage_law": "lanchester",
+    "shove_damage": 1,
+    "tower_damage": 1,
+    "pressure_kappa": [
+     0,
+     1,
+     0
+    ],
+    "slowpush_line": 0,
+    "slowpush_mode": "stack_creep",
+    "slowpush_creep_period": 2,
+    "freeze_line": -1,
+    "freeze_break_threshold": 10,
+    "freeze_break_push": [
+     0,
+     4,
+     0
+    ],
+    "freeze_legal_max": -1,
+    "tower_mode": "mass",
+    "tower_consumption_per_turn": 1,
+    "tower_siege_damage": 1,
+    "siege_engage": false,
+    "siege_cap": 48,
+    "siege_mode": "objective",
+    "plate_mode": "crash",
+    "plate_grant": [
+     1,
+     2,
+     3
+    ],
+    "plates_cap": 6,
+    "plates_per_tower": 5,
+    "plates_per_turn": 1,
+    "plate_value": 1.0,
+    "thin_damage": 1,
+    "thin_reach": 1,
+    "crash_options": [
+     [
+      [
+       1.0,
+       false
+      ],
+      [
+       0.0,
+       true
+      ]
+     ],
+     [
+      [
+       2.0,
+       false
+      ],
+      [
+       0.0,
+       true
+      ]
+     ],
+     [
+      [
+       3.0,
+       false
+      ],
+      [
+       2.0,
+       true
+      ]
+     ]
+    ],
+    "vision_turns": 2,
+    "vision_reduction": 0.5,
+    "farm_per_hp": 0.25,
+    "collect_contest": 0.9,
+    "collect_contest_enemy_tower": 0.5,
+    "collect_safe": 0.8,
+    "collect_safe_slope": 0.2,
+    "zone_contest": 0.3,
+    "zone_under_tower": 0.15,
+    "gank_base": 0.15,
+    "gank_position": 0.1,
+    "gank_action": [
+     0.02,
+     0.05,
+     0.02,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "gank_strength": 0.02,
+    "gank_max": 0.4,
+    "gank_loss": 5.0,
+    "posture_cap": [
+     null,
+     null,
+     null,
+     -1,
+     -1,
+     -1
+    ]
+   },
+   "nodes": 17271,
+   "mixed": 731,
+   "solve_s": 5.0384289000649005,
+   "enumerate_s": 15.430245999945328,
+   "value": 0.0,
+   "node_avg": {
+    "nodes": 17271,
+    "contest": 0.754836820296976,
+    "siege_nodes": 4135,
+    "p_pressure": 0.6448315093488061,
+    "p_vision": 0.33538551975150077,
+    "p_disengage": 0.019782970899693282
+   },
+   "path": {
+    "value": 0.0,
+    "farm": [
+     7.130000000000002,
+     7.130000000000002
+    ],
+    "farm_available": [
+     11.5,
+     11.5
+    ],
+    "farm_missed": [
+     4.369999999999998,
+     4.369999999999998
+    ],
+    "crash_resources": [
+     0.0,
+     0.0
+    ],
+    "plates": [
+     0.0,
+     0.0
+    ],
+    "plate_count": [
+     0.0,
+     0.0
+    ],
+    "gank_loss": [
+     25.900000000000006,
+     25.900000000000006
+    ],
+    "crashes_by_size": {
+     "A": [
+      0.0,
+      0.0,
+      0.0
+     ],
+     "B": [
+      0.0,
+      0.0,
+      0.0
+     ]
+    },
+    "crash_hp": [
+     0.0,
+     0.0
+    ],
+    "vision_choices": [
+     0.0,
+     0.0
+    ],
+    "pressure_turns": [
+     0.0,
+     0.0
+    ],
+    "vision_turns_set": [
+     0.0,
+     0.0
+    ],
+    "siege_turns": [
+     0.0,
+     0.0
+    ],
+    "siege_safe_turns": [
+     0.0,
+     0.0
+    ],
+    "thinned_hp": [
+     0.0,
+     0.0
+    ],
+    "thin_farm": [
+     0.0,
+     0.0
+    ],
+    "protected_turns": [
+     0.0,
+     0.0
+    ],
+    "p_contest_protected": [
+     null,
+     null
+    ],
+    "p_contest_unprotected": [
+     0.875,
+     0.875
+    ],
+    "bounces": [
+     0.0,
+     0.0
+    ],
+    "bounce_hp": [
+     0.0,
+     0.0
+    ],
+    "sieges_started": [
+     0.0,
+     0.0
+    ],
+    "contest_share": [
+     0.875,
+     0.875
+    ],
+    "action_freq": [
+     {
+      "SP-C": 0.7916666666666666,
+      "SH-C": 0.08333333333333333,
+      "SP-S": 0.125,
+      "SH-S": 0.0
+     },
+     {
+      "SP-C": 0.7916666666666666,
+      "SH-C": 0.08333333333333333,
+      "SP-S": 0.125,
+      "SH-S": 0.0
+     }
+    ],
+    "wave_freq": [
+     {
+      "SP": 0.9166666666666666,
+      "SH": 0.08333333333333333
+     },
+     {
+      "SP": 0.9166666666666666,
+      "SH": 0.08333333333333333
+     }
+    ],
+    "support_size": []
+   },
+   "baselines": {
+    "aggressive": {
+     "exploitability": 18.002500000000005,
+     "value_vs_equilibrium": -17.677500000000002,
+     "farm": -3.577500000000005,
+     "plates": 0.0,
+     "crash": 0.0,
+     "gank": -14.424999999999997
+    },
+    "passive_safe": {
+     "exploitability": 6.135,
+     "value_vs_equilibrium": -2.189999999999999,
+     "farm": -4.860000000000001,
+     "plates": -3.0,
+     "crash": 0.0,
+     "gank": 1.7250000000000085
+    },
+    "stack_builder": {
+     "exploitability": 3.7462499999999963,
+     "value_vs_equilibrium": -0.3199999999999998,
+     "farm": 0.37875000000000103,
+     "plates": -3.0,
+     "crash": 0.0,
+     "gank": -1.124999999999993
+    },
+    "release_safe": {
+     "exploitability": 5.170000000000001,
+     "value_vs_equilibrium": -2.119999999999999,
+     "farm": -8.370000000000001,
+     "plates": 0.0,
+     "crash": 0.0,
+     "gank": 3.2000000000000064
+    },
+    "contest_slowpush": {
+     "exploitability": 4.1112499999999965,
+     "value_vs_equilibrium": -0.3199999999999998,
+     "farm": 0.06375000000000153,
+     "plates": -3.0,
+     "crash": 0.0,
+     "gank": -1.1750000000000007
+    }
+   },
+   "br_paths": {
+    "aggressive": {
+     "bounces": [
+      0.0,
+      0.0
+     ],
+     "bounce_hp": [
+      0.0,
+      0.0
+     ],
+     "crashes_B": [
+      0.0,
+      0.0,
+      0.0
+     ],
+     "plates": [
+      0.0,
+      0.0
+     ],
+     "thinned": [
+      0.0,
+      0.0
+     ],
+     "vision": [
+      0.0,
+      0.0
+     ],
+     "pressure": [
+      0.0,
+      0.0
+     ],
+     "siege_turns": [
+      0.0,
+      0.0
+     ],
+     "vision_choices": [
+      0.0,
+      0.0
+     ]
+    },
+    "passive_safe": {
+     "bounces": [
+      0.0,
+      0.0
+     ],
+     "bounce_hp": [
+      0.0,
+      0.0
+     ],
+     "crashes_B": [
+      1.0,
+      1.0,
+      0.0
+     ],
+     "plates": [
+      0.0,
+      3.0
+     ],
+     "thinned": [
+      0.0,
+      3.0
+     ],
+     "vision": [
+      0.0,
+      2.0
+     ],
+     "pressure": [
+      0.0,
+      3.0
+     ],
+     "siege_turns": [
+      0.0,
+      5.0
+     ],
+     "vision_choices": [
+      0.0,
+      0.0
+     ]
+    },
+    "stack_builder": {
+     "bounces": [
+      0.0,
+      0.0
+     ],
+     "bounce_hp": [
+      0.0,
+      0.0
+     ],
+     "crashes_B": [
+      1.0,
+      1.0,
+      0.0
+     ],
+     "plates": [
+      0.0,
+      3.0
+     ],
+     "thinned": [
+      0.0,
+      3.0
+     ],
+     "vision": [
+      0.0,
+      2.0
+     ],
+     "pressure": [
+      0.0,
+      3.0
+     ],
+     "siege_turns": [
+      0.0,
+      5.0
+     ],
+     "vision_choices": [
+      0.0,
+      0.0
+     ]
+    },
+    "release_safe": {
+     "bounces": [
+      0.0,
+      0.0
+     ],
+     "bounce_hp": [
+      0.0,
+      0.0
+     ],
+     "crashes_B": [
+      0.0,
+      0.0,
+      0.0
+     ],
+     "plates": [
+      0.0,
+      0.0
+     ],
+     "thinned": [
+      0.0,
+      0.0
+     ],
+     "vision": [
+      0.0,
+      0.0
+     ],
+     "pressure": [
+      0.0,
+      0.0
+     ],
+     "siege_turns": [
+      0.0,
+      0.0
+     ],
+     "vision_choices": [
+      0.0,
+      0.0
+     ]
+    },
+    "contest_slowpush": {
+     "bounces": [
+      0.0,
+      0.0
+     ],
+     "bounce_hp": [
+      0.0,
+      0.0
+     ],
+     "crashes_B": [
+      1.0,
+      1.0,
+      0.0
+     ],
+     "plates": [
+      0.0,
+      3.0
+     ],
+     "thinned": [
+      0.0,
+      3.0
+     ],
+     "vision": [
+      0.0,
+      2.0
+     ],
+     "pressure": [
+      0.0,
+      3.0
+     ],
+     "siege_turns": [
+      0.0,
+      5.0
+     ],
+     "vision_choices": [
+      0.0,
+      0.0
+     ]
+    }
+   },
+   "probe_crash12": {
+    "value": -0.5025000000000022,
+    "A": {
+     "SP-C+P": 1.0
+    },
+    "B": {
+     "SP-S": 1.0
+    },
+    "Q_A": {
+     "SP-S": -1.462500000000002,
+     "SH-S": -1.462500000000002,
+     "SP-C+P": -0.5025000000000022,
+     "SH-C+P": -0.6525000000000021,
+     "SP-C+V": -0.5775000000000022,
+     "SH-C+V": -0.7275000000000021
+    }
+   },
+   "pre_crash_12": {
+    "value": -1.001219806763287,
+    "A": {
+     "SH-C": 1.0
+    },
+    "crash_gain": 0.6487801932367152
+   }
+  },
+  "4 stronger vision alone (75%)": {
+   "config": {
+    "base": 4,
+    "tower": 2,
+    "ticks_per_turn": 2,
+    "spawn_interval": 4,
+    "horizon": 24,
+    "wave_hp": 4,
+    "max_stacks": 2,
+    "cap_rule": "block",
+    "queue_fights": true,
+    "positioning": true,
+    "damage_law": "lanchester",
+    "shove_damage": 1,
+    "tower_damage": 1,
+    "pressure_kappa": [
+     0,
+     1,
+     0
+    ],
+    "slowpush_line": 0,
+    "slowpush_mode": "stack_creep",
+    "slowpush_creep_period": 2,
+    "freeze_line": -1,
+    "freeze_break_threshold": 10,
+    "freeze_break_push": [
+     0,
+     4,
+     0
+    ],
+    "freeze_legal_max": -1,
+    "tower_mode": "mass",
+    "tower_consumption_per_turn": 1,
+    "tower_siege_damage": 1,
+    "siege_engage": false,
+    "siege_cap": 48,
+    "siege_mode": "objective",
+    "plate_mode": "crash",
+    "plate_grant": [
+     0,
+     0,
+     0
+    ],
+    "plates_cap": 6,
+    "plates_per_tower": 5,
+    "plates_per_turn": 1,
+    "plate_value": 1.0,
+    "thin_damage": 0,
+    "thin_reach": 1,
+    "crash_options": [
+     [
+      [
+       1.0,
+       false
+      ],
+      [
+       0.0,
+       true
+      ]
+     ],
+     [
+      [
+       2.0,
+       false
+      ],
+      [
+       0.0,
+       true
+      ]
+     ],
+     [
+      [
+       3.0,
+       false
+      ],
+      [
+       2.0,
+       true
+      ]
+     ]
+    ],
+    "vision_turns": 2,
+    "vision_reduction": 0.75,
+    "farm_per_hp": 0.25,
+    "collect_contest": 0.9,
+    "collect_contest_enemy_tower": 0.5,
+    "collect_safe": 0.8,
+    "collect_safe_slope": 0.2,
+    "zone_contest": 0.3,
+    "zone_under_tower": 0.15,
+    "gank_base": 0.15,
+    "gank_position": 0.1,
+    "gank_action": [
+     0.02,
+     0.05,
+     0.02,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "gank_strength": 0.02,
+    "gank_max": 0.4,
+    "gank_loss": 5.0,
+    "posture_cap": [
+     null,
+     null,
+     null,
+     -1,
+     -1,
+     -1
+    ]
+   },
+   "nodes": 10403,
+   "mixed": 542,
+   "solve_s": 2.6481722998432815,
+   "enumerate_s": 7.04222820000723,
+   "value": 0.0,
+   "node_avg": {
+    "nodes": 10403,
+    "contest": 0.735298903592356,
+    "siege_nodes": 1715,
+    "p_pressure": 0.12852677867683865,
+    "p_vision": 0.6822157434402333,
+    "p_disengage": 0.18925747788292793
+   },
+   "path": {
+    "value": 0.0,
+    "farm": [
+     7.130000000000002,
+     7.130000000000002
+    ],
+    "farm_available": [
+     11.5,
+     11.5
+    ],
+    "farm_missed": [
+     4.369999999999998,
+     4.369999999999998
+    ],
+    "crash_resources": [
+     0.0,
+     0.0
+    ],
+    "plates": [
+     0.0,
+     0.0
+    ],
+    "plate_count": [
+     0.0,
+     0.0
+    ],
+    "gank_loss": [
+     25.900000000000006,
+     25.900000000000006
+    ],
+    "crashes_by_size": {
+     "A": [
+      0.0,
+      0.0,
+      0.0
+     ],
+     "B": [
+      0.0,
+      0.0,
+      0.0
+     ]
+    },
+    "crash_hp": [
+     0.0,
+     0.0
+    ],
+    "vision_choices": [
+     0.0,
+     0.0
+    ],
+    "pressure_turns": [
+     0.0,
+     0.0
+    ],
+    "vision_turns_set": [
+     0.0,
+     0.0
+    ],
+    "siege_turns": [
+     0.0,
+     0.0
+    ],
+    "siege_safe_turns": [
+     0.0,
+     0.0
+    ],
+    "thinned_hp": [
+     0.0,
+     0.0
+    ],
+    "thin_farm": [
+     0.0,
+     0.0
+    ],
+    "protected_turns": [
+     0.0,
+     0.0
+    ],
+    "p_contest_protected": [
+     null,
+     null
+    ],
+    "p_contest_unprotected": [
+     0.875,
+     0.875
+    ],
+    "bounces": [
+     0.0,
+     0.0
+    ],
+    "bounce_hp": [
+     0.0,
+     0.0
+    ],
+    "sieges_started": [
+     0.0,
+     0.0
+    ],
+    "contest_share": [
+     0.875,
+     0.875
+    ],
+    "action_freq": [
+     {
+      "SP-C": 0.7916666666666666,
+      "SH-C": 0.08333333333333333,
+      "SP-S": 0.125,
+      "SH-S": 0.0
+     },
+     {
+      "SP-C": 0.7916666666666666,
+      "SH-C": 0.08333333333333333,
+      "SP-S": 0.125,
+      "SH-S": 0.0
+     }
+    ],
+    "wave_freq": [
+     {
+      "SP": 0.9166666666666666,
+      "SH": 0.08333333333333333
+     },
+     {
+      "SP": 0.9166666666666666,
+      "SH": 0.08333333333333333
+     }
+    ],
+    "support_size": []
+   },
+   "baselines": {
+    "aggressive": {
+     "exploitability": 18.002500000000005,
+     "value_vs_equilibrium": -17.677500000000002,
+     "farm": -3.577500000000005,
+     "plates": 0.0,
+     "crash": 0.0,
+     "gank": -14.424999999999997
+    },
+    "passive_safe": {
+     "exploitability": 5.616249999999998,
+     "value_vs_equilibrium": -2.189999999999999,
+     "farm": -6.060000000000002,
+     "plates": 0.0,
+     "crash": 0.0,
+     "gank": 0.4437500000000014
+    },
+    "stack_builder": {
+     "exploitability": 2.8674999999999966,
+     "value_vs_equilibrium": -0.3199999999999998,
+     "farm": 1.1762500000000022,
+     "plates": 0.0,
+     "crash": 0.0,
+     "gank": -4.043749999999999
+    },
+    "release_safe": {
+     "exploitability": 5.170000000000001,
+     "value_vs_equilibrium": -2.119999999999999,
+     "farm": -8.370000000000001,
+     "plates": 0.0,
+     "crash": 0.0,
+     "gank": 3.2000000000000064
+    },
+    "contest_slowpush": {
+     "exploitability": 3.444999999999997,
+     "value_vs_equilibrium": -0.3199999999999998,
+     "farm": 0.8612500000000027,
+     "plates": 0.0,
+     "crash": 0.0,
+     "gank": -4.306250000000006
+    }
+   },
+   "br_paths": {
+    "aggressive": {
+     "bounces": [
+      0.0,
+      0.0
+     ],
+     "bounce_hp": [
+      0.0,
+      0.0
+     ],
+     "crashes_B": [
+      0.0,
+      0.0,
+      0.0
+     ],
+     "plates": [
+      0.0,
+      0.0
+     ],
+     "thinned": [
+      0.0,
+      0.0
+     ],
+     "vision": [
+      0.0,
+      0.0
+     ],
+     "pressure": [
+      0.0,
+      0.0
+     ],
+     "siege_turns": [
+      0.0,
+      0.0
+     ],
+     "vision_choices": [
+      0.0,
+      0.0
+     ]
+    },
+    "passive_safe": {
+     "bounces": [
+      1.0,
+      0.0
+     ],
+     "bounce_hp": [
+      8.0,
+      0.0
+     ],
+     "crashes_B": [
+      0.0,
+      1.0,
+      0.0
+     ],
+     "plates": [
+      0.0,
+      0.0
+     ],
+     "thinned": [
+      0.0,
+      0.0
+     ],
+     "vision": [
+      0.0,
+      2.0
+     ],
+     "pressure": [
+      0.0,
+      0.0
+     ],
+     "siege_turns": [
+      0.0,
+      3.0
+     ],
+     "vision_choices": [
+      0.0,
+      0.0
+     ]
+    },
+    "stack_builder": {
+     "bounces": [
+      1.0,
+      0.0
+     ],
+     "bounce_hp": [
+      8.0,
+      0.0
+     ],
+     "crashes_B": [
+      0.0,
+      1.0,
+      0.0
+     ],
+     "plates": [
+      0.0,
+      0.0
+     ],
+     "thinned": [
+      0.0,
+      0.0
+     ],
+     "vision": [
+      0.0,
+      3.0
+     ],
+     "pressure": [
+      0.0,
+      0.0
+     ],
+     "siege_turns": [
+      0.0,
+      4.0
+     ],
+     "vision_choices": [
+      0.0,
+      0.0
+     ]
+    },
+    "release_safe": {
+     "bounces": [
+      0.0,
+      0.0
+     ],
+     "bounce_hp": [
+      0.0,
+      0.0
+     ],
+     "crashes_B": [
+      0.0,
+      0.0,
+      0.0
+     ],
+     "plates": [
+      0.0,
+      0.0
+     ],
+     "thinned": [
+      0.0,
+      0.0
+     ],
+     "vision": [
+      0.0,
+      0.0
+     ],
+     "pressure": [
+      0.0,
+      0.0
+     ],
+     "siege_turns": [
+      0.0,
+      0.0
+     ],
+     "vision_choices": [
+      0.0,
+      0.0
+     ]
+    },
+    "contest_slowpush": {
+     "bounces": [
+      1.0,
+      0.0
+     ],
+     "bounce_hp": [
+      8.0,
+      0.0
+     ],
+     "crashes_B": [
+      0.0,
+      1.0,
+      0.0
+     ],
+     "plates": [
+      0.0,
+      0.0
+     ],
+     "thinned": [
+      0.0,
+      0.0
+     ],
+     "vision": [
+      0.0,
+      3.0
+     ],
+     "pressure": [
+      0.0,
+      0.0
+     ],
+     "siege_turns": [
+      0.0,
+      4.0
+     ],
+     "vision_choices": [
+      0.0,
+      0.0
+     ]
+    }
+   },
+   "probe_crash12": {
+    "value": -0.7925853457659302,
+    "A": {
+     "SP-C+V": 1.0
+    },
+    "B": {
+     "SP-S": 1.0
+    },
+    "Q_A": {
+     "SP-S": -1.4204946020809264,
+     "SH-S": -1.4204946020809264,
+     "SP-C+P": -1.8354946020809266,
+     "SH-C+P": -1.9854946020809265,
+     "SP-C+V": -0.7925853457659302,
+     "SH-C+V": -0.9425853457659301
+    }
+   },
+   "pre_crash_12": {
+    "value": -0.9839962502761055,
+    "A": {
+     "SP-C": 0.944,
+     "SH-C": 0.056
+    },
+    "crash_gain": -1.1102230246251565e-16
+   }
+  },
+  "5 longer vision alone (6 turns)": {
+   "config": {
+    "base": 4,
+    "tower": 2,
+    "ticks_per_turn": 2,
+    "spawn_interval": 4,
+    "horizon": 24,
+    "wave_hp": 4,
+    "max_stacks": 2,
+    "cap_rule": "block",
+    "queue_fights": true,
+    "positioning": true,
+    "damage_law": "lanchester",
+    "shove_damage": 1,
+    "tower_damage": 1,
+    "pressure_kappa": [
+     0,
+     1,
+     0
+    ],
+    "slowpush_line": 0,
+    "slowpush_mode": "stack_creep",
+    "slowpush_creep_period": 2,
+    "freeze_line": -1,
+    "freeze_break_threshold": 10,
+    "freeze_break_push": [
+     0,
+     4,
+     0
+    ],
+    "freeze_legal_max": -1,
+    "tower_mode": "mass",
+    "tower_consumption_per_turn": 1,
+    "tower_siege_damage": 1,
+    "siege_engage": false,
+    "siege_cap": 48,
+    "siege_mode": "objective",
+    "plate_mode": "crash",
+    "plate_grant": [
+     0,
+     0,
+     0
+    ],
+    "plates_cap": 6,
+    "plates_per_tower": 5,
+    "plates_per_turn": 1,
+    "plate_value": 1.0,
+    "thin_damage": 0,
+    "thin_reach": 1,
+    "crash_options": [
+     [
+      [
+       1.0,
+       false
+      ],
+      [
+       0.0,
+       true
+      ]
+     ],
+     [
+      [
+       2.0,
+       false
+      ],
+      [
+       0.0,
+       true
+      ]
+     ],
+     [
+      [
+       3.0,
+       false
+      ],
+      [
+       2.0,
+       true
+      ]
+     ]
+    ],
+    "vision_turns": 6,
+    "vision_reduction": 0.5,
+    "farm_per_hp": 0.25,
+    "collect_contest": 0.9,
+    "collect_contest_enemy_tower": 0.5,
+    "collect_safe": 0.8,
+    "collect_safe_slope": 0.2,
+    "zone_contest": 0.3,
+    "zone_under_tower": 0.15,
+    "gank_base": 0.15,
+    "gank_position": 0.1,
+    "gank_action": [
+     0.02,
+     0.05,
+     0.02,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "gank_strength": 0.02,
+    "gank_max": 0.4,
+    "gank_loss": 5.0,
+    "posture_cap": [
+     null,
+     null,
+     null,
+     -1,
+     -1,
+     -1
+    ]
+   },
+   "nodes": 24717,
+   "mixed": 1602,
+   "solve_s": 8.533404199872166,
+   "enumerate_s": 18.54874990019016,
+   "value": 0.0,
+   "node_avg": {
+    "nodes": 24717,
+    "contest": 0.7452605913203144,
+    "siege_nodes": 2588,
+    "p_pressure": 0.18394377355116973,
+    "p_vision": 0.4404082152560597,
+    "p_disengage": 0.3756480111927708
+   },
+   "path": {
+    "value": 0.0,
+    "farm": [
+     7.130000000000002,
+     7.130000000000002
+    ],
+    "farm_available": [
+     11.5,
+     11.5
+    ],
+    "farm_missed": [
+     4.369999999999998,
+     4.369999999999998
+    ],
+    "crash_resources": [
+     0.0,
+     0.0
+    ],
+    "plates": [
+     0.0,
+     0.0
+    ],
+    "plate_count": [
+     0.0,
+     0.0
+    ],
+    "gank_loss": [
+     25.900000000000006,
+     25.900000000000006
+    ],
+    "crashes_by_size": {
+     "A": [
+      0.0,
+      0.0,
+      0.0
+     ],
+     "B": [
+      0.0,
+      0.0,
+      0.0
+     ]
+    },
+    "crash_hp": [
+     0.0,
+     0.0
+    ],
+    "vision_choices": [
+     0.0,
+     0.0
+    ],
+    "pressure_turns": [
+     0.0,
+     0.0
+    ],
+    "vision_turns_set": [
+     0.0,
+     0.0
+    ],
+    "siege_turns": [
+     0.0,
+     0.0
+    ],
+    "siege_safe_turns": [
+     0.0,
+     0.0
+    ],
+    "thinned_hp": [
+     0.0,
+     0.0
+    ],
+    "thin_farm": [
+     0.0,
+     0.0
+    ],
+    "protected_turns": [
+     0.0,
+     0.0
+    ],
+    "p_contest_protected": [
+     null,
+     null
+    ],
+    "p_contest_unprotected": [
+     0.875,
+     0.875
+    ],
+    "bounces": [
+     0.0,
+     0.0
+    ],
+    "bounce_hp": [
+     0.0,
+     0.0
+    ],
+    "sieges_started": [
+     0.0,
+     0.0
+    ],
+    "contest_share": [
+     0.875,
+     0.875
+    ],
+    "action_freq": [
+     {
+      "SP-C": 0.7916666666666666,
+      "SH-C": 0.08333333333333333,
+      "SP-S": 0.125,
+      "SH-S": 0.0
+     },
+     {
+      "SP-C": 0.7916666666666666,
+      "SH-C": 0.08333333333333333,
+      "SP-S": 0.125,
+      "SH-S": 0.0
+     }
+    ],
+    "wave_freq": [
+     {
+      "SP": 0.9166666666666666,
+      "SH": 0.08333333333333333
+     },
+     {
+      "SP": 0.9166666666666666,
+      "SH": 0.08333333333333333
+     }
+    ],
+    "support_size": []
+   },
+   "baselines": {
+    "aggressive": {
+     "exploitability": 18.002500000000005,
+     "value_vs_equilibrium": -17.677500000000002,
+     "farm": -3.577500000000005,
+     "plates": 0.0,
+     "crash": 0.0,
+     "gank": -14.424999999999997
+    },
+    "passive_safe": {
+     "exploitability": 7.574999999999999,
+     "value_vs_equilibrium": -2.189999999999999,
+     "farm": -5.15,
+     "plates": 0.0,
+     "crash": 0.0,
+     "gank": -2.4250000000000007
+    },
+    "stack_builder": {
+     "exploitability": 4.9324999999999966,
+     "value_vs_equilibrium": -0.3199999999999998,
+     "farm": 0.11750000000000149,
+     "plates": 0.0,
+     "crash": 0.0,
+     "gank": -5.049999999999994
+    },
+    "release_safe": {
+     "exploitability": 5.170000000000001,
+     "value_vs_equilibrium": -2.119999999999999,
+     "farm": -8.370000000000001,
+     "plates": 0.0,
+     "crash": 0.0,
+     "gank": 3.2000000000000064
+    },
+    "contest_slowpush": {
+     "exploitability": 5.397499999999997,
+     "value_vs_equilibrium": -0.3199999999999998,
+     "farm": -0.197499999999998,
+     "plates": 0.0,
+     "crash": 0.0,
+     "gank": -5.199999999999999
+    }
+   },
+   "br_paths": {
+    "aggressive": {
+     "bounces": [
+      0.0,
+      0.0
+     ],
+     "bounce_hp": [
+      0.0,
+      0.0
+     ],
+     "crashes_B": [
+      0.0,
+      0.0,
+      0.0
+     ],
+     "plates": [
+      0.0,
+      0.0
+     ],
+     "thinned": [
+      0.0,
+      0.0
+     ],
+     "vision": [
+      0.0,
+      0.0
+     ],
+     "pressure": [
+      0.0,
+      0.0
+     ],
+     "siege_turns": [
+      0.0,
+      0.0
+     ],
+     "vision_choices": [
+      0.0,
+      0.0
+     ]
+    },
+    "passive_safe": {
+     "bounces": [
+      0.0,
+      0.0
+     ],
+     "bounce_hp": [
+      0.0,
+      0.0
+     ],
+     "crashes_B": [
+      3.0,
+      0.0,
+      0.0
+     ],
+     "plates": [
+      0.0,
+      0.0
+     ],
+     "thinned": [
+      0.0,
+      0.0
+     ],
+     "vision": [
+      0.0,
+      3.0
+     ],
+     "pressure": [
+      0.0,
+      0.0
+     ],
+     "siege_turns": [
+      0.0,
+      4.0
+     ],
+     "vision_choices": [
+      0.0,
+      0.0
+     ]
+    },
+    "stack_builder": {
+     "bounces": [
+      0.0,
+      0.0
+     ],
+     "bounce_hp": [
+      0.0,
+      0.0
+     ],
+     "crashes_B": [
+      3.0,
+      0.0,
+      0.0
+     ],
+     "plates": [
+      0.0,
+      0.0
+     ],
+     "thinned": [
+      0.0,
+      0.0
+     ],
+     "vision": [
+      0.0,
+      3.0
+     ],
+     "pressure": [
+      0.0,
+      0.0
+     ],
+     "siege_turns": [
+      0.0,
+      4.0
+     ],
+     "vision_choices": [
+      0.0,
+      0.0
+     ]
+    },
+    "release_safe": {
+     "bounces": [
+      0.0,
+      0.0
+     ],
+     "bounce_hp": [
+      0.0,
+      0.0
+     ],
+     "crashes_B": [
+      0.0,
+      0.0,
+      0.0
+     ],
+     "plates": [
+      0.0,
+      0.0
+     ],
+     "thinned": [
+      0.0,
+      0.0
+     ],
+     "vision": [
+      0.0,
+      0.0
+     ],
+     "pressure": [
+      0.0,
+      0.0
+     ],
+     "siege_turns": [
+      0.0,
+      0.0
+     ],
+     "vision_choices": [
+      0.0,
+      0.0
+     ]
+    },
+    "contest_slowpush": {
+     "bounces": [
+      0.0,
+      0.0
+     ],
+     "bounce_hp": [
+      0.0,
+      0.0
+     ],
+     "crashes_B": [
+      3.0,
+      0.0,
+      0.0
+     ],
+     "plates": [
+      0.0,
+      0.0
+     ],
+     "thinned": [
+      0.0,
+      0.0
+     ],
+     "vision": [
+      0.0,
+      3.0
+     ],
+     "pressure": [
+      0.0,
+      0.0
+     ],
+     "siege_turns": [
+      0.0,
+      4.0
+     ],
+     "vision_choices": [
+      0.0,
+      0.0
+     ]
+    }
+   },
+   "probe_crash12": {
+    "value": -0.5637521154760712,
+    "A": {
+     "SP-C+V": 1.0
+    },
+    "B": {
+     "SP-S": 1.0
+    },
+    "Q_A": {
+     "SP-S": -1.0012521154760712,
+     "SH-S": -1.0012521154760712,
+     "SP-C+P": -1.4162521154760712,
+     "SH-C+P": -1.5662521154760711,
+     "SP-C+V": -0.5637521154760712,
+     "SH-C+V": -0.7137521154760711
+    }
+   },
+   "pre_crash_12": {
+    "value": 0.05846955687839628,
+    "A": {
+     "SP-C": 0.443,
+     "SH-C": 0.557
+    },
+    "crash_gain": 3.469446951953614e-17
+   }
+  },
+  "6 faster tower alone (2 HP/tick)": {
+   "config": {
+    "base": 4,
+    "tower": 2,
+    "ticks_per_turn": 2,
+    "spawn_interval": 4,
+    "horizon": 24,
+    "wave_hp": 4,
+    "max_stacks": 2,
+    "cap_rule": "block",
+    "queue_fights": true,
+    "positioning": true,
+    "damage_law": "lanchester",
+    "shove_damage": 1,
+    "tower_damage": 1,
+    "pressure_kappa": [
+     0,
+     1,
+     0
+    ],
+    "slowpush_line": 0,
+    "slowpush_mode": "stack_creep",
+    "slowpush_creep_period": 2,
+    "freeze_line": -1,
+    "freeze_break_threshold": 10,
+    "freeze_break_push": [
+     0,
+     4,
+     0
+    ],
+    "freeze_legal_max": -1,
+    "tower_mode": "mass",
+    "tower_consumption_per_turn": 1,
+    "tower_siege_damage": 2,
+    "siege_engage": false,
+    "siege_cap": 48,
+    "siege_mode": "choice",
+    "plate_mode": "crash",
+    "plate_grant": [
+     0,
+     0,
+     0
+    ],
+    "plates_cap": 6,
+    "plates_per_tower": 0,
+    "plates_per_turn": 1,
+    "plate_value": 1.0,
+    "thin_damage": 0,
+    "thin_reach": 1,
+    "crash_options": [
+     [
+      [
+       1.0,
+       false
+      ],
+      [
+       0.0,
+       true
+      ]
+     ],
+     [
+      [
+       2.0,
+       false
+      ],
+      [
+       0.0,
+       true
+      ]
+     ],
+     [
+      [
+       3.0,
+       false
+      ],
+      [
+       2.0,
+       true
+      ]
+     ]
+    ],
+    "vision_turns": 2,
+    "vision_reduction": 0.5,
+    "farm_per_hp": 0.25,
+    "collect_contest": 0.9,
+    "collect_contest_enemy_tower": 0.5,
+    "collect_safe": 0.8,
+    "collect_safe_slope": 0.2,
+    "zone_contest": 0.3,
+    "zone_under_tower": 0.15,
+    "gank_base": 0.15,
+    "gank_position": 0.1,
+    "gank_action": [
+     0.02,
+     0.05,
+     0.02,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "gank_strength": 0.02,
+    "gank_max": 0.4,
+    "gank_loss": 5.0,
+    "posture_cap": [
+     null,
+     null,
+     null,
+     -1,
+     -1,
+     -1
+    ]
+   },
+   "nodes": 3919,
+   "mixed": 299,
+   "solve_s": 1.052499300101772,
+   "enumerate_s": 1.7383891998324543,
+   "value": 0.0,
+   "node_avg": {
+    "nodes": 3919,
+    "contest": 0.5530290031307826,
+    "siege_nodes": 0,
+    "p_pressure": 0.0,
+    "p_vision": 0.0,
+    "p_disengage": 0.0
+   },
+   "path": {
+    "value": 0.0,
+    "farm": [
+     7.130000000000002,
+     7.130000000000002
+    ],
+    "farm_available": [
+     11.5,
+     11.5
+    ],
+    "farm_missed": [
+     4.369999999999998,
+     4.369999999999998
+    ],
+    "crash_resources": [
+     0.0,
+     0.0
+    ],
+    "plates": [
+     0.0,
+     0.0
+    ],
+    "plate_count": [
+     0.0,
+     0.0
+    ],
+    "gank_loss": [
+     25.900000000000006,
+     25.900000000000006
+    ],
+    "crashes_by_size": {
+     "A": [
+      0.0,
+      0.0,
+      0.0
+     ],
+     "B": [
+      0.0,
+      0.0,
+      0.0
+     ]
+    },
+    "crash_hp": [
+     0.0,
+     0.0
+    ],
+    "vision_choices": [
+     0.0,
+     0.0
+    ],
+    "pressure_turns": [
+     0.0,
+     0.0
+    ],
+    "vision_turns_set": [
+     0.0,
+     0.0
+    ],
+    "siege_turns": [
+     0.0,
+     0.0
+    ],
+    "siege_safe_turns": [
+     0.0,
+     0.0
+    ],
+    "thinned_hp": [
+     0.0,
+     0.0
+    ],
+    "thin_farm": [
+     0.0,
+     0.0
+    ],
+    "protected_turns": [
+     0.0,
+     0.0
+    ],
+    "p_contest_protected": [
+     null,
+     null
+    ],
+    "p_contest_unprotected": [
+     0.875,
+     0.875
+    ],
+    "bounces": [
+     0.0,
+     0.0
+    ],
+    "bounce_hp": [
+     0.0,
+     0.0
+    ],
+    "sieges_started": [
+     0.0,
+     0.0
+    ],
+    "contest_share": [
+     0.875,
+     0.875
+    ],
+    "action_freq": [
+     {
+      "SP-C": 0.7916666666666666,
+      "SH-C": 0.08333333333333333,
+      "SP-S": 0.125,
+      "SH-S": 0.0
+     },
+     {
+      "SP-C": 0.7916666666666666,
+      "SH-C": 0.08333333333333333,
+      "SP-S": 0.125,
+      "SH-S": 0.0
+     }
+    ],
+    "wave_freq": [
+     {
+      "SP": 0.9166666666666666,
+      "SH": 0.08333333333333333
+     },
+     {
+      "SP": 0.9166666666666666,
+      "SH": 0.08333333333333333
+     }
+    ],
+    "support_size": []
+   },
+   "baselines": {
+    "aggressive": {
+     "exploitability": 18.002500000000005,
+     "value_vs_equilibrium": -17.677500000000002,
+     "farm": -3.577500000000005,
+     "plates": 0.0,
+     "crash": 0.0,
+     "gank": -14.424999999999997
+    },
+    "passive_safe": {
+     "exploitability": 7.1899999999999995,
+     "value_vs_equilibrium": -2.189999999999999,
+     "farm": -3.7650000000000015,
+     "plates": 0.0,
+     "crash": -5.0,
+     "gank": 1.5750000000000028
+    },
+    "stack_builder": {
+     "exploitability": 5.309999999999995,
+     "value_vs_equilibrium": -0.3199999999999998,
+     "farm": 1.0149999999999997,
+     "plates": 0.0,
+     "crash": -5.0,
+     "gank": -1.3249999999999957
+    },
+    "release_safe": {
+     "exploitability": 5.170000000000001,
+     "value_vs_equilibrium": -2.119999999999999,
+     "farm": -8.370000000000001,
+     "plates": 0.0,
+     "crash": 0.0,
+     "gank": 3.2000000000000064
+    },
+    "contest_slowpush": {
+     "exploitability": 5.309999999999995,
+     "value_vs_equilibrium": -0.3199999999999998,
+     "farm": 1.0149999999999997,
+     "plates": 0.0,
+     "crash": -5.0,
+     "gank": -1.3249999999999957
+    }
+   },
+   "br_paths": {
+    "aggressive": {
+     "bounces": [
+      0.0,
+      0.0
+     ],
+     "bounce_hp": [
+      0.0,
+      0.0
+     ],
+     "crashes_B": [
+      0.0,
+      0.0,
+      0.0
+     ],
+     "plates": [
+      0.0,
+      0.0
+     ],
+     "thinned": [
+      0.0,
+      0.0
+     ],
+     "vision": [
+      0.0,
+      0.0
+     ],
+     "pressure": [
+      0.0,
+      0.0
+     ],
+     "siege_turns": [
+      0.0,
+      0.0
+     ],
+     "vision_choices": [
+      0.0,
+      0.0
+     ]
+    },
+    "passive_safe": {
+     "bounces": [
+      0.0,
+      0.0
+     ],
+     "bounce_hp": [
+      0.0,
+      0.0
+     ],
+     "crashes_B": [
+      0.0,
+      1.0,
+      1.0
+     ],
+     "plates": [
+      0.0,
+      0.0
+     ],
+     "thinned": [
+      0.0,
+      0.0
+     ],
+     "vision": [
+      0.0,
+      0.0
+     ],
+     "pressure": [
+      0.0,
+      0.0
+     ],
+     "siege_turns": [
+      0.0,
+      0.0
+     ],
+     "vision_choices": [
+      0.0,
+      0.0
+     ]
+    },
+    "stack_builder": {
+     "bounces": [
+      0.0,
+      0.0
+     ],
+     "bounce_hp": [
+      0.0,
+      0.0
+     ],
+     "crashes_B": [
+      0.0,
+      1.0,
+      1.0
+     ],
+     "plates": [
+      0.0,
+      0.0
+     ],
+     "thinned": [
+      0.0,
+      0.0
+     ],
+     "vision": [
+      0.0,
+      0.0
+     ],
+     "pressure": [
+      0.0,
+      0.0
+     ],
+     "siege_turns": [
+      0.0,
+      0.0
+     ],
+     "vision_choices": [
+      0.0,
+      0.0
+     ]
+    },
+    "release_safe": {
+     "bounces": [
+      0.0,
+      0.0
+     ],
+     "bounce_hp": [
+      0.0,
+      0.0
+     ],
+     "crashes_B": [
+      0.0,
+      0.0,
+      0.0
+     ],
+     "plates": [
+      0.0,
+      0.0
+     ],
+     "thinned": [
+      0.0,
+      0.0
+     ],
+     "vision": [
+      0.0,
+      0.0
+     ],
+     "pressure": [
+      0.0,
+      0.0
+     ],
+     "siege_turns": [
+      0.0,
+      0.0
+     ],
+     "vision_choices": [
+      0.0,
+      0.0
+     ]
+    },
+    "contest_slowpush": {
+     "bounces": [
+      0.0,
+      0.0
+     ],
+     "bounce_hp": [
+      0.0,
+      0.0
+     ],
+     "crashes_B": [
+      0.0,
+      1.0,
+      1.0
+     ],
+     "plates": [
+      0.0,
+      0.0
+     ],
+     "thinned": [
+      0.0,
+      0.0
+     ],
+     "vision": [
+      0.0,
+      0.0
+     ],
+     "pressure": [
+      0.0,
+      0.0
+     ],
+     "siege_turns": [
+      0.0,
+      0.0
+     ],
+     "vision_choices": [
+      0.0,
+      0.0
+     ]
+    }
+   },
+   "probe_crash12": {
+    "value": -4.242499999999999,
+    "A": {
+     "SP-S": 1.0
+    },
+    "B": {
+     "SP-C": 1.0
+    },
+    "Q_A": {
+     "SP-C": -4.5825,
+     "SH-C": -4.732499999999999,
+     "SP-S": -4.242499999999999,
+     "SH-S": -4.242499999999999
+    }
+   },
+   "pre_crash_12": {
+    "value": -0.8510314797141528,
+    "A": {
+     "SH-C": 1.0
+    },
+    "crash_gain": 0.85
+   }
+  },
+  "7 proposed system (default)": {
+   "config": {
+    "base": 4,
+    "tower": 2,
+    "ticks_per_turn": 2,
+    "spawn_interval": 4,
+    "horizon": 24,
+    "wave_hp": 4,
+    "max_stacks": 2,
+    "cap_rule": "block",
+    "queue_fights": true,
+    "positioning": true,
+    "damage_law": "lanchester",
+    "shove_damage": 1,
+    "tower_damage": 1,
+    "pressure_kappa": [
+     0,
+     1,
+     0
+    ],
+    "slowpush_line": 0,
+    "slowpush_mode": "stack_creep",
+    "slowpush_creep_period": 2,
+    "freeze_line": -1,
+    "freeze_break_threshold": 10,
+    "freeze_break_push": [
+     0,
+     4,
+     0
+    ],
+    "freeze_legal_max": -1,
+    "tower_mode": "mass",
+    "tower_consumption_per_turn": 1,
+    "tower_siege_damage": 1,
+    "siege_engage": false,
+    "siege_cap": 48,
+    "siege_mode": "objective",
+    "plate_mode": "crash",
+    "plate_grant": [
+     1,
+     2,
+     3
+    ],
+    "plates_cap": 6,
+    "plates_per_tower": 5,
+    "plates_per_turn": 1,
+    "plate_value": 1.0,
+    "thin_damage": 1,
+    "thin_reach": 1,
+    "crash_options": [
+     [
+      [
+       1.0,
+       false
+      ],
+      [
+       0.0,
+       true
+      ]
+     ],
+     [
+      [
+       2.0,
+       false
+      ],
+      [
+       0.0,
+       true
+      ]
+     ],
+     [
+      [
+       3.0,
+       false
+      ],
+      [
+       2.0,
+       true
+      ]
+     ]
+    ],
+    "vision_turns": 6,
+    "vision_reduction": 0.75,
+    "farm_per_hp": 0.25,
+    "collect_contest": 0.9,
+    "collect_contest_enemy_tower": 0.5,
+    "collect_safe": 0.8,
+    "collect_safe_slope": 0.2,
+    "zone_contest": 0.3,
+    "zone_under_tower": 0.15,
+    "gank_base": 0.15,
+    "gank_position": 0.1,
+    "gank_action": [
+     0.02,
+     0.05,
+     0.02,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "gank_strength": 0.02,
+    "gank_max": 0.4,
+    "gank_loss": 5.0,
+    "posture_cap": [
+     null,
+     null,
+     null,
+     -1,
+     -1,
+     -1
+    ]
+   },
+   "nodes": 36891,
+   "mixed": 2124,
+   "solve_s": 13.975258099846542,
+   "enumerate_s": 32.13709820015356,
+   "value": 0.0,
+   "node_avg": {
+    "nodes": 36891,
+    "contest": 0.797490195065494,
+    "siege_nodes": 6318,
+    "p_pressure": 0.685903529151426,
+    "p_vision": 0.2981757841762535,
+    "p_disengage": 0.015920686672320657
+   },
+   "path": {
+    "value": 0.0,
+    "farm": [
+     7.130000000000002,
+     7.130000000000002
+    ],
+    "farm_available": [
+     11.5,
+     11.5
+    ],
+    "farm_missed": [
+     4.369999999999998,
+     4.369999999999998
+    ],
+    "crash_resources": [
+     0.0,
+     0.0
+    ],
+    "plates": [
+     0.0,
+     0.0
+    ],
+    "plate_count": [
+     0.0,
+     0.0
+    ],
+    "gank_loss": [
+     25.900000000000006,
+     25.900000000000006
+    ],
+    "crashes_by_size": {
+     "A": [
+      0.0,
+      0.0,
+      0.0
+     ],
+     "B": [
+      0.0,
+      0.0,
+      0.0
+     ]
+    },
+    "crash_hp": [
+     0.0,
+     0.0
+    ],
+    "vision_choices": [
+     0.0,
+     0.0
+    ],
+    "pressure_turns": [
+     0.0,
+     0.0
+    ],
+    "vision_turns_set": [
+     0.0,
+     0.0
+    ],
+    "siege_turns": [
+     0.0,
+     0.0
+    ],
+    "siege_safe_turns": [
+     0.0,
+     0.0
+    ],
+    "thinned_hp": [
+     0.0,
+     0.0
+    ],
+    "thin_farm": [
+     0.0,
+     0.0
+    ],
+    "protected_turns": [
+     0.0,
+     0.0
+    ],
+    "p_contest_protected": [
+     null,
+     null
+    ],
+    "p_contest_unprotected": [
+     0.875,
+     0.875
+    ],
+    "bounces": [
+     0.0,
+     0.0
+    ],
+    "bounce_hp": [
+     0.0,
+     0.0
+    ],
+    "sieges_started": [
+     0.0,
+     0.0
+    ],
+    "contest_share": [
+     0.875,
+     0.875
+    ],
+    "action_freq": [
+     {
+      "SP-C": 0.7916666666666666,
+      "SH-C": 0.08333333333333333,
+      "SP-S": 0.125,
+      "SH-S": 0.0
+     },
+     {
+      "SP-C": 0.7916666666666666,
+      "SH-C": 0.08333333333333333,
+      "SP-S": 0.125,
+      "SH-S": 0.0
+     }
+    ],
+    "wave_freq": [
+     {
+      "SP": 0.9166666666666666,
+      "SH": 0.08333333333333333
+     },
+     {
+      "SP": 0.9166666666666666,
+      "SH": 0.08333333333333333
+     }
+    ],
+    "support_size": []
+   },
+   "baselines": {
+    "aggressive": {
+     "exploitability": 18.002500000000005,
+     "value_vs_equilibrium": -17.677500000000002,
+     "farm": -3.577500000000005,
+     "plates": 0.0,
+     "crash": 0.0,
+     "gank": -14.424999999999997
+    },
+    "passive_safe": {
+     "exploitability": 13.796249999999999,
+     "value_vs_equilibrium": -2.189999999999999,
+     "farm": -5.015000000000001,
+     "plates": -3.0,
+     "crash": 0.0,
+     "gank": -5.7812499999999964
+    },
+    "stack_builder": {
+     "exploitability": 11.371249999999993,
+     "value_vs_equilibrium": -0.3199999999999998,
+     "farm": 0.6412500000000012,
+     "plates": -3.0,
+     "crash": 0.0,
+     "gank": -9.012499999999998
+    },
+    "release_safe": {
+     "exploitability": 5.170000000000001,
+     "value_vs_equilibrium": -2.119999999999999,
+     "farm": -8.370000000000001,
+     "plates": 0.0,
+     "crash": 0.0,
+     "gank": 3.2000000000000064
+    },
+    "contest_slowpush": {
+     "exploitability": 11.817499999999997,
+     "value_vs_equilibrium": -0.3199999999999998,
+     "farm": -0.2612499999999969,
+     "plates": -3.0,
+     "crash": 0.0,
+     "gank": -8.556250000000002
+    }
+   },
+   "br_paths": {
+    "aggressive": {
+     "bounces": [
+      0.0,
+      0.0
+     ],
+     "bounce_hp": [
+      0.0,
+      0.0
+     ],
+     "crashes_B": [
+      0.0,
+      0.0,
+      0.0
+     ],
+     "plates": [
+      0.0,
+      0.0
+     ],
+     "thinned": [
+      0.0,
+      0.0
+     ],
+     "vision": [
+      0.0,
+      0.0
+     ],
+     "pressure": [
+      0.0,
+      0.0
+     ],
+     "siege_turns": [
+      0.0,
+      0.0
+     ],
+     "vision_choices": [
+      0.0,
+      0.0
+     ]
+    },
+    "passive_safe": {
+     "bounces": [
+      0.0,
+      0.0
+     ],
+     "bounce_hp": [
+      0.0,
+      0.0
+     ],
+     "crashes_B": [
+      2.0,
+      1.0,
+      0.0
+     ],
+     "plates": [
+      0.0,
+      3.0
+     ],
+     "thinned": [
+      0.0,
+      3.0
+     ],
+     "vision": [
+      0.0,
+      3.0
+     ],
+     "pressure": [
+      0.0,
+      3.0
+     ],
+     "siege_turns": [
+      0.0,
+      6.0
+     ],
+     "vision_choices": [
+      0.0,
+      0.0
+     ]
+    },
+    "stack_builder": {
+     "bounces": [
+      0.0,
+      0.0
+     ],
+     "bounce_hp": [
+      0.0,
+      0.0
+     ],
+     "crashes_B": [
+      2.0,
+      1.0,
+      0.0
+     ],
+     "plates": [
+      0.0,
+      3.0
+     ],
+     "thinned": [
+      0.0,
+      3.0
+     ],
+     "vision": [
+      0.0,
+      3.0
+     ],
+     "pressure": [
+      0.0,
+      3.0
+     ],
+     "siege_turns": [
+      0.0,
+      6.0
+     ],
+     "vision_choices": [
+      0.0,
+      0.0
+     ]
+    },
+    "release_safe": {
+     "bounces": [
+      0.0,
+      0.0
+     ],
+     "bounce_hp": [
+      0.0,
+      0.0
+     ],
+     "crashes_B": [
+      0.0,
+      0.0,
+      0.0
+     ],
+     "plates": [
+      0.0,
+      0.0
+     ],
+     "thinned": [
+      0.0,
+      0.0
+     ],
+     "vision": [
+      0.0,
+      0.0
+     ],
+     "pressure": [
+      0.0,
+      0.0
+     ],
+     "siege_turns": [
+      0.0,
+      0.0
+     ],
+     "vision_choices": [
+      0.0,
+      0.0
+     ]
+    },
+    "contest_slowpush": {
+     "bounces": [
+      0.0,
+      0.0
+     ],
+     "bounce_hp": [
+      0.0,
+      0.0
+     ],
+     "crashes_B": [
+      2.0,
+      1.0,
+      0.0
+     ],
+     "plates": [
+      0.0,
+      3.0
+     ],
+     "thinned": [
+      0.0,
+      3.0
+     ],
+     "vision": [
+      0.0,
+      3.0
+     ],
+     "pressure": [
+      0.0,
+      3.0
+     ],
+     "siege_turns": [
+      0.0,
+      6.0
+     ],
+     "vision_choices": [
+      0.0,
+      0.0
+     ]
+    }
+   },
+   "probe_crash12": {
+    "value": 6.1374999999999975,
+    "A": {
+     "SP-C+V": 1.0
+    },
+    "B": {
+     "SP-S": 1.0
+    },
+    "Q_A": {
+     "SP-S": 5.1599999999999975,
+     "SH-S": 5.1599999999999975,
+     "SP-C+P": 5.124999999999997,
+     "SH-C+P": 4.974999999999998,
+     "SP-C+V": 6.1374999999999975,
+     "SH-C+V": 5.987499999999998
+    }
+   },
+   "pre_crash_12": {
+    "value": 4.517584374267793,
+    "A": {
+     "SH-C": 1.0
+    },
+    "crash_gain": 1.442584374267795
+   }
+  },
+  "8 proposed + tower 2 HP/tick": {
+   "config": {
+    "base": 4,
+    "tower": 2,
+    "ticks_per_turn": 2,
+    "spawn_interval": 4,
+    "horizon": 24,
+    "wave_hp": 4,
+    "max_stacks": 2,
+    "cap_rule": "block",
+    "queue_fights": true,
+    "positioning": true,
+    "damage_law": "lanchester",
+    "shove_damage": 1,
+    "tower_damage": 1,
+    "pressure_kappa": [
+     0,
+     1,
+     0
+    ],
+    "slowpush_line": 0,
+    "slowpush_mode": "stack_creep",
+    "slowpush_creep_period": 2,
+    "freeze_line": -1,
+    "freeze_break_threshold": 10,
+    "freeze_break_push": [
+     0,
+     4,
+     0
+    ],
+    "freeze_legal_max": -1,
+    "tower_mode": "mass",
+    "tower_consumption_per_turn": 1,
+    "tower_siege_damage": 2,
+    "siege_engage": false,
+    "siege_cap": 48,
+    "siege_mode": "objective",
+    "plate_mode": "crash",
+    "plate_grant": [
+     1,
+     2,
+     3
+    ],
+    "plates_cap": 6,
+    "plates_per_tower": 5,
+    "plates_per_turn": 1,
+    "plate_value": 1.0,
+    "thin_damage": 1,
+    "thin_reach": 1,
+    "crash_options": [
+     [
+      [
+       1.0,
+       false
+      ],
+      [
+       0.0,
+       true
+      ]
+     ],
+     [
+      [
+       2.0,
+       false
+      ],
+      [
+       0.0,
+       true
+      ]
+     ],
+     [
+      [
+       3.0,
+       false
+      ],
+      [
+       2.0,
+       true
+      ]
+     ]
+    ],
+    "vision_turns": 6,
+    "vision_reduction": 0.75,
+    "farm_per_hp": 0.25,
+    "collect_contest": 0.9,
+    "collect_contest_enemy_tower": 0.5,
+    "collect_safe": 0.8,
+    "collect_safe_slope": 0.2,
+    "zone_contest": 0.3,
+    "zone_under_tower": 0.15,
+    "gank_base": 0.15,
+    "gank_position": 0.1,
+    "gank_action": [
+     0.02,
+     0.05,
+     0.02,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "gank_strength": 0.02,
+    "gank_max": 0.4,
+    "gank_loss": 5.0,
+    "posture_cap": [
+     null,
+     null,
+     null,
+     -1,
+     -1,
+     -1
+    ]
+   },
+   "nodes": 13425,
+   "mixed": 898,
+   "solve_s": 3.3827238001395017,
+   "enumerate_s": 8.136847999878228,
+   "value": 0.0,
+   "node_avg": {
+    "nodes": 13425,
+    "contest": 0.7611915342088413,
+    "siege_nodes": 892,
+    "p_pressure": 0.5194669463329958,
+    "p_vision": 0.48053305366700416,
+    "p_disengage": 0.0
+   },
+   "path": {
+    "value": 0.0,
+    "farm": [
+     7.130000000000002,
+     7.130000000000002
+    ],
+    "farm_available": [
+     11.5,
+     11.5
+    ],
+    "farm_missed": [
+     4.369999999999998,
+     4.369999999999998
+    ],
+    "crash_resources": [
+     0.0,
+     0.0
+    ],
+    "plates": [
+     0.0,
+     0.0
+    ],
+    "plate_count": [
+     0.0,
+     0.0
+    ],
+    "gank_loss": [
+     25.900000000000006,
+     25.900000000000006
+    ],
+    "crashes_by_size": {
+     "A": [
+      0.0,
+      0.0,
+      0.0
+     ],
+     "B": [
+      0.0,
+      0.0,
+      0.0
+     ]
+    },
+    "crash_hp": [
+     0.0,
+     0.0
+    ],
+    "vision_choices": [
+     0.0,
+     0.0
+    ],
+    "pressure_turns": [
+     0.0,
+     0.0
+    ],
+    "vision_turns_set": [
+     0.0,
+     0.0
+    ],
+    "siege_turns": [
+     0.0,
+     0.0
+    ],
+    "siege_safe_turns": [
+     0.0,
+     0.0
+    ],
+    "thinned_hp": [
+     0.0,
+     0.0
+    ],
+    "thin_farm": [
+     0.0,
+     0.0
+    ],
+    "protected_turns": [
+     0.0,
+     0.0
+    ],
+    "p_contest_protected": [
+     null,
+     null
+    ],
+    "p_contest_unprotected": [
+     0.875,
+     0.875
+    ],
+    "bounces": [
+     0.0,
+     0.0
+    ],
+    "bounce_hp": [
+     0.0,
+     0.0
+    ],
+    "sieges_started": [
+     0.0,
+     0.0
+    ],
+    "contest_share": [
+     0.875,
+     0.875
+    ],
+    "action_freq": [
+     {
+      "SP-C": 0.7916666666666666,
+      "SH-C": 0.08333333333333333,
+      "SP-S": 0.125,
+      "SH-S": 0.0
+     },
+     {
+      "SP-C": 0.7916666666666666,
+      "SH-C": 0.08333333333333333,
+      "SP-S": 0.125,
+      "SH-S": 0.0
+     }
+    ],
+    "wave_freq": [
+     {
+      "SP": 0.9166666666666666,
+      "SH": 0.08333333333333333
+     },
+     {
+      "SP": 0.9166666666666666,
+      "SH": 0.08333333333333333
+     }
+    ],
+    "support_size": []
+   },
+   "baselines": {
+    "aggressive": {
+     "exploitability": 18.002500000000005,
+     "value_vs_equilibrium": -17.677500000000002,
+     "farm": -3.577500000000005,
+     "plates": 0.0,
+     "crash": 0.0,
+     "gank": -14.424999999999997
+    },
+    "passive_safe": {
+     "exploitability": 11.896249999999997,
+     "value_vs_equilibrium": -2.189999999999999,
+     "farm": -5.04,
+     "plates": 0.0,
+     "crash": 0.0,
+     "gank": -6.856250000000003
+    },
+    "stack_builder": {
+     "exploitability": 9.547499999999996,
+     "value_vs_equilibrium": -0.3199999999999998,
+     "farm": 0.08375000000000199,
+     "plates": 0.0,
+     "crash": 0.0,
+     "gank": -9.631249999999994
+    },
+    "release_safe": {
+     "exploitability": 5.170000000000001,
+     "value_vs_equilibrium": -2.119999999999999,
+     "farm": -8.370000000000001,
+     "plates": 0.0,
+     "crash": 0.0,
+     "gank": 3.2000000000000064
+    },
+    "contest_slowpush": {
+     "exploitability": 9.547499999999996,
+     "value_vs_equilibrium": -0.3199999999999998,
+     "farm": 0.08375000000000199,
+     "plates": 0.0,
+     "crash": 0.0,
+     "gank": -9.631249999999994
+    }
+   },
+   "br_paths": {
+    "aggressive": {
+     "bounces": [
+      0.0,
+      0.0
+     ],
+     "bounce_hp": [
+      0.0,
+      0.0
+     ],
+     "crashes_B": [
+      0.0,
+      0.0,
+      0.0
+     ],
+     "plates": [
+      0.0,
+      0.0
+     ],
+     "thinned": [
+      0.0,
+      0.0
+     ],
+     "vision": [
+      0.0,
+      0.0
+     ],
+     "pressure": [
+      0.0,
+      0.0
+     ],
+     "siege_turns": [
+      0.0,
+      0.0
+     ],
+     "vision_choices": [
+      0.0,
+      0.0
+     ]
+    },
+    "passive_safe": {
+     "bounces": [
+      0.0,
+      0.0
+     ],
+     "bounce_hp": [
+      0.0,
+      0.0
+     ],
+     "crashes_B": [
+      3.0,
+      0.0,
+      0.0
+     ],
+     "plates": [
+      0.0,
+      0.0
+     ],
+     "thinned": [
+      0.0,
+      0.0
+     ],
+     "vision": [
+      0.0,
+      3.0
+     ],
+     "pressure": [
+      0.0,
+      0.0
+     ],
+     "siege_turns": [
+      0.0,
+      3.0
+     ],
+     "vision_choices": [
+      0.0,
+      0.0
+     ]
+    },
+    "stack_builder": {
+     "bounces": [
+      0.0,
+      0.0
+     ],
+     "bounce_hp": [
+      0.0,
+      0.0
+     ],
+     "crashes_B": [
+      3.0,
+      0.0,
+      0.0
+     ],
+     "plates": [
+      0.0,
+      0.0
+     ],
+     "thinned": [
+      0.0,
+      0.0
+     ],
+     "vision": [
+      0.0,
+      3.0
+     ],
+     "pressure": [
+      0.0,
+      0.0
+     ],
+     "siege_turns": [
+      0.0,
+      3.0
+     ],
+     "vision_choices": [
+      0.0,
+      0.0
+     ]
+    },
+    "release_safe": {
+     "bounces": [
+      0.0,
+      0.0
+     ],
+     "bounce_hp": [
+      0.0,
+      0.0
+     ],
+     "crashes_B": [
+      0.0,
+      0.0,
+      0.0
+     ],
+     "plates": [
+      0.0,
+      0.0
+     ],
+     "thinned": [
+      0.0,
+      0.0
+     ],
+     "vision": [
+      0.0,
+      0.0
+     ],
+     "pressure": [
+      0.0,
+      0.0
+     ],
+     "siege_turns": [
+      0.0,
+      0.0
+     ],
+     "vision_choices": [
+      0.0,
+      0.0
+     ]
+    },
+    "contest_slowpush": {
+     "bounces": [
+      0.0,
+      0.0
+     ],
+     "bounce_hp": [
+      0.0,
+      0.0
+     ],
+     "crashes_B": [
+      3.0,
+      0.0,
+      0.0
+     ],
+     "plates": [
+      0.0,
+      0.0
+     ],
+     "thinned": [
+      0.0,
+      0.0
+     ],
+     "vision": [
+      0.0,
+      3.0
+     ],
+     "pressure": [
+      0.0,
+      0.0
+     ],
+     "siege_turns": [
+      0.0,
+      3.0
+     ],
+     "vision_choices": [
+      0.0,
+      0.0
+     ]
+    }
+   },
+   "probe_crash12": {
+    "value": 2.7783865502005405,
+    "A": {
+     "SP-C+V": 1.0
+    },
+    "B": {
+     "SP-S": 1.0
+    },
+    "Q_A": {
+     "SP-S": 1.3771788588631202,
+     "SH-S": 1.3771788588631202,
+     "SP-C+P": 2.032499999999998,
+     "SH-C+P": 1.882499999999998,
+     "SP-C+V": 2.7783865502005405,
+     "SH-C+V": 2.6283865502005406
+    }
+   },
+   "pre_crash_12": {
+    "value": 1.8399999999999985,
+    "A": {
+     "SP-C": 1.0
+    },
+    "crash_gain": -0.009999999999999787
+   }
+  },
+  "9 proposed, thinning 2 HP/turn": {
+   "config": {
+    "base": 4,
+    "tower": 2,
+    "ticks_per_turn": 2,
+    "spawn_interval": 4,
+    "horizon": 24,
+    "wave_hp": 4,
+    "max_stacks": 2,
+    "cap_rule": "block",
+    "queue_fights": true,
+    "positioning": true,
+    "damage_law": "lanchester",
+    "shove_damage": 1,
+    "tower_damage": 1,
+    "pressure_kappa": [
+     0,
+     1,
+     0
+    ],
+    "slowpush_line": 0,
+    "slowpush_mode": "stack_creep",
+    "slowpush_creep_period": 2,
+    "freeze_line": -1,
+    "freeze_break_threshold": 10,
+    "freeze_break_push": [
+     0,
+     4,
+     0
+    ],
+    "freeze_legal_max": -1,
+    "tower_mode": "mass",
+    "tower_consumption_per_turn": 1,
+    "tower_siege_damage": 1,
+    "siege_engage": false,
+    "siege_cap": 48,
+    "siege_mode": "objective",
+    "plate_mode": "crash",
+    "plate_grant": [
+     1,
+     2,
+     3
+    ],
+    "plates_cap": 6,
+    "plates_per_tower": 5,
+    "plates_per_turn": 1,
+    "plate_value": 1.0,
+    "thin_damage": 2,
+    "thin_reach": 1,
+    "crash_options": [
+     [
+      [
+       1.0,
+       false
+      ],
+      [
+       0.0,
+       true
+      ]
+     ],
+     [
+      [
+       2.0,
+       false
+      ],
+      [
+       0.0,
+       true
+      ]
+     ],
+     [
+      [
+       3.0,
+       false
+      ],
+      [
+       2.0,
+       true
+      ]
+     ]
+    ],
+    "vision_turns": 6,
+    "vision_reduction": 0.75,
+    "farm_per_hp": 0.25,
+    "collect_contest": 0.9,
+    "collect_contest_enemy_tower": 0.5,
+    "collect_safe": 0.8,
+    "collect_safe_slope": 0.2,
+    "zone_contest": 0.3,
+    "zone_under_tower": 0.15,
+    "gank_base": 0.15,
+    "gank_position": 0.1,
+    "gank_action": [
+     0.02,
+     0.05,
+     0.02,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "gank_strength": 0.02,
+    "gank_max": 0.4,
+    "gank_loss": 5.0,
+    "posture_cap": [
+     null,
+     null,
+     null,
+     -1,
+     -1,
+     -1
+    ]
+   },
+   "nodes": 45123,
+   "mixed": 2658,
+   "solve_s": 15.493716700002551,
+   "enumerate_s": 39.08343660016544,
+   "value": 0.0,
+   "node_avg": {
+    "nodes": 45123,
+    "contest": 0.8297402955983081,
+    "siege_nodes": 9525,
+    "p_pressure": 0.7211002894049938,
+    "p_vision": 0.26484072747472975,
+    "p_disengage": 0.014058983120276933
+   },
+   "path": {
+    "value": 0.0,
+    "farm": [
+     7.130000000000002,
+     7.130000000000002
+    ],
+    "farm_available": [
+     11.5,
+     11.5
+    ],
+    "farm_missed": [
+     4.369999999999998,
+     4.369999999999998
+    ],
+    "crash_resources": [
+     0.0,
+     0.0
+    ],
+    "plates": [
+     0.0,
+     0.0
+    ],
+    "plate_count": [
+     0.0,
+     0.0
+    ],
+    "gank_loss": [
+     25.900000000000006,
+     25.900000000000006
+    ],
+    "crashes_by_size": {
+     "A": [
+      0.0,
+      0.0,
+      0.0
+     ],
+     "B": [
+      0.0,
+      0.0,
+      0.0
+     ]
+    },
+    "crash_hp": [
+     0.0,
+     0.0
+    ],
+    "vision_choices": [
+     0.0,
+     0.0
+    ],
+    "pressure_turns": [
+     0.0,
+     0.0
+    ],
+    "vision_turns_set": [
+     0.0,
+     0.0
+    ],
+    "siege_turns": [
+     0.0,
+     0.0
+    ],
+    "siege_safe_turns": [
+     0.0,
+     0.0
+    ],
+    "thinned_hp": [
+     0.0,
+     0.0
+    ],
+    "thin_farm": [
+     0.0,
+     0.0
+    ],
+    "protected_turns": [
+     0.0,
+     0.0
+    ],
+    "p_contest_protected": [
+     null,
+     null
+    ],
+    "p_contest_unprotected": [
+     0.875,
+     0.875
+    ],
+    "bounces": [
+     0.0,
+     0.0
+    ],
+    "bounce_hp": [
+     0.0,
+     0.0
+    ],
+    "sieges_started": [
+     0.0,
+     0.0
+    ],
+    "contest_share": [
+     0.875,
+     0.875
+    ],
+    "action_freq": [
+     {
+      "SP-C": 0.7916666666666666,
+      "SH-C": 0.08333333333333333,
+      "SP-S": 0.125,
+      "SH-S": 0.0
+     },
+     {
+      "SP-C": 0.7916666666666666,
+      "SH-C": 0.08333333333333333,
+      "SP-S": 0.125,
+      "SH-S": 0.0
+     }
+    ],
+    "wave_freq": [
+     {
+      "SP": 0.9166666666666666,
+      "SH": 0.08333333333333333
+     },
+     {
+      "SP": 0.9166666666666666,
+      "SH": 0.08333333333333333
+     }
+    ],
+    "support_size": []
+   },
+   "baselines": {
+    "aggressive": {
+     "exploitability": 18.002500000000005,
+     "value_vs_equilibrium": -17.677500000000002,
+     "farm": -3.577500000000005,
+     "plates": 0.0,
+     "crash": 0.0,
+     "gank": -14.424999999999997
+    },
+    "passive_safe": {
+     "exploitability": 14.01625,
+     "value_vs_equilibrium": -2.189999999999999,
+     "farm": -2.6350000000000007,
+     "plates": -7.0,
+     "crash": 0.0,
+     "gank": -4.381249999999998
+    },
+    "stack_builder": {
+     "exploitability": 13.016249999999998,
+     "value_vs_equilibrium": -0.3199999999999998,
+     "farm": 1.1650000000000027,
+     "plates": -7.0,
+     "crash": 0.0,
+     "gank": -7.181250000000002
+    },
+    "release_safe": {
+     "exploitability": 5.170000000000001,
+     "value_vs_equilibrium": -2.119999999999999,
+     "farm": -8.370000000000001,
+     "plates": 0.0,
+     "crash": 0.0,
+     "gank": 3.2000000000000064
+    },
+    "contest_slowpush": {
+     "exploitability": 12.866249999999997,
+     "value_vs_equilibrium": -0.3199999999999998,
+     "farm": 1.1650000000000027,
+     "plates": -7.0,
+     "crash": 0.0,
+     "gank": -7.0312500000000036
+    }
+   },
+   "br_paths": {
+    "aggressive": {
+     "bounces": [
+      0.0,
+      0.0
+     ],
+     "bounce_hp": [
+      0.0,
+      0.0
+     ],
+     "crashes_B": [
+      0.0,
+      0.0,
+      0.0
+     ],
+     "plates": [
+      0.0,
+      0.0
+     ],
+     "thinned": [
+      0.0,
+      0.0
+     ],
+     "vision": [
+      0.0,
+      0.0
+     ],
+     "pressure": [
+      0.0,
+      0.0
+     ],
+     "siege_turns": [
+      0.0,
+      0.0
+     ],
+     "vision_choices": [
+      0.0,
+      0.0
+     ]
+    },
+    "passive_safe": {
+     "bounces": [
+      0.0,
+      0.0
+     ],
+     "bounce_hp": [
+      0.0,
+      0.0
+     ],
+     "crashes_B": [
+      2.0,
+      1.0,
+      1.0
+     ],
+     "plates": [
+      0.0,
+      7.0
+     ],
+     "thinned": [
+      0.0,
+      14.0
+     ],
+     "vision": [
+      0.0,
+      3.0
+     ],
+     "pressure": [
+      0.0,
+      7.0
+     ],
+     "siege_turns": [
+      0.0,
+      10.0
+     ],
+     "vision_choices": [
+      0.0,
+      0.0
+     ]
+    },
+    "stack_builder": {
+     "bounces": [
+      0.0,
+      0.0
+     ],
+     "bounce_hp": [
+      0.0,
+      0.0
+     ],
+     "crashes_B": [
+      2.0,
+      1.0,
+      1.0
+     ],
+     "plates": [
+      0.0,
+      7.0
+     ],
+     "thinned": [
+      0.0,
+      14.0
+     ],
+     "vision": [
+      0.0,
+      3.0
+     ],
+     "pressure": [
+      0.0,
+      7.0
+     ],
+     "siege_turns": [
+      0.0,
+      10.0
+     ],
+     "vision_choices": [
+      0.0,
+      0.0
+     ]
+    },
+    "release_safe": {
+     "bounces": [
+      0.0,
+      0.0
+     ],
+     "bounce_hp": [
+      0.0,
+      0.0
+     ],
+     "crashes_B": [
+      0.0,
+      0.0,
+      0.0
+     ],
+     "plates": [
+      0.0,
+      0.0
+     ],
+     "thinned": [
+      0.0,
+      0.0
+     ],
+     "vision": [
+      0.0,
+      0.0
+     ],
+     "pressure": [
+      0.0,
+      0.0
+     ],
+     "siege_turns": [
+      0.0,
+      0.0
+     ],
+     "vision_choices": [
+      0.0,
+      0.0
+     ]
+    },
+    "contest_slowpush": {
+     "bounces": [
+      0.0,
+      0.0
+     ],
+     "bounce_hp": [
+      0.0,
+      0.0
+     ],
+     "crashes_B": [
+      2.0,
+      1.0,
+      1.0
+     ],
+     "plates": [
+      0.0,
+      7.0
+     ],
+     "thinned": [
+      0.0,
+      14.0
+     ],
+     "vision": [
+      0.0,
+      3.0
+     ],
+     "pressure": [
+      0.0,
+      7.0
+     ],
+     "siege_turns": [
+      0.0,
+      10.0
+     ],
+     "vision_choices": [
+      0.0,
+      0.0
+     ]
+    }
+   },
+   "probe_crash12": {
+    "value": 11.743818201334578,
+    "A": {
+     "SP-C+V": 1.0
+    },
+    "B": {
+     "SP-S": 1.0
+    },
+    "Q_A": {
+     "SP-S": 9.1875,
+     "SH-S": 9.1875,
+     "SP-C+P": 11.1575,
+     "SH-C+P": 11.0075,
+     "SP-C+V": 11.743818201334578,
+     "SH-C+V": 11.593818201334578
+    }
+   },
+   "pre_crash_12": {
+    "value": 7.753749999999999,
+    "A": {
+     "SH-C": 1.0
+    },
+    "crash_gain": 4.585832537902418
+   }
+  },
+  "10 proposed, no plates": {
+   "config": {
+    "base": 4,
+    "tower": 2,
+    "ticks_per_turn": 2,
+    "spawn_interval": 4,
+    "horizon": 24,
+    "wave_hp": 4,
+    "max_stacks": 2,
+    "cap_rule": "block",
+    "queue_fights": true,
+    "positioning": true,
+    "damage_law": "lanchester",
+    "shove_damage": 1,
+    "tower_damage": 1,
+    "pressure_kappa": [
+     0,
+     1,
+     0
+    ],
+    "slowpush_line": 0,
+    "slowpush_mode": "stack_creep",
+    "slowpush_creep_period": 2,
+    "freeze_line": -1,
+    "freeze_break_threshold": 10,
+    "freeze_break_push": [
+     0,
+     4,
+     0
+    ],
+    "freeze_legal_max": -1,
+    "tower_mode": "mass",
+    "tower_consumption_per_turn": 1,
+    "tower_siege_damage": 1,
+    "siege_engage": false,
+    "siege_cap": 48,
+    "siege_mode": "objective",
+    "plate_mode": "crash",
+    "plate_grant": [
+     0,
+     0,
+     0
+    ],
+    "plates_cap": 6,
+    "plates_per_tower": 5,
+    "plates_per_turn": 1,
+    "plate_value": 1.0,
+    "thin_damage": 1,
+    "thin_reach": 1,
+    "crash_options": [
+     [
+      [
+       1.0,
+       false
+      ],
+      [
+       0.0,
+       true
+      ]
+     ],
+     [
+      [
+       2.0,
+       false
+      ],
+      [
+       0.0,
+       true
+      ]
+     ],
+     [
+      [
+       3.0,
+       false
+      ],
+      [
+       2.0,
+       true
+      ]
+     ]
+    ],
+    "vision_turns": 6,
+    "vision_reduction": 0.75,
+    "farm_per_hp": 0.25,
+    "collect_contest": 0.9,
+    "collect_contest_enemy_tower": 0.5,
+    "collect_safe": 0.8,
+    "collect_safe_slope": 0.2,
+    "zone_contest": 0.3,
+    "zone_under_tower": 0.15,
+    "gank_base": 0.15,
+    "gank_position": 0.1,
+    "gank_action": [
+     0.02,
+     0.05,
+     0.02,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "gank_strength": 0.02,
+    "gank_max": 0.4,
+    "gank_loss": 5.0,
+    "posture_cap": [
+     null,
+     null,
+     null,
+     -1,
+     -1,
+     -1
+    ]
+   },
+   "nodes": 32323,
+   "mixed": 2153,
+   "solve_s": 12.661207700148225,
+   "enumerate_s": 23.859394499799237,
+   "value": 0.0,
+   "node_avg": {
+    "nodes": 32323,
+    "contest": 0.7993682538443425,
+    "siege_nodes": 4034,
+    "p_pressure": 0.48862522896359845,
+    "p_vision": 0.41634980331321686,
+    "p_disengage": 0.0950249677231843
+   },
+   "path": {
+    "value": 0.0,
+    "farm": [
+     7.130000000000002,
+     7.130000000000002
+    ],
+    "farm_available": [
+     11.5,
+     11.5
+    ],
+    "farm_missed": [
+     4.369999999999998,
+     4.369999999999998
+    ],
+    "crash_resources": [
+     0.0,
+     0.0
+    ],
+    "plates": [
+     0.0,
+     0.0
+    ],
+    "plate_count": [
+     0.0,
+     0.0
+    ],
+    "gank_loss": [
+     25.900000000000006,
+     25.900000000000006
+    ],
+    "crashes_by_size": {
+     "A": [
+      0.0,
+      0.0,
+      0.0
+     ],
+     "B": [
+      0.0,
+      0.0,
+      0.0
+     ]
+    },
+    "crash_hp": [
+     0.0,
+     0.0
+    ],
+    "vision_choices": [
+     0.0,
+     0.0
+    ],
+    "pressure_turns": [
+     0.0,
+     0.0
+    ],
+    "vision_turns_set": [
+     0.0,
+     0.0
+    ],
+    "siege_turns": [
+     0.0,
+     0.0
+    ],
+    "siege_safe_turns": [
+     0.0,
+     0.0
+    ],
+    "thinned_hp": [
+     0.0,
+     0.0
+    ],
+    "thin_farm": [
+     0.0,
+     0.0
+    ],
+    "protected_turns": [
+     0.0,
+     0.0
+    ],
+    "p_contest_protected": [
+     null,
+     null
+    ],
+    "p_contest_unprotected": [
+     0.875,
+     0.875
+    ],
+    "bounces": [
+     0.0,
+     0.0
+    ],
+    "bounce_hp": [
+     0.0,
+     0.0
+    ],
+    "sieges_started": [
+     0.0,
+     0.0
+    ],
+    "contest_share": [
+     0.875,
+     0.875
+    ],
+    "action_freq": [
+     {
+      "SP-C": 0.7916666666666666,
+      "SH-C": 0.08333333333333333,
+      "SP-S": 0.125,
+      "SH-S": 0.0
+     },
+     {
+      "SP-C": 0.7916666666666666,
+      "SH-C": 0.08333333333333333,
+      "SP-S": 0.125,
+      "SH-S": 0.0
+     }
+    ],
+    "wave_freq": [
+     {
+      "SP": 0.9166666666666666,
+      "SH": 0.08333333333333333
+     },
+     {
+      "SP": 0.9166666666666666,
+      "SH": 0.08333333333333333
+     }
+    ],
+    "support_size": []
+   },
+   "baselines": {
+    "aggressive": {
+     "exploitability": 18.002500000000005,
+     "value_vs_equilibrium": -17.677500000000002,
+     "farm": -3.577500000000005,
+     "plates": 0.0,
+     "crash": 0.0,
+     "gank": -14.424999999999997
+    },
+    "passive_safe": {
+     "exploitability": 11.987499999999995,
+     "value_vs_equilibrium": -2.189999999999999,
+     "farm": -5.15,
+     "plates": 0.0,
+     "crash": 0.0,
+     "gank": -6.8375
+    },
+    "stack_builder": {
+     "exploitability": 9.394999999999996,
+     "value_vs_equilibrium": -0.3199999999999998,
+     "farm": 0.11750000000000149,
+     "plates": 0.0,
+     "crash": 0.0,
+     "gank": -9.512499999999994
+    },
+    "release_safe": {
+     "exploitability": 5.170000000000001,
+     "value_vs_equilibrium": -2.119999999999999,
+     "farm": -8.370000000000001,
+     "plates": 0.0,
+     "crash": 0.0,
+     "gank": 3.2000000000000064
+    },
+    "contest_slowpush": {
+     "exploitability": 9.809999999999997,
+     "value_vs_equilibrium": -0.3199999999999998,
+     "farm": -0.197499999999998,
+     "plates": 0.0,
+     "crash": 0.0,
+     "gank": -9.612499999999999
+    }
+   },
+   "br_paths": {
+    "aggressive": {
+     "bounces": [
+      0.0,
+      0.0
+     ],
+     "bounce_hp": [
+      0.0,
+      0.0
+     ],
+     "crashes_B": [
+      0.0,
+      0.0,
+      0.0
+     ],
+     "plates": [
+      0.0,
+      0.0
+     ],
+     "thinned": [
+      0.0,
+      0.0
+     ],
+     "vision": [
+      0.0,
+      0.0
+     ],
+     "pressure": [
+      0.0,
+      0.0
+     ],
+     "siege_turns": [
+      0.0,
+      0.0
+     ],
+     "vision_choices": [
+      0.0,
+      0.0
+     ]
+    },
+    "passive_safe": {
+     "bounces": [
+      0.0,
+      0.0
+     ],
+     "bounce_hp": [
+      0.0,
+      0.0
+     ],
+     "crashes_B": [
+      3.0,
+      0.0,
+      0.0
+     ],
+     "plates": [
+      0.0,
+      0.0
+     ],
+     "thinned": [
+      0.0,
+      0.0
+     ],
+     "vision": [
+      0.0,
+      3.0
+     ],
+     "pressure": [
+      0.0,
+      0.0
+     ],
+     "siege_turns": [
+      0.0,
+      4.0
+     ],
+     "vision_choices": [
+      0.0,
+      0.0
+     ]
+    },
+    "stack_builder": {
+     "bounces": [
+      0.0,
+      0.0
+     ],
+     "bounce_hp": [
+      0.0,
+      0.0
+     ],
+     "crashes_B": [
+      3.0,
+      0.0,
+      0.0
+     ],
+     "plates": [
+      0.0,
+      0.0
+     ],
+     "thinned": [
+      0.0,
+      0.0
+     ],
+     "vision": [
+      0.0,
+      3.0
+     ],
+     "pressure": [
+      0.0,
+      0.0
+     ],
+     "siege_turns": [
+      0.0,
+      4.0
+     ],
+     "vision_choices": [
+      0.0,
+      0.0
+     ]
+    },
+    "release_safe": {
+     "bounces": [
+      0.0,
+      0.0
+     ],
+     "bounce_hp": [
+      0.0,
+      0.0
+     ],
+     "crashes_B": [
+      0.0,
+      0.0,
+      0.0
+     ],
+     "plates": [
+      0.0,
+      0.0
+     ],
+     "thinned": [
+      0.0,
+      0.0
+     ],
+     "vision": [
+      0.0,
+      0.0
+     ],
+     "pressure": [
+      0.0,
+      0.0
+     ],
+     "siege_turns": [
+      0.0,
+      0.0
+     ],
+     "vision_choices": [
+      0.0,
+      0.0
+     ]
+    },
+    "contest_slowpush": {
+     "bounces": [
+      0.0,
+      0.0
+     ],
+     "bounce_hp": [
+      0.0,
+      0.0
+     ],
+     "crashes_B": [
+      3.0,
+      0.0,
+      0.0
+     ],
+     "plates": [
+      0.0,
+      0.0
+     ],
+     "thinned": [
+      0.0,
+      0.0
+     ],
+     "vision": [
+      0.0,
+      3.0
+     ],
+     "pressure": [
+      0.0,
+      0.0
+     ],
+     "siege_turns": [
+      0.0,
+      4.0
+     ],
+     "vision_choices": [
+      0.0,
+      0.0
+     ]
+    }
+   },
+   "probe_crash12": {
+    "value": 3.1374234285950466,
+    "A": {
+     "SP-C+V": 1.0
+    },
+    "B": {
+     "SP-S": 1.0
+    },
+    "Q_A": {
+     "SP-S": 2.159999999999998,
+     "SH-S": 2.159999999999998,
+     "SP-C+P": 2.1249234285950465,
+     "SH-C+P": 1.9749234285950468,
+     "SP-C+V": 3.1374234285950466,
+     "SH-C+V": 2.987423428595047
+    }
+   },
+   "pre_crash_12": {
+    "value": 2.6315648819117525,
+    "A": {
+     "SP-C": 0.892,
+     "SH-C": 0.108
+    },
+    "crash_gain": 4.440892098500626e-16
+   }
+  }
+ },
+ "environment": {
+  "python": "3.13.9",
+  "numpy": "2.5.3",
+  "scipy": "1.18.1",
+  "platform": "Windows-11-10.0.26200-SP0",
+  "timestamp": "2026-10-11 00:38:43"
+ }
+}

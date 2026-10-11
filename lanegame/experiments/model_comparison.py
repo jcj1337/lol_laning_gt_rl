@@ -21,13 +21,13 @@ W2 = dict(wave_hp=2, farm_per_hp=0.5, freeze_break_threshold=5, freeze_break_pus
 
 VARIANTS = {
     "revised default (stack_creep, period 2)": {},
-    "Slow Push hold at river (original rule)": {"slowpush_mode": "hold"},
+    "Slow Push hold at lane (original rule)": {"slowpush_mode": "hold"},
     "Slow Push creep, 1 cell / spawn interval": {"slowpush_mode": "creep", "slowpush_creep_period": 1},
     "Slow Push creep, 1 cell / 2 intervals": {"slowpush_mode": "creep"},
     "Slow Push stack_creep, period 1": {"slowpush_creep_period": 1},
-    "Slow Push half speed past river": {"slowpush_mode": "half"},
+    "Slow Push half speed past lane": {"slowpush_mode": "half"},
     "Slow Push free (no line)": {"slowpush_mode": "free"},
-    "Freeze legal from the river (original rule)": {"freeze_legal_max": 0},
+    "Freeze legal from the lane (original rule)": {"freeze_legal_max": 0},
     "tower: 1 packet per turn (original rule)": {"tower_mode": "packet"},
     "tower fire 2 HP per tick": {"tower_siege_damage": 2},
     "cap rule: delete overflow HP (original rule)": {"cap_rule": "overflow"},
@@ -44,7 +44,7 @@ def run(horizon: int = K) -> dict:
     out = {}
     for name, kw in VARIANTS.items():
         print(name, flush=True)
-        cfg = GameConfig(horizon=horizon, **kw)
+        cfg = GameConfig.v2(horizon=horizon, **kw)
         try:
             g, layers, sol, secs = solve(cfg)
         except RuntimeError as err:                       # unbounded state growth (safety cap hit)
@@ -66,7 +66,7 @@ def run(horizon: int = K) -> dict:
                      "events": rep.counts, "baseline_exploitability": expl}
     failed = {n: d["error"] for n, d in out.items() if "error" in d}
     out_ok = {n: d for n, d in out.items() if "error" not in d}
-    n_sc = len(all_scenarios(GameConfig()))
+    n_sc = len(all_scenarios(GameConfig.v2()))
     ev_keys = ["crash_small", "crash_medium", "crash_large", "crash_onto_siege", "bounce", "freeze_held",
                "freeze_broken", "minions_deleted"]
     md = [f"# Candidate mechanics under the revised economy (K = {horizon})", "",

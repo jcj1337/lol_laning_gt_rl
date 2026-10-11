@@ -15,6 +15,8 @@ PAIRS = {
            (always_shove, "eq")],
     "revised": [("eq", "eq"), ("eq", uniform), (aggressive, passive_safe), (freeze_contest, stack_builder),
                 ("uniform", aggressive)],
+    "siege": [("eq", "eq"), ("eq", uniform), (aggressive, passive_safe), (freeze_contest, stack_builder),
+              (lambda: stack_builder(siege="vision"), passive_safe)],
 }
 
 
@@ -42,7 +44,7 @@ def test_forward_statistics_match_backward_value(model, game, layers, solution, 
         assert abs(ps.value - evaluate(game, layers, pa, pb)) < 1e-9
         # the expected total decomposes exactly into its components
         parts = (ps.farm[0] - ps.farm[1]) + (ps.crash_resources[0] - ps.crash_resources[1]) \
-            - (ps.gank_loss[0] - ps.gank_loss[1])
+            + (ps.plates[0] - ps.plates[1]) - (ps.gank_loss[0] - ps.gank_loss[1])
         assert abs(ps.value - parts) < 1e-9
         assert all(0 <= c <= a + 1e-12 for c, a in zip(ps.farm, ps.farm_available))
 
@@ -56,7 +58,8 @@ def test_simulation_is_reproducible(game):
     assert not np.array_equal(a.payoffs, c.payoffs)
 
 
-@pytest.mark.parametrize("base", [GameConfig.v1(horizon=16), GameConfig(horizon=16)], ids=["v1", "revised"])
+@pytest.mark.parametrize("base", [GameConfig.v1(horizon=16), GameConfig.v2(horizon=16), GameConfig(horizon=16)],
+                         ids=["v1", "revised", "siege"])
 def test_simulation_without_randomness_equals_exact_value(base):
     """With gank risk switched off and deterministic policies, every episode equals the exact value, and the
     farm and crash resources each episode records equal the exact path totals."""
@@ -64,7 +67,8 @@ def test_simulation_without_randomness_equals_exact_value(base):
     g = LaneGame(cfg)
     layers = g.reachable()
     pairs = ([(always_shove(), always_slowpush()), (always_slowpush(), defensive_freeze())] if not cfg.positioning
-             else [(aggressive(), passive_safe()), (stack_builder(), freeze_contest())])
+             else [(aggressive(), passive_safe()), (stack_builder(), freeze_contest()),
+                   (stack_builder(siege="vision"), passive_safe())])
     for pa, pb in pairs:
         sim = simulate(g, pa, pb, episodes=5, seed=0)
         assert np.all(sim.payoffs == sim.payoffs[0])
@@ -72,4 +76,6 @@ def test_simulation_without_randomness_equals_exact_value(base):
         ps = path_statistics(g, pa, pb)
         assert np.allclose(sim.farm[0], ps.farm, atol=1e-12)
         assert np.allclose(sim.crash_resources[0], ps.crash_resources, atol=1e-12)
-        assert abs(sim.payoffs[0] - ((ps.farm[0] - ps.farm[1]) + (ps.crash_resources[0] - ps.crash_resources[1]))) < 1e-9
+        assert np.allclose(sim.plates[0], ps.plates, atol=1e-12)
+        assert abs(sim.payoffs[0] - ((ps.farm[0] - ps.farm[1]) + (ps.crash_resources[0] - ps.crash_resources[1])
+                                     + (ps.plates[0] - ps.plates[1]))) < 1e-9

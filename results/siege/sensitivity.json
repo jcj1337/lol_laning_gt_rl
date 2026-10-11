@@ -1,0 +1,891 @@
+{
+ "horizon": 24,
+ "results": {
+  "default": {
+   "params": {},
+   "nodes": 36891,
+   "solve_s": 8.439534800127149,
+   "value": 0.0,
+   "eq_actions": "SH-C 0.08, SP-C 0.79, SP-S 0.12",
+   "eq_contest": 0.875,
+   "eq_crashes": 0.0,
+   "eq_farm": 7.130000000000002,
+   "eq_gank": 25.900000000000006,
+   "siege": {
+    "p_pressure": 0.685903529151426,
+    "p_vision": 0.2981757841762535,
+    "p_disengage": 0.015920686672320657,
+    "p_vision_no_vision": 0.9837370646064245,
+    "p_pressure_no_vision": 0.01626293539357548,
+    "p_disengage_no_vision": 0.0,
+    "nodes": 6318
+   },
+   "crash12_value": 6.1374999999999975,
+   "crash12_A": {
+    "SP-C+V": 1.0
+   },
+   "crash_gain_12": 1.442584374267795,
+   "post_best": {
+    "pressure": 5.208916054095594,
+    "vision": 6.221416054095594,
+    "safe": 5.2987402268407395
+   },
+   "exploitability": {
+    "aggressive": 18.002500000000005,
+    "passive_safe": 13.796249999999999,
+    "stack_builder": 11.371249999999993,
+    "release_safe": 5.170000000000001,
+    "contest_slowpush": 11.817499999999997
+   },
+   "br_passive": {
+    "plates": 3.0,
+    "thinned_hp": 3.0,
+    "vision_turns_set": 3.0,
+    "pressure_turns": 3.0
+   },
+   "passive_bounces": 0.0,
+   "checks": {
+    "S1": true,
+    "S2": true,
+    "S3": true,
+    "S4": true,
+    "S5": true,
+    "S6": true
+   }
+  },
+  "gank_base 0.05": {
+   "params": {
+    "gank_base": 0.05
+   },
+   "nodes": 36891,
+   "solve_s": 8.511348200030625,
+   "value": 0.0,
+   "eq_actions": "SH-C 0.08, SP-C 0.79, SP-S 0.12",
+   "eq_contest": 0.875,
+   "eq_crashes": 0.0,
+   "eq_farm": 7.130000000000002,
+   "eq_gank": 13.899999999999997,
+   "siege": {
+    "p_pressure": 0.7292197680048011,
+    "p_vision": 0.2542264335786555,
+    "p_disengage": 0.016553798416543513,
+    "p_vision_no_vision": 0.9604271596742721,
+    "p_pressure_no_vision": 0.039572840325727915,
+    "p_disengage_no_vision": 0.0,
+    "nodes": 6318
+   },
+   "crash12_value": 1.9784743770381514,
+   "crash12_A": {
+    "SP-C+V": 1.0
+   },
+   "crash_gain_12": 0.8905118738218968,
+   "post_best": {
+    "pressure": 1.4589160540955954,
+    "vision": 2.096416054095595,
+    "safe": 1.5487402268407406
+   },
+   "exploitability": {
+    "aggressive": 18.002500000000005,
+    "passive_safe": 8.17125,
+    "stack_builder": 5.99375,
+    "release_safe": 5.170000000000002,
+    "contest_slowpush": 6.1925
+   },
+   "br_passive": {
+    "plates": 3.0,
+    "thinned_hp": 3.0,
+    "vision_turns_set": 3.0,
+    "pressure_turns": 3.0
+   },
+   "passive_bounces": 0.0,
+   "checks": {
+    "S1": true,
+    "S2": true,
+    "S3": true,
+    "S4": true,
+    "S5": true,
+    "S6": true
+   }
+  },
+  "gank_base 0.10": {
+   "params": {
+    "gank_base": 0.1
+   },
+   "nodes": 36891,
+   "solve_s": 8.673826500074938,
+   "value": 0.0,
+   "eq_actions": "SH-C 0.08, SP-C 0.79, SP-S 0.12",
+   "eq_contest": 0.875,
+   "eq_crashes": 0.0,
+   "eq_farm": 7.130000000000002,
+   "eq_gank": 19.9,
+   "siege": {
+    "p_pressure": 0.7017777818513711,
+    "p_vision": 0.28245980941236415,
+    "p_disengage": 0.015762408736264943,
+    "p_vision_no_vision": 0.9679838347372444,
+    "p_pressure_no_vision": 0.03201616526275562,
+    "p_disengage_no_vision": 0.0,
+    "nodes": 6318
+   },
+   "crash12_value": 4.064755767184822,
+   "crash12_A": {
+    "SP-C+V": 1.0
+   },
+   "crash_gain_12": 1.2439039242219214,
+   "post_best": {
+    "pressure": 3.333916054095595,
+    "vision": 4.158916054095595,
+    "safe": 3.4237402268407404
+   },
+   "exploitability": {
+    "aggressive": 18.002500000000005,
+    "passive_safe": 10.98375,
+    "stack_builder": 8.371249999999996,
+    "release_safe": 5.170000000000001,
+    "contest_slowpush": 9.004999999999999
+   },
+   "br_passive": {
+    "plates": 3.0,
+    "thinned_hp": 3.0,
+    "vision_turns_set": 3.0,
+    "pressure_turns": 3.0
+   },
+   "passive_bounces": 0.0,
+   "checks": {
+    "S1": true,
+    "S2": true,
+    "S3": true,
+    "S4": true,
+    "S5": true,
+    "S6": true
+   }
+  },
+  "gank_base 0.20": {
+   "params": {
+    "gank_base": 0.2
+   },
+   "nodes": 36891,
+   "solve_s": 8.682825500145555,
+   "value": 0.0,
+   "eq_actions": "SH-C 0.08, SP-C 0.79, SP-S 0.12",
+   "eq_contest": 0.875,
+   "eq_crashes": 0.0,
+   "eq_farm": 7.130000000000002,
+   "eq_gank": 31.90000000000001,
+   "siege": {
+    "p_pressure": 0.6492619945805779,
+    "p_vision": 0.33481731874710136,
+    "p_disengage": 0.015920686672320657,
+    "p_vision_no_vision": 0.9856160765508464,
+    "p_pressure_no_vision": 0.014383923449153607,
+    "p_disengage_no_vision": 0.0,
+    "nodes": 6318
+   },
+   "crash12_value": 8.2,
+   "crash12_A": {
+    "SP-C+V": 1.0
+   },
+   "crash_gain_12": 1.6301325548212926,
+   "post_best": {
+    "pressure": 7.083916054095594,
+    "vision": 8.283916054095595,
+    "safe": 7.1737402268407395
+   },
+   "exploitability": {
+    "aggressive": 18.002500000000005,
+    "passive_safe": 16.60875,
+    "stack_builder": 14.371249999999995,
+    "release_safe": 5.170000000000002,
+    "contest_slowpush": 14.629999999999997
+   },
+   "br_passive": {
+    "plates": 3.0,
+    "thinned_hp": 3.0,
+    "vision_turns_set": 3.0,
+    "pressure_turns": 3.0
+   },
+   "passive_bounces": 0.0,
+   "checks": {
+    "S1": true,
+    "S2": true,
+    "S3": true,
+    "S4": true,
+    "S5": true,
+    "S6": true
+   }
+  },
+  "gank_loss 3.5": {
+   "params": {
+    "gank_loss": 3.5
+   },
+   "nodes": 36891,
+   "solve_s": 9.663730599917471,
+   "value": 0.0,
+   "eq_actions": "SH-C 0.08, SP-C 0.79, SP-S 0.12",
+   "eq_contest": 0.875,
+   "eq_crashes": 0.0,
+   "eq_farm": 7.130000000000002,
+   "eq_gank": 18.129999999999995,
+   "siege": {
+    "p_pressure": 0.7018884247316877,
+    "p_vision": 0.2842886355194466,
+    "p_disengage": 0.013822939748865682,
+    "p_vision_no_vision": 0.9670025188916876,
+    "p_pressure_no_vision": 0.03299748110831236,
+    "p_disengage_no_vision": 0.0,
+    "nodes": 6318
+   },
+   "crash12_value": 4.439047597042513,
+   "crash12_A": {
+    "SP-C+V": 1.0
+   },
+   "crash_gain_12": 1.335473090758361,
+   "post_best": {
+    "pressure": 3.822797597042512,
+    "vision": 4.521547597042512,
+    "safe": 3.8947916666666664
+   },
+   "exploitability": {
+    "aggressive": 13.739999999999997,
+    "passive_safe": 12.061875,
+    "stack_builder": 8.911249999999999,
+    "release_safe": 6.135000000000002,
+    "contest_slowpush": 9.250625
+   },
+   "br_passive": {
+    "plates": 3.0,
+    "thinned_hp": 3.0,
+    "vision_turns_set": 3.0,
+    "pressure_turns": 3.0
+   },
+   "passive_bounces": 0.0,
+   "checks": {
+    "S1": true,
+    "S2": true,
+    "S3": true,
+    "S4": true,
+    "S5": true,
+    "S6": true
+   }
+  },
+  "gank_loss 7": {
+   "params": {
+    "gank_loss": 7.0
+   },
+   "nodes": 36891,
+   "solve_s": 9.8961223999504,
+   "value": 1.5291780187791923e-18,
+   "eq_actions": "SH-C 0.04, SP-C 0.01, SP-S 0.95",
+   "eq_contest": 0.048708276177411906,
+   "eq_crashes": 0.0,
+   "eq_farm": 4.956776406035665,
+   "eq_gank": 29.80223593964335,
+   "siege": {
+    "p_pressure": 0.6272717346168069,
+    "p_vision": 0.3500186517644885,
+    "p_disengage": 0.02270961361870453,
+    "p_vision_no_vision": 0.9974811083123426,
+    "p_pressure_no_vision": 0.0025188916876574307,
+    "p_disengage_no_vision": 0.0,
+    "nodes": 6318
+   },
+   "crash12_value": 8.427499999999998,
+   "crash12_A": {
+    "SP-C+V": 1.0
+   },
+   "crash_gain_12": 1.5705779678015803,
+   "post_best": {
+    "pressure": 7.0683372363974835,
+    "vision": 8.485837236397483,
+    "safe": 7.321250000000002
+   },
+   "exploitability": {
+    "aggressive": 24.23500000000001,
+    "passive_safe": 16.10875,
+    "stack_builder": 14.976249999999997,
+    "release_safe": 3.9000000000000026,
+    "contest_slowpush": 15.239999999999995
+   },
+   "br_passive": {
+    "plates": 3.0,
+    "thinned_hp": 3.0,
+    "vision_turns_set": 3.0,
+    "pressure_turns": 3.0
+   },
+   "passive_bounces": 0.0,
+   "checks": {
+    "S1": true,
+    "S2": true,
+    "S3": true,
+    "S4": true,
+    "S5": true,
+    "S6": true
+   }
+  },
+  "plate_value 0.5": {
+   "params": {
+    "plate_value": 0.5
+   },
+   "nodes": 36891,
+   "solve_s": 8.65212079999037,
+   "value": 0.0,
+   "eq_actions": "SH-C 0.08, SP-C 0.79, SP-S 0.12",
+   "eq_contest": 0.875,
+   "eq_crashes": 0.0,
+   "eq_farm": 7.130000000000002,
+   "eq_gank": 25.900000000000006,
+   "siege": {
+    "p_pressure": 0.6249548110882202,
+    "p_vision": 0.3579119322886595,
+    "p_disengage": 0.017133256623120364,
+    "p_vision_no_vision": 0.9984491655471636,
+    "p_pressure_no_vision": 0.0015508344528363965,
+    "p_disengage_no_vision": 0.0,
+    "nodes": 6318
+   },
+   "crash12_value": 4.6374999999999975,
+   "crash12_A": {
+    "SP-C+V": 1.0
+   },
+   "crash_gain_12": 0.8525843742677943,
+   "post_best": {
+    "pressure": 3.7145901878290144,
+    "vision": 4.727090187829014,
+    "safe": 4.023749999999999
+   },
+   "exploitability": {
+    "aggressive": 18.002500000000005,
+    "passive_safe": 12.296249999999999,
+    "stack_builder": 9.871249999999995,
+    "release_safe": 5.170000000000001,
+    "contest_slowpush": 10.317499999999997
+   },
+   "br_passive": {
+    "plates": 1.5,
+    "thinned_hp": 3.0,
+    "vision_turns_set": 3.0,
+    "pressure_turns": 3.0
+   },
+   "passive_bounces": 0.0,
+   "checks": {
+    "S1": true,
+    "S2": true,
+    "S3": true,
+    "S4": true,
+    "S5": true,
+    "S6": true
+   }
+  },
+  "plate_value 1.5": {
+   "params": {
+    "plate_value": 1.5
+   },
+   "nodes": 36891,
+   "solve_s": 8.709965099813417,
+   "value": 0.0,
+   "eq_actions": "SH-C 0.08, SP-C 0.79, SP-S 0.12",
+   "eq_contest": 0.875,
+   "eq_crashes": 0.0,
+   "eq_farm": 7.130000000000002,
+   "eq_gank": 25.900000000000006,
+   "siege": {
+    "p_pressure": 0.7054020726053045,
+    "p_vision": 0.27851896278631927,
+    "p_disengage": 0.01607896460837637,
+    "p_vision_no_vision": 0.9673478221149578,
+    "p_pressure_no_vision": 0.03265217788504214,
+    "p_disengage_no_vision": 0.0,
+    "nodes": 6318
+   },
+   "crash12_value": 7.637499999999997,
+   "crash12_A": {
+    "SP-C+V": 1.0
+   },
+   "crash_gain_12": 1.942584374267795,
+   "post_best": {
+    "pressure": 6.708916054095594,
+    "vision": 7.721416054095594,
+    "safe": 6.7987402268407395
+   },
+   "exploitability": {
+    "aggressive": 18.002500000000005,
+    "passive_safe": 15.411249999999997,
+    "stack_builder": 13.561249999999998,
+    "release_safe": 5.170000000000001,
+    "contest_slowpush": 13.908749999999998
+   },
+   "br_passive": {
+    "plates": 7.5,
+    "thinned_hp": 5.0,
+    "vision_turns_set": 3.0,
+    "pressure_turns": 5.0
+   },
+   "passive_bounces": 0.0,
+   "checks": {
+    "S1": true,
+    "S2": true,
+    "S3": true,
+    "S4": true,
+    "S5": true,
+    "S6": true
+   }
+  },
+  "plate_grant 1/1/1": {
+   "params": {
+    "plate_grant": [
+     1,
+     1,
+     1
+    ]
+   },
+   "nodes": 35481,
+   "solve_s": 8.505870499880984,
+   "value": 0.0,
+   "eq_actions": "SH-C 0.08, SP-C 0.79, SP-S 0.12",
+   "eq_contest": 0.875,
+   "eq_crashes": 0.0,
+   "eq_farm": 7.130000000000002,
+   "eq_gank": 25.900000000000006,
+   "siege": {
+    "p_pressure": 0.6166107040734559,
+    "p_vision": 0.3371702902960879,
+    "p_disengage": 0.04621900563045595,
+    "p_vision_no_vision": 0.9938962306414971,
+    "p_pressure_no_vision": 0.006103769358502827,
+    "p_disengage_no_vision": 0.0,
+    "nodes": 5613
+   },
+   "crash12_value": 4.1374999999999975,
+   "crash12_A": {
+    "SP-C+V": 1.0
+   },
+   "crash_gain_12": 0.4927185202858486,
+   "post_best": {
+    "pressure": 3.6674999999999986,
+    "vision": 4.679999999999999,
+    "safe": 4.023749999999999
+   },
+   "exploitability": {
+    "aggressive": 18.002500000000005,
+    "passive_safe": 12.984999999999998,
+    "stack_builder": 10.703749999999996,
+    "release_safe": 5.170000000000001,
+    "contest_slowpush": 10.972499999999998
+   },
+   "br_passive": {
+    "plates": 2.0,
+    "thinned_hp": 2.0,
+    "vision_turns_set": 3.0,
+    "pressure_turns": 2.0
+   },
+   "passive_bounces": 0.0,
+   "checks": {
+    "S1": true,
+    "S2": true,
+    "S3": true,
+    "S4": true,
+    "S5": true,
+    "S6": true
+   }
+  },
+  "plate_grant 2/3/4": {
+   "params": {
+    "plate_grant": [
+     2,
+     3,
+     4
+    ]
+   },
+   "nodes": 39515,
+   "solve_s": 10.149116499815136,
+   "value": 0.0,
+   "eq_actions": "SH-C 0.08, SP-C 0.79, SP-S 0.12",
+   "eq_contest": 0.875,
+   "eq_crashes": 0.0,
+   "eq_farm": 7.130000000000002,
+   "eq_gank": 25.900000000000006,
+   "siege": {
+    "p_pressure": 0.7388539805110974,
+    "p_vision": 0.25996646509833904,
+    "p_disengage": 0.001179554390563565,
+    "p_vision_no_vision": 0.9776808582819045,
+    "p_pressure_no_vision": 0.02231914171809539,
+    "p_disengage_no_vision": 0.0,
+    "nodes": 7630
+   },
+   "crash12_value": 7.137499999999997,
+   "crash12_A": {
+    "SP-C+V": 1.0
+   },
+   "crash_gain_12": 1.442584374267795,
+   "post_best": {
+    "pressure": 6.208916054095594,
+    "vision": 7.221416054095594,
+    "safe": 5.2987402268407395
+   },
+   "exploitability": {
+    "aggressive": 18.002500000000005,
+    "passive_safe": 13.796249999999999,
+    "stack_builder": 11.371249999999993,
+    "release_safe": 5.170000000000001,
+    "contest_slowpush": 11.817499999999997
+   },
+   "br_passive": {
+    "plates": 3.0,
+    "thinned_hp": 3.0,
+    "vision_turns_set": 3.0,
+    "pressure_turns": 3.0
+   },
+   "passive_bounces": 0.0,
+   "checks": {
+    "S1": true,
+    "S2": true,
+    "S3": true,
+    "S4": true,
+    "S5": true,
+    "S6": true
+   }
+  },
+  "thin_damage 0": {
+   "params": {
+    "thin_damage": 0
+   },
+   "nodes": 31015,
+   "solve_s": 6.0575610001105815,
+   "value": 0.0,
+   "eq_actions": "SH-C 0.08, SP-C 0.79, SP-S 0.12",
+   "eq_contest": 0.875,
+   "eq_crashes": 0.0,
+   "eq_farm": 7.130000000000002,
+   "eq_gank": 25.900000000000006,
+   "siege": {
+    "p_pressure": 0.6338585467890597,
+    "p_vision": 0.3141280194443869,
+    "p_disengage": 0.052013433766553326,
+    "p_vision_no_vision": 1.0,
+    "p_pressure_no_vision": 0.0,
+    "p_disengage_no_vision": 0.0,
+    "nodes": 5737
+   },
+   "crash12_value": 5.527120547680016,
+   "crash12_A": {
+    "SP-C+V": 1.0
+   },
+   "crash_gain_12": 0.7347814797141514,
+   "post_best": {
+    "pressure": 5.4989068303004665,
+    "vision": 6.511406830300467,
+    "safe": 5.23598677179548
+   },
+   "exploitability": {
+    "aggressive": 18.002500000000005,
+    "passive_safe": 13.893749999999999,
+    "stack_builder": 11.101249999999997,
+    "release_safe": 5.170000000000001,
+    "contest_slowpush": 11.722499999999995
+   },
+   "br_passive": {
+    "plates": 3.0,
+    "thinned_hp": 0.0,
+    "vision_turns_set": 3.0,
+    "pressure_turns": 3.0
+   },
+   "passive_bounces": 0.0,
+   "checks": {
+    "S1": true,
+    "S2": true,
+    "S3": true,
+    "S4": true,
+    "S5": true,
+    "S6": false
+   }
+  },
+  "thin_damage 2": {
+   "params": {
+    "thin_damage": 2
+   },
+   "nodes": 45123,
+   "solve_s": 10.775492999935523,
+   "value": 0.0,
+   "eq_actions": "SH-C 0.08, SP-C 0.79, SP-S 0.12",
+   "eq_contest": 0.875,
+   "eq_crashes": 0.0,
+   "eq_farm": 7.130000000000002,
+   "eq_gank": 25.900000000000006,
+   "siege": {
+    "p_pressure": 0.7211002894049938,
+    "p_vision": 0.26484072747472975,
+    "p_disengage": 0.014058983120276933,
+    "p_vision_no_vision": 0.957423034526036,
+    "p_pressure_no_vision": 0.04257696547396404,
+    "p_disengage_no_vision": 0.0,
+    "nodes": 9525
+   },
+   "crash12_value": 11.743818201334578,
+   "crash12_A": {
+    "SP-C+V": 1.0
+   },
+   "crash_gain_12": 4.585832537902418,
+   "post_best": {
+    "pressure": 11.431509740259738,
+    "vision": 12.426509740259737,
+    "safe": 10.219280711695374
+   },
+   "exploitability": {
+    "aggressive": 18.002500000000005,
+    "passive_safe": 14.01625,
+    "stack_builder": 13.016249999999998,
+    "release_safe": 5.170000000000001,
+    "contest_slowpush": 12.866249999999997
+   },
+   "br_passive": {
+    "plates": 7.0,
+    "thinned_hp": 14.0,
+    "vision_turns_set": 3.0,
+    "pressure_turns": 7.0
+   },
+   "passive_bounces": 0.0,
+   "checks": {
+    "S1": true,
+    "S2": true,
+    "S3": true,
+    "S4": true,
+    "S5": true,
+    "S6": true
+   }
+  },
+  "farm_per_hp 0.125": {
+   "params": {
+    "farm_per_hp": 0.125
+   },
+   "nodes": 36891,
+   "solve_s": 9.324169000145048,
+   "value": 0.0,
+   "eq_actions": "SH-C 0.04, SP-S 0.96",
+   "eq_contest": 0.041666666666666664,
+   "eq_crashes": 0.0,
+   "eq_farm": 2.4650000000000007,
+   "eq_gank": 21.25,
+   "siege": {
+    "p_pressure": 0.660810273128097,
+    "p_vision": 0.29848235283119556,
+    "p_disengage": 0.04070737404070737,
+    "p_vision_no_vision": 0.988893977558965,
+    "p_pressure_no_vision": 0.011106022441035038,
+    "p_disengage_no_vision": 0.0,
+    "nodes": 6318
+   },
+   "crash12_value": 7.386443548387095,
+   "crash12_A": {
+    "SP-C+V": 1.0
+   },
+   "crash_gain_12": 1.382968749999999,
+   "post_best": {
+    "pressure": 6.432554393674834,
+    "vision": 7.445054393674835,
+    "safe": 6.606875
+   },
+   "exploitability": {
+    "aggressive": 17.125,
+    "passive_safe": 11.324999999999998,
+    "stack_builder": 11.808125000000002,
+    "release_safe": 1.0700000000000007,
+    "contest_slowpush": 11.983125000000001
+   },
+   "br_passive": {
+    "plates": 5.0,
+    "thinned_hp": 5.0,
+    "vision_turns_set": 3.0,
+    "pressure_turns": 5.0
+   },
+   "passive_bounces": 0.0,
+   "checks": {
+    "S1": true,
+    "S2": true,
+    "S3": true,
+    "S4": true,
+    "S5": true,
+    "S6": true
+   }
+  },
+  "farm_per_hp 0.5": {
+   "params": {
+    "farm_per_hp": 0.5
+   },
+   "nodes": 36891,
+   "solve_s": 9.267211500089616,
+   "value": 0.0,
+   "eq_actions": "SH-C 0.17, SP-C 0.79, SP-S 0.04",
+   "eq_contest": 0.9583333333333334,
+   "eq_crashes": 0.0,
+   "eq_farm": 14.490000000000006,
+   "eq_gank": 26.650000000000006,
+   "siege": {
+    "p_pressure": 0.6811350317016542,
+    "p_vision": 0.30979622877693125,
+    "p_disengage": 0.00906873952141442,
+    "p_vision_no_vision": 0.9793633704395872,
+    "p_pressure_no_vision": 0.020636629560412775,
+    "p_disengage_no_vision": 0.0,
+    "nodes": 6318
+   },
+   "crash12_value": 3.4440866036704145,
+   "crash12_A": {
+    "SP-C+V": 1.0
+   },
+   "crash_gain_12": 1.458830129234728,
+   "post_best": {
+    "pressure": 2.6984772727272706,
+    "vision": 3.6509772727272702,
+    "safe": 2.852464049953581
+   },
+   "exploitability": {
+    "aggressive": 21.8,
+    "passive_safe": 18.896249999999995,
+    "stack_builder": 10.837499999999997,
+    "release_safe": 13.675000000000004,
+    "contest_slowpush": 12.16375
+   },
+   "br_passive": {
+    "plates": 3.0,
+    "thinned_hp": 3.0,
+    "vision_turns_set": 3.0,
+    "pressure_turns": 3.0
+   },
+   "passive_bounces": 0.0,
+   "checks": {
+    "S1": true,
+    "S2": true,
+    "S3": true,
+    "S4": true,
+    "S5": true,
+    "S6": true
+   }
+  },
+  "vision 50% / 2 turns (old)": {
+   "params": {
+    "vision_reduction": 0.5,
+    "vision_turns": 2
+   },
+   "nodes": 17271,
+   "solve_s": 4.975319500081241,
+   "value": 0.0,
+   "eq_actions": "SH-C 0.08, SP-C 0.79, SP-S 0.12",
+   "eq_contest": 0.875,
+   "eq_crashes": 0.0,
+   "eq_farm": 7.130000000000002,
+   "eq_gank": 25.900000000000006,
+   "siege": {
+    "p_pressure": 0.6448315093488061,
+    "p_vision": 0.33538551975150077,
+    "p_disengage": 0.019782970899693282,
+    "p_vision_no_vision": 0.6896619485591916,
+    "p_pressure_no_vision": 0.31033805144080834,
+    "p_disengage_no_vision": 0.0,
+    "nodes": 4135
+   },
+   "crash12_value": -0.5025000000000022,
+   "crash12_A": {
+    "SP-C+P": 1.0
+   },
+   "crash_gain_12": 0.6487801932367152,
+   "post_best": {
+    "pressure": -0.3874079226806154,
+    "vision": -0.30031573699035397,
+    "safe": -1.2527402957486153
+   },
+   "exploitability": {
+    "aggressive": 18.002500000000005,
+    "passive_safe": 6.135,
+    "stack_builder": 3.7462499999999963,
+    "release_safe": 5.170000000000001,
+    "contest_slowpush": 4.1112499999999965
+   },
+   "br_passive": {
+    "plates": 3.0,
+    "thinned_hp": 3.0,
+    "vision_turns_set": 2.0,
+    "pressure_turns": 3.0
+   },
+   "passive_bounces": 0.0,
+   "checks": {
+    "S1": true,
+    "S2": true,
+    "S3": false,
+    "S4": true,
+    "S5": true,
+    "S6": true
+   }
+  },
+  "tower 2 HP/tick": {
+   "params": {
+    "tower_siege_damage": 2
+   },
+   "nodes": 13425,
+   "solve_s": 2.5227965000085533,
+   "value": 0.0,
+   "eq_actions": "SH-C 0.08, SP-C 0.79, SP-S 0.12",
+   "eq_contest": 0.875,
+   "eq_crashes": 0.0,
+   "eq_farm": 7.130000000000002,
+   "eq_gank": 25.900000000000006,
+   "siege": {
+    "p_pressure": 0.5194669463329958,
+    "p_vision": 0.48053305366700416,
+    "p_disengage": 0.0,
+    "p_vision_no_vision": 0.9627826349110643,
+    "p_pressure_no_vision": 0.0372173650889358,
+    "p_disengage_no_vision": 0.0,
+    "nodes": 892
+   },
+   "crash12_value": 2.7783865502005405,
+   "crash12_A": {
+    "SP-C+V": 1.0
+   },
+   "crash_gain_12": -0.009999999999999787,
+   "post_best": {
+    "pressure": 2.223749999999998,
+    "vision": 2.9483865502005404,
+    "safe": 1.5558876459908244
+   },
+   "exploitability": {
+    "aggressive": 18.002500000000005,
+    "passive_safe": 11.896249999999997,
+    "stack_builder": 9.547499999999996,
+    "release_safe": 5.170000000000001,
+    "contest_slowpush": 9.547499999999996
+   },
+   "br_passive": {
+    "plates": 0.0,
+    "thinned_hp": 0.0,
+    "vision_turns_set": 3.0,
+    "pressure_turns": 0.0
+   },
+   "passive_bounces": 0.0,
+   "checks": {
+    "S1": true,
+    "S2": true,
+    "S3": true,
+    "S4": false,
+    "S5": true,
+    "S6": false
+   }
+  }
+ },
+ "tally": {
+  "S1": 16,
+  "S2": 16,
+  "S3": 15,
+  "S4": 15,
+  "S5": 16,
+  "S6": 14
+ },
+ "environment": {
+  "python": "3.13.9",
+  "numpy": "2.5.3",
+  "scipy": "1.18.1",
+  "platform": "Windows-11-10.0.26200-SP0",
+  "timestamp": "2026-10-11 01:32:27"
+ }
+}

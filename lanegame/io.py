@@ -1,14 +1,17 @@
 """Serializable output format for solved games (consumed by Phase 2/3).
 
-Schema of `write_solution` (JSON, version 2; version 1 had no combined actions):
+Schema of `write_solution` (JSON, version 3; version 2 had no siege objectives or plates,
+version 1 no combined actions):
 
 {
-  "schema": "lanegame.solution", "version": 2,
+  "schema": "lanegame.solution", "version": 3,
   "config": {...GameConfig fields...},
   "horizon": K, "value": V*_0(s_0),
-  "actions": {"0": "SlowPush+Contest", ..., "5": "Freeze+Safe"},   (code = wave + 3 * posture)
-  "state_fields": ["ax","ah","ar","asg","bx","bh","br","bsg","va","vb"],
-                 (asg/bsg: crashed packets in "packet" tower mode, crashed HP in "mass" mode)
+  "actions": {"0": "SlowPush+Contest", ..., "17": "Freeze+Safe+Vision"},
+                 (code = wave + 3 * posture + 6 * objective; only codes that can be legal are listed)
+  "state_fields": ["ax","ah","ar","asg","bx","bh","br","bsg","va","vb","ap","bp"],
+                 (asg/bsg: crashed packets in "packet" tower mode, crashed HP in "mass" mode;
+                  va/vb: vision turns remaining; ap/bp: plates left on the enemy tower)
   "states": [[...state as list...], ...],              # unique states, index = state id
   "layers": [[state ids at k=0], [ids at k=1], ...],
   "nodes": [ {"k": k, "s": id, "V": value, "gap": certified duality gap,
@@ -32,7 +35,7 @@ from .config import ACTION_NAMES, GameConfig
 from .solver import EquilibriumSolution
 from .state import State
 
-STATE_FIELDS = ["ax", "ah", "ar", "asg", "bx", "bh", "br", "bsg", "va", "vb"]
+STATE_FIELDS = ["ax", "ah", "ar", "asg", "bx", "bh", "br", "bsg", "va", "vb", "ap", "bp"]
 
 
 def solution_to_dict(sol: EquilibriumSolution, include_q: bool = True) -> Dict:
@@ -67,7 +70,7 @@ def solution_to_dict(sol: EquilibriumSolution, include_q: bool = True) -> Dict:
     for s, i in ids.items():
         states[i] = s.to_list()
     return {
-        "schema": "lanegame.solution", "version": 2,
+        "schema": "lanegame.solution", "version": 3,
         "config": sol.game.cfg.to_dict(),
         "horizon": sol.game.horizon,
         "root": sol.root.to_list(), "k0": sol.k0,
@@ -81,6 +84,8 @@ def solution_to_dict(sol: EquilibriumSolution, include_q: bool = True) -> Dict:
 
 class _Enc(json.JSONEncoder):
     def default(self, o):
+        if isinstance(o, np.bool_):
+            return bool(o)
         if isinstance(o, (np.integer,)):
             return int(o)
         if isinstance(o, (np.floating,)):

@@ -44,7 +44,7 @@ def tree_minimax(game, s, k):
 
 
 ROOTS = [("symmetric start", None, 0, 3),
-         ("A 3-wave stack at the river", State(0, 12, (-4,), 0, -4, 4, (), 0, 0, 0), 2, 2),
+         ("A 3-wave stack at the lane", State(0, 12, (-4,), 0, -4, 4, (), 0, 0, 0), 2, 2),
          ("A 2-wave packet near B's tower", State(1, 8, (), 0, -3, 4, (), 0, 0, 0), 1, 2),
          ("B wave at A's freeze line", State(-4, 4, (), 0, 1, 4, (), 0, 0, 0), 3, 2),
          ("crashed mass under B's tower, A vision", State(-4, 4, (), 9, -3, 4, (), 0, 1, 0), 2, 2)]
@@ -52,7 +52,7 @@ ROOTS = [("symmetric start", None, 0, 3),
 
 def run() -> dict:
     out = {}
-    cfg = GameConfig(horizon=32)
+    cfg = GameConfig.v2(horizon=32)
     g, layers, sol, _ = solve(cfg)
     # 1
     t = time.perf_counter()
@@ -75,7 +75,7 @@ def run() -> dict:
     # 2
     tree = []
     for name, root, k0, depth in ROOTS:
-        gg = LaneGame(GameConfig(horizon=k0 + depth))
+        gg = LaneGame(GameConfig.v2(horizon=k0 + depth))
         t = time.perf_counter()
         bi = solve_equilibrium(gg, root=root, k0=k0).value
         s = gg.initial_state() if root is None else root
@@ -86,7 +86,7 @@ def run() -> dict:
     # 3
     expl = []
     for K in (16, 32, 64):
-        gg, ll, so, _ = solve(GameConfig(horizon=K))
+        gg, ll, so, _ = solve(GameConfig.v2(horizon=K))
         ea = exploitability(gg, ll, so.policy(0), 0, so.value).exploitability
         eb = exploitability(gg, ll, so.policy(1), 1, so.value).exploitability
         expl.append({"K": K, "expl_A": ea, "expl_B": eb, "max_gap": so.stats.max_gap})

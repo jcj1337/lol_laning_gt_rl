@@ -30,13 +30,13 @@ VARIANTS = {
     "SP half speed": {"slowpush_mode": "half"},
     "SP creep": {"slowpush_mode": "creep"},
     "no tower damage": {"tower_damage": 0},
-    "posture caps (SP river, F -1)": {"posture_cap": (0, None, -1, 0, None, -1)},
+    "posture caps (SP lane, F -1)": {"posture_cap": (0, None, -1, 0, None, -1)},
 }
 
 PROBES = {
-    "A surplus hp1 at river": (State(0, 1, (-4,), 0, -4, 2, (), 0, 0, 0), 10),
-    "A one wave hp2 at river": (State(0, 2, (-4,), 0, -4, 2, (), 0, 0, 0), 10),
-    "A 2-stack hp6 at river": (State(0, 6, (-4,), 0, -4, 2, (), 0, 0, 0), 10),
+    "A surplus hp1 at lane": (State(0, 1, (-4,), 0, -4, 2, (), 0, 0, 0), 10),
+    "A one wave hp2 at lane": (State(0, 2, (-4,), 0, -4, 2, (), 0, 0, 0), 10),
+    "A 2-stack hp6 at lane": (State(0, 6, (-4,), 0, -4, 2, (), 0, 0, 0), 10),
     "B wave held at A freeze line": (State(0, 0, (-2,), 0, 1, 2, (), 0, 0, 0), 11),
 }
 

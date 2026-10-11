@@ -26,7 +26,7 @@ PROBES = ["B wave at A's freeze line, fighting A's wave", "A 2-wave stack at +1,
 
 
 def bench(K: int) -> dict:
-    cfg = GameConfig(horizon=K)
+    cfg = GameConfig.v2(horizon=K)
     # timed run
     g = LaneGame(cfg)
     t0 = time.perf_counter()

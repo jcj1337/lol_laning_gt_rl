@@ -90,10 +90,13 @@ def test_no_passing_through_and_bounds(game, layers):
             assert min(tr["siege"]) >= 0
         st = r.state
         for side in (0, 1):
-            fx, fh, rears, sg, v = st.side(side)
+            fx, fh, rears, sg, v, pl = st.side(side)
             assert all(x < fx for x in rears)            # rears are strictly behind the front
             assert 0 <= v <= cfg.vision_turns
             assert sg <= (cfg.siege_cap if cfg.tower_mode == "mass" else 10 ** 6)
+            assert 0 <= pl <= (cfg.plates_cap if cfg.plate_mode == "crash" else cfg.plates_per_tower)
+            if not cfg.objectives:
+                assert pl == 0
 
 
 def test_states_use_integer_keys_only(layers):
@@ -105,7 +108,8 @@ def test_states_use_integer_keys_only(layers):
 
 
 def test_crash_events_match_crash_rewards(game, layers):
-    """A crash reward requires a packet to newly enter the siege; crashed minions never pay again."""
+    """A crash reward requires a packet to newly enter the siege; crashed minions never pay again.
+    In the siege model a crash pays nothing by itself (the single trivial option)."""
     cfg = game.cfg
     for k, s, a, b in all_transitions(game, layers):
         r = step_turn(s, k, a, b, cfg)
@@ -114,19 +118,25 @@ def test_crash_events_match_crash_rewards(game, layers):
             assert r.crash_hp[side] == r.events["crashed_hp"][side]
             tr = game.transition(s, k, a, b)
             opts = tr.options_a if side == 0 else tr.options_b
-            assert (len(opts) > 1) == (r.crash_hp[side] > 0)
+            if cfg.objectives:
+                assert opts == ((0.0, False),)
+            else:
+                assert (len(opts) > 1) == (r.crash_hp[side] > 0)
     assert crash_options(0, cfg) == ((0.0, False),)
 
 
-def test_vision_expires_after_two_turns(cfg):
-    s = initial_state(cfg)
-    s, r = apply_choice(s, (0.0, True), (0.0, False), cfg)
-    assert (s.va, s.vb) == (cfg.vision_turns, 0) and r == 0.0
+def test_vision_counts_down_and_expires(cfg):
+    """A vision timer of vision_turns protects exactly that many following turns, then expires."""
+    V = cfg.vision_turns
+    s = initial_state(cfg)._replace(va=V)
     seen = []
-    for k in range(4):
+    for k in range(V + 2):
         seen.append(s.va)
         s = step_turn(s, k, SP, SP, cfg).state
-    assert seen == [2, 1, 0, 0]
+    assert seen == list(range(V, 0, -1)) + [0, 0]
+    if not cfg.objectives:                           # the choice stage sets the timer in the older models
+        s, r = apply_choice(initial_state(cfg), (0.0, True), (0.0, False), cfg)
+        assert (s.va, s.vb) == (V, 0) and r == 0.0
 
 
 def test_vision_reduces_gank_probability(cfg):
@@ -177,7 +187,8 @@ def test_reinforcement_arrival_emerges_from_movement(cfg):
 
 
 _SCENARIO_CASES = [("v1", GameConfig.v1(), sc) for sc in all_scenarios(GameConfig.v1())] + \
-                  [("revised", GameConfig(), sc) for sc in all_scenarios(GameConfig())]
+                  [("revised", GameConfig.v2(), sc) for sc in all_scenarios(GameConfig.v2())] + \
+                  [("siege", GameConfig(), sc) for sc in all_scenarios(GameConfig())]
 
 
 @pytest.mark.parametrize("name,cfg,sc", _SCENARIO_CASES, ids=[f"{m}-{sc.name}" for m, _, sc in _SCENARIO_CASES])
@@ -186,10 +197,10 @@ def test_scenarios(name, cfg, sc):
     assert ok, detail + "\n" + "\n".join(lines)
 
 
-def test_scenario_start_reachability_flags():
+@pytest.mark.parametrize("cfg", [GameConfig.v2(horizon=16), GameConfig(horizon=16)], ids=["revised", "siege"])
+def test_scenario_start_reachability_flags(cfg):
     """Scenarios flagged as reachable start from a state reachable from s_0 in the same dynamics phase;
     the others start from constructed states that are not."""
-    cfg = GameConfig(horizon=16)
     layers = LaneGame(cfg).reachable()
     P = cfg.phase_period
     for sc in all_scenarios(cfg):
@@ -236,7 +247,7 @@ def test_v1_freeze_legality(v1_cfg):
     assert F not in legal_actions(s, 0, cfg)
     s = State(-2, 2, (), 0, 0, 0, (), 0, 0, 0)          # no enemy wave on the lane
     assert legal_actions(s, 0, cfg) == (SP, SH)
-    s = State(-4, 2, (), 0, 0, 2, (), 0, 0, 0)          # enemy wave at the river: legal in v1
+    s = State(-4, 2, (), 0, 0, 2, (), 0, 0, 0)          # enemy wave at the lane: legal in v1
     assert F in legal_actions(s, 0, cfg)
 
 

@@ -117,8 +117,8 @@ def test_queued_packets_push_with_the_front(rev_cfg):
 
 def test_reachable_state_space_is_bounded():
     """No reachable state is first visited after turn 64 of a 96-turn game: the set of distinct lane states
-    saturates, so the solver's cost grows only linearly with the horizon."""
-    g = LaneGame(GameConfig(horizon=96))
+    saturates, so the solver's cost grows only linearly with the horizon (previous revision)."""
+    g = LaneGame(GameConfig.v2(horizon=96))
     layers = g.reachable()
     early = set().union(*layers[:64])
     late = set().union(*layers[64:])

@@ -2,8 +2,8 @@
 
 import pytest
 
-from lanegame import (CONTEST, F, F_C, F_S, SAFE, SH, SH_C, SH_S, SP, SP_C, SP_S, GameConfig, LaneGame, act,
-                      posture_of, wave_of)
+from lanegame import (CONTEST, F, F_C, F_S, PRESSURE, SAFE, SH, SH_C, SH_S, SP, SP_C, SP_S, GameConfig, LaneGame,
+                      act, base_of, objective_of, posture_of, wave_of)
 from lanegame.game import champion_exposure, gank_probability, turn_gank_probabilities
 from lanegame.mechanics import legal_actions, step_turn
 from lanegame.state import State
@@ -28,7 +28,7 @@ def test_legal_action_sets(rev_game, rev_layers):
 def test_revised_freeze_legality(rev_cfg):
     cfg = rev_cfg
     W = cfg.wave_hp
-    assert F_C not in legal_actions(State(-4, W, (), 0, 0, W, (), 0, 0, 0), 0, cfg)   # enemy at the river
+    assert F_C not in legal_actions(State(-4, W, (), 0, 0, W, (), 0, 0, 0), 0, cfg)   # enemy at the lane
     assert F_C in legal_actions(State(-4, W, (), 0, 1, W, (), 0, 0, 0), 0, cfg)       # enemy at own -1
     assert F_C in legal_actions(State(-3, W, (), 0, 2, W, (), 0, 0, 0), 0, cfg)       # enemy contesting own tower
     assert F_C not in legal_actions(State(-4, W, (), 0, 0, 0, (), 0, 0, 0), 0, cfg)   # no enemy wave
@@ -42,23 +42,23 @@ def test_action_encoding():
     assert (SP_C, SH_C, F_C, SP_S, SH_S, F_S) == (0, 1, 2, 3, 4, 5)
 
 
-def test_joint_actions_are_simultaneous(rev_game, rev_solution):
+def test_joint_actions_are_simultaneous(solution):
     """Every stage game is a full |A_s| x |B_s| matrix: each player's payoff depends on both current choices."""
-    for k, layer in enumerate(rev_solution.layers):
+    for k, layer in enumerate(solution.layers):
         for s in layer:
-            la, lb = rev_solution.legal[k][s]
-            assert rev_solution.Q[k][s].shape == (len(la), len(lb))
+            la, lb = solution.legal[k][s]
+            assert solution.Q[k][s].shape == (len(la), len(lb))
 
 
-def test_safe_never_raises_gank_risk(rev_game, rev_layers):
-    """For the same wave action and the same opponent action, Safe is never riskier than Contest."""
-    cfg = rev_game.cfg
-    for k, s, a, b in all_transitions(rev_game, rev_layers):
+def test_safe_never_raises_gank_risk(econ_game, econ_layers):
+    """For the same wave action and the same opponent action, Safe is never riskier than Contest
+    (with any siege objective)."""
+    for k, s, a, b in all_transitions(econ_game, econ_layers):
         if posture_of(a) != CONTEST:
             continue
         safe = act(wave_of(a), SAFE)
-        pc = rev_game.transition(s, k, a, b).gank_p[0]
-        ps = rev_game.transition(s, k, safe, b).gank_p[0]
+        pc = econ_game.transition(s, k, a, b).gank_p[0]
+        ps = econ_game.transition(s, k, safe, b).gank_p[0]
         assert ps <= pc + 1e-15
 
 
@@ -71,20 +71,22 @@ def test_safe_exposure_is_capped_and_contest_follows_the_wave(rev_cfg):
     assert champion_exposure(r.exposure[0], SP_S, cfg) <= -1           # Safe walks away
 
 
-def test_minions_move_and_fight_the_same_under_safe(rev_game, rev_layers):
+def test_minions_move_and_fight_the_same_under_safe(econ_game, econ_layers):
     """Positioning changes the champion, not the minions: with Slow Push or Freeze (no champion damage)
-    the lane evolves identically under Contest and Safe."""
-    cfg = rev_game.cfg
-    for k, s, a, b in all_transitions(rev_game, rev_layers):
-        if wave_of(a) == SH or posture_of(a) != CONTEST:
+    the lane evolves identically under Contest and Safe. Apply Pressure (thinning, plates) and Establish
+    Vision (the timer) are the only Contest-specific effects in the siege model."""
+    cfg = econ_game.cfg
+    for k, s, a, b in all_transitions(econ_game, econ_layers):
+        if wave_of(a) == SH or posture_of(a) != CONTEST or objective_of(a) == PRESSURE:
             continue
         r1 = step_turn(s, k, a, b, cfg)
         r2 = step_turn(s, k, act(wave_of(a), SAFE), b, cfg)
-        assert r1.state == r2.state and r1.kills == r2.kills
+        lane = lambda st: st._replace(va=0, vb=0)
+        assert lane(r1.state) == lane(r2.state) and r1.kills == r2.kills
 
 
 def test_contest_adds_pressure_beyond_the_safe_line(rev_cfg):
-    """Shove + Contest kills enemy minions at the river faster than Shove + Safe (champion damage needs presence)."""
+    """Shove + Contest kills enemy minions at the lane faster than Shove + Safe (champion damage needs presence)."""
     cfg = rev_cfg
     g = LaneGame(cfg)
     s = g.initial_state()
@@ -103,16 +105,16 @@ def test_safe_shove_still_helps_near_own_tower(rev_cfg):
     """A Safe champion standing at its safe line still adds shove damage to a fight there."""
     cfg = rev_cfg
     W = cfg.wave_hp
-    s = State(-1, W, (), 0, 0, W, (), 0, 0, 0)            # A wave at own -1, B wave at the river: in contact
+    s = State(-1, W, (), 0, 0, W, (), 0, 0, 0)            # A wave at own -1, B wave at the lane: in contact
     r_safe = step_turn(s, 3, SH_S, SP_C, cfg)
     r_sp = step_turn(s, 3, SP_S, SP_C, cfg)
     assert r_safe.events["killed_hp"][1] > r_sp.events["killed_hp"][1]
 
 
-def test_positioning_is_symmetric(rev_game, rev_layers):
-    for k, s, a, b in list(all_transitions(rev_game, rev_layers))[:20000]:
-        tr = rev_game.transition(s, k, a, b)
-        trm = rev_game.transition(s.mirror(), k, b, a)
+def test_positioning_is_symmetric(econ_game, econ_layers):
+    for k, s, a, b in list(all_transitions(econ_game, econ_layers))[:20000]:
+        tr = econ_game.transition(s, k, a, b)
+        trm = econ_game.transition(s.mirror(), k, b, a)
         assert trm.gank_p == tr.gank_p[::-1] and trm.exposure == tr.exposure[::-1]
 
 

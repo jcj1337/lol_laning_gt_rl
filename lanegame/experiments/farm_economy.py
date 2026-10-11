@@ -23,7 +23,7 @@ def run(horizon: int = K) -> dict:
     res = {}
     for phi in SCALES:
         print("farm_per_hp", phi, flush=True)
-        cfg = GameConfig(horizon=horizon, farm_per_hp=phi)
+        cfg = GameConfig.v2(horizon=horizon, farm_per_hp=phi)
         g, layers, sol, secs = solve(cfg)
         d = eq_summary(g, sol)
         d["seconds"] = secs

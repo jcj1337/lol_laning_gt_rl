@@ -1,0 +1,229 @@
+{
+ "stage_games_vs_support_enumeration": {
+  "games": 172907,
+  "max_abs_diff": 3.552713678800501e-15,
+  "seconds": 106.68195790005848,
+  "methods": {
+   "saddle": 164777,
+   "lp": 8130
+  },
+  "max_gap": 4.440892098500626e-15,
+  "choice_games": 0
+ },
+ "tree_minimax": [
+  {
+   "root": "symmetric start",
+   "depth": 2,
+   "backward_induction": 0.0,
+   "tree_minimax": 0.0,
+   "abs_diff": 0.0,
+   "seconds": 0.01932770013809204
+  },
+  {
+   "root": "A 2-wave packet near B's tower",
+   "depth": 3,
+   "backward_induction": -1.0375,
+   "tree_minimax": -1.0375,
+   "abs_diff": 0.0,
+   "seconds": 1.0000191999133676
+  },
+  {
+   "root": "A's 9-HP mass under B's tower, 3 plates",
+   "depth": 3,
+   "backward_induction": 1.3299999999999994,
+   "tree_minimax": 1.3299999999999994,
+   "abs_diff": 0.0,
+   "seconds": 1.0251758999656886
+  },
+  {
+   "root": "... with vision, B's waiting wave stacked",
+   "depth": 2,
+   "backward_induction": 1.0199999999999996,
+   "tree_minimax": 1.0199999999999996,
+   "abs_diff": 0.0,
+   "seconds": 0.043647099984809756
+  },
+  {
+   "root": "both sides sieging",
+   "depth": 2,
+   "backward_induction": 0.0,
+   "tree_minimax": 0.0,
+   "abs_diff": 0.0,
+   "seconds": 0.09605629998259246
+  }
+ ],
+ "equilibrium_exploitability": [
+  {
+   "K": 16,
+   "expl_A": 0.0,
+   "expl_B": 0.0,
+   "max_gap": 8.881784197001252e-16,
+   "max_antisymmetry": 8.881784197001252e-16,
+   "nodes": 4951
+  },
+  {
+   "K": 24,
+   "expl_A": 0.0,
+   "expl_B": 0.0,
+   "max_gap": 3.552713678800501e-15,
+   "max_antisymmetry": 1.7763568394002505e-15,
+   "nodes": 36891
+  },
+  {
+   "K": 32,
+   "expl_A": 0.0,
+   "expl_B": 0.0,
+   "max_gap": 4.440892098500626e-15,
+   "max_antisymmetry": 3.552713678800501e-15,
+   "nodes": 172907
+  }
+ ],
+ "monte_carlo": [
+  {
+   "A": "equilibrium",
+   "B": "equilibrium",
+   "exact": 0.0,
+   "mc_mean": 0.30125,
+   "mc_stderr": 0.25794598977845284,
+   "z": 1.167880145214665
+  },
+  {
+   "A": "equilibrium",
+   "B": "uniform",
+   "exact": 9.600487481968607,
+   "mc_mean": 9.216873750000001,
+   "mc_stderr": 0.2523365572859663,
+   "z": -1.5202463570661544
+  },
+  {
+   "A": "aggressive",
+   "B": "equilibrium",
+   "exact": -24.46750000000001,
+   "mc_mean": -24.73375,
+   "mc_stderr": 0.2567073709069231,
+   "z": -1.0371731791703371
+  },
+  {
+   "A": "freeze_contest",
+   "B": "equilibrium",
+   "exact": -2.8699999999999988,
+   "mc_mean": -2.902500000000004,
+   "mc_stderr": 0.24703072578602564,
+   "z": -0.13156258152338549
+  },
+  {
+   "A": "passive_safe",
+   "B": "equilibrium",
+   "exact": -2.8699999999999988,
+   "mc_mean": -2.8800000000000034,
+   "mc_stderr": 0.24956145581811612,
+   "z": -0.04007029037085283
+  },
+  {
+   "A": "stack_builder",
+   "B": "equilibrium",
+   "exact": -0.3199999999999998,
+   "mc_mean": -0.20499999999999874,
+   "mc_stderr": 0.2603985322518153,
+   "z": 0.44163075346673486
+  },
+  {
+   "A": "release_safe",
+   "B": "equilibrium",
+   "exact": -2.799999999999999,
+   "mc_mean": -3.0462500000000037,
+   "mc_stderr": 0.25048888728851576,
+   "z": -0.9830775435413682
+  },
+  {
+   "A": "contest_slowpush",
+   "B": "equilibrium",
+   "exact": -0.3199999999999998,
+   "mc_mean": 0.07000000000000114,
+   "mc_stderr": 0.26158355546387524,
+   "z": 1.4909194093199027
+  },
+  {
+   "A": "aggressive[vision]",
+   "B": "equilibrium",
+   "exact": -24.46750000000001,
+   "mc_mean": -24.905,
+   "mc_stderr": 0.2588166966370497,
+   "z": -1.6903855341818184
+  },
+  {
+   "A": "stack_builder[vision]",
+   "B": "equilibrium",
+   "exact": -0.3199999999999998,
+   "mc_mean": -0.36874999999999863,
+   "mc_stderr": 0.2647222371186094,
+   "z": -0.18415528869286601
+  },
+  {
+   "A": "contest_slowpush[vision]",
+   "B": "equilibrium",
+   "exact": -0.3199999999999998,
+   "mc_mean": -0.8024999999999987,
+   "mc_stderr": 0.25931854921118014,
+   "z": -1.8606459178015353
+  },
+  {
+   "A": "stack_builder[safe]",
+   "B": "equilibrium",
+   "exact": -0.3199999999999998,
+   "mc_mean": -0.25749999999999873,
+   "mc_stderr": 0.2636774163300123,
+   "z": 0.23703205556966458
+  },
+  {
+   "A": "aggressive[safe]",
+   "B": "equilibrium",
+   "exact": -24.46750000000001,
+   "mc_mean": -25.0925,
+   "mc_stderr": 0.26134546172181894,
+   "z": -2.3914706453378356
+  }
+ ],
+ "v2_reproduction": {
+  "nodes": 14849,
+  "mixed": 1030,
+  "distinct": 2480,
+  "exploitability": {
+   "uniform": 10.078337909045308,
+   "aggressive": 24.86250000000002,
+   "freeze_contest": 9.445000000000004,
+   "passive_safe": 9.415000000000004,
+   "stack_builder": 5.782499999999996,
+   "release_safe": 7.690000000000004,
+   "contest_slowpush": 6.589999999999999
+  }
+ },
+ "v1_reproduction": {
+  "nodes": 905,
+  "mixed": 52,
+  "exploitability": {
+   "uniform": 11.860403464012775,
+   "always_shove": 19.45,
+   "always_slowpush": 4.850000000000003,
+   "defensive_freeze": 1.8499999999999952,
+   "stack_then_shove": 4.850000000000003
+  }
+ },
+ "accounting": {
+  "horizon": 24,
+  "transitions": 894272,
+  "violations": {
+   "hp": 0,
+   "payoff": 0,
+   "plates": 0,
+   "kills": 0
+  }
+ },
+ "environment": {
+  "python": "3.13.9",
+  "numpy": "2.5.3",
+  "scipy": "1.18.1",
+  "platform": "Windows-11-10.0.26200-SP0",
+  "timestamp": "2026-10-11 01:37:23"
+ }
+}

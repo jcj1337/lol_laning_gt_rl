@@ -35,8 +35,8 @@ GRID = {
 
 def probes(W: int):
     return {
-        "A 2-stack at river": (State(0, 3 * W, (-4,), 0, -4, W, (), 0, 0, 0), 10),
-        "A one wave at river": (State(0, W, (-4,), 0, -4, W, (), 0, 0, 0), 10),
+        "A 2-stack at lane": (State(0, 3 * W, (-4,), 0, -4, W, (), 0, 0, 0), 10),
+        "A one wave at lane": (State(0, W, (-4,), 0, -4, W, (), 0, 0, 0), 10),
     }
 
 
@@ -79,8 +79,8 @@ def run(horizon: int = 32) -> dict:
     md = [f"# One-at-a-time sensitivity (horizon {horizon})", "",
           "Vision share = fraction of crash-choice nodes (small/medium/large) where the equilibrium takes vision.",
           "Exploitability columns are per decision turn. `wave_hp=3` rescales the freeze threshold proportionally.", "",
-          md_table(["setting", "states", "mixed", "eq crashes", "vision S/M/L", "V(A 2-stack @river)",
-                    "V(A 1 wave @river)"] + [f"expl {b.name}" for b in all_baselines()], rows)]
+          md_table(["setting", "states", "mixed", "eq crashes", "vision S/M/L", "V(A 2-stack @lane)",
+                    "V(A 1 wave @lane)"] + [f"expl {b.name}" for b in all_baselines()], rows)]
     save("sensitivity", {"horizon": horizon, "results": res}, "\n".join(md))
     return res
 

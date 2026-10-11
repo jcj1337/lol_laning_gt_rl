@@ -1,22 +1,26 @@
-"""Game layer: payoffs, farming, gank risk, crash-reward choices and reachable states.
+"""Game layer: payoffs, farming, plates, gank risk, crash-reward choices and reachable states.
 
 One decision turn k consists of two stages:
 
   MOVE stage    both players simultaneously pick a combined action
-                (wave management, positioning) from their legal sets; the lane
-                advances deterministically (mechanics), minions killed during
-                the turn are farmed with state- and action-dependent collection
-                efficiencies, and each player suffers an independent gank check
-                (expected loss L * p).
-  CHOICE stage  if a side crashed during the turn it picks one reward option
-                for the crash size (resources vs. vision). If both crashed the
-                choices are simultaneous. Choices are publicly observed before
-                turn k+1.
+                (wave management, positioning, siege objective) from their legal
+                sets; the lane advances deterministically (mechanics), minions
+                killed during the turn are farmed with state- and action-dependent
+                collection efficiencies, Apply Pressure claims tower plates, and
+                each player suffers an independent gank check (expected loss L * p)
+                using the vision it held at the START of the turn.
+  CHOICE stage  ("choice" siege mode only, i.e. the previous revision) if a side
+                crashed during the turn it picks one reward option for the crash
+                size (resources vs. vision). If both crashed the choices are
+                simultaneous. Choices are publicly observed before turn k+1.
+                In "objective" mode every crash has the single trivial option
+                (0 resources, no vision): the value of a crash comes from the
+                siege decisions of the following turns.
 
 All payoffs are written from player A's point of view; B receives the negative
 (zero-sum relative resource advantage):
 
-  r_k = (farm_A - farm_B) + (crash_A - crash_B) - L * (p_A - p_B)
+  r_k = (farm_A - farm_B) + (plates_A - plates_B) + (crash_A - crash_B) - L * (p_A - p_B)
 """
 
 from __future__ import annotations
@@ -24,7 +28,7 @@ from __future__ import annotations
 from dataclasses import dataclass
 from typing import Dict, Iterable, List, Tuple
 
-from .config import CONTEST, SAFE, GameConfig, posture_of
+from .config import CONTEST, PRESSURE, SAFE, VISION, GameConfig, base_of, objective_of, posture_of
 from .mechanics import TurnResult, initial_state, legal_actions, step_turn
 from .state import State
 
@@ -33,18 +37,19 @@ A, B = 0, 1
 
 # ---------------------------------------------------------------- gank model
 def gank_probability(state: State, s: int, action: int, cfg: GameConfig, exposure: int) -> float:
-    """p_s = clip(b0 + b_pos*(e+T)/(2T) + b_act[a] - b_str*dsigma, 0, p_max) * (1 - rho*[v_s > 0]).
+    """p_s = clip(b0 + b_pos*(e+T)/(2T) + b_act[base a] - b_str*dsigma, 0, p_max) * (1 - rho*[v_s > 0]).
 
     e is side s's champion exposure for the turn (champion_exposure), clipped to
     [-T, T]. dsigma is the stack difference of the two leading waves at the start
-    of the turn.
+    of the turn. v_s is the vision timer at the START of the turn: vision
+    established during this turn never protects this turn.
     """
     own_h = state.ah if s == A else state.bh
     opp_h = state.bh if s == A else state.ah
     dsig = cfg.stacks(own_h) - cfg.stacks(opp_h)
     p = (cfg.gank_base
          + cfg.gank_position * (exposure + cfg.tower) / (2 * cfg.tower)
-         + cfg.gank_action[action]
+         + cfg.gank_action[base_of(action)]
          - cfg.gank_strength * dsig)
     p = min(max(p, 0.0), cfg.gank_max)
     v = state.va if s == A else state.vb
@@ -55,7 +60,7 @@ def gank_probability(state: State, s: int, action: int, cfg: GameConfig, exposur
 
 def champion_exposure(reach: int, action: int, cfg: GameConfig) -> int:
     """Contest: the champion is where its wave goes (reach). Safe: it stops at the safe line."""
-    cap = cfg.posture_cap[action]
+    cap = cfg.posture_cap[base_of(action)]
     return reach if cap is None else min(reach, cap)
 
 
@@ -69,6 +74,8 @@ def collection_efficiency(x: int, posture: int, opp_posture: int, cfg: GameConfi
     """Share of a farm opportunity at own-perspective position x that a player collects.
 
     c = base(posture, x) * (1 - zone(opp_posture, x)); see GameConfig for the terms.
+    Positions beyond the enemy tower (x > T, e.g. thinned minions standing behind it) count
+    as "under the enemy tower".
     """
     T = cfg.tower
     if posture == CONTEST:
@@ -99,10 +106,15 @@ def turn_farm(res: TurnResult, a: int, b: int, cfg: GameConfig):
 
 
 # ----------------------------------------------------------- crash choices
+TRIVIAL = ((0.0, False),)
+
+
 def crash_options(crash_hp: int, cfg: GameConfig) -> Tuple[Tuple[float, bool], ...]:
-    """Reward options (resources, vision) available after a crash of total HP crash_hp."""
-    if crash_hp <= 0:
-        return ((0.0, False),)
+    """Reward options (resources, vision) available after a crash of total HP crash_hp.
+
+    "objective" siege mode: always the single trivial option (a crash pays nothing by itself)."""
+    if crash_hp <= 0 or cfg.objectives:
+        return TRIVIAL
     return cfg.crash_options[cfg.size_category(crash_hp)]
 
 
@@ -111,14 +123,16 @@ def apply_choice(state: State, opt_a: Tuple[float, bool], opt_b: Tuple[float, bo
     """Apply crash-reward choices; return (next state, payoff to A)."""
     va = cfg.vision_turns if opt_a[1] else state.va
     vb = cfg.vision_turns if opt_b[1] else state.vb
+    if (va, vb) == (state.va, state.vb):
+        return state, opt_a[0] - opt_b[0]
     return state._replace(va=va, vb=vb), opt_a[0] - opt_b[0]
 
 
-@dataclass(frozen=True)
+@dataclass(frozen=True, slots=True)
 class Transition:
     """Outcome of a MOVE-stage joint action, before the CHOICE stage."""
-    pre_state: State                    # lane after the turn, vision counted down
-    payoff: float                       # immediate expected payoff to A: farm_payoff + gank_payoff
+    pre_state: State                    # lane after the turn, vision counted down / set, plates deducted
+    payoff: float                       # immediate expected payoff to A: farm + plates + gank
     gank_payoff: float                  # expected gank payoff to A: L * (p_B - p_A)
     farm_payoff: float                  # farm_A - farm_B (collected)
     gank_p: Tuple[float, float]         # gank probabilities (p_A, p_B) for this turn
@@ -128,6 +142,11 @@ class Transition:
     options_b: Tuple[Tuple[float, bool], ...]
     crash_hp: Tuple[int, int]
     exposure: Tuple[int, int]           # champion exposure positions used by the gank model
+    plate_payoff: float = 0.0           # plates_A - plates_B in resources
+    plates: Tuple[float, float] = (0.0, 0.0)      # plate income (A, B), resources
+    thinned: Tuple[int, int] = (0, 0)   # enemy HP thinned by (A, B)
+    vision_set: Tuple[bool, bool] = (False, False)
+    objectives: Tuple[int, int] = (0, 0)          # siege objective of (A, B) this turn
 
     def choice_outcomes(self, cfg: GameConfig):
         """Yield (i, j, next_state, crash payoff to A) for every option pair."""
@@ -144,6 +163,7 @@ class LaneGame:
         cfg.validate()
         self.cfg = cfg
         self._cache: Dict[tuple, Transition] = {}
+        self._intern: Dict[State, State] = {}        # one State object per distinct state (memory)
 
     @property
     def horizon(self) -> int:
@@ -166,16 +186,21 @@ class LaneGame:
                 raise ValueError(f"illegal joint action ({a}, {b}) in {state}")
             cfg = self.cfg
             res: TurnResult = step_turn(state, k, a, b, cfg)
+            res.state = self._intern.setdefault(res.state, res.state)
             pa, pb = turn_gank_probabilities(state, a, b, res, cfg)
             avail, coll = turn_farm(res, a, b, cfg)
             gank = cfg.gank_loss * (pb - pa)
             farm = coll[A] - coll[B]
-            tr = Transition(res.state, farm + gank, gank, farm, (pa, pb), coll, avail,
+            plates = (cfg.plate_value * res.plates[A], cfg.plate_value * res.plates[B])
+            plate = plates[A] - plates[B]
+            tr = Transition(res.state, farm + plate + gank, gank, farm, (pa, pb), coll, avail,
                             crash_options(res.crash_hp[A], cfg),
                             crash_options(res.crash_hp[B], cfg),
                             res.crash_hp,
                             (champion_exposure(res.exposure[A], a, cfg),
-                             champion_exposure(res.exposure[B], b, cfg)))
+                             champion_exposure(res.exposure[B], b, cfg)),
+                            plate, plates, res.thinned, res.vision_set,
+                            (objective_of(a), objective_of(b)))
             self._cache[key] = tr
         return tr
 

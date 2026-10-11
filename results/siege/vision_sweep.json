@@ -1,0 +1,1488 @@
+{
+ "horizon": 24,
+ "results": {
+  "rho 0.5, 4 turns": {
+   "rho": 0.5,
+   "V": 4,
+   "nodes": 27549,
+   "mixed": 1372,
+   "solve_s": 9.77983079990372,
+   "enumerate_s": 27.821609999984503,
+   "value": 0.0,
+   "node_avg": {
+    "nodes": 27549,
+    "contest": 0.7758972421782816,
+    "siege_nodes": 5331,
+    "p_pressure": 0.6382806971771485,
+    "p_vision": 0.33275467558453103,
+    "p_disengage": 0.02896462723832051
+   },
+   "vision_value_vs_safe": 1.6031468728519775,
+   "vision_value_vs_pressure": 0.8872651962118516,
+   "siege_nodes_no_vision": 787,
+   "p_vision_no_vision_nodes": 0.9393737398225351,
+   "p_vision_with_vision_nodes": 0.42562328193497345,
+   "p_pressure_under_vision": 0.7692211455622008,
+   "proactive_vision_share": 0.40559916212170877,
+   "paths": {
+    "stack_builder": {
+     "baseline": {
+      "vision_turns_set": 0.0,
+      "pressure_turns": 0.0,
+      "siege_turns": 0.0,
+      "protected_turns": 0.0,
+      "p_contest_protected": null,
+      "p_contest_unprotected": 1.0,
+      "plates": 0.0,
+      "thinned_hp": 0.0
+     },
+     "best_response": {
+      "vision_turns_set": 3.0,
+      "pressure_turns": 5.0,
+      "siege_turns": 8.0,
+      "protected_turns": 11.0,
+      "p_contest_protected": 1.0,
+      "p_contest_unprotected": 0.6153846153846154,
+      "plates": 5.0,
+      "thinned_hp": 5.0
+     }
+    },
+    "contest_slowpush": {
+     "baseline": {
+      "vision_turns_set": 0.0,
+      "pressure_turns": 0.0,
+      "siege_turns": 0.0,
+      "protected_turns": 0.0,
+      "p_contest_protected": null,
+      "p_contest_unprotected": 1.0,
+      "plates": 0.0,
+      "thinned_hp": 0.0
+     },
+     "best_response": {
+      "vision_turns_set": 3.0,
+      "pressure_turns": 3.0,
+      "siege_turns": 6.0,
+      "protected_turns": 12.0,
+      "p_contest_protected": 1.0,
+      "p_contest_unprotected": 0.6666666666666666,
+      "plates": 3.0,
+      "thinned_hp": 3.0
+     }
+    },
+    "passive_safe": {
+     "baseline": {
+      "vision_turns_set": 0.0,
+      "pressure_turns": 0.0,
+      "siege_turns": 0.0,
+      "protected_turns": 0.0,
+      "p_contest_protected": null,
+      "p_contest_unprotected": 0.0,
+      "plates": 0.0,
+      "thinned_hp": 0.0
+     },
+     "best_response": {
+      "vision_turns_set": 3.0,
+      "pressure_turns": 3.0,
+      "siege_turns": 6.0,
+      "protected_turns": 12.0,
+      "p_contest_protected": 1.0,
+      "p_contest_unprotected": 0.6666666666666666,
+      "plates": 3.0,
+      "thinned_hp": 3.0
+     }
+    },
+    "stack_builder[vision]": {
+     "baseline": {
+      "vision_turns_set": 0.0,
+      "pressure_turns": 0.0,
+      "siege_turns": 0.0,
+      "protected_turns": 0.0,
+      "p_contest_protected": null,
+      "p_contest_unprotected": 1.0,
+      "plates": 0.0,
+      "thinned_hp": 0.0
+     },
+     "best_response": {
+      "vision_turns_set": 3.0,
+      "pressure_turns": 5.0,
+      "siege_turns": 8.0,
+      "protected_turns": 11.0,
+      "p_contest_protected": 1.0,
+      "p_contest_unprotected": 0.6153846153846154,
+      "plates": 5.0,
+      "thinned_hp": 5.0
+     }
+    },
+    "aggressive": {
+     "baseline": {
+      "vision_turns_set": 0.0,
+      "pressure_turns": 0.0,
+      "siege_turns": 0.0,
+      "protected_turns": 0.0,
+      "p_contest_protected": null,
+      "p_contest_unprotected": 1.0,
+      "plates": 0.0,
+      "thinned_hp": 0.0
+     },
+     "best_response": {
+      "vision_turns_set": 0.0,
+      "pressure_turns": 0.0,
+      "siege_turns": 0.0,
+      "protected_turns": 0.0,
+      "p_contest_protected": null,
+      "p_contest_unprotected": 0.9166666666666666,
+      "plates": 0.0,
+      "thinned_hp": 0.0
+     }
+    }
+   },
+   "exploitability": {
+    "stack_builder": 5.404999999999997,
+    "contest_slowpush": 6.136249999999998,
+    "passive_safe": 8.114999999999997,
+    "stack_builder[vision]": 5.404999999999997,
+    "aggressive": 18.002500000000005
+   },
+   "strategy_full_wave": {
+    "found": true,
+    "turns_after_vision": 4,
+    "pressure_turn": 12
+   },
+   "strategy_medium": {
+    "found": true,
+    "turns_after_vision": 4,
+    "pressure_turn": 18
+   },
+   "post_crash_probe": {
+    "value": 1.8074999999999986,
+    "A": {
+     "SP-C+V": 1.0
+    },
+    "best": {
+     "pressure": 1.4149999999999987,
+     "vision": 1.8074999999999986,
+     "safe": 1.3599999999999985
+    }
+   }
+  },
+  "rho 0.5, 6 turns": {
+   "rho": 0.5,
+   "V": 6,
+   "nodes": 36891,
+   "mixed": 1850,
+   "solve_s": 11.919304500101134,
+   "enumerate_s": 28.980624599847943,
+   "value": 0.0,
+   "node_avg": {
+    "nodes": 36891,
+    "contest": 0.7723893570504059,
+    "siege_nodes": 6318,
+    "p_pressure": 0.6827757462589561,
+    "p_vision": 0.2735645829027241,
+    "p_disengage": 0.04365967083832006
+   },
+   "vision_value_vs_safe": 1.933992005607935,
+   "vision_value_vs_pressure": 1.2070761793909037,
+   "siege_nodes_no_vision": 794,
+   "p_vision_no_vision_nodes": 0.9659949622166247,
+   "p_vision_with_vision_nodes": 0.3112902397047841,
+   "p_pressure_under_vision": 0.8079122944598678,
+   "proactive_vision_share": 0.45763877463980174,
+   "paths": {
+    "stack_builder": {
+     "baseline": {
+      "vision_turns_set": 0.0,
+      "pressure_turns": 0.0,
+      "siege_turns": 0.0,
+      "protected_turns": 0.0,
+      "p_contest_protected": null,
+      "p_contest_unprotected": 1.0,
+      "plates": 0.0,
+      "thinned_hp": 0.0
+     },
+     "best_response": {
+      "vision_turns_set": 2.0,
+      "pressure_turns": 3.0,
+      "siege_turns": 5.0,
+      "protected_turns": 12.0,
+      "p_contest_protected": 0.9166666666666666,
+      "p_contest_unprotected": 0.5,
+      "plates": 3.0,
+      "thinned_hp": 3.0
+     }
+    },
+    "contest_slowpush": {
+     "baseline": {
+      "vision_turns_set": 0.0,
+      "pressure_turns": 0.0,
+      "siege_turns": 0.0,
+      "protected_turns": 0.0,
+      "p_contest_protected": null,
+      "p_contest_unprotected": 1.0,
+      "plates": 0.0,
+      "thinned_hp": 0.0
+     },
+     "best_response": {
+      "vision_turns_set": 3.0,
+      "pressure_turns": 3.0,
+      "siege_turns": 6.0,
+      "protected_turns": 15.0,
+      "p_contest_protected": 0.9333333333333333,
+      "p_contest_unprotected": 0.6666666666666666,
+      "plates": 3.0,
+      "thinned_hp": 3.0
+     }
+    },
+    "passive_safe": {
+     "baseline": {
+      "vision_turns_set": 0.0,
+      "pressure_turns": 0.0,
+      "siege_turns": 0.0,
+      "protected_turns": 0.0,
+      "p_contest_protected": null,
+      "p_contest_unprotected": 0.0,
+      "plates": 0.0,
+      "thinned_hp": 0.0
+     },
+     "best_response": {
+      "vision_turns_set": 3.0,
+      "pressure_turns": 3.0,
+      "siege_turns": 6.0,
+      "protected_turns": 15.0,
+      "p_contest_protected": 0.9333333333333333,
+      "p_contest_unprotected": 0.6666666666666666,
+      "plates": 3.0,
+      "thinned_hp": 3.0
+     }
+    },
+    "stack_builder[vision]": {
+     "baseline": {
+      "vision_turns_set": 0.0,
+      "pressure_turns": 0.0,
+      "siege_turns": 0.0,
+      "protected_turns": 0.0,
+      "p_contest_protected": null,
+      "p_contest_unprotected": 1.0,
+      "plates": 0.0,
+      "thinned_hp": 0.0
+     },
+     "best_response": {
+      "vision_turns_set": 2.0,
+      "pressure_turns": 3.0,
+      "siege_turns": 5.0,
+      "protected_turns": 12.0,
+      "p_contest_protected": 0.9166666666666666,
+      "p_contest_unprotected": 0.5,
+      "plates": 3.0,
+      "thinned_hp": 3.0
+     }
+    },
+    "aggressive": {
+     "baseline": {
+      "vision_turns_set": 0.0,
+      "pressure_turns": 0.0,
+      "siege_turns": 0.0,
+      "protected_turns": 0.0,
+      "p_contest_protected": null,
+      "p_contest_unprotected": 1.0,
+      "plates": 0.0,
+      "thinned_hp": 0.0
+     },
+     "best_response": {
+      "vision_turns_set": 0.0,
+      "pressure_turns": 0.0,
+      "siege_turns": 0.0,
+      "protected_turns": 0.0,
+      "p_contest_protected": null,
+      "p_contest_unprotected": 0.9166666666666666,
+      "plates": 0.0,
+      "thinned_hp": 0.0
+     }
+    }
+   },
+   "exploitability": {
+    "stack_builder": 6.993749999999999,
+    "contest_slowpush": 7.373749999999997,
+    "passive_safe": 9.3525,
+    "stack_builder[vision]": 6.993749999999999,
+    "aggressive": 18.002500000000005
+   },
+   "strategy_full_wave": {
+    "found": true,
+    "turns_after_vision": 4,
+    "pressure_turn": 12
+   },
+   "strategy_medium": {
+    "found": true,
+    "turns_after_vision": 4,
+    "pressure_turn": 18
+   },
+   "post_crash_probe": {
+    "value": 3.2195296167247376,
+    "A": {
+     "SP-C+V": 1.0
+    },
+    "best": {
+     "pressure": 2.544529616724737,
+     "vision": 3.2195296167247376,
+     "safe": 2.5324999999999984
+    }
+   }
+  },
+  "rho 0.5, 8 turns": {
+   "rho": 0.5,
+   "V": 8,
+   "nodes": 46893,
+   "mixed": 2421,
+   "solve_s": 17.019794600084424,
+   "enumerate_s": 37.500445700017735,
+   "value": 0.0,
+   "node_avg": {
+    "nodes": 46893,
+    "contest": 0.7666602464549566,
+    "siege_nodes": 7901,
+    "p_pressure": 0.6843373386739617,
+    "p_vision": 0.25965850246259825,
+    "p_disengage": 0.056004158863439533
+   },
+   "vision_value_vs_safe": 2.1026361721927254,
+   "vision_value_vs_pressure": 1.3743180159868555,
+   "siege_nodes_no_vision": 816,
+   "p_vision_no_vision_nodes": 0.9745809614168248,
+   "p_vision_with_vision_nodes": 0.2878024193548387,
+   "p_pressure_under_vision": 0.783637259912051,
+   "proactive_vision_share": 0.45728339673026447,
+   "paths": {
+    "stack_builder": {
+     "baseline": {
+      "vision_turns_set": 0.0,
+      "pressure_turns": 0.0,
+      "siege_turns": 0.0,
+      "protected_turns": 0.0,
+      "p_contest_protected": null,
+      "p_contest_unprotected": 1.0,
+      "plates": 0.0,
+      "thinned_hp": 0.0
+     },
+     "best_response": {
+      "vision_turns_set": 2.0,
+      "pressure_turns": 2.0,
+      "siege_turns": 4.0,
+      "protected_turns": 15.0,
+      "p_contest_protected": 0.8666666666666667,
+      "p_contest_unprotected": 0.6666666666666666,
+      "plates": 2.0,
+      "thinned_hp": 2.0
+     }
+    },
+    "contest_slowpush": {
+     "baseline": {
+      "vision_turns_set": 0.0,
+      "pressure_turns": 0.0,
+      "siege_turns": 0.0,
+      "protected_turns": 0.0,
+      "p_contest_protected": null,
+      "p_contest_unprotected": 1.0,
+      "plates": 0.0,
+      "thinned_hp": 0.0
+     },
+     "best_response": {
+      "vision_turns_set": 2.0,
+      "pressure_turns": 2.0,
+      "siege_turns": 4.0,
+      "protected_turns": 15.0,
+      "p_contest_protected": 0.8666666666666667,
+      "p_contest_unprotected": 0.6666666666666666,
+      "plates": 2.0,
+      "thinned_hp": 2.0
+     }
+    },
+    "passive_safe": {
+     "baseline": {
+      "vision_turns_set": 0.0,
+      "pressure_turns": 0.0,
+      "siege_turns": 0.0,
+      "protected_turns": 0.0,
+      "p_contest_protected": null,
+      "p_contest_unprotected": 0.0,
+      "plates": 0.0,
+      "thinned_hp": 0.0
+     },
+     "best_response": {
+      "vision_turns_set": 2.0,
+      "pressure_turns": 2.0,
+      "siege_turns": 4.0,
+      "protected_turns": 15.0,
+      "p_contest_protected": 0.8666666666666667,
+      "p_contest_unprotected": 0.6666666666666666,
+      "plates": 2.0,
+      "thinned_hp": 2.0
+     }
+    },
+    "stack_builder[vision]": {
+     "baseline": {
+      "vision_turns_set": 0.0,
+      "pressure_turns": 0.0,
+      "siege_turns": 0.0,
+      "protected_turns": 0.0,
+      "p_contest_protected": null,
+      "p_contest_unprotected": 1.0,
+      "plates": 0.0,
+      "thinned_hp": 0.0
+     },
+     "best_response": {
+      "vision_turns_set": 2.0,
+      "pressure_turns": 2.0,
+      "siege_turns": 4.0,
+      "protected_turns": 15.0,
+      "p_contest_protected": 0.8666666666666667,
+      "p_contest_unprotected": 0.6666666666666666,
+      "plates": 2.0,
+      "thinned_hp": 2.0
+     }
+    },
+    "aggressive": {
+     "baseline": {
+      "vision_turns_set": 0.0,
+      "pressure_turns": 0.0,
+      "siege_turns": 0.0,
+      "protected_turns": 0.0,
+      "p_contest_protected": null,
+      "p_contest_unprotected": 1.0,
+      "plates": 0.0,
+      "thinned_hp": 0.0
+     },
+     "best_response": {
+      "vision_turns_set": 0.0,
+      "pressure_turns": 0.0,
+      "siege_turns": 0.0,
+      "protected_turns": 0.0,
+      "p_contest_protected": null,
+      "p_contest_unprotected": 0.9166666666666666,
+      "plates": 0.0,
+      "thinned_hp": 0.0
+     }
+    }
+   },
+   "exploitability": {
+    "stack_builder": 8.241249999999997,
+    "contest_slowpush": 8.406249999999998,
+    "passive_safe": 10.489999999999998,
+    "stack_builder[vision]": 8.241249999999997,
+    "aggressive": 18.002500000000005
+   },
+   "strategy_full_wave": {
+    "found": true,
+    "turns_after_vision": 4,
+    "pressure_turn": 12
+   },
+   "strategy_medium": {
+    "found": true,
+    "turns_after_vision": 4,
+    "pressure_turn": 18
+   },
+   "post_crash_probe": {
+    "value": 3.2195296167247376,
+    "A": {
+     "SP-C+V": 1.0
+    },
+    "best": {
+     "pressure": 2.544529616724737,
+     "vision": 3.2195296167247376,
+     "safe": 2.569999999999999
+    }
+   }
+  },
+  "rho 0.75, 4 turns": {
+   "rho": 0.75,
+   "V": 4,
+   "nodes": 27549,
+   "mixed": 1536,
+   "solve_s": 12.351004499942064,
+   "enumerate_s": 23.479949499946088,
+   "value": 0.0,
+   "node_avg": {
+    "nodes": 27549,
+    "contest": 0.7928088430343507,
+    "siege_nodes": 5331,
+    "p_pressure": 0.6180620890233923,
+    "p_vision": 0.3688846567286762,
+    "p_disengage": 0.01305325424793133
+   },
+   "vision_value_vs_safe": 2.3434173303597325,
+   "vision_value_vs_pressure": 1.5759826084617918,
+   "siege_nodes_no_vision": 787,
+   "p_vision_no_vision_nodes": 0.9683496956256831,
+   "p_vision_with_vision_nodes": 0.46490561594054053,
+   "p_pressure_under_vision": 0.7658028964534986,
+   "proactive_vision_share": 0.41778830454694293,
+   "paths": {
+    "stack_builder": {
+     "baseline": {
+      "vision_turns_set": 0.0,
+      "pressure_turns": 0.0,
+      "siege_turns": 0.0,
+      "protected_turns": 0.0,
+      "p_contest_protected": null,
+      "p_contest_unprotected": 1.0,
+      "plates": 0.0,
+      "thinned_hp": 0.0
+     },
+     "best_response": {
+      "vision_turns_set": 4.0,
+      "pressure_turns": 2.0,
+      "siege_turns": 6.0,
+      "protected_turns": 15.0,
+      "p_contest_protected": 1.0,
+      "p_contest_unprotected": 0.6666666666666666,
+      "plates": 2.0,
+      "thinned_hp": 2.0
+     }
+    },
+    "contest_slowpush": {
+     "baseline": {
+      "vision_turns_set": 0.0,
+      "pressure_turns": 0.0,
+      "siege_turns": 0.0,
+      "protected_turns": 0.0,
+      "p_contest_protected": null,
+      "p_contest_unprotected": 1.0,
+      "plates": 0.0,
+      "thinned_hp": 0.0
+     },
+     "best_response": {
+      "vision_turns_set": 4.0,
+      "pressure_turns": 2.0,
+      "siege_turns": 6.0,
+      "protected_turns": 14.0,
+      "p_contest_protected": 0.9285714285714286,
+      "p_contest_unprotected": 0.7,
+      "plates": 2.0,
+      "thinned_hp": 2.0
+     }
+    },
+    "passive_safe": {
+     "baseline": {
+      "vision_turns_set": 0.0,
+      "pressure_turns": 0.0,
+      "siege_turns": 0.0,
+      "protected_turns": 0.0,
+      "p_contest_protected": null,
+      "p_contest_unprotected": 0.0,
+      "plates": 0.0,
+      "thinned_hp": 0.0
+     },
+     "best_response": {
+      "vision_turns_set": 4.0,
+      "pressure_turns": 2.0,
+      "siege_turns": 6.0,
+      "protected_turns": 14.0,
+      "p_contest_protected": 0.9285714285714286,
+      "p_contest_unprotected": 0.7,
+      "plates": 2.0,
+      "thinned_hp": 2.0
+     }
+    },
+    "stack_builder[vision]": {
+     "baseline": {
+      "vision_turns_set": 0.0,
+      "pressure_turns": 0.0,
+      "siege_turns": 0.0,
+      "protected_turns": 0.0,
+      "p_contest_protected": null,
+      "p_contest_unprotected": 1.0,
+      "plates": 0.0,
+      "thinned_hp": 0.0
+     },
+     "best_response": {
+      "vision_turns_set": 4.0,
+      "pressure_turns": 2.0,
+      "siege_turns": 6.0,
+      "protected_turns": 15.0,
+      "p_contest_protected": 1.0,
+      "p_contest_unprotected": 0.6666666666666666,
+      "plates": 2.0,
+      "thinned_hp": 2.0
+     }
+    },
+    "aggressive": {
+     "baseline": {
+      "vision_turns_set": 0.0,
+      "pressure_turns": 0.0,
+      "siege_turns": 0.0,
+      "protected_turns": 0.0,
+      "p_contest_protected": null,
+      "p_contest_unprotected": 1.0,
+      "plates": 0.0,
+      "thinned_hp": 0.0
+     },
+     "best_response": {
+      "vision_turns_set": 0.0,
+      "pressure_turns": 0.0,
+      "siege_turns": 0.0,
+      "protected_turns": 0.0,
+      "p_contest_protected": null,
+      "p_contest_unprotected": 0.9166666666666666,
+      "plates": 0.0,
+      "thinned_hp": 0.0
+     }
+    }
+   },
+   "exploitability": {
+    "stack_builder": 9.379999999999997,
+    "contest_slowpush": 10.212499999999999,
+    "passive_safe": 12.22125,
+    "stack_builder[vision]": 9.379999999999997,
+    "aggressive": 18.002500000000005
+   },
+   "strategy_full_wave": {
+    "found": true,
+    "turns_after_vision": 4,
+    "pressure_turn": 12
+   },
+   "strategy_medium": {
+    "found": true,
+    "turns_after_vision": 4,
+    "pressure_turn": 18
+   },
+   "post_crash_probe": {
+    "value": 4.822499999999999,
+    "A": {
+     "SP-C+V": 1.0
+    },
+    "best": {
+     "pressure": 4.027499999999999,
+     "vision": 4.822499999999999,
+     "safe": 4.062499999999999
+    }
+   }
+  },
+  "rho 0.75, 6 turns": {
+   "rho": 0.75,
+   "V": 6,
+   "nodes": 36891,
+   "mixed": 2124,
+   "solve_s": 12.845292100217193,
+   "enumerate_s": 29.74267049995251,
+   "value": 0.0,
+   "node_avg": {
+    "nodes": 36891,
+    "contest": 0.797490195065494,
+    "siege_nodes": 6318,
+    "p_pressure": 0.685903529151426,
+    "p_vision": 0.2981757841762535,
+    "p_disengage": 0.015920686672320657
+   },
+   "vision_value_vs_safe": 2.8134213128865477,
+   "vision_value_vs_pressure": 2.046906602043394,
+   "siege_nodes_no_vision": 794,
+   "p_vision_no_vision_nodes": 0.9837370646064245,
+   "p_vision_with_vision_nodes": 0.33267544393617243,
+   "p_pressure_under_vision": 0.8310597270273883,
+   "proactive_vision_share": 0.4555003128959115,
+   "paths": {
+    "stack_builder": {
+     "baseline": {
+      "vision_turns_set": 0.0,
+      "pressure_turns": 0.0,
+      "siege_turns": 0.0,
+      "protected_turns": 0.0,
+      "p_contest_protected": null,
+      "p_contest_unprotected": 1.0,
+      "plates": 0.0,
+      "thinned_hp": 0.0
+     },
+     "best_response": {
+      "vision_turns_set": 3.0,
+      "pressure_turns": 3.0,
+      "siege_turns": 6.0,
+      "protected_turns": 16.0,
+      "p_contest_protected": 0.9375,
+      "p_contest_unprotected": 0.625,
+      "plates": 3.0,
+      "thinned_hp": 3.0
+     }
+    },
+    "contest_slowpush": {
+     "baseline": {
+      "vision_turns_set": 0.0,
+      "pressure_turns": 0.0,
+      "siege_turns": 0.0,
+      "protected_turns": 0.0,
+      "p_contest_protected": null,
+      "p_contest_unprotected": 1.0,
+      "plates": 0.0,
+      "thinned_hp": 0.0
+     },
+     "best_response": {
+      "vision_turns_set": 3.0,
+      "pressure_turns": 3.0,
+      "siege_turns": 6.0,
+      "protected_turns": 15.0,
+      "p_contest_protected": 0.9333333333333333,
+      "p_contest_unprotected": 0.6666666666666666,
+      "plates": 3.0,
+      "thinned_hp": 3.0
+     }
+    },
+    "passive_safe": {
+     "baseline": {
+      "vision_turns_set": 0.0,
+      "pressure_turns": 0.0,
+      "siege_turns": 0.0,
+      "protected_turns": 0.0,
+      "p_contest_protected": null,
+      "p_contest_unprotected": 0.0,
+      "plates": 0.0,
+      "thinned_hp": 0.0
+     },
+     "best_response": {
+      "vision_turns_set": 3.0,
+      "pressure_turns": 3.0,
+      "siege_turns": 6.0,
+      "protected_turns": 15.0,
+      "p_contest_protected": 0.9333333333333333,
+      "p_contest_unprotected": 0.6666666666666666,
+      "plates": 3.0,
+      "thinned_hp": 3.0
+     }
+    },
+    "stack_builder[vision]": {
+     "baseline": {
+      "vision_turns_set": 0.0,
+      "pressure_turns": 0.0,
+      "siege_turns": 0.0,
+      "protected_turns": 0.0,
+      "p_contest_protected": null,
+      "p_contest_unprotected": 1.0,
+      "plates": 0.0,
+      "thinned_hp": 0.0
+     },
+     "best_response": {
+      "vision_turns_set": 3.0,
+      "pressure_turns": 3.0,
+      "siege_turns": 6.0,
+      "protected_turns": 16.0,
+      "p_contest_protected": 0.9375,
+      "p_contest_unprotected": 0.625,
+      "plates": 3.0,
+      "thinned_hp": 3.0
+     }
+    },
+    "aggressive": {
+     "baseline": {
+      "vision_turns_set": 0.0,
+      "pressure_turns": 0.0,
+      "siege_turns": 0.0,
+      "protected_turns": 0.0,
+      "p_contest_protected": null,
+      "p_contest_unprotected": 1.0,
+      "plates": 0.0,
+      "thinned_hp": 0.0
+     },
+     "best_response": {
+      "vision_turns_set": 0.0,
+      "pressure_turns": 0.0,
+      "siege_turns": 0.0,
+      "protected_turns": 0.0,
+      "p_contest_protected": null,
+      "p_contest_unprotected": 0.9166666666666666,
+      "plates": 0.0,
+      "thinned_hp": 0.0
+     }
+    }
+   },
+   "exploitability": {
+    "stack_builder": 11.371249999999993,
+    "contest_slowpush": 11.817499999999997,
+    "passive_safe": 13.796249999999999,
+    "stack_builder[vision]": 11.371249999999993,
+    "aggressive": 18.002500000000005
+   },
+   "strategy_full_wave": {
+    "found": true,
+    "turns_after_vision": 4,
+    "pressure_turn": 12
+   },
+   "strategy_medium": {
+    "found": true,
+    "turns_after_vision": 4,
+    "pressure_turn": 18
+   },
+   "post_crash_probe": {
+    "value": 6.7404810694031605,
+    "A": {
+     "SP-C+V": 1.0
+    },
+    "best": {
+     "pressure": 5.72798106940316,
+     "vision": 6.7404810694031605,
+     "safe": 5.803749999999999
+    }
+   }
+  },
+  "rho 0.75, 8 turns": {
+   "rho": 0.75,
+   "V": 8,
+   "nodes": 46893,
+   "mixed": 2704,
+   "solve_s": 16.70308250002563,
+   "enumerate_s": 38.08439189987257,
+   "value": 0.0,
+   "node_avg": {
+    "nodes": 46893,
+    "contest": 0.7964303937859251,
+    "siege_nodes": 7901,
+    "p_pressure": 0.6965005078572838,
+    "p_vision": 0.2857059345682673,
+    "p_disengage": 0.017793557574449052
+   },
+   "vision_value_vs_safe": 3.0620310475638153,
+   "vision_value_vs_pressure": 2.2955816796326363,
+   "siege_nodes_no_vision": 816,
+   "p_vision_no_vision_nodes": 0.9920540796963947,
+   "p_vision_with_vision_nodes": 0.3074772867409737,
+   "p_pressure_under_vision": 0.8135151951671368,
+   "proactive_vision_share": 0.4480284177391321,
+   "paths": {
+    "stack_builder": {
+     "baseline": {
+      "vision_turns_set": 0.0,
+      "pressure_turns": 0.0,
+      "siege_turns": 0.0,
+      "protected_turns": 0.0,
+      "p_contest_protected": null,
+      "p_contest_unprotected": 1.0,
+      "plates": 0.0,
+      "thinned_hp": 0.0
+     },
+     "best_response": {
+      "vision_turns_set": 2.0,
+      "pressure_turns": 2.0,
+      "siege_turns": 4.0,
+      "protected_turns": 15.0,
+      "p_contest_protected": 0.9333333333333333,
+      "p_contest_unprotected": 0.6666666666666666,
+      "plates": 2.0,
+      "thinned_hp": 2.0
+     }
+    },
+    "contest_slowpush": {
+     "baseline": {
+      "vision_turns_set": 0.0,
+      "pressure_turns": 0.0,
+      "siege_turns": 0.0,
+      "protected_turns": 0.0,
+      "p_contest_protected": null,
+      "p_contest_unprotected": 1.0,
+      "plates": 0.0,
+      "thinned_hp": 0.0
+     },
+     "best_response": {
+      "vision_turns_set": 2.0,
+      "pressure_turns": 2.0,
+      "siege_turns": 4.0,
+      "protected_turns": 15.0,
+      "p_contest_protected": 0.9333333333333333,
+      "p_contest_unprotected": 0.6666666666666666,
+      "plates": 2.0,
+      "thinned_hp": 2.0
+     }
+    },
+    "passive_safe": {
+     "baseline": {
+      "vision_turns_set": 0.0,
+      "pressure_turns": 0.0,
+      "siege_turns": 0.0,
+      "protected_turns": 0.0,
+      "p_contest_protected": null,
+      "p_contest_unprotected": 0.0,
+      "plates": 0.0,
+      "thinned_hp": 0.0
+     },
+     "best_response": {
+      "vision_turns_set": 2.0,
+      "pressure_turns": 2.0,
+      "siege_turns": 4.0,
+      "protected_turns": 15.0,
+      "p_contest_protected": 0.9333333333333333,
+      "p_contest_unprotected": 0.6666666666666666,
+      "plates": 2.0,
+      "thinned_hp": 2.0
+     }
+    },
+    "stack_builder[vision]": {
+     "baseline": {
+      "vision_turns_set": 0.0,
+      "pressure_turns": 0.0,
+      "siege_turns": 0.0,
+      "protected_turns": 0.0,
+      "p_contest_protected": null,
+      "p_contest_unprotected": 1.0,
+      "plates": 0.0,
+      "thinned_hp": 0.0
+     },
+     "best_response": {
+      "vision_turns_set": 2.0,
+      "pressure_turns": 2.0,
+      "siege_turns": 4.0,
+      "protected_turns": 15.0,
+      "p_contest_protected": 0.9333333333333333,
+      "p_contest_unprotected": 0.6666666666666666,
+      "plates": 2.0,
+      "thinned_hp": 2.0
+     }
+    },
+    "aggressive": {
+     "baseline": {
+      "vision_turns_set": 0.0,
+      "pressure_turns": 0.0,
+      "siege_turns": 0.0,
+      "protected_turns": 0.0,
+      "p_contest_protected": null,
+      "p_contest_unprotected": 1.0,
+      "plates": 0.0,
+      "thinned_hp": 0.0
+     },
+     "best_response": {
+      "vision_turns_set": 0.0,
+      "pressure_turns": 0.0,
+      "siege_turns": 0.0,
+      "protected_turns": 0.0,
+      "p_contest_protected": null,
+      "p_contest_unprotected": 0.9166666666666666,
+      "plates": 0.0,
+      "thinned_hp": 0.0
+     }
+    }
+   },
+   "exploitability": {
+    "stack_builder": 12.346249999999996,
+    "contest_slowpush": 12.486249999999997,
+    "passive_safe": 14.584999999999999,
+    "stack_builder[vision]": 12.346249999999996,
+    "aggressive": 18.002500000000005
+   },
+   "strategy_full_wave": {
+    "found": true,
+    "turns_after_vision": 4,
+    "pressure_turn": 12
+   },
+   "strategy_medium": {
+    "found": true,
+    "turns_after_vision": 4,
+    "pressure_turn": 18
+   },
+   "post_crash_probe": {
+    "value": 6.7404810694031605,
+    "A": {
+     "SP-C+V": 1.0
+    },
+    "best": {
+     "pressure": 5.72798106940316,
+     "vision": 6.7404810694031605,
+     "safe": 5.841249999999999
+    }
+   }
+  },
+  "rho 0.9, 4 turns": {
+   "rho": 0.9,
+   "V": 4,
+   "nodes": 27549,
+   "mixed": 1629,
+   "solve_s": 8.614728900138289,
+   "enumerate_s": 21.003360299859196,
+   "value": 0.0,
+   "node_avg": {
+    "nodes": 27549,
+    "contest": 0.7937704294897456,
+    "siege_nodes": 5331,
+    "p_pressure": 0.5534085140652086,
+    "p_vision": 0.4352264702912494,
+    "p_disengage": 0.01136501564354191
+   },
+   "vision_value_vs_safe": 2.7997898553187506,
+   "vision_value_vs_pressure": 1.9955136140760918,
+   "siege_nodes_no_vision": 787,
+   "p_vision_no_vision_nodes": 0.9842159537120976,
+   "p_vision_with_vision_nodes": 0.5921536129052828,
+   "p_pressure_under_vision": 0.6932411476285553,
+   "proactive_vision_share": 0.4123579808277168,
+   "paths": {
+    "stack_builder": {
+     "baseline": {
+      "vision_turns_set": 0.0,
+      "pressure_turns": 0.0,
+      "siege_turns": 0.0,
+      "protected_turns": 0.0,
+      "p_contest_protected": null,
+      "p_contest_unprotected": 1.0,
+      "plates": 0.0,
+      "thinned_hp": 0.0
+     },
+     "best_response": {
+      "vision_turns_set": 4.0,
+      "pressure_turns": 2.0,
+      "siege_turns": 6.0,
+      "protected_turns": 15.0,
+      "p_contest_protected": 1.0,
+      "p_contest_unprotected": 0.6666666666666666,
+      "plates": 2.0,
+      "thinned_hp": 2.0
+     }
+    },
+    "contest_slowpush": {
+     "baseline": {
+      "vision_turns_set": 0.0,
+      "pressure_turns": 0.0,
+      "siege_turns": 0.0,
+      "protected_turns": 0.0,
+      "p_contest_protected": null,
+      "p_contest_unprotected": 1.0,
+      "plates": 0.0,
+      "thinned_hp": 0.0
+     },
+     "best_response": {
+      "vision_turns_set": 4.0,
+      "pressure_turns": 2.0,
+      "siege_turns": 6.0,
+      "protected_turns": 14.0,
+      "p_contest_protected": 0.9285714285714286,
+      "p_contest_unprotected": 0.7,
+      "plates": 2.0,
+      "thinned_hp": 2.0
+     }
+    },
+    "passive_safe": {
+     "baseline": {
+      "vision_turns_set": 0.0,
+      "pressure_turns": 0.0,
+      "siege_turns": 0.0,
+      "protected_turns": 0.0,
+      "p_contest_protected": null,
+      "p_contest_unprotected": 0.0,
+      "plates": 0.0,
+      "thinned_hp": 0.0
+     },
+     "best_response": {
+      "vision_turns_set": 4.0,
+      "pressure_turns": 2.0,
+      "siege_turns": 6.0,
+      "protected_turns": 14.0,
+      "p_contest_protected": 0.9285714285714286,
+      "p_contest_unprotected": 0.7,
+      "plates": 2.0,
+      "thinned_hp": 2.0
+     }
+    },
+    "stack_builder[vision]": {
+     "baseline": {
+      "vision_turns_set": 0.0,
+      "pressure_turns": 0.0,
+      "siege_turns": 0.0,
+      "protected_turns": 0.0,
+      "p_contest_protected": null,
+      "p_contest_unprotected": 1.0,
+      "plates": 0.0,
+      "thinned_hp": 0.0
+     },
+     "best_response": {
+      "vision_turns_set": 4.0,
+      "pressure_turns": 2.0,
+      "siege_turns": 6.0,
+      "protected_turns": 15.0,
+      "p_contest_protected": 1.0,
+      "p_contest_unprotected": 0.6666666666666666,
+      "plates": 2.0,
+      "thinned_hp": 2.0
+     }
+    },
+    "aggressive": {
+     "baseline": {
+      "vision_turns_set": 0.0,
+      "pressure_turns": 0.0,
+      "siege_turns": 0.0,
+      "protected_turns": 0.0,
+      "p_contest_protected": null,
+      "p_contest_unprotected": 1.0,
+      "plates": 0.0,
+      "thinned_hp": 0.0
+     },
+     "best_response": {
+      "vision_turns_set": 0.0,
+      "pressure_turns": 0.0,
+      "siege_turns": 0.0,
+      "protected_turns": 0.0,
+      "p_contest_protected": null,
+      "p_contest_unprotected": 0.9166666666666666,
+      "plates": 0.0,
+      "thinned_hp": 0.0
+     }
+    }
+   },
+   "exploitability": {
+    "stack_builder": 12.252499999999998,
+    "contest_slowpush": 12.74375,
+    "passive_safe": 14.752500000000003,
+    "stack_builder[vision]": 12.252499999999998,
+    "aggressive": 18.002500000000005
+   },
+   "strategy_full_wave": {
+    "found": true,
+    "turns_after_vision": 4,
+    "pressure_turn": 12
+   },
+   "strategy_medium": {
+    "found": true,
+    "turns_after_vision": 4,
+    "pressure_turn": 18
+   },
+   "post_crash_probe": {
+    "value": 6.6450000000000005,
+    "A": {
+     "SP-C+V": 1.0
+    },
+    "best": {
+     "pressure": 5.594999999999999,
+     "vision": 6.6450000000000005,
+     "safe": 5.697499999999999
+    }
+   }
+  },
+  "rho 0.9, 6 turns": {
+   "rho": 0.9,
+   "V": 6,
+   "nodes": 36891,
+   "mixed": 2246,
+   "solve_s": 13.274880999932066,
+   "enumerate_s": 33.61135850008577,
+   "value": 0.0,
+   "node_avg": {
+    "nodes": 36891,
+    "contest": 0.7989944895328271,
+    "siege_nodes": 6318,
+    "p_pressure": 0.6473124563146833,
+    "p_vision": 0.34104036128650034,
+    "p_disengage": 0.011647182398816385
+   },
+   "vision_value_vs_safe": 3.351035382570849,
+   "vision_value_vs_pressure": 2.550187247740716,
+   "siege_nodes_no_vision": 794,
+   "p_vision_no_vision_nodes": 0.9943482958947283,
+   "p_vision_with_vision_nodes": 0.41267373705339966,
+   "p_pressure_under_vision": 0.7953065559661385,
+   "proactive_vision_share": 0.4513864694062298,
+   "paths": {
+    "stack_builder": {
+     "baseline": {
+      "vision_turns_set": 0.0,
+      "pressure_turns": 0.0,
+      "siege_turns": 0.0,
+      "protected_turns": 0.0,
+      "p_contest_protected": null,
+      "p_contest_unprotected": 1.0,
+      "plates": 0.0,
+      "thinned_hp": 0.0
+     },
+     "best_response": {
+      "vision_turns_set": 3.0,
+      "pressure_turns": 3.0,
+      "siege_turns": 6.0,
+      "protected_turns": 16.0,
+      "p_contest_protected": 0.9375,
+      "p_contest_unprotected": 0.625,
+      "plates": 3.0,
+      "thinned_hp": 3.0
+     }
+    },
+    "contest_slowpush": {
+     "baseline": {
+      "vision_turns_set": 0.0,
+      "pressure_turns": 0.0,
+      "siege_turns": 0.0,
+      "protected_turns": 0.0,
+      "p_contest_protected": null,
+      "p_contest_unprotected": 1.0,
+      "plates": 0.0,
+      "thinned_hp": 0.0
+     },
+     "best_response": {
+      "vision_turns_set": 3.0,
+      "pressure_turns": 3.0,
+      "siege_turns": 6.0,
+      "protected_turns": 15.0,
+      "p_contest_protected": 0.9333333333333333,
+      "p_contest_unprotected": 0.6666666666666666,
+      "plates": 3.0,
+      "thinned_hp": 3.0
+     }
+    },
+    "passive_safe": {
+     "baseline": {
+      "vision_turns_set": 0.0,
+      "pressure_turns": 0.0,
+      "siege_turns": 0.0,
+      "protected_turns": 0.0,
+      "p_contest_protected": null,
+      "p_contest_unprotected": 0.0,
+      "plates": 0.0,
+      "thinned_hp": 0.0
+     },
+     "best_response": {
+      "vision_turns_set": 3.0,
+      "pressure_turns": 3.0,
+      "siege_turns": 6.0,
+      "protected_turns": 15.0,
+      "p_contest_protected": 0.9333333333333333,
+      "p_contest_unprotected": 0.6666666666666666,
+      "plates": 3.0,
+      "thinned_hp": 3.0
+     }
+    },
+    "stack_builder[vision]": {
+     "baseline": {
+      "vision_turns_set": 0.0,
+      "pressure_turns": 0.0,
+      "siege_turns": 0.0,
+      "protected_turns": 0.0,
+      "p_contest_protected": null,
+      "p_contest_unprotected": 1.0,
+      "plates": 0.0,
+      "thinned_hp": 0.0
+     },
+     "best_response": {
+      "vision_turns_set": 3.0,
+      "pressure_turns": 3.0,
+      "siege_turns": 6.0,
+      "protected_turns": 16.0,
+      "p_contest_protected": 0.9375,
+      "p_contest_unprotected": 0.625,
+      "plates": 3.0,
+      "thinned_hp": 3.0
+     }
+    },
+    "aggressive": {
+     "baseline": {
+      "vision_turns_set": 0.0,
+      "pressure_turns": 0.0,
+      "siege_turns": 0.0,
+      "protected_turns": 0.0,
+      "p_contest_protected": null,
+      "p_contest_unprotected": 1.0,
+      "plates": 0.0,
+      "thinned_hp": 0.0
+     },
+     "best_response": {
+      "vision_turns_set": 0.0,
+      "pressure_turns": 0.0,
+      "siege_turns": 0.0,
+      "protected_turns": 0.0,
+      "p_contest_protected": null,
+      "p_contest_unprotected": 0.9166666666666666,
+      "plates": 0.0,
+      "thinned_hp": 0.0
+     }
+    }
+   },
+   "exploitability": {
+    "stack_builder": 14.228749999999993,
+    "contest_slowpush": 14.483749999999999,
+    "passive_safe": 16.462500000000006,
+    "stack_builder[vision]": 14.228749999999993,
+    "aggressive": 18.002500000000005
+   },
+   "strategy_full_wave": {
+    "found": true,
+    "turns_after_vision": 4,
+    "pressure_turn": 12
+   },
+   "strategy_medium": {
+    "found": true,
+    "turns_after_vision": 4,
+    "pressure_turn": 18
+   },
+   "post_crash_probe": {
+    "value": 8.83960943977862,
+    "A": {
+     "SP-C+V": 1.0
+    },
+    "best": {
+     "pressure": 7.624609439778618,
+     "vision": 8.83960943977862,
+     "safe": 7.755509259259259
+    }
+   }
+  },
+  "rho 0.9, 8 turns": {
+   "rho": 0.9,
+   "V": 8,
+   "nodes": 46893,
+   "mixed": 2858,
+   "solve_s": 17.79214770020917,
+   "enumerate_s": 41.50654669990763,
+   "value": 0.0,
+   "node_avg": {
+    "nodes": 46893,
+    "contest": 0.7991189728152871,
+    "siege_nodes": 7901,
+    "p_pressure": 0.6682814216725559,
+    "p_vision": 0.31987363485247633,
+    "p_disengage": 0.011844943474967968
+   },
+   "vision_value_vs_safe": 3.6457875048631547,
+   "vision_value_vs_pressure": 2.8464555282522253,
+   "siege_nodes_no_vision": 816,
+   "p_vision_no_vision_nodes": 0.9987745098039216,
+   "p_vision_with_vision_nodes": 0.34343720550391643,
+   "p_pressure_under_vision": 0.789919714360703,
+   "proactive_vision_share": 0.45169578941174354,
+   "paths": {
+    "stack_builder": {
+     "baseline": {
+      "vision_turns_set": 0.0,
+      "pressure_turns": 0.0,
+      "siege_turns": 0.0,
+      "protected_turns": 0.0,
+      "p_contest_protected": null,
+      "p_contest_unprotected": 1.0,
+      "plates": 0.0,
+      "thinned_hp": 0.0
+     },
+     "best_response": {
+      "vision_turns_set": 2.0,
+      "pressure_turns": 5.0,
+      "siege_turns": 8.0,
+      "protected_turns": 15.0,
+      "p_contest_protected": 0.9333333333333333,
+      "p_contest_unprotected": 0.7777777777777778,
+      "plates": 5.0,
+      "thinned_hp": 5.0
+     }
+    },
+    "contest_slowpush": {
+     "baseline": {
+      "vision_turns_set": 0.0,
+      "pressure_turns": 0.0,
+      "siege_turns": 0.0,
+      "protected_turns": 0.0,
+      "p_contest_protected": null,
+      "p_contest_unprotected": 1.0,
+      "plates": 0.0,
+      "thinned_hp": 0.0
+     },
+     "best_response": {
+      "vision_turns_set": 2.0,
+      "pressure_turns": 2.0,
+      "siege_turns": 4.0,
+      "protected_turns": 15.0,
+      "p_contest_protected": 0.9333333333333333,
+      "p_contest_unprotected": 0.6666666666666666,
+      "plates": 2.0,
+      "thinned_hp": 2.0
+     }
+    },
+    "passive_safe": {
+     "baseline": {
+      "vision_turns_set": 0.0,
+      "pressure_turns": 0.0,
+      "siege_turns": 0.0,
+      "protected_turns": 0.0,
+      "p_contest_protected": null,
+      "p_contest_unprotected": 0.0,
+      "plates": 0.0,
+      "thinned_hp": 0.0
+     },
+     "best_response": {
+      "vision_turns_set": 2.0,
+      "pressure_turns": 2.0,
+      "siege_turns": 4.0,
+      "protected_turns": 15.0,
+      "p_contest_protected": 0.9333333333333333,
+      "p_contest_unprotected": 0.6666666666666666,
+      "plates": 2.0,
+      "thinned_hp": 2.0
+     }
+    },
+    "stack_builder[vision]": {
+     "baseline": {
+      "vision_turns_set": 0.0,
+      "pressure_turns": 0.0,
+      "siege_turns": 0.0,
+      "protected_turns": 0.0,
+      "p_contest_protected": null,
+      "p_contest_unprotected": 1.0,
+      "plates": 0.0,
+      "thinned_hp": 0.0
+     },
+     "best_response": {
+      "vision_turns_set": 2.0,
+      "pressure_turns": 5.0,
+      "siege_turns": 8.0,
+      "protected_turns": 15.0,
+      "p_contest_protected": 0.9333333333333333,
+      "p_contest_unprotected": 0.7777777777777778,
+      "plates": 5.0,
+      "thinned_hp": 5.0
+     }
+    },
+    "aggressive": {
+     "baseline": {
+      "vision_turns_set": 0.0,
+      "pressure_turns": 0.0,
+      "siege_turns": 0.0,
+      "protected_turns": 0.0,
+      "p_contest_protected": null,
+      "p_contest_unprotected": 1.0,
+      "plates": 0.0,
+      "thinned_hp": 0.0
+     },
+     "best_response": {
+      "vision_turns_set": 0.0,
+      "pressure_turns": 0.0,
+      "siege_turns": 0.0,
+      "protected_turns": 0.0,
+      "p_contest_protected": null,
+      "p_contest_unprotected": 0.9166666666666666,
+      "plates": 0.0,
+      "thinned_hp": 0.0
+     }
+    }
+   },
+   "exploitability": {
+    "stack_builder": 14.858749999999997,
+    "contest_slowpush": 14.94625,
+    "passive_safe": 17.045000000000005,
+    "stack_builder[vision]": 14.858749999999997,
+    "aggressive": 18.002500000000005
+   },
+   "strategy_full_wave": {
+    "found": true,
+    "turns_after_vision": 4,
+    "pressure_turn": 12
+   },
+   "strategy_medium": {
+    "found": true,
+    "turns_after_vision": 4,
+    "pressure_turn": 18
+   },
+   "post_crash_probe": {
+    "value": 8.83960943977862,
+    "A": {
+     "SP-C+V": 1.0
+    },
+    "best": {
+     "pressure": 7.624609439778618,
+     "vision": 8.83960943977862,
+     "safe": 7.793009259259261
+    }
+   }
+  }
+ },
+ "environment": {
+  "python": "3.13.9",
+  "numpy": "2.5.3",
+  "scipy": "1.18.1",
+  "platform": "Windows-11-10.0.26200-SP0",
+  "timestamp": "2026-10-11 00:40:23"
+ }
+}

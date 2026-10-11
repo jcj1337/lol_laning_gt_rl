@@ -89,7 +89,7 @@ def grouped(g, sol, max_k):
 
 
 def run(horizon: int = K) -> dict:
-    cfg = GameConfig(horizon=horizon)
+    cfg = GameConfig.v2(horizon=horizon)
     g, layers, sol, _ = solve(cfg)
     res = {"grouped": grouped(g, sol, horizon - 8)}
 

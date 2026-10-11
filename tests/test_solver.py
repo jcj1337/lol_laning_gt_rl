@@ -34,17 +34,24 @@ def tree_minimax(game, s, k):
 
 V1_ROOTS = [
     (None, 0, 3),
-    (State(0, 6, (-4,), 0, -4, 2, (), 0, 0, 0), 2, 3),     # A 2-stack at the river
+    (State(0, 6, (-4,), 0, -4, 2, (), 0, 0, 0), 2, 3),     # A 2-stack at the lane
     (State(1, 4, (), 0, -3, 2, (), 0, 0, 0), 1, 3),        # A medium wave near B's tower
     (State(0, 0, (-2,), 0, 1, 2, (), 0, 0, 0), 3, 3),      # B wave held at A's freeze line
     (State(-4, 2, (), 2, -3, 2, (), 0, 1, 0), 2, 3),       # two-packet siege, A has vision
 ]
 REV_ROOTS = [
     (None, 0, 2),
-    (State(0, 12, (-4,), 0, -4, 4, (), 0, 0, 0), 2, 2),    # A 3-wave stack at the river
+    (State(0, 12, (-4,), 0, -4, 4, (), 0, 0, 0), 2, 2),    # A 3-wave stack at the lane
     (State(1, 8, (), 0, -3, 4, (), 0, 0, 0), 1, 2),        # A 2-wave packet near B's tower (crash + choices)
     (State(-4, 4, (), 0, 1, 4, (), 0, 0, 0), 3, 2),        # B wave at A's freeze line (6x4 / 6x6 stage games)
     (State(-4, 4, (), 9, -3, 4, (), 0, 1, 0), 2, 2),       # crashed mass under B's tower, A has vision
+]
+SIEGE_ROOTS = [
+    (None, 0, 2),
+    (State(1, 8, (), 0, -3, 4, (), 0, 0, 0), 1, 3),        # A 2-wave packet near B's tower (crash, then siege choices)
+    (State(-4, 4, (), 9, -3, 4, (), 0, 0, 0, 3, 0), 2, 3), # A's crashed mass under B's tower with 3 plate opportunities
+    (State(-4, 4, (), 5, -3, 8, (), 0, 2, 0, 1, 0), 3, 2), # ... with vision, B's waiting wave stacked
+    (State(-4, 4, (), 4, -4, 4, (), 4, 0, 0, 1, 1), 2, 2), # both sides sieging (6 x 6 with objectives)
 ]
 
 
@@ -58,6 +65,14 @@ def test_backward_induction_matches_tree_minimax_v1(root, k0, depth):
 
 @pytest.mark.parametrize("root,k0,depth", REV_ROOTS)
 def test_backward_induction_matches_tree_minimax_revised(root, k0, depth):
+    g = LaneGame(GameConfig(horizon=k0 + depth))
+    sol = solve_equilibrium(g, root=root, k0=k0)
+    s = g.initial_state() if root is None else root
+    assert abs(sol.value - tree_minimax(g, s, k0)) < 1e-8
+
+
+@pytest.mark.parametrize("root,k0,depth", SIEGE_ROOTS)
+def test_backward_induction_matches_tree_minimax_siege(root, k0, depth):
     g = LaneGame(GameConfig(horizon=k0 + depth))
     sol = solve_equilibrium(g, root=root, k0=k0)
     s = g.initial_state() if root is None else root
@@ -142,16 +157,20 @@ def test_solver_handles_different_action_set_sizes(model, solution):
     sizes = {Q.shape for layer in solution.Q for Q in layer.values()}
     if model == "v1":
         assert (2, 2) in sizes and ((3, 2) in sizes or (2, 3) in sizes) and (3, 3) in sizes
-    else:
+    elif model == "revised":
         # Under the revised Freeze rule both players can never freeze at once (each would need the other's
         # wave on its own half, i.e. crossed fronts), so the largest stage game is 6 x 4.
         assert sizes == {(4, 4), (4, 6), (6, 4)}
+    else:
+        # A sieging player has 6 actions (2 waves x {Contest+Pressure, Contest+Vision, Safe}); its opponent
+        # may be able to freeze (6) or not (4); both may siege at once (6 x 6).
+        assert sizes == {(4, 4), (4, 6), (6, 4), (6, 6)}
 
 
 def test_solver_on_full_6x6_stage_games():
-    """With the original Freeze legality (enemy at the river or closer) both players can freeze at the river,
+    """With the original Freeze legality (enemy at the lane or closer) both players can freeze at the lane,
     so 6 x 6 stage games occur; the solver handles them with certified gaps and zero exploitability."""
-    g = LaneGame(GameConfig(horizon=10, freeze_legal_max=0))
+    g = LaneGame(GameConfig.v2(horizon=10, freeze_legal_max=0))
     sol = solve_equilibrium(g)
     sizes = {Q.shape for layer in sol.Q for Q in layer.values()}
     assert (6, 6) in sizes and sol.stats.max_gap <= 1e-9

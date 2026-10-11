@@ -1,7 +1,7 @@
 """Experiment A - before vs. after, as an incremental ablation ladder.
 
 Rung 0 is the original Phase 1 model exactly (GameConfig.v1()); the last rung is the
-revised default (GameConfig()). Each rung changes one group of mechanics, cumulatively, so
+revised default (GameConfig.v2()). Each rung changes one group of mechanics, cumulatively, so
 the effect of the new economy can be separated from the effects of positioning, Freeze
 legality, tower mechanics, HP resolution and the Slow Push rule. Every rung is solved
 exactly at K = 32 and measured the same way.
@@ -31,7 +31,7 @@ def ladder():
     r6 = r5.with_(wave_hp=4, farm_per_hp=0.25, freeze_break_threshold=10, freeze_break_push=(0, 4, 0),
                   siege_cap=48)
     r7 = r6.with_(slowpush_mode="stack_creep", slowpush_creep_period=2)
-    assert r7 == GameConfig(horizon=K), "the last rung must be the revised default"
+    assert r7 == GameConfig.v2(horizon=K), "the last rung must be the revised default"
     return [
         ("0 original model (v1)", "-", v1),
         ("1 + farming economy", "minion kills pay farm_per_hp x collection efficiency (Contest only)", r1),
@@ -41,7 +41,7 @@ def ladder():
         ("5 + no minion deletion at the HP cap", "full stacks queue reinforcements (which fight with them) "
                                                  "instead of deleting HP", r5),
         ("6 + finer HP units (W = 4)", "4 HP per wave, same per-wave firepower: fights last a spawn interval", r6),
-        ("7 + Slow Push 'stack_creep' = revised", "unstacked waves wait at the river, stacked waves creep", r7),
+        ("7 + Slow Push 'stack_creep' = revised", "unstacked waves wait at the lane, stacked waves creep", r7),
     ]
 
 

@@ -1,4 +1,4 @@
-"""Farming economy and resource accounting (revised model).
+"""Farming economy and resource accounting (revised and siege models).
 
 The accounting identity behind every test: each HP of minions is created by a spawn and
 leaves the lane exactly once - killed in a fight, killed by a tower while sieging, or (only
@@ -19,10 +19,10 @@ from lanegame.state import State
 from conftest import all_transitions
 
 
-def test_hp_conservation_on_every_transition(rev_game, rev_layers):
+def test_hp_conservation_on_every_transition(econ_game, econ_layers):
     """HP alive before + HP spawned = HP alive after + killed in fights + killed by towers + overflow."""
-    cfg = rev_game.cfg
-    for k, s, a, b in all_transitions(rev_game, rev_layers):
+    cfg = econ_game.cfg
+    for k, s, a, b in all_transitions(econ_game, econ_layers):
         r = step_turn(s, k, a, b, cfg)
         before, after = total_hp(s, cfg), total_hp(r.state, cfg)
         ev = r.events
@@ -32,9 +32,9 @@ def test_hp_conservation_on_every_transition(rev_game, rev_layers):
             assert ev["overflow_hp"][side] == 0           # the "block" cap rule never deletes minions
 
 
-def test_every_removed_hp_is_one_farm_opportunity_for_the_opponent(rev_game, rev_layers):
-    cfg = rev_game.cfg
-    for k, s, a, b in all_transitions(rev_game, rev_layers):
+def test_every_removed_hp_is_one_farm_opportunity_for_the_opponent(econ_game, econ_layers):
+    cfg = econ_game.cfg
+    for k, s, a, b in all_transitions(econ_game, econ_layers):
         r = step_turn(s, k, a, b, cfg)
         avail, coll = turn_farm(r, a, b, cfg)
         for side in (0, 1):
@@ -45,10 +45,10 @@ def test_every_removed_hp_is_one_farm_opportunity_for_the_opponent(rev_game, rev
             assert -1e-12 <= coll[side] <= avail[side] + 1e-12
 
 
-def test_tower_kills_are_farmed_under_the_defenders_tower(rev_game, rev_layers):
-    cfg = rev_game.cfg
+def test_tower_kills_are_farmed_under_the_defenders_tower(econ_game, econ_layers):
+    cfg = econ_game.cfg
     seen = 0
-    for k, s, a, b in all_transitions(rev_game, rev_layers):
+    for k, s, a, b in all_transitions(econ_game, econ_layers):
         r = step_turn(s, k, a, b, cfg)
         for side in (0, 1):
             d = r.events["tower_hp"][side]               # side's crashed minions killed by the enemy tower
@@ -58,31 +58,31 @@ def test_tower_kills_are_farmed_under_the_defenders_tower(rev_game, rev_layers):
     assert seen > 0
 
 
-def test_siege_mass_accounting(rev_game, rev_layers):
+def test_siege_mass_accounting(econ_game, econ_layers):
     """Crashed mass under a tower changes only by new crashes (+HP) and tower fire (-HP)."""
-    cfg = rev_game.cfg
-    for k, s, a, b in all_transitions(rev_game, rev_layers):
+    cfg = econ_game.cfg
+    for k, s, a, b in all_transitions(econ_game, econ_layers):
         r = step_turn(s, k, a, b, cfg)
         for side, (sg0, sg1) in enumerate(((s.asg, r.state.asg), (s.bsg, r.state.bsg))):
             assert sg1 == sg0 + r.crash_hp[side] - r.events["tower_hp"][side] - r.events["siege_killed_hp"][side]
 
 
-def test_merging_creates_no_farm(rev_cfg):
+def test_merging_creates_no_farm(econ_cfg):
     """A reinforcement joining its own wave changes nothing economically."""
-    cfg = rev_cfg
+    cfg = econ_cfg
     W = cfg.wave_hp
-    s = State(0, W, (-2,), 0, -4, 0, (), 0, 0, 0)        # A wave parked at the river, reinforcement 2 behind
+    s = State(0, W, (-2,), 0, -4, 0, (), 0, 0, 0)        # A wave parked at the lane, reinforcement 2 behind
     r = step_turn(s, 3, SP_C, SP_S, cfg)
     assert r.events["merged"][0] == 1 and r.state.ah == 2 * W
     assert r.kills == ({}, {}) and turn_farm(r, SP_C, SP_S, cfg) == ((0.0, 0.0), (0.0, 0.0))
 
 
-def test_transitions_without_kills_pay_no_farm(rev_game, rev_layers):
+def test_transitions_without_kills_pay_no_farm(econ_game, econ_layers):
     """No action, position or merge pays farm by itself: without a kill there is no farm."""
     quiet = 0
-    for k, s, a, b in all_transitions(rev_game, rev_layers):
-        tr = rev_game.transition(s, k, a, b)
-        r = step_turn(s, k, a, b, rev_game.cfg)
+    for k, s, a, b in all_transitions(econ_game, econ_layers):
+        tr = econ_game.transition(s, k, a, b)
+        r = step_turn(s, k, a, b, econ_game.cfg)
         if sum(r.events["killed_hp"]) + sum(r.events["tower_hp"]) == 0:
             assert tr.farm == (0.0, 0.0) and tr.farm_payoff == 0.0
             quiet += 1
@@ -92,16 +92,16 @@ def test_transitions_without_kills_pay_no_farm(rev_game, rev_layers):
 def test_capped_reinforcement_queues_instead_of_vanishing(rev_cfg):
     cfg = rev_cfg
     H = cfg.hp_cap
-    s = State(0, H, (-2,), 0, -4, 0, (), 0, 0, 0)        # full stack at the river; reinforcement arrives
+    s = State(0, H, (-2,), 0, -4, 0, (), 0, 0, 0)        # full stack at the lane; reinforcement arrives
     r = step_turn(s, 3, SP_C, SP_S, cfg)
     assert r.events["overflow_hp"] == [0, 0] and r.events["merged"][0] == 0
     assert r.state.ah == H and r.state.ar[0] == -1        # waits directly behind the full stack
     assert total_hp(r.state, cfg)[0] == total_hp(s, cfg)[0] + r.events["spawned_hp"][0]
 
 
-def test_no_minion_is_farmed_twice_over_whole_games(rev_cfg):
+def test_no_minion_is_farmed_twice_over_whole_games(econ_cfg):
     """Over complete games, the HP each side farms from never exceeds the HP the opponent ever spawned."""
-    cfg = rev_cfg.with_(horizon=32)
+    cfg = econ_cfg.with_(horizon=32)
     g = LaneGame(cfg)
     rng = np.random.default_rng(5)
     pol = uniform()
@@ -147,7 +147,8 @@ def test_collection_efficiency_properties(rev_cfg):
 
 
 def test_crash_rewards_are_separate_from_under_tower_farm(rev_cfg):
-    """A crash gives the crasher a reward menu and the defender farm opportunities; neither replaces the other."""
+    """A crash gives the crasher a reward menu and the defender farm opportunities; neither replaces the other
+    (previous revision; the siege model replaces the menu by siege objectives, tested in test_siege.py)."""
     cfg = rev_cfg
     H = cfg.hp_cap
     g = LaneGame(cfg)
@@ -160,23 +161,23 @@ def test_crash_rewards_are_separate_from_under_tower_farm(rev_cfg):
     assert tr2.options_a == tr.options_a and tr2.farm_available == tr.farm_available
 
 
-def test_farm_denial_is_not_double_counted(rev_game, rev_layers):
+def test_farm_denial_is_not_double_counted(econ_game, econ_layers):
     """Denied farm (available - collected) appears in nobody's payoff: the only farm term is
     collected_A - collected_B."""
-    for k, s, a, b in all_transitions(rev_game, rev_layers):
-        tr = rev_game.transition(s, k, a, b)
-        assert tr.payoff == (tr.farm[0] - tr.farm[1]) + tr.gank_payoff
+    for k, s, a, b in all_transitions(econ_game, econ_layers):
+        tr = econ_game.transition(s, k, a, b)
+        assert tr.payoff == (tr.farm[0] - tr.farm[1]) + tr.plate_payoff + tr.gank_payoff
 
 
-def test_farming_disabled_gives_zero_farm(rev_cfg):
-    g = LaneGame(rev_cfg.with_(farm_per_hp=0.0, horizon=8))
+def test_farming_disabled_gives_zero_farm(econ_cfg):
+    g = LaneGame(econ_cfg.with_(farm_per_hp=0.0, horizon=8))
     for k, s, a, b in all_transitions(g, g.reachable()):
         assert g.transition(s, k, a, b).farm == (0.0, 0.0)
 
 
-def test_accounting_with_defenders_engaging_crashed_minions(rev_cfg):
+def test_accounting_with_defenders_engaging_crashed_minions(econ_cfg):
     """The siege_engage variant (defender minions fight the crashed mass) keeps every identity."""
-    cfg = rev_cfg.with_(siege_engage=True, horizon=14)
+    cfg = econ_cfg.with_(siege_engage=True, horizon=14)
     g = LaneGame(cfg)
     fights = 0
     for k, s, a, b in all_transitions(g, g.reachable()):

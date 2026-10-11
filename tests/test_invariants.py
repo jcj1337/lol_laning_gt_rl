@@ -12,13 +12,15 @@ from conftest import all_transitions
 
 
 def test_zero_sum_payoffs(game, layers):
-    """Every payoff component is A's gain = B's loss: farm_A - farm_B, L(p_B - p_A) and rho_A - rho_B."""
+    """Every payoff component is A's gain = B's loss: farm_A - farm_B, plates_A - plates_B, L(p_B - p_A)
+    and rho_A - rho_B."""
     cfg = game.cfg
     for k, s, a, b in all_transitions(game, layers):
         tr = game.transition(s, k, a, b)
         assert abs(tr.gank_payoff - cfg.gank_loss * (tr.gank_p[1] - tr.gank_p[0])) < 1e-15
         assert tr.farm_payoff == tr.farm[0] - tr.farm[1]
-        assert tr.payoff == tr.farm_payoff + tr.gank_payoff      # nothing else enters the stage payoff
+        assert tr.plate_payoff == tr.plates[0] - tr.plates[1]
+        assert tr.payoff == tr.farm_payoff + tr.plate_payoff + tr.gank_payoff   # nothing else enters the stage payoff
         for i, j, s2, r in tr.choice_outcomes(cfg):
             assert r == tr.options_a[i][0] - tr.options_b[j][0]
 
@@ -43,9 +45,11 @@ def test_mirror_equivariance_of_transitions(game, layers):
         assert rm.state == r.state.mirror()
         assert rm.crash_hp == r.crash_hp[::-1]
         assert rm.kills == r.kills[::-1]
+        assert rm.plates == r.plates[::-1] and rm.thinned == r.thinned[::-1] and rm.vision_set == r.vision_set[::-1]
         tr, trm = game.transition(s, k, a, b), game.transition(m, k, b, a)
         assert abs(tr.gank_payoff + trm.gank_payoff) < 1e-15
         assert abs(tr.farm_payoff + trm.farm_payoff) < 1e-15
+        assert abs(tr.plate_payoff + trm.plate_payoff) < 1e-15
         assert trm.farm == tr.farm[::-1] and trm.farm_available == tr.farm_available[::-1]
 
 
@@ -70,7 +74,11 @@ def test_terminal_handling_one_turn_game(cfg):
 
 
 def test_final_turn_crash_choices_take_resources(game, solution):
-    """In the final turn vision has no future value, so every crash choice takes the most resources."""
+    """In the final turn vision has no future value, so every crash choice takes the most resources
+    ("choice" siege mode; the siege model has no crash-choice nodes)."""
+    if game.cfg.objectives:
+        assert not solution.choice_x
+        return
     K = game.horizon
     seen = 0
     for key, x in solution.choice_x.items():

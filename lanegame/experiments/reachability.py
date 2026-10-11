@@ -25,7 +25,7 @@ from .common import REVISION, md_table, save, solve
 
 K = 32
 SCENARIO_EVENT = {
-    "even_river_fight": None, "shove_wins_river": None, "slowpush_stacks": None,
+    "even_lane_fight": None, "shove_wins_lane": None, "slowpush_stacks": None,
     "shove_contests_slowpush": None, "unstacked_wave_waits": None, "stacked_wave_creeps": None,
     "freeze_holds": "freeze_held", "freeze_broken": "freeze_broken", "large_crash_persists": "siege_persists",
     "small_crash_clears_quickly": "crash_small", "tower_farm_contested": "tower_farm",
@@ -106,7 +106,7 @@ def vision_choices(g, sol):
 
 def run(horizon: int = K) -> dict:
     out = {}
-    for name, cfg in (("revised", GameConfig(horizon=horizon)), ("v1", GameConfig.v1(horizon=horizon))):
+    for name, cfg in (("revised", GameConfig.v2(horizon=horizon)), ("v1", GameConfig.v1(horizon=horizon))):
         g = LaneGame(cfg)
         rep = explore_events(g)
         events = {}
@@ -123,7 +123,7 @@ def run(horizon: int = K) -> dict:
         out[name] = {"states": rep.states, "distinct": rep.distinct_states, "events": events,
                      "collection_values": {str(k): v for k, v in sorted(rep.collection_values.items())}}
 
-    cfg = GameConfig(horizon=horizon)
+    cfg = GameConfig.v2(horizon=horizon)
     g, layers, sol, _ = solve(cfg)
     P = cfg.phase_period
     scen = []

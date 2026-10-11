@@ -32,11 +32,18 @@ def state_row(s: State, cfg: GameConfig) -> str:
     return lane_row(A, B, (s.asg, s.bsg), cfg)
 
 
+def _side_note(s: State, cfg: GameConfig) -> str:
+    note = f"   vision A{s.va} B{s.vb}"
+    if cfg.objectives:
+        note += f" plates A{s.ap} B{s.bp}"
+    return note
+
+
 def trace_plan(cfg: GameConfig, s: State, k0: int, plan: Sequence[Tuple[int, int]]) -> Tuple[List[str], List]:
     """Run an action plan from (k0, s); return printable lines and the TurnResults."""
-    w = 18 if cfg.positioning else 14
+    w = (24 if cfg.objectives else 18) if cfg.positioning else 14
     lines = [f"{'':{w}}" + header(cfg),
-             f"{'start k=' + str(k0):{w}}" + state_row(s, cfg) + f"   vision A{s.va} B{s.vb}"]
+             f"{'start k=' + str(k0):{w}}" + state_row(s, cfg) + _side_note(s, cfg)]
     results = []
     for i, (a, b) in enumerate(plan):
         k = k0 + i
@@ -48,8 +55,13 @@ def trace_plan(cfg: GameConfig, s: State, k0: int, plan: Sequence[Tuple[int, int
                 note += f"  fight: A-{tr['fight'][4]} B-{tr['fight'][5]}"
             if any(tr["crashed"]):
                 note += f"  CRASH A{tr['crashed'][0]} B{tr['crashed'][1]}"
+            if any(tr.get("thinned", (0, 0))):
+                note += f"  thin A{tr['thinned'][0]} B{tr['thinned'][1]}"
             lines.append(f"{tag:{w}}" + lane_row(tr["A"], tr["B"], tr["siege"], cfg) + note)
-        lines.append(f"{'  end of turn':{w}}" + state_row(r.state, cfg))
+        end = f"{'  end of turn':{w}}" + state_row(r.state, cfg) + _side_note(r.state, cfg)
+        if any(r.plates):
+            end += f"  plates claimed A{r.plates[0]} B{r.plates[1]}"
+        lines.append(end)
         results.append(r)
         s = r.state
     return lines, results

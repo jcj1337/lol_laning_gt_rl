@@ -23,10 +23,10 @@ ACTION_SHORT = {0: "SP", 1: "SH", 2: "F"}   # original action labels
 W = 2
 SITUATIONS = [
     # (label, root, k0)  -- k0 parity fixes where the next reinforcements are
-    ("A 2-stack at river, B wave just spawned", State(0, 3 * W, (-4,), 0, -4, W, (), 0, 0, 0), 10),
-    ("A 2-stack at river, B wave two cells from its tower", State(0, 3 * W, (-2,), 0, -2, W, (), 0, 0, 0), 11),
-    ("A 1-stack at river, B wave just spawned", State(0, 2 * W, (-4,), 0, -4, W, (), 0, 0, 0), 10),
-    ("A 1-stack at river, B wave two cells from its tower", State(0, 2 * W, (-2,), 0, -2, W, (), 0, 0, 0), 11),
+    ("A 2-stack at lane, B wave just spawned", State(0, 3 * W, (-4,), 0, -4, W, (), 0, 0, 0), 10),
+    ("A 2-stack at lane, B wave two cells from its tower", State(0, 3 * W, (-2,), 0, -2, W, (), 0, 0, 0), 11),
+    ("A 1-stack at lane, B wave just spawned", State(0, 2 * W, (-4,), 0, -4, W, (), 0, 0, 0), 10),
+    ("A 1-stack at lane, B wave two cells from its tower", State(0, 2 * W, (-2,), 0, -2, W, (), 0, 0, 0), 11),
     ("A 1-stack at +1, B wave two cells from its tower", State(1, 2 * W, (-2,), 0, -2, W, (), 0, 0, 0), 11),
     ("A 1-stack at +1, B wave just spawned", State(1, 2 * W, (-4,), 0, -4, W, (), 0, 0, 0), 10),
     ("B wave held at A's freeze line, A wave arriving", State(-2, W, (), 0, 1, W, (), 0, 0, 0), 11),

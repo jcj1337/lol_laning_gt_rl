@@ -1,0 +1,4638 @@
+{
+ "horizon": 32,
+ "grouped": {
+  "siege mass": {
+   " 1 HP": {
+    "nodes": 6603,
+    "p_pressure": 0.29588526581191604,
+    "p_vision": 0.6994198985073327,
+    "p_disengage": 0.004694835680751174,
+    "pressure_minus_vision": -1.3028758053659424,
+    "pressure_minus_safe": 1.1514542424765428,
+    "vision_minus_safe": 2.4543300478424577
+   },
+   " 2 HP": {
+    "nodes": 5140,
+    "p_pressure": 0.3504402940734132,
+    "p_vision": 0.6470305230472093,
+    "p_disengage": 0.002529182879377432,
+    "pressure_minus_vision": -1.0982840409819121,
+    "pressure_minus_safe": 1.2360323459255902,
+    "vision_minus_safe": 2.334316386907519
+   },
+   " 3 HP": {
+    "nodes": 3791,
+    "p_pressure": 0.654413279838099,
+    "p_vision": 0.3408435610518287,
+    "p_disengage": 0.004743159110072149,
+    "pressure_minus_vision": 0.15103513734145393,
+    "pressure_minus_safe": 1.135105811591089,
+    "vision_minus_safe": 0.9840706742496395
+   },
+   " 4 HP": {
+    "nodes": 2970,
+    "p_pressure": 0.575444993740326,
+    "p_vision": 0.4198412015458694,
+    "p_disengage": 0.0047138047138047135,
+    "pressure_minus_vision": 0.07063502114886133,
+    "pressure_minus_safe": 1.1994450268803503,
+    "vision_minus_safe": 1.1288100057314816
+   },
+   " 5 HP": {
+    "nodes": 2107,
+    "p_pressure": 0.5857162363266258,
+    "p_vision": 0.4066900285048881,
+    "p_disengage": 0.007593735168485999,
+    "pressure_minus_vision": -0.025140399475807672,
+    "pressure_minus_safe": 1.0480382514301958,
+    "vision_minus_safe": 1.0731786509060017
+   },
+   " 6 HP": {
+    "nodes": 1572,
+    "p_pressure": 0.5952740646988998,
+    "p_vision": 0.3967888334035134,
+    "p_disengage": 0.007937101897586856,
+    "pressure_minus_vision": 0.012089793992133993,
+    "pressure_minus_safe": 1.10243268339277,
+    "vision_minus_safe": 1.0903428894006366
+   },
+   " 7 HP": {
+    "nodes": 1031,
+    "p_pressure": 0.5791577435554527,
+    "p_vision": 0.409710225229216,
+    "p_disengage": 0.011132031215331267,
+    "pressure_minus_vision": -0.08999714713364936,
+    "pressure_minus_safe": 0.8139724308931959,
+    "vision_minus_safe": 0.9039695780268441
+   },
+   " 8 HP": {
+    "nodes": 625,
+    "p_pressure": 0.5359575346016276,
+    "p_vision": 0.4560424653983723,
+    "p_disengage": 0.008,
+    "pressure_minus_vision": -0.13073942169451133,
+    "pressure_minus_safe": 0.8910295167435223,
+    "vision_minus_safe": 1.021768938438031
+   },
+   " 9 HP": {
+    "nodes": 453,
+    "p_pressure": 0.5239977212846259,
+    "p_vision": 0.46717225664031903,
+    "p_disengage": 0.008830022075055188,
+    "pressure_minus_vision": -0.2517352493739407,
+    "pressure_minus_safe": 0.5684725543358632,
+    "vision_minus_safe": 0.8202078037098061
+   },
+   "10 HP": {
+    "nodes": 230,
+    "p_pressure": 0.4608695652173913,
+    "p_vision": 0.5217391304347826,
+    "p_disengage": 0.017391304347826087,
+    "pressure_minus_vision": -0.24250070625901987,
+    "pressure_minus_safe": 0.7084993184389301,
+    "vision_minus_safe": 0.9510000246979499
+   },
+   "11 HP": {
+    "nodes": 191,
+    "p_pressure": 0.5026178010471204,
+    "p_vision": 0.4869109947643979,
+    "p_disengage": 0.010471204188481676,
+    "pressure_minus_vision": -0.15576200935384835,
+    "pressure_minus_safe": 0.6448902998797946,
+    "vision_minus_safe": 0.8006523092336421
+   },
+   "12 HP": {
+    "nodes": 77,
+    "p_pressure": 0.4155844155844156,
+    "p_vision": 0.5584415584415584,
+    "p_disengage": 0.025974025974025976,
+    "pressure_minus_vision": -0.27813277148383514,
+    "pressure_minus_safe": 0.6390332716718775,
+    "vision_minus_safe": 0.9171660431557124
+   },
+   "13 HP": {
+    "nodes": 64,
+    "p_pressure": 0.421875,
+    "p_vision": 0.546875,
+    "p_disengage": 0.03125,
+    "pressure_minus_vision": -0.20729421568869583,
+    "pressure_minus_safe": 0.6283242711292748,
+    "vision_minus_safe": 0.8356184868179708
+   },
+   "14 HP": {
+    "nodes": 12,
+    "p_pressure": 0.3333333333333333,
+    "p_vision": 0.6666666666666666,
+    "p_disengage": 0.0,
+    "pressure_minus_vision": -0.5912477836879431,
+    "pressure_minus_safe": 0.4408577127659574,
+    "vision_minus_safe": 1.0321054964539007
+   },
+   "15 HP": {
+    "nodes": 11,
+    "p_pressure": 0.36363636363636365,
+    "p_vision": 0.6363636363636364,
+    "p_disengage": 0.0,
+    "pressure_minus_vision": -0.4503965183752418,
+    "pressure_minus_safe": 0.5261629593810445,
+    "vision_minus_safe": 0.9765594777562864
+   },
+   "16 HP": {
+    "nodes": 1,
+    "p_pressure": 0.0,
+    "p_vision": 1.0,
+    "p_disengage": 0.0,
+    "pressure_minus_vision": -1.6844148936170216,
+    "pressure_minus_safe": -0.38441489361702086,
+    "vision_minus_safe": 1.3000000000000007
+   },
+   "17 HP": {
+    "nodes": 1,
+    "p_pressure": 0.0,
+    "p_vision": 1.0,
+    "p_disengage": 0.0,
+    "pressure_minus_vision": -1.6844148936170216,
+    "pressure_minus_safe": -0.38441489361702086,
+    "vision_minus_safe": 1.3000000000000007
+   }
+  },
+  "defender wave": {
+   " 1 HP waiting": {
+    "nodes": 1725,
+    "p_pressure": 0.31209455162973326,
+    "p_vision": 0.6867460280804117,
+    "p_disengage": 0.0011594202898550724,
+    "pressure_minus_vision": -0.9936532020625216,
+    "pressure_minus_safe": 0.5933413943933212,
+    "vision_minus_safe": 1.586994596455858
+   },
+   " 2 HP waiting": {
+    "nodes": 1287,
+    "p_pressure": 0.4677544677544678,
+    "p_vision": 0.5291375291375291,
+    "p_disengage": 0.003108003108003108,
+    "pressure_minus_vision": -0.5878667011524029,
+    "pressure_minus_safe": 1.0720073632908134,
+    "vision_minus_safe": 1.659874064443225
+   },
+   " 3 HP waiting": {
+    "nodes": 3060,
+    "p_pressure": 0.43655159133824234,
+    "p_vision": 0.5598536374199276,
+    "p_disengage": 0.003594771241830065,
+    "pressure_minus_vision": -0.660774204902353,
+    "pressure_minus_safe": 1.1569008315478722,
+    "vision_minus_safe": 1.8176750364502372
+   },
+   " 4 HP waiting": {
+    "nodes": 2579,
+    "p_pressure": 0.44428217732496944,
+    "p_vision": 0.5514526035978687,
+    "p_disengage": 0.004265219077161691,
+    "pressure_minus_vision": -0.6835502306135612,
+    "pressure_minus_safe": 1.243459485291057,
+    "vision_minus_safe": 1.927009715904628
+   },
+   " 5 HP waiting": {
+    "nodes": 3914,
+    "p_pressure": 0.4675401672072558,
+    "p_vision": 0.5314378603859993,
+    "p_disengage": 0.001021972406745018,
+    "pressure_minus_vision": -0.616934986367489,
+    "pressure_minus_safe": 1.0585324183312679,
+    "vision_minus_safe": 1.675467404698759
+   },
+   " 6 HP waiting": {
+    "nodes": 3241,
+    "p_pressure": 0.45346187309670033,
+    "p_vision": 0.5403729568365659,
+    "p_disengage": 0.006165170066733575,
+    "pressure_minus_vision": -0.651129683178851,
+    "pressure_minus_safe": 1.0250288806976673,
+    "vision_minus_safe": 1.6761585638765202
+   },
+   " 7 HP waiting": {
+    "nodes": 2889,
+    "p_pressure": 0.4969465037614865,
+    "p_vision": 0.4937235383409667,
+    "p_disengage": 0.009329957897546927,
+    "pressure_minus_vision": -0.4506153547094886,
+    "pressure_minus_safe": 1.2517366938110255,
+    "vision_minus_safe": 1.702352048520497
+   },
+   " 8 HP waiting": {
+    "nodes": 2163,
+    "p_pressure": 0.5693201168144215,
+    "p_vision": 0.4302175623349081,
+    "p_disengage": 0.0004623208506703652,
+    "pressure_minus_vision": -0.1397580994489173,
+    "pressure_minus_safe": 1.527217838084458,
+    "vision_minus_safe": 1.6669759375333706
+   },
+   " 9 HP waiting": {
+    "nodes": 1006,
+    "p_pressure": 0.5250547771762064,
+    "p_vision": 0.4749452228237936,
+    "p_disengage": 0.0,
+    "pressure_minus_vision": -0.3722210509963203,
+    "pressure_minus_safe": 1.2457774856426485,
+    "vision_minus_safe": 1.6179985366389755
+   },
+   "10 HP waiting": {
+    "nodes": 463,
+    "p_pressure": 0.5766453950279076,
+    "p_vision": 0.41687512333062376,
+    "p_disengage": 0.0064794816414686825,
+    "pressure_minus_vision": -0.19182133564330492,
+    "pressure_minus_safe": 1.307955761890714,
+    "vision_minus_safe": 1.499777097534022
+   },
+   "11 HP waiting": {
+    "nodes": 180,
+    "p_pressure": 0.6813080639167596,
+    "p_vision": 0.3186919360832405,
+    "p_disengage": 0.0,
+    "pressure_minus_vision": 0.29497069382345453,
+    "pressure_minus_safe": 1.9150699888522746,
+    "vision_minus_safe": 1.6200992950288187
+   },
+   "12 HP waiting": {
+    "nodes": 180,
+    "p_pressure": 0.6640067929677711,
+    "p_vision": 0.3359932070322289,
+    "p_disengage": 0.0,
+    "pressure_minus_vision": 0.3212852692943238,
+    "pressure_minus_safe": 2.130637835790064,
+    "vision_minus_safe": 1.8093525664957417
+   },
+   "no accessible wave": {
+    "nodes": 2192,
+    "p_pressure": 0.42298065033895194,
+    "p_vision": 0.5532967219238217,
+    "p_disengage": 0.023722627737226276,
+    "pressure_minus_vision": -0.5414663637618429,
+    "pressure_minus_safe": 0.7666094040061023,
+    "vision_minus_safe": 1.3080757677679207
+   }
+  },
+  "plates left": {
+   "0": {
+    "nodes": 3026,
+    "p_pressure": 0.19656608895760225,
+    "p_vision": 0.783605755060904,
+    "p_disengage": 0.01982815598149372,
+    "pressure_minus_vision": -1.7511940482863615,
+    "pressure_minus_safe": 0.46884362164974897,
+    "vision_minus_safe": 2.2200376699361164
+   },
+   "1": {
+    "nodes": 6140,
+    "p_pressure": 0.38897135980884884,
+    "p_vision": 0.6059797802562976,
+    "p_disengage": 0.0050488599348534205,
+    "pressure_minus_vision": -0.8123555888770109,
+    "pressure_minus_safe": 1.1285230821530172,
+    "vision_minus_safe": 1.94087867103003
+   },
+   "2": {
+    "nodes": 7391,
+    "p_pressure": 0.4782252624783475,
+    "p_vision": 0.5185337351720362,
+    "p_disengage": 0.0032410023496161643,
+    "pressure_minus_vision": -0.4282639404462657,
+    "pressure_minus_safe": 1.2285316156621289,
+    "vision_minus_safe": 1.6567955561083807
+   },
+   "3": {
+    "nodes": 5825,
+    "p_pressure": 0.5621620652325018,
+    "p_vision": 0.4344076658943165,
+    "p_disengage": 0.0034302688731817194,
+    "pressure_minus_vision": -0.18175156876338672,
+    "pressure_minus_safe": 1.2477126536153844,
+    "vision_minus_safe": 1.4294642223787575
+   },
+   "4": {
+    "nodes": 2283,
+    "p_pressure": 0.6925216021551007,
+    "p_vision": 0.3074783978448993,
+    "p_disengage": 0.0,
+    "pressure_minus_vision": 0.19176394400859964,
+    "pressure_minus_safe": 1.2502268172001827,
+    "vision_minus_safe": 1.0584628731915815
+   },
+   "5": {
+    "nodes": 205,
+    "p_pressure": 0.8341463414634146,
+    "p_vision": 0.16585365853658537,
+    "p_disengage": 0.0,
+    "pressure_minus_vision": 0.6809489923888602,
+    "pressure_minus_safe": 1.1861747967479672,
+    "vision_minus_safe": 0.5052258043591065
+   },
+   "6": {
+    "nodes": 9,
+    "p_pressure": 1.0,
+    "p_vision": 0.0,
+    "p_disengage": 0.0,
+    "pressure_minus_vision": 1.0833333333333333,
+    "pressure_minus_safe": 1.0245833333333332,
+    "vision_minus_safe": -0.058750000000000156
+   }
+  },
+  "vision": {
+   "active": {
+    "nodes": 19208,
+    "p_pressure": 0.5960078905273624,
+    "p_vision": 0.39696714255508797,
+    "p_disengage": 0.007024966917549802,
+    "pressure_minus_vision": -0.1834213669337369,
+    "pressure_minus_safe": 1.1878299920267688,
+    "vision_minus_safe": 1.3712513589604969
+   },
+   "none": {
+    "nodes": 5671,
+    "p_pressure": 0.01854299697396293,
+    "p_vision": 0.9814570030260373,
+    "p_disengage": 0.0,
+    "pressure_minus_vision": -1.8340114501904177,
+    "pressure_minus_safe": 0.8793285703317635,
+    "vision_minus_safe": 2.7133400205221587
+   }
+  },
+  "turns remaining": {
+   " 0- 7": {
+    "nodes": 16908,
+    "p_pressure": 0.49554748454224185,
+    "p_vision": 0.4982451433045752,
+    "p_disengage": 0.006207372153182699,
+    "pressure_minus_vision": -0.4397049351391856,
+    "pressure_minus_safe": 1.069631409753387,
+    "vision_minus_safe": 1.5093363448926158
+   },
+   " 8-15": {
+    "nodes": 7498,
+    "p_pressure": 0.40509886032278825,
+    "p_vision": 0.5909025645656775,
+    "p_disengage": 0.003998575111534211,
+    "pressure_minus_vision": -0.7778789011751176,
+    "pressure_minus_safe": 1.2197875562904235,
+    "vision_minus_safe": 1.997666457465535
+   },
+   "16-23": {
+    "nodes": 468,
+    "p_pressure": 0.2930102003171548,
+    "p_vision": 0.7069897996828453,
+    "p_disengage": 0.0,
+    "pressure_minus_vision": -1.3700320874040741,
+    "pressure_minus_safe": 1.2145489082153342,
+    "vision_minus_safe": 2.584580995619413
+   },
+   "24-31": {
+    "nodes": 5,
+    "p_pressure": 0.0,
+    "p_vision": 1.0,
+    "p_disengage": 0.0,
+    "pressure_minus_vision": -3.118897768643614,
+    "pressure_minus_safe": 0.5613893961222589,
+    "vision_minus_safe": 3.6802871647658733
+   }
+  },
+  "thinnable": {
+   "no": {
+    "nodes": 2192,
+    "p_pressure": 0.42298065033895194,
+    "p_vision": 0.5532967219238217,
+    "p_disengage": 0.023722627737226276,
+    "pressure_minus_vision": -0.5414663637618429,
+    "pressure_minus_safe": 0.7666094040061023,
+    "vision_minus_safe": 1.3080757677679207
+   },
+   "yes": {
+    "nodes": 22687,
+    "p_pressure": 0.46837851243205086,
+    "p_vision": 0.5279658449288916,
+    "p_disengage": 0.0036556426390574595,
+    "pressure_minus_vision": -0.5614202971184876,
+    "pressure_minus_safe": 1.1514128353515405,
+    "vision_minus_safe": 1.7128331324701558
+   }
+  }
+ },
+ "timing": {
+  "enumerate_s": 111.93429209990427,
+  "solve_s": 46.034465899923816,
+  "transitions": 2697760
+ },
+ "probes": {
+  "mass 4, defender 0, vision no, 8 turns left": {
+   "mass": 4,
+   "defender": 0,
+   "vision": 0,
+   "remaining": 8,
+   "value": 3.166249999999999,
+   "A": {
+    "SP-C+V": 1.0
+   },
+   "B": {
+    "SP-S": 1.0
+   },
+   "actions": {
+    "SP-S": {
+     "Q": 2.506249999999999,
+     "farm": -0.4,
+     "plates": 0.0,
+     "gank": -0.12499999999999997,
+     "continuation": 3.031249999999999,
+     "objective": 0,
+     "posture": 1
+    },
+    "SH-S": {
+     "Q": 2.506249999999999,
+     "farm": -0.4,
+     "plates": 0.0,
+     "gank": -0.12499999999999997,
+     "continuation": 3.031249999999999,
+     "objective": 0,
+     "posture": 1
+    },
+    "SP-C+P": {
+     "Q": 3.0912499999999987,
+     "farm": -0.34,
+     "plates": 1.0,
+     "gank": -0.6000000000000001,
+     "continuation": 3.0312499999999982,
+     "objective": 1,
+     "posture": 0
+    },
+    "SH-C+P": {
+     "Q": 2.9412499999999993,
+     "farm": -0.34,
+     "plates": 1.0,
+     "gank": -0.75,
+     "continuation": 3.031249999999999,
+     "objective": 1,
+     "posture": 0
+    },
+    "SP-C+V": {
+     "Q": 3.166249999999999,
+     "farm": -0.34,
+     "plates": 0.0,
+     "gank": -0.6000000000000001,
+     "continuation": 4.106249999999999,
+     "objective": 2,
+     "posture": 0
+    },
+    "SH-C+V": {
+     "Q": 3.0162499999999994,
+     "farm": -0.34,
+     "plates": 0.0,
+     "gank": -0.75,
+     "continuation": 4.106249999999999,
+     "objective": 2,
+     "posture": 0
+    }
+   },
+   "best": {
+    "pressure": [
+     "SP-C+P",
+     {
+      "Q": 3.0912499999999987,
+      "farm": -0.34,
+      "plates": 1.0,
+      "gank": -0.6000000000000001,
+      "continuation": 3.0312499999999982,
+      "objective": 1,
+      "posture": 0
+     }
+    ],
+    "vision": [
+     "SP-C+V",
+     {
+      "Q": 3.166249999999999,
+      "farm": -0.34,
+      "plates": 0.0,
+      "gank": -0.6000000000000001,
+      "continuation": 4.106249999999999,
+      "objective": 2,
+      "posture": 0
+     }
+    ],
+    "safe": [
+     "SP-S",
+     {
+      "Q": 2.506249999999999,
+      "farm": -0.4,
+      "plates": 0.0,
+      "gank": -0.12499999999999997,
+      "continuation": 3.031249999999999,
+      "objective": 0,
+      "posture": 1
+     }
+    ]
+   },
+   "nodes": 425
+  },
+  "mass 4, defender 0, vision no, 16 turns left": {
+   "mass": 4,
+   "defender": 0,
+   "vision": 0,
+   "remaining": 16,
+   "value": 2.206249999999998,
+   "A": {
+    "SP-C+V": 1.0
+   },
+   "B": {
+    "SP-S": 1.0
+   },
+   "actions": {
+    "SP-S": {
+     "Q": 1.5462499999999983,
+     "farm": -0.4,
+     "plates": 0.0,
+     "gank": -0.12499999999999997,
+     "continuation": 2.0712499999999983,
+     "objective": 0,
+     "posture": 1
+    },
+    "SH-S": {
+     "Q": 1.5462499999999983,
+     "farm": -0.4,
+     "plates": 0.0,
+     "gank": -0.12499999999999997,
+     "continuation": 2.0712499999999983,
+     "objective": 0,
+     "posture": 1
+    },
+    "SP-C+P": {
+     "Q": 2.131249999999998,
+     "farm": -0.34,
+     "plates": 1.0,
+     "gank": -0.6000000000000001,
+     "continuation": 2.071249999999998,
+     "objective": 1,
+     "posture": 0
+    },
+    "SH-C+P": {
+     "Q": 1.9812499999999982,
+     "farm": -0.34,
+     "plates": 1.0,
+     "gank": -0.75,
+     "continuation": 2.0712499999999983,
+     "objective": 1,
+     "posture": 0
+    },
+    "SP-C+V": {
+     "Q": 2.206249999999998,
+     "farm": -0.34,
+     "plates": 0.0,
+     "gank": -0.6000000000000001,
+     "continuation": 3.146249999999998,
+     "objective": 2,
+     "posture": 0
+    },
+    "SH-C+V": {
+     "Q": 2.0562499999999986,
+     "farm": -0.34,
+     "plates": 0.0,
+     "gank": -0.75,
+     "continuation": 3.1462499999999984,
+     "objective": 2,
+     "posture": 0
+    }
+   },
+   "best": {
+    "pressure": [
+     "SP-C+P",
+     {
+      "Q": 2.131249999999998,
+      "farm": -0.34,
+      "plates": 1.0,
+      "gank": -0.6000000000000001,
+      "continuation": 2.071249999999998,
+      "objective": 1,
+      "posture": 0
+     }
+    ],
+    "vision": [
+     "SP-C+V",
+     {
+      "Q": 2.206249999999998,
+      "farm": -0.34,
+      "plates": 0.0,
+      "gank": -0.6000000000000001,
+      "continuation": 3.146249999999998,
+      "objective": 2,
+      "posture": 0
+     }
+    ],
+    "safe": [
+     "SP-S",
+     {
+      "Q": 1.5462499999999983,
+      "farm": -0.4,
+      "plates": 0.0,
+      "gank": -0.12499999999999997,
+      "continuation": 2.0712499999999983,
+      "objective": 0,
+      "posture": 1
+     }
+    ]
+   },
+   "nodes": 6445
+  },
+  "mass 4, defender 0, vision yes, 8 turns left": {
+   "mass": 4,
+   "defender": 0,
+   "vision": 1,
+   "remaining": 8,
+   "value": 5.116249999999999,
+   "A": {
+    "SP-C+P": 1.0
+   },
+   "B": {
+    "SP-S": 1.0
+   },
+   "actions": {
+    "SP-S": {
+     "Q": 4.174999999999999,
+     "farm": -0.4,
+     "plates": 0.0,
+     "gank": 0.53125,
+     "continuation": 4.043749999999999,
+     "objective": 0,
+     "posture": 1
+    },
+    "SH-S": {
+     "Q": 4.174999999999999,
+     "farm": -0.4,
+     "plates": 0.0,
+     "gank": 0.53125,
+     "continuation": 4.043749999999999,
+     "objective": 0,
+     "posture": 1
+    },
+    "SP-C+P": {
+     "Q": 5.116249999999999,
+     "farm": -0.34,
+     "plates": 1.0,
+     "gank": 0.4125,
+     "continuation": 4.043749999999999,
+     "objective": 1,
+     "posture": 0
+    },
+    "SH-C+P": {
+     "Q": 5.078749999999999,
+     "farm": -0.34,
+     "plates": 1.0,
+     "gank": 0.375,
+     "continuation": 4.043749999999999,
+     "objective": 1,
+     "posture": 0
+    },
+    "SP-C+V": {
+     "Q": 4.178749999999999,
+     "farm": -0.34,
+     "plates": 0.0,
+     "gank": 0.4125,
+     "continuation": 4.106249999999999,
+     "objective": 2,
+     "posture": 0
+    },
+    "SH-C+V": {
+     "Q": 4.141249999999999,
+     "farm": -0.34,
+     "plates": 0.0,
+     "gank": 0.375,
+     "continuation": 4.106249999999999,
+     "objective": 2,
+     "posture": 0
+    }
+   },
+   "best": {
+    "pressure": [
+     "SP-C+P",
+     {
+      "Q": 5.116249999999999,
+      "farm": -0.34,
+      "plates": 1.0,
+      "gank": 0.4125,
+      "continuation": 4.043749999999999,
+      "objective": 1,
+      "posture": 0
+     }
+    ],
+    "vision": [
+     "SP-C+V",
+     {
+      "Q": 4.178749999999999,
+      "farm": -0.34,
+      "plates": 0.0,
+      "gank": 0.4125,
+      "continuation": 4.106249999999999,
+      "objective": 2,
+      "posture": 0
+     }
+    ],
+    "safe": [
+     "SP-S",
+     {
+      "Q": 4.174999999999999,
+      "farm": -0.4,
+      "plates": 0.0,
+      "gank": 0.53125,
+      "continuation": 4.043749999999999,
+      "objective": 0,
+      "posture": 1
+     }
+    ]
+   },
+   "nodes": 425
+  },
+  "mass 4, defender 0, vision yes, 16 turns left": {
+   "mass": 4,
+   "defender": 0,
+   "vision": 1,
+   "remaining": 16,
+   "value": 4.156249999999998,
+   "A": {
+    "SP-C+P": 1.0
+   },
+   "B": {
+    "SP-S": 1.0
+   },
+   "actions": {
+    "SP-S": {
+     "Q": 3.2149999999999985,
+     "farm": -0.4,
+     "plates": 0.0,
+     "gank": 0.53125,
+     "continuation": 3.0837499999999984,
+     "objective": 0,
+     "posture": 1
+    },
+    "SH-S": {
+     "Q": 3.2149999999999985,
+     "farm": -0.4,
+     "plates": 0.0,
+     "gank": 0.53125,
+     "continuation": 3.0837499999999984,
+     "objective": 0,
+     "posture": 1
+    },
+    "SP-C+P": {
+     "Q": 4.156249999999998,
+     "farm": -0.34,
+     "plates": 1.0,
+     "gank": 0.4125,
+     "continuation": 3.0837499999999984,
+     "objective": 1,
+     "posture": 0
+    },
+    "SH-C+P": {
+     "Q": 4.118749999999999,
+     "farm": -0.34,
+     "plates": 1.0,
+     "gank": 0.375,
+     "continuation": 3.0837499999999984,
+     "objective": 1,
+     "posture": 0
+    },
+    "SP-C+V": {
+     "Q": 3.2187499999999982,
+     "farm": -0.34,
+     "plates": 0.0,
+     "gank": 0.4125,
+     "continuation": 3.146249999999998,
+     "objective": 2,
+     "posture": 0
+    },
+    "SH-C+V": {
+     "Q": 3.1812499999999986,
+     "farm": -0.34,
+     "plates": 0.0,
+     "gank": 0.375,
+     "continuation": 3.1462499999999984,
+     "objective": 2,
+     "posture": 0
+    }
+   },
+   "best": {
+    "pressure": [
+     "SP-C+P",
+     {
+      "Q": 4.156249999999998,
+      "farm": -0.34,
+      "plates": 1.0,
+      "gank": 0.4125,
+      "continuation": 3.0837499999999984,
+      "objective": 1,
+      "posture": 0
+     }
+    ],
+    "vision": [
+     "SP-C+V",
+     {
+      "Q": 3.2187499999999982,
+      "farm": -0.34,
+      "plates": 0.0,
+      "gank": 0.4125,
+      "continuation": 3.146249999999998,
+      "objective": 2,
+      "posture": 0
+     }
+    ],
+    "safe": [
+     "SP-S",
+     {
+      "Q": 3.2149999999999985,
+      "farm": -0.4,
+      "plates": 0.0,
+      "gank": 0.53125,
+      "continuation": 3.0837499999999984,
+      "objective": 0,
+      "posture": 1
+     }
+    ]
+   },
+   "nodes": 6445
+  },
+  "mass 4, defender 4, vision no, 8 turns left": {
+   "mass": 4,
+   "defender": 4,
+   "vision": 0,
+   "remaining": 8,
+   "value": 3.52625,
+   "A": {
+    "SP-C+V": 1.0
+   },
+   "B": {
+    "SP-S": 1.0
+   },
+   "actions": {
+    "SP-S": {
+     "Q": 2.9287500000000004,
+     "farm": -0.4,
+     "plates": 0.0,
+     "gank": -0.12499999999999997,
+     "continuation": 3.4537500000000003,
+     "objective": 0,
+     "posture": 1
+    },
+    "SH-S": {
+     "Q": 2.9287500000000004,
+     "farm": -0.4,
+     "plates": 0.0,
+     "gank": -0.12499999999999997,
+     "continuation": 3.4537500000000003,
+     "objective": 0,
+     "posture": 1
+    },
+    "SP-C+P": {
+     "Q": 3.4974999999999996,
+     "farm": -0.21500000000000002,
+     "plates": 1.0,
+     "gank": -0.6000000000000001,
+     "continuation": 3.3125,
+     "objective": 1,
+     "posture": 0
+    },
+    "SH-C+P": {
+     "Q": 3.3475,
+     "farm": -0.21500000000000002,
+     "plates": 1.0,
+     "gank": -0.75,
+     "continuation": 3.3125,
+     "objective": 1,
+     "posture": 0
+    },
+    "SP-C+V": {
+     "Q": 3.52625,
+     "farm": -0.34,
+     "plates": 0.0,
+     "gank": -0.6000000000000001,
+     "continuation": 4.4662500000000005,
+     "objective": 2,
+     "posture": 0
+    },
+    "SH-C+V": {
+     "Q": 3.3762500000000006,
+     "farm": -0.34,
+     "plates": 0.0,
+     "gank": -0.75,
+     "continuation": 4.4662500000000005,
+     "objective": 2,
+     "posture": 0
+    }
+   },
+   "best": {
+    "pressure": [
+     "SP-C+P",
+     {
+      "Q": 3.4974999999999996,
+      "farm": -0.21500000000000002,
+      "plates": 1.0,
+      "gank": -0.6000000000000001,
+      "continuation": 3.3125,
+      "objective": 1,
+      "posture": 0
+     }
+    ],
+    "vision": [
+     "SP-C+V",
+     {
+      "Q": 3.52625,
+      "farm": -0.34,
+      "plates": 0.0,
+      "gank": -0.6000000000000001,
+      "continuation": 4.4662500000000005,
+      "objective": 2,
+      "posture": 0
+     }
+    ],
+    "safe": [
+     "SP-S",
+     {
+      "Q": 2.9287500000000004,
+      "farm": -0.4,
+      "plates": 0.0,
+      "gank": -0.12499999999999997,
+      "continuation": 3.4537500000000003,
+      "objective": 0,
+      "posture": 1
+     }
+    ]
+   },
+   "nodes": 851
+  },
+  "mass 4, defender 4, vision no, 16 turns left": {
+   "mass": 4,
+   "defender": 4,
+   "vision": 0,
+   "remaining": 16,
+   "value": 3.5037499999999993,
+   "A": {
+    "SP-C+V": 1.0
+   },
+   "B": {
+    "SP-S": 1.0
+   },
+   "actions": {
+    "SP-S": {
+     "Q": 2.9062499999999996,
+     "farm": -0.4,
+     "plates": 0.0,
+     "gank": -0.12499999999999997,
+     "continuation": 3.4312499999999995,
+     "objective": 0,
+     "posture": 1
+    },
+    "SH-S": {
+     "Q": 2.9062499999999996,
+     "farm": -0.4,
+     "plates": 0.0,
+     "gank": -0.12499999999999997,
+     "continuation": 3.4312499999999995,
+     "objective": 0,
+     "posture": 1
+    },
+    "SP-C+P": {
+     "Q": 2.459999999999998,
+     "farm": -0.21500000000000002,
+     "plates": 1.0,
+     "gank": -0.6000000000000001,
+     "continuation": 2.274999999999998,
+     "objective": 1,
+     "posture": 0
+    },
+    "SH-C+P": {
+     "Q": 2.3099999999999987,
+     "farm": -0.21500000000000002,
+     "plates": 1.0,
+     "gank": -0.75,
+     "continuation": 2.2749999999999986,
+     "objective": 1,
+     "posture": 0
+    },
+    "SP-C+V": {
+     "Q": 3.5037499999999993,
+     "farm": -0.34,
+     "plates": 0.0,
+     "gank": -0.6000000000000001,
+     "continuation": 4.44375,
+     "objective": 2,
+     "posture": 0
+    },
+    "SH-C+V": {
+     "Q": 3.35375,
+     "farm": -0.34,
+     "plates": 0.0,
+     "gank": -0.75,
+     "continuation": 4.44375,
+     "objective": 2,
+     "posture": 0
+    }
+   },
+   "best": {
+    "pressure": [
+     "SP-C+P",
+     {
+      "Q": 2.459999999999998,
+      "farm": -0.21500000000000002,
+      "plates": 1.0,
+      "gank": -0.6000000000000001,
+      "continuation": 2.274999999999998,
+      "objective": 1,
+      "posture": 0
+     }
+    ],
+    "vision": [
+     "SP-C+V",
+     {
+      "Q": 3.5037499999999993,
+      "farm": -0.34,
+      "plates": 0.0,
+      "gank": -0.6000000000000001,
+      "continuation": 4.44375,
+      "objective": 2,
+      "posture": 0
+     }
+    ],
+    "safe": [
+     "SP-S",
+     {
+      "Q": 2.9062499999999996,
+      "farm": -0.4,
+      "plates": 0.0,
+      "gank": -0.12499999999999997,
+      "continuation": 3.4312499999999995,
+      "objective": 0,
+      "posture": 1
+     }
+    ]
+   },
+   "nodes": 8220
+  },
+  "mass 4, defender 4, vision yes, 8 turns left": {
+   "mass": 4,
+   "defender": 4,
+   "vision": 1,
+   "remaining": 8,
+   "value": 5.5225,
+   "A": {
+    "SP-C+P": 1.0
+   },
+   "B": {
+    "SP-S": 1.0
+   },
+   "actions": {
+    "SP-S": {
+     "Q": 4.5975,
+     "farm": -0.4,
+     "plates": 0.0,
+     "gank": 0.53125,
+     "continuation": 4.4662500000000005,
+     "objective": 0,
+     "posture": 1
+    },
+    "SH-S": {
+     "Q": 4.5975,
+     "farm": -0.4,
+     "plates": 0.0,
+     "gank": 0.53125,
+     "continuation": 4.4662500000000005,
+     "objective": 0,
+     "posture": 1
+    },
+    "SP-C+P": {
+     "Q": 5.5225,
+     "farm": -0.21500000000000002,
+     "plates": 1.0,
+     "gank": 0.4125,
+     "continuation": 4.325,
+     "objective": 1,
+     "posture": 0
+    },
+    "SH-C+P": {
+     "Q": 5.485,
+     "farm": -0.21500000000000002,
+     "plates": 1.0,
+     "gank": 0.375,
+     "continuation": 4.325,
+     "objective": 1,
+     "posture": 0
+    },
+    "SP-C+V": {
+     "Q": 4.53875,
+     "farm": -0.34,
+     "plates": 0.0,
+     "gank": 0.4125,
+     "continuation": 4.4662500000000005,
+     "objective": 2,
+     "posture": 0
+    },
+    "SH-C+V": {
+     "Q": 4.501250000000001,
+     "farm": -0.34,
+     "plates": 0.0,
+     "gank": 0.375,
+     "continuation": 4.4662500000000005,
+     "objective": 2,
+     "posture": 0
+    }
+   },
+   "best": {
+    "pressure": [
+     "SP-C+P",
+     {
+      "Q": 5.5225,
+      "farm": -0.21500000000000002,
+      "plates": 1.0,
+      "gank": 0.4125,
+      "continuation": 4.325,
+      "objective": 1,
+      "posture": 0
+     }
+    ],
+    "vision": [
+     "SP-C+V",
+     {
+      "Q": 4.53875,
+      "farm": -0.34,
+      "plates": 0.0,
+      "gank": 0.4125,
+      "continuation": 4.4662500000000005,
+      "objective": 2,
+      "posture": 0
+     }
+    ],
+    "safe": [
+     "SP-S",
+     {
+      "Q": 4.5975,
+      "farm": -0.4,
+      "plates": 0.0,
+      "gank": 0.53125,
+      "continuation": 4.4662500000000005,
+      "objective": 0,
+      "posture": 1
+     }
+    ]
+   },
+   "nodes": 851
+  },
+  "mass 4, defender 4, vision yes, 16 turns left": {
+   "mass": 4,
+   "defender": 4,
+   "vision": 1,
+   "remaining": 16,
+   "value": 4.574999999999999,
+   "A": {
+    "SP-S": 1.0
+   },
+   "B": {
+    "SP-S": 1.0
+   },
+   "actions": {
+    "SP-S": {
+     "Q": 4.574999999999999,
+     "farm": -0.4,
+     "plates": 0.0,
+     "gank": 0.53125,
+     "continuation": 4.44375,
+     "objective": 0,
+     "posture": 1
+    },
+    "SH-S": {
+     "Q": 4.574999999999999,
+     "farm": -0.4,
+     "plates": 0.0,
+     "gank": 0.53125,
+     "continuation": 4.44375,
+     "objective": 0,
+     "posture": 1
+    },
+    "SP-C+P": {
+     "Q": 4.4849999999999985,
+     "farm": -0.21500000000000002,
+     "plates": 1.0,
+     "gank": 0.4125,
+     "continuation": 3.2874999999999988,
+     "objective": 1,
+     "posture": 0
+    },
+    "SH-C+P": {
+     "Q": 4.447499999999999,
+     "farm": -0.21500000000000002,
+     "plates": 1.0,
+     "gank": 0.375,
+     "continuation": 3.2874999999999988,
+     "objective": 1,
+     "posture": 0
+    },
+    "SP-C+V": {
+     "Q": 4.516249999999999,
+     "farm": -0.34,
+     "plates": 0.0,
+     "gank": 0.4125,
+     "continuation": 4.44375,
+     "objective": 2,
+     "posture": 0
+    },
+    "SH-C+V": {
+     "Q": 4.47875,
+     "farm": -0.34,
+     "plates": 0.0,
+     "gank": 0.375,
+     "continuation": 4.44375,
+     "objective": 2,
+     "posture": 0
+    }
+   },
+   "best": {
+    "pressure": [
+     "SP-C+P",
+     {
+      "Q": 4.4849999999999985,
+      "farm": -0.21500000000000002,
+      "plates": 1.0,
+      "gank": 0.4125,
+      "continuation": 3.2874999999999988,
+      "objective": 1,
+      "posture": 0
+     }
+    ],
+    "vision": [
+     "SP-C+V",
+     {
+      "Q": 4.516249999999999,
+      "farm": -0.34,
+      "plates": 0.0,
+      "gank": 0.4125,
+      "continuation": 4.44375,
+      "objective": 2,
+      "posture": 0
+     }
+    ],
+    "safe": [
+     "SP-S",
+     {
+      "Q": 4.574999999999999,
+      "farm": -0.4,
+      "plates": 0.0,
+      "gank": 0.53125,
+      "continuation": 4.44375,
+      "objective": 0,
+      "posture": 1
+     }
+    ]
+   },
+   "nodes": 8220
+  },
+  "mass 4, defender 8, vision no, 8 turns left": {
+   "mass": 4,
+   "defender": 8,
+   "vision": 0,
+   "remaining": 8,
+   "value": 3.396249999999999,
+   "A": {
+    "SP-C+V": 1.0
+   },
+   "B": {
+    "SP-S": 1.0
+   },
+   "actions": {
+    "SP-S": {
+     "Q": 2.598750000000001,
+     "farm": -0.4,
+     "plates": 0.0,
+     "gank": -0.32499999999999984,
+     "continuation": 3.3237500000000004,
+     "objective": 0,
+     "posture": 1
+    },
+    "SH-S": {
+     "Q": 2.598750000000001,
+     "farm": -0.4,
+     "plates": 0.0,
+     "gank": -0.32499999999999984,
+     "continuation": 3.3237500000000004,
+     "objective": 0,
+     "posture": 1
+    },
+    "SP-C+P": {
+     "Q": 3.246249999999999,
+     "farm": -0.21500000000000002,
+     "plates": 1.0,
+     "gank": -0.8000000000000002,
+     "continuation": 3.2612499999999986,
+     "objective": 1,
+     "posture": 0
+    },
+    "SH-C+P": {
+     "Q": 3.096249999999999,
+     "farm": -0.21500000000000002,
+     "plates": 1.0,
+     "gank": -0.95,
+     "continuation": 3.2612499999999986,
+     "objective": 1,
+     "posture": 0
+    },
+    "SP-C+V": {
+     "Q": 3.396249999999999,
+     "farm": -0.34,
+     "plates": 0.0,
+     "gank": -0.8000000000000002,
+     "continuation": 4.536249999999999,
+     "objective": 2,
+     "posture": 0
+    },
+    "SH-C+V": {
+     "Q": 3.246249999999999,
+     "farm": -0.34,
+     "plates": 0.0,
+     "gank": -0.95,
+     "continuation": 4.536249999999999,
+     "objective": 2,
+     "posture": 0
+    }
+   },
+   "best": {
+    "pressure": [
+     "SP-C+P",
+     {
+      "Q": 3.246249999999999,
+      "farm": -0.21500000000000002,
+      "plates": 1.0,
+      "gank": -0.8000000000000002,
+      "continuation": 3.2612499999999986,
+      "objective": 1,
+      "posture": 0
+     }
+    ],
+    "vision": [
+     "SP-C+V",
+     {
+      "Q": 3.396249999999999,
+      "farm": -0.34,
+      "plates": 0.0,
+      "gank": -0.8000000000000002,
+      "continuation": 4.536249999999999,
+      "objective": 2,
+      "posture": 0
+     }
+    ],
+    "safe": [
+     "SP-S",
+     {
+      "Q": 2.598750000000001,
+      "farm": -0.4,
+      "plates": 0.0,
+      "gank": -0.32499999999999984,
+      "continuation": 3.3237500000000004,
+      "objective": 0,
+      "posture": 1
+     }
+    ]
+   },
+   "nodes": 772
+  },
+  "mass 4, defender 8, vision no, 16 turns left": {
+   "mass": 4,
+   "defender": 8,
+   "vision": 0,
+   "remaining": 16,
+   "value": 4.0392335299223845,
+   "A": {
+    "SP-C+V": 1.0
+   },
+   "B": {
+    "SP-S": 1.0
+   },
+   "actions": {
+    "SP-S": {
+     "Q": 3.366733529922385,
+     "farm": -0.4,
+     "plates": 0.0,
+     "gank": -0.32499999999999984,
+     "continuation": 4.091733529922385,
+     "objective": 0,
+     "posture": 1
+    },
+    "SH-S": {
+     "Q": 3.366733529922385,
+     "farm": -0.4,
+     "plates": 0.0,
+     "gank": -0.32499999999999984,
+     "continuation": 4.091733529922385,
+     "objective": 0,
+     "posture": 1
+    },
+    "SP-C+P": {
+     "Q": 3.7125850366135404,
+     "farm": -0.21500000000000002,
+     "plates": 1.0,
+     "gank": -0.8000000000000002,
+     "continuation": 3.72758503661354,
+     "objective": 1,
+     "posture": 0
+    },
+    "SH-C+P": {
+     "Q": 3.5625850366135405,
+     "farm": -0.21500000000000002,
+     "plates": 1.0,
+     "gank": -0.95,
+     "continuation": 3.72758503661354,
+     "objective": 1,
+     "posture": 0
+    },
+    "SP-C+V": {
+     "Q": 4.0392335299223845,
+     "farm": -0.34,
+     "plates": 0.0,
+     "gank": -0.8000000000000002,
+     "continuation": 5.179233529922384,
+     "objective": 2,
+     "posture": 0
+    },
+    "SH-C+V": {
+     "Q": 3.889233529922385,
+     "farm": -0.34,
+     "plates": 0.0,
+     "gank": -0.95,
+     "continuation": 5.179233529922385,
+     "objective": 2,
+     "posture": 0
+    }
+   },
+   "best": {
+    "pressure": [
+     "SP-C+P",
+     {
+      "Q": 3.7125850366135404,
+      "farm": -0.21500000000000002,
+      "plates": 1.0,
+      "gank": -0.8000000000000002,
+      "continuation": 3.72758503661354,
+      "objective": 1,
+      "posture": 0
+     }
+    ],
+    "vision": [
+     "SP-C+V",
+     {
+      "Q": 4.0392335299223845,
+      "farm": -0.34,
+      "plates": 0.0,
+      "gank": -0.8000000000000002,
+      "continuation": 5.179233529922384,
+      "objective": 2,
+      "posture": 0
+     }
+    ],
+    "safe": [
+     "SP-S",
+     {
+      "Q": 3.366733529922385,
+      "farm": -0.4,
+      "plates": 0.0,
+      "gank": -0.32499999999999984,
+      "continuation": 4.091733529922385,
+      "objective": 0,
+      "posture": 1
+     }
+    ]
+   },
+   "nodes": 18776
+  },
+  "mass 4, defender 8, vision yes, 8 turns left": {
+   "mass": 4,
+   "defender": 8,
+   "vision": 1,
+   "remaining": 8,
+   "value": 5.421249999999999,
+   "A": {
+    "SP-C+P": 1.0
+   },
+   "B": {
+    "SP-S": 1.0
+   },
+   "actions": {
+    "SP-S": {
+     "Q": 4.4175,
+     "farm": -0.4,
+     "plates": 0.0,
+     "gank": 0.4062500000000001,
+     "continuation": 4.411250000000001,
+     "objective": 0,
+     "posture": 1
+    },
+    "SH-S": {
+     "Q": 4.4175,
+     "farm": -0.4,
+     "plates": 0.0,
+     "gank": 0.4062500000000001,
+     "continuation": 4.411250000000001,
+     "objective": 0,
+     "posture": 1
+    },
+    "SP-C+P": {
+     "Q": 5.421249999999999,
+     "farm": -0.21500000000000002,
+     "plates": 1.0,
+     "gank": 0.2875,
+     "continuation": 4.348749999999999,
+     "objective": 1,
+     "posture": 0
+    },
+    "SH-C+P": {
+     "Q": 5.383749999999999,
+     "farm": -0.21500000000000002,
+     "plates": 1.0,
+     "gank": 0.25,
+     "continuation": 4.348749999999999,
+     "objective": 1,
+     "posture": 0
+    },
+    "SP-C+V": {
+     "Q": 4.483749999999999,
+     "farm": -0.34,
+     "plates": 0.0,
+     "gank": 0.2875,
+     "continuation": 4.536249999999999,
+     "objective": 2,
+     "posture": 0
+    },
+    "SH-C+V": {
+     "Q": 4.446249999999999,
+     "farm": -0.34,
+     "plates": 0.0,
+     "gank": 0.25,
+     "continuation": 4.536249999999999,
+     "objective": 2,
+     "posture": 0
+    }
+   },
+   "best": {
+    "pressure": [
+     "SP-C+P",
+     {
+      "Q": 5.421249999999999,
+      "farm": -0.21500000000000002,
+      "plates": 1.0,
+      "gank": 0.2875,
+      "continuation": 4.348749999999999,
+      "objective": 1,
+      "posture": 0
+     }
+    ],
+    "vision": [
+     "SP-C+V",
+     {
+      "Q": 4.483749999999999,
+      "farm": -0.34,
+      "plates": 0.0,
+      "gank": 0.2875,
+      "continuation": 4.536249999999999,
+      "objective": 2,
+      "posture": 0
+     }
+    ],
+    "safe": [
+     "SP-S",
+     {
+      "Q": 4.4175,
+      "farm": -0.4,
+      "plates": 0.0,
+      "gank": 0.4062500000000001,
+      "continuation": 4.411250000000001,
+      "objective": 0,
+      "posture": 1
+     }
+    ]
+   },
+   "nodes": 772
+  },
+  "mass 4, defender 8, vision yes, 16 turns left": {
+   "mass": 4,
+   "defender": 8,
+   "vision": 1,
+   "remaining": 16,
+   "value": 5.88758503661354,
+   "A": {
+    "SP-C+P": 1.0
+   },
+   "B": {
+    "SP-S": 1.0
+   },
+   "actions": {
+    "SP-S": {
+     "Q": 5.185483529922385,
+     "farm": -0.4,
+     "plates": 0.0,
+     "gank": 0.4062500000000001,
+     "continuation": 5.179233529922385,
+     "objective": 0,
+     "posture": 1
+    },
+    "SH-S": {
+     "Q": 5.185483529922385,
+     "farm": -0.4,
+     "plates": 0.0,
+     "gank": 0.4062500000000001,
+     "continuation": 5.179233529922385,
+     "objective": 0,
+     "posture": 1
+    },
+    "SP-C+P": {
+     "Q": 5.88758503661354,
+     "farm": -0.21500000000000002,
+     "plates": 1.0,
+     "gank": 0.2875,
+     "continuation": 4.8150850366135405,
+     "objective": 1,
+     "posture": 0
+    },
+    "SH-C+P": {
+     "Q": 5.850085036613541,
+     "farm": -0.21500000000000002,
+     "plates": 1.0,
+     "gank": 0.25,
+     "continuation": 4.8150850366135405,
+     "objective": 1,
+     "posture": 0
+    },
+    "SP-C+V": {
+     "Q": 5.126733529922385,
+     "farm": -0.34,
+     "plates": 0.0,
+     "gank": 0.2875,
+     "continuation": 5.179233529922385,
+     "objective": 2,
+     "posture": 0
+    },
+    "SH-C+V": {
+     "Q": 5.089233529922385,
+     "farm": -0.34,
+     "plates": 0.0,
+     "gank": 0.25,
+     "continuation": 5.179233529922385,
+     "objective": 2,
+     "posture": 0
+    }
+   },
+   "best": {
+    "pressure": [
+     "SP-C+P",
+     {
+      "Q": 5.88758503661354,
+      "farm": -0.21500000000000002,
+      "plates": 1.0,
+      "gank": 0.2875,
+      "continuation": 4.8150850366135405,
+      "objective": 1,
+      "posture": 0
+     }
+    ],
+    "vision": [
+     "SP-C+V",
+     {
+      "Q": 5.126733529922385,
+      "farm": -0.34,
+      "plates": 0.0,
+      "gank": 0.2875,
+      "continuation": 5.179233529922385,
+      "objective": 2,
+      "posture": 0
+     }
+    ],
+    "safe": [
+     "SP-S",
+     {
+      "Q": 5.185483529922385,
+      "farm": -0.4,
+      "plates": 0.0,
+      "gank": 0.4062500000000001,
+      "continuation": 5.179233529922385,
+      "objective": 0,
+      "posture": 1
+     }
+    ]
+   },
+   "nodes": 18776
+  },
+  "mass 8, defender 0, vision no, 8 turns left": {
+   "mass": 8,
+   "defender": 0,
+   "vision": 0,
+   "remaining": 8,
+   "value": 4.602499999999998,
+   "A": {
+    "SP-C+V": 1.0
+   },
+   "B": {
+    "SP-S": 1.0
+   },
+   "actions": {
+    "SP-S": {
+     "Q": 4.004999999999998,
+     "farm": -0.4,
+     "plates": 0.0,
+     "gank": -0.12499999999999997,
+     "continuation": 4.5299999999999985,
+     "objective": 0,
+     "posture": 1
+    },
+    "SH-S": {
+     "Q": 4.004999999999998,
+     "farm": -0.4,
+     "plates": 0.0,
+     "gank": -0.12499999999999997,
+     "continuation": 4.5299999999999985,
+     "objective": 0,
+     "posture": 1
+    },
+    "SP-C+P": {
+     "Q": 3.589999999999998,
+     "farm": -0.34,
+     "plates": 1.0,
+     "gank": -0.6000000000000001,
+     "continuation": 3.5299999999999976,
+     "objective": 1,
+     "posture": 0
+    },
+    "SH-C+P": {
+     "Q": 3.4399999999999986,
+     "farm": -0.34,
+     "plates": 1.0,
+     "gank": -0.75,
+     "continuation": 3.5299999999999985,
+     "objective": 1,
+     "posture": 0
+    },
+    "SP-C+V": {
+     "Q": 4.602499999999998,
+     "farm": -0.34,
+     "plates": 0.0,
+     "gank": -0.6000000000000001,
+     "continuation": 5.542499999999999,
+     "objective": 2,
+     "posture": 0
+    },
+    "SH-C+V": {
+     "Q": 4.452499999999999,
+     "farm": -0.34,
+     "plates": 0.0,
+     "gank": -0.75,
+     "continuation": 5.542499999999999,
+     "objective": 2,
+     "posture": 0
+    }
+   },
+   "best": {
+    "pressure": [
+     "SP-C+P",
+     {
+      "Q": 3.589999999999998,
+      "farm": -0.34,
+      "plates": 1.0,
+      "gank": -0.6000000000000001,
+      "continuation": 3.5299999999999976,
+      "objective": 1,
+      "posture": 0
+     }
+    ],
+    "vision": [
+     "SP-C+V",
+     {
+      "Q": 4.602499999999998,
+      "farm": -0.34,
+      "plates": 0.0,
+      "gank": -0.6000000000000001,
+      "continuation": 5.542499999999999,
+      "objective": 2,
+      "posture": 0
+     }
+    ],
+    "safe": [
+     "SP-S",
+     {
+      "Q": 4.004999999999998,
+      "farm": -0.4,
+      "plates": 0.0,
+      "gank": -0.12499999999999997,
+      "continuation": 4.5299999999999985,
+      "objective": 0,
+      "posture": 1
+     }
+    ]
+   },
+   "nodes": 1105
+  },
+  "mass 8, defender 0, vision no, 16 turns left": {
+   "mass": 8,
+   "defender": 0,
+   "vision": 0,
+   "remaining": 16,
+   "value": 6.171249999999998,
+   "A": {
+    "SP-C+V": 1.0
+   },
+   "B": {
+    "SP-S": 1.0
+   },
+   "actions": {
+    "SP-S": {
+     "Q": 5.573749999999998,
+     "farm": -0.4,
+     "plates": 0.0,
+     "gank": -0.12499999999999997,
+     "continuation": 6.098749999999998,
+     "objective": 0,
+     "posture": 1
+    },
+    "SH-S": {
+     "Q": 5.573749999999998,
+     "farm": -0.4,
+     "plates": 0.0,
+     "gank": -0.12499999999999997,
+     "continuation": 6.098749999999998,
+     "objective": 0,
+     "posture": 1
+    },
+    "SP-C+P": {
+     "Q": 5.217499999999998,
+     "farm": -0.34,
+     "plates": 1.0,
+     "gank": -0.6000000000000001,
+     "continuation": 5.157499999999997,
+     "objective": 1,
+     "posture": 0
+    },
+    "SH-C+P": {
+     "Q": 5.067499999999998,
+     "farm": -0.34,
+     "plates": 1.0,
+     "gank": -0.75,
+     "continuation": 5.157499999999998,
+     "objective": 1,
+     "posture": 0
+    },
+    "SP-C+V": {
+     "Q": 6.171249999999998,
+     "farm": -0.34,
+     "plates": 0.0,
+     "gank": -0.6000000000000001,
+     "continuation": 7.111249999999998,
+     "objective": 2,
+     "posture": 0
+    },
+    "SH-C+V": {
+     "Q": 6.021249999999998,
+     "farm": -0.34,
+     "plates": 0.0,
+     "gank": -0.75,
+     "continuation": 7.111249999999998,
+     "objective": 2,
+     "posture": 0
+    }
+   },
+   "best": {
+    "pressure": [
+     "SP-C+P",
+     {
+      "Q": 5.217499999999998,
+      "farm": -0.34,
+      "plates": 1.0,
+      "gank": -0.6000000000000001,
+      "continuation": 5.157499999999997,
+      "objective": 1,
+      "posture": 0
+     }
+    ],
+    "vision": [
+     "SP-C+V",
+     {
+      "Q": 6.171249999999998,
+      "farm": -0.34,
+      "plates": 0.0,
+      "gank": -0.6000000000000001,
+      "continuation": 7.111249999999998,
+      "objective": 2,
+      "posture": 0
+     }
+    ],
+    "safe": [
+     "SP-S",
+     {
+      "Q": 5.573749999999998,
+      "farm": -0.4,
+      "plates": 0.0,
+      "gank": -0.12499999999999997,
+      "continuation": 6.098749999999998,
+      "objective": 0,
+      "posture": 1
+     }
+    ]
+   },
+   "nodes": 11064
+  },
+  "mass 8, defender 0, vision yes, 8 turns left": {
+   "mass": 8,
+   "defender": 0,
+   "vision": 1,
+   "remaining": 8,
+   "value": 5.673749999999998,
+   "A": {
+    "SP-S": 1.0
+   },
+   "B": {
+    "SP-S": 1.0
+   },
+   "actions": {
+    "SP-S": {
+     "Q": 5.673749999999998,
+     "farm": -0.4,
+     "plates": 0.0,
+     "gank": 0.53125,
+     "continuation": 5.542499999999999,
+     "objective": 0,
+     "posture": 1
+    },
+    "SH-S": {
+     "Q": 5.673749999999998,
+     "farm": -0.4,
+     "plates": 0.0,
+     "gank": 0.53125,
+     "continuation": 5.542499999999999,
+     "objective": 0,
+     "posture": 1
+    },
+    "SP-C+P": {
+     "Q": 5.614999999999998,
+     "farm": -0.34,
+     "plates": 1.0,
+     "gank": 0.4125,
+     "continuation": 4.542499999999999,
+     "objective": 1,
+     "posture": 0
+    },
+    "SH-C+P": {
+     "Q": 5.577499999999999,
+     "farm": -0.34,
+     "plates": 1.0,
+     "gank": 0.375,
+     "continuation": 4.542499999999999,
+     "objective": 1,
+     "posture": 0
+    },
+    "SP-C+V": {
+     "Q": 5.614999999999998,
+     "farm": -0.34,
+     "plates": 0.0,
+     "gank": 0.4125,
+     "continuation": 5.542499999999999,
+     "objective": 2,
+     "posture": 0
+    },
+    "SH-C+V": {
+     "Q": 5.577499999999999,
+     "farm": -0.34,
+     "plates": 0.0,
+     "gank": 0.375,
+     "continuation": 5.542499999999999,
+     "objective": 2,
+     "posture": 0
+    }
+   },
+   "best": {
+    "pressure": [
+     "SP-C+P",
+     {
+      "Q": 5.614999999999998,
+      "farm": -0.34,
+      "plates": 1.0,
+      "gank": 0.4125,
+      "continuation": 4.542499999999999,
+      "objective": 1,
+      "posture": 0
+     }
+    ],
+    "vision": [
+     "SP-C+V",
+     {
+      "Q": 5.614999999999998,
+      "farm": -0.34,
+      "plates": 0.0,
+      "gank": 0.4125,
+      "continuation": 5.542499999999999,
+      "objective": 2,
+      "posture": 0
+     }
+    ],
+    "safe": [
+     "SP-S",
+     {
+      "Q": 5.673749999999998,
+      "farm": -0.4,
+      "plates": 0.0,
+      "gank": 0.53125,
+      "continuation": 5.542499999999999,
+      "objective": 0,
+      "posture": 1
+     }
+    ]
+   },
+   "nodes": 1105
+  },
+  "mass 8, defender 0, vision yes, 16 turns left": {
+   "mass": 8,
+   "defender": 0,
+   "vision": 1,
+   "remaining": 16,
+   "value": 7.242499999999998,
+   "A": {
+    "SP-S": 1.0
+   },
+   "B": {
+    "SP-S": 1.0
+   },
+   "actions": {
+    "SP-S": {
+     "Q": 7.242499999999998,
+     "farm": -0.4,
+     "plates": 0.0,
+     "gank": 0.53125,
+     "continuation": 7.111249999999998,
+     "objective": 0,
+     "posture": 1
+    },
+    "SH-S": {
+     "Q": 7.242499999999998,
+     "farm": -0.4,
+     "plates": 0.0,
+     "gank": 0.53125,
+     "continuation": 7.111249999999998,
+     "objective": 0,
+     "posture": 1
+    },
+    "SP-C+P": {
+     "Q": 7.242499999999998,
+     "farm": -0.34,
+     "plates": 1.0,
+     "gank": 0.4125,
+     "continuation": 6.169999999999998,
+     "objective": 1,
+     "posture": 0
+    },
+    "SH-C+P": {
+     "Q": 7.204999999999998,
+     "farm": -0.34,
+     "plates": 1.0,
+     "gank": 0.375,
+     "continuation": 6.169999999999998,
+     "objective": 1,
+     "posture": 0
+    },
+    "SP-C+V": {
+     "Q": 7.183749999999998,
+     "farm": -0.34,
+     "plates": 0.0,
+     "gank": 0.4125,
+     "continuation": 7.111249999999998,
+     "objective": 2,
+     "posture": 0
+    },
+    "SH-C+V": {
+     "Q": 7.146249999999998,
+     "farm": -0.34,
+     "plates": 0.0,
+     "gank": 0.375,
+     "continuation": 7.111249999999998,
+     "objective": 2,
+     "posture": 0
+    }
+   },
+   "best": {
+    "pressure": [
+     "SP-C+P",
+     {
+      "Q": 7.242499999999998,
+      "farm": -0.34,
+      "plates": 1.0,
+      "gank": 0.4125,
+      "continuation": 6.169999999999998,
+      "objective": 1,
+      "posture": 0
+     }
+    ],
+    "vision": [
+     "SP-C+V",
+     {
+      "Q": 7.183749999999998,
+      "farm": -0.34,
+      "plates": 0.0,
+      "gank": 0.4125,
+      "continuation": 7.111249999999998,
+      "objective": 2,
+      "posture": 0
+     }
+    ],
+    "safe": [
+     "SP-S",
+     {
+      "Q": 7.242499999999998,
+      "farm": -0.4,
+      "plates": 0.0,
+      "gank": 0.53125,
+      "continuation": 7.111249999999998,
+      "objective": 0,
+      "posture": 1
+     }
+    ]
+   },
+   "nodes": 11064
+  },
+  "mass 8, defender 4, vision no, 8 turns left": {
+   "mass": 8,
+   "defender": 4,
+   "vision": 0,
+   "remaining": 8,
+   "value": 3.858749999999999,
+   "A": {
+    "SP-C+V": 1.0
+   },
+   "B": {
+    "SP-S": 1.0
+   },
+   "actions": {
+    "SP-S": {
+     "Q": 3.0987499999999994,
+     "farm": -0.4,
+     "plates": 0.0,
+     "gank": -0.12499999999999997,
+     "continuation": 3.6237499999999994,
+     "objective": 0,
+     "posture": 1
+    },
+    "SH-S": {
+     "Q": 3.0987499999999994,
+     "farm": -0.4,
+     "plates": 0.0,
+     "gank": -0.12499999999999997,
+     "continuation": 3.6237499999999994,
+     "objective": 0,
+     "posture": 1
+    },
+    "SP-C+P": {
+     "Q": 2.8837499999999983,
+     "farm": -0.21500000000000002,
+     "plates": 1.0,
+     "gank": -0.6000000000000001,
+     "continuation": 2.698749999999998,
+     "objective": 1,
+     "posture": 0
+    },
+    "SH-C+P": {
+     "Q": 2.733749999999999,
+     "farm": -0.21500000000000002,
+     "plates": 1.0,
+     "gank": -0.75,
+     "continuation": 2.6987499999999986,
+     "objective": 1,
+     "posture": 0
+    },
+    "SP-C+V": {
+     "Q": 3.858749999999999,
+     "farm": -0.34,
+     "plates": 0.0,
+     "gank": -0.6000000000000001,
+     "continuation": 4.798749999999998,
+     "objective": 2,
+     "posture": 0
+    },
+    "SH-C+V": {
+     "Q": 3.7087499999999993,
+     "farm": -0.34,
+     "plates": 0.0,
+     "gank": -0.75,
+     "continuation": 4.798749999999999,
+     "objective": 2,
+     "posture": 0
+    }
+   },
+   "best": {
+    "pressure": [
+     "SP-C+P",
+     {
+      "Q": 2.8837499999999983,
+      "farm": -0.21500000000000002,
+      "plates": 1.0,
+      "gank": -0.6000000000000001,
+      "continuation": 2.698749999999998,
+      "objective": 1,
+      "posture": 0
+     }
+    ],
+    "vision": [
+     "SP-C+V",
+     {
+      "Q": 3.858749999999999,
+      "farm": -0.34,
+      "plates": 0.0,
+      "gank": -0.6000000000000001,
+      "continuation": 4.798749999999998,
+      "objective": 2,
+      "posture": 0
+     }
+    ],
+    "safe": [
+     "SP-S",
+     {
+      "Q": 3.0987499999999994,
+      "farm": -0.4,
+      "plates": 0.0,
+      "gank": -0.12499999999999997,
+      "continuation": 3.6237499999999994,
+      "objective": 0,
+      "posture": 1
+     }
+    ]
+   },
+   "nodes": 1382
+  },
+  "mass 8, defender 4, vision no, 16 turns left": {
+   "mass": 8,
+   "defender": 4,
+   "vision": 0,
+   "remaining": 16,
+   "value": 4.440417462097582,
+   "A": {
+    "SP-C+V": 1.0
+   },
+   "B": {
+    "SP-S": 1.0
+   },
+   "actions": {
+    "SP-S": {
+     "Q": 3.2137499999999997,
+     "farm": -0.4,
+     "plates": 0.0,
+     "gank": -0.12499999999999997,
+     "continuation": 3.7387499999999996,
+     "objective": 0,
+     "posture": 1
+    },
+    "SH-S": {
+     "Q": 3.2137499999999997,
+     "farm": -0.4,
+     "plates": 0.0,
+     "gank": -0.12499999999999997,
+     "continuation": 3.7387499999999996,
+     "objective": 0,
+     "posture": 1
+    },
+    "SP-C+P": {
+     "Q": 3.4279174620975814,
+     "farm": -0.21500000000000002,
+     "plates": 1.0,
+     "gank": -0.6000000000000001,
+     "continuation": 3.242917462097582,
+     "objective": 1,
+     "posture": 0
+    },
+    "SH-C+P": {
+     "Q": 3.277917462097582,
+     "farm": -0.21500000000000002,
+     "plates": 1.0,
+     "gank": -0.75,
+     "continuation": 3.242917462097582,
+     "objective": 1,
+     "posture": 0
+    },
+    "SP-C+V": {
+     "Q": 4.440417462097582,
+     "farm": -0.34,
+     "plates": 0.0,
+     "gank": -0.6000000000000001,
+     "continuation": 5.380417462097581,
+     "objective": 2,
+     "posture": 0
+    },
+    "SH-C+V": {
+     "Q": 4.290417462097582,
+     "farm": -0.34,
+     "plates": 0.0,
+     "gank": -0.75,
+     "continuation": 5.380417462097582,
+     "objective": 2,
+     "posture": 0
+    }
+   },
+   "best": {
+    "pressure": [
+     "SP-C+P",
+     {
+      "Q": 3.4279174620975814,
+      "farm": -0.21500000000000002,
+      "plates": 1.0,
+      "gank": -0.6000000000000001,
+      "continuation": 3.242917462097582,
+      "objective": 1,
+      "posture": 0
+     }
+    ],
+    "vision": [
+     "SP-C+V",
+     {
+      "Q": 4.440417462097582,
+      "farm": -0.34,
+      "plates": 0.0,
+      "gank": -0.6000000000000001,
+      "continuation": 5.380417462097581,
+      "objective": 2,
+      "posture": 0
+     }
+    ],
+    "safe": [
+     "SP-S",
+     {
+      "Q": 3.2137499999999997,
+      "farm": -0.4,
+      "plates": 0.0,
+      "gank": -0.12499999999999997,
+      "continuation": 3.7387499999999996,
+      "objective": 0,
+      "posture": 1
+     }
+    ]
+   },
+   "nodes": 12829
+  },
+  "mass 8, defender 4, vision yes, 8 turns left": {
+   "mass": 8,
+   "defender": 4,
+   "vision": 1,
+   "remaining": 8,
+   "value": 4.946249999999999,
+   "A": {
+    "SP-C+P": 1.0
+   },
+   "B": {
+    "SP-S": 1.0
+   },
+   "actions": {
+    "SP-S": {
+     "Q": 4.804999999999999,
+     "farm": -0.4,
+     "plates": 0.0,
+     "gank": 0.53125,
+     "continuation": 4.673749999999999,
+     "objective": 0,
+     "posture": 1
+    },
+    "SH-S": {
+     "Q": 4.804999999999999,
+     "farm": -0.4,
+     "plates": 0.0,
+     "gank": 0.53125,
+     "continuation": 4.673749999999999,
+     "objective": 0,
+     "posture": 1
+    },
+    "SP-C+P": {
+     "Q": 4.946249999999999,
+     "farm": -0.21500000000000002,
+     "plates": 1.0,
+     "gank": 0.4125,
+     "continuation": 3.7487499999999994,
+     "objective": 1,
+     "posture": 0
+    },
+    "SH-C+P": {
+     "Q": 4.908749999999999,
+     "farm": -0.21500000000000002,
+     "plates": 1.0,
+     "gank": 0.375,
+     "continuation": 3.7487499999999985,
+     "objective": 1,
+     "posture": 0
+    },
+    "SP-C+V": {
+     "Q": 4.871249999999999,
+     "farm": -0.34,
+     "plates": 0.0,
+     "gank": 0.4125,
+     "continuation": 4.798749999999999,
+     "objective": 2,
+     "posture": 0
+    },
+    "SH-C+V": {
+     "Q": 4.833749999999999,
+     "farm": -0.34,
+     "plates": 0.0,
+     "gank": 0.375,
+     "continuation": 4.798749999999999,
+     "objective": 2,
+     "posture": 0
+    }
+   },
+   "best": {
+    "pressure": [
+     "SP-C+P",
+     {
+      "Q": 4.946249999999999,
+      "farm": -0.21500000000000002,
+      "plates": 1.0,
+      "gank": 0.4125,
+      "continuation": 3.7487499999999994,
+      "objective": 1,
+      "posture": 0
+     }
+    ],
+    "vision": [
+     "SP-C+V",
+     {
+      "Q": 4.871249999999999,
+      "farm": -0.34,
+      "plates": 0.0,
+      "gank": 0.4125,
+      "continuation": 4.798749999999999,
+      "objective": 2,
+      "posture": 0
+     }
+    ],
+    "safe": [
+     "SP-S",
+     {
+      "Q": 4.804999999999999,
+      "farm": -0.4,
+      "plates": 0.0,
+      "gank": 0.53125,
+      "continuation": 4.673749999999999,
+      "objective": 0,
+      "posture": 1
+     }
+    ]
+   },
+   "nodes": 1382
+  },
+  "mass 8, defender 4, vision yes, 16 turns left": {
+   "mass": 8,
+   "defender": 4,
+   "vision": 1,
+   "remaining": 16,
+   "value": 5.490417462097582,
+   "A": {
+    "SP-C+P": 1.0
+   },
+   "B": {
+    "SP-S": 1.0
+   },
+   "actions": {
+    "SP-S": {
+     "Q": 4.919999999999999,
+     "farm": -0.4,
+     "plates": 0.0,
+     "gank": 0.53125,
+     "continuation": 4.788749999999999,
+     "objective": 0,
+     "posture": 1
+    },
+    "SH-S": {
+     "Q": 4.919999999999999,
+     "farm": -0.4,
+     "plates": 0.0,
+     "gank": 0.53125,
+     "continuation": 4.788749999999999,
+     "objective": 0,
+     "posture": 1
+    },
+    "SP-C+P": {
+     "Q": 5.490417462097582,
+     "farm": -0.21500000000000002,
+     "plates": 1.0,
+     "gank": 0.4125,
+     "continuation": 4.2929174620975825,
+     "objective": 1,
+     "posture": 0
+    },
+    "SH-C+P": {
+     "Q": 5.452917462097583,
+     "farm": -0.21500000000000002,
+     "plates": 1.0,
+     "gank": 0.375,
+     "continuation": 4.2929174620975825,
+     "objective": 1,
+     "posture": 0
+    },
+    "SP-C+V": {
+     "Q": 5.452917462097582,
+     "farm": -0.34,
+     "plates": 0.0,
+     "gank": 0.4125,
+     "continuation": 5.380417462097582,
+     "objective": 2,
+     "posture": 0
+    },
+    "SH-C+V": {
+     "Q": 5.415417462097582,
+     "farm": -0.34,
+     "plates": 0.0,
+     "gank": 0.375,
+     "continuation": 5.380417462097582,
+     "objective": 2,
+     "posture": 0
+    }
+   },
+   "best": {
+    "pressure": [
+     "SP-C+P",
+     {
+      "Q": 5.490417462097582,
+      "farm": -0.21500000000000002,
+      "plates": 1.0,
+      "gank": 0.4125,
+      "continuation": 4.2929174620975825,
+      "objective": 1,
+      "posture": 0
+     }
+    ],
+    "vision": [
+     "SP-C+V",
+     {
+      "Q": 5.452917462097582,
+      "farm": -0.34,
+      "plates": 0.0,
+      "gank": 0.4125,
+      "continuation": 5.380417462097582,
+      "objective": 2,
+      "posture": 0
+     }
+    ],
+    "safe": [
+     "SP-S",
+     {
+      "Q": 4.919999999999999,
+      "farm": -0.4,
+      "plates": 0.0,
+      "gank": 0.53125,
+      "continuation": 4.788749999999999,
+      "objective": 0,
+      "posture": 1
+     }
+    ]
+   },
+   "nodes": 12829
+  },
+  "mass 8, defender 8, vision no, 8 turns left": {
+   "mass": 8,
+   "defender": 8,
+   "vision": 0,
+   "remaining": 8,
+   "value": 2.3007238051470584,
+   "A": {
+    "SP-C+V": 1.0
+   },
+   "B": {
+    "SP-S": 1.0
+   },
+   "actions": {
+    "SP-S": {
+     "Q": 1.5035442678774118,
+     "farm": -0.4,
+     "plates": 0.0,
+     "gank": -0.32499999999999984,
+     "continuation": 2.2285442678774117,
+     "objective": 0,
+     "posture": 1
+    },
+    "SH-S": {
+     "Q": 1.5035442678774118,
+     "farm": -0.4,
+     "plates": 0.0,
+     "gank": -0.32499999999999984,
+     "continuation": 2.2285442678774117,
+     "objective": 0,
+     "posture": 1
+    },
+    "SP-C+P": {
+     "Q": 2.0662499999999993,
+     "farm": -0.21500000000000002,
+     "plates": 1.0,
+     "gank": -0.8000000000000002,
+     "continuation": 2.0812499999999994,
+     "objective": 1,
+     "posture": 0
+    },
+    "SH-C+P": {
+     "Q": 1.9162499999999993,
+     "farm": -0.21500000000000002,
+     "plates": 1.0,
+     "gank": -0.95,
+     "continuation": 2.081249999999999,
+     "objective": 1,
+     "posture": 0
+    },
+    "SP-C+V": {
+     "Q": 2.3007238051470584,
+     "farm": -0.34,
+     "plates": 0.0,
+     "gank": -0.8000000000000002,
+     "continuation": 3.4407238051470586,
+     "objective": 2,
+     "posture": 0
+    },
+    "SH-C+V": {
+     "Q": 2.1507238051470585,
+     "farm": -0.34,
+     "plates": 0.0,
+     "gank": -0.95,
+     "continuation": 3.4407238051470586,
+     "objective": 2,
+     "posture": 0
+    }
+   },
+   "best": {
+    "pressure": [
+     "SP-C+P",
+     {
+      "Q": 2.0662499999999993,
+      "farm": -0.21500000000000002,
+      "plates": 1.0,
+      "gank": -0.8000000000000002,
+      "continuation": 2.0812499999999994,
+      "objective": 1,
+      "posture": 0
+     }
+    ],
+    "vision": [
+     "SP-C+V",
+     {
+      "Q": 2.3007238051470584,
+      "farm": -0.34,
+      "plates": 0.0,
+      "gank": -0.8000000000000002,
+      "continuation": 3.4407238051470586,
+      "objective": 2,
+      "posture": 0
+     }
+    ],
+    "safe": [
+     "SP-S",
+     {
+      "Q": 1.5035442678774118,
+      "farm": -0.4,
+      "plates": 0.0,
+      "gank": -0.32499999999999984,
+      "continuation": 2.2285442678774117,
+      "objective": 0,
+      "posture": 1
+     }
+    ]
+   },
+   "nodes": 1105
+  },
+  "mass 8, defender 8, vision no, 16 turns left": {
+   "mass": 8,
+   "defender": 8,
+   "vision": 0,
+   "remaining": 16,
+   "value": 5.127331839460064,
+   "A": {
+    "SP-C+V": 1.0
+   },
+   "B": {
+    "SP-S": 1.0
+   },
+   "actions": {
+    "SP-S": {
+     "Q": 3.0606021559276684,
+     "farm": -0.4,
+     "plates": 0.0,
+     "gank": -0.32499999999999984,
+     "continuation": 3.785602155927668,
+     "objective": 0,
+     "posture": 1
+    },
+    "SH-S": {
+     "Q": 3.0606021559276684,
+     "farm": -0.4,
+     "plates": 0.0,
+     "gank": -0.32499999999999984,
+     "continuation": 3.785602155927668,
+     "objective": 0,
+     "posture": 1
+    },
+    "SP-C+P": {
+     "Q": 4.039831839460064,
+     "farm": -0.21500000000000002,
+     "plates": 1.0,
+     "gank": -0.8000000000000002,
+     "continuation": 4.054831839460063,
+     "objective": 1,
+     "posture": 0
+    },
+    "SH-C+P": {
+     "Q": 3.889831839460064,
+     "farm": -0.21500000000000002,
+     "plates": 1.0,
+     "gank": -0.95,
+     "continuation": 4.054831839460064,
+     "objective": 1,
+     "posture": 0
+    },
+    "SP-C+V": {
+     "Q": 5.127331839460064,
+     "farm": -0.34,
+     "plates": 0.0,
+     "gank": -0.8000000000000002,
+     "continuation": 6.267331839460064,
+     "objective": 2,
+     "posture": 0
+    },
+    "SH-C+V": {
+     "Q": 4.977331839460064,
+     "farm": -0.34,
+     "plates": 0.0,
+     "gank": -0.95,
+     "continuation": 6.267331839460064,
+     "objective": 2,
+     "posture": 0
+    }
+   },
+   "best": {
+    "pressure": [
+     "SP-C+P",
+     {
+      "Q": 4.039831839460064,
+      "farm": -0.21500000000000002,
+      "plates": 1.0,
+      "gank": -0.8000000000000002,
+      "continuation": 4.054831839460063,
+      "objective": 1,
+      "posture": 0
+     }
+    ],
+    "vision": [
+     "SP-C+V",
+     {
+      "Q": 5.127331839460064,
+      "farm": -0.34,
+      "plates": 0.0,
+      "gank": -0.8000000000000002,
+      "continuation": 6.267331839460064,
+      "objective": 2,
+      "posture": 0
+     }
+    ],
+    "safe": [
+     "SP-S",
+     {
+      "Q": 3.0606021559276684,
+      "farm": -0.4,
+      "plates": 0.0,
+      "gank": -0.32499999999999984,
+      "continuation": 3.785602155927668,
+      "objective": 0,
+      "posture": 1
+     }
+    ]
+   },
+   "nodes": 26343
+  },
+  "mass 8, defender 8, vision yes, 8 turns left": {
+   "mass": 8,
+   "defender": 8,
+   "vision": 1,
+   "remaining": 8,
+   "value": 4.241249999999999,
+   "A": {
+    "SP-C+P": 1.0
+   },
+   "B": {
+    "SP-S": 1.0
+   },
+   "actions": {
+    "SP-S": {
+     "Q": 3.3222942678774117,
+     "farm": -0.4,
+     "plates": 0.0,
+     "gank": 0.4062500000000001,
+     "continuation": 3.3160442678774116,
+     "objective": 0,
+     "posture": 1
+    },
+    "SH-S": {
+     "Q": 3.3222942678774117,
+     "farm": -0.4,
+     "plates": 0.0,
+     "gank": 0.4062500000000001,
+     "continuation": 3.3160442678774116,
+     "objective": 0,
+     "posture": 1
+    },
+    "SP-C+P": {
+     "Q": 4.241249999999999,
+     "farm": -0.21500000000000002,
+     "plates": 1.0,
+     "gank": 0.2875,
+     "continuation": 3.1687499999999993,
+     "objective": 1,
+     "posture": 0
+    },
+    "SH-C+P": {
+     "Q": 4.203749999999999,
+     "farm": -0.21500000000000002,
+     "plates": 1.0,
+     "gank": 0.25,
+     "continuation": 3.1687499999999993,
+     "objective": 1,
+     "posture": 0
+    },
+    "SP-C+V": {
+     "Q": 3.3882238051470583,
+     "farm": -0.34,
+     "plates": 0.0,
+     "gank": 0.2875,
+     "continuation": 3.440723805147058,
+     "objective": 2,
+     "posture": 0
+    },
+    "SH-C+V": {
+     "Q": 3.3507238051470587,
+     "farm": -0.34,
+     "plates": 0.0,
+     "gank": 0.25,
+     "continuation": 3.4407238051470586,
+     "objective": 2,
+     "posture": 0
+    }
+   },
+   "best": {
+    "pressure": [
+     "SP-C+P",
+     {
+      "Q": 4.241249999999999,
+      "farm": -0.21500000000000002,
+      "plates": 1.0,
+      "gank": 0.2875,
+      "continuation": 3.1687499999999993,
+      "objective": 1,
+      "posture": 0
+     }
+    ],
+    "vision": [
+     "SP-C+V",
+     {
+      "Q": 3.3882238051470583,
+      "farm": -0.34,
+      "plates": 0.0,
+      "gank": 0.2875,
+      "continuation": 3.440723805147058,
+      "objective": 2,
+      "posture": 0
+     }
+    ],
+    "safe": [
+     "SP-S",
+     {
+      "Q": 3.3222942678774117,
+      "farm": -0.4,
+      "plates": 0.0,
+      "gank": 0.4062500000000001,
+      "continuation": 3.3160442678774116,
+      "objective": 0,
+      "posture": 1
+     }
+    ]
+   },
+   "nodes": 1105
+  },
+  "mass 8, defender 8, vision yes, 16 turns left": {
+   "mass": 8,
+   "defender": 8,
+   "vision": 1,
+   "remaining": 16,
+   "value": 6.252331839460063,
+   "A": {
+    "SP-C+P": 1.0
+   },
+   "B": {
+    "SP-S": 1.0
+   },
+   "actions": {
+    "SP-S": {
+     "Q": 5.413516001569331,
+     "farm": -0.4,
+     "plates": 0.0,
+     "gank": 0.4062500000000001,
+     "continuation": 5.407266001569331,
+     "objective": 0,
+     "posture": 1
+    },
+    "SH-S": {
+     "Q": 5.413516001569331,
+     "farm": -0.4,
+     "plates": 0.0,
+     "gank": 0.4062500000000001,
+     "continuation": 5.407266001569331,
+     "objective": 0,
+     "posture": 1
+    },
+    "SP-C+P": {
+     "Q": 6.252331839460063,
+     "farm": -0.21500000000000002,
+     "plates": 1.0,
+     "gank": 0.2875,
+     "continuation": 5.179831839460063,
+     "objective": 1,
+     "posture": 0
+    },
+    "SH-C+P": {
+     "Q": 6.2148318394600635,
+     "farm": -0.21500000000000002,
+     "plates": 1.0,
+     "gank": 0.25,
+     "continuation": 5.179831839460063,
+     "objective": 1,
+     "posture": 0
+    },
+    "SP-C+V": {
+     "Q": 6.2148318394600635,
+     "farm": -0.34,
+     "plates": 0.0,
+     "gank": 0.2875,
+     "continuation": 6.267331839460064,
+     "objective": 2,
+     "posture": 0
+    },
+    "SH-C+V": {
+     "Q": 6.177331839460064,
+     "farm": -0.34,
+     "plates": 0.0,
+     "gank": 0.25,
+     "continuation": 6.267331839460064,
+     "objective": 2,
+     "posture": 0
+    }
+   },
+   "best": {
+    "pressure": [
+     "SP-C+P",
+     {
+      "Q": 6.252331839460063,
+      "farm": -0.21500000000000002,
+      "plates": 1.0,
+      "gank": 0.2875,
+      "continuation": 5.179831839460063,
+      "objective": 1,
+      "posture": 0
+     }
+    ],
+    "vision": [
+     "SP-C+V",
+     {
+      "Q": 6.2148318394600635,
+      "farm": -0.34,
+      "plates": 0.0,
+      "gank": 0.2875,
+      "continuation": 6.267331839460064,
+      "objective": 2,
+      "posture": 0
+     }
+    ],
+    "safe": [
+     "SP-S",
+     {
+      "Q": 5.413516001569331,
+      "farm": -0.4,
+      "plates": 0.0,
+      "gank": 0.4062500000000001,
+      "continuation": 5.407266001569331,
+      "objective": 0,
+      "posture": 1
+     }
+    ]
+   },
+   "nodes": 26343
+  },
+  "mass 12, defender 0, vision no, 8 turns left": {
+   "mass": 12,
+   "defender": 0,
+   "vision": 0,
+   "remaining": 8,
+   "value": 4.913138297872339,
+   "A": {
+    "SP-C+V": 1.0
+   },
+   "B": {
+    "SP-S": 1.0
+   },
+   "actions": {
+    "SP-S": {
+     "Q": 4.315638297872339,
+     "farm": -0.4,
+     "plates": 0.0,
+     "gank": -0.12499999999999997,
+     "continuation": 4.8406382978723395,
+     "objective": 0,
+     "posture": 1
+    },
+    "SH-S": {
+     "Q": 4.315638297872339,
+     "farm": -0.4,
+     "plates": 0.0,
+     "gank": -0.12499999999999997,
+     "continuation": 4.8406382978723395,
+     "objective": 0,
+     "posture": 1
+    },
+    "SP-C+P": {
+     "Q": 3.900638297872339,
+     "farm": -0.34,
+     "plates": 1.0,
+     "gank": -0.6000000000000001,
+     "continuation": 3.8406382978723386,
+     "objective": 1,
+     "posture": 0
+    },
+    "SH-C+P": {
+     "Q": 3.7506382978723396,
+     "farm": -0.34,
+     "plates": 1.0,
+     "gank": -0.75,
+     "continuation": 3.8406382978723395,
+     "objective": 1,
+     "posture": 0
+    },
+    "SP-C+V": {
+     "Q": 4.913138297872339,
+     "farm": -0.34,
+     "plates": 0.0,
+     "gank": -0.6000000000000001,
+     "continuation": 5.85313829787234,
+     "objective": 2,
+     "posture": 0
+    },
+    "SH-C+V": {
+     "Q": 4.76313829787234,
+     "farm": -0.34,
+     "plates": 0.0,
+     "gank": -0.75,
+     "continuation": 5.85313829787234,
+     "objective": 2,
+     "posture": 0
+    }
+   },
+   "best": {
+    "pressure": [
+     "SP-C+P",
+     {
+      "Q": 3.900638297872339,
+      "farm": -0.34,
+      "plates": 1.0,
+      "gank": -0.6000000000000001,
+      "continuation": 3.8406382978723386,
+      "objective": 1,
+      "posture": 0
+     }
+    ],
+    "vision": [
+     "SP-C+V",
+     {
+      "Q": 4.913138297872339,
+      "farm": -0.34,
+      "plates": 0.0,
+      "gank": -0.6000000000000001,
+      "continuation": 5.85313829787234,
+      "objective": 2,
+      "posture": 0
+     }
+    ],
+    "safe": [
+     "SP-S",
+     {
+      "Q": 4.315638297872339,
+      "farm": -0.4,
+      "plates": 0.0,
+      "gank": -0.12499999999999997,
+      "continuation": 4.8406382978723395,
+      "objective": 0,
+      "posture": 1
+     }
+    ]
+   },
+   "nodes": 2079
+  },
+  "mass 12, defender 0, vision no, 16 turns left": {
+   "mass": 12,
+   "defender": 0,
+   "vision": 0,
+   "remaining": 16,
+   "value": 9.028749999999999,
+   "A": {
+    "SP-C+V": 1.0
+   },
+   "B": {
+    "SP-S": 1.0
+   },
+   "actions": {
+    "SP-S": {
+     "Q": 8.362499999999999,
+     "farm": -0.4,
+     "plates": 0.0,
+     "gank": -0.12499999999999997,
+     "continuation": 8.8875,
+     "objective": 0,
+     "posture": 1
+    },
+    "SH-S": {
+     "Q": 8.362499999999999,
+     "farm": -0.4,
+     "plates": 0.0,
+     "gank": -0.12499999999999997,
+     "continuation": 8.8875,
+     "objective": 0,
+     "posture": 1
+    },
+    "SP-C+P": {
+     "Q": 8.016249999999998,
+     "farm": -0.34,
+     "plates": 1.0,
+     "gank": -0.6000000000000001,
+     "continuation": 7.956249999999997,
+     "objective": 1,
+     "posture": 0
+    },
+    "SH-C+P": {
+     "Q": 7.866249999999998,
+     "farm": -0.34,
+     "plates": 1.0,
+     "gank": -0.75,
+     "continuation": 7.956249999999999,
+     "objective": 1,
+     "posture": 0
+    },
+    "SP-C+V": {
+     "Q": 9.028749999999999,
+     "farm": -0.34,
+     "plates": 0.0,
+     "gank": -0.6000000000000001,
+     "continuation": 9.968749999999998,
+     "objective": 2,
+     "posture": 0
+    },
+    "SH-C+V": {
+     "Q": 8.878749999999998,
+     "farm": -0.34,
+     "plates": 0.0,
+     "gank": -0.75,
+     "continuation": 9.968749999999998,
+     "objective": 2,
+     "posture": 0
+    }
+   },
+   "best": {
+    "pressure": [
+     "SP-C+P",
+     {
+      "Q": 8.016249999999998,
+      "farm": -0.34,
+      "plates": 1.0,
+      "gank": -0.6000000000000001,
+      "continuation": 7.956249999999997,
+      "objective": 1,
+      "posture": 0
+     }
+    ],
+    "vision": [
+     "SP-C+V",
+     {
+      "Q": 9.028749999999999,
+      "farm": -0.34,
+      "plates": 0.0,
+      "gank": -0.6000000000000001,
+      "continuation": 9.968749999999998,
+      "objective": 2,
+      "posture": 0
+     }
+    ],
+    "safe": [
+     "SP-S",
+     {
+      "Q": 8.362499999999999,
+      "farm": -0.4,
+      "plates": 0.0,
+      "gank": -0.12499999999999997,
+      "continuation": 8.8875,
+      "objective": 0,
+      "posture": 1
+     }
+    ]
+   },
+   "nodes": 15661
+  },
+  "mass 12, defender 0, vision yes, 8 turns left": {
+   "mass": 12,
+   "defender": 0,
+   "vision": 1,
+   "remaining": 8,
+   "value": 5.984388297872339,
+   "A": {
+    "SP-S": 1.0
+   },
+   "B": {
+    "SP-S": 1.0
+   },
+   "actions": {
+    "SP-S": {
+     "Q": 5.984388297872339,
+     "farm": -0.4,
+     "plates": 0.0,
+     "gank": 0.53125,
+     "continuation": 5.85313829787234,
+     "objective": 0,
+     "posture": 1
+    },
+    "SH-S": {
+     "Q": 5.984388297872339,
+     "farm": -0.4,
+     "plates": 0.0,
+     "gank": 0.53125,
+     "continuation": 5.85313829787234,
+     "objective": 0,
+     "posture": 1
+    },
+    "SP-C+P": {
+     "Q": 5.925638297872339,
+     "farm": -0.34,
+     "plates": 1.0,
+     "gank": 0.4125,
+     "continuation": 4.85313829787234,
+     "objective": 1,
+     "posture": 0
+    },
+    "SH-C+P": {
+     "Q": 5.88813829787234,
+     "farm": -0.34,
+     "plates": 1.0,
+     "gank": 0.375,
+     "continuation": 4.85313829787234,
+     "objective": 1,
+     "posture": 0
+    },
+    "SP-C+V": {
+     "Q": 5.925638297872339,
+     "farm": -0.34,
+     "plates": 0.0,
+     "gank": 0.4125,
+     "continuation": 5.85313829787234,
+     "objective": 2,
+     "posture": 0
+    },
+    "SH-C+V": {
+     "Q": 5.88813829787234,
+     "farm": -0.34,
+     "plates": 0.0,
+     "gank": 0.375,
+     "continuation": 5.85313829787234,
+     "objective": 2,
+     "posture": 0
+    }
+   },
+   "best": {
+    "pressure": [
+     "SP-C+P",
+     {
+      "Q": 5.925638297872339,
+      "farm": -0.34,
+      "plates": 1.0,
+      "gank": 0.4125,
+      "continuation": 4.85313829787234,
+      "objective": 1,
+      "posture": 0
+     }
+    ],
+    "vision": [
+     "SP-C+V",
+     {
+      "Q": 5.925638297872339,
+      "farm": -0.34,
+      "plates": 0.0,
+      "gank": 0.4125,
+      "continuation": 5.85313829787234,
+      "objective": 2,
+      "posture": 0
+     }
+    ],
+    "safe": [
+     "SP-S",
+     {
+      "Q": 5.984388297872339,
+      "farm": -0.4,
+      "plates": 0.0,
+      "gank": 0.53125,
+      "continuation": 5.85313829787234,
+      "objective": 0,
+      "posture": 1
+     }
+    ]
+   },
+   "nodes": 2079
+  },
+  "mass 12, defender 0, vision yes, 16 turns left": {
+   "mass": 12,
+   "defender": 0,
+   "vision": 1,
+   "remaining": 16,
+   "value": 10.041249999999998,
+   "A": {
+    "SP-C+P": 1.0
+   },
+   "B": {
+    "SP-S": 1.0
+   },
+   "actions": {
+    "SP-S": {
+     "Q": 10.031249999999998,
+     "farm": -0.4,
+     "plates": 0.0,
+     "gank": 0.53125,
+     "continuation": 9.899999999999999,
+     "objective": 0,
+     "posture": 1
+    },
+    "SH-S": {
+     "Q": 10.031249999999998,
+     "farm": -0.4,
+     "plates": 0.0,
+     "gank": 0.53125,
+     "continuation": 9.899999999999999,
+     "objective": 0,
+     "posture": 1
+    },
+    "SP-C+P": {
+     "Q": 10.041249999999998,
+     "farm": -0.34,
+     "plates": 1.0,
+     "gank": 0.4125,
+     "continuation": 8.968749999999998,
+     "objective": 1,
+     "posture": 0
+    },
+    "SH-C+P": {
+     "Q": 10.003749999999998,
+     "farm": -0.34,
+     "plates": 1.0,
+     "gank": 0.375,
+     "continuation": 8.968749999999998,
+     "objective": 1,
+     "posture": 0
+    },
+    "SP-C+V": {
+     "Q": 10.041249999999998,
+     "farm": -0.34,
+     "plates": 0.0,
+     "gank": 0.4125,
+     "continuation": 9.968749999999998,
+     "objective": 2,
+     "posture": 0
+    },
+    "SH-C+V": {
+     "Q": 10.003749999999998,
+     "farm": -0.34,
+     "plates": 0.0,
+     "gank": 0.375,
+     "continuation": 9.968749999999998,
+     "objective": 2,
+     "posture": 0
+    }
+   },
+   "best": {
+    "pressure": [
+     "SP-C+P",
+     {
+      "Q": 10.041249999999998,
+      "farm": -0.34,
+      "plates": 1.0,
+      "gank": 0.4125,
+      "continuation": 8.968749999999998,
+      "objective": 1,
+      "posture": 0
+     }
+    ],
+    "vision": [
+     "SP-C+V",
+     {
+      "Q": 10.041249999999998,
+      "farm": -0.34,
+      "plates": 0.0,
+      "gank": 0.4125,
+      "continuation": 9.968749999999998,
+      "objective": 2,
+      "posture": 0
+     }
+    ],
+    "safe": [
+     "SP-S",
+     {
+      "Q": 10.031249999999998,
+      "farm": -0.4,
+      "plates": 0.0,
+      "gank": 0.53125,
+      "continuation": 9.899999999999999,
+      "objective": 0,
+      "posture": 1
+     }
+    ]
+   },
+   "nodes": 15661
+  },
+  "mass 12, defender 4, vision no, 8 turns left": {
+   "mass": 12,
+   "defender": 4,
+   "vision": 0,
+   "remaining": 8,
+   "value": 3.884999999999999,
+   "A": {
+    "SP-C+V": 1.0
+   },
+   "B": {
+    "SP-S": 1.0
+   },
+   "actions": {
+    "SP-S": {
+     "Q": 3.037499999999999,
+     "farm": -0.4,
+     "plates": 0.0,
+     "gank": -0.12499999999999997,
+     "continuation": 3.562499999999999,
+     "objective": 0,
+     "posture": 1
+    },
+    "SH-S": {
+     "Q": 3.037499999999999,
+     "farm": -0.4,
+     "plates": 0.0,
+     "gank": -0.12499999999999997,
+     "continuation": 3.562499999999999,
+     "objective": 0,
+     "posture": 1
+    },
+    "SP-C+P": {
+     "Q": 3.1549999999999985,
+     "farm": -0.21500000000000002,
+     "plates": 1.0,
+     "gank": -0.6000000000000001,
+     "continuation": 2.9699999999999984,
+     "objective": 1,
+     "posture": 0
+    },
+    "SH-C+P": {
+     "Q": 3.004999999999999,
+     "farm": -0.21500000000000002,
+     "plates": 1.0,
+     "gank": -0.75,
+     "continuation": 2.969999999999999,
+     "objective": 1,
+     "posture": 0
+    },
+    "SP-C+V": {
+     "Q": 3.884999999999999,
+     "farm": -0.34,
+     "plates": 0.0,
+     "gank": -0.6000000000000001,
+     "continuation": 4.824999999999999,
+     "objective": 2,
+     "posture": 0
+    },
+    "SH-C+V": {
+     "Q": 3.7349999999999994,
+     "farm": -0.34,
+     "plates": 0.0,
+     "gank": -0.75,
+     "continuation": 4.824999999999999,
+     "objective": 2,
+     "posture": 0
+    }
+   },
+   "best": {
+    "pressure": [
+     "SP-C+P",
+     {
+      "Q": 3.1549999999999985,
+      "farm": -0.21500000000000002,
+      "plates": 1.0,
+      "gank": -0.6000000000000001,
+      "continuation": 2.9699999999999984,
+      "objective": 1,
+      "posture": 0
+     }
+    ],
+    "vision": [
+     "SP-C+V",
+     {
+      "Q": 3.884999999999999,
+      "farm": -0.34,
+      "plates": 0.0,
+      "gank": -0.6000000000000001,
+      "continuation": 4.824999999999999,
+      "objective": 2,
+      "posture": 0
+     }
+    ],
+    "safe": [
+     "SP-S",
+     {
+      "Q": 3.037499999999999,
+      "farm": -0.4,
+      "plates": 0.0,
+      "gank": -0.12499999999999997,
+      "continuation": 3.562499999999999,
+      "objective": 0,
+      "posture": 1
+     }
+    ]
+   },
+   "nodes": 1914
+  },
+  "mass 12, defender 4, vision no, 16 turns left": {
+   "mass": 12,
+   "defender": 4,
+   "vision": 0,
+   "remaining": 16,
+   "value": 6.1374999999999975,
+   "A": {
+    "SP-C+V": 1.0
+   },
+   "B": {
+    "SP-S": 1.0
+   },
+   "actions": {
+    "SP-S": {
+     "Q": 5.1599999999999975,
+     "farm": -0.4,
+     "plates": 0.0,
+     "gank": -0.12499999999999997,
+     "continuation": 5.684999999999998,
+     "objective": 0,
+     "posture": 1
+    },
+    "SH-S": {
+     "Q": 5.1599999999999975,
+     "farm": -0.4,
+     "plates": 0.0,
+     "gank": -0.12499999999999997,
+     "continuation": 5.684999999999998,
+     "objective": 0,
+     "posture": 1
+    },
+    "SP-C+P": {
+     "Q": 5.124999999999997,
+     "farm": -0.21500000000000002,
+     "plates": 1.0,
+     "gank": -0.6000000000000001,
+     "continuation": 4.939999999999998,
+     "objective": 1,
+     "posture": 0
+    },
+    "SH-C+P": {
+     "Q": 4.974999999999998,
+     "farm": -0.21500000000000002,
+     "plates": 1.0,
+     "gank": -0.75,
+     "continuation": 4.939999999999998,
+     "objective": 1,
+     "posture": 0
+    },
+    "SP-C+V": {
+     "Q": 6.1374999999999975,
+     "farm": -0.34,
+     "plates": 0.0,
+     "gank": -0.6000000000000001,
+     "continuation": 7.077499999999997,
+     "objective": 2,
+     "posture": 0
+    },
+    "SH-C+V": {
+     "Q": 5.987499999999998,
+     "farm": -0.34,
+     "plates": 0.0,
+     "gank": -0.75,
+     "continuation": 7.077499999999998,
+     "objective": 2,
+     "posture": 0
+    }
+   },
+   "best": {
+    "pressure": [
+     "SP-C+P",
+     {
+      "Q": 5.124999999999997,
+      "farm": -0.21500000000000002,
+      "plates": 1.0,
+      "gank": -0.6000000000000001,
+      "continuation": 4.939999999999998,
+      "objective": 1,
+      "posture": 0
+     }
+    ],
+    "vision": [
+     "SP-C+V",
+     {
+      "Q": 6.1374999999999975,
+      "farm": -0.34,
+      "plates": 0.0,
+      "gank": -0.6000000000000001,
+      "continuation": 7.077499999999997,
+      "objective": 2,
+      "posture": 0
+     }
+    ],
+    "safe": [
+     "SP-S",
+     {
+      "Q": 5.1599999999999975,
+      "farm": -0.4,
+      "plates": 0.0,
+      "gank": -0.12499999999999997,
+      "continuation": 5.684999999999998,
+      "objective": 0,
+      "posture": 1
+     }
+    ]
+   },
+   "nodes": 18985
+  },
+  "mass 12, defender 4, vision yes, 8 turns left": {
+   "mass": 12,
+   "defender": 4,
+   "vision": 1,
+   "remaining": 8,
+   "value": 5.2174999999999985,
+   "A": {
+    "SP-C+P": 1.0
+   },
+   "B": {
+    "SP-S": 1.0
+   },
+   "actions": {
+    "SP-S": {
+     "Q": 4.743749999999999,
+     "farm": -0.4,
+     "plates": 0.0,
+     "gank": 0.53125,
+     "continuation": 4.612499999999999,
+     "objective": 0,
+     "posture": 1
+    },
+    "SH-S": {
+     "Q": 4.743749999999999,
+     "farm": -0.4,
+     "plates": 0.0,
+     "gank": 0.53125,
+     "continuation": 4.612499999999999,
+     "objective": 0,
+     "posture": 1
+    },
+    "SP-C+P": {
+     "Q": 5.2174999999999985,
+     "farm": -0.21500000000000002,
+     "plates": 1.0,
+     "gank": 0.4125,
+     "continuation": 4.019999999999999,
+     "objective": 1,
+     "posture": 0
+    },
+    "SH-C+P": {
+     "Q": 5.179999999999999,
+     "farm": -0.21500000000000002,
+     "plates": 1.0,
+     "gank": 0.375,
+     "continuation": 4.019999999999999,
+     "objective": 1,
+     "posture": 0
+    },
+    "SP-C+V": {
+     "Q": 4.897499999999999,
+     "farm": -0.34,
+     "plates": 0.0,
+     "gank": 0.4125,
+     "continuation": 4.824999999999999,
+     "objective": 2,
+     "posture": 0
+    },
+    "SH-C+V": {
+     "Q": 4.859999999999999,
+     "farm": -0.34,
+     "plates": 0.0,
+     "gank": 0.375,
+     "continuation": 4.824999999999999,
+     "objective": 2,
+     "posture": 0
+    }
+   },
+   "best": {
+    "pressure": [
+     "SP-C+P",
+     {
+      "Q": 5.2174999999999985,
+      "farm": -0.21500000000000002,
+      "plates": 1.0,
+      "gank": 0.4125,
+      "continuation": 4.019999999999999,
+      "objective": 1,
+      "posture": 0
+     }
+    ],
+    "vision": [
+     "SP-C+V",
+     {
+      "Q": 4.897499999999999,
+      "farm": -0.34,
+      "plates": 0.0,
+      "gank": 0.4125,
+      "continuation": 4.824999999999999,
+      "objective": 2,
+      "posture": 0
+     }
+    ],
+    "safe": [
+     "SP-S",
+     {
+      "Q": 4.743749999999999,
+      "farm": -0.4,
+      "plates": 0.0,
+      "gank": 0.53125,
+      "continuation": 4.612499999999999,
+      "objective": 0,
+      "posture": 1
+     }
+    ]
+   },
+   "nodes": 1914
+  },
+  "mass 12, defender 4, vision yes, 16 turns left": {
+   "mass": 12,
+   "defender": 4,
+   "vision": 1,
+   "remaining": 16,
+   "value": 7.5387499999999985,
+   "A": {
+    "SP-C+P": 1.0
+   },
+   "B": {
+    "SP-S": 1.0
+   },
+   "actions": {
+    "SP-S": {
+     "Q": 6.866249999999997,
+     "farm": -0.4,
+     "plates": 0.0,
+     "gank": 0.53125,
+     "continuation": 6.734999999999998,
+     "objective": 0,
+     "posture": 1
+    },
+    "SH-S": {
+     "Q": 6.866249999999997,
+     "farm": -0.4,
+     "plates": 0.0,
+     "gank": 0.53125,
+     "continuation": 6.734999999999998,
+     "objective": 0,
+     "posture": 1
+    },
+    "SP-C+P": {
+     "Q": 7.5387499999999985,
+     "farm": -0.21500000000000002,
+     "plates": 1.0,
+     "gank": 0.4125,
+     "continuation": 6.341249999999999,
+     "objective": 1,
+     "posture": 0
+    },
+    "SH-C+P": {
+     "Q": 7.501249999999999,
+     "farm": -0.21500000000000002,
+     "plates": 1.0,
+     "gank": 0.375,
+     "continuation": 6.341249999999999,
+     "objective": 1,
+     "posture": 0
+    },
+    "SP-C+V": {
+     "Q": 7.149999999999998,
+     "farm": -0.34,
+     "plates": 0.0,
+     "gank": 0.4125,
+     "continuation": 7.077499999999998,
+     "objective": 2,
+     "posture": 0
+    },
+    "SH-C+V": {
+     "Q": 7.112499999999998,
+     "farm": -0.34,
+     "plates": 0.0,
+     "gank": 0.375,
+     "continuation": 7.077499999999998,
+     "objective": 2,
+     "posture": 0
+    }
+   },
+   "best": {
+    "pressure": [
+     "SP-C+P",
+     {
+      "Q": 7.5387499999999985,
+      "farm": -0.21500000000000002,
+      "plates": 1.0,
+      "gank": 0.4125,
+      "continuation": 6.341249999999999,
+      "objective": 1,
+      "posture": 0
+     }
+    ],
+    "vision": [
+     "SP-C+V",
+     {
+      "Q": 7.149999999999998,
+      "farm": -0.34,
+      "plates": 0.0,
+      "gank": 0.4125,
+      "continuation": 7.077499999999998,
+      "objective": 2,
+      "posture": 0
+     }
+    ],
+    "safe": [
+     "SP-S",
+     {
+      "Q": 6.866249999999997,
+      "farm": -0.4,
+      "plates": 0.0,
+      "gank": 0.53125,
+      "continuation": 6.734999999999998,
+      "objective": 0,
+      "posture": 1
+     }
+    ]
+   },
+   "nodes": 18985
+  },
+  "mass 12, defender 8, vision no, 8 turns left": {
+   "mass": 12,
+   "defender": 8,
+   "vision": 0,
+   "remaining": 8,
+   "value": 2.037499999999999,
+   "A": {
+    "SP-C+V": 1.0
+   },
+   "B": {
+    "SP-S": 1.0
+   },
+   "actions": {
+    "SP-S": {
+     "Q": 1.239999999999999,
+     "farm": -0.4,
+     "plates": 0.0,
+     "gank": -0.32499999999999984,
+     "continuation": 1.964999999999999,
+     "objective": 0,
+     "posture": 1
+    },
+    "SH-S": {
+     "Q": 1.239999999999999,
+     "farm": -0.4,
+     "plates": 0.0,
+     "gank": -0.32499999999999984,
+     "continuation": 1.964999999999999,
+     "objective": 0,
+     "posture": 1
+    },
+    "SP-C+P": {
+     "Q": 1.232499999999999,
+     "farm": -0.21500000000000002,
+     "plates": 1.0,
+     "gank": -0.8000000000000002,
+     "continuation": 1.2474999999999992,
+     "objective": 1,
+     "posture": 0
+    },
+    "SH-C+P": {
+     "Q": 1.0824999999999991,
+     "farm": -0.21500000000000002,
+     "plates": 1.0,
+     "gank": -0.95,
+     "continuation": 1.2474999999999992,
+     "objective": 1,
+     "posture": 0
+    },
+    "SP-C+V": {
+     "Q": 2.037499999999999,
+     "farm": -0.34,
+     "plates": 0.0,
+     "gank": -0.8000000000000002,
+     "continuation": 3.1774999999999993,
+     "objective": 2,
+     "posture": 0
+    },
+    "SH-C+V": {
+     "Q": 1.8874999999999993,
+     "farm": -0.34,
+     "plates": 0.0,
+     "gank": -0.95,
+     "continuation": 3.1774999999999993,
+     "objective": 2,
+     "posture": 0
+    }
+   },
+   "best": {
+    "pressure": [
+     "SP-C+P",
+     {
+      "Q": 1.232499999999999,
+      "farm": -0.21500000000000002,
+      "plates": 1.0,
+      "gank": -0.8000000000000002,
+      "continuation": 1.2474999999999992,
+      "objective": 1,
+      "posture": 0
+     }
+    ],
+    "vision": [
+     "SP-C+V",
+     {
+      "Q": 2.037499999999999,
+      "farm": -0.34,
+      "plates": 0.0,
+      "gank": -0.8000000000000002,
+      "continuation": 3.1774999999999993,
+      "objective": 2,
+      "posture": 0
+     }
+    ],
+    "safe": [
+     "SP-S",
+     {
+      "Q": 1.239999999999999,
+      "farm": -0.4,
+      "plates": 0.0,
+      "gank": -0.32499999999999984,
+      "continuation": 1.964999999999999,
+      "objective": 0,
+      "posture": 1
+     }
+    ]
+   },
+   "nodes": 1502
+  },
+  "mass 12, defender 8, vision no, 16 turns left": {
+   "mass": 12,
+   "defender": 8,
+   "vision": 0,
+   "remaining": 16,
+   "value": 5.488355185249935,
+   "A": {
+    "SP-C+V": 1.0
+   },
+   "B": {
+    "SP-S": 1.0
+   },
+   "actions": {
+    "SP-S": {
+     "Q": 4.685576783274771,
+     "farm": -0.4,
+     "plates": 0.0,
+     "gank": -0.32499999999999984,
+     "continuation": 5.410576783274771,
+     "objective": 0,
+     "posture": 1
+    },
+    "SH-S": {
+     "Q": 4.685576783274771,
+     "farm": -0.4,
+     "plates": 0.0,
+     "gank": -0.32499999999999984,
+     "continuation": 5.410576783274771,
+     "objective": 0,
+     "posture": 1
+    },
+    "SP-C+P": {
+     "Q": 4.4008551852499345,
+     "farm": -0.21500000000000002,
+     "plates": 1.0,
+     "gank": -0.8000000000000002,
+     "continuation": 4.415855185249934,
+     "objective": 1,
+     "posture": 0
+    },
+    "SH-C+P": {
+     "Q": 4.250855185249935,
+     "farm": -0.21500000000000002,
+     "plates": 1.0,
+     "gank": -0.95,
+     "continuation": 4.415855185249935,
+     "objective": 1,
+     "posture": 0
+    },
+    "SP-C+V": {
+     "Q": 5.488355185249935,
+     "farm": -0.34,
+     "plates": 0.0,
+     "gank": -0.8000000000000002,
+     "continuation": 6.6283551852499345,
+     "objective": 2,
+     "posture": 0
+    },
+    "SH-C+V": {
+     "Q": 5.338355185249935,
+     "farm": -0.34,
+     "plates": 0.0,
+     "gank": -0.95,
+     "continuation": 6.628355185249935,
+     "objective": 2,
+     "posture": 0
+    }
+   },
+   "best": {
+    "pressure": [
+     "SP-C+P",
+     {
+      "Q": 4.4008551852499345,
+      "farm": -0.21500000000000002,
+      "plates": 1.0,
+      "gank": -0.8000000000000002,
+      "continuation": 4.415855185249934,
+      "objective": 1,
+      "posture": 0
+     }
+    ],
+    "vision": [
+     "SP-C+V",
+     {
+      "Q": 5.488355185249935,
+      "farm": -0.34,
+      "plates": 0.0,
+      "gank": -0.8000000000000002,
+      "continuation": 6.6283551852499345,
+      "objective": 2,
+      "posture": 0
+     }
+    ],
+    "safe": [
+     "SP-S",
+     {
+      "Q": 4.685576783274771,
+      "farm": -0.4,
+      "plates": 0.0,
+      "gank": -0.32499999999999984,
+      "continuation": 5.410576783274771,
+      "objective": 0,
+      "posture": 1
+     }
+    ]
+   },
+   "nodes": 26216
+  },
+  "mass 12, defender 8, vision yes, 8 turns left": {
+   "mass": 12,
+   "defender": 8,
+   "vision": 1,
+   "remaining": 8,
+   "value": 3.407499999999999,
+   "A": {
+    "SP-C+P": 1.0
+   },
+   "B": {
+    "SP-S": 1.0
+   },
+   "actions": {
+    "SP-S": {
+     "Q": 3.058749999999999,
+     "farm": -0.4,
+     "plates": 0.0,
+     "gank": 0.4062500000000001,
+     "continuation": 3.052499999999999,
+     "objective": 0,
+     "posture": 1
+    },
+    "SH-S": {
+     "Q": 3.058749999999999,
+     "farm": -0.4,
+     "plates": 0.0,
+     "gank": 0.4062500000000001,
+     "continuation": 3.052499999999999,
+     "objective": 0,
+     "posture": 1
+    },
+    "SP-C+P": {
+     "Q": 3.407499999999999,
+     "farm": -0.21500000000000002,
+     "plates": 1.0,
+     "gank": 0.2875,
+     "continuation": 2.3349999999999986,
+     "objective": 1,
+     "posture": 0
+    },
+    "SH-C+P": {
+     "Q": 3.369999999999999,
+     "farm": -0.21500000000000002,
+     "plates": 1.0,
+     "gank": 0.25,
+     "continuation": 2.334999999999999,
+     "objective": 1,
+     "posture": 0
+    },
+    "SP-C+V": {
+     "Q": 3.124999999999999,
+     "farm": -0.34,
+     "plates": 0.0,
+     "gank": 0.2875,
+     "continuation": 3.177499999999999,
+     "objective": 2,
+     "posture": 0
+    },
+    "SH-C+V": {
+     "Q": 3.0874999999999995,
+     "farm": -0.34,
+     "plates": 0.0,
+     "gank": 0.25,
+     "continuation": 3.1774999999999993,
+     "objective": 2,
+     "posture": 0
+    }
+   },
+   "best": {
+    "pressure": [
+     "SP-C+P",
+     {
+      "Q": 3.407499999999999,
+      "farm": -0.21500000000000002,
+      "plates": 1.0,
+      "gank": 0.2875,
+      "continuation": 2.3349999999999986,
+      "objective": 1,
+      "posture": 0
+     }
+    ],
+    "vision": [
+     "SP-C+V",
+     {
+      "Q": 3.124999999999999,
+      "farm": -0.34,
+      "plates": 0.0,
+      "gank": 0.2875,
+      "continuation": 3.177499999999999,
+      "objective": 2,
+      "posture": 0
+     }
+    ],
+    "safe": [
+     "SP-S",
+     {
+      "Q": 3.058749999999999,
+      "farm": -0.4,
+      "plates": 0.0,
+      "gank": 0.4062500000000001,
+      "continuation": 3.052499999999999,
+      "objective": 0,
+      "posture": 1
+     }
+    ]
+   },
+   "nodes": 1502
+  },
+  "mass 12, defender 8, vision yes, 16 turns left": {
+   "mass": 12,
+   "defender": 8,
+   "vision": 1,
+   "remaining": 16,
+   "value": 6.607558440215142,
+   "A": {
+    "SP-C+P": 1.0
+   },
+   "B": {
+    "SP-S": 1.0
+   },
+   "actions": {
+    "SP-S": {
+     "Q": 6.5179788854664675,
+     "farm": -0.4,
+     "plates": 0.0,
+     "gank": 0.4062500000000001,
+     "continuation": 6.511728885466468,
+     "objective": 0,
+     "posture": 1
+    },
+    "SH-S": {
+     "Q": 6.5179788854664675,
+     "farm": -0.4,
+     "plates": 0.0,
+     "gank": 0.4062500000000001,
+     "continuation": 6.511728885466468,
+     "objective": 0,
+     "posture": 1
+    },
+    "SP-C+P": {
+     "Q": 6.607558440215142,
+     "farm": -0.21500000000000002,
+     "plates": 1.0,
+     "gank": 0.2875,
+     "continuation": 5.535058440215142,
+     "objective": 1,
+     "posture": 0
+    },
+    "SH-C+P": {
+     "Q": 6.570058440215142,
+     "farm": -0.21500000000000002,
+     "plates": 1.0,
+     "gank": 0.25,
+     "continuation": 5.535058440215142,
+     "objective": 1,
+     "posture": 0
+    },
+    "SP-C+V": {
+     "Q": 6.575855185249935,
+     "farm": -0.34,
+     "plates": 0.0,
+     "gank": 0.2875,
+     "continuation": 6.628355185249935,
+     "objective": 2,
+     "posture": 0
+    },
+    "SH-C+V": {
+     "Q": 6.5383551852499355,
+     "farm": -0.34,
+     "plates": 0.0,
+     "gank": 0.25,
+     "continuation": 6.628355185249935,
+     "objective": 2,
+     "posture": 0
+    }
+   },
+   "best": {
+    "pressure": [
+     "SP-C+P",
+     {
+      "Q": 6.607558440215142,
+      "farm": -0.21500000000000002,
+      "plates": 1.0,
+      "gank": 0.2875,
+      "continuation": 5.535058440215142,
+      "objective": 1,
+      "posture": 0
+     }
+    ],
+    "vision": [
+     "SP-C+V",
+     {
+      "Q": 6.575855185249935,
+      "farm": -0.34,
+      "plates": 0.0,
+      "gank": 0.2875,
+      "continuation": 6.628355185249935,
+      "objective": 2,
+      "posture": 0
+     }
+    ],
+    "safe": [
+     "SP-S",
+     {
+      "Q": 6.5179788854664675,
+      "farm": -0.4,
+      "plates": 0.0,
+      "gank": 0.4062500000000001,
+      "continuation": 6.511728885466468,
+      "objective": 0,
+      "posture": 1
+     }
+    ]
+   },
+   "nodes": 26216
+  }
+ },
+ "gank_loss_probes": {
+  "3.5": {
+   "value": 4.439047597042513,
+   "A": {
+    "SP-C+V": 1.0
+   },
+   "B": {
+    "SP-S": 1.0
+   },
+   "actions": {
+    "SP-S": {
+     "Q": 3.7612499999999995,
+     "farm": -0.4,
+     "plates": 0.0,
+     "gank": -0.08749999999999998,
+     "continuation": 4.24875,
+     "objective": 0,
+     "posture": 1
+    },
+    "SH-S": {
+     "Q": 3.7612499999999995,
+     "farm": -0.4,
+     "plates": 0.0,
+     "gank": -0.08749999999999998,
+     "continuation": 4.24875,
+     "objective": 0,
+     "posture": 1
+    },
+    "SP-C+P": {
+     "Q": 3.7402975970425123,
+     "farm": -0.21500000000000002,
+     "plates": 1.0,
+     "gank": -0.4200000000000001,
+     "continuation": 3.375297597042512,
+     "objective": 1,
+     "posture": 0
+    },
+    "SH-C+P": {
+     "Q": 3.6352975970425123,
+     "farm": -0.21500000000000002,
+     "plates": 1.0,
+     "gank": -0.525,
+     "continuation": 3.375297597042512,
+     "objective": 1,
+     "posture": 0
+    },
+    "SP-C+V": {
+     "Q": 4.439047597042513,
+     "farm": -0.34,
+     "plates": 0.0,
+     "gank": -0.4200000000000001,
+     "continuation": 5.1990475970425125,
+     "objective": 2,
+     "posture": 0
+    },
+    "SH-C+V": {
+     "Q": 4.334047597042512,
+     "farm": -0.34,
+     "plates": 0.0,
+     "gank": -0.525,
+     "continuation": 5.1990475970425125,
+     "objective": 2,
+     "posture": 0
+    }
+   },
+   "best": {
+    "pressure": [
+     "SP-C+P",
+     {
+      "Q": 3.7402975970425123,
+      "farm": -0.21500000000000002,
+      "plates": 1.0,
+      "gank": -0.4200000000000001,
+      "continuation": 3.375297597042512,
+      "objective": 1,
+      "posture": 0
+     }
+    ],
+    "vision": [
+     "SP-C+V",
+     {
+      "Q": 4.439047597042513,
+      "farm": -0.34,
+      "plates": 0.0,
+      "gank": -0.4200000000000001,
+      "continuation": 5.1990475970425125,
+      "objective": 2,
+      "posture": 0
+     }
+    ],
+    "safe": [
+     "SP-S",
+     {
+      "Q": 3.7612499999999995,
+      "farm": -0.4,
+      "plates": 0.0,
+      "gank": -0.08749999999999998,
+      "continuation": 4.24875,
+      "objective": 0,
+      "posture": 1
+     }
+    ]
+   },
+   "nodes": 18985
+  },
+  "5.0": {
+   "value": 6.1374999999999975,
+   "A": {
+    "SP-C+V": 1.0
+   },
+   "B": {
+    "SP-S": 1.0
+   },
+   "actions": {
+    "SP-S": {
+     "Q": 5.1599999999999975,
+     "farm": -0.4,
+     "plates": 0.0,
+     "gank": -0.12499999999999997,
+     "continuation": 5.684999999999998,
+     "objective": 0,
+     "posture": 1
+    },
+    "SH-S": {
+     "Q": 5.1599999999999975,
+     "farm": -0.4,
+     "plates": 0.0,
+     "gank": -0.12499999999999997,
+     "continuation": 5.684999999999998,
+     "objective": 0,
+     "posture": 1
+    },
+    "SP-C+P": {
+     "Q": 5.124999999999997,
+     "farm": -0.21500000000000002,
+     "plates": 1.0,
+     "gank": -0.6000000000000001,
+     "continuation": 4.939999999999998,
+     "objective": 1,
+     "posture": 0
+    },
+    "SH-C+P": {
+     "Q": 4.974999999999998,
+     "farm": -0.21500000000000002,
+     "plates": 1.0,
+     "gank": -0.75,
+     "continuation": 4.939999999999998,
+     "objective": 1,
+     "posture": 0
+    },
+    "SP-C+V": {
+     "Q": 6.1374999999999975,
+     "farm": -0.34,
+     "plates": 0.0,
+     "gank": -0.6000000000000001,
+     "continuation": 7.077499999999997,
+     "objective": 2,
+     "posture": 0
+    },
+    "SH-C+V": {
+     "Q": 5.987499999999998,
+     "farm": -0.34,
+     "plates": 0.0,
+     "gank": -0.75,
+     "continuation": 7.077499999999998,
+     "objective": 2,
+     "posture": 0
+    }
+   },
+   "best": {
+    "pressure": [
+     "SP-C+P",
+     {
+      "Q": 5.124999999999997,
+      "farm": -0.21500000000000002,
+      "plates": 1.0,
+      "gank": -0.6000000000000001,
+      "continuation": 4.939999999999998,
+      "objective": 1,
+      "posture": 0
+     }
+    ],
+    "vision": [
+     "SP-C+V",
+     {
+      "Q": 6.1374999999999975,
+      "farm": -0.34,
+      "plates": 0.0,
+      "gank": -0.6000000000000001,
+      "continuation": 7.077499999999997,
+      "objective": 2,
+      "posture": 0
+     }
+    ],
+    "safe": [
+     "SP-S",
+     {
+      "Q": 5.1599999999999975,
+      "farm": -0.4,
+      "plates": 0.0,
+      "gank": -0.12499999999999997,
+      "continuation": 5.684999999999998,
+      "objective": 0,
+      "posture": 1
+     }
+    ]
+   },
+   "nodes": 18985
+  },
+  "7.0": {
+   "value": 8.427499999999998,
+   "A": {
+    "SP-C+V": 1.0
+   },
+   "B": {
+    "SP-S": 1.0
+   },
+   "actions": {
+    "SP-S": {
+     "Q": 7.014999999999998,
+     "farm": -0.4,
+     "plates": 0.0,
+     "gank": -0.17499999999999996,
+     "continuation": 7.589999999999998,
+     "objective": 0,
+     "posture": 1
+    },
+    "SH-S": {
+     "Q": 7.014999999999998,
+     "farm": -0.4,
+     "plates": 0.0,
+     "gank": -0.17499999999999996,
+     "continuation": 7.589999999999998,
+     "objective": 0,
+     "posture": 1
+    },
+    "SP-C+P": {
+     "Q": 7.009999999999997,
+     "farm": -0.21500000000000002,
+     "plates": 1.0,
+     "gank": -0.8400000000000002,
+     "continuation": 7.064999999999998,
+     "objective": 1,
+     "posture": 0
+    },
+    "SH-C+P": {
+     "Q": 6.799999999999997,
+     "farm": -0.21500000000000002,
+     "plates": 1.0,
+     "gank": -1.05,
+     "continuation": 7.064999999999998,
+     "objective": 1,
+     "posture": 0
+    },
+    "SP-C+V": {
+     "Q": 8.427499999999998,
+     "farm": -0.34,
+     "plates": 0.0,
+     "gank": -0.8400000000000002,
+     "continuation": 9.607499999999998,
+     "objective": 2,
+     "posture": 0
+    },
+    "SH-C+V": {
+     "Q": 8.217499999999998,
+     "farm": -0.34,
+     "plates": 0.0,
+     "gank": -1.05,
+     "continuation": 9.607499999999998,
+     "objective": 2,
+     "posture": 0
+    }
+   },
+   "best": {
+    "pressure": [
+     "SP-C+P",
+     {
+      "Q": 7.009999999999997,
+      "farm": -0.21500000000000002,
+      "plates": 1.0,
+      "gank": -0.8400000000000002,
+      "continuation": 7.064999999999998,
+      "objective": 1,
+      "posture": 0
+     }
+    ],
+    "vision": [
+     "SP-C+V",
+     {
+      "Q": 8.427499999999998,
+      "farm": -0.34,
+      "plates": 0.0,
+      "gank": -0.8400000000000002,
+      "continuation": 9.607499999999998,
+      "objective": 2,
+      "posture": 0
+     }
+    ],
+    "safe": [
+     "SP-S",
+     {
+      "Q": 7.014999999999998,
+      "farm": -0.4,
+      "plates": 0.0,
+      "gank": -0.17499999999999996,
+      "continuation": 7.589999999999998,
+      "objective": 0,
+      "posture": 1
+     }
+    ]
+   },
+   "nodes": 18985
+  }
+ },
+ "environment": {
+  "python": "3.13.9",
+  "numpy": "2.5.3",
+  "scipy": "1.18.1",
+  "platform": "Windows-11-10.0.26200-SP0",
+  "timestamp": "2026-10-11 01:25:22"
+ }
+}

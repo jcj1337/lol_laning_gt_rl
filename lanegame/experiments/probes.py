@@ -22,10 +22,10 @@ def probes(W: int = 4):
     def h(x):              # HP given in units of the default W = 4
         return x * W // 4
     return {
-        "river fight, even (both fresh waves)": State(0, h(4), (), 0, 0, h(4), (), 0, 0, 0),
+        "lane fight, even (both fresh waves)": State(0, h(4), (), 0, 0, h(4), (), 0, 0, 0),
         "B wave at A's freeze line, fighting A's wave": State(-2, h(4), (), 0, 1, h(4), (), 0, 0, 0),
         "B 2-wave stack at A's freeze line": State(-2, h(4), (), 0, 1, h(8), (), 0, 0, 0),
-        "A 2-wave stack at river, B wave just spawned": State(0, h(8), (-4,), 0, -4, h(4), (), 0, 0, 0),
+        "A 2-wave stack at lane, B wave just spawned": State(0, h(8), (-4,), 0, -4, h(4), (), 0, 0, 0),
         "A 2-wave stack at +1, B wave just spawned": State(1, h(8), (-4,), 0, -4, h(4), (), 0, 0, 0),
         "A 2-wave stack at +1, A has vision": State(1, h(8), (-4,), 0, -4, h(4), (), 0, 2, 0),
         "A's 3-wave crash under B's tower": State(-4, h(4), (), h(12), -3, h(4), (), 0, 0, 0),

@@ -10,7 +10,7 @@ reproducible.
 Farm collection is modelled as an expected (fractional) reward in Phase 1:
 2 HP of minions at 90% collection efficiency yield 0.9 * 2 * farm_per_hp
 resources deterministically. The simulator adds that expected amount; it does
-not sample individual last hits.
+not sample individual last hits. Plate income is deterministic as well.
 """
 
 from __future__ import annotations
@@ -32,6 +32,7 @@ class EpisodeLog:
     ganks: tuple                  # number of successful ganks suffered by (A, B)
     actions: List[tuple]          # (a, b) per turn
     farm: tuple = (0.0, 0.0)      # farm collected (A, B)
+    plates: tuple = (0.0, 0.0)    # plate income (A, B)
 
 
 @dataclass
@@ -40,6 +41,7 @@ class SimulationResult:
     ganks: np.ndarray             # shape (n, 2)
     crash_resources: np.ndarray   # shape (n, 2)
     farm: np.ndarray = None       # shape (n, 2)
+    plates: np.ndarray = None     # shape (n, 2)
 
     @property
     def mean(self) -> float:
@@ -61,6 +63,8 @@ class SimulationResult:
         }
         if self.farm is not None:
             out["mean_farm"] = self.farm.mean(axis=0).tolist()
+        if self.plates is not None:
+            out["mean_plates"] = self.plates.mean(axis=0).tolist()
         return out
 
 
@@ -75,6 +79,7 @@ def play_episode(game: LaneGame, pol_a: Policy, pol_b: Policy, rng: np.random.Ge
     payoff = 0.0
     res = [0.0, 0.0]
     farm = [0.0, 0.0]
+    plates = [0.0, 0.0]
     ganks = [0, 0]
     actions = []
     for k in range(k0, game.horizon):
@@ -84,10 +89,12 @@ def play_episode(game: LaneGame, pol_a: Policy, pol_b: Policy, rng: np.random.Ge
         if record:
             actions.append((a, b))
         tr = game.transition(s, k, a, b)
-        # expected farm (deterministic given actions)
-        payoff += tr.farm_payoff
+        # expected farm and plate income (deterministic given actions)
+        payoff += tr.farm_payoff + tr.plate_payoff
         farm[0] += tr.farm[0]
         farm[1] += tr.farm[1]
+        plates[0] += tr.plates[0]
+        plates[1] += tr.plates[1]
         # realized gank checks (one per player per decision turn)
         ga = rng.random() < tr.gank_p[0]
         gb = rng.random() < tr.gank_p[1]
@@ -102,7 +109,7 @@ def play_episode(game: LaneGame, pol_a: Policy, pol_b: Policy, rng: np.random.Ge
         payoff += r
         res[0] += tr.options_a[i][0]
         res[1] += tr.options_b[j][0]
-    return EpisodeLog(payoff, tuple(res), tuple(ganks), actions, tuple(farm))
+    return EpisodeLog(payoff, tuple(res), tuple(ganks), actions, tuple(farm), tuple(plates))
 
 
 def simulate(game: LaneGame, pol_a: Policy, pol_b: Policy, episodes: int, seed: int,
@@ -112,10 +119,12 @@ def simulate(game: LaneGame, pol_a: Policy, pol_b: Policy, episodes: int, seed: 
     g = np.empty((episodes, 2))
     cr = np.empty((episodes, 2))
     fm = np.empty((episodes, 2))
+    pl = np.empty((episodes, 2))
     for e in range(episodes):
         log = play_episode(game, pol_a, pol_b, rng, root, k0)
         pay[e] = log.payoff
         g[e] = log.ganks
         cr[e] = log.crash_resources
         fm[e] = log.farm
-    return SimulationResult(pay, g, cr, fm)
+        pl[e] = log.plates
+    return SimulationResult(pay, g, cr, fm, pl)

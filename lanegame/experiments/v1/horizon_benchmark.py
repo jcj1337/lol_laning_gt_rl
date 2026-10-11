@@ -29,8 +29,8 @@ MAX_STATES = 2_000_000
 
 # probe states evaluated with a fixed number of turns remaining (16), placed at k = K - 16
 PROBES = {
-    "A 2-stack hp6 at river": State(0, 6, (-4,), 0, -4, 2, (), 0, 0, 0),
-    "A one wave hp2 at river": State(0, 2, (-4,), 0, -4, 2, (), 0, 0, 0),
+    "A 2-stack hp6 at lane": State(0, 6, (-4,), 0, -4, 2, (), 0, 0, 0),
+    "A one wave hp2 at lane": State(0, 2, (-4,), 0, -4, 2, (), 0, 0, 0),
     "B wave held at A freeze line": State(0, 0, (-4,), 0, 1, 2, (), 0, 0, 0),
 }
 

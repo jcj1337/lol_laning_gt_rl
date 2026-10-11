@@ -112,7 +112,7 @@ def fig_contest_by_position():
     order = ["A's leading wave at -4", "A's leading wave at -3", "A's leading wave at -2", "A's leading wave at -1",
              "A's leading wave at +0", "A's leading wave at +1", "A's leading wave at +2",
              "A has crashed minions under B's tower", "B has crashed minions under A's tower"]
-    labels = ["wave at -4 (base)", "wave at -3", "wave at -2 (own tower)", "wave at -1", "wave at 0 (river)",
+    labels = ["wave at -4 (base)", "wave at -3", "wave at -2 (own tower)", "wave at -1", "wave at 0 (lane)",
               "wave at +1", "wave at +2 (enemy tower)", "own minions crashed\nunder enemy tower",
               "enemy minions crashed\nunder own tower"]
     vals = [sit[k]["p_contest"] for k in order]

@@ -1,12 +1,16 @@
 """Command-line interface.
 
-  python -m lanegame solve [--model revised|v1] [--horizon 32] [--out results/revision/solution_K32.json]
-  python -m lanegame scenarios [--model revised|v1]
-  python -m lanegame exploit [--model revised|v1] [--horizon 32]
+  python -m lanegame solve [--model siege|revised|v1] [--horizon 32] [--out results/siege/solution_K32.json]
+  python -m lanegame scenarios [--model siege|revised|v1]
+  python -m lanegame exploit [--model siege|revised|v1] [--horizon 32]
   python -m lanegame simulate --a equilibrium --b uniform [--model ...] [--episodes 2000 --seed 0]
-  python -m lanegame reach [--model revised|v1] [--horizon 32]
-  python -m lanegame experiments all | before_after model_comparison ...   (revised model, results/revision/)
+  python -m lanegame reach [--model siege|revised|v1] [--horizon 32]
+  python -m lanegame strategy [--horizon 24] [--vision-turns 6]   (Vision -> Shove -> Crash -> Pressure witness)
+  python -m lanegame experiments-siege all | controlled siege_options ... (siege model, results/siege/)
+  python -m lanegame experiments all | before_after model_comparison ...   (previous revision, results/revision/)
   python -m lanegame experiments-v1 all | audit_legacy model_comparison ... (original model, results/)
+
+The default model ("siege") is GameConfig(); "revised" is GameConfig.v2() and "v1" is GameConfig.v1().
 """
 
 from __future__ import annotations
@@ -17,21 +21,29 @@ import sys
 import time
 
 from . import GameConfig, LaneGame
-from .baselines import all_baselines, v1_baselines
+from .baselines import all_baselines, siege_baselines, v1_baselines
 from .best_response import evaluate, exploitability
 
 EXPERIMENTS = ["before_after", "model_comparison", "reachability", "farm_economy", "contest_safe",
                "baselines", "sensitivity", "horizon_benchmark", "verification", "figures"]
 EXPERIMENTS_V1 = ["audit_legacy", "model_comparison", "horizon_benchmark", "baselines",
                   "equilibrium_structure", "sensitivity", "verification", "figures"]
+EXPERIMENTS_SIEGE = ["benchmark", "timing", "controlled", "siege_options", "crash_value", "vision_sweep",
+                     "ablations", "sensitivity", "equilibrium", "verification", "figures"]
 
 
 def _cfg(args, **kw) -> GameConfig:
-    return GameConfig.v1(**kw) if args.model == "v1" else GameConfig(**kw)
+    if args.model == "v1":
+        return GameConfig.v1(**kw)
+    if args.model == "revised":
+        return GameConfig.v2(**kw)
+    return GameConfig(**kw)
 
 
 def _baselines(args):
-    return v1_baselines() if args.model == "v1" else all_baselines()
+    if args.model == "v1":
+        return v1_baselines()
+    return all_baselines() if args.model == "revised" else siege_baselines()
 
 
 def _policy(name, sol, side, args):
@@ -58,8 +70,9 @@ def cmd_solve(args):
           f"{time.perf_counter() - t:.2f}s")
     print("equilibrium at s0: A", {cfg.label(a): round(float(p), 4) for a, p in zip(la, sol.x[0][s0])},
           "B", {cfg.label(b): round(float(p), 4) for b, p in zip(lb, sol.y[0][s0])})
-    out = args.out or (f"results/solution_K{args.horizon}.json" if args.model == "v1"
-                       else f"results/revision/solution_K{args.horizon}.json")
+    out = args.out or {"v1": f"results/solution_K{args.horizon}.json",
+                       "revised": f"results/revision/solution_K{args.horizon}.json",
+                       "siege": f"results/siege/solution_K{args.horizon}.json"}[args.model]
     write_solution(sol, out, include_q=not args.no_q)
     print("wrote", out)
 
@@ -101,14 +114,36 @@ def cmd_simulate(args):
 
 
 def cmd_reach(args):
-    from .reachability import EVENTS, explore_events
+    from .reachability import events_for, explore_events
     cfg = _cfg(args, horizon=args.horizon)
     rep = explore_events(LaneGame(cfg))
     print(f"[{args.model}] {rep.states} reachable decision nodes, {rep.distinct_states} distinct states")
-    for e in EVENTS:
+    for e in events_for(cfg):
         w = rep.witness.get(e)
         plan = " ".join(f"{cfg.label(a)}/{cfg.label(b)}" for a, b in w.plan) if w else "-"
         print(f"  {e:22s} transitions {rep.counts[e]:8d}  first turn {rep.first_k.get(e, '-')!s:>3}  witness: {plan}")
+
+
+def cmd_strategy(args):
+    """Search the game tree from s_0 for the Vision -> Shove -> Crash -> Pressure sequence and print its trace."""
+    from .reachability import find_vision_strategy
+    cfg = GameConfig(horizon=args.horizon, vision_turns=args.vision_turns, tower_siege_damage=args.tower_damage)
+    g = LaneGame(cfg)
+    t = time.perf_counter()
+    w = find_vision_strategy(g, horizon=args.horizon, require_plate=not args.no_plate, min_crash_hp=args.min_crash_hp)
+    print(f"vision {cfg.vision_turns} turns, tower {cfg.tower_siege_damage} HP/tick, horizon {args.horizon}, "
+          f"second crash >= {args.min_crash_hp} HP: "
+          f"{'FOUND' if w.found else 'not found'} ({w.states_searched} search nodes, {time.perf_counter() - t:.1f}s)")
+    if w.found:
+        print(f"vision established on turn {w.vision_turn}, crash on turn {w.crash_turn}, pressure under that vision on "
+              f"turn {w.k} ({w.turns_after_vision} turns after the vision)")
+        print("plan:", " ".join(f"{cfg.label(a)}/{cfg.label(b)}" for a, b in w.plan))
+        for row in w.trace:
+            print(f"k={row['k']:2d} {row['A']:8s}/{row['B']:8s} siege {row['siege_mass_before']:2d}->{row['siege_mass_after']:2d} "
+                  f"obj {row['objective']:10s} vision {row['vision_before']}->{row['vision_after']} plates "
+                  f"{row['plates_available']}->{row['plates_after']} (+{row['plates_claimed']}) thinned {row['thinned']} "
+                  f"crash {row['crash_hp']:2d} exposure {row['exposure']:+d} p_gank {row['gank_p']:.3f} "
+                  f"(unprotected {row['gank_p_without_vision']:.3f})  | {row['lane_after']}")
 
 
 def _run_experiments(names, available, package):
@@ -130,13 +165,17 @@ def cmd_experiments_v1(args):
     _run_experiments(args.names, EXPERIMENTS_V1, "lanegame.experiments.v1")
 
 
+def cmd_experiments_siege(args):
+    _run_experiments(args.names, EXPERIMENTS_SIEGE, "lanegame.experiments.siege")
+
+
 def main(argv=None):
     p = argparse.ArgumentParser(prog="python -m lanegame")
     sub = p.add_subparsers(dest="cmd", required=True)
 
     def add(name, fn, horizon=True):
         s = sub.add_parser(name)
-        s.add_argument("--model", choices=["revised", "v1"], default="revised")
+        s.add_argument("--model", choices=["siege", "revised", "v1"], default="siege")
         if horizon:
             s.add_argument("--horizon", type=int, default=32)
         s.set_defaults(fn=fn)
@@ -153,6 +192,16 @@ def main(argv=None):
     s.add_argument("--episodes", type=int, default=2000)
     s.add_argument("--seed", type=int, default=0)
     add("reach", cmd_reach)
+    s = sub.add_parser("strategy")
+    s.add_argument("--horizon", type=int, default=24)
+    s.add_argument("--vision-turns", type=int, default=6)
+    s.add_argument("--tower-damage", type=int, default=1)
+    s.add_argument("--no-plate", action="store_true", help="do not require a plate to be claimed on the pressure turn")
+    s.add_argument("--min-crash-hp", type=int, default=1, help="minimum HP of the crash after the vision (4 = a full wave)")
+    s.set_defaults(fn=cmd_strategy)
+    s = sub.add_parser("experiments-siege")
+    s.add_argument("names", nargs="+")
+    s.set_defaults(fn=cmd_experiments_siege)
     s = sub.add_parser("experiments")
     s.add_argument("names", nargs="+")
     s.set_defaults(fn=cmd_experiments)

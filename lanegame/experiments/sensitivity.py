@@ -1,7 +1,7 @@
 """Experiment E - sensitivity and robustness of the revised model's conclusions.
 
 One-at-a-time perturbations of every hand-specified parameter group around the documented baseline
-(GameConfig()), plus selected joint sweeps. For every setting the game is re-solved exactly and the
+(GameConfig.v2()), plus selected joint sweeps. For every setting the game is re-solved exactly and the
 quantities the conclusions rest on are recorded, together with explicit pass/fail checks of the
 qualitative claims:
 
@@ -28,7 +28,7 @@ from .common import REVISION, eq_summary, md_table, save, solve
 from .probes import decompose, probes, solve_probe
 
 K = 32
-BASE = GameConfig(horizon=K)
+BASE = GameConfig.v2(horizon=K)
 CRASH = BASE.crash_options
 
 
@@ -166,7 +166,7 @@ def run() -> dict:
     all_rows = {**res, **joint}
     tally = {c: sum(r["checks"][c] for r in all_rows.values()) for c in res["baseline"]["checks"]}
     md = ["# Experiment E: sensitivity and robustness (K = 32)", "",
-          "Every row re-solves the game exactly. Baseline = GameConfig() (the documented default). "
+          "Every row re-solves the game exactly. Baseline = GameConfig.v2() (the revision report's default). "
           "`contest_risk` is the flat Contest gank term (Shove + Contest adds 0.03 on top); `safe_line` is the "
           "furthest own position a Safe champion goes; `crash_reward_scale` multiplies the crash reward table.", "",
           "Qualitative checks (Y = holds):",

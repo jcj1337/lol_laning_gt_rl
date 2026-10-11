@@ -22,7 +22,7 @@ K = 32
 
 
 def run(horizon: int = K, episodes: int = 5000, seed: int = 7) -> dict:
-    cfg = GameConfig(horizon=horizon)
+    cfg = GameConfig.v2(horizon=horizon)
     g, layers, sol, _ = solve(cfg)
     eqA, eqB = sol.policy(0), sol.policy(1)
     pols = all_baselines()

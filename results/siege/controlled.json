@@ -1,0 +1,3642 @@
+{
+ "horizon": 32,
+ "results": {
+  "choice, tower 1 (previous revision)": {
+   "description": "original siege rewards, 1 HP/tick",
+   "config": {
+    "base": 4,
+    "tower": 2,
+    "ticks_per_turn": 2,
+    "spawn_interval": 4,
+    "horizon": 32,
+    "wave_hp": 4,
+    "max_stacks": 2,
+    "cap_rule": "block",
+    "queue_fights": true,
+    "positioning": true,
+    "damage_law": "lanchester",
+    "shove_damage": 1,
+    "tower_damage": 1,
+    "pressure_kappa": [
+     0,
+     1,
+     0
+    ],
+    "slowpush_line": 0,
+    "slowpush_mode": "stack_creep",
+    "slowpush_creep_period": 2,
+    "freeze_line": -1,
+    "freeze_break_threshold": 10,
+    "freeze_break_push": [
+     0,
+     4,
+     0
+    ],
+    "freeze_legal_max": -1,
+    "tower_mode": "mass",
+    "tower_consumption_per_turn": 1,
+    "tower_siege_damage": 1,
+    "siege_engage": false,
+    "siege_cap": 48,
+    "siege_mode": "choice",
+    "plate_mode": "crash",
+    "plate_grant": [
+     0,
+     0,
+     0
+    ],
+    "plates_cap": 6,
+    "plates_per_tower": 0,
+    "plates_per_turn": 1,
+    "plate_value": 1.0,
+    "thin_damage": 0,
+    "thin_reach": 1,
+    "crash_options": [
+     [
+      [
+       1.0,
+       false
+      ],
+      [
+       0.0,
+       true
+      ]
+     ],
+     [
+      [
+       2.0,
+       false
+      ],
+      [
+       0.0,
+       true
+      ]
+     ],
+     [
+      [
+       3.0,
+       false
+      ],
+      [
+       2.0,
+       true
+      ]
+     ]
+    ],
+    "vision_turns": 2,
+    "vision_reduction": 0.5,
+    "farm_per_hp": 0.25,
+    "collect_contest": 0.9,
+    "collect_contest_enemy_tower": 0.5,
+    "collect_safe": 0.8,
+    "collect_safe_slope": 0.2,
+    "zone_contest": 0.3,
+    "zone_under_tower": 0.15,
+    "gank_base": 0.15,
+    "gank_position": 0.1,
+    "gank_action": [
+     0.02,
+     0.05,
+     0.02,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "gank_strength": 0.02,
+    "gank_max": 0.4,
+    "gank_loss": 5.0,
+    "posture_cap": [
+     null,
+     null,
+     null,
+     -1,
+     -1,
+     -1
+    ]
+   },
+   "nodes": 14849,
+   "distinct": 2480,
+   "max_layer": 1302,
+   "enumerate_s": 7.691742300055921,
+   "solve_s": 3.0451648999005556,
+   "transitions": 91744,
+   "mixed": 1030,
+   "lps": 1044,
+   "max_gap": 1.7763568394002505e-15,
+   "value": 0.0,
+   "nodes_avg": {
+    "nodes": 14849,
+    "contest": 0.5675732574788132,
+    "siege_nodes": 0,
+    "p_pressure": 0.0,
+    "p_vision": 0.0,
+    "p_disengage": 0.0
+   },
+   "path": {
+    "value": 0.0,
+    "farm": [
+     9.650000000000004,
+     9.650000000000004
+    ],
+    "farm_available": [
+     15.5,
+     15.5
+    ],
+    "farm_missed": [
+     5.849999999999996,
+     5.849999999999996
+    ],
+    "crash_resources": [
+     0.0,
+     0.0
+    ],
+    "plates": [
+     0.0,
+     0.0
+    ],
+    "plate_count": [
+     0.0,
+     0.0
+    ],
+    "gank_loss": [
+     34.70000000000002,
+     34.70000000000002
+    ],
+    "crashes_by_size": {
+     "A": [
+      0.0,
+      0.0,
+      0.0
+     ],
+     "B": [
+      0.0,
+      0.0,
+      0.0
+     ]
+    },
+    "crash_hp": [
+     0.0,
+     0.0
+    ],
+    "vision_choices": [
+     0.0,
+     0.0
+    ],
+    "pressure_turns": [
+     0.0,
+     0.0
+    ],
+    "vision_turns_set": [
+     0.0,
+     0.0
+    ],
+    "siege_turns": [
+     0.0,
+     0.0
+    ],
+    "siege_safe_turns": [
+     0.0,
+     0.0
+    ],
+    "thinned_hp": [
+     0.0,
+     0.0
+    ],
+    "thin_farm": [
+     0.0,
+     0.0
+    ],
+    "protected_turns": [
+     0.0,
+     0.0
+    ],
+    "p_contest_protected": [
+     null,
+     null
+    ],
+    "p_contest_unprotected": [
+     0.90625,
+     0.90625
+    ],
+    "bounces": [
+     0.0,
+     0.0
+    ],
+    "bounce_hp": [
+     0.0,
+     0.0
+    ],
+    "sieges_started": [
+     0.0,
+     0.0
+    ],
+    "contest_share": [
+     0.90625,
+     0.90625
+    ],
+    "action_freq": [
+     {
+      "SP-C": 0.84375,
+      "SH-C": 0.0625,
+      "SP-S": 0.09375,
+      "SH-S": 0.0
+     },
+     {
+      "SP-C": 0.84375,
+      "SH-C": 0.0625,
+      "SP-S": 0.09375,
+      "SH-S": 0.0
+     }
+    ],
+    "wave_freq": [
+     {
+      "SP": 0.9375,
+      "SH": 0.0625
+     },
+     {
+      "SP": 0.9375,
+      "SH": 0.0625
+     }
+    ],
+    "support_size": []
+   },
+   "baselines": {
+    "uniform": {
+     "exploitability": 10.078337909045308,
+     "value_vs_equilibrium": -9.858957270488288,
+     "farm": -6.078404418851526,
+     "plates": 0.0,
+     "crash": 0.06490417635846055,
+     "gank": -4.064837666552208
+    },
+    "aggressive": {
+     "exploitability": 24.86250000000002,
+     "value_vs_equilibrium": -24.46750000000001,
+     "farm": -5.237500000000009,
+     "plates": 0.0,
+     "crash": 0.0,
+     "gank": -19.624999999999986
+    },
+    "freeze_contest": {
+     "exploitability": 9.445000000000004,
+     "value_vs_equilibrium": -2.8699999999999988,
+     "farm": -4.5450000000000035,
+     "plates": 0.0,
+     "crash": -5.0,
+     "gank": 0.10000000000000142
+    },
+    "passive_safe": {
+     "exploitability": 9.415000000000004,
+     "value_vs_equilibrium": -2.8699999999999988,
+     "farm": -5.365000000000002,
+     "plates": 0.0,
+     "crash": -5.0,
+     "gank": 0.9499999999999993
+    },
+    "stack_builder": {
+     "exploitability": 5.782499999999996,
+     "value_vs_equilibrium": -0.3199999999999998,
+     "farm": 2.4674999999999976,
+     "plates": 0.0,
+     "crash": -6.0,
+     "gank": -2.25
+    },
+    "release_safe": {
+     "exploitability": 7.690000000000004,
+     "value_vs_equilibrium": -2.799999999999999,
+     "farm": -11.689999999999996,
+     "plates": 0.0,
+     "crash": 0.0,
+     "gank": 4.000000000000018
+    },
+    "contest_slowpush": {
+     "exploitability": 6.589999999999999,
+     "value_vs_equilibrium": -0.3199999999999998,
+     "farm": 2.3600000000000003,
+     "plates": 0.0,
+     "crash": -7.0,
+     "gank": -1.9499999999999957
+    }
+   },
+   "br_siege": {
+    "freeze_contest": {
+     "baseline": {
+      "crashes": [
+       0.0,
+       0.0,
+       0.0
+      ],
+      "crash_hp": 0.0,
+      "sieges_started": 0.0,
+      "siege_turns": 0.0,
+      "pressure_turns": 0.0,
+      "vision_turns_set": 0.0,
+      "siege_safe_turns": 0.0,
+      "plates": 0.0,
+      "thinned_hp": 0.0,
+      "thin_farm": 0.0,
+      "vision_choices": 0.0,
+      "protected_turns": 0.0,
+      "p_contest_protected": null,
+      "p_contest_unprotected": 0.15625,
+      "crash_resources": 0.0,
+      "opp_bounces": 0.0,
+      "opp_bounce_hp": 0.0,
+      "opp_tower_farm": null
+     },
+     "best_response": {
+      "crashes": [
+       0.0,
+       1.0,
+       1.0
+      ],
+      "crash_hp": 18.0,
+      "sieges_started": 2.0,
+      "siege_turns": 0.0,
+      "pressure_turns": 0.0,
+      "vision_turns_set": 0.0,
+      "siege_safe_turns": 0.0,
+      "plates": 0.0,
+      "thinned_hp": 0.0,
+      "thin_farm": 0.0,
+      "vision_choices": 0.0,
+      "protected_turns": 0.0,
+      "p_contest_protected": null,
+      "p_contest_unprotected": 0.4375,
+      "crash_resources": 5.0,
+      "opp_bounces": 1.0,
+      "opp_bounce_hp": 8.0,
+      "opp_tower_farm": null
+     },
+     "br_actions": {
+      "SP-C": 0.375,
+      "SH-C": 0.0625,
+      "SP-S": 0.5,
+      "SH-S": 0.0625
+     }
+    },
+    "passive_safe": {
+     "baseline": {
+      "crashes": [
+       0.0,
+       0.0,
+       0.0
+      ],
+      "crash_hp": 0.0,
+      "sieges_started": 0.0,
+      "siege_turns": 0.0,
+      "pressure_turns": 0.0,
+      "vision_turns_set": 0.0,
+      "siege_safe_turns": 0.0,
+      "plates": 0.0,
+      "thinned_hp": 0.0,
+      "thin_farm": 0.0,
+      "vision_choices": 0.0,
+      "protected_turns": 0.0,
+      "p_contest_protected": null,
+      "p_contest_unprotected": 0.0,
+      "crash_resources": 0.0,
+      "opp_bounces": 0.0,
+      "opp_bounce_hp": 0.0,
+      "opp_tower_farm": null
+     },
+     "best_response": {
+      "crashes": [
+       0.0,
+       1.0,
+       1.0
+      ],
+      "crash_hp": 18.0,
+      "sieges_started": 2.0,
+      "siege_turns": 0.0,
+      "pressure_turns": 0.0,
+      "vision_turns_set": 0.0,
+      "siege_safe_turns": 0.0,
+      "plates": 0.0,
+      "thinned_hp": 0.0,
+      "thin_farm": 0.0,
+      "vision_choices": 0.0,
+      "protected_turns": 0.0,
+      "p_contest_protected": null,
+      "p_contest_unprotected": 0.46875,
+      "crash_resources": 5.0,
+      "opp_bounces": 1.0,
+      "opp_bounce_hp": 8.0,
+      "opp_tower_farm": null
+     },
+     "br_actions": {
+      "SP-C": 0.40625,
+      "SH-C": 0.0625,
+      "SP-S": 0.46875,
+      "SH-S": 0.0625
+     }
+    },
+    "stack_builder": {
+     "baseline": {
+      "crashes": [
+       0.0,
+       0.0,
+       0.0
+      ],
+      "crash_hp": 0.0,
+      "sieges_started": 0.0,
+      "siege_turns": 0.0,
+      "pressure_turns": 0.0,
+      "vision_turns_set": 0.0,
+      "siege_safe_turns": 0.0,
+      "plates": 0.0,
+      "thinned_hp": 0.0,
+      "thin_farm": 0.0,
+      "vision_choices": 0.0,
+      "protected_turns": 0.0,
+      "p_contest_protected": null,
+      "p_contest_unprotected": 1.0,
+      "crash_resources": 0.0,
+      "opp_bounces": 0.0,
+      "opp_bounce_hp": 0.0,
+      "opp_tower_farm": null
+     },
+     "best_response": {
+      "crashes": [
+       1.0,
+       1.0,
+       1.0
+      ],
+      "crash_hp": 17.0,
+      "sieges_started": 3.0,
+      "siege_turns": 0.0,
+      "pressure_turns": 0.0,
+      "vision_turns_set": 0.0,
+      "siege_safe_turns": 0.0,
+      "plates": 0.0,
+      "thinned_hp": 0.0,
+      "thin_farm": 0.0,
+      "vision_choices": 0.0,
+      "protected_turns": 0.0,
+      "p_contest_protected": null,
+      "p_contest_unprotected": 0.4375,
+      "crash_resources": 6.0,
+      "opp_bounces": 1.0,
+      "opp_bounce_hp": 8.0,
+      "opp_tower_farm": null
+     },
+     "br_actions": {
+      "SP-C": 0.3125,
+      "SH-C": 0.125,
+      "SP-S": 0.5,
+      "SH-S": 0.0625
+     }
+    },
+    "contest_slowpush": {
+     "baseline": {
+      "crashes": [
+       0.0,
+       0.0,
+       0.0
+      ],
+      "crash_hp": 0.0,
+      "sieges_started": 0.0,
+      "siege_turns": 0.0,
+      "pressure_turns": 0.0,
+      "vision_turns_set": 0.0,
+      "siege_safe_turns": 0.0,
+      "plates": 0.0,
+      "thinned_hp": 0.0,
+      "thin_farm": 0.0,
+      "vision_choices": 0.0,
+      "protected_turns": 0.0,
+      "p_contest_protected": null,
+      "p_contest_unprotected": 1.0,
+      "crash_resources": 0.0,
+      "opp_bounces": 0.0,
+      "opp_bounce_hp": 0.0,
+      "opp_tower_farm": null
+     },
+     "best_response": {
+      "crashes": [
+       0.0,
+       2.0,
+       1.0
+      ],
+      "crash_hp": 23.0,
+      "sieges_started": 2.0,
+      "siege_turns": 0.0,
+      "pressure_turns": 0.0,
+      "vision_turns_set": 0.0,
+      "siege_safe_turns": 0.0,
+      "plates": 0.0,
+      "thinned_hp": 0.0,
+      "thin_farm": 0.0,
+      "vision_choices": 0.0,
+      "protected_turns": 0.0,
+      "p_contest_protected": null,
+      "p_contest_unprotected": 0.46875,
+      "crash_resources": 7.0,
+      "opp_bounces": 1.0,
+      "opp_bounce_hp": 8.0,
+      "opp_tower_farm": null
+     },
+     "br_actions": {
+      "SP-C": 0.28125,
+      "SH-C": 0.1875,
+      "SP-S": 0.53125,
+      "SH-S": 0.0
+     }
+    }
+   },
+   "probe_crash12": {
+    "value": -5.785115396591309,
+    "A": {
+     "SP-S": 1.0
+    },
+    "B": {
+     "SP-S": 1.0
+    },
+    "Q_A": {
+     "SP-C": -6.200115396591309,
+     "SH-C": -6.350115396591309,
+     "SP-S": -5.785115396591309,
+     "SH-S": -5.785115396591309
+    }
+   },
+   "probe_crash12_vision": {
+    "value": -4.910115396591309,
+    "A": {
+     "SP-S": 1.0
+    },
+    "B": {
+     "SP-S": 1.0
+    },
+    "Q_A": {
+     "SP-C": -5.087615396591309,
+     "SH-C": -5.162615396591309,
+     "SP-S": -4.910115396591309,
+     "SH-S": -4.910115396591309
+    }
+   },
+   "seconds_total": 36.97162970015779
+  },
+  "choice, tower 2": {
+   "description": "original siege rewards, 2 HP/tick",
+   "config": {
+    "base": 4,
+    "tower": 2,
+    "ticks_per_turn": 2,
+    "spawn_interval": 4,
+    "horizon": 32,
+    "wave_hp": 4,
+    "max_stacks": 2,
+    "cap_rule": "block",
+    "queue_fights": true,
+    "positioning": true,
+    "damage_law": "lanchester",
+    "shove_damage": 1,
+    "tower_damage": 1,
+    "pressure_kappa": [
+     0,
+     1,
+     0
+    ],
+    "slowpush_line": 0,
+    "slowpush_mode": "stack_creep",
+    "slowpush_creep_period": 2,
+    "freeze_line": -1,
+    "freeze_break_threshold": 10,
+    "freeze_break_push": [
+     0,
+     4,
+     0
+    ],
+    "freeze_legal_max": -1,
+    "tower_mode": "mass",
+    "tower_consumption_per_turn": 1,
+    "tower_siege_damage": 2,
+    "siege_engage": false,
+    "siege_cap": 48,
+    "siege_mode": "choice",
+    "plate_mode": "crash",
+    "plate_grant": [
+     0,
+     0,
+     0
+    ],
+    "plates_cap": 6,
+    "plates_per_tower": 0,
+    "plates_per_turn": 1,
+    "plate_value": 1.0,
+    "thin_damage": 0,
+    "thin_reach": 1,
+    "crash_options": [
+     [
+      [
+       1.0,
+       false
+      ],
+      [
+       0.0,
+       true
+      ]
+     ],
+     [
+      [
+       2.0,
+       false
+      ],
+      [
+       0.0,
+       true
+      ]
+     ],
+     [
+      [
+       3.0,
+       false
+      ],
+      [
+       2.0,
+       true
+      ]
+     ]
+    ],
+    "vision_turns": 2,
+    "vision_reduction": 0.5,
+    "farm_per_hp": 0.25,
+    "collect_contest": 0.9,
+    "collect_contest_enemy_tower": 0.5,
+    "collect_safe": 0.8,
+    "collect_safe_slope": 0.2,
+    "zone_contest": 0.3,
+    "zone_under_tower": 0.15,
+    "gank_base": 0.15,
+    "gank_position": 0.1,
+    "gank_action": [
+     0.02,
+     0.05,
+     0.02,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "gank_strength": 0.02,
+    "gank_max": 0.4,
+    "gank_loss": 5.0,
+    "posture_cap": [
+     null,
+     null,
+     null,
+     -1,
+     -1,
+     -1
+    ]
+   },
+   "nodes": 7275,
+   "distinct": 1002,
+   "max_layer": 548,
+   "enumerate_s": 2.292800599941984,
+   "solve_s": 1.4815482001286,
+   "transitions": 35952,
+   "mixed": 542,
+   "lps": 546,
+   "max_gap": 8.881784197001252e-16,
+   "value": 0.0,
+   "nodes_avg": {
+    "nodes": 7275,
+    "contest": 0.5828580072080389,
+    "siege_nodes": 0,
+    "p_pressure": 0.0,
+    "p_vision": 0.0,
+    "p_disengage": 0.0
+   },
+   "path": {
+    "value": 0.0,
+    "farm": [
+     9.650000000000004,
+     9.650000000000004
+    ],
+    "farm_available": [
+     15.5,
+     15.5
+    ],
+    "farm_missed": [
+     5.849999999999996,
+     5.849999999999996
+    ],
+    "crash_resources": [
+     0.0,
+     0.0
+    ],
+    "plates": [
+     0.0,
+     0.0
+    ],
+    "plate_count": [
+     0.0,
+     0.0
+    ],
+    "gank_loss": [
+     34.70000000000002,
+     34.70000000000002
+    ],
+    "crashes_by_size": {
+     "A": [
+      0.0,
+      0.0,
+      0.0
+     ],
+     "B": [
+      0.0,
+      0.0,
+      0.0
+     ]
+    },
+    "crash_hp": [
+     0.0,
+     0.0
+    ],
+    "vision_choices": [
+     0.0,
+     0.0
+    ],
+    "pressure_turns": [
+     0.0,
+     0.0
+    ],
+    "vision_turns_set": [
+     0.0,
+     0.0
+    ],
+    "siege_turns": [
+     0.0,
+     0.0
+    ],
+    "siege_safe_turns": [
+     0.0,
+     0.0
+    ],
+    "thinned_hp": [
+     0.0,
+     0.0
+    ],
+    "thin_farm": [
+     0.0,
+     0.0
+    ],
+    "protected_turns": [
+     0.0,
+     0.0
+    ],
+    "p_contest_protected": [
+     null,
+     null
+    ],
+    "p_contest_unprotected": [
+     0.90625,
+     0.90625
+    ],
+    "bounces": [
+     0.0,
+     0.0
+    ],
+    "bounce_hp": [
+     0.0,
+     0.0
+    ],
+    "sieges_started": [
+     0.0,
+     0.0
+    ],
+    "contest_share": [
+     0.90625,
+     0.90625
+    ],
+    "action_freq": [
+     {
+      "SP-C": 0.84375,
+      "SH-C": 0.0625,
+      "SP-S": 0.09375,
+      "SH-S": 0.0
+     },
+     {
+      "SP-C": 0.84375,
+      "SH-C": 0.0625,
+      "SP-S": 0.09375,
+      "SH-S": 0.0
+     }
+    ],
+    "wave_freq": [
+     {
+      "SP": 0.9375,
+      "SH": 0.0625
+     },
+     {
+      "SP": 0.9375,
+      "SH": 0.0625
+     }
+    ],
+    "support_size": []
+   },
+   "baselines": {
+    "uniform": {
+     "exploitability": 10.07555663934838,
+     "value_vs_equilibrium": -9.86600863681987,
+     "farm": -6.0775592321740675,
+     "plates": 0.0,
+     "crash": 0.06420584562139608,
+     "gank": -4.0622032527959
+    },
+    "aggressive": {
+     "exploitability": 24.86250000000002,
+     "value_vs_equilibrium": -24.46750000000001,
+     "farm": -5.237500000000009,
+     "plates": 0.0,
+     "crash": 0.0,
+     "gank": -19.624999999999986
+    },
+    "freeze_contest": {
+     "exploitability": 10.612500000000002,
+     "value_vs_equilibrium": -2.8699999999999988,
+     "farm": -4.837500000000004,
+     "plates": 0.0,
+     "crash": -6.0,
+     "gank": 0.22500000000000142
+    },
+    "passive_safe": {
+     "exploitability": 10.915000000000003,
+     "value_vs_equilibrium": -2.8699999999999988,
+     "farm": -5.465000000000002,
+     "plates": 0.0,
+     "crash": -6.0,
+     "gank": 0.5500000000000007
+    },
+    "stack_builder": {
+     "exploitability": 7.182499999999998,
+     "value_vs_equilibrium": -0.3199999999999998,
+     "farm": 2.4674999999999976,
+     "plates": 0.0,
+     "crash": -7.0,
+     "gank": -2.649999999999995
+    },
+    "release_safe": {
+     "exploitability": 7.690000000000004,
+     "value_vs_equilibrium": -2.799999999999999,
+     "farm": -11.689999999999996,
+     "plates": 0.0,
+     "crash": 0.0,
+     "gank": 4.000000000000018
+    },
+    "contest_slowpush": {
+     "exploitability": 7.947499999999998,
+     "value_vs_equilibrium": -0.3199999999999998,
+     "farm": 2.152499999999998,
+     "plates": 0.0,
+     "crash": -7.0,
+     "gank": -3.1000000000000085
+    }
+   },
+   "br_siege": {
+    "freeze_contest": {
+     "baseline": {
+      "crashes": [
+       0.0,
+       0.0,
+       0.0
+      ],
+      "crash_hp": 0.0,
+      "sieges_started": 0.0,
+      "siege_turns": 0.0,
+      "pressure_turns": 0.0,
+      "vision_turns_set": 0.0,
+      "siege_safe_turns": 0.0,
+      "plates": 0.0,
+      "thinned_hp": 0.0,
+      "thin_farm": 0.0,
+      "vision_choices": 0.0,
+      "protected_turns": 0.0,
+      "p_contest_protected": null,
+      "p_contest_unprotected": 0.1875,
+      "crash_resources": 0.0,
+      "opp_bounces": 0.0,
+      "opp_bounce_hp": 0.0,
+      "opp_tower_farm": null
+     },
+     "best_response": {
+      "crashes": [
+       0.0,
+       0.0,
+       2.0
+      ],
+      "crash_hp": 20.0,
+      "sieges_started": 2.0,
+      "siege_turns": 0.0,
+      "pressure_turns": 0.0,
+      "vision_turns_set": 0.0,
+      "siege_safe_turns": 0.0,
+      "plates": 0.0,
+      "thinned_hp": 0.0,
+      "thin_farm": 0.0,
+      "vision_choices": 0.0,
+      "protected_turns": 0.0,
+      "p_contest_protected": null,
+      "p_contest_unprotected": 0.46875,
+      "crash_resources": 6.0,
+      "opp_bounces": 1.0,
+      "opp_bounce_hp": 8.0,
+      "opp_tower_farm": null
+     },
+     "br_actions": {
+      "SP-C": 0.375,
+      "SH-C": 0.09375,
+      "SP-S": 0.5,
+      "SH-S": 0.03125
+     }
+    },
+    "passive_safe": {
+     "baseline": {
+      "crashes": [
+       0.0,
+       0.0,
+       0.0
+      ],
+      "crash_hp": 0.0,
+      "sieges_started": 0.0,
+      "siege_turns": 0.0,
+      "pressure_turns": 0.0,
+      "vision_turns_set": 0.0,
+      "siege_safe_turns": 0.0,
+      "plates": 0.0,
+      "thinned_hp": 0.0,
+      "thin_farm": 0.0,
+      "vision_choices": 0.0,
+      "protected_turns": 0.0,
+      "p_contest_protected": null,
+      "p_contest_unprotected": 0.0,
+      "crash_resources": 0.0,
+      "opp_bounces": 0.0,
+      "opp_bounce_hp": 0.0,
+      "opp_tower_farm": null
+     },
+     "best_response": {
+      "crashes": [
+       0.0,
+       0.0,
+       2.0
+      ],
+      "crash_hp": 20.0,
+      "sieges_started": 2.0,
+      "siege_turns": 0.0,
+      "pressure_turns": 0.0,
+      "vision_turns_set": 0.0,
+      "siege_safe_turns": 0.0,
+      "plates": 0.0,
+      "thinned_hp": 0.0,
+      "thin_farm": 0.0,
+      "vision_choices": 0.0,
+      "protected_turns": 0.0,
+      "p_contest_protected": null,
+      "p_contest_unprotected": 0.46875,
+      "crash_resources": 6.0,
+      "opp_bounces": 1.0,
+      "opp_bounce_hp": 8.0,
+      "opp_tower_farm": null
+     },
+     "br_actions": {
+      "SP-C": 0.40625,
+      "SH-C": 0.0625,
+      "SP-S": 0.46875,
+      "SH-S": 0.0625
+     }
+    },
+    "stack_builder": {
+     "baseline": {
+      "crashes": [
+       0.0,
+       0.0,
+       0.0
+      ],
+      "crash_hp": 0.0,
+      "sieges_started": 0.0,
+      "siege_turns": 0.0,
+      "pressure_turns": 0.0,
+      "vision_turns_set": 0.0,
+      "siege_safe_turns": 0.0,
+      "plates": 0.0,
+      "thinned_hp": 0.0,
+      "thin_farm": 0.0,
+      "vision_choices": 0.0,
+      "protected_turns": 0.0,
+      "p_contest_protected": null,
+      "p_contest_unprotected": 1.0,
+      "crash_resources": 0.0,
+      "opp_bounces": 0.0,
+      "opp_bounce_hp": 0.0,
+      "opp_tower_farm": null
+     },
+     "best_response": {
+      "crashes": [
+       1.0,
+       0.0,
+       2.0
+      ],
+      "crash_hp": 19.0,
+      "sieges_started": 3.0,
+      "siege_turns": 0.0,
+      "pressure_turns": 0.0,
+      "vision_turns_set": 0.0,
+      "siege_safe_turns": 0.0,
+      "plates": 0.0,
+      "thinned_hp": 0.0,
+      "thin_farm": 0.0,
+      "vision_choices": 0.0,
+      "protected_turns": 0.0,
+      "p_contest_protected": null,
+      "p_contest_unprotected": 0.4375,
+      "crash_resources": 7.0,
+      "opp_bounces": 1.0,
+      "opp_bounce_hp": 8.0,
+      "opp_tower_farm": null
+     },
+     "br_actions": {
+      "SP-C": 0.3125,
+      "SH-C": 0.125,
+      "SP-S": 0.5,
+      "SH-S": 0.0625
+     }
+    },
+    "contest_slowpush": {
+     "baseline": {
+      "crashes": [
+       0.0,
+       0.0,
+       0.0
+      ],
+      "crash_hp": 0.0,
+      "sieges_started": 0.0,
+      "siege_turns": 0.0,
+      "pressure_turns": 0.0,
+      "vision_turns_set": 0.0,
+      "siege_safe_turns": 0.0,
+      "plates": 0.0,
+      "thinned_hp": 0.0,
+      "thin_farm": 0.0,
+      "vision_choices": 0.0,
+      "protected_turns": 0.0,
+      "p_contest_protected": null,
+      "p_contest_unprotected": 1.0,
+      "crash_resources": 0.0,
+      "opp_bounces": 0.0,
+      "opp_bounce_hp": 0.0,
+      "opp_tower_farm": null
+     },
+     "best_response": {
+      "crashes": [
+       1.0,
+       0.0,
+       2.0
+      ],
+      "crash_hp": 21.0,
+      "sieges_started": 3.0,
+      "siege_turns": 0.0,
+      "pressure_turns": 0.0,
+      "vision_turns_set": 0.0,
+      "siege_safe_turns": 0.0,
+      "plates": 0.0,
+      "thinned_hp": 0.0,
+      "thin_farm": 0.0,
+      "vision_choices": 0.0,
+      "protected_turns": 0.0,
+      "p_contest_protected": null,
+      "p_contest_unprotected": 0.4375,
+      "crash_resources": 7.0,
+      "opp_bounces": 1.0,
+      "opp_bounce_hp": 8.0,
+      "opp_tower_farm": null
+     },
+     "br_actions": {
+      "SP-C": 0.34375,
+      "SH-C": 0.09375,
+      "SP-S": 0.5,
+      "SH-S": 0.0625
+     }
+    }
+   },
+   "probe_crash12": {
+    "value": -3.742499999999999,
+    "A": {
+     "SP-S": 1.0
+    },
+    "B": {
+     "SP-C": 1.0
+    },
+    "Q_A": {
+     "SP-C": -4.0825,
+     "SH-C": -4.232499999999999,
+     "SP-S": -3.742499999999999,
+     "SH-S": -3.742499999999999
+    }
+   },
+   "probe_crash12_vision": {
+    "value": -2.867499999999999,
+    "A": {
+     "SP-S": 1.0
+    },
+    "B": {
+     "SP-C": 1.0
+    },
+    "Q_A": {
+     "SP-C": -2.969999999999999,
+     "SH-C": -3.044999999999999,
+     "SP-S": -2.867499999999999,
+     "SH-S": -2.867499999999999
+    }
+   },
+   "seconds_total": 12.39133909996599
+  },
+  "choice, tower 3": {
+   "description": "original siege rewards, 3 HP/tick",
+   "config": {
+    "base": 4,
+    "tower": 2,
+    "ticks_per_turn": 2,
+    "spawn_interval": 4,
+    "horizon": 32,
+    "wave_hp": 4,
+    "max_stacks": 2,
+    "cap_rule": "block",
+    "queue_fights": true,
+    "positioning": true,
+    "damage_law": "lanchester",
+    "shove_damage": 1,
+    "tower_damage": 1,
+    "pressure_kappa": [
+     0,
+     1,
+     0
+    ],
+    "slowpush_line": 0,
+    "slowpush_mode": "stack_creep",
+    "slowpush_creep_period": 2,
+    "freeze_line": -1,
+    "freeze_break_threshold": 10,
+    "freeze_break_push": [
+     0,
+     4,
+     0
+    ],
+    "freeze_legal_max": -1,
+    "tower_mode": "mass",
+    "tower_consumption_per_turn": 1,
+    "tower_siege_damage": 3,
+    "siege_engage": false,
+    "siege_cap": 48,
+    "siege_mode": "choice",
+    "plate_mode": "crash",
+    "plate_grant": [
+     0,
+     0,
+     0
+    ],
+    "plates_cap": 6,
+    "plates_per_tower": 0,
+    "plates_per_turn": 1,
+    "plate_value": 1.0,
+    "thin_damage": 0,
+    "thin_reach": 1,
+    "crash_options": [
+     [
+      [
+       1.0,
+       false
+      ],
+      [
+       0.0,
+       true
+      ]
+     ],
+     [
+      [
+       2.0,
+       false
+      ],
+      [
+       0.0,
+       true
+      ]
+     ],
+     [
+      [
+       3.0,
+       false
+      ],
+      [
+       2.0,
+       true
+      ]
+     ]
+    ],
+    "vision_turns": 2,
+    "vision_reduction": 0.5,
+    "farm_per_hp": 0.25,
+    "collect_contest": 0.9,
+    "collect_contest_enemy_tower": 0.5,
+    "collect_safe": 0.8,
+    "collect_safe_slope": 0.2,
+    "zone_contest": 0.3,
+    "zone_under_tower": 0.15,
+    "gank_base": 0.15,
+    "gank_position": 0.1,
+    "gank_action": [
+     0.02,
+     0.05,
+     0.02,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "gank_strength": 0.02,
+    "gank_max": 0.4,
+    "gank_loss": 5.0,
+    "posture_cap": [
+     null,
+     null,
+     null,
+     -1,
+     -1,
+     -1
+    ]
+   },
+   "nodes": 5047,
+   "distinct": 630,
+   "max_layer": 358,
+   "enumerate_s": 1.4116094999480993,
+   "solve_s": 1.3258414999581873,
+   "transitions": 22688,
+   "mixed": 412,
+   "lps": 416,
+   "max_gap": 8.881784197001252e-16,
+   "value": 0.0,
+   "nodes_avg": {
+    "nodes": 5047,
+    "contest": 0.5223686278546413,
+    "siege_nodes": 0,
+    "p_pressure": 0.0,
+    "p_vision": 0.0,
+    "p_disengage": 0.0
+   },
+   "path": {
+    "value": 0.0,
+    "farm": [
+     9.650000000000004,
+     9.650000000000004
+    ],
+    "farm_available": [
+     15.5,
+     15.5
+    ],
+    "farm_missed": [
+     5.849999999999996,
+     5.849999999999996
+    ],
+    "crash_resources": [
+     0.0,
+     0.0
+    ],
+    "plates": [
+     0.0,
+     0.0
+    ],
+    "plate_count": [
+     0.0,
+     0.0
+    ],
+    "gank_loss": [
+     34.70000000000002,
+     34.70000000000002
+    ],
+    "crashes_by_size": {
+     "A": [
+      0.0,
+      0.0,
+      0.0
+     ],
+     "B": [
+      0.0,
+      0.0,
+      0.0
+     ]
+    },
+    "crash_hp": [
+     0.0,
+     0.0
+    ],
+    "vision_choices": [
+     0.0,
+     0.0
+    ],
+    "pressure_turns": [
+     0.0,
+     0.0
+    ],
+    "vision_turns_set": [
+     0.0,
+     0.0
+    ],
+    "siege_turns": [
+     0.0,
+     0.0
+    ],
+    "siege_safe_turns": [
+     0.0,
+     0.0
+    ],
+    "thinned_hp": [
+     0.0,
+     0.0
+    ],
+    "thin_farm": [
+     0.0,
+     0.0
+    ],
+    "protected_turns": [
+     0.0,
+     0.0
+    ],
+    "p_contest_protected": [
+     null,
+     null
+    ],
+    "p_contest_unprotected": [
+     0.90625,
+     0.90625
+    ],
+    "bounces": [
+     0.0,
+     0.0
+    ],
+    "bounce_hp": [
+     0.0,
+     0.0
+    ],
+    "sieges_started": [
+     0.0,
+     0.0
+    ],
+    "contest_share": [
+     0.90625,
+     0.90625
+    ],
+    "action_freq": [
+     {
+      "SP-C": 0.84375,
+      "SH-C": 0.0625,
+      "SP-S": 0.09375,
+      "SH-S": 0.0
+     },
+     {
+      "SP-C": 0.84375,
+      "SH-C": 0.0625,
+      "SP-S": 0.09375,
+      "SH-S": 0.0
+     }
+    ],
+    "wave_freq": [
+     {
+      "SP": 0.9375,
+      "SH": 0.0625
+     },
+     {
+      "SP": 0.9375,
+      "SH": 0.0625
+     }
+    ],
+    "support_size": []
+   },
+   "baselines": {
+    "uniform": {
+     "exploitability": 10.07555663934838,
+     "value_vs_equilibrium": -9.86600863681987,
+     "farm": -6.0775592321740675,
+     "plates": 0.0,
+     "crash": 0.06420584562139608,
+     "gank": -4.0622032527959
+    },
+    "aggressive": {
+     "exploitability": 24.86250000000002,
+     "value_vs_equilibrium": -24.46750000000001,
+     "farm": -5.237500000000009,
+     "plates": 0.0,
+     "crash": 0.0,
+     "gank": -19.624999999999986
+    },
+    "freeze_contest": {
+     "exploitability": 10.532500000000002,
+     "value_vs_equilibrium": -2.8699999999999988,
+     "farm": -4.632500000000004,
+     "plates": 0.0,
+     "crash": -6.0,
+     "gank": 0.09999999999999787
+    },
+    "passive_safe": {
+     "exploitability": 10.835,
+     "value_vs_equilibrium": -2.8699999999999988,
+     "farm": -5.260000000000003,
+     "plates": 0.0,
+     "crash": -6.0,
+     "gank": 0.42499999999999716
+    },
+    "stack_builder": {
+     "exploitability": 7.317499999999996,
+     "value_vs_equilibrium": -0.3199999999999998,
+     "farm": 2.657499999999996,
+     "plates": 0.0,
+     "crash": -7.0,
+     "gank": -2.974999999999998
+    },
+    "release_safe": {
+     "exploitability": 7.690000000000004,
+     "value_vs_equilibrium": -2.799999999999999,
+     "farm": -11.689999999999996,
+     "plates": 0.0,
+     "crash": 0.0,
+     "gank": 4.000000000000018
+    },
+    "contest_slowpush": {
+     "exploitability": 7.882499999999997,
+     "value_vs_equilibrium": -0.3199999999999998,
+     "farm": 2.3424999999999967,
+     "plates": 0.0,
+     "crash": -7.0,
+     "gank": -3.2250000000000014
+    }
+   },
+   "br_siege": {
+    "freeze_contest": {
+     "baseline": {
+      "crashes": [
+       0.0,
+       0.0,
+       0.0
+      ],
+      "crash_hp": 0.0,
+      "sieges_started": 0.0,
+      "siege_turns": 0.0,
+      "pressure_turns": 0.0,
+      "vision_turns_set": 0.0,
+      "siege_safe_turns": 0.0,
+      "plates": 0.0,
+      "thinned_hp": 0.0,
+      "thin_farm": 0.0,
+      "vision_choices": 0.0,
+      "protected_turns": 0.0,
+      "p_contest_protected": null,
+      "p_contest_unprotected": 0.1875,
+      "crash_resources": 0.0,
+      "opp_bounces": 0.0,
+      "opp_bounce_hp": 0.0,
+      "opp_tower_farm": null
+     },
+     "best_response": {
+      "crashes": [
+       0.0,
+       0.0,
+       2.0
+      ],
+      "crash_hp": 20.0,
+      "sieges_started": 2.0,
+      "siege_turns": 0.0,
+      "pressure_turns": 0.0,
+      "vision_turns_set": 0.0,
+      "siege_safe_turns": 0.0,
+      "plates": 0.0,
+      "thinned_hp": 0.0,
+      "thin_farm": 0.0,
+      "vision_choices": 0.0,
+      "protected_turns": 0.0,
+      "p_contest_protected": null,
+      "p_contest_unprotected": 0.46875,
+      "crash_resources": 6.0,
+      "opp_bounces": 0.0,
+      "opp_bounce_hp": 0.0,
+      "opp_tower_farm": null
+     },
+     "br_actions": {
+      "SP-C": 0.375,
+      "SH-C": 0.09375,
+      "SP-S": 0.5,
+      "SH-S": 0.03125
+     }
+    },
+    "passive_safe": {
+     "baseline": {
+      "crashes": [
+       0.0,
+       0.0,
+       0.0
+      ],
+      "crash_hp": 0.0,
+      "sieges_started": 0.0,
+      "siege_turns": 0.0,
+      "pressure_turns": 0.0,
+      "vision_turns_set": 0.0,
+      "siege_safe_turns": 0.0,
+      "plates": 0.0,
+      "thinned_hp": 0.0,
+      "thin_farm": 0.0,
+      "vision_choices": 0.0,
+      "protected_turns": 0.0,
+      "p_contest_protected": null,
+      "p_contest_unprotected": 0.0,
+      "crash_resources": 0.0,
+      "opp_bounces": 0.0,
+      "opp_bounce_hp": 0.0,
+      "opp_tower_farm": null
+     },
+     "best_response": {
+      "crashes": [
+       0.0,
+       0.0,
+       2.0
+      ],
+      "crash_hp": 20.0,
+      "sieges_started": 2.0,
+      "siege_turns": 0.0,
+      "pressure_turns": 0.0,
+      "vision_turns_set": 0.0,
+      "siege_safe_turns": 0.0,
+      "plates": 0.0,
+      "thinned_hp": 0.0,
+      "thin_farm": 0.0,
+      "vision_choices": 0.0,
+      "protected_turns": 0.0,
+      "p_contest_protected": null,
+      "p_contest_unprotected": 0.46875,
+      "crash_resources": 6.0,
+      "opp_bounces": 0.0,
+      "opp_bounce_hp": 0.0,
+      "opp_tower_farm": null
+     },
+     "br_actions": {
+      "SP-C": 0.40625,
+      "SH-C": 0.0625,
+      "SP-S": 0.46875,
+      "SH-S": 0.0625
+     }
+    },
+    "stack_builder": {
+     "baseline": {
+      "crashes": [
+       0.0,
+       0.0,
+       0.0
+      ],
+      "crash_hp": 0.0,
+      "sieges_started": 0.0,
+      "siege_turns": 0.0,
+      "pressure_turns": 0.0,
+      "vision_turns_set": 0.0,
+      "siege_safe_turns": 0.0,
+      "plates": 0.0,
+      "thinned_hp": 0.0,
+      "thin_farm": 0.0,
+      "vision_choices": 0.0,
+      "protected_turns": 0.0,
+      "p_contest_protected": null,
+      "p_contest_unprotected": 1.0,
+      "crash_resources": 0.0,
+      "opp_bounces": 0.0,
+      "opp_bounce_hp": 0.0,
+      "opp_tower_farm": null
+     },
+     "best_response": {
+      "crashes": [
+       1.0,
+       0.0,
+       2.0
+      ],
+      "crash_hp": 19.0,
+      "sieges_started": 3.0,
+      "siege_turns": 0.0,
+      "pressure_turns": 0.0,
+      "vision_turns_set": 0.0,
+      "siege_safe_turns": 0.0,
+      "plates": 0.0,
+      "thinned_hp": 0.0,
+      "thin_farm": 0.0,
+      "vision_choices": 0.0,
+      "protected_turns": 0.0,
+      "p_contest_protected": null,
+      "p_contest_unprotected": 0.4375,
+      "crash_resources": 7.0,
+      "opp_bounces": 0.0,
+      "opp_bounce_hp": 0.0,
+      "opp_tower_farm": null
+     },
+     "br_actions": {
+      "SP-C": 0.34375,
+      "SH-C": 0.09375,
+      "SP-S": 0.5,
+      "SH-S": 0.0625
+     }
+    },
+    "contest_slowpush": {
+     "baseline": {
+      "crashes": [
+       0.0,
+       0.0,
+       0.0
+      ],
+      "crash_hp": 0.0,
+      "sieges_started": 0.0,
+      "siege_turns": 0.0,
+      "pressure_turns": 0.0,
+      "vision_turns_set": 0.0,
+      "siege_safe_turns": 0.0,
+      "plates": 0.0,
+      "thinned_hp": 0.0,
+      "thin_farm": 0.0,
+      "vision_choices": 0.0,
+      "protected_turns": 0.0,
+      "p_contest_protected": null,
+      "p_contest_unprotected": 1.0,
+      "crash_resources": 0.0,
+      "opp_bounces": 0.0,
+      "opp_bounce_hp": 0.0,
+      "opp_tower_farm": null
+     },
+     "best_response": {
+      "crashes": [
+       1.0,
+       0.0,
+       2.0
+      ],
+      "crash_hp": 21.0,
+      "sieges_started": 3.0,
+      "siege_turns": 0.0,
+      "pressure_turns": 0.0,
+      "vision_turns_set": 0.0,
+      "siege_safe_turns": 0.0,
+      "plates": 0.0,
+      "thinned_hp": 0.0,
+      "thin_farm": 0.0,
+      "vision_choices": 0.0,
+      "protected_turns": 0.0,
+      "p_contest_protected": null,
+      "p_contest_unprotected": 0.4375,
+      "crash_resources": 7.0,
+      "opp_bounces": 0.0,
+      "opp_bounce_hp": 0.0,
+      "opp_tower_farm": null
+     },
+     "br_actions": {
+      "SP-C": 0.34375,
+      "SH-C": 0.09375,
+      "SP-S": 0.5,
+      "SH-S": 0.0625
+     }
+    }
+   },
+   "probe_crash12": {
+    "value": -3.2974999999999985,
+    "A": {
+     "SP-S": 1.0
+    },
+    "B": {
+     "SP-C": 1.0
+    },
+    "Q_A": {
+     "SP-C": -3.5699999999999985,
+     "SH-C": -3.719999999999998,
+     "SP-S": -3.2974999999999985,
+     "SH-S": -3.2974999999999985
+    }
+   },
+   "probe_crash12_vision": {
+    "value": -2.4224999999999985,
+    "A": {
+     "SP-S": 1.0
+    },
+    "B": {
+     "SP-C": 1.0
+    },
+    "Q_A": {
+     "SP-C": -2.4574999999999987,
+     "SH-C": -2.532499999999999,
+     "SP-S": -2.4224999999999985,
+     "SH-S": -2.4224999999999985
+    }
+   },
+   "seconds_total": 9.920023999875411
+  },
+  "objective, tower 1": {
+   "description": "Pressure/Vision, 1 HP/tick",
+   "config": {
+    "base": 4,
+    "tower": 2,
+    "ticks_per_turn": 2,
+    "spawn_interval": 4,
+    "horizon": 32,
+    "wave_hp": 4,
+    "max_stacks": 2,
+    "cap_rule": "block",
+    "queue_fights": true,
+    "positioning": true,
+    "damage_law": "lanchester",
+    "shove_damage": 1,
+    "tower_damage": 1,
+    "pressure_kappa": [
+     0,
+     1,
+     0
+    ],
+    "slowpush_line": 0,
+    "slowpush_mode": "stack_creep",
+    "slowpush_creep_period": 2,
+    "freeze_line": -1,
+    "freeze_break_threshold": 10,
+    "freeze_break_push": [
+     0,
+     4,
+     0
+    ],
+    "freeze_legal_max": -1,
+    "tower_mode": "mass",
+    "tower_consumption_per_turn": 1,
+    "tower_siege_damage": 1,
+    "siege_engage": false,
+    "siege_cap": 48,
+    "siege_mode": "objective",
+    "plate_mode": "crash",
+    "plate_grant": [
+     1,
+     2,
+     3
+    ],
+    "plates_cap": 6,
+    "plates_per_tower": 5,
+    "plates_per_turn": 1,
+    "plate_value": 1.0,
+    "thin_damage": 1,
+    "thin_reach": 1,
+    "crash_options": [
+     [
+      [
+       1.0,
+       false
+      ],
+      [
+       0.0,
+       true
+      ]
+     ],
+     [
+      [
+       2.0,
+       false
+      ],
+      [
+       0.0,
+       true
+      ]
+     ],
+     [
+      [
+       3.0,
+       false
+      ],
+      [
+       2.0,
+       true
+      ]
+     ]
+    ],
+    "vision_turns": 6,
+    "vision_reduction": 0.75,
+    "farm_per_hp": 0.25,
+    "collect_contest": 0.9,
+    "collect_contest_enemy_tower": 0.5,
+    "collect_safe": 0.8,
+    "collect_safe_slope": 0.2,
+    "zone_contest": 0.3,
+    "zone_under_tower": 0.15,
+    "gank_base": 0.15,
+    "gank_position": 0.1,
+    "gank_action": [
+     0.02,
+     0.05,
+     0.02,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "gank_strength": 0.02,
+    "gank_max": 0.4,
+    "gank_loss": 5.0,
+    "posture_cap": [
+     null,
+     null,
+     null,
+     -1,
+     -1,
+     -1
+    ]
+   },
+   "nodes": 172907,
+   "distinct": 60372,
+   "max_layer": 31860,
+   "enumerate_s": 150.2140047000721,
+   "solve_s": 71.86412959988229,
+   "transitions": 2697760,
+   "mixed": 8042,
+   "lps": 8130,
+   "max_gap": 4.440892098500626e-15,
+   "value": 0.0,
+   "nodes_avg": {
+    "nodes": 172907,
+    "contest": 0.7981154563414451,
+    "siege_nodes": 55160,
+    "p_pressure": 0.6821073810285706,
+    "p_vision": 0.30950786815371945,
+    "p_disengage": 0.008384750817709948
+   },
+   "path": {
+    "value": 0.0,
+    "farm": [
+     9.650000000000004,
+     9.650000000000004
+    ],
+    "farm_available": [
+     15.5,
+     15.5
+    ],
+    "farm_missed": [
+     5.849999999999996,
+     5.849999999999996
+    ],
+    "crash_resources": [
+     0.0,
+     0.0
+    ],
+    "plates": [
+     0.0,
+     0.0
+    ],
+    "plate_count": [
+     0.0,
+     0.0
+    ],
+    "gank_loss": [
+     34.70000000000002,
+     34.70000000000002
+    ],
+    "crashes_by_size": {
+     "A": [
+      0.0,
+      0.0,
+      0.0
+     ],
+     "B": [
+      0.0,
+      0.0,
+      0.0
+     ]
+    },
+    "crash_hp": [
+     0.0,
+     0.0
+    ],
+    "vision_choices": [
+     0.0,
+     0.0
+    ],
+    "pressure_turns": [
+     0.0,
+     0.0
+    ],
+    "vision_turns_set": [
+     0.0,
+     0.0
+    ],
+    "siege_turns": [
+     0.0,
+     0.0
+    ],
+    "siege_safe_turns": [
+     0.0,
+     0.0
+    ],
+    "thinned_hp": [
+     0.0,
+     0.0
+    ],
+    "thin_farm": [
+     0.0,
+     0.0
+    ],
+    "protected_turns": [
+     0.0,
+     0.0
+    ],
+    "p_contest_protected": [
+     null,
+     null
+    ],
+    "p_contest_unprotected": [
+     0.90625,
+     0.90625
+    ],
+    "bounces": [
+     0.0,
+     0.0
+    ],
+    "bounce_hp": [
+     0.0,
+     0.0
+    ],
+    "sieges_started": [
+     0.0,
+     0.0
+    ],
+    "contest_share": [
+     0.90625,
+     0.90625
+    ],
+    "action_freq": [
+     {
+      "SP-C": 0.84375,
+      "SH-C": 0.0625,
+      "SP-S": 0.09375,
+      "SH-S": 0.0
+     },
+     {
+      "SP-C": 0.84375,
+      "SH-C": 0.0625,
+      "SP-S": 0.09375,
+      "SH-S": 0.0
+     }
+    ],
+    "wave_freq": [
+     {
+      "SP": 0.9375,
+      "SH": 0.0625
+     },
+     {
+      "SP": 0.9375,
+      "SH": 0.0625
+     }
+    ],
+    "support_size": []
+   },
+   "baselines": {
+    "uniform": {
+     "exploitability": 10.042873734995688,
+     "value_vs_equilibrium": -9.600377204094537,
+     "farm": -6.059990775535548,
+     "plates": 0.028325211758172875,
+     "crash": 0.0,
+     "gank": -4.011208171218048
+    },
+    "aggressive": {
+     "exploitability": 24.86250000000002,
+     "value_vs_equilibrium": -24.46750000000001,
+     "farm": -5.237500000000009,
+     "plates": 0.0,
+     "crash": 0.0,
+     "gank": -19.624999999999986
+    },
+    "freeze_contest": {
+     "exploitability": 18.518749999999997,
+     "value_vs_equilibrium": -2.8699999999999988,
+     "farm": -4.362500000000002,
+     "plates": -5.0,
+     "crash": 0.0,
+     "gank": -9.156249999999993
+    },
+    "passive_safe": {
+     "exploitability": 21.467499999999998,
+     "value_vs_equilibrium": -2.8699999999999988,
+     "farm": -6.230000000000001,
+     "plates": -4.0,
+     "crash": 0.0,
+     "gank": -11.237499999999997
+    },
+    "stack_builder": {
+     "exploitability": 18.737500000000004,
+     "value_vs_equilibrium": -0.3199999999999998,
+     "farm": 0.25,
+     "plates": -4.0,
+     "crash": 0.0,
+     "gank": -14.987499999999997
+    },
+    "release_safe": {
+     "exploitability": 7.690000000000004,
+     "value_vs_equilibrium": -2.799999999999999,
+     "farm": -11.689999999999996,
+     "plates": 0.0,
+     "crash": 0.0,
+     "gank": 4.000000000000018
+    },
+    "contest_slowpush": {
+     "exploitability": 19.027500000000003,
+     "value_vs_equilibrium": -0.3199999999999998,
+     "farm": 1.3975000000000017,
+     "plates": -7.0,
+     "crash": 0.0,
+     "gank": -13.425000000000011
+    },
+    "aggressive[vision]": {
+     "exploitability": 24.86250000000002,
+     "value_vs_equilibrium": -24.46750000000001,
+     "farm": -5.237500000000009,
+     "plates": 0.0,
+     "crash": 0.0,
+     "gank": -19.624999999999986
+    },
+    "stack_builder[vision]": {
+     "exploitability": 18.737500000000004,
+     "value_vs_equilibrium": -0.3199999999999998,
+     "farm": 0.25,
+     "plates": -4.0,
+     "crash": 0.0,
+     "gank": -14.987499999999997
+    },
+    "contest_slowpush[vision]": {
+     "exploitability": 19.027500000000003,
+     "value_vs_equilibrium": -0.3199999999999998,
+     "farm": 1.3975000000000017,
+     "plates": -7.0,
+     "crash": 0.0,
+     "gank": -13.425000000000011
+    },
+    "stack_builder[safe]": {
+     "exploitability": 18.737500000000004,
+     "value_vs_equilibrium": -0.3199999999999998,
+     "farm": 0.25,
+     "plates": -4.0,
+     "crash": 0.0,
+     "gank": -14.987499999999997
+    },
+    "aggressive[safe]": {
+     "exploitability": 24.86250000000002,
+     "value_vs_equilibrium": -24.46750000000001,
+     "farm": -5.237500000000009,
+     "plates": 0.0,
+     "crash": 0.0,
+     "gank": -19.624999999999986
+    }
+   },
+   "br_siege": {
+    "freeze_contest": {
+     "baseline": {
+      "crashes": [
+       0.0,
+       0.0,
+       0.0
+      ],
+      "crash_hp": 0.0,
+      "sieges_started": 0.0,
+      "siege_turns": 0.0,
+      "pressure_turns": 0.0,
+      "vision_turns_set": 0.0,
+      "siege_safe_turns": 0.0,
+      "plates": 0.0,
+      "thinned_hp": 0.0,
+      "thin_farm": 0.0,
+      "vision_choices": 0.0,
+      "protected_turns": 0.0,
+      "p_contest_protected": null,
+      "p_contest_unprotected": 0.15625,
+      "crash_resources": 0.0,
+      "opp_bounces": 0.0,
+      "opp_bounce_hp": 0.0,
+      "opp_tower_farm": null
+     },
+     "best_response": {
+      "crashes": [
+       1.0,
+       1.0,
+       1.0
+      ],
+      "crash_hp": 19.0,
+      "sieges_started": 2.0,
+      "siege_turns": 10.0,
+      "pressure_turns": 5.0,
+      "vision_turns_set": 4.0,
+      "siege_safe_turns": 1.0,
+      "plates": 5.0,
+      "thinned_hp": 4.0,
+      "thin_farm": 0.5,
+      "vision_choices": 0.0,
+      "protected_turns": 19.0,
+      "p_contest_protected": 0.8421052631578947,
+      "p_contest_unprotected": 0.6153846153846154,
+      "crash_resources": 0.0,
+      "opp_bounces": 0.0,
+      "opp_bounce_hp": 0.0,
+      "opp_tower_farm": null
+     },
+     "br_actions": {
+      "SP-C": 0.28125,
+      "SH-C": 0.1875,
+      "SP-S": 0.25,
+      "SH-S": 0.0,
+      "SP-C+P": 0.09375,
+      "SH-C+P": 0.0625,
+      "SP-C+V": 0.125,
+      "SH-C+V": 0.0
+     }
+    },
+    "passive_safe": {
+     "baseline": {
+      "crashes": [
+       0.0,
+       0.0,
+       0.0
+      ],
+      "crash_hp": 0.0,
+      "sieges_started": 0.0,
+      "siege_turns": 0.0,
+      "pressure_turns": 0.0,
+      "vision_turns_set": 0.0,
+      "siege_safe_turns": 0.0,
+      "plates": 0.0,
+      "thinned_hp": 0.0,
+      "thin_farm": 0.0,
+      "vision_choices": 0.0,
+      "protected_turns": 0.0,
+      "p_contest_protected": null,
+      "p_contest_unprotected": 0.0,
+      "crash_resources": 0.0,
+      "opp_bounces": 0.0,
+      "opp_bounce_hp": 0.0,
+      "opp_tower_farm": null
+     },
+     "best_response": {
+      "crashes": [
+       3.0,
+       1.0,
+       0.0
+      ],
+      "crash_hp": 14.0,
+      "sieges_started": 4.0,
+      "siege_turns": 8.0,
+      "pressure_turns": 4.0,
+      "vision_turns_set": 4.0,
+      "siege_safe_turns": 0.0,
+      "plates": 4.0,
+      "thinned_hp": 4.0,
+      "thin_farm": 0.5,
+      "vision_choices": 0.0,
+      "protected_turns": 24.0,
+      "p_contest_protected": 0.9166666666666666,
+      "p_contest_unprotected": 0.625,
+      "crash_resources": 0.0,
+      "opp_bounces": 0.0,
+      "opp_bounce_hp": 0.0,
+      "opp_tower_farm": null
+     },
+     "br_actions": {
+      "SP-C": 0.3125,
+      "SH-C": 0.28125,
+      "SP-S": 0.15625,
+      "SH-S": 0.0,
+      "SP-C+P": 0.125,
+      "SH-C+P": 0.0,
+      "SP-C+V": 0.125,
+      "SH-C+V": 0.0
+     }
+    },
+    "stack_builder": {
+     "baseline": {
+      "crashes": [
+       0.0,
+       0.0,
+       0.0
+      ],
+      "crash_hp": 0.0,
+      "sieges_started": 0.0,
+      "siege_turns": 0.0,
+      "pressure_turns": 0.0,
+      "vision_turns_set": 0.0,
+      "siege_safe_turns": 0.0,
+      "plates": 0.0,
+      "thinned_hp": 0.0,
+      "thin_farm": 0.0,
+      "vision_choices": 0.0,
+      "protected_turns": 0.0,
+      "p_contest_protected": null,
+      "p_contest_unprotected": 1.0,
+      "crash_resources": 0.0,
+      "opp_bounces": 0.0,
+      "opp_bounce_hp": 0.0,
+      "opp_tower_farm": null
+     },
+     "best_response": {
+      "crashes": [
+       3.0,
+       1.0,
+       0.0
+      ],
+      "crash_hp": 14.0,
+      "sieges_started": 4.0,
+      "siege_turns": 8.0,
+      "pressure_turns": 4.0,
+      "vision_turns_set": 4.0,
+      "siege_safe_turns": 0.0,
+      "plates": 4.0,
+      "thinned_hp": 4.0,
+      "thin_farm": 0.35,
+      "vision_choices": 0.0,
+      "protected_turns": 24.0,
+      "p_contest_protected": 0.9166666666666666,
+      "p_contest_unprotected": 0.625,
+      "crash_resources": 0.0,
+      "opp_bounces": 0.0,
+      "opp_bounce_hp": 0.0,
+      "opp_tower_farm": null
+     },
+     "br_actions": {
+      "SP-C": 0.3125,
+      "SH-C": 0.28125,
+      "SP-S": 0.15625,
+      "SH-S": 0.0,
+      "SP-C+P": 0.125,
+      "SH-C+P": 0.0,
+      "SP-C+V": 0.125,
+      "SH-C+V": 0.0
+     }
+    },
+    "contest_slowpush": {
+     "baseline": {
+      "crashes": [
+       0.0,
+       0.0,
+       0.0
+      ],
+      "crash_hp": 0.0,
+      "sieges_started": 0.0,
+      "siege_turns": 0.0,
+      "pressure_turns": 0.0,
+      "vision_turns_set": 0.0,
+      "siege_safe_turns": 0.0,
+      "plates": 0.0,
+      "thinned_hp": 0.0,
+      "thin_farm": 0.0,
+      "vision_choices": 0.0,
+      "protected_turns": 0.0,
+      "p_contest_protected": null,
+      "p_contest_unprotected": 1.0,
+      "crash_resources": 0.0,
+      "opp_bounces": 0.0,
+      "opp_bounce_hp": 0.0,
+      "opp_tower_farm": null
+     },
+     "best_response": {
+      "crashes": [
+       2.0,
+       2.0,
+       1.0
+      ],
+      "crash_hp": 27.0,
+      "sieges_started": 5.0,
+      "siege_turns": 12.0,
+      "pressure_turns": 7.0,
+      "vision_turns_set": 4.0,
+      "siege_safe_turns": 1.0,
+      "plates": 7.0,
+      "thinned_hp": 7.0,
+      "thin_farm": 0.6125,
+      "vision_choices": 0.0,
+      "protected_turns": 24.0,
+      "p_contest_protected": 0.875,
+      "p_contest_unprotected": 0.625,
+      "crash_resources": 0.0,
+      "opp_bounces": 0.0,
+      "opp_bounce_hp": 0.0,
+      "opp_tower_farm": null
+     },
+     "br_actions": {
+      "SP-C": 0.15625,
+      "SH-C": 0.3125,
+      "SP-S": 0.15625,
+      "SH-S": 0.03125,
+      "SP-C+P": 0.21875,
+      "SH-C+P": 0.0,
+      "SP-C+V": 0.125,
+      "SH-C+V": 0.0
+     }
+    }
+   },
+   "probe_crash12": {
+    "value": 6.05134533898305,
+    "A": {
+     "SP-C+V": 1.0
+    },
+    "B": {
+     "SP-S": 1.0
+    },
+    "Q_A": {
+     "SP-S": 5.39509533898305,
+     "SH-S": 5.39509533898305,
+     "SP-C+P": 5.03884533898305,
+     "SH-C+P": 4.88884533898305,
+     "SP-C+V": 6.05134533898305,
+     "SH-C+V": 5.901345338983051
+    }
+   },
+   "probe_crash12_vision": {
+    "value": 7.911897598966042,
+    "A": {
+     "SP-C+P": 1.0
+    },
+    "B": {
+     "SP-S": 1.0
+    },
+    "Q_A": {
+     "SP-S": 7.12259533898305,
+     "SH-S": 7.12259533898305,
+     "SP-C+P": 7.911897598966042,
+     "SH-C+P": 7.874397598966042,
+     "SP-C+V": 7.06384533898305,
+     "SH-C+V": 7.026345338983051
+    }
+   },
+   "seconds_total": 659.0506510999985
+  },
+  "objective, tower 2": {
+   "description": "Pressure/Vision, 2 HP/tick",
+   "config": {
+    "base": 4,
+    "tower": 2,
+    "ticks_per_turn": 2,
+    "spawn_interval": 4,
+    "horizon": 32,
+    "wave_hp": 4,
+    "max_stacks": 2,
+    "cap_rule": "block",
+    "queue_fights": true,
+    "positioning": true,
+    "damage_law": "lanchester",
+    "shove_damage": 1,
+    "tower_damage": 1,
+    "pressure_kappa": [
+     0,
+     1,
+     0
+    ],
+    "slowpush_line": 0,
+    "slowpush_mode": "stack_creep",
+    "slowpush_creep_period": 2,
+    "freeze_line": -1,
+    "freeze_break_threshold": 10,
+    "freeze_break_push": [
+     0,
+     4,
+     0
+    ],
+    "freeze_legal_max": -1,
+    "tower_mode": "mass",
+    "tower_consumption_per_turn": 1,
+    "tower_siege_damage": 2,
+    "siege_engage": false,
+    "siege_cap": 48,
+    "siege_mode": "objective",
+    "plate_mode": "crash",
+    "plate_grant": [
+     1,
+     2,
+     3
+    ],
+    "plates_cap": 6,
+    "plates_per_tower": 5,
+    "plates_per_turn": 1,
+    "plate_value": 1.0,
+    "thin_damage": 1,
+    "thin_reach": 1,
+    "crash_options": [
+     [
+      [
+       1.0,
+       false
+      ],
+      [
+       0.0,
+       true
+      ]
+     ],
+     [
+      [
+       2.0,
+       false
+      ],
+      [
+       0.0,
+       true
+      ]
+     ],
+     [
+      [
+       3.0,
+       false
+      ],
+      [
+       2.0,
+       true
+      ]
+     ]
+    ],
+    "vision_turns": 6,
+    "vision_reduction": 0.75,
+    "farm_per_hp": 0.25,
+    "collect_contest": 0.9,
+    "collect_contest_enemy_tower": 0.5,
+    "collect_safe": 0.8,
+    "collect_safe_slope": 0.2,
+    "zone_contest": 0.3,
+    "zone_under_tower": 0.15,
+    "gank_base": 0.15,
+    "gank_position": 0.1,
+    "gank_action": [
+     0.02,
+     0.05,
+     0.02,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "gank_strength": 0.02,
+    "gank_max": 0.4,
+    "gank_loss": 5.0,
+    "posture_cap": [
+     null,
+     null,
+     null,
+     -1,
+     -1,
+     -1
+    ]
+   },
+   "nodes": 30501,
+   "distinct": 5550,
+   "max_layer": 2912,
+   "enumerate_s": 12.359513300005347,
+   "solve_s": 5.564312399830669,
+   "transitions": 219304,
+   "mixed": 2060,
+   "lps": 2088,
+   "max_gap": 4.440892098500626e-15,
+   "value": 0.0,
+   "nodes_avg": {
+    "nodes": 30501,
+    "contest": 0.7856031050584077,
+    "siege_nodes": 2635,
+    "p_pressure": 0.47582040696605643,
+    "p_vision": 0.5241795930339436,
+    "p_disengage": 0.0
+   },
+   "path": {
+    "value": 0.0,
+    "farm": [
+     9.650000000000004,
+     9.650000000000004
+    ],
+    "farm_available": [
+     15.5,
+     15.5
+    ],
+    "farm_missed": [
+     5.849999999999996,
+     5.849999999999996
+    ],
+    "crash_resources": [
+     0.0,
+     0.0
+    ],
+    "plates": [
+     0.0,
+     0.0
+    ],
+    "plate_count": [
+     0.0,
+     0.0
+    ],
+    "gank_loss": [
+     34.70000000000002,
+     34.70000000000002
+    ],
+    "crashes_by_size": {
+     "A": [
+      0.0,
+      0.0,
+      0.0
+     ],
+     "B": [
+      0.0,
+      0.0,
+      0.0
+     ]
+    },
+    "crash_hp": [
+     0.0,
+     0.0
+    ],
+    "vision_choices": [
+     0.0,
+     0.0
+    ],
+    "pressure_turns": [
+     0.0,
+     0.0
+    ],
+    "vision_turns_set": [
+     0.0,
+     0.0
+    ],
+    "siege_turns": [
+     0.0,
+     0.0
+    ],
+    "siege_safe_turns": [
+     0.0,
+     0.0
+    ],
+    "thinned_hp": [
+     0.0,
+     0.0
+    ],
+    "thin_farm": [
+     0.0,
+     0.0
+    ],
+    "protected_turns": [
+     0.0,
+     0.0
+    ],
+    "p_contest_protected": [
+     null,
+     null
+    ],
+    "p_contest_unprotected": [
+     0.90625,
+     0.90625
+    ],
+    "bounces": [
+     0.0,
+     0.0
+    ],
+    "bounce_hp": [
+     0.0,
+     0.0
+    ],
+    "sieges_started": [
+     0.0,
+     0.0
+    ],
+    "contest_share": [
+     0.90625,
+     0.90625
+    ],
+    "action_freq": [
+     {
+      "SP-C": 0.84375,
+      "SH-C": 0.0625,
+      "SP-S": 0.09375,
+      "SH-S": 0.0
+     },
+     {
+      "SP-C": 0.84375,
+      "SH-C": 0.0625,
+      "SP-S": 0.09375,
+      "SH-S": 0.0
+     }
+    ],
+    "wave_freq": [
+     {
+      "SP": 0.9375,
+      "SH": 0.0625
+     },
+     {
+      "SP": 0.9375,
+      "SH": 0.0625
+     }
+    ],
+    "support_size": []
+   },
+   "baselines": {
+    "uniform": {
+     "exploitability": 10.046549885530702,
+     "value_vs_equilibrium": -9.601073104803577,
+     "farm": -6.058348209281499,
+     "plates": 0.024637305729808576,
+     "crash": 0.0,
+     "gank": -4.01283898197871
+    },
+    "aggressive": {
+     "exploitability": 24.86250000000002,
+     "value_vs_equilibrium": -24.46750000000001,
+     "farm": -5.237500000000009,
+     "plates": 0.0,
+     "crash": 0.0,
+     "gank": -19.624999999999986
+    },
+    "freeze_contest": {
+     "exploitability": 15.895000000000003,
+     "value_vs_equilibrium": -2.8699999999999988,
+     "farm": -4.432500000000001,
+     "plates": 0.0,
+     "crash": 0.0,
+     "gank": -11.462500000000006
+    },
+    "passive_safe": {
+     "exploitability": 17.62625,
+     "value_vs_equilibrium": -2.8699999999999988,
+     "farm": -6.370000000000002,
+     "plates": 0.0,
+     "crash": 0.0,
+     "gank": -11.256250000000012
+    },
+    "stack_builder": {
+     "exploitability": 14.427499999999995,
+     "value_vs_equilibrium": -0.3199999999999998,
+     "farm": 0.7349999999999994,
+     "plates": 0.0,
+     "crash": 0.0,
+     "gank": -15.162499999999998
+    },
+    "release_safe": {
+     "exploitability": 7.690000000000004,
+     "value_vs_equilibrium": -2.799999999999999,
+     "farm": -11.689999999999996,
+     "plates": 0.0,
+     "crash": 0.0,
+     "gank": 4.000000000000018
+    },
+    "contest_slowpush": {
+     "exploitability": 14.427499999999995,
+     "value_vs_equilibrium": -0.3199999999999998,
+     "farm": 0.7349999999999994,
+     "plates": 0.0,
+     "crash": 0.0,
+     "gank": -15.162499999999998
+    },
+    "aggressive[vision]": {
+     "exploitability": 24.86250000000002,
+     "value_vs_equilibrium": -24.46750000000001,
+     "farm": -5.237500000000009,
+     "plates": 0.0,
+     "crash": 0.0,
+     "gank": -19.624999999999986
+    },
+    "stack_builder[vision]": {
+     "exploitability": 14.427499999999995,
+     "value_vs_equilibrium": -0.3199999999999998,
+     "farm": 0.7349999999999994,
+     "plates": 0.0,
+     "crash": 0.0,
+     "gank": -15.162499999999998
+    },
+    "contest_slowpush[vision]": {
+     "exploitability": 14.427499999999995,
+     "value_vs_equilibrium": -0.3199999999999998,
+     "farm": 0.7349999999999994,
+     "plates": 0.0,
+     "crash": 0.0,
+     "gank": -15.162499999999998
+    },
+    "stack_builder[safe]": {
+     "exploitability": 14.427499999999995,
+     "value_vs_equilibrium": -0.3199999999999998,
+     "farm": 0.7349999999999994,
+     "plates": 0.0,
+     "crash": 0.0,
+     "gank": -15.162499999999998
+    },
+    "aggressive[safe]": {
+     "exploitability": 24.86250000000002,
+     "value_vs_equilibrium": -24.46750000000001,
+     "farm": -5.237500000000009,
+     "plates": 0.0,
+     "crash": 0.0,
+     "gank": -19.624999999999986
+    }
+   },
+   "br_siege": {
+    "freeze_contest": {
+     "baseline": {
+      "crashes": [
+       0.0,
+       0.0,
+       0.0
+      ],
+      "crash_hp": 0.0,
+      "sieges_started": 0.0,
+      "siege_turns": 0.0,
+      "pressure_turns": 0.0,
+      "vision_turns_set": 0.0,
+      "siege_safe_turns": 0.0,
+      "plates": 0.0,
+      "thinned_hp": 0.0,
+      "thin_farm": 0.0,
+      "vision_choices": 0.0,
+      "protected_turns": 0.0,
+      "p_contest_protected": null,
+      "p_contest_unprotected": 0.15625,
+      "crash_resources": 0.0,
+      "opp_bounces": 0.0,
+      "opp_bounce_hp": 0.0,
+      "opp_tower_farm": null
+     },
+     "best_response": {
+      "crashes": [
+       4.0,
+       0.0,
+       0.0
+      ],
+      "crash_hp": 11.0,
+      "sieges_started": 4.0,
+      "siege_turns": 4.0,
+      "pressure_turns": 0.0,
+      "vision_turns_set": 4.0,
+      "siege_safe_turns": 0.0,
+      "plates": 0.0,
+      "thinned_hp": 0.0,
+      "thin_farm": 0.0,
+      "vision_choices": 0.0,
+      "protected_turns": 24.0,
+      "p_contest_protected": 0.7916666666666666,
+      "p_contest_unprotected": 0.75,
+      "crash_resources": 0.0,
+      "opp_bounces": 0.0,
+      "opp_bounce_hp": 0.0,
+      "opp_tower_farm": null
+     },
+     "br_actions": {
+      "SP-C": 0.3125,
+      "SH-C": 0.34375,
+      "SP-S": 0.21875,
+      "SH-S": 0.0,
+      "SP-C+P": 0.0,
+      "SH-C+P": 0.0,
+      "SP-C+V": 0.125,
+      "SH-C+V": 0.0
+     }
+    },
+    "passive_safe": {
+     "baseline": {
+      "crashes": [
+       0.0,
+       0.0,
+       0.0
+      ],
+      "crash_hp": 0.0,
+      "sieges_started": 0.0,
+      "siege_turns": 0.0,
+      "pressure_turns": 0.0,
+      "vision_turns_set": 0.0,
+      "siege_safe_turns": 0.0,
+      "plates": 0.0,
+      "thinned_hp": 0.0,
+      "thin_farm": 0.0,
+      "vision_choices": 0.0,
+      "protected_turns": 0.0,
+      "p_contest_protected": null,
+      "p_contest_unprotected": 0.0,
+      "crash_resources": 0.0,
+      "opp_bounces": 0.0,
+      "opp_bounce_hp": 0.0,
+      "opp_tower_farm": null
+     },
+     "best_response": {
+      "crashes": [
+       4.0,
+       0.0,
+       0.0
+      ],
+      "crash_hp": 4.0,
+      "sieges_started": 4.0,
+      "siege_turns": 4.0,
+      "pressure_turns": 0.0,
+      "vision_turns_set": 4.0,
+      "siege_safe_turns": 0.0,
+      "plates": 0.0,
+      "thinned_hp": 0.0,
+      "thin_farm": 0.0,
+      "vision_choices": 0.0,
+      "protected_turns": 23.0,
+      "p_contest_protected": 0.9565217391304348,
+      "p_contest_unprotected": 0.6666666666666666,
+      "crash_resources": 0.0,
+      "opp_bounces": 0.0,
+      "opp_bounce_hp": 0.0,
+      "opp_tower_farm": null
+     },
+     "br_actions": {
+      "SP-C": 0.5625,
+      "SH-C": 0.1875,
+      "SP-S": 0.125,
+      "SH-S": 0.0,
+      "SP-C+P": 0.0,
+      "SH-C+P": 0.0,
+      "SP-C+V": 0.125,
+      "SH-C+V": 0.0
+     }
+    },
+    "stack_builder": {
+     "baseline": {
+      "crashes": [
+       0.0,
+       0.0,
+       0.0
+      ],
+      "crash_hp": 0.0,
+      "sieges_started": 0.0,
+      "siege_turns": 0.0,
+      "pressure_turns": 0.0,
+      "vision_turns_set": 0.0,
+      "siege_safe_turns": 0.0,
+      "plates": 0.0,
+      "thinned_hp": 0.0,
+      "thin_farm": 0.0,
+      "vision_choices": 0.0,
+      "protected_turns": 0.0,
+      "p_contest_protected": null,
+      "p_contest_unprotected": 1.0,
+      "crash_resources": 0.0,
+      "opp_bounces": 0.0,
+      "opp_bounce_hp": 0.0,
+      "opp_tower_farm": null
+     },
+     "best_response": {
+      "crashes": [
+       4.0,
+       0.0,
+       0.0
+      ],
+      "crash_hp": 10.0,
+      "sieges_started": 4.0,
+      "siege_turns": 4.0,
+      "pressure_turns": 0.0,
+      "vision_turns_set": 4.0,
+      "siege_safe_turns": 0.0,
+      "plates": 0.0,
+      "thinned_hp": 0.0,
+      "thin_farm": 0.0,
+      "vision_choices": 0.0,
+      "protected_turns": 24.0,
+      "p_contest_protected": 0.7916666666666666,
+      "p_contest_unprotected": 0.625,
+      "crash_resources": 0.0,
+      "opp_bounces": 0.0,
+      "opp_bounce_hp": 0.0,
+      "opp_tower_farm": null
+     },
+     "br_actions": {
+      "SP-C": 0.3125,
+      "SH-C": 0.3125,
+      "SP-S": 0.25,
+      "SH-S": 0.0,
+      "SP-C+P": 0.0,
+      "SH-C+P": 0.0,
+      "SP-C+V": 0.125,
+      "SH-C+V": 0.0
+     }
+    },
+    "contest_slowpush": {
+     "baseline": {
+      "crashes": [
+       0.0,
+       0.0,
+       0.0
+      ],
+      "crash_hp": 0.0,
+      "sieges_started": 0.0,
+      "siege_turns": 0.0,
+      "pressure_turns": 0.0,
+      "vision_turns_set": 0.0,
+      "siege_safe_turns": 0.0,
+      "plates": 0.0,
+      "thinned_hp": 0.0,
+      "thin_farm": 0.0,
+      "vision_choices": 0.0,
+      "protected_turns": 0.0,
+      "p_contest_protected": null,
+      "p_contest_unprotected": 1.0,
+      "crash_resources": 0.0,
+      "opp_bounces": 0.0,
+      "opp_bounce_hp": 0.0,
+      "opp_tower_farm": null
+     },
+     "best_response": {
+      "crashes": [
+       4.0,
+       0.0,
+       0.0
+      ],
+      "crash_hp": 10.0,
+      "sieges_started": 4.0,
+      "siege_turns": 4.0,
+      "pressure_turns": 0.0,
+      "vision_turns_set": 4.0,
+      "siege_safe_turns": 0.0,
+      "plates": 0.0,
+      "thinned_hp": 0.0,
+      "thin_farm": 0.0,
+      "vision_choices": 0.0,
+      "protected_turns": 24.0,
+      "p_contest_protected": 0.7916666666666666,
+      "p_contest_unprotected": 0.625,
+      "crash_resources": 0.0,
+      "opp_bounces": 0.0,
+      "opp_bounce_hp": 0.0,
+      "opp_tower_farm": null
+     },
+     "br_actions": {
+      "SP-C": 0.3125,
+      "SH-C": 0.3125,
+      "SP-S": 0.25,
+      "SH-S": 0.0,
+      "SP-C+P": 0.0,
+      "SH-C+P": 0.0,
+      "SP-C+V": 0.125,
+      "SH-C+V": 0.0
+     }
+    }
+   },
+   "probe_crash12": {
+    "value": 2.522610241820769,
+    "A": {
+     "SP-C+V": 1.0
+    },
+    "B": {
+     "SP-S": 1.0
+    },
+    "Q_A": {
+     "SP-S": 1.865110241820769,
+     "SH-S": 1.865110241820769,
+     "SP-C+P": 1.6725000000000008,
+     "SH-C+P": 1.5225000000000009,
+     "SP-C+V": 2.522610241820769,
+     "SH-C+V": 2.372610241820769
+    }
+   },
+   "probe_crash12_vision": {
+    "value": 4.247499999999999,
+    "A": {
+     "SP-C+P": 1.0
+    },
+    "B": {
+     "SP-C": 1.0
+    },
+    "Q_A": {
+     "SP-S": 3.533860241820769,
+     "SH-S": 3.533860241820769,
+     "SP-C+P": 4.247499999999999,
+     "SH-C+P": 4.209999999999998,
+     "SP-C+V": 3.5501102418207693,
+     "SH-C+V": 3.512610241820769
+    }
+   },
+   "seconds_total": 65.40752510004677
+  },
+  "objective, tower 3": {
+   "description": "Pressure/Vision, 3 HP/tick",
+   "config": {
+    "base": 4,
+    "tower": 2,
+    "ticks_per_turn": 2,
+    "spawn_interval": 4,
+    "horizon": 32,
+    "wave_hp": 4,
+    "max_stacks": 2,
+    "cap_rule": "block",
+    "queue_fights": true,
+    "positioning": true,
+    "damage_law": "lanchester",
+    "shove_damage": 1,
+    "tower_damage": 1,
+    "pressure_kappa": [
+     0,
+     1,
+     0
+    ],
+    "slowpush_line": 0,
+    "slowpush_mode": "stack_creep",
+    "slowpush_creep_period": 2,
+    "freeze_line": -1,
+    "freeze_break_threshold": 10,
+    "freeze_break_push": [
+     0,
+     4,
+     0
+    ],
+    "freeze_legal_max": -1,
+    "tower_mode": "mass",
+    "tower_consumption_per_turn": 1,
+    "tower_siege_damage": 3,
+    "siege_engage": false,
+    "siege_cap": 48,
+    "siege_mode": "objective",
+    "plate_mode": "crash",
+    "plate_grant": [
+     1,
+     2,
+     3
+    ],
+    "plates_cap": 6,
+    "plates_per_tower": 5,
+    "plates_per_turn": 1,
+    "plate_value": 1.0,
+    "thin_damage": 1,
+    "thin_reach": 1,
+    "crash_options": [
+     [
+      [
+       1.0,
+       false
+      ],
+      [
+       0.0,
+       true
+      ]
+     ],
+     [
+      [
+       2.0,
+       false
+      ],
+      [
+       0.0,
+       true
+      ]
+     ],
+     [
+      [
+       3.0,
+       false
+      ],
+      [
+       2.0,
+       true
+      ]
+     ]
+    ],
+    "vision_turns": 6,
+    "vision_reduction": 0.75,
+    "farm_per_hp": 0.25,
+    "collect_contest": 0.9,
+    "collect_contest_enemy_tower": 0.5,
+    "collect_safe": 0.8,
+    "collect_safe_slope": 0.2,
+    "zone_contest": 0.3,
+    "zone_under_tower": 0.15,
+    "gank_base": 0.15,
+    "gank_position": 0.1,
+    "gank_action": [
+     0.02,
+     0.05,
+     0.02,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "gank_strength": 0.02,
+    "gank_max": 0.4,
+    "gank_loss": 5.0,
+    "posture_cap": [
+     null,
+     null,
+     null,
+     -1,
+     -1,
+     -1
+    ]
+   },
+   "nodes": 16639,
+   "distinct": 2488,
+   "max_layer": 1232,
+   "enumerate_s": 5.002577999839559,
+   "solve_s": 2.8086678001563996,
+   "transitions": 89184,
+   "mixed": 1186,
+   "lps": 1200,
+   "max_gap": 7.993605777301127e-15,
+   "value": 0.0,
+   "nodes_avg": {
+    "nodes": 16639,
+    "contest": 0.7451386535453599,
+    "siege_nodes": 853,
+    "p_pressure": 0.27432590855803046,
+    "p_vision": 0.7256740914419695,
+    "p_disengage": 0.0
+   },
+   "path": {
+    "value": 0.0,
+    "farm": [
+     9.650000000000004,
+     9.650000000000004
+    ],
+    "farm_available": [
+     15.5,
+     15.5
+    ],
+    "farm_missed": [
+     5.849999999999996,
+     5.849999999999996
+    ],
+    "crash_resources": [
+     0.0,
+     0.0
+    ],
+    "plates": [
+     0.0,
+     0.0
+    ],
+    "plate_count": [
+     0.0,
+     0.0
+    ],
+    "gank_loss": [
+     34.70000000000002,
+     34.70000000000002
+    ],
+    "crashes_by_size": {
+     "A": [
+      0.0,
+      0.0,
+      0.0
+     ],
+     "B": [
+      0.0,
+      0.0,
+      0.0
+     ]
+    },
+    "crash_hp": [
+     0.0,
+     0.0
+    ],
+    "vision_choices": [
+     0.0,
+     0.0
+    ],
+    "pressure_turns": [
+     0.0,
+     0.0
+    ],
+    "vision_turns_set": [
+     0.0,
+     0.0
+    ],
+    "siege_turns": [
+     0.0,
+     0.0
+    ],
+    "siege_safe_turns": [
+     0.0,
+     0.0
+    ],
+    "thinned_hp": [
+     0.0,
+     0.0
+    ],
+    "thin_farm": [
+     0.0,
+     0.0
+    ],
+    "protected_turns": [
+     0.0,
+     0.0
+    ],
+    "p_contest_protected": [
+     null,
+     null
+    ],
+    "p_contest_unprotected": [
+     0.90625,
+     0.90625
+    ],
+    "bounces": [
+     0.0,
+     0.0
+    ],
+    "bounce_hp": [
+     0.0,
+     0.0
+    ],
+    "sieges_started": [
+     0.0,
+     0.0
+    ],
+    "contest_share": [
+     0.90625,
+     0.90625
+    ],
+    "action_freq": [
+     {
+      "SP-C": 0.84375,
+      "SH-C": 0.0625,
+      "SP-S": 0.09375,
+      "SH-S": 0.0
+     },
+     {
+      "SP-C": 0.84375,
+      "SH-C": 0.0625,
+      "SP-S": 0.09375,
+      "SH-S": 0.0
+     }
+    ],
+    "wave_freq": [
+     {
+      "SP": 0.9375,
+      "SH": 0.0625
+     },
+     {
+      "SP": 0.9375,
+      "SH": 0.0625
+     }
+    ],
+    "support_size": []
+   },
+   "baselines": {
+    "uniform": {
+     "exploitability": 10.046549885530702,
+     "value_vs_equilibrium": -9.601073104803577,
+     "farm": -6.058348209281499,
+     "plates": 0.024637305729808576,
+     "crash": 0.0,
+     "gank": -4.01283898197871
+    },
+    "aggressive": {
+     "exploitability": 24.86250000000002,
+     "value_vs_equilibrium": -24.46750000000001,
+     "farm": -5.237500000000009,
+     "plates": 0.0,
+     "crash": 0.0,
+     "gank": -19.624999999999986
+    },
+    "freeze_contest": {
+     "exploitability": 15.895000000000003,
+     "value_vs_equilibrium": -2.8699999999999988,
+     "farm": -4.432500000000001,
+     "plates": 0.0,
+     "crash": 0.0,
+     "gank": -11.462500000000006
+    },
+    "passive_safe": {
+     "exploitability": 17.62625,
+     "value_vs_equilibrium": -2.8699999999999988,
+     "farm": -6.370000000000002,
+     "plates": 0.0,
+     "crash": 0.0,
+     "gank": -11.256250000000012
+    },
+    "stack_builder": {
+     "exploitability": 14.427499999999995,
+     "value_vs_equilibrium": -0.3199999999999998,
+     "farm": 0.7349999999999994,
+     "plates": 0.0,
+     "crash": 0.0,
+     "gank": -15.162499999999998
+    },
+    "release_safe": {
+     "exploitability": 7.690000000000004,
+     "value_vs_equilibrium": -2.799999999999999,
+     "farm": -11.689999999999996,
+     "plates": 0.0,
+     "crash": 0.0,
+     "gank": 4.000000000000018
+    },
+    "contest_slowpush": {
+     "exploitability": 14.427499999999995,
+     "value_vs_equilibrium": -0.3199999999999998,
+     "farm": 0.7349999999999994,
+     "plates": 0.0,
+     "crash": 0.0,
+     "gank": -15.162499999999998
+    },
+    "aggressive[vision]": {
+     "exploitability": 24.86250000000002,
+     "value_vs_equilibrium": -24.46750000000001,
+     "farm": -5.237500000000009,
+     "plates": 0.0,
+     "crash": 0.0,
+     "gank": -19.624999999999986
+    },
+    "stack_builder[vision]": {
+     "exploitability": 14.427499999999995,
+     "value_vs_equilibrium": -0.3199999999999998,
+     "farm": 0.7349999999999994,
+     "plates": 0.0,
+     "crash": 0.0,
+     "gank": -15.162499999999998
+    },
+    "contest_slowpush[vision]": {
+     "exploitability": 14.427499999999995,
+     "value_vs_equilibrium": -0.3199999999999998,
+     "farm": 0.7349999999999994,
+     "plates": 0.0,
+     "crash": 0.0,
+     "gank": -15.162499999999998
+    },
+    "stack_builder[safe]": {
+     "exploitability": 14.427499999999995,
+     "value_vs_equilibrium": -0.3199999999999998,
+     "farm": 0.7349999999999994,
+     "plates": 0.0,
+     "crash": 0.0,
+     "gank": -15.162499999999998
+    },
+    "aggressive[safe]": {
+     "exploitability": 24.86250000000002,
+     "value_vs_equilibrium": -24.46750000000001,
+     "farm": -5.237500000000009,
+     "plates": 0.0,
+     "crash": 0.0,
+     "gank": -19.624999999999986
+    }
+   },
+   "br_siege": {
+    "freeze_contest": {
+     "baseline": {
+      "crashes": [
+       0.0,
+       0.0,
+       0.0
+      ],
+      "crash_hp": 0.0,
+      "sieges_started": 0.0,
+      "siege_turns": 0.0,
+      "pressure_turns": 0.0,
+      "vision_turns_set": 0.0,
+      "siege_safe_turns": 0.0,
+      "plates": 0.0,
+      "thinned_hp": 0.0,
+      "thin_farm": 0.0,
+      "vision_choices": 0.0,
+      "protected_turns": 0.0,
+      "p_contest_protected": null,
+      "p_contest_unprotected": 0.15625,
+      "crash_resources": 0.0,
+      "opp_bounces": 0.0,
+      "opp_bounce_hp": 0.0,
+      "opp_tower_farm": null
+     },
+     "best_response": {
+      "crashes": [
+       4.0,
+       0.0,
+       0.0
+      ],
+      "crash_hp": 11.0,
+      "sieges_started": 4.0,
+      "siege_turns": 4.0,
+      "pressure_turns": 0.0,
+      "vision_turns_set": 4.0,
+      "siege_safe_turns": 0.0,
+      "plates": 0.0,
+      "thinned_hp": 0.0,
+      "thin_farm": 0.0,
+      "vision_choices": 0.0,
+      "protected_turns": 24.0,
+      "p_contest_protected": 0.7916666666666666,
+      "p_contest_unprotected": 0.75,
+      "crash_resources": 0.0,
+      "opp_bounces": 0.0,
+      "opp_bounce_hp": 0.0,
+      "opp_tower_farm": null
+     },
+     "br_actions": {
+      "SP-C": 0.3125,
+      "SH-C": 0.34375,
+      "SP-S": 0.21875,
+      "SH-S": 0.0,
+      "SP-C+P": 0.0,
+      "SH-C+P": 0.0,
+      "SP-C+V": 0.125,
+      "SH-C+V": 0.0
+     }
+    },
+    "passive_safe": {
+     "baseline": {
+      "crashes": [
+       0.0,
+       0.0,
+       0.0
+      ],
+      "crash_hp": 0.0,
+      "sieges_started": 0.0,
+      "siege_turns": 0.0,
+      "pressure_turns": 0.0,
+      "vision_turns_set": 0.0,
+      "siege_safe_turns": 0.0,
+      "plates": 0.0,
+      "thinned_hp": 0.0,
+      "thin_farm": 0.0,
+      "vision_choices": 0.0,
+      "protected_turns": 0.0,
+      "p_contest_protected": null,
+      "p_contest_unprotected": 0.0,
+      "crash_resources": 0.0,
+      "opp_bounces": 0.0,
+      "opp_bounce_hp": 0.0,
+      "opp_tower_farm": null
+     },
+     "best_response": {
+      "crashes": [
+       4.0,
+       0.0,
+       0.0
+      ],
+      "crash_hp": 4.0,
+      "sieges_started": 4.0,
+      "siege_turns": 4.0,
+      "pressure_turns": 0.0,
+      "vision_turns_set": 4.0,
+      "siege_safe_turns": 0.0,
+      "plates": 0.0,
+      "thinned_hp": 0.0,
+      "thin_farm": 0.0,
+      "vision_choices": 0.0,
+      "protected_turns": 23.0,
+      "p_contest_protected": 0.9565217391304348,
+      "p_contest_unprotected": 0.6666666666666666,
+      "crash_resources": 0.0,
+      "opp_bounces": 0.0,
+      "opp_bounce_hp": 0.0,
+      "opp_tower_farm": null
+     },
+     "br_actions": {
+      "SP-C": 0.5625,
+      "SH-C": 0.1875,
+      "SP-S": 0.125,
+      "SH-S": 0.0,
+      "SP-C+P": 0.0,
+      "SH-C+P": 0.0,
+      "SP-C+V": 0.125,
+      "SH-C+V": 0.0
+     }
+    },
+    "stack_builder": {
+     "baseline": {
+      "crashes": [
+       0.0,
+       0.0,
+       0.0
+      ],
+      "crash_hp": 0.0,
+      "sieges_started": 0.0,
+      "siege_turns": 0.0,
+      "pressure_turns": 0.0,
+      "vision_turns_set": 0.0,
+      "siege_safe_turns": 0.0,
+      "plates": 0.0,
+      "thinned_hp": 0.0,
+      "thin_farm": 0.0,
+      "vision_choices": 0.0,
+      "protected_turns": 0.0,
+      "p_contest_protected": null,
+      "p_contest_unprotected": 1.0,
+      "crash_resources": 0.0,
+      "opp_bounces": 0.0,
+      "opp_bounce_hp": 0.0,
+      "opp_tower_farm": null
+     },
+     "best_response": {
+      "crashes": [
+       4.0,
+       0.0,
+       0.0
+      ],
+      "crash_hp": 10.0,
+      "sieges_started": 4.0,
+      "siege_turns": 4.0,
+      "pressure_turns": 0.0,
+      "vision_turns_set": 4.0,
+      "siege_safe_turns": 0.0,
+      "plates": 0.0,
+      "thinned_hp": 0.0,
+      "thin_farm": 0.0,
+      "vision_choices": 0.0,
+      "protected_turns": 24.0,
+      "p_contest_protected": 0.7916666666666666,
+      "p_contest_unprotected": 0.625,
+      "crash_resources": 0.0,
+      "opp_bounces": 0.0,
+      "opp_bounce_hp": 0.0,
+      "opp_tower_farm": null
+     },
+     "br_actions": {
+      "SP-C": 0.3125,
+      "SH-C": 0.3125,
+      "SP-S": 0.25,
+      "SH-S": 0.0,
+      "SP-C+P": 0.0,
+      "SH-C+P": 0.0,
+      "SP-C+V": 0.125,
+      "SH-C+V": 0.0
+     }
+    },
+    "contest_slowpush": {
+     "baseline": {
+      "crashes": [
+       0.0,
+       0.0,
+       0.0
+      ],
+      "crash_hp": 0.0,
+      "sieges_started": 0.0,
+      "siege_turns": 0.0,
+      "pressure_turns": 0.0,
+      "vision_turns_set": 0.0,
+      "siege_safe_turns": 0.0,
+      "plates": 0.0,
+      "thinned_hp": 0.0,
+      "thin_farm": 0.0,
+      "vision_choices": 0.0,
+      "protected_turns": 0.0,
+      "p_contest_protected": null,
+      "p_contest_unprotected": 1.0,
+      "crash_resources": 0.0,
+      "opp_bounces": 0.0,
+      "opp_bounce_hp": 0.0,
+      "opp_tower_farm": null
+     },
+     "best_response": {
+      "crashes": [
+       4.0,
+       0.0,
+       0.0
+      ],
+      "crash_hp": 10.0,
+      "sieges_started": 4.0,
+      "siege_turns": 4.0,
+      "pressure_turns": 0.0,
+      "vision_turns_set": 4.0,
+      "siege_safe_turns": 0.0,
+      "plates": 0.0,
+      "thinned_hp": 0.0,
+      "thin_farm": 0.0,
+      "vision_choices": 0.0,
+      "protected_turns": 24.0,
+      "p_contest_protected": 0.7916666666666666,
+      "p_contest_unprotected": 0.625,
+      "crash_resources": 0.0,
+      "opp_bounces": 0.0,
+      "opp_bounce_hp": 0.0,
+      "opp_tower_farm": null
+     },
+     "br_actions": {
+      "SP-C": 0.3125,
+      "SH-C": 0.3125,
+      "SP-S": 0.25,
+      "SH-S": 0.0,
+      "SP-C+P": 0.0,
+      "SH-C+P": 0.0,
+      "SP-C+V": 0.125,
+      "SH-C+V": 0.0
+     }
+    }
+   },
+   "probe_crash12": {
+    "value": 2.588750000000002,
+    "A": {
+     "SP-C+V": 1.0
+    },
+    "B": {
+     "SP-C": 1.0
+    },
+    "Q_A": {
+     "SP-S": 1.8487500000000017,
+     "SH-S": 1.8487500000000017,
+     "SP-C+P": 0.5074999999999976,
+     "SH-C+P": 0.3574999999999978,
+     "SP-C+V": 2.588750000000002,
+     "SH-C+V": 2.438750000000002
+    }
+   },
+   "probe_crash12_vision": {
+    "value": 3.601250000000002,
+    "A": {
+     "SP-C+V": 1.0
+    },
+    "B": {
+     "SP-C": 1.0
+    },
+    "Q_A": {
+     "SP-S": 3.517500000000002,
+     "SH-S": 3.517500000000002,
+     "SP-C+P": 2.532499999999998,
+     "SH-C+P": 2.4949999999999983,
+     "SP-C+V": 3.601250000000002,
+     "SH-C+V": 3.5637500000000015
+    }
+   },
+   "seconds_total": 31.52491239993833
+  }
+ },
+ "environment": {
+  "python": "3.13.9",
+  "numpy": "2.5.3",
+  "scipy": "1.18.1",
+  "platform": "Windows-11-10.0.26200-SP0",
+  "timestamp": "2026-10-11 00:42:13"
+ }
+}

@@ -43,7 +43,7 @@ def tree_minimax(game, s, k):
 
 
 ROOTS = [("symmetric start", None, 0),
-         ("A 2-stack at river", State(0, 6, (-4,), 0, -4, 2, (), 0, 0, 0), 2),
+         ("A 2-stack at lane", State(0, 6, (-4,), 0, -4, 2, (), 0, 0, 0), 2),
          ("A medium wave near B tower", State(1, 4, (), 0, -3, 2, (), 0, 0, 0), 1),
          ("B wave at A freeze line", State(0, 0, (-2,), 0, 1, 2, (), 0, 0, 0), 3),
          ("two-packet siege, A vision", State(-4, 2, (), 2, -3, 2, (), 0, 1, 0), 2)]

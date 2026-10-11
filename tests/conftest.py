@@ -1,13 +1,15 @@
 """Shared fixtures.
 
-Two model generations are tested:
+Three model generations are tested:
 
   v1       GameConfig.v1(): the original Phase 1 model (kept bit-for-bit reproducible)
-  revised  GameConfig():    the revised model (farming, Contest/Safe, mass-based tower fire)
+  revised  GameConfig.v2(): the previous revision (farming, Contest/Safe, post-crash choice)
+  siege    GameConfig():    the siege revision (Apply Pressure / Establish Vision, plates, thinning)
 
 Generic invariants use the parametrized fixtures `cfg`, `game`, `layers`,
 `solution`, which run every test once per model. Model-specific tests use the
-`v1_*` or `rev_*` fixtures.
+`v1_*`, `rev_*` or `sg_*` fixtures; `econ_*` fixtures run a test on both the
+revised and the siege model (the two models with a farming economy).
 """
 
 import os
@@ -18,11 +20,12 @@ import pytest
 sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
 from lanegame import GameConfig, LaneGame  # noqa: E402
-from lanegame.baselines import all_baselines, v1_baselines  # noqa: E402
+from lanegame.baselines import all_baselines, siege_baselines, v1_baselines  # noqa: E402
 from lanegame.solver import solve_equilibrium  # noqa: E402
 
 HORIZON = 16
-MODELS = {"v1": GameConfig.v1(horizon=HORIZON), "revised": GameConfig(horizon=HORIZON)}
+MODELS = {"v1": GameConfig.v1(horizon=HORIZON), "revised": GameConfig.v2(horizon=HORIZON),
+          "siege": GameConfig(horizon=HORIZON)}
 _CACHE = {}
 
 
@@ -61,7 +64,9 @@ def solution(model):
 
 @pytest.fixture(scope="session")
 def baselines(model):
-    return v1_baselines() if model == "v1" else all_baselines()
+    if model == "v1":
+        return v1_baselines()
+    return all_baselines() if model == "revised" else siege_baselines()
 
 
 @pytest.fixture(scope="session")
@@ -97,6 +102,46 @@ def rev_layers():
 @pytest.fixture(scope="session")
 def rev_solution():
     return _built("revised")[2]
+
+
+@pytest.fixture(scope="session")
+def sg_cfg():
+    return MODELS["siege"]
+
+
+@pytest.fixture(scope="session")
+def sg_game():
+    return _built("siege")[0]
+
+
+@pytest.fixture(scope="session")
+def sg_layers():
+    return _built("siege")[1]
+
+
+@pytest.fixture(scope="session")
+def sg_solution():
+    return _built("siege")[2]
+
+
+@pytest.fixture(scope="session", params=["revised", "siege"])
+def econ_model(request):
+    return request.param
+
+
+@pytest.fixture(scope="session")
+def econ_cfg(econ_model):
+    return MODELS[econ_model]
+
+
+@pytest.fixture(scope="session")
+def econ_game(econ_model):
+    return _built(econ_model)[0]
+
+
+@pytest.fixture(scope="session")
+def econ_layers(econ_model):
+    return _built(econ_model)[1]
 
 
 def all_transitions(game, layers):
