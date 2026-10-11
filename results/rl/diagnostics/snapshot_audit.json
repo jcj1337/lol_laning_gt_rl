@@ -1,0 +1,6233 @@
+{
+ "elapsed_s": 31.391950899967924,
+ "results": {
+  "m3b_s0|25600": {
+   "legality": {
+    "Hold": {
+     "legal_share": 1.0,
+     "n_legal": 2963,
+     "selected_share": 0.28147148160647995,
+     "p_when_legal": 0.29002361204782123,
+     "selected_when_legal": 0.28147148160647995
+    },
+    "Yield": {
+     "legal_share": 1.0,
+     "n_legal": 2963,
+     "selected_share": 0.32399595005062437,
+     "p_when_legal": 0.30873571085900403,
+     "selected_when_legal": 0.32399595005062437
+    },
+    "Trade": {
+     "legal_share": 1.0,
+     "n_legal": 2963,
+     "selected_share": 0.3182585217684779,
+     "p_when_legal": 0.3264853725496387,
+     "selected_when_legal": 0.3182585217684779
+    },
+    "Safe": {
+     "legal_share": 1.0,
+     "n_legal": 2963,
+     "selected_share": 0.07154910563617954,
+     "p_when_legal": 0.07005610402739706,
+     "selected_when_legal": 0.07154910563617954
+    },
+    "Recall": {
+     "legal_share": 0.45291933850826865,
+     "n_legal": 1342,
+     "selected_share": 0.004724940938238272,
+     "p_when_legal": 0.01037535851663161,
+     "selected_when_legal": 0.010432190760059613
+    },
+    "SP": {
+     "legal_share": 1.0,
+     "n_legal": 2963,
+     "selected_share": 0.897401282483969,
+     "p_when_legal": 0.8996931143986451,
+     "selected_when_legal": 0.897401282483969
+    },
+    "SH": {
+     "legal_share": 1.0,
+     "n_legal": 2963,
+     "selected_share": 0.09989875126560918,
+     "p_when_legal": 0.09686735836000218,
+     "selected_when_legal": 0.09989875126560918
+    },
+    "F": {
+     "legal_share": 0.013162335470806615,
+     "n_legal": 39,
+     "selected_share": 0.0026999662504218697,
+     "p_when_legal": 0.2613158773366311,
+     "selected_when_legal": 0.20512820512820512
+    },
+    "Pressure": {
+     "legal_share": 0.0006749915626054674,
+     "n_legal": 2,
+     "selected_share": 0.0006749915626054674,
+     "p_when_legal": 0.2659697299264586,
+     "selected_when_legal": 1.0
+    },
+    "Vision": {
+     "legal_share": 0.0006749915626054674,
+     "n_legal": 2,
+     "selected_share": 0.0,
+     "p_when_legal": 0.10276758773615244,
+     "selected_when_legal": 0.0
+    }
+   },
+   "opportunities": {
+    "recall legal and HP <= 2": {
+     "n": 238,
+     "share_of_present_turns": 0.08032399595005063,
+     "p": {
+      "Recall": 0.011427013218103974
+     }
+    },
+    "recall legal and HP <= 3": {
+     "n": 369,
+     "share_of_present_turns": 0.12453594330070875,
+     "p": {
+      "Recall": 0.011161283845670805
+     }
+    },
+    "HP <= 2 at or past the lane (Recall illegal)": {
+     "n": 376,
+     "share_of_present_turns": 0.12689841376982788,
+     "p": {
+      "Safe": 0.06771693956255205,
+      "Yield": 0.3344806438838539,
+      "Trade": 0.2987582648803336,
+      "Hold": 0.29904415167326054
+     }
+    },
+    "HP <= 2, enemy present": {
+     "n": 574,
+     "share_of_present_turns": 0.19372257846776916,
+     "p": {
+      "Safe": 0.069398322672256,
+      "Yield": 0.3307288930737247,
+      "Trade": 0.3045120260803708,
+      "Hold": 0.29112912148084,
+      "Recall": 0.004231636692808353
+     }
+    },
+    "Freeze legal": {
+     "n": 39,
+     "share_of_present_turns": 0.013162335470806615,
+     "p": {
+      "F": 0.2613158773366311,
+      "SH": 0.08354612414943177
+     }
+    },
+    "siege objective legal": {
+     "n": 2,
+     "share_of_present_turns": 0.0006749915626054674,
+     "p": {
+      "Pressure": 0.2659697299264586,
+      "Vision": 0.10276758773615244
+     }
+    },
+    "enemy champion away (punish window)": {
+     "n": 221,
+     "share_of_present_turns": 0.07458656766790416,
+     "p": {
+      "SH": 0.10575277894824353,
+      "Hold": 0.29628860193141326,
+      "Trade": 0.29198409155458793
+     }
+    },
+    "own front stacked (front HP > one wave)": {
+     "n": 49,
+     "share_of_present_turns": 0.01653729328383395,
+     "p": {
+      "SH": 0.09329868658192661
+     }
+    },
+    "opponent P(Trade) >= 0.5": {
+     "n": 0,
+     "share_of_present_turns": 0.0,
+     "p": {
+      "Yield": NaN,
+      "Safe": NaN,
+      "Trade": NaN,
+      "Hold": NaN
+     }
+    },
+    "HP <= 2 and opponent P(Trade) >= 0.5": {
+     "n": 0,
+     "share_of_present_turns": 0.0,
+     "p": {
+      "Yield": NaN,
+      "Safe": NaN,
+      "Trade": NaN,
+      "Hold": NaN
+     }
+    },
+    "own wave past the lane (farm spot > 0)": {
+     "n": 45,
+     "share_of_present_turns": 0.015187310158623017,
+     "p": {
+      "Hold": 0.30400342069001207,
+      "Trade": 0.2886012391100633
+     }
+    }
+   },
+   "entropy": 1.4963303207451697,
+   "deaths": 0.83
+  },
+  "m3b_s0|51200": {
+   "legality": {
+    "Hold": {
+     "legal_share": 1.0,
+     "n_legal": 2636,
+     "selected_share": 0.20371775417298937,
+     "p_when_legal": 0.20249632083345778,
+     "selected_when_legal": 0.20371775417298937
+    },
+    "Yield": {
+     "legal_share": 1.0,
+     "n_legal": 2636,
+     "selected_share": 0.10887708649468893,
+     "p_when_legal": 0.10996422550304309,
+     "selected_when_legal": 0.10887708649468893
+    },
+    "Trade": {
+     "legal_share": 1.0,
+     "n_legal": 2636,
+     "selected_share": 0.6798179059180577,
+     "p_when_legal": 0.6791821232500181,
+     "selected_when_legal": 0.6798179059180577
+    },
+    "Safe": {
+     "legal_share": 1.0,
+     "n_legal": 2636,
+     "selected_share": 0.007587253414264037,
+     "p_when_legal": 0.007569794548561935,
+     "selected_when_legal": 0.007587253414264037
+    },
+    "Recall": {
+     "legal_share": 0.3896054628224583,
+     "n_legal": 1027,
+     "selected_share": 0.0,
+     "p_when_legal": 0.002021367614339743,
+     "selected_when_legal": 0.0
+    },
+    "SP": {
+     "legal_share": 1.0,
+     "n_legal": 2636,
+     "selected_share": 0.9867223065250379,
+     "p_when_legal": 0.9854000694350826,
+     "selected_when_legal": 0.9867223065250379
+    },
+    "SH": {
+     "legal_share": 1.0,
+     "n_legal": 2636,
+     "selected_share": 0.013277693474962063,
+     "p_when_legal": 0.014599930564917336,
+     "selected_when_legal": 0.013277693474962063
+    },
+    "F": {
+     "legal_share": 0.0,
+     "n_legal": 0,
+     "selected_share": 0.0,
+     "p_when_legal": NaN,
+     "selected_when_legal": NaN
+    },
+    "Pressure": {
+     "legal_share": 0.0,
+     "n_legal": 0,
+     "selected_share": 0.0,
+     "p_when_legal": NaN,
+     "selected_when_legal": NaN
+    },
+    "Vision": {
+     "legal_share": 0.0,
+     "n_legal": 0,
+     "selected_share": 0.0,
+     "p_when_legal": NaN,
+     "selected_when_legal": NaN
+    }
+   },
+   "opportunities": {
+    "recall legal and HP <= 2": {
+     "n": 106,
+     "share_of_present_turns": 0.04021244309559939,
+     "p": {
+      "Recall": 0.001863624633351362
+     }
+    },
+    "recall legal and HP <= 3": {
+     "n": 201,
+     "share_of_present_turns": 0.07625189681335356,
+     "p": {
+      "Recall": 0.00199367278295115
+     }
+    },
+    "HP <= 2 at or past the lane (Recall illegal)": {
+     "n": 510,
+     "share_of_present_turns": 0.19347496206373294,
+     "p": {
+      "Safe": 0.008155589129559776,
+      "Yield": 0.12795442193080314,
+      "Trade": 0.6314977787807794,
+      "Hold": 0.2323922101588578
+     }
+    },
+    "HP <= 2, enemy present": {
+     "n": 489,
+     "share_of_present_turns": 0.18550834597875568,
+     "p": {
+      "Safe": 0.00719348026387908,
+      "Yield": 0.11091815221910933,
+      "Trade": 0.6843819395384089,
+      "Hold": 0.19718529500388352,
+      "Recall": 0.00032113297471924956
+     }
+    },
+    "Freeze legal": {
+     "n": 0,
+     "share_of_present_turns": 0.0,
+     "p": {
+      "F": NaN,
+      "SH": NaN
+     }
+    },
+    "siege objective legal": {
+     "n": 0,
+     "share_of_present_turns": 0.0,
+     "p": {
+      "Pressure": NaN,
+      "Vision": NaN
+     }
+    },
+    "enemy champion away (punish window)": {
+     "n": 500,
+     "share_of_present_turns": 0.18968133535660092,
+     "p": {
+      "SH": 0.019371521028233814,
+      "Hold": 0.2822456410536212,
+      "Trade": 0.5591400982030619
+     }
+    },
+    "own front stacked (front HP > one wave)": {
+     "n": 0,
+     "share_of_present_turns": 0.0,
+     "p": {
+      "SH": NaN
+     }
+    },
+    "opponent P(Trade) >= 0.5": {
+     "n": 2039,
+     "share_of_present_turns": 0.7735204855842185,
+     "p": {
+      "Yield": 0.10228553584478066,
+      "Safe": 0.007089241227827044,
+      "Trade": 0.7032959825839116,
+      "Hold": 0.18658786944846473
+     }
+    },
+    "HP <= 2 and opponent P(Trade) >= 0.5": {
+     "n": 483,
+     "share_of_present_turns": 0.18323216995447647,
+     "p": {
+      "Yield": 0.11123977639650091,
+      "Safe": 0.007196236079047036,
+      "Trade": 0.6833034635365576,
+      "Hold": 0.19795816236208952
+     }
+    },
+    "own wave past the lane (farm spot > 0)": {
+     "n": 1,
+     "share_of_present_turns": 0.00037936267071320183,
+     "p": {
+      "Hold": 0.18499504355768814,
+      "Trade": 0.702455490812707
+     }
+    }
+   },
+   "entropy": 0.8938685965341283,
+   "deaths": 2.01
+  },
+  "m3b_s0|76800": {
+   "legality": {
+    "Hold": {
+     "legal_share": 1.0,
+     "n_legal": 2621,
+     "selected_share": 0.2956886684471576,
+     "p_when_legal": 0.2928519956332883,
+     "selected_when_legal": 0.2956886684471576
+    },
+    "Yield": {
+     "legal_share": 1.0,
+     "n_legal": 2621,
+     "selected_share": 0.019839755818389926,
+     "p_when_legal": 0.019413488170723473,
+     "selected_when_legal": 0.019839755818389926
+    },
+    "Trade": {
+     "legal_share": 1.0,
+     "n_legal": 2621,
+     "selected_share": 0.6829454406714994,
+     "p_when_legal": 0.6838514361386588,
+     "selected_when_legal": 0.6829454406714994
+    },
+    "Safe": {
+     "legal_share": 1.0,
+     "n_legal": 2621,
+     "selected_share": 0.0015261350629530714,
+     "p_when_legal": 0.003464756670645733,
+     "selected_when_legal": 0.0015261350629530714
+    },
+    "Recall": {
+     "legal_share": 0.4143456695917589,
+     "n_legal": 1086,
+     "selected_share": 0.0,
+     "p_when_legal": 0.0010095999967751866,
+     "selected_when_legal": 0.0
+    },
+    "SP": {
+     "legal_share": 1.0,
+     "n_legal": 2621,
+     "selected_share": 0.994276993513926,
+     "p_when_legal": 0.9941482245978185,
+     "selected_when_legal": 0.994276993513926
+    },
+    "SH": {
+     "legal_share": 1.0,
+     "n_legal": 2621,
+     "selected_share": 0.005723006486074018,
+     "p_when_legal": 0.005851775402181393,
+     "selected_when_legal": 0.005723006486074018
+    },
+    "F": {
+     "legal_share": 0.0,
+     "n_legal": 0,
+     "selected_share": 0.0,
+     "p_when_legal": NaN,
+     "selected_when_legal": NaN
+    },
+    "Pressure": {
+     "legal_share": 0.0,
+     "n_legal": 0,
+     "selected_share": 0.0,
+     "p_when_legal": NaN,
+     "selected_when_legal": NaN
+    },
+    "Vision": {
+     "legal_share": 0.0,
+     "n_legal": 0,
+     "selected_share": 0.0,
+     "p_when_legal": NaN,
+     "selected_when_legal": NaN
+    }
+   },
+   "opportunities": {
+    "recall legal and HP <= 2": {
+     "n": 96,
+     "share_of_present_turns": 0.03662724151087371,
+     "p": {
+      "Recall": 0.0008363262887856167
+     }
+    },
+    "recall legal and HP <= 3": {
+     "n": 172,
+     "share_of_present_turns": 0.06562380770698206,
+     "p": {
+      "Recall": 0.0008159360025298891
+     }
+    },
+    "HP <= 2 at or past the lane (Recall illegal)": {
+     "n": 485,
+     "share_of_present_turns": 0.1850438763830599,
+     "p": {
+      "Safe": 0.00400059965681625,
+      "Yield": 0.02388731495438353,
+      "Trade": 0.6043773160245869,
+      "Hold": 0.3677347693642134
+     }
+    },
+    "HP <= 2, enemy present": {
+     "n": 461,
+     "share_of_present_turns": 0.17588706600534149,
+     "p": {
+      "Safe": 0.0033376957155982147,
+      "Yield": 0.01914281135787193,
+      "Trade": 0.7073697938401201,
+      "Hold": 0.2700526028351697,
+      "Recall": 9.70962512400201e-05
+     }
+    },
+    "Freeze legal": {
+     "n": 0,
+     "share_of_present_turns": 0.0,
+     "p": {
+      "F": NaN,
+      "SH": NaN
+     }
+    },
+    "siege objective legal": {
+     "n": 0,
+     "share_of_present_turns": 0.0,
+     "p": {
+      "Pressure": NaN,
+      "Vision": NaN
+     }
+    },
+    "enemy champion away (punish window)": {
+     "n": 539,
+     "share_of_present_turns": 0.20564669973292637,
+     "p": {
+      "SH": 0.008257884047987349,
+      "Hold": 0.5154260416413936,
+      "Trade": 0.4491654525631937
+     }
+    },
+    "own front stacked (front HP > one wave)": {
+     "n": 0,
+     "share_of_present_turns": 0.0,
+     "p": {
+      "SH": NaN
+     }
+    },
+    "opponent P(Trade) >= 0.5": {
+     "n": 1725,
+     "share_of_present_turns": 0.658145745898512,
+     "p": {
+      "Yield": 0.016003608790466382,
+      "Safe": 0.003013723517763367,
+      "Trade": 0.7575316693321097,
+      "Hold": 0.22326855087691996
+     }
+    },
+    "HP <= 2 and opponent P(Trade) >= 0.5": {
+     "n": 459,
+     "share_of_present_turns": 0.17512399847386495,
+     "p": {
+      "Yield": 0.01919562891967184,
+      "Safe": 0.003344455981512897,
+      "Trade": 0.7063048162394588,
+      "Hold": 0.27106002371134613
+     }
+    },
+    "own wave past the lane (farm spot > 0)": {
+     "n": 0,
+     "share_of_present_turns": 0.0,
+     "p": {
+      "Hold": NaN,
+      "Trade": NaN
+     }
+    }
+   },
+   "entropy": 0.5871304766824221,
+   "deaths": 2.04
+  },
+  "m3b_s0|102400": {
+   "legality": {
+    "Hold": {
+     "legal_share": 1.0,
+     "n_legal": 2671,
+     "selected_share": 0.3672781729689255,
+     "p_when_legal": 0.3543912725319325,
+     "selected_when_legal": 0.3672781729689255
+    },
+    "Yield": {
+     "legal_share": 1.0,
+     "n_legal": 2671,
+     "selected_share": 0.014601272931486334,
+     "p_when_legal": 0.018509684654310958,
+     "selected_when_legal": 0.014601272931486334
+    },
+    "Trade": {
+     "legal_share": 1.0,
+     "n_legal": 2671,
+     "selected_share": 0.6147510295769375,
+     "p_when_legal": 0.6225706148045344,
+     "selected_when_legal": 0.6147510295769375
+    },
+    "Safe": {
+     "legal_share": 1.0,
+     "n_legal": 2671,
+     "selected_share": 0.0033695245226506927,
+     "p_when_legal": 0.004229302990399072,
+     "selected_when_legal": 0.0033695245226506927
+    },
+    "Recall": {
+     "legal_share": 0.4080868588543617,
+     "n_legal": 1090,
+     "selected_share": 0.0,
+     "p_when_legal": 0.0007329935094283616,
+     "selected_when_legal": 0.0
+    },
+    "SP": {
+     "legal_share": 1.0,
+     "n_legal": 2671,
+     "selected_share": 0.9947585174092101,
+     "p_when_legal": 0.991942522398014,
+     "selected_when_legal": 0.9947585174092101
+    },
+    "SH": {
+     "legal_share": 1.0,
+     "n_legal": 2671,
+     "selected_share": 0.005241482590789966,
+     "p_when_legal": 0.008057477601986046,
+     "selected_when_legal": 0.005241482590789966
+    },
+    "F": {
+     "legal_share": 0.0,
+     "n_legal": 0,
+     "selected_share": 0.0,
+     "p_when_legal": NaN,
+     "selected_when_legal": NaN
+    },
+    "Pressure": {
+     "legal_share": 0.0,
+     "n_legal": 0,
+     "selected_share": 0.0,
+     "p_when_legal": NaN,
+     "selected_when_legal": NaN
+    },
+    "Vision": {
+     "legal_share": 0.0,
+     "n_legal": 0,
+     "selected_share": 0.0,
+     "p_when_legal": NaN,
+     "selected_when_legal": NaN
+    }
+   },
+   "opportunities": {
+    "recall legal and HP <= 2": {
+     "n": 68,
+     "share_of_present_turns": 0.02545862972669412,
+     "p": {
+      "Recall": 0.0005180057136471945
+     }
+    },
+    "recall legal and HP <= 3": {
+     "n": 148,
+     "share_of_present_turns": 0.055409958816922504,
+     "p": {
+      "Recall": 0.0004613721551165617
+     }
+    },
+    "HP <= 2 at or past the lane (Recall illegal)": {
+     "n": 537,
+     "share_of_present_turns": 0.201048296518158,
+     "p": {
+      "Safe": 0.004884503792835986,
+      "Yield": 0.02305940740180976,
+      "Trade": 0.5258432347309351,
+      "Hold": 0.44621285407441924
+     }
+    },
+    "HP <= 2, enemy present": {
+     "n": 483,
+     "share_of_present_turns": 0.18083114938225384,
+     "p": {
+      "Safe": 0.004327755843602282,
+      "Yield": 0.019359195951155247,
+      "Trade": 0.6575651198548507,
+      "Hold": 0.31870227176879157,
+      "Recall": 4.5656581600268764e-05
+     }
+    },
+    "Freeze legal": {
+     "n": 0,
+     "share_of_present_turns": 0.0,
+     "p": {
+      "F": NaN,
+      "SH": NaN
+     }
+    },
+    "siege objective legal": {
+     "n": 0,
+     "share_of_present_turns": 0.0,
+     "p": {
+      "Pressure": NaN,
+      "Vision": NaN
+     }
+    },
+    "enemy champion away (punish window)": {
+     "n": 485,
+     "share_of_present_turns": 0.18157993260950955,
+     "p": {
+      "SH": 0.010635494280414978,
+      "Hold": 0.7292220780129027,
+      "Trade": 0.236917078555081
+     }
+    },
+    "own front stacked (front HP > one wave)": {
+     "n": 2,
+     "share_of_present_turns": 0.0007487832272557095,
+     "p": {
+      "SH": 0.008434953399949211
+     }
+    },
+    "opponent P(Trade) >= 0.5": {
+     "n": 1741,
+     "share_of_present_turns": 0.6518157993260951,
+     "p": {
+      "Yield": 0.01581382743627155,
+      "Safe": 0.003903155170109728,
+      "Trade": 0.7210526508969204,
+      "Hold": 0.259140438304123
+     }
+    },
+    "HP <= 2 and opponent P(Trade) >= 0.5": {
+     "n": 479,
+     "share_of_present_turns": 0.17933358292774243,
+     "p": {
+      "Yield": 0.019422206084332004,
+      "Safe": 0.004339118346145058,
+      "Trade": 0.6554627937558355,
+      "Hold": 0.32073092134266235
+     }
+    },
+    "own wave past the lane (farm spot > 0)": {
+     "n": 0,
+     "share_of_present_turns": 0.0,
+     "p": {
+      "Hold": NaN,
+      "Trade": NaN
+     }
+    }
+   },
+   "entropy": 0.5377315955482922,
+   "deaths": 1.87
+  },
+  "m3b_s0|128000": {
+   "legality": {
+    "Hold": {
+     "legal_share": 1.0,
+     "n_legal": 2711,
+     "selected_share": 0.45739579490962745,
+     "p_when_legal": 0.45764066386750096,
+     "selected_when_legal": 0.45739579490962745
+    },
+    "Yield": {
+     "legal_share": 1.0,
+     "n_legal": 2711,
+     "selected_share": 0.016599040944300997,
+     "p_when_legal": 0.015323332258628246,
+     "selected_when_legal": 0.016599040944300997
+    },
+    "Trade": {
+     "legal_share": 1.0,
+     "n_legal": 2711,
+     "selected_share": 0.5234230911102914,
+     "p_when_legal": 0.5234896083875026,
+     "selected_when_legal": 0.5234230911102914
+    },
+    "Safe": {
+     "legal_share": 1.0,
+     "n_legal": 2711,
+     "selected_share": 0.0025820730357801547,
+     "p_when_legal": 0.003378787477724861,
+     "selected_when_legal": 0.0025820730357801547
+    },
+    "Recall": {
+     "legal_share": 0.36112135743268164,
+     "n_legal": 979,
+     "selected_share": 0.0,
+     "p_when_legal": 0.0004641320852215928,
+     "selected_when_legal": 0.0
+    },
+    "SP": {
+     "legal_share": 1.0,
+     "n_legal": 2711,
+     "selected_share": 0.9959424566580598,
+     "p_when_legal": 0.9937485509982158,
+     "selected_when_legal": 0.9959424566580598
+    },
+    "SH": {
+     "legal_share": 1.0,
+     "n_legal": 2711,
+     "selected_share": 0.004057543341940244,
+     "p_when_legal": 0.006251449001784318,
+     "selected_when_legal": 0.004057543341940244
+    },
+    "F": {
+     "legal_share": 0.0,
+     "n_legal": 0,
+     "selected_share": 0.0,
+     "p_when_legal": NaN,
+     "selected_when_legal": NaN
+    },
+    "Pressure": {
+     "legal_share": 0.0,
+     "n_legal": 0,
+     "selected_share": 0.0,
+     "p_when_legal": NaN,
+     "selected_when_legal": NaN
+    },
+    "Vision": {
+     "legal_share": 0.0,
+     "n_legal": 0,
+     "selected_share": 0.0,
+     "p_when_legal": NaN,
+     "selected_when_legal": NaN
+    }
+   },
+   "opportunities": {
+    "recall legal and HP <= 2": {
+     "n": 65,
+     "share_of_present_turns": 0.02397639247510144,
+     "p": {
+      "Recall": 0.00037287307993144077
+     }
+    },
+    "recall legal and HP <= 3": {
+     "n": 141,
+     "share_of_present_turns": 0.052010328292143124,
+     "p": {
+      "Recall": 0.00035052998596959604
+     }
+    },
+    "HP <= 2 at or past the lane (Recall illegal)": {
+     "n": 505,
+     "share_of_present_turns": 0.18627812615271117,
+     "p": {
+      "Safe": 0.0035904510935329407,
+      "Yield": 0.01835875228751374,
+      "Trade": 0.40905778842304785,
+      "Hold": 0.5689930081959055
+     }
+    },
+    "HP <= 2, enemy present": {
+     "n": 460,
+     "share_of_present_turns": 0.16967908520841019,
+     "p": {
+      "Safe": 0.003542589257346769,
+      "Yield": 0.017354404938423523,
+      "Trade": 0.5345628801178833,
+      "Hold": 0.4445113151832054,
+      "Recall": 2.881050314104182e-05
+     }
+    },
+    "Freeze legal": {
+     "n": 0,
+     "share_of_present_turns": 0.0,
+     "p": {
+      "F": NaN,
+      "SH": NaN
+     }
+    },
+    "siege objective legal": {
+     "n": 0,
+     "share_of_present_turns": 0.0,
+     "p": {
+      "Pressure": NaN,
+      "Vision": NaN
+     }
+    },
+    "enemy champion away (punish window)": {
+     "n": 463,
+     "share_of_present_turns": 0.17078568793803026,
+     "p": {
+      "SH": 0.005117233147523634,
+      "Hold": 0.898926938996677,
+      "Trade": 0.08106222070012345
+     }
+    },
+    "own front stacked (front HP > one wave)": {
+     "n": 0,
+     "share_of_present_turns": 0.0,
+     "p": {
+      "SH": NaN
+     }
+    },
+    "opponent P(Trade) >= 0.5": {
+     "n": 1496,
+     "share_of_present_turns": 0.5518258945038731,
+     "p": {
+      "Yield": 0.017122356169622977,
+      "Safe": 0.004150489155524129,
+      "Trade": 0.5721335504929611,
+      "Hold": 0.4065744063616224
+     }
+    },
+    "HP <= 2 and opponent P(Trade) >= 0.5": {
+     "n": 427,
+     "share_of_present_turns": 0.15750645518258946,
+     "p": {
+      "Yield": 0.018072566954041785,
+      "Safe": 0.003684500756623474,
+      "Trade": 0.5051919523292735,
+      "Hold": 0.47304139073960555
+     }
+    },
+    "own wave past the lane (farm spot > 0)": {
+     "n": 0,
+     "share_of_present_turns": 0.0,
+     "p": {
+      "Hold": NaN,
+      "Trade": NaN
+     }
+    }
+   },
+   "entropy": 0.48810595361424924,
+   "deaths": 1.8
+  },
+  "m3b_s0|153600": {
+   "legality": {
+    "Hold": {
+     "legal_share": 1.0,
+     "n_legal": 2722,
+     "selected_share": 0.4875091844232182,
+     "p_when_legal": 0.490657180346612,
+     "selected_when_legal": 0.4875091844232182
+    },
+    "Yield": {
+     "legal_share": 1.0,
+     "n_legal": 2722,
+     "selected_share": 0.0106539309331374,
+     "p_when_legal": 0.008426250261680193,
+     "selected_when_legal": 0.0106539309331374
+    },
+    "Trade": {
+     "legal_share": 1.0,
+     "n_legal": 2722,
+     "selected_share": 0.5011021307861866,
+     "p_when_legal": 0.4988056852373025,
+     "selected_when_legal": 0.5011021307861866
+    },
+    "Safe": {
+     "legal_share": 1.0,
+     "n_legal": 2722,
+     "selected_share": 0.0007347538574577516,
+     "p_when_legal": 0.002016432067105346,
+     "selected_when_legal": 0.0007347538574577516
+    },
+    "Recall": {
+     "legal_share": 0.3570903747244673,
+     "n_legal": 972,
+     "selected_share": 0.0,
+     "p_when_legal": 0.00026450471361171804,
+     "selected_when_legal": 0.0
+    },
+    "SP": {
+     "legal_share": 1.0,
+     "n_legal": 2722,
+     "selected_share": 0.9933872152828802,
+     "p_when_legal": 0.9950162050087852,
+     "selected_when_legal": 0.9933872152828802
+    },
+    "SH": {
+     "legal_share": 1.0,
+     "n_legal": 2722,
+     "selected_share": 0.006245407788390889,
+     "p_when_legal": 0.004660124301220703,
+     "selected_when_legal": 0.006245407788390889
+    },
+    "F": {
+     "legal_share": 0.0003673769287288758,
+     "n_legal": 1,
+     "selected_share": 0.0003673769287288758,
+     "p_when_legal": 0.8810316181637414,
+     "selected_when_legal": 1.0
+    },
+    "Pressure": {
+     "legal_share": 0.0,
+     "n_legal": 0,
+     "selected_share": 0.0,
+     "p_when_legal": NaN,
+     "selected_when_legal": NaN
+    },
+    "Vision": {
+     "legal_share": 0.0,
+     "n_legal": 0,
+     "selected_share": 0.0,
+     "p_when_legal": NaN,
+     "selected_when_legal": NaN
+    }
+   },
+   "opportunities": {
+    "recall legal and HP <= 2": {
+     "n": 70,
+     "share_of_present_turns": 0.025716385011021307,
+     "p": {
+      "Recall": 0.00022183247296384426
+     }
+    },
+    "recall legal and HP <= 3": {
+     "n": 118,
+     "share_of_present_turns": 0.04335047759000735,
+     "p": {
+      "Recall": 0.0002088477159570025
+     }
+    },
+    "HP <= 2 at or past the lane (Recall illegal)": {
+     "n": 483,
+     "share_of_present_turns": 0.17744305657604703,
+     "p": {
+      "Safe": 0.002021247037217961,
+      "Yield": 0.009249313947170107,
+      "Trade": 0.375808182849454,
+      "Hold": 0.6129212561661579
+     }
+    },
+    "HP <= 2, enemy present": {
+     "n": 448,
+     "share_of_present_turns": 0.16458486407053638,
+     "p": {
+      "Safe": 0.002062970680220125,
+      "Yield": 0.009297318458706455,
+      "Trade": 0.4974167608096292,
+      "Hold": 0.49120440289922007,
+      "Recall": 1.854715222412467e-05
+     }
+    },
+    "Freeze legal": {
+     "n": 1,
+     "share_of_present_turns": 0.0003673769287288758,
+     "p": {
+      "F": 0.8810316181637414,
+      "SH": 0.00024957679759875776
+     }
+    },
+    "siege objective legal": {
+     "n": 0,
+     "share_of_present_turns": 0.0,
+     "p": {
+      "Pressure": NaN,
+      "Vision": NaN
+     }
+    },
+    "enemy champion away (punish window)": {
+     "n": 458,
+     "share_of_present_turns": 0.16825863335782512,
+     "p": {
+      "SH": 0.003137240647078217,
+      "Hold": 0.9181305214261665,
+      "Trade": 0.07373556852320967
+     }
+    },
+    "own front stacked (front HP > one wave)": {
+     "n": 3,
+     "share_of_present_turns": 0.0011021307861866275,
+     "p": {
+      "SH": 0.00414951568976211
+     }
+    },
+    "opponent P(Trade) >= 0.5": {
+     "n": 1456,
+     "share_of_present_turns": 0.5349008082292432,
+     "p": {
+      "Yield": 0.010097869676886013,
+      "Safe": 0.0026564717314903038,
+      "Trade": 0.5125453121822693,
+      "Hold": 0.4746947266443232
+     }
+    },
+    "HP <= 2 and opponent P(Trade) >= 0.5": {
+     "n": 414,
+     "share_of_present_turns": 0.1520940484937546,
+     "p": {
+      "Yield": 0.009671329922494414,
+      "Safe": 0.0021487230799037,
+      "Trade": 0.4622888581343499,
+      "Hold": 0.5258838190130627
+     }
+    },
+    "own wave past the lane (farm spot > 0)": {
+     "n": 1,
+     "share_of_present_turns": 0.0003673769287288758,
+     "p": {
+      "Hold": 0.19111867578124098,
+      "Trade": 0.8013479022781532
+     }
+    }
+   },
+   "entropy": 0.43127249150915753,
+   "deaths": 1.73
+  },
+  "m3b_s0|179200": {
+   "legality": {
+    "Hold": {
+     "legal_share": 1.0,
+     "n_legal": 2702,
+     "selected_share": 0.44263508512213173,
+     "p_when_legal": 0.4430305556831173,
+     "selected_when_legal": 0.44263508512213173
+    },
+    "Yield": {
+     "legal_share": 1.0,
+     "n_legal": 2702,
+     "selected_share": 0.006661732050333087,
+     "p_when_legal": 0.006081036536693901,
+     "selected_when_legal": 0.006661732050333087
+    },
+    "Trade": {
+     "legal_share": 1.0,
+     "n_legal": 2702,
+     "selected_share": 0.5499629903774982,
+     "p_when_legal": 0.5490412811339691,
+     "selected_when_legal": 0.5499629903774982
+    },
+    "Safe": {
+     "legal_share": 1.0,
+     "n_legal": 2702,
+     "selected_share": 0.0007401924500370096,
+     "p_when_legal": 0.001724777155277537,
+     "selected_when_legal": 0.0007401924500370096
+    },
+    "Recall": {
+     "legal_share": 0.3689859363434493,
+     "n_legal": 997,
+     "selected_share": 0.0,
+     "p_when_legal": 0.00033158307374691107,
+     "selected_when_legal": 0.0
+    },
+    "SP": {
+     "legal_share": 1.0,
+     "n_legal": 2702,
+     "selected_share": 0.9966691339748335,
+     "p_when_legal": 0.9956138448604787,
+     "selected_when_legal": 0.9966691339748335
+    },
+    "SH": {
+     "legal_share": 1.0,
+     "n_legal": 2702,
+     "selected_share": 0.0033308660251665434,
+     "p_when_legal": 0.004386155139521423,
+     "selected_when_legal": 0.0033308660251665434
+    },
+    "F": {
+     "legal_share": 0.0,
+     "n_legal": 0,
+     "selected_share": 0.0,
+     "p_when_legal": NaN,
+     "selected_when_legal": NaN
+    },
+    "Pressure": {
+     "legal_share": 0.0,
+     "n_legal": 0,
+     "selected_share": 0.0,
+     "p_when_legal": NaN,
+     "selected_when_legal": NaN
+    },
+    "Vision": {
+     "legal_share": 0.0,
+     "n_legal": 0,
+     "selected_share": 0.0,
+     "p_when_legal": NaN,
+     "selected_when_legal": NaN
+    }
+   },
+   "opportunities": {
+    "recall legal and HP <= 2": {
+     "n": 55,
+     "share_of_present_turns": 0.020355292376017766,
+     "p": {
+      "Recall": 0.00019619805517061636
+     }
+    },
+    "recall legal and HP <= 3": {
+     "n": 111,
+     "share_of_present_turns": 0.041080680977054036,
+     "p": {
+      "Recall": 0.00018481708819809666
+     }
+    },
+    "HP <= 2 at or past the lane (Recall illegal)": {
+     "n": 484,
+     "share_of_present_turns": 0.17912657290895634,
+     "p": {
+      "Safe": 0.0018711534242861127,
+      "Yield": 0.007479067278994602,
+      "Trade": 0.432039793084149,
+      "Hold": 0.5586099862125703
+     }
+    },
+    "HP <= 2, enemy present": {
+     "n": 432,
+     "share_of_present_turns": 0.15988156920799407,
+     "p": {
+      "Safe": 0.0018411090450267046,
+      "Yield": 0.007326318037319606,
+      "Trade": 0.567875641271898,
+      "Hold": 0.42294781173904705,
+      "Recall": 9.11990670862193e-06
+     }
+    },
+    "Freeze legal": {
+     "n": 0,
+     "share_of_present_turns": 0.0,
+     "p": {
+      "F": NaN,
+      "SH": NaN
+     }
+    },
+    "siege objective legal": {
+     "n": 0,
+     "share_of_present_turns": 0.0,
+     "p": {
+      "Pressure": NaN,
+      "Vision": NaN
+     }
+    },
+    "enemy champion away (punish window)": {
+     "n": 472,
+     "share_of_present_turns": 0.17468541820873426,
+     "p": {
+      "SH": 0.003662650244218585,
+      "Hold": 0.9031845376956578,
+      "Trade": 0.08950551884877644
+     }
+    },
+    "own front stacked (front HP > one wave)": {
+     "n": 0,
+     "share_of_present_turns": 0.0,
+     "p": {
+      "SH": NaN
+     }
+    },
+    "opponent P(Trade) >= 0.5": {
+     "n": 1426,
+     "share_of_present_turns": 0.5277572168763879,
+     "p": {
+      "Yield": 0.0073475327221308295,
+      "Safe": 0.002143302027094429,
+      "Trade": 0.5908483486475576,
+      "Hold": 0.39965559646986415
+     }
+    },
+    "HP <= 2 and opponent P(Trade) >= 0.5": {
+     "n": 411,
+     "share_of_present_turns": 0.15210954848260547,
+     "p": {
+      "Yield": 0.007580240555896265,
+      "Safe": 0.0019080516027821636,
+      "Trade": 0.5472840596086195,
+      "Hold": 0.443223308252395
+     }
+    },
+    "own wave past the lane (farm spot > 0)": {
+     "n": 0,
+     "share_of_present_turns": 0.0,
+     "p": {
+      "Hold": NaN,
+      "Trade": NaN
+     }
+    }
+   },
+   "entropy": 0.36889442037436654,
+   "deaths": 1.8
+  },
+  "m3b_s0|204800": {
+   "legality": {
+    "Hold": {
+     "legal_share": 1.0,
+     "n_legal": 2642,
+     "selected_share": 0.3372445117335352,
+     "p_when_legal": 0.3359072901677012,
+     "selected_when_legal": 0.3372445117335352
+    },
+    "Yield": {
+     "legal_share": 1.0,
+     "n_legal": 2642,
+     "selected_share": 0.007948523845571537,
+     "p_when_legal": 0.00633187101716111,
+     "selected_when_legal": 0.007948523845571537
+    },
+    "Trade": {
+     "legal_share": 1.0,
+     "n_legal": 2642,
+     "selected_share": 0.6529144587433763,
+     "p_when_legal": 0.6551187873159233,
+     "selected_when_legal": 0.6529144587433763
+    },
+    "Safe": {
+     "legal_share": 1.0,
+     "n_legal": 2642,
+     "selected_share": 0.0018925056775170325,
+     "p_when_legal": 0.002419223299930178,
+     "selected_when_legal": 0.0018925056775170325
+    },
+    "Recall": {
+     "legal_share": 0.4390613171839515,
+     "n_legal": 1160,
+     "selected_share": 0.0,
+     "p_when_legal": 0.0005075104331971639,
+     "selected_when_legal": 0.0
+    },
+    "SP": {
+     "legal_share": 1.0,
+     "n_legal": 2642,
+     "selected_share": 0.9943224829674489,
+     "p_when_legal": 0.9939788351599302,
+     "selected_when_legal": 0.9943224829674489
+    },
+    "SH": {
+     "legal_share": 1.0,
+     "n_legal": 2642,
+     "selected_share": 0.005677517032551098,
+     "p_when_legal": 0.006021164840069845,
+     "selected_when_legal": 0.005677517032551098
+    },
+    "F": {
+     "legal_share": 0.0,
+     "n_legal": 0,
+     "selected_share": 0.0,
+     "p_when_legal": NaN,
+     "selected_when_legal": NaN
+    },
+    "Pressure": {
+     "legal_share": 0.0,
+     "n_legal": 0,
+     "selected_share": 0.0,
+     "p_when_legal": NaN,
+     "selected_when_legal": NaN
+    },
+    "Vision": {
+     "legal_share": 0.0,
+     "n_legal": 0,
+     "selected_share": 0.0,
+     "p_when_legal": NaN,
+     "selected_when_legal": NaN
+    }
+   },
+   "opportunities": {
+    "recall legal and HP <= 2": {
+     "n": 100,
+     "share_of_present_turns": 0.03785011355034065,
+     "p": {
+      "Recall": 0.00022742836147872372
+     }
+    },
+    "recall legal and HP <= 3": {
+     "n": 178,
+     "share_of_present_turns": 0.06737320211960636,
+     "p": {
+      "Recall": 0.00020208666437236225
+     }
+    },
+    "HP <= 2 at or past the lane (Recall illegal)": {
+     "n": 505,
+     "share_of_present_turns": 0.1911430734292203,
+     "p": {
+      "Safe": 0.002473246939959654,
+      "Yield": 0.007383879051187581,
+      "Trade": 0.5688942791286209,
+      "Hold": 0.4212485948802318
+     }
+    },
+    "HP <= 2, enemy present": {
+     "n": 466,
+     "share_of_present_turns": 0.17638152914458743,
+     "p": {
+      "Safe": 0.002076616007795856,
+      "Yield": 0.006113429985422511,
+      "Trade": 0.7491285543232953,
+      "Hold": 0.24266106040724067,
+      "Recall": 2.0339276245573254e-05
+     }
+    },
+    "Freeze legal": {
+     "n": 0,
+     "share_of_present_turns": 0.0,
+     "p": {
+      "F": NaN,
+      "SH": NaN
+     }
+    },
+    "siege objective legal": {
+     "n": 0,
+     "share_of_present_turns": 0.0,
+     "p": {
+      "Pressure": NaN,
+      "Vision": NaN
+     }
+    },
+    "enemy champion away (punish window)": {
+     "n": 516,
+     "share_of_present_turns": 0.19530658591975775,
+     "p": {
+      "SH": 0.006502036554104189,
+      "Hold": 0.740090286739722,
+      "Trade": 0.24928654946556386
+     }
+    },
+    "own front stacked (front HP > one wave)": {
+     "n": 2,
+     "share_of_present_turns": 0.000757002271006813,
+     "p": {
+      "SH": 0.0050416070812598305
+     }
+    },
+    "opponent P(Trade) >= 0.5": {
+     "n": 1743,
+     "share_of_present_turns": 0.6597274791824376,
+     "p": {
+      "Yield": 0.005140900400250954,
+      "Safe": 0.0020350053468181644,
+      "Trade": 0.7925454696588334,
+      "Hold": 0.2002425075325357
+     }
+    },
+    "HP <= 2 and opponent P(Trade) >= 0.5": {
+     "n": 463,
+     "share_of_present_turns": 0.1752460257380772,
+     "p": {
+      "Yield": 0.006135144810700274,
+      "Safe": 0.0020835258861812206,
+      "Trade": 0.7476145759396556,
+      "Hold": 0.2441470498913674
+     }
+    },
+    "own wave past the lane (farm spot > 0)": {
+     "n": 0,
+     "share_of_present_turns": 0.0,
+     "p": {
+      "Hold": NaN,
+      "Trade": NaN
+     }
+    }
+   },
+   "entropy": 0.37986002658345097,
+   "deaths": 1.98
+  },
+  "m3b_s0|230400": {
+   "legality": {
+    "Hold": {
+     "legal_share": 1.0,
+     "n_legal": 2619,
+     "selected_share": 0.32646048109965636,
+     "p_when_legal": 0.3279669705942482,
+     "selected_when_legal": 0.32646048109965636
+    },
+    "Yield": {
+     "legal_share": 1.0,
+     "n_legal": 2619,
+     "selected_share": 0.0057273768613974796,
+     "p_when_legal": 0.006133620787491566,
+     "selected_when_legal": 0.0057273768613974796
+    },
+    "Trade": {
+     "legal_share": 1.0,
+     "n_legal": 2619,
+     "selected_share": 0.667430316914853,
+     "p_when_legal": 0.6637872676365796,
+     "selected_when_legal": 0.667430316914853
+    },
+    "Safe": {
+     "legal_share": 1.0,
+     "n_legal": 2619,
+     "selected_share": 0.00038182512409316535,
+     "p_when_legal": 0.0018976665457240084,
+     "selected_when_legal": 0.00038182512409316535
+    },
+    "Recall": {
+     "legal_share": 0.4425353188239786,
+     "n_legal": 1159,
+     "selected_share": 0.0,
+     "p_when_legal": 0.00048464930782615533,
+     "selected_when_legal": 0.0
+    },
+    "SP": {
+     "legal_share": 1.0,
+     "n_legal": 2619,
+     "selected_share": 0.9969453990072547,
+     "p_when_legal": 0.9942863221067927,
+     "selected_when_legal": 0.9969453990072547
+    },
+    "SH": {
+     "legal_share": 1.0,
+     "n_legal": 2619,
+     "selected_share": 0.0030546009927453228,
+     "p_when_legal": 0.005713677893207296,
+     "selected_when_legal": 0.0030546009927453228
+    },
+    "F": {
+     "legal_share": 0.0,
+     "n_legal": 0,
+     "selected_share": 0.0,
+     "p_when_legal": NaN,
+     "selected_when_legal": NaN
+    },
+    "Pressure": {
+     "legal_share": 0.0,
+     "n_legal": 0,
+     "selected_share": 0.0,
+     "p_when_legal": NaN,
+     "selected_when_legal": NaN
+    },
+    "Vision": {
+     "legal_share": 0.0,
+     "n_legal": 0,
+     "selected_share": 0.0,
+     "p_when_legal": NaN,
+     "selected_when_legal": NaN
+    }
+   },
+   "opportunities": {
+    "recall legal and HP <= 2": {
+     "n": 114,
+     "share_of_present_turns": 0.043528064146620846,
+     "p": {
+      "Recall": 0.0001399125502287258
+     }
+    },
+    "recall legal and HP <= 3": {
+     "n": 221,
+     "share_of_present_turns": 0.08438335242458954,
+     "p": {
+      "Recall": 0.0001506879667255627
+     }
+    },
+    "HP <= 2 at or past the lane (Recall illegal)": {
+     "n": 493,
+     "share_of_present_turns": 0.1882397861779305,
+     "p": {
+      "Safe": 0.0019048118738010278,
+      "Yield": 0.007111996569537688,
+      "Trade": 0.5622882995591216,
+      "Hold": 0.4286948919975396
+     }
+    },
+    "HP <= 2, enemy present": {
+     "n": 480,
+     "share_of_present_turns": 0.18327605956471935,
+     "p": {
+      "Safe": 0.0016086843046799492,
+      "Yield": 0.005789774306058797,
+      "Trade": 0.7568347820723176,
+      "Hold": 0.23574951959920148,
+      "Recall": 1.723971774220216e-05
+     }
+    },
+    "Freeze legal": {
+     "n": 0,
+     "share_of_present_turns": 0.0,
+     "p": {
+      "F": NaN,
+      "SH": NaN
+     }
+    },
+    "siege objective legal": {
+     "n": 0,
+     "share_of_present_turns": 0.0,
+     "p": {
+      "Pressure": NaN,
+      "Vision": NaN
+     }
+    },
+    "enemy champion away (punish window)": {
+     "n": 497,
+     "share_of_present_turns": 0.18976708667430317,
+     "p": {
+      "SH": 0.005950725665989534,
+      "Hold": 0.7828605250579218,
+      "Trade": 0.2074555193550913
+     }
+    },
+    "own front stacked (front HP > one wave)": {
+     "n": 0,
+     "share_of_present_turns": 0.0,
+     "p": {
+      "SH": NaN
+     }
+    },
+    "opponent P(Trade) >= 0.5": {
+     "n": 1765,
+     "share_of_present_turns": 0.6739213440244368,
+     "p": {
+      "Yield": 0.004669667658971224,
+      "Safe": 0.0015113486554772285,
+      "Trade": 0.8024531840408194,
+      "Hold": 0.191335178241277
+     }
+    },
+    "HP <= 2 and opponent P(Trade) >= 0.5": {
+     "n": 480,
+     "share_of_present_turns": 0.18327605956471935,
+     "p": {
+      "Yield": 0.005789774306058797,
+      "Safe": 0.0016086843046799492,
+      "Trade": 0.7568347820723176,
+      "Hold": 0.23574951959920148
+     }
+    },
+    "own wave past the lane (farm spot > 0)": {
+     "n": 0,
+     "share_of_present_turns": 0.0,
+     "p": {
+      "Hold": NaN,
+      "Trade": NaN
+     }
+    }
+   },
+   "entropy": 0.3775663879514093,
+   "deaths": 2.04
+  },
+  "m3b_s0|256000": {
+   "legality": {
+    "Hold": {
+     "legal_share": 1.0,
+     "n_legal": 2694,
+     "selected_share": 0.46250927988121754,
+     "p_when_legal": 0.45856265577053645,
+     "selected_when_legal": 0.46250927988121754
+    },
+    "Yield": {
+     "legal_share": 1.0,
+     "n_legal": 2694,
+     "selected_share": 0.004825538233110616,
+     "p_when_legal": 0.006096695775692272,
+     "selected_when_legal": 0.004825538233110616
+    },
+    "Trade": {
+     "legal_share": 1.0,
+     "n_legal": 2694,
+     "selected_share": 0.532293986636971,
+     "p_when_legal": 0.5335470851285097,
+     "selected_when_legal": 0.532293986636971
+    },
+    "Safe": {
+     "legal_share": 1.0,
+     "n_legal": 2694,
+     "selected_share": 0.0003711952487008166,
+     "p_when_legal": 0.00163307128419561,
+     "selected_when_legal": 0.0003711952487008166
+    },
+    "Recall": {
+     "legal_share": 0.4131403118040089,
+     "n_legal": 1113,
+     "selected_share": 0.0,
+     "p_when_legal": 0.0003884686061383743,
+     "selected_when_legal": 0.0
+    },
+    "SP": {
+     "legal_share": 1.0,
+     "n_legal": 2694,
+     "selected_share": 0.9966592427616926,
+     "p_when_legal": 0.9954980492839027,
+     "selected_when_legal": 0.9966592427616926
+    },
+    "SH": {
+     "legal_share": 1.0,
+     "n_legal": 2694,
+     "selected_share": 0.0033407572383073497,
+     "p_when_legal": 0.004501950716097121,
+     "selected_when_legal": 0.0033407572383073497
+    },
+    "F": {
+     "legal_share": 0.0,
+     "n_legal": 0,
+     "selected_share": 0.0,
+     "p_when_legal": NaN,
+     "selected_when_legal": NaN
+    },
+    "Pressure": {
+     "legal_share": 0.0,
+     "n_legal": 0,
+     "selected_share": 0.0,
+     "p_when_legal": NaN,
+     "selected_when_legal": NaN
+    },
+    "Vision": {
+     "legal_share": 0.0,
+     "n_legal": 0,
+     "selected_share": 0.0,
+     "p_when_legal": NaN,
+     "selected_when_legal": NaN
+    }
+   },
+   "opportunities": {
+    "recall legal and HP <= 2": {
+     "n": 62,
+     "share_of_present_turns": 0.02301410541945063,
+     "p": {
+      "Recall": 0.00022231789441161943
+     }
+    },
+    "recall legal and HP <= 3": {
+     "n": 128,
+     "share_of_present_turns": 0.047512991833704527,
+     "p": {
+      "Recall": 0.00020108281571249738
+     }
+    },
+    "HP <= 2 at or past the lane (Recall illegal)": {
+     "n": 464,
+     "share_of_present_turns": 0.17223459539717892,
+     "p": {
+      "Safe": 0.0017566720105625247,
+      "Yield": 0.007455817388317871,
+      "Trade": 0.3688784265609191,
+      "Hold": 0.6219090840402004
+     }
+    },
+    "HP <= 2, enemy present": {
+     "n": 430,
+     "share_of_present_turns": 0.15961395694135114,
+     "p": {
+      "Safe": 0.001740684582796922,
+      "Yield": 0.007367214645713718,
+      "Trade": 0.4855327634099027,
+      "Hold": 0.5053452167551827,
+      "Recall": 1.412060640397217e-05
+     }
+    },
+    "Freeze legal": {
+     "n": 0,
+     "share_of_present_turns": 0.0,
+     "p": {
+      "F": NaN,
+      "SH": NaN
+     }
+    },
+    "siege objective legal": {
+     "n": 0,
+     "share_of_present_turns": 0.0,
+     "p": {
+      "Pressure": NaN,
+      "Vision": NaN
+     }
+    },
+    "enemy champion away (punish window)": {
+     "n": 462,
+     "share_of_present_turns": 0.1714922048997773,
+     "p": {
+      "SH": 0.003223515665972564,
+      "Hold": 0.9164954562953121,
+      "Trade": 0.0769940914498407
+     }
+    },
+    "own front stacked (front HP > one wave)": {
+     "n": 0,
+     "share_of_present_turns": 0.0,
+     "p": {
+      "SH": NaN
+     }
+    },
+    "opponent P(Trade) >= 0.5": {
+     "n": 1287,
+     "share_of_present_turns": 0.477728285077951,
+     "p": {
+      "Yield": 0.007279581496035437,
+      "Safe": 0.0019975277657378184,
+      "Trade": 0.5034744232824587,
+      "Hold": 0.4872424126586796
+     }
+    },
+    "HP <= 2 and opponent P(Trade) >= 0.5": {
+     "n": 400,
+     "share_of_present_turns": 0.14847809948032664,
+     "p": {
+      "Yield": 0.007720112242082293,
+      "Safe": 0.0018268001287275592,
+      "Trade": 0.4497479717131233,
+      "Hold": 0.5406991720589965
+     }
+    },
+    "own wave past the lane (farm spot > 0)": {
+     "n": 0,
+     "share_of_present_turns": 0.0,
+     "p": {
+      "Hold": NaN,
+      "Trade": NaN
+     }
+    }
+   },
+   "entropy": 0.37948653649165937,
+   "deaths": 1.83
+  },
+  "m3b_s0|281600": {
+   "legality": {
+    "Hold": {
+     "legal_share": 1.0,
+     "n_legal": 2704,
+     "selected_share": 0.4859467455621302,
+     "p_when_legal": 0.4829489272644352,
+     "selected_when_legal": 0.4859467455621302
+    },
+    "Yield": {
+     "legal_share": 1.0,
+     "n_legal": 2704,
+     "selected_share": 0.0036982248520710057,
+     "p_when_legal": 0.005022278931424734,
+     "selected_when_legal": 0.0036982248520710057
+    },
+    "Trade": {
+     "legal_share": 1.0,
+     "n_legal": 2704,
+     "selected_share": 0.5096153846153846,
+     "p_when_legal": 0.510290609999213,
+     "selected_when_legal": 0.5096153846153846
+    },
+    "Safe": {
+     "legal_share": 1.0,
+     "n_legal": 2704,
+     "selected_share": 0.0007396449704142012,
+     "p_when_legal": 0.0015970088958420685,
+     "selected_when_legal": 0.0007396449704142012
+    },
+    "Recall": {
+     "legal_share": 0.35613905325443784,
+     "n_legal": 963,
+     "selected_share": 0.0,
+     "p_when_legal": 0.00039640389840655177,
+     "selected_when_legal": 0.0
+    },
+    "SP": {
+     "legal_share": 1.0,
+     "n_legal": 2704,
+     "selected_share": 0.9992603550295858,
+     "p_when_legal": 0.9960037440168139,
+     "selected_when_legal": 0.9992603550295858
+    },
+    "SH": {
+     "legal_share": 1.0,
+     "n_legal": 2704,
+     "selected_share": 0.0007396449704142012,
+     "p_when_legal": 0.003996255983186097,
+     "selected_when_legal": 0.0007396449704142012
+    },
+    "F": {
+     "legal_share": 0.0,
+     "n_legal": 0,
+     "selected_share": 0.0,
+     "p_when_legal": NaN,
+     "selected_when_legal": NaN
+    },
+    "Pressure": {
+     "legal_share": 0.0,
+     "n_legal": 0,
+     "selected_share": 0.0,
+     "p_when_legal": NaN,
+     "selected_when_legal": NaN
+    },
+    "Vision": {
+     "legal_share": 0.0,
+     "n_legal": 0,
+     "selected_share": 0.0,
+     "p_when_legal": NaN,
+     "selected_when_legal": NaN
+    }
+   },
+   "opportunities": {
+    "recall legal and HP <= 2": {
+     "n": 34,
+     "share_of_present_turns": 0.01257396449704142,
+     "p": {
+      "Recall": 0.00024516851584539806
+     }
+    },
+    "recall legal and HP <= 3": {
+     "n": 83,
+     "share_of_present_turns": 0.03069526627218935,
+     "p": {
+      "Recall": 0.0002015717986744321
+     }
+    },
+    "HP <= 2 at or past the lane (Recall illegal)": {
+     "n": 508,
+     "share_of_present_turns": 0.1878698224852071,
+     "p": {
+      "Safe": 0.0016015262914481584,
+      "Yield": 0.0056685066800374745,
+      "Trade": 0.37368478419561857,
+      "Hold": 0.6190451828328958
+     }
+    },
+    "HP <= 2, enemy present": {
+     "n": 446,
+     "share_of_present_turns": 0.16494082840236687,
+     "p": {
+      "Safe": 0.0016898025322329864,
+      "Yield": 0.005893603968113634,
+      "Trade": 0.4694085715345888,
+      "Hold": 0.5229999651710775,
+      "Recall": 8.056793987095383e-06
+     }
+    },
+    "Freeze legal": {
+     "n": 0,
+     "share_of_present_turns": 0.0,
+     "p": {
+      "F": NaN,
+      "SH": NaN
+     }
+    },
+    "siege objective legal": {
+     "n": 0,
+     "share_of_present_turns": 0.0,
+     "p": {
+      "Pressure": NaN,
+      "Vision": NaN
+     }
+    },
+    "enemy champion away (punish window)": {
+     "n": 458,
+     "share_of_present_turns": 0.16937869822485208,
+     "p": {
+      "SH": 0.002265939020774351,
+      "Hold": 0.9540223306348757,
+      "Trade": 0.04140336257377581
+     }
+    },
+    "own front stacked (front HP > one wave)": {
+     "n": 0,
+     "share_of_present_turns": 0.0,
+     "p": {
+      "SH": NaN
+     }
+    },
+    "opponent P(Trade) >= 0.5": {
+     "n": 1397,
+     "share_of_present_turns": 0.5166420118343196,
+     "p": {
+      "Yield": 0.005918934184353546,
+      "Safe": 0.001962433995317601,
+      "Trade": 0.5187212629654547,
+      "Hold": 0.4733948680368132
+     }
+    },
+    "HP <= 2 and opponent P(Trade) >= 0.5": {
+     "n": 427,
+     "share_of_present_turns": 0.15791420118343194,
+     "p": {
+      "Yield": 0.0060537080024843015,
+      "Safe": 0.0017368791631664005,
+      "Trade": 0.447711161271914,
+      "Hold": 0.5444955959439928
+     }
+    },
+    "own wave past the lane (farm spot > 0)": {
+     "n": 0,
+     "share_of_present_turns": 0.0,
+     "p": {
+      "Hold": NaN,
+      "Trade": NaN
+     }
+    }
+   },
+   "entropy": 0.35897750185782396,
+   "deaths": 1.77
+  },
+  "m3b_s0|307200": {
+   "legality": {
+    "Hold": {
+     "legal_share": 1.0,
+     "n_legal": 2698,
+     "selected_share": 0.47516679021497404,
+     "p_when_legal": 0.4766272933286724,
+     "selected_when_legal": 0.47516679021497404
+    },
+    "Yield": {
+     "legal_share": 1.0,
+     "n_legal": 2698,
+     "selected_share": 0.005930318754633061,
+     "p_when_legal": 0.005156982288816961,
+     "selected_when_legal": 0.005930318754633061
+    },
+    "Trade": {
+     "legal_share": 1.0,
+     "n_legal": 2698,
+     "selected_share": 0.5185322461082283,
+     "p_when_legal": 0.5164604887805924,
+     "selected_when_legal": 0.5185322461082283
+    },
+    "Safe": {
+     "legal_share": 1.0,
+     "n_legal": 2698,
+     "selected_share": 0.00037064492216456633,
+     "p_when_legal": 0.0015951648882661456,
+     "selected_when_legal": 0.00037064492216456633
+    },
+    "Recall": {
+     "legal_share": 0.39140103780578206,
+     "n_legal": 1056,
+     "selected_share": 0.0,
+     "p_when_legal": 0.00040896854681219687,
+     "selected_when_legal": 0.0
+    },
+    "SP": {
+     "legal_share": 1.0,
+     "n_legal": 2698,
+     "selected_share": 0.9962935507783544,
+     "p_when_legal": 0.9958771234352928,
+     "selected_when_legal": 0.9962935507783544
+    },
+    "SH": {
+     "legal_share": 1.0,
+     "n_legal": 2698,
+     "selected_share": 0.0037064492216456633,
+     "p_when_legal": 0.004122876564707283,
+     "selected_when_legal": 0.0037064492216456633
+    },
+    "F": {
+     "legal_share": 0.0,
+     "n_legal": 0,
+     "selected_share": 0.0,
+     "p_when_legal": NaN,
+     "selected_when_legal": NaN
+    },
+    "Pressure": {
+     "legal_share": 0.0,
+     "n_legal": 0,
+     "selected_share": 0.0,
+     "p_when_legal": NaN,
+     "selected_when_legal": NaN
+    },
+    "Vision": {
+     "legal_share": 0.0,
+     "n_legal": 0,
+     "selected_share": 0.0,
+     "p_when_legal": NaN,
+     "selected_when_legal": NaN
+    }
+   },
+   "opportunities": {
+    "recall legal and HP <= 2": {
+     "n": 53,
+     "share_of_present_turns": 0.019644180874722018,
+     "p": {
+      "Recall": 0.00024778302790273997
+     }
+    },
+    "recall legal and HP <= 3": {
+     "n": 125,
+     "share_of_present_turns": 0.046330615270570794,
+     "p": {
+      "Recall": 0.00020627993321217276
+     }
+    },
+    "HP <= 2 at or past the lane (Recall illegal)": {
+     "n": 481,
+     "share_of_present_turns": 0.17828020756115642,
+     "p": {
+      "Safe": 0.001644841479909562,
+      "Yield": 0.006003390023690159,
+      "Trade": 0.3622662417397041,
+      "Hold": 0.6300855267566962
+     }
+    },
+    "HP <= 2, enemy present": {
+     "n": 437,
+     "share_of_present_turns": 0.1619718309859155,
+     "p": {
+      "Safe": 0.001684279638945261,
+      "Yield": 0.006072581338528641,
+      "Trade": 0.46716356210990373,
+      "Hold": 0.5250662753685646,
+      "Recall": 1.3301544057587307e-05
+     }
+    },
+    "Freeze legal": {
+     "n": 0,
+     "share_of_present_turns": 0.0,
+     "p": {
+      "F": NaN,
+      "SH": NaN
+     }
+    },
+    "siege objective legal": {
+     "n": 0,
+     "share_of_present_turns": 0.0,
+     "p": {
+      "Pressure": NaN,
+      "Vision": NaN
+     }
+    },
+    "enemy champion away (punish window)": {
+     "n": 456,
+     "share_of_present_turns": 0.16901408450704225,
+     "p": {
+      "SH": 0.002627110343561722,
+      "Hold": 0.9426763127233854,
+      "Trade": 0.052117241638718705
+     }
+    },
+    "own front stacked (front HP > one wave)": {
+     "n": 0,
+     "share_of_present_turns": 0.0,
+     "p": {
+      "SH": NaN
+     }
+    },
+    "opponent P(Trade) >= 0.5": {
+     "n": 1329,
+     "share_of_present_turns": 0.49258710155670865,
+     "p": {
+      "Yield": 0.0060588041861433135,
+      "Safe": 0.001957945469936266,
+      "Trade": 0.4996037689835504,
+      "Hold": 0.49237305791519836
+     }
+    },
+    "HP <= 2 and opponent P(Trade) >= 0.5": {
+     "n": 410,
+     "share_of_present_turns": 0.15196441808747221,
+     "p": {
+      "Yield": 0.006305982712758184,
+      "Safe": 0.0017521095380872464,
+      "Trade": 0.43543957702297487,
+      "Hold": 0.5564974880119958
+     }
+    },
+    "own wave past the lane (farm spot > 0)": {
+     "n": 0,
+     "share_of_present_turns": 0.0,
+     "p": {
+      "Hold": NaN,
+      "Trade": NaN
+     }
+    }
+   },
+   "entropy": 0.3568481713740951,
+   "deaths": 1.8
+  },
+  "sp100_s0|25600": {
+   "legality": {
+    "Hold": {
+     "legal_share": 1.0,
+     "n_legal": 2700,
+     "selected_share": 0.40703703703703703,
+     "p_when_legal": 0.4072204221603451,
+     "selected_when_legal": 0.40703703703703703
+    },
+    "Yield": {
+     "legal_share": 1.0,
+     "n_legal": 2700,
+     "selected_share": 0.021111111111111112,
+     "p_when_legal": 0.01802365241925219,
+     "selected_when_legal": 0.021111111111111112
+    },
+    "Trade": {
+     "legal_share": 1.0,
+     "n_legal": 2700,
+     "selected_share": 0.5548148148148148,
+     "p_when_legal": 0.5577040363259229,
+     "selected_when_legal": 0.5548148148148148
+    },
+    "Safe": {
+     "legal_share": 1.0,
+     "n_legal": 2700,
+     "selected_share": 0.016666666666666666,
+     "p_when_legal": 0.016357657228900476,
+     "selected_when_legal": 0.016666666666666666
+    },
+    "Recall": {
+     "legal_share": 0.34629629629629627,
+     "n_legal": 935,
+     "selected_share": 0.00037037037037037035,
+     "p_when_legal": 0.0020047337294805735,
+     "selected_when_legal": 0.0010695187165775401
+    },
+    "SP": {
+     "legal_share": 1.0,
+     "n_legal": 2700,
+     "selected_share": 0.9637037037037037,
+     "p_when_legal": 0.9652809558193547,
+     "selected_when_legal": 0.9637037037037037
+    },
+    "SH": {
+     "legal_share": 1.0,
+     "n_legal": 2700,
+     "selected_share": 0.035925925925925924,
+     "p_when_legal": 0.032702447047179756,
+     "selected_when_legal": 0.035925925925925924
+    },
+    "F": {
+     "legal_share": 0.012962962962962963,
+     "n_legal": 35,
+     "selected_share": 0.00037037037037037035,
+     "p_when_legal": 0.15556606458162925,
+     "selected_when_legal": 0.02857142857142857
+    },
+    "Pressure": {
+     "legal_share": 0.0,
+     "n_legal": 0,
+     "selected_share": 0.0,
+     "p_when_legal": NaN,
+     "selected_when_legal": NaN
+    },
+    "Vision": {
+     "legal_share": 0.0,
+     "n_legal": 0,
+     "selected_share": 0.0,
+     "p_when_legal": NaN,
+     "selected_when_legal": NaN
+    }
+   },
+   "opportunities": {
+    "recall legal and HP <= 2": {
+     "n": 119,
+     "share_of_present_turns": 0.04407407407407407,
+     "p": {
+      "Recall": 0.002378494130599175
+     }
+    },
+    "recall legal and HP <= 3": {
+     "n": 197,
+     "share_of_present_turns": 0.07296296296296297,
+     "p": {
+      "Recall": 0.0023148889391590806
+     }
+    },
+    "HP <= 2 at or past the lane (Recall illegal)": {
+     "n": 540,
+     "share_of_present_turns": 0.2,
+     "p": {
+      "Safe": 0.018075666870499385,
+      "Yield": 0.01966058677780791,
+      "Trade": 0.5326611461856546,
+      "Hold": 0.4296026001660382
+     }
+    },
+    "HP <= 2, enemy present": {
+     "n": 548,
+     "share_of_present_turns": 0.20296296296296296,
+     "p": {
+      "Safe": 0.01778733116054459,
+      "Yield": 0.019434730157009902,
+      "Trade": 0.5384403924670432,
+      "Hold": 0.4239701661332973,
+      "Recall": 0.0003673800821050482
+     }
+    },
+    "Freeze legal": {
+     "n": 35,
+     "share_of_present_turns": 0.012962962962962963,
+     "p": {
+      "F": 0.15556606458162925,
+      "SH": 0.03181755387469426
+     }
+    },
+    "siege objective legal": {
+     "n": 0,
+     "share_of_present_turns": 0.0,
+     "p": {
+      "Pressure": NaN,
+      "Vision": NaN
+     }
+    },
+    "enemy champion away (punish window)": {
+     "n": 420,
+     "share_of_present_turns": 0.15555555555555556,
+     "p": {
+      "SH": 0.036813893967365716,
+      "Hold": 0.3900223745726956,
+      "Trade": 0.5702507292235012
+     }
+    },
+    "own front stacked (front HP > one wave)": {
+     "n": 23,
+     "share_of_present_turns": 0.008518518518518519,
+     "p": {
+      "SH": 0.03966300747322945
+     }
+    },
+    "opponent P(Trade) >= 0.5": {
+     "n": 1960,
+     "share_of_present_turns": 0.725925925925926,
+     "p": {
+      "Yield": 0.01725121383779713,
+      "Safe": 0.01583525313068483,
+      "Trade": 0.5475504908335361,
+      "Hold": 0.4189179860044793
+     }
+    },
+    "HP <= 2 and opponent P(Trade) >= 0.5": {
+     "n": 537,
+     "share_of_present_turns": 0.1988888888888889,
+     "p": {
+      "Yield": 0.019169321542031832,
+      "Safe": 0.017661491417443387,
+      "Trade": 0.5374279021415028,
+      "Hold": 0.4254226101554521
+     }
+    },
+    "own wave past the lane (farm spot > 0)": {
+     "n": 39,
+     "share_of_present_turns": 0.014444444444444444,
+     "p": {
+      "Hold": 0.47442311765787804,
+      "Trade": 0.4857922351829812
+     }
+    }
+   },
+   "entropy": 0.9508756991343577,
+   "deaths": 1.75
+  },
+  "sp100_s0|51200": {
+   "legality": {
+    "Hold": {
+     "legal_share": 1.0,
+     "n_legal": 2820,
+     "selected_share": 0.5989361702127659,
+     "p_when_legal": 0.5914679985114977,
+     "selected_when_legal": 0.5989361702127659
+    },
+    "Yield": {
+     "legal_share": 1.0,
+     "n_legal": 2820,
+     "selected_share": 0.003900709219858156,
+     "p_when_legal": 0.004743863684336758,
+     "selected_when_legal": 0.003900709219858156
+    },
+    "Trade": {
+     "legal_share": 1.0,
+     "n_legal": 2820,
+     "selected_share": 0.39609929078014183,
+     "p_when_legal": 0.4007172784944541,
+     "selected_when_legal": 0.39609929078014183
+    },
+    "Safe": {
+     "legal_share": 1.0,
+     "n_legal": 2820,
+     "selected_share": 0.0010638297872340426,
+     "p_when_legal": 0.00293918301537418,
+     "selected_when_legal": 0.0010638297872340426
+    },
+    "Recall": {
+     "legal_share": 0.18936170212765957,
+     "n_legal": 534,
+     "selected_share": 0.0,
+     "p_when_legal": 0.000695369194815599,
+     "selected_when_legal": 0.0
+    },
+    "SP": {
+     "legal_share": 1.0,
+     "n_legal": 2820,
+     "selected_share": 0.9943262411347518,
+     "p_when_legal": 0.9932379027613595,
+     "selected_when_legal": 0.9943262411347518
+    },
+    "SH": {
+     "legal_share": 1.0,
+     "n_legal": 2820,
+     "selected_share": 0.005673758865248227,
+     "p_when_legal": 0.006762097238640564,
+     "selected_when_legal": 0.005673758865248227
+    },
+    "F": {
+     "legal_share": 0.0,
+     "n_legal": 0,
+     "selected_share": 0.0,
+     "p_when_legal": NaN,
+     "selected_when_legal": NaN
+    },
+    "Pressure": {
+     "legal_share": 0.0,
+     "n_legal": 0,
+     "selected_share": 0.0,
+     "p_when_legal": NaN,
+     "selected_when_legal": NaN
+    },
+    "Vision": {
+     "legal_share": 0.0,
+     "n_legal": 0,
+     "selected_share": 0.0,
+     "p_when_legal": NaN,
+     "selected_when_legal": NaN
+    }
+   },
+   "opportunities": {
+    "recall legal and HP <= 2": {
+     "n": 33,
+     "share_of_present_turns": 0.011702127659574468,
+     "p": {
+      "Recall": 0.0008628661045820841
+     }
+    },
+    "recall legal and HP <= 3": {
+     "n": 66,
+     "share_of_present_turns": 0.023404255319148935,
+     "p": {
+      "Recall": 0.0008216404984128037
+     }
+    },
+    "HP <= 2 at or past the lane (Recall illegal)": {
+     "n": 626,
+     "share_of_present_turns": 0.22198581560283687,
+     "p": {
+      "Safe": 0.003031881577861917,
+      "Yield": 0.004955061197636633,
+      "Trade": 0.35533484792450254,
+      "Hold": 0.636678209299999
+     }
+    },
+    "HP <= 2, enemy present": {
+     "n": 543,
+     "share_of_present_turns": 0.1925531914893617,
+     "p": {
+      "Safe": 0.003033314165912363,
+      "Yield": 0.004919483940854628,
+      "Trade": 0.36673793837785823,
+      "Hold": 0.6252658337504725,
+      "Recall": 4.34297649021962e-05
+     }
+    },
+    "Freeze legal": {
+     "n": 0,
+     "share_of_present_turns": 0.0,
+     "p": {
+      "F": NaN,
+      "SH": NaN
+     }
+    },
+    "siege objective legal": {
+     "n": 0,
+     "share_of_present_turns": 0.0,
+     "p": {
+      "Pressure": NaN,
+      "Vision": NaN
+     }
+    },
+    "enemy champion away (punish window)": {
+     "n": 356,
+     "share_of_present_turns": 0.12624113475177304,
+     "p": {
+      "SH": 0.007016464548735527,
+      "Hold": 0.6267212421360678,
+      "Trade": 0.36519910884288004
+     }
+    },
+    "own front stacked (front HP > one wave)": {
+     "n": 0,
+     "share_of_present_turns": 0.0,
+     "p": {
+      "SH": NaN
+     }
+    },
+    "opponent P(Trade) >= 0.5": {
+     "n": 520,
+     "share_of_present_turns": 0.18439716312056736,
+     "p": {
+      "Yield": 0.004713053374167575,
+      "Safe": 0.0028529916951042064,
+      "Trade": 0.3175091914593088,
+      "Hold": 0.6749238012924027
+     }
+    },
+    "HP <= 2 and opponent P(Trade) >= 0.5": {
+     "n": 384,
+     "share_of_present_turns": 0.13617021276595745,
+     "p": {
+      "Yield": 0.004921949348698317,
+      "Safe": 0.0030143135820934253,
+      "Trade": 0.34450154263513477,
+      "Hold": 0.6475608914833217
+     }
+    },
+    "own wave past the lane (farm spot > 0)": {
+     "n": 0,
+     "share_of_present_turns": 0.0,
+     "p": {
+      "Hold": NaN,
+      "Trade": NaN
+     }
+    }
+   },
+   "entropy": 0.7284835540359879,
+   "deaths": 1.4
+  },
+  "sp100_s0|76800": {
+   "legality": {
+    "Hold": {
+     "legal_share": 1.0,
+     "n_legal": 2771,
+     "selected_share": 0.5272464814146518,
+     "p_when_legal": 0.5196008907294684,
+     "selected_when_legal": 0.5272464814146518
+    },
+    "Yield": {
+     "legal_share": 1.0,
+     "n_legal": 2771,
+     "selected_share": 0.015878744135691087,
+     "p_when_legal": 0.018636863900415333,
+     "selected_when_legal": 0.015878744135691087
+    },
+    "Trade": {
+     "legal_share": 1.0,
+     "n_legal": 2771,
+     "selected_share": 0.4543486106098881,
+     "p_when_legal": 0.4576188417200963,
+     "selected_when_legal": 0.4543486106098881
+    },
+    "Safe": {
+     "legal_share": 1.0,
+     "n_legal": 2771,
+     "selected_share": 0.0025261638397690365,
+     "p_when_legal": 0.003913318140719792,
+     "selected_when_legal": 0.0025261638397690365
+    },
+    "Recall": {
+     "legal_share": 0.277878022374594,
+     "n_legal": 770,
+     "selected_share": 0.0,
+     "p_when_legal": 0.0008280090211312059,
+     "selected_when_legal": 0.0
+    },
+    "SP": {
+     "legal_share": 1.0,
+     "n_legal": 2771,
+     "selected_share": 0.9909779862865391,
+     "p_when_legal": 0.990351163922964,
+     "selected_when_legal": 0.9909779862865391
+    },
+    "SH": {
+     "legal_share": 1.0,
+     "n_legal": 2771,
+     "selected_share": 0.009022013713460845,
+     "p_when_legal": 0.009648836077035953,
+     "selected_when_legal": 0.009022013713460845
+    },
+    "F": {
+     "legal_share": 0.0,
+     "n_legal": 0,
+     "selected_share": 0.0,
+     "p_when_legal": NaN,
+     "selected_when_legal": NaN
+    },
+    "Pressure": {
+     "legal_share": 0.0,
+     "n_legal": 0,
+     "selected_share": 0.0,
+     "p_when_legal": NaN,
+     "selected_when_legal": NaN
+    },
+    "Vision": {
+     "legal_share": 0.0,
+     "n_legal": 0,
+     "selected_share": 0.0,
+     "p_when_legal": NaN,
+     "selected_when_legal": NaN
+    }
+   },
+   "opportunities": {
+    "recall legal and HP <= 2": {
+     "n": 42,
+     "share_of_present_turns": 0.015156983038614218,
+     "p": {
+      "Recall": 0.0007510164882951081
+     }
+    },
+    "recall legal and HP <= 3": {
+     "n": 97,
+     "share_of_present_turns": 0.03500541320822808,
+     "p": {
+      "Recall": 0.0007777370489561886
+     }
+    },
+    "HP <= 2 at or past the lane (Recall illegal)": {
+     "n": 502,
+     "share_of_present_turns": 0.18116203536629374,
+     "p": {
+      "Safe": 0.003873208604679806,
+      "Yield": 0.019482349744996047,
+      "Trade": 0.3749905380366368,
+      "Hold": 0.6016539036136873
+     }
+    },
+    "HP <= 2, enemy present": {
+     "n": 466,
+     "share_of_present_turns": 0.16817033561891015,
+     "p": {
+      "Safe": 0.0038860031481376617,
+      "Yield": 0.01907548268246267,
+      "Trade": 0.4104258025814735,
+      "Hold": 0.5665538278089325,
+      "Recall": 5.8883778993720975e-05
+     }
+    },
+    "Freeze legal": {
+     "n": 0,
+     "share_of_present_turns": 0.0,
+     "p": {
+      "F": NaN,
+      "SH": NaN
+     }
+    },
+    "siege objective legal": {
+     "n": 0,
+     "share_of_present_turns": 0.0,
+     "p": {
+      "Pressure": NaN,
+      "Vision": NaN
+     }
+    },
+    "enemy champion away (punish window)": {
+     "n": 393,
+     "share_of_present_turns": 0.1418260555756045,
+     "p": {
+      "SH": 0.008728755049131983,
+      "Hold": 0.6298931705567754,
+      "Trade": 0.3475418399868258
+     }
+    },
+    "own front stacked (front HP > one wave)": {
+     "n": 6,
+     "share_of_present_turns": 0.0021652832912306026,
+     "p": {
+      "SH": 0.007195987295065976
+     }
+    },
+    "opponent P(Trade) >= 0.5": {
+     "n": 1128,
+     "share_of_present_turns": 0.4070732587513533,
+     "p": {
+      "Yield": 0.018535695195760534,
+      "Safe": 0.0036722204035148764,
+      "Trade": 0.38071864025709634,
+      "Hold": 0.5970594759656374
+     }
+    },
+    "HP <= 2 and opponent P(Trade) >= 0.5": {
+     "n": 441,
+     "share_of_present_turns": 0.1591483219054493,
+     "p": {
+      "Yield": 0.019216975014823234,
+      "Safe": 0.0038921883140514853,
+      "Trade": 0.3971772502725434,
+      "Hold": 0.5796960044118642
+     }
+    },
+    "own wave past the lane (farm spot > 0)": {
+     "n": 0,
+     "share_of_present_turns": 0.0,
+     "p": {
+      "Hold": NaN,
+      "Trade": NaN
+     }
+    }
+   },
+   "entropy": 0.7585027824159556,
+   "deaths": 1.53
+  },
+  "sp100_s0|102400": {
+   "legality": {
+    "Hold": {
+     "legal_share": 1.0,
+     "n_legal": 2689,
+     "selected_share": 0.4615098549646709,
+     "p_when_legal": 0.46527510622863266,
+     "selected_when_legal": 0.4615098549646709
+    },
+    "Yield": {
+     "legal_share": 1.0,
+     "n_legal": 2689,
+     "selected_share": 0.003718854592785422,
+     "p_when_legal": 0.0033925224034396773,
+     "selected_when_legal": 0.003718854592785422
+    },
+    "Trade": {
+     "legal_share": 1.0,
+     "n_legal": 2689,
+     "selected_share": 0.5343994049832651,
+     "p_when_legal": 0.5298361377601029,
+     "selected_when_legal": 0.5343994049832651
+    },
+    "Safe": {
+     "legal_share": 1.0,
+     "n_legal": 2689,
+     "selected_share": 0.0003718854592785422,
+     "p_when_legal": 0.0012961542252959738,
+     "selected_when_legal": 0.0003718854592785422
+    },
+    "Recall": {
+     "legal_share": 0.32242469319449607,
+     "n_legal": 867,
+     "selected_share": 0.0,
+     "p_when_legal": 0.0006205460895269642,
+     "selected_when_legal": 0.0
+    },
+    "SP": {
+     "legal_share": 1.0,
+     "n_legal": 2689,
+     "selected_share": 0.9962811454072146,
+     "p_when_legal": 0.9938168513484548,
+     "selected_when_legal": 0.9962811454072146
+    },
+    "SH": {
+     "legal_share": 1.0,
+     "n_legal": 2689,
+     "selected_share": 0.003718854592785422,
+     "p_when_legal": 0.006183148651545265,
+     "selected_when_legal": 0.003718854592785422
+    },
+    "F": {
+     "legal_share": 0.0,
+     "n_legal": 0,
+     "selected_share": 0.0,
+     "p_when_legal": NaN,
+     "selected_when_legal": NaN
+    },
+    "Pressure": {
+     "legal_share": 0.0,
+     "n_legal": 0,
+     "selected_share": 0.0,
+     "p_when_legal": NaN,
+     "selected_when_legal": NaN
+    },
+    "Vision": {
+     "legal_share": 0.0,
+     "n_legal": 0,
+     "selected_share": 0.0,
+     "p_when_legal": NaN,
+     "selected_when_legal": NaN
+    }
+   },
+   "opportunities": {
+    "recall legal and HP <= 2": {
+     "n": 30,
+     "share_of_present_turns": 0.011156563778356266,
+     "p": {
+      "Recall": 0.0005577147046003013
+     }
+    },
+    "recall legal and HP <= 3": {
+     "n": 64,
+     "share_of_present_turns": 0.0238006693938267,
+     "p": {
+      "Recall": 0.00054675290657803
+     }
+    },
+    "HP <= 2 at or past the lane (Recall illegal)": {
+     "n": 511,
+     "share_of_present_turns": 0.19003346969133506,
+     "p": {
+      "Safe": 0.001231709453300502,
+      "Yield": 0.0033261723595419054,
+      "Trade": 0.4281632426003838,
+      "Hold": 0.5672788755867738
+     }
+    },
+    "HP <= 2, enemy present": {
+     "n": 464,
+     "share_of_present_turns": 0.17255485310524357,
+     "p": {
+      "Safe": 0.0012149903579402436,
+      "Yield": 0.003212422218430402,
+      "Trade": 0.46837029346180514,
+      "Hold": 0.527176879580866,
+      "Recall": 2.541438095827968e-05
+     }
+    },
+    "Freeze legal": {
+     "n": 0,
+     "share_of_present_turns": 0.0,
+     "p": {
+      "F": NaN,
+      "SH": NaN
+     }
+    },
+    "siege objective legal": {
+     "n": 0,
+     "share_of_present_turns": 0.0,
+     "p": {
+      "Pressure": NaN,
+      "Vision": NaN
+     }
+    },
+    "enemy champion away (punish window)": {
+     "n": 441,
+     "share_of_present_turns": 0.1640014875418371,
+     "p": {
+      "SH": 0.0063367815639705964,
+      "Hold": 0.6358697855588888,
+      "Trade": 0.35920308366163406
+     }
+    },
+    "own front stacked (front HP > one wave)": {
+     "n": 0,
+     "share_of_present_turns": 0.0,
+     "p": {
+      "SH": NaN
+     }
+    },
+    "opponent P(Trade) >= 0.5": {
+     "n": 1406,
+     "share_of_present_turns": 0.5228709557456304,
+     "p": {
+      "Yield": 0.0033548615276734694,
+      "Safe": 0.001281747294644765,
+      "Trade": 0.48474474778928783,
+      "Hold": 0.5106063200267257
+     }
+    },
+    "HP <= 2 and opponent P(Trade) >= 0.5": {
+     "n": 461,
+     "share_of_present_turns": 0.17143919672740796,
+     "p": {
+      "Yield": 0.0032178352958185516,
+      "Safe": 0.0012163797779122072,
+      "Trade": 0.46600464349736975,
+      "Hold": 0.5295384026065272
+     }
+    },
+    "own wave past the lane (farm spot > 0)": {
+     "n": 0,
+     "share_of_present_turns": 0.0,
+     "p": {
+      "Hold": NaN,
+      "Trade": NaN
+     }
+    }
+   },
+   "entropy": 0.5788220198483487,
+   "deaths": 1.79
+  },
+  "sp100_s0|128000": {
+   "legality": {
+    "Hold": {
+     "legal_share": 1.0,
+     "n_legal": 2735,
+     "selected_share": 0.5078610603290676,
+     "p_when_legal": 0.5039646265098412,
+     "selected_when_legal": 0.5078610603290676
+    },
+    "Yield": {
+     "legal_share": 1.0,
+     "n_legal": 2735,
+     "selected_share": 0.0018281535648994515,
+     "p_when_legal": 0.0021434539119142195,
+     "selected_when_legal": 0.0018281535648994515
+    },
+    "Trade": {
+     "legal_share": 1.0,
+     "n_legal": 2735,
+     "selected_share": 0.4903107861060329,
+     "p_when_legal": 0.49302725854009455,
+     "selected_when_legal": 0.4903107861060329
+    },
+    "Safe": {
+     "legal_share": 1.0,
+     "n_legal": 2735,
+     "selected_share": 0.0,
+     "p_when_legal": 0.0007650566060223698,
+     "selected_when_legal": 0.0
+    },
+    "Recall": {
+     "legal_share": 0.33345521023765995,
+     "n_legal": 912,
+     "selected_share": 0.0,
+     "p_when_legal": 0.00029870408099680893,
+     "selected_when_legal": 0.0
+    },
+    "SP": {
+     "legal_share": 1.0,
+     "n_legal": 2735,
+     "selected_share": 0.9981718464351006,
+     "p_when_legal": 0.9967550176735325,
+     "selected_when_legal": 0.9981718464351006
+    },
+    "SH": {
+     "legal_share": 1.0,
+     "n_legal": 2735,
+     "selected_share": 0.0018281535648994515,
+     "p_when_legal": 0.003244982326467512,
+     "selected_when_legal": 0.0018281535648994515
+    },
+    "F": {
+     "legal_share": 0.0,
+     "n_legal": 0,
+     "selected_share": 0.0,
+     "p_when_legal": NaN,
+     "selected_when_legal": NaN
+    },
+    "Pressure": {
+     "legal_share": 0.0,
+     "n_legal": 0,
+     "selected_share": 0.0,
+     "p_when_legal": NaN,
+     "selected_when_legal": NaN
+    },
+    "Vision": {
+     "legal_share": 0.0,
+     "n_legal": 0,
+     "selected_share": 0.0,
+     "p_when_legal": NaN,
+     "selected_when_legal": NaN
+    }
+   },
+   "opportunities": {
+    "recall legal and HP <= 2": {
+     "n": 25,
+     "share_of_present_turns": 0.009140767824497258,
+     "p": {
+      "Recall": 0.0003150011038322838
+     }
+    },
+    "recall legal and HP <= 3": {
+     "n": 65,
+     "share_of_present_turns": 0.02376599634369287,
+     "p": {
+      "Recall": 0.0002789227306237983
+     }
+    },
+    "HP <= 2 at or past the lane (Recall illegal)": {
+     "n": 502,
+     "share_of_present_turns": 0.18354661791590493,
+     "p": {
+      "Safe": 0.0006850161256441332,
+      "Yield": 0.002050689696276138,
+      "Trade": 0.32909239600930873,
+      "Hold": 0.668171898168771
+     }
+    },
+    "HP <= 2, enemy present": {
+     "n": 434,
+     "share_of_present_turns": 0.15868372943327239,
+     "p": {
+      "Safe": 0.0007068989315394483,
+      "Yield": 0.0020782145389163483,
+      "Trade": 0.39613332290940373,
+      "Hold": 0.601071079103958,
+      "Recall": 1.0484516182441593e-05
+     }
+    },
+    "Freeze legal": {
+     "n": 0,
+     "share_of_present_turns": 0.0,
+     "p": {
+      "F": NaN,
+      "SH": NaN
+     }
+    },
+    "siege objective legal": {
+     "n": 0,
+     "share_of_present_turns": 0.0,
+     "p": {
+      "Pressure": NaN,
+      "Vision": NaN
+     }
+    },
+    "enemy champion away (punish window)": {
+     "n": 451,
+     "share_of_present_turns": 0.16489945155393054,
+     "p": {
+      "SH": 0.002808663468357663,
+      "Hold": 0.7406610779484848,
+      "Trade": 0.256802478848804
+     }
+    },
+    "own front stacked (front HP > one wave)": {
+     "n": 0,
+     "share_of_present_turns": 0.0,
+     "p": {
+      "SH": NaN
+     }
+    },
+    "opponent P(Trade) >= 0.5": {
+     "n": 1252,
+     "share_of_present_turns": 0.45776965265082264,
+     "p": {
+      "Yield": 0.0022291051798702223,
+      "Safe": 0.0007744206189729242,
+      "Trade": 0.4143095894672975,
+      "Hold": 0.5826819615544623
+     }
+    },
+    "HP <= 2 and opponent P(Trade) >= 0.5": {
+     "n": 431,
+     "share_of_present_turns": 0.15758683729433273,
+     "p": {
+      "Yield": 0.0020789451890030853,
+      "Safe": 0.0007055402269147019,
+      "Trade": 0.39234464567564553,
+      "Hold": 0.6048630567290022
+     }
+    },
+    "own wave past the lane (farm spot > 0)": {
+     "n": 0,
+     "share_of_present_turns": 0.0,
+     "p": {
+      "Hold": NaN,
+      "Trade": NaN
+     }
+    }
+   },
+   "entropy": 0.45814072453729077,
+   "deaths": 1.72
+  },
+  "sp100_s0|153600": {
+   "legality": {
+    "Hold": {
+     "legal_share": 1.0,
+     "n_legal": 2860,
+     "selected_share": 0.7143356643356643,
+     "p_when_legal": 0.7195360500622355,
+     "selected_when_legal": 0.7143356643356643
+    },
+    "Yield": {
+     "legal_share": 1.0,
+     "n_legal": 2860,
+     "selected_share": 0.001048951048951049,
+     "p_when_legal": 0.001615575183272362,
+     "selected_when_legal": 0.001048951048951049
+    },
+    "Trade": {
+     "legal_share": 1.0,
+     "n_legal": 2860,
+     "selected_share": 0.2846153846153846,
+     "p_when_legal": 0.2783406970088884,
+     "selected_when_legal": 0.2846153846153846
+    },
+    "Safe": {
+     "legal_share": 1.0,
+     "n_legal": 2860,
+     "selected_share": 0.0,
+     "p_when_legal": 0.0004698675913740026,
+     "selected_when_legal": 0.0
+    },
+    "Recall": {
+     "legal_share": 0.19545454545454546,
+     "n_legal": 559,
+     "selected_share": 0.0,
+     "p_when_legal": 0.00019344730070984027,
+     "selected_when_legal": 0.0
+    },
+    "SP": {
+     "legal_share": 1.0,
+     "n_legal": 2860,
+     "selected_share": 0.9982517482517482,
+     "p_when_legal": 0.9978089582177483,
+     "selected_when_legal": 0.9982517482517482
+    },
+    "SH": {
+     "legal_share": 1.0,
+     "n_legal": 2860,
+     "selected_share": 0.0017482517482517483,
+     "p_when_legal": 0.0021910417822518153,
+     "selected_when_legal": 0.0017482517482517483
+    },
+    "F": {
+     "legal_share": 0.0,
+     "n_legal": 0,
+     "selected_share": 0.0,
+     "p_when_legal": NaN,
+     "selected_when_legal": NaN
+    },
+    "Pressure": {
+     "legal_share": 0.0,
+     "n_legal": 0,
+     "selected_share": 0.0,
+     "p_when_legal": NaN,
+     "selected_when_legal": NaN
+    },
+    "Vision": {
+     "legal_share": 0.0,
+     "n_legal": 0,
+     "selected_share": 0.0,
+     "p_when_legal": NaN,
+     "selected_when_legal": NaN
+    }
+   },
+   "opportunities": {
+    "recall legal and HP <= 2": {
+     "n": 6,
+     "share_of_present_turns": 0.002097902097902098,
+     "p": {
+      "Recall": 0.00023369750589255216
+     }
+    },
+    "recall legal and HP <= 3": {
+     "n": 16,
+     "share_of_present_turns": 0.005594405594405594,
+     "p": {
+      "Recall": 0.0002135581752381343
+     }
+    },
+    "HP <= 2 at or past the lane (Recall illegal)": {
+     "n": 420,
+     "share_of_present_turns": 0.14685314685314685,
+     "p": {
+      "Safe": 0.00039909782801560417,
+      "Yield": 0.0014391942651912966,
+      "Trade": 0.17811392207113125,
+      "Hold": 0.8200477858356618
+     }
+    },
+    "HP <= 2, enemy present": {
+     "n": 397,
+     "share_of_present_turns": 0.1388111888111888,
+     "p": {
+      "Safe": 0.00041136111282306345,
+      "Yield": 0.0014814358416671899,
+      "Trade": 0.1951241447056358,
+      "Hold": 0.802980766704979,
+      "Recall": 2.29163489498833e-06
+     }
+    },
+    "Freeze legal": {
+     "n": 0,
+     "share_of_present_turns": 0.0,
+     "p": {
+      "F": NaN,
+      "SH": NaN
+     }
+    },
+    "siege objective legal": {
+     "n": 0,
+     "share_of_present_turns": 0.0,
+     "p": {
+      "Pressure": NaN,
+      "Vision": NaN
+     }
+    },
+    "enemy champion away (punish window)": {
+     "n": 324,
+     "share_of_present_turns": 0.11328671328671329,
+     "p": {
+      "SH": 0.0013042306689213647,
+      "Hold": 0.9270203509789173,
+      "Trade": 0.07172421651918913
+     }
+    },
+    "own front stacked (front HP > one wave)": {
+     "n": 0,
+     "share_of_present_turns": 0.0,
+     "p": {
+      "SH": NaN
+     }
+    },
+    "opponent P(Trade) >= 0.5": {
+     "n": 658,
+     "share_of_present_turns": 0.23006993006993007,
+     "p": {
+      "Yield": 0.0013577646196223092,
+      "Safe": 0.00037992567798146484,
+      "Trade": 0.15670737348091798,
+      "Hold": 0.8415549362214783
+     }
+    },
+    "HP <= 2 and opponent P(Trade) >= 0.5": {
+     "n": 347,
+     "share_of_present_turns": 0.12132867132867133,
+     "p": {
+      "Yield": 0.0015243316287450687,
+      "Safe": 0.000427068671333731,
+      "Trade": 0.18726886161167666,
+      "Hold": 0.8107797380882444
+     }
+    },
+    "own wave past the lane (farm spot > 0)": {
+     "n": 0,
+     "share_of_present_turns": 0.0,
+     "p": {
+      "Hold": NaN,
+      "Trade": NaN
+     }
+    }
+   },
+   "entropy": 0.4101353477460695,
+   "deaths": 1.23
+  },
+  "sp100_s0|179200": {
+   "legality": {
+    "Hold": {
+     "legal_share": 1.0,
+     "n_legal": 2723,
+     "selected_share": 0.5027543150936468,
+     "p_when_legal": 0.5015731937669363,
+     "selected_when_legal": 0.5027543150936468
+    },
+    "Yield": {
+     "legal_share": 1.0,
+     "n_legal": 2723,
+     "selected_share": 0.004039662137348513,
+     "p_when_legal": 0.003078624074894588,
+     "selected_when_legal": 0.004039662137348513
+    },
+    "Trade": {
+     "legal_share": 1.0,
+     "n_legal": 2723,
+     "selected_share": 0.49320602276900477,
+     "p_when_legal": 0.494379779432582,
+     "selected_when_legal": 0.49320602276900477
+    },
+    "Safe": {
+     "legal_share": 1.0,
+     "n_legal": 2723,
+     "selected_share": 0.0,
+     "p_when_legal": 0.0008602221833218208,
+     "selected_when_legal": 0.0
+    },
+    "Recall": {
+     "legal_share": 0.3463092177745134,
+     "n_legal": 943,
+     "selected_share": 0.0,
+     "p_when_legal": 0.0003123813537522748,
+     "selected_when_legal": 0.0
+    },
+    "SP": {
+     "legal_share": 1.0,
+     "n_legal": 2723,
+     "selected_share": 0.9970620639001102,
+     "p_when_legal": 0.9967796482746906,
+     "selected_when_legal": 0.9970620639001102
+    },
+    "SH": {
+     "legal_share": 1.0,
+     "n_legal": 2723,
+     "selected_share": 0.0029379360998898272,
+     "p_when_legal": 0.0032203517253095158,
+     "selected_when_legal": 0.0029379360998898272
+    },
+    "F": {
+     "legal_share": 0.0,
+     "n_legal": 0,
+     "selected_share": 0.0,
+     "p_when_legal": NaN,
+     "selected_when_legal": NaN
+    },
+    "Pressure": {
+     "legal_share": 0.0,
+     "n_legal": 0,
+     "selected_share": 0.0,
+     "p_when_legal": NaN,
+     "selected_when_legal": NaN
+    },
+    "Vision": {
+     "legal_share": 0.0,
+     "n_legal": 0,
+     "selected_share": 0.0,
+     "p_when_legal": NaN,
+     "selected_when_legal": NaN
+    }
+   },
+   "opportunities": {
+    "recall legal and HP <= 2": {
+     "n": 25,
+     "share_of_present_turns": 0.00918105031215571,
+     "p": {
+      "Recall": 0.00032070516936151815
+     }
+    },
+    "recall legal and HP <= 3": {
+     "n": 62,
+     "share_of_present_turns": 0.022769004774146163,
+     "p": {
+      "Recall": 0.0002525761402742893
+     }
+    },
+    "HP <= 2 at or past the lane (Recall illegal)": {
+     "n": 446,
+     "share_of_present_turns": 0.16378993756885787,
+     "p": {
+      "Safe": 0.0007892654676844521,
+      "Yield": 0.00313916231254566,
+      "Trade": 0.28426779591884044,
+      "Hold": 0.7118037763009295
+     }
+    },
+    "HP <= 2, enemy present": {
+     "n": 402,
+     "share_of_present_turns": 0.14763128901946382,
+     "p": {
+      "Safe": 0.0008031658037532377,
+      "Yield": 0.0031550933752789133,
+      "Trade": 0.35054646441050896,
+      "Hold": 0.6454800328683394,
+      "Recall": 1.5243542119428765e-05
+     }
+    },
+    "Freeze legal": {
+     "n": 0,
+     "share_of_present_turns": 0.0,
+     "p": {
+      "F": NaN,
+      "SH": NaN
+     }
+    },
+    "siege objective legal": {
+     "n": 0,
+     "share_of_present_turns": 0.0,
+     "p": {
+      "Pressure": NaN,
+      "Vision": NaN
+     }
+    },
+    "enemy champion away (punish window)": {
+     "n": 461,
+     "share_of_present_turns": 0.1692985677561513,
+     "p": {
+      "SH": 0.0025825544730918837,
+      "Hold": 0.769616556887435,
+      "Trade": 0.22702558175451076
+     }
+    },
+    "own front stacked (front HP > one wave)": {
+     "n": 0,
+     "share_of_present_turns": 0.0,
+     "p": {
+      "SH": NaN
+     }
+    },
+    "opponent P(Trade) >= 0.5": {
+     "n": 1231,
+     "share_of_present_turns": 0.45207491737054717,
+     "p": {
+      "Yield": 0.0035416994435766916,
+      "Safe": 0.0009692651384209302,
+      "Trade": 0.4015371467880147,
+      "Hold": 0.5939448161787801
+     }
+    },
+    "HP <= 2 and opponent P(Trade) >= 0.5": {
+     "n": 393,
+     "share_of_present_turns": 0.14432611090708777,
+     "p": {
+      "Yield": 0.0031834482405060545,
+      "Safe": 0.0008105406837495061,
+      "Trade": 0.3398680387438787,
+      "Hold": 0.6561276929674731
+     }
+    },
+    "own wave past the lane (farm spot > 0)": {
+     "n": 0,
+     "share_of_present_turns": 0.0,
+     "p": {
+      "Hold": NaN,
+      "Trade": NaN
+     }
+    }
+   },
+   "entropy": 0.37894838924453356,
+   "deaths": 1.74
+  },
+  "sp100_s0|204800": {
+   "legality": {
+    "Hold": {
+     "legal_share": 1.0,
+     "n_legal": 2692,
+     "selected_share": 0.4387072808320951,
+     "p_when_legal": 0.4419709320450301,
+     "selected_when_legal": 0.4387072808320951
+    },
+    "Yield": {
+     "legal_share": 1.0,
+     "n_legal": 2692,
+     "selected_share": 0.002600297176820208,
+     "p_when_legal": 0.003328336456567142,
+     "selected_when_legal": 0.002600297176820208
+    },
+    "Trade": {
+     "legal_share": 1.0,
+     "n_legal": 2692,
+     "selected_share": 0.5586924219910847,
+     "p_when_legal": 0.5538400857948269,
+     "selected_when_legal": 0.5586924219910847
+    },
+    "Safe": {
+     "legal_share": 1.0,
+     "n_legal": 2692,
+     "selected_share": 0.0,
+     "p_when_legal": 0.0007231842084629944,
+     "selected_when_legal": 0.0
+    },
+    "Recall": {
+     "legal_share": 0.4075037147102526,
+     "n_legal": 1097,
+     "selected_share": 0.0,
+     "p_when_legal": 0.000337325747351142,
+     "selected_when_legal": 0.0
+    },
+    "SP": {
+     "legal_share": 1.0,
+     "n_legal": 2692,
+     "selected_share": 0.9962852897473997,
+     "p_when_legal": 0.9960458164501805,
+     "selected_when_legal": 0.9962852897473997
+    },
+    "SH": {
+     "legal_share": 1.0,
+     "n_legal": 2692,
+     "selected_share": 0.003714710252600297,
+     "p_when_legal": 0.003954183549819352,
+     "selected_when_legal": 0.003714710252600297
+    },
+    "F": {
+     "legal_share": 0.0,
+     "n_legal": 0,
+     "selected_share": 0.0,
+     "p_when_legal": NaN,
+     "selected_when_legal": NaN
+    },
+    "Pressure": {
+     "legal_share": 0.0,
+     "n_legal": 0,
+     "selected_share": 0.0,
+     "p_when_legal": NaN,
+     "selected_when_legal": NaN
+    },
+    "Vision": {
+     "legal_share": 0.0,
+     "n_legal": 0,
+     "selected_share": 0.0,
+     "p_when_legal": NaN,
+     "selected_when_legal": NaN
+    }
+   },
+   "opportunities": {
+    "recall legal and HP <= 2": {
+     "n": 42,
+     "share_of_present_turns": 0.015601783060921248,
+     "p": {
+      "Recall": 0.0002708581757907134
+     }
+    },
+    "recall legal and HP <= 3": {
+     "n": 104,
+     "share_of_present_turns": 0.03863298662704309,
+     "p": {
+      "Recall": 0.0002358258448959308
+     }
+    },
+    "HP <= 2 at or past the lane (Recall illegal)": {
+     "n": 445,
+     "share_of_present_turns": 0.16530460624071322,
+     "p": {
+      "Safe": 0.0007132402150108456,
+      "Yield": 0.0036973578261024886,
+      "Trade": 0.3331529372800379,
+      "Hold": 0.6624364646788489
+     }
+    },
+    "HP <= 2, enemy present": {
+     "n": 408,
+     "share_of_present_turns": 0.1515601783060921,
+     "p": {
+      "Safe": 0.000675245333804277,
+      "Yield": 0.003431399727913459,
+      "Trade": 0.42579435088148354,
+      "Hold": 0.570080247781325,
+      "Recall": 1.875627547369563e-05
+     }
+    },
+    "Freeze legal": {
+     "n": 0,
+     "share_of_present_turns": 0.0,
+     "p": {
+      "F": NaN,
+      "SH": NaN
+     }
+    },
+    "siege objective legal": {
+     "n": 0,
+     "share_of_present_turns": 0.0,
+     "p": {
+      "Pressure": NaN,
+      "Vision": NaN
+     }
+    },
+    "enemy champion away (punish window)": {
+     "n": 466,
+     "share_of_present_turns": 0.17310549777117384,
+     "p": {
+      "SH": 0.004170083662005478,
+      "Hold": 0.6699587061462368,
+      "Trade": 0.32560284836939807
+     }
+    },
+    "own front stacked (front HP > one wave)": {
+     "n": 0,
+     "share_of_present_turns": 0.0,
+     "p": {
+      "SH": NaN
+     }
+    },
+    "opponent P(Trade) >= 0.5": {
+     "n": 1333,
+     "share_of_present_turns": 0.49517087667161963,
+     "p": {
+      "Yield": 0.0036741464082627844,
+      "Safe": 0.0007860678302800488,
+      "Trade": 0.4901944596299525,
+      "Hold": 0.5053224027954567
+     }
+    },
+    "HP <= 2 and opponent P(Trade) >= 0.5": {
+     "n": 406,
+     "share_of_present_turns": 0.15081723625557206,
+     "p": {
+      "Yield": 0.0034417530831408537,
+      "Safe": 0.0006771915985636969,
+      "Trade": 0.4231477361659586,
+      "Hold": 0.572715329739665
+     }
+    },
+    "own wave past the lane (farm spot > 0)": {
+     "n": 0,
+     "share_of_present_turns": 0.0,
+     "p": {
+      "Hold": NaN,
+      "Trade": NaN
+     }
+    }
+   },
+   "entropy": 0.35907578667013695,
+   "deaths": 1.81
+  },
+  "sp100_s0|230400": {
+   "legality": {
+    "Hold": {
+     "legal_share": 1.0,
+     "n_legal": 2672,
+     "selected_share": 0.4098053892215569,
+     "p_when_legal": 0.40820102352996596,
+     "selected_when_legal": 0.4098053892215569
+    },
+    "Yield": {
+     "legal_share": 1.0,
+     "n_legal": 2672,
+     "selected_share": 0.002619760479041916,
+     "p_when_legal": 0.0035336768515247404,
+     "selected_when_legal": 0.002619760479041916
+    },
+    "Trade": {
+     "legal_share": 1.0,
+     "n_legal": 2672,
+     "selected_share": 0.5875748502994012,
+     "p_when_legal": 0.587471411410155,
+     "selected_when_legal": 0.5875748502994012
+    },
+    "Safe": {
+     "legal_share": 1.0,
+     "n_legal": 2672,
+     "selected_share": 0.0,
+     "p_when_legal": 0.0006764552800359599,
+     "selected_when_legal": 0.0
+    },
+    "Recall": {
+     "legal_share": 0.38772455089820357,
+     "n_legal": 1036,
+     "selected_share": 0.0,
+     "p_when_legal": 0.0003028772050836565,
+     "selected_when_legal": 0.0
+    },
+    "SP": {
+     "legal_share": 1.0,
+     "n_legal": 2672,
+     "selected_share": 0.9970059880239521,
+     "p_when_legal": 0.9956937607234585,
+     "selected_when_legal": 0.9970059880239521
+    },
+    "SH": {
+     "legal_share": 1.0,
+     "n_legal": 2672,
+     "selected_share": 0.0029940119760479044,
+     "p_when_legal": 0.004306239276541421,
+     "selected_when_legal": 0.0029940119760479044
+    },
+    "F": {
+     "legal_share": 0.0,
+     "n_legal": 0,
+     "selected_share": 0.0,
+     "p_when_legal": NaN,
+     "selected_when_legal": NaN
+    },
+    "Pressure": {
+     "legal_share": 0.0,
+     "n_legal": 0,
+     "selected_share": 0.0,
+     "p_when_legal": NaN,
+     "selected_when_legal": NaN
+    },
+    "Vision": {
+     "legal_share": 0.0,
+     "n_legal": 0,
+     "selected_share": 0.0,
+     "p_when_legal": NaN,
+     "selected_when_legal": NaN
+    }
+   },
+   "opportunities": {
+    "recall legal and HP <= 2": {
+     "n": 77,
+     "share_of_present_turns": 0.02881736526946108,
+     "p": {
+      "Recall": 0.0002503379468375434
+     }
+    },
+    "recall legal and HP <= 3": {
+     "n": 135,
+     "share_of_present_turns": 0.050523952095808386,
+     "p": {
+      "Recall": 0.0002284556498870517
+     }
+    },
+    "HP <= 2 at or past the lane (Recall illegal)": {
+     "n": 449,
+     "share_of_present_turns": 0.16803892215568864,
+     "p": {
+      "Safe": 0.0006769437894671003,
+      "Yield": 0.003955675590766947,
+      "Trade": 0.448917200879556,
+      "Hold": 0.5464501797402099
+     }
+    },
+    "HP <= 2, enemy present": {
+     "n": 442,
+     "share_of_present_turns": 0.16541916167664672,
+     "p": {
+      "Safe": 0.0006323846360528164,
+      "Yield": 0.0035867393029027595,
+      "Trade": 0.582652489221469,
+      "Hold": 0.4130973981645747,
+      "Recall": 3.098867500081475e-05
+     }
+    },
+    "Freeze legal": {
+     "n": 0,
+     "share_of_present_turns": 0.0,
+     "p": {
+      "F": NaN,
+      "SH": NaN
+     }
+    },
+    "siege objective legal": {
+     "n": 0,
+     "share_of_present_turns": 0.0,
+     "p": {
+      "Pressure": NaN,
+      "Vision": NaN
+     }
+    },
+    "enemy champion away (punish window)": {
+     "n": 450,
+     "share_of_present_turns": 0.16841317365269462,
+     "p": {
+      "SH": 0.004408108355448782,
+      "Hold": 0.7134801013715211,
+      "Trade": 0.2820319003444182
+     }
+    },
+    "own front stacked (front HP > one wave)": {
+     "n": 0,
+     "share_of_present_turns": 0.0,
+     "p": {
+      "SH": NaN
+     }
+    },
+    "opponent P(Trade) >= 0.5": {
+     "n": 1482,
+     "share_of_present_turns": 0.5546407185628742,
+     "p": {
+      "Yield": 0.0037640910306955475,
+      "Safe": 0.0007195528489583498,
+      "Trade": 0.6217357993404796,
+      "Hold": 0.3737475005090624
+     }
+    },
+    "HP <= 2 and opponent P(Trade) >= 0.5": {
+     "n": 441,
+     "share_of_present_turns": 0.1650449101796407,
+     "p": {
+      "Yield": 0.0035878739683384824,
+      "Safe": 0.0006323232463024411,
+      "Trade": 0.5818308921589821,
+      "Hold": 0.41391866017962675
+     }
+    },
+    "own wave past the lane (farm spot > 0)": {
+     "n": 0,
+     "share_of_present_turns": 0.0,
+     "p": {
+      "Hold": NaN,
+      "Trade": NaN
+     }
+    }
+   },
+   "entropy": 0.3651002554182998,
+   "deaths": 1.9
+  },
+  "sp100_s0|256000": {
+   "legality": {
+    "Hold": {
+     "legal_share": 1.0,
+     "n_legal": 2688,
+     "selected_share": 0.4460565476190476,
+     "p_when_legal": 0.4534514174145724,
+     "selected_when_legal": 0.4460565476190476
+    },
+    "Yield": {
+     "legal_share": 1.0,
+     "n_legal": 2688,
+     "selected_share": 0.0033482142857142855,
+     "p_when_legal": 0.0032948399605772136,
+     "selected_when_legal": 0.0033482142857142855
+    },
+    "Trade": {
+     "legal_share": 1.0,
+     "n_legal": 2688,
+     "selected_share": 0.5505952380952381,
+     "p_when_legal": 0.5425150628981135,
+     "selected_when_legal": 0.5505952380952381
+    },
+    "Safe": {
+     "legal_share": 1.0,
+     "n_legal": 2688,
+     "selected_share": 0.0,
+     "p_when_legal": 0.0006239709625097281,
+     "selected_when_legal": 0.0
+    },
+    "Recall": {
+     "legal_share": 0.39099702380952384,
+     "n_legal": 1051,
+     "selected_share": 0.0,
+     "p_when_legal": 0.00029337503162962363,
+     "selected_when_legal": 0.0
+    },
+    "SP": {
+     "legal_share": 1.0,
+     "n_legal": 2688,
+     "selected_share": 0.9973958333333334,
+     "p_when_legal": 0.9956110944342527,
+     "selected_when_legal": 0.9973958333333334
+    },
+    "SH": {
+     "legal_share": 1.0,
+     "n_legal": 2688,
+     "selected_share": 0.0026041666666666665,
+     "p_when_legal": 0.004388905565747384,
+     "selected_when_legal": 0.0026041666666666665
+    },
+    "F": {
+     "legal_share": 0.0,
+     "n_legal": 0,
+     "selected_share": 0.0,
+     "p_when_legal": NaN,
+     "selected_when_legal": NaN
+    },
+    "Pressure": {
+     "legal_share": 0.0,
+     "n_legal": 0,
+     "selected_share": 0.0,
+     "p_when_legal": NaN,
+     "selected_when_legal": NaN
+    },
+    "Vision": {
+     "legal_share": 0.0,
+     "n_legal": 0,
+     "selected_share": 0.0,
+     "p_when_legal": NaN,
+     "selected_when_legal": NaN
+    }
+   },
+   "opportunities": {
+    "recall legal and HP <= 2": {
+     "n": 64,
+     "share_of_present_turns": 0.023809523809523808,
+     "p": {
+      "Recall": 0.00022530932512437483
+     }
+    },
+    "recall legal and HP <= 3": {
+     "n": 125,
+     "share_of_present_turns": 0.04650297619047619,
+     "p": {
+      "Recall": 0.00020667387314135042
+     }
+    },
+    "HP <= 2 at or past the lane (Recall illegal)": {
+     "n": 489,
+     "share_of_present_turns": 0.18191964285714285,
+     "p": {
+      "Safe": 0.0006057115860340659,
+      "Yield": 0.003536245656307435,
+      "Trade": 0.36340950024792434,
+      "Hold": 0.6324485425097343
+     }
+    },
+    "HP <= 2, enemy present": {
+     "n": 445,
+     "share_of_present_turns": 0.16555059523809523,
+     "p": {
+      "Safe": 0.0006001271116432416,
+      "Yield": 0.0034107009525095734,
+      "Trade": 0.4902044303467754,
+      "Hold": 0.5057635637139741,
+      "Recall": 2.1177875097738157e-05
+     }
+    },
+    "Freeze legal": {
+     "n": 0,
+     "share_of_present_turns": 0.0,
+     "p": {
+      "F": NaN,
+      "SH": NaN
+     }
+    },
+    "siege objective legal": {
+     "n": 0,
+     "share_of_present_turns": 0.0,
+     "p": {
+      "Pressure": NaN,
+      "Vision": NaN
+     }
+    },
+    "enemy champion away (punish window)": {
+     "n": 480,
+     "share_of_present_turns": 0.17857142857142858,
+     "p": {
+      "SH": 0.004137840475205703,
+      "Hold": 0.763430566909696,
+      "Trade": 0.23277457051713618
+     }
+    },
+    "own front stacked (front HP > one wave)": {
+     "n": 0,
+     "share_of_present_turns": 0.0,
+     "p": {
+      "SH": NaN
+     }
+    },
+    "opponent P(Trade) >= 0.5": {
+     "n": 1348,
+     "share_of_present_turns": 0.5014880952380952,
+     "p": {
+      "Yield": 0.0035777805642166803,
+      "Safe": 0.0006743900416926093,
+      "Trade": 0.5429398234432375,
+      "Hold": 0.4527776867248304
+     }
+    },
+    "HP <= 2 and opponent P(Trade) >= 0.5": {
+     "n": 444,
+     "share_of_present_turns": 0.16517857142857142,
+     "p": {
+      "Yield": 0.003416248660921159,
+      "Safe": 0.0006009638169013923,
+      "Trade": 0.489072823077353,
+      "Hold": 0.5068890456989508
+     }
+    },
+    "own wave past the lane (farm spot > 0)": {
+     "n": 0,
+     "share_of_present_turns": 0.0,
+     "p": {
+      "Hold": NaN,
+      "Trade": NaN
+     }
+    }
+   },
+   "entropy": 0.37716633920515175,
+   "deaths": 1.83
+  },
+  "sp100_s0|281600": {
+   "legality": {
+    "Hold": {
+     "legal_share": 1.0,
+     "n_legal": 2824,
+     "selected_share": 0.6678470254957507,
+     "p_when_legal": 0.673741500492469,
+     "selected_when_legal": 0.6678470254957507
+    },
+    "Yield": {
+     "legal_share": 1.0,
+     "n_legal": 2824,
+     "selected_share": 0.002124645892351275,
+     "p_when_legal": 0.0027177917242131385,
+     "selected_when_legal": 0.002124645892351275
+    },
+    "Trade": {
+     "legal_share": 1.0,
+     "n_legal": 2824,
+     "selected_share": 0.330028328611898,
+     "p_when_legal": 0.32297659755260727,
+     "selected_when_legal": 0.330028328611898
+    },
+    "Safe": {
+     "legal_share": 1.0,
+     "n_legal": 2824,
+     "selected_share": 0.0,
+     "p_when_legal": 0.0005059124708680072,
+     "selected_when_legal": 0.0
+    },
+    "Recall": {
+     "legal_share": 0.2652266288951841,
+     "n_legal": 749,
+     "selected_share": 0.0,
+     "p_when_legal": 0.00021942653377211998,
+     "selected_when_legal": 0.0
+    },
+    "SP": {
+     "legal_share": 1.0,
+     "n_legal": 2824,
+     "selected_share": 0.9975212464589235,
+     "p_when_legal": 0.9963549244122885,
+     "selected_when_legal": 0.9975212464589235
+    },
+    "SH": {
+     "legal_share": 1.0,
+     "n_legal": 2824,
+     "selected_share": 0.002478753541076487,
+     "p_when_legal": 0.003645075587711377,
+     "selected_when_legal": 0.002478753541076487
+    },
+    "F": {
+     "legal_share": 0.0,
+     "n_legal": 0,
+     "selected_share": 0.0,
+     "p_when_legal": NaN,
+     "selected_when_legal": NaN
+    },
+    "Pressure": {
+     "legal_share": 0.0,
+     "n_legal": 0,
+     "selected_share": 0.0,
+     "p_when_legal": NaN,
+     "selected_when_legal": NaN
+    },
+    "Vision": {
+     "legal_share": 0.0,
+     "n_legal": 0,
+     "selected_share": 0.0,
+     "p_when_legal": NaN,
+     "selected_when_legal": NaN
+    }
+   },
+   "opportunities": {
+    "recall legal and HP <= 2": {
+     "n": 32,
+     "share_of_present_turns": 0.0113314447592068,
+     "p": {
+      "Recall": 0.0002345055837968447
+     }
+    },
+    "recall legal and HP <= 3": {
+     "n": 55,
+     "share_of_present_turns": 0.019475920679886686,
+     "p": {
+      "Recall": 0.00021913035407168711
+     }
+    },
+    "HP <= 2 at or past the lane (Recall illegal)": {
+     "n": 382,
+     "share_of_present_turns": 0.13526912181303116,
+     "p": {
+      "Safe": 0.0004379193079074528,
+      "Yield": 0.0025079284131418428,
+      "Trade": 0.15107267782772912,
+      "Hold": 0.8459814744512216
+     }
+    },
+    "HP <= 2, enemy present": {
+     "n": 371,
+     "share_of_present_turns": 0.13137393767705383,
+     "p": {
+      "Safe": 0.000454101084939813,
+      "Yield": 0.002587971160338467,
+      "Trade": 0.19737983447819782,
+      "Hold": 0.7995652094840535,
+      "Recall": 1.28837924702729e-05
+     }
+    },
+    "Freeze legal": {
+     "n": 0,
+     "share_of_present_turns": 0.0,
+     "p": {
+      "F": NaN,
+      "SH": NaN
+     }
+    },
+    "siege objective legal": {
+     "n": 0,
+     "share_of_present_turns": 0.0,
+     "p": {
+      "Pressure": NaN,
+      "Vision": NaN
+     }
+    },
+    "enemy champion away (punish window)": {
+     "n": 376,
+     "share_of_present_turns": 0.13314447592067988,
+     "p": {
+      "SH": 0.002211486824015411,
+      "Hold": 0.92153859505417,
+      "Trade": 0.07643276561536475
+     }
+    },
+    "own front stacked (front HP > one wave)": {
+     "n": 0,
+     "share_of_present_turns": 0.0,
+     "p": {
+      "SH": NaN
+     }
+    },
+    "opponent P(Trade) >= 0.5": {
+     "n": 770,
+     "share_of_present_turns": 0.2726628895184136,
+     "p": {
+      "Yield": 0.0025058039101531855,
+      "Safe": 0.00043921049393427585,
+      "Trade": 0.1762941260724132,
+      "Hold": 0.8207559516491768
+     }
+    },
+    "HP <= 2 and opponent P(Trade) >= 0.5": {
+     "n": 345,
+     "share_of_present_turns": 0.1221671388101983,
+     "p": {
+      "Yield": 0.0026722867602945086,
+      "Safe": 0.0004716713709286014,
+      "Trade": 0.1954149442464669,
+      "Hold": 0.8014320512842732
+     }
+    },
+    "own wave past the lane (farm spot > 0)": {
+     "n": 0,
+     "share_of_present_turns": 0.0,
+     "p": {
+      "Hold": NaN,
+      "Trade": NaN
+     }
+    }
+   },
+   "entropy": 0.3619216133158184,
+   "deaths": 1.3
+  },
+  "sp100_s0|307200": {
+   "legality": {
+    "Hold": {
+     "legal_share": 1.0,
+     "n_legal": 2786,
+     "selected_share": 0.6098348887293611,
+     "p_when_legal": 0.6043867845963244,
+     "selected_when_legal": 0.6098348887293611
+    },
+    "Yield": {
+     "legal_share": 1.0,
+     "n_legal": 2786,
+     "selected_share": 0.0017946877243359654,
+     "p_when_legal": 0.0027872981456495854,
+     "selected_when_legal": 0.0017946877243359654
+    },
+    "Trade": {
+     "legal_share": 1.0,
+     "n_legal": 2786,
+     "selected_share": 0.38837042354630297,
+     "p_when_legal": 0.39219132065350315,
+     "selected_when_legal": 0.38837042354630297
+    },
+    "Safe": {
+     "legal_share": 1.0,
+     "n_legal": 2786,
+     "selected_share": 0.0,
+     "p_when_legal": 0.0005635715577992552,
+     "selected_when_legal": 0.0
+    },
+    "Recall": {
+     "legal_share": 0.30294328786791097,
+     "n_legal": 844,
+     "selected_share": 0.0,
+     "p_when_legal": 0.00023444997650690387,
+     "selected_when_legal": 0.0
+    },
+    "SP": {
+     "legal_share": 1.0,
+     "n_legal": 2786,
+     "selected_share": 0.9974874371859297,
+     "p_when_legal": 0.995982232131609,
+     "selected_when_legal": 0.9974874371859297
+    },
+    "SH": {
+     "legal_share": 1.0,
+     "n_legal": 2786,
+     "selected_share": 0.002512562814070352,
+     "p_when_legal": 0.0040177678683910485,
+     "selected_when_legal": 0.002512562814070352
+    },
+    "F": {
+     "legal_share": 0.0,
+     "n_legal": 0,
+     "selected_share": 0.0,
+     "p_when_legal": NaN,
+     "selected_when_legal": NaN
+    },
+    "Pressure": {
+     "legal_share": 0.0,
+     "n_legal": 0,
+     "selected_share": 0.0,
+     "p_when_legal": NaN,
+     "selected_when_legal": NaN
+    },
+    "Vision": {
+     "legal_share": 0.0,
+     "n_legal": 0,
+     "selected_share": 0.0,
+     "p_when_legal": NaN,
+     "selected_when_legal": NaN
+    }
+   },
+   "opportunities": {
+    "recall legal and HP <= 2": {
+     "n": 25,
+     "share_of_present_turns": 0.008973438621679828,
+     "p": {
+      "Recall": 0.0002808307887983988
+     }
+    },
+    "recall legal and HP <= 3": {
+     "n": 50,
+     "share_of_present_turns": 0.017946877243359655,
+     "p": {
+      "Recall": 0.00026202627488122813
+     }
+    },
+    "HP <= 2 at or past the lane (Recall illegal)": {
+     "n": 380,
+     "share_of_present_turns": 0.1363962670495334,
+     "p": {
+      "Safe": 0.0005168774221619166,
+      "Yield": 0.0027490334597259935,
+      "Trade": 0.2197794842397017,
+      "Hold": 0.7769546048784105
+     }
+    },
+    "HP <= 2, enemy present": {
+     "n": 364,
+     "share_of_present_turns": 0.1306532663316583,
+     "p": {
+      "Safe": 0.0005352360248891542,
+      "Yield": 0.0028152599358204893,
+      "Trade": 0.272303486686254,
+      "Hold": 0.7243322154540062,
+      "Recall": 1.3801899030347494e-05
+     }
+    },
+    "Freeze legal": {
+     "n": 0,
+     "share_of_present_turns": 0.0,
+     "p": {
+      "F": NaN,
+      "SH": NaN
+     }
+    },
+    "siege objective legal": {
+     "n": 0,
+     "share_of_present_turns": 0.0,
+     "p": {
+      "Pressure": NaN,
+      "Vision": NaN
+     }
+    },
+    "enemy champion away (punish window)": {
+     "n": 398,
+     "share_of_present_turns": 0.14285714285714285,
+     "p": {
+      "SH": 0.0029770692612416136,
+      "Hold": 0.8721085670391169,
+      "Trade": 0.12537281811846288
+     }
+    },
+    "own front stacked (front HP > one wave)": {
+     "n": 0,
+     "share_of_present_turns": 0.0,
+     "p": {
+      "SH": NaN
+     }
+    },
+    "opponent P(Trade) >= 0.5": {
+     "n": 941,
+     "share_of_present_turns": 0.3377602297200287,
+     "p": {
+      "Yield": 0.0028992385950088973,
+      "Safe": 0.0005643499264575555,
+      "Trade": 0.2852820568089794,
+      "Hold": 0.7112453306303117
+     }
+    },
+    "HP <= 2 and opponent P(Trade) >= 0.5": {
+     "n": 356,
+     "share_of_present_turns": 0.12778176597272076,
+     "p": {
+      "Yield": 0.0028390043653148352,
+      "Safe": 0.0005407557315926144,
+      "Trade": 0.26678214691796276,
+      "Hold": 0.7298246386890337
+     }
+    },
+    "own wave past the lane (farm spot > 0)": {
+     "n": 0,
+     "share_of_present_turns": 0.0,
+     "p": {
+      "Hold": NaN,
+      "Trade": NaN
+     }
+    }
+   },
+   "entropy": 0.37883168933982275,
+   "deaths": 1.5
+  },
+  "sp80_s0|25600": {
+   "legality": {
+    "Hold": {
+     "legal_share": 1.0,
+     "n_legal": 2700,
+     "selected_share": 0.40703703703703703,
+     "p_when_legal": 0.4072204221603451,
+     "selected_when_legal": 0.40703703703703703
+    },
+    "Yield": {
+     "legal_share": 1.0,
+     "n_legal": 2700,
+     "selected_share": 0.021111111111111112,
+     "p_when_legal": 0.01802365241925219,
+     "selected_when_legal": 0.021111111111111112
+    },
+    "Trade": {
+     "legal_share": 1.0,
+     "n_legal": 2700,
+     "selected_share": 0.5548148148148148,
+     "p_when_legal": 0.5577040363259229,
+     "selected_when_legal": 0.5548148148148148
+    },
+    "Safe": {
+     "legal_share": 1.0,
+     "n_legal": 2700,
+     "selected_share": 0.016666666666666666,
+     "p_when_legal": 0.016357657228900476,
+     "selected_when_legal": 0.016666666666666666
+    },
+    "Recall": {
+     "legal_share": 0.34629629629629627,
+     "n_legal": 935,
+     "selected_share": 0.00037037037037037035,
+     "p_when_legal": 0.0020047337294805735,
+     "selected_when_legal": 0.0010695187165775401
+    },
+    "SP": {
+     "legal_share": 1.0,
+     "n_legal": 2700,
+     "selected_share": 0.9637037037037037,
+     "p_when_legal": 0.9652809558193547,
+     "selected_when_legal": 0.9637037037037037
+    },
+    "SH": {
+     "legal_share": 1.0,
+     "n_legal": 2700,
+     "selected_share": 0.035925925925925924,
+     "p_when_legal": 0.032702447047179756,
+     "selected_when_legal": 0.035925925925925924
+    },
+    "F": {
+     "legal_share": 0.012962962962962963,
+     "n_legal": 35,
+     "selected_share": 0.00037037037037037035,
+     "p_when_legal": 0.15556606458162925,
+     "selected_when_legal": 0.02857142857142857
+    },
+    "Pressure": {
+     "legal_share": 0.0,
+     "n_legal": 0,
+     "selected_share": 0.0,
+     "p_when_legal": NaN,
+     "selected_when_legal": NaN
+    },
+    "Vision": {
+     "legal_share": 0.0,
+     "n_legal": 0,
+     "selected_share": 0.0,
+     "p_when_legal": NaN,
+     "selected_when_legal": NaN
+    }
+   },
+   "opportunities": {
+    "recall legal and HP <= 2": {
+     "n": 119,
+     "share_of_present_turns": 0.04407407407407407,
+     "p": {
+      "Recall": 0.002378494130599175
+     }
+    },
+    "recall legal and HP <= 3": {
+     "n": 197,
+     "share_of_present_turns": 0.07296296296296297,
+     "p": {
+      "Recall": 0.0023148889391590806
+     }
+    },
+    "HP <= 2 at or past the lane (Recall illegal)": {
+     "n": 540,
+     "share_of_present_turns": 0.2,
+     "p": {
+      "Safe": 0.018075666870499385,
+      "Yield": 0.01966058677780791,
+      "Trade": 0.5326611461856546,
+      "Hold": 0.4296026001660382
+     }
+    },
+    "HP <= 2, enemy present": {
+     "n": 548,
+     "share_of_present_turns": 0.20296296296296296,
+     "p": {
+      "Safe": 0.01778733116054459,
+      "Yield": 0.019434730157009902,
+      "Trade": 0.5384403924670432,
+      "Hold": 0.4239701661332973,
+      "Recall": 0.0003673800821050482
+     }
+    },
+    "Freeze legal": {
+     "n": 35,
+     "share_of_present_turns": 0.012962962962962963,
+     "p": {
+      "F": 0.15556606458162925,
+      "SH": 0.03181755387469426
+     }
+    },
+    "siege objective legal": {
+     "n": 0,
+     "share_of_present_turns": 0.0,
+     "p": {
+      "Pressure": NaN,
+      "Vision": NaN
+     }
+    },
+    "enemy champion away (punish window)": {
+     "n": 420,
+     "share_of_present_turns": 0.15555555555555556,
+     "p": {
+      "SH": 0.036813893967365716,
+      "Hold": 0.3900223745726956,
+      "Trade": 0.5702507292235012
+     }
+    },
+    "own front stacked (front HP > one wave)": {
+     "n": 23,
+     "share_of_present_turns": 0.008518518518518519,
+     "p": {
+      "SH": 0.03966300747322945
+     }
+    },
+    "opponent P(Trade) >= 0.5": {
+     "n": 1960,
+     "share_of_present_turns": 0.725925925925926,
+     "p": {
+      "Yield": 0.01725121383779713,
+      "Safe": 0.01583525313068483,
+      "Trade": 0.5475504908335361,
+      "Hold": 0.4189179860044793
+     }
+    },
+    "HP <= 2 and opponent P(Trade) >= 0.5": {
+     "n": 537,
+     "share_of_present_turns": 0.1988888888888889,
+     "p": {
+      "Yield": 0.019169321542031832,
+      "Safe": 0.017661491417443387,
+      "Trade": 0.5374279021415028,
+      "Hold": 0.4254226101554521
+     }
+    },
+    "own wave past the lane (farm spot > 0)": {
+     "n": 39,
+     "share_of_present_turns": 0.014444444444444444,
+     "p": {
+      "Hold": 0.47442311765787804,
+      "Trade": 0.4857922351829812
+     }
+    }
+   },
+   "entropy": 0.9508756991343577,
+   "deaths": 1.75
+  },
+  "sp80_s0|51520": {
+   "legality": {
+    "Hold": {
+     "legal_share": 1.0,
+     "n_legal": 2672,
+     "selected_share": 0.3716317365269461,
+     "p_when_legal": 0.3708564667805689,
+     "selected_when_legal": 0.3716317365269461
+    },
+    "Yield": {
+     "legal_share": 1.0,
+     "n_legal": 2672,
+     "selected_share": 0.0093562874251497,
+     "p_when_legal": 0.009208326931153107,
+     "selected_when_legal": 0.0093562874251497
+    },
+    "Trade": {
+     "legal_share": 1.0,
+     "n_legal": 2672,
+     "selected_share": 0.6156437125748503,
+     "p_when_legal": 0.6150048499621835,
+     "selected_when_legal": 0.6156437125748503
+    },
+    "Safe": {
+     "legal_share": 1.0,
+     "n_legal": 2672,
+     "selected_share": 0.0033682634730538923,
+     "p_when_legal": 0.004751225626406951,
+     "selected_when_legal": 0.0033682634730538923
+    },
+    "Recall": {
+     "legal_share": 0.3263473053892216,
+     "n_legal": 872,
+     "selected_share": 0.0,
+     "p_when_legal": 0.0005488959054644178,
+     "selected_when_legal": 0.0
+    },
+    "SP": {
+     "legal_share": 1.0,
+     "n_legal": 2672,
+     "selected_share": 0.9943862275449101,
+     "p_when_legal": 0.9913879875112386,
+     "selected_when_legal": 0.9943862275449101
+    },
+    "SH": {
+     "legal_share": 1.0,
+     "n_legal": 2672,
+     "selected_share": 0.005239520958083832,
+     "p_when_legal": 0.008345172447771942,
+     "selected_when_legal": 0.005239520958083832
+    },
+    "F": {
+     "legal_share": 0.0029940119760479044,
+     "n_legal": 8,
+     "selected_share": 0.00037425149700598805,
+     "p_when_legal": 0.08912457369049237,
+     "selected_when_legal": 0.125
+    },
+    "Pressure": {
+     "legal_share": 0.0,
+     "n_legal": 0,
+     "selected_share": 0.0,
+     "p_when_legal": NaN,
+     "selected_when_legal": NaN
+    },
+    "Vision": {
+     "legal_share": 0.0,
+     "n_legal": 0,
+     "selected_share": 0.0,
+     "p_when_legal": NaN,
+     "selected_when_legal": NaN
+    }
+   },
+   "opportunities": {
+    "recall legal and HP <= 2": {
+     "n": 50,
+     "share_of_present_turns": 0.0187125748502994,
+     "p": {
+      "Recall": 0.0006345819632182933
+     }
+    },
+    "recall legal and HP <= 3": {
+     "n": 92,
+     "share_of_present_turns": 0.0344311377245509,
+     "p": {
+      "Recall": 0.0006106138963816881
+     }
+    },
+    "HP <= 2 at or past the lane (Recall illegal)": {
+     "n": 583,
+     "share_of_present_turns": 0.21818862275449102,
+     "p": {
+      "Safe": 0.005286080075729878,
+      "Yield": 0.010147790868428737,
+      "Trade": 0.5349464074258289,
+      "Hold": 0.44961972163001246
+     }
+    },
+    "HP <= 2, enemy present": {
+     "n": 516,
+     "share_of_present_turns": 0.19311377245508982,
+     "p": {
+      "Safe": 0.00505213192574319,
+      "Yield": 0.009553123450256445,
+      "Trade": 0.5732913195487245,
+      "Hold": 0.41205100076631546,
+      "Recall": 5.242430896040529e-05
+     }
+    },
+    "Freeze legal": {
+     "n": 8,
+     "share_of_present_turns": 0.0029940119760479044,
+     "p": {
+      "F": 0.08912457369049237,
+      "SH": 0.0066232758838568155
+     }
+    },
+    "siege objective legal": {
+     "n": 0,
+     "share_of_present_turns": 0.0,
+     "p": {
+      "Pressure": NaN,
+      "Vision": NaN
+     }
+    },
+    "enemy champion away (punish window)": {
+     "n": 478,
+     "share_of_present_turns": 0.17889221556886228,
+     "p": {
+      "SH": 0.009555027914600623,
+      "Hold": 0.4631213742286279,
+      "Trade": 0.5201122881978323
+     }
+    },
+    "own front stacked (front HP > one wave)": {
+     "n": 4,
+     "share_of_present_turns": 0.0014970059880239522,
+     "p": {
+      "SH": 0.009160268185976912
+     }
+    },
+    "opponent P(Trade) >= 0.5": {
+     "n": 1593,
+     "share_of_present_turns": 0.5961826347305389,
+     "p": {
+      "Yield": 0.009080722572300425,
+      "Safe": 0.004720308158217413,
+      "Trade": 0.5999323430403238,
+      "Hold": 0.3862104040758283
+     }
+    },
+    "HP <= 2 and opponent P(Trade) >= 0.5": {
+     "n": 502,
+     "share_of_present_turns": 0.18787425149700598,
+     "p": {
+      "Yield": 0.009546209357355912,
+      "Safe": 0.005035725661584311,
+      "Trade": 0.5693573615093773,
+      "Hold": 0.41602856123106513
+     }
+    },
+    "own wave past the lane (farm spot > 0)": {
+     "n": 10,
+     "share_of_present_turns": 0.0037425149700598802,
+     "p": {
+      "Hold": 0.6477844757594207,
+      "Trade": 0.3357835291041414
+     }
+    }
+   },
+   "entropy": 0.6946614621308415,
+   "deaths": 1.88
+  },
+  "sp80_s0|77696": {
+   "legality": {
+    "Hold": {
+     "legal_share": 1.0,
+     "n_legal": 2704,
+     "selected_share": 0.45599112426035504,
+     "p_when_legal": 0.46088216002396976,
+     "selected_when_legal": 0.45599112426035504
+    },
+    "Yield": {
+     "legal_share": 1.0,
+     "n_legal": 2704,
+     "selected_share": 0.0036982248520710057,
+     "p_when_legal": 0.0047763314162450705,
+     "selected_when_legal": 0.0036982248520710057
+    },
+    "Trade": {
+     "legal_share": 1.0,
+     "n_legal": 2704,
+     "selected_share": 0.5392011834319527,
+     "p_when_legal": 0.5319447330485619,
+     "selected_when_legal": 0.5392011834319527
+    },
+    "Safe": {
+     "legal_share": 1.0,
+     "n_legal": 2704,
+     "selected_share": 0.0011094674556213018,
+     "p_when_legal": 0.002224257069369472,
+     "selected_when_legal": 0.0011094674556213018
+    },
+    "Recall": {
+     "legal_share": 0.40236686390532544,
+     "n_legal": 1088,
+     "selected_share": 0.0,
+     "p_when_legal": 0.00042875906872489727,
+     "selected_when_legal": 0.0
+    },
+    "SP": {
+     "legal_share": 1.0,
+     "n_legal": 2704,
+     "selected_share": 0.9970414201183432,
+     "p_when_legal": 0.9944073917289395,
+     "selected_when_legal": 0.9970414201183432
+    },
+    "SH": {
+     "legal_share": 1.0,
+     "n_legal": 2704,
+     "selected_share": 0.0029585798816568047,
+     "p_when_legal": 0.005592608271060413,
+     "selected_when_legal": 0.0029585798816568047
+    },
+    "F": {
+     "legal_share": 0.0,
+     "n_legal": 0,
+     "selected_share": 0.0,
+     "p_when_legal": NaN,
+     "selected_when_legal": NaN
+    },
+    "Pressure": {
+     "legal_share": 0.0,
+     "n_legal": 0,
+     "selected_share": 0.0,
+     "p_when_legal": NaN,
+     "selected_when_legal": NaN
+    },
+    "Vision": {
+     "legal_share": 0.0,
+     "n_legal": 0,
+     "selected_share": 0.0,
+     "p_when_legal": NaN,
+     "selected_when_legal": NaN
+    }
+   },
+   "opportunities": {
+    "recall legal and HP <= 2": {
+     "n": 46,
+     "share_of_present_turns": 0.017011834319526627,
+     "p": {
+      "Recall": 0.00033998193109989185
+     }
+    },
+    "recall legal and HP <= 3": {
+     "n": 96,
+     "share_of_present_turns": 0.03550295857988166,
+     "p": {
+      "Recall": 0.00031391046101832864
+     }
+    },
+    "HP <= 2 at or past the lane (Recall illegal)": {
+     "n": 494,
+     "share_of_present_turns": 0.18269230769230768,
+     "p": {
+      "Safe": 0.0022039365586104544,
+      "Yield": 0.004924371561038402,
+      "Trade": 0.3053065677198316,
+      "Hold": 0.6875651241605196
+     }
+    },
+    "HP <= 2, enemy present": {
+     "n": 456,
+     "share_of_present_turns": 0.16863905325443787,
+     "p": {
+      "Safe": 0.0021415329231357374,
+      "Yield": 0.004688761388195076,
+      "Trade": 0.3660413109498279,
+      "Hold": 0.6271060529244327,
+      "Recall": 2.2341814408646622e-05
+     }
+    },
+    "Freeze legal": {
+     "n": 0,
+     "share_of_present_turns": 0.0,
+     "p": {
+      "F": NaN,
+      "SH": NaN
+     }
+    },
+    "siege objective legal": {
+     "n": 0,
+     "share_of_present_turns": 0.0,
+     "p": {
+      "Pressure": NaN,
+      "Vision": NaN
+     }
+    },
+    "enemy champion away (punish window)": {
+     "n": 484,
+     "share_of_present_turns": 0.17899408284023668,
+     "p": {
+      "SH": 0.005667686237823114,
+      "Hold": 0.6153840576056009,
+      "Trade": 0.3769001736531038
+     }
+    },
+    "own front stacked (front HP > one wave)": {
+     "n": 0,
+     "share_of_present_turns": 0.0,
+     "p": {
+      "SH": NaN
+     }
+    },
+    "opponent P(Trade) >= 0.5": {
+     "n": 1210,
+     "share_of_present_turns": 0.4474852071005917,
+     "p": {
+      "Yield": 0.004996989082543981,
+      "Safe": 0.002289585015456034,
+      "Trade": 0.3694639714119397,
+      "Hold": 0.6232433879565807
+     }
+    },
+    "HP <= 2 and opponent P(Trade) >= 0.5": {
+     "n": 429,
+     "share_of_present_turns": 0.15865384615384615,
+     "p": {
+      "Yield": 0.004785051916616639,
+      "Safe": 0.0021720724559594422,
+      "Trade": 0.33077260860759444,
+      "Hold": 0.6622670468883308
+     }
+    },
+    "own wave past the lane (farm spot > 0)": {
+     "n": 0,
+     "share_of_present_turns": 0.0,
+     "p": {
+      "Hold": NaN,
+      "Trade": NaN
+     }
+    }
+   },
+   "entropy": 0.4572912595505137,
+   "deaths": 1.76
+  },
+  "sp80_s0|103072": {
+   "legality": {
+    "Hold": {
+     "legal_share": 1.0,
+     "n_legal": 2740,
+     "selected_share": 0.5043795620437956,
+     "p_when_legal": 0.5100620981326363,
+     "selected_when_legal": 0.5043795620437956
+    },
+    "Yield": {
+     "legal_share": 1.0,
+     "n_legal": 2740,
+     "selected_share": 0.004744525547445255,
+     "p_when_legal": 0.004071059621884414,
+     "selected_when_legal": 0.004744525547445255
+    },
+    "Trade": {
+     "legal_share": 1.0,
+     "n_legal": 2740,
+     "selected_share": 0.4908759124087591,
+     "p_when_legal": 0.4846446699545396,
+     "selected_when_legal": 0.4908759124087591
+    },
+    "Safe": {
+     "legal_share": 1.0,
+     "n_legal": 2740,
+     "selected_share": 0.0,
+     "p_when_legal": 0.0011174758535427707,
+     "selected_when_legal": 0.0
+    },
+    "Recall": {
+     "legal_share": 0.40802919708029195,
+     "n_legal": 1118,
+     "selected_share": 0.0,
+     "p_when_legal": 0.00025659055319121864,
+     "selected_when_legal": 0.0
+    },
+    "SP": {
+     "legal_share": 1.0,
+     "n_legal": 2740,
+     "selected_share": 0.9985401459854014,
+     "p_when_legal": 0.9976872797005905,
+     "selected_when_legal": 0.9985401459854014
+    },
+    "SH": {
+     "legal_share": 1.0,
+     "n_legal": 2740,
+     "selected_share": 0.00145985401459854,
+     "p_when_legal": 0.0023127202994095153,
+     "selected_when_legal": 0.00145985401459854
+    },
+    "F": {
+     "legal_share": 0.0,
+     "n_legal": 0,
+     "selected_share": 0.0,
+     "p_when_legal": NaN,
+     "selected_when_legal": NaN
+    },
+    "Pressure": {
+     "legal_share": 0.0,
+     "n_legal": 0,
+     "selected_share": 0.0,
+     "p_when_legal": NaN,
+     "selected_when_legal": NaN
+    },
+    "Vision": {
+     "legal_share": 0.0,
+     "n_legal": 0,
+     "selected_share": 0.0,
+     "p_when_legal": NaN,
+     "selected_when_legal": NaN
+    }
+   },
+   "opportunities": {
+    "recall legal and HP <= 2": {
+     "n": 12,
+     "share_of_present_turns": 0.004379562043795621,
+     "p": {
+      "Recall": 0.0002380432360644508
+     }
+    },
+    "recall legal and HP <= 3": {
+     "n": 66,
+     "share_of_present_turns": 0.02408759124087591,
+     "p": {
+      "Recall": 0.00019178478570015808
+     }
+    },
+    "HP <= 2 at or past the lane (Recall illegal)": {
+     "n": 429,
+     "share_of_present_turns": 0.15656934306569342,
+     "p": {
+      "Safe": 0.0010528117314827525,
+      "Yield": 0.0041625765438783185,
+      "Trade": 0.2059933941730091,
+      "Hold": 0.7887912175516298
+     }
+    },
+    "HP <= 2, enemy present": {
+     "n": 404,
+     "share_of_present_turns": 0.14744525547445256,
+     "p": {
+      "Safe": 0.0010486979454717822,
+      "Yield": 0.004090706912868851,
+      "Trade": 0.23502168771034643,
+      "Hold": 0.7598341877906906,
+      "Recall": 4.719640622409718e-06
+     }
+    },
+    "Freeze legal": {
+     "n": 0,
+     "share_of_present_turns": 0.0,
+     "p": {
+      "F": NaN,
+      "SH": NaN
+     }
+    },
+    "siege objective legal": {
+     "n": 0,
+     "share_of_present_turns": 0.0,
+     "p": {
+      "Pressure": NaN,
+      "Vision": NaN
+     }
+    },
+    "enemy champion away (punish window)": {
+     "n": 448,
+     "share_of_present_turns": 0.1635036496350365,
+     "p": {
+      "SH": 0.0022384785034400495,
+      "Hold": 0.7400757939150334,
+      "Trade": 0.25417372537460237
+     }
+    },
+    "own front stacked (front HP > one wave)": {
+     "n": 0,
+     "share_of_present_turns": 0.0,
+     "p": {
+      "SH": NaN
+     }
+    },
+    "opponent P(Trade) >= 0.5": {
+     "n": 1221,
+     "share_of_present_turns": 0.4456204379562044,
+     "p": {
+      "Yield": 0.004503396552880988,
+      "Safe": 0.001198806601367047,
+      "Trade": 0.2867282383601731,
+      "Hold": 0.7075692559777124
+     }
+    },
+    "HP <= 2 and opponent P(Trade) >= 0.5": {
+     "n": 395,
+     "share_of_present_turns": 0.14416058394160583,
+     "p": {
+      "Yield": 0.004135894508838264,
+      "Safe": 0.001054532525385438,
+      "Trade": 0.21807685618576625,
+      "Hold": 0.77673271678001
+     }
+    },
+    "own wave past the lane (farm spot > 0)": {
+     "n": 0,
+     "share_of_present_turns": 0.0,
+     "p": {
+      "Hold": NaN,
+      "Trade": NaN
+     }
+    }
+   },
+   "entropy": 0.33576170193190025,
+   "deaths": 1.64
+  },
+  "sp80_s0|128320": {
+   "legality": {
+    "Hold": {
+     "legal_share": 1.0,
+     "n_legal": 2729,
+     "selected_share": 0.5016489556614144,
+     "p_when_legal": 0.5046911867780804,
+     "selected_when_legal": 0.5016489556614144
+    },
+    "Yield": {
+     "legal_share": 1.0,
+     "n_legal": 2729,
+     "selected_share": 0.002565042139978014,
+     "p_when_legal": 0.0021703775718017434,
+     "selected_when_legal": 0.002565042139978014
+    },
+    "Trade": {
+     "legal_share": 1.0,
+     "n_legal": 2729,
+     "selected_share": 0.4957860021986075,
+     "p_when_legal": 0.49237182150922487,
+     "selected_when_legal": 0.4957860021986075
+    },
+    "Safe": {
+     "legal_share": 1.0,
+     "n_legal": 2729,
+     "selected_share": 0.0,
+     "p_when_legal": 0.0006798971640671132,
+     "selected_when_legal": 0.0
+    },
+    "Recall": {
+     "legal_share": 0.42982777574203007,
+     "n_legal": 1173,
+     "selected_share": 0.0,
+     "p_when_legal": 0.0002017481924618312,
+     "selected_when_legal": 0.0
+    },
+    "SP": {
+     "legal_share": 1.0,
+     "n_legal": 2729,
+     "selected_share": 0.9992671308171491,
+     "p_when_legal": 0.9984291603920005,
+     "selected_when_legal": 0.9992671308171491
+    },
+    "SH": {
+     "legal_share": 1.0,
+     "n_legal": 2729,
+     "selected_share": 0.0007328691828508611,
+     "p_when_legal": 0.0015708396079995046,
+     "selected_when_legal": 0.0007328691828508611
+    },
+    "F": {
+     "legal_share": 0.0,
+     "n_legal": 0,
+     "selected_share": 0.0,
+     "p_when_legal": NaN,
+     "selected_when_legal": NaN
+    },
+    "Pressure": {
+     "legal_share": 0.0,
+     "n_legal": 0,
+     "selected_share": 0.0,
+     "p_when_legal": NaN,
+     "selected_when_legal": NaN
+    },
+    "Vision": {
+     "legal_share": 0.0,
+     "n_legal": 0,
+     "selected_share": 0.0,
+     "p_when_legal": NaN,
+     "selected_when_legal": NaN
+    }
+   },
+   "opportunities": {
+    "recall legal and HP <= 2": {
+     "n": 30,
+     "share_of_present_turns": 0.010993037742762916,
+     "p": {
+      "Recall": 0.00016729980152820054
+     }
+    },
+    "recall legal and HP <= 3": {
+     "n": 83,
+     "share_of_present_turns": 0.030414071088310738,
+     "p": {
+      "Recall": 0.0001464921486289194
+     }
+    },
+    "HP <= 2 at or past the lane (Recall illegal)": {
+     "n": 457,
+     "share_of_present_turns": 0.16746060828142176,
+     "p": {
+      "Safe": 0.0006171155809001149,
+      "Yield": 0.002193890954769669,
+      "Trade": 0.1994685923221562,
+      "Hold": 0.797720401142174
+     }
+    },
+    "HP <= 2, enemy present": {
+     "n": 436,
+     "share_of_present_turns": 0.15976548186148773,
+     "p": {
+      "Safe": 0.000599965254414727,
+      "Yield": 0.0020846014494958717,
+      "Trade": 0.25620125713334463,
+      "Hold": 0.7411066858012566,
+      "Recall": 7.490361488258294e-06
+     }
+    },
+    "Freeze legal": {
+     "n": 0,
+     "share_of_present_turns": 0.0,
+     "p": {
+      "F": NaN,
+      "SH": NaN
+     }
+    },
+    "siege objective legal": {
+     "n": 0,
+     "share_of_present_turns": 0.0,
+     "p": {
+      "Pressure": NaN,
+      "Vision": NaN
+     }
+    },
+    "enemy champion away (punish window)": {
+     "n": 453,
+     "share_of_present_turns": 0.16599486991572004,
+     "p": {
+      "SH": 0.0018820536357679312,
+      "Hold": 0.7615736966315279,
+      "Trade": 0.23456547356798635
+     }
+    },
+    "own front stacked (front HP > one wave)": {
+     "n": 0,
+     "share_of_present_turns": 0.0,
+     "p": {
+      "SH": NaN
+     }
+    },
+    "opponent P(Trade) >= 0.5": {
+     "n": 1269,
+     "share_of_present_turns": 0.4650054965188714,
+     "p": {
+      "Yield": 0.0024725697839857834,
+      "Safe": 0.0007568963056149679,
+      "Trade": 0.2930856199867062,
+      "Hold": 0.7036366633415473
+     }
+    },
+    "HP <= 2 and opponent P(Trade) >= 0.5": {
+     "n": 413,
+     "share_of_present_turns": 0.15133748625870283,
+     "p": {
+      "Yield": 0.0021515812531204635,
+      "Safe": 0.0006132846973100133,
+      "Trade": 0.21591060157948375,
+      "Hold": 0.7813224480451955
+     }
+    },
+    "own wave past the lane (farm spot > 0)": {
+     "n": 0,
+     "share_of_present_turns": 0.0,
+     "p": {
+      "Hold": NaN,
+      "Trade": NaN
+     }
+    }
+   },
+   "entropy": 0.27734971789552276,
+   "deaths": 1.72
+  },
+  "sp80_s0|154144": {
+   "legality": {
+    "Hold": {
+     "legal_share": 1.0,
+     "n_legal": 2793,
+     "selected_share": 0.5882563551736484,
+     "p_when_legal": 0.5914104533240255,
+     "selected_when_legal": 0.5882563551736484
+    },
+    "Yield": {
+     "legal_share": 1.0,
+     "n_legal": 2793,
+     "selected_share": 0.002506265664160401,
+     "p_when_legal": 0.0024580725201670977,
+     "selected_when_legal": 0.002506265664160401
+    },
+    "Trade": {
+     "legal_share": 1.0,
+     "n_legal": 2793,
+     "selected_share": 0.4092373791621912,
+     "p_when_legal": 0.4047728138853946,
+     "selected_when_legal": 0.4092373791621912
+    },
+    "Safe": {
+     "legal_share": 1.0,
+     "n_legal": 2793,
+     "selected_share": 0.0,
+     "p_when_legal": 0.0012364376313383665,
+     "selected_when_legal": 0.0
+    },
+    "Recall": {
+     "legal_share": 0.37092731829573933,
+     "n_legal": 1036,
+     "selected_share": 0.0,
+     "p_when_legal": 0.00032950562831561466,
+     "selected_when_legal": 0.0
+    },
+    "SP": {
+     "legal_share": 1.0,
+     "n_legal": 2793,
+     "selected_share": 0.9967776584317938,
+     "p_when_legal": 0.9973436135644204,
+     "selected_when_legal": 0.9967776584317938
+    },
+    "SH": {
+     "legal_share": 1.0,
+     "n_legal": 2793,
+     "selected_share": 0.00322234156820623,
+     "p_when_legal": 0.0026563864355796736,
+     "selected_when_legal": 0.00322234156820623
+    },
+    "F": {
+     "legal_share": 0.0,
+     "n_legal": 0,
+     "selected_share": 0.0,
+     "p_when_legal": NaN,
+     "selected_when_legal": NaN
+    },
+    "Pressure": {
+     "legal_share": 0.0,
+     "n_legal": 0,
+     "selected_share": 0.0,
+     "p_when_legal": NaN,
+     "selected_when_legal": NaN
+    },
+    "Vision": {
+     "legal_share": 0.0,
+     "n_legal": 0,
+     "selected_share": 0.0,
+     "p_when_legal": NaN,
+     "selected_when_legal": NaN
+    }
+   },
+   "opportunities": {
+    "recall legal and HP <= 2": {
+     "n": 9,
+     "share_of_present_turns": 0.00322234156820623,
+     "p": {
+      "Recall": 0.0003142706196700583
+     }
+    },
+    "recall legal and HP <= 3": {
+     "n": 37,
+     "share_of_present_turns": 0.013247404224847834,
+     "p": {
+      "Recall": 0.00021514834487434796
+     }
+    },
+    "HP <= 2 at or past the lane (Recall illegal)": {
+     "n": 452,
+     "share_of_present_turns": 0.16183315431435732,
+     "p": {
+      "Safe": 0.0008979834651063742,
+      "Yield": 0.0019243417651423995,
+      "Trade": 0.16509239688067107,
+      "Hold": 0.8320852778890802
+     }
+    },
+    "HP <= 2, enemy present": {
+     "n": 415,
+     "share_of_present_turns": 0.1485857500895095,
+     "p": {
+      "Safe": 0.0009374326317576027,
+      "Yield": 0.0019872934542252522,
+      "Trade": 0.19187070308130627,
+      "Hold": 0.8051999872565017,
+      "Recall": 4.583576209342632e-06
+     }
+    },
+    "Freeze legal": {
+     "n": 0,
+     "share_of_present_turns": 0.0,
+     "p": {
+      "F": NaN,
+      "SH": NaN
+     }
+    },
+    "siege objective legal": {
+     "n": 0,
+     "share_of_present_turns": 0.0,
+     "p": {
+      "Pressure": NaN,
+      "Vision": NaN
+     }
+    },
+    "enemy champion away (punish window)": {
+     "n": 395,
+     "share_of_present_turns": 0.1414249910490512,
+     "p": {
+      "SH": 0.001959453063895959,
+      "Hold": 0.8564591454044989,
+      "Trade": 0.1405449273658605
+     }
+    },
+    "own front stacked (front HP > one wave)": {
+     "n": 0,
+     "share_of_present_turns": 0.0,
+     "p": {
+      "SH": NaN
+     }
+    },
+    "opponent P(Trade) >= 0.5": {
+     "n": 1132,
+     "share_of_present_turns": 0.4052989616899391,
+     "p": {
+      "Yield": 0.002445717400260252,
+      "Safe": 0.0012363818737443771,
+      "Trade": 0.23806280425972468,
+      "Hold": 0.7581504974005299
+     }
+    },
+    "HP <= 2 and opponent P(Trade) >= 0.5": {
+     "n": 367,
+     "share_of_present_turns": 0.1313999283924096,
+     "p": {
+      "Yield": 0.0018706189628571472,
+      "Safe": 0.0008658368743474244,
+      "Trade": 0.18710720929391753,
+      "Hold": 0.810156334868878
+     }
+    },
+    "own wave past the lane (farm spot > 0)": {
+     "n": 0,
+     "share_of_present_turns": 0.0,
+     "p": {
+      "Hold": NaN,
+      "Trade": NaN
+     }
+    }
+   },
+   "entropy": 0.3075384887312814,
+   "deaths": 1.49
+  },
+  "sp80_s0|179936": {
+   "legality": {
+    "Hold": {
+     "legal_share": 1.0,
+     "n_legal": 2705,
+     "selected_share": 0.5390018484288355,
+     "p_when_legal": 0.5393401712843108,
+     "selected_when_legal": 0.5390018484288355
+    },
+    "Yield": {
+     "legal_share": 1.0,
+     "n_legal": 2705,
+     "selected_share": 0.0007393715341959334,
+     "p_when_legal": 0.0018507710147890424,
+     "selected_when_legal": 0.0007393715341959334
+    },
+    "Trade": {
+     "legal_share": 1.0,
+     "n_legal": 2705,
+     "selected_share": 0.4598890942698706,
+     "p_when_legal": 0.45755615910366554,
+     "selected_when_legal": 0.4598890942698706
+    },
+    "Safe": {
+     "legal_share": 1.0,
+     "n_legal": 2705,
+     "selected_share": 0.0003696857670979667,
+     "p_when_legal": 0.0011672890829717015,
+     "selected_when_legal": 0.0003696857670979667
+    },
+    "Recall": {
+     "legal_share": 0.3678373382624769,
+     "n_legal": 995,
+     "selected_share": 0.0,
+     "p_when_legal": 0.00023273742319757633,
+     "selected_when_legal": 0.0
+    },
+    "SP": {
+     "legal_share": 1.0,
+     "n_legal": 2705,
+     "selected_share": 0.9992606284658041,
+     "p_when_legal": 0.9976765977611508,
+     "selected_when_legal": 0.9992606284658041
+    },
+    "SH": {
+     "legal_share": 1.0,
+     "n_legal": 2705,
+     "selected_share": 0.0007393715341959334,
+     "p_when_legal": 0.00232340223884914,
+     "selected_when_legal": 0.0007393715341959334
+    },
+    "F": {
+     "legal_share": 0.0,
+     "n_legal": 0,
+     "selected_share": 0.0,
+     "p_when_legal": NaN,
+     "selected_when_legal": NaN
+    },
+    "Pressure": {
+     "legal_share": 0.0,
+     "n_legal": 0,
+     "selected_share": 0.0,
+     "p_when_legal": NaN,
+     "selected_when_legal": NaN
+    },
+    "Vision": {
+     "legal_share": 0.0,
+     "n_legal": 0,
+     "selected_share": 0.0,
+     "p_when_legal": NaN,
+     "selected_when_legal": NaN
+    }
+   },
+   "opportunities": {
+    "recall legal and HP <= 2": {
+     "n": 12,
+     "share_of_present_turns": 0.0044362292051756,
+     "p": {
+      "Recall": 0.00013093151877908264
+     }
+    },
+    "recall legal and HP <= 3": {
+     "n": 38,
+     "share_of_present_turns": 0.014048059149722736,
+     "p": {
+      "Recall": 0.00011820274084324353
+     }
+    },
+    "HP <= 2 at or past the lane (Recall illegal)": {
+     "n": 445,
+     "share_of_present_turns": 0.1645101663585952,
+     "p": {
+      "Safe": 0.0009449798472175573,
+      "Yield": 0.0016035249825398486,
+      "Trade": 0.22666442312725904,
+      "Hold": 0.7707870720429836
+     }
+    },
+    "HP <= 2, enemy present": {
+     "n": 402,
+     "share_of_present_turns": 0.14861367837338263,
+     "p": {
+      "Safe": 0.0009888945594993348,
+      "Yield": 0.0016504127154325233,
+      "Trade": 0.2699920562968509,
+      "Hold": 0.7273667298212041,
+      "Recall": 1.906607013225647e-06
+     }
+    },
+    "Freeze legal": {
+     "n": 0,
+     "share_of_present_turns": 0.0,
+     "p": {
+      "F": NaN,
+      "SH": NaN
+     }
+    },
+    "siege objective legal": {
+     "n": 0,
+     "share_of_present_turns": 0.0,
+     "p": {
+      "Pressure": NaN,
+      "Vision": NaN
+     }
+    },
+    "enemy champion away (punish window)": {
+     "n": 463,
+     "share_of_present_turns": 0.17116451016635859,
+     "p": {
+      "SH": 0.0015527378287114068,
+      "Hold": 0.9026492524777716,
+      "Trade": 0.09509395925752008
+     }
+    },
+    "own front stacked (front HP > one wave)": {
+     "n": 0,
+     "share_of_present_turns": 0.0,
+     "p": {
+      "SH": NaN
+     }
+    },
+    "opponent P(Trade) >= 0.5": {
+     "n": 1238,
+     "share_of_present_turns": 0.4576709796672828,
+     "p": {
+      "Yield": 0.0020163839527246406,
+      "Safe": 0.0012930773567295063,
+      "Trade": 0.35493660511006986,
+      "Hold": 0.6417138916250766
+     }
+    },
+    "HP <= 2 and opponent P(Trade) >= 0.5": {
+     "n": 382,
+     "share_of_present_turns": 0.14121996303142328,
+     "p": {
+      "Yield": 0.001642877319239755,
+      "Safe": 0.0009837617948967989,
+      "Trade": 0.2533307541934924,
+      "Hold": 0.744042606692371
+     }
+    },
+    "own wave past the lane (farm spot > 0)": {
+     "n": 0,
+     "share_of_present_turns": 0.0,
+     "p": {
+      "Hold": NaN,
+      "Trade": NaN
+     }
+    }
+   },
+   "entropy": 0.24584826132395887,
+   "deaths": 1.73
+  },
+  "sp80_s0|205152": {
+   "legality": {
+    "Hold": {
+     "legal_share": 1.0,
+     "n_legal": 2705,
+     "selected_share": 0.5249537892791127,
+     "p_when_legal": 0.5247832674574071,
+     "selected_when_legal": 0.5249537892791127
+    },
+    "Yield": {
+     "legal_share": 1.0,
+     "n_legal": 2705,
+     "selected_share": 0.0018484288354898336,
+     "p_when_legal": 0.0019764814860585745,
+     "selected_when_legal": 0.0018484288354898336
+    },
+    "Trade": {
+     "legal_share": 1.0,
+     "n_legal": 2705,
+     "selected_share": 0.47245841035120145,
+     "p_when_legal": 0.4714348725761561,
+     "selected_when_legal": 0.47245841035120145
+    },
+    "Safe": {
+     "legal_share": 1.0,
+     "n_legal": 2705,
+     "selected_share": 0.0007393715341959334,
+     "p_when_legal": 0.0016878109004352974,
+     "selected_when_legal": 0.0007393715341959334
+    },
+    "Recall": {
+     "legal_share": 0.38927911275415894,
+     "n_legal": 1053,
+     "selected_share": 0.0,
+     "p_when_legal": 0.000302013583803929,
+     "selected_when_legal": 0.0
+    },
+    "SP": {
+     "legal_share": 1.0,
+     "n_legal": 2705,
+     "selected_share": 0.9981515711645101,
+     "p_when_legal": 0.9973387224605998,
+     "selected_when_legal": 0.9981515711645101
+    },
+    "SH": {
+     "legal_share": 1.0,
+     "n_legal": 2705,
+     "selected_share": 0.0018484288354898336,
+     "p_when_legal": 0.0026612775394002177,
+     "selected_when_legal": 0.0018484288354898336
+    },
+    "F": {
+     "legal_share": 0.0,
+     "n_legal": 0,
+     "selected_share": 0.0,
+     "p_when_legal": NaN,
+     "selected_when_legal": NaN
+    },
+    "Pressure": {
+     "legal_share": 0.0,
+     "n_legal": 0,
+     "selected_share": 0.0,
+     "p_when_legal": NaN,
+     "selected_when_legal": NaN
+    },
+    "Vision": {
+     "legal_share": 0.0,
+     "n_legal": 0,
+     "selected_share": 0.0,
+     "p_when_legal": NaN,
+     "selected_when_legal": NaN
+    }
+   },
+   "opportunities": {
+    "recall legal and HP <= 2": {
+     "n": 21,
+     "share_of_present_turns": 0.007763401109057301,
+     "p": {
+      "Recall": 0.00014270328810806675
+     }
+    },
+    "recall legal and HP <= 3": {
+     "n": 43,
+     "share_of_present_turns": 0.01589648798521257,
+     "p": {
+      "Recall": 0.00014501569972922367
+     }
+    },
+    "HP <= 2 at or past the lane (Recall illegal)": {
+     "n": 467,
+     "share_of_present_turns": 0.17264325323475047,
+     "p": {
+      "Safe": 0.0013203163777383117,
+      "Yield": 0.0016442748057765055,
+      "Trade": 0.2253735102760598,
+      "Hold": 0.7716618985404254
+     }
+    },
+    "HP <= 2, enemy present": {
+     "n": 431,
+     "share_of_present_turns": 0.15933456561922366,
+     "p": {
+      "Safe": 0.0013543341545939028,
+      "Yield": 0.0016562475742273913,
+      "Trade": 0.2841331754897496,
+      "Hold": 0.7128504107942858,
+      "Recall": 5.831987143292513e-06
+     }
+    },
+    "Freeze legal": {
+     "n": 0,
+     "share_of_present_turns": 0.0,
+     "p": {
+      "F": NaN,
+      "SH": NaN
+     }
+    },
+    "siege objective legal": {
+     "n": 0,
+     "share_of_present_turns": 0.0,
+     "p": {
+      "Pressure": NaN,
+      "Vision": NaN
+     }
+    },
+    "enemy champion away (punish window)": {
+     "n": 467,
+     "share_of_present_turns": 0.17264325323475047,
+     "p": {
+      "SH": 0.00177263583203281,
+      "Hold": 0.9063483728568263,
+      "Trade": 0.09090749485463494
+     }
+    },
+    "own front stacked (front HP > one wave)": {
+     "n": 0,
+     "share_of_present_turns": 0.0,
+     "p": {
+      "SH": NaN
+     }
+    },
+    "opponent P(Trade) >= 0.5": {
+     "n": 1267,
+     "share_of_present_turns": 0.46839186691312384,
+     "p": {
+      "Yield": 0.0021372447734161783,
+      "Safe": 0.001851991638746639,
+      "Trade": 0.36818950075888673,
+      "Hold": 0.6277711945293829
+     }
+    },
+    "HP <= 2 and opponent P(Trade) >= 0.5": {
+     "n": 409,
+     "share_of_present_turns": 0.15120147874306838,
+     "p": {
+      "Yield": 0.0016775271139234135,
+      "Safe": 0.0013702788223766674,
+      "Trade": 0.25768049436289525,
+      "Hold": 0.7392712550026225
+     }
+    },
+    "own wave past the lane (farm spot > 0)": {
+     "n": 0,
+     "share_of_present_turns": 0.0,
+     "p": {
+      "Hold": NaN,
+      "Trade": NaN
+     }
+    }
+   },
+   "entropy": 0.23315538371976335,
+   "deaths": 1.72
+  },
+  "sp80_s0|230624": {
+   "legality": {
+    "Hold": {
+     "legal_share": 1.0,
+     "n_legal": 2701,
+     "selected_share": 0.4931506849315068,
+     "p_when_legal": 0.4949991234978187,
+     "selected_when_legal": 0.4931506849315068
+    },
+    "Yield": {
+     "legal_share": 1.0,
+     "n_legal": 2701,
+     "selected_share": 0.0022213994816734544,
+     "p_when_legal": 0.0026310935481316596,
+     "selected_when_legal": 0.0022213994816734544
+    },
+    "Trade": {
+     "legal_share": 1.0,
+     "n_legal": 2701,
+     "selected_share": 0.5042576823398741,
+     "p_when_legal": 0.5004602196682395,
+     "selected_when_legal": 0.5042576823398741
+    },
+    "Safe": {
+     "legal_share": 1.0,
+     "n_legal": 2701,
+     "selected_share": 0.00037023324694557573,
+     "p_when_legal": 0.001805847939884252,
+     "selected_when_legal": 0.00037023324694557573
+    },
+    "Recall": {
+     "legal_share": 0.39133654202147355,
+     "n_legal": 1057,
+     "selected_share": 0.0,
+     "p_when_legal": 0.000265028523505994,
+     "selected_when_legal": 0.0
+    },
+    "SP": {
+     "legal_share": 1.0,
+     "n_legal": 2701,
+     "selected_share": 0.9988893002591632,
+     "p_when_legal": 0.9972756026868976,
+     "selected_when_legal": 0.9988893002591632
+    },
+    "SH": {
+     "legal_share": 1.0,
+     "n_legal": 2701,
+     "selected_share": 0.0011106997408367272,
+     "p_when_legal": 0.002724397313102425,
+     "selected_when_legal": 0.0011106997408367272
+    },
+    "F": {
+     "legal_share": 0.0,
+     "n_legal": 0,
+     "selected_share": 0.0,
+     "p_when_legal": NaN,
+     "selected_when_legal": NaN
+    },
+    "Pressure": {
+     "legal_share": 0.0,
+     "n_legal": 0,
+     "selected_share": 0.0,
+     "p_when_legal": NaN,
+     "selected_when_legal": NaN
+    },
+    "Vision": {
+     "legal_share": 0.0,
+     "n_legal": 0,
+     "selected_share": 0.0,
+     "p_when_legal": NaN,
+     "selected_when_legal": NaN
+    }
+   },
+   "opportunities": {
+    "recall legal and HP <= 2": {
+     "n": 19,
+     "share_of_present_turns": 0.007034431691965938,
+     "p": {
+      "Recall": 0.00011461235082543455
+     }
+    },
+    "recall legal and HP <= 3": {
+     "n": 54,
+     "share_of_present_turns": 0.01999259533506109,
+     "p": {
+      "Recall": 0.00010945476259579752
+     }
+    },
+    "HP <= 2 at or past the lane (Recall illegal)": {
+     "n": 484,
+     "share_of_present_turns": 0.17919289152165865,
+     "p": {
+      "Safe": 0.0015450384087806446,
+      "Yield": 0.0024909143749691333,
+      "Trade": 0.26560792347258994,
+      "Hold": 0.7303561237436604
+     }
+    },
+    "HP <= 2, enemy present": {
+     "n": 433,
+     "share_of_present_turns": 0.16031099592743428,
+     "p": {
+      "Safe": 0.0015472128137525207,
+      "Yield": 0.0024470145512680715,
+      "Trade": 0.3231933800568727,
+      "Hold": 0.6728102473062267,
+      "Recall": 2.145271880094016e-06
+     }
+    },
+    "Freeze legal": {
+     "n": 0,
+     "share_of_present_turns": 0.0,
+     "p": {
+      "F": NaN,
+      "SH": NaN
+     }
+    },
+    "siege objective legal": {
+     "n": 0,
+     "share_of_present_turns": 0.0,
+     "p": {
+      "Pressure": NaN,
+      "Vision": NaN
+     }
+    },
+    "enemy champion away (punish window)": {
+     "n": 473,
+     "share_of_present_turns": 0.1751203258052573,
+     "p": {
+      "SH": 0.002174761656136539,
+      "Hold": 0.8835338562960934,
+      "Trade": 0.1122211526299704
+     }
+    },
+    "own front stacked (front HP > one wave)": {
+     "n": 0,
+     "share_of_present_turns": 0.0,
+     "p": {
+      "SH": NaN
+     }
+    },
+    "opponent P(Trade) >= 0.5": {
+     "n": 1321,
+     "share_of_present_turns": 0.4890781192151055,
+     "p": {
+      "Yield": 0.0029863969454095637,
+      "Safe": 0.0021053481815565857,
+      "Trade": 0.4105242598306675,
+      "Hold": 0.5843187021488696
+     }
+    },
+    "HP <= 2 and opponent P(Trade) >= 0.5": {
+     "n": 421,
+     "share_of_present_turns": 0.15586819696408738,
+     "p": {
+      "Yield": 0.0024818732592855387,
+      "Safe": 0.0015700682379668001,
+      "Trade": 0.3055356955515683,
+      "Hold": 0.6904118620951709
+     }
+    },
+    "own wave past the lane (farm spot > 0)": {
+     "n": 0,
+     "share_of_present_turns": 0.0,
+     "p": {
+      "Hold": NaN,
+      "Trade": NaN
+     }
+    }
+   },
+   "entropy": 0.21436113053533293,
+   "deaths": 1.75
+  },
+  "sp80_s0|256224": {
+   "legality": {
+    "Hold": {
+     "legal_share": 1.0,
+     "n_legal": 2680,
+     "selected_share": 0.44776119402985076,
+     "p_when_legal": 0.44976874125352617,
+     "selected_when_legal": 0.44776119402985076
+    },
+    "Yield": {
+     "legal_share": 1.0,
+     "n_legal": 2680,
+     "selected_share": 0.0014925373134328358,
+     "p_when_legal": 0.0022797404467497988,
+     "selected_when_legal": 0.0014925373134328358
+    },
+    "Trade": {
+     "legal_share": 1.0,
+     "n_legal": 2680,
+     "selected_share": 0.5503731343283582,
+     "p_when_legal": 0.5462637797513444,
+     "selected_when_legal": 0.5503731343283582
+    },
+    "Safe": {
+     "legal_share": 1.0,
+     "n_legal": 2680,
+     "selected_share": 0.00037313432835820896,
+     "p_when_legal": 0.0015902884988636722,
+     "selected_when_legal": 0.00037313432835820896
+    },
+    "Recall": {
+     "legal_share": 0.3917910447761194,
+     "n_legal": 1050,
+     "selected_share": 0.0,
+     "p_when_legal": 0.00024872965019280975,
+     "selected_when_legal": 0.0
+    },
+    "SP": {
+     "legal_share": 1.0,
+     "n_legal": 2680,
+     "selected_share": 0.9966417910447761,
+     "p_when_legal": 0.9969680442195631,
+     "selected_when_legal": 0.9966417910447761
+    },
+    "SH": {
+     "legal_share": 1.0,
+     "n_legal": 2680,
+     "selected_share": 0.0033582089552238806,
+     "p_when_legal": 0.003031955780436904,
+     "selected_when_legal": 0.0033582089552238806
+    },
+    "F": {
+     "legal_share": 0.0,
+     "n_legal": 0,
+     "selected_share": 0.0,
+     "p_when_legal": NaN,
+     "selected_when_legal": NaN
+    },
+    "Pressure": {
+     "legal_share": 0.0,
+     "n_legal": 0,
+     "selected_share": 0.0,
+     "p_when_legal": NaN,
+     "selected_when_legal": NaN
+    },
+    "Vision": {
+     "legal_share": 0.0,
+     "n_legal": 0,
+     "selected_share": 0.0,
+     "p_when_legal": NaN,
+     "selected_when_legal": NaN
+    }
+   },
+   "opportunities": {
+    "recall legal and HP <= 2": {
+     "n": 38,
+     "share_of_present_turns": 0.014179104477611941,
+     "p": {
+      "Recall": 0.00015063099168020742
+     }
+    },
+    "recall legal and HP <= 3": {
+     "n": 89,
+     "share_of_present_turns": 0.0332089552238806,
+     "p": {
+      "Recall": 0.00012880368047872288
+     }
+    },
+    "HP <= 2 at or past the lane (Recall illegal)": {
+     "n": 478,
+     "share_of_present_turns": 0.1783582089552239,
+     "p": {
+      "Safe": 0.0015209740349549992,
+      "Yield": 0.002348249497449697,
+      "Trade": 0.33369696024135787,
+      "Hold": 0.6624338162262374
+     }
+    },
+    "HP <= 2, enemy present": {
+     "n": 440,
+     "share_of_present_turns": 0.16417910447761194,
+     "p": {
+      "Safe": 0.0014376868363791325,
+      "Yield": 0.002201974381888606,
+      "Trade": 0.4148437163394397,
+      "Hold": 0.5815119419724969,
+      "Recall": 4.680469795592512e-06
+     }
+    },
+    "Freeze legal": {
+     "n": 0,
+     "share_of_present_turns": 0.0,
+     "p": {
+      "F": NaN,
+      "SH": NaN
+     }
+    },
+    "siege objective legal": {
+     "n": 0,
+     "share_of_present_turns": 0.0,
+     "p": {
+      "Pressure": NaN,
+      "Vision": NaN
+     }
+    },
+    "enemy champion away (punish window)": {
+     "n": 484,
+     "share_of_present_turns": 0.18059701492537314,
+     "p": {
+      "SH": 0.0031031555515317164,
+      "Hold": 0.8224416063298988,
+      "Trade": 0.17309974397913253
+     }
+    },
+    "own front stacked (front HP > one wave)": {
+     "n": 0,
+     "share_of_present_turns": 0.0,
+     "p": {
+      "SH": NaN
+     }
+    },
+    "opponent P(Trade) >= 0.5": {
+     "n": 1384,
+     "share_of_present_turns": 0.5164179104477612,
+     "p": {
+      "Yield": 0.002486592511278115,
+      "Safe": 0.0017433866286863794,
+      "Trade": 0.4986867736880818,
+      "Hold": 0.49703014561171455
+     }
+    },
+    "HP <= 2 and opponent P(Trade) >= 0.5": {
+     "n": 418,
+     "share_of_present_turns": 0.15597014925373134,
+     "p": {
+      "Yield": 0.0022766423418720374,
+      "Safe": 0.0014889065416524364,
+      "Trade": 0.385034086839609,
+      "Hold": 0.6111984971028638
+     }
+    },
+    "own wave past the lane (farm spot > 0)": {
+     "n": 0,
+     "share_of_present_turns": 0.0,
+     "p": {
+      "Hold": NaN,
+      "Trade": NaN
+     }
+    }
+   },
+   "entropy": 0.22947145158502222,
+   "deaths": 1.86
+  },
+  "sp80_s0|282240": {
+   "legality": {
+    "Hold": {
+     "legal_share": 1.0,
+     "n_legal": 2693,
+     "selected_share": 0.4793910137393242,
+     "p_when_legal": 0.48061167853298453,
+     "selected_when_legal": 0.4793910137393242
+    },
+    "Yield": {
+     "legal_share": 1.0,
+     "n_legal": 2693,
+     "selected_share": 0.0029706646862235424,
+     "p_when_legal": 0.001993144097476957,
+     "selected_when_legal": 0.0029706646862235424
+    },
+    "Trade": {
+     "legal_share": 1.0,
+     "n_legal": 2693,
+     "selected_share": 0.5176383215744523,
+     "p_when_legal": 0.5157139362098887,
+     "selected_when_legal": 0.5176383215744523
+    },
+    "Safe": {
+     "legal_share": 1.0,
+     "n_legal": 2693,
+     "selected_share": 0.0,
+     "p_when_legal": 0.0015768592177443207,
+     "selected_when_legal": 0.0
+    },
+    "Recall": {
+     "legal_share": 0.38989974006684,
+     "n_legal": 1050,
+     "selected_share": 0.0,
+     "p_when_legal": 0.00026771482814439383,
+     "selected_when_legal": 0.0
+    },
+    "SP": {
+     "legal_share": 1.0,
+     "n_legal": 2693,
+     "selected_share": 0.9985146676568882,
+     "p_when_legal": 0.9971892480638849,
+     "selected_when_legal": 0.9985146676568882
+    },
+    "SH": {
+     "legal_share": 1.0,
+     "n_legal": 2693,
+     "selected_share": 0.0014853323431117712,
+     "p_when_legal": 0.0028107519361151973,
+     "selected_when_legal": 0.0014853323431117712
+    },
+    "F": {
+     "legal_share": 0.0,
+     "n_legal": 0,
+     "selected_share": 0.0,
+     "p_when_legal": NaN,
+     "selected_when_legal": NaN
+    },
+    "Pressure": {
+     "legal_share": 0.0,
+     "n_legal": 0,
+     "selected_share": 0.0,
+     "p_when_legal": NaN,
+     "selected_when_legal": NaN
+    },
+    "Vision": {
+     "legal_share": 0.0,
+     "n_legal": 0,
+     "selected_share": 0.0,
+     "p_when_legal": NaN,
+     "selected_when_legal": NaN
+    }
+   },
+   "opportunities": {
+    "recall legal and HP <= 2": {
+     "n": 27,
+     "share_of_present_turns": 0.010025993316004456,
+     "p": {
+      "Recall": 0.0001306521952369168
+     }
+    },
+    "recall legal and HP <= 3": {
+     "n": 64,
+     "share_of_present_turns": 0.02376531748978834,
+     "p": {
+      "Recall": 0.000121266088839841
+     }
+    },
+    "HP <= 2 at or past the lane (Recall illegal)": {
+     "n": 480,
+     "share_of_present_turns": 0.17823988117341255,
+     "p": {
+      "Safe": 0.0014657187856170002,
+      "Yield": 0.001979248203658754,
+      "Trade": 0.29073759781030234,
+      "Hold": 0.705817435200422
+     }
+    },
+    "HP <= 2, enemy present": {
+     "n": 429,
+     "share_of_present_turns": 0.15930189379873747,
+     "p": {
+      "Safe": 0.0014175982637447775,
+      "Yield": 0.0019069403533253074,
+      "Trade": 0.3643427594705411,
+      "Hold": 0.6323295121809646,
+      "Recall": 3.1897314241457843e-06
+     }
+    },
+    "Freeze legal": {
+     "n": 0,
+     "share_of_present_turns": 0.0,
+     "p": {
+      "F": NaN,
+      "SH": NaN
+     }
+    },
+    "siege objective legal": {
+     "n": 0,
+     "share_of_present_turns": 0.0,
+     "p": {
+      "Pressure": NaN,
+      "Vision": NaN
+     }
+    },
+    "enemy champion away (punish window)": {
+     "n": 479,
+     "share_of_present_turns": 0.1778685480876346,
+     "p": {
+      "SH": 0.002475976971590236,
+      "Hold": 0.8642518675491986,
+      "Trade": 0.1322223179493137
+     }
+    },
+    "own front stacked (front HP > one wave)": {
+     "n": 0,
+     "share_of_present_turns": 0.0,
+     "p": {
+      "SH": NaN
+     }
+    },
+    "opponent P(Trade) >= 0.5": {
+     "n": 1336,
+     "share_of_present_turns": 0.4961010025993316,
+     "p": {
+      "Yield": 0.0023206434573456555,
+      "Safe": 0.001855828183915708,
+      "Trade": 0.4449453949217787,
+      "Hold": 0.5508033337741561
+     }
+    },
+    "HP <= 2 and opponent P(Trade) >= 0.5": {
+     "n": 411,
+     "share_of_present_turns": 0.15261789825473449,
+     "p": {
+      "Yield": 0.0019512854082801075,
+      "Safe": 0.0014535658363805006,
+      "Trade": 0.33812945048171006,
+      "Hold": 0.6584654448869163
+     }
+    },
+    "own wave past the lane (farm spot > 0)": {
+     "n": 0,
+     "share_of_present_turns": 0.0,
+     "p": {
+      "Hold": NaN,
+      "Trade": NaN
+     }
+    }
+   },
+   "entropy": 0.21413179649757874,
+   "deaths": 1.8
+  },
+  "sp80_s0|307296": {
+   "legality": {
+    "Hold": {
+     "legal_share": 1.0,
+     "n_legal": 2686,
+     "selected_share": 0.46835443037974683,
+     "p_when_legal": 0.4678893810586695,
+     "selected_when_legal": 0.46835443037974683
+    },
+    "Yield": {
+     "legal_share": 1.0,
+     "n_legal": 2686,
+     "selected_share": 0.0029784065524944155,
+     "p_when_legal": 0.002064425314097619,
+     "selected_when_legal": 0.0029784065524944155
+    },
+    "Trade": {
+     "legal_share": 1.0,
+     "n_legal": 2686,
+     "selected_share": 0.5282948622486969,
+     "p_when_legal": 0.5284093687522996,
+     "selected_when_legal": 0.5282948622486969
+    },
+    "Safe": {
+     "legal_share": 1.0,
+     "n_legal": 2686,
+     "selected_share": 0.00037230081906180194,
+     "p_when_legal": 0.001531741850884305,
+     "selected_when_legal": 0.00037230081906180194
+    },
+    "Recall": {
+     "legal_share": 0.3987341772151899,
+     "n_legal": 1071,
+     "selected_share": 0.0,
+     "p_when_legal": 0.00026354155237707366,
+     "selected_when_legal": 0.0
+    },
+    "SP": {
+     "legal_share": 1.0,
+     "n_legal": 2686,
+     "selected_share": 0.9970215934475056,
+     "p_when_legal": 0.9971786313534267,
+     "selected_when_legal": 0.9970215934475056
+    },
+    "SH": {
+     "legal_share": 1.0,
+     "n_legal": 2686,
+     "selected_share": 0.0029784065524944155,
+     "p_when_legal": 0.0028213686465733594,
+     "selected_when_legal": 0.0029784065524944155
+    },
+    "F": {
+     "legal_share": 0.0,
+     "n_legal": 0,
+     "selected_share": 0.0,
+     "p_when_legal": NaN,
+     "selected_when_legal": NaN
+    },
+    "Pressure": {
+     "legal_share": 0.0,
+     "n_legal": 0,
+     "selected_share": 0.0,
+     "p_when_legal": NaN,
+     "selected_when_legal": NaN
+    },
+    "Vision": {
+     "legal_share": 0.0,
+     "n_legal": 0,
+     "selected_share": 0.0,
+     "p_when_legal": NaN,
+     "selected_when_legal": NaN
+    }
+   },
+   "opportunities": {
+    "recall legal and HP <= 2": {
+     "n": 19,
+     "share_of_present_turns": 0.007073715562174236,
+     "p": {
+      "Recall": 0.00014963014343997552
+     }
+    },
+    "recall legal and HP <= 3": {
+     "n": 57,
+     "share_of_present_turns": 0.02122114668652271,
+     "p": {
+      "Recall": 0.00010678132129689375
+     }
+    },
+    "HP <= 2 at or past the lane (Recall illegal)": {
+     "n": 497,
+     "share_of_present_turns": 0.18503350707371558,
+     "p": {
+      "Safe": 0.0014260229513536043,
+      "Yield": 0.0020643675556658195,
+      "Trade": 0.32970341633151556,
+      "Hold": 0.6668061931614649
+     }
+    },
+    "HP <= 2, enemy present": {
+     "n": 440,
+     "share_of_present_turns": 0.16381236038719285,
+     "p": {
+      "Safe": 0.0013804788745416824,
+      "Yield": 0.001988427155080154,
+      "Trade": 0.39413514537182354,
+      "Hold": 0.602493222293285,
+      "Recall": 2.7263052696693784e-06
+     }
+    },
+    "Freeze legal": {
+     "n": 0,
+     "share_of_present_turns": 0.0,
+     "p": {
+      "F": NaN,
+      "SH": NaN
+     }
+    },
+    "siege objective legal": {
+     "n": 0,
+     "share_of_present_turns": 0.0,
+     "p": {
+      "Pressure": NaN,
+      "Vision": NaN
+     }
+    },
+    "enemy champion away (punish window)": {
+     "n": 486,
+     "share_of_present_turns": 0.18093819806403574,
+     "p": {
+      "SH": 0.0026768318684854435,
+      "Hold": 0.8481469352509818,
+      "Trade": 0.14802948639422397
+     }
+    },
+    "own front stacked (front HP > one wave)": {
+     "n": 0,
+     "share_of_present_turns": 0.0,
+     "p": {
+      "SH": NaN
+     }
+    },
+    "opponent P(Trade) >= 0.5": {
+     "n": 1354,
+     "share_of_present_turns": 0.5040953090096798,
+     "p": {
+      "Yield": 0.0023743362325871474,
+      "Safe": 0.0017753841744610587,
+      "Trade": 0.46725676335335653,
+      "Hold": 0.5285236579261791
+     }
+    },
+    "HP <= 2 and opponent P(Trade) >= 0.5": {
+     "n": 430,
+     "share_of_present_turns": 0.16008935219657483,
+     "p": {
+      "Yield": 0.0020170996834828867,
+      "Safe": 0.0014017423112798774,
+      "Trade": 0.38042160152584986,
+      "Hold": 0.6161583036712613
+     }
+    },
+    "own wave past the lane (farm spot > 0)": {
+     "n": 0,
+     "share_of_present_turns": 0.0,
+     "p": {
+      "Hold": NaN,
+      "Trade": NaN
+     }
+    }
+   },
+   "entropy": 0.20854116646167825,
+   "deaths": 1.81
+  }
+ }
+}

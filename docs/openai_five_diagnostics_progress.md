@@ -40,28 +40,59 @@ Findings (9 main policies + pub_sprand_s1, mirror games, 400 games each):
   Enemy farm per turn 0.41 while the focal is away vs 0.15 while present. Payoff per kill difference +1.3 to +1.6.
 - Opponent P(Trade) >= 0.5 on 45-69% of turns; Yield 0.4-1.5%, Safe 0.2%.
 
-## Phase B: counterfactual evaluation (running)
+## Phase B: counterfactual evaluation (done; `counterfactual.md`, 13.7 min on 5 processes)
 
-10 scenarios (6 sampled from mirror games, 2 constructed with a scripted shove prefix, 2 at unequal skill),
-every legal first action + short plans, 120 paired rollouts per candidate, both seats following the policy.
-First single-state probes (20 rollouts, sp100_s0): one Shove at a 2-cycle phase +0.65 ± 0.13 over Slow Push;
-Pressure in a constructed siege +1.0 over Hold; walk-back-and-recall at HP <= 2 on the lane +0.48 over Hold.
+10 scenarios (6 sampled from mirror games, 2 constructed with a scripted Shove prefix, 2 at unequal skill), every
+legal first action + short plans, 120 paired rollouts per candidate, 1,026 states. Bug found and fixed: the
+walk-back-and-recall plan kept choosing Safe after its champion died on the way back (the engine's legality check
+raised; ~15 min of compute lost); the stage now saves one file per finished job and resumes.
+- Recall vs the policy at legal HP <= 2 states: -0.02 to -0.47; walk back and recall at the lane ~0 (-0.18 to +0.19).
+- Yield / Safe vs Hold: -0.07 to -0.28. Trade vs Hold: -0.15 to +0.14, intervals include 0 (indifference).
+- One-turn Freeze == Slow Push exactly in all 72 constructed Freeze-legal states.
+- Siege (constructed; reachable in only 1-12 of 24 attempts): Pressure > Hold (+0.2 to +0.8), Pressure > Vision.
+- Best single deviation significant (Bonferroni) in 21-75% of states, +0.08 to +0.33 on average, mostly a Shove,
+  but Shove - Slow Push averaged over 963 states is +0.00 / +0.01 / +0.10 (M3b / 100/0 / 80/20).
+- `calibration.md`: shared-policy critics match the Monte Carlo values (bias <= 0.18) except at Recall-legal
+  low-HP states (+0.38); M3b's critic is optimistic by up to +1.3 in mirror games.
 
-## Phase D: stronger attackers (running in the background)
+## Phase A.3: HP value (done; `hpvalue.md`, 1.8 min)
 
-`lanegame/experiments/rl/robustness.py`: 21 attackers x 1,024,000 steps (2 warm per main target, seeds 910/911;
-scratch for m3b_s0, sp100_s0, sp80_s0, seed 912), checkpoints at 25.6k ... 1,024k, ~8 min per attacker.
+HP is worth ~0.25 resources per point, nearly linearly (HP 1 vs 6: -1.24 to -1.39), about the same as being dead
+(-1.14 to -1.22, bounty excluded).
+
+## Phase C (done; `overlay.md`, `overlay_late.md`, `attacker_behavior.md`, `snapshot_audit.md`)
+
+- Rule overlays against the unmodified policy (1,000 episodes per seat): recall at HP <= 2 -0.14 to -0.47, at HP <= 1
+  ~0; punish-shove -0.3 to -1.0; lane-phase shove -0.1 to -0.5; shove+pressure every turn -2.2 to -2.8; pressure /
+  freeze rules ~0 (rarely fire). Added after the attacker audit: Shove (Pressure when legal) from turn 28 beats all 9
+  policies (+0.11 to +0.60); from turn 24 ~0.
+- The strongest attackers siege (1.3-2.6 plates/game), shove on ~30% of turns, mostly late.
+- Snapshot audit: rare actions collapse within 25-50k transitions; sieges never visited afterwards.
+- Decision gate: Recall, Yield, Safe, Trade/Hold mixing = reasonable behavior; sieges and wave timing = training
+  issue; Freeze = mechanics limitation (design); forward positioning = structural. No mechanics change made.
+
+## Phase D: stronger attackers (done; `robustness.md`)
+
+21 attackers x 1,024,000 steps (34 min on 6 processes), curves evaluated on SeedSequence(50,000) (207 evaluations).
+Lower bounds +0.71 to +2.63 (previously +0.11 to +1.15 at 307k); condition means M3b +1.96 +- 1.76, 100/0
++1.75 +- 1.86, 80/20 +1.01 +- 0.64; 11/21 curves unsaturated; Spearman with earlier budgets -0.03 / +0.17;
+same-target attackers differ by up to 2.0.
+
+## Phase E: long self-play (running)
+
+10 runs (100/0 and 80/20, seeds 0-4, 1,024,000 agent transitions) trained in 7.5 min (7 processes; the
+`train_long.md` header says 10 processes: it prints the driver's default). Evaluation and 20 attackers running.
 
 ## Tests
 
-`tests/test_diagnostics.py` (23 tests, ~11 s): replay of a restored snapshot with the recorded chance draws,
+`tests/test_diagnostics.py` (24 tests, ~12 s): replay of a restored snapshot with the recorded chance draws,
 snapshot round trip / mirror / side edits, observation helper = environment and mirror-consistent, configuration
 mismatch refused, rollout = play_episode, sampling rule, reward accounting and decomposition, illegal plans rejected,
 DEFER semantics, branch reproducibility and seeding, fresh rollout seeds, opponent branch-turn action and observation
 independent of the focal candidate (spy agent), common random numbers, frozen policies and cached probabilities,
 advantage algebra, seat symmetry, audit = head_to_head (payoffs, action frequencies, present/absent attribution),
 audit reward decomposition and summaries, player-assigned skills, rule overlay, seed-root separation, Phase D plan
-and paired difference. Mutation check: making a plan skip its seat's uniform draw fails 2 tests.
+and paired difference, scenario plans legal on absent turns (regression test for the bug above). Mutation check: making a plan skip its seat's uniform draw fails 2 tests.
 
 Lessons: write results JSON before formatting Markdown (a formatting bug lost one audit run); do not mutate modules
 on disk while background workers might import them.

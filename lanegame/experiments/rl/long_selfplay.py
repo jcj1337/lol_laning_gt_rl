@@ -293,7 +293,7 @@ def report():
                          f"{A[f'{n}|self|0.2/0.8']['legality']['Trade']['p_when_legal']:.2f}",
                          f"{A[f'{n}|self|0.8/0.2']['legality']['Trade']['p_when_legal']:.2f}"])
     L += ["## Behavior of the final policies (mirror games; probabilities on present turns)", "",
-          md_table(["policy", "Hold", "Yield", "Trade", "Safe", "Shove", "Recall | legal, HP <= 2", "Shove | enemy away",
+          md_table(["policy", "Hold", "Yield", "Trade", "Safe", "Shove", "Recall given legal, HP <= 2", "Shove given enemy away",
                     "deaths / game", "crashes / game", "objective-legal turns / game", "Trade at skill 0.2 vs 0.8",
                     "Trade at skill 0.8 vs 0.2"], rows), ""]
     if ex is not None:
