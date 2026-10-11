@@ -15,7 +15,9 @@ Trace schema ("lanegame.episode", version 1):
      "ganks": [A, B] (successful ganks suffered), "crash_resources": [A, B],
      "choice_default_used": false,
      "exposure_sum": [A, B], "trades_attempted": [A, B], "trades_connected": [A, B],
-     "yields_threatened": [A, B], "recalls": [A, B], "recalls_interrupted": [A, B], "turns_away": [A, B],   # champion mode only (else 0)
+     "yields_threatened": [A, B], "recalls": [A, B], "recalls_interrupted": [A, B], "turns_away": [A, B],
+     "trades_landed": [A, B], "trade_damage_dealt": [A, B], "tower_damage_taken": [A, B],
+     "damage_taken": [A, B],                                       # champion mode only (else 0)
      "turns": [ {StepResult.info of turn k}, ... ]        # only when recorded
   }
 }
@@ -42,6 +44,7 @@ from ..config import GameConfig
 from ..io import STATE_FIELDS, dump_json
 from .observation import feature_names, n_actions, obs_size
 
+CHAMP_COUNTERS = ("recalls_interrupted", "trades_landed", "trade_damage_dealt", "tower_damage_taken", "damage_taken")
 TRACE_SCHEMA = "lanegame.episode"
 TRACE_VERSION = 1
 
@@ -72,6 +75,10 @@ class EpisodeLog:
     recalls: List[int] = field(default_factory=lambda: [0, 0])
     recalls_interrupted: List[int] = field(default_factory=lambda: [0, 0])
     turns_away: List[int] = field(default_factory=lambda: [0, 0])     # turns off the lane (Recall turn included)
+    trades_landed: List[int] = field(default_factory=lambda: [0, 0])  # connected trades that dealt damage
+    trade_damage_dealt: List[int] = field(default_factory=lambda: [0, 0])
+    tower_damage_taken: List[int] = field(default_factory=lambda: [0, 0])
+    damage_taken: List[int] = field(default_factory=lambda: [0, 0])   # every source (trades, tower, ganks)
     turns: Optional[List[dict]] = None
 
     def add(self, result, record: bool = False) -> None:
@@ -92,6 +99,10 @@ class EpisodeLog:
                 self.recalls[s] += int(info["recalled"][s])
                 self.recalls_interrupted[s] += int(info["recall_interrupted"][s])
                 self.turns_away[s] += int(info["away"][s])
+                self.trades_landed[s] += int(info["trade_damage"][s] > 0)
+                self.trade_damage_dealt[s] += int(info["trade_damage"][s])
+                self.tower_damage_taken[s] += int(info["tower_damage"][s])
+                self.damage_taken[s] += int(info["damage_taken"][s])
         oa, ob = info["crash_options"]
         i, j = info["choices"]
         self.crash_resources[0] += oa[i][0]
@@ -115,7 +126,9 @@ class EpisodeLog:
              "trades_attempted": list(self.trades_attempted), "trades_connected": list(self.trades_connected),
              "yields_threatened": list(self.yields_threatened), "recalls": list(self.recalls),
              "recalls_interrupted": list(self.recalls_interrupted),
-             "turns_away": list(self.turns_away)}
+             "turns_away": list(self.turns_away), "trades_landed": list(self.trades_landed),
+             "trade_damage_dealt": list(self.trade_damage_dealt), "tower_damage_taken": list(self.tower_damage_taken),
+             "damage_taken": list(self.damage_taken)}
         if self.turns is not None:
             d["turns"] = self.turns
         return d
@@ -166,6 +179,7 @@ class EpisodeStats:
     yields_threatened: Optional[np.ndarray] = None # (n, 2)
     recalls: Optional[np.ndarray] = None           # (n, 2)
     turns_away: Optional[np.ndarray] = None        # (n, 2)
+    counters: Optional[Dict[str, np.ndarray]] = None   # champion-mode counters (n, 2) by CHAMP_COUNTERS name
     champion_mode: bool = False
     first_log: Optional[EpisodeLog] = None
 
@@ -193,6 +207,8 @@ class EpisodeStats:
                    yields_threatened=np.array([l.yields_threatened for l in logs], dtype=float).reshape(len(logs), 2),
                    recalls=np.array([l.recalls for l in logs], dtype=float).reshape(len(logs), 2),
                    turns_away=np.array([l.turns_away for l in logs], dtype=float).reshape(len(logs), 2),
+                   counters={c: np.array([getattr(l, c) for l in logs], dtype=float).reshape(len(logs), 2)
+                             for c in CHAMP_COUNTERS},
                    champion_mode=bool(env.cfg.champion_mode),
                    first_log=next((l for l in logs if l.turns is not None), None))
 
@@ -240,6 +256,7 @@ class EpisodeStats:
             "mean_yields_threatened": self.yields_threatened.mean(axis=0).tolist(),
             "mean_recalls": self.recalls.mean(axis=0).tolist(),
             "mean_turns_away": self.turns_away.mean(axis=0).tolist(),
+            **{f"mean_{c}": self.counters[c].mean(axis=0).tolist() for c in CHAMP_COUNTERS},
             "champion_mode": self.champion_mode,
             "elapsed_s": self.elapsed, "episodes_per_second": self.episodes_per_second,
             "turns_per_second": self.turns_per_second, "obs_size": self.obs_size, "n_actions": self.n_actions,
@@ -264,7 +281,11 @@ class EpisodeStats:
                f"connected A {s['mean_trades_connected'][0]:.2f} B {s['mean_trades_connected'][1]:.2f}; "
                f"Yield threatened A {s['mean_yields_threatened'][0]:.2f} B {s['mean_yields_threatened'][1]:.2f}",
                f"  recalls per game A {s['mean_recalls'][0]:.2f} B {s['mean_recalls'][1]:.2f}; "
-               f"turns away A {s['mean_turns_away'][0]:.2f} B {s['mean_turns_away'][1]:.2f}"]
+               f"turns away A {s['mean_turns_away'][0]:.2f} B {s['mean_turns_away'][1]:.2f}",
+               f"  trades landed A {s['mean_trades_landed'][0]:.2f} B {s['mean_trades_landed'][1]:.2f}; "
+               f"trade damage dealt A {s['mean_trade_damage_dealt'][0]:.2f} B {s['mean_trade_damage_dealt'][1]:.2f}; "
+               f"tower damage taken A {s['mean_tower_damage_taken'][0]:.2f} B {s['mean_tower_damage_taken'][1]:.2f}; "
+               f"HP lost A {s['mean_damage_taken'][0]:.2f} B {s['mean_damage_taken'][1]:.2f}"]
               if s["champion_mode"] else []),
             f"  observation size {s['obs_size']}, action space {s['n_actions']}"
             + ("; crash choices by the greedy default" if s["choice_default_used"] else ""),

@@ -1,4 +1,4 @@
-"""Champion layer (roadmap milestones M2a, M2b): champion state, persistent positioning, behaviors, Recall and absence.
+"""Champion layer (roadmap milestones M2a-M2c): champion state, positioning, behaviors, Recall, absence, trading.
 
 Champion mode (`GameConfig.champions()`) adds a champion per player on top of the siege model's lane. The
 lane itself (minion movement, merging, fights, thinning, crashes, tower fire, spawns, plates, vision) is
@@ -9,14 +9,14 @@ and is not exactly solvable; the legacy configurations never reach this module.
 State (per side, own coordinates as everywhere else: own tower -T, the lane 0, enemy tower +T)
 
     pos      champion cell, -T .. T (start: own tower, -T; -T while away)
-    hp       champion HP (champion_hp = 6; constant until M2c/M2d add damage; restored on return)
+    hp       champion HP, 1 .. champion_hp (6); trades and tower shots remove it (M2c), a return restores it
     absent   number of upcoming turns the champion is forced to sit out (0 = present). Recall sets it to
              recall_turns - 1 (the Recall turn itself is the first missed turn); it counts down by one at
              the end of every absent turn, and the champion returns, at its own tower with full HP, at the
              start of the turn after the one on which it reaches 0.
 
-plus the per-seat mechanical skills `cfg.skill_a`, `cfg.skill_b` (game constants, observed by both
-players, no effect until M2c). `ChampState.mirror()` swaps the sides; with asymmetric skills the mirrored
+plus the per-seat mechanical skills `cfg.skill_a`, `cfg.skill_b` (game constants in [0, 1], observed by
+both players; they enter only the execution probabilities of trades, see "Trading"). `ChampState.mirror()` swaps the sides; with asymmetric skills the mirrored
 game is `swap_seats(cfg)`.
 
 Actions: a = wave + 3 * behavior + 15 * objective (config.champ_act). Legal sets (`champion_legal_actions`):
@@ -102,9 +102,38 @@ current action, but the simulator resolves the committed pair together:
     (champ_gank_behavior, plus champ_gank_shove for Shove with a non-Safe behavior; a channeling champion
     has Safe's term). An away champion has gank probability 0. Until M2d the gank is still a resource loss with that probability (the environment
     realizes it).
- 9. Champion state after the turn: a present champion stands at its end cell. A champion that recalled gets
+ 9. Chance events (M2c), all from the turn's uniform vector u (layout below): each connected trader's
+    damage on its target, each diver's tower shot, and each present side's gank occurrence (p = gank_p).
+    Damage is simultaneous (both trades use the HP at the start of the turn).
+10. Champion state after the turn: a present champion stands at its end cell with its HP minus the damage it
+    took this turn (floored at 1 until M2d introduces death). A champion that recalled gets
     absent = recall_turns - 1, an absent one absent - 1; both stand at -T, and a champion whose timer
     is now 0 has full HP again (it plays the next turn).
+
+Trading (M2c). A connected Trade of side i on side j hits with probability
+
+    h_i = clip(trade_hit_base + trade_hit_skill (m_i - m_j) + trade_hit_behavior[behavior_j]
+               + trade_hit_minions (sigma_i - sigma_j) - trade_hit_tower [j in its own tower cell],
+               trade_hit_min, trade_hit_max)
+
+and a hit deals 2 HP with probability q_i = clip(trade_double_base + trade_double_skill (m_i - m_j), 0, 1),
+else 1 HP: P(0, 1, 2) = (1 - h, h (1 - q), h q). m are the mechanical skills, sigma the leading-wave stack
+counts at the start of the turn (local minion support), behavior_j the defender's behavior (an interrupted
+recall counts as Recall: channeling, fully exposed). Defaults: equal skill and a Hold defender give
+h = 0.55, q = 0.3, expected damage 0.72 HP; a Safe defender that could not escape h = 0.15. Skill enters
+nothing else: it changes how well a chosen action is executed, never which actions are available or what
+they cost. Opportunity cost: the connected trader gives up its wave contribution and half its farm
+(trade_farm_factor); an unconnected trader farms normally at its forward cell. A defender that does not
+Trade does not hit back. Trade against Trade: both roll.
+
+Tower shot (M2c). A connected trader whose end cell is the enemy tower cell (a dive; the only way to reach a
+champion under its own tower) takes tower_shot_damage HP with probability tower_shot_p, or tower_shot_p_busy
+if its own crashed minions were under that tower this turn (at the start of the turn or crashing during it).
+
+Chance vector u (N_CHANCE uniforms per turn, drawn by the environment whatever happens, so that two policies
+see identical draws turn by turn): U_TRADE_HIT[i], U_TRADE_DOUBLE[i] for side i's attack, U_TOWER[i] for side
+i's tower shot, U_GANK[i] for side i being ganked, U_GANK_DAMAGE[i] reserved for M2d. An event happens when
+its uniform is below its probability; u = None means no chance event at all.
 
 Siege objectives are executed by the lane step only when they are effective (legal, i.e. the champion
 reaches the enemy tower, and not suspended by a connected trade), so plates, thinning and vision always
@@ -114,7 +143,7 @@ require the champion at the enemy tower.
 from __future__ import annotations
 
 from dataclasses import dataclass
-from typing import Callable, NamedTuple, Optional, Tuple
+from typing import Callable, NamedTuple, Optional, Sequence, Tuple
 
 from .config import (B_ABSENT, B_HOLD, B_RECALL, B_SAFE, B_TRADE, B_YIELD, CHAMP_ABSENT, CHAMP_BEHAVIORS, CONTEST,
                      NONE, PRESSURE, SAFE, SH, SP, VISION, GameConfig, champ_act, champ_behavior, champ_objective,
@@ -127,6 +156,18 @@ A, B = 0, 1
 FARM, TRADING, RETREAT, SAFE_MODE, CHANNEL, AWAY = "farm", "trading", "retreat", "safe", "channel", "away"
 NO_REACH = -10 ** 6                      # contributes to no fight
 RECALL = champ_act(SP, B_RECALL)         # the only legal Recall code (12)
+
+# chance vector layout (index per side A, B)
+U_TRADE_HIT, U_TRADE_DOUBLE, U_TOWER, U_GANK, U_GANK_DAMAGE = (0, 2), (1, 3), (4, 5), (6, 7), (8, 9)
+N_CHANCE = 10
+
+
+def mirror_chance(u: Sequence[float]) -> Tuple[float, ...]:
+    """The chance vector of the mirrored game (A and B entries swapped)."""
+    out = list(u)
+    for pair in (U_TRADE_HIT, U_TRADE_DOUBLE, U_TOWER, U_GANK, U_GANK_DAMAGE):
+        out[pair[0]], out[pair[1]] = u[pair[1]], u[pair[0]]
+    return tuple(out)
 
 
 class ChampSide(NamedTuple):
@@ -222,6 +263,36 @@ def champion_gank_probability(lane: State, s: int, wave: int, behavior: int, cfg
     return p
 
 
+def trade_hit_probability(lane: State, s: int, defender_behavior: int, defender_in_tower: bool,
+                          cfg: GameConfig) -> float:
+    """P(side s's connected trade lands), see "Trading" in the module docstring."""
+    o = 1 - s
+    own_h = lane.ah if s == A else lane.bh
+    opp_h = lane.bh if s == A else lane.ah
+    h = (cfg.trade_hit_base + cfg.trade_hit_skill * (skill_of(cfg, s) - skill_of(cfg, o))
+         + cfg.trade_hit_behavior[defender_behavior]
+         + cfg.trade_hit_minions * (cfg.stacks(own_h) - cfg.stacks(opp_h))
+         - (cfg.trade_hit_tower if defender_in_tower else 0.0))
+    return min(max(h, cfg.trade_hit_min), cfg.trade_hit_max)
+
+
+def trade_double_probability(s: int, cfg: GameConfig) -> float:
+    """P(2 HP | hit) for side s's trade."""
+    q = cfg.trade_double_base + cfg.trade_double_skill * (skill_of(cfg, s) - skill_of(cfg, 1 - s))
+    return min(max(q, 0.0), 1.0)
+
+
+def trade_damage_distribution(h: float, q: float) -> Tuple[float, float, float]:
+    """(P(0), P(1), P(2)) HP of one connected trade."""
+    return 1.0 - h, h * (1.0 - q), h * q
+
+
+def _trade_damage(u_hit: float, u_double: float, h: float, q: float) -> int:
+    if u_hit >= h:
+        return 0
+    return 2 if u_double < q else 1
+
+
 # ---------------------------------------------------------------------- one turn
 LaneStep = Callable[[State, int, int, int, Optional[Tuple[int, int]]], TurnResult]
 
@@ -249,6 +320,13 @@ class ChampTurn:
     farm: Tuple[float, float]              # collected
     exposure: Tuple[int, int]              # max(start, end) for a present side; -T for an away side
     gank_p: Tuple[float, float]            # 0 for an away side
+    hit_p: Tuple[float, float] = (0.0, 0.0)          # P(side i's connected trade lands); 0 if not connected
+    double_p: Tuple[float, float] = (0.0, 0.0)       # P(2 HP | hit) of side i's trade
+    tower_p: Tuple[float, float] = (0.0, 0.0)        # P(side i takes a tower shot); 0 unless it dives
+    trade_damage: Tuple[int, int] = (0, 0)           # HP dealt BY side i's trade
+    tower_damage: Tuple[int, int] = (0, 0)           # HP taken by side i from the enemy tower
+    damage_taken: Tuple[int, int] = (0, 0)           # all HP lost by side i this turn
+    ganked: Tuple[bool, bool] = (False, False)       # realized gank occurrence
 
 
 def _clip(x: int, cfg: GameConfig) -> int:
@@ -292,8 +370,9 @@ def _after_away(side: ChampSide, recalled: bool, cfg: GameConfig) -> ChampSide:
 
 
 def resolve_turn(lane: State, champ: ChampState, k: int, a: int, b: int, cfg: GameConfig,
-                 lane_step: Optional[LaneStep] = None) -> ChampTurn:
-    """Resolve decision turn k of champion mode from both committed actions (module docstring, steps 0-9).
+                 lane_step: Optional[LaneStep] = None, u: Optional[Sequence[float]] = None) -> ChampTurn:
+    """Resolve decision turn k of champion mode from both committed actions (module docstring, steps 0-10).
+    `u` is the turn's chance vector (N_CHANCE uniforms in [0, 1); None = no chance event happens).
     Legality is the caller's responsibility (the environment checks `champion_legal_actions`)."""
     if lane_step is None:
         def lane_step(s, kk, x, y, reach):
@@ -404,9 +483,32 @@ def resolve_turn(lane: State, champ: ChampState, k: int, a: int, b: int, cfg: Ga
                  champion_gank_probability(lane, s, w[s], B_SAFE if interrupted[s] else beh[s], cfg, exposure[s])
                  for s in (A, B))
 
-    # 9. champion state after the turn
-    sides = tuple(_after_away(champ.side(s), recalled[s], cfg) if away[s] else champ.side(s)._replace(pos=end[s])
+    # 9. chance events: trades (simultaneous), tower shots on divers, gank occurrence
+    if u is None:
+        u = (1.0,) * N_CHANCE
+    hit, dbl, tower_p = [0.0, 0.0], [0.0, 0.0], [0.0, 0.0]
+    dealt, tower_dmg = [0, 0], [0, 0]
+    for s in (A, B):
+        if not connected[s]:
+            continue
+        o = 1 - s
+        def_beh = B_RECALL if interrupted[o] else beh[o]
+        hit[s] = trade_hit_probability(lane, s, def_beh, end[o] == -T, cfg)
+        dbl[s] = trade_double_probability(s, cfg)
+        dealt[s] = _trade_damage(u[U_TRADE_HIT[s]], u[U_TRADE_DOUBLE[s]], hit[s], dbl[s])
+        if end[s] == T:                                                   # a dive into the enemy tower cell
+            busy = lane.siege_of(s) > 0 or res.crash_hp[s] > 0
+            tower_p[s] = cfg.tower_shot_p_busy if busy else cfg.tower_shot_p
+            tower_dmg[s] = cfg.tower_shot_damage if u[U_TOWER[s]] < tower_p[s] else 0
+    taken = tuple(dealt[1 - s] + tower_dmg[s] for s in (A, B))
+    ganked = tuple(u[U_GANK[s]] < gank[s] for s in (A, B))
+
+    # 10. champion state after the turn (M2c: nonlethal, HP floored at 1 until M2d adds death)
+    sides = tuple(_after_away(champ.side(s), recalled[s], cfg) if away[s] else
+                  champ.side(s)._replace(pos=end[s], hp=max(1, champ.side(s).hp - taken[s]))
                   for s in (A, B))
     return ChampTurn(res, ChampState(*sides), w, beh, obj, eff_obj, c0, (end[0], end[1]), (spot[0], spot[1]),
                      away, recalled, interrupted, (threatened[0], threatened[1]), connected, (modes[0], modes[1]),
-                     (reach[0], reach[1]), codes, (avail[0], avail[1]), (coll[0], coll[1]), exposure, gank)
+                     (reach[0], reach[1]), codes, (avail[0], avail[1]), (coll[0], coll[1]), exposure, gank,
+                     (hit[0], hit[1]), (dbl[0], dbl[1]), (tower_p[0], tower_p[1]), (dealt[0], dealt[1]),
+                     (tower_dmg[0], tower_dmg[1]), taken, ganked)

@@ -8,7 +8,7 @@ Work happens on the local branch `m2-m3-autonomous` (one commit per verified mil
 | Milestone | Status | Commit |
 |---|---|---|
 | M2b Recall and absence | completed and verified (39 champion + 65 env tests) | see git log |
-| M2c Stochastic trading and skill | not started | |
+| M2c Stochastic trading and skill | completed and verified (52 champion + 65 env tests) | see git log |
 | M2d Ganks, death, respawn | not started | |
 | M2e Validation and benchmarking (gate) | not started | |
 | M3a PPO vs scripted opponents | not started | |
@@ -51,3 +51,30 @@ Implemented in `lanegame/champions.py` (+ `config.py`, `env/core.py`, `env/agent
   A's tower it costs 0.62 (test `test_well_timed_recall_costs_less_than_a_poorly_timed_one`).
 - Tests: new `tests/test_champion_recall.py` (14 tests); three M2a tests updated (Recall is no longer
   reserved). 39 champion tests pass in 0.6 s. env-demo champion throughput 7,500 turns/s.
+- Committed as `acabf74`.
+
+### M2c Stochastic trading and mechanical skill
+
+- Hit chance of a connected trade i -> j:
+  `h = clip(0.55 + 0.4 (m_i - m_j) + beta[beh_j] + 0.05 (sigma_i - sigma_j) - 0.15 [j in own tower cell], 0.05, 0.95)`,
+  `beta = (Hold 0, Yield -0.25, Trade 0, Safe -0.40, Recall/channel 0)`; damage 0 / 1 / 2 with
+  `P = (1-h, h(1-q), hq)`, `q = clip(0.3 + 0.2 (m_i - m_j), 0, 1)`. Roadmap E.5 defaults, except that the
+  2-HP chance uses the skill *difference* (the roadmap had `q2_skill * m_i`), so a skilled defender also
+  mitigates. Every term is a `GameConfig` field (`trade_hit_*`, `trade_double_*`).
+- Skill enters only these two probabilities (test: positions, modes, lane, farm and gank risk are identical
+  under different skills).
+- Tower shot: a connected trade ending in the enemy tower cell (a dive) takes 1 HP with p = 1.0, or 0.5 if
+  the diver's crashed minions are under that tower (start of turn or crashing this turn).
+- A Hold defender does not hit back; Trade vs Trade both roll from start-of-turn HP.
+- All chance events of a champion-mode turn come from one fixed-length vector of 10 uniforms per turn
+  (`champions.N_CHANCE`, layout `U_TRADE_HIT`, `U_TRADE_DOUBLE`, `U_TOWER`, `U_GANK`, `U_GANK_DAMAGE`), drawn
+  whatever the actions: identical chance draws turn by turn for any two policies (common random numbers).
+  `resolve_turn(..., u=None)` means no chance event. Legacy configurations keep their two gank draws.
+- HP floored at 1 (temporary nonlethal clamp, removed in M2d). Ganks still the legacy resource loss.
+- Matchups (300 episodes, K = 32): Trade vs Hold lands 17.2 of 31 connected trades, 22.3 HP dealt;
+  Trade vs Trade symmetric (23.1 / 22.5 HP); Yield and Safe evade all 31 trade attempts.
+- Tests: new `tests/test_champion_combat.py` (13 tests: formula defaults and clipping, skill monotonicity
+  for offense and defense, behavior ordering, execution-only skill, opportunity cost, evasion, simultaneity,
+  interrupted-recall and partial-escape terms, tower shot free/busy, 10,000-draw distribution check within
+  4.5 SE, mirror equivariance with mirrored chance, no guaranteed damage, reproducibility and CRN).
+  52 champion tests pass in 2.6 s.

@@ -198,8 +198,9 @@ class LaneEnv:
         # ---- MOVE stage: deterministic lane step, farm, plates (exactly LaneGame.transition's numbers;
         #      champion mode: champions.resolve_turn)
         if cfg.champion_mode:
-            from ..champions import resolve_turn
-            ct = resolve_turn(s, champ_before, k, a, b, cfg, lane_step=self._lane_turn)
+            from ..champions import N_CHANCE, resolve_turn
+            u = self._rng.random(N_CHANCE)
+            ct = resolve_turn(s, champ_before, k, a, b, cfg, lane_step=self._lane_turn, u=u)
             res = ct.lane
             pa, pb = ct.gank_p
             avail, coll = ct.farm_available, ct.farm
@@ -214,9 +215,15 @@ class LaneEnv:
         plate_payoff = plates[A] - plates[B]
 
         # ---- realized ganks: one Bernoulli draw per player, A first, from the environment's stream
-        ua = self._rng.random()
-        ub = self._rng.random()
-        ga, gb = bool(ua < pa), bool(ub < pb)
+        #      (champion mode: the gank entries of the turn's chance vector, realized by resolve_turn)
+        if ct is None:
+            ua = self._rng.random()
+            ub = self._rng.random()
+            ga, gb = bool(ua < pa), bool(ub < pb)
+        else:
+            from ..champions import U_GANK
+            ua, ub = float(u[U_GANK[A]]), float(u[U_GANK[B]])
+            ga, gb = bool(ct.ganked[A]), bool(ct.ganked[B])
         gank_payoff = cfg.gank_loss * (int(gb) - int(ga))
 
         # ---- CHOICE stage ("choice" siege mode; single trivial option otherwise)
@@ -288,6 +295,13 @@ class LaneEnv:
                 "threatened": ct.threatened,
                 "trade_attempted": tuple(x == B_TRADE for x in ct.behaviors),
                 "trade_connected": ct.connected,
+                "hit_p": ct.hit_p,
+                "double_p": ct.double_p,
+                "tower_p": ct.tower_p,
+                "trade_damage": ct.trade_damage,
+                "tower_damage": ct.tower_damage,
+                "damage_taken": ct.damage_taken,
+                "chance": [float(x) for x in u],
                 "modes": ct.modes,
                 "champion_reach": ct.reach,
                 "lane_codes": ct.lane_codes,

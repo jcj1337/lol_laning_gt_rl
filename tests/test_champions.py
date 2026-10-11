@@ -152,9 +152,10 @@ def test_observation_is_bounded_markov_and_mirror_equivariant():
         observe(initial_state(CFG), 0, 0, CFG)                  # champion mode needs the champion state
 
 
-def test_movement_is_bounded_persistent_and_hp_dormant():
+def test_movement_is_bounded_persistent_and_hp_accounted():
     """Present champions move at most champion_speed cells per turn and keep their cell between turns; an away
-    champion (recall, absence) is at its own tower. No damage source exists without combat (M2c, M2d)."""
+    champion (recall, absence) is at its own tower. HP changes only by the damage recorded for the turn, or is
+    restored on return."""
     cfg = CFG
     prev_end = None
     for lane, champ, k, a, b, r in random_play(cfg, episodes=6, seed=3):
@@ -170,7 +171,13 @@ def test_movement_is_bounded_persistent_and_hp_dormant():
             else:
                 assert abs(end[s] - start[s]) <= cfg.champion_speed
                 assert i["exposure"][s] == max(start[s], end[s])
-        assert all(c[1] == cfg.champion_hp for c in i["champ_after"])
+        for s in (0, 1):
+            before, after = i["champ_before"][s], i["champ_after"][s]
+            assert 1 <= after[1] <= cfg.champion_hp
+            if after[2] == 0 and (i["away"][s]):
+                assert after[1] == cfg.champion_hp                   # returned with full HP
+            elif not i["away"][s]:
+                assert after[1] == max(1, before[1] - i["damage_taken"][s])
         prev_end = None if r.done else end
 
 

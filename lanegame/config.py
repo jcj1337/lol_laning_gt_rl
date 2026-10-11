@@ -285,6 +285,32 @@ class GameConfig:
     # own tower with full HP. With the default 2: Recall on turn t, forced ABSENT on t + 1, back on t + 2.
     recall_turns: int = 2
     recall_line: int = -1
+    # Trading (M2c). A connected Trade by attacker i on defender j draws damage 0 / 1 / 2 HP:
+    #   P(hit) h = clip(trade_hit_base + trade_hit_skill * (m_i - m_j) + trade_hit_behavior[behavior of j]
+    #                   + trade_hit_minions * (sigma_i - sigma_j) - trade_hit_tower * [j in its own tower cell],
+    #                   trade_hit_min, trade_hit_max)
+    #   P(2 HP | hit) q = clip(trade_double_base + trade_double_skill * (m_i - m_j), 0, 1)
+    # with m the mechanical skills and sigma the leading-wave stack counts at the start of the turn (local
+    # minion support, as in the gank formula). Skill enters only through the (m_i - m_j) terms: the
+    # attacker's skill raises its execution, the defender's lowers it (evasion / mitigation).
+    # trade_hit_behavior is indexed by the defender's behavior (Hold, Yield, Trade, Safe, Recall): a Yield
+    # or Safe champion that could not get out of reach is still partly evading; a Hold champion (farming)
+    # or an interrupted recall (channeling) is fully exposed; a Trade defender is trading back.
+    trade_hit_base: float = 0.55
+    trade_hit_skill: float = 0.4
+    trade_hit_behavior: Tuple[float, float, float, float, float] = (0.0, -0.25, 0.0, -0.40, 0.0)
+    trade_hit_minions: float = 0.05
+    trade_hit_tower: float = 0.15
+    trade_hit_min: float = 0.05
+    trade_hit_max: float = 0.95
+    trade_double_base: float = 0.3
+    trade_double_skill: float = 0.2
+    # Tower shot (M2c): a connected Trade that ends in the enemy tower cell (a dive) takes tower_shot_damage HP
+    # with probability tower_shot_p, or tower_shot_p_busy while the diver's own crashed minions are under that
+    # tower (part of the tower's attention is on them).
+    tower_shot_damage: int = 1
+    tower_shot_p: float = 1.0
+    tower_shot_p_busy: float = 0.5
     skill_a: float = 0.5                  # mechanical skill of the player in seat A, in [0, 1]
     skill_b: float = 0.5                  # ... seat B
     safe_line: int = -1                   # Safe (and a threatened Yield) retreats to at most this cell
@@ -413,6 +439,9 @@ class GameConfig:
             assert self.champion_hp >= 1 and self.champion_speed >= 1 and self.champion_absent_max >= 1
             assert self.recall_turns >= 1 and -self.tower <= self.recall_line <= self.tower
             assert self.champion_absent_max >= self.recall_turns - 1
+            assert len(self.trade_hit_behavior) == N_BEHAVIOR_SLOTS
+            assert 0.0 <= self.trade_hit_min <= self.trade_hit_max <= 1.0
+            assert self.tower_shot_damage >= 0 and 0.0 <= self.tower_shot_p <= 1.0 and 0.0 <= self.tower_shot_p_busy <= 1.0
             assert 0.0 <= self.skill_a <= 1.0 and 0.0 <= self.skill_b <= 1.0
             assert -self.tower <= self.safe_line <= self.tower
             assert self.trade_range >= 0 and self.farm_reach >= 0 and 0.0 <= self.trade_farm_factor <= 1.0
