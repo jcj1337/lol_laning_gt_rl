@@ -14,7 +14,8 @@ legality) and adds, in the order of design §5:
   step 5   Freeze maintenance (§6.3): a Freeze is effective only while the freezer is present, not channeling, not
            in a connected trade and ends within farm_reach of the freeze line; otherwise it resolves as Slow Push
   step 6   the lane step with the effective waves, which also returns the minion tower hits (§11.2)
-  step 7   gold (M2 collection rule) as exact integers in ledger units (micro-resources, §8.6)
+  step 7   gold (M2 collection rule) as exact integers in ledger units (micro-resources, §8.6); opt-in (M4.2d-C,
+           `zoning_rule`): the zone factor needs a connected enemy Trade ("contact") or never applies ("none")
   step 7b  XP: xp_per_hp per enemy minion HP dying within xp_range cells of a present champion (§7.3)
   step 9   centi-HP damage: trade hits dmg(D, L, N), gank trials and tower shots of one HP unit u(L) of the victim,
            the tower-adjacent shot on a connected trader ending next to the enemy tower (§8.3, §8.4)
@@ -162,7 +163,10 @@ def collection_units(x: int, mode: str, pos: int, opp_mode: str, opp_pos: int, c
         base = q(cfg.collect_contest) if x < T else q(cfg.collect_contest_enemy_tower)
     else:
         base = exact_safe_base(x, cfg)
-    zones = opp_mode in (FARM, TRADING) and abs(-x - opp_pos) <= cfg.farm_reach
+    if cfg.zoning_rule == "presence":                     # M2: an opponent farming or trading near the kill
+        zones = opp_mode in (FARM, TRADING) and abs(-x - opp_pos) <= cfg.farm_reach
+    else:                                                 # M4.2d-C: "contact" = the opponent's Trade connected on me
+        zones = cfg.zoning_rule == "contact" and opp_mode == TRADING
     zone = (q(cfg.zone_contest) if x > -T else q(cfg.zone_under_tower)) if zones else Fraction(0)
     c = base * (1 - zone)
     if mode == TRADING:

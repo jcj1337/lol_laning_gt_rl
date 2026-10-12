@@ -258,6 +258,12 @@ class GameConfig:
     collect_safe_slope: float = 0.2
     zone_contest: float = 0.3
     zone_under_tower: float = 0.15
+    # M4.2d-C (docs/m4_zoning_report.md), opt-in, ruleset "m4" only: which opponent applies the zone factor
+    # (1 - zone_contest, or 1 - zone_under_tower in the collector's own tower cell) to a champion's gold.
+    # "presence" = an opponent in farm or trading mode within farm_reach of the kill (the M2 rule); "contact" = only
+    # an opponent whose Trade connected on the collector this turn; "none" = never (gold is then lost only to reach,
+    # the Safe / retreat posture, trading and absence)
+    zoning_rule: str = "presence"
 
     # ---- gank model (report section C.8) ----
     # p = clip(base + position*(e+T)/(2T) + action[base action] - strength*dsigma, 0, max) * (1 - rho*[vision])
@@ -658,6 +664,8 @@ class GameConfig:
             bad("pressure_tower_damage", "must be a non-negative integer (centi-units)")
         if self.rear_count_max < 1:
             bad("rear_count_max", "must be >= 1")
+        if self.zoning_rule not in ("presence", "contact", "none"):
+            bad("zoning_rule", "must be 'presence', 'contact' or 'none'")
         if self.siege_engage:
             bad("siege_engage", "must be False (the evaluation bound counts no siege fights, design §10.5.3)")
         self._validate_exact_economy()
@@ -714,7 +722,7 @@ M4_ECONOMY_FIELDS = ("xp_per_hp", "xp_range", "xp_base", "xp_step", "level_cap",
                      "invest_obs_gold_ref", "invest_obs_ref", "freeze_maintenance", "chase_rule", "farm_spot_rule",
                      "tower_adjacent_p", "tower_adjacent_p_busy", "gank_damage_scale", "plate_thresholds",
                      "plate_gold", "pressure_tower_damage", "plate_gold_requires_presence", "gold_unit",
-                     "rear_count_max", "position_rule")
+                     "rear_count_max", "position_rule", "zoning_rule")
 _FIELD_DEFAULTS = {f.name: f.default for f in GameConfig.__dataclass_fields__.values()}
 
 
