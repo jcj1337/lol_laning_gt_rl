@@ -36,10 +36,18 @@ are replaced (same length) by
 Both quantities are unbounded in the game, so the encoding is lossless only while S < R_S and G < R_G resources
 (the whole-resource entry is then < 1); at or beyond a reference the entry saturates at 1.0, the observation is no
 longer injective and `decode_m4` raises. `observe_m4` does NOT raise there (the game itself has no cap).
+
+M4.2d opt-in (invest_obs_encoding = "compressed", docs/m4_investment_readiness_report.md): the two whole-resource
+entries become n / (n + R) (n = floor(S / g) or floor(G / g); R = invest_obs_ref or invest_obs_gold_ref, now the
+half-point), the other three entries are unchanged and the length stays 88. The entry is monotone, < 1 for every
+reachable n (no saturation), well resolved near 0 (one resource of unspent gold moves it by about 1 / R), and
+exactly decodable in float32 for n <= compressed_exact_max(R) = isqrt(R 2^23) - R (8,184 resources at R = 8; 23,106
+at R = 64); beyond that bound the observation stays valid and `decode_m4` raises.
 """
 
 from __future__ import annotations
 
+import math
 from typing import List, Tuple
 
 import numpy as np
@@ -54,6 +62,12 @@ CHAMP_TAIL_CONTINUOUS = ("hp_frac", "hp_max", "absent", "skill", "level", "xp_pr
                          "gold_whole", "invested_frac", "gold_frac", "attack_power")
 TOWER_NAMES = ("tower_dmg", "plates_broken", "plate_progress", "plates_left")
 SIDE_NAMES = ("siege_mass", "vision", "siege_eligible")
+
+
+def compressed_exact_max(ref: int) -> int:
+    """Largest whole-resource count n whose "compressed" entry n / (n + ref) decodes exactly from float32: the
+    float32 rounding error (<= 2^-25) times dn/dx = (n + ref)^2 / ref stays <= 1/4 for n + ref <= sqrt(ref 2^23)."""
+    return math.isqrt(ref << 23) - ref
 
 
 def _sizes(cfg: GameConfig):
@@ -156,7 +170,8 @@ def observe_m4(state: State, k: int, side: int, cfg: GameConfig, champ) -> np.nd
         from ..progression import investment
         inv = investment(cfg)
         g1, ref_s, ref_g = cfg.gold_scale, cfg.invest_obs_ref, cfg.invest_obs_gold_ref
-        ap_ref = t.ap[cap][0] * 10 ** 12
+        ap_ref = t.ap[cap][0] * inv.one
+        compressed = cfg.invest_obs_encoding == "compressed"
     for who, sgn in ((side, 1), (1 - side, -1)):
         cs = champ.side(who)
         v[o + sgn * cs.pos + T] = 1.0
@@ -173,8 +188,12 @@ def observe_m4(state: State, k: int, side: int, cfg: GameConfig, champ) -> np.nd
         v[o + 4] = (L - 1) / (cap - 1) if cap > 1 else 0.0
         v[o + 5] = (x - t.xp_cum[L]) / t.xp_next[L] if L < cap else 0.0
         if inv is not None:
-            v[o + 6] = min(N // g1, ref_s) / ref_s
-            v[o + 7] = min(g // g1, ref_g) / ref_g
+            if compressed:
+                v[o + 6] = (N // g1) / (N // g1 + ref_s)
+                v[o + 7] = (g // g1) / (g // g1 + ref_g)
+            else:
+                v[o + 6] = min(N // g1, ref_s) / ref_s
+                v[o + 7] = min(g // g1, ref_g) / ref_g
             v[o + 8] = (N % g1) / g1
             v[o + 9] = (g % g1) / g1
             ap = inv.attack_power(L, N)
@@ -236,11 +255,21 @@ def decode_m4(vec, cfg: GameConfig) -> Tuple[int, State, object, Tuple[float, fl
         xp = t.xp_cum[L] + (int(round(float(vec[o + 5]) * t.xp_next[L])) if L < t.level_cap else 0)
         if cfg.continuous_items:
             g1 = cfg.gold_scale
-            whole_s = int(round(float(vec[o + 6]) * cfg.invest_obs_ref))
-            whole_g = int(round(float(vec[o + 7]) * cfg.invest_obs_gold_ref))
-            if whole_s >= cfg.invest_obs_ref or whole_g >= cfg.invest_obs_gold_ref:
-                raise ValueError("continuous investment: invested or unspent gold at/above its observation "
-                                 "reference; the observation is saturated and not decodable")
+            if cfg.invest_obs_encoding == "compressed":
+                whole = []
+                for x, ref in ((float(vec[o + 6]), cfg.invest_obs_ref), (float(vec[o + 7]), cfg.invest_obs_gold_ref)):
+                    n = int(round(ref * x / (1.0 - x))) if x < 1.0 else -1
+                    if not 0 <= n <= compressed_exact_max(ref):
+                        raise ValueError("continuous investment: invested or unspent gold beyond the exact range "
+                                         "of the compressed observation entry; not decodable")
+                    whole.append(n)
+                whole_s, whole_g = whole
+            else:
+                whole_s = int(round(float(vec[o + 6]) * cfg.invest_obs_ref))
+                whole_g = int(round(float(vec[o + 7]) * cfg.invest_obs_gold_ref))
+                if whole_s >= cfg.invest_obs_ref or whole_g >= cfg.invest_obs_gold_ref:
+                    raise ValueError("continuous investment: invested or unspent gold at/above its observation "
+                                     "reference; the observation is saturated and not decodable")
             items = whole_s * g1 + int(round(float(vec[o + 8]) * g1))
             gold = whole_g * g1 + int(round(float(vec[o + 9]) * g1))
         else:

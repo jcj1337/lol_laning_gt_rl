@@ -1,0 +1,493 @@
+{
+ "commit": "f504f5edf937986e9f250937fea730833f328961",
+ "curve": "ready",
+ "cfg": {
+  "base": 4,
+  "tower": 2,
+  "ticks_per_turn": 2,
+  "spawn_interval": 4,
+  "horizon": 32,
+  "wave_hp": 4,
+  "max_stacks": 2,
+  "cap_rule": "block",
+  "queue_fights": true,
+  "positioning": true,
+  "damage_law": "lanchester",
+  "shove_damage": 1,
+  "tower_damage": 1,
+  "pressure_kappa": [
+   0,
+   1,
+   0
+  ],
+  "slowpush_line": 0,
+  "slowpush_mode": "stack_creep",
+  "slowpush_creep_period": 2,
+  "freeze_line": -1,
+  "freeze_break_threshold": 10,
+  "freeze_break_push": [
+   0,
+   4,
+   0
+  ],
+  "freeze_legal_max": -1,
+  "tower_mode": "mass",
+  "tower_consumption_per_turn": 1,
+  "tower_siege_damage": 1,
+  "siege_engage": false,
+  "siege_cap": 48,
+  "siege_mode": "objective",
+  "plate_mode": "durability",
+  "plate_grant": [
+   1,
+   2,
+   3
+  ],
+  "plates_cap": 6,
+  "plates_per_tower": 5,
+  "plates_per_turn": 1,
+  "plate_value": 1.0,
+  "thin_damage": 1,
+  "thin_reach": 1,
+  "crash_options": [
+   [
+    [
+     1.0,
+     false
+    ],
+    [
+     0.0,
+     true
+    ]
+   ],
+   [
+    [
+     2.0,
+     false
+    ],
+    [
+     0.0,
+     true
+    ]
+   ],
+   [
+    [
+     3.0,
+     false
+    ],
+    [
+     2.0,
+     true
+    ]
+   ]
+  ],
+  "vision_turns": 6,
+  "vision_reduction": 0.75,
+  "farm_per_hp": 0.25,
+  "collect_contest": 0.9,
+  "collect_contest_enemy_tower": 0.5,
+  "collect_safe": 0.8,
+  "collect_safe_slope": 0.2,
+  "zone_contest": 0.3,
+  "zone_under_tower": 0.15,
+  "gank_base": 0.15,
+  "gank_position": 0.1,
+  "gank_action": [
+   0.02,
+   0.05,
+   0.02,
+   0.0,
+   0.0,
+   0.0
+  ],
+  "gank_strength": 0.02,
+  "gank_max": 0.4,
+  "gank_loss": 5.0,
+  "posture_cap": [
+   null,
+   null,
+   null,
+   -1,
+   -1,
+   -1
+  ],
+  "champion_mode": true,
+  "champion_hp": 6,
+  "champion_speed": 2,
+  "champion_absent_max": 3,
+  "recall_turns": 2,
+  "recall_line": -1,
+  "trade_hit_base": 0.55,
+  "trade_hit_skill": 0.4,
+  "trade_hit_behavior": [
+   0.0,
+   -0.25,
+   0.0,
+   -0.4,
+   0.0
+  ],
+  "trade_hit_minions": 0.05,
+  "trade_hit_tower": 0.15,
+  "trade_hit_min": 0.05,
+  "trade_hit_max": 0.95,
+  "trade_double_base": 0.3,
+  "trade_double_skill": 0.2,
+  "tower_shot_damage": 1,
+  "tower_shot_p": 1.0,
+  "tower_shot_p_busy": 0.5,
+  "skill_a": 0.5,
+  "skill_b": 0.5,
+  "safe_line": -1,
+  "trade_range": 1,
+  "farm_reach": 1,
+  "retreat_farm_reach": 2,
+  "trade_farm_factor": 0.5,
+  "champ_gank_base": 0.0,
+  "champ_gank_position": 0.12,
+  "champ_gank_behavior": [
+   0.01,
+   0.01,
+   0.03,
+   0.0
+  ],
+  "champ_gank_shove": 0.02,
+  "champ_gank_strength": 0.01,
+  "champ_gank_max": 0.3,
+  "gank_damage_trials": 4,
+  "gank_damage_base": 0.2,
+  "gank_damage_position": 0.6,
+  "gank_damage_defense": 0.2,
+  "gank_damage_skill": 0.2,
+  "death_turns": 3,
+  "kill_bounty": 0.5,
+  "ruleset": "m4",
+  "time_mode": "continuing",
+  "time_features": false,
+  "gamma": 0.99,
+  "xp_per_hp": 2,
+  "xp_range": 3,
+  "xp_base": 8,
+  "xp_step": 3,
+  "level_cap": 18,
+  "hp_base": 600,
+  "hp_growth": 1.05,
+  "ap_level_growth": 1.05,
+  "item_mult": 1.2,
+  "item_tiers": 0,
+  "item_prices": [],
+  "item_model": "continuous",
+  "invest_alpha": 0.045,
+  "invest_p": 0.9,
+  "invest_obs_gold_ref": 8,
+  "invest_obs_ref": 64,
+  "invest_curve": "saturating",
+  "invest_gain": 1.5,
+  "invest_scale": 16.0,
+  "invest_obs_encoding": "compressed",
+  "freeze_maintenance": true,
+  "chase_rule": "contact_cell",
+  "farm_spot_rule": "m2",
+  "tower_adjacent_p": 0.5,
+  "tower_adjacent_p_busy": 0.25,
+  "gank_damage_scale": "victim_level",
+  "plate_thresholds": [
+   1600,
+   3600,
+   6000
+  ],
+  "plate_gold": 1.0,
+  "pressure_tower_damage": 400,
+  "plate_gold_requires_presence": false,
+  "gold_unit": 1e-06,
+  "rear_count_max": 4
+ },
+ "turns": 1000,
+ "games": {
+  "edge_trader-edge_trader": {
+   "checkpoints": [
+    {
+     "turn": 50,
+     "earned": [
+      8.33,
+      8.98
+     ],
+     "invested": [
+      7.565,
+      6.275
+     ],
+     "unspent": [
+      0.765,
+      2.705
+     ],
+     "level": [
+      9,
+      9
+     ],
+     "M": [
+      1.2640026821112698,
+      1.2287165476725437
+     ]
+    },
+    {
+     "turn": 100,
+     "earned": [
+      20.8175,
+      17.7425
+     ],
+     "invested": [
+      20.66,
+      15.105
+     ],
+     "unspent": [
+      0.1575,
+      2.6375
+     ],
+     "level": [
+      13,
+      13
+     ],
+     "M": [
+      1.5090425202474236,
+      1.424188586360319
+     ]
+    },
+    {
+     "turn": 200,
+     "earned": [
+      41.5775,
+      40.835
+     ],
+     "invested": [
+      41.105,
+      39.44
+     ],
+     "unspent": [
+      0.4725,
+      1.395
+     ],
+     "level": [
+      18,
+      18
+     ],
+     "M": [
+      1.7060115544327819,
+      1.6941770359746198
+     ]
+    },
+    {
+     "turn": 300,
+     "earned": [
+      66.1375,
+      61.8275
+     ],
+     "invested": [
+      65.98,
+      59.055
+     ],
+     "unspent": [
+      0.1575,
+      2.7725
+     ],
+     "level": [
+      18,
+      18
+     ],
+     "M": [
+      1.837330025211113,
+      1.8074335714574563
+     ]
+    },
+    {
+     "turn": 400,
+     "earned": [
+      87.68,
+      81.585
+     ],
+     "invested": [
+      85.65,
+      77.71
+     ],
+     "unspent": [
+      2.03,
+      3.875
+     ],
+     "level": [
+      18,
+      18
+     ],
+     "M": [
+      1.9048895740410055,
+      1.8801904244569099
+     ]
+    },
+    {
+     "turn": 500,
+     "earned": [
+      107.365,
+      104.34
+     ],
+     "invested": [
+      105.97,
+      99.25
+     ],
+     "unspent": [
+      1.395,
+      5.09
+     ],
+     "level": [
+      18,
+      18
+     ],
+     "M": [
+      1.9567187227596692,
+      1.9411042806008532
+     ]
+    },
+    {
+     "turn": 600,
+     "earned": [
+      130.43,
+      124.8175
+     ],
+     "invested": [
+      127.635,
+      124.1875
+     ],
+     "unspent": [
+      2.795,
+      0.63
+     ],
+     "level": [
+      18,
+      18
+     ],
+     "M": [
+      1.9993651122410976,
+      1.993246677362192
+     ]
+    },
+    {
+     "turn": 700,
+     "earned": [
+      150.795,
+      143.2525
+     ],
+     "invested": [
+      148.0225,
+      142.145
+     ],
+     "unspent": [
+      2.7725,
+      1.1075
+     ],
+     "level": [
+      18,
+      18
+     ],
+     "M": [
+      2.031510850444993,
+      2.0228845088651295
+     ]
+    },
+    {
+     "turn": 800,
+     "earned": [
+      177.33,
+      161.3325
+     ],
+     "invested": [
+      172.415,
+      161.3325
+     ],
+     "unspent": [
+      4.915,
+      0.0
+     ],
+     "level": [
+      18,
+      18
+     ],
+     "M": [
+      2.0628872111685372,
+      2.049435384451712
+     ]
+    },
+    {
+     "turn": 900,
+     "earned": [
+      198.875,
+      178.6825
+     ],
+     "invested": [
+      197.6375,
+      177.1075
+     ],
+     "unspent": [
+      1.2375,
+      1.575
+     ],
+     "level": [
+      18,
+      18
+     ],
+     "M": [
+      2.0895006187952805,
+      2.0682307794206185
+     ]
+    },
+    {
+     "turn": 1000,
+     "earned": [
+      215.9975,
+      199.9625
+     ],
+     "invested": [
+      215.84,
+      197.5725
+     ],
+     "unspent": [
+      0.1575,
+      2.39
+     ],
+     "level": [
+      18,
+      18
+     ],
+     "M": [
+      2.1059447968804497,
+      2.0894381565636957
+     ]
+    }
+   ],
+   "deaths": [
+    52,
+    71
+   ],
+   "max_unspent": [
+    11.205,
+    6.2625
+   ],
+   "investment_events": [
+    63,
+    88
+   ],
+   "mean_investment": [
+    3.426031746031746,
+    2.2451420454545454
+   ],
+   "max_investment": [
+    11.205,
+    6.2625
+   ],
+   "level_gap": {
+    "mean": 0.112,
+    "max": 2,
+    "share_ge_2": 0.002
+   },
+   "M_ratio": {
+    "mean": 1.011056933959645,
+    "max": 1.0825343482095025
+   }
+  }
+ }
+}

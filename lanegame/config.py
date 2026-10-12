@@ -386,6 +386,15 @@ class GameConfig:
     invest_p: float = 0.90
     invest_obs_gold_ref: int = 1024       # resources: the observation encodes unspent gold exactly below this
     invest_obs_ref: int = 1024            # resources: ... and invested gold exactly below this
+    # M4.2d (docs/m4_investment_readiness_report.md), opt-in: invest_curve "power" = the M4.2c curve above;
+    # "saturating" = M(S) = 1 + invest_gain (1 - sqrt(invest_scale / (invest_scale + S))), bounded by 1 + invest_gain
+    # and computed in exact integers. invest_obs_encoding "linear" = the M4.2c whole-resource entries n / R (saturate at
+    # R); "compressed" = n / (n + R) (R = the same reference fields, now the half-point; never saturates, exact
+    # decoding up to observation_m4.compressed_exact_max(R) resources).
+    invest_curve: str = "power"
+    invest_gain: float = 1.5
+    invest_scale: float = 16.0            # resources (K): M - 1 reaches 0.29 invest_gain at S = K, 0.5 at 3 K
+    invest_obs_encoding: str = "linear"
     freeze_maintenance: bool = False      # m4: a Freeze holds only while maintained (design §6.3)
     chase_rule: str = "m2"                # "m2" (legacy target e -/+ trade_range) or "contact_cell" (design §7.4)
     # M4.2d (docs/m4_wave_readiness_report.md), opt-in: "m2" = the farm spot is the probe's leading packet (M2 rule);
@@ -632,8 +641,21 @@ class GameConfig:
             if not (isinstance(self.invest_obs_gold_ref, int) and isinstance(self.invest_obs_ref, int)
                     and 1 <= self.invest_obs_gold_ref <= 2 ** 24 and 1 <= self.invest_obs_ref <= 2 ** 24):
                 bad("invest_obs_gold_ref/invest_obs_ref", "must be integers in [1, 2^24] (resources)")
+            if self.invest_curve not in ("power", "saturating"):
+                bad("invest_curve", "must be 'power' or 'saturating'")
+            if self.invest_obs_encoding not in ("linear", "compressed"):
+                bad("invest_obs_encoding", "must be 'linear' or 'compressed'")
+            mine = ("invest_alpha", "invest_p") if self.invest_curve == "power" else ("invest_gain", "invest_scale")
+            for f in ("invest_alpha", "invest_p", "invest_gain", "invest_scale"):
+                if f not in mine and getattr(self, f) != _FIELD_DEFAULTS[f]:
+                    bad(f, f"does not apply to invest_curve {self.invest_curve!r}")
+            if self.invest_curve == "saturating" and not (0.01 <= self.invest_gain <= 10.0
+                                                           and 1.0 <= self.invest_scale <= 10.0 ** 6):
+                bad("invest_gain/invest_scale", "need 0.01 <= invest_gain <= 10 and 1 <= invest_scale <= 10^6 "
+                                                "resources (the range whose strict monotonicity is verified)")
         else:
-            for f in ("invest_alpha", "invest_p", "invest_obs_gold_ref", "invest_obs_ref"):
+            for f in ("invest_alpha", "invest_p", "invest_obs_gold_ref", "invest_obs_ref", "invest_curve",
+                      "invest_gain", "invest_scale", "invest_obs_encoding"):
                 if getattr(self, f) != _FIELD_DEFAULTS[f]:
                     bad(f, "applies to item_model 'continuous' only")
         if self.chase_rule not in ("m2", "contact_cell"):
@@ -679,6 +701,8 @@ class GameConfig:
             check(f"item_prices[{i}]", q(p))
         for value, name in exact_farm_values(self):
             check(name, value)
+        if self.item_model == "continuous" and self.invest_curve == "saturating":
+            check("invest_scale", q(self.invest_scale))
         if self.item_model == "continuous" and scale > 2 ** 24:
             raise ValueError("ruleset 'm4': item_model 'continuous' encodes the sub-resource part of the ledger in "
                              "one float32 feature, which needs gold_scale <= 2^24")
@@ -704,7 +728,8 @@ class GameConfig:
 RULESETS = ("legacy", "m2c", "m4")
 M4_ECONOMY_FIELDS = ("xp_per_hp", "xp_range", "xp_base", "xp_step", "level_cap", "hp_base", "hp_growth",
                      "ap_level_growth", "item_mult", "item_tiers", "item_prices", "item_model", "invest_alpha", "invest_p",
-                     "invest_obs_gold_ref", "invest_obs_ref", "freeze_maintenance", "chase_rule", "farm_spot_rule",
+                     "invest_obs_gold_ref", "invest_obs_ref", "invest_curve", "invest_gain", "invest_scale",
+                     "invest_obs_encoding", "freeze_maintenance", "chase_rule", "farm_spot_rule",
                      "tower_adjacent_p", "tower_adjacent_p_busy", "gank_damage_scale", "plate_thresholds",
                      "plate_gold", "pressure_tower_damage", "plate_gold_requires_presence", "gold_unit",
                      "rear_count_max")
