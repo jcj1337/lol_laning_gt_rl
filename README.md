@@ -16,6 +16,8 @@ League of Legends wave management is the testbed. Two players manage minion wave
 
 The transition from the exact game to multi-agent reinforcement learning is planned in [docs/rl_research_roadmap.md](docs/rl_research_roadmap.md). Implemented: Milestone 1, a simultaneous-move RL environment around the existing game (`lanegame/env/`); Milestone 2, the champion game (`GameConfig.champions()`: persistent positions, Hold / Yield / Trade / Safe, Recall and absence, stochastic trades with mechanical skill, tower shots, ganks with HP damage, death and respawn), validated in `results/champions/`; and Milestones 3a-3c, masked PPO, frozen-snapshot self-play and an evaluation harness with approximate best responses (`lanegame/rl/`, `results/rl/`). See [docs/m2_m3_implementation_report.md](docs/m2_m3_implementation_report.md). An OpenAI Five-inspired study adds shared-policy self-play (one network for both seats, both seats' experience trained on) with an 80/20 current/historical opponent mixture and compares it with the M3b method under matched sample budgets: [docs/openai_five_selfplay_report.md](docs/openai_five_selfplay_report.md) (results in `results/rl/openai_five/`). A diagnostics study (`lanegame/diagnostics/`: action audit and paired counterfactual rollouts from restorable states) explains the learned policies' narrow Hold/Trade strategies, measures exploitability with 1M-step attackers and runs longer 100/0 vs 80/20 self-play: [docs/openai_five_diagnostics_report.md](docs/openai_five_diagnostics_report.md) (results in `results/rl/diagnostics/`).
 
+**M4 (integrated champion economy and wave dynamics).** A separately versioned ruleset, `GameConfig.m4()` ([design](docs/m4_integrated_design.md), [plan](docs/m4_implementation_plan.md), [audit](docs/m4_design_audit.md), [implementation report](docs/m4_implementation_report.md)): a continuing game with no terminal state, discounted with gamma = 0.99 and trained in bootstrapped segments; Freeze effective only while maintained; XP within 3 cells and levels 1–18; centi-HP and attack power scaled by level and a two-tier item track bought automatically on return to base; the contact-cell chase and the tower-adjacent shot; persistent tower damage with three plates; an exact micro-resource gold ledger; a lossless, decoder-proven 88-feature observation; the same 46 actions. Code: `lanegame/champions_m4.py`, `lanegame/progression.py`, `lanegame/env/{observation_m4, agents_m4, discounted, starts}.py`, `lanegame/scenarios_m4.py`, drivers in `lanegame/experiments/m4/` (results in `results/m4/`). Every legacy configuration (`GameConfig()`, `.v1()`, `.v2()`, `.champions()`) is bit-identical, guarded by `tests/test_legacy_pins.py`; `GameConfig.champions_continuing()` is a test fixture for the continuing-time machinery only.
+
 ## The current model at a glance (siege revision)
 
 - **Actions.** Each turn both players simultaneously choose a *wave-management* action (Slow Push, Shove, Freeze) and a *positioning* action (Contest, Safe). A player whose crashed minions are under the enemy tower at the start of the turn also chooses a *siege objective* with Contest: **Apply Pressure** (claim a tower plate and thin the defender's wave gathering behind the tower) or **Establish Vision** (a persistent gank-risk reduction from the next turn on); Safe during a siege means disengaging. Up to 6 actions per player per turn; no information about the opponent's current choice.
@@ -80,10 +82,17 @@ lanegame/                 engine (pure Python + NumPy/SciPy, no presentation cod
   io.py                   JSON export format for solutions (version 3)
   champions.py            champion mode (roadmap M2): positions, Hold/Yield/Trade/Safe/Recall, absence, trades, skill,
                           tower shots, ganks with HP damage, death and respawn
+  champions_m4.py         the M4 ruleset's state and resolver (Freeze maintenance, XP/levels, items, ledger, plates)
+  progression.py          M4 integer tables: max HP, HP unit, attack power, damage, XP thresholds, purchases
+  lane_enum.py            exhaustive reachable-lane enumeration and the enumerated bounds M4 relies on
+  scenarios_m4.py         M4 parked-front harness and replayable scenario witnesses (data/m4_scenarios.json)
   env/                    simultaneous-move RL environment (roadmap M1): LaneEnv, own-view observations and
-                          masks, scripted agents, exact-policy bridge, episode traces, optional PettingZoo adapter
+                          masks, scripted agents, exact-policy bridge, episode traces, optional PettingZoo adapter;
+                          M4: observation_m4.py (lossless layout + decoder), agents_m4.py, discounted.py (E1/E2
+                          evaluation with the guaranteed tail bound), starts.py (witnessed start archives)
   rl/                     masked PPO, frozen-snapshot self-play, shared-policy self-play with a current / historical
                           mixture (shared.py), evaluation and approximate best responses (M3; torch)
+  experiments/m4/         M4 validation drivers S1-S4, benchmark, training smoke (results/m4/)
   experiments/champions/  champion-mode validation (results/champions/)
   experiments/rl/         RL experiments (results/rl/; checkpoints in results/rl/checkpoints/, not tracked)
   experiments/siege/      the siege study's experiments (results/siege/)

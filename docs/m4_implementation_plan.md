@@ -1,5 +1,22 @@
 # M4 Implementation Plan: Integrated Champion Economy and Wave Dynamics
 
+> **M4.2 delivered (2026-10-11, branch `implementation/m4-integrated`).** WP0–WP10 are implemented; the outcome,
+> the validation stages S0–S4 and every deviation are in [m4_implementation_report.md](m4_implementation_report.md).
+> Where the delivered code differs from the plan below:
+>
+> | Plan | Delivered |
+> |---|---|
+> | `evaluate_discounted` in `rl/evaluate.py` | in `lanegame/env/discounted.py` (NumPy only, so scripted evaluation needs no torch), re-exported by `lanegame.rl.evaluate` |
+> | `game_length`, `segment_length`, `eval_window` as defaults of `GameConfig.m4()` (design §13) | training-run parameters of `PPOConfig` (`PPOConfig.continuing(game_cfg)`) and an argument of the evaluator (`HEADLINE_WINDOW = 1000`, `DEV_WINDOW = 460`): they never change the game |
+> | an "observation layout" field among the M4 economy fields | the layout follows the ruleset (`"m4"` → `env/observation_m4.py`; legacy layout otherwise, with `time_features=False` for `"m2c"`) |
+> | `next_price(N) -> float` | `progression.next_price(N)` returns ledger units (int) or None |
+> | `decode_m4(vec, cfg) -> (φ, Λ, C_A, C_B)` | returns `(φ, lane State, M4State, (own skill, enemy skill))` in the observer's perspective |
+> | start-state archive (ρ_train) | `lanegame/env/starts.py` (`StartState` with witnesses, JSON archives, mirror closure, disjointness); `PPOConfig.start_archive`, `start_mix` |
+> | M4 agents in `env/agents.py` | `lanegame/env/agents_m4.py` (the legacy agents file is unchanged) |
+> | `scenarios_m4.py` | `lanegame/scenarios_m4.py`, witnesses in `lanegame/data/m4_scenarios.json` |
+> | `experiments/m4/calibrate.py` | `lanegame/experiments/m4/{soak, progression, freeze_gate, economy, benchmark, smoke}.py` |
+> | tests per package | `tests/test_m4_{config, time, progression, tower, resolve, combat, economy, observation, env, scenarios, integration, diagnostics, freeze_gate}.py`, `tests/test_legacy_pins.py`; exhaustive enumerations are marked `slow` (`pytest --runslow`) |
+
 *Status: plan for review, 2026-10-11 (milestone M4.1, design only). Nothing here is implemented. The rules are
 specified in [m4_integrated_design.md](m4_integrated_design.md) (cited as "design §n"); the concerns in
 [m4_design_audit.md](m4_design_audit.md) (cited as "audit §n"). Coordinates are own-perspective (own tower −2, the lane

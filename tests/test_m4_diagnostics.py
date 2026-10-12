@@ -127,3 +127,12 @@ def test_audit_on_m4_uses_discounted_returns_and_phase():
     assert {"level", "items", "gold", "xp", "tower_dmg"} <= set(t.cols)
     s = summarize(t)
     assert s["states"]["games"] == 6 and 0.99 < sum(s["states"]["hp_hist"].values()) <= 1.0 + 1e-9
+
+
+def test_with_side_keeps_the_m4_state_type():
+    snap, _ = mid_snapshot()
+    s2 = snap.with_side(0, items=2, gold=0)
+    assert isinstance(s2.champ, M4State) and s2.champ.a.items == 2 and s2.champ.b == snap.champ.b
+    env = LaneEnv(M4, max_turns=5)
+    restore(env, s2, 0)
+    assert env.champ == s2.champ

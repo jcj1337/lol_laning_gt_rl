@@ -20,7 +20,8 @@ realized gank HP, trade HP), deaths, Freeze turns chosen / maintained, and the d
 
   G1  |F - SP| > 0.05 in >= 20% of the scenarios, against >= 2 attacker policies;
   G2  some attacker with F - max(SP, cshove) >= +0.2 in some scenario AND some attacker with <= -0.2 in some scenario;
-  G3  a reaching Shove with blob + 4 >= 10 is never held (counted over every gate turn), and the measured break
+  G3  a reaching Shove with blob + 4 >= 10 is never held (tick-exact: recorded holds = holds the rule allows on the
+      replayed tick states, over every gate turn), and the measured break
       windows of a Shove breaker against fronts of >= 3 HP (reported against the §6.4-6.5 windows).
 
 Scenario-set means are E2-style diagnostics (the set is not mirror-closed and is not an evaluation archive).
@@ -165,13 +166,11 @@ def _play(env, scn, defender, attacker, seed, turns, gamma):
             out[f"plates_{tag}"] += i["plates_broken"][s]
         out["freeze_chosen"] += int(i["waves"][0] == F)
         out["freeze_maintained"] += int(i["freeze_maintained"][0])
-        # G3 rule check: a reaching Shove with blob + push >= threshold is never held
-        if i["effective_waves"][0] == F and i["waves"][1] == SH and lane0.bh > 0 and \
-                i["champion_reach"][1] >= lane0.bx:
-            packets = [[lane0.bx, lane0.bh]] + [[x, cfg.wave_hp] for x in lane0.br]
-            if _blob_hp(packets, cfg) + cfg.freeze_break_push[SH] >= cfg.freeze_break_threshold:
-                out["g3_checked"] += 1
-                out["g3_violations"] += int(i["events"]["freeze_held"][1] > 0)
+        # G3 rule check, tick-exact: a reaching Shove whose blob + push reaches the threshold is never held
+        if i["effective_waves"][0] == F and i["waves"][1] == SH:
+            allowed, must_break = hold_ticks(lane0, i["k"], i["lane_codes"], i["champion_reach"], cfg)
+            out["g3_checked"] += must_break
+            out["g3_violations"] += int(i["events"]["freeze_held"][1] != allowed)
         if r.done:
             break
         obs = r.obs
@@ -179,6 +178,38 @@ def _play(env, scn, defender, attacker, seed, turns, gamma):
     out["first_crash"] = turns if first_crash is None else first_crash
     out["crashed"] = int(first_crash is not None)
     return dict(out)
+
+
+def hold_ticks(lane0, k, codes, reach, cfg):
+    """Replays the turn's authoritative lane step tick by tick (record=True) and returns, for B's front against A's
+    effective Freeze, (holds the rule allows, ticks on which a reaching Shove with blob + push >= threshold wants to
+    enter A's tower cell and must therefore break the hold). Tick 1 starts from the turn's state; later ticks start
+    from the previous tick's trace."""
+    from ...mechanics import _fronts_in_contact, step_turn
+    res = step_turn(lane0, k, codes[0], codes[1], cfg, champion_reach=tuple(reach), record=True)
+    P = [[], []]
+    for s in (0, 1):
+        fx, fh, rears, sg = lane0.side(s)[:4]
+        if fh > 0:
+            P[s].append([fx, fh])
+        P[s] += [[x, cfg.wave_hp] for x in rears]
+    starts = [(P, [lane0.asg, lane0.bsg])] + [((tr["A"], tr["B"]), tr["siege"]) for tr in res.trace[:-1]]
+    T = cfg.tower
+    allowed = must_break = 0
+    for (pa, pb), siege in starts:
+        if not pb or _fronts_in_contact([pa, pb]):
+            continue
+        x = pb[0][0]
+        if siege[0] > 0 and x >= -T - 1:
+            continue                                          # waiting behind its tower: no movement intent
+        if not x + 1 > -cfg.freeze_line:
+            continue                                          # not about to enter the freezer's tower cell
+        push = cfg.freeze_break_push[SH] if x <= reach[1] else 0
+        if _blob_hp(pb, cfg) + push < cfg.freeze_break_threshold:
+            allowed += 1
+        elif push:
+            must_break += 1
+    return allowed, must_break
 
 
 def run_scenario(args):

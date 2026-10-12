@@ -76,7 +76,7 @@ class Snapshot:
         """The snapshot with one champion's record changed (pos, hp, absent); used for HP-value comparisons."""
         sides = [self.champ.a, self.champ.b]
         sides[seat] = sides[seat]._replace(**kw)
-        return Snapshot(self.lane, ChampState(*sides), self.k, self.skills)
+        return Snapshot(self.lane, type(self.champ)(*sides), self.k, self.skills)
 
     def config(self, base: GameConfig) -> GameConfig:
         return base.with_(skill_a=self.skills[0], skill_b=self.skills[1])

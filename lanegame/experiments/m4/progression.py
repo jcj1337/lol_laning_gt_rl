@@ -36,7 +36,7 @@ def run_chunk(args):
         first = [[None] * 19, [None] * 19]
         buy = [[None, None], [None, None]]
         gap = {}
-        xp_avail = [0, 0]
+        xp_avail, xp_in_range = [0, 0], [0, 0]
         for t in log.turns:
             k = t["k"]
             for s in (0, 1):
@@ -49,10 +49,11 @@ def run_chunk(args):
                     if buy[s][n] is None:
                         buy[s][n] = k + 1
                 xp_avail[s] += cfg.xp_per_hp * sum(t["kills"][s].values())
+                xp_in_range[s] += t["xp_gain"][s] + t["xp_discarded"][s]      # earned, before the cap
             if (k + 1) in CHECKPOINTS:
                 gap[k + 1] = t["levels"][0] - t["levels"][1]
         out.append({"first": first, "buy": buy, "gap": gap, "deaths": list(log.deaths), "farm": list(log.farm),
-                    "xp_gain": list(log.m4["xp_gain"]), "xp_avail": xp_avail, "payoff": log.payoff,
+                    "xp_gain": xp_in_range, "xp_avail": xp_avail, "payoff": log.payoff,
                     "recalls": list(log.recalls)})
     return out
 
@@ -101,7 +102,8 @@ def markdown(d) -> str:
         rows.append([Lv, s.get("q25"), s.get("median"), s.get("q75"), f"{s['reached']:.0%}", tgt or "", ok])
     L.append(md_table(["level", "q25", "median", "q75", "reached", "design target", "S2"], rows))
     L += ["", f"Verdict: **{'PASS' if d['pass'] else 'FAIL'}** (medians of levels 2 / 6 / 11 / 18 within ±25% of "
-          f"4 / 20 / 59 / 147). XP absorption (XP gained / XP of enemy HP dying): "
+          f"4 / 20 / 59 / 147). XP absorption (XP earned in range, including XP beyond the cap, / XP of all enemy HP "
+          f"dying): "
           f"{m['xp_absorption'][0]:.1%} / {m['xp_absorption'][1]:.1%} (design assumed 94%).", ""]
     for key, label in (("mutual", "mutual hold_farmer"), ("trader", "aggressive_trader (A) vs hold_farmer (B)")):
         r = d[key]

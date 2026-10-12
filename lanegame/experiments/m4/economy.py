@@ -256,6 +256,47 @@ def snowball_part(cfg: GameConfig, games: int = 300, window: int = 1000) -> dict
             "level_gap_ge2_share": {c: float(np.mean(np.abs(v) >= 2)) for c, v in gaps.items()}}
 
 
+def item_diagnosis(cfg: GameConfig, n: int = 40, turns: int = 400) -> dict:
+    """Why is a tier worth so little? The free-tier value under continuations of increasing combat intensity, with
+    deaths and connected trades; the share of turns on which the two champions' items differ; death causes."""
+    import collections
+    ag = agents()
+    snaps = [s for s in edge_snapshots(cfg) if s.champ.a.absent == 0 and s.champ.a.items < tables(cfg).item_tiers][:6]
+    env = LaneEnv(cfg, cache_size=50_000)
+    out = {"free_tier": {}, "unequal_item_turns_per_game": {}, "death_causes": {}}
+    for pair in (("edge_trader", "edge_trader"), ("aggressive_trader", "aggressive_trader"),
+                 ("aggressive_trader", "hold_farmer")):
+        diffs, deaths, trades = [], [], []
+        for i, s in enumerate(snaps):
+            for m in range(n):
+                rs = [rollout(env, v, 0, FollowPolicy(), (ag[pair[0]], ag[pair[1]]), rollout_seed(9, m, i),
+                              ProbCache(), max_turns=turns, record=True)
+                      for v in (s, s.with_side(0, items=s.champ.a.items + 1))]
+                diffs.append(rs[1].ret - rs[0].ret)
+                deaths.append([list(r.deaths) for r in rs])
+                trades.append([sum(t["trade_connected"][0] for t in r.infos) for r in rs])
+        m_, se = mean_se(diffs)
+        dd = np.array(deaths, dtype=float)
+        key = f"{pair[0]} vs {pair[1]}"
+        out["free_tier"][key] = {"value": m_, "ci95": Z95 * se, "deaths_without": dd[:, 0].mean(0).tolist(),
+                                 "deaths_with": dd[:, 1].mean(0).tolist(),
+                                 "a_trades_without_with": np.mean(trades, axis=0).tolist()}
+        envp = LaneEnv(cfg, max_turns=turns, cache_size=50_000)
+        c, unequal = collections.Counter(), []
+        for g in range(30):
+            log = play_episode(envp, ag[pair[0]], ag[pair[1]], 37_000 + g, record=True)
+            unequal.append(sum(t["items"][0] != t["items"][1] for t in log.turns))
+            for t in log.turns:
+                for side in (0, 1):
+                    if t["died"][side]:
+                        c["deaths"] += 1
+                        c["with_gank_damage"] += t["gank_damage"][side] > 0
+                        c["trade_damage_only"] += t["gank_damage"][side] == 0 and t["tower_damage"][side] == 0
+        out["unequal_item_turns_per_game"][key] = float(np.mean(unequal))
+        out["death_causes"][key] = dict(c)
+    return out
+
+
 def rr_job(args):
     x, y, episodes, window, seed, cfg_dict = args
     from ...env.discounted import evaluate_discounted
@@ -334,6 +375,17 @@ def markdown(d) -> str:
          md_table(hdr, _rows(a["D"])), "",
          "## E — denial by a strong freezer (+2 levels, +1 tier) minus an equal one, focal B (xp_keeper)", "",
          md_table(hdr, _rows(a["E"])), "",
+         "### Item diagnosis: a free tier under continuations of increasing combat intensity (400 turns)", "",
+         md_table(["continuation", "free-tier value (95% CI)", "deaths A, B without", "deaths A, B with",
+                   "A trades without / with", "turns per game with unequal items", "deaths: with gank damage / "
+                   "trade damage only"],
+                  [[k, f"{v['value']:+.3f} ± {v['ci95']:.3f}", ", ".join(f"{x:.1f}" for x in v["deaths_without"]),
+                    ", ".join(f"{x:.1f}" for x in v["deaths_with"]),
+                    " / ".join(f"{x:.0f}" for x in v["a_trades_without_with"]),
+                    f"{d['item_diagnosis']['unequal_item_turns_per_game'][k]:.1f}",
+                    f"{d['item_diagnosis']['death_causes'][k].get('with_gank_damage', 0)} / "
+                    f"{d['item_diagnosis']['death_causes'][k].get('trade_damage_only', 0)}"]
+                   for k, v in d["item_diagnosis"]["free_tier"].items()]), "",
          "## F — plates", "",
          md_table(["pairing (A vs B)", "plate gold per game (A)", "share earned while A away", "plates per game",
                    "tower damage per game (centi)"],
@@ -379,6 +431,7 @@ def main(argv=None):
          "tail_bound": tail_bound(cfg, a.window), "analysis": analyse(results),
          "raw": {k: v.tolist() for k, v in results.items()},
          "counters": {k: {f: np.mean([e[f] for e in v], axis=0).tolist() for f in v[0]} for k, v in extras.items()}}
+    d["item_diagnosis"] = item_diagnosis(cfg, n=4 if a.quick else 40, turns=100 if a.quick else 400)
     d["plates"] = plates_part(cfg, games=20 if a.quick else 60)
     d["snowball"] = snowball_part(cfg, games=40 if a.quick else 300, window=a.window)
     print(f"descriptive parts done ({timer():.0f} s)", flush=True)
