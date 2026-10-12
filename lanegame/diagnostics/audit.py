@@ -14,6 +14,12 @@ when the side's crashed mass is under the enemy tower and its champion can reach
 
 All realized quantities are from the focal player's side: reward = its zero-sum reward (farm + plates + bounty
 differences), `ret_to_go` = its return from this turn to the end of the game.
+
+Continuing time (rulesets "m2c" / "m4"; plan WP9): games are played over a `window` of turns, `ret_to_go` is the
+DISCOUNTED return over the rest of the window, g_t = r_t + gamma g_{t+1} (gamma = the game's), and the turn-relative
+column `turns_left` is replaced by the phase k mod P (the dynamics depend on k only through it). M4 rows add the
+level, items, spendable gold, XP and tower damage of both champions; `hp6` is the HP in sixths of the current
+maximum (M2: the HP itself), so the HP tables keep their meaning across levels.
 """
 
 from __future__ import annotations
@@ -76,6 +82,15 @@ class Turns:
         return cls({k: np.concatenate([p.cols[k] for p in parts]) for k in parts[0].cols})
 
 
+def _hp6(cfg: GameConfig, side) -> int:
+    if not cfg.is_m4:
+        return side.hp
+    from ..champions_m4 import level
+    from ..progression import tables
+    t = tables(cfg)
+    return int(-(-6 * side.hp // t.hp_max[level(side, t)]))
+
+
 def _row(env: LaneEnv, ob, opp_ob, x, y, seat: int, ep: int, n_act: int) -> dict:
     cfg = env.cfg
     lane, champ, k = ob.state, ob.champ, ob.k
@@ -91,7 +106,15 @@ def _row(env: LaneEnv, ob, opp_ob, x, y, seat: int, ep: int, n_act: int) -> dict
            "n_legal": len(ob.legal),
            "legal_recall": present and recall_legal(champ, seat, cfg),
            "legal_freeze": present and F in wave_actions(lane, seat, cfg),
-           "legal_objective": present and objective_reachable(lane, champ, seat, cfg)}
+           "legal_objective": present and objective_reachable(lane, champ, seat, cfg),
+           "hp6": _hp6(cfg, me), "ehp6": _hp6(cfg, en), "phase": k % cfg.phase_period}
+    if cfg.is_m4:
+        from ..champions_m4 import level
+        from ..progression import tables
+        t = tables(cfg)
+        row.update({"level": level(me, t), "elevel": level(en, t), "items": me.items, "eitems": en.items,
+                    "gold": me.gold, "egold": en.gold, "xp": me.xp, "exp": en.xp, "tower_dmg": me.tower_dmg,
+                    "etower_dmg": en.tower_dmg})
     if present:
         p = full_distribution(x, ob, n_act)
         cp = category_probabilities(p)
@@ -118,16 +141,21 @@ def _row(env: LaneEnv, ob, opp_ob, x, y, seat: int, ep: int, n_act: int) -> dict
     return row
 
 
-def audit_games(cfg: GameConfig, x, y, episodes: int, seed: int, skill: Optional[tuple] = None) -> Turns:
+def audit_games(cfg: GameConfig, x, y, episodes: int, seed: int, skill: Optional[tuple] = None,
+                window: Optional[int] = None) -> Turns:
     """Audit x's turns against y over both seats (`head_to_head` protocol: the same `episodes` seeds per seat).
-    `skill = (m_x, m_y)` assigns skills to the players (not the seats)."""
+    `skill = (m_x, m_y)` assigns skills to the players (not the seats). Continuing time needs `window` (turns per
+    game); returns to go are then discounted with the game's gamma."""
+    if cfg.continuing and window is None:
+        raise ValueError("continuing time: audit_games needs a window (turns per game)")
+    gamma = cfg.gamma if cfg.continuing else 1.0
     rows: List[dict] = []
     for seat in (0, 1):
         c = cfg
         if skill is not None:
             c = cfg.with_(skill_a=skill[0], skill_b=skill[1]) if seat == 0 else \
                 cfg.with_(skill_a=skill[1], skill_b=skill[0])
-        env = LaneEnv(c, cache_size=20_000)
+        env = LaneEnv(c, cache_size=20_000, max_turns=window if cfg.continuing else None)
         n_act = env.n_actions
         children = np.random.SeedSequence(seed).spawn(episodes)
         for ep, ss in enumerate(children):
@@ -167,15 +195,15 @@ def audit_games(cfg: GameConfig, x, y, episodes: int, seed: int, skill: Optional
                     break
                 obs = r.obs
             g = 0.0
-            for rw in reversed(ep_rows):                       # return to go and short-horizon outcomes
-                g += rw["reward"]
+            for rw in reversed(ep_rows):                       # (discounted) return to go and short-horizon outcomes
+                g = rw["reward"] + gamma * g
                 rw["ret_to_go"] = g
             n = len(ep_rows)
             for i, rw in enumerate(ep_rows):
                 nxt = ep_rows[i:i + 4]
                 rw["died_next4"] = any(z["died"] for z in nxt)
                 rw["reward_next4"] = float(sum(z["reward"] for z in nxt))
-                rw["turns_left"] = n - i
+                rw["turns_left"] = (n - i) if not cfg.continuing else -1    # no turn-relative quantity in M4
             rows.extend(ep_rows)
     cols = {k: np.array([rw[k] for rw in rows]) for k in rows[0]}
     return Turns(cols)
@@ -223,17 +251,17 @@ def opportunity_table(t: Turns, hp_low: int = 2) -> Dict[str, dict]:
     enemy_here = p["eabsent"] == 0
     opp_trade = np.nan_to_num(p["opp_p_trade"])
     situations = {
-        "recall legal and HP <= 2": (p["legal_recall"] & (p["hp"] <= hp_low), ["Recall"]),
-        "recall legal and HP <= 3": (p["legal_recall"] & (p["hp"] <= hp_low + 1), ["Recall"]),
-        "HP <= 2 at or past the lane (Recall illegal)": ((p["hp"] <= hp_low) & ~p["legal_recall"],
+        "recall legal and HP <= 2": (p["legal_recall"] & (p["hp6"] <= hp_low), ["Recall"]),
+        "recall legal and HP <= 3": (p["legal_recall"] & (p["hp6"] <= hp_low + 1), ["Recall"]),
+        "HP <= 2 at or past the lane (Recall illegal)": ((p["hp6"] <= hp_low) & ~p["legal_recall"],
                                                          ["Safe", "Yield", "Trade", "Hold"]),
-        "HP <= 2, enemy present": ((p["hp"] <= hp_low) & enemy_here, ["Safe", "Yield", "Trade", "Hold", "Recall"]),
+        "HP <= 2, enemy present": ((p["hp6"] <= hp_low) & enemy_here, ["Safe", "Yield", "Trade", "Hold", "Recall"]),
         "Freeze legal": (p["legal_freeze"], ["F", "SH"]),
         "siege objective legal": (p["legal_objective"], ["Pressure", "Vision"]),
         "enemy champion away (punish window)": (p["eabsent"] > 0, ["SH", "Hold", "Trade"]),
         "own front stacked (front HP > one wave)": (p["front_hp"] > 4, ["SH"]),
         "opponent P(Trade) >= 0.5": (opp_trade >= 0.5, ["Yield", "Safe", "Trade", "Hold"]),
-        "HP <= 2 and opponent P(Trade) >= 0.5": ((p["hp"] <= hp_low) & (opp_trade >= 0.5),
+        "HP <= 2 and opponent P(Trade) >= 0.5": ((p["hp6"] <= hp_low) & (opp_trade >= 0.5),
                                                   ["Yield", "Safe", "Trade", "Hold"]),
         "own wave past the lane (farm spot > 0)": (p["farm_spot"] > 0, ["Hold", "Trade"]),
     }
@@ -253,14 +281,14 @@ def state_table(t: Turns) -> dict:
     g = max(games, 1)
     death = t.where(t["died"])
     return {"games": games, "present_turns_per_game": len(p) / g,
-            "hp_hist": {int(h): _share(p["hp"] == h) for h in range(1, 7)},
+            "hp_hist": {int(h): _share(p["hp6"] == h) for h in range(1, 7)},
             "pos_hist": {int(x): _share(p["pos"] == x) for x in range(-2, 3)},
-            "recall_legal_by_hp": {int(h): _share(p["legal_recall"][p["hp"] == h]) for h in range(1, 7)},
+            "recall_legal_by_hp": {int(h): _share(p["legal_recall"][p["hp6"] == h]) for h in range(1, 7)},
             "end_pos_hist": {int(x): _share(p["end_pos"] == x) for x in range(-2, 3)},
             "farm_spot_hist": {int(x): _share(p["farm_spot"] == x) for x in range(-2, 3)},
-            "turns_hp_le2_per_game": float((p["hp"] <= 2).sum() / g),
+            "turns_hp_le2_per_game": float((p["hp6"] <= 2).sum() / g),
             "deaths_per_game": float(t["died"].sum() / g),
-            "hp_at_start_of_death_turn": {int(h): _share(death["hp"] == h) for h in range(1, 7)},
+            "hp_at_start_of_death_turn": {int(h): _share(death["hp6"] == h) for h in range(1, 7)},
             "death_turn_damage_sources": {"trade": _mean(death["dmg_taken"] - death["gank_dmg"] - death["tower_dmg"]),
                                           "gank": _mean(death["gank_dmg"]), "tower": _mean(death["tower_dmg"])},
             "deaths_with_gank_damage": _share(death["gank_dmg"] > 0),

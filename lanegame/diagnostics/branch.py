@@ -24,6 +24,13 @@ Policies are frozen: agents are only queried through `distribution(obs)` (a NetA
 and identical observations are answered from a cache, so equal states get bit-identical probabilities in every
 rollout. Estimates are Monte Carlo values of the given continuation policies on this opponent, not game-theoretic
 values.
+
+Continuing time (rulesets "m2c" / "m4"; plan WP9). A game never ends, so a rollout needs a window (`max_turns`), and
+`gamma` (default: the game's) discounts it: G_m(c) = sum_{t < W} gamma^t r_t^focal from the branch turn. A Snapshot
+then carries the M4State (positions, centi-HP, absence, XP, items, gold, tower damage) and the phase k mod P, which
+is all the dynamics depend on. An optional critic bootstrap adds gamma^W V_hat(s_W); it is an APPROXIMATION whose
+bias gamma^W E[V_hat - V] is unknown (design §10.5.4), and results carrying it are labelled. These are approximate
+champion-game measurements; exact values exist only for the legacy games (lanegame.solver).
 """
 
 from __future__ import annotations
@@ -58,7 +65,7 @@ class Snapshot:
     @classmethod
     def from_info(cls, info: dict, skills: Tuple[float, float]) -> "Snapshot":
         """The state at the START of a recorded turn (`StepResult.info` of that turn)."""
-        return cls(State.from_list(info["state_before"]), ChampState.from_list(info["champ_before"]), int(info["k"]),
+        return cls(State.from_list(info["state_before"]), champ_from_list(info["champ_before"]), int(info["k"]),
                    (float(skills[0]), float(skills[1])))
 
     def mirror(self) -> "Snapshot":
@@ -79,8 +86,16 @@ class Snapshot:
 
     @classmethod
     def from_dict(cls, d: dict) -> "Snapshot":
-        return cls(State.from_list(d["lane"]), ChampState.from_list(d["champ"]), int(d["k"]),
+        return cls(State.from_list(d["lane"]), champ_from_list(d["champ"]), int(d["k"]),
                    (float(d["skills"][0]), float(d["skills"][1])))
+
+
+def champ_from_list(v):
+    """ChampState (M2: [pos, hp, absent] per side) or M4State (M4: seven fields per side) from its list form."""
+    if len(v[0]) == 7:
+        from ..champions_m4 import M4State
+        return M4State.from_list(v)
+    return ChampState.from_list(v)
 
 
 def observation(cfg: GameConfig, snap: Snapshot, seat: int):
@@ -188,7 +203,8 @@ def sample_index(p: np.ndarray, u: float) -> int:
 # ---------------------------------------------------------------------------------------------- rollouts
 @dataclass
 class Rollout:
-    ret: float                         # focal player's return from the branch turn to the end of the game
+    ret: float                         # focal player's return from the branch turn: to the end of the game, or (with
+                                       # gamma) the discounted sum over the window, plus any bootstrap
     first_actions: Tuple[int, int]     # actions of (A, B) on the branch turn
     farm: Tuple[float, float]          # farm collected from the branch turn on, (focal, opponent)
     plates: Tuple[float, float]
@@ -198,13 +214,25 @@ class Rollout:
     turns: int
     first_reward: float                # focal reward on the branch turn itself
     infos: Optional[List[dict]] = None
+    undiscounted: float = 0.0          # sum of the focal rewards over the rollout (descriptive)
+    bootstrap: Optional[float] = None  # gamma^W V_hat(s_W) when a critic bootstrap was added (an APPROXIMATION)
+    m4: Optional[dict] = None          # M4: focal / opponent XP gained, plates, purchases, tower damage dealt
 
 
 def rollout(env: LaneEnv, snap: Snapshot, focal: int, plan: Plan, agents: Sequence, seed,
-            cache: Optional[ProbCache] = None, record: bool = False, max_turns: Optional[int] = None) -> Rollout:
+            cache: Optional[ProbCache] = None, record: bool = False, max_turns: Optional[int] = None,
+            gamma: Optional[float] = None, bootstrap: Optional[Callable] = None) -> Rollout:
     """One rollout from `snap`: the focal seat follows `plan` and then `agents[focal]`; the other seat follows
     `agents[1 - focal]` throughout. `seed` (int or SeedSequence) is split exactly as in `play_episode`.
-    `max_turns` stops after that many turns (the return is then truncated, not bootstrapped)."""
+    `max_turns` stops after that many turns (the return is then truncated, not bootstrapped). Continuing time needs
+    `max_turns` (the window W); `gamma` (default under continuing time: the game's) discounts the return, and
+    `bootstrap(obs_focal) -> V_hat` adds gamma^W V_hat(s_W) (an approximation, design §10.5.4)."""
+    if env.continuing:
+        if max_turns is None:
+            raise ValueError("continuing time: a rollout needs a window (max_turns)")
+        if gamma is None:
+            gamma = env.cfg.gamma
+    g = 1.0 if gamma is None else float(gamma)
     cache = cache if cache is not None else ProbCache()
     ss = seed if isinstance(seed, np.random.SeedSequence) else np.random.SeedSequence(seed)
     _, env_ss, rng_a, rng_b = episode_streams(ss)
@@ -216,6 +244,9 @@ def rollout(env: LaneEnv, snap: Snapshot, focal: int, plan: Plan, agents: Sequen
     farm, plates, bounty = [0.0, 0.0], [0.0, 0.0], [0.0, 0.0]
     deaths, recalls = [0, 0], [0, 0]
     first, infos = None, ([] if record else None)
+    undisc, disc_w = 0.0, 1.0
+    m4 = {"xp": [0, 0], "plates": [0, 0], "purchases": [0, 0], "tower_damage": [0, 0], "freeze_maintained": [0, 0],
+          "crashes": [0, 0]} if env.cfg.is_m4 else None
     while True:
         acts = [0, 0]
         for s in (A, B):
@@ -238,21 +269,34 @@ def rollout(env: LaneEnv, snap: Snapshot, focal: int, plan: Plan, agents: Sequen
         if first is None:
             first = (acts[0], acts[1])
             first_reward = r.rewards[focal]
-        ret += r.rewards[focal]
+        ret += disc_w * r.rewards[focal]
+        undisc += r.rewards[focal]
+        disc_w *= g
         for i, s in enumerate((focal, o)):
             farm[i] += info["farm"][s]
             plates[i] += info["plates"][s]
             bounty[i] += info["bounty"][s]
             deaths[i] += int(info["died"][s])
             recalls[i] += int(info["recalled"][s])
+            if m4 is not None:
+                m4["xp"][i] += info["xp_gain"][s]
+                m4["plates"][i] += info["plates_broken"][s]
+                m4["purchases"][i] += info["purchases"][s]
+                m4["tower_damage"][i] += info["tower_damage_dealt"][s]
+                m4["freeze_maintained"][i] += int(info["freeze_maintained"][s])
+                m4["crashes"][i] += int(info["crash_hp"][s] > 0)
         if record:
             infos.append(info)
         t += 1
         if r.done or (max_turns is not None and t >= max_turns):
             break
         obs = r.obs
+    boot = None
+    if bootstrap is not None:
+        boot = disc_w * float(bootstrap(r.obs[focal]))
+        ret += boot
     return Rollout(ret, first, (farm[0], farm[1]), (plates[0], plates[1]), (bounty[0], bounty[1]),
-                   (deaths[0], deaths[1]), (recalls[0], recalls[1]), t, first_reward, infos)
+                   (deaths[0], deaths[1]), (recalls[0], recalls[1]), t, first_reward, infos, undisc, boot, m4)
 
 
 @dataclass
@@ -270,6 +314,7 @@ class BranchResult:
     recalls: Dict[str, np.ndarray]
     opp_first: Dict[str, np.ndarray]                  # opponent's branch-turn action per rollout
     meta: dict = field(default_factory=dict)
+    m4: Dict[str, Dict[str, np.ndarray]] = field(default_factory=dict)   # M4 per-candidate counters (n, 2)
 
     @property
     def n(self) -> int:
@@ -294,15 +339,21 @@ class BranchResult:
 
 def branch(cfg: GameConfig, snap: Snapshot, focal: int, candidates: Dict[str, Plan], agents: Sequence, n: int,
            root: int, key: Sequence[int] = (), cache: Optional[ProbCache] = None,
-           max_turns: Optional[int] = None) -> BranchResult:
+           max_turns: Optional[int] = None, gamma: Optional[float] = None,
+           bootstrap: Optional[Callable] = None) -> BranchResult:
     """Paired rollouts of every candidate from `snap` (see the module docstring). `cfg` is the base champion
-    configuration; the snapshot's skills are applied to it."""
+    configuration; the snapshot's skills are applied to it. Continuing time: `max_turns` is the window and the
+    returns are discounted with `gamma` (default the game's); a `bootstrap` critic makes the result an approximation
+    (meta["bootstrapped"])."""
     env = LaneEnv(snap.config(cfg), cache_size=20_000)
     cache = cache if cache is not None else ProbCache()
     out = {k: {} for k in ("returns", "first_reward", "deaths", "farm", "plates", "bounty", "recalls", "opp_first")}
+    m4_out: Dict[str, Dict[str, np.ndarray]] = {}
     for name, plan in candidates.items():
-        rs = [rollout(env, snap, focal, plan, agents, rollout_seed(root, m, *key), cache, max_turns=max_turns)
-              for m in range(n)]
+        rs = [rollout(env, snap, focal, plan, agents, rollout_seed(root, m, *key), cache, max_turns=max_turns,
+                      gamma=gamma, bootstrap=bootstrap) for m in range(n)]
+        if rs and rs[0].m4 is not None:
+            m4_out[name] = {k: np.array([r.m4[k] for r in rs], dtype=float) for k in rs[0].m4}
         out["returns"][name] = np.array([r.ret for r in rs])
         out["first_reward"][name] = np.array([r.first_reward for r in rs])
         out["deaths"][name] = np.array([r.deaths for r in rs], dtype=float)
@@ -311,5 +362,11 @@ def branch(cfg: GameConfig, snap: Snapshot, focal: int, candidates: Dict[str, Pl
         out["bounty"][name] = np.array([r.bounty for r in rs])
         out["recalls"][name] = np.array([r.recalls for r in rs], dtype=float)
         out["opp_first"][name] = np.array([r.first_actions[1 - focal] for r in rs])
-    return BranchResult(snap, focal, list(candidates), **out,
-                        meta={"n": n, "root": int(root), "key": [int(x) for x in key], "max_turns": max_turns})
+    meta = {"n": n, "root": int(root), "key": [int(x) for x in key], "max_turns": max_turns,
+            "gamma": gamma if gamma is not None else (cfg.gamma if cfg.continuing else 1.0),
+            "bootstrapped": bootstrap is not None}
+    if bootstrap is not None:
+        meta["label"] = "APPROXIMATION: critic bootstrap gamma^W V_hat(s_W) added (design §10.5.4)"
+    res = BranchResult(snap, focal, list(candidates), **out, meta=meta)
+    res.m4 = m4_out
+    return res
