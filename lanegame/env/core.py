@@ -117,7 +117,7 @@ class LaneEnv:
 
     def __init__(self, cfg: GameConfig, max_turns: Optional[int] = None,
                  choosers: Optional[Tuple[Optional[Chooser], Optional[Chooser]]] = None,
-                 cache_size: int = 0, gank_reward: str = "realized"):
+                 cache_size: int = 0, gank_reward: str = "realized", record_ticks: bool = False):
         cfg.validate()
         if gank_reward not in ("realized", "expected"):
             raise ValueError("gank_reward must be 'realized' or 'expected'")
@@ -125,6 +125,9 @@ class LaneEnv:
             raise ValueError("gank_reward='expected' applies to the legacy configurations only: in champion mode a "
                              "gank changes the state (HP, death), so its realized outcome cannot be replaced")
         self.gank_reward = gank_reward
+        # opt-in instrumentation (M4.2e-D viewer): every lane step records its tick trace (mechanics.step_turn
+        # record=True, which changes no result); ruleset m4 reports the AUTHORITATIVE step's trace as info["lane_trace"]
+        self.record_ticks = bool(record_ticks)
         if max_turns is not None and max_turns <= 0:
             raise ValueError("max_turns must be positive (or None)")
         if cfg.continuing and gank_reward != "realized":
@@ -436,6 +439,8 @@ class LaneEnv:
             "returned": ct.returned, "gold_unspendable": ct.gold_clamped, "invested": ct.invested,
             "pinned": ct.pinned,                                              # position_rule "pin"/"standoff"
         }
+        if self.record_ticks:
+            info["lane_trace"] = res.trace                                    # ticks of ct.lane, not of the probe
         return StepResult(obs, (reward, -reward), False, truncated, info)
 
     # ------------------------------------------------------------------ internals
@@ -455,12 +460,13 @@ class LaneEnv:
                 Observation(k, B, s, lb, observe(s, k, B, cfg, ch), mb, ch, cfg))
 
     def _lane_turn(self, s: State, k: int, a: int, b: int, reach=None, budget=None) -> TurnResult:
+        rec = self.record_ticks
         if self._cache_size <= 0:
-            return step_turn(s, k, a, b, self.cfg, champion_reach=reach, champion_budget=budget)
+            return step_turn(s, k, a, b, self.cfg, record=rec, champion_reach=reach, champion_budget=budget)
         key = (s, k % self.cfg.phase_period, a, b, reach, budget)
         res = self._cache.get(key)
         if res is None:
-            res = step_turn(s, k, a, b, self.cfg, champion_reach=reach, champion_budget=budget)
+            res = step_turn(s, k, a, b, self.cfg, record=rec, champion_reach=reach, champion_budget=budget)
             self._cache[key] = res
             if len(self._cache) > self._cache_size:
                 self._cache.popitem(last=False)

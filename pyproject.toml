@@ -12,9 +12,10 @@ dependencies = ["numpy>=2.0", "scipy>=1.13", "matplotlib>=3.8"]
 [project.optional-dependencies]
 test = ["pytest>=8.0"]
 rl = ["pettingzoo>=1.24", "gymnasium>=0.29", "torch>=2.2"]   # optional: PettingZoo adapter, PPO (lanegame.rl)
+viewer = ["streamlit>=1.40", "plotly>=5.20"]                 # optional: the M4.2e-D debugger (lanegame.viewer)
 
 [tool.setuptools]
-packages = ["lanegame", "lanegame.env", "lanegame.experiments", "lanegame.experiments.v1", "lanegame.experiments.siege", "lanegame.experiments.champions", "lanegame.experiments.rl", "lanegame.experiments.m4", "lanegame.rl", "lanegame.diagnostics"]
+packages = ["lanegame", "lanegame.env", "lanegame.experiments", "lanegame.experiments.v1", "lanegame.experiments.siege", "lanegame.experiments.champions", "lanegame.experiments.rl", "lanegame.experiments.m4", "lanegame.rl", "lanegame.diagnostics", "lanegame.viewer"]
 
 [tool.pytest.ini_options]
 testpaths = ["tests"]

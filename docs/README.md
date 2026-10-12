@@ -5,7 +5,7 @@ Two documents live at the top level because every milestone refers to them:
 | document | what it is |
 |---|---|
 | [design_philosophy.md](design_philosophy.md) | the standard every mechanic is judged against: simplify how League works without changing why its laning strategies work |
-| [rl_research_roadmap.md](rl_research_roadmap.md) | the research roadmap; one section per milestone (A–W so far) with the decision and the link to its full report |
+| [rl_research_roadmap.md](rl_research_roadmap.md) | the research roadmap; one section per milestone (A–Y so far) with the decision and the link to its full report |
 
 The reports are grouped by phase. Within a folder the files are listed in the order they were written.
 
@@ -53,6 +53,7 @@ The reports are grouped by phase. Within a folder the files are listed in the or
 | [m4_2e_natural_waves_final_review.md](natural_waves/m4_2e_natural_waves_final_review.md) | M4.2e-A.1: the final natural-wave preset (`m4_natural()`) |
 | [m4_2e_zoning_report.md](natural_waves/m4_2e_zoning_report.md) | M4.2e-B: design philosophy and combat-driven zoning (`m4_lane()`) |
 | [m4_2e_wave_actions_report.md](natural_waves/m4_2e_wave_actions_report.md) | M4.2e-C: wave actions as shares of one capacity, the half-wave law (`m4_lasthit()`) |
+| [m4_2e_debugger.md](natural_waves/m4_2e_debugger.md) | M4.2e-D: the local visual simulation debugger (`streamlit run lanegame/viewer/app.py`) |
 
 Raw results and the commands that produced them are under `results/`, one folder per study; the drivers are in
 `lanegame/experiments/`.

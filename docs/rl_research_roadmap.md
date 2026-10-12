@@ -1208,3 +1208,27 @@ evidence only. Listed for review: the own-tower rate (harness variants `lasthit_
 
 **Next steps (not started):** review; then the M4.3 PPO smoke test on `m4_lasthit()`, judged against the sampled
 equilibria of the report's section 6.4.
+
+## Y. M4.2e-D visual simulation debugger (2026-10-12)
+
+Branch `development/m4-natural-waves`, on top of M4.2e-C. A temporary validation tool, not a mechanics change.
+
+- **Full account:** [m4_2e_debugger.md](natural_waves/m4_2e_debugger.md).
+- **Launch:** `pip install -e .[viewer]`, then `streamlit run lanegame/viewer/app.py`.
+- **Code:** `lanegame/viewer/` has four modules:
+  - `session.py`: setups, recording and replay, global coordinates, summaries, events;
+  - `policies.py`: the `zoning_natural` policies with explained fallbacks, and the example matchups;
+  - `render.py`: the Plotly figures;
+  - `app.py`: the Streamlit app.
+
+  The only engine change is the opt-in `LaneEnv(record_ticks=True)`, which exposes the authoritative lane step's
+  tick trace as `info["lane_trace"]`. It is off by default and every existing result is unchanged.
+- **Tests:** `tests/test_viewer.py` (23). They cover replay against a plain `LaneEnv`, determinism and branching,
+  that the trace is authoritative, B mirroring, the economy identity, legality, that the policies match
+  `zoning_natural`, and that every drawn frame follows the states or the tick trace.
+- **Delivered:** strategy-vs-strategy matchups (7 examples), manual play for A with branching and take-over, a
+  compact lane picture (packets as HP-labelled rectangles, crashed masses, towers with plates, champions, contact and
+  movement arrows) with turn and tick playback (Play / Pause, speed, tick-by-tick), player strip and summary line,
+  champion and economy panels, timelines, the event log and a grouped `info` inspector. The layout follows the
+  reference prototype of the M4.2e-D UI refinement brief.
+- **Status:** implemented. M4.3 not started.
