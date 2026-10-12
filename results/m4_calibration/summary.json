@@ -1,0 +1,1389 @@
+{
+ "budget": {
+  "stages": {
+   "A_invalid_seat_seeds": {
+    "turns": 115200,
+    "wall_s": 3.8,
+    "cpu_s": 18.56
+   },
+   "A": {
+    "turns": 115200,
+    "wall_s": 4.04,
+    "cpu_s": 19.25
+   },
+   "B1": {
+    "turns": 92160,
+    "wall_s": 3.38,
+    "cpu_s": 19.27
+   },
+   "B2": {
+    "turns": 115200,
+    "wall_s": 4.01,
+    "cpu_s": 18.45
+   },
+   "R": {
+    "turns": 172800,
+    "wall_s": 5.72,
+    "cpu_s": 36.16
+   },
+   "CD": {
+    "turns": 281600,
+    "wall_s": 7.26,
+    "cpu_s": 48.08
+   },
+   "DCF": {
+    "turns": 320000,
+    "wall_s": 9.75,
+    "cpu_s": 68.92
+   },
+   "F": {
+    "turns": 585000,
+    "wall_s": 16.84,
+    "cpu_s": 95.64
+   },
+   "FB": {
+    "turns": 64000,
+    "wall_s": 3.97,
+    "cpu_s": 15.98
+   },
+   "S4": {
+    "turns": 115200,
+    "wall_s": 5.54,
+    "cpu_s": 5.62
+   }
+  },
+  "total": {
+   "turns": 1976360,
+   "wall_s": 64.31,
+   "cpu_s": 345.93
+  }
+ },
+ "baseline": "g0.60_i1.20",
+ "A_gank": {
+  "g0.60_i1.20|hold_farmer vs hold_farmer": {
+   "value": 0.0,
+   "ci95": 0.0,
+   "ganks_per100": 6.802,
+   "gank_trials_per_gank": 1.951,
+   "deaths_per100": 0.458,
+   "gank_deaths_per100": 0.458,
+   "recalls_per100": 1.802,
+   "farm_per100": 30.357,
+   "xp_per100": 378.583,
+   "tower_dmg_per100": 0.0,
+   "plates_per100": 0.0,
+   "components": {
+    "farm_payoff": 0.0,
+    "plate_payoff": 0.0,
+    "bounty_payoff": 0.0
+   }
+  },
+  "g0.60_i1.20|presser vs hold_farmer": {
+   "value": -17.047,
+   "ci95": 0.291,
+   "ganks_per100": 11.854,
+   "gank_trials_per_gank": 3.083,
+   "deaths_per100": 2.74,
+   "gank_deaths_per100": 2.74,
+   "recalls_per100": 3.094,
+   "farm_per100": 14.801,
+   "xp_per100": 351.458,
+   "tower_dmg_per100": 1450.125,
+   "plates_per100": 0.677,
+   "components": {
+    "farm_payoff": -16.234,
+    "plate_payoff": 0.4,
+    "bounty_payoff": -1.213
+   }
+  },
+  "g0.60_i1.20|cond_shove vs hold_farmer": {
+   "value": -15.796,
+   "ci95": 0.261,
+   "ganks_per100": 10.354,
+   "gank_trials_per_gank": 2.783,
+   "deaths_per100": 1.875,
+   "gank_deaths_per100": 1.875,
+   "recalls_per100": 2.75,
+   "farm_per100": 15.566,
+   "xp_per100": 356.375,
+   "tower_dmg_per100": 1500.0,
+   "plates_per100": 0.75,
+   "components": {
+    "farm_payoff": -16.79,
+    "plate_payoff": 1.862,
+    "bounty_payoff": -0.867
+   }
+  },
+  "g0.60_i1.20|edge_trader vs hold_farmer": {
+   "value": 0.496,
+   "ci95": 0.438,
+   "ganks_per100": 7.5,
+   "gank_trials_per_gank": 2.136,
+   "deaths_per100": 1.094,
+   "gank_deaths_per100": 1.094,
+   "recalls_per100": 2.562,
+   "farm_per100": 25.892,
+   "xp_per100": 364.875,
+   "tower_dmg_per100": 0.0,
+   "plates_per100": 0.0,
+   "components": {
+    "farm_payoff": -0.241,
+    "plate_payoff": 0.0,
+    "bounty_payoff": 0.737
+   }
+  },
+  "g0.40_i1.20|hold_farmer vs hold_farmer": {
+   "value": 0.0,
+   "ci95": 0.0,
+   "ganks_per100": 6.833,
+   "gank_trials_per_gank": 1.579,
+   "deaths_per100": 0.292,
+   "gank_deaths_per100": 0.292,
+   "recalls_per100": 1.542,
+   "farm_per100": 30.586,
+   "xp_per100": 382.667,
+   "tower_dmg_per100": 0.0,
+   "plates_per100": 0.0,
+   "components": {
+    "farm_payoff": 0.0,
+    "plate_payoff": 0.0,
+    "bounty_payoff": 0.0
+   }
+  },
+  "g0.40_i1.20|presser vs hold_farmer": {
+   "value": -15.92,
+   "ci95": 0.216,
+   "ganks_per100": 12.365,
+   "gank_trials_per_gank": 2.338,
+   "deaths_per100": 1.521,
+   "gank_deaths_per100": 1.521,
+   "recalls_per100": 3.292,
+   "farm_per100": 15.267,
+   "xp_per100": 360.833,
+   "tower_dmg_per100": 1092.396,
+   "plates_per100": 0.458,
+   "components": {
+    "farm_payoff": -15.475,
+    "plate_payoff": 0.216,
+    "bounty_payoff": -0.661
+   }
+  },
+  "g0.40_i1.20|cond_shove vs hold_farmer": {
+   "value": -14.909,
+   "ci95": 0.223,
+   "ganks_per100": 10.885,
+   "gank_trials_per_gank": 2.126,
+   "deaths_per100": 0.854,
+   "gank_deaths_per100": 0.854,
+   "recalls_per100": 3.083,
+   "farm_per100": 15.944,
+   "xp_per100": 363.625,
+   "tower_dmg_per100": 1500.0,
+   "plates_per100": 0.75,
+   "components": {
+    "farm_payoff": -16.431,
+    "plate_payoff": 1.876,
+    "bounty_payoff": -0.354
+   }
+  },
+  "g0.40_i1.20|edge_trader vs hold_farmer": {
+   "value": 0.797,
+   "ci95": 0.501,
+   "ganks_per100": 7.365,
+   "gank_trials_per_gank": 1.649,
+   "deaths_per100": 0.573,
+   "gank_deaths_per100": 0.573,
+   "recalls_per100": 2.531,
+   "farm_per100": 26.619,
+   "xp_per100": 371.375,
+   "tower_dmg_per100": 0.0,
+   "plates_per100": 0.0,
+   "components": {
+    "farm_payoff": -0.068,
+    "plate_payoff": 0.0,
+    "bounty_payoff": 0.865
+   }
+  },
+  "g0.30_i1.20|hold_farmer vs hold_farmer": {
+   "value": 0.0,
+   "ci95": 0.0,
+   "ganks_per100": 6.906,
+   "gank_trials_per_gank": 1.363,
+   "deaths_per100": 0.219,
+   "gank_deaths_per100": 0.219,
+   "recalls_per100": 1.385,
+   "farm_per100": 30.698,
+   "xp_per100": 384.792,
+   "tower_dmg_per100": 0.0,
+   "plates_per100": 0.0,
+   "components": {
+    "farm_payoff": 0.0,
+    "plate_payoff": 0.0,
+    "bounty_payoff": 0.0
+   }
+  },
+  "g0.30_i1.20|presser vs hold_farmer": {
+   "value": -15.524,
+   "ci95": 0.213,
+   "ganks_per100": 12.844,
+   "gank_trials_per_gank": 1.941,
+   "deaths_per100": 1.021,
+   "gank_deaths_per100": 1.021,
+   "recalls_per100": 3.208,
+   "farm_per100": 15.452,
+   "xp_per100": 365.625,
+   "tower_dmg_per100": 806.198,
+   "plates_per100": 0.312,
+   "components": {
+    "farm_payoff": -15.201,
+    "plate_payoff": 0.188,
+    "bounty_payoff": -0.511
+   }
+  },
+  "g0.30_i1.20|cond_shove vs hold_farmer": {
+   "value": -14.434,
+   "ci95": 0.284,
+   "ganks_per100": 10.938,
+   "gank_trials_per_gank": 1.798,
+   "deaths_per100": 0.729,
+   "gank_deaths_per100": 0.729,
+   "recalls_per100": 2.594,
+   "farm_per100": 16.228,
+   "xp_per100": 368.771,
+   "tower_dmg_per100": 1500.0,
+   "plates_per100": 0.75,
+   "components": {
+    "farm_payoff": -15.996,
+    "plate_payoff": 1.918,
+    "bounty_payoff": -0.356
+   }
+  },
+  "g0.30_i1.20|edge_trader vs hold_farmer": {
+   "value": 0.746,
+   "ci95": 0.477,
+   "ganks_per100": 7.396,
+   "gank_trials_per_gank": 1.397,
+   "deaths_per100": 0.323,
+   "gank_deaths_per100": 0.323,
+   "recalls_per100": 2.49,
+   "farm_per100": 26.941,
+   "xp_per100": 374.708,
+   "tower_dmg_per100": 0.0,
+   "plates_per100": 0.0,
+   "components": {
+    "farm_payoff": -0.092,
+    "plate_payoff": 0.0,
+    "bounty_payoff": 0.838
+   }
+  }
+ },
+ "A_paired_vs_baseline": {
+  "g0.40_i1.20|hold_farmer vs hold_farmer": {
+   "diff": 0.0,
+   "se": 0.0,
+   "ci95": [
+    0.0,
+    0.0
+   ]
+  },
+  "g0.40_i1.20|presser vs hold_farmer": {
+   "diff": 1.1266172322452843,
+   "se": 0.09953384914163127,
+   "ci95": [
+    0.931530887927687,
+    1.3217035765628815
+   ]
+  },
+  "g0.40_i1.20|cond_shove vs hold_farmer": {
+   "diff": 0.8871150801977811,
+   "se": 0.11741137673406091,
+   "ci95": [
+    0.6569887817990216,
+    1.1172413785965405
+   ]
+  },
+  "g0.40_i1.20|edge_trader vs hold_farmer": {
+   "diff": 0.30111374103314176,
+   "se": 0.35115192440096515,
+   "ci95": [
+    -0.3871440307927499,
+    0.9893715128590335
+   ]
+  },
+  "g0.30_i1.20|hold_farmer vs hold_farmer": {
+   "diff": 0.0,
+   "se": 0.0,
+   "ci95": [
+    0.0,
+    0.0
+   ]
+  },
+  "g0.30_i1.20|presser vs hold_farmer": {
+   "diff": 1.5224739800635005,
+   "se": 0.08518463032229681,
+   "ci95": [
+    1.3555121046317988,
+    1.6894358554952023
+   ]
+  },
+  "g0.30_i1.20|cond_shove vs hold_farmer": {
+   "diff": 1.3619557279532728,
+   "se": 0.1737900121803288,
+   "ci95": [
+    1.0213273040798283,
+    1.7025841518267173
+   ]
+  },
+  "g0.30_i1.20|edge_trader vs hold_farmer": {
+   "diff": 0.2504036418049199,
+   "se": 0.25884204448760467,
+   "ci95": [
+    -0.2569267653907852,
+    0.757734049000625
+   ]
+  }
+ },
+ "B1_intrinsic": {
+  "g0.60_i1.20|hold_farmer vs hold_farmer|W40": {
+   "diff": 0.0,
+   "ci95": 0.0,
+   "n": 48
+  },
+  "g0.60_i1.20|edge_trader vs edge_trader|W40": {
+   "diff": -0.73,
+   "ci95": 0.54,
+   "n": 48
+  },
+  "g0.60_i1.20|edge_trader vs edge_trader|W200": {
+   "diff": 0.219,
+   "ci95": 0.895,
+   "n": 48
+  },
+  "g0.60_i1.20|aggressive_trader vs hold_farmer|W40": {
+   "diff": 0.624,
+   "ci95": 0.399,
+   "n": 48
+  },
+  "g0.60_i1.35|hold_farmer vs hold_farmer|W40": {
+   "diff": 0.0,
+   "ci95": 0.0,
+   "n": 48
+  },
+  "g0.60_i1.35|edge_trader vs edge_trader|W40": {
+   "diff": -0.247,
+   "ci95": 0.527,
+   "n": 48
+  },
+  "g0.60_i1.35|edge_trader vs edge_trader|W200": {
+   "diff": 0.714,
+   "ci95": 1.053,
+   "n": 48
+  },
+  "g0.60_i1.35|aggressive_trader vs hold_farmer|W40": {
+   "diff": 1.249,
+   "ci95": 0.431,
+   "n": 48
+  },
+  "g0.60_i1.50|hold_farmer vs hold_farmer|W40": {
+   "diff": 0.0,
+   "ci95": 0.0,
+   "n": 48
+  },
+  "g0.60_i1.50|edge_trader vs edge_trader|W40": {
+   "diff": 0.047,
+   "ci95": 0.677,
+   "n": 48
+  },
+  "g0.60_i1.50|edge_trader vs edge_trader|W200": {
+   "diff": 1.759,
+   "ci95": 1.115,
+   "n": 48
+  },
+  "g0.60_i1.50|aggressive_trader vs hold_farmer|W40": {
+   "diff": 1.621,
+   "ci95": 0.499,
+   "n": 48
+  }
+ },
+ "B1_hits_to_kill": {
+  "g0.60_i1.20": {
+   "3": {
+    "N0": 7,
+    "N1": 6,
+    "N2": 5
+   },
+   "6": {
+    "N0": 6,
+    "N1": 6,
+    "N2": 5
+   },
+   "11": {
+    "N0": 6,
+    "N1": 6,
+    "N2": 5
+   },
+   "18": {
+    "N0": 7,
+    "N1": 5,
+    "N2": 5
+   }
+  },
+  "g0.60_i1.35": {
+   "3": {
+    "N0": 7,
+    "N1": 5,
+    "N2": 4
+   },
+   "6": {
+    "N0": 6,
+    "N1": 5,
+    "N2": 4
+   },
+   "11": {
+    "N0": 6,
+    "N1": 5,
+    "N2": 4
+   },
+   "18": {
+    "N0": 7,
+    "N1": 5,
+    "N2": 4
+   }
+  },
+  "g0.60_i1.50": {
+   "3": {
+    "N0": 7,
+    "N1": 5,
+    "N2": 3
+   },
+   "6": {
+    "N0": 6,
+    "N1": 5,
+    "N2": 3
+   },
+   "11": {
+    "N0": 6,
+    "N1": 5,
+    "N2": 3
+   },
+   "18": {
+    "N0": 7,
+    "N1": 4,
+    "N2": 3
+   }
+  }
+ },
+ "B2_realized": {
+  "g0.60_i1.20|hold_farmer vs hold_farmer": {
+   "value": 0.0,
+   "ci95": 0.0,
+   "first_purchase_median": 43.0,
+   "second_purchase_median": 55.5,
+   "unequal_item_share": 0.12104166666666666,
+   "lead_spell_mean": 38.733333333333334,
+   "lead_spell_median": 32.0,
+   "early_buyer_after60": {
+    "mean": 0.6129999999999998,
+    "ci95": 0.6516708746954369,
+    "n": 20
+   }
+  },
+  "g0.60_i1.20|gold_recaller vs hold_farmer": {
+   "value": -0.627,
+   "ci95": 0.113,
+   "first_purchase_median": 35.0,
+   "second_purchase_median": 48.0,
+   "unequal_item_share": 0.09635416666666666,
+   "lead_spell_mean": 28.03030303030303,
+   "lead_spell_median": 18.0,
+   "early_buyer_after60": {
+    "mean": 0.13583333333333333,
+    "ci95": 0.6003579371552558,
+    "n": 24
+   }
+  },
+  "g0.60_i1.20|edge_trader vs edge_trader": {
+   "value": 0.0,
+   "ci95": 0.0,
+   "first_purchase_median": 35.5,
+   "second_purchase_median": 59.0,
+   "unequal_item_share": 0.04270833333333333,
+   "lead_spell_mean": 8.91304347826087,
+   "lead_spell_median": 8.0,
+   "early_buyer_after60": {
+    "mean": -0.5929166666666668,
+    "ci95": 0.9031324402465034,
+    "n": 24
+   }
+  },
+  "g0.60_i1.20|aggressive_trader vs hold_farmer": {
+   "value": 1.989,
+   "ci95": 0.547,
+   "first_purchase_median": 27.5,
+   "second_purchase_median": 61.0,
+   "unequal_item_share": 0.05260416666666667,
+   "lead_spell_mean": 11.477272727272727,
+   "lead_spell_median": 11.0,
+   "early_buyer_after60": {
+    "mean": 0.30150000000000016,
+    "ci95": 1.0609571370477846,
+    "n": 20
+   }
+  },
+  "g0.60_i1.35|hold_farmer vs hold_farmer": {
+   "value": 0.0,
+   "ci95": 0.0,
+   "first_purchase_median": 43.0,
+   "second_purchase_median": 55.5,
+   "unequal_item_share": 0.12104166666666666,
+   "lead_spell_mean": 38.733333333333334,
+   "lead_spell_median": 32.0,
+   "early_buyer_after60": {
+    "mean": 0.6129999999999998,
+    "ci95": 0.6516708746954369,
+    "n": 20
+   }
+  },
+  "g0.60_i1.35|gold_recaller vs hold_farmer": {
+   "value": -0.627,
+   "ci95": 0.113,
+   "first_purchase_median": 35.0,
+   "second_purchase_median": 48.0,
+   "unequal_item_share": 0.09635416666666666,
+   "lead_spell_mean": 28.03030303030303,
+   "lead_spell_median": 18.0,
+   "early_buyer_after60": {
+    "mean": 0.13583333333333333,
+    "ci95": 0.6003579371552558,
+    "n": 24
+   }
+  },
+  "g0.60_i1.35|edge_trader vs edge_trader": {
+   "value": 0.0,
+   "ci95": 0.0,
+   "first_purchase_median": 35.5,
+   "second_purchase_median": 59.0,
+   "unequal_item_share": 0.03979166666666666,
+   "lead_spell_mean": 8.304347826086957,
+   "lead_spell_median": 7.0,
+   "early_buyer_after60": {
+    "mean": 1.140625,
+    "ci95": 1.386678050890203,
+    "n": 24
+   }
+  },
+  "g0.60_i1.35|aggressive_trader vs hold_farmer": {
+   "value": 3.951,
+   "ci95": 0.778,
+   "first_purchase_median": 27.5,
+   "second_purchase_median": 61.0,
+   "unequal_item_share": 0.04270833333333333,
+   "lead_spell_mean": 9.534883720930232,
+   "lead_spell_median": 9.0,
+   "early_buyer_after60": {
+    "mean": -0.6385,
+    "ci95": 1.3052980902420235,
+    "n": 20
+   }
+  },
+  "g0.60_i1.50|hold_farmer vs hold_farmer": {
+   "value": 0.0,
+   "ci95": 0.0,
+   "first_purchase_median": 43.0,
+   "second_purchase_median": 55.5,
+   "unequal_item_share": 0.12104166666666666,
+   "lead_spell_mean": 38.733333333333334,
+   "lead_spell_median": 32.0,
+   "early_buyer_after60": {
+    "mean": 0.6129999999999998,
+    "ci95": 0.6516708746954369,
+    "n": 20
+   }
+  },
+  "g0.60_i1.50|gold_recaller vs hold_farmer": {
+   "value": -0.627,
+   "ci95": 0.113,
+   "first_purchase_median": 35.0,
+   "second_purchase_median": 48.0,
+   "unequal_item_share": 0.09635416666666666,
+   "lead_spell_mean": 28.03030303030303,
+   "lead_spell_median": 18.0,
+   "early_buyer_after60": {
+    "mean": 0.13583333333333333,
+    "ci95": 0.6003579371552558,
+    "n": 24
+   }
+  },
+  "g0.60_i1.50|edge_trader vs edge_trader": {
+   "value": 0.0,
+   "ci95": 0.0,
+   "first_purchase_median": 35.0,
+   "second_purchase_median": 56.0,
+   "unequal_item_share": 0.034583333333333334,
+   "lead_spell_mean": 7.217391304347826,
+   "lead_spell_median": 7.0,
+   "early_buyer_after60": {
+    "mean": 0.4314583333333333,
+    "ci95": 1.7308360327539956,
+    "n": 24
+   }
+  },
+  "g0.60_i1.50|aggressive_trader vs hold_farmer": {
+   "value": 5.489,
+   "ci95": 0.781,
+   "first_purchase_median": 27.5,
+   "second_purchase_median": 60.5,
+   "unequal_item_share": 0.04510416666666667,
+   "lead_spell_mean": 10.069767441860465,
+   "lead_spell_median": 8.0,
+   "early_buyer_after60": {
+    "mean": -2.002125,
+    "ci95": 1.6008257047088477,
+    "n": 20
+   }
+  }
+ },
+ "R_afford_x_recall": {
+  "g0.60_i1.20": {
+   "interaction": 0.053451510803758616,
+   "ci95": 0.77523551499763,
+   "n": 72
+  },
+  "g0.60_i1.35": {
+   "interaction": 0.024727268150773776,
+   "ci95": 0.8324849613094102,
+   "n": 72
+  },
+  "g0.60_i1.50": {
+   "interaction": -0.27594634902736065,
+   "ci95": 0.7287823396496586,
+   "n": 72
+  }
+ },
+ "CD": {
+  "g0.60_i1.20|shove_recall vs hold_farmer": {
+   "value": -7.117,
+   "ci95": 2.001
+  },
+  "g0.60_i1.20|shove_recall vs presser": {
+   "value": 15.188,
+   "ci95": 0.487
+  },
+  "g0.60_i1.20|shove_recall vs gold_recaller": {
+   "value": -5.259,
+   "ci95": 2.848
+  },
+  "g0.60_i1.20|shove_recall vs edge_trader": {
+   "value": -4.144,
+   "ci95": 2.196
+  },
+  "g0.60_i1.20|shove_recall vs freezer": {
+   "value": -6.06,
+   "ci95": 2.36
+  },
+  "g0.60_i1.20|shove_recall_p vs hold_farmer": {
+   "value": -6.42,
+   "ci95": 1.577
+  },
+  "g0.60_i1.20|presser vs hold_farmer": {
+   "value": -17.136,
+   "ci95": 0.371
+  },
+  "g0.60_i1.20|cond_shove vs hold_farmer": {
+   "value": -15.834,
+   "ci95": 0.261
+  },
+  "g0.60_i1.20|aggressive_trader vs hold_farmer": {
+   "value": 2.063,
+   "ci95": 1.306
+  },
+  "g0.60_i1.20|edge_trader vs hold_farmer": {
+   "value": 0.39,
+   "ci95": 0.8
+  },
+  "g0.60_i1.20|gold_recaller vs hold_farmer": {
+   "value": -0.683,
+   "ci95": 0.173
+  },
+  "g0.40_i1.35|shove_recall vs hold_farmer": {
+   "value": -5.494,
+   "ci95": 2.151
+  },
+  "g0.40_i1.35|shove_recall vs presser": {
+   "value": 14.533,
+   "ci95": 0.404
+  },
+  "g0.40_i1.35|shove_recall vs gold_recaller": {
+   "value": -4.657,
+   "ci95": 2.579
+  },
+  "g0.40_i1.35|shove_recall vs edge_trader": {
+   "value": -4.1,
+   "ci95": 2.09
+  },
+  "g0.40_i1.35|shove_recall vs freezer": {
+   "value": -6.266,
+   "ci95": 2.378
+  },
+  "g0.40_i1.35|shove_recall_p vs hold_farmer": {
+   "value": -4.76,
+   "ci95": 1.832
+  },
+  "g0.40_i1.35|presser vs hold_farmer": {
+   "value": -15.955,
+   "ci95": 0.39
+  },
+  "g0.40_i1.35|cond_shove vs hold_farmer": {
+   "value": -14.862,
+   "ci95": 0.235
+  },
+  "g0.40_i1.35|aggressive_trader vs hold_farmer": {
+   "value": 4.753,
+   "ci95": 0.923
+  },
+  "g0.40_i1.35|edge_trader vs hold_farmer": {
+   "value": 1.187,
+   "ci95": 0.987
+  },
+  "g0.40_i1.35|gold_recaller vs hold_farmer": {
+   "value": -0.602,
+   "ci95": 0.178
+  },
+  "g0.30_i1.35|shove_recall vs hold_farmer": {
+   "value": -6.146,
+   "ci95": 2.189
+  },
+  "g0.30_i1.35|shove_recall vs presser": {
+   "value": 14.352,
+   "ci95": 0.252
+  },
+  "g0.30_i1.35|shove_recall vs gold_recaller": {
+   "value": -5.29,
+   "ci95": 2.123
+  },
+  "g0.30_i1.35|shove_recall vs edge_trader": {
+   "value": -5.163,
+   "ci95": 1.915
+  },
+  "g0.30_i1.35|shove_recall vs freezer": {
+   "value": -5.344,
+   "ci95": 2.704
+  },
+  "g0.30_i1.35|shove_recall_p vs hold_farmer": {
+   "value": -5.659,
+   "ci95": 1.833
+  },
+  "g0.30_i1.35|presser vs hold_farmer": {
+   "value": -15.491,
+   "ci95": 0.266
+  },
+  "g0.30_i1.35|cond_shove vs hold_farmer": {
+   "value": -14.435,
+   "ci95": 0.187
+  },
+  "g0.30_i1.35|aggressive_trader vs hold_farmer": {
+   "value": 5.049,
+   "ci95": 0.9
+  },
+  "g0.30_i1.35|edge_trader vs hold_farmer": {
+   "value": 1.627,
+   "ci95": 0.994
+  },
+  "g0.30_i1.35|gold_recaller vs hold_farmer": {
+   "value": -0.743,
+   "ci95": 0.183
+  },
+  "g0.40_i1.50|shove_recall vs hold_farmer": {
+   "value": -5.494,
+   "ci95": 2.151
+  },
+  "g0.40_i1.50|shove_recall vs presser": {
+   "value": 14.488,
+   "ci95": 0.419
+  },
+  "g0.40_i1.50|shove_recall vs gold_recaller": {
+   "value": -4.657,
+   "ci95": 2.579
+  },
+  "g0.40_i1.50|shove_recall vs edge_trader": {
+   "value": -4.986,
+   "ci95": 1.829
+  },
+  "g0.40_i1.50|shove_recall vs freezer": {
+   "value": -6.984,
+   "ci95": 2.462
+  },
+  "g0.40_i1.50|shove_recall_p vs hold_farmer": {
+   "value": -4.76,
+   "ci95": 1.832
+  },
+  "g0.40_i1.50|presser vs hold_farmer": {
+   "value": -15.819,
+   "ci95": 0.394
+  },
+  "g0.40_i1.50|cond_shove vs hold_farmer": {
+   "value": -14.855,
+   "ci95": 0.227
+  },
+  "g0.40_i1.50|aggressive_trader vs hold_farmer": {
+   "value": 6.126,
+   "ci95": 0.706
+  },
+  "g0.40_i1.50|edge_trader vs hold_farmer": {
+   "value": 1.636,
+   "ci95": 0.753
+  },
+  "g0.40_i1.50|gold_recaller vs hold_farmer": {
+   "value": -0.602,
+   "ci95": 0.178
+  }
+ },
+ "CD_paired_vs_baseline": {
+  "g0.40_i1.35|shove_recall vs hold_farmer": {
+   "diff": 1.623408935039477,
+   "se": 1.2023155035912867,
+   "ci95": [
+    -0.7331294519994449,
+    3.9799473220783987
+   ]
+  },
+  "g0.40_i1.35|shove_recall vs presser": {
+   "diff": -0.6546574153767837,
+   "se": 0.17107318637596863,
+   "ci95": [
+    -0.9899608606736823,
+    -0.31935397007988514
+   ]
+  },
+  "g0.40_i1.35|shove_recall vs gold_recaller": {
+   "diff": 0.6023544124814852,
+   "se": 1.1516080244034326,
+   "ci95": [
+    -1.6547973153492423,
+    2.859506140312213
+   ]
+  },
+  "g0.40_i1.35|shove_recall vs edge_trader": {
+   "diff": 0.043682783424673015,
+   "se": 0.2864894923808207,
+   "ci95": [
+    -0.5178366216417356,
+    0.6052021884910816
+   ]
+  },
+  "g0.40_i1.35|shove_recall vs freezer": {
+   "diff": -0.205554503944472,
+   "se": 0.9123734556999943,
+   "ci95": [
+    -1.9938064771164608,
+    1.5826974692275169
+   ]
+  },
+  "g0.40_i1.35|shove_recall_p vs hold_farmer": {
+   "diff": 1.6594013558774352,
+   "se": 0.9307919715709222,
+   "ci95": [
+    -0.16495090840157234,
+    3.4837536201564427
+   ]
+  },
+  "g0.40_i1.35|presser vs hold_farmer": {
+   "diff": 1.1808474245204725,
+   "se": 0.11797898689631758,
+   "ci95": [
+    0.94960861020369,
+    1.412086238837255
+   ]
+  },
+  "g0.40_i1.35|cond_shove vs hold_farmer": {
+   "diff": 0.9714066167078044,
+   "se": 0.16200582795088767,
+   "ci95": [
+    0.6538751939240646,
+    1.2889380394915442
+   ]
+  },
+  "g0.40_i1.35|aggressive_trader vs hold_farmer": {
+   "diff": 2.689520888586775,
+   "se": 0.5042010892574836,
+   "ci95": [
+    1.7012867536421072,
+    3.677755023531443
+   ]
+  },
+  "g0.40_i1.35|edge_trader vs hold_farmer": {
+   "diff": 0.797385244613104,
+   "se": 0.22625790836346038,
+   "ci95": [
+    0.35391974422072164,
+    1.2408507450054864
+   ]
+  },
+  "g0.40_i1.35|gold_recaller vs hold_farmer": {
+   "diff": 0.08052707516002192,
+   "se": 0.0881757133765423,
+   "ci95": [
+    -0.09229732305800098,
+    0.2533514733780448
+   ]
+  },
+  "g0.30_i1.35|shove_recall vs hold_farmer": {
+   "diff": 0.9707761305918627,
+   "se": 1.2906824443934013,
+   "ci95": [
+    -1.558961460419204,
+    3.500513721602929
+   ]
+  },
+  "g0.30_i1.35|shove_recall vs presser": {
+   "diff": -0.8362237877755296,
+   "se": 0.1625204245204592,
+   "ci95": [
+    -1.1547638198356296,
+    -0.5176837557154297
+   ]
+  },
+  "g0.30_i1.35|shove_recall vs gold_recaller": {
+   "diff": -0.030825068725506166,
+   "se": 1.1865785041795824,
+   "ci95": [
+    -2.356518936917488,
+    2.2948687994664754
+   ]
+  },
+  "g0.30_i1.35|shove_recall vs edge_trader": {
+   "diff": -1.0198852728660235,
+   "se": 0.5095280961481502,
+   "ci95": [
+    -2.0185603413163977,
+    -0.021210204415649137
+   ]
+  },
+  "g0.30_i1.35|shove_recall vs freezer": {
+   "diff": 0.7161409079446085,
+   "se": 1.0117744433130915,
+   "ci95": [
+    -1.266937000949051,
+    2.699218816838268
+   ]
+  },
+  "g0.30_i1.35|shove_recall_p vs hold_farmer": {
+   "diff": 0.7609521299222937,
+   "se": 1.0937071018322226,
+   "ci95": [
+    -1.3827137896688628,
+    2.9046180495134504
+   ]
+  },
+  "g0.30_i1.35|presser vs hold_farmer": {
+   "diff": 1.6445785019353132,
+   "se": 0.14099964166053922,
+   "ci95": [
+    1.3682192042806562,
+    1.9209377995899701
+   ]
+  },
+  "g0.30_i1.35|cond_shove vs hold_farmer": {
+   "diff": 1.3983968012273267,
+   "se": 0.1323987693645204,
+   "ci95": [
+    1.1388952132728667,
+    1.6578983891817867
+   ]
+  },
+  "g0.30_i1.35|aggressive_trader vs hold_farmer": {
+   "diff": 2.985285096155967,
+   "se": 0.6899560474669945,
+   "ci95": [
+    1.6329712431206578,
+    4.3375989491912765
+   ]
+  },
+  "g0.30_i1.35|edge_trader vs hold_farmer": {
+   "diff": 1.2371010808253382,
+   "se": 0.2592437144126883,
+   "ci95": [
+    0.7289834005764692,
+    1.7452187610742071
+   ]
+  },
+  "g0.30_i1.35|gold_recaller vs hold_farmer": {
+   "diff": -0.059691833529675685,
+   "se": 0.08737239824311935,
+   "ci95": [
+    -0.23094173408618962,
+    0.11155806702683824
+   ]
+  },
+  "g0.40_i1.50|shove_recall vs hold_farmer": {
+   "diff": 1.623408935039477,
+   "se": 1.2023155035912867,
+   "ci95": [
+    -0.7331294519994449,
+    3.9799473220783987
+   ]
+  },
+  "g0.40_i1.50|shove_recall vs presser": {
+   "diff": -0.6996479987758917,
+   "se": 0.16860748005311205,
+   "ci95": [
+    -1.0301186596799914,
+    -0.3691773378717921
+   ]
+  },
+  "g0.40_i1.50|shove_recall vs gold_recaller": {
+   "diff": 0.6023544124814852,
+   "se": 1.1516080244034326,
+   "ci95": [
+    -1.6547973153492423,
+    2.859506140312213
+   ]
+  },
+  "g0.40_i1.50|shove_recall vs edge_trader": {
+   "diff": -0.8429210062380559,
+   "se": 0.24955906633198485,
+   "ci95": [
+    -1.3320567762487463,
+    -0.3537852362273656
+   ]
+  },
+  "g0.40_i1.50|shove_recall vs freezer": {
+   "diff": -0.9235319307493717,
+   "se": 1.0427590827553876,
+   "ci95": [
+    -2.967339732949932,
+    1.1202758714511882
+   ]
+  },
+  "g0.40_i1.50|shove_recall_p vs hold_farmer": {
+   "diff": 1.6594013558774352,
+   "se": 0.9307919715709222,
+   "ci95": [
+    -0.16495090840157234,
+    3.4837536201564427
+   ]
+  },
+  "g0.40_i1.50|presser vs hold_farmer": {
+   "diff": 1.3164542802394772,
+   "se": 0.0822227568136426,
+   "ci95": [
+    1.1552976768847376,
+    1.4776108835942168
+   ]
+  },
+  "g0.40_i1.50|cond_shove vs hold_farmer": {
+   "diff": 0.978619933688571,
+   "se": 0.16018871236970725,
+   "ci95": [
+    0.6646500574439449,
+    1.2925898099331972
+   ]
+  },
+  "g0.40_i1.50|aggressive_trader vs hold_farmer": {
+   "diff": 4.0626756502459,
+   "se": 0.4878386003082407,
+   "ci95": [
+    3.1065119936417487,
+    5.018839306850052
+   ]
+  },
+  "g0.40_i1.50|edge_trader vs hold_farmer": {
+   "diff": 1.2456451627362133,
+   "se": 0.34101176324700383,
+   "ci95": [
+    0.5772621067720858,
+    1.9140282187003408
+   ]
+  },
+  "g0.40_i1.50|gold_recaller vs hold_farmer": {
+   "diff": 0.08052707516002192,
+   "se": 0.0881757133765423,
+   "ci95": [
+    -0.09229732305800098,
+    0.2533514733780448
+   ]
+  }
+ },
+ "DCF_sign_counts": {
+  "g0.60_i1.20": {
+   "recall_minus_farm_pos": 3,
+   "best_recall_now": 4,
+   "best_farm8": 7,
+   "best_shove_stay": 9,
+   "shove_stay_minus_farm_pos": 8,
+   "recall_minus_farm_neg": 2,
+   "shove_recall_minus_recall_neg": 5,
+   "shove_stay_minus_farm_neg": 1
+  },
+  "g0.40_i1.35": {
+   "recall_minus_farm_pos": 4,
+   "shove_recall_minus_recall_neg": 6,
+   "best_recall_now": 5,
+   "recall_minus_farm_neg": 6,
+   "best_farm8": 7,
+   "best_shove_stay": 8,
+   "shove_stay_minus_farm_pos": 5,
+   "shove_stay_minus_farm_neg": 2
+  }
+ },
+ "F": {
+  "g0.60_i1.20|presser vs hold_farmer": {
+   "value": -17.654,
+   "ci95": 0.217
+  },
+  "g0.60_i1.20|shove_recall vs hold_farmer": {
+   "value": -5.932,
+   "ci95": 1.028
+  },
+  "g0.60_i1.20|aggressive_trader vs hold_farmer": {
+   "value": 2.388,
+   "ci95": 0.645
+  },
+  "g0.40_i1.20|presser vs hold_farmer": {
+   "value": -16.398,
+   "ci95": 0.154
+  },
+  "g0.40_i1.20|shove_recall vs hold_farmer": {
+   "value": -6.46,
+   "ci95": 1.028
+  },
+  "g0.40_i1.20|aggressive_trader vs hold_farmer": {
+   "value": 2.827,
+   "ci95": 0.457
+  },
+  "g0.40_i1.35|presser vs hold_farmer": {
+   "value": -16.319,
+   "ci95": 0.147
+  },
+  "g0.40_i1.35|shove_recall vs hold_farmer": {
+   "value": -6.46,
+   "ci95": 1.028
+  },
+  "g0.40_i1.35|aggressive_trader vs hold_farmer": {
+   "value": 4.691,
+   "ci95": 0.337
+  }
+ },
+ "F_paired_vs_baseline": {
+  "g0.40_i1.20|presser vs hold_farmer": {
+   "diff": 1.2567876173789467,
+   "se": 0.06782902209319469,
+   "ci95": [
+    1.123842734076285,
+    1.3897325006816084
+   ]
+  },
+  "g0.40_i1.20|shove_recall vs hold_farmer": {
+   "diff": -0.5279100243848114,
+   "se": 0.6385489006054678,
+   "ci95": [
+    -1.7794658695715282,
+    0.7236458208019054
+   ]
+  },
+  "g0.40_i1.20|aggressive_trader vs hold_farmer": {
+   "diff": 0.4385692130279922,
+   "se": 0.25488239440079485,
+   "ci95": [
+    -0.06100027999756574,
+    0.9381387060535501
+   ]
+  },
+  "g0.40_i1.35|presser vs hold_farmer": {
+   "diff": 1.335180985359689,
+   "se": 0.07143010643149125,
+   "ci95": [
+    1.195177976753966,
+    1.4751839939654119
+   ]
+  },
+  "g0.40_i1.35|shove_recall vs hold_farmer": {
+   "diff": -0.5279100243848114,
+   "se": 0.6385489006054678,
+   "ci95": [
+    -1.7794658695715282,
+    0.7236458208019054
+   ]
+  },
+  "g0.40_i1.35|aggressive_trader vs hold_farmer": {
+   "diff": 2.302583052086095,
+   "se": 0.29128157069639327,
+   "ci95": [
+    1.731671173521164,
+    2.8734949306510256
+   ]
+  }
+ },
+ "F_snowball": {
+  "g0.60_i1.20": {
+   "games": 50,
+   "p_win_given_ahead30": 0.75,
+   "p_win_given_behind30": 0.3076923076923077,
+   "corr": 0.6538174545467587,
+   "level_gap_abs_mean_30_60_100": [
+    0.4,
+    0.2,
+    0.44
+   ],
+   "level_gap_ge2_share_30_60_100": [
+    0.0,
+    0.0,
+    0.0
+   ]
+  },
+  "g0.40_i1.20": {
+   "games": 50,
+   "p_win_given_ahead30": 0.5555555555555556,
+   "p_win_given_behind30": 0.43478260869565216,
+   "corr": 0.4573991440083516,
+   "level_gap_abs_mean_30_60_100": [
+    0.18,
+    0.14,
+    0.62
+   ],
+   "level_gap_ge2_share_30_60_100": [
+    0.0,
+    0.0,
+    0.02
+   ]
+  },
+  "g0.40_i1.35": {
+   "games": 50,
+   "p_win_given_ahead30": 0.6666666666666666,
+   "p_win_given_behind30": 0.21739130434782608,
+   "corr": 0.6261888594881235,
+   "level_gap_abs_mean_30_60_100": [
+    0.22,
+    0.18,
+    0.66
+   ],
+   "level_gap_ge2_share_30_60_100": [
+    0.0,
+    0.0,
+    0.06
+   ]
+  }
+ },
+ "F_tail_bounds": {
+  "g0.60_i1.20": {
+   "omega": 68.33907032003606,
+   "bound_W": 0.002950282912600622
+  },
+  "g0.40_i1.20": {
+   "omega": 68.33907032003606,
+   "bound_W": 0.002950282912600622
+  },
+  "g0.40_i1.35": {
+   "omega": 68.33907032003606,
+   "bound_W": 0.002950282912600622
+  }
+ },
+ "FB_parked_table_matches_design": {
+  "2_SP": true,
+  "2_SH": true,
+  "3_SP": true,
+  "3_SH": true,
+  "4_SP": true,
+  "4_SH": true,
+  "5_SP": true,
+  "5_SH": true,
+  "6_SP": true,
+  "6_SH": true,
+  "7_SP": true,
+  "7_SH": true,
+  "8_SP": true,
+  "8_SH": true,
+  "9_SP": true,
+  "9_SH": true
+ },
+ "FB_keep_reach_minus_current": {
+  "g0.60_i1.20|presser vs freezer": {
+   "diff": 1.0861408195090179,
+   "se": 0.3567960003147206,
+   "ci95": [
+    0.38682065889216555,
+    1.7854609801258703
+   ],
+   "significant": true,
+   "a": -10.989457566112716,
+   "b": -12.075598385621735
+  },
+  "g0.60_i1.20|freeze_breaker vs freezer": {
+   "diff": 0.6421543446899687,
+   "se": 0.3368503150640626,
+   "ci95": [
+    -0.018072272835593983,
+    1.3023809622155313
+   ],
+   "significant": false,
+   "a": -11.437369235905035,
+   "b": -12.079523580595005
+  },
+  "g0.60_i1.20|shove_recall vs freezer": {
+   "diff": -0.7643109517569726,
+   "se": 0.8006232950539944,
+   "ci95": [
+    -2.333532610062802,
+    0.8049107065488565
+   ],
+   "significant": false,
+   "a": -5.960487565652367,
+   "b": -5.196176613895394
+  },
+  "g0.60_i1.20|g_adaptive_breaker vs freezer": {
+   "diff": 0.0,
+   "se": 0.0,
+   "ci95": [
+    0.0,
+    0.0
+   ],
+   "significant": false,
+   "a": -0.5584018154607693,
+   "b": -0.5584018154607693
+  },
+  "g0.60_i1.20|presser vs hold_farmer": {
+   "diff": 1.4922184120008273,
+   "se": 0.05404859067579642,
+   "ci95": [
+    1.3862831742762662,
+    1.5981536497253883
+   ],
+   "significant": true,
+   "a": -16.082040302238987,
+   "b": -17.574258714239814
+  }
+ },
+ "S4_dominance": {
+  "g0.60_i1.20|aggressive_trader vs freezer": {
+   "value": -3.389,
+   "ci95": 0.664
+  },
+  "g0.60_i1.20|aggressive_trader vs edge_trader": {
+   "value": -3.389,
+   "ci95": 0.664
+  },
+  "g0.40_i1.35|aggressive_trader vs freezer": {
+   "value": -1.682,
+   "ci95": 0.813
+  },
+  "g0.40_i1.35|aggressive_trader vs edge_trader": {
+   "value": -1.682,
+   "ci95": 0.813
+  }
+ },
+ "S4_recall": {
+  "g0.40_i1.35": {
+   "positive": [],
+   "negative": [
+    "expensive|2|afford",
+    "expensive|2|poor",
+    "expensive|4|poor",
+    "expensive|6|afford",
+    "expensive|6|poor"
+   ],
+   "afford_minus_poor_mean": 0.012072807604588148,
+   "rollouts": 8,
+   "window": 200
+  }
+ }
+}

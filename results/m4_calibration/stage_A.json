@@ -1,0 +1,681 @@
+{
+ "configs": [
+  "g0.60_i1.20",
+  "g0.40_i1.20",
+  "g0.30_i1.20"
+ ],
+ "matchups": [
+  [
+   "hold_farmer",
+   "hold_farmer"
+  ],
+  [
+   "presser",
+   "hold_farmer"
+  ],
+  [
+   "cond_shove",
+   "hold_farmer"
+  ],
+  [
+   "edge_trader",
+   "hold_farmer"
+  ]
+ ],
+ "n_seeds": 12,
+ "window": 400,
+ "results": {
+  "g0.60_i1.20|hold_farmer vs hold_farmer": {
+   "value": 0.0,
+   "se": 0.0,
+   "ci95": [
+    0.0,
+    0.0
+   ],
+   "n_seeds": 12,
+   "x": {
+    "ganks_per100": 6.802083333333333,
+    "gank_trials_per_gank": 1.9509954058192955,
+    "gank_hp_frac_per_gank": 0.32507458227316,
+    "deaths_per100": 0.4583333333333333,
+    "gank_deaths_per100": 0.4583333333333333,
+    "recalls_per100": 1.8020833333333333,
+    "recalls_above_third_per100": 0.0,
+    "farm_per100": 30.35749999999989,
+    "xp_per100": 378.5833333333333,
+    "tower_dmg_per100": 0.0,
+    "plates_per100": 0.0,
+    "trades_per100": 0.0,
+    "forward_share": 0.0,
+    "shove_share": 0.0,
+    "tower_shot_hp_frac_per100": 0.0
+   },
+   "y": {
+    "ganks_per100": 6.802083333333333,
+    "gank_trials_per_gank": 1.9509954058192955,
+    "gank_hp_frac_per_gank": 0.32507458227316,
+    "deaths_per100": 0.4583333333333333,
+    "gank_deaths_per100": 0.4583333333333333,
+    "recalls_per100": 1.8020833333333333,
+    "recalls_above_third_per100": 0.0,
+    "farm_per100": 30.35749999999989,
+    "xp_per100": 378.5833333333333,
+    "tower_dmg_per100": 0.0,
+    "plates_per100": 0.0,
+    "trades_per100": 0.0,
+    "forward_share": 0.0,
+    "shove_share": 0.0,
+    "tower_shot_hp_frac_per100": 0.0
+   },
+   "components": {
+    "farm_payoff": 0.0,
+    "plate_payoff": 0.0,
+    "bounty_payoff": 0.0
+   }
+  },
+  "g0.60_i1.20|presser vs hold_farmer": {
+   "value": -17.046791388233277,
+   "se": 0.14847326378480055,
+   "ci95": [
+    -17.337798985251485,
+    -16.75578379121507
+   ],
+   "n_seeds": 12,
+   "x": {
+    "ganks_per100": 11.854166666666666,
+    "gank_trials_per_gank": 3.0834797891036905,
+    "gank_hp_frac_per_gank": 0.5138207691066002,
+    "deaths_per100": 2.7395833333333335,
+    "gank_deaths_per100": 2.7395833333333335,
+    "recalls_per100": 3.09375,
+    "recalls_above_third_per100": 0.0,
+    "farm_per100": 14.801223958333276,
+    "xp_per100": 351.4583333333333,
+    "tower_dmg_per100": 1450.125,
+    "plates_per100": 0.6770833333333334,
+    "trades_per100": 0.0,
+    "forward_share": 0.8648911589444241,
+    "shove_share": 0.8089583333333333,
+    "tower_shot_hp_frac_per100": 0.0
+   },
+   "y": {
+    "ganks_per100": 1.7395833333333333,
+    "gank_trials_per_gank": 1.095808383233533,
+    "gank_hp_frac_per_gank": 0.18260716690600118,
+    "deaths_per100": 0.010416666666666666,
+    "gank_deaths_per100": 0.010416666666666666,
+    "recalls_per100": 0.2604166666666667,
+    "recalls_above_third_per100": 0.0,
+    "farm_per100": 32.185898437499844,
+    "xp_per100": 395.5208333333333,
+    "tower_dmg_per100": 0.0,
+    "plates_per100": 0.0,
+    "trades_per100": 0.0,
+    "forward_share": 0.0,
+    "shove_share": 0.0,
+    "tower_shot_hp_frac_per100": 0.0
+   },
+   "components": {
+    "farm_payoff": -16.234411847157634,
+    "plate_payoff": 0.400462075973296,
+    "bounty_payoff": -1.2128416170489362
+   }
+  },
+  "g0.60_i1.20|cond_shove vs hold_farmer": {
+   "value": -15.79567968020289,
+   "se": 0.1331435037547323,
+   "ci95": [
+    -16.056640947562165,
+    -15.534718412843613
+   ],
+   "n_seeds": 12,
+   "x": {
+    "ganks_per100": 10.354166666666666,
+    "gank_trials_per_gank": 2.782696177062374,
+    "gank_hp_frac_per_gank": 0.46368218170119546,
+    "deaths_per100": 1.875,
+    "gank_deaths_per100": 1.875,
+    "recalls_per100": 2.75,
+    "recalls_above_third_per100": 0.0,
+    "farm_per100": 15.565911458333321,
+    "xp_per100": 356.375,
+    "tower_dmg_per100": 1500.0,
+    "plates_per100": 0.75,
+    "trades_per100": 0.0,
+    "forward_share": 0.67553316147176,
+    "shove_share": 0.659375,
+    "tower_shot_hp_frac_per100": 0.0
+   },
+   "y": {
+    "ganks_per100": 2.0625,
+    "gank_trials_per_gank": 1.1464646464646464,
+    "gank_hp_frac_per_gank": 0.19102357938570286,
+    "deaths_per100": 0.03125,
+    "gank_deaths_per100": 0.03125,
+    "recalls_per100": 0.3125,
+    "recalls_above_third_per100": 0.0,
+    "farm_per100": 34.03335937499996,
+    "xp_per100": 394.7291666666667,
+    "tower_dmg_per100": 0.0,
+    "plates_per100": 0.0,
+    "trades_per100": 0.0,
+    "forward_share": 0.0,
+    "shove_share": 0.0,
+    "tower_shot_hp_frac_per100": 0.0
+   },
+   "components": {
+    "farm_payoff": -16.79011972676765,
+    "plate_payoff": 1.8618331165186335,
+    "bounty_payoff": -0.8673930699538713
+   }
+  },
+  "g0.60_i1.20|edge_trader vs hold_farmer": {
+   "value": 0.4958957457228765,
+   "se": 0.22331269894900194,
+   "ci95": [
+    0.058202855782832685,
+    0.9335886356629203
+   ],
+   "n_seeds": 12,
+   "x": {
+    "ganks_per100": 7.5,
+    "gank_trials_per_gank": 2.136111111111111,
+    "gank_hp_frac_per_gank": 0.35594413092710414,
+    "deaths_per100": 1.09375,
+    "gank_deaths_per100": 1.09375,
+    "recalls_per100": 2.5625,
+    "recalls_above_third_per100": 0.0,
+    "farm_per100": 25.892343749999917,
+    "xp_per100": 364.875,
+    "tower_dmg_per100": 0.0,
+    "plates_per100": 0.0,
+    "trades_per100": 17.125,
+    "forward_share": 0.0947344478562493,
+    "shove_share": 0.0,
+    "tower_shot_hp_frac_per100": 1.0190611174063657
+   },
+   "y": {
+    "ganks_per100": 5.979166666666667,
+    "gank_trials_per_gank": 1.9181184668989546,
+    "gank_hp_frac_per_gank": 0.3196378796719876,
+    "deaths_per100": 2.8229166666666665,
+    "gank_deaths_per100": 0.4583333333333333,
+    "recalls_per100": 1.28125,
+    "recalls_above_third_per100": 0.0,
+    "farm_per100": 25.999218749999915,
+    "xp_per100": 354.7916666666667,
+    "tower_dmg_per100": 0.0,
+    "plates_per100": 0.0,
+    "trades_per100": 0.0,
+    "forward_share": 0.0,
+    "shove_share": 0.0,
+    "tower_shot_hp_frac_per100": 0.0
+   },
+   "components": {
+    "farm_payoff": -0.24076783707186428,
+    "plate_payoff": 0.0,
+    "bounty_payoff": 0.7366635827947403
+   }
+  },
+  "g0.40_i1.20|hold_farmer vs hold_farmer": {
+   "value": 0.0,
+   "se": 0.0,
+   "ci95": [
+    0.0,
+    0.0
+   ],
+   "n_seeds": 12,
+   "x": {
+    "ganks_per100": 6.833333333333333,
+    "gank_trials_per_gank": 1.579268292682927,
+    "gank_hp_frac_per_gank": 0.26314157519782977,
+    "deaths_per100": 0.2916666666666667,
+    "gank_deaths_per100": 0.2916666666666667,
+    "recalls_per100": 1.5416666666666667,
+    "recalls_above_third_per100": 0.0,
+    "farm_per100": 30.586458333333205,
+    "xp_per100": 382.6666666666667,
+    "tower_dmg_per100": 0.0,
+    "plates_per100": 0.0,
+    "trades_per100": 0.0,
+    "forward_share": 0.0,
+    "shove_share": 0.0,
+    "tower_shot_hp_frac_per100": 0.0
+   },
+   "y": {
+    "ganks_per100": 6.833333333333333,
+    "gank_trials_per_gank": 1.579268292682927,
+    "gank_hp_frac_per_gank": 0.26314157519782977,
+    "deaths_per100": 0.2916666666666667,
+    "gank_deaths_per100": 0.2916666666666667,
+    "recalls_per100": 1.5416666666666667,
+    "recalls_above_third_per100": 0.0,
+    "farm_per100": 30.586458333333212,
+    "xp_per100": 382.6666666666667,
+    "tower_dmg_per100": 0.0,
+    "plates_per100": 0.0,
+    "trades_per100": 0.0,
+    "forward_share": 0.0,
+    "shove_share": 0.0,
+    "tower_shot_hp_frac_per100": 0.0
+   },
+   "components": {
+    "farm_payoff": 0.0,
+    "plate_payoff": 0.0,
+    "bounty_payoff": 0.0
+   }
+  },
+  "g0.40_i1.20|presser vs hold_farmer": {
+   "value": -15.920174155987992,
+   "se": 0.11016343304533963,
+   "ci95": [
+    -16.136094484756857,
+    -15.704253827219127
+   ],
+   "n_seeds": 12,
+   "x": {
+    "ganks_per100": 12.364583333333334,
+    "gank_trials_per_gank": 2.337826453243471,
+    "gank_hp_frac_per_gank": 0.38956361097079467,
+    "deaths_per100": 1.5208333333333333,
+    "gank_deaths_per100": 1.5208333333333333,
+    "recalls_per100": 3.2916666666666665,
+    "recalls_above_third_per100": 0.0,
+    "farm_per100": 15.26703124999993,
+    "xp_per100": 360.8333333333333,
+    "tower_dmg_per100": 1092.3958333333333,
+    "plates_per100": 0.4583333333333333,
+    "trades_per100": 0.0,
+    "forward_share": 0.8911668228678538,
+    "shove_share": 0.8389583333333334,
+    "tower_shot_hp_frac_per100": 0.0
+   },
+   "y": {
+    "ganks_per100": 1.5729166666666667,
+    "gank_trials_per_gank": 0.9470198675496688,
+    "gank_hp_frac_per_gank": 0.15778879096338125,
+    "deaths_per100": 0.010416666666666666,
+    "gank_deaths_per100": 0.010416666666666666,
+    "recalls_per100": 0.16666666666666666,
+    "recalls_above_third_per100": 0.0,
+    "farm_per100": 31.88050781249981,
+    "xp_per100": 396.625,
+    "tower_dmg_per100": 0.0,
+    "plates_per100": 0.0,
+    "trades_per100": 0.0,
+    "forward_share": 0.0,
+    "shove_share": 0.0,
+    "tower_shot_hp_frac_per100": 0.0
+   },
+   "components": {
+    "farm_payoff": -15.474708689001611,
+    "plate_payoff": 0.21565923162059059,
+    "bounty_payoff": -0.6611246986069802
+   }
+  },
+  "g0.40_i1.20|cond_shove vs hold_farmer": {
+   "value": -14.908564600005107,
+   "se": 0.1139566665577283,
+   "ci95": [
+    -15.131919666458254,
+    -14.68520953355196
+   ],
+   "n_seeds": 12,
+   "x": {
+    "ganks_per100": 10.885416666666666,
+    "gank_trials_per_gank": 2.126315789473684,
+    "gank_hp_frac_per_gank": 0.3543146446417379,
+    "deaths_per100": 0.8541666666666666,
+    "gank_deaths_per100": 0.8541666666666666,
+    "recalls_per100": 3.0833333333333335,
+    "recalls_above_third_per100": 0.0,
+    "farm_per100": 15.943854166666657,
+    "xp_per100": 363.625,
+    "tower_dmg_per100": 1500.0,
+    "plates_per100": 0.75,
+    "trades_per100": 0.0,
+    "forward_share": 0.6852253280091272,
+    "shove_share": 0.6691666666666667,
+    "tower_shot_hp_frac_per100": 0.0
+   },
+   "y": {
+    "ganks_per100": 2.2083333333333335,
+    "gank_trials_per_gank": 1.0377358490566038,
+    "gank_hp_frac_per_gank": 0.17291917252838102,
+    "deaths_per100": 0.020833333333333332,
+    "gank_deaths_per100": 0.020833333333333332,
+    "recalls_per100": 0.3125,
+    "recalls_above_third_per100": 0.0,
+    "farm_per100": 33.94792968749996,
+    "xp_per100": 394.8958333333333,
+    "tower_dmg_per100": 0.0,
+    "plates_per100": 0.0,
+    "trades_per100": 0.0,
+    "forward_share": 0.0,
+    "shove_share": 0.0,
+    "tower_shot_hp_frac_per100": 0.0
+   },
+   "components": {
+    "farm_payoff": -16.430618323852897,
+    "plate_payoff": 1.8762016002030284,
+    "bounty_payoff": -0.35414787635523715
+   }
+  },
+  "g0.40_i1.20|edge_trader vs hold_farmer": {
+   "value": 0.7970094867560181,
+   "se": 0.2556825891170209,
+   "ci95": [
+    0.29587161208665713,
+    1.2981473614253791
+   ],
+   "n_seeds": 12,
+   "x": {
+    "ganks_per100": 7.364583333333333,
+    "gank_trials_per_gank": 1.6492220650636493,
+    "gank_hp_frac_per_gank": 0.27479091138295986,
+    "deaths_per100": 0.5729166666666666,
+    "gank_deaths_per100": 0.5729166666666666,
+    "recalls_per100": 2.53125,
+    "recalls_above_third_per100": 0.0,
+    "farm_per100": 26.619322916666583,
+    "xp_per100": 371.375,
+    "tower_dmg_per100": 0.0,
+    "plates_per100": 0.0,
+    "trades_per100": 15.489583333333334,
+    "forward_share": 0.08883674153536708,
+    "shove_share": 0.0,
+    "tower_shot_hp_frac_per100": 0.9601445524918796
+   },
+   "y": {
+    "ganks_per100": 5.96875,
+    "gank_trials_per_gank": 1.5602094240837696,
+    "gank_hp_frac_per_gank": 0.2599575006163734,
+    "deaths_per100": 2.6354166666666665,
+    "gank_deaths_per100": 0.3333333333333333,
+    "recalls_per100": 0.9583333333333334,
+    "recalls_above_third_per100": 0.0,
+    "farm_per100": 26.522083333333242,
+    "xp_per100": 359.6666666666667,
+    "tower_dmg_per100": 0.0,
+    "plates_per100": 0.0,
+    "trades_per100": 0.0,
+    "forward_share": 0.0,
+    "shove_share": 0.0,
+    "tower_shot_hp_frac_per100": 0.0
+   },
+   "components": {
+    "farm_payoff": -0.06827419675051065,
+    "plate_payoff": 0.0,
+    "bounty_payoff": 0.8652836835065288
+   }
+  },
+  "g0.30_i1.20|hold_farmer vs hold_farmer": {
+   "value": 0.0,
+   "se": 0.0,
+   "ci95": [
+    0.0,
+    0.0
+   ],
+   "n_seeds": 12,
+   "x": {
+    "ganks_per100": 6.90625,
+    "gank_trials_per_gank": 1.363499245852187,
+    "gank_hp_frac_per_gank": 0.2271917191730898,
+    "deaths_per100": 0.21875,
+    "gank_deaths_per100": 0.21875,
+    "recalls_per100": 1.3854166666666667,
+    "recalls_above_third_per100": 0.0,
+    "farm_per100": 30.69791666666654,
+    "xp_per100": 384.7916666666667,
+    "tower_dmg_per100": 0.0,
+    "plates_per100": 0.0,
+    "trades_per100": 0.0,
+    "forward_share": 0.0,
+    "shove_share": 0.0,
+    "tower_shot_hp_frac_per100": 0.0
+   },
+   "y": {
+    "ganks_per100": 6.90625,
+    "gank_trials_per_gank": 1.363499245852187,
+    "gank_hp_frac_per_gank": 0.2271917191730898,
+    "deaths_per100": 0.21875,
+    "gank_deaths_per100": 0.21875,
+    "recalls_per100": 1.3854166666666667,
+    "recalls_above_third_per100": 0.0,
+    "farm_per100": 30.697916666666547,
+    "xp_per100": 384.7916666666667,
+    "tower_dmg_per100": 0.0,
+    "plates_per100": 0.0,
+    "trades_per100": 0.0,
+    "forward_share": 0.0,
+    "shove_share": 0.0,
+    "tower_shot_hp_frac_per100": 0.0
+   },
+   "components": {
+    "farm_payoff": 0.0,
+    "plate_payoff": 0.0,
+    "bounty_payoff": 0.0
+   }
+  },
+  "g0.30_i1.20|presser vs hold_farmer": {
+   "value": -15.524317408169773,
+   "se": 0.10869591770627934,
+   "ci95": [
+    -15.737361406874081,
+    -15.311273409465466
+   ],
+   "n_seeds": 12,
+   "x": {
+    "ganks_per100": 12.84375,
+    "gank_trials_per_gank": 1.9407948094079481,
+    "gank_hp_frac_per_gank": 0.32340110971394004,
+    "deaths_per100": 1.0208333333333333,
+    "gank_deaths_per100": 1.0208333333333333,
+    "recalls_per100": 3.2083333333333335,
+    "recalls_above_third_per100": 0.0,
+    "farm_per100": 15.45177083333326,
+    "xp_per100": 365.625,
+    "tower_dmg_per100": 806.1979166666666,
+    "plates_per100": 0.3125,
+    "trades_per100": 0.0,
+    "forward_share": 0.9037045559134836,
+    "shove_share": 0.8558333333333333,
+    "tower_shot_hp_frac_per100": 0.0
+   },
+   "y": {
+    "ganks_per100": 1.5104166666666667,
+    "gank_trials_per_gank": 0.8758620689655172,
+    "gank_hp_frac_per_gank": 0.1459361750742271,
+    "deaths_per100": 0.0,
+    "gank_deaths_per100": 0.0,
+    "recalls_per100": 0.15625,
+    "recalls_above_third_per100": 0.0,
+    "farm_per100": 31.699101562499806,
+    "xp_per100": 397.0416666666667,
+    "tower_dmg_per100": 0.0,
+    "plates_per100": 0.0,
+    "trades_per100": 0.0,
+    "forward_share": 0.0,
+    "shove_share": 0.0,
+    "tower_shot_hp_frac_per100": 0.0
+   },
+   "components": {
+    "farm_payoff": -15.200895124670957,
+    "plate_payoff": 0.18796439385534555,
+    "bounty_payoff": -0.5113866773541722
+   }
+  },
+  "g0.30_i1.20|cond_shove vs hold_farmer": {
+   "value": -14.433723952249613,
+   "se": 0.1449740296444055,
+   "ci95": [
+    -14.717873050352647,
+    -14.149574854146579
+   ],
+   "n_seeds": 12,
+   "x": {
+    "ganks_per100": 10.9375,
+    "gank_trials_per_gank": 1.7980952380952382,
+    "gank_hp_frac_per_gank": 0.29962973609724347,
+    "deaths_per100": 0.7291666666666666,
+    "gank_deaths_per100": 0.7291666666666666,
+    "recalls_per100": 2.59375,
+    "recalls_above_third_per100": 0.0,
+    "farm_per100": 16.22833333333331,
+    "xp_per100": 368.7708333333333,
+    "tower_dmg_per100": 1500.0,
+    "plates_per100": 0.75,
+    "trades_per100": 0.0,
+    "forward_share": 0.6933888014391725,
+    "shove_share": 0.6782291666666667,
+    "tower_shot_hp_frac_per100": 0.0
+   },
+   "y": {
+    "ganks_per100": 2.21875,
+    "gank_trials_per_gank": 0.9389671361502347,
+    "gank_hp_frac_per_gank": 0.15645572148968184,
+    "deaths_per100": 0.0,
+    "gank_deaths_per100": 0.0,
+    "recalls_per100": 0.2916666666666667,
+    "recalls_above_third_per100": 0.0,
+    "farm_per100": 33.798867187499944,
+    "xp_per100": 395.0833333333333,
+    "tower_dmg_per100": 0.0,
+    "plates_per100": 0.0,
+    "trades_per100": 0.0,
+    "forward_share": 0.0,
+    "shove_share": 0.0,
+    "tower_shot_hp_frac_per100": 0.0
+   },
+   "components": {
+    "farm_payoff": -15.99608245934437,
+    "plate_payoff": 1.9180530578848907,
+    "bounty_payoff": -0.3556945507901306
+   }
+  },
+  "g0.30_i1.20|edge_trader vs hold_farmer": {
+   "value": 0.7462993875277962,
+   "se": 0.24320844242189804,
+   "ci95": [
+    0.26961084038087607,
+    1.2229879346747163
+   ],
+   "n_seeds": 12,
+   "x": {
+    "ganks_per100": 7.395833333333333,
+    "gank_trials_per_gank": 1.3971830985915492,
+    "gank_hp_frac_per_gank": 0.23279388618086522,
+    "deaths_per100": 0.3229166666666667,
+    "gank_deaths_per100": 0.3229166666666667,
+    "recalls_per100": 2.4895833333333335,
+    "recalls_above_third_per100": 0.0,
+    "farm_per100": 26.940546874999914,
+    "xp_per100": 374.7083333333333,
+    "tower_dmg_per100": 0.0,
+    "plates_per100": 0.0,
+    "trades_per100": 14.552083333333334,
+    "forward_share": 0.08550227046184516,
+    "shove_share": 0.0,
+    "tower_shot_hp_frac_per100": 0.9236325963136913
+   },
+   "y": {
+    "ganks_per100": 6.114583333333333,
+    "gank_trials_per_gank": 1.321976149914821,
+    "gank_hp_frac_per_gank": 0.22027952668877177,
+    "deaths_per100": 2.3229166666666665,
+    "gank_deaths_per100": 0.2708333333333333,
+    "recalls_per100": 0.9270833333333334,
+    "recalls_above_third_per100": 0.0,
+    "farm_per100": 26.90874999999991,
+    "xp_per100": 363.5833333333333,
+    "tower_dmg_per100": 0.0,
+    "plates_per100": 0.0,
+    "trades_per100": 0.0,
+    "forward_share": 0.0,
+    "shove_share": 0.0,
+    "tower_shot_hp_frac_per100": 0.0
+   },
+   "components": {
+    "farm_payoff": -0.09155918977241062,
+    "plate_payoff": 0.0,
+    "bounty_payoff": 0.8378585773002072
+   }
+  }
+ },
+ "paired_vs_baseline": {
+  "g0.40_i1.20|hold_farmer vs hold_farmer": {
+   "diff": 0.0,
+   "se": 0.0,
+   "ci95": [
+    0.0,
+    0.0
+   ]
+  },
+  "g0.40_i1.20|presser vs hold_farmer": {
+   "diff": 1.1266172322452843,
+   "se": 0.09953384914163127,
+   "ci95": [
+    0.931530887927687,
+    1.3217035765628815
+   ]
+  },
+  "g0.40_i1.20|cond_shove vs hold_farmer": {
+   "diff": 0.8871150801977811,
+   "se": 0.11741137673406091,
+   "ci95": [
+    0.6569887817990216,
+    1.1172413785965405
+   ]
+  },
+  "g0.40_i1.20|edge_trader vs hold_farmer": {
+   "diff": 0.30111374103314176,
+   "se": 0.35115192440096515,
+   "ci95": [
+    -0.3871440307927499,
+    0.9893715128590335
+   ]
+  },
+  "g0.30_i1.20|hold_farmer vs hold_farmer": {
+   "diff": 0.0,
+   "se": 0.0,
+   "ci95": [
+    0.0,
+    0.0
+   ]
+  },
+  "g0.30_i1.20|presser vs hold_farmer": {
+   "diff": 1.5224739800635005,
+   "se": 0.08518463032229681,
+   "ci95": [
+    1.3555121046317988,
+    1.6894358554952023
+   ]
+  },
+  "g0.30_i1.20|cond_shove vs hold_farmer": {
+   "diff": 1.3619557279532728,
+   "se": 0.1737900121803288,
+   "ci95": [
+    1.0213273040798283,
+    1.7025841518267173
+   ]
+  },
+  "g0.30_i1.20|edge_trader vs hold_farmer": {
+   "diff": 0.2504036418049199,
+   "se": 0.25884204448760467,
+   "ci95": [
+    -0.2569267653907852,
+    0.757734049000625
+   ]
+  }
+ },
+ "meta": {
+  "commit": "3b15b41ebc64278c6cc7b6a11bcca56df5174532",
+  "stage": "A",
+  "configs_arg": [],
+  "wall_s": 4.041636300040409,
+  "cpu_s": 19.25,
+  "turns": 115200,
+  "procs": 8,
+  "command": "python -m lanegame.experiments.m4.calibration --stage A"
+ }
+}

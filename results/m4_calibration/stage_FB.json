@@ -1,0 +1,860 @@
+{
+ "parked_table": {
+  "2_SP": {
+   "design": [
+    null,
+    null,
+    null,
+    null
+   ],
+   "implemented": [
+    null,
+    null,
+    null,
+    null
+   ],
+   "keep_reach": [
+    null,
+    null,
+    null,
+    null
+   ]
+  },
+  "2_SH": {
+   "design": [
+    null,
+    null,
+    null,
+    null
+   ],
+   "implemented": [
+    null,
+    null,
+    null,
+    null
+   ],
+   "keep_reach": [
+    null,
+    null,
+    null,
+    null
+   ]
+  },
+  "3_SP": {
+   "design": [
+    null,
+    null,
+    null,
+    null
+   ],
+   "implemented": [
+    null,
+    null,
+    null,
+    null
+   ],
+   "keep_reach": [
+    null,
+    null,
+    null,
+    null
+   ]
+  },
+  "3_SH": {
+   "design": [
+    6,
+    5,
+    6,
+    5
+   ],
+   "implemented": [
+    9,
+    8,
+    9,
+    8
+   ],
+   "keep_reach": [
+    6,
+    5,
+    6,
+    5
+   ]
+  },
+  "4_SP": {
+   "design": [
+    null,
+    null,
+    null,
+    null
+   ],
+   "implemented": [
+    null,
+    null,
+    null,
+    null
+   ],
+   "keep_reach": [
+    null,
+    null,
+    null,
+    null
+   ]
+  },
+  "4_SH": {
+   "design": [
+    4,
+    3,
+    4,
+    3
+   ],
+   "implemented": [
+    9,
+    8,
+    9,
+    8
+   ],
+   "keep_reach": [
+    4,
+    3,
+    4,
+    3
+   ]
+  },
+  "5_SP": {
+   "design": [
+    null,
+    null,
+    null,
+    null
+   ],
+   "implemented": [
+    null,
+    null,
+    null,
+    null
+   ],
+   "keep_reach": [
+    null,
+    null,
+    null,
+    null
+   ]
+  },
+  "5_SH": {
+   "design": [
+    4,
+    3,
+    4,
+    3
+   ],
+   "implemented": [
+    7,
+    6,
+    7,
+    6
+   ],
+   "keep_reach": [
+    4,
+    3,
+    4,
+    3
+   ]
+  },
+  "6_SP": {
+   "design": [
+    12,
+    11,
+    10,
+    9
+   ],
+   "implemented": [
+    12,
+    11,
+    10,
+    9
+   ],
+   "keep_reach": [
+    12,
+    11,
+    10,
+    9
+   ]
+  },
+  "6_SH": {
+   "design": [
+    0,
+    0,
+    0,
+    0
+   ],
+   "implemented": [
+    0,
+    6,
+    0,
+    6
+   ],
+   "keep_reach": [
+    0,
+    0,
+    0,
+    0
+   ]
+  },
+  "7_SP": {
+   "design": [
+    8,
+    7,
+    10,
+    9
+   ],
+   "implemented": [
+    8,
+    7,
+    10,
+    9
+   ],
+   "keep_reach": [
+    8,
+    7,
+    10,
+    9
+   ]
+  },
+  "7_SH": {
+   "design": [
+    0,
+    0,
+    0,
+    0
+   ],
+   "implemented": [
+    0,
+    4,
+    0,
+    4
+   ],
+   "keep_reach": [
+    0,
+    0,
+    0,
+    0
+   ]
+  },
+  "8_SP": {
+   "design": [
+    8,
+    7,
+    6,
+    5
+   ],
+   "implemented": [
+    8,
+    7,
+    6,
+    5
+   ],
+   "keep_reach": [
+    8,
+    7,
+    6,
+    5
+   ]
+  },
+  "8_SH": {
+   "design": [
+    0,
+    0,
+    0,
+    0
+   ],
+   "implemented": [
+    0,
+    2,
+    0,
+    2
+   ],
+   "keep_reach": [
+    0,
+    0,
+    0,
+    0
+   ]
+  },
+  "9_SP": {
+   "design": [
+    4,
+    3,
+    6,
+    5
+   ],
+   "implemented": [
+    4,
+    3,
+    6,
+    5
+   ],
+   "keep_reach": [
+    4,
+    3,
+    6,
+    5
+   ]
+  },
+  "9_SH": {
+   "design": [
+    0,
+    0,
+    0,
+    0
+   ],
+   "implemented": [
+    0,
+    2,
+    0,
+    2
+   ],
+   "keep_reach": [
+    0,
+    0,
+    0,
+    0
+   ]
+  }
+ },
+ "configs": [
+  "g0.60_i1.20"
+ ],
+ "matchups": [
+  [
+   "presser",
+   "freezer"
+  ],
+  [
+   "freeze_breaker",
+   "freezer"
+  ],
+  [
+   "shove_recall",
+   "freezer"
+  ],
+  [
+   "g_adaptive_breaker",
+   "freezer"
+  ],
+  [
+   "presser",
+   "hold_farmer"
+  ]
+ ],
+ "n_seeds": 8,
+ "window": 400,
+ "results": {
+  "g0.60_i1.20|current|presser vs freezer": {
+   "value": -12.075598385621735,
+   "se": 0.40747673543108076,
+   "ci95": [
+    -12.874252787066654,
+    -11.276943984176816
+   ],
+   "n_seeds": 8,
+   "x": {
+    "ganks_per100": 9.28125,
+    "gank_trials_per_gank": 2.962962962962963,
+    "gank_hp_frac_per_gank": 0.49377094612024086,
+    "deaths_per100": 5.1875,
+    "gank_deaths_per100": 1.703125,
+    "recalls_per100": 1.953125,
+    "recalls_above_third_per100": 0.0,
+    "farm_per100": 11.720742187499978,
+    "xp_per100": 320.34375,
+    "tower_dmg_per100": 1500.0,
+    "plates_per100": 0.75,
+    "trades_per100": 0.0,
+    "forward_share": 0.6795344325897187,
+    "shove_share": 0.6459375,
+    "tower_shot_hp_frac_per100": 0.0
+   },
+   "y": {
+    "ganks_per100": 4.78125,
+    "gank_trials_per_gank": 2.111111111111111,
+    "gank_hp_frac_per_gank": 0.35183412923386936,
+    "deaths_per100": 0.84375,
+    "gank_deaths_per100": 0.84375,
+    "recalls_per100": 2.234375,
+    "recalls_above_third_per100": 0.0,
+    "farm_per100": 25.299472656249936,
+    "xp_per100": 367.71875,
+    "tower_dmg_per100": 0.0,
+    "plates_per100": 0.0,
+    "trades_per100": 25.03125,
+    "forward_share": 0.1327284946236559,
+    "shove_share": 0.0,
+    "tower_shot_hp_frac_per100": 1.4061670416789438
+   },
+   "components": {}
+  },
+  "g0.60_i1.20|current|freeze_breaker vs freezer": {
+   "value": -12.079523580595005,
+   "se": 0.2912830332180623,
+   "ci95": [
+    -12.650438325702407,
+    -11.508608835487603
+   ],
+   "n_seeds": 8,
+   "x": {
+    "ganks_per100": 9.125,
+    "gank_trials_per_gank": 2.9571917808219177,
+    "gank_hp_frac_per_gank": 0.49279616842096335,
+    "deaths_per100": 5.34375,
+    "gank_deaths_per100": 1.828125,
+    "recalls_per100": 1.90625,
+    "recalls_above_third_per100": 0.0,
+    "farm_per100": 11.882304687499973,
+    "xp_per100": 321.9375,
+    "tower_dmg_per100": 1271.875,
+    "plates_per100": 0.546875,
+    "trades_per100": 0.0,
+    "forward_share": 0.6827747466874513,
+    "shove_share": 0.63765625,
+    "tower_shot_hp_frac_per100": 0.0
+   },
+   "y": {
+    "ganks_per100": 4.96875,
+    "gank_trials_per_gank": 2.088050314465409,
+    "gank_hp_frac_per_gank": 0.3480137790784249,
+    "deaths_per100": 1.078125,
+    "gank_deaths_per100": 1.078125,
+    "recalls_per100": 2.046875,
+    "recalls_above_third_per100": 0.0,
+    "farm_per100": 24.942080078124945,
+    "xp_per100": 368.0,
+    "tower_dmg_per100": 0.0,
+    "plates_per100": 0.0,
+    "trades_per100": 26.640625,
+    "forward_share": 0.1308379699881976,
+    "shove_share": 0.0,
+    "tower_shot_hp_frac_per100": 1.4218101927529212
+   },
+   "components": {}
+  },
+  "g0.60_i1.20|current|shove_recall vs freezer": {
+   "value": -5.196176613895394,
+   "se": 1.1502819717584507,
+   "ci95": [
+    -7.450729278541958,
+    -2.941623949248831
+   ],
+   "n_seeds": 8,
+   "x": {
+    "ganks_per100": 6.03125,
+    "gank_trials_per_gank": 2.093264248704663,
+    "gank_hp_frac_per_gank": 0.3488476389745109,
+    "deaths_per100": 3.5625,
+    "gank_deaths_per100": 0.640625,
+    "recalls_per100": 1.890625,
+    "recalls_above_third_per100": 0.265625,
+    "farm_per100": 22.44140624999993,
+    "xp_per100": 338.34375,
+    "tower_dmg_per100": 384.375,
+    "plates_per100": 0.125,
+    "trades_per100": 0.0,
+    "forward_share": 0.04399415845198978,
+    "shove_share": 0.04390625,
+    "tower_shot_hp_frac_per100": 0.0
+   },
+   "y": {
+    "ganks_per100": 5.953125,
+    "gank_trials_per_gank": 2.1128608923884515,
+    "gank_hp_frac_per_gank": 0.35208072520316225,
+    "deaths_per100": 0.984375,
+    "gank_deaths_per100": 0.984375,
+    "recalls_per100": 2.484375,
+    "recalls_above_third_per100": 0.0,
+    "farm_per100": 25.318964843749946,
+    "xp_per100": 366.0625,
+    "tower_dmg_per100": 0.0,
+    "plates_per100": 0.0,
+    "trades_per100": 23.046875,
+    "forward_share": 0.12341074758433633,
+    "shove_share": 0.0,
+    "tower_shot_hp_frac_per100": 1.3330433012740566
+   },
+   "components": {}
+  },
+  "g0.60_i1.20|current|g_adaptive_breaker vs freezer": {
+   "value": -0.5584018154607693,
+   "se": 0.2726652876998903,
+   "ci95": [
+    -1.0928257793525542,
+    -0.023977851568984354
+   ],
+   "n_seeds": 8,
+   "x": {
+    "ganks_per100": 6.09375,
+    "gank_trials_per_gank": 2.017948717948718,
+    "gank_hp_frac_per_gank": 0.33627028377188445,
+    "deaths_per100": 2.734375,
+    "gank_deaths_per100": 0.546875,
+    "recalls_per100": 1.265625,
+    "recalls_above_third_per100": 0.0,
+    "farm_per100": 26.237578124999914,
+    "xp_per100": 355.625,
+    "tower_dmg_per100": 0.0,
+    "plates_per100": 0.0,
+    "trades_per100": 0.0,
+    "forward_share": 0.0,
+    "shove_share": 0.0,
+    "tower_shot_hp_frac_per100": 0.0
+   },
+   "y": {
+    "ganks_per100": 7.5,
+    "gank_trials_per_gank": 2.2375,
+    "gank_hp_frac_per_gank": 0.37284840821481,
+    "deaths_per100": 1.078125,
+    "gank_deaths_per100": 1.078125,
+    "recalls_per100": 2.671875,
+    "recalls_above_third_per100": 0.0,
+    "farm_per100": 25.994726562499928,
+    "xp_per100": 364.3125,
+    "tower_dmg_per100": 0.0,
+    "plates_per100": 0.0,
+    "trades_per100": 15.796875,
+    "forward_share": 0.09191867418417905,
+    "shove_share": 0.0,
+    "tower_shot_hp_frac_per100": 0.979156635237705
+   },
+   "components": {}
+  },
+  "g0.60_i1.20|current|presser vs hold_farmer": {
+   "value": -17.574258714239814,
+   "se": 0.15162454800844485,
+   "ci95": [
+    -17.871442828336367,
+    -17.277074600143262
+   ],
+   "n_seeds": 8,
+   "x": {
+    "ganks_per100": 12.203125,
+    "gank_trials_per_gank": 3.1254801536491676,
+    "gank_hp_frac_per_gank": 0.5208275684445446,
+    "deaths_per100": 3.203125,
+    "gank_deaths_per100": 3.203125,
+    "recalls_per100": 2.75,
+    "recalls_above_third_per100": 0.0,
+    "farm_per100": 14.758554687499942,
+    "xp_per100": 350.4375,
+    "tower_dmg_per100": 1345.640625,
+    "plates_per100": 0.640625,
+    "trades_per100": 0.0,
+    "forward_share": 0.8642883413019492,
+    "shove_share": 0.80625,
+    "tower_shot_hp_frac_per100": 0.0
+   },
+   "y": {
+    "ganks_per100": 1.8125,
+    "gank_trials_per_gank": 1.1379310344827587,
+    "gank_hp_frac_per_gank": 0.18961223740310731,
+    "deaths_per100": 0.015625,
+    "gank_deaths_per100": 0.015625,
+    "recalls_per100": 0.28125,
+    "recalls_above_third_per100": 0.0,
+    "farm_per100": 32.250761718749835,
+    "xp_per100": 395.59375,
+    "tower_dmg_per100": 0.0,
+    "plates_per100": 0.0,
+    "trades_per100": 0.0,
+    "forward_share": 0.0,
+    "shove_share": 0.0,
+    "tower_shot_hp_frac_per100": 0.0
+   },
+   "components": {}
+  },
+  "g0.60_i1.20|keep_reach|presser vs freezer": {
+   "value": -10.989457566112716,
+   "se": 0.2864315185226992,
+   "ci95": [
+    -11.550863342417205,
+    -10.428051789808226
+   ],
+   "n_seeds": 8,
+   "x": {
+    "ganks_per100": 9.71875,
+    "gank_trials_per_gank": 3.027331189710611,
+    "gank_hp_frac_per_gank": 0.504475987903313,
+    "deaths_per100": 5.3125,
+    "gank_deaths_per100": 1.984375,
+    "recalls_per100": 1.953125,
+    "recalls_above_third_per100": 0.0,
+    "farm_per100": 12.772499999999962,
+    "xp_per100": 329.84375,
+    "tower_dmg_per100": 1500.0,
+    "plates_per100": 0.75,
+    "trades_per100": 0.0,
+    "forward_share": 0.7373855445158777,
+    "shove_share": 0.63921875,
+    "tower_shot_hp_frac_per100": 0.0
+   },
+   "y": {
+    "ganks_per100": 5.078125,
+    "gank_trials_per_gank": 2.0553846153846154,
+    "gank_hp_frac_per_gank": 0.3425709618006524,
+    "deaths_per100": 1.03125,
+    "gank_deaths_per100": 1.03125,
+    "recalls_per100": 2.09375,
+    "recalls_above_third_per100": 0.0,
+    "farm_per100": 25.125781249999932,
+    "xp_per100": 369.0,
+    "tower_dmg_per100": 0.0,
+    "plates_per100": 0.0,
+    "trades_per100": 25.484375,
+    "forward_share": 0.1319514661274014,
+    "shove_share": 0.0,
+    "tower_shot_hp_frac_per100": 1.4218802457924924
+   },
+   "components": {}
+  },
+  "g0.60_i1.20|keep_reach|freeze_breaker vs freezer": {
+   "value": -11.437369235905035,
+   "se": 0.3637506427918989,
+   "ci95": [
+    -12.150320495777157,
+    -10.724417976032912
+   ],
+   "n_seeds": 8,
+   "x": {
+    "ganks_per100": 9.34375,
+    "gank_trials_per_gank": 3.008361204013378,
+    "gank_hp_frac_per_gank": 0.5013042049344711,
+    "deaths_per100": 5.1875,
+    "gank_deaths_per100": 1.890625,
+    "recalls_per100": 1.90625,
+    "recalls_above_third_per100": 0.0,
+    "farm_per100": 12.899140624999959,
+    "xp_per100": 331.09375,
+    "tower_dmg_per100": 1200.0,
+    "plates_per100": 0.5,
+    "trades_per100": 0.0,
+    "forward_share": 0.738616547180779,
+    "shove_share": 0.64109375,
+    "tower_shot_hp_frac_per100": 0.0
+   },
+   "y": {
+    "ganks_per100": 4.828125,
+    "gank_trials_per_gank": 2.0517799352750807,
+    "gank_hp_frac_per_gank": 0.3419802253797939,
+    "deaths_per100": 1.09375,
+    "gank_deaths_per100": 1.09375,
+    "recalls_per100": 1.96875,
+    "recalls_above_third_per100": 0.0,
+    "farm_per100": 25.109648437499935,
+    "xp_per100": 369.59375,
+    "tower_dmg_per100": 0.0,
+    "plates_per100": 0.0,
+    "trades_per100": 25.515625,
+    "forward_share": 0.13200875568277487,
+    "shove_share": 0.0,
+    "tower_shot_hp_frac_per100": 1.4531060136501457
+   },
+   "components": {}
+  },
+  "g0.60_i1.20|keep_reach|shove_recall vs freezer": {
+   "value": -5.960487565652367,
+   "se": 1.081365958565521,
+   "ci95": [
+    -8.079964844440788,
+    -3.8410102868639457
+   ],
+   "n_seeds": 8,
+   "x": {
+    "ganks_per100": 6.46875,
+    "gank_trials_per_gank": 2.239130434782609,
+    "gank_hp_frac_per_gank": 0.37312710953960443,
+    "deaths_per100": 3.078125,
+    "gank_deaths_per100": 0.625,
+    "recalls_per100": 1.65625,
+    "recalls_above_third_per100": 0.265625,
+    "farm_per100": 20.65035156249995,
+    "xp_per100": 343.8125,
+    "tower_dmg_per100": 764.0625,
+    "plates_per100": 0.34375,
+    "trades_per100": 0.0,
+    "forward_share": 0.1780039278700232,
+    "shove_share": 0.10640625,
+    "tower_shot_hp_frac_per100": 0.0
+   },
+   "y": {
+    "ganks_per100": 5.671875,
+    "gank_trials_per_gank": 2.041322314049587,
+    "gank_hp_frac_per_gank": 0.34016828810375577,
+    "deaths_per100": 0.984375,
+    "gank_deaths_per100": 0.984375,
+    "recalls_per100": 1.953125,
+    "recalls_above_third_per100": 0.0,
+    "farm_per100": 26.504355468749953,
+    "xp_per100": 368.90625,
+    "tower_dmg_per100": 0.0,
+    "plates_per100": 0.0,
+    "trades_per100": 18.28125,
+    "forward_share": 0.09677960415967796,
+    "shove_share": 0.0,
+    "tower_shot_hp_frac_per100": 1.0701551796069413
+   },
+   "components": {}
+  },
+  "g0.60_i1.20|keep_reach|g_adaptive_breaker vs freezer": {
+   "value": -0.5584018154607693,
+   "se": 0.2726652876998903,
+   "ci95": [
+    -1.0928257793525542,
+    -0.023977851568984354
+   ],
+   "n_seeds": 8,
+   "x": {
+    "ganks_per100": 6.09375,
+    "gank_trials_per_gank": 2.017948717948718,
+    "gank_hp_frac_per_gank": 0.33627028377188445,
+    "deaths_per100": 2.734375,
+    "gank_deaths_per100": 0.546875,
+    "recalls_per100": 1.265625,
+    "recalls_above_third_per100": 0.0,
+    "farm_per100": 26.237578124999914,
+    "xp_per100": 355.625,
+    "tower_dmg_per100": 0.0,
+    "plates_per100": 0.0,
+    "trades_per100": 0.0,
+    "forward_share": 0.0,
+    "shove_share": 0.0,
+    "tower_shot_hp_frac_per100": 0.0
+   },
+   "y": {
+    "ganks_per100": 7.5,
+    "gank_trials_per_gank": 2.2375,
+    "gank_hp_frac_per_gank": 0.37284840821481,
+    "deaths_per100": 1.078125,
+    "gank_deaths_per100": 1.078125,
+    "recalls_per100": 2.671875,
+    "recalls_above_third_per100": 0.0,
+    "farm_per100": 25.994726562499928,
+    "xp_per100": 364.3125,
+    "tower_dmg_per100": 0.0,
+    "plates_per100": 0.0,
+    "trades_per100": 15.796875,
+    "forward_share": 0.09191867418417905,
+    "shove_share": 0.0,
+    "tower_shot_hp_frac_per100": 0.979156635237705
+   },
+   "components": {}
+  },
+  "g0.60_i1.20|keep_reach|presser vs hold_farmer": {
+   "value": -16.082040302238987,
+   "se": 0.14844517931055104,
+   "ci95": [
+    -16.372992853687666,
+    -15.791087750790307
+   ],
+   "n_seeds": 8,
+   "x": {
+    "ganks_per100": 12.296875,
+    "gank_trials_per_gank": 3.1321473951715375,
+    "gank_hp_frac_per_gank": 0.5219387912015424,
+    "deaths_per100": 3.34375,
+    "gank_deaths_per100": 3.34375,
+    "recalls_per100": 2.609375,
+    "recalls_above_third_per100": 0.0,
+    "farm_per100": 15.626796874999933,
+    "xp_per100": 351.65625,
+    "tower_dmg_per100": 1500.0,
+    "plates_per100": 0.75,
+    "trades_per100": 0.0,
+    "forward_share": 0.8926137410204458,
+    "shove_share": 0.804375,
+    "tower_shot_hp_frac_per100": 0.0
+   },
+   "y": {
+    "ganks_per100": 1.8125,
+    "gank_trials_per_gank": 1.1293103448275863,
+    "gank_hp_frac_per_gank": 0.18817430360336723,
+    "deaths_per100": 0.015625,
+    "gank_deaths_per100": 0.015625,
+    "recalls_per100": 0.296875,
+    "recalls_above_third_per100": 0.0,
+    "farm_per100": 31.814648437499855,
+    "xp_per100": 395.34375,
+    "tower_dmg_per100": 0.0,
+    "plates_per100": 0.0,
+    "trades_per100": 0.0,
+    "forward_share": 0.0,
+    "shove_share": 0.0,
+    "tower_shot_hp_frac_per100": 0.0
+   },
+   "components": {}
+  }
+ },
+ "keep_reach_minus_current": {
+  "g0.60_i1.20|presser vs freezer": {
+   "diff": 1.0861408195090179,
+   "se": 0.3567960003147206,
+   "ci95": [
+    0.38682065889216555,
+    1.7854609801258703
+   ],
+   "significant": true,
+   "a": -10.989457566112716,
+   "b": -12.075598385621735
+  },
+  "g0.60_i1.20|freeze_breaker vs freezer": {
+   "diff": 0.6421543446899687,
+   "se": 0.3368503150640626,
+   "ci95": [
+    -0.018072272835593983,
+    1.3023809622155313
+   ],
+   "significant": false,
+   "a": -11.437369235905035,
+   "b": -12.079523580595005
+  },
+  "g0.60_i1.20|shove_recall vs freezer": {
+   "diff": -0.7643109517569726,
+   "se": 0.8006232950539944,
+   "ci95": [
+    -2.333532610062802,
+    0.8049107065488565
+   ],
+   "significant": false,
+   "a": -5.960487565652367,
+   "b": -5.196176613895394
+  },
+  "g0.60_i1.20|g_adaptive_breaker vs freezer": {
+   "diff": 0.0,
+   "se": 0.0,
+   "ci95": [
+    0.0,
+    0.0
+   ],
+   "significant": false,
+   "a": -0.5584018154607693,
+   "b": -0.5584018154607693
+  },
+  "g0.60_i1.20|presser vs hold_farmer": {
+   "diff": 1.4922184120008273,
+   "se": 0.05404859067579642,
+   "ci95": [
+    1.3862831742762662,
+    1.5981536497253883
+   ],
+   "significant": true,
+   "a": -16.082040302238987,
+   "b": -17.574258714239814
+  }
+ },
+ "meta": {
+  "commit": "3b15b41ebc64278c6cc7b6a11bcca56df5174532",
+  "stage": "FB",
+  "configs_arg": [],
+  "wall_s": 3.972703899955377,
+  "cpu_s": 15.984375,
+  "turns": 64000,
+  "procs": 8,
+  "command": "python -m lanegame.experiments.m4.calibration --stage FB"
+ }
+}

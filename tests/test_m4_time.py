@@ -320,5 +320,61 @@ def test_continuing_preset_and_time_semantics_checks():
         PPOConfig.continuing(GameConfig.champions())
     with pytest.raises(ValueError, match="game_length"):
         check_time_semantics(M4, PPOConfig(gamma=0.99))
-    with pytest.warns(UserWarning, match="gamma"):
+    with pytest.raises(ValueError, match="allow_gamma_mismatch"):
         check_time_semantics(M4, PPOConfig(gamma=0.98, game_length=100))
+    import warnings
+    with warnings.catch_warnings():
+        warnings.simplefilter("error")                          # the explicit opt-in is silent and recorded
+        check_time_semantics(M4, PPOConfig(gamma=0.98, game_length=100, allow_gamma_mismatch=True))
+    assert PPOConfig(allow_gamma_mismatch=True).to_dict()["allow_gamma_mismatch"] is True
+    old = PPOConfig.continuing(M4).to_dict()
+    del old["allow_gamma_mismatch"]                             # configurations saved before the option still load
+    assert PPOConfig.from_dict(old).allow_gamma_mismatch is False
+    check_time_semantics(GameConfig.champions(), PPOConfig(gamma=1.0))   # finite games: unaffected
+
+
+def test_stateful_agents_get_lifecycle_hooks_in_the_discounted_evaluator():
+    """evaluate_discounted calls reset() per game and notify(info, side) per turn. From the witnessed equal-power
+    freeze, the AdaptiveBreaker parks (Slow Push) until it has observed a maintained Freeze and Shoves afterwards; it
+    starts every game unaware. Without the hooks it would never Shove."""
+    from lanegame.config import SH, SP
+    from lanegame.env import discounted as D
+    from lanegame.env.agents import episode_streams
+    from lanegame.env.agents_m4 import AdaptiveBreaker, gate_defenders
+    from lanegame.env.starts import StartState
+    from lanegame.scenarios_m4 import load_witnesses, replay
+    w = replay("1_equal_power_freeze", load_witnesses()["1_equal_power_freeze"])
+    st = StartState(w.state, w.champ, w.k)
+    freezer = gate_defenders()["freeze"]
+    env = LaneEnv(M4, cache_size=0)
+
+    def game(ab, hooks):
+        waves = []
+        if hooks:
+            D._play(env, (freezer, ab), 7, 120, start=st, on_step=lambda i: waves.append(
+                (i["waves"][1], i["freeze_maintained"][0])))
+            return waves
+        _, env_ss, ra, rb = episode_streams(7)                 # the same game without any hook calls
+        env.max_turns = 120
+        obs = env.reset(seed=env_ss, root=st.lane, k0=st.phase, champ=st.champ)
+        while True:
+            r = env.step(freezer.act(obs[0], ra), ab.act(obs[1], rb))
+            waves.append((r.info["waves"][1], r.info["freeze_maintained"][0]))
+            if r.done:
+                return waves
+            obs = r.obs
+
+    ab = AdaptiveBreaker()
+    ab.saw_freeze = True                                        # stale memory from an earlier game is cleared
+    waves = game(ab, hooks=True)
+    first = next((t for t, (_, fm) in enumerate(waves) if fm), None)
+    assert first is not None, "the freezer never maintained a Freeze"
+    assert all(wv == SP for wv, _ in waves[:first + 1])         # unaware up to the first observed Freeze
+    assert any(wv == SH for wv, _ in waves[first + 1:])         # Shoves after observing it
+    assert all(wv == SP for wv, _ in game(AdaptiveBreaker(), hooks=False))   # no notify: never adapts
+    # per-game reset: repeated evaluations on the same seeds agree, and self-play seats do not share memory
+    r1 = D.evaluate_discounted(M4, freezer, ab, episodes=2, window=60)
+    r2 = D.evaluate_discounted(M4, freezer, ab, episodes=2, window=60)
+    assert r1["estimate"] == r2["estimate"]
+    a, b = D.game_agents((ab, ab))
+    assert a is ab and b is not ab and not a.saw_freeze and not b.saw_freeze

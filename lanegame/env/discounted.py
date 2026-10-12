@@ -21,6 +21,9 @@ Error terms, reported separately:
   * optionally (tail_episodes > 0) an EMPIRICAL tail estimate on a subsample extended to tail_window turns. It is
     labelled as an estimate: it is not a guarantee.
 
+Stateful agents (e.g. agents_m4.AdaptiveBreaker) get per-game lifecycle hooks when they define them: `reset()` before
+every game and `notify(info, side)` after every turn with the public turn result (`game_agents`).
+
 W = 1000 is the headline window; W = 460 is for development runs only and must be reported with its guaranteed
 bound and an empirical tail estimate. Critic bootstrapping is not part of this evaluator (design §10.5.4).
 """
@@ -87,10 +90,32 @@ def per_turn_bound(cfg: GameConfig) -> float:
 
 
 # ---------------------------------------------------------------------- games
-def _play(env: LaneEnv, agents, seed, turns: int, start=None, record_every: int = 0):
-    """One game of `turns` turns from s0 or `start` (a StartState); returns (rewards to A, snapshots)."""
+def _stateful(agent) -> bool:
+    return callable(getattr(agent, "reset", None)) or callable(getattr(agent, "notify", None))
+
+
+def game_agents(agents) -> tuple:
+    """The two seats' agents for one game, with per-game lifecycle hooks: an agent with `reset()` is reset before the
+    game, and `notify(info, side)` (called after every turn by `_play`) gives it the public turn result. A stateful
+    agent that plays BOTH seats is copied for seat B, so the seats never share memory."""
+    import copy
+    a, b = agents
+    if a is b and _stateful(a):
+        b = copy.deepcopy(a)
+    for ag in (a, b):
+        if callable(getattr(ag, "reset", None)):
+            ag.reset()
+    return a, b
+
+
+def _play(env: LaneEnv, agents, seed, turns: int, start=None, record_every: int = 0, on_step=None):
+    """One game of `turns` turns from s0 or `start` (a StartState); returns (rewards to A, snapshots). Agents with
+    `reset()` / `notify(info, side)` get them per game and per turn (`game_agents`); `on_step(info)` observes every
+    turn's result (counters)."""
     ss, env_ss, rng_a, rng_b = episode_streams(seed)
     rngs = (rng_a, rng_b)
+    agents = game_agents(agents)
+    notify = [getattr(ag, "notify", None) for ag in agents]
     env.max_turns = turns
     if start is None:
         obs = env.reset(seed=env_ss)
@@ -103,6 +128,11 @@ def _play(env: LaneEnv, agents, seed, turns: int, start=None, record_every: int 
         a = agents[0].act(obs[0], rngs[0])
         b = agents[1].act(obs[1], rngs[1])
         r = env.step(a, b)
+        for side in (0, 1):
+            if callable(notify[side]):
+                notify[side](r.info, side)
+        if on_step is not None:
+            on_step(r.info)
         rewards[t] = r.rewards[0]
         t += 1
         if record_every and t % record_every == 0 and env.champ is not None and hasattr(env.champ.a, "xp"):

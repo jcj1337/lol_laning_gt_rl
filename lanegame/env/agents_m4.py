@@ -162,6 +162,72 @@ class AdaptiveBreaker(M4ScriptAgent):
         return super().choose_action(obs)
 
 
+class ShoveRecallAgent(M4ScriptAgent):
+    """Conditional Shove -> Recall -> Purchase cycle (M4.2b calibration, Phase D). Deterministic and stateless: every
+    decision is a function of the observation, so it is safe for the rollout probability cache. In order:
+
+      1. absent -> ABSENT; HP <= recall_frac * H(L) -> Recall (walk back first when not legal);
+      2. the next tier is affordable ("cash out"):
+         a. an enemy front at own x <= -1 threatens the tower -> stay: Slow Push + Hold (clear it, do not leave);
+         b. the own wave has crashed (siege) or its front stands at x >= 1, or the lane is empty -> Recall;
+         c. otherwise, at HP >= shove_hp_frac * H with a favourable wave (own front HP >= the enemy front's, or no
+            enemy front) -> Shove + Hold (push first, then recall at 2b);
+         d. otherwise Recall when HP <= cashout_hp_frac * H, else farm (Slow Push + Hold) and reassess next turn;
+      3. not affordable: farm (Slow Push + Hold); with `finish_push`, a front already standing at x >= 1 is shoved
+         through (crashed) rather than left parked under the enemy tower, where the pusher farms at the enemy-tower
+         efficiency while the defender farms at its own tower; build the wave and Shove once the own front holds
+         >= stack_hp HP;
+         with `pressure`, Apply Pressure on the turns it Shoves at HP >= shove_hp_frac * H.
+
+    It never Shoves permanently: after the purchase it returns to rule 3. No rule looks at the opponent's identity."""
+
+    def __init__(self, name: str = "shove_recall", shove_hp_frac: float = 2 / 3, cashout_hp_frac: float = 1 / 2,
+                 stack_hp: int = 8, pressure: bool = False, finish_push: bool = True, recall_frac: float = 2 / 6):
+        super().__init__(name, SP, B_HOLD, NONE, recall_frac=recall_frac)
+        self.finish_push = finish_push
+        self.shove_hp_frac, self.cashout_hp_frac, self.stack_hp_cycle, self.pressure = (shove_hp_frac, cashout_hp_frac,
+                                                                                         stack_hp, pressure)
+
+    def decide(self, obs: Observation) -> tuple:
+        """(action, rule label) for the observation; the label names the rule that fired (diagnostics)."""
+        legal = obs.legal
+        if legal == ABSENT_ONLY:
+            return CHAMP_ABSENT, "absent"
+        cfg = obs_cfg(obs)
+        t = tables(cfg)
+        lane, m4, s = obs.state, obs.champ, obs.side
+        me = m4.side(s)
+        H = t.hp_max[t.level_by_xp[min(me.xp, t.xp_cap)]]
+        own_fx, own_fh = lane.side(s)[:2]
+        en_fx, en_fh = lane.side(1 - s)[:2]
+        if me.hp <= self.recall_frac * H:
+            return self._walk_back(legal), "low_hp_recall"
+        farm = self._first(legal, [champ_act(SP, B_HOLD)])
+        shove = self._first(legal, [champ_act(SH, B_HOLD), champ_act(SP, B_HOLD)])
+        afford = me.items < t.item_tiers and me.gold >= t.prices[me.items]
+        if afford:
+            if en_fh > 0 and -en_fx <= -1:
+                return farm, "stay_threat"
+            if lane.siege_of(s) > 0 or (own_fh > 0 and own_fx >= 1) or (own_fh == 0 and en_fh == 0):
+                return self._walk_back(legal), "recall_pushed"
+            if me.hp >= self.shove_hp_frac * H and (en_fh == 0 or own_fh >= en_fh):
+                return shove, "shove_before_recall"
+            if me.hp <= self.cashout_hp_frac * H:
+                return self._walk_back(legal), "recall_unpushed"
+            return farm, "wait"
+        if own_fh > 0 and own_fx >= 1 and self.finish_push:
+            return shove, "finish_push"
+        if own_fh >= self.stack_hp_cycle:
+            if self.pressure and me.hp >= self.shove_hp_frac * H:
+                return self._first(legal, [champ_act(SH, B_HOLD, PRESSURE), champ_act(SH, B_HOLD),
+                                           champ_act(SP, B_HOLD)]), "stack_shove_pressure"
+            return shove, "stack_shove"
+        return farm, "farm"
+
+    def choose_action(self, obs: Observation) -> int:
+        return self.decide(obs)[0]
+
+
 def m4_suite() -> Dict[str, M4ScriptAgent]:
     """The M4 scripted baselines of plan WP8 (each with the low-HP recall rule at 1/3 of max HP unless noted)."""
     agents = [M4ScriptAgent("hold_farmer", SP, B_HOLD),

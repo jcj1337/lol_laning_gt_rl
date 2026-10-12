@@ -892,3 +892,24 @@ S0–S4 is complete. Full account: [m4_implementation_report.md](m4_implementati
 
 **Next:** M4.3 (S5 PPO smoke and pilot, S6 research runs), after a review of design decision D4 (item prices and
 tiers) in light of the S4 item finding.
+
+## Q. M4.2b calibration: gank severity, item strength, the Shove → Recall cycle (2026-10-12)
+
+Branch `calibration/m4-2b`. Exploratory staged calibration within a ~2M-turn budget; **M4 defaults unchanged**. Full
+account: [m4_calibration_report.md](m4_calibration_report.md); results: `results/m4_calibration/`.
+
+- **The shove penalty is lane farm, not ganks.** A presser loses −17 per 400 turns against hold_farmer, −16.2 of it in
+  farm (crashed waves farmed by the defender at its tower; the parked configuration). Gank damage 0.60 → 0.40 halves
+  forward deaths and is worth +1.26 [+1.12, +1.39] at W = 1,000; no sign changes.
+- **Items:** zero value without trades; at 1.20 the first tier misses the level 6–11 breakpoint; in trading play leads
+  last 7–11 turns. A higher `item_mult` raises combat value (and the aggressive trader's edge over passive play,
+  +2.30 at 1.35) but does not make affordability matter to Recall.
+- **The conditional Shove → Recall → Purchase agent** beats the presser by +15 but loses to passive and trading
+  baselines; Shove before Recall was never significantly better than recalling directly.
+- **The M2 farm-spot rule:** a keep-reach prototype (experiment only) reproduces the design's Freeze-break table in all
+  64 cells and is worth +1.5 to pushing; proposed as a separate rule change.
+- Fixes: lifecycle hooks (reset / notify) in the discounted evaluator; an explicit `allow_gamma_mismatch` opt-in.
+
+**Recommended for review (not adopted):** `gank_damage_position = 0.40`, `item_mult = 1.35` (conservative: 0.40 /
+1.20). The passive-equilibrium risk remains structural (crash farm, farm-spot rule, item persistence); decide these
+before M4.3.

@@ -1,0 +1,5495 @@
+{
+ "configs": [
+  "g0.60_i1.20",
+  "g0.40_i1.35"
+ ],
+ "states": {
+  "even_N0": {
+   "lane": [
+    "0",
+    "3",
+    "(-4,)",
+    "0",
+    "0",
+    "3",
+    "(-4,)",
+    "0",
+    "0",
+    "0",
+    "0",
+    "0"
+   ],
+   "champ": [
+    [
+     0,
+     495,
+     0,
+     34,
+     0,
+     2677500,
+     0
+    ],
+    [
+     0,
+     380,
+     0,
+     34,
+     0,
+     2677500,
+     0
+    ]
+   ],
+   "k": 10
+  },
+  "pushing_N0": {
+   "lane": [
+    "1",
+    "5",
+    "(-4,)",
+    "0",
+    "-4",
+    "4",
+    "()",
+    "0",
+    "0",
+    "0",
+    "0",
+    "0"
+   ],
+   "champ": [
+    [
+     -1,
+     655,
+     0,
+     232,
+     0,
+     10000000,
+     0
+    ],
+    [
+     -2,
+     931,
+     0,
+     210,
+     2,
+     0,
+     0
+    ]
+   ],
+   "k": 58
+  },
+  "pushing_N1": {
+   "lane": [
+    "1",
+    "4",
+    "(-2,)",
+    "0",
+    "-2",
+    "1",
+    "()",
+    "0",
+    "0",
+    "0",
+    "0",
+    "0"
+   ],
+   "champ": [
+    [
+     0,
+     804,
+     0,
+     96,
+     1,
+     2087500,
+     0
+    ],
+    [
+     -2,
+     766,
+     0,
+     84,
+     1,
+     2637500,
+     0
+    ]
+   ],
+   "k": 25
+  },
+  "even_N1": {
+   "lane": [
+    "0",
+    "1",
+    "(-2,)",
+    "0",
+    "0",
+    "1",
+    "(-2,)",
+    "0",
+    "0",
+    "0",
+    "0",
+    "0"
+   ],
+   "champ": [
+    [
+     0,
+     729,
+     0,
+     62,
+     1,
+     707500,
+     0
+    ],
+    [
+     0,
+     661,
+     0,
+     70,
+     0,
+     5917500,
+     0
+    ]
+   ],
+   "k": 19
+  },
+  "threat_N0": {
+   "lane": [
+    "-2",
+    "2",
+    "()",
+    "0",
+    "2",
+    "1",
+    "(-2,)",
+    "0",
+    "0",
+    "0",
+    "0",
+    "0"
+   ],
+   "champ": [
+    [
+     -2,
+     495,
+     0,
+     46,
+     0,
+     3510000,
+     0
+    ],
+    [
+     2,
+     289,
+     0,
+     52,
+     0,
+     2445000,
+     0
+    ]
+   ],
+   "k": 13
+  }
+ },
+ "plans": [
+  "farm8",
+  "recall_now",
+  "shove_then_recall",
+  "shove_stay"
+ ],
+ "n_seeds": 10,
+ "window": 200,
+ "summary": {
+  "g0.60_i1.20|even_N0|full|afford": {
+   "means": {
+    "farm8": -8.974863613000789,
+    "recall_now": -1.88314872894239,
+    "shove_then_recall": -4.873248321694875,
+    "shove_stay": -9.006248464537283
+   },
+   "recall_minus_farm": {
+    "diff": 7.0917148840584,
+    "se": 1.432424160027045,
+    "ci95": [
+     4.284163530405392,
+     9.899266237711409
+    ],
+    "significant": true,
+    "a": -1.88314872894239,
+    "b": -8.974863613000789
+   },
+   "shove_recall_minus_recall": {
+    "diff": -2.990099592752485,
+    "se": 1.6217751193398722,
+    "ci95": [
+     -6.1687788266586345,
+     0.1885796411536642
+    ],
+    "significant": false,
+    "a": -4.873248321694875,
+    "b": -1.88314872894239
+   },
+   "shove_stay_minus_farm": {
+    "diff": -0.031384851536491176,
+    "se": 1.468961808823396,
+    "ci95": [
+     -2.910549996830347,
+     2.847780293757365
+    ],
+    "significant": false,
+    "a": -9.006248464537283,
+    "b": -8.974863613000789
+   },
+   "best": "recall_now",
+   "counters": {
+    "farm8": {
+     "deaths_f": 1.2,
+     "deaths_o": 0.3,
+     "farm_f": 39.76124999999997,
+     "farm_o": 64.73287499999994,
+     "forward_f": 55.6,
+     "forward_o": 0.0,
+     "ganks_f": 16.3,
+     "ganks_o": 6.4,
+     "lead_focal": 87.9,
+     "plates_f": 2.0,
+     "plates_o": 0.0,
+     "purchases_f": 2.0,
+     "purchases_o": 1.8,
+     "recalls_f": 6.5,
+     "recalls_o": 1.3,
+     "trade_dealt_f": 0.0,
+     "trade_dealt_o": 0.0,
+     "trades_f": 0.0,
+     "trades_o": 0.0,
+     "unequal": 90.1
+    },
+    "recall_now": {
+     "deaths_f": 0.7,
+     "deaths_o": 0.8,
+     "farm_f": 57.34124999999989,
+     "farm_o": 61.6659999999999,
+     "forward_f": 6.6,
+     "forward_o": 0.0,
+     "ganks_f": 14.6,
+     "ganks_o": 12.0,
+     "lead_focal": 40.5,
+     "plates_f": 0.2,
+     "plates_o": 0.0,
+     "purchases_f": 2.0,
+     "purchases_o": 2.0,
+     "recalls_f": 5.7,
+     "recalls_o": 3.6,
+     "trade_dealt_f": 0.0,
+     "trade_dealt_o": 0.0,
+     "trades_f": 0.0,
+     "trades_o": 0.0,
+     "unequal": 41.0
+    },
+    "shove_then_recall": {
+     "deaths_f": 0.9,
+     "deaths_o": 0.2,
+     "farm_f": 50.214249999999915,
+     "farm_o": 63.6423749999999,
+     "forward_f": 26.1,
+     "forward_o": 0.0,
+     "ganks_f": 15.0,
+     "ganks_o": 8.4,
+     "lead_focal": 80.4,
+     "plates_f": 0.8,
+     "plates_o": 0.0,
+     "purchases_f": 2.0,
+     "purchases_o": 2.0,
+     "recalls_f": 5.8,
+     "recalls_o": 2.0,
+     "trade_dealt_f": 0.0,
+     "trade_dealt_o": 0.0,
+     "trades_f": 0.0,
+     "trades_o": 0.0,
+     "unequal": 80.4
+    },
+    "shove_stay": {
+     "deaths_f": 1.0,
+     "deaths_o": 0.4,
+     "farm_f": 39.53024999999997,
+     "farm_o": 64.60312499999992,
+     "forward_f": 57.4,
+     "forward_o": 0.0,
+     "ganks_f": 15.9,
+     "ganks_o": 6.1,
+     "lead_focal": 86.1,
+     "plates_f": 1.9,
+     "plates_o": 0.0,
+     "purchases_f": 2.0,
+     "purchases_o": 1.6,
+     "recalls_f": 6.2,
+     "recalls_o": 1.0,
+     "trade_dealt_f": 0.0,
+     "trade_dealt_o": 0.0,
+     "trades_f": 0.0,
+     "trades_o": 0.0,
+     "unequal": 87.2
+    }
+   }
+  },
+  "g0.60_i1.20|even_N0|full|poor": {
+   "means": {
+    "farm8": -3.2800141357688637,
+    "recall_now": -5.825659775953103,
+    "shove_then_recall": -4.658391548499855,
+    "shove_stay": -4.975292282485198
+   },
+   "recall_minus_farm": {
+    "diff": -2.5456456401842384,
+    "se": 1.4091948691903495,
+    "ci95": [
+     -5.307667583797324,
+     0.2163763034288464
+    ],
+    "significant": false,
+    "a": -5.825659775953103,
+    "b": -3.2800141357688637
+   },
+   "shove_recall_minus_recall": {
+    "diff": 1.1672682274532478,
+    "se": 0.8378318232029893,
+    "ci95": [
+     -0.4748821460246113,
+     2.8094186009311066
+    ],
+    "significant": false,
+    "a": -4.658391548499855,
+    "b": -5.825659775953103
+   },
+   "shove_stay_minus_farm": {
+    "diff": -1.6952781467163345,
+    "se": 1.6720671323852234,
+    "ci95": [
+     -4.972529726191373,
+     1.5819734327587034
+    ],
+    "significant": false,
+    "a": -4.975292282485198,
+    "b": -3.2800141357688637
+   },
+   "best": "farm8",
+   "counters": {
+    "farm8": {
+     "deaths_f": 1.5,
+     "deaths_o": 0.2,
+     "farm_f": 55.56574999999989,
+     "farm_o": 63.03524999999987,
+     "forward_f": 11.4,
+     "forward_o": 0.0,
+     "ganks_f": 13.8,
+     "ganks_o": 8.8,
+     "lead_focal": 47.1,
+     "plates_f": 0.2,
+     "plates_o": 0.0,
+     "purchases_f": 2.0,
+     "purchases_o": 2.0,
+     "recalls_f": 4.3,
+     "recalls_o": 2.2,
+     "trade_dealt_f": 0.0,
+     "trade_dealt_o": 0.0,
+     "trades_f": 0.0,
+     "trades_o": 0.0,
+     "unequal": 55.3
+    },
+    "recall_now": {
+     "deaths_f": 0.9,
+     "deaths_o": 0.4,
+     "farm_f": 49.50549999999993,
+     "farm_o": 64.21512499999989,
+     "forward_f": 25.2,
+     "forward_o": 0.0,
+     "ganks_f": 14.0,
+     "ganks_o": 7.7,
+     "lead_focal": 51.3,
+     "plates_f": 0.9,
+     "plates_o": 0.0,
+     "purchases_f": 2.0,
+     "purchases_o": 1.9,
+     "recalls_f": 6.7,
+     "recalls_o": 1.8,
+     "trade_dealt_f": 0.0,
+     "trade_dealt_o": 0.0,
+     "trades_f": 0.0,
+     "trades_o": 0.0,
+     "unequal": 63.1
+    },
+    "shove_then_recall": {
+     "deaths_f": 1.0,
+     "deaths_o": 0.2,
+     "farm_f": 52.832499999999904,
+     "farm_o": 63.799874999999886,
+     "forward_f": 17.6,
+     "forward_o": 0.0,
+     "ganks_f": 13.6,
+     "ganks_o": 8.1,
+     "lead_focal": 61.3,
+     "plates_f": 0.5,
+     "plates_o": 0.0,
+     "purchases_f": 2.0,
+     "purchases_o": 1.9,
+     "recalls_f": 5.7,
+     "recalls_o": 1.8,
+     "trade_dealt_f": 0.0,
+     "trade_dealt_o": 0.0,
+     "trades_f": 0.0,
+     "trades_o": 0.0,
+     "unequal": 64.6
+    },
+    "shove_stay": {
+     "deaths_f": 1.1,
+     "deaths_o": 0.2,
+     "farm_f": 49.794499999999914,
+     "farm_o": 63.757124999999895,
+     "forward_f": 28.0,
+     "forward_o": 0.0,
+     "ganks_f": 13.8,
+     "ganks_o": 7.3,
+     "lead_focal": 67.1,
+     "plates_f": 0.9,
+     "plates_o": 0.0,
+     "purchases_f": 2.0,
+     "purchases_o": 2.0,
+     "recalls_f": 5.4,
+     "recalls_o": 1.6,
+     "trade_dealt_f": 0.0,
+     "trade_dealt_o": 0.0,
+     "trades_f": 0.0,
+     "trades_o": 0.0,
+     "unequal": 68.8
+    }
+   }
+  },
+  "g0.60_i1.20|even_N0|half|afford": {
+   "means": {
+    "farm8": -3.052329062982596,
+    "recall_now": -3.4872129794977362,
+    "shove_then_recall": -5.50149968519149,
+    "shove_stay": -3.0069628017241135
+   },
+   "recall_minus_farm": {
+    "diff": -0.4348839165151409,
+    "se": 1.8086462993959465,
+    "ci95": [
+     -3.979830663331196,
+     3.1100628303009143
+    ],
+    "significant": false,
+    "a": -3.4872129794977362,
+    "b": -3.052329062982596
+   },
+   "shove_recall_minus_recall": {
+    "diff": -2.0142867056937535,
+    "se": 1.0944138834631716,
+    "ci95": [
+     -4.15933791728157,
+     0.13076450589406274
+    ],
+    "significant": false,
+    "a": -5.50149968519149,
+    "b": -3.4872129794977362
+   },
+   "shove_stay_minus_farm": {
+    "diff": 0.045366261258481776,
+    "se": 1.2098195727270868,
+    "ci95": [
+     -2.325880101286608,
+     2.416612623803572
+    ],
+    "significant": false,
+    "a": -3.0069628017241135,
+    "b": -3.052329062982596
+   },
+   "best": "shove_stay",
+   "counters": {
+    "farm8": {
+     "deaths_f": 0.7,
+     "deaths_o": 0.3,
+     "farm_f": 54.05499999999991,
+     "farm_o": 62.94274999999989,
+     "forward_f": 17.7,
+     "forward_o": 0.0,
+     "ganks_f": 13.1,
+     "ganks_o": 8.4,
+     "lead_focal": 44.0,
+     "plates_f": 0.6,
+     "plates_o": 0.0,
+     "purchases_f": 2.0,
+     "purchases_o": 2.0,
+     "recalls_f": 4.9,
+     "recalls_o": 2.4,
+     "trade_dealt_f": 0.0,
+     "trade_dealt_o": 0.0,
+     "trades_f": 0.0,
+     "trades_o": 0.0,
+     "unequal": 56.2
+    },
+    "recall_now": {
+     "deaths_f": 0.5,
+     "deaths_o": 0.4,
+     "farm_f": 54.745749999999894,
+     "farm_o": 63.20512499999988,
+     "forward_f": 14.2,
+     "forward_o": 0.0,
+     "ganks_f": 12.3,
+     "ganks_o": 8.1,
+     "lead_focal": 71.2,
+     "plates_f": 0.4,
+     "plates_o": 0.0,
+     "purchases_f": 2.0,
+     "purchases_o": 1.9,
+     "recalls_f": 5.5,
+     "recalls_o": 2.0,
+     "trade_dealt_f": 0.0,
+     "trade_dealt_o": 0.0,
+     "trades_f": 0.0,
+     "trades_o": 0.0,
+     "unequal": 72.8
+    },
+    "shove_then_recall": {
+     "deaths_f": 0.5,
+     "deaths_o": 0.2,
+     "farm_f": 49.29999999999992,
+     "farm_o": 64.31512499999991,
+     "forward_f": 30.2,
+     "forward_o": 0.0,
+     "ganks_f": 13.2,
+     "ganks_o": 6.2,
+     "lead_focal": 101.6,
+     "plates_f": 1.0,
+     "plates_o": 0.0,
+     "purchases_f": 2.0,
+     "purchases_o": 1.6,
+     "recalls_f": 6.0,
+     "recalls_o": 1.3,
+     "trade_dealt_f": 0.0,
+     "trade_dealt_o": 0.0,
+     "trades_f": 0.0,
+     "trades_o": 0.0,
+     "unequal": 101.6
+    },
+    "shove_stay": {
+     "deaths_f": 0.4,
+     "deaths_o": 0.2,
+     "farm_f": 53.8062499999999,
+     "farm_o": 63.394874999999885,
+     "forward_f": 18.5,
+     "forward_o": 0.0,
+     "ganks_f": 12.1,
+     "ganks_o": 6.4,
+     "lead_focal": 69.6,
+     "plates_f": 0.5,
+     "plates_o": 0.0,
+     "purchases_f": 2.0,
+     "purchases_o": 1.8,
+     "recalls_f": 4.8,
+     "recalls_o": 1.5,
+     "trade_dealt_f": 0.0,
+     "trade_dealt_o": 0.0,
+     "trades_f": 0.0,
+     "trades_o": 0.0,
+     "unequal": 77.5
+    }
+   }
+  },
+  "g0.60_i1.20|even_N0|half|poor": {
+   "means": {
+    "farm8": -4.351500412939621,
+    "recall_now": -6.190411608063714,
+    "shove_then_recall": -6.163323748716236,
+    "shove_stay": -6.781785272346606
+   },
+   "recall_minus_farm": {
+    "diff": -1.8389111951240937,
+    "se": 1.6508700166272499,
+    "ci95": [
+     -5.0746164277135035,
+     1.396794037465316
+    ],
+    "significant": false,
+    "a": -6.190411608063714,
+    "b": -4.351500412939621
+   },
+   "shove_recall_minus_recall": {
+    "diff": 0.027087859347478906,
+    "se": 1.7515701783537236,
+    "ci95": [
+     -3.4059896902258195,
+     3.460165408920777
+    ],
+    "significant": false,
+    "a": -6.163323748716236,
+    "b": -6.190411608063714
+   },
+   "shove_stay_minus_farm": {
+    "diff": -2.430284859406984,
+    "se": 1.6204787239538876,
+    "ci95": [
+     -5.606423158356604,
+     0.7458534395426355
+    ],
+    "significant": false,
+    "a": -6.781785272346606,
+    "b": -4.351500412939621
+   },
+   "best": "farm8",
+   "counters": {
+    "farm8": {
+     "deaths_f": 0.8,
+     "deaths_o": 0.5,
+     "farm_f": 51.20624999999992,
+     "farm_o": 62.72149999999989,
+     "forward_f": 26.5,
+     "forward_o": 0.0,
+     "ganks_f": 13.3,
+     "ganks_o": 8.7,
+     "lead_focal": 73.1,
+     "plates_f": 0.8,
+     "plates_o": 0.0,
+     "purchases_f": 2.0,
+     "purchases_o": 1.9,
+     "recalls_f": 5.0,
+     "recalls_o": 2.2,
+     "trade_dealt_f": 0.0,
+     "trade_dealt_o": 0.0,
+     "trades_f": 0.0,
+     "trades_o": 0.0,
+     "unequal": 81.4
+    },
+    "recall_now": {
+     "deaths_f": 1.2,
+     "deaths_o": 0.3,
+     "farm_f": 48.347999999999935,
+     "farm_o": 63.54412499999988,
+     "forward_f": 32.7,
+     "forward_o": 0.0,
+     "ganks_f": 13.1,
+     "ganks_o": 7.5,
+     "lead_focal": 62.1,
+     "plates_f": 1.0,
+     "plates_o": 0.0,
+     "purchases_f": 2.0,
+     "purchases_o": 1.8,
+     "recalls_f": 5.4,
+     "recalls_o": 1.9,
+     "trade_dealt_f": 0.0,
+     "trade_dealt_o": 0.0,
+     "trades_f": 0.0,
+     "trades_o": 0.0,
+     "unequal": 73.6
+    },
+    "shove_then_recall": {
+     "deaths_f": 1.3,
+     "deaths_o": 0.2,
+     "farm_f": 48.251749999999916,
+     "farm_o": 63.82574999999989,
+     "forward_f": 34.2,
+     "forward_o": 0.0,
+     "ganks_f": 12.9,
+     "ganks_o": 7.3,
+     "lead_focal": 82.9,
+     "plates_f": 1.0,
+     "plates_o": 0.0,
+     "purchases_f": 2.0,
+     "purchases_o": 1.5,
+     "recalls_f": 5.1,
+     "recalls_o": 1.6,
+     "trade_dealt_f": 0.0,
+     "trade_dealt_o": 0.0,
+     "trades_f": 0.0,
+     "trades_o": 0.0,
+     "unequal": 89.4
+    },
+    "shove_stay": {
+     "deaths_f": 1.5,
+     "deaths_o": 0.2,
+     "farm_f": 46.597999999999935,
+     "farm_o": 64.32187499999989,
+     "forward_f": 39.6,
+     "forward_o": 0.0,
+     "ganks_f": 13.9,
+     "ganks_o": 7.0,
+     "lead_focal": 112.6,
+     "plates_f": 1.2,
+     "plates_o": 0.0,
+     "purchases_f": 2.0,
+     "purchases_o": 1.4,
+     "recalls_f": 4.9,
+     "recalls_o": 1.3,
+     "trade_dealt_f": 0.0,
+     "trade_dealt_o": 0.0,
+     "trades_f": 0.0,
+     "trades_o": 0.0,
+     "unequal": 117.2
+    }
+   }
+  },
+  "g0.60_i1.20|pushing_N0|full|afford": {
+   "means": {
+    "farm8": -10.467524277253023,
+    "recall_now": -11.301296255162983,
+    "shove_then_recall": -11.301296255162983,
+    "shove_stay": -8.94850509330455
+   },
+   "recall_minus_farm": {
+    "diff": -0.8337719779099574,
+    "se": 1.4230192818628138,
+    "ci95": [
+     -3.6228897703610725,
+     1.9553458145411575
+    ],
+    "significant": false,
+    "a": -11.301296255162983,
+    "b": -10.467524277253023
+   },
+   "shove_recall_minus_recall": {
+    "diff": 0.0,
+    "se": 0.0,
+    "ci95": [
+     0.0,
+     0.0
+    ],
+    "significant": false,
+    "a": -11.301296255162983,
+    "b": -11.301296255162983
+   },
+   "shove_stay_minus_farm": {
+    "diff": 1.519019183948476,
+    "se": 1.700664435342927,
+    "ci95": [
+     -1.814283109323661,
+     4.852321477220613
+    ],
+    "significant": false,
+    "a": -8.94850509330455,
+    "b": -10.467524277253023
+   },
+   "best": "shove_stay",
+   "counters": {
+    "farm8": {
+     "deaths_f": 0.9,
+     "deaths_o": 0.2,
+     "farm_f": 43.744749999999954,
+     "farm_o": 65.5368749999999,
+     "forward_f": 45.6,
+     "forward_o": 0.0,
+     "ganks_f": 12.4,
+     "ganks_o": 5.2,
+     "lead_focal": 0.0,
+     "plates_f": 1.3,
+     "plates_o": 0.0,
+     "purchases_f": 2.0,
+     "purchases_o": 0.0,
+     "recalls_f": 5.3,
+     "recalls_o": 0.7,
+     "trade_dealt_f": 0.0,
+     "trade_dealt_o": 0.0,
+     "trades_f": 0.0,
+     "trades_o": 0.0,
+     "unequal": 35.7
+    },
+    "recall_now": {
+     "deaths_f": 0.9,
+     "deaths_o": 0.0,
+     "farm_f": 41.78374999999995,
+     "farm_o": 66.0847499999999,
+     "forward_f": 50.2,
+     "forward_o": 0.0,
+     "ganks_f": 13.4,
+     "ganks_o": 3.9,
+     "lead_focal": 0.0,
+     "plates_f": 1.6,
+     "plates_o": 0.0,
+     "purchases_f": 2.0,
+     "purchases_o": 0.0,
+     "recalls_f": 5.9,
+     "recalls_o": 0.2,
+     "trade_dealt_f": 0.0,
+     "trade_dealt_o": 0.0,
+     "trades_f": 0.0,
+     "trades_o": 0.0,
+     "unequal": 38.2
+    },
+    "shove_then_recall": {
+     "deaths_f": 0.9,
+     "deaths_o": 0.0,
+     "farm_f": 41.78374999999995,
+     "farm_o": 66.0847499999999,
+     "forward_f": 50.2,
+     "forward_o": 0.0,
+     "ganks_f": 13.4,
+     "ganks_o": 3.9,
+     "lead_focal": 0.0,
+     "plates_f": 1.6,
+     "plates_o": 0.0,
+     "purchases_f": 2.0,
+     "purchases_o": 0.0,
+     "recalls_f": 5.9,
+     "recalls_o": 0.2,
+     "trade_dealt_f": 0.0,
+     "trade_dealt_o": 0.0,
+     "trades_f": 0.0,
+     "trades_o": 0.0,
+     "unequal": 38.2
+    },
+    "shove_stay": {
+     "deaths_f": 1.3,
+     "deaths_o": 0.1,
+     "farm_f": 46.84199999999992,
+     "farm_o": 65.16224999999989,
+     "forward_f": 34.5,
+     "forward_o": 0.0,
+     "ganks_f": 13.2,
+     "ganks_o": 5.9,
+     "lead_focal": 0.0,
+     "plates_f": 1.0,
+     "plates_o": 0.0,
+     "purchases_f": 2.0,
+     "purchases_o": 0.0,
+     "recalls_f": 4.6,
+     "recalls_o": 0.9,
+     "trade_dealt_f": 0.0,
+     "trade_dealt_o": 0.0,
+     "trades_f": 0.0,
+     "trades_o": 0.0,
+     "unequal": 37.2
+    }
+   }
+  },
+  "g0.60_i1.20|pushing_N0|full|poor": {
+   "means": {
+    "farm8": -11.270828342838238,
+    "recall_now": -10.981882686639466,
+    "shove_then_recall": -10.981882686639466,
+    "shove_stay": -7.806171523901087
+   },
+   "recall_minus_farm": {
+    "diff": 0.28894565619877033,
+    "se": 1.4455847343410342,
+    "ci95": [
+     -2.5444004231096566,
+     3.1222917355071975
+    ],
+    "significant": false,
+    "a": -10.981882686639466,
+    "b": -11.270828342838238
+   },
+   "shove_recall_minus_recall": {
+    "diff": 0.0,
+    "se": 0.0,
+    "ci95": [
+     0.0,
+     0.0
+    ],
+    "significant": false,
+    "a": -10.981882686639466,
+    "b": -10.981882686639466
+   },
+   "shove_stay_minus_farm": {
+    "diff": 3.4646568189371494,
+    "se": 0.9523000681300942,
+    "ci95": [
+     1.598148685402165,
+     5.331164952472134
+    ],
+    "significant": true,
+    "a": -7.806171523901087,
+    "b": -11.270828342838238
+   },
+   "best": "shove_stay",
+   "counters": {
+    "farm8": {
+     "deaths_f": 1.6,
+     "deaths_o": 0.0,
+     "farm_f": 41.415999999999954,
+     "farm_o": 66.1004999999999,
+     "forward_f": 54.7,
+     "forward_o": 0.0,
+     "ganks_f": 13.8,
+     "ganks_o": 6.0,
+     "lead_focal": 0.0,
+     "plates_f": 1.5,
+     "plates_o": 0.0,
+     "purchases_f": 2.0,
+     "purchases_o": 0.0,
+     "recalls_f": 4.6,
+     "recalls_o": 0.8,
+     "trade_dealt_f": 0.0,
+     "trade_dealt_o": 0.0,
+     "trades_f": 0.0,
+     "trades_o": 0.0,
+     "unequal": 59.7
+    },
+    "recall_now": {
+     "deaths_f": 1.4,
+     "deaths_o": 0.1,
+     "farm_f": 44.087749999999936,
+     "farm_o": 66.46387499999989,
+     "forward_f": 42.3,
+     "forward_o": 0.0,
+     "ganks_f": 13.0,
+     "ganks_o": 4.8,
+     "lead_focal": 0.0,
+     "plates_f": 1.4,
+     "plates_o": 0.0,
+     "purchases_f": 2.0,
+     "purchases_o": 0.0,
+     "recalls_f": 5.6,
+     "recalls_o": 0.4,
+     "trade_dealt_f": 0.0,
+     "trade_dealt_o": 0.0,
+     "trades_f": 0.0,
+     "trades_o": 0.0,
+     "unequal": 55.7
+    },
+    "shove_then_recall": {
+     "deaths_f": 1.4,
+     "deaths_o": 0.1,
+     "farm_f": 44.087749999999936,
+     "farm_o": 66.46387499999989,
+     "forward_f": 42.3,
+     "forward_o": 0.0,
+     "ganks_f": 13.0,
+     "ganks_o": 4.8,
+     "lead_focal": 0.0,
+     "plates_f": 1.4,
+     "plates_o": 0.0,
+     "purchases_f": 2.0,
+     "purchases_o": 0.0,
+     "recalls_f": 5.6,
+     "recalls_o": 0.4,
+     "trade_dealt_f": 0.0,
+     "trade_dealt_o": 0.0,
+     "trades_f": 0.0,
+     "trades_o": 0.0,
+     "unequal": 55.7
+    },
+    "shove_stay": {
+     "deaths_f": 0.9,
+     "deaths_o": 0.1,
+     "farm_f": 49.002999999999915,
+     "farm_o": 65.3534999999999,
+     "forward_f": 29.1,
+     "forward_o": 0.0,
+     "ganks_f": 12.2,
+     "ganks_o": 7.0,
+     "lead_focal": 0.0,
+     "plates_f": 0.8,
+     "plates_o": 0.0,
+     "purchases_f": 2.0,
+     "purchases_o": 0.0,
+     "recalls_f": 4.9,
+     "recalls_o": 1.3,
+     "trade_dealt_f": 0.0,
+     "trade_dealt_o": 0.0,
+     "trades_f": 0.0,
+     "trades_o": 0.0,
+     "unequal": 47.1
+    }
+   }
+  },
+  "g0.60_i1.20|pushing_N0|half|afford": {
+   "means": {
+    "farm8": -11.083696982412096,
+    "recall_now": -11.925172417315892,
+    "shove_then_recall": -11.925172417315892,
+    "shove_stay": -7.837782783372423
+   },
+   "recall_minus_farm": {
+    "diff": -0.8414754349037951,
+    "se": 1.1053549431403913,
+    "ci95": [
+     -3.007971123458962,
+     1.3250202536513718
+    ],
+    "significant": false,
+    "a": -11.925172417315892,
+    "b": -11.083696982412096
+   },
+   "shove_recall_minus_recall": {
+    "diff": 0.0,
+    "se": 0.0,
+    "ci95": [
+     0.0,
+     0.0
+    ],
+    "significant": false,
+    "a": -11.925172417315892,
+    "b": -11.925172417315892
+   },
+   "shove_stay_minus_farm": {
+    "diff": 3.245914199039673,
+    "se": 1.256047735510123,
+    "ci95": [
+     0.7840606374398322,
+     5.7077677606395145
+    ],
+    "significant": true,
+    "a": -7.837782783372423,
+    "b": -11.083696982412096
+   },
+   "best": "shove_stay",
+   "counters": {
+    "farm8": {
+     "deaths_f": 1.6,
+     "deaths_o": 0.3,
+     "farm_f": 42.11549999999995,
+     "farm_o": 65.5762499999999,
+     "forward_f": 49.3,
+     "forward_o": 0.0,
+     "ganks_f": 14.3,
+     "ganks_o": 6.0,
+     "lead_focal": 0.0,
+     "plates_f": 1.5,
+     "plates_o": 0.0,
+     "purchases_f": 2.0,
+     "purchases_o": 0.0,
+     "recalls_f": 5.2,
+     "recalls_o": 1.1,
+     "trade_dealt_f": 0.0,
+     "trade_dealt_o": 0.0,
+     "trades_f": 0.0,
+     "trades_o": 0.0,
+     "unequal": 38.1
+    },
+    "recall_now": {
+     "deaths_f": 0.9,
+     "deaths_o": 0.2,
+     "farm_f": 39.59399999999995,
+     "farm_o": 66.0554999999999,
+     "forward_f": 55.4,
+     "forward_o": 0.0,
+     "ganks_f": 13.4,
+     "ganks_o": 5.6,
+     "lead_focal": 0.0,
+     "plates_f": 2.0,
+     "plates_o": 0.0,
+     "purchases_f": 2.0,
+     "purchases_o": 0.0,
+     "recalls_f": 5.7,
+     "recalls_o": 1.0,
+     "trade_dealt_f": 0.0,
+     "trade_dealt_o": 0.0,
+     "trades_f": 0.0,
+     "trades_o": 0.0,
+     "unequal": 39.0
+    },
+    "shove_then_recall": {
+     "deaths_f": 0.9,
+     "deaths_o": 0.2,
+     "farm_f": 39.59399999999995,
+     "farm_o": 66.0554999999999,
+     "forward_f": 55.4,
+     "forward_o": 0.0,
+     "ganks_f": 13.4,
+     "ganks_o": 5.6,
+     "lead_focal": 0.0,
+     "plates_f": 2.0,
+     "plates_o": 0.0,
+     "purchases_f": 2.0,
+     "purchases_o": 0.0,
+     "recalls_f": 5.7,
+     "recalls_o": 1.0,
+     "trade_dealt_f": 0.0,
+     "trade_dealt_o": 0.0,
+     "trades_f": 0.0,
+     "trades_o": 0.0,
+     "unequal": 39.0
+    },
+    "shove_stay": {
+     "deaths_f": 0.9,
+     "deaths_o": 0.2,
+     "farm_f": 47.87149999999993,
+     "farm_o": 64.81349999999989,
+     "forward_f": 31.2,
+     "forward_o": 0.0,
+     "ganks_f": 12.2,
+     "ganks_o": 7.2,
+     "lead_focal": 0.0,
+     "plates_f": 1.0,
+     "plates_o": 0.0,
+     "purchases_f": 2.0,
+     "purchases_o": 0.0,
+     "recalls_f": 5.3,
+     "recalls_o": 1.6,
+     "trade_dealt_f": 0.0,
+     "trade_dealt_o": 0.0,
+     "trades_f": 0.0,
+     "trades_o": 0.0,
+     "unequal": 32.3
+    }
+   }
+  },
+  "g0.60_i1.20|pushing_N0|half|poor": {
+   "means": {
+    "farm8": -11.828778402909336,
+    "recall_now": -11.193853293187221,
+    "shove_then_recall": -11.193853293187221,
+    "shove_stay": -7.761003384567324
+   },
+   "recall_minus_farm": {
+    "diff": 0.6349251097221125,
+    "se": 0.6676125350847996,
+    "ci95": [
+     -0.6735954590440947,
+     1.9434456784883196
+    ],
+    "significant": false,
+    "a": -11.193853293187221,
+    "b": -11.828778402909336
+   },
+   "shove_recall_minus_recall": {
+    "diff": 0.0,
+    "se": 0.0,
+    "ci95": [
+     0.0,
+     0.0
+    ],
+    "significant": false,
+    "a": -11.193853293187221,
+    "b": -11.193853293187221
+   },
+   "shove_stay_minus_farm": {
+    "diff": 4.067775018342012,
+    "se": 1.7048946097478792,
+    "ci95": [
+     0.7261815832361682,
+     7.409368453447855
+    ],
+    "significant": true,
+    "a": -7.761003384567324,
+    "b": -11.828778402909336
+   },
+   "best": "shove_stay",
+   "counters": {
+    "farm8": {
+     "deaths_f": 1.1,
+     "deaths_o": 0.1,
+     "farm_f": 39.718749999999964,
+     "farm_o": 66.30524999999992,
+     "forward_f": 56.6,
+     "forward_o": 0.0,
+     "ganks_f": 15.7,
+     "ganks_o": 4.9,
+     "lead_focal": 0.0,
+     "plates_f": 2.1,
+     "plates_o": 0.0,
+     "purchases_f": 2.0,
+     "purchases_o": 0.0,
+     "recalls_f": 6.5,
+     "recalls_o": 0.8,
+     "trade_dealt_f": 0.0,
+     "trade_dealt_o": 0.0,
+     "trades_f": 0.0,
+     "trades_o": 0.0,
+     "unequal": 55.7
+    },
+    "recall_now": {
+     "deaths_f": 0.9,
+     "deaths_o": 0.2,
+     "farm_f": 42.713749999999955,
+     "farm_o": 66.2579999999999,
+     "forward_f": 43.2,
+     "forward_o": 0.0,
+     "ganks_f": 14.7,
+     "ganks_o": 5.4,
+     "lead_focal": 0.0,
+     "plates_f": 1.7,
+     "plates_o": 0.0,
+     "purchases_f": 2.0,
+     "purchases_o": 0.0,
+     "recalls_f": 6.6,
+     "recalls_o": 0.8,
+     "trade_dealt_f": 0.0,
+     "trade_dealt_o": 0.0,
+     "trades_f": 0.0,
+     "trades_o": 0.0,
+     "unequal": 60.7
+    },
+    "shove_then_recall": {
+     "deaths_f": 0.9,
+     "deaths_o": 0.2,
+     "farm_f": 42.713749999999955,
+     "farm_o": 66.2579999999999,
+     "forward_f": 43.2,
+     "forward_o": 0.0,
+     "ganks_f": 14.7,
+     "ganks_o": 5.4,
+     "lead_focal": 0.0,
+     "plates_f": 1.7,
+     "plates_o": 0.0,
+     "purchases_f": 2.0,
+     "purchases_o": 0.0,
+     "recalls_f": 6.6,
+     "recalls_o": 0.8,
+     "trade_dealt_f": 0.0,
+     "trade_dealt_o": 0.0,
+     "trades_f": 0.0,
+     "trades_o": 0.0,
+     "unequal": 60.7
+    },
+    "shove_stay": {
+     "deaths_f": 1.2,
+     "deaths_o": 0.3,
+     "farm_f": 47.95349999999992,
+     "farm_o": 65.09137499999989,
+     "forward_f": 30.5,
+     "forward_o": 0.0,
+     "ganks_f": 13.9,
+     "ganks_o": 6.9,
+     "lead_focal": 0.0,
+     "plates_f": 1.0,
+     "plates_o": 0.0,
+     "purchases_f": 2.0,
+     "purchases_o": 0.0,
+     "recalls_f": 5.3,
+     "recalls_o": 1.1,
+     "trade_dealt_f": 0.0,
+     "trade_dealt_o": 0.0,
+     "trades_f": 0.0,
+     "trades_o": 0.0,
+     "unequal": 46.3
+    }
+   }
+  },
+  "g0.60_i1.20|pushing_N1|full|afford": {
+   "means": {
+    "farm8": -12.269690834183557,
+    "recall_now": -13.327323188956097,
+    "shove_then_recall": -13.327323188956097,
+    "shove_stay": -8.488734316130705
+   },
+   "recall_minus_farm": {
+    "diff": -1.057632354772539,
+    "se": 0.6127418952276394,
+    "ci95": [
+     -2.2586064694187122,
+     0.14334175987363418
+    ],
+    "significant": false,
+    "a": -13.327323188956097,
+    "b": -12.269690834183557
+   },
+   "shove_recall_minus_recall": {
+    "diff": 0.0,
+    "se": 0.0,
+    "ci95": [
+     0.0,
+     0.0
+    ],
+    "significant": false,
+    "a": -13.327323188956097,
+    "b": -13.327323188956097
+   },
+   "shove_stay_minus_farm": {
+    "diff": 3.780956518052853,
+    "se": 1.6129818105353335,
+    "ci95": [
+     0.619512169403599,
+     6.942400866702107
+    ],
+    "significant": true,
+    "a": -8.488734316130705,
+    "b": -12.269690834183557
+   },
+   "best": "shove_stay",
+   "counters": {
+    "farm8": {
+     "deaths_f": 1.3,
+     "deaths_o": 0.0,
+     "farm_f": 37.48599999999997,
+     "farm_o": 66.02737499999992,
+     "forward_f": 61.4,
+     "forward_o": 0.0,
+     "ganks_f": 15.7,
+     "ganks_o": 5.0,
+     "lead_focal": 122.9,
+     "plates_f": 1.9,
+     "plates_o": 0.0,
+     "purchases_f": 1.0,
+     "purchases_o": 0.6,
+     "recalls_f": 5.1,
+     "recalls_o": 0.7,
+     "trade_dealt_f": 0.0,
+     "trade_dealt_o": 0.0,
+     "trades_f": 0.0,
+     "trades_o": 0.0,
+     "unequal": 122.9
+    },
+    "recall_now": {
+     "deaths_f": 1.6,
+     "deaths_o": 0.0,
+     "farm_f": 35.39524999999996,
+     "farm_o": 66.42899999999993,
+     "forward_f": 63.2,
+     "forward_o": 0.0,
+     "ganks_f": 15.4,
+     "ganks_o": 4.7,
+     "lead_focal": 141.2,
+     "plates_f": 2.1,
+     "plates_o": 0.0,
+     "purchases_f": 1.0,
+     "purchases_o": 0.4,
+     "recalls_f": 5.1,
+     "recalls_o": 0.5,
+     "trade_dealt_f": 0.0,
+     "trade_dealt_o": 0.0,
+     "trades_f": 0.0,
+     "trades_o": 0.0,
+     "unequal": 141.2
+    },
+    "shove_then_recall": {
+     "deaths_f": 1.6,
+     "deaths_o": 0.0,
+     "farm_f": 35.39524999999996,
+     "farm_o": 66.42899999999993,
+     "forward_f": 63.2,
+     "forward_o": 0.0,
+     "ganks_f": 15.4,
+     "ganks_o": 4.7,
+     "lead_focal": 141.2,
+     "plates_f": 2.1,
+     "plates_o": 0.0,
+     "purchases_f": 1.0,
+     "purchases_o": 0.4,
+     "recalls_f": 5.1,
+     "recalls_o": 0.5,
+     "trade_dealt_f": 0.0,
+     "trade_dealt_o": 0.0,
+     "trades_f": 0.0,
+     "trades_o": 0.0,
+     "unequal": 141.2
+    },
+    "shove_stay": {
+     "deaths_f": 1.1,
+     "deaths_o": 0.2,
+     "farm_f": 46.785749999999915,
+     "farm_o": 65.2027499999999,
+     "forward_f": 36.8,
+     "forward_o": 0.0,
+     "ganks_f": 13.9,
+     "ganks_o": 7.0,
+     "lead_focal": 93.1,
+     "plates_f": 1.0,
+     "plates_o": 0.0,
+     "purchases_f": 1.0,
+     "purchases_o": 0.7,
+     "recalls_f": 4.3,
+     "recalls_o": 1.1,
+     "trade_dealt_f": 0.0,
+     "trade_dealt_o": 0.0,
+     "trades_f": 0.0,
+     "trades_o": 0.0,
+     "unequal": 93.1
+    }
+   }
+  },
+  "g0.60_i1.20|pushing_N1|full|poor": {
+   "means": {
+    "farm8": -12.260731483222013,
+    "recall_now": -13.481509478791253,
+    "shove_then_recall": -13.481509478791253,
+    "shove_stay": -8.709380960421235
+   },
+   "recall_minus_farm": {
+    "diff": -1.2207779955692364,
+    "se": 0.6826106624630117,
+    "ci95": [
+     -2.5586948939967393,
+     0.11713890285826656
+    ],
+    "significant": false,
+    "a": -13.481509478791253,
+    "b": -12.260731483222013
+   },
+   "shove_recall_minus_recall": {
+    "diff": 0.0,
+    "se": 0.0,
+    "ci95": [
+     0.0,
+     0.0
+    ],
+    "significant": false,
+    "a": -13.481509478791253,
+    "b": -13.481509478791253
+   },
+   "shove_stay_minus_farm": {
+    "diff": 3.551350522800779,
+    "se": 1.553802014991333,
+    "ci95": [
+     0.5058985734177663,
+     6.596802472183791
+    ],
+    "significant": true,
+    "a": -8.709380960421235,
+    "b": -12.260731483222013
+   },
+   "best": "shove_stay",
+   "counters": {
+    "farm8": {
+     "deaths_f": 2.1,
+     "deaths_o": 0.2,
+     "farm_f": 38.363499999999966,
+     "farm_o": 66.56962499999992,
+     "forward_f": 59.7,
+     "forward_o": 0.0,
+     "ganks_f": 16.6,
+     "ganks_o": 5.7,
+     "lead_focal": 110.7,
+     "plates_f": 2.2,
+     "plates_o": 0.0,
+     "purchases_f": 1.0,
+     "purchases_o": 0.5,
+     "recalls_f": 4.8,
+     "recalls_o": 0.5,
+     "trade_dealt_f": 0.0,
+     "trade_dealt_o": 0.0,
+     "trades_f": 0.0,
+     "trades_o": 0.0,
+     "unequal": 110.7
+    },
+    "recall_now": {
+     "deaths_f": 1.6,
+     "deaths_o": 0.2,
+     "farm_f": 35.70374999999997,
+     "farm_o": 66.87674999999993,
+     "forward_f": 63.1,
+     "forward_o": 0.0,
+     "ganks_f": 15.9,
+     "ganks_o": 5.1,
+     "lead_focal": 131.0,
+     "plates_f": 2.4,
+     "plates_o": 0.0,
+     "purchases_f": 1.0,
+     "purchases_o": 0.5,
+     "recalls_f": 6.2,
+     "recalls_o": 0.4,
+     "trade_dealt_f": 0.0,
+     "trade_dealt_o": 0.0,
+     "trades_f": 0.0,
+     "trades_o": 0.0,
+     "unequal": 131.0
+    },
+    "shove_then_recall": {
+     "deaths_f": 1.6,
+     "deaths_o": 0.2,
+     "farm_f": 35.70374999999997,
+     "farm_o": 66.87674999999993,
+     "forward_f": 63.1,
+     "forward_o": 0.0,
+     "ganks_f": 15.9,
+     "ganks_o": 5.1,
+     "lead_focal": 131.0,
+     "plates_f": 2.4,
+     "plates_o": 0.0,
+     "purchases_f": 1.0,
+     "purchases_o": 0.5,
+     "recalls_f": 6.2,
+     "recalls_o": 0.4,
+     "trade_dealt_f": 0.0,
+     "trade_dealt_o": 0.0,
+     "trades_f": 0.0,
+     "trades_o": 0.0,
+     "unequal": 131.0
+    },
+    "shove_stay": {
+     "deaths_f": 0.8,
+     "deaths_o": 0.2,
+     "farm_f": 46.35449999999993,
+     "farm_o": 65.54812499999989,
+     "forward_f": 35.0,
+     "forward_o": 0.0,
+     "ganks_f": 15.5,
+     "ganks_o": 7.3,
+     "lead_focal": 90.3,
+     "plates_f": 1.1,
+     "plates_o": 0.0,
+     "purchases_f": 1.0,
+     "purchases_o": 0.8,
+     "recalls_f": 5.9,
+     "recalls_o": 1.4,
+     "trade_dealt_f": 0.0,
+     "trade_dealt_o": 0.0,
+     "trades_f": 0.0,
+     "trades_o": 0.0,
+     "unequal": 90.3
+    }
+   }
+  },
+  "g0.60_i1.20|pushing_N1|half|afford": {
+   "means": {
+    "farm8": -13.115779839102355,
+    "recall_now": -13.469207396230805,
+    "shove_then_recall": -13.469207396230805,
+    "shove_stay": -4.352554308829078
+   },
+   "recall_minus_farm": {
+    "diff": -0.3534275571284482,
+    "se": 0.15768376329828354,
+    "ci95": [
+     -0.662487733193084,
+     -0.04436738106381244
+    ],
+    "significant": true,
+    "a": -13.469207396230805,
+    "b": -13.115779839102355
+   },
+   "shove_recall_minus_recall": {
+    "diff": 0.0,
+    "se": 0.0,
+    "ci95": [
+     0.0,
+     0.0
+    ],
+    "significant": false,
+    "a": -13.469207396230805,
+    "b": -13.469207396230805
+   },
+   "shove_stay_minus_farm": {
+    "diff": 8.763225530273278,
+    "se": 0.2866494352613627,
+    "ci95": [
+     8.201392637161007,
+     9.32505842338555
+    ],
+    "significant": true,
+    "a": -4.352554308829078,
+    "b": -13.115779839102355
+   },
+   "best": "shove_stay",
+   "counters": {
+    "farm8": {
+     "deaths_f": 2.2,
+     "deaths_o": 0.0,
+     "farm_f": 35.614249999999984,
+     "farm_o": 66.74512499999994,
+     "forward_f": 67.4,
+     "forward_o": 0.0,
+     "ganks_f": 16.4,
+     "ganks_o": 3.5,
+     "lead_focal": 162.2,
+     "plates_f": 2.4,
+     "plates_o": 0.0,
+     "purchases_f": 1.0,
+     "purchases_o": 0.4,
+     "recalls_f": 4.4,
+     "recalls_o": 0.4,
+     "trade_dealt_f": 0.0,
+     "trade_dealt_o": 0.0,
+     "trades_f": 0.0,
+     "trades_o": 0.0,
+     "unequal": 162.2
+    },
+    "recall_now": {
+     "deaths_f": 1.3,
+     "deaths_o": 0.0,
+     "farm_f": 34.970749999999974,
+     "farm_o": 66.76987499999993,
+     "forward_f": 63.7,
+     "forward_o": 0.0,
+     "ganks_f": 15.6,
+     "ganks_o": 3.1,
+     "lead_focal": 182.1,
+     "plates_f": 2.1,
+     "plates_o": 0.0,
+     "purchases_f": 1.0,
+     "purchases_o": 0.3,
+     "recalls_f": 5.3,
+     "recalls_o": 0.3,
+     "trade_dealt_f": 0.0,
+     "trade_dealt_o": 0.0,
+     "trades_f": 0.0,
+     "trades_o": 0.0,
+     "unequal": 182.1
+    },
+    "shove_then_recall": {
+     "deaths_f": 1.3,
+     "deaths_o": 0.0,
+     "farm_f": 34.970749999999974,
+     "farm_o": 66.76987499999993,
+     "forward_f": 63.7,
+     "forward_o": 0.0,
+     "ganks_f": 15.6,
+     "ganks_o": 3.1,
+     "lead_focal": 182.1,
+     "plates_f": 2.1,
+     "plates_o": 0.0,
+     "purchases_f": 1.0,
+     "purchases_o": 0.3,
+     "recalls_f": 5.3,
+     "recalls_o": 0.3,
+     "trade_dealt_f": 0.0,
+     "trade_dealt_o": 0.0,
+     "trades_f": 0.0,
+     "trades_o": 0.0,
+     "unequal": 182.1
+    },
+    "shove_stay": {
+     "deaths_f": 1.5,
+     "deaths_o": 0.1,
+     "farm_f": 58.063999999999865,
+     "farm_o": 64.31849999999986,
+     "forward_f": 2.7,
+     "forward_o": 0.0,
+     "ganks_f": 13.0,
+     "ganks_o": 6.4,
+     "lead_focal": 112.5,
+     "plates_f": 0.0,
+     "plates_o": 0.0,
+     "purchases_f": 1.0,
+     "purchases_o": 0.7,
+     "recalls_f": 3.2,
+     "recalls_o": 1.1,
+     "trade_dealt_f": 0.0,
+     "trade_dealt_o": 0.0,
+     "trades_f": 0.0,
+     "trades_o": 0.0,
+     "unequal": 112.5
+    }
+   }
+  },
+  "g0.60_i1.20|pushing_N1|half|poor": {
+   "means": {
+    "farm8": -11.317792930066778,
+    "recall_now": -12.680691362685488,
+    "shove_then_recall": -12.680691362685488,
+    "shove_stay": -7.30947195399433
+   },
+   "recall_minus_farm": {
+    "diff": -1.3628984326187097,
+    "se": 1.1915046229163395,
+    "ci95": [
+     -3.698247493534735,
+     0.9724506282973158
+    ],
+    "significant": false,
+    "a": -12.680691362685488,
+    "b": -11.317792930066778
+   },
+   "shove_recall_minus_recall": {
+    "diff": 0.0,
+    "se": 0.0,
+    "ci95": [
+     0.0,
+     0.0
+    ],
+    "significant": false,
+    "a": -12.680691362685488,
+    "b": -12.680691362685488
+   },
+   "shove_stay_minus_farm": {
+    "diff": 4.008320976072448,
+    "se": 1.6971684640597644,
+    "ci95": [
+     0.6818707865153097,
+     7.334771165629586
+    ],
+    "significant": true,
+    "a": -7.30947195399433,
+    "b": -11.317792930066778
+   },
+   "best": "shove_stay",
+   "counters": {
+    "farm8": {
+     "deaths_f": 1.4,
+     "deaths_o": 0.0,
+     "farm_f": 41.36124999999995,
+     "farm_o": 66.16012499999991,
+     "forward_f": 51.6,
+     "forward_o": 0.0,
+     "ganks_f": 14.9,
+     "ganks_o": 4.6,
+     "lead_focal": 100.9,
+     "plates_f": 1.8,
+     "plates_o": 0.0,
+     "purchases_f": 1.0,
+     "purchases_o": 0.6,
+     "recalls_f": 5.4,
+     "recalls_o": 0.8,
+     "trade_dealt_f": 0.0,
+     "trade_dealt_o": 0.0,
+     "trades_f": 0.0,
+     "trades_o": 0.0,
+     "unequal": 103.7
+    },
+    "recall_now": {
+     "deaths_f": 1.4,
+     "deaths_o": 0.1,
+     "farm_f": 38.53499999999996,
+     "farm_o": 66.8609999999999,
+     "forward_f": 55.0,
+     "forward_o": 0.0,
+     "ganks_f": 15.2,
+     "ganks_o": 4.7,
+     "lead_focal": 110.0,
+     "plates_f": 2.2,
+     "plates_o": 0.0,
+     "purchases_f": 1.0,
+     "purchases_o": 0.5,
+     "recalls_f": 5.9,
+     "recalls_o": 0.6,
+     "trade_dealt_f": 0.0,
+     "trade_dealt_o": 0.0,
+     "trades_f": 0.0,
+     "trades_o": 0.0,
+     "unequal": 113.8
+    },
+    "shove_then_recall": {
+     "deaths_f": 1.4,
+     "deaths_o": 0.1,
+     "farm_f": 38.53499999999996,
+     "farm_o": 66.8609999999999,
+     "forward_f": 55.0,
+     "forward_o": 0.0,
+     "ganks_f": 15.2,
+     "ganks_o": 4.7,
+     "lead_focal": 110.0,
+     "plates_f": 2.2,
+     "plates_o": 0.0,
+     "purchases_f": 1.0,
+     "purchases_o": 0.5,
+     "recalls_f": 5.9,
+     "recalls_o": 0.6,
+     "trade_dealt_f": 0.0,
+     "trade_dealt_o": 0.0,
+     "trades_f": 0.0,
+     "trades_o": 0.0,
+     "unequal": 113.8
+    },
+    "shove_stay": {
+     "deaths_f": 1.2,
+     "deaths_o": 0.1,
+     "farm_f": 49.503249999999916,
+     "farm_o": 65.1318749999999,
+     "forward_f": 26.2,
+     "forward_o": 0.0,
+     "ganks_f": 13.7,
+     "ganks_o": 6.6,
+     "lead_focal": 82.7,
+     "plates_f": 0.8,
+     "plates_o": 0.0,
+     "purchases_f": 1.0,
+     "purchases_o": 0.7,
+     "recalls_f": 4.7,
+     "recalls_o": 1.4,
+     "trade_dealt_f": 0.0,
+     "trade_dealt_o": 0.0,
+     "trades_f": 0.0,
+     "trades_o": 0.0,
+     "unequal": 84.9
+    }
+   }
+  },
+  "g0.60_i1.20|even_N1|full|afford": {
+   "means": {
+    "farm8": -7.5316854105196684,
+    "recall_now": -0.4934003332340322,
+    "shove_then_recall": -1.3775925618601208,
+    "shove_stay": -3.4680164648401623
+   },
+   "recall_minus_farm": {
+    "diff": 7.038285077285636,
+    "se": 1.4118643091168699,
+    "ci95": [
+     4.271031031416571,
+     9.8055391231547
+    ],
+    "significant": true,
+    "a": -0.4934003332340322,
+    "b": -7.5316854105196684
+   },
+   "shove_recall_minus_recall": {
+    "diff": -0.8841922286260884,
+    "se": 0.254746102247224,
+    "ci95": [
+     -1.3834945890306474,
+     -0.3848898682215294
+    ],
+    "significant": true,
+    "a": -1.3775925618601208,
+    "b": -0.4934003332340322
+   },
+   "shove_stay_minus_farm": {
+    "diff": 4.063668945679505,
+    "se": 1.6277960140681533,
+    "ci95": [
+     0.8731887581059246,
+     7.254149133253086
+    ],
+    "significant": true,
+    "a": -3.4680164648401623,
+    "b": -7.5316854105196684
+   },
+   "best": "recall_now",
+   "counters": {
+    "farm8": {
+     "deaths_f": 1.4,
+     "deaths_o": 0.0,
+     "farm_f": 44.74324999999994,
+     "farm_o": 64.32524999999991,
+     "forward_f": 46.5,
+     "forward_o": 0.0,
+     "ganks_f": 12.2,
+     "ganks_o": 6.5,
+     "lead_focal": 112.1,
+     "plates_f": 1.4,
+     "plates_o": 0.0,
+     "purchases_f": 1.0,
+     "purchases_o": 1.6,
+     "recalls_f": 3.7,
+     "recalls_o": 1.7,
+     "trade_dealt_f": 0.0,
+     "trade_dealt_o": 0.0,
+     "trades_f": 0.0,
+     "trades_o": 0.0,
+     "unequal": 112.1
+    },
+    "recall_now": {
+     "deaths_f": 0.7,
+     "deaths_o": 0.9,
+     "farm_f": 60.703499999999885,
+     "farm_o": 60.92949999999987,
+     "forward_f": 0.0,
+     "forward_o": 0.0,
+     "ganks_f": 11.3,
+     "ganks_o": 14.3,
+     "lead_focal": 38.2,
+     "plates_f": 0.0,
+     "plates_o": 0.0,
+     "purchases_f": 1.0,
+     "purchases_o": 2.0,
+     "recalls_f": 4.3,
+     "recalls_o": 3.9,
+     "trade_dealt_f": 0.0,
+     "trade_dealt_o": 0.0,
+     "trades_f": 0.0,
+     "trades_o": 0.0,
+     "unequal": 38.2
+    },
+    "shove_then_recall": {
+     "deaths_f": 0.8,
+     "deaths_o": 0.2,
+     "farm_f": 59.660499999999864,
+     "farm_o": 62.70299999999986,
+     "forward_f": 2.0,
+     "forward_o": 0.0,
+     "ganks_f": 10.6,
+     "ganks_o": 8.7,
+     "lead_focal": 84.1,
+     "plates_f": 0.0,
+     "plates_o": 0.0,
+     "purchases_f": 1.0,
+     "purchases_o": 2.0,
+     "recalls_f": 3.6,
+     "recalls_o": 1.7,
+     "trade_dealt_f": 0.0,
+     "trade_dealt_o": 0.0,
+     "trades_f": 0.0,
+     "trades_o": 0.0,
+     "unequal": 84.1
+    },
+    "shove_stay": {
+     "deaths_f": 0.8,
+     "deaths_o": 0.0,
+     "farm_f": 56.41624999999988,
+     "farm_o": 63.37912499999986,
+     "forward_f": 11.2,
+     "forward_o": 0.0,
+     "ganks_f": 10.9,
+     "ganks_o": 8.2,
+     "lead_focal": 80.7,
+     "plates_f": 0.2,
+     "plates_o": 0.0,
+     "purchases_f": 1.0,
+     "purchases_o": 1.8,
+     "recalls_f": 3.8,
+     "recalls_o": 1.7,
+     "trade_dealt_f": 0.0,
+     "trade_dealt_o": 0.0,
+     "trades_f": 0.0,
+     "trades_o": 0.0,
+     "unequal": 80.7
+    }
+   }
+  },
+  "g0.60_i1.20|even_N1|full|poor": {
+   "means": {
+    "farm8": -2.6838390929985594,
+    "recall_now": -3.669980037541169,
+    "shove_then_recall": -6.945300037730455,
+    "shove_stay": -4.256566491959876
+   },
+   "recall_minus_farm": {
+    "diff": -0.9861409445426101,
+    "se": 0.9456949661332628,
+    "ci95": [
+     -2.8397030781638053,
+     0.8674211890785848
+    ],
+    "significant": false,
+    "a": -3.669980037541169,
+    "b": -2.6838390929985594
+   },
+   "shove_recall_minus_recall": {
+    "diff": -3.275320000189285,
+    "se": 1.7578719140316421,
+    "ci95": [
+     -6.720748951691304,
+     0.17010895131273385
+    ],
+    "significant": false,
+    "a": -6.945300037730455,
+    "b": -3.669980037541169
+   },
+   "shove_stay_minus_farm": {
+    "diff": -1.5727273989613166,
+    "se": 1.7107386380478933,
+    "ci95": [
+     -4.925775129535188,
+     1.7803203316125542
+    ],
+    "significant": false,
+    "a": -4.256566491959876,
+    "b": -2.6838390929985594
+   },
+   "best": "farm8",
+   "counters": {
+    "farm8": {
+     "deaths_f": 0.9,
+     "deaths_o": 0.2,
+     "farm_f": 55.9712499999999,
+     "farm_o": 62.72912499999988,
+     "forward_f": 13.0,
+     "forward_o": 0.0,
+     "ganks_f": 13.7,
+     "ganks_o": 9.0,
+     "lead_focal": 59.8,
+     "plates_f": 0.4,
+     "plates_o": 0.0,
+     "purchases_f": 1.0,
+     "purchases_o": 2.0,
+     "recalls_f": 4.2,
+     "recalls_o": 2.4,
+     "trade_dealt_f": 0.0,
+     "trade_dealt_o": 0.0,
+     "trades_f": 0.0,
+     "trades_o": 0.0,
+     "unequal": 60.4
+    },
+    "recall_now": {
+     "deaths_f": 0.8,
+     "deaths_o": 0.3,
+     "farm_f": 55.32574999999989,
+     "farm_o": 62.91412499999988,
+     "forward_f": 13.0,
+     "forward_o": 0.0,
+     "ganks_f": 12.9,
+     "ganks_o": 9.6,
+     "lead_focal": 78.4,
+     "plates_f": 0.4,
+     "plates_o": 0.0,
+     "purchases_f": 1.0,
+     "purchases_o": 1.8,
+     "recalls_f": 4.9,
+     "recalls_o": 2.4,
+     "trade_dealt_f": 0.0,
+     "trade_dealt_o": 0.0,
+     "trades_f": 0.0,
+     "trades_o": 0.0,
+     "unequal": 80.1
+    },
+    "shove_then_recall": {
+     "deaths_f": 1.2,
+     "deaths_o": 0.2,
+     "farm_f": 46.69974999999993,
+     "farm_o": 64.2453749999999,
+     "forward_f": 37.0,
+     "forward_o": 0.0,
+     "ganks_f": 14.8,
+     "ganks_o": 6.9,
+     "lead_focal": 122.4,
+     "plates_f": 1.2,
+     "plates_o": 0.0,
+     "purchases_f": 1.0,
+     "purchases_o": 1.5,
+     "recalls_f": 5.6,
+     "recalls_o": 1.4,
+     "trade_dealt_f": 0.0,
+     "trade_dealt_o": 0.0,
+     "trades_f": 0.0,
+     "trades_o": 0.0,
+     "unequal": 122.4
+    },
+    "shove_stay": {
+     "deaths_f": 0.9,
+     "deaths_o": 0.3,
+     "farm_f": 54.38199999999989,
+     "farm_o": 63.470249999999865,
+     "forward_f": 15.0,
+     "forward_o": 0.0,
+     "ganks_f": 13.9,
+     "ganks_o": 8.4,
+     "lead_focal": 101.8,
+     "plates_f": 0.4,
+     "plates_o": 0.0,
+     "purchases_f": 1.0,
+     "purchases_o": 1.8,
+     "recalls_f": 4.7,
+     "recalls_o": 1.5,
+     "trade_dealt_f": 0.0,
+     "trade_dealt_o": 0.0,
+     "trades_f": 0.0,
+     "trades_o": 0.0,
+     "unequal": 101.8
+    }
+   }
+  },
+  "g0.60_i1.20|even_N1|half|afford": {
+   "means": {
+    "farm8": -0.6448812355723254,
+    "recall_now": -1.0191664765525255,
+    "shove_then_recall": -1.3937600336255067,
+    "shove_stay": -2.232433341538709
+   },
+   "recall_minus_farm": {
+    "diff": -0.37428524098020016,
+    "se": 0.13528435281541537,
+    "ci95": [
+     -0.6394425724984143,
+     -0.10912790946198603
+    ],
+    "significant": true,
+    "a": -1.0191664765525255,
+    "b": -0.6448812355723254
+   },
+   "shove_recall_minus_recall": {
+    "diff": -0.37459355707298103,
+    "se": 0.2462331755177341,
+    "ci95": [
+     -0.8572105810877398,
+     0.10802346694177778
+    ],
+    "significant": false,
+    "a": -1.3937600336255067,
+    "b": -1.0191664765525255
+   },
+   "shove_stay_minus_farm": {
+    "diff": -1.5875521059663835,
+    "se": 0.2963414287546751,
+    "ci95": [
+     -2.168381306325547,
+     -1.0067229056072202
+    ],
+    "significant": true,
+    "a": -2.232433341538709,
+    "b": -0.6448812355723254
+   },
+   "best": "farm8",
+   "counters": {
+    "farm8": {
+     "deaths_f": 1.1,
+     "deaths_o": 0.8,
+     "farm_f": 60.38799999999988,
+     "farm_o": 61.15599999999988,
+     "forward_f": 0.0,
+     "forward_o": 0.0,
+     "ganks_f": 13.8,
+     "ganks_o": 13.7,
+     "lead_focal": 35.1,
+     "plates_f": 0.0,
+     "plates_o": 0.0,
+     "purchases_f": 1.0,
+     "purchases_o": 2.0,
+     "recalls_f": 4.0,
+     "recalls_o": 3.7,
+     "trade_dealt_f": 0.0,
+     "trade_dealt_o": 0.0,
+     "trades_f": 0.0,
+     "trades_o": 0.0,
+     "unequal": 35.1
+    },
+    "recall_now": {
+     "deaths_f": 0.7,
+     "deaths_o": 0.8,
+     "farm_f": 60.10699999999988,
+     "farm_o": 61.39299999999987,
+     "forward_f": 0.0,
+     "forward_o": 0.0,
+     "ganks_f": 13.7,
+     "ganks_o": 13.7,
+     "lead_focal": 35.6,
+     "plates_f": 0.0,
+     "plates_o": 0.0,
+     "purchases_f": 1.0,
+     "purchases_o": 2.0,
+     "recalls_f": 4.9,
+     "recalls_o": 3.7,
+     "trade_dealt_f": 0.0,
+     "trade_dealt_o": 0.0,
+     "trades_f": 0.0,
+     "trades_o": 0.0,
+     "unequal": 35.6
+    },
+    "shove_then_recall": {
+     "deaths_f": 0.5,
+     "deaths_o": 0.2,
+     "farm_f": 59.102499999999864,
+     "farm_o": 62.954999999999856,
+     "forward_f": 1.9,
+     "forward_o": 0.0,
+     "ganks_f": 12.7,
+     "ganks_o": 8.6,
+     "lead_focal": 60.8,
+     "plates_f": 0.0,
+     "plates_o": 0.0,
+     "purchases_f": 1.0,
+     "purchases_o": 1.8,
+     "recalls_f": 4.5,
+     "recalls_o": 1.6,
+     "trade_dealt_f": 0.0,
+     "trade_dealt_o": 0.0,
+     "trades_f": 0.0,
+     "trades_o": 0.0,
+     "unequal": 60.8
+    },
+    "shove_stay": {
+     "deaths_f": 0.8,
+     "deaths_o": 0.2,
+     "farm_f": 58.47249999999987,
+     "farm_o": 63.18449999999986,
+     "forward_f": 3.7,
+     "forward_o": 0.0,
+     "ganks_f": 13.0,
+     "ganks_o": 8.6,
+     "lead_focal": 60.5,
+     "plates_f": 0.0,
+     "plates_o": 0.0,
+     "purchases_f": 1.0,
+     "purchases_o": 1.8,
+     "recalls_f": 4.1,
+     "recalls_o": 1.6,
+     "trade_dealt_f": 0.0,
+     "trade_dealt_o": 0.0,
+     "trades_f": 0.0,
+     "trades_o": 0.0,
+     "unequal": 60.5
+    }
+   }
+  },
+  "g0.60_i1.20|even_N1|half|poor": {
+   "means": {
+    "farm8": -2.4128559205968187,
+    "recall_now": -2.708100921661719,
+    "shove_then_recall": -8.028980942424557,
+    "shove_stay": -3.7772016776439408
+   },
+   "recall_minus_farm": {
+    "diff": -0.29524500106490076,
+    "se": 1.5416004361368805,
+    "ci95": [
+     -3.3167818558931863,
+     2.726291853763385
+    ],
+    "significant": false,
+    "a": -2.708100921661719,
+    "b": -2.4128559205968187
+   },
+   "shove_recall_minus_recall": {
+    "diff": -5.3208800207628375,
+    "se": 1.1742599333314803,
+    "ci95": [
+     -7.622429490092539,
+     -3.019330551433136
+    ],
+    "significant": true,
+    "a": -8.028980942424557,
+    "b": -2.708100921661719
+   },
+   "shove_stay_minus_farm": {
+    "diff": -1.364345757047123,
+    "se": 1.459900613705846,
+    "ci95": [
+     -4.225750959910581,
+     1.497059445816335
+    ],
+    "significant": false,
+    "a": -3.7772016776439408,
+    "b": -2.4128559205968187
+   },
+   "best": "farm8",
+   "counters": {
+    "farm8": {
+     "deaths_f": 1.0,
+     "deaths_o": 1.0,
+     "farm_f": 55.83399999999989,
+     "farm_o": 62.16787499999989,
+     "forward_f": 13.3,
+     "forward_o": 0.0,
+     "ganks_f": 13.5,
+     "ganks_o": 10.6,
+     "lead_focal": 54.3,
+     "plates_f": 0.4,
+     "plates_o": 0.0,
+     "purchases_f": 1.0,
+     "purchases_o": 1.9,
+     "recalls_f": 4.3,
+     "recalls_o": 2.3,
+     "trade_dealt_f": 0.0,
+     "trade_dealt_o": 0.0,
+     "trades_f": 0.0,
+     "trades_o": 0.0,
+     "unequal": 61.3
+    },
+    "recall_now": {
+     "deaths_f": 0.9,
+     "deaths_o": 0.3,
+     "farm_f": 56.77199999999988,
+     "farm_o": 62.78024999999989,
+     "forward_f": 8.4,
+     "forward_o": 0.0,
+     "ganks_f": 13.8,
+     "ganks_o": 9.2,
+     "lead_focal": 65.1,
+     "plates_f": 0.2,
+     "plates_o": 0.0,
+     "purchases_f": 1.0,
+     "purchases_o": 1.9,
+     "recalls_f": 4.9,
+     "recalls_o": 2.3,
+     "trade_dealt_f": 0.0,
+     "trade_dealt_o": 0.0,
+     "trades_f": 0.0,
+     "trades_o": 0.0,
+     "unequal": 71.9
+    },
+    "shove_then_recall": {
+     "deaths_f": 0.9,
+     "deaths_o": 0.2,
+     "farm_f": 42.63574999999995,
+     "farm_o": 64.93949999999992,
+     "forward_f": 49.3,
+     "forward_o": 0.0,
+     "ganks_f": 15.6,
+     "ganks_o": 6.5,
+     "lead_focal": 82.5,
+     "plates_f": 1.7,
+     "plates_o": 0.0,
+     "purchases_f": 1.0,
+     "purchases_o": 1.6,
+     "recalls_f": 6.2,
+     "recalls_o": 1.4,
+     "trade_dealt_f": 0.0,
+     "trade_dealt_o": 0.0,
+     "trades_f": 0.0,
+     "trades_o": 0.0,
+     "unequal": 87.9
+    },
+    "shove_stay": {
+     "deaths_f": 1.2,
+     "deaths_o": 0.2,
+     "farm_f": 55.79324999999989,
+     "farm_o": 63.146249999999874,
+     "forward_f": 11.3,
+     "forward_o": 0.0,
+     "ganks_f": 12.9,
+     "ganks_o": 8.6,
+     "lead_focal": 82.1,
+     "plates_f": 0.2,
+     "plates_o": 0.0,
+     "purchases_f": 1.0,
+     "purchases_o": 1.8,
+     "recalls_f": 3.8,
+     "recalls_o": 1.9,
+     "trade_dealt_f": 0.0,
+     "trade_dealt_o": 0.0,
+     "trades_f": 0.0,
+     "trades_o": 0.0,
+     "unequal": 85.8
+    }
+   }
+  },
+  "g0.60_i1.20|threat_N0|full|afford": {
+   "means": {
+    "farm8": -4.113019705774745,
+    "recall_now": -0.05772205551592975,
+    "shove_then_recall": -5.1524555549992215,
+    "shove_stay": -2.1097427388542354
+   },
+   "recall_minus_farm": {
+    "diff": 4.055297650258815,
+    "se": 1.9301546691474936,
+    "ci95": [
+     0.272194498729728,
+     7.838400801787902
+    ],
+    "significant": true,
+    "a": -0.05772205551592975,
+    "b": -4.113019705774745
+   },
+   "shove_recall_minus_recall": {
+    "diff": -5.094733499483292,
+    "se": 1.224914523581108,
+    "ci95": [
+     -7.495565965702264,
+     -2.69390103326432
+    ],
+    "significant": true,
+    "a": -5.1524555549992215,
+    "b": -0.05772205551592975
+   },
+   "shove_stay_minus_farm": {
+    "diff": 2.003276966920509,
+    "se": 1.3613745570989872,
+    "ci95": [
+     -0.6650171649935057,
+     4.671571098834524
+    ],
+    "significant": false,
+    "a": -2.1097427388542354,
+    "b": -4.113019705774745
+   },
+   "best": "recall_now",
+   "counters": {
+    "farm8": {
+     "deaths_f": 0.7,
+     "deaths_o": 0.5,
+     "farm_f": 49.66149999999992,
+     "farm_o": 62.426249999999904,
+     "forward_f": 32.7,
+     "forward_o": 1.0,
+     "ganks_f": 12.6,
+     "ganks_o": 6.4,
+     "lead_focal": 114.3,
+     "plates_f": 1.0,
+     "plates_o": 0.0,
+     "purchases_f": 2.0,
+     "purchases_o": 1.3,
+     "recalls_f": 4.7,
+     "recalls_o": 1.3,
+     "trade_dealt_f": 0.0,
+     "trade_dealt_o": 0.0,
+     "trades_f": 0.0,
+     "trades_o": 0.0,
+     "unequal": 117.1
+    },
+    "recall_now": {
+     "deaths_f": 0.4,
+     "deaths_o": 0.9,
+     "farm_f": 58.74774999999987,
+     "farm_o": 60.62512499999987,
+     "forward_f": 7.6,
+     "forward_o": 1.0,
+     "ganks_f": 10.0,
+     "ganks_o": 9.5,
+     "lead_focal": 75.0,
+     "plates_f": 0.2,
+     "plates_o": 0.0,
+     "purchases_f": 2.0,
+     "purchases_o": 2.0,
+     "recalls_f": 4.0,
+     "recalls_o": 2.2,
+     "trade_dealt_f": 0.0,
+     "trade_dealt_o": 0.0,
+     "trades_f": 0.0,
+     "trades_o": 0.0,
+     "unequal": 80.4
+    },
+    "shove_then_recall": {
+     "deaths_f": 0.5,
+     "deaths_o": 0.3,
+     "farm_f": 49.82824999999991,
+     "farm_o": 63.44999999999989,
+     "forward_f": 25.3,
+     "forward_o": 1.0,
+     "ganks_f": 13.2,
+     "ganks_o": 6.1,
+     "lead_focal": 109.7,
+     "plates_f": 0.8,
+     "plates_o": 0.0,
+     "purchases_f": 2.0,
+     "purchases_o": 1.8,
+     "recalls_f": 5.7,
+     "recalls_o": 1.3,
+     "trade_dealt_f": 0.0,
+     "trade_dealt_o": 0.0,
+     "trades_f": 0.0,
+     "trades_o": 0.0,
+     "unequal": 109.7
+    },
+    "shove_stay": {
+     "deaths_f": 0.4,
+     "deaths_o": 0.3,
+     "farm_f": 56.66574999999989,
+     "farm_o": 62.19224999999985,
+     "forward_f": 10.6,
+     "forward_o": 1.0,
+     "ganks_f": 11.9,
+     "ganks_o": 6.9,
+     "lead_focal": 86.3,
+     "plates_f": 0.2,
+     "plates_o": 0.0,
+     "purchases_f": 2.0,
+     "purchases_o": 2.0,
+     "recalls_f": 4.6,
+     "recalls_o": 1.8,
+     "trade_dealt_f": 0.0,
+     "trade_dealt_o": 0.0,
+     "trades_f": 0.0,
+     "trades_o": 0.0,
+     "unequal": 87.7
+    }
+   }
+  },
+  "g0.60_i1.20|threat_N0|full|poor": {
+   "means": {
+    "farm8": -4.418156303953928,
+    "recall_now": -2.301411952172798,
+    "shove_then_recall": -7.4877736735023435,
+    "shove_stay": -6.117756588096088
+   },
+   "recall_minus_farm": {
+    "diff": 2.116744351781131,
+    "se": 1.4904646149572596,
+    "ci95": [
+     -0.8045662935350975,
+     5.03805499709736
+    ],
+    "significant": false,
+    "a": -2.301411952172798,
+    "b": -4.418156303953928
+   },
+   "shove_recall_minus_recall": {
+    "diff": -5.186361721329545,
+    "se": 1.0477750307310023,
+    "ci95": [
+     -7.24000078156231,
+     -3.1327226610967807
+    ],
+    "significant": true,
+    "a": -7.4877736735023435,
+    "b": -2.301411952172798
+   },
+   "shove_stay_minus_farm": {
+    "diff": -1.699600284142159,
+    "se": 1.8093511064020757,
+    "ci95": [
+     -5.245928452690228,
+     1.8467278844059094
+    ],
+    "significant": false,
+    "a": -6.117756588096088,
+    "b": -4.418156303953928
+   },
+   "best": "recall_now",
+   "counters": {
+    "farm8": {
+     "deaths_f": 1.1,
+     "deaths_o": 0.5,
+     "farm_f": 48.310499999999934,
+     "farm_o": 63.1012499999999,
+     "forward_f": 37.8,
+     "forward_o": 1.0,
+     "ganks_f": 12.4,
+     "ganks_o": 5.4,
+     "lead_focal": 93.1,
+     "plates_f": 1.2,
+     "plates_o": 0.0,
+     "purchases_f": 2.0,
+     "purchases_o": 1.6,
+     "recalls_f": 4.1,
+     "recalls_o": 1.2,
+     "trade_dealt_f": 0.0,
+     "trade_dealt_o": 0.0,
+     "trades_f": 0.0,
+     "trades_o": 0.0,
+     "unequal": 96.2
+    },
+    "recall_now": {
+     "deaths_f": 0.6,
+     "deaths_o": 0.6,
+     "farm_f": 54.87674999999989,
+     "farm_o": 62.19899999999988,
+     "forward_f": 17.5,
+     "forward_o": 1.0,
+     "ganks_f": 11.7,
+     "ganks_o": 6.0,
+     "lead_focal": 69.8,
+     "plates_f": 0.4,
+     "plates_o": 0.0,
+     "purchases_f": 2.0,
+     "purchases_o": 2.0,
+     "recalls_f": 5.4,
+     "recalls_o": 1.5,
+     "trade_dealt_f": 0.0,
+     "trade_dealt_o": 0.0,
+     "trades_f": 0.0,
+     "trades_o": 0.0,
+     "unequal": 73.1
+    },
+    "shove_then_recall": {
+     "deaths_f": 0.6,
+     "deaths_o": 0.3,
+     "farm_f": 44.182249999999954,
+     "farm_o": 64.2498749999999,
+     "forward_f": 45.2,
+     "forward_o": 1.0,
+     "ganks_f": 12.5,
+     "ganks_o": 4.6,
+     "lead_focal": 108.7,
+     "plates_f": 1.4,
+     "plates_o": 0.0,
+     "purchases_f": 2.0,
+     "purchases_o": 1.4,
+     "recalls_f": 5.9,
+     "recalls_o": 1.0,
+     "trade_dealt_f": 0.0,
+     "trade_dealt_o": 0.0,
+     "trades_f": 0.0,
+     "trades_o": 0.0,
+     "unequal": 110.4
+    },
+    "shove_stay": {
+     "deaths_f": 1.0,
+     "deaths_o": 0.5,
+     "farm_f": 45.53699999999994,
+     "farm_o": 63.80324999999991,
+     "forward_f": 42.7,
+     "forward_o": 1.0,
+     "ganks_f": 12.9,
+     "ganks_o": 4.7,
+     "lead_focal": 110.4,
+     "plates_f": 1.4,
+     "plates_o": 0.0,
+     "purchases_f": 2.0,
+     "purchases_o": 1.2,
+     "recalls_f": 4.8,
+     "recalls_o": 0.8,
+     "trade_dealt_f": 0.0,
+     "trade_dealt_o": 0.0,
+     "trades_f": 0.0,
+     "trades_o": 0.0,
+     "unequal": 111.7
+    }
+   }
+  },
+  "g0.60_i1.20|threat_N0|half|afford": {
+   "means": {
+    "farm8": -0.5609629746744732,
+    "recall_now": -1.4230749163189846,
+    "shove_then_recall": -3.4532296723538023,
+    "shove_stay": -4.009334529844622
+   },
+   "recall_minus_farm": {
+    "diff": -0.8621119416445117,
+    "se": 1.4264593674525459,
+    "ci95": [
+     -3.6579723018515016,
+     1.933748418562478
+    ],
+    "significant": false,
+    "a": -1.4230749163189846,
+    "b": -0.5609629746744732
+   },
+   "shove_recall_minus_recall": {
+    "diff": -2.0301547560348174,
+    "se": 1.2395569564919664,
+    "ci95": [
+     -4.459686390759071,
+     0.3993768786894365
+    ],
+    "significant": false,
+    "a": -3.4532296723538023,
+    "b": -1.4230749163189846
+   },
+   "shove_stay_minus_farm": {
+    "diff": -3.4483715551701493,
+    "se": 1.838642732327456,
+    "ci95": [
+     -7.052111310531963,
+     0.1553682001916643
+    ],
+    "significant": false,
+    "a": -4.009334529844622,
+    "b": -0.5609629746744732
+   },
+   "best": "farm8",
+   "counters": {
+    "farm8": {
+     "deaths_f": 0.7,
+     "deaths_o": 1.2,
+     "farm_f": 57.2824999999999,
+     "farm_o": 60.49799999999988,
+     "forward_f": 12.1,
+     "forward_o": 1.0,
+     "ganks_f": 10.9,
+     "ganks_o": 10.4,
+     "lead_focal": 72.8,
+     "plates_f": 0.4,
+     "plates_o": 0.0,
+     "purchases_f": 2.0,
+     "purchases_o": 1.8,
+     "recalls_f": 3.4,
+     "recalls_o": 2.3,
+     "trade_dealt_f": 0.0,
+     "trade_dealt_o": 0.0,
+     "trades_f": 0.0,
+     "trades_o": 0.0,
+     "unequal": 73.3
+    },
+    "recall_now": {
+     "deaths_f": 1.0,
+     "deaths_o": 0.8,
+     "farm_f": 55.96924999999989,
+     "farm_o": 61.570124999999884,
+     "forward_f": 14.0,
+     "forward_o": 1.0,
+     "ganks_f": 11.9,
+     "ganks_o": 8.1,
+     "lead_focal": 99.2,
+     "plates_f": 0.4,
+     "plates_o": 0.0,
+     "purchases_f": 2.0,
+     "purchases_o": 1.8,
+     "recalls_f": 4.3,
+     "recalls_o": 1.7,
+     "trade_dealt_f": 0.0,
+     "trade_dealt_o": 0.0,
+     "trades_f": 0.0,
+     "trades_o": 0.0,
+     "unequal": 99.2
+    },
+    "shove_then_recall": {
+     "deaths_f": 1.2,
+     "deaths_o": 0.6,
+     "farm_f": 54.4964999999999,
+     "farm_o": 62.734499999999876,
+     "forward_f": 13.0,
+     "forward_o": 1.0,
+     "ganks_f": 12.4,
+     "ganks_o": 7.5,
+     "lead_focal": 91.4,
+     "plates_f": 0.4,
+     "plates_o": 0.0,
+     "purchases_f": 2.0,
+     "purchases_o": 1.8,
+     "recalls_f": 4.4,
+     "recalls_o": 1.5,
+     "trade_dealt_f": 0.0,
+     "trade_dealt_o": 0.0,
+     "trades_f": 0.0,
+     "trades_o": 0.0,
+     "unequal": 91.4
+    },
+    "shove_stay": {
+     "deaths_f": 1.4,
+     "deaths_o": 0.5,
+     "farm_f": 52.80199999999991,
+     "farm_o": 62.98087499999989,
+     "forward_f": 18.7,
+     "forward_o": 1.0,
+     "ganks_f": 12.7,
+     "ganks_o": 7.2,
+     "lead_focal": 110.3,
+     "plates_f": 0.6,
+     "plates_o": 0.0,
+     "purchases_f": 2.0,
+     "purchases_o": 1.4,
+     "recalls_f": 4.1,
+     "recalls_o": 1.5,
+     "trade_dealt_f": 0.0,
+     "trade_dealt_o": 0.0,
+     "trades_f": 0.0,
+     "trades_o": 0.0,
+     "unequal": 110.3
+    }
+   }
+  },
+  "g0.60_i1.20|threat_N0|half|poor": {
+   "means": {
+    "farm8": -2.1344115619389004,
+    "recall_now": -2.305668323789541,
+    "shove_then_recall": -5.0513181326076975,
+    "shove_stay": -4.48590802204825
+   },
+   "recall_minus_farm": {
+    "diff": -0.17125676185064048,
+    "se": 1.3884531540360785,
+    "ci95": [
+     -2.892624943761354,
+     2.550111420060073
+    ],
+    "significant": false,
+    "a": -2.305668323789541,
+    "b": -2.1344115619389004
+   },
+   "shove_recall_minus_recall": {
+    "diff": -2.7456498088181576,
+    "se": 1.058574547241945,
+    "ci95": [
+     -4.8204559214123694,
+     -0.6708436962239452
+    ],
+    "significant": true,
+    "a": -5.0513181326076975,
+    "b": -2.305668323789541
+   },
+   "shove_stay_minus_farm": {
+    "diff": -2.3514964601093498,
+    "se": 1.2257342818572314,
+    "ci95": [
+     -4.753935652549524,
+     0.050942732330824025
+    ],
+    "significant": false,
+    "a": -4.48590802204825,
+    "b": -2.1344115619389004
+   },
+   "best": "farm8",
+   "counters": {
+    "farm8": {
+     "deaths_f": 0.8,
+     "deaths_o": 0.8,
+     "farm_f": 52.973249999999915,
+     "farm_o": 61.6859999999999,
+     "forward_f": 22.8,
+     "forward_o": 1.0,
+     "ganks_f": 12.0,
+     "ganks_o": 8.5,
+     "lead_focal": 72.3,
+     "plates_f": 0.8,
+     "plates_o": 0.0,
+     "purchases_f": 2.0,
+     "purchases_o": 1.6,
+     "recalls_f": 4.5,
+     "recalls_o": 1.9,
+     "trade_dealt_f": 0.0,
+     "trade_dealt_o": 0.0,
+     "trades_f": 0.0,
+     "trades_o": 0.0,
+     "unequal": 80.8
+    },
+    "recall_now": {
+     "deaths_f": 1.1,
+     "deaths_o": 0.7,
+     "farm_f": 54.598249999999894,
+     "farm_o": 62.49712499999989,
+     "forward_f": 14.5,
+     "forward_o": 1.0,
+     "ganks_f": 12.9,
+     "ganks_o": 8.0,
+     "lead_focal": 88.0,
+     "plates_f": 0.4,
+     "plates_o": 0.0,
+     "purchases_f": 2.0,
+     "purchases_o": 1.8,
+     "recalls_f": 5.3,
+     "recalls_o": 1.6,
+     "trade_dealt_f": 0.0,
+     "trade_dealt_o": 0.0,
+     "trades_f": 0.0,
+     "trades_o": 0.0,
+     "unequal": 105.7
+    },
+    "shove_then_recall": {
+     "deaths_f": 1.3,
+     "deaths_o": 0.3,
+     "farm_f": 50.30474999999992,
+     "farm_o": 63.503999999999884,
+     "forward_f": 25.0,
+     "forward_o": 1.0,
+     "ganks_f": 14.4,
+     "ganks_o": 6.4,
+     "lead_focal": 110.6,
+     "plates_f": 0.8,
+     "plates_o": 0.0,
+     "purchases_f": 2.0,
+     "purchases_o": 1.9,
+     "recalls_f": 5.7,
+     "recalls_o": 1.5,
+     "trade_dealt_f": 0.0,
+     "trade_dealt_o": 0.0,
+     "trades_f": 0.0,
+     "trades_o": 0.0,
+     "unequal": 114.9
+    },
+    "shove_stay": {
+     "deaths_f": 1.8,
+     "deaths_o": 0.3,
+     "farm_f": 50.78174999999991,
+     "farm_o": 63.64574999999989,
+     "forward_f": 23.2,
+     "forward_o": 1.0,
+     "ganks_f": 14.3,
+     "ganks_o": 6.0,
+     "lead_focal": 106.9,
+     "plates_f": 0.8,
+     "plates_o": 0.0,
+     "purchases_f": 2.0,
+     "purchases_o": 1.9,
+     "recalls_f": 4.5,
+     "recalls_o": 1.3,
+     "trade_dealt_f": 0.0,
+     "trade_dealt_o": 0.0,
+     "trades_f": 0.0,
+     "trades_o": 0.0,
+     "unequal": 110.4
+    }
+   }
+  },
+  "g0.40_i1.35|even_N0|full|afford": {
+   "means": {
+    "farm8": -8.200468163506496,
+    "recall_now": -1.5293895962785187,
+    "shove_then_recall": -5.071769751658385,
+    "shove_stay": -7.980132218197854
+   },
+   "recall_minus_farm": {
+    "diff": 6.671078567227978,
+    "se": 1.0634827921204864,
+    "ci95": [
+     4.586652294671825,
+     8.75550483978413
+    ],
+    "significant": true,
+    "a": -1.5293895962785187,
+    "b": -8.200468163506496
+   },
+   "shove_recall_minus_recall": {
+    "diff": -3.542380155379866,
+    "se": 1.2326712993816855,
+    "ci95": [
+     -5.958415902167969,
+     -1.1263444085917622
+    ],
+    "significant": true,
+    "a": -5.071769751658385,
+    "b": -1.5293895962785187
+   },
+   "shove_stay_minus_farm": {
+    "diff": 0.22033594530864456,
+    "se": 1.739085435565362,
+    "ci95": [
+     -3.1882715083994646,
+     3.628943399016754
+    ],
+    "significant": false,
+    "a": -7.980132218197854,
+    "b": -8.200468163506496
+   },
+   "best": "recall_now",
+   "counters": {
+    "farm8": {
+     "deaths_f": 0.7,
+     "deaths_o": 0.0,
+     "farm_f": 40.959749999999964,
+     "farm_o": 64.34412499999993,
+     "forward_f": 58.3,
+     "forward_o": 0.0,
+     "ganks_f": 16.3,
+     "ganks_o": 7.0,
+     "lead_focal": 90.9,
+     "plates_f": 1.8,
+     "plates_o": 0.0,
+     "purchases_f": 2.0,
+     "purchases_o": 1.7,
+     "recalls_f": 5.2,
+     "recalls_o": 1.7,
+     "trade_dealt_f": 0.0,
+     "trade_dealt_o": 0.0,
+     "trades_f": 0.0,
+     "trades_o": 0.0,
+     "unequal": 94.1
+    },
+    "recall_now": {
+     "deaths_f": 0.3,
+     "deaths_o": 0.5,
+     "farm_f": 57.922249999999885,
+     "farm_o": 61.96649999999988,
+     "forward_f": 7.0,
+     "forward_o": 0.0,
+     "ganks_f": 15.0,
+     "ganks_o": 12.2,
+     "lead_focal": 45.5,
+     "plates_f": 0.2,
+     "plates_o": 0.0,
+     "purchases_f": 2.0,
+     "purchases_o": 2.0,
+     "recalls_f": 5.0,
+     "recalls_o": 3.1,
+     "trade_dealt_f": 0.0,
+     "trade_dealt_o": 0.0,
+     "trades_f": 0.0,
+     "trades_o": 0.0,
+     "unequal": 47.4
+    },
+    "shove_then_recall": {
+     "deaths_f": 0.5,
+     "deaths_o": 0.1,
+     "farm_f": 49.06299999999992,
+     "farm_o": 63.45224999999989,
+     "forward_f": 32.7,
+     "forward_o": 0.0,
+     "ganks_f": 15.3,
+     "ganks_o": 8.0,
+     "lead_focal": 91.6,
+     "plates_f": 1.0,
+     "plates_o": 0.0,
+     "purchases_f": 2.0,
+     "purchases_o": 1.8,
+     "recalls_f": 5.0,
+     "recalls_o": 1.8,
+     "trade_dealt_f": 0.0,
+     "trade_dealt_o": 0.0,
+     "trades_f": 0.0,
+     "trades_o": 0.0,
+     "unequal": 93.7
+    },
+    "shove_stay": {
+     "deaths_f": 0.3,
+     "deaths_o": 0.2,
+     "farm_f": 43.85524999999994,
+     "farm_o": 64.60649999999993,
+     "forward_f": 49.9,
+     "forward_o": 0.0,
+     "ganks_f": 16.1,
+     "ganks_o": 6.3,
+     "lead_focal": 94.9,
+     "plates_f": 1.6,
+     "plates_o": 0.0,
+     "purchases_f": 2.0,
+     "purchases_o": 1.6,
+     "recalls_f": 5.9,
+     "recalls_o": 1.0,
+     "trade_dealt_f": 0.0,
+     "trade_dealt_o": 0.0,
+     "trades_f": 0.0,
+     "trades_o": 0.0,
+     "unequal": 96.0
+    }
+   }
+  },
+  "g0.40_i1.35|even_N0|full|poor": {
+   "means": {
+    "farm8": -2.9905653422174767,
+    "recall_now": -5.435963668130421,
+    "shove_then_recall": -5.1279027003935855,
+    "shove_stay": -3.6635879152416164
+   },
+   "recall_minus_farm": {
+    "diff": -2.445398325912945,
+    "se": 1.1232166938203034,
+    "ci95": [
+     -4.646903045800739,
+     -0.24389360602515042
+    ],
+    "significant": true,
+    "a": -5.435963668130421,
+    "b": -2.9905653422174767
+   },
+   "shove_recall_minus_recall": {
+    "diff": 0.3080609677368355,
+    "se": 1.1305495370010812,
+    "ci95": [
+     -1.9078161247852836,
+     2.5239380602589545
+    ],
+    "significant": false,
+    "a": -5.1279027003935855,
+    "b": -5.435963668130421
+   },
+   "shove_stay_minus_farm": {
+    "diff": -0.6730225730241404,
+    "se": 1.3192697288031967,
+    "ci95": [
+     -3.2587912414784057,
+     1.9127460954301252
+    ],
+    "significant": false,
+    "a": -3.6635879152416164,
+    "b": -2.9905653422174767
+   },
+   "best": "farm8",
+   "counters": {
+    "farm8": {
+     "deaths_f": 0.5,
+     "deaths_o": 0.2,
+     "farm_f": 56.314499999999896,
+     "farm_o": 63.003999999999884,
+     "forward_f": 12.9,
+     "forward_o": 0.0,
+     "ganks_f": 14.1,
+     "ganks_o": 8.8,
+     "lead_focal": 67.6,
+     "plates_f": 0.2,
+     "plates_o": 0.0,
+     "purchases_f": 2.0,
+     "purchases_o": 1.6,
+     "recalls_f": 4.5,
+     "recalls_o": 1.9,
+     "trade_dealt_f": 0.0,
+     "trade_dealt_o": 0.0,
+     "trades_f": 0.0,
+     "trades_o": 0.0,
+     "unequal": 74.2
+    },
+    "recall_now": {
+     "deaths_f": 0.7,
+     "deaths_o": 0.2,
+     "farm_f": 50.539249999999925,
+     "farm_o": 63.76324999999988,
+     "forward_f": 27.3,
+     "forward_o": 0.0,
+     "ganks_f": 14.0,
+     "ganks_o": 8.2,
+     "lead_focal": 74.3,
+     "plates_f": 0.8,
+     "plates_o": 0.0,
+     "purchases_f": 2.0,
+     "purchases_o": 1.7,
+     "recalls_f": 5.2,
+     "recalls_o": 1.8,
+     "trade_dealt_f": 0.0,
+     "trade_dealt_o": 0.0,
+     "trades_f": 0.0,
+     "trades_o": 0.0,
+     "unequal": 86.2
+    },
+    "shove_then_recall": {
+     "deaths_f": 0.9,
+     "deaths_o": 0.2,
+     "farm_f": 49.58599999999992,
+     "farm_o": 63.50512499999989,
+     "forward_f": 32.5,
+     "forward_o": 0.0,
+     "ganks_f": 14.0,
+     "ganks_o": 7.3,
+     "lead_focal": 65.8,
+     "plates_f": 1.0,
+     "plates_o": 0.0,
+     "purchases_f": 2.0,
+     "purchases_o": 1.7,
+     "recalls_f": 4.8,
+     "recalls_o": 1.4,
+     "trade_dealt_f": 0.0,
+     "trade_dealt_o": 0.0,
+     "trades_f": 0.0,
+     "trades_o": 0.0,
+     "unequal": 70.7
+    },
+    "shove_stay": {
+     "deaths_f": 0.9,
+     "deaths_o": 0.1,
+     "farm_f": 54.470999999999904,
+     "farm_o": 63.166499999999886,
+     "forward_f": 17.9,
+     "forward_o": 0.0,
+     "ganks_f": 14.2,
+     "ganks_o": 7.4,
+     "lead_focal": 70.7,
+     "plates_f": 0.4,
+     "plates_o": 0.0,
+     "purchases_f": 2.0,
+     "purchases_o": 1.8,
+     "recalls_f": 4.2,
+     "recalls_o": 1.7,
+     "trade_dealt_f": 0.0,
+     "trade_dealt_o": 0.0,
+     "trades_f": 0.0,
+     "trades_o": 0.0,
+     "unequal": 74.1
+    }
+   }
+  },
+  "g0.40_i1.35|even_N0|half|afford": {
+   "means": {
+    "farm8": -2.020395656679649,
+    "recall_now": -3.8759218321252744,
+    "shove_then_recall": -5.94182748171689,
+    "shove_stay": -2.8235510810528766
+   },
+   "recall_minus_farm": {
+    "diff": -1.8555261754456247,
+    "se": 1.7103663447609736,
+    "ci95": [
+     -5.207844211177133,
+     1.4967918602858836
+    ],
+    "significant": false,
+    "a": -3.8759218321252744,
+    "b": -2.020395656679649
+   },
+   "shove_recall_minus_recall": {
+    "diff": -2.065905649591616,
+    "se": 1.6147235685246815,
+    "ci95": [
+     -5.230763843899991,
+     1.0989525447167598
+    ],
+    "significant": false,
+    "a": -5.94182748171689,
+    "b": -3.8759218321252744
+   },
+   "shove_stay_minus_farm": {
+    "diff": -0.8031554243732277,
+    "se": 1.514582796627442,
+    "ci95": [
+     -3.771737705763014,
+     2.165426857016559
+    ],
+    "significant": false,
+    "a": -2.8235510810528766,
+    "b": -2.020395656679649
+   },
+   "best": "farm8",
+   "counters": {
+    "farm8": {
+     "deaths_f": 0.5,
+     "deaths_o": 0.1,
+     "farm_f": 56.71074999999989,
+     "farm_o": 62.72324999999988,
+     "forward_f": 12.4,
+     "forward_o": 0.0,
+     "ganks_f": 12.7,
+     "ganks_o": 9.1,
+     "lead_focal": 37.2,
+     "plates_f": 0.4,
+     "plates_o": 0.0,
+     "purchases_f": 2.0,
+     "purchases_o": 2.0,
+     "recalls_f": 3.9,
+     "recalls_o": 2.3,
+     "trade_dealt_f": 0.0,
+     "trade_dealt_o": 0.0,
+     "trades_f": 0.0,
+     "trades_o": 0.0,
+     "unequal": 48.0
+    },
+    "recall_now": {
+     "deaths_f": 0.3,
+     "deaths_o": 0.2,
+     "farm_f": 53.3654999999999,
+     "farm_o": 63.16274999999988,
+     "forward_f": 21.0,
+     "forward_o": 0.0,
+     "ganks_f": 12.5,
+     "ganks_o": 7.2,
+     "lead_focal": 100.3,
+     "plates_f": 0.6,
+     "plates_o": 0.0,
+     "purchases_f": 2.0,
+     "purchases_o": 1.9,
+     "recalls_f": 4.8,
+     "recalls_o": 1.6,
+     "trade_dealt_f": 0.0,
+     "trade_dealt_o": 0.0,
+     "trades_f": 0.0,
+     "trades_o": 0.0,
+     "unequal": 101.0
+    },
+    "shove_then_recall": {
+     "deaths_f": 0.7,
+     "deaths_o": 0.0,
+     "farm_f": 47.50599999999993,
+     "farm_o": 64.0664999999999,
+     "forward_f": 39.0,
+     "forward_o": 0.0,
+     "ganks_f": 13.6,
+     "ganks_o": 5.6,
+     "lead_focal": 114.5,
+     "plates_f": 1.3,
+     "plates_o": 0.0,
+     "purchases_f": 2.0,
+     "purchases_o": 1.4,
+     "recalls_f": 5.0,
+     "recalls_o": 1.3,
+     "trade_dealt_f": 0.0,
+     "trade_dealt_o": 0.0,
+     "trades_f": 0.0,
+     "trades_o": 0.0,
+     "unequal": 114.5
+    },
+    "shove_stay": {
+     "deaths_f": 0.5,
+     "deaths_o": 0.0,
+     "farm_f": 54.245749999999894,
+     "farm_o": 63.237374999999886,
+     "forward_f": 19.0,
+     "forward_o": 0.0,
+     "ganks_f": 12.6,
+     "ganks_o": 6.5,
+     "lead_focal": 72.8,
+     "plates_f": 0.5,
+     "plates_o": 0.0,
+     "purchases_f": 2.0,
+     "purchases_o": 1.8,
+     "recalls_f": 4.1,
+     "recalls_o": 1.6,
+     "trade_dealt_f": 0.0,
+     "trade_dealt_o": 0.0,
+     "trades_f": 0.0,
+     "trades_o": 0.0,
+     "unequal": 80.8
+    }
+   }
+  },
+  "g0.40_i1.35|even_N0|half|poor": {
+   "means": {
+    "farm8": -2.664544931659206,
+    "recall_now": -6.326616279688195,
+    "shove_then_recall": -4.915374087058201,
+    "shove_stay": -2.5478999913571387
+   },
+   "recall_minus_farm": {
+    "diff": -3.6620713480289893,
+    "se": 2.0348938128665304,
+    "ci95": [
+     -7.650463221247389,
+     0.3263205251894101
+    ],
+    "significant": false,
+    "a": -6.326616279688195,
+    "b": -2.664544931659206
+   },
+   "shove_recall_minus_recall": {
+    "diff": 1.4112421926299947,
+    "se": 1.8529660652157676,
+    "ci95": [
+     -2.2205712951929097,
+     5.043055680452899
+    ],
+    "significant": false,
+    "a": -4.915374087058201,
+    "b": -6.326616279688195
+   },
+   "shove_stay_minus_farm": {
+    "diff": 0.11664494030206811,
+    "se": 1.1567764587118232,
+    "ci95": [
+     -2.150636918773105,
+     2.3839267993772415
+    ],
+    "significant": false,
+    "a": -2.5478999913571387,
+    "b": -2.664544931659206
+   },
+   "best": "shove_stay",
+   "counters": {
+    "farm8": {
+     "deaths_f": 0.3,
+     "deaths_o": 0.5,
+     "farm_f": 54.4999999999999,
+     "farm_o": 62.675874999999884,
+     "forward_f": 19.9,
+     "forward_o": 0.0,
+     "ganks_f": 13.1,
+     "ganks_o": 9.8,
+     "lead_focal": 63.8,
+     "plates_f": 0.6,
+     "plates_o": 0.0,
+     "purchases_f": 2.0,
+     "purchases_o": 1.9,
+     "recalls_f": 4.4,
+     "recalls_o": 2.1,
+     "trade_dealt_f": 0.0,
+     "trade_dealt_o": 0.0,
+     "trades_f": 0.0,
+     "trades_o": 0.0,
+     "unequal": 72.6
+    },
+    "recall_now": {
+     "deaths_f": 0.4,
+     "deaths_o": 0.3,
+     "farm_f": 46.79024999999993,
+     "farm_o": 63.528499999999894,
+     "forward_f": 38.7,
+     "forward_o": 0.0,
+     "ganks_f": 14.0,
+     "ganks_o": 7.0,
+     "lead_focal": 68.9,
+     "plates_f": 1.2,
+     "plates_o": 0.0,
+     "purchases_f": 2.0,
+     "purchases_o": 1.7,
+     "recalls_f": 5.5,
+     "recalls_o": 1.3,
+     "trade_dealt_f": 0.0,
+     "trade_dealt_o": 0.0,
+     "trades_f": 0.0,
+     "trades_o": 0.0,
+     "unequal": 77.2
+    },
+    "shove_then_recall": {
+     "deaths_f": 0.6,
+     "deaths_o": 0.1,
+     "farm_f": 50.880999999999915,
+     "farm_o": 63.31387499999987,
+     "forward_f": 29.0,
+     "forward_o": 0.0,
+     "ganks_f": 13.3,
+     "ganks_o": 7.9,
+     "lead_focal": 77.7,
+     "plates_f": 0.8,
+     "plates_o": 0.0,
+     "purchases_f": 2.0,
+     "purchases_o": 1.5,
+     "recalls_f": 5.3,
+     "recalls_o": 1.5,
+     "trade_dealt_f": 0.0,
+     "trade_dealt_o": 0.0,
+     "trades_f": 0.0,
+     "trades_o": 0.0,
+     "unequal": 82.3
+    },
+    "shove_stay": {
+     "deaths_f": 0.4,
+     "deaths_o": 0.3,
+     "farm_f": 55.874499999999884,
+     "farm_o": 62.76262499999986,
+     "forward_f": 15.0,
+     "forward_o": 0.0,
+     "ganks_f": 12.7,
+     "ganks_o": 8.3,
+     "lead_focal": 97.5,
+     "plates_f": 0.4,
+     "plates_o": 0.0,
+     "purchases_f": 2.0,
+     "purchases_o": 1.7,
+     "recalls_f": 4.3,
+     "recalls_o": 1.5,
+     "trade_dealt_f": 0.0,
+     "trade_dealt_o": 0.0,
+     "trades_f": 0.0,
+     "trades_o": 0.0,
+     "unequal": 101.7
+    }
+   }
+  },
+  "g0.40_i1.35|pushing_N0|full|afford": {
+   "means": {
+    "farm8": -9.617105632958607,
+    "recall_now": -11.564173562218519,
+    "shove_then_recall": -11.564173562218519,
+    "shove_stay": -10.025155950704667
+   },
+   "recall_minus_farm": {
+    "diff": -1.9470679292599136,
+    "se": 0.9794420381481814,
+    "ci95": [
+     -3.866774324030349,
+     -0.02736153448947798
+    ],
+    "significant": true,
+    "a": -11.564173562218519,
+    "b": -9.617105632958607
+   },
+   "shove_recall_minus_recall": {
+    "diff": 0.0,
+    "se": 0.0,
+    "ci95": [
+     0.0,
+     0.0
+    ],
+    "significant": false,
+    "a": -11.564173562218519,
+    "b": -11.564173562218519
+   },
+   "shove_stay_minus_farm": {
+    "diff": -0.4080503177460594,
+    "se": 2.090453681421373,
+    "ci95": [
+     -4.5053395333319495,
+     3.689238897839831
+    ],
+    "significant": false,
+    "a": -10.025155950704667,
+    "b": -9.617105632958607
+   },
+   "best": "farm8",
+   "counters": {
+    "farm8": {
+     "deaths_f": 0.5,
+     "deaths_o": 0.0,
+     "farm_f": 45.09449999999994,
+     "farm_o": 65.7483749999999,
+     "forward_f": 43.7,
+     "forward_o": 0.0,
+     "ganks_f": 13.4,
+     "ganks_o": 5.0,
+     "lead_focal": 0.0,
+     "plates_f": 1.2,
+     "plates_o": 0.0,
+     "purchases_f": 2.0,
+     "purchases_o": 0.0,
+     "recalls_f": 5.0,
+     "recalls_o": 0.4,
+     "trade_dealt_f": 0.0,
+     "trade_dealt_o": 0.0,
+     "trades_f": 0.0,
+     "trades_o": 0.0,
+     "unequal": 35.7
+    },
+    "recall_now": {
+     "deaths_f": 0.6,
+     "deaths_o": 0.0,
+     "farm_f": 40.42499999999996,
+     "farm_o": 66.23774999999992,
+     "forward_f": 56.2,
+     "forward_o": 0.0,
+     "ganks_f": 13.5,
+     "ganks_o": 3.7,
+     "lead_focal": 0.0,
+     "plates_f": 1.8,
+     "plates_o": 0.0,
+     "purchases_f": 2.0,
+     "purchases_o": 0.0,
+     "recalls_f": 5.1,
+     "recalls_o": 0.3,
+     "trade_dealt_f": 0.0,
+     "trade_dealt_o": 0.0,
+     "trades_f": 0.0,
+     "trades_o": 0.0,
+     "unequal": 37.3
+    },
+    "shove_then_recall": {
+     "deaths_f": 0.6,
+     "deaths_o": 0.0,
+     "farm_f": 40.42499999999996,
+     "farm_o": 66.23774999999992,
+     "forward_f": 56.2,
+     "forward_o": 0.0,
+     "ganks_f": 13.5,
+     "ganks_o": 3.7,
+     "lead_focal": 0.0,
+     "plates_f": 1.8,
+     "plates_o": 0.0,
+     "purchases_f": 2.0,
+     "purchases_o": 0.0,
+     "recalls_f": 5.1,
+     "recalls_o": 0.3,
+     "trade_dealt_f": 0.0,
+     "trade_dealt_o": 0.0,
+     "trades_f": 0.0,
+     "trades_o": 0.0,
+     "unequal": 37.3
+    },
+    "shove_stay": {
+     "deaths_f": 0.9,
+     "deaths_o": 0.0,
+     "farm_f": 43.77674999999994,
+     "farm_o": 65.7123749999999,
+     "forward_f": 47.6,
+     "forward_o": 0.0,
+     "ganks_f": 14.3,
+     "ganks_o": 5.4,
+     "lead_focal": 0.0,
+     "plates_f": 1.4,
+     "plates_o": 0.0,
+     "purchases_f": 2.0,
+     "purchases_o": 0.0,
+     "recalls_f": 4.3,
+     "recalls_o": 0.6,
+     "trade_dealt_f": 0.0,
+     "trade_dealt_o": 0.0,
+     "trades_f": 0.0,
+     "trades_o": 0.0,
+     "unequal": 33.9
+    }
+   }
+  },
+  "g0.40_i1.35|pushing_N0|full|poor": {
+   "means": {
+    "farm8": -11.289962324028256,
+    "recall_now": -12.487608558237206,
+    "shove_then_recall": -12.487608558237206,
+    "shove_stay": -7.619017971835992
+   },
+   "recall_minus_farm": {
+    "diff": -1.197646234208946,
+    "se": 0.9558133780495764,
+    "ci95": [
+     -3.071040455186116,
+     0.6757479867682239
+    ],
+    "significant": false,
+    "a": -12.487608558237206,
+    "b": -11.289962324028256
+   },
+   "shove_recall_minus_recall": {
+    "diff": 0.0,
+    "se": 0.0,
+    "ci95": [
+     0.0,
+     0.0
+    ],
+    "significant": false,
+    "a": -12.487608558237206,
+    "b": -12.487608558237206
+   },
+   "shove_stay_minus_farm": {
+    "diff": 3.670944352192268,
+    "se": 0.8573940097900821,
+    "ci95": [
+     1.9904520930037068,
+     5.351436611380828
+    ],
+    "significant": true,
+    "a": -7.619017971835992,
+    "b": -11.289962324028256
+   },
+   "best": "shove_stay",
+   "counters": {
+    "farm8": {
+     "deaths_f": 1.3,
+     "deaths_o": 0.0,
+     "farm_f": 40.78474999999996,
+     "farm_o": 65.7989999999999,
+     "forward_f": 61.3,
+     "forward_o": 0.0,
+     "ganks_f": 14.3,
+     "ganks_o": 4.9,
+     "lead_focal": 0.0,
+     "plates_f": 1.7,
+     "plates_o": 0.0,
+     "purchases_f": 2.0,
+     "purchases_o": 0.0,
+     "recalls_f": 4.1,
+     "recalls_o": 0.7,
+     "trade_dealt_f": 0.0,
+     "trade_dealt_o": 0.0,
+     "trades_f": 0.0,
+     "trades_o": 0.0,
+     "unequal": 57.9
+    },
+    "recall_now": {
+     "deaths_f": 0.8,
+     "deaths_o": 0.0,
+     "farm_f": 37.80699999999997,
+     "farm_o": 67.04999999999993,
+     "forward_f": 62.5,
+     "forward_o": 0.0,
+     "ganks_f": 15.0,
+     "ganks_o": 4.8,
+     "lead_focal": 0.0,
+     "plates_f": 2.1,
+     "plates_o": 0.0,
+     "purchases_f": 2.0,
+     "purchases_o": 0.0,
+     "recalls_f": 6.4,
+     "recalls_o": 0.4,
+     "trade_dealt_f": 0.0,
+     "trade_dealt_o": 0.0,
+     "trades_f": 0.0,
+     "trades_o": 0.0,
+     "unequal": 52.7
+    },
+    "shove_then_recall": {
+     "deaths_f": 0.8,
+     "deaths_o": 0.0,
+     "farm_f": 37.80699999999997,
+     "farm_o": 67.04999999999993,
+     "forward_f": 62.5,
+     "forward_o": 0.0,
+     "ganks_f": 15.0,
+     "ganks_o": 4.8,
+     "lead_focal": 0.0,
+     "plates_f": 2.1,
+     "plates_o": 0.0,
+     "purchases_f": 2.0,
+     "purchases_o": 0.0,
+     "recalls_f": 6.4,
+     "recalls_o": 0.4,
+     "trade_dealt_f": 0.0,
+     "trade_dealt_o": 0.0,
+     "trades_f": 0.0,
+     "trades_o": 0.0,
+     "unequal": 52.7
+    },
+    "shove_stay": {
+     "deaths_f": 0.2,
+     "deaths_o": 0.1,
+     "farm_f": 49.56924999999992,
+     "farm_o": 65.27474999999988,
+     "forward_f": 29.4,
+     "forward_o": 0.0,
+     "ganks_f": 12.5,
+     "ganks_o": 7.0,
+     "lead_focal": 0.0,
+     "plates_f": 0.7,
+     "plates_o": 0.0,
+     "purchases_f": 2.0,
+     "purchases_o": 0.0,
+     "recalls_f": 5.3,
+     "recalls_o": 1.2,
+     "trade_dealt_f": 0.0,
+     "trade_dealt_o": 0.0,
+     "trades_f": 0.0,
+     "trades_o": 0.0,
+     "unequal": 47.4
+    }
+   }
+  },
+  "g0.40_i1.35|pushing_N0|half|afford": {
+   "means": {
+    "farm8": -8.566350078635168,
+    "recall_now": -11.828135100368176,
+    "shove_then_recall": -11.828135100368176,
+    "shove_stay": -6.867089839144462
+   },
+   "recall_minus_farm": {
+    "diff": -3.26178502173301,
+    "se": 1.139256022004464,
+    "ci95": [
+     -5.494726824861759,
+     -1.0288432186042606
+    ],
+    "significant": true,
+    "a": -11.828135100368176,
+    "b": -8.566350078635168
+   },
+   "shove_recall_minus_recall": {
+    "diff": 0.0,
+    "se": 0.0,
+    "ci95": [
+     0.0,
+     0.0
+    ],
+    "significant": false,
+    "a": -11.828135100368176,
+    "b": -11.828135100368176
+   },
+   "shove_stay_minus_farm": {
+    "diff": 1.6992602394907053,
+    "se": 1.4840085337071391,
+    "ci95": [
+     -1.2093964865752875,
+     4.607916965556698
+    ],
+    "significant": false,
+    "a": -6.867089839144462,
+    "b": -8.566350078635168
+   },
+   "best": "shove_stay",
+   "counters": {
+    "farm8": {
+     "deaths_f": 0.6,
+     "deaths_o": 0.1,
+     "farm_f": 47.521749999999926,
+     "farm_o": 64.53787499999989,
+     "forward_f": 38.9,
+     "forward_o": 0.0,
+     "ganks_f": 12.7,
+     "ganks_o": 7.5,
+     "lead_focal": 0.0,
+     "plates_f": 1.1,
+     "plates_o": 0.0,
+     "purchases_f": 2.0,
+     "purchases_o": 0.0,
+     "recalls_f": 4.3,
+     "recalls_o": 1.5,
+     "trade_dealt_f": 0.0,
+     "trade_dealt_o": 0.0,
+     "trades_f": 0.0,
+     "trades_o": 0.0,
+     "unequal": 39.4
+    },
+    "recall_now": {
+     "deaths_f": 0.5,
+     "deaths_o": 0.0,
+     "farm_f": 39.30999999999997,
+     "farm_o": 66.0071249999999,
+     "forward_f": 63.2,
+     "forward_o": 0.0,
+     "ganks_f": 13.4,
+     "ganks_o": 5.4,
+     "lead_focal": 0.0,
+     "plates_f": 2.0,
+     "plates_o": 0.0,
+     "purchases_f": 2.0,
+     "purchases_o": 0.0,
+     "recalls_f": 5.0,
+     "recalls_o": 0.8,
+     "trade_dealt_f": 0.0,
+     "trade_dealt_o": 0.0,
+     "trades_f": 0.0,
+     "trades_o": 0.0,
+     "unequal": 39.1
+    },
+    "shove_then_recall": {
+     "deaths_f": 0.5,
+     "deaths_o": 0.0,
+     "farm_f": 39.30999999999997,
+     "farm_o": 66.0071249999999,
+     "forward_f": 63.2,
+     "forward_o": 0.0,
+     "ganks_f": 13.4,
+     "ganks_o": 5.4,
+     "lead_focal": 0.0,
+     "plates_f": 2.0,
+     "plates_o": 0.0,
+     "purchases_f": 2.0,
+     "purchases_o": 0.0,
+     "recalls_f": 5.0,
+     "recalls_o": 0.8,
+     "trade_dealt_f": 0.0,
+     "trade_dealt_o": 0.0,
+     "trades_f": 0.0,
+     "trades_o": 0.0,
+     "unequal": 39.1
+    },
+    "shove_stay": {
+     "deaths_f": 0.6,
+     "deaths_o": 0.0,
+     "farm_f": 50.32924999999993,
+     "farm_o": 64.47149999999989,
+     "forward_f": 27.5,
+     "forward_o": 0.0,
+     "ganks_f": 12.0,
+     "ganks_o": 7.1,
+     "lead_focal": 0.0,
+     "plates_f": 0.9,
+     "plates_o": 0.0,
+     "purchases_f": 2.0,
+     "purchases_o": 0.0,
+     "recalls_f": 4.4,
+     "recalls_o": 1.6,
+     "trade_dealt_f": 0.0,
+     "trade_dealt_o": 0.0,
+     "trades_f": 0.0,
+     "trades_o": 0.0,
+     "unequal": 34.4
+    }
+   }
+  },
+  "g0.40_i1.35|pushing_N0|half|poor": {
+   "means": {
+    "farm8": -11.352249068503525,
+    "recall_now": -10.993732309805031,
+    "shove_then_recall": -10.993732309805031,
+    "shove_stay": -6.45535321360308
+   },
+   "recall_minus_farm": {
+    "diff": 0.3585167586984929,
+    "se": 0.44107384099042896,
+    "ci95": [
+     -0.5059879696427478,
+     1.2230214870397336
+    ],
+    "significant": false,
+    "a": -10.993732309805031,
+    "b": -11.352249068503525
+   },
+   "shove_recall_minus_recall": {
+    "diff": 0.0,
+    "se": 0.0,
+    "ci95": [
+     0.0,
+     0.0
+    ],
+    "significant": false,
+    "a": -10.993732309805031,
+    "b": -10.993732309805031
+   },
+   "shove_stay_minus_farm": {
+    "diff": 4.8968958549004435,
+    "se": 1.4924403063240206,
+    "ci95": [
+     1.971712854505363,
+     7.8220788552955245
+    ],
+    "significant": true,
+    "a": -6.45535321360308,
+    "b": -11.352249068503525
+   },
+   "best": "shove_stay",
+   "counters": {
+    "farm8": {
+     "deaths_f": 0.9,
+     "deaths_o": 0.2,
+     "farm_f": 40.47524999999996,
+     "farm_o": 65.88674999999989,
+     "forward_f": 57.9,
+     "forward_o": 0.0,
+     "ganks_f": 16.1,
+     "ganks_o": 4.9,
+     "lead_focal": 0.0,
+     "plates_f": 1.8,
+     "plates_o": 0.0,
+     "purchases_f": 2.0,
+     "purchases_o": 0.0,
+     "recalls_f": 5.5,
+     "recalls_o": 0.6,
+     "trade_dealt_f": 0.0,
+     "trade_dealt_o": 0.0,
+     "trades_f": 0.0,
+     "trades_o": 0.0,
+     "unequal": 56.5
+    },
+    "recall_now": {
+     "deaths_f": 0.6,
+     "deaths_o": 0.0,
+     "farm_f": 41.974249999999955,
+     "farm_o": 65.9969999999999,
+     "forward_f": 50.2,
+     "forward_o": 0.0,
+     "ganks_f": 14.9,
+     "ganks_o": 5.7,
+     "lead_focal": 0.0,
+     "plates_f": 1.7,
+     "plates_o": 0.0,
+     "purchases_f": 2.0,
+     "purchases_o": 0.0,
+     "recalls_f": 6.1,
+     "recalls_o": 0.8,
+     "trade_dealt_f": 0.0,
+     "trade_dealt_o": 0.0,
+     "trades_f": 0.0,
+     "trades_o": 0.0,
+     "unequal": 55.5
+    },
+    "shove_then_recall": {
+     "deaths_f": 0.6,
+     "deaths_o": 0.0,
+     "farm_f": 41.974249999999955,
+     "farm_o": 65.9969999999999,
+     "forward_f": 50.2,
+     "forward_o": 0.0,
+     "ganks_f": 14.9,
+     "ganks_o": 5.7,
+     "lead_focal": 0.0,
+     "plates_f": 1.7,
+     "plates_o": 0.0,
+     "purchases_f": 2.0,
+     "purchases_o": 0.0,
+     "recalls_f": 6.1,
+     "recalls_o": 0.8,
+     "trade_dealt_f": 0.0,
+     "trade_dealt_o": 0.0,
+     "trades_f": 0.0,
+     "trades_o": 0.0,
+     "unequal": 55.5
+    },
+    "shove_stay": {
+     "deaths_f": 0.4,
+     "deaths_o": 0.0,
+     "farm_f": 50.86824999999992,
+     "farm_o": 64.68862499999987,
+     "forward_f": 25.9,
+     "forward_o": 0.0,
+     "ganks_f": 14.1,
+     "ganks_o": 8.2,
+     "lead_focal": 0.0,
+     "plates_f": 0.8,
+     "plates_o": 0.0,
+     "purchases_f": 2.0,
+     "purchases_o": 0.0,
+     "recalls_f": 4.9,
+     "recalls_o": 1.5,
+     "trade_dealt_f": 0.0,
+     "trade_dealt_o": 0.0,
+     "trades_f": 0.0,
+     "trades_o": 0.0,
+     "unequal": 45.3
+    }
+   }
+  },
+  "g0.40_i1.35|pushing_N1|full|afford": {
+   "means": {
+    "farm8": -12.358044392876845,
+    "recall_now": -12.578192596760735,
+    "shove_then_recall": -12.578192596760735,
+    "shove_stay": -9.811555262987701
+   },
+   "recall_minus_farm": {
+    "diff": -0.22014820388388828,
+    "se": 0.17699436294432236,
+    "ci95": [
+     -0.5670571552547601,
+     0.12676074748698352
+    ],
+    "significant": false,
+    "a": -12.578192596760735,
+    "b": -12.358044392876845
+   },
+   "shove_recall_minus_recall": {
+    "diff": 0.0,
+    "se": 0.0,
+    "ci95": [
+     0.0,
+     0.0
+    ],
+    "significant": false,
+    "a": -12.578192596760735,
+    "b": -12.578192596760735
+   },
+   "shove_stay_minus_farm": {
+    "diff": 2.5464891298891463,
+    "se": 1.4182441743696181,
+    "ci95": [
+     -0.23326945187530512,
+     5.326247711653598
+    ],
+    "significant": false,
+    "a": -9.811555262987701,
+    "b": -12.358044392876845
+   },
+   "best": "shove_stay",
+   "counters": {
+    "farm8": {
+     "deaths_f": 0.8,
+     "deaths_o": 0.0,
+     "farm_f": 36.680249999999965,
+     "farm_o": 66.35249999999994,
+     "forward_f": 68.7,
+     "forward_o": 0.0,
+     "ganks_f": 16.6,
+     "ganks_o": 4.7,
+     "lead_focal": 164.0,
+     "plates_f": 2.2,
+     "plates_o": 0.0,
+     "purchases_f": 1.0,
+     "purchases_o": 0.2,
+     "recalls_f": 4.5,
+     "recalls_o": 0.5,
+     "trade_dealt_f": 0.0,
+     "trade_dealt_o": 0.0,
+     "trades_f": 0.0,
+     "trades_o": 0.0,
+     "unequal": 164.0
+    },
+    "recall_now": {
+     "deaths_f": 0.6,
+     "deaths_o": 0.0,
+     "farm_f": 36.711749999999974,
+     "farm_o": 66.13537499999991,
+     "forward_f": 66.3,
+     "forward_o": 0.0,
+     "ganks_f": 15.7,
+     "ganks_o": 4.5,
+     "lead_focal": 172.6,
+     "plates_f": 2.1,
+     "plates_o": 0.0,
+     "purchases_f": 1.0,
+     "purchases_o": 0.2,
+     "recalls_f": 4.7,
+     "recalls_o": 0.5,
+     "trade_dealt_f": 0.0,
+     "trade_dealt_o": 0.0,
+     "trades_f": 0.0,
+     "trades_o": 0.0,
+     "unequal": 172.6
+    },
+    "shove_then_recall": {
+     "deaths_f": 0.6,
+     "deaths_o": 0.0,
+     "farm_f": 36.711749999999974,
+     "farm_o": 66.13537499999991,
+     "forward_f": 66.3,
+     "forward_o": 0.0,
+     "ganks_f": 15.7,
+     "ganks_o": 4.5,
+     "lead_focal": 172.6,
+     "plates_f": 2.1,
+     "plates_o": 0.0,
+     "purchases_f": 1.0,
+     "purchases_o": 0.2,
+     "recalls_f": 4.7,
+     "recalls_o": 0.5,
+     "trade_dealt_f": 0.0,
+     "trade_dealt_o": 0.0,
+     "trades_f": 0.0,
+     "trades_o": 0.0,
+     "unequal": 172.6
+    },
+    "shove_stay": {
+     "deaths_f": 0.7,
+     "deaths_o": 0.1,
+     "farm_f": 43.29124999999995,
+     "farm_o": 65.50649999999992,
+     "forward_f": 50.5,
+     "forward_o": 0.0,
+     "ganks_f": 15.2,
+     "ganks_o": 6.1,
+     "lead_focal": 126.5,
+     "plates_f": 1.6,
+     "plates_o": 0.0,
+     "purchases_f": 1.0,
+     "purchases_o": 0.5,
+     "recalls_f": 4.1,
+     "recalls_o": 0.7,
+     "trade_dealt_f": 0.0,
+     "trade_dealt_o": 0.0,
+     "trades_f": 0.0,
+     "trades_o": 0.0,
+     "unequal": 126.5
+    }
+   }
+  },
+  "g0.40_i1.35|pushing_N1|full|poor": {
+   "means": {
+    "farm8": -10.286006734332855,
+    "recall_now": -12.47291709870659,
+    "shove_then_recall": -12.47291709870659,
+    "shove_stay": -7.2697715381982295
+   },
+   "recall_minus_farm": {
+    "diff": -2.186910364373736,
+    "se": 1.0827278607066952,
+    "ci95": [
+     -4.309056971358858,
+     -0.06476375738861373
+    ],
+    "significant": true,
+    "a": -12.47291709870659,
+    "b": -10.286006734332855
+   },
+   "shove_recall_minus_recall": {
+    "diff": 0.0,
+    "se": 0.0,
+    "ci95": [
+     0.0,
+     0.0
+    ],
+    "significant": false,
+    "a": -12.47291709870659,
+    "b": -12.47291709870659
+   },
+   "shove_stay_minus_farm": {
+    "diff": 3.016235196134624,
+    "se": 1.7168868950560592,
+    "ci95": [
+     -0.34886311817525195,
+     6.381333510444501
+    ],
+    "significant": false,
+    "a": -7.2697715381982295,
+    "b": -10.286006734332855
+   },
+   "best": "shove_stay",
+   "counters": {
+    "farm8": {
+     "deaths_f": 0.7,
+     "deaths_o": 0.0,
+     "farm_f": 42.44024999999995,
+     "farm_o": 65.8203749999999,
+     "forward_f": 54.5,
+     "forward_o": 0.0,
+     "ganks_f": 15.8,
+     "ganks_o": 6.1,
+     "lead_focal": 130.2,
+     "plates_f": 1.6,
+     "plates_o": 0.0,
+     "purchases_f": 1.0,
+     "purchases_o": 0.6,
+     "recalls_f": 4.6,
+     "recalls_o": 0.8,
+     "trade_dealt_f": 0.0,
+     "trade_dealt_o": 0.0,
+     "trades_f": 0.0,
+     "trades_o": 0.0,
+     "unequal": 130.2
+    },
+    "recall_now": {
+     "deaths_f": 0.8,
+     "deaths_o": 0.1,
+     "farm_f": 37.99324999999996,
+     "farm_o": 66.02399999999992,
+     "forward_f": 60.7,
+     "forward_o": 0.0,
+     "ganks_f": 15.8,
+     "ganks_o": 5.7,
+     "lead_focal": 134.3,
+     "plates_f": 1.9,
+     "plates_o": 0.0,
+     "purchases_f": 1.0,
+     "purchases_o": 0.6,
+     "recalls_f": 5.6,
+     "recalls_o": 0.6,
+     "trade_dealt_f": 0.0,
+     "trade_dealt_o": 0.0,
+     "trades_f": 0.0,
+     "trades_o": 0.0,
+     "unequal": 134.3
+    },
+    "shove_then_recall": {
+     "deaths_f": 0.8,
+     "deaths_o": 0.1,
+     "farm_f": 37.99324999999996,
+     "farm_o": 66.02399999999992,
+     "forward_f": 60.7,
+     "forward_o": 0.0,
+     "ganks_f": 15.8,
+     "ganks_o": 5.7,
+     "lead_focal": 134.3,
+     "plates_f": 1.9,
+     "plates_o": 0.0,
+     "purchases_f": 1.0,
+     "purchases_o": 0.6,
+     "recalls_f": 5.6,
+     "recalls_o": 0.6,
+     "trade_dealt_f": 0.0,
+     "trade_dealt_o": 0.0,
+     "trades_f": 0.0,
+     "trades_o": 0.0,
+     "unequal": 134.3
+    },
+    "shove_stay": {
+     "deaths_f": 0.2,
+     "deaths_o": 0.1,
+     "farm_f": 48.42074999999993,
+     "farm_o": 65.01037499999988,
+     "forward_f": 34.7,
+     "forward_o": 0.0,
+     "ganks_f": 15.1,
+     "ganks_o": 7.2,
+     "lead_focal": 90.0,
+     "plates_f": 1.0,
+     "plates_o": 0.0,
+     "purchases_f": 1.0,
+     "purchases_o": 0.8,
+     "recalls_f": 5.0,
+     "recalls_o": 1.3,
+     "trade_dealt_f": 0.0,
+     "trade_dealt_o": 0.0,
+     "trades_f": 0.0,
+     "trades_o": 0.0,
+     "unequal": 90.0
+    }
+   }
+  },
+  "g0.40_i1.35|pushing_N1|half|afford": {
+   "means": {
+    "farm8": -12.473555546677694,
+    "recall_now": -12.915036154055391,
+    "shove_then_recall": -12.915036154055391,
+    "shove_stay": -3.850552238601643
+   },
+   "recall_minus_farm": {
+    "diff": -0.44148060737769795,
+    "se": 0.1807545490488407,
+    "ci95": [
+     -0.7957595235134257,
+     -0.08720169124197019
+    ],
+    "significant": true,
+    "a": -12.915036154055391,
+    "b": -12.473555546677694
+   },
+   "shove_recall_minus_recall": {
+    "diff": 0.0,
+    "se": 0.0,
+    "ci95": [
+     0.0,
+     0.0
+    ],
+    "significant": false,
+    "a": -12.915036154055391,
+    "b": -12.915036154055391
+   },
+   "shove_stay_minus_farm": {
+    "diff": 8.623003308076052,
+    "se": 0.31977984429126977,
+    "ci95": [
+     7.996234813265164,
+     9.249771802886942
+    ],
+    "significant": true,
+    "a": -3.850552238601643,
+    "b": -12.473555546677694
+   },
+   "best": "shove_stay",
+   "counters": {
+    "farm8": {
+     "deaths_f": 1.5,
+     "deaths_o": 0.0,
+     "farm_f": 36.438249999999975,
+     "farm_o": 66.29624999999993,
+     "forward_f": 70.3,
+     "forward_o": 0.0,
+     "ganks_f": 16.8,
+     "ganks_o": 3.4,
+     "lead_focal": 177.6,
+     "plates_f": 2.4,
+     "plates_o": 0.0,
+     "purchases_f": 1.0,
+     "purchases_o": 0.2,
+     "recalls_f": 4.0,
+     "recalls_o": 0.2,
+     "trade_dealt_f": 0.0,
+     "trade_dealt_o": 0.0,
+     "trades_f": 0.0,
+     "trades_o": 0.0,
+     "unequal": 177.6
+    },
+    "recall_now": {
+     "deaths_f": 1.0,
+     "deaths_o": 0.0,
+     "farm_f": 36.04599999999998,
+     "farm_o": 66.49649999999993,
+     "forward_f": 65.0,
+     "forward_o": 0.0,
+     "ganks_f": 16.2,
+     "ganks_o": 3.1,
+     "lead_focal": 188.6,
+     "plates_f": 2.1,
+     "plates_o": 0.0,
+     "purchases_f": 1.0,
+     "purchases_o": 0.2,
+     "recalls_f": 4.6,
+     "recalls_o": 0.2,
+     "trade_dealt_f": 0.0,
+     "trade_dealt_o": 0.0,
+     "trades_f": 0.0,
+     "trades_o": 0.0,
+     "unequal": 188.6
+    },
+    "shove_then_recall": {
+     "deaths_f": 1.0,
+     "deaths_o": 0.0,
+     "farm_f": 36.04599999999998,
+     "farm_o": 66.49649999999993,
+     "forward_f": 65.0,
+     "forward_o": 0.0,
+     "ganks_f": 16.2,
+     "ganks_o": 3.1,
+     "lead_focal": 188.6,
+     "plates_f": 2.1,
+     "plates_o": 0.0,
+     "purchases_f": 1.0,
+     "purchases_o": 0.2,
+     "recalls_f": 4.6,
+     "recalls_o": 0.2,
+     "trade_dealt_f": 0.0,
+     "trade_dealt_o": 0.0,
+     "trades_f": 0.0,
+     "trades_o": 0.0,
+     "unequal": 188.6
+    },
+    "shove_stay": {
+     "deaths_f": 1.1,
+     "deaths_o": 0.0,
+     "farm_f": 58.84324999999986,
+     "farm_o": 64.10249999999985,
+     "forward_f": 3.1,
+     "forward_o": 0.0,
+     "ganks_f": 13.2,
+     "ganks_o": 6.5,
+     "lead_focal": 117.7,
+     "plates_f": 0.0,
+     "plates_o": 0.0,
+     "purchases_f": 1.0,
+     "purchases_o": 0.7,
+     "recalls_f": 2.7,
+     "recalls_o": 1.1,
+     "trade_dealt_f": 0.0,
+     "trade_dealt_o": 0.0,
+     "trades_f": 0.0,
+     "trades_o": 0.0,
+     "unequal": 117.7
+    }
+   }
+  },
+  "g0.40_i1.35|pushing_N1|half|poor": {
+   "means": {
+    "farm8": -10.573225492633966,
+    "recall_now": -12.486174231749965,
+    "shove_then_recall": -12.486174231749965,
+    "shove_stay": -7.061545532496692
+   },
+   "recall_minus_farm": {
+    "diff": -1.912948739115997,
+    "se": 1.1380399209637746,
+    "ci95": [
+     -4.143506984204995,
+     0.3176095059730013
+    ],
+    "significant": false,
+    "a": -12.486174231749965,
+    "b": -10.573225492633966
+   },
+   "shove_recall_minus_recall": {
+    "diff": 0.0,
+    "se": 0.0,
+    "ci95": [
+     0.0,
+     0.0
+    ],
+    "significant": false,
+    "a": -12.486174231749965,
+    "b": -12.486174231749965
+   },
+   "shove_stay_minus_farm": {
+    "diff": 3.511679960137277,
+    "se": 1.122226583266707,
+    "ci95": [
+     1.3121158569345308,
+     5.711244063340023
+    ],
+    "significant": true,
+    "a": -7.061545532496692,
+    "b": -10.573225492633966
+   },
+   "best": "shove_stay",
+   "counters": {
+    "farm8": {
+     "deaths_f": 1.1,
+     "deaths_o": 0.0,
+     "farm_f": 42.22424999999995,
+     "farm_o": 65.55374999999991,
+     "forward_f": 52.5,
+     "forward_o": 0.0,
+     "ganks_f": 15.0,
+     "ganks_o": 4.8,
+     "lead_focal": 105.3,
+     "plates_f": 1.9,
+     "plates_o": 0.0,
+     "purchases_f": 1.0,
+     "purchases_o": 0.6,
+     "recalls_f": 4.4,
+     "recalls_o": 0.8,
+     "trade_dealt_f": 0.0,
+     "trade_dealt_o": 0.0,
+     "trades_f": 0.0,
+     "trades_o": 0.0,
+     "unequal": 107.1
+    },
+    "recall_now": {
+     "deaths_f": 1.2,
+     "deaths_o": 0.0,
+     "farm_f": 38.55824999999997,
+     "farm_o": 66.28837499999993,
+     "forward_f": 57.9,
+     "forward_o": 0.0,
+     "ganks_f": 16.2,
+     "ganks_o": 5.0,
+     "lead_focal": 101.2,
+     "plates_f": 2.0,
+     "plates_o": 0.0,
+     "purchases_f": 1.0,
+     "purchases_o": 0.5,
+     "recalls_f": 5.0,
+     "recalls_o": 0.8,
+     "trade_dealt_f": 0.0,
+     "trade_dealt_o": 0.0,
+     "trades_f": 0.0,
+     "trades_o": 0.0,
+     "unequal": 103.5
+    },
+    "shove_then_recall": {
+     "deaths_f": 1.2,
+     "deaths_o": 0.0,
+     "farm_f": 38.55824999999997,
+     "farm_o": 66.28837499999993,
+     "forward_f": 57.9,
+     "forward_o": 0.0,
+     "ganks_f": 16.2,
+     "ganks_o": 5.0,
+     "lead_focal": 101.2,
+     "plates_f": 2.0,
+     "plates_o": 0.0,
+     "purchases_f": 1.0,
+     "purchases_o": 0.5,
+     "recalls_f": 5.0,
+     "recalls_o": 0.8,
+     "trade_dealt_f": 0.0,
+     "trade_dealt_o": 0.0,
+     "trades_f": 0.0,
+     "trades_o": 0.0,
+     "unequal": 103.5
+    },
+    "shove_stay": {
+     "deaths_f": 1.0,
+     "deaths_o": 0.1,
+     "farm_f": 49.96924999999992,
+     "farm_o": 65.15774999999988,
+     "forward_f": 27.5,
+     "forward_o": 0.0,
+     "ganks_f": 13.9,
+     "ganks_o": 6.7,
+     "lead_focal": 81.1,
+     "plates_f": 0.8,
+     "plates_o": 0.0,
+     "purchases_f": 1.0,
+     "purchases_o": 0.8,
+     "recalls_f": 3.9,
+     "recalls_o": 1.1,
+     "trade_dealt_f": 0.0,
+     "trade_dealt_o": 0.0,
+     "trades_f": 0.0,
+     "trades_o": 0.0,
+     "unequal": 81.7
+    }
+   }
+  },
+  "g0.40_i1.35|even_N1|full|afford": {
+   "means": {
+    "farm8": -6.809085937151354,
+    "recall_now": -0.5697694710752812,
+    "shove_then_recall": -1.112042775367136,
+    "shove_stay": -3.171044789169783
+   },
+   "recall_minus_farm": {
+    "diff": 6.2393164660760725,
+    "se": 1.4350255869935902,
+    "ci95": [
+     3.4266663155686357,
+     9.05196661658351
+    ],
+    "significant": true,
+    "a": -0.5697694710752812,
+    "b": -6.809085937151354
+   },
+   "shove_recall_minus_recall": {
+    "diff": -0.5422733042918548,
+    "se": 0.2548827049004109,
+    "ci95": [
+     -1.0418434058966601,
+     -0.042703202687049524
+    ],
+    "significant": true,
+    "a": -1.112042775367136,
+    "b": -0.5697694710752812
+   },
+   "shove_stay_minus_farm": {
+    "diff": 3.6380411479815713,
+    "se": 1.4957447514809152,
+    "ci95": [
+     0.7063814350789777,
+     6.569700860884165
+    ],
+    "significant": true,
+    "a": -3.171044789169783,
+    "b": -6.809085937151354
+   },
+   "best": "recall_now",
+   "counters": {
+    "farm8": {
+     "deaths_f": 0.5,
+     "deaths_o": 0.0,
+     "farm_f": 45.87274999999994,
+     "farm_o": 64.3344999999999,
+     "forward_f": 48.7,
+     "forward_o": 0.0,
+     "ganks_f": 12.0,
+     "ganks_o": 6.3,
+     "lead_focal": 124.9,
+     "plates_f": 1.5,
+     "plates_o": 0.0,
+     "purchases_f": 1.0,
+     "purchases_o": 1.5,
+     "recalls_f": 3.7,
+     "recalls_o": 1.2,
+     "trade_dealt_f": 0.0,
+     "trade_dealt_o": 0.0,
+     "trades_f": 0.0,
+     "trades_o": 0.0,
+     "unequal": 125.8
+    },
+    "recall_now": {
+     "deaths_f": 0.3,
+     "deaths_o": 0.8,
+     "farm_f": 61.14099999999987,
+     "farm_o": 61.295999999999864,
+     "forward_f": 0.0,
+     "forward_o": 0.0,
+     "ganks_f": 11.3,
+     "ganks_o": 14.6,
+     "lead_focal": 46.3,
+     "plates_f": 0.0,
+     "plates_o": 0.0,
+     "purchases_f": 1.0,
+     "purchases_o": 2.0,
+     "recalls_f": 3.8,
+     "recalls_o": 3.1,
+     "trade_dealt_f": 0.0,
+     "trade_dealt_o": 0.0,
+     "trades_f": 0.0,
+     "trades_o": 0.0,
+     "unequal": 46.3
+    },
+    "shove_then_recall": {
+     "deaths_f": 0.4,
+     "deaths_o": 0.0,
+     "farm_f": 60.11949999999987,
+     "farm_o": 62.80199999999985,
+     "forward_f": 2.0,
+     "forward_o": 0.0,
+     "ganks_f": 10.8,
+     "ganks_o": 8.7,
+     "lead_focal": 83.9,
+     "plates_f": 0.0,
+     "plates_o": 0.0,
+     "purchases_f": 1.0,
+     "purchases_o": 1.8,
+     "recalls_f": 3.5,
+     "recalls_o": 1.5,
+     "trade_dealt_f": 0.0,
+     "trade_dealt_o": 0.0,
+     "trades_f": 0.0,
+     "trades_o": 0.0,
+     "unequal": 83.9
+    },
+    "shove_stay": {
+     "deaths_f": 0.3,
+     "deaths_o": 0.0,
+     "farm_f": 56.844249999999874,
+     "farm_o": 63.312749999999866,
+     "forward_f": 12.5,
+     "forward_o": 0.0,
+     "ganks_f": 11.4,
+     "ganks_o": 8.4,
+     "lead_focal": 95.4,
+     "plates_f": 0.2,
+     "plates_o": 0.0,
+     "purchases_f": 1.0,
+     "purchases_o": 1.8,
+     "recalls_f": 3.8,
+     "recalls_o": 1.4,
+     "trade_dealt_f": 0.0,
+     "trade_dealt_o": 0.0,
+     "trades_f": 0.0,
+     "trades_o": 0.0,
+     "unequal": 95.4
+    }
+   }
+  },
+  "g0.40_i1.35|even_N1|full|poor": {
+   "means": {
+    "farm8": -3.881915658435413,
+    "recall_now": -3.4969850257101482,
+    "shove_then_recall": -6.611879255011074,
+    "shove_stay": -5.199471289086688
+   },
+   "recall_minus_farm": {
+    "diff": 0.384930632725265,
+    "se": 1.5518616154429603,
+    "ci95": [
+     -2.6567181335429373,
+     3.426579398993467
+    ],
+    "significant": false,
+    "a": -3.4969850257101482,
+    "b": -3.881915658435413
+   },
+   "shove_recall_minus_recall": {
+    "diff": -3.1148942293009263,
+    "se": 2.0022978400763085,
+    "ci95": [
+     -7.039397995850491,
+     0.8096095372486385
+    ],
+    "significant": false,
+    "a": -6.611879255011074,
+    "b": -3.4969850257101482
+   },
+   "shove_stay_minus_farm": {
+    "diff": -1.317555630651274,
+    "se": 1.103536602502797,
+    "ci95": [
+     -3.480487371556756,
+     0.8453761102542083
+    ],
+    "significant": false,
+    "a": -5.199471289086688,
+    "b": -3.881915658435413
+   },
+   "best": "recall_now",
+   "counters": {
+    "farm8": {
+     "deaths_f": 0.5,
+     "deaths_o": 0.2,
+     "farm_f": 52.37499999999992,
+     "farm_o": 63.2619999999999,
+     "forward_f": 24.2,
+     "forward_o": 0.0,
+     "ganks_f": 14.0,
+     "ganks_o": 9.9,
+     "lead_focal": 82.4,
+     "plates_f": 0.8,
+     "plates_o": 0.0,
+     "purchases_f": 1.0,
+     "purchases_o": 1.8,
+     "recalls_f": 3.9,
+     "recalls_o": 2.1,
+     "trade_dealt_f": 0.0,
+     "trade_dealt_o": 0.0,
+     "trades_f": 0.0,
+     "trades_o": 0.0,
+     "unequal": 83.2
+    },
+    "recall_now": {
+     "deaths_f": 0.2,
+     "deaths_o": 0.2,
+     "farm_f": 55.6369999999999,
+     "farm_o": 62.83987499999988,
+     "forward_f": 14.0,
+     "forward_o": 0.0,
+     "ganks_f": 12.5,
+     "ganks_o": 9.0,
+     "lead_focal": 90.6,
+     "plates_f": 0.4,
+     "plates_o": 0.0,
+     "purchases_f": 1.0,
+     "purchases_o": 1.8,
+     "recalls_f": 4.7,
+     "recalls_o": 2.0,
+     "trade_dealt_f": 0.0,
+     "trade_dealt_o": 0.0,
+     "trades_f": 0.0,
+     "trades_o": 0.0,
+     "unequal": 92.6
+    },
+    "shove_then_recall": {
+     "deaths_f": 0.5,
+     "deaths_o": 0.2,
+     "farm_f": 47.16099999999993,
+     "farm_o": 64.3657499999999,
+     "forward_f": 38.6,
+     "forward_o": 0.0,
+     "ganks_f": 15.0,
+     "ganks_o": 6.7,
+     "lead_focal": 122.8,
+     "plates_f": 1.2,
+     "plates_o": 0.0,
+     "purchases_f": 1.0,
+     "purchases_o": 1.6,
+     "recalls_f": 5.3,
+     "recalls_o": 1.0,
+     "trade_dealt_f": 0.0,
+     "trade_dealt_o": 0.0,
+     "trades_f": 0.0,
+     "trades_o": 0.0,
+     "unequal": 122.8
+    },
+    "shove_stay": {
+     "deaths_f": 0.3,
+     "deaths_o": 0.3,
+     "farm_f": 51.04374999999992,
+     "farm_o": 63.78974999999987,
+     "forward_f": 28.0,
+     "forward_o": 0.0,
+     "ganks_f": 14.4,
+     "ganks_o": 7.8,
+     "lead_focal": 107.3,
+     "plates_f": 0.8,
+     "plates_o": 0.0,
+     "purchases_f": 1.0,
+     "purchases_o": 1.8,
+     "recalls_f": 4.7,
+     "recalls_o": 1.1,
+     "trade_dealt_f": 0.0,
+     "trade_dealt_o": 0.0,
+     "trades_f": 0.0,
+     "trades_o": 0.0,
+     "unequal": 107.3
+    }
+   }
+  },
+  "g0.40_i1.35|even_N1|half|afford": {
+   "means": {
+    "farm8": -0.467848453124308,
+    "recall_now": -0.887634162949662,
+    "shove_then_recall": -1.001563071385348,
+    "shove_stay": -1.8795551745472552
+   },
+   "recall_minus_farm": {
+    "diff": -0.419785709825354,
+    "se": 0.1401209189737339,
+    "ci95": [
+     -0.6944227110138725,
+     -0.14514870863683554
+    ],
+    "significant": true,
+    "a": -0.887634162949662,
+    "b": -0.467848453124308
+   },
+   "shove_recall_minus_recall": {
+    "diff": -0.11392890843568604,
+    "se": 0.21500193099656778,
+    "ci95": [
+     -0.5353326931889588,
+     0.3074748763175868
+    ],
+    "significant": false,
+    "a": -1.001563071385348,
+    "b": -0.887634162949662
+   },
+   "shove_stay_minus_farm": {
+    "diff": -1.4117067214229468,
+    "se": 0.2353841954888478,
+    "ci95": [
+     -1.8730597445810886,
+     -0.9503536982648051
+    ],
+    "significant": true,
+    "a": -1.8795551745472552,
+    "b": -0.467848453124308
+   },
+   "best": "farm8",
+   "counters": {
+    "farm8": {
+     "deaths_f": 0.6,
+     "deaths_o": 0.3,
+     "farm_f": 61.116499999999874,
+     "farm_o": 61.491499999999874,
+     "forward_f": 0.0,
+     "forward_o": 0.0,
+     "ganks_f": 13.9,
+     "ganks_o": 14.1,
+     "lead_focal": 39.1,
+     "plates_f": 0.0,
+     "plates_o": 0.0,
+     "purchases_f": 1.0,
+     "purchases_o": 2.0,
+     "recalls_f": 3.4,
+     "recalls_o": 3.4,
+     "trade_dealt_f": 0.0,
+     "trade_dealt_o": 0.0,
+     "trades_f": 0.0,
+     "trades_o": 0.0,
+     "unequal": 39.1
+    },
+    "recall_now": {
+     "deaths_f": 0.3,
+     "deaths_o": 0.3,
+     "farm_f": 60.79199999999986,
+     "farm_o": 61.74799999999986,
+     "forward_f": 0.0,
+     "forward_o": 0.0,
+     "ganks_f": 13.8,
+     "ganks_o": 14.1,
+     "lead_focal": 39.6,
+     "plates_f": 0.0,
+     "plates_o": 0.0,
+     "purchases_f": 1.0,
+     "purchases_o": 2.0,
+     "recalls_f": 4.2,
+     "recalls_o": 3.4,
+     "trade_dealt_f": 0.0,
+     "trade_dealt_o": 0.0,
+     "trades_f": 0.0,
+     "trades_o": 0.0,
+     "unequal": 39.6
+    },
+    "shove_then_recall": {
+     "deaths_f": 0.1,
+     "deaths_o": 0.1,
+     "farm_f": 59.84499999999986,
+     "farm_o": 62.842499999999845,
+     "forward_f": 2.0,
+     "forward_o": 0.0,
+     "ganks_f": 13.0,
+     "ganks_o": 8.8,
+     "lead_focal": 69.2,
+     "plates_f": 0.0,
+     "plates_o": 0.0,
+     "purchases_f": 1.0,
+     "purchases_o": 1.8,
+     "recalls_f": 4.1,
+     "recalls_o": 1.5,
+     "trade_dealt_f": 0.0,
+     "trade_dealt_o": 0.0,
+     "trades_f": 0.0,
+     "trades_o": 0.0,
+     "unequal": 69.2
+    },
+    "shove_stay": {
+     "deaths_f": 0.2,
+     "deaths_o": 0.0,
+     "farm_f": 59.20899999999987,
+     "farm_o": 63.07649999999986,
+     "forward_f": 4.0,
+     "forward_o": 0.0,
+     "ganks_f": 13.2,
+     "ganks_o": 8.7,
+     "lead_focal": 68.8,
+     "plates_f": 0.0,
+     "plates_o": 0.0,
+     "purchases_f": 1.0,
+     "purchases_o": 1.8,
+     "recalls_f": 3.8,
+     "recalls_o": 1.6,
+     "trade_dealt_f": 0.0,
+     "trade_dealt_o": 0.0,
+     "trades_f": 0.0,
+     "trades_o": 0.0,
+     "unequal": 68.8
+    }
+   }
+  },
+  "g0.40_i1.35|even_N1|half|poor": {
+   "means": {
+    "farm8": -1.5407812735220738,
+    "recall_now": -1.6159864487799425,
+    "shove_then_recall": -7.887009913480314,
+    "shove_stay": -2.6474009655600512
+   },
+   "recall_minus_farm": {
+    "diff": -0.07520517525786859,
+    "se": 0.9422496080707669,
+    "ci95": [
+     -1.9220144070765717,
+     1.7716040565608344
+    ],
+    "significant": false,
+    "a": -1.6159864487799425,
+    "b": -1.5407812735220738
+   },
+   "shove_recall_minus_recall": {
+    "diff": -6.271023464700373,
+    "se": 1.0214929462676103,
+    "ci95": [
+     -8.27314963938489,
+     -4.268897290015857
+    ],
+    "significant": true,
+    "a": -7.887009913480314,
+    "b": -1.6159864487799425
+   },
+   "shove_stay_minus_farm": {
+    "diff": -1.1066196920379774,
+    "se": 1.1196141312962635,
+    "ci95": [
+     -3.301063389378654,
+     1.087824005302699
+    ],
+    "significant": false,
+    "a": -2.6474009655600512,
+    "b": -1.5407812735220738
+   },
+   "best": "farm8",
+   "counters": {
+    "farm8": {
+     "deaths_f": 0.4,
+     "deaths_o": 0.4,
+     "farm_f": 58.31599999999988,
+     "farm_o": 61.962124999999865,
+     "forward_f": 6.7,
+     "forward_o": 0.0,
+     "ganks_f": 13.3,
+     "ganks_o": 11.5,
+     "lead_focal": 54.3,
+     "plates_f": 0.2,
+     "plates_o": 0.0,
+     "purchases_f": 1.0,
+     "purchases_o": 1.9,
+     "recalls_f": 4.1,
+     "recalls_o": 2.8,
+     "trade_dealt_f": 0.0,
+     "trade_dealt_o": 0.0,
+     "trades_f": 0.0,
+     "trades_o": 0.0,
+     "unequal": 61.5
+    },
+    "recall_now": {
+     "deaths_f": 0.1,
+     "deaths_o": 0.4,
+     "farm_f": 59.31949999999987,
+     "farm_o": 62.427499999999874,
+     "forward_f": 2.8,
+     "forward_o": 0.0,
+     "ganks_f": 12.8,
+     "ganks_o": 10.3,
+     "lead_focal": 73.2,
+     "plates_f": 0.0,
+     "plates_o": 0.0,
+     "purchases_f": 1.0,
+     "purchases_o": 1.9,
+     "recalls_f": 4.8,
+     "recalls_o": 2.1,
+     "trade_dealt_f": 0.0,
+     "trade_dealt_o": 0.0,
+     "trades_f": 0.0,
+     "trades_o": 0.0,
+     "unequal": 79.2
+    },
+    "shove_then_recall": {
+     "deaths_f": 0.5,
+     "deaths_o": 0.1,
+     "farm_f": 43.17124999999996,
+     "farm_o": 64.92599999999992,
+     "forward_f": 51.0,
+     "forward_o": 0.0,
+     "ganks_f": 15.7,
+     "ganks_o": 6.6,
+     "lead_focal": 89.5,
+     "plates_f": 1.6,
+     "plates_o": 0.0,
+     "purchases_f": 1.0,
+     "purchases_o": 1.8,
+     "recalls_f": 5.5,
+     "recalls_o": 1.3,
+     "trade_dealt_f": 0.0,
+     "trade_dealt_o": 0.0,
+     "trades_f": 0.0,
+     "trades_o": 0.0,
+     "unequal": 96.3
+    },
+    "shove_stay": {
+     "deaths_f": 0.3,
+     "deaths_o": 0.2,
+     "farm_f": 57.35049999999988,
+     "farm_o": 62.879624999999876,
+     "forward_f": 11.1,
+     "forward_o": 0.0,
+     "ganks_f": 13.0,
+     "ganks_o": 9.3,
+     "lead_focal": 80.3,
+     "plates_f": 0.2,
+     "plates_o": 0.0,
+     "purchases_f": 1.0,
+     "purchases_o": 1.8,
+     "recalls_f": 4.0,
+     "recalls_o": 1.8,
+     "trade_dealt_f": 0.0,
+     "trade_dealt_o": 0.0,
+     "trades_f": 0.0,
+     "trades_o": 0.0,
+     "unequal": 83.7
+    }
+   }
+  },
+  "g0.40_i1.35|threat_N0|full|afford": {
+   "means": {
+    "farm8": -5.561998666880314,
+    "recall_now": 0.05053734476236995,
+    "shove_then_recall": -5.292039022330814,
+    "shove_stay": -3.3221831955389276
+   },
+   "recall_minus_farm": {
+    "diff": 5.612536011642684,
+    "se": 1.8365052986835098,
+    "ci95": [
+     2.0129856262230046,
+     9.212086397062363
+    ],
+    "significant": true,
+    "a": 0.05053734476236995,
+    "b": -5.561998666880314
+   },
+   "shove_recall_minus_recall": {
+    "diff": -5.342576367093183,
+    "se": 1.157880147714178,
+    "ci95": [
+     -7.612021456612972,
+     -3.0731312775733937
+    ],
+    "significant": true,
+    "a": -5.292039022330814,
+    "b": 0.05053734476236995
+   },
+   "shove_stay_minus_farm": {
+    "diff": 2.2398154713413856,
+    "se": 1.2403885562448438,
+    "ci95": [
+     -0.1913460988985083,
+     4.6709770415812795
+    ],
+    "significant": false,
+    "a": -3.3221831955389276,
+    "b": -5.561998666880314
+   },
+   "best": "recall_now",
+   "counters": {
+    "farm8": {
+     "deaths_f": 0.4,
+     "deaths_o": 0.2,
+     "farm_f": 46.08124999999994,
+     "farm_o": 63.1012499999999,
+     "forward_f": 46.6,
+     "forward_o": 1.0,
+     "ganks_f": 13.8,
+     "ganks_o": 5.9,
+     "lead_focal": 137.2,
+     "plates_f": 1.4,
+     "plates_o": 0.0,
+     "purchases_f": 2.0,
+     "purchases_o": 1.1,
+     "recalls_f": 4.5,
+     "recalls_o": 1.3,
+     "trade_dealt_f": 0.0,
+     "trade_dealt_o": 0.0,
+     "trades_f": 0.0,
+     "trades_o": 0.0,
+     "unequal": 140.0
+    },
+    "recall_now": {
+     "deaths_f": 0.2,
+     "deaths_o": 0.4,
+     "farm_f": 59.47999999999988,
+     "farm_o": 60.67687499999988,
+     "forward_f": 7.5,
+     "forward_o": 1.0,
+     "ganks_f": 9.6,
+     "ganks_o": 9.9,
+     "lead_focal": 76.7,
+     "plates_f": 0.2,
+     "plates_o": 0.0,
+     "purchases_f": 2.0,
+     "purchases_o": 1.9,
+     "recalls_f": 3.5,
+     "recalls_o": 2.5,
+     "trade_dealt_f": 0.0,
+     "trade_dealt_o": 0.0,
+     "trades_f": 0.0,
+     "trades_o": 0.0,
+     "unequal": 81.2
+    },
+    "shove_then_recall": {
+     "deaths_f": 0.5,
+     "deaths_o": 0.2,
+     "farm_f": 48.91774999999991,
+     "farm_o": 63.40274999999988,
+     "forward_f": 32.7,
+     "forward_o": 1.0,
+     "ganks_f": 13.5,
+     "ganks_o": 6.0,
+     "lead_focal": 122.3,
+     "plates_f": 1.0,
+     "plates_o": 0.0,
+     "purchases_f": 2.0,
+     "purchases_o": 1.6,
+     "recalls_f": 4.5,
+     "recalls_o": 1.2,
+     "trade_dealt_f": 0.0,
+     "trade_dealt_o": 0.0,
+     "trades_f": 0.0,
+     "trades_o": 0.0,
+     "unequal": 122.3
+    },
+    "shove_stay": {
+     "deaths_f": 0.4,
+     "deaths_o": 0.3,
+     "farm_f": 53.31299999999991,
+     "farm_o": 62.57024999999989,
+     "forward_f": 23.3,
+     "forward_o": 1.0,
+     "ganks_f": 12.8,
+     "ganks_o": 6.6,
+     "lead_focal": 119.6,
+     "plates_f": 0.6,
+     "plates_o": 0.0,
+     "purchases_f": 2.0,
+     "purchases_o": 1.6,
+     "recalls_f": 4.0,
+     "recalls_o": 1.3,
+     "trade_dealt_f": 0.0,
+     "trade_dealt_o": 0.0,
+     "trades_f": 0.0,
+     "trades_o": 0.0,
+     "unequal": 121.0
+    }
+   }
+  },
+  "g0.40_i1.35|threat_N0|full|poor": {
+   "means": {
+    "farm8": -4.201936416082852,
+    "recall_now": -1.2968825138808198,
+    "shove_then_recall": -8.391714504056946,
+    "shove_stay": -4.282792667979966
+   },
+   "recall_minus_farm": {
+    "diff": 2.9050539022020314,
+    "se": 1.2151266681656452,
+    "ci95": [
+     0.5234056325973668,
+     5.286702171806696
+    ],
+    "significant": true,
+    "a": -1.2968825138808198,
+    "b": -4.201936416082852
+   },
+   "shove_recall_minus_recall": {
+    "diff": -7.094831990176125,
+    "se": 0.7516267637256346,
+    "ci95": [
+     -8.56802044707837,
+     -5.621643533273882
+    ],
+    "significant": true,
+    "a": -8.391714504056946,
+    "b": -1.2968825138808198
+   },
+   "shove_stay_minus_farm": {
+    "diff": -0.08085625189711498,
+    "se": 1.4719535646862787,
+    "ci95": [
+     -2.965885238682221,
+     2.8041727348879912
+    ],
+    "significant": false,
+    "a": -4.282792667979966,
+    "b": -4.201936416082852
+   },
+   "best": "recall_now",
+   "counters": {
+    "farm8": {
+     "deaths_f": 0.8,
+     "deaths_o": 0.3,
+     "farm_f": 49.59199999999992,
+     "farm_o": 62.95387499999989,
+     "forward_f": 33.1,
+     "forward_o": 1.0,
+     "ganks_f": 12.3,
+     "ganks_o": 5.3,
+     "lead_focal": 99.8,
+     "plates_f": 1.0,
+     "plates_o": 0.0,
+     "purchases_f": 2.0,
+     "purchases_o": 1.4,
+     "recalls_f": 3.9,
+     "recalls_o": 1.4,
+     "trade_dealt_f": 0.0,
+     "trade_dealt_o": 0.0,
+     "trades_f": 0.0,
+     "trades_o": 0.0,
+     "unequal": 102.9
+    },
+    "recall_now": {
+     "deaths_f": 0.1,
+     "deaths_o": 0.4,
+     "farm_f": 58.382499999999865,
+     "farm_o": 61.73774999999987,
+     "forward_f": 7.7,
+     "forward_o": 1.0,
+     "ganks_f": 10.8,
+     "ganks_o": 6.9,
+     "lead_focal": 69.4,
+     "plates_f": 0.0,
+     "plates_o": 0.0,
+     "purchases_f": 2.0,
+     "purchases_o": 2.0,
+     "recalls_f": 5.3,
+     "recalls_o": 2.0,
+     "trade_dealt_f": 0.0,
+     "trade_dealt_o": 0.0,
+     "trades_f": 0.0,
+     "trades_o": 0.0,
+     "unequal": 72.7
+    },
+    "shove_then_recall": {
+     "deaths_f": 0.6,
+     "deaths_o": 0.1,
+     "farm_f": 41.07549999999996,
+     "farm_o": 64.47374999999991,
+     "forward_f": 54.2,
+     "forward_o": 1.0,
+     "ganks_f": 14.1,
+     "ganks_o": 3.9,
+     "lead_focal": 141.1,
+     "plates_f": 1.8,
+     "plates_o": 0.0,
+     "purchases_f": 2.0,
+     "purchases_o": 0.8,
+     "recalls_f": 5.8,
+     "recalls_o": 0.8,
+     "trade_dealt_f": 0.0,
+     "trade_dealt_o": 0.0,
+     "trades_f": 0.0,
+     "trades_o": 0.0,
+     "unequal": 142.0
+    },
+    "shove_stay": {
+     "deaths_f": 0.4,
+     "deaths_o": 0.3,
+     "farm_f": 49.80249999999991,
+     "farm_o": 62.967374999999876,
+     "forward_f": 30.9,
+     "forward_o": 1.0,
+     "ganks_f": 12.8,
+     "ganks_o": 5.6,
+     "lead_focal": 100.8,
+     "plates_f": 1.0,
+     "plates_o": 0.0,
+     "purchases_f": 2.0,
+     "purchases_o": 1.4,
+     "recalls_f": 4.6,
+     "recalls_o": 1.3,
+     "trade_dealt_f": 0.0,
+     "trade_dealt_o": 0.0,
+     "trades_f": 0.0,
+     "trades_o": 0.0,
+     "unequal": 105.9
+    }
+   }
+  },
+  "g0.40_i1.35|threat_N0|half|afford": {
+   "means": {
+    "farm8": -0.687916162114491,
+    "recall_now": -0.7186256686461564,
+    "shove_then_recall": -6.3857781619634775,
+    "shove_stay": -6.123076785142956
+   },
+   "recall_minus_farm": {
+    "diff": -0.030709506531665376,
+    "se": 1.472978712867842,
+    "ci95": [
+     -2.9177477837526355,
+     2.856328770689305
+    ],
+    "significant": false,
+    "a": -0.7186256686461564,
+    "b": -0.687916162114491
+   },
+   "shove_recall_minus_recall": {
+    "diff": -5.667152493317323,
+    "se": 1.281255503834736,
+    "ci95": [
+     -8.178413280833405,
+     -3.15589170580124
+    ],
+    "significant": true,
+    "a": -6.3857781619634775,
+    "b": -0.7186256686461564
+   },
+   "shove_stay_minus_farm": {
+    "diff": -5.435160623028466,
+    "se": 1.6667016826269425,
+    "ci95": [
+     -8.701895920977273,
+     -2.168425325079659
+    ],
+    "significant": true,
+    "a": -6.123076785142956,
+    "b": -0.687916162114491
+   },
+   "best": "farm8",
+   "counters": {
+    "farm8": {
+     "deaths_f": 0.3,
+     "deaths_o": 0.7,
+     "farm_f": 57.47424999999989,
+     "farm_o": 61.057124999999886,
+     "forward_f": 12.3,
+     "forward_o": 1.0,
+     "ganks_f": 10.5,
+     "ganks_o": 10.3,
+     "lead_focal": 73.2,
+     "plates_f": 0.4,
+     "plates_o": 0.0,
+     "purchases_f": 2.0,
+     "purchases_o": 1.8,
+     "recalls_f": 3.0,
+     "recalls_o": 2.0,
+     "trade_dealt_f": 0.0,
+     "trade_dealt_o": 0.0,
+     "trades_f": 0.0,
+     "trades_o": 0.0,
+     "unequal": 75.7
+    },
+    "recall_now": {
+     "deaths_f": 0.0,
+     "deaths_o": 0.4,
+     "farm_f": 57.99774999999988,
+     "farm_o": 61.635374999999875,
+     "forward_f": 8.4,
+     "forward_o": 1.0,
+     "ganks_f": 11.6,
+     "ganks_o": 8.2,
+     "lead_focal": 105.6,
+     "plates_f": 0.2,
+     "plates_o": 0.0,
+     "purchases_f": 2.0,
+     "purchases_o": 1.8,
+     "recalls_f": 4.8,
+     "recalls_o": 1.9,
+     "trade_dealt_f": 0.0,
+     "trade_dealt_o": 0.0,
+     "trades_f": 0.0,
+     "trades_o": 0.0,
+     "unequal": 105.6
+    },
+    "shove_then_recall": {
+     "deaths_f": 0.5,
+     "deaths_o": 0.3,
+     "farm_f": 46.71149999999994,
+     "farm_o": 63.9686249999999,
+     "forward_f": 37.6,
+     "forward_o": 1.0,
+     "ganks_f": 13.8,
+     "ganks_o": 6.2,
+     "lead_focal": 133.3,
+     "plates_f": 1.2,
+     "plates_o": 0.0,
+     "purchases_f": 2.0,
+     "purchases_o": 1.2,
+     "recalls_f": 5.0,
+     "recalls_o": 1.1,
+     "trade_dealt_f": 0.0,
+     "trade_dealt_o": 0.0,
+     "trades_f": 0.0,
+     "trades_o": 0.0,
+     "unequal": 133.3
+    },
+    "shove_stay": {
+     "deaths_f": 0.6,
+     "deaths_o": 0.2,
+     "farm_f": 46.91549999999994,
+     "farm_o": 63.916874999999905,
+     "forward_f": 36.5,
+     "forward_o": 1.0,
+     "ganks_f": 14.0,
+     "ganks_o": 6.1,
+     "lead_focal": 138.5,
+     "plates_f": 1.2,
+     "plates_o": 0.0,
+     "purchases_f": 2.0,
+     "purchases_o": 1.0,
+     "recalls_f": 4.6,
+     "recalls_o": 1.2,
+     "trade_dealt_f": 0.0,
+     "trade_dealt_o": 0.0,
+     "trades_f": 0.0,
+     "trades_o": 0.0,
+     "unequal": 138.7
+    }
+   }
+  },
+  "g0.40_i1.35|threat_N0|half|poor": {
+   "means": {
+    "farm8": -2.6249967193896055,
+    "recall_now": -3.5125728074102556,
+    "shove_then_recall": -5.299970928252572,
+    "shove_stay": -4.719373677946946
+   },
+   "recall_minus_farm": {
+    "diff": -0.8875760880206498,
+    "se": 1.591391225422721,
+    "ci95": [
+     -4.0067028898491825,
+     2.2315507138078834
+    ],
+    "significant": false,
+    "a": -3.5125728074102556,
+    "b": -2.6249967193896055
+   },
+   "shove_recall_minus_recall": {
+    "diff": -1.7873981208423166,
+    "se": 1.6722924298286792,
+    "ci95": [
+     -5.065091283306527,
+     1.4902950416218945
+    ],
+    "significant": false,
+    "a": -5.299970928252572,
+    "b": -3.5125728074102556
+   },
+   "shove_stay_minus_farm": {
+    "diff": -2.0943769585573406,
+    "se": 1.7720652120257026,
+    "ci95": [
+     -5.567624774127717,
+     1.3788708570130361
+    ],
+    "significant": false,
+    "a": -4.719373677946946,
+    "b": -2.6249967193896055
+   },
+   "best": "farm8",
+   "counters": {
+    "farm8": {
+     "deaths_f": 0.6,
+     "deaths_o": 0.6,
+     "farm_f": 51.77274999999992,
+     "farm_o": 61.72537499999991,
+     "forward_f": 29.0,
+     "forward_o": 1.0,
+     "ganks_f": 12.2,
+     "ganks_o": 8.4,
+     "lead_focal": 80.1,
+     "plates_f": 1.0,
+     "plates_o": 0.0,
+     "purchases_f": 2.0,
+     "purchases_o": 1.6,
+     "recalls_f": 4.2,
+     "recalls_o": 1.8,
+     "trade_dealt_f": 0.0,
+     "trade_dealt_o": 0.0,
+     "trades_f": 0.0,
+     "trades_o": 0.0,
+     "unequal": 86.1
+    },
+    "recall_now": {
+     "deaths_f": 0.8,
+     "deaths_o": 0.4,
+     "farm_f": 51.38349999999991,
+     "farm_o": 62.722124999999906,
+     "forward_f": 25.7,
+     "forward_o": 1.0,
+     "ganks_f": 14.0,
+     "ganks_o": 7.7,
+     "lead_focal": 108.0,
+     "plates_f": 0.8,
+     "plates_o": 0.0,
+     "purchases_f": 2.0,
+     "purchases_o": 1.6,
+     "recalls_f": 5.4,
+     "recalls_o": 1.5,
+     "trade_dealt_f": 0.0,
+     "trade_dealt_o": 0.0,
+     "trades_f": 0.0,
+     "trades_o": 0.0,
+     "unequal": 121.7
+    },
+    "shove_then_recall": {
+     "deaths_f": 0.9,
+     "deaths_o": 0.2,
+     "farm_f": 49.09749999999992,
+     "farm_o": 63.44999999999989,
+     "forward_f": 31.0,
+     "forward_o": 1.0,
+     "ganks_f": 15.3,
+     "ganks_o": 6.0,
+     "lead_focal": 129.4,
+     "plates_f": 1.0,
+     "plates_o": 0.0,
+     "purchases_f": 2.0,
+     "purchases_o": 1.7,
+     "recalls_f": 5.4,
+     "recalls_o": 1.3,
+     "trade_dealt_f": 0.0,
+     "trade_dealt_o": 0.0,
+     "trades_f": 0.0,
+     "trades_o": 0.0,
+     "unequal": 131.1
+    },
+    "shove_stay": {
+     "deaths_f": 1.0,
+     "deaths_o": 0.2,
+     "farm_f": 49.59174999999992,
+     "farm_o": 63.3847499999999,
+     "forward_f": 30.4,
+     "forward_o": 1.0,
+     "ganks_f": 15.1,
+     "ganks_o": 5.7,
+     "lead_focal": 130.8,
+     "plates_f": 1.0,
+     "plates_o": 0.0,
+     "purchases_f": 2.0,
+     "purchases_o": 1.7,
+     "recalls_f": 4.7,
+     "recalls_o": 1.2,
+     "trade_dealt_f": 0.0,
+     "trade_dealt_o": 0.0,
+     "trades_f": 0.0,
+     "trades_o": 0.0,
+     "unequal": 132.1
+    }
+   }
+  }
+ },
+ "meta": {
+  "commit": "3b15b41ebc64278c6cc7b6a11bcca56df5174532",
+  "stage": "DCF",
+  "configs_arg": [
+   "g0.40_i1.35"
+  ],
+  "wall_s": 9.751333700027317,
+  "cpu_s": 68.921875,
+  "turns": 320000,
+  "procs": 8,
+  "command": "python -m lanegame.experiments.m4.calibration --stage DCF --configs g0.40_i1.35"
+ }
+}

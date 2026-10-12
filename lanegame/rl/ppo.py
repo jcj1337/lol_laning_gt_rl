@@ -75,6 +75,8 @@ class PPOConfig:
                                            # game of each environment gets a seeded random length in [1, game_length]
     start_archive: Optional[str] = None    # JSON archive of witnessed start states (lanegame.rl.starts)
     start_mix: float = 0.0                 # beta: P(a training game starts from a uniformly drawn archive state)
+    allow_gamma_mismatch: bool = False     # continuing time: explicit opt-in to train with a gamma different from the
+                                           # game's (a different objective, design §10.2); without it that is an error
 
     @classmethod
     def continuing(cls, game_cfg, **kw) -> "PPOConfig":
@@ -120,15 +122,17 @@ class PPOConfig:
 
 def check_time_semantics(game_cfg, cfg: "PPOConfig") -> None:
     """Continuing time needs a game length (a game never ends by itself); a training gamma different from the game's
-    optimizes a different objective, which is allowed only as a stated choice (a warning is issued)."""
+    optimizes a different objective, which is allowed only as a stated choice: `allow_gamma_mismatch=True` (recorded
+    with the run's configuration). Without the opt-in a mismatch raises ValueError. Finite (legacy) games are
+    unaffected."""
     if not game_cfg.continuing:
         return
     if cfg.game_length is None or cfg.game_length < 1:
         raise ValueError("continuing time: PPOConfig.game_length (the bootstrapped time limit) must be set")
-    if cfg.gamma != game_cfg.gamma:
-        import warnings
-        warnings.warn(f"training gamma {cfg.gamma} differs from the game's gamma {game_cfg.gamma}: the policy "
-                      "optimizes a different objective (design §10.2); report it")
+    if cfg.gamma != game_cfg.gamma and not cfg.allow_gamma_mismatch:
+        raise ValueError(f"training gamma {cfg.gamma} differs from the game's gamma {game_cfg.gamma}: the policy would "
+                         "optimize a different objective (design §10.2). Use PPOConfig.continuing(game_cfg), or set "
+                         "allow_gamma_mismatch=True to make it a stated choice")
 
 
 def compute_gae(rewards: np.ndarray, values: np.ndarray, next_values: np.ndarray, terminated: np.ndarray,
