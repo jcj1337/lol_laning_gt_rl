@@ -136,6 +136,12 @@ def recall_states(cfg: GameConfig) -> Dict[str, Snapshot]:
     return out
 
 
+def _stable(name: str) -> int:
+    """A process-independent key for seeds (Python's str hash is salted per process)."""
+    import zlib
+    return zlib.crc32(name.encode()) % 100_000
+
+
 def with_a(snap: Snapshot, **kw) -> Snapshot:
     return snap.with_side(0, **kw)
 
@@ -177,7 +183,7 @@ def build_jobs(cfg: GameConfig, n: int, window: int) -> Dict[str, dict]:
                 v = with_a(s, hp=max(1, H * hp6 // 6), gold=price if afford else max(0, price - 1_000_000))
                 for plan in ("recall", "hold"):
                     add(f"B|{name}|{hp6}|{'afford' if afford else 'poor'}|{plan}", v, plan,
-                        ("edge_trader", "edge_trader"), (3, hash(name) % 1000, hp6, afford), 503)
+                        ("edge_trader", "edge_trader"), (3, _stable(name), hp6, afford), 503)
     # C: forward vs back under a held freeze, holding vs trading freezer (B is the focal opponent)
     s1 = witness_snapshot("1_equal_power_freeze")
     for fz in ("freeze_hold", "freeze_trade"):
@@ -192,14 +198,14 @@ def build_jobs(cfg: GameConfig, n: int, window: int) -> Dict[str, dict]:
         price = t.prices[a.items]
         L = level(a, t)
         low = with_a(s, hp=max(1, t.hp_max[L] // 6), gold=max(a.gold, price))
-        add(f"D|{name}|recall", low, "recall", ("edge_trader", "edge_trader"), (5, hash(name) % 1000), 505)
+        add(f"D|{name}|recall", low, "recall", ("edge_trader", "edge_trader"), (5, _stable(name)), 505)
         dead = with_a(low, hp=0, absent=cfg.death_turns, pos=-cfg.tower)
-        add(f"D|{name}|death", dead, "follow", ("edge_trader", "edge_trader"), (5, hash(name) % 1000), 505,
+        add(f"D|{name}|death", dead, "follow", ("edge_trader", "edge_trader"), (5, _stable(name)), 505,
             offset=cfg.kill_bounty)
         fwd = with_a(low, pos=1)
         add(f"D|{name}|walk_back_recall", fwd, "walk_back_recall", ("edge_trader", "edge_trader"),
-            (5, hash(name) % 1000), 505)
-        add(f"D|{name}|death_forward", dead, "follow", ("edge_trader", "edge_trader"), (5, hash(name) % 1000), 505,
+            (5, _stable(name)), 505)
+        add(f"D|{name}|death_forward", dead, "follow", ("edge_trader", "edge_trader"), (5, _stable(name)), 505,
             offset=cfg.kill_bounty)
     # E: denial by an equal and a strong freezer (advances and trades) against an XP keeper
     for strength in ("equal", "strong"):

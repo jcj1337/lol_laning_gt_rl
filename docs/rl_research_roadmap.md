@@ -873,3 +873,22 @@ Differences from section G:
 
 **Next milestone:** M4.2 = WP0 + WP1 (ruleset scaffold, legacy pins, continuing time with segment PPO and discounted
 evaluation), then WP2–WP7.
+
+## P. M4.2 outcome: integrated implementation and pre-training validation (2026-10-11)
+
+Branch `implementation/m4-integrated`. WP0–WP10 of the M4 plan are implemented as the separately versioned ruleset
+`GameConfig.m4()`; every legacy configuration stays bit-identical (pins taken on the unchanged engine). Validation
+S0–S4 is complete. Full account: [m4_implementation_report.md](m4_implementation_report.md); results:
+`results/m4/`.
+
+- S0 legacy pins and all 500 earlier tests pass; S1: 679 tests pass (2 strict expected failures record design
+  findings), a 68 000-turn soak is clean, the observation is exactly decodable on the exhaustive reachable lane.
+- S2: levels 2 / 6 / 11 / 18 at turns 4 / 19 / 58 / 144 (targets 4 / 20 / 59 / 147).
+- S3: Freeze gate G1, G2 and the G3 rule pass on 163 reachable scenarios; a Shove + Hold breaker breaks a freeze later
+  than the lane-only design table because M2's farm-spot rule walks it back when its probe predicts a crash.
+- S4: no dominant scripted strategy, moderate snowballing; item tiers have almost no measurable value (item leads last
+  16–22 of 400 turns), and siege pressure is strongly unprofitable for scripted agents.
+- Throughput 6 444 turns/s uncached (8 818 cached), target 4 000.
+
+**Next:** M4.3 (S5 PPO smoke and pilot, S6 research runs), after a review of design decision D4 (item prices and
+tiers) in light of the S4 item finding.

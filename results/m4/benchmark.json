@@ -1,0 +1,94 @@
+{
+ "meta": {
+  "commit": "1a40cf5069dda6fd2ecc23055c5be7c6278287e0",
+  "command": "python.exe C:\\Users\\light\\OneDrive\\Desktop\\projects\\lol_gt_laning\\lanegame\\experiments\\m4\\benchmark.py --turns 40000",
+  "environment": {
+   "python": "3.13.9",
+   "numpy": "2.5.3",
+   "scipy": "1.18.1",
+   "platform": "Windows-11-10.0.26200-SP0",
+   "timestamp": "2026-10-11 21:09:51"
+  },
+  "turns": 40000
+ },
+ "env": {
+  "M2 champions()": {
+   "cache_0": 6932.766103553601,
+   "cache_20000": 10282.943943412665
+  },
+  "M2 continuing fixture (m2c)": {
+   "cache_0": 6997.623099873882,
+   "cache_20000": 10448.72957293234
+  },
+  "M4 m4()": {
+   "cache_0": 6444.06108714867,
+   "cache_20000": 8817.911753789776
+  }
+ },
+ "resolver": {
+  "M2 champions()": 11732.2090422857,
+  "M2 continuing fixture (m2c)": 11880.109969049003,
+  "M4 m4()": 11336.175765341422
+ },
+ "observe_us": {
+  "M2 champions()": 5.905979999806732,
+  "M2 continuing fixture (m2c)": 5.650214990600944,
+  "M4 m4()": 11.319140007253736
+ },
+ "memory_m4": {
+  "10000": {
+   "current_mb": 19.13161849975586,
+   "peak_mb": 19.141616821289062,
+   "lane_cache_entries": 6832
+  },
+  "25000": {
+   "current_mb": 28.946388244628906,
+   "peak_mb": 28.956707000732422,
+   "lane_cache_entries": 10360
+  },
+  "50000": {
+   "current_mb": 39.3831901550293,
+   "peak_mb": 39.393341064453125,
+   "lane_cache_entries": 13990
+  },
+  "75000": {
+   "current_mb": 45.1783447265625,
+   "peak_mb": 45.18857192993164,
+   "lane_cache_entries": 16066
+  },
+  "100000": {
+   "current_mb": 50.04817581176758,
+   "peak_mb": 50.058509826660156,
+   "lane_cache_entries": 17827
+  }
+ },
+ "memory_m4_no_cache": {
+  "10000": {
+   "current_mb": 0.019718170166015625,
+   "peak_mb": 0.03235626220703125,
+   "lane_cache_entries": 0
+  },
+  "25000": {
+   "current_mb": 0.019771575927734375,
+   "peak_mb": 0.032440185546875,
+   "lane_cache_entries": 0
+  },
+  "50000": {
+   "current_mb": 0.020107269287109375,
+   "peak_mb": 0.032562255859375,
+   "lane_cache_entries": 0
+  },
+  "75000": {
+   "current_mb": 0.020175933837890625,
+   "peak_mb": 0.03275299072265625,
+   "lane_cache_entries": 0
+  },
+  "100000": {
+   "current_mb": 0.020298004150390625,
+   "peak_mb": 0.0329742431640625,
+   "lane_cache_entries": 0
+  }
+ },
+ "profile_m4": "         6533657 function calls in 4.399 seconds\n\n   Ordered by: internal time\n   List reduced from 158 to 14 due to restriction <14>\n\n   ncalls  tottime  percall  cumtime  percall filename:lineno(function)\n    20000    0.691    0.000    2.275    0.000 C:\\Users\\light\\OneDrive\\Desktop\\projects\\lol_gt_laning\\lanegame\\champions_m4.py:259(resolve_turn_m4)\n    20000    0.454    0.000    4.388    0.000 C:\\Users\\light\\OneDrive\\Desktop\\projects\\lol_gt_laning\\lanegame\\env\\core.py:385(_step_m4)\n    40002    0.388    0.000    0.923    0.000 C:\\Users\\light\\OneDrive\\Desktop\\projects\\lol_gt_laning\\lanegame\\env\\observation_m4.py:109(observe_m4)\n    19064    0.218    0.000    0.420    0.000 C:\\Users\\light\\OneDrive\\Desktop\\projects\\lol_gt_laning\\lanegame\\mechanics.py:224(_tick)\n        1    0.183    0.183    4.617    4.617 C:\\Users\\light\\OneDrive\\Desktop\\projects\\lol_gt_laning\\lanegame\\experiments\\m4\\benchmark.py:33(env_rate)\n     9532    0.157    0.000    0.704    0.000 C:\\Users\\light\\OneDrive\\Desktop\\projects\\lol_gt_laning\\lanegame\\mechanics.py:408(step_turn)\n    20001    0.148    0.000    1.535    0.000 C:\\Users\\light\\OneDrive\\Desktop\\projects\\lol_gt_laning\\lanegame\\env\\core.py:445(_observe)\n    40002    0.129    0.000    0.253    0.000 C:\\Users\\light\\OneDrive\\Desktop\\projects\\lol_gt_laning\\lanegame\\champions.py:235(champion_legal_actions)\n    80004    0.101    0.000    0.113    0.000 C:\\Users\\light\\OneDrive\\Desktop\\projects\\lol_gt_laning\\lanegame\\env\\observation_m4.py:72(_lane_block)\n    40002    0.097    0.000    0.097    0.000 {built-in method numpy.asarray}\n    40002    0.070    0.000    1.022    0.000 C:\\Users\\light\\OneDrive\\Desktop\\projects\\lol_gt_laning\\lanegame\\env\\observation.py:109(observe)\n    32874    0.063    0.000    0.104    0.000 C:\\Users\\light\\OneDrive\\Desktop\\projects\\lol_gt_laning\\lanegame\\champions.py:260(champion_gank_probability)\n    40002    0.056    0.000    0.333    0.000 C:\\Users\\light\\OneDrive\\Desktop\\projects\\lol_gt_laning\\lanegame\\env\\observation.py:164(legal_set)\n    80004    0.055    0.000    0.061    0.000 C:\\Users\\light\\OneDrive\\Desktop\\projects\\lol_gt_laning\\lanegame\\env\\observation_m4.py:93(_tower_block)\n\n\n",
+ "target_4000_met": true
+}

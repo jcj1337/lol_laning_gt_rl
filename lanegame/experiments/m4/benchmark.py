@@ -120,6 +120,7 @@ def main(argv=None):
         d["resolver"][name] = resolver_rate(cfg, inp)
         d["observe_us"][name] = observe_cost(cfg, inp)
     d["memory_m4"] = memory_profile(GameConfig.m4())
+    d["memory_m4_no_cache"] = memory_profile(GameConfig.m4(), cache=0)
     d["profile_m4"] = profile_m4()
     m4 = d["env"]["M4 m4()"]
     d["target_4000_met"] = bool(min(m4.values()) >= 4000)
@@ -135,6 +136,11 @@ def main(argv=None):
          md_table(["turns", "current MB", "peak MB", "lane cache entries"],
                   [[k, f"{v['current_mb']:.2f}", f"{v['peak_mb']:.2f}", v["lane_cache_entries"]]
                    for k, v in d["memory_m4"].items()]), "",
+         "Without the lane cache (no growth: the memory above is the bounded LRU cache filling, about 2.6 KB per "
+         "entry, at most 20 000 entries):", "",
+         md_table(["turns", "current MB", "peak MB"],
+                  [[k, f"{v['current_mb']:.2f}", f"{v['peak_mb']:.2f}"] for k, v in d["memory_m4_no_cache"].items()]),
+         "",
          "Profile of the M4 environment step (cProfile, top functions by own time):", "", "```",
          d["profile_m4"].strip(), "```"]
     save("benchmark", d, "\n".join(L))

@@ -1,0 +1,161 @@
+{
+ "meta": {
+  "commit": "1a40cf5069dda6fd2ecc23055c5be7c6278287e0",
+  "command": "python.exe C:\\Users\\light\\OneDrive\\Desktop\\projects\\lol_gt_laning\\lanegame\\experiments\\m4\\smoke.py --m2c-steps 300000 --m4-steps 50000",
+  "environment": {
+   "python": "3.13.9",
+   "numpy": "2.5.3",
+   "scipy": "1.18.1",
+   "platform": "Windows-11-10.0.26200-SP0",
+   "timestamp": "2026-10-11 20:56:22"
+  },
+  "m2c_steps": 300000,
+  "m4_steps": 50000
+ },
+ "label": "integration smoke checks, NOT research results",
+ "m2c": {
+  "steps": 303317,
+  "env_turns": 163840,
+  "elapsed_s": 38.28717159992084,
+  "transitions_per_s": 7922.15740482191,
+  "finite_losses": true,
+  "explained_variance_last10": 0.5067198619166311,
+  "entropy_first_last": [
+   2.1910321936011314,
+   0.2730099931359291
+  ],
+  "value_s0_resources": 0.29787903651595116,
+  "ppo": {
+   "total_steps": 300000,
+   "n_envs": 16,
+   "n_steps": 64,
+   "epochs": 4,
+   "minibatch_size": 256,
+   "lr": 0.0003,
+   "anneal_lr": true,
+   "gamma": 0.99,
+   "gae_lambda": 0.95,
+   "clip_coef": 0.2,
+   "clip_vloss": true,
+   "vf_clip": 0.5,
+   "vf_coef": 0.5,
+   "ent_coef": 0.01,
+   "max_grad_norm": 0.5,
+   "target_kl": null,
+   "norm_adv": true,
+   "reward_scale": 0.1,
+   "hidden": [
+    128,
+    128
+   ],
+   "seed": 0,
+   "torch_threads": 1,
+   "max_turns": null,
+   "lane_cache": 20000,
+   "expected_gank_reward": false,
+   "skill_levels": null,
+   "segment_length": 128,
+   "game_length": 512,
+   "start_archive": null,
+   "start_mix": 0.0
+  },
+  "shove_stationarity": {
+   "rate_by_window": [
+    0.0004033884630899556,
+    0.0004073319755600815,
+    0.00040766408479412964,
+    0.0008244023083264633,
+    0.0,
+    0.0,
+    0.0,
+    0.001226993865030675
+   ],
+   "present_by_window": [
+    2479.0,
+    2455.0,
+    2453.0,
+    2426.0,
+    2431.0,
+    2421.0,
+    2440.0,
+    2445.0
+   ],
+   "chi2": 8.005368088067488,
+   "p_value": 0.332120787451233,
+   "stationary_at_1pct": true
+  }
+ },
+ "m4": {
+  "steps": 50176,
+  "env_turns": 26624,
+  "elapsed_s": 7.966153400018811,
+  "transitions_per_s": 6298.648479438209,
+  "finite_losses": true,
+  "explained_variance_last10": 0.6865904046929222,
+  "entropy_first_last": [
+   2.1874957866966724,
+   1.435732826590538
+  ],
+  "value_s0_resources": 0.4081861674785614,
+  "ppo": {
+   "total_steps": 50000,
+   "n_envs": 16,
+   "n_steps": 64,
+   "epochs": 4,
+   "minibatch_size": 256,
+   "lr": 0.0003,
+   "anneal_lr": true,
+   "gamma": 0.99,
+   "gae_lambda": 0.95,
+   "clip_coef": 0.2,
+   "clip_vloss": true,
+   "vf_clip": 0.5,
+   "vf_coef": 0.5,
+   "ent_coef": 0.01,
+   "max_grad_norm": 0.5,
+   "target_kl": null,
+   "norm_adv": true,
+   "reward_scale": 0.1,
+   "hidden": [
+    128,
+    128
+   ],
+   "seed": 0,
+   "torch_threads": 1,
+   "max_turns": null,
+   "lane_cache": 20000,
+   "expected_gank_reward": false,
+   "skill_levels": null,
+   "segment_length": 128,
+   "game_length": 512,
+   "start_archive": null,
+   "start_mix": 0.0
+  },
+  "shove_stationarity": {
+   "rate_by_window": [
+    0.04670912951167728,
+    0.03897550111358575,
+    0.058693244739756366,
+    0.03858875413450937,
+    0.043859649122807015,
+    0.044642857142857144,
+    0.05790645879732739,
+    0.0418552036199095
+   ],
+   "present_by_window": [
+    942.0,
+    898.0,
+    903.0,
+    907.0,
+    912.0,
+    896.0,
+    898.0,
+    884.0
+   ],
+   "chi2": 8.749306524500472,
+   "p_value": 0.2711594635356536,
+   "stationary_at_1pct": true
+  }
+ },
+ "elapsed_s": 55.72173559991643
+}

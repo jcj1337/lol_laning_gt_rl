@@ -1,0 +1,1193 @@
+{
+ "meta": {
+  "commit": "df5f159451b2ba32e873598c5ed687484f60c7d0",
+  "command": "python.exe C:\\Users\\light\\OneDrive\\Desktop\\projects\\lol_gt_laning\\lanegame\\experiments\\m4\\progression.py --games 400 --turns 400 --procs 8",
+  "environment": {
+   "python": "3.13.9",
+   "numpy": "2.5.3",
+   "scipy": "1.18.1",
+   "platform": "Windows-11-10.0.26200-SP0",
+   "timestamp": "2026-10-11 20:24:55"
+  },
+  "config": {
+   "base": 4,
+   "tower": 2,
+   "ticks_per_turn": 2,
+   "spawn_interval": 4,
+   "horizon": 32,
+   "wave_hp": 4,
+   "max_stacks": 2,
+   "cap_rule": "block",
+   "queue_fights": true,
+   "positioning": true,
+   "damage_law": "lanchester",
+   "shove_damage": 1,
+   "tower_damage": 1,
+   "pressure_kappa": [
+    0,
+    1,
+    0
+   ],
+   "slowpush_line": 0,
+   "slowpush_mode": "stack_creep",
+   "slowpush_creep_period": 2,
+   "freeze_line": -1,
+   "freeze_break_threshold": 10,
+   "freeze_break_push": [
+    0,
+    4,
+    0
+   ],
+   "freeze_legal_max": -1,
+   "tower_mode": "mass",
+   "tower_consumption_per_turn": 1,
+   "tower_siege_damage": 1,
+   "siege_engage": false,
+   "siege_cap": 48,
+   "siege_mode": "objective",
+   "plate_mode": "durability",
+   "plate_grant": [
+    1,
+    2,
+    3
+   ],
+   "plates_cap": 6,
+   "plates_per_tower": 5,
+   "plates_per_turn": 1,
+   "plate_value": 1.0,
+   "thin_damage": 1,
+   "thin_reach": 1,
+   "crash_options": [
+    [
+     [
+      1.0,
+      false
+     ],
+     [
+      0.0,
+      true
+     ]
+    ],
+    [
+     [
+      2.0,
+      false
+     ],
+     [
+      0.0,
+      true
+     ]
+    ],
+    [
+     [
+      3.0,
+      false
+     ],
+     [
+      2.0,
+      true
+     ]
+    ]
+   ],
+   "vision_turns": 6,
+   "vision_reduction": 0.75,
+   "farm_per_hp": 0.25,
+   "collect_contest": 0.9,
+   "collect_contest_enemy_tower": 0.5,
+   "collect_safe": 0.8,
+   "collect_safe_slope": 0.2,
+   "zone_contest": 0.3,
+   "zone_under_tower": 0.15,
+   "gank_base": 0.15,
+   "gank_position": 0.1,
+   "gank_action": [
+    0.02,
+    0.05,
+    0.02,
+    0.0,
+    0.0,
+    0.0
+   ],
+   "gank_strength": 0.02,
+   "gank_max": 0.4,
+   "gank_loss": 5.0,
+   "posture_cap": [
+    null,
+    null,
+    null,
+    -1,
+    -1,
+    -1
+   ],
+   "champion_mode": true,
+   "champion_hp": 6,
+   "champion_speed": 2,
+   "champion_absent_max": 3,
+   "recall_turns": 2,
+   "recall_line": -1,
+   "trade_hit_base": 0.55,
+   "trade_hit_skill": 0.4,
+   "trade_hit_behavior": [
+    0.0,
+    -0.25,
+    0.0,
+    -0.4,
+    0.0
+   ],
+   "trade_hit_minions": 0.05,
+   "trade_hit_tower": 0.15,
+   "trade_hit_min": 0.05,
+   "trade_hit_max": 0.95,
+   "trade_double_base": 0.3,
+   "trade_double_skill": 0.2,
+   "tower_shot_damage": 1,
+   "tower_shot_p": 1.0,
+   "tower_shot_p_busy": 0.5,
+   "skill_a": 0.5,
+   "skill_b": 0.5,
+   "safe_line": -1,
+   "trade_range": 1,
+   "farm_reach": 1,
+   "retreat_farm_reach": 2,
+   "trade_farm_factor": 0.5,
+   "champ_gank_base": 0.0,
+   "champ_gank_position": 0.12,
+   "champ_gank_behavior": [
+    0.01,
+    0.01,
+    0.03,
+    0.0
+   ],
+   "champ_gank_shove": 0.02,
+   "champ_gank_strength": 0.01,
+   "champ_gank_max": 0.3,
+   "gank_damage_trials": 4,
+   "gank_damage_base": 0.2,
+   "gank_damage_position": 0.6,
+   "gank_damage_defense": 0.2,
+   "gank_damage_skill": 0.2,
+   "death_turns": 3,
+   "kill_bounty": 0.5,
+   "ruleset": "m4",
+   "time_mode": "continuing",
+   "time_features": false,
+   "gamma": 0.99,
+   "xp_per_hp": 2,
+   "xp_range": 3,
+   "xp_base": 8,
+   "xp_step": 3,
+   "level_cap": 18,
+   "hp_base": 600,
+   "hp_growth": 1.05,
+   "ap_level_growth": 1.05,
+   "item_mult": 1.2,
+   "item_tiers": 2,
+   "item_prices": [
+    4.0,
+    6.0
+   ],
+   "freeze_maintenance": true,
+   "chase_rule": "contact_cell",
+   "tower_adjacent_p": 0.5,
+   "tower_adjacent_p_busy": 0.25,
+   "gank_damage_scale": "victim_level",
+   "plate_thresholds": [
+    1600,
+    3600,
+    6000
+   ],
+   "plate_gold": 1.0,
+   "pressure_tower_damage": 400,
+   "plate_gold_requires_presence": false,
+   "gold_unit": 1e-06,
+   "rear_count_max": 4
+  },
+  "games": 400,
+  "turns": 400,
+  "seeds": "10000 .. 10000 + games"
+ },
+ "mutual": {
+  "x": "hold_farmer",
+  "y": "hold_farmer",
+  "games": 400,
+  "turns": 400,
+  "levels": {
+   "2": {
+    "both": {
+     "n": 800,
+     "reached": 1.0,
+     "q25": 4.0,
+     "median": 4.0,
+     "q75": 4.0
+    },
+    "A": {
+     "n": 400,
+     "reached": 1.0,
+     "q25": 4.0,
+     "median": 4.0,
+     "q75": 4.0
+    },
+    "B": {
+     "n": 400,
+     "reached": 1.0,
+     "q25": 4.0,
+     "median": 4.0,
+     "q75": 4.0
+    }
+   },
+   "3": {
+    "both": {
+     "n": 800,
+     "reached": 1.0,
+     "q25": 7.0,
+     "median": 7.0,
+     "q75": 7.0
+    },
+    "A": {
+     "n": 400,
+     "reached": 1.0,
+     "q25": 7.0,
+     "median": 7.0,
+     "q75": 7.0
+    },
+    "B": {
+     "n": 400,
+     "reached": 1.0,
+     "q25": 7.0,
+     "median": 7.0,
+     "q75": 7.0
+    }
+   },
+   "4": {
+    "both": {
+     "n": 800,
+     "reached": 1.0,
+     "q25": 10.0,
+     "median": 10.0,
+     "q75": 10.0
+    },
+    "A": {
+     "n": 400,
+     "reached": 1.0,
+     "q25": 10.0,
+     "median": 10.0,
+     "q75": 10.0
+    },
+    "B": {
+     "n": 400,
+     "reached": 1.0,
+     "q25": 10.0,
+     "median": 10.0,
+     "q75": 10.0
+    }
+   },
+   "5": {
+    "both": {
+     "n": 800,
+     "reached": 1.0,
+     "q25": 14.0,
+     "median": 14.0,
+     "q75": 14.0
+    },
+    "A": {
+     "n": 400,
+     "reached": 1.0,
+     "q25": 14.0,
+     "median": 14.0,
+     "q75": 14.0
+    },
+    "B": {
+     "n": 400,
+     "reached": 1.0,
+     "q25": 14.0,
+     "median": 14.0,
+     "q75": 14.0
+    }
+   },
+   "6": {
+    "both": {
+     "n": 800,
+     "reached": 1.0,
+     "q25": 19.0,
+     "median": 19.0,
+     "q75": 19.0
+    },
+    "A": {
+     "n": 400,
+     "reached": 1.0,
+     "q25": 19.0,
+     "median": 19.0,
+     "q75": 19.0
+    },
+    "B": {
+     "n": 400,
+     "reached": 1.0,
+     "q25": 19.0,
+     "median": 19.0,
+     "q75": 19.0
+    }
+   },
+   "7": {
+    "both": {
+     "n": 800,
+     "reached": 1.0,
+     "q25": 25.0,
+     "median": 25.0,
+     "q75": 27.0
+    },
+    "A": {
+     "n": 400,
+     "reached": 1.0,
+     "q25": 25.0,
+     "median": 25.0,
+     "q75": 27.0
+    },
+    "B": {
+     "n": 400,
+     "reached": 1.0,
+     "q25": 25.0,
+     "median": 25.0,
+     "q75": 27.0
+    }
+   },
+   "8": {
+    "both": {
+     "n": 800,
+     "reached": 1.0,
+     "q25": 32.0,
+     "median": 32.0,
+     "q75": 34.0
+    },
+    "A": {
+     "n": 400,
+     "reached": 1.0,
+     "q25": 32.0,
+     "median": 32.0,
+     "q75": 34.0
+    },
+    "B": {
+     "n": 400,
+     "reached": 1.0,
+     "q25": 32.0,
+     "median": 32.0,
+     "q75": 34.0
+    }
+   },
+   "9": {
+    "both": {
+     "n": 800,
+     "reached": 1.0,
+     "q25": 39.0,
+     "median": 41.0,
+     "q75": 41.0
+    },
+    "A": {
+     "n": 400,
+     "reached": 1.0,
+     "q25": 39.0,
+     "median": 40.0,
+     "q75": 41.0
+    },
+    "B": {
+     "n": 400,
+     "reached": 1.0,
+     "q25": 39.0,
+     "median": 41.0,
+     "q75": 41.0
+    }
+   },
+   "10": {
+    "both": {
+     "n": 800,
+     "reached": 1.0,
+     "q25": 47.0,
+     "median": 49.0,
+     "q75": 50.0
+    },
+    "A": {
+     "n": 400,
+     "reached": 1.0,
+     "q25": 47.0,
+     "median": 49.0,
+     "q75": 49.25
+    },
+    "B": {
+     "n": 400,
+     "reached": 1.0,
+     "q25": 47.0,
+     "median": 49.0,
+     "q75": 50.0
+    }
+   },
+   "11": {
+    "both": {
+     "n": 800,
+     "reached": 1.0,
+     "q25": 56.0,
+     "median": 58.0,
+     "q75": 59.0
+    },
+    "A": {
+     "n": 400,
+     "reached": 1.0,
+     "q25": 56.0,
+     "median": 58.0,
+     "q75": 59.0
+    },
+    "B": {
+     "n": 400,
+     "reached": 1.0,
+     "q25": 58.0,
+     "median": 58.0,
+     "q75": 59.0
+    }
+   },
+   "12": {
+    "both": {
+     "n": 800,
+     "reached": 1.0,
+     "q25": 67.0,
+     "median": 67.0,
+     "q75": 69.0
+    },
+    "A": {
+     "n": 400,
+     "reached": 1.0,
+     "q25": 67.0,
+     "median": 67.0,
+     "q75": 69.0
+    },
+    "B": {
+     "n": 400,
+     "reached": 1.0,
+     "q25": 67.0,
+     "median": 67.0,
+     "q75": 69.0
+    }
+   },
+   "13": {
+    "both": {
+     "n": 800,
+     "reached": 1.0,
+     "q25": 77.0,
+     "median": 78.0,
+     "q75": 79.25
+    },
+    "A": {
+     "n": 400,
+     "reached": 1.0,
+     "q25": 77.0,
+     "median": 78.0,
+     "q75": 80.0
+    },
+    "B": {
+     "n": 400,
+     "reached": 1.0,
+     "q25": 77.0,
+     "median": 78.0,
+     "q75": 79.0
+    }
+   },
+   "14": {
+    "both": {
+     "n": 800,
+     "reached": 1.0,
+     "q25": 88.0,
+     "median": 90.0,
+     "q75": 91.0
+    },
+    "A": {
+     "n": 400,
+     "reached": 1.0,
+     "q25": 88.0,
+     "median": 90.0,
+     "q75": 91.0
+    },
+    "B": {
+     "n": 400,
+     "reached": 1.0,
+     "q25": 88.0,
+     "median": 90.0,
+     "q75": 91.0
+    }
+   },
+   "15": {
+    "both": {
+     "n": 800,
+     "reached": 1.0,
+     "q25": 101.0,
+     "median": 102.0,
+     "q75": 104.0
+    },
+    "A": {
+     "n": 400,
+     "reached": 1.0,
+     "q25": 100.0,
+     "median": 102.0,
+     "q75": 104.0
+    },
+    "B": {
+     "n": 400,
+     "reached": 1.0,
+     "q25": 101.0,
+     "median": 102.0,
+     "q75": 104.0
+    }
+   },
+   "16": {
+    "both": {
+     "n": 800,
+     "reached": 1.0,
+     "q25": 115.0,
+     "median": 116.0,
+     "q75": 118.0
+    },
+    "A": {
+     "n": 400,
+     "reached": 1.0,
+     "q25": 115.0,
+     "median": 116.0,
+     "q75": 118.0
+    },
+    "B": {
+     "n": 400,
+     "reached": 1.0,
+     "q25": 115.0,
+     "median": 116.0,
+     "q75": 118.0
+    }
+   },
+   "17": {
+    "both": {
+     "n": 800,
+     "reached": 1.0,
+     "q25": 128.0,
+     "median": 130.0,
+     "q75": 132.0
+    },
+    "A": {
+     "n": 400,
+     "reached": 1.0,
+     "q25": 128.0,
+     "median": 130.0,
+     "q75": 132.0
+    },
+    "B": {
+     "n": 400,
+     "reached": 1.0,
+     "q25": 128.0,
+     "median": 130.0,
+     "q75": 132.0
+    }
+   },
+   "18": {
+    "both": {
+     "n": 800,
+     "reached": 1.0,
+     "q25": 142.75,
+     "median": 144.0,
+     "q75": 146.0
+    },
+    "A": {
+     "n": 400,
+     "reached": 1.0,
+     "q25": 142.0,
+     "median": 144.0,
+     "q75": 146.0
+    },
+    "B": {
+     "n": 400,
+     "reached": 1.0,
+     "q25": 143.0,
+     "median": 144.0,
+     "q75": 146.0
+    }
+   }
+  },
+  "purchases": {
+   "tier1": {
+    "A": {
+     "n": 400,
+     "reached": 1.0,
+     "q25": 31.0,
+     "median": 44.5,
+     "q75": 62.0
+    },
+    "B": {
+     "n": 400,
+     "reached": 1.0,
+     "q25": 29.0,
+     "median": 41.0,
+     "q75": 63.0
+    }
+   },
+   "tier2": {
+    "A": {
+     "n": 400,
+     "reached": 1.0,
+     "q25": 47.0,
+     "median": 61.0,
+     "q75": 75.0
+    },
+    "B": {
+     "n": 400,
+     "reached": 1.0,
+     "q25": 45.0,
+     "median": 61.0,
+     "q75": 77.5
+    }
+   }
+  },
+  "level_gap": {
+   "30": {
+    "mean": -0.0025,
+    "sd": 0.04993746088859545
+   },
+   "60": {
+    "mean": 0.0025,
+    "sd": 0.41532366896193146
+   },
+   "100": {
+    "mean": 0.0325,
+    "sd": 0.601201921154615
+   },
+   "150": {
+    "mean": -0.0175,
+    "sd": 0.2391521482236779
+   },
+   "200": {
+    "mean": 0.0,
+    "sd": 0.0
+   },
+   "300": {
+    "mean": 0.0,
+    "sd": 0.0
+   },
+   "399": {
+    "mean": 0.0,
+    "sd": 0.0
+   }
+  },
+  "xp_absorption": [
+   0.9508908406524467,
+   0.9507214554579674
+  ],
+  "deaths_per_game": [
+   1.8425,
+   1.89
+  ],
+  "recalls_per_game": [
+   7.05,
+   7.015
+  ],
+  "farm_per_turn": [
+   0.3037356562499988,
+   0.30372290624999887
+  ],
+  "payoff_mean": 0.028850000000000025
+ },
+ "trader": {
+  "x": "aggressive_trader",
+  "y": "hold_farmer",
+  "games": 400,
+  "turns": 400,
+  "levels": {
+   "2": {
+    "both": {
+     "n": 800,
+     "reached": 1.0,
+     "q25": 4.0,
+     "median": 4.0,
+     "q75": 4.0
+    },
+    "A": {
+     "n": 400,
+     "reached": 1.0,
+     "q25": 4.0,
+     "median": 4.0,
+     "q75": 4.0
+    },
+    "B": {
+     "n": 400,
+     "reached": 1.0,
+     "q25": 4.0,
+     "median": 4.0,
+     "q75": 4.0
+    }
+   },
+   "3": {
+    "both": {
+     "n": 800,
+     "reached": 1.0,
+     "q25": 7.0,
+     "median": 7.0,
+     "q75": 7.0
+    },
+    "A": {
+     "n": 400,
+     "reached": 1.0,
+     "q25": 7.0,
+     "median": 7.0,
+     "q75": 7.0
+    },
+    "B": {
+     "n": 400,
+     "reached": 1.0,
+     "q25": 7.0,
+     "median": 7.0,
+     "q75": 7.0
+    }
+   },
+   "4": {
+    "both": {
+     "n": 800,
+     "reached": 1.0,
+     "q25": 10.0,
+     "median": 10.0,
+     "q75": 10.0
+    },
+    "A": {
+     "n": 400,
+     "reached": 1.0,
+     "q25": 10.0,
+     "median": 10.0,
+     "q75": 10.0
+    },
+    "B": {
+     "n": 400,
+     "reached": 1.0,
+     "q25": 10.0,
+     "median": 10.0,
+     "q75": 12.0
+    }
+   },
+   "5": {
+    "both": {
+     "n": 800,
+     "reached": 1.0,
+     "q25": 14.0,
+     "median": 16.0,
+     "q75": 17.0
+    },
+    "A": {
+     "n": 400,
+     "reached": 1.0,
+     "q25": 14.0,
+     "median": 14.0,
+     "q75": 16.0
+    },
+    "B": {
+     "n": 400,
+     "reached": 1.0,
+     "q25": 16.0,
+     "median": 17.0,
+     "q75": 17.0
+    }
+   },
+   "6": {
+    "both": {
+     "n": 800,
+     "reached": 1.0,
+     "q25": 21.0,
+     "median": 22.0,
+     "q75": 22.0
+    },
+    "A": {
+     "n": 400,
+     "reached": 1.0,
+     "q25": 19.0,
+     "median": 21.0,
+     "q75": 22.0
+    },
+    "B": {
+     "n": 400,
+     "reached": 1.0,
+     "q25": 21.0,
+     "median": 22.0,
+     "q75": 24.0
+    }
+   },
+   "7": {
+    "both": {
+     "n": 800,
+     "reached": 1.0,
+     "q25": 27.0,
+     "median": 29.0,
+     "q75": 30.0
+    },
+    "A": {
+     "n": 400,
+     "reached": 1.0,
+     "q25": 27.0,
+     "median": 27.0,
+     "q75": 28.0
+    },
+    "B": {
+     "n": 400,
+     "reached": 1.0,
+     "q25": 30.0,
+     "median": 30.0,
+     "q75": 31.0
+    }
+   },
+   "8": {
+    "both": {
+     "n": 800,
+     "reached": 1.0,
+     "q25": 35.0,
+     "median": 37.0,
+     "q75": 40.0
+    },
+    "A": {
+     "n": 400,
+     "reached": 1.0,
+     "q25": 34.0,
+     "median": 35.0,
+     "q75": 37.0
+    },
+    "B": {
+     "n": 400,
+     "reached": 1.0,
+     "q25": 37.0,
+     "median": 39.0,
+     "q75": 40.0
+    }
+   },
+   "9": {
+    "both": {
+     "n": 800,
+     "reached": 1.0,
+     "q25": 44.0,
+     "median": 46.0,
+     "q75": 48.0
+    },
+    "A": {
+     "n": 400,
+     "reached": 1.0,
+     "q25": 42.0,
+     "median": 44.0,
+     "q75": 45.0
+    },
+    "B": {
+     "n": 400,
+     "reached": 1.0,
+     "q25": 47.0,
+     "median": 48.0,
+     "q75": 50.0
+    }
+   },
+   "10": {
+    "both": {
+     "n": 800,
+     "reached": 1.0,
+     "q25": 53.0,
+     "median": 56.0,
+     "q75": 59.0
+    },
+    "A": {
+     "n": 400,
+     "reached": 1.0,
+     "q25": 52.0,
+     "median": 53.0,
+     "q75": 55.0
+    },
+    "B": {
+     "n": 400,
+     "reached": 1.0,
+     "q25": 57.0,
+     "median": 59.0,
+     "q75": 61.0
+    }
+   },
+   "11": {
+    "both": {
+     "n": 800,
+     "reached": 1.0,
+     "q25": 63.0,
+     "median": 67.0,
+     "q75": 71.0
+    },
+    "A": {
+     "n": 400,
+     "reached": 1.0,
+     "q25": 61.0,
+     "median": 63.0,
+     "q75": 65.0
+    },
+    "B": {
+     "n": 400,
+     "reached": 1.0,
+     "q25": 69.0,
+     "median": 71.0,
+     "q75": 73.0
+    }
+   },
+   "12": {
+    "both": {
+     "n": 800,
+     "reached": 1.0,
+     "q25": 73.0,
+     "median": 78.0,
+     "q75": 83.0
+    },
+    "A": {
+     "n": 400,
+     "reached": 1.0,
+     "q25": 72.0,
+     "median": 73.0,
+     "q75": 76.0
+    },
+    "B": {
+     "n": 400,
+     "reached": 1.0,
+     "q25": 80.0,
+     "median": 83.0,
+     "q75": 86.0
+    }
+   },
+   "13": {
+    "both": {
+     "n": 800,
+     "reached": 1.0,
+     "q25": 85.0,
+     "median": 90.0,
+     "q75": 96.0
+    },
+    "A": {
+     "n": 400,
+     "reached": 1.0,
+     "q25": 83.0,
+     "median": 85.0,
+     "q75": 87.0
+    },
+    "B": {
+     "n": 400,
+     "reached": 1.0,
+     "q25": 94.0,
+     "median": 96.0,
+     "q75": 99.0
+    }
+   },
+   "14": {
+    "both": {
+     "n": 800,
+     "reached": 1.0,
+     "q25": 98.0,
+     "median": 104.0,
+     "q75": 112.0
+    },
+    "A": {
+     "n": 400,
+     "reached": 1.0,
+     "q25": 95.0,
+     "median": 98.0,
+     "q75": 100.0
+    },
+    "B": {
+     "n": 400,
+     "reached": 1.0,
+     "q25": 108.0,
+     "median": 112.0,
+     "q75": 115.0
+    }
+   },
+   "15": {
+    "both": {
+     "n": 800,
+     "reached": 1.0,
+     "q25": 112.0,
+     "median": 120.0,
+     "q75": 128.0
+    },
+    "A": {
+     "n": 400,
+     "reached": 1.0,
+     "q25": 109.0,
+     "median": 112.0,
+     "q75": 115.0
+    },
+    "B": {
+     "n": 400,
+     "reached": 1.0,
+     "q25": 125.0,
+     "median": 128.0,
+     "q75": 132.0
+    }
+   },
+   "16": {
+    "both": {
+     "n": 800,
+     "reached": 1.0,
+     "q25": 126.0,
+     "median": 136.0,
+     "q75": 146.0
+    },
+    "A": {
+     "n": 400,
+     "reached": 1.0,
+     "q25": 124.0,
+     "median": 126.0,
+     "q75": 130.0
+    },
+    "B": {
+     "n": 400,
+     "reached": 1.0,
+     "q25": 142.0,
+     "median": 146.0,
+     "q75": 150.0
+    }
+   },
+   "17": {
+    "both": {
+     "n": 800,
+     "reached": 1.0,
+     "q25": 142.0,
+     "median": 152.0,
+     "q75": 165.0
+    },
+    "A": {
+     "n": 400,
+     "reached": 1.0,
+     "q25": 139.0,
+     "median": 142.0,
+     "q75": 145.0
+    },
+    "B": {
+     "n": 400,
+     "reached": 1.0,
+     "q25": 160.0,
+     "median": 165.0,
+     "q75": 169.0
+    }
+   },
+   "18": {
+    "both": {
+     "n": 800,
+     "reached": 1.0,
+     "q25": 157.0,
+     "median": 169.0,
+     "q75": 184.0
+    },
+    "A": {
+     "n": 400,
+     "reached": 1.0,
+     "q25": 154.0,
+     "median": 157.0,
+     "q75": 161.0
+    },
+    "B": {
+     "n": 400,
+     "reached": 1.0,
+     "q25": 180.0,
+     "median": 184.0,
+     "q75": 189.0
+    }
+   }
+  },
+  "purchases": {
+   "tier1": {
+    "A": {
+     "n": 400,
+     "reached": 1.0,
+     "q25": 29.0,
+     "median": 35.0,
+     "q75": 42.0
+    },
+    "B": {
+     "n": 400,
+     "reached": 1.0,
+     "q25": 27.0,
+     "median": 31.0,
+     "q75": 35.0
+    }
+   },
+   "tier2": {
+    "A": {
+     "n": 400,
+     "reached": 1.0,
+     "q25": 60.0,
+     "median": 67.0,
+     "q75": 75.0
+    },
+    "B": {
+     "n": 400,
+     "reached": 1.0,
+     "q25": 56.0,
+     "median": 60.0,
+     "q75": 65.0
+    }
+   }
+  },
+  "level_gap": {
+   "30": {
+    "mean": 0.33,
+    "sd": 0.5666568626602876
+   },
+   "60": {
+    "mean": 0.455,
+    "sd": 0.6308525976803139
+   },
+   "100": {
+    "mean": 0.9425,
+    "sd": 0.6076131581853704
+   },
+   "150": {
+    "mean": 1.2675,
+    "sd": 0.5620887385457922
+   },
+   "200": {
+    "mean": 0.015,
+    "sd": 0.12155245781143217
+   },
+   "300": {
+    "mean": 0.0,
+    "sd": 0.0
+   },
+   "399": {
+    "mean": 0.0,
+    "sd": 0.0
+   }
+  },
+  "xp_absorption": [
+   0.8678607277289837,
+   0.7487264742785446
+  ],
+  "deaths_per_game": [
+   10.27,
+   25.405
+  ],
+  "recalls_per_game": [
+   11.015,
+   12.1625
+  ],
+  "farm_per_turn": [
+   0.17767857812500004,
+   0.16631140624999977
+  ],
+  "payoff_mean": 12.114368749999977
+ },
+ "targets": {
+  "2": {
+   "target": 4,
+   "median": 4.0,
+   "rel_error": 0.0
+  },
+  "6": {
+   "target": 20,
+   "median": 19.0,
+   "rel_error": -0.05
+  },
+  "11": {
+   "target": 59,
+   "median": 58.0,
+   "rel_error": -0.01694915254237288
+  },
+  "18": {
+   "target": 147,
+   "median": 144.0,
+   "rel_error": -0.02040816326530612
+  }
+ },
+ "pass": true,
+ "elapsed_s": 9.454526100074872
+}
