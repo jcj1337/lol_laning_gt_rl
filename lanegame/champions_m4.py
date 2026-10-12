@@ -4,6 +4,8 @@ A separately versioned resolver for `GameConfig.m4()`. The M2 resolver `champion
 this module reuses its pure helpers (contact, movement, evasion, farm collection, gank and trade probabilities,
 legality) and adds, in the order of design §5:
 
+  step 1   opt-in (M4.2d, `farm_spot_rule="pre_crash_front"`): a champion whose front crashes in the probe keeps its
+           pre-turn front cell as farm spot instead of walking back to the next packet
   step 2   the contact-cell chase rule (§7.4; `chase_rule="contact_cell"`)
   step 5   Freeze maintenance (§6.3): a Freeze is effective only while the freezer is present, not channeling, not
            in a connected trade and ends within farm_reach of the freeze line; otherwise it resolves as Slow Push
@@ -304,13 +306,16 @@ def resolve_turn_m4(lane: State, m4: M4State, k: int, a: int, b: int, cfg: GameC
     recalling = (ba == B_RECALL, bb == B_RECALL)
     absent = (ba == B_ABSENT, bb == B_ABSENT)
 
-    # 1. probe: wave destinations under full support of every champion that intends to play the lane (raw codes)
+    # 1. probe: wave destinations under full support of every champion that intends to play the lane (raw codes);
+    #    farm_spot_rule "pre_crash_front": a front that crashes in the probe leaves the farm spot at its pre-turn cell
     off = (recalling[A] or absent[A], recalling[B] or absent[B])
     probe = lane_step(lane, k, wa + 6 * oa, wb + 6 * ob, (NO_REACH if off[A] else T, NO_REACH if off[B] else T))
     spot = [0, 0]
     for s in (A, B):
         fx, fh = probe.state.side(s)[:2]
         spot[s] = max(-T, min(T, fx)) if fh > 0 else c0[s]
+        if cfg.farm_spot_rule == "pre_crash_front" and probe.crash_hp[s] > 0 and lane.side(s)[1] > 0:
+            spot[s] = max(-T, min(T, lane.side(s)[0]))       # M4.2d: keep the reach of the wave that crashes
 
     # 2. targets and bounded movement; traders chase the nearest contact cell of their opponent's reference cell
     end = [0, 0]

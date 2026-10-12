@@ -932,3 +932,22 @@ results: `results/m4_continuous_investment/` (≈204k turns, 11 s wall).
 
 **Next (if pursued):** a curve-shape sweep (p 0.5–0.7 or log), the combat quantization review, and a gold-threshold
 sweep of the recall agents before any PPO use.
+
+## S. M4.2d-A readiness: wave bounce and Freeze breaking (2026-10-12)
+
+Branch `readiness/m4-2d-wave`. Short deterministic diagnostic: [m4_wave_readiness_report.md](m4_wave_readiness_report.md);
+results `results/m4_wave_readiness/` (≈26k turns, ≈12 s wall).
+
+- **No bounce.** After a crash the crasher's follow-up waves park and stack in the defender's half (`stack_creep`)
+  and re-crash every ~11 turns. Without a crash the contact point is neutrally stable at every cell. A push is
+  permanent; only an opposing Shove moves the lane, and the shover then pays (≈0.11–0.13 farm per turn).
+- Shove → Crash → Recall works: a Recall during a 9-HP crash is free, and a mistimed one costs ≈1 resource and
+  8 XP. Bounce → Return does not exist.
+- **Freeze-breaking artifact:** classified as a mechanical bug. It is fixed by the opt-in
+  `GameConfig.m4(farm_spot_rule="pre_crash_front")`, which reproduces the 64-cell design table and meets the SHx
+  gate. The default is unchanged.
+
+**Recommendation: BLOCKED** until reviewers choose a restoring-force rule (report §4: proposal A, an unstacked Slow
+Push front past the lane walks plus no parking during the own siege; or proposal B, the siege condition only) or
+accept permanent pushes.
+
