@@ -1,0 +1,16 @@
+{
+ "stages": {
+  "trajectory_power": {
+   "turns": 3000,
+   "wall_s": 0.44
+  },
+  "trajectory_ready": {
+   "turns": 1000,
+   "wall_s": 0.15
+  }
+ },
+ "total": {
+  "turns": 4000,
+  "wall_s": 0.59
+ }
+}

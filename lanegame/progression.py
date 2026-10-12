@@ -32,10 +32,22 @@ increasing per LEDGER unit over the supported range u <= INVEST_MAX_RESOURCES * 
 10^6 alpha p (1 + S)^(p - 1) is >= 10^3 there, far above the float64 rounding of the power); beyond it `Investment`
 raises instead of returning an unverified value. Hit damage stays quantized at 1 centi-HP, so a small investment
 raises AP* even when a given hit's rounded damage does not change.
+
+M4.2d opt-in curve (invest_curve = "saturating", docs/m4_investment_readiness_report.md): with A = invest_gain and
+K = invest_scale resources (k = K * gold_scale ledger units),
+
+    M(S)         = 1 + A (1 - sqrt(K / (K + S)))                      bounded: 1 <= M < 1 + A
+    M(u)         = ONE + floor(A * (ONE - isqrt(floor(ONE^2 k / (k + u)))))      ONE = INVEST_ONE_SAT = 10^24
+
+computed in exact integers (math.isqrt and a rational A), so it is platform independent and non-decreasing by
+construction. The per-ledger-unit decrement of ONE sqrt(k / (k + u)) is ONE sqrt(k) / (2 (k + u)^1.5) >= 5 * 10^8
+over the supported range (k >= 10^6 units, u <= 10^12 units), so M is STRICTLY increasing per ledger unit there.
+The damage formulas above use the same ONE (dmg* = floor((D 100 AP* + 5000 ONE) / (10^4 ONE))).
 """
 
 from __future__ import annotations
 
+import math
 from dataclasses import dataclass
 from fractions import Fraction
 from functools import lru_cache
@@ -182,54 +194,81 @@ def plates_broken(tower_dmg: int, t: Tables = DEFAULT) -> int:
 
 
 # ---------------------------------------------------------------------- M4.2c continuous investment
-INVEST_ONE = 10 ** 12                     # fixed-point unit of the investment multiplier M (x1.0)
+INVEST_ONE = 10 ** 12                     # fixed-point unit of the investment multiplier M (x1.0), curve "power"
+INVEST_ONE_SAT = 10 ** 24                 # ... curve "saturating" (exact integer evaluation, see the docstring)
 INVEST_MAX_RESOURCES = 10 ** 6            # largest cumulative investment whose strict monotonicity is verified
 
 
 class Investment:
     """Integer attack power of the continuous-investment experiment (see the module docstring). One per
-    (alpha, p, gold_scale, AP(L, 0) table); memoizes M(u)."""
+    (curve parameters, gold_scale, AP(L, 0) table); memoizes M(u). `one` is the fixed-point unit of M."""
 
-    def __init__(self, alpha: float, p: float, gold_scale: int, t: Tables, pressure: int):
+    def __init__(self, alpha: float, p: float, gold_scale: int, t: Tables, pressure: int, curve: str = "power",
+                 gain: float = 1.5, scale_res: float = 16.0):
         self.alpha, self.p, self.scale, self.t, self.pressure_base = float(alpha), float(p), int(gold_scale), t, pressure
+        self.curve = curve
         self.max_units = INVEST_MAX_RESOURCES * self.scale
-        self._m: dict = {0: INVEST_ONE}
+        if curve == "power":
+            self.one = INVEST_ONE
+        elif curve == "saturating":
+            self.one = INVEST_ONE_SAT
+            g = Fraction(repr(float(gain)))
+            k = Fraction(repr(float(scale_res))) * self.scale
+            if g <= 0 or k.denominator != 1 or k < 1:
+                raise ValueError("invest_gain must be positive and invest_scale a positive whole number of ledger "
+                                 "units")
+            self._gn, self._gd, self._k = g.numerator, g.denominator, int(k)
+            self.gain, self.scale_res = float(gain), float(scale_res)
+        else:
+            raise ValueError(f"unknown invest_curve {curve!r}")
+        self._m: dict = {0: self.one}
 
     def multiplier(self, units: int) -> int:
-        """M(u): the investment multiplier, x10^12 fixed point."""
+        """M(u): the investment multiplier, x`one` fixed point (10^12 for "power", 10^24 for "saturating")."""
         m = self._m.get(units)
         if m is None:
             if not 0 <= units <= self.max_units:
                 raise ValueError(f"invested gold {units} ledger units outside the supported range [0, "
                                  f"{self.max_units}] (INVEST_MAX_RESOURCES = {INVEST_MAX_RESOURCES})")
-            m = INVEST_ONE + int(round(INVEST_ONE * self.alpha * ((1.0 + units / self.scale) ** self.p - 1.0)))
+            if self.curve == "power":
+                m = INVEST_ONE + int(round(INVEST_ONE * self.alpha * ((1.0 + units / self.scale) ** self.p - 1.0)))
+            else:
+                one, k = self.one, self._k
+                r = math.isqrt(one * one * k // (k + units))          # floor(ONE sqrt(k / (k + u))), exact
+                m = one + self._gn * (one - r) // self._gd
             if len(self._m) > 100_000:
-                self._m = {0: INVEST_ONE}
+                self._m = {0: self.one}
             self._m[units] = m
         return m
 
     def factor(self, units: int) -> float:
-        """M(u) / 10^12 as a float (reports)."""
-        return self.multiplier(units) / INVEST_ONE
+        """M(u) as a float (reports)."""
+        return self.multiplier(units) / self.one
 
     def attack_power(self, level: int, units: int) -> int:
-        """AP*(L, u) in basis points x 10^12."""
+        """AP*(L, u) in basis points x `one`."""
         return self.t.ap[level][0] * self.multiplier(units)
 
     def hit_damage(self, base: int, level: int, units: int) -> int:
-        return (base * 100 * self.attack_power(level, units) + 5000 * INVEST_ONE) // (10_000 * INVEST_ONE)
+        one = self.one
+        return (base * 100 * self.attack_power(level, units) + 5000 * one) // (10_000 * one)
 
     def pressure_damage(self, level: int, units: int) -> int:
-        return (self.pressure_base * self.attack_power(level, units) + 5000 * INVEST_ONE) // (10_000 * INVEST_ONE)
+        one = self.one
+        return (self.pressure_base * self.attack_power(level, units) + 5000 * one) // (10_000 * one)
 
 
 @lru_cache(maxsize=16)
-def _investment(alpha: float, p: float, gold_scale: int, t: Tables, pressure: int) -> Investment:
-    return Investment(alpha, p, gold_scale, t, pressure)
+def _investment(alpha: float, p: float, gold_scale: int, t: Tables, pressure: int, curve: str = "power",
+                gain: float = 1.5, scale_res: float = 16.0) -> Investment:
+    return Investment(alpha, p, gold_scale, t, pressure, curve, gain, scale_res)
 
 
 def investment(cfg: GameConfig) -> Investment:
     """The `Investment` of a continuous-investment configuration (cached)."""
     if not cfg.continuous_items:
         raise ValueError("investment() applies to item_model 'continuous'")
-    return _investment(cfg.invest_alpha, cfg.invest_p, cfg.gold_scale, tables(cfg), cfg.pressure_tower_damage)
+    if cfg.invest_curve == "power":
+        return _investment(cfg.invest_alpha, cfg.invest_p, cfg.gold_scale, tables(cfg), cfg.pressure_tower_damage)
+    return _investment(cfg.invest_alpha, cfg.invest_p, cfg.gold_scale, tables(cfg), cfg.pressure_tower_damage,
+                       cfg.invest_curve, cfg.invest_gain, cfg.invest_scale)
