@@ -434,6 +434,7 @@ class LaneEnv:
             "tower_hits": ct.tower_hits, "tower_damage_dealt": ct.tower_damage_dealt,
             "plates_broken": ct.plates_broken, "plate_gold": ct.plate_gold, "purchases": ct.purchases,
             "returned": ct.returned, "gold_unspendable": ct.gold_clamped, "invested": ct.invested,
+            "pinned": ct.pinned,                                              # position_rule "pin"/"standoff"
         }
         return StepResult(obs, (reward, -reward), False, truncated, info)
 

@@ -391,6 +391,11 @@ class GameConfig:
     # M4.2d (docs/m4_wave_readiness_report.md), opt-in: "m2" = the farm spot is the probe's leading packet (M2 rule);
     # "pre_crash_front" = a champion whose front crashes in the probe keeps its pre-turn front cell as farm spot
     farm_spot_rule: str = "m2"
+    # M4.2d-B (docs/m4_positioning_report.md), opt-in: "m2" = M2 positioning and evasion; "pin" = a Yield champion that
+    # STARTS the turn in contact with an enemy Trade champion cannot evade it (it is caught like a Hold); "standoff" =
+    # "pin" plus Yield farms from its stand-off cell max(-T, min(spot, e - farm_reach)), e = the enemy front at the start
+    # of the turn in own coordinates: the rearmost cell still in reach of the contested minions
+    position_rule: str = "m2"
     tower_adjacent_p: float = 0.0         # tower shot on a connected trader ending next to the enemy tower (m4: 0.5)
     tower_adjacent_p_busy: float = 0.0    # ... while its own crashed minions are under that tower (m4: 0.25)
     gank_damage_scale: str = "none"       # "none" (centi = 100 x trials), "victim_level" (m4), "attacker_level"
@@ -640,6 +645,8 @@ class GameConfig:
             bad("chase_rule", "must be 'm2' or 'contact_cell'")
         if self.farm_spot_rule not in ("m2", "pre_crash_front"):
             bad("farm_spot_rule", "must be 'm2' or 'pre_crash_front'")
+        if self.position_rule not in ("m2", "pin", "standoff"):
+            bad("position_rule", "must be 'm2', 'pin' or 'standoff'")
         if self.gank_damage_scale not in ("none", "victim_level", "attacker_level"):
             bad("gank_damage_scale", "must be 'none', 'victim_level' or 'attacker_level'")
         if not (0.0 <= self.tower_adjacent_p <= 1.0 and 0.0 <= self.tower_adjacent_p_busy <= 1.0):
@@ -707,7 +714,7 @@ M4_ECONOMY_FIELDS = ("xp_per_hp", "xp_range", "xp_base", "xp_step", "level_cap",
                      "invest_obs_gold_ref", "invest_obs_ref", "freeze_maintenance", "chase_rule", "farm_spot_rule",
                      "tower_adjacent_p", "tower_adjacent_p_busy", "gank_damage_scale", "plate_thresholds",
                      "plate_gold", "pressure_tower_damage", "plate_gold_requires_presence", "gold_unit",
-                     "rear_count_max")
+                     "rear_count_max", "position_rule")
 _FIELD_DEFAULTS = {f.name: f.default for f in GameConfig.__dataclass_fields__.values()}
 
 

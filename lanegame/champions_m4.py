@@ -6,7 +6,11 @@ legality) and adds, in the order of design §5:
 
   step 1   opt-in (M4.2d, `farm_spot_rule="pre_crash_front"`): a champion whose front crashes in the probe keeps its
            pre-turn front cell as farm spot instead of walking back to the next packet
-  step 2   the contact-cell chase rule (§7.4; `chase_rule="contact_cell"`)
+  step 2   the contact-cell chase rule (§7.4; `chase_rule="contact_cell"`); opt-in (M4.2d-B, `position_rule=
+           "standoff"`): Yield farms from its stand-off cell, the rearmost cell within farm_reach of the enemy front
+           (`yield_target`)
+  step 3   opt-in (M4.2d-B, `position_rule` "pin" or "standoff"): a Yield champion that starts the turn in contact
+           with an enemy Trade champion is pinned: it cannot evade and is traded exactly like a Hold
   step 5   Freeze maintenance (§6.3): a Freeze is effective only while the freezer is present, not channeling, not
            in a connected trade and ends within farm_reach of the freeze line; otherwise it resolves as Slow Push
   step 6   the lane step with the effective waves, which also returns the minion tower hits (§11.2)
@@ -47,7 +51,7 @@ from .champions import (AWAY, CHANNEL, FARM, N_CHANCE, NO_REACH, RETREAT, SAFE_M
                         U_TOWER, U_TRADE_DOUBLE, U_TRADE_HIT, LaneStep, _decode, _evasion_cell, _gank_damage, _move,
                         _trade_damage, champion_gank_probability, champion_legal_actions, gank_damage_p, in_contact,
                         objective_reachable, recall_legal, trade_double_probability, trade_hit_probability)
-from .config import B_RECALL, B_SAFE, B_TRADE, B_YIELD, B_ABSENT, F, NONE, PRESSURE, SP, GameConfig, exact_safe_base
+from .config import B_HOLD, B_RECALL, B_SAFE, B_TRADE, B_YIELD, B_ABSENT, F, NONE, PRESSURE, SP, GameConfig, exact_safe_base
 from .mechanics import step_turn
 from .progression import Tables, tables
 from .state import State
@@ -56,7 +60,7 @@ A, B = 0, 1
 
 __all__ = ["M4Side", "M4State", "M4Turn", "M4Context", "context", "initial_m4", "resolve_turn_m4",
            "champion_legal_actions", "objective_reachable", "recall_legal", "check_invariants", "level",
-           "contact_cell_target", "collection_units"]
+           "contact_cell_target", "collection_units", "yield_target"]
 
 
 class M4Side(NamedTuple):
@@ -195,6 +199,20 @@ def contact_cell_target(c: int, ref: int, cfg: GameConfig) -> int:
     return best[1]
 
 
+def yield_target(spot: int, lane: State, s: int, cfg: GameConfig) -> int:
+    """Where a Yield champion of side s farms (own coordinates). Its farm spot, or under position_rule "standoff" its
+    stand-off cell: the rearmost cell still within farm_reach of the enemy's leading minions at the start of the turn
+    (enemy front e, mirrored into own coordinates), never ahead of the farm spot, never behind the own tower:
+    max(-T, min(spot, e - farm_reach)). With no enemy front on the lane it is the farm spot
+    (docs/m4_positioning_report.md)."""
+    if cfg.position_rule != "standoff":
+        return spot
+    ex, eh = lane.side(1 - s)[:2]
+    if eh <= 0:
+        return spot
+    return max(-cfg.tower, min(spot, -ex - cfg.farm_reach))
+
+
 def m2_chase_target(c: int, ref: int, cfg: GameConfig) -> int:
     """M2's chase target (champions.resolve_turn step 2), for the "m2" chase rule and the WP4 classification."""
     T = cfg.tower
@@ -283,6 +301,7 @@ class M4Turn:
     reward_units: int                       # earned_A - earned_B
     reward: float                           # reward to A in resources: reward_units / gold_scale, converted once
     invested: Tuple[int, int] = (0, 0)      # ledger units invested at the end of this turn ("continuous" only)
+    pinned: Tuple[bool, bool] = (False, False)   # position_rule "pin"/"standoff": Yield caught in contact (step 3)
 
 
 def resolve_turn_m4(lane: State, m4: M4State, k: int, a: int, b: int, cfg: GameConfig,
@@ -335,6 +354,8 @@ def resolve_turn_m4(lane: State, m4: M4State, k: int, a: int, b: int, cfg: GameC
             continue
         elif beh[s] == B_SAFE:
             target = min(spot[s], cfg.safe_line)
+        elif beh[s] == B_YIELD:
+            target = yield_target(spot[s], lane, s, cfg)
         else:
             target = spot[s]
         end[s] = _move(c, target, cfg)
@@ -353,13 +374,17 @@ def resolve_turn_m4(lane: State, m4: M4State, k: int, a: int, b: int, cfg: GameC
         if away[s]:
             end[s] = -T
 
-    # 3. evasion
-    threatened = [False, False]
+    # 3. evasion; position_rule "pin"/"standoff": a Yield that starts in the trader's contact is pinned (no evasion)
+    threatened, pinned = [False, False], [False, False]
+    pin = cfg.position_rule != "m2"
     for s in (A, B):
         o = 1 - s
         if beh[s] in (B_YIELD, B_SAFE) and beh[o] == B_TRADE and in_contact(end[s], end[o], cfg):
+            if pin and beh[s] == B_YIELD and in_contact(c0[s], c0[o], cfg):
+                pinned[s] = True
+                continue
             threatened[s] = True
-            own_target = spot[s] if beh[s] == B_YIELD else min(spot[s], cfg.safe_line)
+            own_target = yield_target(spot[s], lane, s, cfg) if beh[s] == B_YIELD else min(spot[s], cfg.safe_line)
             end[s] = _move(c0[s], _evasion_cell(own_target, end[o], cfg), cfg)
 
     # 4. trade contact
@@ -418,7 +443,8 @@ def resolve_turn_m4(lane: State, m4: M4State, k: int, a: int, b: int, cfg: GameC
         if not connected[s]:
             continue
         o = 1 - s
-        hit[s] = trade_hit_probability(lane, s, B_RECALL if interrupted[o] else beh[o], end[o] == -T, cfg)
+        hit[s] = trade_hit_probability(lane, s, B_RECALL if interrupted[o] else (B_HOLD if pinned[o] else beh[o]),
+                                       end[o] == -T, cfg)
         dbl[s] = trade_double_probability(s, cfg)
         d = _trade_damage(u[U_TRADE_HIT[s]], u[U_TRADE_DOUBLE[s]], hit[s], dbl[s])
         dealt[s] = ctx.hit(d, lv0[s], it0[s])
@@ -516,5 +542,5 @@ def resolve_turn_m4(lane: State, m4: M4State, k: int, a: int, b: int, cfg: GameC
         (lv1[A] - lv0[A], lv1[B] - lv0[B]), res.tower_hits, (hits_dealt[A], hits_dealt[B]), (plates[A], plates[B]),
         (plate_u[A] * inv, plate_u[B] * inv), (purchases[A], purchases[B]), (returned[A], returned[B]),
         (farm_u[A], farm_u[B]), (plate_u[A], plate_u[B]), bounty_u, (earned[A], earned[B]), (clamped[A], clamped[B]),
-        reward_units, reward_units / ctx.scale, (invested[A], invested[B]))
+        reward_units, reward_units / ctx.scale, (invested[A], invested[B]), (pinned[A], pinned[B]))
     return turn
