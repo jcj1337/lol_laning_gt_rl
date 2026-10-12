@@ -1,0 +1,49 @@
+{
+ "note": "analytic only: shapes matched at S = 10 to alpha 0.045, p 0.9; one-shot thresholds use factor 3.0 / 6.0 (same-level, full HP, approx. level independent)",
+ "rows": [
+  {
+   "shape": "p=0.9",
+   "alpha": 0.0449,
+   "f4": 1.146,
+   "f10": 1.344,
+   "f50": 2.502,
+   "f120": 4.321,
+   "f300": 8.599,
+   "S_2hit_oneshot": 68.5,
+   "S_1hit_oneshot": 188.7
+  },
+  {
+   "shape": "p=0.7",
+   "alpha": 0.0789,
+   "f4": 1.165,
+   "f10": 1.344,
+   "f50": 2.159,
+   "f120": 3.187,
+   "f300": 5.21,
+   "S_2hit_oneshot": 106.0,
+   "S_1hit_oneshot": 382.3
+  },
+  {
+   "shape": "p=0.5",
+   "alpha": 0.1485,
+   "f4": 1.184,
+   "f10": 1.344,
+   "f50": 1.912,
+   "f120": 2.485,
+   "f300": 3.428,
+   "S_2hit_oneshot": 208.3,
+   "S_1hit_oneshot": 1201.1
+  },
+  {
+   "shape": "log",
+   "alpha": 0.1435,
+   "f4": 1.231,
+   "f10": 1.344,
+   "f50": 1.564,
+   "f120": 1.688,
+   "f300": 1.819,
+   "S_2hit_oneshot": 1133987.5,
+   "S_1hit_oneshot": null
+  }
+ ]
+}

@@ -187,7 +187,7 @@ def trace_dict(log: EpisodeLog, cfg: GameConfig) -> dict:
     if cfg.is_m4:
         from ..champions_m4 import M4_SIDE_FIELDS
         d["ruleset"] = "m4"
-        d["champion_fields"] = list(M4_SIDE_FIELDS)
+        d["champion_fields"] = [("invested" if f == "items" and cfg.continuous_items else f) for f in M4_SIDE_FIELDS]
         d["gold_scale"] = cfg.gold_scale
     elif cfg.champion_mode:
         d["champion_fields"] = ["pos", "hp", "absent"]

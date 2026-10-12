@@ -913,3 +913,22 @@ account: [m4_calibration_report.md](m4_calibration_report.md); results: `results
 **Recommended for review (not adopted):** `gank_damage_position = 0.40`, `item_mult = 1.35` (conservative: 0.40 /
 1.20). The passive-equilibrium risk remains structural (crash farm, farm-spot rule, item persistence); decide these
 before M4.3.
+
+## R. M4.2c experiment: continuous gold investment (2026-10-12)
+
+Branch `experiment/m4-continuous-investment`. An opt-in prototype, `GameConfig.m4_continuous(invest_alpha=…)`: every
+return to base invests all unspent gold, AP(L, S) = AP(L, 0) [1 + α ((1 + S)^0.9 − 1)]. **`m4()` (two tiers) is
+unchanged and remains the default.** Full account: [m4_continuous_investment_report.md](m4_continuous_investment_report.md);
+results: `results/m4_continuous_investment/` (≈204k turns, 11 s wall).
+
+- Mechanically sound: exact ledger without clamp, zero-sum rewards unaffected by spending, mirror symmetry, investment
+  kept through death, strictly monotone fixed-point power (guarded at 10^6 resources), baseline throughput.
+- Not yet strategically better than two tiers: no detectable Recall-timing value (scripted agents return every
+  ~6–12 turns anyway); investment acts only through trades; duel odds stay breakpoint-quantized (knife edges, e.g.
+  0.03 resources at L18). Leads make an `edge_trader` concede trades and die more, but pay the leader only against a
+  passive opponent.
+- Risk: unbounded growth (×4.3 at 120 resources; one 2-HP hit kills at S ≈ 68) within W = 1,000. The observation is
+  exact only below 1,024 resources.
+
+**Next (if pursued):** a curve-shape sweep (p 0.5–0.7 or log), the combat quantization review, and a gold-threshold
+sweep of the recall agents before any PPO use.

@@ -246,7 +246,7 @@ def rollout(env: LaneEnv, snap: Snapshot, focal: int, plan: Plan, agents: Sequen
     first, infos = None, ([] if record else None)
     undisc, disc_w = 0.0, 1.0
     m4 = {"xp": [0, 0], "plates": [0, 0], "purchases": [0, 0], "tower_damage": [0, 0], "freeze_maintained": [0, 0],
-          "crashes": [0, 0]} if env.cfg.is_m4 else None
+          "crashes": [0, 0], "invested": [0, 0]} if env.cfg.is_m4 else None
     while True:
         acts = [0, 0]
         for s in (A, B):
@@ -285,6 +285,7 @@ def rollout(env: LaneEnv, snap: Snapshot, focal: int, plan: Plan, agents: Sequen
                 m4["tower_damage"][i] += info["tower_damage_dealt"][s]
                 m4["freeze_maintained"][i] += int(info["freeze_maintained"][s])
                 m4["crashes"][i] += int(info["crash_hp"][s] > 0)
+                m4["invested"][i] += info["invested"][s]
         if record:
             infos.append(info)
         t += 1

@@ -26,6 +26,12 @@ happens); the tower-adjacent shot reuses U_TOWER[i] (a trader ends either at T o
 State per side (own coordinates, own tower -T): `M4Side(pos, hp, absent, xp, items, gold, tower_dmg)` with hp in
 centi-HP, gold in ledger units and tower_dmg the cumulative damage this side dealt to the ENEMY tower in centi-units.
 Levels, max HP, attack power and plates broken are derived (lanegame.progression).
+
+M4.2c experiment (`GameConfig.m4_continuous()`, item_model = "continuous"): the `items` slot holds the cumulative
+INVESTED gold in ledger units (`M4Side.invested`), there is no G_rem clamp, and at the end of every absence (the
+turn the timer reaches 0: after a Recall or a death, exactly where the baseline shops) all unspent gold moves into
+it. Power-dependent damage uses `progression.Investment` (`M4Context.hit` / `.pressure`). The reward is unchanged:
+it counts gold EARNED, so investing is never a reward event.
 """
 
 from __future__ import annotations
@@ -56,9 +62,14 @@ class M4Side(NamedTuple):
     hp: int               # centi-HP, 0 .. H(L); 0 only while dead
     absent: int = 0       # turns still to sit out (M2 semantics)
     xp: int = 0           # 0 .. X(level_cap)
-    items: int = 0        # purchased tiers, 0 .. item_tiers
-    gold: int = 0         # spendable gold, ledger units, 0 .. G_rem(items)
+    items: int = 0        # purchased tiers, 0 .. item_tiers; item_model "continuous": invested gold, ledger units
+    gold: int = 0         # spendable gold, ledger units, 0 .. G_rem(items) (no upper bound under "continuous")
     tower_dmg: int = 0    # cumulative damage dealt to the ENEMY tower, centi-units, 0 .. last threshold
+
+    @property
+    def invested(self) -> int:
+        """Cumulative invested gold in ledger units (item_model "continuous"; the same slot as `items`)."""
+        return self.items
 
 
 class M4State(NamedTuple):
@@ -100,6 +111,18 @@ class M4Context:
         self.bounty_units = _units(cfg.kill_bounty, cfg)
         self.theta_max = cfg.plate_thresholds[-1]
         self._coll: Dict[tuple, int] = {}
+        self.inv = None
+        if cfg.continuous_items:
+            from .progression import investment
+            self.inv = investment(cfg)
+
+    def hit(self, base: int, level: int, items: int) -> int:
+        """Centi-HP of a trade hit of `base` (0, 1, 2) base HP at the attacker's level and items slot."""
+        return self.t.dmg[base][level][items] if self.inv is None else self.inv.hit_damage(base, level, items)
+
+    def pressure(self, level: int, items: int) -> int:
+        """Centi-units an effective Apply Pressure turn adds to the attacker's tower damage."""
+        return self.t.pressure[level][items] if self.inv is None else self.inv.pressure_damage(level, items)
 
     def collection(self, x: int, mode: str, pos: int, opp_mode: str, opp_pos: int) -> int:
         key = (x, mode, pos, opp_mode, opp_pos)
@@ -192,8 +215,11 @@ def check_invariants(m4: M4State, cfg: GameConfig) -> None:
         assert me.absent >= 0 and (me.absent == 0 or me.pos == -cfg.tower), f"side {s}: away but at {me.pos}"
         assert -cfg.tower <= me.pos <= cfg.tower
         assert 0 <= me.xp <= t.xp_cap, f"side {s}: xp {me.xp}"
-        assert 0 <= me.items <= t.item_tiers, f"side {s}: items {me.items}"
-        assert 0 <= me.gold <= t.gold_cap[me.items], f"side {s}: gold {me.gold} > G_rem({me.items})"
+        if cfg.continuous_items:
+            assert me.items >= 0 and me.gold >= 0, f"side {s}: invested {me.items}, gold {me.gold}"
+        else:
+            assert 0 <= me.items <= t.item_tiers, f"side {s}: items {me.items}"
+            assert 0 <= me.gold <= t.gold_cap[me.items], f"side {s}: gold {me.gold} > G_rem({me.items})"
         assert 0 <= me.tower_dmg <= cfg.plate_thresholds[-1], f"side {s}: tower_dmg {me.tower_dmg}"
 
 
@@ -245,7 +271,7 @@ class M4Turn:
     tower_damage_dealt: Tuple[int, int]     # centi-units added to tower_dmg (after the clamp)
     plates_broken: Tuple[int, int]          # thresholds crossed this turn
     plate_gold: Tuple[float, float]         # resources
-    purchases: Tuple[int, int]              # tiers bought at the end of this turn
+    purchases: Tuple[int, int]              # tiers bought at the end of this turn ("continuous": 1 per investment)
     returned: Tuple[bool, bool]             # absence timer reached 0 this turn (plays the next turn)
     farm_units: Tuple[int, int]             # ledger units
     plate_units: Tuple[int, int]
@@ -254,6 +280,7 @@ class M4Turn:
     gold_clamped: Tuple[int, int]           # ledger units removed by the G_rem clamp (gold_unspendable)
     reward_units: int                       # earned_A - earned_B
     reward: float                           # reward to A in resources: reward_units / gold_scale, converted once
+    invested: Tuple[int, int] = (0, 0)      # ledger units invested at the end of this turn ("continuous" only)
 
 
 def resolve_turn_m4(lane: State, m4: M4State, k: int, a: int, b: int, cfg: GameConfig,
@@ -389,7 +416,7 @@ def resolve_turn_m4(lane: State, m4: M4State, k: int, a: int, b: int, cfg: GameC
         hit[s] = trade_hit_probability(lane, s, B_RECALL if interrupted[o] else beh[o], end[o] == -T, cfg)
         dbl[s] = trade_double_probability(s, cfg)
         d = _trade_damage(u[U_TRADE_HIT[s]], u[U_TRADE_DOUBLE[s]], hit[s], dbl[s])
-        dealt[s] = t.dmg[d][lv0[s]][it0[s]]
+        dealt[s] = ctx.hit(d, lv0[s], it0[s])
         busy = lane.siege_of(s) > 0 or res.crash_hp[s] > 0
         if end[s] == T:                                                   # a dive into the enemy tower cell
             tower_p[s] = cfg.tower_shot_p_busy if busy else cfg.tower_shot_p
@@ -423,7 +450,7 @@ def resolve_turn_m4(lane: State, m4: M4State, k: int, a: int, b: int, cfg: GameC
         before = me0[s].tower_dmg
         add = 100 * res.tower_hits[s]
         if eff_obj[s] == PRESSURE:
-            add += t.pressure[lv0[s]][it0[s]]
+            add += ctx.pressure(lv0[s], it0[s])
         tau[s] = min(ctx.theta_max, before + add)
         hits_dealt[s] = tau[s] - before
         plates[s] = sum(1 for th in cfg.plate_thresholds if before < th <= tau[s])
@@ -433,6 +460,8 @@ def resolve_turn_m4(lane: State, m4: M4State, k: int, a: int, b: int, cfg: GameC
     # 12-14. XP and level-ups, the gold ledger, absence bookkeeping and purchases
     sides, xp_gain, xp_disc, lv1, purchases, returned, clamped, earned = [], [0, 0], [0, 0], [0, 0], [0, 0], \
         [False, False], [0, 0], [0, 0]
+    continuous = ctx.inv is not None
+    invested = [0, 0]
     for s in (A, B):
         me = me0[s]
         xp = me.xp
@@ -445,15 +474,19 @@ def resolve_turn_m4(lane: State, m4: M4State, k: int, a: int, b: int, cfg: GameC
         earned[s] = farm_u[s] + plate_u[s] + bounty_u[s]
         items = me.items
         gold = me.gold + earned[s]
-        cap = t.gold_cap[items]
-        if gold > cap:
-            clamped[s] = gold - cap
-            gold = cap
+        if not continuous:
+            cap = t.gold_cap[items]
+            if gold > cap:
+                clamped[s] = gold - cap
+                gold = cap
         if away[s] or died[s]:
             left = (cfg.recall_turns - 1 if recalled[s] else me.absent - 1) if away[s] else cfg.death_turns
             hp = me.hp if away[s] else 0
             if left == 0:                                                 # back next turn: shop, then full HP
                 returned[s] = True
+                if continuous:                                            # invest everything, however little
+                    invested[s], items, gold = gold, items + gold, 0
+                    purchases[s] = 1 if invested[s] else 0
                 while items < t.item_tiers and gold >= t.prices[items]:
                     gold -= t.prices[items]
                     items += 1
@@ -478,5 +511,5 @@ def resolve_turn_m4(lane: State, m4: M4State, k: int, a: int, b: int, cfg: GameC
         (lv1[A] - lv0[A], lv1[B] - lv0[B]), res.tower_hits, (hits_dealt[A], hits_dealt[B]), (plates[A], plates[B]),
         (plate_u[A] * inv, plate_u[B] * inv), (purchases[A], purchases[B]), (returned[A], returned[B]),
         (farm_u[A], farm_u[B]), (plate_u[A], plate_u[B]), bounty_u, (earned[A], earned[B]), (clamped[A], clamped[B]),
-        reward_units, reward_units / ctx.scale)
+        reward_units, reward_units / ctx.scale, (invested[A], invested[B]))
     return turn

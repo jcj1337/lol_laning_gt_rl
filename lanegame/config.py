@@ -378,6 +378,14 @@ class GameConfig:
     item_mult: float = 1.20
     item_tiers: int = 0                   # sequential offensive tiers (m4: 2); 0 = no items
     item_prices: Tuple[float, ...] = (4.0, 6.0)   # resources per tier, bought automatically at base (design §8.5)
+    # M4.2c experiment (docs/m4_continuous_investment_report.md): "tiers" = the two-tier track above (the validated
+    # baseline); "continuous" = every return to base invests ALL unspent gold, AP(L, S) = AP(L, 0) [1 + invest_alpha
+    # ((1 + S)^invest_p - 1)] with S the cumulative investment in resources (needs item_tiers = 0).
+    item_model: str = "tiers"
+    invest_alpha: float = 0.045
+    invest_p: float = 0.90
+    invest_obs_gold_ref: int = 1024       # resources: the observation encodes unspent gold exactly below this
+    invest_obs_ref: int = 1024            # resources: ... and invested gold exactly below this
     freeze_maintenance: bool = False      # m4: a Freeze holds only while maintained (design §6.3)
     chase_rule: str = "m2"                # "m2" (legacy target e -/+ trade_range) or "contact_cell" (design §7.4)
     tower_adjacent_p: float = 0.0         # tower shot on a connected trader ending next to the enemy tower (m4: 0.5)
@@ -441,7 +449,20 @@ class GameConfig:
         base.update(kw)
         return cls(**base)
 
+    @classmethod
+    def m4_continuous(cls, **kw) -> "GameConfig":
+        """EXPERIMENT (M4.2c): `m4()` with the two-tier item track replaced by continuous gold investment
+        (item_model = "continuous"). Not a default; the validated two-tier `m4()` is unchanged."""
+        base = dict(item_model="continuous", item_tiers=0, item_prices=())
+        base.update(kw)
+        return cls.m4(**base)
+
     # ------------------------------------------------------------------ helpers
+    @property
+    def continuous_items(self) -> bool:
+        """M4.2c continuous gold investment: M4Side.items holds the cumulative invested gold in ledger units."""
+        return self.item_model == "continuous"
+
     @property
     def continuing(self) -> bool:
         """Continuing time (rulesets "m2c" and "m4"): no terminal state, no countdown, discounted objective."""
@@ -598,6 +619,20 @@ class GameConfig:
             bad("hp_base/hp_growth/ap_level_growth/item_mult", "must be positive")
         if self.item_tiers < 0 or len(self.item_prices) != self.item_tiers or any(p <= 0 for p in self.item_prices):
             bad("item_prices", f"must hold item_tiers = {self.item_tiers} positive prices")
+        if self.item_model not in ("tiers", "continuous"):
+            bad("item_model", "must be 'tiers' or 'continuous'")
+        if self.item_model == "continuous":
+            if self.item_tiers != 0:
+                bad("item_tiers", "must be 0 under item_model 'continuous' (no tiers)")
+            if not (self.invest_alpha > 0 and 0 < self.invest_p <= 1):
+                bad("invest_alpha/invest_p", "need invest_alpha > 0 and 0 < invest_p <= 1")
+            if not (isinstance(self.invest_obs_gold_ref, int) and isinstance(self.invest_obs_ref, int)
+                    and 1 <= self.invest_obs_gold_ref <= 2 ** 24 and 1 <= self.invest_obs_ref <= 2 ** 24):
+                bad("invest_obs_gold_ref/invest_obs_ref", "must be integers in [1, 2^24] (resources)")
+        else:
+            for f in ("invest_alpha", "invest_p", "invest_obs_gold_ref", "invest_obs_ref"):
+                if getattr(self, f) != _FIELD_DEFAULTS[f]:
+                    bad(f, "applies to item_model 'continuous' only")
         if self.chase_rule not in ("m2", "contact_cell"):
             bad("chase_rule", "must be 'm2' or 'contact_cell'")
         if self.gank_damage_scale not in ("none", "victim_level", "attacker_level"):
@@ -639,6 +674,9 @@ class GameConfig:
             check(f"item_prices[{i}]", q(p))
         for value, name in exact_farm_values(self):
             check(name, value)
+        if self.item_model == "continuous" and scale > 2 ** 24:
+            raise ValueError("ruleset 'm4': item_model 'continuous' encodes the sub-resource part of the ledger in "
+                             "one float32 feature, which needs gold_scale <= 2^24")
         if sum(int(q(p) * scale) for p in self.item_prices) > 2 ** 24:
             raise ValueError("ruleset 'm4': the summed item prices exceed 2^24 ledger units; the float32 gold feature "
                              "would no longer decode exactly (design §12.2)")
@@ -660,7 +698,8 @@ class GameConfig:
 # ---------------------------------------------------------------------- ruleset contract tables (plan WP0)
 RULESETS = ("legacy", "m2c", "m4")
 M4_ECONOMY_FIELDS = ("xp_per_hp", "xp_range", "xp_base", "xp_step", "level_cap", "hp_base", "hp_growth",
-                     "ap_level_growth", "item_mult", "item_tiers", "item_prices", "freeze_maintenance", "chase_rule",
+                     "ap_level_growth", "item_mult", "item_tiers", "item_prices", "item_model", "invest_alpha", "invest_p",
+                     "invest_obs_gold_ref", "invest_obs_ref", "freeze_maintenance", "chase_rule",
                      "tower_adjacent_p", "tower_adjacent_p_busy", "gank_damage_scale", "plate_thresholds",
                      "plate_gold", "pressure_tower_damage", "plate_gold_requires_presence", "gold_unit",
                      "rear_count_max")

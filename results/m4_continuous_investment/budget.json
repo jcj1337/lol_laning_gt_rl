@@ -1,0 +1,36 @@
+{
+ "stages": {
+  "recall": {
+   "turns": 115200,
+   "wall_s": 5.26,
+   "cpu_s": 34.84
+  },
+  "response_snapshots": {
+   "turns": 120,
+   "wall_s": 0.02,
+   "cpu_s": 0.55
+  },
+  "response": {
+   "turns": 79200,
+   "wall_s": 3.35,
+   "cpu_s": 19.42
+  },
+  "benchmark": {
+   "turns": 6000,
+   "wall_s": 1.48,
+   "cpu_s": 1.92,
+   "note": "3 games x 1000 turns per model, uncached lane steps"
+  },
+  "dev_smoke": {
+   "turns": 3100,
+   "wall_s": 1.0,
+   "cpu_s": 1.0,
+   "note": "approximate: ad-hoc smoke and decode runs (1,100 turns) plus three runs of the new unit tests (~650 turns each); the pre-existing focused test files (baseline regression) are not instrumented"
+  }
+ },
+ "total": {
+  "turns": 203620,
+  "wall_s": 11.11,
+  "cpu_s": 57.73
+ }
+}

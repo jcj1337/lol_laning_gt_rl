@@ -83,9 +83,13 @@ def per_turn_bound(cfg: GameConfig) -> float:
     plates = 0
     if cfg.is_m4:
         t = tables(cfg)
-        add = cfg.ticks_per_turn * 100 * minion_damage(cfg.siege_cap, cfg) + t.pressure[t.level_cap][t.item_tiers]
         th = cfg.plate_thresholds
-        plates = max(sum(1 for j in range(i, len(th)) if th[j] - th[i] <= add - 1) for i in range(len(th)))
+        if cfg.continuous_items:
+            # attack power grows without bound with the investment: one Pressure turn may cross every plate
+            plates = len(th)
+        else:
+            add = cfg.ticks_per_turn * 100 * minion_damage(cfg.siege_cap, cfg) + t.pressure[t.level_cap][t.item_tiers]
+            plates = max(sum(1 for j in range(i, len(th)) if th[j] - th[i] <= add - 1) for i in range(len(th)))
     return f * kills + plates * cfg.plate_gold + cfg.kill_bounty
 
 

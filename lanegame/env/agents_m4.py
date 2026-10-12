@@ -26,6 +26,11 @@ Rules of M4ScriptAgent, applied in order (each optional):
 
 Duel edge: E_i = h_i ((1 - q_i) dmg(1, L_i, N_i) + q_i dmg(2, L_i, N_i)) is i's expected damage per trade (hit and
 double probabilities of M2 against a Hold defender); edge = E_me / hp_enemy - E_enemy / hp_me.
+
+M4.2c continuous investment (item_model = "continuous"): the duel edge uses the invested-gold damage
+(`M4Context.hit`), and "the next tier is affordable" (rule 3, ShoveRecallAgent) becomes "unspent gold >=
+invest_gold resources" (default 4.0, the baseline's first tier price). No rule reads the opponent's investment
+except through the duel edge.
 """
 
 from __future__ import annotations
@@ -35,6 +40,7 @@ from typing import Dict, Optional
 import numpy as np
 
 from ..champions import champion_legal_actions, trade_double_probability, trade_hit_probability
+from ..champions_m4 import context
 from ..config import (B_HOLD, B_RECALL, B_SAFE, B_TRADE, CHAMP_ABSENT, F, NONE, PRESSURE, SH, SP, VISION, champ_act)
 from ..progression import tables
 from .core import Observation
@@ -46,7 +52,8 @@ RECALL_CODE = champ_act(SP, B_RECALL)
 def duel_edge(obs: Observation) -> float:
     """Positive when the observer expects to win trades (relative to the remaining HP of both)."""
     cfg = obs_cfg(obs)
-    t = tables(cfg)
+    ctx = context(cfg)
+    t = ctx.t
     lane, m4, s = obs.state, obs.champ, obs.side
     me, en = m4.side(s), m4.side(1 - s)
     if en.absent > 0 or me.hp <= 0 or en.hp <= 0:
@@ -56,8 +63,16 @@ def duel_edge(obs: Observation) -> float:
         h = trade_hit_probability(lane, i, B_HOLD, False, cfg)
         q = trade_double_probability(i, cfg)
         L = t.level_by_xp[min(x.xp, t.xp_cap)]
-        e.append(h * ((1 - q) * t.dmg[1][L][x.items] + q * t.dmg[2][L][x.items]))
+        e.append(h * ((1 - q) * ctx.hit(1, L, x.items) + q * ctx.hit(2, L, x.items)))
     return e[0] / en.hp - e[1] / me.hp
+
+
+def cash_ready(me, cfg, t, invest_gold: float) -> bool:
+    """The gold-driven Recall trigger: the next tier is affordable (tiers), or the unspent gold reaches
+    `invest_gold` resources (continuous investment)."""
+    if cfg.continuous_items:
+        return me.gold > 0 and me.gold >= invest_gold * cfg.gold_scale
+    return me.items < t.item_tiers and me.gold >= t.prices[me.items]
 
 
 def obs_cfg(obs: Observation):
@@ -71,11 +86,12 @@ class M4ScriptAgent:
     def __init__(self, name: str, wave: int = SP, behavior: int = B_HOLD, objective: int = PRESSURE,
                  freeze: bool = False, recall_frac: float = 2 / 6, gold_recall: bool = False,
                  gold_hp_frac: float = 1.0, edge_trade: bool = False, freeze_zone: bool = False,
-                 xp_safe: bool = False, cshove: bool = False, stack_hp: int = 0):
+                 xp_safe: bool = False, cshove: bool = False, stack_hp: int = 0, invest_gold: float = 4.0):
         self.name, self.wave, self.behavior, self.objective = name, wave, behavior, objective
         self.freeze, self.recall_frac, self.gold_recall, self.gold_hp_frac = freeze, recall_frac, gold_recall, gold_hp_frac
         self.edge_trade, self.freeze_zone, self.xp_safe = edge_trade, freeze_zone, xp_safe
         self.cshove, self.stack_hp = cshove, stack_hp
+        self.invest_gold = invest_gold
 
     # ------------------------------------------------------------------ helpers
     @staticmethod
@@ -103,7 +119,7 @@ class M4ScriptAgent:
         enemy_wave_threat = en_fh > 0 and -en_fx <= -1
         if me.hp <= self.recall_frac * H:
             return self._walk_back(legal)
-        if self.gold_recall and me.items < t.item_tiers and me.gold >= t.prices[me.items] \
+        if self.gold_recall and cash_ready(me, cfg, t, self.invest_gold) \
                 and me.hp <= self.gold_hp_frac * H and not enemy_wave_threat:
             return self._walk_back(legal)
         freeze_legal = any(a % 3 == F for a in legal if a != CHAMP_ABSENT)
@@ -182,8 +198,9 @@ class ShoveRecallAgent(M4ScriptAgent):
     It never Shoves permanently: after the purchase it returns to rule 3. No rule looks at the opponent's identity."""
 
     def __init__(self, name: str = "shove_recall", shove_hp_frac: float = 2 / 3, cashout_hp_frac: float = 1 / 2,
-                 stack_hp: int = 8, pressure: bool = False, finish_push: bool = True, recall_frac: float = 2 / 6):
-        super().__init__(name, SP, B_HOLD, NONE, recall_frac=recall_frac)
+                 stack_hp: int = 8, pressure: bool = False, finish_push: bool = True, recall_frac: float = 2 / 6,
+                 invest_gold: float = 4.0):
+        super().__init__(name, SP, B_HOLD, NONE, recall_frac=recall_frac, invest_gold=invest_gold)
         self.finish_push = finish_push
         self.shove_hp_frac, self.cashout_hp_frac, self.stack_hp_cycle, self.pressure = (shove_hp_frac, cashout_hp_frac,
                                                                                          stack_hp, pressure)
@@ -204,7 +221,7 @@ class ShoveRecallAgent(M4ScriptAgent):
             return self._walk_back(legal), "low_hp_recall"
         farm = self._first(legal, [champ_act(SP, B_HOLD)])
         shove = self._first(legal, [champ_act(SH, B_HOLD), champ_act(SP, B_HOLD)])
-        afford = me.items < t.item_tiers and me.gold >= t.prices[me.items]
+        afford = cash_ready(me, cfg, t, self.invest_gold)
         if afford:
             if en_fh > 0 and -en_fx <= -1:
                 return farm, "stay_threat"

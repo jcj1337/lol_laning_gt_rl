@@ -18,6 +18,20 @@ an exact integer comparison.
 
 `tables(cfg)` returns the (cached) `Tables` of a configuration; the module-level functions take a `Tables` and
 default to the tables of `GameConfig.m4()`.
+
+M4.2c continuous investment (`GameConfig.m4_continuous()`, an experiment): no tiers; a champion's cumulative invested
+gold S (ledger units u, S = u / gold_scale resources) scales its attack power through a fixed-point multiplier
+
+    M(u)         = 10^12 + round(10^12 * alpha * ((1 + u / gold_scale)^p - 1))         (10^12 = x1.0)
+    AP*(L, u)    = AP(L, 0) * M(u)                                    attack power, basis points x 10^12 (exact int)
+    dmg*(D, L, u) = floor((D * 100 * AP*(L, u) + 5000 * 10^12) / 10^16)   centi-HP (the same rounding as dmg)
+    P*(L, u)     = floor((400 * AP*(L, u) + 5000 * 10^12) / 10^16)      centi-units
+
+M(0) = 10^12 exactly, so a champion that never invests has the tier-0 numbers of the baseline. M is strictly
+increasing per LEDGER unit over the supported range u <= INVEST_MAX_RESOURCES * gold_scale (the per-unit increment
+10^6 alpha p (1 + S)^(p - 1) is >= 10^3 there, far above the float64 rounding of the power); beyond it `Investment`
+raises instead of returning an unverified value. Hit damage stays quantized at 1 centi-HP, so a small investment
+raises AP* even when a given hit's rounded damage does not change.
 """
 
 from __future__ import annotations
@@ -165,3 +179,57 @@ def clamp_gold(items: int, gold: int, t: Tables = DEFAULT) -> Tuple[int, int]:
 def plates_broken(tower_dmg: int, t: Tables = DEFAULT) -> int:
     """pi(tau): thresholds reached by the cumulative tower damage."""
     return sum(1 for th in t.thresholds if tower_dmg >= th)
+
+
+# ---------------------------------------------------------------------- M4.2c continuous investment
+INVEST_ONE = 10 ** 12                     # fixed-point unit of the investment multiplier M (x1.0)
+INVEST_MAX_RESOURCES = 10 ** 6            # largest cumulative investment whose strict monotonicity is verified
+
+
+class Investment:
+    """Integer attack power of the continuous-investment experiment (see the module docstring). One per
+    (alpha, p, gold_scale, AP(L, 0) table); memoizes M(u)."""
+
+    def __init__(self, alpha: float, p: float, gold_scale: int, t: Tables, pressure: int):
+        self.alpha, self.p, self.scale, self.t, self.pressure_base = float(alpha), float(p), int(gold_scale), t, pressure
+        self.max_units = INVEST_MAX_RESOURCES * self.scale
+        self._m: dict = {0: INVEST_ONE}
+
+    def multiplier(self, units: int) -> int:
+        """M(u): the investment multiplier, x10^12 fixed point."""
+        m = self._m.get(units)
+        if m is None:
+            if not 0 <= units <= self.max_units:
+                raise ValueError(f"invested gold {units} ledger units outside the supported range [0, "
+                                 f"{self.max_units}] (INVEST_MAX_RESOURCES = {INVEST_MAX_RESOURCES})")
+            m = INVEST_ONE + int(round(INVEST_ONE * self.alpha * ((1.0 + units / self.scale) ** self.p - 1.0)))
+            if len(self._m) > 100_000:
+                self._m = {0: INVEST_ONE}
+            self._m[units] = m
+        return m
+
+    def factor(self, units: int) -> float:
+        """M(u) / 10^12 as a float (reports)."""
+        return self.multiplier(units) / INVEST_ONE
+
+    def attack_power(self, level: int, units: int) -> int:
+        """AP*(L, u) in basis points x 10^12."""
+        return self.t.ap[level][0] * self.multiplier(units)
+
+    def hit_damage(self, base: int, level: int, units: int) -> int:
+        return (base * 100 * self.attack_power(level, units) + 5000 * INVEST_ONE) // (10_000 * INVEST_ONE)
+
+    def pressure_damage(self, level: int, units: int) -> int:
+        return (self.pressure_base * self.attack_power(level, units) + 5000 * INVEST_ONE) // (10_000 * INVEST_ONE)
+
+
+@lru_cache(maxsize=16)
+def _investment(alpha: float, p: float, gold_scale: int, t: Tables, pressure: int) -> Investment:
+    return Investment(alpha, p, gold_scale, t, pressure)
+
+
+def investment(cfg: GameConfig) -> Investment:
+    """The `Investment` of a continuous-investment configuration (cached)."""
+    if not cfg.continuous_items:
+        raise ValueError("investment() applies to item_model 'continuous'")
+    return _investment(cfg.invest_alpha, cfg.invest_p, cfg.gold_scale, tables(cfg), cfg.pressure_tower_damage)

@@ -47,7 +47,9 @@ def test_c2_legacy_and_m2c_reject_any_m4_economy_field(field):
         value = {"xp_range": 2, "xp_base": 9, "xp_step": 4, "level_cap": 10, "hp_base": 700, "hp_growth": 1.06,
                  "ap_level_growth": 1.06, "item_mult": 1.3, "item_prices": (3.0, 5.0),
                  "plate_thresholds": (1000, 2000, 3000), "plate_gold": 1.5, "pressure_tower_damage": 300,
-                 "plate_gold_requires_presence": True, "gold_unit": 1e-3, "rear_count_max": 5}[field]
+                 "plate_gold_requires_presence": True, "gold_unit": 1e-3, "rear_count_max": 5,
+                 "item_model": "continuous", "invest_alpha": 0.06, "invest_p": 0.8, "invest_obs_gold_ref": 64,
+                 "invest_obs_ref": 512}[field]
     for preset in (GameConfig.champions, GameConfig.champions_continuing, GameConfig):
         with pytest.raises(ValueError, match=field):
             preset(**{field: value}).validate()

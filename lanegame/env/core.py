@@ -433,7 +433,7 @@ class LaneEnv:
             "gold": (ct.champ.a.gold, ct.champ.b.gold), "tower_dmg": (ct.champ.a.tower_dmg, ct.champ.b.tower_dmg),
             "tower_hits": ct.tower_hits, "tower_damage_dealt": ct.tower_damage_dealt,
             "plates_broken": ct.plates_broken, "plate_gold": ct.plate_gold, "purchases": ct.purchases,
-            "returned": ct.returned, "gold_unspendable": ct.gold_clamped,
+            "returned": ct.returned, "gold_unspendable": ct.gold_clamped, "invested": ct.invested,
         }
         return StepResult(obs, (reward, -reward), False, truncated, info)
 

@@ -22,6 +22,20 @@ Layout (88 entries with the default geometry):
 from the float32 vector, in the observer's own perspective (the observer as side A). Exactness rests on two
 enumerated bounds of the default lane (rear packets per cell <= rear_count_max = 4, siege mass <= siege_cap = 48);
 `observe_m4` raises instead of clipping if either is exceeded.
+
+M4.2c continuous investment (item_model = "continuous", an experiment): the five item entries of each champion block
+are replaced (same length) by
+
+    invested_whole  min(floor(S / g), R_S) / R_S      S = invested gold (ledger units), g = gold_scale, R_S =
+                                                     invest_obs_ref resources
+    gold_whole      min(floor(G / g), R_G) / R_G      G = unspent gold, R_G = invest_obs_gold_ref resources
+    invested_frac   (S mod g) / g                     the sub-resource part, exact in float32 for g <= 2^24
+    gold_frac       (G mod g) / g
+    attack_power    AP*(L, S) / (AP*(L, S) + AP(cap, 0))   bounded in (0, 1) for every S; not used by the decoder
+
+Both quantities are unbounded in the game, so the encoding is lossless only while S < R_S and G < R_G resources
+(the whole-resource entry is then < 1); at or beyond a reference the entry saturates at 1.0, the observation is no
+longer injective and `decode_m4` raises. `observe_m4` does NOT raise there (the game itself has no cap).
 """
 
 from __future__ import annotations
@@ -36,6 +50,8 @@ from ..state import State
 
 CHAMP_TAIL = ("hp_frac", "hp_max", "absent", "skill", "level", "xp_progress", "items", "gold", "can_buy",
               "can_buy_two", "attack_power")
+CHAMP_TAIL_CONTINUOUS = ("hp_frac", "hp_max", "absent", "skill", "level", "xp_progress", "invested_whole",
+                         "gold_whole", "invested_frac", "gold_frac", "attack_power")
 TOWER_NAMES = ("tower_dmg", "plates_broken", "plate_progress", "plates_left")
 SIDE_NAMES = ("siege_mass", "vision", "siege_eligible")
 
@@ -64,7 +80,7 @@ def m4_feature_names(cfg: GameConfig) -> List[str]:
         names += [f"{who}_{n}" for n in TOWER_NAMES]
     for who in ("own", "enemy"):
         names += [f"{who}_champ_x{x:+d}" for x in range(-cfg.tower, cfg.tower + 1)]
-        names += [f"{who}_champ_{n}" for n in CHAMP_TAIL]
+        names += [f"{who}_champ_{n}" for n in (CHAMP_TAIL_CONTINUOUS if cfg.continuous_items else CHAMP_TAIL)]
     assert len(names) == m4_obs_size(cfg)
     return names
 
@@ -135,6 +151,12 @@ def observe_m4(state: State, k: int, side: int, cfg: GameConfig, champ) -> np.nd
     cap = t.level_cap
     tiers = t.item_tiers
     gscale = t.gold_cap[0]
+    inv = None
+    if cfg.continuous_items:
+        from ..progression import investment
+        inv = investment(cfg)
+        g1, ref_s, ref_g = cfg.gold_scale, cfg.invest_obs_ref, cfg.invest_obs_gold_ref
+        ap_ref = t.ap[cap][0] * 10 ** 12
     for who, sgn in ((side, 1), (1 - side, -1)):
         cs = champ.side(who)
         v[o + sgn * cs.pos + T] = 1.0
@@ -150,11 +172,19 @@ def observe_m4(state: State, k: int, side: int, cfg: GameConfig, champ) -> np.nd
         v[o + 3] = cfg.skill_a if who == 0 else cfg.skill_b
         v[o + 4] = (L - 1) / (cap - 1) if cap > 1 else 0.0
         v[o + 5] = (x - t.xp_cum[L]) / t.xp_next[L] if L < cap else 0.0
-        v[o + 6] = N / tiers if tiers else 0.0
-        v[o + 7] = g / gscale if gscale else 0.0
-        v[o + 8] = 1.0 if N < tiers and g >= t.prices[N] else 0.0
-        v[o + 9] = 1.0 if N + 1 < tiers and g >= t.prices[N] + t.prices[N + 1] else 0.0
-        v[o + 10] = t.ap[L][N] / t.ap_max
+        if inv is not None:
+            v[o + 6] = min(N // g1, ref_s) / ref_s
+            v[o + 7] = min(g // g1, ref_g) / ref_g
+            v[o + 8] = (N % g1) / g1
+            v[o + 9] = (g % g1) / g1
+            ap = inv.attack_power(L, N)
+            v[o + 10] = ap / (ap + ap_ref)
+        else:
+            v[o + 6] = N / tiers if tiers else 0.0
+            v[o + 7] = g / gscale if gscale else 0.0
+            v[o + 8] = 1.0 if N < tiers and g >= t.prices[N] else 0.0
+            v[o + 9] = 1.0 if N + 1 < tiers and g >= t.prices[N] + t.prices[N + 1] else 0.0
+            v[o + 10] = t.ap[L][N] / t.ap_max
         o += len(CHAMP_TAIL)
     return np.asarray(v, dtype=np.float32)
 
@@ -162,7 +192,9 @@ def observe_m4(state: State, k: int, side: int, cfg: GameConfig, champ) -> np.nd
 # ---------------------------------------------------------------------- the constructive decoder (tests)
 def decode_m4(vec, cfg: GameConfig) -> Tuple[int, State, object, Tuple[float, float]]:
     """(phase, lane State, M4State, (own skill, enemy skill)) read back from an M4 observation, in the observer's
-    own perspective: the observer is side A. Exact on every reachable state (design §12.2)."""
+    own perspective: the observer is side A. Exact on every reachable state (design §12.2). Under item_model
+    "continuous" it is exact while invested and unspent gold are below their observation references and raises
+    ValueError on a saturated entry (the value is then not recoverable)."""
     from ..champions_m4 import M4Side, M4State
     t = tables(cfg)
     vec = np.asarray(vec, dtype=np.float32)
@@ -202,8 +234,18 @@ def decode_m4(vec, cfg: GameConfig) -> Tuple[int, State, object, Tuple[float, fl
         hp = int(round(float(vec[o]) * t.hp_max[L]))
         absent = int(round(float(vec[o + 2]) * cfg.champion_absent_max))
         xp = t.xp_cum[L] + (int(round(float(vec[o + 5]) * t.xp_next[L])) if L < t.level_cap else 0)
-        items = int(round(float(vec[o + 6]) * t.item_tiers)) if t.item_tiers else 0
-        gold = int(round(float(vec[o + 7]) * gscale))
+        if cfg.continuous_items:
+            g1 = cfg.gold_scale
+            whole_s = int(round(float(vec[o + 6]) * cfg.invest_obs_ref))
+            whole_g = int(round(float(vec[o + 7]) * cfg.invest_obs_gold_ref))
+            if whole_s >= cfg.invest_obs_ref or whole_g >= cfg.invest_obs_gold_ref:
+                raise ValueError("continuous investment: invested or unspent gold at/above its observation "
+                                 "reference; the observation is saturated and not decodable")
+            items = whole_s * g1 + int(round(float(vec[o + 8]) * g1))
+            gold = whole_g * g1 + int(round(float(vec[o + 9]) * g1))
+        else:
+            items = int(round(float(vec[o + 6]) * t.item_tiers)) if t.item_tiers else 0
+            gold = int(round(float(vec[o + 7]) * gscale))
         champs.append((sgn * cell, hp, absent, xp, items, gold))
         skills.append(float(vec[o + 3]))
         o += len(CHAMP_TAIL)
