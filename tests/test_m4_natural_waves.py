@@ -1,7 +1,8 @@
-"""M4.2e-A: natural wave mechanics, `GameConfig.m4_natural()` (docs/m4_2e_natural_waves_report.md).
+"""M4.2e-A: the natural-wave prototype, `GameConfig.m4_natural_prototype()` (docs/m4_2e_natural_waves_report.md).
 
 Correctness (validation, legality, movement, conservation, mirror symmetry, accounting, observation) and pins of the
-report's mechanical findings (neutral symmetry, Hold / Thin / Clear, stacking, crash, bounce, freeze, Recall, reach)."""
+report's mechanical findings (neutral symmetry, Hold / Thin / Clear, stacking, crash, bounce, freeze, Recall, reach).
+The final preset `GameConfig.m4_natural()` (M4.2e-A.1) is tested in tests/test_m4_natural_final.py."""
 
 import numpy as np
 import pytest
@@ -21,7 +22,7 @@ from lanegame.state import State
 
 from test_m4_env import soak
 
-NAT = GameConfig.m4_natural()
+NAT = GameConfig.m4_natural_prototype()
 T = NAT.tower
 HO, CL, TN = nw.HO, nw.CL, nw.TN
 
@@ -51,9 +52,9 @@ def test_validation_of_the_natural_fields():
     with pytest.raises(ValueError, match="champion_wave_damage"):
         GameConfig.m4(champion_wave_damage=(0, 3, 1)).validate()             # natural only
     with pytest.raises(ValueError, match="champion_wave_damage"):
-        GameConfig.m4_natural(champion_wave_damage=(0, -1, 1)).validate()
+        GameConfig.m4_natural_prototype(champion_wave_damage=(0, -1, 1)).validate()
     with pytest.raises(ValueError, match="freeze_maintenance"):
-        GameConfig.m4_natural(freeze_maintenance=True).validate()
+        GameConfig.m4_natural_prototype(freeze_maintenance=True).validate()
     for kw in (dict(wave_dynamics="natural"), dict(champion_wave_damage=(0, 3, 1))):
         with pytest.raises(ValueError, match="M4 economy field"):
             GameConfig.champions(**kw).validate()

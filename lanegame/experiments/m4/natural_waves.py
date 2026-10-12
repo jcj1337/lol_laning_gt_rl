@@ -1,6 +1,7 @@
 """M4.2e-A: natural wave mechanics (docs/m4_2e_natural_waves_report.md).
 
-Deterministic trajectories of `GameConfig.m4_natural()`: the M4 resolver with no chance events (u = None: no ganks,
+Deterministic trajectories of the M4.2e-A prototype, `GameConfig.m4_natural_prototype()` (the final preset
+`GameConfig.m4_natural()` is studied by lanegame.experiments.m4.natural_waves_final): the M4 resolver with no chance events (u = None: no ganks,
 no trade hits) and short scripted policies, plus lane-only traces (`mechanics.step_turn` with the champion's farm-mode
 reach, own front + farm_reach). Nothing is trained or sampled.
 
@@ -44,14 +45,15 @@ RECALL = champ_act(W_HOLD, B_RECALL)
 
 
 def natural(**kw) -> GameConfig:
-    return GameConfig.m4_natural(**kw)
+    """The M4.2e-A prototype preset this driver documents."""
+    return GameConfig.m4_natural_prototype(**kw)
 
 
 def natural_w4(**kw) -> GameConfig:
     """The same natural rules on the historical 4-HP wave (per-HP economy back at its M4 values)."""
     base = dict(wave_hp=4, farm_per_hp=0.25, xp_per_hp=2, gold_unit=1e-6, siege_cap=48)
     base.update(kw)
-    return GameConfig.m4_natural(**base)
+    return GameConfig.m4_natural_prototype(**base)
 
 
 # ---------------------------------------------------------------------- resolver driver
@@ -363,7 +365,7 @@ def recall_line(pre: Callable, trigger: Callable, b: Callable = lambda k: HO):
         if st["phase"] == 0 and trigger(k, lane):
             st["phase"] = 1
         if st["phase"] == 1:
-            if m4.a.absent == 0 and m4.a.pos <= GameConfig.m4_natural().recall_line:
+            if m4.a.absent == 0 and m4.a.pos <= GameConfig.m4_natural_prototype().recall_line:
                 st["phase"], st["recall_k"] = 2, k
                 return (RECALL, b(k))
             return (SAFE, b(k))

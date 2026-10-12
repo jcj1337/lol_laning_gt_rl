@@ -1049,3 +1049,70 @@ timing benchmark; the unique experimental content is about 5.4k turns.
 2. Decide the push incentive (enemy-tower collection, plate value, ganks in the enemy half) alongside 1.
 3. Enumerate, or accept, the natural lane's evaluation bound.
 4. Integrate and freeze the game for the M4.3 PPO smoke test.
+
+## V. M4.2e-A.1 finalizing natural wave mechanics (2026-10-12)
+
+Branch `development/m4-natural-waves`, on top of M4.2e-A.
+
+- **Full account:** [m4_2e_natural_waves_final_review.md](m4_2e_natural_waves_final_review.md).
+- **Driver:** `lanegame.experiments.m4.natural_waves_final`; results `results/m4_natural_waves/natural_waves_final.json`
+  (≈ 19k turns, 2 s).
+- **Tests:** `tests/test_m4_natural_final.py`.
+- **Presets:**
+  - `GameConfig.m4_natural()` is now the final natural-wave preset.
+  - The M4.2e-A prototype is kept as `GameConfig.m4_natural_prototype()`; section U and its report reproduce with it.
+  - Every other preset is unchanged.
+
+**Diagnosis**
+
+- **The prototype's long sieges were an artefact.** A follow-up wave entering the enemy tower cell next to a defender
+  did not crash; it fought there beside the crashed mass. So:
+  - the defender fought the follow-ups, on 13 of 14 ticks;
+  - the tower fired at both the mass and the follow-ups;
+  - the mass died to tower fire alone (11 of 12 HP) and hit the tower for the whole siege.
+- **The bounce is not caused by siege length.** Bounce timing stays fixed while siege length varies 3–6× with tower
+  damage.
+- **Clear could not crash because of reach, not damage.** At 16 HP per tick it stalled exactly like at 2: defenders
+  behind the tower were out of reach.
+
+**Final rules: one rule, one parameter, two companions**
+
+| change | effect |
+|---|---|
+| Entering the enemy tower cell is the crash | follow-up waves join one siege; one tower target |
+| Tower 3 HP per tick | 3 × 4 > 8: the tower alone out-kills the reinforcement stream (1 and 2 give self-sustaining sieges) |
+| A champion in the enemy tower cell reaches one cell behind it | Apply Pressure / Vision only |
+| Clear = round(4 × AP) HP per turn | Thin stays 2 per turn (controlled), Hold 0 |
+
+W = 8, the `floor(h / 8)` law, the geometry, spawns, the economy and the 46-action / 88-entry interface are unchanged.
+
+**Results** (deterministic, from s0)
+
+- **Sieges** last 3–9 turns with 2–5 minion tower hits (prototype: 6–13 turns, 10–43 hits).
+- **Stacked crashes bounce** after 20–22 turns with 24 HP. Small fast crashes start a longer cycle of about 40 turns.
+- **Power progression:** from a neutral lane, Clear crashes in 5 turns at AP 1 and 1–2 at AP 4, and smaller (25 → 13–16
+  HP). At AP ≥ 2, Clear shoves every fresh wave.
+- **Freeze outside tower range** (enemy at −1, own front in its tower cell):
+  - held 20+ turns under the freezer's Thin, with a 2.4× farm edge;
+  - 13 turns uncontrolled;
+  - broken by the opponent's Clear within 2 turns.
+- **No action dominates a passive opponent:** a one-turn slow push +4.6 over 80 turns; constant Thin / Clear −10.8 /
+  −18.8.
+- **Recall:** free right after one's own large crash; 1.7–1.8 during the enemy's siege.
+- **Performance** unchanged: lane step 38.7 µs, env step 206 µs.
+
+**Decision: PASS WITH CAVEATS.**
+
+- Push profitability hinges on `collect_contest_enemy_tower` (0.5); at 1.0 push + Pressure becomes profitable (+3 to
+  +4.4).
+- Plates now come mainly from Pressure.
+- Large power gaps allow a perma-shove or perma-siege.
+- Freezes need a precise control band and form mainly after an enemy crash.
+- One cell separates the lane from the tower.
+
+**Next steps (not started):**
+
+1. Combat-driven zoning on `m4_natural()`: the freeze state and the Pressure siege.
+2. Calibrate the push economics there (enemy-tower collection, plate gold, Pressure damage).
+3. Enumerate or accept the evaluation bound (per-turn 10.36).
+4. Integrate and freeze for PPO.

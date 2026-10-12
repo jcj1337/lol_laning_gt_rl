@@ -454,13 +454,13 @@ class LaneEnv:
         return (Observation(k, A, s, la, observe(s, k, A, cfg, ch), ma, ch, cfg),
                 Observation(k, B, s, lb, observe(s, k, B, cfg, ch), mb, ch, cfg))
 
-    def _lane_turn(self, s: State, k: int, a: int, b: int, reach=None) -> TurnResult:
+    def _lane_turn(self, s: State, k: int, a: int, b: int, reach=None, budget=None) -> TurnResult:
         if self._cache_size <= 0:
-            return step_turn(s, k, a, b, self.cfg, champion_reach=reach)
-        key = (s, k % self.cfg.phase_period, a, b, reach)
+            return step_turn(s, k, a, b, self.cfg, champion_reach=reach, champion_budget=budget)
+        key = (s, k % self.cfg.phase_period, a, b, reach, budget)
         res = self._cache.get(key)
         if res is None:
-            res = step_turn(s, k, a, b, self.cfg, champion_reach=reach)
+            res = step_turn(s, k, a, b, self.cfg, champion_reach=reach, champion_budget=budget)
             self._cache[key] = res
             if len(self._cache) > self._cache_size:
                 self._cache.popitem(last=False)

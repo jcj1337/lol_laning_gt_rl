@@ -131,6 +131,20 @@ class M4Context:
         """Centi-units an effective Apply Pressure turn adds to the attacker's tower damage."""
         return self.t.pressure[level][items] if self.inv is None else self.inv.pressure_damage(level, items)
 
+    def wave_budget(self, slot: int, level: int, items: int) -> int:
+        """Natural waves, wave_clear_scaling "attack_power": the champion's wave-damage budget for one turn in minion
+        HP, round(ticks_per_turn * champion_wave_damage[slot] * AP / 10^4) (round half up, exact integers); slots
+        outside wave_clear_scaled_slots keep ticks_per_turn * champion_wave_damage[slot]."""
+        cfg = self.cfg
+        base = cfg.ticks_per_turn * cfg.champion_wave_damage[slot]
+        if slot not in cfg.wave_clear_scaled_slots:
+            return base
+        if self.inv is None:
+            num, den = base * self.t.ap[level][items], 10_000
+        else:
+            num, den = base * self.inv.attack_power(level, items), 10_000 * self.inv.one
+        return (2 * num + den) // (2 * den)
+
     def collection(self, x: int, mode: str, pos: int, opp_mode: str, opp_pos: int) -> int:
         key = (x, mode, pos, opp_mode, opp_pos)
         v = self._coll.get(key)
@@ -317,9 +331,11 @@ def resolve_turn_m4(lane: State, m4: M4State, k: int, a: int, b: int, cfg: GameC
         ctx = context(cfg)
     t = ctx.t
     if lane_step is None:
-        def lane_step(s, kk, x, y, reach):
-            return step_turn(s, kk, x, y, cfg, champion_reach=reach)
+        def lane_step(s, kk, x, y, reach, budget=None):
+            return step_turn(s, kk, x, y, cfg, champion_reach=reach, champion_budget=budget)
     T = cfg.tower
+    # natural waves: a champion standing in the enemy tower cell reaches natural_tower_reach cells beyond it
+    reach_cap = T + (cfg.natural_tower_reach if cfg.natural_waves else 0)
     (wa, ba, oa), (wb, bb, ob) = _decode(a), _decode(b)
     w, beh, obj = (wa, wb), (ba, bb), (oa, ob)
     me0 = (m4.a, m4.b)
@@ -332,7 +348,14 @@ def resolve_turn_m4(lane: State, m4: M4State, k: int, a: int, b: int, cfg: GameC
     # 1. probe: wave destinations under full support of every champion that intends to play the lane (raw codes);
     #    farm_spot_rule "pre_crash_front": a front that crashes in the probe leaves the farm spot at its pre-turn cell
     off = (recalling[A] or absent[A], recalling[B] or absent[B])
-    probe = lane_step(lane, k, wa + 6 * oa, wb + 6 * ob, (NO_REACH if off[A] else T, NO_REACH if off[B] else T))
+    # wave_clear_scaling "attack_power": per-turn wave-damage budgets from the start-of-turn attack power
+    budget = None
+    if cfg.natural_waves and cfg.wave_clear_scaling == "attack_power":
+        budget = (ctx.wave_budget(wa, lv0[A], it0[A]), ctx.wave_budget(wb, lv0[B], it0[B]))
+
+    def lane_call(x, y, rch):
+        return lane_step(lane, k, x, y, rch) if budget is None else lane_step(lane, k, x, y, rch, budget)
+    probe = lane_call(wa + 6 * oa, wb + 6 * ob, (NO_REACH if off[A] else reach_cap, NO_REACH if off[B] else reach_cap))
     spot = [0, 0]
     for s in (A, B):
         fx, fh = probe.state.side(s)[:2]
@@ -410,7 +433,7 @@ def resolve_turn_m4(lane: State, m4: M4State, k: int, a: int, b: int, cfg: GameC
             reach.append(min(end[s], cfg.safe_line))
         else:
             modes.append(FARM)
-            reach.append(min(T, end[s] + cfg.farm_reach))
+            reach.append(min(reach_cap, end[s] + cfg.farm_reach))
     maintained = tuple(w[s] == F and not away[s] and not interrupted[s] and not connected[s]
                        and abs(end[s] - cfg.freeze_line) <= cfg.farm_reach for s in (A, B))
     if cfg.freeze_maintenance:
@@ -420,7 +443,7 @@ def resolve_turn_m4(lane: State, m4: M4State, k: int, a: int, b: int, cfg: GameC
 
     # 6. the authoritative lane step (effective waves and objectives)
     codes = (eff_w[A] + 6 * eff_obj[A], eff_w[B] + 6 * eff_obj[B])
-    res = lane_step(lane, k, codes[A], codes[B], (reach[A], reach[B]))
+    res = lane_call(codes[A], codes[B], (reach[A], reach[B]))
 
     # 7. gold (exact ledger units) and 7b. XP
     avail, farm_u, xp_gain_raw = [0.0, 0.0], [0, 0], [0, 0]

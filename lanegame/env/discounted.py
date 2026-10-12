@@ -73,6 +73,27 @@ def tail_bound(cfg: GameConfig, window: int, gamma: Optional[float] = None) -> f
     return g ** window * tail_constant(cfg, g)
 
 
+def max_champion_wave_budget(cfg: GameConfig) -> int:
+    """Natural waves: the most minion HP one champion's wave damage removes in one turn. Fixed budgets: ticks_per_turn
+    x max(champion_wave_damage). wave_clear_scaling "attack_power": the budget at the largest attack power (two-tier
+    items: AP(level_cap, tiers); saturating investment: below AP(level_cap, 0) (1 + invest_gain)); with an unbounded
+    investment curve, the most HP the enemy can have alive (lane_enum.natural_lane_bounds)."""
+    import math
+    from ..progression import tables
+    base = cfg.ticks_per_turn * max(cfg.champion_wave_damage)
+    if cfg.wave_clear_scaling != "attack_power":
+        return base
+    t = tables(cfg)
+    if not cfg.continuous_items:
+        ap = t.ap_max
+    elif cfg.invest_curve == "saturating":
+        ap = t.ap[t.level_cap][0] * (1 + cfg.invest_gain)
+    else:
+        from ..lane_enum import natural_lane_bounds
+        return natural_lane_bounds(cfg)["A_max"]
+    return max(base, math.ceil(base * ap / 10_000) + 1)
+
+
 def per_turn_bound(cfg: GameConfig) -> float:
     """A guaranteed bound on |r_k| for one turn (design §10.5.3): farm on at most 2 hp_cap fight HP, tower fire and
     thinning, plus the plates one turn can cross, plus one bounty."""
@@ -84,8 +105,8 @@ def per_turn_bound(cfg: GameConfig) -> float:
         # per tick: the lane front and the crashed mass each lose at most the Lanchester damage of a blob of hp_cap
         # plus rear_count_max queued waves (observe_m4 raises beyond it), plus the tower; the champion strikes once
         blob = minion_damage(cfg.hp_cap + cfg.rear_count_max * cfg.wave_hp, cfg)
-        per_tick = 2 * blob + cfg.tower_damage + cfg.tower_siege_damage + max(cfg.champion_wave_damage)
-        kills = cfg.ticks_per_turn * per_tick + cfg.thin_damage
+        per_tick = 2 * blob + cfg.tower_damage + cfg.tower_siege_damage
+        kills = cfg.ticks_per_turn * per_tick + cfg.thin_damage + max_champion_wave_budget(cfg)
     plates = 0
     if cfg.is_m4:
         t = tables(cfg)

@@ -51,7 +51,9 @@ def test_c2_legacy_and_m2c_reject_any_m4_economy_field(field):
                  "item_model": "continuous", "invest_alpha": 0.06, "invest_p": 0.8, "invest_obs_gold_ref": 64,
                  "invest_obs_ref": 512, "invest_curve": "saturating", "invest_gain": 2.0, "invest_scale": 8.0,
                  "invest_obs_encoding": "compressed", "farm_spot_rule": "pre_crash_front", "position_rule": "standoff",
-                 "zoning_rule": "none", "wave_dynamics": "natural", "champion_wave_damage": (0, 3, 1)}[field]
+                 "zoning_rule": "none", "wave_dynamics": "natural", "champion_wave_damage": (0, 3, 1),
+                 "natural_crash_rule": "entry", "natural_tower_reach": 1, "wave_clear_scaling": "attack_power",
+                 "wave_clear_scaled_slots": (1,)}[field]
     for preset in (GameConfig.champions, GameConfig.champions_continuing, GameConfig):
         with pytest.raises(ValueError, match=field):
             preset(**{field: value}).validate()

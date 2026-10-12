@@ -426,6 +426,19 @@ class GameConfig:
     # Hold, Clear and Thin, champion_wave_damage[slot] HP per tick on the nearest reachable enemy minions
     wave_dynamics: str = "scripted"
     champion_wave_damage: Tuple[int, int, int] = (0, 2, 1)   # (Hold, Clear, Thin) = slots (SP, SH, F); "natural" only
+    # M4.2e-A.1 (docs/m4_2e_natural_waves_final_review.md), "natural" only; each default reproduces M4.2e-A.
+    # natural_crash_rule "contact" = a front in the enemy tower cell crashes only with no enemy front within distance 1
+    # (otherwise it fights there under tower fire); "entry" = every front entering the enemy tower cell joins the crashed
+    # mass (a crash is entering tower range; follow-up waves join the siege instead of fighting beside it)
+    natural_crash_rule: str = "contact"
+    # cells beyond the enemy tower cell a champion standing IN that cell reaches with its wave damage (0 = reach is
+    # capped at the tower cell; 1 = the cell behind it, where the defender's front engages a siege, as thin_reach)
+    natural_tower_reach: int = 0
+    # wave_clear_scaling "none" = champion_wave_damage[slot] HP per tick; "attack_power" = a per-turn budget
+    # round(ticks_per_turn * champion_wave_damage[slot] * AP / 10^4) for the slots in wave_clear_scaled_slots (AP = the
+    # champion's attack power at the start of the turn), split over the ticks as evenly as possible (earlier ticks first)
+    wave_clear_scaling: str = "none"
+    wave_clear_scaled_slots: Tuple[int, ...] = (SH, F)      # wave slots whose budget scales (SH = Clear, F = Thin)
     tower_adjacent_p: float = 0.0        # tower shot on a connected trader ending next to the enemy tower (m4: 0.5)
     tower_adjacent_p_busy: float = 0.0    # ... while its own crashed minions are under that tower (m4: 0.25)
     gank_damage_scale: str = "none"       # "none" (centi = 100 x trials), "victim_level" (m4), "attacker_level"
@@ -509,17 +522,35 @@ class GameConfig:
         return cls.m4_continuous(**base)
 
     @classmethod
-    def m4_natural(cls, **kw) -> "GameConfig":
-        """EXPERIMENT (M4.2e-A, docs/m4_2e_natural_waves_report.md): `m4_emergent()` with natural wave mechanics
-        (wave_dynamics = "natural"; wave slots Hold / Clear / Thin) on the rescaled wave of NATURAL_WAVE_HP = 8 HP.
-        Every per-HP quantity is rescaled so that one fresh wave is worth what it was at 4 HP: farm_per_hp 0.125
-        (1 resource per wave), xp_per_hp 1 (8 XP per wave), siege_cap 96 (12 waves); gold_unit 1e-7 keeps every
-        per-HP farm value an exact ledger multiple. hp_cap (3 waves) and the Lanchester law floor(h / W) scale with
-        wave_hp. Not a default."""
+    def m4_natural_prototype(cls, **kw) -> "GameConfig":
+        """EXPERIMENT (M4.2e-A, docs/m4_2e_natural_waves_report.md), kept for comparison: `m4_emergent()` with natural
+        wave mechanics (wave_dynamics = "natural"; wave slots Hold / Clear / Thin) on the rescaled wave of
+        NATURAL_WAVE_HP = 8 HP. Every per-HP quantity is rescaled so that one fresh wave is worth what it was at 4 HP:
+        farm_per_hp 0.125 (1 resource per wave), xp_per_hp 1 (8 XP per wave), siege_cap 96 (12 waves); gold_unit 1e-7
+        keeps every per-HP farm value an exact ledger multiple. hp_cap (3 waves) and the Lanchester law floor(h / W)
+        scale with wave_hp. Crashes need no enemy front within distance 1, the tower deals 1 HP per tick, reach ends at
+        the enemy tower cell and the champion's wave damage is fixed. Not a default."""
         base = dict(wave_dynamics="natural", wave_hp=NATURAL_WAVE_HP, farm_per_hp=0.125, xp_per_hp=1,
                     gold_unit=1e-7, siege_cap=96, freeze_maintenance=False)
         base.update(kw)
         return cls.m4_emergent(**base)
+
+    @classmethod
+    def m4_natural(cls, **kw) -> "GameConfig":
+        """EXPERIMENT (M4.2e-A.1, docs/m4_2e_natural_waves_final_review.md): the natural-wave preset. It is
+        `m4_natural_prototype()` (M4.2e-A) with four changes:
+          natural_crash_rule "entry"         a front entering the enemy tower cell joins the crashed mass: one siege per
+                                             tower, follow-up waves join it, the tower fires on it alone
+          tower_siege_damage 3               the tower alone out-kills the reinforcement stream (3 x 4 ticks > 8 HP per
+                                             spawn interval), so no siege sustains itself on follow-up waves
+          natural_tower_reach 1              a champion in the enemy tower cell reaches the defenders behind it
+          wave_clear_scaling "attack_power"  Clear's budget scales with attack power (Thin stays a fixed, controlled
+                                             1 HP per tick; Hold 0)
+        Not a default."""
+        base = dict(natural_crash_rule="entry", tower_siege_damage=3, natural_tower_reach=1,
+                    wave_clear_scaling="attack_power", wave_clear_scaled_slots=(SH,))
+        base.update(kw)
+        return cls.m4_natural_prototype(**base)
 
     # ------------------------------------------------------------------ helpers
     @property
@@ -751,8 +782,19 @@ class GameConfig:
                 bad("freeze_maintenance", "must be False under wave_dynamics 'natural' (Thin is not a Freeze)")
             if self.cap_rule != "block" or self.tower_mode != "mass" or self.damage_law == "pressure":
                 bad("wave_dynamics", "'natural' needs cap_rule 'block', tower_mode 'mass' and a Lanchester damage law")
-        elif self.champion_wave_damage != _FIELD_DEFAULTS["champion_wave_damage"]:
-            bad("champion_wave_damage", "applies to wave_dynamics 'natural' only")
+            if self.natural_crash_rule not in ("contact", "entry"):
+                bad("natural_crash_rule", "must be 'contact' or 'entry'")
+            if self.natural_tower_reach not in (0, 1):
+                bad("natural_tower_reach", "must be 0 or 1")
+            if self.wave_clear_scaling not in ("none", "attack_power"):
+                bad("wave_clear_scaling", "must be 'none' or 'attack_power'")
+            if not set(self.wave_clear_scaled_slots) <= {SP, SH, F}:
+                bad("wave_clear_scaled_slots", "must be wave slots")
+        else:
+            for name in ("champion_wave_damage", "natural_crash_rule", "natural_tower_reach", "wave_clear_scaling",
+                         "wave_clear_scaled_slots"):
+                if getattr(self, name) != _FIELD_DEFAULTS[name]:
+                    bad(name, "applies to wave_dynamics 'natural' only")
         self._validate_exact_economy()
 
     def _validate_exact_economy(self) -> None:
@@ -810,7 +852,8 @@ M4_ECONOMY_FIELDS = ("xp_per_hp", "xp_range", "xp_base", "xp_step", "level_cap",
                      "invest_obs_encoding", "freeze_maintenance", "chase_rule", "farm_spot_rule",
                      "tower_adjacent_p", "tower_adjacent_p_busy", "gank_damage_scale", "plate_thresholds",
                      "plate_gold", "pressure_tower_damage", "plate_gold_requires_presence", "gold_unit",
-                     "rear_count_max", "position_rule", "zoning_rule", "wave_dynamics", "champion_wave_damage")
+                     "rear_count_max", "position_rule", "zoning_rule", "wave_dynamics", "champion_wave_damage",
+                     "natural_crash_rule", "natural_tower_reach", "wave_clear_scaling", "wave_clear_scaled_slots")
 _FIELD_DEFAULTS = {f.name: f.default for f in GameConfig.__dataclass_fields__.values()}
 
 

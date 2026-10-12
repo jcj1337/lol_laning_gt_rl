@@ -1,8 +1,28 @@
 # M4.2e-A — Natural Wave Mechanics
 
+> **Superseded by M4.2e-A.1** ([m4_2e_natural_waves_final_review.md](m4_2e_natural_waves_final_review.md)).
+>
+> - This report documents the prototype, now `GameConfig.m4_natural_prototype()`. Every number below reproduces with
+>   that preset; the driver and `tests/test_m4_natural_waves.py` use it.
+> - `GameConfig.m4_natural()` is now the final preset: this prototype plus four changes.
+>   1. **Entry crash rule:** a front entering the enemy tower cell joins the crashed mass, so follow-up waves join the
+>      siege instead of fighting beside it.
+>   2. **Tower 3 HP per tick:** the tower alone out-kills the reinforcement stream.
+>   3. **Tower reach:** a champion standing in the enemy tower cell reaches the cell behind it.
+>   4. **Clear scales with attack power;** Thin stays fixed.
+> - **What the review found about this prototype:**
+>   - Its long sieges were an artefact. The defender's minions fought the follow-up waves standing in the tower cell
+>     while the tower alone cleared the crashed mass.
+>   - Its bounce timing did not depend on siege length.
+>   - Clear could not crash because of reach, not damage.
+> - **Caveats of §8 / §11 resolved by the final preset:**
+>   - the freeze is now held *outside* tower range;
+>   - Clear's ability to push now grows with champion power.
+> - **Still open:** the economics of pushing (now traced to the 0.5 enemy-tower collection rate).
+
 Branch `development/m4-natural-waves`, from `integration/m4-emergent-ready` (23e48be).
 
-- **Preset:** `GameConfig.m4_natural()`, opt-in. It is `m4_emergent()` plus natural waves (`wave_dynamics="natural"`)
+- **Preset:** `GameConfig.m4_natural()` at the time, now `GameConfig.m4_natural_prototype()`; opt-in. It is `m4_emergent()` plus natural waves (`wave_dynamics="natural"`)
   on an 8-HP wave. `m4()`, `m4_continuous()` and `m4_emergent()` are unchanged.
 - **Driver:** `python -m lanegame.experiments.m4.natural_waves` (0.4 s).
 - **Results:** `results/m4_natural_waves/natural_waves.json`.

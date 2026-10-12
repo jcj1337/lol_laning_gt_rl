@@ -35,7 +35,8 @@ and at the end of the turn:
                         NEXT vision_turns turns, never this one; otherwise it counts down.
                         In "choice" mode the crash-reward choice sets it afterwards.)
 
-Natural waves (wave_dynamics = "natural", GameConfig.m4_natural(), docs/m4_2e_natural_waves_report.md). Minions obey
+Natural waves (wave_dynamics = "natural", GameConfig.m4_natural(), docs/m4_2e_natural_waves_report.md and
+docs/m4_2e_natural_waves_final_review.md). Minions obey
 the same rules whatever the actions; the wave slot (Hold, Clear, Thin) only sets the champion's damage budget
 champion_wave_damage[slot] HP per tick. Per tick:
 
@@ -43,6 +44,10 @@ champion_wave_damage[slot] HP per tick. Per tick:
                    the enemy's crashed mass under its own tower (own x >= -T - 1); rears walk and never enter the cell
                    of a front they cannot join (no parking, no creeping, no Freeze hold, no idle wait behind a tower)
   2. merging       "block" cap rule
+  2b. entry crash  natural_crash_rule "entry" (M4.2e-A.1 preset): a front entering the enemy tower cell joins the crashed
+                   mass at once (a crash is entering tower range; follow-up waves join the siege), so no front ever
+                   fights inside the enemy tower cell and the tower fires on the crashed mass alone; "contact"
+                   (M4.2e-A prototype): the crash check of step 4, a front in the tower cell next to a defender fights
   3. contact fight Lanchester minion damage of each blob + the champion's budget on the enemy front if that front's
                    own-perspective cell is within its reach line + the tower on a contested attacker in its cell
   3b. siege fight  a defender front within distance 1 of its tower fights the crashed mass (Lanchester both ways,
@@ -51,7 +56,10 @@ champion_wave_damage[slot] HP per tick. Per tick:
   3d. champion     an unspent budget strikes the enemy's crashed mass under the own tower, else the enemy's leading
                    packet if reachable: a champion can clear a walking wave or a crash with no minion of its own
   hits             the crashed mass at the start of the tick hits the tower unless it fought defenders this tick
-  4.-5.            crash check and tower fire, as in the scripted rule
+  4.-5.            crash check (prototype) and tower fire on the mass present at the start of the tick
+
+The champion's budget per tick is champion_wave_damage[slot], or (wave_clear_scaling "attack_power") the turn budget
+champion_budget[s] computed by the M4 resolver from attack power, split over the ticks with earlier ticks first.
 
 Plate modes: "crash" (opportunities per crash, lapse with the siege), "tower" (a finite budget per tower) and
 "durability" (M4 ruleset only, design §11): the lane step grants and claims no plate opportunities (ap / bp stay 0);
@@ -270,14 +278,14 @@ def _pressure_thinning(P, siege_tick_start, objectives, no_fight: bool, thin_lef
     return thinned
 
 
-def _crash_and_tower_fire(P, siege, crash_hp, cfg: GameConfig, ev, kills, plates):
-    """Steps 4 (crash check) and 5 (tower fire on the crashed mass, "mass" mode). Returns the HP crashed per side."""
+def _crash_check(P, siege, crash_hp, cfg: GameConfig, ev, kills, plates, entry: bool = False):
+    """Step 4, crash check: a front in the enemy tower cell with no enemy front within distance 1 leaves the lane and
+    joins the siege; with entry=True (natural_crash_rule "entry") every front entering the enemy tower cell does.
+    Returns the HP crashed per side."""
     T = cfg.tower
-    # ---- 4. crash check ----
-    siege_before_crash = list(siege)
     crashed = [0, 0]
     for s in (A, B):
-        if P[s] and P[s][0][0] == T and not _fronts_in_contact(P):
+        if P[s] and P[s][0][0] == T and (entry or not _fronts_in_contact(P)):
             crashed[s] = P[s][0][1]
     for s in (A, B):
         if crashed[s]:
@@ -297,16 +305,27 @@ def _crash_and_tower_fire(P, siege, crash_hp, cfg: GameConfig, ev, kills, plates
                 if plates is not None and cfg.objectives and cfg.plate_mode == "crash":
                     # the crash opens plate opportunities, claimable while this siege lasts
                     plates[s] = min(cfg.plates_cap, plates[s] + cfg.plate_grant[cfg.size_category(crashed[s])])
+    return crashed
 
-    # ---- 5. tower fire on crashed mass ("mass" mode) ----
+
+def _tower_fire(siege, present, cfg: GameConfig, ev, kills) -> None:
+    """Step 5 ("mass" mode): each tower deals tower_siege_damage HP to the crashed mass, at most the mass `present`
+    (already under it before this tick's crashes)."""
+    T = cfg.tower
+    for s in (A, B):
+        d = min(cfg.tower_siege_damage, present[s], siege[s])
+        if d > 0:
+            siege[s] -= d
+            ev["tower_hp"][s] += d
+            _add_kill(kills, 1 - s, -T, d)      # dies under the defender's tower
+
+
+def _crash_and_tower_fire(P, siege, crash_hp, cfg: GameConfig, ev, kills, plates):
+    """Steps 4 (crash check) and 5 (tower fire on the crashed mass, "mass" mode). Returns the HP crashed per side."""
+    siege_before_crash = list(siege)
+    crashed = _crash_check(P, siege, crash_hp, cfg, ev, kills, plates)
     if cfg.tower_mode == "mass":
-        for s in (A, B):
-            d = min(cfg.tower_siege_damage, siege_before_crash[s], siege[s])
-            if d > 0:
-                siege[s] -= d
-                ev["tower_hp"][s] += d
-                _add_kill(kills, 1 - s, -T, d)      # dies under the defender's tower
-
+        _tower_fire(siege, siege_before_crash, cfg, ev, kills)
     return crashed
 
 
@@ -450,7 +469,7 @@ def _strike(target, d: int) -> int:
 
 
 def _tick_natural(P, siege, acts, t, crash_hp, cfg: GameConfig, trace=None, ev=None, k=0, reach=None,
-                  kills=None, thin_left=None, plates=None, champion_reach=None, hits=None):
+                  kills=None, thin_left=None, plates=None, champion_reach=None, hits=None, budgets=None):
     """One movement tick under wave_dynamics "natural" (module docstring, "Natural waves").
 
     Minions follow the same rules whatever the actions; the wave slot only sets the champion's damage budget for the
@@ -462,7 +481,11 @@ def _tick_natural(P, siege, acts, t, crash_hp, cfg: GameConfig, trace=None, ev=N
     waves = (wave_of(acts[A]), wave_of(acts[B]))
     objectives = (objective_of(acts[A]), objective_of(acts[B]))
     reach_line = (T, T) if champion_reach is None else tuple(champion_reach)
-    budget = [cfg.champion_wave_damage[waves[A]], cfg.champion_wave_damage[waves[B]]]
+    if budgets is None:
+        budget = [cfg.champion_wave_damage[waves[A]], cfg.champion_wave_damage[waves[B]]]
+    else:                                  # per-turn budgets split over the ticks, earlier ticks first
+        n = cfg.ticks_per_turn
+        budget = [-((-(t + 1) * b) // n) + ((-t * b) // n) for b in budgets]   # ceil((t+1)b/n) - ceil(tb/n)
     siege_tick_start = list(siege)
     contact = _fronts_in_contact(P)
 
@@ -483,6 +506,12 @@ def _tick_natural(P, siege, acts, t, crash_hp, cfg: GameConfig, trace=None, ev=N
         P[s] = _merge(P[s], cfg.hp_cap, ev, s, True)
         if reach is not None and P[s]:
             reach[s] = max(reach[s], P[s][0][0])
+
+    # ---- 2b. natural_crash_rule "entry": a front entering the enemy tower cell joins the crashed mass (it fights the
+    #          defenders from there, as part of the siege) ----
+    crashed = [0, 0]
+    if cfg.natural_crash_rule == "entry":
+        crashed = _crash_check(P, siege, crash_hp, cfg, ev, kills, plates, entry=True)
 
     champ_dealt = [0, 0]                   # HP the champion of side s removed this tick
 
@@ -582,8 +611,11 @@ def _tick_natural(P, siege, acts, t, crash_hp, cfg: GameConfig, trace=None, ev=N
             if siege_tick_start[s] > 0 and not engaged[s]:
                 hits[s] += minion_damage(siege_tick_start[s], cfg)
 
-    # ---- 4. crash check and 5. tower fire on crashed mass ----
-    crashed = _crash_and_tower_fire(P, siege, crash_hp, cfg, ev, kills, plates)
+    # ---- 4. crash check and 5. tower fire on crashed mass (only on the mass already there at the start of the tick)
+    if cfg.natural_crash_rule == "entry":
+        _tower_fire(siege, siege_tick_start, cfg, ev, kills)
+    else:
+        crashed = _crash_and_tower_fire(P, siege, crash_hp, cfg, ev, kills, plates)
 
     if trace is not None:
         trace.append({
@@ -595,8 +627,12 @@ def _tick_natural(P, siege, acts, t, crash_hp, cfg: GameConfig, trace=None, ev=N
 
 
 def step_turn(state: State, k: int, act_a: int, act_b: int, cfg: GameConfig,
-              record: bool = False, champion_reach: Optional[Tuple[int, int]] = None) -> TurnResult:
+              record: bool = False, champion_reach: Optional[Tuple[int, int]] = None,
+              champion_budget: Optional[Tuple[int, int]] = None) -> TurnResult:
     """Advance the lane through decision turn k (ticks 2k+1 .. 2k+2).
+
+    `champion_budget` (wave_dynamics "natural" only; None = champion_wave_damage[slot] HP per tick): each champion's
+    wave-damage budget for the whole turn in HP, split over the ticks (wave_clear_scaling, set by the M4 resolver).
 
     `champion_reach` (champion mode only; None = the legacy rule) overrides, per side, the furthest
     own-perspective position at which the champion acts on its leading wave (shove damage, the push that
@@ -634,9 +670,14 @@ def step_turn(state: State, k: int, act_a: int, act_b: int, cfg: GameConfig,
     # enemy tower while its crashed minions are still there (the game caps it for Safe).
     reach = [cfg.tower if siege[s] > 0 else (P[s][0][0] if P[s] else -cfg.tower) for s in (A, B)]
     hits = [0, 0]
-    tick = _tick_natural if cfg.wave_dynamics == "natural" else _tick
-    for t in range(cfg.ticks_per_turn):
-        tick(P, siege, acts, t, crash_hp, cfg, trace, ev, k, reach, kills, thin_left, plates, champion_reach, hits)
+    if cfg.wave_dynamics == "natural":
+        for t in range(cfg.ticks_per_turn):
+            _tick_natural(P, siege, acts, t, crash_hp, cfg, trace, ev, k, reach, kills, thin_left, plates,
+                          champion_reach, hits, champion_budget)
+    else:
+        assert champion_budget is None, "champion_budget applies to wave_dynamics 'natural' only"
+        for t in range(cfg.ticks_per_turn):
+            _tick(P, siege, acts, t, crash_hp, cfg, trace, ev, k, reach, kills, thin_left, plates, champion_reach, hits)
 
     if cfg.tower_mode == "packet":
         for s in (A, B):
