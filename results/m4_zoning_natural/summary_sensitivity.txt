@@ -1,0 +1,167 @@
+budget {'turns': 93186800, 'wall_s': 468.8}
+
+===== t_ot6_dur_loser
+  neutral/equal          r1.00  V  -0.17  A[push:0.59 clear_punish:0.41]  B[clear_punish:0.71 push:0.29]  Atr 0.16 Bct 0.64 conc 0.00 concedes_vs []
+  neutral/large          r1.76  V  +5.30  A[clear_punish:1.00]  B[clear_punish:1.00]  Atr 0.23 Bct 0.45 conc 0.00 concedes_vs []
+  pushed/equal           r1.00  V  +0.76  A[clear_punish:0.90 push:0.10]  B[bully_shove:0.91 clear_punish:0.09]  Atr 0.23 Bct 0.52 conc 0.00 concedes_vs []
+  pushed/large           r1.75  V  +3.24  A[clear_punish:0.90 push:0.10]  B[bully_shove:0.75 clear_punish:0.25]  Atr 0.27 Bct 0.62 conc 0.00 concedes_vs []
+  siege/equal            r1.00  V  +1.70  A[clear_punish:0.92 push:0.08]  B[bully_shove:0.69 clear_punish:0.32]  Atr 0.21 Bct 0.59 conc 0.00 concedes_vs []
+  siege/large            r1.76  V  +4.24  A[clear_punish:1.00]  B[push:1.00]  Atr 0.02 Bct 0.76 conc 0.00 concedes_vs []
+  freeze/equal           r1.00  V  +0.00  A[clear_punish:1.00]  B[clear_punish:1.00]  Atr 0.16 Bct 0.24 conc 0.00 concedes_vs []
+  freeze/large           r1.76  V  +5.16  A[clear_punish:1.00]  B[clear_punish:1.00]  Atr 0.21 Bct 0.40 conc 0.00 concedes_vs []
+  flip neutral: {'h1/l0.25': [3.68, 'Safe'], 'h1/l0.4': [2.42, 'Safe'], 'h6/l0.25': [3.54, 'Safe'], 'h6/l0.4': [2.28, 'Safe']}
+  flip pushed: {'h1/l0.25': [1.0, 'Safe'], 'h1/l0.4': [1.0, 'Safe'], 'h6/l0.25': [1.0, 'Safe'], 'h6/l0.4': [1.0, 'Safe']}
+  flip siege: {'h1/l0.25': [1.0, 'Safe'], 'h1/l0.4': [1.0, 'Safe'], 'h6/l0.25': [1.0, 'Safe'], 'h6/l0.4': [1.0, 'Safe']}
+  flip freeze: {'h1/l0.25': [3.1, 'Safe'], 'h1/l0.4': [1.8, 'Safe'], 'h6/l0.25': [3.3, 'Safe'], 'h6/l0.4': [1.88, 'Safe']}
+
+===== tdl_ot5
+  neutral/equal          r1.00  V  -0.21  A[clear_punish:0.84 push:0.16]  B[push:0.74 clear_punish:0.26]  Atr 0.41 Bct 0.66 conc 0.00 concedes_vs []
+  neutral/large          r1.76  V  +5.75  A[clear_punish:1.00]  B[clear_punish:1.00]  Atr 0.23 Bct 0.45 conc 0.00 concedes_vs []
+  pushed/equal           r1.00  V  +0.85  A[clear_punish:0.86 push:0.14]  B[bully:0.98 clear_punish:0.02]  Atr 0.22 Bct 0.53 conc 0.00 concedes_vs []
+  pushed/large           r1.75  V  +3.72  A[clear_punish:0.92 push:0.09]  B[bully_shove:0.78 clear_punish:0.22]  Atr 0.29 Bct 0.62 conc 0.00 concedes_vs []
+  siege/equal            r1.00  V  +2.21  A[clear_punish:0.94 push:0.06]  B[bully_shove:0.73 clear_punish:0.27]  Atr 0.21 Bct 0.60 conc 0.00 concedes_vs []
+  siege/large            r1.76  V  +5.44  A[clear_punish:1.00]  B[clear_punish:1.00]  Atr 0.15 Bct 0.53 conc 0.00 concedes_vs []
+  freeze/equal           r1.00  V  -0.45  A[clear_punish:1.00]  B[clear_punish:1.00]  Atr 0.17 Bct 0.25 conc 0.00 concedes_vs []
+  freeze/large           r1.76  V  +5.45  A[clear_punish:1.00]  B[clear_punish:1.00]  Atr 0.21 Bct 0.40 conc 0.00 concedes_vs []
+  flip neutral: {'h1/l0.25': [3.68, 'Safe'], 'h1/l0.4': [2.42, 'Safe'], 'h6/l0.25': [3.54, 'Safe'], 'h6/l0.4': [2.28, 'Safe']}
+  flip pushed: {'h1/l0.25': [1.0, 'Safe'], 'h1/l0.4': [1.0, 'Safe'], 'h6/l0.25': [1.0, 'Safe'], 'h6/l0.4': [1.0, 'Safe']}
+  flip siege: {'h1/l0.25': [1.0, 'Safe'], 'h1/l0.4': [1.0, 'Safe'], 'h6/l0.25': [1.0, 'Safe'], 'h6/l0.4': [1.0, 'Safe']}
+  flip freeze: {'h1/l0.25': [3.1, 'Safe'], 'h1/l0.4': [1.8, 'Safe'], 'h6/l0.25': [3.3, 'Safe'], 'h6/l0.4': [1.88, 'Safe']}
+
+===== tdl_ot7
+  neutral/equal          r1.00  V  -0.01  A[push:1.00]  B[push:1.00]  Atr 0.00 Bct 0.95 conc 0.00 concedes_vs []
+  neutral/large          r1.76  V  +4.85  A[clear_punish:1.00]  B[clear_punish:1.00]  Atr 0.23 Bct 0.45 conc 0.00 concedes_vs []
+  pushed/equal           r1.00  V  +0.84  A[clear_punish:1.00]  B[clear_punish:1.00]  Atr 0.17 Bct 0.41 conc 0.00 concedes_vs []
+  pushed/large           r1.75  V  +2.18  A[clear_punish:0.85 push:0.15]  B[bully_shove:0.57 push:0.43]  Atr 0.19 Bct 0.66 conc 0.00 concedes_vs []
+  siege/equal            r1.00  V  +1.25  A[clear_punish:0.90 push:0.10]  B[bully_shove:0.64 clear_punish:0.36]  Atr 0.20 Bct 0.59 conc 0.00 concedes_vs []
+  siege/large            r1.76  V  +2.48  A[clear_punish:1.00 punish_shove:0.00]  B[tower:0.86 push:0.14]  Atr 0.01 Bct 0.75 conc 0.00 concedes_vs []
+  freeze/equal           r1.00  V  +0.51  A[clear_punish:1.00]  B[clear_punish:1.00]  Atr 0.16 Bct 0.23 conc 0.00 concedes_vs []
+  freeze/large           r1.76  V  +4.87  A[clear_punish:1.00]  B[clear_punish:1.00]  Atr 0.21 Bct 0.40 conc 0.00 concedes_vs []
+  flip neutral: {'h1/l0.25': [3.68, 'Safe'], 'h1/l0.4': [2.42, 'Safe'], 'h6/l0.25': [3.54, 'Safe'], 'h6/l0.4': [2.28, 'Safe']}
+  flip pushed: {'h1/l0.25': [1.0, 'Safe'], 'h1/l0.4': [1.0, 'Safe'], 'h6/l0.25': [1.0, 'Safe'], 'h6/l0.4': [1.0, 'Safe']}
+  flip siege: {'h1/l0.25': [1.0, 'Safe'], 'h1/l0.4': [1.0, 'Safe'], 'h6/l0.25': [1.0, 'Safe'], 'h6/l0.4': [1.0, 'Safe']}
+  flip freeze: {'h1/l0.25': [3.1, 'Safe'], 'h1/l0.4': [1.8, 'Safe'], 'h6/l0.25': [3.3, 'Safe'], 'h6/l0.4': [1.88, 'Safe']}
+
+===== tdl_ot9
+  neutral/equal          r1.00  V  +0.08  A[push:1.00]  B[push:1.00]  Atr 0.00 Bct 0.95 conc 0.00 concedes_vs []
+  neutral/large          r1.76  V  +3.40  A[clear_punish:0.94 push:0.04 bully:0.02]  B[standoff:0.80 push:0.16 farm:0.04]  Atr 0.18 Bct 0.70 conc 0.00 concedes_vs []
+  pushed/equal           r1.00  V  -2.14  A[clear_punish:1.00]  B[farm:1.00]  Atr 0.03 Bct 0.63 conc 0.00 concedes_vs []
+  pushed/large           r1.75  V  -0.68  A[clear_punish:1.00]  B[farm:1.00]  Atr 0.02 Bct 0.73 conc 0.00 concedes_vs []
+  siege/equal            r1.00  V  -1.54  A[clear_punish:0.98 push:0.02]  B[push:0.53 standoff:0.47]  Atr 0.01 Bct 0.69 conc 0.00 concedes_vs []
+  siege/large            r1.76  V  -0.79  A[push:0.96 punish_shove:0.04]  B[farm:0.83 standoff:0.17]  Atr 0.01 Bct 0.73 conc 0.00 concedes_vs []
+  freeze/equal           r1.00  V  +1.07  A[clear_punish:1.00]  B[clear_punish:1.00]  Atr 0.16 Bct 0.23 conc 0.00 concedes_vs []
+  freeze/large           r1.76  V  +3.59  A[clear_punish:0.96 push:0.04]  B[push:0.73 farm:0.27]  Atr 0.04 Bct 0.62 conc 0.00 concedes_vs []
+  flip neutral: {'h1/l0.25': [3.68, 'Safe'], 'h1/l0.4': [2.42, 'Safe'], 'h6/l0.25': [3.54, 'Safe'], 'h6/l0.4': [2.28, 'Safe']}
+  flip pushed: {'h1/l0.25': [1.0, 'Safe'], 'h1/l0.4': [1.0, 'Safe'], 'h6/l0.25': [1.0, 'Safe'], 'h6/l0.4': [1.0, 'Safe']}
+  flip siege: {'h1/l0.25': [1.0, 'Safe'], 'h1/l0.4': [1.0, 'Safe'], 'h6/l0.25': [1.0, 'Safe'], 'h6/l0.4': [1.0, 'Safe']}
+  flip freeze: {'h1/l0.25': [3.1, 'Safe'], 'h1/l0.4': [1.8, 'Safe'], 'h6/l0.25': [3.3, 'Safe'], 'h6/l0.4': [1.88, 'Safe']}
+
+===== tdl_k1
+  neutral/equal          r1.00  V  -0.10  A[push:1.00]  B[clear_punish:1.00]  Atr 0.00 Bct 0.63 conc 0.00 concedes_vs []
+  neutral/large          r1.76  V  +5.47  A[clear_punish:0.98 push:0.02]  B[bully_shove:0.95 clear_punish:0.05]  Atr 0.33 Bct 0.60 conc 0.00 concedes_vs []
+  pushed/equal           r1.00  V  +0.65  A[clear_punish:1.00]  B[bully:1.00]  Atr 0.25 Bct 0.52 conc 0.00 concedes_vs []
+  pushed/large           r1.75  V  +3.02  A[clear_punish:0.81 push:0.18]  B[bully_shove:0.72 clear_punish:0.28]  Atr 0.25 Bct 0.62 conc 0.00 concedes_vs []
+  siege/equal            r1.00  V  +1.44  A[clear_punish:0.89 push:0.11]  B[bully_shove:0.67 clear_punish:0.33]  Atr 0.20 Bct 0.59 conc 0.00 concedes_vs []
+  siege/large            r1.76  V  +4.18  A[clear_punish:1.00]  B[push:1.00]  Atr 0.02 Bct 0.76 conc 0.00 concedes_vs []
+  freeze/equal           r1.00  V  +0.27  A[bully_shove:0.74 clear_punish:0.26]  B[clear_punish:0.96 push:0.04]  Atr 0.49 Bct 0.47 conc 0.00 concedes_vs []
+  freeze/large           r1.76  V  +5.41  A[clear_punish:1.00]  B[clear_punish:1.00]  Atr 0.21 Bct 0.40 conc 0.00 concedes_vs []
+  flip neutral: {'h1/l0.25': [3.68, 'Safe'], 'h1/l0.4': [2.42, 'Safe'], 'h6/l0.25': [3.54, 'Safe'], 'h6/l0.4': [2.28, 'Safe']}
+  flip pushed: {'h1/l0.25': [1.0, 'Safe'], 'h1/l0.4': [1.0, 'Safe'], 'h6/l0.25': [1.0, 'Safe'], 'h6/l0.4': [1.0, 'Safe']}
+  flip siege: {'h1/l0.25': [1.0, 'Safe'], 'h1/l0.4': [1.0, 'Safe'], 'h6/l0.25': [1.0, 'Safe'], 'h6/l0.4': [1.0, 'Safe']}
+  flip freeze: {'h1/l0.25': [3.1, 'Safe'], 'h1/l0.4': [1.8, 'Safe'], 'h6/l0.25': [3.3, 'Safe'], 'h6/l0.4': [1.88, 'Safe']}
+
+===== tdl_k2
+  neutral/equal          r1.00  V  -0.06  A[push:1.00]  B[push:1.00]  Atr 0.00 Bct 0.95 conc 0.00 concedes_vs []
+  neutral/large          r1.76  V  +5.61  A[clear_punish:0.90 push:0.10]  B[bully:0.90 clear_punish:0.10]  Atr 0.30 Bct 0.60 conc 0.00 concedes_vs []
+  pushed/equal           r1.00  V  +0.36  A[clear_punish:1.00]  B[bully:1.00]  Atr 0.26 Bct 0.53 conc 0.00 concedes_vs []
+  pushed/large           r1.75  V  +3.27  A[clear_punish:0.80 push:0.20]  B[bully_shove:0.70 push:0.30]  Atr 0.22 Bct 0.66 conc 0.00 concedes_vs []
+  siege/equal            r1.00  V  +0.38  A[clear_punish:0.82 push:0.18]  B[bully_shove:0.56 clear_punish:0.44]  Atr 0.19 Bct 0.57 conc 0.00 concedes_vs []
+  siege/large            r1.76  V  +4.05  A[clear_punish:1.00]  B[push:1.00]  Atr 0.02 Bct 0.76 conc 0.00 concedes_vs []
+  freeze/equal           r1.00  V  +0.80  A[bully_shove:0.67 clear_punish:0.34]  B[clear_punish:0.88 push:0.12]  Atr 0.47 Bct 0.47 conc 0.00 concedes_vs []
+  freeze/large           r1.76  V  +5.91  A[clear_punish:1.00]  B[clear_punish:1.00]  Atr 0.21 Bct 0.40 conc 0.00 concedes_vs []
+  flip neutral: {'h1/l0.25': [3.68, 'Safe'], 'h1/l0.4': [2.42, 'Safe'], 'h6/l0.25': [3.54, 'Safe'], 'h6/l0.4': [2.28, 'Safe']}
+  flip pushed: {'h1/l0.25': [1.0, 'Safe'], 'h1/l0.4': [1.0, 'Safe'], 'h6/l0.25': [1.0, 'Safe'], 'h6/l0.4': [1.0, 'Safe']}
+  flip siege: {'h1/l0.25': [1.0, 'Safe'], 'h1/l0.4': [1.0, 'Safe'], 'h6/l0.25': [1.0, 'Safe'], 'h6/l0.4': [1.0, 'Safe']}
+  flip freeze: {'h1/l0.25': [3.1, 'Safe'], 'h1/l0.4': [1.8, 'Safe'], 'h6/l0.25': [3.3, 'Safe'], 'h6/l0.4': [1.88, 'Safe']}
+
+===== t_ot6_dur
+  neutral/equal          r1.00  V  -0.18  A[push:0.58 clear_punish:0.42]  B[clear_punish:0.72 push:0.28]  Atr 0.16 Bct 0.64 conc 0.00 concedes_vs []
+  neutral/large          r1.76  V  +5.13  A[clear_punish:1.00]  B[clear_punish:1.00]  Atr 0.24 Bct 0.47 conc 0.00 concedes_vs []
+  pushed/equal           r1.00  V  +1.05  A[clear_punish:0.97 push:0.03]  B[bully_shove:0.95 clear_punish:0.05]  Atr 0.26 Bct 0.52 conc 0.00 concedes_vs []
+  pushed/large           r1.75  V  +3.18  A[clear_punish:0.89 push:0.12]  B[bully:0.82 clear_punish:0.18]  Atr 0.27 Bct 0.62 conc 0.00 concedes_vs []
+  siege/equal            r1.00  V  +1.96  A[clear_punish:0.97 push:0.03]  B[bully_shove:0.72 clear_punish:0.28]  Atr 0.22 Bct 0.60 conc 0.00 concedes_vs []
+  siege/large            r1.76  V  +4.24  A[clear_punish:1.00]  B[push:1.00]  Atr 0.02 Bct 0.76 conc 0.00 concedes_vs []
+  freeze/equal           r1.00  V  +0.33  A[clear_punish:1.00]  B[clear_punish:1.00]  Atr 0.16 Bct 0.23 conc 0.00 concedes_vs []
+  freeze/large           r1.76  V  +5.43  A[clear_punish:1.00]  B[clear_punish:1.00]  Atr 0.21 Bct 0.41 conc 0.00 concedes_vs []
+  flip neutral: {'h1/l0.25': [3.68, 'Safe'], 'h1/l0.4': [2.42, 'Safe'], 'h6/l0.25': [3.54, 'Safe'], 'h6/l0.4': [2.28, 'Safe']}
+  flip pushed: {'h1/l0.25': [1.0, 'Safe'], 'h1/l0.4': [1.0, 'Safe'], 'h6/l0.25': [1.0, 'Safe'], 'h6/l0.4': [1.0, 'Safe']}
+  flip siege: {'h1/l0.25': [1.0, 'Safe'], 'h1/l0.4': [1.0, 'Safe'], 'h6/l0.25': [1.0, 'Safe'], 'h6/l0.4': [1.0, 'Safe']}
+  flip freeze: {'h1/l0.25': [3.1, 'Safe'], 'h1/l0.4': [1.8, 'Safe'], 'h6/l0.25': [3.3, 'Safe'], 'h6/l0.4': [1.88, 'Safe']}
+
+===== t_ot6_loser
+  neutral/equal          r1.00  V  -0.03  A[clear_punish:1.00]  B[clear_punish:1.00]  Atr 0.29 Bct 0.43 conc 0.00 concedes_vs []
+  neutral/large          r1.76  V  +2.96  A[clear_punish:1.00]  B[bully_shove:1.00]  Atr 0.31 Bct 0.52 conc 0.00 concedes_vs []
+  pushed/equal           r1.00  V  +0.62  A[clear_punish:0.93 push:0.07]  B[bully_shove:0.93 clear_punish:0.07]  Atr 0.24 Bct 0.53 conc 0.00 concedes_vs []
+  pushed/large           r1.75  V  +0.74  A[clear_punish:0.77 punish_shove:0.23]  B[bully:0.95 clear_punish:0.05]  Atr 0.28 Bct 0.52 conc 0.00 concedes_vs []
+  siege/equal            r1.00  V  +1.11  A[clear_punish:1.00]  B[clear_punish:1.00]  Atr 0.23 Bct 0.52 conc 0.00 concedes_vs []
+  siege/large            r1.76  V  +2.46  A[clear_punish:1.00]  B[clear_punish:1.00]  Atr 0.16 Bct 0.44 conc 0.00 concedes_vs []
+  freeze/equal           r1.00  V  +0.49  A[clear_punish:1.00]  B[clear_punish:1.00]  Atr 0.15 Bct 0.23 conc 0.00 concedes_vs []
+  freeze/large           r1.76  V  +1.53  A[clear_punish:1.00]  B[clear_punish:1.00]  Atr 0.21 Bct 0.34 conc 0.00 concedes_vs []
+  flip neutral: {'h1/l0.25': [3.68, 'Safe'], 'h1/l0.4': [2.42, 'Safe'], 'h6/l0.25': [3.54, 'Safe'], 'h6/l0.4': [2.28, 'Safe']}
+  flip pushed: {'h1/l0.25': [1.0, 'Safe'], 'h1/l0.4': [1.0, 'Safe'], 'h6/l0.25': [1.0, 'Safe'], 'h6/l0.4': [1.0, 'Safe']}
+  flip siege: {'h1/l0.25': [1.0, 'Safe'], 'h1/l0.4': [1.0, 'Safe'], 'h6/l0.25': [1.0, 'Safe'], 'h6/l0.4': [1.0, 'Safe']}
+  flip freeze: {'h1/l0.25': [3.1, 'Safe'], 'h1/l0.4': [1.8, 'Safe'], 'h6/l0.25': [3.3, 'Safe'], 'h6/l0.4': [1.88, 'Safe']}
+
+===== key cells (value to A, lambda 0.25 )
+  t_ot6_dur_loser        neutral/equal        farm|farm +0.04  push|farm +4.94  clear_|farm +5.58  punish|farm -1.71  bully|farm -1.72  punish|bully -0.41  bully|bully -0.64  punish|respec +6.14  bully|respec +6.59  push|respec +6.42  punish|clear_ -5.63  clear_|clear_ -0.10  freeze|clear_ -5.23  freeze|respec +6.14
+  t_ot6_dur_loser        neutral/large        farm|farm +0.46  push|farm +6.36  clear_|farm +7.35  punish|farm +0.50  bully|farm +0.20  punish|bully +3.91  bully|bully +2.14  punish|respec +6.45  bully|respec +7.05  push|respec +7.94  punish|clear_ -1.76  clear_|clear_ +5.30  freeze|clear_ -1.63  freeze|respec +6.45
+  t_ot6_dur_loser        freeze/equal         farm|farm +5.70  push|farm +5.50  clear_|farm +7.61  punish|farm +5.70  bully|farm +2.91  punish|bully +9.05  bully|bully +5.52  punish|respec +5.70  bully|respec +13.23  push|respec +5.98  punish|clear_ -5.08  clear_|clear_ +0.00  freeze|clear_ -4.70  freeze|respec +5.12
+  t_ot6_dur_loser        freeze/large         farm|farm +5.70  push|farm +7.05  clear_|farm +7.91  punish|farm +5.70  bully|farm +3.99  punish|bully +9.39  bully|bully +6.85  punish|respec +5.70  bully|respec +13.39  push|respec +7.36  punish|clear_ -3.68  clear_|clear_ +5.16  freeze|clear_ -3.39  freeze|respec +5.11
+  tdl_ot5                neutral/equal        farm|farm +0.04  push|farm +5.74  clear_|farm +6.73  punish|farm -1.71  bully|farm -1.72  punish|bully -0.41  bully|bully -0.64  punish|respec +6.14  bully|respec +6.59  push|respec +7.23  punish|clear_ -6.25  clear_|clear_ -0.15  freeze|clear_ -5.81  freeze|respec +6.14
+  tdl_ot5                neutral/large        farm|farm +0.46  push|farm +7.16  clear_|farm +8.65  punish|farm +0.50  bully|farm +0.20  punish|bully +3.91  bully|bully +2.14  punish|respec +6.45  bully|respec +7.05  push|respec +8.74  punish|clear_ -2.39  clear_|clear_ +5.75  freeze|clear_ -2.23  freeze|respec +6.45
+  tdl_ot5                freeze/equal         farm|farm +4.96  push|farm +6.25  clear_|farm +9.03  punish|farm +4.96  bully|farm +2.65  punish|bully +8.49  bully|bully +5.30  punish|respec +4.96  bully|respec +12.51  push|respec +6.74  punish|clear_ -5.68  clear_|clear_ -0.45  freeze|clear_ -5.25  freeze|respec +5.47
+  tdl_ot5                freeze/large         farm|farm +4.96  push|farm +7.79  clear_|farm +9.37  punish|farm +4.96  bully|farm +3.71  punish|bully +8.82  bully|bully +6.64  punish|respec +4.96  bully|respec +12.67  push|respec +8.10  punish|clear_ -4.54  clear_|clear_ +5.45  freeze|clear_ -4.22  freeze|respec +5.47
+  tdl_ot7                neutral/equal        farm|farm +0.04  push|farm +4.15  clear_|farm +4.42  punish|farm -1.71  bully|farm -1.72  punish|bully -0.41  bully|bully -0.64  punish|respec +6.14  bully|respec +6.59  push|respec +5.61  punish|clear_ -5.02  clear_|clear_ -0.06  freeze|clear_ -4.65  freeze|respec +6.14
+  tdl_ot7                neutral/large        farm|farm +0.46  push|farm +5.56  clear_|farm +6.05  punish|farm +0.50  bully|farm +0.20  punish|bully +3.91  bully|bully +2.14  punish|respec +6.45  bully|respec +7.05  push|respec +7.14  punish|clear_ -1.13  clear_|clear_ +4.85  freeze|clear_ -1.04  freeze|respec +6.45
+  tdl_ot7                freeze/equal         farm|farm +6.43  push|farm +4.74  clear_|farm +6.19  punish|farm +6.43  bully|farm +3.17  punish|bully +9.60  bully|bully +5.73  punish|respec +6.43  bully|respec +13.96  push|respec +5.22  punish|clear_ -4.31  clear_|clear_ +0.51  freeze|clear_ -3.97  freeze|respec +4.76
+  tdl_ot7                freeze/large         farm|farm +6.43  push|farm +6.32  clear_|farm +6.45  punish|farm +6.43  bully|farm +4.26  punish|bully +9.96  bully|bully +7.05  punish|respec +6.43  bully|respec +14.10  push|respec +6.62  punish|clear_ -2.82  clear_|clear_ +4.87  freeze|clear_ -2.56  freeze|respec +4.76
+  tdl_ot9                neutral/equal        farm|farm +0.04  push|farm +2.56  clear_|farm +2.16  punish|farm -1.71  bully|farm -1.72  punish|bully -0.41  bully|bully -0.64  punish|respec +6.14  bully|respec +6.59  push|respec +4.52  punish|clear_ -3.88  clear_|clear_ +0.12  freeze|clear_ -3.52  freeze|respec +6.14
+  tdl_ot9                neutral/large        farm|farm +0.46  push|farm +3.96  clear_|farm +3.45  punish|farm +0.50  bully|farm +0.20  punish|bully +3.91  bully|bully +2.14  punish|respec +6.45  bully|respec +7.05  push|respec +6.08  punish|clear_ +0.06  clear_|clear_ +3.94  freeze|clear_ +0.08  freeze|respec +6.45
+  tdl_ot9                freeze/equal         farm|farm +7.91  push|farm +3.23  clear_|farm +3.35  punish|farm +7.91  bully|farm +3.67  punish|bully +10.69  bully|bully +5.98  punish|respec +7.91  bully|respec +15.41  push|respec +4.07  punish|clear_ -2.77  clear_|clear_ +1.07  freeze|clear_ -2.53  freeze|respec +4.05
+  tdl_ot9                freeze/large         farm|farm +7.91  push|farm +4.84  clear_|farm +3.53  punish|farm +7.91  bully|farm +4.82  punish|bully +11.08  bully|bully +7.38  punish|respec +7.91  bully|respec +15.52  push|respec +5.66  punish|clear_ -1.10  clear_|clear_ +4.29  freeze|clear_ -0.91  freeze|respec +4.05
+  tdl_k1                 neutral/equal        farm|farm -0.03  push|farm +4.82  clear_|farm +5.39  punish|farm -1.71  bully|farm -1.87  punish|bully -0.66  bully|bully -0.88  punish|respec +6.01  bully|respec +6.47  push|respec +6.30  punish|clear_ -5.45  clear_|clear_ -0.10  freeze|clear_ -4.98  freeze|respec +6.01
+  tdl_k1                 neutral/large        farm|farm +0.46  push|farm +6.36  clear_|farm +7.41  punish|farm +0.69  bully|farm +0.70  punish|bully +4.38  bully|bully +2.51  punish|respec +6.45  bully|respec +7.05  push|respec +7.94  punish|clear_ -1.14  clear_|clear_ +5.55  freeze|clear_ -1.01  freeze|respec +6.45
+  tdl_k1                 freeze/equal         farm|farm +5.88  push|farm +5.43  clear_|farm +7.36  punish|farm +5.88  bully|farm +3.09  punish|bully +9.87  bully|bully +6.04  punish|respec +5.88  bully|respec +13.23  push|respec +5.92  punish|clear_ -4.71  clear_|clear_ +0.00  freeze|clear_ -4.33  freeze|respec +5.12
+  tdl_k1                 freeze/large         farm|farm +5.88  push|farm +7.05  clear_|farm +7.85  punish|farm +5.88  bully|farm +4.67  punish|bully +10.23  bully|bully +7.66  punish|respec +5.88  bully|respec +13.39  push|respec +7.36  punish|clear_ -2.87  clear_|clear_ +5.41  freeze|clear_ -2.58  freeze|respec +5.17
+  tdl_k2                 neutral/equal        farm|farm -0.16  push|farm +4.57  clear_|farm +5.01  punish|farm -1.71  bully|farm -2.42  punish|bully -1.17  bully|bully -1.57  punish|respec +5.76  bully|respec +6.22  push|respec +6.05  punish|clear_ -5.08  clear_|clear_ -0.10  freeze|clear_ -4.49  freeze|respec +5.76
+  tdl_k2                 neutral/large        farm|farm +0.46  push|farm +6.36  clear_|farm +7.54  punish|farm +1.06  bully|farm +2.09  punish|bully +5.18  bully|bully +3.26  punish|respec +6.45  bully|respec +7.05  push|respec +7.94  punish|clear_ +0.11  clear_|clear_ +5.97  freeze|clear_ +0.24  freeze|respec +6.45
+  tdl_k2                 freeze/equal         farm|farm +6.26  push|farm +5.31  clear_|farm +6.86  punish|farm +6.26  bully|farm +3.71  punish|bully +11.50  bully|bully +6.63  punish|respec +6.26  bully|respec +13.23  push|respec +5.79  punish|clear_ -3.91  clear_|clear_ +0.00  freeze|clear_ -3.52  freeze|respec +5.12
+  tdl_k2                 freeze/large         farm|farm +6.26  push|farm +7.05  clear_|farm +7.72  punish|farm +6.26  bully|farm +5.94  punish|bully +12.00  bully|bully +8.38  punish|respec +6.26  bully|respec +13.39  push|respec +7.36  punish|clear_ -1.24  clear_|clear_ +5.91  freeze|clear_ -0.95  freeze|respec +5.30
+  t_ot6_dur              neutral/equal        farm|farm +0.04  push|farm +4.94  clear_|farm +5.58  punish|farm -1.71  bully|farm -1.72  punish|bully -0.08  bully|bully -0.35  punish|respec +6.14  bully|respec +6.59  push|respec +6.42  punish|clear_ -5.32  clear_|clear_ -0.11  freeze|clear_ -4.81  freeze|respec +6.14
+  t_ot6_dur              neutral/large        farm|farm +0.46  push|farm +6.36  clear_|farm +7.35  punish|farm +0.50  bully|farm +0.20  punish|bully +3.10  bully|bully +1.67  punish|respec +6.45  bully|respec +7.05  push|respec +7.94  punish|clear_ -1.75  clear_|clear_ +5.13  freeze|clear_ -1.89  freeze|respec +6.45
+  t_ot6_dur              freeze/equal         farm|farm +5.70  push|farm +5.50  clear_|farm +7.61  punish|farm +5.70  bully|farm +2.91  punish|bully +8.69  bully|bully +4.94  punish|respec +5.70  bully|respec +13.23  push|respec +5.98  punish|clear_ -4.83  clear_|clear_ +0.33  freeze|clear_ -4.48  freeze|respec +5.12
+  t_ot6_dur              freeze/large         farm|farm +5.70  push|farm +7.05  clear_|farm +7.91  punish|farm +5.70  bully|farm +3.99  punish|bully +8.77  bully|bully +5.79  punish|respec +5.70  bully|respec +13.39  push|respec +7.36  punish|clear_ -3.90  clear_|clear_ +5.43  freeze|clear_ -3.64  freeze|respec +5.11
+  t_ot6_loser            neutral/equal        farm|farm +0.04  push|farm +4.15  clear_|farm +5.31  punish|farm -1.03  bully|farm -1.29  punish|bully +0.63  bully|bully -0.16  punish|respec +6.05  bully|respec +6.50  push|respec +5.56  punish|clear_ -5.45  clear_|clear_ -0.03  freeze|clear_ -4.93  freeze|respec +6.05
+  t_ot6_loser            neutral/large        farm|farm +0.04  push|farm +4.90  clear_|farm +5.85  punish|farm +0.14  bully|farm -0.50  punish|bully +2.41  bully|bully +0.28  punish|respec +6.05  bully|respec +6.50  push|respec +6.43  punish|clear_ -3.01  clear_|clear_ +3.75  freeze|clear_ -2.40  freeze|respec +6.05
+  t_ot6_loser            freeze/equal         farm|farm +5.74  push|farm +5.38  clear_|farm +7.68  punish|farm +5.74  bully|farm +3.07  punish|bully +8.85  bully|bully +4.91  punish|respec +5.74  bully|respec +13.23  push|respec +5.87  punish|clear_ -4.14  clear_|clear_ +0.49  freeze|clear_ -4.04  freeze|respec +5.12
+  t_ot6_loser            freeze/large         farm|farm +5.74  push|farm +6.01  clear_|farm +7.31  punish|farm +5.74  bully|farm +4.43  punish|bully +8.54  bully|bully +5.80  punish|respec +5.74  bully|respec +13.23  push|respec +6.49  punish|clear_ -3.84  clear_|clear_ +1.53  freeze|clear_ -3.62  freeze|respec +5.12
+
+===== B's best replies (neutral, large and large_levels)
+  t_ot6_dur_loser        large         farm->push  bully->farm  punish->push  edge->push  standoff->push  respect->farm  tower->bully  push->push  push_punish->clear_punish  clear_punish->clear_punish  freeze_punish->clear_punish  bully_shove->push  punish_shove->push
+  tdl_ot5                large         farm->push  bully->push  punish->push  edge->push  standoff->push  respect->clear_punish  tower->bully  push->push  push_punish->clear_punish  clear_punish->clear_punish  freeze_punish->clear_punish  bully_shove->push  punish_shove->push
+  tdl_ot7                large         farm->push  bully->farm  punish->push  edge->push  standoff->push  respect->farm  tower->bully  push->push  push_punish->clear_punish  clear_punish->clear_punish  freeze_punish->clear_punish  bully_shove->push  punish_shove->push
+  tdl_ot9                large         farm->push  bully->farm  punish->push  edge->push  standoff->push  respect->farm  tower->bully  push->push  push_punish->clear_punish  clear_punish->standoff  freeze_punish->push  bully_shove->farm  punish_shove->push
+  tdl_k1                 large         farm->push  bully->farm  punish->push  edge->push  standoff->push  respect->farm  tower->bully  push->push  push_punish->clear_punish  clear_punish->bully_shove  freeze_punish->clear_punish  bully_shove->push  punish_shove->push
+  tdl_k2                 large         farm->push  bully->push  punish->push  edge->push  standoff->push  respect->farm  tower->bully  push->push  push_punish->clear_punish  clear_punish->bully  freeze_punish->push  bully_shove->push  punish_shove->push
+  t_ot6_dur              large         farm->push  bully->farm  punish->push  edge->push  standoff->push  respect->farm  tower->bully  push->push  push_punish->clear_punish  clear_punish->clear_punish  freeze_punish->clear_punish  bully_shove->push  punish_shove->push
+  t_ot6_loser            large         farm->clear_punish  bully->farm  punish->clear_punish  edge->clear_punish  standoff->clear_punish  respect->farm  tower->bully  push->clear_punish  push_punish->clear_punish  clear_punish->bully_shove  freeze_punish->clear_punish  bully_shove->push_punish  punish_shove->clear_punish
+
+===== pushed and siege: equilibrium value to A (the side that pushed)
+  t_ot6_dur_loser        pu/equal +0.76  pu/large +3.24  si/equal +1.70  si/large +4.24
+  tdl_ot5                pu/equal +0.85  pu/large +3.72  si/equal +2.21  si/large +5.44
+  tdl_ot7                pu/equal +0.84  pu/large +2.18  si/equal +1.25  si/large +2.48
+  tdl_ot9                pu/equal -2.14  pu/large -0.68  si/equal -1.54  si/large -0.79
+  tdl_k1                 pu/equal +0.65  pu/large +3.02  si/equal +1.44  si/large +4.18
+  tdl_k2                 pu/equal +0.36  pu/large +3.27  si/equal +0.38  si/large +4.05
+  t_ot6_dur              pu/equal +1.05  pu/large +3.18  si/equal +1.96  si/large +4.24
+  t_ot6_loser            pu/equal +0.62  pu/large +0.74  si/equal +1.11  si/large +2.46

@@ -261,6 +261,10 @@ class GameConfig:
     farm_per_hp: float = 0.25     # 1 resource per fresh wave (W = 4)
     collect_contest: float = 0.9
     collect_contest_enemy_tower: float = 0.5
+    # M4.2e-B (docs/m4_2e_zoning_report.md), ruleset "m4" only: the rate at which kills in the collector's OWN tower
+    # cell (x = -T: a crashed enemy mass dying to the tower and to the defenders) are collected, whatever the posture
+    # (last-hitting under one's tower competes with the tower). The default equals collect_contest (no effect).
+    collect_contest_own_tower: float = 0.9
     collect_safe: float = 0.8
     collect_safe_slope: float = 0.2
     zone_contest: float = 0.3
@@ -448,6 +452,18 @@ class GameConfig:
     plate_gold_requires_presence: bool = False    # design §16 A9 (alternative); False = paid while away too
     gold_unit: float = 1e-6               # resource per ledger unit (micro-resources, design §8.6)
     rear_count_max: int = 4               # largest rear-packet count in one cell (observation scale; exceeded -> error)
+    # M4.2e-B (docs/m4_2e_zoning_report.md), opt-in: exchanges a connected Trade resolves per turn. 1 = the M2 rule (one
+    # 0 / 1 / 2 base-HP roll per turn). ticks_per_turn (2) = one exchange per movement tick, consistent with every other
+    # per-tick damage; the total base damage of the n exchanges is drawn from one uniform (U_TRADE_HIT) by the inverse
+    # CDF of their n-fold convolution (champions_m4.trade_damage_n). Hit and double probabilities are per exchange.
+    trade_exchanges: int = 1
+    # M4.2e-B, opt-in: who pays trade_farm_factor in a MUTUAL connected trade. "trader" = both (the M2 rule); "loser" =
+    # only the side that lost the larger fraction of its max HP to the other's trade this turn (ties: both); the
+    # winner resumes farming. A unilateral connected trade still costs the trader alone, as before.
+    trade_farm_rule: str = "trader"
+    # M4.2e-B, opt-in (item_model "continuous" only): invested gold also buys durability: every centi-HP of damage a
+    # champion takes (trades, tower shots, ganks) is divided by its own investment multiplier M(S), exactly.
+    invest_durability: bool = False
 
     # ------------------------------------------------------------------ presets
     @classmethod
@@ -551,6 +567,28 @@ class GameConfig:
                     wave_clear_scaling="attack_power", wave_clear_scaled_slots=(SH,))
         base.update(kw)
         return cls.m4_natural_prototype(**base)
+
+    # the fields GameConfig.m4_lane() changes from m4_natural() (M4.2e-B, docs/m4_2e_zoning_report.md)
+    M4_LANE_FIELDS = ("collect_contest_enemy_tower", "collect_contest_own_tower", "invest_durability")
+
+    @classmethod
+    def m4_lane(cls, **kw) -> "GameConfig":
+        """CANDIDATE (M4.2e-B, docs/m4_2e_zoning_report.md): `m4_natural()` with three changes, for design review
+        before the PPO smoke test. Two replace fixed collection-efficiency proxies by consequences:
+          collect_contest_enemy_tower 0.9   the 0.5 rate under the enemy tower stood in for danger; the danger is
+                                            now explicit (tower shots, ganks, the defender's home advantage)
+          collect_contest_own_tower 0.6     kills in the own tower cell (a crashed mass dying to the tower and the
+                                            defenders) are last-hit at 0.6: the tower competes for last hits, so a
+                                            crash is no longer a free gift to the defender and pushing when ahead pays
+        and one makes a power lead decisive instead of a symmetric war of attrition:
+          invest_durability True            invested gold buys durability as well as attack power (damage taken is
+                                            divided by the victim's investment multiplier)
+        trade_exchanges (one exchange per tick) and trade_farm_rule "loser" are implemented and tested but left off:
+        the first makes the equal lane a trade-fest, the second adds nothing measurable without the first.
+        Not a default; every other preset is unchanged."""
+        base = dict(collect_contest_enemy_tower=0.9, collect_contest_own_tower=0.6, invest_durability=True)
+        base.update(kw)
+        return cls.m4_natural(**base)
 
     # ------------------------------------------------------------------ helpers
     @property
@@ -768,6 +806,14 @@ class GameConfig:
             bad("pressure_tower_damage", "must be a non-negative integer (centi-units)")
         if self.rear_count_max < 1:
             bad("rear_count_max", "must be >= 1")
+        if not (isinstance(self.trade_exchanges, int) and 1 <= self.trade_exchanges <= self.ticks_per_turn):
+            bad("trade_exchanges", f"must be an integer in [1, ticks_per_turn = {self.ticks_per_turn}]")
+        if self.trade_farm_rule not in ("trader", "loser"):
+            bad("trade_farm_rule", "must be 'trader' or 'loser'")
+        if self.invest_durability and self.item_model != "continuous":
+            bad("invest_durability", "applies to item_model 'continuous' only")
+        if not 0.0 <= self.collect_contest_own_tower <= 1.0:
+            bad("collect_contest_own_tower", "must be in [0, 1]")
         if self.zoning_rule not in ("presence", "contact", "none"):
             bad("zoning_rule", "must be 'presence', 'contact' or 'none'")
         if self.siege_engage:
@@ -852,7 +898,7 @@ M4_ECONOMY_FIELDS = ("xp_per_hp", "xp_range", "xp_base", "xp_step", "level_cap",
                      "invest_obs_encoding", "freeze_maintenance", "chase_rule", "farm_spot_rule",
                      "tower_adjacent_p", "tower_adjacent_p_busy", "gank_damage_scale", "plate_thresholds",
                      "plate_gold", "pressure_tower_damage", "plate_gold_requires_presence", "gold_unit",
-                     "rear_count_max", "position_rule", "zoning_rule", "wave_dynamics", "champion_wave_damage",
+                     "rear_count_max", "trade_exchanges", "trade_farm_rule", "invest_durability", "collect_contest_own_tower", "position_rule", "zoning_rule", "wave_dynamics", "champion_wave_damage",
                      "natural_crash_rule", "natural_tower_reach", "wave_clear_scaling", "wave_clear_scaled_slots")
 _FIELD_DEFAULTS = {f.name: f.default for f in GameConfig.__dataclass_fields__.values()}
 
@@ -873,7 +919,8 @@ def exact_farm_values(cfg: GameConfig):
         return Fraction(repr(float(x)))
 
     f = q(cfg.farm_per_hp)
-    bases = {"contest": q(cfg.collect_contest), "contest_enemy_tower": q(cfg.collect_contest_enemy_tower)}
+    bases = {"contest": q(cfg.collect_contest), "contest_enemy_tower": q(cfg.collect_contest_enemy_tower),
+             "contest_own_tower": q(cfg.collect_contest_own_tower)}
     for x in range(-cfg.base, cfg.base + cfg.thin_reach + 1):
         bases[f"safe@{x}"] = exact_safe_base(x, cfg)
     zones = {"unzoned": Fraction(1), "zoned": 1 - q(cfg.zone_contest), "zoned_under_tower": 1 - q(cfg.zone_under_tower)}

@@ -63,7 +63,7 @@ class Tables:
     hp_max: Tuple[int, ...]               # [L], L = 1 .. level_cap (index 0 unused, 0)
     hp_unit: Tuple[int, ...]              # [L]
     ap: Tuple[Tuple[int, ...], ...]       # [L][N]
-    dmg: Tuple[Tuple[Tuple[int, ...], ...], ...]    # [D][L][N], D = 0, 1, 2
+    dmg: Tuple[Tuple[Tuple[int, ...], ...], ...]    # [D][L][N], D = 0 .. 2 * trade_exchanges (0, 1, 2 by default)
     pressure: Tuple[Tuple[int, ...], ...]  # [L][N]
     xp_cum: Tuple[int, ...]               # X(L) [L]
     xp_next: Tuple[int, ...]              # n(L) [L]; 0 at the cap
@@ -84,14 +84,14 @@ def _round_half_up(x: float) -> int:
 @lru_cache(maxsize=64)
 def _build(level_cap: int, item_tiers: int, hp_base: int, hp_growth: float, ap_level_growth: float,
            item_mult: float, champion_hp: int, xp_base: int, xp_step: int, pressure: int,
-           prices: Tuple[float, ...], gold_unit: float, thresholds: Tuple[int, ...]) -> Tables:
+           prices: Tuple[float, ...], gold_unit: float, thresholds: Tuple[int, ...], max_base: int = 2) -> Tables:
     Ls = range(1, level_cap + 1)
     hp = [0] + [_round_half_up(hp_base * hp_growth ** (L - 1)) for L in Ls]
     unit = [0] + [(2 * hp[L] + champion_hp) // (2 * champion_hp) for L in Ls]       # floor(H / ch + 1/2)
     ap = [()] + [tuple(_round_half_up(10_000 * ap_level_growth ** (L - 1) * item_mult ** N)
                        for N in range(item_tiers + 1)) for L in Ls]
     dmg = tuple(tuple(() if L == 0 else tuple((D * 100 * a + 5000) // 10_000 for a in ap[L])
-                      for L in range(level_cap + 1)) for D in range(3))
+                      for L in range(level_cap + 1)) for D in range(max_base + 1))
     prs = [()] + [tuple((pressure * a + 5000) // 10_000 for a in ap[L]) for L in Ls]
     xp_cum = [0] + [xp_base * (L - 1) + xp_step * (L - 1) * (L - 2) // 2 for L in Ls]
     xp_next = [0] + [(xp_base + xp_step * (L - 1)) if L < level_cap else 0 for L in Ls]
@@ -114,7 +114,7 @@ def tables(cfg: GameConfig) -> Tables:
     """The progression tables of `cfg` (cached by parameter values)."""
     return _build(cfg.level_cap, cfg.item_tiers, cfg.hp_base, cfg.hp_growth, cfg.ap_level_growth, cfg.item_mult,
                   cfg.champion_hp, cfg.xp_base, cfg.xp_step, cfg.pressure_tower_damage, tuple(cfg.item_prices),
-                  cfg.gold_unit, tuple(cfg.plate_thresholds))
+                  cfg.gold_unit, tuple(cfg.plate_thresholds), 2 * cfg.trade_exchanges)
 
 
 DEFAULT = tables(GameConfig.m4())
@@ -141,7 +141,7 @@ def attack_power(level: int, items: int, t: Tables = DEFAULT) -> int:
 
 
 def hit_damage(base: int, level: int, items: int, t: Tables = DEFAULT) -> int:
-    """Centi-HP dealt by a successful hit of `base` (0, 1 or 2) base HP at the attacker's (level, items)."""
+    """Centi-HP dealt by a connected trade of `base` base HP (0 .. 2 * trade_exchanges) at the attacker's (level, items)."""
     return t.dmg[base][level][items]
 
 

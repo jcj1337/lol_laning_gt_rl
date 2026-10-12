@@ -6,6 +6,8 @@
 
 ## A. Executive recommendation
 
+> **Design standard (added 2026-10-12, M4.2e-B):** every mechanic proposed below and in later sections is judged against [design_philosophy.md](design_philosophy.md): simplify how League works without changing why its laning strategies work.
+
 **Keep the exact game as the benchmark, add a champion layer beside it, and train against it with PPO self-play.** Concretely:
 
 1. **Do not fork the simulator.** The deterministic lane dynamics (`mechanics.step_turn`), the legality rules, the farming economy, the gank-probability formula and the mirror symmetry are reusable as they stand. The RL environment should wrap them, not copy them. One optional argument to `step_turn` (a per-side champion reach cap) is the only change the existing mechanics need, and it defaults to current behaviour.
@@ -1116,3 +1118,44 @@ W = 8, the `floor(h / 8)` law, the geometry, spawns, the economy and the 46-acti
 2. Calibrate the push economics there (enemy-tower collection, plate gold, Pressure damage).
 3. Enumerate or accept the evaluation bound (per-turn 10.36).
 4. Integrate and freeze for PPO.
+
+## W. M4.2e-B design philosophy and combat-driven zoning (2026-10-12)
+
+Branch `development/m4-natural-waves`, on top of M4.2e-A.1.
+
+- **Design philosophy:** [design_philosophy.md](design_philosophy.md), now the standard every mechanic is judged
+  against: simplify how League works without changing why its laning strategies work (core principles, intended
+  qualitative similarities, accepted simplifications, research and validation standards).
+- **Full account:** [m4_2e_zoning_report.md](m4_2e_zoning_report.md).
+- **Driver:** `lanegame.experiments.m4.zoning_natural` (reactive scripted policy-matrix games solved as zero-sum
+  games: 13 shared policies, 4 states, 5 power gaps, 9 rule variants; 135M turns, 7 min); results
+  `results/m4_zoning_natural/`.
+- **Tests:** `tests/test_m4_zoning_natural.py`.
+- **Candidate preset:** **opt-in** `GameConfig.m4_lane()` = `m4_natural()` plus `collect_contest_enemy_tower 0.9`,
+  `collect_contest_own_tower 0.6`, `invest_durability True`. Every other preset is unchanged (random-play digests
+  pinned). Also implemented, tested and left off: `trade_exchanges` (one exchange per tick; a trade-fest at equal
+  power) and `trade_farm_rule "loser"` (no measurable effect without it).
+
+**Findings**
+
+- Under the A.1 rules power was almost worthless: +0.3 per 32 turns at a x1.76 lead in the neutral lane; pushing
+  lost at every gap (-6 pushed, -3 siege); a freeze paid +4.7 at every gap. Two fixed collection rates did it: the
+  0.5 rate under the enemy tower (a danger proxy) and the full 0.9 collection of a crashed wave under one's own
+  tower (a missing inefficiency).
+- The weaker champion never stands back at the lane in any of 180 solved policy games: on this geometry a passive
+  concession is almost total (farm reach equals threat reach and the wave does not drift toward a champion that
+  stops contesting), while contesting a x1.76 opponent cost 0-4 because trading was a symmetric war of attrition.
+  Per-tick exchanges, a two-wave bounty and removing the posture base were tested and rejected (trade-fest at equal
+  power; noise; free Safe).
+- With `m4_lane()`: every state's value is monotone in power; a one-item lead is worth 2-3 per 32 turns and a large
+  lead 4-7 (15-25% of the lane's income); the stronger champion earns it through wave control and attacks on under a
+  third of its turns; the equal lane is even and active; pushing when ahead pays. The weaker champion's rational
+  concessions are wave control (shove away, or farm the crash under its tower while the stronger champion takes
+  plates), position (the stand-off keeps half its farm unhit) and tempo (recalls).
+
+**Decision: PASS WITH CAVEATS.** The stand-at-XP-range concession of League is not produced by any rule tested; the
+fix is a design decision (last-hitting as wave damage, or an all-in action) listed for review together with the two
+calibrated parameters (own-tower rate 0.6, kill bounty 0.5). No PPO was run; the game is not declared final.
+
+**Next steps (not started):** design review of the hypotheses above; then integrate and freeze for the M4.3 PPO
+smoke test on `m4_lane()`.

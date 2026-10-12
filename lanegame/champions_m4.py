@@ -18,7 +18,11 @@ legality) and adds, in the order of design §5:
            `zoning_rule`): the zone factor needs a connected enemy Trade ("contact") or never applies ("none")
   step 7b  XP: xp_per_hp per enemy minion HP dying within xp_range cells of a present champion (§7.3)
   step 9   centi-HP damage: trade hits dmg(D, L, N), gank trials and tower shots of one HP unit u(L) of the victim,
-           the tower-adjacent shot on a connected trader ending next to the enemy tower (§8.3, §8.4)
+           the tower-adjacent shot on a connected trader ending next to the enemy tower (§8.3, §8.4). M4.2e-B opt-ins:
+           `trade_exchanges` > 1 resolves a connected Trade once per tick (D = 0 .. 2n); `trade_farm_rule` "loser"
+           charges the trade farm factor of a mutual trade to its loser only (the rolls are therefore made before
+           step 7); `invest_durability` divides every centi-HP taken by the victim's investment multiplier;
+           `collect_contest_own_tower` caps the collection rate of kills in the own tower cell
   step 10  death before level-up (§5)
   step 11  persistent tower damage and plate gold (§11)
   step 12  XP and level-ups: a surviving present champion gains the increase in max HP (§9.2)
@@ -61,7 +65,7 @@ A, B = 0, 1
 
 __all__ = ["M4Side", "M4State", "M4Turn", "M4Context", "context", "initial_m4", "resolve_turn_m4",
            "champion_legal_actions", "objective_reachable", "recall_legal", "check_invariants", "level",
-           "contact_cell_target", "collection_units", "yield_target"]
+           "contact_cell_target", "collection_units", "yield_target", "trade_damage_n", "trade_damage_distribution_n"]
 
 
 class M4Side(NamedTuple):
@@ -145,13 +149,20 @@ class M4Context:
             num, den = base * self.inv.attack_power(level, items), 10_000 * self.inv.one
         return (2 * num + den) // (2 * den)
 
-    def collection(self, x: int, mode: str, pos: int, opp_mode: str, opp_pos: int) -> int:
-        key = (x, mode, pos, opp_mode, opp_pos)
+    def collection(self, x: int, mode: str, pos: int, opp_mode: str, opp_pos: int, pays_trade: bool = True) -> int:
+        key = (x, mode, pos, opp_mode, opp_pos, pays_trade)
         v = self._coll.get(key)
         if v is None:
-            v = collection_units(x, mode, pos, opp_mode, opp_pos, self.cfg)
+            v = collection_units(x, mode, pos, opp_mode, opp_pos, self.cfg, pays_trade)
             self._coll[key] = v
         return v
+
+    def mitigate(self, damage: int, items: int) -> int:
+        """invest_durability: centi-HP actually lost by a champion with `items` invested from `damage` centi-HP of
+        incoming damage, floor(damage / M(S)) in exact integers; unchanged when the option is off."""
+        if self.inv is None or not self.cfg.invest_durability or damage == 0:
+            return damage
+        return damage * self.inv.one // self.inv.multiplier(items)
 
 
 def _units(x: float, cfg: GameConfig) -> int:
@@ -166,9 +177,13 @@ def context(cfg: GameConfig) -> M4Context:
     return M4Context(cfg)
 
 
-def collection_units(x: int, mode: str, pos: int, opp_mode: str, opp_pos: int, cfg: GameConfig) -> int:
+def collection_units(x: int, mode: str, pos: int, opp_mode: str, opp_pos: int, cfg: GameConfig,
+                     pays_trade: bool = True) -> int:
     """Exact ledger units per HP of a farm opportunity at own cell x: the M2 rule `champions.champion_collection`
-    (reach, posture base, zoning, trade factor) times farm_per_hp, evaluated on exact rationals (design §8.6)."""
+    (reach, posture base, zoning, trade factor) times farm_per_hp, evaluated on exact rationals (design §8.6).
+    M4.2e-B: a kill in the own tower cell (x = -T) is collected at most at collect_contest_own_tower; a connected
+    trader pays trade_farm_factor only if `pays_trade` (trade_farm_rule "loser": the winner of a mutual trade keeps
+    its farm)."""
     if mode in (AWAY, CHANNEL) or abs(x - pos) > (cfg.retreat_farm_reach if mode == RETREAT else cfg.farm_reach):
         return 0
     q = lambda v: Fraction(repr(float(v)))
@@ -177,13 +192,15 @@ def collection_units(x: int, mode: str, pos: int, opp_mode: str, opp_pos: int, c
         base = q(cfg.collect_contest) if x < T else q(cfg.collect_contest_enemy_tower)
     else:
         base = exact_safe_base(x, cfg)
+    if x == -T:
+        base = min(base, q(cfg.collect_contest_own_tower))
     if cfg.zoning_rule == "presence":                     # M2: an opponent farming or trading near the kill
         zones = opp_mode in (FARM, TRADING) and abs(-x - opp_pos) <= cfg.farm_reach
     else:                                                 # M4.2d-C: "contact" = the opponent's Trade connected on me
         zones = cfg.zoning_rule == "contact" and opp_mode == TRADING
     zone = (q(cfg.zone_contest) if x > -T else q(cfg.zone_under_tower)) if zones else Fraction(0)
     c = base * (1 - zone)
-    if mode == TRADING:
+    if mode == TRADING and pays_trade:
         c *= q(cfg.trade_farm_factor)
     v = q(cfg.farm_per_hp) * c * cfg.gold_scale
     if v.denominator != 1:
@@ -229,6 +246,33 @@ def yield_target(spot: int, lane: State, s: int, cfg: GameConfig) -> int:
     if eh <= 0:
         return spot
     return max(-cfg.tower, min(spot, -ex - cfg.farm_reach))
+
+
+def trade_damage_distribution_n(h: float, q: float, n: int) -> Tuple[float, ...]:
+    """P(total base damage = d), d = 0 .. 2n, of n independent exchanges each dealing 0 / 1 / 2 base HP with
+    probabilities (1 - h, h (1 - q), h q) (the n-fold convolution of champions.trade_damage_distribution)."""
+    dist = [1.0]
+    for _ in range(n):
+        nxt = [0.0] * (len(dist) + 2)
+        for i, p in enumerate(dist):
+            nxt[i] += p * (1.0 - h)
+            nxt[i + 1] += p * h * (1.0 - q)
+            nxt[i + 2] += p * h * q
+        dist = nxt
+    return tuple(dist)
+
+
+def trade_damage_n(u: float, h: float, q: float, n: int) -> int:
+    """Inverse-CDF draw of the total base damage of n exchanges from one uniform (trade_exchanges > 1): the largest d
+    with u < P(D >= d), so that, as for every other chance event, a uniform at or above the event probability means no
+    event (u = 1.0, the no-chance convention, deals 0)."""
+    c = 0.0
+    dist = trade_damage_distribution_n(h, q, n)
+    for d in range(len(dist) - 1, 0, -1):
+        c += dist[d]
+        if u < c:
+            return d
+    return 0
 
 
 def m2_chase_target(c: int, ref: int, cfg: GameConfig) -> int:
@@ -445,13 +489,41 @@ def resolve_turn_m4(lane: State, m4: M4State, k: int, a: int, b: int, cfg: GameC
     codes = (eff_w[A] + 6 * eff_obj[A], eff_w[B] + 6 * eff_obj[B])
     res = lane_call(codes[A], codes[B], (reach[A], reach[B]))
 
+    # 9a. the trade rolls (chance vector; the hit probability uses the start-of-turn lane, levels and items). They
+    #     come before the gold step because trade_farm_rule "loser" charges the farm factor by the trade's outcome.
+    if u is None:
+        u = (1.0,) * N_CHANCE
+    hit, dbl = [0.0, 0.0], [0.0, 0.0]
+    dealt = [0, 0]
+    for s in (A, B):
+        if not connected[s]:
+            continue
+        o = 1 - s
+        hit[s] = trade_hit_probability(lane, s, B_RECALL if interrupted[o] else (B_HOLD if pinned[o] else beh[o]),
+                                       end[o] == -T, cfg)
+        dbl[s] = trade_double_probability(s, cfg)
+        if cfg.trade_exchanges == 1:
+            d = _trade_damage(u[U_TRADE_HIT[s]], u[U_TRADE_DOUBLE[s]], hit[s], dbl[s])
+        else:                                                              # M4.2e-B: one exchange per tick
+            d = trade_damage_n(u[U_TRADE_HIT[s]], hit[s], dbl[s], cfg.trade_exchanges)
+        dealt[s] = ctx.hit(d, lv0[s], it0[s])
+    pays = [True, True]
+    if cfg.trade_farm_rule == "loser" and connected[A] and connected[B]:
+        # the side that lost the smaller fraction of its max HP keeps its farm (exact cross-multiplication)
+        lost_a = ctx.mitigate(dealt[B], it0[A]) * t.hp_max[lv0[B]]
+        lost_b = ctx.mitigate(dealt[A], it0[B]) * t.hp_max[lv0[A]]
+        if lost_a < lost_b:
+            pays[A] = False
+        elif lost_b < lost_a:
+            pays[B] = False
+
     # 7. gold (exact ledger units) and 7b. XP
     avail, farm_u, xp_gain_raw = [0.0, 0.0], [0, 0], [0, 0]
     for s in (A, B):
         o = 1 - s
         for x, hp in res.kills[s].items():
             avail[s] += cfg.farm_per_hp * hp
-            farm_u[s] += hp * ctx.collection(x, modes[s], end[s], modes[o], end[o])
+            farm_u[s] += hp * ctx.collection(x, modes[s], end[s], modes[o], end[o], pays[s])
             if not away[s] and abs(x - end[s]) <= cfg.xp_range:
                 xp_gain_raw[s] += cfg.xp_per_hp * hp
 
@@ -461,20 +533,12 @@ def resolve_turn_m4(lane: State, m4: M4State, k: int, a: int, b: int, cfg: GameC
                  champion_gank_probability(lane, s, w[s], B_SAFE if interrupted[s] else beh[s], cfg, exposure[s])
                  for s in (A, B))
 
-    # 9. chance events, centi-HP damage at the start-of-turn levels and items
-    if u is None:
-        u = (1.0,) * N_CHANCE
-    hit, dbl, tower_p = [0.0, 0.0], [0.0, 0.0], [0.0, 0.0]
-    dealt, tower_dmg, adjacent = [0, 0], [0, 0], [False, False]
+    # 9b. tower shots and ganks, centi-HP damage at the start-of-turn levels and items
+    tower_p = [0.0, 0.0]
+    tower_dmg, adjacent = [0, 0], [False, False]
     for s in (A, B):
         if not connected[s]:
             continue
-        o = 1 - s
-        hit[s] = trade_hit_probability(lane, s, B_RECALL if interrupted[o] else (B_HOLD if pinned[o] else beh[o]),
-                                       end[o] == -T, cfg)
-        dbl[s] = trade_double_probability(s, cfg)
-        d = _trade_damage(u[U_TRADE_HIT[s]], u[U_TRADE_DOUBLE[s]], hit[s], dbl[s])
-        dealt[s] = ctx.hit(d, lv0[s], it0[s])
         busy = lane.siege_of(s) > 0 or res.crash_hp[s] > 0
         if end[s] == T:                                                   # a dive into the enemy tower cell
             tower_p[s] = cfg.tower_shot_p_busy if busy else cfg.tower_shot_p
@@ -496,7 +560,8 @@ def resolve_turn_m4(lane: State, m4: M4State, k: int, a: int, b: int, cfg: GameC
             else:
                 unit = t.hp_unit[1]
             gank_dmg[s] = _gank_damage(u[U_GANK_DAMAGE[s]], pe[s], cfg) * unit
-    taken = (dealt[B] + tower_dmg[A] + gank_dmg[A], dealt[A] + tower_dmg[B] + gank_dmg[B])
+    taken = (ctx.mitigate(dealt[B] + tower_dmg[A] + gank_dmg[A], it0[A]),      # invest_durability: divided by M(S)
+             ctx.mitigate(dealt[A] + tower_dmg[B] + gank_dmg[B], it0[B]))
 
     # 10. death (before level-up)
     died = (not away[A] and me0[A].hp - taken[A] <= 0, not away[B] and me0[B].hp - taken[B] <= 0)
