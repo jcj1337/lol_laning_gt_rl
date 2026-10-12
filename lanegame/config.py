@@ -480,6 +480,19 @@ class GameConfig:
         base.update(kw)
         return cls.m4(**base)
 
+    @classmethod
+    def m4_emergent(cls, **kw) -> "GameConfig":
+        """EXPERIMENT (M4.2d integration, docs/m4_emergent_parallel_report.md): `m4_continuous()` with the selected
+        opt-in M4.2d mechanics: the bounded saturating investment curve and the compressed investment observation
+        (M4.2d-D), Yield as a stand-off position that a Trade starting in contact pins (M4.2d-B), no automatic
+        proximity zoning (M4.2d-C) and the pre-crash farm spot (M4.2d-A readiness). Waves keep the scripted M4 rule
+        (the natural-wave prototype, branch prototype/m4-emergent-wave, is not integrated). Not a default."""
+        base = dict(invest_curve="saturating", invest_gain=1.5, invest_scale=16.0, invest_obs_encoding="compressed",
+                    invest_obs_ref=64, invest_obs_gold_ref=8, position_rule="standoff", zoning_rule="none",
+                    farm_spot_rule="pre_crash_front")
+        base.update(kw)
+        return cls.m4_continuous(**base)
+
     # ------------------------------------------------------------------ helpers
     @property
     def continuous_items(self) -> bool:

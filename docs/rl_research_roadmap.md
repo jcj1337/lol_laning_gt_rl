@@ -951,3 +951,38 @@ results `results/m4_wave_readiness/` (≈26k turns, ≈12 s wall).
 Push front past the lane walks plus no parking during the own siege; or proposal B, the siege condition only) or
 accept permanent pushes.
 
+
+## T. M4.2d parallel emergent mechanics and integration (2026-10-12)
+
+Four workstreams ran concurrently in separate worktrees from f504f5e. The results were integrated on
+`integration/m4-emergent-ready` into one **opt-in** preset, `GameConfig.m4_emergent()`. **`m4()` and `m4_continuous()`
+are unchanged.** Full account: [m4_emergent_parallel_report.md](m4_emergent_parallel_report.md); driver
+`lanegame.experiments.m4.emergent_ready`; results `results/m4_emergent_ready/` (6,347 turns, 1.5 s wall).
+
+| Workstream | Branch | Outcome |
+|---|---|---|
+| A natural waves | `prototype/m4-emergent-wave` | **Blocked, not integrated.** Waves walk freely and champions only add damage, but at wave HP 4 fronts never stack, so there are no crashes, plates or bounces and Shove is dominated. Unblocking needs a storage rule or a rescale (W = 8). |
+| B positioning | `prototype/m4-positioning` | **Integrated** (`position_rule="standoff"`). Yield farms from a stand-off cell; a Yield that starts in contact with a Trade is pinned. Trades on a stand-off land 6 of 6 instead of 0. No action-space change. |
+| C zoning | `prototype/m4-zoning` | **Integrated** (`zoning_rule="none"`). Removes the automatic proximity loss and adds no power term. Removing it alone does not create zoning. |
+| D investment + observation | `prototype/m4-investment-readiness` | **Integrated.** Bounded saturating curve `1 + 1.5 (1 − sqrt(16/(16+S)))` (no one-shots, below ×2.5) and a compressed 88-entry observation, lossless through the training horizon. |
+
+**Joint tests: mechanical feasibility.**
+
+- **Waves (scripted):** stacking and crashing work, and the defender can counter them. There is no bounce.
+- **Positioning:** a stronger champion can hold forward without attacking. The threat it poses scales with investment
+  (549 → 967 expected centi-HP on a pinned stand-off).
+- **Power matters:** A's Trade into a contesting B goes from −0.69 to +0.21 per 10 turns as the gap grows.
+- **Hold beats Trade** once A has positional control.
+- **Recall timing matters**, and returns invest all unspent gold.
+- **Correctness passes:** mirror symmetry, masks, replay, gold/XP/minion accounting, invariants, lossless
+  observations and zero-sum rewards. Tests: 230 passed, 3 skipped.
+
+**Main caveat: threat-based concession is not rational at current payoffs.**
+
+- Retreating costs the weaker champion more farm than being traded costs it HP.
+- The deterministic flip needs A to hold ×3.4–4.0 B's attack power, but the safe investment curve stays below ×2.5.
+- Other caveats: no bounce; a passive lane at equal power; weak late leads.
+
+**Decision: GO WITH CAVEATS.** Freeze `m4_emergent()` and proceed to the M4.3 PPO smoke test. Before drawing strategic
+conclusions from trained policies, reviewers decide whether to move trade damage or retreat farm retention. The
+smallest check is a 2 × 2 rerun of the `zoning` and `hp` stages (about 10k turns).

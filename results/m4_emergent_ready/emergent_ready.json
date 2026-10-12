@@ -1,0 +1,6812 @@
+{
+ "commit": "9b76a4c469049214468cd5bcc8777b786a41d71c",
+ "command": "python.exe C:\\Users\\light\\OneDrive\\Desktop\\projects\\lol_gt_laning\\lanegame\\experiments\\m4\\emergent_ready.py",
+ "environment": {
+  "python": "3.13.9",
+  "numpy": "2.5.3",
+  "scipy": "1.18.1",
+  "platform": "Windows-11-10.0.26200-SP0",
+  "timestamp": "2026-10-12 05:10:58"
+ },
+ "config": {
+  "base": 4,
+  "tower": 2,
+  "ticks_per_turn": 2,
+  "spawn_interval": 4,
+  "horizon": 32,
+  "wave_hp": 4,
+  "max_stacks": 2,
+  "cap_rule": "block",
+  "queue_fights": true,
+  "positioning": true,
+  "damage_law": "lanchester",
+  "shove_damage": 1,
+  "tower_damage": 1,
+  "pressure_kappa": [
+   0,
+   1,
+   0
+  ],
+  "slowpush_line": 0,
+  "slowpush_mode": "stack_creep",
+  "slowpush_creep_period": 2,
+  "freeze_line": -1,
+  "freeze_break_threshold": 10,
+  "freeze_break_push": [
+   0,
+   4,
+   0
+  ],
+  "freeze_legal_max": -1,
+  "tower_mode": "mass",
+  "tower_consumption_per_turn": 1,
+  "tower_siege_damage": 1,
+  "siege_engage": false,
+  "siege_cap": 48,
+  "siege_mode": "objective",
+  "plate_mode": "durability",
+  "plate_grant": [
+   1,
+   2,
+   3
+  ],
+  "plates_cap": 6,
+  "plates_per_tower": 5,
+  "plates_per_turn": 1,
+  "plate_value": 1.0,
+  "thin_damage": 1,
+  "thin_reach": 1,
+  "crash_options": [
+   [
+    [
+     1.0,
+     false
+    ],
+    [
+     0.0,
+     true
+    ]
+   ],
+   [
+    [
+     2.0,
+     false
+    ],
+    [
+     0.0,
+     true
+    ]
+   ],
+   [
+    [
+     3.0,
+     false
+    ],
+    [
+     2.0,
+     true
+    ]
+   ]
+  ],
+  "vision_turns": 6,
+  "vision_reduction": 0.75,
+  "farm_per_hp": 0.25,
+  "collect_contest": 0.9,
+  "collect_contest_enemy_tower": 0.5,
+  "collect_safe": 0.8,
+  "collect_safe_slope": 0.2,
+  "zone_contest": 0.3,
+  "zone_under_tower": 0.15,
+  "zoning_rule": "none",
+  "gank_base": 0.15,
+  "gank_position": 0.1,
+  "gank_action": [
+   0.02,
+   0.05,
+   0.02,
+   0.0,
+   0.0,
+   0.0
+  ],
+  "gank_strength": 0.02,
+  "gank_max": 0.4,
+  "gank_loss": 5.0,
+  "posture_cap": [
+   null,
+   null,
+   null,
+   -1,
+   -1,
+   -1
+  ],
+  "champion_mode": true,
+  "champion_hp": 6,
+  "champion_speed": 2,
+  "champion_absent_max": 3,
+  "recall_turns": 2,
+  "recall_line": -1,
+  "trade_hit_base": 0.55,
+  "trade_hit_skill": 0.4,
+  "trade_hit_behavior": [
+   0.0,
+   -0.25,
+   0.0,
+   -0.4,
+   0.0
+  ],
+  "trade_hit_minions": 0.05,
+  "trade_hit_tower": 0.15,
+  "trade_hit_min": 0.05,
+  "trade_hit_max": 0.95,
+  "trade_double_base": 0.3,
+  "trade_double_skill": 0.2,
+  "tower_shot_damage": 1,
+  "tower_shot_p": 1.0,
+  "tower_shot_p_busy": 0.5,
+  "skill_a": 0.5,
+  "skill_b": 0.5,
+  "safe_line": -1,
+  "trade_range": 1,
+  "farm_reach": 1,
+  "retreat_farm_reach": 2,
+  "trade_farm_factor": 0.5,
+  "champ_gank_base": 0.0,
+  "champ_gank_position": 0.12,
+  "champ_gank_behavior": [
+   0.01,
+   0.01,
+   0.03,
+   0.0
+  ],
+  "champ_gank_shove": 0.02,
+  "champ_gank_strength": 0.01,
+  "champ_gank_max": 0.3,
+  "gank_damage_trials": 4,
+  "gank_damage_base": 0.2,
+  "gank_damage_position": 0.6,
+  "gank_damage_defense": 0.2,
+  "gank_damage_skill": 0.2,
+  "death_turns": 3,
+  "kill_bounty": 0.5,
+  "ruleset": "m4",
+  "time_mode": "continuing",
+  "time_features": false,
+  "gamma": 0.99,
+  "xp_per_hp": 2,
+  "xp_range": 3,
+  "xp_base": 8,
+  "xp_step": 3,
+  "level_cap": 18,
+  "hp_base": 600,
+  "hp_growth": 1.05,
+  "ap_level_growth": 1.05,
+  "item_mult": 1.2,
+  "item_tiers": 0,
+  "item_prices": [],
+  "item_model": "continuous",
+  "invest_alpha": 0.045,
+  "invest_p": 0.9,
+  "invest_obs_gold_ref": 8,
+  "invest_obs_ref": 64,
+  "invest_curve": "saturating",
+  "invest_gain": 1.5,
+  "invest_scale": 16.0,
+  "invest_obs_encoding": "compressed",
+  "freeze_maintenance": true,
+  "chase_rule": "contact_cell",
+  "farm_spot_rule": "pre_crash_front",
+  "position_rule": "standoff",
+  "tower_adjacent_p": 0.5,
+  "tower_adjacent_p_busy": 0.25,
+  "gank_damage_scale": "victim_level",
+  "plate_thresholds": [
+   1600,
+   3600,
+   6000
+  ],
+  "plate_gold": 1.0,
+  "pressure_tower_damage": 400,
+  "plate_gold_requires_presence": false,
+  "gold_unit": 1e-06,
+  "rear_count_max": 4
+ },
+ "wave": {
+  "m4": {
+   "hold": {
+    "turns": 48,
+    "farm": [
+     9.205,
+     16.29
+    ],
+    "farm_available": [
+     24.0,
+     23.75
+    ],
+    "earned_A_minus_B": -6.085,
+    "xp": [
+     176,
+     190
+    ],
+    "plates": [
+     1,
+     0
+    ],
+    "tower_dmg_A": 2400,
+    "crashes": [
+     [
+      {
+       "k": 17,
+       "hp": 3,
+       "clear_turns": 1
+      },
+      {
+       "k": 28,
+       "hp": 9,
+       "clear_turns": 5
+      },
+      {
+       "k": 40,
+       "hp": 7,
+       "clear_turns": 4
+      },
+      {
+       "k": 53,
+       "hp": 3,
+       "clear_turns": 1
+      }
+     ],
+     []
+    ],
+    "bounce": false,
+    "turns_A_away": [],
+    "missed_gold_A": 0,
+    "missed_xp_A": 0,
+    "lane_on_return": null,
+    "expected_ganks_A": 3.97,
+    "max_pos_A": 2,
+    "end_lane": "A[front@+0 hp5; rears -2; siege 0; vision 0; plates 0] B[front@-1 hp4; rears -; siege 0; vision 0; plates 0]  (own coordinates)",
+    "max_front_hp_A": 11
+   },
+   "shove_farm": {
+    "turns": 48,
+    "farm": [
+     9.397,
+     15.727
+    ],
+    "farm_available": [
+     24.5,
+     23.5
+    ],
+    "earned_A_minus_B": -5.33,
+    "xp": [
+     174,
+     188
+    ],
+    "plates": [
+     1,
+     0
+    ],
+    "tower_dmg_A": 2300,
+    "crashes": [
+     [
+      {
+       "k": 15,
+       "hp": 2,
+       "clear_turns": 1
+      },
+      {
+       "k": 25,
+       "hp": 3,
+       "clear_turns": 1
+      },
+      {
+       "k": 36,
+       "hp": 9,
+       "clear_turns": 5
+      },
+      {
+       "k": 48,
+       "hp": 7,
+       "clear_turns": 4
+      }
+     ],
+     []
+    ],
+    "bounce": false,
+    "turns_A_away": [],
+    "missed_gold_A": 0,
+    "missed_xp_A": 0,
+    "lane_on_return": null,
+    "expected_ganks_A": 3.91,
+    "max_pos_A": 2,
+    "end_lane": "A[front@+1 hp6; rears -2; siege 0; vision 0; plates 0] B[front@-2 hp2; rears -; siege 0; vision 0; plates 0]  (own coordinates)",
+    "max_front_hp_A": 11
+   },
+   "shove_recall_small_crash": {
+    "turns": 48,
+    "farm": [
+     8.768,
+     15.862
+    ],
+    "farm_available": [
+     24.5,
+     23.5
+    ],
+    "earned_A_minus_B": -6.095,
+    "xp": [
+     166,
+     188
+    ],
+    "plates": [
+     1,
+     0
+    ],
+    "tower_dmg_A": 2300,
+    "crashes": [
+     [
+      {
+       "k": 15,
+       "hp": 2,
+       "clear_turns": 1
+      },
+      {
+       "k": 25,
+       "hp": 3,
+       "clear_turns": 1
+      },
+      {
+       "k": 36,
+       "hp": 9,
+       "clear_turns": 5
+      },
+      {
+       "k": 48,
+       "hp": 7,
+       "clear_turns": 4
+      }
+     ],
+     []
+    ],
+    "bounce": false,
+    "turns_A_away": [
+     17,
+     18
+    ],
+    "missed_gold_A": 1.0,
+    "missed_xp_A": 8,
+    "lane_on_return": "A[front@+0 hp5; rears -2; siege 0; vision 0; plates 0] B[front@-2 hp4; rears -; siege 0; vision 0; plates 0]  (own coordinates)",
+    "expected_ganks_A": 3.77,
+    "max_pos_A": 2,
+    "end_lane": "A[front@+1 hp6; rears -2; siege 0; vision 0; plates 0] B[front@-2 hp2; rears -; siege 0; vision 0; plates 0]  (own coordinates)",
+    "max_front_hp_A": 11
+   },
+   "hold_recall_large_crash": {
+    "turns": 48,
+    "farm": [
+     9.205,
+     16.29
+    ],
+    "farm_available": [
+     24.0,
+     23.75
+    ],
+    "earned_A_minus_B": -6.085,
+    "xp": [
+     176,
+     190
+    ],
+    "plates": [
+     1,
+     0
+    ],
+    "tower_dmg_A": 2400,
+    "crashes": [
+     [
+      {
+       "k": 17,
+       "hp": 3,
+       "clear_turns": 1
+      },
+      {
+       "k": 28,
+       "hp": 9,
+       "clear_turns": 5
+      },
+      {
+       "k": 40,
+       "hp": 7,
+       "clear_turns": 4
+      },
+      {
+       "k": 53,
+       "hp": 3,
+       "clear_turns": 1
+      }
+     ],
+     []
+    ],
+    "bounce": false,
+    "turns_A_away": [
+     29,
+     30
+    ],
+    "missed_gold_A": 0.0,
+    "missed_xp_A": 0,
+    "lane_on_return": "A[front@+0 hp4; rears -2; siege 5; vision 0; plates 0] B[front@-3 hp4; rears -; siege 0; vision 0; plates 0]  (own coordinates)",
+    "expected_ganks_A": 3.83,
+    "max_pos_A": 2,
+    "end_lane": "A[front@+0 hp5; rears -2; siege 0; vision 0; plates 0] B[front@-1 hp4; rears -; siege 0; vision 0; plates 0]  (own coordinates)",
+    "max_front_hp_A": 11
+   },
+   "shove_farm_vs_control": {
+    "turns": 48,
+    "farm": [
+     15.03,
+     10.585
+    ],
+    "farm_available": [
+     23.75,
+     25.5
+    ],
+    "earned_A_minus_B": 4.445,
+    "xp": [
+     190,
+     204
+    ],
+    "plates": [
+     0,
+     0
+    ],
+    "tower_dmg_A": 0,
+    "crashes": [
+     [],
+     [
+      {
+       "k": 21,
+       "hp": 2,
+       "clear_turns": 1
+      },
+      {
+       "k": 29,
+       "hp": 2,
+       "clear_turns": 1
+      },
+      {
+       "k": 37,
+       "hp": 2,
+       "clear_turns": 1
+      },
+      {
+       "k": 45,
+       "hp": 2,
+       "clear_turns": 1
+      },
+      {
+       "k": 53,
+       "hp": 2,
+       "clear_turns": 1
+      }
+     ]
+    ],
+    "bounce": false,
+    "turns_A_away": [],
+    "missed_gold_A": 0,
+    "missed_xp_A": 0,
+    "lane_on_return": null,
+    "expected_ganks_A": 1.25,
+    "max_pos_A": 0,
+    "end_lane": "A[front@-2 hp2; rears -; siege 0; vision 0; plates 0] B[front@+2 hp1; rears -2; siege 0; vision 0; plates 0]  (own coordinates)",
+    "max_front_hp_A": 4
+   },
+   "neutral_hold": {
+    "turns": 40,
+    "farm": [
+     12.6,
+     12.6
+    ],
+    "farm_available": [
+     20.0,
+     20.0
+    ],
+    "earned_A_minus_B": 0.0,
+    "xp": [
+     160,
+     160
+    ],
+    "plates": [
+     0,
+     0
+    ],
+    "tower_dmg_A": 0,
+    "crashes": [
+     [],
+     []
+    ],
+    "bounce": false,
+    "turns_A_away": [],
+    "missed_gold_A": 0,
+    "missed_xp_A": 0,
+    "lane_on_return": null,
+    "expected_ganks_A": 2.8,
+    "max_pos_A": 0,
+    "end_lane": "A[front@+0 hp1; rears -2; siege 0; vision 0; plates 0] B[front@+0 hp1; rears -2; siege 0; vision 0; plates 0]  (own coordinates)",
+    "max_front_hp_A": 3
+   },
+   "neutral_recall": {
+    "turns": 40,
+    "farm": [
+     11.795,
+     13.005
+    ],
+    "farm_available": [
+     20.0,
+     20.0
+    ],
+    "earned_A_minus_B": -1.21,
+    "xp": [
+     152,
+     160
+    ],
+    "plates": [
+     0,
+     0
+    ],
+    "tower_dmg_A": 0,
+    "crashes": [
+     [],
+     []
+    ],
+    "bounce": false,
+    "turns_A_away": [
+     11,
+     12
+    ],
+    "missed_gold_A": 1.0,
+    "missed_xp_A": 8,
+    "lane_on_return": "A[front@+0 hp1; rears -2; siege 0; vision 0; plates 0] B[front@+0 hp1; rears -2; siege 0; vision 0; plates 0]  (own coordinates)",
+    "expected_ganks_A": 2.65,
+    "max_pos_A": 0,
+    "end_lane": "A[front@+0 hp1; rears -2; siege 0; vision 0; plates 0] B[front@+0 hp1; rears -2; siege 0; vision 0; plates 0]  (own coordinates)",
+    "max_front_hp_A": 3
+   },
+   "neutral_recall_punished": {
+    "turns": 40,
+    "farm": [
+     11.795,
+     13.23
+    ],
+    "farm_available": [
+     20.0,
+     20.25
+    ],
+    "earned_A_minus_B": -1.435,
+    "xp": [
+     152,
+     162
+    ],
+    "plates": [
+     0,
+     0
+    ],
+    "tower_dmg_A": 0,
+    "crashes": [
+     [],
+     []
+    ],
+    "bounce": false,
+    "turns_A_away": [
+     11,
+     12
+    ],
+    "missed_gold_A": 1.0,
+    "missed_xp_A": 8,
+    "lane_on_return": "A[front@-2 hp4; rears -; siege 0; vision 0; plates 0] B[front@+0 hp1; rears -2; siege 0; vision 0; plates 0]  (own coordinates)",
+    "expected_ganks_A": 1.57,
+    "max_pos_A": 0,
+    "end_lane": "A[front@-1 hp4; rears -; siege 0; vision 0; plates 0] B[front@+0 hp1; rears -2; siege 0; vision 0; plates 0]  (own coordinates)",
+    "max_front_hp_A": 4
+   }
+  },
+  "m4_emergent": {
+   "hold": {
+    "turns": 48,
+    "farm": [
+     13.4,
+     19.8
+    ],
+    "farm_available": [
+     24.0,
+     23.75
+    ],
+    "earned_A_minus_B": -5.4,
+    "xp": [
+     192,
+     190
+    ],
+    "plates": [
+     1,
+     0
+    ],
+    "tower_dmg_A": 2400,
+    "crashes": [
+     [
+      {
+       "k": 17,
+       "hp": 3,
+       "clear_turns": 1
+      },
+      {
+       "k": 28,
+       "hp": 9,
+       "clear_turns": 5
+      },
+      {
+       "k": 40,
+       "hp": 7,
+       "clear_turns": 4
+      },
+      {
+       "k": 53,
+       "hp": 3,
+       "clear_turns": 1
+      }
+     ],
+     []
+    ],
+    "bounce": false,
+    "turns_A_away": [],
+    "missed_gold_A": 0,
+    "missed_xp_A": 0,
+    "lane_on_return": null,
+    "expected_ganks_A": 4.15,
+    "max_pos_A": 2,
+    "end_lane": "A[front@+0 hp5; rears -2; siege 0; vision 0; plates 0] B[front@-1 hp4; rears -; siege 0; vision 0; plates 0]  (own coordinates)",
+    "max_front_hp_A": 11
+   },
+   "shove_farm": {
+    "turns": 48,
+    "farm": [
+     13.55,
+     19.125
+    ],
+    "farm_available": [
+     24.5,
+     23.5
+    ],
+    "earned_A_minus_B": -4.575,
+    "xp": [
+     196,
+     188
+    ],
+    "plates": [
+     1,
+     0
+    ],
+    "tower_dmg_A": 2500,
+    "crashes": [
+     [
+      {
+       "k": 14,
+       "hp": 4,
+       "clear_turns": 2
+      },
+      {
+       "k": 25,
+       "hp": 3,
+       "clear_turns": 1
+      },
+      {
+       "k": 36,
+       "hp": 9,
+       "clear_turns": 5
+      },
+      {
+       "k": 48,
+       "hp": 7,
+       "clear_turns": 4
+      }
+     ],
+     []
+    ],
+    "bounce": false,
+    "turns_A_away": [],
+    "missed_gold_A": 0,
+    "missed_xp_A": 0,
+    "lane_on_return": null,
+    "expected_ganks_A": 4.04,
+    "max_pos_A": 2,
+    "end_lane": "A[front@+1 hp6; rears -2; siege 0; vision 0; plates 0] B[front@-2 hp2; rears -; siege 0; vision 0; plates 0]  (own coordinates)",
+    "max_front_hp_A": 11
+   },
+   "shove_recall_small_crash": {
+    "turns": 48,
+    "farm": [
+     13.1,
+     19.125
+    ],
+    "farm_available": [
+     24.5,
+     23.5
+    ],
+    "earned_A_minus_B": -5.025,
+    "xp": [
+     192,
+     188
+    ],
+    "plates": [
+     1,
+     0
+    ],
+    "tower_dmg_A": 2500,
+    "crashes": [
+     [
+      {
+       "k": 14,
+       "hp": 4,
+       "clear_turns": 2
+      },
+      {
+       "k": 25,
+       "hp": 3,
+       "clear_turns": 1
+      },
+      {
+       "k": 36,
+       "hp": 9,
+       "clear_turns": 5
+      },
+      {
+       "k": 48,
+       "hp": 7,
+       "clear_turns": 4
+      }
+     ],
+     []
+    ],
+    "bounce": false,
+    "turns_A_away": [
+     16,
+     17
+    ],
+    "missed_gold_A": 0.5,
+    "missed_xp_A": 4,
+    "lane_on_return": "A[front@+0 hp7; rears -4; siege 0; vision 0; plates 0] B[front@-1 hp2; rears -4; siege 0; vision 0; plates 0]  (own coordinates)",
+    "expected_ganks_A": 3.89,
+    "max_pos_A": 2,
+    "end_lane": "A[front@+1 hp6; rears -2; siege 0; vision 0; plates 0] B[front@-2 hp2; rears -; siege 0; vision 0; plates 0]  (own coordinates)",
+    "max_front_hp_A": 11
+   },
+   "hold_recall_large_crash": {
+    "turns": 48,
+    "farm": [
+     13.4,
+     19.8
+    ],
+    "farm_available": [
+     24.0,
+     23.75
+    ],
+    "earned_A_minus_B": -5.4,
+    "xp": [
+     192,
+     190
+    ],
+    "plates": [
+     1,
+     0
+    ],
+    "tower_dmg_A": 2400,
+    "crashes": [
+     [
+      {
+       "k": 17,
+       "hp": 3,
+       "clear_turns": 1
+      },
+      {
+       "k": 28,
+       "hp": 9,
+       "clear_turns": 5
+      },
+      {
+       "k": 40,
+       "hp": 7,
+       "clear_turns": 4
+      },
+      {
+       "k": 53,
+       "hp": 3,
+       "clear_turns": 1
+      }
+     ],
+     []
+    ],
+    "bounce": false,
+    "turns_A_away": [
+     30,
+     31
+    ],
+    "missed_gold_A": 0.0,
+    "missed_xp_A": 0,
+    "lane_on_return": "A[front@+0 hp8; rears -4; siege 3; vision 0; plates 0] B[front@-3 hp8; rears -; siege 0; vision 0; plates 0]  (own coordinates)",
+    "expected_ganks_A": 3.97,
+    "max_pos_A": 2,
+    "end_lane": "A[front@+0 hp5; rears -2; siege 0; vision 0; plates 0] B[front@-1 hp4; rears -; siege 0; vision 0; plates 0]  (own coordinates)",
+    "max_front_hp_A": 11
+   },
+   "shove_farm_vs_control": {
+    "turns": 48,
+    "farm": [
+     18.675,
+     16.275
+    ],
+    "farm_available": [
+     23.75,
+     25.5
+    ],
+    "earned_A_minus_B": 2.4,
+    "xp": [
+     190,
+     204
+    ],
+    "plates": [
+     0,
+     0
+    ],
+    "tower_dmg_A": 0,
+    "crashes": [
+     [],
+     [
+      {
+       "k": 21,
+       "hp": 2,
+       "clear_turns": 1
+      },
+      {
+       "k": 29,
+       "hp": 2,
+       "clear_turns": 1
+      },
+      {
+       "k": 37,
+       "hp": 2,
+       "clear_turns": 1
+      },
+      {
+       "k": 45,
+       "hp": 2,
+       "clear_turns": 1
+      },
+      {
+       "k": 53,
+       "hp": 2,
+       "clear_turns": 1
+      }
+     ]
+    ],
+    "bounce": false,
+    "turns_A_away": [],
+    "missed_gold_A": 0,
+    "missed_xp_A": 0,
+    "lane_on_return": null,
+    "expected_ganks_A": 1.25,
+    "max_pos_A": 0,
+    "end_lane": "A[front@-2 hp2; rears -; siege 0; vision 0; plates 0] B[front@+2 hp1; rears -2; siege 0; vision 0; plates 0]  (own coordinates)",
+    "max_front_hp_A": 4
+   },
+   "neutral_hold": {
+    "turns": 40,
+    "farm": [
+     18.0,
+     18.0
+    ],
+    "farm_available": [
+     20.0,
+     20.0
+    ],
+    "earned_A_minus_B": 0.0,
+    "xp": [
+     160,
+     160
+    ],
+    "plates": [
+     0,
+     0
+    ],
+    "tower_dmg_A": 0,
+    "crashes": [
+     [],
+     []
+    ],
+    "bounce": false,
+    "turns_A_away": [],
+    "missed_gold_A": 0,
+    "missed_xp_A": 0,
+    "lane_on_return": null,
+    "expected_ganks_A": 2.8,
+    "max_pos_A": 0,
+    "end_lane": "A[front@+0 hp1; rears -2; siege 0; vision 0; plates 0] B[front@+0 hp1; rears -2; siege 0; vision 0; plates 0]  (own coordinates)",
+    "max_front_hp_A": 3
+   },
+   "neutral_recall": {
+    "turns": 40,
+    "farm": [
+     16.85,
+     18.0
+    ],
+    "farm_available": [
+     20.0,
+     20.0
+    ],
+    "earned_A_minus_B": -1.15,
+    "xp": [
+     152,
+     160
+    ],
+    "plates": [
+     0,
+     0
+    ],
+    "tower_dmg_A": 0,
+    "crashes": [
+     [],
+     []
+    ],
+    "bounce": false,
+    "turns_A_away": [
+     11,
+     12
+    ],
+    "missed_gold_A": 1.0,
+    "missed_xp_A": 8,
+    "lane_on_return": "A[front@+0 hp1; rears -2; siege 0; vision 0; plates 0] B[front@+0 hp1; rears -2; siege 0; vision 0; plates 0]  (own coordinates)",
+    "expected_ganks_A": 2.65,
+    "max_pos_A": 0,
+    "end_lane": "A[front@+0 hp1; rears -2; siege 0; vision 0; plates 0] B[front@+0 hp1; rears -2; siege 0; vision 0; plates 0]  (own coordinates)",
+    "max_front_hp_A": 3
+   },
+   "neutral_recall_punished": {
+    "turns": 40,
+    "farm": [
+     16.85,
+     18.225
+    ],
+    "farm_available": [
+     20.0,
+     20.25
+    ],
+    "earned_A_minus_B": -1.375,
+    "xp": [
+     152,
+     162
+    ],
+    "plates": [
+     0,
+     0
+    ],
+    "tower_dmg_A": 0,
+    "crashes": [
+     [],
+     []
+    ],
+    "bounce": false,
+    "turns_A_away": [
+     11,
+     12
+    ],
+    "missed_gold_A": 1.0,
+    "missed_xp_A": 8,
+    "lane_on_return": "A[front@-2 hp4; rears -; siege 0; vision 0; plates 0] B[front@+0 hp1; rears -2; siege 0; vision 0; plates 0]  (own coordinates)",
+    "expected_ganks_A": 1.57,
+    "max_pos_A": 0,
+    "end_lane": "A[front@-1 hp4; rears -; siege 0; vision 0; plates 0] B[front@+0 hp1; rears -2; siege 0; vision 0; plates 0]  (own coordinates)",
+    "max_front_hp_A": 4
+   }
+  }
+ },
+ "pressure": {
+  "continuous_m2_presence": {
+   "equal": {
+    "A Hold vs B Hold": {
+     "turns": 24,
+     "cells": [
+      [
+       0,
+       0
+      ],
+      [
+       0,
+       0
+      ],
+      [
+       0,
+       0
+      ],
+      [
+       0,
+       0
+      ],
+      [
+       0,
+       0
+      ],
+      [
+       0,
+       0
+      ],
+      [
+       0,
+       0
+      ],
+      [
+       0,
+       0
+      ],
+      [
+       0,
+       0
+      ],
+      [
+       0,
+       0
+      ],
+      [
+       0,
+       0
+      ],
+      [
+       0,
+       0
+      ],
+      [
+       0,
+       0
+      ],
+      [
+       0,
+       0
+      ],
+      [
+       0,
+       0
+      ],
+      [
+       0,
+       0
+      ],
+      [
+       0,
+       0
+      ],
+      [
+       0,
+       0
+      ],
+      [
+       0,
+       0
+      ],
+      [
+       0,
+       0
+      ],
+      [
+       0,
+       0
+      ],
+      [
+       0,
+       0
+      ],
+      [
+       0,
+       0
+      ],
+      [
+       0,
+       0
+      ]
+     ],
+     "contact_end_frac": 1.0,
+     "farm": [
+      7.56,
+      7.56
+     ],
+     "farm_per_turn": [
+      0.315,
+      0.315
+     ],
+     "xp": [
+      96,
+      96
+     ],
+     "trades_chosen": [
+      0,
+      0
+     ],
+     "trades_connected": [
+      0,
+      0
+     ],
+     "evaded": [
+      0,
+      0
+     ],
+     "pinned": [
+      0,
+      0
+     ],
+     "expected_damage_taken": [
+      0.0,
+      0.0
+     ],
+     "expected_ganks": [
+      1.68,
+      1.68
+     ],
+     "net_A_illustrative": 0.0
+    },
+    "A Hold vs B Yield": {
+     "turns": 24,
+     "cells": [
+      [
+       0,
+       0
+      ],
+      [
+       0,
+       0
+      ],
+      [
+       0,
+       0
+      ],
+      [
+       0,
+       0
+      ],
+      [
+       0,
+       0
+      ],
+      [
+       0,
+       0
+      ],
+      [
+       0,
+       0
+      ],
+      [
+       0,
+       0
+      ],
+      [
+       0,
+       0
+      ],
+      [
+       0,
+       0
+      ],
+      [
+       0,
+       0
+      ],
+      [
+       0,
+       0
+      ],
+      [
+       0,
+       0
+      ],
+      [
+       0,
+       0
+      ],
+      [
+       0,
+       0
+      ],
+      [
+       0,
+       0
+      ],
+      [
+       0,
+       0
+      ],
+      [
+       0,
+       0
+      ],
+      [
+       0,
+       0
+      ],
+      [
+       0,
+       0
+      ],
+      [
+       0,
+       0
+      ],
+      [
+       0,
+       0
+      ],
+      [
+       0,
+       0
+      ],
+      [
+       0,
+       0
+      ]
+     ],
+     "contact_end_frac": 1.0,
+     "farm": [
+      7.56,
+      7.56
+     ],
+     "farm_per_turn": [
+      0.315,
+      0.315
+     ],
+     "xp": [
+      96,
+      96
+     ],
+     "trades_chosen": [
+      0,
+      0
+     ],
+     "trades_connected": [
+      0,
+      0
+     ],
+     "evaded": [
+      0,
+      0
+     ],
+     "pinned": [
+      0,
+      0
+     ],
+     "expected_damage_taken": [
+      0.0,
+      0.0
+     ],
+     "expected_ganks": [
+      1.68,
+      1.68
+     ],
+     "net_A_illustrative": 0.0
+    },
+    "A Hold vs B respect": {
+     "turns": 24,
+     "cells": [
+      [
+       0,
+       -1
+      ],
+      [
+       0,
+       -1
+      ],
+      [
+       0,
+       -1
+      ],
+      [
+       0,
+       -1
+      ],
+      [
+       0,
+       -1
+      ],
+      [
+       0,
+       -1
+      ],
+      [
+       0,
+       -1
+      ],
+      [
+       0,
+       -1
+      ],
+      [
+       0,
+       -1
+      ],
+      [
+       0,
+       -1
+      ],
+      [
+       0,
+       -1
+      ],
+      [
+       0,
+       -1
+      ],
+      [
+       0,
+       -1
+      ],
+      [
+       0,
+       -1
+      ],
+      [
+       0,
+       -1
+      ],
+      [
+       0,
+       -1
+      ],
+      [
+       0,
+       -1
+      ],
+      [
+       0,
+       -1
+      ],
+      [
+       0,
+       -1
+      ],
+      [
+       0,
+       -1
+      ],
+      [
+       0,
+       -1
+      ],
+      [
+       0,
+       -1
+      ],
+      [
+       0,
+       -1
+      ],
+      [
+       0,
+       -1
+      ]
+     ],
+     "contact_end_frac": 1.0,
+     "farm": [
+      10.8,
+      3.36
+     ],
+     "farm_per_turn": [
+      0.45,
+      0.14
+     ],
+     "xp": [
+      96,
+      96
+     ],
+     "trades_chosen": [
+      0,
+      0
+     ],
+     "trades_connected": [
+      0,
+      0
+     ],
+     "evaded": [
+      0,
+      0
+     ],
+     "pinned": [
+      0,
+      0
+     ],
+     "expected_damage_taken": [
+      0.0,
+      0.0
+     ],
+     "expected_ganks": [
+      1.68,
+      0.75
+     ],
+     "net_A_illustrative": 7.44
+    },
+    "A Hold+Trade/4 vs B respect": {
+     "turns": 24,
+     "cells": [
+      [
+       0,
+       -1
+      ],
+      [
+       0,
+       -1
+      ],
+      [
+       0,
+       -1
+      ],
+      [
+       0,
+       -2
+      ],
+      [
+       0,
+       0
+      ],
+      [
+       0,
+       -1
+      ],
+      [
+       0,
+       -1
+      ],
+      [
+       0,
+       -2
+      ],
+      [
+       0,
+       0
+      ],
+      [
+       0,
+       -1
+      ],
+      [
+       0,
+       -1
+      ],
+      [
+       0,
+       -2
+      ],
+      [
+       0,
+       0
+      ],
+      [
+       0,
+       -1
+      ],
+      [
+       0,
+       -1
+      ],
+      [
+       0,
+       -2
+      ],
+      [
+       0,
+       0
+      ],
+      [
+       0,
+       -1
+      ],
+      [
+       0,
+       -1
+      ],
+      [
+       0,
+       -2
+      ],
+      [
+       0,
+       0
+      ],
+      [
+       0,
+       -1
+      ],
+      [
+       0,
+       -1
+      ],
+      [
+       0,
+       -2
+      ]
+     ],
+     "contact_end_frac": 0.75,
+     "farm": [
+      10.125,
+      3.395
+     ],
+     "farm_per_turn": [
+      0.4219,
+      0.1415
+     ],
+     "xp": [
+      96,
+      96
+     ],
+     "trades_chosen": [
+      6,
+      0
+     ],
+     "trades_connected": [
+      0,
+      0
+     ],
+     "evaded": [
+      0,
+      6
+     ],
+     "pinned": [
+      0,
+      0
+     ],
+     "expected_damage_taken": [
+      0.0,
+      0.0
+     ],
+     "expected_ganks": [
+      1.8,
+      1.1
+     ],
+     "net_A_illustrative": 6.73
+    },
+    "A Hold+Trade/4 vs B Yield": {
+     "turns": 24,
+     "cells": [
+      [
+       0,
+       0
+      ],
+      [
+       0,
+       0
+      ],
+      [
+       0,
+       0
+      ],
+      [
+       0,
+       -2
+      ],
+      [
+       0,
+       0
+      ],
+      [
+       0,
+       0
+      ],
+      [
+       0,
+       0
+      ],
+      [
+       0,
+       -2
+      ],
+      [
+       0,
+       0
+      ],
+      [
+       0,
+       0
+      ],
+      [
+       0,
+       0
+      ],
+      [
+       0,
+       -2
+      ],
+      [
+       0,
+       0
+      ],
+      [
+       0,
+       0
+      ],
+      [
+       0,
+       0
+      ],
+      [
+       0,
+       -2
+      ],
+      [
+       0,
+       0
+      ],
+      [
+       0,
+       0
+      ],
+      [
+       0,
+       0
+      ],
+      [
+       0,
+       -2
+      ],
+      [
+       0,
+       0
+      ],
+      [
+       0,
+       0
+      ],
+      [
+       0,
+       0
+      ],
+      [
+       0,
+       -2
+      ]
+     ],
+     "contact_end_frac": 0.75,
+     "farm": [
+      8.37,
+      6.51
+     ],
+     "farm_per_turn": [
+      0.3487,
+      0.2712
+     ],
+     "xp": [
+      96,
+      96
+     ],
+     "trades_chosen": [
+      6,
+      0
+     ],
+     "trades_connected": [
+      0,
+      0
+     ],
+     "evaded": [
+      0,
+      6
+     ],
+     "pinned": [
+      0,
+      0
+     ],
+     "expected_damage_taken": [
+      0.0,
+      0.0
+     ],
+     "expected_ganks": [
+      1.8,
+      1.68
+     ],
+     "net_A_illustrative": 1.86
+    },
+    "A Yield vs B Yield": {
+     "turns": 24,
+     "cells": [
+      [
+       0,
+       0
+      ],
+      [
+       0,
+       0
+      ],
+      [
+       0,
+       0
+      ],
+      [
+       0,
+       0
+      ],
+      [
+       0,
+       0
+      ],
+      [
+       0,
+       0
+      ],
+      [
+       0,
+       0
+      ],
+      [
+       0,
+       0
+      ],
+      [
+       0,
+       0
+      ],
+      [
+       0,
+       0
+      ],
+      [
+       0,
+       0
+      ],
+      [
+       0,
+       0
+      ],
+      [
+       0,
+       0
+      ],
+      [
+       0,
+       0
+      ],
+      [
+       0,
+       0
+      ],
+      [
+       0,
+       0
+      ],
+      [
+       0,
+       0
+      ],
+      [
+       0,
+       0
+      ],
+      [
+       0,
+       0
+      ],
+      [
+       0,
+       0
+      ],
+      [
+       0,
+       0
+      ],
+      [
+       0,
+       0
+      ],
+      [
+       0,
+       0
+      ],
+      [
+       0,
+       0
+      ]
+     ],
+     "contact_end_frac": 1.0,
+     "farm": [
+      7.56,
+      7.56
+     ],
+     "farm_per_turn": [
+      0.315,
+      0.315
+     ],
+     "xp": [
+      96,
+      96
+     ],
+     "trades_chosen": [
+      0,
+      0
+     ],
+     "trades_connected": [
+      0,
+      0
+     ],
+     "evaded": [
+      0,
+      0
+     ],
+     "pinned": [
+      0,
+      0
+     ],
+     "expected_damage_taken": [
+      0.0,
+      0.0
+     ],
+     "expected_ganks": [
+      1.68,
+      1.68
+     ],
+     "net_A_illustrative": 0.0
+    }
+   },
+   "large": {
+    "A Hold vs B Hold": {
+     "turns": 24,
+     "cells": [
+      [
+       0,
+       0
+      ],
+      [
+       0,
+       0
+      ],
+      [
+       0,
+       0
+      ],
+      [
+       0,
+       0
+      ],
+      [
+       0,
+       0
+      ],
+      [
+       0,
+       0
+      ],
+      [
+       0,
+       0
+      ],
+      [
+       0,
+       0
+      ],
+      [
+       0,
+       0
+      ],
+      [
+       0,
+       0
+      ],
+      [
+       0,
+       0
+      ],
+      [
+       0,
+       0
+      ],
+      [
+       0,
+       0
+      ],
+      [
+       0,
+       0
+      ],
+      [
+       0,
+       0
+      ],
+      [
+       0,
+       0
+      ],
+      [
+       0,
+       0
+      ],
+      [
+       0,
+       0
+      ],
+      [
+       0,
+       0
+      ],
+      [
+       0,
+       0
+      ],
+      [
+       0,
+       0
+      ],
+      [
+       0,
+       0
+      ],
+      [
+       0,
+       0
+      ],
+      [
+       0,
+       0
+      ]
+     ],
+     "contact_end_frac": 1.0,
+     "farm": [
+      7.56,
+      7.56
+     ],
+     "farm_per_turn": [
+      0.315,
+      0.315
+     ],
+     "xp": [
+      96,
+      96
+     ],
+     "trades_chosen": [
+      0,
+      0
+     ],
+     "trades_connected": [
+      0,
+      0
+     ],
+     "evaded": [
+      0,
+      0
+     ],
+     "pinned": [
+      0,
+      0
+     ],
+     "expected_damage_taken": [
+      0.0,
+      0.0
+     ],
+     "expected_ganks": [
+      1.68,
+      1.68
+     ],
+     "net_A_illustrative": 0.0
+    },
+    "A Hold vs B Yield": {
+     "turns": 24,
+     "cells": [
+      [
+       0,
+       0
+      ],
+      [
+       0,
+       0
+      ],
+      [
+       0,
+       0
+      ],
+      [
+       0,
+       0
+      ],
+      [
+       0,
+       0
+      ],
+      [
+       0,
+       0
+      ],
+      [
+       0,
+       0
+      ],
+      [
+       0,
+       0
+      ],
+      [
+       0,
+       0
+      ],
+      [
+       0,
+       0
+      ],
+      [
+       0,
+       0
+      ],
+      [
+       0,
+       0
+      ],
+      [
+       0,
+       0
+      ],
+      [
+       0,
+       0
+      ],
+      [
+       0,
+       0
+      ],
+      [
+       0,
+       0
+      ],
+      [
+       0,
+       0
+      ],
+      [
+       0,
+       0
+      ],
+      [
+       0,
+       0
+      ],
+      [
+       0,
+       0
+      ],
+      [
+       0,
+       0
+      ],
+      [
+       0,
+       0
+      ],
+      [
+       0,
+       0
+      ],
+      [
+       0,
+       0
+      ]
+     ],
+     "contact_end_frac": 1.0,
+     "farm": [
+      7.56,
+      7.56
+     ],
+     "farm_per_turn": [
+      0.315,
+      0.315
+     ],
+     "xp": [
+      96,
+      96
+     ],
+     "trades_chosen": [
+      0,
+      0
+     ],
+     "trades_connected": [
+      0,
+      0
+     ],
+     "evaded": [
+      0,
+      0
+     ],
+     "pinned": [
+      0,
+      0
+     ],
+     "expected_damage_taken": [
+      0.0,
+      0.0
+     ],
+     "expected_ganks": [
+      1.68,
+      1.68
+     ],
+     "net_A_illustrative": 0.0
+    },
+    "A Hold vs B respect": {
+     "turns": 24,
+     "cells": [
+      [
+       0,
+       -1
+      ],
+      [
+       0,
+       -1
+      ],
+      [
+       0,
+       -1
+      ],
+      [
+       0,
+       -1
+      ],
+      [
+       0,
+       -1
+      ],
+      [
+       0,
+       -1
+      ],
+      [
+       0,
+       -1
+      ],
+      [
+       0,
+       -1
+      ],
+      [
+       0,
+       -1
+      ],
+      [
+       0,
+       -1
+      ],
+      [
+       0,
+       -1
+      ],
+      [
+       0,
+       -1
+      ],
+      [
+       0,
+       -1
+      ],
+      [
+       0,
+       -1
+      ],
+      [
+       0,
+       -1
+      ],
+      [
+       0,
+       -1
+      ],
+      [
+       0,
+       -1
+      ],
+      [
+       0,
+       -1
+      ],
+      [
+       0,
+       -1
+      ],
+      [
+       0,
+       -1
+      ],
+      [
+       0,
+       -1
+      ],
+      [
+       0,
+       -1
+      ],
+      [
+       0,
+       -1
+      ],
+      [
+       0,
+       -1
+      ]
+     ],
+     "contact_end_frac": 1.0,
+     "farm": [
+      10.8,
+      3.36
+     ],
+     "farm_per_turn": [
+      0.45,
+      0.14
+     ],
+     "xp": [
+      96,
+      96
+     ],
+     "trades_chosen": [
+      0,
+      0
+     ],
+     "trades_connected": [
+      0,
+      0
+     ],
+     "evaded": [
+      0,
+      0
+     ],
+     "pinned": [
+      0,
+      0
+     ],
+     "expected_damage_taken": [
+      0.0,
+      0.0
+     ],
+     "expected_ganks": [
+      1.68,
+      0.75
+     ],
+     "net_A_illustrative": 7.44
+    },
+    "A Hold+Trade/4 vs B respect": {
+     "turns": 24,
+     "cells": [
+      [
+       0,
+       -1
+      ],
+      [
+       0,
+       -1
+      ],
+      [
+       0,
+       -1
+      ],
+      [
+       0,
+       -2
+      ],
+      [
+       0,
+       0
+      ],
+      [
+       0,
+       -1
+      ],
+      [
+       0,
+       -1
+      ],
+      [
+       0,
+       -2
+      ],
+      [
+       0,
+       0
+      ],
+      [
+       0,
+       -1
+      ],
+      [
+       0,
+       -1
+      ],
+      [
+       0,
+       -2
+      ],
+      [
+       0,
+       0
+      ],
+      [
+       0,
+       -1
+      ],
+      [
+       0,
+       -1
+      ],
+      [
+       0,
+       -2
+      ],
+      [
+       0,
+       0
+      ],
+      [
+       0,
+       -1
+      ],
+      [
+       0,
+       -1
+      ],
+      [
+       0,
+       -2
+      ],
+      [
+       0,
+       0
+      ],
+      [
+       0,
+       -1
+      ],
+      [
+       0,
+       -1
+      ],
+      [
+       0,
+       -2
+      ]
+     ],
+     "contact_end_frac": 0.75,
+     "farm": [
+      10.125,
+      3.395
+     ],
+     "farm_per_turn": [
+      0.4219,
+      0.1415
+     ],
+     "xp": [
+      96,
+      96
+     ],
+     "trades_chosen": [
+      6,
+      0
+     ],
+     "trades_connected": [
+      0,
+      0
+     ],
+     "evaded": [
+      0,
+      6
+     ],
+     "pinned": [
+      0,
+      0
+     ],
+     "expected_damage_taken": [
+      0.0,
+      0.0
+     ],
+     "expected_ganks": [
+      1.8,
+      1.1
+     ],
+     "net_A_illustrative": 6.73
+    },
+    "A Hold+Trade/4 vs B Yield": {
+     "turns": 24,
+     "cells": [
+      [
+       0,
+       0
+      ],
+      [
+       0,
+       0
+      ],
+      [
+       0,
+       0
+      ],
+      [
+       0,
+       -2
+      ],
+      [
+       0,
+       0
+      ],
+      [
+       0,
+       0
+      ],
+      [
+       0,
+       0
+      ],
+      [
+       0,
+       -2
+      ],
+      [
+       0,
+       0
+      ],
+      [
+       0,
+       0
+      ],
+      [
+       0,
+       0
+      ],
+      [
+       0,
+       -2
+      ],
+      [
+       0,
+       0
+      ],
+      [
+       0,
+       0
+      ],
+      [
+       0,
+       0
+      ],
+      [
+       0,
+       -2
+      ],
+      [
+       0,
+       0
+      ],
+      [
+       0,
+       0
+      ],
+      [
+       0,
+       0
+      ],
+      [
+       0,
+       -2
+      ],
+      [
+       0,
+       0
+      ],
+      [
+       0,
+       0
+      ],
+      [
+       0,
+       0
+      ],
+      [
+       0,
+       -2
+      ]
+     ],
+     "contact_end_frac": 0.75,
+     "farm": [
+      8.37,
+      6.51
+     ],
+     "farm_per_turn": [
+      0.3487,
+      0.2712
+     ],
+     "xp": [
+      96,
+      96
+     ],
+     "trades_chosen": [
+      6,
+      0
+     ],
+     "trades_connected": [
+      0,
+      0
+     ],
+     "evaded": [
+      0,
+      6
+     ],
+     "pinned": [
+      0,
+      0
+     ],
+     "expected_damage_taken": [
+      0.0,
+      0.0
+     ],
+     "expected_ganks": [
+      1.8,
+      1.68
+     ],
+     "net_A_illustrative": 1.86
+    },
+    "A Yield vs B Yield": {
+     "turns": 24,
+     "cells": [
+      [
+       0,
+       0
+      ],
+      [
+       0,
+       0
+      ],
+      [
+       0,
+       0
+      ],
+      [
+       0,
+       0
+      ],
+      [
+       0,
+       0
+      ],
+      [
+       0,
+       0
+      ],
+      [
+       0,
+       0
+      ],
+      [
+       0,
+       0
+      ],
+      [
+       0,
+       0
+      ],
+      [
+       0,
+       0
+      ],
+      [
+       0,
+       0
+      ],
+      [
+       0,
+       0
+      ],
+      [
+       0,
+       0
+      ],
+      [
+       0,
+       0
+      ],
+      [
+       0,
+       0
+      ],
+      [
+       0,
+       0
+      ],
+      [
+       0,
+       0
+      ],
+      [
+       0,
+       0
+      ],
+      [
+       0,
+       0
+      ],
+      [
+       0,
+       0
+      ],
+      [
+       0,
+       0
+      ],
+      [
+       0,
+       0
+      ],
+      [
+       0,
+       0
+      ],
+      [
+       0,
+       0
+      ]
+     ],
+     "contact_end_frac": 1.0,
+     "farm": [
+      7.56,
+      7.56
+     ],
+     "farm_per_turn": [
+      0.315,
+      0.315
+     ],
+     "xp": [
+      96,
+      96
+     ],
+     "trades_chosen": [
+      0,
+      0
+     ],
+     "trades_connected": [
+      0,
+      0
+     ],
+     "evaded": [
+      0,
+      0
+     ],
+     "pinned": [
+      0,
+      0
+     ],
+     "expected_damage_taken": [
+      0.0,
+      0.0
+     ],
+     "expected_ganks": [
+      1.68,
+      1.68
+     ],
+     "net_A_illustrative": 0.0
+    }
+   }
+  },
+  "m4_emergent": {
+   "equal": {
+    "A Hold vs B Hold": {
+     "turns": 24,
+     "cells": [
+      [
+       0,
+       0
+      ],
+      [
+       0,
+       0
+      ],
+      [
+       0,
+       0
+      ],
+      [
+       0,
+       0
+      ],
+      [
+       0,
+       0
+      ],
+      [
+       0,
+       0
+      ],
+      [
+       0,
+       0
+      ],
+      [
+       0,
+       0
+      ],
+      [
+       0,
+       0
+      ],
+      [
+       0,
+       0
+      ],
+      [
+       0,
+       0
+      ],
+      [
+       0,
+       0
+      ],
+      [
+       0,
+       0
+      ],
+      [
+       0,
+       0
+      ],
+      [
+       0,
+       0
+      ],
+      [
+       0,
+       0
+      ],
+      [
+       0,
+       0
+      ],
+      [
+       0,
+       0
+      ],
+      [
+       0,
+       0
+      ],
+      [
+       0,
+       0
+      ],
+      [
+       0,
+       0
+      ],
+      [
+       0,
+       0
+      ],
+      [
+       0,
+       0
+      ],
+      [
+       0,
+       0
+      ]
+     ],
+     "contact_end_frac": 1.0,
+     "farm": [
+      10.8,
+      10.8
+     ],
+     "farm_per_turn": [
+      0.45,
+      0.45
+     ],
+     "xp": [
+      96,
+      96
+     ],
+     "trades_chosen": [
+      0,
+      0
+     ],
+     "trades_connected": [
+      0,
+      0
+     ],
+     "evaded": [
+      0,
+      0
+     ],
+     "pinned": [
+      0,
+      0
+     ],
+     "expected_damage_taken": [
+      0.0,
+      0.0
+     ],
+     "expected_ganks": [
+      1.68,
+      1.68
+     ],
+     "net_A_illustrative": 0.0
+    },
+    "A Hold vs B Yield": {
+     "turns": 24,
+     "cells": [
+      [
+       0,
+       -1
+      ],
+      [
+       0,
+       -1
+      ],
+      [
+       0,
+       -1
+      ],
+      [
+       0,
+       -1
+      ],
+      [
+       0,
+       -1
+      ],
+      [
+       0,
+       -1
+      ],
+      [
+       0,
+       -1
+      ],
+      [
+       0,
+       -1
+      ],
+      [
+       0,
+       -1
+      ],
+      [
+       0,
+       -1
+      ],
+      [
+       0,
+       -1
+      ],
+      [
+       0,
+       -1
+      ],
+      [
+       0,
+       -1
+      ],
+      [
+       0,
+       -1
+      ],
+      [
+       0,
+       -1
+      ],
+      [
+       0,
+       -1
+      ],
+      [
+       0,
+       -1
+      ],
+      [
+       0,
+       -1
+      ],
+      [
+       0,
+       -1
+      ],
+      [
+       0,
+       -1
+      ],
+      [
+       0,
+       -1
+      ],
+      [
+       0,
+       -1
+      ],
+      [
+       0,
+       -1
+      ],
+      [
+       0,
+       -1
+      ]
+     ],
+     "contact_end_frac": 1.0,
+     "farm": [
+      10.8,
+      10.8
+     ],
+     "farm_per_turn": [
+      0.45,
+      0.45
+     ],
+     "xp": [
+      96,
+      96
+     ],
+     "trades_chosen": [
+      0,
+      0
+     ],
+     "trades_connected": [
+      0,
+      0
+     ],
+     "evaded": [
+      0,
+      0
+     ],
+     "pinned": [
+      0,
+      0
+     ],
+     "expected_damage_taken": [
+      0.0,
+      0.0
+     ],
+     "expected_ganks": [
+      1.68,
+      0.99
+     ],
+     "net_A_illustrative": 0.0
+    },
+    "A Hold vs B respect": {
+     "turns": 24,
+     "cells": [
+      [
+       0,
+       -1
+      ],
+      [
+       0,
+       -1
+      ],
+      [
+       0,
+       -1
+      ],
+      [
+       0,
+       -1
+      ],
+      [
+       0,
+       -1
+      ],
+      [
+       0,
+       -1
+      ],
+      [
+       0,
+       -1
+      ],
+      [
+       0,
+       -1
+      ],
+      [
+       0,
+       -1
+      ],
+      [
+       0,
+       -1
+      ],
+      [
+       0,
+       -1
+      ],
+      [
+       0,
+       -1
+      ],
+      [
+       0,
+       -1
+      ],
+      [
+       0,
+       -1
+      ],
+      [
+       0,
+       -1
+      ],
+      [
+       0,
+       -1
+      ],
+      [
+       0,
+       -1
+      ],
+      [
+       0,
+       -1
+      ],
+      [
+       0,
+       -1
+      ],
+      [
+       0,
+       -1
+      ],
+      [
+       0,
+       -1
+      ],
+      [
+       0,
+       -1
+      ],
+      [
+       0,
+       -1
+      ],
+      [
+       0,
+       -1
+      ]
+     ],
+     "contact_end_frac": 1.0,
+     "farm": [
+      10.8,
+      4.8
+     ],
+     "farm_per_turn": [
+      0.45,
+      0.2
+     ],
+     "xp": [
+      96,
+      96
+     ],
+     "trades_chosen": [
+      0,
+      0
+     ],
+     "trades_connected": [
+      0,
+      0
+     ],
+     "evaded": [
+      0,
+      0
+     ],
+     "pinned": [
+      0,
+      0
+     ],
+     "expected_damage_taken": [
+      0.0,
+      0.0
+     ],
+     "expected_ganks": [
+      1.68,
+      0.75
+     ],
+     "net_A_illustrative": 6.0
+    },
+    "A Hold+Trade/4 vs B respect": {
+     "turns": 24,
+     "cells": [
+      [
+       0,
+       -1
+      ],
+      [
+       0,
+       -1
+      ],
+      [
+       0,
+       -1
+      ],
+      [
+       0,
+       -2
+      ],
+      [
+       0,
+       -1
+      ],
+      [
+       0,
+       -1
+      ],
+      [
+       0,
+       -1
+      ],
+      [
+       0,
+       -2
+      ],
+      [
+       0,
+       -1
+      ],
+      [
+       0,
+       -1
+      ],
+      [
+       0,
+       -1
+      ],
+      [
+       0,
+       -2
+      ],
+      [
+       0,
+       -1
+      ],
+      [
+       0,
+       -1
+      ],
+      [
+       0,
+       -1
+      ],
+      [
+       0,
+       -2
+      ],
+      [
+       0,
+       -1
+      ],
+      [
+       0,
+       -1
+      ],
+      [
+       0,
+       -1
+      ],
+      [
+       0,
+       -2
+      ],
+      [
+       0,
+       -1
+      ],
+      [
+       0,
+       -1
+      ],
+      [
+       0,
+       -1
+      ],
+      [
+       0,
+       -2
+      ]
+     ],
+     "contact_end_frac": 0.75,
+     "farm": [
+      10.8,
+      4.85
+     ],
+     "farm_per_turn": [
+      0.45,
+      0.2021
+     ],
+     "xp": [
+      96,
+      96
+     ],
+     "trades_chosen": [
+      6,
+      0
+     ],
+     "trades_connected": [
+      0,
+      0
+     ],
+     "evaded": [
+      0,
+      6
+     ],
+     "pinned": [
+      0,
+      0
+     ],
+     "expected_damage_taken": [
+      0.0,
+      0.0
+     ],
+     "expected_ganks": [
+      1.8,
+      0.8
+     ],
+     "net_A_illustrative": 5.95
+    },
+    "A Hold+Trade/4 vs B Yield": {
+     "turns": 24,
+     "cells": [
+      [
+       0,
+       -1
+      ],
+      [
+       0,
+       -1
+      ],
+      [
+       0,
+       -1
+      ],
+      [
+       0,
+       -1
+      ],
+      [
+       0,
+       -1
+      ],
+      [
+       0,
+       -1
+      ],
+      [
+       0,
+       -1
+      ],
+      [
+       0,
+       -1
+      ],
+      [
+       0,
+       -1
+      ],
+      [
+       0,
+       -1
+      ],
+      [
+       0,
+       -1
+      ],
+      [
+       0,
+       -1
+      ],
+      [
+       0,
+       -1
+      ],
+      [
+       0,
+       -1
+      ],
+      [
+       0,
+       -1
+      ],
+      [
+       0,
+       -1
+      ],
+      [
+       0,
+       -1
+      ],
+      [
+       0,
+       -1
+      ],
+      [
+       0,
+       -1
+      ],
+      [
+       0,
+       -1
+      ],
+      [
+       0,
+       -1
+      ],
+      [
+       0,
+       -1
+      ],
+      [
+       0,
+       -1
+      ],
+      [
+       0,
+       -1
+      ]
+     ],
+     "contact_end_frac": 1.0,
+     "farm": [
+      9.45,
+      10.8
+     ],
+     "farm_per_turn": [
+      0.3937,
+      0.45
+     ],
+     "xp": [
+      96,
+      96
+     ],
+     "trades_chosen": [
+      6,
+      0
+     ],
+     "trades_connected": [
+      6,
+      0
+     ],
+     "evaded": [
+      0,
+      0
+     ],
+     "pinned": [
+      0,
+      6
+     ],
+     "expected_damage_taken": [
+      0.0,
+      549.2
+     ],
+     "expected_ganks": [
+      1.8,
+      0.99
+     ],
+     "net_A_illustrative": 0.023
+    },
+    "A Yield vs B Yield": {
+     "turns": 24,
+     "cells": [
+      [
+       -1,
+       -1
+      ],
+      [
+       -1,
+       -1
+      ],
+      [
+       -1,
+       -1
+      ],
+      [
+       -1,
+       -1
+      ],
+      [
+       -1,
+       -1
+      ],
+      [
+       -1,
+       -1
+      ],
+      [
+       -1,
+       -1
+      ],
+      [
+       -1,
+       -1
+      ],
+      [
+       -1,
+       -1
+      ],
+      [
+       -1,
+       -1
+      ],
+      [
+       -1,
+       -1
+      ],
+      [
+       -1,
+       -1
+      ],
+      [
+       -1,
+       -1
+      ],
+      [
+       -1,
+       -1
+      ],
+      [
+       -1,
+       -1
+      ],
+      [
+       -1,
+       -1
+      ],
+      [
+       -1,
+       -1
+      ],
+      [
+       -1,
+       -1
+      ],
+      [
+       -1,
+       -1
+      ],
+      [
+       -1,
+       -1
+      ],
+      [
+       -1,
+       -1
+      ],
+      [
+       -1,
+       -1
+      ],
+      [
+       -1,
+       -1
+      ],
+      [
+       -1,
+       -1
+      ]
+     ],
+     "contact_end_frac": 0.0,
+     "farm": [
+      10.8,
+      10.8
+     ],
+     "farm_per_turn": [
+      0.45,
+      0.45
+     ],
+     "xp": [
+      96,
+      96
+     ],
+     "trades_chosen": [
+      0,
+      0
+     ],
+     "trades_connected": [
+      0,
+      0
+     ],
+     "evaded": [
+      0,
+      0
+     ],
+     "pinned": [
+      0,
+      0
+     ],
+     "expected_damage_taken": [
+      0.0,
+      0.0
+     ],
+     "expected_ganks": [
+      0.99,
+      0.99
+     ],
+     "net_A_illustrative": 0.0
+    }
+   },
+   "large": {
+    "A Hold vs B Hold": {
+     "turns": 24,
+     "cells": [
+      [
+       0,
+       0
+      ],
+      [
+       0,
+       0
+      ],
+      [
+       0,
+       0
+      ],
+      [
+       0,
+       0
+      ],
+      [
+       0,
+       0
+      ],
+      [
+       0,
+       0
+      ],
+      [
+       0,
+       0
+      ],
+      [
+       0,
+       0
+      ],
+      [
+       0,
+       0
+      ],
+      [
+       0,
+       0
+      ],
+      [
+       0,
+       0
+      ],
+      [
+       0,
+       0
+      ],
+      [
+       0,
+       0
+      ],
+      [
+       0,
+       0
+      ],
+      [
+       0,
+       0
+      ],
+      [
+       0,
+       0
+      ],
+      [
+       0,
+       0
+      ],
+      [
+       0,
+       0
+      ],
+      [
+       0,
+       0
+      ],
+      [
+       0,
+       0
+      ],
+      [
+       0,
+       0
+      ],
+      [
+       0,
+       0
+      ],
+      [
+       0,
+       0
+      ],
+      [
+       0,
+       0
+      ]
+     ],
+     "contact_end_frac": 1.0,
+     "farm": [
+      10.8,
+      10.8
+     ],
+     "farm_per_turn": [
+      0.45,
+      0.45
+     ],
+     "xp": [
+      96,
+      96
+     ],
+     "trades_chosen": [
+      0,
+      0
+     ],
+     "trades_connected": [
+      0,
+      0
+     ],
+     "evaded": [
+      0,
+      0
+     ],
+     "pinned": [
+      0,
+      0
+     ],
+     "expected_damage_taken": [
+      0.0,
+      0.0
+     ],
+     "expected_ganks": [
+      1.68,
+      1.68
+     ],
+     "net_A_illustrative": 0.0
+    },
+    "A Hold vs B Yield": {
+     "turns": 24,
+     "cells": [
+      [
+       0,
+       -1
+      ],
+      [
+       0,
+       -1
+      ],
+      [
+       0,
+       -1
+      ],
+      [
+       0,
+       -1
+      ],
+      [
+       0,
+       -1
+      ],
+      [
+       0,
+       -1
+      ],
+      [
+       0,
+       -1
+      ],
+      [
+       0,
+       -1
+      ],
+      [
+       0,
+       -1
+      ],
+      [
+       0,
+       -1
+      ],
+      [
+       0,
+       -1
+      ],
+      [
+       0,
+       -1
+      ],
+      [
+       0,
+       -1
+      ],
+      [
+       0,
+       -1
+      ],
+      [
+       0,
+       -1
+      ],
+      [
+       0,
+       -1
+      ],
+      [
+       0,
+       -1
+      ],
+      [
+       0,
+       -1
+      ],
+      [
+       0,
+       -1
+      ],
+      [
+       0,
+       -1
+      ],
+      [
+       0,
+       -1
+      ],
+      [
+       0,
+       -1
+      ],
+      [
+       0,
+       -1
+      ],
+      [
+       0,
+       -1
+      ]
+     ],
+     "contact_end_frac": 1.0,
+     "farm": [
+      10.8,
+      10.8
+     ],
+     "farm_per_turn": [
+      0.45,
+      0.45
+     ],
+     "xp": [
+      96,
+      96
+     ],
+     "trades_chosen": [
+      0,
+      0
+     ],
+     "trades_connected": [
+      0,
+      0
+     ],
+     "evaded": [
+      0,
+      0
+     ],
+     "pinned": [
+      0,
+      0
+     ],
+     "expected_damage_taken": [
+      0.0,
+      0.0
+     ],
+     "expected_ganks": [
+      1.68,
+      0.99
+     ],
+     "net_A_illustrative": 0.0
+    },
+    "A Hold vs B respect": {
+     "turns": 24,
+     "cells": [
+      [
+       0,
+       -1
+      ],
+      [
+       0,
+       -1
+      ],
+      [
+       0,
+       -1
+      ],
+      [
+       0,
+       -1
+      ],
+      [
+       0,
+       -1
+      ],
+      [
+       0,
+       -1
+      ],
+      [
+       0,
+       -1
+      ],
+      [
+       0,
+       -1
+      ],
+      [
+       0,
+       -1
+      ],
+      [
+       0,
+       -1
+      ],
+      [
+       0,
+       -1
+      ],
+      [
+       0,
+       -1
+      ],
+      [
+       0,
+       -1
+      ],
+      [
+       0,
+       -1
+      ],
+      [
+       0,
+       -1
+      ],
+      [
+       0,
+       -1
+      ],
+      [
+       0,
+       -1
+      ],
+      [
+       0,
+       -1
+      ],
+      [
+       0,
+       -1
+      ],
+      [
+       0,
+       -1
+      ],
+      [
+       0,
+       -1
+      ],
+      [
+       0,
+       -1
+      ],
+      [
+       0,
+       -1
+      ],
+      [
+       0,
+       -1
+      ]
+     ],
+     "contact_end_frac": 1.0,
+     "farm": [
+      10.8,
+      4.8
+     ],
+     "farm_per_turn": [
+      0.45,
+      0.2
+     ],
+     "xp": [
+      96,
+      96
+     ],
+     "trades_chosen": [
+      0,
+      0
+     ],
+     "trades_connected": [
+      0,
+      0
+     ],
+     "evaded": [
+      0,
+      0
+     ],
+     "pinned": [
+      0,
+      0
+     ],
+     "expected_damage_taken": [
+      0.0,
+      0.0
+     ],
+     "expected_ganks": [
+      1.68,
+      0.75
+     ],
+     "net_A_illustrative": 6.0
+    },
+    "A Hold+Trade/4 vs B respect": {
+     "turns": 24,
+     "cells": [
+      [
+       0,
+       -1
+      ],
+      [
+       0,
+       -1
+      ],
+      [
+       0,
+       -1
+      ],
+      [
+       0,
+       -2
+      ],
+      [
+       0,
+       -1
+      ],
+      [
+       0,
+       -1
+      ],
+      [
+       0,
+       -1
+      ],
+      [
+       0,
+       -2
+      ],
+      [
+       0,
+       -1
+      ],
+      [
+       0,
+       -1
+      ],
+      [
+       0,
+       -1
+      ],
+      [
+       0,
+       -2
+      ],
+      [
+       0,
+       -1
+      ],
+      [
+       0,
+       -1
+      ],
+      [
+       0,
+       -1
+      ],
+      [
+       0,
+       -2
+      ],
+      [
+       0,
+       -1
+      ],
+      [
+       0,
+       -1
+      ],
+      [
+       0,
+       -1
+      ],
+      [
+       0,
+       -2
+      ],
+      [
+       0,
+       -1
+      ],
+      [
+       0,
+       -1
+      ],
+      [
+       0,
+       -1
+      ],
+      [
+       0,
+       -2
+      ]
+     ],
+     "contact_end_frac": 0.75,
+     "farm": [
+      10.8,
+      4.85
+     ],
+     "farm_per_turn": [
+      0.45,
+      0.2021
+     ],
+     "xp": [
+      96,
+      96
+     ],
+     "trades_chosen": [
+      6,
+      0
+     ],
+     "trades_connected": [
+      0,
+      0
+     ],
+     "evaded": [
+      0,
+      6
+     ],
+     "pinned": [
+      0,
+      0
+     ],
+     "expected_damage_taken": [
+      0.0,
+      0.0
+     ],
+     "expected_ganks": [
+      1.8,
+      0.8
+     ],
+     "net_A_illustrative": 5.95
+    },
+    "A Hold+Trade/4 vs B Yield": {
+     "turns": 24,
+     "cells": [
+      [
+       0,
+       -1
+      ],
+      [
+       0,
+       -1
+      ],
+      [
+       0,
+       -1
+      ],
+      [
+       0,
+       -1
+      ],
+      [
+       0,
+       -1
+      ],
+      [
+       0,
+       -1
+      ],
+      [
+       0,
+       -1
+      ],
+      [
+       0,
+       -1
+      ],
+      [
+       0,
+       -1
+      ],
+      [
+       0,
+       -1
+      ],
+      [
+       0,
+       -1
+      ],
+      [
+       0,
+       -1
+      ],
+      [
+       0,
+       -1
+      ],
+      [
+       0,
+       -1
+      ],
+      [
+       0,
+       -1
+      ],
+      [
+       0,
+       -1
+      ],
+      [
+       0,
+       -1
+      ],
+      [
+       0,
+       -1
+      ],
+      [
+       0,
+       -1
+      ],
+      [
+       0,
+       -1
+      ],
+      [
+       0,
+       -1
+      ],
+      [
+       0,
+       -1
+      ],
+      [
+       0,
+       -1
+      ],
+      [
+       0,
+       -1
+      ]
+     ],
+     "contact_end_frac": 1.0,
+     "farm": [
+      9.45,
+      10.8
+     ],
+     "farm_per_turn": [
+      0.3937,
+      0.45
+     ],
+     "xp": [
+      96,
+      96
+     ],
+     "trades_chosen": [
+      6,
+      0
+     ],
+     "trades_connected": [
+      6,
+      0
+     ],
+     "evaded": [
+      0,
+      0
+     ],
+     "pinned": [
+      0,
+      6
+     ],
+     "expected_damage_taken": [
+      0.0,
+      966.7
+     ],
+     "expected_ganks": [
+      1.8,
+      0.99
+     ],
+     "net_A_illustrative": 1.067
+    },
+    "A Yield vs B Yield": {
+     "turns": 24,
+     "cells": [
+      [
+       -1,
+       -1
+      ],
+      [
+       -1,
+       -1
+      ],
+      [
+       -1,
+       -1
+      ],
+      [
+       -1,
+       -1
+      ],
+      [
+       -1,
+       -1
+      ],
+      [
+       -1,
+       -1
+      ],
+      [
+       -1,
+       -1
+      ],
+      [
+       -1,
+       -1
+      ],
+      [
+       -1,
+       -1
+      ],
+      [
+       -1,
+       -1
+      ],
+      [
+       -1,
+       -1
+      ],
+      [
+       -1,
+       -1
+      ],
+      [
+       -1,
+       -1
+      ],
+      [
+       -1,
+       -1
+      ],
+      [
+       -1,
+       -1
+      ],
+      [
+       -1,
+       -1
+      ],
+      [
+       -1,
+       -1
+      ],
+      [
+       -1,
+       -1
+      ],
+      [
+       -1,
+       -1
+      ],
+      [
+       -1,
+       -1
+      ],
+      [
+       -1,
+       -1
+      ],
+      [
+       -1,
+       -1
+      ],
+      [
+       -1,
+       -1
+      ],
+      [
+       -1,
+       -1
+      ]
+     ],
+     "contact_end_frac": 0.0,
+     "farm": [
+      10.8,
+      10.8
+     ],
+     "farm_per_turn": [
+      0.45,
+      0.45
+     ],
+     "xp": [
+      96,
+      96
+     ],
+     "trades_chosen": [
+      0,
+      0
+     ],
+     "trades_connected": [
+      0,
+      0
+     ],
+     "evaded": [
+      0,
+      0
+     ],
+     "pinned": [
+      0,
+      0
+     ],
+     "expected_damage_taken": [
+      0.0,
+      0.0
+     ],
+     "expected_ganks": [
+      0.99,
+      0.99
+     ],
+     "net_A_illustrative": 0.0
+    }
+   }
+  }
+ },
+ "zoning": {
+  "baseline": {
+   "neutral": {
+    "games": {
+     "h1/equal": {
+      "value": 0.0,
+      "x": [
+       0.0,
+       0.0,
+       1.0,
+       0.0
+      ],
+      "y": [
+       0.0,
+       0.0,
+       1.0,
+       0.0
+      ],
+      "b_best_response": {
+       "Hold": "Trade",
+       "Yield": "Trade",
+       "Trade": "Trade",
+       "Safe": "Trade"
+      }
+     },
+     "h1/moderate": {
+      "value": 0.03575000000000003,
+      "x": [
+       0.0,
+       0.0,
+       1.0,
+       0.0
+      ],
+      "y": [
+       0.0,
+       0.0,
+       1.0,
+       0.0
+      ],
+      "b_best_response": {
+       "Hold": "Trade",
+       "Yield": "Trade",
+       "Trade": "Trade",
+       "Safe": "Trade"
+      }
+     },
+     "h1/large": {
+      "value": 0.07925000000000001,
+      "x": [
+       0.0,
+       0.0,
+       1.0,
+       0.0
+      ],
+      "y": [
+       0.0,
+       0.0,
+       1.0,
+       0.0
+      ],
+      "b_best_response": {
+       "Hold": "Trade",
+       "Yield": "Trade",
+       "Trade": "Trade",
+       "Safe": "Trade"
+      }
+     },
+     "h6/equal": {
+      "value": 0.0,
+      "x": [
+       0.0,
+       0.0,
+       1.0,
+       0.0
+      ],
+      "y": [
+       0.0,
+       0.0,
+       1.0,
+       0.0
+      ],
+      "b_best_response": {
+       "Hold": "Trade",
+       "Yield": "Trade",
+       "Trade": "Trade",
+       "Safe": "Trade"
+      }
+     },
+     "h6/moderate": {
+      "value": 0.2130192905596382,
+      "x": [
+       0.0,
+       0.0,
+       1.0,
+       0.0
+      ],
+      "y": [
+       0.0,
+       0.0,
+       1.0,
+       0.0
+      ],
+      "b_best_response": {
+       "Hold": "Trade",
+       "Yield": "Trade",
+       "Trade": "Trade",
+       "Safe": "Trade"
+      }
+     },
+     "h6/large": {
+      "value": 0.47017283776144736,
+      "x": [
+       0.0,
+       0.0,
+       1.0,
+       0.0
+      ],
+      "y": [
+       0.0,
+       0.0,
+       1.0,
+       0.0
+      ],
+      "b_best_response": {
+       "Hold": "Trade",
+       "Yield": "Trade",
+       "Trade": "Trade",
+       "Safe": "Trade"
+      }
+     }
+    },
+    "flip": {
+     "h1": [
+      2.6,
+      "Yield"
+     ],
+     "h6": [
+      2.51,
+      "Yield"
+     ]
+    },
+    "b_earned_h6": {
+     "Hold-Hold": 1.89,
+     "Hold-Yield": 1.89,
+     "Hold-Trade": 0.945,
+     "Hold-Safe": 0.84,
+     "Yield-Hold": 1.89,
+     "Yield-Yield": 1.89,
+     "Yield-Trade": 2.7,
+     "Yield-Safe": 0.84,
+     "Trade-Hold": 1.89,
+     "Trade-Yield": 0.84,
+     "Trade-Trade": 0.945,
+     "Trade-Safe": 0.0,
+     "Safe-Hold": 2.7,
+     "Safe-Yield": 2.7,
+     "Safe-Trade": 2.7,
+     "Safe-Safe": 1.2
+    },
+    "a_earned_h6": {
+     "Hold-Hold": 1.89,
+     "Hold-Yield": 1.89,
+     "Hold-Trade": 1.89,
+     "Hold-Safe": 2.7,
+     "Yield-Hold": 1.89,
+     "Yield-Yield": 1.89,
+     "Yield-Trade": 0.84,
+     "Yield-Safe": 2.7,
+     "Trade-Hold": 0.945,
+     "Trade-Yield": 2.7,
+     "Trade-Trade": 0.945,
+     "Trade-Safe": 2.7,
+     "Safe-Hold": 0.84,
+     "Safe-Yield": 0.84,
+     "Safe-Trade": 0.0,
+     "Safe-Safe": 1.2
+    },
+    "b_xp_h6": {
+     "Hold-Hold": 24,
+     "Hold-Yield": 24,
+     "Hold-Trade": 24,
+     "Hold-Safe": 24,
+     "Yield-Hold": 24,
+     "Yield-Yield": 24,
+     "Yield-Trade": 24,
+     "Yield-Safe": 24,
+     "Trade-Hold": 24,
+     "Trade-Yield": 24,
+     "Trade-Trade": 24,
+     "Trade-Safe": 24,
+     "Safe-Hold": 24,
+     "Safe-Yield": 24,
+     "Safe-Trade": 24,
+     "Safe-Safe": 24
+    },
+    "connected_h6": {
+     "Hold-Hold": [
+      0,
+      0
+     ],
+     "Hold-Yield": [
+      0,
+      0
+     ],
+     "Hold-Trade": [
+      0,
+      6
+     ],
+     "Hold-Safe": [
+      0,
+      0
+     ],
+     "Yield-Hold": [
+      0,
+      0
+     ],
+     "Yield-Yield": [
+      0,
+      0
+     ],
+     "Yield-Trade": [
+      0,
+      0
+     ],
+     "Yield-Safe": [
+      0,
+      0
+     ],
+     "Trade-Hold": [
+      6,
+      0
+     ],
+     "Trade-Yield": [
+      0,
+      0
+     ],
+     "Trade-Trade": [
+      6,
+      6
+     ],
+     "Trade-Safe": [
+      0,
+      0
+     ],
+     "Safe-Hold": [
+      0,
+      0
+     ],
+     "Safe-Yield": [
+      0,
+      0
+     ],
+     "Safe-Trade": [
+      0,
+      0
+     ],
+     "Safe-Safe": [
+      0,
+      0
+     ]
+    },
+    "concede_ratio_safe": 0.444,
+    "concede_ratio_yield": 1.0
+   },
+   "forward": {
+    "games": {
+     "h1/equal": {
+      "value": 0.015000000000000041,
+      "x": [
+       0.0,
+       0.0,
+       1.0,
+       0.0
+      ],
+      "y": [
+       1.0,
+       0.0,
+       0.0,
+       0.0
+      ],
+      "b_best_response": {
+       "Hold": "Hold",
+       "Yield": "Trade",
+       "Trade": "Hold",
+       "Safe": "Hold"
+      }
+     },
+     "h1/moderate": {
+      "value": 0.05366379310344835,
+      "x": [
+       0.0,
+       0.0,
+       1.0,
+       0.0
+      ],
+      "y": [
+       1.0,
+       0.0,
+       0.0,
+       0.0
+      ],
+      "b_best_response": {
+       "Hold": "Hold",
+       "Yield": "Trade",
+       "Trade": "Hold",
+       "Safe": "Hold"
+      }
+     },
+     "h1/large": {
+      "value": 0.10034482758620697,
+      "x": [
+       0.0,
+       0.0,
+       1.0,
+       0.0
+      ],
+      "y": [
+       1.0,
+       0.0,
+       0.0,
+       0.0
+      ],
+      "b_best_response": {
+       "Hold": "Hold",
+       "Yield": "Trade",
+       "Trade": "Hold",
+       "Safe": "Hold"
+      }
+     },
+     "h6/equal": {
+      "value": 0.2867643442622949,
+      "x": [
+       1.0,
+       0.0,
+       0.0,
+       0.0
+      ],
+      "y": [
+       0.0,
+       0.0,
+       1.0,
+       0.0
+      ],
+      "b_best_response": {
+       "Hold": "Trade",
+       "Yield": "Trade",
+       "Trade": "Trade",
+       "Safe": "Hold"
+      }
+     },
+     "h6/moderate": {
+      "value": 0.3493035613340869,
+      "x": [
+       0.0,
+       0.0,
+       1.0,
+       0.0
+      ],
+      "y": [
+       0.0,
+       0.0,
+       1.0,
+       0.0
+      ],
+      "b_best_response": {
+       "Hold": "Trade",
+       "Yield": "Trade",
+       "Trade": "Trade",
+       "Safe": "Hold"
+      }
+     },
+     "h6/large": {
+      "value": 0.6090357546636518,
+      "x": [
+       0.0,
+       0.0,
+       1.0,
+       0.0
+      ],
+      "y": [
+       0.0,
+       0.0,
+       1.0,
+       0.0
+      ],
+      "b_best_response": {
+       "Hold": "Trade",
+       "Yield": "Trade",
+       "Trade": "Trade",
+       "Safe": "Hold"
+      }
+     }
+    },
+    "flip": {
+     "h1": [
+      2.35,
+      "Yield"
+     ],
+     "h6": [
+      2.98,
+      "Yield"
+     ]
+    },
+    "b_earned_h6": {
+     "Hold-Hold": 1.89,
+     "Hold-Yield": 1.89,
+     "Hold-Trade": 0.945,
+     "Hold-Safe": 0.84,
+     "Yield-Hold": 1.89,
+     "Yield-Yield": 1.89,
+     "Yield-Trade": 2.7,
+     "Yield-Safe": 0.84,
+     "Trade-Hold": 1.89,
+     "Trade-Yield": 0.84,
+     "Trade-Trade": 0.945,
+     "Trade-Safe": 0.0,
+     "Safe-Hold": 2.7,
+     "Safe-Yield": 2.7,
+     "Safe-Trade": 2.7,
+     "Safe-Safe": 1.2
+    },
+    "a_earned_h6": {
+     "Hold-Hold": 2.3625,
+     "Hold-Yield": 2.3625,
+     "Hold-Trade": 2.3625,
+     "Hold-Safe": 3.375,
+     "Yield-Hold": 2.3625,
+     "Yield-Yield": 2.3625,
+     "Yield-Trade": 0.525,
+     "Yield-Safe": 3.375,
+     "Trade-Hold": 1.1812,
+     "Trade-Yield": 3.375,
+     "Trade-Trade": 1.1812,
+     "Trade-Safe": 3.375,
+     "Safe-Hold": 0.0,
+     "Safe-Yield": 0.0,
+     "Safe-Trade": 0.0,
+     "Safe-Safe": 0.0
+    },
+    "b_xp_h6": {
+     "Hold-Hold": 24,
+     "Hold-Yield": 24,
+     "Hold-Trade": 24,
+     "Hold-Safe": 24,
+     "Yield-Hold": 24,
+     "Yield-Yield": 24,
+     "Yield-Trade": 24,
+     "Yield-Safe": 24,
+     "Trade-Hold": 24,
+     "Trade-Yield": 24,
+     "Trade-Trade": 24,
+     "Trade-Safe": 24,
+     "Safe-Hold": 24,
+     "Safe-Yield": 24,
+     "Safe-Trade": 24,
+     "Safe-Safe": 24
+    },
+    "connected_h6": {
+     "Hold-Hold": [
+      0,
+      0
+     ],
+     "Hold-Yield": [
+      0,
+      0
+     ],
+     "Hold-Trade": [
+      0,
+      6
+     ],
+     "Hold-Safe": [
+      0,
+      0
+     ],
+     "Yield-Hold": [
+      0,
+      0
+     ],
+     "Yield-Yield": [
+      0,
+      0
+     ],
+     "Yield-Trade": [
+      0,
+      0
+     ],
+     "Yield-Safe": [
+      0,
+      0
+     ],
+     "Trade-Hold": [
+      6,
+      0
+     ],
+     "Trade-Yield": [
+      0,
+      0
+     ],
+     "Trade-Trade": [
+      6,
+      6
+     ],
+     "Trade-Safe": [
+      0,
+      0
+     ],
+     "Safe-Hold": [
+      0,
+      0
+     ],
+     "Safe-Yield": [
+      0,
+      0
+     ],
+     "Safe-Trade": [
+      0,
+      0
+     ],
+     "Safe-Safe": [
+      0,
+      0
+     ]
+    },
+    "concede_ratio_safe": 0.444,
+    "concede_ratio_yield": 1.0
+   }
+  },
+  "standoff_presence": {
+   "neutral": {
+    "games": {
+     "h1/equal": {
+      "value": 0.0,
+      "x": [
+       0.0,
+       0.0,
+       1.0,
+       0.0
+      ],
+      "y": [
+       0.0,
+       0.0,
+       1.0,
+       0.0
+      ],
+      "b_best_response": {
+       "Hold": "Trade",
+       "Yield": "Trade",
+       "Trade": "Trade",
+       "Safe": "Trade"
+      }
+     },
+     "h1/moderate": {
+      "value": 0.03575000000000003,
+      "x": [
+       0.0,
+       0.0,
+       1.0,
+       0.0
+      ],
+      "y": [
+       0.0,
+       0.0,
+       1.0,
+       0.0
+      ],
+      "b_best_response": {
+       "Hold": "Trade",
+       "Yield": "Trade",
+       "Trade": "Trade",
+       "Safe": "Trade"
+      }
+     },
+     "h1/large": {
+      "value": 0.07925000000000001,
+      "x": [
+       0.0,
+       0.0,
+       1.0,
+       0.0
+      ],
+      "y": [
+       0.0,
+       0.0,
+       1.0,
+       0.0
+      ],
+      "b_best_response": {
+       "Hold": "Trade",
+       "Yield": "Trade",
+       "Trade": "Trade",
+       "Safe": "Trade"
+      }
+     },
+     "h6/equal": {
+      "value": 0.0,
+      "x": [
+       0.0,
+       1.0,
+       0.0,
+       0.0
+      ],
+      "y": [
+       0.0,
+       1.0,
+       0.0,
+       0.0
+      ],
+      "b_best_response": {
+       "Hold": "Yield",
+       "Yield": "Yield",
+       "Trade": "Yield",
+       "Safe": "Trade"
+      }
+     },
+     "h6/moderate": {
+      "value": 0.17555617580553973,
+      "x": [
+       0.0,
+       0.0,
+       1.0,
+       0.0
+      ],
+      "y": [
+       0.0,
+       1.0,
+       0.0,
+       0.0
+      ],
+      "b_best_response": {
+       "Hold": "Yield",
+       "Yield": "Yield",
+       "Trade": "Yield",
+       "Safe": "Trade"
+      }
+     },
+     "h6/large": {
+      "value": 0.43270972300734867,
+      "x": [
+       0.0,
+       0.0,
+       1.0,
+       0.0
+      ],
+      "y": [
+       0.0,
+       1.0,
+       0.0,
+       0.0
+      ],
+      "b_best_response": {
+       "Hold": "Yield",
+       "Yield": "Yield",
+       "Trade": "Yield",
+       "Safe": "Trade"
+      }
+     }
+    },
+    "flip": {
+     "h1": [
+      3.37,
+      "Safe"
+     ],
+     "h6": [
+      1.0,
+      "Yield"
+     ]
+    },
+    "b_earned_h6": {
+     "Hold-Hold": 1.89,
+     "Hold-Yield": 1.89,
+     "Hold-Trade": 0.945,
+     "Hold-Safe": 0.84,
+     "Yield-Hold": 1.89,
+     "Yield-Yield": 1.89,
+     "Yield-Trade": 0.945,
+     "Yield-Safe": 0.84,
+     "Trade-Hold": 1.89,
+     "Trade-Yield": 1.89,
+     "Trade-Trade": 0.945,
+     "Trade-Safe": 0.0,
+     "Safe-Hold": 2.7,
+     "Safe-Yield": 2.7,
+     "Safe-Trade": 2.7,
+     "Safe-Safe": 1.2
+    },
+    "a_earned_h6": {
+     "Hold-Hold": 1.89,
+     "Hold-Yield": 1.89,
+     "Hold-Trade": 1.89,
+     "Hold-Safe": 2.7,
+     "Yield-Hold": 1.89,
+     "Yield-Yield": 1.89,
+     "Yield-Trade": 1.89,
+     "Yield-Safe": 2.7,
+     "Trade-Hold": 0.945,
+     "Trade-Yield": 0.945,
+     "Trade-Trade": 0.945,
+     "Trade-Safe": 2.7,
+     "Safe-Hold": 0.84,
+     "Safe-Yield": 0.84,
+     "Safe-Trade": 0.0,
+     "Safe-Safe": 1.2
+    },
+    "b_xp_h6": {
+     "Hold-Hold": 24,
+     "Hold-Yield": 24,
+     "Hold-Trade": 24,
+     "Hold-Safe": 24,
+     "Yield-Hold": 24,
+     "Yield-Yield": 24,
+     "Yield-Trade": 24,
+     "Yield-Safe": 24,
+     "Trade-Hold": 24,
+     "Trade-Yield": 24,
+     "Trade-Trade": 24,
+     "Trade-Safe": 24,
+     "Safe-Hold": 24,
+     "Safe-Yield": 24,
+     "Safe-Trade": 24,
+     "Safe-Safe": 24
+    },
+    "connected_h6": {
+     "Hold-Hold": [
+      0,
+      0
+     ],
+     "Hold-Yield": [
+      0,
+      0
+     ],
+     "Hold-Trade": [
+      0,
+      6
+     ],
+     "Hold-Safe": [
+      0,
+      0
+     ],
+     "Yield-Hold": [
+      0,
+      0
+     ],
+     "Yield-Yield": [
+      0,
+      0
+     ],
+     "Yield-Trade": [
+      0,
+      6
+     ],
+     "Yield-Safe": [
+      0,
+      0
+     ],
+     "Trade-Hold": [
+      6,
+      0
+     ],
+     "Trade-Yield": [
+      6,
+      0
+     ],
+     "Trade-Trade": [
+      6,
+      6
+     ],
+     "Trade-Safe": [
+      0,
+      0
+     ],
+     "Safe-Hold": [
+      0,
+      0
+     ],
+     "Safe-Yield": [
+      0,
+      0
+     ],
+     "Safe-Trade": [
+      0,
+      0
+     ],
+     "Safe-Safe": [
+      0,
+      0
+     ]
+    },
+    "concede_ratio_safe": 0.444,
+    "concede_ratio_yield": 1.0
+   },
+   "forward": {
+    "games": {
+     "h1/equal": {
+      "value": 0.015000000000000041,
+      "x": [
+       0.0,
+       0.0,
+       1.0,
+       0.0
+      ],
+      "y": [
+       1.0,
+       0.0,
+       0.0,
+       0.0
+      ],
+      "b_best_response": {
+       "Hold": "Hold",
+       "Yield": "Hold",
+       "Trade": "Hold",
+       "Safe": "Hold"
+      }
+     },
+     "h1/moderate": {
+      "value": 0.05366379310344835,
+      "x": [
+       0.0,
+       0.0,
+       1.0,
+       0.0
+      ],
+      "y": [
+       1.0,
+       0.0,
+       0.0,
+       0.0
+      ],
+      "b_best_response": {
+       "Hold": "Hold",
+       "Yield": "Hold",
+       "Trade": "Hold",
+       "Safe": "Hold"
+      }
+     },
+     "h1/large": {
+      "value": 0.10034482758620697,
+      "x": [
+       0.0,
+       0.0,
+       1.0,
+       0.0
+      ],
+      "y": [
+       1.0,
+       0.0,
+       0.0,
+       0.0
+      ],
+      "b_best_response": {
+       "Hold": "Hold",
+       "Yield": "Hold",
+       "Trade": "Hold",
+       "Safe": "Hold"
+      }
+     },
+     "h6/equal": {
+      "value": 0.2867643442622949,
+      "x": [
+       1.0,
+       0.0,
+       0.0,
+       0.0
+      ],
+      "y": [
+       0.0,
+       0.0,
+       1.0,
+       0.0
+      ],
+      "b_best_response": {
+       "Hold": "Trade",
+       "Yield": "Trade",
+       "Trade": "Trade",
+       "Safe": "Hold"
+      }
+     },
+     "h6/moderate": {
+      "value": 0.3493035613340869,
+      "x": [
+       0.0,
+       0.0,
+       1.0,
+       0.0
+      ],
+      "y": [
+       0.0,
+       0.0,
+       1.0,
+       0.0
+      ],
+      "b_best_response": {
+       "Hold": "Trade",
+       "Yield": "Trade",
+       "Trade": "Trade",
+       "Safe": "Hold"
+      }
+     },
+     "h6/large": {
+      "value": 0.6090357546636518,
+      "x": [
+       0.0,
+       0.0,
+       1.0,
+       0.0
+      ],
+      "y": [
+       0.0,
+       0.0,
+       1.0,
+       0.0
+      ],
+      "b_best_response": {
+       "Hold": "Trade",
+       "Yield": "Trade",
+       "Trade": "Trade",
+       "Safe": "Hold"
+      }
+     }
+    },
+    "flip": {
+     "h1": [
+      3.06,
+      "Safe"
+     ],
+     "h6": [
+      3.75,
+      "Safe"
+     ]
+    },
+    "b_earned_h6": {
+     "Hold-Hold": 1.89,
+     "Hold-Yield": 1.89,
+     "Hold-Trade": 0.945,
+     "Hold-Safe": 0.84,
+     "Yield-Hold": 1.89,
+     "Yield-Yield": 1.89,
+     "Yield-Trade": 0.945,
+     "Yield-Safe": 0.84,
+     "Trade-Hold": 1.89,
+     "Trade-Yield": 1.89,
+     "Trade-Trade": 0.945,
+     "Trade-Safe": 0.0,
+     "Safe-Hold": 2.7,
+     "Safe-Yield": 2.7,
+     "Safe-Trade": 2.7,
+     "Safe-Safe": 1.2
+    },
+    "a_earned_h6": {
+     "Hold-Hold": 2.3625,
+     "Hold-Yield": 2.3625,
+     "Hold-Trade": 2.3625,
+     "Hold-Safe": 3.375,
+     "Yield-Hold": 2.3625,
+     "Yield-Yield": 2.3625,
+     "Yield-Trade": 2.3625,
+     "Yield-Safe": 3.375,
+     "Trade-Hold": 1.1812,
+     "Trade-Yield": 1.1812,
+     "Trade-Trade": 1.1812,
+     "Trade-Safe": 3.375,
+     "Safe-Hold": 0.0,
+     "Safe-Yield": 0.0,
+     "Safe-Trade": 0.0,
+     "Safe-Safe": 0.0
+    },
+    "b_xp_h6": {
+     "Hold-Hold": 24,
+     "Hold-Yield": 24,
+     "Hold-Trade": 24,
+     "Hold-Safe": 24,
+     "Yield-Hold": 24,
+     "Yield-Yield": 24,
+     "Yield-Trade": 24,
+     "Yield-Safe": 24,
+     "Trade-Hold": 24,
+     "Trade-Yield": 24,
+     "Trade-Trade": 24,
+     "Trade-Safe": 24,
+     "Safe-Hold": 24,
+     "Safe-Yield": 24,
+     "Safe-Trade": 24,
+     "Safe-Safe": 24
+    },
+    "connected_h6": {
+     "Hold-Hold": [
+      0,
+      0
+     ],
+     "Hold-Yield": [
+      0,
+      0
+     ],
+     "Hold-Trade": [
+      0,
+      6
+     ],
+     "Hold-Safe": [
+      0,
+      0
+     ],
+     "Yield-Hold": [
+      0,
+      0
+     ],
+     "Yield-Yield": [
+      0,
+      0
+     ],
+     "Yield-Trade": [
+      0,
+      6
+     ],
+     "Yield-Safe": [
+      0,
+      0
+     ],
+     "Trade-Hold": [
+      6,
+      0
+     ],
+     "Trade-Yield": [
+      6,
+      0
+     ],
+     "Trade-Trade": [
+      6,
+      6
+     ],
+     "Trade-Safe": [
+      0,
+      0
+     ],
+     "Safe-Hold": [
+      0,
+      0
+     ],
+     "Safe-Yield": [
+      0,
+      0
+     ],
+     "Safe-Trade": [
+      0,
+      0
+     ],
+     "Safe-Safe": [
+      0,
+      0
+     ]
+    },
+    "concede_ratio_safe": 0.444,
+    "concede_ratio_yield": 1.0
+   }
+  },
+  "integrated": {
+   "neutral": {
+    "games": {
+     "h1/equal": {
+      "value": 0.0,
+      "x": [
+       1.0,
+       0.0,
+       0.0,
+       0.0
+      ],
+      "y": [
+       1.0,
+       0.0,
+       0.0,
+       0.0
+      ],
+      "b_best_response": {
+       "Hold": "Hold",
+       "Yield": "Hold",
+       "Trade": "Hold",
+       "Safe": "Trade"
+      }
+     },
+     "h1/moderate": {
+      "value": 0.0,
+      "x": [
+       1.0,
+       0.0,
+       0.0,
+       0.0
+      ],
+      "y": [
+       1.0,
+       0.0,
+       0.0,
+       0.0
+      ],
+      "b_best_response": {
+       "Hold": "Hold",
+       "Yield": "Hold",
+       "Trade": "Hold",
+       "Safe": "Trade"
+      }
+     },
+     "h1/large": {
+      "value": 0.023375000000000007,
+      "x": [
+       0.0,
+       0.0,
+       1.0,
+       0.0
+      ],
+      "y": [
+       1.0,
+       0.0,
+       0.0,
+       0.0
+      ],
+      "b_best_response": {
+       "Hold": "Hold",
+       "Yield": "Hold",
+       "Trade": "Hold",
+       "Safe": "Trade"
+      }
+     },
+     "h6/equal": {
+      "value": 0.0,
+      "x": [
+       0.0,
+       1.0,
+       0.0,
+       0.0
+      ],
+      "y": [
+       0.0,
+       1.0,
+       0.0,
+       0.0
+      ],
+      "b_best_response": {
+       "Hold": "Yield",
+       "Yield": "Yield",
+       "Trade": "Yield",
+       "Safe": "Trade"
+      }
+     },
+     "h6/moderate": {
+      "value": 0.0,
+      "x": [
+       0.0,
+       1.0,
+       0.0,
+       0.0
+      ],
+      "y": [
+       0.0,
+       1.0,
+       0.0,
+       0.0
+      ],
+      "b_best_response": {
+       "Hold": "Yield",
+       "Yield": "Yield",
+       "Trade": "Yield",
+       "Safe": "Trade"
+      }
+     },
+     "h6/large": {
+      "value": 0.02770972300734864,
+      "x": [
+       0.0,
+       0.0,
+       1.0,
+       0.0
+      ],
+      "y": [
+       0.0,
+       1.0,
+       0.0,
+       0.0
+      ],
+      "b_best_response": {
+       "Hold": "Yield",
+       "Yield": "Yield",
+       "Trade": "Yield",
+       "Safe": "Trade"
+      }
+     }
+    },
+    "flip": {
+     "h1": [
+      3.68,
+      "Safe"
+     ],
+     "h6": [
+      1.0,
+      "Yield"
+     ]
+    },
+    "b_earned_h6": {
+     "Hold-Hold": 2.7,
+     "Hold-Yield": 2.7,
+     "Hold-Trade": 1.35,
+     "Hold-Safe": 1.2,
+     "Yield-Hold": 2.7,
+     "Yield-Yield": 2.7,
+     "Yield-Trade": 1.35,
+     "Yield-Safe": 1.2,
+     "Trade-Hold": 2.7,
+     "Trade-Yield": 2.7,
+     "Trade-Trade": 1.35,
+     "Trade-Safe": 0.0,
+     "Safe-Hold": 2.7,
+     "Safe-Yield": 2.7,
+     "Safe-Trade": 2.7,
+     "Safe-Safe": 1.2
+    },
+    "a_earned_h6": {
+     "Hold-Hold": 2.7,
+     "Hold-Yield": 2.7,
+     "Hold-Trade": 2.7,
+     "Hold-Safe": 2.7,
+     "Yield-Hold": 2.7,
+     "Yield-Yield": 2.7,
+     "Yield-Trade": 2.7,
+     "Yield-Safe": 2.7,
+     "Trade-Hold": 1.35,
+     "Trade-Yield": 1.35,
+     "Trade-Trade": 1.35,
+     "Trade-Safe": 2.7,
+     "Safe-Hold": 1.2,
+     "Safe-Yield": 1.2,
+     "Safe-Trade": 0.0,
+     "Safe-Safe": 1.2
+    },
+    "b_xp_h6": {
+     "Hold-Hold": 24,
+     "Hold-Yield": 24,
+     "Hold-Trade": 24,
+     "Hold-Safe": 24,
+     "Yield-Hold": 24,
+     "Yield-Yield": 24,
+     "Yield-Trade": 24,
+     "Yield-Safe": 24,
+     "Trade-Hold": 24,
+     "Trade-Yield": 24,
+     "Trade-Trade": 24,
+     "Trade-Safe": 24,
+     "Safe-Hold": 24,
+     "Safe-Yield": 24,
+     "Safe-Trade": 24,
+     "Safe-Safe": 24
+    },
+    "connected_h6": {
+     "Hold-Hold": [
+      0,
+      0
+     ],
+     "Hold-Yield": [
+      0,
+      0
+     ],
+     "Hold-Trade": [
+      0,
+      6
+     ],
+     "Hold-Safe": [
+      0,
+      0
+     ],
+     "Yield-Hold": [
+      0,
+      0
+     ],
+     "Yield-Yield": [
+      0,
+      0
+     ],
+     "Yield-Trade": [
+      0,
+      6
+     ],
+     "Yield-Safe": [
+      0,
+      0
+     ],
+     "Trade-Hold": [
+      6,
+      0
+     ],
+     "Trade-Yield": [
+      6,
+      0
+     ],
+     "Trade-Trade": [
+      6,
+      6
+     ],
+     "Trade-Safe": [
+      0,
+      0
+     ],
+     "Safe-Hold": [
+      0,
+      0
+     ],
+     "Safe-Yield": [
+      0,
+      0
+     ],
+     "Safe-Trade": [
+      0,
+      0
+     ],
+     "Safe-Safe": [
+      0,
+      0
+     ]
+    },
+    "concede_ratio_safe": 0.444,
+    "concede_ratio_yield": 1.0
+   },
+   "forward": {
+    "games": {
+     "h1/equal": {
+      "value": -0.012499999999999997,
+      "x": [
+       1.0,
+       0.0,
+       0.0,
+       0.0
+      ],
+      "y": [
+       1.0,
+       0.0,
+       0.0,
+       0.0
+      ],
+      "b_best_response": {
+       "Hold": "Hold",
+       "Yield": "Hold",
+       "Trade": "Hold",
+       "Safe": "Hold"
+      }
+     },
+     "h1/moderate": {
+      "value": -0.012499999999999997,
+      "x": [
+       1.0,
+       0.0,
+       0.0,
+       0.0
+      ],
+      "y": [
+       1.0,
+       0.0,
+       0.0,
+       0.0
+      ],
+      "b_best_response": {
+       "Hold": "Hold",
+       "Yield": "Hold",
+       "Trade": "Hold",
+       "Safe": "Hold"
+      }
+     },
+     "h1/large": {
+      "value": 0.032844827586206965,
+      "x": [
+       0.0,
+       0.0,
+       1.0,
+       0.0
+      ],
+      "y": [
+       1.0,
+       0.0,
+       0.0,
+       0.0
+      ],
+      "b_best_response": {
+       "Hold": "Hold",
+       "Yield": "Hold",
+       "Trade": "Hold",
+       "Safe": "Hold"
+      }
+     },
+     "h6/equal": {
+      "value": 0.5574999999999999,
+      "x": [
+       1.0,
+       0.0,
+       0.0,
+       0.0
+      ],
+      "y": [
+       1.0,
+       0.0,
+       0.0,
+       0.0
+      ],
+      "b_best_response": {
+       "Hold": "Hold",
+       "Yield": "Hold",
+       "Trade": "Hold",
+       "Safe": "Hold"
+      }
+     },
+     "h6/moderate": {
+      "value": 0.5574999999999999,
+      "x": [
+       1.0,
+       0.0,
+       0.0,
+       0.0
+      ],
+      "y": [
+       1.0,
+       0.0,
+       0.0,
+       0.0
+      ],
+      "b_best_response": {
+       "Hold": "Hold",
+       "Yield": "Hold",
+       "Trade": "Hold",
+       "Safe": "Hold"
+      }
+     },
+     "h6/large": {
+      "value": 0.5574999999999999,
+      "x": [
+       1.0,
+       0.0,
+       0.0,
+       0.0
+      ],
+      "y": [
+       1.0,
+       0.0,
+       0.0,
+       0.0
+      ],
+      "b_best_response": {
+       "Hold": "Hold",
+       "Yield": "Hold",
+       "Trade": "Hold",
+       "Safe": "Hold"
+      }
+     }
+    },
+    "flip": {
+     "h1": [
+      3.41,
+      "Safe"
+     ],
+     "h6": [
+      3.96,
+      "Safe"
+     ]
+    },
+    "b_earned_h6": {
+     "Hold-Hold": 2.7,
+     "Hold-Yield": 2.7,
+     "Hold-Trade": 1.35,
+     "Hold-Safe": 1.2,
+     "Yield-Hold": 2.7,
+     "Yield-Yield": 2.7,
+     "Yield-Trade": 1.35,
+     "Yield-Safe": 1.2,
+     "Trade-Hold": 2.7,
+     "Trade-Yield": 2.7,
+     "Trade-Trade": 1.35,
+     "Trade-Safe": 0.0,
+     "Safe-Hold": 2.7,
+     "Safe-Yield": 2.7,
+     "Safe-Trade": 2.7,
+     "Safe-Safe": 1.2
+    },
+    "a_earned_h6": {
+     "Hold-Hold": 3.375,
+     "Hold-Yield": 3.375,
+     "Hold-Trade": 3.375,
+     "Hold-Safe": 3.375,
+     "Yield-Hold": 3.375,
+     "Yield-Yield": 3.375,
+     "Yield-Trade": 3.375,
+     "Yield-Safe": 3.375,
+     "Trade-Hold": 1.6875,
+     "Trade-Yield": 1.6875,
+     "Trade-Trade": 1.6875,
+     "Trade-Safe": 3.375,
+     "Safe-Hold": 0.0,
+     "Safe-Yield": 0.0,
+     "Safe-Trade": 0.0,
+     "Safe-Safe": 0.0
+    },
+    "b_xp_h6": {
+     "Hold-Hold": 24,
+     "Hold-Yield": 24,
+     "Hold-Trade": 24,
+     "Hold-Safe": 24,
+     "Yield-Hold": 24,
+     "Yield-Yield": 24,
+     "Yield-Trade": 24,
+     "Yield-Safe": 24,
+     "Trade-Hold": 24,
+     "Trade-Yield": 24,
+     "Trade-Trade": 24,
+     "Trade-Safe": 24,
+     "Safe-Hold": 24,
+     "Safe-Yield": 24,
+     "Safe-Trade": 24,
+     "Safe-Safe": 24
+    },
+    "connected_h6": {
+     "Hold-Hold": [
+      0,
+      0
+     ],
+     "Hold-Yield": [
+      0,
+      0
+     ],
+     "Hold-Trade": [
+      0,
+      6
+     ],
+     "Hold-Safe": [
+      0,
+      0
+     ],
+     "Yield-Hold": [
+      0,
+      0
+     ],
+     "Yield-Yield": [
+      0,
+      0
+     ],
+     "Yield-Trade": [
+      0,
+      6
+     ],
+     "Yield-Safe": [
+      0,
+      0
+     ],
+     "Trade-Hold": [
+      6,
+      0
+     ],
+     "Trade-Yield": [
+      6,
+      0
+     ],
+     "Trade-Trade": [
+      6,
+      6
+     ],
+     "Trade-Safe": [
+      0,
+      0
+     ],
+     "Safe-Hold": [
+      0,
+      0
+     ],
+     "Safe-Yield": [
+      0,
+      0
+     ],
+     "Safe-Trade": [
+      0,
+      0
+     ],
+     "Safe-Safe": [
+      0,
+      0
+     ]
+    },
+    "concede_ratio_safe": 0.444,
+    "concede_ratio_yield": 1.0
+   }
+  },
+  "turns_note": "zoning.TURNS counts these"
+ },
+ "hp": {
+  "multiplier_ratio": {
+   "equal": 1.0,
+   "moderate": 1.243,
+   "large": 1.761
+  },
+  "neutral/equal/Hold-Contest": {
+   "value": 0.355,
+   "value_se": 0.237,
+   "earned": [
+    4.537,
+    4.244
+   ],
+   "xp": [
+    39.5,
+    38.0
+   ],
+   "deaths": [
+    0.0,
+    0.25
+   ],
+   "connected": [
+    0.0,
+    0.0
+   ],
+   "bar": [
+    5.402,
+    5.157
+   ]
+  },
+  "neutral/equal/Trade-Contest": {
+   "value": -0.691,
+   "value_se": 0.188,
+   "earned": [
+    2.078,
+    2.769
+   ],
+   "xp": [
+    37.0,
+    35.0
+   ],
+   "deaths": [
+    0.25,
+    0.25
+   ],
+   "connected": [
+    7.25,
+    0.0
+   ],
+   "bar": [
+    4.45,
+    4.454
+   ]
+  },
+  "neutral/equal/Trade-Retreat": {
+   "value": 4.028,
+   "value_se": 0.199,
+   "earned": [
+    4.269,
+    0.125
+   ],
+   "xp": [
+    38.5,
+    40.0
+   ],
+   "deaths": [
+    0.0,
+    0.0
+   ],
+   "connected": [
+    0.0,
+    0.0
+   ],
+   "bar": [
+    5.282,
+    5.746
+   ]
+  },
+  "neutral/equal/Hold-Retreat": {
+   "value": 2.356,
+   "value_se": 0.061,
+   "earned": [
+    4.412,
+    2.0
+   ],
+   "xp": [
+    39.5,
+    40.0
+   ],
+   "deaths": [
+    0.0,
+    0.0
+   ],
+   "connected": [
+    0.0,
+    0.0
+   ],
+   "bar": [
+    5.402,
+    5.627
+   ]
+  },
+  "neutral/equal/Trade-Trade": {
+   "value": 0.283,
+   "value_se": 0.282,
+   "earned": [
+    1.509,
+    1.569
+   ],
+   "xp": [
+    34.0,
+    33.0
+   ],
+   "deaths": [
+    0.25,
+    0.25
+   ],
+   "connected": [
+    4.875,
+    5.75
+   ],
+   "bar": [
+    5.282,
+    3.911
+   ]
+  },
+  "neutral/moderate/Hold-Contest": {
+   "value": 0.355,
+   "value_se": 0.237,
+   "earned": [
+    4.537,
+    4.244
+   ],
+   "xp": [
+    39.5,
+    38.0
+   ],
+   "deaths": [
+    0.0,
+    0.25
+   ],
+   "connected": [
+    0.0,
+    0.0
+   ],
+   "bar": [
+    5.402,
+    5.157
+   ]
+  },
+  "neutral/moderate/Trade-Contest": {
+   "value": -0.035,
+   "value_se": 0.394,
+   "earned": [
+    2.213,
+    2.55
+   ],
+   "xp": [
+    36.5,
+    34.5
+   ],
+   "deaths": [
+    0.375,
+    0.5
+   ],
+   "connected": [
+    7.0,
+    0.0
+   ],
+   "bar": [
+    4.815,
+    3.605
+   ]
+  },
+  "neutral/moderate/Trade-Retreat": {
+   "value": 4.028,
+   "value_se": 0.199,
+   "earned": [
+    4.269,
+    0.125
+   ],
+   "xp": [
+    38.5,
+    40.0
+   ],
+   "deaths": [
+    0.0,
+    0.0
+   ],
+   "connected": [
+    0.0,
+    0.0
+   ],
+   "bar": [
+    5.282,
+    5.746
+   ]
+  },
+  "neutral/moderate/Hold-Retreat": {
+   "value": 2.356,
+   "value_se": 0.061,
+   "earned": [
+    4.412,
+    2.0
+   ],
+   "xp": [
+    39.5,
+    40.0
+   ],
+   "deaths": [
+    0.0,
+    0.0
+   ],
+   "connected": [
+    0.0,
+    0.0
+   ],
+   "bar": [
+    5.402,
+    5.627
+   ]
+  },
+  "neutral/moderate/Trade-Trade": {
+   "value": 0.257,
+   "value_se": 0.368,
+   "earned": [
+    1.534,
+    1.694
+   ],
+   "xp": [
+    34.0,
+    34.0
+   ],
+   "deaths": [
+    0.375,
+    0.25
+   ],
+   "connected": [
+    5.0,
+    5.5
+   ],
+   "bar": [
+    5.134,
+    3.468
+   ]
+  },
+  "neutral/large/Hold-Contest": {
+   "value": 0.355,
+   "value_se": 0.237,
+   "earned": [
+    4.537,
+    4.244
+   ],
+   "xp": [
+    39.5,
+    38.0
+   ],
+   "deaths": [
+    0.0,
+    0.25
+   ],
+   "connected": [
+    0.0,
+    0.0
+   ],
+   "bar": [
+    5.402,
+    5.157
+   ]
+  },
+  "neutral/large/Trade-Contest": {
+   "value": 0.211,
+   "value_se": 0.428,
+   "earned": [
+    2.791,
+    2.425
+   ],
+   "xp": [
+    38.0,
+    31.5
+   ],
+   "deaths": [
+    0.125,
+    0.875
+   ],
+   "connected": [
+    6.5,
+    0.0
+   ],
+   "bar": [
+    4.102,
+    4.721
+   ]
+  },
+  "neutral/large/Trade-Retreat": {
+   "value": 4.028,
+   "value_se": 0.199,
+   "earned": [
+    4.269,
+    0.125
+   ],
+   "xp": [
+    38.5,
+    40.0
+   ],
+   "deaths": [
+    0.0,
+    0.0
+   ],
+   "connected": [
+    0.0,
+    0.0
+   ],
+   "bar": [
+    5.282,
+    5.746
+   ]
+  },
+  "neutral/large/Hold-Retreat": {
+   "value": 2.356,
+   "value_se": 0.061,
+   "earned": [
+    4.412,
+    2.0
+   ],
+   "xp": [
+    39.5,
+    40.0
+   ],
+   "deaths": [
+    0.0,
+    0.0
+   ],
+   "connected": [
+    0.0,
+    0.0
+   ],
+   "bar": [
+    5.402,
+    5.627
+   ]
+  },
+  "neutral/large/Trade-Trade": {
+   "value": 0.478,
+   "value_se": 0.346,
+   "earned": [
+    1.619,
+    1.447
+   ],
+   "xp": [
+    34.5,
+    33.0
+   ],
+   "deaths": [
+    0.125,
+    0.25
+   ],
+   "connected": [
+    4.75,
+    5.5
+   ],
+   "bar": [
+    4.586,
+    3.362
+   ]
+  },
+  "forward/equal/Hold-Contest": {
+   "value": 2.527,
+   "value_se": 0.071,
+   "earned": [
+    5.288,
+    2.7
+   ],
+   "xp": [
+    47.0,
+    34.0
+   ],
+   "deaths": [
+    0.0,
+    0.0
+   ],
+   "connected": [
+    0.0,
+    0.0
+   ],
+   "bar": [
+    5.385,
+    5.627
+   ]
+  },
+  "forward/equal/Trade-Contest": {
+   "value": 0.391,
+   "value_se": 0.401,
+   "earned": [
+    3.045,
+    2.25
+   ],
+   "xp": [
+    45.75,
+    30.0
+   ],
+   "deaths": [
+    0.0,
+    0.5
+   ],
+   "connected": [
+    8.125,
+    0.0
+   ],
+   "bar": [
+    2.801,
+    4.417
+   ]
+  },
+  "forward/equal/Trade-Retreat": {
+   "value": 2.808,
+   "value_se": 0.281,
+   "earned": [
+    3.956,
+    0.138
+   ],
+   "xp": [
+    45.75,
+    34.0
+   ],
+   "deaths": [
+    0.125,
+    0.0
+   ],
+   "connected": [
+    3.125,
+    0.0
+   ],
+   "bar": [
+    1.943,
+    5.984
+   ]
+  },
+  "forward/equal/Hold-Retreat": {
+   "value": 3.967,
+   "value_se": 0.113,
+   "earned": [
+    5.288,
+    1.2
+   ],
+   "xp": [
+    47.0,
+    34.0
+   ],
+   "deaths": [
+    0.0,
+    0.0
+   ],
+   "connected": [
+    0.0,
+    0.0
+   ],
+   "bar": [
+    5.385,
+    5.865
+   ]
+  },
+  "forward/equal/Trade-Trade": {
+   "value": 1.102,
+   "value_se": 0.316,
+   "earned": [
+    2.294,
+    1.291
+   ],
+   "xp": [
+    42.75,
+    29.0
+   ],
+   "deaths": [
+    0.25,
+    0.375
+   ],
+   "connected": [
+    5.375,
+    6.0
+   ],
+   "bar": [
+    4.796,
+    4.399
+   ]
+  },
+  "forward/moderate/Hold-Contest": {
+   "value": 2.527,
+   "value_se": 0.071,
+   "earned": [
+    5.288,
+    2.7
+   ],
+   "xp": [
+    47.0,
+    34.0
+   ],
+   "deaths": [
+    0.0,
+    0.0
+   ],
+   "connected": [
+    0.0,
+    0.0
+   ],
+   "bar": [
+    5.385,
+    5.627
+   ]
+  },
+  "forward/moderate/Trade-Contest": {
+   "value": 1.314,
+   "value_se": 0.453,
+   "earned": [
+    3.37,
+    2.088
+   ],
+   "xp": [
+    45.75,
+    28.5
+   ],
+   "deaths": [
+    0.125,
+    0.75
+   ],
+   "connected": [
+    7.625,
+    0.0
+   ],
+   "bar": [
+    4.148,
+    4.025
+   ]
+  },
+  "forward/moderate/Trade-Retreat": {
+   "value": 2.808,
+   "value_se": 0.281,
+   "earned": [
+    3.956,
+    0.138
+   ],
+   "xp": [
+    45.75,
+    34.0
+   ],
+   "deaths": [
+    0.125,
+    0.0
+   ],
+   "connected": [
+    3.125,
+    0.0
+   ],
+   "bar": [
+    1.943,
+    5.984
+   ]
+  },
+  "forward/moderate/Hold-Retreat": {
+   "value": 3.967,
+   "value_se": 0.113,
+   "earned": [
+    5.288,
+    1.2
+   ],
+   "xp": [
+    47.0,
+    34.0
+   ],
+   "deaths": [
+    0.0,
+    0.0
+   ],
+   "connected": [
+    0.0,
+    0.0
+   ],
+   "bar": [
+    5.385,
+    5.865
+   ]
+  },
+  "forward/moderate/Trade-Trade": {
+   "value": 1.116,
+   "value_se": 0.262,
+   "earned": [
+    2.513,
+    1.453
+   ],
+   "xp": [
+    43.0,
+    28.0
+   ],
+   "deaths": [
+    0.375,
+    0.75
+   ],
+   "connected": [
+    4.75,
+    5.625
+   ],
+   "bar": [
+    4.113,
+    3.888
+   ]
+  },
+  "forward/large/Hold-Contest": {
+   "value": 2.527,
+   "value_se": 0.071,
+   "earned": [
+    5.288,
+    2.7
+   ],
+   "xp": [
+    47.0,
+    34.0
+   ],
+   "deaths": [
+    0.0,
+    0.0
+   ],
+   "connected": [
+    0.0,
+    0.0
+   ],
+   "bar": [
+    5.385,
+    5.627
+   ]
+  },
+  "forward/large/Trade-Contest": {
+   "value": 1.368,
+   "value_se": 0.453,
+   "earned": [
+    3.588,
+    2.15
+   ],
+   "xp": [
+    45.75,
+    26.25
+   ],
+   "deaths": [
+    0.25,
+    0.875
+   ],
+   "connected": [
+    7.125,
+    0.0
+   ],
+   "bar": [
+    4.148,
+    4.425
+   ]
+  },
+  "forward/large/Trade-Retreat": {
+   "value": 2.808,
+   "value_se": 0.281,
+   "earned": [
+    3.956,
+    0.138
+   ],
+   "xp": [
+    45.75,
+    34.0
+   ],
+   "deaths": [
+    0.125,
+    0.0
+   ],
+   "connected": [
+    3.125,
+    0.0
+   ],
+   "bar": [
+    1.943,
+    5.984
+   ]
+  },
+  "forward/large/Hold-Retreat": {
+   "value": 3.967,
+   "value_se": 0.113,
+   "earned": [
+    5.288,
+    1.2
+   ],
+   "xp": [
+    47.0,
+    34.0
+   ],
+   "deaths": [
+    0.0,
+    0.0
+   ],
+   "connected": [
+    0.0,
+    0.0
+   ],
+   "bar": [
+    5.385,
+    5.865
+   ]
+  },
+  "forward/large/Trade-Trade": {
+   "value": 1.087,
+   "value_se": 0.248,
+   "earned": [
+    2.63,
+    1.383
+   ],
+   "xp": [
+    42.75,
+    25.75
+   ],
+   "deaths": [
+    0.25,
+    0.625
+   ],
+   "connected": [
+    4.25,
+    5.5
+   ],
+   "bar": [
+    4.32,
+    4.959
+   ]
+  }
+ },
+ "recall": {
+  "gold4": {
+   "recall": {
+    "value": -1.17,
+    "value_se": 0.42,
+    "invested_at_trade": 4.2,
+    "earned": [
+     3.853,
+     5.294
+    ]
+   },
+   "stay": {
+    "value": -0.478,
+    "value_se": 0.528,
+    "invested_at_trade": 0.0,
+    "earned": [
+     4.403,
+     5.125
+    ]
+   }
+  },
+  "gold8": {
+   "recall": {
+    "value": -1.34,
+    "value_se": 0.378,
+    "invested_at_trade": 8.2,
+    "earned": [
+     3.453,
+     5.019
+    ]
+   },
+   "stay": {
+    "value": -0.322,
+    "value_se": 0.412,
+    "invested_at_trade": 0.0,
+    "earned": [
+     4.641,
+     5.006
+    ]
+   }
+  },
+  "gold16": {
+   "recall": {
+    "value": -1.574,
+    "value_se": 0.365,
+    "invested_at_trade": 16.2,
+    "earned": [
+     3.369,
+     4.737
+    ]
+   },
+   "stay": {
+    "value": -0.491,
+    "value_se": 0.329,
+    "invested_at_trade": 0.0,
+    "earned": [
+     4.591,
+     4.95
+    ]
+   }
+  },
+  "games": {
+   "gold_recaller-hold_farmer/s1": {
+    "reward_A": -5.95,
+    "deaths": [
+     0,
+     3
+    ],
+    "recalls": [
+     14,
+     4
+    ],
+    "invested": [
+     116.12,
+     117.12
+    ],
+    "multiplier": [
+     1.978,
+     1.98
+    ]
+   },
+   "gold_recaller-hold_farmer/s2": {
+    "reward_A": -5.75,
+    "deaths": [
+     0,
+     0
+    ],
+    "recalls": [
+     13,
+     8
+    ],
+    "invested": [
+     118.03,
+     108.92
+    ],
+    "multiplier": [
+     1.982,
+     1.963
+    ]
+   },
+   "gold_recaller-aggressive_trader/s1": {
+    "reward_A": -7.162,
+    "deaths": [
+     21,
+     8
+    ],
+    "recalls": [
+     11,
+     7
+    ],
+    "invested": [
+     69.47,
+     70.69
+    ],
+    "multiplier": [
+     1.851,
+     1.856
+    ]
+   },
+   "gold_recaller-aggressive_trader/s2": {
+    "reward_A": -3.987,
+    "deaths": [
+     23,
+     6
+    ],
+    "recalls": [
+     6,
+     8
+    ],
+    "invested": [
+     75.42,
+     69.36
+    ],
+    "multiplier": [
+     1.872,
+     1.851
+    ]
+   }
+  }
+ },
+ "budget": {
+  "turns": 6347,
+  "own": 4368,
+  "wave_readiness": 1359,
+  "zoning": 620,
+  "wall_s": 1.5
+ }
+}
