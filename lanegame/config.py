@@ -170,6 +170,7 @@ class GameConfig:
     # ---- contact (collision) resolution ----
     # "lanchester":      per-tick minion damage = max(1, floor(h / W))  (each full wave adds firepower)
     # "lanchester_ceil": per-tick minion damage = ceil(h / W)
+    # "lanchester_half": (M4.2e-C, wave_dynamics "natural" only) max(1, floor(2h / W)) per TURN, split over the ticks
     # "linear":          per-tick minion damage = 1                    (size only buys staying power)
     # "pressure":        per tick, the side with lower pressure h + kappa loses 1 HP, ties both lose 1
     damage_law: str = "lanchester"
@@ -443,6 +444,17 @@ class GameConfig:
     # champion's attack power at the start of the turn), split over the ticks as evenly as possible (earlier ticks first)
     wave_clear_scaling: str = "none"
     wave_clear_scaled_slots: Tuple[int, ...] = (SH, F)      # wave slots whose budget scales (SH = Clear, F = Thin)
+    # M4.2e-C (docs/natural_waves/m4_2e_wave_actions_report.md), "natural" only: wave_clear_scaling "capacity" = the three
+    # wave actions are shares of ONE wave-clear capacity C = round(ticks_per_turn * champion_wave_damage[SH] * AP / 10^4)
+    # HP per turn (Clear's budget, as under "attack_power"):
+    #   Hold  = round(wave_hold_fraction * C)      normal last-hitting: a small share of the capacity
+    #   Thin  = round(wave_thin_fraction * C)      controlled thinning: a larger share (= Hold + alpha (Clear - Hold)
+    #                                              with alpha = (thin - hold) / (1 - hold), the brief's formulation)
+    #   Clear = C                                   everything
+    # (round half up on exact rationals; 0 <= hold <= thin <= 1). champion_wave_damage[SP], [F] and
+    # wave_clear_scaled_slots are then unused.
+    wave_hold_fraction: float = 0.0
+    wave_thin_fraction: float = 0.0
     tower_adjacent_p: float = 0.0        # tower shot on a connected trader ending next to the enemy tower (m4: 0.5)
     tower_adjacent_p_busy: float = 0.0    # ... while its own crashed minions are under that tower (m4: 0.25)
     gank_damage_scale: str = "none"       # "none" (centi = 100 x trials), "victim_level" (m4), "attacker_level"
@@ -570,6 +582,8 @@ class GameConfig:
 
     # the fields GameConfig.m4_lane() changes from m4_natural() (M4.2e-B, docs/natural_waves/m4_2e_zoning_report.md)
     M4_LANE_FIELDS = ("collect_contest_enemy_tower", "collect_contest_own_tower", "invest_durability")
+    # the fields GameConfig.m4_lasthit() changes from m4_lane() (M4.2e-C, docs/natural_waves/m4_2e_wave_actions_report.md)
+    M4_LASTHIT_FIELDS = ("wave_clear_scaling", "wave_hold_fraction", "wave_thin_fraction", "damage_law", "thin_damage")
 
     @classmethod
     def m4_lane(cls, **kw) -> "GameConfig":
@@ -589,6 +603,23 @@ class GameConfig:
         base = dict(collect_contest_enemy_tower=0.9, collect_contest_own_tower=0.6, invest_durability=True)
         base.update(kw)
         return cls.m4_natural(**base)
+
+    @classmethod
+    def m4_lasthit(cls, **kw) -> "GameConfig":
+        """CANDIDATE (M4.2e-C, docs/natural_waves/m4_2e_wave_actions_report.md): `m4_lane()` with the wave actions
+        redesigned as shares of one wave-clear capacity C = round(4 AP) HP per turn (wave_clear_scaling "capacity"):
+          Hold  = round(C / 8)      normal last-hitting pushes a little (1 HP per turn up to AP 2.9, 2 up to AP 4.4, 3 after)
+          Thin  = round(C / 2)      controlled thinning grows with power (2 at AP 1, 4 at AP 2, 9 at AP 4.2)
+          Clear = C                 as before (4 at AP 1, 8 at AP 2, 17 at AP 4.2)
+        the minion damage law at half-wave resolution (damage_law "lanchester_half": a packet's firepower is
+        floor(2h / W) HP per turn instead of floor(h / W) per tick), so that an edge of half a wave already fights
+        harder, and no separate Apply Pressure thinning (thin_damage 0: the champion's wave action is its damage on the
+        defenders behind the tower, which natural_tower_reach already lets it reach). Every other rule and parameter
+        is `m4_lane()`. Not a default; every other preset is unchanged."""
+        base = dict(wave_clear_scaling="capacity", wave_hold_fraction=0.125, wave_thin_fraction=0.5,
+                    damage_law="lanchester_half", thin_damage=0)
+        base.update(kw)
+        return cls.m4_lane(**base)
 
     # ------------------------------------------------------------------ helpers
     @property
@@ -677,7 +708,7 @@ class GameConfig:
         self._validate_ruleset()
         assert self.base > self.tower > 0
         assert self.spawn_interval % self.ticks_per_turn == 0
-        assert self.damage_law in ("lanchester", "lanchester_ceil", "linear", "pressure")
+        assert self.damage_law in ("lanchester", "lanchester_ceil", "lanchester_half", "linear", "pressure")
         assert self.slowpush_mode in ("hold", "half", "creep", "stack_creep", "free")
         assert self.tower_mode in ("packet", "mass")
         assert self.cap_rule in ("block", "overflow")
@@ -724,6 +755,8 @@ class GameConfig:
 
         if self.ruleset not in RULESETS:
             bad("ruleset", f"must be one of {RULESETS}")
+        if self.damage_law == "lanchester_half" and self.wave_dynamics != "natural":
+            bad("damage_law", "'lanchester_half' applies to wave_dynamics 'natural' only")
         if self.time_mode not in ("finite", "continuing"):
             bad("time_mode", "must be 'finite' or 'continuing'")
         if self.ruleset == "legacy":
@@ -832,13 +865,19 @@ class GameConfig:
                 bad("natural_crash_rule", "must be 'contact' or 'entry'")
             if self.natural_tower_reach not in (0, 1):
                 bad("natural_tower_reach", "must be 0 or 1")
-            if self.wave_clear_scaling not in ("none", "attack_power"):
-                bad("wave_clear_scaling", "must be 'none' or 'attack_power'")
+            if self.wave_clear_scaling not in ("none", "attack_power", "capacity"):
+                bad("wave_clear_scaling", "must be 'none', 'attack_power' or 'capacity'")
             if not set(self.wave_clear_scaled_slots) <= {SP, SH, F}:
                 bad("wave_clear_scaled_slots", "must be wave slots")
+            if not (0.0 <= self.wave_hold_fraction <= self.wave_thin_fraction <= 1.0):
+                bad("wave_hold_fraction/wave_thin_fraction", "need 0 <= hold <= thin <= 1")
+            if self.wave_clear_scaling != "capacity":
+                for name in ("wave_hold_fraction", "wave_thin_fraction"):
+                    if getattr(self, name) != _FIELD_DEFAULTS[name]:
+                        bad(name, "applies to wave_clear_scaling 'capacity' only")
         else:
             for name in ("champion_wave_damage", "natural_crash_rule", "natural_tower_reach", "wave_clear_scaling",
-                         "wave_clear_scaled_slots"):
+                         "wave_clear_scaled_slots", "wave_hold_fraction", "wave_thin_fraction"):
                 if getattr(self, name) != _FIELD_DEFAULTS[name]:
                     bad(name, "applies to wave_dynamics 'natural' only")
         self._validate_exact_economy()
@@ -899,7 +938,8 @@ M4_ECONOMY_FIELDS = ("xp_per_hp", "xp_range", "xp_base", "xp_step", "level_cap",
                      "tower_adjacent_p", "tower_adjacent_p_busy", "gank_damage_scale", "plate_thresholds",
                      "plate_gold", "pressure_tower_damage", "plate_gold_requires_presence", "gold_unit",
                      "rear_count_max", "trade_exchanges", "trade_farm_rule", "invest_durability", "collect_contest_own_tower", "position_rule", "zoning_rule", "wave_dynamics", "champion_wave_damage",
-                     "natural_crash_rule", "natural_tower_reach", "wave_clear_scaling", "wave_clear_scaled_slots")
+                     "natural_crash_rule", "natural_tower_reach", "wave_clear_scaling", "wave_clear_scaled_slots",
+                     "wave_hold_fraction", "wave_thin_fraction")
 _FIELD_DEFAULTS = {f.name: f.default for f in GameConfig.__dataclass_fields__.values()}
 
 

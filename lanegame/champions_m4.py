@@ -56,7 +56,8 @@ from .champions import (AWAY, CHANNEL, FARM, N_CHANCE, NO_REACH, RETREAT, SAFE_M
                         U_TOWER, U_TRADE_DOUBLE, U_TRADE_HIT, LaneStep, _decode, _evasion_cell, _gank_damage, _move,
                         _trade_damage, champion_gank_probability, champion_legal_actions, gank_damage_p, in_contact,
                         objective_reachable, recall_legal, trade_double_probability, trade_hit_probability)
-from .config import B_HOLD, B_RECALL, B_SAFE, B_TRADE, B_YIELD, B_ABSENT, F, NONE, PRESSURE, SP, GameConfig, exact_safe_base
+from .config import (B_HOLD, B_RECALL, B_SAFE, B_TRADE, B_YIELD, B_ABSENT, F, NONE, PRESSURE, SH, SP, GameConfig,
+                     exact_safe_base)
 from .mechanics import step_turn
 from .progression import Tables, tables
 from .state import State
@@ -138,16 +139,37 @@ class M4Context:
     def wave_budget(self, slot: int, level: int, items: int) -> int:
         """Natural waves, wave_clear_scaling "attack_power": the champion's wave-damage budget for one turn in minion
         HP, round(ticks_per_turn * champion_wave_damage[slot] * AP / 10^4) (round half up, exact integers); slots
-        outside wave_clear_scaled_slots keep ticks_per_turn * champion_wave_damage[slot]."""
+        outside wave_clear_scaled_slots keep ticks_per_turn * champion_wave_damage[slot]. "capacity" (M4.2e-C): the
+        slot's share of the Clear capacity, `budget_from_capacity`."""
+        cfg = self.cfg
+        if cfg.wave_clear_scaling == "capacity":
+            return self.budget_from_capacity(slot, self._scaled(SH, level, items))
+        if slot not in cfg.wave_clear_scaled_slots:
+            return cfg.ticks_per_turn * cfg.champion_wave_damage[slot]
+        return self._scaled(slot, level, items)
+
+    def _scaled(self, slot: int, level: int, items: int) -> int:
+        """round(ticks_per_turn * champion_wave_damage[slot] * AP / 10^4), round half up in exact integers."""
         cfg = self.cfg
         base = cfg.ticks_per_turn * cfg.champion_wave_damage[slot]
-        if slot not in cfg.wave_clear_scaled_slots:
-            return base
         if self.inv is None:
             num, den = base * self.t.ap[level][items], 10_000
         else:
             num, den = base * self.inv.attack_power(level, items), 10_000 * self.inv.one
         return (2 * num + den) // (2 * den)
+
+    def capacity(self, level: int, items: int) -> int:
+        """wave_clear_scaling "capacity": the wave-clear capacity C (Clear's budget) of a champion at (level, items)."""
+        return self._scaled(SH, level, items)
+
+    def budget_from_capacity(self, slot: int, capacity: int) -> int:
+        """wave_clear_scaling "capacity" (M4.2e-C): the per-turn budget of a wave slot as a share of the wave-clear
+        capacity C: Clear = C, Hold = round(wave_hold_fraction C), Thin = round(wave_thin_fraction C); round half up on
+        exact rationals, so Hold <= Thin <= Clear and every budget is non-decreasing in C."""
+        if slot == SH:
+            return capacity
+        share = self.cfg.wave_hold_fraction if slot == SP else self.cfg.wave_thin_fraction
+        return _round_half_up(_q(share) * capacity)
 
     def collection(self, x: int, mode: str, pos: int, opp_mode: str, opp_pos: int, pays_trade: bool = True) -> int:
         key = (x, mode, pos, opp_mode, opp_pos, pays_trade)
@@ -163,6 +185,14 @@ class M4Context:
         if self.inv is None or not self.cfg.invest_durability or damage == 0:
             return damage
         return damage * self.inv.one // self.inv.multiplier(items)
+
+
+def _q(x: float) -> Fraction:
+    return Fraction(repr(float(x)))
+
+
+def _round_half_up(v: Fraction) -> int:
+    return (2 * v.numerator + v.denominator) // (2 * v.denominator)
 
 
 def _units(x: float, cfg: GameConfig) -> int:
@@ -394,7 +424,7 @@ def resolve_turn_m4(lane: State, m4: M4State, k: int, a: int, b: int, cfg: GameC
     off = (recalling[A] or absent[A], recalling[B] or absent[B])
     # wave_clear_scaling "attack_power": per-turn wave-damage budgets from the start-of-turn attack power
     budget = None
-    if cfg.natural_waves and cfg.wave_clear_scaling == "attack_power":
+    if cfg.natural_waves and cfg.wave_clear_scaling != "none":
         budget = (ctx.wave_budget(wa, lv0[A], it0[A]), ctx.wave_budget(wb, lv0[B], it0[B]))
 
     def lane_call(x, y, rch):

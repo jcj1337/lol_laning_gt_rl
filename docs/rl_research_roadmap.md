@@ -1159,3 +1159,52 @@ calibrated parameters (own-tower rate 0.6, kill bounty 0.5). No PPO was run; the
 
 **Next steps (not started):** design review of the hypotheses above; then integrate and freeze for the M4.3 PPO
 smoke test on `m4_lane()`.
+
+## X. M4.2e-C wave action redesign and mechanical calibration (2026-10-12)
+
+Branch `development/m4-natural-waves`, on top of M4.2e-B.
+
+- **Full account:** [m4_2e_wave_actions_report.md](natural_waves/m4_2e_wave_actions_report.md).
+- **Driver:** `lanegame.experiments.m4.wave_actions` (74k deterministic turns, 8 s; results
+  `results/m4_wave_actions/`); sampled policy games through `lanegame.experiments.m4.zoning_natural lasthit` (2.5M
+  turns, 1 min; `results/m4_zoning_natural/summary_lasthit.txt`, `trajectories_lasthit.txt`).
+- **Tests:** `tests/test_m4_wave_actions.py` (16).
+- **Candidate preset:** **opt-in** `GameConfig.m4_lasthit()` = `m4_lane()` plus `wave_clear_scaling "capacity"`
+  (`wave_hold_fraction` 1/8, `wave_thin_fraction` 1/2), `damage_law "lanchester_half"` and `thin_damage 0`. Every
+  other preset is unchanged (digests pinned).
+
+**The model.** One wave-clear capacity C = round(4 AP) HP per turn; Hold uses an eighth of it (1 HP per turn until AP
+2.9, then 2, then 3), Thin half (2 at level 1, 9 at level 18 with four items), Clear all. In the brief's notation
+Thin = Hold + 3/7 (Clear - Hold). The minion damage law moves to half-wave resolution (firepower floor(2h / 8) per turn,
+split over the ticks), because with last-hit damage on both sides the fronts live in the whole-wave law's flat 8-15 HP
+band and a one-turn edge took 19 turns to crash instead of 13; under the finer law it takes 15. Apply Pressure's own
+thinning is removed: the wave action is the champion's damage on the defenders (Hold + Pressure with the old thinning
+equals Thin + Pressure without it).
+
+**Findings** (deterministic unless stated)
+
+- The neutral lane stays symmetric at every power; a champion three times stronger pushes it by last-hitting alone.
+- A wave drifts to a champion that stands back: crash in 10-12 turns against a Safe or recalling opponent; standing
+  back costs the Safe champion 3.8 instead of 8.9 per 40 turns.
+- Thin scales: from a neutral lane it crashes in 9 / 5 / 3 / 2 turns at AP 1 / 2 / 3 / 4 (before: 7 at every power).
+- Sieges 2-6 turns at tower 3 (self-sustaining at 1, as before); crashes 21-27 HP bounce 16-26 turns later with 23-29.
+- The outside-tower freeze survives in a narrower band (enemy 12-14 HP against own 8-11): reached after absorbing an
+  enemy crash, held 20-30 turns with a 1.7x farm edge under a threshold controller (Thin when the enemy front
+  reaches 14), broken by Clear in 1-2 turns; a freezer at AP 3 pushes it out by last-hitting.
+- Recall from a neutral lane costs about a plate (3.9) against an opponent that takes plates; after one's own crash
+  it is free.
+- Policy games (16 seeds): against a stronger champion that only threatens, standing back is now the weaker
+  champion's best reply (farm 9.8 of 13, never hit; the bare threat is worth -0.2 to -1.5 to the zoner instead of
+  +6.5 to +10.5); the threat converts through wave control (Clear + punish, +6 to +8), so the equilibria keep the
+  stronger champion Clearing and the weaker one contesting. Values stay monotone in power; the equal lane is even
+  (+0.04, both sides slow-push); the pushed, siege and freeze states are worth +1.4 / +1.9 / +2.1 at equal power
+  (before 0.0 / +1.2 / 0.0).
+
+**Decision: PASS WITH CAVEATS.** The freeze band is 3 HP wide and needs an absolute threshold; a champion far ahead
+cannot freeze; a crash into one's own tower is still collected at 0.6 and the drift punishes passive opponents that
+never take plates; the stand-back concession is a best reply to bare threats, not an equilibrium outcome; scripted
+evidence only. Listed for review: the own-tower rate (harness variants `lasthit_ot5` / `lasthit_ot7`) and whether a
+16-HP wave is worth its rescale to widen the freeze band.
+
+**Next steps (not started):** review; then the M4.3 PPO smoke test on `m4_lasthit()`, judged against the sampled
+equilibria of the report's section 6.4.

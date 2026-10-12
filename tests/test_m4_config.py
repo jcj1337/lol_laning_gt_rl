@@ -54,7 +54,8 @@ def test_c2_legacy_and_m2c_reject_any_m4_economy_field(field):
                  "zoning_rule": "none", "wave_dynamics": "natural", "champion_wave_damage": (0, 3, 1),
                  "natural_crash_rule": "entry", "natural_tower_reach": 1, "wave_clear_scaling": "attack_power",
                  "wave_clear_scaled_slots": (1,), "trade_exchanges": 2, "trade_farm_rule": "loser",
-                 "invest_durability": True, "collect_contest_own_tower": 0.6}[field]
+                 "invest_durability": True, "collect_contest_own_tower": 0.6, "wave_hold_fraction": 0.125,
+                 "wave_thin_fraction": 0.5}[field]
     for preset in (GameConfig.champions, GameConfig.champions_continuing, GameConfig):
         with pytest.raises(ValueError, match=field):
             preset(**{field: value}).validate()

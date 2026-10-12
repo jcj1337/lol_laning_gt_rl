@@ -1,0 +1,271 @@
+===== neutral x1.76: A punishes, B farms (seed 5000; GLOBAL lane strings; value cumulative A - B)
+k  9     HO-T     HO-H | +0:12 r[-4]    +0:13 r[+4]    | A@   0 B@   0 | hp  6.02  4.25 | farm 0.17 0.45 | cum  -0.28 | 
+k 10     HO-T     HO-H | +0:8 r[-2]     +0:10 r[+2]    | A@   0 B@   0 | hp  6.02  4.25 | farm 0.17 0.45 | cum  -0.56 | 
+k 11     HO-T     HO-H | +0:11 r[-4]    +0:15 r[+4]    | A@   0 B@   0 | hp  5.99  4.32 | farm 0.17 0.56 | cum  -0.96 | 
+k 12     HO-T     HO-H | +0:7 r[-2]     +0:13 r[+2]    | A@   0 B@   0 | hp  5.99  4.32 | farm 0.11 0.45 | cum  -1.29 | 
+k 13     HO-T     HO-H | +0:9 r[-4]     +0:18 r[+4]    | A@   0 B@   0 | hp  5.99  4.32 | farm 0.17 0.68 | cum  -1.80 | 
+k 14     HO-T     HO-H | +0:4 r[-2]     +0:17 r[+2]    | A@   0 B@   0 | hp  5.99  4.39 | farm 0.06 0.56 | cum  -2.31 | 
+k 15     HO-T     HO-H | +0:6 r[-4]     +0:22 r[+4]    | A@   0 B@   0 | hp  5.99  4.39 | farm 0.17 0.68 | cum  -2.81 | 
+k 16     HO-T     HO-H | -2:8           +0:21 r[+2]    | A@   0 B@   0 | hp  5.99  4.39 | farm 0.06 0.68 | cum  -3.43 | 
+k 17     HO-T     HO-H | -1:1 r[-4]     -1:20 r[+0,+4] | A@   0 B@  -1 | hp  5.99  4.47 | farm 0.06 0.79 | cum  -4.16 | 
+k 18     HO-T     HO-H | -2:7           -1:7 r[+2] sg19 | A@   0 B@  -1 | hp  5.99  2.88 | farm 0.11 0.23 | cum  -4.28 | B crashes 19
+k 19     HO-T     HO-H | -2:4 r[-4]     -1:14 r[+4] sg13 | A@   0 B@  -1 | hp  5.98  2.88 | farm 0.06 0.34 | cum  -4.56 | 
+k 20     HO-T     HO-H | -2:8           -1:11 r[+2] sg7 | A@   0 B@  -1 | hp  5.98  2.88 | farm 0.17 0.45 | cum  -4.84 | 
+k 21     HO-T     HO-H | -2:4 r[-4]     -1:18 r[+4] sg1 | A@   0 B@  -1 | hp  5.98   1.2 | farm 0.06 0.45 | cum  -5.23 | 
+k 22     HO-T     HO-S | -2:8           -1:15 r[+2]    | A@   0 B@   1 | hp  5.98   1.2 | farm 0.17 0.00 | cum  -5.06 | B evades
+k 23     HO-T     HO-S | -2:4 r[-4]     -1:21 r[+4]    | A@   0 B@   2 | hp  5.98   1.2 | farm 0.23 0.00 | cum  -4.84 | B evades
+k 24     HO-H     HO-R | -2:7           -1:17 r[+2]    | A@  -2 B@away | hp  5.98  None | farm 0.45 0.00 | cum  -4.39 | B recalls
+k 25     HO-H   ABSENT | -2:3 r[-4]     -1:23 r[+4]    | A@  -2 B@away | hp  5.98  5.98 | farm 0.23 0.00 | cum  -4.16 | 
+k 26     HO-H     HO-H | -2:6           -1:20 r[+2]    | A@  -2 B@   0 | hp  5.98   6.0 | farm 0.34 0.00 | cum  -3.83 | 
+k 27     HO-H     HO-H | -4:8           -1:18 r[+0,+4] | A@  -2 B@  -1 | hp  5.98   6.0 | farm 0.23 0.68 | cum  -4.28 | 
+k 28     HO-H     HO-H | -3:3           +2:8 sg21      | A@  -2 B@  -1 | hp  5.98   6.0 | farm 0.38 0.00 | cum  -3.90 | B crashes 26
+k 29     HO-H     HO-H | -4:8           +0:8 r[+4] sg13 | A@  -2 B@   0 | hp   6.0   6.0 | farm 0.60 0.00 | cum  -3.30 | 
+k 30     HO-H     HO-H | -3:4           +2:8 sg13      | A@  -2 B@   0 | hp   6.0   6.0 | farm 0.60 0.00 | cum  -2.70 | B crashes 8
+k 31     HO-H     HO-H | -3:9           +0:8 r[+4] sg5 | A@  -2 B@   0 | hp   6.0   6.0 | farm 0.60 0.00 | cum  -2.10 | 
+k 32     HO-H     HO-H | -2:7           +2:8 sg7       | A@  -2 B@   0 | hp  5.99   6.0 | farm 0.45 0.00 | cum  -1.65 | B crashes 8
+k 33     HO-H     HO-H | -2:6 r[-4]     +0:8 r[+4]     | A@  -2 B@   0 | hp  5.99   6.0 | farm 0.53 0.00 | cum  -1.12 | 
+k 34     HO-H     HO-H | -1:12          -1:5 r[+2]     | A@  -1 B@  -1 | hp  5.99  5.99 | farm 0.34 0.23 | cum  -1.01 | 
+k 35     HO-T     HO-H | -1:9 r[-4]     -1:10 r[+4]    | A@  -1 B@  -1 | hp  5.99  5.99 | farm 0.17 0.34 | cum  -1.18 | 
+k 36     HO-T     HO-H | -1:14          -1:8 r[+2]     | A@  -1 B@  -1 | hp  5.99  3.57 | farm 0.11 0.34 | cum  -1.41 | B ganked
+k 37     HO-T     HO-H | -1:11 r[-4]    -1:13 r[+4]    | A@  -1 B@  -1 | hp  5.99  0.35 | farm 0.17 0.34 | cum  -1.57 | B ganked
+k 38     HO-T     HO-S | -1:16          -1:10 r[+2]    | A@   0 B@   1 | hp  5.99  0.35 | farm 0.17 0.00 | cum  -1.41 | B evades
+k 39     HO-T     HO-S | -1:14 r[-4]    -1:14 r[+4]    | A@   0 B@   2 | hp  4.28  0.35 | farm 0.45 0.00 | cum  -0.96 | A ganked, B evades
+k 40     HO-H     HO-R | -1:19          -1:9 r[+2]     | A@  -1 B@away | hp  4.36  None | farm 0.56 0.00 | cum  -0.39 | B recalls
+
+===== neutral x1.76: A punishes, B respects (stands back) (seed 5000; GLOBAL lane strings; value cumulative A - B)
+k  9     HO-T     HO-S | +0:13 r[-4]    +0:12 r[+4]    | A@   0 B@   2 | hp  6.02  6.02 | farm 0.45 0.00 | cum  +0.45 | B evades
+k 10     HO-H     HO-Y | +0:9 r[-2]     +0:8 r[+2]     | A@   0 B@   1 | hp  6.02  6.02 | farm 0.45 0.45 | cum  +0.45 | 
+k 11     HO-T     HO-S | +0:14 r[-4]    +0:12 r[+4]    | A@   0 B@   2 | hp  5.99  5.99 | farm 0.45 0.00 | cum  +0.90 | B evades
+k 12     HO-H     HO-Y | +0:10 r[-2]    +0:8 r[+2]     | A@   0 B@   1 | hp  5.99  5.99 | farm 0.45 0.45 | cum  +0.90 | 
+k 13     HO-T     HO-S | +0:15 r[-4]    +0:11 r[+4]    | A@   0 B@   2 | hp  5.99  5.99 | farm 0.56 0.00 | cum  +1.46 | B evades
+k 14     HO-H     HO-Y | +0:12 r[-2]    +0:7 r[+2]     | A@   0 B@   1 | hp  5.99  5.99 | farm 0.45 0.34 | cum  +1.57 | 
+k 15     HO-T     HO-S | +0:17 r[-4]    +0:9 r[+4]     | A@   0 B@   2 | hp  5.98  5.99 | farm 0.68 0.00 | cum  +2.25 | B evades
+k 16     HO-H     HO-Y | +0:15 r[-2]    +0:5 r[+2]     | A@   0 B@   1 | hp  5.98  5.99 | farm 0.45 0.23 | cum  +2.48 | 
+k 17     HO-T     HO-S | +0:20 r[-4]    +0:7 r[+4]     | A@   0 B@   2 | hp  5.98  5.98 | farm 0.68 0.00 | cum  +3.15 | B evades
+k 18     HO-H     HO-Y | +0:18 r[-2]    +0:1 r[+2]     | A@   0 B@   1 | hp  5.98  5.98 | farm 0.68 0.23 | cum  +3.60 | 
+k 19     HO-T     HO-S | +0:17 r[-1,-4] +0:2 r[+4]     | A@   0 B@   2 | hp  5.98  5.98 | farm 0.79 0.00 | cum  +4.39 | B evades
+k 20     HO-H     HO-Y | +1:23 r[-2]    +2:5           | A@   1 B@   2 | hp  5.98  5.98 | farm 0.56 0.11 | cum  +4.84 | 
+k 21     HO-H     HO-Y | +1:21 r[+0,-4] +4:8           | A@   1 B@   2 | hp  5.98  5.98 | farm 0.56 0.23 | cum  +5.17 | 
+k 22     HO-H     HO-Y | -2:8 sg24      +3:2           | A@   1 B@   2 | hp   6.0  5.98 | farm 0.00 0.38 | cum  +4.80 | A crashes 29
+k 23     HO-H     HO-Y | +0:8 r[-4] sg16 +4:8           | A@   0 B@   2 | hp   6.0  5.98 | farm 0.00 0.60 | cum  +4.20 | 
+k 24     HO-H     HO-Y | -2:8 sg16      +3:4           | A@   0 B@   2 | hp   6.0  5.98 | farm 0.00 0.60 | cum  +3.60 | A crashes 8
+k 25     HO-H     HO-Y | +0:8 r[-4] sg8 +3:9           | A@   0 B@   2 | hp   6.0  5.98 | farm 0.00 0.60 | cum  +3.00 | 
+k 26     HO-H     HO-Y | -2:8 sg7       +3:7           | A@   0 B@   2 | hp   6.0   6.0 | farm 0.00 0.68 | cum  +2.33 | A crashes 8
+k 27     HO-H     HO-Y | +0:8 r[-4]     +3:14          | A@   0 B@   2 | hp   6.0   6.0 | farm 0.00 0.53 | cum  +1.80 | 
+k 28     HO-H     HO-Y | +1:4 r[-2]     +2:12          | A@   1 B@   2 | hp   6.0   6.0 | farm 0.23 0.45 | cum  +1.57 | 
+k 29     HO-H     HO-Y | +1:8 r[-4]     +2:9 r[+4]     | A@   1 B@   2 | hp   6.0   6.0 | farm 0.34 0.45 | cum  +1.46 | 
+k 30     HO-H     HO-Y | +1:4 r[-2]     +2:15          | A@   1 B@   2 | hp   6.0   6.0 | farm 0.23 0.45 | cum  +1.24 | 
+k 31     HO-H     HO-Y | +1:8 r[-4]     +2:12 r[+4]    | A@   1 B@   2 | hp   6.0  5.99 | farm 0.34 0.45 | cum  +1.12 | 
+k 32     HO-H     HO-Y | +1:2 r[-2]     +2:18          | A@   1 B@   2 | hp   6.0  5.99 | farm 0.23 0.68 | cum  +0.68 | 
+k 33     HO-H     HO-Y | +0:6 r[-4]     +1:16 r[+4]    | A@   0 B@   2 | hp  5.99  5.99 | farm 0.11 0.23 | cum  +0.56 | 
+k 34     HO-H     HO-Y | +0:1 r[-2]     +1:22          | A@   0 B@   1 | hp  5.99  5.99 | farm 0.23 0.56 | cum  +0.23 | 
+k 35     HO-T     HO-S | +0:4 r[-4]     +1:20 r[+4]    | A@   0 B@   2 | hp  5.99  5.99 | farm 0.23 0.00 | cum  +0.45 | B evades
+k 36     HO-H     HO-Y | -2:8           +0:19 r[+2]    | A@  -2 B@   1 | hp  5.99  5.99 | farm 0.00 0.45 | cum  +0.00 | 
+k 37     HO-H     HO-Y | -1:2 r[-4]     -1:17 r[+0,+4] | A@  -1 B@  -1 | hp  5.99  5.99 | farm 0.23 0.68 | cum  -0.45 | 
+k 38     HO-T     HO-S | -2:5           +2:8 sg23      | A@   0 B@   1 | hp  5.99  5.99 | farm 0.06 0.00 | cum  -0.39 | B evades, B crashes 24
+k 39     HO-T     HO-S | -4:8           +0:8 r[+4] sg15 | A@   0 B@   2 | hp  4.28  5.99 | farm 0.00 0.00 | cum  -0.39 | A ganked, B evades
+k 40     HO-H     HO-Y | -3:4           +2:8 sg15      | A@  -2 B@   0 | hp  4.28  5.99 | farm 0.60 0.00 | cum  +0.21 | B crashes 8
+
+===== neutral x1.76: A Clears and punishes, B respects (seed 5000; GLOBAL lane strings; value cumulative A - B)
+k  9     CL-T     HO-S | +0:13 r[-4]    +0:5 r[+4]     | A@   0 B@   2 | hp  5.99  6.02 | farm 1.24 0.00 | cum  +1.24 | B evades
+k 10     CL-H     HO-Y | +1:11 r[-2]    +2:3           | A@   1 B@   2 | hp  5.99  6.02 | farm 1.12 0.11 | cum  +2.25 | 
+k 11     CL-H     HO-Y | +0:8 r[-4] sg9 +4:8           | A@   1 B@   2 | hp  5.99  6.02 | farm 0.34 0.23 | cum  +2.36 | A crashes 9
+k 12   CL-H+P     HO-Y | -2:8 sg9       --             | A@   2 B@   2 | hp  5.98  5.99 | farm 0.90 0.60 | cum  +2.66 | A crashes 8
+k 13   CL-H+P     HO-S | +0:8 r[-4] sg2 +4:8           | A@   2 B@   2 | hp  5.98  5.99 | farm 0.00 0.53 | cum  +3.14 | A plate
+k 14   CL-H+P     HO-S | -2:8 sg8       --             | A@   2 B@   2 | hp  5.98  5.99 | farm 0.90 0.15 | cum  +3.89 | A crashes 8
+k 15   CL-H+P     HO-S | +0:8 r[-4] sg1 +4:8           | A@   2 B@   2 | hp  5.98  5.98 | farm 0.00 0.53 | cum  +3.36 | 
+k 16   CL-H+P     HO-S | -2:8 sg8       --             | A@   2 B@   2 | hp  5.98  5.98 | farm 0.90 0.07 | cum  +5.19 | A crashes 8, A plate
+k 17   CL-H+P     HO-S | +0:8 r[-4] sg1 +4:8           | A@   2 B@   2 | hp  5.98  5.98 | farm 0.00 0.53 | cum  +4.66 | 
+k 18   CL-H+P     HO-S | -2:8 sg8       --             | A@   2 B@   2 | hp  5.98  5.98 | farm 0.90 0.07 | cum  +6.49 | A crashes 8, A plate
+k 19   CL-H+P     HO-S | +0:8 r[-4] sg1 +4:8           | A@   2 B@   2 | hp  5.98  5.98 | farm 0.00 0.53 | cum  +5.96 | 
+k 20   CL-H+P     HO-S | -2:8 sg8       --             | A@   2 B@   2 | hp  5.98  5.98 | farm 0.90 0.07 | cum  +6.79 | A crashes 8
+k 21   CL-H+P     HO-S | +0:8 r[-4] sg1 +4:8           | A@   2 B@   2 | hp  5.98  5.98 | farm 0.00 0.53 | cum  +6.26 | 
+k 22   CL-H+P     HO-S | -2:8 sg8       --             | A@   2 B@   2 | hp   6.0  5.98 | farm 0.90 0.07 | cum  +7.09 | A crashes 8
+k 23   CL-H+P     HO-S | +0:8 r[-4] sg1 +4:8           | A@   2 B@   2 | hp   6.0  5.98 | farm 0.00 0.53 | cum  +6.56 | 
+k 24   CL-H+P     HO-S | -2:8 sg8       --             | A@   2 B@   2 | hp   6.0  5.98 | farm 0.90 0.07 | cum  +7.39 | A crashes 8
+k 25   CL-H+P     HO-S | +0:8 r[-4] sg1 +4:8           | A@   2 B@   2 | hp   6.0   6.0 | farm 0.00 0.53 | cum  +6.86 | 
+k 26   CL-H+P     HO-S | -2:8 sg8       --             | A@   2 B@   2 | hp   6.0   6.0 | farm 0.90 0.07 | cum  +7.69 | A crashes 8
+k 27   CL-H+P     HO-S | +0:8 r[-4] sg1 +4:8           | A@   2 B@   2 | hp   6.0   6.0 | farm 0.00 0.53 | cum  +7.16 | 
+k 28   CL-H+P     HO-S | -2:8 sg8       --             | A@   2 B@   2 | hp  5.99   6.0 | farm 0.90 0.07 | cum  +7.99 | A crashes 8
+k 29   CL-H+P     HO-S | +0:8 r[-4] sg1 +4:8           | A@   2 B@   2 | hp  5.99   6.0 | farm 0.00 0.53 | cum  +7.46 | 
+k 30   CL-H+P     HO-S | -2:8 sg8       --             | A@   2 B@   2 | hp  5.99   6.0 | farm 0.90 0.07 | cum  +8.29 | A crashes 8
+k 31   CL-H+P     HO-S | +0:8 r[-4] sg1 +4:8           | A@   2 B@   2 | hp  5.99  5.99 | farm 0.00 0.53 | cum  +7.76 | 
+k 32   CL-H+P     HO-S | -2:8 sg8       --             | A@   2 B@   2 | hp  5.99  5.99 | farm 0.90 0.07 | cum  +8.59 | A crashes 8
+k 33   CL-H+P     HO-S | +0:8 r[-4] sg1 +4:8           | A@   2 B@   2 | hp  5.99  5.99 | farm 0.00 0.53 | cum  +8.06 | 
+k 34   CL-H+P     HO-S | -2:8 sg8       --             | A@   2 B@   2 | hp  5.99  5.99 | farm 0.90 0.07 | cum  +8.89 | A crashes 8
+k 35   CL-H+P     HO-S | +0:8 r[-4] sg1 +4:8           | A@   2 B@   2 | hp  5.99  5.99 | farm 0.00 0.53 | cum  +8.36 | 
+k 36   CL-H+P     HO-S | -2:8 sg8       --             | A@   2 B@   2 | hp  5.99  5.99 | farm 0.90 0.07 | cum  +9.19 | A crashes 8
+k 37   CL-H+P     HO-S | +0:8 r[-4] sg1 +4:8           | A@   2 B@   2 | hp  5.99  5.99 | farm 0.00 0.53 | cum  +8.66 | 
+k 38   CL-H+P     HO-S | -2:8 sg8       --             | A@   2 B@   2 | hp  5.99  5.99 | farm 0.90 0.07 | cum  +9.49 | A crashes 8
+k 39   CL-H+P     HO-S | +0:8 r[-4] sg1 +4:8           | A@   2 B@   2 | hp  3.72  5.99 | farm 0.00 0.53 | cum  +8.96 | A ganked
+k 40   CL-H+P     HO-S | -2:8 sg8       --             | A@   2 B@   2 | hp  3.72  5.99 | farm 0.90 0.07 | cum  +9.79 | A crashes 8
+
+===== neutral x1.76: both Clear and punish (seed 5000; GLOBAL lane strings; value cumulative A - B)
+k  9     CL-T     CL-T | +0:13 r[-4]    +0:13 r[+4]    | A@   0 B@   0 | hp  6.02  1.25 | farm 0.17 0.17 | cum  +0.00 | B ganked
+k 10     CL-T     HO-S | +0:11 r[-2]    +0:2 r[+2]     | A@   0 B@   2 | hp  5.99  1.25 | farm 1.24 0.00 | cum  +1.24 | B evades
+k 11     CL-H     HO-R | +0:18 r[-4]    +4:8           | A@   0 B@away | hp  5.99  None | farm 1.12 0.00 | cum  +2.36 | B recalls
+k 12     CL-H   ABSENT | -2:8 sg17      +2:6           | A@   0 B@away | hp  5.98  6.02 | farm 0.00 0.00 | cum  +2.36 | A crashes 18
+k 13   CL-H+P     CL-H | +0:8 r[-4] sg6 +4:8           | A@   2 B@   2 | hp  5.98  5.99 | farm 0.68 0.82 | cum  +2.21 | 
+k 14   CL-H+P     CL-T | -2:8 sg8       --             | A@   2 B@   2 | hp  5.98  5.99 | farm 0.90 0.23 | cum  +3.89 | A crashes 8, A plate
+k 15   CL-H+P     CL-T | +0:8 r[-4] sg2 +4:8           | A@   2 B@   2 | hp  5.98  5.98 | farm 0.00 0.23 | cum  +3.66 | 
+k 16   CL-H+P     CL-T | -2:8 sg8       --             | A@   2 B@   2 | hp  5.98  5.98 | farm 0.90 0.07 | cum  +5.49 | A crashes 8, A plate
+k 17   CL-H+P     CL-T | +0:8 r[-4] sg2 +4:8           | A@   2 B@   2 | hp  5.98  5.98 | farm 0.00 0.23 | cum  +5.26 | 
+k 18   CL-H+P     CL-T | -2:8 sg8       --             | A@   2 B@   2 | hp  5.45  5.98 | farm 0.90 0.07 | cum  +6.09 | A crashes 8
+k 19   CL-H+P     CL-T | +0:8 r[-4] sg2 +4:8           | A@   2 B@   2 | hp  4.91  5.98 | farm 0.00 0.23 | cum  +6.86 | A plate
+k 20   CL-H+P     CL-T | -2:8 sg8       --             | A@   2 B@   2 | hp  3.82  5.98 | farm 0.90 0.07 | cum  +7.69 | A crashes 8
+k 21   CL-H+P     CL-T | +0:8 r[-4] sg2 +4:8           | A@   2 B@   2 | hp  3.82  5.98 | farm 0.00 0.23 | cum  +7.46 | 
+k 22   CL-H+P     CL-T | -2:8 sg8       --             | A@   2 B@   2 | hp  3.93  5.98 | farm 0.90 0.07 | cum  +8.29 | A crashes 8
+k 23   CL-H+P     CL-T | +0:8 r[-4] sg2 +4:8           | A@   2 B@   2 | hp  3.93  5.98 | farm 0.00 0.23 | cum  +8.06 | 
+k 24   CL-H+P     CL-T | -2:8 sg8       --             | A@   2 B@   2 | hp  3.93  5.98 | farm 0.90 0.07 | cum  +8.89 | A crashes 8
+k 25   CL-H+P     CL-T | +0:8 r[-4] sg2 +4:8           | A@   2 B@   2 | hp  3.39  5.98 | farm 0.00 0.23 | cum  +8.66 | 
+k 26   CL-H+P     CL-T | -2:8 sg8       --             | A@   2 B@   2 | hp  2.84   6.0 | farm 0.90 0.07 | cum  +9.49 | A crashes 8
+k 27   CL-H+P     CL-T | +0:8 r[-4] sg2 +4:8           | A@   2 B@   2 | hp  2.84   6.0 | farm 0.00 0.23 | cum  +9.26 | 
+k 28   CL-H+P     CL-T | -2:8 sg8       --             | A@   2 B@   2 | hp  2.45   6.0 | farm 0.90 0.07 | cum +10.09 | A crashes 8
+k 29   CL-H+P     CL-T | +0:8 r[-4] sg2 +4:8           | A@   2 B@   2 | hp  2.45   6.0 | farm 0.00 0.23 | cum  +9.86 | 
+k 30   CL-H+P     CL-T | -2:8 sg8       --             | A@   2 B@   2 | hp  1.91   6.0 | farm 0.90 0.07 | cum +10.69 | A crashes 8
+k 31     HO-S     CL-T | +0:8 r[-4] sg2 +4:8           | A@   0 B@   1 | hp  1.91   6.0 | farm 0.00 0.23 | cum +10.46 | A evades
+k 32     HO-S     CL-T | -2:8 sg6       +2:6           | A@  -2 B@   0 | hp  1.91  5.99 | farm 0.00 0.00 | cum +10.46 | A evades, A crashes 8
+k 33     HO-R     CL-H | +0:5 r[-4]     +1:4 r[+4]     | A@away B@   1 | hp  None  5.99 | farm 0.00 0.79 | cum  +9.68 | A recalls
+k 34   ABSENT     CL-H | -2:8           +1:11          | A@away B@   1 | hp  5.99  5.99 | farm 0.00 0.56 | cum  +9.11 | 
+k 35     CL-H     CL-H | -1:7 r[-4]     +4:8           | A@  -1 B@   2 | hp  5.99  5.99 | farm 1.24 0.00 | cum +10.35 | 
+k 36     CL-H     CL-H | +1:3 r[-2]     +2:3           | A@   1 B@   2 | hp  5.99  5.99 | farm 0.56 0.45 | cum +10.46 | 
+k 37     CL-H     CL-H | +0:8 r[-4]     +4:8           | A@   0 B@   2 | hp  5.99  5.99 | farm 0.23 0.34 | cum +10.35 | 
+k 38     CL-H     CL-H | -2:8 sg1       +2:8           | A@   0 B@   2 | hp  5.99  5.99 | farm 0.00 0.64 | cum  +9.71 | A crashes 5
+k 39   CL-H+P     CL-H | +0:8 r[-4]     +4:8           | A@   2 B@   2 | hp  3.91  5.99 | farm 0.90 0.07 | cum +10.54 | A ganked
+k 40     CL-H     CL-T | -2:8 sg7       +2:7           | A@   0 B@   1 | hp  3.36  5.99 | farm 0.00 0.04 | cum +10.50 | A crashes 8
+
+===== neutral equal: both slow push (seed 5000; GLOBAL lane strings; value cumulative A - B)
+k  9     TN-H     TN-H | +0:11 r[-4]    +0:11 r[+4]    | A@   0 B@   0 | hp  6.02  6.02 | farm 0.56 0.56 | cum  +0.00 | 
+k 10     TN-H     TN-H | +0:7 r[-2]     +0:7 r[+2]     | A@   0 B@   0 | hp  5.99  5.99 | farm 0.45 0.45 | cum  +0.00 | 
+k 11     TN-H     TN-H | +0:9 r[-4]     +0:9 r[+4]     | A@   0 B@   0 | hp  5.99  5.99 | farm 0.68 0.68 | cum  +0.00 | 
+k 12     TN-H     TN-H | +0:5 r[-2]     +0:5 r[+2]     | A@   0 B@   0 | hp  5.99  5.99 | farm 0.45 0.45 | cum  +0.00 | 
+k 13     TN-H     TN-H | +0:7 r[-4]     +0:7 r[+4]     | A@   0 B@   0 | hp  5.99  5.99 | farm 0.68 0.68 | cum  +0.00 | 
+k 14     TN-H     TN-H | +0:3 r[-2]     +0:3 r[+2]     | A@   0 B@   0 | hp  5.98  5.98 | farm 0.45 0.45 | cum  +0.00 | 
+k 15     TN-H     TN-H | +0:6 r[-4]     +0:6 r[+4]     | A@   0 B@   0 | hp  5.98  5.98 | farm 0.56 0.56 | cum  +0.00 | 
+k 16     TN-H     TN-H | +0:2 r[-2]     +0:2 r[+2]     | A@   0 B@   0 | hp  5.98  5.98 | farm 0.45 0.45 | cum  +0.00 | 
+k 17     TN-H     TN-H | +0:6 r[-4]     +0:6 r[+4]     | A@   0 B@   0 | hp  5.98  5.98 | farm 0.45 0.45 | cum  +0.00 | 
+k 18     TN-H     TN-H | +0:2 r[-2]     +0:2 r[+2]     | A@   0 B@   0 | hp  5.98  5.98 | farm 0.45 0.45 | cum  +0.00 | 
+k 19     TN-H     TN-H | +0:6 r[-4]     +0:6 r[+4]     | A@   0 B@   0 | hp  5.98  5.98 | farm 0.45 0.45 | cum  +0.00 | 
+k 20     TN-H     TN-H | +0:2 r[-2]     +0:2 r[+2]     | A@   0 B@   0 | hp  5.98  5.98 | farm 0.45 0.45 | cum  +0.00 | 
+k 21     TN-H     TN-H | +0:6 r[-4]     +0:6 r[+4]     | A@   0 B@   0 | hp  5.98  5.98 | farm 0.45 0.45 | cum  +0.00 | 
+k 22     TN-H     TN-H | +0:2 r[-2]     +0:2 r[+2]     | A@   0 B@   0 | hp  5.98  5.98 | farm 0.45 0.45 | cum  +0.00 | 
+k 23     TN-H     TN-H | +0:6 r[-4]     +0:6 r[+4]     | A@   0 B@   0 | hp  5.98  5.98 | farm 0.45 0.45 | cum  +0.00 | 
+k 24     TN-H     TN-H | +0:2 r[-2]     +0:2 r[+2]     | A@   0 B@   0 | hp   6.0   6.0 | farm 0.45 0.45 | cum  +0.00 | 
+k 25     TN-H     TN-H | +0:6 r[-4]     +0:6 r[+4]     | A@   0 B@   0 | hp   6.0   6.0 | farm 0.45 0.45 | cum  +0.00 | 
+k 26     TN-H     TN-H | +0:2 r[-2]     +0:2 r[+2]     | A@   0 B@   0 | hp   6.0   6.0 | farm 0.45 0.45 | cum  +0.00 | 
+k 27     TN-H     TN-H | +0:6 r[-4]     +0:6 r[+4]     | A@   0 B@   0 | hp   6.0   6.0 | farm 0.45 0.45 | cum  +0.00 | 
+k 28     TN-H     TN-H | +0:2 r[-2]     +0:2 r[+2]     | A@   0 B@   0 | hp   6.0   6.0 | farm 0.45 0.45 | cum  +0.00 | 
+k 29     TN-H     TN-H | +0:6 r[-4]     +0:6 r[+4]     | A@   0 B@   0 | hp   6.0   6.0 | farm 0.45 0.45 | cum  +0.00 | 
+k 30     TN-H     TN-H | +0:2 r[-2]     +0:2 r[+2]     | A@   0 B@   0 | hp   6.0   6.0 | farm 0.45 0.45 | cum  +0.00 | 
+k 31     TN-H     TN-H | +0:6 r[-4]     +0:6 r[+4]     | A@   0 B@   0 | hp  5.99  5.99 | farm 0.45 0.45 | cum  +0.00 | 
+k 32     TN-H     TN-H | +0:2 r[-2]     +0:2 r[+2]     | A@   0 B@   0 | hp  5.99  5.99 | farm 0.45 0.45 | cum  +0.00 | 
+k 33     TN-H     TN-H | +0:6 r[-4]     +0:6 r[+4]     | A@   0 B@   0 | hp  5.99  5.99 | farm 0.45 0.45 | cum  +0.00 | 
+k 34     TN-H     TN-H | +0:2 r[-2]     +0:2 r[+2]     | A@   0 B@   0 | hp  5.99  5.99 | farm 0.45 0.45 | cum  +0.00 | 
+k 35     TN-H     TN-H | +0:6 r[-4]     +0:6 r[+4]     | A@   0 B@   0 | hp  5.99  5.99 | farm 0.45 0.45 | cum  +0.00 | 
+k 36     TN-H     TN-H | +0:2 r[-2]     +0:2 r[+2]     | A@   0 B@   0 | hp  5.99  5.99 | farm 0.45 0.45 | cum  +0.00 | 
+k 37     TN-H     TN-H | +0:6 r[-4]     +0:6 r[+4]     | A@   0 B@   0 | hp  5.99  5.99 | farm 0.45 0.45 | cum  +0.00 | 
+k 38     TN-H     TN-H | +0:2 r[-2]     +0:2 r[+2]     | A@   0 B@   0 | hp  5.99  5.99 | farm 0.45 0.45 | cum  +0.00 | 
+k 39     TN-H     TN-H | +0:6 r[-4]     +0:6 r[+4]     | A@   0 B@   0 | hp  2.99  5.99 | farm 0.45 0.45 | cum  +0.00 | A ganked
+k 40     TN-H     TN-H | +0:2 r[-2]     +0:2 r[+2]     | A@   0 B@   0 | hp  2.99  5.99 | farm 0.45 0.45 | cum  +0.00 | 
+
+===== freeze equal: A freezes and punishes, B Clears and punishes (seed 5000; GLOBAL lane strings; value cumulative A - B)
+k 51     HO-H   CL-H+P | -4:8           -1:11 r[+4]    | A@  -2 B@  -2 | hp  6.01  2.01 | farm 0.68 0.90 | cum  -0.23 | B ganked
+k 52     HO-T     HO-S | -3:6           +2:8 sg7       | A@  -1 B@   0 | hp  6.01  2.01 | farm 0.15 0.00 | cum  -0.07 | B evades, B crashes 11
+k 53     HO-T     HO-S | -3:13          +0:8 r[+4]     | A@   0 B@   2 | hp  5.99  2.01 | farm 0.00 0.00 | cum  -0.07 | B evades
+k 54     HO-H     HO-R | -2:12          -1:4 r[+2]     | A@  -2 B@away | hp  5.99  None | farm 0.45 0.00 | cum  +0.38 | B recalls
+k 55     HO-H   ABSENT | -2:10 r[-4]    -1:8 r[+4]     | A@  -2 B@away | hp  5.99  6.01 | farm 0.45 0.00 | cum  +0.82 | 
+k 56     HO-H     CL-H | -2:17          -1:3 r[+2]     | A@  -2 B@   0 | hp  5.99  6.01 | farm 0.56 0.00 | cum  +1.39 | 
+k 57     HO-H     CL-H | -1:12 r[-4]    +0:6 r[+4]     | A@  -1 B@   0 | hp  5.99  5.99 | farm 0.56 0.45 | cum  +1.50 | 
+k 58     HO-T     CL-T | -1:19          +0:2 r[+2]     | A@  -1 B@   0 | hp  5.99  5.99 | farm 0.23 0.06 | cum  +1.67 | 
+k 59     HO-T     CL-T | -1:17 r[-4]    +0:6 r[+4]     | A@  -1 B@   0 | hp  5.99  5.04 | farm 0.23 0.11 | cum  +1.78 | 
+k 60     HO-T     CL-T | -1:24          +0:1 r[+2]     | A@  -1 B@   0 | hp  4.96  4.08 | farm 0.28 0.06 | cum  +2.01 | 
+k 61     HO-T     CL-T | -1:23 r[-4]    +0:4 r[+4]     | A@  -1 B@   0 | hp  4.02  4.08 | farm 0.28 0.06 | cum  +2.23 | 
+k 62     HO-T     CL-T | -1:22 r[-2]    +2:8           | A@  -1 B@   0 | hp  2.04  0.14 | farm 0.23 0.06 | cum  +2.40 | B ganked
+k 63     HO-S     HO-S | +0:21 r[-1,-4] +1:1 r[+4]     | A@  -1 B@   2 | hp  2.04  0.14 | farm 0.00 0.00 | cum  +2.40 | 
+k 64     HO-R     HO-R | +1:19 r[+0,-2] +2:5           | A@away B@away | hp  None  None | farm 0.00 0.00 | cum  +2.40 | A recalls, B recalls
+k 65   ABSENT   ABSENT | +1:18 r[+0,+0,-4] +4:8           | A@away B@away | hp   6.0  5.99 | farm 0.00 0.00 | cum  +2.40 | 
+k 66     HO-H     CL-H | -2:8 sg23      +3:3           | A@   0 B@   2 | hp   6.0  5.99 | farm 0.00 0.82 | cum  +1.57 | A crashes 34
+k 67     HO-H     CL-H | +0:8 r[-4] sg9 +4:8           | A@   0 B@   2 | hp   6.0  5.99 | farm 0.00 1.05 | cum  +0.53 | 
+k 68     HO-H     CL-H | -2:8 sg5       +3:6           | A@   0 B@   2 | hp   6.0   6.0 | farm 0.00 0.90 | cum  -0.38 | A crashes 8
+k 69     HO-H     CL-H | +0:8 r[-4]     +2:5 r[+4]     | A@   0 B@   2 | hp   6.0   6.0 | farm 0.00 0.38 | cum  -0.75 | 
+k 70     HO-H     CL-H | -2:8           +1:12          | A@  -2 B@   1 | hp   6.0   6.0 | farm 0.00 0.90 | cum  -1.65 | 
+k 71     HO-H     CL-H | -4:8           +0:11 r[+4]    | A@  -2 B@   0 | hp   6.0   6.0 | farm 0.00 0.90 | cum  -2.55 | 
+k 72     HO-H     CL-H | -2:7           +2:8 sg9       | A@  -2 B@   0 | hp   6.0   6.0 | farm 0.19 0.00 | cum  -2.36 | B crashes 10
+k 73     HO-H   CL-H+P | -4:8           +0:8 r[+4] sg1 | A@  -2 B@  -2 | hp   6.0   6.0 | farm 0.60 0.79 | cum  -3.55 | B plate
+k 74     HO-T   CL-H+P | --             +2:8 sg8       | A@  -2 B@  -2 | hp   6.0  4.96 | farm 0.04 0.90 | cum  -4.41 | B crashes 8
+k 75     HO-T   CL-H+P | -4:8           +0:8 r[+4] sg2 | A@  -2 B@  -2 | hp  5.99  3.93 | farm 0.23 0.00 | cum  -5.19 | B plate
+k 76     HO-T   CL-H+P | --             +2:8 sg8       | A@  -2 B@  -2 | hp  5.99  3.93 | farm 0.07 0.90 | cum  -6.01 | B crashes 8
+k 77     HO-T   CL-H+P | -4:8           +0:8 r[+4] sg2 | A@  -2 B@  -2 | hp  5.99  3.93 | farm 0.23 0.00 | cum  -5.79 | 
+k 78     HO-T   CL-H+P | --             +2:8 sg8       | A@  -2 B@  -2 | hp  5.99  0.21 | farm 0.07 0.90 | cum  -7.61 | B ganked, B crashes 8, B plate
+k 79     HO-T     HO-S | -4:8           +0:8 r[+4] sg2 | A@  -1 B@   0 | hp  5.99  None | farm 0.23 0.00 | cum  -6.89 | B dies, B evades, B ganked
+k 80     HO-H   ABSENT | -2:6           +2:8 sg8       | A@  -2 B@away | hp  5.99  None | farm 0.15 0.00 | cum  -6.74 | B crashes 8
+k 81     HO-H   ABSENT | -2:5 r[-4]     +0:8 r[+4]     | A@  -2 B@away | hp  5.99  None | farm 0.60 0.00 | cum  -6.14 | 
+k 82     HO-H   ABSENT | -1:12          -1:5 r[+2]     | A@  -1 B@away | hp  5.99  5.99 | farm 0.34 0.00 | cum  -5.80 | 
+
+===== freeze x1.76: both Clear and punish (seed 5000; GLOBAL lane strings; value cumulative A - B)
+k 51     CL-H   CL-H+P | -2:1 r[-4]     +0:8 r[+4]     | A@  -2 B@  -2 | hp  6.01  2.01 | farm 1.01 0.79 | cum  +0.23 | B ganked
+k 52     CL-T     HO-S | -2:8           +2:8 sg6       | A@  -1 B@   0 | hp  6.01  2.01 | farm 0.09 0.03 | cum  +0.29 | B evades, B crashes 7
+k 53     CL-T     HO-S | -1:6 r[-4]     +0:3 r[+4]     | A@   0 B@   2 | hp  5.99  2.01 | farm 0.56 0.00 | cum  +0.86 | B evades
+k 54     CL-H     HO-R | +0:5 r[-2]     +2:8           | A@   0 B@away | hp  5.99  None | farm 0.34 0.00 | cum  +1.19 | B recalls
+k 55     CL-H   ABSENT | +1:12 r[-4]    +4:8           | A@   1 B@away | hp  5.99  6.01 | farm 0.90 0.00 | cum  +2.09 | 
+k 56     CL-H     CL-H | -2:8 sg2       +3:5           | A@   1 B@   2 | hp  5.99  5.99 | farm 0.00 0.75 | cum  +1.34 | A crashes 12
+k 57   CL-H+P     CL-H | +0:8 r[-4]     +4:8           | A@   2 B@   2 | hp  5.99  5.99 | farm 0.56 0.15 | cum  +1.76 | 
+k 58     CL-H     CL-T | -2:8 sg7       +2:7           | A@   0 B@   1 | hp  5.99  5.99 | farm 0.00 0.04 | cum  +1.72 | A crashes 8
+k 59   CL-T+P     CL-T | +0:8 r[-4]     +2:6 r[+4]     | A@   2 B@   1 | hp  5.99   4.3 | farm 0.06 0.26 | cum  +1.51 | 
+k 60     CL-T     CL-T | +1:6 r[-2]     +1:13          | A@   2 B@   1 | hp  4.84  2.61 | farm 0.06 0.11 | cum  +1.46 | A tower shot
+k 61     CL-T     CL-T | +1:11 r[-4]    +1:11 r[+4]    | A@   2 B@   1 | hp  3.69  2.61 | farm 0.11 0.17 | cum  +1.40 | A tower shot
+k 62     CL-T     CL-T | +1:8 r[-2]     +1:17          | A@   2 B@   1 | hp  1.94  None | farm 0.11 0.17 | cum  +1.84 | A tower shot, B dies
+k 63     HO-S   ABSENT | +1:12 r[-4]    +1:15 r[+4]    | A@   0 B@away | hp  1.94  None | farm 0.05 0.00 | cum  +1.89 | 
+k 64     HO-S   ABSENT | +1:8 r[-2]     +1:20          | A@  -1 B@away | hp  2.14  None | farm 0.00 0.00 | cum  +1.89 | 
+k 65     HO-R   ABSENT | +1:11 r[-4]    +1:18 r[+4]    | A@away B@away | hp  None  5.99 | farm 0.00 0.00 | cum  +1.89 | A recalls
+k 66   ABSENT     CL-H | -2:8           +1:17 r[+2]    | A@away B@   1 | hp   6.0  5.99 | farm 0.00 1.24 | cum  +0.66 | 
+k 67     CL-H     CL-H | -4:8           +0:24 r[+4]    | A@  -2 B@   0 | hp   6.0   6.0 | farm 0.00 0.90 | cum  -0.24 | 
+k 68     CL-H     CL-H | -2:6           +2:8 sg11      | A@  -2 B@   0 | hp   6.0   6.0 | farm 1.20 0.00 | cum  +0.96 | B crashes 18
+k 69     CL-H   CL-H+P | -4:8           +0:8 r[+4]     | A@  -2 B@  -2 | hp   6.0   6.0 | farm 0.82 0.68 | cum  +0.11 | B plate
+k 70     CL-T     CL-H | -2:7           +2:8 sg7       | A@  -1 B@   0 | hp   6.0  2.77 | farm 0.04 0.00 | cum  +0.14 | B crashes 8
+k 71     CL-T   CL-T+P | -2:6 r[-4]     +0:8 r[+4]     | A@  -1 B@  -2 | hp   6.0  0.25 | farm 0.26 0.06 | cum  +0.35 | B tower shot
+k 72     CL-T     HO-S | -1:13          -1:6 r[+2]     | A@  -1 B@   0 | hp   6.0  0.25 | farm 0.11 0.03 | cum  +0.44 | B evades
+k 73     CL-T     HO-S | +0:11 r[-4]    +0:1 r[+4]     | A@   0 B@   2 | hp  5.99  0.25 | farm 1.46 0.00 | cum  +1.90 | B evades
+k 74     CL-H     HO-R | +1:9 r[-2]     +2:1           | A@   1 B@away | hp  5.99  None | farm 0.90 0.00 | cum  +2.80 | B recalls
+k 75     CL-H   ABSENT | +0:8 r[-4] sg8 +4:8           | A@   1 B@away | hp  5.99   6.0 | farm 0.11 0.00 | cum  +2.91 | A crashes 8
+k 76   CL-H+P     CL-H | -2:8 sg4       --             | A@   2 B@   2 | hp  5.99   6.0 | farm 0.90 0.90 | cum  +3.91 | A crashes 8, A plate
+k 77   CL-H+P     CL-T | +0:8 r[-4]     +4:8           | A@   2 B@   2 | hp  5.99   6.0 | farm 0.00 0.15 | cum  +4.76 | A plate
+k 78     CL-H     CL-T | -2:8 sg7       +2:7           | A@   0 B@   1 | hp  5.33   6.0 | farm 0.00 0.04 | cum  +4.72 | A crashes 8
+k 79   CL-T+P     CL-T | +0:8 r[-4]     +2:6 r[+4]     | A@   2 B@   1 | hp  4.12   6.0 | farm 0.06 0.26 | cum  +4.52 | A tower shot
+k 80     CL-T     CL-T | +1:6 r[-2]     +1:13          | A@   2 B@   1 | hp  3.56  5.99 | farm 0.06 0.11 | cum  +4.46 | A tower shot
+k 81     CL-T     CL-T | +1:11 r[-4]    +1:11 r[+4]    | A@   2 B@   1 | hp  0.07  5.99 | farm 0.11 0.17 | cum  +4.41 | A ganked, A tower shot
+k 82     HO-S     CL-T | +1:8 r[-2]     +1:17          | A@   0 B@   1 | hp  0.07  5.99 | farm 0.05 0.17 | cum  +4.29 | A evades
+
+===== siege x1.76: A Clears and punishes, B respects (seed 5000; GLOBAL lane strings; value cumulative A - B)
+k 24   CL-H+P     HO-S | -2:8 sg14      --             | A@   2 B@   2 | hp   6.0   6.0 | farm 0.90 0.60 | cum  +1.30 | A crashes 8, A plate
+k 25   CL-H+P     HO-S | +0:8 r[-4] sg7 +4:8           | A@   2 B@   2 | hp   6.0   6.0 | farm 0.00 0.53 | cum  +0.78 | 
+k 26   CL-H+P     HO-S | -2:8 sg8       --             | A@   2 B@   2 | hp   6.0   6.0 | farm 0.90 0.53 | cum  +2.15 | A crashes 8, A plate
+k 27   CL-H+P     HO-S | +0:8 r[-4] sg1 +4:8           | A@   2 B@   2 | hp   6.0  5.99 | farm 0.00 0.53 | cum  +1.62 | 
+k 28   CL-H+P     HO-S | -2:8 sg8       --             | A@   2 B@   2 | hp  5.99  5.99 | farm 0.90 0.07 | cum  +2.45 | A crashes 8
+k 29   CL-H+P     HO-S | +0:8 r[-4] sg1 +4:8           | A@   2 B@   2 | hp  5.99  5.99 | farm 0.00 0.53 | cum  +2.92 | A plate
+k 30   CL-H+P     HO-S | -2:8 sg8       --             | A@   2 B@   2 | hp  5.99  5.99 | farm 0.90 0.07 | cum  +3.75 | A crashes 8
+k 31   CL-H+P     HO-S | +0:8 r[-4] sg1 +4:8           | A@   2 B@   2 | hp  5.99  5.99 | farm 0.00 0.53 | cum  +3.23 | 
+k 32   CL-H+P     HO-S | -2:8 sg8       --             | A@   2 B@   2 | hp  5.99  5.99 | farm 0.90 0.07 | cum  +4.05 | A crashes 8
+k 33   CL-H+P     HO-S | +0:8 r[-4] sg1 +4:8           | A@   2 B@   2 | hp  5.99  5.99 | farm 0.00 0.53 | cum  +3.52 | 
+k 34   CL-H+P     HO-S | -2:8 sg8       --             | A@   2 B@   2 | hp  5.99  5.99 | farm 0.90 0.07 | cum  +4.35 | A crashes 8
+k 35   CL-H+P     HO-S | +0:8 r[-4] sg1 +4:8           | A@   2 B@   2 | hp  5.99  5.99 | farm 0.00 0.53 | cum  +3.83 | 
+k 36   CL-H+P     HO-S | -2:8 sg8       --             | A@   2 B@   2 | hp  5.99  5.99 | farm 0.90 0.07 | cum  +4.65 | A crashes 8
+k 37   CL-H+P     HO-S | +0:8 r[-4] sg1 +4:8           | A@   2 B@   2 | hp  5.99  5.99 | farm 0.00 0.53 | cum  +4.12 | 
+k 38   CL-H+P     HO-S | -2:8 sg8       --             | A@   2 B@   2 | hp  5.99  5.99 | farm 0.90 0.07 | cum  +4.95 | A crashes 8
+k 39   CL-H+P     HO-S | +0:8 r[-4] sg1 +4:8           | A@   2 B@   2 | hp  5.99  5.99 | farm 0.00 0.53 | cum  +4.42 | 
+k 40   CL-H+P     HO-S | -2:8 sg8       --             | A@   2 B@   2 | hp  5.99  5.99 | farm 0.90 0.07 | cum  +5.25 | A crashes 8
+k 41   CL-H+P     HO-S | +0:8 r[-4] sg1 +4:8           | A@   2 B@   2 | hp  5.99  6.01 | farm 0.00 0.53 | cum  +4.72 | 
+k 42   CL-H+P     HO-S | -2:8 sg8       --             | A@   2 B@   2 | hp  5.99  6.01 | farm 0.90 0.07 | cum  +5.55 | A crashes 8
+k 43   CL-H+P     HO-S | +0:8 r[-4] sg1 +4:8           | A@   2 B@   2 | hp  5.99  6.01 | farm 0.00 0.53 | cum  +5.03 | 
+k 44   CL-H+P     HO-S | -2:8 sg8       --             | A@   2 B@   2 | hp  6.01  6.01 | farm 0.90 0.07 | cum  +5.85 | A crashes 8
+k 45   CL-H+P     HO-S | +0:8 r[-4] sg1 +4:8           | A@   2 B@   2 | hp  6.01  6.01 | farm 0.00 0.53 | cum  +5.33 | 
+k 46   CL-H+P     HO-S | -2:8 sg8       --             | A@   2 B@   2 | hp  6.01  6.01 | farm 0.90 0.07 | cum  +6.15 | A crashes 8
+k 47   CL-H+P     HO-S | +0:8 r[-4] sg1 +4:8           | A@   2 B@   2 | hp  6.01  6.01 | farm 0.00 0.53 | cum  +5.62 | 
+k 48   CL-H+P     HO-S | -2:8 sg8       --             | A@   2 B@   2 | hp  6.01  6.01 | farm 0.90 0.07 | cum  +6.45 | A crashes 8
+k 49   CL-H+P     HO-S | +0:8 r[-4] sg1 +4:8           | A@   2 B@   2 | hp  6.01  6.01 | farm 0.00 0.53 | cum  +5.92 | 
+k 50   CL-H+P     HO-S | -2:8 sg8       --             | A@   2 B@   2 | hp  6.01  6.01 | farm 0.90 0.07 | cum  +6.75 | A crashes 8
+k 51   CL-H+P     HO-S | +0:8 r[-4] sg1 +4:8           | A@   2 B@   2 | hp  6.01  5.99 | farm 0.00 0.53 | cum  +6.22 | 
+k 52   CL-H+P     HO-S | -2:8 sg8       --             | A@   2 B@   2 | hp  5.99  5.99 | farm 0.90 0.07 | cum  +7.05 | A crashes 8
+k 53   CL-H+P     HO-S | +0:8 r[-4] sg1 +4:8           | A@   2 B@   2 | hp  5.99  5.99 | farm 0.00 0.53 | cum  +6.53 | 
+k 54   CL-H+P     HO-S | -2:8 sg8       --             | A@   2 B@   2 | hp  3.72  5.99 | farm 0.90 0.07 | cum  +7.35 | A ganked, A crashes 8
+k 55   CL-H+P     HO-S | +0:8 r[-4] sg1 +4:8           | A@   2 B@   2 | hp  3.72  5.99 | farm 0.00 0.53 | cum  +6.83 | 

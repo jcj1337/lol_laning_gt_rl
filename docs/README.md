@@ -52,6 +52,7 @@ The reports are grouped by phase. Within a folder the files are listed in the or
 | [m4_2e_natural_waves_report.md](natural_waves/m4_2e_natural_waves_report.md) | M4.2e-A: the natural-wave prototype (`m4_natural_prototype()`) |
 | [m4_2e_natural_waves_final_review.md](natural_waves/m4_2e_natural_waves_final_review.md) | M4.2e-A.1: the final natural-wave preset (`m4_natural()`) |
 | [m4_2e_zoning_report.md](natural_waves/m4_2e_zoning_report.md) | M4.2e-B: design philosophy and combat-driven zoning (`m4_lane()`) |
+| [m4_2e_wave_actions_report.md](natural_waves/m4_2e_wave_actions_report.md) | M4.2e-C: wave actions as shares of one capacity, the half-wave law (`m4_lasthit()`) |
 
 Raw results and the commands that produced them are under `results/`, one folder per study; the drivers are in
 `lanegame/experiments/`.

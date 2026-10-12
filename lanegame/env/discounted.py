@@ -81,8 +81,11 @@ def max_champion_wave_budget(cfg: GameConfig) -> int:
     import math
     from ..progression import tables
     base = cfg.ticks_per_turn * max(cfg.champion_wave_damage)
-    if cfg.wave_clear_scaling != "attack_power":
+    if cfg.wave_clear_scaling == "none":
         return base
+    if cfg.wave_clear_scaling == "capacity":              # M4.2e-C: Clear is the capacity and the largest budget
+        from ..config import SH
+        base = cfg.ticks_per_turn * cfg.champion_wave_damage[SH]
     t = tables(cfg)
     if not cfg.continuous_items:
         ap = t.ap_max
@@ -104,7 +107,7 @@ def per_turn_bound(cfg: GameConfig) -> float:
     if cfg.wave_dynamics == "natural":
         # per tick: the lane front and the crashed mass each lose at most the Lanchester damage of a blob of hp_cap
         # plus rear_count_max queued waves (observe_m4 raises beyond it), plus the tower; the champion strikes once
-        blob = minion_damage(cfg.hp_cap + cfg.rear_count_max * cfg.wave_hp, cfg)
+        blob = minion_damage(cfg.hp_cap + cfg.rear_count_max * cfg.wave_hp, cfg, 0)     # tick 0: the larger share
         per_tick = 2 * blob + cfg.tower_damage + cfg.tower_siege_damage
         kills = cfg.ticks_per_turn * per_tick + cfg.thin_damage + max_champion_wave_budget(cfg)
     plates = 0

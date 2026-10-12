@@ -112,6 +112,14 @@ VARIANT_FIELDS = {
     "t_ot6_loser": dict(trade_farm_rule="loser", collect_contest_own_tower=0.6, collect_contest_enemy_tower=0.9),
     "t_ot6_x2_dur_loser_xp2": dict(trade_exchanges=2, invest_durability=True, trade_farm_rule="loser",
                                    collect_contest_own_tower=0.6, collect_contest_enemy_tower=0.9, xp_range=2),
+    # M4.2e-C (docs/natural_waves/m4_2e_wave_actions_report.md): the two candidates as variants of m4_natural()
+    "lane": {k: getattr(GameConfig.m4_lane(), k) for k in GameConfig.M4_LANE_FIELDS},               # == m4_lane()
+    "lasthit": {k: getattr(GameConfig.m4_lasthit(), k)
+                for k in GameConfig.M4_LANE_FIELDS + GameConfig.M4_LASTHIT_FIELDS},                 # == m4_lasthit()
+    "lasthit_ot5": {**{k: getattr(GameConfig.m4_lasthit(), k)
+                       for k in GameConfig.M4_LANE_FIELDS + GameConfig.M4_LASTHIT_FIELDS}, "collect_contest_own_tower": 0.5},
+    "lasthit_ot7": {**{k: getattr(GameConfig.m4_lasthit(), k)
+                       for k in GameConfig.M4_LANE_FIELDS + GameConfig.M4_LASTHIT_FIELDS}, "collect_contest_own_tower": 0.7},
 }
 VARIANTS = ("base", "t_ot6", "x2_loser", "x2_dur_loser", "t_ot6_x2_loser", "t_ot6_x2_dur", "t_ot6_dur_loser",
             "t_ot6_x2_dur_loser", "t_ot6_x2_dur_loser_k2")      # the reported ablation; "t_ot6_dur" is m4_lane()
@@ -177,7 +185,10 @@ def starts(cfg: GameConfig) -> Dict[str, tuple]:
       siege    the same line one turn after A's crash, A standing in B's tower cell with Hold + Pressure:
                A's mass under B's tower, B in its tower cell
       freeze   the outside-tower freeze of the final review (B Thins at k1; A plays the bounded freezer, margin 8)
-               at k36: B's wave held at A's -1, A's front in its tower cell, A at -2, B at its +1"""
+               at k36: B's wave held at A's -1, A's front in its tower cell, A at -2, B at its +1. Under the M4.2e-C
+               capacity model (wave_clear_scaling "capacity") the freeze band is an absolute enemy size, so the
+               setup is B Thins k1-4 and A plays the threshold freezer (Thin while the enemy front >= 14 HP once the
+               contact is at A's -1); the state is the start of the longest hold"""
     out = {}
     rows = nw.play(cfg, nw.const(HO), 9)
     TURNS[0] += 9
@@ -203,11 +214,19 @@ def starts(cfg: GameConfig) -> Dict[str, tuple]:
     TURNS[0] += 1
     assert t.end[A] == cfg.tower and t.lane.state.asg > 0, (t.end, t.lane.state)
     out["siege"] = (t.lane.state, t.champ, k + 1)
-    # freeze (final review stage_freeze setup)
-    fz = nw.bounded_freezer(8)
-    rows = nw.play(cfg, lambda k, l, m: (fz(l), TN if k == 1 else HO), 36)
-    TURNS[0] += 36
-    lane, m4, k = nw.end_state(rows)
+    # freeze (final review stage_freeze setup; M4.2e-C: the threshold freezer, see the docstring)
+    if cfg.wave_clear_scaling == "capacity":
+        from . import wave_actions as wa
+        rows, start = wa.freeze_setup(cfg, wa.threshold_freezer(wa.FREEZE_THRESHOLD),
+                                      lambda k: TN if 1 <= k <= 4 else HO, 70)
+        TURNS[0] += 70
+        t = rows[start]["t"]                             # the state after the first held turn: B's front at A's -1
+        lane, m4, k = t.lane.state, t.champ, rows[start]["k"] + 1
+    else:
+        fz = nw.bounded_freezer(8)
+        rows = nw.play(cfg, lambda k, l, m: (fz(l), TN if k == 1 else HO), 36)
+        TURNS[0] += 36
+        lane, m4, k = nw.end_state(rows)
     assert lane.ax == -2 and lane.bx == 1 and lane.ah > 0 and lane.bh > 0, (lane,)
     out["freeze"] = (lane, m4, k)
     # common ground: both at the larger XP with full HP, no gold, no investment
@@ -327,6 +346,8 @@ def wave_rule(rule: str, cfg, lane, m4, s) -> int:
     if rule == "slow_push":
         return W_THIN if fh <= eh + 2 else W_HOLD
     if rule == "freeze":
+        if cfg.wave_clear_scaling == "capacity":          # M4.2e-C: the band is an absolute enemy size (threshold)
+            return W_THIN if (fx <= -1 and eh >= 14) else W_HOLD
         return W_THIN if eh - fh >= 8 else W_HOLD
     if rule == "build_clear":
         return W_CLEAR if fh >= 16 else W_THIN

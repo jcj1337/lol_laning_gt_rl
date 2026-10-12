@@ -58,8 +58,11 @@ champion_wave_damage[slot] HP per tick. Per tick:
   hits             the crashed mass at the start of the tick hits the tower unless it fought defenders this tick
   4.-5.            crash check (prototype) and tower fire on the mass present at the start of the tick
 
-The champion's budget per tick is champion_wave_damage[slot], or (wave_clear_scaling "attack_power") the turn budget
-champion_budget[s] computed by the M4 resolver from attack power, split over the ticks with earlier ticks first.
+The champion's budget per tick is champion_wave_damage[slot], or (wave_clear_scaling "attack_power" or "capacity") the
+turn budget champion_budget[s] computed by the M4 resolver from attack power, split over the ticks with earlier ticks
+first. M4.2e-C (GameConfig.m4_lasthit(), docs/natural_waves/m4_2e_wave_actions_report.md): under "capacity" the three
+slots are shares of one wave-clear capacity (Hold an eighth, Thin a half, Clear all), and damage_law "lanchester_half"
+gives the minions half-wave resolution (`minion_damage`).
 
 Plate modes: "crash" (opportunities per crash, lapse with the siege), "tower" (a finite budget per tower) and
 "durability" (M4 ruleset only, design §11): the lane step grants and claims no plate opportunities (ap / bp stay 0);
@@ -152,17 +155,25 @@ def legal_actions(state: State, s: int, cfg: GameConfig) -> Tuple[int, ...]:
     return tuple(sorted(x + 3 * p for p in (0, 1) for x in w))
 
 
-def minion_damage(h: int, cfg: GameConfig) -> int:
+def minion_damage(h: int, cfg: GameConfig, tick: int = 0) -> int:
     """Per-tick damage dealt by a packet's minions.
 
     lanchester:      max(1, floor(h / W)) - each complete wave adds one unit of firepower
     lanchester_ceil: ceil(h / W)          - any partial wave counts as a whole one
+    lanchester_half: (M4.2e-C) half-wave resolution: a packet's firepower is max(1, floor(2h / W)) HP per TURN,
+                     split over the turn's ticks with the earlier ticks first (tick t of a turn deals
+                     ceil((t + 1) f / n) - ceil(t f / n), n = ticks_per_turn), recomputed on the HP it has at each
+                     tick; so 8 HP deal 1 + 1, 12 HP deal 2 + 1 and 16 HP deal 2 + 2 per turn at W = 8
     linear:          1                    - size buys staying power but not firepower
+    `tick` is the tick's index within the turn; only lanchester_half reads it.
     """
     if cfg.damage_law == "lanchester":
         return max(1, h // cfg.wave_hp)
     if cfg.damage_law == "lanchester_ceil":
         return -(-h // cfg.wave_hp)
+    if cfg.damage_law == "lanchester_half":
+        f, n, t = max(1, (2 * h) // cfg.wave_hp), cfg.ticks_per_turn, tick % cfg.ticks_per_turn
+        return -((-(t + 1) * f) // n) + ((-t * f) // n)
     return 1
 
 
@@ -481,6 +492,7 @@ def _tick_natural(P, siege, acts, t, crash_hp, cfg: GameConfig, trace=None, ev=N
     waves = (wave_of(acts[A]), wave_of(acts[B]))
     objectives = (objective_of(acts[A]), objective_of(acts[B]))
     reach_line = (T, T) if champion_reach is None else tuple(champion_reach)
+    md = lambda h: minion_damage(h, cfg, t)
     if budgets is None:
         budget = [cfg.champion_wave_damage[waves[A]], cfg.champion_wave_damage[waves[B]]]
     else:                                  # per-turn budgets split over the ticks, earlier ticks first
@@ -519,7 +531,7 @@ def _tick_natural(P, siege, acts, t, crash_hp, cfg: GameConfig, trace=None, ev=N
     fight = None
     if _fronts_in_contact(P):
         fa, fb = P[A][0], P[B][0]
-        md_b, md_a = minion_damage(_blob_hp(P[A], cfg), cfg), minion_damage(_blob_hp(P[B], cfg), cfg)
+        md_b, md_a = md(_blob_hp(P[A], cfg)), md(_blob_hp(P[B], cfg))
         ch_a = budget[A] if -fb[0] <= reach_line[A] else 0      # A's champion on B's front
         ch_b = budget[B] if -fa[0] <= reach_line[B] else 0
         budget[A] -= ch_a
@@ -557,10 +569,10 @@ def _tick_natural(P, siege, acts, t, crash_hp, cfg: GameConfig, trace=None, ev=N
             fe = P[e][0]
             ch = budget[e] if reach_line[e] >= -T else 0
             budget[e] -= ch
-            md = minion_damage(_blob_hp(P[e], cfg), cfg)
-            lost_sg = min(md + ch, siege[s])
-            lost_e = min(minion_damage(siege[s], cfg), fe[1])
-            champ_dealt[e] += max(0, lost_sg - md)
+            md_e = md(_blob_hp(P[e], cfg))
+            lost_sg = min(md_e + ch, siege[s])
+            lost_e = min(md(siege[s]), fe[1])
+            champ_dealt[e] += max(0, lost_sg - md_e)
             siege[s] -= lost_sg
             fe[1] -= lost_e
             _add_kill(kills, e, -T, lost_sg)
@@ -609,7 +621,7 @@ def _tick_natural(P, siege, acts, t, crash_hp, cfg: GameConfig, trace=None, ev=N
     if hits is not None:
         for s in (A, B):
             if siege_tick_start[s] > 0 and not engaged[s]:
-                hits[s] += minion_damage(siege_tick_start[s], cfg)
+                hits[s] += md(siege_tick_start[s])
 
     # ---- 4. crash check and 5. tower fire on crashed mass (only on the mass already there at the start of the tick)
     if cfg.natural_crash_rule == "entry":
