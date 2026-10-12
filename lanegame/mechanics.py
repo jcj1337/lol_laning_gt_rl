@@ -35,8 +35,8 @@ and at the end of the turn:
                         NEXT vision_turns turns, never this one; otherwise it counts down.
                         In "choice" mode the crash-reward choice sets it afterwards.)
 
-Natural waves (wave_dynamics = "natural", GameConfig.m4_natural(), docs/m4_2e_natural_waves_report.md and
-docs/m4_2e_natural_waves_final_review.md). Minions obey
+Natural waves (wave_dynamics = "natural", GameConfig.m4_natural(), docs/natural_waves/m4_2e_natural_waves_report.md and
+docs/natural_waves/m4_2e_natural_waves_final_review.md). Minions obey
 the same rules whatever the actions; the wave slot (Hold, Clear, Thin) only sets the champion's damage budget
 champion_wave_damage[slot] HP per tick. Per tick:
 

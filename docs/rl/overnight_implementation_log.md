@@ -253,7 +253,7 @@ New package `lanegame/rl/` (PyTorch, optional extra `rl`; `lanegame.env` never i
 ## Final state
 
 - Final full suite: **462 passed in 5 min 29 s** (395 pre-existing + 49 champion + 18 RL/environment).
-- Report: `docs/m2_m3_implementation_report.md`; roadmap section N points to it; README updated.
+- Report: `docs/rl/m2_m3_implementation_report.md`; roadmap section N points to it; README updated.
 - Nothing pushed; work is on the local branch `m2-m3-autonomous`. Network checkpoints are in
   `results/rl/checkpoints/` (git-ignored, regenerable with `python -m lanegame experiments-rl ...`).
 - Remaining work (not started, out of scope): M3d PSRO (recommended next), M4 economy, M5 opponent modelling,

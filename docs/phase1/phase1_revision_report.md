@@ -300,7 +300,7 @@ Exploitability of the revised baselines (as A) with the decomposition of the bes
 | 6 + W = 4 | 24.86 | 19.69 | 20.40 | 17.15 | 7.69 | 10.09 |
 | 7 revised | 24.86 (farm 5.2, gank 19.6) | **9.42** (farm 5.4, crash 5.0, gank −0.9) | 9.45 (farm 4.5, crash 5.0, gank −0.1) | 5.78 (farm −2.5, crash 6.0, gank 2.2) | 7.69 (farm 11.7, gank −4.0) | 10.08 (farm 6.1, gank 4.1) |
 
-![Figure 1: exploitability decomposition, original vs. revised](../results/revision/fig_exploitability_decomposition.png)
+![Figure 1: exploitability decomposition, original vs. revised](../../results/revision/fig_exploitability_decomposition.png)
 
 *Figure 1. Where a best responder's gain comes from, original model (rung 0) vs. revised model (rung 7). On rung 0 the Safe baselines fall back to Contest, so release_safe = aggressive there.*
 
@@ -349,7 +349,7 @@ Observed results are stated first in each subsection; interpretation follows and
 - **Gank severity** (whole game re-solved). Average P(Contest) is 0.85 at L = 2, 0.57 at L = 5 and 0.25 at L = 10. The equilibrium path flips from mostly Contest (0.91) at L = 5 to mostly Safe (0.04) at L = 7.
 - **Vision.** For "A 2-wave stack at +1", vision raises Contest's advantage from 0.03 to 0.34. Across all nodes the vision split is confounded: vision states are mostly post-crash states, where Safe is preferred anyway.
 
-![Figure 2: equilibrium probability of Contest by situation](../results/revision/fig_contest_by_situation.png)
+![Figure 2: equilibrium probability of Contest by situation](../../results/revision/fig_contest_by_situation.png)
 
 *Figure 2. Mean equilibrium probability of Contest for player A by situation (reachable nodes, k ≤ 24, K = 32).*
 
@@ -430,7 +430,7 @@ The economic content is in the posture. Near its own tower the freezer collects 
   - In the traced cycle (`B` held at A's −1, A freezing on alternate turns), farm is equal, but B fights beside A's tower: gank probability 0.225–0.265 vs. 0.175–0.215.
   - B's shoving to reset the lane is mixed (0.4) and break-even in equilibrium.
   - Consequence: values of asymmetric states grow linearly with the remaining horizon, and long-horizon exploitability includes these persistent edges.
-- ![Figure 3: Contest vs. farm value](../results/revision/fig_contest_vs_farm_value.png)
+- ![Figure 3: Contest vs. farm value](../../results/revision/fig_contest_vs_farm_value.png)
 
   *Figure 3. Equilibrium probability of Contest as a function of the farm value of a wave (Experiment B).*
 - **The Contest threshold in the farm price.** With farming off, the equilibrium path is entirely Slow Push + Safe and the average node contests with probability 0.06. Contest takes over between 0.5 and 1 resource per wave. Higher farm value does *not* make play more aggressive in the sense of crashing (crashes stay at 0 on the path); it makes it more *contested*.
@@ -524,7 +524,7 @@ For comparison, the original model at K = 32 had 905 nodes and solved in 0.3 s.
   - V*(s₀) = 0 at every K.
   - Probe values with 16 turns remaining are identical for K = 16, 32, 64, 128, as time-homogeneity up to the phase requires (tested in the benchmark).
   - Exploitability per turn grows with K and has *not* saturated by K = 128 for the passive and stack-building baselines (contest_slowpush: 0.21 per turn at K = 32, 0.43 at K = 128): longer games let a best responder set up and cash in stacks and persistent lane priority. aggressive saturates at about 0.8 per turn.
-- ![Figure 4: exploitability per turn vs. horizon](../results/revision/fig_exploitability_vs_horizon.png)
+- ![Figure 4: exploitability per turn vs. horizon](../../results/revision/fig_exploitability_vs_horizon.png)
 
   *Figure 4. Exploitability per turn of four baselines by horizon.*
 - **Default horizon K = 32 is retained.** It is about 8 minutes of laning at 30-second waves and solves in under 10 s including enumeration. Its end effects (vision and stacks are worthless in the last turns; zero terminal bonus) cover only the last 2–3 turns. Phase 2 can use K = 64 (about 17 s) or K = 128 (about 32 s) when long-run exploitation matters, which the per-turn growth above suggests it may.

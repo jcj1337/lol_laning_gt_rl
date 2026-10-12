@@ -27,9 +27,9 @@ This assignment ran four workstreams in parallel on the same baseline, then inte
 | Agent | Branch | Commit | Report | Own verdict | Integration |
 |---|---|---|---|---|---|
 | A: wave dynamics | `prototype/m4-emergent-wave` | 4211ea0 | `docs/m4_emergent_wave_report.md` (on its branch) | BLOCKED | **Not integrated** |
-| B: positioning | `prototype/m4-positioning` | 8424985 | `docs/m4_positioning_report.md` | adopt opt-in | merged (24ae46b) |
-| C: zoning | `prototype/m4-zoning` | de51899 | `docs/m4_zoning_report.md` | carry `"none"`, conditional | merged (c805d77) |
-| D: investment + observation | `prototype/m4-investment-readiness` | 4a650ce | `docs/m4_investment_readiness_report.md` | adopt opt-in | merged (9b76a4c) |
+| B: positioning | `prototype/m4-positioning` | 8424985 | `docs/m4/m4_positioning_report.md` | adopt opt-in | merged (24ae46b) |
+| C: zoning | `prototype/m4-zoning` | de51899 | `docs/m4/m4_zoning_report.md` | carry `"none"`, conditional | merged (c805d77) |
+| D: investment + observation | `prototype/m4-investment-readiness` | 4a650ce | `docs/m4/m4_investment_readiness_report.md` | adopt opt-in | merged (9b76a4c) |
 
 The merges were run in the order the brief requires (wave, positioning, zoning, investment). The wave step was
 skipped. The only conflicts were textual, in two places:

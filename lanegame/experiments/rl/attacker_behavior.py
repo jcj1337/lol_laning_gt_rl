@@ -1,4 +1,4 @@
-"""When do the strongest Phase D attackers shove and siege? (docs/openai_five_diagnostics_report.md, section D)
+"""When do the strongest Phase D attackers shove and siege? (docs/rl/openai_five_diagnostics_report.md, section D)
 
 Audits each final 1,024k attacker against its own frozen target (lanegame.diagnostics.audit_games, 100 held-out
 episodes per seat, SeedSequence(52,010)) and reports the attacker's Shove and Pressure probabilities conditioned on

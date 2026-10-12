@@ -1,4 +1,4 @@
-"""M4.2e-A.1: the final natural-wave preset `GameConfig.m4_natural()` (docs/m4_2e_natural_waves_final_review.md).
+"""M4.2e-A.1: the final natural-wave preset `GameConfig.m4_natural()` (docs/natural_waves/m4_2e_natural_waves_final_review.md).
 
 Correctness of the four changes against the M4.2e-A prototype (entry crash, tower damage, tower reach, attack-power
 wave clear), the global invariants on the final preset, and pins of the review's findings. The prototype keeps its own

@@ -1,4 +1,4 @@
-"""M4.2d-B: independent champion positioning (docs/m4_positioning_report.md).
+"""M4.2d-B: independent champion positioning (docs/m4/m4_positioning_report.md).
 
 Short deterministic trajectories of the M4 resolver with no chance events (u = None: no ganks, no trade hits, so HP
 stays full and positions are not disturbed by deaths). The threat of a trade is reported as its EXPECTED damage

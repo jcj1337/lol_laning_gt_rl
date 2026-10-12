@@ -1,4 +1,4 @@
-"""M4.2d-A: wave bounce and Freeze-breaking readiness (docs/m4_wave_readiness_report.md).
+"""M4.2d-A: wave bounce and Freeze-breaking readiness (docs/m4/m4_wave_readiness_report.md).
 
 Deterministic trajectories of the M4 resolver with no chance events (u = None: no ganks, no trade hits; gank exposure
 is reported as the summed gank probability). Every policy is a short scripted rule; nothing is trained or sampled.

@@ -1,4 +1,4 @@
-"""M4.2d-C: the opt-in `zoning_rule` (docs/m4_zoning_report.md). "presence" (default) is the M2 proximity zone;
+"""M4.2d-C: the opt-in `zoning_rule` (docs/m4/m4_zoning_report.md). "presence" (default) is the M2 proximity zone;
 "contact" zones only a collector hit by a connected enemy Trade; "none" never zones."""
 
 from fractions import Fraction

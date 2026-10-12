@@ -1,4 +1,4 @@
-"""M4.2e-A.1: finalizing natural wave mechanics (docs/m4_2e_natural_waves_final_review.md).
+"""M4.2e-A.1: finalizing natural wave mechanics (docs/natural_waves/m4_2e_natural_waves_final_review.md).
 
 Deterministic trajectories of the final preset `GameConfig.m4_natural()` against the M4.2e-A prototype
 `GameConfig.m4_natural_prototype()`: the M4 resolver with no chance events (u = None) and short scripted policies, plus

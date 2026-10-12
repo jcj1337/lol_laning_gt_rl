@@ -220,8 +220,8 @@ Specification in section F.
 ### M4. Economic progression (L, delivered as three tasks)
 
 > **Superseded (2026-10-11).** M4 is now one integrated, separately versioned ruleset. Its specification is
-> [m4_integrated_design.md](m4_integrated_design.md), with the plan in [m4_implementation_plan.md](m4_implementation_plan.md)
-> and the review in [m4_design_audit.md](m4_design_audit.md); see section O. The three-task plan below and
+> [m4_integrated_design.md](m4/m4_integrated_design.md), with the plan in [m4_implementation_plan.md](m4/m4_implementation_plan.md)
+> and the review in [m4_design_audit.md](m4/m4_design_audit.md); see section O. The three-task plan below and
 > section G are kept for the record only.
 
 Specification in section G.
@@ -411,7 +411,7 @@ On the champion game no Nash guarantee is claimed. Claims take the form "policy 
 
 ## G. Economic progression plan (M4)
 
-> **Superseded by section O and [m4_integrated_design.md](m4_integrated_design.md).** The three levels, the two item
+> **Superseded by section O and [m4_integrated_design.md](m4/m4_integrated_design.md).** The three levels, the two item
 > tracks with hit-chance bonuses, the per-turn plate removal (`plates_fall_turn = 24`) and the 32-turn calibration
 > targets below are no longer the plan.
 
@@ -828,8 +828,8 @@ python -m pytest -q                              # everything
 
 M2b–M2e (Recall and absence, stochastic trading with mechanical skill, ganks with HP damage, death and respawn,
 the validation gate) and M3a–M3c (masked PPO, frozen-snapshot self-play, evaluation with approximate best
-responses) are implemented. The full write-up is [docs/m2_m3_implementation_report.md](m2_m3_implementation_report.md);
-the running log is [docs/overnight_implementation_log.md](overnight_implementation_log.md). Decisions that differ
+responses) are implemented. The full write-up is [docs/rl/m2_m3_implementation_report.md](rl/m2_m3_implementation_report.md);
+the running log is [docs/rl/overnight_implementation_log.md](rl/overnight_implementation_log.md). Decisions that differ
 from sections E and F above:
 
 - Recall is legal at `pos <= -1` with no state-based threat rule; an enemy Trade that reaches the recaller
@@ -848,7 +848,7 @@ from sections E and F above:
 
 ## O. M4 amendment: integrated economy, wave dynamics and continuing time (design 2026-10-11)
 
-The diagnostics study ([openai_five_diagnostics_report.md](openai_five_diagnostics_report.md)) found limits in the
+The diagnostics study ([openai_five_diagnostics_report.md](rl/openai_five_diagnostics_report.md)) found limits in the
 game design that PPO tuning cannot remove:
 
 - Freeze is inert in every reachable state (§D.5).
@@ -861,9 +861,9 @@ M4 therefore replaces section G with **one integrated ruleset**, `GameConfig.m4(
 
 | Document | Content |
 |---|---|
-| [m4_integrated_design.md](m4_integrated_design.md) | the mathematical specification: state, resolution order, Freeze maintenance, gold and XP, levels 1–18, fixed-point HP and attack power, one item track with automatic purchase at base, persistent tower damage with three plates, continuing time with γ = 0.99, observation, parameters, invariants, ten worked scenarios |
-| [m4_implementation_plan.md](m4_implementation_plan.md) | work packages WP0–WP10, the tests per package, integration tests, legacy pins, validation stages S0–S6, conditions before training |
-| [m4_design_audit.md](m4_design_audit.md) | contradictions, exploits, redundancies, snowballing, parameters needing experiments, ranked alternatives |
+| [m4_integrated_design.md](m4/m4_integrated_design.md) | the mathematical specification: state, resolution order, Freeze maintenance, gold and XP, levels 1–18, fixed-point HP and attack power, one item track with automatic purchase at base, persistent tower damage with three plates, continuing time with γ = 0.99, observation, parameters, invariants, ten worked scenarios |
+| [m4_implementation_plan.md](m4/m4_implementation_plan.md) | work packages WP0–WP10, the tests per package, integration tests, legacy pins, validation stages S0–S6, conditions before training |
+| [m4_design_audit.md](m4/m4_design_audit.md) | contradictions, exploits, redundancies, snowballing, parameters needing experiments, ranked alternatives |
 
 Differences from section G:
 
@@ -880,7 +880,7 @@ evaluation), then WP2–WP7.
 
 Branch `implementation/m4-integrated`. WP0–WP10 of the M4 plan are implemented as the separately versioned ruleset
 `GameConfig.m4()`; every legacy configuration stays bit-identical (pins taken on the unchanged engine). Validation
-S0–S4 is complete. Full account: [m4_implementation_report.md](m4_implementation_report.md); results:
+S0–S4 is complete. Full account: [m4_implementation_report.md](m4/m4_implementation_report.md); results:
 `results/m4/`.
 
 - S0 legacy pins and all 500 earlier tests pass; S1: 679 tests pass (2 strict expected failures record design
@@ -898,7 +898,7 @@ tiers) in light of the S4 item finding.
 ## Q. M4.2b calibration: gank severity, item strength, the Shove → Recall cycle (2026-10-12)
 
 Branch `calibration/m4-2b`. Exploratory staged calibration within a ~2M-turn budget; **M4 defaults unchanged**. Full
-account: [m4_calibration_report.md](m4_calibration_report.md); results: `results/m4_calibration/`.
+account: [m4_calibration_report.md](m4/m4_calibration_report.md); results: `results/m4_calibration/`.
 
 - **The shove penalty is lane farm, not ganks.** A presser loses −17 per 400 turns against hold_farmer, −16.2 of it in
   farm (crashed waves farmed by the defender at its tower; the parked configuration). Gank damage 0.60 → 0.40 halves
@@ -920,7 +920,7 @@ before M4.3.
 
 Branch `experiment/m4-continuous-investment`. An opt-in prototype, `GameConfig.m4_continuous(invest_alpha=…)`: every
 return to base invests all unspent gold, AP(L, S) = AP(L, 0) [1 + α ((1 + S)^0.9 − 1)]. **`m4()` (two tiers) is
-unchanged and remains the default.** Full account: [m4_continuous_investment_report.md](m4_continuous_investment_report.md);
+unchanged and remains the default.** Full account: [m4_continuous_investment_report.md](m4/m4_continuous_investment_report.md);
 results: `results/m4_continuous_investment/` (≈204k turns, 11 s wall).
 
 - Mechanically sound: exact ledger without clamp, zero-sum rewards unaffected by spending, mirror symmetry, investment
@@ -937,7 +937,7 @@ sweep of the recall agents before any PPO use.
 
 ## S. M4.2d-A readiness: wave bounce and Freeze breaking (2026-10-12)
 
-Branch `readiness/m4-2d-wave`. Short deterministic diagnostic: [m4_wave_readiness_report.md](m4_wave_readiness_report.md);
+Branch `readiness/m4-2d-wave`. Short deterministic diagnostic: [m4_wave_readiness_report.md](m4/m4_wave_readiness_report.md);
 results `results/m4_wave_readiness/` (≈26k turns, ≈12 s wall).
 
 - **No bounce.** After a crash the crasher's follow-up waves park and stack in the defender's half (`stack_creep`)
@@ -958,7 +958,7 @@ accept permanent pushes.
 
 Four workstreams ran concurrently in separate worktrees from f504f5e. The results were integrated on
 `integration/m4-emergent-ready` into one **opt-in** preset, `GameConfig.m4_emergent()`. **`m4()` and `m4_continuous()`
-are unchanged.** Full account: [m4_emergent_parallel_report.md](m4_emergent_parallel_report.md); driver
+are unchanged.** Full account: [m4_emergent_parallel_report.md](m4/m4_emergent_parallel_report.md); driver
 `lanegame.experiments.m4.emergent_ready`; results `results/m4_emergent_ready/` (6,347 turns, 1.5 s wall).
 
 | Workstream | Branch | Outcome |
@@ -997,7 +997,7 @@ Branch `development/m4-natural-waves`, from `integration/m4-emergent-ready` 23e4
 - **Preset:** **opt-in** `GameConfig.m4_natural()`. It is `m4_emergent()` plus `wave_dynamics="natural"` on an
   8-HP wave. `m4()`, `m4_continuous()` and `m4_emergent()` are unchanged, and the historical outputs are
   byte-identical.
-- **Full account:** [m4_2e_natural_waves_report.md](m4_2e_natural_waves_report.md).
+- **Full account:** [m4_2e_natural_waves_report.md](natural_waves/m4_2e_natural_waves_report.md).
 - **Driver:** `lanegame.experiments.m4.natural_waves`; results `results/m4_natural_waves/` (2.5k turns, 0.4 s).
 - **Tests:** `tests/test_m4_natural_waves.py`.
 
@@ -1056,7 +1056,7 @@ timing benchmark; the unique experimental content is about 5.4k turns.
 
 Branch `development/m4-natural-waves`, on top of M4.2e-A.
 
-- **Full account:** [m4_2e_natural_waves_final_review.md](m4_2e_natural_waves_final_review.md).
+- **Full account:** [m4_2e_natural_waves_final_review.md](natural_waves/m4_2e_natural_waves_final_review.md).
 - **Driver:** `lanegame.experiments.m4.natural_waves_final`; results `results/m4_natural_waves/natural_waves_final.json`
   (≈ 19k turns, 2 s).
 - **Tests:** `tests/test_m4_natural_final.py`.
@@ -1126,7 +1126,7 @@ Branch `development/m4-natural-waves`, on top of M4.2e-A.1.
 - **Design philosophy:** [design_philosophy.md](design_philosophy.md), now the standard every mechanic is judged
   against: simplify how League works without changing why its laning strategies work (core principles, intended
   qualitative similarities, accepted simplifications, research and validation standards).
-- **Full account:** [m4_2e_zoning_report.md](m4_2e_zoning_report.md).
+- **Full account:** [m4_2e_zoning_report.md](natural_waves/m4_2e_zoning_report.md).
 - **Driver:** `lanegame.experiments.m4.zoning_natural` (reactive scripted policy-matrix games solved as zero-sum
   games: 13 shared policies, 4 states, 5 power gaps, 9 rule variants; 135M turns, 7 min); results
   `results/m4_zoning_natural/`.

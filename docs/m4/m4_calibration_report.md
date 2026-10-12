@@ -2,7 +2,7 @@
 
 *Branch `calibration/m4-2b` (from `implementation/m4-integrated`, 3b15b41), 2026-10-12. Exploratory calibration under
 a fixed compute budget. **The M4 defaults are unchanged** (`GameConfig.m4()` still has `gank_damage_position = 0.60`,
-`item_mult = 1.20`). The candidates below are presented for review. Raw results: [results/m4_calibration/](../results/m4_calibration/README.md).
+`item_mult = 1.20`). The candidates below are presented for review. Raw results: [results/m4_calibration/](../../results/m4_calibration/README.md).
 Driver: `lanegame/experiments/m4/calibration.py`. Every number is a scripted-agent measurement, not an equilibrium value.*
 
 ## Summary

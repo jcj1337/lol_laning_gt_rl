@@ -1,7 +1,7 @@
 # Strategic Diagnostics and Robust Self-Play: Report
 
 Branch `research/openai-five-diagnostics` (from `research/openai-five-selfplay`), session of 2026-10-11.
-Work log: `docs/openai_five_diagnostics_progress.md`. Generated tables (every number below is taken from them):
+Work log: `docs/rl/openai_five_diagnostics_progress.md`. Generated tables (every number below is taken from them):
 `results/rl/diagnostics/{audit, hpvalue, counterfactual, calibration, snapshot_audit, overlay, overlay_late,
 attacker_behavior, robustness, long_selfplay}.md`. Coordinates are own-perspective (own tower −2, the lane cell 0,
 enemy tower +2); payoffs are resources per 32-turn game (1 resource ≈ one wave of farm), zero-sum.

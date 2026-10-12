@@ -1,4 +1,4 @@
-"""M4.2e-B: combat-driven zoning on natural waves (docs/m4_2e_zoning_report.md).
+"""M4.2e-B: combat-driven zoning on natural waves (docs/natural_waves/m4_2e_zoning_report.md).
 
 The question: can a credible combat threat make a weaker champion surrender position, farm or wave control when that
 is rational, without a farming penalty that merely activates because a stronger champion is nearby?

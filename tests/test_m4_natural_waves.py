@@ -1,4 +1,4 @@
-"""M4.2e-A: the natural-wave prototype, `GameConfig.m4_natural_prototype()` (docs/m4_2e_natural_waves_report.md).
+"""M4.2e-A: the natural-wave prototype, `GameConfig.m4_natural_prototype()` (docs/natural_waves/m4_2e_natural_waves_report.md).
 
 Correctness (validation, legality, movement, conservation, mirror symmetry, accounting, observation) and pins of the
 report's mechanical findings (neutral symmetry, Hold / Thin / Clear, stacking, crash, bounce, freeze, Recall, reach).

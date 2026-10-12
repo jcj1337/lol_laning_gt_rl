@@ -1,4 +1,4 @@
-"""Strategic diagnostics of learned champion-mode policies (docs/openai_five_diagnostics_report.md).
+"""Strategic diagnostics of learned champion-mode policies (docs/rl/openai_five_diagnostics_report.md).
 
     branch   restorable snapshots of reachable states and paired (common-random-number) counterfactual rollouts:
              commit one action (or a short scripted plan) at a state, then follow fixed policies to the end

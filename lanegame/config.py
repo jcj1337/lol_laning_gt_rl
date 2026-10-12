@@ -4,12 +4,12 @@ Every number here is a hand-specified modelling parameter. None of them is an
 empirical League of Legends statistic. Three model generations are available:
 
   GameConfig()      the current default: the siege revision documented in
-                    docs/phase1_siege_vision_study.md (siege objectives Apply
+                    docs/phase1/phase1_siege_vision_study.md (siege objectives Apply
                     Pressure / Establish Vision, finite tower plates, thinning,
                     persistent vision)
-  GameConfig.v2()   the previous revision (docs/phase1_revision_report.md):
+  GameConfig.v2()   the previous revision (docs/phase1/phase1_revision_report.md):
                     farming, Contest/Safe, post-crash resource/vision choice
-  GameConfig.v1()   the original Phase 1 model (docs/phase1_implementation_report.md)
+  GameConfig.v1()   the original Phase 1 model (docs/phase1/phase1_implementation_report.md)
 
 Both presets reproduce their reports exactly.
 
@@ -261,7 +261,7 @@ class GameConfig:
     farm_per_hp: float = 0.25     # 1 resource per fresh wave (W = 4)
     collect_contest: float = 0.9
     collect_contest_enemy_tower: float = 0.5
-    # M4.2e-B (docs/m4_2e_zoning_report.md), ruleset "m4" only: the rate at which kills in the collector's OWN tower
+    # M4.2e-B (docs/natural_waves/m4_2e_zoning_report.md), ruleset "m4" only: the rate at which kills in the collector's OWN tower
     # cell (x = -T: a crashed enemy mass dying to the tower and to the defenders) are collected, whatever the posture
     # (last-hitting under one's tower competes with the tower). The default equals collect_contest (no effect).
     collect_contest_own_tower: float = 0.9
@@ -269,7 +269,7 @@ class GameConfig:
     collect_safe_slope: float = 0.2
     zone_contest: float = 0.3
     zone_under_tower: float = 0.15
-    # M4.2d-C (docs/m4_zoning_report.md), opt-in, ruleset "m4" only: which opponent applies the zone factor
+    # M4.2d-C (docs/m4/m4_zoning_report.md), opt-in, ruleset "m4" only: which opponent applies the zone factor
     # (1 - zone_contest, or 1 - zone_under_tower in the collector's own tower cell) to a champion's gold.
     # "presence" = an opponent in farm or trading mode within farm_reach of the kill (the M2 rule); "contact" = only
     # an opponent whose Trade connected on the collector this turn; "none" = never (gold is then lost only to reach,
@@ -373,11 +373,11 @@ class GameConfig:
     death_turns: int = 3
     kill_bounty: float = 0.5
 
-    # ---- ruleset contract (docs/m4_implementation_plan.md WP0). Every default reproduces the legacy game. ----
+    # ---- ruleset contract (docs/m4/m4_implementation_plan.md WP0). Every default reproduces the legacy game. ----
     #   "legacy"  GameConfig(), .v1(), .v2(), .champions(): finite horizon K, terminal, countdown observed, gamma = 1
     #   "m2c"     .champions_continuing(): M2 champion mechanics with M4 time semantics. A TEST FIXTURE for the
     #             continuing-time machinery only; never a research ruleset
-    #   "m4"      .m4(): the integrated M4 ruleset (docs/m4_integrated_design.md), lanegame.champions_m4
+    #   "m4"      .m4(): the integrated M4 ruleset (docs/m4/m4_integrated_design.md), lanegame.champions_m4
     ruleset: str = "legacy"
     time_mode: str = "finite"             # "finite" (terminal at the horizon) or "continuing" (no terminal state)
     time_features: bool = True            # k/K and (K - k)/K in the (legacy-layout) observation
@@ -395,7 +395,7 @@ class GameConfig:
     item_mult: float = 1.20
     item_tiers: int = 0                   # sequential offensive tiers (m4: 2); 0 = no items
     item_prices: Tuple[float, ...] = (4.0, 6.0)   # resources per tier, bought automatically at base (design §8.5)
-    # M4.2c experiment (docs/m4_continuous_investment_report.md): "tiers" = the two-tier track above (the validated
+    # M4.2c experiment (docs/m4/m4_continuous_investment_report.md): "tiers" = the two-tier track above (the validated
     # baseline); "continuous" = every return to base invests ALL unspent gold, AP(L, S) = AP(L, 0) [1 + invest_alpha
     # ((1 + S)^invest_p - 1)] with S the cumulative investment in resources (needs item_tiers = 0).
     item_model: str = "tiers"
@@ -403,7 +403,7 @@ class GameConfig:
     invest_p: float = 0.90
     invest_obs_gold_ref: int = 1024       # resources: the observation encodes unspent gold exactly below this
     invest_obs_ref: int = 1024            # resources: ... and invested gold exactly below this
-    # M4.2d (docs/m4_investment_readiness_report.md), opt-in: invest_curve "power" = the M4.2c curve above;
+    # M4.2d (docs/m4/m4_investment_readiness_report.md), opt-in: invest_curve "power" = the M4.2c curve above;
     # "saturating" = M(S) = 1 + invest_gain (1 - sqrt(invest_scale / (invest_scale + S))), bounded by 1 + invest_gain
     # and computed in exact integers. invest_obs_encoding "linear" = the M4.2c whole-resource entries n / R (saturate at
     # R); "compressed" = n / (n + R) (R = the same reference fields, now the half-point; never saturates, exact
@@ -414,15 +414,15 @@ class GameConfig:
     invest_obs_encoding: str = "linear"
     freeze_maintenance: bool = False      # m4: a Freeze holds only while maintained (design §6.3)
     chase_rule: str = "m2"                # "m2" (legacy target e -/+ trade_range) or "contact_cell" (design §7.4)
-    # M4.2d (docs/m4_wave_readiness_report.md), opt-in: "m2" = the farm spot is the probe's leading packet (M2 rule);
+    # M4.2d (docs/m4/m4_wave_readiness_report.md), opt-in: "m2" = the farm spot is the probe's leading packet (M2 rule);
     # "pre_crash_front" = a champion whose front crashes in the probe keeps its pre-turn front cell as farm spot
     farm_spot_rule: str = "m2"
-    # M4.2d-B (docs/m4_positioning_report.md), opt-in: "m2" = M2 positioning and evasion; "pin" = a Yield champion that
+    # M4.2d-B (docs/m4/m4_positioning_report.md), opt-in: "m2" = M2 positioning and evasion; "pin" = a Yield champion that
     # STARTS the turn in contact with an enemy Trade champion cannot evade it (it is caught like a Hold); "standoff" =
     # "pin" plus Yield farms from its stand-off cell max(-T, min(spot, e - farm_reach)), e = the enemy front at the start
     # of the turn in own coordinates: the rearmost cell still in reach of the contested minions
     position_rule: str = "m2"
-    # M4.2e-A (docs/m4_2e_natural_waves_report.md), opt-in: "scripted" = the historical wave rule (Slow Push parking
+    # M4.2e-A (docs/natural_waves/m4_2e_natural_waves_report.md), opt-in: "scripted" = the historical wave rule (Slow Push parking
     # and creeping, Freeze holding both fronts, fronts waiting idle behind a tower under siege); "natural" = every
     # minion packet follows the same physical rules whatever the actions (walk, engage on contact, merge, crash), the
     # defender's front engages a crashed mass under its tower instead of waiting, a crashed mass engaged by defenders
@@ -430,7 +430,7 @@ class GameConfig:
     # Hold, Clear and Thin, champion_wave_damage[slot] HP per tick on the nearest reachable enemy minions
     wave_dynamics: str = "scripted"
     champion_wave_damage: Tuple[int, int, int] = (0, 2, 1)   # (Hold, Clear, Thin) = slots (SP, SH, F); "natural" only
-    # M4.2e-A.1 (docs/m4_2e_natural_waves_final_review.md), "natural" only; each default reproduces M4.2e-A.
+    # M4.2e-A.1 (docs/natural_waves/m4_2e_natural_waves_final_review.md), "natural" only; each default reproduces M4.2e-A.
     # natural_crash_rule "contact" = a front in the enemy tower cell crashes only with no enemy front within distance 1
     # (otherwise it fights there under tower fire); "entry" = every front entering the enemy tower cell joins the crashed
     # mass (a crash is entering tower range; follow-up waves join the siege instead of fighting beside it)
@@ -452,7 +452,7 @@ class GameConfig:
     plate_gold_requires_presence: bool = False    # design §16 A9 (alternative); False = paid while away too
     gold_unit: float = 1e-6               # resource per ledger unit (micro-resources, design §8.6)
     rear_count_max: int = 4               # largest rear-packet count in one cell (observation scale; exceeded -> error)
-    # M4.2e-B (docs/m4_2e_zoning_report.md), opt-in: exchanges a connected Trade resolves per turn. 1 = the M2 rule (one
+    # M4.2e-B (docs/natural_waves/m4_2e_zoning_report.md), opt-in: exchanges a connected Trade resolves per turn. 1 = the M2 rule (one
     # 0 / 1 / 2 base-HP roll per turn). ticks_per_turn (2) = one exchange per movement tick, consistent with every other
     # per-tick damage; the total base damage of the n exchanges is drawn from one uniform (U_TRADE_HIT) by the inverse
     # CDF of their n-fold convolution (champions_m4.trade_damage_n). Hit and double probabilities are per exchange.
@@ -468,7 +468,7 @@ class GameConfig:
     # ------------------------------------------------------------------ presets
     @classmethod
     def v1(cls, **kw) -> "GameConfig":
-        """The original Phase 1 model (docs/phase1_implementation_report.md), exactly."""
+        """The original Phase 1 model (docs/phase1/phase1_implementation_report.md), exactly."""
         base = dict(positioning=False, slowpush_mode="hold", freeze_legal_max=0, cap_rule="overflow",
                     tower_mode="packet", farm_per_hp=0.0, wave_hp=2, freeze_break_threshold=5,
                     freeze_break_push=(0, 2, 0), siege_cap=12, slowpush_creep_period=1, siege_engage=False,
@@ -481,7 +481,7 @@ class GameConfig:
 
     @classmethod
     def v2(cls, **kw) -> "GameConfig":
-        """The previous revision (docs/phase1_revision_report.md): post-crash resource/vision choice,
+        """The previous revision (docs/phase1/phase1_revision_report.md): post-crash resource/vision choice,
         two turns of 50% vision, 1 HP/tick tower fire, no plates, no thinning. Reproduces its report exactly."""
         base = dict(siege_mode="choice", vision_turns=2, vision_reduction=0.5, plate_grant=(0, 0, 0),
                     plates_per_tower=0, thin_damage=0, tower_siege_damage=1)
@@ -506,7 +506,7 @@ class GameConfig:
 
     @classmethod
     def m4(cls, **kw) -> "GameConfig":
-        """The M4 ruleset (docs/m4_integrated_design.md): continuing time, Freeze maintenance, XP and levels 1-18,
+        """The M4 ruleset (docs/m4/m4_integrated_design.md): continuing time, Freeze maintenance, XP and levels 1-18,
         centi-HP, attack power, one two-tier item track bought at base, durability plates, the contact-cell chase
         and the tower-adjacent shot. Played through lanegame.env (lanegame.champions_m4)."""
         base = dict(champion_mode=True, ruleset="m4", time_mode="continuing", time_features=False, gamma=0.99,
@@ -526,7 +526,7 @@ class GameConfig:
 
     @classmethod
     def m4_emergent(cls, **kw) -> "GameConfig":
-        """EXPERIMENT (M4.2d integration, docs/m4_emergent_parallel_report.md): `m4_continuous()` with the selected
+        """EXPERIMENT (M4.2d integration, docs/m4/m4_emergent_parallel_report.md): `m4_continuous()` with the selected
         opt-in M4.2d mechanics: the bounded saturating investment curve and the compressed investment observation
         (M4.2d-D), Yield as a stand-off position that a Trade starting in contact pins (M4.2d-B), no automatic
         proximity zoning (M4.2d-C) and the pre-crash farm spot (M4.2d-A readiness). Waves keep the scripted M4 rule
@@ -539,7 +539,7 @@ class GameConfig:
 
     @classmethod
     def m4_natural_prototype(cls, **kw) -> "GameConfig":
-        """EXPERIMENT (M4.2e-A, docs/m4_2e_natural_waves_report.md), kept for comparison: `m4_emergent()` with natural
+        """EXPERIMENT (M4.2e-A, docs/natural_waves/m4_2e_natural_waves_report.md), kept for comparison: `m4_emergent()` with natural
         wave mechanics (wave_dynamics = "natural"; wave slots Hold / Clear / Thin) on the rescaled wave of
         NATURAL_WAVE_HP = 8 HP. Every per-HP quantity is rescaled so that one fresh wave is worth what it was at 4 HP:
         farm_per_hp 0.125 (1 resource per wave), xp_per_hp 1 (8 XP per wave), siege_cap 96 (12 waves); gold_unit 1e-7
@@ -553,7 +553,7 @@ class GameConfig:
 
     @classmethod
     def m4_natural(cls, **kw) -> "GameConfig":
-        """EXPERIMENT (M4.2e-A.1, docs/m4_2e_natural_waves_final_review.md): the natural-wave preset. It is
+        """EXPERIMENT (M4.2e-A.1, docs/natural_waves/m4_2e_natural_waves_final_review.md): the natural-wave preset. It is
         `m4_natural_prototype()` (M4.2e-A) with four changes:
           natural_crash_rule "entry"         a front entering the enemy tower cell joins the crashed mass: one siege per
                                              tower, follow-up waves join it, the tower fires on it alone
@@ -568,12 +568,12 @@ class GameConfig:
         base.update(kw)
         return cls.m4_natural_prototype(**base)
 
-    # the fields GameConfig.m4_lane() changes from m4_natural() (M4.2e-B, docs/m4_2e_zoning_report.md)
+    # the fields GameConfig.m4_lane() changes from m4_natural() (M4.2e-B, docs/natural_waves/m4_2e_zoning_report.md)
     M4_LANE_FIELDS = ("collect_contest_enemy_tower", "collect_contest_own_tower", "invest_durability")
 
     @classmethod
     def m4_lane(cls, **kw) -> "GameConfig":
-        """CANDIDATE (M4.2e-B, docs/m4_2e_zoning_report.md): `m4_natural()` with three changes, for design review
+        """CANDIDATE (M4.2e-B, docs/natural_waves/m4_2e_zoning_report.md): `m4_natural()` with three changes, for design review
         before the PPO smoke test. Two replace fixed collection-efficiency proxies by consequences:
           collect_contest_enemy_tower 0.9   the 0.5 rate under the enemy tower stood in for danger; the danger is
                                             now explicit (tower shots, ganks, the defender's home advantage)

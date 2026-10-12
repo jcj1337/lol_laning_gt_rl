@@ -1,12 +1,12 @@
 # OpenAI Five-inspired self-play: progress log
 
 Branch `research/openai-five-selfplay` (from `m2-m3-autonomous` at 9444de9). Session of 2026-10-11.
-Final report: `docs/openai_five_selfplay_report.md`; methodology notes: `docs/openai_five_adaptation.md`.
+Final report: `docs/rl/openai_five_selfplay_report.md`; methodology notes: `docs/rl/openai_five_adaptation.md`.
 
 ## Phase A: audit of M3 (done)
 
 Read: `lanegame/rl/{network,agent,ppo,train,selfplay,evaluate}.py`, `lanegame/experiments/rl/*.py`,
-`lanegame/env/{core,observation,agents}.py`, the M3 sections of `docs/m2_m3_implementation_report.md`,
+`lanegame/env/{core,observation,agents}.py`, the M3 sections of `docs/rl/m2_m3_implementation_report.md`,
 `results/rl/m3b_selfplay.md`, `m3c_evaluation.md`, `m3c_br_warm.md`. Ran `tests/test_rl.py`,
 `tests/test_rl_selfplay.py` (15 passed, 10 s).
 
@@ -139,7 +139,7 @@ against pub_sprand_s1 +0.17 / +0.12 (M3c: +0.11).
 
 ## Phase H: report (done)
 
-`docs/openai_five_selfplay_report.md` written from the generated tables (`results/rl/openai_five/*.md`), every
+`docs/rl/openai_five_selfplay_report.md` written from the generated tables (`results/rl/openai_five/*.md`), every
 number cross-checked against the JSON results. Behavior-detail and main report regenerated after the fixes.
 
 Remaining issues / not done: resumption inside a run (optimizer and RNG state) is not implemented (the driver

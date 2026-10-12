@@ -1,7 +1,7 @@
 # Strategic diagnostics and robust self-play: progress log
 
 Branch `research/openai-five-diagnostics` (from `research/openai-five-selfplay` at e34252f). Session of 2026-10-11.
-Final report: `docs/openai_five_diagnostics_report.md`. Results: `results/rl/diagnostics/`; checkpoints
+Final report: `docs/rl/openai_five_diagnostics_report.md`. Results: `results/rl/diagnostics/`; checkpoints
 (git-ignored) `results/rl/checkpoints/diag/`.
 
 ## Phase 0: inspection (done)

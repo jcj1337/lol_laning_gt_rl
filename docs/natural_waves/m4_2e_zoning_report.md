@@ -4,7 +4,7 @@ Branch `development/m4-natural-waves`, on top of M4.2e-A.1 (9a282d1). Date: 2026
 
 | | |
 |---|---|
-| **Deliverable 1** | [design_philosophy.md](design_philosophy.md), linked from the README and the roadmap. |
+| **Deliverable 1** | [design_philosophy.md](../design_philosophy.md), linked from the README and the roadmap. |
 | **Candidate preset** | `GameConfig.m4_lane()`: `m4_natural()` with three opt-in changes (§6). Every historical preset is unchanged (digest-pinned). |
 | **Driver** | `python -m lanegame.experiments.m4.zoning_natural` (full run: 135M resolver turns, 7 min on 11 processes; `quick` runs the neutral state in 15 s). Results in `results/m4_zoning_natural/`. |
 | **Tests** | `tests/test_m4_zoning_natural.py` (16 tests) plus the existing focused suite. |

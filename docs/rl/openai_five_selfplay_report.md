@@ -1,7 +1,7 @@
 # OpenAI Five-Inspired Shared-Policy Self-Play: Implementation and Controlled Comparison
 
 Branch `research/openai-five-selfplay`, session of 2026-10-11. Companion documents:
-`docs/openai_five_adaptation.md` (what the paper documents and what we adapted), `docs/openai_five_progress.md`
+`docs/rl/openai_five_adaptation.md` (what the paper documents and what we adapted), `docs/rl/openai_five_progress.md`
 (work log and M3 audit). Generated result tables: `results/rl/openai_five/report_main.md` (main comparison),
 `report_extra.md` (ablation and equal-environment-turn runs), `exploit_strong.md`, `legacy_exact.md`,
 `behavior_detail.md`; figures `results/rl/openai_five/fig_*.png`.
@@ -22,7 +22,7 @@ transitions; environment turns are tracked separately; snapshots carry full meta
 harness (`head_to_head`) and approximate best responses, all unchanged; the M3b trainer is the baseline, run
 through its own unchanged code path.
 
-**Audited.** No material bug in PPO, M3b self-play or evaluation (details in `docs/openai_five_progress.md`).
+**Audited.** No material bug in PPO, M3b self-play or evaluation (details in `docs/rl/openai_five_progress.md`).
 Confirmed from the source that M3b never plays the current policy against itself. Measured that the champion
 game has no seat bias (−0.008 ± 0.016 over 24,000 mirror games) and that the existing confidence intervals
 are conservative.
@@ -89,7 +89,7 @@ the 20% historical games or noise (80/20 − 100/0 differences have mixed signs 
 
 ## B. OpenAI Five methodology and our adaptation
 
-Details and section references: `docs/openai_five_adaptation.md`. In short, OpenAI Five (Berner et al. 2019)
+Details and section references: `docs/rl/openai_five_adaptation.md`. In short, OpenAI Five (Berner et al. 2019)
 trained one LSTM policy with PPO and GAE (λ = 0.95) by self-play, "the latest policy against itself for 80% of
 games, and against older policies for 20% of games" (§3.2, App. N), with past versions sampled by a learned
 quality score (App. N) to "avoid strategy collapse" (App. N); it made rewards zero-sum explicitly (App. G),
@@ -307,7 +307,7 @@ held-out agents behave identically (`shove_hold` ≡ `legacy:aggressive`, `hold_
 
 ### F.2 Learning curves (snapshots against fixed references; `fig_learning_curves.png`)
 
-![learning curves](../results/rl/openai_five/fig_learning_curves.png)
+![learning curves](../../results/rl/openai_five/fig_learning_curves.png)
 
 | Agent transitions | vs `aggressive_trader`: M3b / 100/0 / 80/20 | vs `pub_sprand_s1`: M3b / 100/0 / 80/20 |
 |---|---|---|
@@ -337,7 +337,7 @@ magnitudes (0.1–0.2 resources) are small next to the scripted margins (1–13)
 skill). Every new policy beats the two published equal-skill M3b policies by 1.2–2.2 (those were known to be
 exploitable).
 
-![cross-play](../results/rl/openai_five/fig_crossplay.png)
+![cross-play](../../results/rl/openai_five/fig_crossplay.png)
 
 ### F.4 Historical checkpoints
 
@@ -377,7 +377,7 @@ the estimate for most policies, so standard-budget exploitability (here and in t
 rank policies reliably. Three policies, one from each condition, resist both attackers (≤ 0.20). The method
 comparison is unchanged: no condition is less exploitable than another.
 
-![robustness](../results/rl/openai_five/fig_robustness.png)
+![robustness](../../results/rl/openai_five/fig_robustness.png)
 
 ### F.6 Additional runs: 50/50 ablation and equal environment turns
 
@@ -483,7 +483,7 @@ less.
 
 ### G.6 How did mechanical skill affect results? (`fig_skill.png`)
 
-![skill](../results/rl/openai_five/fig_skill.png)
+![skill](../../results/rl/openai_five/fig_skill.png)
 
 - Payoff depends strongly on skill in every condition: ≈ +0.85 per 0.3 of own skill and ≈ −0.8 per 0.3 of enemy skill
   against `hold_farmer`, ≈ ±1.4–1.5 per 0.3 against the learned reference.

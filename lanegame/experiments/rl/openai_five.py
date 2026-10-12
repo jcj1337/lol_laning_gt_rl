@@ -1,4 +1,4 @@
-"""OpenAI Five-inspired self-play study (docs/openai_five_selfplay_report.md, docs/openai_five_adaptation.md).
+"""OpenAI Five-inspired self-play study (docs/rl/openai_five_selfplay_report.md, docs/rl/openai_five_adaptation.md).
 
 Three training conditions, identical except for who the learner plays and whose transitions are trained on:
 

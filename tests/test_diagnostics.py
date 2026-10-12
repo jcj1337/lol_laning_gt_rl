@@ -1,4 +1,4 @@
-"""Diagnostics tools (lanegame.diagnostics, docs/openai_five_diagnostics_report.md): restorable snapshots and replay
+"""Diagnostics tools (lanegame.diagnostics, docs/rl/openai_five_diagnostics_report.md): restorable snapshots and replay
 consistency, paired counterfactual rollouts (legal actions, reproducibility, frozen policies, no information about
 the other seat's uncommitted action, common random numbers), reward accounting, seat symmetry, seed separation, the
 action audit's attribution of rewards and action frequencies, rule overlays and the Phase D helpers."""

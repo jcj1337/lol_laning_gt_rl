@@ -1,6 +1,6 @@
 # results/m4_calibration — M4.2b exploratory calibration
 
-Report: [docs/m4_calibration_report.md](../../docs/m4_calibration_report.md). Driver:
+Report: [docs/m4/m4_calibration_report.md](../../docs/m4/m4_calibration_report.md). Driver:
 `lanegame/experiments/m4/calibration.py`. The M4 defaults are **not** changed; every candidate is
 `GameConfig.m4(gank_damage_position=g, item_mult=i)` with tag `g{g}_i{i}` (baseline `g0.60_i1.20`).
 

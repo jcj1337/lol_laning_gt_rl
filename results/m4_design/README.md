@@ -1,7 +1,7 @@
 # M4 design checks (M4.1)
 
-Inexpensive analytical and simulation checks behind the numbers in `docs/m4_integrated_design.md` and
-`docs/m4_design_audit.md`. They read the unchanged engine and change no repository code. Run them from the
+Inexpensive analytical and simulation checks behind the numbers in `docs/m4/m4_integrated_design.md` and
+`docs/m4/m4_design_audit.md`. They read the unchanged engine and change no repository code. Run them from the
 repository root with `PYTHONPATH=.`.
 
 | Script | What it computes | Output |

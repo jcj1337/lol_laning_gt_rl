@@ -2,7 +2,7 @@
 
 *Branch `implementation/m4-integrated` (from `design/m4-integrated`, 085908d), 2026-10-11. Specification:
 [m4_integrated_design.md](m4_integrated_design.md) ("design §n"), [m4_implementation_plan.md](m4_implementation_plan.md)
-("plan"), [m4_design_audit.md](m4_design_audit.md) ("audit"). Raw results and commands: [results/m4/](../results/m4/README.md).
+("plan"), [m4_design_audit.md](m4_design_audit.md) ("audit"). Raw results and commands: [results/m4/](../../results/m4/README.md).
 No PPO research run was made; the two bounded training runs below are integration smoke checks only.*
 
 ## Summary

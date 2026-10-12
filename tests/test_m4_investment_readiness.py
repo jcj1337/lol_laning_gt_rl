@@ -1,4 +1,4 @@
-"""M4.2d-D investment readiness (docs/m4_investment_readiness_report.md): the opt-in bounded investment curve
+"""M4.2d-D investment readiness (docs/m4/m4_investment_readiness_report.md): the opt-in bounded investment curve
 (invest_curve = "saturating") and the opt-in compressed observation entries (invest_obs_encoding = "compressed").
 The defaults of GameConfig.m4() and GameConfig.m4_continuous() are unchanged."""
 

@@ -1,5 +1,5 @@
 """M4.2b calibration: targeted checks of the candidate configurations, the Shove -> Recall cycle agent and the
-experiment-only keep-reach farm-spot prototype (docs/m4_calibration_report.md). The M4 defaults are not changed."""
+experiment-only keep-reach farm-spot prototype (docs/m4/m4_calibration_report.md). The M4 defaults are not changed."""
 
 import numpy as np
 import pytest

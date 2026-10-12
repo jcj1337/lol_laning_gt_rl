@@ -1,4 +1,4 @@
-"""M4.2e-B: combat-driven zoning on natural waves (docs/m4_2e_zoning_report.md).
+"""M4.2e-B: combat-driven zoning on natural waves (docs/natural_waves/m4_2e_zoning_report.md).
 
 The opt-in engine fields of the study (trade_exchanges, trade_farm_rule "loser", invest_durability,
 collect_contest_own_tower) and their default preservation; the candidate preset `GameConfig.m4_lane()`; the global

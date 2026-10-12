@@ -1,4 +1,4 @@
-"""M4.2b: staged economic and combat calibration (docs/m4_calibration_report.md). Exploratory; the M4 defaults are
+"""M4.2b: staged economic and combat calibration (docs/m4/m4_calibration_report.md). Exploratory; the M4 defaults are
 NOT changed. Every candidate is `GameConfig.m4(gank_damage_position=..., item_mult=...)` with all other fields at their
 approved values.
 

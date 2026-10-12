@@ -291,7 +291,7 @@ Three questions, answered separately (bounce numbers from `results/siege/timing.
 
 **Decision: the default stays at 1 HP/tick.** Coherence (both objectives are used, the siege lasts long enough for the pressure-vs-vision timing to matter, thinning acts), interpretability (a 6-turn siege of a 3-wave crash is the situation the mechanics were designed for) and the fact that thinning plus the new incentives already remove the large-bounce problem in solved play all point the same way. The cost is computational: 173k nodes, 2.7M transitions, about 3 GB and 4 minutes per K = 32 solve, against 30k nodes and 20 seconds at 2 HP/tick (J). The 2 HP/tick setting is the recommended cheap variant for Phase 2 parameter sweeps, with the caveat above that it removes Apply Pressure from play.
 
-![Figure 1: bounce by tower rate](../results/siege/fig_bounce_by_tower.png)
+![Figure 1: bounce by tower rate](../../results/siege/fig_bounce_by_tower.png)
 
 *Figure 1. B's released blob after a 12-HP crash by tower rate and A's siege behaviour (thinning 1 HP per turn, A's own waves waiting).*
 
@@ -350,7 +350,7 @@ Three questions, answered separately (bounce numbers from `results/siege/timing.
 
 Previous revision, same baselines: aggressive 24.86, passive_safe 9.42, contest_slowpush 6.59, stack_builder 5.78, freeze_contest 9.45, uniform 10.08, release_safe 7.69.
 
-![Figure 2: exploitability decomposition](../results/siege/fig_exploitability_decomposition.png)
+![Figure 2: exploitability decomposition](../../results/siege/fig_exploitability_decomposition.png)
 
 *Figure 2. Where a best responder's gain comes from against each siege baseline (K = 32).*
 
@@ -379,7 +379,7 @@ Previous revision, same baselines: aggressive 24.86, passive_safe 9.42, contest_
 | 0.90 | 6 | 0.99 | 0.80 | 3.35 / 2.55 | 16.5 | 15, 0.93 / 0.67 |
 | 0.90 | 8 | 1.00 | 0.79 | 3.65 / 2.85 | 17.1 | 15, 0.93 / 0.67 |
 
-![Figure 3: vision sweep](../results/siege/fig_vision_sweep.png)
+![Figure 3: vision sweep](../../results/siege/fig_vision_sweep.png)
 
 *Figure 3. Equilibrium use and value of Establish Vision by effectiveness and duration (K = 24).*
 
@@ -414,7 +414,7 @@ Previous revision, same baselines: aggressive 24.86, passive_safe 9.42, contest_
 | accessible defender wave 8–12 HP | 3,992 | 0.53–0.68 | 0.32–0.48 | 0.00 | −0.37 to +0.32 | +1.2 to +2.1 | +1.5 to +1.8 |
 | turns remaining 0–7 / 8–15 / 16–23 | 16,908 / 7,498 / 468 | 0.50 / 0.41 / 0.29 | 0.50 / 0.59 / 0.71 | ≤ 0.01 | −0.44 / −0.78 / −1.37 | +1.1 / +1.2 / +1.2 | +1.5 / +2.0 / +2.6 |
 
-![Figure 4: siege decisions](../results/siege/fig_siege_decisions.png)
+![Figure 4: siege decisions](../../results/siege/fig_siege_decisions.png)
 
 *Figure 4. Equilibrium siege decision of A by crashed mass and by pending plate opportunities (K = 32).*
 
@@ -466,7 +466,7 @@ Decomposition at mass 12, defender 4, no vision, 16 turns left (V* = 6.14; B dis
 | | medium | 16 / 24 | +2.47 | SH-C | +4.12 / +4.12 | +4.59 / +4.59 | +4.49 / +4.49 | +2.64 / +3.64 |
 | | large | 16 / 24 | +1.84 / +0.84 | SP-C | −0.01 / −0.01 | −0.14 / −0.14 | −0.01 / −0.01 | +3.25 / +4.24 |
 
-![Figure 5: crash value](../results/siege/fig_crash_value.png)
+![Figure 5: crash value](../../results/siege/fig_crash_value.png)
 
 *Figure 5. Gain from producing a crash now instead of holding, by crash size and model, 16 turns left.*
 

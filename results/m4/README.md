@@ -18,4 +18,4 @@ The test suite (S0, S1 unit and integration tests): `python -m pytest -q --runsl
 failures recording design findings; about 19 minutes, of which the exhaustive enumerations B1, O1, O2 and the K = 32
 re-solve take about 11).
 
-The interpretation of these results is in [docs/m4_implementation_report.md](../../docs/m4_implementation_report.md).
+The interpretation of these results is in [docs/m4/m4_implementation_report.md](../../docs/m4/m4_implementation_report.md).

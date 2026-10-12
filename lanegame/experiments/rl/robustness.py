@@ -1,4 +1,4 @@
-"""Phase D of the diagnostics milestone (docs/openai_five_diagnostics_report.md, section E): stronger approximate
+"""Phase D of the diagnostics milestone (docs/rl/openai_five_diagnostics_report.md, section E): stronger approximate
 best responses with attacker learning curves.
 
 The previous study's attackers (102,400 and 307,200 steps) were budget-limited: tripling the budget raised the

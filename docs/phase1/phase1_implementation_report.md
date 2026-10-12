@@ -355,7 +355,7 @@ All at default parameters and K = 32 unless stated.
 | B 1-stack at A's freeze line, A wave arriving | +0.03 | SH / SH |
 | A just crashed (one packet queued), lanes reset | −0.85 | SP / SP |
 
-![Figure 2](../results/fig_situation_values.png)
+![Figure 2](../../results/fig_situation_values.png)
 
 Observations:
 - **A stack at the river is an asset, the same stack one cell further is a liability.** At +1, the champion is exposed and B's reinforcements meet the wave before A's do (the reinforcement-proximity effect emerges from movement).
@@ -413,7 +413,7 @@ Findings:
 
 **Per-turn exploitability grows with the horizon and saturates.** Longer games give the best response more opportunities to set up a crash. End effects (zero terminal bonus) matter most at short horizons.
 
-![Figure 1](../results/fig_exploitability_vs_horizon.png)
+![Figure 1](../../results/fig_exploitability_vs_horizon.png)
 
 ### F.5 Realized outcome distributions
 

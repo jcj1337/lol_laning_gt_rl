@@ -1,4 +1,4 @@
-"""Phase E of the diagnostics milestone (docs/openai_five_diagnostics_report.md, section F): longer shared-policy
+"""Phase E of the diagnostics milestone (docs/rl/openai_five_diagnostics_report.md, section F): longer shared-policy
 self-play, pure (100/0) versus the OpenAI Five-inspired mixture (80/20), five seeds each.
 
 Same trainer, network, PPO settings, environment (`GameConfig.champions()`, unchanged rules), skill distribution

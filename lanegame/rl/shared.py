@@ -1,5 +1,5 @@
 """Shared-policy self-play with a current / historical opponent mixture (OpenAI Five-inspired; see
-docs/openai_five_adaptation.md for what is taken from Berner et al. 2019 and what is our own choice).
+docs/rl/openai_five_adaptation.md for what is taken from Berner et al. 2019 and what is our own choice).
 
 One trainable network pi_theta(a | o) plays the game. At every episode reset, independently:
 

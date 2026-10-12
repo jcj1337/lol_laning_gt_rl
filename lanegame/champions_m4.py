@@ -1,4 +1,4 @@
-"""M4 champion state and turn resolution (docs/m4_integrated_design.md; plan WP4-WP6).
+"""M4 champion state and turn resolution (docs/m4/m4_integrated_design.md; plan WP4-WP6).
 
 A separately versioned resolver for `GameConfig.m4()`. The M2 resolver `champions.resolve_turn` is not edited;
 this module reuses its pure helpers (contact, movement, evasion, farm collection, gank and trade probabilities,
@@ -239,7 +239,7 @@ def yield_target(spot: int, lane: State, s: int, cfg: GameConfig) -> int:
     stand-off cell: the rearmost cell still within farm_reach of the enemy's leading minions at the start of the turn
     (enemy front e, mirrored into own coordinates), never ahead of the farm spot, never behind the own tower:
     max(-T, min(spot, e - farm_reach)). With no enemy front on the lane it is the farm spot
-    (docs/m4_positioning_report.md)."""
+    (docs/m4/m4_positioning_report.md)."""
     if cfg.position_rule != "standoff":
         return spot
     ex, eh = lane.side(1 - s)[:2]

@@ -1,4 +1,4 @@
-"""Strategic diagnostics of the learned champion-mode policies (docs/openai_five_diagnostics_report.md).
+"""Strategic diagnostics of the learned champion-mode policies (docs/rl/openai_five_diagnostics_report.md).
 
 Stages (each writes results/rl/diagnostics/<stage>.json and .md; nothing of earlier studies is overwritten):
 

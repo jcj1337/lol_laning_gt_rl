@@ -1,4 +1,4 @@
-"""M4.2e-A: natural wave mechanics (docs/m4_2e_natural_waves_report.md).
+"""M4.2e-A: natural wave mechanics (docs/natural_waves/m4_2e_natural_waves_report.md).
 
 Deterministic trajectories of the M4.2e-A prototype, `GameConfig.m4_natural_prototype()` (the final preset
 `GameConfig.m4_natural()` is studied by lanegame.experiments.m4.natural_waves_final): the M4 resolver with no chance events (u = None: no ganks,

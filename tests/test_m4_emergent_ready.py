@@ -1,4 +1,4 @@
-"""M4.2d integration: the opt-in experimental preset `GameConfig.m4_emergent()` (docs/m4_emergent_parallel_report.md).
+"""M4.2d integration: the opt-in experimental preset `GameConfig.m4_emergent()` (docs/m4/m4_emergent_parallel_report.md).
 Joint correctness checks (mirror symmetry, masks, replay, accounting, conservation, invariants, observations, zero-sum)
 and pins of the joint feasibility findings."""
 

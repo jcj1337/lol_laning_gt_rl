@@ -1,8 +1,8 @@
 # M2–M3 Implementation Report: the Champion Game and First Multi-Agent RL
 
 *October 2026. Covers milestones M2b–M2e (champion simulation) and M3a–M3c (PPO, self-play, evaluation) of
-[docs/rl_research_roadmap.md](rl_research_roadmap.md). The running log with every intermediate result is
-[docs/overnight_implementation_log.md](overnight_implementation_log.md). Work is on the local branch
+[docs/rl_research_roadmap.md](../rl_research_roadmap.md). The running log with every intermediate result is
+[docs/rl/overnight_implementation_log.md](overnight_implementation_log.md). Work is on the local branch
 `m2-m3-autonomous`, one commit per milestone, nothing pushed. Coordinates are own-perspective (own tower −2,
 the lane 0, enemy tower +2). Payoffs are resources per 32-turn game (1 resource ≈ one wave of farm), zero-sum,
 to the first-named player, with 95% confidence intervals.*
@@ -231,7 +231,7 @@ regenerate with the commands in F). Evaluation always uses held-out episode seed
 `results/rl/fig_learning_curves.png`. Total RL compute: about 22 minutes wall clock on 9–10 processes (at most ~3.5
 CPU-hours), within the 90-minute budget; no single run exceeded 4 minutes.
 
-![learning curves](../results/rl/fig_learning_curves.png)
+![learning curves](../../results/rl/fig_learning_curves.png)
 
 ### D.1 M3a: PPO against fixed scripted opponents (`results/rl/m3a_scripted.md`, 4.6 min)
 
