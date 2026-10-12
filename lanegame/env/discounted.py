@@ -80,6 +80,12 @@ def per_turn_bound(cfg: GameConfig) -> float:
     from ..mechanics import minion_damage
     f = max_farm_per_hp(cfg)
     kills = cfg.ticks_per_turn * cfg.hp_cap + cfg.ticks_per_turn * cfg.tower_siege_damage + cfg.thin_damage
+    if cfg.wave_dynamics == "natural":
+        # per tick: the lane front and the crashed mass each lose at most the Lanchester damage of a blob of hp_cap
+        # plus rear_count_max queued waves (observe_m4 raises beyond it), plus the tower; the champion strikes once
+        blob = minion_damage(cfg.hp_cap + cfg.rear_count_max * cfg.wave_hp, cfg)
+        per_tick = 2 * blob + cfg.tower_damage + cfg.tower_siege_damage + max(cfg.champion_wave_damage)
+        kills = cfg.ticks_per_turn * per_tick + cfg.thin_damage
     plates = 0
     if cfg.is_m4:
         t = tables(cfg)

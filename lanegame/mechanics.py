@@ -35,6 +35,24 @@ and at the end of the turn:
                         NEXT vision_turns turns, never this one; otherwise it counts down.
                         In "choice" mode the crash-reward choice sets it afterwards.)
 
+Natural waves (wave_dynamics = "natural", GameConfig.m4_natural(), docs/m4_2e_natural_waves_report.md). Minions obey
+the same rules whatever the actions; the wave slot (Hold, Clear, Thin) only sets the champion's damage budget
+champion_wave_damage[slot] HP per tick. Per tick:
+
+  1. movement      every free front walks one cell; contact with the enemy front stops it, and so does contact with
+                   the enemy's crashed mass under its own tower (own x >= -T - 1); rears walk and never enter the cell
+                   of a front they cannot join (no parking, no creeping, no Freeze hold, no idle wait behind a tower)
+  2. merging       "block" cap rule
+  3. contact fight Lanchester minion damage of each blob + the champion's budget on the enemy front if that front's
+                   own-perspective cell is within its reach line + the tower on a contested attacker in its cell
+  3b. siege fight  a defender front within distance 1 of its tower fights the crashed mass (Lanchester both ways,
+                   plus the defender champion's budget if it reaches its tower cell); skipped on ticks with a lane fight
+  3c. thinning     Apply Pressure, as in the scripted rule
+  3d. champion     an unspent budget strikes the enemy's crashed mass under the own tower, else the enemy's leading
+                   packet if reachable: a champion can clear a walking wave or a crash with no minion of its own
+  hits             the crashed mass at the start of the tick hits the tower unless it fought defenders this tick
+  4.-5.            crash check and tower fire, as in the scripted rule
+
 Plate modes: "crash" (opportunities per crash, lapse with the siege), "tower" (a finite budget per tower) and
 "durability" (M4 ruleset only, design §11): the lane step grants and claims no plate opportunities (ap / bp stay 0);
 plates are paid by the M4 resolver from the persistent tower-damage counters, fed by TurnResult.tower_hits.
@@ -64,6 +82,9 @@ EVENT_KEYS = ("spawned", "merged", "died", "crashed", "consumed",
               "killed_hp", "tower_hp", "overflow_hp", "crashed_hp", "spawned_hp", "siege_killed_hp",
               "thinned_hp", "plates",
               "freeze_held", "freeze_broken")
+# wave_dynamics "natural" only (historical event dicts stay byte-identical): HP of this side's minions killed by the
+# ENEMY champion
+NATURAL_EVENT_KEYS = ("champion_hp",)
 
 
 @dataclass
@@ -94,6 +115,8 @@ def wave_actions(state: State, s: int, cfg: GameConfig) -> Tuple[int, ...]:
     (default -1: enemy minions are in front of or inside our tower; the original
     model used 0, i.e. anywhere from the lane inward).
     """
+    if cfg.wave_dynamics == "natural":
+        return (SP, SH, F)                 # Hold, Clear, Thin: what the champion does, always legal
     efx, efh = (state.bx, state.bh) if s == A else (state.ax, state.ah)
     if efh > 0 and -efx <= cfg.freeze_legal_max:
         return (SP, SH, F)
@@ -221,6 +244,72 @@ def thinning_target(P, s: int, cfg: GameConfig) -> Optional[List[int]]:
     return None
 
 
+def _pressure_thinning(P, siege_tick_start, objectives, no_fight: bool, thin_left, cfg: GameConfig, ev, kills):
+    """Step 3c, thinning (Apply Pressure). The pressuring champion stands in the enemy tower cell while the tower is
+    busy with its crashed minions (tower aggro); it can hit the defender's leading packet if that packet is accessible
+    (adjacent to or inside the tower cell) and did not fight in the lane this tick (`no_fight`)."""
+    thinned = [0, 0]
+    if cfg.objectives and no_fight and thin_left is not None:
+        for s in (A, B):
+            if objectives[s] != PRESSURE or thin_left[s] <= 0 or siege_tick_start[s] <= 0:
+                continue
+            target = thinning_target(P, s, cfg)
+            if target is None:
+                continue
+            e = 1 - s
+            d = min(thin_left[s], target[1])
+            thin_left[s] -= d
+            target[1] -= d
+            thinned[s] = d
+            _add_kill(kills, s, -target[0], d)          # dies where it stands, in s's own coordinates
+            ev["killed_hp"][e] += d
+            ev["thinned_hp"][e] += d
+            if target[1] <= 0:
+                P[e].pop(0)
+                ev["died"][e] += 1
+    return thinned
+
+
+def _crash_and_tower_fire(P, siege, crash_hp, cfg: GameConfig, ev, kills, plates):
+    """Steps 4 (crash check) and 5 (tower fire on the crashed mass, "mass" mode). Returns the HP crashed per side."""
+    T = cfg.tower
+    # ---- 4. crash check ----
+    siege_before_crash = list(siege)
+    crashed = [0, 0]
+    for s in (A, B):
+        if P[s] and P[s][0][0] == T and not _fronts_in_contact(P):
+            crashed[s] = P[s][0][1]
+    for s in (A, B):
+        if crashed[s]:
+            P[s].pop(0)
+            crash_hp[s] += crashed[s]
+            ev["crashed"][s] += 1
+            ev["crashed_hp"][s] += crashed[s]
+            if cfg.tower_mode == "packet":
+                siege[s] += 1
+                # the queue does not store HP: the defender's farm opportunity on these
+                # minions is credited when they enter the tower (each HP exactly once)
+                _add_kill(kills, 1 - s, -T, crashed[s])
+            else:
+                total = siege[s] + crashed[s]
+                siege[s] = min(cfg.siege_cap, total)
+                ev["overflow_hp"][s] += total - siege[s]
+                if plates is not None and cfg.objectives and cfg.plate_mode == "crash":
+                    # the crash opens plate opportunities, claimable while this siege lasts
+                    plates[s] = min(cfg.plates_cap, plates[s] + cfg.plate_grant[cfg.size_category(crashed[s])])
+
+    # ---- 5. tower fire on crashed mass ("mass" mode) ----
+    if cfg.tower_mode == "mass":
+        for s in (A, B):
+            d = min(cfg.tower_siege_damage, siege_before_crash[s], siege[s])
+            if d > 0:
+                siege[s] -= d
+                ev["tower_hp"][s] += d
+                _add_kill(kills, 1 - s, -T, d)      # dies under the defender's tower
+
+    return crashed
+
+
 def _tick(P, siege, acts, t, crash_hp, cfg: GameConfig, trace=None, ev=None, k=0, reach=None,
           kills=None, thin_left=None, plates=None, champion_reach=None, hits=None):
     contact = _fronts_in_contact(P)
@@ -339,62 +428,10 @@ def _tick(P, siege, acts, t, crash_hp, cfg: GameConfig, trace=None, ev=None, k=0
                 ev["died"][e] += 1
 
     # ---- 3c. thinning (Apply Pressure) ----
-    # The pressuring champion stands in the enemy tower cell while the tower is busy with its
-    # crashed minions (tower aggro); it can hit the defender's leading packet if that packet is
-    # accessible (adjacent to or inside the tower cell) and did not fight in the lane this tick.
-    thinned = [0, 0]
-    if cfg.objectives and fight is None and thin_left is not None:
-        for s in (A, B):
-            if objectives[s] != PRESSURE or thin_left[s] <= 0 or siege_tick_start[s] <= 0:
-                continue
-            target = thinning_target(P, s, cfg)
-            if target is None:
-                continue
-            e = 1 - s
-            d = min(thin_left[s], target[1])
-            thin_left[s] -= d
-            target[1] -= d
-            thinned[s] = d
-            _add_kill(kills, s, -target[0], d)          # dies where it stands, in s's own coordinates
-            ev["killed_hp"][e] += d
-            ev["thinned_hp"][e] += d
-            if target[1] <= 0:
-                P[e].pop(0)
-                ev["died"][e] += 1
+    thinned = _pressure_thinning(P, siege_tick_start, objectives, fight is None, thin_left, cfg, ev, kills)
 
-    # ---- 4. crash check ----
-    siege_before_crash = list(siege)
-    crashed = [0, 0]
-    for s in (A, B):
-        if P[s] and P[s][0][0] == T and not _fronts_in_contact(P):
-            crashed[s] = P[s][0][1]
-    for s in (A, B):
-        if crashed[s]:
-            P[s].pop(0)
-            crash_hp[s] += crashed[s]
-            ev["crashed"][s] += 1
-            ev["crashed_hp"][s] += crashed[s]
-            if cfg.tower_mode == "packet":
-                siege[s] += 1
-                # the queue does not store HP: the defender's farm opportunity on these
-                # minions is credited when they enter the tower (each HP exactly once)
-                _add_kill(kills, 1 - s, -T, crashed[s])
-            else:
-                total = siege[s] + crashed[s]
-                siege[s] = min(cfg.siege_cap, total)
-                ev["overflow_hp"][s] += total - siege[s]
-                if plates is not None and cfg.objectives and cfg.plate_mode == "crash":
-                    # the crash opens plate opportunities, claimable while this siege lasts
-                    plates[s] = min(cfg.plates_cap, plates[s] + cfg.plate_grant[cfg.size_category(crashed[s])])
-
-    # ---- 5. tower fire on crashed mass ("mass" mode) ----
-    if cfg.tower_mode == "mass":
-        for s in (A, B):
-            d = min(cfg.tower_siege_damage, siege_before_crash[s], siege[s])
-            if d > 0:
-                siege[s] -= d
-                ev["tower_hp"][s] += d
-                _add_kill(kills, 1 - s, -T, d)      # dies under the defender's tower
+    # ---- 4. crash check and 5. tower fire on crashed mass ----
+    crashed = _crash_and_tower_fire(P, siege, crash_hp, cfg, ev, kills, plates)
 
     if trace is not None:
         trace.append({
@@ -402,6 +439,158 @@ def _tick(P, siege, acts, t, crash_hp, cfg: GameConfig, trace=None, ev=None, k=0
             "A": [list(p) for p in P[A]], "B": [list(p) for p in P[B]],
             "siege": list(siege), "fight": fight, "crashed": crashed, "siege_fight": siege_fight,
             "thinned": thinned,
+        })
+
+
+def _strike(target, d: int) -> int:
+    """Remove up to d HP from a packet [x, hp]; returns the HP actually removed."""
+    d = min(d, target[1])
+    target[1] -= d
+    return d
+
+
+def _tick_natural(P, siege, acts, t, crash_hp, cfg: GameConfig, trace=None, ev=None, k=0, reach=None,
+                  kills=None, thin_left=None, plates=None, champion_reach=None, hits=None):
+    """One movement tick under wave_dynamics "natural" (module docstring, "Natural waves").
+
+    Minions follow the same rules whatever the actions; the wave slot only sets the champion's damage budget for the
+    tick, champion_wave_damage[slot] HP, spent on the first reachable target in the order: the enemy front in a lane
+    fight with ours, the enemy's crashed mass under our tower, the enemy's leading packet. A target is reachable when
+    its own-perspective cell is <= the champion's reach line (champion_reach; NO_REACH while away, channeling or in a
+    connected trade). Every HP removed is a farm opportunity for the remover's side at the cell it died in."""
+    T = cfg.tower
+    waves = (wave_of(acts[A]), wave_of(acts[B]))
+    objectives = (objective_of(acts[A]), objective_of(acts[B]))
+    reach_line = (T, T) if champion_reach is None else tuple(champion_reach)
+    budget = [cfg.champion_wave_damage[waves[A]], cfg.champion_wave_damage[waves[B]]]
+    siege_tick_start = list(siege)
+    contact = _fronts_in_contact(P)
+
+    # ---- 1. movement: a free front walks; contact with the enemy front, or (defender) with the enemy's crashed mass
+    #         under its own tower (own x >= -T - 1, distance <= 1 from the tower cell), stops it ----
+    for s in (A, B):
+        e = 1 - s
+        packets = P[s]
+        for i, pk in enumerate(packets):
+            if i > 0:
+                if pk[0] + 1 < packets[0][0]:
+                    pk[0] += 1             # rears walk, never into the cell of a front they cannot join
+            elif not contact and not (siege[e] > 0 and pk[0] >= -T - 1):
+                pk[0] += 1
+
+    # ---- 2. merging ----
+    for s in (A, B):
+        P[s] = _merge(P[s], cfg.hp_cap, ev, s, True)
+        if reach is not None and P[s]:
+            reach[s] = max(reach[s], P[s][0][0])
+
+    champ_dealt = [0, 0]                   # HP the champion of side s removed this tick
+
+    # ---- 3. contact fight: Lanchester minion damage, the champions' damage, the tower on a contested attacker ----
+    fight = None
+    if _fronts_in_contact(P):
+        fa, fb = P[A][0], P[B][0]
+        md_b, md_a = minion_damage(_blob_hp(P[A], cfg), cfg), minion_damage(_blob_hp(P[B], cfg), cfg)
+        ch_a = budget[A] if -fb[0] <= reach_line[A] else 0      # A's champion on B's front
+        ch_b = budget[B] if -fa[0] <= reach_line[B] else 0
+        budget[A] -= ch_a
+        budget[B] -= ch_b
+        tw_b = cfg.tower_damage if fb[0] == T else 0             # B front contesting inside A's tower cell
+        tw_a = cfg.tower_damage if fa[0] == T else 0
+        dmg_a, dmg_b = md_a + ch_b + tw_a, md_b + ch_a + tw_b
+        fight = (fa[0], fa[1], fb[0], fb[1], dmg_a, dmg_b)
+        lost_a, lost_b = min(dmg_a, fa[1]), min(dmg_b, fb[1])
+        # minions and towers strike first; the champion's share is what they left
+        champ_dealt[B] += max(0, lost_a - (md_a + tw_a))
+        champ_dealt[A] += max(0, lost_b - (md_b + tw_b))
+        _add_kill(kills, B, -fa[0], lost_a)
+        _add_kill(kills, A, -fb[0], lost_b)
+        ev["killed_hp"][A] += lost_a
+        ev["killed_hp"][B] += lost_b
+        fa[1] -= lost_a
+        fb[1] -= lost_b
+        if fa[1] <= 0:
+            P[A].pop(0)
+            ev["died"][A] += 1
+        if fb[1] <= 0:
+            P[B].pop(0)
+            ev["died"][B] += 1
+
+    # ---- 3b. the defender's front engages the crashed mass under its own tower (it stands within distance 1 of it);
+    #          a crashed mass in such a fight does not hit the tower this tick (minions fight minions first) ----
+    engaged = [False, False]
+    siege_fight = None
+    if fight is None:
+        for s in (A, B):
+            e = 1 - s
+            if siege[s] <= 0 or not P[e] or P[e][0][0] < -T - 1:
+                continue
+            fe = P[e][0]
+            ch = budget[e] if reach_line[e] >= -T else 0
+            budget[e] -= ch
+            md = minion_damage(_blob_hp(P[e], cfg), cfg)
+            lost_sg = min(md + ch, siege[s])
+            lost_e = min(minion_damage(siege[s], cfg), fe[1])
+            champ_dealt[e] += max(0, lost_sg - md)
+            siege[s] -= lost_sg
+            fe[1] -= lost_e
+            _add_kill(kills, e, -T, lost_sg)
+            _add_kill(kills, s, -fe[0], lost_e)
+            ev["killed_hp"][s] += lost_sg
+            ev["siege_killed_hp"][s] += lost_sg
+            ev["killed_hp"][e] += lost_e
+            engaged[s] = True
+            siege_fight = (s, lost_sg, lost_e)
+            if fe[1] <= 0:
+                P[e].pop(0)
+                ev["died"][e] += 1
+
+    # ---- 3c. thinning (Apply Pressure), as in the scripted rule ----
+    thinned = _pressure_thinning(P, siege_tick_start, objectives, fight is None, thin_left, cfg, ev, kills)
+
+    # ---- 3d. a champion whose budget is unspent strikes the enemy's crashed mass under its own tower, else the
+    #          enemy's leading packet, if reachable (no minion of its own needs to be involved) ----
+    for s in (A, B):
+        e = 1 - s
+        if budget[s] <= 0:
+            continue
+        if siege[e] > 0 and reach_line[s] >= -T:
+            d = min(budget[s], siege[e])
+            siege[e] -= d
+            _add_kill(kills, s, -T, d)
+            ev["killed_hp"][e] += d
+            ev["siege_killed_hp"][e] += d
+        elif P[e] and -P[e][0][0] <= reach_line[s]:
+            target = P[e][0]
+            d = _strike(target, budget[s])
+            _add_kill(kills, s, -target[0], d)
+            ev["killed_hp"][e] += d
+            if target[1] <= 0:
+                P[e].pop(0)
+                ev["died"][e] += 1
+        else:
+            continue
+        budget[s] = 0
+        champ_dealt[s] += d
+    for s in (A, B):
+        ev["champion_hp"][1 - s] += champ_dealt[s]
+
+    # ---- minion damage on the enemy tower: the crashed mass already there at the start of the tick, unless it
+    #      fought the defender's minions this tick ----
+    if hits is not None:
+        for s in (A, B):
+            if siege_tick_start[s] > 0 and not engaged[s]:
+                hits[s] += minion_damage(siege_tick_start[s], cfg)
+
+    # ---- 4. crash check and 5. tower fire on crashed mass ----
+    crashed = _crash_and_tower_fire(P, siege, crash_hp, cfg, ev, kills, plates)
+
+    if trace is not None:
+        trace.append({
+            "tick": t,
+            "A": [list(p) for p in P[A]], "B": [list(p) for p in P[B]],
+            "siege": list(siege), "fight": fight, "crashed": crashed, "siege_fight": siege_fight,
+            "thinned": thinned, "champion": list(champ_dealt),
         })
 
 
@@ -424,6 +613,8 @@ def step_turn(state: State, k: int, act_a: int, act_b: int, cfg: GameConfig,
     acts = (act_a, act_b)
     trace = [] if record else None
     ev = {key: [0, 0] for key in EVENT_KEYS}
+    if cfg.wave_dynamics == "natural":
+        ev.update({key: [0, 0] for key in NATURAL_EVENT_KEYS})
     kills = ({}, {})
     thin_left = [cfg.thin_damage if objective_of(a) == PRESSURE else 0 for a in acts]
     plates = [state.ap, state.bp]
@@ -443,8 +634,9 @@ def step_turn(state: State, k: int, act_a: int, act_b: int, cfg: GameConfig,
     # enemy tower while its crashed minions are still there (the game caps it for Safe).
     reach = [cfg.tower if siege[s] > 0 else (P[s][0][0] if P[s] else -cfg.tower) for s in (A, B)]
     hits = [0, 0]
+    tick = _tick_natural if cfg.wave_dynamics == "natural" else _tick
     for t in range(cfg.ticks_per_turn):
-        _tick(P, siege, acts, t, crash_hp, cfg, trace, ev, k, reach, kills, thin_left, plates, champion_reach, hits)
+        tick(P, siege, acts, t, crash_hp, cfg, trace, ev, k, reach, kills, thin_left, plates, champion_reach, hits)
 
     if cfg.tower_mode == "packet":
         for s in (A, B):

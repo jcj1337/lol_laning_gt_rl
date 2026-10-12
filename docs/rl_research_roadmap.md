@@ -986,3 +986,66 @@ are unchanged.** Full account: [m4_emergent_parallel_report.md](m4_emergent_para
 **Decision: GO WITH CAVEATS.** Freeze `m4_emergent()` and proceed to the M4.3 PPO smoke test. Before drawing strategic
 conclusions from trained policies, reviewers decide whether to move trade damage or retreat farm retention. The
 smallest check is a 2 × 2 rerun of the `zoning` and `hp` stages (about 10k turns).
+
+
+## U. M4.2e-A natural wave mechanics (2026-10-12)
+
+Branch `development/m4-natural-waves`, from `integration/m4-emergent-ready` 23e48be.
+
+- **Preset:** **opt-in** `GameConfig.m4_natural()`. It is `m4_emergent()` plus `wave_dynamics="natural"` on an
+  8-HP wave. `m4()`, `m4_continuous()` and `m4_emergent()` are unchanged, and the historical outputs are
+  byte-identical.
+- **Full account:** [m4_2e_natural_waves_report.md](m4_2e_natural_waves_report.md).
+- **Driver:** `lanegame.experiments.m4.natural_waves`; results `results/m4_natural_waves/` (2.5k turns, 0.4 s).
+- **Tests:** `tests/test_m4_natural_waves.py`.
+
+**Rules**
+
+- **One set of minion rules, whatever the actions.** Every front walks, engages on contact, merges and crashes. A
+  defender's front engages the crashed mass under its tower; the idle siege wait (D7) is removed. Slow Push parking,
+  creeping and the Freeze holds are removed too.
+- **Wave slots become champion damage on enemy minions:** Hold 0, Thin 1, Clear 2 HP per tick (slots SP, F, SH). The
+  damage needs presence and reach: a connected Trade, a Recall, absence or a Safe retreat deals none.
+- **The 46-code action space and the 88-entry observation are unchanged.**
+
+**Timescale fix**
+
+- At 4 HP a contested front dies (2 ticks under Thin) before a reinforcement reaches it (3 ticks after spawning).
+- At 8 HP it survives (4 ticks under Thin, 8 under Hold), so reinforcements merge and edges are stored.
+- The per-HP economy is rescaled so a wave is still worth 1 resource and 8 XP: farm 0.125/HP, XP 1/HP, gold unit
+  1e-7, crash cap 96.
+- Geometry, spawn timing and tower damage are unchanged. Raising tower damage shrinks the defender's post-crash
+  accumulation and halves plate hits.
+
+**Results** (all from s0, deterministic, no seeded stacks)
+
+- **Neutral:** symmetric perpetual contact at the lane.
+- **Slow push:** one turn of Thin → a 24-HP stack → a 16-HP crash at k18.
+- **Deliberate crash:** Clear on a built stack crashes at k11 with 19 HP, against k15 and 16 HP without Clear. Clear
+  alone never crashes.
+- **Bounce:** every crash is followed by the defender pushing into the attacker's half 14–17 turns later and crashing
+  back with 16–25 HP. The push–bounce cycle lasts about 38–40 turns.
+- **Freeze:** bounded Thin turns an enemy push into a wave held inside one's own tower cell. Holding keeps it for
+  14–21 turns with a large farm edge (14.9 against 7.0). The opponent's Thin or Clear breaks it in one turn, with a
+  crash.
+- **Recall:** 0.46–1.35 resources depending on the enemy crash timing; Recalls after one's own crash are cheap.
+
+**Budget:** ≈ 15.2k turns (target 10k, cap 20k). That includes four runs of the same deterministic driver and a 2k
+timing benchmark; the unique experimental content is about 5.4k turns.
+
+**Decision: PASS WITH CAVEATS.**
+
+- The freeze is temporary.
+- Clear needs a stack to crash.
+- Pushing costs farm against a passive opponent: −2.0 to −4.7 per 40 turns.
+- The evaluation bound is analytic (Ω = 107, against 68 enumerated for the scripted lane); an enumeration is
+  deferred.
+- One cell separates the lane from the tower.
+
+**Next steps (not started):**
+
+1. Verify combat-driven zoning on `m4_natural()`, in the freeze state and in the post-crash siege. Champion reach is
+   now wave control, so zoning carries a non-gold cost.
+2. Decide the push incentive (enemy-tower collection, plate value, ganks in the enemy half) alongside 1.
+3. Enumerate, or accept, the natural lane's evaluation bound.
+4. Integrate and freeze the game for the M4.3 PPO smoke test.

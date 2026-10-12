@@ -23,6 +23,14 @@ Rules of M4ScriptAgent, applied in order (each optional):
   5. wave: Freeze whenever legal (`freeze`); conditional Shove (`cshove`: Shove while the own front holds at least
      the enemy front's HP or the enemy has none); stacking (`stack_hp`: Shove once the own front holds that much);
   6. objective: the preferred siege objective whenever it is legal.
+`crash_recall` (between rules 3 and 4): while the own wave's crashed minions are under the enemy tower, the champion
+is not already back at its own tower cell (so it does not Recall again on its return) and no enemy front threatens
+the own half, walk back and Recall.
+
+Natural waves (GameConfig.m4_natural, M4.2e-A): the wave slots are Hold (SP), Clear (SH) and Thin (F), all always
+legal. `NaturalWaveAgent` replaces rule 5 by one of the mechanical wave rules of `NATURAL_WAVE_RULES`; `natural_suite()`
+is its scripted population. The agents above still run under natural waves, with the slot meanings changed
+(e.g. `freezer` Thins whenever it is in its freeze zone, because Thin is always legal).
 
 Duel edge: E_i = h_i ((1 - q_i) dmg(1, L_i, N_i) + q_i dmg(2, L_i, N_i)) is i's expected damage per trade (hit and
 double probabilities of M2 against a Hold defender); edge = E_me / hp_enemy - E_enemy / hp_me.
@@ -41,7 +49,8 @@ import numpy as np
 
 from ..champions import champion_legal_actions, trade_double_probability, trade_hit_probability
 from ..champions_m4 import context
-from ..config import (B_HOLD, B_RECALL, B_SAFE, B_TRADE, CHAMP_ABSENT, F, NONE, PRESSURE, SH, SP, VISION, champ_act)
+from ..config import (B_HOLD, B_RECALL, B_SAFE, B_TRADE, CHAMP_ABSENT, F, NONE, PRESSURE, SH, SP, VISION, W_CLEAR,
+                      W_HOLD, W_THIN, champ_act)
 from ..progression import tables
 from .core import Observation
 
@@ -86,12 +95,14 @@ class M4ScriptAgent:
     def __init__(self, name: str, wave: int = SP, behavior: int = B_HOLD, objective: int = PRESSURE,
                  freeze: bool = False, recall_frac: float = 2 / 6, gold_recall: bool = False,
                  gold_hp_frac: float = 1.0, edge_trade: bool = False, freeze_zone: bool = False,
-                 xp_safe: bool = False, cshove: bool = False, stack_hp: int = 0, invest_gold: float = 4.0):
+                 xp_safe: bool = False, cshove: bool = False, stack_hp: int = 0, invest_gold: float = 4.0,
+                 crash_recall: bool = False):
         self.name, self.wave, self.behavior, self.objective = name, wave, behavior, objective
         self.freeze, self.recall_frac, self.gold_recall, self.gold_hp_frac = freeze, recall_frac, gold_recall, gold_hp_frac
         self.edge_trade, self.freeze_zone, self.xp_safe = edge_trade, freeze_zone, xp_safe
         self.cshove, self.stack_hp = cshove, stack_hp
         self.invest_gold = invest_gold
+        self.crash_recall = crash_recall
 
     # ------------------------------------------------------------------ helpers
     @staticmethod
@@ -100,6 +111,15 @@ class M4ScriptAgent:
             if a in legal:
                 return a
         raise ValueError(f"no candidate is legal in {legal}")
+
+    def _wave(self, lane, s: int, own_fx: int, own_fh: int, en_fx: int, en_fh: int) -> int:
+        """Rule 5 without the Freeze override: the base wave, conditional Shove, stacking."""
+        wave = self.wave
+        if self.cshove:
+            wave = SH if (en_fh == 0 or own_fh >= en_fh) else SP
+        if self.stack_hp and own_fh >= self.stack_hp:
+            wave = SH
+        return wave
 
     def _walk_back(self, legal) -> int:
         return RECALL_CODE if RECALL_CODE in legal else champ_act(SP, B_SAFE)
@@ -122,13 +142,11 @@ class M4ScriptAgent:
         if self.gold_recall and cash_ready(me, cfg, t, self.invest_gold) \
                 and me.hp <= self.gold_hp_frac * H and not enemy_wave_threat:
             return self._walk_back(legal)
+        if self.crash_recall and lane.siege_of(s) > 0 and me.pos > -cfg.tower and not enemy_wave_threat:
+            return self._walk_back(legal)
         freeze_legal = any(a % 3 == F for a in legal if a != CHAMP_ABSENT)
         # wave
-        wave = self.wave
-        if self.cshove:
-            wave = SH if (en_fh == 0 or own_fh >= en_fh) else SP
-        if self.stack_hp and own_fh >= self.stack_hp:
-            wave = SH
+        wave = self._wave(lane, s, own_fx, own_fh, en_fx, en_fh)
         freezing = self.freeze and freeze_legal
         if freezing:
             wave = F
@@ -276,3 +294,58 @@ def gate_attackers() -> Dict[str, M4ScriptAgent]:
             "stacker": M4ScriptAgent("stacker", SP, B_HOLD, PRESSURE, stack_hp=8),
             "adaptive_breaker": AdaptiveBreaker(),
             "trader": M4ScriptAgent("trader", SP, B_TRADE, NONE)}
+
+
+# ---------------------------------------------------------------------- M4.2e-A natural waves
+NATURAL_WAVE_RULES = ("hold", "thin", "clear", "slow_push", "freeze", "build_clear")
+
+
+class NaturalWaveAgent(M4ScriptAgent):
+    """M4ScriptAgent whose wave rule (rule 5) is mechanical, for wave_dynamics "natural" (lanegame.config.W_HOLD etc.):
+
+      hold         Hold
+      thin         Thin
+      clear        Clear
+      slow_push    Thin while the own front is no more than `margin` HP ahead of the enemy front it fights, else Hold:
+                   a small edge, then the reinforcements and the Lanchester law do the rest
+      freeze       Thin while the enemy front holds at least `margin` HP more than the own front, else Hold: the enemy
+                   surplus stays bounded, so the contact drifts toward the own tower and stays there
+      build_clear  Thin to build; Clear once the own front holds at least `margin` HP (a deliberate crash)
+
+    Every rule plays Hold while the fronts are not in contact."""
+
+    def __init__(self, name: str, wave_rule: str = "hold", margin: int = 8, **kw):
+        if wave_rule not in NATURAL_WAVE_RULES:
+            raise ValueError(f"unknown wave_rule {wave_rule!r}")
+        super().__init__(name, W_HOLD, **kw)
+        self.wave_rule, self.margin = wave_rule, margin
+
+    def _wave(self, lane, s: int, own_fx: int, own_fh: int, en_fx: int, en_fh: int) -> int:
+        r = self.wave_rule
+        if r == "hold":
+            return W_HOLD
+        if r == "thin":
+            return W_THIN
+        if r == "clear":
+            return W_CLEAR
+        if not (own_fh > 0 and en_fh > 0 and own_fx + en_fx >= -1):
+            return W_HOLD
+        if r == "slow_push":
+            return W_THIN if own_fh <= en_fh + self.margin else W_HOLD
+        if r == "freeze":
+            return W_THIN if en_fh - own_fh >= self.margin else W_HOLD
+        return W_CLEAR if own_fh >= self.margin else W_THIN          # build_clear
+
+
+def natural_suite() -> Dict[str, M4ScriptAgent]:
+    """Scripted population for natural waves: one agent per wave rule, all farming (Hold behavior) with Pressure when
+    sieging, plus a crash recaller and a trading slow pusher."""
+    agents = [NaturalWaveAgent("hold_farmer", "hold"),
+              NaturalWaveAgent("thinner", "thin"),
+              NaturalWaveAgent("clearer", "clear"),
+              NaturalWaveAgent("slow_pusher", "slow_push", margin=2),
+              NaturalWaveAgent("natural_freezer", "freeze", margin=8),
+              NaturalWaveAgent("crasher", "build_clear", margin=16),
+              NaturalWaveAgent("crash_recaller", "slow_push", margin=2, crash_recall=True),
+              NaturalWaveAgent("trading_pusher", "slow_push", margin=2, behavior=B_TRADE, edge_trade=True)]
+    return {a.name: a for a in agents}

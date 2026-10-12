@@ -79,6 +79,13 @@ def with_objective(a: int, objective: int) -> int:
 
 WAVE_NAMES = {SP: "SlowPush", SH: "Shove", F: "Freeze"}
 WAVE_SHORT = {SP: "SP", SH: "SH", F: "F"}
+# M4.2e-A natural waves (GameConfig.m4_natural): the same three slots name what the champion does to enemy minions.
+# Slot order is kept for continuity of the action space: the passive slot SP is Hold, the aggressive slot SH is Clear
+# (it keeps Shove's gank-exposure term) and the controlled slot F is Thin.
+W_HOLD, W_CLEAR, W_THIN = SP, SH, F
+NATURAL_WAVE_NAMES = {W_HOLD: "Hold", W_CLEAR: "Clear", W_THIN: "Thin"}
+NATURAL_WAVE_SHORT = {W_HOLD: "HO", W_CLEAR: "CL", W_THIN: "TN"}
+NATURAL_WAVE_HP = 8
 POSTURE_NAMES = {CONTEST: "Contest", SAFE: "Safe"}
 OBJECTIVE_NAMES = {NONE: "", PRESSURE: "Pressure", VISION: "Vision"}
 OBJECTIVE_SHORT = {NONE: "", PRESSURE: "P", VISION: "V"}
@@ -411,7 +418,15 @@ class GameConfig:
     # "pin" plus Yield farms from its stand-off cell max(-T, min(spot, e - farm_reach)), e = the enemy front at the start
     # of the turn in own coordinates: the rearmost cell still in reach of the contested minions
     position_rule: str = "m2"
-    tower_adjacent_p: float = 0.0         # tower shot on a connected trader ending next to the enemy tower (m4: 0.5)
+    # M4.2e-A (docs/m4_2e_natural_waves_report.md), opt-in: "scripted" = the historical wave rule (Slow Push parking
+    # and creeping, Freeze holding both fronts, fronts waiting idle behind a tower under siege); "natural" = every
+    # minion packet follows the same physical rules whatever the actions (walk, engage on contact, merge, crash), the
+    # defender's front engages a crashed mass under its tower instead of waiting, a crashed mass engaged by defenders
+    # does not hit the tower, and the three wave slots (SP, SH, F) become the champion's damage on enemy minions:
+    # Hold, Clear and Thin, champion_wave_damage[slot] HP per tick on the nearest reachable enemy minions
+    wave_dynamics: str = "scripted"
+    champion_wave_damage: Tuple[int, int, int] = (0, 2, 1)   # (Hold, Clear, Thin) = slots (SP, SH, F); "natural" only
+    tower_adjacent_p: float = 0.0        # tower shot on a connected trader ending next to the enemy tower (m4: 0.5)
     tower_adjacent_p_busy: float = 0.0    # ... while its own crashed minions are under that tower (m4: 0.25)
     gank_damage_scale: str = "none"       # "none" (centi = 100 x trials), "victim_level" (m4), "attacker_level"
     plate_thresholds: Tuple[int, ...] = (1600, 3600, 6000)   # durability plate thresholds, centi-units (design §11)
@@ -493,7 +508,25 @@ class GameConfig:
         base.update(kw)
         return cls.m4_continuous(**base)
 
+    @classmethod
+    def m4_natural(cls, **kw) -> "GameConfig":
+        """EXPERIMENT (M4.2e-A, docs/m4_2e_natural_waves_report.md): `m4_emergent()` with natural wave mechanics
+        (wave_dynamics = "natural"; wave slots Hold / Clear / Thin) on the rescaled wave of NATURAL_WAVE_HP = 8 HP.
+        Every per-HP quantity is rescaled so that one fresh wave is worth what it was at 4 HP: farm_per_hp 0.125
+        (1 resource per wave), xp_per_hp 1 (8 XP per wave), siege_cap 96 (12 waves); gold_unit 1e-7 keeps every
+        per-HP farm value an exact ledger multiple. hp_cap (3 waves) and the Lanchester law floor(h / W) scale with
+        wave_hp. Not a default."""
+        base = dict(wave_dynamics="natural", wave_hp=NATURAL_WAVE_HP, farm_per_hp=0.125, xp_per_hp=1,
+                    gold_unit=1e-7, siege_cap=96, freeze_maintenance=False)
+        base.update(kw)
+        return cls.m4_emergent(**base)
+
     # ------------------------------------------------------------------ helpers
+    @property
+    def natural_waves(self) -> bool:
+        """M4.2e-A natural wave mechanics: wave slots are Hold / Clear / Thin champion damage."""
+        return self.wave_dynamics == "natural"
+
     @property
     def continuous_items(self) -> bool:
         """M4.2c continuous gold investment: M4Side.items holds the cumulative invested gold in ledger units."""
@@ -528,6 +561,9 @@ class GameConfig:
         Spawns repeat every spawn_every_turns turns; a creeping Slow Push moves on one
         turn in every spawn_every_turns * slowpush_creep_period. Transitions from the same
         state are identical at k and k + phase_period.
+
+        Natural waves have no creep clock, so their true period is spawn_every_turns; they keep the scripted value
+        (a multiple of it) so that the observation's phase one-hot and the 88-entry layout do not change.
         """
         p = self.spawn_every_turns
         if self.slowpush_mode in ("creep", "stack_creep"):
@@ -561,8 +597,10 @@ class GameConfig:
 
     def label(self, a: int) -> str:
         """Short action label: 'SH-C', 'SH-C+P' etc., or 'SH' when positioning is disabled; champion mode
-        'SH-T+P' (Shove + Trade + Pressure) etc."""
+        'SH-T+P' (Shove + Trade + Pressure) etc.; natural waves 'CL-T+P' (Clear + Trade + Pressure) etc."""
         if self.champion_mode:
+            if self.natural_waves and a != CHAMP_ABSENT:
+                return NATURAL_WAVE_SHORT[champ_wave(a)] + CHAMP_ACTION_SHORT[a][len(WAVE_SHORT[champ_wave(a)]):]
             return CHAMP_ACTION_SHORT[a]
         return ACTION_SHORT[a] if self.positioning else WAVE_SHORT[wave_of(a)]
 
@@ -703,6 +741,18 @@ class GameConfig:
             bad("zoning_rule", "must be 'presence', 'contact' or 'none'")
         if self.siege_engage:
             bad("siege_engage", "must be False (the evaluation bound counts no siege fights, design §10.5.3)")
+        if self.wave_dynamics not in ("scripted", "natural"):
+            bad("wave_dynamics", "must be 'scripted' or 'natural'")
+        if self.wave_dynamics == "natural":
+            cwd = self.champion_wave_damage
+            if len(cwd) != 3 or any(not isinstance(d, int) or d < 0 for d in cwd):
+                bad("champion_wave_damage", "must hold three non-negative integers (HP per tick of Hold, Clear, Thin)")
+            if self.freeze_maintenance:
+                bad("freeze_maintenance", "must be False under wave_dynamics 'natural' (Thin is not a Freeze)")
+            if self.cap_rule != "block" or self.tower_mode != "mass" or self.damage_law == "pressure":
+                bad("wave_dynamics", "'natural' needs cap_rule 'block', tower_mode 'mass' and a Lanchester damage law")
+        elif self.champion_wave_damage != _FIELD_DEFAULTS["champion_wave_damage"]:
+            bad("champion_wave_damage", "applies to wave_dynamics 'natural' only")
         self._validate_exact_economy()
 
     def _validate_exact_economy(self) -> None:
@@ -760,7 +810,7 @@ M4_ECONOMY_FIELDS = ("xp_per_hp", "xp_range", "xp_base", "xp_step", "level_cap",
                      "invest_obs_encoding", "freeze_maintenance", "chase_rule", "farm_spot_rule",
                      "tower_adjacent_p", "tower_adjacent_p_busy", "gank_damage_scale", "plate_thresholds",
                      "plate_gold", "pressure_tower_damage", "plate_gold_requires_presence", "gold_unit",
-                     "rear_count_max", "position_rule", "zoning_rule")
+                     "rear_count_max", "position_rule", "zoning_rule", "wave_dynamics", "champion_wave_damage")
 _FIELD_DEFAULTS = {f.name: f.default for f in GameConfig.__dataclass_fields__.values()}
 
 

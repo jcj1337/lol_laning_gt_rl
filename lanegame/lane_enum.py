@@ -32,7 +32,8 @@ def lane_signature(cfg: GameConfig) -> tuple:
             cfg.queue_fights, cfg.damage_law, cfg.shove_damage, cfg.tower_damage, cfg.slowpush_line,
             cfg.slowpush_mode, cfg.slowpush_creep_period, cfg.freeze_line, cfg.freeze_break_threshold,
             tuple(cfg.freeze_break_push), cfg.freeze_legal_max, cfg.tower_mode, cfg.tower_siege_damage,
-            cfg.siege_engage, cfg.siege_cap, cfg.thin_damage, cfg.thin_reach)
+            cfg.siege_engage, cfg.siege_cap, cfg.thin_damage, cfg.thin_reach, cfg.wave_dynamics,
+            tuple(cfg.champion_wave_damage))
 
 
 def side_options(state: State, s: int, cfg: GameConfig) -> List[Tuple[int, int, int]]:
@@ -97,7 +98,19 @@ DEFAULT_LANE_BOUNDS = {"pairs": 20572, "A_max": 32, "K_max": 15, "siege_max": 23
                        "rears_per_cell_max": 4}
 
 
+def natural_lane_bounds(cfg: GameConfig) -> Dict[str, int]:
+    """Analytic (not enumerated) upper bounds for wave_dynamics "natural" (M4.2e-A). They hold for every trajectory the
+    environment can produce, because observe_m4 raises once a cell holds more than rear_count_max rear packets or the
+    crashed mass exceeds siege_cap: a side's alive HP is at most one front (hp_cap), rear_count_max fresh waves in each
+    of the 2 base + 1 cells and a full crashed mass. Loose by design; an enumeration of the natural lane is deferred."""
+    cells = 2 * cfg.base + 1
+    return {"pairs": -1, "A_max": cfg.hp_cap + cfg.rear_count_max * cells * cfg.wave_hp + cfg.siege_cap,
+            "siege_max": cfg.siege_cap, "rears_per_cell_max": cfg.rear_count_max, "analytic": 1}
+
+
 def recorded_bounds(cfg: GameConfig) -> Dict[str, int]:
+    if cfg.wave_dynamics == "natural":
+        return natural_lane_bounds(cfg)
     if lane_signature(cfg) != lane_signature(GameConfig()):
         raise ValueError("no enumerated lane bounds are recorded for these lane parameters: run "
                          "lanegame.lane_enum.lane_bounds(cfg) (design §12.2 condition 1)")

@@ -1,0 +1,12216 @@
+{
+ "commit": "23e48beb224b8286a90b5b6cadb5e667c70bf823",
+ "command": "python.exe C:\\Users\\light\\OneDrive\\Desktop\\projects\\lol_gt_laning\\lanegame\\experiments\\m4\\natural_waves.py",
+ "environment": {
+  "python": "3.13.9",
+  "numpy": "2.5.3",
+  "scipy": "1.18.1",
+  "platform": "Windows-11-10.0.26200-SP0",
+  "timestamp": "2026-10-12 06:08:54"
+ },
+ "config": {
+  "base": 4,
+  "tower": 2,
+  "ticks_per_turn": 2,
+  "spawn_interval": 4,
+  "horizon": 32,
+  "wave_hp": 8,
+  "max_stacks": 2,
+  "cap_rule": "block",
+  "queue_fights": true,
+  "positioning": true,
+  "damage_law": "lanchester",
+  "shove_damage": 1,
+  "tower_damage": 1,
+  "pressure_kappa": [
+   0,
+   1,
+   0
+  ],
+  "slowpush_line": 0,
+  "slowpush_mode": "stack_creep",
+  "slowpush_creep_period": 2,
+  "freeze_line": -1,
+  "freeze_break_threshold": 10,
+  "freeze_break_push": [
+   0,
+   4,
+   0
+  ],
+  "freeze_legal_max": -1,
+  "tower_mode": "mass",
+  "tower_consumption_per_turn": 1,
+  "tower_siege_damage": 1,
+  "siege_engage": false,
+  "siege_cap": 96,
+  "siege_mode": "objective",
+  "plate_mode": "durability",
+  "plate_grant": [
+   1,
+   2,
+   3
+  ],
+  "plates_cap": 6,
+  "plates_per_tower": 5,
+  "plates_per_turn": 1,
+  "plate_value": 1.0,
+  "thin_damage": 1,
+  "thin_reach": 1,
+  "crash_options": [
+   [
+    [
+     1.0,
+     false
+    ],
+    [
+     0.0,
+     true
+    ]
+   ],
+   [
+    [
+     2.0,
+     false
+    ],
+    [
+     0.0,
+     true
+    ]
+   ],
+   [
+    [
+     3.0,
+     false
+    ],
+    [
+     2.0,
+     true
+    ]
+   ]
+  ],
+  "vision_turns": 6,
+  "vision_reduction": 0.75,
+  "farm_per_hp": 0.125,
+  "collect_contest": 0.9,
+  "collect_contest_enemy_tower": 0.5,
+  "collect_safe": 0.8,
+  "collect_safe_slope": 0.2,
+  "zone_contest": 0.3,
+  "zone_under_tower": 0.15,
+  "zoning_rule": "none",
+  "gank_base": 0.15,
+  "gank_position": 0.1,
+  "gank_action": [
+   0.02,
+   0.05,
+   0.02,
+   0.0,
+   0.0,
+   0.0
+  ],
+  "gank_strength": 0.02,
+  "gank_max": 0.4,
+  "gank_loss": 5.0,
+  "posture_cap": [
+   null,
+   null,
+   null,
+   -1,
+   -1,
+   -1
+  ],
+  "champion_mode": true,
+  "champion_hp": 6,
+  "champion_speed": 2,
+  "champion_absent_max": 3,
+  "recall_turns": 2,
+  "recall_line": -1,
+  "trade_hit_base": 0.55,
+  "trade_hit_skill": 0.4,
+  "trade_hit_behavior": [
+   0.0,
+   -0.25,
+   0.0,
+   -0.4,
+   0.0
+  ],
+  "trade_hit_minions": 0.05,
+  "trade_hit_tower": 0.15,
+  "trade_hit_min": 0.05,
+  "trade_hit_max": 0.95,
+  "trade_double_base": 0.3,
+  "trade_double_skill": 0.2,
+  "tower_shot_damage": 1,
+  "tower_shot_p": 1.0,
+  "tower_shot_p_busy": 0.5,
+  "skill_a": 0.5,
+  "skill_b": 0.5,
+  "safe_line": -1,
+  "trade_range": 1,
+  "farm_reach": 1,
+  "retreat_farm_reach": 2,
+  "trade_farm_factor": 0.5,
+  "champ_gank_base": 0.0,
+  "champ_gank_position": 0.12,
+  "champ_gank_behavior": [
+   0.01,
+   0.01,
+   0.03,
+   0.0
+  ],
+  "champ_gank_shove": 0.02,
+  "champ_gank_strength": 0.01,
+  "champ_gank_max": 0.3,
+  "gank_damage_trials": 4,
+  "gank_damage_base": 0.2,
+  "gank_damage_position": 0.6,
+  "gank_damage_defense": 0.2,
+  "gank_damage_skill": 0.2,
+  "death_turns": 3,
+  "kill_bounty": 0.5,
+  "ruleset": "m4",
+  "time_mode": "continuing",
+  "time_features": false,
+  "gamma": 0.99,
+  "xp_per_hp": 1,
+  "xp_range": 3,
+  "xp_base": 8,
+  "xp_step": 3,
+  "level_cap": 18,
+  "hp_base": 600,
+  "hp_growth": 1.05,
+  "ap_level_growth": 1.05,
+  "item_mult": 1.2,
+  "item_tiers": 0,
+  "item_prices": [],
+  "item_model": "continuous",
+  "invest_alpha": 0.045,
+  "invest_p": 0.9,
+  "invest_obs_gold_ref": 8,
+  "invest_obs_ref": 64,
+  "invest_curve": "saturating",
+  "invest_gain": 1.5,
+  "invest_scale": 16.0,
+  "invest_obs_encoding": "compressed",
+  "freeze_maintenance": false,
+  "chase_rule": "contact_cell",
+  "farm_spot_rule": "pre_crash_front",
+  "position_rule": "standoff",
+  "wave_dynamics": "natural",
+  "champion_wave_damage": [
+   0,
+   2,
+   1
+  ],
+  "tower_adjacent_p": 0.5,
+  "tower_adjacent_p_busy": 0.25,
+  "gank_damage_scale": "victim_level",
+  "plate_thresholds": [
+   1600,
+   3600,
+   6000
+  ],
+  "plate_gold": 1.0,
+  "pressure_tower_damage": 400,
+  "plate_gold_requires_presence": false,
+  "gold_unit": 1e-07,
+  "rear_count_max": 4
+ },
+ "timescale": {
+  "W4_hold_hold": {
+   "metrics": {
+    "spawn_ticks": [
+     0,
+     4,
+     8,
+     12,
+     16,
+     20,
+     24,
+     28,
+     32
+    ],
+    "first_contact_tick": 4,
+    "A_merge_ticks": [
+     7,
+     11,
+     15,
+     19,
+     23,
+     27,
+     31
+    ],
+    "A_front_death_ticks": [],
+    "fresh_fight_ticks_no_champion": 4,
+    "reinforcement_spacing_cells": 4,
+    "max_A_front": 4
+   },
+   "ticks": [
+    {
+     "tick": 1,
+     "A": [
+      [
+       -3,
+       4
+      ]
+     ],
+     "B": [
+      [
+       3,
+       4
+      ]
+     ],
+     "fight": null,
+     "champion": [
+      0,
+      0
+     ],
+     "crashed": [
+      0,
+      0
+     ],
+     "siege": [
+      0,
+      0
+     ]
+    },
+    {
+     "tick": 2,
+     "A": [
+      [
+       -2,
+       4
+      ]
+     ],
+     "B": [
+      [
+       2,
+       4
+      ]
+     ],
+     "fight": null,
+     "champion": [
+      0,
+      0
+     ],
+     "crashed": [
+      0,
+      0
+     ],
+     "siege": [
+      0,
+      0
+     ]
+    },
+    {
+     "tick": 3,
+     "A": [
+      [
+       -1,
+       4
+      ]
+     ],
+     "B": [
+      [
+       1,
+       4
+      ]
+     ],
+     "fight": null,
+     "champion": [
+      0,
+      0
+     ],
+     "crashed": [
+      0,
+      0
+     ],
+     "siege": [
+      0,
+      0
+     ]
+    },
+    {
+     "tick": 4,
+     "A": [
+      [
+       0,
+       3
+      ]
+     ],
+     "B": [
+      [
+       0,
+       3
+      ]
+     ],
+     "fight": [
+      0,
+      4,
+      0,
+      4,
+      1,
+      1
+     ],
+     "champion": [
+      0,
+      0
+     ],
+     "crashed": [
+      0,
+      0
+     ],
+     "siege": [
+      0,
+      0
+     ],
+     "spawn_after": true
+    },
+    {
+     "tick": 5,
+     "A": [
+      [
+       0,
+       2
+      ],
+      [
+       -3,
+       4
+      ]
+     ],
+     "B": [
+      [
+       0,
+       2
+      ],
+      [
+       3,
+       4
+      ]
+     ],
+     "fight": [
+      0,
+      3,
+      0,
+      3,
+      1,
+      1
+     ],
+     "champion": [
+      0,
+      0
+     ],
+     "crashed": [
+      0,
+      0
+     ],
+     "siege": [
+      0,
+      0
+     ]
+    },
+    {
+     "tick": 6,
+     "A": [
+      [
+       0,
+       1
+      ],
+      [
+       -2,
+       4
+      ]
+     ],
+     "B": [
+      [
+       0,
+       1
+      ],
+      [
+       2,
+       4
+      ]
+     ],
+     "fight": [
+      0,
+      2,
+      0,
+      2,
+      1,
+      1
+     ],
+     "champion": [
+      0,
+      0
+     ],
+     "crashed": [
+      0,
+      0
+     ],
+     "siege": [
+      0,
+      0
+     ]
+    },
+    {
+     "tick": 7,
+     "A": [
+      [
+       0,
+       4
+      ]
+     ],
+     "B": [
+      [
+       0,
+       4
+      ]
+     ],
+     "fight": [
+      0,
+      5,
+      0,
+      5,
+      1,
+      1
+     ],
+     "champion": [
+      0,
+      0
+     ],
+     "crashed": [
+      0,
+      0
+     ],
+     "siege": [
+      0,
+      0
+     ]
+    },
+    {
+     "tick": 8,
+     "A": [
+      [
+       0,
+       3
+      ]
+     ],
+     "B": [
+      [
+       0,
+       3
+      ]
+     ],
+     "fight": [
+      0,
+      4,
+      0,
+      4,
+      1,
+      1
+     ],
+     "champion": [
+      0,
+      0
+     ],
+     "crashed": [
+      0,
+      0
+     ],
+     "siege": [
+      0,
+      0
+     ],
+     "spawn_after": true
+    },
+    {
+     "tick": 9,
+     "A": [
+      [
+       0,
+       2
+      ],
+      [
+       -3,
+       4
+      ]
+     ],
+     "B": [
+      [
+       0,
+       2
+      ],
+      [
+       3,
+       4
+      ]
+     ],
+     "fight": [
+      0,
+      3,
+      0,
+      3,
+      1,
+      1
+     ],
+     "champion": [
+      0,
+      0
+     ],
+     "crashed": [
+      0,
+      0
+     ],
+     "siege": [
+      0,
+      0
+     ]
+    },
+    {
+     "tick": 10,
+     "A": [
+      [
+       0,
+       1
+      ],
+      [
+       -2,
+       4
+      ]
+     ],
+     "B": [
+      [
+       0,
+       1
+      ],
+      [
+       2,
+       4
+      ]
+     ],
+     "fight": [
+      0,
+      2,
+      0,
+      2,
+      1,
+      1
+     ],
+     "champion": [
+      0,
+      0
+     ],
+     "crashed": [
+      0,
+      0
+     ],
+     "siege": [
+      0,
+      0
+     ]
+    },
+    {
+     "tick": 11,
+     "A": [
+      [
+       0,
+       4
+      ]
+     ],
+     "B": [
+      [
+       0,
+       4
+      ]
+     ],
+     "fight": [
+      0,
+      5,
+      0,
+      5,
+      1,
+      1
+     ],
+     "champion": [
+      0,
+      0
+     ],
+     "crashed": [
+      0,
+      0
+     ],
+     "siege": [
+      0,
+      0
+     ]
+    },
+    {
+     "tick": 12,
+     "A": [
+      [
+       0,
+       3
+      ]
+     ],
+     "B": [
+      [
+       0,
+       3
+      ]
+     ],
+     "fight": [
+      0,
+      4,
+      0,
+      4,
+      1,
+      1
+     ],
+     "champion": [
+      0,
+      0
+     ],
+     "crashed": [
+      0,
+      0
+     ],
+     "siege": [
+      0,
+      0
+     ],
+     "spawn_after": true
+    },
+    {
+     "tick": 13,
+     "A": [
+      [
+       0,
+       2
+      ],
+      [
+       -3,
+       4
+      ]
+     ],
+     "B": [
+      [
+       0,
+       2
+      ],
+      [
+       3,
+       4
+      ]
+     ],
+     "fight": [
+      0,
+      3,
+      0,
+      3,
+      1,
+      1
+     ],
+     "champion": [
+      0,
+      0
+     ],
+     "crashed": [
+      0,
+      0
+     ],
+     "siege": [
+      0,
+      0
+     ]
+    },
+    {
+     "tick": 14,
+     "A": [
+      [
+       0,
+       1
+      ],
+      [
+       -2,
+       4
+      ]
+     ],
+     "B": [
+      [
+       0,
+       1
+      ],
+      [
+       2,
+       4
+      ]
+     ],
+     "fight": [
+      0,
+      2,
+      0,
+      2,
+      1,
+      1
+     ],
+     "champion": [
+      0,
+      0
+     ],
+     "crashed": [
+      0,
+      0
+     ],
+     "siege": [
+      0,
+      0
+     ]
+    },
+    {
+     "tick": 15,
+     "A": [
+      [
+       0,
+       4
+      ]
+     ],
+     "B": [
+      [
+       0,
+       4
+      ]
+     ],
+     "fight": [
+      0,
+      5,
+      0,
+      5,
+      1,
+      1
+     ],
+     "champion": [
+      0,
+      0
+     ],
+     "crashed": [
+      0,
+      0
+     ],
+     "siege": [
+      0,
+      0
+     ]
+    },
+    {
+     "tick": 16,
+     "A": [
+      [
+       0,
+       3
+      ]
+     ],
+     "B": [
+      [
+       0,
+       3
+      ]
+     ],
+     "fight": [
+      0,
+      4,
+      0,
+      4,
+      1,
+      1
+     ],
+     "champion": [
+      0,
+      0
+     ],
+     "crashed": [
+      0,
+      0
+     ],
+     "siege": [
+      0,
+      0
+     ],
+     "spawn_after": true
+    },
+    {
+     "tick": 17,
+     "A": [
+      [
+       0,
+       2
+      ],
+      [
+       -3,
+       4
+      ]
+     ],
+     "B": [
+      [
+       0,
+       2
+      ],
+      [
+       3,
+       4
+      ]
+     ],
+     "fight": [
+      0,
+      3,
+      0,
+      3,
+      1,
+      1
+     ],
+     "champion": [
+      0,
+      0
+     ],
+     "crashed": [
+      0,
+      0
+     ],
+     "siege": [
+      0,
+      0
+     ]
+    },
+    {
+     "tick": 18,
+     "A": [
+      [
+       0,
+       1
+      ],
+      [
+       -2,
+       4
+      ]
+     ],
+     "B": [
+      [
+       0,
+       1
+      ],
+      [
+       2,
+       4
+      ]
+     ],
+     "fight": [
+      0,
+      2,
+      0,
+      2,
+      1,
+      1
+     ],
+     "champion": [
+      0,
+      0
+     ],
+     "crashed": [
+      0,
+      0
+     ],
+     "siege": [
+      0,
+      0
+     ]
+    },
+    {
+     "tick": 19,
+     "A": [
+      [
+       0,
+       4
+      ]
+     ],
+     "B": [
+      [
+       0,
+       4
+      ]
+     ],
+     "fight": [
+      0,
+      5,
+      0,
+      5,
+      1,
+      1
+     ],
+     "champion": [
+      0,
+      0
+     ],
+     "crashed": [
+      0,
+      0
+     ],
+     "siege": [
+      0,
+      0
+     ]
+    },
+    {
+     "tick": 20,
+     "A": [
+      [
+       0,
+       3
+      ]
+     ],
+     "B": [
+      [
+       0,
+       3
+      ]
+     ],
+     "fight": [
+      0,
+      4,
+      0,
+      4,
+      1,
+      1
+     ],
+     "champion": [
+      0,
+      0
+     ],
+     "crashed": [
+      0,
+      0
+     ],
+     "siege": [
+      0,
+      0
+     ],
+     "spawn_after": true
+    },
+    {
+     "tick": 21,
+     "A": [
+      [
+       0,
+       2
+      ],
+      [
+       -3,
+       4
+      ]
+     ],
+     "B": [
+      [
+       0,
+       2
+      ],
+      [
+       3,
+       4
+      ]
+     ],
+     "fight": [
+      0,
+      3,
+      0,
+      3,
+      1,
+      1
+     ],
+     "champion": [
+      0,
+      0
+     ],
+     "crashed": [
+      0,
+      0
+     ],
+     "siege": [
+      0,
+      0
+     ]
+    },
+    {
+     "tick": 22,
+     "A": [
+      [
+       0,
+       1
+      ],
+      [
+       -2,
+       4
+      ]
+     ],
+     "B": [
+      [
+       0,
+       1
+      ],
+      [
+       2,
+       4
+      ]
+     ],
+     "fight": [
+      0,
+      2,
+      0,
+      2,
+      1,
+      1
+     ],
+     "champion": [
+      0,
+      0
+     ],
+     "crashed": [
+      0,
+      0
+     ],
+     "siege": [
+      0,
+      0
+     ]
+    },
+    {
+     "tick": 23,
+     "A": [
+      [
+       0,
+       4
+      ]
+     ],
+     "B": [
+      [
+       0,
+       4
+      ]
+     ],
+     "fight": [
+      0,
+      5,
+      0,
+      5,
+      1,
+      1
+     ],
+     "champion": [
+      0,
+      0
+     ],
+     "crashed": [
+      0,
+      0
+     ],
+     "siege": [
+      0,
+      0
+     ]
+    },
+    {
+     "tick": 24,
+     "A": [
+      [
+       0,
+       3
+      ]
+     ],
+     "B": [
+      [
+       0,
+       3
+      ]
+     ],
+     "fight": [
+      0,
+      4,
+      0,
+      4,
+      1,
+      1
+     ],
+     "champion": [
+      0,
+      0
+     ],
+     "crashed": [
+      0,
+      0
+     ],
+     "siege": [
+      0,
+      0
+     ],
+     "spawn_after": true
+    },
+    {
+     "tick": 25,
+     "A": [
+      [
+       0,
+       2
+      ],
+      [
+       -3,
+       4
+      ]
+     ],
+     "B": [
+      [
+       0,
+       2
+      ],
+      [
+       3,
+       4
+      ]
+     ],
+     "fight": [
+      0,
+      3,
+      0,
+      3,
+      1,
+      1
+     ],
+     "champion": [
+      0,
+      0
+     ],
+     "crashed": [
+      0,
+      0
+     ],
+     "siege": [
+      0,
+      0
+     ]
+    },
+    {
+     "tick": 26,
+     "A": [
+      [
+       0,
+       1
+      ],
+      [
+       -2,
+       4
+      ]
+     ],
+     "B": [
+      [
+       0,
+       1
+      ],
+      [
+       2,
+       4
+      ]
+     ],
+     "fight": [
+      0,
+      2,
+      0,
+      2,
+      1,
+      1
+     ],
+     "champion": [
+      0,
+      0
+     ],
+     "crashed": [
+      0,
+      0
+     ],
+     "siege": [
+      0,
+      0
+     ]
+    },
+    {
+     "tick": 27,
+     "A": [
+      [
+       0,
+       4
+      ]
+     ],
+     "B": [
+      [
+       0,
+       4
+      ]
+     ],
+     "fight": [
+      0,
+      5,
+      0,
+      5,
+      1,
+      1
+     ],
+     "champion": [
+      0,
+      0
+     ],
+     "crashed": [
+      0,
+      0
+     ],
+     "siege": [
+      0,
+      0
+     ]
+    },
+    {
+     "tick": 28,
+     "A": [
+      [
+       0,
+       3
+      ]
+     ],
+     "B": [
+      [
+       0,
+       3
+      ]
+     ],
+     "fight": [
+      0,
+      4,
+      0,
+      4,
+      1,
+      1
+     ],
+     "champion": [
+      0,
+      0
+     ],
+     "crashed": [
+      0,
+      0
+     ],
+     "siege": [
+      0,
+      0
+     ],
+     "spawn_after": true
+    },
+    {
+     "tick": 29,
+     "A": [
+      [
+       0,
+       2
+      ],
+      [
+       -3,
+       4
+      ]
+     ],
+     "B": [
+      [
+       0,
+       2
+      ],
+      [
+       3,
+       4
+      ]
+     ],
+     "fight": [
+      0,
+      3,
+      0,
+      3,
+      1,
+      1
+     ],
+     "champion": [
+      0,
+      0
+     ],
+     "crashed": [
+      0,
+      0
+     ],
+     "siege": [
+      0,
+      0
+     ]
+    },
+    {
+     "tick": 30,
+     "A": [
+      [
+       0,
+       1
+      ],
+      [
+       -2,
+       4
+      ]
+     ],
+     "B": [
+      [
+       0,
+       1
+      ],
+      [
+       2,
+       4
+      ]
+     ],
+     "fight": [
+      0,
+      2,
+      0,
+      2,
+      1,
+      1
+     ],
+     "champion": [
+      0,
+      0
+     ],
+     "crashed": [
+      0,
+      0
+     ],
+     "siege": [
+      0,
+      0
+     ]
+    },
+    {
+     "tick": 31,
+     "A": [
+      [
+       0,
+       4
+      ]
+     ],
+     "B": [
+      [
+       0,
+       4
+      ]
+     ],
+     "fight": [
+      0,
+      5,
+      0,
+      5,
+      1,
+      1
+     ],
+     "champion": [
+      0,
+      0
+     ],
+     "crashed": [
+      0,
+      0
+     ],
+     "siege": [
+      0,
+      0
+     ]
+    },
+    {
+     "tick": 32,
+     "A": [
+      [
+       0,
+       3
+      ]
+     ],
+     "B": [
+      [
+       0,
+       3
+      ]
+     ],
+     "fight": [
+      0,
+      4,
+      0,
+      4,
+      1,
+      1
+     ],
+     "champion": [
+      0,
+      0
+     ],
+     "crashed": [
+      0,
+      0
+     ],
+     "siege": [
+      0,
+      0
+     ],
+     "spawn_after": true
+    }
+   ]
+  },
+  "W4_thin_hold": {
+   "metrics": {
+    "spawn_ticks": [
+     0,
+     4,
+     8,
+     12,
+     16,
+     20,
+     24,
+     28,
+     32
+    ],
+    "first_contact_tick": 4,
+    "A_merge_ticks": [],
+    "A_front_death_ticks": [
+     7,
+     11,
+     15,
+     19,
+     23,
+     27,
+     31
+    ],
+    "fresh_fight_ticks_no_champion": 4,
+    "reinforcement_spacing_cells": 4,
+    "max_A_front": 4
+   },
+   "ticks": [
+    {
+     "tick": 1,
+     "A": [
+      [
+       -3,
+       4
+      ]
+     ],
+     "B": [
+      [
+       3,
+       4
+      ]
+     ],
+     "fight": null,
+     "champion": [
+      0,
+      0
+     ],
+     "crashed": [
+      0,
+      0
+     ],
+     "siege": [
+      0,
+      0
+     ]
+    },
+    {
+     "tick": 2,
+     "A": [
+      [
+       -2,
+       4
+      ]
+     ],
+     "B": [
+      [
+       2,
+       4
+      ]
+     ],
+     "fight": null,
+     "champion": [
+      0,
+      0
+     ],
+     "crashed": [
+      0,
+      0
+     ],
+     "siege": [
+      0,
+      0
+     ]
+    },
+    {
+     "tick": 3,
+     "A": [
+      [
+       -1,
+       4
+      ]
+     ],
+     "B": [
+      [
+       1,
+       4
+      ]
+     ],
+     "fight": null,
+     "champion": [
+      0,
+      0
+     ],
+     "crashed": [
+      0,
+      0
+     ],
+     "siege": [
+      0,
+      0
+     ]
+    },
+    {
+     "tick": 4,
+     "A": [
+      [
+       0,
+       3
+      ]
+     ],
+     "B": [
+      [
+       0,
+       3
+      ]
+     ],
+     "fight": [
+      0,
+      4,
+      0,
+      4,
+      1,
+      1
+     ],
+     "champion": [
+      0,
+      0
+     ],
+     "crashed": [
+      0,
+      0
+     ],
+     "siege": [
+      0,
+      0
+     ],
+     "spawn_after": true
+    },
+    {
+     "tick": 5,
+     "A": [
+      [
+       0,
+       2
+      ],
+      [
+       -3,
+       4
+      ]
+     ],
+     "B": [
+      [
+       0,
+       1
+      ],
+      [
+       3,
+       4
+      ]
+     ],
+     "fight": [
+      0,
+      3,
+      0,
+      3,
+      1,
+      2
+     ],
+     "champion": [
+      1,
+      0
+     ],
+     "crashed": [
+      0,
+      0
+     ],
+     "siege": [
+      0,
+      0
+     ]
+    },
+    {
+     "tick": 6,
+     "A": [
+      [
+       0,
+       1
+      ],
+      [
+       -2,
+       4
+      ]
+     ],
+     "B": [
+      [
+       2,
+       4
+      ]
+     ],
+     "fight": [
+      0,
+      2,
+      0,
+      1,
+      1,
+      2
+     ],
+     "champion": [
+      0,
+      0
+     ],
+     "crashed": [
+      0,
+      0
+     ],
+     "siege": [
+      0,
+      0
+     ]
+    },
+    {
+     "tick": 7,
+     "A": [
+      [
+       -1,
+       4
+      ]
+     ],
+     "B": [
+      [
+       1,
+       2
+      ]
+     ],
+     "fight": [
+      1,
+      1,
+      -1,
+      4,
+      1,
+      2
+     ],
+     "champion": [
+      1,
+      0
+     ],
+     "crashed": [
+      0,
+      0
+     ],
+     "siege": [
+      0,
+      0
+     ]
+    },
+    {
+     "tick": 8,
+     "A": [
+      [
+       0,
+       3
+      ]
+     ],
+     "B": [],
+     "fight": [
+      0,
+      4,
+      0,
+      2,
+      1,
+      2
+     ],
+     "champion": [
+      1,
+      0
+     ],
+     "crashed": [
+      0,
+      0
+     ],
+     "siege": [
+      0,
+      0
+     ],
+     "spawn_after": true
+    },
+    {
+     "tick": 9,
+     "A": [
+      [
+       1,
+       3
+      ],
+      [
+       -3,
+       4
+      ]
+     ],
+     "B": [
+      [
+       3,
+       4
+      ]
+     ],
+     "fight": null,
+     "champion": [
+      0,
+      0
+     ],
+     "crashed": [
+      0,
+      0
+     ],
+     "siege": [
+      0,
+      0
+     ]
+    },
+    {
+     "tick": 10,
+     "A": [
+      [
+       2,
+       1
+      ],
+      [
+       -2,
+       4
+      ]
+     ],
+     "B": [
+      [
+       2,
+       3
+      ]
+     ],
+     "fight": [
+      2,
+      3,
+      -2,
+      4,
+      2,
+      1
+     ],
+     "champion": [
+      0,
+      0
+     ],
+     "crashed": [
+      0,
+      0
+     ],
+     "siege": [
+      0,
+      0
+     ]
+    },
+    {
+     "tick": 11,
+     "A": [
+      [
+       -1,
+       4
+      ]
+     ],
+     "B": [
+      [
+       2,
+       1
+      ]
+     ],
+     "fight": [
+      2,
+      1,
+      -2,
+      3,
+      2,
+      2
+     ],
+     "champion": [
+      1,
+      0
+     ],
+     "crashed": [
+      0,
+      0
+     ],
+     "siege": [
+      0,
+      0
+     ]
+    },
+    {
+     "tick": 12,
+     "A": [
+      [
+       0,
+       3
+      ]
+     ],
+     "B": [],
+     "fight": [
+      0,
+      4,
+      -1,
+      1,
+      1,
+      2
+     ],
+     "champion": [
+      0,
+      0
+     ],
+     "crashed": [
+      0,
+      0
+     ],
+     "siege": [
+      0,
+      0
+     ],
+     "spawn_after": true
+    },
+    {
+     "tick": 13,
+     "A": [
+      [
+       1,
+       3
+      ],
+      [
+       -3,
+       4
+      ]
+     ],
+     "B": [
+      [
+       3,
+       4
+      ]
+     ],
+     "fight": null,
+     "champion": [
+      0,
+      0
+     ],
+     "crashed": [
+      0,
+      0
+     ],
+     "siege": [
+      0,
+      0
+     ]
+    },
+    {
+     "tick": 14,
+     "A": [
+      [
+       2,
+       1
+      ],
+      [
+       -2,
+       4
+      ]
+     ],
+     "B": [
+      [
+       2,
+       3
+      ]
+     ],
+     "fight": [
+      2,
+      3,
+      -2,
+      4,
+      2,
+      1
+     ],
+     "champion": [
+      0,
+      0
+     ],
+     "crashed": [
+      0,
+      0
+     ],
+     "siege": [
+      0,
+      0
+     ]
+    },
+    {
+     "tick": 15,
+     "A": [
+      [
+       -1,
+       4
+      ]
+     ],
+     "B": [
+      [
+       2,
+       1
+      ]
+     ],
+     "fight": [
+      2,
+      1,
+      -2,
+      3,
+      2,
+      2
+     ],
+     "champion": [
+      1,
+      0
+     ],
+     "crashed": [
+      0,
+      0
+     ],
+     "siege": [
+      0,
+      0
+     ]
+    },
+    {
+     "tick": 16,
+     "A": [
+      [
+       0,
+       3
+      ]
+     ],
+     "B": [],
+     "fight": [
+      0,
+      4,
+      -1,
+      1,
+      1,
+      2
+     ],
+     "champion": [
+      0,
+      0
+     ],
+     "crashed": [
+      0,
+      0
+     ],
+     "siege": [
+      0,
+      0
+     ],
+     "spawn_after": true
+    },
+    {
+     "tick": 17,
+     "A": [
+      [
+       1,
+       3
+      ],
+      [
+       -3,
+       4
+      ]
+     ],
+     "B": [
+      [
+       3,
+       4
+      ]
+     ],
+     "fight": null,
+     "champion": [
+      0,
+      0
+     ],
+     "crashed": [
+      0,
+      0
+     ],
+     "siege": [
+      0,
+      0
+     ]
+    },
+    {
+     "tick": 18,
+     "A": [
+      [
+       2,
+       1
+      ],
+      [
+       -2,
+       4
+      ]
+     ],
+     "B": [
+      [
+       2,
+       3
+      ]
+     ],
+     "fight": [
+      2,
+      3,
+      -2,
+      4,
+      2,
+      1
+     ],
+     "champion": [
+      0,
+      0
+     ],
+     "crashed": [
+      0,
+      0
+     ],
+     "siege": [
+      0,
+      0
+     ]
+    },
+    {
+     "tick": 19,
+     "A": [
+      [
+       -1,
+       4
+      ]
+     ],
+     "B": [
+      [
+       2,
+       1
+      ]
+     ],
+     "fight": [
+      2,
+      1,
+      -2,
+      3,
+      2,
+      2
+     ],
+     "champion": [
+      1,
+      0
+     ],
+     "crashed": [
+      0,
+      0
+     ],
+     "siege": [
+      0,
+      0
+     ]
+    },
+    {
+     "tick": 20,
+     "A": [
+      [
+       0,
+       3
+      ]
+     ],
+     "B": [],
+     "fight": [
+      0,
+      4,
+      -1,
+      1,
+      1,
+      2
+     ],
+     "champion": [
+      0,
+      0
+     ],
+     "crashed": [
+      0,
+      0
+     ],
+     "siege": [
+      0,
+      0
+     ],
+     "spawn_after": true
+    },
+    {
+     "tick": 21,
+     "A": [
+      [
+       1,
+       3
+      ],
+      [
+       -3,
+       4
+      ]
+     ],
+     "B": [
+      [
+       3,
+       4
+      ]
+     ],
+     "fight": null,
+     "champion": [
+      0,
+      0
+     ],
+     "crashed": [
+      0,
+      0
+     ],
+     "siege": [
+      0,
+      0
+     ]
+    },
+    {
+     "tick": 22,
+     "A": [
+      [
+       2,
+       1
+      ],
+      [
+       -2,
+       4
+      ]
+     ],
+     "B": [
+      [
+       2,
+       3
+      ]
+     ],
+     "fight": [
+      2,
+      3,
+      -2,
+      4,
+      2,
+      1
+     ],
+     "champion": [
+      0,
+      0
+     ],
+     "crashed": [
+      0,
+      0
+     ],
+     "siege": [
+      0,
+      0
+     ]
+    },
+    {
+     "tick": 23,
+     "A": [
+      [
+       -1,
+       4
+      ]
+     ],
+     "B": [
+      [
+       2,
+       1
+      ]
+     ],
+     "fight": [
+      2,
+      1,
+      -2,
+      3,
+      2,
+      2
+     ],
+     "champion": [
+      1,
+      0
+     ],
+     "crashed": [
+      0,
+      0
+     ],
+     "siege": [
+      0,
+      0
+     ]
+    },
+    {
+     "tick": 24,
+     "A": [
+      [
+       0,
+       3
+      ]
+     ],
+     "B": [],
+     "fight": [
+      0,
+      4,
+      -1,
+      1,
+      1,
+      2
+     ],
+     "champion": [
+      0,
+      0
+     ],
+     "crashed": [
+      0,
+      0
+     ],
+     "siege": [
+      0,
+      0
+     ],
+     "spawn_after": true
+    },
+    {
+     "tick": 25,
+     "A": [
+      [
+       1,
+       3
+      ],
+      [
+       -3,
+       4
+      ]
+     ],
+     "B": [
+      [
+       3,
+       4
+      ]
+     ],
+     "fight": null,
+     "champion": [
+      0,
+      0
+     ],
+     "crashed": [
+      0,
+      0
+     ],
+     "siege": [
+      0,
+      0
+     ]
+    },
+    {
+     "tick": 26,
+     "A": [
+      [
+       2,
+       1
+      ],
+      [
+       -2,
+       4
+      ]
+     ],
+     "B": [
+      [
+       2,
+       3
+      ]
+     ],
+     "fight": [
+      2,
+      3,
+      -2,
+      4,
+      2,
+      1
+     ],
+     "champion": [
+      0,
+      0
+     ],
+     "crashed": [
+      0,
+      0
+     ],
+     "siege": [
+      0,
+      0
+     ]
+    },
+    {
+     "tick": 27,
+     "A": [
+      [
+       -1,
+       4
+      ]
+     ],
+     "B": [
+      [
+       2,
+       1
+      ]
+     ],
+     "fight": [
+      2,
+      1,
+      -2,
+      3,
+      2,
+      2
+     ],
+     "champion": [
+      1,
+      0
+     ],
+     "crashed": [
+      0,
+      0
+     ],
+     "siege": [
+      0,
+      0
+     ]
+    },
+    {
+     "tick": 28,
+     "A": [
+      [
+       0,
+       3
+      ]
+     ],
+     "B": [],
+     "fight": [
+      0,
+      4,
+      -1,
+      1,
+      1,
+      2
+     ],
+     "champion": [
+      0,
+      0
+     ],
+     "crashed": [
+      0,
+      0
+     ],
+     "siege": [
+      0,
+      0
+     ],
+     "spawn_after": true
+    },
+    {
+     "tick": 29,
+     "A": [
+      [
+       1,
+       3
+      ],
+      [
+       -3,
+       4
+      ]
+     ],
+     "B": [
+      [
+       3,
+       4
+      ]
+     ],
+     "fight": null,
+     "champion": [
+      0,
+      0
+     ],
+     "crashed": [
+      0,
+      0
+     ],
+     "siege": [
+      0,
+      0
+     ]
+    },
+    {
+     "tick": 30,
+     "A": [
+      [
+       2,
+       1
+      ],
+      [
+       -2,
+       4
+      ]
+     ],
+     "B": [
+      [
+       2,
+       3
+      ]
+     ],
+     "fight": [
+      2,
+      3,
+      -2,
+      4,
+      2,
+      1
+     ],
+     "champion": [
+      0,
+      0
+     ],
+     "crashed": [
+      0,
+      0
+     ],
+     "siege": [
+      0,
+      0
+     ]
+    },
+    {
+     "tick": 31,
+     "A": [
+      [
+       -1,
+       4
+      ]
+     ],
+     "B": [
+      [
+       2,
+       1
+      ]
+     ],
+     "fight": [
+      2,
+      1,
+      -2,
+      3,
+      2,
+      2
+     ],
+     "champion": [
+      1,
+      0
+     ],
+     "crashed": [
+      0,
+      0
+     ],
+     "siege": [
+      0,
+      0
+     ]
+    },
+    {
+     "tick": 32,
+     "A": [
+      [
+       0,
+       3
+      ]
+     ],
+     "B": [],
+     "fight": [
+      0,
+      4,
+      -1,
+      1,
+      1,
+      2
+     ],
+     "champion": [
+      0,
+      0
+     ],
+     "crashed": [
+      0,
+      0
+     ],
+     "siege": [
+      0,
+      0
+     ],
+     "spawn_after": true
+    }
+   ]
+  },
+  "W8_hold_hold": {
+   "metrics": {
+    "spawn_ticks": [
+     0,
+     4,
+     8,
+     12,
+     16,
+     20,
+     24,
+     28,
+     32
+    ],
+    "first_contact_tick": 4,
+    "A_merge_ticks": [
+     7,
+     11,
+     15,
+     19,
+     23,
+     27,
+     31
+    ],
+    "A_front_death_ticks": [],
+    "fresh_fight_ticks_no_champion": 8,
+    "reinforcement_spacing_cells": 4,
+    "max_A_front": 20
+   },
+   "ticks": [
+    {
+     "tick": 1,
+     "A": [
+      [
+       -3,
+       8
+      ]
+     ],
+     "B": [
+      [
+       3,
+       8
+      ]
+     ],
+     "fight": null,
+     "champion": [
+      0,
+      0
+     ],
+     "crashed": [
+      0,
+      0
+     ],
+     "siege": [
+      0,
+      0
+     ]
+    },
+    {
+     "tick": 2,
+     "A": [
+      [
+       -2,
+       8
+      ]
+     ],
+     "B": [
+      [
+       2,
+       8
+      ]
+     ],
+     "fight": null,
+     "champion": [
+      0,
+      0
+     ],
+     "crashed": [
+      0,
+      0
+     ],
+     "siege": [
+      0,
+      0
+     ]
+    },
+    {
+     "tick": 3,
+     "A": [
+      [
+       -1,
+       8
+      ]
+     ],
+     "B": [
+      [
+       1,
+       8
+      ]
+     ],
+     "fight": null,
+     "champion": [
+      0,
+      0
+     ],
+     "crashed": [
+      0,
+      0
+     ],
+     "siege": [
+      0,
+      0
+     ]
+    },
+    {
+     "tick": 4,
+     "A": [
+      [
+       0,
+       7
+      ]
+     ],
+     "B": [
+      [
+       0,
+       7
+      ]
+     ],
+     "fight": [
+      0,
+      8,
+      0,
+      8,
+      1,
+      1
+     ],
+     "champion": [
+      0,
+      0
+     ],
+     "crashed": [
+      0,
+      0
+     ],
+     "siege": [
+      0,
+      0
+     ],
+     "spawn_after": true
+    },
+    {
+     "tick": 5,
+     "A": [
+      [
+       0,
+       6
+      ],
+      [
+       -3,
+       8
+      ]
+     ],
+     "B": [
+      [
+       0,
+       6
+      ],
+      [
+       3,
+       8
+      ]
+     ],
+     "fight": [
+      0,
+      7,
+      0,
+      7,
+      1,
+      1
+     ],
+     "champion": [
+      0,
+      0
+     ],
+     "crashed": [
+      0,
+      0
+     ],
+     "siege": [
+      0,
+      0
+     ]
+    },
+    {
+     "tick": 6,
+     "A": [
+      [
+       0,
+       5
+      ],
+      [
+       -2,
+       8
+      ]
+     ],
+     "B": [
+      [
+       0,
+       5
+      ],
+      [
+       2,
+       8
+      ]
+     ],
+     "fight": [
+      0,
+      6,
+      0,
+      6,
+      1,
+      1
+     ],
+     "champion": [
+      0,
+      0
+     ],
+     "crashed": [
+      0,
+      0
+     ],
+     "siege": [
+      0,
+      0
+     ]
+    },
+    {
+     "tick": 7,
+     "A": [
+      [
+       0,
+       12
+      ]
+     ],
+     "B": [
+      [
+       0,
+       12
+      ]
+     ],
+     "fight": [
+      0,
+      13,
+      0,
+      13,
+      1,
+      1
+     ],
+     "champion": [
+      0,
+      0
+     ],
+     "crashed": [
+      0,
+      0
+     ],
+     "siege": [
+      0,
+      0
+     ]
+    },
+    {
+     "tick": 8,
+     "A": [
+      [
+       0,
+       11
+      ]
+     ],
+     "B": [
+      [
+       0,
+       11
+      ]
+     ],
+     "fight": [
+      0,
+      12,
+      0,
+      12,
+      1,
+      1
+     ],
+     "champion": [
+      0,
+      0
+     ],
+     "crashed": [
+      0,
+      0
+     ],
+     "siege": [
+      0,
+      0
+     ],
+     "spawn_after": true
+    },
+    {
+     "tick": 9,
+     "A": [
+      [
+       0,
+       10
+      ],
+      [
+       -3,
+       8
+      ]
+     ],
+     "B": [
+      [
+       0,
+       10
+      ],
+      [
+       3,
+       8
+      ]
+     ],
+     "fight": [
+      0,
+      11,
+      0,
+      11,
+      1,
+      1
+     ],
+     "champion": [
+      0,
+      0
+     ],
+     "crashed": [
+      0,
+      0
+     ],
+     "siege": [
+      0,
+      0
+     ]
+    },
+    {
+     "tick": 10,
+     "A": [
+      [
+       0,
+       9
+      ],
+      [
+       -2,
+       8
+      ]
+     ],
+     "B": [
+      [
+       0,
+       9
+      ],
+      [
+       2,
+       8
+      ]
+     ],
+     "fight": [
+      0,
+      10,
+      0,
+      10,
+      1,
+      1
+     ],
+     "champion": [
+      0,
+      0
+     ],
+     "crashed": [
+      0,
+      0
+     ],
+     "siege": [
+      0,
+      0
+     ]
+    },
+    {
+     "tick": 11,
+     "A": [
+      [
+       0,
+       15
+      ]
+     ],
+     "B": [
+      [
+       0,
+       15
+      ]
+     ],
+     "fight": [
+      0,
+      17,
+      0,
+      17,
+      2,
+      2
+     ],
+     "champion": [
+      0,
+      0
+     ],
+     "crashed": [
+      0,
+      0
+     ],
+     "siege": [
+      0,
+      0
+     ]
+    },
+    {
+     "tick": 12,
+     "A": [
+      [
+       0,
+       14
+      ]
+     ],
+     "B": [
+      [
+       0,
+       14
+      ]
+     ],
+     "fight": [
+      0,
+      15,
+      0,
+      15,
+      1,
+      1
+     ],
+     "champion": [
+      0,
+      0
+     ],
+     "crashed": [
+      0,
+      0
+     ],
+     "siege": [
+      0,
+      0
+     ],
+     "spawn_after": true
+    },
+    {
+     "tick": 13,
+     "A": [
+      [
+       0,
+       13
+      ],
+      [
+       -3,
+       8
+      ]
+     ],
+     "B": [
+      [
+       0,
+       13
+      ],
+      [
+       3,
+       8
+      ]
+     ],
+     "fight": [
+      0,
+      14,
+      0,
+      14,
+      1,
+      1
+     ],
+     "champion": [
+      0,
+      0
+     ],
+     "crashed": [
+      0,
+      0
+     ],
+     "siege": [
+      0,
+      0
+     ]
+    },
+    {
+     "tick": 14,
+     "A": [
+      [
+       0,
+       12
+      ],
+      [
+       -2,
+       8
+      ]
+     ],
+     "B": [
+      [
+       0,
+       12
+      ],
+      [
+       2,
+       8
+      ]
+     ],
+     "fight": [
+      0,
+      13,
+      0,
+      13,
+      1,
+      1
+     ],
+     "champion": [
+      0,
+      0
+     ],
+     "crashed": [
+      0,
+      0
+     ],
+     "siege": [
+      0,
+      0
+     ]
+    },
+    {
+     "tick": 15,
+     "A": [
+      [
+       0,
+       18
+      ]
+     ],
+     "B": [
+      [
+       0,
+       18
+      ]
+     ],
+     "fight": [
+      0,
+      20,
+      0,
+      20,
+      2,
+      2
+     ],
+     "champion": [
+      0,
+      0
+     ],
+     "crashed": [
+      0,
+      0
+     ],
+     "siege": [
+      0,
+      0
+     ]
+    },
+    {
+     "tick": 16,
+     "A": [
+      [
+       0,
+       16
+      ]
+     ],
+     "B": [
+      [
+       0,
+       16
+      ]
+     ],
+     "fight": [
+      0,
+      18,
+      0,
+      18,
+      2,
+      2
+     ],
+     "champion": [
+      0,
+      0
+     ],
+     "crashed": [
+      0,
+      0
+     ],
+     "siege": [
+      0,
+      0
+     ],
+     "spawn_after": true
+    },
+    {
+     "tick": 17,
+     "A": [
+      [
+       0,
+       14
+      ],
+      [
+       -3,
+       8
+      ]
+     ],
+     "B": [
+      [
+       0,
+       14
+      ],
+      [
+       3,
+       8
+      ]
+     ],
+     "fight": [
+      0,
+      16,
+      0,
+      16,
+      2,
+      2
+     ],
+     "champion": [
+      0,
+      0
+     ],
+     "crashed": [
+      0,
+      0
+     ],
+     "siege": [
+      0,
+      0
+     ]
+    },
+    {
+     "tick": 18,
+     "A": [
+      [
+       0,
+       13
+      ],
+      [
+       -2,
+       8
+      ]
+     ],
+     "B": [
+      [
+       0,
+       13
+      ],
+      [
+       2,
+       8
+      ]
+     ],
+     "fight": [
+      0,
+      14,
+      0,
+      14,
+      1,
+      1
+     ],
+     "champion": [
+      0,
+      0
+     ],
+     "crashed": [
+      0,
+      0
+     ],
+     "siege": [
+      0,
+      0
+     ]
+    },
+    {
+     "tick": 19,
+     "A": [
+      [
+       0,
+       19
+      ]
+     ],
+     "B": [
+      [
+       0,
+       19
+      ]
+     ],
+     "fight": [
+      0,
+      21,
+      0,
+      21,
+      2,
+      2
+     ],
+     "champion": [
+      0,
+      0
+     ],
+     "crashed": [
+      0,
+      0
+     ],
+     "siege": [
+      0,
+      0
+     ]
+    },
+    {
+     "tick": 20,
+     "A": [
+      [
+       0,
+       17
+      ]
+     ],
+     "B": [
+      [
+       0,
+       17
+      ]
+     ],
+     "fight": [
+      0,
+      19,
+      0,
+      19,
+      2,
+      2
+     ],
+     "champion": [
+      0,
+      0
+     ],
+     "crashed": [
+      0,
+      0
+     ],
+     "siege": [
+      0,
+      0
+     ],
+     "spawn_after": true
+    },
+    {
+     "tick": 21,
+     "A": [
+      [
+       0,
+       15
+      ],
+      [
+       -3,
+       8
+      ]
+     ],
+     "B": [
+      [
+       0,
+       15
+      ],
+      [
+       3,
+       8
+      ]
+     ],
+     "fight": [
+      0,
+      17,
+      0,
+      17,
+      2,
+      2
+     ],
+     "champion": [
+      0,
+      0
+     ],
+     "crashed": [
+      0,
+      0
+     ],
+     "siege": [
+      0,
+      0
+     ]
+    },
+    {
+     "tick": 22,
+     "A": [
+      [
+       0,
+       14
+      ],
+      [
+       -2,
+       8
+      ]
+     ],
+     "B": [
+      [
+       0,
+       14
+      ],
+      [
+       2,
+       8
+      ]
+     ],
+     "fight": [
+      0,
+      15,
+      0,
+      15,
+      1,
+      1
+     ],
+     "champion": [
+      0,
+      0
+     ],
+     "crashed": [
+      0,
+      0
+     ],
+     "siege": [
+      0,
+      0
+     ]
+    },
+    {
+     "tick": 23,
+     "A": [
+      [
+       0,
+       20
+      ]
+     ],
+     "B": [
+      [
+       0,
+       20
+      ]
+     ],
+     "fight": [
+      0,
+      22,
+      0,
+      22,
+      2,
+      2
+     ],
+     "champion": [
+      0,
+      0
+     ],
+     "crashed": [
+      0,
+      0
+     ],
+     "siege": [
+      0,
+      0
+     ]
+    },
+    {
+     "tick": 24,
+     "A": [
+      [
+       0,
+       18
+      ]
+     ],
+     "B": [
+      [
+       0,
+       18
+      ]
+     ],
+     "fight": [
+      0,
+      20,
+      0,
+      20,
+      2,
+      2
+     ],
+     "champion": [
+      0,
+      0
+     ],
+     "crashed": [
+      0,
+      0
+     ],
+     "siege": [
+      0,
+      0
+     ],
+     "spawn_after": true
+    },
+    {
+     "tick": 25,
+     "A": [
+      [
+       0,
+       16
+      ],
+      [
+       -3,
+       8
+      ]
+     ],
+     "B": [
+      [
+       0,
+       16
+      ],
+      [
+       3,
+       8
+      ]
+     ],
+     "fight": [
+      0,
+      18,
+      0,
+      18,
+      2,
+      2
+     ],
+     "champion": [
+      0,
+      0
+     ],
+     "crashed": [
+      0,
+      0
+     ],
+     "siege": [
+      0,
+      0
+     ]
+    },
+    {
+     "tick": 26,
+     "A": [
+      [
+       0,
+       14
+      ],
+      [
+       -2,
+       8
+      ]
+     ],
+     "B": [
+      [
+       0,
+       14
+      ],
+      [
+       2,
+       8
+      ]
+     ],
+     "fight": [
+      0,
+      16,
+      0,
+      16,
+      2,
+      2
+     ],
+     "champion": [
+      0,
+      0
+     ],
+     "crashed": [
+      0,
+      0
+     ],
+     "siege": [
+      0,
+      0
+     ]
+    },
+    {
+     "tick": 27,
+     "A": [
+      [
+       0,
+       20
+      ]
+     ],
+     "B": [
+      [
+       0,
+       20
+      ]
+     ],
+     "fight": [
+      0,
+      22,
+      0,
+      22,
+      2,
+      2
+     ],
+     "champion": [
+      0,
+      0
+     ],
+     "crashed": [
+      0,
+      0
+     ],
+     "siege": [
+      0,
+      0
+     ]
+    },
+    {
+     "tick": 28,
+     "A": [
+      [
+       0,
+       18
+      ]
+     ],
+     "B": [
+      [
+       0,
+       18
+      ]
+     ],
+     "fight": [
+      0,
+      20,
+      0,
+      20,
+      2,
+      2
+     ],
+     "champion": [
+      0,
+      0
+     ],
+     "crashed": [
+      0,
+      0
+     ],
+     "siege": [
+      0,
+      0
+     ],
+     "spawn_after": true
+    },
+    {
+     "tick": 29,
+     "A": [
+      [
+       0,
+       16
+      ],
+      [
+       -3,
+       8
+      ]
+     ],
+     "B": [
+      [
+       0,
+       16
+      ],
+      [
+       3,
+       8
+      ]
+     ],
+     "fight": [
+      0,
+      18,
+      0,
+      18,
+      2,
+      2
+     ],
+     "champion": [
+      0,
+      0
+     ],
+     "crashed": [
+      0,
+      0
+     ],
+     "siege": [
+      0,
+      0
+     ]
+    },
+    {
+     "tick": 30,
+     "A": [
+      [
+       0,
+       14
+      ],
+      [
+       -2,
+       8
+      ]
+     ],
+     "B": [
+      [
+       0,
+       14
+      ],
+      [
+       2,
+       8
+      ]
+     ],
+     "fight": [
+      0,
+      16,
+      0,
+      16,
+      2,
+      2
+     ],
+     "champion": [
+      0,
+      0
+     ],
+     "crashed": [
+      0,
+      0
+     ],
+     "siege": [
+      0,
+      0
+     ]
+    },
+    {
+     "tick": 31,
+     "A": [
+      [
+       0,
+       20
+      ]
+     ],
+     "B": [
+      [
+       0,
+       20
+      ]
+     ],
+     "fight": [
+      0,
+      22,
+      0,
+      22,
+      2,
+      2
+     ],
+     "champion": [
+      0,
+      0
+     ],
+     "crashed": [
+      0,
+      0
+     ],
+     "siege": [
+      0,
+      0
+     ]
+    },
+    {
+     "tick": 32,
+     "A": [
+      [
+       0,
+       18
+      ]
+     ],
+     "B": [
+      [
+       0,
+       18
+      ]
+     ],
+     "fight": [
+      0,
+      20,
+      0,
+      20,
+      2,
+      2
+     ],
+     "champion": [
+      0,
+      0
+     ],
+     "crashed": [
+      0,
+      0
+     ],
+     "siege": [
+      0,
+      0
+     ],
+     "spawn_after": true
+    }
+   ]
+  },
+  "W8_thin_hold": {
+   "metrics": {
+    "spawn_ticks": [
+     0,
+     4,
+     8,
+     12,
+     16,
+     20,
+     24,
+     28,
+     32
+    ],
+    "first_contact_tick": 4,
+    "A_merge_ticks": [
+     7,
+     11,
+     15,
+     20
+    ],
+    "A_front_death_ticks": [],
+    "fresh_fight_ticks_no_champion": 8,
+    "reinforcement_spacing_cells": 4,
+    "max_A_front": 23
+   },
+   "ticks": [
+    {
+     "tick": 1,
+     "A": [
+      [
+       -3,
+       8
+      ]
+     ],
+     "B": [
+      [
+       3,
+       8
+      ]
+     ],
+     "fight": null,
+     "champion": [
+      0,
+      0
+     ],
+     "crashed": [
+      0,
+      0
+     ],
+     "siege": [
+      0,
+      0
+     ]
+    },
+    {
+     "tick": 2,
+     "A": [
+      [
+       -2,
+       8
+      ]
+     ],
+     "B": [
+      [
+       2,
+       8
+      ]
+     ],
+     "fight": null,
+     "champion": [
+      0,
+      0
+     ],
+     "crashed": [
+      0,
+      0
+     ],
+     "siege": [
+      0,
+      0
+     ]
+    },
+    {
+     "tick": 3,
+     "A": [
+      [
+       -1,
+       8
+      ]
+     ],
+     "B": [
+      [
+       1,
+       8
+      ]
+     ],
+     "fight": null,
+     "champion": [
+      0,
+      0
+     ],
+     "crashed": [
+      0,
+      0
+     ],
+     "siege": [
+      0,
+      0
+     ]
+    },
+    {
+     "tick": 4,
+     "A": [
+      [
+       0,
+       7
+      ]
+     ],
+     "B": [
+      [
+       0,
+       7
+      ]
+     ],
+     "fight": [
+      0,
+      8,
+      0,
+      8,
+      1,
+      1
+     ],
+     "champion": [
+      0,
+      0
+     ],
+     "crashed": [
+      0,
+      0
+     ],
+     "siege": [
+      0,
+      0
+     ],
+     "spawn_after": true
+    },
+    {
+     "tick": 5,
+     "A": [
+      [
+       0,
+       6
+      ],
+      [
+       -3,
+       8
+      ]
+     ],
+     "B": [
+      [
+       0,
+       5
+      ],
+      [
+       3,
+       8
+      ]
+     ],
+     "fight": [
+      0,
+      7,
+      0,
+      7,
+      1,
+      2
+     ],
+     "champion": [
+      1,
+      0
+     ],
+     "crashed": [
+      0,
+      0
+     ],
+     "siege": [
+      0,
+      0
+     ]
+    },
+    {
+     "tick": 6,
+     "A": [
+      [
+       0,
+       5
+      ],
+      [
+       -2,
+       8
+      ]
+     ],
+     "B": [
+      [
+       0,
+       3
+      ],
+      [
+       2,
+       8
+      ]
+     ],
+     "fight": [
+      0,
+      6,
+      0,
+      5,
+      1,
+      2
+     ],
+     "champion": [
+      1,
+      0
+     ],
+     "crashed": [
+      0,
+      0
+     ],
+     "siege": [
+      0,
+      0
+     ]
+    },
+    {
+     "tick": 7,
+     "A": [
+      [
+       0,
+       12
+      ]
+     ],
+     "B": [
+      [
+       0,
+       9
+      ]
+     ],
+     "fight": [
+      0,
+      13,
+      0,
+      11,
+      1,
+      2
+     ],
+     "champion": [
+      1,
+      0
+     ],
+     "crashed": [
+      0,
+      0
+     ],
+     "siege": [
+      0,
+      0
+     ]
+    },
+    {
+     "tick": 8,
+     "A": [
+      [
+       0,
+       11
+      ]
+     ],
+     "B": [
+      [
+       0,
+       7
+      ]
+     ],
+     "fight": [
+      0,
+      12,
+      0,
+      9,
+      1,
+      2
+     ],
+     "champion": [
+      1,
+      0
+     ],
+     "crashed": [
+      0,
+      0
+     ],
+     "siege": [
+      0,
+      0
+     ],
+     "spawn_after": true
+    },
+    {
+     "tick": 9,
+     "A": [
+      [
+       0,
+       10
+      ],
+      [
+       -3,
+       8
+      ]
+     ],
+     "B": [
+      [
+       0,
+       5
+      ],
+      [
+       3,
+       8
+      ]
+     ],
+     "fight": [
+      0,
+      11,
+      0,
+      7,
+      1,
+      2
+     ],
+     "champion": [
+      1,
+      0
+     ],
+     "crashed": [
+      0,
+      0
+     ],
+     "siege": [
+      0,
+      0
+     ]
+    },
+    {
+     "tick": 10,
+     "A": [
+      [
+       0,
+       9
+      ],
+      [
+       -2,
+       8
+      ]
+     ],
+     "B": [
+      [
+       0,
+       3
+      ],
+      [
+       2,
+       8
+      ]
+     ],
+     "fight": [
+      0,
+      10,
+      0,
+      5,
+      1,
+      2
+     ],
+     "champion": [
+      1,
+      0
+     ],
+     "crashed": [
+      0,
+      0
+     ],
+     "siege": [
+      0,
+      0
+     ]
+    },
+    {
+     "tick": 11,
+     "A": [
+      [
+       0,
+       16
+      ]
+     ],
+     "B": [
+      [
+       0,
+       8
+      ]
+     ],
+     "fight": [
+      0,
+      17,
+      0,
+      11,
+      1,
+      3
+     ],
+     "champion": [
+      1,
+      0
+     ],
+     "crashed": [
+      0,
+      0
+     ],
+     "siege": [
+      0,
+      0
+     ]
+    },
+    {
+     "tick": 12,
+     "A": [
+      [
+       0,
+       15
+      ]
+     ],
+     "B": [
+      [
+       0,
+       5
+      ]
+     ],
+     "fight": [
+      0,
+      16,
+      0,
+      8,
+      1,
+      3
+     ],
+     "champion": [
+      1,
+      0
+     ],
+     "crashed": [
+      0,
+      0
+     ],
+     "siege": [
+      0,
+      0
+     ],
+     "spawn_after": true
+    },
+    {
+     "tick": 13,
+     "A": [
+      [
+       0,
+       14
+      ],
+      [
+       -3,
+       8
+      ]
+     ],
+     "B": [
+      [
+       0,
+       3
+      ],
+      [
+       3,
+       8
+      ]
+     ],
+     "fight": [
+      0,
+      15,
+      0,
+      5,
+      1,
+      2
+     ],
+     "champion": [
+      1,
+      0
+     ],
+     "crashed": [
+      0,
+      0
+     ],
+     "siege": [
+      0,
+      0
+     ]
+    },
+    {
+     "tick": 14,
+     "A": [
+      [
+       0,
+       13
+      ],
+      [
+       -2,
+       8
+      ]
+     ],
+     "B": [
+      [
+       0,
+       1
+      ],
+      [
+       2,
+       8
+      ]
+     ],
+     "fight": [
+      0,
+      14,
+      0,
+      3,
+      1,
+      2
+     ],
+     "champion": [
+      1,
+      0
+     ],
+     "crashed": [
+      0,
+      0
+     ],
+     "siege": [
+      0,
+      0
+     ]
+    },
+    {
+     "tick": 15,
+     "A": [
+      [
+       0,
+       20
+      ]
+     ],
+     "B": [
+      [
+       0,
+       6
+      ]
+     ],
+     "fight": [
+      0,
+      21,
+      0,
+      9,
+      1,
+      3
+     ],
+     "champion": [
+      1,
+      0
+     ],
+     "crashed": [
+      0,
+      0
+     ],
+     "siege": [
+      0,
+      0
+     ]
+    },
+    {
+     "tick": 16,
+     "A": [
+      [
+       0,
+       19
+      ]
+     ],
+     "B": [
+      [
+       0,
+       3
+      ]
+     ],
+     "fight": [
+      0,
+      20,
+      0,
+      6,
+      1,
+      3
+     ],
+     "champion": [
+      1,
+      0
+     ],
+     "crashed": [
+      0,
+      0
+     ],
+     "siege": [
+      0,
+      0
+     ],
+     "spawn_after": true
+    },
+    {
+     "tick": 17,
+     "A": [
+      [
+       0,
+       18
+      ],
+      [
+       -3,
+       8
+      ]
+     ],
+     "B": [
+      [
+       3,
+       8
+      ]
+     ],
+     "fight": [
+      0,
+      19,
+      0,
+      3,
+      1,
+      3
+     ],
+     "champion": [
+      1,
+      0
+     ],
+     "crashed": [
+      0,
+      0
+     ],
+     "siege": [
+      0,
+      0
+     ]
+    },
+    {
+     "tick": 18,
+     "A": [
+      [
+       1,
+       17
+      ],
+      [
+       -2,
+       8
+      ]
+     ],
+     "B": [
+      [
+       2,
+       6
+      ]
+     ],
+     "fight": [
+      1,
+      18,
+      -2,
+      8,
+      1,
+      2
+     ],
+     "champion": [
+      0,
+      0
+     ],
+     "crashed": [
+      0,
+      0
+     ],
+     "siege": [
+      0,
+      0
+     ]
+    },
+    {
+     "tick": 19,
+     "A": [
+      [
+       1,
+       16
+      ],
+      [
+       -1,
+       8
+      ]
+     ],
+     "B": [
+      [
+       2,
+       3
+      ]
+     ],
+     "fight": [
+      1,
+      17,
+      -2,
+      6,
+      1,
+      3
+     ],
+     "champion": [
+      1,
+      0
+     ],
+     "crashed": [
+      0,
+      0
+     ],
+     "siege": [
+      0,
+      0
+     ]
+    },
+    {
+     "tick": 20,
+     "A": [
+      [
+       1,
+       23
+      ]
+     ],
+     "B": [],
+     "fight": [
+      1,
+      24,
+      -2,
+      3,
+      1,
+      4
+     ],
+     "champion": [
+      0,
+      0
+     ],
+     "crashed": [
+      0,
+      0
+     ],
+     "siege": [
+      0,
+      0
+     ],
+     "spawn_after": true
+    },
+    {
+     "tick": 21,
+     "A": [
+      [
+       2,
+       21
+      ],
+      [
+       -3,
+       8
+      ]
+     ],
+     "B": [
+      [
+       3,
+       6
+      ]
+     ],
+     "fight": [
+      2,
+      23,
+      -3,
+      8,
+      2,
+      2
+     ],
+     "champion": [
+      0,
+      0
+     ],
+     "crashed": [
+      0,
+      0
+     ],
+     "siege": [
+      0,
+      0
+     ]
+    },
+    {
+     "tick": 22,
+     "A": [
+      [
+       2,
+       19
+      ],
+      [
+       -2,
+       8
+      ]
+     ],
+     "B": [
+      [
+       3,
+       4
+      ]
+     ],
+     "fight": [
+      2,
+      21,
+      -3,
+      6,
+      2,
+      2
+     ],
+     "champion": [
+      0,
+      0
+     ],
+     "crashed": [
+      0,
+      0
+     ],
+     "siege": [
+      0,
+      0
+     ]
+    },
+    {
+     "tick": 23,
+     "A": [
+      [
+       2,
+       17
+      ],
+      [
+       -1,
+       8
+      ]
+     ],
+     "B": [
+      [
+       3,
+       2
+      ]
+     ],
+     "fight": [
+      2,
+      19,
+      -3,
+      4,
+      2,
+      2
+     ],
+     "champion": [
+      0,
+      0
+     ],
+     "crashed": [
+      0,
+      0
+     ],
+     "siege": [
+      0,
+      0
+     ]
+    },
+    {
+     "tick": 24,
+     "A": [
+      [
+       0,
+       8
+      ]
+     ],
+     "B": [],
+     "fight": [
+      2,
+      17,
+      -3,
+      2,
+      2,
+      2
+     ],
+     "champion": [
+      0,
+      0
+     ],
+     "crashed": [
+      15,
+      0
+     ],
+     "siege": [
+      15,
+      0
+     ],
+     "spawn_after": true
+    },
+    {
+     "tick": 25,
+     "A": [
+      [
+       1,
+       8
+      ],
+      [
+       -3,
+       8
+      ]
+     ],
+     "B": [
+      [
+       3,
+       7
+      ]
+     ],
+     "fight": null,
+     "champion": [
+      0,
+      0
+     ],
+     "crashed": [
+      0,
+      0
+     ],
+     "siege": [
+      13,
+      0
+     ]
+    },
+    {
+     "tick": 26,
+     "A": [
+      [
+       2,
+       6
+      ],
+      [
+       -2,
+       8
+      ]
+     ],
+     "B": [
+      [
+       3,
+       6
+      ]
+     ],
+     "fight": [
+      2,
+      8,
+      -3,
+      7,
+      2,
+      1
+     ],
+     "champion": [
+      0,
+      0
+     ],
+     "crashed": [
+      0,
+      0
+     ],
+     "siege": [
+      12,
+      0
+     ]
+    },
+    {
+     "tick": 27,
+     "A": [
+      [
+       2,
+       4
+      ],
+      [
+       -1,
+       8
+      ]
+     ],
+     "B": [
+      [
+       3,
+       5
+      ]
+     ],
+     "fight": [
+      2,
+      6,
+      -3,
+      6,
+      2,
+      1
+     ],
+     "champion": [
+      0,
+      0
+     ],
+     "crashed": [
+      0,
+      0
+     ],
+     "siege": [
+      11,
+      0
+     ]
+    },
+    {
+     "tick": 28,
+     "A": [
+      [
+       2,
+       2
+      ],
+      [
+       0,
+       8
+      ]
+     ],
+     "B": [
+      [
+       3,
+       4
+      ]
+     ],
+     "fight": [
+      2,
+      4,
+      -3,
+      5,
+      2,
+      1
+     ],
+     "champion": [
+      0,
+      0
+     ],
+     "crashed": [
+      0,
+      0
+     ],
+     "siege": [
+      10,
+      0
+     ],
+     "spawn_after": true
+    },
+    {
+     "tick": 29,
+     "A": [
+      [
+       2,
+       8
+      ],
+      [
+       -3,
+       8
+      ]
+     ],
+     "B": [
+      [
+       3,
+       11
+      ]
+     ],
+     "fight": [
+      2,
+      10,
+      -3,
+      12,
+      2,
+      1
+     ],
+     "champion": [
+      0,
+      0
+     ],
+     "crashed": [
+      0,
+      0
+     ],
+     "siege": [
+      9,
+      0
+     ]
+    },
+    {
+     "tick": 30,
+     "A": [
+      [
+       2,
+       6
+      ],
+      [
+       -2,
+       8
+      ]
+     ],
+     "B": [
+      [
+       3,
+       10
+      ]
+     ],
+     "fight": [
+      2,
+      8,
+      -3,
+      11,
+      2,
+      1
+     ],
+     "champion": [
+      0,
+      0
+     ],
+     "crashed": [
+      0,
+      0
+     ],
+     "siege": [
+      8,
+      0
+     ]
+    },
+    {
+     "tick": 31,
+     "A": [
+      [
+       2,
+       4
+      ],
+      [
+       -1,
+       8
+      ]
+     ],
+     "B": [
+      [
+       3,
+       9
+      ]
+     ],
+     "fight": [
+      2,
+      6,
+      -3,
+      10,
+      2,
+      1
+     ],
+     "champion": [
+      0,
+      0
+     ],
+     "crashed": [
+      0,
+      0
+     ],
+     "siege": [
+      7,
+      0
+     ]
+    },
+    {
+     "tick": 32,
+     "A": [
+      [
+       2,
+       2
+      ],
+      [
+       0,
+       8
+      ]
+     ],
+     "B": [
+      [
+       3,
+       8
+      ]
+     ],
+     "fight": [
+      2,
+      4,
+      -3,
+      9,
+      2,
+      1
+     ],
+     "champion": [
+      0,
+      0
+     ],
+     "crashed": [
+      0,
+      0
+     ],
+     "siege": [
+      6,
+      0
+     ],
+     "spawn_after": true
+    }
+   ]
+  }
+ },
+ "actions": {
+  "kill_fresh_wave_ticks": {
+   "hold": 8,
+   "thin": 4,
+   "clear": 3
+  },
+  "vs_hold_40": {
+   "hold": {
+    "turns": 40,
+    "earned_A_minus_B": 0.0,
+    "farm": [
+     15.975,
+     15.975
+    ],
+    "xp": [
+     142,
+     142
+    ],
+    "plates": [
+     0,
+     0
+    ],
+    "tower_hits": [
+     0,
+     0
+    ],
+    "crashes": [
+     [],
+     []
+    ],
+    "contact": [
+     null,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0
+    ],
+    "fronts": [
+     [
+      8,
+      8
+     ],
+     [
+      7,
+      7
+     ],
+     [
+      5,
+      5
+     ],
+     [
+      11,
+      11
+     ],
+     [
+      9,
+      9
+     ],
+     [
+      14,
+      14
+     ],
+     [
+      12,
+      12
+     ],
+     [
+      16,
+      16
+     ],
+     [
+      13,
+      13
+     ],
+     [
+      17,
+      17
+     ],
+     [
+      14,
+      14
+     ],
+     [
+      18,
+      18
+     ],
+     [
+      14,
+      14
+     ],
+     [
+      18,
+      18
+     ],
+     [
+      14,
+      14
+     ],
+     [
+      18,
+      18
+     ],
+     [
+      14,
+      14
+     ],
+     [
+      18,
+      18
+     ],
+     [
+      14,
+      14
+     ],
+     [
+      18,
+      18
+     ],
+     [
+      14,
+      14
+     ],
+     [
+      18,
+      18
+     ],
+     [
+      14,
+      14
+     ],
+     [
+      18,
+      18
+     ],
+     [
+      14,
+      14
+     ],
+     [
+      18,
+      18
+     ],
+     [
+      14,
+      14
+     ],
+     [
+      18,
+      18
+     ],
+     [
+      14,
+      14
+     ],
+     [
+      18,
+      18
+     ],
+     [
+      14,
+      14
+     ],
+     [
+      18,
+      18
+     ],
+     [
+      14,
+      14
+     ],
+     [
+      18,
+      18
+     ],
+     [
+      14,
+      14
+     ],
+     [
+      18,
+      18
+     ],
+     [
+      14,
+      14
+     ],
+     [
+      18,
+      18
+     ],
+     [
+      14,
+      14
+     ],
+     [
+      18,
+      18
+     ]
+    ]
+   },
+   "thin": {
+    "turns": 40,
+    "earned_A_minus_B": -2.0,
+    "farm": [
+     14.875,
+     16.875
+    ],
+    "xp": [
+     143,
+     152
+    ],
+    "plates": [
+     0,
+     0
+    ],
+    "tower_hits": [
+     10,
+     0
+    ],
+    "crashes": [
+     [
+      {
+       "k": 9,
+       "hp": 12
+      }
+     ],
+     []
+    ],
+    "contact": [
+     null,
+     0,
+     0,
+     0,
+     0,
+     0,
+     null,
+     1,
+     2,
+     null,
+     2,
+     2,
+     2,
+     2,
+     2,
+     2,
+     2,
+     null,
+     1,
+     1,
+     1,
+     1,
+     1,
+     1,
+     1,
+     1,
+     1,
+     1,
+     1,
+     1,
+     1,
+     1,
+     1,
+     1,
+     1,
+     1,
+     1,
+     1,
+     1,
+     1
+    ],
+    "fronts": [
+     [
+      8,
+      8
+     ],
+     [
+      7,
+      5
+     ],
+     [
+      5,
+      1
+     ],
+     [
+      11,
+      5
+     ],
+     [
+      9,
+      1
+     ],
+     [
+      15,
+      3
+     ],
+     [
+      13,
+      8
+     ],
+     [
+      19,
+      3
+     ],
+     [
+      16,
+      5
+     ],
+     [
+      8,
+      8
+     ],
+     [
+      6,
+      6
+     ],
+     [
+      2,
+      12
+     ],
+     [
+      6,
+      10
+     ],
+     [
+      2,
+      16
+     ],
+     [
+      5,
+      14
+     ],
+     [
+      1,
+      20
+     ],
+     [
+      3,
+      18
+     ],
+     [
+      8,
+      17
+     ],
+     [
+      4,
+      21
+     ],
+     [
+      8,
+      17
+     ],
+     [
+      4,
+      21
+     ],
+     [
+      8,
+      17
+     ],
+     [
+      4,
+      21
+     ],
+     [
+      8,
+      17
+     ],
+     [
+      4,
+      21
+     ],
+     [
+      8,
+      17
+     ],
+     [
+      4,
+      21
+     ],
+     [
+      8,
+      17
+     ],
+     [
+      4,
+      21
+     ],
+     [
+      8,
+      17
+     ],
+     [
+      4,
+      21
+     ],
+     [
+      8,
+      17
+     ],
+     [
+      4,
+      21
+     ],
+     [
+      8,
+      17
+     ],
+     [
+      4,
+      21
+     ],
+     [
+      8,
+      17
+     ],
+     [
+      4,
+      21
+     ],
+     [
+      8,
+      17
+     ],
+     [
+      4,
+      21
+     ],
+     [
+      8,
+      17
+     ]
+    ]
+   },
+   "clear": {
+    "turns": 40,
+    "earned_A_minus_B": -4.7,
+    "farm": [
+     11.725,
+     16.425
+    ],
+    "xp": [
+     155,
+     147
+    ],
+    "plates": [
+     0,
+     0
+    ],
+    "tower_hits": [
+     0,
+     0
+    ],
+    "crashes": [
+     [],
+     []
+    ],
+    "contact": [
+     null,
+     0,
+     1,
+     null,
+     2,
+     2,
+     2,
+     2,
+     2,
+     2,
+     2,
+     null,
+     1,
+     1,
+     1,
+     1,
+     1,
+     1,
+     1,
+     null,
+     2,
+     2,
+     2,
+     2,
+     2,
+     2,
+     2,
+     2,
+     2,
+     2,
+     2,
+     null,
+     1,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0
+    ],
+    "fronts": [
+     [
+      8,
+      8
+     ],
+     [
+      7,
+      3
+     ],
+     [
+      5,
+      5
+     ],
+     [
+      11,
+      8
+     ],
+     [
+      7,
+      6
+     ],
+     [
+      3,
+      12
+     ],
+     [
+      7,
+      10
+     ],
+     [
+      3,
+      16
+     ],
+     [
+      6,
+      14
+     ],
+     [
+      2,
+      20
+     ],
+     [
+      4,
+      18
+     ],
+     [
+      8,
+      24
+     ],
+     [
+      3,
+      18
+     ],
+     [
+      8,
+      12
+     ],
+     [
+      4,
+      14
+     ],
+     [
+      10,
+      8
+     ],
+     [
+      7,
+      10
+     ],
+     [
+      13,
+      4
+     ],
+     [
+      11,
+      6
+     ],
+     [
+      17,
+      8
+     ],
+     [
+      13,
+      5
+     ],
+     [
+      9,
+      11
+     ],
+     [
+      13,
+      8
+     ],
+     [
+      9,
+      14
+     ],
+     [
+      13,
+      11
+     ],
+     [
+      9,
+      17
+     ],
+     [
+      12,
+      14
+     ],
+     [
+      8,
+      20
+     ],
+     [
+      10,
+      17
+     ],
+     [
+      4,
+      23
+     ],
+     [
+      6,
+      21
+     ],
+     [
+      8,
+      19
+     ],
+     [
+      2,
+      21
+     ],
+     [
+      6,
+      17
+     ],
+     [
+      2,
+      19
+     ],
+     [
+      6,
+      13
+     ],
+     [
+      3,
+      15
+     ],
+     [
+      9,
+      9
+     ],
+     [
+      7,
+      11
+     ],
+     [
+      13,
+      5
+     ]
+    ]
+   }
+  },
+  "clear_trace": [
+   [
+    0,
+    [
+     "CL-H",
+     "HO-H"
+    ],
+    "-2:8",
+    "+2:8",
+    [
+     -2,
+     2
+    ],
+    [
+     0,
+     0
+    ],
+    [
+     0.0,
+     0.0
+    ],
+    [
+     0,
+     0
+    ],
+    [
+     0,
+     0
+    ]
+   ],
+   [
+    1,
+    [
+     "CL-H",
+     "HO-H"
+    ],
+    "+0:7 r[-4]",
+    "+0:3 r[+4]",
+    [
+     0,
+     0
+    ],
+    [
+     0,
+     0
+    ],
+    [
+     0.5625,
+     0.1125
+    ],
+    [
+     5,
+     1
+    ],
+    [
+     0,
+     0
+    ]
+   ],
+   [
+    2,
+    [
+     "CL-H",
+     "HO-H"
+    ],
+    "+1:5 r[-2]",
+    "+2:5",
+    [
+     1,
+     2
+    ],
+    [
+     0,
+     0
+    ],
+    [
+     0.525,
+     0.1125
+    ],
+    [
+     6,
+     2
+    ],
+    [
+     0,
+     0
+    ]
+   ],
+   [
+    3,
+    [
+     "CL-H",
+     "HO-H"
+    ],
+    "+1:11 r[-4]",
+    "+4:8",
+    [
+     1,
+     2
+    ],
+    [
+     0,
+     0
+    ],
+    [
+     0.3125,
+     0.225
+    ],
+    [
+     5,
+     2
+    ],
+    [
+     0,
+     0
+    ]
+   ],
+   [
+    4,
+    [
+     "CL-H",
+     "HO-H"
+    ],
+    "+2:7 r[-2]",
+    "+3:6",
+    [
+     2,
+     2
+    ],
+    [
+     0,
+     0
+    ],
+    [
+     0.125,
+     0.45
+    ],
+    [
+     2,
+     4
+    ],
+    [
+     0,
+     0
+    ]
+   ],
+   [
+    5,
+    [
+     "CL-H",
+     "HO-H"
+    ],
+    "+2:3 r[+0,-4]",
+    "+3:12",
+    [
+     2,
+     2
+    ],
+    [
+     0,
+     0
+    ],
+    [
+     0.125,
+     0.45
+    ],
+    [
+     2,
+     4
+    ],
+    [
+     0,
+     0
+    ]
+   ],
+   [
+    6,
+    [
+     "CL-H",
+     "HO-H"
+    ],
+    "+2:7 r[-2]",
+    "+3:10",
+    [
+     2,
+     2
+    ],
+    [
+     0,
+     0
+    ],
+    [
+     0.125,
+     0.45
+    ],
+    [
+     2,
+     4
+    ],
+    [
+     0,
+     0
+    ]
+   ],
+   [
+    7,
+    [
+     "CL-H",
+     "HO-H"
+    ],
+    "+2:3 r[+0,-4]",
+    "+3:16",
+    [
+     2,
+     2
+    ],
+    [
+     0,
+     0
+    ],
+    [
+     0.125,
+     0.45
+    ],
+    [
+     2,
+     4
+    ],
+    [
+     0,
+     0
+    ]
+   ],
+   [
+    8,
+    [
+     "CL-H",
+     "HO-H"
+    ],
+    "+2:6 r[-2]",
+    "+3:14",
+    [
+     2,
+     2
+    ],
+    [
+     0,
+     0
+    ],
+    [
+     0.125,
+     0.5625
+    ],
+    [
+     2,
+     5
+    ],
+    [
+     0,
+     0
+    ]
+   ],
+   [
+    9,
+    [
+     "CL-H",
+     "HO-H"
+    ],
+    "+2:2 r[+0,-4]",
+    "+3:20",
+    [
+     2,
+     2
+    ],
+    [
+     0,
+     0
+    ],
+    [
+     0.125,
+     0.45
+    ],
+    [
+     2,
+     4
+    ],
+    [
+     0,
+     0
+    ]
+   ],
+   [
+    10,
+    [
+     "CL-H",
+     "HO-H"
+    ],
+    "+2:4 r[-2]",
+    "+3:18",
+    [
+     2,
+     2
+    ],
+    [
+     0,
+     0
+    ],
+    [
+     0.125,
+     0.675
+    ],
+    [
+     2,
+     6
+    ],
+    [
+     0,
+     0
+    ]
+   ],
+   [
+    11,
+    [
+     "CL-H",
+     "HO-H"
+    ],
+    "+0:8 r[-4]",
+    "+3:24",
+    [
+     0,
+     2
+    ],
+    [
+     0,
+     0
+    ],
+    [
+     0.0,
+     0.45
+    ],
+    [
+     2,
+     4
+    ],
+    [
+     0,
+     0
+    ]
+   ],
+   [
+    12,
+    [
+     "CL-H",
+     "HO-H"
+    ],
+    "+1:3 r[-2]",
+    "+2:18",
+    [
+     1,
+     2
+    ],
+    [
+     0,
+     0
+    ],
+    [
+     0.375,
+     0.5625
+    ],
+    [
+     6,
+     5
+    ],
+    [
+     0,
+     0
+    ]
+   ],
+   [
+    13,
+    [
+     "CL-H",
+     "HO-H"
+    ],
+    "+1:8 r[-4]",
+    "+2:12 r[+4]",
+    [
+     1,
+     2
+    ],
+    [
+     0,
+     0
+    ],
+    [
+     0.375,
+     0.3375
+    ],
+    [
+     6,
+     3
+    ],
+    [
+     0,
+     0
+    ]
+   ]
+  ]
+ },
+ "stacking": {
+  "thin_k1_1": {
+   "turns": 40,
+   "earned_A_minus_B": -4.1625,
+   "farm": [
+    10.425,
+    16.5875
+   ],
+   "xp": [
+    124,
+    160
+   ],
+   "plates": [
+    2,
+    0
+   ],
+   "tower_hits": [
+    43,
+    5
+   ],
+   "crashes": [
+    [
+     {
+      "k": 18,
+      "hp": 16
+     },
+     {
+      "k": 19,
+      "hp": 16
+     }
+    ],
+    [
+     {
+      "k": 38,
+      "hp": 22
+     },
+     {
+      "k": 39,
+      "hp": 8
+     }
+    ]
+   ],
+   "contact": [
+    null,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    1,
+    null,
+    null,
+    null,
+    2,
+    2,
+    2,
+    2,
+    2,
+    2,
+    2,
+    null,
+    2,
+    null,
+    2,
+    null,
+    1,
+    0,
+    null,
+    -1,
+    -2,
+    null,
+    null,
+    null
+   ],
+   "fronts": [
+    [
+     8,
+     8
+    ],
+    [
+     7,
+     5
+    ],
+    [
+     5,
+     3
+    ],
+    [
+     11,
+     9
+    ],
+    [
+     9,
+     7
+    ],
+    [
+     15,
+     11
+    ],
+    [
+     13,
+     9
+    ],
+    [
+     18,
+     13
+    ],
+    [
+     16,
+     9
+    ],
+    [
+     21,
+     12
+    ],
+    [
+     19,
+     8
+    ],
+    [
+     24,
+     10
+    ],
+    [
+     22,
+     5
+    ],
+    [
+     20,
+     7
+    ],
+    [
+     18,
+     1
+    ],
+    [
+     24,
+     1
+    ],
+    [
+     22,
+     5
+    ],
+    [
+     20,
+     8
+    ],
+    [
+     8,
+     0
+    ],
+    [
+     8,
+     8
+    ],
+    [
+     6,
+     4
+    ],
+    [
+     2,
+     10
+    ],
+    [
+     6,
+     8
+    ],
+    [
+     2,
+     14
+    ],
+    [
+     6,
+     12
+    ],
+    [
+     2,
+     18
+    ],
+    [
+     4,
+     16
+    ],
+    [
+     8,
+     22
+    ],
+    [
+     5,
+     20
+    ],
+    [
+     8,
+     18
+    ],
+    [
+     4,
+     16
+    ],
+    [
+     8,
+     22
+    ],
+    [
+     2,
+     20
+    ],
+    [
+     5,
+     18
+    ],
+    [
+     8,
+     16
+    ],
+    [
+     1,
+     22
+    ],
+    [
+     5,
+     20
+    ],
+    [
+     8,
+     18
+    ],
+    [
+     0,
+     8
+    ],
+    [
+     8,
+     8
+    ]
+   ],
+   "trajectory": [
+    [
+     0,
+     [
+      "HO-H",
+      "HO-H"
+     ],
+     "-2:8",
+     "+2:8",
+     [
+      -2,
+      2
+     ],
+     [
+      0,
+      0
+     ],
+     [
+      0.0,
+      0.0
+     ],
+     [
+      0,
+      0
+     ],
+     [
+      0,
+      0
+     ]
+    ],
+    [
+     1,
+     [
+      "TN-H",
+      "HO-H"
+     ],
+     "+0:7 r[-4]",
+     "+0:5 r[+4]",
+     [
+      0,
+      0
+     ],
+     [
+      0,
+      0
+     ],
+     [
+      0.3375,
+      0.1125
+     ],
+     [
+      3,
+      1
+     ],
+     [
+      0,
+      0
+     ]
+    ],
+    [
+     2,
+     [
+      "HO-H",
+      "HO-H"
+     ],
+     "+0:5 r[-2]",
+     "+0:3 r[+2]",
+     [
+      0,
+      0
+     ],
+     [
+      0,
+      0
+     ],
+     [
+      0.225,
+      0.225
+     ],
+     [
+      2,
+      2
+     ],
+     [
+      0,
+      0
+     ]
+    ],
+    [
+     3,
+     [
+      "HO-H",
+      "HO-H"
+     ],
+     "+0:11 r[-4]",
+     "+0:9 r[+4]",
+     [
+      0,
+      0
+     ],
+     [
+      0,
+      0
+     ],
+     [
+      0.225,
+      0.225
+     ],
+     [
+      2,
+      2
+     ],
+     [
+      0,
+      0
+     ]
+    ],
+    [
+     4,
+     [
+      "HO-H",
+      "HO-H"
+     ],
+     "+0:9 r[-2]",
+     "+0:7 r[+2]",
+     [
+      0,
+      0
+     ],
+     [
+      0,
+      0
+     ],
+     [
+      0.225,
+      0.225
+     ],
+     [
+      2,
+      2
+     ],
+     [
+      0,
+      0
+     ]
+    ],
+    [
+     5,
+     [
+      "HO-H",
+      "HO-H"
+     ],
+     "+0:15 r[-4]",
+     "+0:11 r[+4]",
+     [
+      0,
+      0
+     ],
+     [
+      0,
+      0
+     ],
+     [
+      0.45,
+      0.225
+     ],
+     [
+      4,
+      2
+     ],
+     [
+      0,
+      0
+     ]
+    ],
+    [
+     6,
+     [
+      "HO-H",
+      "HO-H"
+     ],
+     "+0:13 r[-2]",
+     "+0:9 r[+2]",
+     [
+      0,
+      0
+     ],
+     [
+      0,
+      0
+     ],
+     [
+      0.225,
+      0.225
+     ],
+     [
+      2,
+      2
+     ],
+     [
+      0,
+      0
+     ]
+    ],
+    [
+     7,
+     [
+      "HO-H",
+      "HO-H"
+     ],
+     "+0:18 r[-4]",
+     "+0:13 r[+4]",
+     [
+      0,
+      0
+     ],
+     [
+      0,
+      0
+     ],
+     [
+      0.45,
+      0.3375
+     ],
+     [
+      4,
+      3
+     ],
+     [
+      0,
+      0
+     ]
+    ],
+    [
+     8,
+     [
+      "HO-H",
+      "HO-H"
+     ],
+     "+0:16 r[-2]",
+     "+0:9 r[+2]",
+     [
+      0,
+      0
+     ],
+     [
+      0,
+      0
+     ],
+     [
+      0.45,
+      0.225
+     ],
+     [
+      4,
+      2
+     ],
+     [
+      0,
+      0
+     ]
+    ],
+    [
+     9,
+     [
+      "HO-H",
+      "HO-H"
+     ],
+     "+0:21 r[-4]",
+     "+0:12 r[+4]",
+     [
+      0,
+      0
+     ],
+     [
+      0,
+      0
+     ],
+     [
+      0.5625,
+      0.3375
+     ],
+     [
+      5,
+      3
+     ],
+     [
+      0,
+      0
+     ]
+    ],
+    [
+     10,
+     [
+      "HO-H",
+      "HO-H"
+     ],
+     "+0:19 r[-2]",
+     "+0:8 r[+2]",
+     [
+      0,
+      0
+     ],
+     [
+      0,
+      0
+     ],
+     [
+      0.45,
+      0.225
+     ],
+     [
+      4,
+      2
+     ],
+     [
+      0,
+      0
+     ]
+    ],
+    [
+     11,
+     [
+      "HO-H",
+      "HO-H"
+     ],
+     "+0:24 r[-4]",
+     "+0:10 r[+4]",
+     [
+      0,
+      0
+     ],
+     [
+      0,
+      0
+     ],
+     [
+      0.675,
+      0.3375
+     ],
+     [
+      6,
+      3
+     ],
+     [
+      0,
+      0
+     ]
+    ],
+    [
+     12,
+     [
+      "HO-H",
+      "HO-H"
+     ],
+     "+0:22 r[-2]",
+     "+0:5 r[+2]",
+     [
+      0,
+      0
+     ],
+     [
+      0,
+      0
+     ],
+     [
+      0.5625,
+      0.225
+     ],
+     [
+      5,
+      2
+     ],
+     [
+      0,
+      0
+     ]
+    ],
+    [
+     13,
+     [
+      "HO-H",
+      "HO-H"
+     ],
+     "+0:20 r[-1,-4]",
+     "+0:7 r[+4]",
+     [
+      0,
+      0
+     ],
+     [
+      0,
+      0
+     ],
+     [
+      0.675,
+      0.225
+     ],
+     [
+      6,
+      2
+     ],
+     [
+      0,
+      0
+     ]
+    ],
+    [
+     14,
+     [
+      "HO-H",
+      "HO-H"
+     ],
+     "+0:18 r[-1,-2]",
+     "+0:1 r[+2]",
+     [
+      0,
+      0
+     ],
+     [
+      0,
+      0
+     ],
+     [
+      0.675,
+      0.225
+     ],
+     [
+      6,
+      2
+     ],
+     [
+      0,
+      0
+     ]
+    ],
+    [
+     15,
+     [
+      "HO-H",
+      "HO-H"
+     ],
+     "+0:24 r[-1,-4]",
+     "+0:1 r[+4]",
+     [
+      0,
+      0
+     ],
+     [
+      0,
+      0
+     ],
+     [
+      0.9,
+      0.225
+     ],
+     [
+      8,
+      2
+     ],
+     [
+      0,
+      0
+     ]
+    ],
+    [
+     16,
+     [
+      "HO-H",
+      "HO-H"
+     ],
+     "+1:22 r[+0,-2]",
+     "+2:5",
+     [
+      1,
+      2
+     ],
+     [
+      0,
+      0
+     ],
+     [
+      0.3,
+      0.1125
+     ],
+     [
+      4,
+      2
+     ],
+     [
+      0,
+      0
+     ]
+    ],
+    [
+     17,
+     [
+      "HO-H",
+      "HO-H"
+     ],
+     "+1:20 r[+0,+0,-4]",
+     "+4:8",
+     [
+      1,
+      2
+     ],
+     [
+      0,
+      0
+     ],
+     [
+      0.3125,
+      0.225
+     ],
+     [
+      5,
+      2
+     ],
+     [
+      0,
+      0
+     ]
+    ],
+    [
+     18,
+     [
+      "HO-H",
+      "HO-H"
+     ],
+     "+1:8 r[+1,-2] sg16",
+     "--",
+     [
+      1,
+      2
+     ],
+     [
+      16,
+      0
+     ],
+     [
+      0.0,
+      0.45
+     ],
+     [
+      8,
+      4
+     ],
+     [
+      0,
+      0
+     ]
+    ],
+    [
+     19,
+     [
+      "HO-H",
+      "HO-H"
+     ],
+     "+0:8 r[-4] sg30",
+     "+4:8",
+     [
+      1,
+      2
+     ],
+     [
+      16,
+      0
+     ],
+     [
+      0.0,
+      0.225
+     ],
+     [
+      0,
+      2
+     ],
+     [
+      5,
+      0
+     ]
+    ],
+    [
+     20,
+     [
+      "HO-H",
+      "HO-H"
+     ],
+     "+2:6 r[-2] sg27",
+     "+3:4",
+     [
+      2,
+      2
+     ],
+     [
+      0,
+      0
+     ],
+     [
+      0.25,
+      0.5625
+     ],
+     [
+      4,
+      5
+     ],
+     [
+      3,
+      0
+     ]
+    ],
+    [
+     21,
+     [
+      "HO-H",
+      "HO-H"
+     ],
+     "+2:2 r[+0,-4] sg25",
+     "+3:10",
+     [
+      2,
+      2
+     ],
+     [
+      0,
+      0
+     ],
+     [
+      0.125,
+      0.675
+     ],
+     [
+      2,
+      6
+     ],
+     [
+      6,
+      0
+     ]
+    ],
+    [
+     22,
+     [
+      "HO-H",
+      "HO-H"
+     ],
+     "+2:6 r[-2] sg23",
+     "+3:8",
+     [
+      2,
+      2
+     ],
+     [
+      0,
+      0
+     ],
+     [
+      0.125,
+      0.675
+     ],
+     [
+      2,
+      6
+     ],
+     [
+      6,
+      0
+     ]
+    ],
+    [
+     23,
+     [
+      "HO-H",
+      "HO-H"
+     ],
+     "+2:2 r[+0,-4] sg21",
+     "+3:14",
+     [
+      2,
+      2
+     ],
+     [
+      0,
+      0
+     ],
+     [
+      0.125,
+      0.675
+     ],
+     [
+      2,
+      6
+     ],
+     [
+      4,
+      0
+     ]
+    ],
+    [
+     24,
+     [
+      "HO-H",
+      "HO-H"
+     ],
+     "+2:6 r[-2] sg19",
+     "+3:12",
+     [
+      2,
+      2
+     ],
+     [
+      0,
+      0
+     ],
+     [
+      0.125,
+      0.675
+     ],
+     [
+      2,
+      6
+     ],
+     [
+      4,
+      0
+     ]
+    ],
+    [
+     25,
+     [
+      "HO-H",
+      "HO-H"
+     ],
+     "+2:2 r[+0,-4] sg17",
+     "+3:18",
+     [
+      2,
+      2
+     ],
+     [
+      0,
+      0
+     ],
+     [
+      0.125,
+      0.675
+     ],
+     [
+      2,
+      6
+     ],
+     [
+      4,
+      0
+     ]
+    ],
+    [
+     26,
+     [
+      "HO-H",
+      "HO-H"
+     ],
+     "+2:4 r[-2] sg15",
+     "+3:16",
+     [
+      2,
+      2
+     ],
+     [
+      0,
+      0
+     ],
+     [
+      0.125,
+      0.9
+     ],
+     [
+      2,
+      8
+     ],
+     [
+      4,
+      0
+     ]
+    ],
+    [
+     27,
+     [
+      "HO-H",
+      "HO-H"
+     ],
+     "+0:8 r[-4] sg13",
+     "+3:22",
+     [
+      0,
+      2
+     ],
+     [
+      0,
+      0
+     ],
+     [
+      0.0,
+      0.675
+     ],
+     [
+      2,
+      6
+     ],
+     [
+      2,
+      0
+     ]
+    ],
+    [
+     28,
+     [
+      "HO-H",
+      "HO-H"
+     ],
+     "+2:5 r[-2] sg9",
+     "+3:20",
+     [
+      2,
+      2
+     ],
+     [
+      0,
+      0
+     ],
+     [
+      0.125,
+      0.7875
+     ],
+     [
+      2,
+      7
+     ],
+     [
+      1,
+      0
+     ]
+    ],
+    [
+     29,
+     [
+      "HO-H",
+      "HO-H"
+     ],
+     "+0:8 r[-4] sg7",
+     "+3:18 r[+4]",
+     [
+      0,
+      2
+     ],
+     [
+      0,
+      0
+     ],
+     [
+      0.0,
+      0.7875
+     ],
+     [
+      2,
+      7
+     ],
+     [
+      2,
+      0
+     ]
+    ],
+    [
+     30,
+     [
+      "HO-H",
+      "HO-H"
+     ],
+     "+2:4 r[-2] sg2",
+     "+3:16 r[+4]",
+     [
+      2,
+      2
+     ],
+     [
+      0,
+      0
+     ],
+     [
+      0.125,
+      1.0125
+     ],
+     [
+      2,
+      9
+     ],
+     [
+      1,
+      0
+     ]
+    ],
+    [
+     31,
+     [
+      "HO-H",
+      "HO-H"
+     ],
+     "+0:8 r[-4]",
+     "+3:22 r[+4]",
+     [
+      0,
+      2
+     ],
+     [
+      0,
+      0
+     ],
+     [
+      0.0,
+      0.675
+     ],
+     [
+      2,
+      6
+     ],
+     [
+      1,
+      0
+     ]
+    ],
+    [
+     32,
+     [
+      "HO-H",
+      "HO-H"
+     ],
+     "+1:2 r[-2]",
+     "+2:20 r[+3]",
+     [
+      1,
+      2
+     ],
+     [
+      0,
+      0
+     ],
+     [
+      0.125,
+      0.675
+     ],
+     [
+      2,
+      6
+     ],
+     [
+      0,
+      0
+     ]
+    ],
+    [
+     33,
+     [
+      "HO-H",
+      "HO-H"
+     ],
+     "+0:5 r[-4]",
+     "+1:18 r[+2,+4]",
+     [
+      0,
+      1
+     ],
+     [
+      0,
+      0
+     ],
+     [
+      0.1125,
+      0.5625
+     ],
+     [
+      2,
+      5
+     ],
+     [
+      0,
+      0
+     ]
+    ],
+    [
+     34,
+     [
+      "HO-H",
+      "HO-H"
+     ],
+     "-2:8",
+     "+1:16 r[+2,+2]",
+     [
+      -2,
+      1
+     ],
+     [
+      0,
+      0
+     ],
+     [
+      0.0,
+      0.5625
+     ],
+     [
+      2,
+      5
+     ],
+     [
+      0,
+      0
+     ]
+    ],
+    [
+     35,
+     [
+      "HO-H",
+      "HO-H"
+     ],
+     "-1:1 r[-4]",
+     "+0:22 r[+1,+4]",
+     [
+      -1,
+      0
+     ],
+     [
+      0,
+      0
+     ],
+     [
+      0.225,
+      0.7875
+     ],
+     [
+      2,
+      7
+     ],
+     [
+      0,
+      0
+     ]
+    ],
+    [
+     36,
+     [
+      "HO-H",
+      "HO-H"
+     ],
+     "-2:5",
+     "-1:20 r[+0,+2]",
+     [
+      -2,
+      -1
+     ],
+     [
+      0,
+      0
+     ],
+     [
+      0.1125,
+      0.3
+     ],
+     [
+      2,
+      4
+     ],
+     [
+      0,
+      0
+     ]
+    ],
+    [
+     37,
+     [
+      "HO-H",
+      "HO-H"
+     ],
+     "-4:8",
+     "-1:18 r[+0,+0,+4]",
+     [
+      -2,
+      -1
+     ],
+     [
+      0,
+      0
+     ],
+     [
+      0.225,
+      0.3125
+     ],
+     [
+      2,
+      5
+     ],
+     [
+      0,
+      0
+     ]
+    ],
+    [
+     38,
+     [
+      "HO-H",
+      "HO-H"
+     ],
+     "--",
+     "-1:8 r[+2] sg22",
+     [
+      -2,
+      -1
+     ],
+     [
+      0,
+      22
+     ],
+     [
+      0.45,
+      0.0
+     ],
+     [
+      4,
+      8
+     ],
+     [
+      0,
+      0
+     ]
+    ],
+    [
+     39,
+     [
+      "HO-H",
+      "HO-H"
+     ],
+     "-4:8",
+     "+0:8 r[+4] sg28",
+     [
+      -2,
+      -1
+     ],
+     [
+      0,
+      8
+     ],
+     [
+      0.225,
+      0.0
+     ],
+     [
+      2,
+      0
+     ],
+     [
+      0,
+      5
+     ]
+    ]
+   ]
+  },
+  "thin_k1_2": {
+   "turns": 40,
+   "earned_A_minus_B": -2.1,
+   "farm": [
+    12.2125,
+    16.3125
+   ],
+   "xp": [
+    136,
+    154
+   ],
+   "plates": [
+    2,
+    0
+   ],
+   "tower_hits": [
+    40,
+    9
+   ],
+   "crashes": [
+    [
+     {
+      "k": 16,
+      "hp": 15
+     },
+     {
+      "k": 17,
+      "hp": 16
+     }
+    ],
+    [
+     {
+      "k": 35,
+      "hp": 16
+     }
+    ]
+   ],
+   "contact": [
+    null,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    1,
+    null,
+    null,
+    null,
+    2,
+    2,
+    2,
+    2,
+    2,
+    2,
+    2,
+    null,
+    2,
+    null,
+    2,
+    null,
+    1,
+    0,
+    null,
+    -1,
+    -2,
+    null,
+    -3,
+    -3,
+    -3,
+    -3
+   ],
+   "fronts": [
+    [
+     8,
+     8
+    ],
+    [
+     7,
+     5
+    ],
+    [
+     5,
+     1
+    ],
+    [
+     11,
+     7
+    ],
+    [
+     9,
+     5
+    ],
+    [
+     15,
+     9
+    ],
+    [
+     13,
+     7
+    ],
+    [
+     19,
+     11
+    ],
+    [
+     17,
+     7
+    ],
+    [
+     23,
+     9
+    ],
+    [
+     21,
+     5
+    ],
+    [
+     19,
+     7
+    ],
+    [
+     17,
+     1
+    ],
+    [
+     23,
+     1
+    ],
+    [
+     21,
+     5
+    ],
+    [
+     19,
+     8
+    ],
+    [
+     8,
+     0
+    ],
+    [
+     8,
+     8
+    ],
+    [
+     6,
+     4
+    ],
+    [
+     2,
+     10
+    ],
+    [
+     6,
+     8
+    ],
+    [
+     2,
+     14
+    ],
+    [
+     6,
+     12
+    ],
+    [
+     2,
+     18
+    ],
+    [
+     4,
+     16
+    ],
+    [
+     8,
+     22
+    ],
+    [
+     5,
+     20
+    ],
+    [
+     8,
+     18
+    ],
+    [
+     4,
+     16
+    ],
+    [
+     8,
+     23
+    ],
+    [
+     3,
+     21
+    ],
+    [
+     5,
+     19
+    ],
+    [
+     8,
+     17
+    ],
+    [
+     1,
+     23
+    ],
+    [
+     5,
+     20
+    ],
+    [
+     8,
+     16
+    ],
+    [
+     5,
+     12
+    ],
+    [
+     11,
+     8
+    ],
+    [
+     8,
+     12
+    ],
+    [
+     14,
+     8
+    ]
+   ]
+  },
+  "thin_k1_4": {
+   "turns": 40,
+   "earned_A_minus_B": -1.45,
+   "farm": [
+    13.275,
+    15.725
+   ],
+   "xp": [
+    140,
+    151
+   ],
+   "plates": [
+    1,
+    0
+   ],
+   "tower_hits": [
+    27,
+    13
+   ],
+   "crashes": [
+    [
+     {
+      "k": 15,
+      "hp": 25
+     }
+    ],
+    [
+     {
+      "k": 33,
+      "hp": 16
+     }
+    ]
+   ],
+   "contact": [
+    null,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    1,
+    null,
+    2,
+    null,
+    2,
+    2,
+    2,
+    2,
+    2,
+    2,
+    2,
+    null,
+    2,
+    null,
+    2,
+    0,
+    0,
+    0,
+    null,
+    -1,
+    -2,
+    null,
+    -3,
+    -3,
+    -3,
+    -3,
+    -3,
+    -3
+   ],
+   "fronts": [
+    [
+     8,
+     8
+    ],
+    [
+     7,
+     5
+    ],
+    [
+     5,
+     1
+    ],
+    [
+     11,
+     5
+    ],
+    [
+     9,
+     1
+    ],
+    [
+     15,
+     5
+    ],
+    [
+     13,
+     3
+    ],
+    [
+     19,
+     7
+    ],
+    [
+     17,
+     3
+    ],
+    [
+     23,
+     5
+    ],
+    [
+     21,
+     1
+    ],
+    [
+     19,
+     3
+    ],
+    [
+     17,
+     5
+    ],
+    [
+     23,
+     8
+    ],
+    [
+     19,
+     2
+    ],
+    [
+     8,
+     8
+    ],
+    [
+     6,
+     4
+    ],
+    [
+     2,
+     10
+    ],
+    [
+     6,
+     8
+    ],
+    [
+     2,
+     14
+    ],
+    [
+     6,
+     12
+    ],
+    [
+     2,
+     18
+    ],
+    [
+     4,
+     16
+    ],
+    [
+     8,
+     22
+    ],
+    [
+     5,
+     20
+    ],
+    [
+     8,
+     18
+    ],
+    [
+     4,
+     16
+    ],
+    [
+     6,
+     22
+    ],
+    [
+     1,
+     20
+    ],
+    [
+     3,
+     18
+    ],
+    [
+     8,
+     17
+    ],
+    [
+     1,
+     23
+    ],
+    [
+     5,
+     20
+    ],
+    [
+     8,
+     16
+    ],
+    [
+     5,
+     12
+    ],
+    [
+     11,
+     8
+    ],
+    [
+     8,
+     12
+    ],
+    [
+     14,
+     8
+    ],
+    [
+     11,
+     12
+    ],
+    [
+     17,
+     8
+    ]
+   ]
+  },
+  "thin_k1_6": {
+   "turns": 40,
+   "earned_A_minus_B": 0.125,
+   "farm": [
+    14.5,
+    14.375
+   ],
+   "xp": [
+    145,
+    146
+   ],
+   "plates": [
+    1,
+    1
+   ],
+   "tower_hits": [
+    18,
+    24
+   ],
+   "crashes": [
+    [
+     {
+      "k": 13,
+      "hp": 20
+     }
+    ],
+    [
+     {
+      "k": 31,
+      "hp": 25
+     }
+    ]
+   ],
+   "contact": [
+    null,
+    0,
+    0,
+    0,
+    0,
+    0,
+    null,
+    1,
+    1,
+    1,
+    1,
+    1,
+    2,
+    null,
+    2,
+    2,
+    2,
+    2,
+    2,
+    2,
+    2,
+    null,
+    2,
+    null,
+    1,
+    0,
+    0,
+    0,
+    -2,
+    null,
+    -3,
+    null,
+    -3,
+    -3,
+    -3,
+    -3,
+    -3,
+    -3,
+    -3,
+    null
+   ],
+   "fronts": [
+    [
+     8,
+     8
+    ],
+    [
+     7,
+     5
+    ],
+    [
+     5,
+     1
+    ],
+    [
+     11,
+     5
+    ],
+    [
+     9,
+     1
+    ],
+    [
+     15,
+     3
+    ],
+    [
+     13,
+     8
+    ],
+    [
+     19,
+     5
+    ],
+    [
+     17,
+     9
+    ],
+    [
+     23,
+     4
+    ],
+    [
+     21,
+     8
+    ],
+    [
+     19,
+     3
+    ],
+    [
+     16,
+     5
+    ],
+    [
+     8,
+     8
+    ],
+    [
+     6,
+     5
+    ],
+    [
+     2,
+     11
+    ],
+    [
+     6,
+     9
+    ],
+    [
+     2,
+     15
+    ],
+    [
+     6,
+     13
+    ],
+    [
+     2,
+     19
+    ],
+    [
+     4,
+     17
+    ],
+    [
+     8,
+     23
+    ],
+    [
+     5,
+     21
+    ],
+    [
+     8,
+     19
+    ],
+    [
+     3,
+     17
+    ],
+    [
+     5,
+     23
+    ],
+    [
+     1,
+     21
+    ],
+    [
+     3,
+     19
+    ],
+    [
+     5,
+     17
+    ],
+    [
+     8,
+     23
+    ],
+    [
+     2,
+     19
+    ],
+    [
+     8,
+     8
+    ],
+    [
+     4,
+     6
+    ],
+    [
+     10,
+     2
+    ],
+    [
+     8,
+     6
+    ],
+    [
+     14,
+     2
+    ],
+    [
+     12,
+     6
+    ],
+    [
+     18,
+     2
+    ],
+    [
+     16,
+     4
+    ],
+    [
+     22,
+     8
+    ]
+   ]
+  }
+ },
+ "crash": {
+  "thin_k1_3_hold": {
+   "turns": 24,
+   "earned_A_minus_B": 0.1625,
+   "farm": [
+    8.05,
+    8.8875
+   ],
+   "xp": [
+    84,
+    81
+   ],
+   "plates": [
+    1,
+    0
+   ],
+   "tower_hits": [
+    17,
+    0
+   ],
+   "crashes": [
+    [
+     {
+      "k": 15,
+      "hp": 16
+     }
+    ],
+    []
+   ],
+   "contact": [
+    null,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    null,
+    1,
+    2,
+    null,
+    2,
+    2,
+    2,
+    2,
+    2,
+    2,
+    2,
+    2
+   ],
+   "fronts": [
+    [
+     8,
+     8
+    ],
+    [
+     7,
+     5
+    ],
+    [
+     5,
+     1
+    ],
+    [
+     11,
+     5
+    ],
+    [
+     9,
+     3
+    ],
+    [
+     15,
+     7
+    ],
+    [
+     13,
+     5
+    ],
+    [
+     19,
+     9
+    ],
+    [
+     17,
+     5
+    ],
+    [
+     23,
+     7
+    ],
+    [
+     21,
+     3
+    ],
+    [
+     19,
+     5
+    ],
+    [
+     17,
+     8
+    ],
+    [
+     23,
+     1
+    ],
+    [
+     20,
+     5
+    ],
+    [
+     16,
+     8
+    ],
+    [
+     12,
+     5
+    ],
+    [
+     8,
+     11
+    ],
+    [
+     12,
+     8
+    ],
+    [
+     8,
+     14
+    ],
+    [
+     12,
+     11
+    ],
+    [
+     8,
+     17
+    ],
+    [
+     11,
+     14
+    ],
+    [
+     7,
+     20
+    ]
+   ]
+  },
+  "thin_k1_3_clear_k8": {
+   "turns": 24,
+   "earned_A_minus_B": -1.1375,
+   "farm": [
+    7.5375,
+    9.675
+   ],
+   "xp": [
+    83,
+    88
+   ],
+   "plates": [
+    1,
+    0
+   ],
+   "tower_hits": [
+    18,
+    0
+   ],
+   "crashes": [
+    [
+     {
+      "k": 11,
+      "hp": 19
+     }
+    ],
+    []
+   ],
+   "contact": [
+    null,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    null,
+    2,
+    null,
+    2,
+    2,
+    2,
+    2,
+    2,
+    2,
+    2,
+    null,
+    2,
+    null,
+    1,
+    1
+   ],
+   "fronts": [
+    [
+     8,
+     8
+    ],
+    [
+     7,
+     5
+    ],
+    [
+     5,
+     1
+    ],
+    [
+     11,
+     5
+    ],
+    [
+     9,
+     3
+    ],
+    [
+     15,
+     7
+    ],
+    [
+     13,
+     5
+    ],
+    [
+     19,
+     9
+    ],
+    [
+     17,
+     1
+    ],
+    [
+     23,
+     8
+    ],
+    [
+     21,
+     4
+    ],
+    [
+     8,
+     8
+    ],
+    [
+     6,
+     5
+    ],
+    [
+     2,
+     11
+    ],
+    [
+     6,
+     9
+    ],
+    [
+     2,
+     15
+    ],
+    [
+     6,
+     13
+    ],
+    [
+     2,
+     19
+    ],
+    [
+     4,
+     17
+    ],
+    [
+     8,
+     23
+    ],
+    [
+     5,
+     19
+    ],
+    [
+     8,
+     17
+    ],
+    [
+     4,
+     19
+    ],
+    [
+     8,
+     13
+    ]
+   ]
+  },
+  "thin_k1_3_clear_k10": {
+   "turns": 24,
+   "earned_A_minus_B": -1.5875,
+   "farm": [
+    7.0875,
+    9.675
+   ],
+   "xp": [
+    79,
+    88
+   ],
+   "plates": [
+    1,
+    0
+   ],
+   "tower_hits": [
+    20,
+    0
+   ],
+   "crashes": [
+    [
+     {
+      "k": 13,
+      "hp": 21
+     }
+    ],
+    []
+   ],
+   "contact": [
+    null,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    null,
+    null,
+    2,
+    null,
+    2,
+    2,
+    2,
+    2,
+    2,
+    2,
+    2,
+    null,
+    2,
+    null
+   ],
+   "fronts": [
+    [
+     8,
+     8
+    ],
+    [
+     7,
+     5
+    ],
+    [
+     5,
+     1
+    ],
+    [
+     11,
+     5
+    ],
+    [
+     9,
+     3
+    ],
+    [
+     15,
+     7
+    ],
+    [
+     13,
+     5
+    ],
+    [
+     19,
+     9
+    ],
+    [
+     17,
+     5
+    ],
+    [
+     23,
+     7
+    ],
+    [
+     21,
+     8
+    ],
+    [
+     19,
+     8
+    ],
+    [
+     15,
+     2
+    ],
+    [
+     8,
+     8
+    ],
+    [
+     6,
+     5
+    ],
+    [
+     2,
+     11
+    ],
+    [
+     6,
+     9
+    ],
+    [
+     2,
+     15
+    ],
+    [
+     6,
+     13
+    ],
+    [
+     2,
+     19
+    ],
+    [
+     4,
+     17
+    ],
+    [
+     8,
+     23
+    ],
+    [
+     5,
+     19
+    ],
+    [
+     8,
+     17
+    ]
+   ]
+  },
+  "thin_always": {
+   "turns": 24,
+   "earned_A_minus_B": -2.0,
+   "farm": [
+    7.675,
+    9.675
+   ],
+   "xp": [
+    79,
+    88
+   ],
+   "plates": [
+    0,
+    0
+   ],
+   "tower_hits": [
+    10,
+    0
+   ],
+   "crashes": [
+    [
+     {
+      "k": 9,
+      "hp": 12
+     }
+    ],
+    []
+   ],
+   "contact": [
+    null,
+    0,
+    0,
+    0,
+    0,
+    0,
+    null,
+    1,
+    2,
+    null,
+    2,
+    2,
+    2,
+    2,
+    2,
+    2,
+    2,
+    null,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1
+   ],
+   "fronts": [
+    [
+     8,
+     8
+    ],
+    [
+     7,
+     5
+    ],
+    [
+     5,
+     1
+    ],
+    [
+     11,
+     5
+    ],
+    [
+     9,
+     1
+    ],
+    [
+     15,
+     3
+    ],
+    [
+     13,
+     8
+    ],
+    [
+     19,
+     3
+    ],
+    [
+     16,
+     5
+    ],
+    [
+     8,
+     8
+    ],
+    [
+     6,
+     6
+    ],
+    [
+     2,
+     12
+    ],
+    [
+     6,
+     10
+    ],
+    [
+     2,
+     16
+    ],
+    [
+     5,
+     14
+    ],
+    [
+     1,
+     20
+    ],
+    [
+     3,
+     18
+    ],
+    [
+     8,
+     17
+    ],
+    [
+     4,
+     21
+    ],
+    [
+     8,
+     17
+    ],
+    [
+     4,
+     21
+    ],
+    [
+     8,
+     17
+    ],
+    [
+     4,
+     21
+    ],
+    [
+     8,
+     17
+    ]
+   ]
+  },
+  "clear_always": {
+   "turns": 24,
+   "earned_A_minus_B": -2.875,
+   "farm": [
+    5.9,
+    8.775
+   ],
+   "xp": [
+    90,
+    79
+   ],
+   "plates": [
+    0,
+    0
+   ],
+   "tower_hits": [
+    0,
+    0
+   ],
+   "crashes": [
+    [],
+    []
+   ],
+   "contact": [
+    null,
+    0,
+    1,
+    null,
+    2,
+    2,
+    2,
+    2,
+    2,
+    2,
+    2,
+    null,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    null,
+    2,
+    2,
+    2,
+    2
+   ],
+   "fronts": [
+    [
+     8,
+     8
+    ],
+    [
+     7,
+     3
+    ],
+    [
+     5,
+     5
+    ],
+    [
+     11,
+     8
+    ],
+    [
+     7,
+     6
+    ],
+    [
+     3,
+     12
+    ],
+    [
+     7,
+     10
+    ],
+    [
+     3,
+     16
+    ],
+    [
+     6,
+     14
+    ],
+    [
+     2,
+     20
+    ],
+    [
+     4,
+     18
+    ],
+    [
+     8,
+     24
+    ],
+    [
+     3,
+     18
+    ],
+    [
+     8,
+     12
+    ],
+    [
+     4,
+     14
+    ],
+    [
+     10,
+     8
+    ],
+    [
+     7,
+     10
+    ],
+    [
+     13,
+     4
+    ],
+    [
+     11,
+     6
+    ],
+    [
+     17,
+     8
+    ],
+    [
+     13,
+     5
+    ],
+    [
+     9,
+     11
+    ],
+    [
+     13,
+     8
+    ],
+    [
+     9,
+     14
+    ]
+   ]
+  }
+ },
+ "bounce": {
+  "lines": {
+   "thin_k1_hold": {
+    "report": {
+     "crash_k": 18,
+     "crash_hp": 16,
+     "followup_crash_hp": 16,
+     "clear_turns": 13,
+     "tower_hits_during_siege": 43,
+     "at_clear": {
+      "A_front": 8,
+      "B_front": 22,
+      "B_front_cell": 3
+     },
+     "defender_in_attacker_half_after_turns": 17,
+     "bounce_crash": {
+      "after_turns": 20,
+      "hp": 22
+     }
+    },
+    "contact": [
+     null,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     1,
+     null,
+     null,
+     null,
+     2,
+     2,
+     2,
+     2,
+     2,
+     2,
+     2,
+     null,
+     2,
+     null,
+     2,
+     null,
+     1,
+     0,
+     null,
+     -1,
+     -2,
+     null,
+     null,
+     null,
+     -3,
+     -3,
+     -3,
+     -3
+    ]
+   },
+   "thin_k1_4_hold": {
+    "report": {
+     "crash_k": 15,
+     "crash_hp": 25,
+     "followup_crash_hp": 0,
+     "clear_turns": 11,
+     "tower_hits_during_siege": 27,
+     "at_clear": {
+      "A_front": 4,
+      "B_front": 16,
+      "B_front_cell": 2
+     },
+     "defender_in_attacker_half_after_turns": 16,
+     "bounce_crash": {
+      "after_turns": 18,
+      "hp": 16
+     }
+    },
+    "contact": [
+     null,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     1,
+     null,
+     2,
+     null,
+     2,
+     2,
+     2,
+     2,
+     2,
+     2,
+     2,
+     null,
+     2,
+     null,
+     2,
+     0,
+     0,
+     0,
+     null,
+     -1,
+     -2,
+     null,
+     -3,
+     -3,
+     -3,
+     -3,
+     -3,
+     -3,
+     -3,
+     -3,
+     -3,
+     -3
+    ]
+   },
+   "thin_until_crash": {
+    "report": {
+     "crash_k": 9,
+     "crash_hp": 12,
+     "followup_crash_hp": 0,
+     "clear_turns": 6,
+     "tower_hits_during_siege": 10,
+     "at_clear": {
+      "A_front": 1,
+      "B_front": 20,
+      "B_front_cell": 3
+     },
+     "defender_in_attacker_half_after_turns": 14,
+     "bounce_crash": {
+      "after_turns": 16,
+      "hp": 22
+     }
+    },
+    "contact": [
+     null,
+     0,
+     0,
+     0,
+     0,
+     0,
+     null,
+     1,
+     2,
+     null,
+     2,
+     2,
+     2,
+     2,
+     2,
+     2,
+     2,
+     null,
+     1,
+     1,
+     1,
+     0,
+     null,
+     -1,
+     -2,
+     null,
+     -3,
+     -3,
+     -3,
+     -3,
+     -3,
+     -3,
+     -3,
+     null,
+     -3,
+     null,
+     -2,
+     -1,
+     null,
+     0,
+     1,
+     null,
+     2,
+     null
+    ],
+    "trajectory": [
+     [
+      0,
+      [
+       "TN-H",
+       "HO-H"
+      ],
+      "-2:8",
+      "+2:8",
+      [
+       -2,
+       2
+      ],
+      [
+       0,
+       0
+      ],
+      [
+       0.0,
+       0.0
+      ],
+      [
+       0,
+       0
+      ],
+      [
+       0,
+       0
+      ]
+     ],
+     [
+      1,
+      [
+       "TN-H",
+       "HO-H"
+      ],
+      "+0:7 r[-4]",
+      "+0:5 r[+4]",
+      [
+       0,
+       0
+      ],
+      [
+       0,
+       0
+      ],
+      [
+       0.3375,
+       0.1125
+      ],
+      [
+       3,
+       1
+      ],
+      [
+       0,
+       0
+      ]
+     ],
+     [
+      2,
+      [
+       "TN-H",
+       "HO-H"
+      ],
+      "+0:5 r[-2]",
+      "+0:1 r[+2]",
+      [
+       0,
+       0
+      ],
+      [
+       0,
+       0
+      ],
+      [
+       0.45,
+       0.225
+      ],
+      [
+       4,
+       2
+      ],
+      [
+       0,
+       0
+      ]
+     ],
+     [
+      3,
+      [
+       "TN-H",
+       "HO-H"
+      ],
+      "+0:11 r[-4]",
+      "+0:5 r[+4]",
+      [
+       0,
+       0
+      ],
+      [
+       0,
+       0
+      ],
+      [
+       0.45,
+       0.225
+      ],
+      [
+       4,
+       2
+      ],
+      [
+       0,
+       0
+      ]
+     ],
+     [
+      4,
+      [
+       "TN-H",
+       "HO-H"
+      ],
+      "+0:9 r[-2]",
+      "+0:1 r[+2]",
+      [
+       0,
+       0
+      ],
+      [
+       0,
+       0
+      ],
+      [
+       0.45,
+       0.225
+      ],
+      [
+       4,
+       2
+      ],
+      [
+       0,
+       0
+      ]
+     ],
+     [
+      5,
+      [
+       "TN-H",
+       "HO-H"
+      ],
+      "+0:15 r[-4]",
+      "+0:3 r[+4]",
+      [
+       0,
+       0
+      ],
+      [
+       0,
+       0
+      ],
+      [
+       0.675,
+       0.225
+      ],
+      [
+       6,
+       2
+      ],
+      [
+       0,
+       0
+      ]
+     ],
+     [
+      6,
+      [
+       "TN-H",
+       "HO-H"
+      ],
+      "+0:13 r[-2]",
+      "+2:8",
+      [
+       0,
+       2
+      ],
+      [
+       0,
+       0
+      ],
+      [
+       0.3375,
+       0.0
+      ],
+      [
+       3,
+       2
+      ],
+      [
+       0,
+       0
+      ]
+     ],
+     [
+      7,
+      [
+       "TN-H",
+       "HO-H"
+      ],
+      "+1:19 r[-4]",
+      "+1:3 r[+4]",
+      [
+       1,
+       1
+      ],
+      [
+       0,
+       0
+      ],
+      [
+       0.5625,
+       0.225
+      ],
+      [
+       5,
+       2
+      ],
+      [
+       0,
+       0
+      ]
+     ],
+     [
+      8,
+      [
+       "TN-H",
+       "HO-H"
+      ],
+      "+2:16 r[-2]",
+      "+2:5",
+      [
+       2,
+       2
+      ],
+      [
+       0,
+       0
+      ],
+      [
+       0.525,
+       0.3375
+      ],
+      [
+       6,
+       3
+      ],
+      [
+       0,
+       0
+      ]
+     ],
+     [
+      9,
+      [
+       "TN-H",
+       "HO-H"
+      ],
+      "+0:8 r[-4] sg12",
+      "+4:8",
+      [
+       2,
+       2
+      ],
+      [
+       12,
+       0
+      ],
+      [
+       0.3125,
+       0.45
+      ],
+      [
+       5,
+       4
+      ],
+      [
+       0,
+       0
+      ]
+     ],
+     [
+      10,
+      [
+       "HO-H",
+       "HO-H"
+      ],
+      "+2:6 r[-2] sg9",
+      "+3:6",
+      [
+       2,
+       2
+      ],
+      [
+       0,
+       0
+      ],
+      [
+       0.125,
+       0.5625
+      ],
+      [
+       2,
+       5
+      ],
+      [
+       1,
+       0
+      ]
+     ],
+     [
+      11,
+      [
+       "HO-H",
+       "HO-H"
+      ],
+      "+2:2 r[+0,-4] sg7",
+      "+3:12",
+      [
+       2,
+       2
+      ],
+      [
+       0,
+       0
+      ],
+      [
+       0.125,
+       0.675
+      ],
+      [
+       2,
+       6
+      ],
+      [
+       2,
+       0
+      ]
+     ],
+     [
+      12,
+      [
+       "HO-H",
+       "HO-H"
+      ],
+      "+2:6 r[-2] sg5",
+      "+3:10",
+      [
+       2,
+       2
+      ],
+      [
+       0,
+       0
+      ],
+      [
+       0.125,
+       0.675
+      ],
+      [
+       2,
+       6
+      ],
+      [
+       2,
+       0
+      ]
+     ],
+     [
+      13,
+      [
+       "HO-H",
+       "HO-H"
+      ],
+      "+2:2 r[+0,-4] sg3",
+      "+3:16",
+      [
+       2,
+       2
+      ],
+      [
+       0,
+       0
+      ],
+      [
+       0.125,
+       0.675
+      ],
+      [
+       2,
+       6
+      ],
+      [
+       2,
+       0
+      ]
+     ],
+     [
+      14,
+      [
+       "HO-H",
+       "HO-H"
+      ],
+      "+2:5 r[-2] sg1",
+      "+3:14",
+      [
+       2,
+       2
+      ],
+      [
+       0,
+       0
+      ],
+      [
+       0.125,
+       0.7875
+      ],
+      [
+       2,
+       7
+      ],
+      [
+       2,
+       0
+      ]
+     ],
+     [
+      15,
+      [
+       "HO-H",
+       "HO-H"
+      ],
+      "+2:1 r[+0,-4]",
+      "+3:20",
+      [
+       2,
+       2
+      ],
+      [
+       0,
+       0
+      ],
+      [
+       0.125,
+       0.5625
+      ],
+      [
+       2,
+       5
+      ],
+      [
+       1,
+       0
+      ]
+     ],
+     [
+      16,
+      [
+       "HO-H",
+       "HO-H"
+      ],
+      "+2:3 r[-2]",
+      "+3:18",
+      [
+       2,
+       2
+      ],
+      [
+       0,
+       0
+      ],
+      [
+       0.125,
+       0.675
+      ],
+      [
+       2,
+       6
+      ],
+      [
+       0,
+       0
+      ]
+     ],
+     [
+      17,
+      [
+       "HO-H",
+       "HO-H"
+      ],
+      "+0:8 r[-4]",
+      "+2:17 r[+4]",
+      [
+       0,
+       2
+      ],
+      [
+       0,
+       0
+      ],
+      [
+       0.0,
+       0.3375
+      ],
+      [
+       1,
+       3
+      ],
+      [
+       0,
+       0
+      ]
+     ],
+     [
+      18,
+      [
+       "HO-H",
+       "HO-H"
+      ],
+      "+1:3 r[-2]",
+      "+1:23",
+      [
+       1,
+       1
+      ],
+      [
+       0,
+       0
+      ],
+      [
+       0.225,
+       0.5625
+      ],
+      [
+       2,
+       5
+      ],
+      [
+       0,
+       0
+      ]
+     ],
+     [
+      19,
+      [
+       "HO-H",
+       "HO-H"
+      ],
+      "+1:7 r[-4]",
+      "+1:21 r[+4]",
+      [
+       1,
+       1
+      ],
+      [
+       0,
+       0
+      ],
+      [
+       0.225,
+       0.45
+      ],
+      [
+       2,
+       4
+      ],
+      [
+       0,
+       0
+      ]
+     ],
+     [
+      20,
+      [
+       "HO-H",
+       "HO-H"
+      ],
+      "+1:2 r[-2]",
+      "+1:19 r[+2]",
+      [
+       1,
+       1
+      ],
+      [
+       0,
+       0
+      ],
+      [
+       0.225,
+       0.5625
+      ],
+      [
+       2,
+       5
+      ],
+      [
+       0,
+       0
+      ]
+     ],
+     [
+      21,
+      [
+       "HO-H",
+       "HO-H"
+      ],
+      "+0:5 r[-4]",
+      "+0:17 r[+1,+4]",
+      [
+       0,
+       0
+      ],
+      [
+       0,
+       0
+      ],
+      [
+       0.225,
+       0.5625
+      ],
+      [
+       2,
+       5
+      ],
+      [
+       0,
+       0
+      ]
+     ],
+     [
+      22,
+      [
+       "HO-H",
+       "HO-H"
+      ],
+      "-2:8",
+      "+0:23 r[+2]",
+      [
+       -2,
+       0
+      ],
+      [
+       0,
+       0
+      ],
+      [
+       0.0,
+       0.5625
+      ],
+      [
+       2,
+       5
+      ],
+      [
+       0,
+       0
+      ]
+     ],
+     [
+      23,
+      [
+       "HO-H",
+       "HO-H"
+      ],
+      "-1:3 r[-4]",
+      "-1:21 r[+0,+4]",
+      [
+       -1,
+       -1
+      ],
+      [
+       0,
+       0
+      ],
+      [
+       0.225,
+       0.5625
+      ],
+      [
+       2,
+       5
+      ],
+      [
+       0,
+       0
+      ]
+     ],
+     [
+      24,
+      [
+       "HO-H",
+       "HO-H"
+      ],
+      "-2:5",
+      "-2:18 r[-1,+2]",
+      [
+       -2,
+       -2
+      ],
+      [
+       0,
+       0
+      ],
+      [
+       0.3375,
+       0.525
+      ],
+      [
+       3,
+       6
+      ],
+      [
+       0,
+       0
+      ]
+     ],
+     [
+      25,
+      [
+       "HO-H",
+       "HO-H"
+      ],
+      "-4:8",
+      "+0:8 r[+4] sg22",
+      [
+       -2,
+       -2
+      ],
+      [
+       0,
+       22
+      ],
+      [
+       0.45,
+       0.3125
+      ],
+      [
+       4,
+       5
+      ],
+      [
+       0,
+       0
+      ]
+     ],
+     [
+      26,
+      [
+       "HO-H",
+       "HO-H"
+      ],
+      "-3:5",
+      "-2:6 r[+2] sg19",
+      [
+       -2,
+       -2
+      ],
+      [
+       0,
+       0
+      ],
+      [
+       0.5625,
+       0.1875
+      ],
+      [
+       5,
+       3
+      ],
+      [
+       0,
+       2
+      ]
+     ],
+     [
+      27,
+      [
+       "HO-H",
+       "HO-H"
+      ],
+      "-3:11",
+      "-2:2 r[+0,+4] sg17",
+      [
+       -2,
+       -2
+      ],
+      [
+       0,
+       0
+      ],
+      [
+       0.675,
+       0.125
+      ],
+      [
+       6,
+       2
+      ],
+      [
+       0,
+       4
+      ]
+     ],
+     [
+      28,
+      [
+       "HO-H",
+       "HO-H"
+      ],
+      "-3:9",
+      "-2:6 r[+2] sg15",
+      [
+       -2,
+       -2
+      ],
+      [
+       0,
+       0
+      ],
+      [
+       0.675,
+       0.125
+      ],
+      [
+       6,
+       2
+      ],
+      [
+       0,
+       4
+      ]
+     ],
+     [
+      29,
+      [
+       "HO-H",
+       "HO-H"
+      ],
+      "-3:15",
+      "-2:2 r[+0,+4] sg13",
+      [
+       -2,
+       -2
+      ],
+      [
+       0,
+       0
+      ],
+      [
+       0.675,
+       0.125
+      ],
+      [
+       6,
+       2
+      ],
+      [
+       0,
+       2
+      ]
+     ],
+     [
+      30,
+      [
+       "HO-H",
+       "HO-H"
+      ],
+      "-3:13",
+      "-2:6 r[+2] sg11",
+      [
+       -2,
+       -2
+      ],
+      [
+       0,
+       0
+      ],
+      [
+       0.675,
+       0.125
+      ],
+      [
+       6,
+       2
+      ],
+      [
+       0,
+       2
+      ]
+     ],
+     [
+      31,
+      [
+       "HO-H",
+       "HO-H"
+      ],
+      "-3:19",
+      "-2:2 r[+0,+4] sg9",
+      [
+       -2,
+       -2
+      ],
+      [
+       0,
+       0
+      ],
+      [
+       0.675,
+       0.125
+      ],
+      [
+       6,
+       2
+      ],
+      [
+       0,
+       2
+      ]
+     ],
+     [
+      32,
+      [
+       "HO-H",
+       "HO-H"
+      ],
+      "-3:17",
+      "-2:4 r[+2] sg7",
+      [
+       -2,
+       -2
+      ],
+      [
+       0,
+       0
+      ],
+      [
+       0.9,
+       0.125
+      ],
+      [
+       8,
+       2
+      ],
+      [
+       0,
+       2
+      ]
+     ],
+     [
+      33,
+      [
+       "HO-H",
+       "HO-H"
+      ],
+      "-3:23",
+      "+0:8 r[+4] sg5",
+      [
+       -2,
+       0
+      ],
+      [
+       0,
+       0
+      ],
+      [
+       0.675,
+       0.0
+      ],
+      [
+       6,
+       2
+      ],
+      [
+       0,
+       2
+      ]
+     ],
+     [
+      34,
+      [
+       "HO-H",
+       "HO-H"
+      ],
+      "-3:21",
+      "-2:5 r[+2] sg1",
+      [
+       -2,
+       -2
+      ],
+      [
+       0,
+       0
+      ],
+      [
+       0.7875,
+       0.125
+      ],
+      [
+       7,
+       2
+      ],
+      [
+       0,
+       1
+      ]
+     ],
+     [
+      35,
+      [
+       "HO-H",
+       "HO-H"
+      ],
+      "-3:19 r[-4]",
+      "+0:8 r[+4]",
+      [
+       -2,
+       0
+      ],
+      [
+       0,
+       0
+      ],
+      [
+       0.675,
+       0.0
+      ],
+      [
+       6,
+       2
+      ],
+      [
+       0,
+       1
+      ]
+     ],
+     [
+      36,
+      [
+       "HO-H",
+       "HO-H"
+      ],
+      "-2:17 r[-3]",
+      "-1:2 r[+2]",
+      [
+       -2,
+       -1
+      ],
+      [
+       0,
+       0
+      ],
+      [
+       0.675,
+       0.125
+      ],
+      [
+       6,
+       2
+      ],
+      [
+       0,
+       0
+      ]
+     ],
+     [
+      37,
+      [
+       "HO-H",
+       "HO-H"
+      ],
+      "-1:23 r[-4]",
+      "+0:5 r[+4]",
+      [
+       -1,
+       0
+      ],
+      [
+       0,
+       0
+      ],
+      [
+       0.5625,
+       0.1125
+      ],
+      [
+       5,
+       2
+      ],
+      [
+       0,
+       0
+      ]
+     ],
+     [
+      38,
+      [
+       "HO-H",
+       "HO-H"
+      ],
+      "-1:21 r[-2]",
+      "+2:8",
+      [
+       -1,
+       2
+      ],
+      [
+       0,
+       0
+      ],
+      [
+       0.5625,
+       0.0
+      ],
+      [
+       5,
+       2
+      ],
+      [
+       0,
+       0
+      ]
+     ],
+     [
+      39,
+      [
+       "HO-H",
+       "HO-H"
+      ],
+      "+0:19 r[-1,-4]",
+      "+1:2 r[+4]",
+      [
+       0,
+       1
+      ],
+      [
+       0,
+       0
+      ],
+      [
+       0.675,
+       0.225
+      ],
+      [
+       6,
+       2
+      ],
+      [
+       0,
+       0
+      ]
+     ],
+     [
+      40,
+      [
+       "HO-H",
+       "HO-H"
+      ],
+      "+1:17 r[+0,-2]",
+      "+2:5",
+      [
+       1,
+       2
+      ],
+      [
+       0,
+       0
+      ],
+      [
+       0.4125,
+       0.1125
+      ],
+      [
+       5,
+       2
+      ],
+      [
+       0,
+       0
+      ]
+     ],
+     [
+      41,
+      [
+       "HO-H",
+       "HO-H"
+      ],
+      "+1:23 r[+0,-4]",
+      "+4:8",
+      [
+       1,
+       2
+      ],
+      [
+       0,
+       0
+      ],
+      [
+       0.3125,
+       0.225
+      ],
+      [
+       5,
+       2
+      ],
+      [
+       0,
+       0
+      ]
+     ],
+     [
+      42,
+      [
+       "HO-H",
+       "HO-H"
+      ],
+      "+2:19 r[+1,-2]",
+      "+3:2",
+      [
+       2,
+       2
+      ],
+      [
+       0,
+       0
+      ],
+      [
+       0.375,
+       0.45
+      ],
+      [
+       6,
+       4
+      ],
+      [
+       0,
+       0
+      ]
+     ],
+     [
+      43,
+      [
+       "HO-H",
+       "HO-H"
+      ],
+      "+0:8 r[-4] sg24",
+      "+4:8",
+      [
+       2,
+       2
+      ],
+      [
+       25,
+       0
+      ],
+      [
+       0.125,
+       0.3375
+      ],
+      [
+       2,
+       3
+      ],
+      [
+       2,
+       0
+      ]
+     ]
+    ]
+   },
+   "thin_k1_3_clear_k8": {
+    "report": {
+     "crash_k": 11,
+     "crash_hp": 19,
+     "followup_crash_hp": 0,
+     "clear_turns": 9,
+     "tower_hits_during_siege": 18,
+     "at_clear": {
+      "A_front": 5,
+      "B_front": 21,
+      "B_front_cell": 2
+     },
+     "defender_in_attacker_half_after_turns": 15,
+     "bounce_crash": {
+      "after_turns": 18,
+      "hp": 25
+     }
+    },
+    "contact": [
+     null,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     null,
+     2,
+     null,
+     2,
+     2,
+     2,
+     2,
+     2,
+     2,
+     2,
+     null,
+     2,
+     null,
+     1,
+     0,
+     0,
+     0,
+     -2,
+     null,
+     -3,
+     null,
+     -3,
+     -3,
+     -3,
+     -3,
+     -3,
+     -3,
+     -3,
+     null,
+     -3,
+     null,
+     -2,
+     -1,
+     -1,
+     -1
+    ]
+   }
+  },
+  "tower_variants": {
+   "siege2_contested1": {
+    "thin_until_crash": {
+     "crash_k": 9,
+     "crash_hp": 12,
+     "followup_crash_hp": 0,
+     "clear_turns": 3,
+     "tower_hits_during_siege": 5,
+     "at_clear": {
+      "A_front": 6,
+      "B_front": 10,
+      "B_front_cell": 3
+     },
+     "defender_in_attacker_half_after_turns": 14,
+     "bounce_crash": {
+      "after_turns": 16,
+      "hp": 22
+     }
+    },
+    "thin_k1_4_hold": {
+     "crash_k": 15,
+     "crash_hp": 25,
+     "followup_crash_hp": 0,
+     "clear_turns": 6,
+     "tower_hits_during_siege": 15,
+     "at_clear": {
+      "A_front": 2,
+      "B_front": 19,
+      "B_front_cell": 3
+     },
+     "defender_in_attacker_half_after_turns": 14,
+     "bounce_crash": {
+      "after_turns": 18,
+      "hp": 25
+     }
+    }
+   },
+   "siege2_contested2": {
+    "thin_until_crash": {
+     "crash_k": 11,
+     "crash_hp": 5,
+     "followup_crash_hp": 0,
+     "clear_turns": 1,
+     "tower_hits_during_siege": 1,
+     "at_clear": {
+      "A_front": 5,
+      "B_front": 6,
+      "B_front_cell": 3
+     },
+     "defender_in_attacker_half_after_turns": 19,
+     "bounce_crash": {
+      "after_turns": 20,
+      "hp": 16
+     }
+    },
+    "thin_k1_4_hold": {
+     "crash_k": 15,
+     "crash_hp": 22,
+     "followup_crash_hp": 0,
+     "clear_turns": 5,
+     "tower_hits_during_siege": 8,
+     "at_clear": {
+      "A_front": 5,
+      "B_front": 13,
+      "B_front_cell": 2
+     },
+     "defender_in_attacker_half_after_turns": 16,
+     "bounce_crash": {
+      "after_turns": 18,
+      "hp": 21
+     }
+    }
+   }
+  }
+ },
+ "freeze": {
+  "setup": {
+   "turns": 30,
+   "earned_A_minus_B": -2.0625,
+   "farm": [
+    10.9125,
+    12.975
+   ],
+   "xp": [
+    99,
+    118
+   ],
+   "plates": [
+    0,
+    0
+   ],
+   "tower_hits": [
+    0,
+    0
+   ],
+   "crashes": [
+    [],
+    []
+   ],
+   "contact": [
+    null,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    null,
+    -1,
+    -2,
+    -2
+   ],
+   "fronts": [
+    [
+     8,
+     8
+    ],
+    [
+     5,
+     7
+    ],
+    [
+     3,
+     5
+    ],
+    [
+     9,
+     11
+    ],
+    [
+     7,
+     9
+    ],
+    [
+     11,
+     15
+    ],
+    [
+     9,
+     13
+    ],
+    [
+     13,
+     18
+    ],
+    [
+     9,
+     16
+    ],
+    [
+     12,
+     21
+    ],
+    [
+     8,
+     17
+    ],
+    [
+     11,
+     20
+    ],
+    [
+     7,
+     16
+    ],
+    [
+     10,
+     20
+    ],
+    [
+     6,
+     16
+    ],
+    [
+     9,
+     20
+    ],
+    [
+     5,
+     16
+    ],
+    [
+     8,
+     20
+    ],
+    [
+     4,
+     16
+    ],
+    [
+     7,
+     20
+    ],
+    [
+     3,
+     16
+    ],
+    [
+     6,
+     20
+    ],
+    [
+     2,
+     16
+    ],
+    [
+     5,
+     20
+    ],
+    [
+     1,
+     16
+    ],
+    [
+     4,
+     20
+    ],
+    [
+     8,
+     18
+    ],
+    [
+     3,
+     24
+    ],
+    [
+     6,
+     19
+    ],
+    [
+     2,
+     13
+    ]
+   ]
+  },
+  "setup_trajectory": [
+   [
+    22,
+    [
+     "TN-H",
+     "HO-H"
+    ],
+    "+0:2 r[-2]",
+    "+0:16 r[+2]",
+    [
+     0,
+     0
+    ],
+    [
+     0,
+     0
+    ],
+    [
+     0.45,
+     0.45
+    ],
+    [
+     4,
+     4
+    ],
+    [
+     0,
+     0
+    ]
+   ],
+   [
+    23,
+    [
+     "TN-H",
+     "HO-H"
+    ],
+    "+0:5 r[-4]",
+    "+0:20 r[+4]",
+    [
+     0,
+     0
+    ],
+    [
+     0,
+     0
+    ],
+    [
+     0.45,
+     0.5625
+    ],
+    [
+     4,
+     5
+    ],
+    [
+     0,
+     0
+    ]
+   ],
+   [
+    24,
+    [
+     "TN-H",
+     "HO-H"
+    ],
+    "+0:1 r[-2]",
+    "+0:16 r[+2]",
+    [
+     0,
+     0
+    ],
+    [
+     0,
+     0
+    ],
+    [
+     0.45,
+     0.45
+    ],
+    [
+     4,
+     4
+    ],
+    [
+     0,
+     0
+    ]
+   ],
+   [
+    25,
+    [
+     "TN-H",
+     "HO-H"
+    ],
+    "+0:4 r[-4]",
+    "+0:20 r[+4]",
+    [
+     0,
+     0
+    ],
+    [
+     0,
+     0
+    ],
+    [
+     0.45,
+     0.5625
+    ],
+    [
+     4,
+     5
+    ],
+    [
+     0,
+     0
+    ]
+   ],
+   [
+    26,
+    [
+     "TN-H",
+     "HO-H"
+    ],
+    "-2:8",
+    "+0:18 r[+2]",
+    [
+     -2,
+     0
+    ],
+    [
+     0,
+     0
+    ],
+    [
+     0.0,
+     0.45
+    ],
+    [
+     2,
+     4
+    ],
+    [
+     0,
+     0
+    ]
+   ],
+   [
+    27,
+    [
+     "HO-H",
+     "HO-H"
+    ],
+    "-1:3 r[-4]",
+    "-1:24 r[+4]",
+    [
+     -1,
+     -1
+    ],
+    [
+     0,
+     0
+    ],
+    [
+     0.225,
+     0.5625
+    ],
+    [
+     2,
+     5
+    ],
+    [
+     0,
+     0
+    ]
+   ],
+   [
+    28,
+    [
+     "TN-H",
+     "HO-H"
+    ],
+    "-2:6",
+    "-2:19 r[+2]",
+    [
+     -2,
+     -2
+    ],
+    [
+     0,
+     0
+    ],
+    [
+     0.5625,
+     0.4625
+    ],
+    [
+     5,
+     5
+    ],
+    [
+     0,
+     0
+    ]
+   ],
+   [
+    29,
+    [
+     "TN-H",
+     "HO-H"
+    ],
+    "-2:2 r[-4]",
+    "-2:13 r[+0,+4]",
+    [
+     -2,
+     -2
+    ],
+    [
+     0,
+     0
+    ],
+    [
+     0.675,
+     0.25
+    ],
+    [
+     6,
+     4
+    ],
+    [
+     0,
+     0
+    ]
+   ]
+  ],
+  "state_k30": [
+   "-2:2 r[-4]",
+   "-2:13 r[+0,+4]"
+  ],
+  "breaks": {
+   "hold": {
+    "turns": 16,
+    "earned_A_minus_B": 6.8625,
+    "farm": [
+     9.3375,
+     2.475
+    ],
+    "xp": [
+     83,
+     36
+    ],
+    "plates": [
+     0,
+     0
+    ],
+    "tower_hits": [
+     0,
+     0
+    ],
+    "crashes": [
+     [],
+     []
+    ],
+    "contact": [
+     -2,
+     -2,
+     -2,
+     -2,
+     -2,
+     -2,
+     -2,
+     -2,
+     -2,
+     -2,
+     -2,
+     -1,
+     -1,
+     -1,
+     null,
+     1
+    ],
+    "fronts": [
+     [
+      6,
+      15
+     ],
+     [
+      4,
+      9
+     ],
+     [
+      9,
+      13
+     ],
+     [
+      7,
+      9
+     ],
+     [
+      12,
+      13
+     ],
+     [
+      10,
+      9
+     ],
+     [
+      15,
+      11
+     ],
+     [
+      13,
+      7
+     ],
+     [
+      19,
+      9
+     ],
+     [
+      17,
+      3
+     ],
+     [
+      23,
+      3
+     ],
+     [
+      21,
+      6
+     ],
+     [
+      19,
+      1
+     ],
+     [
+      17,
+      3
+     ],
+     [
+      24,
+      8
+     ],
+     [
+      22,
+      2
+     ]
+    ],
+    "held_turns": 14
+   },
+   "thin": {
+    "turns": 16,
+    "earned_A_minus_B": 4.4625,
+    "farm": [
+     8.6625,
+     4.2
+    ],
+    "xp": [
+     77,
+     49
+    ],
+    "plates": [
+     0,
+     0
+    ],
+    "tower_hits": [
+     0,
+     7
+    ],
+    "crashes": [
+     [],
+     [
+      {
+       "k": 31,
+       "hp": 9
+      }
+     ]
+    ],
+    "contact": [
+     -2,
+     null,
+     -3,
+     -3,
+     -3,
+     -3,
+     -3,
+     -3,
+     -3,
+     null,
+     -1,
+     -1,
+     -1,
+     -1,
+     -1,
+     -1
+    ],
+    "fronts": [
+     [
+      4,
+      15
+     ],
+     [
+      8,
+      8
+     ],
+     [
+      6,
+      6
+     ],
+     [
+      12,
+      2
+     ],
+     [
+      10,
+      6
+     ],
+     [
+      16,
+      2
+     ],
+     [
+      14,
+      5
+     ],
+     [
+      20,
+      1
+     ],
+     [
+      18,
+      3
+     ],
+     [
+      17,
+      8
+     ],
+     [
+      21,
+      4
+     ],
+     [
+      17,
+      8
+     ],
+     [
+      21,
+      4
+     ],
+     [
+      17,
+      8
+     ],
+     [
+      21,
+      4
+     ],
+     [
+      17,
+      8
+     ]
+    ],
+    "held_turns": 1
+   },
+   "clear": {
+    "turns": 16,
+    "earned_A_minus_B": 2.2125,
+    "farm": [
+     7.875,
+     5.6625
+    ],
+    "xp": [
+     70,
+     62
+    ],
+    "plates": [
+     0,
+     0
+    ],
+    "tower_hits": [
+     0,
+     9
+    ],
+    "crashes": [
+     [],
+     [
+      {
+       "k": 31,
+       "hp": 12
+      }
+     ]
+    ],
+    "contact": [
+     -2,
+     null,
+     -3,
+     -3,
+     -3,
+     -3,
+     -3,
+     -3,
+     -3,
+     null,
+     -1,
+     -1,
+     -1,
+     -1,
+     -1,
+     -1
+    ],
+    "fronts": [
+     [
+      2,
+      15
+     ],
+     [
+      8,
+      8
+     ],
+     [
+      6,
+      6
+     ],
+     [
+      12,
+      2
+     ],
+     [
+      10,
+      6
+     ],
+     [
+      16,
+      2
+     ],
+     [
+      14,
+      5
+     ],
+     [
+      20,
+      1
+     ],
+     [
+      18,
+      3
+     ],
+     [
+      17,
+      8
+     ],
+     [
+      19,
+      4
+     ],
+     [
+      13,
+      8
+     ],
+     [
+      15,
+      5
+     ],
+     [
+      9,
+      11
+     ],
+     [
+      11,
+      9
+     ],
+     [
+      4,
+      15
+     ]
+    ],
+    "held_turns": 1
+   }
+  },
+  "uncontrolled_from_k30": {
+   "turns": 30,
+   "earned_A_minus_B": 7.925,
+   "farm": [
+    14.875,
+    6.95
+   ],
+   "xp": [
+    138,
+    96
+   ],
+   "plates": [
+    0,
+    0
+   ],
+   "tower_hits": [
+    6,
+    0
+   ],
+   "crashes": [
+    [
+     {
+      "k": 57,
+      "hp": 21
+     }
+    ],
+    []
+   ],
+   "contact": [
+    -2,
+    -2,
+    -2,
+    -2,
+    -2,
+    -2,
+    -2,
+    -2,
+    -2,
+    -2,
+    -2,
+    -2,
+    -2,
+    -2,
+    -2,
+    -2,
+    -2,
+    -2,
+    -2,
+    -2,
+    -2,
+    null,
+    -1,
+    0,
+    null,
+    1,
+    2,
+    null,
+    2,
+    2
+   ],
+   "fronts": [
+    [
+     6,
+     17
+    ],
+    [
+     3,
+     13
+    ],
+    [
+     7,
+     17
+    ],
+    [
+     4,
+     13
+    ],
+    [
+     8,
+     17
+    ],
+    [
+     5,
+     13
+    ],
+    [
+     9,
+     17
+    ],
+    [
+     6,
+     13
+    ],
+    [
+     10,
+     17
+    ],
+    [
+     7,
+     13
+    ],
+    [
+     11,
+     17
+    ],
+    [
+     8,
+     13
+    ],
+    [
+     12,
+     16
+    ],
+    [
+     9,
+     12
+    ],
+    [
+     13,
+     15
+    ],
+    [
+     11,
+     11
+    ],
+    [
+     15,
+     13
+    ],
+    [
+     13,
+     9
+    ],
+    [
+     18,
+     11
+    ],
+    [
+     16,
+     5
+    ],
+    [
+     22,
+     6
+    ],
+    [
+     20,
+     8
+    ],
+    [
+     18,
+     3
+    ],
+    [
+     24,
+     5
+    ],
+    [
+     22,
+     8
+    ],
+    [
+     20,
+     3
+    ],
+    [
+     17,
+     5
+    ],
+    [
+     8,
+     8
+    ],
+    [
+     6,
+     5
+    ],
+    [
+     2,
+     11
+    ]
+   ],
+   "held_turns": 21
+  },
+  "band_sweep": {
+   "2": {
+    "turns_contact_at_or_behind_-1": 0,
+    "crashes": [
+     [],
+     []
+    ],
+    "farm": [
+     20.475,
+     20.475
+    ]
+   },
+   "4": {
+    "turns_contact_at_or_behind_-1": 0,
+    "crashes": [
+     [],
+     []
+    ],
+    "farm": [
+     20.475,
+     20.925
+    ]
+   },
+   "6": {
+    "turns_contact_at_or_behind_-1": 0,
+    "crashes": [
+     [],
+     []
+    ],
+    "farm": [
+     20.5875,
+     21.15
+    ]
+   },
+   "8": {
+    "turns_contact_at_or_behind_-1": 17,
+    "crashes": [
+     [
+      {
+       "k": 47,
+       "hp": 15
+      }
+     ],
+     []
+    ],
+    "farm": [
+     21.2875,
+     17.5875
+    ]
+   },
+   "10": {
+    "turns_contact_at_or_behind_-1": 19,
+    "crashes": [
+     [
+      {
+       "k": 43,
+       "hp": 21
+      }
+     ],
+     []
+    ],
+    "farm": [
+     19.9875,
+     17.525
+    ]
+   }
+  }
+ },
+ "recall": {
+  "own_state": {
+   "neutral_k12": {
+    "recall_k": 13,
+    "back_k": 15,
+    "missed_gold": 1.15,
+    "missed_xp": 8,
+    "cost_A_minus_B": 1.15,
+    "lane_at_return": [
+     "+0:14 r[-2]",
+     "+0:14 r[+2]"
+    ],
+    "lane_at_return_if_stayed": [
+     "+0:14 r[-2]",
+     "+0:14 r[+2]"
+    ],
+    "crashes_recall": [
+     [],
+     []
+    ],
+    "crashes_stay": [
+     [],
+     []
+    ]
+   },
+   "after_small_crash": {
+    "recall_k": 12,
+    "back_k": 14,
+    "missed_gold": 0.625,
+    "missed_xp": 6,
+    "cost_A_minus_B": 0.625,
+    "lane_at_return": [
+     "+2:2 r[+0,-4] sg3",
+     "+3:16"
+    ],
+    "lane_at_return_if_stayed": [
+     "+2:2 r[+0,-4] sg3",
+     "+3:16"
+    ],
+    "crashes_recall": [
+     [
+      {
+       "k": 9,
+       "hp": 12
+      }
+     ],
+     [
+      {
+       "k": 25,
+       "hp": 22
+      }
+     ]
+    ],
+    "crashes_stay": [
+     [
+      {
+       "k": 9,
+       "hp": 12
+      }
+     ],
+     [
+      {
+       "k": 25,
+       "hp": 22
+      }
+     ]
+    ]
+   },
+   "after_large_crash": {
+    "recall_k": 18,
+    "back_k": 20,
+    "missed_gold": 0.75,
+    "missed_xp": 6,
+    "cost_A_minus_B": 0.75,
+    "lane_at_return": [
+     "+2:2 r[+0,-4] sg15",
+     "+3:14"
+    ],
+    "lane_at_return_if_stayed": [
+     "+2:2 r[+0,-4] sg15",
+     "+3:14"
+    ],
+    "crashes_recall": [
+     [
+      {
+       "k": 15,
+       "hp": 25
+      }
+     ],
+     [
+      {
+       "k": 33,
+       "hp": 16
+      }
+     ]
+    ],
+    "crashes_stay": [
+     [
+      {
+       "k": 15,
+       "hp": 25
+      }
+     ],
+     [
+      {
+       "k": 33,
+       "hp": 16
+      }
+     ]
+    ]
+   },
+   "after_failed_push": {
+    "recall_k": 10,
+    "back_k": 12,
+    "missed_gold": 0.5,
+    "missed_xp": 6,
+    "cost_A_minus_B": 0.5,
+    "lane_at_return": [
+     "+0:8 r[-4]",
+     "+3:24"
+    ],
+    "lane_at_return_if_stayed": [
+     "+0:8 r[-4]",
+     "+3:24"
+    ],
+    "crashes_recall": [
+     [
+      {
+       "k": 39,
+       "hp": 16
+      }
+     ],
+     [
+      {
+       "k": 21,
+       "hp": 26
+      }
+     ]
+    ],
+    "crashes_stay": [
+     [
+      {
+       "k": 39,
+       "hp": 16
+      }
+     ],
+     [
+      {
+       "k": 21,
+       "hp": 26
+      }
+     ]
+    ]
+   }
+  },
+  "enemy_crash_k15": {
+   "recall_from_k6": {
+    "recall_k": 7,
+    "back_k": 9,
+    "missed_gold": 0.575,
+    "missed_xp": 4,
+    "cost_A_minus_B": 0.575,
+    "lane_at_return": [
+     "+0:3 r[-2]",
+     "+0:17 r[+2]"
+    ],
+    "lane_at_return_if_stayed": [
+     "+0:3 r[-2]",
+     "+0:17 r[+2]"
+    ],
+    "crashes_recall": [
+     [
+      {
+       "k": 33,
+       "hp": 16
+      }
+     ],
+     [
+      {
+       "k": 15,
+       "hp": 25
+      }
+     ]
+    ],
+    "crashes_stay": [
+     [
+      {
+       "k": 33,
+       "hp": 16
+      }
+     ],
+     [
+      {
+       "k": 15,
+       "hp": 25
+      }
+     ]
+    ]
+   },
+   "recall_from_k11": {
+    "recall_k": 12,
+    "back_k": 14,
+    "missed_gold": 0.4625,
+    "missed_xp": 4,
+    "cost_A_minus_B": 0.4625,
+    "lane_at_return": [
+     "-4:8",
+     "-1:23 r[+0,+4]"
+    ],
+    "lane_at_return_if_stayed": [
+     "-4:8",
+     "-1:23 r[+0,+4]"
+    ],
+    "crashes_recall": [
+     [
+      {
+       "k": 33,
+       "hp": 16
+      }
+     ],
+     [
+      {
+       "k": 15,
+       "hp": 25
+      }
+     ]
+    ],
+    "crashes_stay": [
+     [
+      {
+       "k": 33,
+       "hp": 16
+      }
+     ],
+     [
+      {
+       "k": 15,
+       "hp": 25
+      }
+     ]
+    ]
+   },
+   "recall_from_k13": {
+    "recall_k": 13,
+    "back_k": 15,
+    "missed_gold": 0.675,
+    "missed_xp": 6,
+    "cost_A_minus_B": 0.675,
+    "lane_at_return": [
+     "-3:2",
+     "-2:19 r[-1,+2]"
+    ],
+    "lane_at_return_if_stayed": [
+     "-3:2",
+     "-2:19 r[-1,+2]"
+    ],
+    "crashes_recall": [
+     [
+      {
+       "k": 33,
+       "hp": 16
+      }
+     ],
+     [
+      {
+       "k": 15,
+       "hp": 25
+      }
+     ]
+    ],
+    "crashes_stay": [
+     [
+      {
+       "k": 33,
+       "hp": 16
+      }
+     ],
+     [
+      {
+       "k": 15,
+       "hp": 25
+      }
+     ]
+    ]
+   },
+   "recall_from_k15": {
+    "recall_k": 15,
+    "back_k": 17,
+    "missed_gold": 0.9,
+    "missed_xp": 8,
+    "cost_A_minus_B": 0.9,
+    "lane_at_return": [
+     "-3:4",
+     "-2:6 r[+2] sg21"
+    ],
+    "lane_at_return_if_stayed": [
+     "-3:4",
+     "-2:6 r[+2] sg21"
+    ],
+    "crashes_recall": [
+     [
+      {
+       "k": 33,
+       "hp": 16
+      }
+     ],
+     [
+      {
+       "k": 15,
+       "hp": 25
+      }
+     ]
+    ],
+    "crashes_stay": [
+     [
+      {
+       "k": 33,
+       "hp": 16
+      }
+     ],
+     [
+      {
+       "k": 15,
+       "hp": 25
+      }
+     ]
+    ]
+   },
+   "recall_from_k17": {
+    "recall_k": 17,
+    "back_k": 19,
+    "missed_gold": 1.35,
+    "missed_xp": 12,
+    "cost_A_minus_B": 1.35,
+    "lane_at_return": [
+     "-3:8",
+     "-2:6 r[+2] sg17"
+    ],
+    "lane_at_return_if_stayed": [
+     "-3:8",
+     "-2:6 r[+2] sg17"
+    ],
+    "crashes_recall": [
+     [
+      {
+       "k": 33,
+       "hp": 16
+      }
+     ],
+     [
+      {
+       "k": 15,
+       "hp": 25
+      }
+     ]
+    ],
+    "crashes_stay": [
+     [
+      {
+       "k": 33,
+       "hp": 16
+      }
+     ],
+     [
+      {
+       "k": 15,
+       "hp": 25
+      }
+     ]
+    ]
+   },
+   "recall_from_k20": {
+    "recall_k": 20,
+    "back_k": 22,
+    "missed_gold": 1.35,
+    "missed_xp": 12,
+    "cost_A_minus_B": 1.35,
+    "lane_at_return": [
+     "-3:18",
+     "-2:2 r[+0,+4] sg11"
+    ],
+    "lane_at_return_if_stayed": [
+     "-3:18",
+     "-2:2 r[+0,+4] sg11"
+    ],
+    "crashes_recall": [
+     [
+      {
+       "k": 33,
+       "hp": 16
+      }
+     ],
+     [
+      {
+       "k": 15,
+       "hp": 25
+      }
+     ]
+    ],
+    "crashes_stay": [
+     [
+      {
+       "k": 33,
+       "hp": 16
+      }
+     ],
+     [
+      {
+       "k": 15,
+       "hp": 25
+      }
+     ]
+    ]
+   }
+  }
+ },
+ "reach": {
+  "thin_hold": {
+   "connected": [
+    false,
+    false
+   ],
+   "reach_A": 1,
+   "mode_A": "farm",
+   "champion_hp_on_B": 2,
+   "B_front": 15,
+   "farm_A": 0.675
+  },
+  "thin_trade_connected": {
+   "connected": [
+    true,
+    true
+   ],
+   "reach_A": -1000000,
+   "mode_A": "trading",
+   "champion_hp_on_B": 0,
+   "B_front": 17,
+   "farm_A": 0.225
+  },
+  "thin_safe": {
+   "connected": [
+    false,
+    false
+   ],
+   "reach_A": -1,
+   "mode_A": "safe",
+   "champion_hp_on_B": 0,
+   "B_front": 17,
+   "farm_A": 0.2
+  },
+  "clear_hold": {
+   "connected": [
+    false,
+    false
+   ],
+   "reach_A": 1,
+   "mode_A": "farm",
+   "champion_hp_on_B": 4,
+   "B_front": 13,
+   "farm_A": 0.9
+  },
+  "clear_trade_connected": {
+   "connected": [
+    true,
+    true
+   ],
+   "reach_A": -1000000,
+   "mode_A": "trading",
+   "champion_hp_on_B": 0,
+   "B_front": 17,
+   "farm_A": 0.225
+  },
+  "hold_hold": {
+   "connected": [
+    false,
+    false
+   ],
+   "reach_A": 1,
+   "mode_A": "farm",
+   "champion_hp_on_B": 0,
+   "B_front": 17,
+   "farm_A": 0.45
+  }
+ },
+ "scripted": {
+  "slow_pusher_vs_hold_farmer": {
+   "reward_A_sum": -2.2125,
+   "crashes": [
+    4,
+    2
+   ]
+  },
+  "crasher_vs_hold_farmer": {
+   "reward_A_sum": -0.875,
+   "crashes": [
+    2,
+    2
+   ]
+  },
+  "natural_freezer_vs_slow_pusher": {
+   "reward_A_sum": -5.225,
+   "crashes": [
+    0,
+    1
+   ]
+  },
+  "clearer_vs_thinner": {
+   "reward_A_sum": -17.25,
+   "crashes": [
+    0,
+    0
+   ]
+  },
+  "crash_recaller_vs_natural_freezer": {
+   "reward_A_sum": -1.7125,
+   "crashes": [
+    1,
+    0
+   ]
+  },
+  "trading_pusher_vs_hold_farmer": {
+   "reward_A_sum": -9.0937,
+   "crashes": [
+    3,
+    3
+   ]
+  }
+ },
+ "budget": {
+  "turns": 2547,
+  "wall_s": 0.56
+ }
+}
