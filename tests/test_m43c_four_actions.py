@@ -1,7 +1,8 @@
 """M4.3c four-action wave management (docs/m4/m4_3c_four_action_wave_redesign.md): the EXPERIMENTAL preset
-GameConfig.m4_four_actions() (Last Hit / Thin / Slow Push / Clear), the 61-code action encoding and its compatibility
-with every historical code, the window-strength target (mechanics.window_strength / strength_need), the budgets, the
-global correctness guarantees on the new preset, the RL interfaces, and pins of the report's findings."""
+GameConfig.m4_four_actions() (Last Hit / Thin / Slow Push / Shove; the report calls slot SH Clear), the 61-code action
+encoding and its compatibility with every historical code, the window-strength target (mechanics.window_strength /
+strength_need), the budgets, the global correctness guarantees on the new preset, the RL interfaces, and pins of the
+report's findings. The `CL` names below are the redesign study's own (lanegame.experiments.m43c.four_actions)."""
 
 import numpy as np
 import pytest
@@ -57,7 +58,7 @@ def test_action_spaces_labels_and_old_presets():
         for a in range(45):
             assert cfg.label(a) == NATURAL_WAVE_SHORT[champ_wave(a)] + CHAMP_ACTION_SHORT[a][len(WAVE_SHORT[a % 3]):]
     assert [FOUR.label(a) for a in (0, 1, 2, 12, 45, 46, 48, 51, 58)] == [
-        "LH-H", "CL-H", "TN-H", "LH-R", "ABSENT", "SL-H", "SL-T", "SL-H+P", "SL-T+V"]
+        "LH-H", "SH-H", "TN-H", "LH-R", "ABSENT", "SL-H", "SL-T", "SL-H+P", "SL-T+V"]   # slot SH: Shove
 
 
 def test_preset_is_m4_lasthit_with_the_documented_fields_and_validation():

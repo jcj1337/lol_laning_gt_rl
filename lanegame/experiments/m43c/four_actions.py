@@ -9,6 +9,9 @@ The four wave actions are per-turn damage budgets on enemy minions out of one wa
     Slow Push  min(round(C / 2), 1 + need_1)         (wave_slowpush)
     Clear      C
 
+Terminology: this study keeps its original name Clear (CL) for slot SH. The finalized four-action model calls the
+same slot, with the same codes and budget, Shove (config.W_SHOVE, label SH; docs/m4/m4_3c_strategic_economics_calibration.md).
+
 need_m = max(0, ceil(S_enemy - S_own + m)): S is the window strength of mechanics.window_strength (the average minion
 HP fighting at a side's front over the next reinforcement cycle, reinforcements weighted by when they arrive).
 

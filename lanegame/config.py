@@ -86,11 +86,20 @@ W_HOLD, W_CLEAR, W_THIN = SP, SH, F
 # M4.3c (EXPERIMENTAL): the fourth wave slot, Slow Push; it exists only under wave_slowpush (champion-mode codes
 # 46..60, see below)
 W_SLOWPUSH = 3
+# M4.3c stabilization: the four-action model names its full-capacity slot (SH) Shove. W_SHOVE IS W_CLEAR: the same
+# slot, the same codes and the same budget C, so no action code, legal mask or checkpoint changes meaning; only the
+# names of the four-action model change (the three-action presets keep Hold / Thin / Clear)
+W_SHOVE = W_CLEAR
 NATURAL_WAVE_NAMES = {W_HOLD: "Hold", W_CLEAR: "Clear", W_THIN: "Thin", W_SLOWPUSH: "SlowPush"}
 NATURAL_WAVE_SHORT = {W_HOLD: "HO", W_CLEAR: "CL", W_THIN: "TN", W_SLOWPUSH: "SL"}
-# labels of the four-action model (wave_slowpush): its Hold slot, capped at 1 HP per turn, is Last Hit
-FOUR_WAVE_NAMES = {W_HOLD: "LastHit", W_CLEAR: "Clear", W_THIN: "Thin", W_SLOWPUSH: "SlowPush"}
-FOUR_WAVE_SHORT = {W_HOLD: "LH", W_CLEAR: "CL", W_THIN: "TN", W_SLOWPUSH: "SL"}
+# labels of the four-action model (wave_slowpush): its Hold slot, capped at 1 HP per turn, is Last Hit, and its
+# full-capacity slot is Shove (labelled Clear / CL in the M4.3c redesign report and its results, which keep their names)
+FOUR_WAVE_NAMES = {W_HOLD: "LastHit", W_SHOVE: "Shove", W_THIN: "Thin", W_SLOWPUSH: "SlowPush"}
+FOUR_WAVE_SHORT = {W_HOLD: "LH", W_SHOVE: "SH", W_THIN: "TN", W_SLOWPUSH: "SL"}
+# readable wave-slot names, ordered from the least to the most wave damage (viewer controls, traces, reports)
+FOUR_WAVE_DISPLAY = {W_HOLD: "Last Hit", W_THIN: "Thin", W_SLOWPUSH: "Slow Push", W_SHOVE: "Shove"}
+NATURAL_WAVE_DISPLAY = {W_HOLD: "Hold", W_THIN: "Thin", W_CLEAR: "Clear"}
+SCRIPTED_WAVE_DISPLAY = {SP: "Slow Push", F: "Freeze", SH: "Shove"}
 NATURAL_WAVE_HP = 8
 POSTURE_NAMES = {CONTEST: "Contest", SAFE: "Safe"}
 OBJECTIVE_NAMES = {NONE: "", PRESSURE: "Pressure", VISION: "Vision"}
@@ -509,6 +518,19 @@ class GameConfig:
     # M4.2e-B, opt-in (item_model "continuous" only): invested gold also buys durability: every centi-HP of damage a
     # champion takes (trades, tower shots, ganks) is divided by its own investment multiplier M(S), exactly.
     invest_durability: bool = False
+    # M4.3c stabilization (docs/m4/m4_3c_strategic_economics_calibration.md), EXPERIMENTAL, ruleset "m4" only; every
+    # default reproduces every earlier preset exactly.
+    # xp_reward_weight lambda > 0: the reward also counts the difference of the XP the two champions are CREDITED this
+    # turn (after the level cap), r_A = (E_A - E_B) + lambda (X_A - X_B), lambda in resources per XP and an exact
+    # multiple of gold_unit. XP stays XP: nothing is converted into gold, the gold ledger and investment are unchanged.
+    xp_reward_weight: float = 0.0
+    # death_turns_by_level: () = death_turns at every level; else level_cap entries: a champion that dies at level L
+    # (its level at the start of the turn of the death) sits out death_turns_by_level[L - 1] turns
+    death_turns_by_level: Tuple[int, ...] = ()
+    # terminal_rule "none" = continuing time without a terminal state; "final_plate" = the game TERMINATES at the end of
+    # the turn in which either tower's cumulative damage reaches its last plate threshold (that turn is paid in full,
+    # plate gold included; nothing follows, the terminal value is 0)
+    terminal_rule: str = "none"
 
     # ------------------------------------------------------------------ presets
     @classmethod
@@ -666,13 +688,44 @@ class GameConfig:
                                                                   excess window strength over ours
           Slow Push = min(round(C / 2), 1 + need(margin 1))       wave_slowpush: the least damage that puts our
                                                                   window strength 1 HP above the enemy's
-          Clear     = C                                           unchanged
+          Shove     = C                                           slot SH (W_SHOVE = W_CLEAR), unchanged; called
+                                                                  Clear in the redesign report and in m4_lasthit()
         need = mechanics.strength_need on the start-of-turn lane. The action space has 61 codes (Slow Push = codes
         46..60, every historical code unchanged). Every other rule and parameter is `m4_lasthit()`. Not a default;
         `m4_lasthit()` and every other preset are unchanged."""
         base = dict(wave_hold_cap=1, wave_thin_rule="strength", wave_slowpush=True)
         base.update(kw)
         return cls.m4_lasthit(**base)
+
+    # the fields GameConfig.m4_four_actions_econ() changes from m4_four_actions() (M4.3c stabilization,
+    # docs/m4/m4_3c_strategic_economics_calibration.md)
+    M4_FOUR_ECON_FIELDS = ("collect_contest_own_tower", "trade_farm_factor", "kill_bounty", "death_turns_by_level",
+                           "champion_absent_max")
+    # 2 + ceil(L / 6): 3 turns at levels 1-6, 4 at 7-12, 5 at 13-18 (League's respawn timer plus the walk back)
+    DEATH_TURNS_S1 = tuple(2 + -(-L // 6) for L in range(1, 19))
+
+    @classmethod
+    def m4_four_actions_econ(cls, **kw) -> "GameConfig":
+        """EXPERIMENTAL CANDIDATE (M4.3c stabilization, docs/m4/m4_3c_strategic_economics_calibration.md):
+        `m4_four_actions()` with a calibrated lane economy. Four fixed rates are set to League-proportional values:
+          collect_contest_own_tower 0.8      a crashed wave dying under the own tower is last-hit at 0.8 (0.6 before):
+                                             crashing taxes the defender 1/9 of the lane rate instead of 1/3, which
+                                             alone made Shove the best reply in every state
+          trade_farm_factor 0.8              a connected trader collects 80% of its farm (50% before): with 50%
+                                             every harassment cost the attacker as much gold as it cost the victim,
+                                             so power could buy lane control only through Shove
+          kill_bounty 2.0                    a kill pays two waves (0.5 before; League's kill is about 2.4 waves)
+          death_turns_by_level S1            a death keeps the champion away 3 / 4 / 5 turns at levels 1-6 / 7-12 /
+                                             13-18 (3 at every level before; champion_absent_max 5, the observation's
+                                             absence scale)
+        The wave mechanics, the four actions, the reward (gold only), XP, towers, plates and continuing time are
+        `m4_four_actions()`'s. The action and observation spaces are unchanged (61 codes, 88 entries); only the
+        absence entry's scale is 5 instead of 3, so networks trained on another preset must be retrained. Not a
+        default; every other preset is unchanged."""
+        base = dict(collect_contest_own_tower=0.8, trade_farm_factor=0.8, kill_bounty=2.0,
+                    death_turns_by_level=cls.DEATH_TURNS_S1, champion_absent_max=5)
+        base.update(kw)
+        return cls.m4_four_actions(**base)
 
     # ------------------------------------------------------------------ helpers
     @property
@@ -750,7 +803,8 @@ class GameConfig:
 
     def label(self, a: int) -> str:
         """Short action label: 'SH-C', 'SH-C+P' etc., or 'SH' when positioning is disabled; champion mode
-        'SH-T+P' (Shove + Trade + Pressure) etc.; natural waves 'CL-T+P' (Clear + Trade + Pressure) etc."""
+        'SH-T+P' (Shove + Trade + Pressure) etc.; natural waves 'CL-T+P' (Clear + Trade + Pressure) etc.; the
+        four-action model (wave_slowpush) 'LH-H', 'TN-H', 'SL-H+P', 'SH-T' (Last Hit / Thin / Slow Push / Shove)."""
         if self.champion_mode:
             if self.natural_waves and a != CHAMP_ABSENT:
                 o = champ_objective(a)
@@ -900,6 +954,16 @@ class GameConfig:
             bad("trade_farm_rule", "must be 'trader' or 'loser'")
         if self.invest_durability and self.item_model != "continuous":
             bad("invest_durability", "applies to item_model 'continuous' only")
+        if not self.xp_reward_weight >= 0.0:
+            bad("xp_reward_weight", "must be >= 0 (resources per credited XP)")
+        dtl = self.death_turns_by_level
+        if dtl:
+            if len(dtl) != self.level_cap or any(not isinstance(d, int) or d < 0 for d in dtl):
+                bad("death_turns_by_level", f"must hold level_cap = {self.level_cap} non-negative integers (or be empty)")
+            if self.champion_absent_max < max(dtl):
+                bad("champion_absent_max", f"must be >= max(death_turns_by_level) = {max(dtl)} (observation scale)")
+        if self.terminal_rule not in ("none", "final_plate"):
+            bad("terminal_rule", "must be 'none' or 'final_plate'")
         if not 0.0 <= self.collect_contest_own_tower <= 1.0:
             bad("collect_contest_own_tower", "must be in [0, 1]")
         if self.zoning_rule not in ("presence", "contact", "none"):
@@ -967,7 +1031,8 @@ class GameConfig:
                 raise ValueError(f"ruleset 'm4': {name} = {float(value)!r} is not an integer multiple of "
                                  f"gold_unit {self.gold_unit!r} (design §8.6)")
 
-        for v, name in ((self.plate_gold, "plate_gold"), (self.kill_bounty, "kill_bounty")):
+        for v, name in ((self.plate_gold, "plate_gold"), (self.kill_bounty, "kill_bounty"),
+                        (self.xp_reward_weight, "xp_reward_weight")):
             check(name, q(v))
         for i, p in enumerate(self.item_prices):
             check(f"item_prices[{i}]", q(p))
@@ -1006,8 +1071,18 @@ M4_ECONOMY_FIELDS = ("xp_per_hp", "xp_range", "xp_base", "xp_step", "level_cap",
                      "plate_gold", "pressure_tower_damage", "plate_gold_requires_presence", "gold_unit",
                      "rear_count_max", "trade_exchanges", "trade_farm_rule", "invest_durability", "collect_contest_own_tower", "position_rule", "zoning_rule", "wave_dynamics", "champion_wave_damage",
                      "natural_crash_rule", "natural_tower_reach", "wave_clear_scaling", "wave_clear_scaled_slots",
-                     "wave_hold_fraction", "wave_thin_fraction", "wave_hold_cap", "wave_thin_rule", "wave_slowpush")
+                     "wave_hold_fraction", "wave_thin_fraction", "wave_hold_cap", "wave_thin_rule", "wave_slowpush",
+                     "xp_reward_weight", "death_turns_by_level", "terminal_rule")
 _FIELD_DEFAULTS = {f.name: f.default for f in GameConfig.__dataclass_fields__.values()}
+
+
+def wave_display_names(cfg: GameConfig) -> Dict[int, str]:
+    """Readable names of cfg's wave slots, from the least to the most wave damage: Last Hit / Thin / Slow Push / Shove
+    (the four-action model, wave_slowpush), Hold / Thin / Clear (the natural three-action presets), Slow Push / Freeze /
+    Shove (scripted waves)."""
+    if cfg.natural_waves:
+        return dict(FOUR_WAVE_DISPLAY if cfg.wave_slowpush else NATURAL_WAVE_DISPLAY)
+    return dict(SCRIPTED_WAVE_DISPLAY)
 
 
 def exact_safe_base(x: int, cfg: GameConfig):

@@ -1,5 +1,10 @@
 # M4.3c — Four-Action Wave Management Redesign
 
+> **Terminology (M4.3c stabilization, [m4_3c_strategic_economics_calibration.md](m4_3c_strategic_economics_calibration.md)).**
+> The fourth action this report calls **Clear** (`CL`) is named **Shove** (`SH`, `config.W_SHOVE`) in the finalized
+> four-action model: the same slot, the same codes, the same budget $C$. This report and its result files keep the name
+> they were written with.
+
 **Status: EXPERIMENTAL, implemented and validated; not adopted.** The research preset `m4_lasthit()`, every other preset
 and every trained agent are unchanged. The new opt-in preset `GameConfig.m4_four_actions()` gives the champion four
 wave actions — **Last Hit, Thin, Slow Push, Clear** — through the real environment (61-code action space, legal masks,

@@ -14,9 +14,16 @@ and verified against the code; the numbers in the examples were produced by the 
 | label | meaning |
 |---|---|
 | **CURRENT** | behaviour of `m4_lasthit()` as implemented (the default reading of every unlabelled statement) |
-| **PROPOSED** | a mechanic under investigation (M4.3c); described only in [m4_3c_economic_objective_design.md](m4_3c_economic_objective_design.md), never here except as a pointer |
-| **EXPERIMENTAL** | an opt-in configuration field that exists in the code but is off in `m4_lasthit()` |
+| **FOUR-ACTION** | the EXPERIMENTAL four-action baseline `m4_four_actions()` (§4.10): `m4_lasthit()` with the wave actions Last Hit / Thin / Slow Push / **Shove**; its measured economics are in [m4_3c_strategic_economics_calibration.md](m4_3c_strategic_economics_calibration.md) |
+| **PROPOSED** | a mechanic under investigation (M4.3c); described only in [m4_3c_economic_objective_design.md](m4_3c_economic_objective_design.md) or the calibration report, never here except as a pointer |
+| **EXPERIMENTAL** | an opt-in configuration field that exists in the code but is off in `m4_lasthit()` (and, unless stated, in `m4_four_actions()`) |
 | **DEPRECATED** | a rule of an earlier preset or design document that `m4_lasthit()` no longer uses |
+
+**Terminology of slot 1 (`SH`).** The full-capacity wave slot is called **Clear** in `m4_lasthit()` and the other
+three-action natural presets (label `CL`), and **Shove** in the four-action model (label `SH`, `config.W_SHOVE`, the same
+slot as `W_CLEAR`, the scripted game's original Shove). The rename is semantic only: the codes, legal masks, budget $C$
+and every checkpoint keep their meaning. Historical reports keep the names they used (the four-action redesign report
+calls it Clear).
 
 **Maintenance rule.** Whenever a rule, a parameter or the objective of the research preset changes, update the
 corresponding equation, table, diagram and example here in the same piece of work, and add a line to §13.
@@ -108,7 +115,8 @@ unless marked "global", HP is minion HP for waves and centi-HP (1/100 of a base 
 | What makes freezing beneficial or harmful? | [§4.8](#48-freezes), [§5.6](#56-scenario-a-and-scenario-b-side-by-side), [§10.1](#101-a-champion-trying-to-maintain-an-early-freeze) |
 | How do champion power and death costs scale? | [§7](#7-gold-investment-and-champion-progression), [§6.7](#67-why-dying-is-a-relatively-cheap-reset) |
 | What does PPO actually optimize? | [§9](#9-the-rl-objective-and-its-evaluation) |
-| What causes a game to end? | Nothing: [§8.5](#85-after-the-final-plate-why-the-game-does-not-end), [§9.1](#91-the-game-objective) |
+| What causes a game to end? | Nothing: [§8.5](#85-after-the-final-plate-why-the-game-does-not-end), [§9.1](#91-the-game-objective) (EXPERIMENTAL opt-in terminal at the last plate: [§8.7](#87-experimental-the-m43c-economic-opt-ins-and-the-calibrated-candidate)) |
+| Why does Shove dominate the four-action model? | The crash tax and break-even trades: [§5.3](#53-collection-what-share-of-a-kill-becomes-gold), [§8.7](#87-experimental-the-m43c-economic-opt-ins-and-the-calibrated-candidate) and the calibration report |
 
 ---
 
@@ -358,7 +366,8 @@ $$
 `config.champ_act / champ_wave / champ_behavior / champ_objective` decode both ranges; `GameConfig.action_codes()`
 is `range(61)` only under `wave_slowpush`. The legal set adds the Slow Push twin of every legal code with the Hold
 wave slot except the Recall code 12 (so code 50, Slow Push + Recall, is never legal), i.e. up to 16 + 16 + 1 = 33
-legal codes for a present champion. The Hold slot is labelled **Last Hit** (`LH`) in that preset.
+legal codes for a present champion. In that preset the Hold slot is labelled **Last Hit** (`LH`) and slot 1 **Shove**
+(`SH`): labels `LH-H`, `TN-H`, `SL-H+P`, `SH-T` (Clear's `CL` labels belong to the three-action presets only).
 
 ### 3.2 The 46 codes
 
@@ -642,7 +651,10 @@ removed by the opponent's Clear the turn it is built.
 
 **Not the research preset.** `GameConfig.m4_four_actions()` is `m4_lasthit()` with `wave_hold_cap = 1`,
 `wave_thin_rule = "strength"` and `wave_slowpush = True`. Everything else, including §4.1–§4.9, is unchanged. Design,
-alternatives and validation: [m4_3c_four_action_wave_redesign.md](m4_3c_four_action_wave_redesign.md).
+alternatives and validation: [m4_3c_four_action_wave_redesign.md](m4_3c_four_action_wave_redesign.md) (which calls the
+fourth action Clear); sequences of the four actions, the visual debugger and the economics of the model:
+[m4_3c_strategic_economics_calibration.md](m4_3c_strategic_economics_calibration.md). The four wave actions are
+**Last Hit** (slot 0), **Thin** (slot 2), **Slow Push** (slot 3) and **Shove** (slot 1, the full capacity $C$).
 
 **Window strength** (`mechanics.window_strength`). For one side on turn $k$, with $\tau=$ `spawn_interval` $=4$
 ticks (one wave per side) and $n=2$ ticks per turn:
@@ -668,7 +680,7 @@ $$
 D_{\text{Last Hit}}&=\min(1,\lfloor C/8\rceil)=1\\
 D_{\text{Thin}}&=\min\bigl(\lfloor C/2\rceil,\ 1+\text{need}_0\bigr)\\
 D_{\text{Slow Push}}&=\min\bigl(\lfloor C/2\rceil,\ 1+\text{need}_1\bigr)\\
-D_{\text{Clear}}&=C
+D_{\text{Shove}}&=C
 \end{aligned}
 $$
 
@@ -683,8 +695,10 @@ their own last hit on top, because the rule assumes both champions' last hits ca
 | the same with B's front 24 | 16 / 32 | 16 / 0 | 17 / 0 |
 | `freeze` (turn 51: A8 at −2, B5 at A's −1) | 12 / 11 | 0 / 1 | 0 / 2 |
 
-**Action encoding:** §3.1 (codes 46–60 = Slow Push, 61 codes; the Hold slot is labelled Last Hit). The resolver
-records the budgets it used in `M4Turn.wave_budget` / `info["wave_budget"]` in every M4 preset.
+**Action encoding:** §3.1 (codes 46–60 = Slow Push, 61 codes; the Hold slot is labelled Last Hit, slot 1 Shove). The
+resolver records the budgets it used in `M4Turn.wave_budget` / `info["wave_budget"]` in every M4 preset; the HP each
+champion actually removed is `info["events"]["champion_hp"][enemy]` (per tick in the lane trace), and the visual
+debugger (`lanegame/viewer`, the "Wave management" tab) shows both side by side with the needs and window strengths.
 
 ---
 
@@ -734,6 +748,13 @@ the minions die, (ii) the **Safe / retreat** posture, (iii) **trading** (half it
 the *threat* of trades and ganks, which makes the opponent choose (i)–(iii) itself.
 
 A kill that nobody collects is simply lost: there is no shared pool, no "denied" gold that goes to the opponent.
+
+**The crash tax (measured, FOUR-ACTION).** Rate (iv) applies to every HP of a crashed enemy mass that dies under the
+own tower, so a side whose waves keep crashing makes its opponent collect them at 0.6 while it collects the
+opponent's waves at 0.9 near the enemy tower. Against a perma-Shove the defender's collection efficiency falls from
+0.80 to 0.65 of the available farm (about 3 resources per 40 turns, permanently): in `m4_four_actions()` this, not
+plate gold, is what makes Shove the best reply in every tested state (calibration report §3). The PROPOSED candidate
+`m4_four_actions_econ()` sets the rate to 0.8 and the trading factor (iii) to 0.8 (§8.7).
 
 ### 5.4 Experience and levels
 
@@ -936,6 +957,11 @@ single trade hit does not either at comparable power, but a double hit deals $20
 when $1.05^{L_i-L_j}M(S_i)/M(S_j)\ge3$ (e.g. level 18 with 300 invested against level 10 with nothing: 991 against
 931 centi-HP).
 
+EXPERIMENTAL (§8.7): `death_turns_by_level` makes the absence depend on the level at death; the PROPOSED candidate
+`m4_four_actions_econ()` uses 3 / 4 / 5 turns at levels 1–6 / 7–12 / 13–18 and a bounty of 2.0. Measured on the
+four-action model, neither a 7-turn absence nor a 2.0 bounty changes any equilibrium of the scripted games on its own
+(equilibrium play almost never dies); both matter once trades are cheap enough to be used (calibration report §5).
+
 ### 6.6 Recall, return and investment
 
 **Recall** (code 12) is legal for a present champion at its own $-1$ or $-2$ (`recall_legal`). If not interrupted
@@ -1122,7 +1148,10 @@ in self-play, and the game then continues as a farming duel between two level-18
 growing. A scripted pairing of two Clear + Pressure policies even degenerates after the plates are gone (both
 champions keep walking to the exhausted enemy tower; farm stalls at about 0.04 per turn).
 
-The PROPOSED termination rule is discussed only in the M4.3c design document.
+The PROPOSED termination rule is discussed in the M4.3c design document; it exists as the EXPERIMENTAL opt-in
+`terminal_rule = "final_plate"` (§8.7). Measured on the four-action model it changes no equilibrium of the scripted
+games and mainly ends dominant games early, cutting the leader's ongoing income (calibration report §7); it is not
+part of the candidate preset.
 
 ### 8.6 The reward, exactly
 
@@ -1135,7 +1164,9 @@ E^{\text{turn}}_s=\underbrace{\sum_x h_x\cdot 0.125\,c_s(x)\cdot10^7}_{\text{far
 $$
 
 converted to a float once. Not in the reward: XP, levels, HP, investment, attack power, position, crashes, the
-value of a wave, deaths except through the bounty and the lost income.
+value of a wave, deaths except through the bounty and the lost income. EXPERIMENTAL (§8.7): `xp_reward_weight` adds the
+credited-XP difference times $\lambda$; measured, no weight in $[0,\tfrac12]$ changes an equilibrium of the scripted
+four-action games (calibration report §6).
 
 **Worked example: farm, a plate and a bounty in one turn** (constructed, resolved by the engine; `examples.one_turn`).
 
@@ -1173,6 +1204,34 @@ $$
 
 In ledger units: $22{,}875{,}000-6{,}000{,}000=16{,}875{,}000$. B's 0.6 stays in its unspent gold and is invested
 when it returns at the end of turn 15.
+
+### 8.7 EXPERIMENTAL: the M4.3c economic opt-ins and the calibrated candidate
+
+Three opt-in fields (M4.3c stabilization; [m4_3c_strategic_economics_calibration.md](m4_3c_strategic_economics_calibration.md)).
+Each default is off in `m4_lasthit()`, `m4_four_actions()` and every other preset, and the legacy rulesets reject
+them (`M4_ECONOMY_FIELDS`).
+
+| field | rule | code |
+|---|---|---|
+| `xp_reward_weight` $\lambda\ge0$ (resources per XP, an exact ledger multiple) | $r_A=(E_A-E_B)+\lambda\,(\Delta\tilde X_A-\Delta\tilde X_B)$ with $\Delta\tilde X$ the XP credited this turn (after the level cap). XP is not converted into gold: the ledger, investment and observation are unchanged | `M4Context.xp_units`, `M4Turn.xp_reward_units`, `info["xp_reward_units"]` (included in `reward_units`) |
+| `death_turns_by_level` $(d_1,\dots,d_{18})$ | a champion that dies at start-of-turn level $L$ sits out $d_L$ turns instead of `death_turns`; needs `champion_absent_max` $\ge\max d$ (the observation's absence scale) | `M4Context.death_turns` |
+| `terminal_rule = "final_plate"` | the game **terminates** at the end of the turn in which either side's $\tau$ reaches the last threshold (6,000); that turn is paid in full, plate gold included; terminal value 0; `terminated = True` (GAE drops the bootstrap; evaluation stops the game) | `M4Turn.terminal`, `LaneEnv._step_m4` |
+
+The truncation constant of §9.3 counts the XP channel with the farm terms ($f\to f+\lambda\xi$ per enemy minion HP)
+and uses the shortest death absence of the schedule for the bounty term (`env/discounted.tail_constant`,
+`per_turn_bound`).
+
+**PROPOSED candidate preset** `GameConfig.m4_four_actions_econ()` (EXPERIMENTAL; not the research preset): the
+four-action model of §4.10 with four fixed rates set to League-proportional values. Everything else, including the
+gold-only reward and continuing time, is `m4_four_actions()`.
+
+| field | `m4_four_actions()` | candidate | rule it changes |
+|---|---|---|---|
+| `collect_contest_own_tower` | 0.6 | **0.8** | §5.3: a kill in the own tower cell is collected at most at 0.8 |
+| `trade_farm_factor` | 0.5 | **0.8** | §5.3: a connected trader collects 80% of its farm |
+| `kill_bounty` | 0.5 | **2.0** | §6.5: the killer receives two waves of gold |
+| `death_turns_by_level` | — (3) | **$2+\lceil L/6\rceil$** = 3 / 4 / 5 at levels 1–6 / 7–12 / 13–18 | §6.5–§6.6: the absence after a death |
+| `champion_absent_max` | 3 | 5 | §2.4: the absence entry of the observation is $\alpha/5$ |
 
 ---
 
@@ -1359,11 +1418,13 @@ waves), no shutdown gold, no item spikes (investment is continuous and saturatin
 | blob | a front plus the packets queued within one cell behind it; their HP is pooled for firepower, but only the front packet takes damage |
 | bounce | the defender's waiting wave plus the next spawn walking out together after a siege |
 | bounty | 0.5 resources paid to the opponent of a champion that dies |
-| capacity $C$ | wave-clear capacity, $\mathrm{round}(4AP^\ast)$ HP per turn; Clear spends it all |
+| capacity $C$ | wave-clear capacity, $\mathrm{round}(4AP^\ast)$ HP per turn; Clear (Shove in the four-action model) spends it all |
+| candidate preset (PROPOSED) | `m4_four_actions_econ()`: the four-action model with own-tower collection 0.8, trade farm factor 0.8, kill bounty 2.0, death absence 3 / 4 / 5 by level (§8.7) |
 | channel | an interrupted Recall: present, no gold, no wave damage, gains XP, exposed |
 | Clear | wave slot 1: spend the whole capacity on enemy minions |
 | contact | champions at most one cell apart (a champion in its own tower cell only from inside that cell) |
 | crash | a front entering the enemy tower cell joins the crashed mass |
+| crash tax | (measured) the defender's loss from collecting a crashed wave at the own-tower rate (0.6) instead of the lane rate (0.9); the main reason Shove is every side's best reply in `m4_four_actions()` (§5.3) |
 | crashed mass $m$ / siege | minions under the enemy tower; killed by the tower and the defenders; hits the tower |
 | dive | a trade that ends in the enemy tower cell; shot with probability 1 (0.5 if busy) |
 | earned gold $E$ | cumulative farm + plate gold + bounty; the reward is its per-turn difference |
@@ -1391,6 +1452,7 @@ waves), no shutdown gold, no item spikes (investment is continuous and saturatin
 | Safe | behaviour 3: heads back to at most the own $-1$ (2 cells per turn), evades trades, collects at reduced rates |
 | slow push | a small sustained wave-damage edge that stacks the own front until it crashes |
 | Slow Push (EXPERIMENTAL) | wave slot 3 of `m4_four_actions()` (codes 46–60): the least damage that makes the own window strength 1 HP above the enemy's (§4.10) |
+| Shove (FOUR-ACTION) | wave slot 1 (`SH`, `W_SHOVE` = `W_CLEAR`) of `m4_four_actions()`: the whole capacity $C$; the same slot, codes and budget as Clear in the three-action presets (§4.10) |
 | stack $\sigma$ | whole extra waves in a packet beyond the first, $\min(2,\lceil h/8\rceil-1)$ |
 | stand-off cell | Yield's cell: the rearmost cell still within one cell of the enemy front |
 | Thin | wave slot 2: $\mathrm{round}(C/2)$ HP per turn |
@@ -1450,3 +1512,4 @@ historical documents are records of their milestones and are **not** edited; thi
 | 2026-10-13 | First version (M4.3c Part A): describes `GameConfig.m4_lasthit()` as used by M4.3b; numbers from `results/m43c/` | `26f8c83` + `lanegame/experiments/m43c/` (diagnostics only) |
 | 2026-10-13 | §4.5: EXPERIMENTAL opt-in fields `wave_hold_cap` and `wave_thin_rule = "adaptive"` (M4.3c wave-control screen); the preset is unchanged | `config.py`, `champions_m4.budget_from_capacity`, `mechanics.thin_need` |
 | 2026-10-13 | §3.1, §4.5 pointers, new §4.10, glossary: EXPERIMENTAL four-action model `m4_four_actions()` (Last Hit / Thin / Slow Push / Clear, window-strength targets, codes 46–60, 61-code space; M4.3c four-action redesign). `m4_lasthit()` and every CURRENT statement are unchanged; `M4Turn.wave_budget` / `info["wave_budget"]` record the lane step's budgets in every M4 preset | `config.py`, `mechanics.window_strength / strength_need / strength_budget`, `champions_m4.M4Context.state_budget` |
+| 2026-10-13 | M4.3c stabilization: label FOUR-ACTION and the slot-1 terminology note (§0); slot 1 of the four-action model is **Shove** (`W_SHOVE` = `W_CLEAR`, label `SH`; §3.1, §4.10, glossary), a semantic change only; the debugger's wave panel (§4.10); the measured crash tax (§5.3); the EXPERIMENTAL opt-ins `xp_reward_weight`, `death_turns_by_level`, `terminal_rule = "final_plate"` and the PROPOSED candidate `m4_four_actions_econ()` (new §8.7; pointers in §5.3, §6.5, §8.5, §8.6). Every CURRENT statement and every preset's defaults are unchanged | `config.py`, `champions_m4.py`, `env/core.py`, `env/discounted.py`, `viewer/` |

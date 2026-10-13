@@ -133,6 +133,7 @@ def lane_figure(view: dict, cfg) -> go.Figure:
     if not any(view["champions"][n]["absent"] for n in ("A", "B")) and pos["A"] == pos["B"]:
         pos["A"] -= 0.24
         pos["B"] += 0.24
+    wave = view.get("wave") or {}
     for name in ("A", "B"):
         d = view["champions"][name]
         away = d["absent"] > 0
@@ -145,6 +146,14 @@ def lane_figure(view: dict, cfg) -> go.Figure:
                       + (f", away for {d['absent']} more turn(s)" if away else ""))
         if away:
             ann.append(_text(pos[name], 1.9, f"away ({d['absent']})", size=10, color="#777"))
+        else:
+            # level and this frame's wave damage: the turn's budget (start), the HP removed in the tick / turn
+            w = wave.get(name)
+            txt = f"L{d['level']}"
+            if w is not None and w["budget"] is not None and w["wave"] != "—":
+                txt += (f" · {w['wave']} {w['budget']}" if w["dealt"] is None else
+                        f" · {w['wave']} {w['dealt']}/{w['budget']}")
+            ann.append(_text(pos[name], 1.92, txt, size=10, color=DARK[name]))
     fig = go.Figure()
     fig.add_trace(go.Scatter(x=cx, y=cy, mode="markers", marker=dict(size=46, color=ccol, opacity=0.18),
                              hoverinfo="skip", showlegend=False))

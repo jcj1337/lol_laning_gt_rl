@@ -27,8 +27,12 @@ legality) and adds, in the order of design §5:
   step 11  persistent tower damage and plate gold (§11)
   step 12  XP and level-ups: a surviving present champion gains the increase in max HP (§9.2)
   step 13  the gold ledger, clamped at G_rem(N) (§8.6)
-  step 14  absence bookkeeping: a champion whose timer reaches 0 buys its tiers, then returns with full HP (§8.5)
-  step 15  reward r_A = earned_A - earned_B (farm + plate gold + kill bounty), exact in ledger units
+  step 14  absence bookkeeping: a champion whose timer reaches 0 buys its tiers, then returns with full HP (§8.5);
+           M4.3c opt-in `death_turns_by_level`: the absence after a death depends on the start-of-turn level
+  step 15  reward r_A = earned_A - earned_B (farm + plate gold + kill bounty), exact in ledger units; M4.3c opt-ins
+           (EXPERIMENTAL, docs/m4/m4_3c_strategic_economics_calibration.md): `xp_reward_weight` lambda adds
+           lambda (xp_gain_A - xp_gain_B) in ledger units (M4Turn.xp_reward_units); `terminal_rule = "final_plate"`
+           marks the turn in which either tower's damage reaches its last plate threshold as terminal (M4Turn.terminal)
 
 Every power-dependent quantity of a turn (trade damage, gank and tower damage, Pressure tower damage) uses the levels
 and items held at the start of the turn. The chance vector is M2's (N_CHANCE = 10 uniforms per turn, drawn whatever
@@ -121,6 +125,7 @@ class M4Context:
         self.scale = cfg.gold_scale
         self.plate_units = _units(cfg.plate_gold, cfg)
         self.bounty_units = _units(cfg.kill_bounty, cfg)
+        self.xp_units = _units(cfg.xp_reward_weight, cfg)        # M4.3c: reward ledger units per credited XP (0 = off)
         self.theta_max = cfg.plate_thresholds[-1]
         self._coll: Dict[tuple, int] = {}
         self.inv = None
@@ -194,6 +199,11 @@ class M4Context:
             v = collection_units(x, mode, pos, opp_mode, opp_pos, self.cfg, pays_trade)
             self._coll[key] = v
         return v
+
+    def death_turns(self, level: int) -> int:
+        """Turns a champion that dies at `level` sits out: death_turns, or death_turns_by_level[level - 1] (M4.3c)."""
+        dtl = self.cfg.death_turns_by_level
+        return dtl[level - 1] if dtl else self.cfg.death_turns
 
     def mitigate(self, damage: int, items: int) -> int:
         """invest_durability: centi-HP actually lost by a champion with `items` invested from `damage` centi-HP of
@@ -413,6 +423,10 @@ class M4Turn:
     # natural waves with wave_clear_scaling: the per-turn wave budgets (minion HP) given to the lane step (None =
     # champion_wave_damage per tick); what each champion could spend, not what it reached
     wave_budget: Optional[Tuple[int, int]] = None
+    # M4.3c (EXPERIMENTAL): the XP channel of the reward, xp_reward_weight (in ledger units per XP) times
+    # xp_gain_A - xp_gain_B, already included in reward_units; and terminal_rule "final_plate": this turn ended the game
+    xp_reward_units: int = 0
+    terminal: bool = False
 
 
 def resolve_turn_m4(lane: State, m4: M4State, k: int, a: int, b: int, cfg: GameConfig,
@@ -658,7 +672,7 @@ def resolve_turn_m4(lane: State, m4: M4State, k: int, a: int, b: int, cfg: GameC
                 clamped[s] = gold - cap
                 gold = cap
         if away[s] or died[s]:
-            left = (cfg.recall_turns - 1 if recalled[s] else me.absent - 1) if away[s] else cfg.death_turns
+            left = (cfg.recall_turns - 1 if recalled[s] else me.absent - 1) if away[s] else ctx.death_turns(lv0[s])
             hp = me.hp if away[s] else 0
             if left == 0:                                                 # back next turn: shop, then full HP
                 returned[s] = True
@@ -675,8 +689,10 @@ def resolve_turn_m4(lane: State, m4: M4State, k: int, a: int, b: int, cfg: GameC
             hp = me.hp - taken[s] + t.hp_max[L1] - t.hp_max[lv0[s]]
             sides.append(M4Side(end[s], hp, 0, xp, items, gold, tau[s]))
 
-    # 15. reward (exact ledger units)
-    reward_units = earned[A] - earned[B]
+    # 15. reward (exact ledger units); M4.3c opt-ins: the credited-XP channel, and the terminal turn of "final_plate"
+    xp_reward_units = ctx.xp_units * (xp_gain[A] - xp_gain[B])
+    reward_units = earned[A] - earned[B] + xp_reward_units
+    terminal = cfg.terminal_rule == "final_plate" and max(tau[A], tau[B]) >= ctx.theta_max
     inv = 1.0 / ctx.scale
     turn = M4Turn(
         res, M4State(sides[A], sides[B]), w, eff_w, maintained, beh, obj, eff_obj, c0, (end[A], end[B]),
@@ -689,5 +705,6 @@ def resolve_turn_m4(lane: State, m4: M4State, k: int, a: int, b: int, cfg: GameC
         (lv1[A] - lv0[A], lv1[B] - lv0[B]), res.tower_hits, (hits_dealt[A], hits_dealt[B]), (plates[A], plates[B]),
         (plate_u[A] * inv, plate_u[B] * inv), (purchases[A], purchases[B]), (returned[A], returned[B]),
         (farm_u[A], farm_u[B]), (plate_u[A], plate_u[B]), bounty_u, (earned[A], earned[B]), (clamped[A], clamped[B]),
-        reward_units, reward_units / ctx.scale, (invested[A], invested[B]), (pinned[A], pinned[B]), budget)
+        reward_units, reward_units / ctx.scale, (invested[A], invested[B]), (pinned[A], pinned[B]), budget,
+        xp_reward_units, terminal)
     return turn

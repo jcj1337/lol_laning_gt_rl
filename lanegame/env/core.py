@@ -50,7 +50,9 @@ bounded (LRU, `cache_size` entries; 0 disables it); the unbounded cache of `Lane
 Continuing time (rulesets "m2c" and "m4", `cfg.time_mode == "continuing"`; M4 design §10). There is no terminal
 state: `terminated` is always False, `horizon` is None and is never used, and an episode ends only by truncation at
 `max_turns` (a time limit of the run, not of the game: training bootstraps it, evaluation truncates a discounted
-sum). `reset(k0)` accepts any k0 >= 0 and records only k0 mod phase_period, so `env.k` counts turns from that
+sum). EXPERIMENTAL exception (M4.3c, ruleset "m4" only, off in every preset): `terminal_rule = "final_plate"` ends the
+GAME at the end of the turn in which either tower's last plate threshold is reached; that step is `terminated` (no
+bootstrap; the discount stays the exogenous hazard of the game objective). `reset(k0)` accepts any k0 >= 0 and records only k0 mod phase_period, so `env.k` counts turns from that
 phase; the dynamics and the observation depend on k only through k mod phase_period. Stepping after a truncation
 raises until `reset`.
 
@@ -396,8 +398,10 @@ class LaneEnv:
         s2 = res.state
         self._state, self._champ = s2, ct.champ
         self._k = k + 1
-        truncated = self.max_turns is not None and (self._k - self._k0) >= self.max_turns
-        self._done = truncated
+        # M4.3c terminal_rule "final_plate" (EXPERIMENTAL): the game itself ends; otherwise only a run's time limit
+        terminated = bool(ct.terminal)
+        truncated = (not terminated) and self.max_turns is not None and (self._k - self._k0) >= self.max_turns
+        self._done = terminated or truncated
         obs = self._observe()
         scale = self._ctx.scale
         fu, pu, bu = ct.farm_units, ct.plate_units, ct.bounty_units
@@ -439,10 +443,12 @@ class LaneEnv:
             "returned": ct.returned, "gold_unspendable": ct.gold_clamped, "invested": ct.invested,
             "pinned": ct.pinned,                                              # position_rule "pin"/"standoff"
             "wave_budget": ct.wave_budget,                                    # natural waves: the lane step's budgets
+            "xp_reward_units": ct.xp_reward_units,                            # M4.3c xp_reward_weight (in reward_units)
+            "terminal": ct.terminal,                                          # M4.3c terminal_rule
         }
         if self.record_ticks:
             info["lane_trace"] = res.trace                                    # ticks of ct.lane, not of the probe
-        return StepResult(obs, (reward, -reward), False, truncated, info)
+        return StepResult(obs, (reward, -reward), terminated, truncated, info)
 
     # ------------------------------------------------------------------ internals
     def _require_episode(self) -> None:

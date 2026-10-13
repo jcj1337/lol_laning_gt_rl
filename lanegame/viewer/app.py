@@ -19,8 +19,8 @@ import streamlit as st  # noqa: E402
 
 from lanegame.champions import CHAMP_ABSENT  # noqa: E402
 from lanegame.config import (B_HOLD, B_RECALL, B_SAFE, B_TRADE, B_YIELD, BEHAVIOR_NAMES,  # noqa: E402
-                             NATURAL_WAVE_NAMES, NONE, OBJECTIVE_NAMES, PRESSURE, VISION, W_CLEAR, W_HOLD, W_THIN,
-                             champ_act, champ_behavior, champ_objective)
+                             NONE, OBJECTIVE_NAMES, PRESSURE, VISION, W_HOLD, champ_act, champ_behavior,
+                             champ_objective, wave_display_names)
 from lanegame.viewer import policies as pl  # noqa: E402
 from lanegame.viewer import render  # noqa: E402
 from lanegame.viewer import session as ss  # noqa: E402
@@ -48,8 +48,9 @@ st.markdown("""<style>
 
 # ---------------------------------------------------------------------- sidebar: setup
 def apply_matchup():
-    sc, gap, pa, pb, turns, _ = pl.MATCHUPS[S.matchup]
-    S.scenario, S.gap, S.pa, S.pb, S.turns, S.turn, S.frame = sc, gap, pa, pb, turns, 0, 0
+    m = pl.MATCHUPS[S.matchup]
+    S.config, S.scenario, S.gap, S.pa, S.pb, S.turns, S.turn, S.frame = (m.config, m.scenario, m.gap, m.pa, m.pb,
+                                                                        m.turns, 0, 0)
 
 
 def setup_widgets() -> ss.Setup:
@@ -93,7 +94,7 @@ elif mode == "Strategy matchup":
         apply_matchup()
     st.sidebar.selectbox("Example matchup (sets the fields below)", list(pl.MATCHUPS), key="matchup",
                          on_change=apply_matchup)
-    st.sidebar.caption(pl.MATCHUPS[S.matchup][5])
+    st.sidebar.caption(pl.MATCHUPS[S.matchup].description)
     setup = setup_widgets()
     pol_a = policy_widget("Policy A (blue)", "pa")
     pol_b = policy_widget("Policy B (red)", "pb")
@@ -182,12 +183,18 @@ def body():
         act = view["action_names"][s] if info is not None else "—"
         note = rec.turns[i].notes[s] if info is not None else ""
         away = f" · away for {d['absent']} more turn(s)" if d["absent"] else ""
+        wv = (view.get("wave") or {}).get(name)
+        dmg = ""
+        if wv is not None and wv["budget"] is not None and not info["away"][s]:
+            dmg = (f" · wave damage: budget {wv['budget']} HP" if wv["dealt"] is None else
+                   f" · wave damage this {wv['frame']}: {wv['dealt']} HP (budget {wv['budget']})")
         col.markdown(
             f"<div class='lv-label'>Player {name} ({'blue' if s == 0 else 'red'}) · policy {pname}</div>"
             f"<div class='lv-big'>{act}</div>"
             f"<div class='lv-small'>HP {100 * d['hp'] / d['hp_max']:.0f}% · Level {d['level']} · "
             f"Attack power {d['attack_power']:.2f} · Gold {d['gold_earned']:.1f} earned, {d['gold_spendable']:.1f} "
-            f"spendable{away}</div><div class='lv-note'>{note}</div>", unsafe_allow_html=True)
+            f"spendable, {d['invested']:.1f} invested{away}{dmg}</div><div class='lv-note'>{note}</div>",
+            unsafe_allow_html=True)
 
     # 3. the lane
     st.plotly_chart(render.lane_figure(view, cfg), width="stretch", config={"displayModeBar": False})
@@ -236,10 +243,13 @@ def body():
         manual_box(rec, i)
 
     # 6. details
-    t1, t2, t3, t4, t5 = st.tabs(["Champions", "Timelines", "Event log", "Turn details", "How to read this"])
+    t1, tw, t2, t3, t4, t5 = st.tabs(["Champions", "Wave management", "Timelines", "Event log", "Turn details",
+                                      "How to read this"])
     with t1:
         for col, s in zip(st.columns(2), (0, 1)):
             champion_panel(col, rec, j, s, info)
+    with tw:
+        wave_tab(rec, i)
     with t2:
         st.plotly_chart(render.timeline_figure(tl, i), width="stretch")
     with t3:
@@ -281,8 +291,12 @@ def manual_box(rec: ss.Recording, i: int):
         box.button("Continue (A is away)", on_click=submit, args=(CHAMP_ABSENT,), type="primary")
     else:
         col = box.columns(3)
-        wave = col[0].radio("Wave management", [W_HOLD, W_THIN, W_CLEAR], format_func=NATURAL_WAVE_NAMES.get,
-                            key="m_wave")
+        names = wave_display_names(rec.cfg)                 # four-action model: Last Hit / Thin / Slow Push / Shove
+        waves = [w for w in names if any(champ_act(w, b) in legal for b in (B_HOLD, B_YIELD, B_TRADE, B_SAFE))]
+        budgets = ss.summary(rec, rec.n, 0).get("wave_budgets", {})
+        wave = col[0].radio("Wave management", waves, key="m_wave",
+                            format_func=lambda w: names[w] + (f" ({budgets[names[w]]} HP)" if names[w] in budgets
+                                                              else ""))
         behs = [b for b in (B_HOLD, B_YIELD, B_TRADE, B_SAFE, B_RECALL) if any(champ_behavior(a) == b for a in legal)]
         beh = col[1].radio("Champion behavior", behs, format_func=BEHAVIOR_NAMES.get, key="m_beh")
         objs = [o for o in (NONE, PRESSURE, VISION) if any(champ_objective(a) == o for a in legal)]
@@ -316,14 +330,50 @@ def champion_panel(col, rec: ss.Recording, j: int, s: int, info):
     m[2].metric("Invested", f"{d['invested']:.2f}", help="gold invested (includes a scenario's power gap)")
     m[3].metric("Plates broken", f"{d['plates_broken']}/{d['plates_total']}")
     if "wave_budgets" in d:
-        col.caption("Minion HP this champion removes per turn: " + ", ".join(f"{k} {v}" for k, v in d["wave_budgets"].items()))
+        cap = f" (capacity C = {d['capacity']})" if "capacity" in d else ""
+        col.caption(f"Minion HP each wave action would remove this turn{cap}: "
+                    + ", ".join(f"{k} {v}" for k, v in d["wave_budgets"].items()))
     col.caption(f"XP {d['xp']} ({d['xp_to_next']} to next) · own cell {d['pos_own']:+d} (global {d['pos_global']:+d})")
     if info is not None:
-        eff = (f"{NATURAL_WAVE_NAMES[info['effective_waves'][s]]} + {BEHAVIOR_NAMES[info['behaviors'][s]]}"
+        eff = (f"{ss.wave_name(rec.cfg, info['effective_waves'][s])} + {BEHAVIOR_NAMES[info['behaviors'][s]]}"
                + (f" + {OBJECTIVE_NAMES[info['effective_objectives'][s]]}" if info["effective_objectives"][s] else ""))
         col.markdown(f"Selected `{info['action_labels'][s]}` ({ss.action_name(rec.cfg, info['actions'][s])}) — "
                      f"effective {eff} · mode {info['modes'][s]} · own cell {info['champ_start'][s]:+d} → "
                      f"{info['champ_end'][s]:+d}")
+
+
+def wave_tab(rec: ss.Recording, i: int):
+    """Calculated against applied wave damage of turn i, with the lane numbers the budget comes from."""
+    panel = ss.wave_panel(rec, i)
+    if panel is None:
+        st.write("Final state: no turn played from here.")
+        return
+    four = "need_thin" in panel["A"]
+    rows = []
+    for n in ss.SIDES:
+        p = panel[n]
+        row = {"side": n, "wave action": p["wave"], "capacity C": p["capacity"], "own blob": p["own_blob"],
+               "enemy blob": p["enemy_blob"]}
+        if four:
+            row.update({"window strength own / enemy": f"{p['strength_own']:g} / {p['strength_enemy']:g}",
+                        "Thin need": p["need_thin"], "Slow Push need": p["need_slowpush"]})
+        row.update({"budget (calculated)": p["budget"], "removed per tick": ", ".join(map(str, p["dealt_per_tick"])),
+                    "removed (applied)": p["dealt"], "mode": p["mode"], "reach line (own)": p["reach"],
+                    "note": p["note"]})
+        rows.append(row)
+    st.dataframe(rows, width="stretch", hide_index=True)
+    st.caption(WAVE_HELP if four else "Budgets: Hold round(C/8), Thin round(C/2), Clear C (m4_lasthit shares); "
+               "the lane step spends half of the budget per tick on the first reachable enemy minions.")
+
+
+WAVE_HELP = (
+    "Four-action budgets (computed once, from the lane at the start of the turn): Last Hit 1; Thin min(round(C/2), "
+    "1 + Thin need); Slow Push min(round(C/2), 1 + Slow Push need); Shove C. The need is how much enemy window "
+    "strength must go for parity (Thin) or a 1-HP lead (Slow Push); window strength counts the HP that will fight at a "
+    "front over the next four ticks, reinforcements weighted by when they arrive. The lane step spends half of the "
+    "budget per tick (the first tick rounds up) on the first reachable target: the enemy front in a fight with ours, "
+    "else a crashed enemy mass under our tower, else the enemy's leading packet. Overkill is lost, so 'removed' can be "
+    "smaller than the budget.")
 
 
 def turn_details(rec: ss.Recording, i: int, info):
@@ -345,7 +395,7 @@ def turn_details(rec: ss.Recording, i: int, info):
         "Actions": ["actions", "action_labels", "waves", "effective_waves", "behaviors", "objectives",
                     "effective_objectives", "modes", "lane_codes", "champion_reach", "farm_spot", "champ_start",
                     "champ_end", "pinned"],
-        "Wave and minions": ["events", "kills", "crash_hp", "thinned", "exposure", "tower_hits"],
+        "Wave and minions": ["wave_budget", "events", "kills", "crash_hp", "thinned", "exposure", "tower_hits"],
         "Farm and XP": ["farm_available", "farm", "xp_gain", "xp_discarded", "levels_before", "levels", "level_up"],
         "Combat": ["trade_attempted", "trade_connected", "hit_p", "double_p", "trade_damage", "tower_p",
                    "adjacent_shot", "tower_damage", "damage_taken", "threatened"],
@@ -377,10 +427,14 @@ When the two fronts are within a cell of each other they fight (dashed line): ea
 damage, so a small edge grows (**slow push**). A front that reaches the enemy tower cell becomes a **crashed mass**
 (dark rectangle) that the tower fires on while it damages the tower; when it is gone, the lane **bounces** back.
 
-**Champions** (circles) choose each turn a wave action — Hold (last-hit only, removes a little), Thin (controlled
-damage), Clear (everything they can) — a behaviour (Hold position, Yield, Trade, Safe, or Recall near their tower),
-and, while sieging, an objective. Both choose at the same time from the same state. Levels, attack power, gold and
-items are in the Champions tab; the Turn details tab shows every number the engine reports for the turn.
+**Champions** (circles) choose each turn a wave action, a behaviour (Hold position, Yield, Trade, Safe, or Recall
+near their tower) and, while sieging, an objective. Both choose at the same time from the same state. Wave actions in
+the four-action model (`m4_four_actions`): **Last Hit** (1 HP of enemy minions per turn), **Thin** (last-hit, plus
+only what removes the enemy's surplus), **Slow Push** (the least damage that puts our wave 1 HP ahead), **Shove**
+(everything the champion can: its capacity C). In the three-action presets: Hold, Thin, Clear. The Wave management
+tab shows, per side, what the action was allowed to spend (calculated) and what it actually removed (applied), tick by
+tick. Levels, attack power, gold and investment are in the Champions tab; the Turn details tab shows every number the
+engine reports for the turn.
 
 **Playback**: a turn is two engine ticks. "Start" is the state both players saw when choosing; the ticks are the
 engine's own intermediate lane states (champions are shown where they end the turn, since the engine moves them once

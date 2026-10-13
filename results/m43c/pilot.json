@@ -1,0 +1,520 @@
+{
+ "meta": {
+  "commit": "4bd116c26c6475f0be5524eb1a04131482a6522f",
+  "timestamp": "2026-10-13 07:53:38",
+  "python": "3.13.9",
+  "numpy": "2.5.3",
+  "preset": "GameConfig.m4_lasthit()",
+  "stage": "pilot",
+  "variants": [
+   "base",
+   "candidate"
+  ],
+  "seeds": [
+   0,
+   1
+  ],
+  "steps": 2048000,
+  "ent_coef": 0.03,
+  "label": "EXPLORATORY bounded PPO pilot; not a convergence result",
+  "descriptions": {
+   "base": "the four-action baseline m4_four_actions()",
+   "candidate": "the calibrated candidate GameConfig.m4_four_actions_econ() (= ot80_tf80_k2_dS1)"
+  },
+  "elapsed_s": 855.1985162999481
+ },
+ "train": {
+  "base|0": {
+   "variant": "base",
+   "seed": 0,
+   "transitions": 2048000,
+   "elapsed_s": 658.4300138000399,
+   "entropy_first_last": [
+    2.8485730588436127,
+    1.0507133745588362
+   ],
+   "explained_variance_last": 0.6086283490678671,
+   "finite": true
+  },
+  "base|1": {
+   "variant": "base",
+   "seed": 1,
+   "transitions": 2048000,
+   "elapsed_s": 641.890153599903,
+   "entropy_first_last": [
+    2.8511707559227943,
+    1.1676652260124682
+   ],
+   "explained_variance_last": 0.6040052339065624,
+   "finite": true
+  },
+  "candidate|0": {
+   "variant": "candidate",
+   "seed": 0,
+   "transitions": 2048000,
+   "elapsed_s": 743.4235995998606,
+   "entropy_first_last": [
+    2.8487826585769653,
+    1.7532192841172218
+   ],
+   "explained_variance_last": 0.46215202886120343,
+   "finite": true
+  },
+  "candidate|1": {
+   "variant": "candidate",
+   "seed": 1,
+   "transitions": 2048000,
+   "elapsed_s": 743.3385648000985,
+   "entropy_first_last": [
+    2.8547757118940353,
+    1.7509772539138795
+   ],
+   "explained_variance_last": 0.5374290092512464,
+   "finite": true
+  }
+ },
+ "behavior": {
+  "base|0": {
+   "other": {
+    "n": 9646,
+    "share": {
+     "Last Hit": 0.115,
+     "Thin": 0.094,
+     "Slow Push": 0.059,
+     "Shove": 0.733
+    }
+   },
+   "all": {
+    "n": 17443,
+    "share": {
+     "Last Hit": 0.109,
+     "Thin": 0.082,
+     "Slow Push": 0.055,
+     "Shove": 0.754
+    }
+   },
+   "behavior": {
+    "n": 17443,
+    "share": {
+     "Hold": 0.356,
+     "Yield": 0.169,
+     "Trade": 0.332,
+     "Safe": 0.099,
+     "Recall": 0.044
+    }
+   },
+   "neutral": {
+    "n": 6402,
+    "share": {
+     "Last Hit": 0.103,
+     "Thin": 0.049,
+     "Slow Push": 0.04,
+     "Shove": 0.808
+    }
+   },
+   "frozen_on": {
+    "n": 578,
+    "share": {
+     "Last Hit": 0.14,
+     "Thin": 0.159,
+     "Slow Push": 0.062,
+     "Shove": 0.638
+    }
+   },
+   "freezing": {
+    "n": 581,
+    "share": {
+     "Last Hit": 0.055,
+     "Thin": 0.048,
+     "Slow Push": 0.048,
+     "Shove": 0.849
+    }
+   },
+   "pushing": {
+    "n": 236,
+    "share": {
+     "Last Hit": 0.081,
+     "Thin": 0.407,
+     "Slow Push": 0.288,
+     "Shove": 0.225
+    }
+   },
+   "trade_rate": {
+    "edge+": 0.413,
+    "edge-": 0.228
+   },
+   "deaths": 6.046875,
+   "recalls": 9.515625,
+   "crashes": 33.234375,
+   "connected_trades": 61.453125,
+   "plate1": [
+    47.0,
+    1.0
+   ],
+   "plate2": [
+    66.0,
+    1.0
+   ],
+   "plate3": [
+    85.0,
+    1.0
+   ]
+  },
+  "base|1": {
+   "other": {
+    "n": 10657,
+    "share": {
+     "Last Hit": 0.158,
+     "Thin": 0.09,
+     "Slow Push": 0.126,
+     "Shove": 0.626
+    }
+   },
+   "all": {
+    "n": 17707,
+    "share": {
+     "Last Hit": 0.122,
+     "Thin": 0.075,
+     "Slow Push": 0.101,
+     "Shove": 0.702
+    }
+   },
+   "behavior": {
+    "n": 17707,
+    "share": {
+     "Hold": 0.356,
+     "Yield": 0.231,
+     "Trade": 0.302,
+     "Safe": 0.067,
+     "Recall": 0.044
+    }
+   },
+   "neutral": {
+    "n": 5239,
+    "share": {
+     "Last Hit": 0.063,
+     "Thin": 0.05,
+     "Slow Push": 0.065,
+     "Shove": 0.821
+    }
+   },
+   "frozen_on": {
+    "n": 805,
+    "share": {
+     "Last Hit": 0.093,
+     "Thin": 0.056,
+     "Slow Push": 0.053,
+     "Shove": 0.798
+    }
+   },
+   "freezing": {
+    "n": 820,
+    "share": {
+     "Last Hit": 0.029,
+     "Thin": 0.018,
+     "Slow Push": 0.035,
+     "Shove": 0.917
+    }
+   },
+   "pushing": {
+    "n": 186,
+    "share": {
+     "Last Hit": 0.247,
+     "Thin": 0.183,
+     "Slow Push": 0.226,
+     "Shove": 0.344
+    }
+   },
+   "trade_rate": {
+    "edge+": 0.392,
+    "edge-": 0.183
+   },
+   "deaths": 4.578125,
+   "recalls": 9.75,
+   "crashes": 30.484375,
+   "connected_trades": 54.828125,
+   "plate1": [
+    36.0,
+    1.0
+   ],
+   "plate2": [
+    62.0,
+    1.0
+   ],
+   "plate3": [
+    88.0,
+    1.0
+   ]
+  },
+  "candidate|0": {
+   "other": {
+    "n": 8069,
+    "share": {
+     "Last Hit": 0.246,
+     "Thin": 0.198,
+     "Slow Push": 0.255,
+     "Shove": 0.301
+    }
+   },
+   "all": {
+    "n": 17612,
+    "share": {
+     "Last Hit": 0.229,
+     "Thin": 0.204,
+     "Slow Push": 0.259,
+     "Shove": 0.308
+    }
+   },
+   "behavior": {
+    "n": 17612,
+    "share": {
+     "Hold": 0.237,
+     "Yield": 0.213,
+     "Trade": 0.289,
+     "Safe": 0.189,
+     "Recall": 0.071
+    }
+   },
+   "neutral": {
+    "n": 5308,
+    "share": {
+     "Last Hit": 0.232,
+     "Thin": 0.194,
+     "Slow Push": 0.257,
+     "Shove": 0.317
+    }
+   },
+   "frozen_on": {
+    "n": 1902,
+    "share": {
+     "Last Hit": 0.19,
+     "Thin": 0.136,
+     "Slow Push": 0.181,
+     "Shove": 0.493
+    }
+   },
+   "freezing": {
+    "n": 2031,
+    "share": {
+     "Last Hit": 0.207,
+     "Thin": 0.308,
+     "Slow Push": 0.357,
+     "Shove": 0.128
+    }
+   },
+   "pushing": {
+    "n": 302,
+    "share": {
+     "Last Hit": 0.119,
+     "Thin": 0.255,
+     "Slow Push": 0.228,
+     "Shove": 0.397
+    }
+   },
+   "trade_rate": {
+    "edge+": 0.409,
+    "edge-": 0.172
+   },
+   "deaths": 2.6875,
+   "recalls": 13.15625,
+   "crashes": 33.90625,
+   "connected_trades": 46.828125,
+   "plate1": [
+    31.0,
+    1.0
+   ],
+   "plate2": [
+    50.0,
+    1.0
+   ],
+   "plate3": [
+    71.5,
+    1.0
+   ]
+  },
+  "candidate|1": {
+   "other": {
+    "n": 8325,
+    "share": {
+     "Last Hit": 0.288,
+     "Thin": 0.194,
+     "Slow Push": 0.207,
+     "Shove": 0.311
+    }
+   },
+   "all": {
+    "n": 17661,
+    "share": {
+     "Last Hit": 0.268,
+     "Thin": 0.191,
+     "Slow Push": 0.199,
+     "Shove": 0.343
+    }
+   },
+   "behavior": {
+    "n": 17661,
+    "share": {
+     "Hold": 0.24,
+     "Yield": 0.199,
+     "Trade": 0.288,
+     "Safe": 0.209,
+     "Recall": 0.064
+    }
+   },
+   "neutral": {
+    "n": 5098,
+    "share": {
+     "Last Hit": 0.248,
+     "Thin": 0.176,
+     "Slow Push": 0.196,
+     "Shove": 0.381
+    }
+   },
+   "frozen_on": {
+    "n": 1939,
+    "share": {
+     "Last Hit": 0.212,
+     "Thin": 0.164,
+     "Slow Push": 0.089,
+     "Shove": 0.535
+    }
+   },
+   "freezing": {
+    "n": 2051,
+    "share": {
+     "Last Hit": 0.297,
+     "Thin": 0.247,
+     "Slow Push": 0.277,
+     "Shove": 0.178
+    }
+   },
+   "pushing": {
+    "n": 248,
+    "share": {
+     "Last Hit": 0.173,
+     "Thin": 0.149,
+     "Slow Push": 0.21,
+     "Shove": 0.468
+    }
+   },
+   "trade_rate": {
+    "edge+": 0.414,
+    "edge-": 0.169
+   },
+   "deaths": 2.625,
+   "recalls": 12.609375,
+   "crashes": 36.59375,
+   "connected_trades": 46.9375,
+   "plate1": [
+    32.0,
+    1.0
+   ],
+   "plate2": [
+    61.0,
+    1.0
+   ],
+   "plate3": [
+    77.0,
+    1.0
+   ]
+  }
+ },
+ "refs": {
+  "base|0|farm4": [
+   10.20138987542408,
+   0.3537153225261597
+  ],
+  "base|0|thin4": [
+   8.675375860847286,
+   0.24986931397489762
+  ],
+  "base|0|shove4": [
+   3.038592897623657,
+   0.4032633476011203
+  ],
+  "base|0|hunt4": [
+   11.804382770014405,
+   0.32571908324012777
+  ],
+  "base|0|shove_hunt4": [
+   6.426328919624815,
+   0.3847058929197231
+  ],
+  "base|0|freeze_hunt4": [
+   11.000202224428065,
+   0.3488293915341083
+  ],
+  "base|1|farm4": [
+   10.960353750543106,
+   0.29283534349552653
+  ],
+  "base|1|thin4": [
+   8.821389800625193,
+   0.26526299426013034
+  ],
+  "base|1|shove4": [
+   2.953476606971329,
+   0.32419721330079965
+  ],
+  "base|1|hunt4": [
+   12.59713227772233,
+   0.2551529298412487
+  ],
+  "base|1|shove_hunt4": [
+   6.450901182683554,
+   0.3530892589690502
+  ],
+  "base|1|freeze_hunt4": [
+   11.302340849760654,
+   0.36414868981797804
+  ],
+  "candidate|0|farm4": [
+   3.8912484676720576,
+   0.6643506766354993
+  ],
+  "candidate|0|thin4": [
+   5.014405382216765,
+   0.6622953911009766
+  ],
+  "candidate|0|shove4": [
+   3.879927503508514,
+   0.6077536385739477
+  ],
+  "candidate|0|hunt4": [
+   5.47151029611097,
+   0.665175325548448
+  ],
+  "candidate|0|shove_hunt4": [
+   4.772505950800853,
+   0.950341940986785
+  ],
+  "candidate|0|freeze_hunt4": [
+   6.700016767025083,
+   0.7445220213124125
+  ],
+  "candidate|1|farm4": [
+   3.9558289976663255,
+   0.6580518540284459
+  ],
+  "candidate|1|thin4": [
+   6.313208992233421,
+   0.6152213592860029
+  ],
+  "candidate|1|shove4": [
+   3.1608254634179325,
+   0.6152235325317854
+  ],
+  "candidate|1|hunt4": [
+   5.828511814259465,
+   0.7093572249545742
+  ],
+  "candidate|1|shove_hunt4": [
+   4.53428993173567,
+   0.7596859675883826
+  ],
+  "candidate|1|freeze_hunt4": [
+   7.105018130897877,
+   0.5371038942203292
+  ]
+ }
+}

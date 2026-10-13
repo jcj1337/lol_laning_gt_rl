@@ -1,4 +1,5 @@
-"""M4.2e-D viewer: the recordings, replays, coordinates, summaries and tick traces it shows agree with the engine."""
+"""M4.2e-D viewer: the recordings, replays, coordinates, summaries and tick traces it shows agree with the engine
+(three-action matchups 1-7 on m4_lasthit(); four-action matchups 4A-* on m4_four_actions())."""
 
 import random
 
@@ -8,6 +9,7 @@ from lanegame.champions import CHAMP_ABSENT
 from lanegame.champions_m4 import context
 from lanegame.config import B_HOLD, W_CLEAR, W_HOLD, W_THIN, champ_act
 from lanegame.env import LaneEnv
+from lanegame.experiments.m43c import strategies as st
 from lanegame.experiments.m4 import zoning_natural as zn
 from lanegame.mechanics import step_turn
 from lanegame.viewer import policies as pl
@@ -17,11 +19,13 @@ A, B = 0, 1
 
 
 def matchup(name, seed=3):
-    sc, gap, pa, pb, n, _ = pl.MATCHUPS[name]
-    return ss.play(ss.Setup(scenario=sc, gap=gap, seed=seed), policies=(pl.POLICIES[pa], pl.POLICIES[pb]), turns=n)
+    m = pl.MATCHUPS[name]
+    return ss.play(ss.Setup(m.config, m.scenario, m.gap, seed), policies=(pl.POLICIES[m.pa], pl.POLICIES[m.pb]),
+                   turns=m.turns)
 
 
 ALL = list(pl.MATCHUPS)
+FOUR = [n for n, m in pl.MATCHUPS.items() if m.config == "m4_four_actions"]
 
 
 def strip(info):
@@ -84,8 +88,15 @@ def test_tick_trace_is_the_authoritative_lane_step(name):
         info, lane = t.info, rec.lanes[j]
         tr = info["lane_trace"]
         assert len(tr) == cfg.ticks_per_turn
-        budget = tuple(ctx.wave_budget(info["waves"][s], info["levels_before"][s], rec.champs[j].side(s).items)
-                       for s in (A, B))
+        # the budgets of the turn, from the engine's rule on the start-of-turn lane (four-action Thin / Slow Push depend
+        # on it; for the share model this is ctx.wave_budget)
+        budget = tuple(ctx.state_budget(info["waves"][s], ctx.capacity(info["levels_before"][s],
+                                                                         rec.champs[j].side(s).items),
+                                        lane, info["k"], s) for s in (A, B))
+        assert budget == tuple(info["wave_budget"])
+        if cfg.wave_thin_rule == "share":
+            assert budget == tuple(ctx.wave_budget(info["waves"][s], info["levels_before"][s],
+                                                   rec.champs[j].side(s).items) for s in (A, B))
         res = step_turn(lane, info["k"], *info["lane_codes"], cfg, record=True,
                         champion_reach=tuple(info["champion_reach"]), champion_budget=budget)
         assert res.state == rec.lanes[j + 1]
@@ -157,7 +168,7 @@ def test_policies_match_zoning_natural_and_explain_fallbacks():
     """decide() plays exactly zoning_natural.Policy.act (same rules) and every note is non-empty."""
     rec = matchup("7. Power advantage")
     for name, pol in pl.POLICIES.items():
-        if isinstance(pol, pl.CrashRecallPolicy):
+        if isinstance(pol, (pl.CrashRecallPolicy, st.Strategy, st.Phased)):
             continue
         ref = zn.Policy(name, pol.behavior, pol.wave, pol.pressure)
         for i in range(rec.n + 1):
@@ -235,3 +246,102 @@ def test_render_builds_every_frame():
                 if not d["absent"]:
                     assert abs(champs.x[s] - d["pos_global"]) <= 0.25
     render.timeline_figure(ss.timeline(rec), 0)
+
+
+# ---------------------------------------------------------------------- M4.3c stabilization: the four-action model
+def test_four_action_matchups_play_all_four_wave_actions_with_shove_labels():
+    from lanegame.config import W_SHOVE, W_SLOWPUSH
+    seen, labels = set(), set()
+    for name in FOUR:
+        rec = matchup(name)
+        assert rec.cfg.wave_slowpush and rec.cfg == ss.config("m4_four_actions")
+        for t in rec.turns:
+            for s in (A, B):
+                if t.info["actions"][s] != CHAMP_ABSENT:
+                    seen.add(t.info["waves"][s])
+                    labels.add(t.info["action_labels"][s].split("-")[0])
+    assert seen == {W_HOLD, W_THIN, W_SLOWPUSH, W_SHOVE}
+    assert labels <= {"LH", "TN", "SL", "SH"} and "CL" not in labels
+    assert ss.action_name(ss.config("m4_four_actions"), champ_act(W_SHOVE, B_HOLD)) == "Shove + Hold"
+    assert ss.action_name(ss.config("m4_lasthit"), champ_act(W_CLEAR, B_HOLD)) == "Clear + Hold"   # unchanged
+
+
+@pytest.mark.parametrize("name", FOUR)
+def test_wave_panel_reports_calculated_and_applied_damage(name):
+    """The panel's budget is the engine's (info["wave_budget"], = the four-action rule on the start-of-turn lane); the
+    applied damage is the tick trace's and the lane events', never above the budget."""
+    from lanegame.mechanics import start_packets, strength_need
+    rec = matchup(name)
+    cfg, ctx = rec.cfg, context(rec.cfg)
+    for i, t in enumerate(rec.turns):
+        p, info = ss.wave_panel(rec, i), t.info
+        P = start_packets(rec.lanes[i], cfg)
+        for s, n in enumerate(ss.SIDES):
+            d = p[n]
+            assert d["budget"] == info["wave_budget"][s]
+            assert d["dealt"] == sum(d["dealt_per_tick"]) == info["events"]["champion_hp"][1 - s] <= d["budget"]
+            assert (d["need_thin"], d["need_slowpush"]) == (strength_need(P, s, info["k"], 0, cfg),
+                                                            strength_need(P, s, info["k"], 1, cfg))
+            if info["away"][s]:
+                assert d["dealt"] == 0
+                continue
+            C, w = d["capacity"], info["waves"][s]
+            want = {W_HOLD: 1, W_THIN: min((C + 1) // 2, 1 + d["need_thin"]),
+                    st.SL: min((C + 1) // 2, 1 + d["need_slowpush"]), st.SH: C}[w]
+            assert d["budget"] == want
+            if info["modes"][s] in ("trading", "channel"):
+                assert d["dealt"] == 0
+    assert ss.wave_panel(rec, rec.n) is None
+
+
+def test_derived_scenarios_and_the_b_ahead_gap():
+    cfg = ss.config("m4_four_actions")
+    t = context(cfg).t
+    lane, m4, k = ss.start_state(ss.Setup("m4_four_actions", "freeze21"))
+    base = ss.start_state(ss.Setup("m4_four_actions", "freeze"))
+    assert lane == base[0]._replace(bh=21) and k == base[2]
+    lane, m4, _ = ss.start_state(ss.Setup("m4_four_actions", "oversized"))
+    assert lane.bh == 24 and lane.ax == 0
+    _, m4, _ = ss.start_state(ss.Setup("m4_four_actions", "freeze_early"))
+    assert t.level_by_xp[m4.a.xp] == t.level_by_xp[m4.b.xp] == 4 and m4.a.hp == t.hp_max[4]
+    _, m4, _ = ss.start_state(ss.Setup("m4_four_actions", "neutral", "b_large"))
+    assert (m4.a.items, m4.b.items) == (0, 50 * cfg.gold_scale)
+    # the four-action preset uses the m4_lasthit() starts of the redesign study
+    assert ss.start_state(ss.Setup("m4_four_actions", "freeze"))[0] == ss.start_state(ss.Setup("m4_lasthit", "freeze"))[0]
+
+
+def test_manual_play_accepts_every_four_action_wave_and_rejects_slow_push_elsewhere():
+    from lanegame.config import W_SHOVE, W_SLOWPUSH
+    setup = ss.Setup("m4_four_actions", "neutral")
+    codes = [champ_act(w, B_HOLD) for w in (W_HOLD, W_THIN, W_SLOWPUSH, W_SHOVE)]
+    rec = ss.play(setup, prefix=[(c, champ_act(W_HOLD, B_HOLD)) for c in codes])
+    assert [t.info["action_labels"][0] for t in rec.turns] == ["LH-H", "TN-H", "SL-H", "SH-H"]
+    assert [ss.wave_panel(rec, i)["A"]["wave"] for i in range(4)] == ["Last Hit", "Thin", "Slow Push", "Shove"]
+    with pytest.raises(ValueError, match="illegal action"):
+        ss.play(ss.Setup("m4_lasthit", "neutral"), prefix=[(champ_act(W_SLOWPUSH, B_HOLD), champ_act(W_HOLD, B_HOLD))])
+
+
+def test_scheduled_strategy_replays_from_its_actions():
+    """A turn-scheduled strategy reads only the recording's turn index: replaying its actions reproduces the recording,
+    and branching keeps the prefix."""
+    rec = matchup("4A-4. Slow Push, then Shove, against Thin")
+    again = ss.play(rec.setup, prefix=rec.actions)
+    assert [strip(t.info) for t in again.turns] == [strip(t.info) for t in rec.turns]
+    waves = [t.info["waves"][A] for t in rec.turns if t.info["actions"][A] != CHAMP_ABSENT]
+    assert st.SL in waves[:10] and st.SH in waves[10:]
+
+
+def test_render_four_action_frames_label_the_wave_damage():
+    pytest.importorskip("plotly")
+    from lanegame.viewer import render
+    rec = matchup("4A-1. Slow Push -> Last Hit -> Shove")
+    for i in range(rec.n + 1):
+        for f in range(ss.n_frames(rec, i)):
+            v = ss.frame_view(rec, i, f)
+            fig = render.lane_figure(v, rec.cfg)
+            texts = [a.text for a in fig.layout.annotations]
+            for n in ss.SIDES:
+                if not v["champions"][n]["absent"]:
+                    assert any(x.startswith(f"L{v['champions'][n]['level']}") for x in texts)
+            if i < rec.n and f > 0 and v["wave"]["A"]["dealt"] is not None and not rec.turns[i].info["away"][A]:
+                assert any(f"{v['wave']['A']['dealt']}/{v['wave']['A']['budget']}" in x for x in texts)

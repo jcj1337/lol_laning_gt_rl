@@ -54,18 +54,28 @@ def max_farm_per_hp(cfg: GameConfig) -> float:
     return float(q(cfg.farm_per_hp) * max(bases))
 
 
+def reward_per_hp(cfg: GameConfig) -> float:
+    """The most reward one enemy minion HP dying can pay: its largest farm value plus, under the M4.3c opt-in
+    xp_reward_weight lambda, lambda times its XP (xp_per_hp). With lambda = 0 this is max_farm_per_hp."""
+    lam = cfg.xp_reward_weight if cfg.is_m4 else 0.0
+    return max_farm_per_hp(cfg) + lam * cfg.xp_per_hp
+
+
 def tail_constant(cfg: GameConfig, gamma: Optional[float] = None, a_max: Optional[int] = None) -> float:
-    """Omega of design §10.5.3 (the truncation bound is gamma^W Omega)."""
+    """Omega of design §10.5.3 (the truncation bound is gamma^W Omega). M4.3c opt-ins: the farm terms count the XP
+    channel of xp_reward_weight too (the same bound on the minion HP dying per turn, times farm value + lambda xi), and
+    the bounty term uses the shortest death absence of death_turns_by_level (deaths can then be most frequent)."""
     from ..lane_enum import recorded_bounds
     g = cfg.gamma if gamma is None else gamma
     if a_max is None:
         a_max = recorded_bounds(cfg)["A_max"]
-    f = max_farm_per_hp(cfg)
+    f = reward_per_hp(cfg)
     s = cfg.spawn_every_turns
     a = f * (a_max + cfg.wave_hp * (s - 1) / s)
     b = f * cfg.wave_hp / s
     plates = len(cfg.plate_thresholds) * cfg.plate_gold if cfg.is_m4 else 0.0
-    return a + b / (1.0 - g) + cfg.kill_bounty / (1.0 - g ** (cfg.death_turns + 1)) + plates
+    d = min(cfg.death_turns_by_level) if (cfg.is_m4 and cfg.death_turns_by_level) else cfg.death_turns
+    return a + b / (1.0 - g) + cfg.kill_bounty / (1.0 - g ** (d + 1)) + plates
 
 
 def tail_bound(cfg: GameConfig, window: int, gamma: Optional[float] = None) -> float:
@@ -102,7 +112,7 @@ def per_turn_bound(cfg: GameConfig) -> float:
     thinning, plus the plates one turn can cross, plus one bounty."""
     from ..progression import tables
     from ..mechanics import minion_damage
-    f = max_farm_per_hp(cfg)
+    f = reward_per_hp(cfg)
     kills = cfg.ticks_per_turn * cfg.hp_cap + cfg.ticks_per_turn * cfg.tower_siege_damage + cfg.thin_damage
     if cfg.wave_dynamics == "natural":
         # per tick: the lane front and the crashed mass each lose at most the Lanchester damage of a blob of hp_cap

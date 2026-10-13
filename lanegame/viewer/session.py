@@ -8,6 +8,11 @@ progression tables (`summary`, `turn_events`); nothing is recomputed.
 
 Coordinates: lane and champion records are stored in each side's OWN coordinates; A's own coordinates are global and
 B's are mirrored (global x = -own x). `lane_objects` and `champion_x` convert to global for rendering.
+
+M4.3c stabilization: the EXPERIMENTAL four-action preset `m4_four_actions()` (Last Hit / Thin / Slow Push / Shove) is
+the first configuration. Its start states are the `m4_lasthit()` states of the four-action redesign study (the lane is
+the same physics; only the wave budgets differ), its wave budgets depend on the lane (`summary`, `wave_panel`), and
+`wave_panel` shows each champion's calculated budget against the HP it actually removed, tick by tick.
 """
 
 from __future__ import annotations
@@ -17,29 +22,39 @@ from functools import lru_cache
 from typing import Dict, List, Optional, Sequence, Tuple
 
 from ..champions_m4 import M4State, context, initial_m4
-from ..config import (BEHAVIOR_NAMES, CHAMP_ABSENT, NATURAL_WAVE_NAMES, OBJECTIVE_NAMES, GameConfig, champ_behavior,
-                      champ_objective, champ_wave)
+from ..config import (BEHAVIOR_NAMES, CHAMP_ABSENT, OBJECTIVE_NAMES, GameConfig, champ_behavior, champ_objective,
+                      champ_wave, wave_display_names)
 from ..env import LaneEnv
 from ..experiments.m4 import natural_waves as nw
 from ..experiments.m4 import zoning_natural as zn
-from ..mechanics import initial_state
+from ..mechanics import _blob_hp, initial_state, start_packets, strength_need, window_strength
 from ..progression import plates_broken
 from ..state import State
 
 A, B = 0, 1
 SIDES = ("A", "B")
 
-CONFIGS = {"m4_lasthit": GameConfig.m4_lasthit, "m4_lane": GameConfig.m4_lane, "m4_natural": GameConfig.m4_natural}
+CONFIGS = {"m4_four_actions": GameConfig.m4_four_actions, "m4_lasthit": GameConfig.m4_lasthit,
+           "m4_lane": GameConfig.m4_lane, "m4_natural": GameConfig.m4_natural}
+# the configuration whose deterministic start states a configuration uses (the four-action redesign study generated
+# its starts under m4_lasthit(); the lane physics is the same)
+START_SOURCE = {"m4_four_actions": "m4_lasthit"}
 SCENARIOS = {
     "s0": "Standard initial state (turn 0: a fresh wave at each base, both champions at their tower).",
     "neutral": "Neutral lane, fronts in contact at the lane cell (k9 of Hold/Hold).",
     "pushed": "Established slow push: A's stack next to B's tower (A Thinned at k1, then Held).",
     "siege": "Active siege: A's crashed mass under B's tower, A in B's tower cell.",
-    "freeze": "Outside-tower freeze: B's wave held at A's -1 cell by A's threshold freezer.",
+    "freeze": "Outside-tower freeze: B's wave held at A's -1 cell by A's threshold freezer (both level 10).",
+    "freeze_early": "The same freeze with both champions at level 4 (an early-laning freeze).",
+    "freeze21": "The freeze with B's held front raised to 21 HP: an oversized wave at the freezer's tower.",
+    "oversized": "The neutral lane with B's front raised to 24 HP: an oversized enemy wave at the lane cell.",
 }
+# scenario -> (base start, B front HP or None, both champions' level or None)
+DERIVED = {"freeze_early": ("freeze", None, 4), "freeze21": ("freeze", 21, None), "oversized": ("neutral", 24, None)}
 GAPS = {"equal": "equal power", "moderate": "A x1.24 attack power (16 vs 4 gold invested)",
         "large": "A x1.76 attack power (50 gold invested)", "levels": "A +3 levels",
-        "large_levels": "A +3 levels and 50 gold invested (x2.04)"}
+        "large_levels": "A +3 levels and 50 gold invested (x2.04)",
+        "b_large": "B x1.76 attack power (B 50 gold invested): A is the weak side"}
 
 
 @dataclass(frozen=True)
@@ -57,20 +72,43 @@ def config(name: str) -> GameConfig:
 
 @lru_cache(maxsize=8)
 def _starts(name: str) -> dict:
-    return zn.starts(config(name))
+    return zn.starts(config(START_SOURCE.get(name, name)))
+
+
+def at_level(m4: M4State, cfg: GameConfig, level: int) -> M4State:
+    """Both champions at the first XP of `level`, with the full HP of that level."""
+    t = context(cfg).t
+    xp = t.xp_cum[level]
+    return M4State(m4.a._replace(xp=xp, hp=t.hp_max[level]), m4.b._replace(xp=xp, hp=t.hp_max[level]))
+
+
+def gapped(m4: M4State, cfg: GameConfig, gap: str) -> M4State:
+    """`zoning_natural.with_gap` (A's lead), or its mirror for "b_large" (B 50 resources invested, A none)."""
+    if gap == "equal":
+        return m4
+    if gap == "b_large":
+        m = zn.with_gap(m4.mirror(), cfg, "large")
+        return m.mirror()
+    return zn.with_gap(m4, cfg, gap)
 
 
 def start_state(setup: Setup) -> Tuple[State, M4State, int]:
     """(lane, champions, k0) of the setup. Non-s0 scenarios are the deterministic M4.2e-B/C start states
-    (`zoning_natural.starts`); the power gap is `zoning_natural.with_gap` (A's investment / level lead)."""
+    (`zoning_natural.starts`, generated under START_SOURCE) or a DERIVED variant of one; the power gap is `gapped`
+    (A's investment / level lead, or B's for "b_large")."""
     cfg = config(setup.config)
     if setup.scenario == "s0":
         lane, m4, k0 = initial_state(cfg), initial_m4(cfg), 0
+    elif setup.scenario in DERIVED:
+        base, hb, level = DERIVED[setup.scenario]
+        lane, m4, k0 = _starts(setup.config)[base]
+        if hb is not None:
+            lane = lane._replace(bh=hb)
+        if level is not None:
+            m4 = at_level(m4, cfg, level)
     else:
         lane, m4, k0 = _starts(setup.config)[setup.scenario]
-    if setup.gap != "equal":
-        m4 = zn.with_gap(m4, cfg, setup.gap)
-    return lane, m4, k0
+    return lane, gapped(m4, cfg, setup.gap), k0
 
 
 @dataclass
@@ -106,9 +144,10 @@ class Recording:
 def play(setup: Setup, prefix: Sequence[Tuple[int, int]] = (), policies=(None, None), turns: int = 0,
          prefix_note: str = "manual") -> Recording:
     """Replay `prefix` (pairs of action codes) from the setup's start and seed, then play `turns` more turns with the
-    policies. A policy decides from the same pre-turn state for both sides (simultaneous moves). Illegal actions raise
-    (the environment's own check). `prefix_note` labels prefix actions of a side without a policy ("manual", or
-    "recorded" for an exported trajectory)."""
+    policies. A policy decides from the same pre-turn state for both sides (simultaneous moves) and the turn index i
+    of the recording (turn schedules of lanegame.experiments.m43c.strategies; every other policy ignores it). Illegal
+    actions raise (the environment's own check). `prefix_note` labels prefix actions of a side without a policy
+    ("manual", or "recorded" for an exported trajectory)."""
     cfg = config(setup.config)
     lane, m4, k0 = start_state(setup)
     env = LaneEnv(cfg, record_ticks=True)
@@ -123,15 +162,17 @@ def play(setup: Setup, prefix: Sequence[Tuple[int, int]] = (), policies=(None, N
                 if pol is None:
                     notes[s] = prefix_note
                 else:
-                    code, why = pol.decide(cfg, env.state, env.champ, s)
+                    code, why = pol.decide(cfg, env.state, env.champ, s, i)
                     notes[s] = why if code == pair[s] else "recorded"
             else:
-                pair[s], notes[s] = policies[s].decide(cfg, env.state, env.champ, s)
+                pair[s], notes[s] = policies[s].decide(cfg, env.state, env.champ, s, i)
         r = env.step(*pair)
         rec.turns.append(Turn(r.info, tuple(notes)))
         rec.lanes.append(env.state)
         rec.champs.append(env.champ)
         rec.legal.append((env.legal(A), env.legal(B)))
+        if r.terminated:                     # an EXPERIMENTAL terminal_rule ended the game: nothing follows
+            break
     return rec
 
 
@@ -214,9 +255,14 @@ def summary(rec: Recording, i: int, s: int) -> dict:
          "pos_global": champion_x(rec.champs[i], s),
          "tower_damage_dealt": me.tower_dmg, "tower_damage_max": cfg.plate_thresholds[-1],
          "plates_broken": plates_broken(me.tower_dmg, t), "plates_total": len(cfg.plate_thresholds)}
-    if cfg.natural_waves and cfg.wave_clear_scaling != "none":
-        d["wave_budgets"] = {name: ctx.wave_budget(slot, L, me.items) for slot, name in ((0, "Hold"), (2, "Thin"),
-                                                                                          (1, "Clear"))}
+    names = wave_display_names(cfg)
+    if cfg.natural_waves and cfg.wave_clear_scaling == "capacity":
+        # what each wave action would spend from THIS state (the four-action Thin and Slow Push depend on the lane)
+        C = ctx.capacity(L, me.items)
+        d["capacity"] = C
+        d["wave_budgets"] = {names[slot]: ctx.state_budget(slot, C, rec.lanes[i], rec.k0 + i, s) for slot in names}
+    elif cfg.natural_waves and cfg.wave_clear_scaling != "none":
+        d["wave_budgets"] = {names[slot]: ctx.wave_budget(slot, L, me.items) for slot in names}
     return d
 
 
@@ -244,14 +290,67 @@ def timeline(rec: Recording) -> Dict[str, list]:
 
 # ---------------------------------------------------------------------- names
 def action_name(cfg: GameConfig, code: int) -> str:
-    """Readable action name: 'Thin + Hold + Pressure', 'Recall', 'Absent' (the engine's own labels are 'TN-H+P')."""
+    """Readable action name: 'Thin + Hold + Pressure', 'Slow Push + Trade', 'Shove + Hold' (four-action model),
+    'Recall', 'Absent' (the engine's own labels are 'TN-H+P', 'SL-T', 'SH-H')."""
     if code == CHAMP_ABSENT:
         return "Absent"
     beh, obj = champ_behavior(code), champ_objective(code)
     if BEHAVIOR_NAMES[beh] == "Recall":
         return "Recall"
-    wave = NATURAL_WAVE_NAMES[champ_wave(code)] if cfg.natural_waves else cfg.label(code).split("-")[0]
+    wave = wave_display_names(cfg).get(champ_wave(code), cfg.label(code).split("-")[0])
     return f"{wave} + {BEHAVIOR_NAMES[beh]}" + (f" + {OBJECTIVE_NAMES[obj]}" if obj else "")
+
+
+def wave_name(cfg: GameConfig, slot: int) -> str:
+    return wave_display_names(cfg).get(slot, str(slot))
+
+
+# ---------------------------------------------------------------------- wave management of a turn (what each champion
+# was allowed to spend on enemy minions, and what it actually removed)
+def wave_panel(rec: Recording, i: int) -> Optional[Dict[str, dict]]:
+    """Per side, for turn i (None at the final state): the chosen wave action, the capacity C and the start-of-turn
+    lane numbers its budget is computed from (blobs; window strengths and the Thin / Slow Push needs of the
+    four-action model), the budget the engine gave the lane step (`info["wave_budget"]`, the CALCULATED damage), the
+    HP of enemy minions the champion actually removed, per tick and in total (the authoritative tick trace and
+    `events["champion_hp"]`: the APPLIED damage), and why any budget stayed unspent."""
+    if i >= rec.n:
+        return None
+    cfg, info = rec.cfg, rec.turns[i].info
+    lane, k, m4 = rec.lanes[i], rec.k0 + i, rec.champs[i]
+    ctx = context(cfg)
+    P = start_packets(lane, cfg)
+    four = cfg.natural_waves and cfg.wave_thin_rule == "strength"
+    S = [window_strength(P[s], k, cfg) for s in (A, B)] if four else None
+    trace = info.get("lane_trace") or []
+    out = {}
+    for s in (A, B):
+        n = SIDES[s]
+        budget = info["wave_budget"][s] if info.get("wave_budget") is not None else None
+        dealt = info["events"]["champion_hp"][1 - s] if "champion_hp" in info["events"] else None
+        ticks = [tk["champion"][s] for tk in trace] if trace else []
+        mode = info["modes"][s]
+        if info["away"][s]:
+            why = "away (no wave damage)"
+        elif mode in ("trading", "channel"):
+            why = f"{'connected trade' if mode == 'trading' else 'interrupted Recall'}: no wave damage this turn"
+        elif budget is not None and dealt is not None and dealt < budget:
+            why = (f"{budget - dealt} HP unspent: no reachable enemy minion (reach line own "
+                   f"{info['champion_reach'][s]:+d}) or the target died first (overkill is lost)")
+        else:
+            why = "spent in full" if budget else ""
+        L = info["levels_before"][s]
+        d = {"wave": wave_name(cfg, info["waves"][s]) if not info["away"][s] else "—",
+             "capacity": ctx.capacity(L, m4.side(s).items) if cfg.wave_clear_scaling == "capacity" else None,
+             "own_blob": _blob_hp(P[s], cfg), "enemy_blob": _blob_hp(P[1 - s], cfg),
+             "budget": budget, "dealt": dealt, "dealt_per_tick": ticks, "reach": info["champion_reach"][s],
+             "mode": mode, "note": why}
+        if four:
+            d["strength_own"] = float(S[s])
+            d["strength_enemy"] = float(S[1 - s])
+            d["need_thin"] = strength_need(P, s, k, 0, cfg)
+            d["need_slowpush"] = strength_need(P, s, k, 1, cfg)
+        out[n] = d
+    return out
 
 
 # ---------------------------------------------------------------------- frames of a turn (what the picture shows)
@@ -317,6 +416,22 @@ def frame_view(rec: Recording, i: int, f: int) -> dict:
     champs = {n: summary(rec, j, s) for s, n in enumerate(SIDES)}
     towers = {"A": champs["B"], "B": champs["A"]}          # A's tower carries the damage B dealt, and vice versa
     actions = tuple(rec.turns[i].info["actions"]) if i < rec.n else None
+    # the champions' wave damage shown with the frame: the turn's budget (start frame), the HP removed in that tick
+    # (tick frames) or over the whole turn (end frame)
+    wave = None
+    panel = wave_panel(rec, i)
+    if panel is not None:
+        wave = {}
+        for s, n in enumerate(SIDES):
+            p = panel[n]
+            if f == 0:
+                shown = None
+            elif f <= T:
+                shown = p["dealt_per_tick"][f - 1] if p["dealt_per_tick"] else None
+            else:
+                shown = p["dealt"]
+            wave[n] = {"wave": p["wave"], "budget": p["budget"], "dealt": shown, "frame": "budget" if f == 0 else
+                       ("tick" if f <= T else "turn")}
     return {"turn": i, "k": rec.k0 + i, "frame": f, "frame_name": frame_name(rec, i, f), "state_index": j,
             "packets": {n: objs[n]["packets"] for n in SIDES}, "siege": {n: objs[n]["siege"] for n in SIDES},
             "contact": contact_of(objs), "moves": moves, "champions": champs,
@@ -324,7 +439,8 @@ def frame_view(rec: Recording, i: int, f: int) -> dict:
                            "plates": towers[n]["plates_broken"], "plates_total": towers[n]["plates_total"]}
                        for n in SIDES},
             "actions": actions,
-            "action_names": tuple(action_name(cfg, a) for a in actions) if actions else ("", "")}
+            "action_names": tuple(action_name(cfg, a) for a in actions) if actions else ("", ""),
+            "wave": wave}
 
 
 def wave_status(view: dict) -> str:
@@ -356,6 +472,10 @@ def turn_events(info: dict, cfg: GameConfig) -> List[str]:
     ev: List[str] = []
     for s in (A, B):
         n, o = SIDES[s], SIDES[1 - s]
+        wb = info.get("wave_budget")
+        if wb is not None and not info["away"][s] and "champion_hp" in info["events"]:
+            dealt = info["events"]["champion_hp"][1 - s]
+            ev.append(f"{n} {wave_name(cfg, info['waves'][s])}: removed {dealt} of {wb[s]} HP")
         if info["recalled"][s]:
             ev.append(f"{n} recalled")
         if info["recall_interrupted"][s]:

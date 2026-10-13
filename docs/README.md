@@ -52,7 +52,8 @@ The reports are grouped by phase. Within a folder the files are listed in the or
 | [m4_3c_economic_objective_design.md](m4/m4_3c_economic_objective_design.md) | M4.3c design: gold + XP objective, termination at the final plate, game-length audit, freeze incentives, death timers (PROPOSED, awaiting review) |
 | [m4_3c_xp_range_screen.md](m4/m4_3c_xp_range_screen.md) | M4.3c quick screen of `xp_range` 3 / 2 / 1 (freeze denial, neutral-lane control): keep 3, investigate another mechanic |
 | [m4_3c_wave_control_screen.md](m4/m4_3c_wave_control_screen.md) | M4.3c quick screen of Hold capped at 1 HP and an adaptive (target-based) Thin: adopt Hold1 on its own, not adaptive Thin yet |
-| [m4_3c_four_action_wave_redesign.md](m4/m4_3c_four_action_wave_redesign.md) | M4.3c four-action wave management (EXPERIMENTAL `m4_four_actions()`): Last Hit / Thin / Slow Push / Clear with window-strength targets, 61-code action space; mechanically ready for PPO, Clear dominance unchanged |
+| [m4_3c_four_action_wave_redesign.md](m4/m4_3c_four_action_wave_redesign.md) | M4.3c four-action wave management (EXPERIMENTAL `m4_four_actions()`): Last Hit / Thin / Slow Push / Clear (now Shove) with window-strength targets, 61-code action space; mechanically ready for PPO, Clear dominance unchanged |
+| [m4_3c_strategic_economics_calibration.md](m4/m4_3c_strategic_economics_calibration.md) | M4.3c stabilization: Shove terminology, the four-action visual debugger, mixed-action sequences; economic diagnosis (the own-tower "crash tax" and break-even trades make Shove every side's best reply); opt-in XP reward, death schedule and terminal rule; EXPERIMENTAL candidate `m4_four_actions_econ()` |
 
 ## natural_waves/ — natural wave mechanics and the lane candidate (M4.2e)
 
