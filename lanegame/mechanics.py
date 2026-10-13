@@ -82,9 +82,10 @@ game layer turns them into farm payoffs. Plates are recorded separately
 from __future__ import annotations
 
 from dataclasses import dataclass, field
+from fractions import Fraction
 from typing import Dict, List, Optional, Tuple
 
-from .config import (CONTEST, F, NONE, PRESSURE, SH, SP, VISION, GameConfig, base_of, objective_of,
+from .config import (CONTEST, F, NONE, PRESSURE, SH, SP, VISION, W_SLOWPUSH, GameConfig, base_of, objective_of,
                      posture_of, wave_of)
 from .state import State, make_side
 
@@ -127,6 +128,8 @@ def wave_actions(state: State, s: int, cfg: GameConfig) -> Tuple[int, ...]:
     model used 0, i.e. anywhere from the lane inward).
     """
     if cfg.wave_dynamics == "natural":
+        if cfg.wave_slowpush:              # M4.3c four-action model: + Slow Push (EXPERIMENTAL)
+            return (SP, SH, F, W_SLOWPUSH)
         return (SP, SH, F)                 # Hold, Clear, Thin: what the champion does, always legal
     efx, efh = (state.bx, state.bh) if s == A else (state.ax, state.ah)
     if efh > 0 and -efx <= cfg.freeze_legal_max:
@@ -226,6 +229,86 @@ def _blob_hp(packets, cfg: GameConfig) -> int:
         return packets[0][1]
     fx = packets[0][0]
     return packets[0][1] + sum(p[1] for p in packets[1:] if p[0] >= fx - 1)
+
+
+def thin_need(P, s: int, cfg: GameConfig) -> int:
+    """wave_thin_rule "adaptive" (EXPERIMENTAL, docs/m4/m4_3c_wave_control_screen.md): the HP of the enemy blob above
+    the largest blob whose minions do not out-fire side s's, on the blobs of the start-of-turn packets P:
+
+        f_own = max(1, floor(2 h_own / W))  (0 with no own packet),   h* = floor((W (f_own + 1) - 1) / 2),
+        need  = max(0, h_enemy - h*)
+
+    (h* = the largest h with floor(2h / W) <= f_own under lanchester_half; 11 against an own blob of 8-11, 15 against
+    12-15). Positions, reinforcements still walking and both champions' damage are ignored."""
+    he, ho = _blob_hp(P[1 - s], cfg), _blob_hp(P[s], cfg)
+    fo = max(1, (2 * ho) // cfg.wave_hp) if ho > 0 else 0
+    target = (cfg.wave_hp * (fo + 1) - 1) // 2 if fo > 0 else 0
+    return max(0, he - target)
+
+
+# ---------------------------------------------------------------------------------------------------------------------
+# M4.3c four-action wave management (EXPERIMENTAL, wave_thin_rule "strength" / wave_slowpush;
+# docs/m4/m4_3c_four_action_wave_redesign.md). Thin and Slow Push spend only the damage needed to reach a target
+# balance of the two waves' WINDOW STRENGTH, on top of the Last Hit budget, up to their capacity.
+# Target margins in HP of window strength: Thin restores parity, Slow Push establishes a lead of one HP.
+STRENGTH_MARGIN = {F: 0, W_SLOWPUSH: 1}
+
+
+def start_packets(state: State, cfg: GameConfig):
+    """The packet lists [[x, hp], ...] of both sides (own coordinates, leading packet first) exactly as step_turn
+    builds them at the start of a turn."""
+    P = [[], []]
+    for s in (A, B):
+        fx, fh, rears = state.side(s)[:3]
+        if fh > 0:
+            P[s].append([fx, fh])
+        P[s].extend([x, cfg.wave_hp] for x in rears)
+    return P
+
+
+def window_strength(packets, k: int, cfg: GameConfig):
+    """Window strength of one side on turn k (exact Fraction, HP): the average minion HP fighting at its front over the
+    next reinforcement cycle, tau = spawn_interval ticks (one wave per side), assuming the front holds its cell:
+
+        S = (1 / tau) sum_p hp_p rho_p
+
+    rho_p = ticks of the window in which packet p fights at the front: tau for the leading packet and any packet
+    queued within one cell behind it (the blob); max(0, tau - d + 2) for a rear packet d >= 2 cells behind (it walks
+    one cell per tick and merges at distance 1, in tick d - 1); and, if a wave spawns at the end of this turn, for that
+    wave max(0, min(tau - n, tau - n - d + 2)), n = ticks_per_turn, d = its walk from the base to the front.
+    Reinforcements that arrive sooner count more, which makes the measure depend on where the waves meet. A side with
+    no packet has strength 0. Crashed masses are not counted (towers and defenders fight them)."""
+    if not packets:
+        return Fraction(0)
+    tau, n = cfg.spawn_interval, cfg.ticks_per_turn
+    fx = packets[0][0]
+    total = 0
+    for x, hp in packets:
+        d = fx - x
+        total += hp * (tau if d <= 1 else max(0, tau - d + 2))
+    if ((k + 1) * n) % cfg.spawn_interval == 0:          # a wave spawns at the own base at the end of this turn
+        d = fx + cfg.base
+        total += cfg.wave_hp * max(0, min(tau - n, tau - n - d + 2))
+    return Fraction(total, tau)
+
+
+def strength_need(P, s: int, k: int, margin: int, cfg: GameConfig) -> int:
+    """HP of enemy minions side s must remove so that the enemy's window strength is at most its own minus `margin`
+    (first order: an HP removed now lowers the enemy's strength by one HP):
+
+        need = max(0, ceil(S_enemy - S_own + margin))
+
+    on the start-of-turn packets P of turn k. Both champions' last hits are assumed to cancel; the opponent's current
+    action, tower fire and later turns are not predicted."""
+    diff = window_strength(P[1 - s], k, cfg) - window_strength(P[s], k, cfg) + margin
+    return max(0, -((-diff.numerator) // diff.denominator))
+
+
+def strength_budget(state: State, k: int, s: int, slot: int, last_hit: int, cap: int, cfg: GameConfig) -> int:
+    """The per-turn budget of a Thin (slot F) or Slow Push (slot W_SLOWPUSH) of side s under wave_thin_rule
+    "strength": the Last Hit budget plus the need of the slot's margin, never more than the slot's capacity `cap`:
+    min(cap, last_hit + strength_need(margin))."""
+    return min(cap, last_hit + strength_need(start_packets(state, cfg), s, k, STRENGTH_MARGIN[slot], cfg))
 
 
 def _sp_moves(x: int, h: int, t: int, k: int, cfg: GameConfig) -> bool:
@@ -644,7 +727,8 @@ def step_turn(state: State, k: int, act_a: int, act_b: int, cfg: GameConfig,
     """Advance the lane through decision turn k (ticks 2k+1 .. 2k+2).
 
     `champion_budget` (wave_dynamics "natural" only; None = champion_wave_damage[slot] HP per tick): each champion's
-    wave-damage budget for the whole turn in HP, split over the ticks (wave_clear_scaling, set by the M4 resolver).
+    wave-damage budget for the whole turn in HP, split over the ticks (wave_clear_scaling, set by the M4 resolver);
+    under wave_thin_rule "adaptive" a Thin side's budget is further capped at `thin_need` of the start-of-turn state.
 
     `champion_reach` (champion mode only; None = the legacy rule) overrides, per side, the furthest
     own-perspective position at which the champion acts on its leading wave (shove damage, the push that
@@ -659,6 +743,9 @@ def step_turn(state: State, k: int, act_a: int, act_b: int, cfg: GameConfig,
     siege_start = list(siege)
     crash_hp = [0, 0]
     acts = (act_a, act_b)
+    if champion_budget is not None and cfg.wave_thin_rule == "adaptive":
+        champion_budget = tuple(min(b, thin_need(P, s, cfg)) if wave_of(acts[s]) == F else b
+                                for s, b in enumerate(champion_budget))
     trace = [] if record else None
     ev = {key: [0, 0] for key in EVENT_KEYS}
     if cfg.wave_dynamics == "natural":

@@ -1366,3 +1366,37 @@ correct. **Next (M4.3c, to be decided together):** the design investigation of C
 against the existing finals as the screen for each lever (minutes, no training), training only for levers that move
 the wave-only loss towards zero; plus one wave-fixed best-response attacker to close outcome D. No further self-play
 campaign on the unchanged game.
+
+## AC. M4.3c design: economic objective, laning termination, mathematical reference (2026-10-13)
+
+Branch `development/m4-3b-validation` (working tree on 26f8c83). **Design only**: no game rule, preset, observation,
+reward or checkpoint changed; no training. Full account:
+[m4_3c_economic_objective_design.md](m4/m4_3c_economic_objective_design.md); the new living reference of the current
+game: [laning_game_mathematical_reference.md](m4/laning_game_mathematical_reference.md); tables in
+`results/m43c/report.md`; diagnostics `lanegame/experiments/m43c/` (`python -m lanegame.experiments.m43c all`).
+
+- **Reference (Part A).** One document for `m4_lasthit()`: state, observation, 46 actions and legality, natural wave
+  physics with engine-generated examples, collection and XP, combat / ganks / death / Recall, investment and
+  durability, towers and the exact reward (a constructed turn with farm, plate and bounty), the RL objective, three
+  walkthroughs, glossary; a reconciliation table of ≈30 disagreements between historical documents and the code
+  (deprecated rules, outdated numbers, a few genuine discrepancies such as Safe still damaging the wave and one-turn
+  kills being possible by combination).
+- **Gold + XP (Part B).** The discounted flow objective equals the expected lead at a geometric end of laning, so
+  flows and stocks are one objective. Re-pricing the M4.3b wave-only counterfactuals (reproduced exactly) and 261 new
+  laning-phase states under gold + λ·XP (λ ≤ 1/4) or level progress changes the sign of nothing: XP accrues at the
+  spawn rate whenever a champion is present, so XP mostly prices absence.
+- **Termination (Part C).** In self-play the first final plate falls at turn 109–143 (levels 15–18; both level 18 at
+  143–146); against references at turn 29–55; two last-hitters never finish a tower. Pressure supplies 95–100% of
+  tower damage, so the end is the attacker's choice. 79–81% of the M4.3b validation states lie after a tower's last
+  plate; 40–68% of the headline margins over references are earned before the proposed end. Termination creates a
+  "prolong when ahead" incentive (first sign: withholding wave damage turns slightly positive against a passive
+  opponent once games can end).
+- **Freeze and death (Part D).** Walking up to a held freeze costs nothing over 40 turns (a delay, paid in HP);
+  stepping back costs 4.9 gold; breaking it pays (+4.8 for the learned policy). The causes are cheap HP (death and
+  Recall refill it) and zoning only through trades, not wave mechanics or XP. A death costs 0.7 / 1.4 / 1.25 (early /
+  mid / late), 1.2–1.5 above a Recall; each extra absent turn costs 0.4–0.6 because lane income does not grow with
+  level.
+
+**Decision (pending review):** proposed objective = incremental gold + (1/8)·credited XP, terminal at either tower's
+last plate, γ = 0.99 kept as the laning hazard, no fallback horizon, death timers unchanged; game-length calibration
+(thresholds and γ) to be decided with the screens before any training. Stopped before implementation and training.

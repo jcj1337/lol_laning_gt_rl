@@ -1,11 +1,12 @@
 # Documentation index
 
-Two documents live at the top level because every milestone refers to them:
+Three documents are the entry points every milestone refers to:
 
 | document | what it is |
 |---|---|
+| [m4/laning_game_mathematical_reference.md](m4/laning_game_mathematical_reference.md) | **the living mathematical reference of the current game** (`GameConfig.m4_lasthit()`): state, actions, wave mechanics, farming and XP, combat, progression, towers, reward, the RL objective, worked examples; updated with every rule change |
 | [design_philosophy.md](design_philosophy.md) | the standard every mechanic is judged against: simplify how League works without changing why its laning strategies work |
-| [rl_research_roadmap.md](rl_research_roadmap.md) | the research roadmap; one section per milestone (A–Z so far) with the decision and the link to its full report |
+| [rl_research_roadmap.md](rl_research_roadmap.md) | the research roadmap; one section per milestone (A–AC so far) with the decision and the link to its full report |
 
 The reports are grouped by phase. Within a folder the files are listed in the order they were written.
 
@@ -47,6 +48,11 @@ The reports are grouped by phase. Within a folder the files are listed in the or
 | [m4_positioning_report.md](m4/m4_positioning_report.md) | M4.2d-B: independent champion positioning |
 | [m4_zoning_report.md](m4/m4_zoning_report.md) | M4.2d-C: combat-driven zoning (scripted waves) |
 | [m4_emergent_parallel_report.md](m4/m4_emergent_parallel_report.md) | M4.2d integration (`m4_emergent()`) |
+| [laning_game_mathematical_reference.md](m4/laning_game_mathematical_reference.md) | the living reference of the current game (M4.3c Part A; see above) |
+| [m4_3c_economic_objective_design.md](m4/m4_3c_economic_objective_design.md) | M4.3c design: gold + XP objective, termination at the final plate, game-length audit, freeze incentives, death timers (PROPOSED, awaiting review) |
+| [m4_3c_xp_range_screen.md](m4/m4_3c_xp_range_screen.md) | M4.3c quick screen of `xp_range` 3 / 2 / 1 (freeze denial, neutral-lane control): keep 3, investigate another mechanic |
+| [m4_3c_wave_control_screen.md](m4/m4_3c_wave_control_screen.md) | M4.3c quick screen of Hold capped at 1 HP and an adaptive (target-based) Thin: adopt Hold1 on its own, not adaptive Thin yet |
+| [m4_3c_four_action_wave_redesign.md](m4/m4_3c_four_action_wave_redesign.md) | M4.3c four-action wave management (EXPERIMENTAL `m4_four_actions()`): Last Hit / Thin / Slow Push / Clear with window-strength targets, 61-code action space; mechanically ready for PPO, Clear dominance unchanged |
 
 ## natural_waves/ — natural wave mechanics and the lane candidate (M4.2e)
 

@@ -50,7 +50,7 @@ import numpy as np
 from ..champions import champion_legal_actions, trade_double_probability, trade_hit_probability
 from ..champions_m4 import context
 from ..config import (B_HOLD, B_RECALL, B_SAFE, B_TRADE, CHAMP_ABSENT, F, NONE, PRESSURE, SH, SP, VISION, W_CLEAR,
-                      W_HOLD, W_THIN, champ_act)
+                      W_HOLD, W_THIN, champ_act, champ_wave)
 from ..progression import tables
 from .core import Observation
 
@@ -144,7 +144,7 @@ class M4ScriptAgent:
             return self._walk_back(legal)
         if self.crash_recall and lane.siege_of(s) > 0 and me.pos > -cfg.tower and not enemy_wave_threat:
             return self._walk_back(legal)
-        freeze_legal = any(a % 3 == F for a in legal if a != CHAMP_ABSENT)
+        freeze_legal = any(champ_wave(a) == F for a in legal if a != CHAMP_ABSENT)
         # wave
         wave = self._wave(lane, s, own_fx, own_fh, en_fx, en_fh)
         freezing = self.freeze and freeze_legal

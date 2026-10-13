@@ -47,7 +47,7 @@ EXPERIMENTS_SIEGE = ["benchmark", "timing", "controlled", "siege_options", "cras
                      "ablations", "sensitivity", "equilibrium", "verification", "figures"]
 EXPERIMENTS_CHAMPIONS = ["invariants", "tournament", "skill", "concerns", "benchmark"]
 EXPERIMENTS_RL = ["scripted", "legacy", "selfplay", "evaluation", "br_warm", "figures", "openai_five", "m43a_smoke", "m43b_pilot"]
-RL_MODELS = ("champions", "m4", "m4_emergent", "m4_natural", "m4_lane", "m4_lasthit")
+RL_MODELS = ("champions", "m4", "m4_emergent", "m4_natural", "m4_lane", "m4_lasthit", "m4_four_actions")
 
 
 def _cfg(args, **kw) -> GameConfig:

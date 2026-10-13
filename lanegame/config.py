@@ -83,8 +83,14 @@ WAVE_SHORT = {SP: "SP", SH: "SH", F: "F"}
 # Slot order is kept for continuity of the action space: the passive slot SP is Hold, the aggressive slot SH is Clear
 # (it keeps Shove's gank-exposure term) and the controlled slot F is Thin.
 W_HOLD, W_CLEAR, W_THIN = SP, SH, F
-NATURAL_WAVE_NAMES = {W_HOLD: "Hold", W_CLEAR: "Clear", W_THIN: "Thin"}
-NATURAL_WAVE_SHORT = {W_HOLD: "HO", W_CLEAR: "CL", W_THIN: "TN"}
+# M4.3c (EXPERIMENTAL): the fourth wave slot, Slow Push; it exists only under wave_slowpush (champion-mode codes
+# 46..60, see below)
+W_SLOWPUSH = 3
+NATURAL_WAVE_NAMES = {W_HOLD: "Hold", W_CLEAR: "Clear", W_THIN: "Thin", W_SLOWPUSH: "SlowPush"}
+NATURAL_WAVE_SHORT = {W_HOLD: "HO", W_CLEAR: "CL", W_THIN: "TN", W_SLOWPUSH: "SL"}
+# labels of the four-action model (wave_slowpush): its Hold slot, capped at 1 HP per turn, is Last Hit
+FOUR_WAVE_NAMES = {W_HOLD: "LastHit", W_CLEAR: "Clear", W_THIN: "Thin", W_SLOWPUSH: "SlowPush"}
+FOUR_WAVE_SHORT = {W_HOLD: "LH", W_CLEAR: "CL", W_THIN: "TN", W_SLOWPUSH: "SL"}
 NATURAL_WAVE_HP = 8
 POSTURE_NAMES = {CONTEST: "Contest", SAFE: "Safe"}
 OBJECTIVE_NAMES = {NONE: "", PRESSURE: "Pressure", VISION: "Vision"}
@@ -106,22 +112,36 @@ CHAMP_BEHAVIORS = (B_HOLD, B_YIELD, B_TRADE, B_SAFE)      # lane behaviors (pres
 N_BEHAVIOR_SLOTS = 5
 CHAMP_ABSENT = 3 * N_BEHAVIOR_SLOTS * N_OBJECTIVES        # 45
 N_CHAMP_ACTIONS = CHAMP_ABSENT + 1                        # 46
+# M4.3c four-action wave management (EXPERIMENTAL, GameConfig.m4_four_actions(),
+# docs/m4/m4_3c_four_action_wave_redesign.md): a fourth wave slot, Slow Push, whose codes are APPENDED after the
+# historical 46 so that no existing code changes meaning in any configuration:
+#   codes 0..44   (wave in {SP, SH, F}) x behavior x objective, a = wave + 3 behavior + 15 objective, as before
+#   code  45      ABSENT, as before
+#   codes 46..60  Slow Push x behavior x objective, a = 46 + behavior + 5 objective (only legal under wave_slowpush)
+CHAMP_SLOWPUSH_BASE = N_CHAMP_ACTIONS                                 # 46
+N_CHAMP_ACTIONS_FOUR = CHAMP_SLOWPUSH_BASE + N_BEHAVIOR_SLOTS * N_OBJECTIVES   # 61
 
 
 def champ_act(wave: int, behavior: int, objective: int = NONE) -> int:
     """Champion-mode action code for (wave management, behavior, siege objective)."""
+    if wave == W_SLOWPUSH:
+        return CHAMP_SLOWPUSH_BASE + behavior + N_BEHAVIOR_SLOTS * objective
     return wave + 3 * behavior + 15 * objective
 
 
 def champ_wave(a: int) -> int:
-    return a % 3
+    return W_SLOWPUSH if a >= CHAMP_SLOWPUSH_BASE else a % 3
 
 
 def champ_behavior(a: int) -> int:
+    if a >= CHAMP_SLOWPUSH_BASE:
+        return (a - CHAMP_SLOWPUSH_BASE) % N_BEHAVIOR_SLOTS
     return (a % 15) // 3
 
 
 def champ_objective(a: int) -> int:
+    if a >= CHAMP_SLOWPUSH_BASE:
+        return (a - CHAMP_SLOWPUSH_BASE) // N_BEHAVIOR_SLOTS
     return a // 15
 
 
@@ -455,7 +475,20 @@ class GameConfig:
     # wave_clear_scaled_slots are then unused.
     wave_hold_fraction: float = 0.0
     wave_thin_fraction: float = 0.0
-    tower_adjacent_p: float = 0.0        # tower shot on a connected trader ending next to the enemy tower (m4: 0.5)
+    # M4.3c wave-control screen (docs/m4/m4_3c_wave_control_screen.md), EXPERIMENTAL, "capacity" only. wave_hold_cap
+    # n > 0 caps Hold's per-turn budget at n HP whatever the capacity (0 = off). wave_thin_rule "adaptive" = Thin spends
+    # min(round(wave_thin_fraction * C), need) HP per turn, need = the enemy blob's HP above the largest blob whose
+    # minions do not out-fire ours (mechanics.thin_need, start-of-turn state); "share" = round(wave_thin_fraction * C)
+    wave_hold_cap: int = 0
+    wave_thin_rule: str = "share"
+    # M4.3c four-action redesign (docs/m4/m4_3c_four_action_wave_redesign.md), EXPERIMENTAL, "capacity" only.
+    # wave_thin_rule "strength" = Thin spends min(round(wave_thin_fraction * C), H + need) HP per turn, H = the Hold
+    # (last-hit) budget and need = the enemy's window strength above ours (mechanics.strength_need, start-of-turn
+    # state, margin 0). wave_slowpush True adds a fourth wave action, Slow Push (slot W_SLOWPUSH, codes 46..60, a
+    # 61-code action space): the same rule with a margin of 1 HP (our window strength at least 1 HP above the enemy's)
+    # and the same cap round(wave_thin_fraction * C); needs wave_thin_rule "strength"
+    wave_slowpush: bool = False
+    tower_adjacent_p: float = 0.0       # tower shot on a connected trader ending next to the enemy tower (m4: 0.5)
     tower_adjacent_p_busy: float = 0.0    # ... while its own crashed minions are under that tower (m4: 0.25)
     gank_damage_scale: str = "none"       # "none" (centi = 100 x trials), "victim_level" (m4), "attacker_level"
     plate_thresholds: Tuple[int, ...] = (1600, 3600, 6000)   # durability plate thresholds, centi-units (design §11)
@@ -621,6 +654,26 @@ class GameConfig:
         base.update(kw)
         return cls.m4_lane(**base)
 
+    # the fields GameConfig.m4_four_actions() changes from m4_lasthit() (M4.3c, docs/m4/m4_3c_four_action_wave_redesign.md)
+    M4_FOUR_ACTIONS_FIELDS = ("wave_hold_cap", "wave_thin_rule", "wave_slowpush")
+
+    @classmethod
+    def m4_four_actions(cls, **kw) -> "GameConfig":
+        """EXPERIMENTAL (M4.3c, docs/m4/m4_3c_four_action_wave_redesign.md): `m4_lasthit()` with four wave actions,
+        each a per-turn damage budget on enemy minions out of the same wave-clear capacity C = round(4 AP):
+          Last Hit  = min(1, round(C / 8)) = 1                    wave_hold_cap 1: farming never pushes by power
+          Thin      = min(round(C / 2), 1 + need(margin 0))       wave_thin_rule "strength": remove only the enemy's
+                                                                  excess window strength over ours
+          Slow Push = min(round(C / 2), 1 + need(margin 1))       wave_slowpush: the least damage that puts our
+                                                                  window strength 1 HP above the enemy's
+          Clear     = C                                           unchanged
+        need = mechanics.strength_need on the start-of-turn lane. The action space has 61 codes (Slow Push = codes
+        46..60, every historical code unchanged). Every other rule and parameter is `m4_lasthit()`. Not a default;
+        `m4_lasthit()` and every other preset are unchanged."""
+        base = dict(wave_hold_cap=1, wave_thin_rule="strength", wave_slowpush=True)
+        base.update(kw)
+        return cls.m4_lasthit(**base)
+
     # ------------------------------------------------------------------ helpers
     @property
     def natural_waves(self) -> bool:
@@ -685,10 +738,10 @@ class GameConfig:
         return self.stacks(min(hp, self.hp_cap))
 
     def action_codes(self) -> Tuple[int, ...]:
-        """Every action slot of this configuration's fixed action space (champion mode: the full 46-slot space;
-        of its Recall codes only champ_act(SP, B_RECALL) is ever legal)."""
+        """Every action slot of this configuration's fixed action space (champion mode: the full 46-slot space, 61
+        slots under wave_slowpush; of its Recall codes only champ_act(SP, B_RECALL) is ever legal)."""
         if self.champion_mode:
-            return tuple(range(N_CHAMP_ACTIONS))
+            return tuple(range(N_CHAMP_ACTIONS_FOUR if self.wave_slowpush else N_CHAMP_ACTIONS))
         if not self.positioning:
             return (SP, SH, F)
         if self.objectives:
@@ -700,7 +753,9 @@ class GameConfig:
         'SH-T+P' (Shove + Trade + Pressure) etc.; natural waves 'CL-T+P' (Clear + Trade + Pressure) etc."""
         if self.champion_mode:
             if self.natural_waves and a != CHAMP_ABSENT:
-                return NATURAL_WAVE_SHORT[champ_wave(a)] + CHAMP_ACTION_SHORT[a][len(WAVE_SHORT[champ_wave(a)]):]
+                o = champ_objective(a)
+                return ((FOUR_WAVE_SHORT if self.wave_slowpush else NATURAL_WAVE_SHORT)[champ_wave(a)] + "-"
+                        + BEHAVIOR_SHORT[champ_behavior(a)] + (f"+{OBJECTIVE_SHORT[o]}" if o else ""))
             return CHAMP_ACTION_SHORT[a]
         return ACTION_SHORT[a] if self.positioning else WAVE_SHORT[wave_of(a)]
 
@@ -871,13 +926,25 @@ class GameConfig:
                 bad("wave_clear_scaled_slots", "must be wave slots")
             if not (0.0 <= self.wave_hold_fraction <= self.wave_thin_fraction <= 1.0):
                 bad("wave_hold_fraction/wave_thin_fraction", "need 0 <= hold <= thin <= 1")
+            if not (isinstance(self.wave_hold_cap, int) and self.wave_hold_cap >= 0):
+                bad("wave_hold_cap", "must be a non-negative integer (0 = off)")
+            if self.wave_thin_rule not in ("share", "adaptive", "strength"):
+                bad("wave_thin_rule", "must be 'share', 'adaptive' or 'strength'")
+            if self.wave_thin_rule == "adaptive" and self.damage_law != "lanchester_half":
+                bad("wave_thin_rule", "'adaptive' needs damage_law 'lanchester_half' (its target is that law's firepower)")
+            if not isinstance(self.wave_slowpush, bool):
+                bad("wave_slowpush", "must be a bool")
+            if self.wave_slowpush and self.wave_thin_rule != "strength":
+                bad("wave_slowpush", "needs wave_thin_rule 'strength' (Slow Push and Thin are one target rule)")
             if self.wave_clear_scaling != "capacity":
-                for name in ("wave_hold_fraction", "wave_thin_fraction"):
+                for name in ("wave_hold_fraction", "wave_thin_fraction", "wave_hold_cap", "wave_thin_rule",
+                             "wave_slowpush"):
                     if getattr(self, name) != _FIELD_DEFAULTS[name]:
                         bad(name, "applies to wave_clear_scaling 'capacity' only")
         else:
             for name in ("champion_wave_damage", "natural_crash_rule", "natural_tower_reach", "wave_clear_scaling",
-                         "wave_clear_scaled_slots", "wave_hold_fraction", "wave_thin_fraction"):
+                         "wave_clear_scaled_slots", "wave_hold_fraction", "wave_thin_fraction", "wave_hold_cap",
+                         "wave_thin_rule", "wave_slowpush"):
                 if getattr(self, name) != _FIELD_DEFAULTS[name]:
                     bad(name, "applies to wave_dynamics 'natural' only")
         self._validate_exact_economy()
@@ -939,7 +1006,7 @@ M4_ECONOMY_FIELDS = ("xp_per_hp", "xp_range", "xp_base", "xp_step", "level_cap",
                      "plate_gold", "pressure_tower_damage", "plate_gold_requires_presence", "gold_unit",
                      "rear_count_max", "trade_exchanges", "trade_farm_rule", "invest_durability", "collect_contest_own_tower", "position_rule", "zoning_rule", "wave_dynamics", "champion_wave_damage",
                      "natural_crash_rule", "natural_tower_reach", "wave_clear_scaling", "wave_clear_scaled_slots",
-                     "wave_hold_fraction", "wave_thin_fraction")
+                     "wave_hold_fraction", "wave_thin_fraction", "wave_hold_cap", "wave_thin_rule", "wave_slowpush")
 _FIELD_DEFAULTS = {f.name: f.default for f in GameConfig.__dataclass_fields__.values()}
 
 

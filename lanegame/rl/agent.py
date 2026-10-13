@@ -43,6 +43,10 @@ class NetAgent:
 
     def probabilities(self, obs) -> np.ndarray:
         """Full-length probability vector over the action space (0 on illegal actions)."""
+        if len(obs.mask) != self.net.n_actions:
+            raise ValueError(f"{self.name}: the network has {self.net.n_actions} action outputs but this environment's "
+                             f"action space has {len(obs.mask)} codes (a checkpoint of another action encoding, e.g. a "
+                             f"46-code checkpoint on the 61-code four-action preset)")
         with torch.no_grad():
             x = torch.as_tensor(obs.vector, dtype=torch.float32).unsqueeze(0)
             logits, _ = self.net(x)

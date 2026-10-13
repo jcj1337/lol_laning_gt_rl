@@ -56,9 +56,9 @@ from .champions import (AWAY, CHANNEL, FARM, N_CHANCE, NO_REACH, RETREAT, SAFE_M
                         U_TOWER, U_TRADE_DOUBLE, U_TRADE_HIT, LaneStep, _decode, _evasion_cell, _gank_damage, _move,
                         _trade_damage, champion_gank_probability, champion_legal_actions, gank_damage_p, in_contact,
                         objective_reachable, recall_legal, trade_double_probability, trade_hit_probability)
-from .config import (B_HOLD, B_RECALL, B_SAFE, B_TRADE, B_YIELD, B_ABSENT, F, NONE, PRESSURE, SH, SP, GameConfig,
-                     exact_safe_base)
-from .mechanics import step_turn
+from .config import (B_HOLD, B_RECALL, B_SAFE, B_TRADE, B_YIELD, B_ABSENT, F, NONE, PRESSURE, SH, SP, W_SLOWPUSH,
+                     GameConfig, exact_safe_base)
+from .mechanics import step_turn, strength_budget
 from .progression import Tables, tables
 from .state import State
 
@@ -165,11 +165,27 @@ class M4Context:
     def budget_from_capacity(self, slot: int, capacity: int) -> int:
         """wave_clear_scaling "capacity" (M4.2e-C): the per-turn budget of a wave slot as a share of the wave-clear
         capacity C: Clear = C, Hold = round(wave_hold_fraction C), Thin = round(wave_thin_fraction C); round half up on
-        exact rationals, so Hold <= Thin <= Clear and every budget is non-decreasing in C."""
+        exact rationals, so Hold <= Thin <= Clear and every budget is non-decreasing in C. wave_hold_cap n > 0
+        (EXPERIMENTAL) caps Hold at n; wave_thin_rule "adaptive" caps Thin further in the lane step (mechanics.thin_need).
+        Slow Push (wave_slowpush, EXPERIMENTAL) has Thin's capacity round(wave_thin_fraction C); under wave_thin_rule
+        "strength" this is only the cap of both (`state_budget`)."""
         if slot == SH:
             return capacity
         share = self.cfg.wave_hold_fraction if slot == SP else self.cfg.wave_thin_fraction
-        return _round_half_up(_q(share) * capacity)
+        b = _round_half_up(_q(share) * capacity)
+        if slot == SP and self.cfg.wave_hold_cap > 0:
+            b = min(b, self.cfg.wave_hold_cap)
+        return b
+
+    def state_budget(self, slot: int, capacity: int, lane: State, k: int, s: int) -> int:
+        """wave_clear_scaling "capacity": the budget side s's wave slot spends on turn k from the start-of-turn lane.
+        It is `budget_from_capacity` except under wave_thin_rule "strength" (M4.3c, EXPERIMENTAL), where Thin and Slow
+        Push spend only what their target needs on top of the Last Hit (Hold) budget, up to that capacity
+        (mechanics.strength_budget)."""
+        b = self.budget_from_capacity(slot, capacity)
+        if self.cfg.wave_thin_rule == "strength" and slot in (F, W_SLOWPUSH):
+            b = strength_budget(lane, k, s, slot, self.budget_from_capacity(SP, capacity), b, self.cfg)
+        return b
 
     def collection(self, x: int, mode: str, pos: int, opp_mode: str, opp_pos: int, pays_trade: bool = True) -> int:
         key = (x, mode, pos, opp_mode, opp_pos, pays_trade)
@@ -394,6 +410,9 @@ class M4Turn:
     reward: float                           # reward to A in resources: reward_units / gold_scale, converted once
     invested: Tuple[int, int] = (0, 0)      # ledger units invested at the end of this turn ("continuous" only)
     pinned: Tuple[bool, bool] = (False, False)   # position_rule "pin"/"standoff": Yield caught in contact (step 3)
+    # natural waves with wave_clear_scaling: the per-turn wave budgets (minion HP) given to the lane step (None =
+    # champion_wave_damage per tick); what each champion could spend, not what it reached
+    wave_budget: Optional[Tuple[int, int]] = None
 
 
 def resolve_turn_m4(lane: State, m4: M4State, k: int, a: int, b: int, cfg: GameConfig,
@@ -422,13 +441,19 @@ def resolve_turn_m4(lane: State, m4: M4State, k: int, a: int, b: int, cfg: GameC
     # 1. probe: wave destinations under full support of every champion that intends to play the lane (raw codes);
     #    farm_spot_rule "pre_crash_front": a front that crashes in the probe leaves the farm spot at its pre-turn cell
     off = (recalling[A] or absent[A], recalling[B] or absent[B])
-    # wave_clear_scaling "attack_power": per-turn wave-damage budgets from the start-of-turn attack power
+    # wave_clear_scaling "attack_power": per-turn wave-damage budgets from the start-of-turn attack power; "capacity":
+    # from the start-of-turn capacity and (wave_thin_rule "strength") the start-of-turn lane
     budget = None
-    if cfg.natural_waves and cfg.wave_clear_scaling != "none":
+    if cfg.natural_waves and cfg.wave_clear_scaling == "capacity":
+        budget = (ctx.state_budget(wa, ctx.capacity(lv0[A], it0[A]), lane, k, A),
+                  ctx.state_budget(wb, ctx.capacity(lv0[B], it0[B]), lane, k, B))
+    elif cfg.natural_waves and cfg.wave_clear_scaling != "none":
         budget = (ctx.wave_budget(wa, lv0[A], it0[A]), ctx.wave_budget(wb, lv0[B], it0[B]))
 
     def lane_call(x, y, rch):
         return lane_step(lane, k, x, y, rch) if budget is None else lane_step(lane, k, x, y, rch, budget)
+    # lane codes are w + 6 o; with budgets the natural lane step reads only the objective o from them (a wave slot acts
+    # through its budget alone), so the four-action Slow Push (w = W_SLOWPUSH = 3) passes 3 + 6 o
     probe = lane_call(wa + 6 * oa, wb + 6 * ob, (NO_REACH if off[A] else reach_cap, NO_REACH if off[B] else reach_cap))
     spot = [0, 0]
     for s in (A, B):
@@ -664,5 +689,5 @@ def resolve_turn_m4(lane: State, m4: M4State, k: int, a: int, b: int, cfg: GameC
         (lv1[A] - lv0[A], lv1[B] - lv0[B]), res.tower_hits, (hits_dealt[A], hits_dealt[B]), (plates[A], plates[B]),
         (plate_u[A] * inv, plate_u[B] * inv), (purchases[A], purchases[B]), (returned[A], returned[B]),
         (farm_u[A], farm_u[B]), (plate_u[A], plate_u[B]), bounty_u, (earned[A], earned[B]), (clamped[A], clamped[B]),
-        reward_units, reward_units / ctx.scale, (invested[A], invested[B]), (pinned[A], pinned[B]))
+        reward_units, reward_units / ctx.scale, (invested[A], invested[B]), (pinned[A], pinned[B]), budget)
     return turn

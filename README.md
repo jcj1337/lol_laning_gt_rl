@@ -70,12 +70,14 @@ parameter is claimed to be an empirical League statistic.
 | **M4.3a. RL infrastructure audit and smoke test** | PettingZoo conformance, PPO reference checks, bounded self-play on `m4_lasthit()` | **complete** ([report](docs/rl/m4_3a_rl_infrastructure_report.md)) |
 | **M4.3b. Self-play pilot and strategic diagnostics** | 12 PPO runs on `m4_lasthit()`, reactive reference suite, learning curves, cross-play, exploitability, conditional behaviour, counterfactuals, Recall / death economics, mixed starts | **complete** ([report](docs/rl/m4_3b_ppo_pilot_report.md)) |
 | **M4.3b follow-up. Strategic validation and artifact cleanup** | wave-only interventions that keep the policy's adaptive behaviour, four opponents, the 1000-turn horizon, freeze-state classification and synthetic power gaps; artifact manifest and checkpoint bundle | **complete** ([report](docs/rl/m4_3b_validation_report.md)) |
-| M4.3c. Design investigation of Clear dominance, population attackers | Which mechanics would make wave control pay against a clearing opponent? | next |
+| **M4.3c. Economic objective, laning termination, mathematical reference** | Gold + XP objective, ending the laning phase at the final plate, game-length audit, freeze incentives, death timers; the living [mathematical reference](docs/m4/laning_game_mathematical_reference.md) of the current game | **design complete, awaiting review** ([design](docs/m4/m4_3c_economic_objective_design.md)) |
 | 2. Opponent modelling | Bayesian opponent models, exploitation vs. exploitability, risk | planned |
 | 3. Interactive dashboard | A site for exploring strategies and results | planned |
 
 The research roadmap with one section per milestone is [docs/rl_research_roadmap.md](docs/rl_research_roadmap.md);
-the documentation index is [docs/README.md](docs/README.md).
+the documentation index is [docs/README.md](docs/README.md). **Every rule, equation and parameter of the current
+research game is in one place: [docs/m4/laning_game_mathematical_reference.md](docs/m4/laning_game_mathematical_reference.md)**
+(kept up to date with every rule change; the summaries below are older and coarser).
 
 ## The games
 
@@ -123,6 +125,8 @@ python -m lanegame.experiments.rl.m43b train curves headline exploit behavior co
                                                       # the M4.3b pilot stage by stage (results/rl/m43b/, ~2 h on 9 processes)
 python -m lanegame.experiments.rl.m43b validation     # the follow-up: val_wave_cf val_horizon val_games val_freeze val_report (~1.5 h)
 python -m lanegame.experiments.rl.m43b manifest       # results/rl/m43b/MANIFEST.json and the checkpoint bundle (results/rl/m43b_artifacts/)
+python -m lanegame.experiments.m43c all --workers 9   # M4.3c design diagnostics: examples, progression audit, gold + XP
+                                                      # re-pricing, freeze and death harnesses (results/m43c/, ~35 min; no training)
 python -m lanegame rl-shared --current-fraction 0.8 --skill-levels 0.2,0.5,0.8 --out results/rl/checkpoints/demo_shared
                                                       # the champion game, 80% current / 20% past versions
 python -m lanegame rl-eval results/rl/checkpoints/demo_shared/final.pt   # champion game: both seats, held-out seeds, 95% CIs
