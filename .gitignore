@@ -11,3 +11,6 @@ dist/
 results/rl/checkpoints/
 *.pt
 results/m4_design/scripts/*.npz
+
+# research artifact bundles (checkpoint tarballs; see results/rl/m43b/MANIFEST.json)
+results/rl/m43b_artifacts/

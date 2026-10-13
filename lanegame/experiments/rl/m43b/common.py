@@ -39,7 +39,7 @@ CONDITIONS: Dict[str, dict] = {
     "hist80": dict(current_fraction=0.8, ent_coef=0.01, label="80% current / 20% historical (pool 8), entropy 0.01"),
     # the follow-up (archive.py): half of the training games start from a witnessed archived state
     "mixed": dict(current_fraction=1.0, ent_coef=0.01, start_mix=0.5,
-                  start_archive=os.path.join("results", "rl", NAME, "archive_train.json"),
+                  start_archive=os.path.join("results", "rl", NAME, "archive_train.json.gz"),
                   label="100% current, entropy 0.01, 50% of games from the archive of reachable states (follow-up)"),
 }
 PILOT = ("base", "ent03", "hist80")      # the pilot grid; "mixed" is the follow-up
@@ -181,13 +181,23 @@ def save_json(name: str, data: dict) -> None:
 
 
 def read_json(p: str) -> dict:
+    """A JSON file, plain or gzipped (by extension; `manifest.compress_results` gzips the large results)."""
+    if p.endswith(".gz"):
+        import gzip
+        with gzip.open(p, "rt", encoding="utf-8") as f:
+            return json.load(f)
     with open(p, encoding="utf-8") as f:
         return json.load(f)
 
 
 def load(name: str) -> Optional[dict]:
+    """results/rl/m43b/<name>.json, or its gzipped form when only that exists."""
     p = path(name)
-    return read_json(p) if os.path.exists(p) else None
+    if os.path.exists(p):
+        return read_json(p)
+    if os.path.exists(p + ".gz"):
+        return read_json(p + ".gz")
+    return None
 
 
 def write_md(name: str, text: str) -> None:

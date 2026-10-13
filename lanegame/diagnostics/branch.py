@@ -133,11 +133,20 @@ DEFER = -1          # a plan's answer "the continuation policy's own action this
 class Plan:
     """A short scripted deviation of the focal player. `act(obs, t)` returns a legal action code for turn t of the
     branch (t = 0 is the branch turn), DEFER to let the continuation policy act this turn while the plan stays
-    active, or None to hand control to the continuation policy for good."""
+    active, or None to hand control to the continuation policy for good.
+
+    `transform(obs, t, p)` is consulted on every DEFER turn (while the plan is active): it maps the continuation
+    policy's probability vector over `obs.legal` to the vector the focal seat samples from this turn, with the same
+    uniform draw (the pairing of the rollout streams is unchanged). The default is the identity, so a plan that
+    only implements `act` behaves exactly as before. A distribution-level plan (M4.3b follow-up: an intervention
+    on one action dimension that keeps the policy's other decisions) returns DEFER from `act` and reshapes p here."""
     name = "plan"
 
     def act(self, obs, t: int) -> Optional[int]:
         raise NotImplementedError
+
+    def transform(self, obs, t: int, p: np.ndarray) -> np.ndarray:
+        return p
 
 
 class Commit(Plan):
@@ -252,17 +261,23 @@ def rollout(env: LaneEnv, snap: Snapshot, focal: int, plan: Plan, agents: Sequen
         for s in (A, B):
             ob = obs[s]
             p = cache.distribution(agents[s], ob)
-            u = rngs[s].random()                              # exactly one draw per seat per turn
-            a = ob.legal[sample_index(p, u)]
+            pa = None
             if s == focal and live:
                 pa = plan.act(ob, t)
                 if pa is None:
                     live = False
-                elif pa != DEFER:
-                    if pa not in ob.legal:
-                        raise ValueError(f"plan {plan.name!r} chose illegal action {pa} at turn {ob.k} "
-                                         f"(legal {ob.legal})")
-                    a = int(pa)
+                elif pa == DEFER:
+                    q = np.asarray(plan.transform(ob, t, p), dtype=float)
+                    if q.shape != p.shape or not np.all(np.isfinite(q)) or q.sum() <= 0 or (q < 0).any():
+                        raise ValueError(f"plan {plan.name!r} returned an invalid distribution at turn {ob.k}")
+                    p = q
+                elif pa not in ob.legal:
+                    raise ValueError(f"plan {plan.name!r} chose illegal action {pa} at turn {ob.k} "
+                                     f"(legal {ob.legal})")
+            u = rngs[s].random()                              # exactly one draw per seat per turn
+            a = ob.legal[sample_index(p, u)]
+            if pa is not None and pa != DEFER:
+                a = int(pa)
             acts[s] = a
         r = env.step(acts[0], acts[1])
         info = r.info

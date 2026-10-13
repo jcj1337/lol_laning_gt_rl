@@ -1319,3 +1319,50 @@ dominant line (Clear with trades and resets) the game's dynamics reward against 
 (M4.3c):** entropy 0.03 as the default; population attackers; the 100/0 vs 80/20 comparison with a wide snapshot
 pool; and a design investigation of Clear dominance (kill bounty, gank severity, own-tower collection rate) judged
 by the plan-level counterfactual harness against the learned policies, not by scripted play.
+
+## AB. M4.3b follow-up: strategic validation and research-artifact cleanup (2026-10-13)
+
+Branch `development/m4-3b-validation`, on top of `development/m4-3b-ppo-pilot` (98a4341). No mechanics, reward,
+hyperparameter or checkpoint changed; no training. Full account: [m4_3b_validation_report.md](rl/m4_3b_validation_report.md);
+tables and figures in `results/rl/m43b/validation/`.
+
+- **The confound.** M4.3b §7.2 forced complete actions (Thin + Hold position, Hold + Hold, the freeze controller with
+  Hold position), so its 1.5–2.8 losses mixed the wave management with the loss of the policy's adaptive behaviour.
+  New: `Plan.transform` (a distribution-level hook of the diagnostics rollout, backwards compatible) and
+  `intervene.py`: the wave component is forced on the policy's probability vector, behaviour / objectives / Recall
+  stay the policy's (two explicit rules, "marginal" and "conditional", both reported); legality holds without
+  fallback because all three waves are legal on every present turn and the rest of the code does not depend on
+  the wave (tested on every legal set met in play).
+- **Result 1 (sampled states, W = 300, four opponents).** Wave-only Hold, slow push and freeze lose 1.7–2.6 against
+  the policy (within 0.2 of the full-action values on the same states and streams), 0.6–1.6 against the pure
+  last-hitter, 1.8–3.1 against the reactive slow pusher, 2.3–4.0 against the constant clearer; significant in 16–24
+  of 24 states per cell. Wave-only Thin costs 0.2–1.0 (not significant in about half the states); wave-only Clear
+  is within 0.1 of the policy. The confound was ≤ 0.2 against the policy and ≤ 0.8 against the scripted opponents,
+  in both directions.
+- **Result 2 (whole games, W = 1000).** A policy that never Clears while the enemy is present loses 8–13 resources
+  per game against every opponent, the passive farmer and the scripted freezer included; forced Thin costs 1–2
+  against Holders and 5–6 against clearers (the one opponent-dependent wave interaction); forced Clear ± 0.5.
+- **Result 3 (horizon).** The same rollouts read at W = 300 / 460 / 1000: the paired tail beyond 300 is 0.00 ± 0.01
+  (max 0.08 over 544 pairs, no sign change). The 300-turn window was sufficient; the guaranteed bound is a bound on
+  levels, not on paired differences.
+- **Result 4 (freeze states).** Of 88 freeze-like states, half are maintainable freezes against a Holder (held
+  10–19 of 20 turns) and a quarter favourable; the freeze loses the same 1.5–4 in every class. Synthetic power gaps
+  (constructed starts, labelled): Hold and freeze lose in all 72 cells and lose *more* when ahead against a contesting
+  opponent; Thin is marginally positive (+0.2–0.6) only when far ahead at a frozen lane against scripted opponents.
+- **Interpretation.** Outcome C of the brief: the tested strategy class is unprofitable under the game as calibrated
+  (Clear costs the clearer nothing the reward counts), confirmed with adaptive behaviour, four opponents, the long
+  horizon and maintainable freezes. Not an exploration failure; the one gap between what the game rewards and what
+  the policies play is the Thin edge when far ahead, which self-play never visits. Outcome D is not excluded for
+  strategies that coordinate behaviour differently (a wave-fixed best-response attacker would close it).
+- **Artifacts.** JSON results ≥ 1 MB gzipped (readers accept both forms); `results/rl/m43b/MANIFEST.json` (files,
+  SHA-256, commit / stage / command, checkpoint digests); a 5.2 MB checkpoint bundle in the git-ignored
+  `results/rl/m43b_artifacts/`; `ARTIFACTS.md`. The M4.3b commit is 3.8 MB packed (under 3% of the pack), so **no
+  history rewrite is recommended**; a no-force-push replacement-branch recipe is in the report §9 for the user's
+  decision.
+- **Tests:** `tests/test_rl_m43b_validation.py` (14); diagnostics tests unchanged.
+
+**Decision:** M4.3b conclusions stand with stronger evidence; the plan-level attribution to wave management was
+correct. **Next (M4.3c, to be decided together):** the design investigation of Clear dominance with `val_wave_cf`
+against the existing finals as the screen for each lever (minutes, no training), training only for levers that move
+the wave-only loss towards zero; plus one wave-fixed best-response attacker to close outcome D. No further self-play
+campaign on the unchanged game.

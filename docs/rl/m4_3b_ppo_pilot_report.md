@@ -2,6 +2,13 @@
 
 Branch `development/m4-3b-ppo-pilot`, on top of `main` at `1ad8848` (M4.3a). 2026-10-12.
 
+> **Follow-up (validation, 2026-10-13).** The plan-level counterfactuals of §7.2 force complete actions, which
+> confounds the wave management under test with the loss of the policy's adaptive champion behaviour. The follow-up
+> [m4_3b_validation_report.md](m4_3b_validation_report.md) repeats them with wave-only interventions (behaviour,
+> objectives and Recall left to the policy), against four opponents, at the 1000-turn window, with the freeze-like
+> states classified and synthetic power gaps added. Its findings are summarised in the notes marked *Follow-up*
+> below; the text of this report is left as written.
+
 **Purpose.** The first serious investigation of the README's research question on the M4 game: *can an RL agent
 learn to take advantage of the strategic interactions of the laning simulator without being taught League
 strategies?* M4.3a established that the trainer is correct and that a 400k-transition smoke run learns a narrow
@@ -489,6 +496,14 @@ alternative that withholds wave damage loses one to three resources against the 
 real but small because the alternatives are worth little; the policies have found the line the game's dynamics
 reward against an opponent that clears.
 
+> **Follow-up to §7.1–7.2.** With the wave component forced and everything else left to the policy, Hold, the slow
+> push and the freeze controller still lose 1.7–2.6 against the policy (within 0.2 of the full-action values on the
+> same states and streams), 0.6–1.6 against a pure last-hitter, 1.8–3.1 against the reactive slow pusher and 2.3–4.0
+> against the constant clearer; wave-only Thin costs 0.2–1.0 (not significant in about half the states), wave-only
+> Clear is within 0.1 of the policy. The attribution of the §7.2 losses to the wave management stands; the
+> qualification "measured against the policy itself" is now answered for three scripted opponents as well.
+> See the validation report §4–§8.
+
 ## 8. Recall and death economics
 
 `recall.py`, `results/rl/m43b/recall.json`, `report.md` §7, `fig_recall.png`.
@@ -843,6 +858,9 @@ streamlit run lanegame/viewer/app.py                                     # mode 
    every 200k, pool 10, so that the 100k Clear-and-die policy and the 400k Recall policy are both in it), with
    exploitability as the primary measure; at the pilot's spacing the mixture bought nothing (§5.2).
 4. **A design investigation of Clear dominance, with the counterfactual harness as the test** (§11, question 3).
+   *Follow-up:* the harness now includes the wave-only interventions (`intervene.py`, `validation.py`), which are the
+   correct test for this investigation: a lever is interesting if the wave-only loss of a slow push or a held freeze
+   shrinks or changes sign under it.
    Candidate levers, each already motivated in an earlier report: kill bounty 0.5 → 1 and 2 (M4.2e-B: the one
    change that produced stand-back concessions), gank severity 0.6 → 0.4 (M4.2b), the own-tower collection rate
    0.6 → 0.4 (M4.2e-B/C), the Clear share of capacity. For each variant, train 3 seeds at 2M with the 0.03

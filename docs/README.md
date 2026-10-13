@@ -30,6 +30,7 @@ The reports are grouped by phase. Within a folder the files are listed in the or
 | [openai_five_diagnostics_report.md](rl/openai_five_diagnostics_report.md) | diagnostics of the learned policies, exploitability, long runs |
 | [m4_3a_rl_infrastructure_report.md](rl/m4_3a_rl_infrastructure_report.md) | M4.3a: RL infrastructure audit, PettingZoo conformance, PPO reference checks, the smoke test on `m4_lasthit()` |
 | [m4_3b_ppo_pilot_report.md](rl/m4_3b_ppo_pilot_report.md) | M4.3b: the PPO self-play pilot on `m4_lasthit()`: learning curves, headline evaluation, exploitability, conditional behaviour, counterfactuals, Recall / death economics, the mixed-start follow-up |
+| [m4_3b_validation_report.md](rl/m4_3b_validation_report.md) | M4.3b follow-up: wave-only interventions with adaptive champion behaviour, opponent-dependent value of slow pushing and freezing, the evaluation horizon, freeze-state classification, synthetic power gaps; research-artifact manifest and cleanup proposal |
 
 ## m4/ — the integrated champion economy (M4.1 design, M4.2 implementation and the M4.2b–M4.2d studies)
 

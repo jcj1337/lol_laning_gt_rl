@@ -90,14 +90,32 @@ def disjoint(a: Sequence[StartState], b: Sequence[StartState]) -> bool:
 
 
 def save_archive(path: str, states: Sequence[StartState], cfg: GameConfig, generator: Optional[dict] = None) -> None:
+    """Write the archive (gzipped when `path` ends in .gz)."""
+    d = {"schema": ARCHIVE_SCHEMA, "version": 1, "config": cfg.to_dict(), "generator": generator or {},
+         "states": [s.to_dict() for s in states]}
+    if path.endswith(".gz"):
+        import gzip
+        with gzip.open(path, "wt", encoding="utf-8") as f:
+            json.dump(d, f)
+        return
     from ..io import dump_json
-    dump_json({"schema": ARCHIVE_SCHEMA, "version": 1, "config": cfg.to_dict(), "generator": generator or {},
-               "states": [s.to_dict() for s in states]}, path)
+    dump_json(d, path)
 
 
 def load_archive(path: str, cfg: Optional[GameConfig] = None) -> List[StartState]:
-    with open(path, encoding="utf-8") as f:
-        d = json.load(f)
+    """A start archive, plain JSON or gzipped (`.gz`); a missing `.json` is read from its `.json.gz` and vice versa."""
+    import gzip
+    import os
+    if not os.path.exists(path):
+        alt = path[:-3] if path.endswith(".gz") else path + ".gz"
+        if os.path.exists(alt):
+            path = alt
+    if path.endswith(".gz"):
+        with gzip.open(path, "rt", encoding="utf-8") as f:
+            d = json.load(f)
+    else:
+        with open(path, encoding="utf-8") as f:
+            d = json.load(f)
     if d.get("schema") != ARCHIVE_SCHEMA:
         raise ValueError(f"{path} is not a {ARCHIVE_SCHEMA} file")
     c = cfg if cfg is not None else GameConfig.from_dict(d["config"])

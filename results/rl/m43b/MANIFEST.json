@@ -1,0 +1,1032 @@
+{
+ "schema": "lanegame.m43b_manifest",
+ "version": 1,
+ "commit": "98a4341089b412afe53febce19cf5e01334a4df1",
+ "written": "2026-10-12 23:41:07",
+ "notes": [
+  "results/rl/m43b/** is tracked in Git (large JSON files gzipped: readers accept both forms)",
+  "results/rl/checkpoints/m43b/** is NOT tracked (.gitignore); preserve it through the bundle",
+  "the weights digest is what lanegame.rl.load_agent verifies; equal digests <=> identical weights",
+  "960 training snapshots exist locally; they are listed only with include_snapshots"
+ ],
+ "results": {
+  "results/rl/m43b/analysis.log": {
+   "bytes": 17379,
+   "sha256": "4b4524a9f089ce2e115540da1a9ccadedc7af3d6c2b1a2a5602d407a688c5970"
+  },
+  "results/rl/m43b/analysis_mixed.log": {
+   "bytes": 2745,
+   "sha256": "472f6577f1ccd8626cd55dd6ee0d837d3ebda12d483023ea43123ca50093598b"
+  },
+  "results/rl/m43b/analysis_mixed_eval.log": {
+   "bytes": 4236,
+   "sha256": "b53a9873bf72718f73af9037152d6f7b6d086b35e4946d384f193dd9a66e5832"
+  },
+  "results/rl/m43b/archive.json": {
+   "bytes": 5559,
+   "sha256": "34d325da48488ec97e77896b9f460220da63274c9dcf75d90a13a56154947274",
+   "commit": "1ad88488018f229436d0ca2e1d215471c327a0c2",
+   "timestamp": "2026-10-12 21:05:07",
+   "stage": "archive",
+   "command": "python -m lanegame.experiments.rl.m43b archive"
+  },
+  "results/rl/m43b/archive.log": {
+   "bytes": 342,
+   "sha256": "d48eda7aff211cc57c330bad67e4bb0b370bd93bb3c430ffb2e2483d85ec7efc"
+  },
+  "results/rl/m43b/archive_train.json.gz": {
+   "bytes": 188302,
+   "sha256": "a7dbd2472d424fde537e70071619f03f8a1d4d11f6419f2448051cd79bacc104",
+   "seed": 69000,
+   "states": 857,
+   "stage": "archive",
+   "games_played": 400,
+   "command": "python -m lanegame.experiments.rl.m43b archive"
+  },
+  "results/rl/m43b/behavior.json": {
+   "bytes": 848380,
+   "sha256": "1ebe5a9d6a9496fbd073351be40ab4e8336f585ec0fa5ff1f3bbca5c971481af",
+   "commit": "1ad88488018f229436d0ca2e1d215471c327a0c2",
+   "timestamp": "2026-10-12 22:26:30",
+   "stage": "behavior",
+   "window": 460,
+   "seed": 64000,
+   "command": "python -m lanegame.experiments.rl.m43b behavior --workers 9"
+  },
+  "results/rl/m43b/counterfactual.json.gz": {
+   "bytes": 430060,
+   "sha256": "c1af6ea05cd890b557c70134143c6dbe536310b729ef9468fc4c412777895f29",
+   "commit": "1ad88488018f229436d0ca2e1d215471c327a0c2",
+   "timestamp": "2026-10-12 22:30:59",
+   "stage": "counterfactual",
+   "window": 300,
+   "states": 8,
+   "rollouts": 16,
+   "command": "python -m lanegame.experiments.rl.m43b counterfactual --workers 9"
+  },
+  "results/rl/m43b/curves.json": {
+   "bytes": 903175,
+   "sha256": "e5a42835443a454f4d18e2ce0698f43347f34d3356dbe36cb7aa1ee1b68fe310",
+   "commit": "1ad88488018f229436d0ca2e1d215471c327a0c2",
+   "timestamp": "2026-10-12 21:51:20",
+   "stage": "curves",
+   "window": 460,
+   "episodes": 16,
+   "command": "python -m lanegame.experiments.rl.m43b curves --workers 9"
+  },
+  "results/rl/m43b/exploit.json": {
+   "bytes": 54070,
+   "sha256": "a120ecb4dc8453e54d98b0beef7c8621cb2bb108f2954b7a57626c0da58045b2",
+   "commit": "1ad88488018f229436d0ca2e1d215471c327a0c2",
+   "timestamp": "2026-10-12 21:28:01",
+   "stage": "exploit",
+   "episodes": 32,
+   "command": "python -m lanegame.experiments.rl.m43b exploit --workers 9"
+  },
+  "results/rl/m43b/fig_behavior_training.png": {
+   "bytes": 404641,
+   "sha256": "ef5570989fbc08cdc0d79ccb7efa5eb4f2d8ea6be55771632e59c8498afcf667"
+  },
+  "results/rl/m43b/fig_conditional.png": {
+   "bytes": 344597,
+   "sha256": "96a834ecb2a3c96abaf1b77fb61ce8bf21f48f5e2b3bb921676bd2035330e1ac"
+  },
+  "results/rl/m43b/fig_counterfactual.png": {
+   "bytes": 278813,
+   "sha256": "bea91da28c2baa8b67f45a7c83747cb6280114ad92f2f69b133648f9a3af8628"
+  },
+  "results/rl/m43b/fig_curves.png": {
+   "bytes": 145073,
+   "sha256": "517d2ad18013f83ec02c7143c7c45e9e630733c10a836aace60761fedb2d3815"
+  },
+  "results/rl/m43b/fig_exploit.png": {
+   "bytes": 46484,
+   "sha256": "4e7e525c24d1e592035afdded075582871ade93113bd6f3540bce88fbeaec938"
+  },
+  "results/rl/m43b/fig_headline.png": {
+   "bytes": 201192,
+   "sha256": "8f5399d4c5e45e060373243039620c2fe88383ac8af5484e60cb4b8d9269bab4"
+  },
+  "results/rl/m43b/fig_recall.png": {
+   "bytes": 95571,
+   "sha256": "b15c97ea328b1ffd701547233141ce8ccf76b5af45cff1bc1edda4b50b90a1f7"
+  },
+  "results/rl/m43b/fig_training.png": {
+   "bytes": 265577,
+   "sha256": "e84badb57cd02459c024852000d572662bfcd3df4e3b4982d5c6fd4e99fd0988"
+  },
+  "results/rl/m43b/headline.json": {
+   "bytes": 106989,
+   "sha256": "2040b4a5b88ad666f0c2d7da01d78038703261eaa129b226b4e414b4ff7fcbe8",
+   "commit": "1ad88488018f229436d0ca2e1d215471c327a0c2",
+   "timestamp": "2026-10-12 22:02:45",
+   "stage": "headline",
+   "window": 1000,
+   "seed": 62000,
+   "episodes": 32,
+   "command": "python -m lanegame.experiments.rl.m43b headline --workers 9"
+  },
+  "results/rl/m43b/plans.json": {
+   "bytes": 302689,
+   "sha256": "23706096b9bb931bd651b980982f002ea73df21661ac9cc7bf0a1d8be08e6de3",
+   "commit": "1ad88488018f229436d0ca2e1d215471c327a0c2",
+   "timestamp": "2026-10-12 22:19:42",
+   "stage": "plans",
+   "window": 300,
+   "states": 8,
+   "rollouts": 16,
+   "command": "python -m lanegame.experiments.rl.m43b plans --workers 4"
+  },
+  "results/rl/m43b/plans.log": {
+   "bytes": 563,
+   "sha256": "fe4856a9a8001c78fc3e33cdf7d48dfc7b0632325a3281840184bd4f64397bf1"
+  },
+  "results/rl/m43b/pytest_full.log": {
+   "bytes": 2240,
+   "sha256": "5862055d3d0440b7095eb7018343030575e149604f9d2e702c9d0c9f94f606cb"
+  },
+  "results/rl/m43b/recall.json.gz": {
+   "bytes": 220967,
+   "sha256": "14f585e65e69f72f9c8a47bfee04ca319585c9b9a895599efbc60960b4e4c4a6",
+   "commit": "1ad88488018f229436d0ca2e1d215471c327a0c2",
+   "timestamp": "2026-10-12 22:37:31",
+   "stage": "recall",
+   "window": 300,
+   "states": 8,
+   "rollouts": 24,
+   "command": "python -m lanegame.experiments.rl.m43b recall --workers 9"
+  },
+  "results/rl/m43b/recall_vs_opp.log": {
+   "bytes": 284,
+   "sha256": "f7cfd81276bf56cd0d54958ded79729226e0ee81a45f690ec0e189abbff6ef6e"
+  },
+  "results/rl/m43b/report.md": {
+   "bytes": 93369,
+   "sha256": "35a667107c48d6e0f42d5ac1c60762181b014849541f553153b9786324e0642e"
+  },
+  "results/rl/m43b/train.json": {
+   "bytes": 312596,
+   "sha256": "15fffa4badbaa92d34f1ad1b363eb1a0ccaaec3a6e88896f6805c676c64c4c2a",
+   "commit": "1ad88488018f229436d0ca2e1d215471c327a0c2",
+   "timestamp": "2026-10-12 21:18:50",
+   "stage": "train",
+   "command": "python -m lanegame.experiments.rl.m43b train --workers 9"
+  },
+  "results/rl/m43b/train.log": {
+   "bytes": 25362,
+   "sha256": "52d4b845dde8280c71560256aded026a06c97a72ac3ca34a2b00af9552e38ed4"
+  },
+  "results/rl/m43b/train_mixed.log": {
+   "bytes": 8239,
+   "sha256": "a8b1289f9564cd15273d9609a2d41310de4d20f6547927f10bf7756a962a1d31"
+  },
+  "results/rl/m43b/trajectories.json": {
+   "bytes": 170018,
+   "sha256": "1346da79da995f002ec31596edbd8747ae617796b1ed33fa3b695b3f31894dd0",
+   "commit": "1ad88488018f229436d0ca2e1d215471c327a0c2",
+   "timestamp": "2026-10-12 22:37:33",
+   "stage": "trajectories",
+   "seed": 67000,
+   "command": "python -m lanegame.experiments.rl.m43b trajectories"
+  },
+  "results/rl/m43b/trajectories/attacker_vs_base_s0.json": {
+   "bytes": 23085,
+   "sha256": "c5699b7aa56c1d8635e73a71b905e19d75d7617c724a61f6b5147fc668dd9420"
+  },
+  "results/rl/m43b/trajectories/base_s0_selfplay_a.json": {
+   "bytes": 23032,
+   "sha256": "d229aa09acc9d028d35ffdab48b0041c5bd378c61109ef045c87512a53f5e6eb"
+  },
+  "results/rl/m43b/trajectories/base_s0_selfplay_b.json": {
+   "bytes": 23310,
+   "sha256": "fb941d798ebec764260266466634a1c15d3c9fb1608e9c763a9ad815ee33fd3a"
+  },
+  "results/rl/m43b/trajectories/base_s0_vs_clear_punish.json": {
+   "bytes": 26802,
+   "sha256": "3ef9e89e200b1b0fc89b5972f119510cf1ec2f30058d0be642c6dafe2ecccd9e"
+  },
+  "results/rl/m43b/trajectories/base_s0_vs_crash_recall.json": {
+   "bytes": 28085,
+   "sha256": "26455bc794838cbd3681cf2b0de5e84815cc45178cdc94c0cfe7ae68c4661057"
+  },
+  "results/rl/m43b/trajectories/base_s0_vs_initial.json": {
+   "bytes": 28874,
+   "sha256": "23bbdda93b89616c8ec1014ea8ab78c9896ae08e9db7b980ae3df588a9f12982"
+  },
+  "results/rl/m43b/trajectories/base_s0_vs_push_punish.json": {
+   "bytes": 30896,
+   "sha256": "9949423ca0de444515e35efe448db8cdcf8e8c1641eb082425e3426e9a786482"
+  },
+  "results/rl/m43b/trajectories/ent03_s0_selfplay.json": {
+   "bytes": 26235,
+   "sha256": "90a111f79fd19c3fc3d5d37cce78d03f13627681c5c10218a0c619feaa0a24d6"
+  },
+  "results/rl/m43b/trajectories/hist80_s0_selfplay.json": {
+   "bytes": 22451,
+   "sha256": "f256b0d7a7377dc38e8404baca8d3f013fca7787c620ad8bbc5b6bdb47f47f9f"
+  },
+  "results/rl/m43b/trajectories/mixed_s0_selfplay.json": {
+   "bytes": 27122,
+   "sha256": "bade57abf94ccab34230919f25191c2cc354aaf2ec6de1c591de13ddffb72ac0"
+  },
+  "results/rl/m43b/validation/wave_cf.log": {
+   "bytes": 760,
+   "sha256": "64e0ae69384a832a4a16108581c2002582fd49a6aa7998ae4d8d2f17da649e50"
+  }
+ },
+ "checkpoints": {
+  "results/rl/checkpoints/m43b/attackers/base_s0/final.pt": {
+   "bytes": 144625,
+   "sha256": "25f489f9490bc59f7bc1a9c7afa35947d229a2ed28a7bc896270a9e43e2073cd",
+   "weights_digest": "0fae3c6cb32e760b2ac311db832f18bf75a9062ca6880eb5003975020884cc14",
+   "kind": "attacker"
+  },
+  "results/rl/checkpoints/m43b/attackers/base_s0/history.jsonl": {
+   "bytes": 392011,
+   "sha256": "dc00c6d7c4947df92bf027221b7216849f38237483885f52e721cbec7898348d"
+  },
+  "results/rl/checkpoints/m43b/attackers/base_s1/final.pt": {
+   "bytes": 144625,
+   "sha256": "8388ef16061208195cc82d9b7bf4c7d97bef3f8cefda0dd9bacb116bd3a4d867",
+   "weights_digest": "7568bd60d309280f0e60e96040d389b1672ed244019601930666e25cd90d28c4",
+   "kind": "attacker"
+  },
+  "results/rl/checkpoints/m43b/attackers/base_s1/history.jsonl": {
+   "bytes": 392237,
+   "sha256": "00a4c47e02b3136de0ce03e01510a51df0923466fa49d779175e1d5fd68cf2af"
+  },
+  "results/rl/checkpoints/m43b/attackers/base_s2/final.pt": {
+   "bytes": 144625,
+   "sha256": "82c0461ba11404f3a5106fa0a30b69752fb6e5bcdba078927a7db4c5319e097f",
+   "weights_digest": "21f462ef33b1cdf44d494355180c9a65d67159b9fe5cf1a45024fcd4d0364bdc",
+   "kind": "attacker"
+  },
+  "results/rl/checkpoints/m43b/attackers/base_s2/history.jsonl": {
+   "bytes": 392301,
+   "sha256": "a428beac0a3e537a0494c15a9d51250e3afd8649aa4112994c9485a012c779d0"
+  },
+  "results/rl/checkpoints/m43b/attackers/ent03_s0/final.pt": {
+   "bytes": 144625,
+   "sha256": "7a4b6c43a4258caf602b7f31cdd6c70770bb0274e5f3a302fe54745fa1ec9985",
+   "weights_digest": "7a1bae9df8e1acbae29914c2c6eef6e1f60dbeb92a9db0a8e81f6c1ea8b6e295",
+   "kind": "attacker"
+  },
+  "results/rl/checkpoints/m43b/attackers/ent03_s0/history.jsonl": {
+   "bytes": 392813,
+   "sha256": "4c92c328db4997c8da990a6e0e457e9a642ca37447d5f6ea132f38fda93fc38e"
+  },
+  "results/rl/checkpoints/m43b/attackers/ent03_s1/final.pt": {
+   "bytes": 144689,
+   "sha256": "56cac3014516bc1e88c87616859fad207d1ba4b501996989f3d2ef0bc7b3d4c8",
+   "weights_digest": "11bed20745d2a93d4486e2c52fe6b92a5bb7c96362f6766ae873a8841620fc1c",
+   "kind": "attacker"
+  },
+  "results/rl/checkpoints/m43b/attackers/ent03_s1/history.jsonl": {
+   "bytes": 393036,
+   "sha256": "bf27286015b3aa7ef1329b48231a0741c6b002f7e2a4e871567592bfa4ca21bf"
+  },
+  "results/rl/checkpoints/m43b/attackers/ent03_s2/final.pt": {
+   "bytes": 144625,
+   "sha256": "ee1669c5d90549f218a75e758357f13ff36679033d32f7129cfd247ac8e66a2e",
+   "weights_digest": "c19d0f95b2367e82bccdbc561f4a236b7d03277641d1b5549f30a023f0163392",
+   "kind": "attacker"
+  },
+  "results/rl/checkpoints/m43b/attackers/ent03_s2/history.jsonl": {
+   "bytes": 392538,
+   "sha256": "a38e75b471388b9af2297eb5fec0d4089a44302d13c250dcb5759b4da96d8f03"
+  },
+  "results/rl/checkpoints/m43b/attackers/hist80_s0/final.pt": {
+   "bytes": 144689,
+   "sha256": "e9554a1498979ed896951921b4276593ec13f6b9b3aa11a6d7e8b724d9c4330b",
+   "weights_digest": "8b439c5b008359e22672a11581ed3b18b89aa96383c8188ee9d7084076168043",
+   "kind": "attacker"
+  },
+  "results/rl/checkpoints/m43b/attackers/hist80_s0/history.jsonl": {
+   "bytes": 393424,
+   "sha256": "94b8669117fbd5c6a1b6d2333d7e9c5f219c71747bbbf12779e8ee4205121caa"
+  },
+  "results/rl/checkpoints/m43b/attackers/hist80_s1/final.pt": {
+   "bytes": 144689,
+   "sha256": "6d272885c9ab16fcc9f01ea33a9e1fbc540cdfd8263955a7a1b41961ca873b0f",
+   "weights_digest": "18116d5f0d64033c3c4d7d576355e5c1868d1e0cf4aaf2a46bc7a096942aac7a",
+   "kind": "attacker"
+  },
+  "results/rl/checkpoints/m43b/attackers/hist80_s1/history.jsonl": {
+   "bytes": 393609,
+   "sha256": "404108a498378c1fcd8eca9f76178c9ba4b85dbc9a3ccf97076f69515c6887a4"
+  },
+  "results/rl/checkpoints/m43b/attackers/hist80_s2/final.pt": {
+   "bytes": 144625,
+   "sha256": "4148b72131fb7458c1de0648ba7c5a0e5c856ec878cb8ccbe4d711b1af880515",
+   "weights_digest": "8536f45caae0f70b4a5d94b72534caf7fd4b2d7e3fb4125be27cda3a7b1a066a",
+   "kind": "attacker"
+  },
+  "results/rl/checkpoints/m43b/attackers/hist80_s2/history.jsonl": {
+   "bytes": 393940,
+   "sha256": "81f7a78c8c8044011b0dc0ef8f422cb43d396f99cf77e27c8ac770cbff38f027"
+  },
+  "results/rl/checkpoints/m43b/base_s0/final.pt": {
+   "bytes": 145201,
+   "sha256": "52452b91ebde615ecc499911e121dd88c92179c2a796b50ee65ef6733d7dd5d5",
+   "weights_digest": "55898c221e815b9beb76219987f4f2ada538c6715d024d89d101302d44696873",
+   "kind": "final"
+  },
+  "results/rl/checkpoints/m43b/base_s0/history.jsonl": {
+   "bytes": 648440,
+   "sha256": "e34e1c28beb6bf9042a35e667164121985a53aa2e2082406d773bc490a194472"
+  },
+  "results/rl/checkpoints/m43b/base_s0/run.json": {
+   "bytes": 5383,
+   "sha256": "8ac5d7cc28749c74c28e51c33532aa26bf94e16ad0cee1ee8ca9e5819c876f94"
+  },
+  "results/rl/checkpoints/m43b/base_s1/final.pt": {
+   "bytes": 145201,
+   "sha256": "9c0109e6e688c7a8ba51a3d74792ba622e0418a81c804fad94703cb91c88710e",
+   "weights_digest": "2ad5f5b4c36787b5e7b0fbef099975af9c6de63172215d6af0ffa058570ff503",
+   "kind": "final"
+  },
+  "results/rl/checkpoints/m43b/base_s1/history.jsonl": {
+   "bytes": 648228,
+   "sha256": "a80a057fa8e6df9342129fd244d79016c3d67fb5ba4482a3cc3e906dc76b8a9b"
+  },
+  "results/rl/checkpoints/m43b/base_s1/run.json": {
+   "bytes": 5383,
+   "sha256": "ae40f71a645ab1ff60868c49ab875a28f1b35da46d4b3ab46ae2645ec08f0696"
+  },
+  "results/rl/checkpoints/m43b/base_s2/final.pt": {
+   "bytes": 145201,
+   "sha256": "d0279b06e6455576b9160c40f58c8e83e6702dc81f5e117a154db53ce09ace3d",
+   "weights_digest": "787a625ef8c8797a948497957b7ad774e1cbef828f1e72634382d302488243b0",
+   "kind": "final"
+  },
+  "results/rl/checkpoints/m43b/base_s2/history.jsonl": {
+   "bytes": 648438,
+   "sha256": "42e90852381d6e878f46bc0ba690757650f6d2e54ec9d4b18e2e8882e015e60b"
+  },
+  "results/rl/checkpoints/m43b/base_s2/run.json": {
+   "bytes": 5383,
+   "sha256": "31dae2109566ad0a8ff83e54489ae268b22cae3cfeb18ac36809a1255ba1c1c5"
+  },
+  "results/rl/checkpoints/m43b/ent03_s0/final.pt": {
+   "bytes": 145201,
+   "sha256": "6181780900826cc7006f78198928ab645a6122cfd1504f3520249737b51b9955",
+   "weights_digest": "e390d2d0e4f7167c1588c5afeb9c37c3c9be1043e7f70f80f6af383637e09e30",
+   "kind": "final"
+  },
+  "results/rl/checkpoints/m43b/ent03_s0/history.jsonl": {
+   "bytes": 647882,
+   "sha256": "12ce24c555f56ef2f5182464470264b3fd06f1895409ae33921bf7cfadecb47d"
+  },
+  "results/rl/checkpoints/m43b/ent03_s0/run.json": {
+   "bytes": 5384,
+   "sha256": "48c1dd9261f4ae722f48173e0aa3477702831ae359edbd6a30c871d567c15066"
+  },
+  "results/rl/checkpoints/m43b/ent03_s1/final.pt": {
+   "bytes": 145201,
+   "sha256": "6a2c775eea44938307d36c1e2740c6ddac2993cf6cded6ff432880415c9cc491",
+   "weights_digest": "89400b83bc66ce40e506dabae898f0d299813d2865c810eb7da7f679a11bb3fe",
+   "kind": "final"
+  },
+  "results/rl/checkpoints/m43b/ent03_s1/history.jsonl": {
+   "bytes": 647892,
+   "sha256": "0e3918a4bc86242a0b7e328a02e76c1ff66bd8334d4b0edc6e927a2f545cb78b"
+  },
+  "results/rl/checkpoints/m43b/ent03_s1/run.json": {
+   "bytes": 5384,
+   "sha256": "09efb78397ff673e2be94bbe5ebbc2f4fdfa5d4863826c0b3627026f77c8c7e1"
+  },
+  "results/rl/checkpoints/m43b/ent03_s2/final.pt": {
+   "bytes": 145201,
+   "sha256": "c770a726cf3a6af463a271da570a1d63dd44e99259439c5a7c854b2a9d1291be",
+   "weights_digest": "18d282345b833c09fee66386dba4e70f2843da074b848127f01cebeb76feb788",
+   "kind": "final"
+  },
+  "results/rl/checkpoints/m43b/ent03_s2/history.jsonl": {
+   "bytes": 648307,
+   "sha256": "69eaaf59aa15dc2b51034f4af32c7c35d0d6eb545751d1b5d10690b8b7f6adbc"
+  },
+  "results/rl/checkpoints/m43b/ent03_s2/run.json": {
+   "bytes": 5384,
+   "sha256": "ab50666bb92087e4ef93a924c93e6629542c1548eabb84ccab45fc39dcdc3b6f"
+  },
+  "results/rl/checkpoints/m43b/hist80_s0/final.pt": {
+   "bytes": 147057,
+   "sha256": "e516219aef42d2cf48cce3d238dad773c711de48c1c692faf5c5523a1376e956",
+   "weights_digest": "12c0534520be0ca62143f749c79cb5b7ba2800dcf8ed37fa4b470acb6e1ecae3",
+   "kind": "final"
+  },
+  "results/rl/checkpoints/m43b/hist80_s0/history.jsonl": {
+   "bytes": 735393,
+   "sha256": "e2fd5164c702a2a72c9953b758d16dbdb4566832797ae6b93d6a30155d0497b4"
+  },
+  "results/rl/checkpoints/m43b/hist80_s0/run.json": {
+   "bytes": 5385,
+   "sha256": "de8fdc0246618e9067f2625fd2bc3b9d065ff74feb118553314111e76ec3afd3"
+  },
+  "results/rl/checkpoints/m43b/hist80_s1/final.pt": {
+   "bytes": 147057,
+   "sha256": "d649f2bbb454da6b101a974c5c1f2936e9360f35a9fe8d80c46a25e56d287484",
+   "weights_digest": "bdd84f01fcc60d3d38487f1d8b1aa157beba8d49937cdf3648579130115edb2f",
+   "kind": "final"
+  },
+  "results/rl/checkpoints/m43b/hist80_s1/history.jsonl": {
+   "bytes": 739559,
+   "sha256": "edab9578f458a2cbfb7840438b8fdbe873002ef94486798abfdbbb87d5be60ad"
+  },
+  "results/rl/checkpoints/m43b/hist80_s1/run.json": {
+   "bytes": 5385,
+   "sha256": "f89389ec4b4d445102e70664bd256d0ac8cdcf43e3fa95e94b96134e6e182877"
+  },
+  "results/rl/checkpoints/m43b/hist80_s2/final.pt": {
+   "bytes": 146993,
+   "sha256": "44c09336af070c5edb65408ccc1c804e520a1332ec12dd1b427a1e11e9556aef",
+   "weights_digest": "4f4b3d9b4bd34540e47b55b80cc31eee9f02ca35dc3f269060951fa5e46f0ac4",
+   "kind": "final"
+  },
+  "results/rl/checkpoints/m43b/hist80_s2/history.jsonl": {
+   "bytes": 740055,
+   "sha256": "83e397d4ed447bb6170ed26be0415924b728d1371f87a7c6ae274153f0b2c120"
+  },
+  "results/rl/checkpoints/m43b/hist80_s2/run.json": {
+   "bytes": 5385,
+   "sha256": "0160afcc5107a838319edf47bac783b35a600c8f92322403d2dea04e891510d6"
+  },
+  "results/rl/checkpoints/m43b/mixed_s0/final.pt": {
+   "bytes": 145265,
+   "sha256": "1427f33913eb2aee33efeef0d95b0d8f0f3511d364d58a913ef373a922473eac",
+   "weights_digest": "574ea72a9222f547743cb841eb6b65553ca68cdd0edb9c9ed47099cf335a6035",
+   "kind": "final"
+  },
+  "results/rl/checkpoints/m43b/mixed_s0/history.jsonl": {
+   "bytes": 648014,
+   "sha256": "dc81dd958023678840d91a5f4cb6d46cd4a3eb8c7f0e2193457a4aa93d0fa82d"
+  },
+  "results/rl/checkpoints/m43b/mixed_s0/run.json": {
+   "bytes": 5419,
+   "sha256": "d5db09b72204d8d879d5efe989a09501da5bdbb59e634e50d3e67a5acdee4f6d"
+  },
+  "results/rl/checkpoints/m43b/mixed_s1/final.pt": {
+   "bytes": 145265,
+   "sha256": "21c9ee00fc3091e3e50d9e7de03340e9a32b03e50d431e5cd3d8473f1e212786",
+   "weights_digest": "14e6fe39c6ae83ed73048ec08ada6d2a057c5f48d7ca8b876cc256747249b9d0",
+   "kind": "final"
+  },
+  "results/rl/checkpoints/m43b/mixed_s1/history.jsonl": {
+   "bytes": 648616,
+   "sha256": "9f1cf62ebec32bc380cc9a7f79d739a82a5cd5564de2edbc1612a006de8b2f5a"
+  },
+  "results/rl/checkpoints/m43b/mixed_s1/run.json": {
+   "bytes": 5419,
+   "sha256": "2a1b2a2f938ea1567ea79d13f19d519bb777788606cde479018c19159978189a"
+  },
+  "results/rl/checkpoints/m43b/mixed_s2/final.pt": {
+   "bytes": 145265,
+   "sha256": "cbf1876396373af44fc3add06424e19ceabf08f56206e2e583cddb7865912404",
+   "weights_digest": "cf790d219cfd5a97c476f24cd9b06c3489c96169493d1cce4f98d8b828699985",
+   "kind": "final"
+  },
+  "results/rl/checkpoints/m43b/mixed_s2/history.jsonl": {
+   "bytes": 648323,
+   "sha256": "8c73a6a0deca98238ae946e8aeda4b3abc3a7c404ca3a231f1d10efe996facb1"
+  },
+  "results/rl/checkpoints/m43b/mixed_s2/run.json": {
+   "bytes": 5419,
+   "sha256": "d41956219e018938103fb974c492ebf2eace59739f99289c17153d9f03ab113d"
+  }
+ },
+ "runs": {
+  "base_s0": {
+   "seed": 0,
+   "ppo": {
+    "total_steps": 2048000,
+    "n_envs": 16,
+    "n_steps": 64,
+    "epochs": 4,
+    "minibatch_size": 256,
+    "lr": 0.0003,
+    "anneal_lr": true,
+    "gamma": 0.99,
+    "gae_lambda": 0.95,
+    "clip_coef": 0.2,
+    "clip_vloss": true,
+    "vf_clip": 0.5,
+    "vf_coef": 0.5,
+    "ent_coef": 0.01,
+    "max_grad_norm": 0.5,
+    "target_kl": null,
+    "norm_adv": true,
+    "reward_scale": 0.1,
+    "hidden": [
+     128,
+     128
+    ],
+    "seed": 0,
+    "torch_threads": 1,
+    "max_turns": null,
+    "lane_cache": 20000,
+    "expected_gank_reward": false,
+    "skill_levels": null,
+    "segment_length": 128,
+    "game_length": 512,
+    "start_archive": null,
+    "start_mix": 0.0,
+    "allow_gamma_mismatch": false
+   },
+   "shared": {
+    "current_fraction": 1.0,
+    "snapshot_every": 25600,
+    "pool_size": 8,
+    "snapshot_initial": false
+   }
+  },
+  "base_s1": {
+   "seed": 1,
+   "ppo": {
+    "total_steps": 2048000,
+    "n_envs": 16,
+    "n_steps": 64,
+    "epochs": 4,
+    "minibatch_size": 256,
+    "lr": 0.0003,
+    "anneal_lr": true,
+    "gamma": 0.99,
+    "gae_lambda": 0.95,
+    "clip_coef": 0.2,
+    "clip_vloss": true,
+    "vf_clip": 0.5,
+    "vf_coef": 0.5,
+    "ent_coef": 0.01,
+    "max_grad_norm": 0.5,
+    "target_kl": null,
+    "norm_adv": true,
+    "reward_scale": 0.1,
+    "hidden": [
+     128,
+     128
+    ],
+    "seed": 1,
+    "torch_threads": 1,
+    "max_turns": null,
+    "lane_cache": 20000,
+    "expected_gank_reward": false,
+    "skill_levels": null,
+    "segment_length": 128,
+    "game_length": 512,
+    "start_archive": null,
+    "start_mix": 0.0,
+    "allow_gamma_mismatch": false
+   },
+   "shared": {
+    "current_fraction": 1.0,
+    "snapshot_every": 25600,
+    "pool_size": 8,
+    "snapshot_initial": false
+   }
+  },
+  "base_s2": {
+   "seed": 2,
+   "ppo": {
+    "total_steps": 2048000,
+    "n_envs": 16,
+    "n_steps": 64,
+    "epochs": 4,
+    "minibatch_size": 256,
+    "lr": 0.0003,
+    "anneal_lr": true,
+    "gamma": 0.99,
+    "gae_lambda": 0.95,
+    "clip_coef": 0.2,
+    "clip_vloss": true,
+    "vf_clip": 0.5,
+    "vf_coef": 0.5,
+    "ent_coef": 0.01,
+    "max_grad_norm": 0.5,
+    "target_kl": null,
+    "norm_adv": true,
+    "reward_scale": 0.1,
+    "hidden": [
+     128,
+     128
+    ],
+    "seed": 2,
+    "torch_threads": 1,
+    "max_turns": null,
+    "lane_cache": 20000,
+    "expected_gank_reward": false,
+    "skill_levels": null,
+    "segment_length": 128,
+    "game_length": 512,
+    "start_archive": null,
+    "start_mix": 0.0,
+    "allow_gamma_mismatch": false
+   },
+   "shared": {
+    "current_fraction": 1.0,
+    "snapshot_every": 25600,
+    "pool_size": 8,
+    "snapshot_initial": false
+   }
+  },
+  "ent03_s0": {
+   "seed": 0,
+   "ppo": {
+    "total_steps": 2048000,
+    "n_envs": 16,
+    "n_steps": 64,
+    "epochs": 4,
+    "minibatch_size": 256,
+    "lr": 0.0003,
+    "anneal_lr": true,
+    "gamma": 0.99,
+    "gae_lambda": 0.95,
+    "clip_coef": 0.2,
+    "clip_vloss": true,
+    "vf_clip": 0.5,
+    "vf_coef": 0.5,
+    "ent_coef": 0.03,
+    "max_grad_norm": 0.5,
+    "target_kl": null,
+    "norm_adv": true,
+    "reward_scale": 0.1,
+    "hidden": [
+     128,
+     128
+    ],
+    "seed": 0,
+    "torch_threads": 1,
+    "max_turns": null,
+    "lane_cache": 20000,
+    "expected_gank_reward": false,
+    "skill_levels": null,
+    "segment_length": 128,
+    "game_length": 512,
+    "start_archive": null,
+    "start_mix": 0.0,
+    "allow_gamma_mismatch": false
+   },
+   "shared": {
+    "current_fraction": 1.0,
+    "snapshot_every": 25600,
+    "pool_size": 8,
+    "snapshot_initial": false
+   }
+  },
+  "ent03_s1": {
+   "seed": 1,
+   "ppo": {
+    "total_steps": 2048000,
+    "n_envs": 16,
+    "n_steps": 64,
+    "epochs": 4,
+    "minibatch_size": 256,
+    "lr": 0.0003,
+    "anneal_lr": true,
+    "gamma": 0.99,
+    "gae_lambda": 0.95,
+    "clip_coef": 0.2,
+    "clip_vloss": true,
+    "vf_clip": 0.5,
+    "vf_coef": 0.5,
+    "ent_coef": 0.03,
+    "max_grad_norm": 0.5,
+    "target_kl": null,
+    "norm_adv": true,
+    "reward_scale": 0.1,
+    "hidden": [
+     128,
+     128
+    ],
+    "seed": 1,
+    "torch_threads": 1,
+    "max_turns": null,
+    "lane_cache": 20000,
+    "expected_gank_reward": false,
+    "skill_levels": null,
+    "segment_length": 128,
+    "game_length": 512,
+    "start_archive": null,
+    "start_mix": 0.0,
+    "allow_gamma_mismatch": false
+   },
+   "shared": {
+    "current_fraction": 1.0,
+    "snapshot_every": 25600,
+    "pool_size": 8,
+    "snapshot_initial": false
+   }
+  },
+  "ent03_s2": {
+   "seed": 2,
+   "ppo": {
+    "total_steps": 2048000,
+    "n_envs": 16,
+    "n_steps": 64,
+    "epochs": 4,
+    "minibatch_size": 256,
+    "lr": 0.0003,
+    "anneal_lr": true,
+    "gamma": 0.99,
+    "gae_lambda": 0.95,
+    "clip_coef": 0.2,
+    "clip_vloss": true,
+    "vf_clip": 0.5,
+    "vf_coef": 0.5,
+    "ent_coef": 0.03,
+    "max_grad_norm": 0.5,
+    "target_kl": null,
+    "norm_adv": true,
+    "reward_scale": 0.1,
+    "hidden": [
+     128,
+     128
+    ],
+    "seed": 2,
+    "torch_threads": 1,
+    "max_turns": null,
+    "lane_cache": 20000,
+    "expected_gank_reward": false,
+    "skill_levels": null,
+    "segment_length": 128,
+    "game_length": 512,
+    "start_archive": null,
+    "start_mix": 0.0,
+    "allow_gamma_mismatch": false
+   },
+   "shared": {
+    "current_fraction": 1.0,
+    "snapshot_every": 25600,
+    "pool_size": 8,
+    "snapshot_initial": false
+   }
+  },
+  "hist80_s0": {
+   "seed": 0,
+   "ppo": {
+    "total_steps": 2048000,
+    "n_envs": 16,
+    "n_steps": 64,
+    "epochs": 4,
+    "minibatch_size": 256,
+    "lr": 0.0003,
+    "anneal_lr": true,
+    "gamma": 0.99,
+    "gae_lambda": 0.95,
+    "clip_coef": 0.2,
+    "clip_vloss": true,
+    "vf_clip": 0.5,
+    "vf_coef": 0.5,
+    "ent_coef": 0.01,
+    "max_grad_norm": 0.5,
+    "target_kl": null,
+    "norm_adv": true,
+    "reward_scale": 0.1,
+    "hidden": [
+     128,
+     128
+    ],
+    "seed": 0,
+    "torch_threads": 1,
+    "max_turns": null,
+    "lane_cache": 20000,
+    "expected_gank_reward": false,
+    "skill_levels": null,
+    "segment_length": 128,
+    "game_length": 512,
+    "start_archive": null,
+    "start_mix": 0.0,
+    "allow_gamma_mismatch": false
+   },
+   "shared": {
+    "current_fraction": 0.8,
+    "snapshot_every": 25600,
+    "pool_size": 8,
+    "snapshot_initial": false
+   }
+  },
+  "hist80_s1": {
+   "seed": 1,
+   "ppo": {
+    "total_steps": 2048000,
+    "n_envs": 16,
+    "n_steps": 64,
+    "epochs": 4,
+    "minibatch_size": 256,
+    "lr": 0.0003,
+    "anneal_lr": true,
+    "gamma": 0.99,
+    "gae_lambda": 0.95,
+    "clip_coef": 0.2,
+    "clip_vloss": true,
+    "vf_clip": 0.5,
+    "vf_coef": 0.5,
+    "ent_coef": 0.01,
+    "max_grad_norm": 0.5,
+    "target_kl": null,
+    "norm_adv": true,
+    "reward_scale": 0.1,
+    "hidden": [
+     128,
+     128
+    ],
+    "seed": 1,
+    "torch_threads": 1,
+    "max_turns": null,
+    "lane_cache": 20000,
+    "expected_gank_reward": false,
+    "skill_levels": null,
+    "segment_length": 128,
+    "game_length": 512,
+    "start_archive": null,
+    "start_mix": 0.0,
+    "allow_gamma_mismatch": false
+   },
+   "shared": {
+    "current_fraction": 0.8,
+    "snapshot_every": 25600,
+    "pool_size": 8,
+    "snapshot_initial": false
+   }
+  },
+  "hist80_s2": {
+   "seed": 2,
+   "ppo": {
+    "total_steps": 2048000,
+    "n_envs": 16,
+    "n_steps": 64,
+    "epochs": 4,
+    "minibatch_size": 256,
+    "lr": 0.0003,
+    "anneal_lr": true,
+    "gamma": 0.99,
+    "gae_lambda": 0.95,
+    "clip_coef": 0.2,
+    "clip_vloss": true,
+    "vf_clip": 0.5,
+    "vf_coef": 0.5,
+    "ent_coef": 0.01,
+    "max_grad_norm": 0.5,
+    "target_kl": null,
+    "norm_adv": true,
+    "reward_scale": 0.1,
+    "hidden": [
+     128,
+     128
+    ],
+    "seed": 2,
+    "torch_threads": 1,
+    "max_turns": null,
+    "lane_cache": 20000,
+    "expected_gank_reward": false,
+    "skill_levels": null,
+    "segment_length": 128,
+    "game_length": 512,
+    "start_archive": null,
+    "start_mix": 0.0,
+    "allow_gamma_mismatch": false
+   },
+   "shared": {
+    "current_fraction": 0.8,
+    "snapshot_every": 25600,
+    "pool_size": 8,
+    "snapshot_initial": false
+   }
+  },
+  "mixed_s0": {
+   "seed": 0,
+   "ppo": {
+    "total_steps": 2048000,
+    "n_envs": 16,
+    "n_steps": 64,
+    "epochs": 4,
+    "minibatch_size": 256,
+    "lr": 0.0003,
+    "anneal_lr": true,
+    "gamma": 0.99,
+    "gae_lambda": 0.95,
+    "clip_coef": 0.2,
+    "clip_vloss": true,
+    "vf_clip": 0.5,
+    "vf_coef": 0.5,
+    "ent_coef": 0.01,
+    "max_grad_norm": 0.5,
+    "target_kl": null,
+    "norm_adv": true,
+    "reward_scale": 0.1,
+    "hidden": [
+     128,
+     128
+    ],
+    "seed": 0,
+    "torch_threads": 1,
+    "max_turns": null,
+    "lane_cache": 20000,
+    "expected_gank_reward": false,
+    "skill_levels": null,
+    "segment_length": 128,
+    "game_length": 512,
+    "start_archive": "results\\rl\\m43b\\archive_train.json",
+    "start_mix": 0.5,
+    "allow_gamma_mismatch": false
+   },
+   "shared": {
+    "current_fraction": 1.0,
+    "snapshot_every": 25600,
+    "pool_size": 8,
+    "snapshot_initial": false
+   }
+  },
+  "mixed_s1": {
+   "seed": 1,
+   "ppo": {
+    "total_steps": 2048000,
+    "n_envs": 16,
+    "n_steps": 64,
+    "epochs": 4,
+    "minibatch_size": 256,
+    "lr": 0.0003,
+    "anneal_lr": true,
+    "gamma": 0.99,
+    "gae_lambda": 0.95,
+    "clip_coef": 0.2,
+    "clip_vloss": true,
+    "vf_clip": 0.5,
+    "vf_coef": 0.5,
+    "ent_coef": 0.01,
+    "max_grad_norm": 0.5,
+    "target_kl": null,
+    "norm_adv": true,
+    "reward_scale": 0.1,
+    "hidden": [
+     128,
+     128
+    ],
+    "seed": 1,
+    "torch_threads": 1,
+    "max_turns": null,
+    "lane_cache": 20000,
+    "expected_gank_reward": false,
+    "skill_levels": null,
+    "segment_length": 128,
+    "game_length": 512,
+    "start_archive": "results\\rl\\m43b\\archive_train.json",
+    "start_mix": 0.5,
+    "allow_gamma_mismatch": false
+   },
+   "shared": {
+    "current_fraction": 1.0,
+    "snapshot_every": 25600,
+    "pool_size": 8,
+    "snapshot_initial": false
+   }
+  },
+  "mixed_s2": {
+   "seed": 2,
+   "ppo": {
+    "total_steps": 2048000,
+    "n_envs": 16,
+    "n_steps": 64,
+    "epochs": 4,
+    "minibatch_size": 256,
+    "lr": 0.0003,
+    "anneal_lr": true,
+    "gamma": 0.99,
+    "gae_lambda": 0.95,
+    "clip_coef": 0.2,
+    "clip_vloss": true,
+    "vf_clip": 0.5,
+    "vf_coef": 0.5,
+    "ent_coef": 0.01,
+    "max_grad_norm": 0.5,
+    "target_kl": null,
+    "norm_adv": true,
+    "reward_scale": 0.1,
+    "hidden": [
+     128,
+     128
+    ],
+    "seed": 2,
+    "torch_threads": 1,
+    "max_turns": null,
+    "lane_cache": 20000,
+    "expected_gank_reward": false,
+    "skill_levels": null,
+    "segment_length": 128,
+    "game_length": 512,
+    "start_archive": "results\\rl\\m43b\\archive_train.json",
+    "start_mix": 0.5,
+    "allow_gamma_mismatch": false
+   },
+   "shared": {
+    "current_fraction": 1.0,
+    "snapshot_every": 25600,
+    "pool_size": 8,
+    "snapshot_initial": false
+   }
+  }
+ },
+ "bundle": {
+  "command": "python -m lanegame.experiments.rl.m43b manifest   # also writes the bundle",
+  "directory": "results\\rl\\m43b_artifacts"
+ },
+ "elapsed_s": 14.123974099988118
+}

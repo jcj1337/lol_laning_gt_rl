@@ -31,7 +31,7 @@ from .behavior import turn_features, situations, FEATURE_KEYS
 from .common import ARCHIVE_SEED, OUT, PRIMARY, agent_from_spec, cfg_game, meta, save_json
 from .references import HEAD_REFS
 
-ARCHIVE_PATH = os.path.join(OUT, "archive_train.json")
+ARCHIVE_PATH = os.path.join(OUT, "archive_train.json.gz")       # gzipped since the follow-up (load_archive reads both)
 TARGETS = {"neutral": 60, "own_pushing": 60, "enemy_pushing": 60, "stacked": 30, "crash_imminent": 30, "defending": 50,
            "sieging": 40, "freeze_like": 40, "enemy_absent": 40, "low_hp": 40, "other": 50}
 CLASS_OF = {"neutral": "neutral lane (fronts fighting at the lane cell, equal power)",

@@ -69,6 +69,7 @@ parameter is claimed to be an empirical League statistic.
 | **M4.1–M4.2. Integrated champion economy and natural waves** | `GameConfig.m4()` and the presets up to `m4_lasthit()` | **complete** ([design](docs/m4/m4_integrated_design.md), [implementation](docs/m4/m4_implementation_report.md), [natural waves](docs/natural_waves/m4_2e_natural_waves_final_review.md), [wave actions](docs/natural_waves/m4_2e_wave_actions_report.md)) |
 | **M4.3a. RL infrastructure audit and smoke test** | PettingZoo conformance, PPO reference checks, bounded self-play on `m4_lasthit()` | **complete** ([report](docs/rl/m4_3a_rl_infrastructure_report.md)) |
 | **M4.3b. Self-play pilot and strategic diagnostics** | 12 PPO runs on `m4_lasthit()`, reactive reference suite, learning curves, cross-play, exploitability, conditional behaviour, counterfactuals, Recall / death economics, mixed starts | **complete** ([report](docs/rl/m4_3b_ppo_pilot_report.md)) |
+| **M4.3b follow-up. Strategic validation and artifact cleanup** | wave-only interventions that keep the policy's adaptive behaviour, four opponents, the 1000-turn horizon, freeze-state classification and synthetic power gaps; artifact manifest and checkpoint bundle | **complete** ([report](docs/rl/m4_3b_validation_report.md)) |
 | M4.3c. Design investigation of Clear dominance, population attackers | Which mechanics would make wave control pay against a clearing opponent? | next |
 | 2. Opponent modelling | Bayesian opponent models, exploitation vs. exploitability, risk | planned |
 | 3. Interactive dashboard | A site for exploring strategies and results | planned |
@@ -120,6 +121,8 @@ python -m lanegame rl-shared --model m4_lasthit --current-fraction 1.0 --steps 4
 python -m lanegame experiments-rl m43a_smoke          # the M4.3a smoke test (results/rl/m43a_smoke.md, ~5 min)
 python -m lanegame.experiments.rl.m43b train curves headline exploit behavior counterfactual plans recall trajectories figures report
                                                       # the M4.3b pilot stage by stage (results/rl/m43b/, ~2 h on 9 processes)
+python -m lanegame.experiments.rl.m43b validation     # the follow-up: val_wave_cf val_horizon val_games val_freeze val_report (~1.5 h)
+python -m lanegame.experiments.rl.m43b manifest       # results/rl/m43b/MANIFEST.json and the checkpoint bundle (results/rl/m43b_artifacts/)
 python -m lanegame rl-shared --current-fraction 0.8 --skill-levels 0.2,0.5,0.8 --out results/rl/checkpoints/demo_shared
                                                       # the champion game, 80% current / 20% past versions
 python -m lanegame rl-eval results/rl/checkpoints/demo_shared/final.pt   # champion game: both seats, held-out seeds, 95% CIs
@@ -178,8 +181,9 @@ lanegame/                 engine (pure Python + NumPy/SciPy, no presentation cod
                           checkpoints with digests), evaluate.py (head-to-head, round robin, approximate best responses)
   diagnostics/            action audits and paired counterfactual rollouts from restorable states
   viewer/                 the Streamlit lane debugger (M4.2e-D)
-  experiments/rl/         RL studies, the M4.3a smoke test and the M4.3b pilot package m43b/ (results/rl/; checkpoints in
-                          results/rl/checkpoints/, untracked)
+  experiments/rl/         RL studies, the M4.3a smoke test and the M4.3b pilot package m43b/ with its follow-up
+                          (intervene.py, validation.py, manifest.py); results/rl/ (large JSON gzipped; see
+                          results/rl/m43b/ARTIFACTS.md); checkpoints in results/rl/checkpoints/, untracked, bundled on request
   experiments/m4/         M4 validation and calibration drivers (results/m4*/)
   experiments/champions/  champion-mode validation (results/champions/)
   experiments/siege/      the siege study (results/siege/); experiments/, experiments/v1/: the earlier exact models
