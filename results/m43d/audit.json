@@ -1,0 +1,634 @@
+{
+ "meta": {
+  "commit": "b2e05adcdbe0cf66dc08f28e3b472f7c0dd8a496",
+  "timestamp": "2026-10-13 16:30:48",
+  "python": "3.13.9",
+  "numpy": "2.5.3",
+  "study": "M4.3d",
+  "stage": "audit",
+  "n": 40000
+ },
+ "econ": {
+  "gank": [
+   {
+    "behaviour": "Hold, Last Hit",
+    "vision": false,
+    "-2": 0.01,
+    "-1": 0.04,
+    "0": 0.06999999999999999,
+    "1": 0.09999999999999999,
+    "2": 0.13
+   },
+   {
+    "behaviour": "Hold, Last Hit",
+    "vision": true,
+    "-2": 0.0025,
+    "-1": 0.01,
+    "0": 0.017499999999999998,
+    "1": 0.024999999999999998,
+    "2": 0.0325
+   },
+   {
+    "behaviour": "Hold, Shove",
+    "vision": false,
+    "-2": 0.03,
+    "-1": 0.06,
+    "0": 0.09,
+    "1": 0.12,
+    "2": 0.15
+   },
+   {
+    "behaviour": "Hold, Shove",
+    "vision": true,
+    "-2": 0.0075,
+    "-1": 0.015,
+    "0": 0.0225,
+    "1": 0.03,
+    "2": 0.0375
+   },
+   {
+    "behaviour": "Trade, Shove",
+    "vision": false,
+    "-2": 0.05,
+    "-1": 0.08,
+    "0": 0.11,
+    "1": 0.14,
+    "2": 0.16999999999999998
+   },
+   {
+    "behaviour": "Trade, Shove",
+    "vision": true,
+    "-2": 0.0125,
+    "-1": 0.02,
+    "0": 0.0275,
+    "1": 0.035,
+    "2": 0.042499999999999996
+   },
+   {
+    "behaviour": "Trade, Last Hit",
+    "vision": false,
+    "-2": 0.03,
+    "-1": 0.06,
+    "0": 0.09,
+    "1": 0.12,
+    "2": 0.15
+   },
+   {
+    "behaviour": "Trade, Last Hit",
+    "vision": true,
+    "-2": 0.0075,
+    "-1": 0.015,
+    "0": 0.0225,
+    "1": 0.03,
+    "2": 0.0375
+   },
+   {
+    "behaviour": "Yield, Last Hit",
+    "vision": false,
+    "-2": 0.01,
+    "-1": 0.04,
+    "0": 0.06999999999999999,
+    "1": 0.09999999999999999,
+    "2": 0.13
+   },
+   {
+    "behaviour": "Yield, Last Hit",
+    "vision": true,
+    "-2": 0.0025,
+    "-1": 0.01,
+    "0": 0.017499999999999998,
+    "1": 0.024999999999999998,
+    "2": 0.0325
+   },
+   {
+    "behaviour": "Safe (any wave)",
+    "vision": false,
+    "-2": 0.0,
+    "-1": 0.03,
+    "0": 0.06,
+    "1": 0.09,
+    "2": 0.12
+   },
+   {
+    "behaviour": "Safe (any wave)",
+    "vision": true,
+    "-2": 0.0,
+    "-1": 0.0075,
+    "0": 0.015,
+    "1": 0.0225,
+    "2": 0.03
+   }
+  ],
+  "gank_damage": [
+   {
+    "defensive": false,
+    "exposure": -2,
+    "p_e": 0.2,
+    "E_units": 0.8000000000000003,
+    "P_max": 0.0016000000000000003,
+    "E_bars": 0.1333333333333334,
+    "P_ge3": 0.02720000000000001
+   },
+   {
+    "defensive": false,
+    "exposure": -1,
+    "p_e": 0.35,
+    "E_units": 1.4,
+    "P_max": 0.015006249999999997,
+    "E_bars": 0.2333333333333333,
+    "P_ge3": 0.12648124999999996
+   },
+   {
+    "defensive": false,
+    "exposure": 0,
+    "p_e": 0.5,
+    "E_units": 2.0,
+    "P_max": 0.0625,
+    "E_bars": 0.3333333333333333,
+    "P_ge3": 0.3125
+   },
+   {
+    "defensive": false,
+    "exposure": 1,
+    "p_e": 0.6499999999999999,
+    "E_units": 2.5999999999999996,
+    "P_max": 0.1785062499999999,
+    "E_bars": 0.4333333333333333,
+    "P_ge3": 0.5629812499999999
+   },
+   {
+    "defensive": false,
+    "exposure": 2,
+    "p_e": 0.8,
+    "E_units": 3.2,
+    "P_max": 0.4096000000000001,
+    "E_bars": 0.5333333333333333,
+    "P_ge3": 0.8192000000000002
+   },
+   {
+    "defensive": true,
+    "exposure": -2,
+    "p_e": 0.0,
+    "E_units": 0.0,
+    "P_max": 0.0,
+    "E_bars": 0.0,
+    "P_ge3": 0.0
+   },
+   {
+    "defensive": true,
+    "exposure": -1,
+    "p_e": 0.14999999999999997,
+    "E_units": 0.5999999999999999,
+    "P_max": 0.0005062499999999995,
+    "E_bars": 0.09999999999999998,
+    "P_ge3": 0.011981249999999994
+   },
+   {
+    "defensive": true,
+    "exposure": 0,
+    "p_e": 0.3,
+    "E_units": 1.2,
+    "P_max": 0.0081,
+    "E_bars": 0.19999999999999998,
+    "P_ge3": 0.08369999999999998
+   },
+   {
+    "defensive": true,
+    "exposure": 1,
+    "p_e": 0.4499999999999999,
+    "E_units": 1.7999999999999994,
+    "P_max": 0.041006249999999966,
+    "E_bars": 0.2999999999999999,
+    "P_ge3": 0.24148124999999984
+   },
+   {
+    "defensive": true,
+    "exposure": 2,
+    "p_e": 0.6000000000000001,
+    "E_units": 2.4000000000000004,
+    "P_max": 0.12960000000000008,
+    "E_bars": 0.4000000000000001,
+    "P_ge3": 0.4752000000000002
+   }
+  ],
+  "expected_gank_bars": [
+   {
+    "behaviour": "Hold, Last Hit",
+    "vision": false,
+    "-2": 0.0013333333333333333,
+    "-1": 0.009333333333333332,
+    "0": 0.02333333333333333,
+    "1": 0.04333333333333333,
+    "2": 0.06933333333333334
+   },
+   {
+    "behaviour": "Hold, Last Hit",
+    "vision": true,
+    "-2": 0.0003333333333333333,
+    "-1": 0.002333333333333333,
+    "0": 0.005833333333333333,
+    "1": 0.010833333333333332,
+    "2": 0.017333333333333336
+   },
+   {
+    "behaviour": "Hold, Shove",
+    "vision": false,
+    "-2": 0.004,
+    "-1": 0.013999999999999999,
+    "0": 0.03,
+    "1": 0.05199999999999999,
+    "2": 0.08
+   },
+   {
+    "behaviour": "Hold, Shove",
+    "vision": true,
+    "-2": 0.001,
+    "-1": 0.0034999999999999996,
+    "0": 0.0075,
+    "1": 0.012999999999999998,
+    "2": 0.02
+   },
+   {
+    "behaviour": "Trade, Shove",
+    "vision": false,
+    "-2": 0.006666666666666668,
+    "-1": 0.018666666666666665,
+    "0": 0.03666666666666667,
+    "1": 0.06066666666666667,
+    "2": 0.09066666666666666
+   },
+   {
+    "behaviour": "Trade, Shove",
+    "vision": true,
+    "-2": 0.001666666666666667,
+    "-1": 0.004666666666666666,
+    "0": 0.009166666666666667,
+    "1": 0.015166666666666667,
+    "2": 0.022666666666666665
+   },
+   {
+    "behaviour": "Trade, Last Hit",
+    "vision": false,
+    "-2": 0.004,
+    "-1": 0.013999999999999999,
+    "0": 0.03,
+    "1": 0.05199999999999999,
+    "2": 0.08
+   },
+   {
+    "behaviour": "Trade, Last Hit",
+    "vision": true,
+    "-2": 0.001,
+    "-1": 0.0034999999999999996,
+    "0": 0.0075,
+    "1": 0.012999999999999998,
+    "2": 0.02
+   },
+   {
+    "behaviour": "Yield, Last Hit",
+    "vision": false,
+    "-2": 0.0013333333333333333,
+    "-1": 0.009333333333333332,
+    "0": 0.02333333333333333,
+    "1": 0.04333333333333333,
+    "2": 0.06933333333333334
+   },
+   {
+    "behaviour": "Yield, Last Hit",
+    "vision": true,
+    "-2": 0.0003333333333333333,
+    "-1": 0.002333333333333333,
+    "0": 0.005833333333333333,
+    "1": 0.010833333333333332,
+    "2": 0.017333333333333336
+   },
+   {
+    "behaviour": "Safe (any wave)",
+    "vision": false,
+    "-2": 0.0,
+    "-1": 0.002999999999999999,
+    "0": 0.011999999999999999,
+    "1": 0.026999999999999993,
+    "2": 0.04800000000000001
+   },
+   {
+    "behaviour": "Safe (any wave)",
+    "vision": true,
+    "-2": 0.0,
+    "-1": 0.0007499999999999998,
+    "0": 0.0029999999999999996,
+    "1": 0.006749999999999998,
+    "2": 0.012000000000000002
+   }
+  ],
+  "trade": [
+   {
+    "defender": "Hold",
+    "outside tower": 0.55,
+    "in its tower cell": 0.4
+   },
+   {
+    "defender": "Trade",
+    "outside tower": 0.55,
+    "in its tower cell": 0.4
+   },
+   {
+    "defender": "Yield caught (evading)",
+    "outside tower": 0.30000000000000004,
+    "in its tower cell": 0.15000000000000005
+   },
+   {
+    "defender": "Safe",
+    "outside tower": 0.15000000000000002,
+    "in its tower cell": 0.05
+   },
+   {
+    "defender": "interrupted Recall",
+    "outside tower": 0.55,
+    "in its tower cell": 0.4
+   }
+  ],
+  "tower": {
+   "dive_p": 1.0,
+   "dive_p_busy": 0.5,
+   "adjacent_p": 0.5,
+   "adjacent_p_busy": 0.25,
+   "damage_units": 1,
+   "damage_bars": 0.16648764769065522
+  },
+  "collection": [
+   {
+    "own_tower_rate": 0.6,
+    "Hold at -2, kill at -2": 0.6,
+    "Hold at -1, kill at -2": 0.6,
+    "Safe at -2, kill at -2": 0.6,
+    "Safe at -1, kill at -2": 0.6,
+    "Safe at -1, kill at -1": 0.6,
+    "trading at -2, kill at -2": 0.48,
+    "retreat at -2, kill at -1": 0.6,
+    "Hold at 0, kill at 0": 0.9,
+    "Hold at +2, kill at +3": 0.9
+   },
+   {
+    "own_tower_rate": 0.8,
+    "Hold at -2, kill at -2": 0.8,
+    "Hold at -1, kill at -2": 0.8,
+    "Safe at -2, kill at -2": 0.8,
+    "Safe at -1, kill at -2": 0.8,
+    "Safe at -1, kill at -1": 0.6,
+    "trading at -2, kill at -2": 0.64,
+    "retreat at -2, kill at -1": 0.6,
+    "Hold at 0, kill at 0": 0.9,
+    "Hold at +2, kill at +3": 0.9
+   },
+   {
+    "own_tower_rate": 0.85,
+    "Hold at -2, kill at -2": 0.85,
+    "Hold at -1, kill at -2": 0.85,
+    "Safe at -2, kill at -2": 0.8,
+    "Safe at -1, kill at -2": 0.8,
+    "Safe at -1, kill at -1": 0.6,
+    "trading at -2, kill at -2": 0.68,
+    "retreat at -2, kill at -1": 0.6,
+    "Hold at 0, kill at 0": 0.9,
+    "Hold at +2, kill at +3": 0.9
+   },
+   {
+    "own_tower_rate": 0.9,
+    "Hold at -2, kill at -2": 0.9,
+    "Hold at -1, kill at -2": 0.9,
+    "Safe at -2, kill at -2": 0.8,
+    "Safe at -1, kill at -2": 0.8,
+    "Safe at -1, kill at -1": 0.6,
+    "trading at -2, kill at -2": 0.72,
+    "retreat at -2, kill at -1": 0.6,
+    "Hold at 0, kill at 0": 0.9,
+    "Hold at +2, kill at +3": 0.9
+   }
+  ],
+  "hazard_M1": [
+   {
+    "case": "own tower cell, Hold, Last Hit",
+    "M": 1.0,
+    "present": 39.9954,
+    "at_cell": 39.9904,
+    "ganks": 0.3994,
+    "bars": 0.0531,
+    "recalls": 0.005,
+    "deaths": 0.0,
+    "away": 0.0096
+   },
+   {
+    "case": "own -1, Hold, Last Hit",
+    "M": 1.0,
+    "present": 39.7622,
+    "at_cell": 39.5217,
+    "ganks": 1.5817,
+    "bars": 0.3668,
+    "recalls": 0.2406,
+    "deaths": 0.0018,
+    "away": 0.4783
+   },
+   {
+    "case": "lane cell, Hold, Last Hit",
+    "M": 1.0,
+    "present": 39.1003,
+    "at_cell": 37.4893,
+    "ganks": 2.6666,
+    "bars": 0.8804,
+    "recalls": 0.786,
+    "deaths": 0.0376,
+    "away": 1.6857
+   },
+   {
+    "case": "lane cell, Hold, Shove",
+    "M": 1.0,
+    "present": 38.7793,
+    "at_cell": 36.6284,
+    "ganks": 3.3657,
+    "bars": 1.113,
+    "recalls": 1.0506,
+    "deaths": 0.0545,
+    "away": 2.2713
+   },
+   {
+    "case": "enemy -1 (own +1), Hold, Shove",
+    "M": 1.0,
+    "present": 37.5431,
+    "at_cell": 34.1668,
+    "ganks": 4.2541,
+    "bars": 1.8219,
+    "recalls": 1.624,
+    "deaths": 0.2361,
+    "away": 4.0808
+   },
+   {
+    "case": "enemy tower cell, Hold, Shove (Pressure)",
+    "M": 1.0,
+    "present": 35.801,
+    "at_cell": 29.7524,
+    "ganks": 4.834,
+    "bars": 2.4979,
+    "recalls": 1.8823,
+    "deaths": 0.6361,
+    "away": 6.0813
+   },
+   {
+    "case": "enemy tower cell, Hold, Shove, Vision always",
+    "M": 1.0,
+    "present": 39.0392,
+    "at_cell": 37.194,
+    "ganks": 1.4097,
+    "bars": 0.7456,
+    "recalls": 0.5932,
+    "deaths": 0.1056,
+    "away": 1.554
+   },
+   {
+    "case": "enemy tower cell, Trade, Shove (dive, tower busy)",
+    "M": 1.0,
+    "present": 33.2648,
+    "at_cell": 22.2595,
+    "ganks": 4.4633,
+    "bars": 4.0938,
+    "recalls": 3.4328,
+    "deaths": 0.9044,
+    "away": 10.168
+   },
+   {
+    "case": "enemy tower cell, Trade, Shove (dive, tower free)",
+    "M": 1.0,
+    "present": 31.5439,
+    "at_cell": 18.2258,
+    "ganks": 3.9404,
+    "bars": 4.9682,
+    "recalls": 4.1719,
+    "deaths": 1.1647,
+    "away": 12.628
+   },
+   {
+    "case": "enemy tower cell, dive (busy), Vision always",
+    "M": 1.0,
+    "present": 36.0189,
+    "at_cell": 26.388,
+    "ganks": 1.2648,
+    "bars": 2.8411,
+    "recalls": 3.1002,
+    "deaths": 0.2586,
+    "away": 7.0813
+   }
+  ],
+  "hazard_M176": [
+   {
+    "case": "own tower cell, Hold, Last Hit",
+    "M": 1.7558,
+    "present": 40.0,
+    "at_cell": 39.9999,
+    "ganks": 0.3995,
+    "bars": 0.0303,
+    "recalls": 0.0,
+    "deaths": 0.0,
+    "away": 0.0001
+   },
+   {
+    "case": "own -1, Hold, Last Hit",
+    "M": 1.7558,
+    "present": 39.9641,
+    "at_cell": 39.9257,
+    "ganks": 1.5977,
+    "bars": 0.211,
+    "recalls": 0.0384,
+    "deaths": 0.0,
+    "away": 0.0743
+   },
+   {
+    "case": "lane cell, Hold, Last Hit",
+    "M": 1.7558,
+    "present": 39.6702,
+    "at_cell": 38.9754,
+    "ganks": 2.7397,
+    "bars": 0.5171,
+    "recalls": 0.3386,
+    "deaths": 0.002,
+    "away": 0.6684
+   },
+   {
+    "case": "lane cell, Hold, Shove",
+    "M": 1.7558,
+    "present": 39.4872,
+    "at_cell": 38.417,
+    "ganks": 3.4914,
+    "bars": 0.66,
+    "recalls": 0.5233,
+    "deaths": 0.0031,
+    "away": 1.0361
+   },
+   {
+    "case": "enemy -1 (own +1), Hold, Shove",
+    "M": 1.7558,
+    "present": 38.8745,
+    "at_cell": 36.6991,
+    "ganks": 4.5045,
+    "bars": 1.1036,
+    "recalls": 1.0554,
+    "deaths": 0.0288,
+    "away": 2.181
+   },
+   {
+    "case": "enemy tower cell, Hold, Shove (Pressure)",
+    "M": 1.7558,
+    "present": 38.1294,
+    "at_cell": 33.3372,
+    "ganks": 5.2969,
+    "bars": 1.5716,
+    "recalls": 1.5092,
+    "deaths": 0.1096,
+    "away": 3.3798
+   },
+   {
+    "case": "enemy tower cell, Hold, Shove, Vision always",
+    "M": 1.7558,
+    "present": 39.7103,
+    "at_cell": 38.8087,
+    "ganks": 1.4558,
+    "bars": 0.44,
+    "recalls": 0.2862,
+    "deaths": 0.0041,
+    "away": 0.5759
+   },
+   {
+    "case": "enemy tower cell, Trade, Shove (dive, tower busy)",
+    "M": 1.7558,
+    "present": 36.1423,
+    "at_cell": 27.18,
+    "ganks": 5.1925,
+    "bars": 2.799,
+    "recalls": 2.8394,
+    "deaths": 0.2944,
+    "away": 6.6971
+   },
+   {
+    "case": "enemy tower cell, Trade, Shove (dive, tower free)",
+    "M": 1.7558,
+    "present": 34.8993,
+    "at_cell": 23.2144,
+    "ganks": 4.6607,
+    "bars": 3.5346,
+    "recalls": 3.7287,
+    "deaths": 0.3911,
+    "away": 8.8293
+   },
+   {
+    "case": "enemy tower cell, dive (busy), Vision always",
+    "M": 1.7558,
+    "present": 37.7282,
+    "at_cell": 31.097,
+    "ganks": 1.4113,
+    "bars": 1.8906,
+    "recalls": 2.142,
+    "deaths": 0.0508,
+    "away": 4.4138
+   }
+  ]
+ }
+}

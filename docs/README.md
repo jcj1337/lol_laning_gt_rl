@@ -54,6 +54,7 @@ The reports are grouped by phase. Within a folder the files are listed in the or
 | [m4_3c_wave_control_screen.md](m4/m4_3c_wave_control_screen.md) | M4.3c quick screen of Hold capped at 1 HP and an adaptive (target-based) Thin: adopt Hold1 on its own, not adaptive Thin yet |
 | [m4_3c_four_action_wave_redesign.md](m4/m4_3c_four_action_wave_redesign.md) | M4.3c four-action wave management (EXPERIMENTAL `m4_four_actions()`): Last Hit / Thin / Slow Push / Clear (now Shove) with window-strength targets, 61-code action space; mechanically ready for PPO, Clear dominance unchanged |
 | [m4_3c_strategic_economics_calibration.md](m4/m4_3c_strategic_economics_calibration.md) | M4.3c stabilization: Shove terminology, the four-action visual debugger, mixed-action sequences; economic diagnosis (the own-tower "crash tax" and break-even trades make Shove every side's best reply); opt-in XP reward, death schedule and terminal rule; EXPERIMENTAL candidate `m4_four_actions_econ()` |
+| [m4_3d_tower_pressure_calibration.md](m4/m4_3d_tower_pressure_calibration.md) | M4.3d tower farming, pressure and gank risk: the own-tower rate 0.8 makes an uncontested crash farm-neutral for the defender (0.9 makes it a gift); gank risk is already the main price of pressure; the tower's "busy" discount under-prices a strong champion's dive; EXPERIMENTAL candidate `m4_four_actions_econ_aggro()` |
 
 ## natural_waves/ — natural wave mechanics and the lane candidate (M4.2e)
 

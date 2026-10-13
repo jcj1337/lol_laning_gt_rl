@@ -727,6 +727,27 @@ class GameConfig:
         base.update(kw)
         return cls.m4_four_actions(**base)
 
+    # the fields GameConfig.m4_four_actions_econ_aggro() changes from m4_four_actions_econ() (M4.3d,
+    # docs/m4/m4_3d_tower_pressure_calibration.md)
+    M4_FOUR_AGGRO_FIELDS = ("tower_shot_p_busy", "tower_adjacent_p_busy")
+
+    @classmethod
+    def m4_four_actions_econ_aggro(cls, **kw) -> "GameConfig":
+        """EXPERIMENTAL CANDIDATE (M4.3d, docs/m4/m4_3d_tower_pressure_calibration.md): `m4_four_actions_econ()` with
+        the tower's "busy" discount removed for a champion that attacks a champion under it:
+          tower_shot_p_busy 1.0        a connected trader ending in the enemy tower cell (a dive) is shot with
+                                       probability 1.0 also while its own crashed minions are under that tower (0.5
+                                       before; League's tower switches to a champion that attacks an allied champion)
+          tower_adjacent_p_busy 0.5    the tower-adjacent shot of a connected trader keeps its 0.5 likewise (0.25)
+        A dive is only possible at the enemy tower cell and, in play, almost only during the diver's own siege, so the
+        discount applied to nearly every dive; a strong champion's dive paid more than pressuring without one. Only
+        connected trades in or next to the enemy tower change: farming, Pressure, Vision, ganks, the own-tower
+        collection rate 0.8 and every other rule are `m4_four_actions_econ()`'s, and so are the action and
+        observation spaces. Not a default; every other preset is unchanged."""
+        base = dict(tower_shot_p_busy=1.0, tower_adjacent_p_busy=0.5)
+        base.update(kw)
+        return cls.m4_four_actions_econ(**base)
+
     # ------------------------------------------------------------------ helpers
     @property
     def natural_waves(self) -> bool:

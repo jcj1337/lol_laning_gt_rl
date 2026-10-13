@@ -117,6 +117,7 @@ unless marked "global", HP is minion HP for waves and centi-HP (1/100 of a base 
 | What does PPO actually optimize? | [§9](#9-the-rl-objective-and-its-evaluation) |
 | What causes a game to end? | Nothing: [§8.5](#85-after-the-final-plate-why-the-game-does-not-end), [§9.1](#91-the-game-objective) (EXPERIMENTAL opt-in terminal at the last plate: [§8.7](#87-experimental-the-m43c-economic-opt-ins-and-the-calibrated-candidate)) |
 | Why does Shove dominate the four-action model? | The crash tax and break-even trades: [§5.3](#53-collection-what-share-of-a-kill-becomes-gold), [§8.7](#87-experimental-the-m43c-economic-opt-ins-and-the-calibrated-candidate) and the calibration report |
+| How risky are pressure and diving, and does a crash cost the defender farm? | [§5.3](#53-collection-what-share-of-a-kill-becomes-gold) (the measured cap), [§6.3](#63-tower-shots), [§6.4](#64-ganks-and-vision), [§8.8](#88-experimental-the-m43d-candidate-m4_four_actions_econ_aggro) and the M4.3d report |
 
 ---
 
@@ -756,6 +757,18 @@ opponent's waves at 0.9 near the enemy tower. Against a perma-Shove the defender
 plate gold, is what makes Shove the best reply in every tested state (calibration report §3). The PROPOSED candidate
 `m4_four_actions_econ()` sets the rate to 0.8 and the trading factor (iii) to 0.8 (§8.7).
 
+**What the cap means in play (measured, M4.3d).** Rate (iv) is the only collection loss that depends on no decision:
+it applies to every kill in the own tower cell whoever is or is not present (the opponent may be away or dead). Its
+size has to be read against what a champion actually collects in the lane, not against the nominal 0.9: in a neutral
+lane a last-hitter realizes 0.90 of the lane rate (it loses about 3% to reach, 3–4% to the Safe posture and 2% to
+absence), while a defender farming an uncontested crash in its tower cell realizes $\min(0.9,c_{\text{ot}})/0.9$ and
+nothing else. At $c_{\text{ot}}=0.8$ the two are equal (0.91 against 0.90, levels 4 and 10): receiving a crash
+costs the defender no farm, and it is not displaced either (the same efficiency over 12, 40 and 100 turns). At 0.9 a
+crash raises the defender's farm about 9% above the neutral lane. What a defender in its own tower cell loses beyond
+the cap comes only from interactions: it can be traded only by a dive (§6.1), the Safe posture collects at most 0.8
+there (§5.3 table, so it costs nothing extra at $c_{\text{ot}}\le0.8$), and HP lost becomes absence (§5.5).
+[m4_3d_tower_pressure_calibration.md](m4_3d_tower_pressure_calibration.md) §3.
+
 ### 5.4 Experience and levels
 
 Step 7b: a champion that is **not away** (present, or channelling a Recall that was interrupted) gains
@@ -908,6 +921,14 @@ Only a **connected trader** can be shot (step 9b): with probability 1.0 if it en
 this turn ("the tower is busy"). A shot deals one HP unit of the victim, $u(L)$ centi-HP (mitigated with the rest of
 the turn's damage, §6.2). A
 champion that farms, sieges or pressures next to or in the enemy tower cell is **never** shot.
+
+A defender stands in its tower cell during every siege of its tower (its farm spot is clipped there, §5.2), and it can
+be reached there only by a dive (§6.1). So, in play, nearly every dive happens while the diver's own minions are under
+the tower and is shot with the "busy" probability 0.5 (measured: under `m4_four_actions_econ()` a ×1.76 champion's
+dive against a last-hitting tower farmer pays more than pressuring without diving, at no extra risk of death; M4.3d
+report §4, §7.3). EXPERIMENTAL
+`m4_four_actions_econ_aggro()` (§8.8) sets `tower_shot_p_busy` = 1.0 and `tower_adjacent_p_busy` = 0.5: the tower
+targets a champion that attacks a champion under it whatever else is in range, as League's tower does.
 
 ### 6.4 Ganks and vision
 
@@ -1233,6 +1254,34 @@ gold-only reward and continuing time, is `m4_four_actions()`.
 | `death_turns_by_level` | — (3) | **$2+\lceil L/6\rceil$** = 3 / 4 / 5 at levels 1–6 / 7–12 / 13–18 | §6.5–§6.6: the absence after a death |
 | `champion_absent_max` | 3 | 5 | §2.4: the absence entry of the observation is $\alpha/5$ |
 
+### 8.8 EXPERIMENTAL: the M4.3d candidate `m4_four_actions_econ_aggro()`
+
+[m4_3d_tower_pressure_calibration.md](m4_3d_tower_pressure_calibration.md) investigated tower farming and the risks of
+pressure on `m4_four_actions_econ()`. It keeps the own-tower rate 0.8 (§5.3: an uncontested crash is then farm-neutral
+for the defender; 0.9 makes it a gift) and every gank parameter (§6.4: ganks already cost a perma-pressuring champion
+more than its net gain, and Vision halves that cost). It changes one existing rule, the tower's "busy" discount for
+a champion that trades under the enemy tower (§6.3):
+
+$$
+P(\text{tower shot})=\begin{cases}1.0 & \text{connected trader ends in the enemy tower cell (a dive)}\\
+0.5 & \text{connected trader ends next to it (own }+1)\\ 0 & \text{otherwise}\end{cases}
+\qquad\text{whether or not its own minions are under that tower}
+$$
+
+(in `m4_four_actions_econ()` 0.5 / 0.25 while they are). A shot still deals one HP unit $u(L)$ of the victim,
+mitigated with the rest of the turn's damage (§6.2).
+
+| field | `m4_four_actions_econ()` | `m4_four_actions_econ_aggro()` |
+|---|---|---|
+| `tower_shot_p_busy` | 0.5 | **1.0** (= `tower_shot_p`) |
+| `tower_adjacent_p_busy` | 0.25 | **0.5** (= `tower_adjacent_p`) |
+
+Everything else is `m4_four_actions_econ()`: a game in which no champion trades in or next to the enemy tower is the
+same game turn by turn (test). Measured (M4.3d report §5, §7): a ×1.76 champion's dive under the defender's tower
+falls from +4.5 to +2.8 (discounted resources over 100 turns, against a last-hitter; +3.2 to +1.9 on independent
+seeds), to the level of pressuring without diving (+2.7 / +2.6) and below shoving with Vision and Pressure (+4.2);
+an equal champion's dive goes from −3.1 to −4.5; no equilibrium of the restricted games changes.
+
 ---
 
 ## 9. The RL objective and its evaluation
@@ -1420,13 +1469,14 @@ waves), no shutdown gold, no item spikes (investment is continuous and saturatin
 | bounty | 0.5 resources paid to the opponent of a champion that dies |
 | capacity $C$ | wave-clear capacity, $\mathrm{round}(4AP^\ast)$ HP per turn; Clear (Shove in the four-action model) spends it all |
 | candidate preset (PROPOSED) | `m4_four_actions_econ()`: the four-action model with own-tower collection 0.8, trade farm factor 0.8, kill bounty 2.0, death absence 3 / 4 / 5 by level (§8.7) |
+| candidate preset `m4_four_actions_econ_aggro()` (EXPERIMENTAL, M4.3d) | `m4_four_actions_econ()` with the tower's busy discount removed for divers: a dive is shot with probability 1.0, the tower-adjacent trade 0.5, whatever minions are under the tower (§6.3, §8.8) |
 | channel | an interrupted Recall: present, no gold, no wave damage, gains XP, exposed |
 | Clear | wave slot 1: spend the whole capacity on enemy minions |
 | contact | champions at most one cell apart (a champion in its own tower cell only from inside that cell) |
 | crash | a front entering the enemy tower cell joins the crashed mass |
-| crash tax | (measured) the defender's loss from collecting a crashed wave at the own-tower rate (0.6) instead of the lane rate (0.9); the main reason Shove is every side's best reply in `m4_four_actions()` (§5.3) |
+| crash tax | (measured) the defender's loss from collecting a crashed wave at the own-tower rate (0.6) instead of the lane rate (0.9); the main reason Shove is every side's best reply in `m4_four_actions()` (§5.3); at 0.8 it equals the realized loss of farming the lane, so an uncontested crash is farm-neutral (M4.3d) |
 | crashed mass $m$ / siege | minions under the enemy tower; killed by the tower and the defenders; hits the tower |
-| dive | a trade that ends in the enemy tower cell; shot with probability 1 (0.5 if busy) |
+| dive | a trade that ends in the enemy tower cell; shot with probability 1 (0.5 if busy; 1 in the EXPERIMENTAL `m4_four_actions_econ_aggro()`, §8.8) |
 | earned gold $E$ | cumulative farm + plate gold + bounty; the reward is its per-turn difference |
 | exposure $e$ | $\max(\text{start},\text{end})$ cell of the turn; drives gank probability and damage |
 | farm spot | the cell where the champion's own front ends in the probe; Hold stands there |
@@ -1513,3 +1563,4 @@ historical documents are records of their milestones and are **not** edited; thi
 | 2026-10-13 | §4.5: EXPERIMENTAL opt-in fields `wave_hold_cap` and `wave_thin_rule = "adaptive"` (M4.3c wave-control screen); the preset is unchanged | `config.py`, `champions_m4.budget_from_capacity`, `mechanics.thin_need` |
 | 2026-10-13 | §3.1, §4.5 pointers, new §4.10, glossary: EXPERIMENTAL four-action model `m4_four_actions()` (Last Hit / Thin / Slow Push / Clear, window-strength targets, codes 46–60, 61-code space; M4.3c four-action redesign). `m4_lasthit()` and every CURRENT statement are unchanged; `M4Turn.wave_budget` / `info["wave_budget"]` record the lane step's budgets in every M4 preset | `config.py`, `mechanics.window_strength / strength_need / strength_budget`, `champions_m4.M4Context.state_budget` |
 | 2026-10-13 | M4.3c stabilization: label FOUR-ACTION and the slot-1 terminology note (§0); slot 1 of the four-action model is **Shove** (`W_SHOVE` = `W_CLEAR`, label `SH`; §3.1, §4.10, glossary), a semantic change only; the debugger's wave panel (§4.10); the measured crash tax (§5.3); the EXPERIMENTAL opt-ins `xp_reward_weight`, `death_turns_by_level`, `terminal_rule = "final_plate"` and the PROPOSED candidate `m4_four_actions_econ()` (new §8.7; pointers in §5.3, §6.5, §8.5, §8.6). Every CURRENT statement and every preset's defaults are unchanged | `config.py`, `champions_m4.py`, `env/core.py`, `env/discounted.py`, `viewer/` |
+| 2026-10-13 | M4.3d tower farming, pressure and gank risk: the measured meaning of the own-tower cap (§5.3: farm-neutral at 0.8), why nearly every dive is "busy" (§6.3), the EXPERIMENTAL candidate `m4_four_actions_econ_aggro()` (new §8.8: `tower_shot_p_busy` 1.0, `tower_adjacent_p_busy` 0.5), a quick-reference row (§0.4), glossary entries. Every CURRENT statement and every earlier preset's values are unchanged | `config.py` (`m4_four_actions_econ_aggro`, `M4_FOUR_AGGRO_FIELDS`), `lanegame/experiments/m43d/` |
