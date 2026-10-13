@@ -1271,3 +1271,51 @@ unchanged.
   the 80/20 vs 100/0 comparison at pilot scale with seeds; a small hyperparameter grid.
 
 **Status:** complete. **Next:** M4.3b self-play pilot and research runs on `m4_lasthit()`.
+
+## AA. M4.3b PPO self-play pilot and strategic learning diagnostics (2026-10-12)
+
+Branch `development/m4-3b-ppo-pilot`, on top of M4.3a (`main` at 1ad8848). No mechanics, reward, observation or
+hyperparameter of the game changed; every preset's digest pin is unchanged.
+
+- **Full account:** [m4_3b_ppo_pilot_report.md](rl/m4_3b_ppo_pilot_report.md); results and figures in
+  `results/rl/m43b/` (`report.md` has every table); checkpoints in `results/rl/checkpoints/m43b/` (untracked).
+- **Driver:** `lanegame.experiments.rl.m43b` (stages train, curves, headline, exploit, behavior, counterfactual,
+  plans, recall, archive, trajectories, figures, report; every evaluation stage resumable);
+  `python -m lanegame experiments-rl m43b_pilot`.
+- **Grid:** `base` (100% current, entropy 0.01), `ent03` (0.03), `hist80` (80/20, pool 8) and the follow-up `mixed`
+  (half the games from an archive of 857 witnessed reachable states), 3 seeds each, 2,048,000 agent transitions per
+  run (13 min for nine runs in nine processes). All PPO health checks pass; the baseline's entropy plateaus at
+  0.5–0.75 nats from 400k on (no collapse).
+- **References:** the reactive policies of the M4.2e-B/C policy games wrapped as environment agents (`farm`,
+  `push_punish`, `clear_punish`, `bully_shove`, `freeze_punish`, `respect`, `crash_recall`, `trading_pusher`).
+- **Is PPO learning (W = 1000, 32 paired episodes)?** Every final beats every reference by 9–20 resources and its
+  untrained network by 12; finals beat their own snapshots at 100k / 400k / 1M by +4 / +1.5 / +0.5; the reference
+  values plateau after 100k because the references are dominated. Attackers (warm-started, half the budget) gain
+  0.75–2.0: `ent03` 0.88 ± 0.13, `base` 1.42 ± 0.55, `hist80` 1.37 ± 0.14. Cross-play: `ent03` beats `base` by
+  0.50 ± 0.22 and is the most reproducible across seeds (seed SD 0.2 against 0.9); `hist80` and `mixed` are even
+  with `base`.
+- **Exploration.** The 0.03 coefficient doubles the entropy and moves the policy towards Thin (0.13 → 0.21) and
+  Trade (0.27 → 0.36) with a small gain on every instrument; Clear stays the dominant wave action (63–75%) under
+  both coefficients, with and without historical opponents, and from the archive starts.
+- **State dependence.** The behaviour choice is strongly conditioned (Trade at the lane, Safe and Hold at the tower,
+  Recall at low HP and after the own crash, Pressure on 76–90% of legal turns); the wave choice is Clear in 60–90%
+  of every situation, modulated towards Thin while sieging and Hold at low HP. Single-move counterfactuals: the
+  policy's move is within a few tenths of every alternative at every sampled state. Plan-level counterfactuals:
+  a 14-turn slow push, pure last-hitting and the 20-turn freeze controller lose 1.1–2.8 resources against the
+  policy for every policy; sustained Clear 0.2–0.9. Clear dominance is a best reply to Clear: a game property, not
+  an exploration or coverage failure.
+- **Recall and death.** Recall is legal on ~60% of turns and taken on 6–8% (12–16 per 460-turn game, 2–4× the
+  deaths); 55–80% of investment arrives through Recalls. Counterfactually, Recall pays after the own crash (+0.5
+  over staying), is even at low HP, costs 0.3–0.9 elsewhere, and does not depend on unspent gold; a death costs
+  1.1–1.3 in full against 0.0–0.55 for a completed Recall. The M4.3a "no Recall" was a schedule artefact (its
+  learning rate had annealed before the discovery, which happens between 100k and 400k).
+- **Mixed start:** no change on any measure; retired unless a power-gap archive is built (policies see power gaps on
+  0.3% of self-play turns).
+- **Tests:** `tests/test_rl_m43b.py` (11); full suite 909 passed, 4 skipped, 2 expected failures. **Viewer:** mode
+  "Recorded trajectory" replays the exported games.
+
+**Decision:** M4.3b complete. PPO self-play learns strong, locally consistent, state-dependent policies whose
+dominant line (Clear with trades and resets) the game's dynamics reward against any opponent that clears. **Next
+(M4.3c):** entropy 0.03 as the default; population attackers; the 100/0 vs 80/20 comparison with a wide snapshot
+pool; and a design investigation of Clear dominance (kill bounty, gank severity, own-tower collection rate) judged
+by the plan-level counterfactual harness against the learned policies, not by scripted play.

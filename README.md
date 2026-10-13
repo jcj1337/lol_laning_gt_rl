@@ -25,11 +25,16 @@ quantitative evaluation of the learned policies: their discounted value against 
 exploitability (approximate best responses), and audits of what they actually do, compared with the sampled
 equilibria of a scripted strategy space.
 
-**Status, stated plainly.** The environment has been built, calibrated and validated (through M4.2, below), and
-the RL infrastructure has been audited and smoke-tested on it (M4.3a). The earlier self-play studies on a simpler
-champion game produced narrow policies (holding and trading) and identified design limits that the M4 game was
-built to remove. We have not yet shown that PPO discovers the intended strategies on the current game; that is the
-subject of the next milestone (M4.3b).
+**Status, stated plainly.** The environment has been built, calibrated and validated (through M4.2, below), the RL
+infrastructure has been audited (M4.3a), and the first self-play pilot has been run and analysed (M4.3b). PPO
+self-play learns policies that beat every scripted reference of the project's strongest strategy space by 9–20
+resources and keep improving against their own earlier versions; their decisions are state-dependent on the
+behaviour dimension (trade at the lane, step back at the tower, recall at low HP and after the own crash, pressure
+in sieges), and their dominant wave action, clearing, is shown by counterfactual rollouts to be a best reply to an
+opponent that clears: slow pushes and held freezes lose one to three resources against the learned policies. Recall
+is learned and timed where the game rewards it. What the pilot does not show is the emergence of League's
+wave-control strategies; the evidence says the calibrated game does not reward them against a clearing opponent,
+and the next milestone (M4.3c) is a design investigation judged by the same counterfactual harness.
 
 ## How we study it
 
@@ -63,7 +68,8 @@ parameter is claimed to be an empirical League statistic.
 | **M1–M3. RL environment, champion game, PPO and self-play** | `lanegame/env/`, `GameConfig.champions()`, masked PPO, snapshot and shared-policy self-play, evaluation | **complete** ([M2/M3 report](docs/rl/m2_m3_implementation_report.md), [OpenAI Five-style self-play](docs/rl/openai_five_selfplay_report.md), [diagnostics](docs/rl/openai_five_diagnostics_report.md)) |
 | **M4.1–M4.2. Integrated champion economy and natural waves** | `GameConfig.m4()` and the presets up to `m4_lasthit()` | **complete** ([design](docs/m4/m4_integrated_design.md), [implementation](docs/m4/m4_implementation_report.md), [natural waves](docs/natural_waves/m4_2e_natural_waves_final_review.md), [wave actions](docs/natural_waves/m4_2e_wave_actions_report.md)) |
 | **M4.3a. RL infrastructure audit and smoke test** | PettingZoo conformance, PPO reference checks, bounded self-play on `m4_lasthit()` | **complete** ([report](docs/rl/m4_3a_rl_infrastructure_report.md)) |
-| M4.3b. Self-play pilot and research runs | Does PPO self-play discover laning strategies on `m4_lasthit()`? | next |
+| **M4.3b. Self-play pilot and strategic diagnostics** | 12 PPO runs on `m4_lasthit()`, reactive reference suite, learning curves, cross-play, exploitability, conditional behaviour, counterfactuals, Recall / death economics, mixed starts | **complete** ([report](docs/rl/m4_3b_ppo_pilot_report.md)) |
+| M4.3c. Design investigation of Clear dominance, population attackers | Which mechanics would make wave control pay against a clearing opponent? | next |
 | 2. Opponent modelling | Bayesian opponent models, exploitation vs. exploitability, risk | planned |
 | 3. Interactive dashboard | A site for exploring strategies and results | planned |
 
@@ -103,7 +109,7 @@ configuration is bit-identical, guarded by `tests/test_legacy_pins.py`.
 ```bash
 python -m venv .venv && .venv/Scripts/activate      # macOS/Linux: source .venv/bin/activate
 pip install -e ".[test,rl]"                          # numpy, scipy, matplotlib, pytest; torch, pettingzoo, gymnasium
-python -m pytest                                      # full suite (exact game, champion game, M4, RL): 898 tests, ~8 min
+python -m pytest                                      # full suite (exact game, champion game, M4, RL): 909 tests, ~8 min
 python -m lanegame solve --horizon 32                 # exact siege model -> results/siege/solution_K32.json (~4 min, 3 GB)
 python -m lanegame scenarios                          # 23 traced mechanics scenarios with PASS/FAIL
 python -m lanegame exploit --horizon 24               # exploitability of the siege baselines
@@ -112,12 +118,15 @@ python -m lanegame env-demo --model champions --a opportunistic_trader --b hold_
 python -m lanegame rl-shared --model m4_lasthit --current-fraction 1.0 --steps 409600 --out results/rl/checkpoints/demo_m4
                                                       # shared-policy self-play PPO on the M4.3 target (continuing time)
 python -m lanegame experiments-rl m43a_smoke          # the M4.3a smoke test (results/rl/m43a_smoke.md, ~5 min)
+python -m lanegame.experiments.rl.m43b train curves headline exploit behavior counterfactual plans recall trajectories figures report
+                                                      # the M4.3b pilot stage by stage (results/rl/m43b/, ~2 h on 9 processes)
 python -m lanegame rl-shared --current-fraction 0.8 --skill-levels 0.2,0.5,0.8 --out results/rl/checkpoints/demo_shared
                                                       # the champion game, 80% current / 20% past versions
 python -m lanegame rl-eval results/rl/checkpoints/demo_shared/final.pt   # champion game: both seats, held-out seeds, 95% CIs
 python -m lanegame experiments-rl openai_five         # the OpenAI Five-inspired study (results/rl/openai_five/)
 python -m lanegame experiments-siege all              # regenerate every siege-study result (results/siege/)
-streamlit run lanegame/viewer/app.py                  # the visual lane debugger (pip install -e ".[viewer]")
+streamlit run lanegame/viewer/app.py                  # the visual lane debugger (pip install -e ".[viewer]"); mode
+                                                      # "Recorded trajectory" replays results/rl/m43b/trajectories/*.json
 ```
 
 The exact-game commands accept `--model siege|revised|v1` (default `siege`).
@@ -169,7 +178,8 @@ lanegame/                 engine (pure Python + NumPy/SciPy, no presentation cod
                           checkpoints with digests), evaluate.py (head-to-head, round robin, approximate best responses)
   diagnostics/            action audits and paired counterfactual rollouts from restorable states
   viewer/                 the Streamlit lane debugger (M4.2e-D)
-  experiments/rl/         RL studies and the M4.3a smoke test (results/rl/; checkpoints in results/rl/checkpoints/, untracked)
+  experiments/rl/         RL studies, the M4.3a smoke test and the M4.3b pilot package m43b/ (results/rl/; checkpoints in
+                          results/rl/checkpoints/, untracked)
   experiments/m4/         M4 validation and calibration drivers (results/m4*/)
   experiments/champions/  champion-mode validation (results/champions/)
   experiments/siege/      the siege study (results/siege/); experiments/, experiments/v1/: the earlier exact models

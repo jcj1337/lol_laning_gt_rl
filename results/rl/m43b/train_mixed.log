@@ -1,0 +1,85 @@
+===== train =====
+training 3 runs of 2,048,000 agent transitions on 3 processes
+[mixed_s0] update 1 transitions 4096 turns 2048 hist 0/4 ent 2.58 kl 0.0049 ev -1.60 2425 sps
+[mixed_s1] update 1 transitions 4096 turns 2048 hist 0/2 ent 2.58 kl 0.0042 ev -1.98 2391 sps
+[mixed_s2] update 1 transitions 4096 turns 2048 hist 0/4 ent 2.58 kl 0.0034 ev -2.19 2385 sps
+[mixed_s1] update 20 transitions 81920 turns 40960 hist 0/3 ent 1.39 kl 0.0056 ev 0.63 3349 sps
+[mixed_s2] update 20 transitions 81920 turns 40960 hist 0/5 ent 1.31 kl 0.0054 ev 0.65 3376 sps
+[mixed_s0] update 20 transitions 81920 turns 40960 hist 0/5 ent 1.49 kl 0.0041 ev 0.65 3365 sps
+[mixed_s2] update 40 transitions 163840 turns 81920 hist 0/5 ent 0.89 kl 0.0020 ev 0.71 3740 sps
+[mixed_s1] update 40 transitions 163840 turns 81920 hist 0/3 ent 0.86 kl 0.0028 ev 0.77 3562 sps
+[mixed_s0] update 40 transitions 163840 turns 81920 hist 0/5 ent 1.13 kl 0.0043 ev 0.67 2548 sps
+[mixed_s2] update 60 transitions 245760 turns 122880 hist 0/5 ent 0.90 kl 0.0043 ev 0.72 3534 sps
+[mixed_s1] update 60 transitions 245760 turns 122880 hist 0/3 ent 1.24 kl 0.0041 ev 0.67 3179 sps
+[mixed_s0] update 60 transitions 245760 turns 122880 hist 0/5 ent 1.01 kl 0.0045 ev 0.64 3446 sps
+[mixed_s2] update 80 transitions 327680 turns 163840 hist 0/5 ent 0.94 kl 0.0045 ev 0.69 4824 sps
+[mixed_s1] update 80 transitions 327680 turns 163840 hist 0/3 ent 1.20 kl 0.0032 ev 0.59 3378 sps
+[mixed_s0] update 80 transitions 327680 turns 163840 hist 0/5 ent 1.08 kl 0.0034 ev 0.73 5707 sps
+[mixed_s2] update 100 transitions 409600 turns 204800 hist 0/5 ent 0.95 kl 0.0034 ev 0.69 3346 sps
+[mixed_s1] update 100 transitions 409600 turns 204800 hist 0/3 ent 1.11 kl 0.0041 ev 0.63 3607 sps
+[mixed_s0] update 100 transitions 409600 turns 204800 hist 0/5 ent 1.01 kl 0.0048 ev 0.65 3390 sps
+[mixed_s2] update 120 transitions 491520 turns 245760 hist 0/5 ent 0.91 kl 0.0034 ev 0.69 3545 sps
+[mixed_s1] update 120 transitions 491520 turns 245760 hist 0/3 ent 0.97 kl 0.0040 ev 0.66 3111 sps
+[mixed_s0] update 120 transitions 491520 turns 245760 hist 0/5 ent 1.01 kl 0.0036 ev 0.60 3632 sps
+[mixed_s2] update 140 transitions 573440 turns 286720 hist 0/5 ent 0.73 kl 0.0028 ev 0.64 3508 sps
+[mixed_s1] update 140 transitions 573440 turns 286720 hist 0/3 ent 0.85 kl 0.0026 ev 0.62 3351 sps
+[mixed_s0] update 140 transitions 573440 turns 286720 hist 0/5 ent 0.90 kl 0.0032 ev 0.45 2996 sps
+[mixed_s2] update 160 transitions 655360 turns 327680 hist 0/5 ent 0.62 kl 0.0028 ev 0.60 3666 sps
+[mixed_s1] update 160 transitions 655360 turns 327680 hist 0/3 ent 0.72 kl 0.0041 ev 0.67 2677 sps
+[mixed_s0] update 160 transitions 655360 turns 327680 hist 0/5 ent 0.77 kl 0.0033 ev 0.56 3028 sps
+[mixed_s2] update 180 transitions 737280 turns 368640 hist 0/5 ent 0.76 kl 0.0029 ev 0.51 2912 sps
+[mixed_s1] update 180 transitions 737280 turns 368640 hist 0/3 ent 0.69 kl 0.0028 ev 0.55 3294 sps
+[mixed_s0] update 180 transitions 737280 turns 368640 hist 0/5 ent 0.73 kl 0.0034 ev 0.61 2777 sps
+[mixed_s2] update 200 transitions 819200 turns 409600 hist 0/5 ent 0.65 kl 0.0017 ev 0.43 3717 sps
+[mixed_s1] update 200 transitions 819200 turns 409600 hist 0/3 ent 0.68 kl 0.0029 ev 0.63 2879 sps
+[mixed_s0] update 200 transitions 819200 turns 409600 hist 0/5 ent 0.62 kl 0.0022 ev 0.56 2924 sps
+[mixed_s2] update 220 transitions 901120 turns 450560 hist 0/5 ent 0.61 kl 0.0029 ev 0.61 3034 sps
+[mixed_s1] update 220 transitions 901120 turns 450560 hist 0/3 ent 0.56 kl 0.0023 ev 0.62 3244 sps
+[mixed_s0] update 220 transitions 901120 turns 450560 hist 0/5 ent 0.52 kl 0.0020 ev 0.52 2557 sps
+[mixed_s2] update 240 transitions 983040 turns 491520 hist 0/5 ent 0.63 kl 0.0025 ev 0.64 3369 sps
+[mixed_s1] update 240 transitions 983040 turns 491520 hist 0/3 ent 0.55 kl 0.0018 ev 0.67 3389 sps
+[mixed_s0] update 240 transitions 983040 turns 491520 hist 0/5 ent 0.57 kl 0.0021 ev 0.66 2147 sps
+[mixed_s2] update 260 transitions 1064960 turns 532480 hist 0/5 ent 0.70 kl 0.0031 ev 0.68 3350 sps
+[mixed_s1] update 260 transitions 1064960 turns 532480 hist 0/3 ent 0.57 kl 0.0028 ev 0.71 3371 sps
+[mixed_s0] update 260 transitions 1064960 turns 532480 hist 0/5 ent 0.48 kl 0.0025 ev 0.56 2780 sps
+[mixed_s2] update 280 transitions 1146880 turns 573440 hist 0/5 ent 0.64 kl 0.0020 ev 0.70 2889 sps
+[mixed_s1] update 280 transitions 1146880 turns 573440 hist 0/3 ent 0.52 kl 0.0019 ev 0.67 3355 sps
+[mixed_s0] update 280 transitions 1146880 turns 573440 hist 0/5 ent 0.50 kl 0.0021 ev 0.54 2415 sps
+[mixed_s2] update 300 transitions 1228800 turns 614400 hist 0/5 ent 0.63 kl 0.0022 ev 0.67 3027 sps
+[mixed_s1] update 300 transitions 1228800 turns 614400 hist 0/3 ent 0.49 kl 0.0022 ev 0.59 2657 sps
+[mixed_s0] update 300 transitions 1228800 turns 614400 hist 0/5 ent 0.50 kl 0.0021 ev 0.51 2021 sps
+[mixed_s2] update 320 transitions 1310720 turns 655360 hist 0/5 ent 0.57 kl 0.0028 ev 0.67 2496 sps
+[mixed_s1] update 320 transitions 1310720 turns 655360 hist 0/3 ent 0.54 kl 0.0021 ev 0.54 3160 sps
+[mixed_s2] update 340 transitions 1392640 turns 696320 hist 0/5 ent 0.59 kl 0.0026 ev 0.68 2694 sps
+[mixed_s0] update 320 transitions 1310720 turns 655360 hist 0/5 ent 0.54 kl 0.0025 ev 0.61 2976 sps
+[mixed_s1] update 340 transitions 1392640 turns 696320 hist 0/3 ent 0.49 kl 0.0019 ev 0.56 3097 sps
+[mixed_s2] update 360 transitions 1474560 turns 737280 hist 0/5 ent 0.61 kl 0.0016 ev 0.70 3143 sps
+[mixed_s0] update 340 transitions 1392640 turns 696320 hist 0/5 ent 0.43 kl 0.0021 ev 0.63 2574 sps
+[mixed_s1] update 360 transitions 1474560 turns 737280 hist 0/3 ent 0.55 kl 0.0017 ev 0.63 3643 sps
+[mixed_s2] update 380 transitions 1556480 turns 778240 hist 0/5 ent 0.64 kl 0.0020 ev 0.74 573 sps
+[mixed_s0] update 360 transitions 1474560 turns 737280 hist 0/5 ent 0.51 kl 0.0018 ev 0.68 1747 sps
+[mixed_s1] update 380 transitions 1556480 turns 778240 hist 0/3 ent 0.55 kl 0.0010 ev 0.59 3330 sps
+[mixed_s2] update 400 transitions 1638400 turns 819200 hist 0/5 ent 0.62 kl 0.0019 ev 0.77 1637 sps
+[mixed_s0] update 380 transitions 1556480 turns 778240 hist 0/5 ent 0.46 kl 0.0009 ev 0.64 1433 sps
+[mixed_s1] update 400 transitions 1638400 turns 819200 hist 0/3 ent 0.53 kl 0.0010 ev 0.66 1831 sps
+[mixed_s2] update 420 transitions 1720320 turns 860160 hist 0/5 ent 0.55 kl 0.0015 ev 0.69 2277 sps
+[mixed_s1] update 420 transitions 1720320 turns 860160 hist 0/3 ent 0.49 kl 0.0011 ev 0.57 1949 sps
+[mixed_s0] update 400 transitions 1638400 turns 819200 hist 0/5 ent 0.46 kl 0.0014 ev 0.59 1743 sps
+[mixed_s2] update 440 transitions 1802240 turns 901120 hist 0/5 ent 0.54 kl 0.0005 ev 0.68 1957 sps
+[mixed_s1] update 440 transitions 1802240 turns 901120 hist 0/3 ent 0.56 kl 0.0008 ev 0.59 1731 sps
+[mixed_s0] update 420 transitions 1720320 turns 860160 hist 0/5 ent 0.45 kl 0.0019 ev 0.64 1970 sps
+[mixed_s2] update 460 transitions 1884160 turns 942080 hist 0/5 ent 0.56 kl 0.0003 ev 0.68 1044 sps
+[mixed_s1] update 460 transitions 1884160 turns 942080 hist 0/3 ent 0.60 kl 0.0008 ev 0.64 1580 sps
+[mixed_s0] update 440 transitions 1802240 turns 901120 hist 0/5 ent 0.41 kl 0.0008 ev 0.67 1984 sps
+[mixed_s2] update 480 transitions 1966080 turns 983040 hist 0/5 ent 0.61 kl 0.0002 ev 0.78 2693 sps
+[mixed_s1] update 480 transitions 1966080 turns 983040 hist 0/3 ent 0.59 kl 0.0002 ev 0.71 2191 sps
+[mixed_s0] update 460 transitions 1884160 turns 942080 hist 0/5 ent 0.43 kl 0.0003 ev 0.64 2903 sps
+[mixed_s2] update 500 transitions 2048000 turns 1024000 hist 0/5 ent 0.58 kl 0.0000 ev 0.73 2219 sps
+  mixed_s2: 2,048,000 transitions in 767 s (2,694/s), entropy 2.58 -> 0.59, ev 0.73, V(s0) -0.09
+[mixed_s1] update 500 transitions 2048000 turns 1024000 hist 0/3 ent 0.60 kl 0.0000 ev 0.66 2310 sps
+[mixed_s0] update 480 transitions 1966080 turns 983040 hist 0/5 ent 0.44 kl 0.0003 ev 0.65 1781 sps
+  mixed_s1: 2,048,000 transitions in 786 s (2,630/s), entropy 2.58 -> 0.59, ev 0.67, V(s0) +0.00
+[mixed_s0] update 500 transitions 2048000 turns 1024000 hist 0/5 ent 0.40 kl 0.0000 ev 0.60 3318 sps
+  mixed_s0: 2,048,000 transitions in 815 s (2,530/s), entropy 2.58 -> 0.42, ev 0.62, V(s0) +0.00
+wrote results\rl\m43b\train.json
+[train: 822 s elapsed]

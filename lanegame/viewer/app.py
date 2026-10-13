@@ -69,8 +69,25 @@ def policy_widget(label: str, key: str):
 
 
 st.sidebar.title("Lane debugger")
-mode = st.sidebar.radio("Mode", ["Strategy matchup", "Manual play"], key="mode")
-if mode == "Strategy matchup":
+mode = st.sidebar.radio("Mode", ["Strategy matchup", "Manual play", "Recorded trajectory"], key="mode")
+recorded = None
+if mode == "Recorded trajectory":
+    folder = st.sidebar.text_input("Folder of recordings", os.path.join("results", "rl", "m43b", "trajectories"),
+                                   key="rec_folder")
+    files = sorted(f for f in os.listdir(folder) if f.endswith(".json")) if os.path.isdir(folder) else []
+    if not files:
+        st.sidebar.warning("No recordings found (export them with `python -m lanegame.experiments.rl.m43b trajectories`).")
+        st.stop()
+    fname = st.sidebar.selectbox("Recording", files, key="rec_file")
+    setup, rec_actions, rec_meta = ss.load_recording(os.path.join(folder, fname))
+    st.sidebar.caption(rec_meta.get("label", ""))
+    st.sidebar.caption(f"A: {rec_meta['names'][0]} · B: {rec_meta['names'][1]} · seed {setup.seed} · "
+                       f"{len(rec_actions)} turns")
+    recorded = (rec_actions, rec_meta)
+    pol_a = pol_b = None
+    turns = 0
+    title = f"Recorded: {rec_meta.get('label', fname)}"
+elif mode == "Strategy matchup":
     if "matchup" not in S:
         S.matchup = next(iter(pl.MATCHUPS))
         apply_matchup()
@@ -94,6 +111,8 @@ else:
 
 
 def build() -> ss.Recording:
+    if mode == "Recorded trajectory":
+        return ss.play(setup, prefix=recorded[0], policies=(None, None), prefix_note="recorded")
     if mode == "Strategy matchup":
         return ss.play(setup, policies=(pol_a, pol_b), turns=turns)
     return ss.play(setup, prefix=S.manual["actions"], policies=(None, pol_b))
@@ -153,7 +172,10 @@ def body():
                 f"{ss.GAPS[setup.gap]} · seed {setup.seed}</div>", unsafe_allow_html=True)
 
     # 2. players
-    pa_name, pb_name = (S.pa, S.pb) if mode == "Strategy matchup" else ("you", S.pb)
+    if mode == "Recorded trajectory":
+        pa_name, pb_name = recorded[1]["names"]
+    else:
+        pa_name, pb_name = (S.pa, S.pb) if mode == "Strategy matchup" else ("you", S.pb)
     tl = ss.timeline(rec)
     for col, s, name, pname in zip(st.columns(2), (0, 1), ("A", "B"), (pa_name, pb_name)):
         d = view["champions"][name]

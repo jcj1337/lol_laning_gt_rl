@@ -1,0 +1,9942 @@
+{
+ "meta": {
+  "commit": "1ad88488018f229436d0ca2e1d215471c327a0c2",
+  "timestamp": "2026-10-12 22:37:33",
+  "python": "3.13.9",
+  "torch": "2.14.1+cpu",
+  "numpy": "2.5.3",
+  "config": {
+   "base": 4,
+   "tower": 2,
+   "ticks_per_turn": 2,
+   "spawn_interval": 4,
+   "horizon": 32,
+   "wave_hp": 8,
+   "max_stacks": 2,
+   "cap_rule": "block",
+   "queue_fights": true,
+   "positioning": true,
+   "damage_law": "lanchester_half",
+   "shove_damage": 1,
+   "tower_damage": 1,
+   "pressure_kappa": [
+    0,
+    1,
+    0
+   ],
+   "slowpush_line": 0,
+   "slowpush_mode": "stack_creep",
+   "slowpush_creep_period": 2,
+   "freeze_line": -1,
+   "freeze_break_threshold": 10,
+   "freeze_break_push": [
+    0,
+    4,
+    0
+   ],
+   "freeze_legal_max": -1,
+   "tower_mode": "mass",
+   "tower_consumption_per_turn": 1,
+   "tower_siege_damage": 3,
+   "siege_engage": false,
+   "siege_cap": 96,
+   "siege_mode": "objective",
+   "plate_mode": "durability",
+   "plate_grant": [
+    1,
+    2,
+    3
+   ],
+   "plates_cap": 6,
+   "plates_per_tower": 5,
+   "plates_per_turn": 1,
+   "plate_value": 1.0,
+   "thin_damage": 0,
+   "thin_reach": 1,
+   "crash_options": [
+    [
+     [
+      1.0,
+      false
+     ],
+     [
+      0.0,
+      true
+     ]
+    ],
+    [
+     [
+      2.0,
+      false
+     ],
+     [
+      0.0,
+      true
+     ]
+    ],
+    [
+     [
+      3.0,
+      false
+     ],
+     [
+      2.0,
+      true
+     ]
+    ]
+   ],
+   "vision_turns": 6,
+   "vision_reduction": 0.75,
+   "farm_per_hp": 0.125,
+   "collect_contest": 0.9,
+   "collect_contest_enemy_tower": 0.9,
+   "collect_contest_own_tower": 0.6,
+   "collect_safe": 0.8,
+   "collect_safe_slope": 0.2,
+   "zone_contest": 0.3,
+   "zone_under_tower": 0.15,
+   "zoning_rule": "none",
+   "gank_base": 0.15,
+   "gank_position": 0.1,
+   "gank_action": [
+    0.02,
+    0.05,
+    0.02,
+    0.0,
+    0.0,
+    0.0
+   ],
+   "gank_strength": 0.02,
+   "gank_max": 0.4,
+   "gank_loss": 5.0,
+   "posture_cap": [
+    null,
+    null,
+    null,
+    -1,
+    -1,
+    -1
+   ],
+   "champion_mode": true,
+   "champion_hp": 6,
+   "champion_speed": 2,
+   "champion_absent_max": 3,
+   "recall_turns": 2,
+   "recall_line": -1,
+   "trade_hit_base": 0.55,
+   "trade_hit_skill": 0.4,
+   "trade_hit_behavior": [
+    0.0,
+    -0.25,
+    0.0,
+    -0.4,
+    0.0
+   ],
+   "trade_hit_minions": 0.05,
+   "trade_hit_tower": 0.15,
+   "trade_hit_min": 0.05,
+   "trade_hit_max": 0.95,
+   "trade_double_base": 0.3,
+   "trade_double_skill": 0.2,
+   "tower_shot_damage": 1,
+   "tower_shot_p": 1.0,
+   "tower_shot_p_busy": 0.5,
+   "skill_a": 0.5,
+   "skill_b": 0.5,
+   "safe_line": -1,
+   "trade_range": 1,
+   "farm_reach": 1,
+   "retreat_farm_reach": 2,
+   "trade_farm_factor": 0.5,
+   "champ_gank_base": 0.0,
+   "champ_gank_position": 0.12,
+   "champ_gank_behavior": [
+    0.01,
+    0.01,
+    0.03,
+    0.0
+   ],
+   "champ_gank_shove": 0.02,
+   "champ_gank_strength": 0.01,
+   "champ_gank_max": 0.3,
+   "gank_damage_trials": 4,
+   "gank_damage_base": 0.2,
+   "gank_damage_position": 0.6,
+   "gank_damage_defense": 0.2,
+   "gank_damage_skill": 0.2,
+   "death_turns": 3,
+   "kill_bounty": 0.5,
+   "ruleset": "m4",
+   "time_mode": "continuing",
+   "time_features": false,
+   "gamma": 0.99,
+   "xp_per_hp": 1,
+   "xp_range": 3,
+   "xp_base": 8,
+   "xp_step": 3,
+   "level_cap": 18,
+   "hp_base": 600,
+   "hp_growth": 1.05,
+   "ap_level_growth": 1.05,
+   "item_mult": 1.2,
+   "item_tiers": 0,
+   "item_prices": [],
+   "item_model": "continuous",
+   "invest_alpha": 0.045,
+   "invest_p": 0.9,
+   "invest_obs_gold_ref": 8,
+   "invest_obs_ref": 64,
+   "invest_curve": "saturating",
+   "invest_gain": 1.5,
+   "invest_scale": 16.0,
+   "invest_obs_encoding": "compressed",
+   "freeze_maintenance": false,
+   "chase_rule": "contact_cell",
+   "farm_spot_rule": "pre_crash_front",
+   "position_rule": "standoff",
+   "wave_dynamics": "natural",
+   "champion_wave_damage": [
+    0,
+    2,
+    1
+   ],
+   "natural_crash_rule": "entry",
+   "natural_tower_reach": 1,
+   "wave_clear_scaling": "capacity",
+   "wave_clear_scaled_slots": [
+    1
+   ],
+   "wave_hold_fraction": 0.125,
+   "wave_thin_fraction": 0.5,
+   "tower_adjacent_p": 0.5,
+   "tower_adjacent_p_busy": 0.25,
+   "gank_damage_scale": "victim_level",
+   "plate_thresholds": [
+    1600,
+    3600,
+    6000
+   ],
+   "plate_gold": 1.0,
+   "pressure_tower_damage": 400,
+   "plate_gold_requires_presence": false,
+   "gold_unit": 1e-07,
+   "rear_count_max": 4,
+   "trade_exchanges": 1,
+   "trade_farm_rule": "trader",
+   "invest_durability": true
+  },
+  "stage": "trajectories",
+  "turns": 460,
+  "seed": 67000
+ },
+ "elapsed_s": 2.3554632999002934,
+ "how_to_view": "streamlit run lanegame/viewer/app.py -> mode 'Recorded trajectory' (files of results/rl/m43b/trajectories/), or lanegame.viewer.session.load_recording(path)",
+ "recordings": {
+  "base_s0_selfplay_a": {
+   "path": "results\\rl\\m43b\\trajectories\\base_s0_selfplay_a.json",
+   "names": [
+    "final:base:0",
+    "final:base:0"
+   ],
+   "label": "baseline final against itself (seed a)",
+   "seed": 67000,
+   "turns": 460,
+   "payoff_A": 0.7374999999999967,
+   "counters": {
+    "deaths": [
+     2,
+     3
+    ],
+    "recalls": [
+     17,
+     15
+    ],
+    "crashes": [
+     30,
+     35
+    ],
+    "plates": [
+     3,
+     3
+    ],
+    "trades_connected": [
+     65,
+     64
+    ],
+    "farm": [
+     158.2875000000001,
+     158.05000000000013
+    ],
+    "invested": [
+     153.48125,
+     158.00625
+    ],
+    "returns_after_death": [
+     2,
+     3
+    ],
+    "returns_after_recall": [
+     16,
+     15
+    ]
+   },
+   "action_shares": {
+    "0": {
+     "Hold": 0.1050228310502283,
+     "Thin": 0.08904109589041095,
+     "Clear": 0.8059360730593608,
+     "Trade": 0.182648401826484,
+     "Safe": 0.18493150684931506,
+     "Recall": 0.03881278538812785,
+     "Pressure": 0.0273972602739726
+    },
+    "1": {
+     "Hold": 0.11467889908256881,
+     "Thin": 0.09174311926605505,
+     "Clear": 0.7935779816513762,
+     "Trade": 0.1926605504587156,
+     "Safe": 0.19954128440366972,
+     "Recall": 0.03669724770642202,
+     "Pressure": 0.034403669724770644
+    }
+   },
+   "events": [
+    [
+     3,
+     "A reaches level 2"
+    ],
+    [
+     3,
+     "B reaches level 2"
+    ],
+    [
+     5,
+     "A reaches level 3"
+    ],
+    [
+     5,
+     "B reaches level 3"
+    ],
+    [
+     9,
+     "A reaches level 4"
+    ],
+    [
+     9,
+     "B reaches level 4"
+    ],
+    [
+     13,
+     "A reaches level 5"
+    ],
+    [
+     13,
+     "B reaches level 5"
+    ],
+    [
+     19,
+     "A reaches level 6"
+    ],
+    [
+     19,
+     "B reaches level 6"
+    ],
+    [
+     25,
+     "A reaches level 7"
+    ],
+    [
+     25,
+     "B reaches level 7"
+    ],
+    [
+     31,
+     "A reaches level 8"
+    ],
+    [
+     31,
+     "B reaches level 8"
+    ],
+    [
+     37,
+     "A reaches level 9"
+    ],
+    [
+     37,
+     "B reaches level 9"
+    ],
+    [
+     45,
+     "A reaches level 10"
+    ],
+    [
+     45,
+     "B reaches level 10"
+    ],
+    [
+     55,
+     "A reaches level 11"
+    ],
+    [
+     55,
+     "B reaches level 11"
+    ],
+    [
+     60,
+     "A dies (ganked; HP 115 before, gold 23.5 unspent)"
+    ],
+    [
+     62,
+     "B crashes 8 HP into the enemy tower"
+    ],
+    [
+     63,
+     "A returns next turn, invests 23.5"
+    ],
+    [
+     63,
+     "B reaches level 12"
+    ],
+    [
+     64,
+     "B crashes 3 HP into the enemy tower"
+    ],
+    [
+     65,
+     "A reaches level 12"
+    ],
+    [
+     66,
+     "A crashes 4 HP into the enemy tower"
+    ],
+    [
+     67,
+     "B recalls (HP 433, gold 26.6 unspent)"
+    ],
+    [
+     68,
+     "A crashes 8 HP into the enemy tower"
+    ],
+    [
+     68,
+     "B returns next turn, invests 26.6"
+    ],
+    [
+     70,
+     "A crashes 2 HP into the enemy tower"
+    ],
+    [
+     72,
+     "A recalls (HP 269, gold 3.4 unspent)"
+    ],
+    [
+     73,
+     "A returns next turn, invests 3.4"
+    ],
+    [
+     73,
+     "B reaches level 13"
+    ],
+    [
+     74,
+     "B crashes 12 HP into the enemy tower"
+    ],
+    [
+     76,
+     "B crashes 2 HP into the enemy tower"
+    ],
+    [
+     78,
+     "A reaches level 13"
+    ],
+    [
+     82,
+     "B crashes 2 HP into the enemy tower"
+    ],
+    [
+     84,
+     "B crashes 2 HP into the enemy tower"
+    ],
+    [
+     87,
+     "A reaches level 14"
+    ],
+    [
+     87,
+     "B reaches level 14"
+    ],
+    [
+     89,
+     "A recalls (HP 254, gold 6.4 unspent)"
+    ],
+    [
+     90,
+     "A returns next turn, invests 6.4"
+    ],
+    [
+     90,
+     "B crashes 8 HP into the enemy tower"
+    ],
+    [
+     91,
+     "B breaks a plate (+1.0)"
+    ],
+    [
+     92,
+     "B crashes 2 HP into the enemy tower"
+    ],
+    [
+     97,
+     "B reaches level 15"
+    ],
+    [
+     98,
+     "A crashes 5 HP into the enemy tower"
+    ],
+    [
+     99,
+     "A reaches level 15"
+    ],
+    [
+     100,
+     "A crashes 1 HP into the enemy tower"
+    ],
+    [
+     107,
+     "B recalls (HP 673, gold 16.0 unspent)"
+    ],
+    [
+     108,
+     "A crashes 8 HP into the enemy tower"
+    ],
+    [
+     108,
+     "B returns next turn, invests 16.0"
+    ],
+    [
+     109,
+     "A breaks a plate (+1.0)"
+    ],
+    [
+     110,
+     "A crashes 1 HP into the enemy tower"
+    ],
+    [
+     110,
+     "B reaches level 16"
+    ],
+    [
+     112,
+     "A recalls (HP 448, gold 8.9 unspent)"
+    ],
+    [
+     113,
+     "A returns next turn, invests 8.9"
+    ],
+    [
+     113,
+     "B crashes 4 HP into the enemy tower"
+    ],
+    [
+     114,
+     "A reaches level 16"
+    ],
+    [
+     114,
+     "B crashes 8 HP into the enemy tower"
+    ],
+    [
+     115,
+     "B breaks a plate (+1.0)"
+    ],
+    [
+     116,
+     "B crashes 1 HP into the enemy tower"
+    ],
+    [
+     121,
+     "A crashes 2 HP into the enemy tower"
+    ],
+    [
+     122,
+     "A crashes 1 HP into the enemy tower"
+    ],
+    [
+     124,
+     "A crashes 1 HP into the enemy tower"
+    ],
+    [
+     124,
+     "B reaches level 17"
+    ],
+    [
+     129,
+     "A reaches level 17"
+    ],
+    [
+     134,
+     "A crashes 8 HP into the enemy tower"
+    ],
+    [
+     136,
+     "A recalls (HP 171, gold 7.6 unspent)"
+    ],
+    [
+     137,
+     "A returns next turn, invests 7.6"
+    ],
+    [
+     137,
+     "B crashes 3 HP into the enemy tower"
+    ],
+    [
+     137,
+     "B reaches level 18"
+    ],
+    [
+     138,
+     "B crashes 8 HP into the enemy tower"
+    ],
+    [
+     138,
+     "B breaks a plate (+1.0)"
+    ],
+    [
+     141,
+     "A reaches level 18"
+    ],
+    [
+     143,
+     "B recalls (HP 133, gold 14.6 unspent)"
+    ],
+    [
+     144,
+     "A crashes 8 HP into the enemy tower"
+    ],
+    [
+     144,
+     "B returns next turn, invests 14.6"
+    ],
+    [
+     145,
+     "A breaks a plate (+1.0)"
+    ],
+    [
+     154,
+     "B crashes 7 HP into the enemy tower"
+    ],
+    [
+     155,
+     "A recalls (HP 257, gold 7.7 unspent)"
+    ],
+    [
+     156,
+     "A returns next turn, invests 7.7"
+    ],
+    [
+     157,
+     "B crashes 5 HP into the enemy tower"
+    ],
+    [
+     158,
+     "B recalls (HP 1024, gold 6.1 unspent)"
+    ],
+    [
+     159,
+     "B returns next turn, invests 6.1"
+    ],
+    [
+     171,
+     "B dies (trade; HP 246 before, gold 1.7 unspent)"
+    ],
+    [
+     173,
+     "A crashes 12 HP into the enemy tower"
+    ],
+    [
+     174,
+     "A crashes 8 HP into the enemy tower"
+    ],
+    [
+     174,
+     "B returns next turn, invests 2.0"
+    ],
+    [
+     178,
+     "A recalls (HP 88, gold 7.3 unspent)"
+    ],
+    [
+     179,
+     "A returns next turn, invests 7.3"
+    ],
+    [
+     179,
+     "B crashes 4 HP into the enemy tower"
+    ],
+    [
+     180,
+     "B crashes 8 HP into the enemy tower"
+    ],
+    [
+     185,
+     "B recalls (HP 324, gold 5.4 unspent)"
+    ],
+    [
+     186,
+     "B returns next turn, invests 5.4"
+    ],
+    [
+     187,
+     "A crashes 5 HP into the enemy tower"
+    ],
+    [
+     190,
+     "A recalls (HP 877, gold 5.3 unspent)"
+    ],
+    [
+     191,
+     "A returns next turn, invests 5.3"
+    ],
+    [
+     208,
+     "A dies (trade; HP 1 before, gold 2.1 unspent)"
+    ],
+    [
+     208,
+     "B crashes 7 HP into the enemy tower"
+    ],
+    [
+     210,
+     "B crashes 8 HP into the enemy tower"
+    ],
+    [
+     211,
+     "A returns next turn, invests 3.6"
+    ],
+    [
+     214,
+     "B recalls (HP 336, gold 8.6 unspent)"
+    ],
+    [
+     215,
+     "A crashes 5 HP into the enemy tower"
+    ],
+    [
+     215,
+     "B returns next turn, invests 8.6"
+    ],
+    [
+     216,
+     "A crashes 8 HP into the enemy tower"
+    ],
+    [
+     216,
+     "A breaks a plate (+1.0)"
+    ],
+    [
+     222,
+     "A recalls (HP 518, gold 5.3 unspent)"
+    ],
+    [
+     223,
+     "A returns next turn, invests 5.3"
+    ],
+    [
+     223,
+     "B crashes 4 HP into the enemy tower"
+    ],
+    [
+     224,
+     "B crashes 8 HP into the enemy tower"
+    ],
+    [
+     238,
+     "B recalls (HP 82, gold 8.7 unspent)"
+    ],
+    [
+     239,
+     "A crashes 4 HP into the enemy tower"
+    ],
+    [
+     239,
+     "B returns next turn, invests 8.7"
+    ],
+    [
+     240,
+     "A crashes 8 HP into the enemy tower"
+    ],
+    [
+     246,
+     "A recalls (HP 161, gold 8.4 unspent)"
+    ],
+    [
+     247,
+     "A returns next turn, invests 8.4"
+    ],
+    [
+     247,
+     "B crashes 5 HP into the enemy tower"
+    ],
+    [
+     248,
+     "B crashes 8 HP into the enemy tower"
+    ],
+    [
+     258,
+     "B recalls (HP 418, gold 7.6 unspent)"
+    ],
+    [
+     259,
+     "A crashes 5 HP into the enemy tower"
+    ],
+    [
+     259,
+     "B returns next turn, invests 7.6"
+    ],
+    [
+     260,
+     "A crashes 8 HP into the enemy tower"
+    ],
+    [
+     268,
+     "B crashes 16 HP into the enemy tower"
+    ],
+    [
+     279,
+     "B's recall is interrupted"
+    ],
+    [
+     284,
+     "A recalls (HP 1017, gold 14.4 unspent)"
+    ],
+    [
+     285,
+     "A returns next turn, invests 14.4"
+    ],
+    [
+     287,
+     "B recalls (HP 459, gold 10.8 unspent)"
+    ],
+    [
+     288,
+     "A crashes 6 HP into the enemy tower"
+    ],
+    [
+     288,
+     "B returns next turn, invests 10.8"
+    ],
+    [
+     303,
+     "B crashes 3 HP into the enemy tower"
+    ],
+    [
+     305,
+     "A recalls (HP 451, gold 6.7 unspent)"
+    ],
+    [
+     306,
+     "A returns next turn, invests 6.7"
+    ],
+    [
+     307,
+     "B crashes 5 HP into the enemy tower"
+    ],
+    [
+     308,
+     "B recalls (HP 798, gold 7.3 unspent)"
+    ],
+    [
+     309,
+     "B returns next turn, invests 7.3"
+    ],
+    [
+     321,
+     "B dies (trade; HP 343 before, gold 2.1 unspent)"
+    ],
+    [
+     323,
+     "A crashes 12 HP into the enemy tower"
+    ],
+    [
+     324,
+     "A crashes 8 HP into the enemy tower"
+    ],
+    [
+     324,
+     "B returns next turn, invests 2.4"
+    ],
+    [
+     331,
+     "A recalls (HP 103, gold 9.6 unspent)"
+    ],
+    [
+     332,
+     "A returns next turn, invests 9.6"
+    ],
+    [
+     333,
+     "B crashes 5 HP into the enemy tower"
+    ],
+    [
+     348,
+     "B dies (trade; HP 221 before, gold 9.7 unspent)"
+    ],
+    [
+     351,
+     "A crashes 5 HP into the enemy tower"
+    ],
+    [
+     351,
+     "B returns next turn, invests 10.6"
+    ],
+    [
+     352,
+     "A crashes 8 HP into the enemy tower"
+    ],
+    [
+     356,
+     "A recalls (HP 346, gold 9.7 unspent)"
+    ],
+    [
+     357,
+     "A returns next turn, invests 9.7"
+    ],
+    [
+     357,
+     "B crashes 4 HP into the enemy tower"
+    ],
+    [
+     358,
+     "B crashes 8 HP into the enemy tower"
+    ],
+    [
+     372,
+     "B recalls (HP 229, gold 7.1 unspent)"
+    ],
+    [
+     373,
+     "A crashes 4 HP into the enemy tower"
+    ],
+    [
+     373,
+     "B returns next turn, invests 7.1"
+    ],
+    [
+     374,
+     "A crashes 8 HP into the enemy tower"
+    ],
+    [
+     389,
+     "B recalls (HP 922, gold 2.6 unspent)"
+    ],
+    [
+     390,
+     "B returns next turn, invests 2.6"
+    ],
+    [
+     393,
+     "B crashes 21 HP into the enemy tower"
+    ],
+    [
+     394,
+     "B crashes 8 HP into the enemy tower"
+    ],
+    [
+     395,
+     "A recalls (HP 574, gold 12.6 unspent)"
+    ],
+    [
+     396,
+     "A returns next turn, invests 12.6"
+    ],
+    [
+     396,
+     "B crashes 8 HP into the enemy tower"
+    ],
+    [
+     404,
+     "B crashes 16 HP into the enemy tower"
+    ],
+    [
+     409,
+     "B recalls (HP 237, gold 7.1 unspent)"
+    ],
+    [
+     410,
+     "A crashes 8 HP into the enemy tower"
+    ],
+    [
+     410,
+     "B returns next turn, invests 7.1"
+    ],
+    [
+     420,
+     "A recalls (HP 355, gold 8.7 unspent)"
+    ],
+    [
+     421,
+     "A returns next turn, invests 8.7"
+    ],
+    [
+     421,
+     "B crashes 4 HP into the enemy tower"
+    ],
+    [
+     422,
+     "B crashes 8 HP into the enemy tower"
+    ],
+    [
+     433,
+     "A recalls (HP 126, gold 4.4 unspent)"
+    ],
+    [
+     434,
+     "A returns next turn, invests 4.4"
+    ],
+    [
+     435,
+     "B recalls (HP 919, gold 10.3 unspent)"
+    ],
+    [
+     436,
+     "B returns next turn, invests 10.3"
+    ],
+    [
+     438,
+     "A crashes 8 HP into the enemy tower"
+    ],
+    [
+     449,
+     "B recalls (HP 1375, gold 4.3 unspent)"
+    ],
+    [
+     450,
+     "B returns next turn, invests 4.3"
+    ],
+    [
+     459,
+     "A recalls (HP 575, gold 9.3 unspent)"
+    ]
+   ]
+  },
+  "base_s0_selfplay_b": {
+   "path": "results\\rl\\m43b\\trajectories\\base_s0_selfplay_b.json",
+   "names": [
+    "final:base:0",
+    "final:base:0"
+   ],
+   "label": "baseline final against itself (seed b)",
+   "seed": 67001,
+   "turns": 460,
+   "payoff_A": 1.3687500000000004,
+   "counters": {
+    "deaths": [
+     4,
+     4
+    ],
+    "recalls": [
+     15,
+     15
+    ],
+    "crashes": [
+     34,
+     32
+    ],
+    "plates": [
+     3,
+     3
+    ],
+    "trades_connected": [
+     72,
+     68
+    ],
+    "farm": [
+     154.44375000000008,
+     153.07500000000005
+    ],
+    "invested": [
+     158.24375000000003,
+     149.74375
+    ],
+    "returns_after_death": [
+     4,
+     4
+    ],
+    "returns_after_recall": [
+     15,
+     15
+    ]
+   },
+   "action_shares": {
+    "0": {
+     "Hold": 0.11778290993071594,
+     "Thin": 0.09468822170900693,
+     "Clear": 0.7875288683602771,
+     "Trade": 0.22401847575057737,
+     "Safe": 0.19168591224018475,
+     "Recall": 0.03695150115473441,
+     "Pressure": 0.03233256351039261
+    },
+    "1": {
+     "Hold": 0.14087759815242495,
+     "Thin": 0.07621247113163972,
+     "Clear": 0.7829099307159353,
+     "Trade": 0.22401847575057737,
+     "Safe": 0.21016166281755197,
+     "Recall": 0.03464203233256351,
+     "Pressure": 0.020785219399538105
+    }
+   },
+   "events": [
+    [
+     3,
+     "A reaches level 2"
+    ],
+    [
+     3,
+     "B reaches level 2"
+    ],
+    [
+     5,
+     "A reaches level 3"
+    ],
+    [
+     5,
+     "B reaches level 3"
+    ],
+    [
+     9,
+     "A reaches level 4"
+    ],
+    [
+     9,
+     "B reaches level 4"
+    ],
+    [
+     13,
+     "A reaches level 5"
+    ],
+    [
+     13,
+     "B reaches level 5"
+    ],
+    [
+     19,
+     "A reaches level 6"
+    ],
+    [
+     19,
+     "B reaches level 6"
+    ],
+    [
+     23,
+     "A dies (ganked; HP 204 before, gold 8.2 unspent)"
+    ],
+    [
+     24,
+     "B reaches level 7"
+    ],
+    [
+     26,
+     "A returns next turn, invests 9.0"
+    ],
+    [
+     26,
+     "B crashes 10 HP into the enemy tower"
+    ],
+    [
+     27,
+     "A reaches level 7"
+    ],
+    [
+     28,
+     "B crashes 3 HP into the enemy tower"
+    ],
+    [
+     30,
+     "B reaches level 8"
+    ],
+    [
+     31,
+     "A reaches level 8"
+    ],
+    [
+     31,
+     "B recalls (HP 160, gold 12.6 unspent)"
+    ],
+    [
+     32,
+     "A crashes 8 HP into the enemy tower"
+    ],
+    [
+     32,
+     "B returns next turn, invests 12.6"
+    ],
+    [
+     37,
+     "A reaches level 9"
+    ],
+    [
+     38,
+     "A crashes 9 HP into the enemy tower"
+    ],
+    [
+     39,
+     "B reaches level 9"
+    ],
+    [
+     42,
+     "A recalls (HP 63, gold 6.3 unspent)"
+    ],
+    [
+     43,
+     "A returns next turn, invests 6.3"
+    ],
+    [
+     44,
+     "B crashes 13 HP into the enemy tower"
+    ],
+    [
+     45,
+     "B reaches level 10"
+    ],
+    [
+     46,
+     "B crashes 4 HP into the enemy tower"
+    ],
+    [
+     48,
+     "A reaches level 10"
+    ],
+    [
+     50,
+     "A crashes 3 HP into the enemy tower"
+    ],
+    [
+     52,
+     "A crashes 3 HP into the enemy tower"
+    ],
+    [
+     54,
+     "A crashes 3 HP into the enemy tower"
+    ],
+    [
+     54,
+     "B reaches level 11"
+    ],
+    [
+     55,
+     "A reaches level 11"
+    ],
+    [
+     55,
+     "B recalls (HP 603, gold 8.6 unspent)"
+    ],
+    [
+     56,
+     "A crashes 8 HP into the enemy tower"
+    ],
+    [
+     56,
+     "B returns next turn, invests 8.6"
+    ],
+    [
+     57,
+     "A breaks a plate (+1.0)"
+    ],
+    [
+     58,
+     "A crashes 3 HP into the enemy tower"
+    ],
+    [
+     60,
+     "A crashes 3 HP into the enemy tower"
+    ],
+    [
+     64,
+     "B reaches level 12"
+    ],
+    [
+     66,
+     "A reaches level 12"
+    ],
+    [
+     66,
+     "B crashes 4 HP into the enemy tower"
+    ],
+    [
+     67,
+     "A recalls (HP 810, gold 11.0 unspent)"
+    ],
+    [
+     68,
+     "A returns next turn, invests 11.0"
+    ],
+    [
+     68,
+     "B crashes 8 HP into the enemy tower"
+    ],
+    [
+     69,
+     "B breaks a plate (+1.0)"
+    ],
+    [
+     70,
+     "B crashes 2 HP into the enemy tower"
+    ],
+    [
+     72,
+     "B crashes 2 HP into the enemy tower"
+    ],
+    [
+     75,
+     "A reaches level 13"
+    ],
+    [
+     75,
+     "B reaches level 13"
+    ],
+    [
+     77,
+     "B recalls (HP 700, gold 9.6 unspent)"
+    ],
+    [
+     78,
+     "B returns next turn, invests 9.6"
+    ],
+    [
+     80,
+     "A crashes 2 HP into the enemy tower"
+    ],
+    [
+     84,
+     "B crashes 6 HP into the enemy tower"
+    ],
+    [
+     87,
+     "B reaches level 14"
+    ],
+    [
+     88,
+     "A reaches level 14"
+    ],
+    [
+     88,
+     "B crashes 6 HP into the enemy tower"
+    ],
+    [
+     90,
+     "B crashes 2 HP into the enemy tower"
+    ],
+    [
+     93,
+     "B recalls (HP 442, gold 6.2 unspent)"
+    ],
+    [
+     94,
+     "A crashes 8 HP into the enemy tower"
+    ],
+    [
+     94,
+     "B returns next turn, invests 6.2"
+    ],
+    [
+     95,
+     "A breaks a plate (+1.0)"
+    ],
+    [
+     96,
+     "A crashes 1 HP into the enemy tower"
+    ],
+    [
+     98,
+     "A recalls (HP 403, gold 12.0 unspent)"
+    ],
+    [
+     98,
+     "B reaches level 15"
+    ],
+    [
+     99,
+     "A returns next turn, invests 12.0"
+    ],
+    [
+     99,
+     "B crashes 4 HP into the enemy tower"
+    ],
+    [
+     100,
+     "A reaches level 15"
+    ],
+    [
+     100,
+     "B crashes 8 HP into the enemy tower"
+    ],
+    [
+     100,
+     "B breaks a plate (+1.0)"
+    ],
+    [
+     102,
+     "B crashes 1 HP into the enemy tower"
+    ],
+    [
+     111,
+     "B reaches level 16"
+    ],
+    [
+     112,
+     "A reaches level 16"
+    ],
+    [
+     113,
+     "B crashes 1 HP into the enemy tower"
+    ],
+    [
+     114,
+     "B crashes 1 HP into the enemy tower"
+    ],
+    [
+     117,
+     "B recalls (HP 495, gold 9.6 unspent)"
+    ],
+    [
+     118,
+     "A crashes 8 HP into the enemy tower"
+    ],
+    [
+     118,
+     "B returns next turn, invests 9.6"
+    ],
+    [
+     120,
+     "A crashes 1 HP into the enemy tower"
+    ],
+    [
+     122,
+     "A recalls (HP 699, gold 8.0 unspent)"
+    ],
+    [
+     123,
+     "A returns next turn, invests 8.0"
+    ],
+    [
+     123,
+     "B crashes 4 HP into the enemy tower"
+    ],
+    [
+     123,
+     "B reaches level 17"
+    ],
+    [
+     124,
+     "B crashes 8 HP into the enemy tower"
+    ],
+    [
+     124,
+     "B breaks a plate (+1.0)"
+    ],
+    [
+     126,
+     "A reaches level 17"
+    ],
+    [
+     126,
+     "B crashes 1 HP into the enemy tower"
+    ],
+    [
+     136,
+     "B crashes 8 HP into the enemy tower"
+    ],
+    [
+     138,
+     "B reaches level 18"
+    ],
+    [
+     139,
+     "A reaches level 18"
+    ],
+    [
+     139,
+     "B recalls (HP 282, gold 8.6 unspent)"
+    ],
+    [
+     140,
+     "A crashes 8 HP into the enemy tower"
+    ],
+    [
+     140,
+     "B returns next turn, invests 8.6"
+    ],
+    [
+     141,
+     "A breaks a plate (+1.0)"
+    ],
+    [
+     147,
+     "B crashes 1 HP into the enemy tower"
+    ],
+    [
+     149,
+     "A recalls (HP 76, gold 9.8 unspent)"
+    ],
+    [
+     150,
+     "A returns next turn, invests 9.8"
+    ],
+    [
+     151,
+     "B crashes 5 HP into the enemy tower"
+    ],
+    [
+     152,
+     "B recalls (HP 991, gold 5.5 unspent)"
+    ],
+    [
+     153,
+     "B returns next turn, invests 5.5"
+    ],
+    [
+     156,
+     "A recalls (HP 865, gold 3.0 unspent)"
+    ],
+    [
+     157,
+     "A returns next turn, invests 3.0"
+    ],
+    [
+     175,
+     "A crashes 3 HP into the enemy tower"
+    ],
+    [
+     179,
+     "A crashes 6 HP into the enemy tower"
+    ],
+    [
+     180,
+     "A recalls (HP 432, gold 8.9 unspent)"
+    ],
+    [
+     181,
+     "A returns next turn, invests 8.9"
+    ],
+    [
+     181,
+     "B recalls (HP 415, gold 10.1 unspent)"
+    ],
+    [
+     182,
+     "B returns next turn, invests 10.1"
+    ],
+    [
+     188,
+     "A crashes 18 HP into the enemy tower"
+    ],
+    [
+     203,
+     "A crashes 3 HP into the enemy tower"
+    ],
+    [
+     206,
+     "A recalls (HP 82, gold 7.3 unspent)"
+    ],
+    [
+     207,
+     "A returns next turn, invests 7.3"
+    ],
+    [
+     208,
+     "B crashes 14 HP into the enemy tower"
+    ],
+    [
+     211,
+     "B recalls (HP 200, gold 9.8 unspent)"
+    ],
+    [
+     212,
+     "B returns next turn, invests 9.8"
+    ],
+    [
+     213,
+     "A crashes 5 HP into the enemy tower"
+    ],
+    [
+     214,
+     "A recalls (HP 764, gold 3.7 unspent)"
+    ],
+    [
+     215,
+     "A returns next turn, invests 3.7"
+    ],
+    [
+     231,
+     "A crashes 2 HP into the enemy tower"
+    ],
+    [
+     242,
+     "A recalls (HP 201, gold 8.8 unspent)"
+    ],
+    [
+     242,
+     "B recalls (HP 555, gold 10.2 unspent)"
+    ],
+    [
+     243,
+     "A returns next turn, invests 8.8"
+    ],
+    [
+     243,
+     "B returns next turn, invests 10.2"
+    ],
+    [
+     259,
+     "A recalls (HP 1137, gold 4.3 unspent)"
+    ],
+    [
+     260,
+     "A returns next turn, invests 4.3"
+    ],
+    [
+     263,
+     "A crashes 15 HP into the enemy tower"
+    ],
+    [
+     264,
+     "A crashes 8 HP into the enemy tower"
+    ],
+    [
+     265,
+     "B recalls (HP 463, gold 5.9 unspent)"
+    ],
+    [
+     266,
+     "A crashes 8 HP into the enemy tower"
+    ],
+    [
+     266,
+     "B returns next turn, invests 5.9"
+    ],
+    [
+     275,
+     "A recalls (HP 431, gold 5.8 unspent)"
+    ],
+    [
+     276,
+     "A returns next turn, invests 5.8"
+    ],
+    [
+     277,
+     "B crashes 5 HP into the enemy tower"
+    ],
+    [
+     278,
+     "B recalls (HP 1030, gold 5.4 unspent)"
+    ],
+    [
+     279,
+     "B returns next turn, invests 5.4"
+    ],
+    [
+     293,
+     "B dies (trade; HP 239 before, gold 1.8 unspent)"
+    ],
+    [
+     295,
+     "A crashes 12 HP into the enemy tower"
+    ],
+    [
+     296,
+     "A crashes 8 HP into the enemy tower"
+    ],
+    [
+     296,
+     "B returns next turn, invests 2.1"
+    ],
+    [
+     301,
+     "A's recall is interrupted"
+    ],
+    [
+     302,
+     "A dies (trade; HP 89 before, gold 8.2 unspent)"
+    ],
+    [
+     304,
+     "B crashes 8 HP into the enemy tower"
+    ],
+    [
+     305,
+     "A returns next turn, invests 9.1"
+    ],
+    [
+     321,
+     "B dies (ganked; HP 560 before, gold 8.6 unspent)"
+    ],
+    [
+     323,
+     "A crashes 12 HP into the enemy tower"
+    ],
+    [
+     324,
+     "A crashes 8 HP into the enemy tower"
+    ],
+    [
+     324,
+     "B returns next turn, invests 8.8"
+    ],
+    [
+     329,
+     "A recalls (HP 103, gold 8.7 unspent)"
+    ],
+    [
+     330,
+     "A returns next turn, invests 8.7"
+    ],
+    [
+     331,
+     "B crashes 5 HP into the enemy tower"
+    ],
+    [
+     341,
+     "A dies (ganked; HP 571 before, gold 3.1 unspent)"
+    ],
+    [
+     343,
+     "B crashes 11 HP into the enemy tower"
+    ],
+    [
+     344,
+     "A returns next turn, invests 3.3"
+    ],
+    [
+     344,
+     "B crashes 8 HP into the enemy tower"
+    ],
+    [
+     357,
+     "B recalls (HP 222, gold 11.2 unspent)"
+    ],
+    [
+     358,
+     "A crashes 16 HP into the enemy tower"
+    ],
+    [
+     358,
+     "B returns next turn, invests 11.2"
+    ],
+    [
+     374,
+     "B crashes 3 HP into the enemy tower"
+    ],
+    [
+     381,
+     "B recalls (HP 576, gold 6.6 unspent)"
+    ],
+    [
+     382,
+     "B returns next turn, invests 6.6"
+    ],
+    [
+     387,
+     "B crashes 5 HP into the enemy tower"
+    ],
+    [
+     389,
+     "B dies (ganked; HP 120 before, gold 3.4 unspent)"
+    ],
+    [
+     390,
+     "A dies (ganked; HP 342 before, gold 15.2 unspent)"
+    ],
+    [
+     391,
+     "A crashes 5 HP into the enemy tower"
+    ],
+    [
+     392,
+     "A crashes 8 HP into the enemy tower"
+    ],
+    [
+     392,
+     "B returns next turn, invests 4.0"
+    ],
+    [
+     393,
+     "A returns next turn, invests 16.9"
+    ],
+    [
+     409,
+     "B dies (ganked; HP 694 before, gold 6.3 unspent)"
+    ],
+    [
+     411,
+     "A crashes 10 HP into the enemy tower"
+    ],
+    [
+     412,
+     "A crashes 8 HP into the enemy tower"
+    ],
+    [
+     412,
+     "B returns next turn, invests 6.4"
+    ],
+    [
+     417,
+     "A recalls (HP 577, gold 9.8 unspent)"
+    ],
+    [
+     418,
+     "A returns next turn, invests 9.8"
+    ],
+    [
+     419,
+     "B crashes 5 HP into the enemy tower"
+    ],
+    [
+     434,
+     "B recalls (HP 466, gold 8.6 unspent)"
+    ],
+    [
+     435,
+     "A crashes 5 HP into the enemy tower"
+    ],
+    [
+     435,
+     "B returns next turn, invests 8.6"
+    ],
+    [
+     436,
+     "A crashes 8 HP into the enemy tower"
+    ],
+    [
+     457,
+     "A recalls (HP 120, gold 12.5 unspent)"
+    ],
+    [
+     458,
+     "A returns next turn, invests 12.5"
+    ],
+    [
+     458,
+     "B crashes 17 HP into the enemy tower"
+    ]
+   ]
+  },
+  "base_s0_vs_push_punish": {
+   "path": "results\\rl\\m43b\\trajectories\\base_s0_vs_push_punish.json",
+   "names": [
+    "final:base:0",
+    "ref:push_punish"
+   ],
+   "label": "baseline final (A) against the slow-push + punish reference (B)",
+   "seed": 67000,
+   "turns": 460,
+   "payoff_A": 56.81874999999973,
+   "counters": {
+    "deaths": [
+     32,
+     0
+    ],
+    "recalls": [
+     1,
+     8
+    ],
+    "crashes": [
+     181,
+     0
+    ],
+    "plates": [
+     3,
+     0
+    ],
+    "trades_connected": [
+     16,
+     259
+    ],
+    "farm": [
+     179.71249999999995,
+     109.89375
+    ],
+    "invested": [
+     180.35000000000005,
+     116.75625000000001
+    ],
+    "returns_after_death": [
+     32,
+     0
+    ],
+    "returns_after_recall": [
+     1,
+     8
+    ]
+   },
+   "action_shares": {
+    "0": {
+     "Hold": 0.1184573002754821,
+     "Thin": 0.42699724517906334,
+     "Clear": 0.45454545454545453,
+     "Trade": 0.07713498622589532,
+     "Safe": 0.12396694214876033,
+     "Recall": 0.005509641873278237,
+     "Pressure": 0.3884297520661157
+    },
+    "1": {
+     "Hold": 0.9402654867256637,
+     "Thin": 0.059734513274336286,
+     "Clear": 0.0,
+     "Trade": 0.577433628318584,
+     "Safe": 0.0,
+     "Recall": 0.017699115044247787,
+     "Pressure": 0.0
+    }
+   },
+   "events": [
+    [
+     2,
+     "A reaches level 2"
+    ],
+    [
+     4,
+     "A crashes 12 HP into the enemy tower"
+    ],
+    [
+     4,
+     "A reaches level 3"
+    ],
+    [
+     5,
+     "A dies (trade; HP 47 before, gold 2.1 unspent)"
+    ],
+    [
+     5,
+     "B reaches level 2"
+    ],
+    [
+     6,
+     "B reaches level 3"
+    ],
+    [
+     8,
+     "A returns next turn, invests 2.5"
+    ],
+    [
+     10,
+     "B reaches level 4"
+    ],
+    [
+     11,
+     "A reaches level 4"
+    ],
+    [
+     14,
+     "A reaches level 5"
+    ],
+    [
+     16,
+     "A crashes 16 HP into the enemy tower"
+    ],
+    [
+     16,
+     "B reaches level 5"
+    ],
+    [
+     18,
+     "A dies (trade; HP 99 before, gold 4.5 unspent)"
+    ],
+    [
+     18,
+     "A crashes 8 HP into the enemy tower"
+    ],
+    [
+     18,
+     "A breaks a plate (+1.0)"
+    ],
+    [
+     18,
+     "A reaches level 6"
+    ],
+    [
+     19,
+     "B reaches level 6"
+    ],
+    [
+     21,
+     "A returns next turn, invests 6.1"
+    ],
+    [
+     24,
+     "B reaches level 7"
+    ],
+    [
+     25,
+     "A reaches level 7"
+    ],
+    [
+     26,
+     "A crashes 7 HP into the enemy tower"
+    ],
+    [
+     28,
+     "A crashes 8 HP into the enemy tower"
+    ],
+    [
+     30,
+     "A crashes 8 HP into the enemy tower"
+    ],
+    [
+     31,
+     "A breaks a plate (+1.0)"
+    ],
+    [
+     31,
+     "A reaches level 8"
+    ],
+    [
+     31,
+     "B reaches level 8"
+    ],
+    [
+     32,
+     "A crashes 8 HP into the enemy tower"
+    ],
+    [
+     34,
+     "A dies (ganked; HP 322 before, gold 6.6 unspent)"
+    ],
+    [
+     34,
+     "A crashes 8 HP into the enemy tower"
+    ],
+    [
+     36,
+     "B recalls (HP 490, gold 11.3 unspent)"
+    ],
+    [
+     37,
+     "A returns next turn, invests 6.7"
+    ],
+    [
+     37,
+     "B returns next turn, invests 11.3"
+    ],
+    [
+     39,
+     "A reaches level 9"
+    ],
+    [
+     40,
+     "A crashes 12 HP into the enemy tower"
+    ],
+    [
+     41,
+     "B reaches level 9"
+    ],
+    [
+     42,
+     "A crashes 8 HP into the enemy tower"
+    ],
+    [
+     42,
+     "A breaks a plate (+1.0)"
+    ],
+    [
+     44,
+     "A crashes 8 HP into the enemy tower"
+    ],
+    [
+     46,
+     "A crashes 8 HP into the enemy tower"
+    ],
+    [
+     47,
+     "A reaches level 10"
+    ],
+    [
+     48,
+     "A crashes 8 HP into the enemy tower"
+    ],
+    [
+     49,
+     "B reaches level 10"
+    ],
+    [
+     50,
+     "A dies (trade; HP 67 before, gold 7.3 unspent)"
+    ],
+    [
+     50,
+     "A crashes 8 HP into the enemy tower"
+    ],
+    [
+     52,
+     "A crashes 7 HP into the enemy tower"
+    ],
+    [
+     53,
+     "A returns next turn, invests 8.1"
+    ],
+    [
+     56,
+     "A crashes 8 HP into the enemy tower"
+    ],
+    [
+     56,
+     "A reaches level 11"
+    ],
+    [
+     57,
+     "B reaches level 11"
+    ],
+    [
+     58,
+     "A crashes 8 HP into the enemy tower"
+    ],
+    [
+     60,
+     "A crashes 7 HP into the enemy tower"
+    ],
+    [
+     61,
+     "A dies (trade; HP 5 before, gold 3.3 unspent)"
+    ],
+    [
+     62,
+     "A crashes 7 HP into the enemy tower"
+    ],
+    [
+     64,
+     "A returns next turn, invests 4.2"
+    ],
+    [
+     66,
+     "A crashes 8 HP into the enemy tower"
+    ],
+    [
+     66,
+     "A reaches level 12"
+    ],
+    [
+     67,
+     "B reaches level 12"
+    ],
+    [
+     68,
+     "A dies (trade; HP 120 before, gold 2.5 unspent)"
+    ],
+    [
+     68,
+     "A crashes 8 HP into the enemy tower"
+    ],
+    [
+     71,
+     "A returns next turn, invests 2.5"
+    ],
+    [
+     73,
+     "A crashes 1 HP into the enemy tower"
+    ],
+    [
+     74,
+     "A crashes 8 HP into the enemy tower"
+    ],
+    [
+     76,
+     "A crashes 8 HP into the enemy tower"
+    ],
+    [
+     77,
+     "B reaches level 13"
+    ],
+    [
+     78,
+     "A crashes 8 HP into the enemy tower"
+    ],
+    [
+     78,
+     "A reaches level 13"
+    ],
+    [
+     80,
+     "A crashes 8 HP into the enemy tower"
+    ],
+    [
+     82,
+     "A crashes 8 HP into the enemy tower"
+    ],
+    [
+     83,
+     "A dies (ganked; HP 206 before, gold 6.6 unspent)"
+    ],
+    [
+     84,
+     "A crashes 8 HP into the enemy tower"
+    ],
+    [
+     86,
+     "A returns next turn, invests 6.6"
+    ],
+    [
+     88,
+     "A crashes 10 HP into the enemy tower"
+    ],
+    [
+     88,
+     "B reaches level 14"
+    ],
+    [
+     90,
+     "A crashes 8 HP into the enemy tower"
+    ],
+    [
+     91,
+     "A reaches level 14"
+    ],
+    [
+     92,
+     "A crashes 8 HP into the enemy tower"
+    ],
+    [
+     94,
+     "A crashes 8 HP into the enemy tower"
+    ],
+    [
+     96,
+     "A crashes 8 HP into the enemy tower"
+    ],
+    [
+     97,
+     "A dies (ganked; HP 353 before, gold 4.4 unspent)"
+    ],
+    [
+     98,
+     "A crashes 8 HP into the enemy tower"
+    ],
+    [
+     98,
+     "B recalls (HP 483, gold 16.7 unspent)"
+    ],
+    [
+     99,
+     "B returns next turn, invests 16.7"
+    ],
+    [
+     100,
+     "A returns next turn, invests 5.2"
+    ],
+    [
+     101,
+     "B reaches level 15"
+    ],
+    [
+     102,
+     "A crashes 8 HP into the enemy tower"
+    ],
+    [
+     103,
+     "A reaches level 15"
+    ],
+    [
+     104,
+     "A crashes 8 HP into the enemy tower"
+    ],
+    [
+     106,
+     "A crashes 8 HP into the enemy tower"
+    ],
+    [
+     108,
+     "A dies (ganked; HP 451 before, gold 3.8 unspent)"
+    ],
+    [
+     108,
+     "A crashes 8 HP into the enemy tower"
+    ],
+    [
+     111,
+     "A returns next turn, invests 3.8"
+    ],
+    [
+     113,
+     "A crashes 2 HP into the enemy tower"
+    ],
+    [
+     114,
+     "A crashes 8 HP into the enemy tower"
+    ],
+    [
+     114,
+     "B reaches level 16"
+    ],
+    [
+     116,
+     "A crashes 8 HP into the enemy tower"
+    ],
+    [
+     116,
+     "A reaches level 16"
+    ],
+    [
+     118,
+     "A crashes 8 HP into the enemy tower"
+    ],
+    [
+     120,
+     "A crashes 8 HP into the enemy tower"
+    ],
+    [
+     122,
+     "A dies (trade; HP 292 before, gold 5.7 unspent)"
+    ],
+    [
+     122,
+     "A crashes 8 HP into the enemy tower"
+    ],
+    [
+     124,
+     "A crashes 7 HP into the enemy tower"
+    ],
+    [
+     125,
+     "A returns next turn, invests 6.6"
+    ],
+    [
+     126,
+     "B reaches level 17"
+    ],
+    [
+     128,
+     "A crashes 7 HP into the enemy tower"
+    ],
+    [
+     130,
+     "A crashes 8 HP into the enemy tower"
+    ],
+    [
+     130,
+     "A reaches level 17"
+    ],
+    [
+     132,
+     "A crashes 8 HP into the enemy tower"
+    ],
+    [
+     134,
+     "A crashes 8 HP into the enemy tower"
+    ],
+    [
+     135,
+     "A dies (trade; HP 137 before, gold 3.9 unspent)"
+    ],
+    [
+     136,
+     "A crashes 7 HP into the enemy tower"
+    ],
+    [
+     138,
+     "A returns next turn, invests 4.7"
+    ],
+    [
+     141,
+     "A crashes 4 HP into the enemy tower"
+    ],
+    [
+     141,
+     "B reaches level 18"
+    ],
+    [
+     142,
+     "A crashes 7 HP into the enemy tower"
+    ],
+    [
+     144,
+     "A crashes 8 HP into the enemy tower"
+    ],
+    [
+     145,
+     "A reaches level 18"
+    ],
+    [
+     146,
+     "A crashes 8 HP into the enemy tower"
+    ],
+    [
+     148,
+     "A crashes 8 HP into the enemy tower"
+    ],
+    [
+     150,
+     "A dies (trade; HP 321 before, gold 5.6 unspent)"
+    ],
+    [
+     150,
+     "A crashes 8 HP into the enemy tower"
+    ],
+    [
+     153,
+     "A returns next turn, invests 5.6"
+    ],
+    [
+     155,
+     "A crashes 2 HP into the enemy tower"
+    ],
+    [
+     156,
+     "A crashes 8 HP into the enemy tower"
+    ],
+    [
+     158,
+     "A crashes 8 HP into the enemy tower"
+    ],
+    [
+     160,
+     "A crashes 8 HP into the enemy tower"
+    ],
+    [
+     162,
+     "A crashes 8 HP into the enemy tower"
+    ],
+    [
+     163,
+     "A dies (trade; HP 175 before, gold 5.7 unspent)"
+    ],
+    [
+     164,
+     "A crashes 8 HP into the enemy tower"
+    ],
+    [
+     166,
+     "A returns next turn, invests 5.7"
+    ],
+    [
+     168,
+     "A crashes 8 HP into the enemy tower"
+    ],
+    [
+     170,
+     "A crashes 8 HP into the enemy tower"
+    ],
+    [
+     172,
+     "A crashes 8 HP into the enemy tower"
+    ],
+    [
+     174,
+     "A crashes 8 HP into the enemy tower"
+    ],
+    [
+     176,
+     "A crashes 8 HP into the enemy tower"
+    ],
+    [
+     178,
+     "A crashes 8 HP into the enemy tower"
+    ],
+    [
+     180,
+     "A dies (trade; HP 64 before, gold 6.2 unspent)"
+    ],
+    [
+     180,
+     "A crashes 8 HP into the enemy tower"
+    ],
+    [
+     182,
+     "B recalls (HP 681, gold 23.2 unspent)"
+    ],
+    [
+     183,
+     "A returns next turn, invests 6.2"
+    ],
+    [
+     183,
+     "B returns next turn, invests 23.2"
+    ],
+    [
+     186,
+     "A crashes 8 HP into the enemy tower"
+    ],
+    [
+     188,
+     "A crashes 8 HP into the enemy tower"
+    ],
+    [
+     190,
+     "A crashes 8 HP into the enemy tower"
+    ],
+    [
+     192,
+     "A crashes 8 HP into the enemy tower"
+    ],
+    [
+     194,
+     "A crashes 8 HP into the enemy tower"
+    ],
+    [
+     195,
+     "A dies (trade; HP 360 before, gold 5.3 unspent)"
+    ],
+    [
+     196,
+     "A crashes 7 HP into the enemy tower"
+    ],
+    [
+     198,
+     "A returns next turn, invests 6.1"
+    ],
+    [
+     201,
+     "A crashes 4 HP into the enemy tower"
+    ],
+    [
+     202,
+     "A crashes 7 HP into the enemy tower"
+    ],
+    [
+     204,
+     "A crashes 8 HP into the enemy tower"
+    ],
+    [
+     206,
+     "A crashes 8 HP into the enemy tower"
+    ],
+    [
+     208,
+     "A crashes 8 HP into the enemy tower"
+    ],
+    [
+     210,
+     "A dies (trade; HP 183 before, gold 5.7 unspent)"
+    ],
+    [
+     210,
+     "A crashes 8 HP into the enemy tower"
+    ],
+    [
+     213,
+     "A returns next turn, invests 5.7"
+    ],
+    [
+     215,
+     "A crashes 2 HP into the enemy tower"
+    ],
+    [
+     216,
+     "A crashes 8 HP into the enemy tower"
+    ],
+    [
+     218,
+     "A dies (trade; HP 351 before, gold 3.0 unspent)"
+    ],
+    [
+     218,
+     "A crashes 8 HP into the enemy tower"
+    ],
+    [
+     220,
+     "A crashes 7 HP into the enemy tower"
+    ],
+    [
+     221,
+     "A returns next turn, invests 3.9"
+    ],
+    [
+     225,
+     "A crashes 5 HP into the enemy tower"
+    ],
+    [
+     226,
+     "A crashes 8 HP into the enemy tower"
+    ],
+    [
+     228,
+     "A dies (trade; HP 118 before, gold 3.3 unspent)"
+    ],
+    [
+     228,
+     "A crashes 8 HP into the enemy tower"
+    ],
+    [
+     230,
+     "A crashes 7 HP into the enemy tower"
+    ],
+    [
+     231,
+     "A returns next turn, invests 4.2"
+    ],
+    [
+     235,
+     "A crashes 4 HP into the enemy tower"
+    ],
+    [
+     236,
+     "A crashes 7 HP into the enemy tower"
+    ],
+    [
+     238,
+     "A crashes 8 HP into the enemy tower"
+    ],
+    [
+     240,
+     "A crashes 8 HP into the enemy tower"
+    ],
+    [
+     242,
+     "A crashes 8 HP into the enemy tower"
+    ],
+    [
+     243,
+     "A dies (ganked; HP 511 before, gold 4.8 unspent)"
+    ],
+    [
+     244,
+     "A crashes 7 HP into the enemy tower"
+    ],
+    [
+     246,
+     "A returns next turn, invests 5.6"
+    ],
+    [
+     246,
+     "B recalls (HP 728, gold 18.7 unspent)"
+    ],
+    [
+     247,
+     "B returns next turn, invests 18.7"
+    ],
+    [
+     248,
+     "A crashes 10 HP into the enemy tower"
+    ],
+    [
+     250,
+     "A crashes 8 HP into the enemy tower"
+    ],
+    [
+     252,
+     "A crashes 8 HP into the enemy tower"
+    ],
+    [
+     254,
+     "A crashes 8 HP into the enemy tower"
+    ],
+    [
+     256,
+     "A dies (trade; HP 114 before, gold 4.6 unspent)"
+    ],
+    [
+     256,
+     "A crashes 8 HP into the enemy tower"
+    ],
+    [
+     259,
+     "A returns next turn, invests 4.6"
+    ],
+    [
+     261,
+     "A crashes 3 HP into the enemy tower"
+    ],
+    [
+     262,
+     "A crashes 8 HP into the enemy tower"
+    ],
+    [
+     264,
+     "A crashes 8 HP into the enemy tower"
+    ],
+    [
+     266,
+     "A crashes 8 HP into the enemy tower"
+    ],
+    [
+     268,
+     "A crashes 8 HP into the enemy tower"
+    ],
+    [
+     270,
+     "A crashes 7 HP into the enemy tower"
+    ],
+    [
+     272,
+     "A crashes 8 HP into the enemy tower"
+    ],
+    [
+     274,
+     "A dies (trade; HP 73 before, gold 6.9 unspent)"
+    ],
+    [
+     274,
+     "A crashes 8 HP into the enemy tower"
+    ],
+    [
+     277,
+     "A returns next turn, invests 6.9"
+    ],
+    [
+     279,
+     "A crashes 3 HP into the enemy tower"
+    ],
+    [
+     280,
+     "A crashes 8 HP into the enemy tower"
+    ],
+    [
+     282,
+     "A crashes 8 HP into the enemy tower"
+    ],
+    [
+     284,
+     "A dies (ganked; HP 83 before, gold 3.7 unspent)"
+    ],
+    [
+     284,
+     "A crashes 8 HP into the enemy tower"
+    ],
+    [
+     287,
+     "A returns next turn, invests 3.7"
+    ],
+    [
+     289,
+     "A crashes 3 HP into the enemy tower"
+    ],
+    [
+     290,
+     "A crashes 8 HP into the enemy tower"
+    ],
+    [
+     292,
+     "A crashes 8 HP into the enemy tower"
+    ],
+    [
+     294,
+     "A crashes 8 HP into the enemy tower"
+    ],
+    [
+     296,
+     "A crashes 8 HP into the enemy tower"
+    ],
+    [
+     297,
+     "A dies (ganked; HP 52 before, gold 4.5 unspent)"
+    ],
+    [
+     298,
+     "A crashes 7 HP into the enemy tower"
+    ],
+    [
+     300,
+     "A returns next turn, invests 5.3"
+    ],
+    [
+     303,
+     "A crashes 4 HP into the enemy tower"
+    ],
+    [
+     304,
+     "A crashes 7 HP into the enemy tower"
+    ],
+    [
+     306,
+     "A crashes 8 HP into the enemy tower"
+    ],
+    [
+     308,
+     "A crashes 8 HP into the enemy tower"
+    ],
+    [
+     309,
+     "A dies (trade; HP 45 before, gold 4.0 unspent)"
+    ],
+    [
+     310,
+     "A crashes 8 HP into the enemy tower"
+    ],
+    [
+     310,
+     "B recalls (HP 888, gold 17.6 unspent)"
+    ],
+    [
+     311,
+     "B returns next turn, invests 17.6"
+    ],
+    [
+     312,
+     "A returns next turn, invests 4.8"
+    ],
+    [
+     314,
+     "A crashes 8 HP into the enemy tower"
+    ],
+    [
+     316,
+     "A crashes 8 HP into the enemy tower"
+    ],
+    [
+     318,
+     "A crashes 8 HP into the enemy tower"
+    ],
+    [
+     320,
+     "A crashes 8 HP into the enemy tower"
+    ],
+    [
+     322,
+     "A crashes 8 HP into the enemy tower"
+    ],
+    [
+     324,
+     "A crashes 8 HP into the enemy tower"
+    ],
+    [
+     326,
+     "A dies (ganked; HP 59 before, gold 6.2 unspent)"
+    ],
+    [
+     326,
+     "A crashes 8 HP into the enemy tower"
+    ],
+    [
+     329,
+     "A returns next turn, invests 6.2"
+    ],
+    [
+     331,
+     "A crashes 3 HP into the enemy tower"
+    ],
+    [
+     332,
+     "A crashes 8 HP into the enemy tower"
+    ],
+    [
+     336,
+     "A crashes 10 HP into the enemy tower"
+    ],
+    [
+     339,
+     "A recalls (HP 503, gold 3.6 unspent)"
+    ],
+    [
+     340,
+     "A returns next turn, invests 3.6"
+    ],
+    [
+     340,
+     "B recalls (HP 298, gold 7.3 unspent)"
+    ],
+    [
+     341,
+     "B returns next turn, invests 7.3"
+    ],
+    [
+     342,
+     "A crashes 8 HP into the enemy tower"
+    ],
+    [
+     344,
+     "A crashes 6 HP into the enemy tower"
+    ],
+    [
+     346,
+     "A crashes 8 HP into the enemy tower"
+    ],
+    [
+     348,
+     "A crashes 8 HP into the enemy tower"
+    ],
+    [
+     350,
+     "A crashes 8 HP into the enemy tower"
+    ],
+    [
+     352,
+     "A crashes 8 HP into the enemy tower"
+    ],
+    [
+     355,
+     "A dies (trade; HP 279 before, gold 5.9 unspent)"
+    ],
+    [
+     356,
+     "A crashes 12 HP into the enemy tower"
+    ],
+    [
+     358,
+     "A returns next turn, invests 7.4"
+    ],
+    [
+     363,
+     "A crashes 4 HP into the enemy tower"
+    ],
+    [
+     364,
+     "A crashes 7 HP into the enemy tower"
+    ],
+    [
+     366,
+     "A crashes 8 HP into the enemy tower"
+    ],
+    [
+     368,
+     "A crashes 8 HP into the enemy tower"
+    ],
+    [
+     370,
+     "A crashes 8 HP into the enemy tower"
+    ],
+    [
+     372,
+     "A crashes 8 HP into the enemy tower"
+    ],
+    [
+     373,
+     "A dies (trade; HP 50 before, gold 6.0 unspent)"
+    ],
+    [
+     374,
+     "A crashes 7 HP into the enemy tower"
+    ],
+    [
+     376,
+     "A returns next turn, invests 6.8"
+    ],
+    [
+     379,
+     "A crashes 4 HP into the enemy tower"
+    ],
+    [
+     380,
+     "A crashes 7 HP into the enemy tower"
+    ],
+    [
+     382,
+     "A crashes 8 HP into the enemy tower"
+    ],
+    [
+     384,
+     "A crashes 8 HP into the enemy tower"
+    ],
+    [
+     386,
+     "A crashes 8 HP into the enemy tower"
+    ],
+    [
+     388,
+     "A crashes 8 HP into the enemy tower"
+    ],
+    [
+     389,
+     "A dies (trade; HP 161 before, gold 5.6 unspent)"
+    ],
+    [
+     390,
+     "A crashes 7 HP into the enemy tower"
+    ],
+    [
+     392,
+     "A returns next turn, invests 6.4"
+    ],
+    [
+     395,
+     "A crashes 4 HP into the enemy tower"
+    ],
+    [
+     396,
+     "A crashes 7 HP into the enemy tower"
+    ],
+    [
+     398,
+     "A crashes 7 HP into the enemy tower"
+    ],
+    [
+     400,
+     "A crashes 8 HP into the enemy tower"
+    ],
+    [
+     402,
+     "A crashes 8 HP into the enemy tower"
+    ],
+    [
+     404,
+     "A crashes 8 HP into the enemy tower"
+    ],
+    [
+     406,
+     "A crashes 8 HP into the enemy tower"
+    ],
+    [
+     408,
+     "A crashes 8 HP into the enemy tower"
+    ],
+    [
+     410,
+     "A crashes 8 HP into the enemy tower"
+    ],
+    [
+     411,
+     "A dies (ganked; HP 183 before, gold 8.0 unspent)"
+    ],
+    [
+     412,
+     "A crashes 8 HP into the enemy tower"
+    ],
+    [
+     412,
+     "B recalls (HP 783, gold 18.7 unspent)"
+    ],
+    [
+     413,
+     "B returns next turn, invests 18.7"
+    ],
+    [
+     414,
+     "A returns next turn, invests 8.8"
+    ],
+    [
+     416,
+     "A crashes 8 HP into the enemy tower"
+    ],
+    [
+     418,
+     "A crashes 8 HP into the enemy tower"
+    ],
+    [
+     422,
+     "A crashes 12 HP into the enemy tower"
+    ],
+    [
+     423,
+     "A dies (trade; HP 46 before, gold 3.9 unspent)"
+    ],
+    [
+     423,
+     "A's recall is interrupted"
+    ],
+    [
+     424,
+     "A crashes 8 HP into the enemy tower"
+    ],
+    [
+     426,
+     "A returns next turn, invests 3.9"
+    ],
+    [
+     426,
+     "B recalls (HP 899, gold 3.2 unspent)"
+    ],
+    [
+     427,
+     "B returns next turn, invests 3.2"
+    ],
+    [
+     428,
+     "A crashes 11 HP into the enemy tower"
+    ],
+    [
+     432,
+     "A crashes 10 HP into the enemy tower"
+    ],
+    [
+     434,
+     "A crashes 8 HP into the enemy tower"
+    ],
+    [
+     436,
+     "A crashes 8 HP into the enemy tower"
+    ],
+    [
+     438,
+     "A crashes 8 HP into the enemy tower"
+    ],
+    [
+     439,
+     "A dies (trade; HP 51 before, gold 5.5 unspent)"
+    ],
+    [
+     440,
+     "A crashes 7 HP into the enemy tower"
+    ],
+    [
+     442,
+     "A returns next turn, invests 6.2"
+    ],
+    [
+     445,
+     "A crashes 4 HP into the enemy tower"
+    ],
+    [
+     446,
+     "A crashes 7 HP into the enemy tower"
+    ],
+    [
+     448,
+     "A crashes 8 HP into the enemy tower"
+    ],
+    [
+     450,
+     "A crashes 8 HP into the enemy tower"
+    ],
+    [
+     452,
+     "A crashes 8 HP into the enemy tower"
+    ],
+    [
+     453,
+     "A dies (ganked; HP 56 before, gold 4.8 unspent)"
+    ],
+    [
+     454,
+     "A crashes 7 HP into the enemy tower"
+    ],
+    [
+     456,
+     "A returns next turn, invests 5.6"
+    ],
+    [
+     459,
+     "A crashes 4 HP into the enemy tower"
+    ]
+   ]
+  },
+  "base_s0_vs_clear_punish": {
+   "path": "results\\rl\\m43b\\trajectories\\base_s0_vs_clear_punish.json",
+   "names": [
+    "final:base:0",
+    "ref:clear_punish"
+   ],
+   "label": "baseline final (A) against the Clear + punish reference (B)",
+   "seed": 67000,
+   "turns": 460,
+   "payoff_A": 41.718749999999964,
+   "counters": {
+    "deaths": [
+     9,
+     4
+    ],
+    "recalls": [
+     12,
+     12
+    ],
+    "crashes": [
+     101,
+     16
+    ],
+    "plates": [
+     3,
+     3
+    ],
+    "trades_connected": [
+     60,
+     109
+    ],
+    "farm": [
+     178.96875000000014,
+     134.75000000000009
+    ],
+    "invested": [
+     175.36249999999995,
+     129.86875
+    ],
+    "returns_after_death": [
+     9,
+     4
+    ],
+    "returns_after_recall": [
+     12,
+     12
+    ]
+   },
+   "action_shares": {
+    "0": {
+     "Hold": 0.1543942992874109,
+     "Thin": 0.17339667458432304,
+     "Clear": 0.672209026128266,
+     "Trade": 0.22565320665083136,
+     "Safe": 0.20665083135391923,
+     "Recall": 0.028503562945368172,
+     "Pressure": 0.12589073634204276
+    },
+    "1": {
+     "Hold": 0.1651376146788991,
+     "Thin": 0.0,
+     "Clear": 0.8348623853211009,
+     "Trade": 0.26376146788990823,
+     "Safe": 0.11697247706422019,
+     "Recall": 0.0481651376146789,
+     "Pressure": 0.020642201834862386
+    }
+   },
+   "events": [
+    [
+     3,
+     "A reaches level 2"
+    ],
+    [
+     3,
+     "B reaches level 2"
+    ],
+    [
+     5,
+     "A reaches level 3"
+    ],
+    [
+     5,
+     "B reaches level 3"
+    ],
+    [
+     7,
+     "B recalls (HP 142, gold 1.9 unspent)"
+    ],
+    [
+     8,
+     "A crashes 10 HP into the enemy tower"
+    ],
+    [
+     8,
+     "A reaches level 4"
+    ],
+    [
+     8,
+     "B returns next turn, invests 1.9"
+    ],
+    [
+     10,
+     "A crashes 7 HP into the enemy tower"
+    ],
+    [
+     11,
+     "B reaches level 4"
+    ],
+    [
+     12,
+     "A dies (ganked; HP 41 before, gold 4.9 unspent)"
+    ],
+    [
+     12,
+     "A crashes 7 HP into the enemy tower"
+    ],
+    [
+     14,
+     "B reaches level 5"
+    ],
+    [
+     15,
+     "A returns next turn, invests 5.1"
+    ],
+    [
+     16,
+     "A reaches level 5"
+    ],
+    [
+     16,
+     "B crashes 9 HP into the enemy tower"
+    ],
+    [
+     18,
+     "B crashes 5 HP into the enemy tower"
+    ],
+    [
+     19,
+     "A reaches level 6"
+    ],
+    [
+     19,
+     "B reaches level 6"
+    ],
+    [
+     24,
+     "B recalls (HP 154, gold 5.6 unspent)"
+    ],
+    [
+     25,
+     "A reaches level 7"
+    ],
+    [
+     25,
+     "B returns next turn, invests 5.6"
+    ],
+    [
+     26,
+     "A crashes 13 HP into the enemy tower"
+    ],
+    [
+     27,
+     "B reaches level 7"
+    ],
+    [
+     28,
+     "A crashes 8 HP into the enemy tower"
+    ],
+    [
+     28,
+     "A breaks a plate (+1.0)"
+    ],
+    [
+     30,
+     "A crashes 8 HP into the enemy tower"
+    ],
+    [
+     30,
+     "A reaches level 8"
+    ],
+    [
+     31,
+     "A breaks a plate (+1.0)"
+    ],
+    [
+     32,
+     "A crashes 8 HP into the enemy tower"
+    ],
+    [
+     33,
+     "B reaches level 8"
+    ],
+    [
+     34,
+     "A dies (ganked; HP 23 before, gold 10.6 unspent)"
+    ],
+    [
+     34,
+     "A crashes 8 HP into the enemy tower"
+    ],
+    [
+     34,
+     "A breaks a plate (+1.0)"
+    ],
+    [
+     36,
+     "A crashes 4 HP into the enemy tower"
+    ],
+    [
+     37,
+     "A returns next turn, invests 12.3"
+    ],
+    [
+     38,
+     "B crashes 4 HP into the enemy tower"
+    ],
+    [
+     39,
+     "A reaches level 9"
+    ],
+    [
+     40,
+     "A crashes 4 HP into the enemy tower"
+    ],
+    [
+     40,
+     "B reaches level 9"
+    ],
+    [
+     42,
+     "A crashes 4 HP into the enemy tower"
+    ],
+    [
+     44,
+     "A crashes 4 HP into the enemy tower"
+    ],
+    [
+     46,
+     "A crashes 8 HP into the enemy tower"
+    ],
+    [
+     47,
+     "A reaches level 10"
+    ],
+    [
+     48,
+     "A crashes 8 HP into the enemy tower"
+    ],
+    [
+     48,
+     "B reaches level 10"
+    ],
+    [
+     50,
+     "A crashes 8 HP into the enemy tower"
+    ],
+    [
+     52,
+     "A crashes 7 HP into the enemy tower"
+    ],
+    [
+     54,
+     "A crashes 8 HP into the enemy tower"
+    ],
+    [
+     55,
+     "A reaches level 11"
+    ],
+    [
+     55,
+     "B recalls (HP 266, gold 8.4 unspent)"
+    ],
+    [
+     56,
+     "A crashes 7 HP into the enemy tower"
+    ],
+    [
+     56,
+     "B returns next turn, invests 8.4"
+    ],
+    [
+     58,
+     "A crashes 8 HP into the enemy tower"
+    ],
+    [
+     59,
+     "A dies (trade; HP 137 before, gold 9.2 unspent)"
+    ],
+    [
+     59,
+     "B reaches level 11"
+    ],
+    [
+     60,
+     "A crashes 2 HP into the enemy tower"
+    ],
+    [
+     62,
+     "A returns next turn, invests 9.9"
+    ],
+    [
+     62,
+     "B crashes 8 HP into the enemy tower"
+    ],
+    [
+     63,
+     "B breaks a plate (+1.0)"
+    ],
+    [
+     64,
+     "B crashes 3 HP into the enemy tower"
+    ],
+    [
+     67,
+     "B reaches level 12"
+    ],
+    [
+     68,
+     "A reaches level 12"
+    ],
+    [
+     73,
+     "B's recall is interrupted"
+    ],
+    [
+     75,
+     "A reaches level 13"
+    ],
+    [
+     75,
+     "B recalls (HP 135, gold 6.3 unspent)"
+    ],
+    [
+     76,
+     "A crashes 17 HP into the enemy tower"
+    ],
+    [
+     76,
+     "B returns next turn, invests 6.3"
+    ],
+    [
+     78,
+     "A crashes 8 HP into the enemy tower"
+    ],
+    [
+     80,
+     "A crashes 8 HP into the enemy tower"
+    ],
+    [
+     80,
+     "B reaches level 13"
+    ],
+    [
+     82,
+     "A crashes 8 HP into the enemy tower"
+    ],
+    [
+     83,
+     "A dies (ganked; HP 579 before, gold 7.9 unspent)"
+    ],
+    [
+     84,
+     "A crashes 2 HP into the enemy tower"
+    ],
+    [
+     86,
+     "A returns next turn, invests 8.7"
+    ],
+    [
+     86,
+     "B crashes 8 HP into the enemy tower"
+    ],
+    [
+     88,
+     "A reaches level 14"
+    ],
+    [
+     88,
+     "B crashes 2 HP into the enemy tower"
+    ],
+    [
+     92,
+     "A crashes 6 HP into the enemy tower"
+    ],
+    [
+     92,
+     "B reaches level 14"
+    ],
+    [
+     96,
+     "A crashes 6 HP into the enemy tower"
+    ],
+    [
+     100,
+     "A reaches level 15"
+    ],
+    [
+     102,
+     "A crashes 6 HP into the enemy tower"
+    ],
+    [
+     102,
+     "B reaches level 15"
+    ],
+    [
+     106,
+     "B crashes 1 HP into the enemy tower"
+    ],
+    [
+     110,
+     "A crashes 6 HP into the enemy tower"
+    ],
+    [
+     111,
+     "A reaches level 16"
+    ],
+    [
+     112,
+     "A crashes 8 HP into the enemy tower"
+    ],
+    [
+     114,
+     "A crashes 8 HP into the enemy tower"
+    ],
+    [
+     115,
+     "B reaches level 16"
+    ],
+    [
+     116,
+     "A crashes 8 HP into the enemy tower"
+    ],
+    [
+     117,
+     "A dies (trade; HP 34 before, gold 12.6 unspent)"
+    ],
+    [
+     118,
+     "A crashes 8 HP into the enemy tower"
+    ],
+    [
+     118,
+     "B recalls (HP 806, gold 13.2 unspent)"
+    ],
+    [
+     119,
+     "B returns next turn, invests 13.2"
+    ],
+    [
+     120,
+     "A returns next turn, invests 13.3"
+    ],
+    [
+     125,
+     "A reaches level 17"
+    ],
+    [
+     126,
+     "A crashes 5 HP into the enemy tower"
+    ],
+    [
+     130,
+     "A crashes 5 HP into the enemy tower"
+    ],
+    [
+     130,
+     "B reaches level 17"
+    ],
+    [
+     134,
+     "A crashes 4 HP into the enemy tower"
+    ],
+    [
+     138,
+     "A crashes 4 HP into the enemy tower"
+    ],
+    [
+     141,
+     "A reaches level 18"
+    ],
+    [
+     142,
+     "A crashes 4 HP into the enemy tower"
+    ],
+    [
+     144,
+     "B reaches level 18"
+    ],
+    [
+     145,
+     "A recalls (HP 365, gold 10.1 unspent)"
+    ],
+    [
+     146,
+     "A returns next turn, invests 10.1"
+    ],
+    [
+     146,
+     "B crashes 8 HP into the enemy tower"
+    ],
+    [
+     147,
+     "B breaks a plate (+1.0)"
+    ],
+    [
+     158,
+     "A crashes 12 HP into the enemy tower"
+    ],
+    [
+     158,
+     "B's recall is interrupted"
+    ],
+    [
+     160,
+     "A crashes 8 HP into the enemy tower"
+    ],
+    [
+     162,
+     "A crashes 8 HP into the enemy tower"
+    ],
+    [
+     164,
+     "A crashes 8 HP into the enemy tower"
+    ],
+    [
+     165,
+     "B recalls (HP 446, gold 15.3 unspent)"
+    ],
+    [
+     166,
+     "A crashes 8 HP into the enemy tower"
+    ],
+    [
+     166,
+     "B returns next turn, invests 15.3"
+    ],
+    [
+     170,
+     "A crashes 8 HP into the enemy tower"
+    ],
+    [
+     172,
+     "A crashes 8 HP into the enemy tower"
+    ],
+    [
+     174,
+     "A crashes 8 HP into the enemy tower"
+    ],
+    [
+     175,
+     "A dies (trade; HP 33 before, gold 11.5 unspent)"
+    ],
+    [
+     176,
+     "A crashes 8 HP into the enemy tower"
+    ],
+    [
+     176,
+     "B recalls (HP 648, gold 2.8 unspent)"
+    ],
+    [
+     177,
+     "B returns next turn, invests 2.8"
+    ],
+    [
+     178,
+     "A returns next turn, invests 12.3"
+    ],
+    [
+     182,
+     "A crashes 3 HP into the enemy tower"
+    ],
+    [
+     186,
+     "A crashes 4 HP into the enemy tower"
+    ],
+    [
+     196,
+     "A crashes 4 HP into the enemy tower"
+    ],
+    [
+     200,
+     "A crashes 4 HP into the enemy tower"
+    ],
+    [
+     204,
+     "A recalls (HP 472, gold 10.2 unspent)"
+    ],
+    [
+     205,
+     "A returns next turn, invests 10.2"
+    ],
+    [
+     208,
+     "A crashes 3 HP into the enemy tower"
+    ],
+    [
+     212,
+     "A crashes 4 HP into the enemy tower"
+    ],
+    [
+     218,
+     "A crashes 4 HP into the enemy tower"
+    ],
+    [
+     222,
+     "A recalls (HP 558, gold 6.8 unspent)"
+    ],
+    [
+     223,
+     "A returns next turn, invests 6.8"
+    ],
+    [
+     226,
+     "A crashes 3 HP into the enemy tower"
+    ],
+    [
+     228,
+     "B recalls (HP 366, gold 16.1 unspent)"
+    ],
+    [
+     229,
+     "A crashes 4 HP into the enemy tower"
+    ],
+    [
+     229,
+     "B returns next turn, invests 16.1"
+    ],
+    [
+     230,
+     "A crashes 8 HP into the enemy tower"
+    ],
+    [
+     237,
+     "A recalls (HP 179, gold 6.4 unspent)"
+    ],
+    [
+     238,
+     "A returns next turn, invests 6.4"
+    ],
+    [
+     238,
+     "B crashes 8 HP into the enemy tower"
+    ],
+    [
+     239,
+     "B breaks a plate (+1.0)"
+    ],
+    [
+     247,
+     "B recalls (HP 519, gold 8.1 unspent)"
+    ],
+    [
+     248,
+     "B returns next turn, invests 8.1"
+    ],
+    [
+     249,
+     "A crashes 5 HP into the enemy tower"
+    ],
+    [
+     250,
+     "A recalls (HP 343, gold 5.6 unspent)"
+    ],
+    [
+     251,
+     "A returns next turn, invests 5.6"
+    ],
+    [
+     256,
+     "A crashes 3 HP into the enemy tower"
+    ],
+    [
+     260,
+     "A crashes 3 HP into the enemy tower"
+    ],
+    [
+     267,
+     "B dies (trade; HP 179 before, gold 6.8 unspent)"
+    ],
+    [
+     267,
+     "B's recall is interrupted"
+    ],
+    [
+     269,
+     "A crashes 4 HP into the enemy tower"
+    ],
+    [
+     270,
+     "A crashes 8 HP into the enemy tower"
+    ],
+    [
+     270,
+     "B returns next turn, invests 6.8"
+    ],
+    [
+     272,
+     "A crashes 8 HP into the enemy tower"
+    ],
+    [
+     274,
+     "A crashes 8 HP into the enemy tower"
+    ],
+    [
+     276,
+     "A crashes 8 HP into the enemy tower"
+    ],
+    [
+     278,
+     "A crashes 8 HP into the enemy tower"
+    ],
+    [
+     280,
+     "A crashes 8 HP into the enemy tower"
+    ],
+    [
+     282,
+     "A dies (trade; HP 31 before, gold 13.6 unspent)"
+    ],
+    [
+     282,
+     "A crashes 8 HP into the enemy tower"
+    ],
+    [
+     285,
+     "A returns next turn, invests 14.5"
+    ],
+    [
+     290,
+     "A crashes 3 HP into the enemy tower"
+    ],
+    [
+     294,
+     "A crashes 3 HP into the enemy tower"
+    ],
+    [
+     298,
+     "A recalls (HP 704, gold 4.9 unspent)"
+    ],
+    [
+     299,
+     "A returns next turn, invests 4.9"
+    ],
+    [
+     302,
+     "A crashes 2 HP into the enemy tower"
+    ],
+    [
+     306,
+     "A crashes 3 HP into the enemy tower"
+    ],
+    [
+     308,
+     "B recalls (HP 301, gold 11.1 unspent)"
+    ],
+    [
+     309,
+     "A crashes 5 HP into the enemy tower"
+    ],
+    [
+     309,
+     "B returns next turn, invests 11.1"
+    ],
+    [
+     310,
+     "A crashes 8 HP into the enemy tower"
+    ],
+    [
+     313,
+     "A recalls (HP 577, gold 6.2 unspent)"
+    ],
+    [
+     314,
+     "A returns next turn, invests 6.2"
+    ],
+    [
+     314,
+     "B crashes 8 HP into the enemy tower"
+    ],
+    [
+     319,
+     "B's recall is interrupted"
+    ],
+    [
+     321,
+     "B dies (trade; HP 191 before, gold 4.4 unspent)"
+    ],
+    [
+     321,
+     "B's recall is interrupted"
+    ],
+    [
+     323,
+     "A crashes 9 HP into the enemy tower"
+    ],
+    [
+     324,
+     "A crashes 8 HP into the enemy tower"
+    ],
+    [
+     324,
+     "B returns next turn, invests 4.4"
+    ],
+    [
+     326,
+     "A crashes 8 HP into the enemy tower"
+    ],
+    [
+     328,
+     "A crashes 8 HP into the enemy tower"
+    ],
+    [
+     329,
+     "A dies (tower; HP 141 before, gold 7.9 unspent)"
+    ],
+    [
+     330,
+     "A crashes 8 HP into the enemy tower"
+    ],
+    [
+     332,
+     "A returns next turn, invests 7.9"
+    ],
+    [
+     332,
+     "B crashes 6 HP into the enemy tower"
+    ],
+    [
+     337,
+     "B's recall is interrupted"
+    ],
+    [
+     339,
+     "B's recall is interrupted"
+    ],
+    [
+     341,
+     "A crashes 7 HP into the enemy tower"
+    ],
+    [
+     342,
+     "A crashes 8 HP into the enemy tower"
+    ],
+    [
+     344,
+     "A crashes 8 HP into the enemy tower"
+    ],
+    [
+     346,
+     "A crashes 8 HP into the enemy tower"
+    ],
+    [
+     348,
+     "A crashes 8 HP into the enemy tower"
+    ],
+    [
+     352,
+     "A crashes 12 HP into the enemy tower"
+    ],
+    [
+     352,
+     "B recalls (HP 313, gold 8.5 unspent)"
+    ],
+    [
+     353,
+     "B returns next turn, invests 8.5"
+    ],
+    [
+     354,
+     "A crashes 8 HP into the enemy tower"
+    ],
+    [
+     356,
+     "A crashes 8 HP into the enemy tower"
+    ],
+    [
+     360,
+     "B crashes 2 HP into the enemy tower"
+    ],
+    [
+     361,
+     "A recalls (HP 134, gold 11.3 unspent)"
+    ],
+    [
+     362,
+     "A returns next turn, invests 11.3"
+    ],
+    [
+     362,
+     "B crashes 8 HP into the enemy tower"
+    ],
+    [
+     369,
+     "B dies (ganked; HP 559 before, gold 5.5 unspent)"
+    ],
+    [
+     372,
+     "B returns next turn, invests 5.5"
+    ],
+    [
+     373,
+     "A crashes 5 HP into the enemy tower"
+    ],
+    [
+     374,
+     "A recalls (HP 932, gold 6.1 unspent)"
+    ],
+    [
+     375,
+     "A returns next turn, invests 6.1"
+    ],
+    [
+     380,
+     "A crashes 3 HP into the enemy tower"
+    ],
+    [
+     384,
+     "A crashes 3 HP into the enemy tower"
+    ],
+    [
+     388,
+     "A crashes 3 HP into the enemy tower"
+    ],
+    [
+     392,
+     "A crashes 3 HP into the enemy tower"
+    ],
+    [
+     396,
+     "A recalls (HP 1042, gold 8.0 unspent)"
+    ],
+    [
+     397,
+     "A returns next turn, invests 8.0"
+    ],
+    [
+     398,
+     "B crashes 2 HP into the enemy tower"
+    ],
+    [
+     402,
+     "A crashes 3 HP into the enemy tower"
+    ],
+    [
+     406,
+     "A recalls (HP 593, gold 3.7 unspent)"
+    ],
+    [
+     406,
+     "B dies (ganked; HP 331 before, gold 10.9 unspent)"
+    ],
+    [
+     407,
+     "A returns next turn, invests 4.2"
+    ],
+    [
+     409,
+     "B returns next turn, invests 11.3"
+    ],
+    [
+     410,
+     "A crashes 16 HP into the enemy tower"
+    ],
+    [
+     414,
+     "A crashes 3 HP into the enemy tower"
+    ],
+    [
+     418,
+     "A crashes 4 HP into the enemy tower"
+    ],
+    [
+     420,
+     "A dies (ganked; HP 484 before, gold 4.4 unspent)"
+    ],
+    [
+     422,
+     "B recalls (HP 904, gold 4.5 unspent)"
+    ],
+    [
+     423,
+     "A returns next turn, invests 5.2"
+    ],
+    [
+     423,
+     "B returns next turn, invests 4.5"
+    ],
+    [
+     429,
+     "B crashes 4 HP into the enemy tower"
+    ],
+    [
+     436,
+     "A crashes 3 HP into the enemy tower"
+    ],
+    [
+     440,
+     "A recalls (HP 1153, gold 6.1 unspent)"
+    ],
+    [
+     441,
+     "A returns next turn, invests 6.1"
+    ],
+    [
+     449,
+     "B's recall is interrupted"
+    ],
+    [
+     451,
+     "B's recall is interrupted"
+    ],
+    [
+     453,
+     "A crashes 7 HP into the enemy tower"
+    ],
+    [
+     454,
+     "A crashes 8 HP into the enemy tower"
+    ],
+    [
+     456,
+     "A crashes 8 HP into the enemy tower"
+    ],
+    [
+     458,
+     "A crashes 8 HP into the enemy tower"
+    ]
+   ]
+  },
+  "base_s0_vs_crash_recall": {
+   "path": "results\\rl\\m43b\\trajectories\\base_s0_vs_crash_recall.json",
+   "names": [
+    "final:base:0",
+    "ref:crash_recall"
+   ],
+   "label": "baseline final (A) against the crash-and-Recall reference (B)",
+   "seed": 67000,
+   "turns": 460,
+   "payoff_A": 43.8187499999998,
+   "counters": {
+    "deaths": [
+     5,
+     0
+    ],
+    "recalls": [
+     11,
+     6
+    ],
+    "crashes": [
+     178,
+     1
+    ],
+    "plates": [
+     3,
+     0
+    ],
+    "trades_connected": [
+     42,
+     0
+    ],
+    "farm": [
+     193.28125000000068,
+     149.96250000000006
+    ],
+    "invested": [
+     185.03125000000003,
+     126.6625
+    ],
+    "returns_after_death": [
+     5,
+     0
+    ],
+    "returns_after_recall": [
+     11,
+     6
+    ]
+   },
+   "action_shares": {
+    "0": {
+     "Hold": 0.26036866359447003,
+     "Thin": 0.39400921658986177,
+     "Clear": 0.3456221198156682,
+     "Trade": 0.12442396313364056,
+     "Safe": 0.2073732718894009,
+     "Recall": 0.02534562211981567,
+     "Pressure": 0.3248847926267281
+    },
+    "1": {
+     "Hold": 0.8568281938325991,
+     "Thin": 0.14317180616740088,
+     "Clear": 0.0,
+     "Trade": 0.0,
+     "Safe": 0.024229074889867842,
+     "Recall": 0.013215859030837005,
+     "Pressure": 0.0
+    }
+   },
+   "events": [
+    [
+     2,
+     "A reaches level 2"
+    ],
+    [
+     4,
+     "A crashes 10 HP into the enemy tower"
+    ],
+    [
+     4,
+     "A reaches level 3"
+    ],
+    [
+     4,
+     "B reaches level 2"
+    ],
+    [
+     6,
+     "A crashes 7 HP into the enemy tower"
+    ],
+    [
+     7,
+     "B reaches level 3"
+    ],
+    [
+     9,
+     "A reaches level 4"
+    ],
+    [
+     10,
+     "A crashes 8 HP into the enemy tower"
+    ],
+    [
+     10,
+     "B reaches level 4"
+    ],
+    [
+     12,
+     "A dies (ganked; HP 160 before, gold 5.3 unspent)"
+    ],
+    [
+     12,
+     "A crashes 6 HP into the enemy tower"
+    ],
+    [
+     14,
+     "B reaches level 5"
+    ],
+    [
+     15,
+     "A returns next turn, invests 5.3"
+    ],
+    [
+     17,
+     "A reaches level 5"
+    ],
+    [
+     18,
+     "B reaches level 6"
+    ],
+    [
+     21,
+     "A reaches level 6"
+    ],
+    [
+     22,
+     "B crashes 8 HP into the enemy tower"
+    ],
+    [
+     25,
+     "A reaches level 7"
+    ],
+    [
+     26,
+     "A crashes 11 HP into the enemy tower"
+    ],
+    [
+     26,
+     "B reaches level 7"
+    ],
+    [
+     27,
+     "A breaks a plate (+1.0)"
+    ],
+    [
+     28,
+     "A crashes 8 HP into the enemy tower"
+    ],
+    [
+     30,
+     "A crashes 7 HP into the enemy tower"
+    ],
+    [
+     31,
+     "A breaks a plate (+1.0)"
+    ],
+    [
+     31,
+     "A reaches level 8"
+    ],
+    [
+     31,
+     "B reaches level 8"
+    ],
+    [
+     32,
+     "A crashes 7 HP into the enemy tower"
+    ],
+    [
+     33,
+     "B recalls (HP 233, gold 11.6 unspent)"
+    ],
+    [
+     34,
+     "A crashes 8 HP into the enemy tower"
+    ],
+    [
+     34,
+     "B returns next turn, invests 11.6"
+    ],
+    [
+     36,
+     "A crashes 7 HP into the enemy tower"
+    ],
+    [
+     38,
+     "A crashes 6 HP into the enemy tower"
+    ],
+    [
+     38,
+     "A reaches level 9"
+    ],
+    [
+     39,
+     "A breaks a plate (+1.0)"
+    ],
+    [
+     40,
+     "B reaches level 9"
+    ],
+    [
+     42,
+     "A recalls (HP 417, gold 14.8 unspent)"
+    ],
+    [
+     43,
+     "A returns next turn, invests 14.8"
+    ],
+    [
+     47,
+     "A reaches level 10"
+    ],
+    [
+     49,
+     "A crashes 6 HP into the enemy tower"
+    ],
+    [
+     49,
+     "B reaches level 10"
+    ],
+    [
+     50,
+     "A crashes 8 HP into the enemy tower"
+    ],
+    [
+     52,
+     "A crashes 7 HP into the enemy tower"
+    ],
+    [
+     55,
+     "A reaches level 11"
+    ],
+    [
+     56,
+     "A crashes 8 HP into the enemy tower"
+    ],
+    [
+     57,
+     "B reaches level 11"
+    ],
+    [
+     61,
+     "A recalls (HP 451, gold 7.2 unspent)"
+    ],
+    [
+     62,
+     "A returns next turn, invests 7.2"
+    ],
+    [
+     65,
+     "A reaches level 12"
+    ],
+    [
+     66,
+     "A crashes 10 HP into the enemy tower"
+    ],
+    [
+     67,
+     "B reaches level 12"
+    ],
+    [
+     68,
+     "A crashes 8 HP into the enemy tower"
+    ],
+    [
+     70,
+     "A crashes 8 HP into the enemy tower"
+    ],
+    [
+     72,
+     "A crashes 8 HP into the enemy tower"
+    ],
+    [
+     74,
+     "A crashes 8 HP into the enemy tower"
+    ],
+    [
+     76,
+     "A crashes 8 HP into the enemy tower"
+    ],
+    [
+     76,
+     "A reaches level 13"
+    ],
+    [
+     77,
+     "B reaches level 13"
+    ],
+    [
+     78,
+     "A crashes 8 HP into the enemy tower"
+    ],
+    [
+     80,
+     "A crashes 8 HP into the enemy tower"
+    ],
+    [
+     82,
+     "A crashes 8 HP into the enemy tower"
+    ],
+    [
+     83,
+     "A dies (ganked; HP 346 before, gold 10.1 unspent)"
+    ],
+    [
+     84,
+     "A crashes 8 HP into the enemy tower"
+    ],
+    [
+     86,
+     "A returns next turn, invests 10.1"
+    ],
+    [
+     88,
+     "A crashes 7 HP into the enemy tower"
+    ],
+    [
+     88,
+     "B reaches level 14"
+    ],
+    [
+     89,
+     "A reaches level 14"
+    ],
+    [
+     90,
+     "A crashes 6 HP into the enemy tower"
+    ],
+    [
+     92,
+     "A crashes 7 HP into the enemy tower"
+    ],
+    [
+     94,
+     "A crashes 7 HP into the enemy tower"
+    ],
+    [
+     96,
+     "A crashes 7 HP into the enemy tower"
+    ],
+    [
+     98,
+     "A crashes 7 HP into the enemy tower"
+    ],
+    [
+     99,
+     "A reaches level 15"
+    ],
+    [
+     99,
+     "B reaches level 15"
+    ],
+    [
+     100,
+     "A crashes 7 HP into the enemy tower"
+    ],
+    [
+     102,
+     "A crashes 7 HP into the enemy tower"
+    ],
+    [
+     104,
+     "A crashes 7 HP into the enemy tower"
+    ],
+    [
+     106,
+     "A crashes 7 HP into the enemy tower"
+    ],
+    [
+     108,
+     "A crashes 7 HP into the enemy tower"
+    ],
+    [
+     112,
+     "A crashes 7 HP into the enemy tower"
+    ],
+    [
+     112,
+     "B reaches level 16"
+    ],
+    [
+     113,
+     "A reaches level 16"
+    ],
+    [
+     116,
+     "A crashes 7 HP into the enemy tower"
+    ],
+    [
+     117,
+     "A recalls (HP 119, gold 13.7 unspent)"
+    ],
+    [
+     118,
+     "A returns next turn, invests 13.7"
+    ],
+    [
+     118,
+     "B recalls (HP 775, gold 29.2 unspent)"
+    ],
+    [
+     119,
+     "B returns next turn, invests 29.2"
+    ],
+    [
+     120,
+     "A crashes 12 HP into the enemy tower"
+    ],
+    [
+     123,
+     "A crashes 4 HP into the enemy tower"
+    ],
+    [
+     124,
+     "A crashes 7 HP into the enemy tower"
+    ],
+    [
+     126,
+     "A crashes 7 HP into the enemy tower"
+    ],
+    [
+     126,
+     "B reaches level 17"
+    ],
+    [
+     127,
+     "A reaches level 17"
+    ],
+    [
+     128,
+     "A crashes 7 HP into the enemy tower"
+    ],
+    [
+     130,
+     "A crashes 7 HP into the enemy tower"
+    ],
+    [
+     132,
+     "A crashes 7 HP into the enemy tower"
+    ],
+    [
+     134,
+     "A crashes 7 HP into the enemy tower"
+    ],
+    [
+     136,
+     "A crashes 7 HP into the enemy tower"
+    ],
+    [
+     138,
+     "A crashes 7 HP into the enemy tower"
+    ],
+    [
+     140,
+     "A crashes 7 HP into the enemy tower"
+    ],
+    [
+     140,
+     "B reaches level 18"
+    ],
+    [
+     141,
+     "A reaches level 18"
+    ],
+    [
+     142,
+     "A dies (ganked; HP 171 before, gold 11.0 unspent)"
+    ],
+    [
+     142,
+     "A crashes 7 HP into the enemy tower"
+    ],
+    [
+     145,
+     "A returns next turn, invests 11.0"
+    ],
+    [
+     149,
+     "A crashes 3 HP into the enemy tower"
+    ],
+    [
+     150,
+     "A crashes 7 HP into the enemy tower"
+    ],
+    [
+     152,
+     "A crashes 7 HP into the enemy tower"
+    ],
+    [
+     154,
+     "A crashes 7 HP into the enemy tower"
+    ],
+    [
+     156,
+     "A crashes 7 HP into the enemy tower"
+    ],
+    [
+     158,
+     "A crashes 7 HP into the enemy tower"
+    ],
+    [
+     160,
+     "A crashes 7 HP into the enemy tower"
+    ],
+    [
+     162,
+     "A crashes 7 HP into the enemy tower"
+    ],
+    [
+     164,
+     "A crashes 7 HP into the enemy tower"
+    ],
+    [
+     166,
+     "A crashes 7 HP into the enemy tower"
+    ],
+    [
+     168,
+     "A crashes 7 HP into the enemy tower"
+    ],
+    [
+     172,
+     "A crashes 7 HP into the enemy tower"
+    ],
+    [
+     174,
+     "A crashes 7 HP into the enemy tower"
+    ],
+    [
+     176,
+     "A crashes 7 HP into the enemy tower"
+    ],
+    [
+     178,
+     "A crashes 7 HP into the enemy tower"
+    ],
+    [
+     180,
+     "A crashes 7 HP into the enemy tower"
+    ],
+    [
+     182,
+     "A crashes 7 HP into the enemy tower"
+    ],
+    [
+     184,
+     "A crashes 7 HP into the enemy tower"
+    ],
+    [
+     186,
+     "A crashes 7 HP into the enemy tower"
+    ],
+    [
+     188,
+     "A crashes 8 HP into the enemy tower"
+    ],
+    [
+     192,
+     "A crashes 10 HP into the enemy tower"
+    ],
+    [
+     192,
+     "B recalls (HP 428, gold 23.8 unspent)"
+    ],
+    [
+     193,
+     "B returns next turn, invests 23.8"
+    ],
+    [
+     195,
+     "A recalls (HP 123, gold 21.4 unspent)"
+    ],
+    [
+     196,
+     "A returns next turn, invests 21.4"
+    ],
+    [
+     198,
+     "A crashes 5 HP into the enemy tower"
+    ],
+    [
+     200,
+     "A crashes 7 HP into the enemy tower"
+    ],
+    [
+     202,
+     "A crashes 7 HP into the enemy tower"
+    ],
+    [
+     204,
+     "A crashes 7 HP into the enemy tower"
+    ],
+    [
+     206,
+     "A crashes 7 HP into the enemy tower"
+    ],
+    [
+     208,
+     "A crashes 7 HP into the enemy tower"
+    ],
+    [
+     210,
+     "A crashes 7 HP into the enemy tower"
+    ],
+    [
+     212,
+     "A crashes 7 HP into the enemy tower"
+    ],
+    [
+     214,
+     "A crashes 7 HP into the enemy tower"
+    ],
+    [
+     216,
+     "A crashes 7 HP into the enemy tower"
+    ],
+    [
+     222,
+     "A crashes 5 HP into the enemy tower"
+    ],
+    [
+     223,
+     "A recalls (HP 172, gold 12.3 unspent)"
+    ],
+    [
+     224,
+     "A returns next turn, invests 12.3"
+    ],
+    [
+     227,
+     "A crashes 4 HP into the enemy tower"
+    ],
+    [
+     228,
+     "A crashes 7 HP into the enemy tower"
+    ],
+    [
+     230,
+     "A crashes 7 HP into the enemy tower"
+    ],
+    [
+     231,
+     "A dies (ganked; HP 311 before, gold 3.3 unspent)"
+    ],
+    [
+     232,
+     "A crashes 7 HP into the enemy tower"
+    ],
+    [
+     234,
+     "A returns next turn, invests 4.2"
+    ],
+    [
+     237,
+     "A crashes 4 HP into the enemy tower"
+    ],
+    [
+     238,
+     "A crashes 7 HP into the enemy tower"
+    ],
+    [
+     240,
+     "A crashes 7 HP into the enemy tower"
+    ],
+    [
+     242,
+     "A crashes 7 HP into the enemy tower"
+    ],
+    [
+     244,
+     "A crashes 7 HP into the enemy tower"
+    ],
+    [
+     246,
+     "A crashes 7 HP into the enemy tower"
+    ],
+    [
+     248,
+     "A crashes 7 HP into the enemy tower"
+    ],
+    [
+     249,
+     "A dies (ganked; HP 316 before, gold 6.9 unspent)"
+    ],
+    [
+     250,
+     "A crashes 7 HP into the enemy tower"
+    ],
+    [
+     252,
+     "A returns next turn, invests 7.8"
+    ],
+    [
+     255,
+     "A crashes 4 HP into the enemy tower"
+    ],
+    [
+     256,
+     "A crashes 7 HP into the enemy tower"
+    ],
+    [
+     258,
+     "A crashes 7 HP into the enemy tower"
+    ],
+    [
+     260,
+     "A crashes 7 HP into the enemy tower"
+    ],
+    [
+     262,
+     "A crashes 7 HP into the enemy tower"
+    ],
+    [
+     264,
+     "A crashes 7 HP into the enemy tower"
+    ],
+    [
+     266,
+     "A crashes 7 HP into the enemy tower"
+    ],
+    [
+     268,
+     "A crashes 7 HP into the enemy tower"
+    ],
+    [
+     270,
+     "A crashes 7 HP into the enemy tower"
+    ],
+    [
+     272,
+     "A crashes 7 HP into the enemy tower"
+    ],
+    [
+     274,
+     "A crashes 8 HP into the enemy tower"
+    ],
+    [
+     275,
+     "B recalls (HP 390, gold 27.7 unspent)"
+    ],
+    [
+     276,
+     "A crashes 8 HP into the enemy tower"
+    ],
+    [
+     276,
+     "B returns next turn, invests 27.7"
+    ],
+    [
+     278,
+     "A crashes 7 HP into the enemy tower"
+    ],
+    [
+     280,
+     "A crashes 7 HP into the enemy tower"
+    ],
+    [
+     282,
+     "A crashes 7 HP into the enemy tower"
+    ],
+    [
+     284,
+     "A crashes 7 HP into the enemy tower"
+    ],
+    [
+     290,
+     "A crashes 5 HP into the enemy tower"
+    ],
+    [
+     294,
+     "A recalls (HP 325, gold 18.4 unspent)"
+    ],
+    [
+     295,
+     "A returns next turn, invests 18.4"
+    ],
+    [
+     298,
+     "A crashes 5 HP into the enemy tower"
+    ],
+    [
+     300,
+     "A crashes 7 HP into the enemy tower"
+    ],
+    [
+     302,
+     "A crashes 7 HP into the enemy tower"
+    ],
+    [
+     304,
+     "A crashes 7 HP into the enemy tower"
+    ],
+    [
+     306,
+     "A crashes 7 HP into the enemy tower"
+    ],
+    [
+     308,
+     "A crashes 7 HP into the enemy tower"
+    ],
+    [
+     310,
+     "A crashes 7 HP into the enemy tower"
+    ],
+    [
+     312,
+     "A crashes 7 HP into the enemy tower"
+    ],
+    [
+     314,
+     "A crashes 7 HP into the enemy tower"
+    ],
+    [
+     320,
+     "A crashes 5 HP into the enemy tower"
+    ],
+    [
+     321,
+     "A recalls (HP 345, gold 10.9 unspent)"
+    ],
+    [
+     322,
+     "A returns next turn, invests 10.9"
+    ],
+    [
+     322,
+     "B recalls (HP 662, gold 15.6 unspent)"
+    ],
+    [
+     323,
+     "B returns next turn, invests 15.6"
+    ],
+    [
+     324,
+     "A crashes 10 HP into the enemy tower"
+    ],
+    [
+     326,
+     "A crashes 7 HP into the enemy tower"
+    ],
+    [
+     328,
+     "A crashes 7 HP into the enemy tower"
+    ],
+    [
+     330,
+     "A crashes 7 HP into the enemy tower"
+    ],
+    [
+     332,
+     "A crashes 7 HP into the enemy tower"
+    ],
+    [
+     334,
+     "A crashes 7 HP into the enemy tower"
+    ],
+    [
+     336,
+     "A crashes 7 HP into the enemy tower"
+    ],
+    [
+     338,
+     "A crashes 7 HP into the enemy tower"
+    ],
+    [
+     340,
+     "A crashes 7 HP into the enemy tower"
+    ],
+    [
+     344,
+     "A crashes 7 HP into the enemy tower"
+    ],
+    [
+     346,
+     "A crashes 7 HP into the enemy tower"
+    ],
+    [
+     348,
+     "A crashes 7 HP into the enemy tower"
+    ],
+    [
+     350,
+     "A crashes 7 HP into the enemy tower"
+    ],
+    [
+     352,
+     "A crashes 7 HP into the enemy tower"
+    ],
+    [
+     354,
+     "A crashes 7 HP into the enemy tower"
+    ],
+    [
+     356,
+     "A crashes 7 HP into the enemy tower"
+    ],
+    [
+     362,
+     "A crashes 5 HP into the enemy tower"
+    ],
+    [
+     363,
+     "A recalls (HP 354, gold 17.8 unspent)"
+    ],
+    [
+     364,
+     "A returns next turn, invests 17.8"
+    ],
+    [
+     367,
+     "A crashes 4 HP into the enemy tower"
+    ],
+    [
+     368,
+     "A crashes 7 HP into the enemy tower"
+    ],
+    [
+     370,
+     "A crashes 7 HP into the enemy tower"
+    ],
+    [
+     372,
+     "A crashes 7 HP into the enemy tower"
+    ],
+    [
+     374,
+     "A crashes 7 HP into the enemy tower"
+    ],
+    [
+     376,
+     "A crashes 7 HP into the enemy tower"
+    ],
+    [
+     378,
+     "A crashes 7 HP into the enemy tower"
+    ],
+    [
+     380,
+     "A crashes 8 HP into the enemy tower"
+    ],
+    [
+     381,
+     "B recalls (HP 548, gold 18.8 unspent)"
+    ],
+    [
+     382,
+     "A crashes 8 HP into the enemy tower"
+    ],
+    [
+     382,
+     "B returns next turn, invests 18.8"
+    ],
+    [
+     384,
+     "A crashes 7 HP into the enemy tower"
+    ],
+    [
+     386,
+     "A crashes 7 HP into the enemy tower"
+    ],
+    [
+     388,
+     "A crashes 7 HP into the enemy tower"
+    ],
+    [
+     390,
+     "A crashes 7 HP into the enemy tower"
+    ],
+    [
+     392,
+     "A crashes 7 HP into the enemy tower"
+    ],
+    [
+     394,
+     "A crashes 7 HP into the enemy tower"
+    ],
+    [
+     396,
+     "A crashes 7 HP into the enemy tower"
+    ],
+    [
+     400,
+     "A crashes 6 HP into the enemy tower"
+    ],
+    [
+     401,
+     "A recalls (HP 479, gold 16.4 unspent)"
+    ],
+    [
+     402,
+     "A returns next turn, invests 16.4"
+    ],
+    [
+     405,
+     "A crashes 4 HP into the enemy tower"
+    ],
+    [
+     406,
+     "A crashes 7 HP into the enemy tower"
+    ],
+    [
+     408,
+     "A crashes 7 HP into the enemy tower"
+    ],
+    [
+     410,
+     "A crashes 7 HP into the enemy tower"
+    ],
+    [
+     412,
+     "A crashes 7 HP into the enemy tower"
+    ],
+    [
+     418,
+     "A crashes 5 HP into the enemy tower"
+    ],
+    [
+     419,
+     "A recalls (HP 43, gold 7.3 unspent)"
+    ],
+    [
+     420,
+     "A returns next turn, invests 7.3"
+    ],
+    [
+     423,
+     "A crashes 4 HP into the enemy tower"
+    ],
+    [
+     424,
+     "A crashes 7 HP into the enemy tower"
+    ],
+    [
+     426,
+     "A crashes 7 HP into the enemy tower"
+    ],
+    [
+     428,
+     "A crashes 7 HP into the enemy tower"
+    ],
+    [
+     433,
+     "A crashes 4 HP into the enemy tower"
+    ],
+    [
+     434,
+     "A recalls (HP 602, gold 6.5 unspent)"
+    ],
+    [
+     434,
+     "A crashes 7 HP into the enemy tower"
+    ],
+    [
+     435,
+     "A returns next turn, invests 6.5"
+    ],
+    [
+     439,
+     "A crashes 4 HP into the enemy tower"
+    ],
+    [
+     440,
+     "A crashes 7 HP into the enemy tower"
+    ],
+    [
+     442,
+     "A crashes 7 HP into the enemy tower"
+    ],
+    [
+     444,
+     "A crashes 7 HP into the enemy tower"
+    ],
+    [
+     446,
+     "A crashes 7 HP into the enemy tower"
+    ],
+    [
+     448,
+     "A crashes 7 HP into the enemy tower"
+    ],
+    [
+     450,
+     "A crashes 7 HP into the enemy tower"
+    ],
+    [
+     452,
+     "A crashes 7 HP into the enemy tower"
+    ],
+    [
+     454,
+     "A crashes 7 HP into the enemy tower"
+    ],
+    [
+     456,
+     "A crashes 7 HP into the enemy tower"
+    ],
+    [
+     458,
+     "A crashes 7 HP into the enemy tower"
+    ]
+   ]
+  },
+  "base_s0_vs_initial": {
+   "path": "results\\rl\\m43b\\trajectories\\base_s0_vs_initial.json",
+   "names": [
+    "final:base:0",
+    "initial:0"
+   ],
+   "label": "baseline final (A) against its untrained initial network (B)",
+   "seed": 67000,
+   "turns": 460,
+   "payoff_A": 40.86249999999996,
+   "counters": {
+    "deaths": [
+     10,
+     4
+    ],
+    "recalls": [
+     9,
+     20
+    ],
+    "crashes": [
+     132,
+     12
+    ],
+    "plates": [
+     3,
+     0
+    ],
+    "trades_connected": [
+     49,
+     73
+    ],
+    "farm": [
+     176.04375000000013,
+     135.18124999999998
+    ],
+    "invested": [
+     169.63749999999996,
+     133.48125000000002
+    ],
+    "returns_after_death": [
+     10,
+     4
+    ],
+    "returns_after_recall": [
+     9,
+     20
+    ]
+   },
+   "action_shares": {
+    "0": {
+     "Hold": 0.2042755344418052,
+     "Thin": 0.2589073634204275,
+     "Clear": 0.5368171021377672,
+     "Trade": 0.17339667458432304,
+     "Safe": 0.19714964370546317,
+     "Recall": 0.023752969121140142,
+     "Pressure": 0.20665083135391923
+    },
+    "1": {
+     "Hold": 0.3691588785046729,
+     "Thin": 0.31542056074766356,
+     "Clear": 0.31542056074766356,
+     "Trade": 0.2219626168224299,
+     "Safe": 0.25934579439252337,
+     "Recall": 0.0514018691588785,
+     "Pressure": 0.002336448598130841
+    }
+   },
+   "events": [
+    [
+     2,
+     "A reaches level 2"
+    ],
+    [
+     4,
+     "A crashes 7 HP into the enemy tower"
+    ],
+    [
+     4,
+     "B reaches level 2"
+    ],
+    [
+     5,
+     "A reaches level 3"
+    ],
+    [
+     6,
+     "A crashes 7 HP into the enemy tower"
+    ],
+    [
+     7,
+     "B reaches level 3"
+    ],
+    [
+     8,
+     "A dies (ganked; HP 247 before, gold 3.0 unspent)"
+    ],
+    [
+     10,
+     "B reaches level 4"
+    ],
+    [
+     11,
+     "A returns next turn, invests 3.4"
+    ],
+    [
+     13,
+     "A reaches level 4"
+    ],
+    [
+     13,
+     "B reaches level 5"
+    ],
+    [
+     15,
+     "A reaches level 5"
+    ],
+    [
+     19,
+     "A reaches level 6"
+    ],
+    [
+     20,
+     "A crashes 10 HP into the enemy tower"
+    ],
+    [
+     20,
+     "B reaches level 6"
+    ],
+    [
+     24,
+     "A crashes 9 HP into the enemy tower"
+    ],
+    [
+     25,
+     "B reaches level 7"
+    ],
+    [
+     27,
+     "A reaches level 7"
+    ],
+    [
+     31,
+     "A crashes 8 HP into the enemy tower"
+    ],
+    [
+     31,
+     "A reaches level 8"
+    ],
+    [
+     32,
+     "A crashes 8 HP into the enemy tower"
+    ],
+    [
+     32,
+     "B recalls (HP 548, gold 10.8 unspent)"
+    ],
+    [
+     33,
+     "A breaks a plate (+1.0)"
+    ],
+    [
+     33,
+     "B returns next turn, invests 10.8"
+    ],
+    [
+     34,
+     "A dies (ganked; HP 71 before, gold 11.1 unspent)"
+    ],
+    [
+     34,
+     "A crashes 8 HP into the enemy tower"
+    ],
+    [
+     35,
+     "B reaches level 8"
+    ],
+    [
+     37,
+     "A returns next turn, invests 11.7"
+    ],
+    [
+     40,
+     "A crashes 13 HP into the enemy tower"
+    ],
+    [
+     40,
+     "A reaches level 9"
+    ],
+    [
+     41,
+     "A breaks a plate (+1.0)"
+    ],
+    [
+     42,
+     "A crashes 4 HP into the enemy tower"
+    ],
+    [
+     42,
+     "B reaches level 9"
+    ],
+    [
+     44,
+     "A crashes 8 HP into the enemy tower"
+    ],
+    [
+     48,
+     "A crashes 9 HP into the enemy tower"
+    ],
+    [
+     49,
+     "A reaches level 10"
+    ],
+    [
+     50,
+     "A crashes 7 HP into the enemy tower"
+    ],
+    [
+     50,
+     "B reaches level 10"
+    ],
+    [
+     52,
+     "A crashes 8 HP into the enemy tower"
+    ],
+    [
+     53,
+     "A breaks a plate (+1.0)"
+    ],
+    [
+     54,
+     "A crashes 6 HP into the enemy tower"
+    ],
+    [
+     55,
+     "A dies (trade; HP 52 before, gold 9.0 unspent)"
+    ],
+    [
+     58,
+     "A returns next turn, invests 9.7"
+    ],
+    [
+     58,
+     "B reaches level 11"
+    ],
+    [
+     60,
+     "A reaches level 11"
+    ],
+    [
+     60,
+     "B crashes 8 HP into the enemy tower"
+    ],
+    [
+     62,
+     "B crashes 3 HP into the enemy tower"
+    ],
+    [
+     68,
+     "A reaches level 12"
+    ],
+    [
+     69,
+     "A crashes 6 HP into the enemy tower"
+    ],
+    [
+     69,
+     "B reaches level 12"
+    ],
+    [
+     70,
+     "A crashes 8 HP into the enemy tower"
+    ],
+    [
+     72,
+     "A crashes 8 HP into the enemy tower"
+    ],
+    [
+     74,
+     "A crashes 8 HP into the enemy tower"
+    ],
+    [
+     74,
+     "B recalls (HP 525, gold 13.4 unspent)"
+    ],
+    [
+     75,
+     "B returns next turn, invests 13.4"
+    ],
+    [
+     76,
+     "A crashes 5 HP into the enemy tower"
+    ],
+    [
+     77,
+     "A reaches level 13"
+    ],
+    [
+     78,
+     "A crashes 8 HP into the enemy tower"
+    ],
+    [
+     80,
+     "A crashes 5 HP into the enemy tower"
+    ],
+    [
+     80,
+     "B reaches level 13"
+    ],
+    [
+     82,
+     "A dies (ganked; HP 418 before, gold 10.0 unspent)"
+    ],
+    [
+     82,
+     "A crashes 5 HP into the enemy tower"
+    ],
+    [
+     85,
+     "A returns next turn, invests 10.0"
+    ],
+    [
+     86,
+     "B crashes 12 HP into the enemy tower"
+    ],
+    [
+     89,
+     "A reaches level 14"
+    ],
+    [
+     90,
+     "A crashes 11 HP into the enemy tower"
+    ],
+    [
+     90,
+     "B reaches level 14"
+    ],
+    [
+     92,
+     "B recalls (HP 951, gold 5.0 unspent)"
+    ],
+    [
+     93,
+     "A crashes 5 HP into the enemy tower"
+    ],
+    [
+     93,
+     "B returns next turn, invests 5.0"
+    ],
+    [
+     94,
+     "A crashes 8 HP into the enemy tower"
+    ],
+    [
+     96,
+     "A crashes 7 HP into the enemy tower"
+    ],
+    [
+     98,
+     "A crashes 8 HP into the enemy tower"
+    ],
+    [
+     98,
+     "B recalls (HP 1131, gold 1.6 unspent)"
+    ],
+    [
+     99,
+     "B returns next turn, invests 1.6"
+    ],
+    [
+     100,
+     "A crashes 8 HP into the enemy tower"
+    ],
+    [
+     101,
+     "A reaches level 15"
+    ],
+    [
+     102,
+     "A crashes 8 HP into the enemy tower"
+    ],
+    [
+     104,
+     "A crashes 8 HP into the enemy tower"
+    ],
+    [
+     106,
+     "A crashes 8 HP into the enemy tower"
+    ],
+    [
+     106,
+     "B reaches level 15"
+    ],
+    [
+     108,
+     "A crashes 4 HP into the enemy tower"
+    ],
+    [
+     111,
+     "A recalls (HP 79, gold 10.0 unspent)"
+    ],
+    [
+     112,
+     "A returns next turn, invests 10.0"
+    ],
+    [
+     112,
+     "B crashes 12 HP into the enemy tower"
+    ],
+    [
+     117,
+     "A reaches level 16"
+    ],
+    [
+     119,
+     "B reaches level 16"
+    ],
+    [
+     120,
+     "B crashes 8 HP into the enemy tower"
+    ],
+    [
+     126,
+     "A crashes 12 HP into the enemy tower"
+    ],
+    [
+     128,
+     "A crashes 1 HP into the enemy tower"
+    ],
+    [
+     129,
+     "A reaches level 17"
+    ],
+    [
+     130,
+     "A dies (tower; HP 99 before, gold 7.5 unspent)"
+    ],
+    [
+     130,
+     "A crashes 8 HP into the enemy tower"
+    ],
+    [
+     131,
+     "B reaches level 17"
+    ],
+    [
+     132,
+     "B crashes 7 HP into the enemy tower"
+    ],
+    [
+     133,
+     "A returns next turn, invests 7.6"
+    ],
+    [
+     136,
+     "A crashes 8 HP into the enemy tower"
+    ],
+    [
+     138,
+     "A crashes 4 HP into the enemy tower"
+    ],
+    [
+     140,
+     "A crashes 7 HP into the enemy tower"
+    ],
+    [
+     142,
+     "A crashes 7 HP into the enemy tower"
+    ],
+    [
+     143,
+     "A reaches level 18"
+    ],
+    [
+     144,
+     "A crashes 8 HP into the enemy tower"
+    ],
+    [
+     146,
+     "A crashes 8 HP into the enemy tower"
+    ],
+    [
+     146,
+     "B reaches level 18"
+    ],
+    [
+     148,
+     "A crashes 4 HP into the enemy tower"
+    ],
+    [
+     152,
+     "A crashes 11 HP into the enemy tower"
+    ],
+    [
+     154,
+     "A crashes 8 HP into the enemy tower"
+    ],
+    [
+     155,
+     "B dies (trade; HP 459 before, gold 18.2 unspent)"
+    ],
+    [
+     156,
+     "A crashes 8 HP into the enemy tower"
+    ],
+    [
+     158,
+     "A crashes 8 HP into the enemy tower"
+    ],
+    [
+     158,
+     "B returns next turn, invests 18.8"
+    ],
+    [
+     160,
+     "A crashes 8 HP into the enemy tower"
+    ],
+    [
+     162,
+     "A crashes 7 HP into the enemy tower"
+    ],
+    [
+     167,
+     "A recalls (HP 149, gold 14.8 unspent)"
+    ],
+    [
+     168,
+     "A returns next turn, invests 14.8"
+    ],
+    [
+     170,
+     "A crashes 10 HP into the enemy tower"
+    ],
+    [
+     174,
+     "A crashes 8 HP into the enemy tower"
+    ],
+    [
+     174,
+     "B's recall is interrupted"
+    ],
+    [
+     176,
+     "A crashes 8 HP into the enemy tower"
+    ],
+    [
+     178,
+     "A crashes 7 HP into the enemy tower"
+    ],
+    [
+     179,
+     "B recalls (HP 1136, gold 7.0 unspent)"
+    ],
+    [
+     180,
+     "A crashes 8 HP into the enemy tower"
+    ],
+    [
+     180,
+     "B returns next turn, invests 7.0"
+    ],
+    [
+     181,
+     "B recalls (HP 1375, gold 0.0 unspent)"
+    ],
+    [
+     182,
+     "A crashes 8 HP into the enemy tower"
+    ],
+    [
+     182,
+     "B returns next turn, invests 0.0"
+    ],
+    [
+     184,
+     "A crashes 8 HP into the enemy tower"
+    ],
+    [
+     186,
+     "A crashes 8 HP into the enemy tower"
+    ],
+    [
+     188,
+     "A crashes 8 HP into the enemy tower"
+    ],
+    [
+     190,
+     "A crashes 8 HP into the enemy tower"
+    ],
+    [
+     195,
+     "A crashes 1 HP into the enemy tower"
+    ],
+    [
+     196,
+     "A recalls (HP 507, gold 12.5 unspent)"
+    ],
+    [
+     196,
+     "A crashes 8 HP into the enemy tower"
+    ],
+    [
+     197,
+     "A returns next turn, invests 12.5"
+    ],
+    [
+     211,
+     "B crashes 15 HP into the enemy tower"
+    ],
+    [
+     215,
+     "B dies (tower; HP 153 before, gold 10.1 unspent)"
+    ],
+    [
+     217,
+     "A crashes 5 HP into the enemy tower"
+    ],
+    [
+     218,
+     "A crashes 8 HP into the enemy tower"
+    ],
+    [
+     218,
+     "B returns next turn, invests 10.1"
+    ],
+    [
+     224,
+     "A crashes 1 HP into the enemy tower"
+    ],
+    [
+     226,
+     "A dies (ganked; HP 479 before, gold 10.2 unspent)"
+    ],
+    [
+     227,
+     "A crashes 5 HP into the enemy tower"
+    ],
+    [
+     229,
+     "A returns next turn, invests 11.9"
+    ],
+    [
+     232,
+     "A crashes 3 HP into the enemy tower"
+    ],
+    [
+     238,
+     "A crashes 3 HP into the enemy tower"
+    ],
+    [
+     240,
+     "A crashes 7 HP into the enemy tower"
+    ],
+    [
+     242,
+     "A crashes 8 HP into the enemy tower"
+    ],
+    [
+     244,
+     "A crashes 8 HP into the enemy tower"
+    ],
+    [
+     244,
+     "B recalls (HP 1127, gold 9.6 unspent)"
+    ],
+    [
+     245,
+     "B returns next turn, invests 9.6"
+    ],
+    [
+     246,
+     "A dies (ganked; HP 102 before, gold 7.4 unspent)"
+    ],
+    [
+     246,
+     "A crashes 8 HP into the enemy tower"
+    ],
+    [
+     249,
+     "A returns next turn, invests 7.4"
+    ],
+    [
+     253,
+     "A crashes 6 HP into the enemy tower"
+    ],
+    [
+     254,
+     "A crashes 7 HP into the enemy tower"
+    ],
+    [
+     256,
+     "A crashes 8 HP into the enemy tower"
+    ],
+    [
+     261,
+     "A crashes 5 HP into the enemy tower"
+    ],
+    [
+     262,
+     "A crashes 8 HP into the enemy tower"
+    ],
+    [
+     264,
+     "A crashes 8 HP into the enemy tower"
+    ],
+    [
+     266,
+     "A crashes 8 HP into the enemy tower"
+    ],
+    [
+     270,
+     "A crashes 8 HP into the enemy tower"
+    ],
+    [
+     271,
+     "B recalls (HP 664, gold 8.4 unspent)"
+    ],
+    [
+     272,
+     "A crashes 8 HP into the enemy tower"
+    ],
+    [
+     272,
+     "B returns next turn, invests 8.4"
+    ],
+    [
+     273,
+     "A recalls (HP 254, gold 10.4 unspent)"
+    ],
+    [
+     274,
+     "A returns next turn, invests 10.4"
+    ],
+    [
+     276,
+     "A crashes 6 HP into the enemy tower"
+    ],
+    [
+     276,
+     "B recalls (HP 1375, gold 1.4 unspent)"
+    ],
+    [
+     277,
+     "B returns next turn, invests 1.4"
+    ],
+    [
+     278,
+     "A crashes 8 HP into the enemy tower"
+    ],
+    [
+     278,
+     "B recalls (HP 1375, gold 0.0 unspent)"
+    ],
+    [
+     279,
+     "B returns next turn, invests 0.0"
+    ],
+    [
+     280,
+     "A crashes 3 HP into the enemy tower"
+    ],
+    [
+     284,
+     "A crashes 11 HP into the enemy tower"
+    ],
+    [
+     289,
+     "A crashes 5 HP into the enemy tower"
+    ],
+    [
+     289,
+     "B recalls (HP 1375, gold 2.7 unspent)"
+    ],
+    [
+     290,
+     "A recalls (HP 793, gold 7.0 unspent)"
+    ],
+    [
+     290,
+     "A crashes 8 HP into the enemy tower"
+    ],
+    [
+     290,
+     "B returns next turn, invests 2.7"
+    ],
+    [
+     291,
+     "A returns next turn, invests 7.0"
+    ],
+    [
+     292,
+     "B recalls (HP 1375, gold 1.5 unspent)"
+    ],
+    [
+     293,
+     "B returns next turn, invests 1.5"
+    ],
+    [
+     296,
+     "A crashes 12 HP into the enemy tower"
+    ],
+    [
+     296,
+     "B recalls (HP 903, gold 0.1 unspent)"
+    ],
+    [
+     297,
+     "B returns next turn, invests 0.1"
+    ],
+    [
+     298,
+     "A crashes 8 HP into the enemy tower"
+    ],
+    [
+     300,
+     "A crashes 3 HP into the enemy tower"
+    ],
+    [
+     304,
+     "A's recall is interrupted"
+    ],
+    [
+     304,
+     "A crashes 12 HP into the enemy tower"
+    ],
+    [
+     305,
+     "A recalls (HP 344, gold 5.5 unspent)"
+    ],
+    [
+     306,
+     "A returns next turn, invests 5.5"
+    ],
+    [
+     313,
+     "B dies (tower; HP 306 before, gold 5.2 unspent)"
+    ],
+    [
+     315,
+     "A crashes 5 HP into the enemy tower"
+    ],
+    [
+     316,
+     "A crashes 8 HP into the enemy tower"
+    ],
+    [
+     316,
+     "B returns next turn, invests 5.2"
+    ],
+    [
+     318,
+     "A crashes 8 HP into the enemy tower"
+    ],
+    [
+     319,
+     "B recalls (HP 1375, gold 1.0 unspent)"
+    ],
+    [
+     320,
+     "A crashes 8 HP into the enemy tower"
+    ],
+    [
+     320,
+     "B returns next turn, invests 1.0"
+    ],
+    [
+     324,
+     "A crashes 8 HP into the enemy tower"
+    ],
+    [
+     326,
+     "A crashes 8 HP into the enemy tower"
+    ],
+    [
+     327,
+     "B recalls (HP 1375, gold 1.6 unspent)"
+    ],
+    [
+     328,
+     "A crashes 8 HP into the enemy tower"
+    ],
+    [
+     328,
+     "B returns next turn, invests 1.6"
+    ],
+    [
+     330,
+     "A crashes 3 HP into the enemy tower"
+    ],
+    [
+     332,
+     "A recalls (HP 141, gold 11.1 unspent)"
+    ],
+    [
+     333,
+     "A returns next turn, invests 11.1"
+    ],
+    [
+     339,
+     "B recalls (HP 1139, gold 4.1 unspent)"
+    ],
+    [
+     340,
+     "A crashes 6 HP into the enemy tower"
+    ],
+    [
+     340,
+     "B returns next turn, invests 4.1"
+    ],
+    [
+     342,
+     "A crashes 8 HP into the enemy tower"
+    ],
+    [
+     344,
+     "A crashes 3 HP into the enemy tower"
+    ],
+    [
+     346,
+     "A recalls (HP 489, gold 5.6 unspent)"
+    ],
+    [
+     347,
+     "A returns next turn, invests 5.6"
+    ],
+    [
+     348,
+     "B crashes 3 HP into the enemy tower"
+    ],
+    [
+     354,
+     "A crashes 14 HP into the enemy tower"
+    ],
+    [
+     356,
+     "A crashes 8 HP into the enemy tower"
+    ],
+    [
+     360,
+     "A crashes 10 HP into the enemy tower"
+    ],
+    [
+     362,
+     "A crashes 8 HP into the enemy tower"
+    ],
+    [
+     364,
+     "A crashes 8 HP into the enemy tower"
+    ],
+    [
+     366,
+     "A crashes 8 HP into the enemy tower"
+    ],
+    [
+     368,
+     "A crashes 8 HP into the enemy tower"
+    ],
+    [
+     370,
+     "A crashes 3 HP into the enemy tower"
+    ],
+    [
+     374,
+     "A recalls (HP 241, gold 10.6 unspent)"
+    ],
+    [
+     375,
+     "A returns next turn, invests 10.6"
+    ],
+    [
+     376,
+     "B crashes 2 HP into the enemy tower"
+    ],
+    [
+     381,
+     "A crashes 3 HP into the enemy tower"
+    ],
+    [
+     382,
+     "A crashes 7 HP into the enemy tower"
+    ],
+    [
+     384,
+     "A crashes 8 HP into the enemy tower"
+    ],
+    [
+     386,
+     "A crashes 8 HP into the enemy tower"
+    ],
+    [
+     386,
+     "B's recall is interrupted"
+    ],
+    [
+     388,
+     "A crashes 8 HP into the enemy tower"
+    ],
+    [
+     391,
+     "A crashes 5 HP into the enemy tower"
+    ],
+    [
+     392,
+     "A dies (ganked; HP 600 before, gold 8.1 unspent)"
+    ],
+    [
+     392,
+     "A crashes 8 HP into the enemy tower"
+    ],
+    [
+     395,
+     "A returns next turn, invests 8.2"
+    ],
+    [
+     398,
+     "B recalls (HP 550, gold 18.1 unspent)"
+    ],
+    [
+     399,
+     "A crashes 8 HP into the enemy tower"
+    ],
+    [
+     399,
+     "B returns next turn, invests 18.1"
+    ],
+    [
+     400,
+     "A crashes 8 HP into the enemy tower"
+    ],
+    [
+     402,
+     "A crashes 8 HP into the enemy tower"
+    ],
+    [
+     404,
+     "A crashes 8 HP into the enemy tower"
+    ],
+    [
+     406,
+     "A crashes 8 HP into the enemy tower"
+    ],
+    [
+     408,
+     "A crashes 7 HP into the enemy tower"
+    ],
+    [
+     410,
+     "A crashes 8 HP into the enemy tower"
+    ],
+    [
+     411,
+     "B recalls (HP 1145, gold 3.2 unspent)"
+    ],
+    [
+     412,
+     "A dies (ganked; HP 35 before, gold 7.5 unspent)"
+    ],
+    [
+     412,
+     "A crashes 8 HP into the enemy tower"
+    ],
+    [
+     412,
+     "B returns next turn, invests 3.7"
+    ],
+    [
+     415,
+     "A returns next turn, invests 7.5"
+    ],
+    [
+     418,
+     "B crashes 16 HP into the enemy tower"
+    ],
+    [
+     421,
+     "B crashes 6 HP into the enemy tower"
+    ],
+    [
+     422,
+     "B crashes 8 HP into the enemy tower"
+    ],
+    [
+     426,
+     "A crashes 8 HP into the enemy tower"
+    ],
+    [
+     427,
+     "A dies (ganked; HP 485 before, gold 4.0 unspent)"
+    ],
+    [
+     428,
+     "A crashes 8 HP into the enemy tower"
+    ],
+    [
+     430,
+     "A returns next turn, invests 4.8"
+    ],
+    [
+     432,
+     "B dies (tower; HP 89 before, gold 7.9 unspent)"
+    ],
+    [
+     435,
+     "A crashes 6 HP into the enemy tower"
+    ],
+    [
+     435,
+     "B returns next turn, invests 7.9"
+    ],
+    [
+     436,
+     "A crashes 8 HP into the enemy tower"
+    ],
+    [
+     437,
+     "B recalls (HP 1375, gold 0.8 unspent)"
+    ],
+    [
+     438,
+     "A crashes 8 HP into the enemy tower"
+    ],
+    [
+     438,
+     "B returns next turn, invests 0.8"
+    ],
+    [
+     440,
+     "A crashes 8 HP into the enemy tower"
+    ],
+    [
+     440,
+     "B recalls (HP 1375, gold 0.5 unspent)"
+    ],
+    [
+     441,
+     "B returns next turn, invests 0.5"
+    ],
+    [
+     442,
+     "A crashes 8 HP into the enemy tower"
+    ],
+    [
+     448,
+     "A crashes 3 HP into the enemy tower"
+    ],
+    [
+     454,
+     "A crashes 12 HP into the enemy tower"
+    ]
+   ]
+  },
+  "ent03_s0_selfplay": {
+   "path": "results\\rl\\m43b\\trajectories\\ent03_s0_selfplay.json",
+   "names": [
+    "final:ent03:0",
+    "final:ent03:0"
+   ],
+   "label": "100% current, entropy coefficient 0.03 (control): final against itself",
+   "seed": 67000,
+   "turns": 460,
+   "payoff_A": -5.9937499999999995,
+   "counters": {
+    "deaths": [
+     10,
+     4
+    ],
+    "recalls": [
+     15,
+     20
+    ],
+    "crashes": [
+     39,
+     42
+    ],
+    "plates": [
+     3,
+     3
+    ],
+    "trades_connected": [
+     89,
+     79
+    ],
+    "farm": [
+     166.4250000000003,
+     169.41875000000024
+    ],
+    "invested": [
+     168.2,
+     168.76875000000007
+    ],
+    "returns_after_death": [
+     10,
+     4
+    ],
+    "returns_after_recall": [
+     15,
+     20
+    ]
+   },
+   "action_shares": {
+    "0": {
+     "Hold": 0.1686746987951807,
+     "Thin": 0.20963855421686747,
+     "Clear": 0.6216867469879518,
+     "Trade": 0.3204819277108434,
+     "Safe": 0.10120481927710843,
+     "Recall": 0.04578313253012048,
+     "Pressure": 0.021686746987951807
+    },
+    "1": {
+     "Hold": 0.17757009345794392,
+     "Thin": 0.23130841121495327,
+     "Clear": 0.5911214953271028,
+     "Trade": 0.31542056074766356,
+     "Safe": 0.14018691588785046,
+     "Recall": 0.06542056074766354,
+     "Pressure": 0.02570093457943925
+    }
+   },
+   "events": [
+    [
+     3,
+     "A reaches level 2"
+    ],
+    [
+     3,
+     "B reaches level 2"
+    ],
+    [
+     5,
+     "A reaches level 3"
+    ],
+    [
+     5,
+     "B reaches level 3"
+    ],
+    [
+     8,
+     "A crashes 6 HP into the enemy tower"
+    ],
+    [
+     8,
+     "A reaches level 4"
+    ],
+    [
+     10,
+     "A crashes 6 HP into the enemy tower"
+    ],
+    [
+     10,
+     "B reaches level 4"
+    ],
+    [
+     12,
+     "A dies (ganked; HP 275 before, gold 5.1 unspent)"
+    ],
+    [
+     13,
+     "B reaches level 5"
+    ],
+    [
+     15,
+     "A returns next turn, invests 5.2"
+    ],
+    [
+     16,
+     "A reaches level 5"
+    ],
+    [
+     16,
+     "B crashes 9 HP into the enemy tower"
+    ],
+    [
+     17,
+     "B reaches level 6"
+    ],
+    [
+     18,
+     "B crashes 5 HP into the enemy tower"
+    ],
+    [
+     19,
+     "A recalls (HP 313, gold 1.6 unspent)"
+    ],
+    [
+     20,
+     "A returns next turn, invests 1.6"
+    ],
+    [
+     21,
+     "A reaches level 6"
+    ],
+    [
+     22,
+     "B crashes 7 HP into the enemy tower"
+    ],
+    [
+     24,
+     "B reaches level 7"
+    ],
+    [
+     25,
+     "A reaches level 7"
+    ],
+    [
+     30,
+     "A crashes 10 HP into the enemy tower"
+    ],
+    [
+     31,
+     "A reaches level 8"
+    ],
+    [
+     31,
+     "B reaches level 8"
+    ],
+    [
+     32,
+     "A crashes 5 HP into the enemy tower"
+    ],
+    [
+     33,
+     "A breaks a plate (+1.0)"
+    ],
+    [
+     34,
+     "A dies (ganked; HP 414 before, gold 7.4 unspent)"
+    ],
+    [
+     34,
+     "A crashes 5 HP into the enemy tower"
+    ],
+    [
+     35,
+     "B recalls (HP 246, gold 13.9 unspent)"
+    ],
+    [
+     36,
+     "B returns next turn, invests 13.9"
+    ],
+    [
+     37,
+     "A returns next turn, invests 7.4"
+    ],
+    [
+     38,
+     "B reaches level 9"
+    ],
+    [
+     40,
+     "B crashes 8 HP into the enemy tower"
+    ],
+    [
+     42,
+     "A reaches level 9"
+    ],
+    [
+     44,
+     "B crashes 9 HP into the enemy tower"
+    ],
+    [
+     45,
+     "B breaks a plate (+1.0)"
+    ],
+    [
+     45,
+     "B reaches level 10"
+    ],
+    [
+     46,
+     "B crashes 4 HP into the enemy tower"
+    ],
+    [
+     48,
+     "B crashes 4 HP into the enemy tower"
+    ],
+    [
+     49,
+     "A reaches level 10"
+    ],
+    [
+     50,
+     "B recalls (HP 295, gold 6.9 unspent)"
+    ],
+    [
+     51,
+     "B returns next turn, invests 6.9"
+    ],
+    [
+     52,
+     "A crashes 13 HP into the enemy tower"
+    ],
+    [
+     54,
+     "A dies (ganked; HP 639 before, gold 6.2 unspent)"
+    ],
+    [
+     55,
+     "B reaches level 11"
+    ],
+    [
+     57,
+     "A returns next turn, invests 6.2"
+    ],
+    [
+     58,
+     "B dies (ganked; HP 305 before, gold 4.1 unspent)"
+    ],
+    [
+     58,
+     "B crashes 16 HP into the enemy tower"
+    ],
+    [
+     59,
+     "A reaches level 11"
+    ],
+    [
+     61,
+     "B returns next turn, invests 4.2"
+    ],
+    [
+     62,
+     "A crashes 10 HP into the enemy tower"
+    ],
+    [
+     64,
+     "A crashes 3 HP into the enemy tower"
+    ],
+    [
+     65,
+     "A dies (ganked; HP 328 before, gold 4.3 unspent)"
+    ],
+    [
+     66,
+     "A crashes 3 HP into the enemy tower"
+    ],
+    [
+     66,
+     "B reaches level 12"
+    ],
+    [
+     68,
+     "A returns next turn, invests 5.2"
+    ],
+    [
+     68,
+     "B crashes 8 HP into the enemy tower"
+    ],
+    [
+     69,
+     "A reaches level 12"
+    ],
+    [
+     70,
+     "B crashes 2 HP into the enemy tower"
+    ],
+    [
+     71,
+     "B dies (ganked; HP 229 before, gold 4.5 unspent)"
+    ],
+    [
+     72,
+     "B crashes 2 HP into the enemy tower"
+    ],
+    [
+     74,
+     "A crashes 8 HP into the enemy tower"
+    ],
+    [
+     74,
+     "B returns next turn, invests 5.4"
+    ],
+    [
+     75,
+     "A breaks a plate (+1.0)"
+    ],
+    [
+     76,
+     "A crashes 2 HP into the enemy tower"
+    ],
+    [
+     76,
+     "B reaches level 13"
+    ],
+    [
+     77,
+     "A reaches level 13"
+    ],
+    [
+     78,
+     "A crashes 2 HP into the enemy tower"
+    ],
+    [
+     80,
+     "A crashes 2 HP into the enemy tower"
+    ],
+    [
+     82,
+     "A crashes 2 HP into the enemy tower"
+    ],
+    [
+     86,
+     "B crashes 2 HP into the enemy tower"
+    ],
+    [
+     87,
+     "A's recall is interrupted"
+    ],
+    [
+     88,
+     "A's recall is interrupted"
+    ],
+    [
+     89,
+     "A recalls (HP 251, gold 9.6 unspent)"
+    ],
+    [
+     89,
+     "B reaches level 14"
+    ],
+    [
+     90,
+     "A returns next turn, invests 9.6"
+    ],
+    [
+     90,
+     "B crashes 12 HP into the enemy tower"
+    ],
+    [
+     91,
+     "A reaches level 14"
+    ],
+    [
+     91,
+     "B breaks a plate (+1.0)"
+    ],
+    [
+     92,
+     "B crashes 1 HP into the enemy tower"
+    ],
+    [
+     98,
+     "A crashes 13 HP into the enemy tower"
+    ],
+    [
+     100,
+     "A crashes 2 HP into the enemy tower"
+    ],
+    [
+     100,
+     "B reaches level 15"
+    ],
+    [
+     102,
+     "A reaches level 15"
+    ],
+    [
+     103,
+     "A recalls (HP 621, gold 5.6 unspent)"
+    ],
+    [
+     104,
+     "A returns next turn, invests 5.6"
+    ],
+    [
+     106,
+     "B crashes 1 HP into the enemy tower"
+    ],
+    [
+     108,
+     "B crashes 1 HP into the enemy tower"
+    ],
+    [
+     113,
+     "B reaches level 16"
+    ],
+    [
+     115,
+     "A reaches level 16"
+    ],
+    [
+     115,
+     "B recalls (HP 243, gold 16.6 unspent)"
+    ],
+    [
+     116,
+     "A crashes 8 HP into the enemy tower"
+    ],
+    [
+     116,
+     "B returns next turn, invests 16.6"
+    ],
+    [
+     117,
+     "A breaks a plate (+1.0)"
+    ],
+    [
+     122,
+     "A's recall is interrupted"
+    ],
+    [
+     123,
+     "A recalls (HP 166, gold 7.1 unspent)"
+    ],
+    [
+     124,
+     "A returns next turn, invests 7.1"
+    ],
+    [
+     124,
+     "B crashes 17 HP into the enemy tower"
+    ],
+    [
+     124,
+     "B reaches level 17"
+    ],
+    [
+     126,
+     "B crashes 8 HP into the enemy tower"
+    ],
+    [
+     126,
+     "B breaks a plate (+1.0)"
+    ],
+    [
+     129,
+     "A reaches level 17"
+    ],
+    [
+     131,
+     "B's recall is interrupted"
+    ],
+    [
+     133,
+     "B recalls (HP 268, gold 6.0 unspent)"
+    ],
+    [
+     134,
+     "A crashes 17 HP into the enemy tower"
+    ],
+    [
+     134,
+     "B returns next turn, invests 6.0"
+    ],
+    [
+     136,
+     "A crashes 8 HP into the enemy tower"
+    ],
+    [
+     140,
+     "B reaches level 18"
+    ],
+    [
+     141,
+     "A dies (trade; HP 381 before, gold 7.1 unspent)"
+    ],
+    [
+     144,
+     "A returns next turn, invests 8.0"
+    ],
+    [
+     145,
+     "A reaches level 18"
+    ],
+    [
+     145,
+     "B crashes 5 HP into the enemy tower"
+    ],
+    [
+     146,
+     "B recalls (HP 946, gold 6.7 unspent)"
+    ],
+    [
+     147,
+     "B returns next turn, invests 6.7"
+    ],
+    [
+     163,
+     "A crashes 4 HP into the enemy tower"
+    ],
+    [
+     167,
+     "A recalls (HP 682, gold 8.0 unspent)"
+    ],
+    [
+     168,
+     "A returns next turn, invests 8.0"
+    ],
+    [
+     168,
+     "B crashes 13 HP into the enemy tower"
+    ],
+    [
+     169,
+     "B recalls (HP 921, gold 8.3 unspent)"
+    ],
+    [
+     170,
+     "B returns next turn, invests 8.3"
+    ],
+    [
+     175,
+     "B dies (trade; HP 116 before, gold 1.3 unspent)"
+    ],
+    [
+     178,
+     "A crashes 12 HP into the enemy tower"
+    ],
+    [
+     178,
+     "B returns next turn, invests 1.3"
+    ],
+    [
+     179,
+     "A recalls (HP 182, gold 5.4 unspent)"
+    ],
+    [
+     180,
+     "A returns next turn, invests 5.4"
+    ],
+    [
+     191,
+     "A recalls (HP 917, gold 4.2 unspent)"
+    ],
+    [
+     192,
+     "A returns next turn, invests 4.2"
+    ],
+    [
+     192,
+     "B crashes 8 HP into the enemy tower"
+    ],
+    [
+     201,
+     "B recalls (HP 900, gold 8.9 unspent)"
+    ],
+    [
+     202,
+     "A crashes 13 HP into the enemy tower"
+    ],
+    [
+     202,
+     "B returns next turn, invests 8.9"
+    ],
+    [
+     204,
+     "A crashes 8 HP into the enemy tower"
+    ],
+    [
+     211,
+     "A recalls (HP 563, gold 7.4 unspent)"
+    ],
+    [
+     212,
+     "A returns next turn, invests 7.4"
+    ],
+    [
+     212,
+     "B crashes 13 HP into the enemy tower"
+    ],
+    [
+     219,
+     "B recalls (HP 1027, gold 7.3 unspent)"
+    ],
+    [
+     220,
+     "A crashes 8 HP into the enemy tower"
+    ],
+    [
+     220,
+     "B returns next turn, invests 7.3"
+    ],
+    [
+     235,
+     "B recalls (HP 92, gold 6.4 unspent)"
+    ],
+    [
+     236,
+     "B returns next turn, invests 6.4"
+    ],
+    [
+     237,
+     "A crashes 5 HP into the enemy tower"
+    ],
+    [
+     238,
+     "A recalls (HP 56, gold 11.9 unspent)"
+    ],
+    [
+     239,
+     "A returns next turn, invests 11.9"
+    ],
+    [
+     241,
+     "B crashes 1 HP into the enemy tower"
+    ],
+    [
+     246,
+     "A dies (ganked; HP 681 before, gold 1.6 unspent)"
+    ],
+    [
+     248,
+     "B crashes 18 HP into the enemy tower"
+    ],
+    [
+     249,
+     "A returns next turn, invests 1.7"
+    ],
+    [
+     250,
+     "B crashes 8 HP into the enemy tower"
+    ],
+    [
+     259,
+     "B's recall is interrupted"
+    ],
+    [
+     261,
+     "B's recall is interrupted"
+    ],
+    [
+     263,
+     "B recalls (HP 340, gold 8.4 unspent)"
+    ],
+    [
+     264,
+     "A crashes 22 HP into the enemy tower"
+    ],
+    [
+     264,
+     "B returns next turn, invests 8.4"
+    ],
+    [
+     270,
+     "B crashes 3 HP into the enemy tower"
+    ],
+    [
+     273,
+     "A recalls (HP 326, gold 7.2 unspent)"
+    ],
+    [
+     274,
+     "A returns next turn, invests 7.2"
+    ],
+    [
+     274,
+     "B crashes 12 HP into the enemy tower"
+    ],
+    [
+     285,
+     "B recalls (HP 217, gold 9.0 unspent)"
+    ],
+    [
+     286,
+     "A crashes 13 HP into the enemy tower"
+    ],
+    [
+     286,
+     "B returns next turn, invests 9.0"
+    ],
+    [
+     291,
+     "A dies (trade; HP 90 before, gold 7.8 unspent)"
+    ],
+    [
+     294,
+     "A returns next turn, invests 8.7"
+    ],
+    [
+     294,
+     "B crashes 8 HP into the enemy tower"
+    ],
+    [
+     302,
+     "B crashes 8 HP into the enemy tower"
+    ],
+    [
+     310,
+     "A crashes 4 HP into the enemy tower"
+    ],
+    [
+     313,
+     "B recalls (HP 569, gold 11.1 unspent)"
+    ],
+    [
+     314,
+     "A crashes 13 HP into the enemy tower"
+    ],
+    [
+     314,
+     "B returns next turn, invests 11.1"
+    ],
+    [
+     318,
+     "B crashes 1 HP into the enemy tower"
+    ],
+    [
+     321,
+     "B crashes 1 HP into the enemy tower"
+    ],
+    [
+     322,
+     "B recalls (HP 227, gold 3.6 unspent)"
+    ],
+    [
+     323,
+     "B returns next turn, invests 3.6"
+    ],
+    [
+     326,
+     "A recalls (HP 335, gold 13.0 unspent)"
+    ],
+    [
+     326,
+     "A crashes 3 HP into the enemy tower"
+    ],
+    [
+     327,
+     "A returns next turn, invests 13.0"
+    ],
+    [
+     330,
+     "B crashes 3 HP into the enemy tower"
+    ],
+    [
+     332,
+     "B crashes 3 HP into the enemy tower"
+    ],
+    [
+     336,
+     "B recalls (HP 917, gold 5.8 unspent)"
+    ],
+    [
+     337,
+     "B returns next turn, invests 5.8"
+    ],
+    [
+     339,
+     "A crashes 1 HP into the enemy tower"
+    ],
+    [
+     342,
+     "A recalls (HP 1146, gold 6.5 unspent)"
+    ],
+    [
+     343,
+     "A returns next turn, invests 6.5"
+    ],
+    [
+     346,
+     "B recalls (HP 1147, gold 4.2 unspent)"
+    ],
+    [
+     347,
+     "B returns next turn, invests 4.2"
+    ],
+    [
+     349,
+     "A crashes 1 HP into the enemy tower"
+    ],
+    [
+     355,
+     "B crashes 10 HP into the enemy tower"
+    ],
+    [
+     356,
+     "B recalls (HP 692, gold 4.0 unspent)"
+    ],
+    [
+     357,
+     "B returns next turn, invests 4.0"
+    ],
+    [
+     360,
+     "A crashes 3 HP into the enemy tower"
+    ],
+    [
+     363,
+     "A crashes 2 HP into the enemy tower"
+    ],
+    [
+     364,
+     "A recalls (HP 919, gold 8.7 unspent)"
+    ],
+    [
+     365,
+     "A returns next turn, invests 8.7"
+    ],
+    [
+     367,
+     "B crashes 1 HP into the enemy tower"
+    ],
+    [
+     368,
+     "B recalls (HP 920, gold 4.6 unspent)"
+    ],
+    [
+     369,
+     "B returns next turn, invests 4.6"
+    ],
+    [
+     381,
+     "B recalls (HP 123, gold 4.3 unspent)"
+    ],
+    [
+     382,
+     "A crashes 13 HP into the enemy tower"
+    ],
+    [
+     382,
+     "B returns next turn, invests 4.3"
+    ],
+    [
+     383,
+     "A's recall is interrupted"
+    ],
+    [
+     384,
+     "A recalls (HP 119, gold 7.7 unspent)"
+    ],
+    [
+     385,
+     "A returns next turn, invests 7.7"
+    ],
+    [
+     388,
+     "B crashes 17 HP into the enemy tower"
+    ],
+    [
+     394,
+     "A dies (tower; HP 234 before, gold 2.6 unspent)"
+    ],
+    [
+     397,
+     "A returns next turn, invests 2.7"
+    ],
+    [
+     397,
+     "B crashes 7 HP into the enemy tower"
+    ],
+    [
+     398,
+     "B recalls (HP 355, gold 6.9 unspent)"
+    ],
+    [
+     398,
+     "B crashes 8 HP into the enemy tower"
+    ],
+    [
+     399,
+     "B returns next turn, invests 6.9"
+    ],
+    [
+     413,
+     "B recalls (HP 583, gold 5.8 unspent)"
+    ],
+    [
+     414,
+     "A recalls (HP 584, gold 8.0 unspent)"
+    ],
+    [
+     414,
+     "A crashes 6 HP into the enemy tower"
+    ],
+    [
+     414,
+     "B returns next turn, invests 5.8"
+    ],
+    [
+     415,
+     "A returns next turn, invests 8.0"
+    ],
+    [
+     424,
+     "A crashes 8 HP into the enemy tower"
+    ],
+    [
+     429,
+     "A dies (ganked; HP 128 before, gold 5.0 unspent)"
+    ],
+    [
+     430,
+     "B crashes 12 HP into the enemy tower"
+    ],
+    [
+     432,
+     "A returns next turn, invests 5.0"
+    ],
+    [
+     432,
+     "B crashes 8 HP into the enemy tower"
+    ],
+    [
+     437,
+     "B's recall is interrupted"
+    ],
+    [
+     438,
+     "B's recall is interrupted"
+    ],
+    [
+     439,
+     "B's recall is interrupted"
+    ],
+    [
+     440,
+     "B's recall is interrupted"
+    ],
+    [
+     441,
+     "B dies (trade; HP 4 before, gold 9.2 unspent)"
+    ],
+    [
+     441,
+     "B's recall is interrupted"
+    ],
+    [
+     443,
+     "A crashes 17 HP into the enemy tower"
+    ],
+    [
+     444,
+     "A crashes 8 HP into the enemy tower"
+    ],
+    [
+     444,
+     "B returns next turn, invests 9.2"
+    ],
+    [
+     448,
+     "A dies (ganked; HP 33 before, gold 6.2 unspent)"
+    ],
+    [
+     451,
+     "A returns next turn, invests 6.2"
+    ],
+    [
+     451,
+     "B crashes 5 HP into the enemy tower"
+    ],
+    [
+     452,
+     "B crashes 8 HP into the enemy tower"
+    ]
+   ]
+  },
+  "hist80_s0_selfplay": {
+   "path": "results\\rl\\m43b\\trajectories\\hist80_s0_selfplay.json",
+   "names": [
+    "final:hist80:0",
+    "final:hist80:0"
+   ],
+   "label": "80% current / 20% historical (pool 8), entropy 0.01: final against itself",
+   "seed": 67000,
+   "turns": 460,
+   "payoff_A": -1.493750000000002,
+   "counters": {
+    "deaths": [
+     6,
+     5
+    ],
+    "recalls": [
+     11,
+     10
+    ],
+    "crashes": [
+     28,
+     31
+    ],
+    "plates": [
+     3,
+     3
+    ],
+    "trades_connected": [
+     34,
+     45
+    ],
+    "farm": [
+     179.75625000000008,
+     180.75000000000023
+    ],
+    "invested": [
+     173.51875,
+     165.21874999999997
+    ],
+    "returns_after_death": [
+     6,
+     5
+    ],
+    "returns_after_recall": [
+     11,
+     10
+    ]
+   },
+   "action_shares": {
+    "0": {
+     "Hold": 0.10672853828306264,
+     "Thin": 0.19489559164733178,
+     "Clear": 0.6983758700696056,
+     "Trade": 0.2296983758700696,
+     "Safe": 0.2505800464037123,
+     "Recall": 0.03248259860788863,
+     "Pressure": 0.018561484918793503
+    },
+    "1": {
+     "Hold": 0.06666666666666667,
+     "Thin": 0.23218390804597702,
+     "Clear": 0.7011494252873564,
+     "Trade": 0.23448275862068965,
+     "Safe": 0.2689655172413793,
+     "Recall": 0.02528735632183908,
+     "Pressure": 0.013793103448275862
+    }
+   },
+   "events": [
+    [
+     3,
+     "A reaches level 2"
+    ],
+    [
+     3,
+     "B reaches level 2"
+    ],
+    [
+     5,
+     "A reaches level 3"
+    ],
+    [
+     5,
+     "B reaches level 3"
+    ],
+    [
+     9,
+     "A reaches level 4"
+    ],
+    [
+     9,
+     "B reaches level 4"
+    ],
+    [
+     13,
+     "A reaches level 5"
+    ],
+    [
+     13,
+     "B reaches level 5"
+    ],
+    [
+     19,
+     "A reaches level 6"
+    ],
+    [
+     19,
+     "B reaches level 6"
+    ],
+    [
+     25,
+     "A reaches level 7"
+    ],
+    [
+     25,
+     "B reaches level 7"
+    ],
+    [
+     31,
+     "A reaches level 8"
+    ],
+    [
+     31,
+     "B reaches level 8"
+    ],
+    [
+     37,
+     "A recalls (HP 130, gold 13.8 unspent)"
+    ],
+    [
+     37,
+     "B reaches level 9"
+    ],
+    [
+     38,
+     "A returns next turn, invests 13.8"
+    ],
+    [
+     39,
+     "A reaches level 9"
+    ],
+    [
+     39,
+     "B crashes 3 HP into the enemy tower"
+    ],
+    [
+     40,
+     "B crashes 4 HP into the enemy tower"
+    ],
+    [
+     44,
+     "A crashes 5 HP into the enemy tower"
+    ],
+    [
+     45,
+     "A reaches level 10"
+    ],
+    [
+     45,
+     "B recalls (HP 403, gold 17.5 unspent)"
+    ],
+    [
+     46,
+     "A crashes 8 HP into the enemy tower"
+    ],
+    [
+     46,
+     "B returns next turn, invests 17.5"
+    ],
+    [
+     47,
+     "A breaks a plate (+1.0)"
+    ],
+    [
+     47,
+     "B reaches level 10"
+    ],
+    [
+     48,
+     "A crashes 3 HP into the enemy tower"
+    ],
+    [
+     50,
+     "A crashes 3 HP into the enemy tower"
+    ],
+    [
+     52,
+     "A crashes 3 HP into the enemy tower"
+    ],
+    [
+     54,
+     "A dies (ganked; HP 279 before, gold 8.7 unspent)"
+    ],
+    [
+     54,
+     "A crashes 3 HP into the enemy tower"
+    ],
+    [
+     55,
+     "B reaches level 11"
+    ],
+    [
+     56,
+     "B crashes 8 HP into the enemy tower"
+    ],
+    [
+     57,
+     "A returns next turn, invests 8.7"
+    ],
+    [
+     58,
+     "A reaches level 11"
+    ],
+    [
+     58,
+     "B dies (ganked; HP 24 before, gold 5.9 unspent)"
+    ],
+    [
+     58,
+     "B crashes 3 HP into the enemy tower"
+    ],
+    [
+     60,
+     "A crashes 8 HP into the enemy tower"
+    ],
+    [
+     61,
+     "B returns next turn, invests 5.9"
+    ],
+    [
+     62,
+     "A crashes 3 HP into the enemy tower"
+    ],
+    [
+     64,
+     "A crashes 3 HP into the enemy tower"
+    ],
+    [
+     65,
+     "A dies (ganked; HP 340 before, gold 3.9 unspent)"
+    ],
+    [
+     65,
+     "A reaches level 12"
+    ],
+    [
+     66,
+     "A crashes 3 HP into the enemy tower"
+    ],
+    [
+     66,
+     "B reaches level 12"
+    ],
+    [
+     67,
+     "B recalls (HP 542, gold 2.9 unspent)"
+    ],
+    [
+     68,
+     "A returns next turn, invests 4.8"
+    ],
+    [
+     68,
+     "B returns next turn, invests 2.9"
+    ],
+    [
+     76,
+     "B crashes 8 HP into the enemy tower"
+    ],
+    [
+     77,
+     "B breaks a plate (+1.0)"
+    ],
+    [
+     77,
+     "B reaches level 13"
+    ],
+    [
+     78,
+     "A reaches level 13"
+    ],
+    [
+     78,
+     "B crashes 2 HP into the enemy tower"
+    ],
+    [
+     80,
+     "B crashes 2 HP into the enemy tower"
+    ],
+    [
+     82,
+     "B crashes 2 HP into the enemy tower"
+    ],
+    [
+     84,
+     "B crashes 2 HP into the enemy tower"
+    ],
+    [
+     86,
+     "B recalls (HP 298, gold 8.1 unspent)"
+    ],
+    [
+     87,
+     "A reaches level 14"
+    ],
+    [
+     87,
+     "B returns next turn, invests 8.1"
+    ],
+    [
+     88,
+     "A crashes 13 HP into the enemy tower"
+    ],
+    [
+     88,
+     "B reaches level 14"
+    ],
+    [
+     95,
+     "A recalls (HP 453, gold 10.0 unspent)"
+    ],
+    [
+     96,
+     "A returns next turn, invests 10.0"
+    ],
+    [
+     96,
+     "B crashes 8 HP into the enemy tower"
+    ],
+    [
+     98,
+     "B crashes 1 HP into the enemy tower"
+    ],
+    [
+     99,
+     "B reaches level 15"
+    ],
+    [
+     100,
+     "A reaches level 15"
+    ],
+    [
+     100,
+     "B crashes 1 HP into the enemy tower"
+    ],
+    [
+     102,
+     "B crashes 1 HP into the enemy tower"
+    ],
+    [
+     103,
+     "B dies (trade; HP 157 before, gold 6.8 unspent)"
+    ],
+    [
+     103,
+     "B's recall is interrupted"
+    ],
+    [
+     105,
+     "A crashes 4 HP into the enemy tower"
+    ],
+    [
+     106,
+     "A crashes 8 HP into the enemy tower"
+    ],
+    [
+     106,
+     "A breaks a plate (+1.0)"
+    ],
+    [
+     106,
+     "B returns next turn, invests 6.8"
+    ],
+    [
+     108,
+     "A crashes 1 HP into the enemy tower"
+    ],
+    [
+     110,
+     "A crashes 1 HP into the enemy tower"
+    ],
+    [
+     111,
+     "A dies (trade; HP 111 before, gold 8.2 unspent)"
+    ],
+    [
+     111,
+     "A's recall is interrupted"
+    ],
+    [
+     113,
+     "B crashes 4 HP into the enemy tower"
+    ],
+    [
+     113,
+     "B reaches level 16"
+    ],
+    [
+     114,
+     "A returns next turn, invests 8.2"
+    ],
+    [
+     114,
+     "B crashes 8 HP into the enemy tower"
+    ],
+    [
+     114,
+     "B breaks a plate (+1.0)"
+    ],
+    [
+     115,
+     "A reaches level 16"
+    ],
+    [
+     115,
+     "B breaks a plate (+1.0)"
+    ],
+    [
+     116,
+     "B crashes 1 HP into the enemy tower"
+    ],
+    [
+     123,
+     "B crashes 4 HP into the enemy tower"
+    ],
+    [
+     124,
+     "B crashes 1 HP into the enemy tower"
+    ],
+    [
+     125,
+     "A's recall is interrupted"
+    ],
+    [
+     127,
+     "A reaches level 17"
+    ],
+    [
+     127,
+     "B reaches level 17"
+    ],
+    [
+     128,
+     "A dies (ganked; HP 135 before, gold 5.1 unspent)"
+    ],
+    [
+     129,
+     "B dies (ganked; HP 221 before, gold 12.0 unspent)"
+    ],
+    [
+     130,
+     "B crashes 8 HP into the enemy tower"
+    ],
+    [
+     131,
+     "A returns next turn, invests 5.6"
+    ],
+    [
+     132,
+     "B returns next turn, invests 12.9"
+    ],
+    [
+     142,
+     "B reaches level 18"
+    ],
+    [
+     144,
+     "A reaches level 18"
+    ],
+    [
+     145,
+     "A's recall is interrupted"
+    ],
+    [
+     146,
+     "A dies (trade; HP 142 before, gold 5.6 unspent)"
+    ],
+    [
+     148,
+     "B crashes 8 HP into the enemy tower"
+    ],
+    [
+     149,
+     "A returns next turn, invests 6.5"
+    ],
+    [
+     155,
+     "A recalls (HP 922, gold 2.5 unspent)"
+    ],
+    [
+     156,
+     "A returns next turn, invests 2.5"
+    ],
+    [
+     157,
+     "B crashes 6 HP into the enemy tower"
+    ],
+    [
+     162,
+     "B crashes 6 HP into the enemy tower"
+    ],
+    [
+     166,
+     "B recalls (HP 164, gold 15.5 unspent)"
+    ],
+    [
+     166,
+     "B crashes 4 HP into the enemy tower"
+    ],
+    [
+     167,
+     "B returns next turn, invests 15.5"
+    ],
+    [
+     190,
+     "A recalls (HP 546, gold 14.6 unspent)"
+    ],
+    [
+     191,
+     "A returns next turn, invests 14.6"
+    ],
+    [
+     206,
+     "B recalls (HP 541, gold 16.9 unspent)"
+    ],
+    [
+     206,
+     "B crashes 6 HP into the enemy tower"
+    ],
+    [
+     207,
+     "B returns next turn, invests 16.9"
+    ],
+    [
+     222,
+     "A recalls (HP 764, gold 13.4 unspent)"
+    ],
+    [
+     223,
+     "A returns next turn, invests 13.4"
+    ],
+    [
+     239,
+     "A recalls (HP 1136, gold 6.6 unspent)"
+    ],
+    [
+     240,
+     "A returns next turn, invests 6.6"
+    ],
+    [
+     241,
+     "B crashes 6 HP into the enemy tower"
+    ],
+    [
+     246,
+     "B dies (trade; HP 415 before, gold 16.6 unspent)"
+    ],
+    [
+     248,
+     "A crashes 8 HP into the enemy tower"
+    ],
+    [
+     249,
+     "A breaks a plate (+1.0)"
+    ],
+    [
+     249,
+     "B returns next turn, invests 16.6"
+    ],
+    [
+     252,
+     "A recalls (HP 211, gold 6.2 unspent)"
+    ],
+    [
+     253,
+     "A returns next turn, invests 6.2"
+    ],
+    [
+     253,
+     "B crashes 4 HP into the enemy tower"
+    ],
+    [
+     254,
+     "B crashes 8 HP into the enemy tower"
+    ],
+    [
+     260,
+     "A crashes 4 HP into the enemy tower"
+    ],
+    [
+     280,
+     "A crashes 4 HP into the enemy tower"
+    ],
+    [
+     288,
+     "A recalls (HP 206, gold 15.3 unspent)"
+    ],
+    [
+     288,
+     "A crashes 5 HP into the enemy tower"
+    ],
+    [
+     289,
+     "A returns next turn, invests 15.3"
+    ],
+    [
+     289,
+     "B recalls (HP 919, gold 15.6 unspent)"
+    ],
+    [
+     290,
+     "B returns next turn, invests 15.6"
+    ],
+    [
+     297,
+     "A crashes 16 HP into the enemy tower"
+    ],
+    [
+     330,
+     "A recalls (HP 106, gold 16.5 unspent)"
+    ],
+    [
+     330,
+     "A crashes 4 HP into the enemy tower"
+    ],
+    [
+     331,
+     "A returns next turn, invests 16.5"
+    ],
+    [
+     334,
+     "B crashes 3 HP into the enemy tower"
+    ],
+    [
+     336,
+     "B dies (ganked; HP 567 before, gold 18.3 unspent)"
+    ],
+    [
+     338,
+     "A crashes 11 HP into the enemy tower"
+    ],
+    [
+     339,
+     "B returns next turn, invests 18.3"
+    ],
+    [
+     340,
+     "A crashes 8 HP into the enemy tower"
+    ],
+    [
+     349,
+     "B recalls (HP 920, gold 4.3 unspent)"
+    ],
+    [
+     350,
+     "A crashes 8 HP into the enemy tower"
+    ],
+    [
+     350,
+     "B returns next turn, invests 4.3"
+    ],
+    [
+     358,
+     "A crashes 6 HP into the enemy tower"
+    ],
+    [
+     363,
+     "B recalls (HP 1035, gold 5.0 unspent)"
+    ],
+    [
+     364,
+     "A recalls (HP 458, gold 14.3 unspent)"
+    ],
+    [
+     364,
+     "A crashes 8 HP into the enemy tower"
+    ],
+    [
+     364,
+     "B returns next turn, invests 5.0"
+    ],
+    [
+     365,
+     "A returns next turn, invests 14.3"
+    ],
+    [
+     389,
+     "B recalls (HP 129, gold 11.0 unspent)"
+    ],
+    [
+     390,
+     "A crashes 8 HP into the enemy tower"
+    ],
+    [
+     390,
+     "B returns next turn, invests 11.0"
+    ],
+    [
+     400,
+     "A recalls (HP 350, gold 14.7 unspent)"
+    ],
+    [
+     401,
+     "A returns next turn, invests 14.7"
+    ],
+    [
+     408,
+     "B recalls (HP 252, gold 8.0 unspent)"
+    ],
+    [
+     409,
+     "B returns next turn, invests 8.0"
+    ],
+    [
+     427,
+     "A dies (ganked; HP 31 before, gold 10.9 unspent)"
+    ],
+    [
+     428,
+     "A crashes 5 HP into the enemy tower"
+    ],
+    [
+     430,
+     "A returns next turn, invests 11.9"
+    ],
+    [
+     431,
+     "B crashes 4 HP into the enemy tower"
+    ],
+    [
+     442,
+     "B crashes 5 HP into the enemy tower"
+    ],
+    [
+     454,
+     "B crashes 5 HP into the enemy tower"
+    ]
+   ]
+  },
+  "mixed_s0_selfplay": {
+   "path": "results\\rl\\m43b\\trajectories\\mixed_s0_selfplay.json",
+   "names": [
+    "final:mixed:0",
+    "final:mixed:0"
+   ],
+   "label": "100% current, entropy 0.01, 50% of games from the archive of reachable states (follow-up): final against itself",
+   "seed": 67000,
+   "turns": 460,
+   "payoff_A": 5.249999999999994,
+   "counters": {
+    "deaths": [
+     11,
+     10
+    ],
+    "recalls": [
+     15,
+     13
+    ],
+    "crashes": [
+     50,
+     52
+    ],
+    "plates": [
+     3,
+     3
+    ],
+    "trades_connected": [
+     118,
+     133
+    ],
+    "farm": [
+     168.20000000000027,
+     162.45000000000013
+    ],
+    "invested": [
+     176.03125,
+     167.38749999999996
+    ],
+    "returns_after_death": [
+     11,
+     10
+    ],
+    "returns_after_recall": [
+     15,
+     13
+    ]
+   },
+   "action_shares": {
+    "0": {
+     "Hold": 0.17718446601941748,
+     "Thin": 0.12864077669902912,
+     "Clear": 0.6941747572815534,
+     "Trade": 0.3883495145631068,
+     "Safe": 0.15776699029126215,
+     "Recall": 0.03640776699029126,
+     "Pressure": 0.03398058252427184
+    },
+    "1": {
+     "Hold": 0.16546762589928057,
+     "Thin": 0.11990407673860912,
+     "Clear": 0.7146282973621103,
+     "Trade": 0.42685851318944845,
+     "Safe": 0.13908872901678657,
+     "Recall": 0.03357314148681055,
+     "Pressure": 0.023980815347721823
+    }
+   },
+   "events": [
+    [
+     3,
+     "A reaches level 2"
+    ],
+    [
+     3,
+     "B reaches level 2"
+    ],
+    [
+     5,
+     "A reaches level 3"
+    ],
+    [
+     5,
+     "B reaches level 3"
+    ],
+    [
+     9,
+     "A reaches level 4"
+    ],
+    [
+     9,
+     "B reaches level 4"
+    ],
+    [
+     13,
+     "A reaches level 5"
+    ],
+    [
+     13,
+     "B reaches level 5"
+    ],
+    [
+     18,
+     "A dies (trade; HP 54 before, gold 6.6 unspent)"
+    ],
+    [
+     19,
+     "B reaches level 6"
+    ],
+    [
+     21,
+     "A returns next turn, invests 6.6"
+    ],
+    [
+     22,
+     "A reaches level 6"
+    ],
+    [
+     22,
+     "B crashes 15 HP into the enemy tower"
+    ],
+    [
+     23,
+     "B reaches level 7"
+    ],
+    [
+     24,
+     "B crashes 5 HP into the enemy tower"
+    ],
+    [
+     25,
+     "A reaches level 7"
+    ],
+    [
+     29,
+     "B dies (trade; HP 132 before, gold 11.2 unspent)"
+    ],
+    [
+     31,
+     "A crashes 5 HP into the enemy tower"
+    ],
+    [
+     31,
+     "A reaches level 8"
+    ],
+    [
+     32,
+     "A crashes 8 HP into the enemy tower"
+    ],
+    [
+     32,
+     "B returns next turn, invests 11.5"
+    ],
+    [
+     33,
+     "B reaches level 8"
+    ],
+    [
+     34,
+     "A crashes 4 HP into the enemy tower"
+    ],
+    [
+     36,
+     "A dies (trade; HP 173 before, gold 7.3 unspent)"
+    ],
+    [
+     38,
+     "B crashes 8 HP into the enemy tower"
+    ],
+    [
+     39,
+     "A returns next turn, invests 7.5"
+    ],
+    [
+     39,
+     "B breaks a plate (+1.0)"
+    ],
+    [
+     39,
+     "B reaches level 9"
+    ],
+    [
+     40,
+     "B crashes 4 HP into the enemy tower"
+    ],
+    [
+     42,
+     "A reaches level 9"
+    ],
+    [
+     42,
+     "B crashes 4 HP into the enemy tower"
+    ],
+    [
+     44,
+     "B crashes 4 HP into the enemy tower"
+    ],
+    [
+     45,
+     "B dies (ganked; HP 213 before, gold 7.2 unspent)"
+    ],
+    [
+     46,
+     "B crashes 4 HP into the enemy tower"
+    ],
+    [
+     48,
+     "A crashes 8 HP into the enemy tower"
+    ],
+    [
+     48,
+     "A reaches level 10"
+    ],
+    [
+     48,
+     "B returns next turn, invests 8.1"
+    ],
+    [
+     49,
+     "A breaks a plate (+1.0)"
+    ],
+    [
+     49,
+     "B reaches level 10"
+    ],
+    [
+     50,
+     "A crashes 3 HP into the enemy tower"
+    ],
+    [
+     52,
+     "A crashes 3 HP into the enemy tower"
+    ],
+    [
+     54,
+     "A crashes 3 HP into the enemy tower"
+    ],
+    [
+     55,
+     "A dies (trade; HP 207 before, gold 8.0 unspent)"
+    ],
+    [
+     56,
+     "A crashes 3 HP into the enemy tower"
+    ],
+    [
+     56,
+     "B reaches level 11"
+    ],
+    [
+     58,
+     "A returns next turn, invests 8.9"
+    ],
+    [
+     58,
+     "B crashes 8 HP into the enemy tower"
+    ],
+    [
+     59,
+     "A reaches level 11"
+    ],
+    [
+     60,
+     "B crashes 3 HP into the enemy tower"
+    ],
+    [
+     62,
+     "B crashes 3 HP into the enemy tower"
+    ],
+    [
+     64,
+     "A crashes 3 HP into the enemy tower"
+    ],
+    [
+     64,
+     "B dies (trade; HP 152 before, gold 6.8 unspent)"
+    ],
+    [
+     65,
+     "A dies (ganked; HP 238 before, gold 3.5 unspent)"
+    ],
+    [
+     66,
+     "A crashes 8 HP into the enemy tower"
+    ],
+    [
+     67,
+     "B returns next turn, invests 8.1"
+    ],
+    [
+     68,
+     "A returns next turn, invests 4.4"
+    ],
+    [
+     68,
+     "B reaches level 12"
+    ],
+    [
+     69,
+     "A reaches level 12"
+    ],
+    [
+     70,
+     "B crashes 7 HP into the enemy tower"
+    ],
+    [
+     72,
+     "B crashes 2 HP into the enemy tower"
+    ],
+    [
+     74,
+     "B crashes 2 HP into the enemy tower"
+    ],
+    [
+     76,
+     "B crashes 2 HP into the enemy tower"
+    ],
+    [
+     77,
+     "B reaches level 13"
+    ],
+    [
+     78,
+     "A reaches level 13"
+    ],
+    [
+     78,
+     "B crashes 2 HP into the enemy tower"
+    ],
+    [
+     80,
+     "B crashes 2 HP into the enemy tower"
+    ],
+    [
+     82,
+     "B crashes 2 HP into the enemy tower"
+    ],
+    [
+     84,
+     "B crashes 2 HP into the enemy tower"
+    ],
+    [
+     86,
+     "B crashes 2 HP into the enemy tower"
+    ],
+    [
+     87,
+     "A recalls (HP 10, gold 7.7 unspent)"
+    ],
+    [
+     88,
+     "A returns next turn, invests 7.7"
+    ],
+    [
+     88,
+     "B crashes 8 HP into the enemy tower"
+    ],
+    [
+     89,
+     "B breaks a plate (+1.0)"
+    ],
+    [
+     89,
+     "B reaches level 14"
+    ],
+    [
+     90,
+     "A reaches level 14"
+    ],
+    [
+     90,
+     "B crashes 2 HP into the enemy tower"
+    ],
+    [
+     92,
+     "B dies (trade; HP 140 before, gold 11.6 unspent)"
+    ],
+    [
+     92,
+     "B's recall is interrupted"
+    ],
+    [
+     94,
+     "A crashes 13 HP into the enemy tower"
+    ],
+    [
+     95,
+     "A breaks a plate (+1.0)"
+    ],
+    [
+     95,
+     "B returns next turn, invests 11.6"
+    ],
+    [
+     96,
+     "A crashes 8 HP into the enemy tower"
+    ],
+    [
+     97,
+     "A breaks a plate (+1.0)"
+    ],
+    [
+     98,
+     "A crashes 1 HP into the enemy tower"
+    ],
+    [
+     102,
+     "A reaches level 15"
+    ],
+    [
+     102,
+     "B crashes 6 HP into the enemy tower"
+    ],
+    [
+     103,
+     "A recalls (HP 350, gold 8.5 unspent)"
+    ],
+    [
+     103,
+     "B reaches level 15"
+    ],
+    [
+     104,
+     "A returns next turn, invests 8.5"
+    ],
+    [
+     104,
+     "B crashes 8 HP into the enemy tower"
+    ],
+    [
+     106,
+     "B crashes 1 HP into the enemy tower"
+    ],
+    [
+     108,
+     "B crashes 1 HP into the enemy tower"
+    ],
+    [
+     110,
+     "B crashes 1 HP into the enemy tower"
+    ],
+    [
+     112,
+     "B crashes 1 HP into the enemy tower"
+    ],
+    [
+     114,
+     "A reaches level 16"
+    ],
+    [
+     114,
+     "B crashes 1 HP into the enemy tower"
+    ],
+    [
+     115,
+     "B dies (trade; HP 24 before, gold 8.8 unspent)"
+    ],
+    [
+     117,
+     "A crashes 4 HP into the enemy tower"
+    ],
+    [
+     118,
+     "A crashes 8 HP into the enemy tower"
+    ],
+    [
+     118,
+     "B returns next turn, invests 8.9"
+    ],
+    [
+     119,
+     "B reaches level 16"
+    ],
+    [
+     120,
+     "A dies (tower; HP 81 before, gold 8.0 unspent)"
+    ],
+    [
+     122,
+     "B crashes 8 HP into the enemy tower"
+    ],
+    [
+     123,
+     "A returns next turn, invests 8.0"
+    ],
+    [
+     123,
+     "B breaks a plate (+1.0)"
+    ],
+    [
+     130,
+     "A reaches level 17"
+    ],
+    [
+     130,
+     "B crashes 4 HP into the enemy tower"
+    ],
+    [
+     133,
+     "B reaches level 17"
+    ],
+    [
+     134,
+     "A crashes 5 HP into the enemy tower"
+    ],
+    [
+     137,
+     "A dies (ganked; HP 490 before, gold 4.9 unspent)"
+    ],
+    [
+     138,
+     "A crashes 4 HP into the enemy tower"
+    ],
+    [
+     139,
+     "B recalls (HP 84, gold 10.3 unspent)"
+    ],
+    [
+     140,
+     "A returns next turn, invests 6.4"
+    ],
+    [
+     140,
+     "B returns next turn, invests 10.3"
+    ],
+    [
+     143,
+     "A dies (trade; HP 390 before, gold 0.2 unspent)"
+    ],
+    [
+     143,
+     "A reaches level 18"
+    ],
+    [
+     144,
+     "A crashes 7 HP into the enemy tower"
+    ],
+    [
+     146,
+     "A returns next turn, invests 2.1"
+    ],
+    [
+     146,
+     "B reaches level 18"
+    ],
+    [
+     147,
+     "B crashes 6 HP into the enemy tower"
+    ],
+    [
+     154,
+     "B crashes 3 HP into the enemy tower"
+    ],
+    [
+     158,
+     "B crashes 3 HP into the enemy tower"
+    ],
+    [
+     161,
+     "B recalls (HP 267, gold 8.1 unspent)"
+    ],
+    [
+     162,
+     "A crashes 13 HP into the enemy tower"
+    ],
+    [
+     162,
+     "B returns next turn, invests 8.1"
+    ],
+    [
+     165,
+     "A crashes 6 HP into the enemy tower"
+    ],
+    [
+     168,
+     "A recalls (HP 105, gold 9.0 unspent)"
+    ],
+    [
+     169,
+     "A returns next turn, invests 9.0"
+    ],
+    [
+     172,
+     "B crashes 4 HP into the enemy tower"
+    ],
+    [
+     173,
+     "B dies (ganked; HP 566 before, gold 4.9 unspent)"
+    ],
+    [
+     175,
+     "A crashes 5 HP into the enemy tower"
+    ],
+    [
+     176,
+     "A crashes 8 HP into the enemy tower"
+    ],
+    [
+     176,
+     "B returns next turn, invests 5.0"
+    ],
+    [
+     188,
+     "A crashes 7 HP into the enemy tower"
+    ],
+    [
+     191,
+     "A recalls (HP 67, gold 8.2 unspent)"
+    ],
+    [
+     192,
+     "A returns next turn, invests 8.2"
+    ],
+    [
+     192,
+     "B crashes 12 HP into the enemy tower"
+    ],
+    [
+     199,
+     "B recalls (HP 232, gold 8.0 unspent)"
+    ],
+    [
+     200,
+     "A crashes 12 HP into the enemy tower"
+    ],
+    [
+     200,
+     "B returns next turn, invests 8.0"
+    ],
+    [
+     204,
+     "A crashes 3 HP into the enemy tower"
+    ],
+    [
+     207,
+     "A recalls (HP 335, gold 5.8 unspent)"
+    ],
+    [
+     208,
+     "A returns next turn, invests 5.8"
+    ],
+    [
+     208,
+     "B crashes 12 HP into the enemy tower"
+    ],
+    [
+     215,
+     "B recalls (HP 335, gold 5.5 unspent)"
+    ],
+    [
+     216,
+     "A crashes 12 HP into the enemy tower"
+    ],
+    [
+     216,
+     "B returns next turn, invests 5.5"
+    ],
+    [
+     219,
+     "A crashes 6 HP into the enemy tower"
+    ],
+    [
+     225,
+     "A dies (ganked; HP 207 before, gold 7.1 unspent)"
+    ],
+    [
+     226,
+     "A crashes 3 HP into the enemy tower"
+    ],
+    [
+     228,
+     "A returns next turn, invests 8.5"
+    ],
+    [
+     229,
+     "B crashes 6 HP into the enemy tower"
+    ],
+    [
+     230,
+     "B recalls (HP 437, gold 6.8 unspent)"
+    ],
+    [
+     231,
+     "B returns next turn, invests 6.8"
+    ],
+    [
+     234,
+     "A crashes 4 HP into the enemy tower"
+    ],
+    [
+     240,
+     "A crashes 6 HP into the enemy tower"
+    ],
+    [
+     243,
+     "A dies (ganked; HP 212 before, gold 6.0 unspent)"
+    ],
+    [
+     244,
+     "B dies (ganked; HP 3 before, gold 4.2 unspent)"
+    ],
+    [
+     246,
+     "A returns next turn, invests 6.5"
+    ],
+    [
+     247,
+     "B returns next turn, invests 5.1"
+    ],
+    [
+     254,
+     "B crashes 6 HP into the enemy tower"
+    ],
+    [
+     258,
+     "B recalls (HP 555, gold 3.9 unspent)"
+    ],
+    [
+     259,
+     "B returns next turn, invests 3.9"
+    ],
+    [
+     260,
+     "A crashes 11 HP into the enemy tower"
+    ],
+    [
+     267,
+     "A recalls (HP 556, gold 8.1 unspent)"
+    ],
+    [
+     268,
+     "A returns next turn, invests 8.1"
+    ],
+    [
+     268,
+     "B crashes 12 HP into the enemy tower"
+    ],
+    [
+     276,
+     "A crashes 6 HP into the enemy tower"
+    ],
+    [
+     280,
+     "A crashes 3 HP into the enemy tower"
+    ],
+    [
+     281,
+     "A dies (tower; HP 446 before, gold 5.5 unspent)"
+    ],
+    [
+     281,
+     "B dies (trade; HP 109 before, gold 8.1 unspent)"
+    ],
+    [
+     284,
+     "A returns next turn, invests 6.0"
+    ],
+    [
+     284,
+     "B returns next turn, invests 8.6"
+    ],
+    [
+     293,
+     "A dies (ganked; HP 571 before, gold 0.8 unspent)"
+    ],
+    [
+     294,
+     "A crashes 7 HP into the enemy tower"
+    ],
+    [
+     296,
+     "A returns next turn, invests 3.0"
+    ],
+    [
+     297,
+     "B crashes 6 HP into the enemy tower"
+    ],
+    [
+     298,
+     "B recalls (HP 686, gold 4.8 unspent)"
+    ],
+    [
+     299,
+     "B returns next turn, invests 4.8"
+    ],
+    [
+     302,
+     "A crashes 4 HP into the enemy tower"
+    ],
+    [
+     308,
+     "B crashes 4 HP into the enemy tower"
+    ],
+    [
+     311,
+     "A recalls (HP 340, gold 5.3 unspent)"
+    ],
+    [
+     312,
+     "A returns next turn, invests 5.3"
+    ],
+    [
+     312,
+     "B crashes 12 HP into the enemy tower"
+    ],
+    [
+     320,
+     "A crashes 4 HP into the enemy tower"
+    ],
+    [
+     320,
+     "B dies (trade; HP 225 before, gold 7.3 unspent)"
+    ],
+    [
+     323,
+     "A crashes 6 HP into the enemy tower"
+    ],
+    [
+     323,
+     "B returns next turn, invests 8.6"
+    ],
+    [
+     324,
+     "A crashes 8 HP into the enemy tower"
+    ],
+    [
+     330,
+     "B crashes 4 HP into the enemy tower"
+    ],
+    [
+     334,
+     "B crashes 3 HP into the enemy tower"
+    ],
+    [
+     335,
+     "B dies (trade; HP 347 before, gold 5.0 unspent)"
+    ],
+    [
+     337,
+     "A crashes 5 HP into the enemy tower"
+    ],
+    [
+     338,
+     "A crashes 8 HP into the enemy tower"
+    ],
+    [
+     338,
+     "B returns next turn, invests 5.0"
+    ],
+    [
+     345,
+     "A recalls (HP 573, gold 14.3 unspent)"
+    ],
+    [
+     346,
+     "A returns next turn, invests 14.3"
+    ],
+    [
+     346,
+     "B crashes 12 HP into the enemy tower"
+    ],
+    [
+     349,
+     "B crashes 6 HP into the enemy tower"
+    ],
+    [
+     352,
+     "B recalls (HP 347, gold 6.5 unspent)"
+    ],
+    [
+     353,
+     "B returns next turn, invests 6.5"
+    ],
+    [
+     359,
+     "A crashes 14 HP into the enemy tower"
+    ],
+    [
+     362,
+     "A recalls (HP 234, gold 6.9 unspent)"
+    ],
+    [
+     363,
+     "A returns next turn, invests 6.9"
+    ],
+    [
+     366,
+     "B crashes 3 HP into the enemy tower"
+    ],
+    [
+     369,
+     "B recalls (HP 348, gold 5.0 unspent)"
+    ],
+    [
+     370,
+     "A crashes 12 HP into the enemy tower"
+    ],
+    [
+     370,
+     "B returns next turn, invests 5.0"
+    ],
+    [
+     373,
+     "A crashes 6 HP into the enemy tower"
+    ],
+    [
+     376,
+     "A recalls (HP 692, gold 5.6 unspent)"
+    ],
+    [
+     377,
+     "A returns next turn, invests 5.6"
+    ],
+    [
+     384,
+     "A crashes 1 HP into the enemy tower"
+    ],
+    [
+     387,
+     "A recalls (HP 351, gold 2.9 unspent)"
+    ],
+    [
+     388,
+     "A returns next turn, invests 2.9"
+    ],
+    [
+     388,
+     "B crashes 12 HP into the enemy tower"
+    ],
+    [
+     395,
+     "A recalls (HP 465, gold 2.7 unspent)"
+    ],
+    [
+     396,
+     "A returns next turn, invests 2.7"
+    ],
+    [
+     396,
+     "B crashes 12 HP into the enemy tower"
+    ],
+    [
+     401,
+     "B recalls (HP 237, gold 11.1 unspent)"
+    ],
+    [
+     402,
+     "A crashes 12 HP into the enemy tower"
+    ],
+    [
+     402,
+     "B returns next turn, invests 11.1"
+    ],
+    [
+     410,
+     "B recalls (HP 692, gold 3.5 unspent)"
+    ],
+    [
+     411,
+     "B returns next turn, invests 3.5"
+    ],
+    [
+     412,
+     "A crashes 11 HP into the enemy tower"
+    ],
+    [
+     420,
+     "B crashes 2 HP into the enemy tower"
+    ],
+    [
+     423,
+     "A recalls (HP 241, gold 10.2 unspent)"
+    ],
+    [
+     424,
+     "A returns next turn, invests 10.2"
+    ],
+    [
+     424,
+     "B crashes 13 HP into the enemy tower"
+    ],
+    [
+     431,
+     "B recalls (HP 127, gold 7.2 unspent)"
+    ],
+    [
+     432,
+     "A crashes 12 HP into the enemy tower"
+    ],
+    [
+     432,
+     "B returns next turn, invests 7.2"
+    ],
+    [
+     435,
+     "A crashes 6 HP into the enemy tower"
+    ],
+    [
+     438,
+     "A recalls (HP 690, gold 6.5 unspent)"
+    ],
+    [
+     439,
+     "A returns next turn, invests 6.5"
+    ],
+    [
+     446,
+     "B crashes 10 HP into the enemy tower"
+    ],
+    [
+     449,
+     "B recalls (HP 16, gold 6.0 unspent)"
+    ],
+    [
+     450,
+     "A crashes 11 HP into the enemy tower"
+    ],
+    [
+     450,
+     "B returns next turn, invests 6.0"
+    ],
+    [
+     453,
+     "A crashes 6 HP into the enemy tower"
+    ],
+    [
+     456,
+     "A recalls (HP 136, gold 6.5 unspent)"
+    ],
+    [
+     457,
+     "A returns next turn, invests 6.5"
+    ]
+   ]
+  },
+  "attacker_vs_base_s0": {
+   "path": "results\\rl\\m43b\\trajectories\\attacker_vs_base_s0.json",
+   "names": [
+    "attacker:base:0",
+    "final:base:0"
+   ],
+   "label": "the approximate best response (A) against the baseline final it was trained on (B)",
+   "seed": 67000,
+   "turns": 460,
+   "payoff_A": 18.906249999999986,
+   "counters": {
+    "deaths": [
+     5,
+     10
+    ],
+    "recalls": [
+     10,
+     11
+    ],
+    "crashes": [
+     34,
+     29
+    ],
+    "plates": [
+     3,
+     3
+    ],
+    "trades_connected": [
+     67,
+     49
+    ],
+    "farm": [
+     168.1687500000001,
+     151.76250000000005
+    ],
+    "invested": [
+     173.75,
+     141.28124999999997
+    ],
+    "returns_after_death": [
+     5,
+     10
+    ],
+    "returns_after_recall": [
+     10,
+     11
+    ]
+   },
+   "action_shares": {
+    "0": {
+     "Hold": 0.15862068965517243,
+     "Thin": 0.18620689655172415,
+     "Clear": 0.6551724137931034,
+     "Trade": 0.19310344827586207,
+     "Safe": 0.3448275862068966,
+     "Recall": 0.02528735632183908,
+     "Pressure": 0.013793103448275862
+    },
+    "1": {
+     "Hold": 0.06205250596658711,
+     "Thin": 0.081145584725537,
+     "Clear": 0.8568019093078759,
+     "Trade": 0.22195704057279236,
+     "Safe": 0.0954653937947494,
+     "Recall": 0.028639618138424822,
+     "Pressure": 0.00954653937947494
+    }
+   },
+   "events": [
+    [
+     3,
+     "A reaches level 2"
+    ],
+    [
+     3,
+     "B reaches level 2"
+    ],
+    [
+     5,
+     "A reaches level 3"
+    ],
+    [
+     5,
+     "B reaches level 3"
+    ],
+    [
+     9,
+     "A reaches level 4"
+    ],
+    [
+     9,
+     "B reaches level 4"
+    ],
+    [
+     13,
+     "A reaches level 5"
+    ],
+    [
+     13,
+     "B reaches level 5"
+    ],
+    [
+     19,
+     "A recalls (HP 297, gold 6.6 unspent)"
+    ],
+    [
+     19,
+     "B reaches level 6"
+    ],
+    [
+     20,
+     "A returns next turn, invests 6.6"
+    ],
+    [
+     21,
+     "A reaches level 6"
+    ],
+    [
+     22,
+     "B crashes 9 HP into the enemy tower"
+    ],
+    [
+     24,
+     "B reaches level 7"
+    ],
+    [
+     25,
+     "A reaches level 7"
+    ],
+    [
+     30,
+     "A crashes 5 HP into the enemy tower"
+    ],
+    [
+     31,
+     "A reaches level 8"
+    ],
+    [
+     31,
+     "B reaches level 8"
+    ],
+    [
+     37,
+     "A reaches level 9"
+    ],
+    [
+     38,
+     "A crashes 5 HP into the enemy tower"
+    ],
+    [
+     38,
+     "B reaches level 9"
+    ],
+    [
+     43,
+     "A recalls (HP 216, gold 9.8 unspent)"
+    ],
+    [
+     44,
+     "A returns next turn, invests 9.8"
+    ],
+    [
+     45,
+     "B reaches level 10"
+    ],
+    [
+     46,
+     "B crashes 3 HP into the enemy tower"
+    ],
+    [
+     47,
+     "A reaches level 10"
+    ],
+    [
+     50,
+     "A crashes 5 HP into the enemy tower"
+    ],
+    [
+     51,
+     "A breaks a plate (+1.0)"
+    ],
+    [
+     51,
+     "B recalls (HP 186, gold 19.8 unspent)"
+    ],
+    [
+     52,
+     "B returns next turn, invests 19.8"
+    ],
+    [
+     54,
+     "A crashes 3 HP into the enemy tower"
+    ],
+    [
+     56,
+     "B reaches level 11"
+    ],
+    [
+     57,
+     "A reaches level 11"
+    ],
+    [
+     58,
+     "B crashes 3 HP into the enemy tower"
+    ],
+    [
+     60,
+     "B crashes 3 HP into the enemy tower"
+    ],
+    [
+     62,
+     "B crashes 3 HP into the enemy tower"
+    ],
+    [
+     63,
+     "B dies (trade; HP 119 before, gold 5.0 unspent)"
+    ],
+    [
+     63,
+     "B reaches level 12"
+    ],
+    [
+     64,
+     "B crashes 3 HP into the enemy tower"
+    ],
+    [
+     65,
+     "A dies (ganked; HP 319 before, gold 10.3 unspent)"
+    ],
+    [
+     65,
+     "A reaches level 12"
+    ],
+    [
+     66,
+     "A crashes 8 HP into the enemy tower"
+    ],
+    [
+     66,
+     "B returns next turn, invests 6.3"
+    ],
+    [
+     68,
+     "A returns next turn, invests 11.2"
+    ],
+    [
+     70,
+     "B crashes 2 HP into the enemy tower"
+    ],
+    [
+     72,
+     "B crashes 2 HP into the enemy tower"
+    ],
+    [
+     74,
+     "B crashes 2 HP into the enemy tower"
+    ],
+    [
+     75,
+     "B reaches level 13"
+    ],
+    [
+     76,
+     "A reaches level 13"
+    ],
+    [
+     76,
+     "B crashes 2 HP into the enemy tower"
+    ],
+    [
+     78,
+     "B dies (tower; HP 75 before, gold 5.9 unspent)"
+    ],
+    [
+     78,
+     "B crashes 2 HP into the enemy tower"
+    ],
+    [
+     80,
+     "A crashes 8 HP into the enemy tower"
+    ],
+    [
+     81,
+     "B returns next turn, invests 5.9"
+    ],
+    [
+     82,
+     "A crashes 2 HP into the enemy tower"
+    ],
+    [
+     84,
+     "B crashes 2 HP into the enemy tower"
+    ],
+    [
+     86,
+     "A recalls (HP 118, gold 7.4 unspent)"
+    ],
+    [
+     87,
+     "A returns next turn, invests 7.4"
+    ],
+    [
+     87,
+     "B reaches level 14"
+    ],
+    [
+     88,
+     "A reaches level 14"
+    ],
+    [
+     88,
+     "B crashes 12 HP into the enemy tower"
+    ],
+    [
+     92,
+     "A crashes 2 HP into the enemy tower"
+    ],
+    [
+     94,
+     "A crashes 2 HP into the enemy tower"
+    ],
+    [
+     96,
+     "B crashes 1 HP into the enemy tower"
+    ],
+    [
+     99,
+     "A reaches level 15"
+    ],
+    [
+     100,
+     "A crashes 2 HP into the enemy tower"
+    ],
+    [
+     100,
+     "B dies (trade; HP 38 before, gold 7.1 unspent)"
+    ],
+    [
+     100,
+     "B reaches level 15"
+    ],
+    [
+     102,
+     "A crashes 8 HP into the enemy tower"
+    ],
+    [
+     103,
+     "A breaks a plate (+1.0)"
+    ],
+    [
+     103,
+     "B returns next turn, invests 7.9"
+    ],
+    [
+     104,
+     "A crashes 1 HP into the enemy tower"
+    ],
+    [
+     111,
+     "A reaches level 16"
+    ],
+    [
+     112,
+     "A crashes 9 HP into the enemy tower"
+    ],
+    [
+     115,
+     "B reaches level 16"
+    ],
+    [
+     116,
+     "B crashes 1 HP into the enemy tower"
+    ],
+    [
+     125,
+     "A recalls (HP 219, gold 16.1 unspent)"
+    ],
+    [
+     126,
+     "A returns next turn, invests 16.1"
+    ],
+    [
+     128,
+     "A reaches level 17"
+    ],
+    [
+     129,
+     "B recalls (HP 928, gold 8.4 unspent)"
+    ],
+    [
+     130,
+     "B returns next turn, invests 8.4"
+    ],
+    [
+     132,
+     "B reaches level 17"
+    ],
+    [
+     137,
+     "B recalls (HP 937, gold 2.2 unspent)"
+    ],
+    [
+     138,
+     "B returns next turn, invests 2.2"
+    ],
+    [
+     142,
+     "A reaches level 18"
+    ],
+    [
+     152,
+     "B reaches level 18"
+    ],
+    [
+     153,
+     "B crashes 18 HP into the enemy tower"
+    ],
+    [
+     158,
+     "B recalls (HP 398, gold 5.5 unspent)"
+    ],
+    [
+     159,
+     "A crashes 4 HP into the enemy tower"
+    ],
+    [
+     159,
+     "B returns next turn, invests 5.5"
+    ],
+    [
+     160,
+     "A crashes 8 HP into the enemy tower"
+    ],
+    [
+     160,
+     "A breaks a plate (+1.0)"
+    ],
+    [
+     167,
+     "B crashes 1 HP into the enemy tower"
+    ],
+    [
+     174,
+     "B recalls (HP 190, gold 5.9 unspent)"
+    ],
+    [
+     175,
+     "B returns next turn, invests 5.9"
+    ],
+    [
+     176,
+     "A crashes 3 HP into the enemy tower"
+    ],
+    [
+     184,
+     "B recalls (HP 999, gold 3.8 unspent)"
+    ],
+    [
+     185,
+     "B returns next turn, invests 3.8"
+    ],
+    [
+     186,
+     "A recalls (HP 785, gold 24.6 unspent)"
+    ],
+    [
+     187,
+     "A returns next turn, invests 24.6"
+    ],
+    [
+     201,
+     "B crashes 18 HP into the enemy tower"
+    ],
+    [
+     208,
+     "B recalls (HP 1251, gold 6.4 unspent)"
+    ],
+    [
+     209,
+     "B returns next turn, invests 6.4"
+    ],
+    [
+     217,
+     "B crashes 18 HP into the enemy tower"
+    ],
+    [
+     223,
+     "B dies (trade; HP 69 before, gold 3.8 unspent)"
+    ],
+    [
+     226,
+     "B returns next turn, invests 4.7"
+    ],
+    [
+     227,
+     "A crashes 5 HP into the enemy tower"
+    ],
+    [
+     228,
+     "A recalls (HP 663, gold 15.3 unspent)"
+    ],
+    [
+     229,
+     "A returns next turn, invests 15.3"
+    ],
+    [
+     237,
+     "B dies (trade; HP 309 before, gold 4.9 unspent)"
+    ],
+    [
+     240,
+     "B returns next turn, invests 5.8"
+    ],
+    [
+     241,
+     "A crashes 5 HP into the enemy tower"
+    ],
+    [
+     246,
+     "A dies (trade; HP 327 before, gold 7.6 unspent)"
+    ],
+    [
+     248,
+     "B crashes 8 HP into the enemy tower"
+    ],
+    [
+     249,
+     "A returns next turn, invests 8.8"
+    ],
+    [
+     249,
+     "B dies (ganked; HP 317 before, gold 4.3 unspent)"
+    ],
+    [
+     249,
+     "B breaks a plate (+1.0)"
+    ],
+    [
+     252,
+     "B returns next turn, invests 6.1"
+    ],
+    [
+     253,
+     "A crashes 6 HP into the enemy tower"
+    ],
+    [
+     262,
+     "B recalls (HP 1256, gold 3.5 unspent)"
+    ],
+    [
+     263,
+     "B returns next turn, invests 3.5"
+    ],
+    [
+     264,
+     "A crashes 12 HP into the enemy tower"
+    ],
+    [
+     284,
+     "B dies (ganked; HP 86 before, gold 9.5 unspent)"
+    ],
+    [
+     286,
+     "A crashes 8 HP into the enemy tower"
+    ],
+    [
+     287,
+     "B returns next turn, invests 9.5"
+    ],
+    [
+     303,
+     "A dies (ganked; HP 108 before, gold 19.2 unspent)"
+    ],
+    [
+     303,
+     "B crashes 20 HP into the enemy tower"
+    ],
+    [
+     304,
+     "B crashes 8 HP into the enemy tower"
+    ],
+    [
+     305,
+     "B breaks a plate (+1.0)"
+    ],
+    [
+     306,
+     "A returns next turn, invests 20.7"
+    ],
+    [
+     306,
+     "B crashes 8 HP into the enemy tower"
+    ],
+    [
+     312,
+     "A crashes 1 HP into the enemy tower"
+    ],
+    [
+     313,
+     "B recalls (HP 670, gold 8.1 unspent)"
+    ],
+    [
+     314,
+     "B returns next turn, invests 8.1"
+    ],
+    [
+     315,
+     "A crashes 5 HP into the enemy tower"
+    ],
+    [
+     316,
+     "A recalls (HP 1145, gold 4.7 unspent)"
+    ],
+    [
+     317,
+     "A returns next turn, invests 4.7"
+    ],
+    [
+     319,
+     "B crashes 1 HP into the enemy tower"
+    ],
+    [
+     333,
+     "B dies (trade; HP 213 before, gold 5.3 unspent)"
+    ],
+    [
+     335,
+     "A crashes 20 HP into the enemy tower"
+    ],
+    [
+     336,
+     "A crashes 8 HP into the enemy tower"
+    ],
+    [
+     336,
+     "B returns next turn, invests 5.4"
+    ],
+    [
+     353,
+     "B crashes 20 HP into the enemy tower"
+    ],
+    [
+     355,
+     "A recalls (HP 20, gold 12.9 unspent)"
+    ],
+    [
+     356,
+     "A returns next turn, invests 12.9"
+    ],
+    [
+     357,
+     "B crashes 6 HP into the enemy tower"
+    ],
+    [
+     358,
+     "B recalls (HP 682, gold 6.7 unspent)"
+    ],
+    [
+     359,
+     "B returns next turn, invests 6.7"
+    ],
+    [
+     373,
+     "B dies (ganked; HP 447 before, gold 3.3 unspent)"
+    ],
+    [
+     375,
+     "A crashes 17 HP into the enemy tower"
+    ],
+    [
+     376,
+     "A crashes 8 HP into the enemy tower"
+    ],
+    [
+     376,
+     "B returns next turn, invests 3.5"
+    ],
+    [
+     377,
+     "A dies (ganked; HP 244 before, gold 8.9 unspent)"
+    ],
+    [
+     380,
+     "A returns next turn, invests 8.9"
+    ],
+    [
+     380,
+     "B crashes 8 HP into the enemy tower"
+    ],
+    [
+     381,
+     "B breaks a plate (+1.0)"
+    ],
+    [
+     391,
+     "A crashes 8 HP into the enemy tower"
+    ],
+    [
+     397,
+     "B dies (ganked; HP 682 before, gold 9.1 unspent)"
+    ],
+    [
+     400,
+     "B returns next turn, invests 11.2"
+    ],
+    [
+     401,
+     "A crashes 5 HP into the enemy tower"
+    ],
+    [
+     402,
+     "A recalls (HP 1038, gold 9.8 unspent)"
+    ],
+    [
+     403,
+     "A returns next turn, invests 9.8"
+    ],
+    [
+     410,
+     "A crashes 8 HP into the enemy tower"
+    ],
+    [
+     411,
+     "B's recall is interrupted"
+    ],
+    [
+     413,
+     "B recalls (HP 337, gold 4.5 unspent)"
+    ],
+    [
+     414,
+     "A crashes 8 HP into the enemy tower"
+    ],
+    [
+     414,
+     "B returns next turn, invests 4.5"
+    ],
+    [
+     421,
+     "A's recall is interrupted"
+    ],
+    [
+     422,
+     "A crashes 6 HP into the enemy tower"
+    ],
+    [
+     424,
+     "A recalls (HP 253, gold 7.4 unspent)"
+    ],
+    [
+     425,
+     "A returns next turn, invests 7.4"
+    ],
+    [
+     427,
+     "B crashes 5 HP into the enemy tower"
+    ],
+    [
+     434,
+     "A crashes 16 HP into the enemy tower"
+    ],
+    [
+     442,
+     "A crashes 16 HP into the enemy tower"
+    ],
+    [
+     449,
+     "A dies (tower; HP 248 before, gold 9.2 unspent)"
+    ],
+    [
+     452,
+     "A returns next turn, invests 9.3"
+    ],
+    [
+     452,
+     "B crashes 10 HP into the enemy tower"
+    ]
+   ]
+  }
+ }
+}

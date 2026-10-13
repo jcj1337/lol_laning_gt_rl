@@ -103,10 +103,12 @@ class Recording:
         return tuple(sum(t.info["earned_units"][s] for t in self.turns[:i]) / sc for s in (A, B))
 
 
-def play(setup: Setup, prefix: Sequence[Tuple[int, int]] = (), policies=(None, None), turns: int = 0) -> Recording:
+def play(setup: Setup, prefix: Sequence[Tuple[int, int]] = (), policies=(None, None), turns: int = 0,
+         prefix_note: str = "manual") -> Recording:
     """Replay `prefix` (pairs of action codes) from the setup's start and seed, then play `turns` more turns with the
     policies. A policy decides from the same pre-turn state for both sides (simultaneous moves). Illegal actions raise
-    (the environment's own check)."""
+    (the environment's own check). `prefix_note` labels prefix actions of a side without a policy ("manual", or
+    "recorded" for an exported trajectory)."""
     cfg = config(setup.config)
     lane, m4, k0 = start_state(setup)
     env = LaneEnv(cfg, record_ticks=True)
@@ -119,7 +121,7 @@ def play(setup: Setup, prefix: Sequence[Tuple[int, int]] = (), policies=(None, N
             if i < len(prefix):
                 pair[s] = int(prefix[i][s])
                 if pol is None:
-                    notes[s] = "manual"
+                    notes[s] = prefix_note
                 else:
                     code, why = pol.decide(cfg, env.state, env.champ, s)
                     notes[s] = why if code == pair[s] else "recorded"
@@ -131,6 +133,24 @@ def play(setup: Setup, prefix: Sequence[Tuple[int, int]] = (), policies=(None, N
         rec.champs.append(env.champ)
         rec.legal.append((env.legal(A), env.legal(B)))
     return rec
+
+
+RECORDING_SCHEMA = "lanegame.viewer_recording"
+
+
+def load_recording(path: str) -> Tuple[Setup, List[Tuple[int, int]], dict]:
+    """An exported trajectory (lanegame.experiments.rl.m43b.trajectories): (Setup, actions, metadata). Replaying it
+    with `play(setup, prefix=actions, prefix_note="recorded")` reproduces the recorded game exactly, because the
+    recording was played from the same start with the same integer chance seed."""
+    import json
+    with open(path, encoding="utf-8") as f:
+        d = json.load(f)
+    if d.get("schema") != RECORDING_SCHEMA:
+        raise ValueError(f"{path} is not a {RECORDING_SCHEMA} file")
+    setup = Setup(d.get("config", "m4_lasthit"), d.get("scenario", "s0"), d.get("gap", "equal"), int(d["seed"]))
+    actions = [(int(a), int(b)) for a, b in d["actions"]]
+    meta = {k: v for k, v in d.items() if k != "actions"}
+    return setup, actions, meta
 
 
 # ---------------------------------------------------------------------- global coordinates (rendering)

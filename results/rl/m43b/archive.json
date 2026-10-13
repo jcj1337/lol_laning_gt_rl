@@ -1,0 +1,272 @@
+{
+ "meta": {
+  "commit": "1ad88488018f229436d0ca2e1d215471c327a0c2",
+  "timestamp": "2026-10-12 21:05:07",
+  "python": "3.13.9",
+  "torch": "2.14.1+cpu",
+  "numpy": "2.5.3",
+  "config": {
+   "base": 4,
+   "tower": 2,
+   "ticks_per_turn": 2,
+   "spawn_interval": 4,
+   "horizon": 32,
+   "wave_hp": 8,
+   "max_stacks": 2,
+   "cap_rule": "block",
+   "queue_fights": true,
+   "positioning": true,
+   "damage_law": "lanchester_half",
+   "shove_damage": 1,
+   "tower_damage": 1,
+   "pressure_kappa": [
+    0,
+    1,
+    0
+   ],
+   "slowpush_line": 0,
+   "slowpush_mode": "stack_creep",
+   "slowpush_creep_period": 2,
+   "freeze_line": -1,
+   "freeze_break_threshold": 10,
+   "freeze_break_push": [
+    0,
+    4,
+    0
+   ],
+   "freeze_legal_max": -1,
+   "tower_mode": "mass",
+   "tower_consumption_per_turn": 1,
+   "tower_siege_damage": 3,
+   "siege_engage": false,
+   "siege_cap": 96,
+   "siege_mode": "objective",
+   "plate_mode": "durability",
+   "plate_grant": [
+    1,
+    2,
+    3
+   ],
+   "plates_cap": 6,
+   "plates_per_tower": 5,
+   "plates_per_turn": 1,
+   "plate_value": 1.0,
+   "thin_damage": 0,
+   "thin_reach": 1,
+   "crash_options": [
+    [
+     [
+      1.0,
+      false
+     ],
+     [
+      0.0,
+      true
+     ]
+    ],
+    [
+     [
+      2.0,
+      false
+     ],
+     [
+      0.0,
+      true
+     ]
+    ],
+    [
+     [
+      3.0,
+      false
+     ],
+     [
+      2.0,
+      true
+     ]
+    ]
+   ],
+   "vision_turns": 6,
+   "vision_reduction": 0.75,
+   "farm_per_hp": 0.125,
+   "collect_contest": 0.9,
+   "collect_contest_enemy_tower": 0.9,
+   "collect_contest_own_tower": 0.6,
+   "collect_safe": 0.8,
+   "collect_safe_slope": 0.2,
+   "zone_contest": 0.3,
+   "zone_under_tower": 0.15,
+   "zoning_rule": "none",
+   "gank_base": 0.15,
+   "gank_position": 0.1,
+   "gank_action": [
+    0.02,
+    0.05,
+    0.02,
+    0.0,
+    0.0,
+    0.0
+   ],
+   "gank_strength": 0.02,
+   "gank_max": 0.4,
+   "gank_loss": 5.0,
+   "posture_cap": [
+    null,
+    null,
+    null,
+    -1,
+    -1,
+    -1
+   ],
+   "champion_mode": true,
+   "champion_hp": 6,
+   "champion_speed": 2,
+   "champion_absent_max": 3,
+   "recall_turns": 2,
+   "recall_line": -1,
+   "trade_hit_base": 0.55,
+   "trade_hit_skill": 0.4,
+   "trade_hit_behavior": [
+    0.0,
+    -0.25,
+    0.0,
+    -0.4,
+    0.0
+   ],
+   "trade_hit_minions": 0.05,
+   "trade_hit_tower": 0.15,
+   "trade_hit_min": 0.05,
+   "trade_hit_max": 0.95,
+   "trade_double_base": 0.3,
+   "trade_double_skill": 0.2,
+   "tower_shot_damage": 1,
+   "tower_shot_p": 1.0,
+   "tower_shot_p_busy": 0.5,
+   "skill_a": 0.5,
+   "skill_b": 0.5,
+   "safe_line": -1,
+   "trade_range": 1,
+   "farm_reach": 1,
+   "retreat_farm_reach": 2,
+   "trade_farm_factor": 0.5,
+   "champ_gank_base": 0.0,
+   "champ_gank_position": 0.12,
+   "champ_gank_behavior": [
+    0.01,
+    0.01,
+    0.03,
+    0.0
+   ],
+   "champ_gank_shove": 0.02,
+   "champ_gank_strength": 0.01,
+   "champ_gank_max": 0.3,
+   "gank_damage_trials": 4,
+   "gank_damage_base": 0.2,
+   "gank_damage_position": 0.6,
+   "gank_damage_defense": 0.2,
+   "gank_damage_skill": 0.2,
+   "death_turns": 3,
+   "kill_bounty": 0.5,
+   "ruleset": "m4",
+   "time_mode": "continuing",
+   "time_features": false,
+   "gamma": 0.99,
+   "xp_per_hp": 1,
+   "xp_range": 3,
+   "xp_base": 8,
+   "xp_step": 3,
+   "level_cap": 18,
+   "hp_base": 600,
+   "hp_growth": 1.05,
+   "ap_level_growth": 1.05,
+   "item_mult": 1.2,
+   "item_tiers": 0,
+   "item_prices": [],
+   "item_model": "continuous",
+   "invest_alpha": 0.045,
+   "invest_p": 0.9,
+   "invest_obs_gold_ref": 8,
+   "invest_obs_ref": 64,
+   "invest_curve": "saturating",
+   "invest_gain": 1.5,
+   "invest_scale": 16.0,
+   "invest_obs_encoding": "compressed",
+   "freeze_maintenance": false,
+   "chase_rule": "contact_cell",
+   "farm_spot_rule": "pre_crash_front",
+   "position_rule": "standoff",
+   "wave_dynamics": "natural",
+   "champion_wave_damage": [
+    0,
+    2,
+    1
+   ],
+   "natural_crash_rule": "entry",
+   "natural_tower_reach": 1,
+   "wave_clear_scaling": "capacity",
+   "wave_clear_scaled_slots": [
+    1
+   ],
+   "wave_hold_fraction": 0.125,
+   "wave_thin_fraction": 0.5,
+   "tower_adjacent_p": 0.5,
+   "tower_adjacent_p_busy": 0.25,
+   "gank_damage_scale": "victim_level",
+   "plate_thresholds": [
+    1600,
+    3600,
+    6000
+   ],
+   "plate_gold": 1.0,
+   "pressure_tower_damage": 400,
+   "plate_gold_requires_presence": false,
+   "gold_unit": 1e-07,
+   "rear_count_max": 4,
+   "trade_exchanges": 1,
+   "trade_farm_rule": "trader",
+   "invest_durability": true
+  },
+  "stage": "archive"
+ },
+ "path": "results\\rl\\m43b\\archive_train.json",
+ "states": 857,
+ "distinct_before_mirror": 429,
+ "games_played": 400,
+ "composition_by_class": {
+  "neutral": 60,
+  "own_pushing": 0,
+  "enemy_pushing": 60,
+  "stacked": 30,
+  "crash_imminent": 30,
+  "defending": 50,
+  "sieging": 40,
+  "freeze_like": 40,
+  "enemy_absent": 40,
+  "low_hp": 40,
+  "other": 50
+ },
+ "targets": {
+  "neutral": 60,
+  "own_pushing": 60,
+  "enemy_pushing": 60,
+  "stacked": 30,
+  "crash_imminent": 30,
+  "defending": 50,
+  "sieging": 40,
+  "freeze_like": 40,
+  "enemy_absent": 40,
+  "low_hp": 40,
+  "other": 50
+ },
+ "by_generator": {
+  "ref": 849,
+  "initial": 8
+ },
+ "turn_range": [
+  12,
+  400
+ ],
+ "mirror_closed": true,
+ "witnesses_verified": true,
+ "elapsed_s": 392.7504924000241,
+ "seed": 69000
+}

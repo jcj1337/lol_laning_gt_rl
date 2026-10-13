@@ -18,6 +18,7 @@
                                               an M4 preset trains under continuing time, PPOConfig.continuing)
   python -m lanegame experiments-rl openai_five                    (the OpenAI Five-inspired study, results/rl/openai_five/)
   python -m lanegame experiments-rl m43a_smoke                     (the M4.3a PPO smoke test on m4_lasthit, results/rl/m43a_smoke.md)
+  python -m lanegame experiments-rl m43b_pilot                     (the M4.3b PPO self-play pilot, results/rl/m43b/; stages: python -m lanegame.experiments.rl.m43b)
   python -m lanegame rl-eval CHECKPOINT [--opponents ... --episodes 500 --skill 0.5,0.5]
   python -m lanegame rl-br CHECKPOINT [--steps 100000 --seed 0]          (approximate best response to a frozen policy)
   python -m lanegame experiments all | before_after model_comparison ...   (previous revision, results/revision/)
@@ -45,7 +46,7 @@ EXPERIMENTS_V1 = ["audit_legacy", "model_comparison", "horizon_benchmark", "base
 EXPERIMENTS_SIEGE = ["benchmark", "timing", "controlled", "siege_options", "crash_value", "vision_sweep",
                      "ablations", "sensitivity", "equilibrium", "verification", "figures"]
 EXPERIMENTS_CHAMPIONS = ["invariants", "tournament", "skill", "concerns", "benchmark"]
-EXPERIMENTS_RL = ["scripted", "legacy", "selfplay", "evaluation", "br_warm", "figures", "openai_five", "m43a_smoke"]
+EXPERIMENTS_RL = ["scripted", "legacy", "selfplay", "evaluation", "br_warm", "figures", "openai_five", "m43a_smoke", "m43b_pilot"]
 RL_MODELS = ("champions", "m4", "m4_emergent", "m4_natural", "m4_lane", "m4_lasthit")
 
 

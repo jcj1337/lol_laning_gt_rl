@@ -1,0 +1,64 @@
+===== behavior =====
+behavior: 41 jobs, 9 to compute
+  [behavior] 1/9 done, 12 s
+  [behavior] 2/9 done, 12 s
+  [behavior] 3/9 done, 12 s
+  [behavior] 4/9 done, 12 s
+  [behavior] 5/9 done, 13 s
+  [behavior] 6/9 done, 13 s
+  [behavior] 7/9 done, 15 s
+  [behavior] 8/9 done, 15 s
+  [behavior] 9/9 done, 16 s
+wrote results\rl\m43b\behavior.json
+[behavior: 17 s elapsed]
+===== counterfactual =====
+counterfactual: 60 jobs, 10 to compute
+  [counterfactual] 1/10 done, 156 s
+  [counterfactual] 2/10 done, 162 s
+  [counterfactual] 3/10 done, 166 s
+  [counterfactual] 4/10 done, 167 s
+  [counterfactual] 5/10 done, 170 s
+  [counterfactual] 6/10 done, 175 s
+  [counterfactual] 7/10 done, 183 s
+  [counterfactual] 8/10 done, 189 s
+  [counterfactual] 9/10 done, 189 s
+  [counterfactual] 10/10 done, 268 s
+wrote results\rl\m43b\counterfactual.json
+[counterfactual: 286 s elapsed]
+===== recall =====
+recall: 7 counterfactual jobs, 1 death-vs-recall jobs to compute
+  [recall-cf] 1/7 done, 115 s
+  [recall-cf] 2/7 done, 117 s
+  [recall-cf] 3/7 done, 122 s
+  [recall-cf] 4/7 done, 131 s
+  [recall-cf] 5/7 done, 131 s
+  [recall-cf] 6/7 done, 134 s
+  [recall-cf] 7/7 done, 147 s
+wrote results\rl\m43b\recall.json
+[recall: 678 s elapsed]
+===== trajectories =====
+  base_s0_selfplay_a: payoff to A +0.7, deaths [2, 3], recalls [17, 15], crashes [30, 35]
+  base_s0_selfplay_b: payoff to A +1.4, deaths [4, 4], recalls [15, 15], crashes [34, 32]
+  base_s0_vs_push_punish: payoff to A +56.8, deaths [32, 0], recalls [1, 8], crashes [181, 0]
+  base_s0_vs_clear_punish: payoff to A +41.7, deaths [9, 4], recalls [12, 12], crashes [101, 16]
+  base_s0_vs_crash_recall: payoff to A +43.8, deaths [5, 0], recalls [11, 6], crashes [178, 1]
+  base_s0_vs_initial: payoff to A +40.9, deaths [10, 4], recalls [9, 20], crashes [132, 12]
+  ent03_s0_selfplay: payoff to A -6.0, deaths [10, 4], recalls [15, 20], crashes [39, 42]
+  hist80_s0_selfplay: payoff to A -1.5, deaths [6, 5], recalls [11, 10], crashes [28, 31]
+  mixed_s0_selfplay: payoff to A +5.2, deaths [11, 10], recalls [15, 13], crashes [50, 52]
+  attacker_vs_base_s0: payoff to A +18.9, deaths [5, 10], recalls [10, 11], crashes [34, 29]
+wrote results\rl\m43b\trajectories.json
+[trajectories: 680 s elapsed]
+===== figures =====
+wrote results\rl\m43b\fig_curves.png
+wrote results\rl\m43b\fig_behavior_training.png
+wrote results\rl\m43b\fig_training.png
+wrote results\rl\m43b\fig_conditional.png
+wrote results\rl\m43b\fig_counterfactual.png
+wrote results\rl\m43b\fig_recall.png
+wrote results\rl\m43b\fig_headline.png
+wrote results\rl\m43b\fig_exploit.png
+[figures: 685 s elapsed]
+===== report =====
+wrote results\rl\m43b\report.md
+[report: 685 s elapsed]
