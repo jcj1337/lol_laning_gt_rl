@@ -1,8 +1,8 @@
 {
  "schema": "lanegame.m43b_manifest",
  "version": 1,
- "commit": "98a4341089b412afe53febce19cf5e01334a4df1",
- "written": "2026-10-12 23:41:07",
+ "commit": "5f781f48db723bb518832826fffc3130e2b0dae8",
+ "written": "2026-10-13 00:43:51",
  "notes": [
   "results/rl/m43b/** is tracked in Git (large JSON files gzipped: readers accept both forms)",
   "results/rl/checkpoints/m43b/** is NOT tracked (.gitignore); preserve it through the bundle",
@@ -10,6 +10,10 @@
   "960 training snapshots exist locally; they are listed only with include_snapshots"
  ],
  "results": {
+  "results/rl/m43b/ARTIFACTS.md": {
+   "bytes": 4236,
+   "sha256": "3e0ac19dc05294b21451472d05143f4625c9318a2b02defa30aa1e281adc88fd"
+  },
   "results/rl/m43b/analysis.log": {
    "bytes": 17379,
    "sha256": "4b4524a9f089ce2e115540da1a9ccadedc7af3d6c2b1a2a5602d407a688c5970"
@@ -229,9 +233,81 @@
    "bytes": 27122,
    "sha256": "bade57abf94ccab34230919f25191c2cc354aaf2ec6de1c591de13ddffb72ac0"
   },
+  "results/rl/m43b/validation/fig_val_games.png": {
+   "bytes": 50809,
+   "sha256": "111350b230f06ffd2dd032b3a3c31a7ea4eddbf5e977fafba4b5e5b3068ff103"
+  },
+  "results/rl/m43b/validation/fig_val_horizon.png": {
+   "bytes": 74704,
+   "sha256": "470e2a0a74f42aee9223dbb680b9573b1f89c5268677e0f60721153ba558029b"
+  },
+  "results/rl/m43b/validation/fig_val_synthetic.png": {
+   "bytes": 116202,
+   "sha256": "5890a8e037709bf2edcf90754ca03609b5c0bb1e08a62e9e07d60f2e3f07f5b3"
+  },
+  "results/rl/m43b/validation/fig_val_wave_cf.png": {
+   "bytes": 192598,
+   "sha256": "db89329b72c117200087603d6980cd3435ace7be88febe0237e34f7496a1f7ac"
+  },
+  "results/rl/m43b/validation/freeze.json": {
+   "bytes": 711270,
+   "sha256": "84fe263454fc046c2e5b2c78e37321becfeccf6b1a832e957679c0f763e6558f",
+   "commit": "98a4341089b412afe53febce19cf5e01334a4df1",
+   "timestamp": "2026-10-13 00:33:34",
+   "stage": "validation.freeze",
+   "window": 300,
+   "seed": 67900,
+   "rollouts": 8,
+   "command": "python -m lanegame.experiments.rl.m43b val_freeze --workers 9"
+  },
+  "results/rl/m43b/validation/games.json": {
+   "bytes": 702883,
+   "sha256": "9fcf3b0a2f8032aade85d6fd6ca44b47eb4c25536060aacdbb9c092b1355adfa",
+   "commit": "98a4341089b412afe53febce19cf5e01334a4df1",
+   "timestamp": "2026-10-13 00:27:04",
+   "stage": "validation.games",
+   "window": 1000,
+   "seed": 67700,
+   "episodes": 32,
+   "command": "python -m lanegame.experiments.rl.m43b val_games --workers 9"
+  },
+  "results/rl/m43b/validation/horizon.json": {
+   "bytes": 575913,
+   "sha256": "fa07fa5e0f151fcbb0c0b79bd95b658bff0ef30871caf696a9c29f0680fb07b6",
+   "commit": "98a4341089b412afe53febce19cf5e01334a4df1",
+   "timestamp": "2026-10-13 00:08:49",
+   "stage": "validation.horizon",
+   "window": 1000,
+   "states": 8,
+   "rollouts": 16,
+   "command": "python -m lanegame.experiments.rl.m43b val_horizon --workers 9"
+  },
+  "results/rl/m43b/validation/pytest_full.log": {
+   "bytes": 2240,
+   "sha256": "1d274571c09085eeb6e4d267a1eae9df0dd245ea052d777eda05b744e6627aa0"
+  },
+  "results/rl/m43b/validation/report.md": {
+   "bytes": 68127,
+   "sha256": "3a098fd5000292bc10ceab01d24b6edace6212b4fe982d7f06f4d8329af7f98b"
+  },
+  "results/rl/m43b/validation/stages.log": {
+   "bytes": 17645,
+   "sha256": "2428c90e39e512bfe328ac0da9f86c9282848f1e2cb6e3c080d26d851f74fd4c"
+  },
+  "results/rl/m43b/validation/wave_cf.json.gz": {
+   "bytes": 405373,
+   "sha256": "d762d594ac85c3e611cb5af415cf6474ed03eebcf2aa01b48cd8273e4e562d53",
+   "commit": "98a4341089b412afe53febce19cf5e01334a4df1",
+   "timestamp": "2026-10-12 23:52:12",
+   "stage": "validation.wave_cf",
+   "window": 300,
+   "states": 8,
+   "rollouts": 16,
+   "command": "python -m lanegame.experiments.rl.m43b val_wave_cf --workers 9"
+  },
   "results/rl/m43b/validation/wave_cf.log": {
-   "bytes": 760,
-   "sha256": "64e0ae69384a832a4a16108581c2002582fd49a6aa7998ae4d8d2f17da649e50"
+   "bytes": 1629,
+   "sha256": "1bd2c161f9a31deae73cedab1453ae1bb53de3f9e5de25c07eaa095c45eb4dbf"
   }
  },
  "checkpoints": {
@@ -1028,5 +1104,5 @@
   "command": "python -m lanegame.experiments.rl.m43b manifest   # also writes the bundle",
   "directory": "results\\rl\\m43b_artifacts"
  },
- "elapsed_s": 14.123974099988118
+ "elapsed_s": 3.172982999822125
 }
