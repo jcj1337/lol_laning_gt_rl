@@ -1232,3 +1232,42 @@ Branch `development/m4-natural-waves`, on top of M4.2e-C. A temporary validation
   champion and economy panels, timelines, the event log and a grouped `info` inspector. The layout follows the
   reference prototype of the M4.2e-D UI refinement brief.
 - **Status:** implemented. M4.3 not started.
+
+## Z. M4.3a RL infrastructure integration and correctness audit (2026-10-12)
+
+Branch `development/m4-3a-rl-infrastructure`, on top of M4.2e-D. No mechanics change; every preset's digest pin is
+unchanged.
+
+- **Full account:** [m4_3a_rl_infrastructure_report.md](rl/m4_3a_rl_infrastructure_report.md).
+- **Research question made explicit** (README): can an RL agent learn to take advantage of the simulator's strategic
+  interactions without being taught League strategies? Rewards stay economic (relative gold); nothing is shaped.
+- **PettingZoo.** The Parallel API adapter now takes M4 champion states and `StartState` starts, reports the legal
+  sets, converts to AEC, and documents seeding and continuing time. PettingZoo's official API tests pass on every M4
+  preset; the adapter's trajectories equal the native `LaneEnv`'s exactly (observations, masks, rewards, flags, turn
+  records). Decision: the adapter is the standard external interface; the trainer keeps stepping `LaneEnv` for its
+  per-seat bookkeeping, pinned matchups, batched forward passes and pre-reset bootstraps, all now tested directly.
+- **PPO audit.** No defect found. New independent references: GAE equals the forward-view λ-return with random
+  terminations and truncations; the PPO loss, entropy and parameter gradients equal a re-implementation on
+  `torch.distributions.Categorical`; masking is exact in probability and gradient; single-choice steps carry no
+  gradient; truncation bootstraps equal the value of the independently replayed pre-reset observation; segment
+  bootstraps equal the next segment's first value; bit-identical reproducibility across processes; checkpoints
+  carry a verified SHA-256 digest and provenance (format 2). Training histories now record gradient norms, critic and
+  return scales, per-seat and truncation counts.
+- **Smoke test on `m4_lasthit()`** (`lanegame.experiments.rl.m43a_smoke`, `results/rl/m43a_smoke.md`): 100/0 and
+  80/20 shared self-play at 409,600 agent transitions each plus three 102,400-transition reproducibility runs, 5
+  minutes in five processes. All 19 checks pass: finite losses and gradients (pre-clip norm ≈ 0.4, max 4), KL
+  0.003, explained variance 0.70–0.75, critic on the return scale (|V̂| ≤ 10.7 against Ω = 107, V̂(s0) within ±0.3),
+  equal seat counts, one truncation per game and no termination, identical digests for identical seeds. Throughput
+  ≈ 5,000 agent transitions/s per process (the 250 µs environment step is 75% of the time). Readout, not a result:
+  both policies beat the scripted natural-wave suite by 10–19 resources and the initial network by 12; sp80 beats
+  sp100 by 0.8 ± 0.5; both clear 82% of turns and trade 27% with 17 deaths per side per 460 turns; entropy fell
+  2.58 → 0.8.
+- **Tests:** `tests/test_pettingzoo_m4.py` (11), `tests/test_rl_reference.py` (10), `tests/test_rl_m4_lasthit.py` (6);
+  full suite 898 passed, 4 skipped, 2 expected failures in 7 min 33 s.
+- **CLI:** `rl-shared --model m4_lasthit` (continuing-time preset), `experiments-rl m43a_smoke`.
+- **Open before M4.3b** (report §7): the early entropy collapse and the clear-and-trade policy (entropy-coefficient
+  control; audit death economics; judge against the M4.2e-C §6.4 equilibria); stronger evaluation references and a
+  continuing-time exploitability attacker; headline window W = 1000; bootstrapping remains an approximation;
+  the 80/20 vs 100/0 comparison at pilot scale with seeds; a small hyperparameter grid.
+
+**Status:** complete. **Next:** M4.3b self-play pilot and research runs on `m4_lasthit()`.

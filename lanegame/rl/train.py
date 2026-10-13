@@ -264,12 +264,16 @@ def train_ppo(game_cfg: GameConfig, cfg: PPOConfig, sampler: OpponentSampler, ou
             tu = time.perf_counter()
             net.train()
             stats = ppo_update(net, opt, batch, cfg, gen)
+            net.eval()
             t_update = time.perf_counter() - tu
             steps += cfg.batch_size
             rets = [e.learner_return for e in finished]
             entry = {"update": u + 1, "steps": steps, "elapsed": time.perf_counter() - t0,
                      "episodes": len(finished), "mean_return": float(np.mean(rets)) if rets else float("nan"),
                      "explained_variance": explained_variance(roll["values"].ravel(), ret.ravel()),
+                     "value_mean": float(roll["values"].mean()), "value_absmax": float(np.abs(roll["values"]).max()),
+                     "return_mean": float(ret.mean()), "return_std": float(ret.std()), "adv_std": float(adv.std()),
+                     "truncations": int(roll["truncated"].sum()), "terminations": int(roll["terminated"].sum()),
                      "sps": cfg.batch_size / (t_collect + t_update), "collect_s": t_collect, "update_s": t_update,
                      "lr": opt.param_groups[0]["lr"], **stats}
             by_opp: Dict[str, List[float]] = {}

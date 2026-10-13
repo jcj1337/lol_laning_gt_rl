@@ -5,7 +5,7 @@ Two documents live at the top level because every milestone refers to them:
 | document | what it is |
 |---|---|
 | [design_philosophy.md](design_philosophy.md) | the standard every mechanic is judged against: simplify how League works without changing why its laning strategies work |
-| [rl_research_roadmap.md](rl_research_roadmap.md) | the research roadmap; one section per milestone (A–Y so far) with the decision and the link to its full report |
+| [rl_research_roadmap.md](rl_research_roadmap.md) | the research roadmap; one section per milestone (A–Z so far) with the decision and the link to its full report |
 
 The reports are grouped by phase. Within a folder the files are listed in the order they were written.
 
@@ -28,6 +28,7 @@ The reports are grouped by phase. Within a folder the files are listed in the or
 | [openai_five_selfplay_report.md](rl/openai_five_selfplay_report.md) | shared-policy self-play with a current/historical mixture |
 | [openai_five_diagnostics_progress.md](rl/openai_five_diagnostics_progress.md) | the diagnostics milestone's progress log |
 | [openai_five_diagnostics_report.md](rl/openai_five_diagnostics_report.md) | diagnostics of the learned policies, exploitability, long runs |
+| [m4_3a_rl_infrastructure_report.md](rl/m4_3a_rl_infrastructure_report.md) | M4.3a: RL infrastructure audit, PettingZoo conformance, PPO reference checks, the smoke test on `m4_lasthit()` |
 
 ## m4/ — the integrated champion economy (M4.1 design, M4.2 implementation and the M4.2b–M4.2d studies)
 

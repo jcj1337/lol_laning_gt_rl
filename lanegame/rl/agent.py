@@ -7,13 +7,19 @@ Markov policy of the exact game: `lanegame.env.as_policy(agent, cfg)` gives its 
 A NetAgent never trains: its network is a frozen copy (no gradients).
 
 Checkpoints (`save_checkpoint` / `load_checkpoint`) are torch files holding the network weights, its shape, the
-game configuration and free-form metadata (training configuration, step, seed, opponent mix, ...).
+game configuration and free-form metadata (training configuration, step, seed, opponent mix, ...). Since format
+version 2 they also carry a SHA-256 digest of the weights (`digest`, also returned by `weights_digest`), which
+`load_checkpoint` verifies (a mismatch raises ValueError: the file was altered or truncated), and the library
+versions and git commit that wrote them (`provenance`). Version-1 files load unchanged.
 """
 
 from __future__ import annotations
 
 import copy
+import hashlib
 import os
+import subprocess
+import sys
 from typing import Optional
 
 import numpy as np
@@ -22,6 +28,9 @@ import torch
 from ..config import GameConfig
 from ..env.agents import sample
 from .network import PolicyValueNet
+
+CHECKPOINT_FORMAT = "lanegame.rl.checkpoint"
+CHECKPOINT_VERSION = 2
 
 
 class NetAgent:
@@ -57,24 +66,65 @@ class NetAgent:
         return obs.legal[sample(rng, p)]
 
 
+def weights_digest(state_dict) -> str:
+    """SHA-256 over the parameter names and their float32/int bytes, in key order: a stable identity of a network's
+    weights (equal digests <=> bit-identical weights)."""
+    h = hashlib.sha256()
+    for k in sorted(state_dict):
+        t = state_dict[k]
+        h.update(k.encode("utf-8"))
+        h.update(str(tuple(t.shape)).encode("utf-8"))
+        h.update(t.detach().cpu().contiguous().numpy().tobytes())
+    return h.hexdigest()
+
+
+def _git_commit() -> Optional[str]:
+    try:
+        return subprocess.check_output(["git", "rev-parse", "HEAD"], cwd=os.path.dirname(os.path.abspath(__file__)),
+                                       text=True, stderr=subprocess.DEVNULL).strip()
+    except Exception:                                      # pragma: no cover - outside a checkout
+        return None
+
+
+def provenance() -> dict:
+    return {"python": sys.version.split()[0], "torch": torch.__version__, "numpy": np.__version__,
+            "git_commit": _git_commit()}
+
+
 def save_checkpoint(path: str, net: PolicyValueNet, game_cfg: GameConfig, metadata: Optional[dict] = None,
-                    exist_ok: bool = True) -> None:
-    """`exist_ok=False` refuses to replace an existing file (FileExistsError) instead of overwriting it."""
+                    exist_ok: bool = True) -> str:
+    """Write the checkpoint; returns the weights digest. `exist_ok=False` refuses to replace an existing file
+    (FileExistsError) instead of overwriting it."""
     if not exist_ok and os.path.exists(path):
         raise FileExistsError(f"refusing to overwrite the checkpoint {path}")
     os.makedirs(os.path.dirname(path) or ".", exist_ok=True)
-    torch.save({"format": "lanegame.rl.checkpoint", "version": 1, "spec": net.spec(),
-                "state_dict": net.state_dict(), "game_config": game_cfg.to_dict(), "metadata": metadata or {}}, path)
+    sd = {k: v.detach().cpu().clone() for k, v in net.state_dict().items()}
+    digest = weights_digest(sd)
+    torch.save({"format": CHECKPOINT_FORMAT, "version": CHECKPOINT_VERSION, "spec": net.spec(), "state_dict": sd,
+                "digest": digest, "provenance": provenance(), "game_config": game_cfg.to_dict(),
+                "metadata": metadata or {}}, path)
+    return digest
 
 
-def load_checkpoint(path: str):
-    """(network, game configuration, metadata)."""
+def load_checkpoint(path: str, verify: bool = True):
+    """(network, game configuration, metadata). With `verify` (default) a version-2 file whose weights do not match
+    its digest raises ValueError."""
     d = torch.load(path, map_location="cpu", weights_only=False)
-    assert d.get("format") == "lanegame.rl.checkpoint", f"{path} is not a lanegame RL checkpoint"
+    if d.get("format") != CHECKPOINT_FORMAT:
+        raise ValueError(f"{path} is not a lanegame RL checkpoint")
+    if verify and "digest" in d and weights_digest(d["state_dict"]) != d["digest"]:
+        raise ValueError(f"{path}: the weights do not match the checkpoint's digest (altered or truncated file)")
     spec = d["spec"]
     net = PolicyValueNet(spec["obs_size"], spec["n_actions"], spec["hidden"])
     net.load_state_dict(d["state_dict"])
     return net, GameConfig.from_dict(d["game_config"]), d["metadata"]
+
+
+def checkpoint_info(path: str) -> dict:
+    """Format version, digest, provenance and metadata of a checkpoint without building the network."""
+    d = torch.load(path, map_location="cpu", weights_only=False)
+    return {"version": d.get("version"), "digest": d.get("digest"), "provenance": d.get("provenance"),
+            "spec": d.get("spec"), "metadata": d.get("metadata")}
 
 
 def load_agent(path: str, name: Optional[str] = None, greedy: bool = False) -> NetAgent:

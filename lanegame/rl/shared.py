@@ -267,7 +267,10 @@ class SharedCollector:
             with torch.no_grad():
                 next_val[T - 1, js] = net.value(torch.as_tensor(last)).numpy()
         counts = {"env_turns": T * N, "agent_transitions": int(active.sum()),
-                  "transitions_historical": int(hist_slot.sum())}
+                  "transitions_historical": int(hist_slot.sum()),
+                  "transitions_seat_a": int(active[:, 0::2].sum()), "transitions_seat_b": int(active[:, 1::2].sum()),
+                  "truncations": int((trunc_buf[:, 0::2]).sum()), "terminations": int((term_buf[:, 0::2]).sum()),
+                  "single_choice": int((active & (mask_buf.sum(-1) <= 1)).sum())}
         counts["transitions_current"] = counts["agent_transitions"] - counts["transitions_historical"]
         return {"obs": obs_buf, "mask": mask_buf, "actions": act_buf, "logprobs": logp_buf, "values": val_buf,
                 "rewards": rew_buf, "terminated": term_buf, "truncated": trunc_buf, "next_values": next_val,
@@ -372,6 +375,7 @@ def train_shared(game_cfg: GameConfig, cfg: PPOConfig, scfg: SharedConfig, out_d
             by_opp: Dict[str, List[float]] = {}
             for e in hist:
                 by_opp.setdefault(e.opponent, []).append(e.learner_return)
+            vals = batch["values"].numpy().astype(np.float64)
             entry = {"update": u, "agent_transitions": res.agent_transitions, "env_turns": res.env_turns,
                      "steps": res.agent_transitions, "elapsed": time.perf_counter() - t0,
                      **{f"rollout_{k}": v for k, v in counts.items()},
@@ -379,7 +383,11 @@ def train_shared(game_cfg: GameConfig, cfg: PPOConfig, scfg: SharedConfig, out_d
                      "current_seat_a_return": float(np.mean([e.payoff_a for e in cur])) if cur else float("nan"),
                      "historical_return": float(np.mean([e.learner_return for e in hist])) if hist else float("nan"),
                      "historical_by_opponent": {k: float(np.mean(v)) for k, v in by_opp.items()},
-                     "explained_variance": explained_variance(batch["values"].numpy().astype(np.float64), ret),
+                     "explained_variance": explained_variance(vals, ret),
+                     # critic and target scales of the rollout (scaled reward units: divide by reward_scale)
+                     "value_mean": float(vals.mean()), "value_absmax": float(np.abs(vals).max()),
+                     "return_mean": float(ret.mean()), "return_std": float(ret.std()),
+                     "adv_std": float(adv.std()), "reward_mean_abs": float(np.abs(roll["rewards"][roll["active"]]).mean()),
                      "sps": counts["agent_transitions"] / (t_collect + t_update), "collect_s": t_collect,
                      "update_s": t_update, "lr": opt.param_groups[0]["lr"], "pool": [a.name for a in pool.snapshots],
                      **stats}

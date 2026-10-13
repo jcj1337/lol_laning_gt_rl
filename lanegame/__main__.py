@@ -13,9 +13,11 @@
   python -m lanegame experiments-rl scripted | legacy | selfplay | evaluation                    (PPO, results/rl/; needs torch)
   python -m lanegame rl-train --opponents hold_farmer,aggressive_trader [--steps 100000 --seed 0 --out results/rl/checkpoints/run]
   python -m lanegame rl-selfplay [--init results/rl/checkpoints/run/final.pt --steps 200000 --seed 0 --out ...]
-  python -m lanegame rl-shared [--current-fraction 0.8 --steps 307200 --seed 0 --skill-levels 0.2,0.5,0.8 --out ...]
-                                             (shared-policy self-play, current / historical mixture; lanegame.rl.shared)
+  python -m lanegame rl-shared [--model champions|m4_lasthit|... --current-fraction 0.8 --steps 307200 --seed 0 --skill-levels 0.2,0.5,0.8 --out ...]
+                                             (shared-policy self-play, current / historical mixture; lanegame.rl.shared;
+                                              an M4 preset trains under continuing time, PPOConfig.continuing)
   python -m lanegame experiments-rl openai_five                    (the OpenAI Five-inspired study, results/rl/openai_five/)
+  python -m lanegame experiments-rl m43a_smoke                     (the M4.3a PPO smoke test on m4_lasthit, results/rl/m43a_smoke.md)
   python -m lanegame rl-eval CHECKPOINT [--opponents ... --episodes 500 --skill 0.5,0.5]
   python -m lanegame rl-br CHECKPOINT [--steps 100000 --seed 0]          (approximate best response to a frozen policy)
   python -m lanegame experiments all | before_after model_comparison ...   (previous revision, results/revision/)
@@ -43,7 +45,8 @@ EXPERIMENTS_V1 = ["audit_legacy", "model_comparison", "horizon_benchmark", "base
 EXPERIMENTS_SIEGE = ["benchmark", "timing", "controlled", "siege_options", "crash_value", "vision_sweep",
                      "ablations", "sensitivity", "equilibrium", "verification", "figures"]
 EXPERIMENTS_CHAMPIONS = ["invariants", "tournament", "skill", "concerns", "benchmark"]
-EXPERIMENTS_RL = ["scripted", "legacy", "selfplay", "evaluation", "br_warm", "figures", "openai_five"]
+EXPERIMENTS_RL = ["scripted", "legacy", "selfplay", "evaluation", "br_warm", "figures", "openai_five", "m43a_smoke"]
+RL_MODELS = ("champions", "m4", "m4_emergent", "m4_natural", "m4_lane", "m4_lasthit")
 
 
 def _cfg(args, **kw) -> GameConfig:
@@ -278,9 +281,16 @@ def cmd_rl_selfplay(args):
 
 def cmd_rl_shared(args):
     from .rl import PPOConfig, SharedConfig, train_shared
-    cfg = _rl_cfg(args)
     levels = tuple(float(x) for x in args.skill_levels.split(",")) if args.skill_levels else None
-    ppo = PPOConfig(total_steps=args.steps, n_envs=args.n_envs, seed=args.seed, skill_levels=levels)
+    if args.model == "champions":
+        cfg = _rl_cfg(args)
+        ppo = PPOConfig(total_steps=args.steps, n_envs=args.n_envs, seed=args.seed, skill_levels=levels)
+    else:                                       # an M4 preset: continuing time, PPOConfig.continuing (design §10.4)
+        cfg = getattr(GameConfig, args.model)()
+        if getattr(args, "skill", None):
+            a_, b_ = (float(x) for x in args.skill.split(","))
+            cfg = cfg.with_(skill_a=a_, skill_b=b_)
+        ppo = PPOConfig.continuing(cfg, total_steps=args.steps, n_envs=args.n_envs, seed=args.seed, skill_levels=levels)
     res = train_shared(cfg, ppo, SharedConfig(current_fraction=args.current_fraction, snapshot_every=args.snapshot_every,
                                               pool_size=args.pool), out_dir=args.out,
                        name=os.path.basename(args.out.rstrip("/\\")))
@@ -383,6 +393,8 @@ def main(argv=None):
     s.add_argument("--out", default=os.path.join("results", "rl", "checkpoints", "rl_selfplay"))
     s.set_defaults(fn=cmd_rl_selfplay)
     s = sub.add_parser("rl-shared")
+    s.add_argument("--model", choices=RL_MODELS, default="champions",
+                   help="the champion game (finite, K = --horizon) or an M4 preset (continuing time)")
     s.add_argument("--current-fraction", type=float, default=0.8, help="share of current-policy games (OpenAI Five: 0.8)")
     s.add_argument("--steps", type=int, default=307_200, help="budget in agent transitions")
     s.add_argument("--n-envs", type=int, default=8)

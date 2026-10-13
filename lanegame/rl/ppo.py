@@ -158,9 +158,11 @@ def explained_variance(pred: np.ndarray, target: np.ndarray) -> float:
 def ppo_update(net: PolicyValueNet, optimizer: torch.optim.Optimizer, batch: Dict[str, torch.Tensor], cfg: PPOConfig,
                generator: torch.Generator) -> Dict[str, float]:
     """Clipped-surrogate PPO epochs over one rollout. `batch` holds flat tensors: obs, mask, actions, logprobs,
-    values, advantages, returns, choice (1.0 where more than one action was legal)."""
+    values, advantages, returns, choice (1.0 where more than one action was legal). The returned statistics are
+    minibatch means; `grad_norm` is the total gradient norm BEFORE clipping (`grad_norm_max` its largest value), so
+    a run can be checked for exploding or vanishing gradients independently of `max_grad_norm`."""
     n = batch["obs"].shape[0]
-    stats = {"policy_loss": [], "value_loss": [], "entropy": [], "approx_kl": [], "clipfrac": []}
+    stats = {"policy_loss": [], "value_loss": [], "entropy": [], "approx_kl": [], "clipfrac": [], "grad_norm": []}
     for _ in range(cfg.epochs):
         perm = torch.randperm(n, generator=generator)
         for start in range(0, n, cfg.minibatch_size):
@@ -189,14 +191,16 @@ def ppo_update(net: PolicyValueNet, optimizer: torch.optim.Optimizer, batch: Dic
             loss = pg_loss - cfg.ent_coef * entropy + cfg.vf_coef * v_loss
             optimizer.zero_grad()
             loss.backward()
-            nn.utils.clip_grad_norm_(net.parameters(), cfg.max_grad_norm)
+            gnorm = nn.utils.clip_grad_norm_(net.parameters(), cfg.max_grad_norm)     # the PRE-clip total norm
             optimizer.step()
             with torch.no_grad():
                 kl = (((ratio - 1) - logratio) * w).sum() / nw
                 cf = ((((ratio - 1).abs() > cfg.clip_coef).float()) * w).sum() / nw
             for key, val in (("policy_loss", pg_loss), ("value_loss", v_loss), ("entropy", entropy),
-                             ("approx_kl", kl), ("clipfrac", cf)):
+                             ("approx_kl", kl), ("clipfrac", cf), ("grad_norm", gnorm)):
                 stats[key].append(float(val.detach()))
         if cfg.target_kl is not None and stats["approx_kl"][-1] > cfg.target_kl:
             break
-    return {k: float(np.mean(v)) for k, v in stats.items()}
+    out = {k: float(np.mean(v)) for k, v in stats.items()}
+    out["grad_norm_max"] = float(np.max(stats["grad_norm"]))
+    return out
