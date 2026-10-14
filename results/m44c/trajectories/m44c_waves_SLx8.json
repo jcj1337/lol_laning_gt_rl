@@ -1,0 +1,384 @@
+{
+ "schema": "lanegame.viewer_recording",
+ "version": 1,
+ "config": "m4_four_actions_econ_aggro",
+ "scenario": "s0",
+ "gap": "equal",
+ "seed": 81507,
+ "names": [
+  "final:ext:aggro:0",
+  "final:ext:aggro:0"
+ ],
+ "label": "M4.4c counterfactual pair (waves): fronts in contact: Slow Push vs Last Hit for 8 turns. Branch 'SLx8' for side A from turn 8; the other file of the pair plays 'LHx8' from the same state with the same chance. Selected as the median absolute 30-turn gold-lead difference among the 7 of 8 candidate states where the two branches differ.",
+ "actions": [
+  [
+   47,
+   5
+  ],
+  [
+   12,
+   8
+  ],
+  [
+   45,
+   46
+  ],
+  [
+   4,
+   47
+  ],
+  [
+   8,
+   5
+  ],
+  [
+   46,
+   4
+  ],
+  [
+   3,
+   47
+  ],
+  [
+   8,
+   4
+  ],
+  [
+   47,
+   6
+  ],
+  [
+   48,
+   3
+  ],
+  [
+   47,
+   7
+  ],
+  [
+   48,
+   46
+  ],
+  [
+   46,
+   1
+  ],
+  [
+   48,
+   4
+  ],
+  [
+   47,
+   12
+  ],
+  [
+   49,
+   45
+  ],
+  [
+   3,
+   48
+  ],
+  [
+   3,
+   6
+  ],
+  [
+   3,
+   6
+  ],
+  [
+   8,
+   46
+  ],
+  [
+   5,
+   3
+  ],
+  [
+   7,
+   47
+  ],
+  [
+   7,
+   49
+  ],
+  [
+   49,
+   12
+  ],
+  [
+   1,
+   45
+  ],
+  [
+   16,
+   47
+  ],
+  [
+   16,
+   4
+  ],
+  [
+   45,
+   0
+  ],
+  [
+   45,
+   47
+  ],
+  [
+   45,
+   2
+  ],
+  [
+   45,
+   7
+  ],
+  [
+   0,
+   1
+  ],
+  [
+   47,
+   3
+  ],
+  [
+   3,
+   16
+  ],
+  [
+   4,
+   10
+  ],
+  [
+   48,
+   2
+  ],
+  [
+   5,
+   11
+  ],
+  [
+   11,
+   4
+  ]
+ ],
+ "events": [
+  [
+   1,
+   "A recalls"
+  ],
+  [
+   8,
+   "BRANCH POINT: A plays 'SLx8' from here (M4.4c counterfactual)"
+  ],
+  [
+   14,
+   "B crashes 15 HP into the enemy tower"
+  ],
+  [
+   14,
+   "B recalls"
+  ],
+  [
+   16,
+   "freeze state: A holds the enemy wave at its tower"
+  ],
+  [
+   23,
+   "B recalls"
+  ],
+  [
+   23,
+   "freeze state: B holds the enemy wave at its tower"
+  ],
+  [
+   24,
+   "A crashes 21 HP into the enemy tower"
+  ],
+  [
+   26,
+   "A crashes 8 HP into the enemy tower"
+  ],
+  [
+   26,
+   "A dies"
+  ],
+  [
+   28,
+   "A crashes 6 HP into the enemy tower"
+  ],
+  [
+   32,
+   "B crashes 10 HP into the enemy tower"
+  ],
+  [
+   34,
+   "B crashes 4 HP into the enemy tower"
+  ]
+ ],
+ "payoff_A": -2.7775000000000003,
+ "turns": 38,
+ "labels": [
+  [
+   "Slow Push + Yield",
+   "Thin + Yield"
+  ],
+  [
+   "Recall",
+   "Thin + Trade"
+  ],
+  [
+   "Absent",
+   "Slow Push + Hold"
+  ],
+  [
+   "Shove + Yield",
+   "Slow Push + Yield"
+  ],
+  [
+   "Thin + Trade",
+   "Thin + Yield"
+  ],
+  [
+   "Slow Push + Hold",
+   "Shove + Yield"
+  ],
+  [
+   "Last Hit + Yield",
+   "Slow Push + Yield"
+  ],
+  [
+   "Thin + Trade",
+   "Shove + Yield"
+  ],
+  [
+   "Slow Push + Yield",
+   "Last Hit + Trade"
+  ],
+  [
+   "Slow Push + Trade",
+   "Last Hit + Yield"
+  ],
+  [
+   "Slow Push + Yield",
+   "Shove + Trade"
+  ],
+  [
+   "Slow Push + Trade",
+   "Slow Push + Hold"
+  ],
+  [
+   "Slow Push + Hold",
+   "Shove + Hold"
+  ],
+  [
+   "Slow Push + Trade",
+   "Shove + Yield"
+  ],
+  [
+   "Slow Push + Yield",
+   "Recall"
+  ],
+  [
+   "Slow Push + Safe",
+   "Absent"
+  ],
+  [
+   "Last Hit + Yield",
+   "Slow Push + Trade"
+  ],
+  [
+   "Last Hit + Yield",
+   "Last Hit + Trade"
+  ],
+  [
+   "Last Hit + Yield",
+   "Last Hit + Trade"
+  ],
+  [
+   "Thin + Trade",
+   "Slow Push + Hold"
+  ],
+  [
+   "Thin + Yield",
+   "Last Hit + Yield"
+  ],
+  [
+   "Shove + Trade",
+   "Slow Push + Yield"
+  ],
+  [
+   "Shove + Trade",
+   "Slow Push + Safe"
+  ],
+  [
+   "Slow Push + Safe",
+   "Recall"
+  ],
+  [
+   "Shove + Hold",
+   "Absent"
+  ],
+  [
+   "Shove + Hold + Pressure",
+   "Slow Push + Yield"
+  ],
+  [
+   "Shove + Hold + Pressure",
+   "Shove + Yield"
+  ],
+  [
+   "Absent",
+   "Last Hit + Hold"
+  ],
+  [
+   "Absent",
+   "Slow Push + Yield"
+  ],
+  [
+   "Absent",
+   "Thin + Hold"
+  ],
+  [
+   "Absent",
+   "Shove + Trade"
+  ],
+  [
+   "Last Hit + Hold",
+   "Shove + Hold"
+  ],
+  [
+   "Slow Push + Yield",
+   "Last Hit + Yield"
+  ],
+  [
+   "Last Hit + Yield",
+   "Shove + Hold + Pressure"
+  ],
+  [
+   "Shove + Yield",
+   "Shove + Safe"
+  ],
+  [
+   "Slow Push + Trade",
+   "Thin + Hold"
+  ],
+  [
+   "Thin + Yield",
+   "Thin + Safe"
+  ],
+  [
+   "Thin + Safe",
+   "Shove + Yield"
+  ]
+ ],
+ "branch": {
+  "turn": 8,
+  "focal": 0,
+  "strategy": "SLx8",
+  "horizon": 30,
+  "gold_lead_over_horizon": -2.8025
+ }
+}

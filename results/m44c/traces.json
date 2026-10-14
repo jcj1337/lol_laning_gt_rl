@@ -1,0 +1,274 @@
+{
+ "meta": {
+  "commit": "f4bcb7da3d1f83abe7b3e95cd7542082603b6b1b",
+  "working_tree_dirty": true,
+  "timestamp": "2026-10-14 06:57:48",
+  "python": "3.13.9",
+  "torch": "2.14.1+cpu",
+  "numpy": "2.5.3",
+  "study": "M4.4c",
+  "stage": "traces",
+  "K": 8,
+  "H": 30,
+  "trace_seed": 81500
+ },
+ "pairs": [
+  {
+   "situation": "recall",
+   "pair": [
+    "Recall",
+    "Safe"
+   ],
+   "picked": {
+    "vseed": 81503,
+    "turn": 24,
+    "focal": 0,
+    "diff": 2.7225
+   },
+   "candidate_diffs": [
+    3.1100000000000003,
+    3.0575,
+    2.025,
+    2.7225,
+    -4.67,
+    1.04,
+    2.0999999999999996,
+    0.15250000000000008
+   ],
+   "files": [
+    {
+     "path": "results\\m44c\\trajectories\\m44c_recall_Recall.json",
+     "strategy": "Recall",
+     "lead": -2.045,
+     "verify": {
+      "path": "results\\m44c\\trajectories\\m44c_recall_Recall.json",
+      "config": "m4_four_actions_econ_aggro",
+      "turns": 54,
+      "actions_equal": true,
+      "payoff_equal": true,
+      "payoff_A": -0.5300000000000001
+     }
+    },
+    {
+     "path": "results\\m44c\\trajectories\\m44c_recall_Safe.json",
+     "strategy": "Safe",
+     "lead": -4.7675,
+     "verify": {
+      "path": "results\\m44c\\trajectories\\m44c_recall_Safe.json",
+      "config": "m4_four_actions_econ_aggro",
+      "turns": 54,
+      "actions_equal": true,
+      "payoff_equal": true,
+      "payoff_A": -3.2525000000000004
+     }
+    }
+   ]
+  },
+  {
+   "situation": "freeze",
+   "pair": [
+    "Preserve",
+    "Break"
+   ],
+   "picked": {
+    "vseed": 81506,
+    "turn": 18,
+    "focal": 1,
+    "diff": 4.0575
+   },
+   "candidate_diffs": [
+    5.9350000000000005,
+    -1.4950000000000003,
+    -5.0475,
+    6.16,
+    3.2300000000000004,
+    -0.03749999999999998,
+    4.0575,
+    0.0
+   ],
+   "files": [
+    {
+     "path": "results\\m44c\\trajectories\\m44c_freeze_Preserve.json",
+     "strategy": "Preserve",
+     "lead": 2.6875,
+     "verify": {
+      "path": "results\\m44c\\trajectories\\m44c_freeze_Preserve.json",
+      "config": "m4_four_actions_econ_aggro",
+      "turns": 48,
+      "actions_equal": true,
+      "payoff_equal": true,
+      "payoff_A": -1.465
+     }
+    },
+    {
+     "path": "results\\m44c\\trajectories\\m44c_freeze_Break.json",
+     "strategy": "Break",
+     "lead": -1.3700000000000003,
+     "verify": {
+      "path": "results\\m44c\\trajectories\\m44c_freeze_Break.json",
+      "config": "m4_four_actions_econ_aggro",
+      "turns": 48,
+      "actions_equal": true,
+      "payoff_equal": true,
+      "payoff_A": 2.5925000000000002
+     }
+    }
+   ]
+  },
+  {
+   "situation": "vision",
+   "pair": [
+    "Vision>Pressure",
+    "Pressure"
+   ],
+   "picked": {
+    "vseed": 81505,
+    "turn": 13,
+    "focal": 1,
+    "diff": 2.9575
+   },
+   "candidate_diffs": [
+    -0.9524999999999999,
+    -2.5300000000000002,
+    -3.5250000000000004,
+    6.307499999999999,
+    1.6275000000000004,
+    2.9575,
+    -4.8950000000000005,
+    1.825
+   ],
+   "files": [
+    {
+     "path": "results\\m44c\\trajectories\\m44c_vision_Vision_then_Pressure.json",
+     "strategy": "Vision>Pressure",
+     "lead": -0.715,
+     "verify": {
+      "path": "results\\m44c\\trajectories\\m44c_vision_Vision_then_Pressure.json",
+      "config": "m4_four_actions_econ_aggro",
+      "turns": 43,
+      "actions_equal": true,
+      "payoff_equal": true,
+      "payoff_A": -2.7075
+     }
+    },
+    {
+     "path": "results\\m44c\\trajectories\\m44c_vision_Pressure.json",
+     "strategy": "Pressure",
+     "lead": -3.6725,
+     "verify": {
+      "path": "results\\m44c\\trajectories\\m44c_vision_Pressure.json",
+      "config": "m4_four_actions_econ_aggro",
+      "turns": 43,
+      "actions_equal": true,
+      "payoff_equal": true,
+      "payoff_A": 0.25000000000000006
+     }
+    }
+   ]
+  },
+  {
+   "situation": "waves",
+   "pair": [
+    "SLx8",
+    "LHx8"
+   ],
+   "picked": {
+    "vseed": 81507,
+    "turn": 8,
+    "focal": 0,
+    "diff": 1.29
+   },
+   "candidate_diffs": [
+    2.9850000000000003,
+    0.7249999999999999,
+    2.1149999999999998,
+    3.8724999999999996,
+    1.1225,
+    -0.8224999999999998,
+    0.0,
+    1.29
+   ],
+   "files": [
+    {
+     "path": "results\\m44c\\trajectories\\m44c_waves_SLx8.json",
+     "strategy": "SLx8",
+     "lead": -2.8025,
+     "verify": {
+      "path": "results\\m44c\\trajectories\\m44c_waves_SLx8.json",
+      "config": "m4_four_actions_econ_aggro",
+      "turns": 38,
+      "actions_equal": true,
+      "payoff_equal": true,
+      "payoff_A": -2.7775000000000003
+     }
+    },
+    {
+     "path": "results\\m44c\\trajectories\\m44c_waves_LHx8.json",
+     "strategy": "LHx8",
+     "lead": -4.0925,
+     "verify": {
+      "path": "results\\m44c\\trajectories\\m44c_waves_LHx8.json",
+      "config": "m4_four_actions_econ_aggro",
+      "turns": 38,
+      "actions_equal": true,
+      "payoff_equal": true,
+      "payoff_A": -4.0675
+     }
+    }
+   ]
+  },
+  {
+   "situation": "zoning",
+   "pair": [
+    "Threaten",
+    "Farm"
+   ],
+   "picked": {
+    "vseed": 81504,
+    "turn": 0,
+    "focal": 0,
+    "diff": 1.4649999999999999
+   },
+   "candidate_diffs": [
+    7.0325,
+    -0.9124999999999996,
+    1.9150000000000003,
+    0.08499999999999996,
+    1.4649999999999999,
+    2.327500000000001,
+    0.81,
+    1.3275000000000001
+   ],
+   "files": [
+    {
+     "path": "results\\m44c\\trajectories\\m44c_zoning_Threaten.json",
+     "strategy": "Threaten",
+     "lead": -0.5449999999999998,
+     "verify": {
+      "path": "results\\m44c\\trajectories\\m44c_zoning_Threaten.json",
+      "config": "m4_four_actions_econ_aggro",
+      "turns": 30,
+      "actions_equal": true,
+      "payoff_equal": true,
+      "payoff_A": -0.5449999999999998
+     }
+    },
+    {
+     "path": "results\\m44c\\trajectories\\m44c_zoning_Farm.json",
+     "strategy": "Farm",
+     "lead": -2.01,
+     "verify": {
+      "path": "results\\m44c\\trajectories\\m44c_zoning_Farm.json",
+      "config": "m4_four_actions_econ_aggro",
+      "turns": 30,
+      "actions_equal": true,
+      "payoff_equal": true,
+      "payoff_A": -2.01
+     }
+    }
+   ]
+  }
+ ],
+ "all_verified": true,
+ "elapsed_s": 8.700000999961048
+}

@@ -1,0 +1,456 @@
+{
+ "schema": "lanegame.viewer_recording",
+ "version": 1,
+ "config": "m4_four_actions_econ_aggro",
+ "scenario": "s0",
+ "gap": "equal",
+ "seed": 81505,
+ "names": [
+  "final:ext:aggro:0",
+  "final:ext:aggro:0"
+ ],
+ "label": "M4.4c counterfactual pair (vision): a siege with plates left: Vision first, then Pressure vs Pressure at once. Branch 'Pressure' for side B from turn 13; the other file of the pair plays 'Vision>Pressure' from the same state with the same chance. Selected as the median absolute 30-turn gold-lead difference among the 8 of 8 candidate states where the two branches differ.",
+ "actions": [
+  [
+   10,
+   10
+  ],
+  [
+   12,
+   46
+  ],
+  [
+   45,
+   3
+  ],
+  [
+   10,
+   46
+  ],
+  [
+   4,
+   3
+  ],
+  [
+   4,
+   8
+  ],
+  [
+   6,
+   5
+  ],
+  [
+   4,
+   8
+  ],
+  [
+   12,
+   6
+  ],
+  [
+   8,
+   3
+  ],
+  [
+   10,
+   6
+  ],
+  [
+   12,
+   46
+  ],
+  [
+   45,
+   1
+  ],
+  [
+   4,
+   16
+  ],
+  [
+   2,
+   16
+  ],
+  [
+   0,
+   16
+  ],
+  [
+   3,
+   16
+  ],
+  [
+   5,
+   16
+  ],
+  [
+   6,
+   11
+  ],
+  [
+   11,
+   10
+  ],
+  [
+   8,
+   49
+  ],
+  [
+   5,
+   12
+  ],
+  [
+   47,
+   45
+  ],
+  [
+   46,
+   8
+  ],
+  [
+   47,
+   48
+  ],
+  [
+   8,
+   0
+  ],
+  [
+   1,
+   6
+  ],
+  [
+   1,
+   4
+  ],
+  [
+   16,
+   5
+  ],
+  [
+   16,
+   11
+  ],
+  [
+   10,
+   4
+  ],
+  [
+   6,
+   12
+  ],
+  [
+   9,
+   8
+  ],
+  [
+   4,
+   11
+  ],
+  [
+   10,
+   10
+  ],
+  [
+   9,
+   8
+  ],
+  [
+   12,
+   3
+  ],
+  [
+   45,
+   4
+  ],
+  [
+   7,
+   11
+  ],
+  [
+   4,
+   4
+  ],
+  [
+   46,
+   10
+  ],
+  [
+   17,
+   47
+  ],
+  [
+   2,
+   6
+  ]
+ ],
+ "events": [
+  [
+   1,
+   "A recalls"
+  ],
+  [
+   8,
+   "A's recall is interrupted"
+  ],
+  [
+   11,
+   "A recalls"
+  ],
+  [
+   11,
+   "freeze state: A holds the enemy wave at its tower"
+  ],
+  [
+   12,
+   "B crashes 20 HP into the enemy tower"
+  ],
+  [
+   13,
+   "BRANCH POINT: B plays 'Pressure' from here (M4.4c counterfactual)"
+  ],
+  [
+   14,
+   "B crashes 10 HP into the enemy tower"
+  ],
+  [
+   15,
+   "B breaks a plate"
+  ],
+  [
+   16,
+   "B crashes 8 HP into the enemy tower"
+  ],
+  [
+   18,
+   "B crashes 8 HP into the enemy tower"
+  ],
+  [
+   20,
+   "freeze state: A holds the enemy wave at its tower"
+  ],
+  [
+   21,
+   "B recalls"
+  ],
+  [
+   26,
+   "freeze state: B holds the enemy wave at its tower"
+  ],
+  [
+   27,
+   "A crashes 13 HP into the enemy tower"
+  ],
+  [
+   28,
+   "A crashes 8 HP into the enemy tower"
+  ],
+  [
+   30,
+   "A crashes 4 HP into the enemy tower"
+  ],
+  [
+   31,
+   "B's recall is interrupted"
+  ],
+  [
+   36,
+   "A recalls"
+  ],
+  [
+   40,
+   "A crashes 14 HP into the enemy tower"
+  ],
+  [
+   41,
+   "A breaks a plate"
+  ],
+  [
+   42,
+   "freeze state: B holds the enemy wave at its tower"
+  ]
+ ],
+ "payoff_A": 0.25000000000000006,
+ "turns": 43,
+ "labels": [
+  [
+   "Shove + Safe",
+   "Shove + Safe"
+  ],
+  [
+   "Recall",
+   "Slow Push + Hold"
+  ],
+  [
+   "Absent",
+   "Last Hit + Yield"
+  ],
+  [
+   "Shove + Safe",
+   "Slow Push + Hold"
+  ],
+  [
+   "Shove + Yield",
+   "Last Hit + Yield"
+  ],
+  [
+   "Shove + Yield",
+   "Thin + Trade"
+  ],
+  [
+   "Last Hit + Trade",
+   "Thin + Yield"
+  ],
+  [
+   "Shove + Yield",
+   "Thin + Trade"
+  ],
+  [
+   "Recall",
+   "Last Hit + Trade"
+  ],
+  [
+   "Thin + Trade",
+   "Last Hit + Yield"
+  ],
+  [
+   "Shove + Safe",
+   "Last Hit + Trade"
+  ],
+  [
+   "Recall",
+   "Slow Push + Hold"
+  ],
+  [
+   "Absent",
+   "Shove + Hold"
+  ],
+  [
+   "Shove + Yield",
+   "Shove + Hold + Pressure"
+  ],
+  [
+   "Thin + Hold",
+   "Shove + Hold + Pressure"
+  ],
+  [
+   "Last Hit + Hold",
+   "Shove + Hold + Pressure"
+  ],
+  [
+   "Last Hit + Yield",
+   "Shove + Hold + Pressure"
+  ],
+  [
+   "Thin + Yield",
+   "Shove + Hold + Pressure"
+  ],
+  [
+   "Last Hit + Trade",
+   "Thin + Safe"
+  ],
+  [
+   "Thin + Safe",
+   "Shove + Safe"
+  ],
+  [
+   "Thin + Trade",
+   "Slow Push + Safe"
+  ],
+  [
+   "Thin + Yield",
+   "Recall"
+  ],
+  [
+   "Slow Push + Yield",
+   "Absent"
+  ],
+  [
+   "Slow Push + Hold",
+   "Thin + Trade"
+  ],
+  [
+   "Slow Push + Yield",
+   "Slow Push + Trade"
+  ],
+  [
+   "Thin + Trade",
+   "Last Hit + Hold"
+  ],
+  [
+   "Shove + Hold",
+   "Last Hit + Trade"
+  ],
+  [
+   "Shove + Hold",
+   "Shove + Yield"
+  ],
+  [
+   "Shove + Hold + Pressure",
+   "Thin + Yield"
+  ],
+  [
+   "Shove + Hold + Pressure",
+   "Thin + Safe"
+  ],
+  [
+   "Shove + Safe",
+   "Shove + Yield"
+  ],
+  [
+   "Last Hit + Trade",
+   "Recall"
+  ],
+  [
+   "Last Hit + Safe",
+   "Thin + Trade"
+  ],
+  [
+   "Shove + Yield",
+   "Thin + Safe"
+  ],
+  [
+   "Shove + Safe",
+   "Shove + Safe"
+  ],
+  [
+   "Last Hit + Safe",
+   "Thin + Trade"
+  ],
+  [
+   "Recall",
+   "Last Hit + Yield"
+  ],
+  [
+   "Absent",
+   "Shove + Yield"
+  ],
+  [
+   "Shove + Trade",
+   "Thin + Safe"
+  ],
+  [
+   "Shove + Yield",
+   "Shove + Yield"
+  ],
+  [
+   "Slow Push + Hold",
+   "Shove + Safe"
+  ],
+  [
+   "Thin + Hold + Pressure",
+   "Slow Push + Yield"
+  ],
+  [
+   "Thin + Hold",
+   "Last Hit + Trade"
+  ]
+ ],
+ "branch": {
+  "turn": 13,
+  "focal": 1,
+  "strategy": "Pressure",
+  "horizon": 30,
+  "gold_lead_over_horizon": -3.6725
+ }
+}

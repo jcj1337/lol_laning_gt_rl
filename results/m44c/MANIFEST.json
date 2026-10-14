@@ -1,0 +1,84 @@
+{
+ "study": "M4.4c",
+ "note": "raw per-state results; regenerate with the command (deterministic seeds); verify with sha256",
+ "files": [
+  {
+   "file": "freeze.json.gz",
+   "bytes": 6404310,
+   "sha256": "0bd7f40a427fba5d4dad6566869ba36e475a654c18cfeb91c00e1955a30fdb9c",
+   "command": "python -m lanegame.experiments.rl.m44c freeze"
+  },
+  {
+   "file": "freeze_init.json.gz",
+   "bytes": 4861618,
+   "sha256": "5efeb95dc48d9ec3c94aff1494b4a6606d319210b5f5d0d4e5ca351ba32f3fff",
+   "command": "python -m lanegame.experiments.rl.m44c freeze_init --envs econ,aggro"
+  },
+  {
+   "file": "freeze_rep.json.gz",
+   "bytes": 1215829,
+   "sha256": "386a3883baf003c4f483646a6a1c19c1d7e71611d2ed3acc325d173f5bebdfe9",
+   "command": "python -m lanegame.experiments.rl.m44c freeze_rep"
+  },
+  {
+   "file": "recall.json.gz",
+   "bytes": 11530734,
+   "sha256": "32cd23b955f508e7a45b12ad48b3280518171125be28f5b0807774a51cfdfca9",
+   "command": "python -m lanegame.experiments.rl.m44c recall"
+  },
+  {
+   "file": "recall_rep.json.gz",
+   "bytes": 2685570,
+   "sha256": "18281feded8d49a2e807080bfb2d592749675ecf7854cf9a04e10c3f8977282e",
+   "command": "python -m lanegame.experiments.rl.m44c recall_rep"
+  },
+  {
+   "file": "traces.json",
+   "bytes": 6351,
+   "sha256": "feb9f9a343d6078e72d2f16440080747670354e7d30392f85fe2edb190e9e9f7",
+   "command": "python -m lanegame.experiments.rl.m44c traces"
+  },
+  {
+   "file": "vision.json.gz",
+   "bytes": 5192687,
+   "sha256": "a1c0bf8a0d5754d13090c9c213d4e0773daab695122f1abc6e9a71cc26ca860f",
+   "command": "python -m lanegame.experiments.rl.m44c vision"
+  },
+  {
+   "file": "vision_init.json.gz",
+   "bytes": 481962,
+   "sha256": "330b8f3cc9ccce975adb9f57b1ca628b07ef396484bbd14d3f602d5f8392f08f",
+   "command": "python -m lanegame.experiments.rl.m44c vision"
+  },
+  {
+   "file": "waves.json.gz",
+   "bytes": 6632962,
+   "sha256": "8b2af02fd351d18031e101d1f0bfce5a386669057276b5de092cddf6e29a3cc5",
+   "command": "python -m lanegame.experiments.rl.m44c waves"
+  },
+  {
+   "file": "waves_mech.json.gz",
+   "bytes": 227736,
+   "sha256": "edded0faf80ac1e3623b456f7e5df38856c10454b5c12adbfc890662aa9bd54e",
+   "command": "python -m lanegame.experiments.rl.m44c waves_mech"
+  },
+  {
+   "file": "zoning.json.gz",
+   "bytes": 6198663,
+   "sha256": "97e27928b175074e81f6e2ece315e9fd115b35996aac24f6f0f1ad65c6448d1e",
+   "command": "python -m lanegame.experiments.rl.m44c zoning"
+  },
+  {
+   "file": "zoning_mech.json.gz",
+   "bytes": 420697,
+   "sha256": "6999a80fffbaeec0978af0fc9d73d4c9ec5458c1cd4fd3b3b304bf08315d441d",
+   "command": "python -m lanegame.experiments.rl.m44c zoning_mech"
+  },
+  {
+   "file": "zoning_nat.json.gz",
+   "bytes": 4097048,
+   "sha256": "79db86d7ab68f11b7341dbeb19daa71e46b470c378525c1e8db65f090bfd5ade",
+   "command": "python -m lanegame.experiments.rl.m44c zoning_nat"
+  }
+ ]
+}

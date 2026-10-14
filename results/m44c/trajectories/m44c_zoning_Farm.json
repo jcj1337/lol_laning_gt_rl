@@ -1,0 +1,300 @@
+{
+ "schema": "lanegame.viewer_recording",
+ "version": 1,
+ "config": "m4_four_actions_econ_aggro",
+ "scenario": "neutral",
+ "gap": "large",
+ "seed": 81504,
+ "names": [
+  "final:ext:aggro:0",
+  "final:ext:aggro:0"
+ ],
+ "label": "M4.4c counterfactual pair (zoning): INITIALIZED neutral lane, A x1.76: threaten (Trade when catchable with the edge) vs farm. Branch 'Farm' for side A from turn 0; the other file of the pair plays 'Threaten' from the same state with the same chance. Selected as the median absolute 30-turn gold-lead difference among the 8 of 8 candidate states where the two branches differ.",
+ "actions": [
+  [
+   0,
+   6
+  ],
+  [
+   0,
+   47
+  ],
+  [
+   0,
+   8
+  ],
+  [
+   0,
+   0
+  ],
+  [
+   0,
+   7
+  ],
+  [
+   0,
+   0
+  ],
+  [
+   0,
+   6
+  ],
+  [
+   0,
+   48
+  ],
+  [
+   0,
+   48
+  ],
+  [
+   0,
+   8
+  ],
+  [
+   0,
+   8
+  ],
+  [
+   0,
+   6
+  ],
+  [
+   45,
+   47
+  ],
+  [
+   45,
+   8
+  ],
+  [
+   45,
+   8
+  ],
+  [
+   0,
+   10
+  ],
+  [
+   0,
+   4
+  ],
+  [
+   0,
+   7
+  ],
+  [
+   0,
+   5
+  ],
+  [
+   0,
+   7
+  ],
+  [
+   48,
+   49
+  ],
+  [
+   5,
+   12
+  ],
+  [
+   1,
+   45
+  ],
+  [
+   46,
+   2
+  ],
+  [
+   16,
+   3
+  ],
+  [
+   47,
+   4
+  ],
+  [
+   49,
+   48
+  ],
+  [
+   7,
+   0
+  ],
+  [
+   46,
+   4
+  ],
+  [
+   48,
+   49
+  ]
+ ],
+ "events": [
+  [
+   0,
+   "BRANCH POINT: A plays 'Farm' from here (M4.4c counterfactual)"
+  ],
+  [
+   11,
+   "A dies"
+  ],
+  [
+   12,
+   "freeze state: B holds the enemy wave at its tower"
+  ],
+  [
+   13,
+   "A crashes 22 HP into the enemy tower"
+  ],
+  [
+   15,
+   "freeze state: B holds the enemy wave at its tower"
+  ],
+  [
+   21,
+   "B recalls"
+  ],
+  [
+   23,
+   "A crashes 14 HP into the enemy tower"
+  ],
+  [
+   25,
+   "A crashes 4 HP into the enemy tower"
+  ]
+ ],
+ "payoff_A": -2.01,
+ "turns": 30,
+ "labels": [
+  [
+   "Last Hit + Hold",
+   "Last Hit + Trade"
+  ],
+  [
+   "Last Hit + Hold",
+   "Slow Push + Yield"
+  ],
+  [
+   "Last Hit + Hold",
+   "Thin + Trade"
+  ],
+  [
+   "Last Hit + Hold",
+   "Last Hit + Hold"
+  ],
+  [
+   "Last Hit + Hold",
+   "Shove + Trade"
+  ],
+  [
+   "Last Hit + Hold",
+   "Last Hit + Hold"
+  ],
+  [
+   "Last Hit + Hold",
+   "Last Hit + Trade"
+  ],
+  [
+   "Last Hit + Hold",
+   "Slow Push + Trade"
+  ],
+  [
+   "Last Hit + Hold",
+   "Slow Push + Trade"
+  ],
+  [
+   "Last Hit + Hold",
+   "Thin + Trade"
+  ],
+  [
+   "Last Hit + Hold",
+   "Thin + Trade"
+  ],
+  [
+   "Last Hit + Hold",
+   "Last Hit + Trade"
+  ],
+  [
+   "Absent",
+   "Slow Push + Yield"
+  ],
+  [
+   "Absent",
+   "Thin + Trade"
+  ],
+  [
+   "Absent",
+   "Thin + Trade"
+  ],
+  [
+   "Last Hit + Hold",
+   "Shove + Safe"
+  ],
+  [
+   "Last Hit + Hold",
+   "Shove + Yield"
+  ],
+  [
+   "Last Hit + Hold",
+   "Shove + Trade"
+  ],
+  [
+   "Last Hit + Hold",
+   "Thin + Yield"
+  ],
+  [
+   "Last Hit + Hold",
+   "Shove + Trade"
+  ],
+  [
+   "Slow Push + Trade",
+   "Slow Push + Safe"
+  ],
+  [
+   "Thin + Yield",
+   "Recall"
+  ],
+  [
+   "Shove + Hold",
+   "Absent"
+  ],
+  [
+   "Slow Push + Hold",
+   "Thin + Hold"
+  ],
+  [
+   "Shove + Hold + Pressure",
+   "Last Hit + Yield"
+  ],
+  [
+   "Slow Push + Yield",
+   "Shove + Yield"
+  ],
+  [
+   "Slow Push + Safe",
+   "Slow Push + Trade"
+  ],
+  [
+   "Shove + Trade",
+   "Last Hit + Hold"
+  ],
+  [
+   "Slow Push + Hold",
+   "Shove + Yield"
+  ],
+  [
+   "Slow Push + Trade",
+   "Slow Push + Safe"
+  ]
+ ],
+ "branch": {
+  "turn": 0,
+  "focal": 0,
+  "strategy": "Farm",
+  "horizon": 30,
+  "gold_lead_over_horizon": -2.01
+ }
+}

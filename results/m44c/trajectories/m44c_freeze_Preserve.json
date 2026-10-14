@@ -1,0 +1,496 @@
+{
+ "schema": "lanegame.viewer_recording",
+ "version": 1,
+ "config": "m4_four_actions_econ_aggro",
+ "scenario": "s0",
+ "gap": "equal",
+ "seed": 81506,
+ "names": [
+  "final:ext:aggro:0",
+  "final:ext:aggro:0"
+ ],
+ "label": "M4.4c counterfactual pair (freeze): a freeze held for 2+ turns: keep it (threshold controller) vs break it (Shove). Branch 'Preserve' for side B from turn 18; the other file of the pair plays 'Break' from the same state with the same chance. Selected as the median absolute 30-turn gold-lead difference among the 7 of 8 candidate states where the two branches differ.",
+ "actions": [
+  [
+   10,
+   5
+  ],
+  [
+   12,
+   12
+  ],
+  [
+   45,
+   45
+  ],
+  [
+   47,
+   8
+  ],
+  [
+   7,
+   47
+  ],
+  [
+   5,
+   8
+  ],
+  [
+   3,
+   11
+  ],
+  [
+   4,
+   4
+  ],
+  [
+   1,
+   10
+  ],
+  [
+   4,
+   4
+  ],
+  [
+   47,
+   4
+  ],
+  [
+   1,
+   4
+  ],
+  [
+   5,
+   4
+  ],
+  [
+   16,
+   47
+  ],
+  [
+   49,
+   7
+  ],
+  [
+   16,
+   11
+  ],
+  [
+   49,
+   8
+  ],
+  [
+   1,
+   8
+  ],
+  [
+   1,
+   0
+  ],
+  [
+   16,
+   3
+  ],
+  [
+   16,
+   4
+  ],
+  [
+   17,
+   48
+  ],
+  [
+   49,
+   7
+  ],
+  [
+   16,
+   5
+  ],
+  [
+   49,
+   48
+  ],
+  [
+   45,
+   1
+  ],
+  [
+   45,
+   1
+  ],
+  [
+   45,
+   8
+  ],
+  [
+   45,
+   1
+  ],
+  [
+   6,
+   11
+  ],
+  [
+   6,
+   11
+  ],
+  [
+   8,
+   12
+  ],
+  [
+   0,
+   12
+  ],
+  [
+   47,
+   45
+  ],
+  [
+   0,
+   6
+  ],
+  [
+   8,
+   1
+  ],
+  [
+   47,
+   16
+  ],
+  [
+   10,
+   51
+  ],
+  [
+   4,
+   16
+  ],
+  [
+   4,
+   16
+  ],
+  [
+   4,
+   47
+  ],
+  [
+   48,
+   5
+  ],
+  [
+   47,
+   5
+  ],
+  [
+   4,
+   48
+  ],
+  [
+   2,
+   46
+  ],
+  [
+   4,
+   4
+  ],
+  [
+   1,
+   11
+  ],
+  [
+   47,
+   4
+  ]
+ ],
+ "events": [
+  [
+   1,
+   "A recalls"
+  ],
+  [
+   1,
+   "B recalls"
+  ],
+  [
+   10,
+   "freeze state: B holds the enemy wave at its tower"
+  ],
+  [
+   12,
+   "A crashes 11 HP into the enemy tower"
+  ],
+  [
+   14,
+   "A crashes 7 HP into the enemy tower"
+  ],
+  [
+   16,
+   "freeze state: B holds the enemy wave at its tower"
+  ],
+  [
+   18,
+   "A crashes 11 HP into the enemy tower"
+  ],
+  [
+   18,
+   "BRANCH POINT: B plays 'Preserve' from here (M4.4c counterfactual)"
+  ],
+  [
+   20,
+   "A breaks a plate"
+  ],
+  [
+   20,
+   "A crashes 8 HP into the enemy tower"
+  ],
+  [
+   22,
+   "A crashes 8 HP into the enemy tower"
+  ],
+  [
+   24,
+   "A crashes 7 HP into the enemy tower"
+  ],
+  [
+   24,
+   "A dies"
+  ],
+  [
+   28,
+   "freeze state: A holds the enemy wave at its tower"
+  ],
+  [
+   31,
+   "B's recall is interrupted"
+  ],
+  [
+   32,
+   "B recalls"
+  ],
+  [
+   35,
+   "B crashes 18 HP into the enemy tower"
+  ],
+  [
+   36,
+   "B crashes 8 HP into the enemy tower"
+  ],
+  [
+   37,
+   "B breaks a plate"
+  ],
+  [
+   38,
+   "B crashes 8 HP into the enemy tower"
+  ],
+  [
+   40,
+   "B crashes 4 HP into the enemy tower"
+  ]
+ ],
+ "payoff_A": -1.465,
+ "turns": 48,
+ "labels": [
+  [
+   "Shove + Safe",
+   "Thin + Yield"
+  ],
+  [
+   "Recall",
+   "Recall"
+  ],
+  [
+   "Absent",
+   "Absent"
+  ],
+  [
+   "Slow Push + Yield",
+   "Thin + Trade"
+  ],
+  [
+   "Shove + Trade",
+   "Slow Push + Yield"
+  ],
+  [
+   "Thin + Yield",
+   "Thin + Trade"
+  ],
+  [
+   "Last Hit + Yield",
+   "Thin + Safe"
+  ],
+  [
+   "Shove + Yield",
+   "Shove + Yield"
+  ],
+  [
+   "Shove + Hold",
+   "Shove + Safe"
+  ],
+  [
+   "Shove + Yield",
+   "Shove + Yield"
+  ],
+  [
+   "Slow Push + Yield",
+   "Shove + Yield"
+  ],
+  [
+   "Shove + Hold",
+   "Shove + Yield"
+  ],
+  [
+   "Thin + Yield",
+   "Shove + Yield"
+  ],
+  [
+   "Shove + Hold + Pressure",
+   "Slow Push + Yield"
+  ],
+  [
+   "Slow Push + Safe",
+   "Shove + Trade"
+  ],
+  [
+   "Shove + Hold + Pressure",
+   "Thin + Safe"
+  ],
+  [
+   "Slow Push + Safe",
+   "Thin + Trade"
+  ],
+  [
+   "Shove + Hold",
+   "Thin + Trade"
+  ],
+  [
+   "Shove + Hold",
+   "Last Hit + Hold"
+  ],
+  [
+   "Shove + Hold + Pressure",
+   "Last Hit + Yield"
+  ],
+  [
+   "Shove + Hold + Pressure",
+   "Shove + Yield"
+  ],
+  [
+   "Thin + Hold + Pressure",
+   "Slow Push + Trade"
+  ],
+  [
+   "Slow Push + Safe",
+   "Shove + Trade"
+  ],
+  [
+   "Shove + Hold + Pressure",
+   "Thin + Yield"
+  ],
+  [
+   "Slow Push + Safe",
+   "Slow Push + Trade"
+  ],
+  [
+   "Absent",
+   "Shove + Hold"
+  ],
+  [
+   "Absent",
+   "Shove + Hold"
+  ],
+  [
+   "Absent",
+   "Thin + Trade"
+  ],
+  [
+   "Absent",
+   "Shove + Hold"
+  ],
+  [
+   "Last Hit + Trade",
+   "Thin + Safe"
+  ],
+  [
+   "Last Hit + Trade",
+   "Thin + Safe"
+  ],
+  [
+   "Thin + Trade",
+   "Recall"
+  ],
+  [
+   "Last Hit + Hold",
+   "Recall"
+  ],
+  [
+   "Slow Push + Yield",
+   "Absent"
+  ],
+  [
+   "Last Hit + Hold",
+   "Last Hit + Trade"
+  ],
+  [
+   "Thin + Trade",
+   "Shove + Hold"
+  ],
+  [
+   "Slow Push + Yield",
+   "Shove + Hold + Pressure"
+  ],
+  [
+   "Shove + Safe",
+   "Slow Push + Hold + Pressure"
+  ],
+  [
+   "Shove + Yield",
+   "Shove + Hold + Pressure"
+  ],
+  [
+   "Shove + Yield",
+   "Shove + Hold + Pressure"
+  ],
+  [
+   "Shove + Yield",
+   "Slow Push + Yield"
+  ],
+  [
+   "Slow Push + Trade",
+   "Thin + Yield"
+  ],
+  [
+   "Slow Push + Yield",
+   "Thin + Yield"
+  ],
+  [
+   "Shove + Yield",
+   "Slow Push + Trade"
+  ],
+  [
+   "Thin + Hold",
+   "Slow Push + Hold"
+  ],
+  [
+   "Shove + Yield",
+   "Shove + Yield"
+  ],
+  [
+   "Shove + Hold",
+   "Thin + Safe"
+  ],
+  [
+   "Slow Push + Yield",
+   "Shove + Yield"
+  ]
+ ],
+ "branch": {
+  "turn": 18,
+  "focal": 1,
+  "strategy": "Preserve",
+  "horizon": 30,
+  "gold_lead_over_horizon": 2.6875
+ }
+}

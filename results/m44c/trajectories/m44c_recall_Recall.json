@@ -1,0 +1,560 @@
+{
+ "schema": "lanegame.viewer_recording",
+ "version": 1,
+ "config": "m4_four_actions_econ_aggro",
+ "scenario": "s0",
+ "gap": "equal",
+ "seed": 81503,
+ "names": [
+  "final:ext:aggro:0",
+  "final:ext:aggro:0"
+ ],
+ "label": "M4.4c counterfactual pair (recall): a damaged champion that may be interrupted: Recall now vs Safe this turn (then the policy). Branch 'Recall' for side A from turn 24; the other file of the pair plays 'Safe' from the same state with the same chance. Selected as the median absolute 30-turn gold-lead difference among the 8 of 8 candidate states where the two branches differ.",
+ "actions": [
+  [
+   49,
+   3
+  ],
+  [
+   12,
+   12
+  ],
+  [
+   45,
+   45
+  ],
+  [
+   3,
+   3
+  ],
+  [
+   3,
+   47
+  ],
+  [
+   4,
+   5
+  ],
+  [
+   6,
+   3
+  ],
+  [
+   0,
+   4
+  ],
+  [
+   49,
+   47
+  ],
+  [
+   4,
+   4
+  ],
+  [
+   3,
+   4
+  ],
+  [
+   4,
+   4
+  ],
+  [
+   4,
+   4
+  ],
+  [
+   8,
+   3
+  ],
+  [
+   8,
+   1
+  ],
+  [
+   4,
+   1
+  ],
+  [
+   46,
+   10
+  ],
+  [
+   5,
+   12
+  ],
+  [
+   8,
+   45
+  ],
+  [
+   46,
+   8
+  ],
+  [
+   47,
+   3
+  ],
+  [
+   48,
+   5
+  ],
+  [
+   6,
+   47
+  ],
+  [
+   11,
+   48
+  ],
+  [
+   12,
+   6
+  ],
+  [
+   45,
+   3
+  ],
+  [
+   45,
+   8
+  ],
+  [
+   45,
+   48
+  ],
+  [
+   48,
+   5
+  ],
+  [
+   15,
+   46
+  ],
+  [
+   16,
+   10
+  ],
+  [
+   3,
+   4
+  ],
+  [
+   47,
+   4
+  ],
+  [
+   3,
+   12
+  ],
+  [
+   1,
+   45
+  ],
+  [
+   2,
+   8
+  ],
+  [
+   1,
+   5
+  ],
+  [
+   15,
+   10
+  ],
+  [
+   47,
+   6
+  ],
+  [
+   1,
+   4
+  ],
+  [
+   5,
+   4
+  ],
+  [
+   46,
+   46
+  ],
+  [
+   4,
+   10
+  ],
+  [
+   8,
+   6
+  ],
+  [
+   4,
+   48
+  ],
+  [
+   6,
+   6
+  ],
+  [
+   49,
+   10
+  ],
+  [
+   4,
+   6
+  ],
+  [
+   8,
+   49
+  ],
+  [
+   4,
+   6
+  ],
+  [
+   12,
+   11
+  ],
+  [
+   45,
+   12
+  ],
+  [
+   7,
+   45
+  ],
+  [
+   16,
+   4
+  ]
+ ],
+ "events": [
+  [
+   1,
+   "A recalls"
+  ],
+  [
+   1,
+   "B recalls"
+  ],
+  [
+   12,
+   "freeze state: A holds the enemy wave at its tower"
+  ],
+  [
+   16,
+   "B crashes 10 HP into the enemy tower"
+  ],
+  [
+   17,
+   "B recalls"
+  ],
+  [
+   18,
+   "freeze state: A holds the enemy wave at its tower"
+  ],
+  [
+   24,
+   "A dies"
+  ],
+  [
+   24,
+   "A's recall is interrupted"
+  ],
+  [
+   24,
+   "BRANCH POINT: A plays 'Recall' from here (M4.4c counterfactual)"
+  ],
+  [
+   27,
+   "freeze state: B holds the enemy wave at its tower"
+  ],
+  [
+   28,
+   "A crashes 22 HP into the enemy tower"
+  ],
+  [
+   30,
+   "freeze state: B holds the enemy wave at its tower"
+  ],
+  [
+   31,
+   "A crashes 2 HP into the enemy tower"
+  ],
+  [
+   32,
+   "A crashes 4 HP into the enemy tower"
+  ],
+  [
+   33,
+   "B recalls"
+  ],
+  [
+   35,
+   "freeze state: B holds the enemy wave at its tower"
+  ],
+  [
+   36,
+   "A crashes 11 HP into the enemy tower"
+  ],
+  [
+   37,
+   "A breaks a plate"
+  ],
+  [
+   38,
+   "freeze state: B holds the enemy wave at its tower"
+  ],
+  [
+   40,
+   "A crashes 5 HP into the enemy tower"
+  ],
+  [
+   50,
+   "A recalls"
+  ],
+  [
+   51,
+   "B recalls"
+  ],
+  [
+   51,
+   "freeze state: B holds the enemy wave at its tower"
+  ],
+  [
+   52,
+   "A crashes 20 HP into the enemy tower"
+  ],
+  [
+   53,
+   "A breaks a plate"
+  ]
+ ],
+ "payoff_A": -0.5300000000000001,
+ "turns": 54,
+ "labels": [
+  [
+   "Slow Push + Safe",
+   "Last Hit + Yield"
+  ],
+  [
+   "Recall",
+   "Recall"
+  ],
+  [
+   "Absent",
+   "Absent"
+  ],
+  [
+   "Last Hit + Yield",
+   "Last Hit + Yield"
+  ],
+  [
+   "Last Hit + Yield",
+   "Slow Push + Yield"
+  ],
+  [
+   "Shove + Yield",
+   "Thin + Yield"
+  ],
+  [
+   "Last Hit + Trade",
+   "Last Hit + Yield"
+  ],
+  [
+   "Last Hit + Hold",
+   "Shove + Yield"
+  ],
+  [
+   "Slow Push + Safe",
+   "Slow Push + Yield"
+  ],
+  [
+   "Shove + Yield",
+   "Shove + Yield"
+  ],
+  [
+   "Last Hit + Yield",
+   "Shove + Yield"
+  ],
+  [
+   "Shove + Yield",
+   "Shove + Yield"
+  ],
+  [
+   "Shove + Yield",
+   "Shove + Yield"
+  ],
+  [
+   "Thin + Trade",
+   "Last Hit + Yield"
+  ],
+  [
+   "Thin + Trade",
+   "Shove + Hold"
+  ],
+  [
+   "Shove + Yield",
+   "Shove + Hold"
+  ],
+  [
+   "Slow Push + Hold",
+   "Shove + Safe"
+  ],
+  [
+   "Thin + Yield",
+   "Recall"
+  ],
+  [
+   "Thin + Trade",
+   "Absent"
+  ],
+  [
+   "Slow Push + Hold",
+   "Thin + Trade"
+  ],
+  [
+   "Slow Push + Yield",
+   "Last Hit + Yield"
+  ],
+  [
+   "Slow Push + Trade",
+   "Thin + Yield"
+  ],
+  [
+   "Last Hit + Trade",
+   "Slow Push + Yield"
+  ],
+  [
+   "Thin + Safe",
+   "Slow Push + Trade"
+  ],
+  [
+   "Recall",
+   "Last Hit + Trade"
+  ],
+  [
+   "Absent",
+   "Last Hit + Yield"
+  ],
+  [
+   "Absent",
+   "Thin + Trade"
+  ],
+  [
+   "Absent",
+   "Slow Push + Trade"
+  ],
+  [
+   "Slow Push + Trade",
+   "Thin + Yield"
+  ],
+  [
+   "Last Hit + Hold + Pressure",
+   "Slow Push + Hold"
+  ],
+  [
+   "Shove + Hold + Pressure",
+   "Shove + Safe"
+  ],
+  [
+   "Last Hit + Yield",
+   "Shove + Yield"
+  ],
+  [
+   "Slow Push + Yield",
+   "Shove + Yield"
+  ],
+  [
+   "Last Hit + Yield",
+   "Recall"
+  ],
+  [
+   "Shove + Hold",
+   "Absent"
+  ],
+  [
+   "Thin + Hold",
+   "Thin + Trade"
+  ],
+  [
+   "Shove + Hold",
+   "Thin + Yield"
+  ],
+  [
+   "Last Hit + Hold + Pressure",
+   "Shove + Safe"
+  ],
+  [
+   "Slow Push + Yield",
+   "Last Hit + Trade"
+  ],
+  [
+   "Shove + Hold",
+   "Shove + Yield"
+  ],
+  [
+   "Thin + Yield",
+   "Shove + Yield"
+  ],
+  [
+   "Slow Push + Hold",
+   "Slow Push + Hold"
+  ],
+  [
+   "Shove + Yield",
+   "Shove + Safe"
+  ],
+  [
+   "Thin + Trade",
+   "Last Hit + Trade"
+  ],
+  [
+   "Shove + Yield",
+   "Slow Push + Trade"
+  ],
+  [
+   "Last Hit + Trade",
+   "Last Hit + Trade"
+  ],
+  [
+   "Slow Push + Safe",
+   "Shove + Safe"
+  ],
+  [
+   "Shove + Yield",
+   "Last Hit + Trade"
+  ],
+  [
+   "Thin + Trade",
+   "Slow Push + Safe"
+  ],
+  [
+   "Shove + Yield",
+   "Last Hit + Trade"
+  ],
+  [
+   "Recall",
+   "Thin + Safe"
+  ],
+  [
+   "Absent",
+   "Recall"
+  ],
+  [
+   "Shove + Trade",
+   "Absent"
+  ],
+  [
+   "Shove + Hold + Pressure",
+   "Shove + Yield"
+  ]
+ ],
+ "branch": {
+  "turn": 24,
+  "focal": 0,
+  "strategy": "Recall",
+  "horizon": 30,
+  "gold_lead_over_horizon": -2.045
+ }
+}

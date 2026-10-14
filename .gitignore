@@ -14,3 +14,8 @@ results/m4_design/scripts/*.npz
 
 # research artifact bundles (checkpoint tarballs; see results/rl/m43b/MANIFEST.json)
 results/rl/m43b_artifacts/
+
+# M4.4c raw per-state counterfactual results (large, regenerable with deterministic seeds; sha256 and commands in
+# results/m44c/MANIFEST.json) and the resumable-run scratch folder
+results/m44c/*.json.gz
+results/m44c/partial/

@@ -1,0 +1,332 @@
+{
+ "schema": "lanegame.viewer_recording",
+ "version": 1,
+ "config": "m4_four_actions_econ_aggro",
+ "scenario": "neutral",
+ "gap": "large",
+ "seed": 81504,
+ "names": [
+  "final:ext:aggro:0",
+  "final:ext:aggro:0"
+ ],
+ "label": "M4.4c counterfactual pair (zoning): INITIALIZED neutral lane, A x1.76: threaten (Trade when catchable with the edge) vs farm. Branch 'Threaten' for side A from turn 0; the other file of the pair plays 'Farm' from the same state with the same chance. Selected as the median absolute 30-turn gold-lead difference among the 8 of 8 candidate states where the two branches differ.",
+ "actions": [
+  [
+   6,
+   6
+  ],
+  [
+   6,
+   49
+  ],
+  [
+   0,
+   12
+  ],
+  [
+   1,
+   45
+  ],
+  [
+   1,
+   8
+  ],
+  [
+   7,
+   1
+  ],
+  [
+   22,
+   5
+  ],
+  [
+   16,
+   48
+  ],
+  [
+   1,
+   48
+  ],
+  [
+   16,
+   4
+  ],
+  [
+   16,
+   11
+  ],
+  [
+   45,
+   0
+  ],
+  [
+   45,
+   12
+  ],
+  [
+   45,
+   45
+  ],
+  [
+   46,
+   3
+  ],
+  [
+   1,
+   7
+  ],
+  [
+   48,
+   4
+  ],
+  [
+   1,
+   7
+  ],
+  [
+   16,
+   4
+  ],
+  [
+   46,
+   4
+  ],
+  [
+   17,
+   48
+  ],
+  [
+   47,
+   8
+  ],
+  [
+   10,
+   7
+  ],
+  [
+   12,
+   0
+  ],
+  [
+   45,
+   2
+  ],
+  [
+   48,
+   2
+  ],
+  [
+   48,
+   5
+  ],
+  [
+   8,
+   1
+  ],
+  [
+   8,
+   1
+  ],
+  [
+   47,
+   49
+  ]
+ ],
+ "events": [
+  [
+   0,
+   "BRANCH POINT: A plays 'Threaten' from here (M4.4c counterfactual)"
+  ],
+  [
+   2,
+   "B recalls"
+  ],
+  [
+   5,
+   "A crashes 18 HP into the enemy tower"
+  ],
+  [
+   7,
+   "freeze state: B holds the enemy wave at its tower"
+  ],
+  [
+   8,
+   "A crashes 6 HP into the enemy tower"
+  ],
+  [
+   9,
+   "A breaks a plate"
+  ],
+  [
+   9,
+   "A crashes 8 HP into the enemy tower"
+  ],
+  [
+   10,
+   "A dies"
+  ],
+  [
+   11,
+   "A crashes 7 HP into the enemy tower"
+  ],
+  [
+   12,
+   "B recalls"
+  ],
+  [
+   13,
+   "freeze state: B holds the enemy wave at its tower"
+  ],
+  [
+   17,
+   "A crashes 8 HP into the enemy tower"
+  ],
+  [
+   18,
+   "A breaks a plate"
+  ],
+  [
+   19,
+   "A crashes 5 HP into the enemy tower"
+  ],
+  [
+   23,
+   "A recalls"
+  ],
+  [
+   29,
+   "B crashes 26 HP into the enemy tower"
+  ]
+ ],
+ "payoff_A": -0.5449999999999998,
+ "turns": 30,
+ "labels": [
+  [
+   "Last Hit + Trade",
+   "Last Hit + Trade"
+  ],
+  [
+   "Last Hit + Trade",
+   "Slow Push + Safe"
+  ],
+  [
+   "Last Hit + Hold",
+   "Recall"
+  ],
+  [
+   "Shove + Hold",
+   "Absent"
+  ],
+  [
+   "Shove + Hold",
+   "Thin + Trade"
+  ],
+  [
+   "Shove + Trade",
+   "Shove + Hold"
+  ],
+  [
+   "Shove + Trade + Pressure",
+   "Thin + Yield"
+  ],
+  [
+   "Shove + Hold + Pressure",
+   "Slow Push + Trade"
+  ],
+  [
+   "Shove + Hold",
+   "Slow Push + Trade"
+  ],
+  [
+   "Shove + Hold + Pressure",
+   "Shove + Yield"
+  ],
+  [
+   "Shove + Hold + Pressure",
+   "Thin + Safe"
+  ],
+  [
+   "Absent",
+   "Last Hit + Hold"
+  ],
+  [
+   "Absent",
+   "Recall"
+  ],
+  [
+   "Absent",
+   "Absent"
+  ],
+  [
+   "Slow Push + Hold",
+   "Last Hit + Yield"
+  ],
+  [
+   "Shove + Hold",
+   "Shove + Trade"
+  ],
+  [
+   "Slow Push + Trade",
+   "Shove + Yield"
+  ],
+  [
+   "Shove + Hold",
+   "Shove + Trade"
+  ],
+  [
+   "Shove + Hold + Pressure",
+   "Shove + Yield"
+  ],
+  [
+   "Slow Push + Hold",
+   "Shove + Yield"
+  ],
+  [
+   "Thin + Hold + Pressure",
+   "Slow Push + Trade"
+  ],
+  [
+   "Slow Push + Yield",
+   "Thin + Trade"
+  ],
+  [
+   "Shove + Safe",
+   "Shove + Trade"
+  ],
+  [
+   "Recall",
+   "Last Hit + Hold"
+  ],
+  [
+   "Absent",
+   "Thin + Hold"
+  ],
+  [
+   "Slow Push + Trade",
+   "Thin + Hold"
+  ],
+  [
+   "Slow Push + Trade",
+   "Thin + Yield"
+  ],
+  [
+   "Thin + Trade",
+   "Shove + Hold"
+  ],
+  [
+   "Thin + Trade",
+   "Shove + Hold"
+  ],
+  [
+   "Slow Push + Yield",
+   "Slow Push + Safe"
+  ]
+ ],
+ "branch": {
+  "turn": 0,
+  "focal": 0,
+  "strategy": "Threaten",
+  "horizon": 30,
+  "gold_lead_over_horizon": -0.5449999999999998
+ }
+}
