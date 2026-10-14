@@ -1,0 +1,765 @@
+{
+ "schema": "lanegame.viewer_recording",
+ "version": 1,
+ "config": "m45_unified",
+ "scenario": "freeze",
+ "gap": "large",
+ "seed": 0,
+ "names": [
+  "freeze_bully4",
+  "walk_up_shove4"
+ ],
+ "label": "Scenario A/B (strong-side freeze): A (x1.76) keeps the freeze with Thin and trades the walking-up B; B's minions retaliate on A after landing hits; over 40 turns watch HP, Recalls and whether the freeze holds. Seed 0: the first seed with a retaliation on A within the first 10 turns.",
+ "actions": [
+  [
+   8,
+   16
+  ],
+  [
+   8,
+   1
+  ],
+  [
+   8,
+   16
+  ],
+  [
+   8,
+   1
+  ],
+  [
+   8,
+   16
+  ],
+  [
+   8,
+   1
+  ],
+  [
+   8,
+   16
+  ],
+  [
+   2,
+   45
+  ],
+  [
+   2,
+   45
+  ],
+  [
+   2,
+   45
+  ],
+  [
+   2,
+   45
+  ],
+  [
+   8,
+   1
+  ],
+  [
+   8,
+   1
+  ],
+  [
+   8,
+   1
+  ],
+  [
+   8,
+   16
+  ],
+  [
+   8,
+   1
+  ],
+  [
+   8,
+   9
+  ],
+  [
+   8,
+   12
+  ],
+  [
+   2,
+   45
+  ],
+  [
+   2,
+   45
+  ],
+  [
+   12,
+   45
+  ],
+  [
+   45,
+   45
+  ],
+  [
+   8,
+   1
+  ],
+  [
+   8,
+   1
+  ],
+  [
+   8,
+   1
+  ],
+  [
+   8,
+   1
+  ],
+  [
+   8,
+   9
+  ],
+  [
+   8,
+   12
+  ],
+  [
+   8,
+   9
+  ],
+  [
+   8,
+   9
+  ],
+  [
+   9,
+   9
+  ],
+  [
+   9,
+   9
+  ],
+  [
+   12,
+   12
+  ],
+  [
+   45,
+   45
+  ],
+  [
+   8,
+   1
+  ],
+  [
+   8,
+   1
+  ],
+  [
+   8,
+   1
+  ],
+  [
+   8,
+   1
+  ],
+  [
+   8,
+   16
+  ],
+  [
+   8,
+   9
+  ]
+ ],
+ "labels": [
+  [
+   "TN-T",
+   "SH-H+P"
+  ],
+  [
+   "TN-T",
+   "SH-H"
+  ],
+  [
+   "TN-T",
+   "SH-H+P"
+  ],
+  [
+   "TN-T",
+   "SH-H"
+  ],
+  [
+   "TN-T",
+   "SH-H+P"
+  ],
+  [
+   "TN-T",
+   "SH-H"
+  ],
+  [
+   "TN-T",
+   "SH-H+P"
+  ],
+  [
+   "TN-H",
+   "ABSENT"
+  ],
+  [
+   "TN-H",
+   "ABSENT"
+  ],
+  [
+   "TN-H",
+   "ABSENT"
+  ],
+  [
+   "TN-H",
+   "ABSENT"
+  ],
+  [
+   "TN-T",
+   "SH-H"
+  ],
+  [
+   "TN-T",
+   "SH-H"
+  ],
+  [
+   "TN-T",
+   "SH-H"
+  ],
+  [
+   "TN-T",
+   "SH-H+P"
+  ],
+  [
+   "TN-T",
+   "SH-H"
+  ],
+  [
+   "TN-T",
+   "LH-S"
+  ],
+  [
+   "TN-T",
+   "LH-R"
+  ],
+  [
+   "TN-H",
+   "ABSENT"
+  ],
+  [
+   "TN-H",
+   "ABSENT"
+  ],
+  [
+   "LH-R",
+   "ABSENT"
+  ],
+  [
+   "ABSENT",
+   "ABSENT"
+  ],
+  [
+   "TN-T",
+   "SH-H"
+  ],
+  [
+   "TN-T",
+   "SH-H"
+  ],
+  [
+   "TN-T",
+   "SH-H"
+  ],
+  [
+   "TN-T",
+   "SH-H"
+  ],
+  [
+   "TN-T",
+   "LH-S"
+  ],
+  [
+   "TN-T",
+   "LH-R"
+  ],
+  [
+   "TN-T",
+   "LH-S"
+  ],
+  [
+   "TN-T",
+   "LH-S"
+  ],
+  [
+   "LH-S",
+   "LH-S"
+  ],
+  [
+   "LH-S",
+   "LH-S"
+  ],
+  [
+   "LH-R",
+   "LH-R"
+  ],
+  [
+   "ABSENT",
+   "ABSENT"
+  ],
+  [
+   "TN-T",
+   "SH-H"
+  ],
+  [
+   "TN-T",
+   "SH-H"
+  ],
+  [
+   "TN-T",
+   "SH-H"
+  ],
+  [
+   "TN-T",
+   "SH-H"
+  ],
+  [
+   "TN-T",
+   "SH-H+P"
+  ],
+  [
+   "TN-T",
+   "LH-S"
+  ]
+ ],
+ "events": [
+  {
+   "turn": 0,
+   "events": [
+    "A Thin: removed 1 of 1 HP",
+    "A's trade connected: dealt 0 cHP",
+    "A lost 1 packet(s) (8 HP)",
+    "B Shove: removed 6 of 6 HP",
+    "B's reinforcement merged into its front",
+    "B's siege under A's tower ended (the lane bounces back)",
+    "B damaged A's tower: +721"
+   ]
+  },
+  {
+   "turn": 1,
+   "events": [
+    "A Thin: removed 6 of 6 HP",
+    "A's trade connected: dealt 0 cHP",
+    "A reached level 11",
+    "B Shove: removed 0 of 6 HP",
+    "B's wave crashed into A's tower (11 HP)"
+   ]
+  },
+  {
+   "turn": 2,
+   "events": [
+    "A Thin: removed 1 of 2 HP",
+    "B's minions hit A (retaliation): 1 units = 23 cHP",
+    "A's trade connected: dealt 574 cHP",
+    "A lost 1 packet(s) (7 HP)",
+    "B Shove: removed 6 of 6 HP",
+    "B's siege under A's tower ended (the lane bounces back)",
+    "B damaged A's tower: +621",
+    "B broke 1 plate(s): +1.00 gold",
+    "B reached level 11"
+   ]
+  },
+  {
+   "turn": 3,
+   "events": [
+    "A Thin: removed 4 of 4 HP",
+    "A's trade connected: dealt 0 cHP",
+    "B Shove: removed 0 of 7 HP",
+    "B's wave crashed into A's tower (5 HP)"
+   ]
+  },
+  {
+   "turn": 4,
+   "events": [
+    "A Thin: removed 1 of 1 HP",
+    "A's trade connected: dealt 0 cHP",
+    "A lost 1 packet(s) (8 HP)",
+    "B Shove: removed 6 of 7 HP",
+    "B's siege under A's tower ended (the lane bounces back)",
+    "B damaged A's tower: +652"
+   ]
+  },
+  {
+   "turn": 5,
+   "events": [
+    "A Thin: removed 5 of 5 HP",
+    "A's trade connected: dealt 0 cHP",
+    "B Shove: removed 0 of 7 HP",
+    "B's wave crashed into A's tower (5 HP)"
+   ]
+  },
+  {
+   "turn": 6,
+   "events": [
+    "A Thin: removed 1 of 1 HP",
+    "B's minions hit A (retaliation): 1 units = 23 cHP",
+    "A's trade connected: dealt 574 cHP",
+    "A lost 1 packet(s) (8 HP)",
+    "B Shove: removed 7 of 7 HP",
+    "B DIED (A bounty 2.00)",
+    "B's siege under A's tower ended (the lane bounces back)",
+    "B damaged A's tower: +652"
+   ]
+  },
+  {
+   "turn": 7,
+   "events": [
+    "A Thin: removed 5 of 5 HP",
+    "B's wave crashed into A's tower (5 HP)"
+   ]
+  },
+  {
+   "turn": 8,
+   "events": [
+    "A Thin: removed 1 of 1 HP",
+    "B's siege under A's tower ended (the lane bounces back)"
+   ]
+  },
+  {
+   "turn": 9,
+   "events": [
+    "A Thin: removed 1 of 1 HP",
+    "A's reinforcement merged into its front"
+   ]
+  },
+  {
+   "turn": 10,
+   "events": [
+    "A Thin: removed 1 of 1 HP",
+    "B's reinforcement merged into its front",
+    "B invested 4.49 gold at base",
+    "B returns next turn"
+   ]
+  },
+  {
+   "turn": 11,
+   "events": [
+    "A Thin: removed 1 of 1 HP",
+    "A's trade connected: dealt 0 cHP",
+    "A's reinforcement merged into its front",
+    "A reached level 12",
+    "B Shove: removed 8 of 8 HP",
+    "B was ganked (p=0.09): 163 cHP"
+   ]
+  },
+  {
+   "turn": 12,
+   "events": [
+    "A Thin: removed 4 of 4 HP",
+    "B's minions hit A (retaliation): 1 units = 21 cHP",
+    "A's trade connected: dealt 301 cHP",
+    "A lost 1 packet(s) (9 HP)",
+    "B Shove: removed 7 of 8 HP",
+    "B's reinforcement merged into its front"
+   ]
+  },
+  {
+   "turn": 13,
+   "events": [
+    "A Thin: removed 6 of 6 HP",
+    "A's trade connected: dealt 0 cHP",
+    "B Shove: removed 0 of 8 HP",
+    "B's wave crashed into A's tower (6 HP)"
+   ]
+  },
+  {
+   "turn": 14,
+   "events": [
+    "A Thin: removed 1 of 1 HP",
+    "A's trade connected: dealt 0 cHP",
+    "A was ganked (p=0.06): 171 cHP",
+    "A lost 1 packet(s) (8 HP)",
+    "B Shove: removed 6 of 8 HP",
+    "B's siege under A's tower ended (the lane bounces back)",
+    "B damaged A's tower: +765",
+    "B broke 1 plate(s): +1.00 gold",
+    "B reached level 12"
+   ]
+  },
+  {
+   "turn": 15,
+   "events": [
+    "A Thin: removed 5 of 5 HP",
+    "A's trade connected: dealt 301 cHP",
+    "B Shove: removed 0 of 8 HP",
+    "B was ganked (p=0.15): 342 cHP",
+    "B's wave crashed into A's tower (5 HP)"
+   ]
+  },
+  {
+   "turn": 16,
+   "events": [
+    "A Thin: removed 1 of 1 HP",
+    "A tried to trade: no contact",
+    "B Last Hit: removed 0 of 1 HP",
+    "B's siege under A's tower ended (the lane bounces back)"
+   ]
+  },
+  {
+   "turn": 17,
+   "events": [
+    "A Thin: removed 0 of 1 HP",
+    "A's trade connected: dealt 301 cHP",
+    "B's tower shot A for 171 cHP",
+    "A's reinforcement merged into its front",
+    "B Last Hit: removed 0 of 1 HP",
+    "B's recall was interrupted",
+    "B DIED (A bounty 2.00)"
+   ]
+  },
+  {
+   "turn": 18,
+   "events": [
+    "A Thin: removed 1 of 1 HP",
+    "B's reinforcement merged into its front"
+   ]
+  },
+  {
+   "turn": 19,
+   "events": [
+    "A Thin: removed 1 of 1 HP",
+    "A was ganked (p=0.07): 684 cHP",
+    "A's reinforcement merged into its front"
+   ]
+  },
+  {
+   "turn": 20,
+   "events": [
+    "A recalled",
+    "B's reinforcement merged into its front"
+   ]
+  },
+  {
+   "turn": 21,
+   "events": [
+    "A's reinforcement merged into its front",
+    "A invested 11.50 gold at base",
+    "A returns next turn",
+    "B invested 3.92 gold at base",
+    "B returns next turn"
+   ]
+  },
+  {
+   "turn": 22,
+   "events": [
+    "A Thin: removed 1 of 1 HP",
+    "A's trade connected: dealt 0 cHP",
+    "B Shove: removed 9 of 9 HP",
+    "B's reinforcement merged into its front"
+   ]
+  },
+  {
+   "turn": 23,
+   "events": [
+    "A Thin: removed 1 of 1 HP",
+    "A's trade connected: dealt 0 cHP",
+    "A's reinforcement merged into its front",
+    "A reached level 13",
+    "B Shove: removed 9 of 9 HP"
+   ]
+  },
+  {
+   "turn": 24,
+   "events": [
+    "A Thin: removed 4 of 4 HP",
+    "B's minions hit A (retaliation): 1 units = 20 cHP",
+    "A's trade connected: dealt 327 cHP",
+    "A lost 1 packet(s) (8 HP)",
+    "B Shove: removed 6 of 9 HP",
+    "B's reinforcement merged into its front"
+   ]
+  },
+  {
+   "turn": 25,
+   "events": [
+    "A Thin: removed 5 of 5 HP",
+    "A's trade connected: dealt 327 cHP",
+    "B Shove: removed 0 of 9 HP",
+    "B was ganked (p=0.09): 513 cHP",
+    "B's wave crashed into A's tower (5 HP)"
+   ]
+  },
+  {
+   "turn": 26,
+   "events": [
+    "A Thin: removed 1 of 1 HP",
+    "A tried to trade: no contact",
+    "B Last Hit: removed 0 of 1 HP",
+    "B's siege under A's tower ended (the lane bounces back)"
+   ]
+  },
+  {
+   "turn": 27,
+   "events": [
+    "A Thin: removed 0 of 1 HP",
+    "A's trade connected: dealt 0 cHP",
+    "B's tower shot A for 180 cHP",
+    "A's reinforcement merged into its front",
+    "B Last Hit: removed 0 of 1 HP",
+    "B's recall was interrupted"
+   ]
+  },
+  {
+   "turn": 28,
+   "events": [
+    "A Thin: removed 0 of 1 HP",
+    "A's trade connected: dealt 0 cHP",
+    "B's tower shot A for 180 cHP",
+    "B Last Hit: removed 0 of 1 HP",
+    "B's reinforcement merged into its front"
+   ]
+  },
+  {
+   "turn": 29,
+   "events": [
+    "A Thin: removed 0 of 1 HP",
+    "A's trade connected: dealt 0 cHP",
+    "B's tower shot A for 180 cHP",
+    "A was ganked (p=0.15): 720 cHP",
+    "A's reinforcement merged into its front",
+    "B Last Hit: removed 0 of 1 HP"
+   ]
+  },
+  {
+   "turn": 30,
+   "events": [
+    "A Last Hit: removed 0 of 1 HP",
+    "B Last Hit: removed 0 of 1 HP",
+    "B's reinforcement merged into its front"
+   ]
+  },
+  {
+   "turn": 31,
+   "events": [
+    "A Last Hit: removed 0 of 1 HP",
+    "A's reinforcement merged into its front",
+    "B Last Hit: removed 0 of 1 HP",
+    "B reached level 13"
+   ]
+  },
+  {
+   "turn": 32,
+   "events": [
+    "A recalled",
+    "B recalled",
+    "B's reinforcement merged into its front"
+   ]
+  },
+  {
+   "turn": 33,
+   "events": [
+    "A's reinforcement merged into its front",
+    "A invested 2.14 gold at base",
+    "A returns next turn",
+    "B invested 3.38 gold at base",
+    "B returns next turn"
+   ]
+  },
+  {
+   "turn": 34,
+   "events": [
+    "A Thin: removed 1 of 1 HP",
+    "B's minions hit A (retaliation): 1 units = 20 cHP",
+    "A's trade connected: dealt 328 cHP",
+    "B Shove: removed 10 of 10 HP",
+    "B's reinforcement merged into its front"
+   ]
+  },
+  {
+   "turn": 35,
+   "events": [
+    "A Thin: removed 1 of 1 HP",
+    "A's trade connected: dealt 0 cHP",
+    "A's reinforcement merged into its front",
+    "B Shove: removed 10 of 10 HP"
+   ]
+  },
+  {
+   "turn": 36,
+   "events": [
+    "A Thin: removed 7 of 7 HP",
+    "A's trade connected: dealt 0 cHP",
+    "A lost 1 packet(s) (5 HP)",
+    "A reached level 14",
+    "B Shove: removed 3 of 10 HP",
+    "B's reinforcement merged into its front"
+   ]
+  },
+  {
+   "turn": 37,
+   "events": [
+    "A Thin: removed 3 of 3 HP",
+    "A's trade connected: dealt 345 cHP",
+    "B Shove: removed 0 of 10 HP",
+    "B's wave crashed into A's tower (8 HP)"
+   ]
+  },
+  {
+   "turn": 38,
+   "events": [
+    "A Thin: removed 1 of 2 HP",
+    "B's minions hit A (retaliation): 1 units = 18 cHP",
+    "A's trade connected: dealt 689 cHP",
+    "A lost 1 packet(s) (7 HP)",
+    "B Shove: removed 6 of 10 HP",
+    "B's siege under A's tower ended (the lane bounces back)",
+    "B damaged A's tower: +978"
+   ]
+  },
+  {
+   "turn": 39,
+   "events": [
+    "A Thin: removed 4 of 4 HP",
+    "A's trade connected: dealt 0 cHP",
+    "B Last Hit: removed 0 of 1 HP",
+    "B was ganked (p=0.12): 360 cHP",
+    "B DIED (A bounty 2.00)",
+    "B's wave crashed into A's tower (5 HP)"
+   ]
+  }
+ ],
+ "payoff_A": 2.3925,
+ "turns": 40,
+ "summary": {
+  "A": {
+   "wards": 0,
+   "wards_placed": 0,
+   "wards_interrupted": 0,
+   "minion_units_taken": 6,
+   "minion_centi_taken": 125,
+   "retaliation_ticks_taken": 6,
+   "positional_ticks_taken": 0,
+   "trade_damage_dealt": 4067,
+   "capped_trades": 0,
+   "deaths": 0,
+   "recalls": 2,
+   "gold": 18.23
+  },
+  "B": {
+   "wards": 0,
+   "wards_placed": 0,
+   "wards_interrupted": 0,
+   "minion_units_taken": 0,
+   "minion_centi_taken": 0,
+   "retaliation_ticks_taken": 0,
+   "positional_ticks_taken": 0,
+   "trade_damage_dealt": 0,
+   "capped_trades": 0,
+   "deaths": 3,
+   "recalls": 1,
+   "gold": 15.8375
+  }
+ }
+}

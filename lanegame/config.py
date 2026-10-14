@@ -129,6 +129,9 @@ N_CHAMP_ACTIONS = CHAMP_ABSENT + 1                        # 46
 #   codes 46..60  Slow Push x behavior x objective, a = 46 + behavior + 5 objective (only legal under wave_slowpush)
 CHAMP_SLOWPUSH_BASE = N_CHAMP_ACTIONS                                 # 46
 N_CHAMP_ACTIONS_FOUR = CHAMP_SLOWPUSH_BASE + N_BEHAVIOR_SLOTS * N_OBJECTIVES   # 61
+# M4.5a (EXPERIMENTAL, vision_rule "ward"): the Ward action is the single code Last Hit / Hold slot + Hold + Vision
+# (= 30): walk to the shared Vision node W and place a ward; every other Vision code is then never legal
+CHAMP_WARD = 0 + 3 * B_HOLD + 15 * VISION                              # 30
 
 
 def champ_act(wave: int, behavior: int, objective: int = NONE) -> int:
@@ -531,6 +534,36 @@ class GameConfig:
     # the turn in which either tower's cumulative damage reaches its last plate threshold (that turn is paid in full,
     # plate gold included; nothing follows, the terminal value is 0)
     terminal_rule: str = "none"
+    # M4.5a unified positional mechanics (docs/m4/m4_5a_unified_mechanics_spec.md), EXPERIMENTAL, ruleset "m4" with
+    # natural waves only; every default reproduces every earlier preset exactly (lanegame.positional).
+    # vision_rule "siege" = Establish Vision is a siege objective at the enemy tower (M2-M4.4); "ward" = one shared
+    # off-lane Vision node W attached to the lane cell 0, reached by the Ward action (code CHAMP_WARD = 30) from own
+    # cells -1, 0, +1 or W; the ward is placed at the end of the turn unless the enemy champion's connected Trade damages
+    # the warder (or it dies); a warder deals no wave damage and collects no gold; W carries the gank exposure of the
+    # own cell ward_exposure; contact, movement, XP and gold distances follow the movement graph
+    vision_rule: str = "siege"
+    ward_exposure: int = 0
+    # minion targeting (per tick): a wave designates the enemy champion on tick t by retaliation (the enemy's connected
+    # Trade dealt positive damage to our champion this turn and t >= minion_retaliation_delay; the exchange lands on
+    # tick 0) or by positional aggro (the enemy champion did not move this turn and, at the start of tick t, stands in
+    # our front's cell with its own front strictly behind it or absent and no crashed mass of its own there); a
+    # designated wave whose front is within
+    # minion_range (graph distance) of the champion fires its tick firepower at it and deals no minion damage that tick
+    minion_retaliation: bool = False
+    minion_positional_aggro: bool = False
+    minion_range: int = 1
+    minion_retaliation_delay: int = 1
+    # m minion damage units taken in a turn = max(1, round(alpha m / growth^(L - 1))) centi-HP (L = the victim's
+    # start-of-turn level), then divided by M(S) with the turn's other damage when invest_durability is on
+    minion_damage_alpha: int = 50
+    minion_damage_growth: float = 1.08
+    # trade_wave_rule "none" = a connected trader deals no wave damage (historical); "capped" = it keeps its farm-mode
+    # reach and spends min(B_w, round(trade_wave_fraction C)) (Last Hit / Thin / Slow Push unchanged, Shove halved)
+    trade_wave_rule: str = "none"
+    trade_wave_fraction: float = 0.5
+    # wave_reach_rule "line" = a champion damages enemy minions at every cell at or behind its reach line (historical);
+    # "ball" = only within farm_reach (graph distance) of its end cell, Safe / retreat also not ahead of min(end, -1)
+    wave_reach_rule: str = "line"
 
     # ------------------------------------------------------------------ presets
     @classmethod
@@ -748,7 +781,50 @@ class GameConfig:
         base.update(kw)
         return cls.m4_four_actions_econ(**base)
 
+    # the fields GameConfig.m45_unified() changes from m4_four_actions_econ_aggro() (M4.5a)
+    M45_UNIFIED_FIELDS = ("vision_rule", "xp_range", "minion_retaliation", "minion_positional_aggro",
+                          "trade_wave_rule", "wave_reach_rule")
+
+    @classmethod
+    def m45_unified(cls, **kw) -> "GameConfig":
+        """EXPERIMENTAL CANDIDATE (M4.5a, docs/m4/m4_5a_unified_mechanics_spec.md): `m4_four_actions_econ_aggro()` with
+        the unified positional mechanics, implemented together because they interact:
+          vision_rule "ward"              one shared off-lane Vision node W next to the lane cell 0; Ward (code 30)
+                                          walks there and places a ward unless the enemy's Trade damages the warder;
+                                          the siege Vision objective is gone
+          xp_range 2                      XP within 2 cells (movement-graph distance) instead of 3
+          minion_retaliation True         a wave turns on an enemy champion whose Trade damaged our champion (from the
+                                          tick after the exchange)
+          minion_positional_aggro True    a wave turns on an enemy champion standing in its cell ahead of its own wave
+          trade_wave_rule "capped"        a connected trader still spends up to round(C / 2) on enemy minions
+          wave_reach_rule "ball"          wave damage only within one cell of the champion
+        with the provisional parameters minion_range 1, minion_retaliation_delay 1, minion_damage_alpha 50,
+        minion_damage_growth 1.08, trade_wave_fraction 0.5, ward_exposure 0 and the unchanged vision numbers (6 turns,
+        gank occurrence x 0.25). Every other rule is `m4_four_actions_econ_aggro()`'s. The action space keeps 61 codes;
+        the observation has 90 entries (a W entry per champion cell one-hot). Not a default; every other preset is
+        unchanged. M4.5b calibrates it."""
+        base = dict(vision_rule="ward", xp_range=2, minion_retaliation=True, minion_positional_aggro=True,
+                    trade_wave_rule="capped", wave_reach_rule="ball")
+        base.update(kw)
+        return cls.m4_four_actions_econ_aggro(**base)
+
     # ------------------------------------------------------------------ helpers
+    @property
+    def ward_node(self) -> bool:
+        """M4.5a: the shared Vision node W and the Ward action (vision_rule "ward")."""
+        return self.vision_rule == "ward"
+
+    @property
+    def minion_targeting(self) -> bool:
+        """M4.5a: waves can target champions (retaliation or positional aggro)."""
+        return self.minion_retaliation or self.minion_positional_aggro
+
+    @property
+    def m45_mechanics(self) -> bool:
+        """Any M4.5a opt-in rule is on (the environment then reports the M4.5a turn events)."""
+        return (self.ward_node or self.minion_targeting or self.trade_wave_rule != "none"
+                or self.wave_reach_rule != "line")
+
     @property
     def natural_waves(self) -> bool:
         """M4.2e-A natural wave mechanics: wave slots are Hold / Clear / Thin champion damage."""
@@ -827,6 +903,8 @@ class GameConfig:
         'SH-T+P' (Shove + Trade + Pressure) etc.; natural waves 'CL-T+P' (Clear + Trade + Pressure) etc.; the
         four-action model (wave_slowpush) 'LH-H', 'TN-H', 'SL-H+P', 'SH-T' (Last Hit / Thin / Slow Push / Shove)."""
         if self.champion_mode:
+            if self.vision_rule == "ward" and a == CHAMP_WARD:
+                return "WARD"
             if self.natural_waves and a != CHAMP_ABSENT:
                 o = champ_objective(a)
                 return ((FOUR_WAVE_SHORT if self.wave_slowpush else NATURAL_WAVE_SHORT)[champ_wave(a)] + "-"
@@ -985,6 +1063,7 @@ class GameConfig:
                 bad("champion_absent_max", f"must be >= max(death_turns_by_level) = {max(dtl)} (observation scale)")
         if self.terminal_rule not in ("none", "final_plate"):
             bad("terminal_rule", "must be 'none' or 'final_plate'")
+        self._validate_m45()
         if not 0.0 <= self.collect_contest_own_tower <= 1.0:
             bad("collect_contest_own_tower", "must be in [0, 1]")
         if self.zoning_rule not in ("presence", "contact", "none"):
@@ -1033,6 +1112,51 @@ class GameConfig:
                 if getattr(self, name) != _FIELD_DEFAULTS[name]:
                     bad(name, "applies to wave_dynamics 'natural' only")
         self._validate_exact_economy()
+
+    def _validate_m45(self) -> None:
+        """M4.5a opt-in fields (ruleset "m4"; the legacy rulesets pin them through M4_ECONOMY_FIELDS)."""
+        def bad(field: str, why: str):
+            raise ValueError(f"ruleset {self.ruleset!r}: {field} {why}")
+
+        if self.vision_rule not in ("siege", "ward"):
+            bad("vision_rule", "must be 'siege' or 'ward'")
+        if self.trade_wave_rule not in ("none", "capped"):
+            bad("trade_wave_rule", "must be 'none' or 'capped'")
+        if self.wave_reach_rule not in ("line", "ball"):
+            bad("wave_reach_rule", "must be 'line' or 'ball'")
+        for f in ("minion_retaliation", "minion_positional_aggro"):
+            if not isinstance(getattr(self, f), bool):
+                bad(f, "must be a bool")
+        if self.m45_mechanics and self.wave_dynamics != "natural":
+            bad("vision_rule/minion_*/trade_wave_rule/wave_reach_rule", "the M4.5a rules need wave_dynamics 'natural'")
+        if self.vision_rule == "ward":
+            if not -self.tower <= self.ward_exposure <= self.tower:
+                bad("ward_exposure", f"must be a lane cell in [-{self.tower}, {self.tower}]")
+        elif self.ward_exposure != _FIELD_DEFAULTS["ward_exposure"]:
+            bad("ward_exposure", "applies to vision_rule 'ward' only")
+        if self.minion_targeting:
+            if not (isinstance(self.minion_range, int) and self.minion_range >= 0):
+                bad("minion_range", "must be a non-negative integer (graph distance)")
+            if not (isinstance(self.minion_retaliation_delay, int)
+                    and 0 <= self.minion_retaliation_delay <= self.ticks_per_turn):
+                bad("minion_retaliation_delay", f"must be an integer in [0, ticks_per_turn = {self.ticks_per_turn}]")
+            if not (isinstance(self.minion_damage_alpha, int) and self.minion_damage_alpha >= 0):
+                bad("minion_damage_alpha", "must be a non-negative integer (centi-HP per minion damage unit)")
+            if not self.minion_damage_growth >= 1.0:
+                bad("minion_damage_growth", "must be >= 1 (minion damage never grows with the victim's level)")
+            if self.minion_retaliation and self.trade_exchanges != 1:
+                bad("minion_retaliation", "needs trade_exchanges 1 (the single exchange lands on tick 0)")
+        else:
+            for f in ("minion_range", "minion_retaliation_delay", "minion_damage_alpha", "minion_damage_growth"):
+                if getattr(self, f) != _FIELD_DEFAULTS[f]:
+                    bad(f, "applies to minion_retaliation / minion_positional_aggro only")
+        if self.trade_wave_rule == "capped":
+            if self.wave_clear_scaling != "capacity":
+                bad("trade_wave_rule", "'capped' needs wave_clear_scaling 'capacity' (the cap is a share of C)")
+            if not 0.0 <= self.trade_wave_fraction <= 1.0:
+                bad("trade_wave_fraction", "must be in [0, 1]")
+        elif self.trade_wave_fraction != _FIELD_DEFAULTS["trade_wave_fraction"]:
+            bad("trade_wave_fraction", "applies to trade_wave_rule 'capped' only")
 
     def _validate_exact_economy(self) -> None:
         """Design §8.6: every earned amount must be an exact integer multiple of the ledger unit. Each economic
@@ -1093,7 +1217,11 @@ M4_ECONOMY_FIELDS = ("xp_per_hp", "xp_range", "xp_base", "xp_step", "level_cap",
                      "rear_count_max", "trade_exchanges", "trade_farm_rule", "invest_durability", "collect_contest_own_tower", "position_rule", "zoning_rule", "wave_dynamics", "champion_wave_damage",
                      "natural_crash_rule", "natural_tower_reach", "wave_clear_scaling", "wave_clear_scaled_slots",
                      "wave_hold_fraction", "wave_thin_fraction", "wave_hold_cap", "wave_thin_rule", "wave_slowpush",
-                     "xp_reward_weight", "death_turns_by_level", "terminal_rule")
+                     "xp_reward_weight", "death_turns_by_level", "terminal_rule",
+                     # M4.5a
+                     "vision_rule", "ward_exposure", "minion_retaliation", "minion_positional_aggro", "minion_range",
+                     "minion_retaliation_delay", "minion_damage_alpha", "minion_damage_growth", "trade_wave_rule",
+                     "trade_wave_fraction", "wave_reach_rule")
 _FIELD_DEFAULTS = {f.name: f.default for f in GameConfig.__dataclass_fields__.values()}
 
 

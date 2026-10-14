@@ -10,8 +10,10 @@ from lanegame.champions_m4 import context
 from lanegame.config import B_HOLD, W_CLEAR, W_HOLD, W_THIN, champ_act
 from lanegame.env import LaneEnv
 from lanegame.experiments.m43c import strategies as st
+from lanegame.experiments.m45a import scenarios as m45s
 from lanegame.experiments.m4 import zoning_natural as zn
 from lanegame.mechanics import step_turn
+from lanegame.positional import MinionTarget
 from lanegame.viewer import policies as pl
 from lanegame.viewer import session as ss
 
@@ -97,9 +99,17 @@ def test_tick_trace_is_the_authoritative_lane_step(name):
         if cfg.wave_thin_rule == "share":
             assert budget == tuple(ctx.wave_budget(info["waves"][s], info["levels_before"][s],
                                                    rec.champs[j].side(s).items) for s in (A, B))
+        targets = None
+        if info.get("minion_targets") is not None:             # M4.5a: the minion targets given to the lane step
+            targets = tuple(None if x is None else MinionTarget(*x) for x in info["minion_targets"])
         res = step_turn(lane, info["k"], *info["lane_codes"], cfg, record=True,
-                        champion_reach=tuple(info["champion_reach"]), champion_budget=budget)
-        assert res.state == rec.lanes[j + 1]
+                        champion_reach=tuple(info["champion_reach"]), champion_budget=budget,
+                        champion_targets=targets)
+        want_state = res.state
+        if info.get("ward_placed") and any(info["ward_placed"]):   # M4.5a: a placed ward sets the vision timer after
+            want_state = want_state._replace(**{v: cfg.vision_turns for v, p in zip(("va", "vb"), info["ward_placed"])
+                                                if p})
+        assert want_state == rec.lanes[j + 1]
         assert res.trace == tr
         end = rec.lanes[j + 1]
         assert tr[-1]["siege"] == [end.asg, end.bsg]
@@ -168,7 +178,7 @@ def test_policies_match_zoning_natural_and_explain_fallbacks():
     """decide() plays exactly zoning_natural.Policy.act (same rules) and every note is non-empty."""
     rec = matchup("7. Power advantage")
     for name, pol in pl.POLICIES.items():
-        if isinstance(pol, (pl.CrashRecallPolicy, st.Strategy, st.Phased)):
+        if isinstance(pol, (pl.CrashRecallPolicy, st.Strategy, st.Phased, m45s.WardStrategy)):
             continue
         ref = zn.Policy(name, pol.behavior, pol.wave, pol.pressure)
         for i in range(rec.n + 1):

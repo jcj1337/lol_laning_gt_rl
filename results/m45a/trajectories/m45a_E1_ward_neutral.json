@@ -1,0 +1,547 @@
+{
+ "schema": "lanegame.viewer_recording",
+ "version": 1,
+ "config": "m45_unified",
+ "scenario": "neutral",
+ "gap": "equal",
+ "seed": 0,
+ "names": [
+  "ward_favorable4",
+  "farm4"
+ ],
+ "label": "Scenario E (preemptive Vision): A wards at W from the neutral lane whenever its vision is down and B's wave is not in A's half, then walks back; B last-hits. Seed 0.",
+ "actions": [
+  [
+   30,
+   0
+  ],
+  [
+   0,
+   0
+  ],
+  [
+   0,
+   0
+  ],
+  [
+   0,
+   0
+  ],
+  [
+   0,
+   0
+  ],
+  [
+   0,
+   0
+  ],
+  [
+   0,
+   0
+  ],
+  [
+   30,
+   0
+  ],
+  [
+   0,
+   0
+  ],
+  [
+   0,
+   0
+  ],
+  [
+   0,
+   0
+  ],
+  [
+   0,
+   0
+  ],
+  [
+   0,
+   0
+  ],
+  [
+   0,
+   0
+  ],
+  [
+   30,
+   0
+  ],
+  [
+   0,
+   0
+  ],
+  [
+   0,
+   0
+  ],
+  [
+   0,
+   0
+  ],
+  [
+   0,
+   0
+  ],
+  [
+   0,
+   0
+  ],
+  [
+   9,
+   0
+  ],
+  [
+   9,
+   0
+  ],
+  [
+   12,
+   0
+  ],
+  [
+   45,
+   0
+  ],
+  [
+   0,
+   0
+  ],
+  [
+   0,
+   0
+  ],
+  [
+   0,
+   0
+  ],
+  [
+   0,
+   0
+  ],
+  [
+   0,
+   0
+  ],
+  [
+   0,
+   0
+  ]
+ ],
+ "labels": [
+  [
+   "WARD",
+   "LH-H"
+  ],
+  [
+   "LH-H",
+   "LH-H"
+  ],
+  [
+   "LH-H",
+   "LH-H"
+  ],
+  [
+   "LH-H",
+   "LH-H"
+  ],
+  [
+   "LH-H",
+   "LH-H"
+  ],
+  [
+   "LH-H",
+   "LH-H"
+  ],
+  [
+   "LH-H",
+   "LH-H"
+  ],
+  [
+   "WARD",
+   "LH-H"
+  ],
+  [
+   "LH-H",
+   "LH-H"
+  ],
+  [
+   "LH-H",
+   "LH-H"
+  ],
+  [
+   "LH-H",
+   "LH-H"
+  ],
+  [
+   "LH-H",
+   "LH-H"
+  ],
+  [
+   "LH-H",
+   "LH-H"
+  ],
+  [
+   "LH-H",
+   "LH-H"
+  ],
+  [
+   "WARD",
+   "LH-H"
+  ],
+  [
+   "LH-H",
+   "LH-H"
+  ],
+  [
+   "LH-H",
+   "LH-H"
+  ],
+  [
+   "LH-H",
+   "LH-H"
+  ],
+  [
+   "LH-H",
+   "LH-H"
+  ],
+  [
+   "LH-H",
+   "LH-H"
+  ],
+  [
+   "LH-S",
+   "LH-H"
+  ],
+  [
+   "LH-S",
+   "LH-H"
+  ],
+  [
+   "LH-R",
+   "LH-H"
+  ],
+  [
+   "ABSENT",
+   "LH-H"
+  ],
+  [
+   "LH-H",
+   "LH-H"
+  ],
+  [
+   "LH-H",
+   "LH-H"
+  ],
+  [
+   "LH-H",
+   "LH-H"
+  ],
+  [
+   "LH-H",
+   "LH-H"
+  ],
+  [
+   "LH-H",
+   "LH-H"
+  ],
+  [
+   "LH-H",
+   "LH-H"
+  ]
+ ],
+ "events": [
+  {
+   "turn": 0,
+   "events": [
+    "A placed a ward at W (vision 6 turns)",
+    "A's reinforcement merged into its front",
+    "B Last Hit: removed 1 of 1 HP",
+    "B's reinforcement merged into its front"
+   ]
+  },
+  {
+   "turn": 1,
+   "events": [
+    "A Last Hit: removed 1 of 1 HP",
+    "B Last Hit: removed 1 of 1 HP"
+   ]
+  },
+  {
+   "turn": 2,
+   "events": [
+    "A Last Hit: removed 1 of 1 HP",
+    "A's reinforcement merged into its front",
+    "A reached level 4",
+    "B Last Hit: removed 1 of 1 HP",
+    "B's reinforcement merged into its front",
+    "B reached level 4"
+   ]
+  },
+  {
+   "turn": 3,
+   "events": [
+    "A Last Hit: removed 1 of 1 HP",
+    "B Last Hit: removed 1 of 1 HP"
+   ]
+  },
+  {
+   "turn": 4,
+   "events": [
+    "A Last Hit: removed 1 of 1 HP",
+    "A's reinforcement merged into its front",
+    "B Last Hit: removed 1 of 1 HP",
+    "B's reinforcement merged into its front"
+   ]
+  },
+  {
+   "turn": 5,
+   "events": [
+    "A Last Hit: removed 1 of 1 HP",
+    "B Last Hit: removed 1 of 1 HP"
+   ]
+  },
+  {
+   "turn": 6,
+   "events": [
+    "A Last Hit: removed 1 of 1 HP",
+    "A's reinforcement merged into its front",
+    "A reached level 5",
+    "B Last Hit: removed 1 of 1 HP",
+    "B's reinforcement merged into its front",
+    "B reached level 5"
+   ]
+  },
+  {
+   "turn": 7,
+   "events": [
+    "A placed a ward at W (vision 6 turns)",
+    "B Last Hit: removed 1 of 1 HP"
+   ]
+  },
+  {
+   "turn": 8,
+   "events": [
+    "A Last Hit: removed 1 of 1 HP",
+    "A's reinforcement merged into its front",
+    "B Last Hit: removed 1 of 1 HP",
+    "B's reinforcement merged into its front"
+   ]
+  },
+  {
+   "turn": 9,
+   "events": [
+    "A Last Hit: removed 1 of 1 HP",
+    "B Last Hit: removed 1 of 1 HP"
+   ]
+  },
+  {
+   "turn": 10,
+   "events": [
+    "A Last Hit: removed 1 of 1 HP",
+    "A's reinforcement merged into its front",
+    "B Last Hit: removed 1 of 1 HP",
+    "B's reinforcement merged into its front"
+   ]
+  },
+  {
+   "turn": 11,
+   "events": [
+    "A Last Hit: removed 1 of 1 HP",
+    "A reached level 6",
+    "B Last Hit: removed 1 of 1 HP",
+    "B was ganked (p=0.07): 122 cHP",
+    "B reached level 6"
+   ]
+  },
+  {
+   "turn": 12,
+   "events": [
+    "A Last Hit: removed 1 of 1 HP",
+    "A's reinforcement merged into its front",
+    "B Last Hit: removed 1 of 1 HP",
+    "B's reinforcement merged into its front"
+   ]
+  },
+  {
+   "turn": 13,
+   "events": [
+    "A Last Hit: removed 1 of 1 HP",
+    "B Last Hit: removed 1 of 1 HP"
+   ]
+  },
+  {
+   "turn": 14,
+   "events": [
+    "A placed a ward at W (vision 6 turns)",
+    "A was ganked (p=0.08): 256 cHP",
+    "A's reinforcement merged into its front",
+    "B Last Hit: removed 1 of 1 HP",
+    "B's reinforcement merged into its front"
+   ]
+  },
+  {
+   "turn": 15,
+   "events": [
+    "A Last Hit: removed 1 of 1 HP",
+    "B Last Hit: removed 1 of 1 HP"
+   ]
+  },
+  {
+   "turn": 16,
+   "events": [
+    "A Last Hit: removed 1 of 1 HP",
+    "A's reinforcement merged into its front",
+    "B Last Hit: removed 1 of 1 HP",
+    "B's reinforcement merged into its front",
+    "B reached level 7"
+   ]
+  },
+  {
+   "turn": 17,
+   "events": [
+    "A Last Hit: removed 1 of 1 HP",
+    "B Last Hit: removed 1 of 1 HP"
+   ]
+  },
+  {
+   "turn": 18,
+   "events": [
+    "A Last Hit: removed 1 of 1 HP",
+    "A's reinforcement merged into its front",
+    "A reached level 7",
+    "B Last Hit: removed 1 of 1 HP",
+    "B's reinforcement merged into its front"
+   ]
+  },
+  {
+   "turn": 19,
+   "events": [
+    "A Last Hit: removed 1 of 1 HP",
+    "A was ganked (p=0.02): 536 cHP",
+    "B Last Hit: removed 1 of 1 HP"
+   ]
+  },
+  {
+   "turn": 20,
+   "events": [
+    "A Last Hit: removed 0 of 1 HP",
+    "A's reinforcement merged into its front",
+    "B Last Hit: removed 1 of 1 HP",
+    "B's reinforcement merged into its front"
+   ]
+  },
+  {
+   "turn": 21,
+   "events": [
+    "A Last Hit: removed 0 of 1 HP",
+    "A lost 1 packet(s) (6 HP)",
+    "B Last Hit: removed 1 of 1 HP",
+    "B reached level 8"
+   ]
+  },
+  {
+   "turn": 22,
+   "events": [
+    "A recalled",
+    "A lost 1 packet(s) (6 HP)",
+    "B Last Hit: removed 1 of 1 HP"
+   ]
+  },
+  {
+   "turn": 23,
+   "events": [
+    "A invested 7.21 gold at base",
+    "A returns next turn",
+    "B Last Hit: removed 0 of 1 HP",
+    "B's wave crashed into A's tower (28 HP)"
+   ]
+  },
+  {
+   "turn": 24,
+   "events": [
+    "A Last Hit: removed 1 of 1 HP",
+    "A lost 1 packet(s) (2 HP)",
+    "B Last Hit: removed 0 of 1 HP",
+    "B damaged A's tower: +200"
+   ]
+  },
+  {
+   "turn": 25,
+   "events": [
+    "A Last Hit: removed 1 of 1 HP",
+    "B Last Hit: removed 0 of 1 HP",
+    "B's wave crashed into A's tower (8 HP)"
+   ]
+  },
+  {
+   "turn": 26,
+   "events": [
+    "A Last Hit: removed 1 of 1 HP",
+    "A's reinforcement merged into its front",
+    "A reached level 8",
+    "B Last Hit: removed 0 of 1 HP"
+   ]
+  },
+  {
+   "turn": 27,
+   "events": [
+    "A Last Hit: removed 1 of 1 HP",
+    "B Last Hit: removed 0 of 1 HP",
+    "B's wave crashed into A's tower (8 HP)"
+   ]
+  },
+  {
+   "turn": 28,
+   "events": [
+    "A Last Hit: removed 1 of 1 HP",
+    "A's reinforcement merged into its front",
+    "B Last Hit: removed 0 of 1 HP",
+    "B's siege under A's tower ended (the lane bounces back)"
+   ]
+  },
+  {
+   "turn": 29,
+   "events": [
+    "A Last Hit: removed 1 of 1 HP",
+    "B Last Hit: removed 1 of 1 HP"
+   ]
+  }
+ ],
+ "payoff_A": -0.26249999999999996,
+ "turns": 30,
+ "summary": {
+  "A": {
+   "wards": 3,
+   "wards_placed": 3,
+   "wards_interrupted": 0,
+   "minion_units_taken": 0,
+   "minion_centi_taken": 0,
+   "retaliation_ticks_taken": 0,
+   "positional_ticks_taken": 0,
+   "trade_damage_dealt": 0,
+   "capped_trades": 0,
+   "deaths": 0,
+   "recalls": 1,
+   "gold": 11.6625
+  },
+  "B": {
+   "wards": 0,
+   "wards_placed": 0,
+   "wards_interrupted": 0,
+   "minion_units_taken": 0,
+   "minion_centi_taken": 0,
+   "retaliation_ticks_taken": 0,
+   "positional_ticks_taken": 0,
+   "trade_damage_dealt": 0,
+   "capped_trades": 0,
+   "deaths": 0,
+   "recalls": 0,
+   "gold": 11.925
+  }
+ }
+}

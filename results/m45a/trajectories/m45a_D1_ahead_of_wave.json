@@ -1,0 +1,260 @@
+{
+ "schema": "lanegame.viewer_recording",
+ "version": 1,
+ "config": "m45_unified",
+ "scenario": "ahead",
+ "gap": "equal",
+ "seed": 0,
+ "names": [
+  "bully4",
+  "step_back4"
+ ],
+ "label": "Scenario D (positional aggro): A stands in B's wave with its own wave behind and chases B, who steps back; B's minions fire at A while A stands in their cell. Seed 0.",
+ "actions": [
+  [
+   6,
+   9
+  ],
+  [
+   6,
+   9
+  ],
+  [
+   6,
+   9
+  ],
+  [
+   6,
+   9
+  ],
+  [
+   6,
+   9
+  ],
+  [
+   6,
+   9
+  ],
+  [
+   9,
+   9
+  ],
+  [
+   9,
+   9
+  ],
+  [
+   12,
+   9
+  ],
+  [
+   45,
+   12
+  ],
+  [
+   0,
+   45
+  ],
+  [
+   6,
+   9
+  ]
+ ],
+ "labels": [
+  [
+   "LH-T",
+   "LH-S"
+  ],
+  [
+   "LH-T",
+   "LH-S"
+  ],
+  [
+   "LH-T",
+   "LH-S"
+  ],
+  [
+   "LH-T",
+   "LH-S"
+  ],
+  [
+   "LH-T",
+   "LH-S"
+  ],
+  [
+   "LH-T",
+   "LH-S"
+  ],
+  [
+   "LH-S",
+   "LH-S"
+  ],
+  [
+   "LH-S",
+   "LH-S"
+  ],
+  [
+   "LH-R",
+   "LH-S"
+  ],
+  [
+   "ABSENT",
+   "LH-R"
+  ],
+  [
+   "LH-H",
+   "ABSENT"
+  ],
+  [
+   "LH-T",
+   "LH-S"
+  ]
+ ],
+ "events": [
+  {
+   "turn": 0,
+   "events": [
+    "A Last Hit: removed 1 of 1 HP",
+    "B's minions hit A (positional): 1 units = 43 cHP",
+    "A tried to trade: no contact",
+    "B Last Hit: removed 0 of 1 HP"
+   ]
+  },
+  {
+   "turn": 1,
+   "events": [
+    "A Last Hit: removed 1 of 1 HP",
+    "A tried to trade: no contact",
+    "B Last Hit: removed 0 of 1 HP"
+   ]
+  },
+  {
+   "turn": 2,
+   "events": [
+    "A Last Hit: removed 0 of 1 HP",
+    "A's trade connected: dealt 221 cHP",
+    "B's tower shot A for 110 cHP",
+    "A's reinforcement merged into its front",
+    "B Last Hit: removed 0 of 1 HP"
+   ]
+  },
+  {
+   "turn": 3,
+   "events": [
+    "A Last Hit: removed 1 of 1 HP",
+    "A's trade connected: dealt 0 cHP",
+    "B's tower shot A for 110 cHP",
+    "B Last Hit: removed 0 of 1 HP",
+    "B lost 1 packet(s) (3 HP)"
+   ]
+  },
+  {
+   "turn": 4,
+   "events": [
+    "A Last Hit: removed 0 of 1 HP",
+    "A's trade connected: dealt 0 cHP",
+    "B's tower shot A for 110 cHP",
+    "B Last Hit: removed 0 of 1 HP"
+   ]
+  },
+  {
+   "turn": 5,
+   "events": [
+    "A Last Hit: removed 0 of 1 HP",
+    "A's trade connected: dealt 0 cHP",
+    "B's tower shot A for 110 cHP",
+    "A's reinforcement merged into its front",
+    "A reached level 4",
+    "B Last Hit: removed 0 of 1 HP",
+    "B's reinforcement merged into its front"
+   ]
+  },
+  {
+   "turn": 6,
+   "events": [
+    "A Last Hit: removed 0 of 1 HP",
+    "B Last Hit: removed 0 of 1 HP"
+   ]
+  },
+  {
+   "turn": 7,
+   "events": [
+    "A Last Hit: removed 0 of 1 HP",
+    "A's reinforcement merged into its front",
+    "B Last Hit: removed 0 of 1 HP",
+    "B's reinforcement merged into its front"
+   ]
+  },
+  {
+   "turn": 8,
+   "events": [
+    "A recalled",
+    "B Last Hit: removed 0 of 1 HP",
+    "B lost 1 packet(s) (4 HP)"
+   ]
+  },
+  {
+   "turn": 9,
+   "events": [
+    "A invested 1.15 gold at base",
+    "A returns next turn",
+    "B recalled"
+   ]
+  },
+  {
+   "turn": 10,
+   "events": [
+    "A Last Hit: removed 0 of 1 HP",
+    "A's wave crashed into B's tower (21 HP)",
+    "B lost 1 packet(s) (3 HP)",
+    "B invested 0.10 gold at base",
+    "B returns next turn"
+   ]
+  },
+  {
+   "turn": 11,
+   "events": [
+    "A Last Hit: removed 1 of 1 HP",
+    "A's trade connected: dealt 0 cHP",
+    "B's tower shot A for 116 cHP",
+    "A's reinforcement merged into its front",
+    "A damaged B's tower: +500",
+    "A reached level 5",
+    "B Last Hit: removed 1 of 1 HP",
+    "B reached level 4"
+   ]
+  }
+ ],
+ "payoff_A": 0.7725,
+ "turns": 12,
+ "summary": {
+  "A": {
+   "wards": 0,
+   "wards_placed": 0,
+   "wards_interrupted": 0,
+   "minion_units_taken": 1,
+   "minion_centi_taken": 43,
+   "retaliation_ticks_taken": 0,
+   "positional_ticks_taken": 1,
+   "trade_damage_dealt": 221,
+   "capped_trades": 0,
+   "deaths": 0,
+   "recalls": 1,
+   "gold": 1.6475
+  },
+  "B": {
+   "wards": 0,
+   "wards_placed": 0,
+   "wards_interrupted": 0,
+   "minion_units_taken": 0,
+   "minion_centi_taken": 0,
+   "retaliation_ticks_taken": 0,
+   "positional_ticks_taken": 0,
+   "trade_damage_dealt": 0,
+   "capped_trades": 0,
+   "deaths": 0,
+   "recalls": 1,
+   "gold": 0.875
+  }
+ }
+}

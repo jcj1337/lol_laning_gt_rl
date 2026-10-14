@@ -34,6 +34,18 @@ legality) and adds, in the order of design §5:
            lambda (xp_gain_A - xp_gain_B) in ledger units (M4Turn.xp_reward_units); `terminal_rule = "final_plate"`
            marks the turn in which either tower's damage reaches its last plate threshold as terminal (M4Turn.terminal)
 
+M4.5a opt-ins (EXPERIMENTAL, `GameConfig.m45_unified()`, docs/m4/m4_5a_unified_mechanics_spec.md; every default
+reproduces the earlier presets): `vision_rule = "ward"` adds the shared Vision node W (lanegame.positional.WARD) and the
+Ward action (code 30): the warder walks to W (mode "ward": no wave damage, no gold), and its ward is placed at the end of
+the turn unless the enemy's connected Trade damaged it or it died; movement, contact, chase targets, exposure, gold and
+XP distances follow the movement graph. The trade rolls (9a) are made before the lane step (they read only the
+start-of-turn state, so every earlier preset is unchanged). `trade_wave_rule = "capped"`: a connected trader keeps its
+farm-mode reach and spends min(B_w, round(trade_wave_fraction C)). `wave_reach_rule = "ball"`: reach intervals
+(positional.reach_interval). `minion_retaliation` / `minion_positional_aggro`: the lane step receives each side's
+positional.MinionTarget (the enemy champion's end cell and, after positive trade damage, the retaliation tick) and
+returns the minion damage units each champion took (TurnResult.champion_hits), converted here into centi-HP at the
+victim's start-of-turn level (positional.minion_damage_centi) and summed with the turn's other damage (step 9b).
+
 Every power-dependent quantity of a turn (trade damage, gank and tower damage, Pressure tower damage) uses the levels
 and items held at the start of the turn. The chance vector is M2's (N_CHANCE = 10 uniforms per turn, drawn whatever
 happens); the tower-adjacent shot reuses U_TOWER[i] (a trader ends either at T or at T - 1, never both).
@@ -51,7 +63,7 @@ it counts gold EARNED, so investing is never a reward event.
 
 from __future__ import annotations
 
-from dataclasses import dataclass
+from dataclasses import dataclass, replace
 from fractions import Fraction
 from functools import lru_cache
 from typing import Dict, NamedTuple, Optional, Sequence, Tuple
@@ -60,13 +72,16 @@ from .champions import (AWAY, CHANNEL, FARM, N_CHANCE, NO_REACH, RETREAT, SAFE_M
                         U_TOWER, U_TRADE_DOUBLE, U_TRADE_HIT, LaneStep, _decode, _evasion_cell, _gank_damage, _move,
                         _trade_damage, champion_gank_probability, champion_legal_actions, gank_damage_p, in_contact,
                         objective_reachable, recall_legal, trade_double_probability, trade_hit_probability)
-from .config import (B_HOLD, B_RECALL, B_SAFE, B_TRADE, B_YIELD, B_ABSENT, F, NONE, PRESSURE, SH, SP, W_SLOWPUSH,
-                     GameConfig, exact_safe_base)
+from .config import (B_HOLD, B_RECALL, B_SAFE, B_TRADE, B_YIELD, B_ABSENT, F, NONE, PRESSURE, SH, SP, VISION,
+                     W_SLOWPUSH, GameConfig, exact_safe_base)
 from .mechanics import step_turn, strength_budget
+from .positional import (WARD, MinionTarget, dist as graph_dist, exposure_cell, minion_damage_centi, mirror_cell,
+                         reach_interval)
 from .progression import Tables, tables
 from .state import State
 
 A, B = 0, 1
+WARD_MODE = "ward"                      # M4.5a: placing a ward at W (no wave damage, no gold; XP as present)
 
 __all__ = ["M4Side", "M4State", "M4Turn", "M4Context", "context", "initial_m4", "resolve_turn_m4",
            "champion_legal_actions", "objective_reachable", "recall_legal", "check_invariants", "level",
@@ -74,7 +89,7 @@ __all__ = ["M4Side", "M4State", "M4Turn", "M4Context", "context", "initial_m4", 
 
 
 class M4Side(NamedTuple):
-    pos: int              # own coordinates, -T .. T (-T while away)
+    pos: int              # own coordinates, -T .. T (-T while away); positional.WARD (99) = the Vision node W (M4.5a)
     hp: int               # centi-HP, 0 .. H(L); 0 only while dead
     absent: int = 0       # turns still to sit out (M2 semantics)
     xp: int = 0           # 0 .. X(level_cap)
@@ -240,7 +255,8 @@ def collection_units(x: int, mode: str, pos: int, opp_mode: str, opp_pos: int, c
     M4.2e-B: a kill in the own tower cell (x = -T) is collected at most at collect_contest_own_tower; a connected
     trader pays trade_farm_factor only if `pays_trade` (trade_farm_rule "loser": the winner of a mutual trade keeps
     its farm)."""
-    if mode in (AWAY, CHANNEL) or abs(x - pos) > (cfg.retreat_farm_reach if mode == RETREAT else cfg.farm_reach):
+    if mode in (AWAY, CHANNEL, WARD_MODE) or \
+            graph_dist(x, pos) > (cfg.retreat_farm_reach if mode == RETREAT else cfg.farm_reach):
         return 0
     q = lambda v: Fraction(repr(float(v)))
     T = cfg.tower
@@ -251,7 +267,7 @@ def collection_units(x: int, mode: str, pos: int, opp_mode: str, opp_pos: int, c
     if x == -T:
         base = min(base, q(cfg.collect_contest_own_tower))
     if cfg.zoning_rule == "presence":                     # M2: an opponent farming or trading near the kill
-        zones = opp_mode in (FARM, TRADING) and abs(-x - opp_pos) <= cfg.farm_reach
+        zones = opp_mode in (FARM, TRADING) and graph_dist(-x, opp_pos) <= cfg.farm_reach
     else:                                                 # M4.2d-C: "contact" = the opponent's Trade connected on me
         zones = cfg.zoning_rule == "contact" and opp_mode == TRADING
     zone = (q(cfg.zone_contest) if x > -T else q(cfg.zone_under_tower)) if zones else Fraction(0)
@@ -282,9 +298,10 @@ def contact_cell_target(c: int, ref: int, cfg: GameConfig) -> int:
     opponent at its own cell `ref`; ties go to the smaller cell. Never empty: for ref = -T it is {T} (the dive)."""
     T = cfg.tower
     best = None
-    for x in range(-T, T + 1):
+    cells = tuple(range(-T, T + 1)) + ((WARD,) if cfg.vision_rule == "ward" else ())   # M4.5a: W last (ties)
+    for x in cells:
         if in_contact(x, ref, cfg):
-            d = abs(x - c)
+            d = graph_dist(x, c)
             if best is None or d < best[0]:
                 best = (d, x)
     return best[1]
@@ -351,7 +368,8 @@ def check_invariants(m4: M4State, cfg: GameConfig) -> None:
         assert 0 <= me.hp <= t.hp_max[L], f"side {s}: hp {me.hp} outside [0, {t.hp_max[L]}]"
         assert me.hp > 0 or me.absent > 0, f"side {s}: hp 0 while present"
         assert me.absent >= 0 and (me.absent == 0 or me.pos == -cfg.tower), f"side {s}: away but at {me.pos}"
-        assert -cfg.tower <= me.pos <= cfg.tower
+        assert -cfg.tower <= me.pos <= cfg.tower or (cfg.vision_rule == "ward" and me.pos == WARD), \
+            f"side {s}: position {me.pos}"
         assert 0 <= me.xp <= t.xp_cap, f"side {s}: xp {me.xp}"
         if cfg.continuous_items:
             assert me.items >= 0 and me.gold >= 0, f"side {s}: invested {me.items}, gold {me.gold}"
@@ -427,6 +445,19 @@ class M4Turn:
     # xp_gain_A - xp_gain_B, already included in reward_units; and terminal_rule "final_plate": this turn ended the game
     xp_reward_units: int = 0
     terminal: bool = False
+    # M4.5a (EXPERIMENTAL): Ward chosen / placed / interrupted (by positive damage from the enemy's connected Trade, or a
+    # death); minion damage units each champion took and their centi-HP (before the durability division); per side,
+    # whether its wave was eligible to retaliate (its champion took positive trade damage); per champion, the cause of
+    # the minion fire it took on each tick; whether a connected trader's wave budget was capped
+    warding: Tuple[bool, bool] = (False, False)
+    ward_placed: Tuple[bool, bool] = (False, False)
+    ward_interrupted: Tuple[bool, bool] = (False, False)
+    minion_hits: Tuple[int, int] = (0, 0)
+    minion_damage: Tuple[int, int] = (0, 0)
+    retaliation: Tuple[bool, bool] = (False, False)
+    minion_fire: Optional[Tuple[Tuple[str, ...], Tuple[str, ...]]] = None
+    trade_wave_capped: Tuple[bool, bool] = (False, False)
+    minion_targets: Optional[tuple] = None  # the positional.MinionTarget per side given to the lane step (None: off)
 
 
 def resolve_turn_m4(lane: State, m4: M4State, k: int, a: int, b: int, cfg: GameConfig,
@@ -438,8 +469,8 @@ def resolve_turn_m4(lane: State, m4: M4State, k: int, a: int, b: int, cfg: GameC
         ctx = context(cfg)
     t = ctx.t
     if lane_step is None:
-        def lane_step(s, kk, x, y, reach, budget=None):
-            return step_turn(s, kk, x, y, cfg, champion_reach=reach, champion_budget=budget)
+        def lane_step(s, kk, x, y, reach, budget=None, targets=None):
+            return step_turn(s, kk, x, y, cfg, champion_reach=reach, champion_budget=budget, champion_targets=targets)
     T = cfg.tower
     # natural waves: a champion standing in the enemy tower cell reaches natural_tower_reach cells beyond it
     reach_cap = T + (cfg.natural_tower_reach if cfg.natural_waves else 0)
@@ -451,10 +482,13 @@ def resolve_turn_m4(lane: State, m4: M4State, k: int, a: int, b: int, cfg: GameC
     it0 = (m4.a.items, m4.b.items)
     recalling = (ba == B_RECALL, bb == B_RECALL)
     absent = (ba == B_ABSENT, bb == B_ABSENT)
+    ward_rule = cfg.vision_rule == "ward"
+    warding = (ward_rule and oa == VISION, ward_rule and ob == VISION)     # M4.5a: the Ward code (legality: caller)
+    lane_obj = (NONE if warding[A] else oa, NONE if warding[B] else ob)    # a ward is no lane-step objective
 
     # 1. probe: wave destinations under full support of every champion that intends to play the lane (raw codes);
     #    farm_spot_rule "pre_crash_front": a front that crashes in the probe leaves the farm spot at its pre-turn cell
-    off = (recalling[A] or absent[A], recalling[B] or absent[B])
+    off = (recalling[A] or absent[A] or warding[A], recalling[B] or absent[B] or warding[B])
     # wave_clear_scaling "attack_power": per-turn wave-damage budgets from the start-of-turn attack power; "capacity":
     # from the start-of-turn capacity and (wave_thin_rule "strength") the start-of-turn lane
     budget = None
@@ -464,15 +498,19 @@ def resolve_turn_m4(lane: State, m4: M4State, k: int, a: int, b: int, cfg: GameC
     elif cfg.natural_waves and cfg.wave_clear_scaling != "none":
         budget = (ctx.wave_budget(wa, lv0[A], it0[A]), ctx.wave_budget(wb, lv0[B], it0[B]))
 
-    def lane_call(x, y, rch):
-        return lane_step(lane, k, x, y, rch) if budget is None else lane_step(lane, k, x, y, rch, budget)
+    def lane_call(x, y, rch, bud=None, targets=None):
+        bud = budget if bud is None else bud
+        if targets is not None:                                       # M4.5a minion targeting
+            return lane_step(lane, k, x, y, rch, bud, targets)
+        return lane_step(lane, k, x, y, rch) if bud is None else lane_step(lane, k, x, y, rch, bud)
     # lane codes are w + 6 o; with budgets the natural lane step reads only the objective o from them (a wave slot acts
     # through its budget alone), so the four-action Slow Push (w = W_SLOWPUSH = 3) passes 3 + 6 o
-    probe = lane_call(wa + 6 * oa, wb + 6 * ob, (NO_REACH if off[A] else reach_cap, NO_REACH if off[B] else reach_cap))
+    probe = lane_call(wa + 6 * lane_obj[A], wb + 6 * lane_obj[B],
+                      (NO_REACH if off[A] else reach_cap, NO_REACH if off[B] else reach_cap))
     spot = [0, 0]
     for s in (A, B):
         fx, fh = probe.state.side(s)[:2]
-        spot[s] = max(-T, min(T, fx)) if fh > 0 else c0[s]
+        spot[s] = max(-T, min(T, fx)) if fh > 0 else (0 if c0[s] == WARD else c0[s])   # M4.5a: from W, the lane at 0
         if cfg.farm_spot_rule == "pre_crash_front" and probe.crash_hp[s] > 0 and lane.side(s)[1] > 0:
             spot[s] = max(-T, min(T, lane.side(s)[0]))       # M4.2d: keep the reach of the wave that crashes
 
@@ -487,7 +525,9 @@ def resolve_turn_m4(lane: State, m4: M4State, k: int, a: int, b: int, cfg: GameC
         if recalling[s]:
             end[s] = c
             continue
-        if obj[s] != NONE:
+        if warding[s]:
+            target = WARD                                               # M4.5a: the Vision node
+        elif obj[s] != NONE:
             target = T
         elif beh[s] == B_TRADE and not absent[1 - s]:
             chasers.append(s)
@@ -532,34 +572,10 @@ def resolve_turn_m4(lane: State, m4: M4State, k: int, a: int, b: int, cfg: GameC
     connected = (beh[A] == B_TRADE and in_range, beh[B] == B_TRADE and in_range)
     eff_obj = (NONE if connected[A] else obj[A], NONE if connected[B] else obj[B])
 
-    # 5. modes and wave contribution, then Freeze maintenance
-    modes, reach = [], []
-    for s in (A, B):
-        if away[s] or interrupted[s]:
-            modes.append(AWAY if away[s] else CHANNEL)
-            reach.append(NO_REACH)
-        elif connected[s]:
-            modes.append(TRADING)
-            reach.append(NO_REACH)
-        elif beh[s] == B_SAFE or threatened[s]:
-            modes.append(SAFE_MODE if beh[s] == B_SAFE else RETREAT)
-            reach.append(min(end[s], cfg.safe_line))
-        else:
-            modes.append(FARM)
-            reach.append(min(reach_cap, end[s] + cfg.farm_reach))
-    maintained = tuple(w[s] == F and not away[s] and not interrupted[s] and not connected[s]
-                       and abs(end[s] - cfg.freeze_line) <= cfg.farm_reach for s in (A, B))
-    if cfg.freeze_maintenance:
-        eff_w = tuple(w[s] if w[s] != F else (F if maintained[s] else SP) for s in (A, B))
-    else:
-        eff_w = w
-
-    # 6. the authoritative lane step (effective waves and objectives)
-    codes = (eff_w[A] + 6 * eff_obj[A], eff_w[B] + 6 * eff_obj[B])
-    res = lane_call(codes[A], codes[B], (reach[A], reach[B]))
-
-    # 9a. the trade rolls (chance vector; the hit probability uses the start-of-turn lane, levels and items). They
-    #     come before the gold step because trade_farm_rule "loser" charges the farm factor by the trade's outcome.
+    # 9a. the trade rolls (chance vector; the hit probability uses the start-of-turn lane, levels and items). They read
+    #     only the start-of-turn state and the end cells, so they are made before the lane step: trade_farm_rule "loser"
+    #     charges the farm factor by the trade's outcome, and M4.5a minion retaliation needs the damage of the exchange
+    #     (which lands on tick 0). A warder (M4.5a) is traded like a Hold champion.
     if u is None:
         u = (1.0,) * N_CHANCE
     hit, dbl = [0.0, 0.0], [0.0, 0.0]
@@ -586,6 +602,59 @@ def resolve_turn_m4(lane: State, m4: M4State, k: int, a: int, b: int, cfg: GameC
         elif lost_b < lost_a:
             pays[B] = False
 
+    # 5. modes and wave contribution, then Freeze maintenance (M4.5a: "ward" mode; a connected trader keeps a capped
+    #    wave budget under trade_wave_rule "capped"; reach intervals under wave_reach_rule "ball")
+    ball = cfg.wave_reach_rule == "ball"
+    capped = cfg.trade_wave_rule == "capped"
+
+    def farm_reach_of(s):
+        return reach_interval(end[s], False, cfg.farm_reach, reach_cap, cfg.safe_line) if ball else \
+            min(reach_cap, end[s] + cfg.farm_reach)
+    modes, reach = [], []
+    for s in (A, B):
+        if away[s] or interrupted[s]:
+            modes.append(AWAY if away[s] else CHANNEL)
+            reach.append(NO_REACH)
+        elif warding[s]:
+            modes.append(WARD_MODE)
+            reach.append(NO_REACH)
+        elif connected[s]:
+            modes.append(TRADING)
+            reach.append(farm_reach_of(s) if capped else NO_REACH)
+        elif beh[s] == B_SAFE or threatened[s]:
+            modes.append(SAFE_MODE if beh[s] == B_SAFE else RETREAT)
+            reach.append(reach_interval(end[s], True, cfg.farm_reach, reach_cap, cfg.safe_line) if ball else
+                         min(end[s], cfg.safe_line))
+        else:
+            modes.append(FARM)
+            reach.append(farm_reach_of(s))
+    maintained = tuple(w[s] == F and not away[s] and not interrupted[s] and not connected[s]
+                       and abs(end[s] - cfg.freeze_line) <= cfg.farm_reach for s in (A, B))
+    if cfg.freeze_maintenance:
+        eff_w = tuple(w[s] if w[s] != F else (F if maintained[s] else SP) for s in (A, B))
+    else:
+        eff_w = w
+
+    # 5b. M4.5a: the capped wave budget of a connected trader, and each wave's minion target
+    eff_budget, wave_capped = budget, (False, False)
+    if capped and budget is not None and (connected[A] or connected[B]):
+        cap = tuple(_round_half_up(_q(cfg.trade_wave_fraction) * ctx.capacity(lv0[s], it0[s])) for s in (A, B))
+        eff_budget = tuple(min(budget[s], cap[s]) if connected[s] else budget[s] for s in (A, B))
+        wave_capped = tuple(connected[s] and eff_budget[s] < budget[s] for s in (A, B))
+    targets, retaliate = None, (False, False)
+    if cfg.minion_targeting:
+        # side s's minions retaliate iff the enemy's connected Trade dealt positive damage (after mitigation) to s
+        retaliate = tuple(cfg.minion_retaliation and connected[1 - s] and ctx.mitigate(dealt[1 - s], it0[s]) > 0
+                          for s in (A, B))
+        targets = tuple(None if away[1 - s] else
+                        MinionTarget(mirror_cell(end[1 - s]), cfg.minion_retaliation_delay if retaliate[s] else None,
+                                     end[1 - s] == c0[1 - s])
+                        for s in (A, B))
+
+    # 6. the authoritative lane step (effective waves and objectives)
+    codes = (eff_w[A] + 6 * (NONE if warding[A] else eff_obj[A]), eff_w[B] + 6 * (NONE if warding[B] else eff_obj[B]))
+    res = lane_call(codes[A], codes[B], (reach[A], reach[B]), eff_budget, targets)
+
     # 7. gold (exact ledger units) and 7b. XP
     avail, farm_u, xp_gain_raw = [0.0, 0.0], [0, 0], [0, 0]
     for s in (A, B):
@@ -593,11 +662,12 @@ def resolve_turn_m4(lane: State, m4: M4State, k: int, a: int, b: int, cfg: GameC
         for x, hp in res.kills[s].items():
             avail[s] += cfg.farm_per_hp * hp
             farm_u[s] += hp * ctx.collection(x, modes[s], end[s], modes[o], end[o], pays[s])
-            if not away[s] and abs(x - end[s]) <= cfg.xp_range:
+            if not away[s] and graph_dist(x, end[s]) <= cfg.xp_range:
                 xp_gain_raw[s] += cfg.xp_per_hp * hp
 
     # 8. exposure and gank occurrence
-    exposure = tuple(-T if away[s] else max(c0[s], end[s]) for s in (A, B))
+    exposure = tuple(-T if away[s] else max(exposure_cell(c0[s], cfg.ward_exposure), exposure_cell(end[s], cfg.ward_exposure))
+                     for s in (A, B))
     gank = tuple(0.0 if away[s] else
                  champion_gank_probability(lane, s, w[s], B_SAFE if interrupted[s] else beh[s], cfg, exposure[s])
                  for s in (A, B))
@@ -629,12 +699,27 @@ def resolve_turn_m4(lane: State, m4: M4State, k: int, a: int, b: int, cfg: GameC
             else:
                 unit = t.hp_unit[1]
             gank_dmg[s] = _gank_damage(u[U_GANK_DAMAGE[s]], pe[s], cfg) * unit
-    taken = (ctx.mitigate(dealt[B] + tower_dmg[A] + gank_dmg[A], it0[A]),      # invest_durability: divided by M(S)
-             ctx.mitigate(dealt[A] + tower_dmg[B] + gank_dmg[B], it0[B]))
+    # M4.5a: the minion damage units each champion took, in centi-HP at its start-of-turn level
+    minion_cp = tuple(minion_damage_centi(res.champion_hits[s], lv0[s], cfg.minion_damage_alpha,
+                                          cfg.minion_damage_growth) for s in (A, B))
+    taken = (ctx.mitigate(dealt[B] + tower_dmg[A] + gank_dmg[A] + minion_cp[A], it0[A]),   # invest_durability: / M(S)
+             ctx.mitigate(dealt[A] + tower_dmg[B] + gank_dmg[B] + minion_cp[B], it0[B]))
 
     # 10. death (before level-up)
     died = (not away[A] and me0[A].hp - taken[A] <= 0, not away[B] and me0[B].hp - taken[B] <= 0)
     bounty_u = (ctx.bounty_units if died[B] else 0, ctx.bounty_units if died[A] else 0)
+
+    # 10b. M4.5a: a ward is placed unless the enemy's connected Trade damaged the warder (after mitigation) or it died;
+    #      it sets the vision timer for the next vision_turns turns (the lane step counted the old timer down)
+    ward_hit = tuple(warding[s] and ctx.mitigate(dealt[1 - s], it0[s]) > 0 for s in (A, B))
+    placed = tuple(warding[s] and not ward_hit[s] and not died[s] for s in (A, B))
+    if placed[A] or placed[B]:
+        st = res.state
+        res = replace(res, state=st._replace(va=cfg.vision_turns if placed[A] else st.va,
+                                             vb=cfg.vision_turns if placed[B] else st.vb),
+                      vision_set=(res.vision_set[A] or placed[A], res.vision_set[B] or placed[B]))
+    if ward_rule:
+        eff_obj = tuple(VISION if placed[s] else (NONE if warding[s] else eff_obj[s]) for s in (A, B))
 
     # 11. tower damage and plates
     tau, hits_dealt, plates, plate_u = [0, 0], [0, 0], [0, 0], [0, 0]
@@ -705,6 +790,8 @@ def resolve_turn_m4(lane: State, m4: M4State, k: int, a: int, b: int, cfg: GameC
         (lv1[A] - lv0[A], lv1[B] - lv0[B]), res.tower_hits, (hits_dealt[A], hits_dealt[B]), (plates[A], plates[B]),
         (plate_u[A] * inv, plate_u[B] * inv), (purchases[A], purchases[B]), (returned[A], returned[B]),
         (farm_u[A], farm_u[B]), (plate_u[A], plate_u[B]), bounty_u, (earned[A], earned[B]), (clamped[A], clamped[B]),
-        reward_units, reward_units / ctx.scale, (invested[A], invested[B]), (pinned[A], pinned[B]), budget,
-        xp_reward_units, terminal)
+        reward_units, reward_units / ctx.scale, (invested[A], invested[B]), (pinned[A], pinned[B]), eff_budget,
+        xp_reward_units, terminal, warding, placed,
+        (warding[A] and not placed[A], warding[B] and not placed[B]), res.champion_hits, minion_cp, retaliate,
+        res.champion_fire, wave_capped, targets)
     return turn

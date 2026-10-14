@@ -1,0 +1,32 @@
+........................................................................ [  5%]
+........................................................................ [ 11%]
+........................................................................ [ 17%]
+........................................................................ [ 23%]
+...................................s.................................... [ 29%]
+........................................................................ [ 35%]
+........................................................................ [ 41%]
+........................................................................ [ 47%]
+........................................................................ [ 53%]
+.....................................x..x............................... [ 59%]
+.............................................ss......................... [ 65%]
+..................................................................s..... [ 71%]
+........................................................................ [ 77%]
+........................................................................ [ 83%]
+........................................................................ [ 89%]
+........................................................................ [ 95%]
+.................................................                        [100%]
+============================== warnings summary ===============================
+tests/test_pettingzoo_m4.py::test_official_aec_api_test_passes_through_the_conversion
+  C:\Users\light\OneDrive\Desktop\projects\lol_gt_laning\.venv\Lib\site-packages\pettingzoo\test\api_test.py:240: UserWarning: Observation space for each agent probably should be gymnasium.spaces.box or gymnasium.spaces.discrete
+    warnings.warn(
+
+tests/test_pettingzoo_m4.py::test_official_aec_api_test_passes_through_the_conversion
+  C:\Users\light\OneDrive\Desktop\projects\lol_gt_laning\.venv\Lib\site-packages\pettingzoo\test\api_test.py:257: UserWarning: We recommend agents to be named in the format <descriptor>_<number>, like "player_0"
+    warnings.warn(
+
+tests/test_pettingzoo_m4.py::test_official_aec_api_test_passes_through_the_conversion
+  C:\Users\light\OneDrive\Desktop\projects\lol_gt_laning\.venv\Lib\site-packages\pettingzoo\test\api_test.py:138: UserWarning: Observation is not a NumPy array
+    warnings.warn("Observation is not a NumPy array")
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+1195 passed, 4 skipped, 2 xfailed, 3 warnings in 445.31s (0:07:25)

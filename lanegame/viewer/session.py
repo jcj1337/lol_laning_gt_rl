@@ -13,6 +13,11 @@ M4.3c stabilization: the EXPERIMENTAL four-action preset `m4_four_actions()` (La
 the first configuration. Its start states are the `m4_lasthit()` states of the four-action redesign study (the lane is
 the same physics; only the wave budgets differ), its wave budgets depend on the lane (`summary`, `wave_panel`), and
 `wave_panel` shows each champion's calculated budget against the HP it actually removed, tick by tick.
+
+M4.5a: the EXPERIMENTAL candidate `m45_unified()` adds the shared Vision node W (a champion there is drawn above the
+lane cell 0; `summary` reports `at_ward` and the vision timer), Ward placement and interruption, minion fire on
+champions per tick (`frame_view`'s "minion_fire": cause and minion damage units, with the turn's centi-HP), and three
+hand-built start states (`lanegame.experiments.m45a.scenarios.STARTS`).
 """
 
 from __future__ import annotations
@@ -22,19 +27,22 @@ from functools import lru_cache
 from typing import Dict, List, Optional, Sequence, Tuple
 
 from ..champions_m4 import M4State, context, initial_m4
-from ..config import (BEHAVIOR_NAMES, CHAMP_ABSENT, OBJECTIVE_NAMES, GameConfig, champ_behavior, champ_objective,
-                      champ_wave, wave_display_names)
+from ..config import (BEHAVIOR_NAMES, CHAMP_ABSENT, CHAMP_WARD, OBJECTIVE_NAMES, GameConfig, champ_behavior,
+                      champ_objective, champ_wave, wave_display_names)
+from ..experiments.m45a import scenarios as m45s
 from ..env import LaneEnv
 from ..experiments.m4 import natural_waves as nw
 from ..experiments.m4 import zoning_natural as zn
 from ..mechanics import _blob_hp, initial_state, start_packets, strength_need, window_strength
+from ..positional import WARD
 from ..progression import plates_broken
 from ..state import State
 
 A, B = 0, 1
 SIDES = ("A", "B")
 
-CONFIGS = {"m4_four_actions": GameConfig.m4_four_actions,
+CONFIGS = {"m45_unified": GameConfig.m45_unified,                 # M4.5a: the EXPERIMENTAL unified candidate
+           "m4_four_actions": GameConfig.m4_four_actions,
            # M4.4a: the two EXPERIMENTAL calibrated economies of the PPO comparison (recordings of their checkpoints
            # name them; lanegame/experiments/rl/m44/trace.py)
            "m4_four_actions_econ": GameConfig.m4_four_actions_econ,
@@ -43,7 +51,7 @@ CONFIGS = {"m4_four_actions": GameConfig.m4_four_actions,
 # the configuration whose deterministic start states a configuration uses (the four-action redesign study generated
 # its starts under m4_lasthit(); the lane physics is the same in every four-action preset)
 START_SOURCE = {"m4_four_actions": "m4_lasthit", "m4_four_actions_econ": "m4_lasthit",
-                "m4_four_actions_econ_aggro": "m4_lasthit"}
+                "m4_four_actions_econ_aggro": "m4_lasthit", "m45_unified": "m4_lasthit"}
 SCENARIOS = {
     "s0": "Standard initial state (turn 0: a fresh wave at each base, both champions at their tower).",
     "neutral": "Neutral lane, fronts in contact at the lane cell (k9 of Hold/Hold).",
@@ -54,6 +62,7 @@ SCENARIOS = {
     "freeze21": "The freeze with B's held front raised to 21 HP: an oversized wave at the freezer's tower.",
     "oversized": "The neutral lane with B's front raised to 24 HP: an oversized enemy wave at the lane cell.",
 }
+SCENARIOS.update({name: desc for name, (desc, _) in m45s.STARTS.items()})
 # scenario -> (base start, B front HP or None, both champions' level or None)
 DERIVED = {"freeze_early": ("freeze", None, 4), "freeze21": ("freeze", 21, None), "oversized": ("neutral", 24, None)}
 GAPS = {"equal": "equal power", "moderate": "A x1.24 attack power (16 vs 4 gold invested)",
@@ -104,6 +113,8 @@ def start_state(setup: Setup) -> Tuple[State, M4State, int]:
     cfg = config(setup.config)
     if setup.scenario == "s0":
         lane, m4, k0 = initial_state(cfg), initial_m4(cfg), 0
+    elif setup.scenario in m45s.STARTS:                  # M4.5a hand-built starts (any configuration)
+        lane, m4, k0 = m45s.STARTS[setup.scenario][1](cfg)
     elif setup.scenario in DERIVED:
         base, hb, level = DERIVED[setup.scenario]
         lane, m4, k0 = _starts(setup.config)[base]
@@ -228,8 +239,24 @@ def trace_objects(tick: dict, cfg: GameConfig) -> dict:
     return out
 
 
-def champion_x(m4: M4State, s: int) -> int:
-    return m4.side(s).pos if s == A else -m4.side(s).pos
+def champion_x(m4: M4State, s: int) -> Optional[int]:
+    """Global cell of champion s; None at the Vision node W (M4.5a), which is drawn above the lane cell 0."""
+    pos = m4.side(s).pos
+    if pos == WARD:
+        return None
+    return pos if s == A else -pos
+
+
+def cell_text(x: Optional[int]) -> str:
+    """A cell for display: '+1', '-2', or 'W' for the Vision node."""
+    return "W" if x is None or x == WARD else f"{x:+d}"
+
+
+def reach_text(spec) -> str:
+    """A champion's wave reach for display: a reach line ('<= +1'), a reach interval ('-1..+1'; M4.5a ball) or none."""
+    if isinstance(spec, (tuple, list)):
+        return f"{spec[0]:+d}..{spec[1]:+d}"
+    return "none" if spec < -1000 else f"<= {spec:+d}"
 
 
 def contact_x(lane: State) -> Optional[float]:
@@ -257,7 +284,8 @@ def summary(rec: Recording, i: int, s: int) -> dict:
     d = {"level": L, "hp": me.hp, "hp_max": t.hp_max[L], "xp": me.xp, "xp_to_next": xp_next,
          "gold_spendable": me.gold / sc, "gold_earned": rec.earned(i)[s], "invested": invested,
          "attack_power": ap, "hit_damage": ctx.hit(1, L, me.items), "absent": me.absent, "pos_own": me.pos,
-         "pos_global": champion_x(rec.champs[i], s),
+         "pos_global": champion_x(rec.champs[i], s), "at_ward": me.pos == WARD and me.absent == 0,
+         "vision": rec.lanes[i].vision_of(s),
          "tower_damage_dealt": me.tower_dmg, "tower_damage_max": cfg.plate_thresholds[-1],
          "plates_broken": plates_broken(me.tower_dmg, t), "plates_total": len(cfg.plate_thresholds)}
     names = wave_display_names(cfg)
@@ -299,6 +327,8 @@ def action_name(cfg: GameConfig, code: int) -> str:
     'Recall', 'Absent' (the engine's own labels are 'TN-H+P', 'SL-T', 'SH-H')."""
     if code == CHAMP_ABSENT:
         return "Absent"
+    if cfg.vision_rule == "ward" and code == CHAMP_WARD:
+        return "Ward (Vision at W)"
     beh, obj = champ_behavior(code), champ_objective(code)
     if BEHAVIOR_NAMES[beh] == "Recall":
         return "Recall"
@@ -336,19 +366,23 @@ def wave_panel(rec: Recording, i: int) -> Optional[Dict[str, dict]]:
         mode = info["modes"][s]
         if info["away"][s]:
             why = "away (no wave damage)"
-        elif mode in ("trading", "channel"):
+        elif mode == "channel" or (mode == "trading" and reach_text(info["champion_reach"][s]) == "none"):
             why = f"{'connected trade' if mode == 'trading' else 'interrupted Recall'}: no wave damage this turn"
+        elif mode == "ward":
+            why = "placing a ward at W: no wave damage this turn"
         elif budget is not None and dealt is not None and dealt < budget:
-            why = (f"{budget - dealt} HP unspent: no reachable enemy minion (reach line own "
-                   f"{info['champion_reach'][s]:+d}) or the target died first (overkill is lost)")
+            why = (f"{budget - dealt} HP unspent: no reachable enemy minion (reach own "
+                   f"{reach_text(info['champion_reach'][s])}) or the target died first (overkill is lost)")
         else:
             why = "spent in full" if budget else ""
         L = info["levels_before"][s]
         d = {"wave": wave_name(cfg, info["waves"][s]) if not info["away"][s] else "—",
              "capacity": ctx.capacity(L, m4.side(s).items) if cfg.wave_clear_scaling == "capacity" else None,
              "own_blob": _blob_hp(P[s], cfg), "enemy_blob": _blob_hp(P[1 - s], cfg),
-             "budget": budget, "dealt": dealt, "dealt_per_tick": ticks, "reach": info["champion_reach"][s],
+             "budget": budget, "dealt": dealt, "dealt_per_tick": ticks, "reach": reach_text(info["champion_reach"][s]),
              "mode": mode, "note": why}
+        if info.get("trade_wave_capped") and info["trade_wave_capped"][s]:
+            d["note"] = "connected trade: budget capped at round(C/2); " + d["note"]
         if four:
             d["strength_own"] = float(S[s])
             d["strength_enemy"] = float(S[1 - s])
@@ -437,7 +471,28 @@ def frame_view(rec: Recording, i: int, f: int) -> dict:
                 shown = p["dealt"]
             wave[n] = {"wave": p["wave"], "budget": p["budget"], "dealt": shown, "frame": "budget" if f == 0 else
                        ("tick" if f <= T else "turn")}
+    # M4.5a: minion fire on each champion in this frame (a tick: that tick's fire; the end frame: the turn), and the
+    # Ward of the turn
+    minion = None
+    if i < rec.n and f > 0 and "minion_fire" in rec.turns[i].info and rec.turns[i].info["minion_fire"] is not None:
+        inf = rec.turns[i].info
+        tr = inf.get("lane_trace") or []
+        minion = {}
+        for s, n in enumerate(SIDES):
+            if f <= T and tr and "minion_fire" in tr[f - 1]:
+                cause, units = tr[f - 1]["minion_fire"][s]
+                minion[n] = {"cause": cause, "units": units, "centi": None}
+            else:
+                causes = sorted({c for c in inf["minion_fire"][s] if c})
+                minion[n] = {"cause": "/".join(causes), "units": inf["minion_hits"][s],
+                             "centi": inf["minion_damage"][s]}
+    ward = None
+    if i < rec.n and "ward" in rec.turns[i].info:
+        inf = rec.turns[i].info
+        ward = {n: "placed" if inf["ward_placed"][s] else ("interrupted" if inf["ward_interrupted"][s] else "")
+                for s, n in enumerate(SIDES)}
     return {"turn": i, "k": rec.k0 + i, "frame": f, "frame_name": frame_name(rec, i, f), "state_index": j,
+            "ward_node": rec.cfg.vision_rule == "ward", "minion_fire": minion, "ward": ward,
             "packets": {n: objs[n]["packets"] for n in SIDES}, "siege": {n: objs[n]["siege"] for n in SIDES},
             "contact": contact_of(objs), "moves": moves, "champions": champs,
             "towers": {n: {"damage": towers[n]["tower_damage_dealt"], "damage_max": towers[n]["tower_damage_max"],
@@ -478,9 +533,18 @@ def turn_events(info: dict, cfg: GameConfig) -> List[str]:
     for s in (A, B):
         n, o = SIDES[s], SIDES[1 - s]
         wb = info.get("wave_budget")
-        if wb is not None and not info["away"][s] and "champion_hp" in info["events"]:
+        if wb is not None and not info["away"][s] and info["modes"][s] != "ward" and "champion_hp" in info["events"]:
             dealt = info["events"]["champion_hp"][1 - s]
             ev.append(f"{n} {wave_name(cfg, info['waves'][s])}: removed {dealt} of {wb[s]} HP")
+        if info.get("ward") and info["ward"][s]:                       # M4.5a
+            ev.append(f"{n} placed a ward at W (vision {cfg.vision_turns} turns)" if info["ward_placed"][s] else
+                      f"{n}'s ward was interrupted")
+        if info.get("trade_wave_capped") and info["trade_wave_capped"][s]:
+            ev.append(f"{n} traded with a capped wave budget ({info['wave_budget'][s]} HP)")
+        if info.get("minion_hits") and info["minion_hits"][s]:
+            causes = "/".join(sorted({c for c in info["minion_fire"][s] if c}))
+            ev.append(f"{o}'s minions hit {n} ({causes}): {info['minion_hits'][s]} units = "
+                      f"{info['minion_damage'][s]} cHP")
         if info["recalled"][s]:
             ev.append(f"{n} recalled")
         if info["recall_interrupted"][s]:

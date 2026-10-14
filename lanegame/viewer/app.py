@@ -300,8 +300,11 @@ def manual_box(rec: ss.Recording, i: int):
         behs = [b for b in (B_HOLD, B_YIELD, B_TRADE, B_SAFE, B_RECALL) if any(champ_behavior(a) == b for a in legal)]
         beh = col[1].radio("Champion behavior", behs, format_func=BEHAVIOR_NAMES.get, key="m_beh")
         objs = [o for o in (NONE, PRESSURE, VISION) if any(champ_objective(a) == o for a in legal)]
-        obj = col[2].radio("Objective (needs a siege in reach)", objs, format_func=lambda o: OBJECTIVE_NAMES[o] or "none",
-                           key="m_obj")
+        def obj_name(o):                                # M4.5a: Vision is the Ward at W (Last Hit + Hold only)
+            if o == VISION and rec.cfg.vision_rule == "ward":
+                return "Ward at W (Last Hit + Hold)"
+            return OBJECTIVE_NAMES[o] or "none"
+        obj = col[2].radio("Objective (Pressure needs a siege in reach)", objs, format_func=obj_name, key="m_obj")
         code = champ_act(W_HOLD, B_RECALL) if beh == B_RECALL else champ_act(wave, beh, obj)
         if code in legal:
             box.button(f"Play: {ss.action_name(rec.cfg, code)}", on_click=submit, args=(code,), type="primary")
@@ -333,13 +336,15 @@ def champion_panel(col, rec: ss.Recording, j: int, s: int, info):
         cap = f" (capacity C = {d['capacity']})" if "capacity" in d else ""
         col.caption(f"Minion HP each wave action would remove this turn{cap}: "
                     + ", ".join(f"{k} {v}" for k, v in d["wave_budgets"].items()))
-    col.caption(f"XP {d['xp']} ({d['xp_to_next']} to next) · own cell {d['pos_own']:+d} (global {d['pos_global']:+d})")
+    vis = f" · vision {d['vision']} turn(s)" if d.get("vision") else ""
+    col.caption(f"XP {d['xp']} ({d['xp_to_next']} to next) · own cell {ss.cell_text(d['pos_own'])} "
+                f"(global {ss.cell_text(d['pos_global'])}){vis}")
     if info is not None:
         eff = (f"{ss.wave_name(rec.cfg, info['effective_waves'][s])} + {BEHAVIOR_NAMES[info['behaviors'][s]]}"
                + (f" + {OBJECTIVE_NAMES[info['effective_objectives'][s]]}" if info["effective_objectives"][s] else ""))
         col.markdown(f"Selected `{info['action_labels'][s]}` ({ss.action_name(rec.cfg, info['actions'][s])}) — "
-                     f"effective {eff} · mode {info['modes'][s]} · own cell {info['champ_start'][s]:+d} → "
-                     f"{info['champ_end'][s]:+d}")
+                     f"effective {eff} · mode {info['modes'][s]} · own cell {ss.cell_text(info['champ_start'][s])} → "
+                     f"{ss.cell_text(info['champ_end'][s])}")
 
 
 def wave_tab(rec: ss.Recording, i: int):
@@ -358,7 +363,7 @@ def wave_tab(rec: ss.Recording, i: int):
             row.update({"window strength own / enemy": f"{p['strength_own']:g} / {p['strength_enemy']:g}",
                         "Thin need": p["need_thin"], "Slow Push need": p["need_slowpush"]})
         row.update({"budget (calculated)": p["budget"], "removed per tick": ", ".join(map(str, p["dealt_per_tick"])),
-                    "removed (applied)": p["dealt"], "mode": p["mode"], "reach line (own)": p["reach"],
+                    "removed (applied)": p["dealt"], "mode": p["mode"], "reach (own)": p["reach"],
                     "note": p["note"]})
         rows.append(row)
     st.dataframe(rows, width="stretch", hide_index=True)
@@ -403,6 +408,9 @@ def turn_details(rec: ss.Recording, i: int, info):
                              "chance"],
         "Tower, recall, absence": ["tower_damage_dealt", "plates_broken", "plate_gold", "away", "recalled",
                                    "recall_interrupted", "returned", "purchases"],
+        "M4.5a: Ward, minion targeting, trade budget": ["ward", "ward_placed", "ward_interrupted", "retaliation",
+                                                        "minion_fire", "minion_hits", "minion_damage",
+                                                        "trade_wave_capped"],
     }
     for g, keys in groups.items():
         with st.expander(g, expanded=g == "Actions"):
@@ -435,6 +443,15 @@ only what removes the enemy's surplus), **Slow Push** (the least damage that put
 tab shows, per side, what the action was allowed to spend (calculated) and what it actually removed (applied), tick by
 tick. Levels, attack power, gold and investment are in the Champions tab; the Turn details tab shows every number the
 engine reports for the turn.
+
+**M4.5a (`m45_unified`)**: the green box above the lane cell 0 is **W**, the one off-lane Vision location both
+champions share. **Ward** (from the own −1, 0, +1 or W) walks there and places a ward at the end of the turn (vision
+for the next 6 turns, shown as "V6" on the champion) unless the enemy's Trade damages the warder that turn; a warder
+deals no wave damage and collects no gold. A wave turns its fire on an enemy champion (red "minions" label on the
+champion) on a tick after that champion's Trade damaged our champion (**retaliation**), or while that champion stands
+in our front's cell ahead of its own wave (**positional aggro**); that tick the wave does not damage minions. A
+champion's wave damage reaches only one cell around it; a connected trader still spends up to half its capacity on
+minions.
 
 **Playback**: a turn is two engine ticks. "Start" is the state both players saw when choosing; the ticks are the
 engine's own intermediate lane states (champions are shown where they end the turn, since the engine moves them once

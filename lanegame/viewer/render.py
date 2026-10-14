@@ -7,6 +7,11 @@ minions measured by HP, one fresh wave = cfg.wave_hp; it is not a minion count),
 reinforcements behind it (always one fresh wave each; "2x8" = two of them in one cell), and a dark rectangle at a
 tower is that side's crashed mass under the enemy tower. Circles above the lane are the champions. A dashed line
 marks the contact between the fronts, and a short arrow the leading packet's displacement since the previous frame.
+
+M4.5a (vision_rule "ward"): the shared Vision node W is a green box above the lane cell 0, joined to it by a dashed
+edge; a champion standing there is drawn inside it. A champion's label carries its vision timer ("V5") while its vision
+is active, "ward placed" / "ward interrupted" on its Ward turn, and the minion fire it takes in the frame (cause and
+minion damage units; the end frame adds the turn's centi-HP).
 """
 
 from __future__ import annotations
@@ -26,6 +31,9 @@ ROW = 0.29                 # |y| of a side's packet row (A above the axis, B bel
 BAR = 0.6                  # half-height of the lane bar
 XR, YR = (-4.9, 4.9), (-1.35, 2.05)
 HEIGHT = 330
+YR_WARD, HEIGHT_WARD = (-1.35, 3.25), 410      # M4.5a: room for the Vision node W above the lane
+Y_LANE_CHAMP, Y_WARD = 1.5, 2.7
+WARD_FILL, WARD_LINE, MINION = "#e3f1dc", "#6aa84f", "#8b1a1a"
 
 
 def _rrect(x0, y0, x1, y1, rx=0.07, ry=0.11) -> str:
@@ -122,38 +130,61 @@ def lane_figure(view: dict, cfg) -> go.Figure:
             y = SIGN[name] * (BAR + 0.17)
             ann.append(dict(x=mv[1], y=y, ax=mv[0], ay=y, xref="x", yref="y", axref="x", ayref="y", text="",
                             showarrow=True, arrowhead=3, arrowsize=1.1, arrowwidth=2.2, arrowcolor=COLOR[name]))
+    # M4.5a: the shared Vision node W above the lane cell 0
+    ward_node = bool(view.get("ward_node"))
+    if ward_node:
+        shapes.append(dict(type="line", x0=0, x1=0, y0=BAR, y1=Y_WARD - 0.3, line=dict(color=WARD_LINE, width=1.5,
+                                                                                       dash="dot"), layer="below"))
+        shapes.append(_shape(-0.62, Y_WARD - 0.3, 0.62, Y_WARD + 0.3, WARD_FILL, line=WARD_LINE, width=1.5,
+                             layer="below", rx=0.1, ry=0.1))
+        ann.append(_text(0.9, Y_WARD, "W (Vision)", size=10, color=WARD_LINE, xanchor="left"))
     # champions
     cx, cy, ctext, ccol, cop, chover = [], [], [], [], [], []
-    pos = {}
+    pos, ypos = {}, {}
     for name in ("A", "B"):
         d = view["champions"][name]
         away = d["absent"] > 0
-        x = (-base - 0.55 if name == "A" else base + 0.55) if away else d["pos_global"]
-        pos[name] = x
-    if not any(view["champions"][n]["absent"] for n in ("A", "B")) and pos["A"] == pos["B"]:
+        at_w = d.get("at_ward", False)
+        x = (-base - 0.55 if name == "A" else base + 0.55) if away else (0 if at_w else d["pos_global"])
+        pos[name], ypos[name] = x, (Y_WARD if at_w and not away else Y_LANE_CHAMP)
+    if (not any(view["champions"][n]["absent"] for n in ("A", "B")) and pos["A"] == pos["B"]
+            and ypos["A"] == ypos["B"]):
         pos["A"] -= 0.24
         pos["B"] += 0.24
     wave = view.get("wave") or {}
+    fire = view.get("minion_fire") or {}
+    wardev = view.get("ward") or {}
     for name in ("A", "B"):
         d = view["champions"][name]
         away = d["absent"] > 0
         cx.append(pos[name])
-        cy.append(1.5)
+        cy.append(ypos[name])
         ctext.append(name)
         ccol.append(COLOR[name])
         cop.append(0.4 if away else 1.0)
-        chover.append(f"Champion {name}: level {d['level']}, HP {d['hp']}/{d['hp_max']}, own cell {d['pos_own']:+d}"
-                      + (f", away for {d['absent']} more turn(s)" if away else ""))
+        cell = "W" if d.get("at_ward") else f"{d['pos_own']:+d}"
+        chover.append(f"Champion {name}: level {d['level']}, HP {d['hp']}/{d['hp_max']}, own cell {cell}"
+                      + (f", away for {d['absent']} more turn(s)" if away else "")
+                      + (f", vision {d['vision']} turn(s)" if d.get("vision") else ""))
+        y = ypos[name]
         if away:
-            ann.append(_text(pos[name], 1.9, f"away ({d['absent']})", size=10, color="#777"))
+            ann.append(_text(pos[name], y + 0.4, f"away ({d['absent']})", size=10, color="#777"))
         else:
             # level and this frame's wave damage: the turn's budget (start), the HP removed in the tick / turn
             w = wave.get(name)
             txt = f"L{d['level']}"
-            if w is not None and w["budget"] is not None and w["wave"] != "—":
+            if w is not None and w["budget"] is not None and w["wave"] != "—" and not d.get("at_ward"):
                 txt += (f" · {w['wave']} {w['budget']}" if w["dealt"] is None else
                         f" · {w['wave']} {w['dealt']}/{w['budget']}")
-            ann.append(_text(pos[name], 1.92, txt, size=10, color=DARK[name]))
+            if d.get("vision"):
+                txt += f" · V{d['vision']}"
+            if wardev.get(name):
+                txt += f" · ward {wardev[name]}"
+            ann.append(_text(pos[name], y + 0.42, txt, size=10, color=DARK[name]))
+        mf = fire.get(name)
+        if mf and mf["units"]:
+            txt = f"minions {mf['units']}" + (f" = {mf['centi']} cHP" if mf.get("centi") else "") +                 (f" ({mf['cause']})" if mf["cause"] else "")
+            ann.append(_text(pos[name], y - 0.38, txt, size=10, color=MINION, bold=True))
     fig = go.Figure()
     fig.add_trace(go.Scatter(x=cx, y=cy, mode="markers", marker=dict(size=46, color=ccol, opacity=0.18),
                              hoverinfo="skip", showlegend=False))
@@ -162,10 +193,12 @@ def lane_figure(view: dict, cfg) -> go.Figure:
                              hovertext=chover, hoverinfo="text", name="champions", showlegend=False))
     fig.add_trace(go.Scatter(x=hover_x, y=hover_y, mode="markers", marker=dict(size=22, opacity=0),
                              hovertext=hover_t, hoverinfo="text", name="packets", showlegend=False))
-    fig.update_layout(shapes=shapes, annotations=ann, height=HEIGHT, margin=dict(l=4, r=4, t=4, b=4),
+    fig.update_layout(shapes=shapes, annotations=ann, height=HEIGHT_WARD if ward_node else HEIGHT,
+                      margin=dict(l=4, r=4, t=4, b=4),
                       paper_bgcolor="white", plot_bgcolor="white", font=dict(family="Segoe UI, Helvetica, Arial"),
                       xaxis=dict(range=list(XR), visible=False, fixedrange=True),
-                      yaxis=dict(range=list(YR), visible=False, fixedrange=True), hovermode="closest",
+                      yaxis=dict(range=list(YR_WARD if ward_node else YR), visible=False, fixedrange=True),
+                      hovermode="closest",
                       dragmode=False)
     return fig
 

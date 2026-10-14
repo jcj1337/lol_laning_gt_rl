@@ -1,0 +1,1403 @@
+{
+ "demos": {
+  "files": [
+   {
+    "name": "m45a_E1_ward_neutral",
+    "path": "results\\m45a\\trajectories\\m45a_E1_ward_neutral.json",
+    "seed": 0,
+    "turns": 30,
+    "summary": {
+     "A": {
+      "wards": 3,
+      "wards_placed": 3,
+      "wards_interrupted": 0,
+      "minion_units_taken": 0,
+      "minion_centi_taken": 0,
+      "retaliation_ticks_taken": 0,
+      "positional_ticks_taken": 0,
+      "trade_damage_dealt": 0,
+      "capped_trades": 0,
+      "deaths": 0,
+      "recalls": 1,
+      "gold": 11.6625
+     },
+     "B": {
+      "wards": 0,
+      "wards_placed": 0,
+      "wards_interrupted": 0,
+      "minion_units_taken": 0,
+      "minion_centi_taken": 0,
+      "retaliation_ticks_taken": 0,
+      "positional_ticks_taken": 0,
+      "trade_damage_dealt": 0,
+      "capped_trades": 0,
+      "deaths": 0,
+      "recalls": 0,
+      "gold": 11.925
+     }
+    },
+    "verify": {
+     "path": "results\\m45a\\trajectories\\m45a_E1_ward_neutral.json",
+     "config": "m45_unified",
+     "turns": 30,
+     "actions_equal": true,
+     "payoff_equal": true,
+     "payoff_A": -0.26249999999999996
+    }
+   },
+   {
+    "name": "m45a_E2_ward_interrupted",
+    "path": "results\\m45a\\trajectories\\m45a_E2_ward_interrupted.json",
+    "seed": 0,
+    "turns": 30,
+    "summary": {
+     "A": {
+      "wards": 4,
+      "wards_placed": 2,
+      "wards_interrupted": 2,
+      "minion_units_taken": 0,
+      "minion_centi_taken": 0,
+      "retaliation_ticks_taken": 0,
+      "positional_ticks_taken": 0,
+      "trade_damage_dealt": 0,
+      "capped_trades": 0,
+      "deaths": 0,
+      "recalls": 2,
+      "gold": 9.5375
+     },
+     "B": {
+      "wards": 0,
+      "wards_placed": 0,
+      "wards_interrupted": 0,
+      "minion_units_taken": 8,
+      "minion_centi_taken": 288,
+      "retaliation_ticks_taken": 6,
+      "positional_ticks_taken": 0,
+      "trade_damage_dealt": 1310,
+      "capped_trades": 0,
+      "deaths": 0,
+      "recalls": 3,
+      "gold": 6.0
+     }
+    },
+    "verify": {
+     "path": "results\\m45a\\trajectories\\m45a_E2_ward_interrupted.json",
+     "config": "m45_unified",
+     "turns": 30,
+     "actions_equal": true,
+     "payoff_equal": true,
+     "payoff_A": 3.5375
+    }
+   },
+   {
+    "name": "m45a_E3_ward_trade_missed",
+    "path": "results\\m45a\\trajectories\\m45a_E3_ward_trade_missed.json",
+    "seed": 2,
+    "turns": 30,
+    "summary": {
+     "A": {
+      "wards": 8,
+      "wards_placed": 3,
+      "wards_interrupted": 5,
+      "minion_units_taken": 0,
+      "minion_centi_taken": 0,
+      "retaliation_ticks_taken": 0,
+      "positional_ticks_taken": 0,
+      "trade_damage_dealt": 0,
+      "capped_trades": 0,
+      "deaths": 0,
+      "recalls": 2,
+      "gold": 10.0375
+     },
+     "B": {
+      "wards": 0,
+      "wards_placed": 0,
+      "wards_interrupted": 0,
+      "minion_units_taken": 3,
+      "minion_centi_taken": 112,
+      "retaliation_ticks_taken": 3,
+      "positional_ticks_taken": 0,
+      "trade_damage_dealt": 1260,
+      "capped_trades": 0,
+      "deaths": 1,
+      "recalls": 1,
+      "gold": 6.075
+     }
+    },
+    "verify": {
+     "path": "results\\m45a\\trajectories\\m45a_E3_ward_trade_missed.json",
+     "config": "m45_unified",
+     "turns": 30,
+     "actions_equal": true,
+     "payoff_equal": true,
+     "payoff_A": 3.9625
+    }
+   },
+   {
+    "name": "m45a_C1_bigwave_level2",
+    "path": "results\\m45a\\trajectories\\m45a_C1_bigwave_level2.json",
+    "seed": 2,
+    "turns": 12,
+    "summary": {
+     "A": {
+      "wards": 0,
+      "wards_placed": 0,
+      "wards_interrupted": 0,
+      "minion_units_taken": 5,
+      "minion_centi_taken": 218,
+      "retaliation_ticks_taken": 3,
+      "positional_ticks_taken": 1,
+      "trade_damage_dealt": 792,
+      "capped_trades": 0,
+      "deaths": 1,
+      "recalls": 0,
+      "gold": 4.5925
+     },
+     "B": {
+      "wards": 0,
+      "wards_placed": 0,
+      "wards_interrupted": 0,
+      "minion_units_taken": 0,
+      "minion_centi_taken": 0,
+      "retaliation_ticks_taken": 0,
+      "positional_ticks_taken": 0,
+      "trade_damage_dealt": 0,
+      "capped_trades": 0,
+      "deaths": 1,
+      "recalls": 1,
+      "gold": 3.125
+     }
+    },
+    "verify": {
+     "path": "results\\m45a\\trajectories\\m45a_C1_bigwave_level2.json",
+     "config": "m45_unified",
+     "turns": 12,
+     "actions_equal": true,
+     "payoff_equal": true,
+     "payoff_A": 1.4675000000000002
+    }
+   },
+   {
+    "name": "m45a_C2_bigwave_level18",
+    "path": "results\\m45a\\trajectories\\m45a_C2_bigwave_level18.json",
+    "seed": 2,
+    "turns": 12,
+    "summary": {
+     "A": {
+      "wards": 0,
+      "wards_placed": 0,
+      "wards_interrupted": 0,
+      "minion_units_taken": 3,
+      "minion_centi_taken": 41,
+      "retaliation_ticks_taken": 2,
+      "positional_ticks_taken": 0,
+      "trade_damage_dealt": 2750,
+      "capped_trades": 0,
+      "deaths": 0,
+      "recalls": 1,
+      "gold": 2.3525
+     },
+     "B": {
+      "wards": 0,
+      "wards_placed": 0,
+      "wards_interrupted": 0,
+      "minion_units_taken": 0,
+      "minion_centi_taken": 0,
+      "retaliation_ticks_taken": 0,
+      "positional_ticks_taken": 0,
+      "trade_damage_dealt": 0,
+      "capped_trades": 0,
+      "deaths": 0,
+      "recalls": 1,
+      "gold": 0.9
+     }
+    },
+    "verify": {
+     "path": "results\\m45a\\trajectories\\m45a_C2_bigwave_level18.json",
+     "config": "m45_unified",
+     "turns": 12,
+     "actions_equal": true,
+     "payoff_equal": true,
+     "payoff_A": 1.4525
+    }
+   },
+   {
+    "name": "m45a_D1_ahead_of_wave",
+    "path": "results\\m45a\\trajectories\\m45a_D1_ahead_of_wave.json",
+    "seed": 0,
+    "turns": 12,
+    "summary": {
+     "A": {
+      "wards": 0,
+      "wards_placed": 0,
+      "wards_interrupted": 0,
+      "minion_units_taken": 1,
+      "minion_centi_taken": 43,
+      "retaliation_ticks_taken": 0,
+      "positional_ticks_taken": 1,
+      "trade_damage_dealt": 221,
+      "capped_trades": 0,
+      "deaths": 0,
+      "recalls": 1,
+      "gold": 1.6475
+     },
+     "B": {
+      "wards": 0,
+      "wards_placed": 0,
+      "wards_interrupted": 0,
+      "minion_units_taken": 0,
+      "minion_centi_taken": 0,
+      "retaliation_ticks_taken": 0,
+      "positional_ticks_taken": 0,
+      "trade_damage_dealt": 0,
+      "capped_trades": 0,
+      "deaths": 0,
+      "recalls": 1,
+      "gold": 0.875
+     }
+    },
+    "verify": {
+     "path": "results\\m45a\\trajectories\\m45a_D1_ahead_of_wave.json",
+     "config": "m45_unified",
+     "turns": 12,
+     "actions_equal": true,
+     "payoff_equal": true,
+     "payoff_A": 0.7725
+    }
+   },
+   {
+    "name": "m45a_A1_strong_freeze",
+    "path": "results\\m45a\\trajectories\\m45a_A1_strong_freeze.json",
+    "seed": 0,
+    "turns": 40,
+    "summary": {
+     "A": {
+      "wards": 0,
+      "wards_placed": 0,
+      "wards_interrupted": 0,
+      "minion_units_taken": 6,
+      "minion_centi_taken": 125,
+      "retaliation_ticks_taken": 6,
+      "positional_ticks_taken": 0,
+      "trade_damage_dealt": 4067,
+      "capped_trades": 0,
+      "deaths": 0,
+      "recalls": 2,
+      "gold": 18.23
+     },
+     "B": {
+      "wards": 0,
+      "wards_placed": 0,
+      "wards_interrupted": 0,
+      "minion_units_taken": 0,
+      "minion_centi_taken": 0,
+      "retaliation_ticks_taken": 0,
+      "positional_ticks_taken": 0,
+      "trade_damage_dealt": 0,
+      "capped_trades": 0,
+      "deaths": 3,
+      "recalls": 1,
+      "gold": 15.8375
+     }
+    },
+    "verify": {
+     "path": "results\\m45a\\trajectories\\m45a_A1_strong_freeze.json",
+     "config": "m45_unified",
+     "turns": 40,
+     "actions_equal": true,
+     "payoff_equal": true,
+     "payoff_A": 2.3925
+    }
+   }
+  ]
+ },
+ "throughput": {
+  "turns_per_second": {
+   "m4_four_actions_econ_aggro": 3705.4832521772446,
+   "m45_unified": 3259.1369095252
+  },
+  "ratio": 0.8795443637777115
+ },
+ "damage": {
+  "alpha": 50,
+  "growth": 1.08,
+  "rows": [
+   {
+    "level": 1,
+    "invested": 0,
+    "hp_max": 600,
+    "m1": [
+     50,
+     0.0833
+    ],
+    "m2": [
+     100,
+     0.1667
+    ],
+    "m3": [
+     150,
+     0.25
+    ],
+    "m4": [
+     200,
+     0.3333
+    ],
+    "m6": [
+     300,
+     0.5
+    ]
+   },
+   {
+    "level": 2,
+    "invested": 0,
+    "hp_max": 630,
+    "m1": [
+     46,
+     0.073
+    ],
+    "m2": [
+     93,
+     0.1476
+    ],
+    "m3": [
+     139,
+     0.2206
+    ],
+    "m4": [
+     185,
+     0.2937
+    ],
+    "m6": [
+     278,
+     0.4413
+    ]
+   },
+   {
+    "level": 4,
+    "invested": 0,
+    "hp_max": 695,
+    "m1": [
+     40,
+     0.0576
+    ],
+    "m2": [
+     79,
+     0.1137
+    ],
+    "m3": [
+     119,
+     0.1712
+    ],
+    "m4": [
+     159,
+     0.2288
+    ],
+    "m6": [
+     238,
+     0.3424
+    ]
+   },
+   {
+    "level": 6,
+    "invested": 8,
+    "hp_max": 766,
+    "m1": [
+     26,
+     0.0339
+    ],
+    "m2": [
+     53,
+     0.0692
+    ],
+    "m3": [
+     79,
+     0.1031
+    ],
+    "m4": [
+     106,
+     0.1384
+    ],
+    "m6": [
+     159,
+     0.2076
+    ]
+   },
+   {
+    "level": 11,
+    "invested": 32,
+    "hp_max": 977,
+    "m1": [
+     14,
+     0.0143
+    ],
+    "m2": [
+     28,
+     0.0287
+    ],
+    "m3": [
+     42,
+     0.043
+    ],
+    "m4": [
+     56,
+     0.0573
+    ],
+    "m6": [
+     85,
+     0.087
+    ]
+   },
+   {
+    "level": 15,
+    "invested": 64,
+    "hp_max": 1188,
+    "m1": [
+     9,
+     0.0076
+    ],
+    "m2": [
+     18,
+     0.0152
+    ],
+    "m3": [
+     27,
+     0.0227
+    ],
+    "m4": [
+     37,
+     0.0311
+    ],
+    "m6": [
+     55,
+     0.0463
+    ]
+   },
+   {
+    "level": 18,
+    "invested": 128,
+    "hp_max": 1375,
+    "m1": [
+     7,
+     0.0051
+    ],
+    "m2": [
+     13,
+     0.0095
+    ],
+    "m3": [
+     20,
+     0.0145
+    ],
+    "m4": [
+     27,
+     0.0196
+    ],
+    "m6": [
+     40,
+     0.0291
+    ]
+   },
+   {
+    "level": 18,
+    "invested": 300,
+    "hp_max": 1375,
+    "m1": [
+     6,
+     0.0044
+    ],
+    "m2": [
+     12,
+     0.0087
+    ],
+    "m3": [
+     18,
+     0.0131
+    ],
+    "m4": [
+     24,
+     0.0175
+    ],
+    "m6": [
+     37,
+     0.0269
+    ]
+   }
+  ],
+  "note": "m = minion damage units (one tick of a blob deals ceil(f/2) or floor(f/2), f = max(1, floor(2h/8)) per turn: an 8-HP wave 1 + 1, 16 HP 2 + 2, 24 HP 3 + 3); entries [centi-HP after durability, share of the max-HP bar]"
+ },
+ "random": {
+  "games": 40,
+  "turns": 300,
+  "champion_turns": 24000,
+  "counts": {
+   "turns": 12000,
+   "ward": 771,
+   "placed": 680,
+   "interrupted": 91,
+   "retaliation_ticks": 719,
+   "positional_ticks": 232,
+   "minion_hit_turns": 884,
+   "minion_centi": 21774,
+   "capped": 834,
+   "connected": 3298,
+   "landed": 1515,
+   "at_w": 797,
+   "deaths": 484
+  },
+  "per_champion_turn": {
+   "ward": 0.032125,
+   "placed": 0.028333333333333332,
+   "interrupted": 0.0037916666666666667,
+   "retaliation_ticks": 0.029958333333333333,
+   "positional_ticks": 0.009666666666666667,
+   "minion_hit_turns": 0.036833333333333336,
+   "minion_centi": 0.90725,
+   "capped": 0.03475,
+   "connected": 0.13741666666666666,
+   "landed": 0.063125,
+   "at_w": 0.03320833333333333,
+   "deaths": 0.020166666666666666
+  },
+  "minion_damage_share_by_level": {
+   "1": {
+    "turns": 11,
+    "mean_share_of_bar": 0.09090909090909091
+   },
+   "2": {
+    "turns": 14,
+    "mean_share_of_bar": 0.08900226757369613
+   },
+   "3": {
+    "turns": 19,
+    "mean_share_of_bar": 0.0820480203529973
+   },
+   "4": {
+    "turns": 14,
+    "mean_share_of_bar": 0.0736896197327852
+   },
+   "5": {
+    "turns": 20,
+    "mean_share_of_bar": 0.07599451303155005
+   },
+   "6": {
+    "turns": 20,
+    "mean_share_of_bar": 0.06436031331592688
+   },
+   "7": {
+    "turns": 20,
+    "mean_share_of_bar": 0.06318407960199006
+   },
+   "8": {
+    "turns": 20,
+    "mean_share_of_bar": 0.053436018957345975
+   },
+   "9": {
+    "turns": 32,
+    "mean_share_of_bar": 0.03428329571106095
+   },
+   "10": {
+    "turns": 27,
+    "mean_share_of_bar": 0.030831045868639852
+   },
+   "11": {
+    "turns": 31,
+    "mean_share_of_bar": 0.027338462046422554
+   },
+   "12": {
+    "turns": 43,
+    "mean_share_of_bar": 0.026406455415023337
+   },
+   "13": {
+    "turns": 45,
+    "mean_share_of_bar": 0.023088023088023095
+   },
+   "14": {
+    "turns": 31,
+    "mean_share_of_bar": 0.0191380736430792
+   },
+   "15": {
+    "turns": 31,
+    "mean_share_of_bar": 0.01569458021070925
+   },
+   "16": {
+    "turns": 51,
+    "mean_share_of_bar": 0.015566772017547997
+   },
+   "17": {
+    "turns": 45,
+    "mean_share_of_bar": 0.015080576759966071
+   },
+   "18": {
+    "turns": 410,
+    "mean_share_of_bar": 0.011778270509977828
+   }
+  }
+ },
+ "scripted": {
+  "seeds": 16,
+  "turns": 200,
+  "rows": {
+   "m4_four_actions_econ_aggro": {
+    "farm4 v farm4 [s0, equal]": {
+     "lead": [
+      0.6640625,
+      1.6030142290352831
+     ],
+     "deaths_A": [
+      0.3125,
+      0.23456964140030284
+     ],
+     "deaths_B": [
+      0.3125,
+      0.29501906718041127
+     ],
+     "recalls_A": [
+      3.25,
+      0.6574039853849382
+     ],
+     "recalls_B": [
+      3.375,
+      0.5900381343608225
+     ],
+     "minion_cp_A": [
+      0.0,
+      0.0
+     ],
+     "minion_cp_B": [
+      0.0,
+      0.0
+     ],
+     "wards_A": [
+      0.0,
+      0.0
+     ],
+     "wards_placed_A": [
+      0.0,
+      0.0
+     ],
+     "ret_ticks_A": [
+      0.0,
+      0.0
+     ],
+     "pos_ticks_A": [
+      0.0,
+      0.0
+     ],
+     "ret_ticks_B": [
+      0.0,
+      0.0
+     ],
+     "pos_ticks_B": [
+      0.0,
+      0.0
+     ]
+    },
+    "ward_favorable4 v farm4 [s0, equal]": {
+     "lead": [
+      0.6640625,
+      1.6030142290352831
+     ],
+     "deaths_A": [
+      0.3125,
+      0.23456964140030284
+     ],
+     "deaths_B": [
+      0.3125,
+      0.29501906718041127
+     ],
+     "recalls_A": [
+      3.25,
+      0.6574039853849382
+     ],
+     "recalls_B": [
+      3.375,
+      0.5900381343608225
+     ],
+     "minion_cp_A": [
+      0.0,
+      0.0
+     ],
+     "minion_cp_B": [
+      0.0,
+      0.0
+     ],
+     "wards_A": [
+      0.0,
+      0.0
+     ],
+     "wards_placed_A": [
+      0.0,
+      0.0
+     ],
+     "ret_ticks_A": [
+      0.0,
+      0.0
+     ],
+     "pos_ticks_A": [
+      0.0,
+      0.0
+     ],
+     "ret_ticks_B": [
+      0.0,
+      0.0
+     ],
+     "pos_ticks_B": [
+      0.0,
+      0.0
+     ]
+    },
+    "ward_always4 v bully4 [neutral, equal]": {
+     "lead": [
+      13.482499999999998,
+      3.8771987573289732
+     ],
+     "deaths_A": [
+      2.875,
+      0.7128896595313097
+     ],
+     "deaths_B": [
+      2.0625,
+      0.7689253864972855
+     ],
+     "recalls_A": [
+      10.25,
+      0.45616517476311874
+     ],
+     "recalls_B": [
+      12.4375,
+      1.042810105755917
+     ],
+     "minion_cp_A": [
+      0.0,
+      0.0
+     ],
+     "minion_cp_B": [
+      0.0,
+      0.0
+     ],
+     "wards_A": [
+      0.0,
+      0.0
+     ],
+     "wards_placed_A": [
+      0.0,
+      0.0
+     ],
+     "ret_ticks_A": [
+      0.0,
+      0.0
+     ],
+     "pos_ticks_A": [
+      0.0,
+      0.0
+     ],
+     "ret_ticks_B": [
+      0.0,
+      0.0
+     ],
+     "pos_ticks_B": [
+      0.0,
+      0.0
+     ]
+    },
+    "bully4 v farm4 [s0, equal]": {
+     "lead": [
+      -13.356406250000001,
+      4.55370230477327
+     ],
+     "deaths_A": [
+      1.875,
+      0.6420059708964292
+     ],
+     "deaths_B": [
+      3.1875,
+      0.7424483708200412
+     ],
+     "recalls_A": [
+      12.625,
+      0.9614494266470807
+     ],
+     "recalls_B": [
+      9.25,
+      0.8487048957087499
+     ],
+     "minion_cp_A": [
+      0.0,
+      0.0
+     ],
+     "minion_cp_B": [
+      0.0,
+      0.0
+     ],
+     "wards_A": [
+      0.0,
+      0.0
+     ],
+     "wards_placed_A": [
+      0.0,
+      0.0
+     ],
+     "ret_ticks_A": [
+      0.0,
+      0.0
+     ],
+     "pos_ticks_A": [
+      0.0,
+      0.0
+     ],
+     "ret_ticks_B": [
+      0.0,
+      0.0
+     ],
+     "pos_ticks_B": [
+      0.0,
+      0.0
+     ]
+    },
+    "bully4 v step_back4 [neutral, equal]": {
+     "lead": [
+      -5.303437499999999,
+      2.3717016962312627
+     ],
+     "deaths_A": [
+      1.25,
+      0.551476805193715
+     ],
+     "deaths_B": [
+      0.0,
+      0.0
+     ],
+     "recalls_A": [
+      11.875,
+      0.8557482106320761
+     ],
+     "recalls_B": [
+      1.8125,
+      0.4087414627039118
+     ],
+     "minion_cp_A": [
+      0.0,
+      0.0
+     ],
+     "minion_cp_B": [
+      0.0,
+      0.0
+     ],
+     "wards_A": [
+      0.0,
+      0.0
+     ],
+     "wards_placed_A": [
+      0.0,
+      0.0
+     ],
+     "ret_ticks_A": [
+      0.0,
+      0.0
+     ],
+     "pos_ticks_A": [
+      0.0,
+      0.0
+     ],
+     "ret_ticks_B": [
+      0.0,
+      0.0
+     ],
+     "pos_ticks_B": [
+      0.0,
+      0.0
+     ]
+    },
+    "freeze_bully4 v walk_up_shove4 [freeze, large]": {
+     "lead": [
+      -8.769375,
+      4.120069326950094
+     ],
+     "deaths_A": [
+      0.4375,
+      0.3082849061068889
+     ],
+     "deaths_B": [
+      7.0,
+      1.0278326712067485
+     ],
+     "recalls_A": [
+      10.3125,
+      1.09886437592028
+     ],
+     "recalls_B": [
+      7.875,
+      0.8368343125533672
+     ],
+     "minion_cp_A": [
+      0.0,
+      0.0
+     ],
+     "minion_cp_B": [
+      0.0,
+      0.0
+     ],
+     "wards_A": [
+      0.0,
+      0.0
+     ],
+     "wards_placed_A": [
+      0.0,
+      0.0
+     ],
+     "ret_ticks_A": [
+      0.0,
+      0.0
+     ],
+     "pos_ticks_A": [
+      0.0,
+      0.0
+     ],
+     "ret_ticks_B": [
+      0.0,
+      0.0
+     ],
+     "pos_ticks_B": [
+      0.0,
+      0.0
+     ]
+    },
+    "ward_freeze4 v walk_up_shove4 [freeze, large]": {
+     "lead": [
+      0.84296875,
+      1.1725794207010298
+     ],
+     "deaths_A": [
+      0.0,
+      0.0
+     ],
+     "deaths_B": [
+      1.0,
+      0.5658032638058332
+     ],
+     "recalls_A": [
+      0.3125,
+      0.23456964140030284
+     ],
+     "recalls_B": [
+      8.625,
+      1.3010399686404719
+     ],
+     "minion_cp_A": [
+      0.0,
+      0.0
+     ],
+     "minion_cp_B": [
+      0.0,
+      0.0
+     ],
+     "wards_A": [
+      0.0,
+      0.0
+     ],
+     "wards_placed_A": [
+      0.0,
+      0.0
+     ],
+     "ret_ticks_A": [
+      0.0,
+      0.0
+     ],
+     "pos_ticks_A": [
+      0.0,
+      0.0
+     ],
+     "ret_ticks_B": [
+      0.0,
+      0.0
+     ],
+     "pos_ticks_B": [
+      0.0,
+      0.0
+     ]
+    }
+   },
+   "m45_unified": {
+    "farm4 v farm4 [s0, equal]": {
+     "lead": [
+      -0.0546875,
+      1.9151036301785125
+     ],
+     "deaths_A": [
+      0.3125,
+      0.23456964140030284
+     ],
+     "deaths_B": [
+      0.3125,
+      0.29501906718041127
+     ],
+     "recalls_A": [
+      3.3125,
+      0.6627087721364993
+     ],
+     "recalls_B": [
+      3.375,
+      0.5900381343608225
+     ],
+     "minion_cp_A": [
+      0.0,
+      0.0
+     ],
+     "minion_cp_B": [
+      0.0,
+      0.0
+     ],
+     "wards_A": [
+      0.0,
+      0.0
+     ],
+     "wards_placed_A": [
+      0.0,
+      0.0
+     ],
+     "ret_ticks_A": [
+      0.0,
+      0.0
+     ],
+     "pos_ticks_A": [
+      0.0,
+      0.0
+     ],
+     "ret_ticks_B": [
+      0.0,
+      0.0
+     ],
+     "pos_ticks_B": [
+      0.0,
+      0.0
+     ]
+    },
+    "ward_favorable4 v farm4 [s0, equal]": {
+     "lead": [
+      -2.6453124999999997,
+      2.2305608253470512
+     ],
+     "deaths_A": [
+      0.0625,
+      0.1225
+     ],
+     "deaths_B": [
+      0.25,
+      0.21913466179497937
+     ],
+     "recalls_A": [
+      2.0,
+      0.40008332465458574
+     ],
+     "recalls_B": [
+      2.8125,
+      0.7205666173227844
+     ],
+     "minion_cp_A": [
+      0.0,
+      0.0
+     ],
+     "minion_cp_B": [
+      0.0,
+      0.0
+     ],
+     "wards_A": [
+      20.1875,
+      0.5719582589665089
+     ],
+     "wards_placed_A": [
+      20.1875,
+      0.5719582589665089
+     ],
+     "ret_ticks_A": [
+      0.0,
+      0.0
+     ],
+     "pos_ticks_A": [
+      0.0,
+      0.0
+     ],
+     "ret_ticks_B": [
+      0.0,
+      0.0
+     ],
+     "pos_ticks_B": [
+      0.0,
+      0.0
+     ]
+    },
+    "ward_always4 v bully4 [neutral, equal]": {
+     "lead": [
+      13.048281249999999,
+      4.496522890066638
+     ],
+     "deaths_A": [
+      1.8125,
+      0.5719582589665089
+     ],
+     "deaths_B": [
+      2.4375,
+      0.5050804391381634
+     ],
+     "recalls_A": [
+      10.875,
+      0.5900381343608225
+     ],
+     "recalls_B": [
+      13.875,
+      0.5900381343608225
+     ],
+     "minion_cp_A": [
+      0.0,
+      0.0
+     ],
+     "minion_cp_B": [
+      2038.4375,
+      312.40390385885064
+     ],
+     "wards_A": [
+      19.4375,
+      1.8677400559678177
+     ],
+     "wards_placed_A": [
+      9.5625,
+      0.7584455045244407
+     ],
+     "ret_ticks_A": [
+      0.0,
+      0.0
+     ],
+     "pos_ticks_A": [
+      0.0,
+      0.0
+     ],
+     "ret_ticks_B": [
+      25.9375,
+      2.416905649103139
+     ],
+     "pos_ticks_B": [
+      28.1875,
+      5.241606902150013
+     ]
+    },
+    "bully4 v farm4 [s0, equal]": {
+     "lead": [
+      -16.43859375,
+      3.386095030242171
+     ],
+     "deaths_A": [
+      2.25,
+      0.8296304398144192
+     ],
+     "deaths_B": [
+      1.8125,
+      0.4087414627039118
+     ],
+     "recalls_A": [
+      14.8125,
+      1.0312336867396579
+     ],
+     "recalls_B": [
+      10.875,
+      0.7976622092088855
+     ],
+     "minion_cp_A": [
+      2422.9375,
+      218.6753466814446
+     ],
+     "minion_cp_B": [
+      0.0,
+      0.0
+     ],
+     "wards_A": [
+      0.0,
+      0.0
+     ],
+     "wards_placed_A": [
+      0.0,
+      0.0
+     ],
+     "ret_ticks_A": [
+      27.75,
+      2.6748794365354116
+     ],
+     "pos_ticks_A": [
+      31.25,
+      4.545833990222989
+     ],
+     "ret_ticks_B": [
+      0.0,
+      0.0
+     ],
+     "pos_ticks_B": [
+      0.0,
+      0.0
+     ]
+    },
+    "bully4 v step_back4 [neutral, equal]": {
+     "lead": [
+      -4.84953125,
+      5.006047060582654
+     ],
+     "deaths_A": [
+      1.3125,
+      0.46377751490702235
+     ],
+     "deaths_B": [
+      0.0,
+      0.0
+     ],
+     "recalls_A": [
+      13.0,
+      1.2777636714197191
+     ],
+     "recalls_B": [
+      1.625,
+      0.43367998954682396
+     ],
+     "minion_cp_A": [
+      961.9375,
+      244.51320568205853
+     ],
+     "minion_cp_B": [
+      0.0,
+      0.0
+     ],
+     "wards_A": [
+      0.0,
+      0.0
+     ],
+     "wards_placed_A": [
+      0.0,
+      0.0
+     ],
+     "ret_ticks_A": [
+      0.8125,
+      0.6254301852858293
+     ],
+     "pos_ticks_A": [
+      29.5625,
+      6.520176857263919
+     ],
+     "ret_ticks_B": [
+      0.0,
+      0.0
+     ],
+     "pos_ticks_B": [
+      0.0,
+      0.0
+     ]
+    },
+    "freeze_bully4 v walk_up_shove4 [freeze, large]": {
+     "lead": [
+      -3.7792187499999996,
+      3.9425290511793603
+     ],
+     "deaths_A": [
+      0.375,
+      0.245
+     ],
+     "deaths_B": [
+      5.9375,
+      1.0952166832793104
+     ],
+     "recalls_A": [
+      11.3125,
+      0.8713875429451582
+     ],
+     "recalls_B": [
+      8.9375,
+      0.8667830851295304
+     ],
+     "minion_cp_A": [
+      452.5,
+      37.26019627788703
+     ],
+     "minion_cp_B": [
+      0.0,
+      0.0
+     ],
+     "wards_A": [
+      0.0,
+      0.0
+     ],
+     "wards_placed_A": [
+      0.0,
+      0.0
+     ],
+     "ret_ticks_A": [
+      18.75,
+      1.5129287271161629
+     ],
+     "pos_ticks_A": [
+      7.5625,
+      1.419802656474953
+     ],
+     "ret_ticks_B": [
+      0.0,
+      0.0
+     ],
+     "pos_ticks_B": [
+      0.0,
+      0.0
+     ]
+    },
+    "ward_freeze4 v walk_up_shove4 [freeze, large]": {
+     "lead": [
+      -1.12890625,
+      1.2062357121077383
+     ],
+     "deaths_A": [
+      0.0,
+      0.0
+     ],
+     "deaths_B": [
+      0.9375,
+      0.5206850455569726
+     ],
+     "recalls_A": [
+      0.0625,
+      0.1225
+     ],
+     "recalls_B": [
+      8.6875,
+      1.1133356412151727
+     ],
+     "minion_cp_A": [
+      0.0,
+      0.0
+     ],
+     "minion_cp_B": [
+      0.0,
+      0.0
+     ],
+     "wards_A": [
+      9.5625,
+      0.7370388388680749
+     ],
+     "wards_placed_A": [
+      9.5625,
+      0.7370388388680749
+     ],
+     "ret_ticks_A": [
+      0.0,
+      0.0
+     ],
+     "pos_ticks_A": [
+      0.0,
+      0.0
+     ],
+     "ret_ticks_B": [
+      0.0,
+      0.0
+     ],
+     "pos_ticks_B": [
+      0.0,
+      0.0
+     ]
+    }
+   }
+  }
+ },
+ "elapsed_s": 21.7
+}

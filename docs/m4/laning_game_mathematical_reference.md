@@ -18,6 +18,7 @@ and verified against the code; the numbers in the examples were produced by the 
 | **PROPOSED** | a mechanic under investigation (M4.3c); described only in [m4_3c_economic_objective_design.md](m4_3c_economic_objective_design.md) or the calibration report, never here except as a pointer |
 | **EXPERIMENTAL** | an opt-in configuration field that exists in the code but is off in `m4_lasthit()` (and, unless stated, in `m4_four_actions()`) |
 | **DEPRECATED** | a rule of an earlier preset or design document that `m4_lasthit()` no longer uses |
+| **M4.5A** | the EXPERIMENTAL unified positional candidate `m45_unified()` (§14): `m4_four_actions_econ_aggro()` plus the shared Vision node W, Ward, minion retaliation and positional aggro, XP range 2, the capped trade budget and the reach ball; no CURRENT statement of §1–§10 describes it |
 
 **Terminology of slot 1 (`SH`).** The full-capacity wave slot is called **Clear** in `m4_lasthit()` and the other
 three-action natural presets (label `CL`), and **Shove** in the four-action model (label `SH`, `config.W_SHOVE`, the same
@@ -46,6 +47,7 @@ corresponding equation, table, diagram and example here in the same piece of wor
 11. [Glossary](#11-glossary)
 12. [Where the historical documents disagree with the code](#12-where-the-historical-documents-disagree-with-the-code)
 13. [Change log of this document](#13-change-log-of-this-document)
+14. [EXPERIMENTAL: the M4.5a unified positional candidate](#14-experimental-the-m45a-unified-positional-candidate-m45_unified)
 
 ---
 
@@ -115,6 +117,7 @@ unless marked "global", HP is minion HP for waves and centi-HP (1/100 of a base 
 | What makes freezing beneficial or harmful? | [§4.8](#48-freezes), [§5.6](#56-scenario-a-and-scenario-b-side-by-side), [§10.1](#101-a-champion-trying-to-maintain-an-early-freeze) |
 | How do champion power and death costs scale? | [§7](#7-gold-investment-and-champion-progression), [§6.7](#67-why-dying-is-a-relatively-cheap-reset) |
 | What does PPO actually optimize? | [§9](#9-the-rl-objective-and-its-evaluation) |
+| What changes in the M4.5a candidate (Vision node W, Ward, minion aggro, XP range 2)? | [§14](#14-experimental-the-m45a-unified-positional-candidate-m45_unified) |
 | What causes a game to end? | Nothing: [§8.5](#85-after-the-final-plate-why-the-game-does-not-end), [§9.1](#91-the-game-objective) (EXPERIMENTAL opt-in terminal at the last plate: [§8.7](#87-experimental-the-m43c-economic-opt-ins-and-the-calibrated-candidate)) |
 | Why does Shove dominate the four-action model? | The crash tax and break-even trades: [§5.3](#53-collection-what-share-of-a-kill-becomes-gold), [§8.7](#87-experimental-the-m43c-economic-opt-ins-and-the-calibrated-candidate) and the calibration report |
 | How risky are pressure and diving, and does a crash cost the defender farm? | [§5.3](#53-collection-what-share-of-a-kill-becomes-gold) (the measured cap), [§6.3](#63-tower-shots), [§6.4](#64-ganks-and-vision), [§8.8](#88-experimental-the-m43d-candidate-m4_four_actions_econ_aggro) and the M4.3d report |
@@ -778,7 +781,7 @@ $$
 $$
 
 over the same kill ledger as its gold, **whoever killed the minions and whatever its behaviour** (trading and
-Safe champions gain full XP). One fresh wave is 8 XP; the steady maximum is 4 XP per turn. XP above
+Safe champions gain full XP). M4.5A (§14.6): range 2, by movement-graph distance. One fresh wave is 8 XP; the steady maximum is 4 XP per turn. XP above
 $\mathcal X(18)=544$ is discarded (`xp_discarded`). Level thresholds:
 
 $$
@@ -963,7 +966,8 @@ survives any single gank (4 units $<6$), but not every combination (§6.5).
 
 **Vision.** Establish Vision (legal like Pressure: during an own siege, Hold or Trade, champion able to reach the enemy
 tower) sets $v_s=6$; for the next 6 turns (not the current one) the side's gank *occurrence* is multiplied by 0.25.
-Vision has no other effect.
+Vision has no other effect. M4.5A (§14.3): Vision is instead placed at the shared off-lane node W by the Ward action,
+contestable by the enemy's Trade; the siege Vision objective does not exist there.
 
 ### 6.5 Damage, death and the bounty
 
@@ -1573,3 +1577,149 @@ historical documents are records of their milestones and are **not** edited; thi
 | 2026-10-13 | M4.3c stabilization: label FOUR-ACTION and the slot-1 terminology note (§0); slot 1 of the four-action model is **Shove** (`W_SHOVE` = `W_CLEAR`, label `SH`; §3.1, §4.10, glossary), a semantic change only; the debugger's wave panel (§4.10); the measured crash tax (§5.3); the EXPERIMENTAL opt-ins `xp_reward_weight`, `death_turns_by_level`, `terminal_rule = "final_plate"` and the PROPOSED candidate `m4_four_actions_econ()` (new §8.7; pointers in §5.3, §6.5, §8.5, §8.6). Every CURRENT statement and every preset's defaults are unchanged | `config.py`, `champions_m4.py`, `env/core.py`, `env/discounted.py`, `viewer/` |
 | 2026-10-13 | M4.3d tower farming, pressure and gank risk: the measured meaning of the own-tower cap (§5.3: farm-neutral at 0.8), why nearly every dive is "busy" (§6.3), the EXPERIMENTAL candidate `m4_four_actions_econ_aggro()` (new §8.8: `tower_shot_p_busy` 1.0, `tower_adjacent_p_busy` 0.5), a quick-reference row (§0.4), glossary entries. Every CURRENT statement and every earlier preset's values are unchanged | `config.py` (`m4_four_actions_econ_aggro`, `M4_FOUR_AGGRO_FIELDS`), `lanegame/experiments/m43d/` |
 | 2026-10-13 | M4.4a: §9.2 pointer to the four-action training settings (61 masked logits, the M4.4 comparison) and the PPO pipeline explanation; §6.3 qualifies "nearly every dive is busy" as a measurement of the M4.3d scripted strategies (16–24% of the learned pilot policies' dives were busy). No rule, parameter or preset changed | `lanegame/experiments/rl/m44/` (training and diagnostics only) |
+| 2026-10-14 | M4.5a: new §14 (EXPERIMENTAL unified positional candidate `m45_unified()`: the movement graph and the shared Vision node W, Ward and its interruption, per-tick minion retaliation and positional aggro with exclusive targeting, minion damage on champions, the capped trade budget, the reach ball, XP range 2, the 90-entry observation); label M4.5A (§0), a §0.4 row and pointers in §5.4 and §6.4. Every CURRENT statement and every earlier preset is unchanged (checked byte-for-byte on 12 champion presets against the committed engine) | `config.py` (`m45_unified`, `M45_UNIFIED_FIELDS`), `positional.py` (new), `champions.py`, `champions_m4.py`, `mechanics.py`, `env/core.py`, `env/observation_m4.py`, `viewer/`, `experiments/m45a/` |
+
+---
+
+## 14. EXPERIMENTAL: the M4.5a unified positional candidate (`m45_unified()`)
+
+**Not the research preset.** `GameConfig.m45_unified()` is `m4_four_actions_econ_aggro()` (§4.10, §8.7, §8.8) with the
+six fields of `M45_UNIFIED_FIELDS`: `vision_rule = "ward"`, `xp_range = 2`, `minion_retaliation = True`,
+`minion_positional_aggro = True`, `trade_wave_rule = "capped"`, `wave_reach_rule = "ball"`. Each rule below is an opt-in
+field whose default reproduces every earlier preset exactly; the legacy rulesets reject them (`M4_ECONOMY_FIELDS`), and
+every one needs natural waves. Design: [m4_5a_unified_mechanics_spec.md](m4_5a_unified_mechanics_spec.md); report and
+validation: [m4_5a_unified_mechanics_report.md](m4_5a_unified_mechanics_report.md). Every number in this section is
+**provisional**: M4.5b calibrates them together.
+
+### 14.1 State and the movement graph
+
+The champion position gains one value: $\mathrm{pos}_s\in\{-2,-1,0,+1,+2,W\}$ (own coordinates; W is stored as
+`positional.WARD` = 99). W is one shared off-lane node attached to the lane cell 0; it is the same node in both sides'
+coordinates (the mirror maps a lane cell $y$ to $-y$ and W to W). No other state variable is added: the vision timers
+$v_A,v_B$ (§2.1) remain per side.
+
+$$
+d(\ell,\ell')=|\ell-\ell'|,\qquad d(\ell,W)=1+|\ell|,\qquad d(W,W)=0\qquad(\text{also for kill cells }\ell\notin[-2,2]).
+$$
+
+| rule | M4.5A | code |
+|---|---|---|
+| movement | shortest path, at most 2 edges per turn; W is entered and left through 0 (W ↔ ±1 in one turn, W ↔ ±2 in two) | `positional.move`, `champions._move` |
+| contact | $d(x,\mu(y))\le1$ with $\mu$ the mirror; a champion in its own tower cell is reachable only from that cell (§6.1). W is in contact with 0 and W | `positional.in_contact`, `champions.in_contact` |
+| chase target | nearest node in contact with the reference cell (§6.1); ties: smallest lane cell, W last | `champions_m4.contact_cell_target` |
+| exposure | W counts as the own cell `ward_exposure` = 0 in the gank formulas (§6.4) | `positional.exposure_cell` |
+| farm spot without a front | from W: the lane cell 0 | `resolve_turn_m4` step 1 |
+| Pressure / Recall legality | Pressure needs $d(\mathrm{pos},+2)\le2$ (never from W); Recall a lane cell $\le-1$ (never from W) | `champions.objective_reachable`, `recall_legal` |
+
+### 14.2 Actions and legality
+
+The action space keeps its 61 codes. **Code 30** (Last Hit slot + Hold + Vision, label `WARD`) is the Ward action;
+it is legal for a present champion with $d(\mathrm{pos},W)\le2$ (own $-1$, 0, $+1$ or W), with or without a siege. Every
+other Vision code (31, 32, 36–38, 56–60) is never legal: there is no siege Vision objective. Pressure keeps its
+legality (§3.3). A present champion therefore has up to 16 + 1 (Ward) + 16 (Pressure, during a siege in reach) + 1
+(Recall) legal codes.
+
+### 14.3 Ward placement and its interruption
+
+A Ward champion moves to W (it always arrives: legality) and is in mode **ward**: no wave damage (reach none), no
+gold, XP by graph distance (§14.6), trade-exposed with the hit modifier of Hold ($\beta=0$), gank behaviour term of Hold,
+exposure of W. The ward is **placed** at the end of the turn unless
+
+$$
+\text{interrupted}_s=\Bigl\lfloor\tfrac{\text{dealt}_{o}}{M(S_s)}\Bigr\rfloor>0\quad\text{(the enemy's connected Trade damaged the warder)}\quad\text{or the warder dies this turn.}
+$$
+
+A connected Trade that misses (or deals 0 after mitigation), an unconnected Trade, a gank and minion fire do not
+interrupt. A placed ward sets $v_s=$ `vision_turns` = 6 after the lane step's countdown; for the next 6 turns (not the
+Ward turn) $p_{\text{gank}}$ is multiplied by $1-0.75$ (§6.4). Both sides may ward in the same turn; their timers are
+independent. Every Trade can reach a warder (every lane cell is within 2 of the cell 0 next to W), so contesting a ward
+is a simultaneous guess like the Recall interruption (§3 of the M4.4c report). `M4Turn.warding / ward_placed /
+ward_interrupted`, `info["ward" / "ward_placed" / "ward_interrupted"]`.
+
+### 14.4 Resolution order of one turn (M4.5A)
+
+1. both actions committed simultaneously; 2. the probe (unchanged; a warder, like a recaller, does not support its
+wave in it; no minion targeting) and the farm spots; 3. champion movement (Ward path, chase, evasion; graph-aware),
+Recall interruption; 4. trade contact and **the trade rolls** (moved before the lane step in every preset: they read
+only the start-of-turn state and the end cells, so earlier presets are unchanged); the single exchange lands on
+**tick 0**; 5. modes, reach (§14.8) and wave budgets, the connected trader's capped budget (§14.7); each side's minion
+target $(\mu(\mathrm{end}_o),\ \text{retaliation tick},\ \text{stationary}_o)$; 6. the lane step, tick by tick (§14.5);
+7. gold and XP (graph distances); 8. ganks; 9. the turn's damage $\lfloor(\text{trade}+\text{tower}+\text{gank}+
+D_{\text{minion}})/M(S)\rfloor$; 10. death, ward placement; 11–15 unchanged (plates, progression, ledger, absence,
+reward). The reward is unchanged: no term is added for any action or event.
+
+### 14.5 Minion targeting, per tick
+
+On tick $t$ each side's wave (its leading blob, §4.2) spends its tick firepower $f_t(h)$ (§4.3) on **exactly one**
+target category: enemy minions (the lane fight or the siege fight) or the enemy champion $o$. At the start of tick $t$
+(after the turn's champion movement, before the tick's minion movement) side $s$'s wave **designates** $o$ (present)
+when
+
+$$
+\underbrace{o\text{'s Trade damaged }s\text{'s champion this turn and }t\ge\delta}_{\text{retaliation},\ \delta=1}
+\quad\text{or}\quad
+\underbrace{\mathrm{start}_o=\mathrm{end}_o=c\in[-2,2],\ x^{\text{front}}_s(t)=\mu(c),\ \bigl(x^{\text{front}}_o(t)<c\text{ or no front}\bigr),\ \neg(m_o>0\wedge c=+2)}_{\text{positional aggro (}o\text{ did not move this turn)}}
+$$
+
+(retaliation first in the record). After the tick's movement the designated wave **fires** iff its front is within
+`minion_range` $=1$ of $o$, $d(x^{\text{front}}_s,\mu(\mathrm{end}_o))\le1$, and $f_t>0$: it adds $f_t$ minion damage
+units to $o$ and deals **no** damage to enemy minions on that tick (neither the lane fight nor the siege fight; the
+crashed mass it would have engaged then hits the tower). Otherwise it fights minions normally. Champions' own wave
+budgets are unaffected. Crashed masses never target champions; a champion at W is never in a wave's cell. Damage of an
+earlier tick is never reassigned; an un-designated wave behaves exactly as in §4.
+
+| situation | tick 0 | tick 1 |
+|---|---|---|
+| A's Trade lands on B; B's front within 1 of A | B's minions on A's minions | B's minions on A |
+| A's Trade misses | normal | normal |
+| A stood in B's front's cell (did not move), A's front behind | B's minions on A | B's minions on A (if still designated and in range) |
+| A stands one cell from B's front; B's front walks into A's cell during tick 0 | normal | B's minions on A |
+| A moved this turn (e.g. followed its winning wave) into B's front's cell | normal | normal (counts from next turn if A stays) |
+| A in B's tower cell with its own crashed mass there | normal | normal |
+
+`TurnResult.champion_hits` (units per champion), `champion_fire` (cause per tick), the tick trace's `minion_fire`;
+`info["minion_fire" / "minion_hits" / "minion_damage" / "retaliation" / "minion_targets"]`.
+
+### 14.6 Minion damage on champions and XP range 2
+
+$m$ minion damage units taken in a turn by a champion at start-of-turn level $L$:
+
+$$
+D_{\text{minion}}(m,L)=\max\Bigl(1,\Bigl\lfloor\frac{\alpha\,m}{\rho^{\,L-1}}\Bigr\rceil\Bigr)\ \text{centi-HP}\ (m>0),\qquad\alpha=50,\ \rho=1.08,
+$$
+
+summed with the turn's other damage and divided by $M(S)$ (`invest_durability`), so the resistance is
+$R(L,S)=\rho^{L-1}M(S)$ (`positional.minion_damage_centi`). An 8-HP wave firing a whole turn ($m=2$): 100 cHP (17% of
+the bar) at level 1, 79 (11%) at 4, 28 (2.9%) at level 11 with 32 invested, 13 (0.9%) at level 18 with 128 invested
+(`results/m45a/report.md`). XP: $\Delta X_s=\xi\sum_x h_x\,\mathbb 1[d(x,\mathrm{end}_s)\le2]$ — from W the kills at
+$-1$, 0, $+1$.
+
+### 14.7 Wave maintenance while trading
+
+A connected trader keeps its farm-mode reach and spends $B'_w=\min(B_w,\lfloor\varphi C\rceil)$, $\varphi=0.5$: Last
+Hit, Thin and Slow Push are unchanged (their cap is $\lfloor C/2\rceil$), Shove is halved; gold is still collected at
+`trade_farm_factor` 0.8 (§5.3). `M4Turn.trade_wave_capped`, `info["wave_budget"]` holds the capped budget.
+
+### 14.8 The reach ball
+
+The champion's wave damage (§4.5) reaches enemy minions at own cells $x$ with $d(x,\mathrm{end})\le1$ and $x\le3$; Safe
+and a retreating Yield also only $x\le\min(\mathrm{end},-1)$; from W only the cell 0; none while away, channelling or
+warding. The reach is an interval (`positional.reach_interval`, `info["champion_reach"]` as `[lo, hi]`). Historically
+(§4.5) it is a line with no lower bound.
+
+### 14.9 Observation and compatibility
+
+90 entries: each champion's cell one-hot has a W entry after its five lane cells (`own_champ_W`, `enemy_champ_W`);
+everything else is §2.4. `decode_m4` reads W back. Networks trained on any earlier preset (88 inputs) are refused by
+the M4.4 checkpoint guard (`experiments.rl.m44.common.load_policy`); `preset_name` recognizes `m45_unified`.
+
+### 14.10 Parameters reserved for M4.5b
+
+| field | value | what M4.5b should establish |
+|---|---|---|
+| `vision_turns`, `vision_reduction` | 6, 0.75 | the value of Vision now that it costs a lane turn and can be contested |
+| `ward_exposure` | 0 | the gank exposure of W |
+| `minion_damage_alpha`, `minion_damage_growth` | 50, 1.08 | the early cost of trading into a wave and its decline with level |
+| `minion_retaliation_delay`, `minion_range` | 1, 1 | how fast and how far minions react |
+| `trade_wave_fraction` | 0.5 | whether a connected freezer can hold a freeze, and whether Shove + Trade is still too strong |
+| `xp_range` | 2 | the XP cost of standing back and of warding |

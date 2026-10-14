@@ -446,6 +446,17 @@ class LaneEnv:
             "xp_reward_units": ct.xp_reward_units,                            # M4.3c xp_reward_weight (in reward_units)
             "terminal": ct.terminal,                                          # M4.3c terminal_rule
         }
+        if cfg.m45_mechanics:
+            # M4.5a (EXPERIMENTAL): Ward, minion targeting and the capped trade budget. Positions may be the Vision
+            # node W, reported as lanegame.positional.WARD (99) in champ_start / champ_end / champ_before / champ_after
+            info.update({
+                "ward": ct.warding, "ward_placed": ct.ward_placed, "ward_interrupted": ct.ward_interrupted,
+                "minion_hits": ct.minion_hits, "minion_damage": ct.minion_damage, "retaliation": ct.retaliation,
+                "minion_fire": ct.minion_fire, "trade_wave_capped": ct.trade_wave_capped,
+                # the lane step's targets (per side: enemy champion cell in that side's coordinates, retaliation tick,
+                # stationary), so the authoritative step can be re-run from info alone
+                "minion_targets": ct.minion_targets,
+            })
         if self.record_ticks:
             info["lane_trace"] = res.trace                                    # ticks of ct.lane, not of the probe
         return StepResult(obs, (reward, -reward), terminated, truncated, info)
@@ -466,14 +477,16 @@ class LaneEnv:
         return (Observation(k, A, s, la, observe(s, k, A, cfg, ch), ma, ch, cfg),
                 Observation(k, B, s, lb, observe(s, k, B, cfg, ch), mb, ch, cfg))
 
-    def _lane_turn(self, s: State, k: int, a: int, b: int, reach=None, budget=None) -> TurnResult:
+    def _lane_turn(self, s: State, k: int, a: int, b: int, reach=None, budget=None, targets=None) -> TurnResult:
         rec = self.record_ticks
         if self._cache_size <= 0:
-            return step_turn(s, k, a, b, self.cfg, record=rec, champion_reach=reach, champion_budget=budget)
-        key = (s, k % self.cfg.phase_period, a, b, reach, budget)
+            return step_turn(s, k, a, b, self.cfg, record=rec, champion_reach=reach, champion_budget=budget,
+                             champion_targets=targets)
+        key = (s, k % self.cfg.phase_period, a, b, reach, budget, targets)
         res = self._cache.get(key)
         if res is None:
-            res = step_turn(s, k, a, b, self.cfg, record=rec, champion_reach=reach, champion_budget=budget)
+            res = step_turn(s, k, a, b, self.cfg, record=rec, champion_reach=reach, champion_budget=budget,
+                            champion_targets=targets)
             self._cache[key] = res
             if len(self._cache) > self._cache_size:
                 self._cache.popitem(last=False)

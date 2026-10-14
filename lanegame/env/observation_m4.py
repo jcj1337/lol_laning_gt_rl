@@ -18,6 +18,10 @@ Layout (88 entries with the default geometry):
                                  tiers; AP(L, N) / AP(cap, tiers)
   enemy champion        16       the same, the cell mirrored
 
+M4.5a (vision_rule = "ward", EXPERIMENTAL `GameConfig.m45_unified()`): each champion's cell one-hot gains one entry
+for the shared Vision node W after the 2T + 1 lane cells (W is mirror-invariant: the enemy at W sets the enemy block's
+W entry), so the layout has 90 entries; every other entry is unchanged.
+
 `decode_m4(vector, cfg)` is the constructive inverse (design §12.2): it reads (phase, lane, M4 state, skills) back
 from the float32 vector, in the observer's own perspective (the observer as side A). Exactness rests on two
 enumerated bounds of the default lane (rear packets per cell <= rear_count_max = 4, siege mass <= siege_cap = 48);
@@ -53,6 +57,7 @@ from typing import List, Tuple
 import numpy as np
 
 from ..config import GameConfig
+from ..positional import WARD
 from ..progression import tables
 from ..state import State
 
@@ -70,10 +75,15 @@ def compressed_exact_max(ref: int) -> int:
     return math.isqrt(ref << 23) - ref
 
 
+def champ_cells(cfg: GameConfig) -> int:
+    """Entries of a champion's cell one-hot: the 2T + 1 lane cells, plus the Vision node W under vision_rule "ward"."""
+    return 2 * cfg.tower + 1 + (1 if cfg.vision_rule == "ward" else 0)
+
+
 def _sizes(cfg: GameConfig):
     cells = 2 * cfg.base + 1
     lane = cells + 1 + cells
-    champ = (2 * cfg.tower + 1) + len(CHAMP_TAIL)
+    champ = champ_cells(cfg) + len(CHAMP_TAIL)
     return cells, lane, champ
 
 
@@ -94,6 +104,7 @@ def m4_feature_names(cfg: GameConfig) -> List[str]:
         names += [f"{who}_{n}" for n in TOWER_NAMES]
     for who in ("own", "enemy"):
         names += [f"{who}_champ_x{x:+d}" for x in range(-cfg.tower, cfg.tower + 1)]
+        names += [f"{who}_champ_W"] if cfg.vision_rule == "ward" else []
         names += [f"{who}_champ_{n}" for n in (CHAMP_TAIL_CONTINUOUS if cfg.continuous_items else CHAMP_TAIL)]
     assert len(names) == m4_obs_size(cfg)
     return names
@@ -172,10 +183,16 @@ def observe_m4(state: State, k: int, side: int, cfg: GameConfig, champ) -> np.nd
         g1, ref_s, ref_g = cfg.gold_scale, cfg.invest_obs_ref, cfg.invest_obs_gold_ref
         ap_ref = t.ap[cap][0] * inv.one
         compressed = cfg.invest_obs_encoding == "compressed"
+    ncell = champ_cells(cfg)
     for who, sgn in ((side, 1), (1 - side, -1)):
         cs = champ.side(who)
-        v[o + sgn * cs.pos + T] = 1.0
-        o += 2 * T + 1
+        if cs.pos == WARD:                                 # M4.5a: the Vision node W (same node for both sides)
+            if ncell == 2 * T + 1:
+                raise ValueError("a champion at the Vision node W needs vision_rule 'ward'")
+            v[o + 2 * T + 1] = 1.0
+        else:
+            v[o + sgn * cs.pos + T] = 1.0
+        o += ncell
         x = cs.xp if cs.xp < t.xp_cap else t.xp_cap
         L = t.level_by_xp[x]
         H = t.hp_max[L]
@@ -246,9 +263,11 @@ def decode_m4(vec, cfg: GameConfig) -> Tuple[int, State, object, Tuple[float, fl
         o += len(TOWER_NAMES)
     champs, skills = [], []
     gscale = t.gold_cap[0]
+    ncell = champ_cells(cfg)
     for sgn in (1, -1):
-        cell = int(np.argmax(vec[o:o + 2 * T + 1])) - T
-        o += 2 * T + 1
+        idx = int(np.argmax(vec[o:o + ncell]))
+        cell = WARD if idx == 2 * T + 1 else idx - T
+        o += ncell
         L = 1 + int(round(float(vec[o + 4]) * (t.level_cap - 1)))
         hp = int(round(float(vec[o]) * t.hp_max[L]))
         absent = int(round(float(vec[o + 2]) * cfg.champion_absent_max))
@@ -275,7 +294,7 @@ def decode_m4(vec, cfg: GameConfig) -> Tuple[int, State, object, Tuple[float, fl
         else:
             items = int(round(float(vec[o + 6]) * t.item_tiers)) if t.item_tiers else 0
             gold = int(round(float(vec[o + 7]) * gscale))
-        champs.append((sgn * cell, hp, absent, xp, items, gold))
+        champs.append((cell if cell == WARD else sgn * cell, hp, absent, xp, items, gold))
         skills.append(float(vec[o + 3]))
         o += len(CHAMP_TAIL)
     own = _side_record(*lanes[0], sides[0][0])

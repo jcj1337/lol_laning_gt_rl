@@ -159,6 +159,7 @@ from .config import (B_ABSENT, B_HOLD, B_RECALL, B_SAFE, B_TRADE, B_YIELD, CHAMP
                      champ_wave)
 from .game import collection_efficiency
 from .mechanics import TurnResult, siege_eligible, step_turn, wave_actions
+from .positional import WARD, dist as graph_dist, in_contact as graph_contact, move as graph_move
 from .state import State
 
 A, B = 0, 1
@@ -221,15 +222,25 @@ def swap_seats(cfg: GameConfig) -> GameConfig:
 # ---------------------------------------------------------------------- legality
 def objective_reachable(lane: State, champ: ChampState, s: int, cfg: GameConfig) -> bool:
     """Side s may choose a siege objective: its crashed minions are under the enemy tower AND its champion
-    can stand at the enemy tower by the end of this turn."""
-    return siege_eligible(lane, s, cfg) and champ.side(s).pos + cfg.champion_speed >= cfg.tower
+    can stand at the enemy tower by the end of this turn (M4.5a: by movement-graph distance; never from W)."""
+    pos = champ.side(s).pos
+    if pos == WARD:
+        return siege_eligible(lane, s, cfg) and graph_dist(pos, cfg.tower) <= cfg.champion_speed
+    return siege_eligible(lane, s, cfg) and pos + cfg.champion_speed >= cfg.tower
+
+
+def ward_legal(champ, s: int, cfg: GameConfig) -> bool:
+    """M4.5a (vision_rule "ward"): side s may Ward: present and within champion_speed edges of the Vision node W (own
+    cells -1, 0, +1 at the default speed 2, or W itself)."""
+    me = champ.side(s)
+    return cfg.vision_rule == "ward" and me.absent == 0 and graph_dist(me.pos, WARD) <= cfg.champion_speed
 
 
 def recall_legal(champ: ChampState, s: int, cfg: GameConfig) -> bool:
     """Side s may Recall: present and at or behind recall_line. (An enemy trade that reaches it interrupts the
     recall at resolution; see resolve_turn step 2b.)"""
     me = champ.side(s)
-    return me.absent == 0 and me.pos <= cfg.recall_line
+    return me.absent == 0 and me.pos != WARD and me.pos <= cfg.recall_line
 
 
 def champion_legal_actions(lane: State, champ: ChampState, s: int, cfg: GameConfig) -> Tuple[int, ...]:
@@ -238,8 +249,12 @@ def champion_legal_actions(lane: State, champ: ChampState, s: int, cfg: GameConf
         return (CHAMP_ABSENT,)
     waves = wave_actions(lane, s, cfg)
     acts = [champ_act(w, b) for b in CHAMP_BEHAVIORS for w in waves]
+    # M4.5a vision_rule "ward": Vision is no siege objective but the single Ward code (champ_act(SP, B_HOLD, VISION))
+    siege_objectives = (PRESSURE,) if cfg.vision_rule == "ward" else (PRESSURE, VISION)
     if objective_reachable(lane, champ, s, cfg):
-        acts += [champ_act(w, b, o) for o in (PRESSURE, VISION) for b in (B_HOLD, B_TRADE) for w in waves]
+        acts += [champ_act(w, b, o) for o in siege_objectives for b in (B_HOLD, B_TRADE) for w in waves]
+    if ward_legal(champ, s, cfg):
+        acts.append(champ_act(SP, B_HOLD, VISION))
     if recall_legal(champ, s, cfg):
         acts.append(RECALL)
     return tuple(sorted(acts))
@@ -375,13 +390,18 @@ def _clip(x: int, cfg: GameConfig) -> int:
 
 
 def _move(c: int, target: int, cfg: GameConfig) -> int:
+    if c == WARD or target == WARD:                      # M4.5a: the movement graph (W is entered and left via 0)
+        return graph_move(c, target, cfg.champion_speed, cfg.tower)
     step = max(-cfg.champion_speed, min(cfg.champion_speed, target - c))
     return _clip(c + step, cfg)
 
 
 def in_contact(x: int, y: int, cfg: GameConfig) -> bool:
     """Champions at own cells x and y (each in its own coordinates) can trade: within trade_range, except that
-    a champion in its own tower cell can only be reached from inside that cell."""
+    a champion in its own tower cell can only be reached from inside that cell. M4.5a: a champion in the Vision node W
+    is in contact by movement-graph distance (positional.in_contact)."""
+    if x == WARD or y == WARD:
+        return graph_contact(x, y, cfg.tower, cfg.trade_range)
     if x == -cfg.tower or y == -cfg.tower:
         return x + y == 0
     return abs(x + y) <= cfg.trade_range

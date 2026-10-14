@@ -20,6 +20,7 @@ from ..champions_m4 import context
 from ..config import (B_HOLD, B_RECALL, B_SAFE, B_TRADE, BEHAVIOR_NAMES, NATURAL_WAVE_NAMES, NONE, PRESSURE,
                       W_HOLD, champ_act)
 from ..experiments.m43c import strategies as st
+from ..experiments.m45a import scenarios as m45s
 from ..experiments.m4 import zoning_natural as zn
 
 RECALL = champ_act(W_HOLD, B_RECALL)
@@ -117,6 +118,9 @@ POLICIES: Dict[str, ViewerPolicy] = {p.name: p for p in [
 # the four-action strategies (m4_four_actions(); under a three-action preset Slow Push is not legal and the strategy
 # falls back to Last Hit / Hold, which its note says)
 POLICIES.update(st.LIBRARY)
+# M4.5a: the four-action strategies with a Ward rule (EXPERIMENTAL m45_unified(); elsewhere Ward is never legal and
+# they play their inner strategy)
+POLICIES.update(m45s.STRATEGIES)
 
 
 class Matchup(NamedTuple):
@@ -182,3 +186,33 @@ MATCHUPS: Dict[str, Matchup] = {
     "7. Power advantage": Matchup("neutral", "large", "push_punish", "push_punish", 40,
                                   "Same policy both sides; A has x1.76 attack power."),
 }
+
+# M4.5a demonstrations on the EXPERIMENTAL unified candidate (listed first: the viewer opens on M4.5-1)
+M45 = "m45_unified"
+M45_MATCHUPS: Dict[str, Matchup] = {
+    "M4.5-1. Ward from a neutral lane": Matchup(
+        "neutral", "equal", "ward_favorable4", "farm4", 30,
+        "A wards at W whenever its vision is down and B's wave is not in A's half, then walks back; B only "
+        "last-hits. Watch the Ward turn (no farm, no wave damage for A) and the V timer.", M45),
+    "M4.5-2. Ward contested by a trader": Matchup(
+        "neutral", "equal", "ward_always4", "bully4", 30,
+        "A wards whenever its vision is down; B Trades every turn and chases A to the lane cell next to W. A landing "
+        "hit interrupts the ward; a miss does not. B's minions also turn on A's nearby trader... and A's on B.", M45),
+    "M4.5-3. Trading into a big wave (level 2)": Matchup(
+        "bigwave", "equal", "bully4", "farm4", 12,
+        "A (8-HP wave) trades B, who stands with a 24-HP stack. Each landing hit turns B's stack on A from the next "
+        "tick: early, the minions hit back nearly as hard as the trade.", M45),
+    "M4.5-4. Trading into a big wave (level 18)": Matchup(
+        "bigwave_l18", "equal", "bully4", "farm4", 12,
+        "The same lane at level 18 with 128 resources invested: the stack's retaliation is now a few percent of a "
+        "bar.", M45),
+    "M4.5-5. Chasing ahead of the own wave": Matchup(
+        "ahead", "equal", "bully4", "step_back4", 12,
+        "A chases B, who steps back; A ends in B's wave with its own wave behind and B's minions fire at it "
+        "(positional aggro) until A's wave arrives or A falls back.", M45),
+    "M4.5-6. Strong freeze: Thin + Trade": Matchup(
+        "freeze", "large", "freeze_bully4", "walk_up_shove4", 40,
+        "A (x1.76) keeps the freeze with Thin and trades the walking-up B every turn; a connected trader still Thins. "
+        "B's minions retaliate on A after each landing hit, which also spares A's small wave.", M45),
+}
+MATCHUPS = {**M45_MATCHUPS, **MATCHUPS}

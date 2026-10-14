@@ -87,6 +87,7 @@ from typing import Dict, List, Optional, Tuple
 
 from .config import (CONTEST, F, NONE, PRESSURE, SH, SP, VISION, W_SLOWPUSH, GameConfig, base_of, objective_of,
                      posture_of, wave_of)
+from .positional import WARD, MinionTarget, dist as graph_dist, reaches
 from .state import State, make_side
 
 A, B = 0, 1
@@ -117,6 +118,10 @@ class TurnResult:
     # mass already under the enemy tower at the start of the tick hits it for minion_damage(mass) (M4 design §11.2;
     # "mass" tower mode only, 0 otherwise). Computed in every configuration, read only by the M4 ruleset.
     tower_hits: Tuple[int, int] = (0, 0)
+    # M4.5a minion targeting (champion_targets given; else (0, 0) / None): minion damage units taken by champion A and
+    # B this turn, and per champion the cause of each tick's fire on it ("retaliation", "positional" or "")
+    champion_hits: Tuple[int, int] = (0, 0)
+    champion_fire: Optional[Tuple[Tuple[str, ...], Tuple[str, ...]]] = None
 
 
 def wave_actions(state: State, s: int, cfg: GameConfig) -> Tuple[int, ...]:
@@ -562,15 +567,40 @@ def _strike(target, d: int) -> int:
     return d
 
 
+def _designation(P, siege, s: int, target: Optional[MinionTarget], t: int, cfg: GameConfig) -> str:
+    """M4.5a: does side s's wave designate the enemy champion on tick t (start-of-tick state)? "retaliation" (the enemy
+    champion damaged ours this turn and t >= the retaliation tick), "positional" (the enemy champion did not move this
+    turn and stands on a lane cell holding our front, its own front strictly behind it or absent, no crashed mass of its
+    own in that cell) or ""."""
+    if target is None or not P[s]:
+        return ""
+    if target.retaliate_from is not None and t >= target.retaliate_from:
+        return "retaliation"
+    c = target.cell                                      # the enemy champion, in s's own coordinates
+    if cfg.minion_positional_aggro and target.stationary and c != WARD and P[s][0][0] == c:
+        o, own = 1 - s, -c                               # the champion's cell in its own coordinates
+        behind = not P[o] or P[o][0][0] < own
+        if behind and not (siege[o] > 0 and own == cfg.tower):
+            return "positional"
+    return ""
+
+
 def _tick_natural(P, siege, acts, t, crash_hp, cfg: GameConfig, trace=None, ev=None, k=0, reach=None,
-                  kills=None, thin_left=None, plates=None, champion_reach=None, hits=None, budgets=None):
+                  kills=None, thin_left=None, plates=None, champion_reach=None, hits=None, budgets=None,
+                  targets=None, champ_hits=None, fire_log=None):
     """One movement tick under wave_dynamics "natural" (module docstring, "Natural waves").
 
     Minions follow the same rules whatever the actions; the wave slot only sets the champion's damage budget for the
     tick, champion_wave_damage[slot] HP, spent on the first reachable target in the order: the enemy front in a lane
     fight with ours, the enemy's crashed mass under our tower, the enemy's leading packet. A target is reachable when
     its own-perspective cell is <= the champion's reach line (champion_reach; NO_REACH while away, channeling or in a
-    connected trade). Every HP removed is a farm opportunity for the remover's side at the cell it died in."""
+    connected trade). Every HP removed is a farm opportunity for the remover's side at the cell it died in.
+
+    M4.5a (`targets`, per side a positional.MinionTarget or None): at the start of the tick each side's wave may
+    designate the enemy champion (`_designation`); after movement, a designated wave whose front is within minion_range
+    (graph distance) of the champion fires its tick firepower at it (added to champ_hits[champion]) and deals no minion
+    damage on this tick (neither the lane fight nor the siege fight). A champion's reach may be a line (int) or an
+    interval (wave_reach_rule "ball"; positional.reaches)."""
     T = cfg.tower
     waves = (wave_of(acts[A]), wave_of(acts[B]))
     objectives = (objective_of(acts[A]), objective_of(acts[B]))
@@ -583,6 +613,8 @@ def _tick_natural(P, siege, acts, t, crash_hp, cfg: GameConfig, trace=None, ev=N
         budget = [-((-(t + 1) * b) // n) + ((-t * b) // n) for b in budgets]   # ceil((t+1)b/n) - ceil(tb/n)
     siege_tick_start = list(siege)
     contact = _fronts_in_contact(P)
+    # ---- 0. M4.5a: target designation from the start-of-tick state ----
+    want = ("", "") if targets is None else tuple(_designation(P, siege, s, targets[s], t, cfg) for s in (A, B))
 
     # ---- 1. movement: a free front walks; contact with the enemy front, or (defender) with the enemy's crashed mass
     #         under its own tower (own x >= -T - 1, distance <= 1 from the tower cell), stops it ----
@@ -610,13 +642,28 @@ def _tick_natural(P, siege, acts, t, crash_hp, cfg: GameConfig, trace=None, ev=N
 
     champ_dealt = [0, 0]                   # HP the champion of side s removed this tick
 
+    # ---- 2c. M4.5a: a designated wave in range fires its whole tick firepower at the enemy champion ----
+    #      (a blob whose tick share of firepower is 0, e.g. 1-7 HP on the second tick, has nothing to fire and keeps its
+    #      normal role, such as engaging a crashed mass)
+    on_champ = [False, False]
+    if targets is not None:
+        for s in (A, B):
+            u = md(_blob_hp(P[s], cfg)) if (want[s] and P[s]) else 0
+            if u > 0 and graph_dist(P[s][0][0], targets[s].cell) <= cfg.minion_range:
+                on_champ[s] = True
+                champ_hits[1 - s] += u
+                fire_log[1 - s].append((want[s], u))
+            else:
+                fire_log[1 - s].append(("", 0))
+
     # ---- 3. contact fight: Lanchester minion damage, the champions' damage, the tower on a contested attacker ----
     fight = None
     if _fronts_in_contact(P):
         fa, fb = P[A][0], P[B][0]
-        md_b, md_a = md(_blob_hp(P[A], cfg)), md(_blob_hp(P[B], cfg))
-        ch_a = budget[A] if -fb[0] <= reach_line[A] else 0      # A's champion on B's front
-        ch_b = budget[B] if -fa[0] <= reach_line[B] else 0
+        md_b = 0 if on_champ[A] else md(_blob_hp(P[A], cfg))   # A's minions on B's front (M4.5a: unless on B)
+        md_a = 0 if on_champ[B] else md(_blob_hp(P[B], cfg))
+        ch_a = budget[A] if reaches(reach_line[A], -fb[0]) else 0   # A's champion on B's front
+        ch_b = budget[B] if reaches(reach_line[B], -fa[0]) else 0
         budget[A] -= ch_a
         budget[B] -= ch_b
         tw_b = cfg.tower_damage if fb[0] == T else 0             # B front contesting inside A's tower cell
@@ -647,10 +694,10 @@ def _tick_natural(P, siege, acts, t, crash_hp, cfg: GameConfig, trace=None, ev=N
     if fight is None:
         for s in (A, B):
             e = 1 - s
-            if siege[s] <= 0 or not P[e] or P[e][0][0] < -T - 1:
+            if siege[s] <= 0 or not P[e] or P[e][0][0] < -T - 1 or on_champ[e]:
                 continue
             fe = P[e][0]
-            ch = budget[e] if reach_line[e] >= -T else 0
+            ch = budget[e] if reaches(reach_line[e], -T) else 0
             budget[e] -= ch
             md_e = md(_blob_hp(P[e], cfg))
             lost_sg = min(md_e + ch, siege[s])
@@ -678,13 +725,13 @@ def _tick_natural(P, siege, acts, t, crash_hp, cfg: GameConfig, trace=None, ev=N
         e = 1 - s
         if budget[s] <= 0:
             continue
-        if siege[e] > 0 and reach_line[s] >= -T:
+        if siege[e] > 0 and reaches(reach_line[s], -T):
             d = min(budget[s], siege[e])
             siege[e] -= d
             _add_kill(kills, s, -T, d)
             ev["killed_hp"][e] += d
             ev["siege_killed_hp"][e] += d
-        elif P[e] and -P[e][0][0] <= reach_line[s]:
+        elif P[e] and reaches(reach_line[s], -P[e][0][0]):
             target = P[e][0]
             d = _strike(target, budget[s])
             _add_kill(kills, s, -target[0], d)
@@ -713,17 +760,21 @@ def _tick_natural(P, siege, acts, t, crash_hp, cfg: GameConfig, trace=None, ev=N
         crashed = _crash_and_tower_fire(P, siege, crash_hp, cfg, ev, kills, plates)
 
     if trace is not None:
-        trace.append({
+        entry = {
             "tick": t,
             "A": [list(p) for p in P[A]], "B": [list(p) for p in P[B]],
             "siege": list(siege), "fight": fight, "crashed": crashed, "siege_fight": siege_fight,
             "thinned": thinned, "champion": list(champ_dealt),
-        })
+        }
+        if targets is not None:            # M4.5a: per CHAMPION, (cause, minion damage units) taken this tick
+            entry["minion_fire"] = [list(fire_log[A][-1]), list(fire_log[B][-1])]
+        trace.append(entry)
 
 
 def step_turn(state: State, k: int, act_a: int, act_b: int, cfg: GameConfig,
               record: bool = False, champion_reach: Optional[Tuple[int, int]] = None,
-              champion_budget: Optional[Tuple[int, int]] = None) -> TurnResult:
+              champion_budget: Optional[Tuple[int, int]] = None,
+              champion_targets: Optional[Tuple[Optional[MinionTarget], Optional[MinionTarget]]] = None) -> TurnResult:
     """Advance the lane through decision turn k (ticks 2k+1 .. 2k+2).
 
     `champion_budget` (wave_dynamics "natural" only; None = champion_wave_damage[slot] HP per tick): each champion's
@@ -732,7 +783,12 @@ def step_turn(state: State, k: int, act_a: int, act_b: int, cfg: GameConfig,
 
     `champion_reach` (champion mode only; None = the legacy rule) overrides, per side, the furthest
     own-perspective position at which the champion acts on its leading wave (shove damage, the push that
-    breaks a freeze, the shove of a siege-engaging defender). Posture then plays no role in the lane step."""
+    breaks a freeze, the shove of a siege-engaging defender). Posture then plays no role in the lane step. Under
+    wave_reach_rule "ball" (M4.5a) an entry is an interval (lo, hi) of reachable own cells instead of a line.
+
+    `champion_targets` (M4.5a, wave_dynamics "natural" only; None = no minion targeting): per side, the enemy
+    champion its wave may target this turn (positional.MinionTarget, or None while that champion is away); the
+    result's champion_hits / champion_fire report the minion damage units each champion took."""
     P = [[], []]
     for s in (A, B):
         fx, fh, rears, sg, _, _ = state.side(s)
@@ -769,12 +825,14 @@ def step_turn(state: State, k: int, act_a: int, act_b: int, cfg: GameConfig,
     # enemy tower while its crashed minions are still there (the game caps it for Safe).
     reach = [cfg.tower if siege[s] > 0 else (P[s][0][0] if P[s] else -cfg.tower) for s in (A, B)]
     hits = [0, 0]
+    champ_hits, fire_log = [0, 0], ([], [])
     if cfg.wave_dynamics == "natural":
         for t in range(cfg.ticks_per_turn):
             _tick_natural(P, siege, acts, t, crash_hp, cfg, trace, ev, k, reach, kills, thin_left, plates,
-                          champion_reach, hits, champion_budget)
+                          champion_reach, hits, champion_budget, champion_targets, champ_hits, fire_log)
     else:
         assert champion_budget is None, "champion_budget applies to wave_dynamics 'natural' only"
+        assert champion_targets is None, "champion_targets applies to wave_dynamics 'natural' only"
         for t in range(cfg.ticks_per_turn):
             _tick(P, siege, acts, t, crash_hp, cfg, trace, ev, k, reach, kills, thin_left, plates, champion_reach, hits)
 
@@ -814,8 +872,12 @@ def step_turn(state: State, k: int, act_a: int, act_b: int, cfg: GameConfig,
     nxt = State(*sides[A], *sides[B], vision[A], vision[B], plates[A], plates[B])
     exposure = tuple(min(cfg.tower, max(-cfg.tower, r)) for r in reach)
     thinned = (ev["thinned_hp"][B], ev["thinned_hp"][A])      # thinned[s] = enemy HP removed by s
+    fire = None
+    if champion_targets is not None:
+        fire = (tuple(c for c, _ in fire_log[A]), tuple(c for c, _ in fire_log[B]))
     return TurnResult(nxt, (crash_hp[A], crash_hp[B]), trace, ev, exposure, kills,
-                      (claimed[A], claimed[B]), thinned, (vision_set[A], vision_set[B]), (hits[A], hits[B]))
+                      (claimed[A], claimed[B]), thinned, (vision_set[A], vision_set[B]), (hits[A], hits[B]),
+                      (champ_hits[A], champ_hits[B]), fire)
 
 
 def initial_state(cfg: GameConfig) -> State:
