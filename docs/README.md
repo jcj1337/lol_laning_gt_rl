@@ -6,7 +6,7 @@ Three documents are the entry points every milestone refers to:
 |---|---|
 | [m4/laning_game_mathematical_reference.md](m4/laning_game_mathematical_reference.md) | **the living mathematical reference of the current game** (`GameConfig.m4_lasthit()`): state, actions, wave mechanics, farming and XP, combat, progression, towers, reward, the RL objective, worked examples; updated with every rule change |
 | [design_philosophy.md](design_philosophy.md) | the standard every mechanic is judged against: simplify how League works without changing why its laning strategies work |
-| [rl_research_roadmap.md](rl_research_roadmap.md) | the research roadmap; one section per milestone (A–AC so far) with the decision and the link to its full report |
+| [rl_research_roadmap.md](rl_research_roadmap.md) | **the canonical roadmap**: a current-position summary at the top (milestones M1–M6, the M4.1–M4.4 subphases, what is implemented / experimental / adopted / planned / unresolved, the M4.4a–d plan), then one section per milestone (A–AF) with the decision and the link to its full report |
 
 The reports are grouped by phase. Within a folder the files are listed in the order they were written.
 
@@ -32,8 +32,9 @@ The reports are grouped by phase. Within a folder the files are listed in the or
 | [m4_3a_rl_infrastructure_report.md](rl/m4_3a_rl_infrastructure_report.md) | M4.3a: RL infrastructure audit, PettingZoo conformance, PPO reference checks, the smoke test on `m4_lasthit()` |
 | [m4_3b_ppo_pilot_report.md](rl/m4_3b_ppo_pilot_report.md) | M4.3b: the PPO self-play pilot on `m4_lasthit()`: learning curves, headline evaluation, exploitability, conditional behaviour, counterfactuals, Recall / death economics, the mixed-start follow-up |
 | [m4_3b_validation_report.md](rl/m4_3b_validation_report.md) | M4.3b follow-up: wave-only interventions with adaptive champion behaviour, opponent-dependent value of slow pushing and freezing, the evaluation horizon, freeze-state classification, synthetic power gaps; research-artifact manifest and cleanup proposal |
+| [ppo_training_explained.md](rl/ppo_training_explained.md) | how the PPO self-play pipeline works, for a reader learning PPO: the 88-feature input, the 61 masked outputs, shared-policy self-play, actor and critic, one worked training step with real numbers, training versus evaluation, limitations (M4.4a) |
 
-## m4/ — the integrated champion economy (M4.1 design, M4.2 implementation and the M4.2b–M4.2d studies)
+## m4/ — the integrated champion economy (M4.1 design, M4.2 implementation and studies, M4.3c–M4.3d calibration, M4.4a PPO readiness, M4.4b controlled training)
 
 | document | milestone |
 |---|---|
@@ -55,6 +56,8 @@ The reports are grouped by phase. Within a folder the files are listed in the or
 | [m4_3c_four_action_wave_redesign.md](m4/m4_3c_four_action_wave_redesign.md) | M4.3c four-action wave management (EXPERIMENTAL `m4_four_actions()`): Last Hit / Thin / Slow Push / Clear (now Shove) with window-strength targets, 61-code action space; mechanically ready for PPO, Clear dominance unchanged |
 | [m4_3c_strategic_economics_calibration.md](m4/m4_3c_strategic_economics_calibration.md) | M4.3c stabilization: Shove terminology, the four-action visual debugger, mixed-action sequences; economic diagnosis (the own-tower "crash tax" and break-even trades make Shove every side's best reply); opt-in XP reward, death schedule and terminal rule; EXPERIMENTAL candidate `m4_four_actions_econ()` |
 | [m4_3d_tower_pressure_calibration.md](m4/m4_3d_tower_pressure_calibration.md) | M4.3d tower farming, pressure and gank risk: the own-tower rate 0.8 makes an uncontested crash farm-neutral for the defender (0.9 makes it a gift); gank risk is already the main price of pressure; the tower's "busy" discount under-prices a strong champion's dive; EXPERIMENTAL candidate `m4_four_actions_econ_aggro()` |
+| [m4_4a_ppo_readiness.md](m4/m4_4a_ppo_readiness.md) | M4.4a four-action PPO readiness: the three-environment training specification, checkpoint guard, 61-code decoding, state-based strategic metrics (wave management, freezes, zoning, vision / dives, plate phases), paired counterfactuals, smoke tests, measured M4.4b cost; GO for M4.4b |
+| [m4_4b_ppo_training_report.md](m4/m4_4b_ppo_training_report.md) | M4.4b controlled PPO self-play on the three four-action economies (3 seeds × 2M transitions, matched 2× extension): PPO health and convergence, strength against references and own history, state-dependent wave management, freezes and their denial, vision and dives (econ vs aggro), zoning, recalls, the counterfactual scorecard, representative viewer games; CONDITIONAL GO for M4.4c (in review) |
 
 ## natural_waves/ — natural wave mechanics and the lane candidate (M4.2e)
 

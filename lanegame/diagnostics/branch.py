@@ -230,9 +230,13 @@ class Rollout:
 
 def rollout(env: LaneEnv, snap: Snapshot, focal: int, plan: Plan, agents: Sequence, seed,
             cache: Optional[ProbCache] = None, record: bool = False, max_turns: Optional[int] = None,
-            gamma: Optional[float] = None, bootstrap: Optional[Callable] = None) -> Rollout:
+            gamma: Optional[float] = None, bootstrap: Optional[Callable] = None,
+            opponent_plan: Optional[Plan] = None) -> Rollout:
     """One rollout from `snap`: the focal seat follows `plan` and then `agents[focal]`; the other seat follows
-    `agents[1 - focal]` throughout. `seed` (int or SeedSequence) is split exactly as in `play_episode`.
+    `agents[1 - focal]` throughout, or, with `opponent_plan` (M4.4a: an explicit protocol for the opponent's
+    simultaneous action, e.g. "the opponent commits to its own modal action on the branch turn"), that plan first and
+    then its agent, under exactly the plan rules of the focal seat (one uniform per seat per turn either way).
+    `seed` (int or SeedSequence) is split exactly as in `play_episode`.
     `max_turns` stops after that many turns (the return is then truncated, not bootstrapped). Continuing time needs
     `max_turns` (the window W); `gamma` (default under continuing time: the game's) discounts the return, and
     `bootstrap(obs_focal) -> V_hat` adds gamma^W V_hat(s_W) (an approximation, design §10.5.4)."""
@@ -248,7 +252,9 @@ def rollout(env: LaneEnv, snap: Snapshot, focal: int, plan: Plan, agents: Sequen
     rngs = (rng_a, rng_b)
     obs = restore(env, snap, env_ss)
     o = 1 - focal
-    live, t = True, 0
+    plans = {focal: plan, o: opponent_plan}
+    live = {focal: True, o: opponent_plan is not None}       # without an opponent plan: exactly the original loop
+    t = 0
     ret = first_reward = 0.0
     farm, plates, bounty = [0.0, 0.0], [0.0, 0.0], [0.0, 0.0]
     deaths, recalls = [0, 0], [0, 0]
@@ -262,17 +268,18 @@ def rollout(env: LaneEnv, snap: Snapshot, focal: int, plan: Plan, agents: Sequen
             ob = obs[s]
             p = cache.distribution(agents[s], ob)
             pa = None
-            if s == focal and live:
-                pa = plan.act(ob, t)
+            if live[s]:
+                pl = plans[s]
+                pa = pl.act(ob, t)
                 if pa is None:
-                    live = False
+                    live[s] = False
                 elif pa == DEFER:
-                    q = np.asarray(plan.transform(ob, t, p), dtype=float)
+                    q = np.asarray(pl.transform(ob, t, p), dtype=float)
                     if q.shape != p.shape or not np.all(np.isfinite(q)) or q.sum() <= 0 or (q < 0).any():
-                        raise ValueError(f"plan {plan.name!r} returned an invalid distribution at turn {ob.k}")
+                        raise ValueError(f"plan {pl.name!r} returned an invalid distribution at turn {ob.k}")
                     p = q
                 elif pa not in ob.legal:
-                    raise ValueError(f"plan {plan.name!r} chose illegal action {pa} at turn {ob.k} "
+                    raise ValueError(f"plan {pl.name!r} chose illegal action {pa} at turn {ob.k} "
                                      f"(legal {ob.legal})")
             u = rngs[s].random()                              # exactly one draw per seat per turn
             a = ob.legal[sample_index(p, u)]
@@ -356,18 +363,18 @@ class BranchResult:
 def branch(cfg: GameConfig, snap: Snapshot, focal: int, candidates: Dict[str, Plan], agents: Sequence, n: int,
            root: int, key: Sequence[int] = (), cache: Optional[ProbCache] = None,
            max_turns: Optional[int] = None, gamma: Optional[float] = None,
-           bootstrap: Optional[Callable] = None) -> BranchResult:
+           bootstrap: Optional[Callable] = None, opponent_plan: Optional[Plan] = None) -> BranchResult:
     """Paired rollouts of every candidate from `snap` (see the module docstring). `cfg` is the base champion
     configuration; the snapshot's skills are applied to it. Continuing time: `max_turns` is the window and the
     returns are discounted with `gamma` (default the game's); a `bootstrap` critic makes the result an approximation
-    (meta["bootstrapped"])."""
+    (meta["bootstrapped"]). `opponent_plan` (the same for every candidate) fixes the opponent's protocol (`rollout`)."""
     env = LaneEnv(snap.config(cfg), cache_size=20_000)
     cache = cache if cache is not None else ProbCache()
     out = {k: {} for k in ("returns", "first_reward", "deaths", "farm", "plates", "bounty", "recalls", "opp_first")}
     m4_out: Dict[str, Dict[str, np.ndarray]] = {}
     for name, plan in candidates.items():
         rs = [rollout(env, snap, focal, plan, agents, rollout_seed(root, m, *key), cache, max_turns=max_turns,
-                      gamma=gamma, bootstrap=bootstrap) for m in range(n)]
+                      gamma=gamma, bootstrap=bootstrap, opponent_plan=opponent_plan) for m in range(n)]
         if rs and rs[0].m4 is not None:
             m4_out[name] = {k: np.array([r.m4[k] for r in rs], dtype=float) for k in rs[0].m4}
         out["returns"][name] = np.array([r.ret for r in rs])
@@ -380,7 +387,8 @@ def branch(cfg: GameConfig, snap: Snapshot, focal: int, candidates: Dict[str, Pl
         out["opp_first"][name] = np.array([r.first_actions[1 - focal] for r in rs])
     meta = {"n": n, "root": int(root), "key": [int(x) for x in key], "max_turns": max_turns,
             "gamma": gamma if gamma is not None else (cfg.gamma if cfg.continuing else 1.0),
-            "bootstrapped": bootstrap is not None}
+            "bootstrapped": bootstrap is not None,
+            "opponent_plan": getattr(opponent_plan, "name", None)}
     if bootstrap is not None:
         meta["label"] = "APPROXIMATION: critic bootstrap gamma^W V_hat(s_W) added (design §10.5.4)"
     res = BranchResult(snap, focal, list(candidates), **out, meta=meta)

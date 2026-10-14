@@ -1,0 +1,4717 @@
+{
+ "schema": "lanegame.viewer_recording",
+ "version": 1,
+ "config": "m4_four_actions_econ_aggro",
+ "scenario": "s0",
+ "gap": "equal",
+ "seed": 80525,
+ "names": [
+  "final:main:aggro:0",
+  "final:main:aggro:0"
+ ],
+ "label": "M4.4b aggro final seed 0 self-play; busy dive by B at turns 147-149",
+ "actions": [
+  [
+   11,
+   2
+  ],
+  [
+   46,
+   3
+  ],
+  [
+   47,
+   46
+  ],
+  [
+   10,
+   46
+  ],
+  [
+   46,
+   4
+  ],
+  [
+   49,
+   3
+  ],
+  [
+   2,
+   46
+  ],
+  [
+   47,
+   1
+  ],
+  [
+   47,
+   48
+  ],
+  [
+   48,
+   4
+  ],
+  [
+   2,
+   1
+  ],
+  [
+   47,
+   16
+  ],
+  [
+   2,
+   16
+  ],
+  [
+   8,
+   9
+  ],
+  [
+   47,
+   10
+  ],
+  [
+   6,
+   11
+  ],
+  [
+   46,
+   12
+  ],
+  [
+   1,
+   45
+  ],
+  [
+   3,
+   8
+  ],
+  [
+   7,
+   4
+  ],
+  [
+   1,
+   3
+  ],
+  [
+   2,
+   7
+  ],
+  [
+   1,
+   47
+  ],
+  [
+   16,
+   47
+  ],
+  [
+   16,
+   2
+  ],
+  [
+   16,
+   2
+  ],
+  [
+   49,
+   47
+  ],
+  [
+   16,
+   3
+  ],
+  [
+   1,
+   48
+  ],
+  [
+   9,
+   3
+  ],
+  [
+   1,
+   8
+  ],
+  [
+   1,
+   0
+  ],
+  [
+   31,
+   47
+  ],
+  [
+   49,
+   5
+  ],
+  [
+   0,
+   1
+  ],
+  [
+   11,
+   12
+  ],
+  [
+   10,
+   45
+  ],
+  [
+   4,
+   7
+  ],
+  [
+   7,
+   48
+  ],
+  [
+   48,
+   49
+  ],
+  [
+   8,
+   1
+  ],
+  [
+   10,
+   1
+  ],
+  [
+   4,
+   16
+  ],
+  [
+   4,
+   49
+  ],
+  [
+   10,
+   11
+  ],
+  [
+   12,
+   49
+  ],
+  [
+   45,
+   49
+  ],
+  [
+   48,
+   10
+  ],
+  [
+   6,
+   12
+  ],
+  [
+   48,
+   6
+  ],
+  [
+   11,
+   12
+  ],
+  [
+   4,
+   45
+  ],
+  [
+   1,
+   8
+  ],
+  [
+   49,
+   8
+  ],
+  [
+   11,
+   6
+  ],
+  [
+   1,
+   7
+  ],
+  [
+   45,
+   47
+  ],
+  [
+   45,
+   4
+  ],
+  [
+   45,
+   47
+  ],
+  [
+   45,
+   6
+  ],
+  [
+   48,
+   47
+  ],
+  [
+   3,
+   7
+  ],
+  [
+   48,
+   1
+  ],
+  [
+   1,
+   1
+  ],
+  [
+   4,
+   0
+  ],
+  [
+   10,
+   47
+  ],
+  [
+   1,
+   11
+  ],
+  [
+   0,
+   6
+  ],
+  [
+   1,
+   2
+  ],
+  [
+   10,
+   5
+  ],
+  [
+   12,
+   4
+  ],
+  [
+   45,
+   48
+  ],
+  [
+   8,
+   47
+  ],
+  [
+   3,
+   48
+  ],
+  [
+   8,
+   2
+  ],
+  [
+   1,
+   7
+  ],
+  [
+   1,
+   46
+  ],
+  [
+   1,
+   7
+  ],
+  [
+   16,
+   47
+  ],
+  [
+   9,
+   4
+  ],
+  [
+   49,
+   5
+  ],
+  [
+   49,
+   6
+  ],
+  [
+   12,
+   8
+  ],
+  [
+   48,
+   6
+  ],
+  [
+   48,
+   1
+  ],
+  [
+   12,
+   4
+  ],
+  [
+   45,
+   2
+  ],
+  [
+   46,
+   16
+  ],
+  [
+   7,
+   9
+  ],
+  [
+   3,
+   16
+  ],
+  [
+   48,
+   10
+  ],
+  [
+   46,
+   31
+  ],
+  [
+   4,
+   49
+  ],
+  [
+   48,
+   49
+  ],
+  [
+   3,
+   7
+  ],
+  [
+   8,
+   10
+  ],
+  [
+   6,
+   12
+  ],
+  [
+   4,
+   48
+  ],
+  [
+   1,
+   10
+  ],
+  [
+   12,
+   0
+  ],
+  [
+   45,
+   12
+  ],
+  [
+   48,
+   45
+  ],
+  [
+   1,
+   8
+  ],
+  [
+   1,
+   4
+  ],
+  [
+   11,
+   5
+  ],
+  [
+   49,
+   6
+  ],
+  [
+   7,
+   1
+  ],
+  [
+   46,
+   12
+  ],
+  [
+   1,
+   45
+  ],
+  [
+   1,
+   47
+  ],
+  [
+   49,
+   5
+  ],
+  [
+   9,
+   47
+  ],
+  [
+   1,
+   48
+  ],
+  [
+   1,
+   2
+  ],
+  [
+   9,
+   4
+  ],
+  [
+   49,
+   48
+  ],
+  [
+   7,
+   47
+  ],
+  [
+   9,
+   6
+  ],
+  [
+   12,
+   6
+  ],
+  [
+   7,
+   48
+  ],
+  [
+   12,
+   47
+  ],
+  [
+   45,
+   3
+  ],
+  [
+   48,
+   10
+  ],
+  [
+   2,
+   6
+  ],
+  [
+   0,
+   1
+  ],
+  [
+   6,
+   1
+  ],
+  [
+   4,
+   9
+  ],
+  [
+   3,
+   9
+  ],
+  [
+   8,
+   11
+  ],
+  [
+   6,
+   12
+  ],
+  [
+   6,
+   12
+  ],
+  [
+   1,
+   45
+  ],
+  [
+   1,
+   45
+  ],
+  [
+   1,
+   45
+  ],
+  [
+   31,
+   45
+  ],
+  [
+   9,
+   45
+  ],
+  [
+   16,
+   10
+  ],
+  [
+   49,
+   2
+  ],
+  [
+   10,
+   47
+  ],
+  [
+   49,
+   6
+  ],
+  [
+   12,
+   8
+  ],
+  [
+   7,
+   8
+  ],
+  [
+   7,
+   7
+  ],
+  [
+   7,
+   1
+  ],
+  [
+   49,
+   10
+  ],
+  [
+   11,
+   1
+  ],
+  [
+   9,
+   16
+  ],
+  [
+   6,
+   36
+  ],
+  [
+   10,
+   45
+  ],
+  [
+   12,
+   45
+  ],
+  [
+   45,
+   45
+  ],
+  [
+   48,
+   45
+  ],
+  [
+   48,
+   45
+  ],
+  [
+   46,
+   7
+  ],
+  [
+   10,
+   4
+  ],
+  [
+   0,
+   16
+  ],
+  [
+   7,
+   10
+  ],
+  [
+   47,
+   56
+  ],
+  [
+   8,
+   9
+  ],
+  [
+   1,
+   1
+  ],
+  [
+   7,
+   6
+  ],
+  [
+   6,
+   4
+  ],
+  [
+   5,
+   12
+  ],
+  [
+   47,
+   45
+  ],
+  [
+   4,
+   7
+  ],
+  [
+   47,
+   9
+  ],
+  [
+   8,
+   1
+  ],
+  [
+   4,
+   11
+  ],
+  [
+   4,
+   12
+  ],
+  [
+   12,
+   45
+  ],
+  [
+   45,
+   8
+  ],
+  [
+   4,
+   47
+  ],
+  [
+   0,
+   47
+  ],
+  [
+   30,
+   4
+  ],
+  [
+   4,
+   8
+  ],
+  [
+   46,
+   5
+  ],
+  [
+   1,
+   4
+  ],
+  [
+   6,
+   4
+  ],
+  [
+   10,
+   10
+  ],
+  [
+   6,
+   10
+  ],
+  [
+   5,
+   7
+  ],
+  [
+   8,
+   49
+  ],
+  [
+   6,
+   10
+  ],
+  [
+   5,
+   11
+  ],
+  [
+   7,
+   1
+  ],
+  [
+   48,
+   9
+  ],
+  [
+   6,
+   12
+  ],
+  [
+   1,
+   48
+  ],
+  [
+   8,
+   49
+  ],
+  [
+   1,
+   7
+  ],
+  [
+   31,
+   10
+  ],
+  [
+   16,
+   10
+  ],
+  [
+   49,
+   7
+  ],
+  [
+   49,
+   10
+  ],
+  [
+   12,
+   48
+  ],
+  [
+   45,
+   9
+  ],
+  [
+   6,
+   5
+  ],
+  [
+   8,
+   9
+  ],
+  [
+   6,
+   10
+  ],
+  [
+   48,
+   7
+  ],
+  [
+   48,
+   7
+  ],
+  [
+   48,
+   6
+  ],
+  [
+   6,
+   10
+  ],
+  [
+   9,
+   7
+  ],
+  [
+   6,
+   11
+  ],
+  [
+   6,
+   12
+  ],
+  [
+   1,
+   7
+  ],
+  [
+   11,
+   10
+  ],
+  [
+   12,
+   10
+  ],
+  [
+   45,
+   12
+  ],
+  [
+   8,
+   45
+  ],
+  [
+   3,
+   7
+  ],
+  [
+   10,
+   8
+  ],
+  [
+   11,
+   30
+  ],
+  [
+   7,
+   6
+  ],
+  [
+   4,
+   8
+  ],
+  [
+   12,
+   11
+  ],
+  [
+   45,
+   3
+  ],
+  [
+   48,
+   2
+  ],
+  [
+   2,
+   3
+  ],
+  [
+   1,
+   5
+  ],
+  [
+   3,
+   47
+  ],
+  [
+   5,
+   47
+  ],
+  [
+   17,
+   4
+  ],
+  [
+   1,
+   7
+  ],
+  [
+   49,
+   10
+  ],
+  [
+   7,
+   10
+  ],
+  [
+   5,
+   48
+  ],
+  [
+   48,
+   11
+  ],
+  [
+   47,
+   48
+  ],
+  [
+   7,
+   4
+  ],
+  [
+   1,
+   48
+  ],
+  [
+   16,
+   10
+  ],
+  [
+   49,
+   7
+  ],
+  [
+   11,
+   10
+  ],
+  [
+   9,
+   8
+  ],
+  [
+   7,
+   1
+  ],
+  [
+   0,
+   11
+  ],
+  [
+   48,
+   1
+  ],
+  [
+   10,
+   11
+  ],
+  [
+   7,
+   12
+  ],
+  [
+   9,
+   12
+  ],
+  [
+   12,
+   45
+  ],
+  [
+   45,
+   7
+  ],
+  [
+   47,
+   6
+  ],
+  [
+   7,
+   49
+  ],
+  [
+   48,
+   11
+  ],
+  [
+   3,
+   10
+  ],
+  [
+   6,
+   9
+  ],
+  [
+   48,
+   9
+  ],
+  [
+   7,
+   12
+  ],
+  [
+   7,
+   7
+  ],
+  [
+   48,
+   48
+  ],
+  [
+   2,
+   48
+  ],
+  [
+   9,
+   7
+  ],
+  [
+   12,
+   48
+  ],
+  [
+   45,
+   1
+  ],
+  [
+   45,
+   1
+  ],
+  [
+   45,
+   9
+  ],
+  [
+   45,
+   12
+  ],
+  [
+   45,
+   45
+  ],
+  [
+   3,
+   46
+  ],
+  [
+   8,
+   1
+  ],
+  [
+   5,
+   5
+  ],
+  [
+   5,
+   9
+  ],
+  [
+   2,
+   46
+  ],
+  [
+   5,
+   3
+  ],
+  [
+   6,
+   46
+  ],
+  [
+   47,
+   1
+  ],
+  [
+   2,
+   11
+  ],
+  [
+   46,
+   12
+  ],
+  [
+   0,
+   45
+  ],
+  [
+   46,
+   7
+  ],
+  [
+   7,
+   47
+  ],
+  [
+   9,
+   4
+  ],
+  [
+   3,
+   8
+  ],
+  [
+   4,
+   7
+  ],
+  [
+   6,
+   3
+  ],
+  [
+   8,
+   1
+  ],
+  [
+   2,
+   9
+  ],
+  [
+   10,
+   3
+  ],
+  [
+   6,
+   3
+  ],
+  [
+   6,
+   3
+  ],
+  [
+   3,
+   7
+  ],
+  [
+   10,
+   0
+  ],
+  [
+   7,
+   22
+  ],
+  [
+   7,
+   9
+  ],
+  [
+   48,
+   49
+  ],
+  [
+   1,
+   7
+  ],
+  [
+   10,
+   8
+  ],
+  [
+   7,
+   2
+  ],
+  [
+   1,
+   48
+  ],
+  [
+   10,
+   4
+  ],
+  [
+   11,
+   12
+  ],
+  [
+   1,
+   45
+  ],
+  [
+   49,
+   10
+  ],
+  [
+   12,
+   49
+  ],
+  [
+   45,
+   5
+  ],
+  [
+   7,
+   46
+  ],
+  [
+   46,
+   8
+  ],
+  [
+   47,
+   4
+  ],
+  [
+   49,
+   48
+  ],
+  [
+   7,
+   1
+  ],
+  [
+   9,
+   32
+  ],
+  [
+   7,
+   49
+  ],
+  [
+   8,
+   11
+  ],
+  [
+   46,
+   7
+  ],
+  [
+   8,
+   46
+  ],
+  [
+   47,
+   1
+  ],
+  [
+   10,
+   49
+  ],
+  [
+   10,
+   3
+  ],
+  [
+   12,
+   49
+  ],
+  [
+   45,
+   1
+  ],
+  [
+   7,
+   49
+  ],
+  [
+   10,
+   12
+  ],
+  [
+   8,
+   45
+  ],
+  [
+   5,
+   7
+  ],
+  [
+   8,
+   2
+  ],
+  [
+   5,
+   9
+  ],
+  [
+   6,
+   1
+  ],
+  [
+   5,
+   31
+  ],
+  [
+   47,
+   49
+  ],
+  [
+   7,
+   10
+  ],
+  [
+   8,
+   12
+  ],
+  [
+   47,
+   7
+  ],
+  [
+   6,
+   49
+  ],
+  [
+   6,
+   12
+  ],
+  [
+   1,
+   7
+  ],
+  [
+   48,
+   9
+  ],
+  [
+   11,
+   10
+  ],
+  [
+   45,
+   12
+  ],
+  [
+   45,
+   45
+  ],
+  [
+   45,
+   48
+  ],
+  [
+   45,
+   48
+  ],
+  [
+   45,
+   6
+  ],
+  [
+   48,
+   5
+  ],
+  [
+   1,
+   48
+  ],
+  [
+   11,
+   11
+  ],
+  [
+   49,
+   47
+  ],
+  [
+   46,
+   5
+  ],
+  [
+   11,
+   4
+  ],
+  [
+   10,
+   4
+  ],
+  [
+   7,
+   6
+  ],
+  [
+   4,
+   1
+  ],
+  [
+   7,
+   48
+  ],
+  [
+   49,
+   6
+  ],
+  [
+   7,
+   2
+  ],
+  [
+   11,
+   48
+  ],
+  [
+   7,
+   4
+  ],
+  [
+   10,
+   6
+  ],
+  [
+   7,
+   5
+  ],
+  [
+   11,
+   11
+  ],
+  [
+   49,
+   6
+  ],
+  [
+   12,
+   3
+  ],
+  [
+   45,
+   8
+  ],
+  [
+   6,
+   3
+  ],
+  [
+   1,
+   2
+  ],
+  [
+   49,
+   47
+  ],
+  [
+   8,
+   7
+  ],
+  [
+   48,
+   10
+  ],
+  [
+   8,
+   10
+  ],
+  [
+   2,
+   10
+  ],
+  [
+   8,
+   9
+  ],
+  [
+   1,
+   48
+  ],
+  [
+   31,
+   10
+  ],
+  [
+   11,
+   9
+  ],
+  [
+   11,
+   10
+  ],
+  [
+   12,
+   12
+  ],
+  [
+   45,
+   45
+  ],
+  [
+   5,
+   2
+  ],
+  [
+   4,
+   8
+  ],
+  [
+   5,
+   5
+  ],
+  [
+   1,
+   4
+  ],
+  [
+   9,
+   5
+  ],
+  [
+   1,
+   4
+  ],
+  [
+   3,
+   6
+  ],
+  [
+   1,
+   8
+  ],
+  [
+   11,
+   47
+  ],
+  [
+   12,
+   4
+  ],
+  [
+   45,
+   7
+  ],
+  [
+   46,
+   49
+  ],
+  [
+   47,
+   49
+  ],
+  [
+   5,
+   1
+  ],
+  [
+   47,
+   9
+  ],
+  [
+   10,
+   46
+  ],
+  [
+   3,
+   49
+  ],
+  [
+   7,
+   4
+  ],
+  [
+   3,
+   1
+  ],
+  [
+   4,
+   31
+  ],
+  [
+   7,
+   49
+  ],
+  [
+   10,
+   10
+  ],
+  [
+   47,
+   8
+  ],
+  [
+   8,
+   6
+  ],
+  [
+   11,
+   47
+  ],
+  [
+   11,
+   1
+  ],
+  [
+   5,
+   9
+  ],
+  [
+   0,
+   9
+  ],
+  [
+   8,
+   49
+  ],
+  [
+   47,
+   12
+  ],
+  [
+   1,
+   45
+  ],
+  [
+   7,
+   5
+  ],
+  [
+   32,
+   47
+  ],
+  [
+   4,
+   6
+  ],
+  [
+   11,
+   9
+  ],
+  [
+   49,
+   7
+  ],
+  [
+   12,
+   3
+  ],
+  [
+   45,
+   1
+  ],
+  [
+   9,
+   11
+  ],
+  [
+   47,
+   12
+  ],
+  [
+   0,
+   45
+  ],
+  [
+   3,
+   48
+  ],
+  [
+   2,
+   5
+  ],
+  [
+   0,
+   47
+  ],
+  [
+   8,
+   5
+  ],
+  [
+   0,
+   1
+  ],
+  [
+   2,
+   1
+  ],
+  [
+   47,
+   11
+  ],
+  [
+   8,
+   5
+  ],
+  [
+   6,
+   1
+  ],
+  [
+   5,
+   49
+  ],
+  [
+   7,
+   12
+  ],
+  [
+   49,
+   12
+  ],
+  [
+   6,
+   45
+  ],
+  [
+   46,
+   8
+  ],
+  [
+   5,
+   1
+  ],
+  [
+   10,
+   30
+  ],
+  [
+   1,
+   49
+  ],
+  [
+   12,
+   9
+  ],
+  [
+   45,
+   1
+  ],
+  [
+   4,
+   9
+  ],
+  [
+   47,
+   49
+  ],
+  [
+   8,
+   9
+  ],
+  [
+   5,
+   7
+  ],
+  [
+   6,
+   46
+  ],
+  [
+   47,
+   1
+  ],
+  [
+   2,
+   11
+  ],
+  [
+   0,
+   10
+  ],
+  [
+   46,
+   49
+  ],
+  [
+   48,
+   4
+  ],
+  [
+   48,
+   1
+  ],
+  [
+   4,
+   10
+  ],
+  [
+   12,
+   11
+  ],
+  [
+   45,
+   11
+  ],
+  [
+   8,
+   1
+  ],
+  [
+   4,
+   10
+  ],
+  [
+   6,
+   49
+  ],
+  [
+   6,
+   12
+  ],
+  [
+   4,
+   7
+  ],
+  [
+   6,
+   49
+  ],
+  [
+   17,
+   10
+  ],
+  [
+   10,
+   1
+  ],
+  [
+   6,
+   11
+  ],
+  [
+   8,
+   12
+  ],
+  [
+   47,
+   2
+  ],
+  [
+   6,
+   1
+  ],
+  [
+   10,
+   10
+  ],
+  [
+   49,
+   12
+  ],
+  [
+   47,
+   45
+  ],
+  [
+   5,
+   6
+  ],
+  [
+   8,
+   46
+  ]
+ ],
+ "events": [
+  [
+   8,
+   "B dives (not busy tower, shot p 1.00)"
+  ],
+  [
+   9,
+   "freeze state: A holds the enemy wave at its tower"
+  ],
+  [
+   10,
+   "B crashes 19 HP into the enemy tower"
+  ],
+  [
+   12,
+   "B crashes 8 HP into the enemy tower"
+  ],
+  [
+   14,
+   "B crashes 6 HP into the enemy tower"
+  ],
+  [
+   16,
+   "B recalls (HP 53%)"
+  ],
+  [
+   22,
+   "A crashes 17 HP into the enemy tower"
+  ],
+  [
+   22,
+   "freeze state: B holds the enemy wave at its tower"
+  ],
+  [
+   24,
+   "A crashes 8 HP into the enemy tower"
+  ],
+  [
+   25,
+   "A breaks a plate"
+  ],
+  [
+   26,
+   "A crashes 6 HP into the enemy tower"
+  ],
+  [
+   29,
+   "freeze state: B holds the enemy wave at its tower"
+  ],
+  [
+   31,
+   "A crashes 8 HP into the enemy tower"
+  ],
+  [
+   32,
+   "A crashes 8 HP into the enemy tower"
+  ],
+  [
+   32,
+   "A establishes vision"
+  ],
+  [
+   34,
+   "A crashes 4 HP into the enemy tower"
+  ],
+  [
+   35,
+   "B recalls (HP 74%)"
+  ],
+  [
+   38,
+   "B dives (not busy tower, shot p 1.00)"
+  ],
+  [
+   41,
+   "freeze state: A holds the enemy wave at its tower"
+  ],
+  [
+   41,
+   "B crashes 14 HP into the enemy tower"
+  ],
+  [
+   42,
+   "B crashes 8 HP into the enemy tower"
+  ],
+  [
+   42,
+   "B breaks a plate"
+  ],
+  [
+   44,
+   "B crashes 8 HP into the enemy tower"
+  ],
+  [
+   45,
+   "A recalls (HP 64%)"
+  ],
+  [
+   48,
+   "A dives (not busy tower, shot p 1.00)"
+  ],
+  [
+   49,
+   "A dives (not busy tower, shot p 1.00)"
+  ],
+  [
+   50,
+   "B recalls (HP 24%)"
+  ],
+  [
+   54,
+   "freeze state: B holds the enemy wave at its tower"
+  ],
+  [
+   55,
+   "A dies"
+  ],
+  [
+   56,
+   "A crashes 20 HP into the enemy tower"
+  ],
+  [
+   59,
+   "freeze state: B holds the enemy wave at its tower"
+  ],
+  [
+   64,
+   "B crashes 4 HP into the enemy tower"
+  ],
+  [
+   68,
+   "A crashes 9 HP into the enemy tower"
+  ],
+  [
+   68,
+   "freeze state: B holds the enemy wave at its tower"
+  ],
+  [
+   70,
+   "A recalls (HP 69%)"
+  ],
+  [
+   70,
+   "A crashes 3 HP into the enemy tower"
+  ],
+  [
+   77,
+   "A crashes 6 HP into the enemy tower"
+  ],
+  [
+   77,
+   "freeze state: B holds the enemy wave at its tower"
+  ],
+  [
+   78,
+   "A crashes 8 HP into the enemy tower"
+  ],
+  [
+   80,
+   "A crashes 5 HP into the enemy tower"
+  ],
+  [
+   82,
+   "B dives (not busy tower, shot p 1.00)"
+  ],
+  [
+   83,
+   "B dives (not busy tower, shot p 1.00)"
+  ],
+  [
+   85,
+   "A recalls (HP 44%)"
+  ],
+  [
+   86,
+   "B crashes 16 HP into the enemy tower"
+  ],
+  [
+   88,
+   "B crashes 8 HP into the enemy tower"
+  ],
+  [
+   89,
+   "B breaks a plate"
+  ],
+  [
+   90,
+   "B crashes 8 HP into the enemy tower"
+  ],
+  [
+   91,
+   "B establishes vision"
+  ],
+  [
+   92,
+   "B crashes 2 HP into the enemy tower"
+  ],
+  [
+   96,
+   "A dives (not busy tower, shot p 1.00)"
+  ],
+  [
+   96,
+   "freeze state: A holds the enemy wave at its tower"
+  ],
+  [
+   99,
+   "A recalls (HP 48%)"
+  ],
+  [
+   99,
+   "freeze state: B holds the enemy wave at its tower"
+  ],
+  [
+   100,
+   "B recalls (HP 43%)"
+  ],
+  [
+   103,
+   "A crashes 15 HP into the enemy tower"
+  ],
+  [
+   103,
+   "A breaks a plate"
+  ],
+  [
+   104,
+   "A crashes 5 HP into the enemy tower"
+  ],
+  [
+   107,
+   "B recalls (HP 80%)"
+  ],
+  [
+   109,
+   "A crashes 1 HP into the enemy tower"
+  ],
+  [
+   109,
+   "freeze state: B holds the enemy wave at its tower"
+  ],
+  [
+   110,
+   "A crashes 5 HP into the enemy tower"
+  ],
+  [
+   113,
+   "A crashes 1 HP into the enemy tower"
+  ],
+  [
+   113,
+   "freeze state: B holds the enemy wave at its tower"
+  ],
+  [
+   114,
+   "A crashes 1 HP into the enemy tower"
+  ],
+  [
+   117,
+   "freeze state: B holds the enemy wave at its tower"
+  ],
+  [
+   118,
+   "B dives (not busy tower, shot p 1.00)"
+  ],
+  [
+   119,
+   "B dives (not busy tower, shot p 1.00)"
+  ],
+  [
+   120,
+   "A recalls (HP 33%)"
+  ],
+  [
+   126,
+   "B crashes 26 HP into the enemy tower"
+  ],
+  [
+   129,
+   "A dives (not busy tower, shot p 1.00)"
+  ],
+  [
+   129,
+   "freeze state: A holds the enemy wave at its tower"
+  ],
+  [
+   130,
+   "A dives (not busy tower, shot p 1.00)"
+  ],
+  [
+   130,
+   "B dies"
+  ],
+  [
+   133,
+   "A crashes 11 HP into the enemy tower"
+  ],
+  [
+   134,
+   "A crashes 8 HP into the enemy tower"
+  ],
+  [
+   134,
+   "A establishes vision"
+  ],
+  [
+   136,
+   "A crashes 8 HP into the enemy tower"
+  ],
+  [
+   138,
+   "A crashes 5 HP into the enemy tower"
+  ],
+  [
+   140,
+   "B dives (not busy tower, shot p 1.00)"
+  ],
+  [
+   141,
+   "B dives (not busy tower, shot p 1.00)"
+  ],
+  [
+   142,
+   "B dives (not busy tower, shot p 1.00)"
+  ],
+  [
+   145,
+   "freeze state: A holds the enemy wave at its tower"
+  ],
+  [
+   145,
+   "B crashes 8 HP into the enemy tower"
+  ],
+  [
+   146,
+   "B crashes 8 HP into the enemy tower"
+  ],
+  [
+   147,
+   "B dies"
+  ],
+  [
+   147,
+   "B dives (busy tower, shot p 1.00)"
+  ],
+  [
+   148,
+   "B crashes 8 HP into the enemy tower"
+  ],
+  [
+   149,
+   "A recalls (HP 24%)"
+  ],
+  [
+   154,
+   "B crashes 12 HP into the enemy tower"
+  ],
+  [
+   155,
+   "B breaks a plate"
+  ],
+  [
+   156,
+   "B crashes 8 HP into the enemy tower"
+  ],
+  [
+   157,
+   "B establishes vision"
+  ],
+  [
+   159,
+   "freeze state: A holds the enemy wave at its tower"
+  ],
+  [
+   162,
+   "B recalls (HP 50%)"
+  ],
+  [
+   162,
+   "B crashes 7 HP into the enemy tower"
+  ],
+  [
+   165,
+   "freeze state: A holds the enemy wave at its tower"
+  ],
+  [
+   167,
+   "B crashes 9 HP into the enemy tower"
+  ],
+  [
+   168,
+   "B recalls (HP 56%)"
+  ],
+  [
+   169,
+   "A recalls (HP 82%)"
+  ],
+  [
+   172,
+   "A crashes 6 HP into the enemy tower"
+  ],
+  [
+   173,
+   "A establishes vision"
+  ],
+  [
+   181,
+   "freeze state: A holds the enemy wave at its tower"
+  ],
+  [
+   186,
+   "A dives (not busy tower, shot p 1.00)"
+  ],
+  [
+   188,
+   "A dives (not busy tower, shot p 1.00)"
+  ],
+  [
+   189,
+   "A crashes 18 HP into the enemy tower"
+  ],
+  [
+   189,
+   "freeze state: B holds the enemy wave at its tower"
+  ],
+  [
+   190,
+   "A crashes 8 HP into the enemy tower"
+  ],
+  [
+   190,
+   "A establishes vision"
+  ],
+  [
+   191,
+   "A breaks a plate"
+  ],
+  [
+   192,
+   "A crashes 8 HP into the enemy tower"
+  ],
+  [
+   194,
+   "A recalls (HP 19%)"
+  ],
+  [
+   199,
+   "A dives (not busy tower, shot p 1.00)"
+  ],
+  [
+   200,
+   "A dives (not busy tower, shot p 1.00)"
+  ],
+  [
+   201,
+   "A dives (not busy tower, shot p 1.00)"
+  ],
+  [
+   202,
+   "A dives (not busy tower, shot p 1.00)"
+  ],
+  [
+   205,
+   "A dives (not busy tower, shot p 1.00)"
+  ],
+  [
+   207,
+   "A crashes 19 HP into the enemy tower"
+  ],
+  [
+   208,
+   "A recalls (HP 7%)"
+  ],
+  [
+   208,
+   "A crashes 8 HP into the enemy tower"
+  ],
+  [
+   209,
+   "B recalls (HP 4%)"
+  ],
+  [
+   212,
+   "B crashes 10 HP into the enemy tower"
+  ],
+  [
+   212,
+   "B dives (busy tower, shot p 1.00)"
+  ],
+  [
+   213,
+   "B establishes vision"
+  ],
+  [
+   214,
+   "B dives (not busy tower, shot p 1.00)"
+  ],
+  [
+   215,
+   "B dives (not busy tower, shot p 1.00)"
+  ],
+  [
+   216,
+   "A recalls (HP 24%)"
+  ],
+  [
+   217,
+   "freeze state: B holds the enemy wave at its tower"
+  ],
+  [
+   221,
+   "A crashes 7 HP into the enemy tower"
+  ],
+  [
+   222,
+   "A crashes 5 HP into the enemy tower"
+  ],
+  [
+   226,
+   "A crashes 8 HP into the enemy tower"
+  ],
+  [
+   226,
+   "A dives (busy tower, shot p 1.00)"
+  ],
+  [
+   231,
+   "A crashes 4 HP into the enemy tower"
+  ],
+  [
+   231,
+   "freeze state: B holds the enemy wave at its tower"
+  ],
+  [
+   232,
+   "A crashes 8 HP into the enemy tower"
+  ],
+  [
+   234,
+   "A crashes 8 HP into the enemy tower"
+  ],
+  [
+   237,
+   "freeze state: A holds the enemy wave at its tower"
+  ],
+  [
+   239,
+   "B crashes 9 HP into the enemy tower"
+  ],
+  [
+   240,
+   "B crashes 8 HP into the enemy tower"
+  ],
+  [
+   241,
+   "B recalls (HP 6%)"
+  ],
+  [
+   242,
+   "A recalls (HP 40%)"
+  ],
+  [
+   243,
+   "freeze state: A holds the enemy wave at its tower"
+  ],
+  [
+   244,
+   "B crashes 12 HP into the enemy tower"
+  ],
+  [
+   244,
+   "B dives (busy tower, shot p 1.00)"
+  ],
+  [
+   250,
+   "A dives (not busy tower, shot p 1.00)"
+  ],
+  [
+   251,
+   "A dives (not busy tower, shot p 1.00)"
+  ],
+  [
+   252,
+   "A dives (not busy tower, shot p 1.00)"
+  ],
+  [
+   255,
+   "A dies"
+  ],
+  [
+   255,
+   "B dives (not busy tower, shot p 1.00)"
+  ],
+  [
+   256,
+   "freeze state: B holds the enemy wave at its tower"
+  ],
+  [
+   258,
+   "B crashes 11 HP into the enemy tower"
+  ],
+  [
+   259,
+   "B recalls (HP 5%)"
+  ],
+  [
+   261,
+   "freeze state: A holds the enemy wave at its tower"
+  ],
+  [
+   263,
+   "B crashes 6 HP into the enemy tower"
+  ],
+  [
+   264,
+   "B crashes 5 HP into the enemy tower"
+  ],
+  [
+   269,
+   "B crashes 3 HP into the enemy tower"
+  ],
+  [
+   270,
+   "B recalls (HP 83%)"
+  ],
+  [
+   270,
+   "B crashes 5 HP into the enemy tower"
+  ],
+  [
+   275,
+   "freeze state: B holds the enemy wave at its tower"
+  ],
+  [
+   278,
+   "freeze state: A holds the enemy wave at its tower"
+  ],
+  [
+   278,
+   "B crashes 9 HP into the enemy tower"
+  ],
+  [
+   280,
+   "B crashes 8 HP into the enemy tower"
+  ],
+  [
+   284,
+   "B crashes 12 HP into the enemy tower"
+  ],
+  [
+   285,
+   "B dives (busy tower, shot p 1.00)"
+  ],
+  [
+   290,
+   "freeze state: B holds the enemy wave at its tower"
+  ],
+  [
+   292,
+   "A crashes 13 HP into the enemy tower"
+  ],
+  [
+   293,
+   "B recalls (HP 74%)"
+  ],
+  [
+   295,
+   "A crashes 6 HP into the enemy tower"
+  ],
+  [
+   296,
+   "A recalls (HP 49%)"
+  ],
+  [
+   296,
+   "A crashes 8 HP into the enemy tower"
+  ],
+  [
+   302,
+   "freeze state: A holds the enemy wave at its tower"
+  ],
+  [
+   302,
+   "B crashes 9 HP into the enemy tower"
+  ],
+  [
+   303,
+   "B establishes vision"
+  ],
+  [
+   305,
+   "freeze state: A holds the enemy wave at its tower"
+  ],
+  [
+   308,
+   "B crashes 8 HP into the enemy tower"
+  ],
+  [
+   310,
+   "B crashes 8 HP into the enemy tower"
+  ],
+  [
+   311,
+   "A recalls (HP 83%)"
+  ],
+  [
+   313,
+   "B crashes 6 HP into the enemy tower"
+  ],
+  [
+   314,
+   "B recalls (HP 24%)"
+  ],
+  [
+   314,
+   "B crashes 8 HP into the enemy tower"
+  ],
+  [
+   317,
+   "freeze state: A holds the enemy wave at its tower"
+  ],
+  [
+   319,
+   "B crashes 4 HP into the enemy tower"
+  ],
+  [
+   320,
+   "B crashes 8 HP into the enemy tower"
+  ],
+  [
+   320,
+   "B establishes vision"
+  ],
+  [
+   323,
+   "A dives (not busy tower, shot p 1.00)"
+  ],
+  [
+   326,
+   "A dives (not busy tower, shot p 1.00)"
+  ],
+  [
+   328,
+   "A crashes 16 HP into the enemy tower"
+  ],
+  [
+   328,
+   "A dives (busy tower, shot p 1.00)"
+  ],
+  [
+   329,
+   "A dies"
+  ],
+  [
+   330,
+   "B recalls (HP 17%)"
+  ],
+  [
+   331,
+   "freeze state: B holds the enemy wave at its tower"
+  ],
+  [
+   336,
+   "A crashes 11 HP into the enemy tower"
+  ],
+  [
+   338,
+   "A crashes 5 HP into the enemy tower"
+  ],
+  [
+   342,
+   "freeze state: A holds the enemy wave at its tower"
+  ],
+  [
+   350,
+   "A crashes 10 HP into the enemy tower"
+  ],
+  [
+   350,
+   "freeze state: B holds the enemy wave at its tower"
+  ],
+  [
+   353,
+   "A recalls (HP 50%)"
+  ],
+  [
+   353,
+   "freeze state: B holds the enemy wave at its tower"
+  ],
+  [
+   362,
+   "A dives (not busy tower, shot p 1.00)"
+  ],
+  [
+   363,
+   "A crashes 17 HP into the enemy tower"
+  ],
+  [
+   363,
+   "freeze state: B holds the enemy wave at its tower"
+  ],
+  [
+   364,
+   "A crashes 8 HP into the enemy tower"
+  ],
+  [
+   364,
+   "A establishes vision"
+  ],
+  [
+   366,
+   "A crashes 8 HP into the enemy tower"
+  ],
+  [
+   367,
+   "A recalls (HP 42%)"
+  ],
+  [
+   367,
+   "B recalls (HP 58%)"
+  ],
+  [
+   371,
+   "freeze state: B holds the enemy wave at its tower"
+  ],
+  [
+   377,
+   "A crashes 5 HP into the enemy tower"
+  ],
+  [
+   378,
+   "A recalls (HP 50%)"
+  ],
+  [
+   380,
+   "B crashes 5 HP into the enemy tower"
+  ],
+  [
+   383,
+   "B crashes 4 HP into the enemy tower"
+  ],
+  [
+   384,
+   "B crashes 8 HP into the enemy tower"
+  ],
+  [
+   387,
+   "freeze state: A holds the enemy wave at its tower"
+  ],
+  [
+   387,
+   "B crashes 3 HP into the enemy tower"
+  ],
+  [
+   388,
+   "B crashes 8 HP into the enemy tower"
+  ],
+  [
+   388,
+   "B establishes vision"
+  ],
+  [
+   395,
+   "B crashes 8 HP into the enemy tower"
+  ],
+  [
+   396,
+   "B crashes 7 HP into the enemy tower"
+  ],
+  [
+   398,
+   "B recalls (HP 92%)"
+  ],
+  [
+   399,
+   "freeze state: A holds the enemy wave at its tower"
+  ],
+  [
+   400,
+   "A crashes 12 HP into the enemy tower"
+  ],
+  [
+   400,
+   "A dives (busy tower, shot p 1.00)"
+  ],
+  [
+   401,
+   "A establishes vision"
+  ],
+  [
+   402,
+   "A crashes 7 HP into the enemy tower"
+  ],
+  [
+   405,
+   "A recalls (HP 58%)"
+  ],
+  [
+   406,
+   "freeze state: A holds the enemy wave at its tower"
+  ],
+  [
+   406,
+   "B crashes 12 HP into the enemy tower"
+  ],
+  [
+   408,
+   "B recalls (HP 100%)"
+  ],
+  [
+   408,
+   "B crashes 8 HP into the enemy tower"
+  ],
+  [
+   415,
+   "B crashes 10 HP into the enemy tower"
+  ],
+  [
+   416,
+   "B crashes 5 HP into the enemy tower"
+  ],
+  [
+   419,
+   "B crashes 6 HP into the enemy tower"
+  ],
+  [
+   420,
+   "B crashes 8 HP into the enemy tower"
+  ],
+  [
+   421,
+   "B recalls (HP 59%)"
+  ],
+  [
+   423,
+   "freeze state: A holds the enemy wave at its tower"
+  ],
+  [
+   424,
+   "B crashes 7 HP into the enemy tower"
+  ],
+  [
+   425,
+   "B establishes vision"
+  ],
+  [
+   427,
+   "A recalls (HP 75%)"
+  ],
+  [
+   429,
+   "B crashes 5 HP into the enemy tower"
+  ],
+  [
+   430,
+   "B crashes 5 HP into the enemy tower"
+  ],
+  [
+   433,
+   "freeze state: A holds the enemy wave at its tower"
+  ],
+  [
+   434,
+   "B crashes 8 HP into the enemy tower"
+  ],
+  [
+   436,
+   "B crashes 7 HP into the enemy tower"
+  ],
+  [
+   439,
+   "freeze state: A holds the enemy wave at its tower"
+  ],
+  [
+   440,
+   "B crashes 11 HP into the enemy tower"
+  ],
+  [
+   441,
+   "A recalls (HP 84%)"
+  ],
+  [
+   444,
+   "B crashes 3 HP into the enemy tower"
+  ],
+  [
+   446,
+   "A dives (not busy tower, shot p 1.00)"
+  ],
+  [
+   448,
+   "A crashes 13 HP into the enemy tower"
+  ],
+  [
+   448,
+   "A dives (busy tower, shot p 1.00)"
+  ],
+  [
+   452,
+   "A dives (not busy tower, shot p 1.00)"
+  ],
+  [
+   452,
+   "freeze state: A holds the enemy wave at its tower"
+  ],
+  [
+   454,
+   "B crashes 10 HP into the enemy tower"
+  ],
+  [
+   456,
+   "B recalls (HP 26%)"
+  ],
+  [
+   456,
+   "B crashes 8 HP into the enemy tower"
+  ]
+ ],
+ "payoff_A": -6.074999999999999,
+ "turns": 460,
+ "labels": [
+  [
+   "Thin + Safe",
+   "Thin + Hold"
+  ],
+  [
+   "Slow Push + Hold",
+   "Last Hit + Yield"
+  ],
+  [
+   "Slow Push + Yield",
+   "Slow Push + Hold"
+  ],
+  [
+   "Shove + Safe",
+   "Slow Push + Hold"
+  ],
+  [
+   "Slow Push + Hold",
+   "Shove + Yield"
+  ],
+  [
+   "Slow Push + Safe",
+   "Last Hit + Yield"
+  ],
+  [
+   "Thin + Hold",
+   "Slow Push + Hold"
+  ],
+  [
+   "Slow Push + Yield",
+   "Shove + Hold"
+  ],
+  [
+   "Slow Push + Yield",
+   "Slow Push + Trade"
+  ],
+  [
+   "Slow Push + Trade",
+   "Shove + Yield"
+  ],
+  [
+   "Thin + Hold",
+   "Shove + Hold"
+  ],
+  [
+   "Slow Push + Yield",
+   "Shove + Hold + Pressure"
+  ],
+  [
+   "Thin + Hold",
+   "Shove + Hold + Pressure"
+  ],
+  [
+   "Thin + Trade",
+   "Last Hit + Safe"
+  ],
+  [
+   "Slow Push + Yield",
+   "Shove + Safe"
+  ],
+  [
+   "Last Hit + Trade",
+   "Thin + Safe"
+  ],
+  [
+   "Slow Push + Hold",
+   "Recall"
+  ],
+  [
+   "Shove + Hold",
+   "Absent"
+  ],
+  [
+   "Last Hit + Yield",
+   "Thin + Trade"
+  ],
+  [
+   "Shove + Trade",
+   "Shove + Yield"
+  ],
+  [
+   "Shove + Hold",
+   "Last Hit + Yield"
+  ],
+  [
+   "Thin + Hold",
+   "Shove + Trade"
+  ],
+  [
+   "Shove + Hold",
+   "Slow Push + Yield"
+  ],
+  [
+   "Shove + Hold + Pressure",
+   "Slow Push + Yield"
+  ],
+  [
+   "Shove + Hold + Pressure",
+   "Thin + Hold"
+  ],
+  [
+   "Shove + Hold + Pressure",
+   "Thin + Hold"
+  ],
+  [
+   "Slow Push + Safe",
+   "Slow Push + Yield"
+  ],
+  [
+   "Shove + Hold + Pressure",
+   "Last Hit + Yield"
+  ],
+  [
+   "Shove + Hold",
+   "Slow Push + Trade"
+  ],
+  [
+   "Last Hit + Safe",
+   "Last Hit + Yield"
+  ],
+  [
+   "Shove + Hold",
+   "Thin + Trade"
+  ],
+  [
+   "Shove + Hold",
+   "Last Hit + Hold"
+  ],
+  [
+   "Shove + Hold + Vision",
+   "Slow Push + Yield"
+  ],
+  [
+   "Slow Push + Safe",
+   "Thin + Yield"
+  ],
+  [
+   "Last Hit + Hold",
+   "Shove + Hold"
+  ],
+  [
+   "Thin + Safe",
+   "Recall"
+  ],
+  [
+   "Shove + Safe",
+   "Absent"
+  ],
+  [
+   "Shove + Yield",
+   "Shove + Trade"
+  ],
+  [
+   "Shove + Trade",
+   "Slow Push + Trade"
+  ],
+  [
+   "Slow Push + Trade",
+   "Slow Push + Safe"
+  ],
+  [
+   "Thin + Trade",
+   "Shove + Hold"
+  ],
+  [
+   "Shove + Safe",
+   "Shove + Hold"
+  ],
+  [
+   "Shove + Yield",
+   "Shove + Hold + Pressure"
+  ],
+  [
+   "Shove + Yield",
+   "Slow Push + Safe"
+  ],
+  [
+   "Shove + Safe",
+   "Thin + Safe"
+  ],
+  [
+   "Recall",
+   "Slow Push + Safe"
+  ],
+  [
+   "Absent",
+   "Slow Push + Safe"
+  ],
+  [
+   "Slow Push + Trade",
+   "Shove + Safe"
+  ],
+  [
+   "Last Hit + Trade",
+   "Recall"
+  ],
+  [
+   "Slow Push + Trade",
+   "Last Hit + Trade"
+  ],
+  [
+   "Thin + Safe",
+   "Recall"
+  ],
+  [
+   "Shove + Yield",
+   "Absent"
+  ],
+  [
+   "Shove + Hold",
+   "Thin + Trade"
+  ],
+  [
+   "Slow Push + Safe",
+   "Thin + Trade"
+  ],
+  [
+   "Thin + Safe",
+   "Last Hit + Trade"
+  ],
+  [
+   "Shove + Hold",
+   "Shove + Trade"
+  ],
+  [
+   "Absent",
+   "Slow Push + Yield"
+  ],
+  [
+   "Absent",
+   "Shove + Yield"
+  ],
+  [
+   "Absent",
+   "Slow Push + Yield"
+  ],
+  [
+   "Absent",
+   "Last Hit + Trade"
+  ],
+  [
+   "Slow Push + Trade",
+   "Slow Push + Yield"
+  ],
+  [
+   "Last Hit + Yield",
+   "Shove + Trade"
+  ],
+  [
+   "Slow Push + Trade",
+   "Shove + Hold"
+  ],
+  [
+   "Shove + Hold",
+   "Shove + Hold"
+  ],
+  [
+   "Shove + Yield",
+   "Last Hit + Hold"
+  ],
+  [
+   "Shove + Safe",
+   "Slow Push + Yield"
+  ],
+  [
+   "Shove + Hold",
+   "Thin + Safe"
+  ],
+  [
+   "Last Hit + Hold",
+   "Last Hit + Trade"
+  ],
+  [
+   "Shove + Hold",
+   "Thin + Hold"
+  ],
+  [
+   "Shove + Safe",
+   "Thin + Yield"
+  ],
+  [
+   "Recall",
+   "Shove + Yield"
+  ],
+  [
+   "Absent",
+   "Slow Push + Trade"
+  ],
+  [
+   "Thin + Trade",
+   "Slow Push + Yield"
+  ],
+  [
+   "Last Hit + Yield",
+   "Slow Push + Trade"
+  ],
+  [
+   "Thin + Trade",
+   "Thin + Hold"
+  ],
+  [
+   "Shove + Hold",
+   "Shove + Trade"
+  ],
+  [
+   "Shove + Hold",
+   "Slow Push + Hold"
+  ],
+  [
+   "Shove + Hold",
+   "Shove + Trade"
+  ],
+  [
+   "Shove + Hold + Pressure",
+   "Slow Push + Yield"
+  ],
+  [
+   "Last Hit + Safe",
+   "Shove + Yield"
+  ],
+  [
+   "Slow Push + Safe",
+   "Thin + Yield"
+  ],
+  [
+   "Slow Push + Safe",
+   "Last Hit + Trade"
+  ],
+  [
+   "Recall",
+   "Thin + Trade"
+  ],
+  [
+   "Slow Push + Trade",
+   "Last Hit + Trade"
+  ],
+  [
+   "Slow Push + Trade",
+   "Shove + Hold"
+  ],
+  [
+   "Recall",
+   "Shove + Yield"
+  ],
+  [
+   "Absent",
+   "Thin + Hold"
+  ],
+  [
+   "Slow Push + Hold",
+   "Shove + Hold + Pressure"
+  ],
+  [
+   "Shove + Trade",
+   "Last Hit + Safe"
+  ],
+  [
+   "Last Hit + Yield",
+   "Shove + Hold + Pressure"
+  ],
+  [
+   "Slow Push + Trade",
+   "Shove + Safe"
+  ],
+  [
+   "Slow Push + Hold",
+   "Shove + Hold + Vision"
+  ],
+  [
+   "Shove + Yield",
+   "Slow Push + Safe"
+  ],
+  [
+   "Slow Push + Trade",
+   "Slow Push + Safe"
+  ],
+  [
+   "Last Hit + Yield",
+   "Shove + Trade"
+  ],
+  [
+   "Thin + Trade",
+   "Shove + Safe"
+  ],
+  [
+   "Last Hit + Trade",
+   "Recall"
+  ],
+  [
+   "Shove + Yield",
+   "Slow Push + Trade"
+  ],
+  [
+   "Shove + Hold",
+   "Shove + Safe"
+  ],
+  [
+   "Recall",
+   "Last Hit + Hold"
+  ],
+  [
+   "Absent",
+   "Recall"
+  ],
+  [
+   "Slow Push + Trade",
+   "Absent"
+  ],
+  [
+   "Shove + Hold",
+   "Thin + Trade"
+  ],
+  [
+   "Shove + Hold",
+   "Shove + Yield"
+  ],
+  [
+   "Thin + Safe",
+   "Thin + Yield"
+  ],
+  [
+   "Slow Push + Safe",
+   "Last Hit + Trade"
+  ],
+  [
+   "Shove + Trade",
+   "Shove + Hold"
+  ],
+  [
+   "Slow Push + Hold",
+   "Recall"
+  ],
+  [
+   "Shove + Hold",
+   "Absent"
+  ],
+  [
+   "Shove + Hold",
+   "Slow Push + Yield"
+  ],
+  [
+   "Slow Push + Safe",
+   "Thin + Yield"
+  ],
+  [
+   "Last Hit + Safe",
+   "Slow Push + Yield"
+  ],
+  [
+   "Shove + Hold",
+   "Slow Push + Trade"
+  ],
+  [
+   "Shove + Hold",
+   "Thin + Hold"
+  ],
+  [
+   "Last Hit + Safe",
+   "Shove + Yield"
+  ],
+  [
+   "Slow Push + Safe",
+   "Slow Push + Trade"
+  ],
+  [
+   "Shove + Trade",
+   "Slow Push + Yield"
+  ],
+  [
+   "Last Hit + Safe",
+   "Last Hit + Trade"
+  ],
+  [
+   "Recall",
+   "Last Hit + Trade"
+  ],
+  [
+   "Shove + Trade",
+   "Slow Push + Trade"
+  ],
+  [
+   "Recall",
+   "Slow Push + Yield"
+  ],
+  [
+   "Absent",
+   "Last Hit + Yield"
+  ],
+  [
+   "Slow Push + Trade",
+   "Shove + Safe"
+  ],
+  [
+   "Thin + Hold",
+   "Last Hit + Trade"
+  ],
+  [
+   "Last Hit + Hold",
+   "Shove + Hold"
+  ],
+  [
+   "Last Hit + Trade",
+   "Shove + Hold"
+  ],
+  [
+   "Shove + Yield",
+   "Last Hit + Safe"
+  ],
+  [
+   "Last Hit + Yield",
+   "Last Hit + Safe"
+  ],
+  [
+   "Thin + Trade",
+   "Thin + Safe"
+  ],
+  [
+   "Last Hit + Trade",
+   "Recall"
+  ],
+  [
+   "Last Hit + Trade",
+   "Recall"
+  ],
+  [
+   "Shove + Hold",
+   "Absent"
+  ],
+  [
+   "Shove + Hold",
+   "Absent"
+  ],
+  [
+   "Shove + Hold",
+   "Absent"
+  ],
+  [
+   "Shove + Hold + Vision",
+   "Absent"
+  ],
+  [
+   "Last Hit + Safe",
+   "Absent"
+  ],
+  [
+   "Shove + Hold + Pressure",
+   "Shove + Safe"
+  ],
+  [
+   "Slow Push + Safe",
+   "Thin + Hold"
+  ],
+  [
+   "Shove + Safe",
+   "Slow Push + Yield"
+  ],
+  [
+   "Slow Push + Safe",
+   "Last Hit + Trade"
+  ],
+  [
+   "Recall",
+   "Thin + Trade"
+  ],
+  [
+   "Shove + Trade",
+   "Thin + Trade"
+  ],
+  [
+   "Shove + Trade",
+   "Shove + Trade"
+  ],
+  [
+   "Shove + Trade",
+   "Shove + Hold"
+  ],
+  [
+   "Slow Push + Safe",
+   "Shove + Safe"
+  ],
+  [
+   "Thin + Safe",
+   "Shove + Hold"
+  ],
+  [
+   "Last Hit + Safe",
+   "Shove + Hold + Pressure"
+  ],
+  [
+   "Last Hit + Trade",
+   "Last Hit + Trade + Vision"
+  ],
+  [
+   "Shove + Safe",
+   "Absent"
+  ],
+  [
+   "Recall",
+   "Absent"
+  ],
+  [
+   "Absent",
+   "Absent"
+  ],
+  [
+   "Slow Push + Trade",
+   "Absent"
+  ],
+  [
+   "Slow Push + Trade",
+   "Absent"
+  ],
+  [
+   "Slow Push + Hold",
+   "Shove + Trade"
+  ],
+  [
+   "Shove + Safe",
+   "Shove + Yield"
+  ],
+  [
+   "Last Hit + Hold",
+   "Shove + Hold + Pressure"
+  ],
+  [
+   "Shove + Trade",
+   "Shove + Safe"
+  ],
+  [
+   "Slow Push + Yield",
+   "Slow Push + Hold + Vision"
+  ],
+  [
+   "Thin + Trade",
+   "Last Hit + Safe"
+  ],
+  [
+   "Shove + Hold",
+   "Shove + Hold"
+  ],
+  [
+   "Shove + Trade",
+   "Last Hit + Trade"
+  ],
+  [
+   "Last Hit + Trade",
+   "Shove + Yield"
+  ],
+  [
+   "Thin + Yield",
+   "Recall"
+  ],
+  [
+   "Slow Push + Yield",
+   "Absent"
+  ],
+  [
+   "Shove + Yield",
+   "Shove + Trade"
+  ],
+  [
+   "Slow Push + Yield",
+   "Last Hit + Safe"
+  ],
+  [
+   "Thin + Trade",
+   "Shove + Hold"
+  ],
+  [
+   "Shove + Yield",
+   "Thin + Safe"
+  ],
+  [
+   "Shove + Yield",
+   "Recall"
+  ],
+  [
+   "Recall",
+   "Absent"
+  ],
+  [
+   "Absent",
+   "Thin + Trade"
+  ],
+  [
+   "Shove + Yield",
+   "Slow Push + Yield"
+  ],
+  [
+   "Last Hit + Hold",
+   "Slow Push + Yield"
+  ],
+  [
+   "Last Hit + Hold + Vision",
+   "Shove + Yield"
+  ],
+  [
+   "Shove + Yield",
+   "Thin + Trade"
+  ],
+  [
+   "Slow Push + Hold",
+   "Thin + Yield"
+  ],
+  [
+   "Shove + Hold",
+   "Shove + Yield"
+  ],
+  [
+   "Last Hit + Trade",
+   "Shove + Yield"
+  ],
+  [
+   "Shove + Safe",
+   "Shove + Safe"
+  ],
+  [
+   "Last Hit + Trade",
+   "Shove + Safe"
+  ],
+  [
+   "Thin + Yield",
+   "Shove + Trade"
+  ],
+  [
+   "Thin + Trade",
+   "Slow Push + Safe"
+  ],
+  [
+   "Last Hit + Trade",
+   "Shove + Safe"
+  ],
+  [
+   "Thin + Yield",
+   "Thin + Safe"
+  ],
+  [
+   "Shove + Trade",
+   "Shove + Hold"
+  ],
+  [
+   "Slow Push + Trade",
+   "Last Hit + Safe"
+  ],
+  [
+   "Last Hit + Trade",
+   "Recall"
+  ],
+  [
+   "Shove + Hold",
+   "Slow Push + Trade"
+  ],
+  [
+   "Thin + Trade",
+   "Slow Push + Safe"
+  ],
+  [
+   "Shove + Hold",
+   "Shove + Trade"
+  ],
+  [
+   "Shove + Hold + Vision",
+   "Shove + Safe"
+  ],
+  [
+   "Shove + Hold + Pressure",
+   "Shove + Safe"
+  ],
+  [
+   "Slow Push + Safe",
+   "Shove + Trade"
+  ],
+  [
+   "Slow Push + Safe",
+   "Shove + Safe"
+  ],
+  [
+   "Recall",
+   "Slow Push + Trade"
+  ],
+  [
+   "Absent",
+   "Last Hit + Safe"
+  ],
+  [
+   "Last Hit + Trade",
+   "Thin + Yield"
+  ],
+  [
+   "Thin + Trade",
+   "Last Hit + Safe"
+  ],
+  [
+   "Last Hit + Trade",
+   "Shove + Safe"
+  ],
+  [
+   "Slow Push + Trade",
+   "Shove + Trade"
+  ],
+  [
+   "Slow Push + Trade",
+   "Shove + Trade"
+  ],
+  [
+   "Slow Push + Trade",
+   "Last Hit + Trade"
+  ],
+  [
+   "Last Hit + Trade",
+   "Shove + Safe"
+  ],
+  [
+   "Last Hit + Safe",
+   "Shove + Trade"
+  ],
+  [
+   "Last Hit + Trade",
+   "Thin + Safe"
+  ],
+  [
+   "Last Hit + Trade",
+   "Recall"
+  ],
+  [
+   "Shove + Hold",
+   "Shove + Trade"
+  ],
+  [
+   "Thin + Safe",
+   "Shove + Safe"
+  ],
+  [
+   "Recall",
+   "Shove + Safe"
+  ],
+  [
+   "Absent",
+   "Recall"
+  ],
+  [
+   "Thin + Trade",
+   "Absent"
+  ],
+  [
+   "Last Hit + Yield",
+   "Shove + Trade"
+  ],
+  [
+   "Shove + Safe",
+   "Thin + Trade"
+  ],
+  [
+   "Thin + Safe",
+   "Last Hit + Hold + Vision"
+  ],
+  [
+   "Shove + Trade",
+   "Last Hit + Trade"
+  ],
+  [
+   "Shove + Yield",
+   "Thin + Trade"
+  ],
+  [
+   "Recall",
+   "Thin + Safe"
+  ],
+  [
+   "Absent",
+   "Last Hit + Yield"
+  ],
+  [
+   "Slow Push + Trade",
+   "Thin + Hold"
+  ],
+  [
+   "Thin + Hold",
+   "Last Hit + Yield"
+  ],
+  [
+   "Shove + Hold",
+   "Thin + Yield"
+  ],
+  [
+   "Last Hit + Yield",
+   "Slow Push + Yield"
+  ],
+  [
+   "Thin + Yield",
+   "Slow Push + Yield"
+  ],
+  [
+   "Thin + Hold + Pressure",
+   "Shove + Yield"
+  ],
+  [
+   "Shove + Hold",
+   "Shove + Trade"
+  ],
+  [
+   "Slow Push + Safe",
+   "Shove + Safe"
+  ],
+  [
+   "Shove + Trade",
+   "Shove + Safe"
+  ],
+  [
+   "Thin + Yield",
+   "Slow Push + Trade"
+  ],
+  [
+   "Slow Push + Trade",
+   "Thin + Safe"
+  ],
+  [
+   "Slow Push + Yield",
+   "Slow Push + Trade"
+  ],
+  [
+   "Shove + Trade",
+   "Shove + Yield"
+  ],
+  [
+   "Shove + Hold",
+   "Slow Push + Trade"
+  ],
+  [
+   "Shove + Hold + Pressure",
+   "Shove + Safe"
+  ],
+  [
+   "Slow Push + Safe",
+   "Shove + Trade"
+  ],
+  [
+   "Thin + Safe",
+   "Shove + Safe"
+  ],
+  [
+   "Last Hit + Safe",
+   "Thin + Trade"
+  ],
+  [
+   "Shove + Trade",
+   "Shove + Hold"
+  ],
+  [
+   "Last Hit + Hold",
+   "Thin + Safe"
+  ],
+  [
+   "Slow Push + Trade",
+   "Shove + Hold"
+  ],
+  [
+   "Shove + Safe",
+   "Thin + Safe"
+  ],
+  [
+   "Shove + Trade",
+   "Recall"
+  ],
+  [
+   "Last Hit + Safe",
+   "Recall"
+  ],
+  [
+   "Recall",
+   "Absent"
+  ],
+  [
+   "Absent",
+   "Shove + Trade"
+  ],
+  [
+   "Slow Push + Yield",
+   "Last Hit + Trade"
+  ],
+  [
+   "Shove + Trade",
+   "Slow Push + Safe"
+  ],
+  [
+   "Slow Push + Trade",
+   "Thin + Safe"
+  ],
+  [
+   "Last Hit + Yield",
+   "Shove + Safe"
+  ],
+  [
+   "Last Hit + Trade",
+   "Last Hit + Safe"
+  ],
+  [
+   "Slow Push + Trade",
+   "Last Hit + Safe"
+  ],
+  [
+   "Shove + Trade",
+   "Recall"
+  ],
+  [
+   "Shove + Trade",
+   "Shove + Trade"
+  ],
+  [
+   "Slow Push + Trade",
+   "Slow Push + Trade"
+  ],
+  [
+   "Thin + Hold",
+   "Slow Push + Trade"
+  ],
+  [
+   "Last Hit + Safe",
+   "Shove + Trade"
+  ],
+  [
+   "Recall",
+   "Slow Push + Trade"
+  ],
+  [
+   "Absent",
+   "Shove + Hold"
+  ],
+  [
+   "Absent",
+   "Shove + Hold"
+  ],
+  [
+   "Absent",
+   "Last Hit + Safe"
+  ],
+  [
+   "Absent",
+   "Recall"
+  ],
+  [
+   "Absent",
+   "Absent"
+  ],
+  [
+   "Last Hit + Yield",
+   "Slow Push + Hold"
+  ],
+  [
+   "Thin + Trade",
+   "Shove + Hold"
+  ],
+  [
+   "Thin + Yield",
+   "Thin + Yield"
+  ],
+  [
+   "Thin + Yield",
+   "Last Hit + Safe"
+  ],
+  [
+   "Thin + Hold",
+   "Slow Push + Hold"
+  ],
+  [
+   "Thin + Yield",
+   "Last Hit + Yield"
+  ],
+  [
+   "Last Hit + Trade",
+   "Slow Push + Hold"
+  ],
+  [
+   "Slow Push + Yield",
+   "Shove + Hold"
+  ],
+  [
+   "Thin + Hold",
+   "Thin + Safe"
+  ],
+  [
+   "Slow Push + Hold",
+   "Recall"
+  ],
+  [
+   "Last Hit + Hold",
+   "Absent"
+  ],
+  [
+   "Slow Push + Hold",
+   "Shove + Trade"
+  ],
+  [
+   "Shove + Trade",
+   "Slow Push + Yield"
+  ],
+  [
+   "Last Hit + Safe",
+   "Shove + Yield"
+  ],
+  [
+   "Last Hit + Yield",
+   "Thin + Trade"
+  ],
+  [
+   "Shove + Yield",
+   "Shove + Trade"
+  ],
+  [
+   "Last Hit + Trade",
+   "Last Hit + Yield"
+  ],
+  [
+   "Thin + Trade",
+   "Shove + Hold"
+  ],
+  [
+   "Thin + Hold",
+   "Last Hit + Safe"
+  ],
+  [
+   "Shove + Safe",
+   "Last Hit + Yield"
+  ],
+  [
+   "Last Hit + Trade",
+   "Last Hit + Yield"
+  ],
+  [
+   "Last Hit + Trade",
+   "Last Hit + Yield"
+  ],
+  [
+   "Last Hit + Yield",
+   "Shove + Trade"
+  ],
+  [
+   "Shove + Safe",
+   "Last Hit + Hold"
+  ],
+  [
+   "Shove + Trade",
+   "Shove + Trade + Pressure"
+  ],
+  [
+   "Shove + Trade",
+   "Last Hit + Safe"
+  ],
+  [
+   "Slow Push + Trade",
+   "Slow Push + Safe"
+  ],
+  [
+   "Shove + Hold",
+   "Shove + Trade"
+  ],
+  [
+   "Shove + Safe",
+   "Thin + Trade"
+  ],
+  [
+   "Shove + Trade",
+   "Thin + Hold"
+  ],
+  [
+   "Shove + Hold",
+   "Slow Push + Trade"
+  ],
+  [
+   "Shove + Safe",
+   "Shove + Yield"
+  ],
+  [
+   "Thin + Safe",
+   "Recall"
+  ],
+  [
+   "Shove + Hold",
+   "Absent"
+  ],
+  [
+   "Slow Push + Safe",
+   "Shove + Safe"
+  ],
+  [
+   "Recall",
+   "Slow Push + Safe"
+  ],
+  [
+   "Absent",
+   "Thin + Yield"
+  ],
+  [
+   "Shove + Trade",
+   "Slow Push + Hold"
+  ],
+  [
+   "Slow Push + Hold",
+   "Thin + Trade"
+  ],
+  [
+   "Slow Push + Yield",
+   "Shove + Yield"
+  ],
+  [
+   "Slow Push + Safe",
+   "Slow Push + Trade"
+  ],
+  [
+   "Shove + Trade",
+   "Shove + Hold"
+  ],
+  [
+   "Last Hit + Safe",
+   "Thin + Hold + Vision"
+  ],
+  [
+   "Shove + Trade",
+   "Slow Push + Safe"
+  ],
+  [
+   "Thin + Trade",
+   "Thin + Safe"
+  ],
+  [
+   "Slow Push + Hold",
+   "Shove + Trade"
+  ],
+  [
+   "Thin + Trade",
+   "Slow Push + Hold"
+  ],
+  [
+   "Slow Push + Yield",
+   "Shove + Hold"
+  ],
+  [
+   "Shove + Safe",
+   "Slow Push + Safe"
+  ],
+  [
+   "Shove + Safe",
+   "Last Hit + Yield"
+  ],
+  [
+   "Recall",
+   "Slow Push + Safe"
+  ],
+  [
+   "Absent",
+   "Shove + Hold"
+  ],
+  [
+   "Shove + Trade",
+   "Slow Push + Safe"
+  ],
+  [
+   "Shove + Safe",
+   "Recall"
+  ],
+  [
+   "Thin + Trade",
+   "Absent"
+  ],
+  [
+   "Thin + Yield",
+   "Shove + Trade"
+  ],
+  [
+   "Thin + Trade",
+   "Thin + Hold"
+  ],
+  [
+   "Thin + Yield",
+   "Last Hit + Safe"
+  ],
+  [
+   "Last Hit + Trade",
+   "Shove + Hold"
+  ],
+  [
+   "Thin + Yield",
+   "Shove + Hold + Vision"
+  ],
+  [
+   "Slow Push + Yield",
+   "Slow Push + Safe"
+  ],
+  [
+   "Shove + Trade",
+   "Shove + Safe"
+  ],
+  [
+   "Thin + Trade",
+   "Recall"
+  ],
+  [
+   "Slow Push + Yield",
+   "Shove + Trade"
+  ],
+  [
+   "Last Hit + Trade",
+   "Slow Push + Safe"
+  ],
+  [
+   "Last Hit + Trade",
+   "Recall"
+  ],
+  [
+   "Shove + Hold",
+   "Shove + Trade"
+  ],
+  [
+   "Slow Push + Trade",
+   "Last Hit + Safe"
+  ],
+  [
+   "Thin + Safe",
+   "Shove + Safe"
+  ],
+  [
+   "Absent",
+   "Recall"
+  ],
+  [
+   "Absent",
+   "Absent"
+  ],
+  [
+   "Absent",
+   "Slow Push + Trade"
+  ],
+  [
+   "Absent",
+   "Slow Push + Trade"
+  ],
+  [
+   "Absent",
+   "Last Hit + Trade"
+  ],
+  [
+   "Slow Push + Trade",
+   "Thin + Yield"
+  ],
+  [
+   "Shove + Hold",
+   "Slow Push + Trade"
+  ],
+  [
+   "Thin + Safe",
+   "Thin + Safe"
+  ],
+  [
+   "Slow Push + Safe",
+   "Slow Push + Yield"
+  ],
+  [
+   "Slow Push + Hold",
+   "Thin + Yield"
+  ],
+  [
+   "Thin + Safe",
+   "Shove + Yield"
+  ],
+  [
+   "Shove + Safe",
+   "Shove + Yield"
+  ],
+  [
+   "Shove + Trade",
+   "Last Hit + Trade"
+  ],
+  [
+   "Shove + Yield",
+   "Shove + Hold"
+  ],
+  [
+   "Shove + Trade",
+   "Slow Push + Trade"
+  ],
+  [
+   "Slow Push + Safe",
+   "Last Hit + Trade"
+  ],
+  [
+   "Shove + Trade",
+   "Thin + Hold"
+  ],
+  [
+   "Thin + Safe",
+   "Slow Push + Trade"
+  ],
+  [
+   "Shove + Trade",
+   "Shove + Yield"
+  ],
+  [
+   "Shove + Safe",
+   "Last Hit + Trade"
+  ],
+  [
+   "Shove + Trade",
+   "Thin + Yield"
+  ],
+  [
+   "Thin + Safe",
+   "Thin + Safe"
+  ],
+  [
+   "Slow Push + Safe",
+   "Last Hit + Trade"
+  ],
+  [
+   "Recall",
+   "Last Hit + Yield"
+  ],
+  [
+   "Absent",
+   "Thin + Trade"
+  ],
+  [
+   "Last Hit + Trade",
+   "Last Hit + Yield"
+  ],
+  [
+   "Shove + Hold",
+   "Thin + Hold"
+  ],
+  [
+   "Slow Push + Safe",
+   "Slow Push + Yield"
+  ],
+  [
+   "Thin + Trade",
+   "Shove + Trade"
+  ],
+  [
+   "Slow Push + Trade",
+   "Shove + Safe"
+  ],
+  [
+   "Thin + Trade",
+   "Shove + Safe"
+  ],
+  [
+   "Thin + Hold",
+   "Shove + Safe"
+  ],
+  [
+   "Thin + Trade",
+   "Last Hit + Safe"
+  ],
+  [
+   "Shove + Hold",
+   "Slow Push + Trade"
+  ],
+  [
+   "Shove + Hold + Vision",
+   "Shove + Safe"
+  ],
+  [
+   "Thin + Safe",
+   "Last Hit + Safe"
+  ],
+  [
+   "Thin + Safe",
+   "Shove + Safe"
+  ],
+  [
+   "Recall",
+   "Recall"
+  ],
+  [
+   "Absent",
+   "Absent"
+  ],
+  [
+   "Thin + Yield",
+   "Thin + Hold"
+  ],
+  [
+   "Shove + Yield",
+   "Thin + Trade"
+  ],
+  [
+   "Thin + Yield",
+   "Thin + Yield"
+  ],
+  [
+   "Shove + Hold",
+   "Shove + Yield"
+  ],
+  [
+   "Last Hit + Safe",
+   "Thin + Yield"
+  ],
+  [
+   "Shove + Hold",
+   "Shove + Yield"
+  ],
+  [
+   "Last Hit + Yield",
+   "Last Hit + Trade"
+  ],
+  [
+   "Shove + Hold",
+   "Thin + Trade"
+  ],
+  [
+   "Thin + Safe",
+   "Slow Push + Yield"
+  ],
+  [
+   "Recall",
+   "Shove + Yield"
+  ],
+  [
+   "Absent",
+   "Shove + Trade"
+  ],
+  [
+   "Slow Push + Hold",
+   "Slow Push + Safe"
+  ],
+  [
+   "Slow Push + Yield",
+   "Slow Push + Safe"
+  ],
+  [
+   "Thin + Yield",
+   "Shove + Hold"
+  ],
+  [
+   "Slow Push + Yield",
+   "Last Hit + Safe"
+  ],
+  [
+   "Shove + Safe",
+   "Slow Push + Hold"
+  ],
+  [
+   "Last Hit + Yield",
+   "Slow Push + Safe"
+  ],
+  [
+   "Shove + Trade",
+   "Shove + Yield"
+  ],
+  [
+   "Last Hit + Yield",
+   "Shove + Hold"
+  ],
+  [
+   "Shove + Yield",
+   "Shove + Hold + Vision"
+  ],
+  [
+   "Shove + Trade",
+   "Slow Push + Safe"
+  ],
+  [
+   "Shove + Safe",
+   "Shove + Safe"
+  ],
+  [
+   "Slow Push + Yield",
+   "Thin + Trade"
+  ],
+  [
+   "Thin + Trade",
+   "Last Hit + Trade"
+  ],
+  [
+   "Thin + Safe",
+   "Slow Push + Yield"
+  ],
+  [
+   "Thin + Safe",
+   "Shove + Hold"
+  ],
+  [
+   "Thin + Yield",
+   "Last Hit + Safe"
+  ],
+  [
+   "Last Hit + Hold",
+   "Last Hit + Safe"
+  ],
+  [
+   "Thin + Trade",
+   "Slow Push + Safe"
+  ],
+  [
+   "Slow Push + Yield",
+   "Recall"
+  ],
+  [
+   "Shove + Hold",
+   "Absent"
+  ],
+  [
+   "Shove + Trade",
+   "Thin + Yield"
+  ],
+  [
+   "Thin + Hold + Vision",
+   "Slow Push + Yield"
+  ],
+  [
+   "Shove + Yield",
+   "Last Hit + Trade"
+  ],
+  [
+   "Thin + Safe",
+   "Last Hit + Safe"
+  ],
+  [
+   "Slow Push + Safe",
+   "Shove + Trade"
+  ],
+  [
+   "Recall",
+   "Last Hit + Yield"
+  ],
+  [
+   "Absent",
+   "Shove + Hold"
+  ],
+  [
+   "Last Hit + Safe",
+   "Thin + Safe"
+  ],
+  [
+   "Slow Push + Yield",
+   "Recall"
+  ],
+  [
+   "Last Hit + Hold",
+   "Absent"
+  ],
+  [
+   "Last Hit + Yield",
+   "Slow Push + Trade"
+  ],
+  [
+   "Thin + Hold",
+   "Thin + Yield"
+  ],
+  [
+   "Last Hit + Hold",
+   "Slow Push + Yield"
+  ],
+  [
+   "Thin + Trade",
+   "Thin + Yield"
+  ],
+  [
+   "Last Hit + Hold",
+   "Shove + Hold"
+  ],
+  [
+   "Thin + Hold",
+   "Shove + Hold"
+  ],
+  [
+   "Slow Push + Yield",
+   "Thin + Safe"
+  ],
+  [
+   "Thin + Trade",
+   "Thin + Yield"
+  ],
+  [
+   "Last Hit + Trade",
+   "Shove + Hold"
+  ],
+  [
+   "Thin + Yield",
+   "Slow Push + Safe"
+  ],
+  [
+   "Shove + Trade",
+   "Recall"
+  ],
+  [
+   "Slow Push + Safe",
+   "Recall"
+  ],
+  [
+   "Last Hit + Trade",
+   "Absent"
+  ],
+  [
+   "Slow Push + Hold",
+   "Thin + Trade"
+  ],
+  [
+   "Thin + Yield",
+   "Shove + Hold"
+  ],
+  [
+   "Shove + Safe",
+   "Last Hit + Hold + Vision"
+  ],
+  [
+   "Shove + Hold",
+   "Slow Push + Safe"
+  ],
+  [
+   "Recall",
+   "Last Hit + Safe"
+  ],
+  [
+   "Absent",
+   "Shove + Hold"
+  ],
+  [
+   "Shove + Yield",
+   "Last Hit + Safe"
+  ],
+  [
+   "Slow Push + Yield",
+   "Slow Push + Safe"
+  ],
+  [
+   "Thin + Trade",
+   "Last Hit + Safe"
+  ],
+  [
+   "Thin + Yield",
+   "Shove + Trade"
+  ],
+  [
+   "Last Hit + Trade",
+   "Slow Push + Hold"
+  ],
+  [
+   "Slow Push + Yield",
+   "Shove + Hold"
+  ],
+  [
+   "Thin + Hold",
+   "Thin + Safe"
+  ],
+  [
+   "Last Hit + Hold",
+   "Shove + Safe"
+  ],
+  [
+   "Slow Push + Hold",
+   "Slow Push + Safe"
+  ],
+  [
+   "Slow Push + Trade",
+   "Shove + Yield"
+  ],
+  [
+   "Slow Push + Trade",
+   "Shove + Hold"
+  ],
+  [
+   "Shove + Yield",
+   "Shove + Safe"
+  ],
+  [
+   "Recall",
+   "Thin + Safe"
+  ],
+  [
+   "Absent",
+   "Thin + Safe"
+  ],
+  [
+   "Thin + Trade",
+   "Shove + Hold"
+  ],
+  [
+   "Shove + Yield",
+   "Shove + Safe"
+  ],
+  [
+   "Last Hit + Trade",
+   "Slow Push + Safe"
+  ],
+  [
+   "Last Hit + Trade",
+   "Recall"
+  ],
+  [
+   "Shove + Yield",
+   "Shove + Trade"
+  ],
+  [
+   "Last Hit + Trade",
+   "Slow Push + Safe"
+  ],
+  [
+   "Thin + Hold + Pressure",
+   "Shove + Safe"
+  ],
+  [
+   "Shove + Safe",
+   "Shove + Hold"
+  ],
+  [
+   "Last Hit + Trade",
+   "Thin + Safe"
+  ],
+  [
+   "Thin + Trade",
+   "Recall"
+  ],
+  [
+   "Slow Push + Yield",
+   "Thin + Hold"
+  ],
+  [
+   "Last Hit + Trade",
+   "Shove + Hold"
+  ],
+  [
+   "Shove + Safe",
+   "Shove + Safe"
+  ],
+  [
+   "Slow Push + Safe",
+   "Recall"
+  ],
+  [
+   "Slow Push + Yield",
+   "Absent"
+  ],
+  [
+   "Thin + Yield",
+   "Last Hit + Trade"
+  ],
+  [
+   "Thin + Trade",
+   "Slow Push + Hold"
+  ]
+ ]
+}

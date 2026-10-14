@@ -1,0 +1,199 @@
+{
+ "meta": {
+  "commit": "f931ae8ac9cca40f818c3d8da0405b4ae78d0197",
+  "working_tree_dirty": true,
+  "timestamp": "2026-10-13 22:20:41",
+  "python": "3.13.9",
+  "torch": "2.14.1+cpu",
+  "numpy": "2.5.3",
+  "study": "M4.4b",
+  "stage": "recall_main",
+  "games": 8,
+  "turns": 1000,
+  "seed_root": 80000,
+  "label": "M4.4b follow-up: chosen Recalls interrupted by an enemy Trade (natural self-play)"
+ },
+ "results": {
+  "four|final:main:four:0": {
+   "turns": 16000,
+   "attempts": 710,
+   "attempts_per_1000_turns": 44.375,
+   "interrupted": 179,
+   "interrupted_share": 0.252112676056338,
+   "interrupted_per_1000_turns": 11.1875,
+   "enemy_traded_share": 0.31971830985915495,
+   "hp_at_attempt": 0.29671762206147445,
+   "hp_at_interrupted": 0.16803574598126966,
+   "died_within_3_after_interrupted": 0.4972067039106145,
+   "policy_recall_mass_when_interrupted": 0.7393202965856084,
+   "policy_safe_mass_when_interrupted": 0.04672892193061547,
+   "interrupted_runs": {
+    "n": 140,
+    "mean_length": 1.2785714285714285,
+    "runs_of_3_or_more": 9,
+    "max": 4
+   }
+  },
+  "four|final:main:four:1": {
+   "turns": 16000,
+   "attempts": 702,
+   "attempts_per_1000_turns": 43.875,
+   "interrupted": 154,
+   "interrupted_share": 0.21937321937321938,
+   "interrupted_per_1000_turns": 9.625,
+   "enemy_traded_share": 0.2948717948717949,
+   "hp_at_attempt": 0.3218913387692665,
+   "hp_at_interrupted": 0.2940084005035223,
+   "died_within_3_after_interrupted": 0.2857142857142857,
+   "policy_recall_mass_when_interrupted": 0.77507092037158,
+   "policy_safe_mass_when_interrupted": 0.04015845718304237,
+   "interrupted_runs": {
+    "n": 146,
+    "mean_length": 1.0547945205479452,
+    "runs_of_3_or_more": 1,
+    "max": 3
+   }
+  },
+  "four|final:main:four:2": {
+   "turns": 16000,
+   "attempts": 766,
+   "attempts_per_1000_turns": 47.875,
+   "interrupted": 276,
+   "interrupted_share": 0.360313315926893,
+   "interrupted_per_1000_turns": 17.25,
+   "enemy_traded_share": 0.45430809399477806,
+   "hp_at_attempt": 0.3080974396045031,
+   "hp_at_interrupted": 0.2548490516421908,
+   "died_within_3_after_interrupted": 0.41304347826086957,
+   "policy_recall_mass_when_interrupted": 0.804387890078816,
+   "policy_safe_mass_when_interrupted": 0.03528507466961687,
+   "interrupted_runs": {
+    "n": 221,
+    "mean_length": 1.248868778280543,
+    "runs_of_3_or_more": 12,
+    "max": 7
+   }
+  },
+  "econ|final:main:econ:0": {
+   "turns": 16000,
+   "attempts": 1075,
+   "attempts_per_1000_turns": 67.1875,
+   "interrupted": 333,
+   "interrupted_share": 0.3097674418604651,
+   "interrupted_per_1000_turns": 20.8125,
+   "enemy_traded_share": 0.3358139534883721,
+   "hp_at_attempt": 0.46193695092556863,
+   "hp_at_interrupted": 0.2827182941239571,
+   "died_within_3_after_interrupted": 0.45045045045045046,
+   "policy_recall_mass_when_interrupted": 0.7771661644834023,
+   "policy_safe_mass_when_interrupted": 0.10908323072499043,
+   "interrupted_runs": {
+    "n": 240,
+    "mean_length": 1.3875,
+    "runs_of_3_or_more": 24,
+    "max": 5
+   }
+  },
+  "econ|final:main:econ:1": {
+   "turns": 16000,
+   "attempts": 1063,
+   "attempts_per_1000_turns": 66.4375,
+   "interrupted": 363,
+   "interrupted_share": 0.34148635936030103,
+   "interrupted_per_1000_turns": 22.6875,
+   "enemy_traded_share": 0.3603010348071496,
+   "hp_at_attempt": 0.4236804318343687,
+   "hp_at_interrupted": 0.27981637699519124,
+   "died_within_3_after_interrupted": 0.39944903581267216,
+   "policy_recall_mass_when_interrupted": 0.695935717227303,
+   "policy_safe_mass_when_interrupted": 0.2556072085940801,
+   "interrupted_runs": {
+    "n": 308,
+    "mean_length": 1.1785714285714286,
+    "runs_of_3_or_more": 8,
+    "max": 4
+   }
+  },
+  "econ|final:main:econ:2": {
+   "turns": 16000,
+   "attempts": 1051,
+   "attempts_per_1000_turns": 65.6875,
+   "interrupted": 394,
+   "interrupted_share": 0.3748810656517602,
+   "interrupted_per_1000_turns": 24.625,
+   "enemy_traded_share": 0.3948620361560419,
+   "hp_at_attempt": 0.41660921533820294,
+   "hp_at_interrupted": 0.2689691660914941,
+   "died_within_3_after_interrupted": 0.4263959390862944,
+   "policy_recall_mass_when_interrupted": 0.7264176747193394,
+   "policy_safe_mass_when_interrupted": 0.16207298319160493,
+   "interrupted_runs": {
+    "n": 312,
+    "mean_length": 1.2628205128205128,
+    "runs_of_3_or_more": 17,
+    "max": 6
+   }
+  },
+  "aggro|final:main:aggro:0": {
+   "turns": 16000,
+   "attempts": 1076,
+   "attempts_per_1000_turns": 67.25,
+   "interrupted": 387,
+   "interrupted_share": 0.3596654275092937,
+   "interrupted_per_1000_turns": 24.1875,
+   "enemy_traded_share": 0.38104089219330856,
+   "hp_at_attempt": 0.4509233417686031,
+   "hp_at_interrupted": 0.2973939235160088,
+   "died_within_3_after_interrupted": 0.3875968992248062,
+   "policy_recall_mass_when_interrupted": 0.7631900232650779,
+   "policy_safe_mass_when_interrupted": 0.14035203001251026,
+   "interrupted_runs": {
+    "n": 320,
+    "mean_length": 1.209375,
+    "runs_of_3_or_more": 13,
+    "max": 6
+   }
+  },
+  "aggro|final:main:aggro:1": {
+   "turns": 16000,
+   "attempts": 1063,
+   "attempts_per_1000_turns": 66.4375,
+   "interrupted": 342,
+   "interrupted_share": 0.3217309501411101,
+   "interrupted_per_1000_turns": 21.375,
+   "enemy_traded_share": 0.3405456255879586,
+   "hp_at_attempt": 0.46946484436186164,
+   "hp_at_interrupted": 0.28665002666796363,
+   "died_within_3_after_interrupted": 0.3888888888888889,
+   "policy_recall_mass_when_interrupted": 0.7380089097506681,
+   "policy_safe_mass_when_interrupted": 0.115019666318158,
+   "interrupted_runs": {
+    "n": 254,
+    "mean_length": 1.3464566929133859,
+    "runs_of_3_or_more": 22,
+    "max": 5
+   }
+  },
+  "aggro|final:main:aggro:2": {
+   "turns": 16000,
+   "attempts": 1110,
+   "attempts_per_1000_turns": 69.375,
+   "interrupted": 419,
+   "interrupted_share": 0.37747747747747745,
+   "interrupted_per_1000_turns": 26.1875,
+   "enemy_traded_share": 0.3990990990990991,
+   "hp_at_attempt": 0.43101094466751255,
+   "hp_at_interrupted": 0.2824414875742699,
+   "died_within_3_after_interrupted": 0.42720763723150357,
+   "policy_recall_mass_when_interrupted": 0.6988651658239812,
+   "policy_safe_mass_when_interrupted": 0.17064843890402065,
+   "interrupted_runs": {
+    "n": 319,
+    "mean_length": 1.3134796238244515,
+    "runs_of_3_or_more": 22,
+    "max": 5
+   }
+  }
+ },
+ "elapsed_s": 20.59202740015462
+}

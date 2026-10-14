@@ -923,10 +923,12 @@ the turn's damage, §6.2). A
 champion that farms, sieges or pressures next to or in the enemy tower cell is **never** shot.
 
 A defender stands in its tower cell during every siege of its tower (its farm spot is clipped there, §5.2), and it can
-be reached there only by a dive (§6.1). So, in play, nearly every dive happens while the diver's own minions are under
-the tower and is shot with the "busy" probability 0.5 (measured: under `m4_four_actions_econ()` a ×1.76 champion's
-dive against a last-hitting tower farmer pays more than pressuring without diving, at no extra risk of death; M4.3d
-report §4, §7.3). EXPERIMENTAL
+be reached there only by a dive (§6.1). So, in the scripted play of M4.3d (strategies that dive only during their own
+siege), nearly every dive happens while the diver's own minions are under the tower and is shot with the "busy"
+probability 0.5 (measured: under `m4_four_actions_econ()` a ×1.76 champion's dive against a last-hitting tower farmer
+pays more than pressuring without diving, at no extra risk of death; M4.3d report §4, §7.3). In the learned play of the
+M4.3c pilot policies only 16–24% of dives were "busy"; the others are shot with probability 1.0 in every preset
+(M4.4a readiness report §6.4). EXPERIMENTAL
 `m4_four_actions_econ_aggro()` (§8.8) sets `tower_shot_p_busy` = 1.0 and `tower_adjacent_p_busy` = 0.5: the tower
 targets a champion that attacks a champion under it whatever else is in range, as League's tower does.
 
@@ -1323,6 +1325,12 @@ Truncation is a property of the *run*, not of the game: with an exact critic the
 infinite-horizon expectation; with an approximate critic they are biased by $\gamma(\hat V(s')-V(s'))$ at each cut.
 Since the game never terminates, `terminated` is never set and the critic never learns a terminal value.
 
+**Four-action presets (EXPERIMENTAL; M4.4).** The same network with 61 masked logits (codes 46–60 = Slow Push; only
+34 codes can ever be legal). The M4.4 comparison trains `m4_four_actions()`, `m4_four_actions_econ()` and
+`m4_four_actions_econ_aggro()` with one set of the settings above (entropy 0.03, 100% current-policy games;
+`lanegame/experiments/rl/m44/common.py`). A step-by-step account of the pipeline with a worked turn:
+[ppo_training_explained.md](../rl/ppo_training_explained.md).
+
 **Where the training data come from.** In self-play the levels are capped at turn ≈145 and the plates are gone by
 turn ≈150–200, so roughly 70% of the turns of a 512-turn training game are played by two level-18 champions next to
 exhausted towers.
@@ -1564,3 +1572,4 @@ historical documents are records of their milestones and are **not** edited; thi
 | 2026-10-13 | §3.1, §4.5 pointers, new §4.10, glossary: EXPERIMENTAL four-action model `m4_four_actions()` (Last Hit / Thin / Slow Push / Clear, window-strength targets, codes 46–60, 61-code space; M4.3c four-action redesign). `m4_lasthit()` and every CURRENT statement are unchanged; `M4Turn.wave_budget` / `info["wave_budget"]` record the lane step's budgets in every M4 preset | `config.py`, `mechanics.window_strength / strength_need / strength_budget`, `champions_m4.M4Context.state_budget` |
 | 2026-10-13 | M4.3c stabilization: label FOUR-ACTION and the slot-1 terminology note (§0); slot 1 of the four-action model is **Shove** (`W_SHOVE` = `W_CLEAR`, label `SH`; §3.1, §4.10, glossary), a semantic change only; the debugger's wave panel (§4.10); the measured crash tax (§5.3); the EXPERIMENTAL opt-ins `xp_reward_weight`, `death_turns_by_level`, `terminal_rule = "final_plate"` and the PROPOSED candidate `m4_four_actions_econ()` (new §8.7; pointers in §5.3, §6.5, §8.5, §8.6). Every CURRENT statement and every preset's defaults are unchanged | `config.py`, `champions_m4.py`, `env/core.py`, `env/discounted.py`, `viewer/` |
 | 2026-10-13 | M4.3d tower farming, pressure and gank risk: the measured meaning of the own-tower cap (§5.3: farm-neutral at 0.8), why nearly every dive is "busy" (§6.3), the EXPERIMENTAL candidate `m4_four_actions_econ_aggro()` (new §8.8: `tower_shot_p_busy` 1.0, `tower_adjacent_p_busy` 0.5), a quick-reference row (§0.4), glossary entries. Every CURRENT statement and every earlier preset's values are unchanged | `config.py` (`m4_four_actions_econ_aggro`, `M4_FOUR_AGGRO_FIELDS`), `lanegame/experiments/m43d/` |
+| 2026-10-13 | M4.4a: §9.2 pointer to the four-action training settings (61 masked logits, the M4.4 comparison) and the PPO pipeline explanation; §6.3 qualifies "nearly every dive is busy" as a measurement of the M4.3d scripted strategies (16–24% of the learned pilot policies' dives were busy). No rule, parameter or preset changed | `lanegame/experiments/rl/m44/` (training and diagnostics only) |

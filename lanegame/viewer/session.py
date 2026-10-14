@@ -34,11 +34,16 @@ from ..state import State
 A, B = 0, 1
 SIDES = ("A", "B")
 
-CONFIGS = {"m4_four_actions": GameConfig.m4_four_actions, "m4_lasthit": GameConfig.m4_lasthit,
-           "m4_lane": GameConfig.m4_lane, "m4_natural": GameConfig.m4_natural}
+CONFIGS = {"m4_four_actions": GameConfig.m4_four_actions,
+           # M4.4a: the two EXPERIMENTAL calibrated economies of the PPO comparison (recordings of their checkpoints
+           # name them; lanegame/experiments/rl/m44/trace.py)
+           "m4_four_actions_econ": GameConfig.m4_four_actions_econ,
+           "m4_four_actions_econ_aggro": GameConfig.m4_four_actions_econ_aggro,
+           "m4_lasthit": GameConfig.m4_lasthit, "m4_lane": GameConfig.m4_lane, "m4_natural": GameConfig.m4_natural}
 # the configuration whose deterministic start states a configuration uses (the four-action redesign study generated
-# its starts under m4_lasthit(); the lane physics is the same)
-START_SOURCE = {"m4_four_actions": "m4_lasthit"}
+# its starts under m4_lasthit(); the lane physics is the same in every four-action preset)
+START_SOURCE = {"m4_four_actions": "m4_lasthit", "m4_four_actions_econ": "m4_lasthit",
+                "m4_four_actions_econ_aggro": "m4_lasthit"}
 SCENARIOS = {
     "s0": "Standard initial state (turn 0: a fresh wave at each base, both champions at their tower).",
     "neutral": "Neutral lane, fronts in contact at the lane cell (k9 of Hold/Hold).",

@@ -25,16 +25,18 @@ quantitative evaluation of the learned policies: their discounted value against 
 exploitability (approximate best responses), and audits of what they actually do, compared with the sampled
 equilibria of a scripted strategy space.
 
-**Status, stated plainly.** The environment has been built, calibrated and validated (through M4.2, below), the RL
-infrastructure has been audited (M4.3a), and the first self-play pilot has been run and analysed (M4.3b). PPO
-self-play learns policies that beat every scripted reference of the project's strongest strategy space by 9–20
-resources and keep improving against their own earlier versions; their decisions are state-dependent on the
-behaviour dimension (trade at the lane, step back at the tower, recall at low HP and after the own crash, pressure
-in sieges), and their dominant wave action, clearing, is shown by counterfactual rollouts to be a best reply to an
-opponent that clears: slow pushes and held freezes lose one to three resources against the learned policies. Recall
-is learned and timed where the game rewards it. What the pilot does not show is the emergence of League's
-wave-control strategies; the evidence says the calibrated game does not reward them against a clearing opponent,
-and the next milestone (M4.3c) is a design investigation judged by the same counterfactual harness.
+**Status, stated plainly.** The environment has been built, calibrated and validated (M1–M4.2), the RL
+infrastructure audited (M4.3a) and a first self-play pilot run and analysed (M4.3b). That pilot learned strong,
+state-dependent policies whose dominant wave action, clearing, counterfactual rollouts showed to be a best reply in
+the calibrated game, so the game rather than the learner limited what could emerge. M4.3c–M4.3d therefore redesigned
+wave management into four actions (Last Hit, Thin, Slow Push, Shove) and calibrated the economy (tower farming,
+trades, death, tower retaliation on dives), producing two experimental candidate economies. **M4.4a** has made the
+PPO pipeline and its strategic diagnostics ready for the four-action game (state-based freeze, zoning, vision and
+plate-phase metrics; paired counterfactuals; smoke-tested on all three economies). The controlled comparison
+(**M4.4b**: three economies × three seeds, plus a matched 2× extension; in review) found that the calibrated economies
+produce state-dependent wave management, short freezes that are preserved and broken but deny little, a targeted
+response to tower retaliation and conditional defence, while the original economy stays Shove-dominated; whether these
+choices are economically better than their alternatives is the next question (M4.4c–d).
 
 ## How we study it
 
@@ -62,20 +64,24 @@ parameter is claimed to be an empirical League statistic.
 
 ## Roadmap
 
-| Phase | Content | Status |
-|---|---|---|
-| **1. Mathematical foundation** | Stochastic game, mechanics, exact equilibrium solver, best responses, exploitability | **complete: siege revision** ([siege & vision study](docs/phase1/phase1_siege_vision_study.md); earlier: [farming revision report](docs/phase1/phase1_revision_report.md), [original Phase 1 report](docs/phase1/phase1_implementation_report.md)) |
-| **M1–M3. RL environment, champion game, PPO and self-play** | `lanegame/env/`, `GameConfig.champions()`, masked PPO, snapshot and shared-policy self-play, evaluation | **complete** ([M2/M3 report](docs/rl/m2_m3_implementation_report.md), [OpenAI Five-style self-play](docs/rl/openai_five_selfplay_report.md), [diagnostics](docs/rl/openai_five_diagnostics_report.md)) |
-| **M4.1–M4.2. Integrated champion economy and natural waves** | `GameConfig.m4()` and the presets up to `m4_lasthit()` | **complete** ([design](docs/m4/m4_integrated_design.md), [implementation](docs/m4/m4_implementation_report.md), [natural waves](docs/natural_waves/m4_2e_natural_waves_final_review.md), [wave actions](docs/natural_waves/m4_2e_wave_actions_report.md)) |
-| **M4.3a. RL infrastructure audit and smoke test** | PettingZoo conformance, PPO reference checks, bounded self-play on `m4_lasthit()` | **complete** ([report](docs/rl/m4_3a_rl_infrastructure_report.md)) |
-| **M4.3b. Self-play pilot and strategic diagnostics** | 12 PPO runs on `m4_lasthit()`, reactive reference suite, learning curves, cross-play, exploitability, conditional behaviour, counterfactuals, Recall / death economics, mixed starts | **complete** ([report](docs/rl/m4_3b_ppo_pilot_report.md)) |
-| **M4.3b follow-up. Strategic validation and artifact cleanup** | wave-only interventions that keep the policy's adaptive behaviour, four opponents, the 1000-turn horizon, freeze-state classification and synthetic power gaps; artifact manifest and checkpoint bundle | **complete** ([report](docs/rl/m4_3b_validation_report.md)) |
-| **M4.3c. Economic objective, laning termination, mathematical reference** | Gold + XP objective, ending the laning phase at the final plate, game-length audit, freeze incentives, death timers; the living [mathematical reference](docs/m4/laning_game_mathematical_reference.md) of the current game | **design complete, awaiting review** ([design](docs/m4/m4_3c_economic_objective_design.md)) |
-| 2. Opponent modelling | Bayesian opponent models, exploitation vs. exploitability, risk | planned |
-| 3. Interactive dashboard | A site for exploring strategies and results | planned |
+The canonical roadmap is [docs/rl_research_roadmap.md](docs/rl_research_roadmap.md) (current-position summary at the
+top). In short:
 
-The research roadmap with one section per milestone is [docs/rl_research_roadmap.md](docs/rl_research_roadmap.md);
-the documentation index is [docs/README.md](docs/README.md). **Every rule, equation and parameter of the current
+| Milestone | Content | Status |
+|---|---|---|
+| **Phase 1. Mathematical foundation** | Stochastic game, mechanics, exact equilibrium solver, best responses, exploitability | **complete** ([siege & vision study](docs/phase1/phase1_siege_vision_study.md); earlier: [revision](docs/phase1/phase1_revision_report.md), [original](docs/phase1/phase1_implementation_report.md)) |
+| **M1. RL-ready game environment** | `lanegame/env/`: simultaneous moves, own-perspective observations, legal masks, zero-sum rewards, PettingZoo adapter | **complete** |
+| **M2. Champion mechanics** | positions, Hold / Yield / Trade / Safe / Recall, trades with skill, ganks, death | **complete** ([M2/M3 report](docs/rl/m2_m3_implementation_report.md)) |
+| **M3. Initial PPO / self-play research** | masked PPO, snapshot and shared-policy self-play, approximate best responses, diagnostics; revealed game-design limits that motivated M4 | **complete** ([self-play](docs/rl/openai_five_selfplay_report.md), [diagnostics](docs/rl/openai_five_diagnostics_report.md)) |
+| **M4.1–M4.2. Integrated laning model** | continuing time, XP, levels, gold, items, plates; natural waves; zoning; wave actions (`m4_lasthit()`) | **complete** ([design](docs/m4/m4_integrated_design.md), [implementation](docs/m4/m4_implementation_report.md), [natural waves](docs/natural_waves/m4_2e_natural_waves_final_review.md), [wave actions](docs/natural_waves/m4_2e_wave_actions_report.md)) |
+| **M4.3. PPO pilot, wave management and economic calibration** | RL audit, PPO pilot and validation, the [mathematical reference](docs/m4/laning_game_mathematical_reference.md), four-action redesign, economic calibration, tower pressure | **complete** ([pilot](docs/rl/m4_3b_ppo_pilot_report.md), [four actions](docs/m4/m4_3c_four_action_wave_redesign.md), [economics](docs/m4/m4_3c_strategic_economics_calibration.md), [tower pressure](docs/m4/m4_3d_tower_pressure_calibration.md)) |
+| **M4.4a. PPO readiness and strategic diagnostics** | three-environment training specification, checkpoint guard, state-based metrics, paired counterfactuals, smoke tests | **complete** ([report](docs/m4/m4_4a_ppo_readiness.md), [the PPO pipeline explained](docs/rl/ppo_training_explained.md)) |
+| **M4.4b. Controlled PPO self-play training** | 3 economies × 3 seeds × 2M transitions, a matched 2× extension; strength, convergence, strategic behaviour, counterfactual scorecard, representative games | **complete, in review** ([report](docs/m4/m4_4b_ppo_training_report.md), [tables](results/m44b/report.md)) |
+| **M4.4c–d. Strategic behaviour analysis, counterfactual robustness** | the M4.4b follow-up questions; multi-turn counterfactuals; exploitability | planned |
+| M5. Adaptive opponent and game-theoretic research | robustness and exploitation against historical, scripted and adaptive opponents | proposed |
+| M6. Research presentation and portfolio | reproducible narrative, comparisons, visualizations, interactive demonstration | proposed |
+
+The documentation index is [docs/README.md](docs/README.md). **Every rule, equation and parameter of the current
 research game is in one place: [docs/m4/laning_game_mathematical_reference.md](docs/m4/laning_game_mathematical_reference.md)**
 (kept up to date with every rule change; the summaries below are older and coarser).
 
@@ -112,7 +118,7 @@ configuration is bit-identical, guarded by `tests/test_legacy_pins.py`.
 ```bash
 python -m venv .venv && .venv/Scripts/activate      # macOS/Linux: source .venv/bin/activate
 pip install -e ".[test,rl]"                          # numpy, scipy, matplotlib, pytest; torch, pettingzoo, gymnasium
-python -m pytest                                      # full suite (exact game, champion game, M4, RL): 909 tests, ~8 min
+python -m pytest                                      # full suite (exact game, champion game, M4, RL): ~1,080 tests, ~8 min
 python -m lanegame solve --horizon 32                 # exact siege model -> results/siege/solution_K32.json (~4 min, 3 GB)
 python -m lanegame scenarios                          # 23 traced mechanics scenarios with PASS/FAIL
 python -m lanegame exploit --horizon 24               # exploitability of the siege baselines
@@ -127,6 +133,14 @@ python -m lanegame.experiments.rl.m43b validation     # the follow-up: val_wave_
 python -m lanegame.experiments.rl.m43b manifest       # results/rl/m43b/MANIFEST.json and the checkpoint bundle (results/rl/m43b_artifacts/)
 python -m lanegame.experiments.m43c all --workers 9   # M4.3c design diagnostics: examples, progression audit, gold + XP
                                                       # re-pricing, freeze and death harnesses (results/m43c/, ~35 min; no training)
+python -m lanegame.experiments.rl.m44 audit smoke_train smoke_repro smoke_eval demo plan report
+                                                      # M4.4a: four-action PPO readiness (results/m44a/, ~5 min on 9 processes)
+python -m lanegame.experiments.rl.m44 train_main --confirm-m44b && python -m lanegame.experiments.rl.m44 eval_main
+                                                      # M4.4b: 3 economies x 3 seeds x 2M transitions (~13 + 50 min on 9 processes)
+python -m lanegame.experiments.rl.m44 repro_main extra_main traces_main recall_main report_main
+                                                      # M4.4b supplementary analyses and results/m44b/report.md
+python -m lanegame.experiments.rl.m44 train_ext --confirm-m44b && python -m lanegame.experiments.rl.m44 eval_ext
+                                                      # M4.4b matched 2x-budget extension (4,096,000 transitions per run)
 python -m lanegame rl-shared --current-fraction 0.8 --skill-levels 0.2,0.5,0.8 --out results/rl/checkpoints/demo_shared
                                                       # the champion game, 80% current / 20% past versions
 python -m lanegame rl-eval results/rl/checkpoints/demo_shared/final.pt   # champion game: both seats, held-out seeds, 95% CIs
@@ -185,8 +199,9 @@ lanegame/                 engine (pure Python + NumPy/SciPy, no presentation cod
                           checkpoints with digests), evaluate.py (head-to-head, round robin, approximate best responses)
   diagnostics/            action audits and paired counterfactual rollouts from restorable states
   viewer/                 the Streamlit lane debugger (M4.2e-D)
-  experiments/rl/         RL studies, the M4.3a smoke test and the M4.3b pilot package m43b/ with its follow-up
-                          (intervene.py, validation.py, manifest.py); results/rl/ (large JSON gzipped; see
+  experiments/rl/         RL studies, the M4.3a smoke test, the M4.3b pilot package m43b/ with its follow-up
+                          (intervene.py, validation.py, manifest.py), the M4.4 package m44/ (four-action training,
+                          state-based strategic metrics, paired counterfactuals); results/rl/ (large JSON gzipped; see
                           results/rl/m43b/ARTIFACTS.md); checkpoints in results/rl/checkpoints/, untracked, bundled on request
   experiments/m4/         M4 validation and calibration drivers (results/m4*/)
   experiments/champions/  champion-mode validation (results/champions/)
