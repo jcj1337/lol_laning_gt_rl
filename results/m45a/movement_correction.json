@@ -1,0 +1,3669 @@
+{
+ "scenarios": {
+  "k": 10,
+  "level": 2,
+  "rows": [
+   {
+    "key": "A1",
+    "label": "Hold follows its winning wave (the brief's example): A and its 16-HP front at 0, B's 2-HP front at A's +1, which dies on tick 0",
+    "lane": [
+     0,
+     16,
+     [],
+     0,
+     -1,
+     2,
+     [],
+     0,
+     0,
+     0,
+     0,
+     0
+    ],
+    "pos": [
+     0,
+     -2
+    ],
+    "actions": [
+     "LH-H",
+     "LH-H"
+    ],
+    "hit": [],
+    "end cell": {
+     "fire": [
+      [
+       "positional",
+       ""
+      ],
+      [
+       "",
+       ""
+      ]
+     ],
+     "units": [
+      1,
+      0
+     ],
+     "centi": [
+      46,
+      0
+     ],
+     "end": [
+      1,
+      -2
+     ],
+     "connected": [
+      false,
+      false
+     ],
+     "retaliation": [
+      false,
+      false
+     ],
+     "path": null,
+     "fronts": [
+      [
+       0,
+       null
+      ],
+      [
+       1,
+       null
+      ]
+     ]
+    },
+    "r1": {
+     "fire": [
+      [
+       "",
+       ""
+      ],
+      [
+       "",
+       ""
+      ]
+     ],
+     "units": [
+      0,
+      0
+     ],
+     "centi": [
+      0,
+      0
+     ],
+     "end": [
+      1,
+      -2
+     ],
+     "connected": [
+      false,
+      false
+     ],
+     "retaliation": [
+      false,
+      false
+     ],
+     "path": null,
+     "fronts": [
+      [
+       0,
+       null
+      ],
+      [
+       1,
+       null
+      ]
+     ]
+    },
+    "r2": {
+     "fire": [
+      [
+       "",
+       ""
+      ],
+      [
+       "",
+       ""
+      ]
+     ],
+     "units": [
+      0,
+      0
+     ],
+     "centi": [
+      0,
+      0
+     ],
+     "end": [
+      1,
+      -2
+     ],
+     "connected": [
+      false,
+      false
+     ],
+     "retaliation": [
+      false,
+      false
+     ],
+     "path": [
+      [
+       0,
+       1
+      ],
+      [
+       -2,
+       -2
+      ]
+     ],
+     "fronts": [
+      [
+       0,
+       null
+      ],
+      [
+       1,
+       null
+      ]
+     ]
+    },
+    "mirror_ok": true
+   },
+   {
+    "key": "A2",
+    "label": "Hold follows its winning wave from behind (A and its 16-HP front at -1, B's 2-HP front at 0)",
+    "lane": [
+     -1,
+     16,
+     [],
+     0,
+     0,
+     2,
+     [],
+     0,
+     0,
+     0,
+     0,
+     0
+    ],
+    "pos": [
+     -1,
+     -2
+    ],
+    "actions": [
+     "LH-H",
+     "LH-H"
+    ],
+    "hit": [],
+    "end cell": {
+     "fire": [
+      [
+       "positional",
+       ""
+      ],
+      [
+       "",
+       ""
+      ]
+     ],
+     "units": [
+      1,
+      0
+     ],
+     "centi": [
+      46,
+      0
+     ],
+     "end": [
+      0,
+      -2
+     ],
+     "connected": [
+      false,
+      false
+     ],
+     "retaliation": [
+      false,
+      false
+     ],
+     "path": null,
+     "fronts": [
+      [
+       -1,
+       null
+      ],
+      [
+       0,
+       null
+      ]
+     ]
+    },
+    "r1": {
+     "fire": [
+      [
+       "",
+       ""
+      ],
+      [
+       "",
+       ""
+      ]
+     ],
+     "units": [
+      0,
+      0
+     ],
+     "centi": [
+      0,
+      0
+     ],
+     "end": [
+      0,
+      -2
+     ],
+     "connected": [
+      false,
+      false
+     ],
+     "retaliation": [
+      false,
+      false
+     ],
+     "path": null,
+     "fronts": [
+      [
+       -1,
+       null
+      ],
+      [
+       0,
+       null
+      ]
+     ]
+    },
+    "r2": {
+     "fire": [
+      [
+       "",
+       ""
+      ],
+      [
+       "",
+       ""
+      ]
+     ],
+     "units": [
+      0,
+      0
+     ],
+     "centi": [
+      0,
+      0
+     ],
+     "end": [
+      0,
+      -2
+     ],
+     "connected": [
+      false,
+      false
+     ],
+     "retaliation": [
+      false,
+      false
+     ],
+     "path": [
+      [
+       -1,
+       0
+      ],
+      [
+       -2,
+       -2
+      ]
+     ],
+     "fronts": [
+      [
+       -1,
+       null
+      ],
+      [
+       0,
+       null
+      ]
+     ]
+    },
+    "mirror_ok": true
+   },
+   {
+    "key": "A3",
+    "label": "Safe follows its winning wave (A and its 16-HP front at -2, B's 2-HP front at A's -1)",
+    "lane": [
+     -2,
+     16,
+     [],
+     0,
+     1,
+     2,
+     [],
+     0,
+     0,
+     0,
+     0,
+     0
+    ],
+    "pos": [
+     -2,
+     -2
+    ],
+    "actions": [
+     "LH-S",
+     "LH-H"
+    ],
+    "hit": [],
+    "end cell": {
+     "fire": [
+      [
+       "positional",
+       ""
+      ],
+      [
+       "",
+       ""
+      ]
+     ],
+     "units": [
+      1,
+      0
+     ],
+     "centi": [
+      46,
+      0
+     ],
+     "end": [
+      -1,
+      -2
+     ],
+     "connected": [
+      false,
+      false
+     ],
+     "retaliation": [
+      false,
+      false
+     ],
+     "path": null,
+     "fronts": [
+      [
+       -2,
+       null
+      ],
+      [
+       -1,
+       null
+      ]
+     ]
+    },
+    "r1": {
+     "fire": [
+      [
+       "",
+       ""
+      ],
+      [
+       "",
+       ""
+      ]
+     ],
+     "units": [
+      0,
+      0
+     ],
+     "centi": [
+      0,
+      0
+     ],
+     "end": [
+      -1,
+      -2
+     ],
+     "connected": [
+      false,
+      false
+     ],
+     "retaliation": [
+      false,
+      false
+     ],
+     "path": null,
+     "fronts": [
+      [
+       -2,
+       null
+      ],
+      [
+       -1,
+       null
+      ]
+     ]
+    },
+    "r2": {
+     "fire": [
+      [
+       "",
+       ""
+      ],
+      [
+       "",
+       ""
+      ]
+     ],
+     "units": [
+      0,
+      0
+     ],
+     "centi": [
+      0,
+      0
+     ],
+     "end": [
+      -1,
+      -2
+     ],
+     "connected": [
+      false,
+      false
+     ],
+     "retaliation": [
+      false,
+      false
+     ],
+     "path": [
+      [
+       -2,
+       -1
+      ],
+      [
+       -2,
+       -2
+      ]
+     ],
+     "fronts": [
+      [
+       -2,
+       null
+      ],
+      [
+       -1,
+       null
+      ]
+     ]
+    },
+    "mirror_ok": true
+   },
+   {
+    "key": "A4",
+    "label": "Yield (stand-off) in the same lane: it stays one cell behind B's starting front",
+    "lane": [
+     -2,
+     16,
+     [],
+     0,
+     1,
+     2,
+     [],
+     0,
+     0,
+     0,
+     0,
+     0
+    ],
+    "pos": [
+     -2,
+     -2
+    ],
+    "actions": [
+     "LH-Y",
+     "LH-H"
+    ],
+    "hit": [],
+    "end cell": {
+     "fire": [
+      [
+       "",
+       ""
+      ],
+      [
+       "",
+       ""
+      ]
+     ],
+     "units": [
+      0,
+      0
+     ],
+     "centi": [
+      0,
+      0
+     ],
+     "end": [
+      -2,
+      -2
+     ],
+     "connected": [
+      false,
+      false
+     ],
+     "retaliation": [
+      false,
+      false
+     ],
+     "path": null,
+     "fronts": [
+      [
+       -2,
+       null
+      ],
+      [
+       -1,
+       null
+      ]
+     ]
+    },
+    "r1": {
+     "fire": [
+      [
+       "",
+       ""
+      ],
+      [
+       "",
+       ""
+      ]
+     ],
+     "units": [
+      0,
+      0
+     ],
+     "centi": [
+      0,
+      0
+     ],
+     "end": [
+      -2,
+      -2
+     ],
+     "connected": [
+      false,
+      false
+     ],
+     "retaliation": [
+      false,
+      false
+     ],
+     "path": null,
+     "fronts": [
+      [
+       -2,
+       null
+      ],
+      [
+       -1,
+       null
+      ]
+     ]
+    },
+    "r2": {
+     "fire": [
+      [
+       "",
+       ""
+      ],
+      [
+       "",
+       ""
+      ]
+     ],
+     "units": [
+      0,
+      0
+     ],
+     "centi": [
+      0,
+      0
+     ],
+     "end": [
+      -2,
+      -2
+     ],
+     "connected": [
+      false,
+      false
+     ],
+     "retaliation": [
+      false,
+      false
+     ],
+     "path": [
+      [
+       -2,
+       -2
+      ],
+      [
+       -2,
+       -2
+      ]
+     ],
+     "fronts": [
+      [
+       -2,
+       null
+      ],
+      [
+       -1,
+       null
+      ]
+     ]
+    },
+    "mirror_ok": true
+   },
+   {
+    "key": "B1",
+    "label": "Deliberate advance: A at 0 (its front at -1) Pressures through B's front at A's +1, which waits while A's crashed mass is under B's tower",
+    "lane": [
+     -1,
+     8,
+     [],
+     8,
+     -1,
+     8,
+     [],
+     0,
+     0,
+     0,
+     0,
+     0
+    ],
+    "pos": [
+     0,
+     -2
+    ],
+    "actions": [
+     "LH-H+P",
+     "LH-H"
+    ],
+    "hit": [],
+    "end cell": {
+     "fire": [
+      [
+       "",
+       ""
+      ],
+      [
+       "",
+       ""
+      ]
+     ],
+     "units": [
+      0,
+      0
+     ],
+     "centi": [
+      0,
+      0
+     ],
+     "end": [
+      2,
+      -1
+     ],
+     "connected": [
+      false,
+      false
+     ],
+     "retaliation": [
+      false,
+      false
+     ],
+     "path": null,
+     "fronts": [
+      [
+       0,
+       -1
+      ],
+      [
+       0,
+       -1
+      ]
+     ]
+    },
+    "r1": {
+     "fire": [
+      [
+       "",
+       ""
+      ],
+      [
+       "",
+       ""
+      ]
+     ],
+     "units": [
+      0,
+      0
+     ],
+     "centi": [
+      0,
+      0
+     ],
+     "end": [
+      2,
+      -1
+     ],
+     "connected": [
+      false,
+      false
+     ],
+     "retaliation": [
+      false,
+      false
+     ],
+     "path": null,
+     "fronts": [
+      [
+       0,
+       -1
+      ],
+      [
+       0,
+       -1
+      ]
+     ]
+    },
+    "r2": {
+     "fire": [
+      [
+       "positional",
+       ""
+      ],
+      [
+       "",
+       ""
+      ]
+     ],
+     "units": [
+      1,
+      0
+     ],
+     "centi": [
+      46,
+      0
+     ],
+     "end": [
+      2,
+      -1
+     ],
+     "connected": [
+      false,
+      false
+     ],
+     "retaliation": [
+      false,
+      false
+     ],
+     "path": [
+      [
+       1,
+       2
+      ],
+      [
+       -1,
+       -1
+      ]
+     ],
+     "fronts": [
+      [
+       0,
+       -1
+      ],
+      [
+       0,
+       -1
+      ]
+     ]
+    },
+    "mirror_ok": true
+   },
+   {
+    "key": "B2",
+    "label": "The brief's B with walking waves: A at 0 (its front at -1) Trades toward B at its tower while B's front walks from A's +1 to 0: they swap cells within tick 0 (no shared cell at a tick boundary)",
+    "lane": [
+     -1,
+     8,
+     [],
+     0,
+     -1,
+     8,
+     [],
+     0,
+     0,
+     0,
+     0,
+     0
+    ],
+    "pos": [
+     0,
+     -2
+    ],
+    "actions": [
+     "LH-T",
+     "LH-T"
+    ],
+    "hit": [],
+    "end cell": {
+     "fire": [
+      [
+       "",
+       ""
+      ],
+      [
+       "",
+       ""
+      ]
+     ],
+     "units": [
+      0,
+      0
+     ],
+     "centi": [
+      0,
+      0
+     ],
+     "end": [
+      2,
+      -1
+     ],
+     "connected": [
+      true,
+      true
+     ],
+     "retaliation": [
+      false,
+      false
+     ],
+     "path": null,
+     "fronts": [
+      [
+       0,
+       0
+      ],
+      [
+       0,
+       0
+      ]
+     ]
+    },
+    "r1": {
+     "fire": [
+      [
+       "",
+       ""
+      ],
+      [
+       "",
+       ""
+      ]
+     ],
+     "units": [
+      0,
+      0
+     ],
+     "centi": [
+      0,
+      0
+     ],
+     "end": [
+      2,
+      -1
+     ],
+     "connected": [
+      true,
+      true
+     ],
+     "retaliation": [
+      false,
+      false
+     ],
+     "path": null,
+     "fronts": [
+      [
+       0,
+       0
+      ],
+      [
+       0,
+       0
+      ]
+     ]
+    },
+    "r2": {
+     "fire": [
+      [
+       "",
+       ""
+      ],
+      [
+       "",
+       ""
+      ]
+     ],
+     "units": [
+      0,
+      0
+     ],
+     "centi": [
+      0,
+      0
+     ],
+     "end": [
+      2,
+      -1
+     ],
+     "connected": [
+      true,
+      true
+     ],
+     "retaliation": [
+      false,
+      false
+     ],
+     "path": [
+      [
+       1,
+       2
+      ],
+      [
+       -1,
+       -1
+      ]
+     ],
+     "fronts": [
+      [
+       0,
+       0
+      ],
+      [
+       0,
+       0
+      ]
+     ]
+    },
+    "mirror_ok": true
+   },
+   {
+    "key": "C1",
+    "label": "Trade chase into B's 16-HP wave (B stands behind it), connected, missed",
+    "lane": [
+     -2,
+     8,
+     [],
+     0,
+     1,
+     16,
+     [],
+     0,
+     0,
+     0,
+     0,
+     0
+    ],
+    "pos": [
+     -2,
+     -2
+    ],
+    "actions": [
+     "LH-T",
+     "LH-H"
+    ],
+    "hit": [],
+    "end cell": {
+     "fire": [
+      [
+       "positional",
+       "positional"
+      ],
+      [
+       "",
+       ""
+      ]
+     ],
+     "units": [
+      3,
+      0
+     ],
+     "centi": [
+      139,
+      0
+     ],
+     "end": [
+      -1,
+      0
+     ],
+     "connected": [
+      true,
+      false
+     ],
+     "retaliation": [
+      false,
+      false
+     ],
+     "path": null,
+     "fronts": [
+      [
+       -2,
+       1
+      ],
+      [
+       -2,
+       1
+      ]
+     ]
+    },
+    "r1": {
+     "fire": [
+      [
+       "",
+       ""
+      ],
+      [
+       "",
+       ""
+      ]
+     ],
+     "units": [
+      0,
+      0
+     ],
+     "centi": [
+      0,
+      0
+     ],
+     "end": [
+      -1,
+      0
+     ],
+     "connected": [
+      true,
+      false
+     ],
+     "retaliation": [
+      false,
+      false
+     ],
+     "path": null,
+     "fronts": [
+      [
+       -2,
+       1
+      ],
+      [
+       -2,
+       1
+      ]
+     ]
+    },
+    "r2": {
+     "fire": [
+      [
+       "positional",
+       "positional"
+      ],
+      [
+       "",
+       ""
+      ]
+     ],
+     "units": [
+      3,
+      0
+     ],
+     "centi": [
+      139,
+      0
+     ],
+     "end": [
+      -1,
+      0
+     ],
+     "connected": [
+      true,
+      false
+     ],
+     "retaliation": [
+      false,
+      false
+     ],
+     "path": [
+      [
+       -1,
+       -1
+      ],
+      [
+       -1,
+       0
+      ]
+     ],
+     "fronts": [
+      [
+       -2,
+       1
+      ],
+      [
+       -2,
+       1
+      ]
+     ]
+    },
+    "mirror_ok": true
+   },
+   {
+    "key": "C2",
+    "label": "The same chase, landed: positional aggro, then retaliation",
+    "lane": [
+     -2,
+     8,
+     [],
+     0,
+     1,
+     16,
+     [],
+     0,
+     0,
+     0,
+     0,
+     0
+    ],
+    "pos": [
+     -2,
+     -2
+    ],
+    "actions": [
+     "LH-T",
+     "LH-H"
+    ],
+    "hit": [
+     0
+    ],
+    "end cell": {
+     "fire": [
+      [
+       "positional",
+       "retaliation"
+      ],
+      [
+       "",
+       ""
+      ]
+     ],
+     "units": [
+      3,
+      0
+     ],
+     "centi": [
+      139,
+      0
+     ],
+     "end": [
+      -1,
+      0
+     ],
+     "connected": [
+      true,
+      false
+     ],
+     "retaliation": [
+      false,
+      true
+     ],
+     "path": null,
+     "fronts": [
+      [
+       -2,
+       1
+      ],
+      [
+       -2,
+       1
+      ]
+     ]
+    },
+    "r1": {
+     "fire": [
+      [
+       "",
+       "retaliation"
+      ],
+      [
+       "",
+       ""
+      ]
+     ],
+     "units": [
+      1,
+      0
+     ],
+     "centi": [
+      46,
+      0
+     ],
+     "end": [
+      -1,
+      0
+     ],
+     "connected": [
+      true,
+      false
+     ],
+     "retaliation": [
+      false,
+      true
+     ],
+     "path": null,
+     "fronts": [
+      [
+       -2,
+       1
+      ],
+      [
+       -2,
+       1
+      ]
+     ]
+    },
+    "r2": {
+     "fire": [
+      [
+       "positional",
+       "retaliation"
+      ],
+      [
+       "",
+       ""
+      ]
+     ],
+     "units": [
+      3,
+      0
+     ],
+     "centi": [
+      139,
+      0
+     ],
+     "end": [
+      -1,
+      0
+     ],
+     "connected": [
+      true,
+      false
+     ],
+     "retaliation": [
+      false,
+      true
+     ],
+     "path": [
+      [
+       -1,
+       -1
+      ],
+      [
+       -1,
+       0
+      ]
+     ],
+     "fronts": [
+      [
+       -2,
+       1
+      ],
+      [
+       -2,
+       1
+      ]
+     ]
+    },
+    "mirror_ok": true
+   },
+   {
+    "key": "C3",
+    "label": "Trade chase into B's wave; B evades out of contact (the Trade does not connect)",
+    "lane": [
+     -1,
+     8,
+     [],
+     0,
+     0,
+     8,
+     [],
+     0,
+     0,
+     0,
+     0,
+     0
+    ],
+    "pos": [
+     -1,
+     -1
+    ],
+    "actions": [
+     "LH-T",
+     "LH-S"
+    ],
+    "hit": [],
+    "end cell": {
+     "fire": [
+      [
+       "positional",
+       ""
+      ],
+      [
+       "",
+       ""
+      ]
+     ],
+     "units": [
+      1,
+      0
+     ],
+     "centi": [
+      46,
+      0
+     ],
+     "end": [
+      0,
+      -2
+     ],
+     "connected": [
+      false,
+      false
+     ],
+     "retaliation": [
+      false,
+      false
+     ],
+     "path": null,
+     "fronts": [
+      [
+       -1,
+       0
+      ],
+      [
+       -1,
+       0
+      ]
+     ]
+    },
+    "r1": {
+     "fire": [
+      [
+       "",
+       ""
+      ],
+      [
+       "",
+       ""
+      ]
+     ],
+     "units": [
+      0,
+      0
+     ],
+     "centi": [
+      0,
+      0
+     ],
+     "end": [
+      0,
+      -2
+     ],
+     "connected": [
+      false,
+      false
+     ],
+     "retaliation": [
+      false,
+      false
+     ],
+     "path": null,
+     "fronts": [
+      [
+       -1,
+       0
+      ],
+      [
+       -1,
+       0
+      ]
+     ]
+    },
+    "r2": {
+     "fire": [
+      [
+       "positional",
+       ""
+      ],
+      [
+       "",
+       ""
+      ]
+     ],
+     "units": [
+      1,
+      0
+     ],
+     "centi": [
+      46,
+      0
+     ],
+     "end": [
+      0,
+      -2
+     ],
+     "connected": [
+      false,
+      false
+     ],
+     "retaliation": [
+      false,
+      false
+     ],
+     "path": [
+      [
+       0,
+       0
+      ],
+      [
+       -2,
+       -2
+      ]
+     ],
+     "fronts": [
+      [
+       -1,
+       0
+      ],
+      [
+       -1,
+       0
+      ]
+     ]
+    },
+    "mirror_ok": true
+   },
+   {
+    "key": "D1",
+    "label": "A Holds at B's tower cell far ahead of its wave and walks back: in B's oncoming front's cell after tick 0, covered by its own wave at the lane cell after tick 1",
+    "lane": [
+     -2,
+     8,
+     [],
+     0,
+     -2,
+     8,
+     [],
+     0,
+     0,
+     0,
+     0,
+     0
+    ],
+    "pos": [
+     2,
+     -2
+    ],
+    "actions": [
+     "LH-H",
+     "LH-H"
+    ],
+    "hit": [],
+    "end cell": {
+     "fire": [
+      [
+       "",
+       ""
+      ],
+      [
+       "",
+       ""
+      ]
+     ],
+     "units": [
+      0,
+      0
+     ],
+     "centi": [
+      0,
+      0
+     ],
+     "end": [
+      0,
+      0
+     ],
+     "connected": [
+      false,
+      false
+     ],
+     "retaliation": [
+      false,
+      false
+     ],
+     "path": null,
+     "fronts": [
+      [
+       -1,
+       -1
+      ],
+      [
+       0,
+       0
+      ]
+     ]
+    },
+    "r1": {
+     "fire": [
+      [
+       "",
+       ""
+      ],
+      [
+       "",
+       ""
+      ]
+     ],
+     "units": [
+      0,
+      0
+     ],
+     "centi": [
+      0,
+      0
+     ],
+     "end": [
+      0,
+      0
+     ],
+     "connected": [
+      false,
+      false
+     ],
+     "retaliation": [
+      false,
+      false
+     ],
+     "path": null,
+     "fronts": [
+      [
+       -1,
+       -1
+      ],
+      [
+       0,
+       0
+      ]
+     ]
+    },
+    "r2": {
+     "fire": [
+      [
+       "positional",
+       ""
+      ],
+      [
+       "",
+       ""
+      ]
+     ],
+     "units": [
+      1,
+      0
+     ],
+     "centi": [
+      46,
+      0
+     ],
+     "end": [
+      0,
+      0
+     ],
+     "connected": [
+      false,
+      false
+     ],
+     "retaliation": [
+      false,
+      false
+     ],
+     "path": [
+      [
+       1,
+       0
+      ],
+      [
+       -1,
+       0
+      ]
+     ],
+     "fronts": [
+      [
+       -1,
+       -1
+      ],
+      [
+       0,
+       0
+      ]
+     ]
+    },
+    "mirror_ok": true
+   },
+   {
+    "key": "D2",
+    "label": "Cover on the same tick: A stands at 0 and both fronts walk into its cell on tick 0",
+    "lane": [
+     -1,
+     8,
+     [],
+     0,
+     -1,
+     8,
+     [],
+     0,
+     0,
+     0,
+     0,
+     0
+    ],
+    "pos": [
+     0,
+     -2
+    ],
+    "actions": [
+     "LH-T",
+     "LH-S"
+    ],
+    "hit": [],
+    "end cell": {
+     "fire": [
+      [
+       "",
+       ""
+      ],
+      [
+       "",
+       ""
+      ]
+     ],
+     "units": [
+      0,
+      0
+     ],
+     "centi": [
+      0,
+      0
+     ],
+     "end": [
+      0,
+      -2
+     ],
+     "connected": [
+      false,
+      false
+     ],
+     "retaliation": [
+      false,
+      false
+     ],
+     "path": null,
+     "fronts": [
+      [
+       0,
+       0
+      ],
+      [
+       0,
+       0
+      ]
+     ]
+    },
+    "r1": {
+     "fire": [
+      [
+       "",
+       ""
+      ],
+      [
+       "",
+       ""
+      ]
+     ],
+     "units": [
+      0,
+      0
+     ],
+     "centi": [
+      0,
+      0
+     ],
+     "end": [
+      0,
+      -2
+     ],
+     "connected": [
+      false,
+      false
+     ],
+     "retaliation": [
+      false,
+      false
+     ],
+     "path": null,
+     "fronts": [
+      [
+       0,
+       0
+      ],
+      [
+       0,
+       0
+      ]
+     ]
+    },
+    "r2": {
+     "fire": [
+      [
+       "",
+       ""
+      ],
+      [
+       "",
+       ""
+      ]
+     ],
+     "units": [
+      0,
+      0
+     ],
+     "centi": [
+      0,
+      0
+     ],
+     "end": [
+      0,
+      -2
+     ],
+     "connected": [
+      false,
+      false
+     ],
+     "retaliation": [
+      false,
+      false
+     ],
+     "path": [
+      [
+       0,
+       0
+      ],
+      [
+       -2,
+       -2
+      ]
+     ],
+     "fronts": [
+      [
+       0,
+       0
+      ],
+      [
+       0,
+       0
+      ]
+     ]
+    },
+    "mirror_ok": true
+   },
+   {
+    "key": "D3",
+    "label": "No cover: as D2 with A's front far behind (at -3); B's front walks into A's cell on tick 0",
+    "lane": [
+     -3,
+     8,
+     [],
+     0,
+     -1,
+     8,
+     [],
+     0,
+     0,
+     0,
+     0,
+     0
+    ],
+    "pos": [
+     0,
+     -2
+    ],
+    "actions": [
+     "LH-T",
+     "LH-S"
+    ],
+    "hit": [],
+    "end cell": {
+     "fire": [
+      [
+       "",
+       ""
+      ],
+      [
+       "",
+       ""
+      ]
+     ],
+     "units": [
+      0,
+      0
+     ],
+     "centi": [
+      0,
+      0
+     ],
+     "end": [
+      0,
+      -2
+     ],
+     "connected": [
+      false,
+      false
+     ],
+     "retaliation": [
+      false,
+      false
+     ],
+     "path": null,
+     "fronts": [
+      [
+       -2,
+       0
+      ],
+      [
+       -1,
+       1
+      ]
+     ]
+    },
+    "r1": {
+     "fire": [
+      [
+       "",
+       ""
+      ],
+      [
+       "",
+       ""
+      ]
+     ],
+     "units": [
+      0,
+      0
+     ],
+     "centi": [
+      0,
+      0
+     ],
+     "end": [
+      0,
+      -2
+     ],
+     "connected": [
+      false,
+      false
+     ],
+     "retaliation": [
+      false,
+      false
+     ],
+     "path": null,
+     "fronts": [
+      [
+       -2,
+       0
+      ],
+      [
+       -1,
+       1
+      ]
+     ]
+    },
+    "r2": {
+     "fire": [
+      [
+       "positional",
+       ""
+      ],
+      [
+       "",
+       ""
+      ]
+     ],
+     "units": [
+      1,
+      0
+     ],
+     "centi": [
+      46,
+      0
+     ],
+     "end": [
+      0,
+      -2
+     ],
+     "connected": [
+      false,
+      false
+     ],
+     "retaliation": [
+      false,
+      false
+     ],
+     "path": [
+      [
+       0,
+       0
+      ],
+      [
+       -2,
+       -2
+      ]
+     ],
+     "fronts": [
+      [
+       -2,
+       0
+      ],
+      [
+       -1,
+       1
+      ]
+     ]
+    },
+    "mirror_ok": true
+   },
+   {
+    "key": "W1",
+    "label": "Ward from +1 walks through B's front at the lane cell (A's front at -1)",
+    "lane": [
+     -1,
+     8,
+     [],
+     0,
+     0,
+     8,
+     [],
+     0,
+     0,
+     0,
+     0,
+     0
+    ],
+    "pos": [
+     1,
+     -2
+    ],
+    "actions": [
+     "WARD",
+     "LH-H"
+    ],
+    "hit": [],
+    "end cell": {
+     "fire": [
+      [
+       "",
+       ""
+      ],
+      [
+       "",
+       ""
+      ]
+     ],
+     "units": [
+      0,
+      0
+     ],
+     "centi": [
+      0,
+      0
+     ],
+     "end": [
+      99,
+      0
+     ],
+     "connected": [
+      false,
+      false
+     ],
+     "retaliation": [
+      false,
+      false
+     ],
+     "path": null,
+     "fronts": [
+      [
+       -1,
+       0
+      ],
+      [
+       -1,
+       0
+      ]
+     ]
+    },
+    "r1": {
+     "fire": [
+      [
+       "",
+       ""
+      ],
+      [
+       "",
+       ""
+      ]
+     ],
+     "units": [
+      0,
+      0
+     ],
+     "centi": [
+      0,
+      0
+     ],
+     "end": [
+      99,
+      0
+     ],
+     "connected": [
+      false,
+      false
+     ],
+     "retaliation": [
+      false,
+      false
+     ],
+     "path": null,
+     "fronts": [
+      [
+       -1,
+       0
+      ],
+      [
+       -1,
+       0
+      ]
+     ]
+    },
+    "r2": {
+     "fire": [
+      [
+       "positional",
+       ""
+      ],
+      [
+       "",
+       ""
+      ]
+     ],
+     "units": [
+      1,
+      0
+     ],
+     "centi": [
+      46,
+      0
+     ],
+     "end": [
+      99,
+      0
+     ],
+     "connected": [
+      false,
+      false
+     ],
+     "retaliation": [
+      false,
+      false
+     ],
+     "path": [
+      [
+       0,
+       99
+      ],
+      [
+       -1,
+       0
+      ]
+     ],
+     "fronts": [
+      [
+       -1,
+       0
+      ],
+      [
+       -1,
+       0
+      ]
+     ]
+    },
+    "mirror_ok": true
+   },
+   {
+    "key": "S1",
+    "label": "Standing still in B's wave ahead of the own front (unchanged by the correction)",
+    "lane": [
+     -1,
+     8,
+     [],
+     0,
+     0,
+     8,
+     [],
+     0,
+     0,
+     0,
+     0,
+     0
+    ],
+    "pos": [
+     0,
+     -2
+    ],
+    "actions": [
+     "LH-T",
+     "LH-S"
+    ],
+    "hit": [],
+    "end cell": {
+     "fire": [
+      [
+       "positional",
+       ""
+      ],
+      [
+       "",
+       ""
+      ]
+     ],
+     "units": [
+      1,
+      0
+     ],
+     "centi": [
+      46,
+      0
+     ],
+     "end": [
+      0,
+      -2
+     ],
+     "connected": [
+      false,
+      false
+     ],
+     "retaliation": [
+      false,
+      false
+     ],
+     "path": null,
+     "fronts": [
+      [
+       -1,
+       0
+      ],
+      [
+       -1,
+       0
+      ]
+     ]
+    },
+    "r1": {
+     "fire": [
+      [
+       "positional",
+       ""
+      ],
+      [
+       "",
+       ""
+      ]
+     ],
+     "units": [
+      1,
+      0
+     ],
+     "centi": [
+      46,
+      0
+     ],
+     "end": [
+      0,
+      -2
+     ],
+     "connected": [
+      false,
+      false
+     ],
+     "retaliation": [
+      false,
+      false
+     ],
+     "path": null,
+     "fronts": [
+      [
+       -1,
+       0
+      ],
+      [
+       -1,
+       0
+      ]
+     ]
+    },
+    "r2": {
+     "fire": [
+      [
+       "positional",
+       ""
+      ],
+      [
+       "",
+       ""
+      ]
+     ],
+     "units": [
+      1,
+      0
+     ],
+     "centi": [
+      46,
+      0
+     ],
+     "end": [
+      0,
+      -2
+     ],
+     "connected": [
+      false,
+      false
+     ],
+     "retaliation": [
+      false,
+      false
+     ],
+     "path": [
+      [
+       0,
+       0
+      ],
+      [
+       -2,
+       -2
+      ]
+     ],
+     "fronts": [
+      [
+       -1,
+       0
+      ],
+      [
+       -1,
+       0
+      ]
+     ]
+    },
+    "mirror_ok": true
+   },
+   {
+    "key": "N1",
+    "label": "Adjacent to B's waiting front, never in its cell",
+    "lane": [
+     -2,
+     8,
+     [],
+     8,
+     -1,
+     8,
+     [],
+     0,
+     0,
+     0,
+     0,
+     0
+    ],
+    "pos": [
+     0,
+     -1
+    ],
+    "actions": [
+     "LH-T",
+     "LH-T"
+    ],
+    "hit": [],
+    "end cell": {
+     "fire": [
+      [
+       "",
+       ""
+      ],
+      [
+       "",
+       ""
+      ]
+     ],
+     "units": [
+      0,
+      0
+     ],
+     "centi": [
+      0,
+      0
+     ],
+     "end": [
+      0,
+      -1
+     ],
+     "connected": [
+      true,
+      true
+     ],
+     "retaliation": [
+      false,
+      false
+     ],
+     "path": null,
+     "fronts": [
+      [
+       -1,
+       -1
+      ],
+      [
+       0,
+       -1
+      ]
+     ]
+    },
+    "r1": {
+     "fire": [
+      [
+       "",
+       ""
+      ],
+      [
+       "",
+       ""
+      ]
+     ],
+     "units": [
+      0,
+      0
+     ],
+     "centi": [
+      0,
+      0
+     ],
+     "end": [
+      0,
+      -1
+     ],
+     "connected": [
+      true,
+      true
+     ],
+     "retaliation": [
+      false,
+      false
+     ],
+     "path": null,
+     "fronts": [
+      [
+       -1,
+       -1
+      ],
+      [
+       0,
+       -1
+      ]
+     ]
+    },
+    "r2": {
+     "fire": [
+      [
+       "",
+       ""
+      ],
+      [
+       "",
+       ""
+      ]
+     ],
+     "units": [
+      0,
+      0
+     ],
+     "centi": [
+      0,
+      0
+     ],
+     "end": [
+      0,
+      -1
+     ],
+     "connected": [
+      true,
+      true
+     ],
+     "retaliation": [
+      false,
+      false
+     ],
+     "path": [
+      [
+       0,
+       0
+      ],
+      [
+       -1,
+       -1
+      ]
+     ],
+     "fronts": [
+      [
+       -1,
+       -1
+      ],
+      [
+       0,
+       -1
+      ]
+     ]
+    },
+    "mirror_ok": true
+   },
+   {
+    "key": "R1",
+    "label": "B dives A's Recall through A's 16-HP front at A's -1 and lands: positional aggro on tick 0, retaliation from the end cell on tick 1",
+    "lane": [
+     -1,
+     16,
+     [],
+     0,
+     0,
+     8,
+     [],
+     0,
+     0,
+     0,
+     0,
+     0
+    ],
+    "pos": [
+     -2,
+     0
+    ],
+    "actions": [
+     "LH-R",
+     "LH-T"
+    ],
+    "hit": [
+     1
+    ],
+    "end cell": {
+     "fire": [
+      [
+       "",
+       ""
+      ],
+      [
+       "",
+       "retaliation"
+      ]
+     ],
+     "units": [
+      0,
+      1
+     ],
+     "centi": [
+      0,
+      46
+     ],
+     "end": [
+      -2,
+      2
+     ],
+     "connected": [
+      false,
+      true
+     ],
+     "retaliation": [
+      true,
+      false
+     ],
+     "path": null,
+     "fronts": [
+      [
+       -1,
+       0
+      ],
+      [
+       -1,
+       0
+      ]
+     ]
+    },
+    "r1": {
+     "fire": [
+      [
+       "",
+       ""
+      ],
+      [
+       "",
+       "retaliation"
+      ]
+     ],
+     "units": [
+      0,
+      1
+     ],
+     "centi": [
+      0,
+      46
+     ],
+     "end": [
+      -2,
+      2
+     ],
+     "connected": [
+      false,
+      true
+     ],
+     "retaliation": [
+      true,
+      false
+     ],
+     "path": null,
+     "fronts": [
+      [
+       -1,
+       0
+      ],
+      [
+       -1,
+       0
+      ]
+     ]
+    },
+    "r2": {
+     "fire": [
+      [
+       "",
+       ""
+      ],
+      [
+       "positional",
+       "retaliation"
+      ]
+     ],
+     "units": [
+      0,
+      3
+     ],
+     "centi": [
+      0,
+      139
+     ],
+     "end": [
+      -2,
+      2
+     ],
+     "connected": [
+      false,
+      true
+     ],
+     "retaliation": [
+      true,
+      false
+     ],
+     "path": [
+      [
+       -2,
+       -2
+      ],
+      [
+       1,
+       2
+      ]
+     ],
+     "fronts": [
+      [
+       -1,
+       0
+      ],
+      [
+       -1,
+       0
+      ]
+     ]
+    },
+    "mirror_ok": true
+   }
+  ]
+ },
+ "random": {
+  "games": 40,
+  "turns": 300,
+  "turns_resolved": 12000,
+  "by_class": {
+   "follow": {
+    "champion_turns": 13772,
+    "moved_share": 0.5488672669183852,
+    "pos_per_turn_end cell": 0.02388905024687772,
+    "ret_per_turn_end cell": 0.0,
+    "pos_per_turn_r1": 0.002468777229160616,
+    "ret_per_turn_r1": 0.0,
+    "pos_per_turn_r2": 0.03020621550972989,
+    "ret_per_turn_r2": 0.0,
+    "centi_per_turn_end cell": 0.4704472843450479,
+    "centi_per_turn_r1": 0.04552715654952077,
+    "centi_per_turn_r2": 0.7028753993610224,
+    "r2_pos_ticks": 416,
+    "r2_pos_ticks_moved": 378,
+    "r2_follow_genuine": 416,
+    "r2_follow_probe_mismatch": 0
+   },
+   "chase": {
+    "champion_turns": 4276,
+    "moved_share": 0.6290926099158092,
+    "pos_per_turn_end cell": 0.2432179607109448,
+    "ret_per_turn_end cell": 0.16487371375116933,
+    "pos_per_turn_r1": 0.047474275023386345,
+    "ret_per_turn_r1": 0.16347053320860616,
+    "pos_per_turn_r2": 0.2822731524789523,
+    "ret_per_turn_r2": 0.1658091674462114,
+    "centi_per_turn_end cell": 10.195743685687559,
+    "centi_per_turn_r1": 5.0750701590271285,
+    "centi_per_turn_r2": 11.205098222637979,
+    "r2_pos_ticks": 1207,
+    "r2_pos_ticks_moved": 988,
+    "r2_follow_genuine": 0,
+    "r2_follow_probe_mismatch": 0
+   },
+   "evade": {
+    "champion_turns": 1383,
+    "moved_share": 0.5950831525668836,
+    "pos_per_turn_end cell": 0.005784526391901663,
+    "ret_per_turn_end cell": 0.0,
+    "pos_per_turn_r1": 0.0,
+    "ret_per_turn_r1": 0.0,
+    "pos_per_turn_r2": 0.01735357917570499,
+    "ret_per_turn_r2": 0.0,
+    "centi_per_turn_end cell": 0.12147505422993492,
+    "centi_per_turn_r1": 0.0,
+    "centi_per_turn_r2": 0.4779464931308749,
+    "r2_pos_ticks": 24,
+    "r2_pos_ticks_moved": 24,
+    "r2_follow_genuine": 0,
+    "r2_follow_probe_mismatch": 0
+   },
+   "ward": {
+    "champion_turns": 756,
+    "moved_share": 0.9431216931216931,
+    "pos_per_turn_end cell": 0.0,
+    "ret_per_turn_end cell": 0.0,
+    "pos_per_turn_r1": 0.0,
+    "ret_per_turn_r1": 0.0,
+    "pos_per_turn_r2": 0.11375661375661375,
+    "ret_per_turn_r2": 0.0,
+    "centi_per_turn_end cell": 0.0,
+    "centi_per_turn_r1": 0.0,
+    "centi_per_turn_r2": 2.867724867724868,
+    "r2_pos_ticks": 86,
+    "r2_pos_ticks_moved": 86,
+    "r2_follow_genuine": 0,
+    "r2_follow_probe_mismatch": 0
+   },
+   "objective": {
+    "champion_turns": 347,
+    "moved_share": 0.723342939481268,
+    "pos_per_turn_end cell": 0.0345821325648415,
+    "ret_per_turn_end cell": 0.011527377521613832,
+    "pos_per_turn_r1": 0.01440922190201729,
+    "ret_per_turn_r1": 0.011527377521613832,
+    "pos_per_turn_r2": 0.02881844380403458,
+    "ret_per_turn_r2": 0.011527377521613832,
+    "centi_per_turn_end cell": 0.8213256484149856,
+    "centi_per_turn_r1": 0.49855907780979825,
+    "centi_per_turn_r2": 0.7089337175792507,
+    "r2_pos_ticks": 10,
+    "r2_pos_ticks_moved": 6,
+    "r2_follow_genuine": 0,
+    "r2_follow_probe_mismatch": 0
+   },
+   "recall": {
+    "champion_turns": 138,
+    "moved_share": 0.0,
+    "pos_per_turn_end cell": 0.057971014492753624,
+    "ret_per_turn_end cell": 0.0,
+    "pos_per_turn_r1": 0.057971014492753624,
+    "ret_per_turn_r1": 0.0,
+    "pos_per_turn_r2": 0.07246376811594203,
+    "ret_per_turn_r2": 0.0,
+    "centi_per_turn_end cell": 1.5144927536231885,
+    "centi_per_turn_r1": 1.5144927536231885,
+    "centi_per_turn_r2": 1.826086956521739,
+    "r2_pos_ticks": 10,
+    "r2_pos_ticks_moved": 0,
+    "r2_follow_genuine": 0,
+    "r2_follow_probe_mismatch": 0
+   }
+  },
+  "per_champion_turn": {
+   "pos_end cell": 0.058208333333333334,
+   "ret_end cell": 0.029541666666666667,
+   "centi_end cell": 2.1140833333333333,
+   "pos_r1": 0.010416666666666666,
+   "ret_r1": 0.029291666666666667,
+   "centi_r1": 0.94625,
+   "pos_r2": 0.07304166666666667,
+   "ret_r2": 0.029708333333333333,
+   "centi_r2": 2.5383333333333336
+  },
+  "deaths_per_champion_turn": {
+   "end cell": 0.019291666666666665,
+   "r1": 0.018875,
+   "r2": 0.019291666666666665
+  }
+ },
+ "scripted": {
+  "seeds": 8,
+  "turns": 200,
+  "pairings": {
+   "farm4 v farm4 [s0, equal]": {
+    "turns_resolved": 1600,
+    "by_class": {
+     "follow": {
+      "champion_turns": 3113,
+      "moved_share": 0.19434628975265017,
+      "pos_per_turn_end cell": 0.008994539029874718,
+      "ret_per_turn_end cell": 0.0,
+      "pos_per_turn_r1": 0.0,
+      "ret_per_turn_r1": 0.0,
+      "pos_per_turn_r2": 0.0,
+      "ret_per_turn_r2": 0.0,
+      "centi_per_turn_end cell": 0.16061676839061997,
+      "centi_per_turn_r1": 0.0,
+      "centi_per_turn_r2": 0.0,
+      "r2_pos_ticks": 0,
+      "r2_pos_ticks_moved": 0,
+      "r2_follow_genuine": 0,
+      "r2_follow_probe_mismatch": 0
+     },
+     "chase": {
+      "champion_turns": 0,
+      "moved_share": 0.0,
+      "pos_per_turn_end cell": 0.0,
+      "ret_per_turn_end cell": 0.0,
+      "pos_per_turn_r1": 0.0,
+      "ret_per_turn_r1": 0.0,
+      "pos_per_turn_r2": 0.0,
+      "ret_per_turn_r2": 0.0,
+      "centi_per_turn_end cell": 0.0,
+      "centi_per_turn_r1": 0.0,
+      "centi_per_turn_r2": 0.0,
+      "r2_pos_ticks": 0,
+      "r2_pos_ticks_moved": 0,
+      "r2_follow_genuine": 0,
+      "r2_follow_probe_mismatch": 0
+     },
+     "evade": {
+      "champion_turns": 0,
+      "moved_share": 0.0,
+      "pos_per_turn_end cell": 0.0,
+      "ret_per_turn_end cell": 0.0,
+      "pos_per_turn_r1": 0.0,
+      "ret_per_turn_r1": 0.0,
+      "pos_per_turn_r2": 0.0,
+      "ret_per_turn_r2": 0.0,
+      "centi_per_turn_end cell": 0.0,
+      "centi_per_turn_r1": 0.0,
+      "centi_per_turn_r2": 0.0,
+      "r2_pos_ticks": 0,
+      "r2_pos_ticks_moved": 0,
+      "r2_follow_genuine": 0,
+      "r2_follow_probe_mismatch": 0
+     },
+     "ward": {
+      "champion_turns": 0,
+      "moved_share": 0.0,
+      "pos_per_turn_end cell": 0.0,
+      "ret_per_turn_end cell": 0.0,
+      "pos_per_turn_r1": 0.0,
+      "ret_per_turn_r1": 0.0,
+      "pos_per_turn_r2": 0.0,
+      "ret_per_turn_r2": 0.0,
+      "centi_per_turn_end cell": 0.0,
+      "centi_per_turn_r1": 0.0,
+      "centi_per_turn_r2": 0.0,
+      "r2_pos_ticks": 0,
+      "r2_pos_ticks_moved": 0,
+      "r2_follow_genuine": 0,
+      "r2_follow_probe_mismatch": 0
+     },
+     "objective": {
+      "champion_turns": 0,
+      "moved_share": 0.0,
+      "pos_per_turn_end cell": 0.0,
+      "ret_per_turn_end cell": 0.0,
+      "pos_per_turn_r1": 0.0,
+      "ret_per_turn_r1": 0.0,
+      "pos_per_turn_r2": 0.0,
+      "ret_per_turn_r2": 0.0,
+      "centi_per_turn_end cell": 0.0,
+      "centi_per_turn_r1": 0.0,
+      "centi_per_turn_r2": 0.0,
+      "r2_pos_ticks": 0,
+      "r2_pos_ticks_moved": 0,
+      "r2_follow_genuine": 0,
+      "r2_follow_probe_mismatch": 0
+     },
+     "recall": {
+      "champion_turns": 0,
+      "moved_share": 0.0,
+      "pos_per_turn_end cell": 0.0,
+      "ret_per_turn_end cell": 0.0,
+      "pos_per_turn_r1": 0.0,
+      "ret_per_turn_r1": 0.0,
+      "pos_per_turn_r2": 0.0,
+      "ret_per_turn_r2": 0.0,
+      "centi_per_turn_end cell": 0.0,
+      "centi_per_turn_r1": 0.0,
+      "centi_per_turn_r2": 0.0,
+      "r2_pos_ticks": 0,
+      "r2_pos_ticks_moved": 0,
+      "r2_follow_genuine": 0,
+      "r2_follow_probe_mismatch": 0
+     }
+    },
+    "per_champion_turn": {
+     "pos_end cell": 0.00875,
+     "ret_end cell": 0.0,
+     "centi_end cell": 0.15625,
+     "pos_r1": 0.0,
+     "ret_r1": 0.0,
+     "centi_r1": 0.0,
+     "pos_r2": 0.0,
+     "ret_r2": 0.0,
+     "centi_r2": 0.0
+    },
+    "deaths_per_champion_turn": {
+     "end cell": 0.000625,
+     "r1": 0.000625,
+     "r2": 0.000625
+    }
+   },
+   "ward_favorable4 v farm4 [s0, equal]": {
+    "turns_resolved": 1600,
+    "by_class": {
+     "follow": {
+      "champion_turns": 2972,
+      "moved_share": 0.25773889636608344,
+      "pos_per_turn_end cell": 0.016823687752355317,
+      "ret_per_turn_end cell": 0.0,
+      "pos_per_turn_r1": 0.0,
+      "ret_per_turn_r1": 0.0,
+      "pos_per_turn_r2": 0.006729475100942127,
+      "ret_per_turn_r2": 0.0,
+      "centi_per_turn_end cell": 0.3495962314939435,
+      "centi_per_turn_r1": 0.0,
+      "centi_per_turn_r2": 0.14737550471063257,
+      "r2_pos_ticks": 20,
+      "r2_pos_ticks_moved": 20,
+      "r2_follow_genuine": 20,
+      "r2_follow_probe_mismatch": 0
+     },
+     "chase": {
+      "champion_turns": 0,
+      "moved_share": 0.0,
+      "pos_per_turn_end cell": 0.0,
+      "ret_per_turn_end cell": 0.0,
+      "pos_per_turn_r1": 0.0,
+      "ret_per_turn_r1": 0.0,
+      "pos_per_turn_r2": 0.0,
+      "ret_per_turn_r2": 0.0,
+      "centi_per_turn_end cell": 0.0,
+      "centi_per_turn_r1": 0.0,
+      "centi_per_turn_r2": 0.0,
+      "r2_pos_ticks": 0,
+      "r2_pos_ticks_moved": 0,
+      "r2_follow_genuine": 0,
+      "r2_follow_probe_mismatch": 0
+     },
+     "evade": {
+      "champion_turns": 0,
+      "moved_share": 0.0,
+      "pos_per_turn_end cell": 0.0,
+      "ret_per_turn_end cell": 0.0,
+      "pos_per_turn_r1": 0.0,
+      "ret_per_turn_r1": 0.0,
+      "pos_per_turn_r2": 0.0,
+      "ret_per_turn_r2": 0.0,
+      "centi_per_turn_end cell": 0.0,
+      "centi_per_turn_r1": 0.0,
+      "centi_per_turn_r2": 0.0,
+      "r2_pos_ticks": 0,
+      "r2_pos_ticks_moved": 0,
+      "r2_follow_genuine": 0,
+      "r2_follow_probe_mismatch": 0
+     },
+     "ward": {
+      "champion_turns": 161,
+      "moved_share": 1.0,
+      "pos_per_turn_end cell": 0.0,
+      "ret_per_turn_end cell": 0.0,
+      "pos_per_turn_r1": 0.0,
+      "ret_per_turn_r1": 0.0,
+      "pos_per_turn_r2": 0.13043478260869565,
+      "ret_per_turn_r2": 0.0,
+      "centi_per_turn_end cell": 0.0,
+      "centi_per_turn_r1": 0.0,
+      "centi_per_turn_r2": 2.8074534161490683,
+      "r2_pos_ticks": 21,
+      "r2_pos_ticks_moved": 21,
+      "r2_follow_genuine": 0,
+      "r2_follow_probe_mismatch": 0
+     },
+     "objective": {
+      "champion_turns": 0,
+      "moved_share": 0.0,
+      "pos_per_turn_end cell": 0.0,
+      "ret_per_turn_end cell": 0.0,
+      "pos_per_turn_r1": 0.0,
+      "ret_per_turn_r1": 0.0,
+      "pos_per_turn_r2": 0.0,
+      "ret_per_turn_r2": 0.0,
+      "centi_per_turn_end cell": 0.0,
+      "centi_per_turn_r1": 0.0,
+      "centi_per_turn_r2": 0.0,
+      "r2_pos_ticks": 0,
+      "r2_pos_ticks_moved": 0,
+      "r2_follow_genuine": 0,
+      "r2_follow_probe_mismatch": 0
+     },
+     "recall": {
+      "champion_turns": 0,
+      "moved_share": 0.0,
+      "pos_per_turn_end cell": 0.0,
+      "ret_per_turn_end cell": 0.0,
+      "pos_per_turn_r1": 0.0,
+      "ret_per_turn_r1": 0.0,
+      "pos_per_turn_r2": 0.0,
+      "ret_per_turn_r2": 0.0,
+      "centi_per_turn_end cell": 0.0,
+      "centi_per_turn_r1": 0.0,
+      "centi_per_turn_r2": 0.0,
+      "r2_pos_ticks": 0,
+      "r2_pos_ticks_moved": 0,
+      "r2_follow_genuine": 0,
+      "r2_follow_probe_mismatch": 0
+     }
+    },
+    "per_champion_turn": {
+     "pos_end cell": 0.015625,
+     "ret_end cell": 0.0,
+     "centi_end cell": 0.3246875,
+     "pos_r1": 0.0,
+     "ret_r1": 0.0,
+     "centi_r1": 0.0,
+     "pos_r2": 0.0128125,
+     "ret_r2": 0.0,
+     "centi_r2": 0.278125
+    },
+    "deaths_per_champion_turn": {
+     "end cell": 0.0003125,
+     "r1": 0.0003125,
+     "r2": 0.0003125
+    }
+   },
+   "ward_always4 v bully4 [neutral, equal]": {
+    "turns_resolved": 1600,
+    "by_class": {
+     "follow": {
+      "champion_turns": 1212,
+      "moved_share": 0.41914191419141916,
+      "pos_per_turn_end cell": 0.0297029702970297,
+      "ret_per_turn_end cell": 0.0,
+      "pos_per_turn_r1": 0.0,
+      "ret_per_turn_r1": 0.0,
+      "pos_per_turn_r2": 0.03135313531353135,
+      "ret_per_turn_r2": 0.0,
+      "centi_per_turn_end cell": 0.7648514851485149,
+      "centi_per_turn_r1": 0.0,
+      "centi_per_turn_r2": 1.0008250825082508,
+      "r2_pos_ticks": 38,
+      "r2_pos_ticks_moved": 38,
+      "r2_follow_genuine": 36,
+      "r2_follow_probe_mismatch": 2
+     },
+     "chase": {
+      "champion_turns": 1015,
+      "moved_share": 0.2827586206896552,
+      "pos_per_turn_end cell": 0.2916256157635468,
+      "ret_per_turn_end cell": 0.2246305418719212,
+      "pos_per_turn_r1": 0.20985221674876847,
+      "ret_per_turn_r1": 0.2246305418719212,
+      "pos_per_turn_r2": 0.24236453201970443,
+      "ret_per_turn_r2": 0.2246305418719212,
+      "centi_per_turn_end cell": 18.56650246305419,
+      "centi_per_turn_r1": 15.679802955665025,
+      "centi_per_turn_r2": 16.750738916256157,
+      "r2_pos_ticks": 246,
+      "r2_pos_ticks_moved": 59,
+      "r2_follow_genuine": 0,
+      "r2_follow_probe_mismatch": 0
+     },
+     "evade": {
+      "champion_turns": 259,
+      "moved_share": 0.3745173745173745,
+      "pos_per_turn_end cell": 0.003861003861003861,
+      "ret_per_turn_end cell": 0.0,
+      "pos_per_turn_r1": 0.0,
+      "ret_per_turn_r1": 0.0,
+      "pos_per_turn_r2": 0.015444015444015444,
+      "ret_per_turn_r2": 0.0,
+      "centi_per_turn_end cell": 0.0888030888030888,
+      "centi_per_turn_r1": 0.0,
+      "centi_per_turn_r2": 0.44787644787644787,
+      "r2_pos_ticks": 4,
+      "r2_pos_ticks_moved": 4,
+      "r2_follow_genuine": 0,
+      "r2_follow_probe_mismatch": 0
+     },
+     "ward": {
+      "champion_turns": 139,
+      "moved_share": 0.6690647482014388,
+      "pos_per_turn_end cell": 0.0,
+      "ret_per_turn_end cell": 0.0,
+      "pos_per_turn_r1": 0.0,
+      "ret_per_turn_r1": 0.0,
+      "pos_per_turn_r2": 0.05755395683453238,
+      "ret_per_turn_r2": 0.0,
+      "centi_per_turn_end cell": 0.0,
+      "centi_per_turn_r1": 0.0,
+      "centi_per_turn_r2": 1.2158273381294964,
+      "r2_pos_ticks": 8,
+      "r2_pos_ticks_moved": 8,
+      "r2_follow_genuine": 0,
+      "r2_follow_probe_mismatch": 0
+     },
+     "objective": {
+      "champion_turns": 0,
+      "moved_share": 0.0,
+      "pos_per_turn_end cell": 0.0,
+      "ret_per_turn_end cell": 0.0,
+      "pos_per_turn_r1": 0.0,
+      "ret_per_turn_r1": 0.0,
+      "pos_per_turn_r2": 0.0,
+      "ret_per_turn_r2": 0.0,
+      "centi_per_turn_end cell": 0.0,
+      "centi_per_turn_r1": 0.0,
+      "centi_per_turn_r2": 0.0,
+      "r2_pos_ticks": 0,
+      "r2_pos_ticks_moved": 0,
+      "r2_follow_genuine": 0,
+      "r2_follow_probe_mismatch": 0
+     },
+     "recall": {
+      "champion_turns": 51,
+      "moved_share": 0.0,
+      "pos_per_turn_end cell": 0.0,
+      "ret_per_turn_end cell": 0.0,
+      "pos_per_turn_r1": 0.0,
+      "ret_per_turn_r1": 0.0,
+      "pos_per_turn_r2": 0.0,
+      "ret_per_turn_r2": 0.0,
+      "centi_per_turn_end cell": 0.0,
+      "centi_per_turn_r1": 0.0,
+      "centi_per_turn_r2": 0.0,
+      "r2_pos_ticks": 0,
+      "r2_pos_ticks_moved": 0,
+      "r2_follow_genuine": 0,
+      "r2_follow_probe_mismatch": 0
+     }
+    },
+    "per_champion_turn": {
+     "pos_end cell": 0.1040625,
+     "ret_end cell": 0.07125,
+     "centi_end cell": 6.1859375,
+     "pos_r1": 0.0665625,
+     "ret_r1": 0.07125,
+     "centi_r1": 4.9734375,
+     "pos_r2": 0.0925,
+     "ret_r2": 0.07125,
+     "centi_r2": 5.78125
+    },
+    "deaths_per_champion_turn": {
+     "end cell": 0.0078125,
+     "r1": 0.0078125,
+     "r2": 0.008125
+    }
+   },
+   "bully4 v farm4 [s0, equal]": {
+    "turns_resolved": 1600,
+    "by_class": {
+     "follow": {
+      "champion_turns": 1448,
+      "moved_share": 0.3383977900552486,
+      "pos_per_turn_end cell": 0.013812154696132596,
+      "ret_per_turn_end cell": 0.0,
+      "pos_per_turn_r1": 0.0,
+      "ret_per_turn_r1": 0.0,
+      "pos_per_turn_r2": 0.020718232044198894,
+      "ret_per_turn_r2": 0.0,
+      "centi_per_turn_end cell": 0.36671270718232046,
+      "centi_per_turn_r1": 0.0,
+      "centi_per_turn_r2": 0.5455801104972375,
+      "r2_pos_ticks": 30,
+      "r2_pos_ticks_moved": 30,
+      "r2_follow_genuine": 28,
+      "r2_follow_probe_mismatch": 2
+     },
+     "chase": {
+      "champion_turns": 998,
+      "moved_share": 0.2965931863727455,
+      "pos_per_turn_end cell": 0.40380761523046094,
+      "ret_per_turn_end cell": 0.21442885771543085,
+      "pos_per_turn_r1": 0.2995991983967936,
+      "ret_per_turn_r1": 0.21442885771543085,
+      "pos_per_turn_r2": 0.36773547094188375,
+      "ret_per_turn_r2": 0.21442885771543085,
+      "centi_per_turn_end cell": 23.544088176352705,
+      "centi_per_turn_r1": 19.59819639278557,
+      "centi_per_turn_r2": 21.650300601202403,
+      "r2_pos_ticks": 367,
+      "r2_pos_ticks_moved": 71,
+      "r2_follow_genuine": 0,
+      "r2_follow_probe_mismatch": 0
+     },
+     "evade": {
+      "champion_turns": 182,
+      "moved_share": 0.34065934065934067,
+      "pos_per_turn_end cell": 0.0,
+      "ret_per_turn_end cell": 0.0,
+      "pos_per_turn_r1": 0.0,
+      "ret_per_turn_r1": 0.0,
+      "pos_per_turn_r2": 0.0,
+      "ret_per_turn_r2": 0.0,
+      "centi_per_turn_end cell": 0.0,
+      "centi_per_turn_r1": 0.0,
+      "centi_per_turn_r2": 0.0,
+      "r2_pos_ticks": 0,
+      "r2_pos_ticks_moved": 0,
+      "r2_follow_genuine": 0,
+      "r2_follow_probe_mismatch": 0
+     },
+     "ward": {
+      "champion_turns": 0,
+      "moved_share": 0.0,
+      "pos_per_turn_end cell": 0.0,
+      "ret_per_turn_end cell": 0.0,
+      "pos_per_turn_r1": 0.0,
+      "ret_per_turn_r1": 0.0,
+      "pos_per_turn_r2": 0.0,
+      "ret_per_turn_r2": 0.0,
+      "centi_per_turn_end cell": 0.0,
+      "centi_per_turn_r1": 0.0,
+      "centi_per_turn_r2": 0.0,
+      "r2_pos_ticks": 0,
+      "r2_pos_ticks_moved": 0,
+      "r2_follow_genuine": 0,
+      "r2_follow_probe_mismatch": 0
+     },
+     "objective": {
+      "champion_turns": 0,
+      "moved_share": 0.0,
+      "pos_per_turn_end cell": 0.0,
+      "ret_per_turn_end cell": 0.0,
+      "pos_per_turn_r1": 0.0,
+      "ret_per_turn_r1": 0.0,
+      "pos_per_turn_r2": 0.0,
+      "ret_per_turn_r2": 0.0,
+      "centi_per_turn_end cell": 0.0,
+      "centi_per_turn_r1": 0.0,
+      "centi_per_turn_r2": 0.0,
+      "r2_pos_ticks": 0,
+      "r2_pos_ticks_moved": 0,
+      "r2_follow_genuine": 0,
+      "r2_follow_probe_mismatch": 0
+     },
+     "recall": {
+      "champion_turns": 46,
+      "moved_share": 0.0,
+      "pos_per_turn_end cell": 0.0,
+      "ret_per_turn_end cell": 0.0,
+      "pos_per_turn_r1": 0.0,
+      "ret_per_turn_r1": 0.0,
+      "pos_per_turn_r2": 0.0,
+      "ret_per_turn_r2": 0.0,
+      "centi_per_turn_end cell": 0.0,
+      "centi_per_turn_r1": 0.0,
+      "centi_per_turn_r2": 0.0,
+      "r2_pos_ticks": 0,
+      "r2_pos_ticks_moved": 0,
+      "r2_follow_genuine": 0,
+      "r2_follow_probe_mismatch": 0
+     }
+    },
+    "per_champion_turn": {
+     "pos_end cell": 0.1321875,
+     "ret_end cell": 0.066875,
+     "centi_end cell": 7.50875,
+     "pos_r1": 0.0934375,
+     "ret_r1": 0.066875,
+     "centi_r1": 6.1121875,
+     "pos_r2": 0.1240625,
+     "ret_r2": 0.066875,
+     "centi_r2": 6.9990625
+    },
+    "deaths_per_champion_turn": {
+     "end cell": 0.0084375,
+     "r1": 0.0078125,
+     "r2": 0.00875
+    }
+   },
+   "bully4 v step_back4 [neutral, equal]": {
+    "turns_resolved": 1600,
+    "by_class": {
+     "follow": {
+      "champion_turns": 671,
+      "moved_share": 0.3591654247391952,
+      "pos_per_turn_end cell": 0.0014903129657228018,
+      "ret_per_turn_end cell": 0.0,
+      "pos_per_turn_r1": 0.0,
+      "ret_per_turn_r1": 0.0,
+      "pos_per_turn_r2": 0.011922503725782414,
+      "ret_per_turn_r2": 0.0,
+      "centi_per_turn_end cell": 0.02533532041728763,
+      "centi_per_turn_r1": 0.0,
+      "centi_per_turn_r2": 0.2637853949329359,
+      "r2_pos_ticks": 8,
+      "r2_pos_ticks_moved": 8,
+      "r2_follow_genuine": 8,
+      "r2_follow_probe_mismatch": 0
+     },
+     "chase": {
+      "champion_turns": 1156,
+      "moved_share": 0.17474048442906576,
+      "pos_per_turn_end cell": 0.23615916955017302,
+      "ret_per_turn_end cell": 0.00865051903114187,
+      "pos_per_turn_r1": 0.19204152249134948,
+      "ret_per_turn_r1": 0.00865051903114187,
+      "pos_per_turn_r2": 0.16262975778546712,
+      "ret_per_turn_r2": 0.00865051903114187,
+      "centi_per_turn_end cell": 7.277681660899654,
+      "centi_per_turn_r1": 5.92560553633218,
+      "centi_per_turn_r2": 4.546712802768166,
+      "r2_pos_ticks": 188,
+      "r2_pos_ticks_moved": 25,
+      "r2_follow_genuine": 0,
+      "r2_follow_probe_mismatch": 0
+     },
+     "evade": {
+      "champion_turns": 1089,
+      "moved_share": 0.03856749311294766,
+      "pos_per_turn_end cell": 0.0,
+      "ret_per_turn_end cell": 0.0,
+      "pos_per_turn_r1": 0.0,
+      "ret_per_turn_r1": 0.0,
+      "pos_per_turn_r2": 0.0,
+      "ret_per_turn_r2": 0.0,
+      "centi_per_turn_end cell": 0.0,
+      "centi_per_turn_r1": 0.0,
+      "centi_per_turn_r2": 0.0,
+      "r2_pos_ticks": 0,
+      "r2_pos_ticks_moved": 0,
+      "r2_follow_genuine": 0,
+      "r2_follow_probe_mismatch": 0
+     },
+     "ward": {
+      "champion_turns": 0,
+      "moved_share": 0.0,
+      "pos_per_turn_end cell": 0.0,
+      "ret_per_turn_end cell": 0.0,
+      "pos_per_turn_r1": 0.0,
+      "ret_per_turn_r1": 0.0,
+      "pos_per_turn_r2": 0.0,
+      "ret_per_turn_r2": 0.0,
+      "centi_per_turn_end cell": 0.0,
+      "centi_per_turn_r1": 0.0,
+      "centi_per_turn_r2": 0.0,
+      "r2_pos_ticks": 0,
+      "r2_pos_ticks_moved": 0,
+      "r2_follow_genuine": 0,
+      "r2_follow_probe_mismatch": 0
+     },
+     "objective": {
+      "champion_turns": 0,
+      "moved_share": 0.0,
+      "pos_per_turn_end cell": 0.0,
+      "ret_per_turn_end cell": 0.0,
+      "pos_per_turn_r1": 0.0,
+      "ret_per_turn_r1": 0.0,
+      "pos_per_turn_r2": 0.0,
+      "ret_per_turn_r2": 0.0,
+      "centi_per_turn_end cell": 0.0,
+      "centi_per_turn_r1": 0.0,
+      "centi_per_turn_r2": 0.0,
+      "r2_pos_ticks": 0,
+      "r2_pos_ticks_moved": 0,
+      "r2_follow_genuine": 0,
+      "r2_follow_probe_mismatch": 0
+     },
+     "recall": {
+      "champion_turns": 0,
+      "moved_share": 0.0,
+      "pos_per_turn_end cell": 0.0,
+      "ret_per_turn_end cell": 0.0,
+      "pos_per_turn_r1": 0.0,
+      "ret_per_turn_r1": 0.0,
+      "pos_per_turn_r2": 0.0,
+      "ret_per_turn_r2": 0.0,
+      "centi_per_turn_end cell": 0.0,
+      "centi_per_turn_r1": 0.0,
+      "centi_per_turn_r2": 0.0,
+      "r2_pos_ticks": 0,
+      "r2_pos_ticks_moved": 0,
+      "r2_follow_genuine": 0,
+      "r2_follow_probe_mismatch": 0
+     }
+    },
+    "per_champion_turn": {
+     "pos_end cell": 0.085625,
+     "ret_end cell": 0.003125,
+     "centi_end cell": 2.634375,
+     "pos_r1": 0.069375,
+     "ret_r1": 0.003125,
+     "centi_r1": 2.140625,
+     "pos_r2": 0.06125,
+     "ret_r2": 0.003125,
+     "centi_r2": 1.6978125
+    },
+    "deaths_per_champion_turn": {
+     "end cell": 0.00625,
+     "r1": 0.00625,
+     "r2": 0.0059375
+    }
+   },
+   "freeze_bully4 v walk_up_shove4 [freeze, large]": {
+    "turns_resolved": 1600,
+    "by_class": {
+     "follow": {
+      "champion_turns": 999,
+      "moved_share": 0.6866866866866866,
+      "pos_per_turn_end cell": 0.17217217217217218,
+      "ret_per_turn_end cell": 0.0,
+      "pos_per_turn_r1": 0.0,
+      "ret_per_turn_r1": 0.0,
+      "pos_per_turn_r2": 0.08008008008008008,
+      "ret_per_turn_r2": 0.0,
+      "centi_per_turn_end cell": 3.6236236236236237,
+      "centi_per_turn_r1": 0.0,
+      "centi_per_turn_r2": 1.2772772772772774,
+      "r2_pos_ticks": 80,
+      "r2_pos_ticks_moved": 80,
+      "r2_follow_genuine": 80,
+      "r2_follow_probe_mismatch": 0
+     },
+     "chase": {
+      "champion_turns": 1054,
+      "moved_share": 0.3301707779886148,
+      "pos_per_turn_end cell": 0.09108159392789374,
+      "ret_per_turn_end cell": 0.12903225806451613,
+      "pos_per_turn_r1": 0.054079696394686905,
+      "ret_per_turn_r1": 0.12618595825426945,
+      "pos_per_turn_r2": 0.23624288425047438,
+      "ret_per_turn_r2": 0.12618595825426945,
+      "centi_per_turn_end cell": 3.915559772296015,
+      "centi_per_turn_r1": 3.1328273244781784,
+      "centi_per_turn_r2": 6.149905123339659,
+      "r2_pos_ticks": 249,
+      "r2_pos_ticks_moved": 70,
+      "r2_follow_genuine": 0,
+      "r2_follow_probe_mismatch": 0
+     },
+     "evade": {
+      "champion_turns": 372,
+      "moved_share": 0.3575268817204301,
+      "pos_per_turn_end cell": 0.0,
+      "ret_per_turn_end cell": 0.0,
+      "pos_per_turn_r1": 0.0,
+      "ret_per_turn_r1": 0.0,
+      "pos_per_turn_r2": 0.0,
+      "ret_per_turn_r2": 0.0,
+      "centi_per_turn_end cell": 0.0,
+      "centi_per_turn_r1": 0.0,
+      "centi_per_turn_r2": 0.0,
+      "r2_pos_ticks": 0,
+      "r2_pos_ticks_moved": 0,
+      "r2_follow_genuine": 0,
+      "r2_follow_probe_mismatch": 0
+     },
+     "ward": {
+      "champion_turns": 0,
+      "moved_share": 0.0,
+      "pos_per_turn_end cell": 0.0,
+      "ret_per_turn_end cell": 0.0,
+      "pos_per_turn_r1": 0.0,
+      "ret_per_turn_r1": 0.0,
+      "pos_per_turn_r2": 0.0,
+      "ret_per_turn_r2": 0.0,
+      "centi_per_turn_end cell": 0.0,
+      "centi_per_turn_r1": 0.0,
+      "centi_per_turn_r2": 0.0,
+      "r2_pos_ticks": 0,
+      "r2_pos_ticks_moved": 0,
+      "r2_follow_genuine": 0,
+      "r2_follow_probe_mismatch": 0
+     },
+     "objective": {
+      "champion_turns": 110,
+      "moved_share": 0.9454545454545454,
+      "pos_per_turn_end cell": 0.0,
+      "ret_per_turn_end cell": 0.0,
+      "pos_per_turn_r1": 0.0,
+      "ret_per_turn_r1": 0.0,
+      "pos_per_turn_r2": 0.0,
+      "ret_per_turn_r2": 0.0,
+      "centi_per_turn_end cell": 0.0,
+      "centi_per_turn_r1": 0.0,
+      "centi_per_turn_r2": 0.0,
+      "r2_pos_ticks": 0,
+      "r2_pos_ticks_moved": 0,
+      "r2_follow_genuine": 0,
+      "r2_follow_probe_mismatch": 0
+     },
+     "recall": {
+      "champion_turns": 85,
+      "moved_share": 0.0,
+      "pos_per_turn_end cell": 0.0,
+      "ret_per_turn_end cell": 0.0,
+      "pos_per_turn_r1": 0.0,
+      "ret_per_turn_r1": 0.0,
+      "pos_per_turn_r2": 0.0,
+      "ret_per_turn_r2": 0.0,
+      "centi_per_turn_end cell": 0.0,
+      "centi_per_turn_r1": 0.0,
+      "centi_per_turn_r2": 0.0,
+      "r2_pos_ticks": 0,
+      "r2_pos_ticks_moved": 0,
+      "r2_follow_genuine": 0,
+      "r2_follow_probe_mismatch": 0
+     }
+    },
+    "per_champion_turn": {
+     "pos_end cell": 0.08375,
+     "ret_end cell": 0.0425,
+     "centi_end cell": 2.4209375,
+     "pos_r1": 0.0178125,
+     "ret_r1": 0.0415625,
+     "centi_r1": 1.031875,
+     "pos_r2": 0.1028125,
+     "ret_r2": 0.0415625,
+     "centi_r2": 2.424375
+    },
+    "deaths_per_champion_turn": {
+     "end cell": 0.0171875,
+     "r1": 0.016875,
+     "r2": 0.016875
+    }
+   },
+   "ward_freeze4 v walk_up_shove4 [freeze, large]": {
+    "turns_resolved": 1600,
+    "by_class": {
+     "follow": {
+      "champion_turns": 2390,
+      "moved_share": 0.4225941422594142,
+      "pos_per_turn_end cell": 0.026778242677824266,
+      "ret_per_turn_end cell": 0.0,
+      "pos_per_turn_r1": 0.0,
+      "ret_per_turn_r1": 0.0,
+      "pos_per_turn_r2": 0.03138075313807531,
+      "ret_per_turn_r2": 0.0,
+      "centi_per_turn_end cell": 0.4062761506276151,
+      "centi_per_turn_r1": 0.0,
+      "centi_per_turn_r2": 0.9690376569037656,
+      "r2_pos_ticks": 75,
+      "r2_pos_ticks_moved": 75,
+      "r2_follow_genuine": 75,
+      "r2_follow_probe_mismatch": 0
+     },
+     "chase": {
+      "champion_turns": 0,
+      "moved_share": 0.0,
+      "pos_per_turn_end cell": 0.0,
+      "ret_per_turn_end cell": 0.0,
+      "pos_per_turn_r1": 0.0,
+      "ret_per_turn_r1": 0.0,
+      "pos_per_turn_r2": 0.0,
+      "ret_per_turn_r2": 0.0,
+      "centi_per_turn_end cell": 0.0,
+      "centi_per_turn_r1": 0.0,
+      "centi_per_turn_r2": 0.0,
+      "r2_pos_ticks": 0,
+      "r2_pos_ticks_moved": 0,
+      "r2_follow_genuine": 0,
+      "r2_follow_probe_mismatch": 0
+     },
+     "evade": {
+      "champion_turns": 0,
+      "moved_share": 0.0,
+      "pos_per_turn_end cell": 0.0,
+      "ret_per_turn_end cell": 0.0,
+      "pos_per_turn_r1": 0.0,
+      "ret_per_turn_r1": 0.0,
+      "pos_per_turn_r2": 0.0,
+      "ret_per_turn_r2": 0.0,
+      "centi_per_turn_end cell": 0.0,
+      "centi_per_turn_r1": 0.0,
+      "centi_per_turn_r2": 0.0,
+      "r2_pos_ticks": 0,
+      "r2_pos_ticks_moved": 0,
+      "r2_follow_genuine": 0,
+      "r2_follow_probe_mismatch": 0
+     },
+     "ward": {
+      "champion_turns": 76,
+      "moved_share": 1.0,
+      "pos_per_turn_end cell": 0.0,
+      "ret_per_turn_end cell": 0.0,
+      "pos_per_turn_r1": 0.0,
+      "ret_per_turn_r1": 0.0,
+      "pos_per_turn_r2": 1.0,
+      "ret_per_turn_r2": 0.0,
+      "centi_per_turn_end cell": 0.0,
+      "centi_per_turn_r1": 0.0,
+      "centi_per_turn_r2": 15.921052631578947,
+      "r2_pos_ticks": 76,
+      "r2_pos_ticks_moved": 76,
+      "r2_follow_genuine": 0,
+      "r2_follow_probe_mismatch": 0
+     },
+     "objective": {
+      "champion_turns": 558,
+      "moved_share": 1.0,
+      "pos_per_turn_end cell": 0.0,
+      "ret_per_turn_end cell": 0.0,
+      "pos_per_turn_r1": 0.0,
+      "ret_per_turn_r1": 0.0,
+      "pos_per_turn_r2": 0.0,
+      "ret_per_turn_r2": 0.0,
+      "centi_per_turn_end cell": 0.0,
+      "centi_per_turn_r1": 0.0,
+      "centi_per_turn_r2": 0.0,
+      "r2_pos_ticks": 0,
+      "r2_pos_ticks_moved": 0,
+      "r2_follow_genuine": 0,
+      "r2_follow_probe_mismatch": 0
+     },
+     "recall": {
+      "champion_turns": 0,
+      "moved_share": 0.0,
+      "pos_per_turn_end cell": 0.0,
+      "ret_per_turn_end cell": 0.0,
+      "pos_per_turn_r1": 0.0,
+      "ret_per_turn_r1": 0.0,
+      "pos_per_turn_r2": 0.0,
+      "ret_per_turn_r2": 0.0,
+      "centi_per_turn_end cell": 0.0,
+      "centi_per_turn_r1": 0.0,
+      "centi_per_turn_r2": 0.0,
+      "r2_pos_ticks": 0,
+      "r2_pos_ticks_moved": 0,
+      "r2_follow_genuine": 0,
+      "r2_follow_probe_mismatch": 0
+     }
+    },
+    "per_champion_turn": {
+     "pos_end cell": 0.02,
+     "ret_end cell": 0.0,
+     "centi_end cell": 0.3034375,
+     "pos_r1": 0.0,
+     "ret_r1": 0.0,
+     "centi_r1": 0.0,
+     "pos_r2": 0.0471875,
+     "ret_r2": 0.0,
+     "centi_r2": 1.101875
+    },
+    "deaths_per_champion_turn": {
+     "end cell": 0.0015625,
+     "r1": 0.0015625,
+     "r2": 0.0015625
+    }
+   }
+  }
+ },
+ "throughput": {
+  "turns_per_second": {
+   "m45_unified_r1": 3648.935877690721,
+   "m45_unified": 3541.45855791899
+  },
+  "ratio": 0.9705455718120897,
+  "repeats": 3
+ },
+ "elapsed_s": 25.0
+}

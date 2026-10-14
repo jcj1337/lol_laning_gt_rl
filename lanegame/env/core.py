@@ -454,9 +454,13 @@ class LaneEnv:
                 "minion_hits": ct.minion_hits, "minion_damage": ct.minion_damage, "retaliation": ct.retaliation,
                 "minion_fire": ct.minion_fire, "trade_wave_capped": ct.trade_wave_capped,
                 # the lane step's targets (per side: enemy champion cell in that side's coordinates, retaliation tick,
-                # stationary), so the authoritative step can be re-run from info alone
+                # stationary, and under champion_movement_rule "tick" its cell after each tick), so the authoritative
+                # step can be re-run from info alone
                 "minion_targets": ct.minion_targets,
             })
+            if cfg.tick_movement:
+                # M4.5a correction: per champion, its own cell after each tick (the last = champ_end)
+                info["champion_path"] = ct.path
         if self.record_ticks:
             info["lane_trace"] = res.trace                                    # ticks of ct.lane, not of the probe
         return StepResult(obs, (reward, -reward), terminated, truncated, info)

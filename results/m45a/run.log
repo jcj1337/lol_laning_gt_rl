@@ -5,4 +5,10 @@ m45a_C1_bigwave_level2: seed 2, 12 turns, verify True / True
 m45a_C2_bigwave_level18: seed 2, 12 turns, verify True / True
 m45a_D1_ahead_of_wave: seed 0, 12 turns, verify True / True
 m45a_A1_strong_freeze: seed 0, 40 turns, verify True / True
-wrote results\m45a\summary.json and report.md (21.7 s)
+m45a_M1_hold_follows: seed 0, 2 turns, verify True / True
+m45a_M2_chase_missed: seed 0, 1 turns, verify True / True
+m45a_M3_chase_landed: seed 3, 1 turns, verify True / True
+m45a_M4_walk_back: seed 0, 2 turns, verify True / True
+wrote results\m45a\summary.json and report.md (29.9 s)
+wrote results\m45a/movement_correction.json and .md (25.8 s)
+wrote results\m45a/movement_correction.json and .md (25.0 s)

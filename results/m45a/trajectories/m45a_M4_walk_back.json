@@ -1,0 +1,83 @@
+{
+ "schema": "lanegame.viewer_recording",
+ "version": 1,
+ "config": "m45_unified",
+ "rules_revision": 2,
+ "scenario": "walk_back",
+ "gap": "equal",
+ "seed": 0,
+ "names": [
+  "scripted",
+  "scripted"
+ ],
+ "label": "Movement correction, Scenario D: A Holds at B's tower cell far ahead of its wave and walks back; on tick 0 it stands in B's oncoming front's cell (hit), on tick 1 it meets its own wave at the lane cell, which covers it. Seed 0: the first seed without a gank.",
+ "actions": [
+  [
+   0,
+   0
+  ],
+  [
+   0,
+   0
+  ]
+ ],
+ "labels": [
+  [
+   "LH-H",
+   "LH-H"
+  ],
+  [
+   "LH-H",
+   "LH-H"
+  ]
+ ],
+ "events": [
+  {
+   "turn": 0,
+   "events": [
+    "A Last Hit: removed 1 of 1 HP",
+    "B's minions hit A (positional): 1 units = 46 cHP",
+    "B Last Hit: removed 1 of 1 HP"
+   ]
+  },
+  {
+   "turn": 1,
+   "events": [
+    "A Last Hit: removed 1 of 1 HP",
+    "B Last Hit: removed 1 of 1 HP"
+   ]
+  }
+ ],
+ "payoff_A": 0.0,
+ "turns": 2,
+ "summary": {
+  "A": {
+   "wards": 0,
+   "wards_placed": 0,
+   "wards_interrupted": 0,
+   "minion_units_taken": 1,
+   "minion_centi_taken": 46,
+   "retaliation_ticks_taken": 0,
+   "positional_ticks_taken": 1,
+   "trade_damage_dealt": 0,
+   "capped_trades": 0,
+   "deaths": 0,
+   "recalls": 0,
+   "gold": 0.3375
+  },
+  "B": {
+   "wards": 0,
+   "wards_placed": 0,
+   "wards_interrupted": 0,
+   "minion_units_taken": 0,
+   "minion_centi_taken": 0,
+   "retaliation_ticks_taken": 0,
+   "positional_ticks_taken": 0,
+   "trade_damage_dealt": 0,
+   "capped_trades": 0,
+   "deaths": 0,
+   "recalls": 0,
+   "gold": 0.3375
+  }
+ }
+}

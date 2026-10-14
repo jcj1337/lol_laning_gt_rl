@@ -2,6 +2,7 @@
  "schema": "lanegame.viewer_recording",
  "version": 1,
  "config": "m45_unified",
+ "rules_revision": 2,
  "scenario": "bigwave_l18",
  "gap": "equal",
  "seed": 2,
@@ -124,6 +125,7 @@
    "turn": 1,
    "events": [
     "A Last Hit: removed 1 of 1 HP",
+    "B's minions hit A (positional): 2 units = 27 cHP",
     "A's trade connected: dealt 0 cHP",
     "A lost 1 packet(s) (4 HP)",
     "B Last Hit: removed 1 of 1 HP"
@@ -161,6 +163,7 @@
    "turn": 5,
    "events": [
     "A Last Hit: removed 1 of 1 HP",
+    "B's minions hit A (positional): 1 units = 14 cHP",
     "A's trade connected: dealt 0 cHP",
     "B's tower shot A for 229 cHP",
     "A's reinforcement merged into its front",
@@ -213,6 +216,7 @@
    "turn": 10,
    "events": [
     "A Last Hit: removed 0 of 1 HP",
+    "B's minions hit A (positional): 1 units = 14 cHP",
     "A's reinforcement merged into its front",
     "B Last Hit: removed 0 of 1 HP"
    ]
@@ -233,10 +237,10 @@
    "wards": 0,
    "wards_placed": 0,
    "wards_interrupted": 0,
-   "minion_units_taken": 3,
-   "minion_centi_taken": 41,
+   "minion_units_taken": 7,
+   "minion_centi_taken": 96,
    "retaliation_ticks_taken": 2,
-   "positional_ticks_taken": 0,
+   "positional_ticks_taken": 3,
    "trade_damage_dealt": 2750,
    "capped_trades": 0,
    "deaths": 0,

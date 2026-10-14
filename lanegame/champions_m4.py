@@ -45,6 +45,10 @@ farm-mode reach and spends min(B_w, round(trade_wave_fraction C)). `wave_reach_r
 positional.MinionTarget (the enemy champion's end cell and, after positive trade damage, the retaliation tick) and
 returns the minion damage units each champion took (TurnResult.champion_hits), converted here into centi-HP at the
 victim's start-of-turn level (positional.minion_damage_centi) and summed with the turn's other damage (step 9b).
+`champion_movement_rule = "tick"` (the M4.5a correction, step 5c): every champion reaches its unchanged end cell tick
+by tick (positional.tick_path); Hold, an unthreatened Yield and Safe head on each tick for their behaviour's target
+from the probe's front after that tick (`_tick_goals`), so they walk with their wave; the cells go to the lane step in
+MinionTarget.path and are reported in M4Turn.path.
 
 Every power-dependent quantity of a turn (trade damage, gank and tower damage, Pressure tower damage) uses the levels
 and items held at the start of the turn. The chance vector is M2's (N_CHANCE = 10 uniforms per turn, drawn whatever
@@ -76,7 +80,7 @@ from .config import (B_HOLD, B_RECALL, B_SAFE, B_TRADE, B_YIELD, B_ABSENT, F, NO
                      W_SLOWPUSH, GameConfig, exact_safe_base)
 from .mechanics import step_turn, strength_budget
 from .positional import (WARD, MinionTarget, dist as graph_dist, exposure_cell, minion_damage_centi, mirror_cell,
-                         reach_interval)
+                         reach_interval, tick_path)
 from .progression import Tables, tables
 from .state import State
 
@@ -458,6 +462,9 @@ class M4Turn:
     minion_fire: Optional[Tuple[Tuple[str, ...], Tuple[str, ...]]] = None
     trade_wave_capped: Tuple[bool, bool] = (False, False)
     minion_targets: Optional[tuple] = None  # the positional.MinionTarget per side given to the lane step (None: off)
+    # champion_movement_rule "tick" (else None): per champion, its own cell after each tick (the last = end; a recaller
+    # channels in its cell, an absent champion is at -T)
+    path: Optional[Tuple[Tuple[int, ...], Tuple[int, ...]]] = None
 
 
 def resolve_turn_m4(lane: State, m4: M4State, k: int, a: int, b: int, cfg: GameConfig,
@@ -641,6 +648,17 @@ def resolve_turn_m4(lane: State, m4: M4State, k: int, a: int, b: int, cfg: GameC
         cap = tuple(_round_half_up(_q(cfg.trade_wave_fraction) * ctx.capacity(lv0[s], it0[s])) for s in (A, B))
         eff_budget = tuple(min(budget[s], cap[s]) if connected[s] else budget[s] for s in (A, B))
         wave_capped = tuple(connected[s] and eff_budget[s] < budget[s] for s in (A, B))
+    # 5c. M4.5a correction (champion_movement_rule "tick"): each champion's cell after each tick, on its way to the same
+    #     end cell; Hold, an unthreatened Yield and Safe walk with their wave (`_tick_goals`)
+    path = None
+    if cfg.tick_movement:
+        follows = tuple(not (away[s] or recalling[s] or warding[s] or obj[s] != NONE or s in chasers or threatened[s])
+                        for s in (A, B))
+        path = tuple((-T,) * cfg.ticks_per_turn if absent[s] else
+                     (c0[s],) * cfg.ticks_per_turn if recalling[s] else            # channels in its cell
+                     tick_path(c0[s], end[s], _tick_goals(probe, lane, s, beh[s], c0[s], cfg) if follows[s] else None,
+                               cfg.champion_speed, cfg.ticks_per_turn, T, ward_rule)
+                     for s in (A, B))
     targets, retaliate = None, (False, False)
     if cfg.minion_targeting:
         # side s's minions retaliate iff the enemy's connected Trade dealt positive damage (after mitigation) to s
@@ -648,7 +666,8 @@ def resolve_turn_m4(lane: State, m4: M4State, k: int, a: int, b: int, cfg: GameC
                           for s in (A, B))
         targets = tuple(None if away[1 - s] else
                         MinionTarget(mirror_cell(end[1 - s]), cfg.minion_retaliation_delay if retaliate[s] else None,
-                                     end[1 - s] == c0[1 - s])
+                                     end[1 - s] == c0[1 - s],
+                                     None if path is None else tuple(mirror_cell(x) for x in path[1 - s]))
                         for s in (A, B))
 
     # 6. the authoritative lane step (effective waves and objectives)
@@ -793,5 +812,26 @@ def resolve_turn_m4(lane: State, m4: M4State, k: int, a: int, b: int, cfg: GameC
         reward_units, reward_units / ctx.scale, (invested[A], invested[B]), (pinned[A], pinned[B]), eff_budget,
         xp_reward_units, terminal, warding, placed,
         (warding[A] and not placed[A], warding[B] and not placed[B]), res.champion_hits, minion_cp, retaliate,
-        res.champion_fire, wave_capped, targets)
+        res.champion_fire, wave_capped, targets, path)
     return turn
+
+
+def _tick_goals(probe, lane: State, s: int, behavior: int, c0: int, cfg: GameConfig) -> Tuple[int, ...]:
+    """champion_movement_rule "tick": where a farming champion of side s heads on each tick. Its farm spot is computed
+    after every tick of the probe exactly as step 1 computes it at the end of the turn (the front's cell clipped to the
+    lane, the own cell without a front (0 from W), the pre-turn front cell once the front has crashed under
+    farm_spot_rule "pre_crash_front"), then mapped through the behaviour's target: Safe min(spot, safe_line), Yield
+    `yield_target`, Hold (and a Trade with nobody to chase) the spot itself."""
+    T = cfg.tower
+    out = []
+    for fronts, crashed in zip(probe.fronts_by_tick, probe.crashed_by_tick):
+        fx = fronts[s]
+        sp = max(-T, min(T, fx)) if fx is not None else (0 if c0 == WARD else c0)
+        if cfg.farm_spot_rule == "pre_crash_front" and crashed[s] > 0 and lane.side(s)[1] > 0:
+            sp = max(-T, min(T, lane.side(s)[0]))
+        if behavior == B_SAFE:
+            sp = min(sp, cfg.safe_line)
+        elif behavior == B_YIELD:
+            sp = yield_target(sp, lane, s, cfg)
+        out.append(sp)
+    return tuple(out)

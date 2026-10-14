@@ -1,0 +1,85 @@
+{
+ "schema": "lanegame.viewer_recording",
+ "version": 1,
+ "config": "m45_unified",
+ "rules_revision": 2,
+ "scenario": "follow",
+ "gap": "equal",
+ "seed": 0,
+ "names": [
+  "scripted",
+  "scripted"
+ ],
+ "label": "Movement correction, Scenario A: A Holds at the lane cell with its 16-HP front; B's 2-HP front at A's +1 dies on tick 0. A stays with its wave on tick 0 and steps to +1 with it on tick 1: no minion fire (the first implementation placed A at +1 for both ticks). Seed 0: the first seed without a gank.",
+ "actions": [
+  [
+   0,
+   0
+  ],
+  [
+   0,
+   0
+  ]
+ ],
+ "labels": [
+  [
+   "LH-H",
+   "LH-H"
+  ],
+  [
+   "LH-H",
+   "LH-H"
+  ]
+ ],
+ "events": [
+  {
+   "turn": 0,
+   "events": [
+    "A Last Hit: removed 0 of 1 HP",
+    "B Last Hit: removed 0 of 1 HP",
+    "B lost 1 packet(s) (2 HP)"
+   ]
+  },
+  {
+   "turn": 1,
+   "events": [
+    "A Last Hit: removed 0 of 1 HP",
+    "A's wave crashed into B's tower (15 HP)",
+    "A damaged B's tower: +100",
+    "B Last Hit: removed 1 of 1 HP"
+   ]
+  }
+ ],
+ "payoff_A": -0.17500000000000002,
+ "turns": 2,
+ "summary": {
+  "A": {
+   "wards": 0,
+   "wards_placed": 0,
+   "wards_interrupted": 0,
+   "minion_units_taken": 0,
+   "minion_centi_taken": 0,
+   "retaliation_ticks_taken": 0,
+   "positional_ticks_taken": 0,
+   "trade_damage_dealt": 0,
+   "capped_trades": 0,
+   "deaths": 0,
+   "recalls": 0,
+   "gold": 0.225
+  },
+  "B": {
+   "wards": 0,
+   "wards_placed": 0,
+   "wards_interrupted": 0,
+   "minion_units_taken": 0,
+   "minion_centi_taken": 0,
+   "retaliation_ticks_taken": 0,
+   "positional_ticks_taken": 0,
+   "trade_damage_dealt": 0,
+   "capped_trades": 0,
+   "deaths": 0,
+   "recalls": 0,
+   "gold": 0.4
+  }
+ }
+}

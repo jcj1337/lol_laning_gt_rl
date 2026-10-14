@@ -2,6 +2,7 @@
  "schema": "lanegame.viewer_recording",
  "version": 1,
  "config": "m45_unified",
+ "rules_revision": 2,
  "scenario": "bigwave",
  "gap": "equal",
  "seed": 2,
@@ -124,6 +125,7 @@
    "turn": 1,
    "events": [
     "A Last Hit: removed 1 of 1 HP",
+    "B's minions hit A (positional): 2 units = 93 cHP",
     "A's trade connected: dealt 0 cHP",
     "A lost 1 packet(s) (4 HP)",
     "B Last Hit: removed 1 of 1 HP"
@@ -164,6 +166,7 @@
    "turn": 5,
    "events": [
     "A Last Hit: removed 1 of 1 HP",
+    "B's minions hit A (positional): 1 units = 40 cHP",
     "A's trade connected: dealt 0 cHP",
     "B's tower shot A for 116 cHP",
     "A's reinforcement merged into its front",
@@ -212,6 +215,7 @@
    "turn": 10,
    "events": [
     "A Last Hit: removed 1 of 1 HP",
+    "B's minions hit A (positional): 1 units = 40 cHP",
     "A's trade connected: dealt 124 cHP",
     "A was ganked (p=0.06): 232 cHP",
     "A's reinforcement merged into its front",
@@ -231,17 +235,17 @@
    ]
   }
  ],
- "payoff_A": 1.4675000000000002,
+ "payoff_A": 1.58,
  "turns": 12,
  "summary": {
   "A": {
    "wards": 0,
    "wards_placed": 0,
    "wards_interrupted": 0,
-   "minion_units_taken": 5,
-   "minion_centi_taken": 218,
+   "minion_units_taken": 9,
+   "minion_centi_taken": 391,
    "retaliation_ticks_taken": 3,
-   "positional_ticks_taken": 1,
+   "positional_ticks_taken": 4,
    "trade_damage_dealt": 792,
    "capped_trades": 0,
    "deaths": 1,
@@ -260,7 +264,7 @@
    "capped_trades": 0,
    "deaths": 1,
    "recalls": 1,
-   "gold": 3.125
+   "gold": 3.0125
   }
  }
 }

@@ -92,7 +92,7 @@ top). In short:
 | **M4.4a. PPO readiness and strategic diagnostics** | three-environment training specification, checkpoint guard, state-based metrics, paired counterfactuals, smoke tests | **complete** ([report](docs/m4/m4_4a_ppo_readiness.md), [the PPO pipeline explained](docs/rl/ppo_training_explained.md)) |
 | **M4.4b. Controlled PPO self-play training** | 3 economies × 3 seeds × 2M transitions, a matched 2× extension; strength, convergence, strategic behaviour, counterfactual scorecard, representative games | **complete, in review** ([report](docs/m4/m4_4b_ppo_training_report.md), [tables](results/m44b/report.md)) |
 | **M4.4c. Strategic behaviour and economic incentives** | multi-turn paired counterfactuals on the M4.4b policies: interrupted Recall, freezes, zoning, Vision before Pressure, the four wave actions | **complete** ([report](docs/m4/m4_4c_strategic_investigation.md), [tables](results/m44c/report.md)) |
-| **M4.5a. Unified positional mechanics** | shared Vision node W and contestable Ward, per-tick minion retaliation and positional aggro, minion damage on champions, XP range 2, capped wave budget while trading, reach ball (`m45_unified()`) | **complete, in review** ([spec](docs/m4/m4_5a_unified_mechanics_spec.md), [report](docs/m4/m4_5a_unified_mechanics_report.md), [smoke tables](results/m45a/report.md)) |
+| **M4.5a. Unified positional mechanics** | shared Vision node W and contestable Ward, per-tick minion retaliation and positional aggro, champions walking tick by tick with their wave (revision 2), minion damage on champions, XP range 2, capped wave budget while trading, reach ball (`m45_unified()`) | **complete, in review** ([spec](docs/m4/m4_5a_unified_mechanics_spec.md), [report](docs/m4/m4_5a_unified_mechanics_report.md), [smoke tables](results/m45a/report.md)) |
 | **M4.5b. Integrated calibration and strategic evaluation** | Vision, minion damage, combat-wave coupling, Safe economics and freezes calibrated together | planned |
 | **M4.5c. PPO training and evaluation on the revised model** | fresh shared-policy PPO; emergent freezing, zoning, Vision timing, resets; then the former M4.4d robustness and exploitability work | planned |
 | M5. Adaptive opponent and game-theoretic research | robustness and exploitation against historical, scripted and adaptive opponents | proposed |
@@ -165,7 +165,8 @@ python -m lanegame rl-shared --current-fraction 0.8 --skill-levels 0.2,0.5,0.8 -
 python -m lanegame rl-eval results/rl/checkpoints/demo_shared/final.pt   # champion game: both seats, held-out seeds, 95% CIs
 python -m lanegame experiments-rl openai_five         # the OpenAI Five-inspired study (results/rl/openai_five/)
 python -m lanegame experiments-siege all              # regenerate every siege-study result (results/siege/)
-python -m lanegame.experiments.m45a all              # M4.5a: demonstration recordings + smoke study (results/m45a/, ~25 s)
+python -m lanegame.experiments.m45a all              # M4.5a: demonstration recordings + smoke study (results/m45a/, ~30 s)
+python -m lanegame.experiments.m45a movement         # M4.5a correction: scenarios, revision 1 vs 2 (~30 s)
 streamlit run lanegame/viewer/app.py                  # the visual lane debugger (pip install -e ".[viewer]"); mode
                                                       # "Recorded trajectory" replays results/rl/m43b/trajectories/*.json
 ```

@@ -2,10 +2,11 @@
 cost in runtime, and with every invariant intact?
 
     random      uniform legal play on m45_unified (invariants and the observation decoder every turn), event rates
-    scripted    a few four-action strategy pairings, paired seeds, on m4_four_actions_econ_aggro and m45_unified (the
-                Ward strategies play their inner strategy where Ward is not legal): gold lead, deaths, Recalls, minion
-                damage, wards; one window per seed from the named start
-    throughput  turns per second of uniform play, aggro versus m45 (one process)
+    scripted    a few four-action strategy pairings, paired seeds, on m4_four_actions_econ_aggro, m45_unified_r1
+                (M4.5a as first implemented) and m45_unified (the Ward strategies play their inner strategy where
+                Ward is not legal): gold lead, deaths, Recalls, minion damage, wards; one window per seed from the
+                named start
+    throughput  turns per second of uniform play, aggro versus m45 r1 and r2 (one process)
     damage      the minion damage table D(m, L) / H(L) at the default parameters, with and without investment
 
 Seeds: SeedSequence roots 85,000-85,999 (disjoint from every earlier study).
@@ -87,7 +88,7 @@ def scripted(seeds: int = 16, turns: int = 200) -> dict:
     from ...viewer import policies as pl
     from ...viewer import session as ss
     out = {}
-    for preset in ("m4_four_actions_econ_aggro", "m45_unified"):
+    for preset in ("m4_four_actions_econ_aggro", "m45_unified_r1", "m45_unified"):
         rows = {}
         for pa, pb, scen, gap in PAIRINGS:
             per = {k: [] for k in ("lead", "deaths_A", "deaths_B", "recalls_A", "recalls_B", "minion_cp_A",
@@ -116,7 +117,7 @@ def scripted(seeds: int = 16, turns: int = 200) -> dict:
 
 def throughput(turns: int = 3000) -> dict:
     out = {}
-    for name in ("m4_four_actions_econ_aggro", "m45_unified"):
+    for name in ("m4_four_actions_econ_aggro", "m45_unified_r1", "m45_unified"):
         cfg = getattr(GameConfig, name)()
         env = LaneEnv(cfg, max_turns=turns)
         env.reset(seed=SEED)

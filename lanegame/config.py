@@ -545,14 +545,22 @@ class GameConfig:
     ward_exposure: int = 0
     # minion targeting (per tick): a wave designates the enemy champion on tick t by retaliation (the enemy's connected
     # Trade dealt positive damage to our champion this turn and t >= minion_retaliation_delay; the exchange lands on
-    # tick 0) or by positional aggro (the enemy champion did not move this turn and, at the start of tick t, stands in
-    # our front's cell with its own front strictly behind it or absent and no crashed mass of its own there); a
-    # designated wave whose front is within
+    # tick 0) or by positional aggro (the enemy champion stands in our front's cell with its own front strictly behind
+    # it or absent and no crashed mass of its own there; when and where: champion_movement_rule); a designated wave
+    # whose front is within
     # minion_range (graph distance) of the champion fires its tick firepower at it and deals no minion damage that tick
     minion_retaliation: bool = False
     minion_positional_aggro: bool = False
     minion_range: int = 1
     minion_retaliation_delay: int = 1
+    # where a champion stands during the lane ticks (M4.5a; docs/m4/m4_5a_unified_mechanics_spec.md §4-5):
+    # "turn" = at its end cell for the whole turn (every preset before the M4.5a correction, and m45_unified_r1():
+    #          positional aggro is designated at the start of a tick, only on a champion that did not move this turn);
+    # "tick" = it walks its path tick by tick, at most ceil((t+1) v / n) - ceil(t v / n) edges on tick t, to the same
+    #          end cell; Hold, an unthreatened Yield and Safe follow their wave's front of each tick (from the probe);
+    #          positional aggro is evaluated on each tick's positions after that tick's movement, moved or not.
+    # The end cell, and with it contact, reach, gold, XP and exposure, is the same under both rules.
+    champion_movement_rule: str = "turn"
     # m minion damage units taken in a turn = max(1, round(alpha m / growth^(L - 1))) centi-HP (L = the victim's
     # start-of-turn level), then divided by M(S) with the turn's other damage when invest_durability is on
     minion_damage_alpha: int = 50
@@ -781,9 +789,9 @@ class GameConfig:
         base.update(kw)
         return cls.m4_four_actions_econ(**base)
 
-    # the fields GameConfig.m45_unified() changes from m4_four_actions_econ_aggro() (M4.5a)
+    # the fields GameConfig.m45_unified() changes from m4_four_actions_econ_aggro() (M4.5a, with the correction)
     M45_UNIFIED_FIELDS = ("vision_rule", "xp_range", "minion_retaliation", "minion_positional_aggro",
-                          "trade_wave_rule", "wave_reach_rule")
+                          "trade_wave_rule", "wave_reach_rule", "champion_movement_rule")
 
     @classmethod
     def m45_unified(cls, **kw) -> "GameConfig":
@@ -798,15 +806,27 @@ class GameConfig:
           minion_positional_aggro True    a wave turns on an enemy champion standing in its cell ahead of its own wave
           trade_wave_rule "capped"        a connected trader still spends up to round(C / 2) on enemy minions
           wave_reach_rule "ball"          wave damage only within one cell of the champion
+          champion_movement_rule "tick"   champions walk tick by tick (Hold / Yield / Safe follow their wave's front of
+                                          each tick); positional aggro on each tick's positions, moved or not
         with the provisional parameters minion_range 1, minion_retaliation_delay 1, minion_damage_alpha 50,
         minion_damage_growth 1.08, trade_wave_fraction 0.5, ward_exposure 0 and the unchanged vision numbers (6 turns,
         gank occurrence x 0.25). Every other rule is `m4_four_actions_econ_aggro()`'s. The action space keeps 61 codes;
         the observation has 90 entries (a W entry per champion cell one-hot). Not a default; every other preset is
-        unchanged. M4.5b calibrates it."""
+        unchanged. M4.5b calibrates it. Revision 2 (the M4.5a movement correction); revision 1 is `m45_unified_r1()`."""
         base = dict(vision_rule="ward", xp_range=2, minion_retaliation=True, minion_positional_aggro=True,
-                    trade_wave_rule="capped", wave_reach_rule="ball")
+                    trade_wave_rule="capped", wave_reach_rule="ball", champion_movement_rule="tick")
         base.update(kw)
         return cls.m4_four_actions_econ_aggro(**base)
+
+    @classmethod
+    def m45_unified_r1(cls, **kw) -> "GameConfig":
+        """SUPERSEDED (M4.5a as first implemented, commit ea3d9cb), kept to reproduce its results and recordings:
+        `m45_unified()` with champion_movement_rule "turn" (champions stand at their end cells for both ticks;
+        positional aggro is designated at the start of a tick and only on a champion that did not move this turn).
+        Every other rule and parameter is `m45_unified()`'s."""
+        base = dict(champion_movement_rule="turn")
+        base.update(kw)
+        return cls.m45_unified(**base)
 
     # ------------------------------------------------------------------ helpers
     @property
@@ -823,7 +843,12 @@ class GameConfig:
     def m45_mechanics(self) -> bool:
         """Any M4.5a opt-in rule is on (the environment then reports the M4.5a turn events)."""
         return (self.ward_node or self.minion_targeting or self.trade_wave_rule != "none"
-                or self.wave_reach_rule != "line")
+                or self.wave_reach_rule != "line" or self.champion_movement_rule != "turn")
+
+    @property
+    def tick_movement(self) -> bool:
+        """M4.5a correction: champions walk tick by tick (champion_movement_rule "tick")."""
+        return self.champion_movement_rule == "tick"
 
     @property
     def natural_waves(self) -> bool:
@@ -1124,6 +1149,8 @@ class GameConfig:
             bad("trade_wave_rule", "must be 'none' or 'capped'")
         if self.wave_reach_rule not in ("line", "ball"):
             bad("wave_reach_rule", "must be 'line' or 'ball'")
+        if self.champion_movement_rule not in ("turn", "tick"):
+            bad("champion_movement_rule", "must be 'turn' or 'tick'")
         for f in ("minion_retaliation", "minion_positional_aggro"):
             if not isinstance(getattr(self, f), bool):
                 bad(f, "must be a bool")
@@ -1221,7 +1248,7 @@ M4_ECONOMY_FIELDS = ("xp_per_hp", "xp_range", "xp_base", "xp_step", "level_cap",
                      # M4.5a
                      "vision_rule", "ward_exposure", "minion_retaliation", "minion_positional_aggro", "minion_range",
                      "minion_retaliation_delay", "minion_damage_alpha", "minion_damage_growth", "trade_wave_rule",
-                     "trade_wave_fraction", "wave_reach_rule")
+                     "trade_wave_fraction", "wave_reach_rule", "champion_movement_rule")
 _FIELD_DEFAULTS = {f.name: f.default for f in GameConfig.__dataclass_fields__.values()}
 
 

@@ -207,7 +207,7 @@ M45_MATCHUPS: Dict[str, Matchup] = {
         "The same lane at level 18 with 128 resources invested: the stack's retaliation is now a few percent of a "
         "bar.", M45),
     "M4.5-5. Chasing ahead of the own wave": Matchup(
-        "ahead", "equal", "bully4", "step_back4", 12,
+        "ahead_held", "equal", "bully4", "step_back4", 12,
         "A chases B, who steps back; A ends in B's wave with its own wave behind and B's minions fire at it "
         "(positional aggro) until A's wave arrives or A falls back.", M45),
     "M4.5-6. Strong freeze: Thin + Trade": Matchup(

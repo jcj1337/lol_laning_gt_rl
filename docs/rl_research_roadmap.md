@@ -130,7 +130,7 @@ available for historical comparisons)
 | deliverables | `GameConfig.m45_unified()`, `lanegame/positional.py`, engine changes behind opt-in fields, `tests/test_m45a_mechanics.py`, `lanegame/experiments/m45a/`, `results/m45a/`, the spec, the report, reference §14 |
 | completion criteria | every earlier preset bit-identical; deterministic replay; mirror equivariance; zero-sum rewards; masks, observation decoding and PettingZoo on the new preset; the checkpoint guard refuses old networks; regression suite green |
 | dependencies | M4.4c and its review |
-| outcome | all criteria met; GO WITH CAVEATS for M4.5b (§AI) |
+| outcome | all criteria met; GO WITH CAVEATS for M4.5b (§AI); corrected after review (revision 2: wave-following movement, positional aggro on actual positions; §AI, report §10) |
 
 **M4.5b — Integrated calibration and strategic evaluation** (planned)
 
@@ -1762,3 +1762,12 @@ was adopted:
 - Safe's price.
 
 **Next:** review; then M4.5b.
+
+**Correction after review (revision 2, 2026-10-14; [report §10](m4/m4_5a_unified_mechanics_report.md)).** The
+"moved this turn" exemption treated a symptom: a Hold champion stood at its wave's end-of-turn cell during both ticks
+while the minions were still at their start-of-tick cells. Now champions walk to the same end cells tick by tick
+(`champion_movement_rule = "tick"`): Hold, an unthreatened Yield and Safe follow their wave's front of each tick, and
+positional aggro reads each tick's positions after its movement, moved or not. Revision 1 is kept as
+`m45_unified_r1()` (byte-identical to the committed engine); recordings carry a rules revision, and the committed ones
+replay as revision 1. Ordinary last-hitting draws no positional aggro; chasers, Ward walks through a held lane cell and
+retreats through the enemy wave now do. 58 new tests. M4.5b and M4.5c are unchanged; M4.5b runs on revision 2.

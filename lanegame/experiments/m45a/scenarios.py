@@ -6,7 +6,17 @@ Start states (deterministic, hand-built; own coordinates per side, every packet 
                   level 2 (Scenario C: trading into a large enemy wave early)
     bigwave_l18   the same lane at level 18 with 128 resources invested each (Scenario C late)
     ahead         A's front behind at its -2, B's 8-HP front at the lane cell; A's champion at the lane cell (in B's
-                  wave, ahead of its own), B's at its -1, level 3 (Scenario D)
+                  wave, ahead of its own), B's at its -1, level 3 (Scenario D; B's front walks past A on tick 0, so
+                  under the corrected rules A shares its cell only at the turn's start: kept for revision-1 replays)
+    ahead_held    `ahead` with A's front at -1 in contact with B's, which stays at the lane cell (Scenario D since the
+                  movement correction)
+
+  the M4.5a movement correction (champion_movement_rule "tick"; its own scenario letters A, C, D), level 2:
+    follow        A at the lane cell with its 16-HP front; B's 2-HP front at A's +1 (Hold follows its winning wave)
+    chase         A's front at -2 against B's 16-HP front at A's -1, both champions at their towers (a Trader walks
+                  into B's wave to reach B)
+    walk_back     A at B's tower cell, far ahead of its wave at -2; the waves walk toward each other (A walks back
+                  through B's wave and meets its own)
 
 The ward strategies wrap a four-action `Strategy`: Ward (code 30) when Ward is legal, the own vision timer is 0 and
 the rule holds, otherwise the inner strategy (its low-HP Recall pre-rule always has priority):
@@ -46,6 +56,33 @@ def ahead(cfg: GameConfig) -> Start:
     return lane, _champs(cfg, 0, -1, 3), 2
 
 
+def ahead_held(cfg: GameConfig) -> Start:
+    """`ahead` with A's front one cell closer (at -1), in contact with B's front, which therefore stays at the lane
+    cell: under champion_movement_rule "tick" A is in B's front's cell after each tick, not only at the turn's start."""
+    lane = State(-1, 8, (), 0, 0, 8, (), 0, 0, 0, 0, 0)
+    return lane, _champs(cfg, 0, -1, 3), 2
+
+
+# the M4.5a movement correction (docs/m4/m4_5a_unified_mechanics_report.md §10), level 2, turn 2
+def follow(cfg: GameConfig) -> Start:
+    """Scenario A: A at the lane cell with its 16-HP front there; B's 2-HP front at A's +1 dies on tick 0."""
+    lane = State(0, 16, (), 0, -1, 2, (), 0, 0, 0, 0, 0)
+    return lane, _champs(cfg, 0, -2, 2), 2
+
+
+def chase(cfg: GameConfig) -> Start:
+    """Scenario C: A's front at its -2 against B's 16-HP front at A's -1; A at its tower, B two cells behind its wave
+    at its own tower: a Trader must walk into B's wave to reach B."""
+    lane = State(-2, 8, (), 0, 1, 16, (), 0, 0, 0, 0, 0)
+    return lane, _champs(cfg, -2, -2, 2), 2
+
+
+def walk_back(cfg: GameConfig) -> Start:
+    """Scenario D: A stands at B's tower cell, far ahead of its wave (at its -2); B's wave walks toward A's."""
+    lane = State(-2, 8, (), 0, -2, 8, (), 0, 0, 0, 0, 0)
+    return lane, _champs(cfg, 2, -2, 2), 2
+
+
 STARTS: Dict[str, Tuple[str, Callable[[GameConfig], Start]]] = {
     "bigwave": ("M4.5a: A's 8-HP front at its -1 against B's 24-HP stack at the lane cell; both champions with their "
                 "waves, level 2.", lambda cfg: bigwave(cfg, 2)),
@@ -53,6 +90,14 @@ STARTS: Dict[str, Tuple[str, Callable[[GameConfig], Start]]] = {
                     lambda cfg: bigwave(cfg, 18, 128.0)),
     "ahead": ("M4.5a: A's champion at the lane cell in B's 8-HP wave, its own front behind at -2; B at its -1.",
               ahead),
+    "ahead_held": ("M4.5a: A's champion at the lane cell in B's 8-HP wave, its own front behind at -1 (the fronts "
+                   "fight, so B's stays); B at its -1.", ahead_held),
+    "follow": ("M4.5a correction, Scenario A: A at the lane cell with its 16-HP front; B's 2-HP front at A's +1.",
+               follow),
+    "chase": ("M4.5a correction, Scenario C: B's 16-HP front at A's -1, A's front at -2; both champions at their "
+              "towers.", chase),
+    "walk_back": ("M4.5a correction, Scenario D: A at B's tower cell far ahead of its wave; the waves walk toward "
+                  "each other.", walk_back),
 }
 
 
@@ -98,4 +143,4 @@ STRATEGIES = {s.name: s for s in [
 ]}
 
 
-__all__ = ["STARTS", "STRATEGIES", "WardStrategy", "bigwave", "ahead"]
+__all__ = ["STARTS", "STRATEGIES", "WardStrategy", "bigwave", "ahead", "ahead_held", "follow", "chase", "walk_back"]

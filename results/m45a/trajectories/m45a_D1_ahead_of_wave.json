@@ -2,7 +2,8 @@
  "schema": "lanegame.viewer_recording",
  "version": 1,
  "config": "m45_unified",
- "scenario": "ahead",
+ "rules_revision": 2,
+ "scenario": "ahead_held",
  "gap": "equal",
  "seed": 0,
  "names": [
@@ -124,6 +125,7 @@
    "turn": 1,
    "events": [
     "A Last Hit: removed 1 of 1 HP",
+    "B's minions hit A (positional): 1 units = 43 cHP",
     "A tried to trade: no contact",
     "B Last Hit: removed 0 of 1 HP"
    ]
@@ -135,7 +137,8 @@
     "A's trade connected: dealt 221 cHP",
     "B's tower shot A for 110 cHP",
     "A's reinforcement merged into its front",
-    "B Last Hit: removed 0 of 1 HP"
+    "B Last Hit: removed 0 of 1 HP",
+    "B lost 1 packet(s) (2 HP)"
    ]
   },
   {
@@ -144,103 +147,103 @@
     "A Last Hit: removed 1 of 1 HP",
     "A's trade connected: dealt 0 cHP",
     "B's tower shot A for 110 cHP",
-    "B Last Hit: removed 0 of 1 HP",
-    "B lost 1 packet(s) (3 HP)"
+    "B Last Hit: removed 0 of 1 HP"
    ]
   },
   {
    "turn": 4,
    "events": [
-    "A Last Hit: removed 0 of 1 HP",
+    "A Last Hit: removed 1 of 1 HP",
     "A's trade connected: dealt 0 cHP",
     "B's tower shot A for 110 cHP",
-    "B Last Hit: removed 0 of 1 HP"
-   ]
-  },
-  {
-   "turn": 5,
-   "events": [
-    "A Last Hit: removed 0 of 1 HP",
-    "A's trade connected: dealt 0 cHP",
-    "B's tower shot A for 110 cHP",
-    "A's reinforcement merged into its front",
     "A reached level 4",
     "B Last Hit: removed 0 of 1 HP",
     "B's reinforcement merged into its front"
    ]
   },
   {
+   "turn": 5,
+   "events": [
+    "A Last Hit: removed 1 of 1 HP",
+    "A's trade connected: dealt 0 cHP",
+    "B's tower shot A for 116 cHP",
+    "A's reinforcement merged into its front",
+    "B Last Hit: removed 0 of 1 HP"
+   ]
+  },
+  {
    "turn": 6,
    "events": [
     "A Last Hit: removed 0 of 1 HP",
-    "B Last Hit: removed 0 of 1 HP"
+    "B's minions hit A (positional): 1 units = 40 cHP",
+    "B Last Hit: removed 0 of 1 HP",
+    "B lost 1 packet(s) (4 HP)"
    ]
   },
   {
    "turn": 7,
    "events": [
     "A Last Hit: removed 0 of 1 HP",
-    "A's reinforcement merged into its front",
-    "B Last Hit: removed 0 of 1 HP",
-    "B's reinforcement merged into its front"
+    "B Last Hit: removed 0 of 1 HP"
    ]
   },
   {
    "turn": 8,
    "events": [
     "A recalled",
+    "A's reinforcement merged into its front",
     "B Last Hit: removed 0 of 1 HP",
-    "B lost 1 packet(s) (4 HP)"
+    "B's reinforcement merged into its front"
    ]
   },
   {
    "turn": 9,
    "events": [
-    "A invested 1.15 gold at base",
+    "A's wave crashed into B's tower (23 HP)",
+    "A invested 1.99 gold at base",
     "A returns next turn",
-    "B recalled"
+    "B recalled",
+    "B lost 1 packet(s) (3 HP)"
    ]
   },
   {
    "turn": 10,
    "events": [
     "A Last Hit: removed 0 of 1 HP",
-    "A's wave crashed into B's tower (21 HP)",
-    "B lost 1 packet(s) (3 HP)",
-    "B invested 0.10 gold at base",
+    "A's wave crashed into B's tower (8 HP)",
+    "B invested 0.23 gold at base",
     "B returns next turn"
    ]
   },
   {
    "turn": 11,
    "events": [
-    "A Last Hit: removed 1 of 1 HP",
+    "A Last Hit: removed 0 of 1 HP",
     "A's trade connected: dealt 0 cHP",
     "B's tower shot A for 116 cHP",
-    "A's reinforcement merged into its front",
-    "A damaged B's tower: +500",
-    "A reached level 5",
+    "A damaged B's tower: +200",
     "B Last Hit: removed 1 of 1 HP",
+    "B lost 1 packet(s) (2 HP)",
     "B reached level 4"
    ]
   }
  ],
- "payoff_A": 0.7725,
+ "payoff_A": 1.1400000000000001,
  "turns": 12,
  "summary": {
   "A": {
    "wards": 0,
    "wards_placed": 0,
    "wards_interrupted": 0,
-   "minion_units_taken": 1,
-   "minion_centi_taken": 43,
+   "minion_units_taken": 3,
+   "minion_centi_taken": 126,
    "retaliation_ticks_taken": 0,
-   "positional_ticks_taken": 1,
+   "positional_ticks_taken": 3,
    "trade_damage_dealt": 221,
    "capped_trades": 0,
    "deaths": 0,
    "recalls": 1,
-   "gold": 1.6475
+   "gold": 2.165
   },
   "B": {
    "wards": 0,
@@ -254,7 +257,7 @@
    "capped_trades": 0,
    "deaths": 0,
    "recalls": 1,
-   "gold": 0.875
+   "gold": 1.025
   }
  }
 }

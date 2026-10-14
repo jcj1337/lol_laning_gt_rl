@@ -22,12 +22,13 @@ TRAJ_DIR = os.path.join(OUT_A, "trajectories")
 def export(name: str, env: str, x_spec: str, y_spec: str, seed: int, turns: int, label: str,
            out_dir: str = TRAJ_DIR) -> dict:
     from ....io import dump_json
+    from ....viewer.session import recording_stamp
     from ..m43b.trajectories import record_game
     cfg = env_cfg(env)
     x, y = agent_from_spec(x_spec, cfg), agent_from_spec(y_spec, cfg)
     g = record_game(cfg, x, y, seed, turns)
-    rec = {"schema": SCHEMA, "version": 1, "config": ENVS[env].preset, "scenario": "s0", "gap": "equal", "seed": seed,
-           "names": [x_spec, y_spec], "label": label, **g}
+    rec = {"schema": SCHEMA, "version": 1, **recording_stamp(ENVS[env].preset), "scenario": "s0", "gap": "equal",
+           "seed": seed, "names": [x_spec, y_spec], "label": label, **g}
     os.makedirs(out_dir, exist_ok=True)
     path = os.path.join(out_dir, f"{name}.json")
     dump_json(rec, path)

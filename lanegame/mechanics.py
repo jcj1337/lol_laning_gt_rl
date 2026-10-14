@@ -122,6 +122,11 @@ class TurnResult:
     # B this turn, and per champion the cause of each tick's fire on it ("retaliation", "positional" or "")
     champion_hits: Tuple[int, int] = (0, 0)
     champion_fire: Optional[Tuple[Tuple[str, ...], Tuple[str, ...]]] = None
+    # champion_movement_rule "tick" only (else None): per tick, each side's front cell after the tick (None: no packet
+    # in the lane) and the HP each side has crashed so far this turn; the resolver reads them from the probe to walk
+    # Hold / Yield / Safe champions with their wave
+    fronts_by_tick: Optional[Tuple[Tuple[Optional[int], Optional[int]], ...]] = None
+    crashed_by_tick: Optional[Tuple[Tuple[int, int], ...]] = None
 
 
 def wave_actions(state: State, s: int, cfg: GameConfig) -> Tuple[int, ...]:
@@ -568,16 +573,20 @@ def _strike(target, d: int) -> int:
 
 
 def _designation(P, siege, s: int, target: Optional[MinionTarget], t: int, cfg: GameConfig) -> str:
-    """M4.5a: does side s's wave designate the enemy champion on tick t (start-of-tick state)? "retaliation" (the enemy
-    champion damaged ours this turn and t >= the retaliation tick), "positional" (the enemy champion did not move this
-    turn and stands on a lane cell holding our front, its own front strictly behind it or absent, no crashed mass of its
-    own in that cell) or ""."""
+    """M4.5a: does side s's wave designate the enemy champion on tick t? "retaliation" (the enemy champion damaged ours
+    this turn and t >= the retaliation tick), "positional" (the enemy champion stands on a lane cell holding our front,
+    its own front strictly behind it or absent, no crashed mass of its own in that cell) or "".
+
+    champion_movement_rule "turn" (m45_unified_r1): P is the start-of-tick state, the champion stands at its end cell
+    and positional aggro needs it not to have moved this turn. "tick": P is the state after the tick's movement, merging
+    and entry crash, the champion stands at its cell after the tick (target.path[t]), moved or not."""
     if target is None or not P[s]:
         return ""
     if target.retaliate_from is not None and t >= target.retaliate_from:
         return "retaliation"
-    c = target.cell                                      # the enemy champion, in s's own coordinates
-    if cfg.minion_positional_aggro and target.stationary and c != WARD and P[s][0][0] == c:
+    tick_rule = cfg.tick_movement
+    c = target.path[t] if tick_rule else target.cell    # the enemy champion, in s's own coordinates
+    if cfg.minion_positional_aggro and (tick_rule or target.stationary) and c != WARD and P[s][0][0] == c:
         o, own = 1 - s, -c                               # the champion's cell in its own coordinates
         behind = not P[o] or P[o][0][0] < own
         if behind and not (siege[o] > 0 and own == cfg.tower):
@@ -596,11 +605,13 @@ def _tick_natural(P, siege, acts, t, crash_hp, cfg: GameConfig, trace=None, ev=N
     its own-perspective cell is <= the champion's reach line (champion_reach; NO_REACH while away, channeling or in a
     connected trade). Every HP removed is a farm opportunity for the remover's side at the cell it died in.
 
-    M4.5a (`targets`, per side a positional.MinionTarget or None): at the start of the tick each side's wave may
-    designate the enemy champion (`_designation`); after movement, a designated wave whose front is within minion_range
-    (graph distance) of the champion fires its tick firepower at it (added to champ_hits[champion]) and deals no minion
-    damage on this tick (neither the lane fight nor the siege fight). A champion's reach may be a line (int) or an
-    interval (wave_reach_rule "ball"; positional.reaches)."""
+    M4.5a (`targets`, per side a positional.MinionTarget or None): each side's wave may designate the enemy champion
+    (`_designation`): at the start of the tick under champion_movement_rule "turn", after the tick's movement, merging
+    and entry crash under "tick" (the champion then stands at its cell of the tick, targets[s].path[t]); after
+    movement, a designated wave whose front is within minion_range (graph distance) of the champion fires its tick
+    firepower at it (added to champ_hits[champion]) and deals no minion damage on this tick (neither the lane fight nor
+    the siege fight). A champion's reach may be a line (int) or an interval (wave_reach_rule "ball";
+    positional.reaches)."""
     T = cfg.tower
     waves = (wave_of(acts[A]), wave_of(acts[B]))
     objectives = (objective_of(acts[A]), objective_of(acts[B]))
@@ -613,8 +624,10 @@ def _tick_natural(P, siege, acts, t, crash_hp, cfg: GameConfig, trace=None, ev=N
         budget = [-((-(t + 1) * b) // n) + ((-t * b) // n) for b in budgets]   # ceil((t+1)b/n) - ceil(tb/n)
     siege_tick_start = list(siege)
     contact = _fronts_in_contact(P)
-    # ---- 0. M4.5a: target designation from the start-of-tick state ----
-    want = ("", "") if targets is None else tuple(_designation(P, siege, s, targets[s], t, cfg) for s in (A, B))
+    tick_rule = cfg.tick_movement
+    # ---- 0. M4.5a, champion_movement_rule "turn": target designation from the start-of-tick state ----
+    want = ("", "") if (targets is None or tick_rule) else \
+        tuple(_designation(P, siege, s, targets[s], t, cfg) for s in (A, B))
 
     # ---- 1. movement: a free front walks; contact with the enemy front, or (defender) with the enemy's crashed mass
     #         under its own tower (own x >= -T - 1, distance <= 1 from the tower cell), stops it ----
@@ -642,6 +655,11 @@ def _tick_natural(P, siege, acts, t, crash_hp, cfg: GameConfig, trace=None, ev=N
 
     champ_dealt = [0, 0]                   # HP the champion of side s removed this tick
 
+    # ---- 2b'. M4.5a, champion_movement_rule "tick": target designation from the positions after the tick's movement
+    #           (the champions at their cells of this tick, which the resolver walked in step with the minions) ----
+    if targets is not None and tick_rule:
+        want = tuple(_designation(P, siege, s, targets[s], t, cfg) for s in (A, B))
+
     # ---- 2c. M4.5a: a designated wave in range fires its whole tick firepower at the enemy champion ----
     #      (a blob whose tick share of firepower is 0, e.g. 1-7 HP on the second tick, has nothing to fire and keeps its
     #      normal role, such as engaging a crashed mass)
@@ -649,7 +667,8 @@ def _tick_natural(P, siege, acts, t, crash_hp, cfg: GameConfig, trace=None, ev=N
     if targets is not None:
         for s in (A, B):
             u = md(_blob_hp(P[s], cfg)) if (want[s] and P[s]) else 0
-            if u > 0 and graph_dist(P[s][0][0], targets[s].cell) <= cfg.minion_range:
+            if u > 0 and graph_dist(P[s][0][0], targets[s].path[t] if tick_rule else targets[s].cell) \
+                    <= cfg.minion_range:
                 on_champ[s] = True
                 champ_hits[1 - s] += u
                 fire_log[1 - s].append((want[s], u))
@@ -788,7 +807,9 @@ def step_turn(state: State, k: int, act_a: int, act_b: int, cfg: GameConfig,
 
     `champion_targets` (M4.5a, wave_dynamics "natural" only; None = no minion targeting): per side, the enemy
     champion its wave may target this turn (positional.MinionTarget, or None while that champion is away); the
-    result's champion_hits / champion_fire report the minion damage units each champion took."""
+    result's champion_hits / champion_fire report the minion damage units each champion took. Under
+    champion_movement_rule "tick" the result also reports each side's front after every tick (fronts_by_tick,
+    crashed_by_tick), which the resolver reads from its probe."""
     P = [[], []]
     for s in (A, B):
         fx, fh, rears, sg, _, _ = state.side(s)
@@ -826,10 +847,14 @@ def step_turn(state: State, k: int, act_a: int, act_b: int, cfg: GameConfig,
     reach = [cfg.tower if siege[s] > 0 else (P[s][0][0] if P[s] else -cfg.tower) for s in (A, B)]
     hits = [0, 0]
     champ_hits, fire_log = [0, 0], ([], [])
+    fronts_t, crashed_t = ([], []) if cfg.tick_movement else (None, None)
     if cfg.wave_dynamics == "natural":
         for t in range(cfg.ticks_per_turn):
             _tick_natural(P, siege, acts, t, crash_hp, cfg, trace, ev, k, reach, kills, thin_left, plates,
                           champion_reach, hits, champion_budget, champion_targets, champ_hits, fire_log)
+            if fronts_t is not None:
+                fronts_t.append((P[A][0][0] if P[A] else None, P[B][0][0] if P[B] else None))
+                crashed_t.append((crash_hp[A], crash_hp[B]))
     else:
         assert champion_budget is None, "champion_budget applies to wave_dynamics 'natural' only"
         assert champion_targets is None, "champion_targets applies to wave_dynamics 'natural' only"
@@ -877,7 +902,9 @@ def step_turn(state: State, k: int, act_a: int, act_b: int, cfg: GameConfig,
         fire = (tuple(c for c, _ in fire_log[A]), tuple(c for c, _ in fire_log[B]))
     return TurnResult(nxt, (crash_hp[A], crash_hp[B]), trace, ev, exposure, kills,
                       (claimed[A], claimed[B]), thinned, (vision_set[A], vision_set[B]), (hits[A], hits[B]),
-                      (champ_hits[A], champ_hits[B]), fire)
+                      (champ_hits[A], champ_hits[B]), fire,
+                      tuple(fronts_t) if fronts_t is not None else None,
+                      tuple(crashed_t) if crashed_t is not None else None)
 
 
 def initial_state(cfg: GameConfig) -> State:

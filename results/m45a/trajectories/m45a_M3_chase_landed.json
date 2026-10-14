@@ -1,0 +1,69 @@
+{
+ "schema": "lanegame.viewer_recording",
+ "version": 1,
+ "config": "m45_unified",
+ "rules_revision": 2,
+ "scenario": "chase",
+ "gap": "equal",
+ "seed": 3,
+ "names": [
+  "scripted",
+  "scripted"
+ ],
+ "label": "Movement correction, Scenario C: as M2, but A's Trade lands: positional aggro on tick 0, retaliation on tick 1. Seed 3: the first seed whose trade connects and lands, without a gank.",
+ "actions": [
+  [
+   6,
+   0
+  ]
+ ],
+ "labels": [
+  [
+   "LH-T",
+   "LH-H"
+  ]
+ ],
+ "events": [
+  {
+   "turn": 0,
+   "events": [
+    "A Last Hit: removed 1 of 1 HP",
+    "B's minions hit A (positional/retaliation): 3 units = 139 cHP",
+    "A's trade connected: dealt 210 cHP",
+    "B Last Hit: removed 0 of 1 HP"
+   ]
+  }
+ ],
+ "payoff_A": 0.27,
+ "turns": 1,
+ "summary": {
+  "A": {
+   "wards": 0,
+   "wards_placed": 0,
+   "wards_interrupted": 0,
+   "minion_units_taken": 3,
+   "minion_centi_taken": 139,
+   "retaliation_ticks_taken": 1,
+   "positional_ticks_taken": 1,
+   "trade_damage_dealt": 210,
+   "capped_trades": 0,
+   "deaths": 0,
+   "recalls": 0,
+   "gold": 0.27
+  },
+  "B": {
+   "wards": 0,
+   "wards_placed": 0,
+   "wards_interrupted": 0,
+   "minion_units_taken": 0,
+   "minion_centi_taken": 0,
+   "retaliation_ticks_taken": 0,
+   "positional_ticks_taken": 0,
+   "trade_damage_dealt": 0,
+   "capped_trades": 0,
+   "deaths": 0,
+   "recalls": 0,
+   "gold": 0.0
+  }
+ }
+}

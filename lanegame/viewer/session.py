@@ -16,8 +16,10 @@ the same physics; only the wave budgets differ), its wave budgets depend on the 
 
 M4.5a: the EXPERIMENTAL candidate `m45_unified()` adds the shared Vision node W (a champion there is drawn above the
 lane cell 0; `summary` reports `at_ward` and the vision timer), Ward placement and interruption, minion fire on
-champions per tick (`frame_view`'s "minion_fire": cause and minion damage units, with the turn's centi-HP), and three
-hand-built start states (`lanegame.experiments.m45a.scenarios.STARTS`).
+champions per tick (`frame_view`'s "minion_fire": cause and minion damage units, with the turn's centi-HP), and
+hand-built start states (`lanegame.experiments.m45a.scenarios.STARTS`). The M4.5a correction (rules revision 2):
+tick frames draw the champions where they stand after each tick (info["champion_path"]); recordings carry
+"rules_revision", and an m45_unified recording without it replays under `m45_unified_r1()` (`load_recording`).
 """
 
 from __future__ import annotations
@@ -42,6 +44,8 @@ A, B = 0, 1
 SIDES = ("A", "B")
 
 CONFIGS = {"m45_unified": GameConfig.m45_unified,                 # M4.5a: the EXPERIMENTAL unified candidate
+           # M4.5a as first implemented (champions at their end cells for the whole turn; superseded)
+           "m45_unified_r1": GameConfig.m45_unified_r1,
            "m4_four_actions": GameConfig.m4_four_actions,
            # M4.4a: the two EXPERIMENTAL calibrated economies of the PPO comparison (recordings of their checkpoints
            # name them; lanegame/experiments/rl/m44/trace.py)
@@ -51,7 +55,22 @@ CONFIGS = {"m45_unified": GameConfig.m45_unified,                 # M4.5a: the E
 # the configuration whose deterministic start states a configuration uses (the four-action redesign study generated
 # its starts under m4_lasthit(); the lane physics is the same in every four-action preset)
 START_SOURCE = {"m4_four_actions": "m4_lasthit", "m4_four_actions_econ": "m4_lasthit",
-                "m4_four_actions_econ_aggro": "m4_lasthit", "m45_unified": "m4_lasthit"}
+                "m4_four_actions_econ_aggro": "m4_lasthit", "m45_unified": "m4_lasthit", "m45_unified_r1": "m4_lasthit"}
+# Rules revisions of a configuration name whose rules changed after recordings were made under it. A recording of
+# such a configuration carries "rules_revision" (`recording_stamp`); one without it predates the change and replays
+# under the preset that keeps the old rules: m45_unified revision 1 (M4.5a as first implemented, ea3d9cb) is
+# m45_unified_r1() (docs/m4/m4_5a_unified_mechanics_report.md §10).
+RULES_REVISION = {"m45_unified": 2}
+REVISION_PRESETS = {("m45_unified", 1): "m45_unified_r1"}
+
+
+def recording_stamp(config: str) -> dict:
+    """The configuration fields every exported recording carries: its name and, for a configuration in
+    RULES_REVISION, the current rules revision."""
+    out = {"config": config}
+    if config in RULES_REVISION:
+        out["rules_revision"] = RULES_REVISION[config]
+    return out
 SCENARIOS = {
     "s0": "Standard initial state (turn 0: a fresh wave at each base, both champions at their tower).",
     "neutral": "Neutral lane, fronts in contact at the lane cell (k9 of Hold/Hold).",
@@ -204,9 +223,16 @@ def load_recording(path: str) -> Tuple[Setup, List[Tuple[int, int]], dict]:
         d = json.load(f)
     if d.get("schema") != RECORDING_SCHEMA:
         raise ValueError(f"{path} is not a {RECORDING_SCHEMA} file")
-    setup = Setup(d.get("config", "m4_lasthit"), d.get("scenario", "s0"), d.get("gap", "equal"), int(d["seed"]))
-    actions = [(int(a), int(b)) for a, b in d["actions"]]
+    name = d.get("config", "m4_lasthit")
     meta = {k: v for k, v in d.items() if k != "actions"}
+    if name in RULES_REVISION:
+        rev = int(d.get("rules_revision", 1))            # no stamp: recorded before the rules changed
+        if rev != RULES_REVISION[name]:
+            if (name, rev) not in REVISION_PRESETS:
+                raise ValueError(f"{path}: {name} rules revision {rev} is unknown")
+            meta["replayed_as"] = name = REVISION_PRESETS[(name, rev)]
+    setup = Setup(name, d.get("scenario", "s0"), d.get("gap", "equal"), int(d["seed"]))
+    actions = [(int(a), int(b)) for a, b in d["actions"]]
     return setup, actions, meta
 
 
@@ -426,9 +452,10 @@ def _lost(info: dict) -> Dict[str, bool]:
 def frame_view(rec: Recording, i: int, f: int) -> dict:
     """Everything the lane picture draws for frame f of turn i, in global coordinates, read from the recording:
     packets and crashed masses (lane state, or the authoritative tick trace), champions and towers (the champion
-    state at the start of the turn for the start frame, at its end otherwise: the resolver moves the champions
-    once, before the lane ticks), the contact, and each front's displacement since the previous frame (the start
-    frame: since the previous turn's start; the end frame: over the whole turn)."""
+    state at the start of the turn for the start frame, at its end otherwise; under champion_movement_rule "tick" a
+    tick frame places each present champion at its cell after that tick, info["champion_path"]; under "turn" the
+    champions stand at their end cells during the ticks), the contact, and each front's displacement since the
+    previous frame (the start frame: since the previous turn's start; the end frame: over the whole turn)."""
     cfg, T = rec.cfg, rec.cfg.ticks_per_turn
     lost = None                                 # per side: a packet died or crashed between prev and objs
     if i >= rec.n or f == 0:
@@ -453,6 +480,14 @@ def frame_view(rec: Recording, i: int, f: int) -> dict:
         moves[n] = (before, now) if (prev is not None and not lost[n] and now is not None and before is not None
                                      and now != before) else None
     champs = {n: summary(rec, j, s) for s, n in enumerate(SIDES)}
+    path = rec.turns[i].info.get("champion_path") if i < rec.n else None
+    if path is not None and 0 < f <= T:
+        # champion_movement_rule "tick": a tick frame shows each present champion at its cell after that tick
+        for s, n in enumerate(SIDES):
+            if not rec.turns[i].info["away"][s]:
+                pos = path[s][f - 1]
+                champs[n] = dict(champs[n], pos_own=pos, at_ward=pos == WARD,
+                                 pos_global=None if pos == WARD else (pos if s == A else -pos))
     towers = {"A": champs["B"], "B": champs["A"]}          # A's tower carries the damage B dealt, and vice versa
     actions = tuple(rec.turns[i].info["actions"]) if i < rec.n else None
     # the champions' wave damage shown with the frame: the turn's budget (start frame), the HP removed in that tick

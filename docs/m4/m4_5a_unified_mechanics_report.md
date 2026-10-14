@@ -8,6 +8,9 @@ generated smoke tables: [`results/m45a/report.md`](../../results/m45a/report.md)
 `results/m45a/trajectories/`; code: `lanegame/positional.py` (new), `lanegame/experiments/m45a/` (new); tests:
 `tests/test_m45a_mechanics.py` (new).*
 
+*Correction (same day, after review): **§10** replaces the stationary-only positional aggro of §3.2 by wave-following
+movement — `m45_unified()` is now revision 2 and §0–§9 describe revision 1, kept as `m45_unified_r1()`.*
+
 ---
 
 ## 0. Summary
@@ -30,7 +33,8 @@ which the Shove + Safe and W requirements needed.
 **Per-tick targeting.** Implemented as requested, without restructuring the combat engine. The single trade exchange
 lands on tick 0; retaliation follows from tick 1; positional aggro is re-checked at the start of every tick. One
 deviation from the baseline, found by the demonstrations, is that positional aggro applies only to a champion that did
-not move this turn (§3.2).
+not move this turn (§3.2). *Superseded by §10: champions now walk tick by tick, Hold / Yield / Safe with their wave,
+and positional aggro reads each tick's positions whether the champion moved or not.*
 
 **Correctness.**
 
@@ -116,7 +120,8 @@ ganks → summed damage / $M(S)$ → death → ward placement → plates, progre
 
 - **Retaliation:** the enemy champion's Trade damaged ours and $t\ge1$.
 - **Positional aggro:** the enemy champion did not move this turn, stands on a lane cell holding our front, and its
-  own front is strictly behind that cell or absent, with no crashed mass of its own there.
+  own front is strictly behind that cell or absent, with no crashed mass of its own there. (Revision 2, §10.3: on each
+  tick's positions after its movement, moved or not.)
 
 **Firing.** The designated wave fires if its front is within 1 of that champion and the tick firepower $f_t>0$. It then
 adds $f_t$ units to that champion and deals no minion damage on that tick.
@@ -152,6 +157,9 @@ firepower it would have put on minions (`test_targeting_redirects_firepower_with
   firepower once the champion leaves range or double-counts it across ticks.
 
 ### 3.2 Positional aggro requires a stationary champion
+
+*Superseded by the correction of §10: the exemption treated the symptom. Kept here as the record of revision 1
+(`m45_unified_r1()`).*
 
 In the first demonstrations a Hold champion was hit by the very enemy wave its own wave was beating. The champion
 moves before the ticks to its farm spot, which is where its winning wave will be at the end of the turn, so at tick 0
@@ -309,7 +317,9 @@ In the lane picture:
 | `m45a_D1_ahead_of_wave` | D | 0 | A stands in B's wave with its own wave behind and chases a retreating B; B's minions fire at A until the wave walks past |
 | `m45a_A1_strong_freeze` | A and B | 0 (first seed with a retaliation on A within 10 turns) | A (×1.76) keeps the freeze with Thin + Trade against a walk-up Shove; 6 retaliation ticks on A, B dies 3 times, both Recall; 40 turns |
 
-Each file replays exactly through the viewer's own session code (`m44.trace.verify`: 7 / 7).
+Each file replays exactly through the viewer's own session code (`m44.trace.verify`: 7 / 7). *These files were
+regenerated under revision 2, with four new movement demonstrations and D1 on a held-front start (§10.5); the committed
+revision-1 files replay as `m45_unified_r1()`.*
 
 ---
 
@@ -329,6 +339,7 @@ Each file replays exactly through the viewer's own session code (`m44.trace.veri
 | `trade_wave_rule` | `"none"` | `"capped"` | rule |
 | `trade_wave_fraction` | 0.5 | 0.5 | **calibrate** |
 | `wave_reach_rule` | `"line"` | `"ball"` | rule |
+| `champion_movement_rule` | `"turn"` | `"tick"` (revision 2, §10) | rule |
 
 Parameters of an inactive rule must stay at their defaults (validation), so a configuration cannot carry an unused
 value silently.
@@ -371,6 +382,9 @@ M4.5c.
 ---
 
 ## 9. M4.5b readiness
+
+*Revision 1. For revision 2 see §10.9; the measurements below are revision 1 (their revision-2 counterparts are
+in `results/m45a/report.md` and §10.6).*
 
 **GO WITH CAVEATS.** The integrated simulator works:
 
@@ -445,8 +459,222 @@ The caveats are about incentives, which are M4.5b's subject.
 ### 9.3 Reproduction
 
 ```bash
-python -m lanegame.experiments.m45a all            # demonstrations (+ replay checks) and the smoke study, ~25 s
-python -m pytest tests/test_m45a_mechanics.py      # the M4.5a tests, ~5 s
+python -m lanegame.experiments.m45a all            # demonstrations (+ replay checks) and the smoke study, ~30 s
+python -m lanegame.experiments.m45a movement       # the movement correction (§10): scenarios, paired r1 / r2, ~30 s
+python -m pytest tests/test_m45a_mechanics.py tests/test_m45a_movement.py   # the M4.5a tests, ~5 s
 python -m pytest                                   # the full regression suite, ~7.5 min
 streamlit run lanegame/viewer/app.py               # the viewer (Recorded trajectory: results/m45a/trajectories)
 ```
+
+---
+
+## 10. Correction: wave-following movement and positional aggro (revision 2)
+
+*2026-10-14, after review of §3.2. `m45_unified()` is now **revision 2** (`champion_movement_rule = "tick"`); revision 1,
+as described in §0–§9, is kept as `GameConfig.m45_unified_r1()`. Generated tables:
+[`results/m45a/movement_correction.md`](../../results/m45a/movement_correction.md) (`python -m lanegame.experiments.m45a
+movement`, ~30 s); tests: `tests/test_m45a_movement.py` (new, 58). Numbers elsewhere in this report are revision 1
+unless marked.*
+
+### 10.1 Root cause of the false positive
+
+Traced through `champions_m4.resolve_turn_m4` and `mechanics._tick_natural`:
+
+1. **The probe** plays the turn's lane step with full support and no targeting; a champion's farm spot is its wave's
+   front at the **end** of the turn.
+2. **Hold's destination** is that spot (Safe: $\min(\text{spot},-1)$; Yield: its stand-off cell from the spot), and
+   the champion walks there, at most 2 edges.
+3. **Revision 1 placed the champion at that end cell for both ticks**, while the lane step designated targets from the
+   **start-of-tick** minion state.
+
+So the champion's position came from the end of the turn and the minions' from its start. When a Hold champion's wave
+beats the enemy front on tick 0 and advances on tick 1, the champion stood on tick 0 in the cell the enemy front still
+held, with its own front one cell behind: positional aggro, and the enemy wave fired at it instead of at its minions.
+Safe shares the mechanism (same spot), and so does Yield whenever it farms from its spot (`position_rule` "m2"); the
+stand-off rule of `m45_unified()` keeps Yield one cell behind the enemy's starting front. Chase, evasion, Ward and
+Pressure targets do not come from the spot and had no false positive of their own.
+
+**Size.** Under that "end cell" rule (revision 1 without its exemption) pure last-hitting (`farm4` v `farm4`) drew
+0.0088 positional ticks per champion-turn, all false. Revision 1's exemption (only a champion that did not move) removed
+them, and with them every hit on a moving champion: in uniform random play it cut positional aggro from 0.058 to 0.010
+ticks per champion-turn, exempting Traders chasing through the enemy wave, Ward walks through it, champions walking
+back through it and a dive through the defender's wave.
+
+### 10.2 The movement correction
+
+**One rule field**, `champion_movement_rule`: `"turn"` (revision 1 and every earlier preset) or `"tick"`.
+
+- **The end cell is unchanged**, and so are contact, chase targets, evasion, reach, gold, XP and exposure, which all
+  read it.
+- **The champion walks to it tick by tick**: one edge per tick at speed 2 over 2 ticks
+  ($v_t=\lceil(t+1)v/n\rceil-\lceil tv/n\rceil$), never too far from the end cell to reach it by the last tick.
+- **A follower** (Hold, an unthreatened Yield, Safe, a Trade with nobody to chase) heads on each tick for its
+  behaviour's target computed from the probe's front **after that tick** — the same lane prediction that already
+  decided its destination, read at tick resolution. **Every other champion** walks directly, its edges spent on the
+  earliest tick. A recaller channels in its cell.
+- `positional.tick_path` is the whole rule (the lexicographic choice in the reference §14.5a);
+  `TurnResult.fronts_by_tick / crashed_by_tick` carry the probe's per-tick fronts (recorded only under `"tick"`);
+  `MinionTarget.path` gives the lane step the enemy champion's cell after each tick; `M4Turn.path` and
+  `info["champion_path"]` report it.
+
+**Was synchronized movement necessary?** In this form, yes: the champions' cells must be known per tick for positional
+aggro to read actual positions. It did **not** need new ticks, a new engine loop or new decisions: the resolver
+computes both cells before the lane step and the lane step reads them. Alternatives rejected:
+
+- *Following the authoritative wave inside the lane step and letting the end cell follow it.* The end cell feeds the
+  reach ball, trade contact, the enemy's chase target, gold and XP before the lane step; moving it after would be
+  circular or would need a second resolution.
+- *A Hold exemption.* The brief rules it out, and the exposure is real when a follower is genuinely ahead (§10.4).
+
+### 10.3 The implemented positional-aggro rule
+
+Per tick $t$ of the authoritative lane step, in this order:
+
+1. **Champion movement** and 2. **minion movement** (walk, merge, entry crash), simultaneous: every champion steps to
+   its cell $p_{t+1}$.
+3. **Targeting** on these post-movement positions. Side $s$'s wave designates the enemy champion $o$ by
+   - retaliation: $o$'s connected Trade damaged $s$'s champion this turn and $t\ge$ `minion_retaliation_delay`; or
+   - positional aggro: $c=p_{t+1}(o)$ is a lane cell holding $s$'s front, $o$'s front is absent or strictly behind
+     $c$ (in $o$'s coordinates), and $o$ has no crashed mass in $c$.
+
+   Whether $o$ moved, and its behaviour, play no role. Merely being one cell from the front never triggers it.
+4. **Trade damage and retaliation eligibility.** Unchanged: the rolls are made before the lane step, contact is judged
+   at the end cells, the single exchange is attributed to tick 0 and starts the retaliation clock. With delay 1 the
+   retaliation tick is the last one, where $p_2=$ end, so retaliation reads the same cell as in revision 1.
+5. **Minion damage.** A designated wave whose front is within `minion_range` of $p_{t+1}(o)$ (distance 0 for positional
+   aggro) fires its tick firepower at $o$ and deals no minion damage that tick; the others fight minions. Exclusivity,
+   no reassignment, the damage scaling and every fight rule are unchanged.
+
+Both actions are still chosen simultaneously at the start of the turn; the chance vector is unchanged.
+
+**Two consequences of evaluating after movement.** A front that walks into an uncovered champion's cell targets it on
+that tick (revision 1: from the next tick). Cover counts on the tick it arrives: if the champion's own front reaches
+its cell on the same tick as the enemy front, nothing fires.
+
+### 10.4 Effects on the other behaviours
+
+| behaviour | change |
+|---|---|
+| Hold | follows its wave tick by tick (A1, A2); no immunity: walking back to its wave through the enemy front is hit (D1) |
+| Safe | follows its wave (A3); a champion retreating from deep (the freezer after a dive, at B's tower cell, mostly with Safe, sometimes Thin + Hold) crosses B's wave at the lane cell and is hit there (80 follower ticks in 8 × 200 turns of `freeze_bully4` v `walk_up_shove4`) |
+| Yield | follows its wave; under the stand-off rule it never enters the enemy's starting front cell (A4); under `position_rule` "m2" it had Hold's false positive and is now fixed (test) |
+| Trade | moving into the enemy wave is hit whether the Trade misses, connects without damage or never connects (C1, C3); a landing Trade adds retaliation on the next tick (C2); successful-Trade retaliation keeps its requirements |
+| Ward | the route through the lane cell 0 is hit when the enemy front holds 0 and the own front is behind (W1): one tick going out, one coming back. Placement is unaffected (minions never interrupt) |
+| Pressure | walks to the enemy tower cell through the intermediate cell, hit there if an uncovered waiting front stands in it (B1); covered at the tower cell by its own crashed mass, as before |
+| Recall | channels in its cell; unchanged |
+| evasion | a direct walk, earliest edges first |
+
+Nothing was redesigned: no action, behaviour, reward or parameter changed.
+
+### 10.5 Demonstrations, before and after
+
+One turn each, level 2 (`results/m45a/movement_correction.md`; fire per tick on A; "end cell" = revision 1 without
+its exemption):
+
+| | situation | end cell | r1 | r2 |
+|---|---|---|---|---|
+| A1 | Hold, the brief's example: A and its 16-HP front at 0, B's 2-HP front at +1 dies on tick 0; A's path 0 → +1 | pos / · | · / · | · / · |
+| A3 | Safe follows its winning wave | pos / · | · / · | · / · |
+| B1 | A at 0 (front at −1) Pressures through B's front waiting at +1 | · / · | · / · | pos / · |
+| B2 | the brief's B with walking waves: A and B's front swap cells within tick 0 | · / · | · / · | · / · (limitation) |
+| C1 | Trade chase into B's 16-HP wave, connected, missed | pos / pos | · / · | pos / pos |
+| C2 | the same, landed | pos / ret | · / ret | pos / ret |
+| C3 | the same, B evades (no contact) | pos / · | · / · | pos / · |
+| D1 | Hold walks back from +2 through B's oncoming front; its own wave meets B's at 0 on tick 1 and covers it | · / · | · / · | pos / · |
+| D2 / D3 | both fronts reach A's cell on tick 0 / only B's | · / · | · / · | · / · and pos / · |
+| W1 | Ward from +1 through B's front at 0 | · / · | · / · | pos / · |
+| S1 | standing still in B's wave | pos / · | pos / · | pos / · |
+| N1 | one cell from B's waiting front | · / · | · / · | · / · |
+
+Every scenario gives the mirrored result with A and B exchanged (Scenario E; 16 / 16).
+
+**Scenario D as briefed is not representable.** A front stops one cell short of an enemy front (the contact rule), so
+the own wave cannot walk into a cell the enemy front holds while the champion stands there. Cover arrives when both
+fronts reach the cell on the same tick (D2), or when the champion and its wave meet (D1); exposure ends when the
+champion leaves the cell or the enemy front dies.
+
+**Scenario B's literal numbers (both waves walking)** produce no aggro: A walks 0 → +1 while B's front walks +1 → 0,
+so they never share a cell at a tick boundary. Positions are compared at tick boundaries; a crossing inside one tick is
+not occupancy. Afterwards A is behind B's front, which does not target it. B1 holds B's front (A's crashed mass is under
+B's tower) and shows the rule.
+
+**Viewer recordings** (`results/m45a/trajectories/`, rules revision 2, replay exact 11 / 11):
+
+- new: `m45a_M1_hold_follows` (no fire), `m45a_M2_chase_missed` (2 positional ticks, no retaliation),
+  `m45a_M3_chase_landed` (positional then retaliation), `m45a_M4_walk_back` (one positional tick, then covered). Tick
+  frames now draw each champion at its cell after that tick.
+- regenerated: E1–E3 unchanged; C1 / C2 / A1 add positional ticks (4 / 3 / 9 on A: chasing into the stack, the
+  freezer walking back from a dive); D1 now starts from `ahead_held` (A's front at −1 in contact with B's, which
+  stays): 3 positional ticks. Its old start `ahead` let B's front walk past A on tick 0, so A shared its cell only at
+  the turn's start; it is kept for revision-1 replays.
+
+### 10.6 Paired comparison, revision 1 versus 2
+
+Along revision-2 trajectories, every turn is also resolved under revision 1 and "end cell" from the same state with
+the same actions and chance.
+
+| | positional ticks / champion-turn: end cell / r1 / r2 | minion cHP / champion-turn: r1 / r2 | deaths / champion-turn: r1 / r2 |
+|---|---|---|---|
+| uniform random play (40 × 300 turns) | 0.058 / 0.010 / 0.073 | 0.9 / 2.5 | 0.0189 / 0.0193 |
+| `farm4` v `farm4` | 0.0088 / 0 / 0 | 0 / 0 | unchanged |
+| `bully4` v `farm4` | 0.132 / 0.093 / 0.124 | 6.1 / 7.0 | 0.0078 / 0.0088 |
+| `freeze_bully4` v `walk_up_shove4` | 0.084 / 0.018 / 0.103 | 1.0 / 2.4 | 0.0169 / 0.0169 |
+| `ward_freeze4` v `walk_up_shove4` | 0.020 / 0 / 0.047 | 0 / 1.1 | unchanged |
+
+- **Followers are hit only when genuinely ahead of their wave.** Of the revision-2 positional ticks on followers, the
+  probe itself had the follower ahead of its wave on that tick in 416 / 416 (random play) and 247 / 251 (scripted
+  pairings). The 4 others come from the probe ignoring minion targeting: the follower's wave spent a tick shooting the
+  enemy champion, did not advance as predicted, and the follower stood at its predicted end cell (the §9.1 item 9
+  approximation; revision 1 had the same end cell and only hid the hit).
+- **The new hits are on movers**: chasers (0.048 → 0.282 positional ticks per chasing champion-turn in random play),
+  Ward walks (0 → 0.114), and Safe / Hold champions retreating through the enemy wave.
+- Scripted gold leads change where the new costs apply (`ward_freeze4` v `walk_up_shove4`: −1.1 ± 1.2 → −4.4 ± 1.3 for
+  the warding freezer, which crosses B's wave at the lane cell to reach W and to come back;
+  `bully4` v `step_back4`: −4.9 ± 5.0 → −11.1 ± 3.8); both revisions are in `results/m45a/report.md`.
+
+### 10.7 Tests and regression
+
+- `tests/test_m45a_movement.py` (58): the path rule (speed, end cell, following, W through 0) exhaustively; the 16
+  scenarios under all three rules with their paths; mirror symmetry of every scenario and of 400 random turns; on 500
+  random turns, every quantity except minion targeting equal between the revisions; the environment's
+  `champion_path`; replay; the revision presets and validation; recordings and their routing; the viewer's tick frames;
+  the four new recordings; and the pinned reproduction of the committed engine by `m45_unified_r1()` (also checked over
+  3,600 random turns: identical `info` digests).
+- `tests/test_m45a_mechanics.py` (73): five expectations changed, each because a moving champion is no longer exempt
+  or the evaluation moved after movement (the dive through A's wave, A in B's wave with a held front, occupancy versus
+  adjacency, crashed-mass cover on a dive, the minion-damage kill); hand-built starts in which the enemy front walks out
+  of the champion's cell on tick 0 were replaced by held fronts.
+- Full suite (`.venv`, `python -m pytest`): **1254 passed, 4 skipped, 2 xfailed** in 7.5 min (`results/m45a/regression.log`); one
+  contract table (`tests/test_m4_config.py`) gained the new field's non-default value.
+
+### 10.8 Compatibility and performance
+
+- **Earlier presets** are untouched (`champion_movement_rule` defaults to `"turn"`; the historical pins pass).
+- **Revision 1** is `m45_unified_r1()`: byte-identical to the committed M4.5a engine on random games (`info` records
+  with `MinionTarget` reduced to its three original fields). A stored configuration without the field loads as
+  revision 1; `preset_name` recognizes both.
+- **Recordings** now carry `"rules_revision"`. `viewer.session.load_recording` replays an `m45_unified` file without
+  it as `m45_unified_r1()` and says so (`meta["replayed_as"]`): all 7 recordings committed with M4.5a replay exactly
+  that way. The M4.4 exporters stamp the field too (a no-op for their presets).
+- **Spaces** are unchanged (61 actions, 90 observation entries); there are no M4.5a checkpoints.
+- **`info`** gains `champion_path` under revision 2 only.
+- **Performance**: on 3,000 identical random turns the resolver takes 154 µs per turn under revision 2 against 148 µs
+  under revision 1 (+4%, after memoizing `tick_path`, which has a few thousand distinct arguments; +10% without).
+  Environment throughput of uniform play: 3,541 versus 3,649 turns per second (0.97×, best of 3); single runs vary by
+  about ±8%.
+
+### 10.9 Readiness for M4.5b
+
+**GO WITH CAVEATS, unchanged, with the movement blocker removed.** Positional aggro now reads actual positions, Hold /
+Yield / Safe follow their waves without false positives, and no behaviour is exempt. Points for M4.5b, in addition to
+§9.1:
+
+1. **New, real costs of moving through the enemy wave** (§10.4): the Ward route through a lane cell the enemy wave
+   holds, and the retreat from a dive. They are the intended mechanic; whether their size is right is calibration
+   (`minion_damage_alpha`, `ward_exposure`, the position of W).
+2. **Positional aggro is no longer rare** in trading play (§9.1 item 6 measured revision 1): 0.073 ticks per
+   champion-turn in random play, about 0.12 for `bully4`, still 0 in pure last-hitting.
+3. **Residual probe approximation** (4 / 251 follower hits): measure it in learned play; if it matters, make the probe
+   aware of minion targeting.
+4. **Discrete-tick crossing** (B2) is not occupancy. Measure how often learned policies exploit it before considering a
+   swept-path rule.

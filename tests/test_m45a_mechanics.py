@@ -274,9 +274,11 @@ def test_retaliation_needs_the_trader_within_minion_range():
     t = resolve(lane(0, 8, 0, 8), champs(-2, 0), RECALL, TRADE, u=chance(hit=(1,)))
     assert t.interrupted[0] and t.connected[1] and t.end[1] == 2 and t.retaliation == (True, False)
     assert dist(0, -t.end[1]) > CFG.minion_range and t.minion_hits[1] == 0 and t.minion_fire[1] == ("", "")
-    # ... while a front one cell from it (A's 16-HP front at its -1) turns on the diver from tick 1
+    # ... while a front one cell from it (A's 16-HP front at its -1) turns on the diver from tick 1. On tick 0 the diver
+    # stands in that front's cell on its way (its own front is behind, at its 0): positional aggro, although it moves
     t = resolve(lane(-1, 16, 0, 8), champs(-2, 0), RECALL, TRADE, u=chance(hit=(1,)))
-    assert t.connected[1] and t.minion_fire[1] == ("", "retaliation") and t.minion_hits[1] > 0
+    assert t.path[1] == (1, 2)
+    assert t.connected[1] and t.minion_fire[1] == ("positional", "retaliation") and t.minion_hits[1] > 0
 
 
 def test_a_blob_without_tick_firepower_does_not_fire():
@@ -285,11 +287,11 @@ def test_a_blob_without_tick_firepower_does_not_fire():
     assert t.retaliation == (False, True) and t.minion_hits == (0, 0) and t.minion_fire[0] == ("", "")
 
 
-POS = lane(-2, 8, 0, 8)                                    # A's front behind, B's front at the lane cell
+POS = lane(-1, 8, 0, 8)                    # the fronts fight at A's -1 / the lane cell; B's front stays at the lane cell
 
 
 def test_positional_aggro_on_a_champion_ahead_of_its_wave():
-    # A chases a retreating B into B's wave (B evades into its tower cell); A ends in B's front's cell
+    # A stands in B's front's cell (its own front behind, at -1) and Trades a retreating B, who evades out of contact
     t = resolve(POS, champs(0, -2), TRADE, SAFE)
     assert t.end[0] == 0 and not t.connected[0]
     assert t.minion_fire[0][0] == "positional" and t.minion_hits[0] > 0 and t.retaliation == (False, False)
@@ -297,38 +299,41 @@ def test_positional_aggro_on_a_champion_ahead_of_its_wave():
 
 
 def test_positional_aggro_ends_when_the_champion_falls_back_or_its_wave_covers_it():
-    t = resolve(POS, champs(0, -2), HOLD, HOLD)           # Hold walks back to its wave before the ticks
-    assert t.end[0] < 0 and t.minion_hits == (0, 0)
+    t = resolve(POS, champs(0, -2), HOLD, HOLD)           # Hold walks back to its wave on tick 0
+    assert t.path[0] == (-1, -1) and t.minion_hits == (0, 0)
     t = resolve(lane(0, 8, 0, 8), champs(0, -2), TRADE, SAFE)   # own front in the same cell takes the attacks
     assert t.minion_hits[0] == 0
 
 
 def test_a_champion_following_its_wave_is_not_positionally_targeted():
-    """A Hold champion moves (before the ticks) to the cell its winning wave reaches this turn, which still holds the
-    enemy front at the start of tick 0: it moved, so it is in transit, not standing in the enemy wave."""
+    """A Hold champion walks with its wave tick by tick (champion_movement_rule "tick"): it stays at -1 while its
+    front fights there on tick 0 and steps to 0 with it on tick 1, after B's front has died, so it never stands in the
+    enemy front's cell ahead of its own."""
     L = lane(-1, 16, 0, 2)                                 # A's 16-HP front kills B's 2-HP front and walks to 0
     t = resolve(L, champs(-1, -2), HOLD, HOLD, k=10)
-    assert t.start[0] == -1 and t.end[0] == 0 and t.lane.state.ax == 0
+    assert t.start[0] == -1 and t.end[0] == 0 and t.lane.state.ax == 0 and t.path[0] == (-1, 0)
     assert t.minion_hits[0] == 0 and t.minion_fire[0] == ("", "")
 
 
-def test_one_cell_away_is_not_immediately_targeted():
-    # A has no wave and stands at 0; B's front one cell away walks into A's cell during tick 0 (k = 10: no spawn, so
-    # A's farm spot stays its own cell)
-    L = lane(0, 0, -1, 16)
-    t = resolve(L, champs(0, -2), HOLD, HOLD, record=True, k=10)
-    assert t.end[0] == 0
-    assert t.minion_fire[0] == ("", "positional")
-    assert t.lane.trace[0]["minion_fire"][0] == ["", 0]
+def test_positional_aggro_needs_occupancy_not_adjacency():
+    # A stands one cell from B's front, which waits (A's crashed mass is under B's tower): never targeted
+    t = resolve(lane(-2, 8, -1, 8, asg=8), champs(0, -1), TRADE, TRADE, u=chance(), record=True)
+    assert t.path[0] == (0, 0) and t.minion_fire[0] == ("", "") and t.minion_hits[0] == 0
+    # A has no wave and stands at 0; B's front one cell away walks into A's cell during tick 0 and on past it during
+    # tick 1 (k = 10: no spawn, so A's farm spot stays its own cell): targeted on tick 0 only, when A occupies its cell
+    t = resolve(lane(0, 0, -1, 16), champs(0, -2), HOLD, HOLD, record=True, k=10)
+    assert t.end[0] == 0 and t.minion_fire[0] == ("positional", "")
+    assert t.lane.trace[0]["minion_fire"][0][0] == "positional" and t.lane.trace[1]["minion_fire"][0] == ["", 0]
 
 
 def test_own_crashed_mass_covers_a_pressuring_champion():
-    # A (no lane wave, k = 10: no spawn) holds in B's tower cell, where B's front stands
-    hold_at_tower = champs(2, -2)
-    covered = resolve(lane(0, 0, -2, 8, asg=8), hold_at_tower, HOLD, HOLD, k=10)
-    assert covered.end[0] == 2 and covered.minion_hits[0] == 0
-    exposed = resolve(lane(0, 0, -2, 8, asg=0), hold_at_tower, HOLD, HOLD, k=10)
-    assert exposed.end[0] == 2 and exposed.minion_fire[0][0] == "positional" and exposed.minion_hits[0] > 0
+    # A dives B in B's tower cell, where B's front stands (in contact with A's front at +1); the dive misses
+    dive = champs(2, -2)
+    covered = resolve(lane(1, 8, -2, 8, asg=8), dive, TRADE, HOLD, u=chance(), k=10)
+    assert covered.path[0] == (2, 2) and covered.connected[0] and covered.minion_hits[0] == 0
+    exposed = resolve(lane(1, 8, -2, 8, asg=0), dive, TRADE, HOLD, u=chance(), k=10)
+    assert exposed.path[0] == (2, 2) and exposed.minion_fire[0][0] == "positional" and exposed.minion_hits[0] > 0
+    assert exposed.retaliation == (False, False)
 
 
 def test_targeting_redirects_firepower_without_creating_or_duplicating_damage():

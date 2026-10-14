@@ -62,7 +62,9 @@ def test_c2_legacy_and_m2c_reject_any_m4_economy_field(field):
                  "vision_rule": "ward", "ward_exposure": 1, "minion_retaliation": True,
                  "minion_positional_aggro": True, "minion_range": 2, "minion_retaliation_delay": 0,
                  "minion_damage_alpha": 40, "minion_damage_growth": 1.1, "trade_wave_rule": "capped",
-                 "trade_wave_fraction": 0.25, "wave_reach_rule": "ball"}[field]
+                 "trade_wave_fraction": 0.25, "wave_reach_rule": "ball",
+                 # the M4.5a movement correction
+                 "champion_movement_rule": "tick"}[field]
     for preset in (GameConfig.champions, GameConfig.champions_continuing, GameConfig):
         with pytest.raises(ValueError, match=field):
             preset(**{field: value}).validate()

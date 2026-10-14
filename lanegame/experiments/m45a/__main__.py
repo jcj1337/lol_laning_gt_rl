@@ -2,7 +2,9 @@
 
     python -m lanegame.experiments.m45a demos      # viewer recordings results/m45a/trajectories/ (+ replay check)
     python -m lanegame.experiments.m45a smoke      # random / scripted soaks, throughput, damage table -> results/m45a/
-    python -m lanegame.experiments.m45a all
+    python -m lanegame.experiments.m45a movement   # the movement correction: scenarios, r1 vs r2 paired comparison
+                                                   # -> results/m45a/movement_correction.{json,md}
+    python -m lanegame.experiments.m45a all        # demos and smoke (not movement)
 """
 
 from __future__ import annotations
@@ -12,7 +14,7 @@ import sys
 import time
 
 from ...io import dump_json
-from . import demos, smoke
+from . import demos, movement, smoke
 
 OUT = demos.OUT
 
@@ -69,6 +71,13 @@ def _report(summary: dict) -> str:
 def main(argv) -> None:
     what = argv[0] if argv else "all"
     os.makedirs(OUT, exist_ok=True)
+    if what == "movement":
+        d = movement.run()
+        dump_json(d, os.path.join(OUT, "movement_correction.json"))
+        with open(os.path.join(OUT, "movement_correction.md"), "w", encoding="utf-8") as f:
+            f.write(movement.report(d))
+        print(f"wrote {OUT}/movement_correction.json and .md ({d['elapsed_s']} s)")
+        return
     path = os.path.join(OUT, "summary.json")
     summary = {}
     if os.path.exists(path):

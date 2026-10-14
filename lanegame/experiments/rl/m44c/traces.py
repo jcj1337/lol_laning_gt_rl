@@ -31,6 +31,7 @@ from ..m44.actions import decode
 from ..m44.common import ENVS
 from ..m44.records import holds_freeze, play_record
 from ....state import State
+from ....viewer.session import recording_stamp
 from .common import TRACE_SEED, TRAJ_DIR, load, meta, save_json
 
 K = 8
@@ -175,7 +176,7 @@ def situation_pair(key: str, env: str = "aggro", seed: int = 0, phase: str = "ex
         br = pick["branches"][name]
         infos = br["infos"]
         fname = f"m44c_{key}_{name.replace('>', '_then_').replace('+', '_').replace(' ', '_')}"
-        rec = {"schema": SCHEMA, "version": 1, "config": ENVS[env].preset, "scenario": pick["scen"][0],
+        rec = {"schema": SCHEMA, "version": 1, **recording_stamp(ENVS[env].preset), "scenario": pick["scen"][0],
                "gap": pick["scen"][1], "seed": int(pick["vseed"]), "names": [f"final:{phase}:{env}:{seed}"] * 2,
                "label": (f"M4.4c counterfactual pair ({key}): {sit['desc']}. Branch '{name}' for side "
                          f"{'AB'[pick['focal']]} from turn {pick['turn']}; the other file of the pair plays "

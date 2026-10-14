@@ -10,6 +10,10 @@ cell into the other side's coordinates maps a lane cell x to -x and W to W.
 Every helper reduces to the historical lane arithmetic when no position is W, so the configurations without a Vision
 node are untouched. Kill cells of minions may lie outside -T .. T (defenders behind a tower); the same distance
 applies. This module imports nothing from the engine, so the engine modules can all import it.
+
+M4.5a correction (champion_movement_rule "tick"): `tick_path` walks a champion to its end cell tick by tick, following
+a goal per tick (a farming champion's wave front, from the probe); `MinionTarget.path` carries those cells to the lane
+step, which evaluates positional aggro on each tick's positions after its movement.
 """
 
 from __future__ import annotations
@@ -90,16 +94,51 @@ def reaches(spec, x: int) -> bool:
     return x <= spec
 
 
+def tick_speeds(speed: int, ticks: int) -> Tuple[int, ...]:
+    """Edges a champion may walk on each tick of a turn: ceil((t+1) v / n) - ceil(t v / n), earlier ticks first (the
+    split of the half-wave firepower and of the wave budgets); 1 + 1 at v = 2, n = 2."""
+    return tuple(-((-(t + 1) * speed) // ticks) + ((-t * speed) // ticks) for t in range(ticks))
+
+
+@lru_cache(maxsize=8192)                # a few thousand distinct arguments at most (cells, goals, speeds)
+def tick_path(c0: int, end: int, goals: Optional[Tuple[int, ...]], speed: int, ticks: int, tower: int,
+              ward: bool) -> Tuple[int, ...]:
+    """champion_movement_rule "tick": the champion's cell after each tick of a turn, from its start cell c0 to its end
+    cell (d(c0, end) <= speed). On tick t it moves to the node p that is
+
+        within tick_speeds[t] edges of its previous cell and within the edges still left of the end cell,
+
+    and among those nearest to goals[t], then nearest to the end cell, then nearest to its previous cell (no needless
+    step), then the smaller lane cell (W last). goals None = the end cell on every tick (a direct walk, its edges spent
+    on the earliest ticks). The last cell is always the end cell. Own coordinates throughout, so the same rule for both
+    sides (mirror-equivariant)."""
+    steps = tick_speeds(speed, ticks)
+    nodes = tuple(range(-tower, tower + 1)) + ((WARD,) if ward else ())
+    left = sum(steps)
+    p, out = c0, []
+    for t, v in enumerate(steps):
+        left -= v
+        g = end if goals is None else goals[t]
+        prev = p
+        p = min((x for x in nodes if dist(prev, x) <= v and dist(x, end) <= left),
+                key=lambda x: (dist(x, g), dist(x, end), dist(x, prev), x == WARD, x))
+        out.append(p)
+    return tuple(out)
+
+
 class MinionTarget(NamedTuple):
     """What one side's wave may target this turn (M4.5a, given to the lane step): the enemy champion's end cell in THIS
     side's own coordinates (W stays W), the first tick on which this side's minions retaliate against it (None: the
-    enemy champion did not damage ours this turn), and whether that champion stayed in its cell this turn (start cell =
-    end cell). Positional aggro is evaluated by the lane step itself, only on a champion that did not move this turn: a
-    champion moves once per turn, before the ticks, so a moving champion is in transit (it follows its wave to the cell
-    its wave will reach, or pursues), and its new cell's minion contact counts from the next turn."""
+    enemy champion did not damage ours this turn), whether that champion stayed in its cell this turn (start cell =
+    end cell), and (champion_movement_rule "tick") its cell after each tick, in this side's coordinates.
+
+    champion_movement_rule "turn" (m45_unified_r1): the champion stands at `cell` for both ticks and positional aggro
+    is designated at the start of a tick, only on a `stationary` champion. "tick" (m45_unified): the lane step reads
+    `path[t]` after tick t's movement for both triggers; `stationary` is recorded but plays no role."""
     cell: int
     retaliate_from: Optional[int] = None
     stationary: bool = True
+    path: Optional[Tuple[int, ...]] = None
 
 
 def _q(x: float) -> Fraction:

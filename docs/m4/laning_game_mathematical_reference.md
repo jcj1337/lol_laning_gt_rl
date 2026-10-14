@@ -18,7 +18,7 @@ and verified against the code; the numbers in the examples were produced by the 
 | **PROPOSED** | a mechanic under investigation (M4.3c); described only in [m4_3c_economic_objective_design.md](m4_3c_economic_objective_design.md) or the calibration report, never here except as a pointer |
 | **EXPERIMENTAL** | an opt-in configuration field that exists in the code but is off in `m4_lasthit()` (and, unless stated, in `m4_four_actions()`) |
 | **DEPRECATED** | a rule of an earlier preset or design document that `m4_lasthit()` no longer uses |
-| **M4.5A** | the EXPERIMENTAL unified positional candidate `m45_unified()` (§14): `m4_four_actions_econ_aggro()` plus the shared Vision node W, Ward, minion retaliation and positional aggro, XP range 2, the capped trade budget and the reach ball; no CURRENT statement of §1–§10 describes it |
+| **M4.5A** | the EXPERIMENTAL unified positional candidate `m45_unified()` (§14): `m4_four_actions_econ_aggro()` plus the shared Vision node W, Ward, minion retaliation and positional aggro, per-tick champion movement (revision 2), XP range 2, the capped trade budget and the reach ball; no CURRENT statement of §1–§10 describes it |
 
 **Terminology of slot 1 (`SH`).** The full-capacity wave slot is called **Clear** in `m4_lasthit()` and the other
 three-action natural presets (label `CL`), and **Shove** in the four-action model (label `SH`, `config.W_SHOVE`, the same
@@ -1578,18 +1578,25 @@ historical documents are records of their milestones and are **not** edited; thi
 | 2026-10-13 | M4.3d tower farming, pressure and gank risk: the measured meaning of the own-tower cap (§5.3: farm-neutral at 0.8), why nearly every dive is "busy" (§6.3), the EXPERIMENTAL candidate `m4_four_actions_econ_aggro()` (new §8.8: `tower_shot_p_busy` 1.0, `tower_adjacent_p_busy` 0.5), a quick-reference row (§0.4), glossary entries. Every CURRENT statement and every earlier preset's values are unchanged | `config.py` (`m4_four_actions_econ_aggro`, `M4_FOUR_AGGRO_FIELDS`), `lanegame/experiments/m43d/` |
 | 2026-10-13 | M4.4a: §9.2 pointer to the four-action training settings (61 masked logits, the M4.4 comparison) and the PPO pipeline explanation; §6.3 qualifies "nearly every dive is busy" as a measurement of the M4.3d scripted strategies (16–24% of the learned pilot policies' dives were busy). No rule, parameter or preset changed | `lanegame/experiments/rl/m44/` (training and diagnostics only) |
 | 2026-10-14 | M4.5a: new §14 (EXPERIMENTAL unified positional candidate `m45_unified()`: the movement graph and the shared Vision node W, Ward and its interruption, per-tick minion retaliation and positional aggro with exclusive targeting, minion damage on champions, the capped trade budget, the reach ball, XP range 2, the 90-entry observation); label M4.5A (§0), a §0.4 row and pointers in §5.4 and §6.4. Every CURRENT statement and every earlier preset is unchanged (checked byte-for-byte on 12 champion presets against the committed engine) | `config.py` (`m45_unified`, `M45_UNIFIED_FIELDS`), `positional.py` (new), `champions.py`, `champions_m4.py`, `mechanics.py`, `env/core.py`, `env/observation_m4.py`, `viewer/`, `experiments/m45a/` |
+| 2026-10-14 | M4.5a movement correction (revision 2 of `m45_unified()`): §14 intro (revisions), §14.1 row, §14.4, new §14.5a (champions walk tick by tick to the unchanged end cell; Hold, an unthreatened Yield and Safe follow the probe's per-tick front), §14.5 (positional aggro on each tick's post-movement positions, moved or not; the stationary condition removed; new situation table; revision-1 note). Revision 1 is kept as `m45_unified_r1()` (byte-identical to `ea3d9cb` on random games). Every CURRENT statement and every earlier preset is unchanged | `config.py` (`champion_movement_rule`, `m45_unified_r1`), `positional.py` (`tick_speeds`, `tick_path`, `MinionTarget.path`), `mechanics.py`, `champions_m4.py`, `env/core.py`, `viewer/session.py`, `experiments/m45a/movement.py` |
 
 ---
 
 ## 14. EXPERIMENTAL: the M4.5a unified positional candidate (`m45_unified()`)
 
 **Not the research preset.** `GameConfig.m45_unified()` is `m4_four_actions_econ_aggro()` (§4.10, §8.7, §8.8) with the
-six fields of `M45_UNIFIED_FIELDS`: `vision_rule = "ward"`, `xp_range = 2`, `minion_retaliation = True`,
-`minion_positional_aggro = True`, `trade_wave_rule = "capped"`, `wave_reach_rule = "ball"`. Each rule below is an opt-in
-field whose default reproduces every earlier preset exactly; the legacy rulesets reject them (`M4_ECONOMY_FIELDS`), and
-every one needs natural waves. Design: [m4_5a_unified_mechanics_spec.md](m4_5a_unified_mechanics_spec.md); report and
-validation: [m4_5a_unified_mechanics_report.md](m4_5a_unified_mechanics_report.md). Every number in this section is
-**provisional**: M4.5b calibrates them together.
+seven fields of `M45_UNIFIED_FIELDS`: `vision_rule = "ward"`, `xp_range = 2`, `minion_retaliation = True`,
+`minion_positional_aggro = True`, `trade_wave_rule = "capped"`, `wave_reach_rule = "ball"`,
+`champion_movement_rule = "tick"`. Each rule below is an opt-in field whose default reproduces every earlier preset
+exactly; the legacy rulesets reject them (`M4_ECONOMY_FIELDS`), and every one needs natural waves. Design:
+[m4_5a_unified_mechanics_spec.md](m4_5a_unified_mechanics_spec.md); report and validation:
+[m4_5a_unified_mechanics_report.md](m4_5a_unified_mechanics_report.md) (§10: the movement correction). Every number in
+this section is **provisional**: M4.5b calibrates them together.
+
+**Revisions.** This section states **revision 2** (the M4.5a movement correction, `champion_movement_rule = "tick"`).
+Revision 1, as first implemented (`ea3d9cb`), is `GameConfig.m45_unified_r1()`: champions stood at their end cells for
+both ticks and positional aggro was designated at the start of a tick, only on a champion that had not moved this turn
+(§14.5 notes the differences). A stored configuration or recording without the field is revision 1.
 
 ### 14.1 State and the movement graph
 
@@ -1605,6 +1612,7 @@ $$
 | rule | M4.5A | code |
 |---|---|---|
 | movement | shortest path, at most 2 edges per turn; W is entered and left through 0 (W ↔ ±1 in one turn, W ↔ ±2 in two) | `positional.move`, `champions._move` |
+| movement within the turn | the end cell is decided as above; the champion reaches it tick by tick, one edge per tick (§14.5a); a recaller channels in its cell | `positional.tick_path`, `champions_m4._tick_goals` |
 | contact | $d(x,\mu(y))\le1$ with $\mu$ the mirror; a champion in its own tower cell is reachable only from that cell (§6.1). W is in contact with 0 and W | `positional.in_contact`, `champions.in_contact` |
 | chase target | nearest node in contact with the reference cell (§6.1); ties: smallest lane cell, W last | `champions_m4.contact_cell_target` |
 | exposure | W counts as the own cell `ward_exposure` = 0 in the gank formulas (§6.4) | `positional.exposure_cell` |
@@ -1639,46 +1647,82 @@ ward_interrupted`, `info["ward" / "ward_placed" / "ward_interrupted"]`.
 ### 14.4 Resolution order of one turn (M4.5A)
 
 1. both actions committed simultaneously; 2. the probe (unchanged; a warder, like a recaller, does not support its
-wave in it; no minion targeting) and the farm spots; 3. champion movement (Ward path, chase, evasion; graph-aware),
-Recall interruption; 4. trade contact and **the trade rolls** (moved before the lane step in every preset: they read
-only the start-of-turn state and the end cells, so earlier presets are unchanged); the single exchange lands on
-**tick 0**; 5. modes, reach (§14.8) and wave budgets, the connected trader's capped budget (§14.7); each side's minion
-target $(\mu(\mathrm{end}_o),\ \text{retaliation tick},\ \text{stationary}_o)$; 6. the lane step, tick by tick (§14.5);
-7. gold and XP (graph distances); 8. ganks; 9. the turn's damage $\lfloor(\text{trade}+\text{tower}+\text{gank}+
-D_{\text{minion}})/M(S)\rfloor$; 10. death, ward placement; 11–15 unchanged (plates, progression, ledger, absence,
-reward). The reward is unchanged: no term is added for any action or event.
+wave in it; no minion targeting; it also reports each side's front after every tick) and the farm spots; 3. champion
+movement (Ward path, chase, evasion; graph-aware): the end cells, Recall interruption; 4. trade contact (at the end
+cells) and **the trade rolls** (moved before the lane step in every preset: they read only the start-of-turn state and
+the end cells, so earlier presets are unchanged); the single exchange lands on **tick 0**; 5. modes, reach (§14.8) and
+wave budgets, the connected trader's capped budget (§14.7); each champion's cell after each tick $p_1,p_2$ (§14.5a);
+each side's minion target $(\mu(\mathrm{end}_o),\ \text{retaliation tick},\ \text{stationary}_o,\ \mu(p_1(o)),\mu(p_2(o)))$;
+6. the lane step, tick by tick: minion movement (walk, merge, entry crash) and the champions' step to $p_{t+1}$, then
+targeting on these positions, then firing and the fights (§14.5); 7. gold and XP (graph distances from the end cells);
+8. ganks; 9. the turn's damage $\lfloor(\text{trade}+\text{tower}+\text{gank}+D_{\text{minion}})/M(S)\rfloor$; 10. death,
+ward placement; 11–15 unchanged (plates, progression, ledger, absence, reward). The reward is unchanged: no term is added
+for any action or event.
+
+### 14.5a Movement within the turn
+
+With $v=2$ edges per turn and $n=2$ ticks, a champion walks $v_t=\lceil(t+1)v/n\rceil-\lceil tv/n\rceil=1$ edge on each
+tick. From $p_0=\mathrm{start}$, its cell after tick $t$ is
+
+$$
+p_{t+1}=\operatorname*{arg\,min}_{x\in\{-2..2\}\cup\{W\}:\ d(p_t,x)\le v_t,\ d(x,\mathrm{end})\le\sum_{t'>t}v_{t'}}
+\bigl(d(x,g_t),\ d(x,\mathrm{end}),\ d(x,p_t),\ [x=W],\ x\bigr),\qquad p_n=\mathrm{end},
+$$
+
+(lexicographic). The goal $g_t$ of a **follower** — Hold, an unthreatened Yield, Safe, and a Trade whose opponent is
+away — is its behaviour's target (Hold: the spot; Safe: $\min(\text{spot},-1)$; Yield: the stand-off cell of §6.2) from
+the farm spot after tick $t$ of the probe, $\text{spot}_t=\operatorname{clip}(x^{\text{front}}_s(t),-2,2)$ (the own
+cell without a front, 0 from W; the pre-turn front cell once the front has crashed, `farm_spot_rule`); every other
+champion (chase, evasion, Ward, Pressure) has $g_t=\mathrm{end}$, a direct walk with its edges spent on the earliest
+tick. So a Hold champion whose wave beats the enemy front on tick 0 and advances on tick 1 stays with it on tick 0 and
+steps with it on tick 1. The end cell — and contact, reach, gold, XP and exposure, which read it — is the same as in
+revision 1. `M4Turn.path`, `info["champion_path"]` (own cells after each tick).
 
 ### 14.5 Minion targeting, per tick
 
 On tick $t$ each side's wave (its leading blob, §4.2) spends its tick firepower $f_t(h)$ (§4.3) on **exactly one**
-target category: enemy minions (the lane fight or the siege fight) or the enemy champion $o$. At the start of tick $t$
-(after the turn's champion movement, before the tick's minion movement) side $s$'s wave **designates** $o$ (present)
-when
+target category: enemy minions (the lane fight or the siege fight) or the enemy champion $o$. After the tick's movement
+— the minions have walked, merged and crashed on entry, every champion stands at its cell $p_{t+1}$ (§14.5a) — side
+$s$'s wave **designates** $o$ (present) when
 
 $$
 \underbrace{o\text{'s Trade damaged }s\text{'s champion this turn and }t\ge\delta}_{\text{retaliation},\ \delta=1}
 \quad\text{or}\quad
-\underbrace{\mathrm{start}_o=\mathrm{end}_o=c\in[-2,2],\ x^{\text{front}}_s(t)=\mu(c),\ \bigl(x^{\text{front}}_o(t)<c\text{ or no front}\bigr),\ \neg(m_o>0\wedge c=+2)}_{\text{positional aggro (}o\text{ did not move this turn)}}
+\underbrace{c=p_{t+1}(o)\in[-2,2],\ x^{\text{front}}_s(t)=\mu(c),\ \bigl(x^{\text{front}}_o(t)<c\text{ or no front}\bigr),\ \neg(m_o>0\wedge c=+2)}_{\text{positional aggro: }o\text{ occupies our front's cell, uncovered}}
 $$
 
-(retaliation first in the record). After the tick's movement the designated wave **fires** iff its front is within
-`minion_range` $=1$ of $o$, $d(x^{\text{front}}_s,\mu(\mathrm{end}_o))\le1$, and $f_t>0$: it adds $f_t$ minion damage
-units to $o$ and deals **no** damage to enemy minions on that tick (neither the lane fight nor the siege fight; the
-crashed mass it would have engaged then hits the tower). Otherwise it fights minions normally. Champions' own wave
-budgets are unaffected. Crashed masses never target champions; a champion at W is never in a wave's cell. Damage of an
-earlier tick is never reassigned; an un-designated wave behaves exactly as in §4.
+with $x^{\text{front}}(t)$ and $m_o$ (o's crashed mass) after the tick's movement (retaliation first in the record).
+Whether $o$ moved this turn, and which behaviour it chose, play no role. The designated wave **fires** iff its front is
+within `minion_range` $=1$ of $o$, $d(x^{\text{front}}_s,\mu(p_{t+1}(o)))\le1$ (distance 0 for positional aggro), and
+$f_t>0$: it adds $f_t$ minion damage units to $o$ and deals **no** damage to enemy minions on that tick (neither the lane
+fight nor the siege fight; the crashed mass it would have engaged then hits the tower). Otherwise it fights minions
+normally. Champions' own wave budgets are unaffected. Crashed masses never target champions; a champion at W is never in
+a wave's cell. Damage of an earlier tick is never reassigned; an un-designated wave behaves exactly as in §4. With
+$\delta=1$ the retaliation tick is the last one, where $p_2=\mathrm{end}$: retaliation reads the end cell, as in
+revision 1.
 
 | situation | tick 0 | tick 1 |
 |---|---|---|
 | A's Trade lands on B; B's front within 1 of A | B's minions on A's minions | B's minions on A |
 | A's Trade misses | normal | normal |
-| A stood in B's front's cell (did not move), A's front behind | B's minions on A | B's minions on A (if still designated and in range) |
-| A stands one cell from B's front; B's front walks into A's cell during tick 0 | normal | B's minions on A |
-| A moved this turn (e.g. followed its winning wave) into B's front's cell | normal | normal (counts from next turn if A stays) |
+| A stands in B's front's cell, A's front behind (moved or not) | B's minions on A | B's minions on A (while it stays and B's front holds the cell) |
+| A stands one cell from B's front | normal | normal |
+| B's front walks into A's cell during tick 0 (A's front behind) | B's minions on A | B's minions on A if both still share the cell |
+| A's front arrives in A's cell on the same tick as B's front | normal | normal |
+| Hold: A's wave beats B's front at 0 on tick 0 and walks to +1 on tick 1; A walks with it | normal | normal |
+| A walks through B's front's cell (chase, Ward through 0, walking back to its wave) | B's minions on A on the tick it is there | |
+| A and B's front swap cells within one tick | normal (no shared cell at a tick boundary) | |
 | A in B's tower cell with its own crashed mass there | normal | normal |
 
+**Revision 1** (`m45_unified_r1()`): every champion stood at its end cell for both ticks, designation was made from the
+start-of-tick state before the tick's movement, and positional aggro additionally required
+$\mathrm{start}_o=\mathrm{end}_o$; a front walking into a stationary champion's cell during tick 0 targeted it from
+tick 1. The exemption hid a false positive of the end-cell placement (a Hold champion stood in the cell its winning wave
+had not yet taken) and also exempted every moving champion.
+
 `TurnResult.champion_hits` (units per champion), `champion_fire` (cause per tick), the tick trace's `minion_fire`;
-`info["minion_fire" / "minion_hits" / "minion_damage" / "retaliation" / "minion_targets"]`.
+`info["minion_fire" / "minion_hits" / "minion_damage" / "retaliation" / "minion_targets" / "champion_path"]`. Code:
+`mechanics._designation` (both revisions), `mechanics._tick_natural` step 2b'.
 
 ### 14.6 Minion damage on champions and XP range 2
 
@@ -1711,7 +1755,8 @@ warding. The reach is an interval (`positional.reach_interval`, `info["champion_
 
 90 entries: each champion's cell one-hot has a W entry after its five lane cells (`own_champ_W`, `enemy_champ_W`);
 everything else is §2.4. `decode_m4` reads W back. Networks trained on any earlier preset (88 inputs) are refused by
-the M4.4 checkpoint guard (`experiments.rl.m44.common.load_policy`); `preset_name` recognizes `m45_unified`.
+the M4.4 checkpoint guard (`experiments.rl.m44.common.load_policy`); `preset_name` recognizes `m45_unified` and
+`m45_unified_r1`.
 
 ### 14.10 Parameters reserved for M4.5b
 
