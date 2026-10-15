@@ -1,0 +1,18 @@
+{
+ "meta": {
+  "study": "M4.6a",
+  "commit": "11860c88632cf8a90f1c0f7fc10c4126e63dec3b",
+  "working_tree_dirty": true,
+  "timestamp": "2026-10-15 14:16:34",
+  "python": "3.13.9",
+  "torch": "2.14.1+cpu",
+  "numpy": "2.5.3",
+  "environment": "GameConfig.m45_calibrated()",
+  "stage": "e3_determinism"
+ },
+ "files": 180,
+ "games_identical": 8640,
+ "games_different": 0,
+ "compared": "snapshots at 20/50/100/300, collected semi-natural states, E6 critic aggregates and every gap readout except the stronger side position (redefined to exclude the Ward node)",
+ "note": "the first run (position averaged with W = 99) and the re-run (lane cells only) were produced by the same seeds; the first run was then removed as an exact duplicate"
+}

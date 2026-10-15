@@ -1,0 +1,25 @@
+{
+ "meta": {
+  "study": "M4.6a",
+  "commit": "11860c88632cf8a90f1c0f7fc10c4126e63dec3b",
+  "working_tree_dirty": true,
+  "timestamp": "2026-10-15 11:29:49",
+  "python": "3.13.9",
+  "torch": "2.14.1+cpu",
+  "numpy": "2.5.3",
+  "environment": "GameConfig.m45_calibrated()",
+  "stage": "prereg"
+ },
+ "record": {
+  "document": "docs\\m4\\m4_6a_preregistration.md",
+  "sha256": "2c72bf4567c7df3241c1be148783a18f1a9e1a7873cb5b1ecfe71174425712f3",
+  "bytes": 14705
+ },
+ "note": "written before any M4.6a experiment stage ran; smoke tests check pipelines only",
+ "amendments": [
+  {
+   "time": "2026-10-15 13:45:36",
+   "note": "Before any E4 result was read: E4-P1 / E4-P2 pool, per target, the constructed evaluation cells and the held-out semi-natural (gap) or natural (freeze) evaluation states with equal weight per state; each set is also reported separately, and the equal-power cells are the gap-specificity control only (never pooled). E2 and E5 exception-3 re-runs were run as pre-registered; E6 critic-by-gap is labelled exploratory; E3 is re-run once with the position readout restricted to lane cells (the Ward node W = 99 had been averaged in) as a determinism check."
+  }
+ ]
+}

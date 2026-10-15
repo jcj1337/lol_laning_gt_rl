@@ -225,12 +225,14 @@ class TrainResult:
 
 def train_ppo(game_cfg: GameConfig, cfg: PPOConfig, sampler: OpponentSampler, out_dir: Optional[str] = None,
               net: Optional[PolicyValueNet] = None, on_update: Optional[Callable] = None, verbose: bool = True,
-              name: str = "ppo", eval_fn: Optional[Callable] = None, eval_every: int = 0) -> TrainResult:
+              name: str = "ppo", eval_fn: Optional[Callable] = None, eval_every: int = 0,
+              collector_cls: Optional[type] = None) -> TrainResult:
     """Train `net` (a fresh network if None) with PPO against `sampler`'s opponents.
 
     `on_update(update, net, entry)` is called after every update (M3b adds snapshots there); `eval_fn(net)`
     every `eval_every` updates (and after the last) returns a dict stored in the history. With `out_dir`, the
-    history is written to history.jsonl and the final network to final.pt."""
+    history is written to history.jsonl and the final network to final.pt. `collector_cls` (opt-in, M4.6a): a
+    Collector subclass with the same constructor (e.g. a seat-aware start archive); None = `Collector`, unchanged."""
     torch.set_num_threads(cfg.torch_threads)
     torch.manual_seed(cfg.seed)
     gen = torch.Generator().manual_seed(cfg.seed)
@@ -238,7 +240,7 @@ def train_ppo(game_cfg: GameConfig, cfg: PPOConfig, sampler: OpponentSampler, ou
     if net is None:
         net = PolicyValueNet(env0.obs_size, env0.n_actions, cfg.hidden)
     opt = torch.optim.Adam(net.parameters(), lr=cfg.lr, eps=1e-5)
-    collector = Collector(game_cfg, cfg, sampler, cfg.seed + 1)
+    collector = (collector_cls or Collector)(game_cfg, cfg, sampler, cfg.seed + 1)
     res = TrainResult(net)
     t0 = time.perf_counter()
     hist_f = None
