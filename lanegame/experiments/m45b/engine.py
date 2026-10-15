@@ -13,7 +13,8 @@ index from the game's start); its code must be legal (checked).
 Ledger (`Ledger.summary`), per side s in {A, B} (suffix _A / _B), over the whole game unless a horizon is given:
 
   gold      earned (farm + plate gold + bounty), farm, plate, bounty, farm_avail (0.125 per enemy minion HP that died
-            on s's ledger, whatever s's position: the farm at full collection), unc = farm_avail - farm
+            on s's ledger, whatever s's position: the farm at full collection), unc = farm_avail - farm, unc_away = the
+            part of unc on turns s was away (M4.6b; unc - unc_away = lost while present: reach, posture, trading)
   XP        xp (credited), xp_avail (every enemy minion HP that died), xp_lost (avail - credited - discarded: died
             out of range or while away)
   damage    incoming, in bars of the victim's start-of-turn max HP, BEFORE the victim's durability division (the
@@ -59,7 +60,7 @@ HORIZONS = (1, 5, 10, 20, 50, 100, 200, 300)
 SNAP_H = (10, 20, 50)              # horizons of the cumulative snapshots (XP is capped at level 18 in long windows)
 SNAP_KEYS = ("earned", "farm", "xp", "deaths", "recalls", "away", "d_total", "trade_dealt", "d_min", "held",
              "frozen", "ward_placed", "plates")
-SIDE_KEYS = ("earned", "farm", "plate", "bounty", "farm_avail", "unc", "xp", "xp_avail", "xp_lost",
+SIDE_KEYS = ("earned", "farm", "plate", "bounty", "farm_avail", "unc", "unc_away", "xp", "xp_avail", "xp_lost",
              "d_trade", "d_min", "d_min_ret", "d_min_pos", "d_tower", "d_gank", "d_total",
              "u_ret", "u_pos", "t_ret", "t_pos",
              "trade_att", "trade_conn", "trade_land", "trade_dealt", "evaded", "pinned",
@@ -151,6 +152,8 @@ class Ledger:
             v["bounty"][s] += t.bounty_units[s] / sc
             v["farm_avail"][s] += t.farm_available[s]
             v["unc"][s] += t.farm_available[s] - t.farm_units[s] / sc
+            if t.away[s]:
+                v["unc_away"][s] += t.farm_available[s] - t.farm_units[s] / sc
             xp_av = cfg.xp_per_hp * sum(res.kills[s].values())
             v["xp"][s] += t.xp_gain[s]
             v["xp_avail"][s] += xp_av

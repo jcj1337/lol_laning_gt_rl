@@ -102,8 +102,18 @@ def rule_freeze_threat(cfg, lane, m4, s):
     return {"wave": controller_wave(lane, s), **rule_threaten(cfg, lane, m4, s)}
 
 
+def rule_trade(cfg, lane, m4, s):
+    return {"behavior": B_TRADE}
+
+
+def rule_safe(cfg, lane, m4, s):
+    from ....config import B_SAFE
+    return {"behavior": B_SAFE}
+
+
 RULES: Dict[str, Callable] = {"farm": rule_farm, "threaten": rule_threaten, "edge": rule_edge, "bully": rule_bully,
-                              "freeze_threat": rule_freeze_threat}
+                              "freeze_threat": rule_freeze_threat, "trade": rule_trade, "safe": rule_safe,
+                              "hold": rule_farm}
 
 
 def matches(code: int, comps: Dict[str, int]) -> bool:
@@ -139,8 +149,36 @@ class BehaviorPlan:
         return legal[sl[j]], f"[{self.name}] {comps}"
 
 
+class ResetPlan:
+    """M4.6b: reset now. While present and not yet recalled (turn index < n): Recall when it is legal, otherwise the
+    policy restricted to Safe (walk back; the wave left to the policy); after the Recall, or from turn n, the policy."""
+
+    def __init__(self, own: HZ.CRNNet, n: int):
+        self.own, self.n, self.done, self.forced = own, int(n), False, 0
+        self.safe = BehaviorPlan("safe", own, rule_safe, n, 0.0)
+
+    def decide(self, cfg, lane, m4, s: int, i: int):
+        from ....champions import champion_legal_actions
+        from ....config import W_HOLD as _LH, champ_act
+        if i == 0:                                       # a new rollout (the engine also queries turn 0 beforehand)
+            self.done = False
+        if self.done or i >= self.n or m4.side(s).absent > 0:
+            return self.own.decide(cfg, lane, m4, s, i)
+        rec = champ_act(_LH, B_RECALL)
+        if rec in champion_legal_actions(lane, m4, s, cfg):
+            self.done = True
+            self.forced += 1
+            return rec, "[reset] Recall"
+        self.forced += 1
+        return self.safe.decide(cfg, lane, m4, s, i)
+
+
 def build(cspec: tuple, own: HZ.CRNNet):
     kind = cspec[0]
+    if kind == "reset":
+        return ResetPlan(own, cspec[1])
+    if kind == "hz":                                     # an m45c horizon candidate spec (fixed / rule, with a condition)
+        return HZ.build_candidate(tuple(cspec[1]), own)
     if kind == "policy":
         return own
     if kind == "beh":

@@ -1,6 +1,6 @@
 """Part 2: interrupted Recalls. Does the policy repeatedly choose an economically inferior Recall?
 
-Mechanics (champions_m4.resolve_turn_m4 steps 2-4; verified on the engine, docs/m4/m4_4c_strategic_investigation.md
+Mechanics (champions_m4.resolve_turn_m4 steps 2-4; verified on the engine, docs/m4/m4_4/m4_4c_strategic_investigation.md
 §3.1). Recall (code 12) is legal at the own -1 or -2. It is interrupted iff the enemy chooses Trade and its end cell is
 in contact with the recaller's cell (the trader chases it); the interrupted champion channels (no farm, no wave
 damage), is traded with the full hit probability 0.55 (no Safe / Yield reduction) and plays normally next turn. At the

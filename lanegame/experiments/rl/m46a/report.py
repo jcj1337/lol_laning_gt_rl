@@ -1,5 +1,5 @@
 """Generated tables of M4.6a (results/m46a/report.md) from the stage summaries. The interpretation is in
-docs/m4/m4_6a_report.md; this file only formats numbers."""
+docs/m4/m4_6/m4_6a_report.md; this file only formats numbers."""
 
 from __future__ import annotations
 
@@ -92,7 +92,7 @@ def e1_section(e5_price: float = None) -> str:
 
 
 def run() -> str:
-    parts = ["# M4.6a generated tables\n", "Interpretation: docs/m4/m4_6a_report.md.\n"]
+    parts = ["# M4.6a generated tables\n", "Interpretation: docs/m4/m4_6/m4_6a_report.md.\n"]
     e5 = load_json("e5_summary")
     price = None
     if e5:

@@ -1,4 +1,4 @@
-"""Paired-seed simulation harness of the M4.3c stabilization study (docs/m4/m4_3c_strategic_economics_calibration.md).
+"""Paired-seed simulation harness of the M4.3c stabilization study (docs/m4/m4_3/m4_3c_strategic_economics_calibration.md).
 
 Every run goes through the real environment (`LaneEnv`, the M4 resolver, its own chance stream), from a named start
 state, with scripted agents (`strategies.StrategyAgent`). Nothing here changes the game.

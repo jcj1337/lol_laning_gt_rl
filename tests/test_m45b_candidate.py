@@ -1,4 +1,4 @@
-"""M4.5b candidate `GameConfig.m45_calibrated()` (docs/m4/m4_5b_calibration_report.md): `m45_unified()` revision 2 with
+"""M4.5b candidate `GameConfig.m45_calibrated()` (docs/m4/m4_5/m4_5b_calibration_report.md): `m45_unified()` revision 2 with
 the mechanical correction farm_spot_rule "last_front" and the calibration minion_retaliation_delay 0.
 
 Tests: the parameter contract (exactly the two fields; validation; every earlier preset unchanged), the correction's

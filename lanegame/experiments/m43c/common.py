@@ -1,4 +1,4 @@
-"""Shared definitions of the M4.3c design diagnostics (docs/m4/m4_3c_economic_objective_design.md).
+"""Shared definitions of the M4.3c design diagnostics (docs/m4/m4_3/m4_3c_economic_objective_design.md).
 
 Nothing here changes the game. The diagnostics evaluate the M4.3b finals and the reactive references on the unchanged
 research preset `GameConfig.m4_lasthit()` and score the SAME paired trajectories under alternative economic objectives.

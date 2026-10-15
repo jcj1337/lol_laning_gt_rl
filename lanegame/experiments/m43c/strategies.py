@@ -1,4 +1,4 @@
-"""Scripted four-action strategies (M4.3c stabilization; docs/m4/m4_3c_strategic_economics_calibration.md).
+"""Scripted four-action strategies (M4.3c stabilization; docs/m4/m4_3/m4_3c_strategic_economics_calibration.md).
 
 A `Strategy` is a `zoning_natural.Policy` (the same pre-rules, in the same order: ABSENT while away; at or below
 `recall_frac` of max HP Recall when legal and not in the enemy's reach at the start of the turn, else walk back with

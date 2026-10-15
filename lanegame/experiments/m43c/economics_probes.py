@@ -1,4 +1,4 @@
-"""M4.3c stabilization, Stage B probes (docs/m4/m4_3c_strategic_economics_calibration.md): the value of a power lead,
+"""M4.3c stabilization, Stage B probes (docs/m4/m4_3/m4_3c_strategic_economics_calibration.md): the value of a power lead,
 the cost of a death, and the laning horizon. Same conventions as `economics` (four-action preset and its VARIANTS,
 the real environment, scripted strategies, paired seeds; nothing here changes a preset).
 

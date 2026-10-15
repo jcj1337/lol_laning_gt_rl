@@ -1,4 +1,4 @@
-"""M4.3c stabilization, Stage B (docs/m4/m4_3c_strategic_economics_calibration.md): the EXPERIMENTAL opt-in economic
+"""M4.3c stabilization, Stage B (docs/m4/m4_3/m4_3c_strategic_economics_calibration.md): the EXPERIMENTAL opt-in economic
 fields (xp_reward_weight, death_turns_by_level, terminal_rule) and the study's instruments. Every default reproduces
 every earlier preset exactly."""
 

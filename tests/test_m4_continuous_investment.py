@@ -1,4 +1,4 @@
-"""M4.2c continuous gold investment (GameConfig.m4_continuous(), an experiment; docs/m4/m4_continuous_investment_report.md):
+"""M4.2c continuous gold investment (GameConfig.m4_continuous(), an experiment; docs/m4/m4_2/m4_continuous_investment_report.md):
 every return to base invests all unspent gold, AP(L, S) = AP(L, 0) [1 + alpha ((1 + S)^p - 1)], no tiers, no clamp.
 The validated two-tier m4() is untouched (tests/test_m4_economy.py)."""
 

@@ -1,4 +1,4 @@
-"""Shared definitions of M4.6a (docs/m4/m4_6a_preregistration.md §1).
+"""Shared definitions of M4.6a (docs/m4/m4_6/m4_6a_preregistration.md §1).
 
 Environment: `GameConfig.m45_calibrated()` through `m45c.common.env_cfg()` (frozen; nothing here changes it).
 Policies: the six 16.384M finals of M4.5c (`final:ext:<seed>`); controls: the M4.5c s0 attackers.
@@ -27,7 +27,7 @@ from ..m45c.common import env_cfg, git_commit, git_dirty, run_jobs  # noqa: F401
 NAME = "m46a"
 OUT = os.path.join("results", NAME)
 CKPT = os.path.join("results", "rl", "checkpoints", NAME)
-PREREG_DOC = os.path.join("docs", "m4", "m4_6a_preregistration.md")
+PREREG_DOC = os.path.join("docs", "m4", "m4_6", "m4_6a_preregistration.md")
 FINALS = (0, 1, 2, 3, 4, 5)
 E4_TARGETS = (0, 2, 4)
 CACHE = 3000
@@ -99,7 +99,7 @@ def write_prereg() -> dict:
 
 def require_prereg() -> None:
     if not os.path.exists(os.path.join(OUT, "preregistration.json")):
-        raise SystemExit("run the `prereg` stage first (docs/m4/m4_6a_preregistration.md)")
+        raise SystemExit("run the `prereg` stage first (docs/m4/m4_6/m4_6a_preregistration.md)")
 
 
 def amend(note: str) -> dict:

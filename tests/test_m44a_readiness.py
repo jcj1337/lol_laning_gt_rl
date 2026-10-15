@@ -1,4 +1,4 @@
-"""M4.4a: PPO readiness of the four-action game (docs/m4/m4_4a_ppo_readiness.md).
+"""M4.4a: PPO readiness of the four-action game (docs/m4/m4_4/m4_4a_ppo_readiness.md).
 
 The three environments (m4_four_actions / _econ / _econ_aggro) and their identical training settings; four-action
 decoding, the codes that can ever be legal, masks; shared-policy self-play on every environment (own-perspective

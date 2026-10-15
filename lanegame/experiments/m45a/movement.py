@@ -1,4 +1,4 @@
-"""M4.5a movement correction (champion_movement_rule "tick"; docs/m4/m4_5a_unified_mechanics_report.md §10):
+"""M4.5a movement correction (champion_movement_rule "tick"; docs/m4/m4_5/m4_5a_unified_mechanics_report.md §10):
 deterministic scenario demonstrations and paired comparisons of the superseded revision `m45_unified_r1()` (r1) with
 the corrected `m45_unified()` (r2). Descriptive checks of the correction, not the M4.5b calibration.
 
@@ -298,7 +298,7 @@ def _fire(f) -> str:
 def report(d: dict) -> str:
     L = ["# M4.5a movement correction: demonstrations and paired comparison (generated)", "",
          "`python -m lanegame.experiments.m45a movement`; design and discussion: "
-         "`docs/m4/m4_5a_unified_mechanics_report.md` §10. r1 = `m45_unified_r1()` (champions at their end cells for "
+         "`docs/m4/m4_5/m4_5a_unified_mechanics_report.md` §10. r1 = `m45_unified_r1()` (champions at their end cells for "
          "the whole turn, positional aggro only on a champion that did not move); r2 = `m45_unified()` "
          "(champion_movement_rule \"tick\"); \"end cell\" = r1 without its stationary exemption (the original false "
          "positive).", ""]

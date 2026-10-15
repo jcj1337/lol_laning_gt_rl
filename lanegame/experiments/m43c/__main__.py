@@ -1,10 +1,10 @@
 """python -m lanegame.experiments.m43c <stage> [<stage> ...] [--workers N]
 
-Stages (docs/m4/m4_3c_economic_objective_design.md §9): examples, progression, xp_cf, freeze, death, report;
-xp_range (docs/m4/m4_3c_xp_range_screen.md; also writes its own tables); wave_control
-(docs/m4/m4_3c_wave_control_screen.md; also writes its own tables); four_actions (docs/m4/m4_3c_four_action_wave_redesign.md;
+Stages (docs/m4/m4_3/m4_3c_economic_objective_design.md §9): examples, progression, xp_cf, freeze, death, report;
+xp_range (docs/m4/m4_3/m4_3c_xp_range_screen.md; also writes its own tables); wave_control
+(docs/m4/m4_3/m4_3c_wave_control_screen.md; also writes its own tables); four_actions (docs/m4/m4_3/m4_3c_four_action_wave_redesign.md;
 also writes its own tables; --no-ppo skips its PPO smoke run). M4.3c stabilization
-(docs/m4/m4_3c_strategic_economics_calibration.md): sequences (Stage A3). `all` runs every stage in that order. Nothing
+(docs/m4/m4_3/m4_3c_strategic_economics_calibration.md): sequences (Stage A3). `all` runs every stage in that order. Nothing
 is trained; the M4.3b checkpoints must be in place (results/rl/checkpoints/m43b/, or the bundle of
 results/rl/m43b/ARTIFACTS.md) for progression, xp_cf, freeze, death.
 """

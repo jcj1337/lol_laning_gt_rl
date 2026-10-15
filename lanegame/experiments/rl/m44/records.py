@@ -65,6 +65,7 @@ from ....env.agents import episode_streams, sample
 from ....diagnostics.branch import Snapshot
 from ....env.discounted import game_agents
 from ....mechanics import start_packets, window_strength
+from ....positional import dist as graph_dist, mirror_cell
 from ....progression import plates_broken
 from ....state import State
 from ...m4.zoning_natural import duel_edge
@@ -166,8 +167,10 @@ def decision_state(cfg: GameConfig, ctx, lane, m4, k: int, s: int, legal: Sequen
     nplates = len(cfg.plate_thresholds)
     return {
         "present": present, "en_present": en_present, "pos": me.pos,
-        "epos": float(-en.pos) if en_present else float("nan"),
-        "dist": float(abs(me.pos + en.pos)) if (present and en_present) else float("nan"),
+        # M4.6b measurement fix: the Ward node W (positional.WARD = 99) is not a lane cell, so the enemy cell is mirrored
+        # with W kept as W and the distance is the movement-graph distance (|pos + enemy pos| on lane cells, as before)
+        "epos": float(mirror_cell(en.pos)) if en_present else float("nan"),
+        "dist": float(graph_dist(me.pos, mirror_cell(en.pos))) if (present and en_present) else float("nan"),
         "hp_frac": me.hp / t.hp_max[L], "ehp_frac": en.hp / t.hp_max[eL], "level": L, "elevel": eL,
         "invested": me.items / g, "einvested": en.items / g, "gold": me.gold / g,
         "power": power_ratio(ctx, m4, s), "edge": duel_edge(cfg, lane, m4, s) if present else 0.0,

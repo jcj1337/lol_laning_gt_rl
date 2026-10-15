@@ -41,7 +41,7 @@ def test_tables_equal_the_design_table():
         assert (pg.hit_damage(1, L, 0), pg.hit_damage(2, L, 0), pg.hit_damage(1, L, 2), pg.hit_damage(2, L, 2)) == \
             (d10, d20, d12, d22)
         if L == 14:
-            # Specification contradiction (documented in docs/m4/m4_implementation_report.md): the normative formula
+            # Specification contradiction (documented in docs/m4/m4_2/m4_implementation_report.md): the normative formula
             # u(L) = floor(H(L)/6 + 1/2) gives floor(188.5 + 0.5) = 189; the design table's 188 was printed with
             # Python's round() (round half to even). The implementation follows the formula, like every other
             # half-up rounding rule of §8.2.

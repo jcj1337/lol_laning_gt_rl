@@ -481,7 +481,7 @@ def report() -> str:
              f"*Generated from results/m45c/*.json; commit {p['meta']['commit'][:10]} "
              f"(working tree dirty: {p['meta']['working_tree_dirty']}). Environment `GameConfig.m45_calibrated()`. "
              "Transitions are AGENT transitions (2 per joint environment step) unless stated. Prose and "
-             "interpretation: docs/m4/m4_5c_pilot_report.md.*\n"]
+             "interpretation: docs/m4/m4_5/m4_5c_pilot_report.md.*\n"]
     parts.append(sec_audit(a))
     parts.append(sec_smoke(s, se))
     parts.append(sec_config(p))

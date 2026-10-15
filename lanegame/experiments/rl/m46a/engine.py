@@ -50,20 +50,10 @@ def ledger_checkpoints(horizon: int):
 
 
 def XLedger(cfg, start):
+    """The m45b ledger. Since M4.6b the base ledger itself carries unc_away (identical values to M4.6a's subclass,
+    which added it after the base update), so this is the base class."""
     from ...m45b import engine as E
-
-    class _X(E.Ledger):
-        def __init__(self, cfg, start):
-            super().__init__(cfg, start)
-            self.v["unc_away"] = [0.0, 0.0]
-
-        def add(self, t, lane_before):
-            super().add(t, lane_before)
-            sc = self.cfg.gold_scale
-            for s in (0, 1):
-                if t.away[s]:
-                    self.v["unc_away"][s] += t.farm_available[s] - t.farm_units[s] / sc
-    return _X(cfg, start)
+    return E.Ledger(cfg, start)
 
 
 def rollout(cfg, start, pa, pb, seed: int, horizon: int, cps, lcps, critic=None) -> Dict[int, dict]:
@@ -133,7 +123,11 @@ def paired_job(job: dict) -> tuple:
     key = f"{job['family']}|{job['idx']}|{job['proto']}|{job['horizon']}|{job.get('tag', '')}"
     if path and os.path.exists(path):
         return key, load_gz(path)
-    cfg = setup_worker()
+    if job.get("arm"):                                   # M4.6b: an opt-in investment-curve arm
+        from ..m46b.common import setup
+        cfg = setup(job["arm"])
+    else:
+        cfg = setup_worker()
     from ...m45b import engine as E
     net = net_of(job["spec"])
     start = job["start"]
@@ -179,6 +173,7 @@ def paired_job(job: dict) -> tuple:
                                     "diff_sd": (np.nanstd(d, 0, ddof=1) if len(job["roll"]) > 1
                                                 else np.zeros(len(keys))).tolist()}
     rec = {"family": job["family"], "idx": job["idx"], "proto": job["proto"], "horizon": H, "spec": job["spec"],
+           "arm": job.get("arm", "baseline"),
            "label": job.get("label", ""), "tag": job.get("tag", ""), "K": len(job["roll"]), "k0": int(k0),
            "keys": keys, "cands": {n: list(map(str, s)) for n, s in cands.items()}, "baseline": base, "G": G, "Q": Q,
            "ledger": ledger, "forced": forced, "first_codes": first, "elapsed_s": time.perf_counter() - t0,

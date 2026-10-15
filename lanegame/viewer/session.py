@@ -62,7 +62,7 @@ START_SOURCE = {"m4_four_actions": "m4_lasthit", "m4_four_actions_econ": "m4_las
 # Rules revisions of a configuration name whose rules changed after recordings were made under it. A recording of
 # such a configuration carries "rules_revision" (`recording_stamp`); one without it predates the change and replays
 # under the preset that keeps the old rules: m45_unified revision 1 (M4.5a as first implemented, ea3d9cb) is
-# m45_unified_r1() (docs/m4/m4_5a_unified_mechanics_report.md §10).
+# m45_unified_r1() (docs/m4/m4_5/m4_5a_unified_mechanics_report.md §10).
 RULES_REVISION = {"m45_unified": 2}
 REVISION_PRESETS = {("m45_unified", 1): "m45_unified_r1"}
 

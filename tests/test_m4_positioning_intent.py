@@ -1,5 +1,5 @@
 """M4.2d-B: the opt-in positioning rule `GameConfig.position_rule` ("m2" default, "pin", "standoff";
-docs/m4/m4_positioning_report.md)."""
+docs/m4/m4_2/m4_positioning_report.md)."""
 
 import numpy as np
 import pytest

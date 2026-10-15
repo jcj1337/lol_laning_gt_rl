@@ -1,4 +1,4 @@
-"""M4.5b stages (docs/m4/m4_5b_calibration_report.md). Results go to results/m45b/<stage>.json (gzipped when large);
+"""M4.5b stages (docs/m4/m4_5/m4_5b_calibration_report.md). Results go to results/m45b/<stage>.json (gzipped when large);
 `report` writes results/m45b/report.md from them.
 
     python -m lanegame.experiments.m45b split            fix the holdout split (results/m45b/holdout_split.json)

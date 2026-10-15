@@ -1,5 +1,5 @@
 """Strategic metrics of M4.4, computed from game records only (records.py). Precise definitions are in
-docs/m4/m4_4a_ppo_readiness.md §4; the short form is repeated in each function.
+docs/m4/m4_4/m4_4a_ppo_readiness.md §4; the short form is repeated in each function.
 
 Every metric takes a list of `GameRecord`s and a focal agent name (`focal`; None = every side of every record) and
 reports counts with the rates, so a reader can see how much evidence a number rests on. Rates that are averages of
@@ -32,6 +32,21 @@ LH, TN, SL, SH = 0, 1, 2, 3                    # WAVE_ORDER indices
 MIN_FREEZE = 4                                 # turns: two waves (one every 2 turns) arrive while the lane stays held
 SUSTAINED_FREEZE = 10
 AFTER_WINDOW = 20                              # turns after a freeze / crash for the economic consequence
+WARD_CELL = 99                                 # positional.WARD: the off-lane Vision node W (M4.5a), not a lane cell
+
+
+def lane_mean(values) -> float:
+    """M4.6b measurement fix: the mean cell over LANE cells only (the Ward node W = 99 excluded; nan if none)."""
+    v = [float(x) for x in values if np.isfinite(x) and x != WARD_CELL]
+    return float(np.mean(v)) if v else float("nan")
+
+
+def ward_share(values) -> float:
+    """The share of the given positions at the Ward node W (finite entries only)."""
+    v = [x for x in values if np.isfinite(x)]
+    return float(np.mean([x == WARD_CELL for x in v])) if v else float("nan")
+
+
 STRONGER, WEAKER = 1.25, 0.8                   # attack-power ratio classes (as M4.3b)
 NEAR = 3                                       # |pos + enemy pos| <= champion_speed + trade_range: catchable
 
@@ -268,7 +283,8 @@ def freeze_episodes(rec: GameRecord, s: int) -> List[dict]:
             "plates_left": int(d["plates_left"][t0, s]),
             "freezer_waves": _wave_shares(fw), "frozen_on_waves": _wave_shares(ow_), "frozen_on_beh": _beh_shares(ob),
             "freezer_preserving_share": float(np.isin(fw, (LH, TN)).mean()) if len(fw) else float("nan"),
-            "frozen_on_mean_pos": float(np.nanmean(d["pos"][sl, o][d["present"][sl, o] > 0])) if (d["present"][sl, o] > 0).any() else float("nan"),
+            "frozen_on_mean_pos": lane_mean(d["pos"][sl, o][d["present"][sl, o] > 0]),
+            "frozen_on_ward_share": ward_share(d["pos"][sl, o][d["present"][sl, o] > 0]),
             "gold_diff": float((d["earned"][sl, s] - d["earned"][sl, o]).sum()),
             "farm_diff": float((d["farm"][sl, s] - d["farm"][sl, o]).sum()),
             "xp_diff": float((d["xp"][sl, s] - d["xp"][sl, o]).sum()),
@@ -417,11 +433,13 @@ def zoning(records: Sequence[GameRecord], focal: Optional[str] = None) -> dict:
     def mean(x):
         return float(np.mean(x)) if len(x) else float("nan")
 
-    by_power = {k: {"n": r["n"], "mean_pos": mean(r["pos"]), "at_own_tower": mean(r["at_own_tower"]),
+    by_power = {k: {"n": r["n"], "mean_pos": lane_mean(r["pos"]), "ward_share": ward_share(r["pos"]),
+                    "at_own_tower": mean(r["at_own_tower"]),
                     "trade_attempt_rate": mean(r["trade_att"]), "trade_connect_rate": mean(r["trade_conn"]),
                     "connected_dealt_bars": mean(r["dealt"]), "connected_taken_bars": mean(r["taken"]),
                     "death_rate": mean(r["died"]), "collection_rate": mean(r["farm_rate"])} for k, r in rows.items()}
-    thr = {k: {"n": g["n"], "behavior": _beh_shares(np.asarray(g["beh"], int)), "mean_pos": mean(g["pos"]),
+    thr = {k: {"n": g["n"], "behavior": _beh_shares(np.asarray(g["beh"], int)), "mean_pos": lane_mean(g["pos"]),
+               "ward_share": ward_share(g["pos"]),
                "uncollected_per_turn": mean(g["uncollected"]), "xp_missed_per_turn": mean(g["xp_missed"]),
                "died_within_4": mean(g["died4"]), "recalled_within_4": mean(g["recalled4"])} for k, g in threat.items()}
     tu = max(deaths["turns"], 1)
@@ -681,7 +699,8 @@ def recalls(records: Sequence[GameRecord], focal: Optional[str] = None) -> dict:
 
     return {"focal_turns": turns, **{k: summary(v) for k, v in ev.items()},
             "by_investment_lead": {k: {"n": x["n"], "trade_rate": mean(x["trade"]), "shove_share": mean(x["shove"]),
-                                       "safe_or_yield_share": mean(x["concede"]), "mean_pos": mean(x["pos"]),
+                                       "safe_or_yield_share": mean(x["concede"]), "mean_pos": lane_mean(x["pos"]),
+                                       "ward_share": ward_share(x["pos"]),
                                        "collection_rate": mean(x["collect"])} for k, x in lead.items()},
             "definition": {"low_hp_recall": f"hp fraction <= {LOW_HP}", "investment_lead": f"+-{INVEST_LEAD} resources"}}
 

@@ -1,4 +1,4 @@
-"""M4.3c wave-control screen (docs/m4/m4_3c_wave_control_screen.md): the EXPERIMENTAL opt-in fields wave_hold_cap and
+"""M4.3c wave-control screen (docs/m4/m4_3/m4_3c_wave_control_screen.md): the EXPERIMENTAL opt-in fields wave_hold_cap and
 wave_thin_rule "adaptive", their default preservation, the adaptive Thin target (mechanics.thin_need), the global
 correctness guarantees under the adaptive rule, and pins of the screen's key findings."""
 

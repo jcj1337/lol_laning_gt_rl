@@ -1,4 +1,4 @@
-"""M4.5a commands (EXPERIMENTAL m45_unified(); docs/m4/m4_5a_unified_mechanics_report.md):
+"""M4.5a commands (EXPERIMENTAL m45_unified(); docs/m4/m4_5/m4_5a_unified_mechanics_report.md):
 
     python -m lanegame.experiments.m45a demos      # viewer recordings results/m45a/trajectories/ (+ replay check)
     python -m lanegame.experiments.m45a smoke      # random / scripted soaks, throughput, damage table -> results/m45a/

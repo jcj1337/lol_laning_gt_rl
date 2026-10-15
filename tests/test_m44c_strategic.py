@@ -1,4 +1,4 @@
-"""M4.4c experimental infrastructure (docs/m4/m4_4c_strategic_investigation.md): multi-turn strategic plans, paired
+"""M4.4c experimental infrastructure (docs/m4/m4_4/m4_4c_strategic_investigation.md): multi-turn strategic plans, paired
 multi-turn counterfactuals, complete-action Recall comparisons, opponent protocols and styles, episode ledgers, wave
 budget identities, seed roots and viewer traces. No checkpoint files: networks are the untrained initial networks of a
 training seed (bit-identical to the start of the M4.4b runs)."""

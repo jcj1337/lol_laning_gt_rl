@@ -581,7 +581,7 @@ def report_md(d: Optional[dict] = None) -> str:
     parts = ["# M4.5c horizon study — generated tables\n",
              f"*{d['n_jobs']} jobs, {d['turns']:,} simulated turns, {d['job_seconds'] / 3600:.2f} worker-hours. Paired "
              "differences candidate − policy (resources); ± = 95% t interval over states. Prose: "
-             "docs/m4/m4_5c_horizon_study.md.*\n"]
+             "docs/m4/m4_5/m4_5c_horizon_study.md.*\n"]
     rows = []
     for fam in NATURAL:
         for cand, dd in sorted(d["tables"][fam]["policy"].items()):

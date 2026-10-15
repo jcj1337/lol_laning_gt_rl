@@ -1,6 +1,6 @@
 """Cross-mechanic integration tests (plan §4, tests 1-12) on constructed scenarios and scripted play.
 
-Finding documented here and in docs/m4/m4_implementation_report.md (S3): design §6.4's crash table was measured on the
+Finding documented here and in docs/m4/m4_2/m4_implementation_report.md (S3): design §6.4's crash table was measured on the
 lane alone with full champion reach. On the implemented resolver the Slow Push rows reproduce exactly, but a
 Shove + Hold breaker does not keep its reach on every turn: when the probe pass (design §5 step 1, M2's rule) predicts
 that its front breaks the hold and crashes, its farm spot becomes its next packet, the champion walks back, its reach

@@ -14,8 +14,8 @@ and verified against the code; the numbers in the examples were produced by the 
 | label | meaning |
 |---|---|
 | **CURRENT** | behaviour of `m4_lasthit()` as implemented (the default reading of every unlabelled statement) |
-| **FOUR-ACTION** | the EXPERIMENTAL four-action baseline `m4_four_actions()` (§4.10): `m4_lasthit()` with the wave actions Last Hit / Thin / Slow Push / **Shove**; its measured economics are in [m4_3c_strategic_economics_calibration.md](m4_3c_strategic_economics_calibration.md) |
-| **PROPOSED** | a mechanic under investigation (M4.3c); described only in [m4_3c_economic_objective_design.md](m4_3c_economic_objective_design.md) or the calibration report, never here except as a pointer |
+| **FOUR-ACTION** | the EXPERIMENTAL four-action baseline `m4_four_actions()` (§4.10): `m4_lasthit()` with the wave actions Last Hit / Thin / Slow Push / **Shove**; its measured economics are in [m4_3c_strategic_economics_calibration.md](m4_3/m4_3c_strategic_economics_calibration.md) |
+| **PROPOSED** | a mechanic under investigation (M4.3c); described only in [m4_3c_economic_objective_design.md](m4_3/m4_3c_economic_objective_design.md) or the calibration report, never here except as a pointer |
 | **EXPERIMENTAL** | an opt-in configuration field that exists in the code but is off in `m4_lasthit()` (and, unless stated, in `m4_four_actions()`) |
 | **DEPRECATED** | a rule of an earlier preset or design document that `m4_lasthit()` no longer uses |
 | **M4.5A** | the EXPERIMENTAL unified positional candidate `m45_unified()` (§14): `m4_four_actions_econ_aggro()` plus the shared Vision node W, Ward, minion retaliation and positional aggro, per-tick champion movement (revision 2), XP range 2, the capped trade budget and the reach ball; no CURRENT statement of §1–§10 describes it |
@@ -545,7 +545,7 @@ behind** this line:
 The reach line has no lower bound: a champion one cell forward still damages a target three cells behind it (it
 cannot *collect* that gold, §5.3).
 
-**EXPERIMENTAL** (off in `m4_lasthit()`; screened in [m4_3c_wave_control_screen.md](m4_3c_wave_control_screen.md)):
+**EXPERIMENTAL** (off in `m4_lasthit()`; screened in [m4_3c_wave_control_screen.md](m4_3/m4_3c_wave_control_screen.md)):
 `wave_hold_cap` $=n>0$ replaces $B_{\text{Hold}}$ by $\min(n,\mathrm{round}(C/8))$; `wave_thin_rule = "adaptive"` replaces
 $B_{\text{Thin}}$ by $\min\bigl(\mathrm{round}(C/2),\ \max(0,\ h_{\text{enemy}}-h^\ast)\bigr)$ with
 $h^\ast=\lfloor(W(f(h_{\text{own}})+1)-1)/2\rfloor$ ($0$ with no own packet), $h$ = the blob HP at the start of the turn
@@ -658,9 +658,9 @@ removed by the opponent's Clear the turn it is built.
 
 **Not the research preset.** `GameConfig.m4_four_actions()` is `m4_lasthit()` with `wave_hold_cap = 1`,
 `wave_thin_rule = "strength"` and `wave_slowpush = True`. Everything else, including §4.1–§4.9, is unchanged. Design,
-alternatives and validation: [m4_3c_four_action_wave_redesign.md](m4_3c_four_action_wave_redesign.md) (which calls the
+alternatives and validation: [m4_3c_four_action_wave_redesign.md](m4_3/m4_3c_four_action_wave_redesign.md) (which calls the
 fourth action Clear); sequences of the four actions, the visual debugger and the economics of the model:
-[m4_3c_strategic_economics_calibration.md](m4_3c_strategic_economics_calibration.md). The four wave actions are
+[m4_3c_strategic_economics_calibration.md](m4_3/m4_3c_strategic_economics_calibration.md). The four wave actions are
 **Last Hit** (slot 0), **Thin** (slot 2), **Slow Push** (slot 3) and **Shove** (slot 1, the full capacity $C$).
 
 **Window strength** (`mechanics.window_strength`). For one side on turn $k$, with $\tau=$ `spawn_interval` $=4$
@@ -773,7 +773,7 @@ costs the defender no farm, and it is not displaced either (the same efficiency 
 crash raises the defender's farm about 9% above the neutral lane. What a defender in its own tower cell loses beyond
 the cap comes only from interactions: it can be traded only by a dive (§6.1), the Safe posture collects at most 0.8
 there (§5.3 table, so it costs nothing extra at $c_{\text{ot}}\le0.8$), and HP lost becomes absence (§5.5).
-[m4_3d_tower_pressure_calibration.md](m4_3d_tower_pressure_calibration.md) §3.
+[m4_3d_tower_pressure_calibration.md](m4_3/m4_3d_tower_pressure_calibration.md) §3.
 
 ### 5.4 Experience and levels
 
@@ -1237,7 +1237,7 @@ when it returns at the end of turn 15.
 
 ### 8.7 EXPERIMENTAL: the M4.3c economic opt-ins and the calibrated candidate
 
-Three opt-in fields (M4.3c stabilization; [m4_3c_strategic_economics_calibration.md](m4_3c_strategic_economics_calibration.md)).
+Three opt-in fields (M4.3c stabilization; [m4_3c_strategic_economics_calibration.md](m4_3/m4_3c_strategic_economics_calibration.md)).
 Each default is off in `m4_lasthit()`, `m4_four_actions()` and every other preset, and the legacy rulesets reject
 them (`M4_ECONOMY_FIELDS`).
 
@@ -1265,7 +1265,7 @@ gold-only reward and continuing time, is `m4_four_actions()`.
 
 ### 8.8 EXPERIMENTAL: the M4.3d candidate `m4_four_actions_econ_aggro()`
 
-[m4_3d_tower_pressure_calibration.md](m4_3d_tower_pressure_calibration.md) investigated tower farming and the risks of
+[m4_3d_tower_pressure_calibration.md](m4_3/m4_3d_tower_pressure_calibration.md) investigated tower farming and the risks of
 pressure on `m4_four_actions_econ()`. It keeps the own-tower rate 0.8 (§5.3: an uncontested crash is then farm-neutral
 for the defender; 0.9 makes it a gift) and every gank parameter (§6.4: ganks already cost a perma-pressuring champion
 more than its net gain, and Vision halves that cost). It changes one existing rule, the tower's "busy" discount for
@@ -1593,8 +1593,8 @@ seven fields of `M45_UNIFIED_FIELDS`: `vision_rule = "ward"`, `xp_range = 2`, `m
 `minion_positional_aggro = True`, `trade_wave_rule = "capped"`, `wave_reach_rule = "ball"`,
 `champion_movement_rule = "tick"`. Each rule below is an opt-in field whose default reproduces every earlier preset
 exactly; the legacy rulesets reject them (`M4_ECONOMY_FIELDS`), and every one needs natural waves. Design:
-[m4_5a_unified_mechanics_spec.md](m4_5a_unified_mechanics_spec.md); report and validation:
-[m4_5a_unified_mechanics_report.md](m4_5a_unified_mechanics_report.md) (§10: the movement correction). Every number in
+[m4_5a_unified_mechanics_spec.md](m4_5/m4_5a_unified_mechanics_spec.md); report and validation:
+[m4_5a_unified_mechanics_report.md](m4_5/m4_5a_unified_mechanics_report.md) (§10: the movement correction). Every number in
 this section is **provisional**: M4.5b calibrates them together.
 
 **Revisions.** This section states **revision 2** (the M4.5a movement correction, `champion_movement_rule = "tick"`).
@@ -1783,7 +1783,7 @@ the M4.4 checkpoint guard (`experiments.rl.m44.common.load_policy`); `preset_nam
 `M45_CALIBRATED_FIELDS`: `farm_spot_rule = "last_front"` (a mechanical correction) and
 `minion_retaliation_delay = 0` (a numerical calibration). Everything else, including the action space (61 codes), the
 observation (90 entries), the reward and every other number of §14, is unchanged. Evidence and decisions:
-[m4_5b_calibration_report.md](m4_5b_calibration_report.md); generated tables: `results/m45b/report.md`. Every earlier
+[m4_5b_calibration_report.md](m4_5/m4_5b_calibration_report.md); generated tables: `results/m45b/report.md`. Every earlier
 preset keeps `farm_spot_rule = "pre_crash_front"` and delay 1.
 
 ### 15.1 The farm spot of a front lost in the probe (`farm_spot_rule = "last_front"`)

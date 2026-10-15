@@ -1,4 +1,4 @@
-"""M4 progression tables (docs/m4/m4_integrated_design.md §8.2, §8.5, §8.6, §9, §11; plan WP2).
+"""M4 progression tables (docs/m4/m4_1/m4_integrated_design.md §8.2, §8.5, §8.6, §9, §11; plan WP2).
 
 Pure integer functions. Every table is computed once per parameter set in double precision, rounded half up and
 stored as integers; every later operation is integer arithmetic. With the defaults of `GameConfig.m4()`:
@@ -33,7 +33,7 @@ increasing per LEDGER unit over the supported range u <= INVEST_MAX_RESOURCES * 
 raises instead of returning an unverified value. Hit damage stays quantized at 1 centi-HP, so a small investment
 raises AP* even when a given hit's rounded damage does not change.
 
-M4.2d opt-in curve (invest_curve = "saturating", docs/m4/m4_investment_readiness_report.md): with A = invest_gain and
+M4.2d opt-in curve (invest_curve = "saturating", docs/m4/m4_2/m4_investment_readiness_report.md): with A = invest_gain and
 K = invest_scale resources (k = K * gold_scale ledger units),
 
     M(S)         = 1 + A (1 - sqrt(K / (K + S)))                      bounded: 1 <= M < 1 + A

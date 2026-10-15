@@ -80,7 +80,10 @@ STATE_SEED, ROLL_SEED = 92_600, 92_700
 SPEC = f"final:pilot:{PILOT_SEED}"
 LEDGER_KEYS = ("earned", "farm", "unc", "xp", "xp_lost", "d_total", "d_trade", "d_min", "d_tower", "d_gank", "deaths",
                "recalls", "rec_intr", "away", "wards", "ward_placed", "ward_intr", "ganks", "held", "frozen",
-               "crash_hp", "plates", "trade_conn", "trade_dealt")
+               "crash_hp", "plates", "trade_conn", "trade_dealt",
+               # M4.6b measurement fix: the channels of an economic outcome (accounting, not causal attribution):
+               # earned = farm + bounty + plate; farm = farm_avail - unc; unc = (unc - unc_away) present + unc_away
+               "farm_avail", "unc_away", "bounty", "plate", "trade_att")
 STATE_KEYS = ("hpA", "hpB", "lvlA", "lvlB", "invA", "invB", "absA", "absB", "visA", "visB", "heldA", "frozenA",
               "siegeA", "siegeB", "wavepos")
 SERIES_KEYS = ("heldA", "unc_B", "xp_lost_B", "hpA", "hpB", "deaths_A", "deaths_B", "lead")
@@ -214,6 +217,13 @@ def _rule(name, n, cond=None):
     return ("rule", name, n, cond)
 
 
+def _beh(rule, n, cond=None):
+    """M4.6b measurement fix: a BEHAVIOUR-ONLY candidate (m46a.policies.BehaviorPlan): the behaviour is forced, the wave
+    and objective stay the policy's own conditional choice. One-turn candidates always force (no release); longer
+    plans hand the turn to the policy at or below 40% HP (as M4.6a)."""
+    return ("beh", rule, n, cond)
+
+
 def cond_held(cfg, lane, m4, s):
     from ..m44.records import holds_freeze
     return holds_freeze(lane, s)
@@ -236,17 +246,25 @@ FAMILY_CANDS: Dict[str, Dict[str, tuple]] = {
     "B_freeze": FREEZE_CANDS,
     "B_frozen": {"1t:shove": _fixed(champ_act(SH, B_HOLD)), "1t:farm": _fixed(champ_act(LH, B_HOLD)),
                  "1t:step_back": _fixed(champ_act(LH, B_SAFE)), "1t:recall": _fixed(RECALL),
-                 "plan:shovex3": _plan(champ_act(SH, B_HOLD), 3)},
+                 "plan:shovex3": _plan(champ_act(SH, B_HOLD), 3),
+                 # M4.6b: behaviour-only twins of the two Last-Hit-wave references above
+                 "1t:walk_up_beh": _beh("hold", 1), "1t:step_back_beh": _beh("safe", 1)},
     "C_trade": {"1t:trade": _fixed(champ_act(LH, B_TRADE)), "1t:hold": _fixed(champ_act(LH, B_HOLD)),
-                "1t:safe": _fixed(champ_act(LH, B_SAFE))},
+                "1t:safe": _fixed(champ_act(LH, B_SAFE)),
+                "1t:trade_beh": _beh("trade", 1), "1t:hold_beh": _beh("hold", 1), "1t:safe_beh": _beh("safe", 1)},
     "D_ward": {"1t:ward": _fixed(CHAMP_WARD), "1t:farm": _fixed(champ_act(LH, B_HOLD))},
     "E_recall": {"1t:recall": _fixed(RECALL), "plan:stayx3": _plan(champ_act(SH, B_HOLD), 3),
                  "plan:step_backx3": _plan(champ_act(LH, B_SAFE), 3)},
     "F_freeze_c": FREEZE_CANDS,
     "G_trade_c": {"1t:trade": _fixed(champ_act(LH, B_TRADE)), "1t:hold": _fixed(champ_act(LH, B_HOLD)),
-                  "1t:safe": _fixed(champ_act(LH, B_SAFE))},
+                  "1t:safe": _fixed(champ_act(LH, B_SAFE)),
+                  "1t:trade_beh": _beh("trade", 1), "1t:hold_beh": _beh("hold", 1), "1t:safe_beh": _beh("safe", 1)},
     "H_zone_c": {"1t:trade": _fixed(champ_act(LH, B_TRADE)), "1t:hold": _fixed(champ_act(LH, B_HOLD)),
-                 "1t:shove": _fixed(champ_act(SH, B_HOLD)), "plan:bullyx10": _rule("g_bully", 10)},
+                 "1t:shove": _fixed(champ_act(SH, B_HOLD)),
+                 "plan:bullyx10": _rule("g_bully", 10),          # scripted reference: forces the Last Hit wave too
+                 "1t:trade_beh": _beh("trade", 1), "1t:hold_beh": _beh("hold", 1),
+                 "plan:bully_behx10": _beh("bully", 10), "plan:threaten_behx10": _beh("threaten", 10),
+                 "plan:farm_behx10": _beh("farm", 10)},
     "I_ward_c": {"1t:ward": _fixed(CHAMP_WARD), "1t:farm": _fixed(champ_act(LH, B_HOLD))},
 }
 
@@ -255,6 +273,10 @@ def build_candidate(spec: tuple, own):
     from ...m45b import engine as E
     from ...m45b.strategies import get
     kind, x, n, cond = spec
+    if kind == "beh":                                   # M4.6b: behaviour only, the wave left to the policy
+        from ..m46a.policies import RULES, BehaviorPlan
+        plan = BehaviorPlan(str(x), own, RULES[x], int(n), 0.4 if int(n) > 1 else 0.0)
+        return plan if cond is None else E.Then(f"beh:{x}", plan, own, int(n), CONDS[cond])
     first = E.Fixed(str(x), int(x), own) if kind == "fixed" else get(x)
     return E.Then(f"{kind}:{x}", first, own, int(n), CONDS[cond])
 

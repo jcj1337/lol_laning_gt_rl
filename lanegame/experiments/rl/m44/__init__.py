@@ -1,5 +1,5 @@
 """M4.4: PPO self-play on the four-action laning game and the evaluation of emergent strategy
-(docs/m4/m4_4a_ppo_readiness.md; plan in docs/rl_research_roadmap.md, section AF).
+(docs/m4/m4_4/m4_4a_ppo_readiness.md; plan in docs/rl_research_roadmap.md, section AF).
 
 M4.4a (this package's current scope) is infrastructure only: environment selection, checkpoint compatibility,
 four-action decoding, per-turn game records, state-based strategic metrics (wave management, freezes, zoning, vision
@@ -14,7 +14,7 @@ Modules
                     agent specifications and the checkpoint compatibility guard
     actions         the 61-code action space: decoding, the codes that can ever be legal, probability masses
     records         one game -> per-turn, per-side records (decision state, policy masses, action, outcomes)
-    metrics         the strategic metrics of docs/m4/m4_4a_ppo_readiness.md §4, computed from records only
+    metrics         the strategic metrics of docs/m4/m4_4/m4_4a_ppo_readiness.md §4, computed from records only
     references      the four-action scripted reference suite (M4.3c / M4.3d strategies) as environment agents
     interventions   component interventions (wave / objective / behaviour) on a policy's distribution
     counterfactual  paired counterfactual evaluation from saved states (CRN, two opponent protocols, critic readout)

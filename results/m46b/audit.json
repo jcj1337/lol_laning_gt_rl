@@ -1,0 +1,817 @@
+{
+ "meta": {
+  "study": "M4.6b",
+  "commit": "015c974968e400fdb5e7f27e03be2fdfc9a66ebd",
+  "working_tree_dirty": true,
+  "timestamp": "2026-10-15 16:31:27",
+  "python": "3.13.9",
+  "torch": "2.14.1+cpu",
+  "numpy": "2.5.3",
+  "environment": "GameConfig.m45_calibrated()",
+  "stage": "audit",
+  "games": 24,
+  "turns": 600,
+  "seed_root": 97000
+ },
+ "analysis": {
+  "trajectory": {
+   "10": {
+    "S_median": 0.0,
+    "S_q10": 0.0,
+    "S_q90": 1.4377500000000007,
+    "g_median": 3.0625,
+    "E_median": 3.0787500000000003,
+    "L_median": 3.0,
+    "abs_dE_median": 0.6699999999999999,
+    "abs_dE_q90": 1.8877500000000027,
+    "abs_dS_median": 0.0,
+    "abs_dS_q90": 1.781250000000001,
+    "abs_dL_mean": 0.4444444444444444,
+    "share_dL_ge1": 0.375,
+    "rel_lead_median": 0.21963522371045885
+   },
+   "25": {
+    "S_median": 4.86,
+    "S_q10": 0.0,
+    "S_q90": 8.38475,
+    "g_median": 4.47625,
+    "E_median": 9.27,
+    "L_median": 6.0,
+    "abs_dE_median": 1.2112500000000006,
+    "abs_dE_q90": 3.0700000000000003,
+    "abs_dS_median": 3.2212500000000004,
+    "abs_dS_q90": 6.814250000000005,
+    "abs_dL_mean": 0.2708333333333333,
+    "share_dL_ge1": 0.2638888888888889,
+    "rel_lead_median": 0.13042763411623604
+   },
+   "50": {
+    "S_median": 14.8925,
+    "S_q10": 9.67725,
+    "S_q90": 18.94475,
+    "g_median": 4.57125,
+    "E_median": 19.5375,
+    "L_median": 9.0,
+    "abs_dE_median": 2.008749999999999,
+    "abs_dE_q90": 5.325999999999997,
+    "abs_dS_median": 4.12875,
+    "abs_dS_q90": 8.924500000000002,
+    "abs_dL_mean": 0.4305555555555556,
+    "share_dL_ge1": 0.4236111111111111,
+    "rel_lead_median": 0.10040440112127551
+   },
+   "75": {
+    "S_median": 24.990000000000002,
+    "S_q10": 19.166,
+    "S_q90": 29.6125,
+    "g_median": 4.828749999999999,
+    "E_median": 29.802500000000002,
+    "L_median": 12.0,
+    "abs_dE_median": 2.636250000000002,
+    "abs_dE_q90": 6.479499999999999,
+    "abs_dS_median": 4.595000000000001,
+    "abs_dS_q90": 9.935500000000003,
+    "abs_dL_mean": 0.1111111111111111,
+    "share_dL_ge1": 0.1111111111111111,
+    "rel_lead_median": 0.08721674871691823
+   },
+   "100": {
+    "S_median": 35.33125,
+    "S_q10": 28.962,
+    "S_q90": 40.216,
+    "g_median": 4.4875,
+    "E_median": 40.01625,
+    "L_median": 14.0,
+    "abs_dE_median": 3.0337500000000013,
+    "abs_dE_q90": 7.3180000000000005,
+    "abs_dS_median": 3.863750000000003,
+    "abs_dS_q90": 9.369750000000003,
+    "abs_dL_mean": 0.09722222222222222,
+    "share_dL_ge1": 0.09722222222222222,
+    "rel_lead_median": 0.0771670421078537
+   },
+   "150": {
+    "S_median": 55.51625,
+    "S_q10": 48.26775,
+    "S_q90": 61.517,
+    "g_median": 4.4037500000000005,
+    "E_median": 60.743750000000006,
+    "L_median": 18.0,
+    "abs_dE_median": 4.233750000000001,
+    "abs_dE_q90": 9.536500000000006,
+    "abs_dS_median": 5.337499999999999,
+    "abs_dS_q90": 11.14825,
+    "abs_dL_mean": 0.4097222222222222,
+    "share_dL_ge1": 0.4097222222222222,
+    "rel_lead_median": 0.06887694917201835
+   },
+   "200": {
+    "S_median": 75.82,
+    "S_q10": 67.08550000000001,
+    "S_q90": 81.49925,
+    "g_median": 4.9825,
+    "E_median": 80.84125,
+    "L_median": 18.0,
+    "abs_dE_median": 4.591249999999995,
+    "abs_dE_q90": 9.822500000000009,
+    "abs_dS_median": 5.224999999999994,
+    "abs_dS_q90": 16.16375,
+    "abs_dL_mean": 0.0,
+    "share_dL_ge1": 0.0,
+    "rel_lead_median": 0.056414374206631895
+   },
+   "300": {
+    "S_median": 115.985,
+    "S_q10": 107.694,
+    "S_q90": 121.99325,
+    "g_median": 4.84375,
+    "E_median": 120.75,
+    "L_median": 18.0,
+    "abs_dE_median": 5.407499999999999,
+    "abs_dE_q90": 11.230250000000003,
+    "abs_dS_median": 5.556249999999999,
+    "abs_dS_q90": 13.947750000000003,
+    "abs_dL_mean": 0.0,
+    "share_dL_ge1": 0.0,
+    "rel_lead_median": 0.0441692254705864
+   },
+   "400": {
+    "S_median": 154.12375,
+    "S_q10": 144.46975,
+    "S_q90": 162.8945,
+    "g_median": 4.9025,
+    "E_median": 160.13625000000002,
+    "L_median": 18.0,
+    "abs_dE_median": 5.8487499999999955,
+    "abs_dE_q90": 12.331249999999995,
+    "abs_dS_median": 7.501249999999999,
+    "abs_dS_q90": 16.319749999999996,
+    "abs_dL_mean": 0.0,
+    "share_dL_ge1": 0.0,
+    "rel_lead_median": 0.03638498545805269
+   },
+   "600": {
+    "S_median": 233.93375,
+    "S_q10": 223.2295,
+    "S_q90": 242.50400000000002,
+    "g_median": 4.365,
+    "E_median": 239.15625,
+    "L_median": 18.0,
+    "abs_dE_median": 5.772500000000008,
+    "abs_dE_q90": 15.859499999999995,
+    "abs_dS_median": 8.106250000000003,
+    "abs_dS_q90": 18.37600000000001,
+    "abs_dL_mean": 0.0,
+    "share_dL_ge1": 0.0,
+    "rel_lead_median": 0.02394637691674561
+   }
+  },
+  "discount_weighted_S": {
+   "0.25": 5.7675,
+   "0.5": 22.39,
+   "0.75": 50.0725,
+   "0.9": 86.6775
+  },
+  "income_per_turn": {
+   "1-50": 0.40150634212018144,
+   "50-150": 0.40915260416666666,
+   "150-300": 0.40003547453703703,
+   "300-600": 0.3927061053240741
+  },
+  "decomposition": {
+   "early": {
+    "n": 3718,
+    "S_mean": 8.786610072619688,
+    "E_mean": 13.555760153308231,
+    "abs_lead_mean": 1.823818585260893,
+    "abs_lead_q90": 3.9457500000000008,
+    "elasticity_at_mean_S": 0.16496769791460503,
+    "relative_gold_lead": 1.1498622303521766,
+    "M_ratio_if_all_earned_invested": 1.0248194967665403,
+    "M_ratio_actual": 0.9900005358851188,
+    "level_ratio_AP": 1.0112432682519834,
+    "attack_ratio": 1.0011313774796826,
+    "m44_power_ratio": 1.0123873661121643,
+    "duel_ratio": 1.0022640349743666,
+    "share_leader_more_invested": 0.47283485745024206,
+    "unspent_lead_mean": 1.9144849381387843,
+    "invested_lead_mean": -0.0906663528778913,
+    "abs_dL_mean": 0.3125336202259279
+   },
+   "mid": {
+    "n": 7506,
+    "S_mean": 43.11572059019451,
+    "E_mean": 48.37284505728751,
+    "abs_lead_mean": 3.9885478284039437,
+    "abs_lead_q90": 8.082499999999996,
+    "elasticity_at_mean_S": 0.16548820365164157,
+    "relative_gold_lead": 1.0867398169465168,
+    "M_ratio_if_all_earned_invested": 1.0134832539918506,
+    "M_ratio_actual": 1.012641312650748,
+    "level_ratio_AP": 1.0093254349005072,
+    "attack_ratio": 1.0220846332894369,
+    "m44_power_ratio": 1.0316160169999862,
+    "duel_ratio": 1.0446569976064024,
+    "share_leader_more_invested": 0.7187583266719957,
+    "unspent_lead_mean": 0.694337529976019,
+    "invested_lead_mean": 3.2942102984279242,
+    "abs_dL_mean": 0.26565414335198506
+   },
+   "late": {
+    "n": 10138,
+    "S_mean": 107.32464958571711,
+    "E_mean": 112.75241393766031,
+    "abs_lead_mean": 5.650445354113237,
+    "abs_lead_q90": 10.820000000000007,
+    "elasticity_at_mean_S": 0.11996482308688303,
+    "relative_gold_lead": 1.051662739474314,
+    "M_ratio_if_all_earned_invested": 1.0059589979247192,
+    "M_ratio_actual": 1.0063300273018028,
+    "level_ratio_AP": 1.0,
+    "attack_ratio": 1.0063300273018028,
+    "m44_power_ratio": 1.0063300273018028,
+    "duel_ratio": 1.012700123849247,
+    "share_leader_more_invested": 0.7969027421582167,
+    "unspent_lead_mean": 0.1070053264943776,
+    "invested_lead_mean": 5.5434400276188605,
+    "abs_dL_mean": 0.0
+   },
+   "very late": {
+    "n": 18940,
+    "S_mean": 203.75812744192189,
+    "E_mean": 209.16160051478354,
+    "abs_lead_mean": 7.0110753695881725,
+    "abs_lead_q90": 14.917749999999995,
+    "elasticity_at_mean_S": 0.08955325310438554,
+    "relative_gold_lead": 1.0342654794675537,
+    "M_ratio_if_all_earned_invested": 1.0029984388973163,
+    "M_ratio_actual": 1.0029296968396135,
+    "level_ratio_AP": 1.0,
+    "attack_ratio": 1.0029296968396135,
+    "m44_power_ratio": 1.0029296968396135,
+    "duel_ratio": 1.0058679768027994,
+    "share_leader_more_invested": 0.8195353748680042,
+    "unspent_lead_mean": 0.424367212249208,
+    "invested_lead_mean": 6.586708157338964,
+    "abs_dL_mean": 0.0
+   }
+  },
+  "lead_bins": {
+   "0-3": {
+    "n": 27914,
+    "turn_median": 201.0,
+    "S_median": 76.7425,
+    "m44_power_ratio_mean": 1.025611498450654,
+    "share_turns_after_150": 0.5902414559002651
+   },
+   "3-6": {
+    "n": 20045,
+    "turn_median": 306.0,
+    "S_median": 117.33625,
+    "m44_power_ratio_mean": 1.0178963460871797,
+    "share_turns_after_150": 0.7740583686704914
+   },
+   "6-10": {
+    "n": 15519,
+    "turn_median": 325.0,
+    "S_median": 125.48500000000001,
+    "m44_power_ratio_mean": 1.0170677146730496,
+    "share_turns_after_150": 0.8711257168632
+   },
+   "10-20": {
+    "n": 10417,
+    "turn_median": 418.0,
+    "S_median": 160.66875,
+    "m44_power_ratio_mean": 1.0132400169228004,
+    "share_turns_after_150": 0.9621772103292695
+   },
+   "20-1000": {
+    "n": 821,
+    "turn_median": 489.0,
+    "S_median": 188.89999999999998,
+    "m44_power_ratio_mean": 1.0131402192771655,
+    "share_turns_after_150": 1.0
+   }
+  },
+  "persistence": {
+   "50->100": {
+    "slope_lead_on_lead": 0.7605573293939408,
+    "corr": 0.5441216388216533,
+    "abs_lead_t0": 2.418211805555556,
+    "abs_lead_t1": 3.530572916666667,
+    "rel_lead_t0": 0.12242044838151939,
+    "rel_lead_t1": 0.0878184603449952
+   },
+   "100->200": {
+    "slope_lead_on_lead": 0.8681973277833732,
+    "corr": 0.610418691822036,
+    "abs_lead_t0": 3.530572916666667,
+    "abs_lead_t1": 5.094427083333334,
+    "rel_lead_t0": 0.0878184603449952,
+    "rel_lead_t1": 0.06311239769926634
+   },
+   "200->400": {
+    "slope_lead_on_lead": 0.942102575353912,
+    "corr": 0.7179734604335926,
+    "abs_lead_t0": 5.094427083333334,
+    "abs_lead_t1": 6.723802083333332,
+    "rel_lead_t0": 0.06311239769926634,
+    "rel_lead_t1": 0.042089582557522945
+   },
+   "300->600": {
+    "slope_lead_on_lead": 0.9771296823286236,
+    "corr": 0.7310064608566459,
+    "abs_lead_t0": 5.978333333333334,
+    "abs_lead_t1": 7.562517361111111,
+    "rel_lead_t0": 0.04968725522927424,
+    "rel_lead_t1": 0.03179956830989783
+   }
+  },
+  "returns": {
+   "early": {
+    "returns_per_100_turns": 5.432347670250896,
+    "bought_per_return": 7.173278350515464,
+    "unspent_mean": 5.082245463709677,
+    "unspent_q90": 10.143500000000003
+   },
+   "mid": {
+    "returns_per_100_turns": 5.026183970856103,
+    "bought_per_return": 8.09745469988675,
+    "unspent_mean": 5.570591985428051,
+    "unspent_q90": 11.3
+   },
+   "late": {
+    "returns_per_100_turns": 4.7282235939643344,
+    "bought_per_return": 8.377343608340889,
+    "unspent_mean": 5.693444144375857,
+    "unspent_q90": 11.5025
+   },
+   "very late": {
+    "returns_per_100_turns": 4.658756438557763,
+    "bought_per_return": 8.518246544916092,
+    "unspent_mean": 5.6765876218727005,
+    "unspent_q90": 11.4725
+   }
+  },
+  "stage_typical": {
+   "S": {
+    "early": 8.815000000000001,
+    "mid": 42.425,
+    "late": 107.55687499999999,
+    "very late": 203.38687499999997
+   },
+   "level": {
+    "early": 8,
+    "mid": 16,
+    "late": 18,
+    "very late": 18
+   }
+  },
+  "what_leads_buy": {
+   "early": {
+    "S": 8.815000000000001,
+    "level": 8,
+    "M": 1.2955352050504678,
+    "elasticity": 0.16512884111187703,
+    "dM_per_res": 0.024268885652821523,
+    "leads": {
+     "5 turns (2.00 res)": {
+      "M_ratio": 1.03534283906645,
+      "attack_ratio": 1.03534283906645,
+      "duel_ratio": 1.0719347944061772,
+      "capacity": [
+       7,
+       8
+      ],
+      "pressure_per_turn": [
+       729,
+       755
+      ],
+      "exchange_bars": {
+       "leader_on_trailer": 0.1234370636845371,
+       "trailer_on_leader": 0.11509379238693467,
+       "equal": 0.1191615337688135
+      }
+     },
+     "10 turns (4.00 res)": {
+      "M_ratio": 1.0669390124353055,
+      "attack_ratio": 1.0669390124353055,
+      "duel_ratio": 1.138358856256425,
+      "capacity": [
+       7,
+       8
+      ],
+      "pressure_per_turn": [
+       729,
+       778
+      ],
+      "exchange_bars": {
+       "leader_on_trailer": 0.12700838867296502,
+       "trailer_on_leader": 0.11168542192193852,
+       "equal": 0.1191615337688135
+      }
+     },
+     "20 turns (8.00 res)": {
+      "M_ratio": 1.1212308408327427,
+      "attack_ratio": 1.1212308408327427,
+      "duel_ratio": 1.2571585984344993,
+      "capacity": [
+       7,
+       8
+      ],
+      "pressure_per_turn": [
+       729,
+       818
+      ],
+      "exchange_bars": {
+       "leader_on_trailer": 0.1335474344264246,
+       "trailer_on_leader": 0.10627743139879361,
+       "equal": 0.1191615337688135
+      }
+     },
+     "40 turns (16.00 res)": {
+      "M_ratio": 1.2047809907669305,
+      "attack_ratio": 1.2047809907669305,
+      "duel_ratio": 1.4514972357133467,
+      "capacity": [
+       7,
+       9
+      ],
+      "pressure_per_turn": [
+       729,
+       879
+      ],
+      "exchange_bars": {
+       "leader_on_trailer": 0.14370810552026184,
+       "trailer_on_leader": 0.09890721606833998,
+       "equal": 0.1191615337688135
+      }
+     }
+    }
+   },
+   "mid": {
+    "S": 42.425,
+    "level": 16,
+    "M": 1.7150321135240885,
+    "elasticity": 0.1661777091192648,
+    "dM_per_res": 0.006717739721659491,
+    "leads": {
+     "5 turns (2.00 res)": {
+      "M_ratio": 1.0076383944741494,
+      "attack_ratio": 1.0076383944741494,
+      "duel_ratio": 1.0153351340184416,
+      "capacity": [
+       14,
+       14
+      ],
+      "pressure_per_turn": [
+       1426,
+       1437
+      ],
+      "exchange_bars": {
+       "leader_on_trailer": 0.12009940617901804,
+       "trailer_on_leader": 0.11837228103852983,
+       "equal": 0.11927645521590699
+      }
+     },
+     "10 turns (4.00 res)": {
+      "M_ratio": 1.0149067003523666,
+      "attack_ratio": 1.0149067003523666,
+      "duel_ratio": 1.0300356104201285,
+      "capacity": [
+       14,
+       14
+      ],
+      "pressure_per_turn": [
+       1426,
+       1447
+      ],
+      "exchange_bars": {
+       "leader_on_trailer": 0.12102522601251796,
+       "trailer_on_leader": 0.11752455193614868,
+       "equal": 0.11927645521590699
+      }
+     },
+     "20 turns (8.00 res)": {
+      "M_ratio": 1.028445777256608,
+      "attack_ratio": 1.028445777256608,
+      "duel_ratio": 1.0577007167569485,
+      "capacity": [
+       14,
+       15
+      ],
+      "pressure_per_turn": [
+       1426,
+       1467
+      ],
+      "exchange_bars": {
+       "leader_on_trailer": 0.12261969350354561,
+       "trailer_on_leader": 0.11597738826258629,
+       "equal": 0.11927645521590699
+      }
+     },
+     "40 turns (16.00 res)": {
+      "M_ratio": 1.0521718411956684,
+      "attack_ratio": 1.0521718411956684,
+      "duel_ratio": 1.1070655834050829,
+      "capacity": [
+       14,
+       15
+      ],
+      "pressure_per_turn": [
+       1426,
+       1501
+      ],
+      "exchange_bars": {
+       "leader_on_trailer": 0.12537143578644816,
+       "trailer_on_leader": 0.11336214346922975,
+       "equal": 0.11927645521590699
+      }
+     }
+    }
+   },
+   "late": {
+    "S": 107.55687499999999,
+    "level": 18,
+    "M": 1.9602187526289654,
+    "elasticity": 0.11985454769109025,
+    "dM_per_res": 0.0021843432320987183,
+    "leads": {
+     "5 turns (2.00 res)": {
+      "M_ratio": 1.0022019763559522,
+      "attack_ratio": 1.0022019763559522,
+      "duel_ratio": 1.0044088014117767,
+      "capacity": [
+       18,
+       18
+      ],
+      "pressure_per_turn": [
+       1797,
+       1801
+      ],
+      "exchange_bars": {
+       "leader_on_trailer": 0.11943564956003395,
+       "trailer_on_leader": 0.1189085392527394,
+       "equal": 0.11917037304469474
+      }
+     },
+     "10 turns (4.00 res)": {
+      "M_ratio": 1.0043519594480679,
+      "attack_ratio": 1.0043519594480679,
+      "duel_ratio": 1.0087228584471735,
+      "capacity": [
+       18,
+       18
+      ],
+      "pressure_per_turn": [
+       1797,
+       1805
+      ],
+      "exchange_bars": {
+       "leader_on_trailer": 0.11963970841798718,
+       "trailer_on_leader": 0.11865399566719988,
+       "equal": 0.11917037304469474
+      }
+     },
+     "20 turns (8.00 res)": {
+      "M_ratio": 1.0085038959480788,
+      "attack_ratio": 1.0085038959480788,
+      "duel_ratio": 1.0170801081424532,
+      "capacity": [
+       18,
+       18
+      ],
+      "pressure_per_turn": [
+       1797,
+       1812
+      ],
+      "exchange_bars": {
+       "leader_on_trailer": 0.12017026144866565,
+       "trailer_on_leader": 0.11816550587805569,
+       "equal": 0.11917037304469474
+      }
+     },
+     "40 turns (16.00 res)": {
+      "M_ratio": 1.0162656668413872,
+      "attack_ratio": 1.0162656668413872,
+      "duel_ratio": 1.0327959056005693,
+      "capacity": [
+       18,
+       18
+      ],
+      "pressure_per_turn": [
+       1797,
+       1826
+      ],
+      "exchange_bars": {
+       "leader_on_trailer": 0.12117014985263652,
+       "trailer_on_leader": 0.11726301195934642,
+       "equal": 0.11917037304469474
+      }
+     }
+    }
+   },
+   "very late": {
+    "S": 203.38687499999997,
+    "level": 18,
+    "M": 2.0949152168513288,
+    "elasticity": 0.0896317269002918,
+    "dM_per_res": 0.0009232201861407422,
+    "leads": {
+     "5 turns (2.00 res)": {
+      "M_ratio": 1.000875410592564,
+      "attack_ratio": 1.000875410592564,
+      "duel_ratio": 1.0017515875288334,
+      "capacity": [
+       19,
+       19
+      ],
+      "pressure_per_turn": [
+       1921,
+       1922
+      ],
+      "exchange_bars": {
+       "leader_on_trailer": 0.11933657170897428,
+       "trailer_on_leader": 0.11904142307152926,
+       "equal": 0.11914563319423994
+      }
+     },
+     "10 turns (4.00 res)": {
+      "M_ratio": 1.0017390382842521,
+      "attack_ratio": 1.0017390382842521,
+      "duel_ratio": 1.0034811008226583,
+      "capacity": [
+       19,
+       19
+      ],
+      "pressure_per_turn": [
+       1921,
+       1924
+      ],
+      "exchange_bars": {
+       "leader_on_trailer": 0.1193938532633946,
+       "trailer_on_leader": 0.11893879407785576,
+       "equal": 0.11914563319423994
+      }
+     },
+     "20 turns (8.00 res)": {
+      "M_ratio": 1.0034319847903175,
+      "attack_ratio": 1.0034319847903175,
+      "duel_ratio": 1.006875748100236,
+      "capacity": [
+       19,
+       19
+      ],
+      "pressure_per_turn": [
+       1921,
+       1927
+      ],
+      "exchange_bars": {
+       "leader_on_trailer": 0.11964207333254927,
+       "trailer_on_leader": 0.11873812575262613,
+       "equal": 0.11914563319423994
+      }
+     },
+     "40 turns (16.00 res)": {
+      "M_ratio": 1.0066874858182202,
+      "attack_ratio": 1.0066874858182202,
+      "duel_ratio": 1.0134196941030094,
+      "capacity": [
+       19,
+       19
+      ],
+      "pressure_per_turn": [
+       1921,
+       1933
+      ],
+      "exchange_bars": {
+       "leader_on_trailer": 0.11994757495612424,
+       "trailer_on_leader": 0.11835414155108938,
+       "equal": 0.11914563319423994
+      }
+     }
+    }
+   }
+  },
+  "implementation": {
+   "invest_obs_encoding": "compressed",
+   "invest_obs_ref": 64,
+   "invest_obs_gold_ref": 8,
+   "observation_invested_entry": "n / (n + 64), n = whole resources invested: encodes S, not M",
+   "observation_attack_power_entry": "AP* / (AP* + AP(18, 0)), AP(18, 0) = 2.2920: encodes M; bounded in (0, 1) for any curve, but its relation to the S entry changes with the curve (a trained network sees new combinations)",
+   "decode_exact_below_resources": "invested < 23,106, unspent < 8,184 (compressed encoding, float32)",
+   "INVEST_MAX_RESOURCES": 1000000,
+   "M_sup_current": 2.5,
+   "max_wave_budget_current": 24,
+   "per_turn_bound_current": 11.75,
+   "tail_constant_current": 145.10628128014437,
+   "notes": [
+    "wave_hold_cap = 1: Last Hit is 1 HP at every power, so investment never changes Last Hit",
+    "Thin and Slow Push spend only what their window-strength target needs, capped at round(C / 2)",
+    "Shove spends C; a front holds at most 24 HP (+ queued packets), so C above about 24 adds little except against stacked waves and crashed masses",
+    "Pressure adds round(400 AP*) centi-units per turn: plates at 1,600 / 3,600 / 6,000",
+    "minion damage on champions falls with level (x 1 / 1.08^(L-1)) and is divided by M(S)",
+    "the reward counts gold when EARNED; investment only changes future earning"
+   ]
+  },
+  "curve_table": {
+   "0": {
+    "M": 1.0,
+    "dM_per_res": 0.046875,
+    "elasticity": 0.0,
+    "dlnM_per_10res": 0.2801310268074862
+   },
+   "2": {
+    "M": 1.085786437626905,
+    "dM_per_res": 0.039283710065919304,
+    "elasticity": 0.07235992033899002,
+    "dlnM_per_10res": 0.229660230504854
+   },
+   "5": {
+    "M": 1.1906926585840458,
+    "dM_per_res": 0.031173984319427486,
+    "elasticity": 0.13090693091405772,
+    "dlnM_per_10res": 0.1777880165718627
+   },
+   "10": {
+    "M": 1.3233031891708957,
+    "dM_per_res": 0.02262878482363662,
+    "elasticity": 0.1710022692366856,
+    "dlnM_per_10res": 0.12533408130067827
+   },
+   "16": {
+    "M": 1.4393398282201786,
+    "dM_per_res": 0.01657281518405971,
+    "elasticity": 0.1842268502170514,
+    "dlnM_per_10res": 0.08954988255739105
+   },
+   "25": {
+    "M": 1.5629574286683636,
+    "dM_per_res": 0.011427348430873615,
+    "elasticity": 0.18278406406452302,
+    "dlnM_per_10res": 0.0601365479209974
+   },
+   "35": {
+    "M": 1.6598319495831941,
+    "dM_per_res": 0.008236941670753,
+    "elasticity": 0.17368804025536994,
+    "dlnM_per_10res": 0.04243268034253509
+   },
+   "48": {
+    "M": 1.75,
+    "dM_per_res": 0.005859375,
+    "elasticity": 0.16071428571428573,
+    "dlnM_per_10res": 0.02956666214801127
+   },
+   "64": {
+    "M": 1.8291796067500632,
+    "dM_per_res": 0.004192627457812106,
+    "elasticity": 0.14669317124998912,
+    "dlnM_per_10res": 0.020756885222600094
+   },
+   "80": {
+    "M": 1.8876275643042055,
+    "dM_per_res": 0.00318943976924893,
+    "elasticity": 0.13517241767655933,
+    "dlnM_per_10res": 0.01555986094381808
+   },
+   "100": {
+    "M": 1.9429139854688444,
+    "dM_per_res": 0.002401232821254981,
+    "elasticity": 0.12358924992119708,
+    "dlnM_per_10res": 0.011546326089727329
+   },
+   "130": {
+    "M": 2.003436466838579,
+    "dM_per_res": 0.001700560045073359,
+    "elasticity": 0.11034680136794622,
+    "dlnM_per_10res": 0.008043226360305633
+   },
+   "160": {
+    "M": 2.0477329831333546,
+    "dM_per_res": 0.0012848494797347882,
+    "elasticity": 0.10039195464000511,
+    "dlnM_per_10res": 0.006001136318286491
+   },
+   "200": {
+    "M": 2.091751709536137,
+    "dM_per_res": 0.0009450191908885718,
+    "elasticity": 0.09035672700352544,
+    "dlnM_per_10res": 0.004357276990458588
+   },
+   "300": {
+    "M": 2.162473629722193,
+    "dM_per_res": 0.0005340607124648848,
+    "elasticity": 0.07409025087628385,
+    "dlnM_per_10res": 0.002409657920673109
+   },
+   "500": {
+    "M": 2.235864728102313,
+    "dM_per_res": 0.0002559450309086116,
+    "elasticity": 0.05723625130171551,
+    "dlnM_per_10res": 0.0011277147018059182
+   }
+  }
+ },
+ "elapsed_s": 2.9795412998646498
+}

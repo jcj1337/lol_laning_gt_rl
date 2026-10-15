@@ -1,5 +1,5 @@
 """M4.5b: integrated calibration and strategic evaluation of the M4.5a unified positional mechanics
-(docs/m4/m4_5b_calibration_report.md).
+(docs/m4/m4_5/m4_5b_calibration_report.md).
 
 Question: do the combined strategic and economic incentives of `GameConfig.m45_unified()` (revision 2) make sense,
 and which provisional numbers, if any, should change? Nothing here trains a network or changes the reward: every

@@ -1,6 +1,6 @@
 """python -m lanegame.experiments.m43d <stage> [<stage> ...] [--workers N]
 
-Stages of the M4.3d study (docs/m4/m4_3d_tower_pressure_calibration.md), in order:
+Stages of the M4.3d study (docs/m4/m4_3/m4_3d_tower_pressure_calibration.md), in order:
 
     audit       Part 1: the risk and collection rules from the engine's own functions, hazard Monte Carlo
     tower_farm  Part 2: the crash grid on the own-tower rates 0.6 / 0.8 / 0.85 / 0.9 (econ otherwise)

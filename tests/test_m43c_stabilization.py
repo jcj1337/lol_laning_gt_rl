@@ -1,4 +1,4 @@
-"""M4.3c stabilization, Stage A (docs/m4/m4_3c_strategic_economics_calibration.md): the Shove terminology of the
+"""M4.3c stabilization, Stage A (docs/m4/m4_3/m4_3c_strategic_economics_calibration.md): the Shove terminology of the
 four-action model, the four-action strategy library, the paired-seed harness and pins of the Stage A3 sequence
 findings. Nothing here changes the game; every preset's codes, masks and checkpoints keep their meaning."""
 

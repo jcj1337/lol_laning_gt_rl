@@ -1,5 +1,5 @@
 """M4.3c stabilization, Stage A3: sequences of four-action wave decisions through the real environment
-(docs/m4/m4_3c_strategic_economics_calibration.md §2).
+(docs/m4/m4_3/m4_3c_strategic_economics_calibration.md §2).
 
 The four-action redesign study held one wave action per side constant for a whole window with fixed capacities. This
 stage plays SEQUENCES (state-conditional rules and turn schedules of `strategies.LIBRARY`) through `LaneEnv` on the
@@ -169,7 +169,7 @@ def report(out: dict) -> str:
          f"Preset `{m['preset']}`, commit `{m['commit']}` + working tree, {m['timestamp']}. {m['episodes']} paired seeds "
          f"per cell (root {m['seed_root']}) with the environment's chance; 'det' = the same cell without chance "
          "events (one deterministic run). Coordinates GLOBAL. Reading: "
-         "docs/m4/m4_3c_strategic_economics_calibration.md §2.\n"]
+         "docs/m4/m4_3/m4_3c_strategic_economics_calibration.md §2.\n"]
     for stage, cells in m["stages"].items():
         L.append(f"## {stage}\n")
         for sc, spec, As, Bs, turns in cells:

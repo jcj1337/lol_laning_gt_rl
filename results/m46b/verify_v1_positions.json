@@ -1,0 +1,483 @@
+{
+ "meta": {
+  "study": "M4.6b",
+  "commit": "015c974968e400fdb5e7f27e03be2fdfc9a66ebd",
+  "working_tree_dirty": true,
+  "timestamp": "2026-10-15 16:17:05",
+  "python": "3.13.9",
+  "torch": "2.14.1+cpu",
+  "numpy": "2.5.3",
+  "environment": "GameConfig.m45_calibrated()",
+  "stage": "verify_v1"
+ },
+ "results": {
+  "final:ext:0": {
+   "identical_fields": 24,
+   "different_fields": 0,
+   "positions": {
+    "stronger.mean_pos": {
+     "stored": 2.6857142857142855,
+     "fixed": -0.14705882352941177
+    },
+    "stronger.ward_share": {
+     "stored": null,
+     "fixed": 0.02857142857142857
+    },
+    "even.mean_pos": {
+     "stored": 1.9318329015544042,
+     "fixed": -0.6994844503575586
+    },
+    "even.ward_share": {
+     "stored": null,
+     "fixed": 0.026392487046632124
+    },
+    "weaker.mean_pos": {
+     "stored": -0.5171428571428571,
+     "fixed": -0.9933014354066986
+    },
+    "weaker.ward_share": {
+     "stored": null,
+     "fixed": 0.004761904761904762
+    }
+   },
+   "credible_threat_n": {
+    "threat": {
+     "stored": 499,
+     "fixed": 523
+    },
+    "weaker, no threat": {
+     "stored": 551,
+     "fixed": 527
+    }
+   },
+   "pressure_cost": {
+    "stored": {
+     "opp_uncollected_when_stronger_near": {
+      "n": 1002,
+      "mean": 0.11060878243512974
+     },
+     "opp_uncollected_otherwise": {
+      "n": 7274,
+      "mean": 0.10245016497113005
+     },
+     "own_collection_trading": {
+      "n": 1922,
+      "mean": 0.6728387228449665
+     },
+     "own_collection_holding": {
+      "n": 1840,
+      "mean": 0.8370678142811295
+     }
+    },
+    "fixed": {
+     "opp_uncollected_when_stronger_near": {
+      "n": 1037,
+      "mean": 0.11030617164898747
+     },
+     "opp_uncollected_otherwise": {
+      "n": 7239,
+      "mean": 0.10245406824146981
+     },
+     "own_collection_trading": {
+      "n": 1922,
+      "mean": 0.6728387228449665
+     },
+     "own_collection_holding": {
+      "n": 1840,
+      "mean": 0.8370678142811295
+     }
+    }
+   }
+  },
+  "final:ext:1": {
+   "identical_fields": 24,
+   "different_fields": 0,
+   "positions": {
+    "stronger.mean_pos": {
+     "stored": 2.9485559566787005,
+     "fixed": -0.18452935694315004
+    },
+    "stronger.ward_share": {
+     "stored": null,
+     "fixed": 0.0315884476534296
+    },
+    "even.mean_pos": {
+     "stored": 1.0611522368844544,
+     "fixed": -0.7364798426745329
+    },
+    "even.ward_share": {
+     "stored": null,
+     "fixed": 0.018023817186997103
+    },
+    "weaker.mean_pos": {
+     "stored": -0.8095667870036101,
+     "fixed": -1.0805429864253393
+    },
+    "weaker.ward_share": {
+     "stored": null,
+     "fixed": 0.002707581227436823
+    }
+   },
+   "credible_threat_n": {
+    "threat": {
+     "stored": 536,
+     "fixed": 554
+    },
+    "weaker, no threat": {
+     "stored": 572,
+     "fixed": 554
+    }
+   },
+   "pressure_cost": {
+    "stored": {
+     "opp_uncollected_when_stronger_near": {
+      "n": 1055,
+      "mean": 0.10550236966824646
+     },
+     "opp_uncollected_otherwise": {
+      "n": 7375,
+      "mean": 0.0967437288135593
+     },
+     "own_collection_trading": {
+      "n": 1831,
+      "mean": 0.6938760279710582
+     },
+     "own_collection_holding": {
+      "n": 1929,
+      "mean": 0.8527925940711405
+     }
+    },
+    "fixed": {
+     "opp_uncollected_when_stronger_near": {
+      "n": 1093,
+      "mean": 0.10678408051235132
+     },
+     "opp_uncollected_otherwise": {
+      "n": 7337,
+      "mean": 0.09650742810412974
+     },
+     "own_collection_trading": {
+      "n": 1831,
+      "mean": 0.6938760279710582
+     },
+     "own_collection_holding": {
+      "n": 1929,
+      "mean": 0.8527925940711405
+     }
+    }
+   }
+  },
+  "final:ext:2": {
+   "identical_fields": 24,
+   "different_fields": 0,
+   "positions": {
+    "stronger.mean_pos": {
+     "stored": 1.4429530201342282,
+     "fixed": -0.17348927875243664
+    },
+    "stronger.ward_share": {
+     "stored": null,
+     "fixed": 0.016299137104506232
+    },
+    "even.mean_pos": {
+     "stored": 1.027027027027027,
+     "fixed": -0.69350563286945
+    },
+    "even.ward_share": {
+     "stored": null,
+     "fixed": 0.017258222077499184
+    },
+    "weaker.mean_pos": {
+     "stored": -1.0076701821668264,
+     "fixed": -1.0076701821668264
+    },
+    "weaker.ward_share": {
+     "stored": null,
+     "fixed": 0.0
+    }
+   },
+   "credible_threat_n": {
+    "threat": {
+     "stored": 504,
+     "fixed": 509
+    },
+    "weaker, no threat": {
+     "stored": 539,
+     "fixed": 534
+    }
+   },
+   "pressure_cost": {
+    "stored": {
+     "opp_uncollected_when_stronger_near": {
+      "n": 1015,
+      "mean": 0.12185714285714286
+     },
+     "opp_uncollected_otherwise": {
+      "n": 7213,
+      "mean": 0.10870511576320531
+     },
+     "own_collection_trading": {
+      "n": 2174,
+      "mean": 0.668247681098417
+     },
+     "own_collection_holding": {
+      "n": 1725,
+      "mean": 0.8508623168817544
+     }
+    },
+    "fixed": {
+     "opp_uncollected_when_stronger_near": {
+      "n": 1032,
+      "mean": 0.12076792635658916
+     },
+     "opp_uncollected_otherwise": {
+      "n": 7196,
+      "mean": 0.10883025291828793
+     },
+     "own_collection_trading": {
+      "n": 2174,
+      "mean": 0.668247681098417
+     },
+     "own_collection_holding": {
+      "n": 1725,
+      "mean": 0.8508623168817544
+     }
+    }
+   }
+  },
+  "final:ext:3": {
+   "identical_fields": 24,
+   "different_fields": 0,
+   "positions": {
+    "stronger.mean_pos": {
+     "stored": 1.8201712654614652,
+     "fixed": -0.2575315840621963
+    },
+    "stronger.ward_share": {
+     "stored": null,
+     "fixed": 0.02093244529019981
+    },
+    "even.mean_pos": {
+     "stored": 2.2250322164948453,
+     "fixed": -0.6978094922004646
+    },
+    "even.ward_share": {
+     "stored": null,
+     "fixed": 0.02931701030927835
+    },
+    "weaker.mean_pos": {
+     "stored": 0.6003805899143673,
+     "fixed": -0.9207729468599034
+    },
+    "weaker.ward_share": {
+     "stored": null,
+     "fixed": 0.015223596574690771
+    }
+   },
+   "credible_threat_n": {
+    "threat": {
+     "stored": 520,
+     "fixed": 541
+    },
+    "weaker, no threat": {
+     "stored": 531,
+     "fixed": 510
+    }
+   },
+   "pressure_cost": {
+    "stored": {
+     "opp_uncollected_when_stronger_near": {
+      "n": 998,
+      "mean": 0.12803356713426853
+     },
+     "opp_uncollected_otherwise": {
+      "n": 7312,
+      "mean": 0.10672900711159738
+     },
+     "own_collection_trading": {
+      "n": 2060,
+      "mean": 0.6602011677103911
+     },
+     "own_collection_holding": {
+      "n": 2059,
+      "mean": 0.827976928024567
+     }
+    },
+    "fixed": {
+     "opp_uncollected_when_stronger_near": {
+      "n": 1036,
+      "mean": 0.12724903474903473
+     },
+     "opp_uncollected_otherwise": {
+      "n": 7274,
+      "mean": 0.10672944734671432
+     },
+     "own_collection_trading": {
+      "n": 2060,
+      "mean": 0.6602011677103911
+     },
+     "own_collection_holding": {
+      "n": 2059,
+      "mean": 0.827976928024567
+     }
+    }
+   }
+  },
+  "final:ext:4": {
+   "identical_fields": 24,
+   "different_fields": 0,
+   "positions": {
+    "stronger.mean_pos": {
+     "stored": 0.92520035618878,
+     "fixed": -0.22342342342342342
+    },
+    "stronger.ward_share": {
+     "stored": null,
+     "fixed": 0.01157613535173642
+    },
+    "even.mean_pos": {
+     "stored": 1.0965814802522402,
+     "fixed": -0.7406593406593407
+    },
+    "even.ward_share": {
+     "stored": null,
+     "fixed": 0.018420179223365418
+    },
+    "weaker.mean_pos": {
+     "stored": -0.6295636687444346,
+     "fixed": -0.9857015192135835
+    },
+    "weaker.ward_share": {
+     "stored": null,
+     "fixed": 0.003561887800534283
+    }
+   },
+   "credible_threat_n": {
+    "threat": {
+     "stored": 534,
+     "fixed": 543
+    },
+    "weaker, no threat": {
+     "stored": 589,
+     "fixed": 580
+    }
+   },
+   "pressure_cost": {
+    "stored": {
+     "opp_uncollected_when_stronger_near": {
+      "n": 1086,
+      "mean": 0.12052025782688765
+     },
+     "opp_uncollected_otherwise": {
+      "n": 7186,
+      "mean": 0.1058349568605622
+     },
+     "own_collection_trading": {
+      "n": 2006,
+      "mean": 0.6599442473445464
+     },
+     "own_collection_holding": {
+      "n": 1680,
+      "mean": 0.8416573007845332
+     }
+    },
+    "fixed": {
+     "opp_uncollected_when_stronger_near": {
+      "n": 1103,
+      "mean": 0.12074569356300997
+     },
+     "opp_uncollected_otherwise": {
+      "n": 7169,
+      "mean": 0.10576544845864137
+     },
+     "own_collection_trading": {
+      "n": 2006,
+      "mean": 0.6599442473445464
+     },
+     "own_collection_holding": {
+      "n": 1680,
+      "mean": 0.8416573007845332
+     }
+    }
+   }
+  },
+  "final:ext:5": {
+   "identical_fields": 24,
+   "different_fields": 0,
+   "positions": {
+    "stronger.mean_pos": {
+     "stored": 2.36159169550173,
+     "fixed": -0.1251109139307897
+    },
+    "stronger.ward_share": {
+     "stored": null,
+     "fixed": 0.025086505190311418
+    },
+    "even.mean_pos": {
+     "stored": 1.2108153078202994,
+     "fixed": -0.7306974376378754
+    },
+    "even.ward_share": {
+     "stored": null,
+     "fixed": 0.019467554076539103
+    },
+    "weaker.mean_pos": {
+     "stored": 0.19550173010380623,
+     "fixed": -1.0157618213660244
+    },
+    "weaker.ward_share": {
+     "stored": null,
+     "fixed": 0.012110726643598616
+    }
+   },
+   "credible_threat_n": {
+    "threat": {
+     "stored": 499,
+     "fixed": 515
+    },
+    "weaker, no threat": {
+     "stored": 657,
+     "fixed": 641
+    }
+   },
+   "pressure_cost": {
+    "stored": {
+     "opp_uncollected_when_stronger_near": {
+      "n": 1104,
+      "mean": 0.12227355072463769
+     },
+     "opp_uncollected_otherwise": {
+      "n": 7218,
+      "mean": 0.10467719589914103
+     },
+     "own_collection_trading": {
+      "n": 1925,
+      "mean": 0.6751001472985889
+     },
+     "own_collection_holding": {
+      "n": 1981,
+      "mean": 0.8442858469382136
+     }
+    },
+    "fixed": {
+     "opp_uncollected_when_stronger_near": {
+      "n": 1147,
+      "mean": 0.12163905841325194
+     },
+     "opp_uncollected_otherwise": {
+      "n": 7175,
+      "mean": 0.10467317073170732
+     },
+     "own_collection_trading": {
+      "n": 1925,
+      "mean": 0.6751001472985889
+     },
+     "own_collection_holding": {
+      "n": 1981,
+      "mean": 0.8442858469382136
+     }
+    }
+   }
+  }
+ }
+}

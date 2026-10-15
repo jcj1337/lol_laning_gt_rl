@@ -122,7 +122,7 @@ N_BEHAVIOR_SLOTS = 5
 CHAMP_ABSENT = 3 * N_BEHAVIOR_SLOTS * N_OBJECTIVES        # 45
 N_CHAMP_ACTIONS = CHAMP_ABSENT + 1                        # 46
 # M4.3c four-action wave management (EXPERIMENTAL, GameConfig.m4_four_actions(),
-# docs/m4/m4_3c_four_action_wave_redesign.md): a fourth wave slot, Slow Push, whose codes are APPENDED after the
+# docs/m4/m4_3/m4_3c_four_action_wave_redesign.md): a fourth wave slot, Slow Push, whose codes are APPENDED after the
 # historical 46 so that no existing code changes meaning in any configuration:
 #   codes 0..44   (wave in {SP, SH, F}) x behavior x objective, a = wave + 3 behavior + 15 objective, as before
 #   code  45      ABSENT, as before
@@ -302,7 +302,7 @@ class GameConfig:
     collect_safe_slope: float = 0.2
     zone_contest: float = 0.3
     zone_under_tower: float = 0.15
-    # M4.2d-C (docs/m4/m4_zoning_report.md), opt-in, ruleset "m4" only: which opponent applies the zone factor
+    # M4.2d-C (docs/m4/m4_2/m4_zoning_report.md), opt-in, ruleset "m4" only: which opponent applies the zone factor
     # (1 - zone_contest, or 1 - zone_under_tower in the collector's own tower cell) to a champion's gold.
     # "presence" = an opponent in farm or trading mode within farm_reach of the kill (the M2 rule); "contact" = only
     # an opponent whose Trade connected on the collector this turn; "none" = never (gold is then lost only to reach,
@@ -406,11 +406,11 @@ class GameConfig:
     death_turns: int = 3
     kill_bounty: float = 0.5
 
-    # ---- ruleset contract (docs/m4/m4_implementation_plan.md WP0). Every default reproduces the legacy game. ----
+    # ---- ruleset contract (docs/m4/m4_2/m4_implementation_plan.md WP0). Every default reproduces the legacy game. ----
     #   "legacy"  GameConfig(), .v1(), .v2(), .champions(): finite horizon K, terminal, countdown observed, gamma = 1
     #   "m2c"     .champions_continuing(): M2 champion mechanics with M4 time semantics. A TEST FIXTURE for the
     #             continuing-time machinery only; never a research ruleset
-    #   "m4"      .m4(): the integrated M4 ruleset (docs/m4/m4_integrated_design.md), lanegame.champions_m4
+    #   "m4"      .m4(): the integrated M4 ruleset (docs/m4/m4_1/m4_integrated_design.md), lanegame.champions_m4
     ruleset: str = "legacy"
     time_mode: str = "finite"             # "finite" (terminal at the horizon) or "continuing" (no terminal state)
     time_features: bool = True            # k/K and (K - k)/K in the (legacy-layout) observation
@@ -428,7 +428,7 @@ class GameConfig:
     item_mult: float = 1.20
     item_tiers: int = 0                   # sequential offensive tiers (m4: 2); 0 = no items
     item_prices: Tuple[float, ...] = (4.0, 6.0)   # resources per tier, bought automatically at base (design §8.5)
-    # M4.2c experiment (docs/m4/m4_continuous_investment_report.md): "tiers" = the two-tier track above (the validated
+    # M4.2c experiment (docs/m4/m4_2/m4_continuous_investment_report.md): "tiers" = the two-tier track above (the validated
     # baseline); "continuous" = every return to base invests ALL unspent gold, AP(L, S) = AP(L, 0) [1 + invest_alpha
     # ((1 + S)^invest_p - 1)] with S the cumulative investment in resources (needs item_tiers = 0).
     item_model: str = "tiers"
@@ -436,7 +436,7 @@ class GameConfig:
     invest_p: float = 0.90
     invest_obs_gold_ref: int = 1024       # resources: the observation encodes unspent gold exactly below this
     invest_obs_ref: int = 1024            # resources: ... and invested gold exactly below this
-    # M4.2d (docs/m4/m4_investment_readiness_report.md), opt-in: invest_curve "power" = the M4.2c curve above;
+    # M4.2d (docs/m4/m4_2/m4_investment_readiness_report.md), opt-in: invest_curve "power" = the M4.2c curve above;
     # "saturating" = M(S) = 1 + invest_gain (1 - sqrt(invest_scale / (invest_scale + S))), bounded by 1 + invest_gain
     # and computed in exact integers. invest_obs_encoding "linear" = the M4.2c whole-resource entries n / R (saturate at
     # R); "compressed" = n / (n + R) (R = the same reference fields, now the half-point; never saturates, exact
@@ -447,14 +447,14 @@ class GameConfig:
     invest_obs_encoding: str = "linear"
     freeze_maintenance: bool = False      # m4: a Freeze holds only while maintained (design §6.3)
     chase_rule: str = "m2"                # "m2" (legacy target e -/+ trade_range) or "contact_cell" (design §7.4)
-    # M4.2d (docs/m4/m4_wave_readiness_report.md), opt-in: "m2" = the farm spot is the probe's leading packet (M2 rule);
+    # M4.2d (docs/m4/m4_2/m4_wave_readiness_report.md), opt-in: "m2" = the farm spot is the probe's leading packet (M2 rule);
     # "pre_crash_front" = a champion whose front crashes in the probe keeps its pre-turn front cell as farm spot;
-    # M4.5b (docs/m4/m4_5b_calibration_report.md), opt-in, natural waves with tick movement: "last_front" = a champion
+    # M4.5b (docs/m4/m4_5/m4_5b_calibration_report.md), opt-in, natural waves with tick movement: "last_front" = a champion
     # whose front crashes OR DIES in the probe keeps the front's last cell (its pre-turn cell if lost on tick 0, else its
     # cell after the previous tick) as farm spot, instead of walking back to its next packet: under the probe's full
     # support both champions of a mutual Shove walked out of reach of the fight that was to kill both fronts
     farm_spot_rule: str = "m2"
-    # M4.2d-B (docs/m4/m4_positioning_report.md), opt-in: "m2" = M2 positioning and evasion; "pin" = a Yield champion that
+    # M4.2d-B (docs/m4/m4_2/m4_positioning_report.md), opt-in: "m2" = M2 positioning and evasion; "pin" = a Yield champion that
     # STARTS the turn in contact with an enemy Trade champion cannot evade it (it is caught like a Hold); "standoff" =
     # "pin" plus Yield farms from its stand-off cell max(-T, min(spot, e - farm_reach)), e = the enemy front at the start
     # of the turn in own coordinates: the rearmost cell still in reach of the contested minions
@@ -491,13 +491,13 @@ class GameConfig:
     # wave_clear_scaled_slots are then unused.
     wave_hold_fraction: float = 0.0
     wave_thin_fraction: float = 0.0
-    # M4.3c wave-control screen (docs/m4/m4_3c_wave_control_screen.md), EXPERIMENTAL, "capacity" only. wave_hold_cap
+    # M4.3c wave-control screen (docs/m4/m4_3/m4_3c_wave_control_screen.md), EXPERIMENTAL, "capacity" only. wave_hold_cap
     # n > 0 caps Hold's per-turn budget at n HP whatever the capacity (0 = off). wave_thin_rule "adaptive" = Thin spends
     # min(round(wave_thin_fraction * C), need) HP per turn, need = the enemy blob's HP above the largest blob whose
     # minions do not out-fire ours (mechanics.thin_need, start-of-turn state); "share" = round(wave_thin_fraction * C)
     wave_hold_cap: int = 0
     wave_thin_rule: str = "share"
-    # M4.3c four-action redesign (docs/m4/m4_3c_four_action_wave_redesign.md), EXPERIMENTAL, "capacity" only.
+    # M4.3c four-action redesign (docs/m4/m4_3/m4_3c_four_action_wave_redesign.md), EXPERIMENTAL, "capacity" only.
     # wave_thin_rule "strength" = Thin spends min(round(wave_thin_fraction * C), H + need) HP per turn, H = the Hold
     # (last-hit) budget and need = the enemy's window strength above ours (mechanics.strength_need, start-of-turn
     # state, margin 0). wave_slowpush True adds a fourth wave action, Slow Push (slot W_SLOWPUSH, codes 46..60, a
@@ -525,7 +525,7 @@ class GameConfig:
     # M4.2e-B, opt-in (item_model "continuous" only): invested gold also buys durability: every centi-HP of damage a
     # champion takes (trades, tower shots, ganks) is divided by its own investment multiplier M(S), exactly.
     invest_durability: bool = False
-    # M4.3c stabilization (docs/m4/m4_3c_strategic_economics_calibration.md), EXPERIMENTAL, ruleset "m4" only; every
+    # M4.3c stabilization (docs/m4/m4_3/m4_3c_strategic_economics_calibration.md), EXPERIMENTAL, ruleset "m4" only; every
     # default reproduces every earlier preset exactly.
     # xp_reward_weight lambda > 0: the reward also counts the difference of the XP the two champions are CREDITED this
     # turn (after the level cap), r_A = (E_A - E_B) + lambda (X_A - X_B), lambda in resources per XP and an exact
@@ -538,7 +538,7 @@ class GameConfig:
     # the turn in which either tower's cumulative damage reaches its last plate threshold (that turn is paid in full,
     # plate gold included; nothing follows, the terminal value is 0)
     terminal_rule: str = "none"
-    # M4.5a unified positional mechanics (docs/m4/m4_5a_unified_mechanics_spec.md), EXPERIMENTAL, ruleset "m4" with
+    # M4.5a unified positional mechanics (docs/m4/m4_5/m4_5a_unified_mechanics_spec.md), EXPERIMENTAL, ruleset "m4" with
     # natural waves only; every default reproduces every earlier preset exactly (lanegame.positional).
     # vision_rule "siege" = Establish Vision is a siege objective at the enemy tower (M2-M4.4); "ward" = one shared
     # off-lane Vision node W attached to the lane cell 0, reached by the Ward action (code CHAMP_WARD = 30) from own
@@ -557,7 +557,7 @@ class GameConfig:
     minion_positional_aggro: bool = False
     minion_range: int = 1
     minion_retaliation_delay: int = 1
-    # where a champion stands during the lane ticks (M4.5a; docs/m4/m4_5a_unified_mechanics_spec.md §4-5):
+    # where a champion stands during the lane ticks (M4.5a; docs/m4/m4_5/m4_5a_unified_mechanics_spec.md §4-5):
     # "turn" = at its end cell for the whole turn (every preset before the M4.5a correction, and m45_unified_r1():
     #          positional aggro is designated at the start of a tick, only on a champion that did not move this turn);
     # "tick" = it walks its path tick by tick, at most ceil((t+1) v / n) - ceil(t v / n) edges on tick t, to the same
@@ -618,7 +618,7 @@ class GameConfig:
 
     @classmethod
     def m4(cls, **kw) -> "GameConfig":
-        """The M4 ruleset (docs/m4/m4_integrated_design.md): continuing time, Freeze maintenance, XP and levels 1-18,
+        """The M4 ruleset (docs/m4/m4_1/m4_integrated_design.md): continuing time, Freeze maintenance, XP and levels 1-18,
         centi-HP, attack power, one two-tier item track bought at base, durability plates, the contact-cell chase
         and the tower-adjacent shot. Played through lanegame.env (lanegame.champions_m4)."""
         base = dict(champion_mode=True, ruleset="m4", time_mode="continuing", time_features=False, gamma=0.99,
@@ -638,7 +638,7 @@ class GameConfig:
 
     @classmethod
     def m4_emergent(cls, **kw) -> "GameConfig":
-        """EXPERIMENT (M4.2d integration, docs/m4/m4_emergent_parallel_report.md): `m4_continuous()` with the selected
+        """EXPERIMENT (M4.2d integration, docs/m4/m4_2/m4_emergent_parallel_report.md): `m4_continuous()` with the selected
         opt-in M4.2d mechanics: the bounded saturating investment curve and the compressed investment observation
         (M4.2d-D), Yield as a stand-off position that a Trade starting in contact pins (M4.2d-B), no automatic
         proximity zoning (M4.2d-C) and the pre-crash farm spot (M4.2d-A readiness). Waves keep the scripted M4 rule
@@ -721,12 +721,12 @@ class GameConfig:
         base.update(kw)
         return cls.m4_lane(**base)
 
-    # the fields GameConfig.m4_four_actions() changes from m4_lasthit() (M4.3c, docs/m4/m4_3c_four_action_wave_redesign.md)
+    # the fields GameConfig.m4_four_actions() changes from m4_lasthit() (M4.3c, docs/m4/m4_3/m4_3c_four_action_wave_redesign.md)
     M4_FOUR_ACTIONS_FIELDS = ("wave_hold_cap", "wave_thin_rule", "wave_slowpush")
 
     @classmethod
     def m4_four_actions(cls, **kw) -> "GameConfig":
-        """EXPERIMENTAL (M4.3c, docs/m4/m4_3c_four_action_wave_redesign.md): `m4_lasthit()` with four wave actions,
+        """EXPERIMENTAL (M4.3c, docs/m4/m4_3/m4_3c_four_action_wave_redesign.md): `m4_lasthit()` with four wave actions,
         each a per-turn damage budget on enemy minions out of the same wave-clear capacity C = round(4 AP):
           Last Hit  = min(1, round(C / 8)) = 1                    wave_hold_cap 1: farming never pushes by power
           Thin      = min(round(C / 2), 1 + need(margin 0))       wave_thin_rule "strength": remove only the enemy's
@@ -743,7 +743,7 @@ class GameConfig:
         return cls.m4_lasthit(**base)
 
     # the fields GameConfig.m4_four_actions_econ() changes from m4_four_actions() (M4.3c stabilization,
-    # docs/m4/m4_3c_strategic_economics_calibration.md)
+    # docs/m4/m4_3/m4_3c_strategic_economics_calibration.md)
     M4_FOUR_ECON_FIELDS = ("collect_contest_own_tower", "trade_farm_factor", "kill_bounty", "death_turns_by_level",
                            "champion_absent_max")
     # 2 + ceil(L / 6): 3 turns at levels 1-6, 4 at 7-12, 5 at 13-18 (League's respawn timer plus the walk back)
@@ -751,7 +751,7 @@ class GameConfig:
 
     @classmethod
     def m4_four_actions_econ(cls, **kw) -> "GameConfig":
-        """EXPERIMENTAL CANDIDATE (M4.3c stabilization, docs/m4/m4_3c_strategic_economics_calibration.md):
+        """EXPERIMENTAL CANDIDATE (M4.3c stabilization, docs/m4/m4_3/m4_3c_strategic_economics_calibration.md):
         `m4_four_actions()` with a calibrated lane economy. Four fixed rates are set to League-proportional values:
           collect_contest_own_tower 0.8      a crashed wave dying under the own tower is last-hit at 0.8 (0.6 before):
                                              crashing taxes the defender 1/9 of the lane rate instead of 1/3, which
@@ -773,12 +773,12 @@ class GameConfig:
         return cls.m4_four_actions(**base)
 
     # the fields GameConfig.m4_four_actions_econ_aggro() changes from m4_four_actions_econ() (M4.3d,
-    # docs/m4/m4_3d_tower_pressure_calibration.md)
+    # docs/m4/m4_3/m4_3d_tower_pressure_calibration.md)
     M4_FOUR_AGGRO_FIELDS = ("tower_shot_p_busy", "tower_adjacent_p_busy")
 
     @classmethod
     def m4_four_actions_econ_aggro(cls, **kw) -> "GameConfig":
-        """EXPERIMENTAL CANDIDATE (M4.3d, docs/m4/m4_3d_tower_pressure_calibration.md): `m4_four_actions_econ()` with
+        """EXPERIMENTAL CANDIDATE (M4.3d, docs/m4/m4_3/m4_3d_tower_pressure_calibration.md): `m4_four_actions_econ()` with
         the tower's "busy" discount removed for a champion that attacks a champion under it:
           tower_shot_p_busy 1.0        a connected trader ending in the enemy tower cell (a dive) is shot with
                                        probability 1.0 also while its own crashed minions are under that tower (0.5
@@ -799,7 +799,7 @@ class GameConfig:
 
     @classmethod
     def m45_unified(cls, **kw) -> "GameConfig":
-        """EXPERIMENTAL CANDIDATE (M4.5a, docs/m4/m4_5a_unified_mechanics_spec.md): `m4_four_actions_econ_aggro()` with
+        """EXPERIMENTAL CANDIDATE (M4.5a, docs/m4/m4_5/m4_5a_unified_mechanics_spec.md): `m4_four_actions_econ_aggro()` with
         the unified positional mechanics, implemented together because they interact:
           vision_rule "ward"              one shared off-lane Vision node W next to the lane cell 0; Ward (code 30)
                                           walks there and places a ward unless the enemy's Trade damages the warder;
@@ -832,12 +832,12 @@ class GameConfig:
         base.update(kw)
         return cls.m45_unified(**base)
 
-    # the fields GameConfig.m45_calibrated() changes from m45_unified() (M4.5b, docs/m4/m4_5b_calibration_report.md)
+    # the fields GameConfig.m45_calibrated() changes from m45_unified() (M4.5b, docs/m4/m4_5/m4_5b_calibration_report.md)
     M45_CALIBRATED_FIELDS = ("farm_spot_rule", "minion_retaliation_delay")
 
     @classmethod
     def m45_calibrated(cls, **kw) -> "GameConfig":
-        """EXPERIMENTAL CANDIDATE (M4.5b, docs/m4/m4_5b_calibration_report.md): `m45_unified()` (revision 2) with one
+        """EXPERIMENTAL CANDIDATE (M4.5b, docs/m4/m4_5/m4_5b_calibration_report.md): `m45_unified()` (revision 2) with one
         mechanical correction and one numerical calibration:
           farm_spot_rule "last_front"     (correction) a Hold / Yield / Safe champion whose front crashes OR DIES in the
                                           probe keeps the front's last cell as farm spot instead of walking back to its

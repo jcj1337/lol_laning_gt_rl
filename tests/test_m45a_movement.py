@@ -1,4 +1,4 @@
-"""M4.5a movement correction (champion_movement_rule "tick"; docs/m4/m4_5a_unified_mechanics_report.md §10).
+"""M4.5a movement correction (champion_movement_rule "tick"; docs/m4/m4_5/m4_5a_unified_mechanics_report.md §10).
 
 Champions walk tick by tick to their unchanged end cell; Hold, an unthreatened Yield and Safe follow their wave's front
 of each tick; positional aggro is evaluated on each tick's positions after its movement, whether the champion moved

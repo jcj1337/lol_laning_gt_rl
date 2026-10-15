@@ -1,5 +1,5 @@
 """M4.2d-A: the opt-in farm-spot correction `farm_spot_rule="pre_crash_front"` and the wave-bounce finding
-(docs/m4/m4_wave_readiness_report.md)."""
+(docs/m4/m4_2/m4_wave_readiness_report.md)."""
 
 import numpy as np
 import pytest

@@ -242,7 +242,7 @@ def _blob_hp(packets, cfg: GameConfig) -> int:
 
 
 def thin_need(P, s: int, cfg: GameConfig) -> int:
-    """wave_thin_rule "adaptive" (EXPERIMENTAL, docs/m4/m4_3c_wave_control_screen.md): the HP of the enemy blob above
+    """wave_thin_rule "adaptive" (EXPERIMENTAL, docs/m4/m4_3/m4_3c_wave_control_screen.md): the HP of the enemy blob above
     the largest blob whose minions do not out-fire side s's, on the blobs of the start-of-turn packets P:
 
         f_own = max(1, floor(2 h_own / W))  (0 with no own packet),   h* = floor((W (f_own + 1) - 1) / 2),
@@ -258,7 +258,7 @@ def thin_need(P, s: int, cfg: GameConfig) -> int:
 
 # ---------------------------------------------------------------------------------------------------------------------
 # M4.3c four-action wave management (EXPERIMENTAL, wave_thin_rule "strength" / wave_slowpush;
-# docs/m4/m4_3c_four_action_wave_redesign.md). Thin and Slow Push spend only the damage needed to reach a target
+# docs/m4/m4_3/m4_3c_four_action_wave_redesign.md). Thin and Slow Push spend only the damage needed to reach a target
 # balance of the two waves' WINDOW STRENGTH, on top of the Last Hit budget, up to their capacity.
 # Target margins in HP of window strength: Thin restores parity, Slow Push establishes a lead of one HP.
 STRENGTH_MARGIN = {F: 0, W_SLOWPUSH: 1}

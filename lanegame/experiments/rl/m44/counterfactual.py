@@ -1,4 +1,4 @@
-"""Paired counterfactual evaluation from saved states (M4.4a Part 4; docs/m4/m4_4a_ppo_readiness.md §5).
+"""Paired counterfactual evaluation from saved states (M4.4a Part 4; docs/m4/m4_4/m4_4a_ppo_readiness.md §5).
 
 Question: at a state the policy actually reaches, would a different legal choice of ONE decision component have
 produced a better discounted economic outcome, under stated continuation policies?

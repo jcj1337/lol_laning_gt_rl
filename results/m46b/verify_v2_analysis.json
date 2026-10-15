@@ -1,0 +1,2089 @@
+{
+ "meta": {
+  "study": "M4.6b",
+  "commit": "015c974968e400fdb5e7f27e03be2fdfc9a66ebd",
+  "working_tree_dirty": true,
+  "timestamp": "2026-10-15 16:39:23",
+  "python": "3.13.9",
+  "torch": "2.14.1+cpu",
+  "numpy": "2.5.3",
+  "environment": "GameConfig.m45_calibrated()",
+  "stage": "verify_v2_analysis"
+ },
+ "results": {
+  "B_frozen|fz_bully_sh": {
+   "1t:shove-policy": {
+    "per_final": [
+     -0.08911399078630328,
+     0.020364622344087164
+    ],
+    "mean": -0.03437468422110806
+   },
+   "1t:farm-policy": {
+    "per_final": [
+     -0.4725147223012449,
+     -0.4160429140620843
+    ],
+    "mean": -0.4442788181816646
+   },
+   "1t:step_back-policy": {
+    "per_final": [
+     -0.24734084890458283,
+     -0.3739893291073424
+    ],
+    "mean": -0.3106650890059626
+   },
+   "1t:recall-policy": {
+    "per_final": [
+     -0.10773546513315958,
+     -0.011358011694208416
+    ],
+    "mean": -0.059546738413684
+   },
+   "plan:shovex3-policy": {
+    "per_final": [
+     -0.6167146743026273,
+     -0.4374396779132179
+    ],
+    "mean": -0.5270771761079226
+   },
+   "1t:walk_up_beh-policy": {
+    "per_final": [
+     -0.14589703333533713,
+     -0.0421030727570643
+    ],
+    "mean": -0.09400005304620071
+   },
+   "1t:step_back_beh-policy": {
+    "per_final": [
+     -0.24734084890458283,
+     -0.3739893291073424
+    ],
+    "mean": -0.3106650890059626
+   },
+   "1t:walk_up_beh-1t:farm": {
+    "per_final": [
+     0.32661768896590765,
+     0.37393984130502006
+    ],
+    "mean": 0.35027876513546385
+   },
+   "1t:step_back_beh-1t:step_back": {
+    "per_final": [
+     0.0,
+     0.0
+    ],
+    "mean": 0.0
+   },
+   "channels": {
+    "1t:shove|earned_A": 0.09113715277777767,
+    "1t:shove|farm_A": 0.059887152777777654,
+    "1t:shove|unc_A": -0.0755121527777778,
+    "1t:shove|unc_away_A": 0.020941840277777773,
+    "1t:shove|bounty_A": -0.02604166666666666,
+    "1t:shove|plate_A": 0.057291666666666664,
+    "1t:shove|earned_B": 0.14326388888888877,
+    "1t:shove|bounty_B": 0.11631944444444442,
+    "1t:shove|deaths_A": 0.05815972222222221,
+    "1t:shove|deaths_B": -0.01302083333333333,
+    "1t:shove|away_A": -0.028645833333333325,
+    "1t:shove|away_B": -0.07118055555555557,
+    "1t:shove|d_total_A": -0.014192100422365678,
+    "1t:shove|xp_A": -0.07465277777777779,
+    "1t:shove|trade_conn_A": -0.059895833333333336,
+    "1t:farm|earned_A": -0.2116124131944445,
+    "1t:farm|farm_A": -0.11439019097222225,
+    "1t:farm|unc_A": 0.09550998263888882,
+    "1t:farm|unc_away_A": 0.09266493055555557,
+    "1t:farm|bounty_A": -0.0798611111111111,
+    "1t:farm|plate_A": -0.017361111111111112,
+    "1t:farm|earned_B": 0.25636935763888874,
+    "1t:farm|bounty_B": 0.21875,
+    "1t:farm|deaths_A": 0.109375,
+    "1t:farm|deaths_B": -0.03993055555555555,
+    "1t:farm|away_A": 0.2604166666666667,
+    "1t:farm|away_B": -0.171875,
+    "1t:farm|d_total_A": 0.07691899569527125,
+    "1t:farm|xp_A": -0.47309027777777785,
+    "1t:farm|trade_conn_A": -0.13715277777777776,
+    "1t:step_back|earned_A": -0.24990668402777783,
+    "1t:step_back|farm_A": -0.1526844618055554,
+    "1t:step_back|unc_A": 0.14899522569444443,
+    "1t:step_back|unc_away_A": -0.0011935763888888905,
+    "1t:step_back|bounty_A": -0.0954861111111111,
+    "1t:step_back|plate_A": -0.0017361111111111119,
+    "1t:step_back|earned_B": 0.0719053819444442,
+    "1t:step_back|bounty_B": 0.0034722222222222216,
+    "1t:step_back|deaths_A": 0.0017361111111111108,
+    "1t:step_back|deaths_B": -0.04774305555555555,
+    "1t:step_back|away_A": -0.029513888888888885,
+    "1t:step_back|away_B": -0.1684027777777778,
+    "1t:step_back|d_total_A": -0.03167614361623989,
+    "1t:step_back|xp_A": -0.4383680555555556,
+    "1t:step_back|trade_conn_A": -0.05642361111111113,
+    "1t:recall|earned_A": -0.02942491319444449,
+    "1t:recall|farm_A": -0.017272135416666695,
+    "1t:recall|unc_A": 0.028339843749999982,
+    "1t:recall|unc_away_A": 0.03602430555555556,
+    "1t:recall|bounty_A": -0.015625,
+    "1t:recall|plate_A": 0.0034722222222222216,
+    "1t:recall|earned_B": 0.015082465277777818,
+    "1t:recall|bounty_B": 0.006944444444444444,
+    "1t:recall|deaths_A": 0.003472222222222222,
+    "1t:recall|deaths_B": -0.0078125,
+    "1t:recall|away_A": 0.10850694444444443,
+    "1t:recall|away_B": -0.056423611111111105,
+    "1t:recall|d_total_A": 0.004451999444220128,
+    "1t:recall|xp_A": -0.10590277777777779,
+    "1t:recall|trade_conn_A": -0.017361111111111115,
+    "plan:shovex3|earned_A": -0.05840060763888875,
+    "plan:shovex3|farm_A": 0.04142578125000013,
+    "plan:shovex3|unc_A": -0.05791883680555562,
+    "plan:shovex3|unc_away_A": 0.07508680555555557,
+    "plan:shovex3|bounty_A": -0.08680555555555558,
+    "plan:shovex3|plate_A": -0.013020833333333329,
+    "plan:shovex3|earned_B": 0.4924500868055553,
+    "plan:shovex3|bounty_B": 0.3125,
+    "plan:shovex3|deaths_A": 0.15625,
+    "plan:shovex3|deaths_B": -0.04340277777777779,
+    "plan:shovex3|away_A": 0.19704861111111108,
+    "plan:shovex3|away_B": -0.14409722222222224,
+    "plan:shovex3|d_total_A": -0.000774093776733379,
+    "plan:shovex3|xp_A": 0.0998263888888889,
+    "plan:shovex3|trade_conn_A": -0.20225694444444442,
+    "1t:walk_up_beh|earned_A": 0.04731770833333324,
+    "1t:walk_up_beh|farm_A": 0.036901041666666544,
+    "1t:walk_up_beh|unc_A": -0.04482204861111114,
+    "1t:walk_up_beh|unc_away_A": 0.03765190972222223,
+    "1t:walk_up_beh|bounty_A": -0.013888888888888886,
+    "1t:walk_up_beh|plate_A": 0.024305555555555552,
+    "1t:walk_up_beh|earned_B": 0.17466579861111117,
+    "1t:walk_up_beh|bounty_B": 0.13020833333333334,
+    "1t:walk_up_beh|deaths_A": 0.06510416666666667,
+    "1t:walk_up_beh|deaths_B": -0.006944444444444443,
+    "1t:walk_up_beh|away_A": 0.09201388888888891,
+    "1t:walk_up_beh|away_B": -0.0642361111111111,
+    "1t:walk_up_beh|d_total_A": 0.016918673767419318,
+    "1t:walk_up_beh|xp_A": -0.1493055555555556,
+    "1t:walk_up_beh|trade_conn_A": -0.1293402777777778,
+    "1t:step_back_beh|earned_A": -0.24990668402777783,
+    "1t:step_back_beh|farm_A": -0.1526844618055554,
+    "1t:step_back_beh|unc_A": 0.14899522569444443,
+    "1t:step_back_beh|unc_away_A": -0.0011935763888888905,
+    "1t:step_back_beh|bounty_A": -0.0954861111111111,
+    "1t:step_back_beh|plate_A": -0.0017361111111111119,
+    "1t:step_back_beh|earned_B": 0.0719053819444442,
+    "1t:step_back_beh|bounty_B": 0.0034722222222222216,
+    "1t:step_back_beh|deaths_A": 0.0017361111111111108,
+    "1t:step_back_beh|deaths_B": -0.04774305555555555,
+    "1t:step_back_beh|away_A": -0.029513888888888885,
+    "1t:step_back_beh|away_B": -0.1684027777777778,
+    "1t:step_back_beh|d_total_A": -0.03167614361623989,
+    "1t:step_back_beh|xp_A": -0.4383680555555556,
+    "1t:step_back_beh|trade_conn_A": -0.05642361111111113
+   },
+   "states": 96
+  },
+  "B_frozen|fz_guard_sh": {
+   "1t:shove-policy": {
+    "per_final": [
+     -0.17567223024732348,
+     0.07339746811922084
+    ],
+    "mean": -0.05113738106405132
+   },
+   "1t:farm-policy": {
+    "per_final": [
+     -0.43445000614937995,
+     -0.3133999274690456
+    ],
+    "mean": -0.3739249668092128
+   },
+   "1t:step_back-policy": {
+    "per_final": [
+     -0.44582670052541523,
+     -0.22819936950657183
+    ],
+    "mean": -0.33701303501599356
+   },
+   "1t:recall-policy": {
+    "per_final": [
+     -0.1596813093353106,
+     0.026507354424512224
+    ],
+    "mean": -0.0665869774553992
+   },
+   "plan:shovex3-policy": {
+    "per_final": [
+     -0.7108744573224816,
+     -0.2733335416696422
+    ],
+    "mean": -0.4921039994960619
+   },
+   "1t:walk_up_beh-policy": {
+    "per_final": [
+     -0.20134277637800793,
+     -0.04948253422917251
+    ],
+    "mean": -0.12541265530359022
+   },
+   "1t:step_back_beh-policy": {
+    "per_final": [
+     -0.4466912102134501,
+     -0.22229344555818434
+    ],
+    "mean": -0.33449232788581723
+   },
+   "1t:walk_up_beh-1t:farm": {
+    "per_final": [
+     0.23310722977137197,
+     0.26391739323987307
+    ],
+    "mean": 0.24851231150562253
+   },
+   "1t:step_back_beh-1t:step_back": {
+    "per_final": [
+     -0.0008645096880348924,
+     0.005905923948387483
+    ],
+    "mean": 0.002520707130176295
+   },
+   "channels": {
+    "1t:shove|earned_A": 0.07967664930555544,
+    "1t:shove|farm_A": 0.031933593749999906,
+    "1t:shove|unc_A": -0.05537109374999999,
+    "1t:shove|unc_away_A": 0.022786458333333332,
+    "1t:shove|bounty_A": -0.0017361111111111212,
+    "1t:shove|plate_A": 0.049479166666666664,
+    "1t:shove|earned_B": 0.1553602430555556,
+    "1t:shove|bounty_B": 0.11805555555555554,
+    "1t:shove|deaths_A": 0.05902777777777777,
+    "1t:shove|deaths_B": -0.0008680555555555606,
+    "1t:shove|away_A": 0.016493055555555556,
+    "1t:shove|away_B": 0.008680555555555565,
+    "1t:shove|d_total_A": 0.0009245132057640491,
+    "1t:shove|xp_A": 0.08420138888888888,
+    "1t:shove|trade_conn_A": -0.09982638888888888,
+    "1t:farm|earned_A": -0.18114583333333337,
+    "1t:farm|farm_A": -0.12906249999999997,
+    "1t:farm|unc_A": 0.1182118055555555,
+    "1t:farm|unc_away_A": 0.0947265625,
+    "1t:farm|bounty_A": -0.022569444444444444,
+    "1t:farm|plate_A": -0.029513888888888885,
+    "1t:farm|earned_B": 0.17183810763888893,
+    "1t:farm|bounty_B": 0.20833333333333334,
+    "1t:farm|deaths_A": 0.10416666666666667,
+    "1t:farm|deaths_B": -0.011284722222222222,
+    "1t:farm|away_A": 0.22743055555555555,
+    "1t:farm|away_B": -0.08072916666666667,
+    "1t:farm|d_total_A": 0.07213240276570039,
+    "1t:farm|xp_A": -0.27690972222222227,
+    "1t:farm|trade_conn_A": -0.1388888888888889,
+    "1t:step_back|earned_A": -0.2781987847222223,
+    "1t:step_back|farm_A": -0.18444878472222218,
+    "1t:step_back|unc_A": 0.18043402777777773,
+    "1t:step_back|unc_away_A": -0.011610243055555561,
+    "1t:step_back|bounty_A": -0.07638888888888888,
+    "1t:step_back|plate_A": -0.01736111111111111,
+    "1t:step_back|earned_B": 0.019355468749999955,
+    "1t:step_back|bounty_B": -0.013888888888888886,
+    "1t:step_back|deaths_A": -0.006944444444444443,
+    "1t:step_back|deaths_B": -0.03819444444444444,
+    "1t:step_back|away_A": -0.056423611111111105,
+    "1t:step_back|away_B": -0.13020833333333334,
+    "1t:step_back|d_total_A": -0.022972444187406054,
+    "1t:step_back|xp_A": -0.22916666666666666,
+    "1t:step_back|trade_conn_A": -0.11197916666666669,
+    "1t:recall|earned_A": -0.05973090277777777,
+    "1t:recall|farm_A": -0.04757812499999997,
+    "1t:recall|unc_A": 0.05441406249999999,
+    "1t:recall|unc_away_A": 0.04741753472222222,
+    "1t:recall|bounty_A": -0.01041666666666667,
+    "1t:recall|plate_A": -0.0017361111111111119,
+    "1t:recall|earned_B": -0.010078124999999943,
+    "1t:recall|bounty_B": 0.005208333333333333,
+    "1t:recall|deaths_A": 0.0026041666666666665,
+    "1t:recall|deaths_B": -0.005208333333333335,
+    "1t:recall|away_A": 0.16579861111111113,
+    "1t:recall|away_B": -0.03211805555555556,
+    "1t:recall|d_total_A": 0.0045289644188417355,
+    "1t:recall|xp_A": -0.07638888888888888,
+    "1t:recall|trade_conn_A": -0.011284722222222219,
+    "plan:shovex3|earned_A": -0.13867404513888903,
+    "plan:shovex3|farm_A": -0.05273654513888896,
+    "plan:shovex3|unc_A": 0.04166883680555547,
+    "plan:shovex3|unc_away_A": 0.08528645833333333,
+    "plan:shovex3|bounty_A": -0.0486111111111111,
+    "plan:shovex3|plate_A": -0.03732638888888889,
+    "plan:shovex3|earned_B": 0.3322504340277778,
+    "plan:shovex3|bounty_B": 0.29340277777777773,
+    "plan:shovex3|deaths_A": 0.14670138888888887,
+    "plan:shovex3|deaths_B": -0.02430555555555555,
+    "plan:shovex3|away_A": 0.2595486111111111,
+    "plan:shovex3|away_B": -0.07725694444444443,
+    "plan:shovex3|d_total_A": 0.04980690293611032,
+    "plan:shovex3|xp_A": 0.03038194444444442,
+    "plan:shovex3|trade_conn_A": -0.2152777777777778,
+    "1t:walk_up_beh|earned_A": -0.006221788194444355,
+    "1t:walk_up_beh|farm_A": -0.00014539930555553435,
+    "1t:walk_up_beh|unc_A": -0.011356336805555556,
+    "1t:walk_up_beh|unc_away_A": 0.03526475694444444,
+    "1t:walk_up_beh|bounty_A": -0.019097222222222227,
+    "1t:walk_up_beh|plate_A": 0.013020833333333337,
+    "1t:walk_up_beh|earned_B": 0.13011718750000004,
+    "1t:walk_up_beh|bounty_B": 0.12152777777777778,
+    "1t:walk_up_beh|deaths_A": 0.06076388888888889,
+    "1t:walk_up_beh|deaths_B": -0.009548611111111114,
+    "1t:walk_up_beh|away_A": 0.0798611111111111,
+    "1t:walk_up_beh|away_B": -0.04687499999999999,
+    "1t:walk_up_beh|d_total_A": 0.024119536733413018,
+    "1t:walk_up_beh|xp_A": -0.078125,
+    "1t:walk_up_beh|trade_conn_A": -0.11197916666666667,
+    "1t:step_back_beh|earned_A": -0.2843077256944445,
+    "1t:step_back_beh|farm_A": -0.18448133680555553,
+    "1t:step_back_beh|unc_A": 0.18144314236111106,
+    "1t:step_back_beh|unc_away_A": -0.011501736111111114,
+    "1t:step_back_beh|bounty_A": -0.0798611111111111,
+    "1t:step_back_beh|plate_A": -0.019965277777777773,
+    "1t:step_back_beh|earned_B": 0.010568576388888843,
+    "1t:step_back_beh|bounty_B": -0.015624999999999995,
+    "1t:step_back_beh|deaths_A": -0.007812499999999997,
+    "1t:step_back_beh|deaths_B": -0.03993055555555555,
+    "1t:step_back_beh|away_A": -0.0625,
+    "1t:step_back_beh|away_B": -0.14062500000000003,
+    "1t:step_back_beh|d_total_A": -0.023029055222216228,
+    "1t:step_back_beh|xp_A": -0.23697916666666666,
+    "1t:step_back_beh|trade_conn_A": -0.1232638888888889
+   },
+   "states": 96
+  },
+  "B_frozen|fz_passive_sh": {
+   "1t:shove-policy": {
+    "per_final": [
+     -0.015131824982356198,
+     0.1281075808979127
+    ],
+    "mean": 0.056487877957778244
+   },
+   "1t:farm-policy": {
+    "per_final": [
+     -0.20097869008645286,
+     -0.27375749568749363
+    ],
+    "mean": -0.23736809288697325
+   },
+   "1t:step_back-policy": {
+    "per_final": [
+     -0.3542335383010087,
+     -0.5734127209523839
+    ],
+    "mean": -0.4638231296266963
+   },
+   "1t:recall-policy": {
+    "per_final": [
+     -0.059157793854248374,
+     0.08741704662867485
+    ],
+    "mean": 0.014129626387213236
+   },
+   "plan:shovex3-policy": {
+    "per_final": [
+     -0.4455536592384452,
+     -0.13428725416866155
+    ],
+    "mean": -0.2899204567035534
+   },
+   "1t:walk_up_beh-policy": {
+    "per_final": [
+     -0.09987114958495925,
+     0.03172449307126655
+    ],
+    "mean": -0.03407332825684635
+   },
+   "1t:step_back_beh-policy": {
+    "per_final": [
+     -0.3498720336971763,
+     -0.5773632535269074
+    ],
+    "mean": -0.46361764361204183
+   },
+   "1t:walk_up_beh-1t:farm": {
+    "per_final": [
+     0.10110754050149358,
+     0.30548198875876015
+    ],
+    "mean": 0.20329476463012686
+   },
+   "1t:step_back_beh-1t:step_back": {
+    "per_final": [
+     0.004361504603832449,
+     -0.003950532574523466
+    ],
+    "mean": 0.00020548601465449155
+   },
+   "channels": {
+    "1t:shove|earned_A": 0.14546223958333318,
+    "1t:shove|farm_A": 0.053448350694444334,
+    "1t:shove|unc_A": -0.06679470486111112,
+    "1t:shove|unc_away_A": -0.003146701388888887,
+    "1t:shove|bounty_A": 0.05381944444444444,
+    "1t:shove|plate_A": 0.03819444444444444,
+    "1t:shove|earned_B": 0.07062717013888874,
+    "1t:shove|bounty_B": 0.046875,
+    "1t:shove|deaths_A": 0.0234375,
+    "1t:shove|deaths_B": 0.02690972222222222,
+    "1t:shove|away_A": 4.625929269271485e-18,
+    "1t:shove|away_B": 0.16319444444444445,
+    "1t:shove|d_total_A": -0.0008729852107659508,
+    "1t:shove|xp_A": 0.4192708333333333,
+    "1t:shove|trade_conn_A": -0.15104166666666666,
+    "1t:farm|earned_A": -0.1301106770833335,
+    "1t:farm|farm_A": -0.07195095486111126,
+    "1t:farm|unc_A": 0.047970920138888866,
+    "1t:farm|unc_away_A": 0.032877604166666664,
+    "1t:farm|bounty_A": -0.02604166666666667,
+    "1t:farm|plate_A": -0.03211805555555555,
+    "1t:farm|earned_B": 0.12894965277777756,
+    "1t:farm|bounty_B": 0.06944444444444443,
+    "1t:farm|deaths_A": 0.03472222222222222,
+    "1t:farm|deaths_B": -0.013020833333333336,
+    "1t:farm|away_A": 0.08072916666666666,
+    "1t:farm|away_B": -0.04340277777777778,
+    "1t:farm|d_total_A": 0.01662343270903086,
+    "1t:farm|xp_A": -0.2960069444444444,
+    "1t:farm|trade_conn_A": -0.28559027777777773,
+    "1t:step_back|earned_A": -0.3508940972222221,
+    "1t:step_back|farm_A": -0.21894965277777786,
+    "1t:step_back|unc_A": 0.20516927083333333,
+    "1t:step_back|unc_away_A": -0.014214409722222222,
+    "1t:step_back|bounty_A": -0.0798611111111111,
+    "1t:step_back|plate_A": -0.052083333333333336,
+    "1t:step_back|earned_B": 0.13012152777777758,
+    "1t:step_back|bounty_B": 0.0017361111111111108,
+    "1t:step_back|deaths_A": 0.0008680555555555554,
+    "1t:step_back|deaths_B": -0.03993055555555555,
+    "1t:step_back|away_A": -0.08854166666666667,
+    "1t:step_back|away_B": -0.10677083333333333,
+    "1t:step_back|d_total_A": -0.041460831281472266,
+    "1t:step_back|xp_A": -0.545138888888889,
+    "1t:step_back|trade_conn_A": -0.1345486111111111,
+    "1t:recall|earned_A": -0.016315104166666625,
+    "1t:recall|farm_A": -0.004162326388888916,
+    "1t:recall|unc_A": 0.011323784722222183,
+    "1t:recall|unc_away_A": 0.04242621527777778,
+    "1t:recall|bounty_A": -0.01388888888888889,
+    "1t:recall|plate_A": 0.0017361111111111095,
+    "1t:recall|earned_B": -0.06091579861111113,
+    "1t:recall|bounty_B": -0.006944444444444444,
+    "1t:recall|deaths_A": -0.003472222222222222,
+    "1t:recall|deaths_B": -0.006944444444444445,
+    "1t:recall|away_A": 0.1675347222222222,
+    "1t:recall|away_B": -0.006944444444444438,
+    "1t:recall|d_total_A": -0.005670633041526168,
+    "1t:recall|xp_A": 0.19791666666666666,
+    "1t:recall|trade_conn_A": 0.056423611111111126,
+    "plan:shovex3|earned_A": -0.10215060763888906,
+    "plan:shovex3|farm_A": -0.0422547743055558,
+    "plan:shovex3|unc_A": 0.04127821180555544,
+    "plan:shovex3|unc_away_A": 0.03624131944444444,
+    "plan:shovex3|bounty_A": -0.01736111111111111,
+    "plan:shovex3|plate_A": -0.04253472222222222,
+    "plan:shovex3|earned_B": 0.16247829861111096,
+    "plan:shovex3|bounty_B": 0.1527777777777778,
+    "plan:shovex3|deaths_A": 0.0763888888888889,
+    "plan:shovex3|deaths_B": -0.008680555555555554,
+    "plan:shovex3|away_A": 0.22135416666666666,
+    "plan:shovex3|away_B": 0.04079861111111111,
+    "plan:shovex3|d_total_A": 0.06370801173169545,
+    "plan:shovex3|xp_A": 0.390625,
+    "plan:shovex3|trade_conn_A": -0.22569444444444442,
+    "1t:walk_up_beh|earned_A": 0.04823133680555555,
+    "1t:walk_up_beh|farm_A": 0.0030924479166666344,
+    "1t:walk_up_beh|unc_A": -0.01774088541666668,
+    "1t:walk_up_beh|unc_away_A": 0.014431423611111112,
+    "1t:walk_up_beh|bounty_A": 0.02777777777777778,
+    "1t:walk_up_beh|plate_A": 0.01736111111111111,
+    "1t:walk_up_beh|earned_B": 0.06928168402777755,
+    "1t:walk_up_beh|bounty_B": 0.0642361111111111,
+    "1t:walk_up_beh|deaths_A": 0.03211805555555555,
+    "1t:walk_up_beh|deaths_B": 0.01388888888888889,
+    "1t:walk_up_beh|away_A": 0.07118055555555557,
+    "1t:walk_up_beh|away_B": 0.09548611111111112,
+    "1t:walk_up_beh|d_total_A": 0.012949485594316572,
+    "1t:walk_up_beh|xp_A": 0.3038194444444445,
+    "1t:walk_up_beh|trade_conn_A": -0.13715277777777776,
+    "1t:step_back_beh|earned_A": -0.35902777777777767,
+    "1t:step_back_beh|farm_A": -0.21753472222222228,
+    "1t:step_back_beh|unc_A": 0.2065755208333333,
+    "1t:step_back_beh|unc_away_A": -0.012152777777777781,
+    "1t:step_back_beh|bounty_A": -0.0798611111111111,
+    "1t:step_back_beh|plate_A": -0.06163194444444444,
+    "1t:step_back_beh|earned_B": 0.12100694444444422,
+    "1t:step_back_beh|bounty_B": 0.0034722222222222225,
+    "1t:step_back_beh|deaths_A": 0.0017361111111111112,
+    "1t:step_back_beh|deaths_B": -0.03993055555555555,
+    "1t:step_back_beh|away_A": -0.09548611111111112,
+    "1t:step_back_beh|away_B": -0.11371527777777779,
+    "1t:step_back_beh|d_total_A": -0.040864734114346164,
+    "1t:step_back_beh|xp_A": -0.5486111111111112,
+    "1t:step_back_beh|trade_conn_A": -0.14322916666666669
+   },
+   "states": 96
+  },
+  "B_frozen|modal": {
+   "1t:shove-policy": {
+    "per_final": [
+     -0.026132911804518794,
+     0.12455094570462806
+    ],
+    "mean": 0.04920901695005463
+   },
+   "1t:farm-policy": {
+    "per_final": [
+     -0.16959842048674778,
+     -0.1718064402269001
+    ],
+    "mean": -0.17070243035682392
+   },
+   "1t:step_back-policy": {
+    "per_final": [
+     -0.24808512988453169,
+     -0.05173446301258396
+    ],
+    "mean": -0.1499097964485578
+   },
+   "1t:recall-policy": {
+    "per_final": [
+     0.03615404899219506,
+     -0.018083295422308465
+    ],
+    "mean": 0.009035376784943299
+   },
+   "plan:shovex3-policy": {
+    "per_final": [
+     -0.20615823798892682,
+     -0.18954349051277433
+    ],
+    "mean": -0.19785086425085058
+   },
+   "1t:walk_up_beh-policy": {
+    "per_final": [
+     -0.07607659280182777,
+     0.030778019057883545
+    ],
+    "mean": -0.02264928687197211
+   },
+   "1t:step_back_beh-policy": {
+    "per_final": [
+     -0.19820505881022554,
+     -0.04897061677302883
+    ],
+    "mean": -0.12358783779162719
+   },
+   "1t:walk_up_beh-1t:farm": {
+    "per_final": [
+     0.09352182768492007,
+     0.20258445928478366
+    ],
+    "mean": 0.14805314348485188
+   },
+   "1t:step_back_beh-1t:step_back": {
+    "per_final": [
+     0.04988007107430608,
+     0.002763846239555145
+    ],
+    "mean": 0.026321958656930614
+   },
+   "channels": {
+    "1t:shove|earned_A": 0.21429253472222212,
+    "1t:shove|farm_A": 0.23252170138888872,
+    "1t:shove|unc_A": -0.2103862847222222,
+    "1t:shove|unc_away_A": -0.04242621527777777,
+    "1t:shove|bounty_A": -0.032986111111111105,
+    "1t:shove|plate_A": 0.014756944444444448,
+    "1t:shove|earned_B": 0.13445529513888899,
+    "1t:shove|bounty_B": 0.02951388888888889,
+    "1t:shove|deaths_A": 0.014756944444444446,
+    "1t:shove|deaths_B": -0.016493055555555552,
+    "1t:shove|away_A": -0.09288194444444443,
+    "1t:shove|away_B": -0.11197916666666667,
+    "1t:shove|d_total_A": -0.0262505522420505,
+    "1t:shove|xp_A": 0.638888888888889,
+    "1t:shove|trade_conn_A": -0.2595486111111111,
+    "1t:farm|earned_A": -0.0024782986111111425,
+    "1t:farm|farm_A": 0.0009939236111110767,
+    "1t:farm|unc_A": -0.014014756944444554,
+    "1t:farm|unc_away_A": 0.05067274305555555,
+    "1t:farm|bounty_A": 0.022569444444444448,
+    "1t:farm|plate_A": -0.02604166666666666,
+    "1t:farm|earned_B": 0.1762803819444445,
+    "1t:farm|bounty_B": 0.05902777777777778,
+    "1t:farm|deaths_A": 0.02951388888888889,
+    "1t:farm|deaths_B": 0.011284722222222224,
+    "1t:farm|away_A": 0.02690972222222221,
+    "1t:farm|away_B": -0.09635416666666667,
+    "1t:farm|d_total_A": 0.029931203025109956,
+    "1t:farm|xp_A": 0.24826388888888887,
+    "1t:farm|trade_conn_A": -0.11111111111111112,
+    "1t:step_back|earned_A": -0.11042534722222232,
+    "1t:step_back|farm_A": -0.06702256944444462,
+    "1t:step_back|unc_A": 0.05584635416666664,
+    "1t:step_back|unc_away_A": -0.08561197916666667,
+    "1t:step_back|bounty_A": -0.022569444444444444,
+    "1t:step_back|plate_A": -0.020833333333333332,
+    "1t:step_back|earned_B": 0.03541232638888898,
+    "1t:step_back|bounty_B": -0.08333333333333333,
+    "1t:step_back|deaths_A": -0.041666666666666664,
+    "1t:step_back|deaths_B": -0.011284722222222222,
+    "1t:step_back|away_A": -0.18229166666666666,
+    "1t:step_back|away_B": -0.2144097222222222,
+    "1t:step_back|d_total_A": -0.044157995996887404,
+    "1t:step_back|xp_A": -0.2769097222222222,
+    "1t:step_back|trade_conn_A": -0.07638888888888888,
+    "1t:recall|earned_A": -0.0021592881944445647,
+    "1t:recall|farm_A": 0.028222656249999905,
+    "1t:recall|unc_A": -0.024533420138888914,
+    "1t:recall|unc_away_A": -0.013671875,
+    "1t:recall|bounty_A": -0.027777777777777776,
+    "1t:recall|plate_A": -0.0026041666666666665,
+    "1t:recall|earned_B": -0.006167534722222132,
+    "1t:recall|bounty_B": -0.04340277777777777,
+    "1t:recall|deaths_A": -0.021701388888888885,
+    "1t:recall|deaths_B": -0.013888888888888888,
+    "1t:recall|away_A": 0.11631944444444446,
+    "1t:recall|away_B": -0.03385416666666666,
+    "1t:recall|d_total_A": -0.01258625888925835,
+    "1t:recall|xp_A": -0.09288194444444443,
+    "1t:recall|trade_conn_A": 0.030381944444444448,
+    "plan:shovex3|earned_A": 0.01670355902777774,
+    "plan:shovex3|farm_A": 0.06878689236111099,
+    "plan:shovex3|unc_A": -0.06976345486111112,
+    "plan:shovex3|unc_away_A": 0.04047309027777778,
+    "plan:shovex3|bounty_A": -0.03993055555555556,
+    "plan:shovex3|plate_A": -0.012152777777777783,
+    "plan:shovex3|earned_B": 0.27937282986111106,
+    "plan:shovex3|bounty_B": 0.15798611111111113,
+    "plan:shovex3|deaths_A": 0.07899305555555557,
+    "plan:shovex3|deaths_B": -0.01996527777777778,
+    "plan:shovex3|away_A": 0.09895833333333336,
+    "plan:shovex3|away_B": -0.22569444444444442,
+    "plan:shovex3|d_total_A": 0.049010304075929635,
+    "plan:shovex3|xp_A": 0.8411458333333334,
+    "plan:shovex3|trade_conn_A": -0.640625,
+    "1t:walk_up_beh|earned_A": 0.16521267361111108,
+    "1t:walk_up_beh|farm_A": 0.14351128472222216,
+    "1t:walk_up_beh|unc_A": -0.11790364583333335,
+    "1t:walk_up_beh|unc_away_A": 0.01898871527777778,
+    "1t:walk_up_beh|bounty_A": -0.005208333333333329,
+    "1t:walk_up_beh|plate_A": 0.026909722222222224,
+    "1t:walk_up_beh|earned_B": 0.15744140625,
+    "1t:walk_up_beh|bounty_B": 0.08333333333333333,
+    "1t:walk_up_beh|deaths_A": 0.041666666666666664,
+    "1t:walk_up_beh|deaths_B": -0.0026041666666666644,
+    "1t:walk_up_beh|away_A": -0.008680555555555552,
+    "1t:walk_up_beh|away_B": -0.025173611111111115,
+    "1t:walk_up_beh|d_total_A": 0.005495115943916616,
+    "1t:walk_up_beh|xp_A": 0.7170138888888888,
+    "1t:walk_up_beh|trade_conn_A": -0.20399305555555558,
+    "1t:step_back_beh|earned_A": -0.10814887152777782,
+    "1t:step_back_beh|farm_A": -0.08123914930555569,
+    "1t:step_back_beh|unc_A": 0.07071397569444442,
+    "1t:step_back_beh|unc_away_A": -0.07508680555555555,
+    "1t:step_back_beh|bounty_A": -0.01041666666666667,
+    "1t:step_back_beh|plate_A": -0.016493055555555556,
+    "1t:step_back_beh|earned_B": 0.012122395833333419,
+    "1t:step_back_beh|bounty_B": -0.08680555555555557,
+    "1t:step_back_beh|deaths_A": -0.04340277777777778,
+    "1t:step_back_beh|deaths_B": -0.005208333333333335,
+    "1t:step_back_beh|away_A": -0.1640625,
+    "1t:step_back_beh|away_B": -0.21180555555555555,
+    "1t:step_back_beh|d_total_A": -0.04178486461775663,
+    "1t:step_back_beh|xp_A": -0.3055555555555555,
+    "1t:step_back_beh|trade_conn_A": -0.0998263888888889
+   },
+   "states": 96
+  },
+  "B_frozen|policy": {
+   "1t:shove-policy": {
+    "per_final": [
+     0.08733966975129892,
+     -0.15880134793041448
+    ],
+    "mean": -0.03573083908955778
+   },
+   "1t:farm-policy": {
+    "per_final": [
+     -0.2966037044740231,
+     -0.20685416755771
+    ],
+    "mean": -0.25172893601586654
+   },
+   "1t:step_back-policy": {
+    "per_final": [
+     -0.16734213779101403,
+     -0.22157714114289218
+    ],
+    "mean": -0.1944596394669531
+   },
+   "1t:recall-policy": {
+    "per_final": [
+     -0.0707923346654365,
+     0.11270157604636277
+    ],
+    "mean": 0.020954620690463138
+   },
+   "plan:shovex3-policy": {
+    "per_final": [
+     -0.3737788379990164,
+     -0.30269360596761036
+    ],
+    "mean": -0.3382362219833134
+   },
+   "1t:walk_up_beh-policy": {
+    "per_final": [
+     -0.028785761731307147,
+     -0.176173765669432
+    ],
+    "mean": -0.10247976370036957
+   },
+   "1t:step_back_beh-policy": {
+    "per_final": [
+     -0.17964281322483386,
+     -0.18420175661653837
+    ],
+    "mean": -0.18192228492068613
+   },
+   "1t:walk_up_beh-1t:farm": {
+    "per_final": [
+     0.26781794274271603,
+     0.030680401888277975
+    ],
+    "mean": 0.149249172315497
+   },
+   "1t:step_back_beh-1t:step_back": {
+    "per_final": [
+     -0.012300675433819852,
+     0.03737538452635382
+    ],
+    "mean": 0.012537354546266984
+   },
+   "channels": {
+    "1t:shove|earned_A": 0.09109809027777767,
+    "1t:shove|farm_A": 0.150993923611111,
+    "1t:shove|unc_A": -0.13428385416666666,
+    "1t:shove|unc_away_A": -0.036458333333333336,
+    "1t:shove|bounty_A": -0.07465277777777778,
+    "1t:shove|plate_A": 0.014756944444444442,
+    "1t:shove|earned_B": 0.16239149305555553,
+    "1t:shove|bounty_B": 0.034722222222222224,
+    "1t:shove|deaths_A": 0.017361111111111112,
+    "1t:shove|deaths_B": -0.03732638888888889,
+    "1t:shove|away_A": 0.02170138888888889,
+    "1t:shove|away_B": -0.09375,
+    "1t:shove|d_total_A": -0.020348162937411433,
+    "1t:shove|xp_A": 0.3272569444444445,
+    "1t:shove|trade_conn_A": -0.18229166666666666,
+    "1t:farm|earned_A": -0.13918836805555548,
+    "1t:farm|farm_A": -0.06887586805555544,
+    "1t:farm|unc_A": 0.06952690972222221,
+    "1t:farm|unc_away_A": 0.05414496527777778,
+    "1t:farm|bounty_A": -0.05555555555555555,
+    "1t:farm|plate_A": -0.014756944444444439,
+    "1t:farm|earned_B": 0.1356510416666666,
+    "1t:farm|bounty_B": 0.041666666666666664,
+    "1t:farm|deaths_A": 0.020833333333333332,
+    "1t:farm|deaths_B": -0.027777777777777776,
+    "1t:farm|away_A": -0.013020833333333315,
+    "1t:farm|away_B": -0.1310763888888889,
+    "1t:farm|d_total_A": 0.03392847288568171,
+    "1t:farm|xp_A": 0.1015625,
+    "1t:farm|trade_conn_A": -0.3975694444444445,
+    "1t:step_back|earned_A": -0.26028428819444444,
+    "1t:step_back|farm_A": -0.16393012152777775,
+    "1t:step_back|unc_A": 0.13539279513888894,
+    "1t:step_back|unc_away_A": -0.041666666666666664,
+    "1t:step_back|bounty_A": -0.05555555555555555,
+    "1t:step_back|plate_A": -0.04079861111111111,
+    "1t:step_back|earned_B": -0.010210503472222255,
+    "1t:step_back|bounty_B": -0.04340277777777777,
+    "1t:step_back|deaths_A": -0.021701388888888885,
+    "1t:step_back|deaths_B": -0.027777777777777776,
+    "1t:step_back|away_A": -0.125,
+    "1t:step_back|away_B": -0.04774305555555556,
+    "1t:step_back|d_total_A": -0.03745397047593544,
+    "1t:step_back|xp_A": -0.8038194444444445,
+    "1t:step_back|trade_conn_A": -0.10503472222222221,
+    "1t:recall|earned_A": 0.003300781250000028,
+    "1t:recall|farm_A": 0.011113281250000037,
+    "1t:recall|unc_A": -0.012740885416666665,
+    "1t:recall|unc_away_A": 0.022677951388888885,
+    "1t:recall|bounty_A": -0.006944444444444445,
+    "1t:recall|plate_A": -0.0008680555555555547,
+    "1t:recall|earned_B": -0.008550347222222183,
+    "1t:recall|bounty_B": -0.015625,
+    "1t:recall|deaths_A": -0.0078125,
+    "1t:recall|deaths_B": -0.0034722222222222225,
+    "1t:recall|away_A": 0.21701388888888892,
+    "1t:recall|away_B": -0.034722222222222224,
+    "1t:recall|d_total_A": -0.002436502503904534,
+    "1t:recall|xp_A": -0.022569444444444448,
+    "1t:recall|trade_conn_A": 0.013888888888888886,
+    "plan:shovex3|earned_A": -0.04011067708333338,
+    "plan:shovex3|farm_A": 0.1031184895833334,
+    "plan:shovex3|unc_A": -0.12319227430555553,
+    "plan:shovex3|unc_away_A": -0.00021701388888888581,
+    "plan:shovex3|bounty_A": -0.13194444444444445,
+    "plan:shovex3|plate_A": -0.011284722222222224,
+    "plan:shovex3|earned_B": 0.3971723090277776,
+    "plan:shovex3|bounty_B": 0.11631944444444446,
+    "plan:shovex3|deaths_A": 0.05815972222222223,
+    "plan:shovex3|deaths_B": -0.06597222222222222,
+    "plan:shovex3|away_A": 0.09201388888888888,
+    "plan:shovex3|away_B": -0.16753472222222224,
+    "plan:shovex3|d_total_A": -0.005960622670525187,
+    "plan:shovex3|xp_A": -0.015625,
+    "plan:shovex3|trade_conn_A": -0.6597222222222222,
+    "1t:walk_up_beh|earned_A": 0.027358940972222228,
+    "1t:walk_up_beh|farm_A": 0.06208116319444449,
+    "1t:walk_up_beh|unc_A": -0.059476996527777735,
+    "1t:walk_up_beh|unc_away_A": 0.003472222222222225,
+    "1t:walk_up_beh|bounty_A": -0.05902777777777778,
+    "1t:walk_up_beh|plate_A": 0.024305555555555556,
+    "1t:walk_up_beh|earned_B": 0.16542317708333334,
+    "1t:walk_up_beh|bounty_B": 0.0642361111111111,
+    "1t:walk_up_beh|deaths_A": 0.03211805555555555,
+    "1t:walk_up_beh|deaths_B": -0.02951388888888889,
+    "1t:walk_up_beh|away_A": 0.0069444444444444475,
+    "1t:walk_up_beh|away_B": -0.10069444444444446,
+    "1t:walk_up_beh|d_total_A": -0.006641448800188806,
+    "1t:walk_up_beh|xp_A": 0.3255208333333333,
+    "1t:walk_up_beh|trade_conn_A": -0.2421875,
+    "1t:step_back_beh|earned_A": -0.25541449652777776,
+    "1t:step_back_beh|farm_A": -0.15298394097222218,
+    "1t:step_back_beh|unc_A": 0.13388671875000005,
+    "1t:step_back_beh|unc_away_A": -0.039930555555555566,
+    "1t:step_back_beh|bounty_A": -0.05902777777777777,
+    "1t:step_back_beh|plate_A": -0.04340277777777779,
+    "1t:step_back_beh|earned_B": -0.03220703125000006,
+    "1t:step_back_beh|bounty_B": -0.05381944444444444,
+    "1t:step_back_beh|deaths_A": -0.02690972222222222,
+    "1t:step_back_beh|deaths_B": -0.029513888888888885,
+    "1t:step_back_beh|away_A": -0.11197916666666667,
+    "1t:step_back_beh|away_B": -0.021701388888888895,
+    "1t:step_back_beh|d_total_A": -0.0286590032584418,
+    "1t:step_back_beh|xp_A": -0.7734375,
+    "1t:step_back_beh|trade_conn_A": -0.11371527777777779
+   },
+   "states": 96
+  },
+  "C_trade|g_wary": {
+   "1t:trade-policy": {
+    "per_final": [
+     -0.1894492154375301,
+     -0.17551312001946254
+    ],
+    "mean": -0.18248116772849632
+   },
+   "1t:hold-policy": {
+    "per_final": [
+     -0.021828569982515242,
+     -0.14414022398607423
+    ],
+    "mean": -0.08298439698429474
+   },
+   "1t:safe-policy": {
+    "per_final": [
+     0.0246889506171632,
+     -0.10481906802710493
+    ],
+    "mean": -0.04006505870497087
+   },
+   "1t:trade_beh-policy": {
+    "per_final": [
+     -0.2269512622237515,
+     -0.22615411963523813
+    ],
+    "mean": -0.22655269092949482
+   },
+   "1t:hold_beh-policy": {
+    "per_final": [
+     -0.09859234427720853,
+     -0.15474512996500517
+    ],
+    "mean": -0.12666873712110685
+   },
+   "1t:safe_beh-policy": {
+    "per_final": [
+     -0.018020990862297002,
+     -0.1432699532941791
+    ],
+    "mean": -0.08064547207823805
+   },
+   "1t:trade_beh-1t:hold_beh": {
+    "per_final": [
+     -0.12835891794654294,
+     -0.07140898967023296
+    ],
+    "mean": -0.09988395380838795
+   },
+   "1t:trade-1t:hold": {
+    "per_final": [
+     -0.16762064545501484,
+     -0.0313728960333883
+    ],
+    "mean": -0.09949677074420157
+   },
+   "1t:trade_beh-1t:trade": {
+    "per_final": [
+     -0.037502046786221405,
+     -0.05064099961577558
+    ],
+    "mean": -0.0440715232009985
+   },
+   "1t:hold_beh-1t:hold": {
+    "per_final": [
+     -0.07676377429469333,
+     -0.010604905978930955
+    ],
+    "mean": -0.04368434013681215
+   },
+   "1t:safe_beh-1t:safe": {
+    "per_final": [
+     -0.0427099414794602,
+     -0.038450885267074165
+    ],
+    "mean": -0.040580413373267184
+   },
+   "channels": {
+    "1t:trade|earned_A": -0.14215711805555534,
+    "1t:trade|farm_A": -0.15083767361111097,
+    "1t:trade|unc_A": 0.16765624999999995,
+    "1t:trade|unc_away_A": 0.08875868055555557,
+    "1t:trade|bounty_A": 0.008680555555555558,
+    "1t:trade|plate_A": 1.4456028966473392e-19,
+    "1t:trade|earned_B": 0.01335720486111116,
+    "1t:trade|bounty_B": 0.10937499999999999,
+    "1t:trade|deaths_A": 0.05468749999999999,
+    "1t:trade|deaths_B": 0.004340277777777779,
+    "1t:trade|away_A": 0.1597222222222222,
+    "1t:trade|away_B": 0.19357638888888892,
+    "1t:trade|d_total_A": 0.03193351859987297,
+    "1t:trade|xp_A": -0.09809027777777779,
+    "1t:trade|trade_conn_A": 0.685763888888889,
+    "1t:hold|earned_A": -0.009631076388888798,
+    "1t:hold|farm_A": 0.01641059027777783,
+    "1t:hold|unc_A": 0.014079861111111105,
+    "1t:hold|unc_away_A": -0.00249565972222222,
+    "1t:hold|bounty_A": -0.027777777777777776,
+    "1t:hold|plate_A": 0.001736111111111111,
+    "1t:hold|earned_B": 0.030002170138888774,
+    "1t:hold|bounty_B": 0.022569444444444448,
+    "1t:hold|deaths_A": 0.011284722222222224,
+    "1t:hold|deaths_B": -0.013888888888888888,
+    "1t:hold|away_A": -0.056423611111111105,
+    "1t:hold|away_B": 4.625929269271485e-18,
+    "1t:hold|d_total_A": -0.012107303217572434,
+    "1t:hold|xp_A": 0.3923611111111111,
+    "1t:hold|trade_conn_A": -0.3211805555555555,
+    "1t:safe|earned_A": -0.03138020833333335,
+    "1t:safe|farm_A": -0.0044704861111111716,
+    "1t:safe|unc_A": 0.036697048611111095,
+    "1t:safe|unc_away_A": -0.026258680555555556,
+    "1t:safe|bounty_A": -0.029513888888888885,
+    "1t:safe|plate_A": 0.0026041666666666665,
+    "1t:safe|earned_B": -0.050032552083333265,
+    "1t:safe|bounty_B": -0.0017361111111111164,
+    "1t:safe|deaths_A": -0.0008680555555555582,
+    "1t:safe|deaths_B": -0.014756944444444442,
+    "1t:safe|away_A": -0.14236111111111113,
+    "1t:safe|away_B": 0.008680555555555558,
+    "1t:safe|d_total_A": -0.03269476508147312,
+    "1t:safe|xp_A": 0.38628472222222227,
+    "1t:safe|trade_conn_A": -0.23090277777777776,
+    "1t:trade_beh|earned_A": -0.17489366319444422,
+    "1t:trade_beh|farm_A": -0.2070117187499998,
+    "1t:trade_beh|unc_A": 0.2147157118055555,
+    "1t:trade_beh|unc_away_A": 0.05685763888888889,
+    "1t:trade_beh|bounty_A": 0.027777777777777776,
+    "1t:trade_beh|plate_A": 0.004340277777777777,
+    "1t:trade_beh|earned_B": 0.05960286458333334,
+    "1t:trade_beh|bounty_B": 0.09548611111111112,
+    "1t:trade_beh|deaths_A": 0.04774305555555556,
+    "1t:trade_beh|deaths_B": 0.013888888888888888,
+    "1t:trade_beh|away_A": 0.1449652777777778,
+    "1t:trade_beh|away_B": 0.2300347222222222,
+    "1t:trade_beh|d_total_A": 0.020659063788710744,
+    "1t:trade_beh|xp_A": -0.18489583333333334,
+    "1t:trade_beh|trade_conn_A": 0.8159722222222222,
+    "1t:hold_beh|earned_A": -0.0149869791666666,
+    "1t:hold_beh|farm_A": 0.024075520833333402,
+    "1t:hold_beh|unc_A": -0.012139756944444474,
+    "1t:hold_beh|unc_away_A": -0.01052517361111111,
+    "1t:hold_beh|bounty_A": -0.026041666666666668,
+    "1t:hold_beh|plate_A": -0.013020833333333334,
+    "1t:hold_beh|earned_B": 0.12097439236111106,
+    "1t:hold_beh|bounty_B": 0.03472222222222222,
+    "1t:hold_beh|deaths_A": 0.01736111111111111,
+    "1t:hold_beh|deaths_B": -0.013020833333333334,
+    "1t:hold_beh|away_A": 0.025173611111111115,
+    "1t:hold_beh|away_B": -0.015624999999999998,
+    "1t:hold_beh|d_total_A": -0.012301960620484486,
+    "1t:hold_beh|xp_A": 0.24131944444444442,
+    "1t:hold_beh|trade_conn_A": -0.2899305555555556,
+    "1t:safe_beh|earned_A": -0.04432942708333332,
+    "1t:safe_beh|farm_A": -0.027836371527777782,
+    "1t:safe_beh|unc_A": 0.0648372395833333,
+    "1t:safe_beh|unc_away_A": -0.01030815972222222,
+    "1t:safe_beh|bounty_A": -0.017361111111111112,
+    "1t:safe_beh|plate_A": 0.0008680555555555556,
+    "1t:safe_beh|earned_B": -0.01486545138888877,
+    "1t:safe_beh|bounty_B": -0.005208333333333336,
+    "1t:safe_beh|deaths_A": -0.002604166666666668,
+    "1t:safe_beh|deaths_B": -0.008680555555555556,
+    "1t:safe_beh|away_A": -0.07291666666666667,
+    "1t:safe_beh|away_B": 0.004340277777777776,
+    "1t:safe_beh|d_total_A": -0.01839789755274711,
+    "1t:safe_beh|xp_A": 0.3923611111111111,
+    "1t:safe_beh|trade_conn_A": -0.2144097222222222
+   },
+   "states": 96
+  },
+  "C_trade|modal": {
+   "1t:trade-policy": {
+    "per_final": [
+     -0.5240962881961831,
+     -0.22070484828860362
+    ],
+    "mean": -0.37240056824239337
+   },
+   "1t:hold-policy": {
+    "per_final": [
+     -0.6209343657851126,
+     -0.3072948454391639
+    ],
+    "mean": -0.46411460561213824
+   },
+   "1t:safe-policy": {
+    "per_final": [
+     0.0038827110288454834,
+     -0.09837618002733034
+    ],
+    "mean": -0.04724673449924243
+   },
+   "1t:trade_beh-policy": {
+    "per_final": [
+     -0.43892456371447536,
+     -0.3586013005475061
+    ],
+    "mean": -0.39876293213099073
+   },
+   "1t:hold_beh-policy": {
+    "per_final": [
+     -0.32812335232087425,
+     -0.05509483435668067
+    ],
+    "mean": -0.19160909333877746
+   },
+   "1t:safe_beh-policy": {
+    "per_final": [
+     0.05257680608196461,
+     -0.09103126695374007
+    ],
+    "mean": -0.01922723043588773
+   },
+   "1t:trade_beh-1t:hold_beh": {
+    "per_final": [
+     -0.11080121139360118,
+     -0.30350646619082533
+    ],
+    "mean": -0.20715383879221325
+   },
+   "1t:trade-1t:hold": {
+    "per_final": [
+     0.09683807758892941,
+     0.08658999715056025
+    ],
+    "mean": 0.09171403736974483
+   },
+   "1t:trade_beh-1t:trade": {
+    "per_final": [
+     0.08517172448170773,
+     -0.13789645225890243
+    ],
+    "mean": -0.026362363888597348
+   },
+   "1t:hold_beh-1t:hold": {
+    "per_final": [
+     0.2928110134642383,
+     0.2522000110824832
+    ],
+    "mean": 0.27250551227336073
+   },
+   "1t:safe_beh-1t:safe": {
+    "per_final": [
+     0.04869409505311912,
+     0.007344913073590272
+    ],
+    "mean": 0.028019504063354697
+   },
+   "channels": {
+    "1t:trade|earned_A": -0.30620659722222193,
+    "1t:trade|farm_A": -0.2897135416666663,
+    "1t:trade|unc_A": 0.2918836805555555,
+    "1t:trade|unc_away_A": 0.2731119791666667,
+    "1t:trade|bounty_A": -2.3129646346357427e-18,
+    "1t:trade|plate_A": -0.016493055555555563,
+    "1t:trade|earned_B": 0.08082465277777759,
+    "1t:trade|bounty_B": 0.12673611111111108,
+    "1t:trade|deaths_A": 0.06336805555555554,
+    "1t:trade|deaths_B": -1.1564823173178713e-18,
+    "1t:trade|away_A": 0.26128472222222227,
+    "1t:trade|away_B": 0.13715277777777776,
+    "1t:trade|d_total_A": 0.029309356810453508,
+    "1t:trade|xp_A": -0.6944444444444443,
+    "1t:trade|trade_conn_A": 0.8923611111111112,
+    "1t:hold|earned_A": -0.22173828124999964,
+    "1t:hold|farm_A": -0.1340646701388886,
+    "1t:hold|unc_A": 0.1393815104166666,
+    "1t:hold|unc_away_A": 0.19835069444444445,
+    "1t:hold|bounty_A": -0.0798611111111111,
+    "1t:hold|plate_A": -0.007812499999999999,
+    "1t:hold|earned_B": 0.2337174479166663,
+    "1t:hold|bounty_B": 0.10590277777777779,
+    "1t:hold|deaths_A": 0.052951388888888895,
+    "1t:hold|deaths_B": -0.03993055555555555,
+    "1t:hold|away_A": 0.18576388888888892,
+    "1t:hold|away_B": -0.19618055555555558,
+    "1t:hold|d_total_A": 0.007212767926725262,
+    "1t:hold|xp_A": -0.37847222222222215,
+    "1t:hold|trade_conn_A": -0.23090277777777776,
+    "1t:safe|earned_A": -0.008880208333333264,
+    "1t:safe|farm_A": 0.031050347222222333,
+    "1t:safe|unc_A": -0.0144487847222222,
+    "1t:safe|unc_away_A": -0.04969618055555556,
+    "1t:safe|bounty_A": -0.03819444444444445,
+    "1t:safe|plate_A": -0.0017361111111111119,
+    "1t:safe|earned_B": 0.03466145833333311,
+    "1t:safe|bounty_B": -0.05555555555555555,
+    "1t:safe|deaths_A": -0.027777777777777776,
+    "1t:safe|deaths_B": -0.019097222222222224,
+    "1t:safe|away_A": -0.0920138888888889,
+    "1t:safe|away_B": -0.14756944444444445,
+    "1t:safe|d_total_A": -0.03396404882259955,
+    "1t:safe|xp_A": 0.34722222222222227,
+    "1t:safe|trade_conn_A": -0.15104166666666666,
+    "1t:trade_beh|earned_A": -0.3256944444444443,
+    "1t:trade_beh|farm_A": -0.34045138888888865,
+    "1t:trade_beh|unc_A": 0.33980034722222224,
+    "1t:trade_beh|unc_away_A": 0.287109375,
+    "1t:trade_beh|bounty_A": 0.05034722222222223,
+    "1t:trade_beh|plate_A": -0.03559027777777778,
+    "1t:trade_beh|earned_B": 0.11387152777777759,
+    "1t:trade_beh|bounty_B": 0.22743055555555555,
+    "1t:trade_beh|deaths_A": 0.11371527777777778,
+    "1t:trade_beh|deaths_B": 0.025173611111111115,
+    "1t:trade_beh|away_A": 0.4157986111111111,
+    "1t:trade_beh|away_B": 0.25,
+    "1t:trade_beh|d_total_A": 0.0786188852145613,
+    "1t:trade_beh|xp_A": -0.8116319444444443,
+    "1t:trade_beh|trade_conn_A": 0.8637152777777777,
+    "1t:hold_beh|earned_A": -0.05800347222222201,
+    "1t:hold_beh|farm_A": -0.03977430555555526,
+    "1t:hold_beh|unc_A": 0.057460937499999955,
+    "1t:hold_beh|unc_away_A": 0.15147569444444445,
+    "1t:hold_beh|bounty_A": -0.024305555555555556,
+    "1t:hold_beh|plate_A": 0.006076388888888884,
+    "1t:hold_beh|earned_B": 0.14025607638888876,
+    "1t:hold_beh|bounty_B": 0.15798611111111113,
+    "1t:hold_beh|deaths_A": 0.07899305555555557,
+    "1t:hold_beh|deaths_B": -0.012152777777777778,
+    "1t:hold_beh|away_A": 0.2664930555555556,
+    "1t:hold_beh|away_B": -0.06336805555555557,
+    "1t:hold_beh|d_total_A": 0.01746539044346643,
+    "1t:hold_beh|xp_A": -0.21961805555555555,
+    "1t:hold_beh|trade_conn_A": -0.15972222222222224,
+    "1t:safe_beh|earned_A": -0.010644531249999976,
+    "1t:safe_beh|farm_A": 0.015397135416666728,
+    "1t:safe_beh|unc_A": -0.0068250868055555235,
+    "1t:safe_beh|unc_away_A": -0.039713541666666664,
+    "1t:safe_beh|bounty_A": -0.019097222222222224,
+    "1t:safe_beh|plate_A": -0.0069444444444444415,
+    "1t:safe_beh|earned_B": 0.011137152777777645,
+    "1t:safe_beh|bounty_B": -0.041666666666666664,
+    "1t:safe_beh|deaths_A": -0.020833333333333332,
+    "1t:safe_beh|deaths_B": -0.009548611111111112,
+    "1t:safe_beh|away_A": -0.06163194444444445,
+    "1t:safe_beh|away_B": -0.109375,
+    "1t:safe_beh|d_total_A": -0.021854030091649507,
+    "1t:safe_beh|xp_A": 0.29340277777777773,
+    "1t:safe_beh|trade_conn_A": -0.10590277777777778
+   },
+   "states": 96
+  },
+  "C_trade|policy": {
+   "1t:trade-policy": {
+    "per_final": [
+     -0.5183515793455195,
+     -0.25767911918116865
+    ],
+    "mean": -0.388015349263344
+   },
+   "1t:hold-policy": {
+    "per_final": [
+     -0.35292500295918544,
+     -0.27003055533597337
+    ],
+    "mean": -0.3114777791475794
+   },
+   "1t:safe-policy": {
+    "per_final": [
+     -0.0016460484070792796,
+     -0.17387815274690266
+    ],
+    "mean": -0.08776210057699096
+   },
+   "1t:trade_beh-policy": {
+    "per_final": [
+     -0.5332354720318367,
+     -0.1879215881039976
+    ],
+    "mean": -0.3605785300679172
+   },
+   "1t:hold_beh-policy": {
+    "per_final": [
+     -0.2990702146375647,
+     -0.2588434791553795
+    ],
+    "mean": -0.2789568468964721
+   },
+   "1t:safe_beh-policy": {
+    "per_final": [
+     -0.09728729606274472,
+     -0.1279651860322916
+    ],
+    "mean": -0.11262624104751816
+   },
+   "1t:trade_beh-1t:hold_beh": {
+    "per_final": [
+     -0.23416525739427205,
+     0.07092189105138187
+    ],
+    "mean": -0.08162168317144508
+   },
+   "1t:trade-1t:hold": {
+    "per_final": [
+     -0.16542657638633396,
+     0.01235143615480471
+    ],
+    "mean": -0.07653757011576462
+   },
+   "1t:trade_beh-1t:trade": {
+    "per_final": [
+     -0.014883892686317282,
+     0.06975753107717104
+    ],
+    "mean": 0.02743681919542688
+   },
+   "1t:hold_beh-1t:hold": {
+    "per_final": [
+     0.05385478832162072,
+     0.011187076180593829
+    ],
+    "mean": 0.032520932251107276
+   },
+   "1t:safe_beh-1t:safe": {
+    "per_final": [
+     -0.09564124765566545,
+     0.04591296671461104
+    ],
+    "mean": -0.024864140470527204
+   },
+   "channels": {
+    "1t:trade|earned_A": -0.19338758680555554,
+    "1t:trade|farm_A": -0.1968598090277778,
+    "1t:trade|unc_A": 0.2124848090277777,
+    "1t:trade|unc_away_A": 0.23242187499999997,
+    "1t:trade|bounty_A": 0.03472222222222222,
+    "1t:trade|plate_A": -0.031249999999999997,
+    "1t:trade|earned_B": 0.2135785590277777,
+    "1t:trade|bounty_B": 0.19270833333333334,
+    "1t:trade|deaths_A": 0.09635416666666667,
+    "1t:trade|deaths_B": 0.01736111111111111,
+    "1t:trade|away_A": 0.28559027777777773,
+    "1t:trade|away_B": 0.07118055555555557,
+    "1t:trade|d_total_A": 0.050564806194891086,
+    "1t:trade|xp_A": -0.6684027777777777,
+    "1t:trade|trade_conn_A": 0.759548611111111,
+    "1t:hold|earned_A": -0.0951236979166667,
+    "1t:hold|farm_A": -0.07602647569444453,
+    "1t:hold|unc_A": 0.07439887152777773,
+    "1t:hold|unc_away_A": 0.13541666666666666,
+    "1t:hold|bounty_A": -0.006944444444444443,
+    "1t:hold|plate_A": -0.012152777777777776,
+    "1t:hold|earned_B": 0.22319010416666682,
+    "1t:hold|bounty_B": 0.14756944444444445,
+    "1t:hold|deaths_A": 0.07378472222222222,
+    "1t:hold|deaths_B": -0.0034722222222222216,
+    "1t:hold|away_A": 0.13975694444444445,
+    "1t:hold|away_B": -0.07031250000000001,
+    "1t:hold|d_total_A": 0.0047871574075204456,
+    "1t:hold|xp_A": -0.3203125,
+    "1t:hold|trade_conn_A": -0.16666666666666666,
+    "1t:safe|earned_A": 0.007330729166666596,
+    "1t:safe|farm_A": 0.029900173611110997,
+    "1t:safe|unc_A": -0.02762152777777781,
+    "1t:safe|unc_away_A": -0.014973958333333336,
+    "1t:safe|bounty_A": -0.01041666666666667,
+    "1t:safe|plate_A": -0.012152777777777776,
+    "1t:safe|earned_B": 0.11766710069444447,
+    "1t:safe|bounty_B": 9.25185853854297e-18,
+    "1t:safe|deaths_A": 4.625929269271485e-18,
+    "1t:safe|deaths_B": -0.005208333333333335,
+    "1t:safe|away_A": -0.09375,
+    "1t:safe|away_B": -0.0859375,
+    "1t:safe|d_total_A": -0.02012499666816297,
+    "1t:safe|xp_A": -0.03298611111111111,
+    "1t:safe|trade_conn_A": -0.22395833333333334,
+    "1t:trade_beh|earned_A": -0.23242187499999986,
+    "1t:trade_beh|farm_A": -0.24804687500000008,
+    "1t:trade_beh|unc_A": 0.23665364583333326,
+    "1t:trade_beh|unc_away_A": 0.19943576388888892,
+    "1t:trade_beh|bounty_A": 0.02083333333333333,
+    "1t:trade_beh|plate_A": -0.005208333333333336,
+    "1t:trade_beh|earned_B": 0.14480685763888887,
+    "1t:trade_beh|bounty_B": 0.18923611111111108,
+    "1t:trade_beh|deaths_A": 0.09461805555555554,
+    "1t:trade_beh|deaths_B": 0.010416666666666664,
+    "1t:trade_beh|away_A": 0.31076388888888884,
+    "1t:trade_beh|away_B": 0.11197916666666667,
+    "1t:trade_beh|d_total_A": 0.05837361890416828,
+    "1t:trade_beh|xp_A": -0.7404513888888888,
+    "1t:trade_beh|trade_conn_A": 0.7942708333333334,
+    "1t:hold_beh|earned_A": -0.09312282986111109,
+    "1t:hold_beh|farm_A": -0.05492838541666673,
+    "1t:hold_beh|unc_A": 0.060787760416666635,
+    "1t:hold_beh|unc_away_A": 0.1181640625,
+    "1t:hold_beh|bounty_A": -0.046875,
+    "1t:hold_beh|plate_A": 0.008680555555555556,
+    "1t:hold_beh|earned_B": 0.18029513888888885,
+    "1t:hold_beh|bounty_B": 0.16666666666666666,
+    "1t:hold_beh|deaths_A": 0.08333333333333333,
+    "1t:hold_beh|deaths_B": -0.0234375,
+    "1t:hold_beh|away_A": 0.20486111111111108,
+    "1t:hold_beh|away_B": -0.10590277777777778,
+    "1t:hold_beh|d_total_A": 0.038026821277914014,
+    "1t:hold_beh|xp_A": -0.25347222222222227,
+    "1t:hold_beh|trade_conn_A": -0.03385416666666665,
+    "1t:safe_beh|earned_A": -0.057721354166666794,
+    "1t:safe_beh|farm_A": -0.02473524305555566,
+    "1t:safe_beh|unc_A": 0.007374131944444443,
+    "1t:safe_beh|unc_away_A": -0.006835937500000004,
+    "1t:safe_beh|bounty_A": -0.015624999999999998,
+    "1t:safe_beh|plate_A": -0.017361111111111112,
+    "1t:safe_beh|earned_B": 0.09185763888888882,
+    "1t:safe_beh|bounty_B": 0.020833333333333332,
+    "1t:safe_beh|deaths_A": 0.010416666666666666,
+    "1t:safe_beh|deaths_B": -0.007812499999999999,
+    "1t:safe_beh|away_A": -0.04340277777777779,
+    "1t:safe_beh|away_B": -0.08854166666666667,
+    "1t:safe_beh|d_total_A": -0.005152865232058606,
+    "1t:safe_beh|xp_A": 0.033854166666666664,
+    "1t:safe_beh|trade_conn_A": -0.08680555555555557
+   },
+   "states": 96
+  },
+  "H_zone_c|g_wary": {
+   "1t:trade-policy": {
+    "per_final": [
+     0.0942723521387747,
+     0.1856486616953941
+    ],
+    "mean": 0.1399605069170844
+   },
+   "1t:hold-policy": {
+    "per_final": [
+     0.041203719838030894,
+     0.13295805654177092
+    ],
+    "mean": 0.08708088818990091
+   },
+   "1t:shove-policy": {
+    "per_final": [
+     -0.09730783060840516,
+     -0.18388618208618482
+    ],
+    "mean": -0.140597006347295
+   },
+   "plan:bullyx10-policy": {
+    "per_final": [
+     -0.0024693448013395902,
+     0.2084677123464335
+    ],
+    "mean": 0.10299918377254695
+   },
+   "1t:trade_beh-policy": {
+    "per_final": [
+     0.03681492175601739,
+     -0.05169734721711503
+    ],
+    "mean": -0.007441212730548822
+   },
+   "1t:hold_beh-policy": {
+    "per_final": [
+     0.004298816307047437,
+     -0.09236104390468552
+    ],
+    "mean": -0.04403111379881904
+   },
+   "plan:bully_behx10-policy": {
+    "per_final": [
+     -0.04172181709568409,
+     -0.026561380605617135
+    ],
+    "mean": -0.034141598850650615
+   },
+   "plan:threaten_behx10-policy": {
+    "per_final": [
+     0.03178814813376682,
+     -0.05687625810806113
+    ],
+    "mean": -0.012544054987147155
+   },
+   "plan:farm_behx10-policy": {
+    "per_final": [
+     -0.05127137572777079,
+     -0.10009943072567119
+    ],
+    "mean": -0.07568540322672099
+   },
+   "plan:bully_behx10-plan:bullyx10": {
+    "per_final": [
+     -0.03925247229434452,
+     -0.23502909295205063
+    ],
+    "mean": -0.13714078262319757
+   },
+   "plan:threaten_behx10-plan:farm_behx10": {
+    "per_final": [
+     0.08305952386153759,
+     0.04322317261761007
+    ],
+    "mean": 0.06314134823957383
+   },
+   "1t:trade_beh-1t:hold_beh": {
+    "per_final": [
+     0.03251610544896997,
+     0.04066369668757052
+    ],
+    "mean": 0.036589901068270245
+   },
+   "1t:trade_beh-1t:trade": {
+    "per_final": [
+     -0.0574574303827573,
+     -0.23734600891250915
+    ],
+    "mean": -0.1474017196476332
+   },
+   "channels": {
+    "1t:trade|earned_A": -0.005538194444444496,
+    "1t:trade|farm_A": -0.03157986111111108,
+    "1t:trade|unc_A": 0.03548611111111108,
+    "1t:trade|unc_away_A": 0.020182291666666668,
+    "1t:trade|bounty_A": 0.034722222222222224,
+    "1t:trade|plate_A": -0.008680555555555554,
+    "1t:trade|earned_B": -0.15638020833333374,
+    "1t:trade|bounty_B": 0.031249999999999997,
+    "1t:trade|deaths_A": 0.015624999999999998,
+    "1t:trade|deaths_B": 0.017361111111111112,
+    "1t:trade|away_A": 0.003472222222222219,
+    "1t:trade|away_B": 0.24826388888888887,
+    "1t:trade|d_total_A": 0.03602883199091406,
+    "1t:trade|xp_A": -0.2760416666666667,
+    "1t:trade|trade_conn_A": 0.6215277777777777,
+    "1t:hold|earned_A": 0.04254340277777748,
+    "1t:hold|farm_A": 0.023446180555555543,
+    "1t:hold|unc_A": -0.04449652777777777,
+    "1t:hold|unc_away_A": 0.011284722222222224,
+    "1t:hold|bounty_A": 0.017361111111111115,
+    "1t:hold|plate_A": 0.001736111111111112,
+    "1t:hold|earned_B": -0.05950520833333367,
+    "1t:hold|bounty_B": 0.031249999999999997,
+    "1t:hold|deaths_A": 0.015624999999999998,
+    "1t:hold|deaths_B": 0.008680555555555558,
+    "1t:hold|away_A": 0.03645833333333334,
+    "1t:hold|away_B": 0.057291666666666664,
+    "1t:hold|d_total_A": 0.00705990291502126,
+    "1t:hold|xp_A": -0.22916666666666666,
+    "1t:hold|trade_conn_A": 0.05555555555555556,
+    "1t:shove|earned_A": -0.06643229166666684,
+    "1t:shove|farm_A": -0.05948784722222227,
+    "1t:shove|unc_A": 0.07012152777777775,
+    "1t:shove|unc_away_A": 0.006944444444444445,
+    "1t:shove|bounty_A": -0.010416666666666666,
+    "1t:shove|plate_A": 0.003472222222222222,
+    "1t:shove|earned_B": 0.08142361111111124,
+    "1t:shove|bounty_B": -0.052083333333333336,
+    "1t:shove|deaths_A": -0.026041666666666668,
+    "1t:shove|deaths_B": -0.005208333333333333,
+    "1t:shove|away_A": 0.027777777777777773,
+    "1t:shove|away_B": -0.045138888888888895,
+    "1t:shove|d_total_A": -0.007948637986681894,
+    "1t:shove|xp_A": -0.1059027777777778,
+    "1t:shove|trade_conn_A": -0.14930555555555555,
+    "plan:bullyx10|earned_A": -0.23535590277777754,
+    "plan:bullyx10|farm_A": -0.2804947916666663,
+    "plan:bullyx10|unc_A": 0.3065364583333333,
+    "plan:bullyx10|unc_away_A": 0.15907118055555555,
+    "plan:bullyx10|bounty_A": 0.04861111111111111,
+    "plan:bullyx10|plate_A": -0.0034722222222222225,
+    "plan:bullyx10|earned_B": -0.5071831597222224,
+    "plan:bullyx10|bounty_B": 0.11458333333333333,
+    "plan:bullyx10|deaths_A": 0.057291666666666664,
+    "plan:bullyx10|deaths_B": 0.024305555555555556,
+    "plan:bullyx10|away_A": 0.06944444444444443,
+    "plan:bullyx10|away_B": 0.6753472222222223,
+    "plan:bullyx10|d_total_A": 0.07982146630396991,
+    "plan:bullyx10|xp_A": -1.046875,
+    "plan:bullyx10|trade_conn_A": 1.640625,
+    "1t:trade_beh|earned_A": -0.09229600694444429,
+    "1t:trade_beh|farm_A": -0.09750434027777766,
+    "1t:trade_beh|unc_A": 0.1237630208333333,
+    "1t:trade_beh|unc_away_A": 0.0234375,
+    "1t:trade_beh|bounty_A": -5.782411586589357e-19,
+    "1t:trade_beh|plate_A": 0.005208333333333333,
+    "1t:trade_beh|earned_B": -0.06688368055555574,
+    "1t:trade_beh|bounty_B": 0.020833333333333332,
+    "1t:trade_beh|deaths_A": 0.010416666666666666,
+    "1t:trade_beh|deaths_B": -2.8912057932946783e-19,
+    "1t:trade_beh|away_A": 0.012152777777777781,
+    "1t:trade_beh|away_B": 0.1996527777777778,
+    "1t:trade_beh|d_total_A": 0.008058021820141785,
+    "1t:trade_beh|xp_A": -0.421875,
+    "1t:trade_beh|trade_conn_A": 0.47222222222222215,
+    "1t:hold_beh|earned_A": -0.0011892361111111305,
+    "1t:hold_beh|farm_A": 0.0022829861111112516,
+    "1t:hold_beh|unc_A": 0.007916666666666678,
+    "1t:hold_beh|unc_away_A": -0.002821180555555556,
+    "1t:hold_beh|bounty_A": -0.010416666666666666,
+    "1t:hold_beh|plate_A": 0.006944444444444444,
+    "1t:hold_beh|earned_B": 0.045486111111111116,
+    "1t:hold_beh|bounty_B": -0.03125,
+    "1t:hold_beh|deaths_A": -0.015625,
+    "1t:hold_beh|deaths_B": -0.005208333333333333,
+    "1t:hold_beh|away_A": 0.017361111111111112,
+    "1t:hold_beh|away_B": -0.015625000000000003,
+    "1t:hold_beh|d_total_A": -0.013756497519359133,
+    "1t:hold_beh|xp_A": -0.00868055555555558,
+    "1t:hold_beh|trade_conn_A": -0.09375,
+    "plan:bully_behx10|earned_A": -0.10611979166666673,
+    "plan:bully_behx10|farm_A": -0.1564670138888888,
+    "plan:bully_behx10|unc_A": 0.15798611111111108,
+    "plan:bully_behx10|unc_away_A": 0.0234375,
+    "plan:bully_behx10|bounty_A": 0.03472222222222222,
+    "plan:bully_behx10|plate_A": 0.015625,
+    "plan:bully_behx10|earned_B": -0.05937500000000015,
+    "plan:bully_behx10|bounty_B": 0.13194444444444445,
+    "plan:bully_behx10|deaths_A": 0.06597222222222222,
+    "plan:bully_behx10|deaths_B": 0.01736111111111111,
+    "plan:bully_behx10|away_A": 0.019097222222222227,
+    "plan:bully_behx10|away_B": 0.5416666666666666,
+    "plan:bully_behx10|d_total_A": 0.09755780524088059,
+    "plan:bully_behx10|xp_A": -0.043402777777777755,
+    "plan:bully_behx10|trade_conn_A": 1.782986111111111,
+    "plan:threaten_behx10|earned_A": 0.04599826388888866,
+    "plan:threaten_behx10|farm_A": 0.02516493055555537,
+    "plan:threaten_behx10|unc_A": -0.010625000000000015,
+    "plan:threaten_behx10|unc_away_A": -0.026692708333333332,
+    "plan:threaten_behx10|bounty_A": 0.01736111111111111,
+    "plan:threaten_behx10|plate_A": 0.003472222222222222,
+    "plan:threaten_behx10|earned_B": 0.06293402777777786,
+    "plan:threaten_behx10|bounty_B": 0.041666666666666664,
+    "plan:threaten_behx10|deaths_A": 0.020833333333333332,
+    "plan:threaten_behx10|deaths_B": 0.008680555555555554,
+    "plan:threaten_behx10|away_A": -0.13020833333333334,
+    "plan:threaten_behx10|away_B": 0.019097222222222224,
+    "plan:threaten_behx10|d_total_A": 0.015273093852524981,
+    "plan:threaten_behx10|xp_A": 0.517361111111111,
+    "plan:threaten_behx10|trade_conn_A": 0.3993055555555556,
+    "plan:farm_behx10|earned_A": -0.015147569444444628,
+    "plan:farm_behx10|farm_A": -0.008203124999999931,
+    "plan:farm_behx10|unc_A": 0.009505208333333313,
+    "plan:farm_behx10|unc_away_A": -0.01193576388888889,
+    "plan:farm_behx10|bounty_A": -0.0034722222222222225,
+    "plan:farm_behx10|plate_A": -0.0034722222222222216,
+    "plan:farm_behx10|earned_B": 0.09214409722222223,
+    "plan:farm_behx10|bounty_B": 0.0,
+    "plan:farm_behx10|deaths_A": 0.0,
+    "plan:farm_behx10|deaths_B": -0.0017361111111111112,
+    "plan:farm_behx10|away_A": -0.12326388888888891,
+    "plan:farm_behx10|away_B": -0.03472222222222222,
+    "plan:farm_behx10|d_total_A": -0.016047131835223896,
+    "plan:farm_behx10|xp_A": 0.3611111111111111,
+    "plan:farm_behx10|trade_conn_A": -0.3506944444444444
+   },
+   "states": 24
+  },
+  "H_zone_c|modal": {
+   "1t:trade-policy": {
+    "per_final": [
+     -0.05527602929560258,
+     -0.30928556275042207
+    ],
+    "mean": -0.18228079602301234
+   },
+   "1t:hold-policy": {
+    "per_final": [
+     0.1354804315686636,
+     -0.2882124259417002
+    ],
+    "mean": -0.0763659971865183
+   },
+   "1t:shove-policy": {
+    "per_final": [
+     0.08559824274682466,
+     -0.16345847168741237
+    ],
+    "mean": -0.038930114470293854
+   },
+   "plan:bullyx10-policy": {
+    "per_final": [
+     -0.4499009594246454,
+     -0.9608251035366021
+    ],
+    "mean": -0.7053630314806237
+   },
+   "1t:trade_beh-policy": {
+    "per_final": [
+     -0.022341114768866587,
+     -0.36707365073768944
+    ],
+    "mean": -0.194707382753278
+   },
+   "1t:hold_beh-policy": {
+    "per_final": [
+     0.06446822826364221,
+     -0.03155665810679582
+    ],
+    "mean": 0.016455785078423196
+   },
+   "plan:bully_behx10-policy": {
+    "per_final": [
+     -0.5900862816201699,
+     -0.5913776539202208
+    ],
+    "mean": -0.5907319677701953
+   },
+   "plan:threaten_behx10-policy": {
+    "per_final": [
+     -0.18108097127883882,
+     -0.6504332232418236
+    ],
+    "mean": -0.4157570972603312
+   },
+   "plan:farm_behx10-policy": {
+    "per_final": [
+     -0.4111531921046017,
+     -0.7229419759484546
+    ],
+    "mean": -0.5670475840265281
+   },
+   "plan:bully_behx10-plan:bullyx10": {
+    "per_final": [
+     -0.14018532219552424,
+     0.3694474496163814
+    ],
+    "mean": 0.11463106371042857
+   },
+   "plan:threaten_behx10-plan:farm_behx10": {
+    "per_final": [
+     0.23007222082576292,
+     0.072508752706631
+    ],
+    "mean": 0.15129048676619697
+   },
+   "1t:trade_beh-1t:hold_beh": {
+    "per_final": [
+     -0.08680934303250872,
+     -0.33551699263089346
+    ],
+    "mean": -0.21116316783170108
+   },
+   "1t:trade_beh-1t:trade": {
+    "per_final": [
+     0.032934914526736046,
+     -0.057788087987267305
+    ],
+    "mean": -0.012426586730265629
+   },
+   "channels": {
+    "1t:trade|earned_A": -0.15488281250000022,
+    "1t:trade|farm_A": -0.231271701388889,
+    "1t:trade|unc_A": 0.19155815972222232,
+    "1t:trade|unc_away_A": 0.031467013888888895,
+    "1t:trade|bounty_A": 0.06597222222222222,
+    "1t:trade|plate_A": 0.010416666666666663,
+    "1t:trade|earned_B": 0.07138888888888893,
+    "1t:trade|bounty_B": 0.1076388888888889,
+    "1t:trade|deaths_A": 0.05381944444444445,
+    "1t:trade|deaths_B": 0.03298611111111111,
+    "1t:trade|away_A": 0.08854166666666667,
+    "1t:trade|away_B": 0.34548611111111116,
+    "1t:trade|d_total_A": 0.021772234022892207,
+    "1t:trade|xp_A": -0.6805555555555557,
+    "1t:trade|trade_conn_A": 0.6909722222222222,
+    "1t:hold|earned_A": -0.020993923611111038,
+    "1t:hold|farm_A": -0.048771701388888734,
+    "1t:hold|unc_A": 0.007322048611111118,
+    "1t:hold|unc_away_A": -0.08072916666666667,
+    "1t:hold|bounty_A": 0.052083333333333336,
+    "1t:hold|plate_A": -0.024305555555555542,
+    "1t:hold|earned_B": 0.03366753472222198,
+    "1t:hold|bounty_B": 0.020833333333333332,
+    "1t:hold|deaths_A": 0.010416666666666666,
+    "1t:hold|deaths_B": 0.026041666666666668,
+    "1t:hold|away_A": -0.2378472222222222,
+    "1t:hold|away_B": -0.0347222222222222,
+    "1t:hold|d_total_A": -0.04641078630094889,
+    "1t:hold|xp_A": 0.4583333333333333,
+    "1t:hold|trade_conn_A": -0.19618055555555555,
+    "1t:shove|earned_A": -0.018033854166666422,
+    "1t:shove|farm_A": -0.0024088541666665436,
+    "1t:shove|unc_A": -0.021462673611111063,
+    "1t:shove|unc_away_A": 0.015842013888888895,
+    "1t:shove|bounty_A": 0.006944444444444444,
+    "1t:shove|plate_A": -0.022569444444444444,
+    "1t:shove|earned_B": 0.05386284722222202,
+    "1t:shove|bounty_B": 0.027777777777777773,
+    "1t:shove|deaths_A": 0.013888888888888886,
+    "1t:shove|deaths_B": 0.003472222222222222,
+    "1t:shove|away_A": 0.06770833333333333,
+    "1t:shove|away_B": -0.060763888888888895,
+    "1t:shove|d_total_A": 0.022934955871394356,
+    "1t:shove|xp_A": -0.3038194444444444,
+    "1t:shove|trade_conn_A": -0.10763888888888888,
+    "plan:bullyx10|earned_A": -0.49699652777777753,
+    "plan:bullyx10|farm_A": -0.8164409722222222,
+    "plan:bullyx10|unc_A": 0.8485590277777781,
+    "plan:bullyx10|unc_away_A": 0.15863715277777776,
+    "plan:bullyx10|bounty_A": 0.5243055555555555,
+    "plan:bullyx10|plate_A": -0.20486111111111108,
+    "plan:bullyx10|earned_B": 0.1566189236111113,
+    "plan:bullyx10|bounty_B": -0.024305555555555556,
+    "plan:bullyx10|deaths_A": -0.012152777777777778,
+    "plan:bullyx10|deaths_B": 0.26215277777777773,
+    "plan:bullyx10|away_A": 0.019097222222222227,
+    "plan:bullyx10|away_B": 1.2881944444444444,
+    "plan:bullyx10|d_total_A": 0.06447828296745933,
+    "plan:bullyx10|xp_A": -0.2552083333333333,
+    "plan:bullyx10|trade_conn_A": 4.175347222222222,
+    "1t:trade_beh|earned_A": -0.10661024305555565,
+    "1t:trade_beh|farm_A": -0.2055685763888889,
+    "1t:trade_beh|unc_A": 0.1747526041666667,
+    "1t:trade_beh|unc_away_A": 0.05186631944444444,
+    "1t:trade_beh|bounty_A": 0.0763888888888889,
+    "1t:trade_beh|plate_A": 0.02256944444444445,
+    "1t:trade_beh|earned_B": 0.1345833333333332,
+    "1t:trade_beh|bounty_B": 0.08333333333333333,
+    "1t:trade_beh|deaths_A": 0.041666666666666664,
+    "1t:trade_beh|deaths_B": 0.03819444444444445,
+    "1t:trade_beh|away_A": 0.032986111111111126,
+    "1t:trade_beh|away_B": 0.296875,
+    "1t:trade_beh|d_total_A": 0.03364007138365951,
+    "1t:trade_beh|xp_A": -0.6979166666666666,
+    "1t:trade_beh|trade_conn_A": 0.6163194444444445,
+    "1t:hold_beh|earned_A": 0.07449218750000006,
+    "1t:hold_beh|farm_A": 0.058867187500000064,
+    "1t:hold_beh|unc_A": -0.05452690972222224,
+    "1t:hold_beh|unc_away_A": -0.03667534722222222,
+    "1t:hold_beh|bounty_A": 0.024305555555555552,
+    "1t:hold_beh|plate_A": -0.008680555555555554,
+    "1t:hold_beh|earned_B": 0.04768663194444422,
+    "1t:hold_beh|bounty_B": -0.010416666666666663,
+    "1t:hold_beh|deaths_A": -0.005208333333333331,
+    "1t:hold_beh|deaths_B": 0.012152777777777776,
+    "1t:hold_beh|away_A": -0.026041666666666668,
+    "1t:hold_beh|away_B": -0.06944444444444443,
+    "1t:hold_beh|d_total_A": -0.0227023267575861,
+    "1t:hold_beh|xp_A": 0.4322916666666667,
+    "1t:hold_beh|trade_conn_A": -0.08333333333333331,
+    "plan:bully_behx10|earned_A": -0.470368923611111,
+    "plan:bully_behx10|farm_A": -0.6839105902777779,
+    "plan:bully_behx10|unc_A": 0.648754340277778,
+    "plan:bully_behx10|unc_away_A": 0.09700520833333333,
+    "plan:bully_behx10|bounty_A": 0.16666666666666666,
+    "plan:bully_behx10|plate_A": 0.046875,
+    "plan:bully_behx10|earned_B": 0.1771006944444445,
+    "plan:bully_behx10|bounty_B": 0.17361111111111113,
+    "plan:bully_behx10|deaths_A": 0.08680555555555557,
+    "plan:bully_behx10|deaths_B": 0.08333333333333333,
+    "plan:bully_behx10|away_A": 0.09374999999999999,
+    "plan:bully_behx10|away_B": 0.8472222222222222,
+    "plan:bully_behx10|d_total_A": 0.13629345789370872,
+    "plan:bully_behx10|xp_A": -1.0295138888888888,
+    "plan:bully_behx10|trade_conn_A": 3.109375,
+    "plan:threaten_behx10|earned_A": -0.2427213541666666,
+    "plan:threaten_behx10|farm_A": -0.3746657986111112,
+    "plan:threaten_behx10|unc_A": 0.3345182291666666,
+    "plan:threaten_behx10|unc_away_A": 0.11610243055555557,
+    "plan:threaten_behx10|bounty_A": 0.10069444444444446,
+    "plan:threaten_behx10|plate_A": 0.03125,
+    "plan:threaten_behx10|earned_B": 0.2472395833333333,
+    "plan:threaten_behx10|bounty_B": 0.21875,
+    "plan:threaten_behx10|deaths_A": 0.109375,
+    "plan:threaten_behx10|deaths_B": 0.05034722222222223,
+    "plan:threaten_behx10|away_A": -0.008680555555555561,
+    "plan:threaten_behx10|away_B": 0.4479166666666667,
+    "plan:threaten_behx10|d_total_A": 0.09805903880472906,
+    "plan:threaten_behx10|xp_A": -1.5711805555555556,
+    "plan:threaten_behx10|trade_conn_A": 0.42361111111111116,
+    "plan:farm_behx10|earned_A": -0.08046874999999999,
+    "plan:farm_behx10|farm_A": -0.014496527777777707,
+    "plan:farm_behx10|unc_A": -0.04735243055555555,
+    "plan:farm_behx10|unc_away_A": 0.08051215277777778,
+    "plan:farm_behx10|bounty_A": -0.125,
+    "plan:farm_behx10|plate_A": 0.05902777777777779,
+    "plan:farm_behx10|earned_B": 0.60828125,
+    "plan:farm_behx10|bounty_B": 0.2881944444444445,
+    "plan:farm_behx10|deaths_A": 0.14409722222222224,
+    "plan:farm_behx10|deaths_B": -0.0625,
+    "plan:farm_behx10|away_A": -0.09375,
+    "plan:farm_behx10|away_B": -0.7638888888888888,
+    "plan:farm_behx10|d_total_A": 0.04247593942897807,
+    "plan:farm_behx10|xp_A": -1.0763888888888888,
+    "plan:farm_behx10|trade_conn_A": -2.0208333333333335
+   },
+   "states": 24
+  },
+  "H_zone_c|policy": {
+   "1t:trade-policy": {
+    "per_final": [
+     0.12327333965299354,
+     0.049885085860106586
+    ],
+    "mean": 0.08657921275655006
+   },
+   "1t:hold-policy": {
+    "per_final": [
+     -0.21383940648580077,
+     0.11109952715502924
+    ],
+    "mean": -0.051369939665385764
+   },
+   "1t:shove-policy": {
+    "per_final": [
+     0.10326936088367826,
+     -0.10434150092489465
+    ],
+    "mean": -0.0005360700206081953
+   },
+   "plan:bullyx10-policy": {
+    "per_final": [
+     -0.7428177188437326,
+     -0.9064998603245331
+    ],
+    "mean": -0.8246587895841329
+   },
+   "1t:trade_beh-policy": {
+    "per_final": [
+     0.2647497704815194,
+     0.05312198138387092
+    ],
+    "mean": 0.15893587593269515
+   },
+   "1t:hold_beh-policy": {
+    "per_final": [
+     0.0980300890841695,
+     0.132388742690348
+    ],
+    "mean": 0.11520941588725875
+   },
+   "plan:bully_behx10-policy": {
+    "per_final": [
+     -0.5396611270809801,
+     -0.23206911230067784
+    ],
+    "mean": -0.385865119690829
+   },
+   "plan:threaten_behx10-policy": {
+    "per_final": [
+     -0.44333038337061415,
+     -0.18114949560069157
+    ],
+    "mean": -0.3122399394856529
+   },
+   "plan:farm_behx10-policy": {
+    "per_final": [
+     -0.2540628169853333,
+     -0.02614489503178377
+    ],
+    "mean": -0.1401038560085585
+   },
+   "plan:bully_behx10-plan:bullyx10": {
+    "per_final": [
+     0.2031565917627525,
+     0.674430748023855
+    ],
+    "mean": 0.43879366989330376
+   },
+   "plan:threaten_behx10-plan:farm_behx10": {
+    "per_final": [
+     -0.18926756638528067,
+     -0.15500460056890783
+    ],
+    "mean": -0.17213608347709425
+   },
+   "1t:trade_beh-1t:hold_beh": {
+    "per_final": [
+     0.16671968139734994,
+     -0.07926676130647713
+    ],
+    "mean": 0.043726460045436406
+   },
+   "1t:trade_beh-1t:trade": {
+    "per_final": [
+     0.14147643082852587,
+     0.0032368955237642876
+    ],
+    "mean": 0.07235666317614509
+   },
+   "channels": {
+    "1t:trade|earned_A": 0.021202256944444466,
+    "1t:trade|farm_A": -0.18365885416666683,
+    "1t:trade|unc_A": 0.17996961805555559,
+    "1t:trade|unc_away_A": 0.04014756944444444,
+    "1t:trade|bounty_A": 0.22916666666666666,
+    "1t:trade|plate_A": -0.02430555555555555,
+    "1t:trade|earned_B": -0.14017361111111118,
+    "1t:trade|bounty_B": 0.08680555555555557,
+    "1t:trade|deaths_A": 0.04340277777777778,
+    "1t:trade|deaths_B": 0.11458333333333333,
+    "1t:trade|away_A": 0.15625,
+    "1t:trade|away_B": 0.34375,
+    "1t:trade|d_total_A": 0.10043806691054713,
+    "1t:trade|xp_A": -0.3611111111111111,
+    "1t:trade|trade_conn_A": 0.9739583333333334,
+    "1t:hold|earned_A": -0.023133680555555276,
+    "1t:hold|farm_A": -0.024869791666666252,
+    "1t:hold|unc_A": 0.020095486111111064,
+    "1t:hold|unc_away_A": -0.032986111111111105,
+    "1t:hold|bounty_A": 0.0625,
+    "1t:hold|plate_A": -0.06076388888888889,
+    "1t:hold|earned_B": -0.003242187499999827,
+    "1t:hold|bounty_B": 0.02777777777777778,
+    "1t:hold|deaths_A": 0.01388888888888889,
+    "1t:hold|deaths_B": 0.03125,
+    "1t:hold|away_A": -0.020833333333333325,
+    "1t:hold|away_B": -0.04340277777777779,
+    "1t:hold|d_total_A": 0.011927454643121642,
+    "1t:hold|xp_A": 0.5052083333333333,
+    "1t:hold|trade_conn_A": -0.20659722222222224,
+    "1t:shove|earned_A": 0.026892361111111016,
+    "1t:shove|farm_A": -0.018246527777777927,
+    "1t:shove|unc_A": 0.02953124999999999,
+    "1t:shove|unc_away_A": 0.03515625,
+    "1t:shove|bounty_A": 0.0069444444444444475,
+    "1t:shove|plate_A": 0.03819444444444445,
+    "1t:shove|earned_B": 0.020039062500000163,
+    "1t:shove|bounty_B": 0.020833333333333332,
+    "1t:shove|deaths_A": 0.010416666666666666,
+    "1t:shove|deaths_B": 0.0034722222222222238,
+    "1t:shove|away_A": 0.04513888888888889,
+    "1t:shove|away_B": -0.13194444444444445,
+    "1t:shove|d_total_A": 0.009161485777732105,
+    "1t:shove|xp_A": -0.19270833333333326,
+    "1t:shove|trade_conn_A": -0.12326388888888888,
+    "plan:bullyx10|earned_A": -0.6926041666666665,
+    "plan:bullyx10|farm_A": -0.9373958333333331,
+    "plan:bullyx10|unc_A": 0.8937760416666666,
+    "plan:bullyx10|unc_away_A": 0.2658420138888889,
+    "plan:bullyx10|bounty_A": 0.4930555555555555,
+    "plan:bullyx10|plate_A": -0.24826388888888887,
+    "plan:bullyx10|earned_B": 0.1369053819444445,
+    "plan:bullyx10|bounty_B": 0.10416666666666667,
+    "plan:bullyx10|deaths_A": 0.052083333333333336,
+    "plan:bullyx10|deaths_B": 0.24652777777777776,
+    "plan:bullyx10|away_A": 0.3298611111111111,
+    "plan:bullyx10|away_B": 1.2135416666666667,
+    "plan:bullyx10|d_total_A": 0.1393451387832533,
+    "plan:bullyx10|xp_A": -1.9618055555555554,
+    "plan:bullyx10|trade_conn_A": 3.8663194444444446,
+    "1t:trade_beh|earned_A": 0.08051215277777776,
+    "1t:trade_beh|farm_A": -0.2180989583333334,
+    "1t:trade_beh|unc_A": 0.23611111111111102,
+    "1t:trade_beh|unc_away_A": 0.032552083333333336,
+    "1t:trade_beh|bounty_A": 0.2673611111111111,
+    "1t:trade_beh|plate_A": 0.03125000000000001,
+    "1t:trade_beh|earned_B": -0.17842447916666648,
+    "1t:trade_beh|bounty_B": 0.06944444444444446,
+    "1t:trade_beh|deaths_A": 0.03472222222222223,
+    "1t:trade_beh|deaths_B": 0.13368055555555555,
+    "1t:trade_beh|away_A": 0.1840277777777778,
+    "1t:trade_beh|away_B": 0.42187499999999994,
+    "1t:trade_beh|d_total_A": 0.11945615246645698,
+    "1t:trade_beh|xp_A": -0.18402777777777776,
+    "1t:trade_beh|trade_conn_A": 0.7395833333333334,
+    "1t:hold_beh|earned_A": 0.09006510416666658,
+    "1t:hold_beh|farm_A": 0.053606770833333206,
+    "1t:hold_beh|unc_A": -0.02539496527777778,
+    "1t:hold_beh|unc_away_A": -0.01540798611111111,
+    "1t:hold_beh|bounty_A": 0.020833333333333332,
+    "1t:hold_beh|plate_A": 0.015624999999999995,
+    "1t:hold_beh|earned_B": -0.07888020833333324,
+    "1t:hold_beh|bounty_B": -0.027777777777777776,
+    "1t:hold_beh|deaths_A": -0.013888888888888888,
+    "1t:hold_beh|deaths_B": 0.010416666666666666,
+    "1t:hold_beh|away_A": -0.022569444444444437,
+    "1t:hold_beh|away_B": -0.06944444444444445,
+    "1t:hold_beh|d_total_A": 0.005588237178269624,
+    "1t:hold_beh|xp_A": 0.423611111111111,
+    "1t:hold_beh|trade_conn_A": -0.17013888888888892,
+    "plan:bully_behx10|earned_A": -0.4565147569444445,
+    "plan:bully_behx10|farm_A": -0.6388064236111112,
+    "plan:bully_behx10|unc_A": 0.656384548611111,
+    "plan:bully_behx10|unc_away_A": 0.14908854166666666,
+    "plan:bully_behx10|bounty_A": 0.16666666666666666,
+    "plan:bully_behx10|plate_A": 0.015625,
+    "plan:bully_behx10|earned_B": -0.08328559027777789,
+    "plan:bully_behx10|bounty_B": 0.21180555555555555,
+    "plan:bully_behx10|deaths_A": 0.10590277777777778,
+    "plan:bully_behx10|deaths_B": 0.08333333333333333,
+    "plan:bully_behx10|away_A": 0.22916666666666666,
+    "plan:bully_behx10|away_B": 0.9305555555555557,
+    "plan:bully_behx10|d_total_A": 0.19046441716904386,
+    "plan:bully_behx10|xp_A": -1.4479166666666667,
+    "plan:bully_behx10|trade_conn_A": 3.064236111111111,
+    "plan:threaten_behx10|earned_A": -0.2504904513888889,
+    "plan:threaten_behx10|farm_A": -0.31472656250000014,
+    "plan:threaten_behx10|unc_A": 0.32167100694444445,
+    "plan:threaten_behx10|unc_away_A": 0.150390625,
+    "plan:threaten_behx10|bounty_A": 0.07291666666666667,
+    "plan:threaten_behx10|plate_A": -0.00868055555555555,
+    "plan:threaten_behx10|earned_B": 0.10032118055555576,
+    "plan:threaten_behx10|bounty_B": 0.2222222222222222,
+    "plan:threaten_behx10|deaths_A": 0.1111111111111111,
+    "plan:threaten_behx10|deaths_B": 0.036458333333333336,
+    "plan:threaten_behx10|away_A": 0.109375,
+    "plan:threaten_behx10|away_B": 0.32638888888888884,
+    "plan:threaten_behx10|d_total_A": 0.13178602407055087,
+    "plan:threaten_behx10|xp_A": -1.404513888888889,
+    "plan:threaten_behx10|trade_conn_A": 0.670138888888889,
+    "plan:farm_behx10|earned_A": 0.12855902777777792,
+    "plan:farm_behx10|farm_A": 0.17890625000000016,
+    "plan:farm_behx10|unc_A": -0.19800347222222225,
+    "plan:farm_behx10|unc_away_A": 0.01193576388888889,
+    "plan:farm_behx10|bounty_A": -0.12499999999999999,
+    "plan:farm_behx10|plate_A": 0.07465277777777778,
+    "plan:farm_behx10|earned_B": 0.2626909722222227,
+    "plan:farm_behx10|bounty_B": 0.05902777777777779,
+    "plan:farm_behx10|deaths_A": 0.029513888888888895,
+    "plan:farm_behx10|deaths_B": -0.06249999999999999,
+    "plan:farm_behx10|away_A": -0.16145833333333334,
+    "plan:farm_behx10|away_B": -0.7690972222222223,
+    "plan:farm_behx10|d_total_A": 0.014215299774770387,
+    "plan:farm_behx10|xp_A": 0.37152777777777785,
+    "plan:farm_behx10|trade_conn_A": -1.5798611111111114
+   },
+   "states": 24
+  }
+ }
+}

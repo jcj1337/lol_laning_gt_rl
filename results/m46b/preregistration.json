@@ -1,0 +1,25 @@
+{
+ "meta": {
+  "study": "M4.6b",
+  "commit": "015c974968e400fdb5e7f27e03be2fdfc9a66ebd",
+  "working_tree_dirty": true,
+  "timestamp": "2026-10-15 16:31:30",
+  "python": "3.13.9",
+  "torch": "2.14.1+cpu",
+  "numpy": "2.5.3",
+  "environment": "GameConfig.m45_calibrated()",
+  "stage": "prereg"
+ },
+ "record": {
+  "document": "docs\\m4\\m4_6\\m4_6b_preregistration.md",
+  "sha256": "b806ca3382244673588c973efa49089acf69ee4371a2bfc5ed4d5c10c7e5eb62",
+  "bytes": 8967
+ },
+ "note": "frozen after the audit of the CURRENT curve and before any candidate gameplay outcome",
+ "amendments": [
+  {
+   "time": "2026-10-15 17:07:36",
+   "note": "EXPLORATORY follow-up (screen_p1x), added after the pre-registered S3 premium (P1) proved underpowered (cross-arm intervals +-0.4 to +-0.9): the same mid / late lead cells, policy against policy, 128 paired rollouts per cell, both orientations, horizon 100 (G50 and G100), seed root 97,500. It does not change the pre-registered verdict on D1; it estimates the effect sizes."
+  }
+ ]
+}

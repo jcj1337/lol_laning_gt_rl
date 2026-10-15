@@ -1,4 +1,4 @@
-"""M4.6a diagnosis stage (docs/m4/m4_6a_preregistration.md): why freezes break cheaply and why combat strength rarely
+"""M4.6a diagnosis stage (docs/m4/m4_6/m4_6a_preregistration.md): why freezes break cheaply and why combat strength rarely
 becomes lane control, separated into mechanics, scale, training distribution, learning and measurement. No rule,
 preset, observation, action space or reward changes; the environment is `GameConfig.m45_calibrated()`.
 

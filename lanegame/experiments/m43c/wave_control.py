@@ -1,4 +1,4 @@
-"""M4.3c quick wave-control screen (docs/m4/m4_3c_wave_control_screen.md): Hold capped at 1 HP per turn, and an
+"""M4.3c quick wave-control screen (docs/m4/m4_3/m4_3c_wave_control_screen.md): Hold capped at 1 HP per turn, and an
 adaptive Thin that only removes the enemy wave's excess, against the M4.2e-C share model.
 
 Three configurations of the research preset (opt-in fields; `m4_lasthit()` itself is unchanged):

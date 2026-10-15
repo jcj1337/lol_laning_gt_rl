@@ -1,4 +1,4 @@
-"""M4.2d-C: combat-driven zoning (docs/m4/m4_zoning_report.md).
+"""M4.2d-C: combat-driven zoning (docs/m4/m4_2/m4_zoning_report.md).
 
 Controlled counterfactuals of the M4 resolver: from one fixed state, every pair of lane behaviors (Hold, Yield, Trade,
 Safe; both waves Slow Push, no objective) is played for one turn and, as a stationary pair, for a short window of

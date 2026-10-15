@@ -1,4 +1,4 @@
-"""M4.3d (docs/m4/m4_3d_tower_pressure_calibration.md): the study's instruments (farm-loss ledger, chance masks,
+"""M4.3d (docs/m4/m4_3/m4_3d_tower_pressure_calibration.md): the study's instruments (farm-loss ledger, chance masks,
 post-crash strategies, the crash grid) and the configurations it compares. Nothing here changes a preset."""
 
 import numpy as np

@@ -1,4 +1,4 @@
-"""M4.5a unified positional mechanics (GameConfig.m45_unified(); docs/m4/m4_5a_unified_mechanics_spec.md).
+"""M4.5a unified positional mechanics (GameConfig.m45_unified(); docs/m4/m4_5/m4_5a_unified_mechanics_spec.md).
 
 Deterministic scenario tests of every new rule (the movement graph and the Vision node W, Ward placement and its
 interruption, per-tick minion retaliation and positional aggro with exclusive targeting, minion damage scaling, the

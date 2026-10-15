@@ -1,4 +1,4 @@
-"""M4 champion state and turn resolution (docs/m4/m4_integrated_design.md; plan WP4-WP6).
+"""M4 champion state and turn resolution (docs/m4/m4_1/m4_integrated_design.md; plan WP4-WP6).
 
 A separately versioned resolver for `GameConfig.m4()`. The M2 resolver `champions.resolve_turn` is not edited;
 this module reuses its pure helpers (contact, movement, evasion, farm collection, gank and trade probabilities,
@@ -30,11 +30,11 @@ legality) and adds, in the order of design §5:
   step 14  absence bookkeeping: a champion whose timer reaches 0 buys its tiers, then returns with full HP (§8.5);
            M4.3c opt-in `death_turns_by_level`: the absence after a death depends on the start-of-turn level
   step 15  reward r_A = earned_A - earned_B (farm + plate gold + kill bounty), exact in ledger units; M4.3c opt-ins
-           (EXPERIMENTAL, docs/m4/m4_3c_strategic_economics_calibration.md): `xp_reward_weight` lambda adds
+           (EXPERIMENTAL, docs/m4/m4_3/m4_3c_strategic_economics_calibration.md): `xp_reward_weight` lambda adds
            lambda (xp_gain_A - xp_gain_B) in ledger units (M4Turn.xp_reward_units); `terminal_rule = "final_plate"`
            marks the turn in which either tower's damage reaches its last plate threshold as terminal (M4Turn.terminal)
 
-M4.5a opt-ins (EXPERIMENTAL, `GameConfig.m45_unified()`, docs/m4/m4_5a_unified_mechanics_spec.md; every default
+M4.5a opt-ins (EXPERIMENTAL, `GameConfig.m45_unified()`, docs/m4/m4_5/m4_5a_unified_mechanics_spec.md; every default
 reproduces the earlier presets): `vision_rule = "ward"` adds the shared Vision node W (lanegame.positional.WARD) and the
 Ward action (code 30): the warder walks to W (mode "ward": no wave damage, no gold), and its ward is placed at the end of
 the turn unless the enemy's connected Trade damaged it or it died; movement, contact, chase targets, exposure, gold and
@@ -316,7 +316,7 @@ def yield_target(spot: int, lane: State, s: int, cfg: GameConfig) -> int:
     stand-off cell: the rearmost cell still within farm_reach of the enemy's leading minions at the start of the turn
     (enemy front e, mirrored into own coordinates), never ahead of the farm spot, never behind the own tower:
     max(-T, min(spot, e - farm_reach)). With no enemy front on the lane it is the farm spot
-    (docs/m4/m4_positioning_report.md)."""
+    (docs/m4/m4_2/m4_positioning_report.md)."""
     if cfg.position_rule != "standoff":
         return spot
     ex, eh = lane.side(1 - s)[:2]

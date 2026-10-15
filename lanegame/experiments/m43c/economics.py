@@ -1,4 +1,4 @@
-"""M4.3c stabilization, Stage B: economic and strategic calibration (docs/m4/m4_3c_strategic_economics_calibration.md).
+"""M4.3c stabilization, Stage B: economic and strategic calibration (docs/m4/m4_3/m4_3c_strategic_economics_calibration.md).
 
 Everything runs on `GameConfig.m4_four_actions()` or an opt-in variant of it (VARIANTS: one isolated change each, or a
 named combination), through the real environment, with the scripted strategies of `strategies.LIBRARY`, on paired

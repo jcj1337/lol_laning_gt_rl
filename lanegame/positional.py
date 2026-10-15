@@ -1,4 +1,4 @@
-"""M4.5a positional geometry (EXPERIMENTAL, `GameConfig.m45_unified()`; docs/m4/m4_5a_unified_mechanics_spec.md).
+"""M4.5a positional geometry (EXPERIMENTAL, `GameConfig.m45_unified()`; docs/m4/m4_5/m4_5a_unified_mechanics_spec.md).
 
 The champion positions form a small movement graph: the lane cells -T .. T (own coordinates) in a path, plus one shared
 off-lane Vision node W attached to the lane cell 0 (`vision_rule = "ward"`). W is the same physical node for both

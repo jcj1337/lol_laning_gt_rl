@@ -1,4 +1,4 @@
-"""Shared definitions of the M4.3d study (docs/m4/m4_3d_tower_pressure_calibration.md).
+"""Shared definitions of the M4.3d study (docs/m4/m4_3/m4_3d_tower_pressure_calibration.md).
 
 Nothing here changes a preset. Every configuration of the study is `GameConfig.m4_four_actions_econ()` (the M4.3c
 candidate, "econ") or `m4_four_actions()` (the original four-action economy, "base4") with explicit overrides

@@ -1,5 +1,5 @@
 """M4.4c: strategic behaviour investigation and multi-turn counterfactual analysis of the M4.4b PPO policies
-(docs/m4/m4_4c_strategic_investigation.md).
+(docs/m4/m4_4/m4_4c_strategic_investigation.md).
 
 Question: are the missing or imperfect strategies of the trained policies failures of PPO learning, weaknesses of the
 evaluation, or consequences of the simulator's actual incentives? Nothing here trains a network or changes the game:

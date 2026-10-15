@@ -1,4 +1,4 @@
-"""M4.2d-D: continuous investment and observation readiness (docs/m4/m4_investment_readiness_report.md). Mostly analytic.
+"""M4.2d-D: continuous investment and observation readiness (docs/m4/m4_2/m4_investment_readiness_report.md). Mostly analytic.
 `GameConfig.m4()` (two tiers) and the M4.2c `GameConfig.m4_continuous()` defaults are NOT changed; the candidate is
 the opt-in `GameConfig.m4_continuous(**READY)`.
 

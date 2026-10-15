@@ -1,4 +1,4 @@
-"""M4.3c four-action wave management (docs/m4/m4_3c_four_action_wave_redesign.md): deterministic validation of the
+"""M4.3c four-action wave management (docs/m4/m4_3/m4_3c_four_action_wave_redesign.md): deterministic validation of the
 EXPERIMENTAL preset `GameConfig.m4_four_actions()` and the formulation comparison that selected its Thin and Slow Push
 rules. Nothing here changes the game; `m4_lasthit()` is the unchanged baseline.
 
@@ -10,7 +10,7 @@ The four wave actions are per-turn damage budgets on enemy minions out of one wa
     Clear      C
 
 Terminology: this study keeps its original name Clear (CL) for slot SH. The finalized four-action model calls the
-same slot, with the same codes and budget, Shove (config.W_SHOVE, label SH; docs/m4/m4_3c_strategic_economics_calibration.md).
+same slot, with the same codes and budget, Shove (config.W_SHOVE, label SH; docs/m4/m4_3/m4_3c_strategic_economics_calibration.md).
 
 need_m = max(0, ceil(S_enemy - S_own + m)): S is the window strength of mechanics.window_strength (the average minion
 HP fighting at a side's front over the next reinforcement cycle, reinforcements weighted by when they arrive).
@@ -953,7 +953,7 @@ def report(out: dict) -> str:
     L = ["# M4.3c four-action wave management: deterministic validation\n",
          f"Preset `{m['preset']}` (fields {m['fields']}), commit `{m['commit']}` + working tree, {m['timestamp']}. "
          "Deterministic scripted play, no chance events, fixed capacities per window; coordinates GLOBAL. Design and "
-         "reading: docs/m4/m4_3c_four_action_wave_redesign.md.\n",
+         "reading: docs/m4/m4_3/m4_3c_four_action_wave_redesign.md.\n",
          "Tiers (capacity C of A / B): " + ", ".join(f"{k} {v['capacities'][0]}/{v['capacities'][1]}"
                                                      for k, v in m["tiers"].items()) + "\n"]
     _report_formulations(out, L)

@@ -5,7 +5,7 @@ lanegame.experiments.m4.freeze_gate (witnessed Freeze-legal states). Fixed chanc
 uniform 1.0), as in the design prototype. Policies: the S3b gate defenders and attackers (lanegame.env.agents_m4).
 
 Two of the plan's required statements do not hold on the implemented environment. They are kept as STRICT expected
-failures (they would flag if they started to hold) and are reported in docs/m4/m4_implementation_report.md:
+failures (they would flag if they started to hold) and are reported in docs/m4/m4_2/m4_implementation_report.md:
   * SHx "the freeze breaks within 6 turns" against a presser with a 3-5 HP front: measured 6-9 turns (the reach-loss
     of a Shove + Hold breaker on the turns its probe predicts a crash, see tests/test_m4_integration.py);
   * F0 "a 6-8 HP front against the stacker: Freeze's return is below Slow Push's" on the parked starts: Freeze is

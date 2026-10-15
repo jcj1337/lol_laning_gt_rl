@@ -1,4 +1,4 @@
-"""M4.4b analysis code (docs/m4/m4_4b_ppo_training_report.md): the recall / investment metric, viewer-convention
+"""M4.4b analysis code (docs/m4/m4_4/m4_4b_ppo_training_report.md): the recall / investment metric, viewer-convention
 game records and their replay (s0 and initialized starts), the integrity check of a network, the seed statistics and
 the counterfactual alignment of the report, the guard that keeps the M4.4b report out of the M4.4a folder, and the
 CLI stages. No training and no checkpoint files: networks are the untrained initial networks of a seed."""

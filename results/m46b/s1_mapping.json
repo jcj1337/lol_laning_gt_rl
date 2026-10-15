@@ -1,0 +1,1259 @@
+{
+ "meta": {
+  "study": "M4.6b",
+  "commit": "015c974968e400fdb5e7f27e03be2fdfc9a66ebd",
+  "working_tree_dirty": true,
+  "timestamp": "2026-10-15 16:31:48",
+  "python": "3.13.9",
+  "torch": "2.14.1+cpu",
+  "numpy": "2.5.3",
+  "environment": "GameConfig.m45_calibrated()",
+  "stage": "s1"
+ },
+ "arms": {
+  "baseline": {
+   "overrides": {},
+   "label": "current: saturating A 1.5, K 16",
+   "formula": "1 + 1.5 (1 - sqrt(16 / (16 + S)))",
+   "role": "reference"
+  },
+  "C1": {
+   "overrides": {
+    "invest_gain": 3.24,
+    "invest_scale": 64.0
+   },
+   "label": "C1 slow saturation: A 3.24, K 64",
+   "formula": "1 + 3.24 (1 - sqrt(64 / (64 + S)))",
+   "role": "modest candidate"
+  },
+  "C2": {
+   "overrides": {
+    "invest_gain": 9.53,
+    "invest_scale": 256.0
+   },
+   "label": "C2 slower saturation: A 9.53, K 256",
+   "formula": "1 + 9.53 (1 - sqrt(256 / (256 + S)))",
+   "role": "larger candidate"
+  },
+  "C3": {
+   "overrides": {
+    "invest_curve": "power",
+    "invest_alpha": 0.016,
+    "invest_p": 1.0
+   },
+   "label": "C3 linear reference: 1 + 0.016 S",
+   "formula": "1 + 0.016 S",
+   "role": "reference (no diminishing returns)"
+  }
+ },
+ "results": {
+  "baseline": {
+   "stages": {
+    "early": {
+     "level": 8,
+     "S": 9.0,
+     "M": 1.3,
+     "capacity": 7,
+     "pressure": 732,
+     "pressure_turns_per_plate": 2.73224043715847,
+     "exchange_bars_equal": 0.11925355450236966,
+     "leads": {
+      "4.0": {
+       "M_ratio": 1.0660215161059146,
+       "duel_ratio": 1.1364018728007526,
+       "capacity_leader_trailer": [
+        8,
+        7
+       ],
+       "pressure_leader_trailer": [
+        780,
+        732
+       ],
+       "exchange_bars_leader_on_trailer": 0.12707345971563982,
+       "exchange_bars_trailer_on_leader": 0.11186786823777509
+      },
+      "8.0": {
+       "M_ratio": 1.1196415878967791,
+       "duel_ratio": 1.253597285348021,
+       "capacity_leader_trailer": [
+        8,
+        7
+       ],
+       "pressure_leader_trailer": [
+        819,
+        732
+       ],
+       "exchange_bars_leader_on_trailer": 0.13359004739336494,
+       "exchange_bars_trailer_on_leader": 0.10651047245072837
+      },
+      "16.0": {
+       "M_ratio": 1.2022749451295105,
+       "duel_ratio": 1.4454650436861676,
+       "capacity_leader_trailer": [
+        9,
+        7
+       ],
+       "pressure_leader_trailer": [
+        880,
+        732
+       ],
+       "exchange_bars_leader_on_trailer": 0.14336492890995262,
+       "exchange_bars_trailer_on_leader": 0.09918991906591178
+      }
+     }
+    },
+    "mid": {
+     "level": 16,
+     "S": 42.0,
+     "M": 1.7121614028416647,
+     "capacity": 14,
+     "pressure": 1424,
+     "pressure_turns_per_plate": 1.404494382022472,
+     "exchange_bars_equal": 0.11921883778206954,
+     "leads": {
+      "4.0": {
+       "M_ratio": 1.0150907707149042,
+       "duel_ratio": 1.030409272790578,
+       "capacity_leader_trailer": [
+        14,
+        14
+       ],
+       "pressure_leader_trailer": [
+        1445,
+        1424
+       ],
+       "exchange_bars_leader_on_trailer": 0.12097054067082944,
+       "exchange_bars_trailer_on_leader": 0.11744647988288431
+      },
+      "8.0": {
+       "M_ratio": 1.0287879701064007,
+       "duel_ratio": 1.0584046874356483,
+       "capacity_leader_trailer": [
+        15,
+        14
+       ],
+       "pressure_leader_trailer": [
+        1465,
+        1424
+       ],
+       "exchange_bars_leader_on_trailer": 0.12256768153999284,
+       "exchange_bars_trailer_on_leader": 0.11588280699835508
+      },
+      "16.0": {
+       "M_ratio": 1.0527711724755981,
+       "duel_ratio": 1.1083271415956457,
+       "capacity_leader_trailer": [
+        15,
+        14
+       ],
+       "pressure_leader_trailer": [
+        1499,
+        1424
+       ],
+       "exchange_bars_leader_on_trailer": 0.1255043599123256,
+       "exchange_bars_trailer_on_leader": 0.11324287831868123
+      }
+     }
+    },
+    "late": {
+     "level": 18,
+     "S": 108.0,
+     "M": 1.9611840939196754,
+     "capacity": 18,
+     "pressure": 1798,
+     "pressure_turns_per_plate": 1.1123470522803114,
+     "exchange_bars_equal": 0.11925448545351047,
+     "leads": {
+      "4.0": {
+       "M_ratio": 1.0043268860973953,
+       "duel_ratio": 1.0086724941380905,
+       "capacity_leader_trailer": [
+        18,
+        18
+       ],
+       "pressure_leader_trailer": [
+        1806,
+        1798
+       ],
+       "exchange_bars_leader_on_trailer": 0.11964200644267015,
+       "exchange_bars_trailer_on_leader": 0.11874070793515097
+      },
+      "8.0": {
+       "M_ratio": 1.008455574499428,
+       "duel_ratio": 1.0169826457389712,
+       "capacity_leader_trailer": [
+        18,
+        18
+       ],
+       "pressure_leader_trailer": [
+        1813,
+        1798
+       ],
+       "exchange_bars_leader_on_trailer": 0.12017229832257288,
+       "exchange_bars_trailer_on_leader": 0.1182545750839896
+      },
+      "16.0": {
+       "M_ratio": 1.016175612142464,
+       "duel_ratio": 1.0326128747131116,
+       "capacity_leader_trailer": [
+        18,
+        18
+       ],
+       "pressure_leader_trailer": [
+        1827,
+        1798
+       ],
+       "exchange_bars_leader_on_trailer": 0.12117169455777417,
+       "exchange_bars_trailer_on_leader": 0.11735617744464372
+      }
+     }
+    }
+   },
+   "curve": {
+    "0": {
+     "M": 1.0,
+     "elasticity": 0.0,
+     "dlnM_per_res": 0.043812318831301274
+    },
+    "2": {
+     "M": 1.0857864376269049,
+     "elasticity": 0.07235762036917033,
+     "dlnM_per_res": 0.03414924244759064
+    },
+    "5": {
+     "M": 1.1906926585840456,
+     "elasticity": 0.13090341181386642,
+     "dlnM_per_res": 0.0249676569644465
+    },
+    "9": {
+     "M": 1.3,
+     "elasticity": 0.16615055164472084,
+     "dlnM_per_res": 0.017766762339995135
+    },
+    "15": {
+     "M": 1.4223681878393506,
+     "elasticity": 0.18329608794911983,
+     "dlnM_per_res": 0.011861335443914267
+    },
+    "22": {
+     "M": 1.5266714732154247,
+     "elasticity": 0.18455318490948266,
+     "dlnM_per_res": 0.008193133346804715
+    },
+    "35": {
+     "M": 1.6598319495831941,
+     "elasticity": 0.17368909063873583,
+     "dlnM_per_res": 0.0048787889482609925
+    },
+    "42": {
+     "M": 1.7121614028416647,
+     "elasticity": 0.16660496529437072,
+     "dlnM_per_res": 0.003908531164752649
+    },
+    "56": {
+     "M": 1.7928932188134525,
+     "elasticity": 0.1533777216580216,
+     "dlnM_per_res": 0.002706978367208679
+    },
+    "76": {
+     "M": 1.8744567578287756,
+     "elasticity": 0.13784331560039503,
+     "dlnM_per_res": 0.0017974250756161991
+    },
+    "108": {
+     "M": 1.9611840939196754,
+     "elasticity": 0.11964755716733218,
+     "dlnM_per_res": 0.00110056130051428
+    },
+    "116": {
+     "M": 1.9777670321329064,
+     "elasticity": 0.11602543775386635,
+     "dlnM_per_res": 0.000994054727735838
+    },
+    "154": {
+     "M": 2.039821006691578,
+     "elasticity": 0.10218508209646812,
+     "dlnM_per_res": 0.0006603916052274617
+    },
+    "234": {
+     "M": 2.1205266807797947,
+     "elasticity": 0.0837520251248676,
+     "dlnM_per_res": 0.00035677098342756786
+    },
+    "500": {
+     "M": 2.235864728102313,
+     "elasticity": 0.05723794672647558,
+     "dlnM_per_res": 0.0001142998539286344
+    }
+   },
+   "capacity_by_level": {
+    "1": {
+     "S": 0.0,
+     "C": 4,
+     "C_zero": 4
+    },
+    "2": {
+     "S": 0.0,
+     "C": 4,
+     "C_zero": 4
+    },
+    "3": {
+     "S": 0.0,
+     "C": 4,
+     "C_zero": 4
+    },
+    "4": {
+     "S": 2.0,
+     "C": 5,
+     "C_zero": 5
+    },
+    "6": {
+     "S": 8.0,
+     "C": 7,
+     "C_zero": 5
+    },
+    "8": {
+     "S": 16.0,
+     "C": 8,
+     "C_zero": 6
+    },
+    "10": {
+     "S": 24.0,
+     "C": 10,
+     "C_zero": 6
+    },
+    "11": {
+     "S": 32.0,
+     "C": 11,
+     "C_zero": 7
+    },
+    "13": {
+     "S": 48.0,
+     "C": 13,
+     "C_zero": 7
+    },
+    "15": {
+     "S": 64.0,
+     "C": 14,
+     "C_zero": 8
+    },
+    "18": {
+     "S": 128.0,
+     "C": 18,
+     "C_zero": 9
+    }
+   },
+   "bounds": {
+    "max_wave_budget": 24,
+    "per_turn_bound": 11.75,
+    "tail_constant": 145.10628128014437
+   }
+  },
+  "C1": {
+   "stages": {
+    "early": {
+     "level": 8,
+     "S": 9.0,
+     "M": 1.2062934646762957,
+     "capacity": 7,
+     "pressure": 679,
+     "pressure_turns_per_plate": 2.9455081001472756,
+     "exchange_bars_equal": 0.11922562316623941,
+     "leads": {
+      "4.0": {
+       "M_ratio": 1.0661931742383397,
+       "duel_ratio": 1.1367678847924265,
+       "capacity_leader_trailer": [
+        7,
+        7
+       ],
+       "pressure_leader_trailer": [
+        724,
+        679
+       ],
+       "exchange_bars_leader_on_trailer": 0.1271127735886549,
+       "exchange_bars_trailer_on_leader": 0.11182366014621228
+      },
+      "8.0": {
+       "M_ratio": 1.1274205156743935,
+       "duel_ratio": 1.2710770191635155,
+       "capacity_leader_trailer": [
+        8,
+        7
+       ],
+       "pressure_leader_trailer": [
+        765,
+        679
+       ],
+       "exchange_bars_leader_on_trailer": 0.13429764349400597,
+       "exchange_bars_trailer_on_leader": 0.1057508015054363
+      },
+      "16.0": {
+       "M_ratio": 1.2372490929676203,
+       "duel_ratio": 1.5307853180491993,
+       "capacity_leader_trailer": [
+        8,
+        7
+       ],
+       "pressure_leader_trailer": [
+        840,
+        679
+       ],
+       "exchange_bars_leader_on_trailer": 0.14747890858352225,
+       "exchange_bars_trailer_on_leader": 0.09636347591111925
+      }
+     }
+    },
+    "mid": {
+     "level": 16,
+     "S": 42.0,
+     "M": 1.7224270447699712,
+     "capacity": 14,
+     "pressure": 1432,
+     "pressure_turns_per_plate": 1.3966480446927374,
+     "exchange_bars_equal": 0.11917407205761055,
+     "leads": {
+      "4.0": {
+       "M_ratio": 1.0268214111278213,
+       "duel_ratio": 1.0543622103505303,
+       "capacity_leader_trailer": [
+        15,
+        14
+       ],
+       "pressure_leader_trailer": [
+        1471,
+        1432
+       ],
+       "exchange_bars_leader_on_trailer": 0.12242613633593383,
+       "exchange_bars_trailer_on_leader": 0.11606114828353094
+      },
+      "8.0": {
+       "M_ratio": 1.0522184854698968,
+       "duel_ratio": 1.1071637411645634,
+       "capacity_leader_trailer": [
+        15,
+        14
+       ],
+       "pressure_leader_trailer": [
+        1507,
+        1432
+       ],
+       "exchange_bars_leader_on_trailer": 0.12549895297686922,
+       "exchange_bars_trailer_on_leader": 0.11325981600141737
+      },
+      "16.0": {
+       "M_ratio": 1.0992125723564508,
+       "duel_ratio": 1.2082682792264854,
+       "capacity_leader_trailer": [
+        16,
+        14
+       ],
+       "pressure_leader_trailer": [
+        1574,
+        1432
+       ],
+       "exchange_bars_leader_on_trailer": 0.13108123654123516,
+       "exchange_bars_trailer_on_leader": 0.10841767557491598
+      }
+     }
+    },
+    "late": {
+     "level": 18,
+     "S": 108.0,
+     "M": 2.2636185284894434,
+     "capacity": 21,
+     "pressure": 2075,
+     "pressure_turns_per_plate": 0.963855421686747,
+     "exchange_bars_equal": 0.11922503575728201,
+     "leads": {
+      "4.0": {
+       "M_ratio": 1.0099786948915468,
+       "duel_ratio": 1.0200569641348323,
+       "capacity_leader_trailer": [
+        21,
+        21
+       ],
+       "pressure_leader_trailer": [
+        2096,
+        2075
+       ],
+       "exchange_bars_leader_on_trailer": 0.12037363918461613,
+       "exchange_bars_trailer_on_leader": 0.11804707996348832
+      },
+      "8.0": {
+       "M_ratio": 1.0196228906910298,
+       "duel_ratio": 1.0396308392211318,
+       "capacity_leader_trailer": [
+        21,
+        21
+       ],
+       "pressure_leader_trailer": [
+        2116,
+        2075
+       ],
+       "exchange_bars_leader_on_trailer": 0.12152224261195027,
+       "exchange_bars_trailer_on_leader": 0.11693052092669236
+      },
+      "16.0": {
+       "M_ratio": 1.0379795361346567,
+       "duel_ratio": 1.077401517434317,
+       "capacity_leader_trailer": [
+        22,
+        21
+       ],
+       "pressure_leader_trailer": [
+        2154,
+        2075
+       ],
+       "exchange_bars_leader_on_trailer": 0.12376643700074154,
+       "exchange_bars_trailer_on_leader": 0.11486260721600103
+      }
+     }
+    }
+   },
+   "curve": {
+    "0": {
+     "M": 1.0,
+     "elasticity": 0.0,
+     "dlnM_per_res": 0.024711811867251406
+    },
+    "2": {
+     "M": 1.0494685538156956,
+     "elasticity": 0.04606120421978302,
+     "dlnM_per_res": 0.022517473817099426
+    },
+    "5": {
+     "M": 1.1195986880168622,
+     "elasticity": 0.1009775990585144,
+     "dlnM_per_res": 0.019782296650110748
+    },
+    "9": {
+     "M": 1.2062934646762957,
+     "elasticity": 0.15502336219928925,
+     "dlnM_per_res": 0.016906635046411933
+    },
+    "15": {
+     "M": 1.3237721607997461,
+     "elasticity": 0.2091369683778196,
+     "dlnM_per_res": 0.01371733407535558
+    },
+    "22": {
+     "M": 1.4449745185668763,
+     "elasticity": 0.24740590658419317,
+     "dlnM_per_res": 0.011087150749374941
+    },
+    "35": {
+     "M": 1.6349419828481222,
+     "elasticity": 0.2816509466957438,
+     "dlnM_per_res": 0.007955112264214192
+    },
+    "42": {
+     "M": 1.7224270447699712,
+     "elasticity": 0.2895672179001426,
+     "dlnM_per_res": 0.006822810982153982
+    },
+    "56": {
+     "M": 1.8738385515776823,
+     "elasticity": 0.2946362371461511,
+     "dlnM_per_res": 0.005215116260806729
+    },
+    "76": {
+     "M": 2.049360171743685,
+     "elasticity": 0.29014034275391615,
+     "dlnM_per_res": 0.003790115005000816
+    },
+    "108": {
+     "M": 2.2636185284894434,
+     "elasticity": 0.2741168709394196,
+     "dlnM_per_res": 0.0025239004408604826
+    },
+    "116": {
+     "M": 2.3080372674401817,
+     "elasticity": 0.2697211030985351,
+     "dlnM_per_res": 0.0023128428969965142
+    },
+    "154": {
+     "M": 2.484476083847478,
+     "elasticity": 0.24958120366862313,
+     "dlnM_per_res": 0.0016137786507829377
+    },
+    "234": {
+     "M": 2.738494715025828,
+     "elasticity": 0.21527469999265125,
+     "dlnM_per_res": 0.0009172298158484082
+    },
+    "500": {
+     "M": 3.1485711102977914,
+     "elasticity": 0.15365775335208773,
+     "dlnM_per_res": 0.00030685213901771036
+    }
+   },
+   "capacity_by_level": {
+    "1": {
+     "S": 0.0,
+     "C": 4,
+     "C_zero": 4
+    },
+    "2": {
+     "S": 0.0,
+     "C": 4,
+     "C_zero": 4
+    },
+    "3": {
+     "S": 0.0,
+     "C": 4,
+     "C_zero": 4
+    },
+    "4": {
+     "S": 2.0,
+     "C": 5,
+     "C_zero": 5
+    },
+    "6": {
+     "S": 8.0,
+     "C": 6,
+     "C_zero": 5
+    },
+    "8": {
+     "S": 16.0,
+     "C": 8,
+     "C_zero": 6
+    },
+    "10": {
+     "S": 24.0,
+     "C": 9,
+     "C_zero": 6
+    },
+    "11": {
+     "S": 32.0,
+     "C": 10,
+     "C_zero": 7
+    },
+    "13": {
+     "S": 48.0,
+     "C": 13,
+     "C_zero": 7
+    },
+    "15": {
+     "S": 64.0,
+     "C": 15,
+     "C_zero": 8
+    },
+    "18": {
+     "S": 128.0,
+     "C": 22,
+     "C_zero": 9
+    }
+   },
+   "bounds": {
+    "max_wave_budget": 40,
+    "per_turn_bound": 13.55,
+    "tail_constant": 145.10628128014437
+   }
+  },
+  "C2": {
+   "stages": {
+    "early": {
+     "level": 8,
+     "S": 9.0,
+     "M": 1.1632280585159123,
+     "capacity": 7,
+     "pressure": 655,
+     "pressure_turns_per_plate": 3.053435114503817,
+     "exchange_bars_equal": 0.11926994938187345,
+     "leads": {
+      "4.0": {
+       "M_ratio": 1.0600933407135673,
+       "duel_ratio": 1.1237978910252515,
+       "capacity_leader_trailer": [
+        7,
+        7
+       ],
+       "pressure_leader_trailer": [
+        694,
+        655
+       ],
+       "exchange_bars_leader_on_trailer": 0.12655275512148997,
+       "exchange_bars_trailer_on_leader": 0.11250891294307232
+      },
+      "8.0": {
+       "M_ratio": 1.118861062831126,
+       "duel_ratio": 1.251850077919597,
+       "capacity_leader_trailer": [
+        7,
+        7
+       ],
+       "pressure_leader_trailer": [
+        733,
+        655
+       ],
+       "exchange_bars_leader_on_trailer": 0.13327534503498212,
+       "exchange_bars_trailer_on_leader": 0.10659942806489041
+      },
+      "16.0": {
+       "M_ratio": 1.232609374257587,
+       "duel_ratio": 1.5193258695076801,
+       "capacity_leader_trailer": [
+        8,
+        7
+       ],
+       "pressure_leader_trailer": [
+        807,
+        655
+       ],
+       "exchange_bars_leader_on_trailer": 0.14711267594025348,
+       "exchange_bars_trailer_on_leader": 0.09676216315790308
+      }
+     }
+    },
+    "mid": {
+     "level": 16,
+     "S": 42.0,
+     "M": 1.6970707618494703,
+     "capacity": 14,
+     "pressure": 1411,
+     "pressure_turns_per_plate": 1.4174344436569808,
+     "exchange_bars_equal": 0.11926536523060725,
+     "leads": {
+      "4.0": {
+       "M_ratio": 1.0345838317450098,
+       "duel_ratio": 1.0703637049081867,
+       "capacity_leader_trailer": [
+        15,
+        14
+       ],
+       "pressure_leader_trailer": [
+        1460,
+        1411
+       ],
+       "exchange_bars_leader_on_trailer": 0.12331971192399901,
+       "exchange_bars_trailer_on_leader": 0.11527858987458271
+      },
+      "8.0": {
+       "M_ratio": 1.0684873135051924,
+       "duel_ratio": 1.1416651391215433,
+       "capacity_leader_trailer": [
+        15,
+        14
+       ],
+       "pressure_leader_trailer": [
+        1508,
+        1411
+       ],
+       "exchange_bars_leader_on_trailer": 0.12737405861739076,
+       "exchange_bars_trailer_on_leader": 0.11162075929507764
+      },
+      "16.0": {
+       "M_ratio": 1.1343403155775058,
+       "duel_ratio": 1.2867279515444754,
+       "capacity_leader_trailer": [
+        16,
+        14
+       ],
+       "pressure_leader_trailer": [
+        1601,
+        1411
+       ],
+       "exchange_bars_leader_on_trailer": 0.13514488977972494,
+       "exchange_bars_trailer_on_leader": 0.10514072681079654
+      }
+     }
+    },
+    "late": {
+     "level": 18,
+     "S": 108.0,
+     "M": 2.5378764048320948,
+     "capacity": 23,
+     "pressure": 2327,
+     "pressure_turns_per_plate": 0.8594757198109153,
+     "exchange_bars_equal": 0.11920202237745091,
+     "leads": {
+      "4.0": {
+       "M_ratio": 1.017161643974974,
+       "duel_ratio": 1.0346178099738716,
+       "capacity_leader_trailer": [
+        24,
+        23
+       ],
+       "pressure_leader_trailer": [
+        2367,
+        2327
+       ],
+       "exchange_bars_leader_on_trailer": 0.12125097952528491,
+       "exchange_bars_trailer_on_leader": 0.11719083499021886
+      },
+      "8.0": {
+       "M_ratio": 1.0340457377587935,
+       "duel_ratio": 1.0692505877771274,
+       "capacity_leader_trailer": [
+        24,
+        23
+       ],
+       "pressure_leader_trailer": [
+        2406,
+        2327
+       ],
+       "exchange_bars_leader_on_trailer": 0.12318960821131247,
+       "exchange_bars_trailer_on_leader": 0.11527732093921803
+      },
+      "16.0": {
+       "M_ratio": 1.067010607193829,
+       "duel_ratio": 1.1385116358641436,
+       "capacity_leader_trailer": [
+        25,
+        23
+       ],
+       "pressure_leader_trailer": [
+        2483,
+        2327
+       ],
+       "exchange_bars_leader_on_trailer": 0.12719295525400354,
+       "exchange_bars_trailer_on_leader": 0.11171587383835363
+      }
+     }
+    }
+   },
+   "curve": {
+    "0": {
+     "M": 1.0,
+     "elasticity": 0.0,
+     "dlnM_per_res": 0.01838881172004509
+    },
+    "2": {
+     "M": 1.0370098485512018,
+     "elasticity": 0.035480194760056934,
+     "dlnM_per_res": 0.017534647393868577
+    },
+    "5": {
+     "M": 1.091724944921044,
+     "elasticity": 0.0828065290746257,
+     "dlnM_per_res": 0.01637953172536248
+    },
+    "9": {
+     "M": 1.1632280585159123,
+     "elasticity": 0.1367343696713993,
+     "dlnM_per_res": 0.015036713344072916
+    },
+    "15": {
+     "M": 1.2674996402089598,
+     "elasticity": 0.20223621495285374,
+     "dlnM_per_res": 0.013356041416174663
+    },
+    "22": {
+     "M": 1.3848573257507841,
+     "elasticity": 0.2612887412335785,
+     "dlnM_per_res": 0.011775555183317132
+    },
+    "35": {
+     "M": 1.5914640989151463,
+     "elasticity": 0.3377563267408524,
+     "dlnM_per_res": 0.0095795952126711
+    },
+    "42": {
+     "M": 1.6970707618494703,
+     "elasticity": 0.3667731406032386,
+     "dlnM_per_res": 0.008673261859816983
+    },
+    "56": {
+     "M": 1.897519891681602,
+     "elasticity": 0.40826662971213745,
+     "dlnM_per_res": 0.007246822679544573
+    },
+    "76": {
+     "M": 2.161572818386008,
+     "elasticity": 0.44311104536340296,
+     "dlnM_per_res": 0.0058005073769721305
+    },
+    "108": {
+     "M": 2.5378764048320948,
+     "elasticity": 0.4671750994754759,
+     "dlnM_per_res": 0.004307555896474802
+    },
+    "116": {
+     "M": 2.624280279375238,
+     "elasticity": 0.46969114972842524,
+     "dlnM_per_res": 0.004032809768230283
+    },
+    "154": {
+     "M": 2.999549555143529,
+     "elasticity": 0.47148743273634325,
+     "dlnM_per_res": 0.003051369086215061
+    },
+    "234": {
+     "M": 3.6416557482503644,
+     "elasticity": 0.45165562998431374,
+     "dlnM_per_res": 0.0019253407985782012
+    },
+    "500": {
+     "M": 4.984356016135981,
+     "elasticity": 0.36793273273608706,
+     "dlnM_per_res": 0.0007348538459013287
+    }
+   },
+   "capacity_by_level": {
+    "1": {
+     "S": 0.0,
+     "C": 4,
+     "C_zero": 4
+    },
+    "2": {
+     "S": 0.0,
+     "C": 4,
+     "C_zero": 4
+    },
+    "3": {
+     "S": 0.0,
+     "C": 4,
+     "C_zero": 4
+    },
+    "4": {
+     "S": 2.0,
+     "C": 5,
+     "C_zero": 5
+    },
+    "6": {
+     "S": 8.0,
+     "C": 6,
+     "C_zero": 5
+    },
+    "8": {
+     "S": 16.0,
+     "C": 7,
+     "C_zero": 6
+    },
+    "10": {
+     "S": 24.0,
+     "C": 9,
+     "C_zero": 6
+    },
+    "11": {
+     "S": 32.0,
+     "C": 10,
+     "C_zero": 7
+    },
+    "13": {
+     "S": 48.0,
+     "C": 13,
+     "C_zero": 7
+    },
+    "15": {
+     "S": 64.0,
+     "C": 16,
+     "C_zero": 8
+    },
+    "18": {
+     "S": 128.0,
+     "C": 25,
+     "C_zero": 9
+    }
+   },
+   "bounds": {
+    "max_wave_budget": 98,
+    "per_turn_bound": 20.075000000000003,
+    "tail_constant": 145.10628128014437
+   }
+  },
+  "C3": {
+   "stages": {
+    "early": {
+     "level": 8,
+     "S": 9.0,
+     "M": 1.144,
+     "capacity": 6,
+     "pressure": 644,
+     "pressure_turns_per_plate": 3.1055900621118013,
+     "exchange_bars_equal": 0.1192239336492891,
+     "leads": {
+      "4.0": {
+       "M_ratio": 1.055944055944056,
+       "duel_ratio": 1.1150178492835838,
+       "capacity_leader_trailer": [
+        7,
+        6
+       ],
+       "pressure_leader_trailer": [
+        680,
+        644
+       ],
+       "exchange_bars_leader_on_trailer": 0.1258886255924171,
+       "exchange_bars_trailer_on_leader": 0.11290743385330027
+      },
+      "8.0": {
+       "M_ratio": 1.111888111888112,
+       "duel_ratio": 1.236295173358111,
+       "capacity_leader_trailer": [
+        7,
+        6
+       ],
+       "pressure_leader_trailer": [
+        716,
+        644
+       ],
+       "exchange_bars_leader_on_trailer": 0.13255331753554503,
+       "exchange_bars_trailer_on_leader": 0.10722655667829145
+      },
+      "16.0": {
+       "M_ratio": 1.2237762237762237,
+       "duel_ratio": 1.497628245879994,
+       "capacity_leader_trailer": [
+        8,
+        6
+       ],
+       "pressure_leader_trailer": [
+        788,
+        644
+       ],
+       "exchange_bars_leader_on_trailer": 0.14588270142180096,
+       "exchange_bars_trailer_on_leader": 0.09742298578199052
+      }
+     }
+    },
+    "mid": {
+     "level": 16,
+     "S": 42.0,
+     "M": 1.672,
+     "capacity": 14,
+     "pressure": 1390,
+     "pressure_turns_per_plate": 1.4388489208633093,
+     "exchange_bars_equal": 0.11925990798970162,
+     "leads": {
+      "4.0": {
+       "M_ratio": 1.0382775119617225,
+       "duel_ratio": 1.0780201918454246,
+       "capacity_leader_trailer": [
+        14,
+        14
+       ],
+       "pressure_leader_trailer": [
+        1444,
+        1390
+       ],
+       "exchange_bars_leader_on_trailer": 0.1237971130713713,
+       "exchange_bars_trailer_on_leader": 0.11486322935413658
+      },
+      "8.0": {
+       "M_ratio": 1.0765550239234452,
+       "duel_ratio": 1.1589707195348096,
+       "capacity_leader_trailer": [
+        15,
+        14
+       ],
+       "pressure_leader_trailer": [
+        1497,
+        1390
+       ],
+       "exchange_bars_leader_on_trailer": 0.1282551808551049,
+       "exchange_bars_trailer_on_leader": 0.11077920342154506
+      },
+      "16.0": {
+       "M_ratio": 1.1531100478468899,
+       "duel_ratio": 1.3296627824454565,
+       "capacity_leader_trailer": [
+        16,
+        14
+       ],
+       "pressure_leader_trailer": [
+        1603,
+        1390
+       ],
+       "exchange_bars_leader_on_trailer": 0.1375142447136285,
+       "exchange_bars_trailer_on_leader": 0.10342456750974124
+      }
+     }
+    },
+    "late": {
+     "level": 18,
+     "S": 108.0,
+     "M": 2.728,
+     "capacity": 25,
+     "pressure": 2501,
+     "pressure_turns_per_plate": 0.7996801279488205,
+     "exchange_bars_equal": 0.11917888563049853,
+     "leads": {
+      "4.0": {
+       "M_ratio": 1.0234604105571845,
+       "duel_ratio": 1.0474712119778806,
+       "capacity_leader_trailer": [
+        26,
+        25
+       ],
+       "pressure_leader_trailer": [
+        2560,
+        2501
+       ],
+       "exchange_bars_leader_on_trailer": 0.12199413489736069,
+       "exchange_bars_trailer_on_leader": 0.11644699140401148
+      },
+      "8.0": {
+       "M_ratio": 1.0469208211143695,
+       "duel_ratio": 1.0960432056827856,
+       "capacity_leader_trailer": [
+        26,
+        25
+       ],
+       "pressure_leader_trailer": [
+        2618,
+        2501
+       ],
+       "exchange_bars_leader_on_trailer": 0.12480938416422287,
+       "exchange_bars_trailer_on_leader": 0.1138375350140056
+      },
+      "16.0": {
+       "M_ratio": 1.093841642228739,
+       "duel_ratio": 1.1964895382736644,
+       "capacity_leader_trailer": [
+        27,
+        25
+       ],
+       "pressure_leader_trailer": [
+        2736,
+        2501
+       ],
+       "exchange_bars_leader_on_trailer": 0.13038123167155424,
+       "exchange_bars_trailer_on_leader": 0.1089544235924933
+      }
+     }
+    }
+   },
+   "curve": {
+    "0": {
+     "M": 1.0,
+     "elasticity": 0.0,
+     "dlnM_per_res": 0.015873349156290163
+    },
+    "2": {
+     "M": 1.032,
+     "elasticity": 0.0310067193124335,
+     "dlnM_per_res": 0.015384918839479442
+    },
+    "5": {
+     "M": 1.08,
+     "elasticity": 0.07407161842004964,
+     "dlnM_per_res": 0.014706147389695473
+    },
+    "9": {
+     "M": 1.144,
+     "elasticity": 0.12586999643544447,
+     "dlnM_per_res": 0.013889112160667155
+    },
+    "15": {
+     "M": 1.24,
+     "elasticity": 0.19354217698803244,
+     "dlnM_per_res": 0.01282068842906145
+    },
+    "22": {
+     "M": 1.352,
+     "elasticity": 0.26034693910610857,
+     "dlnM_per_res": 0.011764841579586405
+    },
+    "35": {
+     "M": 1.56,
+     "elasticity": 0.35896393474933885,
+     "dlnM_per_res": 0.010204170174241689
+    },
+    "42": {
+     "M": 1.672,
+     "elasticity": 0.40190264216254895,
+     "dlnM_per_res": 0.009523881511255494
+    },
+    "56": {
+     "M": 1.896,
+     "elasticity": 0.4725616046456144,
+     "dlnM_per_res": 0.008403410796379518
+    },
+    "76": {
+     "M": 2.216,
+     "elasticity": 0.5487236780056258,
+     "dlnM_per_res": 0.007194275634027081
+    },
+    "108": {
+     "M": 2.728,
+     "elasticity": 0.6334184418557354,
+     "dlnM_per_res": 0.0058479698824231985
+    },
+    "116": {
+     "M": 2.856,
+     "elasticity": 0.6498474295792016,
+     "dlnM_per_res": 0.005586606708639863
+    },
+    "154": {
+     "M": 3.464,
+     "elasticity": 0.7113046828634051,
+     "dlnM_per_res": 0.00460830308619431
+    },
+    "234": {
+     "M": 4.744,
+     "elasticity": 0.7891974975674393,
+     "dlnM_per_res": 0.0033670065479043387
+    },
+    "500": {
+     "M": 9.0,
+     "elasticity": 0.8888826698639822,
+     "dlnM_per_res": 0.0017761994012555071
+    }
+   },
+   "capacity_by_level": {
+    "1": {
+     "S": 0.0,
+     "C": 4,
+     "C_zero": 4
+    },
+    "2": {
+     "S": 0.0,
+     "C": 4,
+     "C_zero": 4
+    },
+    "3": {
+     "S": 0.0,
+     "C": 4,
+     "C_zero": 4
+    },
+    "4": {
+     "S": 2.0,
+     "C": 5,
+     "C_zero": 5
+    },
+    "6": {
+     "S": 8.0,
+     "C": 6,
+     "C_zero": 5
+    },
+    "8": {
+     "S": 16.0,
+     "C": 7,
+     "C_zero": 6
+    },
+    "10": {
+     "S": 24.0,
+     "C": 9,
+     "C_zero": 6
+    },
+    "11": {
+     "S": 32.0,
+     "C": 10,
+     "C_zero": 7
+    },
+    "13": {
+     "S": 48.0,
+     "C": 13,
+     "C_zero": 7
+    },
+    "15": {
+     "S": 64.0,
+     "C": 16,
+     "C_zero": 8
+    },
+    "18": {
+     "S": 128.0,
+     "C": 28,
+     "C_zero": 9
+    }
+   },
+   "bounds": {
+    "max_wave_budget": 408,
+    "per_turn_bound": 54.95,
+    "tail_constant": 145.10628128014437
+   }
+  }
+ }
+}

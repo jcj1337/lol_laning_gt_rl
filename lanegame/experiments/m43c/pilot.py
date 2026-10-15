@@ -1,4 +1,4 @@
-"""M4.3c stabilization, Stage B: a bounded PPO pilot (docs/m4/m4_3c_strategic_economics_calibration.md §8).
+"""M4.3c stabilization, Stage B: a bounded PPO pilot (docs/m4/m4_3/m4_3c_strategic_economics_calibration.md §8).
 
 EXPLORATORY: a short shared-policy self-play run per (variant, seed) shows whether learned play reacts to a candidate
 economy at all; it is not a convergence or equilibrium result. Training is `lanegame.rl.train_shared` with the M4.3b

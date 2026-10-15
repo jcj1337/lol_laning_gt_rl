@@ -1,4 +1,4 @@
-"""M4.3c four-action wave management (docs/m4/m4_3c_four_action_wave_redesign.md): the EXPERIMENTAL preset
+"""M4.3c four-action wave management (docs/m4/m4_3/m4_3c_four_action_wave_redesign.md): the EXPERIMENTAL preset
 GameConfig.m4_four_actions() (Last Hit / Thin / Slow Push / Shove; the report calls slot SH Clear), the 61-code action
 encoding and its compatibility with every historical code, the window-strength target (mechanics.window_strength /
 strength_need), the budgets, the global correctness guarantees on the new preset, the RL interfaces, and pins of the

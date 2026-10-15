@@ -1,4 +1,4 @@
-"""M4.5b calibration infrastructure (lanegame/experiments/m45b; docs/m4/m4_5b_calibration_report.md).
+"""M4.5b calibration infrastructure (lanegame/experiments/m45b; docs/m4/m4_5/m4_5b_calibration_report.md).
 
 The experiments must measure the real game: the paired game loop reproduces the viewer (and so the environment) turn
 for turn; the exact one-turn enumeration agrees with Monte Carlo; every scripted strategy only plays legal actions; the

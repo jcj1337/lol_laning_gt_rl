@@ -33,7 +33,7 @@ RAM_RESERVE_GB = 3.0                               # left for the system and the
 BUDGETS = (1_000_000, 2_048_000, 4_000_000, 4_096_000, 5_000_000, 8_000_000, 8_192_000, 10_000_000, 16_384_000)
 SEED_COUNTS = (1, 3, 5, 6, 8, 10)
 
-# ---- the recommendation (from the pilot's measured results; docs/m4/m4_5c_pilot_report.md §8)
+# ---- the recommendation (from the pilot's measured results; docs/m4/m4_5/m4_5c_pilot_report.md §8)
 RECOMMENDED = {
     "label": "default", "seeds": 6, "seed_list": [0, 1, 2, 3, 4, 5], "transitions_per_seed": 8_192_000,
     "updates_per_seed": 2_000, "joint_steps_per_seed": 4_096_000,

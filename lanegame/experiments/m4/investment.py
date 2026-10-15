@@ -1,4 +1,4 @@
-"""M4.2c: continuous gold investment prototype diagnostics (docs/m4/m4_continuous_investment_report.md). Exploratory;
+"""M4.2c: continuous gold investment prototype diagnostics (docs/m4/m4_2/m4_continuous_investment_report.md). Exploratory;
 `GameConfig.m4()` (two tiers) is NOT changed and stays the baseline. The experiment is
 `GameConfig.m4_continuous(invest_alpha=a)` with p = 0.90.
 

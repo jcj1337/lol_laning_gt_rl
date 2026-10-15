@@ -1,4 +1,4 @@
-"""The M4 observation (docs/m4/m4_integrated_design.md §12; plan WP7): lossless, own-perspective, fixed length, every
+"""The M4 observation (docs/m4/m4_1/m4_integrated_design.md §12; plan WP7): lossless, own-perspective, fixed length, every
 entry in [0, 1], a function of (k mod P, lane, M4 champion state, side) only. No absolute time, no countdown.
 
 Layout (88 entries with the default geometry):
@@ -41,7 +41,7 @@ Both quantities are unbounded in the game, so the encoding is lossless only whil
 (the whole-resource entry is then < 1); at or beyond a reference the entry saturates at 1.0, the observation is no
 longer injective and `decode_m4` raises. `observe_m4` does NOT raise there (the game itself has no cap).
 
-M4.2d opt-in (invest_obs_encoding = "compressed", docs/m4/m4_investment_readiness_report.md): the two whole-resource
+M4.2d opt-in (invest_obs_encoding = "compressed", docs/m4/m4_2/m4_investment_readiness_report.md): the two whole-resource
 entries become n / (n + R) (n = floor(S / g) or floor(G / g); R = invest_obs_ref or invest_obs_gold_ref, now the
 half-point), the other three entries are unchanged and the length stays 88. The entry is monotone, < 1 for every
 reachable n (no saturation), well resolved near 0 (one resource of unspent gold moves it by about 1 / R), and

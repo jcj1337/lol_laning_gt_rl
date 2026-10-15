@@ -1,4 +1,4 @@
-"""M4.2d integration: joint feasibility checks of `GameConfig.m4_emergent()` (docs/m4/m4_emergent_parallel_report.md).
+"""M4.2d integration: joint feasibility checks of `GameConfig.m4_emergent()` (docs/m4/m4_2/m4_emergent_parallel_report.md).
 
 Mechanical feasibility, not equilibrium play: short deterministic lines (u = None) and a few paired sampled windows
 (common random numbers), reusing the workstream drivers (wave_readiness, positioning, zoning). Stages:

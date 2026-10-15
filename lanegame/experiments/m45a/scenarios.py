@@ -63,7 +63,7 @@ def ahead_held(cfg: GameConfig) -> Start:
     return lane, _champs(cfg, 0, -1, 3), 2
 
 
-# the M4.5a movement correction (docs/m4/m4_5a_unified_mechanics_report.md §10), level 2, turn 2
+# the M4.5a movement correction (docs/m4/m4_5/m4_5a_unified_mechanics_report.md §10), level 2, turn 2
 def follow(cfg: GameConfig) -> Start:
     """Scenario A: A at the lane cell with its 16-HP front there; B's 2-HP front at A's +1 dies on tick 0."""
     lane = State(0, 16, (), 0, -1, 2, (), 0, 0, 0, 0, 0)

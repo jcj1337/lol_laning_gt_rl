@@ -76,11 +76,11 @@ extensions, not part of the original plan.
 
 | phase | what was done | outcome | record |
 |---|---|---|---|
-| **M4.1** Integrated design | mathematical specification of continuing time, wave dynamics with Freeze maintenance (replaced by natural waves in M4.2e), gold, XP and levels, items and combat power, recalls and purchases, persistent tower damage and plates; implementation plan; design audit | completed | §O; [design](m4/m4_integrated_design.md), [plan](m4/m4_implementation_plan.md), [audit](m4/m4_design_audit.md) |
+| **M4.1** Integrated design | mathematical specification of continuing time, wave dynamics with Freeze maintenance (replaced by natural waves in M4.2e), gold, XP and levels, items and combat power, recalls and purchases, persistent tower damage and plates; implementation plan; design audit | completed | §O; [design](m4/m4_1/m4_integrated_design.md), [plan](m4/m4_2/m4_implementation_plan.md), [audit](m4/m4_1/m4_design_audit.md) |
 | **M4.2** Mechanics implementation and calibration | WP0–WP10 and validation S0–S4 (`GameConfig.m4()`); M4.2b calibration (ganks, items, the Shove → Recall cycle); M4.2c continuous investment (experiment); M4.2d wave readiness, positioning, combat-driven zoning, investment readiness and their integration (`m4_emergent()`); M4.2e-A natural waves (`m4_natural()`); M4.2e-B zoning on natural waves (`m4_lane()`); M4.2e-C wave actions as shares of one capacity (`m4_lasthit()`, the CURRENT reference preset); M4.2e-D visual debugger | completed | §P–§Y |
 | **M4.3** PPO pilot, wave management and economic calibration | M4.3a RL infrastructure audit; M4.3b PPO self-play pilot on `m4_lasthit()` and its follow-up validation (Clear dominance is the game's incentive); M4.3c design (gold + XP objective, laning termination: PROPOSED, not adopted; the living mathematical reference); M4.3c screens (xp_range, wave control); M4.3c four-action redesign (Last Hit / Thin / Slow Push / Shove, `m4_four_actions()`); M4.3c stabilization (Shove terminology, four-action debugger, mixed-action sequences, economic calibration `m4_four_actions_econ()`, exploratory PPO pilot); M4.3d tower farming, pressure and gank risk (`m4_four_actions_econ_aggro()`) | completed | §Z–§AE |
-| **M4.4** PPO self-play and emergent strategy evaluation | M4.4a infrastructure and diagnostics; M4.4b controlled training (3 economies × 3 seeds × 2M transitions, matched 2× extension, initial strategic evaluation); M4.4c deep investigation of strategic behaviour and economic incentives (multi-turn counterfactuals); M4.4d robustness, validation and follow-up research | M4.4a–M4.4c completed (M4.4c: CONDITIONAL GO, reviewed; its design questions became M4.5); M4.4d postponed, its content folded into M4.5c's evaluation | §AF, §AG, §AH; [M4.4a report](m4/m4_4a_ppo_readiness.md), [M4.4b report](m4/m4_4b_ppo_training_report.md), [M4.4c report](m4/m4_4c_strategic_investigation.md) |
-| **M4.5** Unified positional mechanics, calibration and retraining | M4.5a unified mechanics implementation (`m45_unified()`); M4.5b integrated calibration and strategic evaluation (`m45_calibrated()`); M4.5c PPO training and evaluation on the revised model | M4.5a completed (revision 2 committed); M4.5b completed (GO WITH CAVEATS, caveats accepted); M4.5c completed: pilot (GO); six seeds × 8,192,000 and the matched 2× extension × 16,384,000; comprehensive evaluation, battery and attackers (GO WITH CAVEATS) | §AI, §AJ, §AK, §AL, §AM; [M4.5c research report](m4/m4_5c_research_report.md); [M4.5c pilot report](m4/m4_5c_pilot_report.md); [M4.5c training report](m4/m4_5c_training_report.md); [M4.5a spec](m4/m4_5a_unified_mechanics_spec.md), [M4.5a report](m4/m4_5a_unified_mechanics_report.md), [M4.5b report](m4/m4_5b_calibration_report.md), [reference §14–§15](m4/laning_game_mathematical_reference.md#15-experimental-the-m45b-calibrated-candidate-m45_calibrated) |
+| **M4.4** PPO self-play and emergent strategy evaluation | M4.4a infrastructure and diagnostics; M4.4b controlled training (3 economies × 3 seeds × 2M transitions, matched 2× extension, initial strategic evaluation); M4.4c deep investigation of strategic behaviour and economic incentives (multi-turn counterfactuals); M4.4d robustness, validation and follow-up research | M4.4a–M4.4c completed (M4.4c: CONDITIONAL GO, reviewed; its design questions became M4.5); M4.4d postponed, its content folded into M4.5c's evaluation | §AF, §AG, §AH; [M4.4a report](m4/m4_4/m4_4a_ppo_readiness.md), [M4.4b report](m4/m4_4/m4_4b_ppo_training_report.md), [M4.4c report](m4/m4_4/m4_4c_strategic_investigation.md) |
+| **M4.5** Unified positional mechanics, calibration and retraining | M4.5a unified mechanics implementation (`m45_unified()`); M4.5b integrated calibration and strategic evaluation (`m45_calibrated()`); M4.5c PPO training and evaluation on the revised model | M4.5a completed (revision 2 committed); M4.5b completed (GO WITH CAVEATS, caveats accepted); M4.5c completed: pilot (GO); six seeds × 8,192,000 and the matched 2× extension × 16,384,000; comprehensive evaluation, battery and attackers (GO WITH CAVEATS) | §AI, §AJ, §AK, §AL, §AM; [M4.5c research report](m4/m4_5/m4_5c_research_report.md); [M4.5c pilot report](m4/m4_5/m4_5c_pilot_report.md); [M4.5c training report](m4/m4_5/m4_5c_training_report.md); [M4.5a spec](m4/m4_5/m4_5a_unified_mechanics_spec.md), [M4.5a report](m4/m4_5/m4_5a_unified_mechanics_report.md), [M4.5b report](m4/m4_5/m4_5b_calibration_report.md), [reference §14–§15](m4/laning_game_mathematical_reference.md#15-experimental-the-m45b-calibrated-candidate-m45_calibrated) |
 
 ### What is what
 
@@ -89,13 +89,13 @@ extensions, not part of the original plan.
 | **implemented and tested** | the exact game and its solver (legacy configurations bit-identical, pinned); `LaneEnv` and the PettingZoo adapter; the M4 ruleset and every preset up to `m4_four_actions_econ_aggro()`; masked PPO, GAE, shared-policy self-play, checkpoints with verified digests; the discounted evaluator with its guaranteed tail bound; counterfactual branching and action audits; the M4.3b (three-action) and M4.4 (four-action) diagnostic packages; the visual debugger; the M4.4b trained checkpoints (3 economies × 3 seeds at 2,048,000 and 4,096,000 transitions, git-ignored) and their supplementary analysis stages; the M4.4c multi-turn counterfactual package (`experiments/rl/m44c`: strategic plans, paired multi-turn engine, opponent styles, resumable runs); the M4.5a unified positional mechanics (`positional.py`; the Ward, minion-targeting, trade-budget and reach rules; the 90-entry observation; the viewer's W node; `experiments/m45a` demonstrations and smoke study); the M4.5b calibration package (`experiments/m45b`: paired engine and ledger, exact one-turn enumeration, contingent strategies, freeze / trade / Vision / zoning / matrix / timing studies, sensitivity, holdout validation, learned reference, recordings) and the opt-in farm-spot rule `"last_front"` |
 | **experimental candidates** (opt-in, not defaults) | `m45_calibrated()` (M4.5b; the candidate for M4.5c); `m45_unified()` (M4.5a revision 2, the M4.5b baseline) and `m45_unified_r1()`; `m4_four_actions()`, `m4_four_actions_econ()`, `m4_four_actions_econ_aggro()` (the M4.4 comparison); opt-in fields `xp_reward_weight`, `death_turns_by_level`, `terminal_rule = "final_plate"` (not recommended); the earlier experiments `m4_continuous()`, `m4_emergent()` |
 | **adopted research baselines** | objective: the discounted gold lead, γ = 0.99, continuing time, no terminal state; reference preset of the living [mathematical reference](m4/laning_game_mathematical_reference.md): `m4_lasthit()`; PPO settings: the M4.3b `ent03` condition (entropy 0.03, 100% current-policy shared self-play, 2,048,000 transitions, 16 × 128-turn segments, 512-turn bootstrapped games); evaluation: paired seats, E1 from s0, W = 1000 headline; candidate for substantial training: `m4_four_actions_econ_aggro()` with `m4_four_actions()` as the control and `m4_four_actions_econ()` as the dive control |
-| **underway** | nothing: M4.5c is complete (§AM). Next phase pending a decision: M5 adaptive-opponent work or an M4.6 design review of Vision payoff, freeze durability and zoning payoff ([research report §10](m4/m4_5c_research_report.md)) |
+| **underway** | M4.6 design review (§AN): M4.6a diagnosis done; M4.6b investment audit and candidate screen done, awaiting review (recommendation: retain the current curve for now, settle the failed criteria D4 / D2 before a C1 pilot). M5 adaptive-opponent work remains proposed |
 | **proposed** | M5, M6 (below) |
 | **unresolved questions** | Answered by M4.4c (§AH): the interrupted Recall is a rational guessing game (Recall is the best default; a small ≈ 0.1-resource conditional gap); freezes pay only against opponents that concede them; the stronger side does zone, through kills and forced Recalls; Vision-first does not pay in typical (short) sieges; Last Hit / Thin / Slow Push coincide in 68–77% of turns. Open: How exploitable are four-action policies (no four-action attacker yet)? How much value do they leave against conceding / passive opponents (+0.4 to +1.0 measured in probes)? Does Vision-first pay in long sieges (positive trend, unresolved)? **Design decisions after review**: Vision, combat-wave coupling, minion aggro and the XP range were revised together in M4.5a (§AI), to be calibrated in M4.5b; still open: whether to keep three non-Shove wave actions that coincide in most states, whether a champion may step into its own tower cell by choice. **Answered by M4.5b** (§AJ): Ward value is situational and contestable; early trades into big waves cost HP with retaliation from the exchange tick; freezes held with Thin + Trade pay conditionally (mid- and late game; punishing walk-ups when stronger); Safe costs 0.15–0.56 farm per turn and threat-only zoning exists near the weaker side's tower; scripted restricted games are Shove-centred, which learned policies beat. **Open after M4.5b**: accept the 21% mid-to-late minion share or adopt `minion_damage_growth = 1.12` after fresh validation; whether PPO on the candidate learns freezes, wards and selective trading (M4.5c). Structural limits documented earlier remain: contact geometry at the tower, ganks independent of the opponent, a weak XP economy on a five-cell lane. The M4.3c objective / termination proposal remains undecided. |
 
 ### M4.4 plan
 
-**M4.4a — PPO infrastructure and diagnostics** (completed; [report](m4/m4_4a_ppo_readiness.md))
+**M4.4a — PPO infrastructure and diagnostics** (completed; [report](m4/m4_4/m4_4a_ppo_readiness.md))
 
 | | |
 |---|---|
@@ -105,7 +105,7 @@ extensions, not part of the original plan.
 | completion criteria | every smoke pipeline check passes; re-training is bit-identical; the regression suite passes; the M4.4b specification has a measured runtime; the review approves M4.4b |
 | dependencies | M4.3a (audited trainer), M4.3b (diagnostic patterns), M4.3c (`m4_four_actions()`, `m4_four_actions_econ()`), M4.3d (`m4_four_actions_econ_aggro()`) |
 
-**M4.4b — Controlled PPO self-play training** (completed, in review; [report](m4/m4_4b_ppo_training_report.md), [specification](../results/m44a/m44b_plan.md), [tables](../results/m44b/report.md))
+**M4.4b — Controlled PPO self-play training** (completed, in review; [report](m4/m4_4/m4_4b_ppo_training_report.md), [specification](../results/m44a/m44b_plan.md), [tables](../results/m44b/report.md))
 
 | | |
 |---|---|
@@ -116,7 +116,7 @@ extensions, not part of the original plan.
 | dependencies | M4.4a approved |
 | outcome | all criteria met: 9 / 9 runs at the exact budget, 81 / 81 checks, bit-identical full-budget re-runs; strength plateaued against fixed references with no cycling, but behaviour still drifted, so a matched 2× extension was run for all environments (4,096,000 transitions; reported separately); recommendation CONDITIONAL GO for M4.4c (§AG) |
 
-**M4.4c — Deep investigation of strategic behaviour and economic incentives** (completed, in review; [report](m4/m4_4c_strategic_investigation.md), [tables](../results/m44c/report.md))
+**M4.4c — Deep investigation of strategic behaviour and economic incentives** (completed, in review; [report](m4/m4_4/m4_4c_strategic_investigation.md), [tables](../results/m44c/report.md))
 
 | | |
 |---|---|
@@ -141,8 +141,8 @@ available for historical comparisons)
 
 ### M4.5 plan
 
-**M4.5a — Unified mechanics implementation** (completed, in review; [spec](m4/m4_5a_unified_mechanics_spec.md),
-[report](m4/m4_5a_unified_mechanics_report.md), [reference §14](m4/laning_game_mathematical_reference.md#14-experimental-the-m45a-unified-positional-candidate-m45_unified), [smoke tables](../results/m45a/report.md))
+**M4.5a — Unified mechanics implementation** (completed, in review; [spec](m4/m4_5/m4_5a_unified_mechanics_spec.md),
+[report](m4/m4_5/m4_5a_unified_mechanics_report.md), [reference §14](m4/laning_game_mathematical_reference.md#14-experimental-the-m45a-unified-positional-candidate-m45_unified), [smoke tables](../results/m45a/report.md))
 
 | | |
 |---|---|
@@ -153,7 +153,7 @@ available for historical comparisons)
 | dependencies | M4.4c and its review |
 | outcome | all criteria met; GO WITH CAVEATS for M4.5b (§AI); corrected after review (revision 2: wave-following movement, positional aggro on actual positions; §AI, report §10) |
 
-**M4.5b — Integrated calibration and strategic evaluation** (completed, in review; [report](m4/m4_5b_calibration_report.md),
+**M4.5b — Integrated calibration and strategic evaluation** (completed, in review; [report](m4/m4_5/m4_5b_calibration_report.md),
 [reference §15](m4/laning_game_mathematical_reference.md#15-experimental-the-m45b-calibrated-candidate-m45_calibrated), [tables](../results/m45b/report.md))
 
 | | |
@@ -165,7 +165,7 @@ available for historical comparisons)
 | dependencies | M4.5a reviewed |
 | outcome | `m45_calibrated()` = revision 2 + the farm-spot correction `"last_front"` + retaliation delay 0; every other number retained; GO WITH CAVEATS for M4.5c; one holdout criterion failed (mid-to-late minion share, a decision for review); §AJ |
 
-**M4.5c — PPO training and evaluation on the revised model** (completed: [research report](m4/m4_5c_research_report.md), [tables](../results/m45c/final/report.md); [pilot report](m4/m4_5c_pilot_report.md); [8.192M training report](m4/m4_5c_training_report.md))
+**M4.5c — PPO training and evaluation on the revised model** (completed: [research report](m4/m4_5/m4_5c_research_report.md), [tables](../results/m45c/final/report.md); [pilot report](m4/m4_5/m4_5c_pilot_report.md); [8.192M training report](m4/m4_5/m4_5c_training_report.md))
 
 | | |
 |---|---|
@@ -416,8 +416,8 @@ Specification in section F.
 ### M4. Economic progression (L, delivered as three tasks)
 
 > **Superseded (2026-10-11).** M4 is now one integrated, separately versioned ruleset. Its specification is
-> [m4_integrated_design.md](m4/m4_integrated_design.md), with the plan in [m4_implementation_plan.md](m4/m4_implementation_plan.md)
-> and the review in [m4_design_audit.md](m4/m4_design_audit.md); see section O. The three-task plan below and
+> [m4_integrated_design.md](m4/m4_1/m4_integrated_design.md), with the plan in [m4_implementation_plan.md](m4/m4_2/m4_implementation_plan.md)
+> and the review in [m4_design_audit.md](m4/m4_1/m4_design_audit.md); see section O. The three-task plan below and
 > section G are kept for the record only.
 
 Specification in section G.
@@ -614,7 +614,7 @@ On the champion game no Nash guarantee is claimed. Claims take the form "policy 
 
 ## G. Economic progression plan (M4)
 
-> **Superseded by section O and [m4_integrated_design.md](m4/m4_integrated_design.md).** The three levels, the two item
+> **Superseded by section O and [m4_integrated_design.md](m4/m4_1/m4_integrated_design.md).** The three levels, the two item
 > tracks with hit-chance bonuses, the per-turn plate removal (`plates_fall_turn = 24`) and the 32-turn calibration
 > targets below are no longer the plan.
 
@@ -1064,9 +1064,9 @@ M4 therefore replaces section G with **one integrated ruleset**, `GameConfig.m4(
 
 | Document | Content |
 |---|---|
-| [m4_integrated_design.md](m4/m4_integrated_design.md) | the mathematical specification: state, resolution order, Freeze maintenance, gold and XP, levels 1–18, fixed-point HP and attack power, one item track with automatic purchase at base, persistent tower damage with three plates, continuing time with γ = 0.99, observation, parameters, invariants, ten worked scenarios |
-| [m4_implementation_plan.md](m4/m4_implementation_plan.md) | work packages WP0–WP10, the tests per package, integration tests, legacy pins, validation stages S0–S6, conditions before training |
-| [m4_design_audit.md](m4/m4_design_audit.md) | contradictions, exploits, redundancies, snowballing, parameters needing experiments, ranked alternatives |
+| [m4_integrated_design.md](m4/m4_1/m4_integrated_design.md) | the mathematical specification: state, resolution order, Freeze maintenance, gold and XP, levels 1–18, fixed-point HP and attack power, one item track with automatic purchase at base, persistent tower damage with three plates, continuing time with γ = 0.99, observation, parameters, invariants, ten worked scenarios |
+| [m4_implementation_plan.md](m4/m4_2/m4_implementation_plan.md) | work packages WP0–WP10, the tests per package, integration tests, legacy pins, validation stages S0–S6, conditions before training |
+| [m4_design_audit.md](m4/m4_1/m4_design_audit.md) | contradictions, exploits, redundancies, snowballing, parameters needing experiments, ranked alternatives |
 
 Differences from section G:
 
@@ -1083,7 +1083,7 @@ evaluation), then WP2–WP7.
 
 Branch `implementation/m4-integrated`. WP0–WP10 of the M4 plan are implemented as the separately versioned ruleset
 `GameConfig.m4()`; every legacy configuration stays bit-identical (pins taken on the unchanged engine). Validation
-S0–S4 is complete. Full account: [m4_implementation_report.md](m4/m4_implementation_report.md); results:
+S0–S4 is complete. Full account: [m4_implementation_report.md](m4/m4_2/m4_implementation_report.md); results:
 `results/m4/`.
 
 - S0 legacy pins and all 500 earlier tests pass; S1: 679 tests pass (2 strict expected failures record design
@@ -1101,7 +1101,7 @@ tiers) in light of the S4 item finding.
 ## Q. M4.2b calibration: gank severity, item strength, the Shove → Recall cycle (2026-10-12)
 
 Branch `calibration/m4-2b`. Exploratory staged calibration within a ~2M-turn budget; **M4 defaults unchanged**. Full
-account: [m4_calibration_report.md](m4/m4_calibration_report.md); results: `results/m4_calibration/`.
+account: [m4_calibration_report.md](m4/m4_2/m4_calibration_report.md); results: `results/m4_calibration/`.
 
 - **The shove penalty is lane farm, not ganks.** A presser loses −17 per 400 turns against hold_farmer, −16.2 of it in
   farm (crashed waves farmed by the defender at its tower; the parked configuration). Gank damage 0.60 → 0.40 halves
@@ -1123,7 +1123,7 @@ before M4.3.
 
 Branch `experiment/m4-continuous-investment`. An opt-in prototype, `GameConfig.m4_continuous(invest_alpha=…)`: every
 return to base invests all unspent gold, AP(L, S) = AP(L, 0) [1 + α ((1 + S)^0.9 − 1)]. **`m4()` (two tiers) is
-unchanged and remains the default.** Full account: [m4_continuous_investment_report.md](m4/m4_continuous_investment_report.md);
+unchanged and remains the default.** Full account: [m4_continuous_investment_report.md](m4/m4_2/m4_continuous_investment_report.md);
 results: `results/m4_continuous_investment/` (≈204k turns, 11 s wall).
 
 - Mechanically sound: exact ledger without clamp, zero-sum rewards unaffected by spending, mirror symmetry, investment
@@ -1140,7 +1140,7 @@ sweep of the recall agents before any PPO use.
 
 ## S. M4.2d-A readiness: wave bounce and Freeze breaking (2026-10-12)
 
-Branch `readiness/m4-2d-wave`. Short deterministic diagnostic: [m4_wave_readiness_report.md](m4/m4_wave_readiness_report.md);
+Branch `readiness/m4-2d-wave`. Short deterministic diagnostic: [m4_wave_readiness_report.md](m4/m4_2/m4_wave_readiness_report.md);
 results `results/m4_wave_readiness/` (≈26k turns, ≈12 s wall).
 
 - **No bounce.** After a crash the crasher's follow-up waves park and stack in the defender's half (`stack_creep`)
@@ -1161,7 +1161,7 @@ accept permanent pushes.
 
 Four workstreams ran concurrently in separate worktrees from f504f5e. The results were integrated on
 `integration/m4-emergent-ready` into one **opt-in** preset, `GameConfig.m4_emergent()`. **`m4()` and `m4_continuous()`
-are unchanged.** Full account: [m4_emergent_parallel_report.md](m4/m4_emergent_parallel_report.md); driver
+are unchanged.** Full account: [m4_emergent_parallel_report.md](m4/m4_2/m4_emergent_parallel_report.md); driver
 `lanegame.experiments.m4.emergent_ready`; results `results/m4_emergent_ready/` (6,347 turns, 1.5 s wall).
 
 | Workstream | Branch | Outcome |
@@ -1574,7 +1574,7 @@ campaign on the unchanged game.
 
 Branch `development/m4-3b-validation` (working tree on 26f8c83). **Design only**: no game rule, preset, observation,
 reward or checkpoint changed; no training. Full account:
-[m4_3c_economic_objective_design.md](m4/m4_3c_economic_objective_design.md); the new living reference of the current
+[m4_3c_economic_objective_design.md](m4/m4_3/m4_3c_economic_objective_design.md); the new living reference of the current
 game: [laning_game_mathematical_reference.md](m4/laning_game_mathematical_reference.md); tables in
 `results/m43c/report.md`; diagnostics `lanegame/experiments/m43c/` (`python -m lanegame.experiments.m43c all`).
 
@@ -1609,14 +1609,14 @@ last plate, γ = 0.99 kept as the laning hazard, no fallback horizon, death time
 *Added to this roadmap in M4.4a; the work itself was committed as 4bd116c and b2e05ad. Full accounts in the linked
 reports; nothing here restates them beyond the decisions.*
 
-- **Quick screens.** [xp_range](m4/m4_3c_xp_range_screen.md): keep 3 (range 2 taxes unfollowed crashes, range 1 breaks
-  neutral XP). [Wave control](m4/m4_3c_wave_control_screen.md): adopt Hold capped at 1 HP on its own; adaptive Thin not
+- **Quick screens.** [xp_range](m4/m4_3/m4_3c_xp_range_screen.md): keep 3 (range 2 taxes unfollowed crashes, range 1 breaks
+  neutral XP). [Wave control](m4/m4_3/m4_3c_wave_control_screen.md): adopt Hold capped at 1 HP on its own; adaptive Thin not
   yet (opt-in fields `wave_hold_cap`, `wave_thin_rule`).
-- **Four-action redesign** ([report](m4/m4_3c_four_action_wave_redesign.md)): EXPERIMENTAL `GameConfig.m4_four_actions()`
+- **Four-action redesign** ([report](m4/m4_3/m4_3c_four_action_wave_redesign.md)): EXPERIMENTAL `GameConfig.m4_four_actions()`
   = `m4_lasthit()` + Last Hit (1 HP), Thin and Slow Push with window-strength targets, Shove (full capacity); Slow Push
   codes appended as 46–60 (61-code space, every historical code unchanged). Mechanically ready for PPO; Clear / Shove
   dominance unchanged.
-- **Stabilization and economic calibration** ([report](m4/m4_3c_strategic_economics_calibration.md)): Shove
+- **Stabilization and economic calibration** ([report](m4/m4_3/m4_3c_strategic_economics_calibration.md)): Shove
   terminology, the four-action debugger, mixed-action sequences; diagnosis that the own-tower "crash tax" (0.6) and
   break-even trades (0.5) made Shove every side's best reply; EXPERIMENTAL candidate `m4_four_actions_econ()` (own tower
   0.8, trade factor 0.8, bounty 2, death 3 / 4 / 5 turns by level); opt-in `xp_reward_weight`, `death_turns_by_level`,
@@ -1628,7 +1628,7 @@ first be generalized to four wave slots (done in M4.4a, §AF).
 
 ## AE. M4.3d tower farming, pressure and gank risk (2026-10-13)
 
-*Added in M4.4a; committed as f931ae8. Full account: [m4_3d_tower_pressure_calibration.md](m4/m4_3d_tower_pressure_calibration.md).*
+*Added in M4.4a; committed as f931ae8. Full account: [m4_3d_tower_pressure_calibration.md](m4/m4_3/m4_3d_tower_pressure_calibration.md).*
 
 - Keep the own-tower collection rate 0.8 (an uncontested crash is farm-neutral for the defender; 0.9 makes it a gift).
 - Gank risk already prices forward pressure (3–4 resources per 100 turns at equal power; Vision halves it): no gank
@@ -1645,7 +1645,7 @@ first be generalized to four wave slots (done in M4.4a, §AF).
 
 Branch `main`, working tree on f931ae8, **uncommitted, in review**. No game rule, preset, reward, observation, action or
 PPO hyperparameter changed; the M4.4b budget was not spent. Full account:
-[m4_4a_ppo_readiness.md](m4/m4_4a_ppo_readiness.md); the pipeline explained for a reader learning PPO:
+[m4_4a_ppo_readiness.md](m4/m4_4/m4_4a_ppo_readiness.md); the pipeline explained for a reader learning PPO:
 [ppo_training_explained.md](rl/ppo_training_explained.md); tables `results/m44a/report.md`; M4.4b specification
 `results/m44a/m44b_plan.md`.
 
@@ -1676,7 +1676,7 @@ train_main --confirm-m44b`, then `eval_main`).
 
 Branch `main`, working tree on f931ae8 with the M4.4a changes, **uncommitted, in review**. No game rule, preset, reward,
 observation, action or PPO hyperparameter changed. Full account:
-[m4_4b_ppo_training_report.md](m4/m4_4b_ppo_training_report.md); tables and figures `results/m44b/report.md`,
+[m4_4b_ppo_training_report.md](m4/m4_4/m4_4b_ppo_training_report.md); tables and figures `results/m44b/report.md`,
 `results/m44b/figures/`; checkpoints `results/rl/checkpoints/m44/{main,ext}/` (git-ignored).
 
 - **Run**: 3 economies (`four`, `econ`, `aggro`) × seeds 0, 1, 2 × 2,048,000 transitions with identical settings and
@@ -1707,7 +1707,7 @@ convergence criterion, and move the counterfactual questions to multi-turn inter
 ## AH. M4.4c deep investigation of strategic behaviour and economic incentives (2026-10-14)
 
 Branch `main` on f4bcb7d, **uncommitted, in review**. No game rule, preset, reward, observation, action or PPO setting
-changed; no network trained. Full account: [m4_4c_strategic_investigation.md](m4/m4_4c_strategic_investigation.md);
+changed; no network trained. Full account: [m4_4c_strategic_investigation.md](m4/m4_4/m4_4c_strategic_investigation.md);
 tables `results/m44c/report.md`, figures `results/m44c/figures/`, viewer recordings `results/m44c/trajectories/`.
 
 - **Framework** `lanegame/experiments/rl/m44c/`: multi-turn strategic plans over existing legal actions (preconditions,
@@ -1737,8 +1737,8 @@ tables `results/m44c/report.md`, figures `results/m44c/figures/`, viewer recordi
 
 ## AI. M4.5a unified positional combat, Vision and laning mechanics (2026-10-14)
 
-**Status:** completed, in review (uncommitted). [Spec](m4/m4_5a_unified_mechanics_spec.md),
-[report](m4/m4_5a_unified_mechanics_report.md),
+**Status:** completed, in review (uncommitted). [Spec](m4/m4_5/m4_5a_unified_mechanics_spec.md),
+[report](m4/m4_5/m4_5a_unified_mechanics_report.md),
 [reference §14](m4/laning_game_mathematical_reference.md#14-experimental-the-m45a-unified-positional-candidate-m45_unified),
 [smoke tables](../results/m45a/report.md); recordings `results/m45a/trajectories/`.
 
@@ -1787,7 +1787,7 @@ was adopted:
 
 **Next:** review; then M4.5b.
 
-**Correction after review (revision 2, 2026-10-14; [report §10](m4/m4_5a_unified_mechanics_report.md)).** The
+**Correction after review (revision 2, 2026-10-14; [report §10](m4/m4_5/m4_5a_unified_mechanics_report.md)).** The
 "moved this turn" exemption treated a symptom: a Hold champion stood at its wave's end-of-turn cell during both ticks
 while the minions were still at their start-of-tick cells. Now champions walk to the same end cells tick by tick
 (`champion_movement_rule = "tick"`): Hold, an unthreatened Yield and Safe follow their wave's front of each tick, and
@@ -1798,7 +1798,7 @@ retreats through the enemy wave now do. 58 new tests. M4.5b and M4.5c are unchan
 
 ## AJ. M4.5b integrated calibration and strategic evaluation (2026-10-14)
 
-**Status:** completed, in review (uncommitted). [Report](m4/m4_5b_calibration_report.md),
+**Status:** completed, in review (uncommitted). [Report](m4/m4_5/m4_5b_calibration_report.md),
 [reference §15](m4/laning_game_mathematical_reference.md#15-experimental-the-m45b-calibrated-candidate-m45_calibrated),
 [tables](../results/m45b/report.md); code `lanegame/experiments/m45b/`; recordings `results/m45b/trajectories/`.
 
@@ -1846,7 +1846,7 @@ single-trade values, Vision magnitude, the residual full-support probe.
 ## AK. M4.5c pilot: shared-policy PPO on the calibrated M4.5 environment (2026-10-14)
 
 **Status:** pilot complete, in review (uncommitted). **The full multi-seed campaign has not started; it awaits explicit
-approval of the budget.** [Pilot report](m4/m4_5c_pilot_report.md), [tables](../results/m45c/report.md); code
+approval of the budget.** [Pilot report](m4/m4_5/m4_5c_pilot_report.md), [tables](../results/m45c/report.md); code
 `lanegame/experiments/rl/m45c/`; tests `tests/test_m45c_training.py` (16); checkpoints
 `results/rl/checkpoints/m45c/` (git-ignored).
 
@@ -1881,10 +1881,10 @@ run, 100% current-policy self-play, a midpoint at 4.096M, pre-registered plateau
 estimated ≈ 46 min of training and ≈ 2.5 h in all. Alternatives: 3 × 4,096,000 and 10 × 16,384,000.
 
 **Follow-ups before approval (2026-10-14, in review).**
-- A [runtime and scope audit](m4/m4_5c_runtime_audit.md) reconstructed M4.4's actual cost (about 9.7 h in three
+- A [runtime and scope audit](m4/m4_5/m4_5c_runtime_audit.md) reconstructed M4.4's actual cost (about 9.7 h in three
   blocks). It found the pilot's 2.5 h estimate too low, because the counterfactual battery and the attackers were
   under-priced. It also corrected the memory plan (lane cache 5,000).
-- A [horizon study](m4/m4_5c_horizon_study.md) (7.6 M simulated turns) found that 50-turn paired counterfactuals with a
+- A [horizon study](m4/m4_5/m4_5c_horizon_study.md) (7.6 M simulated turns) found that 50-turn paired counterfactuals with a
   critic-bootstrapped statistic agree with 300-turn references, with no significant contradiction, and are 8–9× more
   informative per unit of compute.
 - Recommended: a 50-turn default with exceptions and a per-network 300-turn validation subset. The revised strategic
@@ -1894,7 +1894,7 @@ estimated ≈ 46 min of training and ≈ 2.5 h in all. Alternatives: 3 × 4,096,
 ## AL. M4.5c full campaign: six-seed PPO training and evaluation readiness (2026-10-15)
 
 **Status:** trained and health-checked (uncommitted). **The comprehensive evaluation was not run**; it and the proposed
-matched 2× extension await explicit approval. [Training report](m4/m4_5c_training_report.md),
+matched 2× extension await explicit approval. [Training report](m4/m4_5/m4_5c_training_report.md),
 [tables](../results/m45c/full/report.md); code `lanegame/experiments/rl/m45c/` (new: `full`, `health`, `health_report`,
 `battery`, `attackers`, `traces`); tests `tests/test_m45c_full.py` (17); checkpoints `results/rl/checkpoints/m45c/full/`
 (git-ignored).
@@ -1941,7 +1941,7 @@ alternative.
 ## AM. M4.5c completion: matched 2× extension, comprehensive evaluation, strategic battery, attackers (2026-10-15)
 
 **Status:** completed (uncommitted). Authorized end to end without approval stops.
-[Research report](m4/m4_5c_research_report.md); tables [`results/m45c/final/report.md`](../results/m45c/final/report.md),
+[Research report](m4/m4_5/m4_5c_research_report.md); tables [`results/m45c/final/report.md`](../results/m45c/final/report.md),
 [`results/m45c/ext/report.md`](../results/m45c/ext/report.md),
 [`results/m45c/battery/report_ext.md`](../results/m45c/battery/report_ext.md); code `lanegame/experiments/rl/m45c/`
 (extended: `full`, `health`, `health_report`, `battery`, `attackers`; new `campaign_report`); tests
@@ -1989,3 +1989,41 @@ alternative.
 
 Also recommended: a convergence probe, half-budget attackers, and the battery's validation rule pooled over policies.
 
+## AN. M4.6a diagnosis and M4.6b investment audit (2026-10-15)
+
+Reports: [M4.6a](m4/m4_6/m4_6a_report.md), [M4.6b](m4/m4_6/m4_6b_investment_report.md) (pre-registrations beside them).
+No mechanics, defaults or checkpoints changed; no general training campaign.
+
+**M4.6a: freeze breaking and threat-based zoning.**
+- Zoning is rewarded by the rules. PPO learns more of it when trained from gap states (+2.11 ± 0.62 for a specialist),
+  but natural self-play rarely creates gaps.
+- Freezes break cheaply for structural reasons, although a guard can hold one early.
+- The reset is not subsidized, and a bar of HP is worth 1.2–1.5 resources.
+- Recommendation: training changes (M4.6c) first, with the measurement fixes.
+
+**M4.6b: investment audit, candidate-curve screen and measurement fixes.**
+- **Measurement fixes, verified by reproduction.**
+  - Positions are now lane-only, with Ward occupancy reported separately.
+  - The economic channels now include farm lost while away, bounty and plates.
+  - Each battery candidate has a behaviour-only twin, with the scripted plans kept as references.
+  - Corrected readings: the stronger side stands just behind the lane cell, not +2 cells forward. Walking up to a
+    freeze costs −0.02 to −0.13, not −0.22. The trading decision costs about −0.08, not −0.34.
+- **The ×1.01 is a late-game statement.**
+  - Natural leads are 4–10% of earned gold.
+  - Saturation compresses them 6–11× (elasticity 0.17 falling to 0.09).
+  - Before turn 50, leads sit in unspent gold.
+  - M4.6a's lead bin had its median at turn 418.
+- **Early investment already matters.** Twenty turns of income buy ×1.25 in a duel early, ×1.06 mid-game and ×1.02
+  late.
+- **Candidates screened.** Three strength-matched opt-in curves: C1 and C2 saturate more slowly, C3 is a linear
+  reference.
+  - They raise the mid and late leverage of leads, and natural leads persist.
+  - One-turn incentives, freeze contests, Recall and the equal lane are essentially unchanged.
+  - By the pre-registered rule **no candidate advances**: late wave capacity rises 3–7 HP (D4), the early premium
+    doubles (D2), and the screen was too underpowered to establish the mid and late premium (D1).
+  - An exploratory powered follow-up (K = 128, both orientations) shows the effect. The mid-game premium rises ×1.6
+    (C1), ×2.2 (C2) and ×2.2 (C3), all significant. The late premium rises ×2–3 under C2 and C3.
+- **Recommendation: retain the current curve for now, and settle D4 and D2 first.** Is +3 HP of late capacity
+  acceptable, or should combat be decoupled from wave capacity and Pressure? D2 also needs a sharper
+  early-decisiveness test. If the review accepts the costs, pilot C1, with the requirements in the report's §9.
+  Awaiting review.
