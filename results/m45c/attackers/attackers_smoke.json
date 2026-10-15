@@ -1,0 +1,94 @@
+{
+ "meta": {
+  "study": "M4.5c",
+  "commit": "45b7dfa7fa5564194e124af59b26b45433fb56f9",
+  "working_tree_dirty": true,
+  "timestamp": "2026-10-15 00:42:33",
+  "python": "3.13.9",
+  "torch": "2.14.1+cpu",
+  "numpy": "2.5.3",
+  "environment": "GameConfig.m45_calibrated()",
+  "stage": "attackers_smoke"
+ },
+ "result": {
+  "target": "final:full:0",
+  "steps": 4096,
+  "train_elapsed_s": 4.1720569003373384,
+  "transitions_per_s": 981.7699273633615,
+  "eval": {
+   "W100": {
+    "estimate": -0.8006172547600623,
+    "stderr": 0.8743709982854408,
+    "ci95": [
+     -2.5143844113995266,
+     0.9131499018794018
+    ],
+    "seat_A": 0.7475530521246219,
+    "seat_B": -2.3487875616447464,
+    "window": 100
+   }
+  },
+  "transfer": {
+   "final:full:1": {
+    "estimate": 0.7020017312199908,
+    "stderr": 2.176484323264044,
+    "ci95": [
+     -3.563907542377535,
+     4.967911004817516
+    ]
+   }
+  },
+  "curve": [
+   [
+    2048,
+    1.14625
+   ],
+   [
+    4096,
+    -0.9179999999999987
+   ]
+  ],
+  "updates": 2,
+  "entropy_first_last": [
+   1.8637114390730858,
+   1.7241513393819332
+  ],
+  "ppo": {
+   "total_steps": 4096,
+   "n_envs": 16,
+   "n_steps": 64,
+   "epochs": 4,
+   "minibatch_size": 256,
+   "lr": 0.0003,
+   "anneal_lr": true,
+   "gamma": 0.99,
+   "gae_lambda": 0.95,
+   "clip_coef": 0.2,
+   "clip_vloss": true,
+   "vf_clip": 0.5,
+   "vf_coef": 0.5,
+   "ent_coef": 0.03,
+   "max_grad_norm": 0.5,
+   "target_kl": null,
+   "norm_adv": true,
+   "reward_scale": 0.1,
+   "hidden": [
+    128,
+    128
+   ],
+   "seed": 94000,
+   "torch_threads": 1,
+   "max_turns": null,
+   "lane_cache": 5000,
+   "expected_gank_reward": false,
+   "skill_levels": null,
+   "segment_length": 128,
+   "game_length": 512,
+   "start_archive": null,
+   "start_mix": 0.0,
+   "allow_gamma_mismatch": false
+  },
+  "elapsed_s": 4.6571717001497746
+ },
+ "elapsed_s": 4.696973099838942
+}

@@ -1,0 +1,429 @@
+{
+ "manifest": {
+  "meta": {
+   "study": "M4.5c",
+   "commit": "45b7dfa7fa5564194e124af59b26b45433fb56f9",
+   "working_tree_dirty": true,
+   "timestamp": "2026-10-15 00:42:20",
+   "python": "3.13.9",
+   "torch": "2.14.1+cpu",
+   "numpy": "2.5.3",
+   "environment": "GameConfig.m45_calibrated()",
+   "stage": "battery",
+   "spec": "final:full:0",
+   "tag": "smoke",
+   "families": [
+    "A_wave",
+    "A_wave_early",
+    "B_freeze",
+    "B_frozen",
+    "C_trade",
+    "C_trade_early",
+    "D_ward",
+    "E_recall",
+    "F_freeze_c",
+    "G_trade_c",
+    "H_zone_c",
+    "I_ward_c"
+   ],
+   "k_natural": 2,
+   "k_constructed": 2,
+   "n_natural": 2,
+   "n_early": 2,
+   "extended": []
+  },
+  "states": {
+   "A_wave": {
+    "n": 2,
+    "games": 2,
+    "validation": [
+     1
+    ],
+    "states": [
+     {
+      "seed": 937000,
+      "turn": 138,
+      "seat": 1,
+      "k": 138
+     },
+     {
+      "seed": 937001,
+      "turn": 170,
+      "seat": 0,
+      "k": 170
+     }
+    ]
+   },
+   "A_wave_early": {
+    "n": 2,
+    "games": 2,
+    "validation": [
+     0
+    ],
+    "states": [
+     {
+      "seed": 938000,
+      "turn": 39,
+      "seat": 1,
+      "k": 39
+     },
+     {
+      "seed": 938001,
+      "turn": 40,
+      "seat": 1,
+      "k": 40
+     }
+    ]
+   },
+   "B_freeze": {
+    "n": 2,
+    "games": 2,
+    "validation": [
+     0
+    ],
+    "states": [
+     {
+      "seed": 939000,
+      "turn": 26,
+      "seat": 0,
+      "k": 26
+     },
+     {
+      "seed": 939001,
+      "turn": 67,
+      "seat": 1,
+      "k": 67
+     }
+    ]
+   },
+   "B_frozen": {
+    "n": 2,
+    "games": 2,
+    "validation": [
+     0
+    ],
+    "states": [
+     {
+      "seed": 940000,
+      "turn": 156,
+      "seat": 0,
+      "k": 156
+     },
+     {
+      "seed": 940001,
+      "turn": 41,
+      "seat": 0,
+      "k": 41
+     }
+    ]
+   },
+   "C_trade": {
+    "n": 2,
+    "games": 2,
+    "validation": [
+     0
+    ],
+    "states": [
+     {
+      "seed": 941000,
+      "turn": 289,
+      "seat": 0,
+      "k": 289
+     },
+     {
+      "seed": 941001,
+      "turn": 237,
+      "seat": 0,
+      "k": 237
+     }
+    ]
+   },
+   "C_trade_early": {
+    "n": 2,
+    "games": 2,
+    "validation": [
+     0
+    ],
+    "states": [
+     {
+      "seed": 942000,
+      "turn": 42,
+      "seat": 1,
+      "k": 42
+     },
+     {
+      "seed": 942001,
+      "turn": 47,
+      "seat": 0,
+      "k": 47
+     }
+    ]
+   },
+   "D_ward": {
+    "n": 2,
+    "games": 2,
+    "validation": [
+     0
+    ],
+    "states": [
+     {
+      "seed": 943000,
+      "turn": 130,
+      "seat": 0,
+      "k": 130
+     },
+     {
+      "seed": 943001,
+      "turn": 151,
+      "seat": 1,
+      "k": 151
+     }
+    ]
+   },
+   "E_recall": {
+    "n": 2,
+    "games": 2,
+    "validation": [
+     1
+    ],
+    "states": [
+     {
+      "seed": 944000,
+      "turn": 158,
+      "seat": 0,
+      "k": 158
+     },
+     {
+      "seed": 944001,
+      "turn": 136,
+      "seat": 1,
+      "k": 136
+     }
+    ]
+   }
+  },
+  "timing": {
+   "collect_s": 5.581167799886316,
+   "mechanics_s": 7.016791300382465,
+   "rollouts_s": 15.496573900338262,
+   "workers": 11,
+   "turns": 63460,
+   "job_seconds": 84.98745679901913
+  },
+  "jobs": [
+   "smoke|A_wave_early|0|modal|50",
+   "smoke|A_wave_early|0|policy|300",
+   "smoke|A_wave_early|1|modal|50",
+   "smoke|A_wave_early|1|policy|50",
+   "smoke|A_wave|0|modal|50",
+   "smoke|A_wave|0|policy|50",
+   "smoke|A_wave|1|modal|50",
+   "smoke|A_wave|1|policy|300",
+   "smoke|B_freeze|0|modal|60",
+   "smoke|B_freeze|0|policy|300",
+   "smoke|B_freeze|0|wk_back|60",
+   "smoke|B_freeze|0|wk_shove_reset|60",
+   "smoke|B_freeze|0|wk_shove|60",
+   "smoke|B_freeze|1|modal|60",
+   "smoke|B_freeze|1|policy|60",
+   "smoke|B_freeze|1|wk_back|60",
+   "smoke|B_freeze|1|wk_shove_reset|60",
+   "smoke|B_freeze|1|wk_shove|60",
+   "smoke|B_frozen|0|fz_bully_sh|50",
+   "smoke|B_frozen|0|fz_guard_sh|50",
+   "smoke|B_frozen|0|fz_passive_sh|50",
+   "smoke|B_frozen|0|modal|50",
+   "smoke|B_frozen|0|policy|300",
+   "smoke|B_frozen|1|fz_bully_sh|50",
+   "smoke|B_frozen|1|fz_guard_sh|50",
+   "smoke|B_frozen|1|fz_passive_sh|50",
+   "smoke|B_frozen|1|modal|50",
+   "smoke|B_frozen|1|policy|50",
+   "smoke|C_trade_early|0|g_wary|50",
+   "smoke|C_trade_early|0|modal|50",
+   "smoke|C_trade_early|0|policy|300",
+   "smoke|C_trade_early|1|g_wary|50",
+   "smoke|C_trade_early|1|modal|50",
+   "smoke|C_trade_early|1|policy|50",
+   "smoke|C_trade|0|g_wary|50",
+   "smoke|C_trade|0|modal|50",
+   "smoke|C_trade|0|policy|300",
+   "smoke|C_trade|1|g_wary|50",
+   "smoke|C_trade|1|modal|50",
+   "smoke|C_trade|1|policy|50",
+   "smoke|D_ward|0|g_bully|50",
+   "smoke|D_ward|0|modal|50",
+   "smoke|D_ward|0|policy|300",
+   "smoke|D_ward|1|g_bully|50",
+   "smoke|D_ward|1|modal|50",
+   "smoke|D_ward|1|policy|50",
+   "smoke|E_recall|0|modal|50",
+   "smoke|E_recall|0|policy|50",
+   "smoke|E_recall|1|modal|50",
+   "smoke|E_recall|1|policy|300",
+   "smoke|F_freeze_c|0|modal|60",
+   "smoke|F_freeze_c|0|policy|300",
+   "smoke|F_freeze_c|0|wk_back|60",
+   "smoke|F_freeze_c|0|wk_shove_reset|60",
+   "smoke|F_freeze_c|0|wk_shove|60",
+   "smoke|G_trade_c|0|g_wary|50",
+   "smoke|G_trade_c|0|modal|50",
+   "smoke|G_trade_c|0|policy|300",
+   "smoke|H_zone_c|0|g_wary|50",
+   "smoke|H_zone_c|0|modal|50",
+   "smoke|H_zone_c|0|policy|300",
+   "smoke|I_ward_c|0|g_bully|50",
+   "smoke|I_ward_c|0|modal|50",
+   "smoke|I_ward_c|0|policy|300"
+  ]
+ },
+ "analysis_families": [
+  "A_wave",
+  "A_wave_early",
+  "B_freeze",
+  "B_frozen",
+  "C_trade",
+  "C_trade_early",
+  "D_ward",
+  "E_recall",
+  "F_freeze_c",
+  "G_trade_c",
+  "H_zone_c",
+  "I_ward_c"
+ ],
+ "validation": {
+  "A_wave": {
+   "statistic": "Q",
+   "pairs": 6,
+   "states": 1,
+   "bias": 0.03195043506391012,
+   "bias_se": 0.32969644522846236,
+   "slope": 0.7285428484623702,
+   "contradictions": [],
+   "bias_ok": true,
+   "slope_ok": false,
+   "verdict": "fail -> re-run the family at 150 turns"
+  },
+  "A_wave_early": {
+   "statistic": "Q",
+   "pairs": 6,
+   "states": 1,
+   "bias": -2.2158402867733833,
+   "bias_se": 0.427030984727612,
+   "slope": 0.8531202838378058,
+   "contradictions": [],
+   "bias_ok": false,
+   "slope_ok": true,
+   "verdict": "fail -> re-run the family at 150 turns"
+  },
+  "B_freeze": {
+   "statistic": "Q",
+   "pairs": 5,
+   "states": 1,
+   "bias": 0.5112051620682575,
+   "bias_se": 0.12804626783154016,
+   "slope": 0.8593242012004663,
+   "contradictions": [],
+   "bias_ok": false,
+   "slope_ok": true,
+   "verdict": "fail -> re-run the family at 150 turns"
+  },
+  "B_frozen": {
+   "statistic": "Q",
+   "pairs": 4,
+   "states": 1,
+   "bias": 0.40212838501120773,
+   "bias_se": 0.44685206187721266,
+   "slope": 0.3232195477485073,
+   "contradictions": [],
+   "bias_ok": true,
+   "slope_ok": false,
+   "verdict": "fail -> re-run the family at 150 turns"
+  },
+  "C_trade": {
+   "statistic": "Q",
+   "pairs": 3,
+   "states": 1,
+   "bias": -0.5659804651379713,
+   "bias_se": 0.5659804651379714,
+   "slope": 20.21134155174379,
+   "contradictions": [],
+   "bias_ok": true,
+   "slope_ok": false,
+   "verdict": "fail -> re-run the family at 150 turns"
+  },
+  "C_trade_early": {
+   "statistic": "Q",
+   "pairs": 3,
+   "states": 1,
+   "bias": 0.7775839940567936,
+   "bias_se": 0.6560641358159913,
+   "slope": 0.28351664241531566,
+   "contradictions": [],
+   "bias_ok": true,
+   "slope_ok": false,
+   "verdict": "fail -> re-run the family at 150 turns"
+  },
+  "D_ward": {
+   "statistic": "Q",
+   "pairs": 2,
+   "verdict": "insufficient"
+  },
+  "E_recall": {
+   "statistic": "Q",
+   "pairs": 3,
+   "states": 1,
+   "bias": -1.183210067644353,
+   "bias_se": 0.719643614893467,
+   "slope": -1.4931934365844548,
+   "contradictions": [],
+   "bias_ok": true,
+   "slope_ok": false,
+   "verdict": "fail -> re-run the family at 150 turns"
+  },
+  "F_freeze_c": {
+   "statistic": "G",
+   "pairs": 5,
+   "states": 1,
+   "bias": 0.4842368967524913,
+   "bias_se": 0.3039398683669804,
+   "slope": 1.1125306247829905,
+   "contradictions": [],
+   "bias_ok": true,
+   "slope_ok": true,
+   "verdict": "pass"
+  },
+  "G_trade_c": {
+   "statistic": "G",
+   "pairs": 3,
+   "states": 1,
+   "bias": 0.6483584071680193,
+   "bias_se": 0.2171481317061786,
+   "slope": 1.344152751113645,
+   "contradictions": [],
+   "bias_ok": false,
+   "slope_ok": false,
+   "verdict": "fail -> re-run the family at 150 turns"
+  },
+  "H_zone_c": {
+   "statistic": "G",
+   "pairs": 4,
+   "states": 1,
+   "bias": -0.8499606599436098,
+   "bias_se": 0.8532777564504377,
+   "slope": 0.4807152171546575,
+   "contradictions": [],
+   "bias_ok": true,
+   "slope_ok": false,
+   "verdict": "fail -> re-run the family at 150 turns"
+  },
+  "I_ward_c": {
+   "statistic": "G",
+   "pairs": 2,
+   "verdict": "insufficient"
+  }
+ },
+ "jobs": 64,
+ "turns": 63460,
+ "turns_per_job_second": 746.6984233929026
+}

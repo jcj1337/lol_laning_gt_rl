@@ -50,8 +50,9 @@ mechanics revision, the EXPERIMENTAL candidate `m45_unified()`:
 - distance-limited wave damage.
 
 Every earlier preset is unchanged. Integrated calibration (M4.5b) produced `m45_calibrated()`. Fresh PPO training on
-it (M4.5c) is underway: its pilot is complete, and the full multi-seed campaign awaits approval of its budget. M4.4d's
-robustness work moved into M4.5c.
+it (M4.5c) is complete: six seeds × 8,192,000 and a matched 2× extension × 16,384,000 agent transitions, a
+comprehensive evaluation, a 50-turn strategic counterfactual battery and learned best-response attackers
+([research report](docs/m4/m4_5c_research_report.md)). M4.4d's robustness work was done within M4.5c.
 
 ## How we study it
 
@@ -95,8 +96,8 @@ top). In short:
 | **M4.4c. Strategic behaviour and economic incentives** | multi-turn paired counterfactuals on the M4.4b policies: interrupted Recall, freezes, zoning, Vision before Pressure, the four wave actions | **complete** ([report](docs/m4/m4_4c_strategic_investigation.md), [tables](results/m44c/report.md)) |
 | **M4.5a. Unified positional mechanics** | shared Vision node W and contestable Ward, per-tick minion retaliation and positional aggro, champions walking tick by tick with their wave (revision 2), minion damage on champions, XP range 2, capped wave budget while trading, reach ball (`m45_unified()`) | **complete** ([spec](docs/m4/m4_5a_unified_mechanics_spec.md), [report](docs/m4/m4_5a_unified_mechanics_report.md), [smoke tables](results/m45a/report.md)) |
 | **M4.5b. Integrated calibration and strategic evaluation** | paired scripted simulations, restricted games, a joint factorial and a holdout; the farm-spot correction for mutual Shoves and retaliation from the exchange tick (`m45_calibrated()`); GO WITH CAVEATS for M4.5c | **complete, in review** ([report](docs/m4/m4_5b_calibration_report.md), [tables](results/m45b/report.md)) |
-| **M4.5c. PPO self-play on the calibrated model** | pilot: one seed × 1,024,000 agent transitions on `m45_calibrated()`, correctness verified, beats every fixed M4.5b strategy and still improving; recommended campaign 6 seeds × 8,192,000 | **pilot complete; full campaign awaiting budget approval** ([pilot report](docs/m4/m4_5c_pilot_report.md), [tables](results/m45c/report.md)) |
-| **M4.5c. PPO training and evaluation on the revised model** | fresh shared-policy PPO; emergent freezing, zoning, Vision timing, resets; then the former M4.4d robustness and exploitability work | planned |
+| **M4.5c. PPO self-play on the calibrated model** | pilot: one seed × 1,024,000 agent transitions on `m45_calibrated()`, correctness verified, beats every fixed M4.5b strategy and still improving; recommended campaign 6 seeds × 8,192,000 | **pilot complete** ([pilot report](docs/m4/m4_5c_pilot_report.md), [tables](results/m45c/report.md)) |
+| **M4.5c. PPO training and evaluation on the revised model** | six seeds × 8,192,000 agent transitions (healthy, consistent, still improving head to head; extension criterion met); 50-turn strategic battery, attackers and the rest of the evaluation prepared and gated | **complete** ([research report](docs/m4/m4_5c_research_report.md), [tables](results/m45c/final/report.md); [8.192M training report](docs/m4/m4_5c_training_report.md)) |
 | M5. Adaptive opponent and game-theoretic research | robustness and exploitation against historical, scripted and adaptive opponents | proposed |
 | M6. Research presentation and portfolio | reproducible narrative, comparisons, visualizations, interactive demonstration | proposed |
 
@@ -171,9 +172,9 @@ python -m lanegame.experiments.m45a all              # M4.5a: demonstration reco
 python -m lanegame.experiments.m45a movement         # M4.5a correction: scenarios, revision 1 vs 2 (~30 s)
 python -m lanegame.experiments.m45b <stage> ...      # M4.5b: calibration stages (results/m45b/; ~2 h for all on 11
                                                       # processes; the stage list: docs/m4/m4_5b_calibration_report.md §15)
-python -m lanegame.experiments.rl.m45c <stage> ...  # M4.5c pilot: audit smoke smoke_eval pilot prefix_check
-                                                      # eval_pilot behavior_pilot bench report (results/m45c/;
-                                                      # ~20 min; train_full needs --confirm-m45c-full)
+python -m lanegame.experiments.rl.m45c <stage> ...  # M4.5c: pilot stages, the campaign (train_full, needs
+                                                      # --confirm-m45c-full), health_eval / health_report
+                                                      # (results/m45c/full/), battery / attackers (gated)
 streamlit run lanegame/viewer/app.py                  # the visual lane debugger (pip install -e ".[viewer]"); mode
                                                       # "Recorded trajectory" replays results/rl/m43b/trajectories/*.json
 ```

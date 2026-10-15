@@ -51,7 +51,7 @@ from ....config import GameConfig
 NAME = "m45c"
 OUT = os.path.join("results", "m45c")
 CKPT = os.path.join("results", "rl", "checkpoints", NAME)
-PHASES = ("smoke", "pilot", "bench", "full")
+PHASES = ("smoke", "pilot", "bench", "full", "ext")
 PRESET = "m45_calibrated"
 
 
@@ -299,9 +299,9 @@ def write_md(name: str, text: str, out: str = OUT) -> str:
     return _w(name, text, out)
 
 
-def run_jobs(fn, jobs: Sequence, workers: int, label: str = "") -> list:
+def run_jobs(fn, jobs: Sequence, workers: int, label: str = "", progress=None) -> list:
     from ..m43b.common import run_jobs as _rj
-    return _rj(fn, jobs, workers, label)
+    return _rj(fn, jobs, workers, label, progress)
 
 
 WORKERS = max(1, (os.cpu_count() or 2) - 1)

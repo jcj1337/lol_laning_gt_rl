@@ -1,0 +1,15 @@
+===== campaign_report =====
+wrote results\m45c\final\summary.json
+Traceback (most recent call last):
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "C:\Users\light\OneDrive\Desktop\projects\lol_gt_laning\lanegame\experiments\rl\m45c\__main__.py", line 231, in <module>
+    main(sys.argv[1:])
+    ~~~~^^^^^^^^^^^^^^
+  File "C:\Users\light\OneDrive\Desktop\projects\lol_gt_laning\lanegame\experiments\rl\m45c\__main__.py", line 192, in main
+    campaign_report()
+    ~~~~~~~~~~~~~~~^^
+  File "C:\Users\light\OneDrive\Desktop\projects\lol_gt_laning\lanegame\experiments\rl\m45c\campaign_report.py", line 528, in report
+    rows = [[str(r["cell"]), r["protocol"], r["candidate"]] + [_pm(*r[k]) for k in hk]
+                                                                    ~^^^
+KeyError: 'G150'

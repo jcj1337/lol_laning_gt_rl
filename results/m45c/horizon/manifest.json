@@ -1,0 +1,2097 @@
+{
+ "meta": {
+  "study": "M4.5c",
+  "commit": "45b7dfa7fa5564194e124af59b26b45433fb56f9",
+  "working_tree_dirty": true,
+  "timestamp": "2026-10-14 22:33:11",
+  "python": "3.13.9",
+  "torch": "2.14.1+cpu",
+  "numpy": "2.5.3",
+  "environment": "GameConfig.m45_calibrated()",
+  "stage": "horizon",
+  "spec": "final:pilot:100",
+  "K": 24,
+  "n_natural": 40,
+  "n_long": 12,
+  "checkpoints_short": [
+   1,
+   2,
+   3,
+   5,
+   10,
+   15,
+   20,
+   30,
+   40,
+   50
+  ],
+  "checkpoints_long": [
+   1,
+   2,
+   3,
+   5,
+   10,
+   15,
+   20,
+   30,
+   40,
+   50,
+   75,
+   100,
+   150,
+   200,
+   300
+  ],
+  "ledger_cp": [
+   1,
+   5,
+   10,
+   20,
+   30,
+   50,
+   100,
+   150,
+   300
+  ],
+  "state_seed": 92600,
+  "roll_seed": 92700,
+  "workers": 11
+ },
+ "states": {
+  "A_wave": {
+   "games": 40,
+   "n": 40,
+   "states": [
+    {
+     "seed": 926000,
+     "turn": 22,
+     "seat": 0,
+     "k": 22
+    },
+    {
+     "seed": 926001,
+     "turn": 288,
+     "seat": 0,
+     "k": 288
+    },
+    {
+     "seed": 926002,
+     "turn": 78,
+     "seat": 1,
+     "k": 78
+    },
+    {
+     "seed": 926003,
+     "turn": 88,
+     "seat": 1,
+     "k": 88
+    },
+    {
+     "seed": 926004,
+     "turn": 60,
+     "seat": 0,
+     "k": 60
+    },
+    {
+     "seed": 926005,
+     "turn": 85,
+     "seat": 1,
+     "k": 85
+    },
+    {
+     "seed": 926006,
+     "turn": 201,
+     "seat": 0,
+     "k": 201
+    },
+    {
+     "seed": 926007,
+     "turn": 200,
+     "seat": 0,
+     "k": 200
+    },
+    {
+     "seed": 926008,
+     "turn": 215,
+     "seat": 1,
+     "k": 215
+    },
+    {
+     "seed": 926009,
+     "turn": 53,
+     "seat": 1,
+     "k": 53
+    },
+    {
+     "seed": 926010,
+     "turn": 105,
+     "seat": 0,
+     "k": 105
+    },
+    {
+     "seed": 926011,
+     "turn": 122,
+     "seat": 1,
+     "k": 122
+    },
+    {
+     "seed": 926012,
+     "turn": 270,
+     "seat": 1,
+     "k": 270
+    },
+    {
+     "seed": 926013,
+     "turn": 44,
+     "seat": 1,
+     "k": 44
+    },
+    {
+     "seed": 926014,
+     "turn": 173,
+     "seat": 0,
+     "k": 173
+    },
+    {
+     "seed": 926015,
+     "turn": 53,
+     "seat": 1,
+     "k": 53
+    },
+    {
+     "seed": 926016,
+     "turn": 204,
+     "seat": 0,
+     "k": 204
+    },
+    {
+     "seed": 926017,
+     "turn": 229,
+     "seat": 1,
+     "k": 229
+    },
+    {
+     "seed": 926018,
+     "turn": 30,
+     "seat": 0,
+     "k": 30
+    },
+    {
+     "seed": 926019,
+     "turn": 97,
+     "seat": 0,
+     "k": 97
+    },
+    {
+     "seed": 926020,
+     "turn": 100,
+     "seat": 0,
+     "k": 100
+    },
+    {
+     "seed": 926021,
+     "turn": 138,
+     "seat": 0,
+     "k": 138
+    },
+    {
+     "seed": 926022,
+     "turn": 160,
+     "seat": 0,
+     "k": 160
+    },
+    {
+     "seed": 926023,
+     "turn": 211,
+     "seat": 1,
+     "k": 211
+    },
+    {
+     "seed": 926024,
+     "turn": 282,
+     "seat": 1,
+     "k": 282
+    },
+    {
+     "seed": 926025,
+     "turn": 190,
+     "seat": 1,
+     "k": 190
+    },
+    {
+     "seed": 926026,
+     "turn": 130,
+     "seat": 0,
+     "k": 130
+    },
+    {
+     "seed": 926027,
+     "turn": 258,
+     "seat": 0,
+     "k": 258
+    },
+    {
+     "seed": 926028,
+     "turn": 41,
+     "seat": 0,
+     "k": 41
+    },
+    {
+     "seed": 926029,
+     "turn": 80,
+     "seat": 1,
+     "k": 80
+    },
+    {
+     "seed": 926030,
+     "turn": 247,
+     "seat": 1,
+     "k": 247
+    },
+    {
+     "seed": 926031,
+     "turn": 50,
+     "seat": 0,
+     "k": 50
+    },
+    {
+     "seed": 926032,
+     "turn": 70,
+     "seat": 0,
+     "k": 70
+    },
+    {
+     "seed": 926033,
+     "turn": 155,
+     "seat": 0,
+     "k": 155
+    },
+    {
+     "seed": 926034,
+     "turn": 204,
+     "seat": 0,
+     "k": 204
+    },
+    {
+     "seed": 926035,
+     "turn": 67,
+     "seat": 1,
+     "k": 67
+    },
+    {
+     "seed": 926036,
+     "turn": 286,
+     "seat": 0,
+     "k": 286
+    },
+    {
+     "seed": 926037,
+     "turn": 224,
+     "seat": 1,
+     "k": 224
+    },
+    {
+     "seed": 926038,
+     "turn": 228,
+     "seat": 0,
+     "k": 228
+    },
+    {
+     "seed": 926039,
+     "turn": 192,
+     "seat": 1,
+     "k": 192
+    }
+   ]
+  },
+  "B_freeze": {
+   "games": 40,
+   "n": 40,
+   "states": [
+    {
+     "seed": 927000,
+     "turn": 214,
+     "seat": 1,
+     "k": 214
+    },
+    {
+     "seed": 927001,
+     "turn": 137,
+     "seat": 0,
+     "k": 137
+    },
+    {
+     "seed": 927002,
+     "turn": 289,
+     "seat": 1,
+     "k": 289
+    },
+    {
+     "seed": 927003,
+     "turn": 245,
+     "seat": 0,
+     "k": 245
+    },
+    {
+     "seed": 927004,
+     "turn": 123,
+     "seat": 1,
+     "k": 123
+    },
+    {
+     "seed": 927005,
+     "turn": 270,
+     "seat": 0,
+     "k": 270
+    },
+    {
+     "seed": 927006,
+     "turn": 227,
+     "seat": 1,
+     "k": 227
+    },
+    {
+     "seed": 927007,
+     "turn": 227,
+     "seat": 1,
+     "k": 227
+    },
+    {
+     "seed": 927008,
+     "turn": 268,
+     "seat": 1,
+     "k": 268
+    },
+    {
+     "seed": 927009,
+     "turn": 222,
+     "seat": 1,
+     "k": 222
+    },
+    {
+     "seed": 927010,
+     "turn": 292,
+     "seat": 1,
+     "k": 292
+    },
+    {
+     "seed": 927011,
+     "turn": 296,
+     "seat": 1,
+     "k": 296
+    },
+    {
+     "seed": 927012,
+     "turn": 290,
+     "seat": 1,
+     "k": 290
+    },
+    {
+     "seed": 927013,
+     "turn": 76,
+     "seat": 0,
+     "k": 76
+    },
+    {
+     "seed": 927014,
+     "turn": 83,
+     "seat": 0,
+     "k": 83
+    },
+    {
+     "seed": 927015,
+     "turn": 188,
+     "seat": 1,
+     "k": 188
+    },
+    {
+     "seed": 927016,
+     "turn": 45,
+     "seat": 0,
+     "k": 45
+    },
+    {
+     "seed": 927017,
+     "turn": 257,
+     "seat": 1,
+     "k": 257
+    },
+    {
+     "seed": 927018,
+     "turn": 109,
+     "seat": 0,
+     "k": 109
+    },
+    {
+     "seed": 927019,
+     "turn": 40,
+     "seat": 0,
+     "k": 40
+    },
+    {
+     "seed": 927020,
+     "turn": 171,
+     "seat": 0,
+     "k": 171
+    },
+    {
+     "seed": 927021,
+     "turn": 79,
+     "seat": 0,
+     "k": 79
+    },
+    {
+     "seed": 927022,
+     "turn": 31,
+     "seat": 1,
+     "k": 31
+    },
+    {
+     "seed": 927023,
+     "turn": 22,
+     "seat": 0,
+     "k": 22
+    },
+    {
+     "seed": 927024,
+     "turn": 256,
+     "seat": 0,
+     "k": 256
+    },
+    {
+     "seed": 927025,
+     "turn": 229,
+     "seat": 1,
+     "k": 229
+    },
+    {
+     "seed": 927026,
+     "turn": 119,
+     "seat": 0,
+     "k": 119
+    },
+    {
+     "seed": 927027,
+     "turn": 264,
+     "seat": 0,
+     "k": 264
+    },
+    {
+     "seed": 927028,
+     "turn": 92,
+     "seat": 1,
+     "k": 92
+    },
+    {
+     "seed": 927029,
+     "turn": 143,
+     "seat": 1,
+     "k": 143
+    },
+    {
+     "seed": 927030,
+     "turn": 76,
+     "seat": 0,
+     "k": 76
+    },
+    {
+     "seed": 927031,
+     "turn": 230,
+     "seat": 1,
+     "k": 230
+    },
+    {
+     "seed": 927032,
+     "turn": 129,
+     "seat": 1,
+     "k": 129
+    },
+    {
+     "seed": 927033,
+     "turn": 273,
+     "seat": 1,
+     "k": 273
+    },
+    {
+     "seed": 927034,
+     "turn": 55,
+     "seat": 1,
+     "k": 55
+    },
+    {
+     "seed": 927035,
+     "turn": 203,
+     "seat": 1,
+     "k": 203
+    },
+    {
+     "seed": 927036,
+     "turn": 295,
+     "seat": 0,
+     "k": 295
+    },
+    {
+     "seed": 927037,
+     "turn": 28,
+     "seat": 1,
+     "k": 28
+    },
+    {
+     "seed": 927038,
+     "turn": 154,
+     "seat": 0,
+     "k": 154
+    },
+    {
+     "seed": 927039,
+     "turn": 20,
+     "seat": 0,
+     "k": 20
+    }
+   ]
+  },
+  "B_frozen": {
+   "games": 40,
+   "n": 40,
+   "states": [
+    {
+     "seed": 928000,
+     "turn": 71,
+     "seat": 1,
+     "k": 71
+    },
+    {
+     "seed": 928001,
+     "turn": 201,
+     "seat": 1,
+     "k": 201
+    },
+    {
+     "seed": 928002,
+     "turn": 279,
+     "seat": 0,
+     "k": 279
+    },
+    {
+     "seed": 928003,
+     "turn": 246,
+     "seat": 1,
+     "k": 246
+    },
+    {
+     "seed": 928004,
+     "turn": 225,
+     "seat": 0,
+     "k": 225
+    },
+    {
+     "seed": 928005,
+     "turn": 155,
+     "seat": 0,
+     "k": 155
+    },
+    {
+     "seed": 928006,
+     "turn": 197,
+     "seat": 0,
+     "k": 197
+    },
+    {
+     "seed": 928007,
+     "turn": 183,
+     "seat": 1,
+     "k": 183
+    },
+    {
+     "seed": 928008,
+     "turn": 212,
+     "seat": 1,
+     "k": 212
+    },
+    {
+     "seed": 928009,
+     "turn": 21,
+     "seat": 1,
+     "k": 21
+    },
+    {
+     "seed": 928010,
+     "turn": 184,
+     "seat": 0,
+     "k": 184
+    },
+    {
+     "seed": 928011,
+     "turn": 264,
+     "seat": 0,
+     "k": 264
+    },
+    {
+     "seed": 928012,
+     "turn": 243,
+     "seat": 1,
+     "k": 243
+    },
+    {
+     "seed": 928013,
+     "turn": 41,
+     "seat": 1,
+     "k": 41
+    },
+    {
+     "seed": 928014,
+     "turn": 271,
+     "seat": 0,
+     "k": 271
+    },
+    {
+     "seed": 928015,
+     "turn": 228,
+     "seat": 1,
+     "k": 228
+    },
+    {
+     "seed": 928016,
+     "turn": 153,
+     "seat": 1,
+     "k": 153
+    },
+    {
+     "seed": 928017,
+     "turn": 207,
+     "seat": 1,
+     "k": 207
+    },
+    {
+     "seed": 928018,
+     "turn": 229,
+     "seat": 0,
+     "k": 229
+    },
+    {
+     "seed": 928019,
+     "turn": 193,
+     "seat": 0,
+     "k": 193
+    },
+    {
+     "seed": 928020,
+     "turn": 91,
+     "seat": 1,
+     "k": 91
+    },
+    {
+     "seed": 928021,
+     "turn": 211,
+     "seat": 0,
+     "k": 211
+    },
+    {
+     "seed": 928022,
+     "turn": 261,
+     "seat": 0,
+     "k": 261
+    },
+    {
+     "seed": 928023,
+     "turn": 125,
+     "seat": 1,
+     "k": 125
+    },
+    {
+     "seed": 928024,
+     "turn": 192,
+     "seat": 0,
+     "k": 192
+    },
+    {
+     "seed": 928025,
+     "turn": 209,
+     "seat": 0,
+     "k": 209
+    },
+    {
+     "seed": 928026,
+     "turn": 181,
+     "seat": 1,
+     "k": 181
+    },
+    {
+     "seed": 928027,
+     "turn": 152,
+     "seat": 0,
+     "k": 152
+    },
+    {
+     "seed": 928028,
+     "turn": 102,
+     "seat": 1,
+     "k": 102
+    },
+    {
+     "seed": 928029,
+     "turn": 115,
+     "seat": 0,
+     "k": 115
+    },
+    {
+     "seed": 928030,
+     "turn": 287,
+     "seat": 1,
+     "k": 287
+    },
+    {
+     "seed": 928031,
+     "turn": 158,
+     "seat": 1,
+     "k": 158
+    },
+    {
+     "seed": 928032,
+     "turn": 68,
+     "seat": 1,
+     "k": 68
+    },
+    {
+     "seed": 928033,
+     "turn": 143,
+     "seat": 0,
+     "k": 143
+    },
+    {
+     "seed": 928034,
+     "turn": 195,
+     "seat": 0,
+     "k": 195
+    },
+    {
+     "seed": 928035,
+     "turn": 283,
+     "seat": 0,
+     "k": 283
+    },
+    {
+     "seed": 928036,
+     "turn": 231,
+     "seat": 1,
+     "k": 231
+    },
+    {
+     "seed": 928037,
+     "turn": 54,
+     "seat": 1,
+     "k": 54
+    },
+    {
+     "seed": 928038,
+     "turn": 95,
+     "seat": 1,
+     "k": 95
+    },
+    {
+     "seed": 928039,
+     "turn": 108,
+     "seat": 1,
+     "k": 108
+    }
+   ]
+  },
+  "C_trade": {
+   "games": 40,
+   "n": 40,
+   "states": [
+    {
+     "seed": 929000,
+     "turn": 240,
+     "seat": 0,
+     "k": 240
+    },
+    {
+     "seed": 929001,
+     "turn": 277,
+     "seat": 0,
+     "k": 277
+    },
+    {
+     "seed": 929002,
+     "turn": 118,
+     "seat": 1,
+     "k": 118
+    },
+    {
+     "seed": 929003,
+     "turn": 35,
+     "seat": 0,
+     "k": 35
+    },
+    {
+     "seed": 929004,
+     "turn": 25,
+     "seat": 0,
+     "k": 25
+    },
+    {
+     "seed": 929005,
+     "turn": 47,
+     "seat": 0,
+     "k": 47
+    },
+    {
+     "seed": 929006,
+     "turn": 299,
+     "seat": 0,
+     "k": 299
+    },
+    {
+     "seed": 929007,
+     "turn": 260,
+     "seat": 1,
+     "k": 260
+    },
+    {
+     "seed": 929008,
+     "turn": 195,
+     "seat": 0,
+     "k": 195
+    },
+    {
+     "seed": 929009,
+     "turn": 171,
+     "seat": 1,
+     "k": 171
+    },
+    {
+     "seed": 929010,
+     "turn": 93,
+     "seat": 0,
+     "k": 93
+    },
+    {
+     "seed": 929011,
+     "turn": 24,
+     "seat": 1,
+     "k": 24
+    },
+    {
+     "seed": 929012,
+     "turn": 31,
+     "seat": 0,
+     "k": 31
+    },
+    {
+     "seed": 929013,
+     "turn": 48,
+     "seat": 0,
+     "k": 48
+    },
+    {
+     "seed": 929014,
+     "turn": 119,
+     "seat": 0,
+     "k": 119
+    },
+    {
+     "seed": 929015,
+     "turn": 139,
+     "seat": 0,
+     "k": 139
+    },
+    {
+     "seed": 929016,
+     "turn": 155,
+     "seat": 0,
+     "k": 155
+    },
+    {
+     "seed": 929017,
+     "turn": 119,
+     "seat": 1,
+     "k": 119
+    },
+    {
+     "seed": 929018,
+     "turn": 33,
+     "seat": 0,
+     "k": 33
+    },
+    {
+     "seed": 929019,
+     "turn": 261,
+     "seat": 1,
+     "k": 261
+    },
+    {
+     "seed": 929020,
+     "turn": 176,
+     "seat": 0,
+     "k": 176
+    },
+    {
+     "seed": 929021,
+     "turn": 197,
+     "seat": 0,
+     "k": 197
+    },
+    {
+     "seed": 929022,
+     "turn": 33,
+     "seat": 0,
+     "k": 33
+    },
+    {
+     "seed": 929023,
+     "turn": 239,
+     "seat": 1,
+     "k": 239
+    },
+    {
+     "seed": 929024,
+     "turn": 29,
+     "seat": 0,
+     "k": 29
+    },
+    {
+     "seed": 929025,
+     "turn": 63,
+     "seat": 0,
+     "k": 63
+    },
+    {
+     "seed": 929026,
+     "turn": 208,
+     "seat": 1,
+     "k": 208
+    },
+    {
+     "seed": 929027,
+     "turn": 249,
+     "seat": 0,
+     "k": 249
+    },
+    {
+     "seed": 929028,
+     "turn": 230,
+     "seat": 0,
+     "k": 230
+    },
+    {
+     "seed": 929029,
+     "turn": 299,
+     "seat": 0,
+     "k": 299
+    },
+    {
+     "seed": 929030,
+     "turn": 39,
+     "seat": 1,
+     "k": 39
+    },
+    {
+     "seed": 929031,
+     "turn": 275,
+     "seat": 1,
+     "k": 275
+    },
+    {
+     "seed": 929032,
+     "turn": 173,
+     "seat": 1,
+     "k": 173
+    },
+    {
+     "seed": 929033,
+     "turn": 75,
+     "seat": 0,
+     "k": 75
+    },
+    {
+     "seed": 929034,
+     "turn": 299,
+     "seat": 1,
+     "k": 299
+    },
+    {
+     "seed": 929035,
+     "turn": 291,
+     "seat": 0,
+     "k": 291
+    },
+    {
+     "seed": 929036,
+     "turn": 43,
+     "seat": 0,
+     "k": 43
+    },
+    {
+     "seed": 929037,
+     "turn": 205,
+     "seat": 0,
+     "k": 205
+    },
+    {
+     "seed": 929038,
+     "turn": 165,
+     "seat": 0,
+     "k": 165
+    },
+    {
+     "seed": 929039,
+     "turn": 280,
+     "seat": 0,
+     "k": 280
+    }
+   ]
+  },
+  "D_ward": {
+   "games": 40,
+   "n": 40,
+   "states": [
+    {
+     "seed": 930000,
+     "turn": 262,
+     "seat": 0,
+     "k": 262
+    },
+    {
+     "seed": 930001,
+     "turn": 200,
+     "seat": 0,
+     "k": 200
+    },
+    {
+     "seed": 930002,
+     "turn": 124,
+     "seat": 0,
+     "k": 124
+    },
+    {
+     "seed": 930003,
+     "turn": 266,
+     "seat": 0,
+     "k": 266
+    },
+    {
+     "seed": 930004,
+     "turn": 218,
+     "seat": 1,
+     "k": 218
+    },
+    {
+     "seed": 930005,
+     "turn": 138,
+     "seat": 0,
+     "k": 138
+    },
+    {
+     "seed": 930006,
+     "turn": 55,
+     "seat": 1,
+     "k": 55
+    },
+    {
+     "seed": 930007,
+     "turn": 53,
+     "seat": 0,
+     "k": 53
+    },
+    {
+     "seed": 930008,
+     "turn": 142,
+     "seat": 0,
+     "k": 142
+    },
+    {
+     "seed": 930009,
+     "turn": 80,
+     "seat": 1,
+     "k": 80
+    },
+    {
+     "seed": 930010,
+     "turn": 158,
+     "seat": 1,
+     "k": 158
+    },
+    {
+     "seed": 930011,
+     "turn": 82,
+     "seat": 0,
+     "k": 82
+    },
+    {
+     "seed": 930012,
+     "turn": 113,
+     "seat": 1,
+     "k": 113
+    },
+    {
+     "seed": 930013,
+     "turn": 218,
+     "seat": 0,
+     "k": 218
+    },
+    {
+     "seed": 930014,
+     "turn": 223,
+     "seat": 0,
+     "k": 223
+    },
+    {
+     "seed": 930015,
+     "turn": 118,
+     "seat": 0,
+     "k": 118
+    },
+    {
+     "seed": 930016,
+     "turn": 84,
+     "seat": 0,
+     "k": 84
+    },
+    {
+     "seed": 930017,
+     "turn": 51,
+     "seat": 1,
+     "k": 51
+    },
+    {
+     "seed": 930018,
+     "turn": 294,
+     "seat": 1,
+     "k": 294
+    },
+    {
+     "seed": 930019,
+     "turn": 278,
+     "seat": 0,
+     "k": 278
+    },
+    {
+     "seed": 930020,
+     "turn": 222,
+     "seat": 0,
+     "k": 222
+    },
+    {
+     "seed": 930021,
+     "turn": 160,
+     "seat": 1,
+     "k": 160
+    },
+    {
+     "seed": 930022,
+     "turn": 173,
+     "seat": 1,
+     "k": 173
+    },
+    {
+     "seed": 930023,
+     "turn": 60,
+     "seat": 0,
+     "k": 60
+    },
+    {
+     "seed": 930024,
+     "turn": 37,
+     "seat": 1,
+     "k": 37
+    },
+    {
+     "seed": 930025,
+     "turn": 172,
+     "seat": 1,
+     "k": 172
+    },
+    {
+     "seed": 930026,
+     "turn": 293,
+     "seat": 1,
+     "k": 293
+    },
+    {
+     "seed": 930027,
+     "turn": 207,
+     "seat": 0,
+     "k": 207
+    },
+    {
+     "seed": 930028,
+     "turn": 255,
+     "seat": 1,
+     "k": 255
+    },
+    {
+     "seed": 930029,
+     "turn": 228,
+     "seat": 1,
+     "k": 228
+    },
+    {
+     "seed": 930030,
+     "turn": 248,
+     "seat": 1,
+     "k": 248
+    },
+    {
+     "seed": 930031,
+     "turn": 284,
+     "seat": 1,
+     "k": 284
+    },
+    {
+     "seed": 930032,
+     "turn": 232,
+     "seat": 1,
+     "k": 232
+    },
+    {
+     "seed": 930033,
+     "turn": 254,
+     "seat": 0,
+     "k": 254
+    },
+    {
+     "seed": 930034,
+     "turn": 294,
+     "seat": 1,
+     "k": 294
+    },
+    {
+     "seed": 930035,
+     "turn": 244,
+     "seat": 1,
+     "k": 244
+    },
+    {
+     "seed": 930036,
+     "turn": 105,
+     "seat": 0,
+     "k": 105
+    },
+    {
+     "seed": 930037,
+     "turn": 76,
+     "seat": 0,
+     "k": 76
+    },
+    {
+     "seed": 930038,
+     "turn": 164,
+     "seat": 0,
+     "k": 164
+    },
+    {
+     "seed": 930039,
+     "turn": 59,
+     "seat": 0,
+     "k": 59
+    }
+   ]
+  },
+  "E_recall": {
+   "games": 40,
+   "n": 40,
+   "states": [
+    {
+     "seed": 931000,
+     "turn": 240,
+     "seat": 0,
+     "k": 240
+    },
+    {
+     "seed": 931001,
+     "turn": 171,
+     "seat": 0,
+     "k": 171
+    },
+    {
+     "seed": 931002,
+     "turn": 26,
+     "seat": 1,
+     "k": 26
+    },
+    {
+     "seed": 931003,
+     "turn": 36,
+     "seat": 0,
+     "k": 36
+    },
+    {
+     "seed": 931004,
+     "turn": 272,
+     "seat": 0,
+     "k": 272
+    },
+    {
+     "seed": 931005,
+     "turn": 69,
+     "seat": 0,
+     "k": 69
+    },
+    {
+     "seed": 931006,
+     "turn": 180,
+     "seat": 1,
+     "k": 180
+    },
+    {
+     "seed": 931007,
+     "turn": 36,
+     "seat": 0,
+     "k": 36
+    },
+    {
+     "seed": 931008,
+     "turn": 136,
+     "seat": 0,
+     "k": 136
+    },
+    {
+     "seed": 931009,
+     "turn": 199,
+     "seat": 0,
+     "k": 199
+    },
+    {
+     "seed": 931010,
+     "turn": 209,
+     "seat": 1,
+     "k": 209
+    },
+    {
+     "seed": 931011,
+     "turn": 272,
+     "seat": 0,
+     "k": 272
+    },
+    {
+     "seed": 931012,
+     "turn": 261,
+     "seat": 1,
+     "k": 261
+    },
+    {
+     "seed": 931013,
+     "turn": 238,
+     "seat": 1,
+     "k": 238
+    },
+    {
+     "seed": 931014,
+     "turn": 100,
+     "seat": 1,
+     "k": 100
+    },
+    {
+     "seed": 931015,
+     "turn": 120,
+     "seat": 0,
+     "k": 120
+    },
+    {
+     "seed": 931016,
+     "turn": 213,
+     "seat": 1,
+     "k": 213
+    },
+    {
+     "seed": 931017,
+     "turn": 189,
+     "seat": 0,
+     "k": 189
+    },
+    {
+     "seed": 931018,
+     "turn": 95,
+     "seat": 0,
+     "k": 95
+    },
+    {
+     "seed": 931019,
+     "turn": 132,
+     "seat": 0,
+     "k": 132
+    },
+    {
+     "seed": 931020,
+     "turn": 168,
+     "seat": 0,
+     "k": 168
+    },
+    {
+     "seed": 931021,
+     "turn": 258,
+     "seat": 1,
+     "k": 258
+    },
+    {
+     "seed": 931022,
+     "turn": 126,
+     "seat": 1,
+     "k": 126
+    },
+    {
+     "seed": 931023,
+     "turn": 212,
+     "seat": 1,
+     "k": 212
+    },
+    {
+     "seed": 931024,
+     "turn": 218,
+     "seat": 1,
+     "k": 218
+    },
+    {
+     "seed": 931025,
+     "turn": 298,
+     "seat": 0,
+     "k": 298
+    },
+    {
+     "seed": 931026,
+     "turn": 45,
+     "seat": 1,
+     "k": 45
+    },
+    {
+     "seed": 931027,
+     "turn": 222,
+     "seat": 1,
+     "k": 222
+    },
+    {
+     "seed": 931028,
+     "turn": 27,
+     "seat": 0,
+     "k": 27
+    },
+    {
+     "seed": 931029,
+     "turn": 110,
+     "seat": 1,
+     "k": 110
+    },
+    {
+     "seed": 931030,
+     "turn": 105,
+     "seat": 1,
+     "k": 105
+    },
+    {
+     "seed": 931031,
+     "turn": 261,
+     "seat": 1,
+     "k": 261
+    },
+    {
+     "seed": 931032,
+     "turn": 37,
+     "seat": 1,
+     "k": 37
+    },
+    {
+     "seed": 931033,
+     "turn": 257,
+     "seat": 1,
+     "k": 257
+    },
+    {
+     "seed": 931034,
+     "turn": 226,
+     "seat": 1,
+     "k": 226
+    },
+    {
+     "seed": 931035,
+     "turn": 90,
+     "seat": 1,
+     "k": 90
+    },
+    {
+     "seed": 931036,
+     "turn": 54,
+     "seat": 1,
+     "k": 54
+    },
+    {
+     "seed": 931037,
+     "turn": 141,
+     "seat": 0,
+     "k": 141
+    },
+    {
+     "seed": 931038,
+     "turn": 104,
+     "seat": 0,
+     "k": 104
+    },
+    {
+     "seed": 931039,
+     "turn": 294,
+     "seat": 0,
+     "k": 294
+    }
+   ]
+  }
+ },
+ "timing": {
+  "collect_s": 19.23867000034079,
+  "rollouts_s": 1256.0443798000924,
+  "workers": 11,
+  "turns": 7610400,
+  "job_seconds": 13492.127461803611
+ },
+ "jobs": [
+  "A_wave|0|modal",
+  "A_wave|0|policy",
+  "A_wave|10|modal",
+  "A_wave|10|policy",
+  "A_wave|11|modal",
+  "A_wave|11|policy",
+  "A_wave|12|modal",
+  "A_wave|12|policy",
+  "A_wave|13|modal",
+  "A_wave|13|policy",
+  "A_wave|14|modal",
+  "A_wave|14|policy",
+  "A_wave|15|modal",
+  "A_wave|15|policy",
+  "A_wave|16|modal",
+  "A_wave|16|policy",
+  "A_wave|17|modal",
+  "A_wave|17|policy",
+  "A_wave|18|modal",
+  "A_wave|18|policy",
+  "A_wave|19|modal",
+  "A_wave|19|policy",
+  "A_wave|1|modal",
+  "A_wave|1|policy",
+  "A_wave|20|modal",
+  "A_wave|20|policy",
+  "A_wave|21|modal",
+  "A_wave|21|policy",
+  "A_wave|22|modal",
+  "A_wave|22|policy",
+  "A_wave|23|modal",
+  "A_wave|23|policy",
+  "A_wave|24|modal",
+  "A_wave|24|policy",
+  "A_wave|25|modal",
+  "A_wave|25|policy",
+  "A_wave|26|modal",
+  "A_wave|26|policy",
+  "A_wave|27|modal",
+  "A_wave|27|policy",
+  "A_wave|28|modal",
+  "A_wave|28|policy",
+  "A_wave|29|modal",
+  "A_wave|29|policy",
+  "A_wave|2|modal",
+  "A_wave|2|policy",
+  "A_wave|30|modal",
+  "A_wave|30|policy",
+  "A_wave|31|modal",
+  "A_wave|31|policy",
+  "A_wave|32|modal",
+  "A_wave|32|policy",
+  "A_wave|33|modal",
+  "A_wave|33|policy",
+  "A_wave|34|modal",
+  "A_wave|34|policy",
+  "A_wave|35|modal",
+  "A_wave|35|policy",
+  "A_wave|36|modal",
+  "A_wave|36|policy",
+  "A_wave|37|modal",
+  "A_wave|37|policy",
+  "A_wave|38|modal",
+  "A_wave|38|policy",
+  "A_wave|39|modal",
+  "A_wave|39|policy",
+  "A_wave|3|modal",
+  "A_wave|3|policy",
+  "A_wave|4|modal",
+  "A_wave|4|policy",
+  "A_wave|5|modal",
+  "A_wave|5|policy",
+  "A_wave|6|modal",
+  "A_wave|6|policy",
+  "A_wave|7|modal",
+  "A_wave|7|policy",
+  "A_wave|8|modal",
+  "A_wave|8|policy",
+  "A_wave|9|modal",
+  "A_wave|9|policy",
+  "B_freeze|0|modal",
+  "B_freeze|0|policy",
+  "B_freeze|10|modal",
+  "B_freeze|10|policy",
+  "B_freeze|11|modal",
+  "B_freeze|11|policy",
+  "B_freeze|12|modal",
+  "B_freeze|12|policy",
+  "B_freeze|13|modal",
+  "B_freeze|13|policy",
+  "B_freeze|14|modal",
+  "B_freeze|14|policy",
+  "B_freeze|15|modal",
+  "B_freeze|15|policy",
+  "B_freeze|16|modal",
+  "B_freeze|16|policy",
+  "B_freeze|17|modal",
+  "B_freeze|17|policy",
+  "B_freeze|18|modal",
+  "B_freeze|18|policy",
+  "B_freeze|19|modal",
+  "B_freeze|19|policy",
+  "B_freeze|1|modal",
+  "B_freeze|1|policy",
+  "B_freeze|20|modal",
+  "B_freeze|20|policy",
+  "B_freeze|21|modal",
+  "B_freeze|21|policy",
+  "B_freeze|22|modal",
+  "B_freeze|22|policy",
+  "B_freeze|23|modal",
+  "B_freeze|23|policy",
+  "B_freeze|24|modal",
+  "B_freeze|24|policy",
+  "B_freeze|25|modal",
+  "B_freeze|25|policy",
+  "B_freeze|26|modal",
+  "B_freeze|26|policy",
+  "B_freeze|27|modal",
+  "B_freeze|27|policy",
+  "B_freeze|28|modal",
+  "B_freeze|28|policy",
+  "B_freeze|29|modal",
+  "B_freeze|29|policy",
+  "B_freeze|2|modal",
+  "B_freeze|2|policy",
+  "B_freeze|30|modal",
+  "B_freeze|30|policy",
+  "B_freeze|31|modal",
+  "B_freeze|31|policy",
+  "B_freeze|32|modal",
+  "B_freeze|32|policy",
+  "B_freeze|33|modal",
+  "B_freeze|33|policy",
+  "B_freeze|34|modal",
+  "B_freeze|34|policy",
+  "B_freeze|35|modal",
+  "B_freeze|35|policy",
+  "B_freeze|36|modal",
+  "B_freeze|36|policy",
+  "B_freeze|37|modal",
+  "B_freeze|37|policy",
+  "B_freeze|38|modal",
+  "B_freeze|38|policy",
+  "B_freeze|39|modal",
+  "B_freeze|39|policy",
+  "B_freeze|3|modal",
+  "B_freeze|3|policy",
+  "B_freeze|4|modal",
+  "B_freeze|4|policy",
+  "B_freeze|5|modal",
+  "B_freeze|5|policy",
+  "B_freeze|6|modal",
+  "B_freeze|6|policy",
+  "B_freeze|7|modal",
+  "B_freeze|7|policy",
+  "B_freeze|8|modal",
+  "B_freeze|8|policy",
+  "B_freeze|9|modal",
+  "B_freeze|9|policy",
+  "B_frozen|0|modal",
+  "B_frozen|0|policy",
+  "B_frozen|10|modal",
+  "B_frozen|10|policy",
+  "B_frozen|11|modal",
+  "B_frozen|11|policy",
+  "B_frozen|12|modal",
+  "B_frozen|12|policy",
+  "B_frozen|13|modal",
+  "B_frozen|13|policy",
+  "B_frozen|14|modal",
+  "B_frozen|14|policy",
+  "B_frozen|15|modal",
+  "B_frozen|15|policy",
+  "B_frozen|16|modal",
+  "B_frozen|16|policy",
+  "B_frozen|17|modal",
+  "B_frozen|17|policy",
+  "B_frozen|18|modal",
+  "B_frozen|18|policy",
+  "B_frozen|19|modal",
+  "B_frozen|19|policy",
+  "B_frozen|1|modal",
+  "B_frozen|1|policy",
+  "B_frozen|20|modal",
+  "B_frozen|20|policy",
+  "B_frozen|21|modal",
+  "B_frozen|21|policy",
+  "B_frozen|22|modal",
+  "B_frozen|22|policy",
+  "B_frozen|23|modal",
+  "B_frozen|23|policy",
+  "B_frozen|24|modal",
+  "B_frozen|24|policy",
+  "B_frozen|25|modal",
+  "B_frozen|25|policy",
+  "B_frozen|26|modal",
+  "B_frozen|26|policy",
+  "B_frozen|27|modal",
+  "B_frozen|27|policy",
+  "B_frozen|28|modal",
+  "B_frozen|28|policy",
+  "B_frozen|29|modal",
+  "B_frozen|29|policy",
+  "B_frozen|2|modal",
+  "B_frozen|2|policy",
+  "B_frozen|30|modal",
+  "B_frozen|30|policy",
+  "B_frozen|31|modal",
+  "B_frozen|31|policy",
+  "B_frozen|32|modal",
+  "B_frozen|32|policy",
+  "B_frozen|33|modal",
+  "B_frozen|33|policy",
+  "B_frozen|34|modal",
+  "B_frozen|34|policy",
+  "B_frozen|35|modal",
+  "B_frozen|35|policy",
+  "B_frozen|36|modal",
+  "B_frozen|36|policy",
+  "B_frozen|37|modal",
+  "B_frozen|37|policy",
+  "B_frozen|38|modal",
+  "B_frozen|38|policy",
+  "B_frozen|39|modal",
+  "B_frozen|39|policy",
+  "B_frozen|3|modal",
+  "B_frozen|3|policy",
+  "B_frozen|4|modal",
+  "B_frozen|4|policy",
+  "B_frozen|5|modal",
+  "B_frozen|5|policy",
+  "B_frozen|6|modal",
+  "B_frozen|6|policy",
+  "B_frozen|7|modal",
+  "B_frozen|7|policy",
+  "B_frozen|8|modal",
+  "B_frozen|8|policy",
+  "B_frozen|9|modal",
+  "B_frozen|9|policy",
+  "C_trade|0|modal",
+  "C_trade|0|policy",
+  "C_trade|10|modal",
+  "C_trade|10|policy",
+  "C_trade|11|modal",
+  "C_trade|11|policy",
+  "C_trade|12|modal",
+  "C_trade|12|policy",
+  "C_trade|13|modal",
+  "C_trade|13|policy",
+  "C_trade|14|modal",
+  "C_trade|14|policy",
+  "C_trade|15|modal",
+  "C_trade|15|policy",
+  "C_trade|16|modal",
+  "C_trade|16|policy",
+  "C_trade|17|modal",
+  "C_trade|17|policy",
+  "C_trade|18|modal",
+  "C_trade|18|policy",
+  "C_trade|19|modal",
+  "C_trade|19|policy",
+  "C_trade|1|modal",
+  "C_trade|1|policy",
+  "C_trade|20|modal",
+  "C_trade|20|policy",
+  "C_trade|21|modal",
+  "C_trade|21|policy",
+  "C_trade|22|modal",
+  "C_trade|22|policy",
+  "C_trade|23|modal",
+  "C_trade|23|policy",
+  "C_trade|24|modal",
+  "C_trade|24|policy",
+  "C_trade|25|modal",
+  "C_trade|25|policy",
+  "C_trade|26|modal",
+  "C_trade|26|policy",
+  "C_trade|27|modal",
+  "C_trade|27|policy",
+  "C_trade|28|modal",
+  "C_trade|28|policy",
+  "C_trade|29|modal",
+  "C_trade|29|policy",
+  "C_trade|2|modal",
+  "C_trade|2|policy",
+  "C_trade|30|modal",
+  "C_trade|30|policy",
+  "C_trade|31|modal",
+  "C_trade|31|policy",
+  "C_trade|32|modal",
+  "C_trade|32|policy",
+  "C_trade|33|modal",
+  "C_trade|33|policy",
+  "C_trade|34|modal",
+  "C_trade|34|policy",
+  "C_trade|35|modal",
+  "C_trade|35|policy",
+  "C_trade|36|modal",
+  "C_trade|36|policy",
+  "C_trade|37|modal",
+  "C_trade|37|policy",
+  "C_trade|38|modal",
+  "C_trade|38|policy",
+  "C_trade|39|modal",
+  "C_trade|39|policy",
+  "C_trade|3|modal",
+  "C_trade|3|policy",
+  "C_trade|4|modal",
+  "C_trade|4|policy",
+  "C_trade|5|modal",
+  "C_trade|5|policy",
+  "C_trade|6|modal",
+  "C_trade|6|policy",
+  "C_trade|7|modal",
+  "C_trade|7|policy",
+  "C_trade|8|modal",
+  "C_trade|8|policy",
+  "C_trade|9|modal",
+  "C_trade|9|policy",
+  "D_ward|0|modal",
+  "D_ward|0|policy",
+  "D_ward|10|modal",
+  "D_ward|10|policy",
+  "D_ward|11|modal",
+  "D_ward|11|policy",
+  "D_ward|12|modal",
+  "D_ward|12|policy",
+  "D_ward|13|modal",
+  "D_ward|13|policy",
+  "D_ward|14|modal",
+  "D_ward|14|policy",
+  "D_ward|15|modal",
+  "D_ward|15|policy",
+  "D_ward|16|modal",
+  "D_ward|16|policy",
+  "D_ward|17|modal",
+  "D_ward|17|policy",
+  "D_ward|18|modal",
+  "D_ward|18|policy",
+  "D_ward|19|modal",
+  "D_ward|19|policy",
+  "D_ward|1|modal",
+  "D_ward|1|policy",
+  "D_ward|20|modal",
+  "D_ward|20|policy",
+  "D_ward|21|modal",
+  "D_ward|21|policy",
+  "D_ward|22|modal",
+  "D_ward|22|policy",
+  "D_ward|23|modal",
+  "D_ward|23|policy",
+  "D_ward|24|modal",
+  "D_ward|24|policy",
+  "D_ward|25|modal",
+  "D_ward|25|policy",
+  "D_ward|26|modal",
+  "D_ward|26|policy",
+  "D_ward|27|modal",
+  "D_ward|27|policy",
+  "D_ward|28|modal",
+  "D_ward|28|policy",
+  "D_ward|29|modal",
+  "D_ward|29|policy",
+  "D_ward|2|modal",
+  "D_ward|2|policy",
+  "D_ward|30|modal",
+  "D_ward|30|policy",
+  "D_ward|31|modal",
+  "D_ward|31|policy",
+  "D_ward|32|modal",
+  "D_ward|32|policy",
+  "D_ward|33|modal",
+  "D_ward|33|policy",
+  "D_ward|34|modal",
+  "D_ward|34|policy",
+  "D_ward|35|modal",
+  "D_ward|35|policy",
+  "D_ward|36|modal",
+  "D_ward|36|policy",
+  "D_ward|37|modal",
+  "D_ward|37|policy",
+  "D_ward|38|modal",
+  "D_ward|38|policy",
+  "D_ward|39|modal",
+  "D_ward|39|policy",
+  "D_ward|3|modal",
+  "D_ward|3|policy",
+  "D_ward|4|modal",
+  "D_ward|4|policy",
+  "D_ward|5|modal",
+  "D_ward|5|policy",
+  "D_ward|6|modal",
+  "D_ward|6|policy",
+  "D_ward|7|modal",
+  "D_ward|7|policy",
+  "D_ward|8|modal",
+  "D_ward|8|policy",
+  "D_ward|9|modal",
+  "D_ward|9|policy",
+  "E_recall|0|modal",
+  "E_recall|0|policy",
+  "E_recall|10|modal",
+  "E_recall|10|policy",
+  "E_recall|11|modal",
+  "E_recall|11|policy",
+  "E_recall|12|modal",
+  "E_recall|12|policy",
+  "E_recall|13|modal",
+  "E_recall|13|policy",
+  "E_recall|14|modal",
+  "E_recall|14|policy",
+  "E_recall|15|modal",
+  "E_recall|15|policy",
+  "E_recall|16|modal",
+  "E_recall|16|policy",
+  "E_recall|17|modal",
+  "E_recall|17|policy",
+  "E_recall|18|modal",
+  "E_recall|18|policy",
+  "E_recall|19|modal",
+  "E_recall|19|policy",
+  "E_recall|1|modal",
+  "E_recall|1|policy",
+  "E_recall|20|modal",
+  "E_recall|20|policy",
+  "E_recall|21|modal",
+  "E_recall|21|policy",
+  "E_recall|22|modal",
+  "E_recall|22|policy",
+  "E_recall|23|modal",
+  "E_recall|23|policy",
+  "E_recall|24|modal",
+  "E_recall|24|policy",
+  "E_recall|25|modal",
+  "E_recall|25|policy",
+  "E_recall|26|modal",
+  "E_recall|26|policy",
+  "E_recall|27|modal",
+  "E_recall|27|policy",
+  "E_recall|28|modal",
+  "E_recall|28|policy",
+  "E_recall|29|modal",
+  "E_recall|29|policy",
+  "E_recall|2|modal",
+  "E_recall|2|policy",
+  "E_recall|30|modal",
+  "E_recall|30|policy",
+  "E_recall|31|modal",
+  "E_recall|31|policy",
+  "E_recall|32|modal",
+  "E_recall|32|policy",
+  "E_recall|33|modal",
+  "E_recall|33|policy",
+  "E_recall|34|modal",
+  "E_recall|34|policy",
+  "E_recall|35|modal",
+  "E_recall|35|policy",
+  "E_recall|36|modal",
+  "E_recall|36|policy",
+  "E_recall|37|modal",
+  "E_recall|37|policy",
+  "E_recall|38|modal",
+  "E_recall|38|policy",
+  "E_recall|39|modal",
+  "E_recall|39|policy",
+  "E_recall|3|modal",
+  "E_recall|3|policy",
+  "E_recall|4|modal",
+  "E_recall|4|policy",
+  "E_recall|5|modal",
+  "E_recall|5|policy",
+  "E_recall|6|modal",
+  "E_recall|6|policy",
+  "E_recall|7|modal",
+  "E_recall|7|policy",
+  "E_recall|8|modal",
+  "E_recall|8|policy",
+  "E_recall|9|modal",
+  "E_recall|9|policy",
+  "F_freeze_c|0|modal",
+  "F_freeze_c|0|policy",
+  "F_freeze_c|0|wk_back",
+  "F_freeze_c|0|wk_shove",
+  "F_freeze_c|0|wk_shove_reset",
+  "F_freeze_c|1|modal",
+  "F_freeze_c|1|policy",
+  "F_freeze_c|1|wk_back",
+  "F_freeze_c|1|wk_shove",
+  "F_freeze_c|1|wk_shove_reset",
+  "F_freeze_c|2|modal",
+  "F_freeze_c|2|policy",
+  "F_freeze_c|2|wk_back",
+  "F_freeze_c|2|wk_shove",
+  "F_freeze_c|2|wk_shove_reset",
+  "F_freeze_c|3|modal",
+  "F_freeze_c|3|policy",
+  "F_freeze_c|3|wk_back",
+  "F_freeze_c|3|wk_shove",
+  "F_freeze_c|3|wk_shove_reset",
+  "F_freeze_c|4|modal",
+  "F_freeze_c|4|policy",
+  "F_freeze_c|4|wk_back",
+  "F_freeze_c|4|wk_shove",
+  "F_freeze_c|4|wk_shove_reset",
+  "F_freeze_c|5|modal",
+  "F_freeze_c|5|policy",
+  "F_freeze_c|5|wk_back",
+  "F_freeze_c|5|wk_shove",
+  "F_freeze_c|5|wk_shove_reset",
+  "F_freeze_c|6|modal",
+  "F_freeze_c|6|policy",
+  "F_freeze_c|6|wk_back",
+  "F_freeze_c|6|wk_shove",
+  "F_freeze_c|6|wk_shove_reset",
+  "F_freeze_c|7|modal",
+  "F_freeze_c|7|policy",
+  "F_freeze_c|7|wk_back",
+  "F_freeze_c|7|wk_shove",
+  "F_freeze_c|7|wk_shove_reset",
+  "G_trade_c|0|modal",
+  "G_trade_c|0|policy",
+  "G_trade_c|1|modal",
+  "G_trade_c|1|policy",
+  "G_trade_c|2|modal",
+  "G_trade_c|2|policy",
+  "G_trade_c|3|modal",
+  "G_trade_c|3|policy",
+  "G_trade_c|4|modal",
+  "G_trade_c|4|policy",
+  "G_trade_c|5|modal",
+  "G_trade_c|5|policy",
+  "H_zone_c|0|g_wary",
+  "H_zone_c|0|modal",
+  "H_zone_c|0|policy",
+  "H_zone_c|1|g_wary",
+  "H_zone_c|1|modal",
+  "H_zone_c|1|policy",
+  "H_zone_c|2|g_wary",
+  "H_zone_c|2|modal",
+  "H_zone_c|2|policy",
+  "I_ward_c|0|modal",
+  "I_ward_c|0|policy",
+  "I_ward_c|1|modal",
+  "I_ward_c|1|policy",
+  "I_ward_c|2|modal",
+  "I_ward_c|2|policy",
+  "I_ward_c|3|modal",
+  "I_ward_c|3|policy"
+ ],
+ "raw": "per-job files in results/m45c/horizon/partial/ (gzipped JSON)"
+}

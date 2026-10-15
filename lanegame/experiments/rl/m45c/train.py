@@ -102,14 +102,15 @@ def _peak_memory_mb() -> Dict[str, float]:
 
 
 def train_one(args: tuple) -> dict:
-    """One run in a worker process: (phase, seed, total_steps, stop_at or None, out_dir or None, overwrite, tag)."""
-    phase, seed, total, stop, out_dir, overwrite, tag = args
+    """One run in a worker process: (phase, seed, total_steps, stop_at or None, out_dir or None, overwrite, tag[,
+    ppo_kw]); the optional `ppo_kw` (e.g. {"lane_cache": 5000}) is passed to common.ppo_config."""
+    phase, seed, total, stop, out_dir, overwrite, tag, *rest = args
     import torch
     from ....env import LaneEnv
     from ....rl import checkpoint_info, train_shared, weights_digest
     from ..m43b.train import summarize_history
     cfg = env_cfg()
-    ppo = ppo_config(seed, total)
+    ppo = ppo_config(seed, total, **(rest[0] if rest else {}))
     name = run_name(seed, tag)
     t0 = time.perf_counter()
     res = train_shared(cfg, ppo, shared_config(), out_dir=out_dir, name=name, verbose=phase != "bench",

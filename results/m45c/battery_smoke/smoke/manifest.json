@@ -1,0 +1,278 @@
+{
+ "meta": {
+  "study": "M4.5c",
+  "commit": "45b7dfa7fa5564194e124af59b26b45433fb56f9",
+  "working_tree_dirty": true,
+  "timestamp": "2026-10-15 00:42:20",
+  "python": "3.13.9",
+  "torch": "2.14.1+cpu",
+  "numpy": "2.5.3",
+  "environment": "GameConfig.m45_calibrated()",
+  "stage": "battery",
+  "spec": "final:full:0",
+  "tag": "smoke",
+  "families": [
+   "A_wave",
+   "A_wave_early",
+   "B_freeze",
+   "B_frozen",
+   "C_trade",
+   "C_trade_early",
+   "D_ward",
+   "E_recall",
+   "F_freeze_c",
+   "G_trade_c",
+   "H_zone_c",
+   "I_ward_c"
+  ],
+  "k_natural": 2,
+  "k_constructed": 2,
+  "n_natural": 2,
+  "n_early": 2,
+  "extended": []
+ },
+ "states": {
+  "A_wave": {
+   "n": 2,
+   "games": 2,
+   "validation": [
+    1
+   ],
+   "states": [
+    {
+     "seed": 937000,
+     "turn": 138,
+     "seat": 1,
+     "k": 138
+    },
+    {
+     "seed": 937001,
+     "turn": 170,
+     "seat": 0,
+     "k": 170
+    }
+   ]
+  },
+  "A_wave_early": {
+   "n": 2,
+   "games": 2,
+   "validation": [
+    0
+   ],
+   "states": [
+    {
+     "seed": 938000,
+     "turn": 39,
+     "seat": 1,
+     "k": 39
+    },
+    {
+     "seed": 938001,
+     "turn": 40,
+     "seat": 1,
+     "k": 40
+    }
+   ]
+  },
+  "B_freeze": {
+   "n": 2,
+   "games": 2,
+   "validation": [
+    0
+   ],
+   "states": [
+    {
+     "seed": 939000,
+     "turn": 26,
+     "seat": 0,
+     "k": 26
+    },
+    {
+     "seed": 939001,
+     "turn": 67,
+     "seat": 1,
+     "k": 67
+    }
+   ]
+  },
+  "B_frozen": {
+   "n": 2,
+   "games": 2,
+   "validation": [
+    0
+   ],
+   "states": [
+    {
+     "seed": 940000,
+     "turn": 156,
+     "seat": 0,
+     "k": 156
+    },
+    {
+     "seed": 940001,
+     "turn": 41,
+     "seat": 0,
+     "k": 41
+    }
+   ]
+  },
+  "C_trade": {
+   "n": 2,
+   "games": 2,
+   "validation": [
+    0
+   ],
+   "states": [
+    {
+     "seed": 941000,
+     "turn": 289,
+     "seat": 0,
+     "k": 289
+    },
+    {
+     "seed": 941001,
+     "turn": 237,
+     "seat": 0,
+     "k": 237
+    }
+   ]
+  },
+  "C_trade_early": {
+   "n": 2,
+   "games": 2,
+   "validation": [
+    0
+   ],
+   "states": [
+    {
+     "seed": 942000,
+     "turn": 42,
+     "seat": 1,
+     "k": 42
+    },
+    {
+     "seed": 942001,
+     "turn": 47,
+     "seat": 0,
+     "k": 47
+    }
+   ]
+  },
+  "D_ward": {
+   "n": 2,
+   "games": 2,
+   "validation": [
+    0
+   ],
+   "states": [
+    {
+     "seed": 943000,
+     "turn": 130,
+     "seat": 0,
+     "k": 130
+    },
+    {
+     "seed": 943001,
+     "turn": 151,
+     "seat": 1,
+     "k": 151
+    }
+   ]
+  },
+  "E_recall": {
+   "n": 2,
+   "games": 2,
+   "validation": [
+    1
+   ],
+   "states": [
+    {
+     "seed": 944000,
+     "turn": 158,
+     "seat": 0,
+     "k": 158
+    },
+    {
+     "seed": 944001,
+     "turn": 136,
+     "seat": 1,
+     "k": 136
+    }
+   ]
+  }
+ },
+ "timing": {
+  "collect_s": 5.581167799886316,
+  "mechanics_s": 7.016791300382465,
+  "rollouts_s": 15.496573900338262,
+  "workers": 11,
+  "turns": 63460,
+  "job_seconds": 84.98745679901913
+ },
+ "jobs": [
+  "smoke|A_wave_early|0|modal|50",
+  "smoke|A_wave_early|0|policy|300",
+  "smoke|A_wave_early|1|modal|50",
+  "smoke|A_wave_early|1|policy|50",
+  "smoke|A_wave|0|modal|50",
+  "smoke|A_wave|0|policy|50",
+  "smoke|A_wave|1|modal|50",
+  "smoke|A_wave|1|policy|300",
+  "smoke|B_freeze|0|modal|60",
+  "smoke|B_freeze|0|policy|300",
+  "smoke|B_freeze|0|wk_back|60",
+  "smoke|B_freeze|0|wk_shove_reset|60",
+  "smoke|B_freeze|0|wk_shove|60",
+  "smoke|B_freeze|1|modal|60",
+  "smoke|B_freeze|1|policy|60",
+  "smoke|B_freeze|1|wk_back|60",
+  "smoke|B_freeze|1|wk_shove_reset|60",
+  "smoke|B_freeze|1|wk_shove|60",
+  "smoke|B_frozen|0|fz_bully_sh|50",
+  "smoke|B_frozen|0|fz_guard_sh|50",
+  "smoke|B_frozen|0|fz_passive_sh|50",
+  "smoke|B_frozen|0|modal|50",
+  "smoke|B_frozen|0|policy|300",
+  "smoke|B_frozen|1|fz_bully_sh|50",
+  "smoke|B_frozen|1|fz_guard_sh|50",
+  "smoke|B_frozen|1|fz_passive_sh|50",
+  "smoke|B_frozen|1|modal|50",
+  "smoke|B_frozen|1|policy|50",
+  "smoke|C_trade_early|0|g_wary|50",
+  "smoke|C_trade_early|0|modal|50",
+  "smoke|C_trade_early|0|policy|300",
+  "smoke|C_trade_early|1|g_wary|50",
+  "smoke|C_trade_early|1|modal|50",
+  "smoke|C_trade_early|1|policy|50",
+  "smoke|C_trade|0|g_wary|50",
+  "smoke|C_trade|0|modal|50",
+  "smoke|C_trade|0|policy|300",
+  "smoke|C_trade|1|g_wary|50",
+  "smoke|C_trade|1|modal|50",
+  "smoke|C_trade|1|policy|50",
+  "smoke|D_ward|0|g_bully|50",
+  "smoke|D_ward|0|modal|50",
+  "smoke|D_ward|0|policy|300",
+  "smoke|D_ward|1|g_bully|50",
+  "smoke|D_ward|1|modal|50",
+  "smoke|D_ward|1|policy|50",
+  "smoke|E_recall|0|modal|50",
+  "smoke|E_recall|0|policy|50",
+  "smoke|E_recall|1|modal|50",
+  "smoke|E_recall|1|policy|300",
+  "smoke|F_freeze_c|0|modal|60",
+  "smoke|F_freeze_c|0|policy|300",
+  "smoke|F_freeze_c|0|wk_back|60",
+  "smoke|F_freeze_c|0|wk_shove_reset|60",
+  "smoke|F_freeze_c|0|wk_shove|60",
+  "smoke|G_trade_c|0|g_wary|50",
+  "smoke|G_trade_c|0|modal|50",
+  "smoke|G_trade_c|0|policy|300",
+  "smoke|H_zone_c|0|g_wary|50",
+  "smoke|H_zone_c|0|modal|50",
+  "smoke|H_zone_c|0|policy|300",
+  "smoke|I_ward_c|0|g_bully|50",
+  "smoke|I_ward_c|0|modal|50",
+  "smoke|I_ward_c|0|policy|300"
+ ]
+}

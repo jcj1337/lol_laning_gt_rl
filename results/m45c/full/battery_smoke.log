@@ -1,0 +1,92 @@
+===== battery_smoke =====
+  [battery states final:full:0] 1/8 done, 4 s
+  [battery states final:full:0] 2/8 done, 4 s
+  [battery states final:full:0] 3/8 done, 4 s
+  [battery states final:full:0] 4/8 done, 4 s
+  [battery states final:full:0] 5/8 done, 4 s
+  [battery states final:full:0] 6/8 done, 4 s
+  [battery states final:full:0] 7/8 done, 4 s
+  [battery states final:full:0] 8/8 done, 4 s
+  [battery mechanics smoke] 1/12 done, 4 s
+  [battery mechanics smoke] 2/12 done, 4 s
+  [battery mechanics smoke] 3/12 done, 4 s
+  [battery mechanics smoke] 4/12 done, 4 s
+  [battery mechanics smoke] 5/12 done, 4 s
+  [battery mechanics smoke] 6/12 done, 4 s
+  [battery mechanics smoke] 7/12 done, 4 s
+  [battery mechanics smoke] 8/12 done, 4 s
+  [battery mechanics smoke] 9/12 done, 4 s
+  [battery mechanics smoke] 10/12 done, 4 s
+  [battery mechanics smoke] 11/12 done, 4 s
+  [battery mechanics smoke] 12/12 done, 5 s
+wrote results\m45c\battery_smoke\smoke\mechanics.json
+  [battery smoke] 1/64 done, 5 s
+  [battery smoke] 2/64 done, 5 s
+  [battery smoke] 3/64 done, 5 s
+  [battery smoke] 4/64 done, 5 s
+  [battery smoke] 5/64 done, 5 s
+  [battery smoke] 6/64 done, 5 s
+  [battery smoke] 7/64 done, 5 s
+  [battery smoke] 8/64 done, 6 s
+  [battery smoke] 9/64 done, 6 s
+  [battery smoke] 10/64 done, 6 s
+  [battery smoke] 11/64 done, 6 s
+  [battery smoke] 12/64 done, 6 s
+  [battery smoke] 13/64 done, 6 s
+  [battery smoke] 14/64 done, 6 s
+  [battery smoke] 15/64 done, 6 s
+  [battery smoke] 16/64 done, 6 s
+  [battery smoke] 17/64 done, 7 s
+  [battery smoke] 18/64 done, 7 s
+  [battery smoke] 19/64 done, 7 s
+  [battery smoke] 20/64 done, 7 s
+  [battery smoke] 21/64 done, 7 s
+  [battery smoke] 22/64 done, 7 s
+  [battery smoke] 23/64 done, 7 s
+  [battery smoke] 24/64 done, 7 s
+  [battery smoke] 25/64 done, 7 s
+  [battery smoke] 26/64 done, 8 s
+  [battery smoke] 27/64 done, 8 s
+  [battery smoke] 28/64 done, 8 s
+  [battery smoke] 29/64 done, 8 s
+  [battery smoke] 30/64 done, 8 s
+  [battery smoke] 31/64 done, 8 s
+  [battery smoke] 32/64 done, 8 s
+  [battery smoke] 33/64 done, 8 s
+  [battery smoke] 34/64 done, 8 s
+  [battery smoke] 35/64 done, 9 s
+  [battery smoke] 36/64 done, 9 s
+  [battery smoke] 37/64 done, 9 s
+  [battery smoke] 38/64 done, 9 s
+  [battery smoke] 39/64 done, 9 s
+  [battery smoke] 40/64 done, 9 s
+  [battery smoke] 41/64 done, 9 s
+  [battery smoke] 42/64 done, 10 s
+  [battery smoke] 43/64 done, 10 s
+  [battery smoke] 44/64 done, 10 s
+  [battery smoke] 45/64 done, 10 s
+  [battery smoke] 46/64 done, 10 s
+  [battery smoke] 47/64 done, 10 s
+  [battery smoke] 48/64 done, 10 s
+  [battery smoke] 49/64 done, 11 s
+  [battery smoke] 50/64 done, 11 s
+  [battery smoke] 51/64 done, 11 s
+  [battery smoke] 52/64 done, 11 s
+  [battery smoke] 53/64 done, 11 s
+  [battery smoke] 54/64 done, 11 s
+  [battery smoke] 55/64 done, 11 s
+  [battery smoke] 56/64 done, 11 s
+  [battery smoke] 57/64 done, 11 s
+  [battery smoke] 58/64 done, 11 s
+  [battery smoke] 59/64 done, 11 s
+  [battery smoke] 60/64 done, 12 s
+  [battery smoke] 61/64 done, 13 s
+  [battery smoke] 62/64 done, 13 s
+  [battery smoke] 63/64 done, 14 s
+  [battery smoke] 64/64 done, 14 s
+wrote results\m45c\battery_smoke\smoke\manifest.json
+wrote results\m45c\battery_smoke\summary.json
+wrote results\m45c\battery_smoke\report.md
+wrote results\m45c\battery_smoke\smoke_summary.json
+{'jobs': 64, 'turns': 63460, 'validation': {'A_wave': {'statistic': 'Q', 'pairs': 6, 'states': 1, 'bias': 0.03195043506391012, 'bias_se': 0.32969644522846236, 'slope': 0.7285428484623702, 'contradictions': [], 'bias_ok': True, 'slope_ok': False, 'verdict': 'fail -> re-run the family at 150 turns'}, 'A_wave_early': {'statistic': 'Q', 'pairs': 6, 'states': 1, 'bias': -2.2158402867733833, 'bias_se': 0.427030984727612, 'slope': 0.8531202838378058, 'contradictions': [], 'bias_ok': False, 'slope_ok': True, 'verdict': 'fail -> re-run the family at 150 turns'}, 'B_freeze': {'statistic': 'Q', 'pairs': 5, 'states': 1, 'bias': 0.5112051620682575, 'bias_se': 0.12804626783154016, 'slope': 0.8593242012004663, 'contradictions': [], 'bias_ok': False, 'slope_ok': True, 'verdict': 'fail -> re-run the family at 150 turns'}, 'B_frozen': {'statistic': 'Q', 'pairs': 4, 'states': 1, 'bias': 0.40212838501120773, 'bias_se': 0.44685206187721266, 'slope': 0.3232195477485073, 'contradictions': [], 'bias_ok': True, 'slope_ok': False, 'verdict': 'fail -> re-run the family at 150 turns'}, 'C_trade': {'statistic': 'Q', 'pairs': 3, 'states': 1, 'bias': -0.5659804651379713, 'bias_se': 0.5659804651379714, 'slope': 20.21134155174379, 'contradictions': [], 'bias_ok': True, 'slope_ok': False, 'verdict': 'fail -> re-run the family at 150 turns'}, 'C_trade_early': {'statistic': 'Q', 'pairs': 3, 'states': 1, 'bias': 0.7775839940567936, 'bias_se': 0.6560641358159913, 'slope': 0.28351664241531566, 'contradictions': [], 'bias_ok': True, 'slope_ok': False, 'verdict': 'fail -> re-run the family at 150 turns'}, 'D_ward': {'statistic': 'Q', 'pairs': 2, 'verdict': 'insufficient'}, 'E_recall': {'statistic': 'Q', 'pairs': 3, 'states': 1, 'bias': -1.183210067644353, 'bias_se': 0.719643614893467, 'slope': -1.4931934365844548, 'contradictions': [], 'bias_ok': True, 'slope_ok': False, 'verdict': 'fail -> re-run the family at 150 turns'}, 'F_freeze_c': {'statistic': 'G', 'pairs': 5, 'states': 1, 'bias': 0.4842368967524913, 'bias_se': 0.3039398683669804, 'slope': 1.1125306247829905, 'contradictions': [], 'bias_ok': True, 'slope_ok': True, 'verdict': 'pass'}, 'G_trade_c': {'statistic': 'G', 'pairs': 3, 'states': 1, 'bias': 0.6483584071680193, 'bias_se': 0.2171481317061786, 'slope': 1.344152751113645, 'contradictions': [], 'bias_ok': False, 'slope_ok': False, 'verdict': 'fail -> re-run the family at 150 turns'}, 'H_zone_c': {'statistic': 'G', 'pairs': 4, 'states': 1, 'bias': -0.8499606599436098, 'bias_se': 0.8532777564504377, 'slope': 0.4807152171546575, 'contradictions': [], 'bias_ok': True, 'slope_ok': False, 'verdict': 'fail -> re-run the family at 150 turns'}, 'I_ward_c': {'statistic': 'G', 'pairs': 2, 'verdict': 'insufficient'}}}
+[battery_smoke: 29 s elapsed]

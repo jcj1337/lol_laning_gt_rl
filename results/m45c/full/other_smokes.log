@@ -1,0 +1,10 @@
+===== traces_smoke =====
+  [trace search] 1/2 done, 2 s
+  [trace search] 2/2 done, 3 s
+wrote results\m45c\battery_smoke\traces\traces_smoke.json
+{'all_verified': True, 'found': {'final:full:0|freeze_denies': 1, 'final:full:0|freeze_fails': 0, 'final:full:0|freeze_broken': 1, 'final:full:0|slow_push_lands': 1, 'final:full:0|vision_then_pressure': 0, 'final:full:0|busy_dive': 0, 'final:full:0|weak_side_threatened': 8}}
+[traces_smoke: 6 s elapsed]
+===== attackers_smoke =====
+wrote results\m45c\attackers\attackers_smoke.json
+{'updates': 2, 'transitions_per_s': 981.7699273633615, 'eval': {'W100': {'estimate': -0.8006172547600623, 'stderr': 0.8743709982854408, 'ci95': [-2.5143844113995266, 0.9131499018794018], 'seat_A': 0.7475530521246219, 'seat_B': -2.3487875616447464, 'window': 100}}}
+[attackers_smoke: 11 s elapsed]

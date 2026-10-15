@@ -1,0 +1,213 @@
+{
+ "meta": {
+  "study": "M4.5c",
+  "commit": "45b7dfa7fa5564194e124af59b26b45433fb56f9",
+  "working_tree_dirty": true,
+  "timestamp": "2026-10-15 07:37:41",
+  "python": "3.13.9",
+  "torch": "2.14.1+cpu",
+  "numpy": "2.5.3",
+  "environment": "GameConfig.m45_calibrated()",
+  "stage": "battery_extend",
+  "phase": "ext"
+ },
+ "plan": {
+  "s0_ext": {
+   "failed": [
+    "A_wave",
+    "A_wave_early",
+    "C_trade_early"
+   ],
+   "verdicts": {
+    "A_wave": "fail -> re-run the family at 150 turns",
+    "A_wave_early": "fail -> re-run the family at 150 turns",
+    "B_freeze": "pass",
+    "B_frozen": "pass",
+    "C_trade": "pass",
+    "C_trade_early": "fail -> re-run the family at 150 turns",
+    "D_ward": "pass",
+    "E_recall": "pass",
+    "F_freeze_c": "pass",
+    "G_trade_c": "pass",
+    "H_zone_c": "pass",
+    "I_ward_c": "pass"
+   }
+  },
+  "s0_full": {
+   "failed": [],
+   "verdicts": {
+    "B_freeze": "pass",
+    "B_frozen": "pass",
+    "E_recall": "pass",
+    "F_freeze_c": "pass"
+   }
+  },
+  "s1_ext": {
+   "failed": [
+    "A_wave_early",
+    "B_freeze",
+    "B_frozen",
+    "C_trade_early",
+    "I_ward_c"
+   ],
+   "verdicts": {
+    "A_wave": "pass",
+    "A_wave_early": "fail -> re-run the family at 150 turns",
+    "B_freeze": "fail -> re-run the family at 150 turns",
+    "B_frozen": "fail -> re-run the family at 150 turns",
+    "C_trade": "pass",
+    "C_trade_early": "fail -> re-run the family at 150 turns",
+    "D_ward": "pass",
+    "E_recall": "pass",
+    "F_freeze_c": "pass",
+    "G_trade_c": "pass",
+    "H_zone_c": "pass",
+    "I_ward_c": "fail -> re-run the family at 150 turns"
+   }
+  },
+  "s1_full": {
+   "failed": [
+    "E_recall"
+   ],
+   "verdicts": {
+    "B_freeze": "pass",
+    "B_frozen": "pass",
+    "E_recall": "fail -> re-run the family at 150 turns",
+    "F_freeze_c": "pass"
+   }
+  },
+  "s2_ext": {
+   "failed": [
+    "A_wave",
+    "B_frozen",
+    "D_ward",
+    "G_trade_c"
+   ],
+   "verdicts": {
+    "A_wave": "fail -> re-run the family at 150 turns",
+    "A_wave_early": "pass",
+    "B_freeze": "pass",
+    "B_frozen": "fail -> re-run the family at 150 turns",
+    "C_trade": "pass",
+    "C_trade_early": "pass",
+    "D_ward": "fail -> re-run the family at 150 turns",
+    "E_recall": "pass",
+    "F_freeze_c": "pass",
+    "G_trade_c": "fail -> re-run the family at 150 turns",
+    "H_zone_c": "pass",
+    "I_ward_c": "pass"
+   }
+  },
+  "s2_full": {
+   "failed": [],
+   "verdicts": {
+    "B_freeze": "pass",
+    "B_frozen": "pass",
+    "E_recall": "pass",
+    "F_freeze_c": "pass"
+   }
+  },
+  "s3_ext": {
+   "failed": [
+    "A_wave",
+    "B_freeze",
+    "C_trade_early",
+    "F_freeze_c",
+    "G_trade_c"
+   ],
+   "verdicts": {
+    "A_wave": "fail -> re-run the family at 150 turns",
+    "A_wave_early": "pass",
+    "B_freeze": "fail -> re-run the family at 150 turns",
+    "B_frozen": "pass",
+    "C_trade": "pass",
+    "C_trade_early": "fail -> re-run the family at 150 turns",
+    "D_ward": "pass",
+    "E_recall": "pass",
+    "F_freeze_c": "fail -> re-run the family at 150 turns",
+    "G_trade_c": "fail -> re-run the family at 150 turns",
+    "H_zone_c": "pass",
+    "I_ward_c": "pass"
+   }
+  },
+  "s3_full": {
+   "failed": [
+    "F_freeze_c"
+   ],
+   "verdicts": {
+    "B_freeze": "pass",
+    "B_frozen": "pass",
+    "E_recall": "pass",
+    "F_freeze_c": "fail -> re-run the family at 150 turns"
+   }
+  },
+  "s4_ext": {
+   "failed": [
+    "A_wave_early",
+    "B_freeze",
+    "C_trade",
+    "C_trade_early",
+    "G_trade_c",
+    "I_ward_c"
+   ],
+   "verdicts": {
+    "A_wave": "pass",
+    "A_wave_early": "fail -> re-run the family at 150 turns",
+    "B_freeze": "fail -> re-run the family at 150 turns",
+    "B_frozen": "pass",
+    "C_trade": "fail -> re-run the family at 150 turns",
+    "C_trade_early": "fail -> re-run the family at 150 turns",
+    "D_ward": "pass",
+    "E_recall": "pass",
+    "F_freeze_c": "pass",
+    "G_trade_c": "fail -> re-run the family at 150 turns",
+    "H_zone_c": "pass",
+    "I_ward_c": "fail -> re-run the family at 150 turns"
+   }
+  },
+  "s4_full": {
+   "failed": [
+    "B_freeze",
+    "B_frozen"
+   ],
+   "verdicts": {
+    "B_freeze": "fail -> re-run the family at 150 turns",
+    "B_frozen": "fail -> re-run the family at 150 turns",
+    "E_recall": "pass",
+    "F_freeze_c": "pass"
+   }
+  },
+  "s5_ext": {
+   "failed": [
+    "B_freeze",
+    "C_trade_early",
+    "E_recall",
+    "F_freeze_c",
+    "I_ward_c"
+   ],
+   "verdicts": {
+    "A_wave": "pass",
+    "A_wave_early": "pass",
+    "B_freeze": "fail -> re-run the family at 150 turns",
+    "B_frozen": "pass",
+    "C_trade": "pass",
+    "C_trade_early": "fail -> re-run the family at 150 turns",
+    "D_ward": "pass",
+    "E_recall": "fail -> re-run the family at 150 turns",
+    "F_freeze_c": "fail -> re-run the family at 150 turns",
+    "G_trade_c": "pass",
+    "H_zone_c": "pass",
+    "I_ward_c": "fail -> re-run the family at 150 turns"
+   }
+  },
+  "s5_full": {
+   "failed": [],
+   "verdicts": {
+    "B_freeze": "pass",
+    "B_frozen": "pass",
+    "E_recall": "pass",
+    "F_freeze_c": "pass"
+   }
+  }
+ }
+}

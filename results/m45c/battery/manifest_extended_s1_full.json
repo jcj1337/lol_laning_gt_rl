@@ -1,0 +1,245 @@
+{
+ "meta": {
+  "study": "M4.5c",
+  "commit": "45b7dfa7fa5564194e124af59b26b45433fb56f9",
+  "working_tree_dirty": true,
+  "timestamp": "2026-10-15 06:56:33",
+  "python": "3.13.9",
+  "torch": "2.14.1+cpu",
+  "numpy": "2.5.3",
+  "environment": "GameConfig.m45_calibrated()",
+  "stage": "battery",
+  "spec": "final:full:1",
+  "tag": "s1_full",
+  "families": [
+   "E_recall"
+  ],
+  "k_natural": 12,
+  "k_constructed": 24,
+  "n_natural": 24,
+  "n_early": 24,
+  "extended": [
+   "E_recall"
+  ]
+ },
+ "states": {
+  "E_recall": {
+   "n": 24,
+   "games": 24,
+   "validation": [
+    0,
+    3,
+    4,
+    5,
+    8,
+    15,
+    16,
+    23
+   ],
+   "states": [
+    {
+     "seed": 944000,
+     "turn": 25,
+     "seat": 1,
+     "k": 25
+    },
+    {
+     "seed": 944001,
+     "turn": 217,
+     "seat": 0,
+     "k": 217
+    },
+    {
+     "seed": 944002,
+     "turn": 273,
+     "seat": 1,
+     "k": 273
+    },
+    {
+     "seed": 944003,
+     "turn": 159,
+     "seat": 1,
+     "k": 159
+    },
+    {
+     "seed": 944004,
+     "turn": 195,
+     "seat": 1,
+     "k": 195
+    },
+    {
+     "seed": 944005,
+     "turn": 165,
+     "seat": 0,
+     "k": 165
+    },
+    {
+     "seed": 944006,
+     "turn": 154,
+     "seat": 0,
+     "k": 154
+    },
+    {
+     "seed": 944007,
+     "turn": 35,
+     "seat": 0,
+     "k": 35
+    },
+    {
+     "seed": 944008,
+     "turn": 259,
+     "seat": 0,
+     "k": 259
+    },
+    {
+     "seed": 944009,
+     "turn": 166,
+     "seat": 1,
+     "k": 166
+    },
+    {
+     "seed": 944010,
+     "turn": 46,
+     "seat": 1,
+     "k": 46
+    },
+    {
+     "seed": 944011,
+     "turn": 50,
+     "seat": 1,
+     "k": 50
+    },
+    {
+     "seed": 944012,
+     "turn": 263,
+     "seat": 1,
+     "k": 263
+    },
+    {
+     "seed": 944013,
+     "turn": 273,
+     "seat": 0,
+     "k": 273
+    },
+    {
+     "seed": 944014,
+     "turn": 74,
+     "seat": 0,
+     "k": 74
+    },
+    {
+     "seed": 944015,
+     "turn": 91,
+     "seat": 0,
+     "k": 91
+    },
+    {
+     "seed": 944016,
+     "turn": 202,
+     "seat": 0,
+     "k": 202
+    },
+    {
+     "seed": 944017,
+     "turn": 258,
+     "seat": 1,
+     "k": 258
+    },
+    {
+     "seed": 944018,
+     "turn": 110,
+     "seat": 1,
+     "k": 110
+    },
+    {
+     "seed": 944019,
+     "turn": 109,
+     "seat": 0,
+     "k": 109
+    },
+    {
+     "seed": 944020,
+     "turn": 120,
+     "seat": 0,
+     "k": 120
+    },
+    {
+     "seed": 944021,
+     "turn": 120,
+     "seat": 1,
+     "k": 120
+    },
+    {
+     "seed": 944022,
+     "turn": 168,
+     "seat": 1,
+     "k": 168
+    },
+    {
+     "seed": 944023,
+     "turn": 133,
+     "seat": 1,
+     "k": 133
+    }
+   ]
+  }
+ },
+ "timing": {
+  "collect_s": 5.807393900118768,
+  "mechanics_s": 1.0011717677116394e-07,
+  "rollouts_s": 50.21590929990634,
+  "workers": 11,
+  "turns": 345600,
+  "job_seconds": 432.2340280995704
+ },
+ "jobs": [
+  "s1_full|E_recall|0|modal|150",
+  "s1_full|E_recall|0|policy|150",
+  "s1_full|E_recall|10|modal|150",
+  "s1_full|E_recall|10|policy|150",
+  "s1_full|E_recall|11|modal|150",
+  "s1_full|E_recall|11|policy|150",
+  "s1_full|E_recall|12|modal|150",
+  "s1_full|E_recall|12|policy|150",
+  "s1_full|E_recall|13|modal|150",
+  "s1_full|E_recall|13|policy|150",
+  "s1_full|E_recall|14|modal|150",
+  "s1_full|E_recall|14|policy|150",
+  "s1_full|E_recall|15|modal|150",
+  "s1_full|E_recall|15|policy|150",
+  "s1_full|E_recall|16|modal|150",
+  "s1_full|E_recall|16|policy|150",
+  "s1_full|E_recall|17|modal|150",
+  "s1_full|E_recall|17|policy|150",
+  "s1_full|E_recall|18|modal|150",
+  "s1_full|E_recall|18|policy|150",
+  "s1_full|E_recall|19|modal|150",
+  "s1_full|E_recall|19|policy|150",
+  "s1_full|E_recall|1|modal|150",
+  "s1_full|E_recall|1|policy|150",
+  "s1_full|E_recall|20|modal|150",
+  "s1_full|E_recall|20|policy|150",
+  "s1_full|E_recall|21|modal|150",
+  "s1_full|E_recall|21|policy|150",
+  "s1_full|E_recall|22|modal|150",
+  "s1_full|E_recall|22|policy|150",
+  "s1_full|E_recall|23|modal|150",
+  "s1_full|E_recall|23|policy|150",
+  "s1_full|E_recall|2|modal|150",
+  "s1_full|E_recall|2|policy|150",
+  "s1_full|E_recall|3|modal|150",
+  "s1_full|E_recall|3|policy|150",
+  "s1_full|E_recall|4|modal|150",
+  "s1_full|E_recall|4|policy|150",
+  "s1_full|E_recall|5|modal|150",
+  "s1_full|E_recall|5|policy|150",
+  "s1_full|E_recall|6|modal|150",
+  "s1_full|E_recall|6|policy|150",
+  "s1_full|E_recall|7|modal|150",
+  "s1_full|E_recall|7|policy|150",
+  "s1_full|E_recall|8|modal|150",
+  "s1_full|E_recall|8|policy|150",
+  "s1_full|E_recall|9|modal|150",
+  "s1_full|E_recall|9|policy|150"
+ ]
+}
