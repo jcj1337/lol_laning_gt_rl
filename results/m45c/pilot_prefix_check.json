@@ -1,0 +1,19 @@
+{
+ "meta": {
+  "study": "M4.5c",
+  "commit": "8dc5acf54061d18e5f5a3fbd6a84460ee22433fc",
+  "working_tree_dirty": true,
+  "timestamp": "2026-10-14 20:56:01",
+  "python": "3.13.9",
+  "torch": "2.14.1+cpu",
+  "numpy": "2.5.3",
+  "environment": "GameConfig.m45_calibrated()",
+  "stage": "prefix_check"
+ },
+ "updates": 7,
+ "stop_at": 28672,
+ "identical_histories": true,
+ "prefix_digest": "96f75422bfd1098c5c8b4ee23afc91247df9e94447eee776641df9bf08b4fe8f",
+ "pilot_snapshot_digest_at_stop": "96f75422bfd1098c5c8b4ee23afc91247df9e94447eee776641df9bf08b4fe8f",
+ "identical_weights_to_pilot_snapshot": true
+}

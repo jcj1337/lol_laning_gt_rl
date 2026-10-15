@@ -1,0 +1,83 @@
+{
+ "meta": {
+  "study": "M4.5c",
+  "commit": "8dc5acf54061d18e5f5a3fbd6a84460ee22433fc",
+  "working_tree_dirty": true,
+  "timestamp": "2026-10-14 21:08:40",
+  "python": "3.13.9",
+  "torch": "2.14.1+cpu",
+  "numpy": "2.5.3",
+  "environment": "GameConfig.m45_calibrated()",
+  "stage": "profile",
+  "spec": "final:pilot:100",
+  "rollouts": 4
+ },
+ "per_update": {
+  "collect_s": 0.767445349949412,
+  "env_step_s": 0.658741423743777,
+  "inference_s": 0.021443298552185297,
+  "collect_other_s": 0.08726062765344977,
+  "gae_batch_s": 0.0016923751682043076,
+  "update_s": 0.17198707489296794,
+  "agent_transitions": 4096.0,
+  "env_turns": 2048.0,
+  "total_s": 0.9411248000105843,
+  "checkpoint_save_s": 0.018614820018410683,
+  "checkpoint_bytes": 152775,
+  "env_turns_per_s_stepping_only": 3108.958881560463,
+  "agent_transitions_per_s_end_to_end": 4352.238937868745,
+  "shares": {
+   "env_step_s": 0.6999511900402248,
+   "inference_s": 0.022784755594522785,
+   "collect_other_s": 0.09271950718169196,
+   "gae_batch_s": 0.0017982473399758188,
+   "update_s": 0.18274629984358473
+  }
+ },
+ "rows": [
+  {
+   "collect_s": 0.8891807002946734,
+   "env_step_s": 0.762551792897284,
+   "inference_s": 0.02515709912404418,
+   "collect_other_s": 0.10147180827334523,
+   "gae_batch_s": 0.0014260001480579376,
+   "update_s": 0.17386339977383614,
+   "agent_transitions": 4096,
+   "env_turns": 2048
+  },
+  {
+   "collect_s": 0.6775266998447478,
+   "env_step_s": 0.5778513923287392,
+   "inference_s": 0.019775496795773506,
+   "collect_other_s": 0.07989981072023511,
+   "gae_batch_s": 0.002141000237315893,
+   "update_s": 0.18325069965794683,
+   "agent_transitions": 4096,
+   "env_turns": 2048
+  },
+  {
+   "collect_s": 0.8334369999356568,
+   "env_step_s": 0.7222258145920932,
+   "inference_s": 0.021812601014971733,
+   "collect_other_s": 0.08939858432859182,
+   "gae_batch_s": 0.001753500197082758,
+   "update_s": 0.1662249001674354,
+   "agent_transitions": 4096,
+   "env_turns": 2048
+  },
+  {
+   "collect_s": 0.6696369997225702,
+   "env_step_s": 0.5723366951569915,
+   "inference_s": 0.01902799727395177,
+   "collect_other_s": 0.07827230729162693,
+   "gae_batch_s": 0.0014490000903606415,
+   "update_s": 0.1646092999726534,
+   "agent_transitions": 4096,
+   "env_turns": 2048
+  }
+ ],
+ "memory": {
+  "rss_mb": 395.046875,
+  "peak_mb": 396.45703125
+ }
+}

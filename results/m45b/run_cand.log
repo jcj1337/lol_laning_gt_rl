@@ -1,0 +1,42 @@
+== stage trades_natural
+  [trade natural {}] 12 jobs, 44 s
+  [trade natural {'minion_retaliation_delay': 0}] 12 jobs, 46 s
+  [trade natural {'farm_spot_rule': 'last_front'}] 12 jobs, 45 s
+  [trade natural {'farm_spot_rule': 'last_front', 'minion_retaliation_delay': 0}] 12 jobs, 47 s
+wrote results\m45b\trades_natural.json
+== stage trades_natural done in 183 s
+== stage sensitivity_cal
+  [matrix r2 s0 equal] 64 jobs, 125 s
+  [matrix r2 s0 equal] 64 jobs, 124 s
+  [matrix r2 s0 equal] 64 jobs, 121 s
+  [matrix r2 s0 equal] 64 jobs, 112 s
+  [matrix r2 s0 equal] 64 jobs, 107 s
+  [matrix r2 s0 equal] 64 jobs, 94 s
+  [sensitivity 6 configurations] 36 jobs, 171 s
+  [matrix r2 s0 equal] 64 jobs, 80 s
+  [sensitivity 1 configurations] 6 jobs, 82 s
+  [matrix r2 s0 equal] 64 jobs, 79 s
+  [sensitivity 1 configurations] 6 jobs, 82 s
+  [matrix r2 s0 equal] 64 jobs, 80 s
+  [sensitivity 1 configurations] 6 jobs, 82 s
+  [matrix r2 s0 equal] 64 jobs, 82 s
+  [sensitivity 1 configurations] 6 jobs, 84 s
+  [matrix r2 s0 equal] 64 jobs, 81 s
+  [sensitivity 1 configurations] 6 jobs, 83 s
+  [matrix r2 s0 equal] 64 jobs, 80 s
+  [sensitivity 1 configurations] 6 jobs, 83 s
+wrote results\m45b\sensitivity_cal.json
+== stage sensitivity_cal done in 667 s
+== stage candidate
+  [trade multi-turn] 48 jobs, 55 s
+  [trade natural {'farm_spot_rule': 'last_front', 'minion_retaliation_delay': 0}] 12 jobs, 46 s
+  [freeze grid {'farm_spot_rule': 'last_front', 'minion_retaliation_delay': 0}] 3840 jobs, 428 s
+  [vision local {'farm_spot_rule': 'last_front', 'minion_retaliation_delay': 0}] 240 jobs, 286 s
+  [vision strategies {'farm_spot_rule': 'last_front', 'minion_retaliation_delay': 0}] 288 jobs, 108 s
+  [zoning matrix {'farm_spot_rule': 'last_front', 'minion_retaliation_delay': 0}] 420 jobs, 88 s
+  [matrix r2 s0 equal] 576 jobs, 191 s
+  [matrix r2 neutral large] 576 jobs, 184 s
+  [matrix r2 a_push equal] 576 jobs, 186 s
+  [timing] 16 jobs, 9 s
+wrote results\m45b\candidate_dev.json.gz
+== stage candidate done in 1608 s

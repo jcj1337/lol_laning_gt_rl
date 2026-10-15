@@ -76,7 +76,7 @@ def env_cfg(key: str) -> GameConfig:
 
 
 # presets a checkpoint or configuration can be identified with (by exact equality of every field)
-KNOWN_PRESETS = ("m45_unified", "m45_unified_r1", "m4_four_actions_econ_aggro", "m4_four_actions_econ",
+KNOWN_PRESETS = ("m45_calibrated", "m45_unified", "m45_unified_r1", "m4_four_actions_econ_aggro", "m4_four_actions_econ",
                  "m4_four_actions", "m4_lasthit", "m4_lane", "m4_natural", "m4_natural_prototype", "m4_emergent", "m4",
                  "champions")
 

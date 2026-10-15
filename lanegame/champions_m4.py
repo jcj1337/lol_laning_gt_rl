@@ -520,6 +520,10 @@ def resolve_turn_m4(lane: State, m4: M4State, k: int, a: int, b: int, cfg: GameC
         spot[s] = max(-T, min(T, fx)) if fh > 0 else (0 if c0[s] == WARD else c0[s])   # M4.5a: from W, the lane at 0
         if cfg.farm_spot_rule == "pre_crash_front" and probe.crash_hp[s] > 0 and lane.side(s)[1] > 0:
             spot[s] = max(-T, min(T, lane.side(s)[0]))       # M4.2d: keep the reach of the wave that crashes
+        elif cfg.farm_spot_rule == "last_front":             # M4.5b: a front lost in the probe keeps its last cell
+            last = _last_front_cell(lane, probe, s)
+            if last is not None:
+                spot[s] = max(-T, min(T, last))
 
     # 2. targets and bounded movement; traders chase the nearest contact cell of their opponent's reference cell
     end = [0, 0]
@@ -816,19 +820,42 @@ def resolve_turn_m4(lane: State, m4: M4State, k: int, a: int, b: int, cfg: GameC
     return turn
 
 
+def _last_front_cell(lane: State, probe, s: int, upto: Optional[int] = None) -> Optional[int]:
+    """farm_spot_rule "last_front" (M4.5b): if side s's pre-turn front stops leading during the probe (by tick `upto`,
+    default the end of the turn) because it crashed or died, the cell it held last while it still led: its pre-turn
+    cell if it was lost on tick 0, else its cell after the previous tick. None while it still leads. (Fronts never walk
+    back, so a leading packet behind the previous front cell is a rear packet: the front died.)"""
+    px, ph = lane.side(s)[:2]
+    if ph <= 0:
+        return None
+    last = px
+    ticks = len(probe.fronts_by_tick) if upto is None else upto + 1
+    for fr, cr in zip(probe.fronts_by_tick[:ticks], probe.crashed_by_tick[:ticks]):
+        fx = fr[s]
+        if cr[s] > 0 or fx is None or fx < last:
+            return last
+        last = fx
+    return None
+
+
 def _tick_goals(probe, lane: State, s: int, behavior: int, c0: int, cfg: GameConfig) -> Tuple[int, ...]:
     """champion_movement_rule "tick": where a farming champion of side s heads on each tick. Its farm spot is computed
     after every tick of the probe exactly as step 1 computes it at the end of the turn (the front's cell clipped to the
     lane, the own cell without a front (0 from W), the pre-turn front cell once the front has crashed under
-    farm_spot_rule "pre_crash_front"), then mapped through the behaviour's target: Safe min(spot, safe_line), Yield
+    farm_spot_rule "pre_crash_front"; under "last_front" the front's last cell once it has crashed or died,
+    `_last_front_cell`), then mapped through the behaviour's target: Safe min(spot, safe_line), Yield
     `yield_target`, Hold (and a Trade with nobody to chase) the spot itself."""
     T = cfg.tower
     out = []
-    for fronts, crashed in zip(probe.fronts_by_tick, probe.crashed_by_tick):
+    for t, (fronts, crashed) in enumerate(zip(probe.fronts_by_tick, probe.crashed_by_tick)):
         fx = fronts[s]
         sp = max(-T, min(T, fx)) if fx is not None else (0 if c0 == WARD else c0)
         if cfg.farm_spot_rule == "pre_crash_front" and crashed[s] > 0 and lane.side(s)[1] > 0:
             sp = max(-T, min(T, lane.side(s)[0]))
+        elif cfg.farm_spot_rule == "last_front":
+            last = _last_front_cell(lane, probe, s, t)
+            if last is not None:
+                sp = max(-T, min(T, last))
         if behavior == B_SAFE:
             sp = min(sp, cfg.safe_line)
         elif behavior == B_YIELD:

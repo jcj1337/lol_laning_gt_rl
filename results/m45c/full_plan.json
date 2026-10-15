@@ -1,0 +1,375 @@
+{
+ "measured": {
+  "tps_pilot": 4277.074749859487,
+  "env_turns_per_s_pilot": 2138.5373749297437,
+  "collect_s": 193.3151122983545,
+  "update_s": 44.34479919495061,
+  "elapsed_s": 241.54835850000381,
+  "slowdown": {
+   "1": 1.0,
+   "3": 0.8324269294218317,
+   "6": 0.6951339839013125,
+   "11": 0.5753871230546233
+  },
+  "peak_mb_pilot": 1601.62109375,
+  "cache": {
+   "20000": {
+    "collect_s_per_rollout": 0.8740139850104849,
+    "rss_mb_full": 1513.296875
+   },
+   "5000": {
+    "collect_s_per_rollout": 0.914236046692046,
+    "rss_mb_full": 557.4765625
+   },
+   "2000": {
+    "collect_s_per_rollout": 0.9208353133096048,
+    "rss_mb_full": 368.0859375
+   }
+  }
+ },
+ "evaluation_rates": {
+  "curve": 1157.0195926369497,
+  "headline": 1124.2316225528343,
+  "history": 613.8342107476042,
+  "strategic_smoke_wall_s": 7.777877400163561,
+  "behaviour_wall_s": 47.170841900166124
+ },
+ "estimates": [
+  {
+   "budget": 1000000,
+   "updates": 245,
+   "joint_steps": 500000,
+   "one_run_alone_h": 0.06494573838974955,
+   "one_run_under_11_h": 0.11287311757163544,
+   "seeds1_concurrent_h": 0.06494573838974955,
+   "seeds1_sequential_h": 0.06494573838974955,
+   "seeds3_concurrent_h": 0.07801974695227375,
+   "seeds3_sequential_h": 0.19483721516924868,
+   "seeds5_concurrent_h": 0.08765810161914148,
+   "seeds5_sequential_h": 0.32472869194874776,
+   "seeds6_concurrent_h": 0.09342909409385146,
+   "seeds6_sequential_h": 0.38967443033849736,
+   "seeds8_concurrent_h": 0.10034332870014313,
+   "seeds8_sequential_h": 0.5195659071179964,
+   "seeds10_concurrent_h": 0.10836272929697115,
+   "seeds10_sequential_h": 0.6494573838974955
+  },
+  {
+   "budget": 2048000,
+   "updates": 500,
+   "joint_steps": 1024000,
+   "one_run_alone_h": 0.1330088722222071,
+   "one_run_under_11_h": 0.23116414478670938,
+   "seeds1_concurrent_h": 0.1330088722222071,
+   "seeds1_sequential_h": 0.1330088722222071,
+   "seeds3_concurrent_h": 0.15978444175825665,
+   "seeds3_sequential_h": 0.39902661666662126,
+   "seeds5_concurrent_h": 0.17952379211600175,
+   "seeds5_sequential_h": 0.6650443611110355,
+   "seeds6_concurrent_h": 0.1913427847042078,
+   "seeds6_sequential_h": 0.7980532333332425,
+   "seeds8_concurrent_h": 0.20550313717789312,
+   "seeds8_sequential_h": 1.0640709777776567,
+   "seeds10_concurrent_h": 0.22192686960019692,
+   "seeds10_sequential_h": 1.330088722222071
+  },
+  {
+   "budget": 4000000,
+   "updates": 977,
+   "joint_steps": 2000000,
+   "one_run_alone_h": 0.2597829535589982,
+   "one_run_under_11_h": 0.45149247028654177,
+   "seeds1_concurrent_h": 0.2597829535589982,
+   "seeds1_sequential_h": 0.2597829535589982,
+   "seeds3_concurrent_h": 0.312078987809095,
+   "seeds3_sequential_h": 0.7793488606769947,
+   "seeds5_concurrent_h": 0.3506324064765659,
+   "seeds5_sequential_h": 1.298914767794991,
+   "seeds6_concurrent_h": 0.37371637637540583,
+   "seeds6_sequential_h": 1.5586977213539894,
+   "seeds8_concurrent_h": 0.40137331480057253,
+   "seeds8_sequential_h": 2.0782636284719858,
+   "seeds10_concurrent_h": 0.4334509171878846,
+   "seeds10_sequential_h": 2.597829535589982
+  },
+  {
+   "budget": 4096000,
+   "updates": 1000,
+   "joint_steps": 2048000,
+   "one_run_alone_h": 0.2660177444444142,
+   "one_run_under_11_h": 0.46232828957341876,
+   "seeds1_concurrent_h": 0.2660177444444142,
+   "seeds1_sequential_h": 0.2660177444444142,
+   "seeds3_concurrent_h": 0.3195688835165133,
+   "seeds3_sequential_h": 0.7980532333332425,
+   "seeds5_concurrent_h": 0.3590475842320035,
+   "seeds5_sequential_h": 1.330088722222071,
+   "seeds6_concurrent_h": 0.3826855694084156,
+   "seeds6_sequential_h": 1.596106466666485,
+   "seeds8_concurrent_h": 0.41100627435578624,
+   "seeds8_sequential_h": 2.1281419555553134,
+   "seeds10_concurrent_h": 0.44385373920039384,
+   "seeds10_sequential_h": 2.660177444444142
+  },
+  {
+   "budget": 5000000,
+   "updates": 1221,
+   "joint_steps": 2500000,
+   "one_run_alone_h": 0.32472869194874776,
+   "one_run_under_11_h": 0.5643655878581771,
+   "seeds1_concurrent_h": 0.32472869194874776,
+   "seeds1_sequential_h": 0.32472869194874776,
+   "seeds3_concurrent_h": 0.3900987347613688,
+   "seeds3_sequential_h": 0.9741860758462433,
+   "seeds5_concurrent_h": 0.43829050809570735,
+   "seeds5_sequential_h": 1.6236434597437388,
+   "seeds6_concurrent_h": 0.46714547046925725,
+   "seeds6_sequential_h": 1.9483721516924866,
+   "seeds8_concurrent_h": 0.5017166435007157,
+   "seeds8_sequential_h": 2.597829535589982,
+   "seeds10_concurrent_h": 0.5418136464848559,
+   "seeds10_sequential_h": 3.2472869194874776
+  },
+  {
+   "budget": 8000000,
+   "updates": 1954,
+   "joint_steps": 4000000,
+   "one_run_alone_h": 0.5195659071179964,
+   "one_run_under_11_h": 0.9029849405730835,
+   "seeds1_concurrent_h": 0.5195659071179964,
+   "seeds1_sequential_h": 0.5195659071179964,
+   "seeds3_concurrent_h": 0.62415797561819,
+   "seeds3_sequential_h": 1.5586977213539894,
+   "seeds5_concurrent_h": 0.7012648129531318,
+   "seeds5_sequential_h": 2.597829535589982,
+   "seeds6_concurrent_h": 0.7474327527508117,
+   "seeds6_sequential_h": 3.117395442707979,
+   "seeds8_concurrent_h": 0.8027466296011451,
+   "seeds8_sequential_h": 4.1565272569439715,
+   "seeds10_concurrent_h": 0.8669018343757692,
+   "seeds10_sequential_h": 5.195659071179964
+  },
+  {
+   "budget": 8192000,
+   "updates": 2000,
+   "joint_steps": 4096000,
+   "one_run_alone_h": 0.5320354888888283,
+   "one_run_under_11_h": 0.9246565791468375,
+   "seeds1_concurrent_h": 0.5320354888888283,
+   "seeds1_sequential_h": 0.5320354888888283,
+   "seeds3_concurrent_h": 0.6391377670330266,
+   "seeds3_sequential_h": 1.596106466666485,
+   "seeds5_concurrent_h": 0.718095168464007,
+   "seeds5_sequential_h": 2.660177444444142,
+   "seeds6_concurrent_h": 0.7653711388168312,
+   "seeds6_sequential_h": 3.19221293333297,
+   "seeds8_concurrent_h": 0.8220125487115725,
+   "seeds8_sequential_h": 4.256283911110627,
+   "seeds10_concurrent_h": 0.8877074784007877,
+   "seeds10_sequential_h": 5.320354888888284
+  },
+  {
+   "budget": 10000000,
+   "updates": 2442,
+   "joint_steps": 5000000,
+   "one_run_alone_h": 0.6494573838974955,
+   "one_run_under_11_h": 1.1287311757163543,
+   "seeds1_concurrent_h": 0.6494573838974955,
+   "seeds1_sequential_h": 0.6494573838974955,
+   "seeds3_concurrent_h": 0.7801974695227376,
+   "seeds3_sequential_h": 1.9483721516924866,
+   "seeds5_concurrent_h": 0.8765810161914147,
+   "seeds5_sequential_h": 3.2472869194874776,
+   "seeds6_concurrent_h": 0.9342909409385145,
+   "seeds6_sequential_h": 3.896744303384973,
+   "seeds8_concurrent_h": 1.0034332870014313,
+   "seeds8_sequential_h": 5.195659071179964,
+   "seeds10_concurrent_h": 1.0836272929697117,
+   "seeds10_sequential_h": 6.494573838974955
+  },
+  {
+   "budget": 16384000,
+   "updates": 4000,
+   "joint_steps": 8192000,
+   "one_run_alone_h": 1.0640709777776567,
+   "one_run_under_11_h": 1.849313158293675,
+   "seeds1_concurrent_h": 1.0640709777776567,
+   "seeds1_sequential_h": 1.0640709777776567,
+   "seeds3_concurrent_h": 1.2782755340660532,
+   "seeds3_sequential_h": 3.19221293333297,
+   "seeds5_concurrent_h": 1.436190336928014,
+   "seeds5_sequential_h": 5.320354888888284,
+   "seeds6_concurrent_h": 1.5307422776336623,
+   "seeds6_sequential_h": 6.38442586666594,
+   "seeds8_concurrent_h": 1.644025097423145,
+   "seeds8_sequential_h": 8.512567822221254,
+   "seeds10_concurrent_h": 1.7754149568015754,
+   "seeds10_sequential_h": 10.640709777776568
+  }
+ ],
+ "memory_gb_at_full_cache": {
+  "3 processes": {
+   "2000": 1.0783767700195312,
+   "5000": 1.6332321166992188,
+   "20000": 4.4334869384765625
+  },
+  "6 processes": {
+   "2000": 2.1567535400390625,
+   "5000": 3.2664642333984375,
+   "20000": 8.866973876953125
+  },
+  "8 processes": {
+   "2000": 2.87567138671875,
+   "5000": 4.35528564453125,
+   "20000": 11.8226318359375
+  },
+  "10 processes": {
+   "2000": 3.5945892333984375,
+   "5000": 5.4441070556640625,
+   "20000": 14.778289794921875
+  },
+  "11 processes": {
+   "2000": 3.9540481567382812,
+   "5000": 5.988517761230469,
+   "20000": 16.256118774414062
+  }
+ },
+ "options": {
+  "default": {
+   "label": "default",
+   "seeds": 6,
+   "transitions_per_seed": 8192000,
+   "total_agent_transitions": 49152000,
+   "lane_cache": 20000,
+   "memory_gb": 8.866973876953125,
+   "training_h": 0.7653711388168312,
+   "standard_evaluation_h": 1.427320180605081,
+   "strategic_battery_h": 0.3443086584347096,
+   "evaluation_parts_h": {
+    "curve": 0.8212399112294554,
+    "headline": 0.34005793425650327,
+    "history": 0.03519599619554809,
+    "tournament": 0.07039199239109618,
+    "cross_play": 0.04250724178206291,
+    "strategic": 0.3443086584347096,
+    "behaviour": 0.1179271047504153
+   },
+   "evaluation_turns": {
+    "curve": 37094400,
+    "headline": 15360000,
+    "history": 1589760,
+    "tournament": 3179520,
+    "cross_play": 1920000,
+    "strategic": 15552000.0
+   },
+   "total_h": 2.5369999778566217
+  },
+  "lower_cost": {
+   "label": "lower cost",
+   "seeds": 3,
+   "transitions_per_seed": 4096000,
+   "total_agent_transitions": 12288000,
+   "lane_cache": 20000,
+   "memory_gb": 4.4334869384765625,
+   "training_h": 0.3195688835165133,
+   "standard_evaluation_h": 0.5053746055704323,
+   "strategic_battery_h": 0.1721543292173548,
+   "evaluation_parts_h": {
+    "curve": 0.21508664341723832,
+    "headline": 0.17002896712825163,
+    "history": 0.017597998097774046,
+    "tournament": 0.03519599619554809,
+    "cross_play": 0.008501448356412582,
+    "strategic": 0.1721543292173548,
+    "behaviour": 0.05896355237520765
+   },
+   "evaluation_turns": {
+    "curve": 9715200,
+    "headline": 7680000,
+    "history": 794880,
+    "tournament": 1589760,
+    "cross_play": 384000,
+    "strategic": 7776000.0
+   },
+   "total_h": 0.9970978183043004
+  },
+  "higher_confidence": {
+   "label": "higher confidence",
+   "seeds": 10,
+   "transitions_per_seed": 16384000,
+   "total_agent_transitions": 163840000,
+   "lane_cache": 5000,
+   "memory_gb": 5.4441070556640625,
+   "training_h": 1.8418742464703695,
+   "standard_evaluation_h": 2.435543290051219,
+   "strategic_battery_h": 0.5738477640578493,
+   "evaluation_parts_h": {
+    "curve": 1.3687331853824256,
+    "headline": 0.5667632237608388,
+    "history": 0.05865999365924682,
+    "tournament": 0.11731998731849363,
+    "cross_play": 0.12752172534618872,
+    "strategic": 0.5738477640578493,
+    "behaviour": 0.1965451745840255
+   },
+   "evaluation_turns": {
+    "curve": 61824000,
+    "headline": 25600000,
+    "history": 2649600,
+    "tournament": 5299200,
+    "cross_play": 5760000,
+    "strategic": 25920000.0
+   },
+   "total_h": 4.851265300579438
+  }
+ },
+ "recommended": {
+  "label": "default",
+  "seeds": 6,
+  "seed_list": [
+   0,
+   1,
+   2,
+   3,
+   4,
+   5
+  ],
+  "transitions_per_seed": 8192000,
+  "updates_per_seed": 2000,
+  "joint_steps_per_seed": 4096000,
+  "schedule": "learning rate 3e-4 annealed linearly to 0 over each run's own 8,192,000 transitions (M4.4b protocol)",
+  "self_play": "100% current-policy shared self-play (as M4.4b); no historical training opponents",
+  "snapshot_every": 25600,
+  "curve_every": 409600,
+  "midpoint": 4096000,
+  "lane_cache": 20000,
+  "concurrency": "6 processes at once (fits in memory at lane_cache 20,000)"
+ },
+ "alternatives": {
+  "lower_cost": {
+   "label": "lower cost",
+   "seeds": 3,
+   "transitions_per_seed": 4096000,
+   "midpoint": 2048000,
+   "lane_cache": 20000
+  },
+  "higher_confidence": {
+   "label": "higher confidence",
+   "seeds": 10,
+   "transitions_per_seed": 16384000,
+   "midpoint": 8192000,
+   "lane_cache": 5000,
+   "curve_every": 819200
+  }
+ },
+ "evaluation_design": {
+  "curve": "initial + every curve_every snapshot vs the 10 opponents, P 32, W 460",
+  "headline": "final and midpoint vs the 10 opponents, P 64, W 1000",
+  "history": "final vs 8 evenly spaced own snapshots and the initial network, P 32, W 460",
+  "tournament": "9 evenly spaced checkpoints of the run, round robin (36 pairs), P 16, W 460 (cycling check)",
+  "cross_play": "every pair of finals (all seeds), P 64, W 1000",
+  "behaviour": "records: 5 checkpoints in self-play 16 x 1000 turns, the final vs 6 opponents 8 x 500 x 2 seats; ledger",
+  "strategic": "6 counterfactual families x 48 natural states x 16 paired rollouts x 100 turns (strategic.py), plus initialized power-gap / freeze scenarios for families B and C (natural power gaps are rare)"
+ },
+ "note": "estimates are EXTRAPOLATED from the measured pilot and benchmarks (module docstring)"
+}

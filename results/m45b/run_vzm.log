@@ -1,0 +1,46 @@
+== stage vision
+  [vision local {}] 240 jobs, 278 s
+  [vision strategies {}] 288 jobs, 103 s
+wrote results\m45b\vision.json
+== stage vision done in 383 s
+== stage zoning
+concurrent.futures.process._RemoteTraceback: 
+"""
+Traceback (most recent call last):
+  File "C:\Users\light\AppData\Local\Programs\Python\Python313\Lib\concurrent\futures\process.py", line 254, in _process_worker
+    r = call_item.fn(*call_item.args, **call_item.kwargs)
+  File "C:\Users\light\OneDrive\Desktop\projects\lol_gt_laning\lanegame\experiments\m45b\zoning.py", line 80, in _cell
+    rows = [E.play(c, start, ST.get(a), ST.get(b), sd, turns)["summary"] for sd in seeds]
+                                        ~~~~~~^^^
+  File "C:\Users\light\OneDrive\Desktop\projects\lol_gt_laning\lanegame\experiments\m45b\strategies.py", line 319, in get
+    return WS[name]
+           ~~^^^^^^
+KeyError: 'g_wary_yield'
+"""
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "C:\Users\light\OneDrive\Desktop\projects\lol_gt_laning\lanegame\experiments\m45b\__main__.py", line 140, in <module>
+    main(sys.argv[1:])
+    ~~~~^^^^^^^^^^^^^^
+  File "C:\Users\light\OneDrive\Desktop\projects\lol_gt_laning\lanegame\experiments\m45b\__main__.py", line 135, in main
+    STAGES[name]()
+    ~~~~~~~~~~~~^^
+  File "C:\Users\light\OneDrive\Desktop\projects\lol_gt_laning\lanegame\experiments\m45b\__main__.py", line 99, in _zoning
+    mat = Z.matrix()
+  File "C:\Users\light\OneDrive\Desktop\projects\lol_gt_laning\lanegame\experiments\m45b\zoning.py", line 92, in matrix
+    cells = Cm.run_jobs(_cell, jobs, workers, f"zoning matrix {dict(over)}")
+  File "C:\Users\light\OneDrive\Desktop\projects\lol_gt_laning\lanegame\experiments\m45b\common.py", line 118, in run_jobs
+    out = _rj(fn, list(jobs), workers, "")
+  File "C:\Users\light\OneDrive\Desktop\projects\lol_gt_laning\lanegame\experiments\rl\m43b\common.py", line 241, in run_jobs
+    out[i] = fu.result()
+             ~~~~~~~~~^^
+  File "C:\Users\light\AppData\Local\Programs\Python\Python313\Lib\concurrent\futures\_base.py", line 449, in result
+    return self.__get_result()
+           ~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\light\AppData\Local\Programs\Python\Python313\Lib\concurrent\futures\_base.py", line 401, in __get_result
+    raise self._exception
+KeyError: 'g_wary_yield'

@@ -1,9 +1,10 @@
 # RL Research Roadmap: From Exact Stochastic Games to Multi-Agent Reinforcement Learning
 
-> **This is the canonical project roadmap.** The summary below (updated 2026-10-14, M4.5a) states where the project
-> is and what comes next. Sections A–K are the original plan written before M1 (kept unchanged for the record; its
-> milestone list was later revised, see the notes in section D). Sections L–AI record each milestone's outcome in
-> the order it happened, with links to the full reports. The README's roadmap table and `docs/README.md` point here.
+> **This is the canonical project roadmap.** The summary below (updated 2026-10-14, M4.5c pilot) states where the
+> project is and what comes next. Sections A–K are the original plan written before M1 (kept unchanged for the record;
+> its milestone list was later revised, see the notes in section D). Sections L–AK record each milestone's outcome in
+> the order it happened, with links to the full reports (M4.5b: §AJ; M4.5c pilot: §AK). The README's roadmap table and `docs/README.md`
+> point here.
 
 ## Roadmap summary (current position, 2026-10-14)
 
@@ -16,18 +17,25 @@ substantial PPO research. **M4.4a** made the PPO pipeline and its strategic diag
 **M4.4b** ran the controlled comparison: 3 economies × 3 seeds × 2,048,000 transitions plus a matched 2× extension.
 The calibrated economies produce state-dependent wave management, short freezes that are preserved and broken but deny
 little, a targeted response to the tower-aggro correction and conditional defence, while the original economy remains
-Shove-dominated (§AG). **M4.4c** (this update, in review) tested the apparent gaps with multi-turn paired
+Shove-dominated (§AG). **M4.4c** tested the apparent gaps with multi-turn paired
 counterfactuals (5,982 states): the learned policies match or beat every hand-designed alternative against their own
 opponent; interrupted Recalls are a rational guessing game, freezes are worth only what the opponent concedes, zoning
 *is* learned (through kills and forced Recalls), Vision-first does not pay in short sieges, and three of the four wave
 actions coincide in most states. The remaining imperfections are simulator incentives and self-play's opponent
 distribution, not PPO failures (§AH). The review of M4.4c's design questions led to a focused mechanics revision,
-**M4.5**, implemented as one unit because its parts interact: **M4.5a** (this update, in review) adds a shared off-lane
+**M4.5**, implemented as one unit because its parts interact: **M4.5a** (committed, revision 2) adds a shared off-lane
 Vision node with a contestable Ward action, minion retaliation and positional aggro with per-tick exclusive targeting
 and level-scaled minion damage, XP range 2, wave maintenance during trades and distance-limited wave damage, as the
-EXPERIMENTAL candidate `m45_unified()`; every earlier preset is unchanged (§AI). **M4.5b** calibrates the integrated
-mechanics together and **M4.5c** trains fresh shared-policy PPO on the result. M4.4d's robustness and exploitability
-work is postponed into M4.5c's evaluation rather than run on a simulator being revised. M5 and M6 are proposed
+EXPERIMENTAL candidate `m45_unified()`; every earlier preset is unchanged (§AI). **M4.5b** (this update, in review)
+calibrated the integrated mechanics together with paired scripted simulations, restricted games and a holdout: it found
+and narrowly corrected a pre-existing farm-spot defect of mutual Shoves, moved minion retaliation to the exchange tick,
+retained every other provisional number, and selected the candidate `m45_calibrated()` (GO WITH CAVEATS; §AJ). The
+review accepted its caveats, including the mid-to-late minion share (`minion_damage_growth` stays 1.08). **M4.5c**
+(underway) trains fresh shared-policy PPO on it. Its pilot is complete: one seed, 1,024,000 agent transitions, with
+correctness verified on the preset. The policy beats every fixed M4.5b strategy and the out-of-distribution M4.4b
+network, and it was still improving at the end. A 6 seeds × 8,192,000 campaign is recommended (GO; §AK). **The full
+multi-seed training and the strategic evaluation await explicit approval of that budget.** M4.4d's robustness and
+exploitability work is postponed into M4.5c's evaluation rather than run on a simulator being revised. M5 and M6 are proposed
 extensions, not part of the original plan.
 
 ### Status legend
@@ -47,7 +55,7 @@ extensions, not part of the original plan.
 | **M1** RL-ready game environment | `LaneEnv` (simultaneous moves, own-perspective observations, legal masks, zero-sum rewards, seeded chance streams), scripted agents, the exact-solver bridge, PettingZoo adapter, symmetry tests | completed (verified: `tests/test_env.py`, `tests/test_pettingzoo_m4.py` pass in the M4.4a regression run) | §J, §L |
 | **M2** Champion mechanics | positions, Hold / Yield / Trade / Safe / Recall, absence and return, stochastic trades with skill, ganks with HP damage, death and respawn | completed (verified: `tests/test_champion*.py`) | §E, §M, §N; [M2/M3 report](rl/m2_m3_implementation_report.md) |
 | **M3** Initial PPO / self-play research | masked PPO, frozen-snapshot and shared-policy (OpenAI Five-inspired) self-play, approximate best responses, strategic diagnostics | completed as an initial research milestone; it revealed weaknesses of the game design rather than meaningful strategy, which motivated M4 | §N, §O; [self-play](rl/openai_five_selfplay_report.md), [diagnostics](rl/openai_five_diagnostics_report.md) |
-| **M4** Integrated laning model and strategic validation | M4.1 design → M4.2 mechanics → M4.3 wave management and economics → M4.4 PPO self-play → M4.5 unified positional mechanics, calibration and retraining | M4.1–M4.4c completed; M4.5a completed, in review; M4.5b, M4.5c planned; M4.4d postponed into M4.5c | below |
+| **M4** Integrated laning model and strategic validation | M4.1 design → M4.2 mechanics → M4.3 wave management and economics → M4.4 PPO self-play → M4.5 unified positional mechanics, calibration and retraining | M4.1–M4.4c completed; M4.5a, M4.5b completed; M4.5c underway (pilot complete; full campaign awaiting budget approval); M4.4d postponed into M4.5c | below |
 | **M5** Adaptive opponent and game-theoretic research | robustness and exploitation against historical, scripted and adaptive opponents, from the existing shared-PPO approach; depends on M4.5c | proposed | below |
 | **M6** Research presentation and portfolio | reproducible narrative, final comparisons, visualizations, interactive demonstration | proposed | below |
 
@@ -59,18 +67,18 @@ extensions, not part of the original plan.
 | **M4.2** Mechanics implementation and calibration | WP0–WP10 and validation S0–S4 (`GameConfig.m4()`); M4.2b calibration (ganks, items, the Shove → Recall cycle); M4.2c continuous investment (experiment); M4.2d wave readiness, positioning, combat-driven zoning, investment readiness and their integration (`m4_emergent()`); M4.2e-A natural waves (`m4_natural()`); M4.2e-B zoning on natural waves (`m4_lane()`); M4.2e-C wave actions as shares of one capacity (`m4_lasthit()`, the CURRENT reference preset); M4.2e-D visual debugger | completed | §P–§Y |
 | **M4.3** PPO pilot, wave management and economic calibration | M4.3a RL infrastructure audit; M4.3b PPO self-play pilot on `m4_lasthit()` and its follow-up validation (Clear dominance is the game's incentive); M4.3c design (gold + XP objective, laning termination: PROPOSED, not adopted; the living mathematical reference); M4.3c screens (xp_range, wave control); M4.3c four-action redesign (Last Hit / Thin / Slow Push / Shove, `m4_four_actions()`); M4.3c stabilization (Shove terminology, four-action debugger, mixed-action sequences, economic calibration `m4_four_actions_econ()`, exploratory PPO pilot); M4.3d tower farming, pressure and gank risk (`m4_four_actions_econ_aggro()`) | completed | §Z–§AE |
 | **M4.4** PPO self-play and emergent strategy evaluation | M4.4a infrastructure and diagnostics; M4.4b controlled training (3 economies × 3 seeds × 2M transitions, matched 2× extension, initial strategic evaluation); M4.4c deep investigation of strategic behaviour and economic incentives (multi-turn counterfactuals); M4.4d robustness, validation and follow-up research | M4.4a–M4.4c completed (M4.4c: CONDITIONAL GO, reviewed; its design questions became M4.5); M4.4d postponed, its content folded into M4.5c's evaluation | §AF, §AG, §AH; [M4.4a report](m4/m4_4a_ppo_readiness.md), [M4.4b report](m4/m4_4b_ppo_training_report.md), [M4.4c report](m4/m4_4c_strategic_investigation.md) |
-| **M4.5** Unified positional mechanics, calibration and retraining | M4.5a unified mechanics implementation (`m45_unified()`); M4.5b integrated calibration and strategic evaluation; M4.5c PPO training and evaluation on the revised model | M4.5a completed, in review (GO WITH CAVEATS for M4.5b); M4.5b, M4.5c planned | §AI; [M4.5a spec](m4/m4_5a_unified_mechanics_spec.md), [M4.5a report](m4/m4_5a_unified_mechanics_report.md), [reference §14](m4/laning_game_mathematical_reference.md#14-experimental-the-m45a-unified-positional-candidate-m45_unified) |
+| **M4.5** Unified positional mechanics, calibration and retraining | M4.5a unified mechanics implementation (`m45_unified()`); M4.5b integrated calibration and strategic evaluation (`m45_calibrated()`); M4.5c PPO training and evaluation on the revised model | M4.5a completed (revision 2 committed); M4.5b completed (GO WITH CAVEATS, caveats accepted); M4.5c underway: pilot complete (GO), full campaign awaiting budget approval | §AI, §AJ, §AK; [M4.5c pilot report](m4/m4_5c_pilot_report.md); [M4.5a spec](m4/m4_5a_unified_mechanics_spec.md), [M4.5a report](m4/m4_5a_unified_mechanics_report.md), [M4.5b report](m4/m4_5b_calibration_report.md), [reference §14–§15](m4/laning_game_mathematical_reference.md#15-experimental-the-m45b-calibrated-candidate-m45_calibrated) |
 
 ### What is what
 
 | category | items |
 |---|---|
-| **implemented and tested** | the exact game and its solver (legacy configurations bit-identical, pinned); `LaneEnv` and the PettingZoo adapter; the M4 ruleset and every preset up to `m4_four_actions_econ_aggro()`; masked PPO, GAE, shared-policy self-play, checkpoints with verified digests; the discounted evaluator with its guaranteed tail bound; counterfactual branching and action audits; the M4.3b (three-action) and M4.4 (four-action) diagnostic packages; the visual debugger; the M4.4b trained checkpoints (3 economies × 3 seeds at 2,048,000 and 4,096,000 transitions, git-ignored) and their supplementary analysis stages; the M4.4c multi-turn counterfactual package (`experiments/rl/m44c`: strategic plans, paired multi-turn engine, opponent styles, resumable runs); the M4.5a unified positional mechanics (`positional.py`; the Ward, minion-targeting, trade-budget and reach rules; the 90-entry observation; the viewer's W node; `experiments/m45a` demonstrations and smoke study) |
-| **experimental candidates** (opt-in, not defaults) | `m45_unified()` (M4.5a; to be calibrated in M4.5b); `m4_four_actions()`, `m4_four_actions_econ()`, `m4_four_actions_econ_aggro()` (the M4.4 comparison); opt-in fields `xp_reward_weight`, `death_turns_by_level`, `terminal_rule = "final_plate"` (not recommended); the earlier experiments `m4_continuous()`, `m4_emergent()` |
+| **implemented and tested** | the exact game and its solver (legacy configurations bit-identical, pinned); `LaneEnv` and the PettingZoo adapter; the M4 ruleset and every preset up to `m4_four_actions_econ_aggro()`; masked PPO, GAE, shared-policy self-play, checkpoints with verified digests; the discounted evaluator with its guaranteed tail bound; counterfactual branching and action audits; the M4.3b (three-action) and M4.4 (four-action) diagnostic packages; the visual debugger; the M4.4b trained checkpoints (3 economies × 3 seeds at 2,048,000 and 4,096,000 transitions, git-ignored) and their supplementary analysis stages; the M4.4c multi-turn counterfactual package (`experiments/rl/m44c`: strategic plans, paired multi-turn engine, opponent styles, resumable runs); the M4.5a unified positional mechanics (`positional.py`; the Ward, minion-targeting, trade-budget and reach rules; the 90-entry observation; the viewer's W node; `experiments/m45a` demonstrations and smoke study); the M4.5b calibration package (`experiments/m45b`: paired engine and ledger, exact one-turn enumeration, contingent strategies, freeze / trade / Vision / zoning / matrix / timing studies, sensitivity, holdout validation, learned reference, recordings) and the opt-in farm-spot rule `"last_front"` |
+| **experimental candidates** (opt-in, not defaults) | `m45_calibrated()` (M4.5b; the candidate for M4.5c); `m45_unified()` (M4.5a revision 2, the M4.5b baseline) and `m45_unified_r1()`; `m4_four_actions()`, `m4_four_actions_econ()`, `m4_four_actions_econ_aggro()` (the M4.4 comparison); opt-in fields `xp_reward_weight`, `death_turns_by_level`, `terminal_rule = "final_plate"` (not recommended); the earlier experiments `m4_continuous()`, `m4_emergent()` |
 | **adopted research baselines** | objective: the discounted gold lead, γ = 0.99, continuing time, no terminal state; reference preset of the living [mathematical reference](m4/laning_game_mathematical_reference.md): `m4_lasthit()`; PPO settings: the M4.3b `ent03` condition (entropy 0.03, 100% current-policy shared self-play, 2,048,000 transitions, 16 × 128-turn segments, 512-turn bootstrapped games); evaluation: paired seats, E1 from s0, W = 1000 headline; candidate for substantial training: `m4_four_actions_econ_aggro()` with `m4_four_actions()` as the control and `m4_four_actions_econ()` as the dive control |
-| **planned** | M4.5b, M4.5c (below); M4.4d postponed into M4.5c |
+| **underway** | M4.5c (below): pilot complete; full multi-seed training and strategic evaluation pending explicit approval of the budget; M4.4d postponed into M4.5c |
 | **proposed** | M5, M6 (below) |
-| **unresolved questions** | Answered by M4.4c (§AH): the interrupted Recall is a rational guessing game (Recall is the best default; a small ≈ 0.1-resource conditional gap); freezes pay only against opponents that concede them; the stronger side does zone, through kills and forced Recalls; Vision-first does not pay in typical (short) sieges; Last Hit / Thin / Slow Push coincide in 68–77% of turns. Open: How exploitable are four-action policies (no four-action attacker yet)? How much value do they leave against conceding / passive opponents (+0.4 to +1.0 measured in probes)? Does Vision-first pay in long sieges (positive trend, unresolved)? **Design decisions after review**: Vision, combat-wave coupling, minion aggro and the XP range were revised together in M4.5a (§AI), to be calibrated in M4.5b; still open: whether to keep three non-Shove wave actions that coincide in most states, whether a champion may step into its own tower cell by choice. **Open after M4.5a** (for M4.5b): the value and contestability of a Ward, trading into waves by level, freezes held with Thin + Trade, the price of Safe under XP range 2 and the reach ball (M4.5a report §9). Structural limits documented earlier remain: contact geometry at the tower, ganks independent of the opponent, a weak XP economy on a five-cell lane. The M4.3c objective / termination proposal remains undecided. |
+| **unresolved questions** | Answered by M4.4c (§AH): the interrupted Recall is a rational guessing game (Recall is the best default; a small ≈ 0.1-resource conditional gap); freezes pay only against opponents that concede them; the stronger side does zone, through kills and forced Recalls; Vision-first does not pay in typical (short) sieges; Last Hit / Thin / Slow Push coincide in 68–77% of turns. Open: How exploitable are four-action policies (no four-action attacker yet)? How much value do they leave against conceding / passive opponents (+0.4 to +1.0 measured in probes)? Does Vision-first pay in long sieges (positive trend, unresolved)? **Design decisions after review**: Vision, combat-wave coupling, minion aggro and the XP range were revised together in M4.5a (§AI), to be calibrated in M4.5b; still open: whether to keep three non-Shove wave actions that coincide in most states, whether a champion may step into its own tower cell by choice. **Answered by M4.5b** (§AJ): Ward value is situational and contestable; early trades into big waves cost HP with retaliation from the exchange tick; freezes held with Thin + Trade pay conditionally (mid- and late game; punishing walk-ups when stronger); Safe costs 0.15–0.56 farm per turn and threat-only zoning exists near the weaker side's tower; scripted restricted games are Shove-centred, which learned policies beat. **Open after M4.5b**: accept the 21% mid-to-late minion share or adopt `minion_damage_growth = 1.12` after fresh validation; whether PPO on the candidate learns freezes, wards and selective trading (M4.5c). Structural limits documented earlier remain: contact geometry at the tower, ganks independent of the opponent, a weak XP economy on a five-cell lane. The M4.3c objective / termination proposal remains undecided. |
 
 ### M4.4 plan
 
@@ -132,7 +140,8 @@ available for historical comparisons)
 | dependencies | M4.4c and its review |
 | outcome | all criteria met; GO WITH CAVEATS for M4.5b (§AI); corrected after review (revision 2: wave-following movement, positional aggro on actual positions; §AI, report §10) |
 
-**M4.5b — Integrated calibration and strategic evaluation** (planned)
+**M4.5b — Integrated calibration and strategic evaluation** (completed, in review; [report](m4/m4_5b_calibration_report.md),
+[reference §15](m4/laning_game_mathematical_reference.md#15-experimental-the-m45b-calibrated-candidate-m45_calibrated), [tables](../results/m45b/report.md))
 
 | | |
 |---|---|
@@ -141,8 +150,9 @@ available for historical comparisons)
 | deliverables | a calibrated candidate preset (or a documented decision to keep `m45_unified()`), an M4.5b report, the reference updated |
 | completion criteria | each provisional parameter either justified by integrated evidence or flagged; no single strategy dominating every state; scripted opponents, controlled scenarios, multi-turn counterfactuals and sensitivity analyses with paired seeds and intervals |
 | dependencies | M4.5a reviewed |
+| outcome | `m45_calibrated()` = revision 2 + the farm-spot correction `"last_front"` + retaliation delay 0; every other number retained; GO WITH CAVEATS for M4.5c; one holdout criterion failed (mid-to-late minion share, a decision for review); §AJ |
 
-**M4.5c — PPO training and evaluation on the revised model** (planned)
+**M4.5c — PPO training and evaluation on the revised model** (underway: pilot complete, [pilot report](m4/m4_5c_pilot_report.md), [tables](../results/m45c/report.md); full campaign awaiting approval of the budget)
 
 | | |
 |---|---|
@@ -150,7 +160,8 @@ available for historical comparisons)
 | engineering tasks | the M4.4b protocol (seeds, budgets, health checks, learning curves) on the new 90-input / 61-action network; the M4.4 / M4.4c diagnostics and counterfactuals adapted to W and minion targeting; then M4.4d's robustness work on the new policies: best-response attackers (exploitability lower bounds), conceding / passive / aggressive opponent styles, cross-environment comparisons with the M4.4 finals |
 | deliverables | checkpoints (git-ignored), an M4.5c report, viewer recordings |
 | completion criteria | as M4.4b, plus the exploitability and robustness measures of the former M4.4d |
-| dependencies | M4.5b |
+| dependencies | M4.5b reviewed (done; minion share accepted at 1.08); the M4.4 diagnostics adapted to W and minion targeting, with the M4.5b ledger quantities in the health checks (done in the pilot: `experiments/rl/m45c`); the M4.5b scripted strategies as fixed evaluation opponents (done) |
+| progress | pilot complete (§AK): pipeline verified on the preset, one seed × 1,024,000 transitions, learning curve, behaviour, throughput; recommended campaign 6 seeds × 8,192,000 (≈ 46 min training, ≈ 2.5 h with evaluation, extrapolated); **full training and the strategic evaluation have not started and need explicit approval** |
 
 ### M5 and M6 (proposed extensions)
 
@@ -1771,3 +1782,88 @@ positional aggro reads each tick's positions after its movement, moved or not. R
 `m45_unified_r1()` (byte-identical to the committed engine); recordings carry a rules revision, and the committed ones
 replay as revision 1. Ordinary last-hitting draws no positional aggro; chasers, Ward walks through a held lane cell and
 retreats through the enemy wave now do. 58 new tests. M4.5b and M4.5c are unchanged; M4.5b runs on revision 2.
+
+## AJ. M4.5b integrated calibration and strategic evaluation (2026-10-14)
+
+**Status:** completed, in review (uncommitted). [Report](m4/m4_5b_calibration_report.md),
+[reference §15](m4/laning_game_mathematical_reference.md#15-experimental-the-m45b-calibrated-candidate-m45_calibrated),
+[tables](../results/m45b/report.md); code `lanegame/experiments/m45b/`; recordings `results/m45b/trajectories/`.
+
+**What was done.** A paired, common-random-number study of about 60 scripted contingent strategies on
+`m45_unified()` revision 2. Its parts:
+
+- exact one-turn trade, zoning and Vision enumerations;
+- freezer × response games on a freeze grid, with local action values and post-reset decisions;
+- one-ward and Ward-rule counterfactuals;
+- a Safe / Yield / threat decomposition;
+- 24-strategy restricted games with seed bootstraps;
+- timing diagnostics;
+- an α × δ × φ factorial, with one-at-a-time checks;
+- a holdout fixed before calibration (seeds 88,000–88,499, its own states);
+- a learned reference (the M4.4b aggro finals, evaluation only).
+
+About 220 million simulated turns, no training.
+
+**Findings.**
+
+- **A farm-spot defect, inherited from M4.2d.** In mutual Shoves the probe predicts both fronts dying, so both
+  followers walk out of reach of the fight: 38–50% of Shove-mirror farm died out of reach. It is corrected by the
+  opt-in `farm_spot_rule = "last_front"` (5–7%); it had inflated the apparent value of freezing against a shoving
+  opponent.
+- **Retaliation depended on the tick split.** A damaged 8-HP wave never retaliated, and early trades into big
+  stacks were HP-positive; fixed by `minion_retaliation_delay = 0`.
+- **Freezes are conditional.** They pay mid- and late game, and a strong freezer punishes a walk-up Shove; the weak
+  side's replies vary, including resets.
+- **Vision is situational.**
+- **Safe is costly; threat-only zoning exists** near the weaker side's tower.
+- **Restricted scripted games are Shove-centred** on this and the historical preset; learned policies beat the
+  scripted Shove by about +3.
+- **The approximations M4.5a flagged are negligible.**
+
+**Decision.** `GameConfig.m45_calibrated()` = revision 2 + the two fields above; every other number retained (α 50,
+ρ 1.08, φ 0.5, Vision 6 turns × 0.25, W exposure 0, XP range 2). Every earlier preset is byte-identical (14 checked).
+
+**Holdout.** The strategic effects generalize. The mid-to-late minion share fails its criterion (21% of the trade
+damage at level 14, threshold 15%), and was not retuned on the holdout.
+
+**Recommendation:** GO WITH CAVEATS for M4.5c, after deciding the minion share (accept, or
+`minion_damage_growth = 1.12` with a fresh validation). Tracked caveats: Shove-heavy convergence, rare freezes, noisy
+single-trade values, Vision magnitude, the residual full-support probe.
+
+## AK. M4.5c pilot: shared-policy PPO on the calibrated M4.5 environment (2026-10-14)
+
+**Status:** pilot complete, in review (uncommitted). **The full multi-seed campaign has not started; it awaits explicit
+approval of the budget.** [Pilot report](m4/m4_5c_pilot_report.md), [tables](../results/m45c/report.md); code
+`lanegame/experiments/rl/m45c/`; tests `tests/test_m45c_training.py` (16); checkpoints
+`results/rl/checkpoints/m45c/` (git-ignored).
+
+**What was done.**
+- The M4.4 PPO infrastructure was reused unchanged on `m45_calibrated()`: 90 inputs, 61 codes, the network trained
+  from scratch, M4.4 weights refused by the guard. Two opt-in arguments were added to `train_shared`, both bit-identical
+  by default:
+  - `stop_at`, a prefix of a longer learning-rate schedule;
+  - `rollout_stats`, per-rollout action, mask and seat diagnostics.
+- Correctness was verified on the preset itself: mirror observations, antisymmetric rewards, equal seats with gradient
+  from both, masks (Ward offered, never-legal codes never), masked log-probabilities, truncation bootstraps,
+  reproducibility.
+- A smoke test and one pilot: seed 100, the 4,096,000-transition schedule stopped at 1,024,000 agent transitions
+  (512,000 joint steps).
+- Evaluation against nine M4.5b strategies and the out-of-distribution M4.4b aggro network, from both seats; behaviour
+  diagnostics; throughput, concurrency and memory benchmarks; a counterfactual framework for the full evaluation.
+
+**Findings.**
+- **Learning.** The scripted mean went from −7.4 (untrained) to +2.5 resources. The final beats every fixed strategy
+  (+1.0 to +6.1, W = 1000) and the OOD network (+0.67). It still improves at the end: +0.67 against its 0.77M
+  snapshot, and better than its half-way snapshot against 9 of 10 opponents.
+- **Stability and behaviour.** Training was stable (entropy 2.86 → 1.77, matching M4.4b aggro on the same schedule;
+  KL ≈ 0.005). Behaviour is state-conditioned (Recall and Safe by HP, Pressure when legal, freeze-phase actions);
+  Shove is at 32% and still drifting; Ward is rare.
+- **Learns more slowly than M4.4.** M4.4b aggro plateaued against its references by ≈ 0.3M.
+- **Cost.** 4,277 agent transitions/s for one process; 0.58× per process with 11 processes. Memory is 1.5 GB per
+  process once the lane caches are full, so concurrency is limited; a smaller cache gives identical results about 4%
+  slower.
+
+**Recommendation.** GO. The default campaign is 6 seeds × 8,192,000 agent transitions (learning rate annealed per
+run, 100% current-policy self-play, a midpoint at 4.096M, pre-registered plateau / extension / stop criteria), at an
+estimated ≈ 46 min of training and ≈ 2.5 h in all. Alternatives: 3 × 4,096,000 and 10 × 16,384,000.
+

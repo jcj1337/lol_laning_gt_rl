@@ -1,0 +1,10 @@
+== stage trades
+  [trade sweep] 18 jobs, 1 s
+  [hp price] 8 jobs, 16 s
+  [trade multi-turn] 48 jobs, 53 s
+wrote results\m45b\trades.json.gz
+== stage trades done in 72 s
+== stage freeze
+  [freeze grid {}] 3840 jobs, 421 s
+wrote results\m45b\freeze_grid.json.gz
+== stage freeze done in 445 s

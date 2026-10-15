@@ -1,0 +1,2280 @@
+{
+ "meta": {
+  "study": "M4.5b",
+  "commit": "8dc5acf54061d18e5f5a3fbd6a84460ee22433fc",
+  "working_tree_dirty": true,
+  "timestamp": "2026-10-14 17:48:44",
+  "python": "3.13.9",
+  "numpy": "2.5.3",
+  "elapsed_s": 429.5
+ },
+ "grid": {
+  "minion_damage_alpha": [
+   30,
+   50,
+   80
+  ],
+  "minion_retaliation_delay": [
+   0,
+   1
+  ],
+  "trade_wave_fraction": [
+   0.25,
+   0.5,
+   1.0
+  ]
+ },
+ "rows": [
+  {
+   "overrides": {
+    "minion_damage_alpha": 30,
+    "minion_retaliation_delay": 0,
+    "trade_wave_fraction": 0.25
+   },
+   "trade_B1": -0.0017857142857142794,
+   "trade_B2": 0.09472222222222222,
+   "trade_B3": 0.11607142857142858,
+   "trade_B4": 0.068826590565721,
+   "trade_B5": [
+    1.0183150183150182,
+    0.48135913166588007,
+    0.1995373048004627,
+    0.068826590565721
+   ],
+   "trade_B6": [
+    0.09472222222222222,
+    0.04246031746031745,
+    -0.0017857142857142794
+   ],
+   "trade_pass": 6,
+   "trade_mt_L2_8_G20": [
+    -0.18148456278079336,
+    0.0754197176308183,
+    200
+   ],
+   "trade_mt_L2_24_G20": [
+    0.028888003573702817,
+    0.09407196590027961,
+    200
+   ],
+   "freeze_L10_large_h12_premium_split": 1.0394391916928511,
+   "freeze_L10_large_h12_value": 5.37702319440263,
+   "freeze_L10_large_h12_guard_minus_passive_vs_shove": [
+    0.34316136645325335,
+    0.5431483930592895,
+    40
+   ],
+   "freeze_L10_large_h12_guard_minus_shove_vs_shove": [
+    -0.0445391969151948,
+    0.5413428029696573,
+    40
+   ],
+   "freeze_L10_large_h12_support": {
+    "fz_guard_sh": 0.7402866872140347,
+    "g_shove": 0.2597133127859653
+   },
+   "freeze_L4_equal_h12_premium_split": -0.0847130519491493,
+   "freeze_L4_equal_h12_value": 1.6224738729076058,
+   "freeze_L4_equal_h12_guard_minus_passive_vs_shove": [
+    1.3909317433493429,
+    0.5698367943164087,
+    40
+   ],
+   "freeze_L4_equal_h12_guard_minus_shove_vs_shove": [
+    0.06657024937307865,
+    0.6228280266041161,
+    40
+   ],
+   "freeze_L4_equal_h12_support": {
+    "fz_guard_sh": 1.0
+   },
+   "vision_neutral_G50": [
+    -0.11815949624479118,
+    0.39853370925751036,
+    200
+   ],
+   "vision_neutral_placed": 0.405,
+   "vision_frozen_on_G50": [
+    -0.308682665931048,
+    0.3762000844069638,
+    200
+   ],
+   "vision_frozen_on_placed": 0.405,
+   "zoning_passive_safe_cost": [
+    9.107617187499995,
+    0.34036061434041126,
+    64
+   ],
+   "zoning_threat_only": [
+    1.3250000000000037,
+    0.369205162382075,
+    64
+   ],
+   "zoning_combat_guard": [
+    1.5076171874999984,
+    0.45270326476716494,
+    64
+   ],
+   "matrix_support": {
+    "g_shove": 1.0
+   },
+   "matrix_shove_margin": 0.0,
+   "matrix_n_support": 1
+  },
+  {
+   "overrides": {
+    "minion_damage_alpha": 30,
+    "minion_retaliation_delay": 0,
+    "trade_wave_fraction": 0.5
+   },
+   "trade_B1": -0.0017857142857142794,
+   "trade_B2": 0.09472222222222222,
+   "trade_B3": 0.11607142857142858,
+   "trade_B4": 0.068826590565721,
+   "trade_B5": [
+    1.0183150183150182,
+    0.48135913166588007,
+    0.1995373048004627,
+    0.068826590565721
+   ],
+   "trade_B6": [
+    0.09472222222222222,
+    0.04246031746031745,
+    -0.0017857142857142794
+   ],
+   "trade_pass": 6,
+   "trade_mt_L2_8_G20": [
+    -0.18148456278079336,
+    0.0754197176308183,
+    200
+   ],
+   "trade_mt_L2_24_G20": [
+    0.028888003573702817,
+    0.09407196590027961,
+    200
+   ],
+   "freeze_L10_large_h12_premium_split": 1.0462968188266073,
+   "freeze_L10_large_h12_value": 5.42140425516407,
+   "freeze_L10_large_h12_guard_minus_passive_vs_shove": [
+    0.39910984959436485,
+    0.5007596277941653,
+    40
+   ],
+   "freeze_L10_large_h12_guard_minus_shove_vs_shove": [
+    0.011409286225916748,
+    0.5377723320274433,
+    40
+   ],
+   "freeze_L10_large_h12_support": {
+    "fz_guard_sh": 1.0
+   },
+   "freeze_L4_equal_h12_premium_split": -0.06811711009725556,
+   "freeze_L4_equal_h12_value": 1.6323386408057394,
+   "freeze_L4_equal_h12_guard_minus_passive_vs_shove": [
+    1.4007965112474765,
+    0.5664987861672708,
+    40
+   ],
+   "freeze_L4_equal_h12_guard_minus_shove_vs_shove": [
+    0.07643501727121209,
+    0.6019727015734898,
+    40
+   ],
+   "freeze_L4_equal_h12_support": {
+    "fz_guard_sh": 1.0
+   },
+   "vision_neutral_G50": [
+    -0.11815949624479118,
+    0.39853370925751036,
+    200
+   ],
+   "vision_neutral_placed": 0.405,
+   "vision_frozen_on_G50": [
+    -0.308682665931048,
+    0.3762000844069638,
+    200
+   ],
+   "vision_frozen_on_placed": 0.405,
+   "zoning_passive_safe_cost": [
+    9.107617187499995,
+    0.34036061434041126,
+    64
+   ],
+   "zoning_threat_only": [
+    1.3250000000000037,
+    0.369205162382075,
+    64
+   ],
+   "zoning_combat_guard": [
+    1.4207031249999982,
+    0.4280770618333998,
+    64
+   ],
+   "matrix_support": {
+    "g_shove": 1.0
+   },
+   "matrix_shove_margin": 0.0,
+   "matrix_n_support": 1
+  },
+  {
+   "overrides": {
+    "minion_damage_alpha": 30,
+    "minion_retaliation_delay": 0,
+    "trade_wave_fraction": 1.0
+   },
+   "trade_B1": -0.0017857142857142794,
+   "trade_B2": 0.09472222222222222,
+   "trade_B3": 0.11607142857142858,
+   "trade_B4": 0.068826590565721,
+   "trade_B5": [
+    1.0183150183150182,
+    0.48135913166588007,
+    0.1995373048004627,
+    0.068826590565721
+   ],
+   "trade_B6": [
+    0.09472222222222222,
+    0.04246031746031745,
+    -0.0017857142857142794
+   ],
+   "trade_pass": 6,
+   "trade_mt_L2_8_G20": [
+    -0.18148456278079336,
+    0.0754197176308183,
+    200
+   ],
+   "trade_mt_L2_24_G20": [
+    0.028888003573702817,
+    0.09407196590027961,
+    200
+   ],
+   "freeze_L10_large_h12_premium_split": 1.0462968188266073,
+   "freeze_L10_large_h12_value": 5.42140425516407,
+   "freeze_L10_large_h12_guard_minus_passive_vs_shove": [
+    0.39910984959436485,
+    0.5007596277941653,
+    40
+   ],
+   "freeze_L10_large_h12_guard_minus_shove_vs_shove": [
+    0.011409286225916748,
+    0.5377723320274433,
+    40
+   ],
+   "freeze_L10_large_h12_support": {
+    "fz_guard_sh": 1.0
+   },
+   "freeze_L4_equal_h12_premium_split": -0.06811711009725556,
+   "freeze_L4_equal_h12_value": 1.6323386408057394,
+   "freeze_L4_equal_h12_guard_minus_passive_vs_shove": [
+    1.4007965112474765,
+    0.5664987861672708,
+    40
+   ],
+   "freeze_L4_equal_h12_guard_minus_shove_vs_shove": [
+    0.07643501727121209,
+    0.6019727015734898,
+    40
+   ],
+   "freeze_L4_equal_h12_support": {
+    "fz_guard_sh": 1.0
+   },
+   "vision_neutral_G50": [
+    -0.11815949624479118,
+    0.39853370925751036,
+    200
+   ],
+   "vision_neutral_placed": 0.405,
+   "vision_frozen_on_G50": [
+    -0.308682665931048,
+    0.3762000844069638,
+    200
+   ],
+   "vision_frozen_on_placed": 0.405,
+   "zoning_passive_safe_cost": [
+    9.107617187499995,
+    0.34036061434041126,
+    64
+   ],
+   "zoning_threat_only": [
+    1.3250000000000037,
+    0.369205162382075,
+    64
+   ],
+   "zoning_combat_guard": [
+    1.4207031249999982,
+    0.4280770618333998,
+    64
+   ],
+   "matrix_support": {
+    "g_shove": 1.0
+   },
+   "matrix_shove_margin": 0.0,
+   "matrix_n_support": 1
+  },
+  {
+   "overrides": {
+    "minion_damage_alpha": 30,
+    "minion_retaliation_delay": 1,
+    "trade_wave_fraction": 0.25
+   },
+   "trade_B1": 0.0575,
+   "trade_B2": 0.11916666666666667,
+   "trade_B3": 0.14964285714285713,
+   "trade_B4": 0.026859157293939902,
+   "trade_B5": [
+    0.41025641025641024,
+    0.193487494100991,
+    0.08097165991902834,
+    0.026859157293939902
+   ],
+   "trade_B6": [
+    0.11916666666666667,
+    0.0861111111111111,
+    0.0575
+   ],
+   "trade_pass": 5,
+   "trade_mt_L2_8_G20": [
+    0.027396848398686238,
+    0.06695027460149332,
+    200
+   ],
+   "trade_mt_L2_24_G20": [
+    -0.16862341050703494,
+    0.06612977272600032,
+    200
+   ],
+   "freeze_L10_large_h12_premium_split": 1.0003964927780775,
+   "freeze_L10_large_h12_value": 5.354366821343013,
+   "freeze_L10_large_h12_guard_minus_passive_vs_shove": [
+    0.31113609014899635,
+    0.560407163974092,
+    40
+   ],
+   "freeze_L10_large_h12_guard_minus_shove_vs_shove": [
+    -0.07656447321945187,
+    0.5494074042529992,
+    40
+   ],
+   "freeze_L10_large_h12_support": {
+    "fz_guard_sh": 0.7265529984866129,
+    "g_shove": 0.2734470015133871
+   },
+   "freeze_L4_equal_h12_premium_split": -0.061137540265400823,
+   "freeze_L4_equal_h12_value": 1.6502472932112056,
+   "freeze_L4_equal_h12_guard_minus_passive_vs_shove": [
+    1.4187051636529426,
+    0.5698463722110012,
+    40
+   ],
+   "freeze_L4_equal_h12_guard_minus_shove_vs_shove": [
+    0.0943436696766784,
+    0.6112724860463221,
+    40
+   ],
+   "freeze_L4_equal_h12_support": {
+    "fz_guard_sh": 1.0
+   },
+   "vision_neutral_G50": [
+    -0.0888755481233858,
+    0.31939634154167185,
+    200
+   ],
+   "vision_neutral_placed": 0.405,
+   "vision_frozen_on_G50": [
+    -0.36869100506012087,
+    0.3941097559009767,
+    200
+   ],
+   "vision_frozen_on_placed": 0.405,
+   "zoning_passive_safe_cost": [
+    9.107617187499995,
+    0.34036061434041126,
+    64
+   ],
+   "zoning_threat_only": [
+    1.320312500000004,
+    0.36684850803928765,
+    64
+   ],
+   "zoning_combat_guard": [
+    2.139843749999997,
+    0.4609990429744364,
+    64
+   ],
+   "matrix_support": {
+    "g_shove": 1.0
+   },
+   "matrix_shove_margin": 0.0,
+   "matrix_n_support": 1
+  },
+  {
+   "overrides": {
+    "minion_damage_alpha": 30,
+    "minion_retaliation_delay": 1,
+    "trade_wave_fraction": 0.5
+   },
+   "trade_B1": 0.0575,
+   "trade_B2": 0.11916666666666667,
+   "trade_B3": 0.14964285714285713,
+   "trade_B4": 0.026859157293939902,
+   "trade_B5": [
+    0.41025641025641024,
+    0.193487494100991,
+    0.08097165991902834,
+    0.026859157293939902
+   ],
+   "trade_B6": [
+    0.11916666666666667,
+    0.0861111111111111,
+    0.0575
+   ],
+   "trade_pass": 5,
+   "trade_mt_L2_8_G20": [
+    0.027396848398686238,
+    0.06695027460149332,
+    200
+   ],
+   "trade_mt_L2_24_G20": [
+    -0.16862341050703494,
+    0.06612977272600032,
+    200
+   ],
+   "freeze_L10_large_h12_premium_split": 1.1121283356240181,
+   "freeze_L10_large_h12_value": 5.511864061691793,
+   "freeze_L10_large_h12_guard_minus_passive_vs_shove": [
+    0.489569656122088,
+    0.5947027702573606,
+    40
+   ],
+   "freeze_L10_large_h12_guard_minus_shove_vs_shove": [
+    0.10186909275363987,
+    0.6082336092972276,
+    40
+   ],
+   "freeze_L10_large_h12_support": {
+    "fz_guard_sh": 1.0
+   },
+   "freeze_L4_equal_h12_premium_split": -0.03657387064653995,
+   "freeze_L4_equal_h12_value": 1.6686339895985802,
+   "freeze_L4_equal_h12_guard_minus_passive_vs_shove": [
+    1.4370918600403173,
+    0.5705813043147162,
+    40
+   ],
+   "freeze_L4_equal_h12_guard_minus_shove_vs_shove": [
+    0.112730366064053,
+    0.5903439403993656,
+    40
+   ],
+   "freeze_L4_equal_h12_support": {
+    "fz_guard_sh": 1.0
+   },
+   "vision_neutral_G50": [
+    -0.0888755481233858,
+    0.31939634154167185,
+    200
+   ],
+   "vision_neutral_placed": 0.405,
+   "vision_frozen_on_G50": [
+    -0.36869100506012087,
+    0.3941097559009767,
+    200
+   ],
+   "vision_frozen_on_placed": 0.405,
+   "zoning_passive_safe_cost": [
+    9.107617187499995,
+    0.34036061434041126,
+    64
+   ],
+   "zoning_threat_only": [
+    1.320312500000004,
+    0.36684850803928765,
+    64
+   ],
+   "zoning_combat_guard": [
+    2.1851562499999977,
+    0.4590951055981543,
+    64
+   ],
+   "matrix_support": {
+    "g_shove": 1.0
+   },
+   "matrix_shove_margin": 0.0,
+   "matrix_n_support": 1
+  },
+  {
+   "overrides": {
+    "minion_damage_alpha": 30,
+    "minion_retaliation_delay": 1,
+    "trade_wave_fraction": 1.0
+   },
+   "trade_B1": 0.0575,
+   "trade_B2": 0.11916666666666667,
+   "trade_B3": 0.14964285714285713,
+   "trade_B4": 0.026859157293939902,
+   "trade_B5": [
+    0.41025641025641024,
+    0.193487494100991,
+    0.08097165991902834,
+    0.026859157293939902
+   ],
+   "trade_B6": [
+    0.11916666666666667,
+    0.0861111111111111,
+    0.0575
+   ],
+   "trade_pass": 5,
+   "trade_mt_L2_8_G20": [
+    0.027396848398686238,
+    0.06695027460149332,
+    200
+   ],
+   "trade_mt_L2_24_G20": [
+    -0.16862341050703494,
+    0.06612977272600032,
+    200
+   ],
+   "freeze_L10_large_h12_premium_split": 1.1121283356240181,
+   "freeze_L10_large_h12_value": 5.511864061691793,
+   "freeze_L10_large_h12_guard_minus_passive_vs_shove": [
+    0.489569656122088,
+    0.5947027702573606,
+    40
+   ],
+   "freeze_L10_large_h12_guard_minus_shove_vs_shove": [
+    0.10186909275363987,
+    0.6082336092972276,
+    40
+   ],
+   "freeze_L10_large_h12_support": {
+    "fz_guard_sh": 1.0
+   },
+   "freeze_L4_equal_h12_premium_split": -0.03657387064653995,
+   "freeze_L4_equal_h12_value": 1.6686339895985802,
+   "freeze_L4_equal_h12_guard_minus_passive_vs_shove": [
+    1.4370918600403173,
+    0.5705813043147162,
+    40
+   ],
+   "freeze_L4_equal_h12_guard_minus_shove_vs_shove": [
+    0.112730366064053,
+    0.5903439403993656,
+    40
+   ],
+   "freeze_L4_equal_h12_support": {
+    "fz_guard_sh": 1.0
+   },
+   "vision_neutral_G50": [
+    -0.0888755481233858,
+    0.31939634154167185,
+    200
+   ],
+   "vision_neutral_placed": 0.405,
+   "vision_frozen_on_G50": [
+    -0.36869100506012087,
+    0.3941097559009767,
+    200
+   ],
+   "vision_frozen_on_placed": 0.405,
+   "zoning_passive_safe_cost": [
+    9.107617187499995,
+    0.34036061434041126,
+    64
+   ],
+   "zoning_threat_only": [
+    1.320312500000004,
+    0.36684850803928765,
+    64
+   ],
+   "zoning_combat_guard": [
+    2.1851562499999977,
+    0.4590951055981543,
+    64
+   ],
+   "matrix_support": {
+    "g_shove": 1.0
+   },
+   "matrix_shove_margin": 0.0,
+   "matrix_n_support": 1
+  },
+  {
+   "overrides": {
+    "minion_damage_alpha": 50,
+    "minion_retaliation_delay": 0,
+    "trade_wave_fraction": 0.25
+   },
+   "trade_B1": -0.06749999999999998,
+   "trade_B2": 0.0790079365079365,
+   "trade_B3": 0.07821428571428571,
+   "trade_B4": 0.11415141849924458,
+   "trade_B5": [
+    1.692307692307692,
+    0.8022652194431334,
+    0.335454019664546,
+    0.11415141849924458
+   ],
+   "trade_B6": [
+    0.0790079365079365,
+    -0.001984126984126991,
+    -0.06749999999999998
+   ],
+   "trade_pass": 6,
+   "trade_mt_L2_8_G20": [
+    -0.18148456278079336,
+    0.0754197176308183,
+    200
+   ],
+   "trade_mt_L2_24_G20": [
+    -0.012804421250079074,
+    0.09398783146133738,
+    200
+   ],
+   "freeze_L10_large_h12_premium_split": 0.9643163863991715,
+   "freeze_L10_large_h12_value": 5.307265118896554,
+   "freeze_L10_large_h12_guard_minus_passive_vs_shove": [
+    0.23771694080861105,
+    0.6063929309879195,
+    40
+   ],
+   "freeze_L10_large_h12_guard_minus_shove_vs_shove": [
+    -0.14998362255983708,
+    0.5688096606366455,
+    40
+   ],
+   "freeze_L10_large_h12_support": {
+    "fz_guard_sh": 0.6849404507523106,
+    "g_shove": 0.3150595492476895
+   },
+   "freeze_L4_equal_h12_premium_split": 0.10318866542110806,
+   "freeze_L4_equal_h12_value": 1.7800912878729611,
+   "freeze_L4_equal_h12_guard_minus_passive_vs_shove": [
+    1.5485491583146986,
+    0.5739839151950211,
+    40
+   ],
+   "freeze_L4_equal_h12_guard_minus_shove_vs_shove": [
+    0.2379710813751076,
+    0.6104527481342824,
+    40
+   ],
+   "freeze_L4_equal_h12_support": {
+    "fz_guard_sh": 1.0
+   },
+   "vision_neutral_G50": [
+    -0.4126860242944137,
+    0.4123725333834506,
+    200
+   ],
+   "vision_neutral_placed": 0.405,
+   "vision_frozen_on_G50": [
+    -0.14311616499077254,
+    0.3446567854404297,
+    200
+   ],
+   "vision_frozen_on_placed": 0.405,
+   "zoning_passive_safe_cost": [
+    9.107617187499995,
+    0.34036061434041126,
+    64
+   ],
+   "zoning_threat_only": [
+    1.3250000000000037,
+    0.369205162382075,
+    64
+   ],
+   "zoning_combat_guard": [
+    1.468749999999999,
+    0.3649488779176503,
+    64
+   ],
+   "matrix_support": {
+    "g_shove": 1.0
+   },
+   "matrix_shove_margin": 0.0,
+   "matrix_n_support": 1
+  },
+  {
+   "overrides": {
+    "minion_damage_alpha": 50,
+    "minion_retaliation_delay": 0,
+    "trade_wave_fraction": 0.5
+   },
+   "trade_B1": -0.06749999999999998,
+   "trade_B2": 0.0790079365079365,
+   "trade_B3": 0.07821428571428571,
+   "trade_B4": 0.11415141849924458,
+   "trade_B5": [
+    1.692307692307692,
+    0.8022652194431334,
+    0.335454019664546,
+    0.11415141849924458
+   ],
+   "trade_B6": [
+    0.0790079365079365,
+    -0.001984126984126991,
+    -0.06749999999999998
+   ],
+   "trade_pass": 6,
+   "trade_mt_L2_8_G20": [
+    -0.18148456278079336,
+    0.0754197176308183,
+    200
+   ],
+   "trade_mt_L2_24_G20": [
+    -0.012804421250079074,
+    0.09398783146133738,
+    200
+   ],
+   "freeze_L10_large_h12_premium_split": 0.9331585167271809,
+   "freeze_L10_large_h12_value": 5.270014802066176,
+   "freeze_L10_large_h12_guard_minus_passive_vs_shove": [
+    0.015156661587109843,
+    0.5166966596348328,
+    40
+   ],
+   "freeze_L10_large_h12_guard_minus_shove_vs_shove": [
+    -0.3725439017813382,
+    0.5105432813821101,
+    40
+   ],
+   "freeze_L10_large_h12_support": {
+    "fz_passive_sh": 0.3262903568380299,
+    "g_shove": 0.6737096431619701
+   },
+   "freeze_L4_equal_h12_premium_split": -0.08748929843116829,
+   "freeze_L4_equal_h12_value": 1.578703985666565,
+   "freeze_L4_equal_h12_guard_minus_passive_vs_shove": [
+    1.3471618561083019,
+    0.5517920376911223,
+    40
+   ],
+   "freeze_L4_equal_h12_guard_minus_shove_vs_shove": [
+    0.03658377916871121,
+    0.574108631418088,
+    40
+   ],
+   "freeze_L4_equal_h12_support": {
+    "fz_guard_sh": 1.0
+   },
+   "vision_neutral_G50": [
+    -0.4126860242944137,
+    0.4123725333834506,
+    200
+   ],
+   "vision_neutral_placed": 0.405,
+   "vision_frozen_on_G50": [
+    -0.14311616499077254,
+    0.3446567854404297,
+    200
+   ],
+   "vision_frozen_on_placed": 0.405,
+   "zoning_passive_safe_cost": [
+    9.107617187499995,
+    0.34036061434041126,
+    64
+   ],
+   "zoning_threat_only": [
+    1.3250000000000037,
+    0.369205162382075,
+    64
+   ],
+   "zoning_combat_guard": [
+    1.4802734374999988,
+    0.372226950186273,
+    64
+   ],
+   "matrix_support": {
+    "g_shove": 1.0
+   },
+   "matrix_shove_margin": 0.0,
+   "matrix_n_support": 1
+  },
+  {
+   "overrides": {
+    "minion_damage_alpha": 50,
+    "minion_retaliation_delay": 0,
+    "trade_wave_fraction": 1.0
+   },
+   "trade_B1": -0.06749999999999998,
+   "trade_B2": 0.0790079365079365,
+   "trade_B3": 0.07821428571428571,
+   "trade_B4": 0.11415141849924458,
+   "trade_B5": [
+    1.692307692307692,
+    0.8022652194431334,
+    0.335454019664546,
+    0.11415141849924458
+   ],
+   "trade_B6": [
+    0.0790079365079365,
+    -0.001984126984126991,
+    -0.06749999999999998
+   ],
+   "trade_pass": 6,
+   "trade_mt_L2_8_G20": [
+    -0.18148456278079336,
+    0.0754197176308183,
+    200
+   ],
+   "trade_mt_L2_24_G20": [
+    -0.012804421250079074,
+    0.09398783146133738,
+    200
+   ],
+   "freeze_L10_large_h12_premium_split": 0.9331585167271809,
+   "freeze_L10_large_h12_value": 5.270014802066176,
+   "freeze_L10_large_h12_guard_minus_passive_vs_shove": [
+    0.015156661587109843,
+    0.5166966596348328,
+    40
+   ],
+   "freeze_L10_large_h12_guard_minus_shove_vs_shove": [
+    -0.3725439017813382,
+    0.5105432813821101,
+    40
+   ],
+   "freeze_L10_large_h12_support": {
+    "fz_passive_sh": 0.3262903568380299,
+    "g_shove": 0.6737096431619701
+   },
+   "freeze_L4_equal_h12_premium_split": -0.08748929843116829,
+   "freeze_L4_equal_h12_value": 1.578703985666565,
+   "freeze_L4_equal_h12_guard_minus_passive_vs_shove": [
+    1.3471618561083019,
+    0.5517920376911223,
+    40
+   ],
+   "freeze_L4_equal_h12_guard_minus_shove_vs_shove": [
+    0.03658377916871121,
+    0.574108631418088,
+    40
+   ],
+   "freeze_L4_equal_h12_support": {
+    "fz_guard_sh": 1.0
+   },
+   "vision_neutral_G50": [
+    -0.4126860242944137,
+    0.4123725333834506,
+    200
+   ],
+   "vision_neutral_placed": 0.405,
+   "vision_frozen_on_G50": [
+    -0.14311616499077254,
+    0.3446567854404297,
+    200
+   ],
+   "vision_frozen_on_placed": 0.405,
+   "zoning_passive_safe_cost": [
+    9.107617187499995,
+    0.34036061434041126,
+    64
+   ],
+   "zoning_threat_only": [
+    1.3250000000000037,
+    0.369205162382075,
+    64
+   ],
+   "zoning_combat_guard": [
+    1.4802734374999988,
+    0.372226950186273,
+    64
+   ],
+   "matrix_support": {
+    "g_shove": 1.0
+   },
+   "matrix_shove_margin": 0.0,
+   "matrix_n_support": 1
+  },
+  {
+   "overrides": {
+    "minion_damage_alpha": 50,
+    "minion_retaliation_delay": 1,
+    "trade_wave_fraction": 0.25
+   },
+   "trade_B1": 0.03107142857142857,
+   "trade_B2": 0.11916666666666667,
+   "trade_B3": 0.13464285714285715,
+   "trade_B4": 0.045324827933523576,
+   "trade_B5": [
+    0.6813186813186813,
+    0.3209060877772534,
+    0.13302486986697515,
+    0.045324827933523576
+   ],
+   "trade_B6": [
+    0.11916666666666667,
+    0.07182539682539682,
+    0.03107142857142857
+   ],
+   "trade_pass": 5,
+   "trade_mt_L2_8_G20": [
+    0.027396848398686238,
+    0.06695027460149332,
+    200
+   ],
+   "trade_mt_L2_24_G20": [
+    -0.1951584461041913,
+    0.07395887448267235,
+    200
+   ],
+   "freeze_L10_large_h12_premium_split": 0.9597086946657796,
+   "freeze_L10_large_h12_value": 5.305941527117907,
+   "freeze_L10_large_h12_guard_minus_passive_vs_shove": [
+    0.23560969934303624,
+    0.6711141356288992,
+    40
+   ],
+   "freeze_L10_large_h12_guard_minus_shove_vs_shove": [
+    -0.1520908640254119,
+    0.6267464985156526,
+    40
+   ],
+   "freeze_L10_large_h12_support": {
+    "fz_guard_sh": 0.6841531375800541,
+    "g_shove": 0.31584686241994586
+   },
+   "freeze_L4_equal_h12_premium_split": 0.10689205874932509,
+   "freeze_L4_equal_h12_value": 1.782146984943474,
+   "freeze_L4_equal_h12_guard_minus_passive_vs_shove": [
+    1.550604855385211,
+    0.5741234632655563,
+    40
+   ],
+   "freeze_L4_equal_h12_guard_minus_shove_vs_shove": [
+    0.2400267784456201,
+    0.6097134500391741,
+    40
+   ],
+   "freeze_L4_equal_h12_support": {
+    "fz_guard_sh": 1.0
+   },
+   "vision_neutral_G50": [
+    -0.710011062446429,
+    0.3478196868061823,
+    200
+   ],
+   "vision_neutral_placed": 0.405,
+   "vision_frozen_on_G50": [
+    -0.558241214522869,
+    0.3819517976600182,
+    200
+   ],
+   "vision_frozen_on_placed": 0.405,
+   "zoning_passive_safe_cost": [
+    9.107617187499995,
+    0.34036061434041126,
+    64
+   ],
+   "zoning_threat_only": [
+    1.320312500000004,
+    0.36684850803928765,
+    64
+   ],
+   "zoning_combat_guard": [
+    2.0935546874999975,
+    0.47262316690979234,
+    64
+   ],
+   "matrix_support": {
+    "g_shove": 1.0
+   },
+   "matrix_shove_margin": 0.0,
+   "matrix_n_support": 1
+  },
+  {
+   "overrides": {
+    "minion_damage_alpha": 50,
+    "minion_retaliation_delay": 1,
+    "trade_wave_fraction": 0.5
+   },
+   "trade_B1": 0.03107142857142857,
+   "trade_B2": 0.11916666666666667,
+   "trade_B3": 0.13464285714285715,
+   "trade_B4": 0.045324827933523576,
+   "trade_B5": [
+    0.6813186813186813,
+    0.3209060877772534,
+    0.13302486986697515,
+    0.045324827933523576
+   ],
+   "trade_B6": [
+    0.11916666666666667,
+    0.07182539682539682,
+    0.03107142857142857
+   ],
+   "trade_pass": 5,
+   "trade_mt_L2_8_G20": [
+    0.027396848398686238,
+    0.06695027460149332,
+    200
+   ],
+   "trade_mt_L2_24_G20": [
+    -0.1951584461041913,
+    0.07395887448267235,
+    200
+   ],
+   "freeze_L10_large_h12_premium_split": 0.9149023832562446,
+   "freeze_L10_large_h12_value": 5.270014802066176,
+   "freeze_L10_large_h12_guard_minus_passive_vs_shove": [
+    0.052699905273028994,
+    0.6137911560390957,
+    40
+   ],
+   "freeze_L10_large_h12_guard_minus_shove_vs_shove": [
+    -0.3350006580954191,
+    0.5795230480450173,
+    40
+   ],
+   "freeze_L10_large_h12_support": {
+    "fz_passive_sh": 0.32629035683802987,
+    "g_shove": 0.6737096431619701
+   },
+   "freeze_L4_equal_h12_premium_split": -0.05613982373660216,
+   "freeze_L4_equal_h12_value": 1.6138749933816061,
+   "freeze_L4_equal_h12_guard_minus_passive_vs_shove": [
+    1.3823328638233432,
+    0.55609050962242,
+    40
+   ],
+   "freeze_L4_equal_h12_guard_minus_shove_vs_shove": [
+    0.07175478688375239,
+    0.5623062181813903,
+    40
+   ],
+   "freeze_L4_equal_h12_support": {
+    "fz_guard_sh": 1.0
+   },
+   "vision_neutral_G50": [
+    -0.710011062446429,
+    0.3478196868061823,
+    200
+   ],
+   "vision_neutral_placed": 0.405,
+   "vision_frozen_on_G50": [
+    -0.558241214522869,
+    0.3819517976600182,
+    200
+   ],
+   "vision_frozen_on_placed": 0.405,
+   "zoning_passive_safe_cost": [
+    9.107617187499995,
+    0.34036061434041126,
+    64
+   ],
+   "zoning_threat_only": [
+    1.320312500000004,
+    0.36684850803928765,
+    64
+   ],
+   "zoning_combat_guard": [
+    2.1396484374999973,
+    0.47374413732892146,
+    64
+   ],
+   "matrix_support": {
+    "g_shove": 1.0
+   },
+   "matrix_shove_margin": 0.0,
+   "matrix_n_support": 1
+  },
+  {
+   "overrides": {
+    "minion_damage_alpha": 50,
+    "minion_retaliation_delay": 1,
+    "trade_wave_fraction": 1.0
+   },
+   "trade_B1": 0.03107142857142857,
+   "trade_B2": 0.11916666666666667,
+   "trade_B3": 0.13464285714285715,
+   "trade_B4": 0.045324827933523576,
+   "trade_B5": [
+    0.6813186813186813,
+    0.3209060877772534,
+    0.13302486986697515,
+    0.045324827933523576
+   ],
+   "trade_B6": [
+    0.11916666666666667,
+    0.07182539682539682,
+    0.03107142857142857
+   ],
+   "trade_pass": 5,
+   "trade_mt_L2_8_G20": [
+    0.027396848398686238,
+    0.06695027460149332,
+    200
+   ],
+   "trade_mt_L2_24_G20": [
+    -0.1951584461041913,
+    0.07395887448267235,
+    200
+   ],
+   "freeze_L10_large_h12_premium_split": 0.9149023832562446,
+   "freeze_L10_large_h12_value": 5.270014802066176,
+   "freeze_L10_large_h12_guard_minus_passive_vs_shove": [
+    0.052699905273028994,
+    0.6137911560390957,
+    40
+   ],
+   "freeze_L10_large_h12_guard_minus_shove_vs_shove": [
+    -0.3350006580954191,
+    0.5795230480450173,
+    40
+   ],
+   "freeze_L10_large_h12_support": {
+    "fz_passive_sh": 0.32629035683802987,
+    "g_shove": 0.6737096431619701
+   },
+   "freeze_L4_equal_h12_premium_split": -0.05613982373660216,
+   "freeze_L4_equal_h12_value": 1.6138749933816061,
+   "freeze_L4_equal_h12_guard_minus_passive_vs_shove": [
+    1.3823328638233432,
+    0.55609050962242,
+    40
+   ],
+   "freeze_L4_equal_h12_guard_minus_shove_vs_shove": [
+    0.07175478688375239,
+    0.5623062181813903,
+    40
+   ],
+   "freeze_L4_equal_h12_support": {
+    "fz_guard_sh": 1.0
+   },
+   "vision_neutral_G50": [
+    -0.710011062446429,
+    0.3478196868061823,
+    200
+   ],
+   "vision_neutral_placed": 0.405,
+   "vision_frozen_on_G50": [
+    -0.558241214522869,
+    0.3819517976600182,
+    200
+   ],
+   "vision_frozen_on_placed": 0.405,
+   "zoning_passive_safe_cost": [
+    9.107617187499995,
+    0.34036061434041126,
+    64
+   ],
+   "zoning_threat_only": [
+    1.320312500000004,
+    0.36684850803928765,
+    64
+   ],
+   "zoning_combat_guard": [
+    2.1396484374999973,
+    0.47374413732892146,
+    64
+   ],
+   "matrix_support": {
+    "g_shove": 1.0
+   },
+   "matrix_shove_margin": 0.0,
+   "matrix_n_support": 1
+  },
+  {
+   "overrides": {
+    "minion_damage_alpha": 80,
+    "minion_retaliation_delay": 0,
+    "trade_wave_fraction": 0.25
+   },
+   "trade_B1": -0.1667857142857143,
+   "trade_B2": 0.054563492063492064,
+   "trade_B3": 0.021785714285714297,
+   "trade_B4": 0.1812993117340943,
+   "trade_B5": [
+    2.7106227106227108,
+    1.2836243511090135,
+    0.5349913244650087,
+    0.1812993117340943
+   ],
+   "trade_B6": [
+    0.054563492063492064,
+    -0.06785714285714288,
+    -0.1667857142857143
+   ],
+   "trade_pass": 4,
+   "trade_mt_L2_8_G20": [
+    -0.1863646323074863,
+    0.09938932506655626,
+    200
+   ],
+   "trade_mt_L2_24_G20": [
+    -0.05936229632053257,
+    0.10439635642792523,
+    200
+   ],
+   "freeze_L10_large_h12_premium_split": 0.9365575550314841,
+   "freeze_L10_large_h12_value": 5.32060985874619,
+   "freeze_L10_large_h12_guard_minus_passive_vs_shove": [
+    0.2788076206764648,
+    0.6369951210234893,
+    40
+   ],
+   "freeze_L10_large_h12_guard_minus_shove_vs_shove": [
+    -0.10889294269198328,
+    0.6346850231117381,
+    40
+   ],
+   "freeze_L10_large_h12_support": {
+    "fz_guard_sh": 0.6883998906107353,
+    "g_shove": 0.3116001093892648
+   },
+   "freeze_L4_equal_h12_premium_split": -0.12197410016703071,
+   "freeze_L4_equal_h12_value": 1.6031936014337886,
+   "freeze_L4_equal_h12_guard_minus_passive_vs_shove": [
+    1.371651471875526,
+    0.598099381228595,
+    40
+   ],
+   "freeze_L4_equal_h12_guard_minus_shove_vs_shove": [
+    0.045233408208969664,
+    0.6304634709177628,
+    40
+   ],
+   "freeze_L4_equal_h12_support": {
+    "fz_guard_sh": 1.0
+   },
+   "vision_neutral_G50": [
+    0.014278254150094956,
+    0.40741565104331556,
+    200
+   ],
+   "vision_neutral_placed": 0.405,
+   "vision_frozen_on_G50": [
+    0.05502436738175855,
+    0.3264341768772549,
+    200
+   ],
+   "vision_frozen_on_placed": 0.405,
+   "zoning_passive_safe_cost": [
+    9.107617187499995,
+    0.34036061434041126,
+    64
+   ],
+   "zoning_threat_only": [
+    1.3250000000000037,
+    0.369205162382075,
+    64
+   ],
+   "zoning_combat_guard": [
+    1.6109374999999986,
+    0.4130618153580917,
+    64
+   ],
+   "matrix_support": {
+    "g_shove": 1.0
+   },
+   "matrix_shove_margin": 0.0,
+   "matrix_n_support": 1
+  },
+  {
+   "overrides": {
+    "minion_damage_alpha": 80,
+    "minion_retaliation_delay": 0,
+    "trade_wave_fraction": 0.5
+   },
+   "trade_B1": -0.1667857142857143,
+   "trade_B2": 0.054563492063492064,
+   "trade_B3": 0.021785714285714297,
+   "trade_B4": 0.1812993117340943,
+   "trade_B5": [
+    2.7106227106227108,
+    1.2836243511090135,
+    0.5349913244650087,
+    0.1812993117340943
+   ],
+   "trade_B6": [
+    0.054563492063492064,
+    -0.06785714285714288,
+    -0.1667857142857143
+   ],
+   "trade_pass": 4,
+   "trade_mt_L2_8_G20": [
+    -0.1863646323074863,
+    0.09938932506655626,
+    200
+   ],
+   "trade_mt_L2_24_G20": [
+    -0.05936229632053257,
+    0.10439635642792523,
+    200
+   ],
+   "freeze_L10_large_h12_premium_split": 0.9447527345864021,
+   "freeze_L10_large_h12_value": 5.270014802066176,
+   "freeze_L10_large_h12_guard_minus_passive_vs_shove": [
+    0.08695920120198072,
+    0.5458047471079142,
+    40
+   ],
+   "freeze_L10_large_h12_guard_minus_shove_vs_shove": [
+    -0.3007413621664674,
+    0.5336332753377334,
+    40
+   ],
+   "freeze_L10_large_h12_support": {
+    "fz_passive_sh": 0.32629035683803015,
+    "g_shove": 0.6737096431619699
+   },
+   "freeze_L4_equal_h12_premium_split": -0.15744428313835276,
+   "freeze_L4_equal_h12_value": 1.5579601932248193,
+   "freeze_L4_equal_h12_guard_minus_passive_vs_shove": [
+    1.2784382765367512,
+    0.5816991186937105,
+    40
+   ],
+   "freeze_L4_equal_h12_guard_minus_shove_vs_shove": [
+    -0.047979787129804885,
+    0.6107020425325964,
+    40
+   ],
+   "freeze_L4_equal_h12_support": {
+    "g_shove": 1.0
+   },
+   "vision_neutral_G50": [
+    0.014278254150094956,
+    0.40741565104331556,
+    200
+   ],
+   "vision_neutral_placed": 0.405,
+   "vision_frozen_on_G50": [
+    0.05502436738175855,
+    0.3264341768772549,
+    200
+   ],
+   "vision_frozen_on_placed": 0.405,
+   "zoning_passive_safe_cost": [
+    9.107617187499995,
+    0.34036061434041126,
+    64
+   ],
+   "zoning_threat_only": [
+    1.3250000000000037,
+    0.369205162382075,
+    64
+   ],
+   "zoning_combat_guard": [
+    1.5749999999999993,
+    0.3966824611868043,
+    64
+   ],
+   "matrix_support": {
+    "g_shove": 1.0
+   },
+   "matrix_shove_margin": 0.0,
+   "matrix_n_support": 1
+  },
+  {
+   "overrides": {
+    "minion_damage_alpha": 80,
+    "minion_retaliation_delay": 0,
+    "trade_wave_fraction": 1.0
+   },
+   "trade_B1": -0.1667857142857143,
+   "trade_B2": 0.054563492063492064,
+   "trade_B3": 0.021785714285714297,
+   "trade_B4": 0.1812993117340943,
+   "trade_B5": [
+    2.7106227106227108,
+    1.2836243511090135,
+    0.5349913244650087,
+    0.1812993117340943
+   ],
+   "trade_B6": [
+    0.054563492063492064,
+    -0.06785714285714288,
+    -0.1667857142857143
+   ],
+   "trade_pass": 4,
+   "trade_mt_L2_8_G20": [
+    -0.1863646323074863,
+    0.09938932506655626,
+    200
+   ],
+   "trade_mt_L2_24_G20": [
+    -0.05936229632053257,
+    0.10439635642792523,
+    200
+   ],
+   "freeze_L10_large_h12_premium_split": 0.9447527345864021,
+   "freeze_L10_large_h12_value": 5.270014802066176,
+   "freeze_L10_large_h12_guard_minus_passive_vs_shove": [
+    0.08695920120198072,
+    0.5458047471079142,
+    40
+   ],
+   "freeze_L10_large_h12_guard_minus_shove_vs_shove": [
+    -0.3007413621664674,
+    0.5336332753377334,
+    40
+   ],
+   "freeze_L10_large_h12_support": {
+    "fz_passive_sh": 0.32629035683803015,
+    "g_shove": 0.6737096431619699
+   },
+   "freeze_L4_equal_h12_premium_split": -0.15744428313835276,
+   "freeze_L4_equal_h12_value": 1.5579601932248193,
+   "freeze_L4_equal_h12_guard_minus_passive_vs_shove": [
+    1.2784382765367512,
+    0.5816991186937105,
+    40
+   ],
+   "freeze_L4_equal_h12_guard_minus_shove_vs_shove": [
+    -0.047979787129804885,
+    0.6107020425325964,
+    40
+   ],
+   "freeze_L4_equal_h12_support": {
+    "g_shove": 1.0
+   },
+   "vision_neutral_G50": [
+    0.014278254150094956,
+    0.40741565104331556,
+    200
+   ],
+   "vision_neutral_placed": 0.405,
+   "vision_frozen_on_G50": [
+    0.05502436738175855,
+    0.3264341768772549,
+    200
+   ],
+   "vision_frozen_on_placed": 0.405,
+   "zoning_passive_safe_cost": [
+    9.107617187499995,
+    0.34036061434041126,
+    64
+   ],
+   "zoning_threat_only": [
+    1.3250000000000037,
+    0.369205162382075,
+    64
+   ],
+   "zoning_combat_guard": [
+    1.5749999999999993,
+    0.3966824611868043,
+    64
+   ],
+   "matrix_support": {
+    "g_shove": 1.0
+   },
+   "matrix_shove_margin": 0.0,
+   "matrix_n_support": 1
+  },
+  {
+   "overrides": {
+    "minion_damage_alpha": 80,
+    "minion_retaliation_delay": 1,
+    "trade_wave_fraction": 0.25
+   },
+   "trade_B1": -0.008214285714285702,
+   "trade_B2": 0.11916666666666667,
+   "trade_B3": 0.1117857142857143,
+   "trade_B4": 0.07218398522746347,
+   "trade_B5": [
+    1.0842490842490842,
+    0.5143935818782442,
+    0.21399652978600348,
+    0.07218398522746347
+   ],
+   "trade_B6": [
+    0.11916666666666667,
+    0.0496031746031746,
+    -0.008214285714285702
+   ],
+   "trade_pass": 6,
+   "trade_mt_L2_8_G20": [
+    0.027396848398686238,
+    0.06695027460149332,
+    200
+   ],
+   "trade_mt_L2_24_G20": [
+    -0.21221083476529454,
+    0.07984059907780705,
+    200
+   ],
+   "freeze_L10_large_h12_premium_split": 0.960247453177105,
+   "freeze_L10_large_h12_value": 5.348730407852723,
+   "freeze_L10_large_h12_guard_minus_passive_vs_shove": [
+    0.3008027871943043,
+    0.6902315773181154,
+    40
+   ],
+   "freeze_L10_large_h12_guard_minus_shove_vs_shove": [
+    -0.08689777617414376,
+    0.6821234669932077,
+    40
+   ],
+   "freeze_L10_large_h12_support": {
+    "fz_guard_sh": 0.7050187448140889,
+    "g_shove": 0.2949812551859111
+   },
+   "freeze_L4_equal_h12_premium_split": -0.12508154825052273,
+   "freeze_L4_equal_h12_value": 1.6115235233709033,
+   "freeze_L4_equal_h12_guard_minus_passive_vs_shove": [
+    1.3799813938126406,
+    0.5990785199226567,
+    40
+   ],
+   "freeze_L4_equal_h12_guard_minus_shove_vs_shove": [
+    0.05356333014608401,
+    0.6275286060837375,
+    40
+   ],
+   "freeze_L4_equal_h12_support": {
+    "fz_guard_sh": 1.0
+   },
+   "vision_neutral_G50": [
+    -0.4348553954907778,
+    0.37399246282793464,
+    200
+   ],
+   "vision_neutral_placed": 0.405,
+   "vision_frozen_on_G50": [
+    -0.3060225658661481,
+    0.36150031730441173,
+    200
+   ],
+   "vision_frozen_on_placed": 0.405,
+   "zoning_passive_safe_cost": [
+    9.107617187499995,
+    0.34036061434041126,
+    64
+   ],
+   "zoning_threat_only": [
+    1.320312500000004,
+    0.36684850803928765,
+    64
+   ],
+   "zoning_combat_guard": [
+    2.0861328124999976,
+    0.4791129200316501,
+    64
+   ],
+   "matrix_support": {
+    "g_shove": 1.0
+   },
+   "matrix_shove_margin": 0.0,
+   "matrix_n_support": 1
+  },
+  {
+   "overrides": {
+    "minion_damage_alpha": 80,
+    "minion_retaliation_delay": 1,
+    "trade_wave_fraction": 0.5
+   },
+   "trade_B1": -0.008214285714285702,
+   "trade_B2": 0.11916666666666667,
+   "trade_B3": 0.1117857142857143,
+   "trade_B4": 0.07218398522746347,
+   "trade_B5": [
+    1.0842490842490842,
+    0.5143935818782442,
+    0.21399652978600348,
+    0.07218398522746347
+   ],
+   "trade_B6": [
+    0.11916666666666667,
+    0.0496031746031746,
+    -0.008214285714285702
+   ],
+   "trade_pass": 6,
+   "trade_mt_L2_8_G20": [
+    0.027396848398686238,
+    0.06695027460149332,
+    200
+   ],
+   "trade_mt_L2_24_G20": [
+    -0.21221083476529454,
+    0.07984059907780705,
+    200
+   ],
+   "freeze_L10_large_h12_premium_split": 0.958353546425015,
+   "freeze_L10_large_h12_value": 5.303019862797003,
+   "freeze_L10_large_h12_guard_minus_passive_vs_shove": [
+    0.23715692726389043,
+    0.636099776848128,
+    40
+   ],
+   "freeze_L10_large_h12_guard_minus_shove_vs_shove": [
+    -0.15054363610455762,
+    0.6166714275094286,
+    40
+   ],
+   "freeze_L10_large_h12_support": {
+    "fz_guard_sh": 0.7105920177645614,
+    "g_shove": 0.2894079822354386
+   },
+   "freeze_L4_equal_h12_premium_split": -0.15277774554335175,
+   "freeze_L4_equal_h12_value": 1.5579601932248193,
+   "freeze_L4_equal_h12_guard_minus_passive_vs_shove": [
+    1.298658838030987,
+    0.5823792836846191,
+    40
+   ],
+   "freeze_L4_equal_h12_guard_minus_shove_vs_shove": [
+    -0.027759225635569273,
+    0.5874644909298564,
+    40
+   ],
+   "freeze_L4_equal_h12_support": {
+    "g_shove": 1.0
+   },
+   "vision_neutral_G50": [
+    -0.4348553954907778,
+    0.37399246282793464,
+    200
+   ],
+   "vision_neutral_placed": 0.405,
+   "vision_frozen_on_G50": [
+    -0.3060225658661481,
+    0.36150031730441173,
+    200
+   ],
+   "vision_frozen_on_placed": 0.405,
+   "zoning_passive_safe_cost": [
+    9.107617187499995,
+    0.34036061434041126,
+    64
+   ],
+   "zoning_threat_only": [
+    1.320312500000004,
+    0.36684850803928765,
+    64
+   ],
+   "zoning_combat_guard": [
+    2.1169921874999975,
+    0.49105938881649763,
+    64
+   ],
+   "matrix_support": {
+    "g_shove": 1.0
+   },
+   "matrix_shove_margin": 0.0,
+   "matrix_n_support": 1
+  },
+  {
+   "overrides": {
+    "minion_damage_alpha": 80,
+    "minion_retaliation_delay": 1,
+    "trade_wave_fraction": 1.0
+   },
+   "trade_B1": -0.008214285714285702,
+   "trade_B2": 0.11916666666666667,
+   "trade_B3": 0.1117857142857143,
+   "trade_B4": 0.07218398522746347,
+   "trade_B5": [
+    1.0842490842490842,
+    0.5143935818782442,
+    0.21399652978600348,
+    0.07218398522746347
+   ],
+   "trade_B6": [
+    0.11916666666666667,
+    0.0496031746031746,
+    -0.008214285714285702
+   ],
+   "trade_pass": 6,
+   "trade_mt_L2_8_G20": [
+    0.027396848398686238,
+    0.06695027460149332,
+    200
+   ],
+   "trade_mt_L2_24_G20": [
+    -0.21221083476529454,
+    0.07984059907780705,
+    200
+   ],
+   "freeze_L10_large_h12_premium_split": 0.958353546425015,
+   "freeze_L10_large_h12_value": 5.303019862797003,
+   "freeze_L10_large_h12_guard_minus_passive_vs_shove": [
+    0.23715692726389043,
+    0.636099776848128,
+    40
+   ],
+   "freeze_L10_large_h12_guard_minus_shove_vs_shove": [
+    -0.15054363610455762,
+    0.6166714275094286,
+    40
+   ],
+   "freeze_L10_large_h12_support": {
+    "fz_guard_sh": 0.7105920177645614,
+    "g_shove": 0.2894079822354386
+   },
+   "freeze_L4_equal_h12_premium_split": -0.15277774554335175,
+   "freeze_L4_equal_h12_value": 1.5579601932248193,
+   "freeze_L4_equal_h12_guard_minus_passive_vs_shove": [
+    1.298658838030987,
+    0.5823792836846191,
+    40
+   ],
+   "freeze_L4_equal_h12_guard_minus_shove_vs_shove": [
+    -0.027759225635569273,
+    0.5874644909298564,
+    40
+   ],
+   "freeze_L4_equal_h12_support": {
+    "g_shove": 1.0
+   },
+   "vision_neutral_G50": [
+    -0.4348553954907778,
+    0.37399246282793464,
+    200
+   ],
+   "vision_neutral_placed": 0.405,
+   "vision_frozen_on_G50": [
+    -0.3060225658661481,
+    0.36150031730441173,
+    200
+   ],
+   "vision_frozen_on_placed": 0.405,
+   "zoning_passive_safe_cost": [
+    9.107617187499995,
+    0.34036061434041126,
+    64
+   ],
+   "zoning_threat_only": [
+    1.320312500000004,
+    0.36684850803928765,
+    64
+   ],
+   "zoning_combat_guard": [
+    2.1169921874999975,
+    0.49105938881649763,
+    64
+   ],
+   "matrix_support": {
+    "g_shove": 1.0
+   },
+   "matrix_shove_margin": 0.0,
+   "matrix_n_support": 1
+  }
+ ],
+ "main_effects": {
+  "trade_B1": {
+   "minion_damage_alpha": {
+    "30": 0.02785714285714286,
+    "50": -0.018214285714285704,
+    "80": -0.08750000000000001
+   },
+   "minion_retaliation_delay": {
+    "0": -0.07869047619047619,
+    "1": 0.026785714285714288
+   },
+   "trade_wave_fraction": {
+    "0.25": -0.025952380952380946,
+    "0.5": -0.025952380952380946,
+    "1.0": -0.025952380952380946
+   },
+   "_range": {
+    "min": -0.1667857142857143,
+    "max": 0.0575,
+    "sign_changes": true
+   }
+  },
+  "trade_B2": {
+   "minion_damage_alpha": {
+    "30": 0.10694444444444444,
+    "50": 0.09908730158730157,
+    "80": 0.08686507936507937
+   },
+   "minion_retaliation_delay": {
+    "0": 0.0760978835978836,
+    "1": 0.11916666666666667
+   },
+   "trade_wave_fraction": {
+    "0.25": 0.09763227513227513,
+    "0.5": 0.09763227513227513,
+    "1.0": 0.09763227513227513
+   },
+   "_range": {
+    "min": 0.054563492063492064,
+    "max": 0.11916666666666667,
+    "sign_changes": false
+   }
+  },
+  "trade_B3": {
+   "minion_damage_alpha": {
+    "30": 0.13285714285714287,
+    "50": 0.10642857142857143,
+    "80": 0.0667857142857143
+   },
+   "minion_retaliation_delay": {
+    "0": 0.07202380952380953,
+    "1": 0.13202380952380954
+   },
+   "trade_wave_fraction": {
+    "0.25": 0.10202380952380952,
+    "0.5": 0.10202380952380952,
+    "1.0": 0.10202380952380952
+   },
+   "_range": {
+    "min": 0.021785714285714297,
+    "max": 0.14964285714285713,
+    "sign_changes": false
+   }
+  },
+  "trade_B4": {
+   "minion_damage_alpha": {
+    "30": 0.04784287392983045,
+    "50": 0.07973812321638407,
+    "80": 0.1267416484807789
+   },
+   "minion_retaliation_delay": {
+    "0": 0.12142577359968662,
+    "1": 0.04812265681830899
+   },
+   "trade_wave_fraction": {
+    "0.25": 0.0847742152089978,
+    "0.5": 0.0847742152089978,
+    "1.0": 0.0847742152089978
+   },
+   "_range": {
+    "min": 0.026859157293939902,
+    "max": 0.1812993117340943,
+    "sign_changes": false
+   }
+  },
+  "trade_B6": {
+   "minion_damage_alpha": {
+    "30": 0.10694444444444444,
+    "50": 0.09908730158730157,
+    "80": 0.08686507936507937
+   },
+   "minion_retaliation_delay": {
+    "0": 0.0760978835978836,
+    "1": 0.11916666666666667
+   },
+   "trade_wave_fraction": {
+    "0.25": 0.09763227513227513,
+    "0.5": 0.09763227513227513,
+    "1.0": 0.09763227513227513
+   },
+   "_range": {
+    "min": 0.054563492063492064,
+    "max": 0.11916666666666667,
+    "sign_changes": false
+   }
+  },
+  "trade_pass": {
+   "minion_damage_alpha": {
+    "30": 5.5,
+    "50": 5.5,
+    "80": 5.0
+   },
+   "minion_retaliation_delay": {
+    "0": 5.333333333333333,
+    "1": 5.333333333333333
+   },
+   "trade_wave_fraction": {
+    "0.25": 5.333333333333333,
+    "0.5": 5.333333333333333,
+    "1.0": 5.333333333333333
+   },
+   "_range": {
+    "min": 4.0,
+    "max": 6.0,
+    "sign_changes": false
+   }
+  },
+  "trade_mt_L2_8_G20": {
+   "minion_damage_alpha": {
+    "30": -0.07704385719105356,
+    "50": -0.07704385719105356,
+    "80": -0.0794838919544
+   },
+   "minion_retaliation_delay": {
+    "0": -0.18311125262302436,
+    "1": 0.027396848398686238
+   },
+   "trade_wave_fraction": {
+    "0.25": -0.07785720211216905,
+    "0.5": -0.07785720211216905,
+    "1.0": -0.07785720211216905
+   },
+   "_range": {
+    "min": -0.1863646323074863,
+    "max": 0.027396848398686238,
+    "sign_changes": true
+   }
+  },
+  "trade_mt_L2_24_G20": {
+   "minion_damage_alpha": {
+    "30": -0.06986770346666606,
+    "50": -0.1039814336771352,
+    "80": -0.13578656554291355
+   },
+   "minion_retaliation_delay": {
+    "0": -0.014426237998969606,
+    "1": -0.1919975637921736
+   },
+   "trade_wave_fraction": {
+    "0.25": -0.1032119008955716,
+    "0.5": -0.1032119008955716,
+    "1.0": -0.1032119008955716
+   },
+   "_range": {
+    "min": -0.21221083476529454,
+    "max": 0.028888003573702817,
+    "sign_changes": true
+   }
+  },
+  "freeze_L10_large_h12_premium_split": {
+   "minion_damage_alpha": {
+    "30": 1.05944766556203,
+    "50": 0.9366911468386337,
+    "80": 0.950502928371904
+   },
+   "minion_retaliation_delay": {
+    "0": 0.9765254748226541,
+    "1": 0.9879023523590575
+   },
+   "trade_wave_fraction": {
+    "0.25": 0.9767776289574114,
+    "0.5": 0.9849320559075779,
+    "1.0": 0.9849320559075779
+   },
+   "_range": {
+    "min": 0.9149023832562446,
+    "max": 1.1121283356240181,
+    "sign_changes": false
+   }
+  },
+  "freeze_L10_large_h12_value": {
+   "minion_damage_alpha": {
+    "30": 5.432987774909562,
+    "50": 5.282210975713194,
+    "80": 5.3025682660542115
+   },
+   "minion_retaliation_delay": {
+    "0": 5.3253073211820245,
+    "1": 5.353204023269288
+   },
+   "trade_wave_fraction": {
+    "0.25": 5.335656154726503,
+    "0.5": 5.341055430975231,
+    "1.0": 5.341055430975231
+   },
+   "_range": {
+    "min": 5.270014802066176,
+    "max": 5.511864061691793,
+    "sign_changes": false
+   }
+  },
+  "freeze_L10_large_h12_guard_minus_passive_vs_shove": {
+   "minion_damage_alpha": {
+    "30": 0.40527607800585924,
+    "50": 0.10150662897865416,
+    "80": 0.20464044413375193
+   },
+   "minion_retaliation_delay": {
+    "0": 0.2069041503005822,
+    "1": 0.26737795044492796
+   },
+   "trade_wave_fraction": {
+    "0.25": 0.28453908410411105,
+    "0.5": 0.21344203350707716,
+    "1.0": 0.21344203350707716
+   },
+   "_range": {
+    "min": 0.015156661587109843,
+    "max": 0.489569656122088,
+    "sign_changes": false
+   }
+  },
+  "freeze_L10_large_h12_guard_minus_shove_vs_shove": {
+   "minion_damage_alpha": {
+    "30": 0.017575514637411093,
+    "50": -0.2861939343897939,
+    "80": -0.1830601192346962
+   },
+   "minion_retaliation_delay": {
+    "0": -0.1807964130678659,
+    "1": -0.12032261292352014
+   },
+   "trade_wave_fraction": {
+    "0.25": -0.10316147926433711,
+    "0.5": -0.17425852986137094,
+    "1.0": -0.17425852986137094
+   },
+   "_range": {
+    "min": -0.3725439017813382,
+    "max": 0.10186909275363987,
+    "sign_changes": true
+   }
+  },
+  "freeze_L4_equal_h12_premium_split": {
+   "minion_damage_alpha": {
+    "30": -0.05920542561702352,
+    "50": -0.012862920027517958,
+    "80": -0.1445832842968271
+   },
+   "minion_retaliation_delay": {
+    "0": -0.08106665222540281,
+    "1": -0.06336776773550958
+   },
+   "trade_wave_fraction": {
+    "0.25": -0.030470919410278404,
+    "0.5": -0.09309035526554509,
+    "1.0": -0.09309035526554509
+   },
+   "_range": {
+    "min": -0.15744428313835276,
+    "max": 0.10689205874932509,
+    "sign_changes": true
+   }
+  },
+  "freeze_L4_equal_h12_value": {
+   "minion_damage_alpha": {
+    "30": 1.645777737821242,
+    "50": 1.657899371818796,
+    "80": 1.5744263162839947
+   },
+   "minion_retaliation_delay": {
+    "0": 1.6159738224009557,
+    "1": 1.636095128215066
+   },
+   "trade_wave_fraction": {
+    "0.25": 1.6749460939566567,
+    "0.5": 1.6015786659836884,
+    "1.0": 1.6015786659836884
+   },
+   "_range": {
+    "min": 1.5579601932248193,
+    "max": 1.782146984943474,
+    "sign_changes": false
+   }
+  },
+  "freeze_L4_equal_h12_guard_minus_passive_vs_shove": {
+   "minion_damage_alpha": {
+    "30": 1.4142356082629786,
+    "50": 1.4263572422605335,
+    "80": 1.3176378491372738
+   },
+   "minion_retaliation_delay": {
+    "0": 1.3737695179249583,
+    "1": 1.3983842818488987
+   },
+   "trade_wave_fraction": {
+    "0.25": 1.4434039643983938,
+    "0.5": 1.3574133676311961,
+    "1.0": 1.3574133676311961
+   },
+   "_range": {
+    "min": 1.2784382765367512,
+    "max": 1.550604855385211,
+    "sign_changes": false
+   }
+  },
+  "freeze_L4_equal_h12_guard_minus_shove_vs_shove": {
+   "minion_damage_alpha": {
+    "30": 0.08987411428671455,
+    "50": 0.11577916532094247,
+    "80": -0.00878021452928244
+   },
+   "minion_retaliation_delay": {
+    "0": 0.053316973064154755,
+    "1": 0.07793173698809498
+   },
+   "trade_wave_fraction": {
+    "0.25": 0.12295141953758976,
+    "0.5": 0.03696082277039243,
+    "1.0": 0.03696082277039243
+   },
+   "_range": {
+    "min": -0.047979787129804885,
+    "max": 0.2400267784456201,
+    "sign_changes": true
+   }
+  },
+  "vision_neutral_G50": {
+   "minion_damage_alpha": {
+    "30": -0.1035175221840885,
+    "50": -0.5613485433704214,
+    "80": -0.21028857067034137
+   },
+   "minion_retaliation_delay": {
+    "0": -0.17218908879636996,
+    "1": -0.41124733535353086
+   },
+   "trade_wave_fraction": {
+    "0.25": -0.2917182120749504,
+    "0.5": -0.2917182120749504,
+    "1.0": -0.2917182120749504
+   },
+   "_range": {
+    "min": -0.710011062446429,
+    "max": 0.014278254150094956,
+    "sign_changes": true
+   }
+  },
+  "vision_neutral_placed": {
+   "minion_damage_alpha": {
+    "30": 0.4050000000000001,
+    "50": 0.4050000000000001,
+    "80": 0.4050000000000001
+   },
+   "minion_retaliation_delay": {
+    "0": 0.405,
+    "1": 0.405
+   },
+   "trade_wave_fraction": {
+    "0.25": 0.4050000000000001,
+    "0.5": 0.4050000000000001,
+    "1.0": 0.4050000000000001
+   },
+   "_range": {
+    "min": 0.405,
+    "max": 0.405,
+    "sign_changes": false
+   }
+  },
+  "vision_frozen_on_G50": {
+   "minion_damage_alpha": {
+    "30": -0.3386868354955845,
+    "50": -0.3506786897568208,
+    "80": -0.1254990992421948
+   },
+   "minion_retaliation_delay": {
+    "0": -0.132258154513354,
+    "1": -0.410984928483046
+   },
+   "trade_wave_fraction": {
+    "0.25": -0.2716215414982,
+    "0.5": -0.2716215414982,
+    "1.0": -0.2716215414982
+   },
+   "_range": {
+    "min": -0.558241214522869,
+    "max": 0.05502436738175855,
+    "sign_changes": true
+   }
+  },
+  "vision_frozen_on_placed": {
+   "minion_damage_alpha": {
+    "30": 0.4050000000000001,
+    "50": 0.4050000000000001,
+    "80": 0.4050000000000001
+   },
+   "minion_retaliation_delay": {
+    "0": 0.405,
+    "1": 0.405
+   },
+   "trade_wave_fraction": {
+    "0.25": 0.4050000000000001,
+    "0.5": 0.4050000000000001,
+    "1.0": 0.4050000000000001
+   },
+   "_range": {
+    "min": 0.405,
+    "max": 0.405,
+    "sign_changes": false
+   }
+  },
+  "zoning_passive_safe_cost": {
+   "minion_damage_alpha": {
+    "30": 9.107617187499995,
+    "50": 9.107617187499995,
+    "80": 9.107617187499995
+   },
+   "minion_retaliation_delay": {
+    "0": 9.107617187499995,
+    "1": 9.107617187499995
+   },
+   "trade_wave_fraction": {
+    "0.25": 9.107617187499995,
+    "0.5": 9.107617187499995,
+    "1.0": 9.107617187499995
+   },
+   "_range": {
+    "min": 9.107617187499995,
+    "max": 9.107617187499995,
+    "sign_changes": false
+   }
+  },
+  "zoning_threat_only": {
+   "minion_damage_alpha": {
+    "30": 1.3226562500000039,
+    "50": 1.3226562500000039,
+    "80": 1.3226562500000039
+   },
+   "minion_retaliation_delay": {
+    "0": 1.3250000000000037,
+    "1": 1.320312500000004
+   },
+   "trade_wave_fraction": {
+    "0.25": 1.3226562500000039,
+    "0.5": 1.3226562500000039,
+    "1.0": 1.3226562500000039
+   },
+   "_range": {
+    "min": 1.320312500000004,
+    "max": 1.3250000000000037,
+    "sign_changes": false
+   }
+  },
+  "zoning_combat_guard": {
+   "minion_damage_alpha": {
+    "30": 1.8098632812499982,
+    "50": 1.8003580729166646,
+    "80": 1.846842447916665
+   },
+   "minion_retaliation_delay": {
+    "0": 1.5043619791666656,
+    "1": 2.133680555555553
+   },
+   "trade_wave_fraction": {
+    "0.25": 1.8178059895833314,
+    "0.5": 1.8196289062499984,
+    "1.0": 1.8196289062499984
+   },
+   "_range": {
+    "min": 1.4207031249999982,
+    "max": 2.1851562499999977,
+    "sign_changes": false
+   }
+  },
+  "matrix_shove_margin": {
+   "minion_damage_alpha": {
+    "30": 0.0,
+    "50": 0.0,
+    "80": 0.0
+   },
+   "minion_retaliation_delay": {
+    "0": 0.0,
+    "1": 0.0
+   },
+   "trade_wave_fraction": {
+    "0.25": 0.0,
+    "0.5": 0.0,
+    "1.0": 0.0
+   },
+   "_range": {
+    "min": 0.0,
+    "max": 0.0,
+    "sign_changes": false
+   }
+  },
+  "matrix_n_support": {
+   "minion_damage_alpha": {
+    "30": 1.0,
+    "50": 1.0,
+    "80": 1.0
+   },
+   "minion_retaliation_delay": {
+    "0": 1.0,
+    "1": 1.0
+   },
+   "trade_wave_fraction": {
+    "0.25": 1.0,
+    "0.5": 1.0,
+    "1.0": 1.0
+   },
+   "_range": {
+    "min": 1.0,
+    "max": 1.0,
+    "sign_changes": false
+   }
+  }
+ }
+}

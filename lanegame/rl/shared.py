@@ -40,6 +40,14 @@ an environment's matchup differs from the one drawn when its game started.
 Checkpoints. Snapshots (out_dir/snapshots/snap_<transitions>.pt) and the final network carry the step counts,
 seed, configurations, model spec and snapshot identity; an existing non-empty run directory is refused unless
 `overwrite=True`, and no checkpoint file is ever replaced silently.
+
+Opt-in (M4.5c; both default to None, which is the behaviour above, bit for bit):
+  * `stop_at`: end the run once `stop_at` agent transitions are reached while the learning rate still anneals over
+    `PPOConfig.total_steps`, i.e. the run is an exact PREFIX of the full-schedule run with the same configuration
+    (same updates, same snapshots, bit-identical weights at every common update). final.pt records both numbers.
+  * `rollout_stats(roll, finished) -> dict`: diagnostics of each rollout (e.g. action and legal-mask statistics),
+    merged into that update's history entry. It is called after the update and must not modify `roll`; it has no
+    effect on training.
 """
 
 from __future__ import annotations
@@ -48,7 +56,7 @@ import json
 import os
 import time
 from dataclasses import asdict, dataclass, field
-from typing import Dict, List, Optional, Tuple
+from typing import Callable, Dict, List, Optional, Tuple
 
 import numpy as np
 import torch
@@ -310,11 +318,16 @@ def _prepare_out_dir(out_dir: str, overwrite: bool) -> None:
 
 def train_shared(game_cfg: GameConfig, cfg: PPOConfig, scfg: SharedConfig, out_dir: Optional[str] = None,
                  net: Optional[PolicyValueNet] = None, name: str = "shared", verbose: bool = True,
-                 overwrite: bool = False) -> SharedResult:
+                 overwrite: bool = False, stop_at: Optional[int] = None,
+                 rollout_stats: Optional[Callable[[dict, list], dict]] = None) -> SharedResult:
     """PPO with shared-policy self-play and a current / historical mixture (see the module docstring).
     `cfg.total_steps` is the budget in AGENT TRANSITIONS; `cfg.n_envs x cfg.n_steps` environment steps per
-    rollout. With `out_dir`: run.json, history.jsonl, snapshots/ and final.pt."""
+    rollout. With `out_dir`: run.json, history.jsonl, snapshots/ and final.pt. `stop_at` and `rollout_stats`: see the
+    module docstring (opt-in)."""
     scfg.validate()
+    if stop_at is not None and not 0 < stop_at <= cfg.total_steps:
+        raise ValueError("stop_at must be in (0, total_steps]")
+    end = cfg.total_steps if stop_at is None else stop_at
     torch.set_num_threads(cfg.torch_threads)
     torch.manual_seed(cfg.seed)
     gen = torch.Generator().manual_seed(cfg.seed)
@@ -328,6 +341,8 @@ def train_shared(game_cfg: GameConfig, cfg: PPOConfig, scfg: SharedConfig, out_d
     meta_base = {"method": METHOD, "format_version": FORMAT_VERSION, "run": name, "seed": cfg.seed,
                  "ppo": cfg.to_dict(), "shared": scfg.to_dict(),
                  "model": {"class": "PolicyValueNet", "activation": "tanh", **net.spec()}}
+    if stop_at is not None:
+        meta_base["stop_at"] = int(stop_at)
     if out_dir:
         _prepare_out_dir(out_dir, overwrite)
         with open(os.path.join(out_dir, "run.json"), "w", encoding="utf-8") as f:
@@ -353,7 +368,7 @@ def train_shared(game_cfg: GameConfig, cfg: PPOConfig, scfg: SharedConfig, out_d
     t0 = time.perf_counter()
     u = 0
     try:
-        while res.agent_transitions < cfg.total_steps:
+        while res.agent_transitions < end:
             frac_done = res.agent_transitions / cfg.total_steps
             if cfg.anneal_lr:
                 for g in opt.param_groups:
@@ -391,6 +406,8 @@ def train_shared(game_cfg: GameConfig, cfg: PPOConfig, scfg: SharedConfig, out_d
                      "sps": counts["agent_transitions"] / (t_collect + t_update), "collect_s": t_collect,
                      "update_s": t_update, "lr": opt.param_groups[0]["lr"], "pool": [a.name for a in pool.snapshots],
                      **stats}
+            if rollout_stats is not None:
+                entry.update(rollout_stats(roll, finished))
             if res.agent_transitions >= next_snap:
                 snapshot(u)
                 while next_snap <= res.agent_transitions:
@@ -399,7 +416,7 @@ def train_shared(game_cfg: GameConfig, cfg: PPOConfig, scfg: SharedConfig, out_d
             if hist_f:
                 hist_f.write(json.dumps(entry) + "\n")
                 hist_f.flush()
-            if verbose and (u == 1 or u % 20 == 0 or res.agent_transitions >= cfg.total_steps):
+            if verbose and (u == 1 or u % 20 == 0 or res.agent_transitions >= end):
                 print(f"[{name}] update {u} transitions {res.agent_transitions} turns {res.env_turns} "
                       f"hist {len(hist)}/{len(finished)} ent {stats['entropy']:.2f} kl {stats['approx_kl']:.4f} "
                       f"ev {entry['explained_variance']:.2f} {entry['sps']:.0f} sps", flush=True)

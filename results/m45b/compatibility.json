@@ -1,0 +1,59 @@
+{
+ "meta": {
+  "study": "M4.5b",
+  "commit": "8dc5acf54061d18e5f5a3fbd6a84460ee22433fc",
+  "working_tree_dirty": true,
+  "timestamp": "2026-10-14 18:38:04",
+  "python": "3.13.9",
+  "numpy": "2.5.3"
+ },
+ "procedure": "per preset: 3 games x 150 turns of uniform random legal play, LaneEnv(record_ticks=True), env seed 1000+g, action stream default_rng(2000+g); sha256 over json(info, sort_keys) and both observation vectors per turn (first 16 hex digits)",
+ "committed_engine_HEAD": {
+  "m45_unified": "6eda1d44f7ef28af",
+  "m45_unified_r1": "d6f11708a41953a0",
+  "m4_four_actions_econ_aggro": "0d2fbd9f972838fc",
+  "m4_four_actions_econ": "27fbea2195882017",
+  "m4_four_actions": "332d6ac1e6f97b81",
+  "m4_lasthit": "c38807b95d474db8",
+  "m4_lane": "0fa685d7434ad2aa",
+  "m4_natural": "ad7cfbc7f48691ac",
+  "m4_natural_prototype": "eaf4ecc4606a5d2f",
+  "m4_emergent": "ca5efadc3d3a1537",
+  "m4_continuous": "8fff861f2db00823",
+  "m4": "6566c0ca89fdfca9",
+  "champions": "f003a780c5cdd2be",
+  "champions_continuing": "96fbbd206098032a"
+ },
+ "modified_engine": {
+  "m45_unified": "6eda1d44f7ef28af",
+  "m45_unified_r1": "d6f11708a41953a0",
+  "m4_four_actions_econ_aggro": "0d2fbd9f972838fc",
+  "m4_four_actions_econ": "27fbea2195882017",
+  "m4_four_actions": "332d6ac1e6f97b81",
+  "m4_lasthit": "c38807b95d474db8",
+  "m4_lane": "0fa685d7434ad2aa",
+  "m4_natural": "ad7cfbc7f48691ac",
+  "m4_natural_prototype": "eaf4ecc4606a5d2f",
+  "m4_emergent": "ca5efadc3d3a1537",
+  "m4_continuous": "8fff861f2db00823",
+  "m4": "6566c0ca89fdfca9",
+  "champions": "f003a780c5cdd2be",
+  "champions_continuing": "96fbbd206098032a"
+ },
+ "identical": {
+  "m45_unified": true,
+  "m45_unified_r1": true,
+  "m4_four_actions_econ_aggro": true,
+  "m4_four_actions_econ": true,
+  "m4_four_actions": true,
+  "m4_lasthit": true,
+  "m4_lane": true,
+  "m4_natural": true,
+  "m4_natural_prototype": true,
+  "m4_emergent": true,
+  "m4_continuous": true,
+  "m4": true,
+  "champions": true,
+  "champions_continuing": true
+ }
+}

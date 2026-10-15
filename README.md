@@ -49,8 +49,9 @@ mechanics revision, the EXPERIMENTAL candidate `m45_unified()`:
 - wave maintenance during trades;
 - distance-limited wave damage.
 
-Every earlier preset is unchanged. Integrated calibration (M4.5b) and fresh PPO training on the revised game (M4.5c)
-are next; M4.4d's robustness work moved into M4.5c.
+Every earlier preset is unchanged. Integrated calibration (M4.5b) produced `m45_calibrated()`. Fresh PPO training on
+it (M4.5c) is underway: its pilot is complete, and the full multi-seed campaign awaits approval of its budget. M4.4d's
+robustness work moved into M4.5c.
 
 ## How we study it
 
@@ -92,8 +93,9 @@ top). In short:
 | **M4.4a. PPO readiness and strategic diagnostics** | three-environment training specification, checkpoint guard, state-based metrics, paired counterfactuals, smoke tests | **complete** ([report](docs/m4/m4_4a_ppo_readiness.md), [the PPO pipeline explained](docs/rl/ppo_training_explained.md)) |
 | **M4.4b. Controlled PPO self-play training** | 3 economies × 3 seeds × 2M transitions, a matched 2× extension; strength, convergence, strategic behaviour, counterfactual scorecard, representative games | **complete, in review** ([report](docs/m4/m4_4b_ppo_training_report.md), [tables](results/m44b/report.md)) |
 | **M4.4c. Strategic behaviour and economic incentives** | multi-turn paired counterfactuals on the M4.4b policies: interrupted Recall, freezes, zoning, Vision before Pressure, the four wave actions | **complete** ([report](docs/m4/m4_4c_strategic_investigation.md), [tables](results/m44c/report.md)) |
-| **M4.5a. Unified positional mechanics** | shared Vision node W and contestable Ward, per-tick minion retaliation and positional aggro, champions walking tick by tick with their wave (revision 2), minion damage on champions, XP range 2, capped wave budget while trading, reach ball (`m45_unified()`) | **complete, in review** ([spec](docs/m4/m4_5a_unified_mechanics_spec.md), [report](docs/m4/m4_5a_unified_mechanics_report.md), [smoke tables](results/m45a/report.md)) |
-| **M4.5b. Integrated calibration and strategic evaluation** | Vision, minion damage, combat-wave coupling, Safe economics and freezes calibrated together | planned |
+| **M4.5a. Unified positional mechanics** | shared Vision node W and contestable Ward, per-tick minion retaliation and positional aggro, champions walking tick by tick with their wave (revision 2), minion damage on champions, XP range 2, capped wave budget while trading, reach ball (`m45_unified()`) | **complete** ([spec](docs/m4/m4_5a_unified_mechanics_spec.md), [report](docs/m4/m4_5a_unified_mechanics_report.md), [smoke tables](results/m45a/report.md)) |
+| **M4.5b. Integrated calibration and strategic evaluation** | paired scripted simulations, restricted games, a joint factorial and a holdout; the farm-spot correction for mutual Shoves and retaliation from the exchange tick (`m45_calibrated()`); GO WITH CAVEATS for M4.5c | **complete, in review** ([report](docs/m4/m4_5b_calibration_report.md), [tables](results/m45b/report.md)) |
+| **M4.5c. PPO self-play on the calibrated model** | pilot: one seed × 1,024,000 agent transitions on `m45_calibrated()`, correctness verified, beats every fixed M4.5b strategy and still improving; recommended campaign 6 seeds × 8,192,000 | **pilot complete; full campaign awaiting budget approval** ([pilot report](docs/m4/m4_5c_pilot_report.md), [tables](results/m45c/report.md)) |
 | **M4.5c. PPO training and evaluation on the revised model** | fresh shared-policy PPO; emergent freezing, zoning, Vision timing, resets; then the former M4.4d robustness and exploitability work | planned |
 | M5. Adaptive opponent and game-theoretic research | robustness and exploitation against historical, scripted and adaptive opponents | proposed |
 | M6. Research presentation and portfolio | reproducible narrative, comparisons, visualizations, interactive demonstration | proposed |
@@ -167,6 +169,11 @@ python -m lanegame experiments-rl openai_five         # the OpenAI Five-inspired
 python -m lanegame experiments-siege all              # regenerate every siege-study result (results/siege/)
 python -m lanegame.experiments.m45a all              # M4.5a: demonstration recordings + smoke study (results/m45a/, ~30 s)
 python -m lanegame.experiments.m45a movement         # M4.5a correction: scenarios, revision 1 vs 2 (~30 s)
+python -m lanegame.experiments.m45b <stage> ...      # M4.5b: calibration stages (results/m45b/; ~2 h for all on 11
+                                                      # processes; the stage list: docs/m4/m4_5b_calibration_report.md §15)
+python -m lanegame.experiments.rl.m45c <stage> ...  # M4.5c pilot: audit smoke smoke_eval pilot prefix_check
+                                                      # eval_pilot behavior_pilot bench report (results/m45c/;
+                                                      # ~20 min; train_full needs --confirm-m45c-full)
 streamlit run lanegame/viewer/app.py                  # the visual lane debugger (pip install -e ".[viewer]"); mode
                                                       # "Recorded trajectory" replays results/rl/m43b/trajectories/*.json
 ```

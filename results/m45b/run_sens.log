@@ -1,0 +1,26 @@
+== stage timing
+  [timing] 16 jobs, 8 s
+wrote results\m45b\timing.json
+== stage timing done in 9 s
+== stage sensitivity
+  [matrix r2 s0 equal] 64 jobs, 133 s
+  [matrix r2 s0 equal] 64 jobs, 131 s
+  [matrix r2 s0 equal] 64 jobs, 134 s
+  [matrix r2 s0 equal] 64 jobs, 134 s
+  [matrix r2 s0 equal] 64 jobs, 134 s
+  [matrix r2 s0 equal] 64 jobs, 133 s
+  [matrix r2 s0 equal] 64 jobs, 137 s
+  [matrix r2 s0 equal] 64 jobs, 135 s
+  [matrix r2 s0 equal] 64 jobs, 137 s
+  [matrix r2 s0 equal] 64 jobs, 137 s
+  [matrix r2 s0 equal] 64 jobs, 138 s
+  [matrix r2 s0 equal] 64 jobs, 136 s
+  [matrix r2 s0 equal] 64 jobs, 133 s
+  [matrix r2 s0 equal] 64 jobs, 125 s
+  [matrix r2 s0 equal] 64 jobs, 119 s
+  [matrix r2 s0 equal] 64 jobs, 107 s
+  [matrix r2 s0 equal] 64 jobs, 101 s
+  [matrix r2 s0 equal] 64 jobs, 92 s
+  [sensitivity 18 configurations] 108 jobs, 430 s
+wrote results\m45b\sensitivity.json
+== stage sensitivity done in 430 s

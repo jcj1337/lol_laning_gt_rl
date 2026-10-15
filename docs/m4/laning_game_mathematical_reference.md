@@ -19,6 +19,7 @@ and verified against the code; the numbers in the examples were produced by the 
 | **EXPERIMENTAL** | an opt-in configuration field that exists in the code but is off in `m4_lasthit()` (and, unless stated, in `m4_four_actions()`) |
 | **DEPRECATED** | a rule of an earlier preset or design document that `m4_lasthit()` no longer uses |
 | **M4.5A** | the EXPERIMENTAL unified positional candidate `m45_unified()` (§14): `m4_four_actions_econ_aggro()` plus the shared Vision node W, Ward, minion retaliation and positional aggro, per-tick champion movement (revision 2), XP range 2, the capped trade budget and the reach ball; no CURRENT statement of §1–§10 describes it |
+| **M4.5B** | the EXPERIMENTAL calibrated candidate `m45_calibrated()` (§15): `m45_unified()` revision 2 with the farm-spot correction `farm_spot_rule = "last_front"` and retaliation from the exchange tick (`minion_retaliation_delay = 0`); everything else is §14 |
 
 **Terminology of slot 1 (`SH`).** The full-capacity wave slot is called **Clear** in `m4_lasthit()` and the other
 three-action natural presets (label `CL`), and **Shove** in the four-action model (label `SH`, `config.W_SHOVE`, the same
@@ -48,6 +49,7 @@ corresponding equation, table, diagram and example here in the same piece of wor
 12. [Where the historical documents disagree with the code](#12-where-the-historical-documents-disagree-with-the-code)
 13. [Change log of this document](#13-change-log-of-this-document)
 14. [EXPERIMENTAL: the M4.5a unified positional candidate](#14-experimental-the-m45a-unified-positional-candidate-m45_unified)
+15. [EXPERIMENTAL: the M4.5b calibrated candidate](#15-experimental-the-m45b-calibrated-candidate-m45_calibrated)
 
 ---
 
@@ -118,6 +120,7 @@ unless marked "global", HP is minion HP for waves and centi-HP (1/100 of a base 
 | How do champion power and death costs scale? | [§7](#7-gold-investment-and-champion-progression), [§6.7](#67-why-dying-is-a-relatively-cheap-reset) |
 | What does PPO actually optimize? | [§9](#9-the-rl-objective-and-its-evaluation) |
 | What changes in the M4.5a candidate (Vision node W, Ward, minion aggro, XP range 2)? | [§14](#14-experimental-the-m45a-unified-positional-candidate-m45_unified) |
+| What did M4.5b calibrate, and which numbers are final for M4.5c? | [§15](#15-experimental-the-m45b-calibrated-candidate-m45_calibrated) |
 | What causes a game to end? | Nothing: [§8.5](#85-after-the-final-plate-why-the-game-does-not-end), [§9.1](#91-the-game-objective) (EXPERIMENTAL opt-in terminal at the last plate: [§8.7](#87-experimental-the-m43c-economic-opt-ins-and-the-calibrated-candidate)) |
 | Why does Shove dominate the four-action model? | The crash tax and break-even trades: [§5.3](#53-collection-what-share-of-a-kill-becomes-gold), [§8.7](#87-experimental-the-m43c-economic-opt-ins-and-the-calibrated-candidate) and the calibration report |
 | How risky are pressure and diving, and does a crash cost the defender farm? | [§5.3](#53-collection-what-share-of-a-kill-becomes-gold) (the measured cap), [§6.3](#63-tower-shots), [§6.4](#64-ganks-and-vision), [§8.8](#88-experimental-the-m43d-candidate-m4_four_actions_econ_aggro) and the M4.3d report |
@@ -1579,6 +1582,7 @@ historical documents are records of their milestones and are **not** edited; thi
 | 2026-10-13 | M4.4a: §9.2 pointer to the four-action training settings (61 masked logits, the M4.4 comparison) and the PPO pipeline explanation; §6.3 qualifies "nearly every dive is busy" as a measurement of the M4.3d scripted strategies (16–24% of the learned pilot policies' dives were busy). No rule, parameter or preset changed | `lanegame/experiments/rl/m44/` (training and diagnostics only) |
 | 2026-10-14 | M4.5a: new §14 (EXPERIMENTAL unified positional candidate `m45_unified()`: the movement graph and the shared Vision node W, Ward and its interruption, per-tick minion retaliation and positional aggro with exclusive targeting, minion damage on champions, the capped trade budget, the reach ball, XP range 2, the 90-entry observation); label M4.5A (§0), a §0.4 row and pointers in §5.4 and §6.4. Every CURRENT statement and every earlier preset is unchanged (checked byte-for-byte on 12 champion presets against the committed engine) | `config.py` (`m45_unified`, `M45_UNIFIED_FIELDS`), `positional.py` (new), `champions.py`, `champions_m4.py`, `mechanics.py`, `env/core.py`, `env/observation_m4.py`, `viewer/`, `experiments/m45a/` |
 | 2026-10-14 | M4.5a movement correction (revision 2 of `m45_unified()`): §14 intro (revisions), §14.1 row, §14.4, new §14.5a (champions walk tick by tick to the unchanged end cell; Hold, an unthreatened Yield and Safe follow the probe's per-tick front), §14.5 (positional aggro on each tick's post-movement positions, moved or not; the stationary condition removed; new situation table; revision-1 note). Revision 1 is kept as `m45_unified_r1()` (byte-identical to `ea3d9cb` on random games). Every CURRENT statement and every earlier preset is unchanged | `config.py` (`champion_movement_rule`, `m45_unified_r1`), `positional.py` (`tick_speeds`, `tick_path`, `MinionTarget.path`), `mechanics.py`, `champions_m4.py`, `env/core.py`, `viewer/session.py`, `experiments/m45a/movement.py` |
+| 2026-10-14 | M4.5b: new §15 (EXPERIMENTAL calibrated candidate `m45_calibrated()`: the farm-spot correction `farm_spot_rule = "last_front"` with its equation and measured effect, retaliation from the exchange tick `minion_retaliation_delay = 0`, the table of parameters changed and retained); label M4.5B (§0), a §0.4 row, a §14.10 pointer. Every CURRENT statement, §14 (revision 2) and every earlier preset are unchanged (`farm_spot_rule` keeps `"pre_crash_front"` and delay 1 everywhere else) | `config.py` (`m45_calibrated`, `M45_CALIBRATED_FIELDS`, the `"last_front"` value), `champions_m4.py` (`_last_front_cell`, step 1 and `_tick_goals`), `viewer/session.py`, `experiments/m45b/` |
 
 ---
 
@@ -1760,6 +1764,8 @@ the M4.4 checkpoint guard (`experiments.rl.m44.common.load_policy`); `preset_nam
 
 ### 14.10 Parameters reserved for M4.5b
 
+*M4.5b has measured every row below; its decisions (one changed, the others retained) are §15.3.*
+
 | field | value | what M4.5b should establish |
 |---|---|---|
 | `vision_turns`, `vision_reduction` | 6, 0.75 | the value of Vision now that it costs a lane turn and can be contested |
@@ -1768,3 +1774,78 @@ the M4.4 checkpoint guard (`experiments.rl.m44.common.load_policy`); `preset_nam
 | `minion_retaliation_delay`, `minion_range` | 1, 1 | how fast and how far minions react |
 | `trade_wave_fraction` | 0.5 | whether a connected freezer can hold a freeze, and whether Shove + Trade is still too strong |
 | `xp_range` | 2 | the XP cost of standing back and of warding |
+
+---
+
+## 15. EXPERIMENTAL: the M4.5b calibrated candidate (`m45_calibrated()`)
+
+**Not the research preset.** `GameConfig.m45_calibrated()` is `m45_unified()` revision 2 (§14) with the two fields of
+`M45_CALIBRATED_FIELDS`: `farm_spot_rule = "last_front"` (a mechanical correction) and
+`minion_retaliation_delay = 0` (a numerical calibration). Everything else, including the action space (61 codes), the
+observation (90 entries), the reward and every other number of §14, is unchanged. Evidence and decisions:
+[m4_5b_calibration_report.md](m4_5b_calibration_report.md); generated tables: `results/m45b/report.md`. Every earlier
+preset keeps `farm_spot_rule = "pre_crash_front"` and delay 1.
+
+### 15.1 The farm spot of a front lost in the probe (`farm_spot_rule = "last_front"`)
+
+The probe (§14.4 step 2) resolves the turn under full champion support: every champion that plays the lane damages
+enemy minions with reach `reach_cap` wherever they are. A follower's farm spot is its front's cell at the end of the
+probe (§5.2, §14.5a). When the probe has the own front die, the spot jumps back to the next packet, and the follower
+walks away from the fight; with the reach ball (§14.8) it then cannot damage the enemy front, so in a mutual Shove
+both fronts survive and neither champion collects: a self-defeating prediction (identical under the historical line
+reach; 38–50% of the farm of Shove-mirror play died out of reach, 21.5% of all scripted play).
+
+With $x_s(t)$ side $s$'s front after tick $t$ of the probe ($x_s(-1)$ its pre-turn front cell, which must hold a
+front) and $c_s(t)$ the HP it has crashed by then, the first tick on which the pre-turn front stops leading is
+
+$$
+t^\ast_s=\min\{t\ge0:\ c_s(t)>0\ \vee\ x_s(t)\ \text{absent}\ \vee\ x_s(t)<x_s(t-1)\}
+$$
+
+(fronts never walk back, so a leading packet behind the previous front cell is a rear packet: the front died). If
+$t^\ast_s$ exists, the farm spot is $\operatorname{clip}(x_s(t^\ast_s-1),-2,2)$, the front's last cell while it led
+(its pre-turn cell if it was lost on tick 0); otherwise the rule of §5.2 (`pre_crash_front` included). The per-tick
+goal $g_t$ of §14.5a uses the same rule with the ticks up to $t$. Behaviour targets map the spot as before (Safe
+$\min(\cdot,-1)$, Yield the stand-off cell). The champion walks back to its next packet on the following turn, when the
+probe from the new state puts its front there. `champions_m4._last_front_cell`; requires natural waves and
+`champion_movement_rule = "tick"` (the probe's per-tick fronts).
+
+| measured (scripted play from s0, 16 DEV seeds × 300 turns) | `pre_crash_front` | `last_front` (with delay 0) |
+|---|---|---|
+| farm dying out of reach, Shove mirror | 43.9% of available | 6.6% |
+| farm collected, Shove mirror | 0.50 | 0.83 |
+| farm collected, Shove v Last Hit / Last Hit mirror | 0.85 / 0.76 | 0.85 / 0.77 |
+| farm dying out of reach, all scripted pairings | 21.5% | 7.5% |
+| positional fire, Last Hit mirror (ticks per champion-turn) | 0 | 0.03 |
+
+### 15.2 Retaliation from the exchange tick (`minion_retaliation_delay = 0`)
+
+The designation of §14.5 with $\delta=0$: a wave whose champion took positive damage from the enemy's connected
+Trade designates the trader from **tick 0**, so it fires its tick firepower at the trader on both ticks of the turn
+while its front is within `minion_range` of it. With $\delta=1$ it fired only on the last tick, where the half-wave law
+(§0.2) leaves a damaged 8-HP wave no firepower ($f=1$ is split $1+0$): retaliation then depended on the tick parity
+rather than on the wave's firepower (8 HP: never; 16 HP: 1 unit; 24 HP: 2 units).
+
+| situation | tick 0 | tick 1 |
+|---|---|---|
+| A's Trade lands on B; B's front within 1 of A | B's minions on A | B's minions on A |
+| A's Trade misses or does not connect | normal | normal |
+
+Positional aggro is unchanged. One-turn exact expectations (level 2, own cover, equal power, B Hold), the Trade's HP
+exchange minus Hold's: 8-HP wave $+0.079$ bar, 16 HP $-0.002$, 24 HP $-0.067$ ($\delta=1$: $+0.119$, $+0.072$,
+$+0.031$); A ×1.76 into 24 HP $+0.078$; at level 18 (128 invested) minion fire is 11% of the trade damage dealt (4.5%
+with $\delta=1$).
+
+### 15.3 The numbers M4.5b established
+
+| field | value | status | evidence (report section) |
+|---|---|---|---|
+| `farm_spot_rule` | `"last_front"` | CHANGED (correction) | the probe defect, §8 |
+| `minion_retaliation_delay` | 0 | CHANGED (calibration) | criteria B1–B6, §4, §9 |
+| `minion_damage_alpha` | 50 | retained | passes B1–B6 with delay 0; the freeze, zoning and matrix indicators do not depend on it in 30–80 |
+| `minion_damage_growth` | 1.08 | retained | B4 / B5 hold; late-game share 11% |
+| `minion_range` | 1 | retained | no evidence against it |
+| `trade_wave_fraction` | 0.5 | retained | no measurable effect on any indicator in 0.25–1.0 |
+| `vision_turns`, `vision_reduction` | 6, ×0.25 | retained (sensitive in magnitude) | Vision already conditional; 8 turns scales it without changing where it pays |
+| `ward_exposure` | 0 | retained | −1 helps Vision slightly, +1 / +2 hurt it; no defect |
+| `xp_range` | 2 | fixed by design | not tuned |

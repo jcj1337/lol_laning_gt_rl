@@ -1,0 +1,547 @@
+{
+ "schema": "lanegame.viewer_recording",
+ "version": 1,
+ "config": "m45_calibrated",
+ "scenario": "m45b_freeze_10_large_h12",
+ "gap": "equal",
+ "seed": 87900,
+ "names": [
+  "fz_passive_sh",
+  "wk_shove_sh"
+ ],
+ "label": "2. A broken freeze: the same start, A keeps the freeze passively (Thin + Hold, fz_passive_sh) and B walks up and Shoves (wk_shove_sh): the freeze ends on the first turn. Seed 87900. Configuration m45_calibrated.",
+ "actions": [
+  [
+   2,
+   1
+  ],
+  [
+   2,
+   1
+  ],
+  [
+   1,
+   16
+  ],
+  [
+   1,
+   1
+  ],
+  [
+   1,
+   1
+  ],
+  [
+   1,
+   1
+  ],
+  [
+   1,
+   1
+  ],
+  [
+   1,
+   1
+  ],
+  [
+   1,
+   1
+  ],
+  [
+   1,
+   1
+  ],
+  [
+   16,
+   1
+  ],
+  [
+   1,
+   1
+  ],
+  [
+   1,
+   1
+  ],
+  [
+   1,
+   1
+  ],
+  [
+   1,
+   1
+  ],
+  [
+   1,
+   1
+  ],
+  [
+   1,
+   1
+  ],
+  [
+   9,
+   1
+  ],
+  [
+   12,
+   1
+  ],
+  [
+   45,
+   1
+  ],
+  [
+   1,
+   16
+  ],
+  [
+   1,
+   1
+  ],
+  [
+   1,
+   1
+  ],
+  [
+   1,
+   1
+  ],
+  [
+   1,
+   1
+  ],
+  [
+   1,
+   1
+  ],
+  [
+   1,
+   1
+  ],
+  [
+   1,
+   1
+  ],
+  [
+   1,
+   1
+  ],
+  [
+   1,
+   1
+  ]
+ ],
+ "labels": [
+  [
+   "TN-H",
+   "SH-H"
+  ],
+  [
+   "TN-H",
+   "SH-H"
+  ],
+  [
+   "SH-H",
+   "SH-H+P"
+  ],
+  [
+   "SH-H",
+   "SH-H"
+  ],
+  [
+   "SH-H",
+   "SH-H"
+  ],
+  [
+   "SH-H",
+   "SH-H"
+  ],
+  [
+   "SH-H",
+   "SH-H"
+  ],
+  [
+   "SH-H",
+   "SH-H"
+  ],
+  [
+   "SH-H",
+   "SH-H"
+  ],
+  [
+   "SH-H",
+   "SH-H"
+  ],
+  [
+   "SH-H+P",
+   "SH-H"
+  ],
+  [
+   "SH-H",
+   "SH-H"
+  ],
+  [
+   "SH-H",
+   "SH-H"
+  ],
+  [
+   "SH-H",
+   "SH-H"
+  ],
+  [
+   "SH-H",
+   "SH-H"
+  ],
+  [
+   "SH-H",
+   "SH-H"
+  ],
+  [
+   "SH-H",
+   "SH-H"
+  ],
+  [
+   "LH-S",
+   "SH-H"
+  ],
+  [
+   "LH-R",
+   "SH-H"
+  ],
+  [
+   "ABSENT",
+   "SH-H"
+  ],
+  [
+   "SH-H",
+   "SH-H+P"
+  ],
+  [
+   "SH-H",
+   "SH-H"
+  ],
+  [
+   "SH-H",
+   "SH-H"
+  ],
+  [
+   "SH-H",
+   "SH-H"
+  ],
+  [
+   "SH-H",
+   "SH-H"
+  ],
+  [
+   "SH-H",
+   "SH-H"
+  ],
+  [
+   "SH-H",
+   "SH-H"
+  ],
+  [
+   "SH-H",
+   "SH-H"
+  ],
+  [
+   "SH-H",
+   "SH-H"
+  ],
+  [
+   "SH-H",
+   "SH-H"
+  ]
+ ],
+ "events": [
+  {
+   "turn": 0,
+   "events": [
+    "A Thin: removed 6 of 6 HP",
+    "A lost 1 packet(s) (8 HP)",
+    "B Shove: removed 4 of 6 HP",
+    "B's reinforcement merged into its front"
+   ]
+  },
+  {
+   "turn": 1,
+   "events": [
+    "A Thin: removed 6 of 6 HP",
+    "B Shove: removed 0 of 6 HP",
+    "B's wave crashed into A's tower (13 HP)"
+   ]
+  },
+  {
+   "turn": 2,
+   "events": [
+    "A Shove: removed 2 of 11 HP",
+    "A lost 1 packet(s) (5 HP)",
+    "B Shove: removed 4 of 6 HP",
+    "B's siege under A's tower ended (the lane bounces back)",
+    "B damaged A's tower: +621"
+   ]
+  },
+  {
+   "turn": 3,
+   "events": [
+    "A Shove: removed 7 of 11 HP",
+    "B Shove: removed 3 of 6 HP",
+    "B's wave crashed into A's tower (2 HP)"
+   ]
+  },
+  {
+   "turn": 4,
+   "events": [
+    "A Shove: removed 5 of 11 HP",
+    "B Shove: removed 3 of 6 HP"
+   ]
+  },
+  {
+   "turn": 5,
+   "events": [
+    "A Shove: removed 2 of 11 HP",
+    "A lost 1 packet(s) (1 HP)",
+    "A reached level 11",
+    "B Shove: removed 0 of 6 HP",
+    "B lost 1 packet(s) (3 HP)"
+   ]
+  },
+  {
+   "turn": 6,
+   "events": [
+    "A Shove: removed 7 of 11 HP",
+    "B Shove: removed 3 of 6 HP",
+    "B lost 1 packet(s) (8 HP)"
+   ]
+  },
+  {
+   "turn": 7,
+   "events": [
+    "A Shove: removed 5 of 11 HP",
+    "A's wave crashed into B's tower (2 HP)",
+    "B Shove: removed 4 of 6 HP"
+   ]
+  },
+  {
+   "turn": 8,
+   "events": [
+    "A Shove: removed 3 of 11 HP",
+    "B Shove: removed 0 of 6 HP",
+    "B lost 1 packet(s) (3 HP)"
+   ]
+  },
+  {
+   "turn": 9,
+   "events": [
+    "A Shove: removed 5 of 11 HP",
+    "A's wave crashed into B's tower (5 HP)",
+    "B Shove: removed 6 of 6 HP",
+    "B reached level 11"
+   ]
+  },
+  {
+   "turn": 10,
+   "events": [
+    "A Shove: removed 2 of 11 HP",
+    "A was ganked (p=0.15): 652 cHP",
+    "A's siege under B's tower ended (the lane bounces back)",
+    "A damaged B's tower: +1147",
+    "B Shove: removed 0 of 7 HP",
+    "B lost 1 packet(s) (3 HP)"
+   ]
+  },
+  {
+   "turn": 11,
+   "events": [
+    "A Shove: removed 5 of 11 HP",
+    "A's wave crashed into B's tower (4 HP)",
+    "B Shove: removed 7 of 7 HP"
+   ]
+  },
+  {
+   "turn": 12,
+   "events": [
+    "A Shove: removed 3 of 11 HP",
+    "B Shove: removed 0 of 7 HP",
+    "B lost 1 packet(s) (3 HP)"
+   ]
+  },
+  {
+   "turn": 13,
+   "events": [
+    "A Shove: removed 5 of 11 HP",
+    "A's wave crashed into B's tower (4 HP)",
+    "A reached level 12",
+    "B Shove: removed 7 of 7 HP"
+   ]
+  },
+  {
+   "turn": 14,
+   "events": [
+    "A Shove: removed 3 of 12 HP",
+    "B Shove: removed 0 of 7 HP",
+    "B lost 1 packet(s) (3 HP)"
+   ]
+  },
+  {
+   "turn": 15,
+   "events": [
+    "A Shove: removed 6 of 12 HP",
+    "A's wave crashed into B's tower (4 HP)",
+    "B Shove: removed 7 of 7 HP"
+   ]
+  },
+  {
+   "turn": 16,
+   "events": [
+    "A Shove: removed 2 of 12 HP",
+    "A was ganked (p=0.12): 684 cHP",
+    "B Shove: removed 0 of 7 HP",
+    "B lost 1 packet(s) (2 HP)"
+   ]
+  },
+  {
+   "turn": 17,
+   "events": [
+    "A Last Hit: removed 0 of 1 HP",
+    "A's wave crashed into B's tower (4 HP)",
+    "B Shove: removed 7 of 7 HP"
+   ]
+  },
+  {
+   "turn": 18,
+   "events": [
+    "A recalled",
+    "A lost 1 packet(s) (8 HP)",
+    "B Shove: removed 7 of 7 HP",
+    "B reached level 12"
+   ]
+  },
+  {
+   "turn": 19,
+   "events": [
+    "A invested 9.26 gold at base",
+    "A returns next turn",
+    "B Shove: removed 3 of 7 HP",
+    "B's wave crashed into A's tower (8 HP)"
+   ]
+  },
+  {
+   "turn": 20,
+   "events": [
+    "A Shove: removed 6 of 12 HP",
+    "A lost 1 packet(s) (4 HP)",
+    "B Shove: removed 3 of 7 HP",
+    "B's siege under A's tower ended (the lane bounces back)",
+    "B damaged A's tower: +684"
+   ]
+  },
+  {
+   "turn": 21,
+   "events": [
+    "A Shove: removed 7 of 12 HP",
+    "B Shove: removed 3 of 7 HP",
+    "B's wave crashed into A's tower (2 HP)"
+   ]
+  },
+  {
+   "turn": 22,
+   "events": [
+    "A Shove: removed 6 of 12 HP",
+    "B Shove: removed 3 of 7 HP"
+   ]
+  },
+  {
+   "turn": 23,
+   "events": [
+    "A Shove: removed 1 of 12 HP",
+    "A lost 1 packet(s) (1 HP)",
+    "B Shove: removed 0 of 7 HP",
+    "B lost 1 packet(s) (2 HP)"
+   ]
+  },
+  {
+   "turn": 24,
+   "events": [
+    "A Shove: removed 7 of 12 HP",
+    "A reached level 13",
+    "B Shove: removed 3 of 7 HP",
+    "B lost 1 packet(s) (8 HP)"
+   ]
+  },
+  {
+   "turn": 25,
+   "events": [
+    "A Shove: removed 6 of 13 HP",
+    "A's wave crashed into B's tower (1 HP)",
+    "B Shove: removed 4 of 7 HP"
+   ]
+  },
+  {
+   "turn": 26,
+   "events": [
+    "A Shove: removed 2 of 13 HP",
+    "B Shove: removed 0 of 7 HP",
+    "B lost 1 packet(s) (2 HP)"
+   ]
+  },
+  {
+   "turn": 27,
+   "events": [
+    "A Shove: removed 6 of 13 HP",
+    "A's wave crashed into B's tower (4 HP)",
+    "B Shove: removed 7 of 7 HP"
+   ]
+  },
+  {
+   "turn": 28,
+   "events": [
+    "A Shove: removed 2 of 13 HP",
+    "B Shove: removed 0 of 7 HP",
+    "B lost 1 packet(s) (2 HP)"
+   ]
+  },
+  {
+   "turn": 29,
+   "events": [
+    "A Shove: removed 6 of 13 HP",
+    "A's wave crashed into B's tower (4 HP)",
+    "B Shove: removed 7 of 7 HP",
+    "B reached level 13"
+   ]
+  }
+ ],
+ "payoff_A": 2.35,
+ "turns": 30,
+ "summary": {
+  "A": {
+   "wards": 0,
+   "wards_placed": 0,
+   "wards_interrupted": 0,
+   "minion_units_taken": 0,
+   "minion_centi_taken": 0,
+   "retaliation_ticks_taken": 0,
+   "positional_ticks_taken": 0,
+   "trade_damage_dealt": 0,
+   "capped_trades": 0,
+   "deaths": 0,
+   "recalls": 1,
+   "gold": 15.1125
+  },
+  "B": {
+   "wards": 0,
+   "wards_placed": 0,
+   "wards_interrupted": 0,
+   "minion_units_taken": 0,
+   "minion_centi_taken": 0,
+   "retaliation_ticks_taken": 0,
+   "positional_ticks_taken": 0,
+   "trade_damage_dealt": 0,
+   "capped_trades": 0,
+   "deaths": 0,
+   "recalls": 0,
+   "gold": 12.7625
+  }
+ }
+}

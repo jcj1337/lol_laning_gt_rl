@@ -32,6 +32,7 @@ from ..champions_m4 import M4State, context, initial_m4
 from ..config import (BEHAVIOR_NAMES, CHAMP_ABSENT, CHAMP_WARD, OBJECTIVE_NAMES, GameConfig, champ_behavior,
                       champ_objective, champ_wave, wave_display_names)
 from ..experiments.m45a import scenarios as m45s
+from ..experiments.m45b import scenarios as m45bs
 from ..env import LaneEnv
 from ..experiments.m4 import natural_waves as nw
 from ..experiments.m4 import zoning_natural as zn
@@ -43,7 +44,8 @@ from ..state import State
 A, B = 0, 1
 SIDES = ("A", "B")
 
-CONFIGS = {"m45_unified": GameConfig.m45_unified,                 # M4.5a: the EXPERIMENTAL unified candidate
+CONFIGS = {"m45_calibrated": GameConfig.m45_calibrated,           # M4.5b: the EXPERIMENTAL calibrated candidate
+           "m45_unified": GameConfig.m45_unified,                 # M4.5a: the EXPERIMENTAL unified candidate
            # M4.5a as first implemented (champions at their end cells for the whole turn; superseded)
            "m45_unified_r1": GameConfig.m45_unified_r1,
            "m4_four_actions": GameConfig.m4_four_actions,
@@ -55,7 +57,8 @@ CONFIGS = {"m45_unified": GameConfig.m45_unified,                 # M4.5a: the E
 # the configuration whose deterministic start states a configuration uses (the four-action redesign study generated
 # its starts under m4_lasthit(); the lane physics is the same in every four-action preset)
 START_SOURCE = {"m4_four_actions": "m4_lasthit", "m4_four_actions_econ": "m4_lasthit",
-                "m4_four_actions_econ_aggro": "m4_lasthit", "m45_unified": "m4_lasthit", "m45_unified_r1": "m4_lasthit"}
+                "m4_four_actions_econ_aggro": "m4_lasthit", "m45_unified": "m4_lasthit", "m45_unified_r1": "m4_lasthit",
+                "m45_calibrated": "m4_lasthit"}
 # Rules revisions of a configuration name whose rules changed after recordings were made under it. A recording of
 # such a configuration carries "rules_revision" (`recording_stamp`); one without it predates the change and replays
 # under the preset that keeps the old rules: m45_unified revision 1 (M4.5a as first implemented, ea3d9cb) is
@@ -82,6 +85,7 @@ SCENARIOS = {
     "oversized": "The neutral lane with B's front raised to 24 HP: an oversized enemy wave at the lane cell.",
 }
 SCENARIOS.update({name: desc for name, (desc, _) in m45s.STARTS.items()})
+SCENARIOS.update({name: desc for name, (desc, _) in m45bs.STARTS.items()})   # M4.5b (gap stays "equal")
 # scenario -> (base start, B front HP or None, both champions' level or None)
 DERIVED = {"freeze_early": ("freeze", None, 4), "freeze21": ("freeze", 21, None), "oversized": ("neutral", 24, None)}
 GAPS = {"equal": "equal power", "moderate": "A x1.24 attack power (16 vs 4 gold invested)",
@@ -134,6 +138,8 @@ def start_state(setup: Setup) -> Tuple[State, M4State, int]:
         lane, m4, k0 = initial_state(cfg), initial_m4(cfg), 0
     elif setup.scenario in m45s.STARTS:                  # M4.5a hand-built starts (any configuration)
         lane, m4, k0 = m45s.STARTS[setup.scenario][1](cfg)
+    elif setup.scenario in m45bs.STARTS:                 # M4.5b constructed starts (their own power gap and levels)
+        lane, m4, k0 = m45bs.STARTS[setup.scenario][1](cfg)
     elif setup.scenario in DERIVED:
         base, hb, level = DERIVED[setup.scenario]
         lane, m4, k0 = _starts(setup.config)[base]

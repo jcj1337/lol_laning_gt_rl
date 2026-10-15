@@ -1,0 +1,712 @@
+{
+ "schema": "lanegame.viewer_recording",
+ "version": 1,
+ "config": "m45_unified",
+ "rules_revision": 2,
+ "scenario": "m45b_freeze_10_large_h12",
+ "gap": "equal",
+ "seed": 87900,
+ "names": [
+  "fz_passive_sh",
+  "wk_lh_sh"
+ ],
+ "label": "1. A successful strong-side freeze: A (x1.76, level 10) keeps B's 12-HP wave at its -1 with Thin (fz_passive_sh); B walks up to its +1 and last-hits A's minions dying at A's tower (wk_lh_sh). Watch the held wave, B's exposure to ganks at its +1 and both sides' farm. Seed 87900: the first seed whose freeze holds >= 12 turns. Configuration m45_unified.",
+ "actions": [
+  [
+   2,
+   0
+  ],
+  [
+   2,
+   0
+  ],
+  [
+   2,
+   0
+  ],
+  [
+   2,
+   0
+  ],
+  [
+   2,
+   0
+  ],
+  [
+   2,
+   0
+  ],
+  [
+   2,
+   0
+  ],
+  [
+   2,
+   0
+  ],
+  [
+   2,
+   0
+  ],
+  [
+   2,
+   0
+  ],
+  [
+   2,
+   0
+  ],
+  [
+   2,
+   0
+  ],
+  [
+   2,
+   0
+  ],
+  [
+   2,
+   0
+  ],
+  [
+   2,
+   0
+  ],
+  [
+   2,
+   0
+  ],
+  [
+   2,
+   9
+  ],
+  [
+   2,
+   12
+  ],
+  [
+   2,
+   45
+  ],
+  [
+   2,
+   0
+  ],
+  [
+   2,
+   0
+  ],
+  [
+   1,
+   1
+  ],
+  [
+   1,
+   1
+  ],
+  [
+   16,
+   1
+  ],
+  [
+   16,
+   1
+  ],
+  [
+   1,
+   1
+  ],
+  [
+   1,
+   1
+  ],
+  [
+   1,
+   1
+  ],
+  [
+   1,
+   1
+  ],
+  [
+   1,
+   1
+  ],
+  [
+   16,
+   1
+  ],
+  [
+   1,
+   1
+  ],
+  [
+   1,
+   1
+  ],
+  [
+   1,
+   1
+  ],
+  [
+   1,
+   1
+  ],
+  [
+   1,
+   1
+  ],
+  [
+   16,
+   1
+  ],
+  [
+   1,
+   1
+  ],
+  [
+   1,
+   1
+  ],
+  [
+   1,
+   1
+  ]
+ ],
+ "labels": [
+  [
+   "TN-H",
+   "LH-H"
+  ],
+  [
+   "TN-H",
+   "LH-H"
+  ],
+  [
+   "TN-H",
+   "LH-H"
+  ],
+  [
+   "TN-H",
+   "LH-H"
+  ],
+  [
+   "TN-H",
+   "LH-H"
+  ],
+  [
+   "TN-H",
+   "LH-H"
+  ],
+  [
+   "TN-H",
+   "LH-H"
+  ],
+  [
+   "TN-H",
+   "LH-H"
+  ],
+  [
+   "TN-H",
+   "LH-H"
+  ],
+  [
+   "TN-H",
+   "LH-H"
+  ],
+  [
+   "TN-H",
+   "LH-H"
+  ],
+  [
+   "TN-H",
+   "LH-H"
+  ],
+  [
+   "TN-H",
+   "LH-H"
+  ],
+  [
+   "TN-H",
+   "LH-H"
+  ],
+  [
+   "TN-H",
+   "LH-H"
+  ],
+  [
+   "TN-H",
+   "LH-H"
+  ],
+  [
+   "TN-H",
+   "LH-S"
+  ],
+  [
+   "TN-H",
+   "LH-R"
+  ],
+  [
+   "TN-H",
+   "ABSENT"
+  ],
+  [
+   "TN-H",
+   "LH-H"
+  ],
+  [
+   "TN-H",
+   "LH-H"
+  ],
+  [
+   "SH-H",
+   "SH-H"
+  ],
+  [
+   "SH-H",
+   "SH-H"
+  ],
+  [
+   "SH-H+P",
+   "SH-H"
+  ],
+  [
+   "SH-H+P",
+   "SH-H"
+  ],
+  [
+   "SH-H",
+   "SH-H"
+  ],
+  [
+   "SH-H",
+   "SH-H"
+  ],
+  [
+   "SH-H",
+   "SH-H"
+  ],
+  [
+   "SH-H",
+   "SH-H"
+  ],
+  [
+   "SH-H",
+   "SH-H"
+  ],
+  [
+   "SH-H+P",
+   "SH-H"
+  ],
+  [
+   "SH-H",
+   "SH-H"
+  ],
+  [
+   "SH-H",
+   "SH-H"
+  ],
+  [
+   "SH-H",
+   "SH-H"
+  ],
+  [
+   "SH-H",
+   "SH-H"
+  ],
+  [
+   "SH-H",
+   "SH-H"
+  ],
+  [
+   "SH-H+P",
+   "SH-H"
+  ],
+  [
+   "SH-H",
+   "SH-H"
+  ],
+  [
+   "SH-H",
+   "SH-H"
+  ],
+  [
+   "SH-H",
+   "SH-H"
+  ]
+ ],
+ "events": [
+  {
+   "turn": 0,
+   "events": [
+    "A Thin: removed 6 of 6 HP",
+    "B Last Hit: removed 1 of 1 HP",
+    "B's reinforcement merged into its front"
+   ]
+  },
+  {
+   "turn": 1,
+   "events": [
+    "A Thin: removed 5 of 5 HP",
+    "A's reinforcement merged into its front",
+    "B Last Hit: removed 1 of 1 HP"
+   ]
+  },
+  {
+   "turn": 2,
+   "events": [
+    "A Thin: removed 2 of 2 HP",
+    "B Last Hit: removed 1 of 1 HP",
+    "B's reinforcement merged into its front"
+   ]
+  },
+  {
+   "turn": 3,
+   "events": [
+    "A Thin: removed 2 of 2 HP",
+    "A's reinforcement merged into its front",
+    "B Last Hit: removed 1 of 1 HP"
+   ]
+  },
+  {
+   "turn": 4,
+   "events": [
+    "A Thin: removed 1 of 1 HP",
+    "B Last Hit: removed 1 of 1 HP",
+    "B's reinforcement merged into its front"
+   ]
+  },
+  {
+   "turn": 5,
+   "events": [
+    "A Thin: removed 1 of 1 HP",
+    "A's reinforcement merged into its front",
+    "B Last Hit: removed 1 of 1 HP"
+   ]
+  },
+  {
+   "turn": 6,
+   "events": [
+    "A Thin: removed 1 of 1 HP",
+    "B Last Hit: removed 1 of 1 HP",
+    "B's reinforcement merged into its front"
+   ]
+  },
+  {
+   "turn": 7,
+   "events": [
+    "A Thin: removed 1 of 1 HP",
+    "A's reinforcement merged into its front",
+    "A reached level 11",
+    "B Last Hit: removed 1 of 1 HP"
+   ]
+  },
+  {
+   "turn": 8,
+   "events": [
+    "A Thin: removed 1 of 1 HP",
+    "B Last Hit: removed 1 of 1 HP",
+    "B's reinforcement merged into its front"
+   ]
+  },
+  {
+   "turn": 9,
+   "events": [
+    "A Thin: removed 1 of 1 HP",
+    "A's reinforcement merged into its front",
+    "B Last Hit: removed 1 of 1 HP",
+    "B reached level 11"
+   ]
+  },
+  {
+   "turn": 10,
+   "events": [
+    "A Thin: removed 1 of 1 HP",
+    "B Last Hit: removed 1 of 1 HP",
+    "B's reinforcement merged into its front"
+   ]
+  },
+  {
+   "turn": 11,
+   "events": [
+    "A Thin: removed 1 of 1 HP",
+    "A's reinforcement merged into its front",
+    "B Last Hit: removed 1 of 1 HP"
+   ]
+  },
+  {
+   "turn": 12,
+   "events": [
+    "A Thin: removed 1 of 1 HP",
+    "B Last Hit: removed 1 of 1 HP",
+    "B's reinforcement merged into its front"
+   ]
+  },
+  {
+   "turn": 13,
+   "events": [
+    "A Thin: removed 1 of 1 HP",
+    "A's reinforcement merged into its front",
+    "B Last Hit: removed 1 of 1 HP"
+   ]
+  },
+  {
+   "turn": 14,
+   "events": [
+    "A Thin: removed 1 of 1 HP",
+    "B Last Hit: removed 1 of 1 HP",
+    "B was ganked (p=0.10): 489 cHP",
+    "B's reinforcement merged into its front"
+   ]
+  },
+  {
+   "turn": 15,
+   "events": [
+    "A Thin: removed 1 of 1 HP",
+    "A's reinforcement merged into its front",
+    "B Last Hit: removed 1 of 1 HP",
+    "B was ganked (p=0.10): 326 cHP"
+   ]
+  },
+  {
+   "turn": 16,
+   "events": [
+    "A Thin: removed 1 of 1 HP",
+    "B Last Hit: removed 0 of 1 HP",
+    "B's reinforcement merged into its front"
+   ]
+  },
+  {
+   "turn": 17,
+   "events": [
+    "A Thin: removed 1 of 1 HP",
+    "A's reinforcement merged into its front",
+    "A reached level 12",
+    "B recalled"
+   ]
+  },
+  {
+   "turn": 18,
+   "events": [
+    "A Thin: removed 1 of 1 HP",
+    "B's reinforcement merged into its front",
+    "B invested 6.41 gold at base",
+    "B returns next turn"
+   ]
+  },
+  {
+   "turn": 19,
+   "events": [
+    "A Thin: removed 1 of 1 HP",
+    "A's reinforcement merged into its front",
+    "B Last Hit: removed 0 of 1 HP"
+   ]
+  },
+  {
+   "turn": 20,
+   "events": [
+    "A Thin: removed 1 of 1 HP",
+    "B Last Hit: removed 0 of 1 HP",
+    "B lost 1 packet(s) (6 HP)"
+   ]
+  },
+  {
+   "turn": 21,
+   "events": [
+    "A Shove: removed 3 of 12 HP",
+    "B Shove: removed 0 of 8 HP",
+    "B lost 1 packet(s) (6 HP)"
+   ]
+  },
+  {
+   "turn": 22,
+   "events": [
+    "A Shove: removed 5 of 12 HP",
+    "A's wave crashed into B's tower (15 HP)",
+    "B Shove: removed 8 of 8 HP",
+    "B lost 1 packet(s) (8 HP)"
+   ]
+  },
+  {
+   "turn": 23,
+   "events": [
+    "A Shove: removed 6 of 12 HP",
+    "A's wave crashed into B's tower (8 HP)",
+    "A damaged B's tower: +1204",
+    "A reached level 13",
+    "B Shove: removed 8 of 8 HP",
+    "B lost 1 packet(s) (8 HP)",
+    "B reached level 12"
+   ]
+  },
+  {
+   "turn": 24,
+   "events": [
+    "A Shove: removed 0 of 13 HP",
+    "A's siege under B's tower ended (the lane bounces back)",
+    "A damaged B's tower: +1364",
+    "A broke 1 plate(s): +1.00 gold",
+    "B Shove: removed 4 of 8 HP"
+   ]
+  },
+  {
+   "turn": 25,
+   "events": [
+    "A Shove: removed 0 of 13 HP",
+    "A's wave crashed into B's tower (4 HP)",
+    "B Shove: removed 7 of 8 HP"
+   ]
+  },
+  {
+   "turn": 26,
+   "events": [
+    "A Shove: removed 0 of 13 HP",
+    "B Shove: removed 0 of 8 HP"
+   ]
+  },
+  {
+   "turn": 27,
+   "events": [
+    "A Shove: removed 0 of 13 HP",
+    "B Shove: removed 0 of 8 HP"
+   ]
+  },
+  {
+   "turn": 28,
+   "events": [
+    "A Shove: removed 11 of 13 HP",
+    "A's reinforcement merged into its front",
+    "B Shove: removed 0 of 8 HP",
+    "B's reinforcement merged into its front",
+    "B lost 1 packet(s) (14 HP)"
+   ]
+  },
+  {
+   "turn": 29,
+   "events": [
+    "A Shove: removed 0 of 13 HP",
+    "A's wave crashed into B's tower (8 HP)",
+    "B Shove: removed 8 of 8 HP"
+   ]
+  },
+  {
+   "turn": 30,
+   "events": [
+    "A Shove: removed 6 of 13 HP",
+    "A's siege under B's tower ended (the lane bounces back)",
+    "A damaged B's tower: +1264",
+    "A broke 1 plate(s): +1.00 gold",
+    "B Shove: removed 2 of 8 HP",
+    "B lost 1 packet(s) (7 HP)"
+   ]
+  },
+  {
+   "turn": 31,
+   "events": [
+    "A Shove: removed 0 of 13 HP",
+    "A's wave crashed into B's tower (4 HP)",
+    "B Shove: removed 7 of 8 HP",
+    "B reached level 13"
+   ]
+  },
+  {
+   "turn": 32,
+   "events": [
+    "A Shove: removed 0 of 13 HP",
+    "B Shove: removed 0 of 9 HP"
+   ]
+  },
+  {
+   "turn": 33,
+   "events": [
+    "A Shove: removed 0 of 13 HP",
+    "B Shove: removed 0 of 9 HP"
+   ]
+  },
+  {
+   "turn": 34,
+   "events": [
+    "A Shove: removed 11 of 13 HP",
+    "A's reinforcement merged into its front",
+    "B Shove: removed 0 of 9 HP",
+    "B's reinforcement merged into its front",
+    "B lost 1 packet(s) (14 HP)"
+   ]
+  },
+  {
+   "turn": 35,
+   "events": [
+    "A Shove: removed 0 of 13 HP",
+    "A's wave crashed into B's tower (7 HP)",
+    "B Shove: removed 9 of 9 HP"
+   ]
+  },
+  {
+   "turn": 36,
+   "events": [
+    "A Shove: removed 7 of 13 HP",
+    "A was ganked (p=0.15): 540 cHP",
+    "A's siege under B's tower ended (the lane bounces back)",
+    "A damaged B's tower: +1264",
+    "A reached level 14",
+    "B Shove: removed 1 of 9 HP",
+    "B lost 1 packet(s) (8 HP)"
+   ]
+  },
+  {
+   "turn": 37,
+   "events": [
+    "A Shove: removed 0 of 13 HP",
+    "A's wave crashed into B's tower (3 HP)",
+    "B Shove: removed 7 of 9 HP"
+   ]
+  },
+  {
+   "turn": 38,
+   "events": [
+    "A Shove: removed 0 of 13 HP",
+    "B Shove: removed 0 of 9 HP",
+    "B was ganked (p=0.03): 0 cHP"
+   ]
+  },
+  {
+   "turn": 39,
+   "events": [
+    "A Shove: removed 0 of 13 HP",
+    "B Shove: removed 0 of 9 HP"
+   ]
+  }
+ ],
+ "payoff_A": 5.425,
+ "turns": 40,
+ "summary": {
+  "A": {
+   "wards": 0,
+   "wards_placed": 0,
+   "wards_interrupted": 0,
+   "minion_units_taken": 0,
+   "minion_centi_taken": 0,
+   "retaliation_ticks_taken": 0,
+   "positional_ticks_taken": 0,
+   "trade_damage_dealt": 0,
+   "capped_trades": 0,
+   "deaths": 0,
+   "recalls": 0,
+   "gold": 19.8875
+  },
+  "B": {
+   "wards": 0,
+   "wards_placed": 0,
+   "wards_interrupted": 0,
+   "minion_units_taken": 0,
+   "minion_centi_taken": 0,
+   "retaliation_ticks_taken": 0,
+   "positional_ticks_taken": 0,
+   "trade_damage_dealt": 0,
+   "capped_trades": 0,
+   "deaths": 0,
+   "recalls": 1,
+   "gold": 14.4625
+  }
+ }
+}

@@ -1,0 +1,56 @@
+== stage validate
+  [trade multi-turn] 12 jobs, 19 s
+  [freeze grid {}] 2560 jobs, 295 s
+  [vision local {}] 32 jobs, 43 s
+  [vision strategies {}] 144 jobs, 59 s
+  [zoning matrix {}] 70 jobs, 17 s
+  [matrix r2 s0 equal] 576 jobs, 197 s
+  [natural matrix 0] 64 jobs, 17 s
+  [natural matrix 1] 64 jobs, 16 s
+  [natural matrix 2] 64 jobs, 16 s
+  [natural matrix 3] 64 jobs, 17 s
+  [natural matrix 4] 64 jobs, 16 s
+  [trade multi-turn] 12 jobs, 21 s
+  [freeze grid {'farm_spot_rule': 'last_front', 'minion_retaliation_delay': 0}] 2560 jobs, 304 s
+  [vision local {'farm_spot_rule': 'last_front', 'minion_retaliation_delay': 0}] 32 jobs, 41 s
+  [vision strategies {'farm_spot_rule': 'last_front', 'minion_retaliation_delay': 0}] 144 jobs, 57 s
+  [zoning matrix {'farm_spot_rule': 'last_front', 'minion_retaliation_delay': 0}] 70 jobs, 17 s
+  [matrix r2 s0 equal] 576 jobs, 191 s
+  [natural matrix 0] 64 jobs, 15 s
+  [natural matrix 1] 64 jobs, 16 s
+  [natural matrix 2] 64 jobs, 16 s
+  [natural matrix 3] 64 jobs, 16 s
+  [natural matrix 4] 64 jobs, 15 s
+  [natural matrix 5] 64 jobs, 16 s
+wrote results\m45b\validation.json.gz
+== stage validate done in 1480 s
+== stage demos
+m45b_01_freeze_held [m45_unified]: seed 87900, 40 turns, payoff A +5.42, verify True / True
+m45b_01_freeze_held [m45_calibrated]: seed 87900, 40 turns, payoff A +2.15, verify True / True
+m45b_02_freeze_broken [m45_unified]: seed 87900, 30 turns, payoff A +2.98, verify True / True
+m45b_02_freeze_broken [m45_calibrated]: seed 87900, 30 turns, payoff A +2.35, verify True / True
+m45b_03_punish_walkup [m45_unified]: seed 87901, 30 turns, payoff A +6.54, verify True / True
+m45b_03_punish_walkup [m45_calibrated]: seed 87901, 30 turns, payoff A +4.84, verify True / True
+m45b_04_retreat_loses [m45_unified]: seed 87900, 30 turns, payoff A +4.92, verify True / True
+m45b_04_retreat_loses [m45_calibrated]: seed 87900, 30 turns, payoff A +4.21, verify True / True
+m45b_05_freeze_then_recall [m45_unified]: seed 87900, 40 turns, payoff A +0.92, verify True / True
+m45b_05_freeze_then_recall [m45_calibrated]: seed 87900, 40 turns, payoff A +0.21, verify True / True
+m45b_06_ward_favorable [m45_unified]: seed 87900, 30 turns, payoff A +2.34, verify True / True
+m45b_06_ward_favorable [m45_calibrated]: seed 87900, 30 turns, payoff A +2.00, verify True / True
+m45b_07_ward_interrupted [m45_unified]: seed 87900, 20 turns, payoff A -1.31, verify True / True
+m45b_07_ward_interrupted [m45_calibrated]: seed 87900, 20 turns, payoff A +5.43, verify True / True
+m45b_08_trade_big_wave_L2 [m45_unified]: seed 87900, 12 turns, payoff A +3.19, verify True / True
+m45b_08_trade_big_wave_L2 [m45_calibrated]: seed 87900, 12 turns, payoff A +3.02, verify True / True
+m45b_09_trade_big_wave_L18 [m45_unified]: seed 87900, 12 turns, payoff A +3.19, verify True / True
+m45b_09_trade_big_wave_L18 [m45_calibrated]: seed 87900, 12 turns, payoff A +3.02, verify True / True
+m45b_10_kill_bounce [m45_unified]: seed 87936, 30 turns, payoff A +1.42, verify True / True
+m45b_10_kill_bounce [m45_calibrated]: seed 87936, 30 turns, payoff A +2.04, verify True / True
+wrote results\m45b\demos.json
+== stage demos done in 2 s
+== stage reference
+  [learned reference] 54 jobs, 73 s
+wrote results\m45b\reference.json
+== stage reference done in 73 s
+== stage report
+wrote results\m45b\report.md
+== stage report done in 1 s

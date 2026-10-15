@@ -1,0 +1,34 @@
+== stage freeze_local
+  [freeze local] 96 jobs, 238 s
+  [freeze reset] 24 jobs, 17 s
+wrote results\m45b\freeze_local.json
+== stage freeze_local done in 257 s
+== stage freeze_sweep
+  [freeze grid {'trade_wave_fraction': 0.25}] 640 jobs, 76 s
+  [freeze grid {'trade_wave_fraction': 1.0}] 640 jobs, 74 s
+  [freeze grid {'minion_damage_alpha': 30}] 640 jobs, 72 s
+  [freeze grid {'minion_damage_alpha': 80}] 640 jobs, 72 s
+  [freeze grid {'minion_retaliation_delay': 0}] 640 jobs, 72 s
+wrote results\m45b\freeze_sweep.json.gz
+== stage freeze_sweep done in 387 s
+== stage vision_sweep
+  [vision local {'vision_turns': 4, 'vision_reduction': 0.5}] 32 jobs, 25 s
+  [vision strategies {'vision_turns': 4, 'vision_reduction': 0.5}] 48 jobs, 13 s
+  [vision local {'vision_turns': 4, 'vision_reduction': 0.75}] 32 jobs, 25 s
+  [vision strategies {'vision_turns': 4, 'vision_reduction': 0.75}] 48 jobs, 12 s
+  [vision local {'vision_turns': 6, 'vision_reduction': 0.5}] 32 jobs, 25 s
+  [vision strategies {'vision_turns': 6, 'vision_reduction': 0.5}] 48 jobs, 13 s
+  [vision local {'vision_turns': 6, 'vision_reduction': 0.75}] 32 jobs, 24 s
+  [vision strategies {'vision_turns': 6, 'vision_reduction': 0.75}] 48 jobs, 13 s
+  [vision local {'vision_turns': 8, 'vision_reduction': 0.5}] 32 jobs, 24 s
+  [vision strategies {'vision_turns': 8, 'vision_reduction': 0.5}] 48 jobs, 13 s
+  [vision local {'vision_turns': 8, 'vision_reduction': 0.75}] 32 jobs, 24 s
+  [vision strategies {'vision_turns': 8, 'vision_reduction': 0.75}] 48 jobs, 13 s
+  [vision local {'ward_exposure': -1}] 32 jobs, 24 s
+  [vision strategies {'ward_exposure': -1}] 48 jobs, 13 s
+  [vision local {'ward_exposure': 1}] 32 jobs, 24 s
+  [vision strategies {'ward_exposure': 1}] 48 jobs, 13 s
+  [vision local {'ward_exposure': 2}] 32 jobs, 24 s
+  [vision strategies {'ward_exposure': 2}] 48 jobs, 13 s
+wrote results\m45b\vision_sweep.json
+== stage vision_sweep done in 334 s

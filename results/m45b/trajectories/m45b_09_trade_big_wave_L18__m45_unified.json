@@ -1,0 +1,245 @@
+{
+ "schema": "lanegame.viewer_recording",
+ "version": 1,
+ "config": "m45_unified",
+ "rules_revision": 2,
+ "scenario": "m45b_trade_L18_w24",
+ "gap": "equal",
+ "seed": 87900,
+ "names": [
+  "trade1",
+  "g_farm"
+ ],
+ "label": "9. A late trade into the same wave: level 18, 128 resources invested each; the same retaliation is a small share of the bar. Seed 87900: the first seed whose first-turn trade lands and draws minion fire. Configuration m45_unified.",
+ "actions": [
+  [
+   6,
+   0
+  ],
+  [
+   0,
+   0
+  ],
+  [
+   0,
+   0
+  ],
+  [
+   0,
+   0
+  ],
+  [
+   0,
+   0
+  ],
+  [
+   0,
+   0
+  ],
+  [
+   0,
+   0
+  ],
+  [
+   0,
+   0
+  ],
+  [
+   0,
+   0
+  ],
+  [
+   0,
+   0
+  ],
+  [
+   0,
+   0
+  ],
+  [
+   0,
+   0
+  ]
+ ],
+ "labels": [
+  [
+   "LH-T",
+   "LH-H"
+  ],
+  [
+   "LH-H",
+   "LH-H"
+  ],
+  [
+   "LH-H",
+   "LH-H"
+  ],
+  [
+   "LH-H",
+   "LH-H"
+  ],
+  [
+   "LH-H",
+   "LH-H"
+  ],
+  [
+   "LH-H",
+   "LH-H"
+  ],
+  [
+   "LH-H",
+   "LH-H"
+  ],
+  [
+   "LH-H",
+   "LH-H"
+  ],
+  [
+   "LH-H",
+   "LH-H"
+  ],
+  [
+   "LH-H",
+   "LH-H"
+  ],
+  [
+   "LH-H",
+   "LH-H"
+  ],
+  [
+   "LH-H",
+   "LH-H"
+  ]
+ ],
+ "events": [
+  {
+   "turn": 0,
+   "events": [
+    "A Last Hit: removed 1 of 1 HP",
+    "B's minions hit A (retaliation): 2 units = 27 cHP",
+    "A's trade connected: dealt 458 cHP",
+    "B Last Hit: removed 1 of 1 HP"
+   ]
+  },
+  {
+   "turn": 1,
+   "events": [
+    "A Last Hit: removed 0 of 1 HP",
+    "A lost 1 packet(s) (4 HP)",
+    "B Last Hit: removed 1 of 1 HP"
+   ]
+  },
+  {
+   "turn": 2,
+   "events": [
+    "A Last Hit: removed 1 of 1 HP",
+    "B Last Hit: removed 0 of 1 HP",
+    "B's wave crashed into A's tower (21 HP)"
+   ]
+  },
+  {
+   "turn": 3,
+   "events": [
+    "A Last Hit: removed 1 of 1 HP",
+    "A lost 1 packet(s) (3 HP)",
+    "B Last Hit: removed 0 of 1 HP"
+   ]
+  },
+  {
+   "turn": 4,
+   "events": [
+    "A Last Hit: removed 1 of 1 HP",
+    "B Last Hit: removed 0 of 1 HP",
+    "B's wave crashed into A's tower (8 HP)"
+   ]
+  },
+  {
+   "turn": 5,
+   "events": [
+    "A Last Hit: removed 1 of 1 HP",
+    "A's reinforcement merged into its front",
+    "B Last Hit: removed 0 of 1 HP",
+    "B's siege under A's tower ended (the lane bounces back)"
+   ]
+  },
+  {
+   "turn": 6,
+   "events": [
+    "A Last Hit: removed 1 of 1 HP",
+    "B Last Hit: removed 1 of 1 HP"
+   ]
+  },
+  {
+   "turn": 7,
+   "events": [
+    "A Last Hit: removed 1 of 1 HP",
+    "B Last Hit: removed 1 of 1 HP",
+    "B's reinforcement merged into its front"
+   ]
+  },
+  {
+   "turn": 8,
+   "events": [
+    "A Last Hit: removed 1 of 1 HP",
+    "A's reinforcement merged into its front",
+    "B Last Hit: removed 1 of 1 HP"
+   ]
+  },
+  {
+   "turn": 9,
+   "events": [
+    "A Last Hit: removed 1 of 1 HP",
+    "B Last Hit: removed 1 of 1 HP",
+    "B's reinforcement merged into its front"
+   ]
+  },
+  {
+   "turn": 10,
+   "events": [
+    "A Last Hit: removed 1 of 1 HP",
+    "A's reinforcement merged into its front",
+    "B Last Hit: removed 1 of 1 HP"
+   ]
+  },
+  {
+   "turn": 11,
+   "events": [
+    "A Last Hit: removed 1 of 1 HP",
+    "B Last Hit: removed 1 of 1 HP",
+    "B's reinforcement merged into its front"
+   ]
+  }
+ ],
+ "payoff_A": 3.1925000000000003,
+ "turns": 12,
+ "summary": {
+  "A": {
+   "wards": 0,
+   "wards_placed": 0,
+   "wards_interrupted": 0,
+   "minion_units_taken": 2,
+   "minion_centi_taken": 27,
+   "retaliation_ticks_taken": 1,
+   "positional_ticks_taken": 0,
+   "trade_damage_dealt": 458,
+   "capped_trades": 0,
+   "deaths": 0,
+   "recalls": 0,
+   "gold": 5.78
+  },
+  "B": {
+   "wards": 0,
+   "wards_placed": 0,
+   "wards_interrupted": 0,
+   "minion_units_taken": 0,
+   "minion_centi_taken": 0,
+   "retaliation_ticks_taken": 0,
+   "positional_ticks_taken": 0,
+   "trade_damage_dealt": 0,
+   "capped_trades": 0,
+   "deaths": 0,
+   "recalls": 0,
+   "gold": 2.5875
+  }
+ }
+}

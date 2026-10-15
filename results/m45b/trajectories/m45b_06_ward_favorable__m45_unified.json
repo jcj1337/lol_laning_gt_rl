@@ -1,0 +1,563 @@
+{
+ "schema": "lanegame.viewer_recording",
+ "version": 1,
+ "config": "m45_unified",
+ "rules_revision": 2,
+ "scenario": "m45b_vision_forward_L4",
+ "gap": "equal",
+ "seed": 87900,
+ "names": [
+  "g_shove_ward",
+  "g_farm"
+ ],
+ "label": "6. A favourable Ward: A pushes (Shove) and wards whenever its vision is down, its wave is forward and B's wave is not in A's half (g_shove_ward), so its protected turns are spent exposed; B farms. Seed 87900: the first seed whose first placed ward is followed by exposed turns. Configuration m45_unified.",
+ "actions": [
+  [
+   30,
+   0
+  ],
+  [
+   1,
+   0
+  ],
+  [
+   16,
+   0
+  ],
+  [
+   16,
+   0
+  ],
+  [
+   16,
+   0
+  ],
+  [
+   16,
+   0
+  ],
+  [
+   1,
+   0
+  ],
+  [
+   30,
+   0
+  ],
+  [
+   1,
+   0
+  ],
+  [
+   1,
+   0
+  ],
+  [
+   1,
+   0
+  ],
+  [
+   16,
+   0
+  ],
+  [
+   1,
+   0
+  ],
+  [
+   16,
+   0
+  ],
+  [
+   1,
+   0
+  ],
+  [
+   30,
+   0
+  ],
+  [
+   1,
+   0
+  ],
+  [
+   1,
+   0
+  ],
+  [
+   1,
+   0
+  ],
+  [
+   16,
+   0
+  ],
+  [
+   16,
+   0
+  ],
+  [
+   16,
+   0
+  ],
+  [
+   16,
+   0
+  ],
+  [
+   16,
+   0
+  ],
+  [
+   16,
+   0
+  ],
+  [
+   16,
+   0
+  ],
+  [
+   16,
+   0
+  ],
+  [
+   16,
+   0
+  ],
+  [
+   16,
+   0
+  ],
+  [
+   9,
+   0
+  ]
+ ],
+ "labels": [
+  [
+   "WARD",
+   "LH-H"
+  ],
+  [
+   "SH-H",
+   "LH-H"
+  ],
+  [
+   "SH-H+P",
+   "LH-H"
+  ],
+  [
+   "SH-H+P",
+   "LH-H"
+  ],
+  [
+   "SH-H+P",
+   "LH-H"
+  ],
+  [
+   "SH-H+P",
+   "LH-H"
+  ],
+  [
+   "SH-H",
+   "LH-H"
+  ],
+  [
+   "WARD",
+   "LH-H"
+  ],
+  [
+   "SH-H",
+   "LH-H"
+  ],
+  [
+   "SH-H",
+   "LH-H"
+  ],
+  [
+   "SH-H",
+   "LH-H"
+  ],
+  [
+   "SH-H+P",
+   "LH-H"
+  ],
+  [
+   "SH-H",
+   "LH-H"
+  ],
+  [
+   "SH-H+P",
+   "LH-H"
+  ],
+  [
+   "SH-H",
+   "LH-H"
+  ],
+  [
+   "WARD",
+   "LH-H"
+  ],
+  [
+   "SH-H",
+   "LH-H"
+  ],
+  [
+   "SH-H",
+   "LH-H"
+  ],
+  [
+   "SH-H",
+   "LH-H"
+  ],
+  [
+   "SH-H+P",
+   "LH-H"
+  ],
+  [
+   "SH-H+P",
+   "LH-H"
+  ],
+  [
+   "SH-H+P",
+   "LH-H"
+  ],
+  [
+   "SH-H+P",
+   "LH-H"
+  ],
+  [
+   "SH-H+P",
+   "LH-H"
+  ],
+  [
+   "SH-H+P",
+   "LH-H"
+  ],
+  [
+   "SH-H+P",
+   "LH-H"
+  ],
+  [
+   "SH-H+P",
+   "LH-H"
+  ],
+  [
+   "SH-H+P",
+   "LH-H"
+  ],
+  [
+   "SH-H+P",
+   "LH-H"
+  ],
+  [
+   "LH-S",
+   "LH-H"
+  ]
+ ],
+ "events": [
+  {
+   "turn": 0,
+   "events": [
+    "A placed a ward at W (vision 6 turns)",
+    "A's reinforcement merged into its front",
+    "B Last Hit: removed 1 of 1 HP",
+    "B lost 1 packet(s) (4 HP)"
+   ]
+  },
+  {
+   "turn": 1,
+   "events": [
+    "A Shove: removed 0 of 5 HP",
+    "A's wave crashed into B's tower (22 HP)",
+    "A damaged B's tower: +200",
+    "B Last Hit: removed 1 of 1 HP"
+   ]
+  },
+  {
+   "turn": 2,
+   "events": [
+    "A Shove: removed 5 of 5 HP",
+    "A damaged B's tower: +503",
+    "B Last Hit: removed 1 of 1 HP",
+    "B lost 1 packet(s) (8 HP)"
+   ]
+  },
+  {
+   "turn": 3,
+   "events": [
+    "A Shove: removed 0 of 5 HP",
+    "A damaged B's tower: +603",
+    "B Last Hit: removed 1 of 1 HP",
+    "B reached level 5"
+   ]
+  },
+  {
+   "turn": 4,
+   "events": [
+    "A Shove: removed 5 of 5 HP",
+    "A's wave crashed into B's tower (8 HP)",
+    "A damaged B's tower: +503",
+    "A broke 1 plate(s): +1.00 gold",
+    "A reached level 5",
+    "B Last Hit: removed 1 of 1 HP"
+   ]
+  },
+  {
+   "turn": 5,
+   "events": [
+    "A Shove: removed 0 of 5 HP",
+    "A's siege under B's tower ended (the lane bounces back)",
+    "A damaged B's tower: +528",
+    "B Last Hit: removed 1 of 1 HP",
+    "B lost 1 packet(s) (1 HP)"
+   ]
+  },
+  {
+   "turn": 6,
+   "events": [
+    "A Shove: removed 0 of 5 HP",
+    "A's wave crashed into B's tower (7 HP)",
+    "B Last Hit: removed 1 of 1 HP"
+   ]
+  },
+  {
+   "turn": 7,
+   "events": [
+    "A placed a ward at W (vision 6 turns)",
+    "A's siege under B's tower ended (the lane bounces back)",
+    "B Last Hit: removed 1 of 1 HP",
+    "B reached level 6"
+   ]
+  },
+  {
+   "turn": 8,
+   "events": [
+    "A Shove: removed 5 of 5 HP",
+    "B Last Hit: removed 1 of 1 HP",
+    "B's reinforcement merged into its front"
+   ]
+  },
+  {
+   "turn": 9,
+   "events": [
+    "A Shove: removed 5 of 5 HP",
+    "A's reinforcement merged into its front",
+    "B Last Hit: removed 1 of 1 HP"
+   ]
+  },
+  {
+   "turn": 10,
+   "events": [
+    "A Shove: removed 3 of 5 HP",
+    "A's wave crashed into B's tower (9 HP)",
+    "A reached level 6",
+    "B Last Hit: removed 1 of 1 HP",
+    "B lost 1 packet(s) (5 HP)"
+   ]
+  },
+  {
+   "turn": 11,
+   "events": [
+    "A Shove: removed 4 of 6 HP",
+    "A's siege under B's tower ended (the lane bounces back)",
+    "A damaged B's tower: +554",
+    "B Last Hit: removed 1 of 1 HP",
+    "B lost 1 packet(s) (5 HP)"
+   ]
+  },
+  {
+   "turn": 12,
+   "events": [
+    "A Shove: removed 0 of 6 HP",
+    "A's wave crashed into B's tower (7 HP)",
+    "B Last Hit: removed 1 of 1 HP"
+   ]
+  },
+  {
+   "turn": 13,
+   "events": [
+    "A Shove: removed 6 of 6 HP",
+    "A's siege under B's tower ended (the lane bounces back)",
+    "A damaged B's tower: +554",
+    "B Last Hit: removed 1 of 1 HP",
+    "B reached level 7"
+   ]
+  },
+  {
+   "turn": 14,
+   "events": [
+    "A Shove: removed 0 of 6 HP",
+    "A's wave crashed into B's tower (6 HP)",
+    "B Last Hit: removed 1 of 1 HP",
+    "B lost 1 packet(s) (1 HP)"
+   ]
+  },
+  {
+   "turn": 15,
+   "events": [
+    "A placed a ward at W (vision 6 turns)",
+    "A's siege under B's tower ended (the lane bounces back)",
+    "B Last Hit: removed 1 of 1 HP",
+    "B was ganked (p=0.04): 134 cHP"
+   ]
+  },
+  {
+   "turn": 16,
+   "events": [
+    "A Shove: removed 6 of 6 HP",
+    "B Last Hit: removed 1 of 1 HP",
+    "B's reinforcement merged into its front"
+   ]
+  },
+  {
+   "turn": 17,
+   "events": [
+    "A Shove: removed 4 of 6 HP",
+    "A's reinforcement merged into its front",
+    "A reached level 7",
+    "B Last Hit: removed 0 of 1 HP",
+    "B lost 1 packet(s) (7 HP)"
+   ]
+  },
+  {
+   "turn": 18,
+   "events": [
+    "A Shove: removed 0 of 6 HP",
+    "A's wave crashed into B's tower (11 HP)",
+    "B Last Hit: removed 1 of 1 HP"
+   ]
+  },
+  {
+   "turn": 19,
+   "events": [
+    "A Shove: removed 6 of 6 HP",
+    "A damaged B's tower: +582",
+    "A broke 1 plate(s): +1.00 gold",
+    "B Last Hit: removed 1 of 1 HP",
+    "B lost 1 packet(s) (7 HP)",
+    "B reached level 8"
+   ]
+  },
+  {
+   "turn": 20,
+   "events": [
+    "A Shove: removed 6 of 6 HP",
+    "A's wave crashed into B's tower (8 HP)",
+    "A damaged B's tower: +582",
+    "B Last Hit: removed 1 of 1 HP",
+    "B lost 1 packet(s) (8 HP)"
+   ]
+  },
+  {
+   "turn": 21,
+   "events": [
+    "A Shove: removed 0 of 6 HP",
+    "A damaged B's tower: +682",
+    "B Last Hit: removed 1 of 1 HP"
+   ]
+  },
+  {
+   "turn": 22,
+   "events": [
+    "A Shove: removed 6 of 6 HP",
+    "A's wave crashed into B's tower (8 HP)",
+    "A damaged B's tower: +582",
+    "A reached level 8",
+    "B Last Hit: removed 0 of 1 HP",
+    "B lost 1 packet(s) (8 HP)"
+   ]
+  },
+  {
+   "turn": 23,
+   "events": [
+    "A Shove: removed 0 of 6 HP",
+    "A damaged B's tower: +127",
+    "A broke 1 plate(s): +1.00 gold",
+    "B Last Hit: removed 1 of 1 HP"
+   ]
+  },
+  {
+   "turn": 24,
+   "events": [
+    "A Shove: removed 6 of 6 HP",
+    "A's wave crashed into B's tower (8 HP)",
+    "B Last Hit: removed 0 of 1 HP",
+    "B lost 1 packet(s) (8 HP)"
+   ]
+  },
+  {
+   "turn": 25,
+   "events": [
+    "A Shove: removed 0 of 6 HP",
+    "B Last Hit: removed 1 of 1 HP"
+   ]
+  },
+  {
+   "turn": 26,
+   "events": [
+    "A Shove: removed 6 of 6 HP",
+    "A's wave crashed into B's tower (8 HP)",
+    "B Last Hit: removed 0 of 1 HP",
+    "B lost 1 packet(s) (8 HP)"
+   ]
+  },
+  {
+   "turn": 27,
+   "events": [
+    "A Shove: removed 0 of 6 HP",
+    "B Last Hit: removed 1 of 1 HP",
+    "B reached level 9"
+   ]
+  },
+  {
+   "turn": 28,
+   "events": [
+    "A Shove: removed 6 of 6 HP",
+    "A was ganked (p=0.15): 564 cHP",
+    "A's wave crashed into B's tower (8 HP)",
+    "B Last Hit: removed 0 of 1 HP",
+    "B lost 1 packet(s) (8 HP)"
+   ]
+  },
+  {
+   "turn": 29,
+   "events": [
+    "A Last Hit: removed 0 of 1 HP",
+    "B Last Hit: removed 1 of 1 HP"
+   ]
+  }
+ ],
+ "payoff_A": 2.3375000000000004,
+ "turns": 30,
+ "summary": {
+  "A": {
+   "wards": 3,
+   "wards_placed": 3,
+   "wards_interrupted": 0,
+   "minion_units_taken": 0,
+   "minion_centi_taken": 0,
+   "retaliation_ticks_taken": 0,
+   "positional_ticks_taken": 0,
+   "trade_damage_dealt": 0,
+   "capped_trades": 0,
+   "deaths": 0,
+   "recalls": 0,
+   "gold": 15.15
+  },
+  "B": {
+   "wards": 0,
+   "wards_placed": 0,
+   "wards_interrupted": 0,
+   "minion_units_taken": 0,
+   "minion_centi_taken": 0,
+   "retaliation_ticks_taken": 0,
+   "positional_ticks_taken": 0,
+   "trade_damage_dealt": 0,
+   "capped_trades": 0,
+   "deaths": 0,
+   "recalls": 0,
+   "gold": 12.8125
+  }
+ }
+}

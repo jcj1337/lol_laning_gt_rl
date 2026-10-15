@@ -1,0 +1,395 @@
+{
+ "schema": "lanegame.viewer_recording",
+ "version": 1,
+ "config": "m45_calibrated",
+ "scenario": "m45b_vision_neutral_L4",
+ "gap": "equal",
+ "seed": 87900,
+ "names": [
+  "g_ward",
+  "g_bully"
+ ],
+ "label": "7. An interrupted Ward: A farms and wards from the neutral lane (g_ward); B trades whenever A is catchable (g_bully), reaches the cell next to W and interrupts the ward. Seed 87900: the first seed whose first Ward is interrupted. Configuration m45_calibrated.",
+ "actions": [
+  [
+   30,
+   6
+  ],
+  [
+   30,
+   6
+  ],
+  [
+   30,
+   6
+  ],
+  [
+   30,
+   6
+  ],
+  [
+   0,
+   6
+  ],
+  [
+   9,
+   6
+  ],
+  [
+   9,
+   0
+  ],
+  [
+   12,
+   0
+  ],
+  [
+   45,
+   9
+  ],
+  [
+   0,
+   0
+  ],
+  [
+   0,
+   0
+  ],
+  [
+   0,
+   0
+  ],
+  [
+   0,
+   0
+  ],
+  [
+   0,
+   0
+  ],
+  [
+   0,
+   0
+  ],
+  [
+   0,
+   9
+  ],
+  [
+   0,
+   45
+  ],
+  [
+   0,
+   45
+  ],
+  [
+   0,
+   45
+  ],
+  [
+   0,
+   6
+  ]
+ ],
+ "labels": [
+  [
+   "WARD",
+   "LH-T"
+  ],
+  [
+   "WARD",
+   "LH-T"
+  ],
+  [
+   "WARD",
+   "LH-T"
+  ],
+  [
+   "WARD",
+   "LH-T"
+  ],
+  [
+   "LH-H",
+   "LH-T"
+  ],
+  [
+   "LH-S",
+   "LH-T"
+  ],
+  [
+   "LH-S",
+   "LH-H"
+  ],
+  [
+   "LH-R",
+   "LH-H"
+  ],
+  [
+   "ABSENT",
+   "LH-S"
+  ],
+  [
+   "LH-H",
+   "LH-H"
+  ],
+  [
+   "LH-H",
+   "LH-H"
+  ],
+  [
+   "LH-H",
+   "LH-H"
+  ],
+  [
+   "LH-H",
+   "LH-H"
+  ],
+  [
+   "LH-H",
+   "LH-H"
+  ],
+  [
+   "LH-H",
+   "LH-H"
+  ],
+  [
+   "LH-H",
+   "LH-S"
+  ],
+  [
+   "LH-H",
+   "ABSENT"
+  ],
+  [
+   "LH-H",
+   "ABSENT"
+  ],
+  [
+   "LH-H",
+   "ABSENT"
+  ],
+  [
+   "LH-H",
+   "LH-T"
+  ]
+ ],
+ "events": [
+  {
+   "turn": 0,
+   "events": [
+    "A's ward was interrupted",
+    "A's reinforcement merged into its front",
+    "B Last Hit: removed 1 of 1 HP",
+    "A's minions hit B (retaliation): 3 units = 119 cHP",
+    "B's trade connected: dealt 126 cHP",
+    "B's reinforcement merged into its front"
+   ]
+  },
+  {
+   "turn": 1,
+   "events": [
+    "A's ward was interrupted",
+    "B Last Hit: removed 1 of 1 HP",
+    "A's minions hit B (retaliation): 2 units = 79 cHP",
+    "B's trade connected: dealt 126 cHP"
+   ]
+  },
+  {
+   "turn": 2,
+   "events": [
+    "A's ward was interrupted",
+    "B Last Hit: removed 1 of 1 HP",
+    "A's minions hit B (retaliation): 1 units = 40 cHP",
+    "B's trade connected: dealt 126 cHP"
+   ]
+  },
+  {
+   "turn": 3,
+   "events": [
+    "A placed a ward at W (vision 6 turns)",
+    "A's reinforcement merged into its front",
+    "B Last Hit: removed 1 of 1 HP",
+    "B's trade connected: dealt 0 cHP",
+    "B's reinforcement merged into its front",
+    "B reached level 5"
+   ]
+  },
+  {
+   "turn": 4,
+   "events": [
+    "A Last Hit: removed 1 of 1 HP",
+    "A lost 1 packet(s) (5 HP)",
+    "B Last Hit: removed 0 of 1 HP",
+    "A's minions hit B (retaliation): 1 units = 37 cHP",
+    "B's trade connected: dealt 132 cHP"
+   ]
+  },
+  {
+   "turn": 5,
+   "events": [
+    "A Last Hit: removed 0 of 1 HP",
+    "B's minions hit A (positional): 3 units = 119 cHP",
+    "B Last Hit: removed 1 of 1 HP",
+    "B's trade connected: dealt 0 cHP",
+    "A's tower shot B for 122 cHP"
+   ]
+  },
+  {
+   "turn": 6,
+   "events": [
+    "A Last Hit: removed 0 of 1 HP",
+    "A's reinforcement merged into its front",
+    "B Last Hit: removed 1 of 1 HP",
+    "B reached level 6"
+   ]
+  },
+  {
+   "turn": 7,
+   "events": [
+    "A recalled",
+    "A lost 1 packet(s) (2 HP)",
+    "B Last Hit: removed 0 of 1 HP",
+    "B's reinforcement merged into its front",
+    "B's wave crashed into A's tower (18 HP)"
+   ]
+  },
+  {
+   "turn": 8,
+   "events": [
+    "A invested 0.38 gold at base",
+    "A returns next turn",
+    "B Last Hit: removed 0 of 1 HP",
+    "B's wave crashed into A's tower (16 HP)"
+   ]
+  },
+  {
+   "turn": 9,
+   "events": [
+    "A Last Hit: removed 1 of 1 HP",
+    "A lost 1 packet(s) (1 HP)",
+    "B Last Hit: removed 0 of 1 HP",
+    "B damaged A's tower: +200"
+   ]
+  },
+  {
+   "turn": 10,
+   "events": [
+    "A Last Hit: removed 1 of 1 HP",
+    "A reached level 5",
+    "B Last Hit: removed 0 of 1 HP",
+    "B's wave crashed into A's tower (8 HP)"
+   ]
+  },
+  {
+   "turn": 11,
+   "events": [
+    "A Last Hit: removed 1 of 1 HP",
+    "A's reinforcement merged into its front",
+    "B Last Hit: removed 0 of 1 HP"
+   ]
+  },
+  {
+   "turn": 12,
+   "events": [
+    "A Last Hit: removed 1 of 1 HP",
+    "A reached level 6",
+    "B Last Hit: removed 0 of 1 HP",
+    "B's wave crashed into A's tower (8 HP)"
+   ]
+  },
+  {
+   "turn": 13,
+   "events": [
+    "A Last Hit: removed 1 of 1 HP",
+    "A's reinforcement merged into its front",
+    "B Last Hit: removed 0 of 1 HP"
+   ]
+  },
+  {
+   "turn": 14,
+   "events": [
+    "A Last Hit: removed 0 of 1 HP",
+    "B Last Hit: removed 0 of 1 HP",
+    "B was ganked (p=0.11): 384 cHP",
+    "B's wave crashed into A's tower (8 HP)"
+   ]
+  },
+  {
+   "turn": 15,
+   "events": [
+    "A Last Hit: removed 1 of 1 HP",
+    "B Last Hit: removed 0 of 1 HP",
+    "B was ganked (p=0.10): 128 cHP",
+    "B DIED (A bounty 2.00)",
+    "B's siege under A's tower ended (the lane bounces back)"
+   ]
+  },
+  {
+   "turn": 16,
+   "events": [
+    "A Last Hit: removed 1 of 1 HP",
+    "A's reinforcement merged into its front",
+    "A reached level 7"
+   ]
+  },
+  {
+   "turn": 17,
+   "events": [
+    "A Last Hit: removed 1 of 1 HP",
+    "B's reinforcement merged into its front"
+   ]
+  },
+  {
+   "turn": 18,
+   "events": [
+    "A Last Hit: removed 1 of 1 HP",
+    "A's reinforcement merged into its front",
+    "B invested 3.76 gold at base",
+    "B returns next turn"
+   ]
+  },
+  {
+   "turn": 19,
+   "events": [
+    "A Last Hit: removed 0 of 1 HP",
+    "B Last Hit: removed 0 of 1 HP",
+    "A's minions hit B (retaliation): 2 units = 68 cHP",
+    "B's trade connected: dealt 155 cHP",
+    "B lost 1 packet(s) (2 HP)"
+   ]
+  }
+ ],
+ "payoff_A": 5.4275,
+ "turns": 20,
+ "summary": {
+  "A": {
+   "wards": 4,
+   "wards_placed": 1,
+   "wards_interrupted": 3,
+   "minion_units_taken": 3,
+   "minion_centi_taken": 119,
+   "retaliation_ticks_taken": 0,
+   "positional_ticks_taken": 1,
+   "trade_damage_dealt": 0,
+   "capped_trades": 0,
+   "deaths": 0,
+   "recalls": 1,
+   "gold": 9.275
+  },
+  "B": {
+   "wards": 0,
+   "wards_placed": 0,
+   "wards_interrupted": 0,
+   "minion_units_taken": 9,
+   "minion_centi_taken": 343,
+   "retaliation_ticks_taken": 7,
+   "positional_ticks_taken": 0,
+   "trade_damage_dealt": 665,
+   "capped_trades": 0,
+   "deaths": 1,
+   "recalls": 0,
+   "gold": 3.8475
+  }
+ }
+}

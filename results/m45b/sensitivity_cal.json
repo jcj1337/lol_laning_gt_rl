@@ -1,0 +1,1661 @@
+{
+ "meta": {
+  "study": "M4.5b",
+  "commit": "8dc5acf54061d18e5f5a3fbd6a84460ee22433fc",
+  "working_tree_dirty": true,
+  "timestamp": "2026-10-14 18:07:56",
+  "python": "3.13.9",
+  "numpy": "2.5.3",
+  "elapsed_s": 667.2
+ },
+ "grid": {
+  "farm_spot_rule": [
+   "last_front"
+  ],
+  "minion_damage_alpha": [
+   30,
+   50,
+   80
+  ],
+  "minion_retaliation_delay": [
+   0,
+   1
+  ]
+ },
+ "rows": [
+  {
+   "overrides": {
+    "farm_spot_rule": "last_front",
+    "minion_damage_alpha": 30,
+    "minion_retaliation_delay": 0
+   },
+   "trade_B1": -0.0017857142857142794,
+   "trade_B2": 0.09472222222222222,
+   "trade_B3": 0.11607142857142858,
+   "trade_B4": 0.068826590565721,
+   "trade_B5": [
+    1.0183150183150182,
+    0.48135913166588007,
+    0.1995373048004627,
+    0.068826590565721
+   ],
+   "trade_B6": [
+    0.09472222222222222,
+    0.04246031746031745,
+    -0.0017857142857142794
+   ],
+   "trade_pass": 6,
+   "trade_mt_L2_8_G20": [
+    -0.5921797031390227,
+    0.1030156156888585,
+    200
+   ],
+   "trade_mt_L2_24_G20": [
+    -0.1934859405074453,
+    0.09575341207833131,
+    200
+   ],
+   "freeze_L10_large_h12_premium_split": 0.1393767050557231,
+   "freeze_L10_large_h12_value": 3.8260104316051535,
+   "freeze_L10_large_h12_guard_minus_passive_vs_shove": [
+    0.6451332002211514,
+    0.6134348999537949,
+    40
+   ],
+   "freeze_L10_large_h12_guard_minus_shove_vs_shove": [
+    -0.11931954858189837,
+    0.5364025417543786,
+    40
+   ],
+   "freeze_L10_large_h12_support": {
+    "fz_passive_sh": 0.08189446295125187,
+    "fz_guard_sh": 0.07635094309014233,
+    "g_shove": 0.8417545939586059
+   },
+   "freeze_L4_equal_h12_premium_split": -0.020242453833255646,
+   "freeze_L4_equal_h12_value": 0.36033800069368277,
+   "freeze_L4_equal_h12_guard_minus_passive_vs_shove": [
+    -0.0855389558295569,
+    0.13829455795612364,
+    40
+   ],
+   "freeze_L4_equal_h12_guard_minus_shove_vs_shove": [
+    -0.09703226986995403,
+    0.1628085845833553,
+    40
+   ],
+   "freeze_L4_equal_h12_support": {
+    "shove_recall": 1.0
+   },
+   "vision_neutral_G50": [
+    -0.29096708185047426,
+    0.38072244815747885,
+    200
+   ],
+   "vision_neutral_placed": 0.405,
+   "vision_frozen_on_G50": [
+    -0.046460852735106764,
+    0.3766880575427228,
+    200
+   ],
+   "vision_frozen_on_placed": 0.405,
+   "zoning_passive_safe_cost": [
+    7.212109374999994,
+    0.4662044367113102,
+    64
+   ],
+   "zoning_threat_only": [
+    0.44960937500000375,
+    0.44187282305358433,
+    64
+   ],
+   "zoning_combat_guard": [
+    0.7638671874999987,
+    0.46711047089881486,
+    64
+   ],
+   "matrix_support": {
+    "g_shove_sr": 1.0
+   },
+   "matrix_shove_margin": -0.013071759778266745,
+   "matrix_n_support": 1
+  },
+  {
+   "overrides": {
+    "farm_spot_rule": "last_front",
+    "minion_damage_alpha": 30,
+    "minion_retaliation_delay": 1
+   },
+   "trade_B1": 0.0575,
+   "trade_B2": 0.11916666666666667,
+   "trade_B3": 0.14964285714285713,
+   "trade_B4": 0.026859157293939902,
+   "trade_B5": [
+    0.41025641025641024,
+    0.193487494100991,
+    0.08097165991902834,
+    0.026859157293939902
+   ],
+   "trade_B6": [
+    0.11916666666666667,
+    0.0861111111111111,
+    0.0575
+   ],
+   "trade_pass": 5,
+   "trade_mt_L2_8_G20": [
+    -0.023195554894622265,
+    0.06696398980450317,
+    200
+   ],
+   "trade_mt_L2_24_G20": [
+    -0.23188397417061082,
+    0.10281975093343575,
+    200
+   ],
+   "freeze_L10_large_h12_premium_split": 0.1106296107270738,
+   "freeze_L10_large_h12_value": 3.831933573077964,
+   "freeze_L10_large_h12_guard_minus_passive_vs_shove": [
+    0.7690711252226368,
+    0.7010692663110455,
+    40
+   ],
+   "freeze_L10_large_h12_guard_minus_shove_vs_shove": [
+    0.0046183764195869784,
+    0.625729647757467,
+    40
+   ],
+   "freeze_L10_large_h12_support": {
+    "fz_guard_sh": 0.29197386600852787,
+    "g_shove": 0.7080261339914722
+   },
+   "freeze_L4_equal_h12_premium_split": -0.020242453833255646,
+   "freeze_L4_equal_h12_value": 0.36033800069368277,
+   "freeze_L4_equal_h12_guard_minus_passive_vs_shove": [
+    -0.0855389558295569,
+    0.13829455795612364,
+    40
+   ],
+   "freeze_L4_equal_h12_guard_minus_shove_vs_shove": [
+    -0.09703226986995403,
+    0.1628085845833553,
+    40
+   ],
+   "freeze_L4_equal_h12_support": {
+    "shove_recall": 1.0
+   },
+   "vision_neutral_G50": [
+    0.06996711943359452,
+    0.3792007201013105,
+    200
+   ],
+   "vision_neutral_placed": 0.405,
+   "vision_frozen_on_G50": [
+    -0.18236638828830515,
+    0.3837996247405816,
+    200
+   ],
+   "vision_frozen_on_placed": 0.405,
+   "zoning_passive_safe_cost": [
+    7.212109374999994,
+    0.4662044367113102,
+    64
+   ],
+   "zoning_threat_only": [
+    0.44960937500000375,
+    0.44187282305358433,
+    64
+   ],
+   "zoning_combat_guard": [
+    0.9552734374999996,
+    0.5106890222046766,
+    64
+   ],
+   "matrix_support": {
+    "g_shove_sr": 1.0
+   },
+   "matrix_shove_margin": -0.013071759778266745,
+   "matrix_n_support": 1
+  },
+  {
+   "overrides": {
+    "farm_spot_rule": "last_front",
+    "minion_damage_alpha": 50,
+    "minion_retaliation_delay": 0
+   },
+   "trade_B1": -0.06749999999999998,
+   "trade_B2": 0.0790079365079365,
+   "trade_B3": 0.07821428571428571,
+   "trade_B4": 0.11415141849924458,
+   "trade_B5": [
+    1.692307692307692,
+    0.8022652194431334,
+    0.335454019664546,
+    0.11415141849924458
+   ],
+   "trade_B6": [
+    0.0790079365079365,
+    -0.001984126984126991,
+    -0.06749999999999998
+   ],
+   "trade_pass": 6,
+   "trade_mt_L2_8_G20": [
+    -0.6238016325488195,
+    0.11058679475898019,
+    200
+   ],
+   "trade_mt_L2_24_G20": [
+    -0.32844348349640123,
+    0.12009096634574881,
+    200
+   ],
+   "freeze_L10_large_h12_premium_split": 0.16766299495833564,
+   "freeze_L10_large_h12_value": 3.815020630385023,
+   "freeze_L10_large_h12_guard_minus_passive_vs_shove": [
+    0.43933741290309314,
+    0.5407425456568346,
+    40
+   ],
+   "freeze_L10_large_h12_guard_minus_shove_vs_shove": [
+    -0.32511533589995667,
+    0.5094909290422007,
+    40
+   ],
+   "freeze_L10_large_h12_support": {
+    "fz_passive_sh": 0.10818773132515787,
+    "g_shove": 0.8918122686748421
+   },
+   "freeze_L4_equal_h12_premium_split": -0.020242453833255646,
+   "freeze_L4_equal_h12_value": 0.36033800069368277,
+   "freeze_L4_equal_h12_guard_minus_passive_vs_shove": [
+    -0.0855389558295569,
+    0.13829455795612364,
+    40
+   ],
+   "freeze_L4_equal_h12_guard_minus_shove_vs_shove": [
+    -0.09703226986995403,
+    0.1628085845833553,
+    40
+   ],
+   "freeze_L4_equal_h12_support": {
+    "shove_recall": 1.0
+   },
+   "vision_neutral_G50": [
+    -0.513121084261169,
+    0.3850916680931002,
+    200
+   ],
+   "vision_neutral_placed": 0.405,
+   "vision_frozen_on_G50": [
+    0.01831108579121251,
+    0.38776851180368666,
+    200
+   ],
+   "vision_frozen_on_placed": 0.405,
+   "zoning_passive_safe_cost": [
+    7.177148437499994,
+    0.46561040866781067,
+    64
+   ],
+   "zoning_threat_only": [
+    0.43105468750000375,
+    0.4436152436214576,
+    64
+   ],
+   "zoning_combat_guard": [
+    0.8150390624999988,
+    0.5273537431301134,
+    64
+   ],
+   "matrix_support": {
+    "g_shove_sr": 1.0
+   },
+   "matrix_shove_margin": -0.013071759778266773,
+   "matrix_n_support": 1
+  },
+  {
+   "overrides": {
+    "farm_spot_rule": "last_front",
+    "minion_damage_alpha": 50,
+    "minion_retaliation_delay": 1
+   },
+   "trade_B1": 0.03107142857142857,
+   "trade_B2": 0.11916666666666667,
+   "trade_B3": 0.13464285714285715,
+   "trade_B4": 0.045324827933523576,
+   "trade_B5": [
+    0.6813186813186813,
+    0.3209060877772534,
+    0.13302486986697515,
+    0.045324827933523576
+   ],
+   "trade_B6": [
+    0.11916666666666667,
+    0.07182539682539682,
+    0.03107142857142857
+   ],
+   "trade_pass": 5,
+   "trade_mt_L2_8_G20": [
+    -0.023195554894622265,
+    0.06696398980450317,
+    200
+   ],
+   "trade_mt_L2_24_G20": [
+    -0.2562346496615261,
+    0.1281678847210472,
+    200
+   ],
+   "freeze_L10_large_h12_premium_split": 0.13061919361272284,
+   "freeze_L10_large_h12_value": 3.8168476709072747,
+   "freeze_L10_large_h12_guard_minus_passive_vs_shove": [
+    0.5406751495269577,
+    0.6456930129199503,
+    40
+   ],
+   "freeze_L10_large_h12_guard_minus_shove_vs_shove": [
+    -0.22377759927609203,
+    0.6064841950754017,
+    40
+   ],
+   "freeze_L10_large_h12_support": {
+    "fz_passive_sh": 0.08655545567822781,
+    "fz_guard_sh": 0.06573406858637759,
+    "g_shove": 0.8477104757353946
+   },
+   "freeze_L4_equal_h12_premium_split": -0.020242453833255646,
+   "freeze_L4_equal_h12_value": 0.36033800069368277,
+   "freeze_L4_equal_h12_guard_minus_passive_vs_shove": [
+    -0.0855389558295569,
+    0.13829455795612364,
+    40
+   ],
+   "freeze_L4_equal_h12_guard_minus_shove_vs_shove": [
+    -0.09703226986995403,
+    0.1628085845833553,
+    40
+   ],
+   "freeze_L4_equal_h12_support": {
+    "shove_recall": 1.0
+   },
+   "vision_neutral_G50": [
+    -0.16242641351364434,
+    0.38283085220612334,
+    200
+   ],
+   "vision_neutral_placed": 0.405,
+   "vision_frozen_on_G50": [
+    -0.42027010376939367,
+    0.3835326148541482,
+    200
+   ],
+   "vision_frozen_on_placed": 0.405,
+   "zoning_passive_safe_cost": [
+    7.177148437499994,
+    0.46561040866781067,
+    64
+   ],
+   "zoning_threat_only": [
+    0.43105468750000375,
+    0.4436152436214576,
+    64
+   ],
+   "zoning_combat_guard": [
+    0.9980468749999996,
+    0.5587836889472345,
+    64
+   ],
+   "matrix_support": {
+    "g_shove_sr": 1.0
+   },
+   "matrix_shove_margin": -0.013071759778266773,
+   "matrix_n_support": 1
+  },
+  {
+   "overrides": {
+    "farm_spot_rule": "last_front",
+    "minion_damage_alpha": 80,
+    "minion_retaliation_delay": 0
+   },
+   "trade_B1": -0.1667857142857143,
+   "trade_B2": 0.054563492063492064,
+   "trade_B3": 0.021785714285714297,
+   "trade_B4": 0.1812993117340943,
+   "trade_B5": [
+    2.7106227106227108,
+    1.2836243511090135,
+    0.5349913244650087,
+    0.1812993117340943
+   ],
+   "trade_B6": [
+    0.054563492063492064,
+    -0.06785714285714288,
+    -0.1667857142857143
+   ],
+   "trade_pass": 4,
+   "trade_mt_L2_8_G20": [
+    -0.6533163936904749,
+    0.14015620106494617,
+    200
+   ],
+   "trade_mt_L2_24_G20": [
+    -0.18386118902095894,
+    0.11331171162036352,
+    200
+   ],
+   "freeze_L10_large_h12_premium_split": 0.14581065451213038,
+   "freeze_L10_large_h12_value": 3.8148232501030925,
+   "freeze_L10_large_h12_guard_minus_passive_vs_shove": [
+    0.2044271554049753,
+    0.68610517606651,
+    40
+   ],
+   "freeze_L10_large_h12_guard_minus_shove_vs_shove": [
+    -0.5600255933980745,
+    0.6181188203212699,
+    40
+   ],
+   "freeze_L10_large_h12_support": {
+    "fz_passive_sh": 0.10844592947048436,
+    "g_shove": 0.8915540705295156
+   },
+   "freeze_L4_equal_h12_premium_split": -0.005541524390591122,
+   "freeze_L4_equal_h12_value": 0.36033800069368277,
+   "freeze_L4_equal_h12_guard_minus_passive_vs_shove": [
+    -0.0855389558295569,
+    0.13829455795612364,
+    40
+   ],
+   "freeze_L4_equal_h12_guard_minus_shove_vs_shove": [
+    -0.09703226986995403,
+    0.1628085845833553,
+    40
+   ],
+   "freeze_L4_equal_h12_support": {
+    "shove_recall": 1.0
+   },
+   "vision_neutral_G50": [
+    -0.3187081633736518,
+    0.4023431972967359,
+    200
+   ],
+   "vision_neutral_placed": 0.405,
+   "vision_frozen_on_G50": [
+    0.25609235380229173,
+    0.40414954390892377,
+    200
+   ],
+   "vision_frozen_on_placed": 0.405,
+   "zoning_passive_safe_cost": [
+    7.121289062499994,
+    0.4611379321713608,
+    64
+   ],
+   "zoning_threat_only": [
+    0.41347656250000375,
+    0.44567572761636576,
+    64
+   ],
+   "zoning_combat_guard": [
+    0.8203124999999993,
+    0.5386145419752574,
+    64
+   ],
+   "matrix_support": {
+    "g_shove_sr": 1.0
+   },
+   "matrix_shove_margin": -0.013071759778266773,
+   "matrix_n_support": 1
+  },
+  {
+   "overrides": {
+    "farm_spot_rule": "last_front",
+    "minion_damage_alpha": 80,
+    "minion_retaliation_delay": 1
+   },
+   "trade_B1": -0.008214285714285702,
+   "trade_B2": 0.11916666666666667,
+   "trade_B3": 0.1117857142857143,
+   "trade_B4": 0.07218398522746347,
+   "trade_B5": [
+    1.0842490842490842,
+    0.5143935818782442,
+    0.21399652978600348,
+    0.07218398522746347
+   ],
+   "trade_B6": [
+    0.11916666666666667,
+    0.0496031746031746,
+    -0.008214285714285702
+   ],
+   "trade_pass": 6,
+   "trade_mt_L2_8_G20": [
+    -0.03485085937152055,
+    0.06906356541268233,
+    200
+   ],
+   "trade_mt_L2_24_G20": [
+    -0.29238334176549535,
+    0.13076831607313447,
+    200
+   ],
+   "freeze_L10_large_h12_premium_split": 0.1293239619726193,
+   "freeze_L10_large_h12_value": 3.8148232501030925,
+   "freeze_L10_large_h12_guard_minus_passive_vs_shove": [
+    0.2082193864943272,
+    0.7195315891123673,
+    40
+   ],
+   "freeze_L10_large_h12_guard_minus_shove_vs_shove": [
+    -0.5562333623087226,
+    0.6490262361419991,
+    40
+   ],
+   "freeze_L10_large_h12_support": {
+    "fz_passive_sh": 0.10844592947048436,
+    "g_shove": 0.8915540705295156
+   },
+   "freeze_L4_equal_h12_premium_split": -0.005541524390591132,
+   "freeze_L4_equal_h12_value": 0.36033800069368277,
+   "freeze_L4_equal_h12_guard_minus_passive_vs_shove": [
+    -0.0855389558295569,
+    0.13829455795612364,
+    40
+   ],
+   "freeze_L4_equal_h12_guard_minus_shove_vs_shove": [
+    -0.09703226986995403,
+    0.1628085845833553,
+    40
+   ],
+   "freeze_L4_equal_h12_support": {
+    "shove_recall": 1.0
+   },
+   "vision_neutral_G50": [
+    -0.017863711730465894,
+    0.3728682869581569,
+    200
+   ],
+   "vision_neutral_placed": 0.405,
+   "vision_frozen_on_G50": [
+    -0.2315658385138675,
+    0.3967967565524062,
+    200
+   ],
+   "vision_frozen_on_placed": 0.405,
+   "zoning_passive_safe_cost": [
+    7.121289062499994,
+    0.4611379321713608,
+    64
+   ],
+   "zoning_threat_only": [
+    0.41347656250000375,
+    0.44567572761636576,
+    64
+   ],
+   "zoning_combat_guard": [
+    0.7947265625,
+    0.502882766157945,
+    64
+   ],
+   "matrix_support": {
+    "g_shove_sr": 1.0
+   },
+   "matrix_shove_margin": -0.013071759778266773,
+   "matrix_n_support": 1
+  }
+ ],
+ "main_effects": {
+  "trade_B1": {
+   "farm_spot_rule": {
+    "last_front": -0.025952380952380946
+   },
+   "minion_damage_alpha": {
+    "30": 0.02785714285714286,
+    "50": -0.018214285714285704,
+    "80": -0.0875
+   },
+   "minion_retaliation_delay": {
+    "0": -0.07869047619047619,
+    "1": 0.02678571428571429
+   },
+   "_range": {
+    "min": -0.1667857142857143,
+    "max": 0.0575,
+    "sign_changes": true
+   }
+  },
+  "trade_B2": {
+   "farm_spot_rule": {
+    "last_front": 0.09763227513227513
+   },
+   "minion_damage_alpha": {
+    "30": 0.10694444444444445,
+    "50": 0.09908730158730158,
+    "80": 0.08686507936507937
+   },
+   "minion_retaliation_delay": {
+    "0": 0.0760978835978836,
+    "1": 0.11916666666666668
+   },
+   "_range": {
+    "min": 0.054563492063492064,
+    "max": 0.11916666666666667,
+    "sign_changes": false
+   }
+  },
+  "trade_B3": {
+   "farm_spot_rule": {
+    "last_front": 0.10202380952380952
+   },
+   "minion_damage_alpha": {
+    "30": 0.13285714285714284,
+    "50": 0.10642857142857143,
+    "80": 0.0667857142857143
+   },
+   "minion_retaliation_delay": {
+    "0": 0.07202380952380953,
+    "1": 0.13202380952380952
+   },
+   "_range": {
+    "min": 0.021785714285714297,
+    "max": 0.14964285714285713,
+    "sign_changes": false
+   }
+  },
+  "trade_B4": {
+   "farm_spot_rule": {
+    "last_front": 0.0847742152089978
+   },
+   "minion_damage_alpha": {
+    "30": 0.04784287392983046,
+    "50": 0.07973812321638407,
+    "80": 0.1267416484807789
+   },
+   "minion_retaliation_delay": {
+    "0": 0.12142577359968663,
+    "1": 0.04812265681830898
+   },
+   "_range": {
+    "min": 0.026859157293939902,
+    "max": 0.1812993117340943,
+    "sign_changes": false
+   }
+  },
+  "trade_B6": {
+   "farm_spot_rule": {
+    "last_front": 0.09763227513227513
+   },
+   "minion_damage_alpha": {
+    "30": 0.10694444444444445,
+    "50": 0.09908730158730158,
+    "80": 0.08686507936507937
+   },
+   "minion_retaliation_delay": {
+    "0": 0.0760978835978836,
+    "1": 0.11916666666666668
+   },
+   "_range": {
+    "min": 0.054563492063492064,
+    "max": 0.11916666666666667,
+    "sign_changes": false
+   }
+  },
+  "trade_pass": {
+   "farm_spot_rule": {
+    "last_front": 5.333333333333333
+   },
+   "minion_damage_alpha": {
+    "30": 5.5,
+    "50": 5.5,
+    "80": 5.0
+   },
+   "minion_retaliation_delay": {
+    "0": 5.333333333333333,
+    "1": 5.333333333333333
+   },
+   "_range": {
+    "min": 4.0,
+    "max": 6.0,
+    "sign_changes": false
+   }
+  },
+  "trade_mt_L2_8_G20": {
+   "farm_spot_rule": {
+    "last_front": -0.3250899497565137
+   },
+   "minion_damage_alpha": {
+    "30": -0.30768762901682245,
+    "50": -0.32349859372172085,
+    "80": -0.3440836265309977
+   },
+   "minion_retaliation_delay": {
+    "0": -0.6230992431261057,
+    "1": -0.027080656386921694
+   },
+   "_range": {
+    "min": -0.6533163936904749,
+    "max": -0.023195554894622265,
+    "sign_changes": false
+   }
+  },
+  "trade_mt_L2_24_G20": {
+   "farm_spot_rule": {
+    "last_front": -0.24771542977040628
+   },
+   "minion_damage_alpha": {
+    "30": -0.21268495733902806,
+    "50": -0.2923390665789637,
+    "80": -0.23812226539322714
+   },
+   "minion_retaliation_delay": {
+    "0": -0.23526353767493516,
+    "1": -0.2601673218658774
+   },
+   "_range": {
+    "min": -0.32844348349640123,
+    "max": -0.18386118902095894,
+    "sign_changes": false
+   }
+  },
+  "freeze_L10_large_h12_premium_split": {
+   "farm_spot_rule": {
+    "last_front": 0.13723718680643418
+   },
+   "minion_damage_alpha": {
+    "30": 0.12500315789139846,
+    "50": 0.14914109428552924,
+    "80": 0.13756730824237484
+   },
+   "minion_retaliation_delay": {
+    "0": 0.15095011817539639,
+    "1": 0.12352425543747197
+   },
+   "_range": {
+    "min": 0.1106296107270738,
+    "max": 0.16766299495833564,
+    "sign_changes": false
+   }
+  },
+  "freeze_L10_large_h12_value": {
+   "farm_spot_rule": {
+    "last_front": 3.819909801030267
+   },
+   "minion_damage_alpha": {
+    "30": 3.8289720023415588,
+    "50": 3.815934150646149,
+    "80": 3.8148232501030925
+   },
+   "minion_retaliation_delay": {
+    "0": 3.81861810403109,
+    "1": 3.8212014980294438
+   },
+   "_range": {
+    "min": 3.8148232501030925,
+    "max": 3.831933573077964,
+    "sign_changes": false
+   }
+  },
+  "freeze_L10_large_h12_guard_minus_passive_vs_shove": {
+   "farm_spot_rule": {
+    "last_front": 0.467810571628857
+   },
+   "minion_damage_alpha": {
+    "30": 0.7071021627218941,
+    "50": 0.49000628121502543,
+    "80": 0.20632327094965125
+   },
+   "minion_retaliation_delay": {
+    "0": 0.4296325895097399,
+    "1": 0.5059885537479739
+   },
+   "_range": {
+    "min": 0.2044271554049753,
+    "max": 0.7690711252226368,
+    "sign_changes": false
+   }
+  },
+  "freeze_L10_large_h12_guard_minus_shove_vs_shove": {
+   "farm_spot_rule": {
+    "last_front": -0.29664217717419283
+   },
+   "minion_damage_alpha": {
+    "30": -0.057350586081155695,
+    "50": -0.2744464675880244,
+    "80": -0.5581294778533985
+   },
+   "minion_retaliation_delay": {
+    "0": -0.3348201592933098,
+    "1": -0.25846419505507584
+   },
+   "_range": {
+    "min": -0.5600255933980745,
+    "max": 0.0046183764195869784,
+    "sign_changes": true
+   }
+  },
+  "freeze_L4_equal_h12_premium_split": {
+   "farm_spot_rule": {
+    "last_front": -0.015342144019034139
+   },
+   "minion_damage_alpha": {
+    "30": -0.020242453833255646,
+    "50": -0.020242453833255646,
+    "80": -0.005541524390591127
+   },
+   "minion_retaliation_delay": {
+    "0": -0.015342144019034137,
+    "1": -0.015342144019034143
+   },
+   "_range": {
+    "min": -0.020242453833255646,
+    "max": -0.005541524390591122,
+    "sign_changes": false
+   }
+  },
+  "freeze_L4_equal_h12_value": {
+   "farm_spot_rule": {
+    "last_front": 0.36033800069368277
+   },
+   "minion_damage_alpha": {
+    "30": 0.36033800069368277,
+    "50": 0.36033800069368277,
+    "80": 0.36033800069368277
+   },
+   "minion_retaliation_delay": {
+    "0": 0.36033800069368277,
+    "1": 0.36033800069368277
+   },
+   "_range": {
+    "min": 0.36033800069368277,
+    "max": 0.36033800069368277,
+    "sign_changes": false
+   }
+  },
+  "freeze_L4_equal_h12_guard_minus_passive_vs_shove": {
+   "farm_spot_rule": {
+    "last_front": -0.0855389558295569
+   },
+   "minion_damage_alpha": {
+    "30": -0.0855389558295569,
+    "50": -0.0855389558295569,
+    "80": -0.0855389558295569
+   },
+   "minion_retaliation_delay": {
+    "0": -0.0855389558295569,
+    "1": -0.0855389558295569
+   },
+   "_range": {
+    "min": -0.0855389558295569,
+    "max": -0.0855389558295569,
+    "sign_changes": false
+   }
+  },
+  "freeze_L4_equal_h12_guard_minus_shove_vs_shove": {
+   "farm_spot_rule": {
+    "last_front": -0.09703226986995404
+   },
+   "minion_damage_alpha": {
+    "30": -0.09703226986995403,
+    "50": -0.09703226986995403,
+    "80": -0.09703226986995403
+   },
+   "minion_retaliation_delay": {
+    "0": -0.09703226986995402,
+    "1": -0.09703226986995402
+   },
+   "_range": {
+    "min": -0.09703226986995403,
+    "max": -0.09703226986995403,
+    "sign_changes": false
+   }
+  },
+  "vision_neutral_G50": {
+   "farm_spot_rule": {
+    "last_front": -0.2055198892159685
+   },
+   "minion_damage_alpha": {
+    "30": -0.11049998120843987,
+    "50": -0.33777374888740663,
+    "80": -0.16828593755205887
+   },
+   "minion_retaliation_delay": {
+    "0": -0.3742654431617651,
+    "1": -0.036774335270171904
+   },
+   "_range": {
+    "min": -0.513121084261169,
+    "max": 0.06996711943359452,
+    "sign_changes": true
+   }
+  },
+  "vision_neutral_placed": {
+   "farm_spot_rule": {
+    "last_front": 0.4050000000000001
+   },
+   "minion_damage_alpha": {
+    "30": 0.405,
+    "50": 0.405,
+    "80": 0.405
+   },
+   "minion_retaliation_delay": {
+    "0": 0.405,
+    "1": 0.405
+   },
+   "_range": {
+    "min": 0.405,
+    "max": 0.405,
+    "sign_changes": false
+   }
+  },
+  "vision_frozen_on_G50": {
+   "farm_spot_rule": {
+    "last_front": -0.10104329061886147
+   },
+   "minion_damage_alpha": {
+    "30": -0.11441362051170595,
+    "50": -0.2009795089890906,
+    "80": 0.012263257644212114
+   },
+   "minion_retaliation_delay": {
+    "0": 0.07598086228613249,
+    "1": -0.27806744352385543
+   },
+   "_range": {
+    "min": -0.42027010376939367,
+    "max": 0.25609235380229173,
+    "sign_changes": true
+   }
+  },
+  "vision_frozen_on_placed": {
+   "farm_spot_rule": {
+    "last_front": 0.4050000000000001
+   },
+   "minion_damage_alpha": {
+    "30": 0.405,
+    "50": 0.405,
+    "80": 0.405
+   },
+   "minion_retaliation_delay": {
+    "0": 0.405,
+    "1": 0.405
+   },
+   "_range": {
+    "min": 0.405,
+    "max": 0.405,
+    "sign_changes": false
+   }
+  },
+  "zoning_passive_safe_cost": {
+   "farm_spot_rule": {
+    "last_front": 7.17018229166666
+   },
+   "minion_damage_alpha": {
+    "30": 7.212109374999994,
+    "50": 7.177148437499994,
+    "80": 7.121289062499994
+   },
+   "minion_retaliation_delay": {
+    "0": 7.17018229166666,
+    "1": 7.17018229166666
+   },
+   "_range": {
+    "min": 7.121289062499994,
+    "max": 7.212109374999994,
+    "sign_changes": false
+   }
+  },
+  "zoning_threat_only": {
+   "farm_spot_rule": {
+    "last_front": 0.43138020833333707
+   },
+   "minion_damage_alpha": {
+    "30": 0.44960937500000375,
+    "50": 0.43105468750000375,
+    "80": 0.41347656250000375
+   },
+   "minion_retaliation_delay": {
+    "0": 0.4313802083333371,
+    "1": 0.4313802083333371
+   },
+   "_range": {
+    "min": 0.41347656250000375,
+    "max": 0.44960937500000375,
+    "sign_changes": false
+   }
+  },
+  "zoning_combat_guard": {
+   "farm_spot_rule": {
+    "last_front": 0.8578776041666661
+   },
+   "minion_damage_alpha": {
+    "30": 0.8595703124999992,
+    "50": 0.9065429687499992,
+    "80": 0.8075195312499996
+   },
+   "minion_retaliation_delay": {
+    "0": 0.7997395833333322,
+    "1": 0.9160156249999997
+   },
+   "_range": {
+    "min": 0.7638671874999987,
+    "max": 0.9980468749999996,
+    "sign_changes": false
+   }
+  },
+  "matrix_shove_margin": {
+   "farm_spot_rule": {
+    "last_front": -0.013071759778266764
+   },
+   "minion_damage_alpha": {
+    "30": -0.013071759778266745,
+    "50": -0.013071759778266773,
+    "80": -0.013071759778266773
+   },
+   "minion_retaliation_delay": {
+    "0": -0.013071759778266764,
+    "1": -0.013071759778266764
+   },
+   "_range": {
+    "min": -0.013071759778266773,
+    "max": -0.013071759778266745,
+    "sign_changes": false
+   }
+  },
+  "matrix_n_support": {
+   "farm_spot_rule": {
+    "last_front": 1.0
+   },
+   "minion_damage_alpha": {
+    "30": 1.0,
+    "50": 1.0,
+    "80": 1.0
+   },
+   "minion_retaliation_delay": {
+    "0": 1.0,
+    "1": 1.0
+   },
+   "_range": {
+    "min": 1.0,
+    "max": 1.0,
+    "sign_changes": false
+   }
+  }
+ },
+ "one_at_a_time": [
+  {
+   "overrides": {
+    "farm_spot_rule": "last_front",
+    "minion_retaliation_delay": 0,
+    "minion_damage_growth": 1.05
+   },
+   "trade_B1": -0.07249999999999998,
+   "trade_B2": 0.07726190476190475,
+   "trade_B3": 0.07535714285714287,
+   "trade_B4": 0.18297800906496559,
+   "trade_B5": [
+    1.7435897435897434,
+    0.9249646059462009,
+    0.4424522845575477,
+    0.18297800906496559
+   ],
+   "trade_B6": [
+    0.07726190476190475,
+    -0.005158730158730168,
+    -0.07249999999999998
+   ],
+   "trade_pass": 5,
+   "trade_mt_L2_8_G20": [
+    -0.6304443620899621,
+    0.11198751386762593,
+    200
+   ],
+   "trade_mt_L2_24_G20": [
+    -0.3236821709572134,
+    0.12048373270231756,
+    200
+   ],
+   "freeze_L10_large_h12_premium_split": 0.14814184718004764,
+   "freeze_L10_large_h12_value": 3.815020630385023,
+   "freeze_L10_large_h12_guard_minus_passive_vs_shove": [
+    0.2194672254110565,
+    0.5610883375612599,
+    40
+   ],
+   "freeze_L10_large_h12_guard_minus_shove_vs_shove": [
+    -0.5449855233919931,
+    0.50141362538261,
+    40
+   ],
+   "freeze_L10_large_h12_support": {
+    "fz_passive_sh": 0.10818773132515787,
+    "g_shove": 0.8918122686748421
+   },
+   "freeze_L4_equal_h12_premium_split": -0.020242453833255646,
+   "freeze_L4_equal_h12_value": 0.36033800069368277,
+   "freeze_L4_equal_h12_guard_minus_passive_vs_shove": [
+    -0.0855389558295569,
+    0.13829455795612364,
+    40
+   ],
+   "freeze_L4_equal_h12_guard_minus_shove_vs_shove": [
+    -0.09703226986995403,
+    0.1628085845833553,
+    40
+   ],
+   "freeze_L4_equal_h12_support": {
+    "shove_recall": 1.0
+   },
+   "vision_neutral_G50": [
+    -0.3895887542066149,
+    0.4113061405416262,
+    200
+   ],
+   "vision_neutral_placed": 0.405,
+   "vision_frozen_on_G50": [
+    -0.14106840334930176,
+    0.3540480990256543,
+    200
+   ],
+   "vision_frozen_on_placed": 0.405,
+   "zoning_passive_safe_cost": [
+    7.137304687499993,
+    0.4614552272356239,
+    64
+   ],
+   "zoning_threat_only": [
+    0.43105468750000375,
+    0.4436152436214576,
+    64
+   ],
+   "zoning_combat_guard": [
+    0.9027343749999988,
+    0.5320521861222971,
+    64
+   ],
+   "matrix_support": {
+    "g_shove_sr": 1.0
+   },
+   "matrix_shove_margin": -0.013071759778266773,
+   "matrix_n_support": 1
+  },
+  {
+   "overrides": {
+    "farm_spot_rule": "last_front",
+    "minion_retaliation_delay": 0,
+    "minion_damage_growth": 1.12
+   },
+   "trade_B1": -0.061785714285714305,
+   "trade_B2": 0.07988095238095239,
+   "trade_B3": 0.0817857142857143,
+   "trade_B4": 0.06043310391136478,
+   "trade_B5": [
+    1.633699633699634,
+    0.6701274185936762,
+    0.23134759976865243,
+    0.06043310391136478
+   ],
+   "trade_B6": [
+    0.07988095238095239,
+    0.001984126984126991,
+    -0.061785714285714305
+   ],
+   "trade_pass": 6,
+   "trade_mt_L2_8_G20": [
+    -0.626221735355005,
+    0.11070227321973983,
+    200
+   ],
+   "trade_mt_L2_24_G20": [
+    -0.2792954734332254,
+    0.11232296270807991,
+    200
+   ],
+   "freeze_L10_large_h12_premium_split": 0.16617517447185073,
+   "freeze_L10_large_h12_value": 3.818819922016038,
+   "freeze_L10_large_h12_guard_minus_passive_vs_shove": [
+    0.5532830580890944,
+    0.5805716161700153,
+    40
+   ],
+   "freeze_L10_large_h12_guard_minus_shove_vs_shove": [
+    -0.2111696907139553,
+    0.533763234961212,
+    40
+   ],
+   "freeze_L10_large_h12_support": {
+    "fz_passive_sh": 0.08746030518326968,
+    "fz_guard_sh": 0.05704344320454962,
+    "g_shove": 0.8554962516121808
+   },
+   "freeze_L4_equal_h12_premium_split": -0.020242453833255646,
+   "freeze_L4_equal_h12_value": 0.36033800069368277,
+   "freeze_L4_equal_h12_guard_minus_passive_vs_shove": [
+    -0.0855389558295569,
+    0.13829455795612364,
+    40
+   ],
+   "freeze_L4_equal_h12_guard_minus_shove_vs_shove": [
+    -0.09703226986995403,
+    0.1628085845833553,
+    40
+   ],
+   "freeze_L4_equal_h12_support": {
+    "shove_recall": 1.0
+   },
+   "vision_neutral_G50": [
+    -0.2963751857632449,
+    0.36571225472674557,
+    200
+   ],
+   "vision_neutral_placed": 0.405,
+   "vision_frozen_on_G50": [
+    -0.013571657007285994,
+    0.39851295098935796,
+    200
+   ],
+   "vision_frozen_on_placed": 0.405,
+   "zoning_passive_safe_cost": [
+    7.209765624999994,
+    0.466504581558882,
+    64
+   ],
+   "zoning_threat_only": [
+    0.44960937500000375,
+    0.44187282305358433,
+    64
+   ],
+   "zoning_combat_guard": [
+    0.8111328124999992,
+    0.5313497745914517,
+    64
+   ],
+   "matrix_support": {
+    "g_shove_sr": 1.0
+   },
+   "matrix_shove_margin": -0.013071759778266773,
+   "matrix_n_support": 1
+  },
+  {
+   "overrides": {
+    "farm_spot_rule": "last_front",
+    "minion_retaliation_delay": 0,
+    "vision_turns": 8
+   },
+   "trade_B1": -0.06749999999999998,
+   "trade_B2": 0.0790079365079365,
+   "trade_B3": 0.07821428571428571,
+   "trade_B4": 0.11415141849924458,
+   "trade_B5": [
+    1.692307692307692,
+    0.8022652194431334,
+    0.335454019664546,
+    0.11415141849924458
+   ],
+   "trade_B6": [
+    0.0790079365079365,
+    -0.001984126984126991,
+    -0.06749999999999998
+   ],
+   "trade_pass": 6,
+   "trade_mt_L2_8_G20": [
+    -0.6238016325488195,
+    0.11058679475898019,
+    200
+   ],
+   "trade_mt_L2_24_G20": [
+    -0.32844348349640123,
+    0.12009096634574881,
+    200
+   ],
+   "freeze_L10_large_h12_premium_split": 0.16766299495833564,
+   "freeze_L10_large_h12_value": 3.815020630385023,
+   "freeze_L10_large_h12_guard_minus_passive_vs_shove": [
+    0.43933741290309314,
+    0.5407425456568346,
+    40
+   ],
+   "freeze_L10_large_h12_guard_minus_shove_vs_shove": [
+    -0.32511533589995667,
+    0.5094909290422007,
+    40
+   ],
+   "freeze_L10_large_h12_support": {
+    "fz_passive_sh": 0.10818773132515787,
+    "g_shove": 0.8918122686748421
+   },
+   "freeze_L4_equal_h12_premium_split": -0.020242453833255646,
+   "freeze_L4_equal_h12_value": 0.36033800069368277,
+   "freeze_L4_equal_h12_guard_minus_passive_vs_shove": [
+    -0.0855389558295569,
+    0.13829455795612364,
+    40
+   ],
+   "freeze_L4_equal_h12_guard_minus_shove_vs_shove": [
+    -0.09703226986995403,
+    0.1628085845833553,
+    40
+   ],
+   "freeze_L4_equal_h12_support": {
+    "shove_recall": 1.0
+   },
+   "vision_neutral_G50": [
+    -0.49243281182469373,
+    0.3857796172459159,
+    200
+   ],
+   "vision_neutral_placed": 0.405,
+   "vision_frozen_on_G50": [
+    0.01831108579121251,
+    0.38776851180368666,
+    200
+   ],
+   "vision_frozen_on_placed": 0.405,
+   "zoning_passive_safe_cost": [
+    7.177148437499994,
+    0.46561040866781067,
+    64
+   ],
+   "zoning_threat_only": [
+    0.43105468750000375,
+    0.4436152436214576,
+    64
+   ],
+   "zoning_combat_guard": [
+    0.8150390624999988,
+    0.5273537431301134,
+    64
+   ],
+   "matrix_support": {
+    "g_shove_sr": 1.0
+   },
+   "matrix_shove_margin": -0.013071759778266773,
+   "matrix_n_support": 1
+  },
+  {
+   "overrides": {
+    "farm_spot_rule": "last_front",
+    "minion_retaliation_delay": 0,
+    "ward_exposure": -1
+   },
+   "trade_B1": -0.06749999999999998,
+   "trade_B2": 0.0790079365079365,
+   "trade_B3": 0.07821428571428571,
+   "trade_B4": 0.11415141849924458,
+   "trade_B5": [
+    1.692307692307692,
+    0.8022652194431334,
+    0.335454019664546,
+    0.11415141849924458
+   ],
+   "trade_B6": [
+    0.0790079365079365,
+    -0.001984126984126991,
+    -0.06749999999999998
+   ],
+   "trade_pass": 6,
+   "trade_mt_L2_8_G20": [
+    -0.6238016325488195,
+    0.11058679475898019,
+    200
+   ],
+   "trade_mt_L2_24_G20": [
+    -0.32844348349640123,
+    0.12009096634574881,
+    200
+   ],
+   "freeze_L10_large_h12_premium_split": 0.16766299495833564,
+   "freeze_L10_large_h12_value": 3.815020630385023,
+   "freeze_L10_large_h12_guard_minus_passive_vs_shove": [
+    0.43933741290309314,
+    0.5407425456568346,
+    40
+   ],
+   "freeze_L10_large_h12_guard_minus_shove_vs_shove": [
+    -0.32511533589995667,
+    0.5094909290422007,
+    40
+   ],
+   "freeze_L10_large_h12_support": {
+    "fz_passive_sh": 0.10818773132515787,
+    "g_shove": 0.8918122686748421
+   },
+   "freeze_L4_equal_h12_premium_split": -0.020242453833255646,
+   "freeze_L4_equal_h12_value": 0.36033800069368277,
+   "freeze_L4_equal_h12_guard_minus_passive_vs_shove": [
+    -0.0855389558295569,
+    0.13829455795612364,
+    40
+   ],
+   "freeze_L4_equal_h12_guard_minus_shove_vs_shove": [
+    -0.09703226986995403,
+    0.1628085845833553,
+    40
+   ],
+   "freeze_L4_equal_h12_support": {
+    "shove_recall": 1.0
+   },
+   "vision_neutral_G50": [
+    -0.513121084261169,
+    0.3850916680931002,
+    200
+   ],
+   "vision_neutral_placed": 0.405,
+   "vision_frozen_on_G50": [
+    0.01831108579121251,
+    0.38776851180368666,
+    200
+   ],
+   "vision_frozen_on_placed": 0.405,
+   "zoning_passive_safe_cost": [
+    7.177148437499994,
+    0.46561040866781067,
+    64
+   ],
+   "zoning_threat_only": [
+    0.43105468750000375,
+    0.4436152436214576,
+    64
+   ],
+   "zoning_combat_guard": [
+    0.8150390624999988,
+    0.5273537431301134,
+    64
+   ],
+   "matrix_support": {
+    "g_shove_sr": 1.0
+   },
+   "matrix_shove_margin": -0.013071759778266773,
+   "matrix_n_support": 1
+  },
+  {
+   "overrides": {
+    "farm_spot_rule": "last_front",
+    "minion_retaliation_delay": 0,
+    "trade_wave_fraction": 0.25
+   },
+   "trade_B1": -0.06749999999999998,
+   "trade_B2": 0.0790079365079365,
+   "trade_B3": 0.07821428571428571,
+   "trade_B4": 0.11415141849924458,
+   "trade_B5": [
+    1.692307692307692,
+    0.8022652194431334,
+    0.335454019664546,
+    0.11415141849924458
+   ],
+   "trade_B6": [
+    0.0790079365079365,
+    -0.001984126984126991,
+    -0.06749999999999998
+   ],
+   "trade_pass": 6,
+   "trade_mt_L2_8_G20": [
+    -0.6238016325488195,
+    0.11058679475898019,
+    200
+   ],
+   "trade_mt_L2_24_G20": [
+    -0.32844348349640123,
+    0.12009096634574881,
+    200
+   ],
+   "freeze_L10_large_h12_premium_split": 0.1052631776705903,
+   "freeze_L10_large_h12_value": 3.815020630385023,
+   "freeze_L10_large_h12_guard_minus_passive_vs_shove": [
+    0.42840333860765023,
+    0.5720188943818352,
+    40
+   ],
+   "freeze_L10_large_h12_guard_minus_shove_vs_shove": [
+    -0.3360494101953996,
+    0.5165855460713468,
+    40
+   ],
+   "freeze_L10_large_h12_support": {
+    "fz_passive_sh": 0.10818773132515787,
+    "g_shove": 0.8918122686748421
+   },
+   "freeze_L4_equal_h12_premium_split": -0.020148403833255647,
+   "freeze_L4_equal_h12_value": 0.36033800069368277,
+   "freeze_L4_equal_h12_guard_minus_passive_vs_shove": [
+    -0.08271745582955689,
+    0.13605572767296636,
+    40
+   ],
+   "freeze_L4_equal_h12_guard_minus_shove_vs_shove": [
+    -0.09421076986995403,
+    0.16066451706519824,
+    40
+   ],
+   "freeze_L4_equal_h12_support": {
+    "shove_recall": 1.0
+   },
+   "vision_neutral_G50": [
+    -0.513121084261169,
+    0.3850916680931002,
+    200
+   ],
+   "vision_neutral_placed": 0.405,
+   "vision_frozen_on_G50": [
+    0.01831108579121251,
+    0.38776851180368666,
+    200
+   ],
+   "vision_frozen_on_placed": 0.405,
+   "zoning_passive_safe_cost": [
+    7.177148437499994,
+    0.46561040866781067,
+    64
+   ],
+   "zoning_threat_only": [
+    0.43105468750000375,
+    0.4436152436214576,
+    64
+   ],
+   "zoning_combat_guard": [
+    0.8117187499999989,
+    0.5214242895928504,
+    64
+   ],
+   "matrix_support": {
+    "g_shove_sr": 1.0
+   },
+   "matrix_shove_margin": -0.013071759778266773,
+   "matrix_n_support": 1
+  },
+  {
+   "overrides": {
+    "farm_spot_rule": "last_front",
+    "minion_retaliation_delay": 0,
+    "trade_wave_fraction": 1.0
+   },
+   "trade_B1": -0.06749999999999998,
+   "trade_B2": 0.0790079365079365,
+   "trade_B3": 0.07821428571428571,
+   "trade_B4": 0.11415141849924458,
+   "trade_B5": [
+    1.692307692307692,
+    0.8022652194431334,
+    0.335454019664546,
+    0.11415141849924458
+   ],
+   "trade_B6": [
+    0.0790079365079365,
+    -0.001984126984126991,
+    -0.06749999999999998
+   ],
+   "trade_pass": 6,
+   "trade_mt_L2_8_G20": [
+    -0.6238016325488195,
+    0.11058679475898019,
+    200
+   ],
+   "trade_mt_L2_24_G20": [
+    -0.32844348349640123,
+    0.12009096634574881,
+    200
+   ],
+   "freeze_L10_large_h12_premium_split": 0.16766299495833564,
+   "freeze_L10_large_h12_value": 3.815020630385023,
+   "freeze_L10_large_h12_guard_minus_passive_vs_shove": [
+    0.43933741290309314,
+    0.5407425456568346,
+    40
+   ],
+   "freeze_L10_large_h12_guard_minus_shove_vs_shove": [
+    -0.32511533589995667,
+    0.5094909290422007,
+    40
+   ],
+   "freeze_L10_large_h12_support": {
+    "fz_passive_sh": 0.10818773132515787,
+    "g_shove": 0.8918122686748421
+   },
+   "freeze_L4_equal_h12_premium_split": -0.020242453833255646,
+   "freeze_L4_equal_h12_value": 0.36033800069368277,
+   "freeze_L4_equal_h12_guard_minus_passive_vs_shove": [
+    -0.0855389558295569,
+    0.13829455795612364,
+    40
+   ],
+   "freeze_L4_equal_h12_guard_minus_shove_vs_shove": [
+    -0.09703226986995403,
+    0.1628085845833553,
+    40
+   ],
+   "freeze_L4_equal_h12_support": {
+    "shove_recall": 1.0
+   },
+   "vision_neutral_G50": [
+    -0.513121084261169,
+    0.3850916680931002,
+    200
+   ],
+   "vision_neutral_placed": 0.405,
+   "vision_frozen_on_G50": [
+    0.01831108579121251,
+    0.38776851180368666,
+    200
+   ],
+   "vision_frozen_on_placed": 0.405,
+   "zoning_passive_safe_cost": [
+    7.177148437499994,
+    0.46561040866781067,
+    64
+   ],
+   "zoning_threat_only": [
+    0.43105468750000375,
+    0.4436152436214576,
+    64
+   ],
+   "zoning_combat_guard": [
+    0.8150390624999988,
+    0.5273537431301134,
+    64
+   ],
+   "matrix_support": {
+    "g_shove_sr": 1.0
+   },
+   "matrix_shove_margin": -0.013071759778266773,
+   "matrix_n_support": 1
+  }
+ ]
+}

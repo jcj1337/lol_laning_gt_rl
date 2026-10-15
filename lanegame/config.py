@@ -448,7 +448,11 @@ class GameConfig:
     freeze_maintenance: bool = False      # m4: a Freeze holds only while maintained (design §6.3)
     chase_rule: str = "m2"                # "m2" (legacy target e -/+ trade_range) or "contact_cell" (design §7.4)
     # M4.2d (docs/m4/m4_wave_readiness_report.md), opt-in: "m2" = the farm spot is the probe's leading packet (M2 rule);
-    # "pre_crash_front" = a champion whose front crashes in the probe keeps its pre-turn front cell as farm spot
+    # "pre_crash_front" = a champion whose front crashes in the probe keeps its pre-turn front cell as farm spot;
+    # M4.5b (docs/m4/m4_5b_calibration_report.md), opt-in, natural waves with tick movement: "last_front" = a champion
+    # whose front crashes OR DIES in the probe keeps the front's last cell (its pre-turn cell if lost on tick 0, else its
+    # cell after the previous tick) as farm spot, instead of walking back to its next packet: under the probe's full
+    # support both champions of a mutual Shove walked out of reach of the fight that was to kill both fronts
     farm_spot_rule: str = "m2"
     # M4.2d-B (docs/m4/m4_positioning_report.md), opt-in: "m2" = M2 positioning and evasion; "pin" = a Yield champion that
     # STARTS the turn in contact with an enemy Trade champion cannot evade it (it is caught like a Hold); "standoff" =
@@ -828,6 +832,31 @@ class GameConfig:
         base.update(kw)
         return cls.m45_unified(**base)
 
+    # the fields GameConfig.m45_calibrated() changes from m45_unified() (M4.5b, docs/m4/m4_5b_calibration_report.md)
+    M45_CALIBRATED_FIELDS = ("farm_spot_rule", "minion_retaliation_delay")
+
+    @classmethod
+    def m45_calibrated(cls, **kw) -> "GameConfig":
+        """EXPERIMENTAL CANDIDATE (M4.5b, docs/m4/m4_5b_calibration_report.md): `m45_unified()` (revision 2) with one
+        mechanical correction and one numerical calibration:
+          farm_spot_rule "last_front"     (correction) a Hold / Yield / Safe champion whose front crashes OR DIES in the
+                                          probe keeps the front's last cell as farm spot instead of walking back to its
+                                          next packet: under the probe's full support, mutual Shoves had both champions
+                                          walk out of reach of the fight that was to kill both fronts (38-50% of the
+                                          farm of Shove mirrors died out of reach; 5-7% with the rule). The defect
+                                          predates M4.5a (identical on m4_four_actions_econ_aggro); earlier presets keep
+                                          "pre_crash_front"
+          minion_retaliation_delay 0      (calibration) a wave retaliates from the exchange tick, so on both ticks of
+                                          the turn: with delay 1 retaliation lasted only the last tick, where the
+                                          half-wave law left an 8-HP wave no firepower, and trading into a 24-HP stack
+                                          at level 2 was HP-positive (+0.03 bar against Hold; -0.07 with delay 0)
+        Every other rule and parameter is `m45_unified()`'s (minion_damage_alpha 50, minion_damage_growth 1.08,
+        trade_wave_fraction 0.5, minion_range 1, vision 6 turns at x0.25, ward_exposure 0, xp_range 2), and so are the
+        action space (61 codes) and the observation (90 entries). Not a default; every other preset is unchanged."""
+        base = dict(farm_spot_rule="last_front", minion_retaliation_delay=0)
+        base.update(kw)
+        return cls.m45_unified(**base)
+
     # ------------------------------------------------------------------ helpers
     @property
     def ward_node(self) -> bool:
@@ -1057,8 +1086,11 @@ class GameConfig:
                     bad(f, "applies to item_model 'continuous' only")
         if self.chase_rule not in ("m2", "contact_cell"):
             bad("chase_rule", "must be 'm2' or 'contact_cell'")
-        if self.farm_spot_rule not in ("m2", "pre_crash_front"):
-            bad("farm_spot_rule", "must be 'm2' or 'pre_crash_front'")
+        if self.farm_spot_rule not in ("m2", "pre_crash_front", "last_front"):
+            bad("farm_spot_rule", "must be 'm2', 'pre_crash_front' or 'last_front'")
+        if self.farm_spot_rule == "last_front" and not (self.natural_waves and self.champion_movement_rule == "tick"):
+            bad("farm_spot_rule", "'last_front' needs wave_dynamics 'natural' and champion_movement_rule 'tick' "
+                                  "(the probe's per-tick fronts)")
         if self.position_rule not in ("m2", "pin", "standoff"):
             bad("position_rule", "must be 'm2', 'pin' or 'standoff'")
         if self.gank_damage_scale not in ("none", "victim_level", "attacker_level"):

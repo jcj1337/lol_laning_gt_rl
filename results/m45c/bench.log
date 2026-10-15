@@ -1,0 +1,33 @@
+===== bench =====
+wrote results\m45c\bench_profile_initial.json
+wrote results\m45c\bench_profile_final.json
+  1 processes: 4,223 transitions/s per process, 4,173 aggregate
+  [scaling 3] 1/3 done, 12 s
+  [scaling 3] 2/3 done, 12 s
+  [scaling 3] 3/3 done, 12 s
+  3 processes: 3,515 transitions/s per process, 7,570 aggregate
+  [scaling 6] 1/6 done, 15 s
+  [scaling 6] 2/6 done, 15 s
+  [scaling 6] 3/6 done, 15 s
+  [scaling 6] 4/6 done, 15 s
+  [scaling 6] 5/6 done, 15 s
+  [scaling 6] 6/6 done, 15 s
+  6 processes: 2,936 transitions/s per process, 12,499 aggregate
+  [scaling 11] 1/11 done, 18 s
+  [scaling 11] 2/11 done, 18 s
+  [scaling 11] 3/11 done, 19 s
+  [scaling 11] 4/11 done, 19 s
+  [scaling 11] 5/11 done, 19 s
+  [scaling 11] 6/11 done, 19 s
+  [scaling 11] 7/11 done, 19 s
+  [scaling 11] 8/11 done, 19 s
+  [scaling 11] 9/11 done, 19 s
+  [scaling 11] 10/11 done, 19 s
+  [scaling 11] 11/11 done, 19 s
+  11 processes: 2,430 transitions/s per process, 18,238 aggregate
+wrote results\m45c\bench_scaling.json
+  [cache probe] 1/3 done, 139 s
+  [cache probe] 2/3 done, 146 s
+  [cache probe] 3/3 done, 148 s
+wrote results\m45c\bench_cache.json
+[bench: 217 s elapsed]

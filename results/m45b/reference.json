@@ -1,0 +1,1309 @@
+{
+ "meta": {
+  "study": "M4.5b",
+  "commit": "8dc5acf54061d18e5f5a3fbd6a84460ee22433fc",
+  "working_tree_dirty": true,
+  "timestamp": "2026-10-14 19:00:48",
+  "python": "3.13.9",
+  "numpy": "2.5.3",
+  "elapsed_s": 73.2
+ },
+ "rows": [
+  {
+   "base": "aggro",
+   "net_seed": 0,
+   "opponent": "g_shove",
+   "G200_net": [
+    3.416531264814725,
+    0.7312122010857351,
+    64
+   ],
+   "ledger_net_in_A": {
+    "deaths_A": 0.71875,
+    "deaths_B": 4.6875,
+    "trade_conn_A": 47.90625,
+    "trade_dealt_A": 7.623456898600206,
+    "d_min_A": 0.0,
+    "wards_A": 0.0,
+    "farm_A": 73.70210937500002,
+    "farm_B": 69.51249999999999,
+    "plates_A": 2.875,
+    "plates_B": 3.0,
+    "n_SH_A": 60.75,
+    "n_trade_A": 64.4375
+   }
+  },
+  {
+   "base": "aggro",
+   "net_seed": 0,
+   "opponent": "g_shove_sr",
+   "G200_net": [
+    3.097202502354433,
+    0.7314937319589888,
+    64
+   ],
+   "ledger_net_in_A": {
+    "deaths_A": 1.0,
+    "deaths_B": 4.15625,
+    "trade_conn_A": 48.75,
+    "trade_dealt_A": 7.613170114069694,
+    "d_min_A": 0.0,
+    "wards_A": 0.0,
+    "farm_A": 72.08875000000003,
+    "farm_B": 67.61992187499999,
+    "plates_A": 2.8125,
+    "plates_B": 3.0,
+    "n_SH_A": 59.21875,
+    "n_trade_A": 65.28125
+   }
+  },
+  {
+   "base": "aggro",
+   "net_seed": 0,
+   "opponent": "g_farm",
+   "G200_net": [
+    3.4697137597459933,
+    0.7556852150943099,
+    64
+   ],
+   "ledger_net_in_A": {
+    "deaths_A": 0.96875,
+    "deaths_B": 1.28125,
+    "trade_conn_A": 24.1875,
+    "trade_dealt_A": 3.5098969509656466,
+    "d_min_A": 0.0,
+    "wards_A": 0.0,
+    "farm_A": 76.58585937500003,
+    "farm_B": 73.65273437500005,
+    "plates_A": 3.0,
+    "plates_B": 0.03125,
+    "n_SH_A": 72.3125,
+    "n_trade_A": 32.0625
+   }
+  },
+  {
+   "base": "aggro",
+   "net_seed": 0,
+   "opponent": "g_guard",
+   "G200_net": [
+    6.1464188864537945,
+    0.949730306922433,
+    64
+   ],
+   "ledger_net_in_A": {
+    "deaths_A": 3.65625,
+    "deaths_B": 2.5625,
+    "trade_conn_A": 51.65625,
+    "trade_dealt_A": 7.924659383043394,
+    "d_min_A": 0.0,
+    "wards_A": 0.0,
+    "farm_A": 71.08429687500005,
+    "farm_B": 56.759843750000016,
+    "plates_A": 3.0,
+    "plates_B": 0.1875,
+    "n_SH_A": 51.65625,
+    "n_trade_A": 66.4375
+   }
+  },
+  {
+   "base": "aggro",
+   "net_seed": 0,
+   "opponent": "grow_shove4",
+   "G200_net": [
+    3.7806664936058865,
+    0.8383427784119775,
+    64
+   ],
+   "ledger_net_in_A": {
+    "deaths_A": 0.9375,
+    "deaths_B": 2.96875,
+    "trade_conn_A": 51.15625,
+    "trade_dealt_A": 7.586529655390916,
+    "d_min_A": 0.0,
+    "wards_A": 0.0,
+    "farm_A": 71.02492187500006,
+    "farm_B": 64.800390625,
+    "plates_A": 2.96875,
+    "plates_B": 2.75,
+    "n_SH_A": 55.53125,
+    "n_trade_A": 66.40625
+   }
+  },
+  {
+   "base": "aggro",
+   "net_seed": 0,
+   "opponent": "wk_shove_reset_sh",
+   "G200_net": [
+    3.803348384809224,
+    0.8301785199507824,
+    64
+   ],
+   "ledger_net_in_A": {
+    "deaths_A": 0.75,
+    "deaths_B": 4.5,
+    "trade_conn_A": 48.46875,
+    "trade_dealt_A": 7.371163225828565,
+    "d_min_A": 0.0,
+    "wards_A": 0.0,
+    "farm_A": 73.28148437500002,
+    "farm_B": 68.95624999999998,
+    "plates_A": 2.78125,
+    "plates_B": 3.0,
+    "n_SH_A": 61.5,
+    "n_trade_A": 65.28125
+   }
+  },
+  {
+   "base": "aggro",
+   "net_seed": 1,
+   "opponent": "g_shove",
+   "G200_net": [
+    3.4169466481705473,
+    0.7208370691101873,
+    64
+   ],
+   "ledger_net_in_A": {
+    "deaths_A": 0.96875,
+    "deaths_B": 4.8125,
+    "trade_conn_A": 45.4375,
+    "trade_dealt_A": 7.258391749776993,
+    "d_min_A": 0.0,
+    "wards_A": 0.0,
+    "farm_A": 72.49390625000001,
+    "farm_B": 68.80390625000001,
+    "plates_A": 2.90625,
+    "plates_B": 3.0,
+    "n_SH_A": 64.59375,
+    "n_trade_A": 61.0625
+   }
+  },
+  {
+   "base": "aggro",
+   "net_seed": 1,
+   "opponent": "g_shove_sr",
+   "G200_net": [
+    3.386480723369635,
+    0.6877142017029696,
+    64
+   ],
+   "ledger_net_in_A": {
+    "deaths_A": 0.75,
+    "deaths_B": 4.5,
+    "trade_conn_A": 43.21875,
+    "trade_dealt_A": 7.105370714289039,
+    "d_min_A": 0.0,
+    "wards_A": 0.0,
+    "farm_A": 73.03437500000001,
+    "farm_B": 68.37499999999999,
+    "plates_A": 2.96875,
+    "plates_B": 3.0,
+    "n_SH_A": 64.3125,
+    "n_trade_A": 59.90625
+   }
+  },
+  {
+   "base": "aggro",
+   "net_seed": 1,
+   "opponent": "g_farm",
+   "G200_net": [
+    3.420579271262227,
+    0.5940248351341968,
+    64
+   ],
+   "ledger_net_in_A": {
+    "deaths_A": 0.9375,
+    "deaths_B": 0.75,
+    "trade_conn_A": 16.5625,
+    "trade_dealt_A": 2.2319235588470425,
+    "d_min_A": 0.0,
+    "wards_A": 0.0,
+    "farm_A": 78.61421875000002,
+    "farm_B": 75.92070312500007,
+    "plates_A": 3.0,
+    "plates_B": 0.0625,
+    "n_SH_A": 89.28125,
+    "n_trade_A": 22.28125
+   }
+  },
+  {
+   "base": "aggro",
+   "net_seed": 1,
+   "opponent": "g_guard",
+   "G200_net": [
+    6.475085218095951,
+    0.7536967098036049,
+    64
+   ],
+   "ledger_net_in_A": {
+    "deaths_A": 2.8125,
+    "deaths_B": 2.5,
+    "trade_conn_A": 45.34375,
+    "trade_dealt_A": 7.12881334216554,
+    "d_min_A": 0.0,
+    "wards_A": 0.0,
+    "farm_A": 73.42093750000005,
+    "farm_B": 58.878125000000026,
+    "plates_A": 3.0,
+    "plates_B": 0.0,
+    "n_SH_A": 59.34375,
+    "n_trade_A": 58.84375
+   }
+  },
+  {
+   "base": "aggro",
+   "net_seed": 1,
+   "opponent": "grow_shove4",
+   "G200_net": [
+    2.094470321472272,
+    0.8133623454444922,
+    64
+   ],
+   "ledger_net_in_A": {
+    "deaths_A": 0.75,
+    "deaths_B": 2.21875,
+    "trade_conn_A": 42.21875,
+    "trade_dealt_A": 6.218516317679265,
+    "d_min_A": 0.0,
+    "wards_A": 0.0,
+    "farm_A": 72.37398437500005,
+    "farm_B": 69.06757812500001,
+    "plates_A": 2.9375,
+    "plates_B": 2.4375,
+    "n_SH_A": 63.0625,
+    "n_trade_A": 54.90625
+   }
+  },
+  {
+   "base": "aggro",
+   "net_seed": 1,
+   "opponent": "wk_shove_reset_sh",
+   "G200_net": [
+    3.508340269254052,
+    0.7677350716818582,
+    64
+   ],
+   "ledger_net_in_A": {
+    "deaths_A": 0.96875,
+    "deaths_B": 4.9375,
+    "trade_conn_A": 44.28125,
+    "trade_dealt_A": 6.986797279922515,
+    "d_min_A": 0.0,
+    "wards_A": 0.0,
+    "farm_A": 72.84421875000001,
+    "farm_B": 68.81328124999999,
+    "plates_A": 2.90625,
+    "plates_B": 3.0,
+    "n_SH_A": 66.0625,
+    "n_trade_A": 59.15625
+   }
+  },
+  {
+   "base": "aggro",
+   "net_seed": 2,
+   "opponent": "g_shove",
+   "G200_net": [
+    2.7829693864764624,
+    0.6655722571020305,
+    64
+   ],
+   "ledger_net_in_A": {
+    "deaths_A": 0.875,
+    "deaths_B": 4.71875,
+    "trade_conn_A": 47.40625,
+    "trade_dealt_A": 7.320267354344342,
+    "d_min_A": 0.0,
+    "wards_A": 0.0,
+    "farm_A": 71.82015625000001,
+    "farm_B": 68.75546874999999,
+    "plates_A": 2.84375,
+    "plates_B": 3.0,
+    "n_SH_A": 60.25,
+    "n_trade_A": 62.15625
+   }
+  },
+  {
+   "base": "aggro",
+   "net_seed": 2,
+   "opponent": "g_shove_sr",
+   "G200_net": [
+    2.7823007459385454,
+    0.6628271762143136,
+    64
+   ],
+   "ledger_net_in_A": {
+    "deaths_A": 0.96875,
+    "deaths_B": 3.75,
+    "trade_conn_A": 46.875,
+    "trade_dealt_A": 7.051487747528649,
+    "d_min_A": 0.0,
+    "wards_A": 0.0,
+    "farm_A": 72.06304687500003,
+    "farm_B": 68.42148437499999,
+    "plates_A": 2.78125,
+    "plates_B": 3.0,
+    "n_SH_A": 58.5,
+    "n_trade_A": 61.875
+   }
+  },
+  {
+   "base": "aggro",
+   "net_seed": 2,
+   "opponent": "g_farm",
+   "G200_net": [
+    3.3076233892576177,
+    0.6813055406862243,
+    64
+   ],
+   "ledger_net_in_A": {
+    "deaths_A": 0.84375,
+    "deaths_B": 1.125,
+    "trade_conn_A": 28.78125,
+    "trade_dealt_A": 4.118249017419874,
+    "d_min_A": 0.0,
+    "wards_A": 0.0,
+    "farm_A": 74.73578125000003,
+    "farm_B": 72.12851562500006,
+    "plates_A": 3.0,
+    "plates_B": 0.03125,
+    "n_SH_A": 75.28125,
+    "n_trade_A": 36.5625
+   }
+  },
+  {
+   "base": "aggro",
+   "net_seed": 2,
+   "opponent": "g_guard",
+   "G200_net": [
+    6.953678947645377,
+    0.8229327497181287,
+    64
+   ],
+   "ledger_net_in_A": {
+    "deaths_A": 2.46875,
+    "deaths_B": 2.625,
+    "trade_conn_A": 55.65625,
+    "trade_dealt_A": 8.256770857420886,
+    "d_min_A": 0.0,
+    "wards_A": 0.0,
+    "farm_A": 70.26437500000006,
+    "farm_B": 55.882031250000026,
+    "plates_A": 3.0,
+    "plates_B": 0.09375,
+    "n_SH_A": 51.6875,
+    "n_trade_A": 70.03125
+   }
+  },
+  {
+   "base": "aggro",
+   "net_seed": 2,
+   "opponent": "grow_shove4",
+   "G200_net": [
+    3.1595179757264202,
+    0.7947705172914528,
+    64
+   ],
+   "ledger_net_in_A": {
+    "deaths_A": 1.0,
+    "deaths_B": 2.40625,
+    "trade_conn_A": 52.75,
+    "trade_dealt_A": 7.514244092858397,
+    "d_min_A": 0.0,
+    "wards_A": 0.0,
+    "farm_A": 70.89984375000004,
+    "farm_B": 64.97500000000002,
+    "plates_A": 2.96875,
+    "plates_B": 2.8125,
+    "n_SH_A": 54.21875,
+    "n_trade_A": 66.875
+   }
+  },
+  {
+   "base": "aggro",
+   "net_seed": 2,
+   "opponent": "wk_shove_reset_sh",
+   "G200_net": [
+    3.0251141186882435,
+    0.6119176249562311,
+    64
+   ],
+   "ledger_net_in_A": {
+    "deaths_A": 0.9375,
+    "deaths_B": 4.53125,
+    "trade_conn_A": 47.8125,
+    "trade_dealt_A": 7.367869099099288,
+    "d_min_A": 0.0,
+    "wards_A": 0.0,
+    "farm_A": 72.08929687500002,
+    "farm_B": 67.70078124999999,
+    "plates_A": 2.875,
+    "plates_B": 3.0,
+    "n_SH_A": 59.875,
+    "n_trade_A": 63.28125
+   }
+  },
+  {
+   "base": "r2",
+   "net_seed": 0,
+   "opponent": "g_shove",
+   "G200_net": [
+    0.99589926783919,
+    0.723536726172245,
+    64
+   ],
+   "ledger_net_in_A": {
+    "deaths_A": 0.5,
+    "deaths_B": 4.0625,
+    "trade_conn_A": 44.96875,
+    "trade_dealt_A": 7.414547186257961,
+    "d_min_A": 0.7220380082662663,
+    "wards_A": 10.8125,
+    "farm_A": 72.55382812500002,
+    "farm_B": 72.89765625000001,
+    "plates_A": 2.5625,
+    "plates_B": 3.0,
+    "n_SH_A": 59.34375,
+    "n_trade_A": 59.4375
+   }
+  },
+  {
+   "base": "r2",
+   "net_seed": 0,
+   "opponent": "g_shove_sr",
+   "G200_net": [
+    0.08537856704257049,
+    0.6014460397604101,
+    64
+   ],
+   "ledger_net_in_A": {
+    "deaths_A": 0.375,
+    "deaths_B": 3.375,
+    "trade_conn_A": 44.3125,
+    "trade_dealt_A": 6.978282936968991,
+    "d_min_A": 0.7382157729501537,
+    "wards_A": 11.34375,
+    "farm_A": 72.37335937500004,
+    "farm_B": 72.96953125000002,
+    "plates_A": 2.5625,
+    "plates_B": 3.0,
+    "n_SH_A": 58.5,
+    "n_trade_A": 59.125
+   }
+  },
+  {
+   "base": "r2",
+   "net_seed": 0,
+   "opponent": "g_farm",
+   "G200_net": [
+    0.7678827120857041,
+    0.5318256231873956,
+    64
+   ],
+   "ledger_net_in_A": {
+    "deaths_A": 1.1875,
+    "deaths_B": 0.5625,
+    "trade_conn_A": 21.6875,
+    "trade_dealt_A": 3.317055589815446,
+    "d_min_A": 0.3080529687681719,
+    "wards_A": 15.375,
+    "farm_A": 73.1709375,
+    "farm_B": 76.26093750000007,
+    "plates_A": 3.0,
+    "plates_B": 0.0,
+    "n_SH_A": 70.90625,
+    "n_trade_A": 27.78125
+   }
+  },
+  {
+   "base": "r2",
+   "net_seed": 0,
+   "opponent": "g_guard",
+   "G200_net": [
+    3.9329247977109687,
+    0.779236008950005,
+    64
+   ],
+   "ledger_net_in_A": {
+    "deaths_A": 2.8125,
+    "deaths_B": 2.0625,
+    "trade_conn_A": 56.46875,
+    "trade_dealt_A": 8.550898032778214,
+    "d_min_A": 0.9312975271061577,
+    "wards_A": 14.65625,
+    "farm_A": 69.23773437500003,
+    "farm_B": 60.504843750000035,
+    "plates_A": 3.0,
+    "plates_B": 0.0,
+    "n_SH_A": 45.125,
+    "n_trade_A": 70.53125
+   }
+  },
+  {
+   "base": "r2",
+   "net_seed": 0,
+   "opponent": "grow_shove4",
+   "G200_net": [
+    0.018849515052369707,
+    0.5663659895360809,
+    64
+   ],
+   "ledger_net_in_A": {
+    "deaths_A": 0.875,
+    "deaths_B": 1.75,
+    "trade_conn_A": 46.84375,
+    "trade_dealt_A": 7.025418143010082,
+    "d_min_A": 0.63473379552648,
+    "wards_A": 15.6875,
+    "farm_A": 69.94226562500002,
+    "farm_B": 72.49570312500002,
+    "plates_A": 3.0,
+    "plates_B": 1.78125,
+    "n_SH_A": 54.8125,
+    "n_trade_A": 57.5
+   }
+  },
+  {
+   "base": "r2",
+   "net_seed": 0,
+   "opponent": "wk_shove_reset_sh",
+   "G200_net": [
+    0.47322811027786005,
+    0.6830387103981366,
+    64
+   ],
+   "ledger_net_in_A": {
+    "deaths_A": 0.75,
+    "deaths_B": 4.125,
+    "trade_conn_A": 45.90625,
+    "trade_dealt_A": 7.550402489760981,
+    "d_min_A": 0.7203786931361149,
+    "wards_A": 11.1875,
+    "farm_A": 71.73210937500002,
+    "farm_B": 72.352734375,
+    "plates_A": 2.78125,
+    "plates_B": 3.0,
+    "n_SH_A": 59.5625,
+    "n_trade_A": 60.375
+   }
+  },
+  {
+   "base": "r2",
+   "net_seed": 1,
+   "opponent": "g_shove",
+   "G200_net": [
+    1.3922663389440224,
+    0.721124040584156,
+    64
+   ],
+   "ledger_net_in_A": {
+    "deaths_A": 0.75,
+    "deaths_B": 4.15625,
+    "trade_conn_A": 40.03125,
+    "trade_dealt_A": 6.377127164143706,
+    "d_min_A": 0.6392417941105797,
+    "wards_A": 12.21875,
+    "farm_A": 71.63226562500003,
+    "farm_B": 72.26640624999999,
+    "plates_A": 2.8125,
+    "plates_B": 3.0,
+    "n_SH_A": 65.375,
+    "n_trade_A": 54.15625
+   }
+  },
+  {
+   "base": "r2",
+   "net_seed": 1,
+   "opponent": "g_shove_sr",
+   "G200_net": [
+    0.7540992364695857,
+    0.6557048049159808,
+    64
+   ],
+   "ledger_net_in_A": {
+    "deaths_A": 0.875,
+    "deaths_B": 3.34375,
+    "trade_conn_A": 39.875,
+    "trade_dealt_A": 6.28128740976476,
+    "d_min_A": 0.6371016030166937,
+    "wards_A": 12.84375,
+    "farm_A": 71.73843750000002,
+    "farm_B": 72.91796875,
+    "plates_A": 2.71875,
+    "plates_B": 3.0,
+    "n_SH_A": 65.0625,
+    "n_trade_A": 54.78125
+   }
+  },
+  {
+   "base": "r2",
+   "net_seed": 1,
+   "opponent": "g_farm",
+   "G200_net": [
+    0.37312858970698315,
+    0.5802176847658734,
+    64
+   ],
+   "ledger_net_in_A": {
+    "deaths_A": 1.0,
+    "deaths_B": 0.6875,
+    "trade_conn_A": 17.625,
+    "trade_dealt_A": 2.63084158319951,
+    "d_min_A": 0.2357407258443671,
+    "wards_A": 12.9375,
+    "farm_A": 73.21453125000002,
+    "farm_B": 77.12539062500005,
+    "plates_A": 3.0,
+    "plates_B": 0.0,
+    "n_SH_A": 75.40625,
+    "n_trade_A": 23.09375
+   }
+  },
+  {
+   "base": "r2",
+   "net_seed": 1,
+   "opponent": "g_guard",
+   "G200_net": [
+    4.108332327802977,
+    0.7416174319532861,
+    64
+   ],
+   "ledger_net_in_A": {
+    "deaths_A": 1.84375,
+    "deaths_B": 1.90625,
+    "trade_conn_A": 51.84375,
+    "trade_dealt_A": 8.074861786827677,
+    "d_min_A": 0.899314918773099,
+    "wards_A": 13.28125,
+    "farm_A": 68.51882812500001,
+    "farm_B": 61.42164062500003,
+    "plates_A": 3.0,
+    "plates_B": 0.0,
+    "n_SH_A": 48.375,
+    "n_trade_A": 65.65625
+   }
+  },
+  {
+   "base": "r2",
+   "net_seed": 1,
+   "opponent": "grow_shove4",
+   "G200_net": [
+    0.1461187208032722,
+    0.6579725589457386,
+    64
+   ],
+   "ledger_net_in_A": {
+    "deaths_A": 1.0625,
+    "deaths_B": 1.90625,
+    "trade_conn_A": 43.90625,
+    "trade_dealt_A": 7.181650789804198,
+    "d_min_A": 0.6116491849661472,
+    "wards_A": 15.8125,
+    "farm_A": 69.18968750000002,
+    "farm_B": 71.06835937499999,
+    "plates_A": 3.0,
+    "plates_B": 1.40625,
+    "n_SH_A": 56.90625,
+    "n_trade_A": 55.28125
+   }
+  },
+  {
+   "base": "r2",
+   "net_seed": 1,
+   "opponent": "wk_shove_reset_sh",
+   "G200_net": [
+    1.2597199847795273,
+    0.716119097388859,
+    64
+   ],
+   "ledger_net_in_A": {
+    "deaths_A": 0.65625,
+    "deaths_B": 4.0,
+    "trade_conn_A": 40.40625,
+    "trade_dealt_A": 6.577353941130662,
+    "d_min_A": 0.6298559210906971,
+    "wards_A": 12.28125,
+    "farm_A": 71.37070312500003,
+    "farm_B": 72.080859375,
+    "plates_A": 2.90625,
+    "plates_B": 3.0,
+    "n_SH_A": 63.59375,
+    "n_trade_A": 54.625
+   }
+  },
+  {
+   "base": "r2",
+   "net_seed": 2,
+   "opponent": "g_shove",
+   "G200_net": [
+    1.1426949192394784,
+    0.7245240067275367,
+    64
+   ],
+   "ledger_net_in_A": {
+    "deaths_A": 0.75,
+    "deaths_B": 4.0,
+    "trade_conn_A": 47.34375,
+    "trade_dealt_A": 7.302471629862528,
+    "d_min_A": 0.7275501690478561,
+    "wards_A": 6.625,
+    "farm_A": 71.08281250000002,
+    "farm_B": 72.05742187499999,
+    "plates_A": 2.75,
+    "plates_B": 3.0,
+    "n_SH_A": 60.03125,
+    "n_trade_A": 60.84375
+   }
+  },
+  {
+   "base": "r2",
+   "net_seed": 2,
+   "opponent": "g_shove_sr",
+   "G200_net": [
+    0.8861997454102395,
+    0.7336991531399244,
+    64
+   ],
+   "ledger_net_in_A": {
+    "deaths_A": 0.875,
+    "deaths_B": 4.1875,
+    "trade_conn_A": 47.875,
+    "trade_dealt_A": 7.8285427366359155,
+    "d_min_A": 0.7836687475447408,
+    "wards_A": 6.5625,
+    "farm_A": 70.91054687500002,
+    "farm_B": 71.35273437500001,
+    "plates_A": 2.90625,
+    "plates_B": 3.0,
+    "n_SH_A": 60.09375,
+    "n_trade_A": 61.875
+   }
+  },
+  {
+   "base": "r2",
+   "net_seed": 2,
+   "opponent": "g_farm",
+   "G200_net": [
+    0.5732655677206583,
+    0.6014102938754311,
+    64
+   ],
+   "ledger_net_in_A": {
+    "deaths_A": 0.90625,
+    "deaths_B": 0.875,
+    "trade_conn_A": 26.75,
+    "trade_dealt_A": 3.989415229396875,
+    "d_min_A": 0.37677493368075893,
+    "wards_A": 9.78125,
+    "farm_A": 70.71359375,
+    "farm_B": 75.03046875000004,
+    "plates_A": 3.0,
+    "plates_B": 0.0,
+    "n_SH_A": 66.28125,
+    "n_trade_A": 34.65625
+   }
+  },
+  {
+   "base": "r2",
+   "net_seed": 2,
+   "opponent": "g_guard",
+   "G200_net": [
+    2.9715073347498215,
+    0.9445086735298813,
+    64
+   ],
+   "ledger_net_in_A": {
+    "deaths_A": 2.65625,
+    "deaths_B": 1.71875,
+    "trade_conn_A": 57.25,
+    "trade_dealt_A": 8.092590544353147,
+    "d_min_A": 0.9741078125413336,
+    "wards_A": 7.84375,
+    "farm_A": 67.85632812500002,
+    "farm_B": 61.02914062500003,
+    "plates_A": 3.0,
+    "plates_B": 0.0,
+    "n_SH_A": 47.53125,
+    "n_trade_A": 71.09375
+   }
+  },
+  {
+   "base": "r2",
+   "net_seed": 2,
+   "opponent": "grow_shove4",
+   "G200_net": [
+    -1.1982038076676633,
+    0.6777638462589741,
+    64
+   ],
+   "ledger_net_in_A": {
+    "deaths_A": 1.125,
+    "deaths_B": 1.5625,
+    "trade_conn_A": 45.65625,
+    "trade_dealt_A": 6.589604518993889,
+    "d_min_A": 0.6240794563280796,
+    "wards_A": 9.9375,
+    "farm_A": 67.98921875,
+    "farm_B": 72.24843750000001,
+    "plates_A": 3.0,
+    "plates_B": 2.21875,
+    "n_SH_A": 55.28125,
+    "n_trade_A": 56.3125
+   }
+  },
+  {
+   "base": "r2",
+   "net_seed": 2,
+   "opponent": "wk_shove_reset_sh",
+   "G200_net": [
+    1.1757556951261319,
+    0.646793178134785,
+    64
+   ],
+   "ledger_net_in_A": {
+    "deaths_A": 0.84375,
+    "deaths_B": 3.96875,
+    "trade_conn_A": 48.0625,
+    "trade_dealt_A": 7.668412580082392,
+    "d_min_A": 0.7602383579869576,
+    "wards_A": 6.09375,
+    "farm_A": 70.96210937500001,
+    "farm_B": 71.8515625,
+    "plates_A": 2.78125,
+    "plates_B": 3.0,
+    "n_SH_A": 59.6875,
+    "n_trade_A": 62.375
+   }
+  },
+  {
+   "base": "cal",
+   "net_seed": 0,
+   "opponent": "g_shove",
+   "G200_net": [
+    0.6961655148947359,
+    0.7008286269381172,
+    64
+   ],
+   "ledger_net_in_A": {
+    "deaths_A": 0.59375,
+    "deaths_B": 4.40625,
+    "trade_conn_A": 41.5625,
+    "trade_dealt_A": 6.946960634729296,
+    "d_min_A": 0.7719077596765263,
+    "wards_A": 8.59375,
+    "farm_A": 74.25078125000003,
+    "farm_B": 74.4765625,
+    "plates_A": 2.875,
+    "plates_B": 3.0,
+    "n_SH_A": 70.53125,
+    "n_trade_A": 55.375
+   }
+  },
+  {
+   "base": "cal",
+   "net_seed": 0,
+   "opponent": "g_shove_sr",
+   "G200_net": [
+    0.5693321142963114,
+    0.6624205166003402,
+    64
+   ],
+   "ledger_net_in_A": {
+    "deaths_A": 0.59375,
+    "deaths_B": 3.71875,
+    "trade_conn_A": 42.09375,
+    "trade_dealt_A": 7.3302649981155446,
+    "d_min_A": 0.8324218380893984,
+    "wards_A": 8.71875,
+    "farm_A": 74.42242187500003,
+    "farm_B": 74.706640625,
+    "plates_A": 2.8125,
+    "plates_B": 2.96875,
+    "n_SH_A": 70.28125,
+    "n_trade_A": 55.65625
+   }
+  },
+  {
+   "base": "cal",
+   "net_seed": 0,
+   "opponent": "g_farm",
+   "G200_net": [
+    0.04727585490081923,
+    0.5818034586348889,
+    64
+   ],
+   "ledger_net_in_A": {
+    "deaths_A": 0.65625,
+    "deaths_B": 0.59375,
+    "trade_conn_A": 17.15625,
+    "trade_dealt_A": 2.385837711114447,
+    "d_min_A": 0.5890753008563682,
+    "wards_A": 16.0625,
+    "farm_A": 72.380625,
+    "farm_B": 78.00625000000005,
+    "plates_A": 3.0,
+    "plates_B": 0.0,
+    "n_SH_A": 73.75,
+    "n_trade_A": 21.78125
+   }
+  },
+  {
+   "base": "cal",
+   "net_seed": 0,
+   "opponent": "g_guard",
+   "G200_net": [
+    3.6673140940037534,
+    0.7455153310843602,
+    64
+   ],
+   "ledger_net_in_A": {
+    "deaths_A": 3.09375,
+    "deaths_B": 2.09375,
+    "trade_conn_A": 56.09375,
+    "trade_dealt_A": 8.883355454715735,
+    "d_min_A": 1.853400378480808,
+    "wards_A": 13.71875,
+    "farm_A": 68.08765625000001,
+    "farm_B": 60.37882812500003,
+    "plates_A": 2.96875,
+    "plates_B": 0.0,
+    "n_SH_A": 47.28125,
+    "n_trade_A": 69.78125
+   }
+  },
+  {
+   "base": "cal",
+   "net_seed": 0,
+   "opponent": "grow_shove4",
+   "G200_net": [
+    -0.3497591996614064,
+    0.6877339030238608,
+    64
+   ],
+   "ledger_net_in_A": {
+    "deaths_A": 0.875,
+    "deaths_B": 1.65625,
+    "trade_conn_A": 46.84375,
+    "trade_dealt_A": 7.176367674883959,
+    "d_min_A": 1.0863518028689343,
+    "wards_A": 14.625,
+    "farm_A": 70.20804687500001,
+    "farm_B": 73.333984375,
+    "plates_A": 3.0,
+    "plates_B": 1.90625,
+    "n_SH_A": 57.34375,
+    "n_trade_A": 57.15625
+   }
+  },
+  {
+   "base": "cal",
+   "net_seed": 0,
+   "opponent": "wk_shove_reset_sh",
+   "G200_net": [
+    0.6505365132287587,
+    0.7616286949919329,
+    64
+   ],
+   "ledger_net_in_A": {
+    "deaths_A": 0.65625,
+    "deaths_B": 4.09375,
+    "trade_conn_A": 42.3125,
+    "trade_dealt_A": 6.807293534555884,
+    "d_min_A": 0.7880670051442453,
+    "wards_A": 8.34375,
+    "farm_A": 73.99296875000003,
+    "farm_B": 74.25703125,
+    "plates_A": 2.875,
+    "plates_B": 3.0,
+    "n_SH_A": 69.0625,
+    "n_trade_A": 56.65625
+   }
+  },
+  {
+   "base": "cal",
+   "net_seed": 1,
+   "opponent": "g_shove",
+   "G200_net": [
+    0.8653074240025396,
+    0.7334777909261243,
+    64
+   ],
+   "ledger_net_in_A": {
+    "deaths_A": 0.71875,
+    "deaths_B": 3.90625,
+    "trade_conn_A": 34.71875,
+    "trade_dealt_A": 5.733867528344649,
+    "d_min_A": 0.6563027459780488,
+    "wards_A": 9.1875,
+    "farm_A": 74.83343750000003,
+    "farm_B": 76.22382812500001,
+    "plates_A": 2.78125,
+    "plates_B": 3.0,
+    "n_SH_A": 75.78125,
+    "n_trade_A": 46.59375
+   }
+  },
+  {
+   "base": "cal",
+   "net_seed": 1,
+   "opponent": "g_shove_sr",
+   "G200_net": [
+    0.9365012524195989,
+    0.76496695125884,
+    64
+   ],
+   "ledger_net_in_A": {
+    "deaths_A": 0.65625,
+    "deaths_B": 3.53125,
+    "trade_conn_A": 35.4375,
+    "trade_dealt_A": 5.717430608286726,
+    "d_min_A": 0.652579138303964,
+    "wards_A": 8.9375,
+    "farm_A": 75.07648437500004,
+    "farm_B": 75.74804687500001,
+    "plates_A": 2.8125,
+    "plates_B": 3.0,
+    "n_SH_A": 75.1875,
+    "n_trade_A": 47.53125
+   }
+  },
+  {
+   "base": "cal",
+   "net_seed": 1,
+   "opponent": "g_farm",
+   "G200_net": [
+    0.26077008662601253,
+    0.5441546090526894,
+    64
+   ],
+   "ledger_net_in_A": {
+    "deaths_A": 0.9375,
+    "deaths_B": 0.6875,
+    "trade_conn_A": 16.75,
+    "trade_dealt_A": 2.9168256753258746,
+    "d_min_A": 0.45999561165765734,
+    "wards_A": 15.28125,
+    "farm_A": 74.61140624999999,
+    "farm_B": 77.24101562500005,
+    "plates_A": 3.0,
+    "plates_B": 0.0,
+    "n_SH_A": 77.6875,
+    "n_trade_A": 21.375
+   }
+  },
+  {
+   "base": "cal",
+   "net_seed": 1,
+   "opponent": "g_guard",
+   "G200_net": [
+    4.01782680348633,
+    0.7807159050462327,
+    64
+   ],
+   "ledger_net_in_A": {
+    "deaths_A": 2.1875,
+    "deaths_B": 2.1875,
+    "trade_conn_A": 54.125,
+    "trade_dealt_A": 9.087573469192476,
+    "d_min_A": 1.4379518466113068,
+    "wards_A": 11.8125,
+    "farm_A": 68.89523437500003,
+    "farm_B": 61.33132812500003,
+    "plates_A": 3.0,
+    "plates_B": 0.0,
+    "n_SH_A": 52.09375,
+    "n_trade_A": 67.53125
+   }
+  },
+  {
+   "base": "cal",
+   "net_seed": 1,
+   "opponent": "grow_shove4",
+   "G200_net": [
+    -1.197609267790901,
+    0.580414490611003,
+    64
+   ],
+   "ledger_net_in_A": {
+    "deaths_A": 0.875,
+    "deaths_B": 1.40625,
+    "trade_conn_A": 40.8125,
+    "trade_dealt_A": 6.920197294394854,
+    "d_min_A": 0.8638138910546256,
+    "wards_A": 13.65625,
+    "farm_A": 69.51398437500002,
+    "farm_B": 73.95390624999999,
+    "plates_A": 3.0,
+    "plates_B": 2.15625,
+    "n_SH_A": 60.46875,
+    "n_trade_A": 50.59375
+   }
+  },
+  {
+   "base": "cal",
+   "net_seed": 1,
+   "opponent": "wk_shove_reset_sh",
+   "G200_net": [
+    0.8162770983441832,
+    0.7297561345551526,
+    64
+   ],
+   "ledger_net_in_A": {
+    "deaths_A": 0.78125,
+    "deaths_B": 3.78125,
+    "trade_conn_A": 35.5,
+    "trade_dealt_A": 5.8124210047889715,
+    "d_min_A": 0.6733176021186265,
+    "wards_A": 8.6875,
+    "farm_A": 74.34523437500003,
+    "farm_B": 75.93476562500001,
+    "plates_A": 2.78125,
+    "plates_B": 3.0,
+    "n_SH_A": 74.46875,
+    "n_trade_A": 47.6875
+   }
+  },
+  {
+   "base": "cal",
+   "net_seed": 2,
+   "opponent": "g_shove",
+   "G200_net": [
+    0.3728809079667726,
+    0.6369858370590877,
+    64
+   ],
+   "ledger_net_in_A": {
+    "deaths_A": 0.59375,
+    "deaths_B": 3.71875,
+    "trade_conn_A": 39.46875,
+    "trade_dealt_A": 6.390888588077842,
+    "d_min_A": 0.7952905038670237,
+    "wards_A": 5.25,
+    "farm_A": 74.02296875000003,
+    "farm_B": 75.575,
+    "plates_A": 2.8125,
+    "plates_B": 3.0,
+    "n_SH_A": 76.96875,
+    "n_trade_A": 51.28125
+   }
+  },
+  {
+   "base": "cal",
+   "net_seed": 2,
+   "opponent": "g_shove_sr",
+   "G200_net": [
+    0.9613835023887735,
+    0.6075010636854826,
+    64
+   ],
+   "ledger_net_in_A": {
+    "deaths_A": 0.625,
+    "deaths_B": 3.8125,
+    "trade_conn_A": 41.25,
+    "trade_dealt_A": 6.673779117701607,
+    "d_min_A": 0.8226937784257632,
+    "wards_A": 5.875,
+    "farm_A": 72.99484375000006,
+    "farm_B": 74.22890625000001,
+    "plates_A": 2.875,
+    "plates_B": 3.0,
+    "n_SH_A": 73.96875,
+    "n_trade_A": 53.1875
+   }
+  },
+  {
+   "base": "cal",
+   "net_seed": 2,
+   "opponent": "g_farm",
+   "G200_net": [
+    0.02641819342742098,
+    0.5972373742889722,
+    64
+   ],
+   "ledger_net_in_A": {
+    "deaths_A": 0.6875,
+    "deaths_B": 1.0,
+    "trade_conn_A": 21.71875,
+    "trade_dealt_A": 3.3206219868661857,
+    "d_min_A": 0.6528206806628158,
+    "wards_A": 11.125,
+    "farm_A": 72.9090625,
+    "farm_B": 76.92500000000004,
+    "plates_A": 3.0,
+    "plates_B": 0.0,
+    "n_SH_A": 66.75,
+    "n_trade_A": 28.0625
+   }
+  },
+  {
+   "base": "cal",
+   "net_seed": 2,
+   "opponent": "g_guard",
+   "G200_net": [
+    3.758536059432673,
+    0.9083869169647638,
+    64
+   ],
+   "ledger_net_in_A": {
+    "deaths_A": 2.4375,
+    "deaths_B": 1.84375,
+    "trade_conn_A": 56.6875,
+    "trade_dealt_A": 8.30789871553863,
+    "d_min_A": 1.6844396588533699,
+    "wards_A": 7.4375,
+    "farm_A": 67.74734375000001,
+    "farm_B": 61.04843750000003,
+    "plates_A": 3.0,
+    "plates_B": 0.0,
+    "n_SH_A": 48.09375,
+    "n_trade_A": 69.75
+   }
+  },
+  {
+   "base": "cal",
+   "net_seed": 2,
+   "opponent": "grow_shove4",
+   "G200_net": [
+    -1.3124669446659718,
+    0.6901380277876696,
+    64
+   ],
+   "ledger_net_in_A": {
+    "deaths_A": 0.9375,
+    "deaths_B": 1.59375,
+    "trade_conn_A": 43.78125,
+    "trade_dealt_A": 6.8649511808821115,
+    "d_min_A": 1.1366652988608337,
+    "wards_A": 10.03125,
+    "farm_A": 68.92171875000003,
+    "farm_B": 73.345703125,
+    "plates_A": 3.0,
+    "plates_B": 2.09375,
+    "n_SH_A": 56.65625,
+    "n_trade_A": 53.8125
+   }
+  },
+  {
+   "base": "cal",
+   "net_seed": 2,
+   "opponent": "wk_shove_reset_sh",
+   "G200_net": [
+    0.6421922608086554,
+    0.6416071050638653,
+    64
+   ],
+   "ledger_net_in_A": {
+    "deaths_A": 0.65625,
+    "deaths_B": 3.59375,
+    "trade_conn_A": 40.6875,
+    "trade_dealt_A": 6.472986517840564,
+    "d_min_A": 0.7768932602724296,
+    "wards_A": 4.84375,
+    "farm_A": 73.76015625000002,
+    "farm_B": 74.76640625000002,
+    "plates_A": 2.90625,
+    "plates_B": 3.0,
+    "n_SH_A": 74.375,
+    "n_trade_A": 53.5
+   }
+  }
+ ]
+}

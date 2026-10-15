@@ -1,0 +1,15 @@
+== stage zoning
+  [zoning matrix {}] 420 jobs, 86 s
+wrote results\m45b\zoning.json
+== stage zoning done in 87 s
+== stage timing
+  [timing] 16 jobs, 5 s
+wrote results\m45b\timing.json
+== stage timing done in 5 s
+== stage matrix
+  [matrix r2 s0 equal] 576 jobs, 188 s
+  [matrix aggro s0 equal] 576 jobs, 165 s
+  [matrix r2 neutral large] 576 jobs, 176 s
+  [matrix r2 a_push equal] 576 jobs, 178 s
+wrote results\m45b\matrix.json.gz
+== stage matrix done in 707 s

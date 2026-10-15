@@ -1,0 +1,107 @@
+{
+ "meta": {
+  "study": "M4.5b",
+  "commit": "8dc5acf54061d18e5f5a3fbd6a84460ee22433fc",
+  "working_tree_dirty": true,
+  "timestamp": "2026-10-14 16:54:29",
+  "python": "3.13.9",
+  "numpy": "2.5.3"
+ },
+ "dev_seeds": [
+  87000,
+  87499
+ ],
+ "holdout_seeds": [
+  88000,
+  88499
+ ],
+ "dev_grid": {
+  "levels": [
+   2,
+   4,
+   10,
+   18
+  ],
+  "gaps": [
+   "equal",
+   "large"
+  ],
+  "held": [
+   5,
+   12,
+   20
+  ],
+  "hp": [
+   1.0,
+   0.6
+  ],
+  "trade_levels": [
+   2,
+   6,
+   11,
+   18
+  ],
+  "trade_waves": [
+   8,
+   16,
+   24
+  ],
+  "vision_situations": [
+   "neutral",
+   "forward",
+   "presiege",
+   "defending",
+   "frozen_on"
+  ],
+  "zoning": [
+   "neutral",
+   "a_push"
+  ]
+ },
+ "holdout_grid": {
+  "levels": [
+   3,
+   7,
+   13,
+   16
+  ],
+  "gaps": [
+   "adv"
+  ],
+  "held": [
+   8,
+   16
+  ],
+  "hp": [
+   0.8,
+   0.45
+  ],
+  "trade_levels": [
+   3,
+   8,
+   14
+  ],
+  "trade_waves": [
+   12,
+   20
+  ],
+  "vision_situations": [
+   "push_lane",
+   "deep_farm"
+  ],
+  "zoning": [
+   "b_push"
+  ],
+  "natural_starts": [
+   "s0"
+  ],
+  "natural_turns": [
+   60,
+   150
+  ]
+ },
+ "fixed": "2026-10-14, before any M4.5b calibration run",
+ "amendments": [
+  "2026-10-14, before any calibration run: the Vision situation 'frozen_on' was used by the DEV Vision stage (baseline, DEV seeds) and is reclassified as DEV; the Vision holdout situations are the new 'push_lane' and 'deep_farm' (defined at this amendment); 'siege' is dropped (Ward is not legal from the enemy tower cell)"
+ ]
+}
