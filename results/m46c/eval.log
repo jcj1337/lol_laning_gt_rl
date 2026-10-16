@@ -1,0 +1,4686 @@
+== M4.6c stage train_check (6 workers)
+all passed: True failed: []
+== stage train_check done in 3 s
+== M4.6c stage eval_premium (7 workers)
+  [premium] 1/1350 done, 20 s
+  [premium] 2/1350 done, 20 s
+  [premium] 3/1350 done, 20 s
+  [premium] 4/1350 done, 20 s
+  [premium] 5/1350 done, 20 s
+  [premium] 6/1350 done, 21 s
+  [premium] 7/1350 done, 21 s
+  [premium] 8/1350 done, 34 s
+  [premium] 9/1350 done, 34 s
+  [premium] 10/1350 done, 34 s
+  [premium] 11/1350 done, 34 s
+  [premium] 12/1350 done, 34 s
+  [premium] 13/1350 done, 35 s
+  [premium] 14/1350 done, 35 s
+  [premium] 15/1350 done, 48 s
+  [premium] 16/1350 done, 48 s
+  [premium] 17/1350 done, 48 s
+  [premium] 18/1350 done, 48 s
+  [premium] 19/1350 done, 48 s
+  [premium] 20/1350 done, 48 s
+  [premium] 21/1350 done, 48 s
+  [premium] 22/1350 done, 60 s
+  [premium] 23/1350 done, 60 s
+  [premium] 24/1350 done, 60 s
+  [premium] 25/1350 done, 60 s
+  [premium] 26/1350 done, 60 s
+  [premium] 27/1350 done, 61 s
+  [premium] 28/1350 done, 61 s
+  [premium] 29/1350 done, 72 s
+  [premium] 30/1350 done, 72 s
+  [premium] 31/1350 done, 72 s
+  [premium] 32/1350 done, 72 s
+  [premium] 33/1350 done, 73 s
+  [premium] 34/1350 done, 73 s
+  [premium] 35/1350 done, 73 s
+  [premium] 36/1350 done, 84 s
+  [premium] 37/1350 done, 84 s
+  [premium] 38/1350 done, 84 s
+  [premium] 39/1350 done, 84 s
+  [premium] 40/1350 done, 84 s
+  [premium] 41/1350 done, 84 s
+  [premium] 42/1350 done, 85 s
+  [premium] 43/1350 done, 96 s
+  [premium] 44/1350 done, 97 s
+  [premium] 45/1350 done, 97 s
+  [premium] 46/1350 done, 97 s
+  [premium] 47/1350 done, 97 s
+  [premium] 48/1350 done, 98 s
+  [premium] 49/1350 done, 98 s
+  [premium] 50/1350 done, 109 s
+  [premium] 51/1350 done, 109 s
+  [premium] 52/1350 done, 109 s
+  [premium] 53/1350 done, 110 s
+  [premium] 54/1350 done, 110 s
+  [premium] 55/1350 done, 110 s
+  [premium] 56/1350 done, 111 s
+  [premium] 57/1350 done, 121 s
+  [premium] 58/1350 done, 121 s
+  [premium] 59/1350 done, 122 s
+  [premium] 60/1350 done, 122 s
+  [premium] 61/1350 done, 122 s
+  [premium] 62/1350 done, 123 s
+  [premium] 63/1350 done, 123 s
+  [premium] 64/1350 done, 133 s
+  [premium] 65/1350 done, 133 s
+  [premium] 66/1350 done, 134 s
+  [premium] 67/1350 done, 134 s
+  [premium] 68/1350 done, 134 s
+  [premium] 69/1350 done, 135 s
+  [premium] 70/1350 done, 135 s
+  [premium] 71/1350 done, 145 s
+  [premium] 72/1350 done, 146 s
+  [premium] 73/1350 done, 146 s
+  [premium] 74/1350 done, 146 s
+  [premium] 75/1350 done, 146 s
+  [premium] 76/1350 done, 147 s
+  [premium] 77/1350 done, 147 s
+  [premium] 78/1350 done, 161 s
+  [premium] 79/1350 done, 161 s
+  [premium] 80/1350 done, 161 s
+  [premium] 81/1350 done, 162 s
+  [premium] 82/1350 done, 162 s
+  [premium] 83/1350 done, 162 s
+  [premium] 84/1350 done, 162 s
+  [premium] 85/1350 done, 174 s
+  [premium] 86/1350 done, 174 s
+  [premium] 87/1350 done, 174 s
+  [premium] 88/1350 done, 175 s
+  [premium] 89/1350 done, 175 s
+  [premium] 90/1350 done, 176 s
+  [premium] 91/1350 done, 176 s
+  [premium] 92/1350 done, 188 s
+  [premium] 93/1350 done, 188 s
+  [premium] 94/1350 done, 189 s
+  [premium] 95/1350 done, 189 s
+  [premium] 96/1350 done, 189 s
+  [premium] 97/1350 done, 190 s
+  [premium] 98/1350 done, 191 s
+  [premium] 99/1350 done, 203 s
+  [premium] 100/1350 done, 203 s
+  [premium] 101/1350 done, 204 s
+  [premium] 102/1350 done, 204 s
+  [premium] 103/1350 done, 204 s
+  [premium] 104/1350 done, 205 s
+  [premium] 105/1350 done, 206 s
+  [premium] 106/1350 done, 216 s
+  [premium] 107/1350 done, 216 s
+  [premium] 108/1350 done, 216 s
+  [premium] 109/1350 done, 217 s
+  [premium] 110/1350 done, 218 s
+  [premium] 111/1350 done, 218 s
+  [premium] 112/1350 done, 219 s
+  [premium] 113/1350 done, 231 s
+  [premium] 114/1350 done, 231 s
+  [premium] 115/1350 done, 231 s
+  [premium] 116/1350 done, 232 s
+  [premium] 117/1350 done, 232 s
+  [premium] 118/1350 done, 233 s
+  [premium] 119/1350 done, 233 s
+  [premium] 120/1350 done, 243 s
+  [premium] 121/1350 done, 243 s
+  [premium] 122/1350 done, 243 s
+  [premium] 123/1350 done, 244 s
+  [premium] 124/1350 done, 244 s
+  [premium] 125/1350 done, 245 s
+  [premium] 126/1350 done, 245 s
+  [premium] 127/1350 done, 254 s
+  [premium] 128/1350 done, 255 s
+  [premium] 129/1350 done, 255 s
+  [premium] 130/1350 done, 256 s
+  [premium] 131/1350 done, 256 s
+  [premium] 132/1350 done, 257 s
+  [premium] 133/1350 done, 257 s
+  [premium] 134/1350 done, 266 s
+  [premium] 135/1350 done, 266 s
+  [premium] 136/1350 done, 267 s
+  [premium] 137/1350 done, 269 s
+  [premium] 138/1350 done, 269 s
+  [premium] 139/1350 done, 269 s
+  [premium] 140/1350 done, 270 s
+  [premium] 141/1350 done, 279 s
+  [premium] 142/1350 done, 279 s
+  [premium] 143/1350 done, 280 s
+  [premium] 144/1350 done, 282 s
+  [premium] 145/1350 done, 282 s
+  [premium] 146/1350 done, 282 s
+  [premium] 147/1350 done, 282 s
+  [premium] 148/1350 done, 292 s
+  [premium] 149/1350 done, 292 s
+  [premium] 150/1350 done, 293 s
+  [premium] 151/1350 done, 294 s
+  [premium] 152/1350 done, 294 s
+  [premium] 153/1350 done, 294 s
+  [premium] 154/1350 done, 295 s
+  [premium] 155/1350 done, 304 s
+  [premium] 156/1350 done, 304 s
+  [premium] 157/1350 done, 305 s
+  [premium] 158/1350 done, 306 s
+  [premium] 159/1350 done, 306 s
+  [premium] 160/1350 done, 306 s
+  [premium] 161/1350 done, 307 s
+  [premium] 162/1350 done, 316 s
+  [premium] 163/1350 done, 316 s
+  [premium] 164/1350 done, 317 s
+  [premium] 165/1350 done, 318 s
+  [premium] 166/1350 done, 318 s
+  [premium] 167/1350 done, 318 s
+  [premium] 168/1350 done, 318 s
+  [premium] 169/1350 done, 328 s
+  [premium] 170/1350 done, 329 s
+  [premium] 171/1350 done, 330 s
+  [premium] 172/1350 done, 331 s
+  [premium] 173/1350 done, 331 s
+  [premium] 174/1350 done, 331 s
+  [premium] 175/1350 done, 332 s
+  [premium] 176/1350 done, 341 s
+  [premium] 177/1350 done, 341 s
+  [premium] 178/1350 done, 342 s
+  [premium] 179/1350 done, 343 s
+  [premium] 180/1350 done, 343 s
+  [premium] 181/1350 done, 344 s
+  [premium] 182/1350 done, 344 s
+  [premium] 183/1350 done, 356 s
+  [premium] 184/1350 done, 356 s
+  [premium] 185/1350 done, 359 s
+  [premium] 186/1350 done, 359 s
+  [premium] 187/1350 done, 360 s
+  [premium] 188/1350 done, 361 s
+  [premium] 189/1350 done, 361 s
+  [premium] 190/1350 done, 373 s
+  [premium] 191/1350 done, 373 s
+  [premium] 192/1350 done, 375 s
+  [premium] 193/1350 done, 375 s
+  [premium] 194/1350 done, 376 s
+  [premium] 195/1350 done, 377 s
+  [premium] 196/1350 done, 377 s
+  [premium] 197/1350 done, 387 s
+  [premium] 198/1350 done, 387 s
+  [premium] 199/1350 done, 390 s
+  [premium] 200/1350 done, 390 s
+  [premium] 201/1350 done, 391 s
+  [premium] 202/1350 done, 392 s
+  [premium] 203/1350 done, 392 s
+  [premium] 204/1350 done, 404 s
+  [premium] 205/1350 done, 404 s
+  [premium] 206/1350 done, 406 s
+  [premium] 207/1350 done, 407 s
+  [premium] 208/1350 done, 407 s
+  [premium] 209/1350 done, 409 s
+  [premium] 210/1350 done, 409 s
+  [premium] 211/1350 done, 421 s
+  [premium] 212/1350 done, 421 s
+  [premium] 213/1350 done, 422 s
+  [premium] 214/1350 done, 423 s
+  [premium] 215/1350 done, 424 s
+  [premium] 216/1350 done, 425 s
+  [premium] 217/1350 done, 425 s
+  [premium] 218/1350 done, 437 s
+  [premium] 219/1350 done, 437 s
+  [premium] 220/1350 done, 439 s
+  [premium] 221/1350 done, 439 s
+  [premium] 222/1350 done, 440 s
+  [premium] 223/1350 done, 441 s
+  [premium] 224/1350 done, 441 s
+  [premium] 225/1350 done, 451 s
+  [premium] 226/1350 done, 452 s
+  [premium] 227/1350 done, 453 s
+  [premium] 228/1350 done, 454 s
+  [premium] 229/1350 done, 455 s
+  [premium] 230/1350 done, 456 s
+  [premium] 231/1350 done, 456 s
+  [premium] 232/1350 done, 465 s
+  [premium] 233/1350 done, 466 s
+  [premium] 234/1350 done, 467 s
+  [premium] 235/1350 done, 468 s
+  [premium] 236/1350 done, 468 s
+  [premium] 237/1350 done, 470 s
+  [premium] 238/1350 done, 470 s
+  [premium] 239/1350 done, 480 s
+  [premium] 240/1350 done, 481 s
+  [premium] 241/1350 done, 482 s
+  [premium] 242/1350 done, 483 s
+  [premium] 243/1350 done, 484 s
+  [premium] 244/1350 done, 486 s
+  [premium] 245/1350 done, 486 s
+  [premium] 246/1350 done, 497 s
+  [premium] 247/1350 done, 497 s
+  [premium] 248/1350 done, 498 s
+  [premium] 249/1350 done, 499 s
+  [premium] 250/1350 done, 500 s
+  [premium] 251/1350 done, 501 s
+  [premium] 252/1350 done, 501 s
+  [premium] 253/1350 done, 510 s
+  [premium] 254/1350 done, 510 s
+  [premium] 255/1350 done, 511 s
+  [premium] 256/1350 done, 512 s
+  [premium] 257/1350 done, 512 s
+  [premium] 258/1350 done, 514 s
+  [premium] 259/1350 done, 514 s
+  [premium] 260/1350 done, 522 s
+  [premium] 261/1350 done, 523 s
+  [premium] 262/1350 done, 523 s
+  [premium] 263/1350 done, 524 s
+  [premium] 264/1350 done, 525 s
+  [premium] 265/1350 done, 526 s
+  [premium] 266/1350 done, 526 s
+  [premium] 267/1350 done, 535 s
+  [premium] 268/1350 done, 535 s
+  [premium] 269/1350 done, 535 s
+  [premium] 270/1350 done, 536 s
+  [premium] 271/1350 done, 538 s
+  [premium] 272/1350 done, 539 s
+  [premium] 273/1350 done, 539 s
+  [premium] 274/1350 done, 547 s
+  [premium] 275/1350 done, 548 s
+  [premium] 276/1350 done, 548 s
+  [premium] 277/1350 done, 549 s
+  [premium] 278/1350 done, 551 s
+  [premium] 279/1350 done, 552 s
+  [premium] 280/1350 done, 552 s
+  [premium] 281/1350 done, 560 s
+  [premium] 282/1350 done, 561 s
+  [premium] 283/1350 done, 561 s
+  [premium] 284/1350 done, 562 s
+  [premium] 285/1350 done, 563 s
+  [premium] 286/1350 done, 564 s
+  [premium] 287/1350 done, 564 s
+  [premium] 288/1350 done, 572 s
+  [premium] 289/1350 done, 573 s
+  [premium] 290/1350 done, 573 s
+  [premium] 291/1350 done, 574 s
+  [premium] 292/1350 done, 576 s
+  [premium] 293/1350 done, 577 s
+  [premium] 294/1350 done, 577 s
+  [premium] 295/1350 done, 585 s
+  [premium] 296/1350 done, 585 s
+  [premium] 297/1350 done, 586 s
+  [premium] 298/1350 done, 587 s
+  [premium] 299/1350 done, 588 s
+  [premium] 300/1350 done, 589 s
+  [premium] 301/1350 done, 589 s
+  [premium] 302/1350 done, 597 s
+  [premium] 303/1350 done, 597 s
+  [premium] 304/1350 done, 598 s
+  [premium] 305/1350 done, 599 s
+  [premium] 306/1350 done, 601 s
+  [premium] 307/1350 done, 601 s
+  [premium] 308/1350 done, 601 s
+  [premium] 309/1350 done, 609 s
+  [premium] 310/1350 done, 610 s
+  [premium] 311/1350 done, 610 s
+  [premium] 312/1350 done, 612 s
+  [premium] 313/1350 done, 613 s
+  [premium] 314/1350 done, 614 s
+  [premium] 315/1350 done, 614 s
+  [premium] 316/1350 done, 622 s
+  [premium] 317/1350 done, 623 s
+  [premium] 318/1350 done, 623 s
+  [premium] 319/1350 done, 625 s
+  [premium] 320/1350 done, 626 s
+  [premium] 321/1350 done, 626 s
+  [premium] 322/1350 done, 627 s
+  [premium] 323/1350 done, 635 s
+  [premium] 324/1350 done, 635 s
+  [premium] 325/1350 done, 636 s
+  [premium] 326/1350 done, 637 s
+  [premium] 327/1350 done, 639 s
+  [premium] 328/1350 done, 639 s
+  [premium] 329/1350 done, 640 s
+  [premium] 330/1350 done, 647 s
+  [premium] 331/1350 done, 648 s
+  [premium] 332/1350 done, 648 s
+  [premium] 333/1350 done, 650 s
+  [premium] 334/1350 done, 651 s
+  [premium] 335/1350 done, 652 s
+  [premium] 336/1350 done, 652 s
+  [premium] 337/1350 done, 660 s
+  [premium] 338/1350 done, 660 s
+  [premium] 339/1350 done, 661 s
+  [premium] 340/1350 done, 662 s
+  [premium] 341/1350 done, 664 s
+  [premium] 342/1350 done, 664 s
+  [premium] 343/1350 done, 664 s
+  [premium] 344/1350 done, 672 s
+  [premium] 345/1350 done, 673 s
+  [premium] 346/1350 done, 673 s
+  [premium] 347/1350 done, 675 s
+  [premium] 348/1350 done, 676 s
+  [premium] 349/1350 done, 676 s
+  [premium] 350/1350 done, 676 s
+  [premium] 351/1350 done, 684 s
+  [premium] 352/1350 done, 685 s
+  [premium] 353/1350 done, 685 s
+  [premium] 354/1350 done, 687 s
+  [premium] 355/1350 done, 688 s
+  [premium] 356/1350 done, 689 s
+  [premium] 357/1350 done, 689 s
+  [premium] 358/1350 done, 696 s
+  [premium] 359/1350 done, 697 s
+  [premium] 360/1350 done, 697 s
+  [premium] 361/1350 done, 701 s
+  [premium] 362/1350 done, 701 s
+  [premium] 363/1350 done, 702 s
+  [premium] 364/1350 done, 702 s
+  [premium] 365/1350 done, 710 s
+  [premium] 366/1350 done, 710 s
+  [premium] 367/1350 done, 710 s
+  [premium] 368/1350 done, 714 s
+  [premium] 369/1350 done, 714 s
+  [premium] 370/1350 done, 715 s
+  [premium] 371/1350 done, 715 s
+  [premium] 372/1350 done, 722 s
+  [premium] 373/1350 done, 723 s
+  [premium] 374/1350 done, 723 s
+  [premium] 375/1350 done, 726 s
+  [premium] 376/1350 done, 726 s
+  [premium] 377/1350 done, 727 s
+  [premium] 378/1350 done, 728 s
+  [premium] 379/1350 done, 734 s
+  [premium] 380/1350 done, 735 s
+  [premium] 381/1350 done, 735 s
+  [premium] 382/1350 done, 738 s
+  [premium] 383/1350 done, 739 s
+  [premium] 384/1350 done, 739 s
+  [premium] 385/1350 done, 740 s
+  [premium] 386/1350 done, 747 s
+  [premium] 387/1350 done, 748 s
+  [premium] 388/1350 done, 748 s
+  [premium] 389/1350 done, 751 s
+  [premium] 390/1350 done, 751 s
+  [premium] 391/1350 done, 752 s
+  [premium] 392/1350 done, 752 s
+  [premium] 393/1350 done, 759 s
+  [premium] 394/1350 done, 760 s
+  [premium] 395/1350 done, 760 s
+  [premium] 396/1350 done, 763 s
+  [premium] 397/1350 done, 763 s
+  [premium] 398/1350 done, 764 s
+  [premium] 399/1350 done, 765 s
+  [premium] 400/1350 done, 771 s
+  [premium] 401/1350 done, 772 s
+  [premium] 402/1350 done, 772 s
+  [premium] 403/1350 done, 775 s
+  [premium] 404/1350 done, 775 s
+  [premium] 405/1350 done, 776 s
+  [premium] 406/1350 done, 778 s
+  [premium] 407/1350 done, 784 s
+  [premium] 408/1350 done, 785 s
+  [premium] 409/1350 done, 785 s
+  [premium] 410/1350 done, 788 s
+  [premium] 411/1350 done, 788 s
+  [premium] 412/1350 done, 789 s
+  [premium] 413/1350 done, 790 s
+  [premium] 414/1350 done, 797 s
+  [premium] 415/1350 done, 797 s
+  [premium] 416/1350 done, 798 s
+  [premium] 417/1350 done, 801 s
+  [premium] 418/1350 done, 801 s
+  [premium] 419/1350 done, 802 s
+  [premium] 420/1350 done, 803 s
+  [premium] 421/1350 done, 809 s
+  [premium] 422/1350 done, 809 s
+  [premium] 423/1350 done, 810 s
+  [premium] 424/1350 done, 813 s
+  [premium] 425/1350 done, 813 s
+  [premium] 426/1350 done, 814 s
+  [premium] 427/1350 done, 816 s
+  [premium] 428/1350 done, 821 s
+  [premium] 429/1350 done, 821 s
+  [premium] 430/1350 done, 822 s
+  [premium] 431/1350 done, 826 s
+  [premium] 432/1350 done, 826 s
+  [premium] 433/1350 done, 826 s
+  [premium] 434/1350 done, 828 s
+  [premium] 435/1350 done, 833 s
+  [premium] 436/1350 done, 833 s
+  [premium] 437/1350 done, 834 s
+  [premium] 438/1350 done, 837 s
+  [premium] 439/1350 done, 838 s
+  [premium] 440/1350 done, 838 s
+  [premium] 441/1350 done, 840 s
+  [premium] 442/1350 done, 845 s
+  [premium] 443/1350 done, 845 s
+  [premium] 444/1350 done, 846 s
+  [premium] 445/1350 done, 849 s
+  [premium] 446/1350 done, 850 s
+  [premium] 447/1350 done, 850 s
+  [premium] 448/1350 done, 851 s
+  [premium] 449/1350 done, 857 s
+  [premium] 450/1350 done, 857 s
+  [premium] 451/1350 done, 859 s
+  [premium] 452/1350 done, 862 s
+  [premium] 453/1350 done, 862 s
+  [premium] 454/1350 done, 863 s
+  [premium] 455/1350 done, 864 s
+  [premium] 456/1350 done, 870 s
+  [premium] 457/1350 done, 870 s
+  [premium] 458/1350 done, 872 s
+  [premium] 459/1350 done, 876 s
+  [premium] 460/1350 done, 876 s
+  [premium] 461/1350 done, 876 s
+  [premium] 462/1350 done, 878 s
+  [premium] 463/1350 done, 883 s
+  [premium] 464/1350 done, 883 s
+  [premium] 465/1350 done, 885 s
+  [premium] 466/1350 done, 888 s
+  [premium] 467/1350 done, 888 s
+  [premium] 468/1350 done, 889 s
+  [premium] 469/1350 done, 890 s
+  [premium] 470/1350 done, 895 s
+  [premium] 471/1350 done, 896 s
+  [premium] 472/1350 done, 897 s
+  [premium] 473/1350 done, 900 s
+  [premium] 474/1350 done, 901 s
+  [premium] 475/1350 done, 901 s
+  [premium] 476/1350 done, 902 s
+  [premium] 477/1350 done, 907 s
+  [premium] 478/1350 done, 908 s
+  [premium] 479/1350 done, 910 s
+  [premium] 480/1350 done, 913 s
+  [premium] 481/1350 done, 913 s
+  [premium] 482/1350 done, 913 s
+  [premium] 483/1350 done, 915 s
+  [premium] 484/1350 done, 919 s
+  [premium] 485/1350 done, 920 s
+  [premium] 486/1350 done, 922 s
+  [premium] 487/1350 done, 925 s
+  [premium] 488/1350 done, 925 s
+  [premium] 489/1350 done, 926 s
+  [premium] 490/1350 done, 927 s
+  [premium] 491/1350 done, 931 s
+  [premium] 492/1350 done, 932 s
+  [premium] 493/1350 done, 934 s
+  [premium] 494/1350 done, 937 s
+  [premium] 495/1350 done, 937 s
+  [premium] 496/1350 done, 939 s
+  [premium] 497/1350 done, 940 s
+  [premium] 498/1350 done, 944 s
+  [premium] 499/1350 done, 945 s
+  [premium] 500/1350 done, 947 s
+  [premium] 501/1350 done, 950 s
+  [premium] 502/1350 done, 950 s
+  [premium] 503/1350 done, 951 s
+  [premium] 504/1350 done, 953 s
+  [premium] 505/1350 done, 957 s
+  [premium] 506/1350 done, 958 s
+  [premium] 507/1350 done, 959 s
+  [premium] 508/1350 done, 963 s
+  [premium] 509/1350 done, 963 s
+  [premium] 510/1350 done, 964 s
+  [premium] 511/1350 done, 965 s
+  [premium] 512/1350 done, 969 s
+  [premium] 513/1350 done, 970 s
+  [premium] 514/1350 done, 972 s
+  [premium] 515/1350 done, 975 s
+  [premium] 516/1350 done, 975 s
+  [premium] 517/1350 done, 977 s
+  [premium] 518/1350 done, 978 s
+  [premium] 519/1350 done, 982 s
+  [premium] 520/1350 done, 982 s
+  [premium] 521/1350 done, 984 s
+  [premium] 522/1350 done, 987 s
+  [premium] 523/1350 done, 988 s
+  [premium] 524/1350 done, 989 s
+  [premium] 525/1350 done, 990 s
+  [premium] 526/1350 done, 994 s
+  [premium] 527/1350 done, 995 s
+  [premium] 528/1350 done, 997 s
+  [premium] 529/1350 done, 1000 s
+  [premium] 530/1350 done, 1000 s
+  [premium] 531/1350 done, 1001 s
+  [premium] 532/1350 done, 1003 s
+  [premium] 533/1350 done, 1006 s
+  [premium] 534/1350 done, 1007 s
+  [premium] 535/1350 done, 1009 s
+  [premium] 536/1350 done, 1012 s
+  [premium] 537/1350 done, 1012 s
+  [premium] 538/1350 done, 1013 s
+  [premium] 539/1350 done, 1013 s
+  [premium] 540/1350 done, 1015 s
+  [premium] 541/1350 done, 1015 s
+  [premium] 542/1350 done, 1018 s
+  [premium] 543/1350 done, 1019 s
+  [premium] 544/1350 done, 1019 s
+  [premium] 545/1350 done, 1020 s
+  [premium] 546/1350 done, 1020 s
+  [premium] 547/1350 done, 1021 s
+  [premium] 548/1350 done, 1022 s
+  [premium] 549/1350 done, 1025 s
+  [premium] 550/1350 done, 1025 s
+  [premium] 551/1350 done, 1025 s
+  [premium] 552/1350 done, 1026 s
+  [premium] 553/1350 done, 1027 s
+  [premium] 554/1350 done, 1028 s
+  [premium] 555/1350 done, 1028 s
+  [premium] 556/1350 done, 1031 s
+  [premium] 557/1350 done, 1031 s
+  [premium] 558/1350 done, 1032 s
+  [premium] 559/1350 done, 1033 s
+  [premium] 560/1350 done, 1033 s
+  [premium] 561/1350 done, 1034 s
+  [premium] 562/1350 done, 1035 s
+  [premium] 563/1350 done, 1037 s
+  [premium] 564/1350 done, 1038 s
+  [premium] 565/1350 done, 1038 s
+  [premium] 566/1350 done, 1039 s
+  [premium] 567/1350 done, 1040 s
+  [premium] 568/1350 done, 1041 s
+  [premium] 569/1350 done, 1041 s
+  [premium] 570/1350 done, 1044 s
+  [premium] 571/1350 done, 1044 s
+  [premium] 572/1350 done, 1045 s
+  [premium] 573/1350 done, 1045 s
+  [premium] 574/1350 done, 1046 s
+  [premium] 575/1350 done, 1047 s
+  [premium] 576/1350 done, 1048 s
+  [premium] 577/1350 done, 1051 s
+  [premium] 578/1350 done, 1051 s
+  [premium] 579/1350 done, 1051 s
+  [premium] 580/1350 done, 1052 s
+  [premium] 581/1350 done, 1053 s
+  [premium] 582/1350 done, 1054 s
+  [premium] 583/1350 done, 1054 s
+  [premium] 584/1350 done, 1057 s
+  [premium] 585/1350 done, 1057 s
+  [premium] 586/1350 done, 1058 s
+  [premium] 587/1350 done, 1058 s
+  [premium] 588/1350 done, 1060 s
+  [premium] 589/1350 done, 1061 s
+  [premium] 590/1350 done, 1061 s
+  [premium] 591/1350 done, 1063 s
+  [premium] 592/1350 done, 1064 s
+  [premium] 593/1350 done, 1065 s
+  [premium] 594/1350 done, 1065 s
+  [premium] 595/1350 done, 1066 s
+  [premium] 596/1350 done, 1067 s
+  [premium] 597/1350 done, 1067 s
+  [premium] 598/1350 done, 1070 s
+  [premium] 599/1350 done, 1070 s
+  [premium] 600/1350 done, 1071 s
+  [premium] 601/1350 done, 1071 s
+  [premium] 602/1350 done, 1072 s
+  [premium] 603/1350 done, 1074 s
+  [premium] 604/1350 done, 1074 s
+  [premium] 605/1350 done, 1076 s
+  [premium] 606/1350 done, 1076 s
+  [premium] 607/1350 done, 1077 s
+  [premium] 608/1350 done, 1077 s
+  [premium] 609/1350 done, 1079 s
+  [premium] 610/1350 done, 1080 s
+  [premium] 611/1350 done, 1080 s
+  [premium] 612/1350 done, 1083 s
+  [premium] 613/1350 done, 1083 s
+  [premium] 614/1350 done, 1084 s
+  [premium] 615/1350 done, 1084 s
+  [premium] 616/1350 done, 1085 s
+  [premium] 617/1350 done, 1086 s
+  [premium] 618/1350 done, 1086 s
+  [premium] 619/1350 done, 1089 s
+  [premium] 620/1350 done, 1089 s
+  [premium] 621/1350 done, 1090 s
+  [premium] 622/1350 done, 1090 s
+  [premium] 623/1350 done, 1092 s
+  [premium] 624/1350 done, 1093 s
+  [premium] 625/1350 done, 1093 s
+  [premium] 626/1350 done, 1095 s
+  [premium] 627/1350 done, 1095 s
+  [premium] 628/1350 done, 1096 s
+  [premium] 629/1350 done, 1096 s
+  [premium] 630/1350 done, 1098 s
+  [premium] 631/1350 done, 1099 s
+  [premium] 632/1350 done, 1099 s
+  [premium] 633/1350 done, 1102 s
+  [premium] 634/1350 done, 1102 s
+  [premium] 635/1350 done, 1103 s
+  [premium] 636/1350 done, 1103 s
+  [premium] 637/1350 done, 1104 s
+  [premium] 638/1350 done, 1106 s
+  [premium] 639/1350 done, 1106 s
+  [premium] 640/1350 done, 1108 s
+  [premium] 641/1350 done, 1108 s
+  [premium] 642/1350 done, 1109 s
+  [premium] 643/1350 done, 1110 s
+  [premium] 644/1350 done, 1111 s
+  [premium] 645/1350 done, 1112 s
+  [premium] 646/1350 done, 1113 s
+  [premium] 647/1350 done, 1115 s
+  [premium] 648/1350 done, 1115 s
+  [premium] 649/1350 done, 1116 s
+  [premium] 650/1350 done, 1116 s
+  [premium] 651/1350 done, 1117 s
+  [premium] 652/1350 done, 1119 s
+  [premium] 653/1350 done, 1119 s
+  [premium] 654/1350 done, 1121 s
+  [premium] 655/1350 done, 1121 s
+  [premium] 656/1350 done, 1122 s
+  [premium] 657/1350 done, 1122 s
+  [premium] 658/1350 done, 1124 s
+  [premium] 659/1350 done, 1125 s
+  [premium] 660/1350 done, 1125 s
+  [premium] 661/1350 done, 1127 s
+  [premium] 662/1350 done, 1128 s
+  [premium] 663/1350 done, 1128 s
+  [premium] 664/1350 done, 1129 s
+  [premium] 665/1350 done, 1130 s
+  [premium] 666/1350 done, 1132 s
+  [premium] 667/1350 done, 1132 s
+  [premium] 668/1350 done, 1134 s
+  [premium] 669/1350 done, 1134 s
+  [premium] 670/1350 done, 1135 s
+  [premium] 671/1350 done, 1135 s
+  [premium] 672/1350 done, 1136 s
+  [premium] 673/1350 done, 1138 s
+  [premium] 674/1350 done, 1138 s
+  [premium] 675/1350 done, 1140 s
+  [premium] 676/1350 done, 1140 s
+  [premium] 677/1350 done, 1141 s
+  [premium] 678/1350 done, 1142 s
+  [premium] 679/1350 done, 1143 s
+  [premium] 680/1350 done, 1145 s
+  [premium] 681/1350 done, 1145 s
+  [premium] 682/1350 done, 1147 s
+  [premium] 683/1350 done, 1147 s
+  [premium] 684/1350 done, 1148 s
+  [premium] 685/1350 done, 1149 s
+  [premium] 686/1350 done, 1150 s
+  [premium] 687/1350 done, 1151 s
+  [premium] 688/1350 done, 1152 s
+  [premium] 689/1350 done, 1153 s
+  [premium] 690/1350 done, 1154 s
+  [premium] 691/1350 done, 1154 s
+  [premium] 692/1350 done, 1155 s
+  [premium] 693/1350 done, 1156 s
+  [premium] 694/1350 done, 1158 s
+  [premium] 695/1350 done, 1158 s
+  [premium] 696/1350 done, 1160 s
+  [premium] 697/1350 done, 1160 s
+  [premium] 698/1350 done, 1161 s
+  [premium] 699/1350 done, 1161 s
+  [premium] 700/1350 done, 1163 s
+  [premium] 701/1350 done, 1164 s
+  [premium] 702/1350 done, 1164 s
+  [premium] 703/1350 done, 1166 s
+  [premium] 704/1350 done, 1166 s
+  [premium] 705/1350 done, 1167 s
+  [premium] 706/1350 done, 1168 s
+  [premium] 707/1350 done, 1169 s
+  [premium] 708/1350 done, 1171 s
+  [premium] 709/1350 done, 1171 s
+  [premium] 710/1350 done, 1172 s
+  [premium] 711/1350 done, 1173 s
+  [premium] 712/1350 done, 1173 s
+  [premium] 713/1350 done, 1174 s
+  [premium] 714/1350 done, 1175 s
+  [premium] 715/1350 done, 1177 s
+  [premium] 716/1350 done, 1177 s
+  [premium] 717/1350 done, 1179 s
+  [premium] 718/1350 done, 1179 s
+  [premium] 719/1350 done, 1180 s
+  [premium] 720/1350 done, 1181 s
+  [premium] 721/1350 done, 1182 s
+  [premium] 722/1350 done, 1184 s
+  [premium] 723/1350 done, 1184 s
+  [premium] 724/1350 done, 1185 s
+  [premium] 725/1350 done, 1186 s
+  [premium] 726/1350 done, 1186 s
+  [premium] 727/1350 done, 1187 s
+  [premium] 728/1350 done, 1189 s
+  [premium] 729/1350 done, 1190 s
+  [premium] 730/1350 done, 1190 s
+  [premium] 731/1350 done, 1192 s
+  [premium] 732/1350 done, 1192 s
+  [premium] 733/1350 done, 1193 s
+  [premium] 734/1350 done, 1194 s
+  [premium] 735/1350 done, 1195 s
+  [premium] 736/1350 done, 1197 s
+  [premium] 737/1350 done, 1197 s
+  [premium] 738/1350 done, 1198 s
+  [premium] 739/1350 done, 1199 s
+  [premium] 740/1350 done, 1200 s
+  [premium] 741/1350 done, 1201 s
+  [premium] 742/1350 done, 1202 s
+  [premium] 743/1350 done, 1203 s
+  [premium] 744/1350 done, 1203 s
+  [premium] 745/1350 done, 1205 s
+  [premium] 746/1350 done, 1206 s
+  [premium] 747/1350 done, 1206 s
+  [premium] 748/1350 done, 1207 s
+  [premium] 749/1350 done, 1208 s
+  [premium] 750/1350 done, 1210 s
+  [premium] 751/1350 done, 1210 s
+  [premium] 752/1350 done, 1211 s
+  [premium] 753/1350 done, 1212 s
+  [premium] 754/1350 done, 1213 s
+  [premium] 755/1350 done, 1214 s
+  [premium] 756/1350 done, 1215 s
+  [premium] 757/1350 done, 1216 s
+  [premium] 758/1350 done, 1216 s
+  [premium] 759/1350 done, 1218 s
+  [premium] 760/1350 done, 1218 s
+  [premium] 761/1350 done, 1219 s
+  [premium] 762/1350 done, 1220 s
+  [premium] 763/1350 done, 1221 s
+  [premium] 764/1350 done, 1222 s
+  [premium] 765/1350 done, 1223 s
+  [premium] 766/1350 done, 1224 s
+  [premium] 767/1350 done, 1225 s
+  [premium] 768/1350 done, 1226 s
+  [premium] 769/1350 done, 1227 s
+  [premium] 770/1350 done, 1228 s
+  [premium] 771/1350 done, 1229 s
+  [premium] 772/1350 done, 1229 s
+  [premium] 773/1350 done, 1231 s
+  [premium] 774/1350 done, 1232 s
+  [premium] 775/1350 done, 1232 s
+  [premium] 776/1350 done, 1234 s
+  [premium] 777/1350 done, 1234 s
+  [premium] 778/1350 done, 1236 s
+  [premium] 779/1350 done, 1236 s
+  [premium] 780/1350 done, 1237 s
+  [premium] 781/1350 done, 1238 s
+  [premium] 782/1350 done, 1239 s
+  [premium] 783/1350 done, 1240 s
+  [premium] 784/1350 done, 1241 s
+  [premium] 785/1350 done, 1242 s
+  [premium] 786/1350 done, 1242 s
+  [premium] 787/1350 done, 1244 s
+  [premium] 788/1350 done, 1245 s
+  [premium] 789/1350 done, 1245 s
+  [premium] 790/1350 done, 1246 s
+  [premium] 791/1350 done, 1247 s
+  [premium] 792/1350 done, 1249 s
+  [premium] 793/1350 done, 1249 s
+  [premium] 794/1350 done, 1250 s
+  [premium] 795/1350 done, 1251 s
+  [premium] 796/1350 done, 1251 s
+  [premium] 797/1350 done, 1252 s
+  [premium] 798/1350 done, 1254 s
+  [premium] 799/1350 done, 1255 s
+  [premium] 800/1350 done, 1255 s
+  [premium] 801/1350 done, 1257 s
+  [premium] 802/1350 done, 1257 s
+  [premium] 803/1350 done, 1258 s
+  [premium] 804/1350 done, 1259 s
+  [premium] 805/1350 done, 1260 s
+  [premium] 806/1350 done, 1262 s
+  [premium] 807/1350 done, 1262 s
+  [premium] 808/1350 done, 1263 s
+  [premium] 809/1350 done, 1264 s
+  [premium] 810/1350 done, 1264 s
+  [premium] 811/1350 done, 1266 s
+  [premium] 812/1350 done, 1267 s
+  [premium] 813/1350 done, 1268 s
+  [premium] 814/1350 done, 1268 s
+  [premium] 815/1350 done, 1270 s
+  [premium] 816/1350 done, 1270 s
+  [premium] 817/1350 done, 1271 s
+  [premium] 818/1350 done, 1272 s
+  [premium] 819/1350 done, 1274 s
+  [premium] 820/1350 done, 1275 s
+  [premium] 821/1350 done, 1275 s
+  [premium] 822/1350 done, 1276 s
+  [premium] 823/1350 done, 1277 s
+  [premium] 824/1350 done, 1277 s
+  [premium] 825/1350 done, 1279 s
+  [premium] 826/1350 done, 1280 s
+  [premium] 827/1350 done, 1281 s
+  [premium] 828/1350 done, 1282 s
+  [premium] 829/1350 done, 1283 s
+  [premium] 830/1350 done, 1283 s
+  [premium] 831/1350 done, 1284 s
+  [premium] 832/1350 done, 1285 s
+  [premium] 833/1350 done, 1287 s
+  [premium] 834/1350 done, 1288 s
+  [premium] 835/1350 done, 1288 s
+  [premium] 836/1350 done, 1289 s
+  [premium] 837/1350 done, 1290 s
+  [premium] 838/1350 done, 1290 s
+  [premium] 839/1350 done, 1292 s
+  [premium] 840/1350 done, 1294 s
+  [premium] 841/1350 done, 1294 s
+  [premium] 842/1350 done, 1295 s
+  [premium] 843/1350 done, 1295 s
+  [premium] 844/1350 done, 1296 s
+  [premium] 845/1350 done, 1297 s
+  [premium] 846/1350 done, 1299 s
+  [premium] 847/1350 done, 1300 s
+  [premium] 848/1350 done, 1301 s
+  [premium] 849/1350 done, 1301 s
+  [premium] 850/1350 done, 1302 s
+  [premium] 851/1350 done, 1303 s
+  [premium] 852/1350 done, 1303 s
+  [premium] 853/1350 done, 1305 s
+  [premium] 854/1350 done, 1306 s
+  [premium] 855/1350 done, 1307 s
+  [premium] 856/1350 done, 1308 s
+  [premium] 857/1350 done, 1309 s
+  [premium] 858/1350 done, 1310 s
+  [premium] 859/1350 done, 1310 s
+  [premium] 860/1350 done, 1312 s
+  [premium] 861/1350 done, 1313 s
+  [premium] 862/1350 done, 1314 s
+  [premium] 863/1350 done, 1314 s
+  [premium] 864/1350 done, 1315 s
+  [premium] 865/1350 done, 1316 s
+  [premium] 866/1350 done, 1317 s
+  [premium] 867/1350 done, 1318 s
+  [premium] 868/1350 done, 1320 s
+  [premium] 869/1350 done, 1321 s
+  [premium] 870/1350 done, 1321 s
+  [premium] 871/1350 done, 1321 s
+  [premium] 872/1350 done, 1323 s
+  [premium] 873/1350 done, 1323 s
+  [premium] 874/1350 done, 1325 s
+  [premium] 875/1350 done, 1326 s
+  [premium] 876/1350 done, 1327 s
+  [premium] 877/1350 done, 1327 s
+  [premium] 878/1350 done, 1328 s
+  [premium] 879/1350 done, 1329 s
+  [premium] 880/1350 done, 1329 s
+  [premium] 881/1350 done, 1331 s
+  [premium] 882/1350 done, 1333 s
+  [premium] 883/1350 done, 1333 s
+  [premium] 884/1350 done, 1334 s
+  [premium] 885/1350 done, 1334 s
+  [premium] 886/1350 done, 1336 s
+  [premium] 887/1350 done, 1336 s
+  [premium] 888/1350 done, 1337 s
+  [premium] 889/1350 done, 1339 s
+  [premium] 890/1350 done, 1340 s
+  [premium] 891/1350 done, 1340 s
+  [premium] 892/1350 done, 1340 s
+  [premium] 893/1350 done, 1342 s
+  [premium] 894/1350 done, 1342 s
+  [premium] 895/1350 done, 1344 s
+  [premium] 896/1350 done, 1345 s
+  [premium] 897/1350 done, 1346 s
+  [premium] 898/1350 done, 1346 s
+  [premium] 899/1350 done, 1347 s
+  [premium] 900/1350 done, 1348 s
+  [premium] 901/1350 done, 1349 s
+  [premium] 902/1350 done, 1350 s
+  [premium] 903/1350 done, 1352 s
+  [premium] 904/1350 done, 1353 s
+  [premium] 905/1350 done, 1353 s
+  [premium] 906/1350 done, 1354 s
+  [premium] 907/1350 done, 1355 s
+  [premium] 908/1350 done, 1355 s
+  [premium] 909/1350 done, 1357 s
+  [premium] 910/1350 done, 1358 s
+  [premium] 911/1350 done, 1360 s
+  [premium] 912/1350 done, 1360 s
+  [premium] 913/1350 done, 1360 s
+  [premium] 914/1350 done, 1362 s
+  [premium] 915/1350 done, 1362 s
+  [premium] 916/1350 done, 1363 s
+  [premium] 917/1350 done, 1365 s
+  [premium] 918/1350 done, 1366 s
+  [premium] 919/1350 done, 1367 s
+  [premium] 920/1350 done, 1367 s
+  [premium] 921/1350 done, 1369 s
+  [premium] 922/1350 done, 1369 s
+  [premium] 923/1350 done, 1371 s
+  [premium] 924/1350 done, 1372 s
+  [premium] 925/1350 done, 1374 s
+  [premium] 926/1350 done, 1374 s
+  [premium] 927/1350 done, 1374 s
+  [premium] 928/1350 done, 1376 s
+  [premium] 929/1350 done, 1376 s
+  [premium] 930/1350 done, 1379 s
+  [premium] 931/1350 done, 1381 s
+  [premium] 932/1350 done, 1383 s
+  [premium] 933/1350 done, 1383 s
+  [premium] 934/1350 done, 1383 s
+  [premium] 935/1350 done, 1385 s
+  [premium] 936/1350 done, 1385 s
+  [premium] 937/1350 done, 1388 s
+  [premium] 938/1350 done, 1389 s
+  [premium] 939/1350 done, 1390 s
+  [premium] 940/1350 done, 1391 s
+  [premium] 941/1350 done, 1391 s
+  [premium] 942/1350 done, 1393 s
+  [premium] 943/1350 done, 1393 s
+  [premium] 944/1350 done, 1395 s
+  [premium] 945/1350 done, 1397 s
+  [premium] 946/1350 done, 1398 s
+  [premium] 947/1350 done, 1399 s
+  [premium] 948/1350 done, 1399 s
+  [premium] 949/1350 done, 1401 s
+  [premium] 950/1350 done, 1401 s
+  [premium] 951/1350 done, 1403 s
+  [premium] 952/1350 done, 1405 s
+  [premium] 953/1350 done, 1406 s
+  [premium] 954/1350 done, 1407 s
+  [premium] 955/1350 done, 1407 s
+  [premium] 956/1350 done, 1409 s
+  [premium] 957/1350 done, 1409 s
+  [premium] 958/1350 done, 1411 s
+  [premium] 959/1350 done, 1412 s
+  [premium] 960/1350 done, 1414 s
+  [premium] 961/1350 done, 1414 s
+  [premium] 962/1350 done, 1414 s
+  [premium] 963/1350 done, 1416 s
+  [premium] 964/1350 done, 1416 s
+  [premium] 965/1350 done, 1418 s
+  [premium] 966/1350 done, 1419 s
+  [premium] 967/1350 done, 1421 s
+  [premium] 968/1350 done, 1421 s
+  [premium] 969/1350 done, 1421 s
+  [premium] 970/1350 done, 1423 s
+  [premium] 971/1350 done, 1423 s
+  [premium] 972/1350 done, 1425 s
+  [premium] 973/1350 done, 1427 s
+  [premium] 974/1350 done, 1428 s
+  [premium] 975/1350 done, 1428 s
+  [premium] 976/1350 done, 1428 s
+  [premium] 977/1350 done, 1430 s
+  [premium] 978/1350 done, 1430 s
+  [premium] 979/1350 done, 1432 s
+  [premium] 980/1350 done, 1433 s
+  [premium] 981/1350 done, 1434 s
+  [premium] 982/1350 done, 1434 s
+  [premium] 983/1350 done, 1434 s
+  [premium] 984/1350 done, 1436 s
+  [premium] 985/1350 done, 1436 s
+  [premium] 986/1350 done, 1438 s
+  [premium] 987/1350 done, 1439 s
+  [premium] 988/1350 done, 1440 s
+  [premium] 989/1350 done, 1441 s
+  [premium] 990/1350 done, 1441 s
+  [premium] 991/1350 done, 1443 s
+  [premium] 992/1350 done, 1443 s
+  [premium] 993/1350 done, 1445 s
+  [premium] 994/1350 done, 1446 s
+  [premium] 995/1350 done, 1447 s
+  [premium] 996/1350 done, 1448 s
+  [premium] 997/1350 done, 1448 s
+  [premium] 998/1350 done, 1449 s
+  [premium] 999/1350 done, 1450 s
+  [premium] 1000/1350 done, 1452 s
+  [premium] 1001/1350 done, 1453 s
+  [premium] 1002/1350 done, 1454 s
+  [premium] 1003/1350 done, 1454 s
+  [premium] 1004/1350 done, 1455 s
+  [premium] 1005/1350 done, 1456 s
+  [premium] 1006/1350 done, 1456 s
+  [premium] 1007/1350 done, 1458 s
+  [premium] 1008/1350 done, 1460 s
+  [premium] 1009/1350 done, 1461 s
+  [premium] 1010/1350 done, 1461 s
+  [premium] 1011/1350 done, 1461 s
+  [premium] 1012/1350 done, 1462 s
+  [premium] 1013/1350 done, 1463 s
+  [premium] 1014/1350 done, 1465 s
+  [premium] 1015/1350 done, 1466 s
+  [premium] 1016/1350 done, 1467 s
+  [premium] 1017/1350 done, 1468 s
+  [premium] 1018/1350 done, 1468 s
+  [premium] 1019/1350 done, 1469 s
+  [premium] 1020/1350 done, 1469 s
+  [premium] 1021/1350 done, 1472 s
+  [premium] 1022/1350 done, 1473 s
+  [premium] 1023/1350 done, 1474 s
+  [premium] 1024/1350 done, 1475 s
+  [premium] 1025/1350 done, 1475 s
+  [premium] 1026/1350 done, 1476 s
+  [premium] 1027/1350 done, 1476 s
+  [premium] 1028/1350 done, 1479 s
+  [premium] 1029/1350 done, 1480 s
+  [premium] 1030/1350 done, 1481 s
+  [premium] 1031/1350 done, 1481 s
+  [premium] 1032/1350 done, 1481 s
+  [premium] 1033/1350 done, 1482 s
+  [premium] 1034/1350 done, 1482 s
+  [premium] 1035/1350 done, 1485 s
+  [premium] 1036/1350 done, 1486 s
+  [premium] 1037/1350 done, 1487 s
+  [premium] 1038/1350 done, 1488 s
+  [premium] 1039/1350 done, 1488 s
+  [premium] 1040/1350 done, 1489 s
+  [premium] 1041/1350 done, 1490 s
+  [premium] 1042/1350 done, 1492 s
+  [premium] 1043/1350 done, 1493 s
+  [premium] 1044/1350 done, 1494 s
+  [premium] 1045/1350 done, 1495 s
+  [premium] 1046/1350 done, 1495 s
+  [premium] 1047/1350 done, 1496 s
+  [premium] 1048/1350 done, 1496 s
+  [premium] 1049/1350 done, 1499 s
+  [premium] 1050/1350 done, 1500 s
+  [premium] 1051/1350 done, 1501 s
+  [premium] 1052/1350 done, 1501 s
+  [premium] 1053/1350 done, 1502 s
+  [premium] 1054/1350 done, 1502 s
+  [premium] 1055/1350 done, 1503 s
+  [premium] 1056/1350 done, 1505 s
+  [premium] 1057/1350 done, 1507 s
+  [premium] 1058/1350 done, 1507 s
+  [premium] 1059/1350 done, 1508 s
+  [premium] 1060/1350 done, 1508 s
+  [premium] 1061/1350 done, 1509 s
+  [premium] 1062/1350 done, 1509 s
+  [premium] 1063/1350 done, 1512 s
+  [premium] 1064/1350 done, 1513 s
+  [premium] 1065/1350 done, 1514 s
+  [premium] 1066/1350 done, 1514 s
+  [premium] 1067/1350 done, 1515 s
+  [premium] 1068/1350 done, 1515 s
+  [premium] 1069/1350 done, 1516 s
+  [premium] 1070/1350 done, 1518 s
+  [premium] 1071/1350 done, 1520 s
+  [premium] 1072/1350 done, 1521 s
+  [premium] 1073/1350 done, 1521 s
+  [premium] 1074/1350 done, 1522 s
+  [premium] 1075/1350 done, 1522 s
+  [premium] 1076/1350 done, 1523 s
+  [premium] 1077/1350 done, 1525 s
+  [premium] 1078/1350 done, 1525 s
+  [premium] 1079/1350 done, 1525 s
+  [premium] 1080/1350 done, 1526 s
+  [premium] 1081/1350 done, 1527 s
+  [premium] 1082/1350 done, 1527 s
+  [premium] 1083/1350 done, 1528 s
+  [premium] 1084/1350 done, 1528 s
+  [premium] 1085/1350 done, 1529 s
+  [premium] 1086/1350 done, 1529 s
+  [premium] 1087/1350 done, 1529 s
+  [premium] 1088/1350 done, 1530 s
+  [premium] 1089/1350 done, 1530 s
+  [premium] 1090/1350 done, 1531 s
+  [premium] 1091/1350 done, 1531 s
+  [premium] 1092/1350 done, 1532 s
+  [premium] 1093/1350 done, 1532 s
+  [premium] 1094/1350 done, 1532 s
+  [premium] 1095/1350 done, 1533 s
+  [premium] 1096/1350 done, 1534 s
+  [premium] 1097/1350 done, 1534 s
+  [premium] 1098/1350 done, 1535 s
+  [premium] 1099/1350 done, 1535 s
+  [premium] 1100/1350 done, 1535 s
+  [premium] 1101/1350 done, 1535 s
+  [premium] 1102/1350 done, 1536 s
+  [premium] 1103/1350 done, 1537 s
+  [premium] 1104/1350 done, 1537 s
+  [premium] 1105/1350 done, 1538 s
+  [premium] 1106/1350 done, 1538 s
+  [premium] 1107/1350 done, 1538 s
+  [premium] 1108/1350 done, 1539 s
+  [premium] 1109/1350 done, 1540 s
+  [premium] 1110/1350 done, 1540 s
+  [premium] 1111/1350 done, 1540 s
+  [premium] 1112/1350 done, 1541 s
+  [premium] 1113/1350 done, 1541 s
+  [premium] 1114/1350 done, 1541 s
+  [premium] 1115/1350 done, 1542 s
+  [premium] 1116/1350 done, 1543 s
+  [premium] 1117/1350 done, 1543 s
+  [premium] 1118/1350 done, 1544 s
+  [premium] 1119/1350 done, 1544 s
+  [premium] 1120/1350 done, 1544 s
+  [premium] 1121/1350 done, 1544 s
+  [premium] 1122/1350 done, 1545 s
+  [premium] 1123/1350 done, 1546 s
+  [premium] 1124/1350 done, 1546 s
+  [premium] 1125/1350 done, 1547 s
+  [premium] 1126/1350 done, 1547 s
+  [premium] 1127/1350 done, 1548 s
+  [premium] 1128/1350 done, 1548 s
+  [premium] 1129/1350 done, 1548 s
+  [premium] 1130/1350 done, 1549 s
+  [premium] 1131/1350 done, 1549 s
+  [premium] 1132/1350 done, 1550 s
+  [premium] 1133/1350 done, 1551 s
+  [premium] 1134/1350 done, 1551 s
+  [premium] 1135/1350 done, 1551 s
+  [premium] 1136/1350 done, 1551 s
+  [premium] 1137/1350 done, 1552 s
+  [premium] 1138/1350 done, 1552 s
+  [premium] 1139/1350 done, 1553 s
+  [premium] 1140/1350 done, 1554 s
+  [premium] 1141/1350 done, 1554 s
+  [premium] 1142/1350 done, 1554 s
+  [premium] 1143/1350 done, 1554 s
+  [premium] 1144/1350 done, 1555 s
+  [premium] 1145/1350 done, 1555 s
+  [premium] 1146/1350 done, 1556 s
+  [premium] 1147/1350 done, 1557 s
+  [premium] 1148/1350 done, 1557 s
+  [premium] 1149/1350 done, 1557 s
+  [premium] 1150/1350 done, 1557 s
+  [premium] 1151/1350 done, 1558 s
+  [premium] 1152/1350 done, 1559 s
+  [premium] 1153/1350 done, 1559 s
+  [premium] 1154/1350 done, 1560 s
+  [premium] 1155/1350 done, 1560 s
+  [premium] 1156/1350 done, 1560 s
+  [premium] 1157/1350 done, 1561 s
+  [premium] 1158/1350 done, 1561 s
+  [premium] 1159/1350 done, 1562 s
+  [premium] 1160/1350 done, 1562 s
+  [premium] 1161/1350 done, 1563 s
+  [premium] 1162/1350 done, 1563 s
+  [premium] 1163/1350 done, 1563 s
+  [premium] 1164/1350 done, 1564 s
+  [premium] 1165/1350 done, 1565 s
+  [premium] 1166/1350 done, 1565 s
+  [premium] 1167/1350 done, 1565 s
+  [premium] 1168/1350 done, 1566 s
+  [premium] 1169/1350 done, 1566 s
+  [premium] 1170/1350 done, 1566 s
+  [premium] 1171/1350 done, 1567 s
+  [premium] 1172/1350 done, 1568 s
+  [premium] 1173/1350 done, 1568 s
+  [premium] 1174/1350 done, 1569 s
+  [premium] 1175/1350 done, 1569 s
+  [premium] 1176/1350 done, 1569 s
+  [premium] 1177/1350 done, 1570 s
+  [premium] 1178/1350 done, 1570 s
+  [premium] 1179/1350 done, 1571 s
+  [premium] 1180/1350 done, 1571 s
+  [premium] 1181/1350 done, 1572 s
+  [premium] 1182/1350 done, 1572 s
+  [premium] 1183/1350 done, 1573 s
+  [premium] 1184/1350 done, 1573 s
+  [premium] 1185/1350 done, 1573 s
+  [premium] 1186/1350 done, 1574 s
+  [premium] 1187/1350 done, 1574 s
+  [premium] 1188/1350 done, 1575 s
+  [premium] 1189/1350 done, 1576 s
+  [premium] 1190/1350 done, 1576 s
+  [premium] 1191/1350 done, 1576 s
+  [premium] 1192/1350 done, 1576 s
+  [premium] 1193/1350 done, 1577 s
+  [premium] 1194/1350 done, 1577 s
+  [premium] 1195/1350 done, 1578 s
+  [premium] 1196/1350 done, 1579 s
+  [premium] 1197/1350 done, 1579 s
+  [premium] 1198/1350 done, 1579 s
+  [premium] 1199/1350 done, 1579 s
+  [premium] 1200/1350 done, 1580 s
+  [premium] 1201/1350 done, 1580 s
+  [premium] 1202/1350 done, 1581 s
+  [premium] 1203/1350 done, 1582 s
+  [premium] 1204/1350 done, 1582 s
+  [premium] 1205/1350 done, 1582 s
+  [premium] 1206/1350 done, 1583 s
+  [premium] 1207/1350 done, 1583 s
+  [premium] 1208/1350 done, 1583 s
+  [premium] 1209/1350 done, 1584 s
+  [premium] 1210/1350 done, 1585 s
+  [premium] 1211/1350 done, 1585 s
+  [premium] 1212/1350 done, 1585 s
+  [premium] 1213/1350 done, 1586 s
+  [premium] 1214/1350 done, 1586 s
+  [premium] 1215/1350 done, 1587 s
+  [premium] 1216/1350 done, 1588 s
+  [premium] 1217/1350 done, 1588 s
+  [premium] 1218/1350 done, 1588 s
+  [premium] 1219/1350 done, 1589 s
+  [premium] 1220/1350 done, 1589 s
+  [premium] 1221/1350 done, 1590 s
+  [premium] 1222/1350 done, 1590 s
+  [premium] 1223/1350 done, 1591 s
+  [premium] 1224/1350 done, 1591 s
+  [premium] 1225/1350 done, 1591 s
+  [premium] 1226/1350 done, 1592 s
+  [premium] 1227/1350 done, 1592 s
+  [premium] 1228/1350 done, 1593 s
+  [premium] 1229/1350 done, 1593 s
+  [premium] 1230/1350 done, 1594 s
+  [premium] 1231/1350 done, 1595 s
+  [premium] 1232/1350 done, 1595 s
+  [premium] 1233/1350 done, 1595 s
+  [premium] 1234/1350 done, 1596 s
+  [premium] 1235/1350 done, 1596 s
+  [premium] 1236/1350 done, 1596 s
+  [premium] 1237/1350 done, 1597 s
+  [premium] 1238/1350 done, 1598 s
+  [premium] 1239/1350 done, 1598 s
+  [premium] 1240/1350 done, 1598 s
+  [premium] 1241/1350 done, 1599 s
+  [premium] 1242/1350 done, 1599 s
+  [premium] 1243/1350 done, 1599 s
+  [premium] 1244/1350 done, 1600 s
+  [premium] 1245/1350 done, 1601 s
+  [premium] 1246/1350 done, 1601 s
+  [premium] 1247/1350 done, 1601 s
+  [premium] 1248/1350 done, 1602 s
+  [premium] 1249/1350 done, 1602 s
+  [premium] 1250/1350 done, 1603 s
+  [premium] 1251/1350 done, 1603 s
+  [premium] 1252/1350 done, 1604 s
+  [premium] 1253/1350 done, 1604 s
+  [premium] 1254/1350 done, 1604 s
+  [premium] 1255/1350 done, 1605 s
+  [premium] 1256/1350 done, 1605 s
+  [premium] 1257/1350 done, 1606 s
+  [premium] 1258/1350 done, 1606 s
+  [premium] 1259/1350 done, 1607 s
+  [premium] 1260/1350 done, 1607 s
+  [premium] 1261/1350 done, 1608 s
+  [premium] 1262/1350 done, 1608 s
+  [premium] 1263/1350 done, 1609 s
+  [premium] 1264/1350 done, 1609 s
+  [premium] 1265/1350 done, 1610 s
+  [premium] 1266/1350 done, 1610 s
+  [premium] 1267/1350 done, 1610 s
+  [premium] 1268/1350 done, 1611 s
+  [premium] 1269/1350 done, 1611 s
+  [premium] 1270/1350 done, 1612 s
+  [premium] 1271/1350 done, 1612 s
+  [premium] 1272/1350 done, 1613 s
+  [premium] 1273/1350 done, 1613 s
+  [premium] 1274/1350 done, 1613 s
+  [premium] 1275/1350 done, 1614 s
+  [premium] 1276/1350 done, 1614 s
+  [premium] 1277/1350 done, 1615 s
+  [premium] 1278/1350 done, 1615 s
+  [premium] 1279/1350 done, 1616 s
+  [premium] 1280/1350 done, 1616 s
+  [premium] 1281/1350 done, 1617 s
+  [premium] 1282/1350 done, 1617 s
+  [premium] 1283/1350 done, 1617 s
+  [premium] 1284/1350 done, 1618 s
+  [premium] 1285/1350 done, 1618 s
+  [premium] 1286/1350 done, 1619 s
+  [premium] 1287/1350 done, 1619 s
+  [premium] 1288/1350 done, 1620 s
+  [premium] 1289/1350 done, 1620 s
+  [premium] 1290/1350 done, 1620 s
+  [premium] 1291/1350 done, 1621 s
+  [premium] 1292/1350 done, 1621 s
+  [premium] 1293/1350 done, 1622 s
+  [premium] 1294/1350 done, 1623 s
+  [premium] 1295/1350 done, 1623 s
+  [premium] 1296/1350 done, 1623 s
+  [premium] 1297/1350 done, 1624 s
+  [premium] 1298/1350 done, 1624 s
+  [premium] 1299/1350 done, 1624 s
+  [premium] 1300/1350 done, 1625 s
+  [premium] 1301/1350 done, 1626 s
+  [premium] 1302/1350 done, 1626 s
+  [premium] 1303/1350 done, 1626 s
+  [premium] 1304/1350 done, 1627 s
+  [premium] 1305/1350 done, 1627 s
+  [premium] 1306/1350 done, 1628 s
+  [premium] 1307/1350 done, 1628 s
+  [premium] 1308/1350 done, 1629 s
+  [premium] 1309/1350 done, 1629 s
+  [premium] 1310/1350 done, 1630 s
+  [premium] 1311/1350 done, 1630 s
+  [premium] 1312/1350 done, 1630 s
+  [premium] 1313/1350 done, 1631 s
+  [premium] 1314/1350 done, 1632 s
+  [premium] 1315/1350 done, 1632 s
+  [premium] 1316/1350 done, 1632 s
+  [premium] 1317/1350 done, 1633 s
+  [premium] 1318/1350 done, 1633 s
+  [premium] 1319/1350 done, 1634 s
+  [premium] 1320/1350 done, 1634 s
+  [premium] 1321/1350 done, 1635 s
+  [premium] 1322/1350 done, 1635 s
+  [premium] 1323/1350 done, 1636 s
+  [premium] 1324/1350 done, 1636 s
+  [premium] 1325/1350 done, 1636 s
+  [premium] 1326/1350 done, 1637 s
+  [premium] 1327/1350 done, 1637 s
+  [premium] 1328/1350 done, 1638 s
+  [premium] 1329/1350 done, 1639 s
+  [premium] 1330/1350 done, 1639 s
+  [premium] 1331/1350 done, 1639 s
+  [premium] 1332/1350 done, 1640 s
+  [premium] 1333/1350 done, 1640 s
+  [premium] 1334/1350 done, 1641 s
+  [premium] 1335/1350 done, 1641 s
+  [premium] 1336/1350 done, 1642 s
+  [premium] 1337/1350 done, 1642 s
+  [premium] 1338/1350 done, 1643 s
+  [premium] 1339/1350 done, 1643 s
+  [premium] 1340/1350 done, 1643 s
+  [premium] 1341/1350 done, 1644 s
+  [premium] 1342/1350 done, 1644 s
+  [premium] 1343/1350 done, 1645 s
+  [premium] 1344/1350 done, 1645 s
+  [premium] 1345/1350 done, 1646 s
+  [premium] 1346/1350 done, 1646 s
+  [premium] 1347/1350 done, 1646 s
+  [premium] 1348/1350 done, 1647 s
+  [premium] 1349/1350 done, 1647 s
+  [premium] 1350/1350 done, 1648 s
+  [premium] 1350 jobs in 1649 s
+== stage eval_premium done in 1649 s
+== M4.6c stage eval_premium_mid (7 workers)
+  [premium_mid] 1/180 done, 9 s
+  [premium_mid] 2/180 done, 9 s
+  [premium_mid] 3/180 done, 9 s
+  [premium_mid] 4/180 done, 9 s
+  [premium_mid] 5/180 done, 9 s
+  [premium_mid] 6/180 done, 9 s
+  [premium_mid] 7/180 done, 9 s
+  [premium_mid] 8/180 done, 16 s
+  [premium_mid] 9/180 done, 16 s
+  [premium_mid] 10/180 done, 16 s
+  [premium_mid] 11/180 done, 16 s
+  [premium_mid] 12/180 done, 16 s
+  [premium_mid] 13/180 done, 16 s
+  [premium_mid] 14/180 done, 17 s
+  [premium_mid] 15/180 done, 24 s
+  [premium_mid] 16/180 done, 24 s
+  [premium_mid] 17/180 done, 24 s
+  [premium_mid] 18/180 done, 24 s
+  [premium_mid] 19/180 done, 24 s
+  [premium_mid] 20/180 done, 24 s
+  [premium_mid] 21/180 done, 24 s
+  [premium_mid] 22/180 done, 30 s
+  [premium_mid] 23/180 done, 30 s
+  [premium_mid] 24/180 done, 30 s
+  [premium_mid] 25/180 done, 30 s
+  [premium_mid] 26/180 done, 30 s
+  [premium_mid] 27/180 done, 30 s
+  [premium_mid] 28/180 done, 30 s
+  [premium_mid] 29/180 done, 36 s
+  [premium_mid] 30/180 done, 36 s
+  [premium_mid] 31/180 done, 36 s
+  [premium_mid] 32/180 done, 36 s
+  [premium_mid] 33/180 done, 36 s
+  [premium_mid] 34/180 done, 36 s
+  [premium_mid] 35/180 done, 36 s
+  [premium_mid] 36/180 done, 42 s
+  [premium_mid] 37/180 done, 42 s
+  [premium_mid] 38/180 done, 42 s
+  [premium_mid] 39/180 done, 42 s
+  [premium_mid] 40/180 done, 43 s
+  [premium_mid] 41/180 done, 43 s
+  [premium_mid] 42/180 done, 43 s
+  [premium_mid] 43/180 done, 48 s
+  [premium_mid] 44/180 done, 48 s
+  [premium_mid] 45/180 done, 49 s
+  [premium_mid] 46/180 done, 49 s
+  [premium_mid] 47/180 done, 49 s
+  [premium_mid] 48/180 done, 49 s
+  [premium_mid] 49/180 done, 49 s
+  [premium_mid] 50/180 done, 55 s
+  [premium_mid] 51/180 done, 55 s
+  [premium_mid] 52/180 done, 55 s
+  [premium_mid] 53/180 done, 56 s
+  [premium_mid] 54/180 done, 56 s
+  [premium_mid] 55/180 done, 56 s
+  [premium_mid] 56/180 done, 56 s
+  [premium_mid] 57/180 done, 63 s
+  [premium_mid] 58/180 done, 63 s
+  [premium_mid] 59/180 done, 63 s
+  [premium_mid] 60/180 done, 63 s
+  [premium_mid] 61/180 done, 64 s
+  [premium_mid] 62/180 done, 64 s
+  [premium_mid] 63/180 done, 64 s
+  [premium_mid] 64/180 done, 71 s
+  [premium_mid] 65/180 done, 71 s
+  [premium_mid] 66/180 done, 71 s
+  [premium_mid] 67/180 done, 71 s
+  [premium_mid] 68/180 done, 71 s
+  [premium_mid] 69/180 done, 71 s
+  [premium_mid] 70/180 done, 72 s
+  [premium_mid] 71/180 done, 77 s
+  [premium_mid] 72/180 done, 77 s
+  [premium_mid] 73/180 done, 78 s
+  [premium_mid] 74/180 done, 78 s
+  [premium_mid] 75/180 done, 78 s
+  [premium_mid] 76/180 done, 78 s
+  [premium_mid] 77/180 done, 78 s
+  [premium_mid] 78/180 done, 84 s
+  [premium_mid] 79/180 done, 84 s
+  [premium_mid] 80/180 done, 84 s
+  [premium_mid] 81/180 done, 84 s
+  [premium_mid] 82/180 done, 84 s
+  [premium_mid] 83/180 done, 85 s
+  [premium_mid] 84/180 done, 85 s
+  [premium_mid] 85/180 done, 90 s
+  [premium_mid] 86/180 done, 91 s
+  [premium_mid] 87/180 done, 91 s
+  [premium_mid] 88/180 done, 91 s
+  [premium_mid] 89/180 done, 91 s
+  [premium_mid] 90/180 done, 91 s
+  [premium_mid] 91/180 done, 91 s
+  [premium_mid] 92/180 done, 97 s
+  [premium_mid] 93/180 done, 97 s
+  [premium_mid] 94/180 done, 97 s
+  [premium_mid] 95/180 done, 97 s
+  [premium_mid] 96/180 done, 97 s
+  [premium_mid] 97/180 done, 97 s
+  [premium_mid] 98/180 done, 98 s
+  [premium_mid] 99/180 done, 103 s
+  [premium_mid] 100/180 done, 103 s
+  [premium_mid] 101/180 done, 103 s
+  [premium_mid] 102/180 done, 103 s
+  [premium_mid] 103/180 done, 103 s
+  [premium_mid] 104/180 done, 104 s
+  [premium_mid] 105/180 done, 104 s
+  [premium_mid] 106/180 done, 110 s
+  [premium_mid] 107/180 done, 110 s
+  [premium_mid] 108/180 done, 110 s
+  [premium_mid] 109/180 done, 110 s
+  [premium_mid] 110/180 done, 110 s
+  [premium_mid] 111/180 done, 111 s
+  [premium_mid] 112/180 done, 111 s
+  [premium_mid] 113/180 done, 118 s
+  [premium_mid] 114/180 done, 118 s
+  [premium_mid] 115/180 done, 119 s
+  [premium_mid] 116/180 done, 119 s
+  [premium_mid] 117/180 done, 119 s
+  [premium_mid] 118/180 done, 120 s
+  [premium_mid] 119/180 done, 120 s
+  [premium_mid] 120/180 done, 125 s
+  [premium_mid] 121/180 done, 126 s
+  [premium_mid] 122/180 done, 126 s
+  [premium_mid] 123/180 done, 126 s
+  [premium_mid] 124/180 done, 126 s
+  [premium_mid] 125/180 done, 127 s
+  [premium_mid] 126/180 done, 127 s
+  [premium_mid] 127/180 done, 132 s
+  [premium_mid] 128/180 done, 133 s
+  [premium_mid] 129/180 done, 133 s
+  [premium_mid] 130/180 done, 133 s
+  [premium_mid] 131/180 done, 133 s
+  [premium_mid] 132/180 done, 134 s
+  [premium_mid] 133/180 done, 134 s
+  [premium_mid] 134/180 done, 140 s
+  [premium_mid] 135/180 done, 140 s
+  [premium_mid] 136/180 done, 141 s
+  [premium_mid] 137/180 done, 141 s
+  [premium_mid] 138/180 done, 141 s
+  [premium_mid] 139/180 done, 142 s
+  [premium_mid] 140/180 done, 142 s
+  [premium_mid] 141/180 done, 147 s
+  [premium_mid] 142/180 done, 148 s
+  [premium_mid] 143/180 done, 148 s
+  [premium_mid] 144/180 done, 148 s
+  [premium_mid] 145/180 done, 149 s
+  [premium_mid] 146/180 done, 149 s
+  [premium_mid] 147/180 done, 149 s
+  [premium_mid] 148/180 done, 155 s
+  [premium_mid] 149/180 done, 156 s
+  [premium_mid] 150/180 done, 156 s
+  [premium_mid] 151/180 done, 156 s
+  [premium_mid] 152/180 done, 156 s
+  [premium_mid] 153/180 done, 157 s
+  [premium_mid] 154/180 done, 157 s
+  [premium_mid] 155/180 done, 162 s
+  [premium_mid] 156/180 done, 163 s
+  [premium_mid] 157/180 done, 163 s
+  [premium_mid] 158/180 done, 163 s
+  [premium_mid] 159/180 done, 163 s
+  [premium_mid] 160/180 done, 164 s
+  [premium_mid] 161/180 done, 164 s
+  [premium_mid] 162/180 done, 170 s
+  [premium_mid] 163/180 done, 170 s
+  [premium_mid] 164/180 done, 170 s
+  [premium_mid] 165/180 done, 171 s
+  [premium_mid] 166/180 done, 171 s
+  [premium_mid] 167/180 done, 172 s
+  [premium_mid] 168/180 done, 172 s
+  [premium_mid] 169/180 done, 177 s
+  [premium_mid] 170/180 done, 177 s
+  [premium_mid] 171/180 done, 177 s
+  [premium_mid] 172/180 done, 178 s
+  [premium_mid] 173/180 done, 178 s
+  [premium_mid] 174/180 done, 179 s
+  [premium_mid] 175/180 done, 179 s
+  [premium_mid] 176/180 done, 183 s
+  [premium_mid] 177/180 done, 183 s
+  [premium_mid] 178/180 done, 183 s
+  [premium_mid] 179/180 done, 184 s
+  [premium_mid] 180/180 done, 184 s
+  [premium_mid] 180 jobs in 185 s
+== stage eval_premium_mid done in 185 s
+== M4.6c stage analyse (6 workers)
+  analysed training
+  analysed premium
+  analysed premium_mid
+  analysed premium150
+  analysed battery
+  analysed natural_cf
+  analysed freeze
+  analysed specialists
+  analysed natural
+  analysed records
+  analysed h2h
+== stage analyse done in 6 s
+== M4.6c stage eval_h2h (7 workers)
+  [M4.6c head to head] 1/390 done, 121 s
+  [M4.6c head to head] 2/390 done, 122 s
+  [M4.6c head to head] 3/390 done, 123 s
+  [M4.6c head to head] 4/390 done, 123 s
+  [M4.6c head to head] 5/390 done, 124 s
+  [M4.6c head to head] 6/390 done, 124 s
+  [M4.6c head to head] 7/390 done, 126 s
+  [M4.6c head to head] 8/390 done, 149 s
+  [M4.6c head to head] 9/390 done, 151 s
+  [M4.6c head to head] 10/390 done, 178 s
+  [M4.6c head to head] 11/390 done, 180 s
+  [M4.6c head to head] 12/390 done, 204 s
+  [M4.6c head to head] 13/390 done, 206 s
+  [M4.6c head to head] 14/390 done, 229 s
+  [M4.6c head to head] 15/390 done, 231 s
+  [M4.6c head to head] 16/390 done, 234 s
+  [M4.6c head to head] 17/390 done, 235 s
+  [M4.6c head to head] 18/390 done, 235 s
+  [M4.6c head to head] 19/390 done, 236 s
+  [M4.6c head to head] 20/390 done, 237 s
+  [M4.6c head to head] 21/390 done, 253 s
+  [M4.6c head to head] 22/390 done, 254 s
+  [M4.6c head to head] 23/390 done, 258 s
+  [M4.6c head to head] 24/390 done, 259 s
+  [M4.6c head to head] 25/390 done, 259 s
+  [M4.6c head to head] 26/390 done, 259 s
+  [M4.6c head to head] 27/390 done, 261 s
+  [M4.6c head to head] 28/390 done, 277 s
+  [M4.6c head to head] 29/390 done, 278 s
+  [M4.6c head to head] 30/390 done, 282 s
+  [M4.6c head to head] 31/390 done, 283 s
+  [M4.6c head to head] 32/390 done, 283 s
+  [M4.6c head to head] 33/390 done, 283 s
+  [M4.6c head to head] 34/390 done, 285 s
+  [M4.6c head to head] 35/390 done, 301 s
+  [M4.6c head to head] 36/390 done, 303 s
+  [M4.6c head to head] 37/390 done, 306 s
+  [M4.6c head to head] 38/390 done, 307 s
+  [M4.6c head to head] 39/390 done, 307 s
+  [M4.6c head to head] 40/390 done, 307 s
+  [M4.6c head to head] 41/390 done, 309 s
+  [M4.6c head to head] 42/390 done, 325 s
+  [M4.6c head to head] 43/390 done, 327 s
+  [M4.6c head to head] 44/390 done, 330 s
+  [M4.6c head to head] 45/390 done, 331 s
+  [M4.6c head to head] 46/390 done, 331 s
+  [M4.6c head to head] 47/390 done, 331 s
+  [M4.6c head to head] 48/390 done, 334 s
+  [M4.6c head to head] 49/390 done, 351 s
+  [M4.6c head to head] 50/390 done, 352 s
+  [M4.6c head to head] 51/390 done, 356 s
+  [M4.6c head to head] 52/390 done, 356 s
+  [M4.6c head to head] 53/390 done, 356 s
+  [M4.6c head to head] 54/390 done, 356 s
+  [M4.6c head to head] 55/390 done, 359 s
+  [M4.6c head to head] 56/390 done, 375 s
+  [M4.6c head to head] 57/390 done, 377 s
+  [M4.6c head to head] 58/390 done, 380 s
+  [M4.6c head to head] 59/390 done, 380 s
+  [M4.6c head to head] 60/390 done, 380 s
+  [M4.6c head to head] 61/390 done, 380 s
+  [M4.6c head to head] 62/390 done, 383 s
+  [M4.6c head to head] 63/390 done, 399 s
+  [M4.6c head to head] 64/390 done, 401 s
+  [M4.6c head to head] 65/390 done, 404 s
+  [M4.6c head to head] 66/390 done, 404 s
+  [M4.6c head to head] 67/390 done, 404 s
+  [M4.6c head to head] 68/390 done, 404 s
+  [M4.6c head to head] 69/390 done, 407 s
+  [M4.6c head to head] 70/390 done, 423 s
+  [M4.6c head to head] 71/390 done, 425 s
+  [M4.6c head to head] 72/390 done, 428 s
+  [M4.6c head to head] 73/390 done, 428 s
+  [M4.6c head to head] 74/390 done, 428 s
+  [M4.6c head to head] 75/390 done, 428 s
+  [M4.6c head to head] 76/390 done, 431 s
+  [M4.6c head to head] 77/390 done, 447 s
+  [M4.6c head to head] 78/390 done, 449 s
+  [M4.6c head to head] 79/390 done, 451 s
+  [M4.6c head to head] 80/390 done, 452 s
+  [M4.6c head to head] 81/390 done, 452 s
+  [M4.6c head to head] 82/390 done, 452 s
+  [M4.6c head to head] 83/390 done, 455 s
+  [M4.6c head to head] 84/390 done, 461 s
+  [M4.6c head to head] 85/390 done, 463 s
+  [M4.6c head to head] 86/390 done, 464 s
+  [M4.6c head to head] 87/390 done, 464 s
+  [M4.6c head to head] 88/390 done, 464 s
+  [M4.6c head to head] 89/390 done, 465 s
+  [M4.6c head to head] 90/390 done, 470 s
+  [M4.6c head to head] 91/390 done, 472 s
+  [M4.6c head to head] 92/390 done, 473 s
+  [M4.6c head to head] 93/390 done, 473 s
+  [M4.6c head to head] 94/390 done, 473 s
+  [M4.6c head to head] 95/390 done, 473 s
+  [M4.6c head to head] 96/390 done, 474 s
+  [M4.6c head to head] 97/390 done, 479 s
+  [M4.6c head to head] 98/390 done, 481 s
+  [M4.6c head to head] 99/390 done, 482 s
+  [M4.6c head to head] 100/390 done, 482 s
+  [M4.6c head to head] 101/390 done, 483 s
+  [M4.6c head to head] 102/390 done, 483 s
+  [M4.6c head to head] 103/390 done, 483 s
+  [M4.6c head to head] 104/390 done, 488 s
+  [M4.6c head to head] 105/390 done, 490 s
+  [M4.6c head to head] 106/390 done, 491 s
+  [M4.6c head to head] 107/390 done, 491 s
+  [M4.6c head to head] 108/390 done, 495 s
+  [M4.6c head to head] 109/390 done, 495 s
+  [M4.6c head to head] 110/390 done, 495 s
+  [M4.6c head to head] 111/390 done, 500 s
+  [M4.6c head to head] 112/390 done, 500 s
+  [M4.6c head to head] 113/390 done, 501 s
+  [M4.6c head to head] 114/390 done, 502 s
+  [M4.6c head to head] 115/390 done, 503 s
+  [M4.6c head to head] 116/390 done, 504 s
+  [M4.6c head to head] 117/390 done, 504 s
+  [M4.6c head to head] 118/390 done, 510 s
+  [M4.6c head to head] 119/390 done, 510 s
+  [M4.6c head to head] 120/390 done, 511 s
+  [M4.6c head to head] 121/390 done, 512 s
+  [M4.6c head to head] 122/390 done, 514 s
+  [M4.6c head to head] 123/390 done, 515 s
+  [M4.6c head to head] 124/390 done, 515 s
+  [M4.6c head to head] 125/390 done, 519 s
+  [M4.6c head to head] 126/390 done, 519 s
+  [M4.6c head to head] 127/390 done, 520 s
+  [M4.6c head to head] 128/390 done, 521 s
+  [M4.6c head to head] 129/390 done, 523 s
+  [M4.6c head to head] 130/390 done, 524 s
+  [M4.6c head to head] 131/390 done, 528 s
+  [M4.6c head to head] 132/390 done, 531 s
+  [M4.6c head to head] 133/390 done, 531 s
+  [M4.6c head to head] 134/390 done, 532 s
+  [M4.6c head to head] 135/390 done, 534 s
+  [M4.6c head to head] 136/390 done, 536 s
+  [M4.6c head to head] 137/390 done, 536 s
+  [M4.6c head to head] 138/390 done, 540 s
+  [M4.6c head to head] 139/390 done, 544 s
+  [M4.6c head to head] 140/390 done, 544 s
+  [M4.6c head to head] 141/390 done, 545 s
+  [M4.6c head to head] 142/390 done, 546 s
+  [M4.6c head to head] 143/390 done, 549 s
+  [M4.6c head to head] 144/390 done, 549 s
+  [M4.6c head to head] 145/390 done, 553 s
+  [M4.6c head to head] 146/390 done, 554 s
+  [M4.6c head to head] 147/390 done, 554 s
+  [M4.6c head to head] 148/390 done, 555 s
+  [M4.6c head to head] 149/390 done, 556 s
+  [M4.6c head to head] 150/390 done, 558 s
+  [M4.6c head to head] 151/390 done, 559 s
+  [M4.6c head to head] 152/390 done, 562 s
+  [M4.6c head to head] 153/390 done, 563 s
+  [M4.6c head to head] 154/390 done, 564 s
+  [M4.6c head to head] 155/390 done, 564 s
+  [M4.6c head to head] 156/390 done, 566 s
+  [M4.6c head to head] 157/390 done, 568 s
+  [M4.6c head to head] 158/390 done, 568 s
+  [M4.6c head to head] 159/390 done, 571 s
+  [M4.6c head to head] 160/390 done, 573 s
+  [M4.6c head to head] 161/390 done, 573 s
+  [M4.6c head to head] 162/390 done, 574 s
+  [M4.6c head to head] 163/390 done, 576 s
+  [M4.6c head to head] 164/390 done, 581 s
+  [M4.6c head to head] 165/390 done, 581 s
+  [M4.6c head to head] 166/390 done, 583 s
+  [M4.6c head to head] 167/390 done, 584 s
+  [M4.6c head to head] 168/390 done, 585 s
+  [M4.6c head to head] 169/390 done, 585 s
+  [M4.6c head to head] 170/390 done, 586 s
+  [M4.6c head to head] 171/390 done, 590 s
+  [M4.6c head to head] 172/390 done, 590 s
+  [M4.6c head to head] 173/390 done, 593 s
+  [M4.6c head to head] 174/390 done, 593 s
+  [M4.6c head to head] 175/390 done, 595 s
+  [M4.6c head to head] 176/390 done, 595 s
+  [M4.6c head to head] 177/390 done, 596 s
+  [M4.6c head to head] 178/390 done, 600 s
+  [M4.6c head to head] 179/390 done, 600 s
+  [M4.6c head to head] 180/390 done, 603 s
+  [M4.6c head to head] 181/390 done, 604 s
+  [M4.6c head to head] 182/390 done, 604 s
+  [M4.6c head to head] 183/390 done, 605 s
+  [M4.6c head to head] 184/390 done, 606 s
+  [M4.6c head to head] 185/390 done, 611 s
+  [M4.6c head to head] 186/390 done, 612 s
+  [M4.6c head to head] 187/390 done, 617 s
+  [M4.6c head to head] 188/390 done, 617 s
+  [M4.6c head to head] 189/390 done, 618 s
+  [M4.6c head to head] 190/390 done, 619 s
+  [M4.6c head to head] 191/390 done, 620 s
+  [M4.6c head to head] 192/390 done, 624 s
+  [M4.6c head to head] 193/390 done, 625 s
+  [M4.6c head to head] 194/390 done, 630 s
+  [M4.6c head to head] 195/390 done, 630 s
+  [M4.6c head to head] 196/390 done, 631 s
+  [M4.6c head to head] 197/390 done, 632 s
+  [M4.6c head to head] 198/390 done, 632 s
+  [M4.6c head to head] 199/390 done, 634 s
+  [M4.6c head to head] 200/390 done, 637 s
+  [M4.6c head to head] 201/390 done, 639 s
+  [M4.6c head to head] 202/390 done, 639 s
+  [M4.6c head to head] 203/390 done, 640 s
+  [M4.6c head to head] 204/390 done, 641 s
+  [M4.6c head to head] 205/390 done, 641 s
+  [M4.6c head to head] 206/390 done, 643 s
+  [M4.6c head to head] 207/390 done, 646 s
+  [M4.6c head to head] 208/390 done, 649 s
+  [M4.6c head to head] 209/390 done, 649 s
+  [M4.6c head to head] 210/390 done, 650 s
+  [M4.6c head to head] 211/390 done, 650 s
+  [M4.6c head to head] 212/390 done, 651 s
+  [M4.6c head to head] 213/390 done, 652 s
+  [M4.6c head to head] 214/390 done, 655 s
+  [M4.6c head to head] 215/390 done, 658 s
+  [M4.6c head to head] 216/390 done, 658 s
+  [M4.6c head to head] 217/390 done, 659 s
+  [M4.6c head to head] 218/390 done, 663 s
+  [M4.6c head to head] 219/390 done, 664 s
+  [M4.6c head to head] 220/390 done, 665 s
+  [M4.6c head to head] 221/390 done, 668 s
+  [M4.6c head to head] 222/390 done, 668 s
+  [M4.6c head to head] 223/390 done, 668 s
+  [M4.6c head to head] 224/390 done, 670 s
+  [M4.6c head to head] 225/390 done, 672 s
+  [M4.6c head to head] 226/390 done, 673 s
+  [M4.6c head to head] 227/390 done, 674 s
+  [M4.6c head to head] 228/390 done, 677 s
+  [M4.6c head to head] 229/390 done, 677 s
+  [M4.6c head to head] 230/390 done, 678 s
+  [M4.6c head to head] 231/390 done, 679 s
+  [M4.6c head to head] 232/390 done, 682 s
+  [M4.6c head to head] 233/390 done, 683 s
+  [M4.6c head to head] 234/390 done, 684 s
+  [M4.6c head to head] 235/390 done, 686 s
+  [M4.6c head to head] 236/390 done, 686 s
+  [M4.6c head to head] 237/390 done, 687 s
+  [M4.6c head to head] 238/390 done, 689 s
+  [M4.6c head to head] 239/390 done, 691 s
+  [M4.6c head to head] 240/390 done, 693 s
+  [M4.6c head to head] 241/390 done, 696 s
+  [M4.6c head to head] 242/390 done, 698 s
+  [M4.6c head to head] 243/390 done, 698 s
+  [M4.6c head to head] 244/390 done, 699 s
+  [M4.6c head to head] 245/390 done, 701 s
+  [M4.6c head to head] 246/390 done, 704 s
+  [M4.6c head to head] 247/390 done, 705 s
+  [M4.6c head to head] 248/390 done, 708 s
+  [M4.6c head to head] 249/390 done, 710 s
+  [M4.6c head to head] 250/390 done, 711 s
+  [M4.6c head to head] 251/390 done, 711 s
+  [M4.6c head to head] 252/390 done, 712 s
+  [M4.6c head to head] 253/390 done, 713 s
+  [M4.6c head to head] 254/390 done, 714 s
+  [M4.6c head to head] 255/390 done, 717 s
+  [M4.6c head to head] 256/390 done, 719 s
+  [M4.6c head to head] 257/390 done, 720 s
+  [M4.6c head to head] 258/390 done, 720 s
+  [M4.6c head to head] 259/390 done, 721 s
+  [M4.6c head to head] 260/390 done, 722 s
+  [M4.6c head to head] 261/390 done, 723 s
+  [M4.6c head to head] 262/390 done, 727 s
+  [M4.6c head to head] 263/390 done, 729 s
+  [M4.6c head to head] 264/390 done, 729 s
+  [M4.6c head to head] 265/390 done, 730 s
+  [M4.6c head to head] 266/390 done, 730 s
+  [M4.6c head to head] 267/390 done, 731 s
+  [M4.6c head to head] 268/390 done, 733 s
+  [M4.6c head to head] 269/390 done, 737 s
+  [M4.6c head to head] 270/390 done, 741 s
+  [M4.6c head to head] 271/390 done, 742 s
+  [M4.6c head to head] 272/390 done, 742 s
+  [M4.6c head to head] 273/390 done, 742 s
+  [M4.6c head to head] 274/390 done, 743 s
+  [M4.6c head to head] 275/390 done, 744 s
+  [M4.6c head to head] 276/390 done, 746 s
+  [M4.6c head to head] 277/390 done, 750 s
+  [M4.6c head to head] 278/390 done, 751 s
+  [M4.6c head to head] 279/390 done, 751 s
+  [M4.6c head to head] 280/390 done, 752 s
+  [M4.6c head to head] 281/390 done, 752 s
+  [M4.6c head to head] 282/390 done, 753 s
+  [M4.6c head to head] 283/390 done, 755 s
+  [M4.6c head to head] 284/390 done, 760 s
+  [M4.6c head to head] 285/390 done, 760 s
+  [M4.6c head to head] 286/390 done, 761 s
+  [M4.6c head to head] 287/390 done, 761 s
+  [M4.6c head to head] 288/390 done, 761 s
+  [M4.6c head to head] 289/390 done, 762 s
+  [M4.6c head to head] 290/390 done, 764 s
+  [M4.6c head to head] 291/390 done, 770 s
+  [M4.6c head to head] 292/390 done, 770 s
+  [M4.6c head to head] 293/390 done, 773 s
+  [M4.6c head to head] 294/390 done, 773 s
+  [M4.6c head to head] 295/390 done, 774 s
+  [M4.6c head to head] 296/390 done, 775 s
+  [M4.6c head to head] 297/390 done, 777 s
+  [M4.6c head to head] 298/390 done, 782 s
+  [M4.6c head to head] 299/390 done, 783 s
+  [M4.6c head to head] 300/390 done, 783 s
+  [M4.6c head to head] 301/390 done, 784 s
+  [M4.6c head to head] 302/390 done, 786 s
+  [M4.6c head to head] 303/390 done, 786 s
+  [M4.6c head to head] 304/390 done, 786 s
+  [M4.6c head to head] 305/390 done, 791 s
+  [M4.6c head to head] 306/390 done, 792 s
+  [M4.6c head to head] 307/390 done, 792 s
+  [M4.6c head to head] 308/390 done, 793 s
+  [M4.6c head to head] 309/390 done, 795 s
+  [M4.6c head to head] 310/390 done, 795 s
+  [M4.6c head to head] 311/390 done, 795 s
+  [M4.6c head to head] 312/390 done, 801 s
+  [M4.6c head to head] 313/390 done, 801 s
+  [M4.6c head to head] 314/390 done, 802 s
+  [M4.6c head to head] 315/390 done, 802 s
+  [M4.6c head to head] 316/390 done, 804 s
+  [M4.6c head to head] 317/390 done, 804 s
+  [M4.6c head to head] 318/390 done, 805 s
+  [M4.6c head to head] 319/390 done, 811 s
+  [M4.6c head to head] 320/390 done, 814 s
+  [M4.6c head to head] 321/390 done, 814 s
+  [M4.6c head to head] 322/390 done, 814 s
+  [M4.6c head to head] 323/390 done, 814 s
+  [M4.6c head to head] 324/390 done, 817 s
+  [M4.6c head to head] 325/390 done, 817 s
+  [M4.6c head to head] 326/390 done, 820 s
+  [M4.6c head to head] 327/390 done, 823 s
+  [M4.6c head to head] 328/390 done, 823 s
+  [M4.6c head to head] 329/390 done, 824 s
+  [M4.6c head to head] 330/390 done, 824 s
+  [M4.6c head to head] 331/390 done, 826 s
+  [M4.6c head to head] 332/390 done, 827 s
+  [M4.6c head to head] 333/390 done, 830 s
+  [M4.6c head to head] 334/390 done, 833 s
+  [M4.6c head to head] 335/390 done, 833 s
+  [M4.6c head to head] 336/390 done, 833 s
+  [M4.6c head to head] 337/390 done, 834 s
+  [M4.6c head to head] 338/390 done, 835 s
+  [M4.6c head to head] 339/390 done, 836 s
+  [M4.6c head to head] 340/390 done, 839 s
+  [M4.6c head to head] 341/390 done, 843 s
+  [M4.6c head to head] 342/390 done, 843 s
+  [M4.6c head to head] 343/390 done, 846 s
+  [M4.6c head to head] 344/390 done, 846 s
+  [M4.6c head to head] 345/390 done, 848 s
+  [M4.6c head to head] 346/390 done, 848 s
+  [M4.6c head to head] 347/390 done, 851 s
+  [M4.6c head to head] 348/390 done, 855 s
+  [M4.6c head to head] 349/390 done, 855 s
+  [M4.6c head to head] 350/390 done, 855 s
+  [M4.6c head to head] 351/390 done, 855 s
+  [M4.6c head to head] 352/390 done, 857 s
+  [M4.6c head to head] 353/390 done, 858 s
+  [M4.6c head to head] 354/390 done, 861 s
+  [M4.6c head to head] 355/390 done, 864 s
+  [M4.6c head to head] 356/390 done, 864 s
+  [M4.6c head to head] 357/390 done, 864 s
+  [M4.6c head to head] 358/390 done, 865 s
+  [M4.6c head to head] 359/390 done, 866 s
+  [M4.6c head to head] 360/390 done, 868 s
+  [M4.6c head to head] 361/390 done, 871 s
+  [M4.6c head to head] 362/390 done, 873 s
+  [M4.6c head to head] 363/390 done, 873 s
+  [M4.6c head to head] 364/390 done, 874 s
+  [M4.6c head to head] 365/390 done, 874 s
+  [M4.6c head to head] 366/390 done, 876 s
+  [M4.6c head to head] 367/390 done, 877 s
+  [M4.6c head to head] 368/390 done, 883 s
+  [M4.6c head to head] 369/390 done, 885 s
+  [M4.6c head to head] 370/390 done, 885 s
+  [M4.6c head to head] 371/390 done, 885 s
+  [M4.6c head to head] 372/390 done, 886 s
+  [M4.6c head to head] 373/390 done, 886 s
+  [M4.6c head to head] 374/390 done, 887 s
+  [M4.6c head to head] 375/390 done, 893 s
+  [M4.6c head to head] 376/390 done, 895 s
+  [M4.6c head to head] 377/390 done, 895 s
+  [M4.6c head to head] 378/390 done, 895 s
+  [M4.6c head to head] 379/390 done, 896 s
+  [M4.6c head to head] 380/390 done, 896 s
+  [M4.6c head to head] 381/390 done, 897 s
+  [M4.6c head to head] 382/390 done, 903 s
+  [M4.6c head to head] 383/390 done, 904 s
+  [M4.6c head to head] 384/390 done, 904 s
+  [M4.6c head to head] 385/390 done, 905 s
+  [M4.6c head to head] 386/390 done, 905 s
+  [M4.6c head to head] 387/390 done, 905 s
+  [M4.6c head to head] 388/390 done, 906 s
+  [M4.6c head to head] 389/390 done, 910 s
+  [M4.6c head to head] 390/390 done, 911 s
+  [h2h] 390 jobs in 912 s
+== stage eval_h2h done in 912 s
+== M4.6c stage eval_battery (7 workers)
+  [battery] 1/432 done, 11 s
+  [battery] 2/432 done, 12 s
+  [battery] 3/432 done, 12 s
+  [battery] 4/432 done, 12 s
+  [battery] 5/432 done, 12 s
+  [battery] 6/432 done, 12 s
+  [battery] 7/432 done, 12 s
+  [battery] 8/432 done, 19 s
+  [battery] 9/432 done, 20 s
+  [battery] 10/432 done, 20 s
+  [battery] 11/432 done, 20 s
+  [battery] 12/432 done, 20 s
+  [battery] 13/432 done, 20 s
+  [battery] 14/432 done, 20 s
+  [battery] 15/432 done, 27 s
+  [battery] 16/432 done, 27 s
+  [battery] 17/432 done, 28 s
+  [battery] 18/432 done, 28 s
+  [battery] 19/432 done, 28 s
+  [battery] 20/432 done, 28 s
+  [battery] 21/432 done, 28 s
+  [battery] 22/432 done, 35 s
+  [battery] 23/432 done, 35 s
+  [battery] 24/432 done, 36 s
+  [battery] 25/432 done, 36 s
+  [battery] 26/432 done, 36 s
+  [battery] 27/432 done, 36 s
+  [battery] 28/432 done, 36 s
+  [battery] 29/432 done, 43 s
+  [battery] 30/432 done, 43 s
+  [battery] 31/432 done, 43 s
+  [battery] 32/432 done, 43 s
+  [battery] 33/432 done, 43 s
+  [battery] 34/432 done, 44 s
+  [battery] 35/432 done, 44 s
+  [battery] 36/432 done, 51 s
+  [battery] 37/432 done, 51 s
+  [battery] 38/432 done, 51 s
+  [battery] 39/432 done, 52 s
+  [battery] 40/432 done, 52 s
+  [battery] 41/432 done, 52 s
+  [battery] 42/432 done, 52 s
+  [battery] 43/432 done, 59 s
+  [battery] 44/432 done, 59 s
+  [battery] 45/432 done, 59 s
+  [battery] 46/432 done, 59 s
+  [battery] 47/432 done, 60 s
+  [battery] 48/432 done, 60 s
+  [battery] 49/432 done, 60 s
+  [battery] 50/432 done, 67 s
+  [battery] 51/432 done, 67 s
+  [battery] 52/432 done, 67 s
+  [battery] 53/432 done, 67 s
+  [battery] 54/432 done, 67 s
+  [battery] 55/432 done, 68 s
+  [battery] 56/432 done, 68 s
+  [battery] 57/432 done, 75 s
+  [battery] 58/432 done, 75 s
+  [battery] 59/432 done, 75 s
+  [battery] 60/432 done, 75 s
+  [battery] 61/432 done, 75 s
+  [battery] 62/432 done, 76 s
+  [battery] 63/432 done, 76 s
+  [battery] 64/432 done, 83 s
+  [battery] 65/432 done, 83 s
+  [battery] 66/432 done, 83 s
+  [battery] 67/432 done, 83 s
+  [battery] 68/432 done, 83 s
+  [battery] 69/432 done, 83 s
+  [battery] 70/432 done, 83 s
+  [battery] 71/432 done, 91 s
+  [battery] 72/432 done, 91 s
+  [battery] 73/432 done, 91 s
+  [battery] 74/432 done, 91 s
+  [battery] 75/432 done, 91 s
+  [battery] 76/432 done, 92 s
+  [battery] 77/432 done, 92 s
+  [battery] 78/432 done, 98 s
+  [battery] 79/432 done, 99 s
+  [battery] 80/432 done, 99 s
+  [battery] 81/432 done, 99 s
+  [battery] 82/432 done, 99 s
+  [battery] 83/432 done, 100 s
+  [battery] 84/432 done, 100 s
+  [battery] 85/432 done, 106 s
+  [battery] 86/432 done, 106 s
+  [battery] 87/432 done, 107 s
+  [battery] 88/432 done, 107 s
+  [battery] 89/432 done, 107 s
+  [battery] 90/432 done, 108 s
+  [battery] 91/432 done, 108 s
+  [battery] 92/432 done, 116 s
+  [battery] 93/432 done, 116 s
+  [battery] 94/432 done, 117 s
+  [battery] 95/432 done, 117 s
+  [battery] 96/432 done, 117 s
+  [battery] 97/432 done, 117 s
+  [battery] 98/432 done, 117 s
+  [battery] 99/432 done, 124 s
+  [battery] 100/432 done, 124 s
+  [battery] 101/432 done, 125 s
+  [battery] 102/432 done, 125 s
+  [battery] 103/432 done, 125 s
+  [battery] 104/432 done, 126 s
+  [battery] 105/432 done, 126 s
+  [battery] 106/432 done, 133 s
+  [battery] 107/432 done, 133 s
+  [battery] 108/432 done, 134 s
+  [battery] 109/432 done, 134 s
+  [battery] 110/432 done, 134 s
+  [battery] 111/432 done, 135 s
+  [battery] 112/432 done, 135 s
+  [battery] 113/432 done, 141 s
+  [battery] 114/432 done, 142 s
+  [battery] 115/432 done, 142 s
+  [battery] 116/432 done, 143 s
+  [battery] 117/432 done, 143 s
+  [battery] 118/432 done, 143 s
+  [battery] 119/432 done, 143 s
+  [battery] 120/432 done, 150 s
+  [battery] 121/432 done, 150 s
+  [battery] 122/432 done, 150 s
+  [battery] 123/432 done, 151 s
+  [battery] 124/432 done, 151 s
+  [battery] 125/432 done, 151 s
+  [battery] 126/432 done, 151 s
+  [battery] 127/432 done, 159 s
+  [battery] 128/432 done, 159 s
+  [battery] 129/432 done, 159 s
+  [battery] 130/432 done, 160 s
+  [battery] 131/432 done, 160 s
+  [battery] 132/432 done, 160 s
+  [battery] 133/432 done, 160 s
+  [battery] 134/432 done, 167 s
+  [battery] 135/432 done, 167 s
+  [battery] 136/432 done, 167 s
+  [battery] 137/432 done, 168 s
+  [battery] 138/432 done, 168 s
+  [battery] 139/432 done, 168 s
+  [battery] 140/432 done, 168 s
+  [battery] 141/432 done, 175 s
+  [battery] 142/432 done, 175 s
+  [battery] 143/432 done, 175 s
+  [battery] 144/432 done, 176 s
+  [battery] 145/432 done, 177 s
+  [battery] 146/432 done, 177 s
+  [battery] 147/432 done, 177 s
+  [battery] 148/432 done, 183 s
+  [battery] 149/432 done, 183 s
+  [battery] 150/432 done, 184 s
+  [battery] 151/432 done, 184 s
+  [battery] 152/432 done, 185 s
+  [battery] 153/432 done, 185 s
+  [battery] 154/432 done, 185 s
+  [battery] 155/432 done, 191 s
+  [battery] 156/432 done, 191 s
+  [battery] 157/432 done, 192 s
+  [battery] 158/432 done, 192 s
+  [battery] 159/432 done, 193 s
+  [battery] 160/432 done, 193 s
+  [battery] 161/432 done, 193 s
+  [battery] 162/432 done, 199 s
+  [battery] 163/432 done, 200 s
+  [battery] 164/432 done, 201 s
+  [battery] 165/432 done, 201 s
+  [battery] 166/432 done, 201 s
+  [battery] 167/432 done, 201 s
+  [battery] 168/432 done, 202 s
+  [battery] 169/432 done, 207 s
+  [battery] 170/432 done, 208 s
+  [battery] 171/432 done, 208 s
+  [battery] 172/432 done, 209 s
+  [battery] 173/432 done, 209 s
+  [battery] 174/432 done, 209 s
+  [battery] 175/432 done, 210 s
+  [battery] 176/432 done, 216 s
+  [battery] 177/432 done, 216 s
+  [battery] 178/432 done, 217 s
+  [battery] 179/432 done, 217 s
+  [battery] 180/432 done, 218 s
+  [battery] 181/432 done, 218 s
+  [battery] 182/432 done, 219 s
+  [battery] 183/432 done, 224 s
+  [battery] 184/432 done, 225 s
+  [battery] 185/432 done, 226 s
+  [battery] 186/432 done, 226 s
+  [battery] 187/432 done, 226 s
+  [battery] 188/432 done, 227 s
+  [battery] 189/432 done, 227 s
+  [battery] 190/432 done, 233 s
+  [battery] 191/432 done, 233 s
+  [battery] 192/432 done, 234 s
+  [battery] 193/432 done, 234 s
+  [battery] 194/432 done, 235 s
+  [battery] 195/432 done, 235 s
+  [battery] 196/432 done, 236 s
+  [battery] 197/432 done, 241 s
+  [battery] 198/432 done, 242 s
+  [battery] 199/432 done, 242 s
+  [battery] 200/432 done, 243 s
+  [battery] 201/432 done, 243 s
+  [battery] 202/432 done, 244 s
+  [battery] 203/432 done, 244 s
+  [battery] 204/432 done, 249 s
+  [battery] 205/432 done, 250 s
+  [battery] 206/432 done, 251 s
+  [battery] 207/432 done, 251 s
+  [battery] 208/432 done, 251 s
+  [battery] 209/432 done, 252 s
+  [battery] 210/432 done, 252 s
+  [battery] 211/432 done, 258 s
+  [battery] 212/432 done, 258 s
+  [battery] 213/432 done, 258 s
+  [battery] 214/432 done, 259 s
+  [battery] 215/432 done, 259 s
+  [battery] 216/432 done, 260 s
+  [battery] 217/432 done, 261 s
+  [battery] 218/432 done, 263 s
+  [battery] 219/432 done, 263 s
+  [battery] 220/432 done, 264 s
+  [battery] 221/432 done, 264 s
+  [battery] 222/432 done, 265 s
+  [battery] 223/432 done, 265 s
+  [battery] 224/432 done, 266 s
+  [battery] 225/432 done, 268 s
+  [battery] 226/432 done, 268 s
+  [battery] 227/432 done, 269 s
+  [battery] 228/432 done, 270 s
+  [battery] 229/432 done, 270 s
+  [battery] 230/432 done, 270 s
+  [battery] 231/432 done, 272 s
+  [battery] 232/432 done, 274 s
+  [battery] 233/432 done, 274 s
+  [battery] 234/432 done, 275 s
+  [battery] 235/432 done, 276 s
+  [battery] 236/432 done, 276 s
+  [battery] 237/432 done, 276 s
+  [battery] 238/432 done, 278 s
+  [battery] 239/432 done, 280 s
+  [battery] 240/432 done, 280 s
+  [battery] 241/432 done, 281 s
+  [battery] 242/432 done, 282 s
+  [battery] 243/432 done, 282 s
+  [battery] 244/432 done, 282 s
+  [battery] 245/432 done, 284 s
+  [battery] 246/432 done, 286 s
+  [battery] 247/432 done, 286 s
+  [battery] 248/432 done, 286 s
+  [battery] 249/432 done, 288 s
+  [battery] 250/432 done, 288 s
+  [battery] 251/432 done, 288 s
+  [battery] 252/432 done, 289 s
+  [battery] 253/432 done, 292 s
+  [battery] 254/432 done, 292 s
+  [battery] 255/432 done, 292 s
+  [battery] 256/432 done, 294 s
+  [battery] 257/432 done, 294 s
+  [battery] 258/432 done, 294 s
+  [battery] 259/432 done, 295 s
+  [battery] 260/432 done, 297 s
+  [battery] 261/432 done, 298 s
+  [battery] 262/432 done, 298 s
+  [battery] 263/432 done, 299 s
+  [battery] 264/432 done, 299 s
+  [battery] 265/432 done, 299 s
+  [battery] 266/432 done, 301 s
+  [battery] 267/432 done, 304 s
+  [battery] 268/432 done, 304 s
+  [battery] 269/432 done, 304 s
+  [battery] 270/432 done, 306 s
+  [battery] 271/432 done, 306 s
+  [battery] 272/432 done, 306 s
+  [battery] 273/432 done, 308 s
+  [battery] 274/432 done, 310 s
+  [battery] 275/432 done, 311 s
+  [battery] 276/432 done, 311 s
+  [battery] 277/432 done, 312 s
+  [battery] 278/432 done, 313 s
+  [battery] 279/432 done, 313 s
+  [battery] 280/432 done, 314 s
+  [battery] 281/432 done, 316 s
+  [battery] 282/432 done, 317 s
+  [battery] 283/432 done, 317 s
+  [battery] 284/432 done, 318 s
+  [battery] 285/432 done, 319 s
+  [battery] 286/432 done, 319 s
+  [battery] 287/432 done, 320 s
+  [battery] 288/432 done, 322 s
+  [battery] 289/432 done, 322 s
+  [battery] 290/432 done, 323 s
+  [battery] 291/432 done, 324 s
+  [battery] 292/432 done, 324 s
+  [battery] 293/432 done, 324 s
+  [battery] 294/432 done, 325 s
+  [battery] 295/432 done, 327 s
+  [battery] 296/432 done, 328 s
+  [battery] 297/432 done, 328 s
+  [battery] 298/432 done, 329 s
+  [battery] 299/432 done, 329 s
+  [battery] 300/432 done, 329 s
+  [battery] 301/432 done, 330 s
+  [battery] 302/432 done, 332 s
+  [battery] 303/432 done, 332 s
+  [battery] 304/432 done, 333 s
+  [battery] 305/432 done, 334 s
+  [battery] 306/432 done, 334 s
+  [battery] 307/432 done, 335 s
+  [battery] 308/432 done, 336 s
+  [battery] 309/432 done, 337 s
+  [battery] 310/432 done, 338 s
+  [battery] 311/432 done, 338 s
+  [battery] 312/432 done, 339 s
+  [battery] 313/432 done, 340 s
+  [battery] 314/432 done, 340 s
+  [battery] 315/432 done, 341 s
+  [battery] 316/432 done, 342 s
+  [battery] 317/432 done, 343 s
+  [battery] 318/432 done, 343 s
+  [battery] 319/432 done, 344 s
+  [battery] 320/432 done, 345 s
+  [battery] 321/432 done, 345 s
+  [battery] 322/432 done, 346 s
+  [battery] 323/432 done, 347 s
+  [battery] 324/432 done, 348 s
+  [battery] 325/432 done, 348 s
+  [battery] 326/432 done, 349 s
+  [battery] 327/432 done, 350 s
+  [battery] 328/432 done, 350 s
+  [battery] 329/432 done, 351 s
+  [battery] 330/432 done, 352 s
+  [battery] 331/432 done, 353 s
+  [battery] 332/432 done, 353 s
+  [battery] 333/432 done, 355 s
+  [battery] 334/432 done, 355 s
+  [battery] 335/432 done, 355 s
+  [battery] 336/432 done, 356 s
+  [battery] 337/432 done, 357 s
+  [battery] 338/432 done, 358 s
+  [battery] 339/432 done, 358 s
+  [battery] 340/432 done, 360 s
+  [battery] 341/432 done, 360 s
+  [battery] 342/432 done, 360 s
+  [battery] 343/432 done, 361 s
+  [battery] 344/432 done, 363 s
+  [battery] 345/432 done, 363 s
+  [battery] 346/432 done, 364 s
+  [battery] 347/432 done, 365 s
+  [battery] 348/432 done, 365 s
+  [battery] 349/432 done, 365 s
+  [battery] 350/432 done, 367 s
+  [battery] 351/432 done, 368 s
+  [battery] 352/432 done, 368 s
+  [battery] 353/432 done, 368 s
+  [battery] 354/432 done, 370 s
+  [battery] 355/432 done, 370 s
+  [battery] 356/432 done, 370 s
+  [battery] 357/432 done, 372 s
+  [battery] 358/432 done, 373 s
+  [battery] 359/432 done, 373 s
+  [battery] 360/432 done, 374 s
+  [battery] 361/432 done, 375 s
+  [battery] 362/432 done, 375 s
+  [battery] 363/432 done, 375 s
+  [battery] 364/432 done, 377 s
+  [battery] 365/432 done, 378 s
+  [battery] 366/432 done, 378 s
+  [battery] 367/432 done, 379 s
+  [battery] 368/432 done, 380 s
+  [battery] 369/432 done, 380 s
+  [battery] 370/432 done, 380 s
+  [battery] 371/432 done, 382 s
+  [battery] 372/432 done, 383 s
+  [battery] 373/432 done, 384 s
+  [battery] 374/432 done, 384 s
+  [battery] 375/432 done, 385 s
+  [battery] 376/432 done, 386 s
+  [battery] 377/432 done, 386 s
+  [battery] 378/432 done, 387 s
+  [battery] 379/432 done, 388 s
+  [battery] 380/432 done, 389 s
+  [battery] 381/432 done, 389 s
+  [battery] 382/432 done, 391 s
+  [battery] 383/432 done, 391 s
+  [battery] 384/432 done, 391 s
+  [battery] 385/432 done, 393 s
+  [battery] 386/432 done, 394 s
+  [battery] 387/432 done, 395 s
+  [battery] 388/432 done, 395 s
+  [battery] 389/432 done, 397 s
+  [battery] 390/432 done, 398 s
+  [battery] 391/432 done, 398 s
+  [battery] 392/432 done, 400 s
+  [battery] 393/432 done, 400 s
+  [battery] 394/432 done, 402 s
+  [battery] 395/432 done, 402 s
+  [battery] 396/432 done, 403 s
+  [battery] 397/432 done, 403 s
+  [battery] 398/432 done, 403 s
+  [battery] 399/432 done, 405 s
+  [battery] 400/432 done, 406 s
+  [battery] 401/432 done, 407 s
+  [battery] 402/432 done, 407 s
+  [battery] 403/432 done, 408 s
+  [battery] 404/432 done, 409 s
+  [battery] 405/432 done, 409 s
+  [battery] 406/432 done, 410 s
+  [battery] 407/432 done, 411 s
+  [battery] 408/432 done, 412 s
+  [battery] 409/432 done, 412 s
+  [battery] 410/432 done, 413 s
+  [battery] 411/432 done, 414 s
+  [battery] 412/432 done, 414 s
+  [battery] 413/432 done, 416 s
+  [battery] 414/432 done, 416 s
+  [battery] 415/432 done, 417 s
+  [battery] 416/432 done, 418 s
+  [battery] 417/432 done, 419 s
+  [battery] 418/432 done, 419 s
+  [battery] 419/432 done, 419 s
+  [battery] 420/432 done, 421 s
+  [battery] 421/432 done, 422 s
+  [battery] 422/432 done, 423 s
+  [battery] 423/432 done, 423 s
+  [battery] 424/432 done, 424 s
+  [battery] 425/432 done, 424 s
+  [battery] 426/432 done, 425 s
+  [battery] 427/432 done, 426 s
+  [battery] 428/432 done, 426 s
+  [battery] 429/432 done, 427 s
+  [battery] 430/432 done, 428 s
+  [battery] 431/432 done, 428 s
+  [battery] 432/432 done, 428 s
+  [battery] 432 jobs in 430 s
+== stage eval_battery done in 430 s
+== M4.6c stage eval_natural (7 workers)
+  [M4.6c natural self-play] 1/24 done, 38 s
+  [M4.6c natural self-play] 2/24 done, 38 s
+  [M4.6c natural self-play] 3/24 done, 38 s
+  [M4.6c natural self-play] 4/24 done, 38 s
+  [M4.6c natural self-play] 5/24 done, 38 s
+  [M4.6c natural self-play] 6/24 done, 38 s
+  [M4.6c natural self-play] 7/24 done, 38 s
+  [M4.6c natural self-play] 8/24 done, 72 s
+  [M4.6c natural self-play] 9/24 done, 73 s
+  [M4.6c natural self-play] 10/24 done, 73 s
+  [M4.6c natural self-play] 11/24 done, 73 s
+  [M4.6c natural self-play] 12/24 done, 73 s
+  [M4.6c natural self-play] 13/24 done, 73 s
+  [M4.6c natural self-play] 14/24 done, 73 s
+  [M4.6c natural self-play] 15/24 done, 105 s
+  [M4.6c natural self-play] 16/24 done, 105 s
+  [M4.6c natural self-play] 17/24 done, 105 s
+  [M4.6c natural self-play] 18/24 done, 105 s
+  [M4.6c natural self-play] 19/24 done, 106 s
+  [M4.6c natural self-play] 20/24 done, 106 s
+  [M4.6c natural self-play] 21/24 done, 106 s
+  [M4.6c natural self-play] 22/24 done, 127 s
+  [M4.6c natural self-play] 23/24 done, 127 s
+  [M4.6c natural self-play] 24/24 done, 127 s
+== stage eval_natural done in 129 s
+== M4.6c stage eval_records (7 workers)
+  [M4.6c records] 1/24 done, 9 s
+  [M4.6c records] 2/24 done, 9 s
+  [M4.6c records] 3/24 done, 9 s
+  [M4.6c records] 4/24 done, 9 s
+  [M4.6c records] 5/24 done, 9 s
+  [M4.6c records] 6/24 done, 9 s
+  [M4.6c records] 7/24 done, 10 s
+  [M4.6c records] 8/24 done, 16 s
+  [M4.6c records] 9/24 done, 16 s
+  [M4.6c records] 10/24 done, 16 s
+  [M4.6c records] 11/24 done, 16 s
+  [M4.6c records] 12/24 done, 16 s
+  [M4.6c records] 13/24 done, 17 s
+  [M4.6c records] 14/24 done, 17 s
+  [M4.6c records] 15/24 done, 23 s
+  [M4.6c records] 16/24 done, 23 s
+  [M4.6c records] 17/24 done, 23 s
+  [M4.6c records] 18/24 done, 23 s
+  [M4.6c records] 19/24 done, 23 s
+  [M4.6c records] 20/24 done, 23 s
+  [M4.6c records] 21/24 done, 23 s
+  [M4.6c records] 22/24 done, 28 s
+  [M4.6c records] 23/24 done, 28 s
+  [M4.6c records] 24/24 done, 28 s
+== stage eval_records done in 29 s
+== M4.6c stage eval_natural_cf (7 workers)
+  [M4.6c natural states] 1/24 done, 7 s
+  [M4.6c natural states] 2/24 done, 7 s
+  [M4.6c natural states] 3/24 done, 7 s
+  [M4.6c natural states] 4/24 done, 7 s
+  [M4.6c natural states] 5/24 done, 7 s
+  [M4.6c natural states] 6/24 done, 7 s
+  [M4.6c natural states] 7/24 done, 7 s
+  [M4.6c natural states] 8/24 done, 11 s
+  [M4.6c natural states] 9/24 done, 11 s
+  [M4.6c natural states] 10/24 done, 11 s
+  [M4.6c natural states] 11/24 done, 11 s
+  [M4.6c natural states] 12/24 done, 11 s
+  [M4.6c natural states] 13/24 done, 11 s
+  [M4.6c natural states] 14/24 done, 11 s
+  [M4.6c natural states] 15/24 done, 15 s
+  [M4.6c natural states] 16/24 done, 15 s
+  [M4.6c natural states] 17/24 done, 15 s
+  [M4.6c natural states] 18/24 done, 15 s
+  [M4.6c natural states] 19/24 done, 15 s
+  [M4.6c natural states] 20/24 done, 15 s
+  [M4.6c natural states] 21/24 done, 15 s
+  [M4.6c natural states] 22/24 done, 17 s
+  [M4.6c natural states] 23/24 done, 18 s
+  [M4.6c natural states] 24/24 done, 18 s
+  [natural_cf] 1/576 done, 11 s
+  [natural_cf] 2/576 done, 12 s
+  [natural_cf] 3/576 done, 12 s
+  [natural_cf] 4/576 done, 12 s
+  [natural_cf] 5/576 done, 12 s
+  [natural_cf] 6/576 done, 12 s
+  [natural_cf] 7/576 done, 12 s
+  [natural_cf] 8/576 done, 20 s
+  [natural_cf] 9/576 done, 20 s
+  [natural_cf] 10/576 done, 20 s
+  [natural_cf] 11/576 done, 20 s
+  [natural_cf] 12/576 done, 20 s
+  [natural_cf] 13/576 done, 20 s
+  [natural_cf] 14/576 done, 20 s
+  [natural_cf] 15/576 done, 27 s
+  [natural_cf] 16/576 done, 28 s
+  [natural_cf] 17/576 done, 28 s
+  [natural_cf] 18/576 done, 28 s
+  [natural_cf] 19/576 done, 28 s
+  [natural_cf] 20/576 done, 28 s
+  [natural_cf] 21/576 done, 28 s
+  [natural_cf] 22/576 done, 34 s
+  [natural_cf] 23/576 done, 35 s
+  [natural_cf] 24/576 done, 35 s
+  [natural_cf] 25/576 done, 36 s
+  [natural_cf] 26/576 done, 36 s
+  [natural_cf] 27/576 done, 36 s
+  [natural_cf] 28/576 done, 36 s
+  [natural_cf] 29/576 done, 42 s
+  [natural_cf] 30/576 done, 43 s
+  [natural_cf] 31/576 done, 43 s
+  [natural_cf] 32/576 done, 44 s
+  [natural_cf] 33/576 done, 44 s
+  [natural_cf] 34/576 done, 44 s
+  [natural_cf] 35/576 done, 44 s
+  [natural_cf] 36/576 done, 50 s
+  [natural_cf] 37/576 done, 51 s
+  [natural_cf] 38/576 done, 52 s
+  [natural_cf] 39/576 done, 52 s
+  [natural_cf] 40/576 done, 52 s
+  [natural_cf] 41/576 done, 52 s
+  [natural_cf] 42/576 done, 52 s
+  [natural_cf] 43/576 done, 58 s
+  [natural_cf] 44/576 done, 59 s
+  [natural_cf] 45/576 done, 59 s
+  [natural_cf] 46/576 done, 59 s
+  [natural_cf] 47/576 done, 60 s
+  [natural_cf] 48/576 done, 60 s
+  [natural_cf] 49/576 done, 60 s
+  [natural_cf] 50/576 done, 66 s
+  [natural_cf] 51/576 done, 67 s
+  [natural_cf] 52/576 done, 67 s
+  [natural_cf] 53/576 done, 67 s
+  [natural_cf] 54/576 done, 68 s
+  [natural_cf] 55/576 done, 68 s
+  [natural_cf] 56/576 done, 68 s
+  [natural_cf] 57/576 done, 75 s
+  [natural_cf] 58/576 done, 76 s
+  [natural_cf] 59/576 done, 76 s
+  [natural_cf] 60/576 done, 77 s
+  [natural_cf] 61/576 done, 77 s
+  [natural_cf] 62/576 done, 77 s
+  [natural_cf] 63/576 done, 78 s
+  [natural_cf] 64/576 done, 84 s
+  [natural_cf] 65/576 done, 84 s
+  [natural_cf] 66/576 done, 85 s
+  [natural_cf] 67/576 done, 85 s
+  [natural_cf] 68/576 done, 85 s
+  [natural_cf] 69/576 done, 86 s
+  [natural_cf] 70/576 done, 86 s
+  [natural_cf] 71/576 done, 92 s
+  [natural_cf] 72/576 done, 93 s
+  [natural_cf] 73/576 done, 93 s
+  [natural_cf] 74/576 done, 93 s
+  [natural_cf] 75/576 done, 93 s
+  [natural_cf] 76/576 done, 93 s
+  [natural_cf] 77/576 done, 94 s
+  [natural_cf] 78/576 done, 100 s
+  [natural_cf] 79/576 done, 101 s
+  [natural_cf] 80/576 done, 102 s
+  [natural_cf] 81/576 done, 102 s
+  [natural_cf] 82/576 done, 103 s
+  [natural_cf] 83/576 done, 103 s
+  [natural_cf] 84/576 done, 103 s
+  [natural_cf] 85/576 done, 109 s
+  [natural_cf] 86/576 done, 111 s
+  [natural_cf] 87/576 done, 111 s
+  [natural_cf] 88/576 done, 111 s
+  [natural_cf] 89/576 done, 112 s
+  [natural_cf] 90/576 done, 112 s
+  [natural_cf] 91/576 done, 112 s
+  [natural_cf] 92/576 done, 118 s
+  [natural_cf] 93/576 done, 119 s
+  [natural_cf] 94/576 done, 119 s
+  [natural_cf] 95/576 done, 120 s
+  [natural_cf] 96/576 done, 120 s
+  [natural_cf] 97/576 done, 120 s
+  [natural_cf] 98/576 done, 120 s
+  [natural_cf] 99/576 done, 127 s
+  [natural_cf] 100/576 done, 127 s
+  [natural_cf] 101/576 done, 127 s
+  [natural_cf] 102/576 done, 128 s
+  [natural_cf] 103/576 done, 129 s
+  [natural_cf] 104/576 done, 129 s
+  [natural_cf] 105/576 done, 129 s
+  [natural_cf] 106/576 done, 135 s
+  [natural_cf] 107/576 done, 136 s
+  [natural_cf] 108/576 done, 136 s
+  [natural_cf] 109/576 done, 137 s
+  [natural_cf] 110/576 done, 138 s
+  [natural_cf] 111/576 done, 139 s
+  [natural_cf] 112/576 done, 139 s
+  [natural_cf] 113/576 done, 145 s
+  [natural_cf] 114/576 done, 146 s
+  [natural_cf] 115/576 done, 146 s
+  [natural_cf] 116/576 done, 147 s
+  [natural_cf] 117/576 done, 148 s
+  [natural_cf] 118/576 done, 148 s
+  [natural_cf] 119/576 done, 148 s
+  [natural_cf] 120/576 done, 154 s
+  [natural_cf] 121/576 done, 155 s
+  [natural_cf] 122/576 done, 155 s
+  [natural_cf] 123/576 done, 156 s
+  [natural_cf] 124/576 done, 157 s
+  [natural_cf] 125/576 done, 158 s
+  [natural_cf] 126/576 done, 158 s
+  [natural_cf] 127/576 done, 163 s
+  [natural_cf] 128/576 done, 163 s
+  [natural_cf] 129/576 done, 163 s
+  [natural_cf] 130/576 done, 164 s
+  [natural_cf] 131/576 done, 165 s
+  [natural_cf] 132/576 done, 166 s
+  [natural_cf] 133/576 done, 166 s
+  [natural_cf] 134/576 done, 171 s
+  [natural_cf] 135/576 done, 171 s
+  [natural_cf] 136/576 done, 171 s
+  [natural_cf] 137/576 done, 173 s
+  [natural_cf] 138/576 done, 173 s
+  [natural_cf] 139/576 done, 174 s
+  [natural_cf] 140/576 done, 174 s
+  [natural_cf] 141/576 done, 178 s
+  [natural_cf] 142/576 done, 179 s
+  [natural_cf] 143/576 done, 179 s
+  [natural_cf] 144/576 done, 181 s
+  [natural_cf] 145/576 done, 182 s
+  [natural_cf] 146/576 done, 182 s
+  [natural_cf] 147/576 done, 183 s
+  [natural_cf] 148/576 done, 186 s
+  [natural_cf] 149/576 done, 187 s
+  [natural_cf] 150/576 done, 187 s
+  [natural_cf] 151/576 done, 189 s
+  [natural_cf] 152/576 done, 190 s
+  [natural_cf] 153/576 done, 191 s
+  [natural_cf] 154/576 done, 191 s
+  [natural_cf] 155/576 done, 195 s
+  [natural_cf] 156/576 done, 195 s
+  [natural_cf] 157/576 done, 195 s
+  [natural_cf] 158/576 done, 197 s
+  [natural_cf] 159/576 done, 198 s
+  [natural_cf] 160/576 done, 199 s
+  [natural_cf] 161/576 done, 199 s
+  [natural_cf] 162/576 done, 202 s
+  [natural_cf] 163/576 done, 203 s
+  [natural_cf] 164/576 done, 203 s
+  [natural_cf] 165/576 done, 205 s
+  [natural_cf] 166/576 done, 207 s
+  [natural_cf] 167/576 done, 207 s
+  [natural_cf] 168/576 done, 207 s
+  [natural_cf] 169/576 done, 211 s
+  [natural_cf] 170/576 done, 211 s
+  [natural_cf] 171/576 done, 212 s
+  [natural_cf] 172/576 done, 213 s
+  [natural_cf] 173/576 done, 215 s
+  [natural_cf] 174/576 done, 215 s
+  [natural_cf] 175/576 done, 216 s
+  [natural_cf] 176/576 done, 219 s
+  [natural_cf] 177/576 done, 219 s
+  [natural_cf] 178/576 done, 220 s
+  [natural_cf] 179/576 done, 221 s
+  [natural_cf] 180/576 done, 223 s
+  [natural_cf] 181/576 done, 223 s
+  [natural_cf] 182/576 done, 223 s
+  [natural_cf] 183/576 done, 227 s
+  [natural_cf] 184/576 done, 227 s
+  [natural_cf] 185/576 done, 228 s
+  [natural_cf] 186/576 done, 229 s
+  [natural_cf] 187/576 done, 231 s
+  [natural_cf] 188/576 done, 231 s
+  [natural_cf] 189/576 done, 231 s
+  [natural_cf] 190/576 done, 234 s
+  [natural_cf] 191/576 done, 235 s
+  [natural_cf] 192/576 done, 236 s
+  [natural_cf] 193/576 done, 237 s
+  [natural_cf] 194/576 done, 238 s
+  [natural_cf] 195/576 done, 239 s
+  [natural_cf] 196/576 done, 240 s
+  [natural_cf] 197/576 done, 242 s
+  [natural_cf] 198/576 done, 243 s
+  [natural_cf] 199/576 done, 244 s
+  [natural_cf] 200/576 done, 245 s
+  [natural_cf] 201/576 done, 247 s
+  [natural_cf] 202/576 done, 247 s
+  [natural_cf] 203/576 done, 248 s
+  [natural_cf] 204/576 done, 250 s
+  [natural_cf] 205/576 done, 251 s
+  [natural_cf] 206/576 done, 252 s
+  [natural_cf] 207/576 done, 253 s
+  [natural_cf] 208/576 done, 255 s
+  [natural_cf] 209/576 done, 255 s
+  [natural_cf] 210/576 done, 255 s
+  [natural_cf] 211/576 done, 258 s
+  [natural_cf] 212/576 done, 258 s
+  [natural_cf] 213/576 done, 261 s
+  [natural_cf] 214/576 done, 262 s
+  [natural_cf] 215/576 done, 264 s
+  [natural_cf] 216/576 done, 264 s
+  [natural_cf] 217/576 done, 264 s
+  [natural_cf] 218/576 done, 267 s
+  [natural_cf] 219/576 done, 267 s
+  [natural_cf] 220/576 done, 269 s
+  [natural_cf] 221/576 done, 270 s
+  [natural_cf] 222/576 done, 272 s
+  [natural_cf] 223/576 done, 272 s
+  [natural_cf] 224/576 done, 272 s
+  [natural_cf] 225/576 done, 275 s
+  [natural_cf] 226/576 done, 275 s
+  [natural_cf] 227/576 done, 277 s
+  [natural_cf] 228/576 done, 278 s
+  [natural_cf] 229/576 done, 281 s
+  [natural_cf] 230/576 done, 281 s
+  [natural_cf] 231/576 done, 281 s
+  [natural_cf] 232/576 done, 284 s
+  [natural_cf] 233/576 done, 285 s
+  [natural_cf] 234/576 done, 286 s
+  [natural_cf] 235/576 done, 288 s
+  [natural_cf] 236/576 done, 289 s
+  [natural_cf] 237/576 done, 290 s
+  [natural_cf] 238/576 done, 290 s
+  [natural_cf] 239/576 done, 293 s
+  [natural_cf] 240/576 done, 293 s
+  [natural_cf] 241/576 done, 295 s
+  [natural_cf] 242/576 done, 296 s
+  [natural_cf] 243/576 done, 298 s
+  [natural_cf] 244/576 done, 298 s
+  [natural_cf] 245/576 done, 299 s
+  [natural_cf] 246/576 done, 301 s
+  [natural_cf] 247/576 done, 302 s
+  [natural_cf] 248/576 done, 303 s
+  [natural_cf] 249/576 done, 306 s
+  [natural_cf] 250/576 done, 308 s
+  [natural_cf] 251/576 done, 308 s
+  [natural_cf] 252/576 done, 309 s
+  [natural_cf] 253/576 done, 312 s
+  [natural_cf] 254/576 done, 313 s
+  [natural_cf] 255/576 done, 314 s
+  [natural_cf] 256/576 done, 316 s
+  [natural_cf] 257/576 done, 318 s
+  [natural_cf] 258/576 done, 318 s
+  [natural_cf] 259/576 done, 319 s
+  [natural_cf] 260/576 done, 320 s
+  [natural_cf] 261/576 done, 322 s
+  [natural_cf] 262/576 done, 323 s
+  [natural_cf] 263/576 done, 325 s
+  [natural_cf] 264/576 done, 326 s
+  [natural_cf] 265/576 done, 326 s
+  [natural_cf] 266/576 done, 327 s
+  [natural_cf] 267/576 done, 330 s
+  [natural_cf] 268/576 done, 331 s
+  [natural_cf] 269/576 done, 331 s
+  [natural_cf] 270/576 done, 334 s
+  [natural_cf] 271/576 done, 335 s
+  [natural_cf] 272/576 done, 335 s
+  [natural_cf] 273/576 done, 336 s
+  [natural_cf] 274/576 done, 338 s
+  [natural_cf] 275/576 done, 339 s
+  [natural_cf] 276/576 done, 339 s
+  [natural_cf] 277/576 done, 342 s
+  [natural_cf] 278/576 done, 343 s
+  [natural_cf] 279/576 done, 344 s
+  [natural_cf] 280/576 done, 344 s
+  [natural_cf] 281/576 done, 346 s
+  [natural_cf] 282/576 done, 347 s
+  [natural_cf] 283/576 done, 348 s
+  [natural_cf] 284/576 done, 350 s
+  [natural_cf] 285/576 done, 351 s
+  [natural_cf] 286/576 done, 351 s
+  [natural_cf] 287/576 done, 352 s
+  [natural_cf] 288/576 done, 353 s
+  [natural_cf] 289/576 done, 354 s
+  [natural_cf] 290/576 done, 355 s
+  [natural_cf] 291/576 done, 357 s
+  [natural_cf] 292/576 done, 359 s
+  [natural_cf] 293/576 done, 360 s
+  [natural_cf] 294/576 done, 360 s
+  [natural_cf] 295/576 done, 361 s
+  [natural_cf] 296/576 done, 362 s
+  [natural_cf] 297/576 done, 362 s
+  [natural_cf] 298/576 done, 364 s
+  [natural_cf] 299/576 done, 366 s
+  [natural_cf] 300/576 done, 367 s
+  [natural_cf] 301/576 done, 367 s
+  [natural_cf] 302/576 done, 368 s
+  [natural_cf] 303/576 done, 369 s
+  [natural_cf] 304/576 done, 369 s
+  [natural_cf] 305/576 done, 371 s
+  [natural_cf] 306/576 done, 372 s
+  [natural_cf] 307/576 done, 373 s
+  [natural_cf] 308/576 done, 374 s
+  [natural_cf] 309/576 done, 375 s
+  [natural_cf] 310/576 done, 375 s
+  [natural_cf] 311/576 done, 375 s
+  [natural_cf] 312/576 done, 377 s
+  [natural_cf] 313/576 done, 379 s
+  [natural_cf] 314/576 done, 380 s
+  [natural_cf] 315/576 done, 381 s
+  [natural_cf] 316/576 done, 381 s
+  [natural_cf] 317/576 done, 382 s
+  [natural_cf] 318/576 done, 382 s
+  [natural_cf] 319/576 done, 384 s
+  [natural_cf] 320/576 done, 386 s
+  [natural_cf] 321/576 done, 386 s
+  [natural_cf] 322/576 done, 388 s
+  [natural_cf] 323/576 done, 389 s
+  [natural_cf] 324/576 done, 389 s
+  [natural_cf] 325/576 done, 389 s
+  [natural_cf] 326/576 done, 391 s
+  [natural_cf] 327/576 done, 393 s
+  [natural_cf] 328/576 done, 393 s
+  [natural_cf] 329/576 done, 395 s
+  [natural_cf] 330/576 done, 395 s
+  [natural_cf] 331/576 done, 396 s
+  [natural_cf] 332/576 done, 396 s
+  [natural_cf] 333/576 done, 398 s
+  [natural_cf] 334/576 done, 400 s
+  [natural_cf] 335/576 done, 400 s
+  [natural_cf] 336/576 done, 402 s
+  [natural_cf] 337/576 done, 402 s
+  [natural_cf] 338/576 done, 402 s
+  [natural_cf] 339/576 done, 402 s
+  [natural_cf] 340/576 done, 405 s
+  [natural_cf] 341/576 done, 407 s
+  [natural_cf] 342/576 done, 407 s
+  [natural_cf] 343/576 done, 409 s
+  [natural_cf] 344/576 done, 410 s
+  [natural_cf] 345/576 done, 410 s
+  [natural_cf] 346/576 done, 410 s
+  [natural_cf] 347/576 done, 412 s
+  [natural_cf] 348/576 done, 414 s
+  [natural_cf] 349/576 done, 415 s
+  [natural_cf] 350/576 done, 417 s
+  [natural_cf] 351/576 done, 417 s
+  [natural_cf] 352/576 done, 417 s
+  [natural_cf] 353/576 done, 418 s
+  [natural_cf] 354/576 done, 419 s
+  [natural_cf] 355/576 done, 422 s
+  [natural_cf] 356/576 done, 422 s
+  [natural_cf] 357/576 done, 425 s
+  [natural_cf] 358/576 done, 425 s
+  [natural_cf] 359/576 done, 425 s
+  [natural_cf] 360/576 done, 425 s
+  [natural_cf] 361/576 done, 427 s
+  [natural_cf] 362/576 done, 429 s
+  [natural_cf] 363/576 done, 429 s
+  [natural_cf] 364/576 done, 431 s
+  [natural_cf] 365/576 done, 432 s
+  [natural_cf] 366/576 done, 432 s
+  [natural_cf] 367/576 done, 432 s
+  [natural_cf] 368/576 done, 434 s
+  [natural_cf] 369/576 done, 436 s
+  [natural_cf] 370/576 done, 437 s
+  [natural_cf] 371/576 done, 439 s
+  [natural_cf] 372/576 done, 439 s
+  [natural_cf] 373/576 done, 440 s
+  [natural_cf] 374/576 done, 440 s
+  [natural_cf] 375/576 done, 442 s
+  [natural_cf] 376/576 done, 443 s
+  [natural_cf] 377/576 done, 444 s
+  [natural_cf] 378/576 done, 446 s
+  [natural_cf] 379/576 done, 446 s
+  [natural_cf] 380/576 done, 446 s
+  [natural_cf] 381/576 done, 447 s
+  [natural_cf] 382/576 done, 448 s
+  [natural_cf] 383/576 done, 450 s
+  [natural_cf] 384/576 done, 451 s
+  [natural_cf] 385/576 done, 452 s
+  [natural_cf] 386/576 done, 452 s
+  [natural_cf] 387/576 done, 453 s
+  [natural_cf] 388/576 done, 453 s
+  [natural_cf] 389/576 done, 455 s
+  [natural_cf] 390/576 done, 457 s
+  [natural_cf] 391/576 done, 458 s
+  [natural_cf] 392/576 done, 459 s
+  [natural_cf] 393/576 done, 459 s
+  [natural_cf] 394/576 done, 459 s
+  [natural_cf] 395/576 done, 460 s
+  [natural_cf] 396/576 done, 462 s
+  [natural_cf] 397/576 done, 464 s
+  [natural_cf] 398/576 done, 465 s
+  [natural_cf] 399/576 done, 467 s
+  [natural_cf] 400/576 done, 468 s
+  [natural_cf] 401/576 done, 468 s
+  [natural_cf] 402/576 done, 469 s
+  [natural_cf] 403/576 done, 471 s
+  [natural_cf] 404/576 done, 475 s
+  [natural_cf] 405/576 done, 476 s
+  [natural_cf] 406/576 done, 478 s
+  [natural_cf] 407/576 done, 478 s
+  [natural_cf] 408/576 done, 478 s
+  [natural_cf] 409/576 done, 479 s
+  [natural_cf] 410/576 done, 480 s
+  [natural_cf] 411/576 done, 483 s
+  [natural_cf] 412/576 done, 484 s
+  [natural_cf] 413/576 done, 486 s
+  [natural_cf] 414/576 done, 486 s
+  [natural_cf] 415/576 done, 486 s
+  [natural_cf] 416/576 done, 488 s
+  [natural_cf] 417/576 done, 489 s
+  [natural_cf] 418/576 done, 493 s
+  [natural_cf] 419/576 done, 493 s
+  [natural_cf] 420/576 done, 495 s
+  [natural_cf] 421/576 done, 495 s
+  [natural_cf] 422/576 done, 495 s
+  [natural_cf] 423/576 done, 496 s
+  [natural_cf] 424/576 done, 497 s
+  [natural_cf] 425/576 done, 500 s
+  [natural_cf] 426/576 done, 500 s
+  [natural_cf] 427/576 done, 502 s
+  [natural_cf] 428/576 done, 502 s
+  [natural_cf] 429/576 done, 503 s
+  [natural_cf] 430/576 done, 504 s
+  [natural_cf] 431/576 done, 505 s
+  [natural_cf] 432/576 done, 507 s
+  [natural_cf] 433/576 done, 508 s
+  [natural_cf] 434/576 done, 509 s
+  [natural_cf] 435/576 done, 509 s
+  [natural_cf] 436/576 done, 510 s
+  [natural_cf] 437/576 done, 511 s
+  [natural_cf] 438/576 done, 512 s
+  [natural_cf] 439/576 done, 514 s
+  [natural_cf] 440/576 done, 514 s
+  [natural_cf] 441/576 done, 516 s
+  [natural_cf] 442/576 done, 516 s
+  [natural_cf] 443/576 done, 516 s
+  [natural_cf] 444/576 done, 517 s
+  [natural_cf] 445/576 done, 518 s
+  [natural_cf] 446/576 done, 520 s
+  [natural_cf] 447/576 done, 521 s
+  [natural_cf] 448/576 done, 522 s
+  [natural_cf] 449/576 done, 522 s
+  [natural_cf] 450/576 done, 523 s
+  [natural_cf] 451/576 done, 524 s
+  [natural_cf] 452/576 done, 524 s
+  [natural_cf] 453/576 done, 527 s
+  [natural_cf] 454/576 done, 527 s
+  [natural_cf] 455/576 done, 529 s
+  [natural_cf] 456/576 done, 530 s
+  [natural_cf] 457/576 done, 531 s
+  [natural_cf] 458/576 done, 532 s
+  [natural_cf] 459/576 done, 532 s
+  [natural_cf] 460/576 done, 536 s
+  [natural_cf] 461/576 done, 536 s
+  [natural_cf] 462/576 done, 537 s
+  [natural_cf] 463/576 done, 538 s
+  [natural_cf] 464/576 done, 538 s
+  [natural_cf] 465/576 done, 540 s
+  [natural_cf] 466/576 done, 540 s
+  [natural_cf] 467/576 done, 543 s
+  [natural_cf] 468/576 done, 543 s
+  [natural_cf] 469/576 done, 545 s
+  [natural_cf] 470/576 done, 545 s
+  [natural_cf] 471/576 done, 547 s
+  [natural_cf] 472/576 done, 547 s
+  [natural_cf] 473/576 done, 548 s
+  [natural_cf] 474/576 done, 551 s
+  [natural_cf] 475/576 done, 551 s
+  [natural_cf] 476/576 done, 552 s
+  [natural_cf] 477/576 done, 553 s
+  [natural_cf] 478/576 done, 555 s
+  [natural_cf] 479/576 done, 555 s
+  [natural_cf] 480/576 done, 556 s
+  [natural_cf] 481/576 done, 559 s
+  [natural_cf] 482/576 done, 559 s
+  [natural_cf] 483/576 done, 560 s
+  [natural_cf] 484/576 done, 561 s
+  [natural_cf] 485/576 done, 562 s
+  [natural_cf] 486/576 done, 563 s
+  [natural_cf] 487/576 done, 563 s
+  [natural_cf] 488/576 done, 566 s
+  [natural_cf] 489/576 done, 566 s
+  [natural_cf] 490/576 done, 567 s
+  [natural_cf] 491/576 done, 568 s
+  [natural_cf] 492/576 done, 570 s
+  [natural_cf] 493/576 done, 570 s
+  [natural_cf] 494/576 done, 570 s
+  [natural_cf] 495/576 done, 573 s
+  [natural_cf] 496/576 done, 573 s
+  [natural_cf] 497/576 done, 574 s
+  [natural_cf] 498/576 done, 575 s
+  [natural_cf] 499/576 done, 576 s
+  [natural_cf] 500/576 done, 577 s
+  [natural_cf] 501/576 done, 577 s
+  [natural_cf] 502/576 done, 579 s
+  [natural_cf] 503/576 done, 580 s
+  [natural_cf] 504/576 done, 580 s
+  [natural_cf] 505/576 done, 582 s
+  [natural_cf] 506/576 done, 583 s
+  [natural_cf] 507/576 done, 583 s
+  [natural_cf] 508/576 done, 584 s
+  [natural_cf] 509/576 done, 586 s
+  [natural_cf] 510/576 done, 587 s
+  [natural_cf] 511/576 done, 587 s
+  [natural_cf] 512/576 done, 588 s
+  [natural_cf] 513/576 done, 589 s
+  [natural_cf] 514/576 done, 590 s
+  [natural_cf] 515/576 done, 590 s
+  [natural_cf] 516/576 done, 592 s
+  [natural_cf] 517/576 done, 593 s
+  [natural_cf] 518/576 done, 593 s
+  [natural_cf] 519/576 done, 595 s
+  [natural_cf] 520/576 done, 596 s
+  [natural_cf] 521/576 done, 596 s
+  [natural_cf] 522/576 done, 597 s
+  [natural_cf] 523/576 done, 599 s
+  [natural_cf] 524/576 done, 599 s
+  [natural_cf] 525/576 done, 600 s
+  [natural_cf] 526/576 done, 602 s
+  [natural_cf] 527/576 done, 602 s
+  [natural_cf] 528/576 done, 603 s
+  [natural_cf] 529/576 done, 603 s
+  [natural_cf] 530/576 done, 606 s
+  [natural_cf] 531/576 done, 606 s
+  [natural_cf] 532/576 done, 606 s
+  [natural_cf] 533/576 done, 608 s
+  [natural_cf] 534/576 done, 609 s
+  [natural_cf] 535/576 done, 609 s
+  [natural_cf] 536/576 done, 610 s
+  [natural_cf] 537/576 done, 612 s
+  [natural_cf] 538/576 done, 612 s
+  [natural_cf] 539/576 done, 613 s
+  [natural_cf] 540/576 done, 614 s
+  [natural_cf] 541/576 done, 616 s
+  [natural_cf] 542/576 done, 616 s
+  [natural_cf] 543/576 done, 616 s
+  [natural_cf] 544/576 done, 619 s
+  [natural_cf] 545/576 done, 619 s
+  [natural_cf] 546/576 done, 620 s
+  [natural_cf] 547/576 done, 620 s
+  [natural_cf] 548/576 done, 622 s
+  [natural_cf] 549/576 done, 622 s
+  [natural_cf] 550/576 done, 623 s
+  [natural_cf] 551/576 done, 625 s
+  [natural_cf] 552/576 done, 625 s
+  [natural_cf] 553/576 done, 626 s
+  [natural_cf] 554/576 done, 626 s
+  [natural_cf] 555/576 done, 628 s
+  [natural_cf] 556/576 done, 628 s
+  [natural_cf] 557/576 done, 629 s
+  [natural_cf] 558/576 done, 631 s
+  [natural_cf] 559/576 done, 631 s
+  [natural_cf] 560/576 done, 632 s
+  [natural_cf] 561/576 done, 633 s
+  [natural_cf] 562/576 done, 635 s
+  [natural_cf] 563/576 done, 635 s
+  [natural_cf] 564/576 done, 636 s
+  [natural_cf] 565/576 done, 638 s
+  [natural_cf] 566/576 done, 638 s
+  [natural_cf] 567/576 done, 639 s
+  [natural_cf] 568/576 done, 639 s
+  [natural_cf] 569/576 done, 642 s
+  [natural_cf] 570/576 done, 642 s
+  [natural_cf] 571/576 done, 642 s
+  [natural_cf] 572/576 done, 644 s
+  [natural_cf] 573/576 done, 644 s
+  [natural_cf] 574/576 done, 645 s
+  [natural_cf] 575/576 done, 645 s
+  [natural_cf] 576/576 done, 646 s
+  [natural_cf] 576 jobs in 648 s
+== stage eval_natural_cf done in 667 s
+== M4.6c stage eval_freeze (7 workers)
+  [M4.6c natural states] 1/24 done, 5 s
+  [M4.6c natural states] 2/24 done, 5 s
+  [M4.6c natural states] 3/24 done, 5 s
+  [M4.6c natural states] 4/24 done, 5 s
+  [M4.6c natural states] 5/24 done, 5 s
+  [M4.6c natural states] 6/24 done, 5 s
+  [M4.6c natural states] 7/24 done, 5 s
+  [M4.6c natural states] 8/24 done, 8 s
+  [M4.6c natural states] 9/24 done, 8 s
+  [M4.6c natural states] 10/24 done, 8 s
+  [M4.6c natural states] 11/24 done, 8 s
+  [M4.6c natural states] 12/24 done, 8 s
+  [M4.6c natural states] 13/24 done, 8 s
+  [M4.6c natural states] 14/24 done, 8 s
+  [M4.6c natural states] 15/24 done, 11 s
+  [M4.6c natural states] 16/24 done, 11 s
+  [M4.6c natural states] 17/24 done, 11 s
+  [M4.6c natural states] 18/24 done, 11 s
+  [M4.6c natural states] 19/24 done, 11 s
+  [M4.6c natural states] 20/24 done, 11 s
+  [M4.6c natural states] 21/24 done, 11 s
+  [M4.6c natural states] 22/24 done, 13 s
+  [M4.6c natural states] 23/24 done, 13 s
+  [M4.6c natural states] 24/24 done, 14 s
+  [freeze] 1/816 done, 11 s
+  [freeze] 2/816 done, 11 s
+  [freeze] 3/816 done, 11 s
+  [freeze] 4/816 done, 11 s
+  [freeze] 5/816 done, 11 s
+  [freeze] 6/816 done, 11 s
+  [freeze] 7/816 done, 11 s
+  [freeze] 8/816 done, 19 s
+  [freeze] 9/816 done, 19 s
+  [freeze] 10/816 done, 19 s
+  [freeze] 11/816 done, 19 s
+  [freeze] 12/816 done, 19 s
+  [freeze] 13/816 done, 19 s
+  [freeze] 14/816 done, 19 s
+  [freeze] 15/816 done, 26 s
+  [freeze] 16/816 done, 26 s
+  [freeze] 17/816 done, 26 s
+  [freeze] 18/816 done, 26 s
+  [freeze] 19/816 done, 27 s
+  [freeze] 20/816 done, 27 s
+  [freeze] 21/816 done, 27 s
+  [freeze] 22/816 done, 34 s
+  [freeze] 23/816 done, 34 s
+  [freeze] 24/816 done, 34 s
+  [freeze] 25/816 done, 34 s
+  [freeze] 26/816 done, 35 s
+  [freeze] 27/816 done, 35 s
+  [freeze] 28/816 done, 35 s
+  [freeze] 29/816 done, 42 s
+  [freeze] 30/816 done, 42 s
+  [freeze] 31/816 done, 42 s
+  [freeze] 32/816 done, 42 s
+  [freeze] 33/816 done, 42 s
+  [freeze] 34/816 done, 43 s
+  [freeze] 35/816 done, 43 s
+  [freeze] 36/816 done, 51 s
+  [freeze] 37/816 done, 51 s
+  [freeze] 38/816 done, 51 s
+  [freeze] 39/816 done, 51 s
+  [freeze] 40/816 done, 51 s
+  [freeze] 41/816 done, 52 s
+  [freeze] 42/816 done, 52 s
+  [freeze] 43/816 done, 59 s
+  [freeze] 44/816 done, 60 s
+  [freeze] 45/816 done, 60 s
+  [freeze] 46/816 done, 60 s
+  [freeze] 47/816 done, 60 s
+  [freeze] 48/816 done, 60 s
+  [freeze] 49/816 done, 60 s
+  [freeze] 50/816 done, 68 s
+  [freeze] 51/816 done, 69 s
+  [freeze] 52/816 done, 69 s
+  [freeze] 53/816 done, 69 s
+  [freeze] 54/816 done, 69 s
+  [freeze] 55/816 done, 70 s
+  [freeze] 56/816 done, 70 s
+  [freeze] 57/816 done, 78 s
+  [freeze] 58/816 done, 78 s
+  [freeze] 59/816 done, 78 s
+  [freeze] 60/816 done, 78 s
+  [freeze] 61/816 done, 78 s
+  [freeze] 62/816 done, 79 s
+  [freeze] 63/816 done, 79 s
+  [freeze] 64/816 done, 85 s
+  [freeze] 65/816 done, 85 s
+  [freeze] 66/816 done, 86 s
+  [freeze] 67/816 done, 86 s
+  [freeze] 68/816 done, 86 s
+  [freeze] 69/816 done, 86 s
+  [freeze] 70/816 done, 86 s
+  [freeze] 71/816 done, 93 s
+  [freeze] 72/816 done, 93 s
+  [freeze] 73/816 done, 94 s
+  [freeze] 74/816 done, 94 s
+  [freeze] 75/816 done, 94 s
+  [freeze] 76/816 done, 94 s
+  [freeze] 77/816 done, 95 s
+  [freeze] 78/816 done, 101 s
+  [freeze] 79/816 done, 101 s
+  [freeze] 80/816 done, 102 s
+  [freeze] 81/816 done, 102 s
+  [freeze] 82/816 done, 103 s
+  [freeze] 83/816 done, 103 s
+  [freeze] 84/816 done, 103 s
+  [freeze] 85/816 done, 109 s
+  [freeze] 86/816 done, 109 s
+  [freeze] 87/816 done, 110 s
+  [freeze] 88/816 done, 110 s
+  [freeze] 89/816 done, 110 s
+  [freeze] 90/816 done, 110 s
+  [freeze] 91/816 done, 111 s
+  [freeze] 92/816 done, 118 s
+  [freeze] 93/816 done, 118 s
+  [freeze] 94/816 done, 118 s
+  [freeze] 95/816 done, 118 s
+  [freeze] 96/816 done, 119 s
+  [freeze] 97/816 done, 119 s
+  [freeze] 98/816 done, 119 s
+  [freeze] 99/816 done, 126 s
+  [freeze] 100/816 done, 126 s
+  [freeze] 101/816 done, 126 s
+  [freeze] 102/816 done, 127 s
+  [freeze] 103/816 done, 127 s
+  [freeze] 104/816 done, 127 s
+  [freeze] 105/816 done, 128 s
+  [freeze] 106/816 done, 134 s
+  [freeze] 107/816 done, 134 s
+  [freeze] 108/816 done, 134 s
+  [freeze] 109/816 done, 135 s
+  [freeze] 110/816 done, 136 s
+  [freeze] 111/816 done, 136 s
+  [freeze] 112/816 done, 136 s
+  [freeze] 113/816 done, 143 s
+  [freeze] 114/816 done, 143 s
+  [freeze] 115/816 done, 144 s
+  [freeze] 116/816 done, 145 s
+  [freeze] 117/816 done, 145 s
+  [freeze] 118/816 done, 145 s
+  [freeze] 119/816 done, 146 s
+  [freeze] 120/816 done, 153 s
+  [freeze] 121/816 done, 154 s
+  [freeze] 122/816 done, 154 s
+  [freeze] 123/816 done, 155 s
+  [freeze] 124/816 done, 155 s
+  [freeze] 125/816 done, 156 s
+  [freeze] 126/816 done, 156 s
+  [freeze] 127/816 done, 163 s
+  [freeze] 128/816 done, 163 s
+  [freeze] 129/816 done, 163 s
+  [freeze] 130/816 done, 164 s
+  [freeze] 131/816 done, 165 s
+  [freeze] 132/816 done, 165 s
+  [freeze] 133/816 done, 165 s
+  [freeze] 134/816 done, 171 s
+  [freeze] 135/816 done, 172 s
+  [freeze] 136/816 done, 172 s
+  [freeze] 137/816 done, 172 s
+  [freeze] 138/816 done, 173 s
+  [freeze] 139/816 done, 173 s
+  [freeze] 140/816 done, 173 s
+  [freeze] 141/816 done, 179 s
+  [freeze] 142/816 done, 179 s
+  [freeze] 143/816 done, 180 s
+  [freeze] 144/816 done, 180 s
+  [freeze] 145/816 done, 181 s
+  [freeze] 146/816 done, 181 s
+  [freeze] 147/816 done, 182 s
+  [freeze] 148/816 done, 188 s
+  [freeze] 149/816 done, 188 s
+  [freeze] 150/816 done, 188 s
+  [freeze] 151/816 done, 189 s
+  [freeze] 152/816 done, 190 s
+  [freeze] 153/816 done, 190 s
+  [freeze] 154/816 done, 190 s
+  [freeze] 155/816 done, 196 s
+  [freeze] 156/816 done, 196 s
+  [freeze] 157/816 done, 196 s
+  [freeze] 158/816 done, 197 s
+  [freeze] 159/816 done, 198 s
+  [freeze] 160/816 done, 198 s
+  [freeze] 161/816 done, 198 s
+  [freeze] 162/816 done, 204 s
+  [freeze] 163/816 done, 204 s
+  [freeze] 164/816 done, 204 s
+  [freeze] 165/816 done, 205 s
+  [freeze] 166/816 done, 206 s
+  [freeze] 167/816 done, 206 s
+  [freeze] 168/816 done, 207 s
+  [freeze] 169/816 done, 212 s
+  [freeze] 170/816 done, 212 s
+  [freeze] 171/816 done, 212 s
+  [freeze] 172/816 done, 213 s
+  [freeze] 173/816 done, 214 s
+  [freeze] 174/816 done, 214 s
+  [freeze] 175/816 done, 215 s
+  [freeze] 176/816 done, 219 s
+  [freeze] 177/816 done, 219 s
+  [freeze] 178/816 done, 220 s
+  [freeze] 179/816 done, 220 s
+  [freeze] 180/816 done, 222 s
+  [freeze] 181/816 done, 222 s
+  [freeze] 182/816 done, 223 s
+  [freeze] 183/816 done, 227 s
+  [freeze] 184/816 done, 228 s
+  [freeze] 185/816 done, 228 s
+  [freeze] 186/816 done, 229 s
+  [freeze] 187/816 done, 230 s
+  [freeze] 188/816 done, 230 s
+  [freeze] 189/816 done, 231 s
+  [freeze] 190/816 done, 236 s
+  [freeze] 191/816 done, 236 s
+  [freeze] 192/816 done, 236 s
+  [freeze] 193/816 done, 237 s
+  [freeze] 194/816 done, 238 s
+  [freeze] 195/816 done, 239 s
+  [freeze] 196/816 done, 240 s
+  [freeze] 197/816 done, 244 s
+  [freeze] 198/816 done, 244 s
+  [freeze] 199/816 done, 245 s
+  [freeze] 200/816 done, 246 s
+  [freeze] 201/816 done, 247 s
+  [freeze] 202/816 done, 247 s
+  [freeze] 203/816 done, 249 s
+  [freeze] 204/816 done, 253 s
+  [freeze] 205/816 done, 253 s
+  [freeze] 206/816 done, 254 s
+  [freeze] 207/816 done, 255 s
+  [freeze] 208/816 done, 256 s
+  [freeze] 209/816 done, 256 s
+  [freeze] 210/816 done, 258 s
+  [freeze] 211/816 done, 261 s
+  [freeze] 212/816 done, 261 s
+  [freeze] 213/816 done, 262 s
+  [freeze] 214/816 done, 263 s
+  [freeze] 215/816 done, 264 s
+  [freeze] 216/816 done, 264 s
+  [freeze] 217/816 done, 264 s
+  [freeze] 218/816 done, 268 s
+  [freeze] 219/816 done, 268 s
+  [freeze] 220/816 done, 269 s
+  [freeze] 221/816 done, 269 s
+  [freeze] 222/816 done, 270 s
+  [freeze] 223/816 done, 271 s
+  [freeze] 224/816 done, 271 s
+  [freeze] 225/816 done, 274 s
+  [freeze] 226/816 done, 274 s
+  [freeze] 227/816 done, 276 s
+  [freeze] 228/816 done, 277 s
+  [freeze] 229/816 done, 277 s
+  [freeze] 230/816 done, 277 s
+  [freeze] 231/816 done, 278 s
+  [freeze] 232/816 done, 281 s
+  [freeze] 233/816 done, 281 s
+  [freeze] 234/816 done, 283 s
+  [freeze] 235/816 done, 283 s
+  [freeze] 236/816 done, 284 s
+  [freeze] 237/816 done, 284 s
+  [freeze] 238/816 done, 285 s
+  [freeze] 239/816 done, 288 s
+  [freeze] 240/816 done, 288 s
+  [freeze] 241/816 done, 290 s
+  [freeze] 242/816 done, 291 s
+  [freeze] 243/816 done, 291 s
+  [freeze] 244/816 done, 292 s
+  [freeze] 245/816 done, 293 s
+  [freeze] 246/816 done, 296 s
+  [freeze] 247/816 done, 296 s
+  [freeze] 248/816 done, 298 s
+  [freeze] 249/816 done, 299 s
+  [freeze] 250/816 done, 300 s
+  [freeze] 251/816 done, 300 s
+  [freeze] 252/816 done, 300 s
+  [freeze] 253/816 done, 304 s
+  [freeze] 254/816 done, 304 s
+  [freeze] 255/816 done, 305 s
+  [freeze] 256/816 done, 305 s
+  [freeze] 257/816 done, 307 s
+  [freeze] 258/816 done, 307 s
+  [freeze] 259/816 done, 307 s
+  [freeze] 260/816 done, 310 s
+  [freeze] 261/816 done, 311 s
+  [freeze] 262/816 done, 312 s
+  [freeze] 263/816 done, 312 s
+  [freeze] 264/816 done, 314 s
+  [freeze] 265/816 done, 314 s
+  [freeze] 266/816 done, 314 s
+  [freeze] 267/816 done, 317 s
+  [freeze] 268/816 done, 318 s
+  [freeze] 269/816 done, 320 s
+  [freeze] 270/816 done, 320 s
+  [freeze] 271/816 done, 322 s
+  [freeze] 272/816 done, 322 s
+  [freeze] 273/816 done, 322 s
+  [freeze] 274/816 done, 325 s
+  [freeze] 275/816 done, 325 s
+  [freeze] 276/816 done, 327 s
+  [freeze] 277/816 done, 327 s
+  [freeze] 278/816 done, 328 s
+  [freeze] 279/816 done, 328 s
+  [freeze] 280/816 done, 329 s
+  [freeze] 281/816 done, 331 s
+  [freeze] 282/816 done, 332 s
+  [freeze] 283/816 done, 333 s
+  [freeze] 284/816 done, 334 s
+  [freeze] 285/816 done, 335 s
+  [freeze] 286/816 done, 335 s
+  [freeze] 287/816 done, 336 s
+  [freeze] 288/816 done, 338 s
+  [freeze] 289/816 done, 339 s
+  [freeze] 290/816 done, 340 s
+  [freeze] 291/816 done, 340 s
+  [freeze] 292/816 done, 341 s
+  [freeze] 293/816 done, 341 s
+  [freeze] 294/816 done, 342 s
+  [freeze] 295/816 done, 345 s
+  [freeze] 296/816 done, 345 s
+  [freeze] 297/816 done, 346 s
+  [freeze] 298/816 done, 347 s
+  [freeze] 299/816 done, 348 s
+  [freeze] 300/816 done, 348 s
+  [freeze] 301/816 done, 349 s
+  [freeze] 302/816 done, 351 s
+  [freeze] 303/816 done, 351 s
+  [freeze] 304/816 done, 352 s
+  [freeze] 305/816 done, 353 s
+  [freeze] 306/816 done, 355 s
+  [freeze] 307/816 done, 355 s
+  [freeze] 308/816 done, 355 s
+  [freeze] 309/816 done, 358 s
+  [freeze] 310/816 done, 359 s
+  [freeze] 311/816 done, 360 s
+  [freeze] 312/816 done, 360 s
+  [freeze] 313/816 done, 362 s
+  [freeze] 314/816 done, 362 s
+  [freeze] 315/816 done, 362 s
+  [freeze] 316/816 done, 365 s
+  [freeze] 317/816 done, 365 s
+  [freeze] 318/816 done, 366 s
+  [freeze] 319/816 done, 366 s
+  [freeze] 320/816 done, 368 s
+  [freeze] 321/816 done, 368 s
+  [freeze] 322/816 done, 368 s
+  [freeze] 323/816 done, 371 s
+  [freeze] 324/816 done, 371 s
+  [freeze] 325/816 done, 373 s
+  [freeze] 326/816 done, 373 s
+  [freeze] 327/816 done, 374 s
+  [freeze] 328/816 done, 375 s
+  [freeze] 329/816 done, 375 s
+  [freeze] 330/816 done, 377 s
+  [freeze] 331/816 done, 378 s
+  [freeze] 332/816 done, 379 s
+  [freeze] 333/816 done, 380 s
+  [freeze] 334/816 done, 381 s
+  [freeze] 335/816 done, 381 s
+  [freeze] 336/816 done, 382 s
+  [freeze] 337/816 done, 383 s
+  [freeze] 338/816 done, 384 s
+  [freeze] 339/816 done, 386 s
+  [freeze] 340/816 done, 386 s
+  [freeze] 341/816 done, 387 s
+  [freeze] 342/816 done, 387 s
+  [freeze] 343/816 done, 388 s
+  [freeze] 344/816 done, 390 s
+  [freeze] 345/816 done, 390 s
+  [freeze] 346/816 done, 392 s
+  [freeze] 347/816 done, 393 s
+  [freeze] 348/816 done, 394 s
+  [freeze] 349/816 done, 394 s
+  [freeze] 350/816 done, 395 s
+  [freeze] 351/816 done, 396 s
+  [freeze] 352/816 done, 397 s
+  [freeze] 353/816 done, 399 s
+  [freeze] 354/816 done, 399 s
+  [freeze] 355/816 done, 400 s
+  [freeze] 356/816 done, 401 s
+  [freeze] 357/816 done, 401 s
+  [freeze] 358/816 done, 403 s
+  [freeze] 359/816 done, 404 s
+  [freeze] 360/816 done, 405 s
+  [freeze] 361/816 done, 406 s
+  [freeze] 362/816 done, 407 s
+  [freeze] 363/816 done, 407 s
+  [freeze] 364/816 done, 408 s
+  [freeze] 365/816 done, 409 s
+  [freeze] 366/816 done, 410 s
+  [freeze] 367/816 done, 412 s
+  [freeze] 368/816 done, 412 s
+  [freeze] 369/816 done, 414 s
+  [freeze] 370/816 done, 414 s
+  [freeze] 371/816 done, 414 s
+  [freeze] 372/816 done, 416 s
+  [freeze] 373/816 done, 417 s
+  [freeze] 374/816 done, 419 s
+  [freeze] 375/816 done, 419 s
+  [freeze] 376/816 done, 421 s
+  [freeze] 377/816 done, 422 s
+  [freeze] 378/816 done, 422 s
+  [freeze] 379/816 done, 423 s
+  [freeze] 380/816 done, 425 s
+  [freeze] 381/816 done, 427 s
+  [freeze] 382/816 done, 427 s
+  [freeze] 383/816 done, 429 s
+  [freeze] 384/816 done, 429 s
+  [freeze] 385/816 done, 429 s
+  [freeze] 386/816 done, 431 s
+  [freeze] 387/816 done, 432 s
+  [freeze] 388/816 done, 434 s
+  [freeze] 389/816 done, 434 s
+  [freeze] 390/816 done, 436 s
+  [freeze] 391/816 done, 436 s
+  [freeze] 392/816 done, 437 s
+  [freeze] 393/816 done, 438 s
+  [freeze] 394/816 done, 440 s
+  [freeze] 395/816 done, 442 s
+  [freeze] 396/816 done, 442 s
+  [freeze] 397/816 done, 445 s
+  [freeze] 398/816 done, 445 s
+  [freeze] 399/816 done, 446 s
+  [freeze] 400/816 done, 447 s
+  [freeze] 401/816 done, 449 s
+  [freeze] 402/816 done, 450 s
+  [freeze] 403/816 done, 451 s
+  [freeze] 404/816 done, 452 s
+  [freeze] 405/816 done, 453 s
+  [freeze] 406/816 done, 453 s
+  [freeze] 407/816 done, 454 s
+  [freeze] 408/816 done, 455 s
+  [freeze] 409/816 done, 455 s
+  [freeze] 410/816 done, 456 s
+  [freeze] 411/816 done, 458 s
+  [freeze] 412/816 done, 458 s
+  [freeze] 413/816 done, 458 s
+  [freeze] 414/816 done, 459 s
+  [freeze] 415/816 done, 461 s
+  [freeze] 416/816 done, 461 s
+  [freeze] 417/816 done, 461 s
+  [freeze] 418/816 done, 464 s
+  [freeze] 419/816 done, 464 s
+  [freeze] 420/816 done, 464 s
+  [freeze] 421/816 done, 465 s
+  [freeze] 422/816 done, 466 s
+  [freeze] 423/816 done, 466 s
+  [freeze] 424/816 done, 466 s
+  [freeze] 425/816 done, 469 s
+  [freeze] 426/816 done, 469 s
+  [freeze] 427/816 done, 469 s
+  [freeze] 428/816 done, 470 s
+  [freeze] 429/816 done, 471 s
+  [freeze] 430/816 done, 471 s
+  [freeze] 431/816 done, 471 s
+  [freeze] 432/816 done, 474 s
+  [freeze] 433/816 done, 474 s
+  [freeze] 434/816 done, 474 s
+  [freeze] 435/816 done, 475 s
+  [freeze] 436/816 done, 476 s
+  [freeze] 437/816 done, 476 s
+  [freeze] 438/816 done, 476 s
+  [freeze] 439/816 done, 478 s
+  [freeze] 440/816 done, 478 s
+  [freeze] 441/816 done, 479 s
+  [freeze] 442/816 done, 479 s
+  [freeze] 443/816 done, 481 s
+  [freeze] 444/816 done, 481 s
+  [freeze] 445/816 done, 481 s
+  [freeze] 446/816 done, 483 s
+  [freeze] 447/816 done, 483 s
+  [freeze] 448/816 done, 484 s
+  [freeze] 449/816 done, 485 s
+  [freeze] 450/816 done, 486 s
+  [freeze] 451/816 done, 486 s
+  [freeze] 452/816 done, 486 s
+  [freeze] 453/816 done, 488 s
+  [freeze] 454/816 done, 488 s
+  [freeze] 455/816 done, 489 s
+  [freeze] 456/816 done, 489 s
+  [freeze] 457/816 done, 491 s
+  [freeze] 458/816 done, 491 s
+  [freeze] 459/816 done, 491 s
+  [freeze] 460/816 done, 493 s
+  [freeze] 461/816 done, 493 s
+  [freeze] 462/816 done, 494 s
+  [freeze] 463/816 done, 494 s
+  [freeze] 464/816 done, 496 s
+  [freeze] 465/816 done, 496 s
+  [freeze] 466/816 done, 496 s
+  [freeze] 467/816 done, 498 s
+  [freeze] 468/816 done, 498 s
+  [freeze] 469/816 done, 498 s
+  [freeze] 470/816 done, 499 s
+  [freeze] 471/816 done, 501 s
+  [freeze] 472/816 done, 501 s
+  [freeze] 473/816 done, 502 s
+  [freeze] 474/816 done, 504 s
+  [freeze] 475/816 done, 504 s
+  [freeze] 476/816 done, 504 s
+  [freeze] 477/816 done, 505 s
+  [freeze] 478/816 done, 506 s
+  [freeze] 479/816 done, 507 s
+  [freeze] 480/816 done, 507 s
+  [freeze] 481/816 done, 509 s
+  [freeze] 482/816 done, 509 s
+  [freeze] 483/816 done, 510 s
+  [freeze] 484/816 done, 510 s
+  [freeze] 485/816 done, 511 s
+  [freeze] 486/816 done, 512 s
+  [freeze] 487/816 done, 512 s
+  [freeze] 488/816 done, 514 s
+  [freeze] 489/816 done, 514 s
+  [freeze] 490/816 done, 515 s
+  [freeze] 491/816 done, 515 s
+  [freeze] 492/816 done, 517 s
+  [freeze] 493/816 done, 517 s
+  [freeze] 494/816 done, 517 s
+  [freeze] 495/816 done, 519 s
+  [freeze] 496/816 done, 519 s
+  [freeze] 497/816 done, 520 s
+  [freeze] 498/816 done, 520 s
+  [freeze] 499/816 done, 522 s
+  [freeze] 500/816 done, 522 s
+  [freeze] 501/816 done, 522 s
+  [freeze] 502/816 done, 524 s
+  [freeze] 503/816 done, 524 s
+  [freeze] 504/816 done, 525 s
+  [freeze] 505/816 done, 525 s
+  [freeze] 506/816 done, 527 s
+  [freeze] 507/816 done, 527 s
+  [freeze] 508/816 done, 527 s
+  [freeze] 509/816 done, 529 s
+  [freeze] 510/816 done, 529 s
+  [freeze] 511/816 done, 530 s
+  [freeze] 512/816 done, 530 s
+  [freeze] 513/816 done, 532 s
+  [freeze] 514/816 done, 532 s
+  [freeze] 515/816 done, 532 s
+  [freeze] 516/816 done, 534 s
+  [freeze] 517/816 done, 534 s
+  [freeze] 518/816 done, 535 s
+  [freeze] 519/816 done, 535 s
+  [freeze] 520/816 done, 537 s
+  [freeze] 521/816 done, 537 s
+  [freeze] 522/816 done, 537 s
+  [freeze] 523/816 done, 539 s
+  [freeze] 524/816 done, 539 s
+  [freeze] 525/816 done, 540 s
+  [freeze] 526/816 done, 540 s
+  [freeze] 527/816 done, 542 s
+  [freeze] 528/816 done, 542 s
+  [freeze] 529/816 done, 542 s
+  [freeze] 530/816 done, 543 s
+  [freeze] 531/816 done, 544 s
+  [freeze] 532/816 done, 545 s
+  [freeze] 533/816 done, 545 s
+  [freeze] 534/816 done, 547 s
+  [freeze] 535/816 done, 547 s
+  [freeze] 536/816 done, 547 s
+  [freeze] 537/816 done, 549 s
+  [freeze] 538/816 done, 549 s
+  [freeze] 539/816 done, 550 s
+  [freeze] 540/816 done, 550 s
+  [freeze] 541/816 done, 552 s
+  [freeze] 542/816 done, 552 s
+  [freeze] 543/816 done, 552 s
+  [freeze] 544/816 done, 553 s
+  [freeze] 545/816 done, 554 s
+  [freeze] 546/816 done, 554 s
+  [freeze] 547/816 done, 556 s
+  [freeze] 548/816 done, 557 s
+  [freeze] 549/816 done, 557 s
+  [freeze] 550/816 done, 557 s
+  [freeze] 551/816 done, 558 s
+  [freeze] 552/816 done, 559 s
+  [freeze] 553/816 done, 559 s
+  [freeze] 554/816 done, 560 s
+  [freeze] 555/816 done, 561 s
+  [freeze] 556/816 done, 562 s
+  [freeze] 557/816 done, 562 s
+  [freeze] 558/816 done, 563 s
+  [freeze] 559/816 done, 564 s
+  [freeze] 560/816 done, 564 s
+  [freeze] 561/816 done, 565 s
+  [freeze] 562/816 done, 566 s
+  [freeze] 563/816 done, 566 s
+  [freeze] 564/816 done, 567 s
+  [freeze] 565/816 done, 569 s
+  [freeze] 566/816 done, 569 s
+  [freeze] 567/816 done, 569 s
+  [freeze] 568/816 done, 571 s
+  [freeze] 569/816 done, 572 s
+  [freeze] 570/816 done, 572 s
+  [freeze] 571/816 done, 572 s
+  [freeze] 572/816 done, 574 s
+  [freeze] 573/816 done, 574 s
+  [freeze] 574/816 done, 575 s
+  [freeze] 575/816 done, 576 s
+  [freeze] 576/816 done, 577 s
+  [freeze] 577/816 done, 577 s
+  [freeze] 578/816 done, 578 s
+  [freeze] 579/816 done, 579 s
+  [freeze] 580/816 done, 579 s
+  [freeze] 581/816 done, 580 s
+  [freeze] 582/816 done, 581 s
+  [freeze] 583/816 done, 582 s
+  [freeze] 584/816 done, 582 s
+  [freeze] 585/816 done, 583 s
+  [freeze] 586/816 done, 584 s
+  [freeze] 587/816 done, 584 s
+  [freeze] 588/816 done, 584 s
+  [freeze] 589/816 done, 586 s
+  [freeze] 590/816 done, 586 s
+  [freeze] 591/816 done, 587 s
+  [freeze] 592/816 done, 587 s
+  [freeze] 593/816 done, 588 s
+  [freeze] 594/816 done, 589 s
+  [freeze] 595/816 done, 589 s
+  [freeze] 596/816 done, 591 s
+  [freeze] 597/816 done, 591 s
+  [freeze] 598/816 done, 592 s
+  [freeze] 599/816 done, 592 s
+  [freeze] 600/816 done, 594 s
+  [freeze] 601/816 done, 594 s
+  [freeze] 602/816 done, 595 s
+  [freeze] 603/816 done, 597 s
+  [freeze] 604/816 done, 597 s
+  [freeze] 605/816 done, 597 s
+  [freeze] 606/816 done, 598 s
+  [freeze] 607/816 done, 599 s
+  [freeze] 608/816 done, 599 s
+  [freeze] 609/816 done, 600 s
+  [freeze] 610/816 done, 601 s
+  [freeze] 611/816 done, 602 s
+  [freeze] 612/816 done, 602 s
+  [freeze] 613/816 done, 603 s
+  [freeze] 614/816 done, 604 s
+  [freeze] 615/816 done, 604 s
+  [freeze] 616/816 done, 605 s
+  [freeze] 617/816 done, 606 s
+  [freeze] 618/816 done, 607 s
+  [freeze] 619/816 done, 607 s
+  [freeze] 620/816 done, 608 s
+  [freeze] 621/816 done, 609 s
+  [freeze] 622/816 done, 609 s
+  [freeze] 623/816 done, 610 s
+  [freeze] 624/816 done, 611 s
+  [freeze] 625/816 done, 612 s
+  [freeze] 626/816 done, 612 s
+  [freeze] 627/816 done, 613 s
+  [freeze] 628/816 done, 614 s
+  [freeze] 629/816 done, 614 s
+  [freeze] 630/816 done, 615 s
+  [freeze] 631/816 done, 616 s
+  [freeze] 632/816 done, 616 s
+  [freeze] 633/816 done, 617 s
+  [freeze] 634/816 done, 617 s
+  [freeze] 635/816 done, 618 s
+  [freeze] 636/816 done, 619 s
+  [freeze] 637/816 done, 620 s
+  [freeze] 638/816 done, 622 s
+  [freeze] 639/816 done, 622 s
+  [freeze] 640/816 done, 623 s
+  [freeze] 641/816 done, 623 s
+  [freeze] 642/816 done, 626 s
+  [freeze] 643/816 done, 626 s
+  [freeze] 644/816 done, 627 s
+  [freeze] 645/816 done, 629 s
+  [freeze] 646/816 done, 629 s
+  [freeze] 647/816 done, 630 s
+  [freeze] 648/816 done, 630 s
+  [freeze] 649/816 done, 632 s
+  [freeze] 650/816 done, 632 s
+  [freeze] 651/816 done, 634 s
+  [freeze] 652/816 done, 635 s
+  [freeze] 653/816 done, 635 s
+  [freeze] 654/816 done, 636 s
+  [freeze] 655/816 done, 636 s
+  [freeze] 656/816 done, 637 s
+  [freeze] 657/816 done, 638 s
+  [freeze] 658/816 done, 640 s
+  [freeze] 659/816 done, 641 s
+  [freeze] 660/816 done, 641 s
+  [freeze] 661/816 done, 642 s
+  [freeze] 662/816 done, 642 s
+  [freeze] 663/816 done, 644 s
+  [freeze] 664/816 done, 644 s
+  [freeze] 665/816 done, 645 s
+  [freeze] 666/816 done, 647 s
+  [freeze] 667/816 done, 648 s
+  [freeze] 668/816 done, 648 s
+  [freeze] 669/816 done, 648 s
+  [freeze] 670/816 done, 649 s
+  [freeze] 671/816 done, 650 s
+  [freeze] 672/816 done, 651 s
+  [freeze] 673/816 done, 652 s
+  [freeze] 674/816 done, 653 s
+  [freeze] 675/816 done, 653 s
+  [freeze] 676/816 done, 653 s
+  [freeze] 677/816 done, 654 s
+  [freeze] 678/816 done, 655 s
+  [freeze] 679/816 done, 656 s
+  [freeze] 680/816 done, 658 s
+  [freeze] 681/816 done, 659 s
+  [freeze] 682/816 done, 659 s
+  [freeze] 683/816 done, 659 s
+  [freeze] 684/816 done, 661 s
+  [freeze] 685/816 done, 662 s
+  [freeze] 686/816 done, 663 s
+  [freeze] 687/816 done, 664 s
+  [freeze] 688/816 done, 665 s
+  [freeze] 689/816 done, 665 s
+  [freeze] 690/816 done, 665 s
+  [freeze] 691/816 done, 667 s
+  [freeze] 692/816 done, 668 s
+  [freeze] 693/816 done, 668 s
+  [freeze] 694/816 done, 670 s
+  [freeze] 695/816 done, 671 s
+  [freeze] 696/816 done, 671 s
+  [freeze] 697/816 done, 671 s
+  [freeze] 698/816 done, 672 s
+  [freeze] 699/816 done, 673 s
+  [freeze] 700/816 done, 674 s
+  [freeze] 701/816 done, 675 s
+  [freeze] 702/816 done, 676 s
+  [freeze] 703/816 done, 676 s
+  [freeze] 704/816 done, 676 s
+  [freeze] 705/816 done, 678 s
+  [freeze] 706/816 done, 679 s
+  [freeze] 707/816 done, 680 s
+  [freeze] 708/816 done, 681 s
+  [freeze] 709/816 done, 682 s
+  [freeze] 710/816 done, 682 s
+  [freeze] 711/816 done, 682 s
+  [freeze] 712/816 done, 683 s
+  [freeze] 713/816 done, 685 s
+  [freeze] 714/816 done, 685 s
+  [freeze] 715/816 done, 687 s
+  [freeze] 716/816 done, 688 s
+  [freeze] 717/816 done, 688 s
+  [freeze] 718/816 done, 688 s
+  [freeze] 719/816 done, 689 s
+  [freeze] 720/816 done, 691 s
+  [freeze] 721/816 done, 691 s
+  [freeze] 722/816 done, 693 s
+  [freeze] 723/816 done, 694 s
+  [freeze] 724/816 done, 694 s
+  [freeze] 725/816 done, 694 s
+  [freeze] 726/816 done, 695 s
+  [freeze] 727/816 done, 696 s
+  [freeze] 728/816 done, 697 s
+  [freeze] 729/816 done, 699 s
+  [freeze] 730/816 done, 699 s
+  [freeze] 731/816 done, 699 s
+  [freeze] 732/816 done, 699 s
+  [freeze] 733/816 done, 700 s
+  [freeze] 734/816 done, 702 s
+  [freeze] 735/816 done, 703 s
+  [freeze] 736/816 done, 704 s
+  [freeze] 737/816 done, 705 s
+  [freeze] 738/816 done, 705 s
+  [freeze] 739/816 done, 705 s
+  [freeze] 740/816 done, 706 s
+  [freeze] 741/816 done, 707 s
+  [freeze] 742/816 done, 708 s
+  [freeze] 743/816 done, 710 s
+  [freeze] 744/816 done, 710 s
+  [freeze] 745/816 done, 711 s
+  [freeze] 746/816 done, 711 s
+  [freeze] 747/816 done, 712 s
+  [freeze] 748/816 done, 713 s
+  [freeze] 749/816 done, 714 s
+  [freeze] 750/816 done, 715 s
+  [freeze] 751/816 done, 716 s
+  [freeze] 752/816 done, 716 s
+  [freeze] 753/816 done, 716 s
+  [freeze] 754/816 done, 717 s
+  [freeze] 755/816 done, 718 s
+  [freeze] 756/816 done, 719 s
+  [freeze] 757/816 done, 721 s
+  [freeze] 758/816 done, 721 s
+  [freeze] 759/816 done, 722 s
+  [freeze] 760/816 done, 722 s
+  [freeze] 761/816 done, 723 s
+  [freeze] 762/816 done, 724 s
+  [freeze] 763/816 done, 725 s
+  [freeze] 764/816 done, 726 s
+  [freeze] 765/816 done, 727 s
+  [freeze] 766/816 done, 727 s
+  [freeze] 767/816 done, 727 s
+  [freeze] 768/816 done, 728 s
+  [freeze] 769/816 done, 729 s
+  [freeze] 770/816 done, 730 s
+  [freeze] 771/816 done, 731 s
+  [freeze] 772/816 done, 732 s
+  [freeze] 773/816 done, 732 s
+  [freeze] 774/816 done, 732 s
+  [freeze] 775/816 done, 733 s
+  [freeze] 776/816 done, 735 s
+  [freeze] 777/816 done, 735 s
+  [freeze] 778/816 done, 736 s
+  [freeze] 779/816 done, 737 s
+  [freeze] 780/816 done, 737 s
+  [freeze] 781/816 done, 737 s
+  [freeze] 782/816 done, 738 s
+  [freeze] 783/816 done, 740 s
+  [freeze] 784/816 done, 741 s
+  [freeze] 785/816 done, 742 s
+  [freeze] 786/816 done, 743 s
+  [freeze] 787/816 done, 743 s
+  [freeze] 788/816 done, 743 s
+  [freeze] 789/816 done, 743 s
+  [freeze] 790/816 done, 746 s
+  [freeze] 791/816 done, 746 s
+  [freeze] 792/816 done, 747 s
+  [freeze] 793/816 done, 748 s
+  [freeze] 794/816 done, 748 s
+  [freeze] 795/816 done, 748 s
+  [freeze] 796/816 done, 749 s
+  [freeze] 797/816 done, 751 s
+  [freeze] 798/816 done, 752 s
+  [freeze] 799/816 done, 753 s
+  [freeze] 800/816 done, 753 s
+  [freeze] 801/816 done, 753 s
+  [freeze] 802/816 done, 753 s
+  [freeze] 803/816 done, 754 s
+  [freeze] 804/816 done, 756 s
+  [freeze] 805/816 done, 757 s
+  [freeze] 806/816 done, 758 s
+  [freeze] 807/816 done, 759 s
+  [freeze] 808/816 done, 759 s
+  [freeze] 809/816 done, 759 s
+  [freeze] 810/816 done, 759 s
+  [freeze] 811/816 done, 761 s
+  [freeze] 812/816 done, 762 s
+  [freeze] 813/816 done, 763 s
+  [freeze] 814/816 done, 763 s
+  [freeze] 815/816 done, 763 s
+  [freeze] 816/816 done, 763 s
+  [freeze] 816 jobs in 765 s
+== stage eval_freeze done in 780 s
+== M4.6c stage eval_specialists (7 workers)
+  [specialists] 1/648 done, 7 s
+  [specialists] 2/648 done, 7 s
+  [specialists] 3/648 done, 7 s
+  [specialists] 4/648 done, 7 s
+  [specialists] 5/648 done, 7 s
+  [specialists] 6/648 done, 7 s
+  [specialists] 7/648 done, 7 s
+  [specialists] 8/648 done, 12 s
+  [specialists] 9/648 done, 12 s
+  [specialists] 10/648 done, 12 s
+  [specialists] 11/648 done, 12 s
+  [specialists] 12/648 done, 12 s
+  [specialists] 13/648 done, 12 s
+  [specialists] 14/648 done, 12 s
+  [specialists] 15/648 done, 16 s
+  [specialists] 16/648 done, 16 s
+  [specialists] 17/648 done, 16 s
+  [specialists] 18/648 done, 16 s
+  [specialists] 19/648 done, 16 s
+  [specialists] 20/648 done, 16 s
+  [specialists] 21/648 done, 16 s
+  [specialists] 22/648 done, 21 s
+  [specialists] 23/648 done, 21 s
+  [specialists] 24/648 done, 21 s
+  [specialists] 25/648 done, 21 s
+  [specialists] 26/648 done, 21 s
+  [specialists] 27/648 done, 21 s
+  [specialists] 28/648 done, 21 s
+  [specialists] 29/648 done, 24 s
+  [specialists] 30/648 done, 24 s
+  [specialists] 31/648 done, 24 s
+  [specialists] 32/648 done, 24 s
+  [specialists] 33/648 done, 24 s
+  [specialists] 34/648 done, 24 s
+  [specialists] 35/648 done, 24 s
+  [specialists] 36/648 done, 28 s
+  [specialists] 37/648 done, 28 s
+  [specialists] 38/648 done, 28 s
+  [specialists] 39/648 done, 28 s
+  [specialists] 40/648 done, 28 s
+  [specialists] 41/648 done, 28 s
+  [specialists] 42/648 done, 28 s
+  [specialists] 43/648 done, 31 s
+  [specialists] 44/648 done, 31 s
+  [specialists] 45/648 done, 31 s
+  [specialists] 46/648 done, 31 s
+  [specialists] 47/648 done, 31 s
+  [specialists] 48/648 done, 31 s
+  [specialists] 49/648 done, 31 s
+  [specialists] 50/648 done, 34 s
+  [specialists] 51/648 done, 34 s
+  [specialists] 52/648 done, 34 s
+  [specialists] 53/648 done, 34 s
+  [specialists] 54/648 done, 34 s
+  [specialists] 55/648 done, 35 s
+  [specialists] 56/648 done, 35 s
+  [specialists] 57/648 done, 38 s
+  [specialists] 58/648 done, 38 s
+  [specialists] 59/648 done, 38 s
+  [specialists] 60/648 done, 38 s
+  [specialists] 61/648 done, 38 s
+  [specialists] 62/648 done, 38 s
+  [specialists] 63/648 done, 38 s
+  [specialists] 64/648 done, 41 s
+  [specialists] 65/648 done, 41 s
+  [specialists] 66/648 done, 41 s
+  [specialists] 67/648 done, 41 s
+  [specialists] 68/648 done, 42 s
+  [specialists] 69/648 done, 42 s
+  [specialists] 70/648 done, 42 s
+  [specialists] 71/648 done, 44 s
+  [specialists] 72/648 done, 45 s
+  [specialists] 73/648 done, 45 s
+  [specialists] 74/648 done, 45 s
+  [specialists] 75/648 done, 45 s
+  [specialists] 76/648 done, 45 s
+  [specialists] 77/648 done, 45 s
+  [specialists] 78/648 done, 48 s
+  [specialists] 79/648 done, 48 s
+  [specialists] 80/648 done, 48 s
+  [specialists] 81/648 done, 48 s
+  [specialists] 82/648 done, 48 s
+  [specialists] 83/648 done, 48 s
+  [specialists] 84/648 done, 49 s
+  [specialists] 85/648 done, 51 s
+  [specialists] 86/648 done, 51 s
+  [specialists] 87/648 done, 51 s
+  [specialists] 88/648 done, 51 s
+  [specialists] 89/648 done, 52 s
+  [specialists] 90/648 done, 52 s
+  [specialists] 91/648 done, 52 s
+  [specialists] 92/648 done, 54 s
+  [specialists] 93/648 done, 55 s
+  [specialists] 94/648 done, 55 s
+  [specialists] 95/648 done, 55 s
+  [specialists] 96/648 done, 55 s
+  [specialists] 97/648 done, 55 s
+  [specialists] 98/648 done, 55 s
+  [specialists] 99/648 done, 58 s
+  [specialists] 100/648 done, 58 s
+  [specialists] 101/648 done, 58 s
+  [specialists] 102/648 done, 58 s
+  [specialists] 103/648 done, 58 s
+  [specialists] 104/648 done, 58 s
+  [specialists] 105/648 done, 59 s
+  [specialists] 106/648 done, 61 s
+  [specialists] 107/648 done, 61 s
+  [specialists] 108/648 done, 61 s
+  [specialists] 109/648 done, 61 s
+  [specialists] 110/648 done, 62 s
+  [specialists] 111/648 done, 62 s
+  [specialists] 112/648 done, 62 s
+  [specialists] 113/648 done, 64 s
+  [specialists] 114/648 done, 64 s
+  [specialists] 115/648 done, 64 s
+  [specialists] 116/648 done, 65 s
+  [specialists] 117/648 done, 65 s
+  [specialists] 118/648 done, 65 s
+  [specialists] 119/648 done, 66 s
+  [specialists] 120/648 done, 68 s
+  [specialists] 121/648 done, 68 s
+  [specialists] 122/648 done, 68 s
+  [specialists] 123/648 done, 68 s
+  [specialists] 124/648 done, 68 s
+  [specialists] 125/648 done, 69 s
+  [specialists] 126/648 done, 69 s
+  [specialists] 127/648 done, 71 s
+  [specialists] 128/648 done, 71 s
+  [specialists] 129/648 done, 72 s
+  [specialists] 130/648 done, 72 s
+  [specialists] 131/648 done, 72 s
+  [specialists] 132/648 done, 72 s
+  [specialists] 133/648 done, 73 s
+  [specialists] 134/648 done, 75 s
+  [specialists] 135/648 done, 75 s
+  [specialists] 136/648 done, 75 s
+  [specialists] 137/648 done, 76 s
+  [specialists] 138/648 done, 76 s
+  [specialists] 139/648 done, 76 s
+  [specialists] 140/648 done, 76 s
+  [specialists] 141/648 done, 78 s
+  [specialists] 142/648 done, 79 s
+  [specialists] 143/648 done, 79 s
+  [specialists] 144/648 done, 79 s
+  [specialists] 145/648 done, 79 s
+  [specialists] 146/648 done, 79 s
+  [specialists] 147/648 done, 80 s
+  [specialists] 148/648 done, 82 s
+  [specialists] 149/648 done, 82 s
+  [specialists] 150/648 done, 82 s
+  [specialists] 151/648 done, 83 s
+  [specialists] 152/648 done, 83 s
+  [specialists] 153/648 done, 83 s
+  [specialists] 154/648 done, 83 s
+  [specialists] 155/648 done, 85 s
+  [specialists] 156/648 done, 85 s
+  [specialists] 157/648 done, 86 s
+  [specialists] 158/648 done, 86 s
+  [specialists] 159/648 done, 86 s
+  [specialists] 160/648 done, 86 s
+  [specialists] 161/648 done, 87 s
+  [specialists] 162/648 done, 89 s
+  [specialists] 163/648 done, 90 s
+  [specialists] 164/648 done, 90 s
+  [specialists] 165/648 done, 90 s
+  [specialists] 166/648 done, 90 s
+  [specialists] 167/648 done, 90 s
+  [specialists] 168/648 done, 91 s
+  [specialists] 169/648 done, 93 s
+  [specialists] 170/648 done, 93 s
+  [specialists] 171/648 done, 93 s
+  [specialists] 172/648 done, 94 s
+  [specialists] 173/648 done, 94 s
+  [specialists] 174/648 done, 94 s
+  [specialists] 175/648 done, 94 s
+  [specialists] 176/648 done, 96 s
+  [specialists] 177/648 done, 97 s
+  [specialists] 178/648 done, 97 s
+  [specialists] 179/648 done, 97 s
+  [specialists] 180/648 done, 97 s
+  [specialists] 181/648 done, 97 s
+  [specialists] 182/648 done, 98 s
+  [specialists] 183/648 done, 100 s
+  [specialists] 184/648 done, 100 s
+  [specialists] 185/648 done, 100 s
+  [specialists] 186/648 done, 101 s
+  [specialists] 187/648 done, 101 s
+  [specialists] 188/648 done, 101 s
+  [specialists] 189/648 done, 101 s
+  [specialists] 190/648 done, 103 s
+  [specialists] 191/648 done, 104 s
+  [specialists] 192/648 done, 104 s
+  [specialists] 193/648 done, 104 s
+  [specialists] 194/648 done, 104 s
+  [specialists] 195/648 done, 104 s
+  [specialists] 196/648 done, 105 s
+  [specialists] 197/648 done, 107 s
+  [specialists] 198/648 done, 107 s
+  [specialists] 199/648 done, 107 s
+  [specialists] 200/648 done, 108 s
+  [specialists] 201/648 done, 108 s
+  [specialists] 202/648 done, 108 s
+  [specialists] 203/648 done, 108 s
+  [specialists] 204/648 done, 110 s
+  [specialists] 205/648 done, 110 s
+  [specialists] 206/648 done, 111 s
+  [specialists] 207/648 done, 111 s
+  [specialists] 208/648 done, 111 s
+  [specialists] 209/648 done, 111 s
+  [specialists] 210/648 done, 112 s
+  [specialists] 211/648 done, 114 s
+  [specialists] 212/648 done, 114 s
+  [specialists] 213/648 done, 114 s
+  [specialists] 214/648 done, 114 s
+  [specialists] 215/648 done, 115 s
+  [specialists] 216/648 done, 115 s
+  [specialists] 217/648 done, 116 s
+  [specialists] 218/648 done, 117 s
+  [specialists] 219/648 done, 117 s
+  [specialists] 220/648 done, 118 s
+  [specialists] 221/648 done, 118 s
+  [specialists] 222/648 done, 118 s
+  [specialists] 223/648 done, 118 s
+  [specialists] 224/648 done, 119 s
+  [specialists] 225/648 done, 121 s
+  [specialists] 226/648 done, 121 s
+  [specialists] 227/648 done, 122 s
+  [specialists] 228/648 done, 122 s
+  [specialists] 229/648 done, 122 s
+  [specialists] 230/648 done, 122 s
+  [specialists] 231/648 done, 123 s
+  [specialists] 232/648 done, 125 s
+  [specialists] 233/648 done, 125 s
+  [specialists] 234/648 done, 125 s
+  [specialists] 235/648 done, 126 s
+  [specialists] 236/648 done, 126 s
+  [specialists] 237/648 done, 126 s
+  [specialists] 238/648 done, 127 s
+  [specialists] 239/648 done, 129 s
+  [specialists] 240/648 done, 129 s
+  [specialists] 241/648 done, 129 s
+  [specialists] 242/648 done, 130 s
+  [specialists] 243/648 done, 130 s
+  [specialists] 244/648 done, 130 s
+  [specialists] 245/648 done, 131 s
+  [specialists] 246/648 done, 133 s
+  [specialists] 247/648 done, 133 s
+  [specialists] 248/648 done, 133 s
+  [specialists] 249/648 done, 133 s
+  [specialists] 250/648 done, 134 s
+  [specialists] 251/648 done, 134 s
+  [specialists] 252/648 done, 135 s
+  [specialists] 253/648 done, 136 s
+  [specialists] 254/648 done, 136 s
+  [specialists] 255/648 done, 137 s
+  [specialists] 256/648 done, 137 s
+  [specialists] 257/648 done, 137 s
+  [specialists] 258/648 done, 137 s
+  [specialists] 259/648 done, 138 s
+  [specialists] 260/648 done, 139 s
+  [specialists] 261/648 done, 140 s
+  [specialists] 262/648 done, 140 s
+  [specialists] 263/648 done, 140 s
+  [specialists] 264/648 done, 140 s
+  [specialists] 265/648 done, 141 s
+  [specialists] 266/648 done, 141 s
+  [specialists] 267/648 done, 143 s
+  [specialists] 268/648 done, 143 s
+  [specialists] 269/648 done, 144 s
+  [specialists] 270/648 done, 144 s
+  [specialists] 271/648 done, 144 s
+  [specialists] 272/648 done, 145 s
+  [specialists] 273/648 done, 145 s
+  [specialists] 274/648 done, 147 s
+  [specialists] 275/648 done, 147 s
+  [specialists] 276/648 done, 148 s
+  [specialists] 277/648 done, 148 s
+  [specialists] 278/648 done, 148 s
+  [specialists] 279/648 done, 148 s
+  [specialists] 280/648 done, 149 s
+  [specialists] 281/648 done, 151 s
+  [specialists] 282/648 done, 151 s
+  [specialists] 283/648 done, 151 s
+  [specialists] 284/648 done, 151 s
+  [specialists] 285/648 done, 152 s
+  [specialists] 286/648 done, 152 s
+  [specialists] 287/648 done, 153 s
+  [specialists] 288/648 done, 154 s
+  [specialists] 289/648 done, 154 s
+  [specialists] 290/648 done, 155 s
+  [specialists] 291/648 done, 155 s
+  [specialists] 292/648 done, 156 s
+  [specialists] 293/648 done, 156 s
+  [specialists] 294/648 done, 157 s
+  [specialists] 295/648 done, 158 s
+  [specialists] 296/648 done, 158 s
+  [specialists] 297/648 done, 159 s
+  [specialists] 298/648 done, 159 s
+  [specialists] 299/648 done, 160 s
+  [specialists] 300/648 done, 160 s
+  [specialists] 301/648 done, 161 s
+  [specialists] 302/648 done, 162 s
+  [specialists] 303/648 done, 162 s
+  [specialists] 304/648 done, 163 s
+  [specialists] 305/648 done, 163 s
+  [specialists] 306/648 done, 163 s
+  [specialists] 307/648 done, 164 s
+  [specialists] 308/648 done, 165 s
+  [specialists] 309/648 done, 166 s
+  [specialists] 310/648 done, 166 s
+  [specialists] 311/648 done, 167 s
+  [specialists] 312/648 done, 168 s
+  [specialists] 313/648 done, 168 s
+  [specialists] 314/648 done, 168 s
+  [specialists] 315/648 done, 169 s
+  [specialists] 316/648 done, 171 s
+  [specialists] 317/648 done, 171 s
+  [specialists] 318/648 done, 172 s
+  [specialists] 319/648 done, 172 s
+  [specialists] 320/648 done, 173 s
+  [specialists] 321/648 done, 173 s
+  [specialists] 322/648 done, 174 s
+  [specialists] 323/648 done, 176 s
+  [specialists] 324/648 done, 176 s
+  [specialists] 325/648 done, 177 s
+  [specialists] 326/648 done, 177 s
+  [specialists] 327/648 done, 178 s
+  [specialists] 328/648 done, 178 s
+  [specialists] 329/648 done, 179 s
+  [specialists] 330/648 done, 181 s
+  [specialists] 331/648 done, 181 s
+  [specialists] 332/648 done, 183 s
+  [specialists] 333/648 done, 183 s
+  [specialists] 334/648 done, 183 s
+  [specialists] 335/648 done, 184 s
+  [specialists] 336/648 done, 185 s
+  [specialists] 337/648 done, 187 s
+  [specialists] 338/648 done, 187 s
+  [specialists] 339/648 done, 188 s
+  [specialists] 340/648 done, 189 s
+  [specialists] 341/648 done, 189 s
+  [specialists] 342/648 done, 189 s
+  [specialists] 343/648 done, 190 s
+  [specialists] 344/648 done, 191 s
+  [specialists] 345/648 done, 191 s
+  [specialists] 346/648 done, 192 s
+  [specialists] 347/648 done, 192 s
+  [specialists] 348/648 done, 193 s
+  [specialists] 349/648 done, 193 s
+  [specialists] 350/648 done, 194 s
+  [specialists] 351/648 done, 194 s
+  [specialists] 352/648 done, 195 s
+  [specialists] 353/648 done, 196 s
+  [specialists] 354/648 done, 196 s
+  [specialists] 355/648 done, 196 s
+  [specialists] 356/648 done, 196 s
+  [specialists] 357/648 done, 197 s
+  [specialists] 358/648 done, 198 s
+  [specialists] 359/648 done, 198 s
+  [specialists] 360/648 done, 199 s
+  [specialists] 361/648 done, 199 s
+  [specialists] 362/648 done, 200 s
+  [specialists] 363/648 done, 200 s
+  [specialists] 364/648 done, 201 s
+  [specialists] 365/648 done, 201 s
+  [specialists] 366/648 done, 202 s
+  [specialists] 367/648 done, 202 s
+  [specialists] 368/648 done, 203 s
+  [specialists] 369/648 done, 203 s
+  [specialists] 370/648 done, 203 s
+  [specialists] 371/648 done, 204 s
+  [specialists] 372/648 done, 205 s
+  [specialists] 373/648 done, 205 s
+  [specialists] 374/648 done, 206 s
+  [specialists] 375/648 done, 206 s
+  [specialists] 376/648 done, 206 s
+  [specialists] 377/648 done, 207 s
+  [specialists] 378/648 done, 208 s
+  [specialists] 379/648 done, 209 s
+  [specialists] 380/648 done, 209 s
+  [specialists] 381/648 done, 210 s
+  [specialists] 382/648 done, 210 s
+  [specialists] 383/648 done, 211 s
+  [specialists] 384/648 done, 211 s
+  [specialists] 385/648 done, 212 s
+  [specialists] 386/648 done, 213 s
+  [specialists] 387/648 done, 213 s
+  [specialists] 388/648 done, 214 s
+  [specialists] 389/648 done, 214 s
+  [specialists] 390/648 done, 214 s
+  [specialists] 391/648 done, 215 s
+  [specialists] 392/648 done, 216 s
+  [specialists] 393/648 done, 217 s
+  [specialists] 394/648 done, 217 s
+  [specialists] 395/648 done, 218 s
+  [specialists] 396/648 done, 218 s
+  [specialists] 397/648 done, 219 s
+  [specialists] 398/648 done, 219 s
+  [specialists] 399/648 done, 220 s
+  [specialists] 400/648 done, 221 s
+  [specialists] 401/648 done, 221 s
+  [specialists] 402/648 done, 222 s
+  [specialists] 403/648 done, 222 s
+  [specialists] 404/648 done, 223 s
+  [specialists] 405/648 done, 223 s
+  [specialists] 406/648 done, 224 s
+  [specialists] 407/648 done, 225 s
+  [specialists] 408/648 done, 225 s
+  [specialists] 409/648 done, 227 s
+  [specialists] 410/648 done, 227 s
+  [specialists] 411/648 done, 228 s
+  [specialists] 412/648 done, 228 s
+  [specialists] 413/648 done, 230 s
+  [specialists] 414/648 done, 231 s
+  [specialists] 415/648 done, 231 s
+  [specialists] 416/648 done, 232 s
+  [specialists] 417/648 done, 233 s
+  [specialists] 418/648 done, 233 s
+  [specialists] 419/648 done, 233 s
+  [specialists] 420/648 done, 234 s
+  [specialists] 421/648 done, 235 s
+  [specialists] 422/648 done, 236 s
+  [specialists] 423/648 done, 237 s
+  [specialists] 424/648 done, 237 s
+  [specialists] 425/648 done, 237 s
+  [specialists] 426/648 done, 237 s
+  [specialists] 427/648 done, 239 s
+  [specialists] 428/648 done, 239 s
+  [specialists] 429/648 done, 240 s
+  [specialists] 430/648 done, 241 s
+  [specialists] 431/648 done, 241 s
+  [specialists] 432/648 done, 241 s
+  [specialists] 433/648 done, 242 s
+  [specialists] 434/648 done, 243 s
+  [specialists] 435/648 done, 244 s
+  [specialists] 436/648 done, 244 s
+  [specialists] 437/648 done, 245 s
+  [specialists] 438/648 done, 245 s
+  [specialists] 439/648 done, 245 s
+  [specialists] 440/648 done, 246 s
+  [specialists] 441/648 done, 248 s
+  [specialists] 442/648 done, 248 s
+  [specialists] 443/648 done, 248 s
+  [specialists] 444/648 done, 250 s
+  [specialists] 445/648 done, 250 s
+  [specialists] 446/648 done, 250 s
+  [specialists] 447/648 done, 250 s
+  [specialists] 448/648 done, 252 s
+  [specialists] 449/648 done, 252 s
+  [specialists] 450/648 done, 252 s
+  [specialists] 451/648 done, 254 s
+  [specialists] 452/648 done, 254 s
+  [specialists] 453/648 done, 254 s
+  [specialists] 454/648 done, 254 s
+  [specialists] 455/648 done, 256 s
+  [specialists] 456/648 done, 256 s
+  [specialists] 457/648 done, 256 s
+  [specialists] 458/648 done, 257 s
+  [specialists] 459/648 done, 258 s
+  [specialists] 460/648 done, 258 s
+  [specialists] 461/648 done, 258 s
+  [specialists] 462/648 done, 259 s
+  [specialists] 463/648 done, 260 s
+  [specialists] 464/648 done, 260 s
+  [specialists] 465/648 done, 261 s
+  [specialists] 466/648 done, 261 s
+  [specialists] 467/648 done, 261 s
+  [specialists] 468/648 done, 261 s
+  [specialists] 469/648 done, 263 s
+  [specialists] 470/648 done, 263 s
+  [specialists] 471/648 done, 264 s
+  [specialists] 472/648 done, 265 s
+  [specialists] 473/648 done, 265 s
+  [specialists] 474/648 done, 265 s
+  [specialists] 475/648 done, 265 s
+  [specialists] 476/648 done, 267 s
+  [specialists] 477/648 done, 267 s
+  [specialists] 478/648 done, 268 s
+  [specialists] 479/648 done, 269 s
+  [specialists] 480/648 done, 269 s
+  [specialists] 481/648 done, 270 s
+  [specialists] 482/648 done, 270 s
+  [specialists] 483/648 done, 271 s
+  [specialists] 484/648 done, 271 s
+  [specialists] 485/648 done, 272 s
+  [specialists] 486/648 done, 273 s
+  [specialists] 487/648 done, 273 s
+  [specialists] 488/648 done, 274 s
+  [specialists] 489/648 done, 274 s
+  [specialists] 490/648 done, 275 s
+  [specialists] 491/648 done, 275 s
+  [specialists] 492/648 done, 275 s
+  [specialists] 493/648 done, 276 s
+  [specialists] 494/648 done, 277 s
+  [specialists] 495/648 done, 277 s
+  [specialists] 496/648 done, 277 s
+  [specialists] 497/648 done, 279 s
+  [specialists] 498/648 done, 279 s
+  [specialists] 499/648 done, 279 s
+  [specialists] 500/648 done, 280 s
+  [specialists] 501/648 done, 281 s
+  [specialists] 502/648 done, 281 s
+  [specialists] 503/648 done, 281 s
+  [specialists] 504/648 done, 283 s
+  [specialists] 505/648 done, 283 s
+  [specialists] 506/648 done, 284 s
+  [specialists] 507/648 done, 284 s
+  [specialists] 508/648 done, 285 s
+  [specialists] 509/648 done, 285 s
+  [specialists] 510/648 done, 285 s
+  [specialists] 511/648 done, 287 s
+  [specialists] 512/648 done, 287 s
+  [specialists] 513/648 done, 288 s
+  [specialists] 514/648 done, 289 s
+  [specialists] 515/648 done, 289 s
+  [specialists] 516/648 done, 289 s
+  [specialists] 517/648 done, 289 s
+  [specialists] 518/648 done, 291 s
+  [specialists] 519/648 done, 291 s
+  [specialists] 520/648 done, 292 s
+  [specialists] 521/648 done, 293 s
+  [specialists] 522/648 done, 294 s
+  [specialists] 523/648 done, 294 s
+  [specialists] 524/648 done, 294 s
+  [specialists] 525/648 done, 296 s
+  [specialists] 526/648 done, 296 s
+  [specialists] 527/648 done, 296 s
+  [specialists] 528/648 done, 297 s
+  [specialists] 529/648 done, 298 s
+  [specialists] 530/648 done, 298 s
+  [specialists] 531/648 done, 298 s
+  [specialists] 532/648 done, 300 s
+  [specialists] 533/648 done, 300 s
+  [specialists] 534/648 done, 300 s
+  [specialists] 535/648 done, 301 s
+  [specialists] 536/648 done, 301 s
+  [specialists] 537/648 done, 302 s
+  [specialists] 538/648 done, 302 s
+  [specialists] 539/648 done, 304 s
+  [specialists] 540/648 done, 304 s
+  [specialists] 541/648 done, 304 s
+  [specialists] 542/648 done, 305 s
+  [specialists] 543/648 done, 305 s
+  [specialists] 544/648 done, 306 s
+  [specialists] 545/648 done, 306 s
+  [specialists] 546/648 done, 307 s
+  [specialists] 547/648 done, 308 s
+  [specialists] 548/648 done, 308 s
+  [specialists] 549/648 done, 309 s
+  [specialists] 550/648 done, 310 s
+  [specialists] 551/648 done, 310 s
+  [specialists] 552/648 done, 310 s
+  [specialists] 553/648 done, 311 s
+  [specialists] 554/648 done, 312 s
+  [specialists] 555/648 done, 312 s
+  [specialists] 556/648 done, 313 s
+  [specialists] 557/648 done, 313 s
+  [specialists] 558/648 done, 313 s
+  [specialists] 559/648 done, 313 s
+  [specialists] 560/648 done, 315 s
+  [specialists] 561/648 done, 316 s
+  [specialists] 562/648 done, 316 s
+  [specialists] 563/648 done, 317 s
+  [specialists] 564/648 done, 317 s
+  [specialists] 565/648 done, 317 s
+  [specialists] 566/648 done, 317 s
+  [specialists] 567/648 done, 319 s
+  [specialists] 568/648 done, 320 s
+  [specialists] 569/648 done, 320 s
+  [specialists] 570/648 done, 321 s
+  [specialists] 571/648 done, 321 s
+  [specialists] 572/648 done, 321 s
+  [specialists] 573/648 done, 321 s
+  [specialists] 574/648 done, 323 s
+  [specialists] 575/648 done, 324 s
+  [specialists] 576/648 done, 324 s
+  [specialists] 577/648 done, 325 s
+  [specialists] 578/648 done, 325 s
+  [specialists] 579/648 done, 325 s
+  [specialists] 580/648 done, 326 s
+  [specialists] 581/648 done, 327 s
+  [specialists] 582/648 done, 328 s
+  [specialists] 583/648 done, 328 s
+  [specialists] 584/648 done, 329 s
+  [specialists] 585/648 done, 329 s
+  [specialists] 586/648 done, 329 s
+  [specialists] 587/648 done, 330 s
+  [specialists] 588/648 done, 331 s
+  [specialists] 589/648 done, 332 s
+  [specialists] 590/648 done, 332 s
+  [specialists] 591/648 done, 333 s
+  [specialists] 592/648 done, 333 s
+  [specialists] 593/648 done, 333 s
+  [specialists] 594/648 done, 333 s
+  [specialists] 595/648 done, 335 s
+  [specialists] 596/648 done, 335 s
+  [specialists] 597/648 done, 335 s
+  [specialists] 598/648 done, 336 s
+  [specialists] 599/648 done, 336 s
+  [specialists] 600/648 done, 337 s
+  [specialists] 601/648 done, 337 s
+  [specialists] 602/648 done, 338 s
+  [specialists] 603/648 done, 339 s
+  [specialists] 604/648 done, 339 s
+  [specialists] 605/648 done, 340 s
+  [specialists] 606/648 done, 340 s
+  [specialists] 607/648 done, 340 s
+  [specialists] 608/648 done, 341 s
+  [specialists] 609/648 done, 342 s
+  [specialists] 610/648 done, 343 s
+  [specialists] 611/648 done, 343 s
+  [specialists] 612/648 done, 343 s
+  [specialists] 613/648 done, 344 s
+  [specialists] 614/648 done, 344 s
+  [specialists] 615/648 done, 344 s
+  [specialists] 616/648 done, 346 s
+  [specialists] 617/648 done, 346 s
+  [specialists] 618/648 done, 347 s
+  [specialists] 619/648 done, 347 s
+  [specialists] 620/648 done, 348 s
+  [specialists] 621/648 done, 348 s
+  [specialists] 622/648 done, 348 s
+  [specialists] 623/648 done, 349 s
+  [specialists] 624/648 done, 350 s
+  [specialists] 625/648 done, 350 s
+  [specialists] 626/648 done, 351 s
+  [specialists] 627/648 done, 351 s
+  [specialists] 628/648 done, 351 s
+  [specialists] 629/648 done, 352 s
+  [specialists] 630/648 done, 353 s
+  [specialists] 631/648 done, 353 s
+  [specialists] 632/648 done, 354 s
+  [specialists] 633/648 done, 354 s
+  [specialists] 634/648 done, 354 s
+  [specialists] 635/648 done, 354 s
+  [specialists] 636/648 done, 355 s
+  [specialists] 637/648 done, 356 s
+  [specialists] 638/648 done, 357 s
+  [specialists] 639/648 done, 357 s
+  [specialists] 640/648 done, 358 s
+  [specialists] 641/648 done, 358 s
+  [specialists] 642/648 done, 358 s
+  [specialists] 643/648 done, 358 s
+  [specialists] 644/648 done, 359 s
+  [specialists] 645/648 done, 360 s
+  [specialists] 646/648 done, 360 s
+  [specialists] 647/648 done, 360 s
+  [specialists] 648/648 done, 360 s
+  [specialists] 648 jobs in 362 s
+== stage eval_specialists done in 362 s
+== M4.6c stage eval_premium150 (7 workers)
+  [premium150] 1/132 done, 14 s
+  [premium150] 2/132 done, 14 s
+  [premium150] 3/132 done, 14 s
+  [premium150] 4/132 done, 14 s
+  [premium150] 5/132 done, 14 s
+  [premium150] 6/132 done, 14 s
+  [premium150] 7/132 done, 14 s
+  [premium150] 8/132 done, 24 s
+  [premium150] 9/132 done, 24 s
+  [premium150] 10/132 done, 24 s
+  [premium150] 11/132 done, 24 s
+  [premium150] 12/132 done, 25 s
+  [premium150] 13/132 done, 25 s
+  [premium150] 14/132 done, 25 s
+  [premium150] 15/132 done, 34 s
+  [premium150] 16/132 done, 34 s
+  [premium150] 17/132 done, 34 s
+  [premium150] 18/132 done, 34 s
+  [premium150] 19/132 done, 34 s
+  [premium150] 20/132 done, 34 s
+  [premium150] 21/132 done, 34 s
+  [premium150] 22/132 done, 43 s
+  [premium150] 23/132 done, 43 s
+  [premium150] 24/132 done, 43 s
+  [premium150] 25/132 done, 43 s
+  [premium150] 26/132 done, 43 s
+  [premium150] 27/132 done, 43 s
+  [premium150] 28/132 done, 44 s
+  [premium150] 29/132 done, 53 s
+  [premium150] 30/132 done, 53 s
+  [premium150] 31/132 done, 53 s
+  [premium150] 32/132 done, 53 s
+  [premium150] 33/132 done, 53 s
+  [premium150] 34/132 done, 53 s
+  [premium150] 35/132 done, 54 s
+  [premium150] 36/132 done, 63 s
+  [premium150] 37/132 done, 63 s
+  [premium150] 38/132 done, 63 s
+  [premium150] 39/132 done, 63 s
+  [premium150] 40/132 done, 63 s
+  [premium150] 41/132 done, 63 s
+  [premium150] 42/132 done, 64 s
+  [premium150] 43/132 done, 73 s
+  [premium150] 44/132 done, 73 s
+  [premium150] 45/132 done, 73 s
+  [premium150] 46/132 done, 73 s
+  [premium150] 47/132 done, 74 s
+  [premium150] 48/132 done, 74 s
+  [premium150] 49/132 done, 74 s
+  [premium150] 50/132 done, 83 s
+  [premium150] 51/132 done, 84 s
+  [premium150] 52/132 done, 84 s
+  [premium150] 53/132 done, 84 s
+  [premium150] 54/132 done, 84 s
+  [premium150] 55/132 done, 84 s
+  [premium150] 56/132 done, 85 s
+  [premium150] 57/132 done, 94 s
+  [premium150] 58/132 done, 94 s
+  [premium150] 59/132 done, 95 s
+  [premium150] 60/132 done, 95 s
+  [premium150] 61/132 done, 95 s
+  [premium150] 62/132 done, 95 s
+  [premium150] 63/132 done, 96 s
+  [premium150] 64/132 done, 105 s
+  [premium150] 65/132 done, 105 s
+  [premium150] 66/132 done, 105 s
+  [premium150] 67/132 done, 106 s
+  [premium150] 68/132 done, 106 s
+  [premium150] 69/132 done, 106 s
+  [premium150] 70/132 done, 107 s
+  [premium150] 71/132 done, 115 s
+  [premium150] 72/132 done, 115 s
+  [premium150] 73/132 done, 116 s
+  [premium150] 74/132 done, 116 s
+  [premium150] 75/132 done, 116 s
+  [premium150] 76/132 done, 117 s
+  [premium150] 77/132 done, 117 s
+  [premium150] 78/132 done, 127 s
+  [premium150] 79/132 done, 127 s
+  [premium150] 80/132 done, 128 s
+  [premium150] 81/132 done, 128 s
+  [premium150] 82/132 done, 128 s
+  [premium150] 83/132 done, 128 s
+  [premium150] 84/132 done, 129 s
+  [premium150] 85/132 done, 138 s
+  [premium150] 86/132 done, 138 s
+  [premium150] 87/132 done, 139 s
+  [premium150] 88/132 done, 139 s
+  [premium150] 89/132 done, 139 s
+  [premium150] 90/132 done, 140 s
+  [premium150] 91/132 done, 140 s
+  [premium150] 92/132 done, 150 s
+  [premium150] 93/132 done, 150 s
+  [premium150] 94/132 done, 151 s
+  [premium150] 95/132 done, 151 s
+  [premium150] 96/132 done, 151 s
+  [premium150] 97/132 done, 152 s
+  [premium150] 98/132 done, 152 s
+  [premium150] 99/132 done, 160 s
+  [premium150] 100/132 done, 161 s
+  [premium150] 101/132 done, 161 s
+  [premium150] 102/132 done, 161 s
+  [premium150] 103/132 done, 162 s
+  [premium150] 104/132 done, 162 s
+  [premium150] 105/132 done, 162 s
+  [premium150] 106/132 done, 170 s
+  [premium150] 107/132 done, 170 s
+  [premium150] 108/132 done, 170 s
+  [premium150] 109/132 done, 171 s
+  [premium150] 110/132 done, 171 s
+  [premium150] 111/132 done, 172 s
+  [premium150] 112/132 done, 172 s
+  [premium150] 113/132 done, 179 s
+  [premium150] 114/132 done, 180 s
+  [premium150] 115/132 done, 180 s
+  [premium150] 116/132 done, 180 s
+  [premium150] 117/132 done, 181 s
+  [premium150] 118/132 done, 181 s
+  [premium150] 119/132 done, 181 s
+  [premium150] 120/132 done, 188 s
+  [premium150] 121/132 done, 189 s
+  [premium150] 122/132 done, 189 s
+  [premium150] 123/132 done, 189 s
+  [premium150] 124/132 done, 190 s
+  [premium150] 125/132 done, 191 s
+  [premium150] 126/132 done, 191 s
+  [premium150] 127/132 done, 200 s
+  [premium150] 128/132 done, 200 s
+  [premium150] 129/132 done, 200 s
+  [premium150] 130/132 done, 201 s
+  [premium150] 131/132 done, 201 s
+  [premium150] 132/132 done, 201 s
+  [premium150] 132 jobs in 203 s
+== stage eval_premium150 done in 203 s
+== M4.6c stage analyse (6 workers)
+  analysed training
+  analysed premium
+  analysed premium_mid
+  analysed premium150
+  analysed battery
+  analysed natural_cf
+  analysed freeze
+  analysed specialists
+  analysed natural
+  analysed records
+  analysed h2h
+  analysed training_ext
+  analysed premium_ext
+  analysed battery_ext
+  analysed natural_cf_ext
+  analysed natural_ext
+  analysed roleswap
+  analysed roleswap_ext
+== stage analyse done in 22 s
+== M4.6c stage report (6 workers)
+== stage report done in 0 s

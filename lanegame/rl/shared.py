@@ -48,6 +48,9 @@ Opt-in (M4.5c; both default to None, which is the behaviour above, bit for bit):
   * `rollout_stats(roll, finished) -> dict`: diagnostics of each rollout (e.g. action and legal-mask statistics),
     merged into that update's history entry. It is called after the update and must not modify `roll`; it has no
     effect on training.
+  * `collector_cls` (M4.6c): a SharedCollector subclass with the same constructor (e.g. a mixed start distribution);
+    None = `SharedCollector`, unchanged. If the collector defines `describe_starts()`, its result is recorded in
+    final.pt.
 """
 
 from __future__ import annotations
@@ -319,11 +322,12 @@ def _prepare_out_dir(out_dir: str, overwrite: bool) -> None:
 def train_shared(game_cfg: GameConfig, cfg: PPOConfig, scfg: SharedConfig, out_dir: Optional[str] = None,
                  net: Optional[PolicyValueNet] = None, name: str = "shared", verbose: bool = True,
                  overwrite: bool = False, stop_at: Optional[int] = None,
-                 rollout_stats: Optional[Callable[[dict, list], dict]] = None) -> SharedResult:
+                 rollout_stats: Optional[Callable[[dict, list], dict]] = None,
+                 collector_cls: Optional[type] = None) -> SharedResult:
     """PPO with shared-policy self-play and a current / historical mixture (see the module docstring).
     `cfg.total_steps` is the budget in AGENT TRANSITIONS; `cfg.n_envs x cfg.n_steps` environment steps per
-    rollout. With `out_dir`: run.json, history.jsonl, snapshots/ and final.pt. `stop_at` and `rollout_stats`: see the
-    module docstring (opt-in)."""
+    rollout. With `out_dir`: run.json, history.jsonl, snapshots/ and final.pt. `stop_at`, `rollout_stats` and
+    `collector_cls`: see the module docstring (opt-in)."""
     scfg.validate()
     if stop_at is not None and not 0 < stop_at <= cfg.total_steps:
         raise ValueError("stop_at must be in (0, total_steps]")
@@ -363,7 +367,7 @@ def train_shared(game_cfg: GameConfig, cfg: PPOConfig, scfg: SharedConfig, out_d
     if scfg.snapshot_initial:
         snapshot(0)
     sampler = MatchupSampler(pool, scfg.current_fraction)
-    collector = SharedCollector(game_cfg, cfg, sampler, cfg.seed + 1)
+    collector = (collector_cls or SharedCollector)(game_cfg, cfg, sampler, cfg.seed + 1)
     next_snap = scfg.snapshot_every
     t0 = time.perf_counter()
     u = 0
@@ -429,6 +433,7 @@ def train_shared(game_cfg: GameConfig, cfg: PPOConfig, scfg: SharedConfig, out_d
                         {**meta_base, "name": name, "kind": "final", "snapshot_id": f"final@{res.agent_transitions}",
                          "agent_transitions": res.agent_transitions, "env_turns": res.env_turns, "update": u,
                          "steps": res.agent_transitions, "elapsed_s": res.elapsed,
-                         "opponents": sampler.describe(), "time_semantics": collector.times.describe()},
+                         "opponents": sampler.describe(), "time_semantics": collector.times.describe(),
+                         **({"starts": collector.describe_starts()} if hasattr(collector, "describe_starts") else {})},
                         exist_ok=overwrite)
     return res

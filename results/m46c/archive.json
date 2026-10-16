@@ -1,0 +1,123 @@
+{
+ "meta": {
+  "study": "M4.6c",
+  "commit": "2080667d74a84098c63207a3ccbe8055cd90d127",
+  "working_tree_dirty": true,
+  "timestamp": "2026-10-15 18:25:14",
+  "torch": "2.14.1+cpu",
+  "numpy": "2.5.3",
+  "stage": "archive"
+ },
+ "path": "results\\rl\\checkpoints\\m46c\\archive\\train_archive.json.gz",
+ "states": 4800,
+ "dropped_eval_collisions": 0,
+ "by_label": {
+  "natural": 1800,
+  "natural+lead": 1500,
+  "zone": 900,
+  "freeze": 600
+ },
+ "natural": {
+  "natural": {
+   "0": {
+    "states": 300,
+    "games": 30,
+    "turn_median": 159.0
+   },
+   "1": {
+    "states": 300,
+    "games": 30,
+    "turn_median": 155.5
+   },
+   "2": {
+    "states": 300,
+    "games": 30,
+    "turn_median": 145.5
+   },
+   "3": {
+    "states": 300,
+    "games": 30,
+    "turn_median": 153.5
+   },
+   "4": {
+    "states": 300,
+    "games": 30,
+    "turn_median": 144.0
+   },
+   "5": {
+    "states": 300,
+    "games": 30,
+    "turn_median": 146.5
+   }
+  },
+  "natural+lead": {
+   "0": {
+    "states": 250,
+    "games": 25
+   },
+   "1": {
+    "states": 250,
+    "games": 25
+   },
+   "2": {
+    "states": 250,
+    "games": 25
+   },
+   "3": {
+    "states": 250,
+    "games": 25
+   },
+   "4": {
+    "states": 250,
+    "games": 25
+   },
+   "5": {
+    "states": 250,
+    "games": 25
+   }
+  }
+ },
+ "lead_quantiles": {
+  "0.1": 2.608,
+  "0.5": 7.640000000000001,
+  "0.9": 24.531000000000002
+ },
+ "zone_levels": [
+  0,
+  0,
+  0,
+  53,
+  64,
+  50,
+  60,
+  60,
+  56,
+  60,
+  53,
+  57,
+  58,
+  56,
+  51,
+  60,
+  44,
+  58,
+  60
+ ],
+ "zone_lead_zero_share": 0.24444444444444444,
+ "freeze_who": {
+  "freezer": 198,
+  "breaker": 199,
+  "none": 203
+ },
+ "elapsed_s": 20.33597159991041,
+ "check": {
+  "baseline": {
+   "checked": 400,
+   "ok": 400
+  },
+  "C1": {
+   "checked": 400,
+   "ok": 400
+  }
+ }
+}

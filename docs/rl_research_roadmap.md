@@ -1,10 +1,10 @@
 # RL Research Roadmap: From Exact Stochastic Games to Multi-Agent Reinforcement Learning
 
-> **This is the canonical project roadmap.** The summary below (updated 2026-10-15, M4.5c complete) states where the
+> **This is the canonical project roadmap.** The summary below (updated 2026-10-15, M4.6c pilot complete) states where the
 > project is and what comes next. Sections A–K are the original plan written before M1 (kept unchanged for the record;
 > its milestone list was later revised, see the notes in section D). Sections L–AM record each milestone's outcome in
 > the order it happened, with links to the full reports (M4.5b: §AJ; M4.5c pilot: §AK; M4.5c training: §AL; M4.5c
-> completion: §AM). The README's roadmap table and `docs/README.md`
+> completion: §AM; M4.6a–b: §AN; M4.6c: §AO). The README's roadmap table and `docs/README.md`
 > point here.
 
 ## Roadmap summary (current position, 2026-10-15)
@@ -89,7 +89,7 @@ extensions, not part of the original plan.
 | **implemented and tested** | the exact game and its solver (legacy configurations bit-identical, pinned); `LaneEnv` and the PettingZoo adapter; the M4 ruleset and every preset up to `m4_four_actions_econ_aggro()`; masked PPO, GAE, shared-policy self-play, checkpoints with verified digests; the discounted evaluator with its guaranteed tail bound; counterfactual branching and action audits; the M4.3b (three-action) and M4.4 (four-action) diagnostic packages; the visual debugger; the M4.4b trained checkpoints (3 economies × 3 seeds at 2,048,000 and 4,096,000 transitions, git-ignored) and their supplementary analysis stages; the M4.4c multi-turn counterfactual package (`experiments/rl/m44c`: strategic plans, paired multi-turn engine, opponent styles, resumable runs); the M4.5a unified positional mechanics (`positional.py`; the Ward, minion-targeting, trade-budget and reach rules; the 90-entry observation; the viewer's W node; `experiments/m45a` demonstrations and smoke study); the M4.5b calibration package (`experiments/m45b`: paired engine and ledger, exact one-turn enumeration, contingent strategies, freeze / trade / Vision / zoning / matrix / timing studies, sensitivity, holdout validation, learned reference, recordings) and the opt-in farm-spot rule `"last_front"` |
 | **experimental candidates** (opt-in, not defaults) | `m45_calibrated()` (M4.5b; the candidate for M4.5c); `m45_unified()` (M4.5a revision 2, the M4.5b baseline) and `m45_unified_r1()`; `m4_four_actions()`, `m4_four_actions_econ()`, `m4_four_actions_econ_aggro()` (the M4.4 comparison); opt-in fields `xp_reward_weight`, `death_turns_by_level`, `terminal_rule = "final_plate"` (not recommended); the earlier experiments `m4_continuous()`, `m4_emergent()` |
 | **adopted research baselines** | objective: the discounted gold lead, γ = 0.99, continuing time, no terminal state; reference preset of the living [mathematical reference](m4/laning_game_mathematical_reference.md): `m4_lasthit()`; PPO settings: the M4.3b `ent03` condition (entropy 0.03, 100% current-policy shared self-play, 2,048,000 transitions, 16 × 128-turn segments, 512-turn bootstrapped games); evaluation: paired seats, E1 from s0, W = 1000 headline; candidate for substantial training: `m4_four_actions_econ_aggro()` with `m4_four_actions()` as the control and `m4_four_actions_econ()` as the dive control |
-| **underway** | M4.6 design review (§AN): M4.6a diagnosis done; M4.6b investment audit and candidate screen done, awaiting review (recommendation: retain the current curve for now, settle the failed criteria D4 / D2 before a C1 pilot). M5 adaptive-opponent work remains proposed |
+| **underway** | M4.6 design review (§AN, §AO): M4.6a diagnosis and M4.6b investment audit done; M4.6c C1-versus-baseline training pilot done, awaiting review (primary inconclusive at 8.192M, +0.09 ± 0.11, ×1.32; no side-effect flag; recommendation: confirm the primary with six more matched pairs before choosing). M5 adaptive-opponent work remains proposed |
 | **proposed** | M5, M6 (below) |
 | **unresolved questions** | Answered by M4.4c (§AH): the interrupted Recall is a rational guessing game (Recall is the best default; a small ≈ 0.1-resource conditional gap); freezes pay only against opponents that concede them; the stronger side does zone, through kills and forced Recalls; Vision-first does not pay in typical (short) sieges; Last Hit / Thin / Slow Push coincide in 68–77% of turns. Open: How exploitable are four-action policies (no four-action attacker yet)? How much value do they leave against conceding / passive opponents (+0.4 to +1.0 measured in probes)? Does Vision-first pay in long sieges (positive trend, unresolved)? **Design decisions after review**: Vision, combat-wave coupling, minion aggro and the XP range were revised together in M4.5a (§AI), to be calibrated in M4.5b; still open: whether to keep three non-Shove wave actions that coincide in most states, whether a champion may step into its own tower cell by choice. **Answered by M4.5b** (§AJ): Ward value is situational and contestable; early trades into big waves cost HP with retaliation from the exchange tick; freezes held with Thin + Trade pay conditionally (mid- and late game; punishing walk-ups when stronger); Safe costs 0.15–0.56 farm per turn and threat-only zoning exists near the weaker side's tower; scripted restricted games are Shove-centred, which learned policies beat. **Open after M4.5b**: accept the 21% mid-to-late minion share or adopt `minion_damage_growth = 1.12` after fresh validation; whether PPO on the candidate learns freezes, wards and selective trading (M4.5c). Structural limits documented earlier remain: contact geometry at the tower, ganks independent of the opponent, a weak XP economy on a five-cell lane. The M4.3c objective / termination proposal remains undecided. |
 
@@ -2027,3 +2027,40 @@ No mechanics, defaults or checkpoints changed; no general training campaign.
   acceptable, or should combat be decoupled from wave capacity and Pressure? D2 also needs a sharper
   early-decisiveness test. If the review accepts the costs, pilot C1, with the requirements in the report's §9.
   Awaiting review.
+
+## AO. M4.6c C1-versus-baseline shared-policy PPO pilot (2026-10-15)
+
+Report: [M4.6c](m4/m4_6/m4_6c_report.md); protocol [m4_6c_preregistration.md](m4/m4_6/m4_6c_preregistration.md)
+(frozen before training, three dated amendments). Code `lanegame/experiments/rl/m46c/`, tests `tests/test_m46c.py`;
+one opt-in library argument (`train_shared(collector_cls=...)`, default bit-identical). `GameConfig.m45_calibrated()`
+unchanged; C1 stays an experimental opt-in.
+
+**Design.** The six 16.384M M4.5c finals were continued in both arms (six matched pairs), and the objective was
+verified unchanged.
+- **Budgets:** 4,096,000 transitions, then the pre-registered matched extension to 8,192,000, which fired.
+- **Self-play:** 100% current-policy shared self-play.
+- **Starts:** 25% of transitions from a shared gold-defined archive (natural, purchased-lead, zoning and freeze states;
+  both roles).
+- **Evaluation:** held-out cells, 50-turn horizon.
+
+**Findings.**
+- **The pre-adaptation effect replicates.** M4.6b's mid-game ×1.5–1.9 premium is reproduced before adaptation.
+- **Criterion A.**
+  - At 4.096M adaptation had shrunk it: the registered mid +8 G50 difference was +0.06 ± 0.14, ×1.21, not met. The
+    extension fired.
+  - At 8.192M it is +0.09 ± 0.11, ×1.32, 5/6 seeds: inconclusive. Mid +16 is +0.34 ± 0.17 (×1.76, 6/6).
+- **Where the effect is.**
+  - It lies in the mechanics: C1-trained and baseline-trained policies play C1 equally well.
+  - There is no immediate early effect and no late effect at 50 turns.
+- **Natural play** is within ±10%, apart from notes on Ward use and late deaths.
+  - Late wave capacity is +4.2 HP, which only makes late guarding costlier.
+  - Natural leads stay small and are never decisive.
+- **The weaker side** keeps its options: no forced response beats its policy, and it does not die more.
+- **Freezes** are unchanged; they are not an investment-curve question.
+- **Head to head**, the adapted policies are interchangeable across curves.
+- **Learning:** both arms improve over their starts (+0.4 to +0.5 at 8.192M). Both critics still undervalue early leads
+  by about 1 resource.
+
+**Recommendation.** Option 3: confirm the primary with six more matched pairs at 8.192M, then choose C1 if criterion A
+is met. Either curve is coherent if the user decides now. Awaiting review.
+

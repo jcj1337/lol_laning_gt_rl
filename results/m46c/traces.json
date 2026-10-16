@@ -1,0 +1,16847 @@
+{
+ "meta": {
+  "study": "M4.6c",
+  "commit": "2080667d74a84098c63207a3ccbe8055cd90d127",
+  "working_tree_dirty": true,
+  "timestamp": "2026-10-16 00:22:58",
+  "torch": "2.14.1+cpu",
+  "numpy": "2.5.3",
+  "stage": "traces",
+  "label": "EXPLORATORY",
+  "policies": "ext/"
+ },
+ "traces": {
+  "mid neutral, A +16 invested|baseline|s0|t0": [
+   {
+    "turn": 1,
+    "A": "SH-T",
+    "B": "SH-Y",
+    "hp": [
+     0.98,
+     0.82
+    ],
+    "cells": [
+     0,
+     -1
+    ],
+    "conn": [
+     true,
+     false
+    ],
+    "died": [
+     false,
+     false
+    ],
+    "recall": [
+     false,
+     false
+    ],
+    "held": [
+     false,
+     false
+    ],
+    "S": [
+     58.0,
+     42.0
+    ],
+    "C": [
+     15,
+     14
+    ],
+    "crash": [
+     0,
+     0
+    ],
+    "lead_A": -0.585
+   },
+   {
+    "turn": 2,
+    "A": "TN-Y",
+    "B": "SH-Y",
+    "hp": [
+     0.98,
+     0.82
+    ],
+    "cells": [
+     -1,
+     -1
+    ],
+    "conn": [
+     false,
+     false
+    ],
+    "died": [
+     false,
+     false
+    ],
+    "recall": [
+     false,
+     false
+    ],
+    "held": [
+     false,
+     false
+    ],
+    "S": [
+     58.0,
+     42.0
+    ],
+    "C": [
+     15,
+     14
+    ],
+    "crash": [
+     0,
+     0
+    ],
+    "lead_A": -0.247
+   },
+   {
+    "turn": 3,
+    "A": "SH-S",
+    "B": "SL-Y",
+    "hp": [
+     0.98,
+     0.82
+    ],
+    "cells": [
+     -2,
+     -2
+    ],
+    "conn": [
+     false,
+     false
+    ],
+    "died": [
+     false,
+     false
+    ],
+    "recall": [
+     false,
+     false
+    ],
+    "held": [
+     false,
+     false
+    ],
+    "S": [
+     58.0,
+     42.0
+    ],
+    "C": [
+     15,
+     14
+    ],
+    "crash": [
+     0,
+     0
+    ],
+    "lead_A": -0.247
+   },
+   {
+    "turn": 4,
+    "A": "SL-T",
+    "B": "TN-H",
+    "hp": [
+     0.97,
+     0.08
+    ],
+    "cells": [
+     -1,
+     0
+    ],
+    "conn": [
+     true,
+     false
+    ],
+    "died": [
+     false,
+     false
+    ],
+    "recall": [
+     false,
+     false
+    ],
+    "held": [
+     false,
+     false
+    ],
+    "S": [
+     58.0,
+     42.0
+    ],
+    "C": [
+     15,
+     14
+    ],
+    "crash": [
+     0,
+     0
+    ],
+    "lead_A": -0.27
+   },
+   {
+    "turn": 5,
+    "A": "SL-H",
+    "B": "TN-S",
+    "hp": [
+     0.97,
+     0.08
+    ],
+    "cells": [
+     0,
+     -1
+    ],
+    "conn": [
+     false,
+     false
+    ],
+    "died": [
+     false,
+     false
+    ],
+    "recall": [
+     false,
+     false
+    ],
+    "held": [
+     false,
+     false
+    ],
+    "S": [
+     58.0,
+     42.0
+    ],
+    "C": [
+     15,
+     14
+    ],
+    "crash": [
+     0,
+     0
+    ],
+    "lead_A": 0.018
+   },
+   {
+    "turn": 6,
+    "A": "TN-Y",
+    "B": "LH-S",
+    "hp": [
+     0.97,
+     0.08
+    ],
+    "cells": [
+     -1,
+     -1
+    ],
+    "conn": [
+     false,
+     false
+    ],
+    "died": [
+     false,
+     false
+    ],
+    "recall": [
+     false,
+     false
+    ],
+    "held": [
+     false,
+     false
+    ],
+    "S": [
+     58.0,
+     42.0
+    ],
+    "C": [
+     15,
+     14
+    ],
+    "crash": [
+     0,
+     0
+    ],
+    "lead_A": 0.318
+   },
+   {
+    "turn": 7,
+    "A": "SL-T",
+    "B": "SL-S",
+    "hp": [
+     0.97,
+     0.08
+    ],
+    "cells": [
+     0,
+     -2
+    ],
+    "conn": [
+     false,
+     false
+    ],
+    "died": [
+     false,
+     false
+    ],
+    "recall": [
+     false,
+     false
+    ],
+    "held": [
+     false,
+     false
+    ],
+    "S": [
+     58.0,
+     42.0
+    ],
+    "C": [
+     15,
+     14
+    ],
+    "crash": [
+     0,
+     0
+    ],
+    "lead_A": 0.655
+   },
+   {
+    "turn": 8,
+    "A": "SL-T",
+    "B": "TN-S",
+    "hp": [
+     0.97,
+     0.08
+    ],
+    "cells": [
+     0,
+     -2
+    ],
+    "conn": [
+     false,
+     false
+    ],
+    "died": [
+     false,
+     false
+    ],
+    "recall": [
+     false,
+     false
+    ],
+    "held": [
+     false,
+     false
+    ],
+    "S": [
+     58.0,
+     42.0
+    ],
+    "C": [
+     15,
+     14
+    ],
+    "crash": [
+     0,
+     0
+    ],
+    "lead_A": 1.218
+   },
+   {
+    "turn": 9,
+    "A": "LH-T",
+    "B": "SL-S",
+    "hp": [
+     0.97,
+     0.08
+    ],
+    "cells": [
+     0,
+     -2
+    ],
+    "conn": [
+     false,
+     false
+    ],
+    "died": [
+     false,
+     false
+    ],
+    "recall": [
+     false,
+     false
+    ],
+    "held": [
+     false,
+     false
+    ],
+    "S": [
+     58.0,
+     42.0
+    ],
+    "C": [
+     15,
+     14
+    ],
+    "crash": [
+     0,
+     0
+    ],
+    "lead_A": 1.667
+   },
+   {
+    "turn": 10,
+    "A": "SL-T",
+    "B": "SL-S",
+    "hp": [
+     0.97,
+     0.08
+    ],
+    "cells": [
+     0,
+     -2
+    ],
+    "conn": [
+     false,
+     false
+    ],
+    "died": [
+     false,
+     false
+    ],
+    "recall": [
+     false,
+     false
+    ],
+    "held": [
+     false,
+     false
+    ],
+    "S": [
+     58.0,
+     42.0
+    ],
+    "C": [
+     15,
+     14
+    ],
+    "crash": [
+     0,
+     0
+    ],
+    "lead_A": 2.343
+   },
+   {
+    "turn": 11,
+    "A": "LH-T",
+    "B": "TN-S",
+    "hp": [
+     0.97,
+     0.08
+    ],
+    "cells": [
+     0,
+     -2
+    ],
+    "conn": [
+     false,
+     false
+    ],
+    "died": [
+     false,
+     false
+    ],
+    "recall": [
+     false,
+     false
+    ],
+    "held": [
+     false,
+     false
+    ],
+    "S": [
+     58.0,
+     42.0
+    ],
+    "C": [
+     15,
+     14
+    ],
+    "crash": [
+     0,
+     0
+    ],
+    "lead_A": 2.905
+   },
+   {
+    "turn": 12,
+    "A": "SL-T",
+    "B": "SL-S",
+    "hp": [
+     0.97,
+     0.08
+    ],
+    "cells": [
+     0,
+     -2
+    ],
+    "conn": [
+     false,
+     false
+    ],
+    "died": [
+     false,
+     false
+    ],
+    "recall": [
+     false,
+     false
+    ],
+    "held": [
+     false,
+     false
+    ],
+    "S": [
+     58.0,
+     42.0
+    ],
+    "C": [
+     15,
+     14
+    ],
+    "crash": [
+     0,
+     0
+    ],
+    "lead_A": 3.693
+   },
+   {
+    "turn": 13,
+    "A": "TN-H",
+    "B": "LH-R",
+    "hp": [
+     0.97,
+     null
+    ],
+    "cells": [
+     1,
+     -2
+    ],
+    "conn": [
+     false,
+     false
+    ],
+    "died": [
+     false,
+     false
+    ],
+    "recall": [
+     false,
+     true
+    ],
+    "held": [
+     false,
+     true
+    ],
+    "S": [
+     58.0,
+     42.0
+    ],
+    "C": [
+     16,
+     14
+    ],
+    "crash": [
+     0,
+     0
+    ],
+    "lead_A": 4.255
+   },
+   {
+    "turn": 14,
+    "A": "SH-H",
+    "B": "ABSENT",
+    "hp": [
+     0.97,
+     1.0
+    ],
+    "cells": [
+     1,
+     -2
+    ],
+    "conn": [
+     false,
+     false
+    ],
+    "died": [
+     false,
+     false
+    ],
+    "recall": [
+     false,
+     false
+    ],
+    "held": [
+     false,
+     false
+    ],
+    "S": [
+     58.0,
+     44.1125
+    ],
+    "C": [
+     16,
+     14
+    ],
+    "crash": [
+     22,
+     0
+    ],
+    "lead_A": 4.818
+   },
+   {
+    "turn": 15,
+    "A": "SH-H+P",
+    "B": "SH-Y",
+    "hp": [
+     0.97,
+     1.0
+    ],
+    "cells": [
+     2,
+     -2
+    ],
+    "conn": [
+     false,
+     false
+    ],
+    "died": [
+     false,
+     false
+    ],
+    "recall": [
+     false,
+     false
+    ],
+    "held": [
+     false,
+     false
+    ],
+    "S": [
+     58.0,
+     44.1125
+    ],
+    "C": [
+     16,
+     14
+    ],
+    "crash": [
+     8,
+     0
+    ],
+    "lead_A": 4.618
+   },
+   {
+    "turn": 16,
+    "A": "TN-H+P",
+    "B": "SH-Y",
+    "hp": [
+     0.97,
+     1.0
+    ],
+    "cells": [
+     2,
+     -2
+    ],
+    "conn": [
+     false,
+     false
+    ],
+    "died": [
+     false,
+     false
+    ],
+    "recall": [
+     false,
+     false
+    ],
+    "held": [
+     false,
+     false
+    ],
+    "S": [
+     58.0,
+     44.1125
+    ],
+    "C": [
+     16,
+     14
+    ],
+    "crash": [
+     0,
+     0
+    ],
+    "lead_A": 3.718
+   },
+   {
+    "turn": 17,
+    "A": "TN-Y",
+    "B": "SH-H",
+    "hp": [
+     0.97,
+     1.0
+    ],
+    "cells": [
+     0,
+     -2
+    ],
+    "conn": [
+     false,
+     false
+    ],
+    "died": [
+     false,
+     false
+    ],
+    "recall": [
+     false,
+     false
+    ],
+    "held": [
+     false,
+     false
+    ],
+    "S": [
+     58.0,
+     44.1125
+    ],
+    "C": [
+     16,
+     15
+    ],
+    "crash": [
+     0,
+     0
+    ],
+    "lead_A": 2.818
+   },
+   {
+    "turn": 18,
+    "A": "TN-S",
+    "B": "LH-T",
+    "hp": [
+     0.97,
+     1.0
+    ],
+    "cells": [
+     -2,
+     0
+    ],
+    "conn": [
+     false,
+     false
+    ],
+    "died": [
+     false,
+     false
+    ],
+    "recall": [
+     false,
+     false
+    ],
+    "held": [
+     false,
+     false
+    ],
+    "S": [
+     58.0,
+     44.1125
+    ],
+    "C": [
+     16,
+     15
+    ],
+    "crash": [
+     0,
+     0
+    ],
+    "lead_A": 2.593
+   },
+   {
+    "turn": 19,
+    "A": "LH-T",
+    "B": "SL-Y",
+    "hp": [
+     0.79,
+     1.0
+    ],
+    "cells": [
+     0,
+     -2
+    ],
+    "conn": [
+     false,
+     false
+    ],
+    "died": [
+     false,
+     false
+    ],
+    "recall": [
+     false,
+     false
+    ],
+    "held": [
+     false,
+     false
+    ],
+    "S": [
+     58.0,
+     44.1125
+    ],
+    "C": [
+     16,
+     15
+    ],
+    "crash": [
+     0,
+     0
+    ],
+    "lead_A": 2.768
+   },
+   {
+    "turn": 20,
+    "A": "SH-Y",
+    "B": "SL-T",
+    "hp": [
+     0.7,
+     1.0
+    ],
+    "cells": [
+     -2,
+     0
+    ],
+    "conn": [
+     false,
+     false
+    ],
+    "died": [
+     false,
+     false
+    ],
+    "recall": [
+     false,
+     false
+    ],
+    "held": [
+     false,
+     false
+    ],
+    "S": [
+     58.0,
+     44.1125
+    ],
+    "C": [
+     16,
+     15
+    ],
+    "crash": [
+     0,
+     0
+    ],
+    "lead_A": 2.468
+   },
+   {
+    "turn": 21,
+    "A": "SL-T",
+    "B": "LH-H",
+    "hp": [
+     0.69,
+     0.83
+    ],
+    "cells": [
+     -1,
+     0
+    ],
+    "conn": [
+     true,
+     false
+    ],
+    "died": [
+     false,
+     false
+    ],
+    "recall": [
+     false,
+     false
+    ],
+    "held": [
+     false,
+     false
+    ],
+    "S": [
+     58.0,
+     44.1125
+    ],
+    "C": [
+     16,
+     15
+    ],
+    "crash": [
+     0,
+     0
+    ],
+    "lead_A": 2.895
+   },
+   {
+    "turn": 22,
+    "A": "SH-Y",
+    "B": "SH-Y",
+    "hp": [
+     0.69,
+     0.83
+    ],
+    "cells": [
+     -1,
+     -1
+    ],
+    "conn": [
+     false,
+     false
+    ],
+    "died": [
+     false,
+     false
+    ],
+    "recall": [
+     false,
+     false
+    ],
+    "held": [
+     false,
+     false
+    ],
+    "S": [
+     58.0,
+     44.1125
+    ],
+    "C": [
+     16,
+     15
+    ],
+    "crash": [
+     0,
+     0
+    ],
+    "lead_A": 2.558
+   },
+   {
+    "turn": 23,
+    "A": "SH-S",
+    "B": "LH-S",
+    "hp": [
+     0.69,
+     0.83
+    ],
+    "cells": [
+     -2,
+     -2
+    ],
+    "conn": [
+     false,
+     false
+    ],
+    "died": [
+     false,
+     false
+    ],
+    "recall": [
+     false,
+     false
+    ],
+    "held": [
+     false,
+     false
+    ],
+    "S": [
+     58.0,
+     44.1125
+    ],
+    "C": [
+     16,
+     15
+    ],
+    "crash": [
+     0,
+     0
+    ],
+    "lead_A": 2.558
+   },
+   {
+    "turn": 24,
+    "A": "LH-R",
+    "B": "SL-S",
+    "hp": [
+     null,
+     0.83
+    ],
+    "cells": [
+     -2,
+     -1
+    ],
+    "conn": [
+     false,
+     false
+    ],
+    "died": [
+     false,
+     false
+    ],
+    "recall": [
+     true,
+     false
+    ],
+    "held": [
+     false,
+     false
+    ],
+    "S": [
+     58.0,
+     44.1125
+    ],
+    "C": [
+     16,
+     15
+    ],
+    "crash": [
+     0,
+     0
+    ],
+    "lead_A": 2.508
+   },
+   {
+    "turn": 25,
+    "A": "ABSENT",
+    "B": "LH-Y",
+    "hp": [
+     1.0,
+     0.83
+    ],
+    "cells": [
+     -2,
+     -1
+    ],
+    "conn": [
+     false,
+     false
+    ],
+    "died": [
+     false,
+     false
+    ],
+    "recall": [
+     false,
+     false
+    ],
+    "held": [
+     false,
+     false
+    ],
+    "S": [
+     69.2075,
+     44.1125
+    ],
+    "C": [
+     16,
+     15
+    ],
+    "crash": [
+     0,
+     0
+    ],
+    "lead_A": 2.283
+   },
+   {
+    "turn": 26,
+    "A": "SH-T",
+    "B": "SH-Y",
+    "hp": [
+     1.0,
+     0.83
+    ],
+    "cells": [
+     0,
+     -2
+    ],
+    "conn": [
+     false,
+     false
+    ],
+    "died": [
+     false,
+     false
+    ],
+    "recall": [
+     false,
+     false
+    ],
+    "held": [
+     false,
+     false
+    ],
+    "S": [
+     69.2075,
+     44.1125
+    ],
+    "C": [
+     16,
+     15
+    ],
+    "crash": [
+     0,
+     0
+    ],
+    "lead_A": 3.758
+   },
+   {
+    "turn": 27,
+    "A": "TN-H",
+    "B": "SH-Y",
+    "hp": [
+     1.0,
+     0.83
+    ],
+    "cells": [
+     1,
+     -2
+    ],
+    "conn": [
+     false,
+     false
+    ],
+    "died": [
+     false,
+     false
+    ],
+    "recall": [
+     false,
+     false
+    ],
+    "held": [
+     false,
+     false
+    ],
+    "S": [
+     69.2075,
+     44.1125
+    ],
+    "C": [
+     17,
+     15
+    ],
+    "crash": [
+     3,
+     0
+    ],
+    "lead_A": 2.558
+   },
+   {
+    "turn": 28,
+    "A": "SL-S",
+    "B": "TN-T",
+    "hp": [
+     1.0,
+     0.83
+    ],
+    "cells": [
+     -1,
+     0
+    ],
+    "conn": [
+     false,
+     true
+    ],
+    "died": [
+     false,
+     false
+    ],
+    "recall": [
+     false,
+     false
+    ],
+    "held": [
+     false,
+     false
+    ],
+    "S": [
+     69.2075,
+     44.1125
+    ],
+    "C": [
+     17,
+     16
+    ],
+    "crash": [
+     0,
+     0
+    ],
+    "lead_A": 2.378
+   },
+   {
+    "turn": 29,
+    "A": "SH-T",
+    "B": "TN-Y",
+    "hp": [
+     0.99,
+     0.66
+    ],
+    "cells": [
+     0,
+     -1
+    ],
+    "conn": [
+     true,
+     false
+    ],
+    "died": [
+     false,
+     false
+    ],
+    "recall": [
+     false,
+     false
+    ],
+    "held": [
+     false,
+     false
+    ],
+    "S": [
+     69.2075,
+     44.1125
+    ],
+    "C": [
+     17,
+     16
+    ],
+    "crash": [
+     0,
+     0
+    ],
+    "lead_A": 2.985
+   },
+   {
+    "turn": 30,
+    "A": "TN-T",
+    "B": "SH-H",
+    "hp": [
+     0.72,
+     0.48
+    ],
+    "cells": [
+     0,
+     0
+    ],
+    "conn": [
+     true,
+     false
+    ],
+    "died": [
+     false,
+     false
+    ],
+    "recall": [
+     false,
+     false
+    ],
+    "held": [
+     false,
+     false
+    ],
+    "S": [
+     69.2075,
+     44.1125
+    ],
+    "C": [
+     17,
+     16
+    ],
+    "crash": [
+     0,
+     0
+    ],
+    "lead_A": 1.793
+   }
+  ],
+  "mid neutral, A +16 invested|C1|s0|t0": [
+   {
+    "turn": 1,
+    "A": "SH-Y",
+    "B": "SH-Y",
+    "hp": [
+     1.0,
+     1.0
+    ],
+    "cells": [
+     -1,
+     -1
+    ],
+    "conn": [
+     false,
+     false
+    ],
+    "died": [
+     false,
+     false
+    ],
+    "recall": [
+     false,
+     false
+    ],
+    "held": [
+     false,
+     false
+    ],
+    "S": [
+     58.0,
+     42.0
+    ],
+    "C": [
+     16,
+     14
+    ],
+    "crash": [
+     0,
+     0
+    ],
+    "lead_A": 0.0
+   },
+   {
+    "turn": 2,
+    "A": "SH-S",
+    "B": "LH-T",
+    "hp": [
+     1.0,
+     1.0
+    ],
+    "cells": [
+     -2,
+     1
+    ],
+    "conn": [
+     false,
+     false
+    ],
+    "died": [
+     false,
+     false
+    ],
+    "recall": [
+     false,
+     false
+    ],
+    "held": [
+     false,
+     false
+    ],
+    "S": [
+     58.0,
+     42.0
+    ],
+    "C": [
+     16,
+     14
+    ],
+    "crash": [
+     0,
+     0
+    ],
+    "lead_A": 0.0
+   },
+   {
+    "turn": 3,
+    "A": "LH-S",
+    "B": "SL-Y",
+    "hp": [
+     1.0,
+     0.71
+    ],
+    "cells": [
+     -2,
+     -1
+    ],
+    "conn": [
+     false,
+     false
+    ],
+    "died": [
+     false,
+     false
+    ],
+    "recall": [
+     false,
+     false
+    ],
+    "held": [
+     false,
+     false
+    ],
+    "S": [
+     58.0,
+     42.0
+    ],
+    "C": [
+     16,
+     14
+    ],
+    "crash": [
+     0,
+     0
+    ],
+    "lead_A": 0.0
+   },
+   {
+    "turn": 4,
+    "A": "SL-T",
+    "B": "TN-H",
+    "hp": [
+     0.99,
+     null
+    ],
+    "cells": [
+     -1,
+     0
+    ],
+    "conn": [
+     true,
+     false
+    ],
+    "died": [
+     false,
+     true
+    ],
+    "recall": [
+     false,
+     false
+    ],
+    "held": [
+     false,
+     false
+    ],
+    "S": [
+     58.0,
+     42.0
+    ],
+    "C": [
+     16,
+     14
+    ],
+    "crash": [
+     0,
+     0
+    ],
+    "lead_A": 1.978
+   },
+   {
+    "turn": 5,
+    "A": "SH-H",
+    "B": "ABSENT",
+    "hp": [
+     0.99,
+     null
+    ],
+    "cells": [
+     1,
+     -2
+    ],
+    "conn": [
+     false,
+     false
+    ],
+    "died": [
+     false,
+     false
+    ],
+    "recall": [
+     false,
+     false
+    ],
+    "held": [
+     false,
+     false
+    ],
+    "S": [
+     58.0,
+     42.0
+    ],
+    "C": [
+     16,
+     14
+    ],
+    "crash": [
+     0,
+     0
+    ],
+    "lead_A": 3.665
+   },
+   {
+    "turn": 6,
+    "A": "LH-H",
+    "B": "ABSENT",
+    "hp": [
+     0.99,
+     null
+    ],
+    "cells": [
+     1,
+     -2
+    ],
+    "conn": [
+     false,
+     false
+    ],
+    "died": [
+     false,
+     false
+    ],
+    "recall": [
+     false,
+     false
+    ],
+    "held": [
+     false,
+     false
+    ],
+    "S": [
+     58.0,
+     42.0
+    ],
+    "C": [
+     16,
+     14
+    ],
+    "crash": [
+     5,
+     0
+    ],
+    "lead_A": 3.665
+   },
+   {
+    "turn": 7,
+    "A": "SH-H+P",
+    "B": "ABSENT",
+    "hp": [
+     0.99,
+     null
+    ],
+    "cells": [
+     2,
+     -2
+    ],
+    "conn": [
+     false,
+     false
+    ],
+    "died": [
+     false,
+     false
+    ],
+    "recall": [
+     false,
+     false
+    ],
+    "held": [
+     false,
+     false
+    ],
+    "S": [
+     58.0,
+     42.0
+    ],
+    "C": [
+     16,
+     14
+    ],
+    "crash": [
+     8,
+     0
+    ],
+    "lead_A": 4.565
+   },
+   {
+    "turn": 8,
+    "A": "TN-H+P",
+    "B": "ABSENT",
+    "hp": [
+     0.99,
+     null
+    ],
+    "cells": [
+     2,
+     -2
+    ],
+    "conn": [
+     false,
+     false
+    ],
+    "died": [
+     false,
+     false
+    ],
+    "recall": [
+     false,
+     false
+    ],
+    "held": [
+     false,
+     false
+    ],
+    "S": [
+     58.0,
+     42.0
+    ],
+    "C": [
+     16,
+     14
+    ],
+    "crash": [
+     0,
+     0
+    ],
+    "lead_A": 5.565
+   },
+   {
+    "turn": 9,
+    "A": "SH-H+P",
+    "B": "ABSENT",
+    "hp": [
+     0.99,
+     1.0
+    ],
+    "cells": [
+     2,
+     -2
+    ],
+    "conn": [
+     false,
+     false
+    ],
+    "died": [
+     false,
+     false
+    ],
+    "recall": [
+     false,
+     false
+    ],
+    "held": [
+     false,
+     false
+    ],
+    "S": [
+     58.0,
+     43.9125
+    ],
+    "C": [
+     16,
+     14
+    ],
+    "crash": [
+     8,
+     0
+    ],
+    "lead_A": 7.465
+   },
+   {
+    "turn": 10,
+    "A": "SL-H+P",
+    "B": "SH-Y",
+    "hp": [
+     0.99,
+     1.0
+    ],
+    "cells": [
+     2,
+     -2
+    ],
+    "conn": [
+     false,
+     false
+    ],
+    "died": [
+     false,
+     false
+    ],
+    "recall": [
+     false,
+     false
+    ],
+    "held": [
+     false,
+     false
+    ],
+    "S": [
+     58.0,
+     43.9125
+    ],
+    "C": [
+     16,
+     15
+    ],
+    "crash": [
+     0,
+     0
+    ],
+    "lead_A": 7.665
+   },
+   {
+    "turn": 11,
+    "A": "TN-H",
+    "B": "LH-T",
+    "hp": [
+     0.84,
+     0.99
+    ],
+    "cells": [
+     1,
+     -1
+    ],
+    "conn": [
+     false,
+     true
+    ],
+    "died": [
+     false,
+     false
+    ],
+    "recall": [
+     false,
+     false
+    ],
+    "held": [
+     false,
+     false
+    ],
+    "S": [
+     58.0,
+     43.9125
+    ],
+    "C": [
+     16,
+     15
+    ],
+    "crash": [
+     7,
+     0
+    ],
+    "lead_A": 7.495
+   },
+   {
+    "turn": 12,
+    "A": "SL-S",
+    "B": "SL-S",
+    "hp": [
+     0.84,
+     0.99
+    ],
+    "cells": [
+     -1,
+     -2
+    ],
+    "conn": [
+     false,
+     false
+    ],
+    "died": [
+     false,
+     false
+    ],
+    "recall": [
+     false,
+     false
+    ],
+    "held": [
+     false,
+     false
+    ],
+    "S": [
+     58.0,
+     43.9125
+    ],
+    "C": [
+     16,
+     15
+    ],
+    "crash": [
+     0,
+     0
+    ],
+    "lead_A": 6.895
+   },
+   {
+    "turn": 13,
+    "A": "SH-Y",
+    "B": "LH-T",
+    "hp": [
+     0.84,
+     0.99
+    ],
+    "cells": [
+     -1,
+     -1
+    ],
+    "conn": [
+     false,
+     false
+    ],
+    "died": [
+     false,
+     false
+    ],
+    "recall": [
+     false,
+     false
+    ],
+    "held": [
+     false,
+     true
+    ],
+    "S": [
+     58.0,
+     43.9125
+    ],
+    "C": [
+     16,
+     15
+    ],
+    "crash": [
+     0,
+     0
+    ],
+    "lead_A": 6.583
+   },
+   {
+    "turn": 14,
+    "A": "TN-Y",
+    "B": "SL-T",
+    "hp": [
+     0.84,
+     0.99
+    ],
+    "cells": [
+     -1,
+     -1
+    ],
+    "conn": [
+     false,
+     false
+    ],
+    "died": [
+     false,
+     false
+    ],
+    "recall": [
+     false,
+     false
+    ],
+    "held": [
+     false,
+     true
+    ],
+    "S": [
+     58.0,
+     43.9125
+    ],
+    "C": [
+     16,
+     15
+    ],
+    "crash": [
+     0,
+     0
+    ],
+    "lead_A": 6.183
+   },
+   {
+    "turn": 15,
+    "A": "SH-H",
+    "B": "TN-T",
+    "hp": [
+     0.85,
+     0.99
+    ],
+    "cells": [
+     1,
+     -1
+    ],
+    "conn": [
+     false,
+     true
+    ],
+    "died": [
+     false,
+     false
+    ],
+    "recall": [
+     false,
+     false
+    ],
+    "held": [
+     false,
+     true
+    ],
+    "S": [
+     58.0,
+     43.9125
+    ],
+    "C": [
+     16,
+     15
+    ],
+    "crash": [
+     0,
+     0
+    ],
+    "lead_A": 7.735
+   },
+   {
+    "turn": 16,
+    "A": "SH-Y",
+    "B": "SH-Y",
+    "hp": [
+     0.85,
+     0.99
+    ],
+    "cells": [
+     0,
+     -2
+    ],
+    "conn": [
+     false,
+     false
+    ],
+    "died": [
+     false,
+     false
+    ],
+    "recall": [
+     false,
+     false
+    ],
+    "held": [
+     false,
+     false
+    ],
+    "S": [
+     58.0,
+     43.9125
+    ],
+    "C": [
+     17,
+     15
+    ],
+    "crash": [
+     0,
+     0
+    ],
+    "lead_A": 7.51
+   },
+   {
+    "turn": 17,
+    "A": "SH-Y",
+    "B": "SH-Y",
+    "hp": [
+     0.85,
+     0.99
+    ],
+    "cells": [
+     0,
+     -2
+    ],
+    "conn": [
+     false,
+     false
+    ],
+    "died": [
+     false,
+     false
+    ],
+    "recall": [
+     false,
+     false
+    ],
+    "held": [
+     false,
+     false
+    ],
+    "S": [
+     58.0,
+     43.9125
+    ],
+    "C": [
+     17,
+     15
+    ],
+    "crash": [
+     0,
+     0
+    ],
+    "lead_A": 6.61
+   },
+   {
+    "turn": 18,
+    "A": "TN-S",
+    "B": "TN-T",
+    "hp": [
+     0.85,
+     0.99
+    ],
+    "cells": [
+     -2,
+     0
+    ],
+    "conn": [
+     false,
+     false
+    ],
+    "died": [
+     false,
+     false
+    ],
+    "recall": [
+     false,
+     false
+    ],
+    "held": [
+     false,
+     false
+    ],
+    "S": [
+     58.0,
+     43.9125
+    ],
+    "C": [
+     17,
+     15
+    ],
+    "crash": [
+     0,
+     0
+    ],
+    "lead_A": 6.385
+   },
+   {
+    "turn": 19,
+    "A": "SH-T",
+    "B": "SL-Y",
+    "hp": [
+     0.67,
+     0.99
+    ],
+    "cells": [
+     0,
+     -2
+    ],
+    "conn": [
+     false,
+     false
+    ],
+    "died": [
+     false,
+     false
+    ],
+    "recall": [
+     false,
+     false
+    ],
+    "held": [
+     false,
+     true
+    ],
+    "S": [
+     58.0,
+     43.9125
+    ],
+    "C": [
+     17,
+     15
+    ],
+    "crash": [
+     0,
+     0
+    ],
+    "lead_A": 7.16
+   },
+   {
+    "turn": 20,
+    "A": "SH-Y",
+    "B": "SH-T",
+    "hp": [
+     0.58,
+     0.99
+    ],
+    "cells": [
+     -1,
+     -1
+    ],
+    "conn": [
+     false,
+     false
+    ],
+    "died": [
+     false,
+     false
+    ],
+    "recall": [
+     false,
+     false
+    ],
+    "held": [
+     false,
+     false
+    ],
+    "S": [
+     58.0,
+     43.9125
+    ],
+    "C": [
+     17,
+     15
+    ],
+    "crash": [
+     0,
+     0
+    ],
+    "lead_A": 5.835
+   },
+   {
+    "turn": 21,
+    "A": "SH-Y",
+    "B": "SH-H",
+    "hp": [
+     0.58,
+     0.99
+    ],
+    "cells": [
+     -2,
+     -1
+    ],
+    "conn": [
+     false,
+     false
+    ],
+    "died": [
+     false,
+     false
+    ],
+    "recall": [
+     false,
+     false
+    ],
+    "held": [
+     false,
+     false
+    ],
+    "S": [
+     58.0,
+     43.9125
+    ],
+    "C": [
+     17,
+     15
+    ],
+    "crash": [
+     0,
+     0
+    ],
+    "lead_A": 6.623
+   },
+   {
+    "turn": 22,
+    "A": "SH-Y",
+    "B": "LH-T",
+    "hp": [
+     0.58,
+     0.99
+    ],
+    "cells": [
+     -1,
+     -1
+    ],
+    "conn": [
+     false,
+     false
+    ],
+    "died": [
+     false,
+     false
+    ],
+    "recall": [
+     false,
+     false
+    ],
+    "held": [
+     false,
+     false
+    ],
+    "S": [
+     58.0,
+     43.9125
+    ],
+    "C": [
+     17,
+     15
+    ],
+    "crash": [
+     0,
+     0
+    ],
+    "lead_A": 6.56
+   },
+   {
+    "turn": 23,
+    "A": "LH-T",
+    "B": "TN-T",
+    "hp": [
+     0.43,
+     0.98
+    ],
+    "cells": [
+     0,
+     0
+    ],
+    "conn": [
+     true,
+     true
+    ],
+    "died": [
+     false,
+     false
+    ],
+    "recall": [
+     false,
+     false
+    ],
+    "held": [
+     false,
+     false
+    ],
+    "S": [
+     58.0,
+     43.9125
+    ],
+    "C": [
+     17,
+     15
+    ],
+    "crash": [
+     0,
+     0
+    ],
+    "lead_A": 6.47
+   },
+   {
+    "turn": 24,
+    "A": "SH-Y",
+    "B": "SL-T",
+    "hp": [
+     0.12,
+     0.96
+    ],
+    "cells": [
+     -1,
+     0
+    ],
+    "conn": [
+     false,
+     true
+    ],
+    "died": [
+     false,
+     false
+    ],
+    "recall": [
+     false,
+     false
+    ],
+    "held": [
+     false,
+     false
+    ],
+    "S": [
+     58.0,
+     43.9125
+    ],
+    "C": [
+     17,
+     15
+    ],
+    "crash": [
+     0,
+     0
+    ],
+    "lead_A": 7.775
+   },
+   {
+    "turn": 25,
+    "A": "SL-S",
+    "B": "SH-T",
+    "hp": [
+     0.12,
+     0.96
+    ],
+    "cells": [
+     -2,
+     0
+    ],
+    "conn": [
+     false,
+     false
+    ],
+    "died": [
+     false,
+     false
+    ],
+    "recall": [
+     false,
+     false
+    ],
+    "held": [
+     false,
+     false
+    ],
+    "S": [
+     58.0,
+     43.9125
+    ],
+    "C": [
+     17,
+     15
+    ],
+    "crash": [
+     2,
+     0
+    ],
+    "lead_A": 6.875
+   },
+   {
+    "turn": 26,
+    "A": "LH-R",
+    "B": "TN-T",
+    "hp": [
+     null,
+     0.86
+    ],
+    "cells": [
+     -2,
+     2
+    ],
+    "conn": [
+     false,
+     true
+    ],
+    "died": [
+     true,
+     false
+    ],
+    "recall": [
+     false,
+     false
+    ],
+    "held": [
+     false,
+     false
+    ],
+    "S": [
+     58.0,
+     43.9125
+    ],
+    "C": [
+     17,
+     15
+    ],
+    "crash": [
+     0,
+     0
+    ],
+    "lead_A": 4.785
+   },
+   {
+    "turn": 27,
+    "A": "ABSENT",
+    "B": "SH-H",
+    "hp": [
+     null,
+     0.86
+    ],
+    "cells": [
+     -2,
+     0
+    ],
+    "conn": [
+     false,
+     false
+    ],
+    "died": [
+     false,
+     false
+    ],
+    "recall": [
+     false,
+     false
+    ],
+    "held": [
+     false,
+     false
+    ],
+    "S": [
+     58.0,
+     43.9125
+    ],
+    "C": [
+     17,
+     15
+    ],
+    "crash": [
+     0,
+     0
+    ],
+    "lead_A": 3.998
+   },
+   {
+    "turn": 28,
+    "A": "ABSENT",
+    "B": "SH-H",
+    "hp": [
+     null,
+     0.86
+    ],
+    "cells": [
+     -2,
+     1
+    ],
+    "conn": [
+     false,
+     false
+    ],
+    "died": [
+     false,
+     false
+    ],
+    "recall": [
+     false,
+     false
+    ],
+    "held": [
+     false,
+     false
+    ],
+    "S": [
+     58.0,
+     43.9125
+    ],
+    "C": [
+     17,
+     15
+    ],
+    "crash": [
+     0,
+     5
+    ],
+    "lead_A": 3.098
+   },
+   {
+    "turn": 29,
+    "A": "ABSENT",
+    "B": "SH-H+P",
+    "hp": [
+     null,
+     0.87
+    ],
+    "cells": [
+     -2,
+     2
+    ],
+    "conn": [
+     false,
+     false
+    ],
+    "died": [
+     false,
+     false
+    ],
+    "recall": [
+     false,
+     false
+    ],
+    "held": [
+     false,
+     false
+    ],
+    "S": [
+     58.0,
+     43.9125
+    ],
+    "C": [
+     17,
+     15
+    ],
+    "crash": [
+     0,
+     8
+    ],
+    "lead_A": 2.198
+   },
+   {
+    "turn": 30,
+    "A": "ABSENT",
+    "B": "TN-Y",
+    "hp": [
+     null,
+     0.87
+    ],
+    "cells": [
+     -2,
+     0
+    ],
+    "conn": [
+     false,
+     false
+    ],
+    "died": [
+     false,
+     false
+    ],
+    "recall": [
+     false,
+     false
+    ],
+    "held": [
+     false,
+     false
+    ],
+    "S": [
+     58.0,
+     43.9125
+    ],
+    "C": [
+     17,
+     16
+    ],
+    "crash": [
+     0,
+     0
+    ],
+    "lead_A": 1.198
+   }
+  ],
+  "mid neutral, A +16 invested|baseline|s0|t1": [
+   {
+    "turn": 1,
+    "A": "SH-Y",
+    "B": "SH-Y",
+    "hp": [
+     1.0,
+     1.0
+    ],
+    "cells": [
+     -1,
+     -1
+    ],
+    "conn": [
+     false,
+     false
+    ],
+    "died": [
+     false,
+     false
+    ],
+    "recall": [
+     false,
+     false
+    ],
+    "held": [
+     false,
+     false
+    ],
+    "S": [
+     58.0,
+     42.0
+    ],
+    "C": [
+     15,
+     14
+    ],
+    "crash": [
+     0,
+     0
+    ],
+    "lead_A": 0.0
+   },
+   {
+    "turn": 2,
+    "A": "TN-S",
+    "B": "SL-S",
+    "hp": [
+     1.0,
+     1.0
+    ],
+    "cells": [
+     -2,
+     -2
+    ],
+    "conn": [
+     false,
+     false
+    ],
+    "died": [
+     false,
+     false
+    ],
+    "recall": [
+     false,
+     false
+    ],
+    "held": [
+     false,
+     false
+    ],
+    "S": [
+     58.0,
+     42.0
+    ],
+    "C": [
+     15,
+     14
+    ],
+    "crash": [
+     0,
+     0
+    ],
+    "lead_A": 0.0
+   },
+   {
+    "turn": 3,
+    "A": "SH-S",
+    "B": "TN-Y",
+    "hp": [
+     1.0,
+     1.0
+    ],
+    "cells": [
+     -2,
+     -2
+    ],
+    "conn": [
+     false,
+     false
+    ],
+    "died": [
+     false,
+     false
+    ],
+    "recall": [
+     false,
+     false
+    ],
+    "held": [
+     false,
+     false
+    ],
+    "S": [
+     58.0,
+     42.0
+    ],
+    "C": [
+     15,
+     14
+    ],
+    "crash": [
+     0,
+     0
+    ],
+    "lead_A": 0.0
+   },
+   {
+    "turn": 4,
+    "A": "TN-T",
+    "B": "TN-S",
+    "hp": [
+     1.0,
+     1.0
+    ],
+    "cells": [
+     0,
+     -2
+    ],
+    "conn": [
+     false,
+     false
+    ],
+    "died": [
+     false,
+     false
+    ],
+    "recall": [
+     false,
+     false
+    ],
+    "held": [
+     false,
+     false
+    ],
+    "S": [
+     58.0,
+     42.0
+    ],
+    "C": [
+     15,
+     14
+    ],
+    "crash": [
+     0,
+     0
+    ],
+    "lead_A": 0.225
+   },
+   {
+    "turn": 5,
+    "A": "SL-Y",
+    "B": "SL-Y",
+    "hp": [
+     1.0,
+     1.0
+    ],
+    "cells": [
+     -1,
+     -1
+    ],
+    "conn": [
+     false,
+     false
+    ],
+    "died": [
+     false,
+     false
+    ],
+    "recall": [
+     false,
+     false
+    ],
+    "held": [
+     false,
+     false
+    ],
+    "S": [
+     58.0,
+     42.0
+    ],
+    "C": [
+     15,
+     14
+    ],
+    "crash": [
+     0,
+     0
+    ],
+    "lead_A": -0.113
+   },
+   {
+    "turn": 6,
+    "A": "TN-T",
+    "B": "SH-H",
+    "hp": [
+     1.0,
+     1.0
+    ],
+    "cells": [
+     -1,
+     0
+    ],
+    "conn": [
+     true,
+     false
+    ],
+    "died": [
+     false,
+     false
+    ],
+    "recall": [
+     false,
+     false
+    ],
+    "held": [
+     false,
+     false
+    ],
+    "S": [
+     58.0,
+     42.0
+    ],
+    "C": [
+     15,
+     14
+    ],
+    "crash": [
+     0,
+     0
+    ],
+    "lead_A": -1.08
+   },
+   {
+    "turn": 7,
+    "A": "SH-H",
+    "B": "TN-Y",
+    "hp": [
+     1.0,
+     1.0
+    ],
+    "cells": [
+     -2,
+     1
+    ],
+    "conn": [
+     false,
+     false
+    ],
+    "died": [
+     false,
+     false
+    ],
+    "recall": [
+     false,
+     false
+    ],
+    "held": [
+     false,
+     false
+    ],
+    "S": [
+     58.0,
+     42.0
+    ],
+    "C": [
+     15,
+     14
+    ],
+    "crash": [
+     0,
+     1
+    ],
+    "lead_A": -0.08
+   },
+   {
+    "turn": 8,
+    "A": "LH-S",
+    "B": "TN-H",
+    "hp": [
+     1.0,
+     1.0
+    ],
+    "cells": [
+     -1,
+     0
+    ],
+    "conn": [
+     false,
+     false
+    ],
+    "died": [
+     false,
+     false
+    ],
+    "recall": [
+     false,
+     false
+    ],
+    "held": [
+     false,
+     false
+    ],
+    "S": [
+     58.0,
+     42.0
+    ],
+    "C": [
+     15,
+     14
+    ],
+    "crash": [
+     0,
+     0
+    ],
+    "lead_A": -0.305
+   },
+   {
+    "turn": 9,
+    "A": "LH-T",
+    "B": "LH-T",
+    "hp": [
+     0.83,
+     0.82
+    ],
+    "cells": [
+     -1,
+     0
+    ],
+    "conn": [
+     true,
+     true
+    ],
+    "died": [
+     false,
+     false
+    ],
+    "recall": [
+     false,
+     false
+    ],
+    "held": [
+     false,
+     false
+    ],
+    "S": [
+     58.0,
+     42.0
+    ],
+    "C": [
+     15,
+     14
+    ],
+    "crash": [
+     0,
+     0
+    ],
+    "lead_A": -0.305
+   },
+   {
+    "turn": 10,
+    "A": "SH-Y",
+    "B": "TN-T",
+    "hp": [
+     0.83,
+     0.82
+    ],
+    "cells": [
+     -1,
+     0
+    ],
+    "conn": [
+     false,
+     true
+    ],
+    "died": [
+     false,
+     false
+    ],
+    "recall": [
+     false,
+     false
+    ],
+    "held": [
+     false,
+     false
+    ],
+    "S": [
+     58.0,
+     42.0
+    ],
+    "C": [
+     15,
+     14
+    ],
+    "crash": [
+     0,
+     0
+    ],
+    "lead_A": 1.112
+   },
+   {
+    "turn": 11,
+    "A": "LH-R",
+    "B": "SH-Y",
+    "hp": [
+     null,
+     0.62
+    ],
+    "cells": [
+     -2,
+     -2
+    ],
+    "conn": [
+     false,
+     false
+    ],
+    "died": [
+     false,
+     false
+    ],
+    "recall": [
+     true,
+     false
+    ],
+    "held": [
+     false,
+     false
+    ],
+    "S": [
+     58.0,
+     42.0
+    ],
+    "C": [
+     15,
+     14
+    ],
+    "crash": [
+     3,
+     0
+    ],
+    "lead_A": 0.025
+   },
+   {
+    "turn": 12,
+    "A": "ABSENT",
+    "B": "LH-R",
+    "hp": [
+     1.0,
+     null
+    ],
+    "cells": [
+     -2,
+     -2
+    ],
+    "conn": [
+     false,
+     false
+    ],
+    "died": [
+     false,
+     false
+    ],
+    "recall": [
+     false,
+     true
+    ],
+    "held": [
+     false,
+     false
+    ],
+    "S": [
+     63.2975,
+     42.0
+    ],
+    "C": [
+     15,
+     14
+    ],
+    "crash": [
+     0,
+     0
+    ],
+    "lead_A": 0.025
+   },
+   {
+    "turn": 13,
+    "A": "LH-Y",
+    "B": "ABSENT",
+    "hp": [
+     1.0,
+     1.0
+    ],
+    "cells": [
+     -1,
+     -2
+    ],
+    "conn": [
+     false,
+     false
+    ],
+    "died": [
+     false,
+     false
+    ],
+    "recall": [
+     false,
+     false
+    ],
+    "held": [
+     false,
+     false
+    ],
+    "S": [
+     63.2975,
+     47.2725
+    ],
+    "C": [
+     15,
+     14
+    ],
+    "crash": [
+     0,
+     0
+    ],
+    "lead_A": 0.25
+   },
+   {
+    "turn": 14,
+    "A": "SH-H",
+    "B": "SL-T",
+    "hp": [
+     0.85,
+     0.98
+    ],
+    "cells": [
+     0,
+     -1
+    ],
+    "conn": [
+     false,
+     true
+    ],
+    "died": [
+     false,
+     false
+    ],
+    "recall": [
+     false,
+     false
+    ],
+    "held": [
+     false,
+     false
+    ],
+    "S": [
+     63.2975,
+     47.2725
+    ],
+    "C": [
+     15,
+     15
+    ],
+    "crash": [
+     0,
+     0
+    ],
+    "lead_A": 1.262
+   },
+   {
+    "turn": 15,
+    "A": "WARD",
+    "B": "SH-H",
+    "hp": [
+     0.85,
+     0.98
+    ],
+    "cells": [
+     99,
+     -2
+    ],
+    "conn": [
+     false,
+     false
+    ],
+    "died": [
+     false,
+     false
+    ],
+    "recall": [
+     false,
+     false
+    ],
+    "held": [
+     false,
+     false
+    ],
+    "S": [
+     63.2975,
+     47.2725
+    ],
+    "C": [
+     16,
+     15
+    ],
+    "crash": [
+     1,
+     0
+    ],
+    "lead_A": 0.262
+   },
+   {
+    "turn": 16,
+    "A": "SL-H",
+    "B": "SL-T",
+    "hp": [
+     0.85,
+     0.98
+    ],
+    "cells": [
+     0,
+     -1
+    ],
+    "conn": [
+     false,
+     true
+    ],
+    "died": [
+     false,
+     false
+    ],
+    "recall": [
+     false,
+     false
+    ],
+    "held": [
+     false,
+     false
+    ],
+    "S": [
+     63.2975,
+     47.2725
+    ],
+    "C": [
+     16,
+     15
+    ],
+    "crash": [
+     0,
+     0
+    ],
+    "lead_A": 0.51
+   },
+   {
+    "turn": 17,
+    "A": "SH-Y",
+    "B": "TN-T",
+    "hp": [
+     0.69,
+     0.97
+    ],
+    "cells": [
+     -1,
+     0
+    ],
+    "conn": [
+     false,
+     true
+    ],
+    "died": [
+     false,
+     false
+    ],
+    "recall": [
+     false,
+     false
+    ],
+    "held": [
+     false,
+     true
+    ],
+    "S": [
+     63.2975,
+     47.2725
+    ],
+    "C": [
+     16,
+     15
+    ],
+    "crash": [
+     0,
+     0
+    ],
+    "lead_A": 0.623
+   },
+   {
+    "turn": 18,
+    "A": "SL-T",
+    "B": "SH-Y",
+    "hp": [
+     0.69,
+     0.97
+    ],
+    "cells": [
+     1,
+     -2
+    ],
+    "conn": [
+     false,
+     false
+    ],
+    "died": [
+     false,
+     false
+    ],
+    "recall": [
+     false,
+     false
+    ],
+    "held": [
+     false,
+     false
+    ],
+    "S": [
+     63.2975,
+     47.2725
+    ],
+    "C": [
+     16,
+     15
+    ],
+    "crash": [
+     0,
+     0
+    ],
+    "lead_A": 1.185
+   },
+   {
+    "turn": 19,
+    "A": "TN-S",
+    "B": "SH-Y",
+    "hp": [
+     0.69,
+     0.97
+    ],
+    "cells": [
+     -1,
+     -1
+    ],
+    "conn": [
+     false,
+     false
+    ],
+    "died": [
+     false,
+     false
+    ],
+    "recall": [
+     false,
+     false
+    ],
+    "held": [
+     false,
+     false
+    ],
+    "S": [
+     63.2975,
+     47.2725
+    ],
+    "C": [
+     16,
+     15
+    ],
+    "crash": [
+     0,
+     0
+    ],
+    "lead_A": 0.285
+   },
+   {
+    "turn": 20,
+    "A": "LH-S",
+    "B": "SL-Y",
+    "hp": [
+     0.69,
+     0.97
+    ],
+    "cells": [
+     -1,
+     0
+    ],
+    "conn": [
+     false,
+     false
+    ],
+    "died": [
+     false,
+     false
+    ],
+    "recall": [
+     false,
+     false
+    ],
+    "held": [
+     false,
+     false
+    ],
+    "S": [
+     63.2975,
+     47.2725
+    ],
+    "C": [
+     16,
+     15
+    ],
+    "crash": [
+     0,
+     0
+    ],
+    "lead_A": -0.052
+   },
+   {
+    "turn": 21,
+    "A": "SL-T",
+    "B": "LH-T",
+    "hp": [
+     0.37,
+     0.79
+    ],
+    "cells": [
+     -1,
+     0
+    ],
+    "conn": [
+     true,
+     true
+    ],
+    "died": [
+     false,
+     false
+    ],
+    "recall": [
+     false,
+     false
+    ],
+    "held": [
+     false,
+     false
+    ],
+    "S": [
+     63.2975,
+     47.2725
+    ],
+    "C": [
+     16,
+     15
+    ],
+    "crash": [
+     0,
+     0
+    ],
+    "lead_A": 0.307
+   },
+   {
+    "turn": 22,
+    "A": "SL-S",
+    "B": "SL-T",
+    "hp": [
+     0.37,
+     0.79
+    ],
+    "cells": [
+     -2,
+     0
+    ],
+    "conn": [
+     false,
+     false
+    ],
+    "died": [
+     false,
+     false
+    ],
+    "recall": [
+     false,
+     false
+    ],
+    "held": [
+     false,
+     false
+    ],
+    "S": [
+     63.2975,
+     47.2725
+    ],
+    "C": [
+     16,
+     15
+    ],
+    "crash": [
+     0,
+     0
+    ],
+    "lead_A": -0.255
+   },
+   {
+    "turn": 23,
+    "A": "LH-R",
+    "B": "LH-T",
+    "hp": [
+     0.37,
+     0.69
+    ],
+    "cells": [
+     -2,
+     2
+    ],
+    "conn": [
+     false,
+     true
+    ],
+    "died": [
+     false,
+     false
+    ],
+    "recall": [
+     false,
+     false
+    ],
+    "held": [
+     false,
+     false
+    ],
+    "S": [
+     63.2975,
+     47.2725
+    ],
+    "C": [
+     16,
+     15
+    ],
+    "crash": [
+     0,
+     0
+    ],
+    "lead_A": -0.255
+   },
+   {
+    "turn": 24,
+    "A": "LH-T",
+    "B": "SL-H",
+    "hp": [
+     0.37,
+     0.69
+    ],
+    "cells": [
+     -1,
+     0
+    ],
+    "conn": [
+     true,
+     false
+    ],
+    "died": [
+     false,
+     false
+    ],
+    "recall": [
+     false,
+     false
+    ],
+    "held": [
+     false,
+     false
+    ],
+    "S": [
+     63.2975,
+     47.2725
+    ],
+    "C": [
+     16,
+     15
+    ],
+    "crash": [
+     0,
+     0
+    ],
+    "lead_A": -0.345
+   },
+   {
+    "turn": 25,
+    "A": "SH-S",
+    "B": "TN-T",
+    "hp": [
+     0.37,
+     0.69
+    ],
+    "cells": [
+     -2,
+     0
+    ],
+    "conn": [
+     false,
+     false
+    ],
+    "died": [
+     false,
+     false
+    ],
+    "recall": [
+     false,
+     false
+    ],
+    "held": [
+     false,
+     false
+    ],
+    "S": [
+     63.2975,
+     47.2725
+    ],
+    "C": [
+     16,
+     15
+    ],
+    "crash": [
+     0,
+     0
+    ],
+    "lead_A": -0.682
+   },
+   {
+    "turn": 26,
+    "A": "TN-T",
+    "B": "TN-T",
+    "hp": [
+     0.19,
+     null
+    ],
+    "cells": [
+     -1,
+     2
+    ],
+    "conn": [
+     true,
+     true
+    ],
+    "died": [
+     false,
+     true
+    ],
+    "recall": [
+     false,
+     false
+    ],
+    "held": [
+     false,
+     false
+    ],
+    "S": [
+     63.2975,
+     47.2725
+    ],
+    "C": [
+     16,
+     15
+    ],
+    "crash": [
+     0,
+     0
+    ],
+    "lead_A": 1.677
+   },
+   {
+    "turn": 27,
+    "A": "SH-H",
+    "B": "ABSENT",
+    "hp": [
+     0.23,
+     null
+    ],
+    "cells": [
+     0,
+     -2
+    ],
+    "conn": [
+     false,
+     false
+    ],
+    "died": [
+     false,
+     false
+    ],
+    "recall": [
+     false,
+     false
+    ],
+    "held": [
+     false,
+     false
+    ],
+    "S": [
+     63.2975,
+     47.2725
+    ],
+    "C": [
+     16,
+     15
+    ],
+    "crash": [
+     0,
+     0
+    ],
+    "lead_A": 3.14
+   },
+   {
+    "turn": 28,
+    "A": "SH-Y",
+    "B": "ABSENT",
+    "hp": [
+     0.23,
+     null
+    ],
+    "cells": [
+     1,
+     -2
+    ],
+    "conn": [
+     false,
+     false
+    ],
+    "died": [
+     false,
+     false
+    ],
+    "recall": [
+     false,
+     false
+    ],
+    "held": [
+     false,
+     false
+    ],
+    "S": [
+     63.2975,
+     47.2725
+    ],
+    "C": [
+     17,
+     15
+    ],
+    "crash": [
+     12,
+     0
+    ],
+    "lead_A": 4.04
+   },
+   {
+    "turn": 29,
+    "A": "SL-S",
+    "B": "ABSENT",
+    "hp": [
+     0.23,
+     null
+    ],
+    "cells": [
+     -1,
+     -2
+    ],
+    "conn": [
+     false,
+     false
+    ],
+    "died": [
+     false,
+     false
+    ],
+    "recall": [
+     false,
+     false
+    ],
+    "held": [
+     false,
+     false
+    ],
+    "S": [
+     63.2975,
+     47.2725
+    ],
+    "C": [
+     17,
+     15
+    ],
+    "crash": [
+     8,
+     0
+    ],
+    "lead_A": 4.04
+   },
+   {
+    "turn": 30,
+    "A": "LH-R",
+    "B": "ABSENT",
+    "hp": [
+     null,
+     null
+    ],
+    "cells": [
+     -2,
+     -2
+    ],
+    "conn": [
+     false,
+     false
+    ],
+    "died": [
+     false,
+     false
+    ],
+    "recall": [
+     true,
+     false
+    ],
+    "held": [
+     false,
+     false
+    ],
+    "S": [
+     63.2975,
+     47.2725
+    ],
+    "C": [
+     17,
+     15
+    ],
+    "crash": [
+     0,
+     0
+    ],
+    "lead_A": 4.04
+   }
+  ],
+  "mid neutral, A +16 invested|C1|s0|t1": [
+   {
+    "turn": 1,
+    "A": "SH-Y",
+    "B": "SH-Y",
+    "hp": [
+     1.0,
+     1.0
+    ],
+    "cells": [
+     -1,
+     -1
+    ],
+    "conn": [
+     false,
+     false
+    ],
+    "died": [
+     false,
+     false
+    ],
+    "recall": [
+     false,
+     false
+    ],
+    "held": [
+     false,
+     false
+    ],
+    "S": [
+     58.0,
+     42.0
+    ],
+    "C": [
+     16,
+     14
+    ],
+    "crash": [
+     0,
+     0
+    ],
+    "lead_A": 0.0
+   },
+   {
+    "turn": 2,
+    "A": "SH-S",
+    "B": "SL-S",
+    "hp": [
+     1.0,
+     1.0
+    ],
+    "cells": [
+     -2,
+     -2
+    ],
+    "conn": [
+     false,
+     false
+    ],
+    "died": [
+     false,
+     false
+    ],
+    "recall": [
+     false,
+     false
+    ],
+    "held": [
+     false,
+     false
+    ],
+    "S": [
+     58.0,
+     42.0
+    ],
+    "C": [
+     16,
+     14
+    ],
+    "crash": [
+     0,
+     0
+    ],
+    "lead_A": 0.0
+   },
+   {
+    "turn": 3,
+    "A": "SH-S",
+    "B": "TN-Y",
+    "hp": [
+     1.0,
+     1.0
+    ],
+    "cells": [
+     -2,
+     -2
+    ],
+    "conn": [
+     false,
+     false
+    ],
+    "died": [
+     false,
+     false
+    ],
+    "recall": [
+     false,
+     false
+    ],
+    "held": [
+     false,
+     false
+    ],
+    "S": [
+     58.0,
+     42.0
+    ],
+    "C": [
+     16,
+     14
+    ],
+    "crash": [
+     0,
+     0
+    ],
+    "lead_A": 0.0
+   },
+   {
+    "turn": 4,
+    "A": "TN-T",
+    "B": "SH-S",
+    "hp": [
+     1.0,
+     1.0
+    ],
+    "cells": [
+     0,
+     -2
+    ],
+    "conn": [
+     false,
+     false
+    ],
+    "died": [
+     false,
+     false
+    ],
+    "recall": [
+     false,
+     false
+    ],
+    "held": [
+     false,
+     false
+    ],
+    "S": [
+     58.0,
+     42.0
+    ],
+    "C": [
+     16,
+     14
+    ],
+    "crash": [
+     0,
+     0
+    ],
+    "lead_A": 0.225
+   },
+   {
+    "turn": 5,
+    "A": "SL-Y",
+    "B": "SL-T",
+    "hp": [
+     1.0,
+     1.0
+    ],
+    "cells": [
+     -2,
+     0
+    ],
+    "conn": [
+     false,
+     false
+    ],
+    "died": [
+     false,
+     false
+    ],
+    "recall": [
+     false,
+     false
+    ],
+    "held": [
+     false,
+     false
+    ],
+    "S": [
+     58.0,
+     42.0
+    ],
+    "C": [
+     16,
+     14
+    ],
+    "crash": [
+     0,
+     0
+    ],
+    "lead_A": -0.287
+   },
+   {
+    "turn": 6,
+    "A": "SH-T",
+    "B": "LH-H",
+    "hp": [
+     1.0,
+     1.0
+    ],
+    "cells": [
+     -1,
+     0
+    ],
+    "conn": [
+     true,
+     false
+    ],
+    "died": [
+     false,
+     false
+    ],
+    "recall": [
+     false,
+     false
+    ],
+    "held": [
+     false,
+     false
+    ],
+    "S": [
+     58.0,
+     42.0
+    ],
+    "C": [
+     16,
+     14
+    ],
+    "crash": [
+     0,
+     0
+    ],
+    "lead_A": 0.163
+   },
+   {
+    "turn": 7,
+    "A": "SH-H",
+    "B": "SH-Y",
+    "hp": [
+     1.0,
+     1.0
+    ],
+    "cells": [
+     0,
+     -1
+    ],
+    "conn": [
+     false,
+     false
+    ],
+    "died": [
+     false,
+     false
+    ],
+    "recall": [
+     false,
+     false
+    ],
+    "held": [
+     false,
+     false
+    ],
+    "S": [
+     58.0,
+     42.0
+    ],
+    "C": [
+     16,
+     14
+    ],
+    "crash": [
+     0,
+     0
+    ],
+    "lead_A": -0.287
+   },
+   {
+    "turn": 8,
+    "A": "SH-S",
+    "B": "SH-H",
+    "hp": [
+     1.0,
+     1.0
+    ],
+    "cells": [
+     -1,
+     -2
+    ],
+    "conn": [
+     false,
+     false
+    ],
+    "died": [
+     false,
+     false
+    ],
+    "recall": [
+     false,
+     false
+    ],
+    "held": [
+     false,
+     false
+    ],
+    "S": [
+     58.0,
+     42.0
+    ],
+    "C": [
+     16,
+     14
+    ],
+    "crash": [
+     0,
+     0
+    ],
+    "lead_A": -0.237
+   },
+   {
+    "turn": 9,
+    "A": "TN-Y",
+    "B": "LH-T",
+    "hp": [
+     1.0,
+     1.0
+    ],
+    "cells": [
+     -2,
+     0
+    ],
+    "conn": [
+     false,
+     false
+    ],
+    "died": [
+     false,
+     false
+    ],
+    "recall": [
+     false,
+     false
+    ],
+    "held": [
+     false,
+     false
+    ],
+    "S": [
+     58.0,
+     42.0
+    ],
+    "C": [
+     16,
+     14
+    ],
+    "crash": [
+     0,
+     0
+    ],
+    "lead_A": -0.412
+   },
+   {
+    "turn": 10,
+    "A": "LH-T",
+    "B": "LH-Y",
+    "hp": [
+     1.0,
+     1.0
+    ],
+    "cells": [
+     0,
+     -2
+    ],
+    "conn": [
+     false,
+     false
+    ],
+    "died": [
+     false,
+     false
+    ],
+    "recall": [
+     false,
+     false
+    ],
+    "held": [
+     false,
+     false
+    ],
+    "S": [
+     58.0,
+     42.0
+    ],
+    "C": [
+     16,
+     14
+    ],
+    "crash": [
+     0,
+     0
+    ],
+    "lead_A": -0.112
+   },
+   {
+    "turn": 11,
+    "A": "SH-Y",
+    "B": "TN-T",
+    "hp": [
+     1.0,
+     0.81
+    ],
+    "cells": [
+     -2,
+     0
+    ],
+    "conn": [
+     false,
+     false
+    ],
+    "died": [
+     false,
+     false
+    ],
+    "recall": [
+     false,
+     false
+    ],
+    "held": [
+     false,
+     false
+    ],
+    "S": [
+     58.0,
+     42.0
+    ],
+    "C": [
+     16,
+     14
+    ],
+    "crash": [
+     0,
+     0
+    ],
+    "lead_A": -0.35
+   },
+   {
+    "turn": 12,
+    "A": "SL-T",
+    "B": "TN-Y",
+    "hp": [
+     1.0,
+     0.81
+    ],
+    "cells": [
+     0,
+     -2
+    ],
+    "conn": [
+     false,
+     false
+    ],
+    "died": [
+     false,
+     false
+    ],
+    "recall": [
+     false,
+     false
+    ],
+    "held": [
+     false,
+     false
+    ],
+    "S": [
+     58.0,
+     42.0
+    ],
+    "C": [
+     16,
+     14
+    ],
+    "crash": [
+     0,
+     0
+    ],
+    "lead_A": 0.175
+   },
+   {
+    "turn": 13,
+    "A": "LH-Y",
+    "B": "SL-T",
+    "hp": [
+     1.0,
+     0.81
+    ],
+    "cells": [
+     -2,
+     0
+    ],
+    "conn": [
+     false,
+     false
+    ],
+    "died": [
+     false,
+     false
+    ],
+    "recall": [
+     false,
+     false
+    ],
+    "held": [
+     false,
+     false
+    ],
+    "S": [
+     58.0,
+     42.0
+    ],
+    "C": [
+     16,
+     14
+    ],
+    "crash": [
+     0,
+     0
+    ],
+    "lead_A": -0.35
+   },
+   {
+    "turn": 14,
+    "A": "LH-T",
+    "B": "SL-Y",
+    "hp": [
+     1.0,
+     0.82
+    ],
+    "cells": [
+     0,
+     -2
+    ],
+    "conn": [
+     false,
+     false
+    ],
+    "died": [
+     false,
+     false
+    ],
+    "recall": [
+     false,
+     false
+    ],
+    "held": [
+     false,
+     false
+    ],
+    "S": [
+     58.0,
+     42.0
+    ],
+    "C": [
+     16,
+     14
+    ],
+    "crash": [
+     0,
+     0
+    ],
+    "lead_A": -0.05
+   },
+   {
+    "turn": 15,
+    "A": "SH-Y",
+    "B": "SH-Y",
+    "hp": [
+     1.0,
+     0.82
+    ],
+    "cells": [
+     -1,
+     -1
+    ],
+    "conn": [
+     false,
+     false
+    ],
+    "died": [
+     false,
+     false
+    ],
+    "recall": [
+     false,
+     false
+    ],
+    "held": [
+     false,
+     false
+    ],
+    "S": [
+     58.0,
+     42.0
+    ],
+    "C": [
+     17,
+     15
+    ],
+    "crash": [
+     0,
+     0
+    ],
+    "lead_A": -0.05
+   },
+   {
+    "turn": 16,
+    "A": "SH-S",
+    "B": "SL-T",
+    "hp": [
+     1.0,
+     0.82
+    ],
+    "cells": [
+     -2,
+     0
+    ],
+    "conn": [
+     false,
+     false
+    ],
+    "died": [
+     false,
+     false
+    ],
+    "recall": [
+     false,
+     false
+    ],
+    "held": [
+     false,
+     false
+    ],
+    "S": [
+     58.0,
+     42.0
+    ],
+    "C": [
+     17,
+     15
+    ],
+    "crash": [
+     0,
+     0
+    ],
+    "lead_A": -0.388
+   },
+   {
+    "turn": 17,
+    "A": "TN-Y",
+    "B": "TN-Y",
+    "hp": [
+     1.0,
+     0.82
+    ],
+    "cells": [
+     -1,
+     -1
+    ],
+    "conn": [
+     false,
+     false
+    ],
+    "died": [
+     false,
+     false
+    ],
+    "recall": [
+     false,
+     false
+    ],
+    "held": [
+     false,
+     false
+    ],
+    "S": [
+     58.0,
+     42.0
+    ],
+    "C": [
+     17,
+     15
+    ],
+    "crash": [
+     0,
+     0
+    ],
+    "lead_A": -0.05
+   },
+   {
+    "turn": 18,
+    "A": "SL-T",
+    "B": "LH-T",
+    "hp": [
+     0.84,
+     0.44
+    ],
+    "cells": [
+     0,
+     0
+    ],
+    "conn": [
+     true,
+     true
+    ],
+    "died": [
+     false,
+     false
+    ],
+    "recall": [
+     false,
+     false
+    ],
+    "held": [
+     false,
+     false
+    ],
+    "S": [
+     58.0,
+     42.0
+    ],
+    "C": [
+     17,
+     15
+    ],
+    "crash": [
+     0,
+     0
+    ],
+    "lead_A": 0.04
+   },
+   {
+    "turn": 19,
+    "A": "SL-Y",
+    "B": "SH-S",
+    "hp": [
+     0.84,
+     0.44
+    ],
+    "cells": [
+     -1,
+     -1
+    ],
+    "conn": [
+     false,
+     false
+    ],
+    "died": [
+     false,
+     false
+    ],
+    "recall": [
+     false,
+     false
+    ],
+    "held": [
+     false,
+     false
+    ],
+    "S": [
+     58.0,
+     42.0
+    ],
+    "C": [
+     17,
+     15
+    ],
+    "crash": [
+     0,
+     0
+    ],
+    "lead_A": 0.328
+   },
+   {
+    "turn": 20,
+    "A": "TN-T",
+    "B": "SH-Y",
+    "hp": [
+     0.84,
+     0.44
+    ],
+    "cells": [
+     0,
+     -2
+    ],
+    "conn": [
+     false,
+     false
+    ],
+    "died": [
+     false,
+     false
+    ],
+    "recall": [
+     false,
+     false
+    ],
+    "held": [
+     false,
+     false
+    ],
+    "S": [
+     58.0,
+     42.0
+    ],
+    "C": [
+     17,
+     15
+    ],
+    "crash": [
+     0,
+     0
+    ],
+    "lead_A": 0.627
+   },
+   {
+    "turn": 21,
+    "A": "LH-T",
+    "B": "SH-T",
+    "hp": [
+     0.44,
+     0.24
+    ],
+    "cells": [
+     2,
+     -1
+    ],
+    "conn": [
+     true,
+     true
+    ],
+    "died": [
+     false,
+     false
+    ],
+    "recall": [
+     false,
+     false
+    ],
+    "held": [
+     false,
+     false
+    ],
+    "S": [
+     58.0,
+     42.0
+    ],
+    "C": [
+     17,
+     15
+    ],
+    "crash": [
+     0,
+     0
+    ],
+    "lead_A": -0.183
+   },
+   {
+    "turn": 22,
+    "A": "SL-Y",
+    "B": "SL-T",
+    "hp": [
+     0.44,
+     0.24
+    ],
+    "cells": [
+     0,
+     -1
+    ],
+    "conn": [
+     false,
+     true
+    ],
+    "died": [
+     false,
+     false
+    ],
+    "recall": [
+     false,
+     false
+    ],
+    "held": [
+     false,
+     false
+    ],
+    "S": [
+     58.0,
+     42.0
+    ],
+    "C": [
+     17,
+     15
+    ],
+    "crash": [
+     0,
+     0
+    ],
+    "lead_A": 0.582
+   },
+   {
+    "turn": 23,
+    "A": "TN-T",
+    "B": "SH-S",
+    "hp": [
+     0.44,
+     0.24
+    ],
+    "cells": [
+     0,
+     -2
+    ],
+    "conn": [
+     false,
+     false
+    ],
+    "died": [
+     false,
+     false
+    ],
+    "recall": [
+     false,
+     false
+    ],
+    "held": [
+     false,
+     false
+    ],
+    "S": [
+     58.0,
+     42.0
+    ],
+    "C": [
+     17,
+     15
+    ],
+    "crash": [
+     0,
+     0
+    ],
+    "lead_A": 0.92
+   },
+   {
+    "turn": 24,
+    "A": "SH-Y",
+    "B": "LH-R",
+    "hp": [
+     0.44,
+     null
+    ],
+    "cells": [
+     -1,
+     -2
+    ],
+    "conn": [
+     false,
+     false
+    ],
+    "died": [
+     false,
+     false
+    ],
+    "recall": [
+     false,
+     true
+    ],
+    "held": [
+     false,
+     false
+    ],
+    "S": [
+     58.0,
+     42.0
+    ],
+    "C": [
+     17,
+     15
+    ],
+    "crash": [
+     0,
+     0
+    ],
+    "lead_A": 2.382
+   },
+   {
+    "turn": 25,
+    "A": "LH-R",
+    "B": "ABSENT",
+    "hp": [
+     null,
+     1.0
+    ],
+    "cells": [
+     -2,
+     -2
+    ],
+    "conn": [
+     false,
+     false
+    ],
+    "died": [
+     false,
+     false
+    ],
+    "recall": [
+     true,
+     false
+    ],
+    "held": [
+     false,
+     false
+    ],
+    "S": [
+     58.0,
+     50.5475
+    ],
+    "C": [
+     17,
+     15
+    ],
+    "crash": [
+     14,
+     0
+    ],
+    "lead_A": 2.382
+   },
+   {
+    "turn": 26,
+    "A": "ABSENT",
+    "B": "SH-Y",
+    "hp": [
+     1.0,
+     1.0
+    ],
+    "cells": [
+     -2,
+     -2
+    ],
+    "conn": [
+     false,
+     false
+    ],
+    "died": [
+     false,
+     false
+    ],
+    "recall": [
+     false,
+     false
+    ],
+    "held": [
+     false,
+     false
+    ],
+    "S": [
+     68.93,
+     50.5475
+    ],
+    "C": [
+     17,
+     16
+    ],
+    "crash": [
+     0,
+     0
+    ],
+    "lead_A": 1.082
+   },
+   {
+    "turn": 27,
+    "A": "SH-H",
+    "B": "SH-T",
+    "hp": [
+     0.86,
+     0.99
+    ],
+    "cells": [
+     0,
+     -1
+    ],
+    "conn": [
+     false,
+     true
+    ],
+    "died": [
+     false,
+     false
+    ],
+    "recall": [
+     false,
+     false
+    ],
+    "held": [
+     false,
+     false
+    ],
+    "S": [
+     68.93,
+     50.5475
+    ],
+    "C": [
+     17,
+     16
+    ],
+    "crash": [
+     3,
+     0
+    ],
+    "lead_A": 0.955
+   },
+   {
+    "turn": 28,
+    "A": "SH-S",
+    "B": "LH-T",
+    "hp": [
+     0.86,
+     0.99
+    ],
+    "cells": [
+     -2,
+     0
+    ],
+    "conn": [
+     false,
+     false
+    ],
+    "died": [
+     false,
+     false
+    ],
+    "recall": [
+     false,
+     false
+    ],
+    "held": [
+     false,
+     false
+    ],
+    "S": [
+     68.93,
+     50.5475
+    ],
+    "C": [
+     18,
+     17
+    ],
+    "crash": [
+     0,
+     0
+    ],
+    "lead_A": 0.73
+   },
+   {
+    "turn": 29,
+    "A": "SL-Y",
+    "B": "SH-H",
+    "hp": [
+     0.86,
+     0.99
+    ],
+    "cells": [
+     -1,
+     1
+    ],
+    "conn": [
+     false,
+     false
+    ],
+    "died": [
+     false,
+     false
+    ],
+    "recall": [
+     false,
+     false
+    ],
+    "held": [
+     false,
+     false
+    ],
+    "S": [
+     68.93,
+     50.5475
+    ],
+    "C": [
+     18,
+     17
+    ],
+    "crash": [
+     0,
+     0
+    ],
+    "lead_A": -0.17
+   },
+   {
+    "turn": 30,
+    "A": "SH-H",
+    "B": "LH-H",
+    "hp": [
+     0.86,
+     0.99
+    ],
+    "cells": [
+     -2,
+     1
+    ],
+    "conn": [
+     false,
+     false
+    ],
+    "died": [
+     false,
+     false
+    ],
+    "recall": [
+     false,
+     false
+    ],
+    "held": [
+     false,
+     false
+    ],
+    "S": [
+     68.93,
+     50.5475
+    ],
+    "C": [
+     18,
+     17
+    ],
+    "crash": [
+     0,
+     2
+    ],
+    "lead_A": 0.03
+   }
+  ],
+  "early neutral, A +16 invested|baseline|s0|t0": [
+   {
+    "turn": 1,
+    "A": "SL-H",
+    "B": "SH-Y",
+    "hp": [
+     1.0,
+     1.0
+    ],
+    "cells": [
+     0,
+     -1
+    ],
+    "conn": [
+     false,
+     false
+    ],
+    "died": [
+     false,
+     false
+    ],
+    "recall": [
+     false,
+     false
+    ],
+    "held": [
+     false,
+     false
+    ],
+    "S": [
+     25.0,
+     9.0
+    ],
+    "C": [
+     9,
+     7
+    ],
+    "crash": [
+     0,
+     0
+    ],
+    "lead_A": -0.562
+   },
+   {
+    "turn": 2,
+    "A": "SH-Y",
+    "B": "TN-Y",
+    "hp": [
+     1.0,
+     1.0
+    ],
+    "cells": [
+     -1,
+     -1
+    ],
+    "conn": [
+     false,
+     false
+    ],
+    "died": [
+     false,
+     false
+    ],
+    "recall": [
+     false,
+     false
+    ],
+    "held": [
+     false,
+     false
+    ],
+    "S": [
+     25.0,
+     9.0
+    ],
+    "C": [
+     9,
+     7
+    ],
+    "crash": [
+     0,
+     0
+    ],
+    "lead_A": 0.338
+   },
+   {
+    "turn": 3,
+    "A": "SH-T",
+    "B": "SL-T",
+    "hp": [
+     0.86,
+     0.59
+    ],
+    "cells": [
+     0,
+     0
+    ],
+    "conn": [
+     true,
+     true
+    ],
+    "died": [
+     false,
+     false
+    ],
+    "recall": [
+     false,
+     false
+    ],
+    "held": [
+     false,
+     false
+    ],
+    "S": [
+     25.0,
+     9.0
+    ],
+    "C": [
+     9,
+     7
+    ],
+    "crash": [
+     0,
+     0
+    ],
+    "lead_A": 0.068
+   },
+   {
+    "turn": 4,
+    "A": "WARD",
+    "B": "LH-Y",
+    "hp": [
+     0.86,
+     0.08
+    ],
+    "cells": [
+     99,
+     0
+    ],
+    "conn": [
+     false,
+     false
+    ],
+    "died": [
+     false,
+     false
+    ],
+    "recall": [
+     false,
+     false
+    ],
+    "held": [
+     false,
+     false
+    ],
+    "S": [
+     25.0,
+     9.0
+    ],
+    "C": [
+     9,
+     7
+    ],
+    "crash": [
+     0,
+     0
+    ],
+    "lead_A": -0.158
+   },
+   {
+    "turn": 5,
+    "A": "SL-H",
+    "B": "TN-S",
+    "hp": [
+     0.86,
+     0.08
+    ],
+    "cells": [
+     0,
+     -1
+    ],
+    "conn": [
+     false,
+     false
+    ],
+    "died": [
+     false,
+     false
+    ],
+    "recall": [
+     false,
+     false
+    ],
+    "held": [
+     false,
+     false
+    ],
+    "S": [
+     25.0,
+     9.0
+    ],
+    "C": [
+     9,
+     7
+    ],
+    "crash": [
+     0,
+     0
+    ],
+    "lead_A": 0.355
+   },
+   {
+    "turn": 6,
+    "A": "LH-T",
+    "B": "LH-S",
+    "hp": [
+     0.86,
+     0.08
+    ],
+    "cells": [
+     0,
+     -2
+    ],
+    "conn": [
+     false,
+     false
+    ],
+    "died": [
+     false,
+     false
+    ],
+    "recall": [
+     false,
+     false
+    ],
+    "held": [
+     false,
+     false
+    ],
+    "S": [
+     25.0,
+     9.0
+    ],
+    "C": [
+     9,
+     7
+    ],
+    "crash": [
+     0,
+     0
+    ],
+    "lead_A": 0.805
+   },
+   {
+    "turn": 7,
+    "A": "SL-T",
+    "B": "SL-S",
+    "hp": [
+     0.86,
+     0.08
+    ],
+    "cells": [
+     0,
+     -2
+    ],
+    "conn": [
+     false,
+     false
+    ],
+    "died": [
+     false,
+     false
+    ],
+    "recall": [
+     false,
+     false
+    ],
+    "held": [
+     false,
+     false
+    ],
+    "S": [
+     25.0,
+     9.0
+    ],
+    "C": [
+     9,
+     7
+    ],
+    "crash": [
+     0,
+     0
+    ],
+    "lead_A": 1.143
+   },
+   {
+    "turn": 8,
+    "A": "SL-T",
+    "B": "LH-R",
+    "hp": [
+     0.77,
+     0.08
+    ],
+    "cells": [
+     2,
+     -2
+    ],
+    "conn": [
+     true,
+     false
+    ],
+    "died": [
+     false,
+     false
+    ],
+    "recall": [
+     false,
+     false
+    ],
+    "held": [
+     false,
+     false
+    ],
+    "S": [
+     25.0,
+     9.0
+    ],
+    "C": [
+     9,
+     7
+    ],
+    "crash": [
+     0,
+     0
+    ],
+    "lead_A": 1.143
+   },
+   {
+    "turn": 9,
+    "A": "TN-Y",
+    "B": "SL-S",
+    "hp": [
+     0.77,
+     0.08
+    ],
+    "cells": [
+     0,
+     -1
+    ],
+    "conn": [
+     false,
+     false
+    ],
+    "died": [
+     false,
+     false
+    ],
+    "recall": [
+     false,
+     false
+    ],
+    "held": [
+     false,
+     false
+    ],
+    "S": [
+     25.0,
+     9.0
+    ],
+    "C": [
+     9,
+     7
+    ],
+    "crash": [
+     0,
+     0
+    ],
+    "lead_A": 1.542
+   },
+   {
+    "turn": 10,
+    "A": "SL-T",
+    "B": "SL-S",
+    "hp": [
+     0.77,
+     0.12
+    ],
+    "cells": [
+     0,
+     -2
+    ],
+    "conn": [
+     false,
+     false
+    ],
+    "died": [
+     false,
+     false
+    ],
+    "recall": [
+     false,
+     false
+    ],
+    "held": [
+     false,
+     false
+    ],
+    "S": [
+     25.0,
+     9.0
+    ],
+    "C": [
+     9,
+     7
+    ],
+    "crash": [
+     0,
+     0
+    ],
+    "lead_A": 2.218
+   },
+   {
+    "turn": 11,
+    "A": "SH-T",
+    "B": "LH-R",
+    "hp": [
+     0.66,
+     0.12
+    ],
+    "cells": [
+     2,
+     -2
+    ],
+    "conn": [
+     true,
+     false
+    ],
+    "died": [
+     false,
+     false
+    ],
+    "recall": [
+     false,
+     false
+    ],
+    "held": [
+     false,
+     false
+    ],
+    "S": [
+     25.0,
+     9.0
+    ],
+    "C": [
+     9,
+     8
+    ],
+    "crash": [
+     0,
+     0
+    ],
+    "lead_A": 2.218
+   },
+   {
+    "turn": 12,
+    "A": "SL-T",
+    "B": "SL-S",
+    "hp": [
+     0.55,
+     0.12
+    ],
+    "cells": [
+     2,
+     -2
+    ],
+    "conn": [
+     true,
+     false
+    ],
+    "died": [
+     false,
+     false
+    ],
+    "recall": [
+     false,
+     false
+    ],
+    "held": [
+     false,
+     false
+    ],
+    "S": [
+     25.0,
+     9.0
+    ],
+    "C": [
+     9,
+     8
+    ],
+    "crash": [
+     0,
+     0
+    ],
+    "lead_A": 2.218
+   },
+   {
+    "turn": 13,
+    "A": "SH-H",
+    "B": "LH-R",
+    "hp": [
+     0.58,
+     null
+    ],
+    "cells": [
+     1,
+     -2
+    ],
+    "conn": [
+     false,
+     false
+    ],
+    "died": [
+     false,
+     false
+    ],
+    "recall": [
+     false,
+     true
+    ],
+    "held": [
+     false,
+     true
+    ],
+    "S": [
+     25.0,
+     9.0
+    ],
+    "C": [
+     9,
+     8
+    ],
+    "crash": [
+     0,
+     0
+    ],
+    "lead_A": 3.455
+   },
+   {
+    "turn": 14,
+    "A": "SH-H",
+    "B": "ABSENT",
+    "hp": [
+     0.58,
+     1.0
+    ],
+    "cells": [
+     1,
+     -2
+    ],
+    "conn": [
+     false,
+     false
+    ],
+    "died": [
+     false,
+     false
+    ],
+    "recall": [
+     false,
+     false
+    ],
+    "held": [
+     false,
+     false
+    ],
+    "S": [
+     25.0,
+     11.035
+    ],
+    "C": [
+     10,
+     8
+    ],
+    "crash": [
+     22,
+     0
+    ],
+    "lead_A": 3.567
+   },
+   {
+    "turn": 15,
+    "A": "TN-H+P",
+    "B": "SH-Y",
+    "hp": [
+     0.58,
+     1.0
+    ],
+    "cells": [
+     2,
+     -2
+    ],
+    "conn": [
+     false,
+     false
+    ],
+    "died": [
+     false,
+     false
+    ],
+    "recall": [
+     false,
+     false
+    ],
+    "held": [
+     false,
+     false
+    ],
+    "S": [
+     25.0,
+     11.035
+    ],
+    "C": [
+     10,
+     8
+    ],
+    "crash": [
+     8,
+     0
+    ],
+    "lead_A": 2.742
+   },
+   {
+    "turn": 16,
+    "A": "TN-H+P",
+    "B": "SH-Y",
+    "hp": [
+     0.58,
+     1.0
+    ],
+    "cells": [
+     2,
+     -2
+    ],
+    "conn": [
+     false,
+     false
+    ],
+    "died": [
+     false,
+     false
+    ],
+    "recall": [
+     false,
+     false
+    ],
+    "held": [
+     false,
+     false
+    ],
+    "S": [
+     25.0,
+     11.035
+    ],
+    "C": [
+     10,
+     8
+    ],
+    "crash": [
+     0,
+     0
+    ],
+    "lead_A": 2.467
+   },
+   {
+    "turn": 17,
+    "A": "TN-S",
+    "B": "SH-H",
+    "hp": [
+     0.58,
+     1.0
+    ],
+    "cells": [
+     0,
+     -2
+    ],
+    "conn": [
+     false,
+     false
+    ],
+    "died": [
+     false,
+     false
+    ],
+    "recall": [
+     false,
+     false
+    ],
+    "held": [
+     false,
+     false
+    ],
+    "S": [
+     25.0,
+     11.035
+    ],
+    "C": [
+     10,
+     8
+    ],
+    "crash": [
+     4,
+     0
+    ],
+    "lead_A": 1.617
+   },
+   {
+    "turn": 18,
+    "A": "TN-S",
+    "B": "LH-Y",
+    "hp": [
+     0.58,
+     1.0
+    ],
+    "cells": [
+     -1,
+     0
+    ],
+    "conn": [
+     false,
+     false
+    ],
+    "died": [
+     false,
+     false
+    ],
+    "recall": [
+     false,
+     false
+    ],
+    "held": [
+     false,
+     false
+    ],
+    "S": [
+     25.0,
+     11.035
+    ],
+    "C": [
+     10,
+     8
+    ],
+    "crash": [
+     0,
+     0
+    ],
+    "lead_A": 1.392
+   },
+   {
+    "turn": 19,
+    "A": "TN-S",
+    "B": "SL-T",
+    "hp": [
+     0.58,
+     1.0
+    ],
+    "cells": [
+     -2,
+     0
+    ],
+    "conn": [
+     false,
+     false
+    ],
+    "died": [
+     false,
+     false
+    ],
+    "recall": [
+     false,
+     false
+    ],
+    "held": [
+     false,
+     false
+    ],
+    "S": [
+     25.0,
+     11.035
+    ],
+    "C": [
+     10,
+     8
+    ],
+    "crash": [
+     0,
+     0
+    ],
+    "lead_A": 1.167
+   },
+   {
+    "turn": 20,
+    "A": "LH-R",
+    "B": "SL-H",
+    "hp": [
+     null,
+     1.0
+    ],
+    "cells": [
+     -2,
+     0
+    ],
+    "conn": [
+     false,
+     false
+    ],
+    "died": [
+     false,
+     false
+    ],
+    "recall": [
+     true,
+     false
+    ],
+    "held": [
+     false,
+     false
+    ],
+    "S": [
+     25.0,
+     11.035
+    ],
+    "C": [
+     10,
+     8
+    ],
+    "crash": [
+     0,
+     0
+    ],
+    "lead_A": 0.717
+   },
+   {
+    "turn": 21,
+    "A": "ABSENT",
+    "B": "LH-H",
+    "hp": [
+     1.0,
+     1.0
+    ],
+    "cells": [
+     -2,
+     0
+    ],
+    "conn": [
+     false,
+     false
+    ],
+    "died": [
+     false,
+     false
+    ],
+    "recall": [
+     false,
+     false
+    ],
+    "held": [
+     false,
+     false
+    ],
+    "S": [
+     32.5025,
+     11.035
+    ],
+    "C": [
+     10,
+     8
+    ],
+    "crash": [
+     0,
+     0
+    ],
+    "lead_A": 0.267
+   },
+   {
+    "turn": 22,
+    "A": "SH-Y",
+    "B": "SH-H",
+    "hp": [
+     1.0,
+     1.0
+    ],
+    "cells": [
+     -1,
+     0
+    ],
+    "conn": [
+     false,
+     false
+    ],
+    "died": [
+     false,
+     false
+    ],
+    "recall": [
+     false,
+     false
+    ],
+    "held": [
+     false,
+     false
+    ],
+    "S": [
+     32.5025,
+     11.035
+    ],
+    "C": [
+     10,
+     8
+    ],
+    "crash": [
+     0,
+     0
+    ],
+    "lead_A": 0.38
+   },
+   {
+    "turn": 23,
+    "A": "LH-Y",
+    "B": "TN-T",
+    "hp": [
+     0.86,
+     0.98
+    ],
+    "cells": [
+     -1,
+     0
+    ],
+    "conn": [
+     false,
+     true
+    ],
+    "died": [
+     false,
+     false
+    ],
+    "recall": [
+     false,
+     false
+    ],
+    "held": [
+     true,
+     false
+    ],
+    "S": [
+     32.5025,
+     11.035
+    ],
+    "C": [
+     10,
+     8
+    ],
+    "crash": [
+     0,
+     0
+    ],
+    "lead_A": 0.515
+   },
+   {
+    "turn": 24,
+    "A": "SH-Y",
+    "B": "SL-Y",
+    "hp": [
+     0.86,
+     0.98
+    ],
+    "cells": [
+     -2,
+     1
+    ],
+    "conn": [
+     false,
+     false
+    ],
+    "died": [
+     false,
+     false
+    ],
+    "recall": [
+     false,
+     false
+    ],
+    "held": [
+     false,
+     false
+    ],
+    "S": [
+     32.5025,
+     11.035
+    ],
+    "C": [
+     10,
+     8
+    ],
+    "crash": [
+     0,
+     0
+    ],
+    "lead_A": 0.515
+   },
+   {
+    "turn": 25,
+    "A": "SL-Y",
+    "B": "SH-H",
+    "hp": [
+     0.87,
+     0.98
+    ],
+    "cells": [
+     -1,
+     1
+    ],
+    "conn": [
+     false,
+     false
+    ],
+    "died": [
+     false,
+     false
+    ],
+    "recall": [
+     false,
+     false
+    ],
+    "held": [
+     true,
+     false
+    ],
+    "S": [
+     32.5025,
+     11.035
+    ],
+    "C": [
+     10,
+     9
+    ],
+    "crash": [
+     0,
+     0
+    ],
+    "lead_A": 0.515
+   },
+   {
+    "turn": 26,
+    "A": "SH-H",
+    "B": "WARD",
+    "hp": [
+     0.87,
+     0.98
+    ],
+    "cells": [
+     -1,
+     99
+    ],
+    "conn": [
+     false,
+     false
+    ],
+    "died": [
+     false,
+     false
+    ],
+    "recall": [
+     false,
+     false
+    ],
+    "held": [
+     false,
+     false
+    ],
+    "S": [
+     32.5025,
+     11.035
+    ],
+    "C": [
+     11,
+     9
+    ],
+    "crash": [
+     0,
+     0
+    ],
+    "lead_A": 1.19
+   },
+   {
+    "turn": 27,
+    "A": "LH-Y",
+    "B": "TN-T",
+    "hp": [
+     0.87,
+     0.98
+    ],
+    "cells": [
+     -2,
+     0
+    ],
+    "conn": [
+     false,
+     false
+    ],
+    "died": [
+     false,
+     false
+    ],
+    "recall": [
+     false,
+     false
+    ],
+    "held": [
+     true,
+     false
+    ],
+    "S": [
+     32.5025,
+     11.035
+    ],
+    "C": [
+     11,
+     9
+    ],
+    "crash": [
+     0,
+     0
+    ],
+    "lead_A": 1.09
+   },
+   {
+    "turn": 28,
+    "A": "SH-T",
+    "B": "SH-Y",
+    "hp": [
+     0.86,
+     0.98
+    ],
+    "cells": [
+     -1,
+     -1
+    ],
+    "conn": [
+     false,
+     false
+    ],
+    "died": [
+     false,
+     false
+    ],
+    "recall": [
+     false,
+     false
+    ],
+    "held": [
+     false,
+     false
+    ],
+    "S": [
+     32.5025,
+     11.035
+    ],
+    "C": [
+     11,
+     9
+    ],
+    "crash": [
+     0,
+     0
+    ],
+    "lead_A": 1.852
+   },
+   {
+    "turn": 29,
+    "A": "TN-T",
+    "B": "LH-T",
+    "hp": [
+     0.57,
+     0.74
+    ],
+    "cells": [
+     0,
+     0
+    ],
+    "conn": [
+     true,
+     true
+    ],
+    "died": [
+     false,
+     false
+    ],
+    "recall": [
+     false,
+     false
+    ],
+    "held": [
+     false,
+     false
+    ],
+    "S": [
+     32.5025,
+     11.035
+    ],
+    "C": [
+     11,
+     9
+    ],
+    "crash": [
+     0,
+     0
+    ],
+    "lead_A": 1.852
+   },
+   {
+    "turn": 30,
+    "A": "SH-Y",
+    "B": "TN-H",
+    "hp": [
+     0.26,
+     0.74
+    ],
+    "cells": [
+     -1,
+     0
+    ],
+    "conn": [
+     false,
+     false
+    ],
+    "died": [
+     false,
+     false
+    ],
+    "recall": [
+     false,
+     false
+    ],
+    "held": [
+     false,
+     false
+    ],
+    "S": [
+     32.5025,
+     11.035
+    ],
+    "C": [
+     11,
+     9
+    ],
+    "crash": [
+     0,
+     0
+    ],
+    "lead_A": 2.19
+   }
+  ],
+  "early neutral, A +16 invested|C1|s0|t0": [
+   {
+    "turn": 1,
+    "A": "SH-Y",
+    "B": "TN-H",
+    "hp": [
+     1.0,
+     1.0
+    ],
+    "cells": [
+     -1,
+     0
+    ],
+    "conn": [
+     false,
+     false
+    ],
+    "died": [
+     false,
+     false
+    ],
+    "recall": [
+     false,
+     false
+    ],
+    "held": [
+     false,
+     false
+    ],
+    "S": [
+     25.0,
+     9.0
+    ],
+    "C": [
+     8,
+     7
+    ],
+    "crash": [
+     0,
+     0
+    ],
+    "lead_A": 0.787
+   },
+   {
+    "turn": 2,
+    "A": "LH-T",
+    "B": "SH-Y",
+    "hp": [
+     0.98,
+     0.79
+    ],
+    "cells": [
+     0,
+     -1
+    ],
+    "conn": [
+     true,
+     false
+    ],
+    "died": [
+     false,
+     false
+    ],
+    "recall": [
+     false,
+     false
+    ],
+    "held": [
+     false,
+     false
+    ],
+    "S": [
+     25.0,
+     9.0
+    ],
+    "C": [
+     8,
+     7
+    ],
+    "crash": [
+     0,
+     0
+    ],
+    "lead_A": 0.36
+   },
+   {
+    "turn": 3,
+    "A": "LH-T",
+    "B": "SL-Y",
+    "hp": [
+     0.98,
+     0.79
+    ],
+    "cells": [
+     0,
+     -1
+    ],
+    "conn": [
+     true,
+     false
+    ],
+    "died": [
+     false,
+     false
+    ],
+    "recall": [
+     false,
+     false
+    ],
+    "held": [
+     false,
+     false
+    ],
+    "S": [
+     25.0,
+     9.0
+    ],
+    "C": [
+     8,
+     7
+    ],
+    "crash": [
+     0,
+     0
+    ],
+    "lead_A": -0.112
+   },
+   {
+    "turn": 4,
+    "A": "SL-Y",
+    "B": "LH-H",
+    "hp": [
+     0.98,
+     0.24
+    ],
+    "cells": [
+     0,
+     0
+    ],
+    "conn": [
+     false,
+     false
+    ],
+    "died": [
+     false,
+     false
+    ],
+    "recall": [
+     false,
+     false
+    ],
+    "held": [
+     false,
+     false
+    ],
+    "S": [
+     25.0,
+     9.0
+    ],
+    "C": [
+     8,
+     7
+    ],
+    "crash": [
+     0,
+     0
+    ],
+    "lead_A": 0.0
+   },
+   {
+    "turn": 5,
+    "A": "SL-H",
+    "B": "TN-S",
+    "hp": [
+     0.98,
+     0.24
+    ],
+    "cells": [
+     0,
+     -1
+    ],
+    "conn": [
+     false,
+     false
+    ],
+    "died": [
+     false,
+     false
+    ],
+    "recall": [
+     false,
+     false
+    ],
+    "held": [
+     false,
+     false
+    ],
+    "S": [
+     25.0,
+     9.0
+    ],
+    "C": [
+     8,
+     7
+    ],
+    "crash": [
+     0,
+     0
+    ],
+    "lead_A": 0.175
+   },
+   {
+    "turn": 6,
+    "A": "LH-H",
+    "B": "SH-Y",
+    "hp": [
+     0.98,
+     0.24
+    ],
+    "cells": [
+     0,
+     -1
+    ],
+    "conn": [
+     false,
+     false
+    ],
+    "died": [
+     false,
+     false
+    ],
+    "recall": [
+     false,
+     false
+    ],
+    "held": [
+     false,
+     false
+    ],
+    "S": [
+     25.0,
+     9.0
+    ],
+    "C": [
+     8,
+     7
+    ],
+    "crash": [
+     0,
+     0
+    ],
+    "lead_A": -0.5
+   },
+   {
+    "turn": 7,
+    "A": "WARD",
+    "B": "SL-S",
+    "hp": [
+     0.98,
+     0.28
+    ],
+    "cells": [
+     99,
+     -1
+    ],
+    "conn": [
+     false,
+     false
+    ],
+    "died": [
+     false,
+     false
+    ],
+    "recall": [
+     false,
+     false
+    ],
+    "held": [
+     false,
+     false
+    ],
+    "S": [
+     25.0,
+     9.0
+    ],
+    "C": [
+     8,
+     7
+    ],
+    "crash": [
+     0,
+     0
+    ],
+    "lead_A": -0.55
+   },
+   {
+    "turn": 8,
+    "A": "SL-T",
+    "B": "SH-Y",
+    "hp": [
+     0.98,
+     0.28
+    ],
+    "cells": [
+     0,
+     -2
+    ],
+    "conn": [
+     false,
+     false
+    ],
+    "died": [
+     false,
+     false
+    ],
+    "recall": [
+     false,
+     false
+    ],
+    "held": [
+     false,
+     false
+    ],
+    "S": [
+     25.0,
+     9.0
+    ],
+    "C": [
+     8,
+     7
+    ],
+    "crash": [
+     0,
+     0
+    ],
+    "lead_A": -0.025
+   },
+   {
+    "turn": 9,
+    "A": "TN-T",
+    "B": "SL-S",
+    "hp": [
+     0.98,
+     0.28
+    ],
+    "cells": [
+     0,
+     -2
+    ],
+    "conn": [
+     false,
+     false
+    ],
+    "died": [
+     false,
+     false
+    ],
+    "recall": [
+     false,
+     false
+    ],
+    "held": [
+     false,
+     false
+    ],
+    "S": [
+     25.0,
+     9.0
+    ],
+    "C": [
+     9,
+     7
+    ],
+    "crash": [
+     0,
+     0
+    ],
+    "lead_A": 0.312
+   },
+   {
+    "turn": 10,
+    "A": "SL-T",
+    "B": "LH-R",
+    "hp": [
+     0.87,
+     0.28
+    ],
+    "cells": [
+     2,
+     -2
+    ],
+    "conn": [
+     true,
+     false
+    ],
+    "died": [
+     false,
+     false
+    ],
+    "recall": [
+     false,
+     false
+    ],
+    "held": [
+     false,
+     false
+    ],
+    "S": [
+     25.0,
+     9.0
+    ],
+    "C": [
+     9,
+     7
+    ],
+    "crash": [
+     0,
+     0
+    ],
+    "lead_A": 0.312
+   },
+   {
+    "turn": 11,
+    "A": "TN-Y",
+    "B": "LH-R",
+    "hp": [
+     0.87,
+     null
+    ],
+    "cells": [
+     0,
+     -2
+    ],
+    "conn": [
+     false,
+     false
+    ],
+    "died": [
+     false,
+     false
+    ],
+    "recall": [
+     false,
+     true
+    ],
+    "held": [
+     false,
+     false
+    ],
+    "S": [
+     25.0,
+     9.0
+    ],
+    "C": [
+     9,
+     7
+    ],
+    "crash": [
+     0,
+     0
+    ],
+    "lead_A": 0.762
+   },
+   {
+    "turn": 12,
+    "A": "SL-H",
+    "B": "ABSENT",
+    "hp": [
+     0.87,
+     1.0
+    ],
+    "cells": [
+     0,
+     -2
+    ],
+    "conn": [
+     false,
+     false
+    ],
+    "died": [
+     false,
+     false
+    ],
+    "recall": [
+     false,
+     false
+    ],
+    "held": [
+     false,
+     false
+    ],
+    "S": [
+     25.0,
+     12.2875
+    ],
+    "C": [
+     9,
+     7
+    ],
+    "crash": [
+     0,
+     0
+    ],
+    "lead_A": 1.325
+   },
+   {
+    "turn": 13,
+    "A": "SL-H",
+    "B": "LH-T",
+    "hp": [
+     0.58,
+     0.93
+    ],
+    "cells": [
+     0,
+     -1
+    ],
+    "conn": [
+     false,
+     true
+    ],
+    "died": [
+     false,
+     false
+    ],
+    "recall": [
+     false,
+     false
+    ],
+    "held": [
+     false,
+     false
+    ],
+    "S": [
+     25.0,
+     12.2875
+    ],
+    "C": [
+     9,
+     8
+    ],
+    "crash": [
+     0,
+     0
+    ],
+    "lead_A": 1.167
+   },
+   {
+    "turn": 14,
+    "A": "SH-Y",
+    "B": "SL-T",
+    "hp": [
+     0.3,
+     0.81
+    ],
+    "cells": [
+     -1,
+     0
+    ],
+    "conn": [
+     false,
+     true
+    ],
+    "died": [
+     false,
+     false
+    ],
+    "recall": [
+     false,
+     false
+    ],
+    "held": [
+     false,
+     false
+    ],
+    "S": [
+     25.0,
+     12.2875
+    ],
+    "C": [
+     9,
+     8
+    ],
+    "crash": [
+     0,
+     0
+    ],
+    "lead_A": 1.55
+   },
+   {
+    "turn": 15,
+    "A": "LH-R",
+    "B": "TN-T",
+    "hp": [
+     0.3,
+     0.81
+    ],
+    "cells": [
+     -1,
+     0
+    ],
+    "conn": [
+     false,
+     true
+    ],
+    "died": [
+     false,
+     false
+    ],
+    "recall": [
+     false,
+     false
+    ],
+    "held": [
+     false,
+     false
+    ],
+    "S": [
+     25.0,
+     12.2875
+    ],
+    "C": [
+     9,
+     8
+    ],
+    "crash": [
+     0,
+     0
+    ],
+    "lead_A": 1.1
+   },
+   {
+    "turn": 16,
+    "A": "SH-T",
+    "B": "LH-T",
+    "hp": [
+     0.14,
+     0.54
+    ],
+    "cells": [
+     -1,
+     0
+    ],
+    "conn": [
+     true,
+     true
+    ],
+    "died": [
+     false,
+     false
+    ],
+    "recall": [
+     false,
+     false
+    ],
+    "held": [
+     false,
+     false
+    ],
+    "S": [
+     25.0,
+     12.2875
+    ],
+    "C": [
+     9,
+     8
+    ],
+    "crash": [
+     0,
+     0
+    ],
+    "lead_A": 1.46
+   },
+   {
+    "turn": 17,
+    "A": "LH-R",
+    "B": "LH-T",
+    "hp": [
+     null,
+     0.47
+    ],
+    "cells": [
+     -1,
+     0
+    ],
+    "conn": [
+     false,
+     true
+    ],
+    "died": [
+     true,
+     false
+    ],
+    "recall": [
+     false,
+     false
+    ],
+    "held": [
+     false,
+     false
+    ],
+    "S": [
+     25.0,
+     12.2875
+    ],
+    "C": [
+     9,
+     8
+    ],
+    "crash": [
+     0,
+     0
+    ],
+    "lead_A": -0.81
+   },
+   {
+    "turn": 18,
+    "A": "ABSENT",
+    "B": "SH-H",
+    "hp": [
+     null,
+     0.5
+    ],
+    "cells": [
+     -2,
+     0
+    ],
+    "conn": [
+     false,
+     false
+    ],
+    "died": [
+     false,
+     false
+    ],
+    "recall": [
+     false,
+     false
+    ],
+    "held": [
+     false,
+     false
+    ],
+    "S": [
+     25.0,
+     12.2875
+    ],
+    "C": [
+     9,
+     8
+    ],
+    "crash": [
+     0,
+     0
+    ],
+    "lead_A": -2.048
+   },
+   {
+    "turn": 19,
+    "A": "ABSENT",
+    "B": "SH-Y",
+    "hp": [
+     null,
+     0.5
+    ],
+    "cells": [
+     -2,
+     -1
+    ],
+    "conn": [
+     false,
+     false
+    ],
+    "died": [
+     false,
+     false
+    ],
+    "recall": [
+     false,
+     false
+    ],
+    "held": [
+     false,
+     false
+    ],
+    "S": [
+     25.0,
+     12.2875
+    ],
+    "C": [
+     9,
+     8
+    ],
+    "crash": [
+     0,
+     0
+    ],
+    "lead_A": -3.06
+   },
+   {
+    "turn": 20,
+    "A": "ABSENT",
+    "B": "SH-Y",
+    "hp": [
+     null,
+     0.5
+    ],
+    "cells": [
+     -2,
+     1
+    ],
+    "conn": [
+     false,
+     false
+    ],
+    "died": [
+     false,
+     false
+    ],
+    "recall": [
+     false,
+     false
+    ],
+    "held": [
+     false,
+     false
+    ],
+    "S": [
+     25.0,
+     12.2875
+    ],
+    "C": [
+     9,
+     8
+    ],
+    "crash": [
+     0,
+     0
+    ],
+    "lead_A": -3.96
+   },
+   {
+    "turn": 21,
+    "A": "ABSENT",
+    "B": "SH-H",
+    "hp": [
+     1.0,
+     0.5
+    ],
+    "cells": [
+     -2,
+     1
+    ],
+    "conn": [
+     false,
+     false
+    ],
+    "died": [
+     false,
+     false
+    ],
+    "recall": [
+     false,
+     false
+    ],
+    "held": [
+     false,
+     false
+    ],
+    "S": [
+     31.1875,
+     12.2875
+    ],
+    "C": [
+     9,
+     8
+    ],
+    "crash": [
+     0,
+     18
+    ],
+    "lead_A": -3.96
+   },
+   {
+    "turn": 22,
+    "A": "SH-H",
+    "B": "SH-H+P",
+    "hp": [
+     1.0,
+     null
+    ],
+    "cells": [
+     -2,
+     2
+    ],
+    "conn": [
+     false,
+     false
+    ],
+    "died": [
+     false,
+     true
+    ],
+    "recall": [
+     false,
+     false
+    ],
+    "held": [
+     false,
+     false
+    ],
+    "S": [
+     31.1875,
+     12.2875
+    ],
+    "C": [
+     10,
+     8
+    ],
+    "crash": [
+     0,
+     0
+    ],
+    "lead_A": -1.01
+   },
+   {
+    "turn": 23,
+    "A": "SH-H",
+    "B": "ABSENT",
+    "hp": [
+     1.0,
+     null
+    ],
+    "cells": [
+     -2,
+     -2
+    ],
+    "conn": [
+     false,
+     false
+    ],
+    "died": [
+     false,
+     false
+    ],
+    "recall": [
+     false,
+     false
+    ],
+    "held": [
+     false,
+     false
+    ],
+    "S": [
+     31.1875,
+     12.2875
+    ],
+    "C": [
+     10,
+     8
+    ],
+    "crash": [
+     0,
+     3
+    ],
+    "lead_A": -0.148
+   },
+   {
+    "turn": 24,
+    "A": "SH-Y",
+    "B": "ABSENT",
+    "hp": [
+     1.0,
+     null
+    ],
+    "cells": [
+     0,
+     -2
+    ],
+    "conn": [
+     false,
+     false
+    ],
+    "died": [
+     false,
+     false
+    ],
+    "recall": [
+     false,
+     false
+    ],
+    "held": [
+     false,
+     false
+    ],
+    "S": [
+     31.1875,
+     12.2875
+    ],
+    "C": [
+     10,
+     8
+    ],
+    "crash": [
+     0,
+     0
+    ],
+    "lead_A": 0.752
+   },
+   {
+    "turn": 25,
+    "A": "SH-T",
+    "B": "ABSENT",
+    "hp": [
+     1.0,
+     null
+    ],
+    "cells": [
+     1,
+     -2
+    ],
+    "conn": [
+     false,
+     false
+    ],
+    "died": [
+     false,
+     false
+    ],
+    "recall": [
+     false,
+     false
+    ],
+    "held": [
+     false,
+     false
+    ],
+    "S": [
+     31.1875,
+     12.2875
+    ],
+    "C": [
+     10,
+     8
+    ],
+    "crash": [
+     8,
+     0
+    ],
+    "lead_A": 1.427
+   },
+   {
+    "turn": 26,
+    "A": "SH-H+P",
+    "B": "ABSENT",
+    "hp": [
+     1.0,
+     1.0
+    ],
+    "cells": [
+     2,
+     -2
+    ],
+    "conn": [
+     false,
+     false
+    ],
+    "died": [
+     false,
+     false
+    ],
+    "recall": [
+     false,
+     false
+    ],
+    "held": [
+     false,
+     false
+    ],
+    "S": [
+     31.1875,
+     19.5975
+    ],
+    "C": [
+     10,
+     8
+    ],
+    "crash": [
+     0,
+     0
+    ],
+    "lead_A": 1.652
+   },
+   {
+    "turn": 27,
+    "A": "SH-H",
+    "B": "SH-Y",
+    "hp": [
+     1.0,
+     1.0
+    ],
+    "cells": [
+     1,
+     -2
+    ],
+    "conn": [
+     false,
+     false
+    ],
+    "died": [
+     false,
+     false
+    ],
+    "recall": [
+     false,
+     false
+    ],
+    "held": [
+     false,
+     false
+    ],
+    "S": [
+     31.1875,
+     19.5975
+    ],
+    "C": [
+     10,
+     9
+    ],
+    "crash": [
+     3,
+     0
+    ],
+    "lead_A": 1.352
+   },
+   {
+    "turn": 28,
+    "A": "SL-S",
+    "B": "LH-S",
+    "hp": [
+     1.0,
+     1.0
+    ],
+    "cells": [
+     -1,
+     -1
+    ],
+    "conn": [
+     false,
+     false
+    ],
+    "died": [
+     false,
+     false
+    ],
+    "recall": [
+     false,
+     false
+    ],
+    "held": [
+     false,
+     false
+    ],
+    "S": [
+     31.1875,
+     19.5975
+    ],
+    "C": [
+     10,
+     9
+    ],
+    "crash": [
+     0,
+     0
+    ],
+    "lead_A": 1.402
+   },
+   {
+    "turn": 29,
+    "A": "TN-T",
+    "B": "LH-T",
+    "hp": [
+     0.69,
+     0.8
+    ],
+    "cells": [
+     0,
+     0
+    ],
+    "conn": [
+     true,
+     true
+    ],
+    "died": [
+     false,
+     false
+    ],
+    "recall": [
+     false,
+     false
+    ],
+    "held": [
+     false,
+     false
+    ],
+    "S": [
+     31.1875,
+     19.5975
+    ],
+    "C": [
+     10,
+     9
+    ],
+    "crash": [
+     0,
+     0
+    ],
+    "lead_A": 1.402
+   },
+   {
+    "turn": 30,
+    "A": "SH-Y",
+    "B": "SH-H",
+    "hp": [
+     0.37,
+     0.8
+    ],
+    "cells": [
+     -1,
+     0
+    ],
+    "conn": [
+     false,
+     false
+    ],
+    "died": [
+     false,
+     false
+    ],
+    "recall": [
+     false,
+     false
+    ],
+    "held": [
+     false,
+     false
+    ],
+    "S": [
+     31.1875,
+     19.5975
+    ],
+    "C": [
+     10,
+     9
+    ],
+    "crash": [
+     0,
+     0
+    ],
+    "lead_A": 1.29
+   }
+  ],
+  "early neutral, A +16 invested|baseline|s0|t1": [
+   {
+    "turn": 1,
+    "A": "LH-T",
+    "B": "SH-Y",
+    "hp": [
+     1.0,
+     1.0
+    ],
+    "cells": [
+     0,
+     -1
+    ],
+    "conn": [
+     true,
+     false
+    ],
+    "died": [
+     false,
+     false
+    ],
+    "recall": [
+     false,
+     false
+    ],
+    "held": [
+     false,
+     false
+    ],
+    "S": [
+     25.0,
+     9.0
+    ],
+    "C": [
+     9,
+     7
+    ],
+    "crash": [
+     0,
+     0
+    ],
+    "lead_A": -0.765
+   },
+   {
+    "turn": 2,
+    "A": "SH-Y",
+    "B": "SL-T",
+    "hp": [
+     1.0,
+     1.0
+    ],
+    "cells": [
+     -1,
+     0
+    ],
+    "conn": [
+     false,
+     true
+    ],
+    "died": [
+     false,
+     false
+    ],
+    "recall": [
+     false,
+     false
+    ],
+    "held": [
+     false,
+     false
+    ],
+    "S": [
+     25.0,
+     9.0
+    ],
+    "C": [
+     9,
+     7
+    ],
+    "crash": [
+     0,
+     0
+    ],
+    "lead_A": 0.09
+   },
+   {
+    "turn": 3,
+    "A": "LH-T",
+    "B": "SH-Y",
+    "hp": [
+     0.98,
+     0.8
+    ],
+    "cells": [
+     0,
+     -1
+    ],
+    "conn": [
+     true,
+     false
+    ],
+    "died": [
+     false,
+     false
+    ],
+    "recall": [
+     false,
+     false
+    ],
+    "held": [
+     false,
+     false
+    ],
+    "S": [
+     25.0,
+     9.0
+    ],
+    "C": [
+     9,
+     7
+    ],
+    "crash": [
+     0,
+     0
+    ],
+    "lead_A": -0.068
+   },
+   {
+    "turn": 4,
+    "A": "TN-T",
+    "B": "LH-R",
+    "hp": [
+     0.98,
+     0.8
+    ],
+    "cells": [
+     0,
+     -1
+    ],
+    "conn": [
+     true,
+     false
+    ],
+    "died": [
+     false,
+     false
+    ],
+    "recall": [
+     false,
+     false
+    ],
+    "held": [
+     false,
+     false
+    ],
+    "S": [
+     25.0,
+     9.0
+    ],
+    "C": [
+     9,
+     7
+    ],
+    "crash": [
+     0,
+     0
+    ],
+    "lead_A": 0.112
+   },
+   {
+    "turn": 5,
+    "A": "SL-T",
+    "B": "SL-Y",
+    "hp": [
+     0.96,
+     0.6
+    ],
+    "cells": [
+     0,
+     -1
+    ],
+    "conn": [
+     true,
+     false
+    ],
+    "died": [
+     false,
+     false
+    ],
+    "recall": [
+     false,
+     false
+    ],
+    "held": [
+     false,
+     false
+    ],
+    "S": [
+     25.0,
+     9.0
+    ],
+    "C": [
+     9,
+     7
+    ],
+    "crash": [
+     0,
+     0
+    ],
+    "lead_A": -0.158
+   },
+   {
+    "turn": 6,
+    "A": "TN-T",
+    "B": "LH-Y",
+    "hp": [
+     0.96,
+     0.6
+    ],
+    "cells": [
+     0,
+     -1
+    ],
+    "conn": [
+     true,
+     false
+    ],
+    "died": [
+     false,
+     false
+    ],
+    "recall": [
+     false,
+     false
+    ],
+    "held": [
+     false,
+     false
+    ],
+    "S": [
+     25.0,
+     9.0
+    ],
+    "C": [
+     9,
+     7
+    ],
+    "crash": [
+     0,
+     0
+    ],
+    "lead_A": -0.248
+   },
+   {
+    "turn": 7,
+    "A": "LH-Y",
+    "B": "TN-Y",
+    "hp": [
+     0.96,
+     0.6
+    ],
+    "cells": [
+     -1,
+     -1
+    ],
+    "conn": [
+     false,
+     false
+    ],
+    "died": [
+     false,
+     false
+    ],
+    "recall": [
+     false,
+     false
+    ],
+    "held": [
+     false,
+     false
+    ],
+    "S": [
+     25.0,
+     9.0
+    ],
+    "C": [
+     9,
+     7
+    ],
+    "crash": [
+     0,
+     0
+    ],
+    "lead_A": -0.248
+   },
+   {
+    "turn": 8,
+    "A": "TN-T",
+    "B": "LH-Y",
+    "hp": [
+     0.96,
+     0.62
+    ],
+    "cells": [
+     0,
+     -2
+    ],
+    "conn": [
+     false,
+     false
+    ],
+    "died": [
+     false,
+     false
+    ],
+    "recall": [
+     false,
+     false
+    ],
+    "held": [
+     false,
+     false
+    ],
+    "S": [
+     25.0,
+     9.0
+    ],
+    "C": [
+     9,
+     7
+    ],
+    "crash": [
+     0,
+     0
+    ],
+    "lead_A": 0.052
+   },
+   {
+    "turn": 9,
+    "A": "TN-Y",
+    "B": "LH-T",
+    "hp": [
+     0.96,
+     0.62
+    ],
+    "cells": [
+     -2,
+     0
+    ],
+    "conn": [
+     false,
+     false
+    ],
+    "died": [
+     false,
+     false
+    ],
+    "recall": [
+     false,
+     false
+    ],
+    "held": [
+     false,
+     false
+    ],
+    "S": [
+     25.0,
+     9.0
+    ],
+    "C": [
+     9,
+     8
+    ],
+    "crash": [
+     0,
+     0
+    ],
+    "lead_A": -0.185
+   },
+   {
+    "turn": 10,
+    "A": "LH-T",
+    "B": "SH-Y",
+    "hp": [
+     0.96,
+     0.62
+    ],
+    "cells": [
+     0,
+     -2
+    ],
+    "conn": [
+     false,
+     false
+    ],
+    "died": [
+     false,
+     false
+    ],
+    "recall": [
+     false,
+     false
+    ],
+    "held": [
+     false,
+     false
+    ],
+    "S": [
+     25.0,
+     9.0
+    ],
+    "C": [
+     9,
+     8
+    ],
+    "crash": [
+     0,
+     0
+    ],
+    "lead_A": 0.115
+   },
+   {
+    "turn": 11,
+    "A": "TN-Y",
+    "B": "TN-T",
+    "hp": [
+     0.96,
+     0.36
+    ],
+    "cells": [
+     -2,
+     0
+    ],
+    "conn": [
+     false,
+     false
+    ],
+    "died": [
+     false,
+     false
+    ],
+    "recall": [
+     false,
+     false
+    ],
+    "held": [
+     false,
+     false
+    ],
+    "S": [
+     25.0,
+     9.0
+    ],
+    "C": [
+     9,
+     8
+    ],
+    "crash": [
+     0,
+     0
+    ],
+    "lead_A": -0.298
+   },
+   {
+    "turn": 12,
+    "A": "SL-T",
+    "B": "SH-Y",
+    "hp": [
+     0.96,
+     0.36
+    ],
+    "cells": [
+     0,
+     -2
+    ],
+    "conn": [
+     false,
+     false
+    ],
+    "died": [
+     false,
+     false
+    ],
+    "recall": [
+     false,
+     false
+    ],
+    "held": [
+     false,
+     false
+    ],
+    "S": [
+     25.0,
+     9.0
+    ],
+    "C": [
+     9,
+     8
+    ],
+    "crash": [
+     0,
+     0
+    ],
+    "lead_A": 0.227
+   },
+   {
+    "turn": 13,
+    "A": "TN-Y",
+    "B": "LH-R",
+    "hp": [
+     0.96,
+     null
+    ],
+    "cells": [
+     -1,
+     -2
+    ],
+    "conn": [
+     false,
+     false
+    ],
+    "died": [
+     false,
+     false
+    ],
+    "recall": [
+     false,
+     true
+    ],
+    "held": [
+     false,
+     false
+    ],
+    "S": [
+     25.0,
+     9.0
+    ],
+    "C": [
+     9,
+     8
+    ],
+    "crash": [
+     0,
+     0
+    ],
+    "lead_A": 0.677
+   },
+   {
+    "turn": 14,
+    "A": "TN-H",
+    "B": "ABSENT",
+    "hp": [
+     0.96,
+     1.0
+    ],
+    "cells": [
+     0,
+     -2
+    ],
+    "conn": [
+     false,
+     false
+    ],
+    "died": [
+     false,
+     false
+    ],
+    "recall": [
+     false,
+     false
+    ],
+    "held": [
+     false,
+     false
+    ],
+    "S": [
+     25.0,
+     13.2075
+    ],
+    "C": [
+     9,
+     8
+    ],
+    "crash": [
+     0,
+     0
+    ],
+    "lead_A": 1.24
+   },
+   {
+    "turn": 15,
+    "A": "TN-Y",
+    "B": "LH-Y",
+    "hp": [
+     0.96,
+     1.0
+    ],
+    "cells": [
+     -1,
+     -1
+    ],
+    "conn": [
+     false,
+     false
+    ],
+    "died": [
+     false,
+     false
+    ],
+    "recall": [
+     false,
+     false
+    ],
+    "held": [
+     false,
+     false
+    ],
+    "S": [
+     25.0,
+     13.2075
+    ],
+    "C": [
+     9,
+     8
+    ],
+    "crash": [
+     0,
+     0
+    ],
+    "lead_A": 1.465
+   },
+   {
+    "turn": 16,
+    "A": "SL-T",
+    "B": "SL-T",
+    "hp": [
+     0.91,
+     0.63
+    ],
+    "cells": [
+     0,
+     0
+    ],
+    "conn": [
+     true,
+     true
+    ],
+    "died": [
+     false,
+     false
+    ],
+    "recall": [
+     false,
+     false
+    ],
+    "held": [
+     false,
+     false
+    ],
+    "S": [
+     25.0,
+     13.2075
+    ],
+    "C": [
+     9,
+     8
+    ],
+    "crash": [
+     0,
+     0
+    ],
+    "lead_A": 1.645
+   },
+   {
+    "turn": 17,
+    "A": "LH-T",
+    "B": "SH-S",
+    "hp": [
+     0.91,
+     0.63
+    ],
+    "cells": [
+     0,
+     -2
+    ],
+    "conn": [
+     false,
+     false
+    ],
+    "died": [
+     false,
+     false
+    ],
+    "recall": [
+     false,
+     false
+    ],
+    "held": [
+     false,
+     false
+    ],
+    "S": [
+     25.0,
+     13.2075
+    ],
+    "C": [
+     10,
+     8
+    ],
+    "crash": [
+     0,
+     0
+    ],
+    "lead_A": 2.208
+   },
+   {
+    "turn": 18,
+    "A": "SL-T",
+    "B": "SH-T",
+    "hp": [
+     0.64,
+     0.12
+    ],
+    "cells": [
+     2,
+     -1
+    ],
+    "conn": [
+     true,
+     true
+    ],
+    "died": [
+     false,
+     false
+    ],
+    "recall": [
+     false,
+     false
+    ],
+    "held": [
+     false,
+     false
+    ],
+    "S": [
+     25.0,
+     13.2075
+    ],
+    "C": [
+     10,
+     8
+    ],
+    "crash": [
+     0,
+     0
+    ],
+    "lead_A": 1.758
+   },
+   {
+    "turn": 19,
+    "A": "SL-H",
+    "B": "LH-R",
+    "hp": [
+     0.64,
+     null
+    ],
+    "cells": [
+     0,
+     -2
+    ],
+    "conn": [
+     false,
+     false
+    ],
+    "died": [
+     false,
+     false
+    ],
+    "recall": [
+     false,
+     true
+    ],
+    "held": [
+     false,
+     false
+    ],
+    "S": [
+     25.0,
+     13.2075
+    ],
+    "C": [
+     10,
+     8
+    ],
+    "crash": [
+     0,
+     0
+    ],
+    "lead_A": 2.433
+   },
+   {
+    "turn": 20,
+    "A": "TN-T",
+    "B": "ABSENT",
+    "hp": [
+     0.64,
+     1.0
+    ],
+    "cells": [
+     0,
+     -2
+    ],
+    "conn": [
+     false,
+     false
+    ],
+    "died": [
+     false,
+     false
+    ],
+    "recall": [
+     false,
+     false
+    ],
+    "held": [
+     false,
+     false
+    ],
+    "S": [
+     25.0,
+     14.2425
+    ],
+    "C": [
+     10,
+     8
+    ],
+    "crash": [
+     0,
+     0
+    ],
+    "lead_A": 3.22
+   },
+   {
+    "turn": 21,
+    "A": "SL-H",
+    "B": "SH-Y",
+    "hp": [
+     0.64,
+     1.0
+    ],
+    "cells": [
+     0,
+     -1
+    ],
+    "conn": [
+     false,
+     false
+    ],
+    "died": [
+     false,
+     false
+    ],
+    "recall": [
+     false,
+     false
+    ],
+    "held": [
+     false,
+     false
+    ],
+    "S": [
+     25.0,
+     14.2425
+    ],
+    "C": [
+     10,
+     8
+    ],
+    "crash": [
+     0,
+     0
+    ],
+    "lead_A": 2.883
+   },
+   {
+    "turn": 22,
+    "A": "SL-Y",
+    "B": "TN-T",
+    "hp": [
+     0.64,
+     1.0
+    ],
+    "cells": [
+     1,
+     -1
+    ],
+    "conn": [
+     false,
+     true
+    ],
+    "died": [
+     false,
+     false
+    ],
+    "recall": [
+     false,
+     false
+    ],
+    "held": [
+     false,
+     true
+    ],
+    "S": [
+     25.0,
+     14.2425
+    ],
+    "C": [
+     10,
+     9
+    ],
+    "crash": [
+     0,
+     0
+    ],
+    "lead_A": 2.905
+   },
+   {
+    "turn": 23,
+    "A": "SH-H",
+    "B": "SH-Y",
+    "hp": [
+     0.66,
+     1.0
+    ],
+    "cells": [
+     1,
+     -2
+    ],
+    "conn": [
+     false,
+     false
+    ],
+    "died": [
+     false,
+     false
+    ],
+    "recall": [
+     false,
+     false
+    ],
+    "held": [
+     false,
+     false
+    ],
+    "S": [
+     25.0,
+     14.2425
+    ],
+    "C": [
+     10,
+     9
+    ],
+    "crash": [
+     11,
+     0
+    ],
+    "lead_A": 2.743
+   },
+   {
+    "turn": 24,
+    "A": "SH-H+P",
+    "B": "SL-Y",
+    "hp": [
+     0.66,
+     1.0
+    ],
+    "cells": [
+     2,
+     -2
+    ],
+    "conn": [
+     false,
+     false
+    ],
+    "died": [
+     false,
+     false
+    ],
+    "recall": [
+     false,
+     false
+    ],
+    "held": [
+     false,
+     false
+    ],
+    "S": [
+     25.0,
+     14.2425
+    ],
+    "C": [
+     10,
+     9
+    ],
+    "crash": [
+     0,
+     0
+    ],
+    "lead_A": 2.368
+   },
+   {
+    "turn": 25,
+    "A": "SH-Y",
+    "B": "SH-H",
+    "hp": [
+     0.66,
+     1.0
+    ],
+    "cells": [
+     1,
+     -2
+    ],
+    "conn": [
+     false,
+     false
+    ],
+    "died": [
+     false,
+     false
+    ],
+    "recall": [
+     false,
+     false
+    ],
+    "held": [
+     false,
+     false
+    ],
+    "S": [
+     25.0,
+     14.2425
+    ],
+    "C": [
+     10,
+     9
+    ],
+    "crash": [
+     3,
+     0
+    ],
+    "lead_A": 2.068
+   },
+   {
+    "turn": 26,
+    "A": "SH-Y",
+    "B": "SL-H",
+    "hp": [
+     0.66,
+     1.0
+    ],
+    "cells": [
+     0,
+     -2
+    ],
+    "conn": [
+     false,
+     false
+    ],
+    "died": [
+     false,
+     false
+    ],
+    "recall": [
+     false,
+     false
+    ],
+    "held": [
+     false,
+     false
+    ],
+    "S": [
+     25.0,
+     14.2425
+    ],
+    "C": [
+     10,
+     9
+    ],
+    "crash": [
+     0,
+     0
+    ],
+    "lead_A": 2.405
+   },
+   {
+    "turn": 27,
+    "A": "LH-S",
+    "B": "SH-Y",
+    "hp": [
+     0.66,
+     1.0
+    ],
+    "cells": [
+     -1,
+     -2
+    ],
+    "conn": [
+     false,
+     false
+    ],
+    "died": [
+     false,
+     false
+    ],
+    "recall": [
+     false,
+     false
+    ],
+    "held": [
+     false,
+     false
+    ],
+    "S": [
+     25.0,
+     14.2425
+    ],
+    "C": [
+     10,
+     9
+    ],
+    "crash": [
+     3,
+     0
+    ],
+    "lead_A": 1.543
+   },
+   {
+    "turn": 28,
+    "A": "LH-R",
+    "B": "LH-T",
+    "hp": [
+     0.66,
+     1.0
+    ],
+    "cells": [
+     -1,
+     0
+    ],
+    "conn": [
+     false,
+     true
+    ],
+    "died": [
+     false,
+     false
+    ],
+    "recall": [
+     false,
+     false
+    ],
+    "held": [
+     false,
+     false
+    ],
+    "S": [
+     25.0,
+     14.2425
+    ],
+    "C": [
+     10,
+     9
+    ],
+    "crash": [
+     0,
+     0
+    ],
+    "lead_A": 1.363
+   },
+   {
+    "turn": 29,
+    "A": "SL-Y",
+    "B": "LH-Y",
+    "hp": [
+     0.66,
+     1.0
+    ],
+    "cells": [
+     -1,
+     -1
+    ],
+    "conn": [
+     false,
+     false
+    ],
+    "died": [
+     false,
+     false
+    ],
+    "recall": [
+     false,
+     false
+    ],
+    "held": [
+     false,
+     false
+    ],
+    "S": [
+     25.0,
+     14.2425
+    ],
+    "C": [
+     10,
+     9
+    ],
+    "crash": [
+     0,
+     0
+    ],
+    "lead_A": 1.7
+   },
+   {
+    "turn": 30,
+    "A": "SH-Y",
+    "B": "SH-H",
+    "hp": [
+     0.66,
+     1.0
+    ],
+    "cells": [
+     -1,
+     0
+    ],
+    "conn": [
+     false,
+     false
+    ],
+    "died": [
+     false,
+     false
+    ],
+    "recall": [
+     false,
+     false
+    ],
+    "held": [
+     false,
+     false
+    ],
+    "S": [
+     25.0,
+     14.2425
+    ],
+    "C": [
+     10,
+     9
+    ],
+    "crash": [
+     0,
+     0
+    ],
+    "lead_A": 1.813
+   }
+  ],
+  "early neutral, A +16 invested|C1|s0|t1": [
+   {
+    "turn": 1,
+    "A": "SH-Y",
+    "B": "LH-Y",
+    "hp": [
+     1.0,
+     1.0
+    ],
+    "cells": [
+     -1,
+     -1
+    ],
+    "conn": [
+     false,
+     false
+    ],
+    "died": [
+     false,
+     false
+    ],
+    "recall": [
+     false,
+     false
+    ],
+    "held": [
+     false,
+     false
+    ],
+    "S": [
+     25.0,
+     9.0
+    ],
+    "C": [
+     8,
+     7
+    ],
+    "crash": [
+     0,
+     0
+    ],
+    "lead_A": 0.787
+   },
+   {
+    "turn": 2,
+    "A": "LH-T",
+    "B": "SL-T",
+    "hp": [
+     0.98,
+     0.79
+    ],
+    "cells": [
+     0,
+     0
+    ],
+    "conn": [
+     true,
+     true
+    ],
+    "died": [
+     false,
+     false
+    ],
+    "recall": [
+     false,
+     false
+    ],
+    "held": [
+     false,
+     false
+    ],
+    "S": [
+     25.0,
+     9.0
+    ],
+    "C": [
+     8,
+     7
+    ],
+    "crash": [
+     0,
+     0
+    ],
+    "lead_A": 0.787
+   },
+   {
+    "turn": 3,
+    "A": "LH-T",
+    "B": "LH-Y",
+    "hp": [
+     0.95,
+     0.59
+    ],
+    "cells": [
+     0,
+     -1
+    ],
+    "conn": [
+     true,
+     false
+    ],
+    "died": [
+     false,
+     false
+    ],
+    "recall": [
+     false,
+     false
+    ],
+    "held": [
+     false,
+     true
+    ],
+    "S": [
+     25.0,
+     9.0
+    ],
+    "C": [
+     8,
+     7
+    ],
+    "crash": [
+     0,
+     0
+    ],
+    "lead_A": 0.652
+   },
+   {
+    "turn": 4,
+    "A": "SH-Y",
+    "B": "SH-Y",
+    "hp": [
+     0.95,
+     0.59
+    ],
+    "cells": [
+     1,
+     -2
+    ],
+    "conn": [
+     false,
+     false
+    ],
+    "died": [
+     false,
+     false
+    ],
+    "recall": [
+     false,
+     false
+    ],
+    "held": [
+     false,
+     false
+    ],
+    "S": [
+     25.0,
+     9.0
+    ],
+    "C": [
+     8,
+     7
+    ],
+    "crash": [
+     0,
+     0
+    ],
+    "lead_A": 0.652
+   },
+   {
+    "turn": 5,
+    "A": "SL-S",
+    "B": "SH-S",
+    "hp": [
+     0.95,
+     0.59
+    ],
+    "cells": [
+     -1,
+     -2
+    ],
+    "conn": [
+     false,
+     false
+    ],
+    "died": [
+     false,
+     false
+    ],
+    "recall": [
+     false,
+     false
+    ],
+    "held": [
+     false,
+     false
+    ],
+    "S": [
+     25.0,
+     9.0
+    ],
+    "C": [
+     8,
+     7
+    ],
+    "crash": [
+     6,
+     0
+    ],
+    "lead_A": 0.052
+   },
+   {
+    "turn": 6,
+    "A": "SL-H",
+    "B": "TN-Y",
+    "hp": [
+     0.95,
+     0.59
+    ],
+    "cells": [
+     0,
+     -1
+    ],
+    "conn": [
+     false,
+     false
+    ],
+    "died": [
+     false,
+     false
+    ],
+    "recall": [
+     false,
+     false
+    ],
+    "held": [
+     false,
+     false
+    ],
+    "S": [
+     25.0,
+     9.0
+    ],
+    "C": [
+     8,
+     7
+    ],
+    "crash": [
+     0,
+     0
+    ],
+    "lead_A": 0.052
+   },
+   {
+    "turn": 7,
+    "A": "TN-Y",
+    "B": "TN-Y",
+    "hp": [
+     0.95,
+     0.59
+    ],
+    "cells": [
+     0,
+     -1
+    ],
+    "conn": [
+     false,
+     false
+    ],
+    "died": [
+     false,
+     false
+    ],
+    "recall": [
+     false,
+     false
+    ],
+    "held": [
+     false,
+     false
+    ],
+    "S": [
+     25.0,
+     9.0
+    ],
+    "C": [
+     8,
+     7
+    ],
+    "crash": [
+     0,
+     0
+    ],
+    "lead_A": 0.052
+   },
+   {
+    "turn": 8,
+    "A": "TN-T",
+    "B": "LH-Y",
+    "hp": [
+     0.96,
+     0.61
+    ],
+    "cells": [
+     0,
+     -1
+    ],
+    "conn": [
+     true,
+     false
+    ],
+    "died": [
+     false,
+     false
+    ],
+    "recall": [
+     false,
+     false
+    ],
+    "held": [
+     false,
+     false
+    ],
+    "S": [
+     25.0,
+     9.0
+    ],
+    "C": [
+     8,
+     7
+    ],
+    "crash": [
+     0,
+     0
+    ],
+    "lead_A": 0.165
+   },
+   {
+    "turn": 9,
+    "A": "TN-T",
+    "B": "TN-Y",
+    "hp": [
+     0.92,
+     0.4
+    ],
+    "cells": [
+     0,
+     -1
+    ],
+    "conn": [
+     true,
+     false
+    ],
+    "died": [
+     false,
+     false
+    ],
+    "recall": [
+     false,
+     false
+    ],
+    "held": [
+     false,
+     false
+    ],
+    "S": [
+     25.0,
+     9.0
+    ],
+    "C": [
+     9,
+     7
+    ],
+    "crash": [
+     0,
+     0
+    ],
+    "lead_A": 0.21
+   },
+   {
+    "turn": 10,
+    "A": "LH-T",
+    "B": "SH-S",
+    "hp": [
+     0.92,
+     0.4
+    ],
+    "cells": [
+     0,
+     -2
+    ],
+    "conn": [
+     false,
+     false
+    ],
+    "died": [
+     false,
+     false
+    ],
+    "recall": [
+     false,
+     false
+    ],
+    "held": [
+     false,
+     false
+    ],
+    "S": [
+     25.0,
+     9.0
+    ],
+    "C": [
+     9,
+     7
+    ],
+    "crash": [
+     0,
+     0
+    ],
+    "lead_A": 0.66
+   },
+   {
+    "turn": 11,
+    "A": "LH-T",
+    "B": "LH-R",
+    "hp": [
+     0.78,
+     0.4
+    ],
+    "cells": [
+     2,
+     -2
+    ],
+    "conn": [
+     true,
+     false
+    ],
+    "died": [
+     false,
+     false
+    ],
+    "recall": [
+     false,
+     false
+    ],
+    "held": [
+     false,
+     false
+    ],
+    "S": [
+     25.0,
+     9.0
+    ],
+    "C": [
+     9,
+     7
+    ],
+    "crash": [
+     0,
+     0
+    ],
+    "lead_A": 1.02
+   },
+   {
+    "turn": 12,
+    "A": "SL-Y",
+    "B": "LH-R",
+    "hp": [
+     0.76,
+     null
+    ],
+    "cells": [
+     0,
+     -2
+    ],
+    "conn": [
+     false,
+     false
+    ],
+    "died": [
+     false,
+     false
+    ],
+    "recall": [
+     false,
+     true
+    ],
+    "held": [
+     false,
+     false
+    ],
+    "S": [
+     25.0,
+     9.0
+    ],
+    "C": [
+     9,
+     7
+    ],
+    "crash": [
+     0,
+     0
+    ],
+    "lead_A": 1.695
+   },
+   {
+    "turn": 13,
+    "A": "SH-H",
+    "B": "ABSENT",
+    "hp": [
+     0.78,
+     1.0
+    ],
+    "cells": [
+     1,
+     -2
+    ],
+    "conn": [
+     false,
+     false
+    ],
+    "died": [
+     false,
+     false
+    ],
+    "recall": [
+     false,
+     false
+    ],
+    "held": [
+     false,
+     true
+    ],
+    "S": [
+     25.0,
+     12.5475
+    ],
+    "C": [
+     9,
+     7
+    ],
+    "crash": [
+     0,
+     0
+    ],
+    "lead_A": 2.933
+   },
+   {
+    "turn": 14,
+    "A": "SH-H",
+    "B": "SH-Y",
+    "hp": [
+     0.78,
+     1.0
+    ],
+    "cells": [
+     1,
+     -2
+    ],
+    "conn": [
+     false,
+     false
+    ],
+    "died": [
+     false,
+     false
+    ],
+    "recall": [
+     false,
+     false
+    ],
+    "held": [
+     false,
+     false
+    ],
+    "S": [
+     25.0,
+     12.5475
+    ],
+    "C": [
+     9,
+     8
+    ],
+    "crash": [
+     13,
+     0
+    ],
+    "lead_A": 2.195
+   },
+   {
+    "turn": 15,
+    "A": "SH-H+P",
+    "B": "SH-H",
+    "hp": [
+     0.78,
+     1.0
+    ],
+    "cells": [
+     2,
+     -2
+    ],
+    "conn": [
+     false,
+     false
+    ],
+    "died": [
+     false,
+     false
+    ],
+    "recall": [
+     false,
+     false
+    ],
+    "held": [
+     false,
+     false
+    ],
+    "S": [
+     25.0,
+     12.5475
+    ],
+    "C": [
+     9,
+     8
+    ],
+    "crash": [
+     8,
+     0
+    ],
+    "lead_A": 1.795
+   },
+   {
+    "turn": 16,
+    "A": "SH-H+P",
+    "B": "SL-Y",
+    "hp": [
+     0.78,
+     1.0
+    ],
+    "cells": [
+     2,
+     -2
+    ],
+    "conn": [
+     false,
+     false
+    ],
+    "died": [
+     false,
+     false
+    ],
+    "recall": [
+     false,
+     false
+    ],
+    "held": [
+     false,
+     false
+    ],
+    "S": [
+     25.0,
+     12.5475
+    ],
+    "C": [
+     9,
+     8
+    ],
+    "crash": [
+     0,
+     0
+    ],
+    "lead_A": 2.395
+   },
+   {
+    "turn": 17,
+    "A": "SH-Y",
+    "B": "SH-Y",
+    "hp": [
+     0.78,
+     1.0
+    ],
+    "cells": [
+     1,
+     -2
+    ],
+    "conn": [
+     false,
+     false
+    ],
+    "died": [
+     false,
+     false
+    ],
+    "recall": [
+     false,
+     false
+    ],
+    "held": [
+     false,
+     false
+    ],
+    "S": [
+     25.0,
+     12.5475
+    ],
+    "C": [
+     9,
+     8
+    ],
+    "crash": [
+     4,
+     0
+    ],
+    "lead_A": 1.995
+   },
+   {
+    "turn": 18,
+    "A": "SL-S",
+    "B": "SH-S",
+    "hp": [
+     0.78,
+     1.0
+    ],
+    "cells": [
+     -1,
+     -1
+    ],
+    "conn": [
+     false,
+     false
+    ],
+    "died": [
+     false,
+     false
+    ],
+    "recall": [
+     false,
+     false
+    ],
+    "held": [
+     false,
+     false
+    ],
+    "S": [
+     25.0,
+     12.5475
+    ],
+    "C": [
+     9,
+     8
+    ],
+    "crash": [
+     0,
+     0
+    ],
+    "lead_A": 2.045
+   },
+   {
+    "turn": 19,
+    "A": "SL-T",
+    "B": "LH-T",
+    "hp": [
+     0.49,
+     0.98
+    ],
+    "cells": [
+     0,
+     0
+    ],
+    "conn": [
+     true,
+     true
+    ],
+    "died": [
+     false,
+     false
+    ],
+    "recall": [
+     false,
+     false
+    ],
+    "held": [
+     false,
+     false
+    ],
+    "S": [
+     25.0,
+     12.5475
+    ],
+    "C": [
+     9,
+     8
+    ],
+    "crash": [
+     0,
+     0
+    ],
+    "lead_A": 1.955
+   },
+   {
+    "turn": 20,
+    "A": "SH-Y",
+    "B": "SL-H",
+    "hp": [
+     0.49,
+     0.98
+    ],
+    "cells": [
+     -1,
+     0
+    ],
+    "conn": [
+     false,
+     false
+    ],
+    "died": [
+     false,
+     false
+    ],
+    "recall": [
+     false,
+     false
+    ],
+    "held": [
+     false,
+     false
+    ],
+    "S": [
+     25.0,
+     12.5475
+    ],
+    "C": [
+     9,
+     8
+    ],
+    "crash": [
+     0,
+     0
+    ],
+    "lead_A": 2.518
+   },
+   {
+    "turn": 21,
+    "A": "LH-R",
+    "B": "SH-T",
+    "hp": [
+     0.21,
+     0.96
+    ],
+    "cells": [
+     -1,
+     0
+    ],
+    "conn": [
+     false,
+     true
+    ],
+    "died": [
+     false,
+     false
+    ],
+    "recall": [
+     false,
+     false
+    ],
+    "held": [
+     false,
+     false
+    ],
+    "S": [
+     25.0,
+     12.5475
+    ],
+    "C": [
+     9,
+     8
+    ],
+    "crash": [
+     7,
+     0
+    ],
+    "lead_A": 2.337
+   },
+   {
+    "turn": 22,
+    "A": "SL-S",
+    "B": "TN-T",
+    "hp": [
+     0.21,
+     0.96
+    ],
+    "cells": [
+     -2,
+     0
+    ],
+    "conn": [
+     false,
+     false
+    ],
+    "died": [
+     false,
+     false
+    ],
+    "recall": [
+     false,
+     false
+    ],
+    "held": [
+     false,
+     false
+    ],
+    "S": [
+     25.0,
+     12.5475
+    ],
+    "C": [
+     9,
+     8
+    ],
+    "crash": [
+     0,
+     0
+    ],
+    "lead_A": 2.225
+   },
+   {
+    "turn": 23,
+    "A": "LH-R",
+    "B": "TN-T",
+    "hp": [
+     0.21,
+     0.83
+    ],
+    "cells": [
+     -2,
+     2
+    ],
+    "conn": [
+     false,
+     true
+    ],
+    "died": [
+     false,
+     false
+    ],
+    "recall": [
+     false,
+     false
+    ],
+    "held": [
+     false,
+     true
+    ],
+    "S": [
+     25.0,
+     12.5475
+    ],
+    "C": [
+     9,
+     8
+    ],
+    "crash": [
+     0,
+     0
+    ],
+    "lead_A": 2.225
+   },
+   {
+    "turn": 24,
+    "A": "LH-R",
+    "B": "SL-T",
+    "hp": [
+     0.21,
+     0.7
+    ],
+    "cells": [
+     -2,
+     2
+    ],
+    "conn": [
+     false,
+     true
+    ],
+    "died": [
+     false,
+     false
+    ],
+    "recall": [
+     false,
+     false
+    ],
+    "held": [
+     false,
+     true
+    ],
+    "S": [
+     25.0,
+     12.5475
+    ],
+    "C": [
+     9,
+     8
+    ],
+    "crash": [
+     0,
+     0
+    ],
+    "lead_A": 2.225
+   },
+   {
+    "turn": 25,
+    "A": "TN-S",
+    "B": "TN-T",
+    "hp": [
+     0.21,
+     0.57
+    ],
+    "cells": [
+     -2,
+     2
+    ],
+    "conn": [
+     false,
+     true
+    ],
+    "died": [
+     false,
+     false
+    ],
+    "recall": [
+     false,
+     false
+    ],
+    "held": [
+     false,
+     true
+    ],
+    "S": [
+     25.0,
+     12.5475
+    ],
+    "C": [
+     9,
+     8
+    ],
+    "crash": [
+     0,
+     0
+    ],
+    "lead_A": 2.225
+   },
+   {
+    "turn": 26,
+    "A": "LH-R",
+    "B": "TN-T",
+    "hp": [
+     0.21,
+     null
+    ],
+    "cells": [
+     -2,
+     2
+    ],
+    "conn": [
+     false,
+     true
+    ],
+    "died": [
+     false,
+     true
+    ],
+    "recall": [
+     false,
+     false
+    ],
+    "held": [
+     false,
+     true
+    ],
+    "S": [
+     25.0,
+     12.5475
+    ],
+    "C": [
+     9,
+     8
+    ],
+    "crash": [
+     0,
+     0
+    ],
+    "lead_A": 4.225
+   },
+   {
+    "turn": 27,
+    "A": "LH-R",
+    "B": "ABSENT",
+    "hp": [
+     null,
+     null
+    ],
+    "cells": [
+     -2,
+     -2
+    ],
+    "conn": [
+     false,
+     false
+    ],
+    "died": [
+     false,
+     false
+    ],
+    "recall": [
+     true,
+     false
+    ],
+    "held": [
+     false,
+     true
+    ],
+    "S": [
+     25.0,
+     12.5475
+    ],
+    "C": [
+     9,
+     8
+    ],
+    "crash": [
+     0,
+     0
+    ],
+    "lead_A": 4.225
+   },
+   {
+    "turn": 28,
+    "A": "ABSENT",
+    "B": "ABSENT",
+    "hp": [
+     1.0,
+     null
+    ],
+    "cells": [
+     -2,
+     -2
+    ],
+    "conn": [
+     false,
+     false
+    ],
+    "died": [
+     false,
+     false
+    ],
+    "recall": [
+     false,
+     false
+    ],
+    "held": [
+     false,
+     true
+    ],
+    "S": [
+     37.32,
+     12.5475
+    ],
+    "C": [
+     9,
+     8
+    ],
+    "crash": [
+     0,
+     0
+    ],
+    "lead_A": 4.225
+   },
+   {
+    "turn": 29,
+    "A": "SH-T",
+    "B": "ABSENT",
+    "hp": [
+     1.0,
+     null
+    ],
+    "cells": [
+     0,
+     -2
+    ],
+    "conn": [
+     false,
+     false
+    ],
+    "died": [
+     false,
+     false
+    ],
+    "recall": [
+     false,
+     false
+    ],
+    "held": [
+     false,
+     true
+    ],
+    "S": [
+     37.32,
+     12.5475
+    ],
+    "C": [
+     10,
+     8
+    ],
+    "crash": [
+     0,
+     0
+    ],
+    "lead_A": 5.462
+   },
+   {
+    "turn": 30,
+    "A": "LH-T",
+    "B": "ABSENT",
+    "hp": [
+     1.0,
+     1.0
+    ],
+    "cells": [
+     1,
+     -2
+    ],
+    "conn": [
+     false,
+     false
+    ],
+    "died": [
+     false,
+     false
+    ],
+    "recall": [
+     false,
+     false
+    ],
+    "held": [
+     false,
+     true
+    ],
+    "S": [
+     37.32,
+     17.095
+    ],
+    "C": [
+     11,
+     8
+    ],
+    "crash": [
+     0,
+     0
+    ],
+    "lead_A": 5.8
+   }
+  ],
+  "freeze level 10, held 12, breaker (B) +8|baseline|s0|t0": [
+   {
+    "turn": 1,
+    "A": "SH-Y",
+    "B": "SH-H",
+    "hp": [
+     1.0,
+     1.0
+    ],
+    "cells": [
+     -2,
+     1
+    ],
+    "conn": [
+     false,
+     false
+    ],
+    "died": [
+     false,
+     false
+    ],
+    "recall": [
+     false,
+     false
+    ],
+    "held": [
+     false,
+     false
+    ],
+    "S": [
+     24.0,
+     32.0
+    ],
+    "C": [
+     10,
+     10
+    ],
+    "crash": [
+     0,
+     0
+    ],
+    "lead_A": 0.338
+   },
+   {
+    "turn": 2,
+    "A": "SH-H",
+    "B": "SH-Y",
+    "hp": [
+     1.0,
+     1.0
+    ],
+    "cells": [
+     -2,
+     1
+    ],
+    "conn": [
+     false,
+     false
+    ],
+    "died": [
+     false,
+     false
+    ],
+    "recall": [
+     false,
+     false
+    ],
+    "held": [
+     false,
+     false
+    ],
+    "S": [
+     24.0,
+     32.0
+    ],
+    "C": [
+     10,
+     10
+    ],
+    "crash": [
+     0,
+     9
+    ],
+    "lead_A": 1.238
+   },
+   {
+    "turn": 3,
+    "A": "LH-T",
+    "B": "SL-Y",
+    "hp": [
+     1.0,
+     0.8
+    ],
+    "cells": [
+     -1,
+     -1
+    ],
+    "conn": [
+     false,
+     false
+    ],
+    "died": [
+     false,
+     false
+    ],
+    "recall": [
+     false,
+     false
+    ],
+    "held": [
+     false,
+     false
+    ],
+    "S": [
+     24.0,
+     32.0
+    ],
+    "C": [
+     10,
+     10
+    ],
+    "crash": [
+     0,
+     0
+    ],
+    "lead_A": 1.213
+   },
+   {
+    "turn": 4,
+    "A": "SL-Y",
+    "B": "SH-H",
+    "hp": [
+     1.0,
+     0.39
+    ],
+    "cells": [
+     -1,
+     1
+    ],
+    "conn": [
+     false,
+     false
+    ],
+    "died": [
+     false,
+     false
+    ],
+    "recall": [
+     false,
+     false
+    ],
+    "held": [
+     true,
+     false
+    ],
+    "S": [
+     24.0,
+     32.0
+    ],
+    "C": [
+     10,
+     10
+    ],
+    "crash": [
+     0,
+     0
+    ],
+    "lead_A": 0.425
+   },
+   {
+    "turn": 5,
+    "A": "SL-H",
+    "B": "SH-Y",
+    "hp": [
+     1.0,
+     0.39
+    ],
+    "cells": [
+     -2,
+     1
+    ],
+    "conn": [
+     false,
+     false
+    ],
+    "died": [
+     false,
+     false
+    ],
+    "recall": [
+     false,
+     false
+    ],
+    "held": [
+     false,
+     false
+    ],
+    "S": [
+     24.0,
+     32.0
+    ],
+    "C": [
+     10,
+     10
+    ],
+    "crash": [
+     0,
+     0
+    ],
+    "lead_A": 0.538
+   },
+   {
+    "turn": 6,
+    "A": "SH-H",
+    "B": "LH-S",
+    "hp": [
+     1.0,
+     0.39
+    ],
+    "cells": [
+     -2,
+     -1
+    ],
+    "conn": [
+     false,
+     false
+    ],
+    "died": [
+     false,
+     false
+    ],
+    "recall": [
+     false,
+     false
+    ],
+    "held": [
+     false,
+     false
+    ],
+    "S": [
+     24.0,
+     32.0
+    ],
+    "C": [
+     10,
+     10
+    ],
+    "crash": [
+     0,
+     3
+    ],
+    "lead_A": 1.4
+   },
+   {
+    "turn": 7,
+    "A": "SL-H",
+    "B": "LH-R",
+    "hp": [
+     1.0,
+     null
+    ],
+    "cells": [
+     0,
+     -2
+    ],
+    "conn": [
+     false,
+     false
+    ],
+    "died": [
+     false,
+     false
+    ],
+    "recall": [
+     false,
+     true
+    ],
+    "held": [
+     false,
+     false
+    ],
+    "S": [
+     24.0,
+     32.0
+    ],
+    "C": [
+     10,
+     10
+    ],
+    "crash": [
+     0,
+     0
+    ],
+    "lead_A": 1.738
+   },
+   {
+    "turn": 8,
+    "A": "SL-H",
+    "B": "ABSENT",
+    "hp": [
+     1.0,
+     1.0
+    ],
+    "cells": [
+     0,
+     -2
+    ],
+    "conn": [
+     false,
+     false
+    ],
+    "died": [
+     false,
+     false
+    ],
+    "recall": [
+     false,
+     false
+    ],
+    "held": [
+     false,
+     false
+    ],
+    "S": [
+     24.0,
+     34.5
+    ],
+    "C": [
+     10,
+     10
+    ],
+    "crash": [
+     0,
+     0
+    ],
+    "lead_A": 1.963
+   },
+   {
+    "turn": 9,
+    "A": "SH-H",
+    "B": "SL-T",
+    "hp": [
+     0.66,
+     0.95
+    ],
+    "cells": [
+     0,
+     -1
+    ],
+    "conn": [
+     false,
+     true
+    ],
+    "died": [
+     false,
+     false
+    ],
+    "recall": [
+     false,
+     false
+    ],
+    "held": [
+     false,
+     false
+    ],
+    "S": [
+     24.0,
+     34.5
+    ],
+    "C": [
+     10,
+     10
+    ],
+    "crash": [
+     0,
+     0
+    ],
+    "lead_A": 2.548
+   },
+   {
+    "turn": 10,
+    "A": "SL-Y",
+    "B": "LH-T",
+    "hp": [
+     0.32,
+     0.94
+    ],
+    "cells": [
+     -1,
+     0
+    ],
+    "conn": [
+     false,
+     true
+    ],
+    "died": [
+     false,
+     false
+    ],
+    "recall": [
+     false,
+     false
+    ],
+    "held": [
+     false,
+     true
+    ],
+    "S": [
+     24.0,
+     34.5
+    ],
+    "C": [
+     10,
+     10
+    ],
+    "crash": [
+     0,
+     0
+    ],
+    "lead_A": 2.39
+   },
+   {
+    "turn": 11,
+    "A": "SH-S",
+    "B": "WARD",
+    "hp": [
+     0.32,
+     0.94
+    ],
+    "cells": [
+     -1,
+     99
+    ],
+    "conn": [
+     false,
+     false
+    ],
+    "died": [
+     false,
+     false
+    ],
+    "recall": [
+     false,
+     false
+    ],
+    "held": [
+     false,
+     true
+    ],
+    "S": [
+     24.0,
+     34.5
+    ],
+    "C": [
+     10,
+     10
+    ],
+    "crash": [
+     0,
+     0
+    ],
+    "lead_A": 2.39
+   },
+   {
+    "turn": 12,
+    "A": "SL-S",
+    "B": "SL-T",
+    "hp": [
+     0.32,
+     0.94
+    ],
+    "cells": [
+     -2,
+     0
+    ],
+    "conn": [
+     false,
+     false
+    ],
+    "died": [
+     false,
+     false
+    ],
+    "recall": [
+     false,
+     false
+    ],
+    "held": [
+     false,
+     true
+    ],
+    "S": [
+     24.0,
+     34.5
+    ],
+    "C": [
+     10,
+     10
+    ],
+    "crash": [
+     0,
+     0
+    ],
+    "lead_A": 1.715
+   },
+   {
+    "turn": 13,
+    "A": "LH-R",
+    "B": "LH-T",
+    "hp": [
+     null,
+     0.84
+    ],
+    "cells": [
+     -2,
+     2
+    ],
+    "conn": [
+     false,
+     true
+    ],
+    "died": [
+     true,
+     false
+    ],
+    "recall": [
+     false,
+     false
+    ],
+    "held": [
+     false,
+     true
+    ],
+    "S": [
+     24.0,
+     34.5
+    ],
+    "C": [
+     10,
+     11
+    ],
+    "crash": [
+     0,
+     0
+    ],
+    "lead_A": -0.285
+   },
+   {
+    "turn": 14,
+    "A": "ABSENT",
+    "B": "SL-Y",
+    "hp": [
+     null,
+     0.84
+    ],
+    "cells": [
+     -2,
+     0
+    ],
+    "conn": [
+     false,
+     false
+    ],
+    "died": [
+     false,
+     false
+    ],
+    "recall": [
+     false,
+     false
+    ],
+    "held": [
+     false,
+     true
+    ],
+    "S": [
+     24.0,
+     34.5
+    ],
+    "C": [
+     10,
+     11
+    ],
+    "crash": [
+     0,
+     0
+    ],
+    "lead_A": -0.735
+   },
+   {
+    "turn": 15,
+    "A": "ABSENT",
+    "B": "SH-Y",
+    "hp": [
+     null,
+     0.82
+    ],
+    "cells": [
+     -2,
+     -2
+    ],
+    "conn": [
+     false,
+     false
+    ],
+    "died": [
+     false,
+     false
+    ],
+    "recall": [
+     false,
+     false
+    ],
+    "held": [
+     false,
+     true
+    ],
+    "S": [
+     24.0,
+     34.5
+    ],
+    "C": [
+     10,
+     11
+    ],
+    "crash": [
+     0,
+     0
+    ],
+    "lead_A": -2.31
+   },
+   {
+    "turn": 16,
+    "A": "ABSENT",
+    "B": "SL-H",
+    "hp": [
+     null,
+     0.82
+    ],
+    "cells": [
+     -2,
+     -1
+    ],
+    "conn": [
+     false,
+     false
+    ],
+    "died": [
+     false,
+     false
+    ],
+    "recall": [
+     false,
+     false
+    ],
+    "held": [
+     false,
+     false
+    ],
+    "S": [
+     24.0,
+     34.5
+    ],
+    "C": [
+     10,
+     11
+    ],
+    "crash": [
+     0,
+     0
+    ],
+    "lead_A": -2.647
+   },
+   {
+    "turn": 17,
+    "A": "ABSENT",
+    "B": "LH-T",
+    "hp": [
+     1.0,
+     0.82
+    ],
+    "cells": [
+     -2,
+     0
+    ],
+    "conn": [
+     false,
+     false
+    ],
+    "died": [
+     false,
+     false
+    ],
+    "recall": [
+     false,
+     false
+    ],
+    "held": [
+     false,
+     false
+    ],
+    "S": [
+     29.7,
+     34.5
+    ],
+    "C": [
+     10,
+     11
+    ],
+    "crash": [
+     0,
+     0
+    ],
+    "lead_A": -3.322
+   },
+   {
+    "turn": 18,
+    "A": "SH-Y",
+    "B": "SH-H",
+    "hp": [
+     0.99,
+     0.83
+    ],
+    "cells": [
+     -1,
+     1
+    ],
+    "conn": [
+     false,
+     false
+    ],
+    "died": [
+     false,
+     false
+    ],
+    "recall": [
+     false,
+     false
+    ],
+    "held": [
+     true,
+     false
+    ],
+    "S": [
+     29.7,
+     34.5
+    ],
+    "C": [
+     11,
+     11
+    ],
+    "crash": [
+     0,
+     0
+    ],
+    "lead_A": -2.647
+   },
+   {
+    "turn": 19,
+    "A": "SH-H",
+    "B": "SL-Y",
+    "hp": [
+     0.88,
+     0.83
+    ],
+    "cells": [
+     -2,
+     1
+    ],
+    "conn": [
+     false,
+     false
+    ],
+    "died": [
+     false,
+     false
+    ],
+    "recall": [
+     false,
+     false
+    ],
+    "held": [
+     false,
+     false
+    ],
+    "S": [
+     29.7,
+     34.5
+    ],
+    "C": [
+     11,
+     11
+    ],
+    "crash": [
+     0,
+     0
+    ],
+    "lead_A": -2.31
+   },
+   {
+    "turn": 20,
+    "A": "SH-Y",
+    "B": "WARD",
+    "hp": [
+     0.89,
+     0.83
+    ],
+    "cells": [
+     -2,
+     99
+    ],
+    "conn": [
+     false,
+     false
+    ],
+    "died": [
+     false,
+     false
+    ],
+    "recall": [
+     false,
+     false
+    ],
+    "held": [
+     false,
+     false
+    ],
+    "S": [
+     29.7,
+     34.5
+    ],
+    "C": [
+     11,
+     11
+    ],
+    "crash": [
+     0,
+     2
+    ],
+    "lead_A": -1.435
+   }
+  ],
+  "freeze level 10, held 12, breaker (B) +8|C1|s0|t0": [
+   {
+    "turn": 1,
+    "A": "SH-Y",
+    "B": "SH-H",
+    "hp": [
+     1.0,
+     1.0
+    ],
+    "cells": [
+     -2,
+     1
+    ],
+    "conn": [
+     false,
+     false
+    ],
+    "died": [
+     false,
+     false
+    ],
+    "recall": [
+     false,
+     false
+    ],
+    "held": [
+     false,
+     false
+    ],
+    "S": [
+     24.0,
+     32.0
+    ],
+    "C": [
+     9,
+     10
+    ],
+    "crash": [
+     0,
+     0
+    ],
+    "lead_A": 0.225
+   },
+   {
+    "turn": 2,
+    "A": "SH-Y",
+    "B": "SH-H",
+    "hp": [
+     1.0,
+     1.0
+    ],
+    "cells": [
+     -2,
+     1
+    ],
+    "conn": [
+     false,
+     false
+    ],
+    "died": [
+     false,
+     false
+    ],
+    "recall": [
+     false,
+     false
+    ],
+    "held": [
+     false,
+     false
+    ],
+    "S": [
+     24.0,
+     32.0
+    ],
+    "C": [
+     9,
+     10
+    ],
+    "crash": [
+     0,
+     10
+    ],
+    "lead_A": 1.225
+   },
+   {
+    "turn": 3,
+    "A": "LH-T",
+    "B": "SL-Y",
+    "hp": [
+     1.0,
+     0.79
+    ],
+    "cells": [
+     -1,
+     -1
+    ],
+    "conn": [
+     false,
+     false
+    ],
+    "died": [
+     false,
+     false
+    ],
+    "recall": [
+     false,
+     false
+    ],
+    "held": [
+     false,
+     false
+    ],
+    "S": [
+     24.0,
+     32.0
+    ],
+    "C": [
+     9,
+     10
+    ],
+    "crash": [
+     0,
+     0
+    ],
+    "lead_A": 1.2
+   },
+   {
+    "turn": 4,
+    "A": "SL-T",
+    "B": "LH-H",
+    "hp": [
+     0.98,
+     0.07
+    ],
+    "cells": [
+     -1,
+     0
+    ],
+    "conn": [
+     true,
+     false
+    ],
+    "died": [
+     false,
+     false
+    ],
+    "recall": [
+     false,
+     false
+    ],
+    "held": [
+     false,
+     false
+    ],
+    "S": [
+     24.0,
+     32.0
+    ],
+    "C": [
+     9,
+     10
+    ],
+    "crash": [
+     0,
+     0
+    ],
+    "lead_A": 1.448
+   },
+   {
+    "turn": 5,
+    "A": "SL-H",
+    "B": "TN-S",
+    "hp": [
+     0.98,
+     0.07
+    ],
+    "cells": [
+     -1,
+     -1
+    ],
+    "conn": [
+     false,
+     false
+    ],
+    "died": [
+     false,
+     false
+    ],
+    "recall": [
+     false,
+     false
+    ],
+    "held": [
+     false,
+     false
+    ],
+    "S": [
+     24.0,
+     32.0
+    ],
+    "C": [
+     9,
+     10
+    ],
+    "crash": [
+     0,
+     0
+    ],
+    "lead_A": 1.898
+   },
+   {
+    "turn": 6,
+    "A": "TN-H",
+    "B": "LH-S",
+    "hp": [
+     0.98,
+     0.07
+    ],
+    "cells": [
+     -1,
+     -1
+    ],
+    "conn": [
+     false,
+     false
+    ],
+    "died": [
+     false,
+     false
+    ],
+    "recall": [
+     false,
+     false
+    ],
+    "held": [
+     false,
+     false
+    ],
+    "S": [
+     24.0,
+     32.0
+    ],
+    "C": [
+     9,
+     10
+    ],
+    "crash": [
+     0,
+     0
+    ],
+    "lead_A": 2.348
+   },
+   {
+    "turn": 7,
+    "A": "TN-T",
+    "B": "SL-S",
+    "hp": [
+     0.93,
+     0.07
+    ],
+    "cells": [
+     0,
+     -2
+    ],
+    "conn": [
+     false,
+     false
+    ],
+    "died": [
+     false,
+     false
+    ],
+    "recall": [
+     false,
+     false
+    ],
+    "held": [
+     false,
+     false
+    ],
+    "S": [
+     24.0,
+     32.0
+    ],
+    "C": [
+     9,
+     10
+    ],
+    "crash": [
+     0,
+     0
+    ],
+    "lead_A": 2.91
+   },
+   {
+    "turn": 8,
+    "A": "SL-T",
+    "B": "TN-S",
+    "hp": [
+     0.92,
+     0.07
+    ],
+    "cells": [
+     0,
+     -2
+    ],
+    "conn": [
+     false,
+     false
+    ],
+    "died": [
+     false,
+     false
+    ],
+    "recall": [
+     false,
+     false
+    ],
+    "held": [
+     false,
+     false
+    ],
+    "S": [
+     24.0,
+     32.0
+    ],
+    "C": [
+     10,
+     10
+    ],
+    "crash": [
+     0,
+     0
+    ],
+    "lead_A": 3.585
+   },
+   {
+    "turn": 9,
+    "A": "TN-T",
+    "B": "SL-S",
+    "hp": [
+     0.9,
+     0.07
+    ],
+    "cells": [
+     0,
+     -2
+    ],
+    "conn": [
+     false,
+     false
+    ],
+    "died": [
+     false,
+     false
+    ],
+    "recall": [
+     false,
+     false
+    ],
+    "held": [
+     false,
+     false
+    ],
+    "S": [
+     24.0,
+     32.0
+    ],
+    "C": [
+     10,
+     10
+    ],
+    "crash": [
+     0,
+     0
+    ],
+    "lead_A": 4.372
+   },
+   {
+    "turn": 10,
+    "A": "SL-Y",
+    "B": "TN-S",
+    "hp": [
+     0.9,
+     0.07
+    ],
+    "cells": [
+     -1,
+     -1
+    ],
+    "conn": [
+     false,
+     false
+    ],
+    "died": [
+     false,
+     false
+    ],
+    "recall": [
+     false,
+     false
+    ],
+    "held": [
+     false,
+     false
+    ],
+    "S": [
+     24.0,
+     32.0
+    ],
+    "C": [
+     10,
+     10
+    ],
+    "crash": [
+     0,
+     0
+    ],
+    "lead_A": 4.597
+   },
+   {
+    "turn": 11,
+    "A": "TN-H",
+    "B": "TN-S",
+    "hp": [
+     0.9,
+     0.07
+    ],
+    "cells": [
+     1,
+     -1
+    ],
+    "conn": [
+     false,
+     false
+    ],
+    "died": [
+     false,
+     false
+    ],
+    "recall": [
+     false,
+     false
+    ],
+    "held": [
+     false,
+     true
+    ],
+    "S": [
+     24.0,
+     32.0
+    ],
+    "C": [
+     10,
+     10
+    ],
+    "crash": [
+     0,
+     0
+    ],
+    "lead_A": 4.935
+   },
+   {
+    "turn": 12,
+    "A": "SL-H",
+    "B": "SL-S",
+    "hp": [
+     0.9,
+     0.07
+    ],
+    "cells": [
+     1,
+     -1
+    ],
+    "conn": [
+     false,
+     false
+    ],
+    "died": [
+     false,
+     false
+    ],
+    "recall": [
+     false,
+     false
+    ],
+    "held": [
+     false,
+     false
+    ],
+    "S": [
+     24.0,
+     32.0
+    ],
+    "C": [
+     10,
+     10
+    ],
+    "crash": [
+     22,
+     0
+    ],
+    "lead_A": 4.672
+   },
+   {
+    "turn": 13,
+    "A": "TN-H+P",
+    "B": "SH-S",
+    "hp": [
+     0.9,
+     0.11
+    ],
+    "cells": [
+     2,
+     -2
+    ],
+    "conn": [
+     false,
+     false
+    ],
+    "died": [
+     false,
+     false
+    ],
+    "recall": [
+     false,
+     false
+    ],
+    "held": [
+     false,
+     false
+    ],
+    "S": [
+     24.0,
+     32.0
+    ],
+    "C": [
+     10,
+     10
+    ],
+    "crash": [
+     0,
+     0
+    ],
+    "lead_A": 3.422
+   },
+   {
+    "turn": 14,
+    "A": "SH-H+P",
+    "B": "SL-S",
+    "hp": [
+     0.91,
+     0.11
+    ],
+    "cells": [
+     2,
+     -2
+    ],
+    "conn": [
+     false,
+     false
+    ],
+    "died": [
+     false,
+     false
+    ],
+    "recall": [
+     false,
+     false
+    ],
+    "held": [
+     false,
+     false
+    ],
+    "S": [
+     24.0,
+     32.0
+    ],
+    "C": [
+     10,
+     10
+    ],
+    "crash": [
+     0,
+     0
+    ],
+    "lead_A": 5.272
+   },
+   {
+    "turn": 15,
+    "A": "SL-Y",
+    "B": "SL-S",
+    "hp": [
+     0.91,
+     0.11
+    ],
+    "cells": [
+     1,
+     -2
+    ],
+    "conn": [
+     false,
+     false
+    ],
+    "died": [
+     false,
+     false
+    ],
+    "recall": [
+     false,
+     false
+    ],
+    "held": [
+     false,
+     false
+    ],
+    "S": [
+     24.0,
+     32.0
+    ],
+    "C": [
+     10,
+     10
+    ],
+    "crash": [
+     7,
+     0
+    ],
+    "lead_A": 4.572
+   },
+   {
+    "turn": 16,
+    "A": "LH-T",
+    "B": "SH-S",
+    "hp": [
+     0.79,
+     0.11
+    ],
+    "cells": [
+     2,
+     -2
+    ],
+    "conn": [
+     true,
+     false
+    ],
+    "died": [
+     false,
+     false
+    ],
+    "recall": [
+     false,
+     false
+    ],
+    "held": [
+     false,
+     false
+    ],
+    "S": [
+     24.0,
+     32.0
+    ],
+    "C": [
+     10,
+     10
+    ],
+    "crash": [
+     8,
+     0
+    ],
+    "lead_A": 4.252
+   },
+   {
+    "turn": 17,
+    "A": "TN-H+P",
+    "B": "TN-S",
+    "hp": [
+     0.79,
+     0.11
+    ],
+    "cells": [
+     2,
+     -1
+    ],
+    "conn": [
+     false,
+     false
+    ],
+    "died": [
+     false,
+     false
+    ],
+    "recall": [
+     false,
+     false
+    ],
+    "held": [
+     false,
+     false
+    ],
+    "S": [
+     24.0,
+     32.0
+    ],
+    "C": [
+     10,
+     10
+    ],
+    "crash": [
+     0,
+     0
+    ],
+    "lead_A": 4.29
+   },
+   {
+    "turn": 18,
+    "A": "SL-T",
+    "B": "TN-S",
+    "hp": [
+     0.23,
+     0.11
+    ],
+    "cells": [
+     2,
+     -2
+    ],
+    "conn": [
+     true,
+     false
+    ],
+    "died": [
+     false,
+     false
+    ],
+    "recall": [
+     false,
+     false
+    ],
+    "held": [
+     false,
+     false
+    ],
+    "S": [
+     24.0,
+     32.0
+    ],
+    "C": [
+     10,
+     10
+    ],
+    "crash": [
+     0,
+     0
+    ],
+    "lead_A": 4.47
+   },
+   {
+    "turn": 19,
+    "A": "LH-T",
+    "B": "SL-T",
+    "hp": [
+     null,
+     0.11
+    ],
+    "cells": [
+     2,
+     -2
+    ],
+    "conn": [
+     true,
+     true
+    ],
+    "died": [
+     true,
+     false
+    ],
+    "recall": [
+     false,
+     false
+    ],
+    "held": [
+     false,
+     false
+    ],
+    "S": [
+     24.0,
+     32.0
+    ],
+    "C": [
+     10,
+     10
+    ],
+    "crash": [
+     0,
+     0
+    ],
+    "lead_A": 2.83
+   },
+   {
+    "turn": 20,
+    "A": "ABSENT",
+    "B": "LH-R",
+    "hp": [
+     null,
+     null
+    ],
+    "cells": [
+     -2,
+     -2
+    ],
+    "conn": [
+     false,
+     false
+    ],
+    "died": [
+     false,
+     false
+    ],
+    "recall": [
+     false,
+     true
+    ],
+    "held": [
+     false,
+     false
+    ],
+    "S": [
+     24.0,
+     32.0
+    ],
+    "C": [
+     10,
+     10
+    ],
+    "crash": [
+     0,
+     0
+    ],
+    "lead_A": 2.83
+   }
+  ],
+  "freeze level 10, held 12, breaker (B) +8|baseline|s0|t1": [
+   {
+    "turn": 1,
+    "A": "SH-H",
+    "B": "SH-H",
+    "hp": [
+     1.0,
+     1.0
+    ],
+    "cells": [
+     -2,
+     1
+    ],
+    "conn": [
+     false,
+     false
+    ],
+    "died": [
+     false,
+     false
+    ],
+    "recall": [
+     false,
+     false
+    ],
+    "held": [
+     false,
+     false
+    ],
+    "S": [
+     24.0,
+     32.0
+    ],
+    "C": [
+     10,
+     10
+    ],
+    "crash": [
+     0,
+     0
+    ],
+    "lead_A": 0.338
+   },
+   {
+    "turn": 2,
+    "A": "SH-H",
+    "B": "SL-Y",
+    "hp": [
+     1.0,
+     1.0
+    ],
+    "cells": [
+     -2,
+     1
+    ],
+    "conn": [
+     false,
+     false
+    ],
+    "died": [
+     false,
+     false
+    ],
+    "recall": [
+     false,
+     false
+    ],
+    "held": [
+     false,
+     false
+    ],
+    "S": [
+     24.0,
+     32.0
+    ],
+    "C": [
+     10,
+     10
+    ],
+    "crash": [
+     0,
+     9
+    ],
+    "lead_A": 1.238
+   },
+   {
+    "turn": 3,
+    "A": "TN-T",
+    "B": "LH-Y",
+    "hp": [
+     1.0,
+     1.0
+    ],
+    "cells": [
+     -1,
+     -1
+    ],
+    "conn": [
+     false,
+     false
+    ],
+    "died": [
+     false,
+     false
+    ],
+    "recall": [
+     false,
+     false
+    ],
+    "held": [
+     false,
+     false
+    ],
+    "S": [
+     24.0,
+     32.0
+    ],
+    "C": [
+     10,
+     10
+    ],
+    "crash": [
+     0,
+     0
+    ],
+    "lead_A": 1.325
+   },
+   {
+    "turn": 4,
+    "A": "SH-T",
+    "B": "TN-T",
+    "hp": [
+     0.98,
+     1.0
+    ],
+    "cells": [
+     0,
+     0
+    ],
+    "conn": [
+     true,
+     true
+    ],
+    "died": [
+     false,
+     false
+    ],
+    "recall": [
+     false,
+     false
+    ],
+    "held": [
+     false,
+     false
+    ],
+    "S": [
+     24.0,
+     32.0
+    ],
+    "C": [
+     10,
+     10
+    ],
+    "crash": [
+     0,
+     0
+    ],
+    "lead_A": 1.775
+   },
+   {
+    "turn": 5,
+    "A": "SL-T",
+    "B": "SL-Y",
+    "hp": [
+     0.97,
+     0.84
+    ],
+    "cells": [
+     0,
+     -1
+    ],
+    "conn": [
+     true,
+     false
+    ],
+    "died": [
+     false,
+     false
+    ],
+    "recall": [
+     false,
+     false
+    ],
+    "held": [
+     false,
+     false
+    ],
+    "S": [
+     24.0,
+     32.0
+    ],
+    "C": [
+     10,
+     10
+    ],
+    "crash": [
+     0,
+     0
+    ],
+    "lead_A": 1.685
+   },
+   {
+    "turn": 6,
+    "A": "WARD",
+    "B": "SH-H",
+    "hp": [
+     0.97,
+     0.84
+    ],
+    "cells": [
+     99,
+     -1
+    ],
+    "conn": [
+     false,
+     false
+    ],
+    "died": [
+     false,
+     false
+    ],
+    "recall": [
+     false,
+     false
+    ],
+    "held": [
+     false,
+     false
+    ],
+    "S": [
+     24.0,
+     32.0
+    ],
+    "C": [
+     10,
+     10
+    ],
+    "crash": [
+     0,
+     0
+    ],
+    "lead_A": 0.785
+   },
+   {
+    "turn": 7,
+    "A": "SH-H",
+    "B": "SH-Y",
+    "hp": [
+     0.95,
+     0.84
+    ],
+    "cells": [
+     -1,
+     0
+    ],
+    "conn": [
+     false,
+     false
+    ],
+    "died": [
+     false,
+     false
+    ],
+    "recall": [
+     false,
+     false
+    ],
+    "held": [
+     false,
+     false
+    ],
+    "S": [
+     24.0,
+     32.0
+    ],
+    "C": [
+     10,
+     10
+    ],
+    "crash": [
+     0,
+     0
+    ],
+    "lead_A": 1.122
+   },
+   {
+    "turn": 8,
+    "A": "SH-T",
+    "B": "SH-Y",
+    "hp": [
+     0.95,
+     0.84
+    ],
+    "cells": [
+     1,
+     -2
+    ],
+    "conn": [
+     false,
+     false
+    ],
+    "died": [
+     false,
+     false
+    ],
+    "recall": [
+     false,
+     false
+    ],
+    "held": [
+     false,
+     false
+    ],
+    "S": [
+     24.0,
+     32.0
+    ],
+    "C": [
+     10,
+     10
+    ],
+    "crash": [
+     0,
+     0
+    ],
+    "lead_A": 1.685
+   },
+   {
+    "turn": 9,
+    "A": "TN-S",
+    "B": "TN-T",
+    "hp": [
+     0.95,
+     0.85
+    ],
+    "cells": [
+     -1,
+     0
+    ],
+    "conn": [
+     false,
+     true
+    ],
+    "died": [
+     false,
+     false
+    ],
+    "recall": [
+     false,
+     false
+    ],
+    "held": [
+     false,
+     false
+    ],
+    "S": [
+     24.0,
+     32.0
+    ],
+    "C": [
+     10,
+     10
+    ],
+    "crash": [
+     0,
+     0
+    ],
+    "lead_A": 1.235
+   },
+   {
+    "turn": 10,
+    "A": "LH-T",
+    "B": "TN-S",
+    "hp": [
+     0.95,
+     0.85
+    ],
+    "cells": [
+     0,
+     -2
+    ],
+    "conn": [
+     false,
+     false
+    ],
+    "died": [
+     false,
+     false
+    ],
+    "recall": [
+     false,
+     false
+    ],
+    "held": [
+     false,
+     false
+    ],
+    "S": [
+     24.0,
+     32.0
+    ],
+    "C": [
+     10,
+     11
+    ],
+    "crash": [
+     0,
+     0
+    ],
+    "lead_A": 1.46
+   },
+   {
+    "turn": 11,
+    "A": "SH-Y",
+    "B": "TN-T",
+    "hp": [
+     0.95,
+     0.65
+    ],
+    "cells": [
+     -2,
+     0
+    ],
+    "conn": [
+     false,
+     false
+    ],
+    "died": [
+     false,
+     false
+    ],
+    "recall": [
+     false,
+     false
+    ],
+    "held": [
+     false,
+     false
+    ],
+    "S": [
+     24.0,
+     32.0
+    ],
+    "C": [
+     10,
+     11
+    ],
+    "crash": [
+     0,
+     0
+    ],
+    "lead_A": 1.11
+   },
+   {
+    "turn": 12,
+    "A": "SL-Y",
+    "B": "SL-Y",
+    "hp": [
+     0.95,
+     0.65
+    ],
+    "cells": [
+     -1,
+     -1
+    ],
+    "conn": [
+     false,
+     false
+    ],
+    "died": [
+     false,
+     false
+    ],
+    "recall": [
+     false,
+     false
+    ],
+    "held": [
+     false,
+     false
+    ],
+    "S": [
+     24.0,
+     32.0
+    ],
+    "C": [
+     10,
+     11
+    ],
+    "crash": [
+     0,
+     0
+    ],
+    "lead_A": 1.335
+   },
+   {
+    "turn": 13,
+    "A": "TN-T",
+    "B": "LH-T",
+    "hp": [
+     0.95,
+     0.65
+    ],
+    "cells": [
+     0,
+     0
+    ],
+    "conn": [
+     true,
+     true
+    ],
+    "died": [
+     false,
+     false
+    ],
+    "recall": [
+     false,
+     false
+    ],
+    "held": [
+     false,
+     false
+    ],
+    "S": [
+     24.0,
+     32.0
+    ],
+    "C": [
+     10,
+     11
+    ],
+    "crash": [
+     0,
+     0
+    ],
+    "lead_A": 1.425
+   },
+   {
+    "turn": 14,
+    "A": "TN-Y",
+    "B": "SL-S",
+    "hp": [
+     0.95,
+     0.65
+    ],
+    "cells": [
+     -1,
+     -1
+    ],
+    "conn": [
+     false,
+     false
+    ],
+    "died": [
+     false,
+     false
+    ],
+    "recall": [
+     false,
+     false
+    ],
+    "held": [
+     false,
+     false
+    ],
+    "S": [
+     24.0,
+     32.0
+    ],
+    "C": [
+     10,
+     11
+    ],
+    "crash": [
+     0,
+     0
+    ],
+    "lead_A": 1.712
+   },
+   {
+    "turn": 15,
+    "A": "TN-T",
+    "B": "SH-Y",
+    "hp": [
+     0.95,
+     0.65
+    ],
+    "cells": [
+     0,
+     -2
+    ],
+    "conn": [
+     false,
+     false
+    ],
+    "died": [
+     false,
+     false
+    ],
+    "recall": [
+     false,
+     false
+    ],
+    "held": [
+     false,
+     false
+    ],
+    "S": [
+     24.0,
+     32.0
+    ],
+    "C": [
+     10,
+     11
+    ],
+    "crash": [
+     0,
+     0
+    ],
+    "lead_A": 2.012
+   },
+   {
+    "turn": 16,
+    "A": "SL-H",
+    "B": "SL-T",
+    "hp": [
+     0.95,
+     0.65
+    ],
+    "cells": [
+     0,
+     -1
+    ],
+    "conn": [
+     false,
+     true
+    ],
+    "died": [
+     false,
+     false
+    ],
+    "recall": [
+     false,
+     false
+    ],
+    "held": [
+     false,
+     false
+    ],
+    "S": [
+     24.0,
+     32.0
+    ],
+    "C": [
+     10,
+     11
+    ],
+    "crash": [
+     0,
+     0
+    ],
+    "lead_A": 1.832
+   },
+   {
+    "turn": 17,
+    "A": "TN-T",
+    "B": "SH-Y",
+    "hp": [
+     0.91,
+     0.49
+    ],
+    "cells": [
+     0,
+     -1
+    ],
+    "conn": [
+     true,
+     false
+    ],
+    "died": [
+     false,
+     false
+    ],
+    "recall": [
+     false,
+     false
+    ],
+    "held": [
+     false,
+     false
+    ],
+    "S": [
+     24.0,
+     32.0
+    ],
+    "C": [
+     10,
+     11
+    ],
+    "crash": [
+     0,
+     0
+    ],
+    "lead_A": 0.955
+   },
+   {
+    "turn": 18,
+    "A": "SL-T",
+    "B": "LH-R",
+    "hp": [
+     0.9,
+     0.16
+    ],
+    "cells": [
+     0,
+     -1
+    ],
+    "conn": [
+     true,
+     false
+    ],
+    "died": [
+     false,
+     false
+    ],
+    "recall": [
+     false,
+     false
+    ],
+    "held": [
+     false,
+     false
+    ],
+    "S": [
+     24.0,
+     32.0
+    ],
+    "C": [
+     11,
+     11
+    ],
+    "crash": [
+     0,
+     0
+    ],
+    "lead_A": 1.585
+   },
+   {
+    "turn": 19,
+    "A": "SL-T",
+    "B": "TN-S",
+    "hp": [
+     0.9,
+     0.16
+    ],
+    "cells": [
+     0,
+     -2
+    ],
+    "conn": [
+     false,
+     false
+    ],
+    "died": [
+     false,
+     false
+    ],
+    "recall": [
+     false,
+     false
+    ],
+    "held": [
+     false,
+     false
+    ],
+    "S": [
+     24.0,
+     32.0
+    ],
+    "C": [
+     11,
+     11
+    ],
+    "crash": [
+     0,
+     0
+    ],
+    "lead_A": 1.922
+   },
+   {
+    "turn": 20,
+    "A": "TN-T",
+    "B": "LH-R",
+    "hp": [
+     0.79,
+     0.16
+    ],
+    "cells": [
+     2,
+     -2
+    ],
+    "conn": [
+     true,
+     false
+    ],
+    "died": [
+     false,
+     false
+    ],
+    "recall": [
+     false,
+     false
+    ],
+    "held": [
+     false,
+     false
+    ],
+    "S": [
+     24.0,
+     32.0
+    ],
+    "C": [
+     11,
+     11
+    ],
+    "crash": [
+     0,
+     0
+    ],
+    "lead_A": 1.922
+   }
+  ],
+  "freeze level 10, held 12, breaker (B) +8|C1|s0|t1": [
+   {
+    "turn": 1,
+    "A": "SH-H",
+    "B": "SH-H",
+    "hp": [
+     1.0,
+     1.0
+    ],
+    "cells": [
+     -2,
+     1
+    ],
+    "conn": [
+     false,
+     false
+    ],
+    "died": [
+     false,
+     false
+    ],
+    "recall": [
+     false,
+     false
+    ],
+    "held": [
+     false,
+     false
+    ],
+    "S": [
+     24.0,
+     32.0
+    ],
+    "C": [
+     9,
+     10
+    ],
+    "crash": [
+     0,
+     0
+    ],
+    "lead_A": 0.225
+   },
+   {
+    "turn": 2,
+    "A": "SH-Y",
+    "B": "SL-S",
+    "hp": [
+     1.0,
+     1.0
+    ],
+    "cells": [
+     -2,
+     -1
+    ],
+    "conn": [
+     false,
+     false
+    ],
+    "died": [
+     false,
+     false
+    ],
+    "recall": [
+     false,
+     false
+    ],
+    "held": [
+     false,
+     false
+    ],
+    "S": [
+     24.0,
+     32.0
+    ],
+    "C": [
+     9,
+     10
+    ],
+    "crash": [
+     0,
+     10
+    ],
+    "lead_A": 1.225
+   },
+   {
+    "turn": 3,
+    "A": "SH-S",
+    "B": "SH-Y",
+    "hp": [
+     1.0,
+     1.0
+    ],
+    "cells": [
+     -2,
+     -1
+    ],
+    "conn": [
+     false,
+     false
+    ],
+    "died": [
+     false,
+     false
+    ],
+    "recall": [
+     false,
+     false
+    ],
+    "held": [
+     false,
+     false
+    ],
+    "S": [
+     24.0,
+     32.0
+    ],
+    "C": [
+     9,
+     10
+    ],
+    "crash": [
+     0,
+     0
+    ],
+    "lead_A": 1.225
+   },
+   {
+    "turn": 4,
+    "A": "TN-Y",
+    "B": "SH-Y",
+    "hp": [
+     1.0,
+     1.0
+    ],
+    "cells": [
+     -1,
+     0
+    ],
+    "conn": [
+     false,
+     false
+    ],
+    "died": [
+     false,
+     false
+    ],
+    "recall": [
+     false,
+     false
+    ],
+    "held": [
+     true,
+     false
+    ],
+    "S": [
+     24.0,
+     32.0
+    ],
+    "C": [
+     9,
+     10
+    ],
+    "crash": [
+     0,
+     0
+    ],
+    "lead_A": 0.888
+   },
+   {
+    "turn": 5,
+    "A": "SH-Y",
+    "B": "SH-Y",
+    "hp": [
+     1.0,
+     1.0
+    ],
+    "cells": [
+     -2,
+     1
+    ],
+    "conn": [
+     false,
+     false
+    ],
+    "died": [
+     false,
+     false
+    ],
+    "recall": [
+     false,
+     false
+    ],
+    "held": [
+     false,
+     false
+    ],
+    "S": [
+     24.0,
+     32.0
+    ],
+    "C": [
+     9,
+     10
+    ],
+    "crash": [
+     0,
+     0
+    ],
+    "lead_A": 0.55
+   },
+   {
+    "turn": 6,
+    "A": "SH-Y",
+    "B": "LH-H",
+    "hp": [
+     1.0,
+     1.0
+    ],
+    "cells": [
+     -2,
+     1
+    ],
+    "conn": [
+     false,
+     false
+    ],
+    "died": [
+     false,
+     false
+    ],
+    "recall": [
+     false,
+     false
+    ],
+    "held": [
+     false,
+     false
+    ],
+    "S": [
+     24.0,
+     32.0
+    ],
+    "C": [
+     9,
+     10
+    ],
+    "crash": [
+     0,
+     3
+    ],
+    "lead_A": 1.413
+   },
+   {
+    "turn": 7,
+    "A": "TN-H",
+    "B": "TN-Y",
+    "hp": [
+     1.0,
+     1.0
+    ],
+    "cells": [
+     0,
+     0
+    ],
+    "conn": [
+     false,
+     false
+    ],
+    "died": [
+     false,
+     false
+    ],
+    "recall": [
+     false,
+     false
+    ],
+    "held": [
+     false,
+     false
+    ],
+    "S": [
+     24.0,
+     32.0
+    ],
+    "C": [
+     10,
+     10
+    ],
+    "crash": [
+     0,
+     0
+    ],
+    "lead_A": 1.413
+   },
+   {
+    "turn": 8,
+    "A": "LH-T",
+    "B": "LH-H",
+    "hp": [
+     1.0,
+     1.0
+    ],
+    "cells": [
+     0,
+     0
+    ],
+    "conn": [
+     true,
+     false
+    ],
+    "died": [
+     false,
+     false
+    ],
+    "recall": [
+     false,
+     false
+    ],
+    "held": [
+     false,
+     false
+    ],
+    "S": [
+     24.0,
+     32.0
+    ],
+    "C": [
+     10,
+     10
+    ],
+    "crash": [
+     0,
+     0
+    ],
+    "lead_A": 1.368
+   },
+   {
+    "turn": 9,
+    "A": "SH-Y",
+    "B": "SH-Y",
+    "hp": [
+     1.0,
+     1.0
+    ],
+    "cells": [
+     -1,
+     -1
+    ],
+    "conn": [
+     false,
+     false
+    ],
+    "died": [
+     false,
+     false
+    ],
+    "recall": [
+     false,
+     false
+    ],
+    "held": [
+     false,
+     false
+    ],
+    "S": [
+     24.0,
+     32.0
+    ],
+    "C": [
+     10,
+     10
+    ],
+    "crash": [
+     0,
+     0
+    ],
+    "lead_A": 1.368
+   },
+   {
+    "turn": 10,
+    "A": "LH-T",
+    "B": "TN-T",
+    "hp": [
+     1.0,
+     1.0
+    ],
+    "cells": [
+     0,
+     0
+    ],
+    "conn": [
+     true,
+     true
+    ],
+    "died": [
+     false,
+     false
+    ],
+    "recall": [
+     false,
+     false
+    ],
+    "held": [
+     false,
+     false
+    ],
+    "S": [
+     24.0,
+     32.0
+    ],
+    "C": [
+     10,
+     10
+    ],
+    "crash": [
+     0,
+     0
+    ],
+    "lead_A": 1.368
+   },
+   {
+    "turn": 11,
+    "A": "LH-S",
+    "B": "WARD",
+    "hp": [
+     1.0,
+     0.79
+    ],
+    "cells": [
+     -1,
+     99
+    ],
+    "conn": [
+     false,
+     false
+    ],
+    "died": [
+     false,
+     false
+    ],
+    "recall": [
+     false,
+     false
+    ],
+    "held": [
+     false,
+     false
+    ],
+    "S": [
+     24.0,
+     32.0
+    ],
+    "C": [
+     10,
+     10
+    ],
+    "crash": [
+     0,
+     0
+    ],
+    "lead_A": 1.418
+   },
+   {
+    "turn": 12,
+    "A": "SL-Y",
+    "B": "SL-Y",
+    "hp": [
+     1.0,
+     0.79
+    ],
+    "cells": [
+     -1,
+     -1
+    ],
+    "conn": [
+     false,
+     false
+    ],
+    "died": [
+     false,
+     false
+    ],
+    "recall": [
+     false,
+     false
+    ],
+    "held": [
+     false,
+     false
+    ],
+    "S": [
+     24.0,
+     32.0
+    ],
+    "C": [
+     10,
+     10
+    ],
+    "crash": [
+     0,
+     0
+    ],
+    "lead_A": 1.418
+   },
+   {
+    "turn": 13,
+    "A": "LH-T",
+    "B": "TN-T",
+    "hp": [
+     1.0,
+     0.79
+    ],
+    "cells": [
+     0,
+     0
+    ],
+    "conn": [
+     true,
+     true
+    ],
+    "died": [
+     false,
+     false
+    ],
+    "recall": [
+     false,
+     false
+    ],
+    "held": [
+     false,
+     false
+    ],
+    "S": [
+     24.0,
+     32.0
+    ],
+    "C": [
+     10,
+     10
+    ],
+    "crash": [
+     0,
+     0
+    ],
+    "lead_A": 1.418
+   },
+   {
+    "turn": 14,
+    "A": "LH-Y",
+    "B": "SL-T",
+    "hp": [
+     0.82,
+     0.78
+    ],
+    "cells": [
+     -1,
+     0
+    ],
+    "conn": [
+     false,
+     true
+    ],
+    "died": [
+     false,
+     false
+    ],
+    "recall": [
+     false,
+     false
+    ],
+    "held": [
+     false,
+     false
+    ],
+    "S": [
+     24.0,
+     32.0
+    ],
+    "C": [
+     10,
+     10
+    ],
+    "crash": [
+     0,
+     0
+    ],
+    "lead_A": 1.26
+   },
+   {
+    "turn": 15,
+    "A": "SH-Y",
+    "B": "LH-Y",
+    "hp": [
+     0.83,
+     0.78
+    ],
+    "cells": [
+     -1,
+     -1
+    ],
+    "conn": [
+     false,
+     false
+    ],
+    "died": [
+     false,
+     false
+    ],
+    "recall": [
+     false,
+     false
+    ],
+    "held": [
+     false,
+     false
+    ],
+    "S": [
+     24.0,
+     32.0
+    ],
+    "C": [
+     10,
+     10
+    ],
+    "crash": [
+     0,
+     0
+    ],
+    "lead_A": 2.272
+   },
+   {
+    "turn": 16,
+    "A": "SL-T",
+    "B": "SL-T",
+    "hp": [
+     0.81,
+     0.45
+    ],
+    "cells": [
+     0,
+     0
+    ],
+    "conn": [
+     true,
+     true
+    ],
+    "died": [
+     false,
+     false
+    ],
+    "recall": [
+     false,
+     false
+    ],
+    "held": [
+     false,
+     true
+    ],
+    "S": [
+     24.0,
+     32.0
+    ],
+    "C": [
+     10,
+     10
+    ],
+    "crash": [
+     0,
+     0
+    ],
+    "lead_A": 1.913
+   },
+   {
+    "turn": 17,
+    "A": "SH-Y",
+    "B": "SH-Y",
+    "hp": [
+     0.81,
+     0.44
+    ],
+    "cells": [
+     1,
+     -2
+    ],
+    "conn": [
+     false,
+     false
+    ],
+    "died": [
+     false,
+     false
+    ],
+    "recall": [
+     false,
+     false
+    ],
+    "held": [
+     false,
+     false
+    ],
+    "S": [
+     24.0,
+     32.0
+    ],
+    "C": [
+     10,
+     10
+    ],
+    "crash": [
+     0,
+     0
+    ],
+    "lead_A": 2.475
+   },
+   {
+    "turn": 18,
+    "A": "SL-S",
+    "B": "SH-Y",
+    "hp": [
+     0.81,
+     0.44
+    ],
+    "cells": [
+     -1,
+     -2
+    ],
+    "conn": [
+     false,
+     false
+    ],
+    "died": [
+     false,
+     false
+    ],
+    "recall": [
+     false,
+     false
+    ],
+    "held": [
+     false,
+     false
+    ],
+    "S": [
+     24.0,
+     32.0
+    ],
+    "C": [
+     10,
+     10
+    ],
+    "crash": [
+     3,
+     0
+    ],
+    "lead_A": 1.613
+   },
+   {
+    "turn": 19,
+    "A": "SL-T",
+    "B": "LH-R",
+    "hp": [
+     0.81,
+     null
+    ],
+    "cells": [
+     1,
+     -2
+    ],
+    "conn": [
+     false,
+     false
+    ],
+    "died": [
+     false,
+     false
+    ],
+    "recall": [
+     false,
+     true
+    ],
+    "held": [
+     false,
+     false
+    ],
+    "S": [
+     24.0,
+     32.0
+    ],
+    "C": [
+     10,
+     10
+    ],
+    "crash": [
+     0,
+     0
+    ],
+    "lead_A": 1.95
+   },
+   {
+    "turn": 20,
+    "A": "SH-H",
+    "B": "ABSENT",
+    "hp": [
+     0.81,
+     1.0
+    ],
+    "cells": [
+     1,
+     -2
+    ],
+    "conn": [
+     false,
+     false
+    ],
+    "died": [
+     false,
+     false
+    ],
+    "recall": [
+     false,
+     false
+    ],
+    "held": [
+     false,
+     true
+    ],
+    "S": [
+     24.0,
+     39.41
+    ],
+    "C": [
+     10,
+     10
+    ],
+    "crash": [
+     0,
+     0
+    ],
+    "lead_A": 3.075
+   }
+  ],
+  "freeze level 4, held 12, freezer (A) +8|baseline|s0|t0": [
+   {
+    "turn": 1,
+    "A": "SH-Y",
+    "B": "SH-H",
+    "hp": [
+     1.0,
+     1.0
+    ],
+    "cells": [
+     -2,
+     1
+    ],
+    "conn": [
+     false,
+     false
+    ],
+    "died": [
+     false,
+     false
+    ],
+    "recall": [
+     false,
+     false
+    ],
+    "held": [
+     false,
+     false
+    ],
+    "S": [
+     10.0,
+     2.0
+    ],
+    "C": [
+     6,
+     5
+    ],
+    "crash": [
+     0,
+     0
+    ],
+    "lead_A": -0.113
+   },
+   {
+    "turn": 2,
+    "A": "SH-H",
+    "B": "LH-Y",
+    "hp": [
+     1.0,
+     1.0
+    ],
+    "cells": [
+     -2,
+     1
+    ],
+    "conn": [
+     false,
+     false
+    ],
+    "died": [
+     false,
+     false
+    ],
+    "recall": [
+     false,
+     false
+    ],
+    "held": [
+     false,
+     false
+    ],
+    "S": [
+     10.0,
+     2.0
+    ],
+    "C": [
+     6,
+     5
+    ],
+    "crash": [
+     0,
+     13
+    ],
+    "lead_A": 0.887
+   },
+   {
+    "turn": 3,
+    "A": "SH-Y",
+    "B": "SL-H+P",
+    "hp": [
+     1.0,
+     0.39
+    ],
+    "cells": [
+     -2,
+     2
+    ],
+    "conn": [
+     false,
+     false
+    ],
+    "died": [
+     false,
+     false
+    ],
+    "recall": [
+     false,
+     false
+    ],
+    "held": [
+     false,
+     false
+    ],
+    "S": [
+     10.0,
+     2.0
+    ],
+    "C": [
+     6,
+     5
+    ],
+    "crash": [
+     0,
+     0
+    ],
+    "lead_A": 0.962
+   },
+   {
+    "turn": 4,
+    "A": "SL-H",
+    "B": "SH-H",
+    "hp": [
+     1.0,
+     null
+    ],
+    "cells": [
+     -2,
+     1
+    ],
+    "conn": [
+     false,
+     false
+    ],
+    "died": [
+     false,
+     true
+    ],
+    "recall": [
+     false,
+     false
+    ],
+    "held": [
+     false,
+     false
+    ],
+    "S": [
+     10.0,
+     2.0
+    ],
+    "C": [
+     6,
+     5
+    ],
+    "crash": [
+     0,
+     5
+    ],
+    "lead_A": 2.938
+   },
+   {
+    "turn": 5,
+    "A": "SH-Y",
+    "B": "ABSENT",
+    "hp": [
+     1.0,
+     null
+    ],
+    "cells": [
+     -1,
+     -2
+    ],
+    "conn": [
+     false,
+     false
+    ],
+    "died": [
+     false,
+     false
+    ],
+    "recall": [
+     false,
+     false
+    ],
+    "held": [
+     false,
+     false
+    ],
+    "S": [
+     10.0,
+     2.0
+    ],
+    "C": [
+     6,
+     5
+    ],
+    "crash": [
+     0,
+     0
+    ],
+    "lead_A": 3.575
+   },
+   {
+    "turn": 6,
+    "A": "LH-H",
+    "B": "ABSENT",
+    "hp": [
+     1.0,
+     null
+    ],
+    "cells": [
+     -1,
+     -2
+    ],
+    "conn": [
+     false,
+     false
+    ],
+    "died": [
+     false,
+     false
+    ],
+    "recall": [
+     false,
+     false
+    ],
+    "held": [
+     false,
+     false
+    ],
+    "S": [
+     10.0,
+     2.0
+    ],
+    "C": [
+     6,
+     5
+    ],
+    "crash": [
+     0,
+     0
+    ],
+    "lead_A": 3.913
+   },
+   {
+    "turn": 7,
+    "A": "SL-H",
+    "B": "ABSENT",
+    "hp": [
+     1.0,
+     1.0
+    ],
+    "cells": [
+     -1,
+     -2
+    ],
+    "conn": [
+     false,
+     false
+    ],
+    "died": [
+     false,
+     false
+    ],
+    "recall": [
+     false,
+     false
+    ],
+    "held": [
+     false,
+     false
+    ],
+    "S": [
+     10.0,
+     3.6875
+    ],
+    "C": [
+     6,
+     5
+    ],
+    "crash": [
+     0,
+     0
+    ],
+    "lead_A": 4.25
+   },
+   {
+    "turn": 8,
+    "A": "SL-H",
+    "B": "LH-T",
+    "hp": [
+     1.0,
+     1.0
+    ],
+    "cells": [
+     -1,
+     0
+    ],
+    "conn": [
+     false,
+     true
+    ],
+    "died": [
+     false,
+     false
+    ],
+    "recall": [
+     false,
+     false
+    ],
+    "held": [
+     false,
+     false
+    ],
+    "S": [
+     10.0,
+     3.6875
+    ],
+    "C": [
+     7,
+     6
+    ],
+    "crash": [
+     0,
+     0
+    ],
+    "lead_A": 4.407
+   },
+   {
+    "turn": 9,
+    "A": "TN-T",
+    "B": "SL-S",
+    "hp": [
+     0.9,
+     1.0
+    ],
+    "cells": [
+     0,
+     -2
+    ],
+    "conn": [
+     false,
+     false
+    ],
+    "died": [
+     false,
+     false
+    ],
+    "recall": [
+     false,
+     false
+    ],
+    "held": [
+     false,
+     false
+    ],
+    "S": [
+     10.0,
+     3.6875
+    ],
+    "C": [
+     7,
+     6
+    ],
+    "crash": [
+     0,
+     0
+    ],
+    "lead_A": 4.857
+   },
+   {
+    "turn": 10,
+    "A": "SL-H",
+    "B": "LH-T",
+    "hp": [
+     0.63,
+     0.91
+    ],
+    "cells": [
+     -1,
+     0
+    ],
+    "conn": [
+     false,
+     true
+    ],
+    "died": [
+     false,
+     false
+    ],
+    "recall": [
+     false,
+     false
+    ],
+    "held": [
+     false,
+     false
+    ],
+    "S": [
+     10.0,
+     3.6875
+    ],
+    "C": [
+     7,
+     6
+    ],
+    "crash": [
+     0,
+     0
+    ],
+    "lead_A": 5.015
+   },
+   {
+    "turn": 11,
+    "A": "SH-Y",
+    "B": "SL-H",
+    "hp": [
+     0.63,
+     0.91
+    ],
+    "cells": [
+     -1,
+     0
+    ],
+    "conn": [
+     false,
+     false
+    ],
+    "died": [
+     false,
+     false
+    ],
+    "recall": [
+     false,
+     false
+    ],
+    "held": [
+     false,
+     false
+    ],
+    "S": [
+     10.0,
+     3.6875
+    ],
+    "C": [
+     7,
+     6
+    ],
+    "crash": [
+     0,
+     0
+    ],
+    "lead_A": 5.802
+   },
+   {
+    "turn": 12,
+    "A": "SL-T",
+    "B": "SL-T",
+    "hp": [
+     0.64,
+     0.58
+    ],
+    "cells": [
+     -1,
+     0
+    ],
+    "conn": [
+     true,
+     true
+    ],
+    "died": [
+     false,
+     false
+    ],
+    "recall": [
+     false,
+     false
+    ],
+    "held": [
+     false,
+     false
+    ],
+    "S": [
+     10.0,
+     3.6875
+    ],
+    "C": [
+     7,
+     6
+    ],
+    "crash": [
+     0,
+     0
+    ],
+    "lead_A": 5.532
+   },
+   {
+    "turn": 13,
+    "A": "SL-H",
+    "B": "SH-Y",
+    "hp": [
+     0.64,
+     0.6
+    ],
+    "cells": [
+     1,
+     -1
+    ],
+    "conn": [
+     false,
+     false
+    ],
+    "died": [
+     false,
+     false
+    ],
+    "recall": [
+     false,
+     false
+    ],
+    "held": [
+     false,
+     true
+    ],
+    "S": [
+     10.0,
+     3.6875
+    ],
+    "C": [
+     7,
+     6
+    ],
+    "crash": [
+     0,
+     0
+    ],
+    "lead_A": 5.307
+   },
+   {
+    "turn": 14,
+    "A": "SH-Y",
+    "B": "SL-T",
+    "hp": [
+     0.64,
+     0.6
+    ],
+    "cells": [
+     0,
+     -1
+    ],
+    "conn": [
+     false,
+     true
+    ],
+    "died": [
+     false,
+     false
+    ],
+    "recall": [
+     false,
+     false
+    ],
+    "held": [
+     false,
+     false
+    ],
+    "S": [
+     10.0,
+     3.6875
+    ],
+    "C": [
+     7,
+     6
+    ],
+    "crash": [
+     10,
+     0
+    ],
+    "lead_A": 5.215
+   },
+   {
+    "turn": 15,
+    "A": "TN-H+P",
+    "B": "TN-S",
+    "hp": [
+     0.64,
+     0.6
+    ],
+    "cells": [
+     2,
+     -2
+    ],
+    "conn": [
+     false,
+     false
+    ],
+    "died": [
+     false,
+     false
+    ],
+    "recall": [
+     false,
+     false
+    ],
+    "held": [
+     false,
+     false
+    ],
+    "S": [
+     10.0,
+     3.6875
+    ],
+    "C": [
+     7,
+     6
+    ],
+    "crash": [
+     0,
+     0
+    ],
+    "lead_A": 4.64
+   },
+   {
+    "turn": 16,
+    "A": "SH-H",
+    "B": "SH-T",
+    "hp": [
+     0.51,
+     0.56
+    ],
+    "cells": [
+     1,
+     -1
+    ],
+    "conn": [
+     false,
+     true
+    ],
+    "died": [
+     false,
+     false
+    ],
+    "recall": [
+     false,
+     false
+    ],
+    "held": [
+     false,
+     true
+    ],
+    "S": [
+     10.0,
+     3.6875
+    ],
+    "C": [
+     7,
+     6
+    ],
+    "crash": [
+     0,
+     0
+    ],
+    "lead_A": 4.977
+   },
+   {
+    "turn": 17,
+    "A": "TN-Y",
+    "B": "TN-Y",
+    "hp": [
+     0.51,
+     0.56
+    ],
+    "cells": [
+     0,
+     -2
+    ],
+    "conn": [
+     false,
+     false
+    ],
+    "died": [
+     false,
+     false
+    ],
+    "recall": [
+     false,
+     false
+    ],
+    "held": [
+     false,
+     true
+    ],
+    "S": [
+     10.0,
+     3.6875
+    ],
+    "C": [
+     7,
+     6
+    ],
+    "crash": [
+     0,
+     0
+    ],
+    "lead_A": 4.977
+   },
+   {
+    "turn": 18,
+    "A": "LH-S",
+    "B": "SH-Y",
+    "hp": [
+     0.51,
+     0.58
+    ],
+    "cells": [
+     -1,
+     -2
+    ],
+    "conn": [
+     false,
+     false
+    ],
+    "died": [
+     false,
+     false
+    ],
+    "recall": [
+     false,
+     false
+    ],
+    "held": [
+     false,
+     false
+    ],
+    "S": [
+     10.0,
+     3.6875
+    ],
+    "C": [
+     7,
+     6
+    ],
+    "crash": [
+     0,
+     0
+    ],
+    "lead_A": 4.077
+   },
+   {
+    "turn": 19,
+    "A": "LH-R",
+    "B": "SL-T",
+    "hp": [
+     0.24,
+     0.58
+    ],
+    "cells": [
+     -1,
+     0
+    ],
+    "conn": [
+     false,
+     true
+    ],
+    "died": [
+     false,
+     false
+    ],
+    "recall": [
+     false,
+     false
+    ],
+    "held": [
+     false,
+     false
+    ],
+    "S": [
+     10.0,
+     3.6875
+    ],
+    "C": [
+     7,
+     6
+    ],
+    "crash": [
+     0,
+     0
+    ],
+    "lead_A": 3.717
+   },
+   {
+    "turn": 20,
+    "A": "LH-R",
+    "B": "WARD",
+    "hp": [
+     null,
+     0.58
+    ],
+    "cells": [
+     -2,
+     99
+    ],
+    "conn": [
+     false,
+     false
+    ],
+    "died": [
+     false,
+     false
+    ],
+    "recall": [
+     true,
+     false
+    ],
+    "held": [
+     false,
+     false
+    ],
+    "S": [
+     10.0,
+     3.6875
+    ],
+    "C": [
+     7,
+     6
+    ],
+    "crash": [
+     0,
+     0
+    ],
+    "lead_A": 3.717
+   }
+  ],
+  "freeze level 4, held 12, freezer (A) +8|C1|s0|t0": [
+   {
+    "turn": 1,
+    "A": "SH-Y",
+    "B": "SH-H",
+    "hp": [
+     1.0,
+     1.0
+    ],
+    "cells": [
+     -2,
+     1
+    ],
+    "conn": [
+     false,
+     false
+    ],
+    "died": [
+     false,
+     false
+    ],
+    "recall": [
+     false,
+     false
+    ],
+    "held": [
+     false,
+     false
+    ],
+    "S": [
+     10.0,
+     2.0
+    ],
+    "C": [
+     6,
+     5
+    ],
+    "crash": [
+     0,
+     0
+    ],
+    "lead_A": -0.113
+   },
+   {
+    "turn": 2,
+    "A": "SH-Y",
+    "B": "SH-H",
+    "hp": [
+     1.0,
+     1.0
+    ],
+    "cells": [
+     -2,
+     1
+    ],
+    "conn": [
+     false,
+     false
+    ],
+    "died": [
+     false,
+     false
+    ],
+    "recall": [
+     false,
+     false
+    ],
+    "held": [
+     false,
+     false
+    ],
+    "S": [
+     10.0,
+     2.0
+    ],
+    "C": [
+     6,
+     5
+    ],
+    "crash": [
+     0,
+     13
+    ],
+    "lead_A": 0.887
+   },
+   {
+    "turn": 3,
+    "A": "TN-Y",
+    "B": "SH-H+P",
+    "hp": [
+     1.0,
+     0.36
+    ],
+    "cells": [
+     -2,
+     2
+    ],
+    "conn": [
+     false,
+     false
+    ],
+    "died": [
+     false,
+     false
+    ],
+    "recall": [
+     false,
+     false
+    ],
+    "held": [
+     false,
+     false
+    ],
+    "S": [
+     10.0,
+     2.0
+    ],
+    "C": [
+     6,
+     5
+    ],
+    "crash": [
+     0,
+     0
+    ],
+    "lead_A": 0.625
+   },
+   {
+    "turn": 4,
+    "A": "TN-T",
+    "B": "SH-H",
+    "hp": [
+     0.96,
+     null
+    ],
+    "cells": [
+     -1,
+     1
+    ],
+    "conn": [
+     true,
+     false
+    ],
+    "died": [
+     false,
+     true
+    ],
+    "recall": [
+     false,
+     false
+    ],
+    "held": [
+     false,
+     false
+    ],
+    "S": [
+     10.0,
+     2.0
+    ],
+    "C": [
+     6,
+     5
+    ],
+    "crash": [
+     0,
+     6
+    ],
+    "lead_A": 2.74
+   },
+   {
+    "turn": 5,
+    "A": "SH-Y",
+    "B": "ABSENT",
+    "hp": [
+     0.96,
+     null
+    ],
+    "cells": [
+     -1,
+     -2
+    ],
+    "conn": [
+     false,
+     false
+    ],
+    "died": [
+     false,
+     false
+    ],
+    "recall": [
+     false,
+     false
+    ],
+    "held": [
+     false,
+     false
+    ],
+    "S": [
+     10.0,
+     2.0
+    ],
+    "C": [
+     6,
+     5
+    ],
+    "crash": [
+     0,
+     0
+    ],
+    "lead_A": 3.478
+   },
+   {
+    "turn": 6,
+    "A": "LH-H",
+    "B": "ABSENT",
+    "hp": [
+     0.96,
+     null
+    ],
+    "cells": [
+     -1,
+     -2
+    ],
+    "conn": [
+     false,
+     false
+    ],
+    "died": [
+     false,
+     false
+    ],
+    "recall": [
+     false,
+     false
+    ],
+    "held": [
+     false,
+     false
+    ],
+    "S": [
+     10.0,
+     2.0
+    ],
+    "C": [
+     6,
+     5
+    ],
+    "crash": [
+     0,
+     0
+    ],
+    "lead_A": 3.815
+   },
+   {
+    "turn": 7,
+    "A": "SL-T",
+    "B": "ABSENT",
+    "hp": [
+     0.96,
+     1.0
+    ],
+    "cells": [
+     -1,
+     -2
+    ],
+    "conn": [
+     false,
+     false
+    ],
+    "died": [
+     false,
+     false
+    ],
+    "recall": [
+     false,
+     false
+    ],
+    "held": [
+     false,
+     false
+    ],
+    "S": [
+     10.0,
+     3.6875
+    ],
+    "C": [
+     6,
+     5
+    ],
+    "crash": [
+     0,
+     0
+    ],
+    "lead_A": 4.152
+   },
+   {
+    "turn": 8,
+    "A": "SL-Y",
+    "B": "TN-T",
+    "hp": [
+     0.96,
+     1.0
+    ],
+    "cells": [
+     -2,
+     0
+    ],
+    "conn": [
+     false,
+     false
+    ],
+    "died": [
+     false,
+     false
+    ],
+    "recall": [
+     false,
+     false
+    ],
+    "held": [
+     false,
+     false
+    ],
+    "S": [
+     10.0,
+     3.6875
+    ],
+    "C": [
+     6,
+     5
+    ],
+    "crash": [
+     0,
+     0
+    ],
+    "lead_A": 3.802
+   },
+   {
+    "turn": 9,
+    "A": "TN-T",
+    "B": "SL-S",
+    "hp": [
+     0.93,
+     1.0
+    ],
+    "cells": [
+     0,
+     -2
+    ],
+    "conn": [
+     false,
+     false
+    ],
+    "died": [
+     false,
+     false
+    ],
+    "recall": [
+     false,
+     false
+    ],
+    "held": [
+     false,
+     false
+    ],
+    "S": [
+     10.0,
+     3.6875
+    ],
+    "C": [
+     6,
+     5
+    ],
+    "crash": [
+     0,
+     0
+    ],
+    "lead_A": 4.252
+   },
+   {
+    "turn": 10,
+    "A": "SL-Y",
+    "B": "TN-T",
+    "hp": [
+     0.93,
+     1.0
+    ],
+    "cells": [
+     -2,
+     0
+    ],
+    "conn": [
+     false,
+     false
+    ],
+    "died": [
+     false,
+     false
+    ],
+    "recall": [
+     false,
+     false
+    ],
+    "held": [
+     false,
+     false
+    ],
+    "S": [
+     10.0,
+     3.6875
+    ],
+    "C": [
+     6,
+     5
+    ],
+    "crash": [
+     0,
+     0
+    ],
+    "lead_A": 3.84
+   },
+   {
+    "turn": 11,
+    "A": "LH-T",
+    "B": "SH-Y",
+    "hp": [
+     0.93,
+     1.0
+    ],
+    "cells": [
+     -1,
+     -1
+    ],
+    "conn": [
+     false,
+     false
+    ],
+    "died": [
+     false,
+     false
+    ],
+    "recall": [
+     false,
+     false
+    ],
+    "held": [
+     false,
+     false
+    ],
+    "S": [
+     10.0,
+     3.6875
+    ],
+    "C": [
+     6,
+     5
+    ],
+    "crash": [
+     0,
+     0
+    ],
+    "lead_A": 4.215
+   },
+   {
+    "turn": 12,
+    "A": "SL-T",
+    "B": "SL-T",
+    "hp": [
+     0.85,
+     0.69
+    ],
+    "cells": [
+     0,
+     0
+    ],
+    "conn": [
+     true,
+     true
+    ],
+    "died": [
+     false,
+     false
+    ],
+    "recall": [
+     false,
+     false
+    ],
+    "held": [
+     false,
+     false
+    ],
+    "S": [
+     10.0,
+     3.6875
+    ],
+    "C": [
+     6,
+     5
+    ],
+    "crash": [
+     0,
+     0
+    ],
+    "lead_A": 4.305
+   },
+   {
+    "turn": 13,
+    "A": "TN-T",
+    "B": "LH-Y",
+    "hp": [
+     0.75,
+     0.5
+    ],
+    "cells": [
+     0,
+     0
+    ],
+    "conn": [
+     true,
+     false
+    ],
+    "died": [
+     false,
+     false
+    ],
+    "recall": [
+     false,
+     false
+    ],
+    "held": [
+     false,
+     false
+    ],
+    "S": [
+     10.0,
+     3.6875
+    ],
+    "C": [
+     6,
+     5
+    ],
+    "crash": [
+     0,
+     0
+    ],
+    "lead_A": 4.552
+   },
+   {
+    "turn": 14,
+    "A": "SL-H",
+    "B": "SL-S",
+    "hp": [
+     0.76,
+     0.5
+    ],
+    "cells": [
+     -1,
+     -1
+    ],
+    "conn": [
+     false,
+     false
+    ],
+    "died": [
+     false,
+     false
+    ],
+    "recall": [
+     false,
+     false
+    ],
+    "held": [
+     false,
+     false
+    ],
+    "S": [
+     10.0,
+     3.6875
+    ],
+    "C": [
+     6,
+     5
+    ],
+    "crash": [
+     0,
+     0
+    ],
+    "lead_A": 5.115
+   },
+   {
+    "turn": 15,
+    "A": "SL-Y",
+    "B": "LH-R",
+    "hp": [
+     0.76,
+     null
+    ],
+    "cells": [
+     -1,
+     -2
+    ],
+    "conn": [
+     false,
+     false
+    ],
+    "died": [
+     false,
+     false
+    ],
+    "recall": [
+     false,
+     true
+    ],
+    "held": [
+     false,
+     false
+    ],
+    "S": [
+     10.0,
+     3.6875
+    ],
+    "C": [
+     7,
+     5
+    ],
+    "crash": [
+     0,
+     0
+    ],
+    "lead_A": 5.79
+   },
+   {
+    "turn": 16,
+    "A": "LH-Y",
+    "B": "ABSENT",
+    "hp": [
+     0.76,
+     1.0
+    ],
+    "cells": [
+     -1,
+     -2
+    ],
+    "conn": [
+     false,
+     false
+    ],
+    "died": [
+     false,
+     false
+    ],
+    "recall": [
+     false,
+     false
+    ],
+    "held": [
+     false,
+     false
+    ],
+    "S": [
+     10.0,
+     5.1575
+    ],
+    "C": [
+     7,
+     5
+    ],
+    "crash": [
+     0,
+     0
+    ],
+    "lead_A": 6.465
+   },
+   {
+    "turn": 17,
+    "A": "SH-H",
+    "B": "LH-T",
+    "hp": [
+     0.48,
+     0.87
+    ],
+    "cells": [
+     -1,
+     0
+    ],
+    "conn": [
+     false,
+     true
+    ],
+    "died": [
+     false,
+     false
+    ],
+    "recall": [
+     false,
+     false
+    ],
+    "held": [
+     false,
+     false
+    ],
+    "S": [
+     10.0,
+     5.1575
+    ],
+    "C": [
+     7,
+     5
+    ],
+    "crash": [
+     0,
+     0
+    ],
+    "lead_A": 7.297
+   },
+   {
+    "turn": 18,
+    "A": "LH-R",
+    "B": "SH-Y",
+    "hp": [
+     null,
+     0.87
+    ],
+    "cells": [
+     -2,
+     -2
+    ],
+    "conn": [
+     false,
+     false
+    ],
+    "died": [
+     false,
+     false
+    ],
+    "recall": [
+     true,
+     false
+    ],
+    "held": [
+     false,
+     true
+    ],
+    "S": [
+     10.0,
+     5.1575
+    ],
+    "C": [
+     7,
+     6
+    ],
+    "crash": [
+     0,
+     0
+    ],
+    "lead_A": 6.847
+   },
+   {
+    "turn": 19,
+    "A": "ABSENT",
+    "B": "SL-Y",
+    "hp": [
+     1.0,
+     0.87
+    ],
+    "cells": [
+     -2,
+     -2
+    ],
+    "conn": [
+     false,
+     false
+    ],
+    "died": [
+     false,
+     false
+    ],
+    "recall": [
+     false,
+     false
+    ],
+    "held": [
+     false,
+     false
+    ],
+    "S": [
+     20.635,
+     5.1575
+    ],
+    "C": [
+     7,
+     6
+    ],
+    "crash": [
+     0,
+     0
+    ],
+    "lead_A": 6.397
+   },
+   {
+    "turn": 20,
+    "A": "SH-T",
+    "B": "SL-H",
+    "hp": [
+     0.77,
+     0.87
+    ],
+    "cells": [
+     0,
+     -2
+    ],
+    "conn": [
+     false,
+     false
+    ],
+    "died": [
+     false,
+     false
+    ],
+    "recall": [
+     false,
+     false
+    ],
+    "held": [
+     false,
+     false
+    ],
+    "S": [
+     20.635,
+     5.1575
+    ],
+    "C": [
+     8,
+     6
+    ],
+    "crash": [
+     24,
+     0
+    ],
+    "lead_A": 5.697
+   }
+  ],
+  "freeze level 4, held 12, freezer (A) +8|baseline|s0|t1": [
+   {
+    "turn": 1,
+    "A": "SH-H",
+    "B": "SH-H",
+    "hp": [
+     1.0,
+     1.0
+    ],
+    "cells": [
+     -2,
+     1
+    ],
+    "conn": [
+     false,
+     false
+    ],
+    "died": [
+     false,
+     false
+    ],
+    "recall": [
+     false,
+     false
+    ],
+    "held": [
+     false,
+     false
+    ],
+    "S": [
+     10.0,
+     2.0
+    ],
+    "C": [
+     6,
+     5
+    ],
+    "crash": [
+     0,
+     0
+    ],
+    "lead_A": -0.113
+   },
+   {
+    "turn": 2,
+    "A": "SH-H",
+    "B": "SL-Y",
+    "hp": [
+     1.0,
+     1.0
+    ],
+    "cells": [
+     -2,
+     1
+    ],
+    "conn": [
+     false,
+     false
+    ],
+    "died": [
+     false,
+     false
+    ],
+    "recall": [
+     false,
+     false
+    ],
+    "held": [
+     false,
+     false
+    ],
+    "S": [
+     10.0,
+     2.0
+    ],
+    "C": [
+     6,
+     5
+    ],
+    "crash": [
+     0,
+     13
+    ],
+    "lead_A": 0.887
+   },
+   {
+    "turn": 3,
+    "A": "TN-Y",
+    "B": "TN-H+P",
+    "hp": [
+     1.0,
+     1.0
+    ],
+    "cells": [
+     -2,
+     2
+    ],
+    "conn": [
+     false,
+     false
+    ],
+    "died": [
+     false,
+     false
+    ],
+    "recall": [
+     false,
+     false
+    ],
+    "held": [
+     false,
+     false
+    ],
+    "S": [
+     10.0,
+     2.0
+    ],
+    "C": [
+     6,
+     5
+    ],
+    "crash": [
+     0,
+     0
+    ],
+    "lead_A": 0.962
+   },
+   {
+    "turn": 4,
+    "A": "SH-Y",
+    "B": "TN-H",
+    "hp": [
+     1.0,
+     1.0
+    ],
+    "cells": [
+     -1,
+     1
+    ],
+    "conn": [
+     false,
+     false
+    ],
+    "died": [
+     false,
+     false
+    ],
+    "recall": [
+     false,
+     false
+    ],
+    "held": [
+     false,
+     false
+    ],
+    "S": [
+     10.0,
+     2.0
+    ],
+    "C": [
+     6,
+     5
+    ],
+    "crash": [
+     0,
+     0
+    ],
+    "lead_A": 1.637
+   },
+   {
+    "turn": 5,
+    "A": "SL-Y",
+    "B": "SL-H",
+    "hp": [
+     1.0,
+     0.95
+    ],
+    "cells": [
+     0,
+     -1
+    ],
+    "conn": [
+     false,
+     false
+    ],
+    "died": [
+     false,
+     false
+    ],
+    "recall": [
+     false,
+     false
+    ],
+    "held": [
+     false,
+     false
+    ],
+    "S": [
+     10.0,
+     2.0
+    ],
+    "C": [
+     6,
+     5
+    ],
+    "crash": [
+     0,
+     0
+    ],
+    "lead_A": 1.75
+   },
+   {
+    "turn": 6,
+    "A": "WARD",
+    "B": "LH-H",
+    "hp": [
+     1.0,
+     0.95
+    ],
+    "cells": [
+     99,
+     -1
+    ],
+    "conn": [
+     false,
+     false
+    ],
+    "died": [
+     false,
+     false
+    ],
+    "recall": [
+     false,
+     false
+    ],
+    "held": [
+     false,
+     false
+    ],
+    "S": [
+     10.0,
+     2.0
+    ],
+    "C": [
+     6,
+     5
+    ],
+    "crash": [
+     0,
+     0
+    ],
+    "lead_A": 1.413
+   },
+   {
+    "turn": 7,
+    "A": "SH-H",
+    "B": "LH-Y",
+    "hp": [
+     1.0,
+     0.95
+    ],
+    "cells": [
+     0,
+     -1
+    ],
+    "conn": [
+     false,
+     false
+    ],
+    "died": [
+     false,
+     false
+    ],
+    "recall": [
+     false,
+     false
+    ],
+    "held": [
+     false,
+     false
+    ],
+    "S": [
+     10.0,
+     2.0
+    ],
+    "C": [
+     6,
+     5
+    ],
+    "crash": [
+     0,
+     0
+    ],
+    "lead_A": 2.088
+   },
+   {
+    "turn": 8,
+    "A": "TN-T",
+    "B": "SH-H",
+    "hp": [
+     1.0,
+     0.95
+    ],
+    "cells": [
+     0,
+     -1
+    ],
+    "conn": [
+     true,
+     false
+    ],
+    "died": [
+     false,
+     false
+    ],
+    "recall": [
+     false,
+     false
+    ],
+    "held": [
+     false,
+     false
+    ],
+    "S": [
+     10.0,
+     2.0
+    ],
+    "C": [
+     7,
+     5
+    ],
+    "crash": [
+     0,
+     0
+    ],
+    "lead_A": 1.48
+   },
+   {
+    "turn": 9,
+    "A": "TN-T",
+    "B": "LH-T",
+    "hp": [
+     0.8,
+     0.64
+    ],
+    "cells": [
+     0,
+     -1
+    ],
+    "conn": [
+     true,
+     true
+    ],
+    "died": [
+     false,
+     false
+    ],
+    "recall": [
+     false,
+     false
+    ],
+    "held": [
+     false,
+     false
+    ],
+    "S": [
+     10.0,
+     2.0
+    ],
+    "C": [
+     7,
+     5
+    ],
+    "crash": [
+     0,
+     0
+    ],
+    "lead_A": 1.57
+   },
+   {
+    "turn": 10,
+    "A": "TN-T",
+    "B": "LH-T",
+    "hp": [
+     0.8,
+     0.64
+    ],
+    "cells": [
+     0,
+     -1
+    ],
+    "conn": [
+     true,
+     true
+    ],
+    "died": [
+     false,
+     false
+    ],
+    "recall": [
+     false,
+     false
+    ],
+    "held": [
+     false,
+     false
+    ],
+    "S": [
+     10.0,
+     2.0
+    ],
+    "C": [
+     7,
+     5
+    ],
+    "crash": [
+     0,
+     0
+    ],
+    "lead_A": 1.48
+   },
+   {
+    "turn": 11,
+    "A": "TN-T",
+    "B": "TN-T",
+    "hp": [
+     0.67,
+     0.53
+    ],
+    "cells": [
+     0,
+     -1
+    ],
+    "conn": [
+     true,
+     true
+    ],
+    "died": [
+     false,
+     false
+    ],
+    "recall": [
+     false,
+     false
+    ],
+    "held": [
+     false,
+     false
+    ],
+    "S": [
+     10.0,
+     2.0
+    ],
+    "C": [
+     7,
+     5
+    ],
+    "crash": [
+     0,
+     0
+    ],
+    "lead_A": 1.3
+   },
+   {
+    "turn": 12,
+    "A": "SL-T",
+    "B": "SL-Y",
+    "hp": [
+     0.57,
+     0.12
+    ],
+    "cells": [
+     0,
+     -1
+    ],
+    "conn": [
+     true,
+     false
+    ],
+    "died": [
+     false,
+     false
+    ],
+    "recall": [
+     false,
+     false
+    ],
+    "held": [
+     false,
+     false
+    ],
+    "S": [
+     10.0,
+     2.0
+    ],
+    "C": [
+     7,
+     6
+    ],
+    "crash": [
+     0,
+     0
+    ],
+    "lead_A": 1.728
+   },
+   {
+    "turn": 13,
+    "A": "TN-T",
+    "B": "SL-S",
+    "hp": [
+     0.57,
+     0.12
+    ],
+    "cells": [
+     0,
+     -2
+    ],
+    "conn": [
+     false,
+     false
+    ],
+    "died": [
+     false,
+     false
+    ],
+    "recall": [
+     false,
+     false
+    ],
+    "held": [
+     false,
+     false
+    ],
+    "S": [
+     10.0,
+     2.0
+    ],
+    "C": [
+     7,
+     6
+    ],
+    "crash": [
+     0,
+     0
+    ],
+    "lead_A": 2.178
+   },
+   {
+    "turn": 14,
+    "A": "LH-T",
+    "B": "LH-R",
+    "hp": [
+     0.41,
+     null
+    ],
+    "cells": [
+     2,
+     -2
+    ],
+    "conn": [
+     true,
+     false
+    ],
+    "died": [
+     false,
+     true
+    ],
+    "recall": [
+     false,
+     false
+    ],
+    "held": [
+     false,
+     false
+    ],
+    "S": [
+     10.0,
+     2.0
+    ],
+    "C": [
+     7,
+     6
+    ],
+    "crash": [
+     0,
+     0
+    ],
+    "lead_A": 4.538
+   },
+   {
+    "turn": 15,
+    "A": "SH-H",
+    "B": "ABSENT",
+    "hp": [
+     0.35,
+     null
+    ],
+    "cells": [
+     0,
+     -2
+    ],
+    "conn": [
+     false,
+     false
+    ],
+    "died": [
+     false,
+     false
+    ],
+    "recall": [
+     false,
+     false
+    ],
+    "held": [
+     false,
+     false
+    ],
+    "S": [
+     10.0,
+     2.0
+    ],
+    "C": [
+     7,
+     6
+    ],
+    "crash": [
+     0,
+     0
+    ],
+    "lead_A": 5.888
+   },
+   {
+    "turn": 16,
+    "A": "SH-H",
+    "B": "ABSENT",
+    "hp": [
+     0.35,
+     null
+    ],
+    "cells": [
+     1,
+     -2
+    ],
+    "conn": [
+     false,
+     false
+    ],
+    "died": [
+     false,
+     false
+    ],
+    "recall": [
+     false,
+     false
+    ],
+    "held": [
+     false,
+     true
+    ],
+    "S": [
+     10.0,
+     2.0
+    ],
+    "C": [
+     7,
+     6
+    ],
+    "crash": [
+     0,
+     0
+    ],
+    "lead_A": 6.563
+   },
+   {
+    "turn": 17,
+    "A": "SH-H",
+    "B": "ABSENT",
+    "hp": [
+     0.35,
+     1.0
+    ],
+    "cells": [
+     1,
+     -2
+    ],
+    "conn": [
+     false,
+     false
+    ],
+    "died": [
+     false,
+     false
+    ],
+    "recall": [
+     false,
+     false
+    ],
+    "held": [
+     false,
+     false
+    ],
+    "S": [
+     10.0,
+     5.87
+    ],
+    "C": [
+     7,
+     6
+    ],
+    "crash": [
+     19,
+     0
+    ],
+    "lead_A": 6.9
+   },
+   {
+    "turn": 18,
+    "A": "SL-H+P",
+    "B": "SH-Y",
+    "hp": [
+     0.38,
+     1.0
+    ],
+    "cells": [
+     2,
+     -2
+    ],
+    "conn": [
+     false,
+     false
+    ],
+    "died": [
+     false,
+     false
+    ],
+    "recall": [
+     false,
+     false
+    ],
+    "held": [
+     false,
+     false
+    ],
+    "S": [
+     10.0,
+     5.87
+    ],
+    "C": [
+     7,
+     6
+    ],
+    "crash": [
+     8,
+     0
+    ],
+    "lead_A": 6.163
+   },
+   {
+    "turn": 19,
+    "A": "TN-H+P",
+    "B": "SH-Y",
+    "hp": [
+     0.38,
+     1.0
+    ],
+    "cells": [
+     2,
+     -2
+    ],
+    "conn": [
+     false,
+     false
+    ],
+    "died": [
+     false,
+     false
+    ],
+    "recall": [
+     false,
+     false
+    ],
+    "held": [
+     false,
+     false
+    ],
+    "S": [
+     10.0,
+     5.87
+    ],
+    "C": [
+     7,
+     6
+    ],
+    "crash": [
+     0,
+     0
+    ],
+    "lead_A": 5.2
+   },
+   {
+    "turn": 20,
+    "A": "SH-H+P",
+    "B": "TN-T",
+    "hp": [
+     0.24,
+     0.97
+    ],
+    "cells": [
+     2,
+     -2
+    ],
+    "conn": [
+     false,
+     true
+    ],
+    "died": [
+     false,
+     false
+    ],
+    "recall": [
+     false,
+     false
+    ],
+    "held": [
+     false,
+     false
+    ],
+    "S": [
+     10.0,
+     5.87
+    ],
+    "C": [
+     7,
+     7
+    ],
+    "crash": [
+     8,
+     0
+    ],
+    "lead_A": 6.86
+   }
+  ],
+  "freeze level 4, held 12, freezer (A) +8|C1|s0|t1": [
+   {
+    "turn": 1,
+    "A": "SH-H",
+    "B": "SH-H",
+    "hp": [
+     1.0,
+     1.0
+    ],
+    "cells": [
+     -2,
+     1
+    ],
+    "conn": [
+     false,
+     false
+    ],
+    "died": [
+     false,
+     false
+    ],
+    "recall": [
+     false,
+     false
+    ],
+    "held": [
+     false,
+     false
+    ],
+    "S": [
+     10.0,
+     2.0
+    ],
+    "C": [
+     6,
+     5
+    ],
+    "crash": [
+     0,
+     0
+    ],
+    "lead_A": -0.113
+   },
+   {
+    "turn": 2,
+    "A": "SH-Y",
+    "B": "SL-S",
+    "hp": [
+     1.0,
+     1.0
+    ],
+    "cells": [
+     -2,
+     -1
+    ],
+    "conn": [
+     false,
+     false
+    ],
+    "died": [
+     false,
+     false
+    ],
+    "recall": [
+     false,
+     false
+    ],
+    "held": [
+     false,
+     false
+    ],
+    "S": [
+     10.0,
+     2.0
+    ],
+    "C": [
+     6,
+     5
+    ],
+    "crash": [
+     0,
+     13
+    ],
+    "lead_A": 0.887
+   },
+   {
+    "turn": 3,
+    "A": "LH-S",
+    "B": "LH-Y",
+    "hp": [
+     1.0,
+     1.0
+    ],
+    "cells": [
+     -2,
+     0
+    ],
+    "conn": [
+     false,
+     false
+    ],
+    "died": [
+     false,
+     false
+    ],
+    "recall": [
+     false,
+     false
+    ],
+    "held": [
+     false,
+     false
+    ],
+    "S": [
+     10.0,
+     2.0
+    ],
+    "C": [
+     6,
+     5
+    ],
+    "crash": [
+     0,
+     0
+    ],
+    "lead_A": 1.188
+   },
+   {
+    "turn": 4,
+    "A": "LH-T",
+    "B": "LH-Y",
+    "hp": [
+     1.0,
+     1.0
+    ],
+    "cells": [
+     -1,
+     -1
+    ],
+    "conn": [
+     false,
+     false
+    ],
+    "died": [
+     false,
+     false
+    ],
+    "recall": [
+     false,
+     false
+    ],
+    "held": [
+     true,
+     false
+    ],
+    "S": [
+     10.0,
+     2.0
+    ],
+    "C": [
+     6,
+     5
+    ],
+    "crash": [
+     0,
+     0
+    ],
+    "lead_A": 1.5
+   },
+   {
+    "turn": 5,
+    "A": "SL-H",
+    "B": "LH-T",
+    "hp": [
+     1.0,
+     1.0
+    ],
+    "cells": [
+     -1,
+     0
+    ],
+    "conn": [
+     false,
+     true
+    ],
+    "died": [
+     false,
+     false
+    ],
+    "recall": [
+     false,
+     false
+    ],
+    "held": [
+     true,
+     false
+    ],
+    "S": [
+     10.0,
+     2.0
+    ],
+    "C": [
+     6,
+     5
+    ],
+    "crash": [
+     0,
+     0
+    ],
+    "lead_A": 1.567
+   },
+   {
+    "turn": 6,
+    "A": "LH-T",
+    "B": "SH-H",
+    "hp": [
+     1.0,
+     1.0
+    ],
+    "cells": [
+     -1,
+     1
+    ],
+    "conn": [
+     true,
+     false
+    ],
+    "died": [
+     false,
+     false
+    ],
+    "recall": [
+     false,
+     false
+    ],
+    "held": [
+     true,
+     false
+    ],
+    "S": [
+     10.0,
+     2.0
+    ],
+    "C": [
+     6,
+     5
+    ],
+    "crash": [
+     0,
+     0
+    ],
+    "lead_A": 1.05
+   },
+   {
+    "turn": 7,
+    "A": "LH-H",
+    "B": "SH-H",
+    "hp": [
+     1.0,
+     1.0
+    ],
+    "cells": [
+     -1,
+     1
+    ],
+    "conn": [
+     false,
+     false
+    ],
+    "died": [
+     false,
+     false
+    ],
+    "recall": [
+     false,
+     false
+    ],
+    "held": [
+     true,
+     false
+    ],
+    "S": [
+     10.0,
+     2.0
+    ],
+    "C": [
+     6,
+     5
+    ],
+    "crash": [
+     0,
+     0
+    ],
+    "lead_A": 0.487
+   },
+   {
+    "turn": 8,
+    "A": "SH-Y",
+    "B": "SH-H",
+    "hp": [
+     1.0,
+     1.0
+    ],
+    "cells": [
+     -2,
+     1
+    ],
+    "conn": [
+     false,
+     false
+    ],
+    "died": [
+     false,
+     false
+    ],
+    "recall": [
+     false,
+     false
+    ],
+    "held": [
+     false,
+     false
+    ],
+    "S": [
+     10.0,
+     2.0
+    ],
+    "C": [
+     6,
+     5
+    ],
+    "crash": [
+     0,
+     9
+    ],
+    "lead_A": 0.775
+   },
+   {
+    "turn": 9,
+    "A": "TN-Y",
+    "B": "SH-H+P",
+    "hp": [
+     1.0,
+     1.0
+    ],
+    "cells": [
+     -2,
+     2
+    ],
+    "conn": [
+     false,
+     false
+    ],
+    "died": [
+     false,
+     false
+    ],
+    "recall": [
+     false,
+     false
+    ],
+    "held": [
+     false,
+     false
+    ],
+    "S": [
+     10.0,
+     2.0
+    ],
+    "C": [
+     6,
+     5
+    ],
+    "crash": [
+     0,
+     0
+    ],
+    "lead_A": 0.712
+   },
+   {
+    "turn": 10,
+    "A": "SH-Y",
+    "B": "SH-Y",
+    "hp": [
+     1.0,
+     1.0
+    ],
+    "cells": [
+     -2,
+     1
+    ],
+    "conn": [
+     false,
+     false
+    ],
+    "died": [
+     false,
+     false
+    ],
+    "recall": [
+     false,
+     false
+    ],
+    "held": [
+     false,
+     false
+    ],
+    "S": [
+     10.0,
+     2.0
+    ],
+    "C": [
+     6,
+     5
+    ],
+    "crash": [
+     0,
+     5
+    ],
+    "lead_A": 1.225
+   },
+   {
+    "turn": 11,
+    "A": "TN-Y",
+    "B": "SH-H+P",
+    "hp": [
+     1.0,
+     0.52
+    ],
+    "cells": [
+     -2,
+     2
+    ],
+    "conn": [
+     false,
+     false
+    ],
+    "died": [
+     false,
+     false
+    ],
+    "recall": [
+     false,
+     false
+    ],
+    "held": [
+     false,
+     false
+    ],
+    "S": [
+     10.0,
+     2.0
+    ],
+    "C": [
+     6,
+     5
+    ],
+    "crash": [
+     0,
+     0
+    ],
+    "lead_A": 0.65
+   },
+   {
+    "turn": 12,
+    "A": "TN-T",
+    "B": "SL-S",
+    "hp": [
+     0.96,
+     0.13
+    ],
+    "cells": [
+     -1,
+     0
+    ],
+    "conn": [
+     true,
+     false
+    ],
+    "died": [
+     false,
+     false
+    ],
+    "recall": [
+     false,
+     false
+    ],
+    "held": [
+     false,
+     false
+    ],
+    "S": [
+     10.0,
+     2.0
+    ],
+    "C": [
+     6,
+     5
+    ],
+    "crash": [
+     0,
+     6
+    ],
+    "lead_A": 0.99
+   },
+   {
+    "turn": 13,
+    "A": "LH-Y",
+    "B": "SH-H+P",
+    "hp": [
+     0.97,
+     null
+    ],
+    "cells": [
+     -1,
+     2
+    ],
+    "conn": [
+     false,
+     false
+    ],
+    "died": [
+     false,
+     true
+    ],
+    "recall": [
+     false,
+     false
+    ],
+    "held": [
+     false,
+     false
+    ],
+    "S": [
+     10.0,
+     2.0
+    ],
+    "C": [
+     6,
+     5
+    ],
+    "crash": [
+     0,
+     0
+    ],
+    "lead_A": 2.603
+   },
+   {
+    "turn": 14,
+    "A": "SH-H",
+    "B": "ABSENT",
+    "hp": [
+     0.97,
+     null
+    ],
+    "cells": [
+     -1,
+     -2
+    ],
+    "conn": [
+     false,
+     false
+    ],
+    "died": [
+     false,
+     false
+    ],
+    "recall": [
+     false,
+     false
+    ],
+    "held": [
+     false,
+     false
+    ],
+    "S": [
+     10.0,
+     2.0
+    ],
+    "C": [
+     7,
+     5
+    ],
+    "crash": [
+     0,
+     0
+    ],
+    "lead_A": 3.502
+   },
+   {
+    "turn": 15,
+    "A": "SH-T",
+    "B": "ABSENT",
+    "hp": [
+     0.97,
+     null
+    ],
+    "cells": [
+     0,
+     -2
+    ],
+    "conn": [
+     false,
+     false
+    ],
+    "died": [
+     false,
+     false
+    ],
+    "recall": [
+     false,
+     false
+    ],
+    "held": [
+     false,
+     false
+    ],
+    "S": [
+     10.0,
+     2.0
+    ],
+    "C": [
+     7,
+     5
+    ],
+    "crash": [
+     0,
+     0
+    ],
+    "lead_A": 4.402
+   },
+   {
+    "turn": 16,
+    "A": "SL-H",
+    "B": "ABSENT",
+    "hp": [
+     0.97,
+     1.0
+    ],
+    "cells": [
+     1,
+     -2
+    ],
+    "conn": [
+     false,
+     false
+    ],
+    "died": [
+     false,
+     false
+    ],
+    "recall": [
+     false,
+     false
+    ],
+    "held": [
+     false,
+     false
+    ],
+    "S": [
+     10.0,
+     7.5825
+    ],
+    "C": [
+     7,
+     5
+    ],
+    "crash": [
+     8,
+     0
+    ],
+    "lead_A": 4.515
+   },
+   {
+    "turn": 17,
+    "A": "SH-H+P",
+    "B": "SH-Y",
+    "hp": [
+     0.97,
+     1.0
+    ],
+    "cells": [
+     2,
+     -2
+    ],
+    "conn": [
+     false,
+     false
+    ],
+    "died": [
+     false,
+     false
+    ],
+    "recall": [
+     false,
+     false
+    ],
+    "held": [
+     false,
+     false
+    ],
+    "S": [
+     10.0,
+     7.5825
+    ],
+    "C": [
+     7,
+     6
+    ],
+    "crash": [
+     0,
+     0
+    ],
+    "lead_A": 4.603
+   },
+   {
+    "turn": 18,
+    "A": "SL-S",
+    "B": "SH-Y",
+    "hp": [
+     0.97,
+     1.0
+    ],
+    "cells": [
+     0,
+     -2
+    ],
+    "conn": [
+     false,
+     false
+    ],
+    "died": [
+     false,
+     false
+    ],
+    "recall": [
+     false,
+     false
+    ],
+    "held": [
+     false,
+     false
+    ],
+    "S": [
+     10.0,
+     7.5825
+    ],
+    "C": [
+     7,
+     6
+    ],
+    "crash": [
+     5,
+     0
+    ],
+    "lead_A": 3.865
+   },
+   {
+    "turn": 19,
+    "A": "SH-H+P",
+    "B": "LH-Y",
+    "hp": [
+     0.97,
+     1.0
+    ],
+    "cells": [
+     2,
+     -2
+    ],
+    "conn": [
+     false,
+     false
+    ],
+    "died": [
+     false,
+     false
+    ],
+    "recall": [
+     false,
+     false
+    ],
+    "held": [
+     false,
+     false
+    ],
+    "S": [
+     10.0,
+     7.5825
+    ],
+    "C": [
+     7,
+     6
+    ],
+    "crash": [
+     0,
+     0
+    ],
+    "lead_A": 4.665
+   },
+   {
+    "turn": 20,
+    "A": "SH-Y",
+    "B": "SH-Y",
+    "hp": [
+     0.97,
+     1.0
+    ],
+    "cells": [
+     1,
+     -2
+    ],
+    "conn": [
+     false,
+     false
+    ],
+    "died": [
+     false,
+     false
+    ],
+    "recall": [
+     false,
+     false
+    ],
+    "held": [
+     false,
+     false
+    ],
+    "S": [
+     10.0,
+     7.5825
+    ],
+    "C": [
+     7,
+     6
+    ],
+    "crash": [
+     5,
+     0
+    ],
+    "lead_A": 4.265
+   }
+  ]
+ }
+}

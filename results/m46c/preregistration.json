@@ -1,0 +1,31 @@
+{
+ "meta": {
+  "study": "M4.6c",
+  "commit": "2080667d74a84098c63207a3ccbe8055cd90d127",
+  "working_tree_dirty": true,
+  "timestamp": "2026-10-15 18:28:04",
+  "torch": "2.14.1+cpu",
+  "numpy": "2.5.3",
+  "stage": "prereg"
+ },
+ "record": {
+  "document": "docs\\m4\\m4_6\\m4_6c_preregistration.md",
+  "sha256": "c237131b9af63846ad1895ed97f06d965391aa841d099a87c9e39ea8fdc5ea85",
+  "bytes": 14392
+ },
+ "note": "frozen after the smoke test (pipeline only) and before any training run of the pilot",
+ "amendments": [
+  {
+   "time": "2026-10-15 19:46:21",
+   "note": "Extension rule fired (pre-registration \u00a72): criterion A not met at 4,096,000 (mid +8 G50: C1 - baseline +0.06 +- 0.14, ratio x1.21, 4+/2-), and the primary statistic moved >= 0.05 between the 2,048,000 snapshots and the finals in both arms (baseline +0.232 -> +0.301, +0.069; C1 +0.434 -> +0.363, -0.070). The matched continuation to 8,192,000 runs for both arms (phase 'ext': fresh runs from the same six finals, every setting unchanged, lr annealed over 8,192,000, same PPO seeds). Written before any extension run. Families re-evaluated on the 8,192,000 finals, with the same states, seeds and analysis as at 4,096,000: premium (J1, J2, J3), battery, natural_cf, natural, and h2h (final vs start W 1000, vs other starts, C1 vs baseline cross). The freeze, specialists, records and premium150 families stay at 4,096,000 only. The scorecard is computed at both budgets and both are reported; the recommendation uses the 8,192,000 scorecard, the longer adaptation, with the 4,096,000 one as the replication of direction."
+  },
+  {
+   "time": "2026-10-15 20:11:15",
+   "note": "EXPLORATORY role swap (written before it runs, after the 4.096M premium decomposition showed that C1-trained policies have a smaller premium in the C1 environment than baseline-trained ones): in the C1 environment, seat B = the baseline-trained policy, seat A = the same policy or the C1-trained policy, early and mid lead cells, K 128, h 50, at 4.096M (roleswap) and 8.192M (roleswap_ext). Separates the C1-trained leader's conversion from the C1-trained trailer's defence. Labelled exploratory; not part of the scorecard."
+  },
+  {
+   "time": "2026-10-15 20:45:13",
+   "note": "EXPLORATORY powered 150-turn premium (written before it runs; prompted by the pre-registered premium150 continuation check, where the neutral-cell C1 - baseline difference rose with the horizon, e.g. late +16 -0.07 at G50 to +0.22 at G150, K 64): J1 (each arm's own policy, own environment), mid and late lead cells, all three situations, both orientations, K 128, horizon 150, reporting G50 / G100 / G150; on the 4.096M finals (premium150p) and the 8.192M finals (premium150p_ext). Labelled exploratory; the pre-registered primary stays G50."
+  }
+ ]
+}

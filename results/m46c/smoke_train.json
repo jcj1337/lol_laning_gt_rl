@@ -1,0 +1,738 @@
+{
+ "meta": {
+  "study": "M4.6c",
+  "commit": "2080667d74a84098c63207a3ccbe8055cd90d127",
+  "working_tree_dirty": true,
+  "timestamp": "2026-10-15 18:25:50",
+  "torch": "2.14.1+cpu",
+  "numpy": "2.5.3",
+  "stage": "smoke"
+ },
+ "spec": {
+  "arms": {
+   "baseline": {
+    "preset": "GameConfig.m45_calibrated()",
+    "overrides": {}
+   },
+   "C1": {
+    "preset": "GameConfig.m45_calibrated()",
+    "overrides": {
+     "invest_gain": 3.24,
+     "invest_scale": 64.0
+    }
+   }
+  },
+  "ppo": {
+   "n_envs": 16,
+   "n_steps": 64,
+   "epochs": 4,
+   "minibatch_size": 256,
+   "lr": 0.0003,
+   "anneal_lr": true,
+   "gamma": 0.99,
+   "gae_lambda": 0.95,
+   "clip_coef": 0.2,
+   "clip_vloss": true,
+   "vf_clip": 0.5,
+   "vf_coef": 0.5,
+   "ent_coef": 0.03,
+   "max_grad_norm": 0.5,
+   "target_kl": null,
+   "norm_adv": true,
+   "reward_scale": 0.1,
+   "hidden": [
+    128,
+    128
+   ],
+   "torch_threads": 1,
+   "max_turns": null,
+   "lane_cache": 5000,
+   "expected_gank_reward": false,
+   "skill_levels": null,
+   "segment_length": 128,
+   "game_length": 512,
+   "start_archive": null,
+   "start_mix": 0.0,
+   "allow_gamma_mismatch": false
+  },
+  "shared": {
+   "current_fraction": 1.0,
+   "snapshot_every": 25600,
+   "pool_size": 8,
+   "snapshot_initial": false
+  },
+  "initialization": "weights of start:<s> (M4.5c ext final), fresh Adam, lr 3e-4 annealed linearly to 0 over the budget",
+  "budget": 4096000,
+  "midpoint": 2048000,
+  "starts": {
+   "beta": 0.532,
+   "archive_length": 150,
+   "game_length": 512,
+   "mirror_p": 0.5,
+   "target_transition_share": 0.25
+  },
+  "seeds": {
+   "train": "98000 + s, the same in both arms"
+  }
+ },
+ "runs": {
+  "baseline_s0": {
+   "updates": 10,
+   "finite_losses_and_gradients": true,
+   "grad_norm_mean": 0.7200288861058652,
+   "grad_norm_max": 1.0999475717544556,
+   "clipfrac_mean": 0.09779133272677427,
+   "approx_kl_mean": 0.007324927846056539,
+   "approx_kl_max": 0.009142930939674443,
+   "entropy_first_last": [
+    1.8035302143543959,
+    1.807177322730422
+   ],
+   "explained_variance_first_last10": [
+    0.4608827524334921,
+    0.43839609122027356
+   ],
+   "value_loss_first_last10": [
+    0.006321539360214956,
+    0.006491408564033918
+   ],
+   "value_absmax_resources": 4.415523111820221,
+   "value_mean_last10_resources": 0.024522008301119055,
+   "return_std_last10_resources": 1.5329075941046868,
+   "reward_mean_abs_resources": 0.5212863769531251,
+   "transitions_seat_a": 20480,
+   "transitions_seat_b": 20480,
+   "transitions_historical": 0,
+   "single_choice_transitions": 2995,
+   "truncations": 68,
+   "terminations": 0,
+   "games_finished": 68,
+   "games_historical": 0,
+   "collect_s": 7.949163400102407,
+   "update_s": 1.8473729998804629,
+   "curve": [
+    [
+     4096,
+     1.8035302143543959,
+     0.007928936638563755,
+     0.4608827524334921,
+     0.6815144037827849,
+     0.029940296062704874,
+     0.10518683322152356,
+     0.006321539360214956
+    ],
+    [
+     8192,
+     1.7646928746253252,
+     0.0063526432107039454,
+     0.4223602619147213,
+     0.7279116725549102,
+     0.03437300975747348,
+     0.08722452865185915,
+     0.007704750634729862
+    ],
+    [
+     12288,
+     1.844505526125431,
+     0.007805536242756261,
+     0.433488834244227,
+     0.7203305466100574,
+     0.06783837289276562,
+     0.10439605265855789,
+     0.006065545880119316
+    ],
+    [
+     16384,
+     1.8483271673321724,
+     0.007780989688853879,
+     0.4222410952587512,
+     0.766341001726687,
+     0.08092081995073386,
+     0.09974956048972672,
+     0.005906196645810269
+    ],
+    [
+     20480,
+     1.8294363357126713,
+     0.006806906901204002,
+     0.4625581712625002,
+     0.6970370346680284,
+     0.07670189741475042,
+     0.08985304966336116,
+     0.006142956102848984
+    ],
+    [
+     24576,
+     1.8118946589529514,
+     0.007146813257008944,
+     0.4544265443073383,
+     0.7115811370313168,
+     -0.01026536865538219,
+     0.09070903428073507,
+     0.0059041793865617365
+    ],
+    [
+     28672,
+     1.809698959812522,
+     0.009142930939674443,
+     0.4613302721726892,
+     0.7319189654663205,
+     -0.07234685868752422,
+     0.12832505423284601,
+     0.005907337224925868
+    ],
+    [
+     32768,
+     1.8081051539629698,
+     0.007372980027184894,
+     0.4604117781410927,
+     0.7766751749441028,
+     0.017179050719278166,
+     0.10299885101267137,
+     0.00546058972395258
+    ],
+    [
+     36864,
+     1.8018133211880922,
+     0.00615565498748083,
+     0.3590822124506122,
+     0.6988983582705259,
+     -0.0017605544189791544,
+     0.08227254566008924,
+     0.0074753142762347125
+    ],
+    [
+     40960,
+     1.749769015237689,
+     0.006755886567134439,
+     0.44717899001731154,
+     0.6880805660039186,
+     0.022639417975369724,
+     0.08719781739637256,
+     0.008025676404940896
+    ]
+   ],
+   "status": "complete",
+   "name": "baseline_s0",
+   "phase": "smoke",
+   "arm": "baseline",
+   "seed": 0,
+   "schedule_total_steps": 4096000,
+   "stop_at": 40960,
+   "budget": 40960,
+   "run_dir": "results\\rl\\checkpoints\\m46c\\train\\smoke\\baseline\\s0",
+   "agent_transitions": 40960,
+   "env_turns": 20480,
+   "elapsed_s": 9.870676199905574,
+   "transitions_per_s": 4149.665045277428,
+   "value_s0_resources": [
+    -0.24070516228675842,
+    -0.24070516228675842
+   ],
+   "snapshots": 1,
+   "digest": "636c1f31572b1e302188c977d95523c884d39e502c565f04155b8b7f97504151",
+   "initial_digest": "4db220749f6f751b3b88121e2f01bc5e7add3c236906a3f7126c502b7ff5a5d3",
+   "start_checkpoint": "results\\rl\\checkpoints\\m45c\\ext\\s0\\final.pt",
+   "ppo": {
+    "total_steps": 4096000,
+    "n_envs": 16,
+    "n_steps": 64,
+    "epochs": 4,
+    "minibatch_size": 256,
+    "lr": 0.0003,
+    "anneal_lr": true,
+    "gamma": 0.99,
+    "gae_lambda": 0.95,
+    "clip_coef": 0.2,
+    "clip_vloss": true,
+    "vf_clip": 0.5,
+    "vf_coef": 0.5,
+    "ent_coef": 0.03,
+    "max_grad_norm": 0.5,
+    "target_kl": null,
+    "norm_adv": true,
+    "reward_scale": 0.1,
+    "hidden": [
+     128,
+     128
+    ],
+    "seed": 98000,
+    "torch_threads": 1,
+    "max_turns": null,
+    "lane_cache": 5000,
+    "expected_gank_reward": false,
+    "skill_levels": null,
+    "segment_length": 128,
+    "game_length": 512,
+    "start_archive": null,
+    "start_mix": 0.0,
+    "allow_gamma_mismatch": false
+   },
+   "shared": {
+    "current_fraction": 1.0,
+    "snapshot_every": 25600,
+    "pool_size": 8,
+    "snapshot_initial": false
+   },
+   "memory": {
+    "rss_mb": 468.62109375,
+    "peak_mb": 472.875
+   },
+   "rollout": {
+    "illegal_sampled_total": 0,
+    "never_legal_offered_total": 0,
+    "reward_antisymmetry_max_abs": 0.0,
+    "first10": {
+     "adv_std": 0.11234548354047585,
+     "mask_n_legal_mean": 16.41455078125,
+     "mask_single_choice_share": 0.06884765625,
+     "mask_ward_legal_share": 0.632080078125,
+     "mask_recall_legal_share": 0.522216796875,
+     "mask_pressure_legal_share": 0.03662109375,
+     "act_cat_LH": 0.1796875,
+     "act_cat_TN": 0.168212890625,
+     "act_cat_SL": 0.191650390625,
+     "act_cat_SH": 0.3076171875,
+     "act_cat_Ward": 0.01953125,
+     "act_cat_Recall": 0.064453125,
+     "act_cat_Absent": 0.06884765625,
+     "act_beh_Hold": 0.2864553314121037,
+     "act_beh_Yield": 0.31095100864553316,
+     "act_beh_Trade": 0.2446685878962536,
+     "act_beh_Safe": 0.1579250720461095,
+     "act_pressure_of_lane": 0.03688760806916427,
+     "seatB_minus_A_cat_LH": -0.0146484375,
+     "seatB_minus_A_cat_TN": 0.01611328125,
+     "seatB_minus_A_cat_SL": -0.02392578125,
+     "seatB_minus_A_cat_SH": 0.013671875,
+     "seatB_minus_A_cat_Ward": -0.0078125,
+     "seatB_minus_A_cat_Recall": 0.0126953125,
+     "seatB_minus_A_cat_Absent": 0.00390625,
+     "adv_mean_A": 0.017052149012713215,
+     "adv_std_A": 0.11104617329375324,
+     "adv_mean_B": -0.01742077686642391,
+     "adv_std_B": 0.11098455492259338
+    },
+    "last10": {
+     "adv_std": 0.12776159115214594,
+     "mask_n_legal_mean": 16.28662109375,
+     "mask_single_choice_share": 0.080078125,
+     "mask_ward_legal_share": 0.58984375,
+     "mask_recall_legal_share": 0.50732421875,
+     "mask_pressure_legal_share": 0.048828125,
+     "act_cat_LH": 0.191650390625,
+     "act_cat_TN": 0.162109375,
+     "act_cat_SL": 0.14013671875,
+     "act_cat_SH": 0.324951171875,
+     "act_cat_Ward": 0.02392578125,
+     "act_cat_Recall": 0.0771484375,
+     "act_cat_Absent": 0.080078125,
+     "act_beh_Hold": 0.3330351818723912,
+     "act_beh_Yield": 0.22301729278473464,
+     "act_beh_Trade": 0.26624925462134763,
+     "act_beh_Safe": 0.17769827072152652,
+     "act_pressure_of_lane": 0.04025044722719141,
+     "seatB_minus_A_cat_LH": 0.00146484375,
+     "seatB_minus_A_cat_TN": -0.0087890625,
+     "seatB_minus_A_cat_SL": -0.001953125,
+     "seatB_minus_A_cat_SH": -0.00244140625,
+     "seatB_minus_A_cat_Ward": 0.0009765625,
+     "seatB_minus_A_cat_Recall": 0.005859375,
+     "seatB_minus_A_cat_Absent": 0.0048828125,
+     "adv_mean_A": 0.0018022123375424463,
+     "adv_std_A": 0.12750349887579152,
+     "adv_mean_B": -0.004337441811702881,
+     "adv_std_B": 0.12794552921204813
+    },
+    "episodes_total": {
+     "games": 68,
+     "turns": 17230,
+     "deaths": 233,
+     "recalls": 1390,
+     "recalls_interrupted": 1039,
+     "trades_attempted": 7026,
+     "trades_connected": 4341,
+     "ganks": 1893
+    }
+   },
+   "starts": {
+    "archive": "results\\rl\\checkpoints\\m46c\\archive\\train_archive.json.gz",
+    "archive_states": 4800,
+    "beta": 0.532,
+    "archive_length": 150,
+    "game_length": 512,
+    "mirror_p": 0.5,
+    "games_started": {
+     "initial": 40,
+     "archive": 44,
+     "mirrored": 27
+    },
+    "archive_by_label": {
+     "zone": 8,
+     "natural": 21,
+     "natural+lead": 14,
+     "freeze": 1
+    },
+    "joint_steps_finished": {
+     "initial": 11642,
+     "archive": 5588
+    },
+    "joint_steps_finished_by_label": {
+     "zone": 962,
+     "natural": 2518,
+     "natural+lead": 2024,
+     "freeze": 84
+    },
+    "archive_transition_share_finished": 0.32431804991294255
+   },
+   "checkpoint_digest": "636c1f31572b1e302188c977d95523c884d39e502c565f04155b8b7f97504151",
+   "started": "2026-10-15 18:25:23",
+   "finished": "2026-10-15 18:25:37",
+   "wall_s": 13.525977499783039,
+   "pid": 10528
+  },
+  "C1_s0": {
+   "updates": 10,
+   "finite_losses_and_gradients": true,
+   "grad_norm_mean": 0.7253737693186849,
+   "grad_norm_max": 1.3599061965942383,
+   "clipfrac_mean": 0.09547639043303206,
+   "approx_kl_mean": 0.007268646030541959,
+   "approx_kl_max": 0.008720641536456242,
+   "entropy_first_last": [
+    1.7933695558458567,
+    1.765770067460835
+   ],
+   "explained_variance_first_last10": [
+    0.43957394193907595,
+    0.45372419307912504
+   ],
+   "value_loss_first_last10": [
+    0.00640904297324596,
+    0.0060205923746252665
+   ],
+   "value_absmax_resources": 3.984036147594452,
+   "value_mean_last10_resources": 0.01866859664187359,
+   "return_std_last10_resources": 1.4939677041047854,
+   "reward_mean_abs_resources": 0.516919189453125,
+   "transitions_seat_a": 20480,
+   "transitions_seat_b": 20480,
+   "transitions_historical": 0,
+   "single_choice_transitions": 2931,
+   "truncations": 68,
+   "terminations": 0,
+   "games_finished": 68,
+   "games_historical": 0,
+   "collect_s": 7.942588001023978,
+   "update_s": 1.864565399941057,
+   "curve": [
+    [
+     4096,
+     1.7933695558458567,
+     0.007438787769388,
+     0.43957394193907595,
+     0.6613902309909463,
+     0.03641212557340623,
+     0.09837640823388938,
+     0.00640904297324596
+    ],
+    [
+     8192,
+     1.772837307304144,
+     0.008720641536456242,
+     0.4662996511733305,
+     0.748869301751256,
+     0.12074557459982316,
+     0.12402158406621311,
+     0.005527740442630602
+    ],
+    [
+     12288,
+     1.7374088130891323,
+     0.006662029225367405,
+     0.47602928612617335,
+     0.752167347818613,
+     0.01572756934365316,
+     0.08664714357291814,
+     0.006753304325684439
+    ],
+    [
+     16384,
+     1.8088124170899391,
+     0.005761104679947948,
+     0.46204284642551097,
+     0.7539902301505208,
+     0.016557590124648414,
+     0.07234512980357977,
+     0.005144479888258502
+    ],
+    [
+     20480,
+     1.7387358956038952,
+     0.008328801233005834,
+     0.49186666718584937,
+     0.6661494220606983,
+     0.03899208381426433,
+     0.10964526065799873,
+     0.005003479796869215
+    ],
+    [
+     24576,
+     1.7484774868935347,
+     0.006072782173760061,
+     0.4417815650714567,
+     0.7563124736770988,
+     -0.024608080921098008,
+     0.07698063622228801,
+     0.006067868685931899
+    ],
+    [
+     28672,
+     1.7838561460375786,
+     0.007807042916510909,
+     0.44810095905315384,
+     0.7398870405741036,
+     -0.013057496807959978,
+     0.10407176206354052,
+     0.004955806420184672
+    ],
+    [
+     32768,
+     1.7781646586954594,
+     0.008148921541021537,
+     0.4072189811869851,
+     0.7720632730051875,
+     -0.05034013794102066,
+     0.10468148084328277,
+     0.006571161386091262
+    ],
+    [
+     36864,
+     1.777171440422535,
+     0.007045634623636943,
+     0.4936796074025357,
+     0.6949434857815504,
+     0.006595191293854441,
+     0.09299879432364833,
+     0.005758800958574284
+    ],
+    [
+     40960,
+     1.718866953626275,
+     0.006700714606324709,
+     0.4106484252271786,
+     0.7079648873768747,
+     0.03966154733916483,
+     0.0849957045429619,
+     0.008014238868781831
+    ]
+   ],
+   "status": "complete",
+   "name": "C1_s0",
+   "phase": "smoke",
+   "arm": "C1",
+   "seed": 0,
+   "schedule_total_steps": 4096000,
+   "stop_at": 40960,
+   "budget": 40960,
+   "run_dir": "results\\rl\\checkpoints\\m46c\\train\\smoke\\C1\\s0",
+   "agent_transitions": 40960,
+   "env_turns": 20480,
+   "elapsed_s": 9.880260800011456,
+   "transitions_per_s": 4145.639556392328,
+   "value_s0_resources": [
+    0.07715411484241486,
+    0.07715411484241486
+   ],
+   "snapshots": 1,
+   "digest": "9e519c17762b69d27afe476f67aab466ab4f2f774ee2a7d16f974ef19c3fc4f2",
+   "initial_digest": "4db220749f6f751b3b88121e2f01bc5e7add3c236906a3f7126c502b7ff5a5d3",
+   "start_checkpoint": "results\\rl\\checkpoints\\m45c\\ext\\s0\\final.pt",
+   "ppo": {
+    "total_steps": 4096000,
+    "n_envs": 16,
+    "n_steps": 64,
+    "epochs": 4,
+    "minibatch_size": 256,
+    "lr": 0.0003,
+    "anneal_lr": true,
+    "gamma": 0.99,
+    "gae_lambda": 0.95,
+    "clip_coef": 0.2,
+    "clip_vloss": true,
+    "vf_clip": 0.5,
+    "vf_coef": 0.5,
+    "ent_coef": 0.03,
+    "max_grad_norm": 0.5,
+    "target_kl": null,
+    "norm_adv": true,
+    "reward_scale": 0.1,
+    "hidden": [
+     128,
+     128
+    ],
+    "seed": 98000,
+    "torch_threads": 1,
+    "max_turns": null,
+    "lane_cache": 5000,
+    "expected_gank_reward": false,
+    "skill_levels": null,
+    "segment_length": 128,
+    "game_length": 512,
+    "start_archive": null,
+    "start_mix": 0.0,
+    "allow_gamma_mismatch": false
+   },
+   "shared": {
+    "current_fraction": 1.0,
+    "snapshot_every": 25600,
+    "pool_size": 8,
+    "snapshot_initial": false
+   },
+   "memory": {
+    "rss_mb": 468.70703125,
+    "peak_mb": 472.953125
+   },
+   "rollout": {
+    "illegal_sampled_total": 0,
+    "never_legal_offered_total": 0,
+    "reward_antisymmetry_max_abs": 0.0,
+    "first10": {
+     "adv_std": 0.11367971052641479,
+     "mask_n_legal_mean": 16.4130859375,
+     "mask_single_choice_share": 0.068115234375,
+     "mask_ward_legal_share": 0.61181640625,
+     "mask_recall_legal_share": 0.524169921875,
+     "mask_pressure_legal_share": 0.037353515625,
+     "act_cat_LH": 0.1708984375,
+     "act_cat_TN": 0.169189453125,
+     "act_cat_SL": 0.194091796875,
+     "act_cat_SH": 0.310546875,
+     "act_cat_Ward": 0.01708984375,
+     "act_cat_Recall": 0.070068359375,
+     "act_cat_Absent": 0.068115234375,
+     "act_beh_Hold": 0.27601156069364163,
+     "act_beh_Yield": 0.31127167630057806,
+     "act_beh_Trade": 0.25549132947976877,
+     "act_beh_Safe": 0.15722543352601157,
+     "act_pressure_of_lane": 0.036127167630057806,
+     "seatB_minus_A_cat_LH": 0.00390625,
+     "seatB_minus_A_cat_TN": 0.01416015625,
+     "seatB_minus_A_cat_SL": -0.02490234375,
+     "seatB_minus_A_cat_SH": 0.0029296875,
+     "seatB_minus_A_cat_Ward": -0.00390625,
+     "seatB_minus_A_cat_Recall": 0.00439453125,
+     "seatB_minus_A_cat_Absent": 0.00341796875,
+     "adv_mean_A": 0.0015752829423921792,
+     "adv_std_A": 0.11446343468913674,
+     "adv_mean_B": 0.0006634482396603043,
+     "adv_std_B": 0.11288870434477533
+    },
+    "last10": {
+     "adv_std": 0.1275095905698191,
+     "mask_n_legal_mean": 16.1484375,
+     "mask_single_choice_share": 0.083251953125,
+     "mask_ward_legal_share": 0.5751953125,
+     "mask_recall_legal_share": 0.517333984375,
+     "mask_pressure_legal_share": 0.0380859375,
+     "act_cat_LH": 0.188232421875,
+     "act_cat_TN": 0.1689453125,
+     "act_cat_SL": 0.161376953125,
+     "act_cat_SH": 0.306640625,
+     "act_cat_Ward": 0.017822265625,
+     "act_cat_Recall": 0.07373046875,
+     "act_cat_Absent": 0.083251953125,
+     "act_beh_Hold": 0.2621301775147929,
+     "act_beh_Yield": 0.22899408284023667,
+     "act_beh_Trade": 0.2967455621301775,
+     "act_beh_Safe": 0.2121301775147929,
+     "act_pressure_of_lane": 0.03372781065088758,
+     "seatB_minus_A_cat_LH": 0.00048828125,
+     "seatB_minus_A_cat_TN": -0.0048828125,
+     "seatB_minus_A_cat_SL": 0.00634765625,
+     "seatB_minus_A_cat_SH": 0.005859375,
+     "seatB_minus_A_cat_Ward": 0.00048828125,
+     "seatB_minus_A_cat_Recall": -0.0126953125,
+     "seatB_minus_A_cat_Absent": 0.00439453125,
+     "adv_mean_A": 0.015943825480834152,
+     "adv_std_A": 0.12560312782873326,
+     "adv_mean_B": -0.018888298463277352,
+     "adv_std_B": 0.12702207377056837
+    },
+    "episodes_total": {
+     "games": 68,
+     "turns": 17230,
+     "deaths": 200,
+     "recalls": 1507,
+     "recalls_interrupted": 1064,
+     "trades_attempted": 8033,
+     "trades_connected": 4881,
+     "ganks": 1982
+    }
+   },
+   "starts": {
+    "archive": "results\\rl\\checkpoints\\m46c\\archive\\train_archive.json.gz",
+    "archive_states": 4800,
+    "beta": 0.532,
+    "archive_length": 150,
+    "game_length": 512,
+    "mirror_p": 0.5,
+    "games_started": {
+     "initial": 40,
+     "archive": 44,
+     "mirrored": 27
+    },
+    "archive_by_label": {
+     "zone": 8,
+     "natural": 21,
+     "natural+lead": 14,
+     "freeze": 1
+    },
+    "joint_steps_finished": {
+     "initial": 11642,
+     "archive": 5588
+    },
+    "joint_steps_finished_by_label": {
+     "zone": 962,
+     "natural": 2518,
+     "natural+lead": 2024,
+     "freeze": 84
+    },
+    "archive_transition_share_finished": 0.32431804991294255
+   },
+   "checkpoint_digest": "9e519c17762b69d27afe476f67aab466ab4f2f774ee2a7d16f974ef19c3fc4f2",
+   "started": "2026-10-15 18:25:23",
+   "finished": "2026-10-15 18:25:37",
+   "wall_s": 13.529537199996412,
+   "pid": 34360
+  }
+ },
+ "repeat": {
+  "digest": "9e519c17762b69d27afe476f67aab466ab4f2f774ee2a7d16f974ef19c3fc4f2",
+  "run_dir": "results\\rl\\checkpoints\\m46c\\train\\smoke\\C1\\s0_repeat"
+ },
+ "wall_s": 26.409634799696505,
+ "checks": {
+  "baseline_s0: finite losses and gradients": true,
+  "baseline_s0: 10 updates, 40,960 transitions": true,
+  "baseline_s0: both seats trained equally": true,
+  "baseline_s0: 100% current-policy": true,
+  "baseline_s0: no illegal action sampled": true,
+  "baseline_s0: approximate KL mean < 0.05": true,
+  "baseline_s0: initial weights = start:0": true,
+  "baseline_s0: archive games started": true,
+  "baseline_s0: no stop condition": true,
+  "C1_s0: finite losses and gradients": true,
+  "C1_s0: 10 updates, 40,960 transitions": true,
+  "C1_s0: both seats trained equally": true,
+  "C1_s0: 100% current-policy": true,
+  "C1_s0: no illegal action sampled": true,
+  "C1_s0: approximate KL mean < 0.05": true,
+  "C1_s0: initial weights = start:0": true,
+  "C1_s0: archive games started": true,
+  "C1_s0: no stop condition": true,
+  "C1 re-run: bit-identical weights": true,
+  "C1 re-run: identical histories": true
+ },
+ "all_passed": true
+}
