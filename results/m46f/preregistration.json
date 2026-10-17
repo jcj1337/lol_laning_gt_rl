@@ -1,0 +1,27 @@
+{
+ "meta": {
+  "study": "M4.6f",
+  "commit": "6b5d66f17d5eadc4e4e789aa01e5599505de45d7",
+  "working_tree_dirty": true,
+  "timestamp": "2026-10-16 11:51:24",
+  "torch": "2.14.1+cpu",
+  "numpy": "2.5.3",
+  "stage": "prereg"
+ },
+ "record": {
+  "document": "docs\\m4\\m4_6\\m4_6f_preregistration.md",
+  "sha256": "7a48f050e09b2527695bc3efc57a38db60391cbeb21a132a727f45e06fb2f229",
+  "bytes": 11622
+ },
+ "note": "frozen after the smoke test (pipeline, equivalence and throughput only) and before any pilot run",
+ "amendments": [
+  {
+   "time": "2026-10-16 13:47:53",
+   "note": "Amendment 1 (post hoc, recorded after reading the 4.096M results and before any result of the extension existed): the registered B1 (64 paired-seat episodes per seed, W 1000) is limited by measurement noise (per-seed stderr 0.23, about the between-seed SD 0.26). A powered B1 is added: 256 further paired-seat episodes per seed on a new root (H2H_ROOT + 10 = 89,310), W 1000, separate vs shared, for the 4.096M and the 8.192M finals, reported with its pooled per-seed estimate (64 + 256 episodes weighted by count). The registered 64-episode B1 remains the statistic of the pre-registered classification."
+  },
+  {
+   "time": "2026-10-16 13:49:13",
+   "note": "Amendment 2 (exploratory, post hoc, recorded before any result of the extension existed): a natural-play economy profile, motivated by the separate critic's changed response to unspent gold (+4 unspent gold: shared -0.10, separate +0.01 at neutral L8). Each 4.096M and 8.192M final and each start playing itself from s0, 16 games x 600 turns on seeds shared within a seed (NATCF_ROOT + 50 + s): the M4.5c game summary, unspent gold at Recall and while present, invested gold at turns 150 / 300 / 600. Descriptive only; it does not enter the classification."
+  }
+ ]
+}

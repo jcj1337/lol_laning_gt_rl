@@ -1,0 +1,6804 @@
+{
+ "meta": {
+  "study": "M4.6d",
+  "commit": "6b5d66f17d5eadc4e4e789aa01e5599505de45d7",
+  "working_tree_dirty": true,
+  "timestamp": "2026-10-16 02:38:08",
+  "torch": "2.14.1+cpu",
+  "numpy": "2.5.3",
+  "stage": "traces",
+  "label": "EXPLORATORY, illustrative single games"
+ },
+ "traces": [
+  {
+   "arm": "C1",
+   "cell": "freeze12 L5 plaus hpB0.6",
+   "A": "guard_sel",
+   "B": "policy",
+   "seed": 99600000,
+   "rows": [
+    {
+     "turn": 0,
+     "A": "TN-T",
+     "B": "SH-Y",
+     "end": [
+      -1,
+      -1
+     ],
+     "hp": [
+      0.85,
+      0.6
+     ],
+     "front_A": "-2:8",
+     "front_B": "1:15",
+     "held": true,
+     "events": [],
+     "lead": 0.56
+    },
+    {
+     "turn": 1,
+     "A": "LH-H",
+     "B": "SH-Y",
+     "end": [
+      -2,
+      1
+     ],
+     "hp": [
+      0.85,
+      0.6
+     ],
+     "front_A": "-2:8",
+     "front_B": "1:11",
+     "held": true,
+     "events": [],
+     "lead": 0.11
+    },
+    {
+     "turn": 2,
+     "A": "LH-T",
+     "B": "SH-Y",
+     "end": [
+      -1,
+      -1
+     ],
+     "hp": [
+      0.73,
+      0.6
+     ],
+     "front_A": "-2:8",
+     "front_B": "1:16",
+     "held": true,
+     "events": [],
+     "lead": 0.45
+    },
+    {
+     "turn": 3,
+     "A": "LH-H",
+     "B": "SH-H",
+     "end": [
+      -2,
+      1
+     ],
+     "hp": [
+      0.59,
+      0.6
+     ],
+     "front_A": "-2:8",
+     "front_B": "1:12",
+     "held": true,
+     "events": [],
+     "lead": 0.0
+    },
+    {
+     "turn": 4,
+     "A": "TN-H",
+     "B": "SH-Y",
+     "end": [
+      -2,
+      1
+     ],
+     "hp": [
+      0.59,
+      0.62
+     ],
+     "front_A": "-4:8",
+     "front_B": "1:16",
+     "held": false,
+     "events": [],
+     "lead": -0.45
+    },
+    {
+     "turn": 5,
+     "A": "SH-S",
+     "B": "SH-S",
+     "end": [
+      -2,
+      -1
+     ],
+     "hp": [
+      0.61,
+      0.62
+     ],
+     "front_A": "-3:5",
+     "front_B": "-2:8",
+     "held": false,
+     "events": [],
+     "lead": 0.55
+    },
+    {
+     "turn": 6,
+     "A": "SH-Y",
+     "B": "RECALL",
+     "end": [
+      -2,
+      -2
+     ],
+     "hp": [
+      0.61,
+      1.0
+     ],
+     "front_A": "-2:4",
+     "front_B": "0:8",
+     "held": false,
+     "events": [
+      "B recalls"
+     ],
+     "lead": 1.15
+    },
+    {
+     "turn": 7,
+     "A": "RECALL",
+     "B": "--",
+     "end": [
+      -2,
+      -2
+     ],
+     "hp": [
+      1.0,
+      1.0
+     ],
+     "front_A": "-1:11",
+     "front_B": "1:6",
+     "held": true,
+     "events": [
+      "A recalls"
+     ],
+     "lead": 1.15
+    },
+    {
+     "turn": 8,
+     "A": "--",
+     "B": "SL-Y",
+     "end": [
+      -2,
+      0
+     ],
+     "hp": [
+      1.0,
+      0.85
+     ],
+     "front_A": "-1:6",
+     "front_B": "1:12",
+     "held": true,
+     "events": [],
+     "lead": 0.59
+    },
+    {
+     "turn": 9,
+     "A": "LH-H",
+     "B": "SH-H",
+     "end": [
+      -1,
+      1
+     ],
+     "hp": [
+      1.0,
+      0.85
+     ],
+     "front_A": "-1:5",
+     "front_B": "1:9",
+     "held": true,
+     "events": [],
+     "lead": -0.09
+    },
+    {
+     "turn": 10,
+     "A": "TN-T",
+     "B": "SH-H",
+     "end": [
+      -1,
+      1
+     ],
+     "hp": [
+      0.67,
+      0.68
+     ],
+     "front_A": "-4:8",
+     "front_B": "1:12",
+     "held": false,
+     "events": [
+      "A trade lands"
+     ],
+     "lead": -0.2
+    },
+    {
+     "turn": 11,
+     "A": "SH-Y",
+     "B": "LH-S",
+     "end": [
+      -2,
+      -1
+     ],
+     "hp": [
+      0.68,
+      0.68
+     ],
+     "front_A": "-3:6",
+     "front_B": "-2:8",
+     "held": false,
+     "events": [],
+     "lead": 0.9
+    },
+    {
+     "turn": 12,
+     "A": "SH-H",
+     "B": "RECALL",
+     "end": [
+      -2,
+      -2
+     ],
+     "hp": [
+      0.68,
+      1.0
+     ],
+     "front_A": "-2:5",
+     "front_B": "0:8",
+     "held": false,
+     "events": [
+      "B recalls"
+     ],
+     "lead": 1.0
+    },
+    {
+     "turn": 13,
+     "A": "LH-Y",
+     "B": "--",
+     "end": [
+      -1,
+      -2
+     ],
+     "hp": [
+      0.68,
+      1.0
+     ],
+     "front_A": "-1:12",
+     "front_B": "1:5",
+     "held": true,
+     "events": [],
+     "lead": 1.34
+    },
+    {
+     "turn": 14,
+     "A": "TN-H",
+     "B": "LH-T",
+     "end": [
+      -1,
+      0
+     ],
+     "hp": [
+      0.41,
+      1.0
+     ],
+     "front_A": "-1:9",
+     "front_B": "1:9",
+     "held": true,
+     "events": [],
+     "lead": 1.52
+    },
+    {
+     "turn": 15,
+     "A": "TN-H",
+     "B": "TN-H",
+     "end": [
+      -1,
+      1
+     ],
+     "hp": [
+      0.41,
+      1.0
+     ],
+     "front_A": "-1:13",
+     "front_B": "1:6",
+     "held": true,
+     "events": [],
+     "lead": 1.4
+    },
+    {
+     "turn": 16,
+     "A": "TN-H",
+     "B": "SL-H",
+     "end": [
+      -1,
+      1
+     ],
+     "hp": [
+      0.41,
+      1.0
+     ],
+     "front_A": "-1:8",
+     "front_B": "1:10",
+     "held": true,
+     "events": [],
+     "lead": 1.29
+    },
+    {
+     "turn": 17,
+     "A": "TN-H",
+     "B": "SL-Y",
+     "end": [
+      -1,
+      0
+     ],
+     "hp": [
+      0.41,
+      1.0
+     ],
+     "front_A": "-1:11",
+     "front_B": "1:7",
+     "held": true,
+     "events": [],
+     "lead": 1.07
+    },
+    {
+     "turn": 18,
+     "A": "TN-H",
+     "B": "SL-Y",
+     "end": [
+      -1,
+      0
+     ],
+     "hp": [
+      0.41,
+      1.0
+     ],
+     "front_A": "-1:7",
+     "front_B": "1:12",
+     "held": true,
+     "events": [],
+     "lead": 0.95
+    },
+    {
+     "turn": 19,
+     "A": "TN-H",
+     "B": "SL-T",
+     "end": [
+      -1,
+      0
+     ],
+     "hp": [
+      0.44,
+      1.0
+     ],
+     "front_A": "-1:11",
+     "front_B": "1:8",
+     "held": true,
+     "events": [],
+     "lead": 1.04
+    },
+    {
+     "turn": 20,
+     "A": "SH-Y",
+     "B": "SL-T",
+     "end": [
+      -2,
+      2
+     ],
+     "hp": [
+      0.44,
+      0.87
+     ],
+     "front_A": "-1:8",
+     "front_B": "1:7",
+     "held": true,
+     "events": [],
+     "lead": 1.79
+    },
+    {
+     "turn": 21,
+     "A": "TN-T",
+     "B": "SL-T",
+     "end": [
+      -2,
+      2
+     ],
+     "hp": [
+      0.29,
+      0.67
+     ],
+     "front_A": "-1:11",
+     "front_B": "1:6",
+     "held": true,
+     "events": [
+      "B trade lands"
+     ],
+     "lead": 1.43
+    },
+    {
+     "turn": 22,
+     "A": "RECALL",
+     "B": "SL-Y",
+     "end": [
+      -2,
+      0
+     ],
+     "hp": [
+      1.0,
+      0.67
+     ],
+     "front_A": "-1:6",
+     "front_B": "1:12",
+     "held": true,
+     "events": [
+      "A recalls"
+     ],
+     "lead": 0.86
+    },
+    {
+     "turn": 23,
+     "A": "--",
+     "B": "SH-H",
+     "end": [
+      -2,
+      1
+     ],
+     "hp": [
+      1.0,
+      0.67
+     ],
+     "front_A": "-2:4",
+     "front_B": "-2:8",
+     "held": false,
+     "events": [],
+     "lead": -0.26
+    },
+    {
+     "turn": 24,
+     "A": "SH-H",
+     "B": "SH-H",
+     "end": [
+      -2,
+      2
+     ],
+     "hp": [
+      1.0,
+      0.67
+     ],
+     "front_A": "-4:8",
+     "front_B": "0:8",
+     "held": false,
+     "events": [],
+     "lead": 0.29
+    },
+    {
+     "turn": 25,
+     "A": "SH-Y",
+     "B": "SH-Y",
+     "end": [
+      -2,
+      1
+     ],
+     "hp": [
+      1.0,
+      0.69
+     ],
+     "front_A": "-2:5",
+     "front_B": "-2:8",
+     "held": false,
+     "events": [],
+     "lead": 0.8
+    },
+    {
+     "turn": 26,
+     "A": "SL-S",
+     "B": "SH-Y",
+     "end": [
+      -1,
+      0
+     ],
+     "hp": [
+      1.0,
+      0.69
+     ],
+     "front_A": "-4:8",
+     "front_B": "0:8",
+     "held": false,
+     "events": [],
+     "lead": 0.24
+    },
+    {
+     "turn": 27,
+     "A": "SH-H",
+     "B": "TN-S",
+     "end": [
+      -2,
+      -1
+     ],
+     "hp": [
+      1.0,
+      0.69
+     ],
+     "front_A": "-2:8",
+     "front_B": "-2:8",
+     "held": false,
+     "events": [],
+     "lead": 1.09
+    },
+    {
+     "turn": 28,
+     "A": "TN-Y",
+     "B": "RECALL",
+     "end": [
+      0,
+      -2
+     ],
+     "hp": [
+      1.0,
+      1.0
+     ],
+     "front_A": "0:8",
+     "front_B": "0:6",
+     "held": false,
+     "events": [
+      "B recalls"
+     ],
+     "lead": 1.31
+    },
+    {
+     "turn": 29,
+     "A": "SH-H",
+     "B": "--",
+     "end": [
+      0,
+      -2
+     ],
+     "hp": [
+      1.0,
+      1.0
+     ],
+     "front_A": "0:7",
+     "front_B": "-2:8",
+     "held": false,
+     "events": [],
+     "lead": 1.99
+    }
+   ],
+   "G20": 0.9816608726770818
+  },
+  {
+   "arm": "C1",
+   "cell": "freeze12 L5 plaus hpB0.6",
+   "A": "guard_sel",
+   "B": "policy",
+   "seed": 99600001,
+   "rows": [
+    {
+     "turn": 0,
+     "A": "LH-T",
+     "B": "SH-H",
+     "end": [
+      -1,
+      1
+     ],
+     "hp": [
+      0.85,
+      0.23
+     ],
+     "front_A": "-2:3",
+     "front_B": "1:18",
+     "held": true,
+     "events": [
+      "A trade lands"
+     ],
+     "lead": -0.38
+    },
+    {
+     "turn": 1,
+     "A": "LH-T",
+     "B": "SH-H",
+     "end": [
+      -1,
+      1
+     ],
+     "hp": [
+      0.69,
+      0.23
+     ],
+     "front_A": "-2:6",
+     "front_B": "1:15",
+     "held": true,
+     "events": [],
+     "lead": -0.68
+    },
+    {
+     "turn": 2,
+     "A": "LH-T",
+     "B": "SH-S",
+     "end": [
+      0,
+      -1
+     ],
+     "hp": [
+      0.69,
+      0.23
+     ],
+     "front_A": "-2:2",
+     "front_B": "1:21",
+     "held": true,
+     "events": [],
+     "lead": -0.5
+    },
+    {
+     "turn": 3,
+     "A": "TN-H",
+     "B": "SH-H",
+     "end": [
+      -2,
+      1
+     ],
+     "hp": [
+      0.58,
+      0.23
+     ],
+     "front_A": "-2:3",
+     "front_B": "1:17",
+     "held": true,
+     "events": [],
+     "lead": -0.83
+    },
+    {
+     "turn": 4,
+     "A": "LH-T",
+     "B": "SH-H",
+     "end": [
+      -1,
+      1
+     ],
+     "hp": [
+      0.5,
+      0.27
+     ],
+     "front_A": "-4:8",
+     "front_B": "0:8",
+     "held": false,
+     "events": [],
+     "lead": -0.99
+    },
+    {
+     "turn": 5,
+     "A": "SH-S",
+     "B": "SH-H",
+     "end": [
+      -2,
+      2
+     ],
+     "hp": [
+      0.52,
+      0.27
+     ],
+     "front_A": "0:0",
+     "front_B": "-2:8",
+     "held": false,
+     "events": [],
+     "lead": -0.59
+    },
+    {
+     "turn": 6,
+     "A": "TN-H",
+     "B": "TN-S",
+     "end": [
+      -2,
+      0
+     ],
+     "hp": [
+      0.52,
+      0.27
+     ],
+     "front_A": "-4:8",
+     "front_B": "0:8",
+     "held": false,
+     "events": [],
+     "lead": 0.31
+    },
+    {
+     "turn": 7,
+     "A": "SH-S",
+     "B": "SH-H",
+     "end": [
+      -2,
+      2
+     ],
+     "hp": [
+      0.52,
+      0.27
+     ],
+     "front_A": "0:0",
+     "front_B": "-2:8",
+     "held": false,
+     "events": [],
+     "lead": -0.19
+    },
+    {
+     "turn": 8,
+     "A": "SL-T",
+     "B": "TN-H",
+     "end": [
+      -2,
+      2
+     ],
+     "hp": [
+      0.52,
+      0.08
+     ],
+     "front_A": "-4:8",
+     "front_B": "0:8",
+     "held": false,
+     "events": [
+      "A trade lands"
+     ],
+     "lead": -0.79
+    },
+    {
+     "turn": 9,
+     "A": "LH-T",
+     "B": "TN-S",
+     "end": [
+      -1,
+      0
+     ],
+     "hp": [
+      0.49,
+      0.08
+     ],
+     "front_A": "-2:8",
+     "front_B": "-2:8",
+     "held": false,
+     "events": [],
+     "lead": -0.62
+    },
+    {
+     "turn": 10,
+     "A": "SL-H",
+     "B": "SH-S",
+     "end": [
+      -2,
+      -1
+     ],
+     "hp": [
+      0.51,
+      0.08
+     ],
+     "front_A": "-2:7",
+     "front_B": "0:8",
+     "held": false,
+     "events": [],
+     "lead": -0.02
+    },
+    {
+     "turn": 11,
+     "A": "SH-T",
+     "B": "RECALL",
+     "end": [
+      0,
+      -1
+     ],
+     "hp": [
+      0.51,
+      0.08
+     ],
+     "front_A": "-1:14",
+     "front_B": "1:3",
+     "held": true,
+     "events": [],
+     "lead": 0.43
+    },
+    {
+     "turn": 12,
+     "A": "LH-H",
+     "B": "SH-S",
+     "end": [
+      0,
+      -1
+     ],
+     "hp": [
+      0.51,
+      0.08
+     ],
+     "front_A": "0:12",
+     "front_B": "0:7",
+     "held": false,
+     "events": [],
+     "lead": 0.83
+    },
+    {
+     "turn": 13,
+     "A": "TN-H",
+     "B": "LH-S",
+     "end": [
+      0,
+      -1
+     ],
+     "hp": [
+      0.51,
+      0.08
+     ],
+     "front_A": "0:11",
+     "front_B": "0:3",
+     "held": false,
+     "events": [],
+     "lead": 1.23
+    },
+    {
+     "turn": 14,
+     "A": "TN-H",
+     "B": "SH-S",
+     "end": [
+      0,
+      -1
+     ],
+     "hp": [
+      0.51,
+      0.08
+     ],
+     "front_A": "0:17",
+     "front_B": "0:6",
+     "held": false,
+     "events": [],
+     "lead": 1.69
+    },
+    {
+     "turn": 15,
+     "A": "SL-H",
+     "B": "SL-S",
+     "end": [
+      0,
+      -1
+     ],
+     "hp": [
+      0.51,
+      0.12
+     ],
+     "front_A": "0:16",
+     "front_B": "0:1",
+     "held": false,
+     "events": [],
+     "lead": 2.21
+    },
+    {
+     "turn": 16,
+     "A": "SL-Y",
+     "B": "TN-S",
+     "end": [
+      -1,
+      -1
+     ],
+     "hp": [
+      0.54,
+      0.12
+     ],
+     "front_A": "0:23",
+     "front_B": "0:3",
+     "held": false,
+     "events": [],
+     "lead": 2.83
+    },
+    {
+     "turn": 17,
+     "A": "LH-H",
+     "B": "LH-S",
+     "end": [
+      1,
+      -1
+     ],
+     "hp": [
+      0.54,
+      0.05
+     ],
+     "front_A": "1:21",
+     "front_B": "-2:8",
+     "held": false,
+     "events": [],
+     "lead": 3.04
+    },
+    {
+     "turn": 18,
+     "A": "SL-H",
+     "B": "TN-S",
+     "end": [
+      1,
+      -2
+     ],
+     "hp": [
+      0.54,
+      0.05
+     ],
+     "front_A": "1:20",
+     "front_B": "-2:1",
+     "held": false,
+     "events": [],
+     "lead": 3.75
+    },
+    {
+     "turn": 19,
+     "A": "SH-H",
+     "B": "TN-S",
+     "end": [
+      1,
+      -2
+     ],
+     "hp": [
+      0.54,
+      0.05
+     ],
+     "front_A": "1:19",
+     "front_B": "0:0",
+     "held": false,
+     "events": [],
+     "lead": 4.69
+    },
+    {
+     "turn": 20,
+     "A": "SL-T",
+     "B": "SL-S",
+     "end": [
+      2,
+      -2
+     ],
+     "hp": [
+      1.0,
+      0.05
+     ],
+     "front_A": "0:8",
+     "front_B": "-4:8",
+     "held": false,
+     "events": [
+      "A dies"
+     ],
+     "lead": 2.09
+    },
+    {
+     "turn": 21,
+     "A": "--",
+     "B": "SH-H",
+     "end": [
+      -2,
+      -2
+     ],
+     "hp": [
+      1.0,
+      0.05
+     ],
+     "front_A": "-2:8",
+     "front_B": "-3:3",
+     "held": false,
+     "events": [],
+     "lead": 0.79
+    },
+    {
+     "turn": 22,
+     "A": "--",
+     "B": "RECALL",
+     "end": [
+      -2,
+      -2
+     ],
+     "hp": [
+      1.0,
+      1.0
+     ],
+     "front_A": "0:8",
+     "front_B": "-4:8",
+     "held": false,
+     "events": [
+      "B recalls"
+     ],
+     "lead": 0.79
+    },
+    {
+     "turn": 23,
+     "A": "--",
+     "B": "--",
+     "end": [
+      -2,
+      -2
+     ],
+     "hp": [
+      1.0,
+      1.0
+     ],
+     "front_A": "-2:8",
+     "front_B": "-3:6",
+     "held": false,
+     "events": [],
+     "lead": 0.79
+    },
+    {
+     "turn": 24,
+     "A": "--",
+     "B": "SL-Y",
+     "end": [
+      -2,
+      -2
+     ],
+     "hp": [
+      1.0,
+      1.0
+     ],
+     "front_A": "0:8",
+     "front_B": "-3:13",
+     "held": false,
+     "events": [],
+     "lead": -0.21
+    },
+    {
+     "turn": 25,
+     "A": "SH-H",
+     "B": "LH-H",
+     "end": [
+      0,
+      -2
+     ],
+     "hp": [
+      1.0,
+      1.0
+     ],
+     "front_A": "1:4",
+     "front_B": "-2:12",
+     "held": false,
+     "events": [],
+     "lead": -0.66
+    },
+    {
+     "turn": 26,
+     "A": "SH-Y",
+     "B": "SH-H",
+     "end": [
+      1,
+      -1
+     ],
+     "hp": [
+      0.88,
+      1.0
+     ],
+     "front_A": "0:5",
+     "front_B": "-1:2",
+     "held": false,
+     "events": [],
+     "lead": -0.32
+    },
+    {
+     "turn": 27,
+     "A": "TN-S",
+     "B": "SL-T",
+     "end": [
+      -1,
+      0
+     ],
+     "hp": [
+      0.88,
+      0.97
+     ],
+     "front_A": "-2:8",
+     "front_B": "-1:10",
+     "held": false,
+     "events": [],
+     "lead": -0.77
+    },
+    {
+     "turn": 28,
+     "A": "TN-T",
+     "B": "SL-T",
+     "end": [
+      -1,
+      0
+     ],
+     "hp": [
+      0.7,
+      0.56
+     ],
+     "front_A": "-1:6",
+     "front_B": "0:9",
+     "held": false,
+     "events": [
+      "A trade lands",
+      "B trade lands"
+     ],
+     "lead": -0.86
+    },
+    {
+     "turn": 29,
+     "A": "LH-T",
+     "B": "LH-H",
+     "end": [
+      -1,
+      0
+     ],
+     "hp": [
+      0.68,
+      0.37
+     ],
+     "front_A": "-1:13",
+     "front_B": "0:6",
+     "held": false,
+     "events": [
+      "A trade lands"
+     ],
+     "lead": -0.7
+    }
+   ],
+   "G20": 3.9629991496823607
+  },
+  {
+   "arm": "C1",
+   "cell": "freeze12 L5 plaus hpB0.6",
+   "A": "policy",
+   "B": "policy",
+   "seed": 99600000,
+   "rows": [
+    {
+     "turn": 0,
+     "A": "SL-H",
+     "B": "SH-Y",
+     "end": [
+      -2,
+      1
+     ],
+     "hp": [
+      1.0,
+      0.6
+     ],
+     "front_A": "-4:8",
+     "front_B": "1:16",
+     "held": false,
+     "events": [],
+     "lead": -0.45
+    },
+    {
+     "turn": 1,
+     "A": "SH-H",
+     "B": "SL-S",
+     "end": [
+      -2,
+      -1
+     ],
+     "hp": [
+      1.0,
+      0.6
+     ],
+     "front_A": "-3:5",
+     "front_B": "-2:8",
+     "held": false,
+     "events": [],
+     "lead": 0.55
+    },
+    {
+     "turn": 2,
+     "A": "LH-Y",
+     "B": "RECALL",
+     "end": [
+      -2,
+      -2
+     ],
+     "hp": [
+      1.0,
+      1.0
+     ],
+     "front_A": "-3:12",
+     "front_B": "0:8",
+     "held": false,
+     "events": [
+      "B recalls"
+     ],
+     "lead": 1.15
+    },
+    {
+     "turn": 3,
+     "A": "TN-Y",
+     "B": "--",
+     "end": [
+      -2,
+      -2
+     ],
+     "hp": [
+      1.0,
+      1.0
+     ],
+     "front_A": "-2:11",
+     "front_B": "1:4",
+     "held": true,
+     "events": [],
+     "lead": 1.6
+    },
+    {
+     "turn": 4,
+     "A": "SL-H",
+     "B": "SH-Y",
+     "end": [
+      -2,
+      0
+     ],
+     "hp": [
+      1.0,
+      1.0
+     ],
+     "front_A": "-2:9",
+     "front_B": "1:9",
+     "held": true,
+     "events": [],
+     "lead": 1.94
+    },
+    {
+     "turn": 5,
+     "A": "SL-T",
+     "B": "SH-H",
+     "end": [
+      -1,
+      1
+     ],
+     "hp": [
+      0.82,
+      0.81
+     ],
+     "front_A": "-2:12",
+     "front_B": "1:5",
+     "held": true,
+     "events": [
+      "A trade lands"
+     ],
+     "lead": 1.73
+    },
+    {
+     "turn": 6,
+     "A": "SH-H",
+     "B": "LH-S",
+     "end": [
+      -1,
+      -1
+     ],
+     "hp": [
+      0.82,
+      0.81
+     ],
+     "front_A": "-1:10",
+     "front_B": "0:4",
+     "held": false,
+     "events": [],
+     "lead": 2.75
+    },
+    {
+     "turn": 7,
+     "A": "SL-T",
+     "B": "SL-T",
+     "end": [
+      0,
+      0
+     ],
+     "hp": [
+      0.06,
+      0.48
+     ],
+     "front_A": "-1:15",
+     "front_B": "0:3",
+     "held": false,
+     "events": [
+      "A trade lands",
+      "B trade lands"
+     ],
+     "lead": 2.57
+    },
+    {
+     "turn": 8,
+     "A": "SH-S",
+     "B": "SL-T",
+     "end": [
+      -2,
+      0
+     ],
+     "hp": [
+      0.06,
+      0.36
+     ],
+     "front_A": "-1:10",
+     "front_B": "0:8",
+     "held": false,
+     "events": [],
+     "lead": 2.0
+    },
+    {
+     "turn": 9,
+     "A": "RECALL",
+     "B": "SL-T",
+     "end": [
+      -2,
+      2
+     ],
+     "hp": [
+      0.06,
+      0.17
+     ],
+     "front_A": "-1:13",
+     "front_B": "0:7",
+     "held": false,
+     "events": [],
+     "lead": 1.55
+    },
+    {
+     "turn": 10,
+     "A": "RECALL",
+     "B": "SL-T",
+     "end": [
+      -2,
+      2
+     ],
+     "hp": [
+      0.06,
+      0.02
+     ],
+     "front_A": "-1:8",
+     "front_B": "0:12",
+     "held": false,
+     "events": [],
+     "lead": 1.1
+    },
+    {
+     "turn": 11,
+     "A": "RECALL",
+     "B": "LH-T",
+     "end": [
+      -2,
+      2
+     ],
+     "hp": [
+      0.11,
+      1.0
+     ],
+     "front_A": "-1:12",
+     "front_B": "0:10",
+     "held": false,
+     "events": [
+      "B dies"
+     ],
+     "lead": 2.74
+    },
+    {
+     "turn": 12,
+     "A": "RECALL",
+     "B": "--",
+     "end": [
+      -2,
+      -2
+     ],
+     "hp": [
+      1.0,
+      1.0
+     ],
+     "front_A": "-1:8",
+     "front_B": "0:15",
+     "held": false,
+     "events": [
+      "A recalls"
+     ],
+     "lead": 2.74
+    },
+    {
+     "turn": 13,
+     "A": "--",
+     "B": "--",
+     "end": [
+      -2,
+      -2
+     ],
+     "hp": [
+      1.0,
+      1.0
+     ],
+     "front_A": "-1:13",
+     "front_B": "0:13",
+     "held": false,
+     "events": [],
+     "lead": 2.74
+    },
+    {
+     "turn": 14,
+     "A": "TN-T",
+     "B": "--",
+     "end": [
+      -1,
+      -2
+     ],
+     "hp": [
+      0.74,
+      1.0
+     ],
+     "front_A": "-1:8",
+     "front_B": "0:14",
+     "held": false,
+     "events": [],
+     "lead": 3.53
+    },
+    {
+     "turn": 15,
+     "A": "SL-H",
+     "B": "LH-T",
+     "end": [
+      -1,
+      0
+     ],
+     "hp": [
+      0.74,
+      1.0
+     ],
+     "front_A": "-1:12",
+     "front_B": "0:8",
+     "held": false,
+     "events": [],
+     "lead": 3.85
+    },
+    {
+     "turn": 16,
+     "A": "SL-T",
+     "B": "TN-T",
+     "end": [
+      -1,
+      0
+     ],
+     "hp": [
+      0.38,
+      0.7
+     ],
+     "front_A": "-1:11",
+     "front_B": "0:12",
+     "held": false,
+     "events": [
+      "A trade lands",
+      "B trade lands"
+     ],
+     "lead": 4.12
+    },
+    {
+     "turn": 17,
+     "A": "LH-S",
+     "B": "SL-T",
+     "end": [
+      -2,
+      0
+     ],
+     "hp": [
+      0.38,
+      0.7
+     ],
+     "front_A": "-1:13",
+     "front_B": "0:10",
+     "held": false,
+     "events": [],
+     "lead": 3.44
+    },
+    {
+     "turn": 18,
+     "A": "RECALL",
+     "B": "SL-H",
+     "end": [
+      -2,
+      0
+     ],
+     "hp": [
+      1.0,
+      0.7
+     ],
+     "front_A": "-1:8",
+     "front_B": "0:15",
+     "held": false,
+     "events": [
+      "A recalls"
+     ],
+     "lead": 2.88
+    },
+    {
+     "turn": 19,
+     "A": "--",
+     "B": "SH-H",
+     "end": [
+      -2,
+      0
+     ],
+     "hp": [
+      1.0,
+      0.7
+     ],
+     "front_A": "-1:7",
+     "front_B": "0:13",
+     "held": false,
+     "events": [],
+     "lead": 1.87
+    },
+    {
+     "turn": 20,
+     "A": "LH-T",
+     "B": "SL-S",
+     "end": [
+      0,
+      -2
+     ],
+     "hp": [
+      0.95,
+      0.7
+     ],
+     "front_A": "-1:4",
+     "front_B": "0:19",
+     "held": false,
+     "events": [],
+     "lead": 2.09
+    },
+    {
+     "turn": 21,
+     "A": "LH-Y",
+     "B": "SL-T",
+     "end": [
+      -2,
+      0
+     ],
+     "hp": [
+      0.95,
+      0.7
+     ],
+     "front_A": "-1:7",
+     "front_B": "0:17",
+     "held": false,
+     "events": [],
+     "lead": 1.63
+    },
+    {
+     "turn": 22,
+     "A": "TN-T",
+     "B": "SH-Y",
+     "end": [
+      -1,
+      -1
+     ],
+     "hp": [
+      0.95,
+      0.71
+     ],
+     "front_A": "-1:2",
+     "front_B": "0:20",
+     "held": false,
+     "events": [],
+     "lead": 2.07
+    },
+    {
+     "turn": 23,
+     "A": "LH-T",
+     "B": "SH-Y",
+     "end": [
+      -1,
+      -1
+     ],
+     "hp": [
+      0.9,
+      0.71
+     ],
+     "front_A": "-2:8",
+     "front_B": "1:17",
+     "held": true,
+     "events": [],
+     "lead": 2.35
+    },
+    {
+     "turn": 24,
+     "A": "SH-Y",
+     "B": "SH-H",
+     "end": [
+      -2,
+      1
+     ],
+     "hp": [
+      0.9,
+      0.71
+     ],
+     "front_A": "-4:8",
+     "front_B": "1:16",
+     "held": false,
+     "events": [],
+     "lead": 2.47
+    },
+    {
+     "turn": 25,
+     "A": "SH-Y",
+     "B": "SH-S",
+     "end": [
+      -2,
+      -1
+     ],
+     "hp": [
+      0.9,
+      0.71
+     ],
+     "front_A": "-3:5",
+     "front_B": "-2:8",
+     "held": false,
+     "events": [],
+     "lead": 3.67
+    },
+    {
+     "turn": 26,
+     "A": "SL-S",
+     "B": "RECALL",
+     "end": [
+      -2,
+      -2
+     ],
+     "hp": [
+      0.9,
+      1.0
+     ],
+     "front_A": "-2:4",
+     "front_B": "0:8",
+     "held": false,
+     "events": [
+      "B recalls"
+     ],
+     "lead": 4.07
+    },
+    {
+     "turn": 27,
+     "A": "SH-Y",
+     "B": "--",
+     "end": [
+      -1,
+      -2
+     ],
+     "hp": [
+      0.91,
+      1.0
+     ],
+     "front_A": "-1:11",
+     "front_B": "-2:8",
+     "held": false,
+     "events": [],
+     "lead": 4.97
+    },
+    {
+     "turn": 28,
+     "A": "SH-H",
+     "B": "SL-H",
+     "end": [
+      0,
+      -1
+     ],
+     "hp": [
+      0.91,
+      1.0
+     ],
+     "front_A": "0:7",
+     "front_B": "-4:8",
+     "held": false,
+     "events": [],
+     "lead": 5.42
+    },
+    {
+     "turn": 29,
+     "A": "SH-Y",
+     "B": "SH-H",
+     "end": [
+      1,
+      -2
+     ],
+     "hp": [
+      0.91,
+      1.0
+     ],
+     "front_A": "-2:8",
+     "front_B": "-2:4",
+     "held": false,
+     "events": [],
+     "lead": 5.12
+    }
+   ],
+   "G20": 1.9231061876423303
+  },
+  {
+   "arm": "C1",
+   "cell": "freeze12 L5 plaus hpB0.6",
+   "A": "policy",
+   "B": "policy",
+   "seed": 99600001,
+   "rows": [
+    {
+     "turn": 0,
+     "A": "LH-H",
+     "B": "SH-H",
+     "end": [
+      -2,
+      1
+     ],
+     "hp": [
+      1.0,
+      0.6
+     ],
+     "front_A": "-4:8",
+     "front_B": "1:18",
+     "held": false,
+     "events": [],
+     "lead": -0.68
+    },
+    {
+     "turn": 1,
+     "A": "SH-H",
+     "B": "TN-S",
+     "end": [
+      -2,
+      -1
+     ],
+     "hp": [
+      1.0,
+      0.6
+     ],
+     "front_A": "-3:5",
+     "front_B": "-2:8",
+     "held": false,
+     "events": [],
+     "lead": 0.32
+    },
+    {
+     "turn": 2,
+     "A": "LH-H",
+     "B": "RECALL",
+     "end": [
+      -2,
+      -2
+     ],
+     "hp": [
+      1.0,
+      1.0
+     ],
+     "front_A": "-3:12",
+     "front_B": "0:8",
+     "held": false,
+     "events": [
+      "B recalls"
+     ],
+     "lead": 1.12
+    },
+    {
+     "turn": 3,
+     "A": "SL-H",
+     "B": "--",
+     "end": [
+      -2,
+      -2
+     ],
+     "hp": [
+      1.0,
+      1.0
+     ],
+     "front_A": "-2:11",
+     "front_B": "1:3",
+     "held": true,
+     "events": [],
+     "lead": 1.69
+    },
+    {
+     "turn": 4,
+     "A": "LH-H",
+     "B": "SH-H",
+     "end": [
+      -2,
+      0
+     ],
+     "hp": [
+      1.0,
+      1.0
+     ],
+     "front_A": "-2:9",
+     "front_B": "1:8",
+     "held": true,
+     "events": [],
+     "lead": 2.02
+    },
+    {
+     "turn": 5,
+     "A": "SL-T",
+     "B": "SH-H",
+     "end": [
+      -1,
+      1
+     ],
+     "hp": [
+      0.97,
+      0.62
+     ],
+     "front_A": "-2:12",
+     "front_B": "1:4",
+     "held": true,
+     "events": [
+      "A trade lands"
+     ],
+     "lead": 1.82
+    },
+    {
+     "turn": 6,
+     "A": "LH-H",
+     "B": "SH-Y",
+     "end": [
+      -2,
+      1
+     ],
+     "hp": [
+      0.97,
+      0.64
+     ],
+     "front_A": "-2:5",
+     "front_B": "1:8",
+     "held": true,
+     "events": [],
+     "lead": 1.48
+    },
+    {
+     "turn": 7,
+     "A": "SL-H",
+     "B": "SH-H",
+     "end": [
+      -2,
+      1
+     ],
+     "hp": [
+      0.97,
+      0.64
+     ],
+     "front_A": "-2:6",
+     "front_B": "1:4",
+     "held": true,
+     "events": [],
+     "lead": 1.15
+    },
+    {
+     "turn": 8,
+     "A": "SL-Y",
+     "B": "SH-Y",
+     "end": [
+      -2,
+      1
+     ],
+     "hp": [
+      0.97,
+      0.64
+     ],
+     "front_A": "-4:8",
+     "front_B": "1:9",
+     "held": false,
+     "events": [],
+     "lead": 0.81
+    },
+    {
+     "turn": 9,
+     "A": "SH-H",
+     "B": "SH-S",
+     "end": [
+      -2,
+      -1
+     ],
+     "hp": [
+      0.97,
+      0.64
+     ],
+     "front_A": "-3:7",
+     "front_B": "-2:8",
+     "held": false,
+     "events": [],
+     "lead": 1.71
+    },
+    {
+     "turn": 10,
+     "A": "SL-Y",
+     "B": "RECALL",
+     "end": [
+      -1,
+      -2
+     ],
+     "hp": [
+      0.97,
+      1.0
+     ],
+     "front_A": "-1:6",
+     "front_B": "0:7",
+     "held": false,
+     "events": [
+      "B recalls"
+     ],
+     "lead": 1.82
+    },
+    {
+     "turn": 11,
+     "A": "TN-Y",
+     "B": "--",
+     "end": [
+      -1,
+      -2
+     ],
+     "hp": [
+      0.97,
+      1.0
+     ],
+     "front_A": "-1:13",
+     "front_B": "0:4",
+     "held": false,
+     "events": [],
+     "lead": 2.16
+    },
+    {
+     "turn": 12,
+     "A": "LH-H",
+     "B": "LH-T",
+     "end": [
+      -1,
+      0
+     ],
+     "hp": [
+      0.97,
+      0.43
+     ],
+     "front_A": "-1:9",
+     "front_B": "0:8",
+     "held": false,
+     "events": [],
+     "lead": 2.25
+    },
+    {
+     "turn": 13,
+     "A": "TN-H",
+     "B": "SH-Y",
+     "end": [
+      -1,
+      0
+     ],
+     "hp": [
+      0.97,
+      0.45
+     ],
+     "front_A": "-1:10",
+     "front_B": "0:5",
+     "held": false,
+     "events": [],
+     "lead": 1.8
+    },
+    {
+     "turn": 14,
+     "A": "LH-Y",
+     "B": "LH-S",
+     "end": [
+      -1,
+      -1
+     ],
+     "hp": [
+      0.97,
+      0.45
+     ],
+     "front_A": "-1:7",
+     "front_B": "0:10",
+     "held": false,
+     "events": [],
+     "lead": 2.14
+    },
+    {
+     "turn": 15,
+     "A": "SL-Y",
+     "B": "RECALL",
+     "end": [
+      -1,
+      -2
+     ],
+     "hp": [
+      0.97,
+      1.0
+     ],
+     "front_A": "-1:14",
+     "front_B": "0:5",
+     "held": false,
+     "events": [
+      "B recalls"
+     ],
+     "lead": 2.7
+    },
+    {
+     "turn": 16,
+     "A": "SL-Y",
+     "B": "--",
+     "end": [
+      -1,
+      -2
+     ],
+     "hp": [
+      0.97,
+      1.0
+     ],
+     "front_A": "-1:11",
+     "front_B": "0:9",
+     "held": false,
+     "events": [],
+     "lead": 3.15
+    },
+    {
+     "turn": 17,
+     "A": "LH-H",
+     "B": "TN-H",
+     "end": [
+      -1,
+      0
+     ],
+     "hp": [
+      0.97,
+      1.0
+     ],
+     "front_A": "-1:15",
+     "front_B": "0:5",
+     "held": false,
+     "events": [],
+     "lead": 3.15
+    },
+    {
+     "turn": 18,
+     "A": "TN-T",
+     "B": "TN-Y",
+     "end": [
+      -1,
+      0
+     ],
+     "hp": [
+      0.97,
+      1.0
+     ],
+     "front_A": "-1:9",
+     "front_B": "0:9",
+     "held": false,
+     "events": [],
+     "lead": 2.84
+    },
+    {
+     "turn": 19,
+     "A": "SH-Y",
+     "B": "LH-T",
+     "end": [
+      -1,
+      0
+     ],
+     "hp": [
+      0.66,
+      0.65
+     ],
+     "front_A": "-1:15",
+     "front_B": "0:2",
+     "held": false,
+     "events": [
+      "B trade lands"
+     ],
+     "lead": 3.44
+    },
+    {
+     "turn": 20,
+     "A": "SL-Y",
+     "B": "SH-S",
+     "end": [
+      -1,
+      -1
+     ],
+     "hp": [
+      0.66,
+      0.65
+     ],
+     "front_A": "-1:14",
+     "front_B": "0:6",
+     "held": false,
+     "events": [],
+     "lead": 3.89
+    },
+    {
+     "turn": 21,
+     "A": "SL-T",
+     "B": "LH-T",
+     "end": [
+      0,
+      0
+     ],
+     "hp": [
+      0.63,
+      0.48
+     ],
+     "front_A": "-1:21",
+     "front_B": "0:1",
+     "held": false,
+     "events": [
+      "A trade lands"
+     ],
+     "lead": 4.25
+    },
+    {
+     "turn": 22,
+     "A": "LH-Y",
+     "B": "SH-S",
+     "end": [
+      -1,
+      -1
+     ],
+     "hp": [
+      0.63,
+      0.48
+     ],
+     "front_A": "-1:20",
+     "front_B": "0:3",
+     "held": false,
+     "events": [],
+     "lead": 4.93
+    },
+    {
+     "turn": 23,
+     "A": "LH-H",
+     "B": "RECALL",
+     "end": [
+      0,
+      -2
+     ],
+     "hp": [
+      0.63,
+      1.0
+     ],
+     "front_A": "0:19",
+     "front_B": "-2:8",
+     "held": false,
+     "events": [
+      "B recalls"
+     ],
+     "lead": 5.27
+    },
+    {
+     "turn": 24,
+     "A": "SL-Y",
+     "B": "--",
+     "end": [
+      1,
+      -2
+     ],
+     "hp": [
+      0.37,
+      1.0
+     ],
+     "front_A": "1:18",
+     "front_B": "-1:2",
+     "held": false,
+     "events": [],
+     "lead": 5.94
+    },
+    {
+     "turn": 25,
+     "A": "SH-H",
+     "B": "TN-H",
+     "end": [
+      1,
+      -1
+     ],
+     "hp": [
+      0.37,
+      0.87
+     ],
+     "front_A": "-2:8",
+     "front_B": "-2:3",
+     "held": false,
+     "events": [],
+     "lead": 6.09
+    },
+    {
+     "turn": 26,
+     "A": "SH-H",
+     "B": "SH-H",
+     "end": [
+      2,
+      -2
+     ],
+     "hp": [
+      0.23,
+      0.87
+     ],
+     "front_A": "0:8",
+     "front_B": "-4:8",
+     "held": false,
+     "events": [],
+     "lead": 5.03
+    },
+    {
+     "turn": 27,
+     "A": "SH-H",
+     "B": "SL-T",
+     "end": [
+      2,
+      -2
+     ],
+     "hp": [
+      0.07,
+      0.84
+     ],
+     "front_A": "-2:8",
+     "front_B": "0:0",
+     "held": false,
+     "events": [
+      "B trade lands"
+     ],
+     "lead": 5.29
+    },
+    {
+     "turn": 28,
+     "A": "TN-S",
+     "B": "SL-T",
+     "end": [
+      0,
+      -1
+     ],
+     "hp": [
+      1.0,
+      0.82
+     ],
+     "front_A": "0:8",
+     "front_B": "-4:8",
+     "held": false,
+     "events": [
+      "A dies",
+      "B trade lands"
+     ],
+     "lead": 3.81
+    },
+    {
+     "turn": 29,
+     "A": "--",
+     "B": "LH-H",
+     "end": [
+      -2,
+      -2
+     ],
+     "hp": [
+      1.0,
+      0.82
+     ],
+     "front_A": "-2:8",
+     "front_B": "-2:8",
+     "held": false,
+     "events": [],
+     "lead": 3.6
+    }
+   ],
+   "G20": 3.1428923985616706
+  },
+  {
+   "arm": "C1",
+   "cell": "freeze12 L5 plaus hpB0.6",
+   "A": "guard_sel",
+   "B": "concede",
+   "seed": 99600000,
+   "rows": [
+    {
+     "turn": 0,
+     "A": "TN-T",
+     "B": "LH-S",
+     "end": [
+      0,
+      -1
+     ],
+     "hp": [
+      0.92,
+      0.6
+     ],
+     "front_A": "-2:6",
+     "front_B": "1:15",
+     "held": true,
+     "events": [],
+     "lead": 0.45
+    },
+    {
+     "turn": 1,
+     "A": "LH-H",
+     "B": "LH-S",
+     "end": [
+      -2,
+      -1
+     ],
+     "hp": [
+      0.85,
+      0.6
+     ],
+     "front_A": "-2:13",
+     "front_B": "1:11",
+     "held": true,
+     "events": [],
+     "lead": 0.9
+    },
+    {
+     "turn": 2,
+     "A": "LH-H",
+     "B": "LH-S",
+     "end": [
+      -2,
+      -1
+     ],
+     "hp": [
+      0.85,
+      0.6
+     ],
+     "front_A": "-2:10",
+     "front_B": "1:15",
+     "held": true,
+     "events": [],
+     "lead": 1.35
+    },
+    {
+     "turn": 3,
+     "A": "LH-H",
+     "B": "LH-S",
+     "end": [
+      -2,
+      -1
+     ],
+     "hp": [
+      0.85,
+      0.6
+     ],
+     "front_A": "-2:15",
+     "front_B": "1:10",
+     "held": true,
+     "events": [],
+     "lead": 1.91
+    },
+    {
+     "turn": 4,
+     "A": "TN-H",
+     "B": "LH-S",
+     "end": [
+      -2,
+      -1
+     ],
+     "hp": [
+      0.85,
+      0.6
+     ],
+     "front_A": "-2:13",
+     "front_B": "1:14",
+     "held": true,
+     "events": [],
+     "lead": 2.36
+    },
+    {
+     "turn": 5,
+     "A": "TN-H",
+     "B": "LH-S",
+     "end": [
+      -2,
+      -1
+     ],
+     "hp": [
+      0.85,
+      0.6
+     ],
+     "front_A": "-2:18",
+     "front_B": "1:8",
+     "held": true,
+     "events": [],
+     "lead": 3.04
+    },
+    {
+     "turn": 6,
+     "A": "LH-H",
+     "B": "LH-S",
+     "end": [
+      -2,
+      -1
+     ],
+     "hp": [
+      0.85,
+      0.6
+     ],
+     "front_A": "-2:16",
+     "front_B": "1:11",
+     "held": true,
+     "events": [],
+     "lead": 3.6
+    },
+    {
+     "turn": 7,
+     "A": "TN-H",
+     "B": "LH-S",
+     "end": [
+      -2,
+      -1
+     ],
+     "hp": [
+      0.85,
+      0.6
+     ],
+     "front_A": "-2:23",
+     "front_B": "1:5",
+     "held": true,
+     "events": [],
+     "lead": 4.28
+    },
+    {
+     "turn": 8,
+     "A": "LH-H",
+     "B": "LH-S",
+     "end": [
+      -2,
+      -1
+     ],
+     "hp": [
+      0.85,
+      0.6
+     ],
+     "front_A": "-2:21",
+     "front_B": "1:7",
+     "held": true,
+     "events": [],
+     "lead": 4.95
+    },
+    {
+     "turn": 9,
+     "A": "LH-H",
+     "B": "LH-S",
+     "end": [
+      -2,
+      -1
+     ],
+     "hp": [
+      0.86,
+      0.6
+     ],
+     "front_A": "-2:20",
+     "front_B": "-2:8",
+     "held": false,
+     "events": [],
+     "lead": 5.74
+    },
+    {
+     "turn": 10,
+     "A": "SL-Y",
+     "B": "RECALL",
+     "end": [
+      0,
+      -2
+     ],
+     "hp": [
+      0.42,
+      1.0
+     ],
+     "front_A": "0:20",
+     "front_B": "0:4",
+     "held": false,
+     "events": [
+      "B recalls"
+     ],
+     "lead": 6.19
+    },
+    {
+     "turn": 11,
+     "A": "SH-H",
+     "B": "--",
+     "end": [
+      1,
+      -2
+     ],
+     "hp": [
+      0.42,
+      1.0
+     ],
+     "front_A": "1:18",
+     "front_B": "-2:2",
+     "held": false,
+     "events": [],
+     "lead": 7.31
+    },
+    {
+     "turn": 12,
+     "A": "SH-H",
+     "B": "SH-Y",
+     "end": [
+      1,
+      -2
+     ],
+     "hp": [
+      0.42,
+      1.0
+     ],
+     "front_A": "0:8",
+     "front_B": "-4:8",
+     "held": false,
+     "events": [],
+     "lead": 6.89
+    },
+    {
+     "turn": 13,
+     "A": "SH-H",
+     "B": "SH-H",
+     "end": [
+      2,
+      -2
+     ],
+     "hp": [
+      0.42,
+      1.0
+     ],
+     "front_A": "-2:8",
+     "front_B": "0:0",
+     "held": false,
+     "events": [],
+     "lead": 6.59
+    },
+    {
+     "turn": 14,
+     "A": "SH-H",
+     "B": "SH-Y",
+     "end": [
+      2,
+      -2
+     ],
+     "hp": [
+      1.0,
+      1.0
+     ],
+     "front_A": "0:8",
+     "front_B": "-4:8",
+     "held": false,
+     "events": [
+      "A dies"
+     ],
+     "lead": 3.49
+    },
+    {
+     "turn": 15,
+     "A": "--",
+     "B": "SH-H",
+     "end": [
+      -2,
+      -2
+     ],
+     "hp": [
+      1.0,
+      1.0
+     ],
+     "front_A": "-2:8",
+     "front_B": "-2:6",
+     "held": false,
+     "events": [],
+     "lead": 2.69
+    },
+    {
+     "turn": 16,
+     "A": "--",
+     "B": "SH-Y",
+     "end": [
+      -2,
+      -1
+     ],
+     "hp": [
+      1.0,
+      1.0
+     ],
+     "front_A": "0:5",
+     "front_B": "-1:4",
+     "held": false,
+     "events": [],
+     "lead": 1.85
+    },
+    {
+     "turn": 17,
+     "A": "--",
+     "B": "SL-Y",
+     "end": [
+      -2,
+      -1
+     ],
+     "hp": [
+      1.0,
+      1.0
+     ],
+     "front_A": "0:2",
+     "front_B": "-1:11",
+     "held": false,
+     "events": [],
+     "lead": 1.51
+    },
+    {
+     "turn": 18,
+     "A": "--",
+     "B": "SL-T",
+     "end": [
+      -2,
+      -1
+     ],
+     "hp": [
+      1.0,
+      1.0
+     ],
+     "front_A": "0:7",
+     "front_B": "-1:9",
+     "held": false,
+     "events": [],
+     "lead": 1.18
+    },
+    {
+     "turn": 19,
+     "A": "TN-T",
+     "B": "SL-Y",
+     "end": [
+      0,
+      -2
+     ],
+     "hp": [
+      1.0,
+      1.0
+     ],
+     "front_A": "0:5",
+     "front_B": "-1:12",
+     "held": false,
+     "events": [],
+     "lead": 1.64
+    },
+    {
+     "turn": 20,
+     "A": "SH-H",
+     "B": "SL-T",
+     "end": [
+      0,
+      -1
+     ],
+     "hp": [
+      0.88,
+      0.89
+     ],
+     "front_A": "0:9",
+     "front_B": "-1:4",
+     "held": false,
+     "events": [
+      "B trade lands"
+     ],
+     "lead": 2.18
+    },
+    {
+     "turn": 21,
+     "A": "LH-T",
+     "B": "SL-T",
+     "end": [
+      0,
+      -1
+     ],
+     "hp": [
+      0.75,
+      0.86
+     ],
+     "front_A": "0:4",
+     "front_B": "-1:11",
+     "held": false,
+     "events": [
+      "B trade lands"
+     ],
+     "lead": 1.82
+    },
+    {
+     "turn": 22,
+     "A": "LH-T",
+     "B": "SL-T",
+     "end": [
+      0,
+      -1
+     ],
+     "hp": [
+      0.46,
+      0.3
+     ],
+     "front_A": "0:11",
+     "front_B": "-1:10",
+     "held": false,
+     "events": [
+      "A trade lands",
+      "B trade lands"
+     ],
+     "lead": 1.82
+    },
+    {
+     "turn": 23,
+     "A": "TN-T",
+     "B": "LH-S",
+     "end": [
+      0,
+      -2
+     ],
+     "hp": [
+      0.46,
+      0.3
+     ],
+     "front_A": "0:8",
+     "front_B": "-1:14",
+     "held": false,
+     "events": [],
+     "lead": 2.27
+    },
+    {
+     "turn": 24,
+     "A": "TN-H",
+     "B": "RECALL",
+     "end": [
+      0,
+      -2
+     ],
+     "hp": [
+      0.46,
+      1.0
+     ],
+     "front_A": "0:13",
+     "front_B": "-1:10",
+     "held": false,
+     "events": [
+      "B recalls"
+     ],
+     "lead": 2.72
+    },
+    {
+     "turn": 25,
+     "A": "SH-H",
+     "B": "--",
+     "end": [
+      0,
+      -2
+     ],
+     "hp": [
+      0.49,
+      1.0
+     ],
+     "front_A": "0:11",
+     "front_B": "-1:7",
+     "held": false,
+     "events": [],
+     "lead": 3.96
+    },
+    {
+     "turn": 26,
+     "A": "SL-S",
+     "B": "SH-Y",
+     "end": [
+      -1,
+      -1
+     ],
+     "hp": [
+      0.49,
+      1.0
+     ],
+     "front_A": "0:11",
+     "front_B": "-1:4",
+     "held": false,
+     "events": [],
+     "lead": 3.06
+    },
+    {
+     "turn": 27,
+     "A": "RECALL",
+     "B": "TN-T",
+     "end": [
+      -1,
+      0
+     ],
+     "hp": [
+      0.49,
+      0.95
+     ],
+     "front_A": "0:5",
+     "front_B": "-1:12",
+     "held": false,
+     "events": [],
+     "lead": 2.52
+    },
+    {
+     "turn": 28,
+     "A": "RECALL",
+     "B": "SL-H",
+     "end": [
+      -2,
+      -1
+     ],
+     "hp": [
+      1.0,
+      0.95
+     ],
+     "front_A": "0:9",
+     "front_B": "-1:9",
+     "held": false,
+     "events": [
+      "A recalls"
+     ],
+     "lead": 2.07
+    },
+    {
+     "turn": 29,
+     "A": "--",
+     "B": "LH-Y",
+     "end": [
+      -2,
+      -1
+     ],
+     "hp": [
+      1.0,
+      0.95
+     ],
+     "front_A": "0:5",
+     "front_B": "-1:16",
+     "held": false,
+     "events": [],
+     "lead": 1.62
+    }
+   ],
+   "G20": 1.9534631427846239
+  },
+  {
+   "arm": "C1",
+   "cell": "freeze12 L5 plaus hpB0.6",
+   "A": "guard_sel",
+   "B": "concede",
+   "seed": 99600001,
+   "rows": [
+    {
+     "turn": 0,
+     "A": "LH-T",
+     "B": "LH-S",
+     "end": [
+      0,
+      -1
+     ],
+     "hp": [
+      0.92,
+      0.6
+     ],
+     "front_A": "-2:6",
+     "front_B": "1:17",
+     "held": true,
+     "events": [],
+     "lead": 0.27
+    },
+    {
+     "turn": 1,
+     "A": "LH-H",
+     "B": "LH-S",
+     "end": [
+      -2,
+      -1
+     ],
+     "hp": [
+      0.85,
+      0.6
+     ],
+     "front_A": "-2:13",
+     "front_B": "1:13",
+     "held": true,
+     "events": [],
+     "lead": 0.72
+    },
+    {
+     "turn": 2,
+     "A": "LH-H",
+     "B": "LH-S",
+     "end": [
+      -2,
+      -1
+     ],
+     "hp": [
+      0.85,
+      0.6
+     ],
+     "front_A": "-2:9",
+     "front_B": "1:17",
+     "held": true,
+     "events": [],
+     "lead": 1.17
+    },
+    {
+     "turn": 3,
+     "A": "TN-H",
+     "B": "LH-S",
+     "end": [
+      -2,
+      -1
+     ],
+     "hp": [
+      0.85,
+      0.6
+     ],
+     "front_A": "-2:14",
+     "front_B": "1:11",
+     "held": true,
+     "events": [],
+     "lead": 1.84
+    },
+    {
+     "turn": 4,
+     "A": "LH-H",
+     "B": "LH-S",
+     "end": [
+      -2,
+      -1
+     ],
+     "hp": [
+      0.85,
+      0.6
+     ],
+     "front_A": "-2:11",
+     "front_B": "1:15",
+     "held": true,
+     "events": [],
+     "lead": 2.29
+    },
+    {
+     "turn": 5,
+     "A": "TN-H",
+     "B": "LH-S",
+     "end": [
+      -2,
+      -1
+     ],
+     "hp": [
+      0.85,
+      0.6
+     ],
+     "front_A": "-2:16",
+     "front_B": "1:10",
+     "held": true,
+     "events": [],
+     "lead": 2.86
+    },
+    {
+     "turn": 6,
+     "A": "LH-H",
+     "B": "LH-S",
+     "end": [
+      -2,
+      -1
+     ],
+     "hp": [
+      0.85,
+      0.6
+     ],
+     "front_A": "-2:14",
+     "front_B": "1:14",
+     "held": true,
+     "events": [],
+     "lead": 3.31
+    },
+    {
+     "turn": 7,
+     "A": "TN-H",
+     "B": "LH-S",
+     "end": [
+      -2,
+      -1
+     ],
+     "hp": [
+      0.85,
+      0.6
+     ],
+     "front_A": "-2:19",
+     "front_B": "1:8",
+     "held": true,
+     "events": [],
+     "lead": 3.98
+    },
+    {
+     "turn": 8,
+     "A": "TN-H",
+     "B": "LH-S",
+     "end": [
+      -2,
+      -1
+     ],
+     "hp": [
+      0.85,
+      0.6
+     ],
+     "front_A": "-2:17",
+     "front_B": "1:11",
+     "held": true,
+     "events": [],
+     "lead": 4.54
+    },
+    {
+     "turn": 9,
+     "A": "LH-H",
+     "B": "LH-S",
+     "end": [
+      -2,
+      -1
+     ],
+     "hp": [
+      0.85,
+      0.6
+     ],
+     "front_A": "-2:24",
+     "front_B": "1:4",
+     "held": true,
+     "events": [],
+     "lead": 5.33
+    },
+    {
+     "turn": 10,
+     "A": "LH-H",
+     "B": "RECALL",
+     "end": [
+      -1,
+      -2
+     ],
+     "hp": [
+      0.86,
+      1.0
+     ],
+     "front_A": "-1:22",
+     "front_B": "0:6",
+     "held": false,
+     "events": [
+      "B recalls"
+     ],
+     "lead": 6.01
+    },
+    {
+     "turn": 11,
+     "A": "SH-H",
+     "B": "--",
+     "end": [
+      0,
+      -2
+     ],
+     "hp": [
+      0.86,
+      1.0
+     ],
+     "front_A": "0:21",
+     "front_B": "-2:8",
+     "held": false,
+     "events": [],
+     "lead": 6.68
+    },
+    {
+     "turn": 12,
+     "A": "SH-H",
+     "B": "SH-Y",
+     "end": [
+      1,
+      -1
+     ],
+     "hp": [
+      0.86,
+      1.0
+     ],
+     "front_A": "1:23",
+     "front_B": "-4:8",
+     "held": false,
+     "events": [],
+     "lead": 6.91
+    },
+    {
+     "turn": 13,
+     "A": "SH-H",
+     "B": "SH-H",
+     "end": [
+      1,
+      -2
+     ],
+     "hp": [
+      0.86,
+      1.0
+     ],
+     "front_A": "-2:8",
+     "front_B": "-3:3",
+     "held": false,
+     "events": [],
+     "lead": 6.01
+    },
+    {
+     "turn": 14,
+     "A": "SH-H",
+     "B": "LH-Y",
+     "end": [
+      2,
+      -2
+     ],
+     "hp": [
+      0.86,
+      1.0
+     ],
+     "front_A": "0:8",
+     "front_B": "-4:8",
+     "held": false,
+     "events": [],
+     "lead": 5.54
+    },
+    {
+     "turn": 15,
+     "A": "SH-H",
+     "B": "SH-Y",
+     "end": [
+      2,
+      -2
+     ],
+     "hp": [
+      0.87,
+      1.0
+     ],
+     "front_A": "-2:8",
+     "front_B": "0:0",
+     "held": false,
+     "events": [],
+     "lead": 5.54
+    },
+    {
+     "turn": 16,
+     "A": "TN-H",
+     "B": "SH-Y",
+     "end": [
+      2,
+      -2
+     ],
+     "hp": [
+      0.87,
+      1.0
+     ],
+     "front_A": "0:8",
+     "front_B": "-4:8",
+     "held": false,
+     "events": [],
+     "lead": 6.04
+    },
+    {
+     "turn": 17,
+     "A": "SH-H",
+     "B": "SH-H",
+     "end": [
+      1,
+      -2
+     ],
+     "hp": [
+      0.43,
+      1.0
+     ],
+     "front_A": "-2:8",
+     "front_B": "-2:5",
+     "held": false,
+     "events": [],
+     "lead": 5.64
+    },
+    {
+     "turn": 18,
+     "A": "SH-H",
+     "B": "LH-T",
+     "end": [
+      2,
+      -2
+     ],
+     "hp": [
+      0.43,
+      1.0
+     ],
+     "front_A": "0:8",
+     "front_B": "-4:8",
+     "held": false,
+     "events": [],
+     "lead": 6.13
+    },
+    {
+     "turn": 19,
+     "A": "SH-S",
+     "B": "LH-T",
+     "end": [
+      0,
+      -1
+     ],
+     "hp": [
+      0.43,
+      0.96
+     ],
+     "front_A": "-2:8",
+     "front_B": "-2:8",
+     "held": false,
+     "events": [],
+     "lead": 5.96
+    },
+    {
+     "turn": 20,
+     "A": "SH-H",
+     "B": "SL-H",
+     "end": [
+      2,
+      -2
+     ],
+     "hp": [
+      1.0,
+      0.96
+     ],
+     "front_A": "0:8",
+     "front_B": "-4:8",
+     "held": false,
+     "events": [
+      "A dies"
+     ],
+     "lead": 4.26
+    },
+    {
+     "turn": 21,
+     "A": "--",
+     "B": "SH-H",
+     "end": [
+      -2,
+      -2
+     ],
+     "hp": [
+      1.0,
+      0.96
+     ],
+     "front_A": "-2:8",
+     "front_B": "-2:8",
+     "held": false,
+     "events": [],
+     "lead": 3.52
+    },
+    {
+     "turn": 22,
+     "A": "--",
+     "B": "SH-H",
+     "end": [
+      -2,
+      -1
+     ],
+     "hp": [
+      1.0,
+      0.96
+     ],
+     "front_A": "0:5",
+     "front_B": "-1:6",
+     "held": false,
+     "events": [],
+     "lead": 3.08
+    },
+    {
+     "turn": 23,
+     "A": "--",
+     "B": "SH-T",
+     "end": [
+      -2,
+      -1
+     ],
+     "hp": [
+      1.0,
+      0.67
+     ],
+     "front_A": "-2:8",
+     "front_B": "-1:13",
+     "held": false,
+     "events": [],
+     "lead": 2.52
+    },
+    {
+     "turn": 24,
+     "A": "--",
+     "B": "SL-T",
+     "end": [
+      -2,
+      0
+     ],
+     "hp": [
+      1.0,
+      0.67
+     ],
+     "front_A": "-1:4",
+     "front_B": "0:12",
+     "held": false,
+     "events": [],
+     "lead": 2.07
+    },
+    {
+     "turn": 25,
+     "A": "TN-Y",
+     "B": "SH-H",
+     "end": [
+      -1,
+      1
+     ],
+     "hp": [
+      0.98,
+      0.21
+     ],
+     "front_A": "-2:5",
+     "front_B": "1:6",
+     "held": true,
+     "events": [],
+     "lead": 1.96
+    },
+    {
+     "turn": 26,
+     "A": "SL-H",
+     "B": "SH-Y",
+     "end": [
+      -2,
+      1
+     ],
+     "hp": [
+      0.98,
+      1.0
+     ],
+     "front_A": "-4:8",
+     "front_B": "1:9",
+     "held": false,
+     "events": [
+      "B dies"
+     ],
+     "lead": 3.96
+    },
+    {
+     "turn": 27,
+     "A": "SH-Y",
+     "B": "--",
+     "end": [
+      -2,
+      -2
+     ],
+     "hp": [
+      0.98,
+      1.0
+     ],
+     "front_A": "-3:7",
+     "front_B": "-2:8",
+     "held": false,
+     "events": [],
+     "lead": 4.86
+    },
+    {
+     "turn": 28,
+     "A": "SH-Y",
+     "B": "--",
+     "end": [
+      -1,
+      -2
+     ],
+     "hp": [
+      0.98,
+      1.0
+     ],
+     "front_A": "-1:6",
+     "front_B": "0:4",
+     "held": false,
+     "events": [],
+     "lead": 5.31
+    },
+    {
+     "turn": 29,
+     "A": "SH-T",
+     "B": "--",
+     "end": [
+      0,
+      -2
+     ],
+     "hp": [
+      0.98,
+      1.0
+     ],
+     "front_A": "0:5",
+     "front_B": "-2:8",
+     "held": false,
+     "events": [],
+     "lead": 5.76
+    }
+   ],
+   "G20": 5.643385623973956
+  },
+  {
+   "arm": "C1",
+   "cell": "freeze12 L5 plaus hpB0.6",
+   "A": "guard_sel",
+   "B": "commit",
+   "seed": 99600000,
+   "rows": [
+    {
+     "turn": 0,
+     "A": "TN-T",
+     "B": "SH-H",
+     "end": [
+      -1,
+      1
+     ],
+     "hp": [
+      0.85,
+      0.6
+     ],
+     "front_A": "-2:3",
+     "front_B": "1:16",
+     "held": true,
+     "events": [],
+     "lead": -0.2
+    },
+    {
+     "turn": 1,
+     "A": "LH-T",
+     "B": "SH-H",
+     "end": [
+      -1,
+      1
+     ],
+     "hp": [
+      0.73,
+      0.6
+     ],
+     "front_A": "-2:6",
+     "front_B": "1:13",
+     "held": true,
+     "events": [],
+     "lead": -0.49
+    },
+    {
+     "turn": 2,
+     "A": "LH-T",
+     "B": "SH-H",
+     "end": [
+      -1,
+      1
+     ],
+     "hp": [
+      0.58,
+      0.41
+     ],
+     "front_A": "-2:1",
+     "front_B": "1:19",
+     "held": true,
+     "events": [
+      "A trade lands"
+     ],
+     "lead": -0.88
+    },
+    {
+     "turn": 3,
+     "A": "LH-T",
+     "B": "SH-H",
+     "end": [
+      -1,
+      1
+     ],
+     "hp": [
+      0.28,
+      0.09
+     ],
+     "front_A": "-2:4",
+     "front_B": "1:17",
+     "held": true,
+     "events": [
+      "A trade lands"
+     ],
+     "lead": -1.26
+    },
+    {
+     "turn": 4,
+     "A": "SL-T",
+     "B": "SH-S",
+     "end": [
+      0,
+      -1
+     ],
+     "hp": [
+      0.28,
+      0.09
+     ],
+     "front_A": "-4:8",
+     "front_B": "1:21",
+     "held": false,
+     "events": [],
+     "lead": -0.9
+    },
+    {
+     "turn": 5,
+     "A": "TN-Y",
+     "B": "RECALL",
+     "end": [
+      -2,
+      -2
+     ],
+     "hp": [
+      0.13,
+      1.0
+     ],
+     "front_A": "-3:3",
+     "front_B": "-2:8",
+     "held": false,
+     "events": [
+      "B recalls"
+     ],
+     "lead": -0.2
+    },
+    {
+     "turn": 6,
+     "A": "RECALL",
+     "B": "--",
+     "end": [
+      -2,
+      -2
+     ],
+     "hp": [
+      1.0,
+      1.0
+     ],
+     "front_A": "-4:8",
+     "front_B": "0:8",
+     "held": false,
+     "events": [
+      "A recalls"
+     ],
+     "lead": -0.2
+    },
+    {
+     "turn": 7,
+     "A": "--",
+     "B": "SL-Y",
+     "end": [
+      -2,
+      0
+     ],
+     "hp": [
+      1.0,
+      1.0
+     ],
+     "front_A": "-3:6",
+     "front_B": "-2:8",
+     "held": false,
+     "events": [],
+     "lead": -0.2
+    },
+    {
+     "turn": 8,
+     "A": "SH-Y",
+     "B": "SH-H",
+     "end": [
+      -2,
+      2
+     ],
+     "hp": [
+      1.0,
+      0.7
+     ],
+     "front_A": "-4:8",
+     "front_B": "0:8",
+     "held": false,
+     "events": [],
+     "lead": -0.08
+    },
+    {
+     "turn": 9,
+     "A": "SH-H",
+     "B": "SL-H",
+     "end": [
+      -2,
+      1
+     ],
+     "hp": [
+      1.0,
+      0.7
+     ],
+     "front_A": "-2:8",
+     "front_B": "-2:8",
+     "held": false,
+     "events": [],
+     "lead": 0.66
+    },
+    {
+     "turn": 10,
+     "A": "SL-H",
+     "B": "SH-H",
+     "end": [
+      -2,
+      2
+     ],
+     "hp": [
+      1.0,
+      0.7
+     ],
+     "front_A": "-4:8",
+     "front_B": "0:8",
+     "held": false,
+     "events": [],
+     "lead": -0.14
+    },
+    {
+     "turn": 11,
+     "A": "SH-H",
+     "B": "LH-Y",
+     "end": [
+      -2,
+      1
+     ],
+     "hp": [
+      1.0,
+      0.7
+     ],
+     "front_A": "-2:8",
+     "front_B": "-2:8",
+     "held": false,
+     "events": [],
+     "lead": 0.6
+    },
+    {
+     "turn": 12,
+     "A": "LH-H",
+     "B": "SH-H",
+     "end": [
+      -2,
+      2
+     ],
+     "hp": [
+      1.0,
+      0.7
+     ],
+     "front_A": "-4:8",
+     "front_B": "0:8",
+     "held": false,
+     "events": [],
+     "lead": -1.2
+    },
+    {
+     "turn": 13,
+     "A": "SH-H",
+     "B": "LH-H",
+     "end": [
+      -2,
+      1
+     ],
+     "hp": [
+      1.0,
+      0.7
+     ],
+     "front_A": "-2:8",
+     "front_B": "-2:8",
+     "held": false,
+     "events": [],
+     "lead": -0.46
+    },
+    {
+     "turn": 14,
+     "A": "TN-T",
+     "B": "SH-H",
+     "end": [
+      -2,
+      2
+     ],
+     "hp": [
+      0.86,
+      0.72
+     ],
+     "front_A": "-4:8",
+     "front_B": "0:8",
+     "held": false,
+     "events": [],
+     "lead": -1.28
+    },
+    {
+     "turn": 15,
+     "A": "SH-Y",
+     "B": "SH-Y",
+     "end": [
+      -2,
+      1
+     ],
+     "hp": [
+      0.86,
+      0.72
+     ],
+     "front_A": "-2:5",
+     "front_B": "-2:8",
+     "held": false,
+     "events": [],
+     "lead": -0.77
+    },
+    {
+     "turn": 16,
+     "A": "SL-T",
+     "B": "SL-Y",
+     "end": [
+      -1,
+      -1
+     ],
+     "hp": [
+      0.86,
+      0.72
+     ],
+     "front_A": "0:4",
+     "front_B": "0:6",
+     "held": false,
+     "events": [],
+     "lead": -0.6
+    },
+    {
+     "turn": 17,
+     "A": "LH-T",
+     "B": "SL-T",
+     "end": [
+      0,
+      0
+     ],
+     "hp": [
+      0.71,
+      0.68
+     ],
+     "front_A": "0:2",
+     "front_B": "0:5",
+     "held": false,
+     "events": [
+      "B trade lands"
+     ],
+     "lead": -0.69
+    },
+    {
+     "turn": 18,
+     "A": "SH-Y",
+     "B": "SL-Y",
+     "end": [
+      -1,
+      -1
+     ],
+     "hp": [
+      0.71,
+      0.68
+     ],
+     "front_A": "0:6",
+     "front_B": "0:5",
+     "held": false,
+     "events": [],
+     "lead": -0.24
+    },
+    {
+     "turn": 19,
+     "A": "TN-T",
+     "B": "SL-T",
+     "end": [
+      0,
+      0
+     ],
+     "hp": [
+      0.68,
+      0.5
+     ],
+     "front_A": "0:3",
+     "front_B": "0:3",
+     "held": false,
+     "events": [
+      "A trade lands"
+     ],
+     "lead": -0.33
+    },
+    {
+     "turn": 20,
+     "A": "SH-Y",
+     "B": "SL-S",
+     "end": [
+      -1,
+      -1
+     ],
+     "hp": [
+      0.7,
+      0.5
+     ],
+     "front_A": "0:10",
+     "front_B": "0:2",
+     "held": false,
+     "events": [],
+     "lead": 0.64
+    },
+    {
+     "turn": 21,
+     "A": "LH-T",
+     "B": "SL-S",
+     "end": [
+      0,
+      -2
+     ],
+     "hp": [
+      0.7,
+      0.5
+     ],
+     "front_A": "1:8",
+     "front_B": "-2:7",
+     "held": false,
+     "events": [],
+     "lead": 0.79
+    },
+    {
+     "turn": 22,
+     "A": "SH-Y",
+     "B": "LH-T",
+     "end": [
+      -1,
+      -1
+     ],
+     "hp": [
+      0.7,
+      0.43
+     ],
+     "front_A": "1:14",
+     "front_B": "-2:7",
+     "held": false,
+     "events": [],
+     "lead": 0.56
+    },
+    {
+     "turn": 23,
+     "A": "TN-H",
+     "B": "SH-Y",
+     "end": [
+      1,
+      -2
+     ],
+     "hp": [
+      0.7,
+      0.46
+     ],
+     "front_A": "1:5",
+     "front_B": "-2:11",
+     "held": false,
+     "events": [],
+     "lead": -0.0
+    },
+    {
+     "turn": 24,
+     "A": "SH-H",
+     "B": "SH-H",
+     "end": [
+      1,
+      -2
+     ],
+     "hp": [
+      0.7,
+      0.46
+     ],
+     "front_A": "1:6",
+     "front_B": "-2:2",
+     "held": false,
+     "events": [],
+     "lead": 0.22
+    },
+    {
+     "turn": 25,
+     "A": "SH-Y",
+     "B": "SH-Y",
+     "end": [
+      1,
+      -2
+     ],
+     "hp": [
+      0.56,
+      0.46
+     ],
+     "front_A": "-2:8",
+     "front_B": "-2:2",
+     "held": false,
+     "events": [],
+     "lead": 0.45
+    },
+    {
+     "turn": 26,
+     "A": "SL-S",
+     "B": "RECALL",
+     "end": [
+      -1,
+      -2
+     ],
+     "hp": [
+      0.56,
+      1.0
+     ],
+     "front_A": "0:8",
+     "front_B": "0:1",
+     "held": false,
+     "events": [
+      "B recalls"
+     ],
+     "lead": 0.5
+    },
+    {
+     "turn": 27,
+     "A": "RECALL",
+     "B": "--",
+     "end": [
+      -2,
+      -2
+     ],
+     "hp": [
+      1.0,
+      1.0
+     ],
+     "front_A": "1:6",
+     "front_B": "-2:8",
+     "held": false,
+     "events": [
+      "A recalls"
+     ],
+     "lead": 0.5
+    },
+    {
+     "turn": 28,
+     "A": "--",
+     "B": "SL-H",
+     "end": [
+      -2,
+      -2
+     ],
+     "hp": [
+      1.0,
+      1.0
+     ],
+     "front_A": "1:11",
+     "front_B": "-2:6",
+     "held": false,
+     "events": [],
+     "lead": 0.16
+    },
+    {
+     "turn": 29,
+     "A": "SH-H",
+     "B": "LH-Y",
+     "end": [
+      0,
+      -2
+     ],
+     "hp": [
+      1.0,
+      1.0
+     ],
+     "front_A": "1:7",
+     "front_B": "-2:12",
+     "held": false,
+     "events": [],
+     "lead": -0.29
+    }
+   ],
+   "G20": -0.34632309493837454
+  },
+  {
+   "arm": "C1",
+   "cell": "freeze12 L5 plaus hpB0.6",
+   "A": "guard_sel",
+   "B": "commit",
+   "seed": 99600001,
+   "rows": [
+    {
+     "turn": 0,
+     "A": "LH-T",
+     "B": "SH-H",
+     "end": [
+      -1,
+      1
+     ],
+     "hp": [
+      0.85,
+      0.23
+     ],
+     "front_A": "-2:3",
+     "front_B": "1:18",
+     "held": true,
+     "events": [
+      "A trade lands"
+     ],
+     "lead": -0.38
+    },
+    {
+     "turn": 1,
+     "A": "LH-T",
+     "B": "SH-H",
+     "end": [
+      -1,
+      1
+     ],
+     "hp": [
+      0.69,
+      0.23
+     ],
+     "front_A": "-2:6",
+     "front_B": "1:15",
+     "held": true,
+     "events": [],
+     "lead": -0.68
+    },
+    {
+     "turn": 2,
+     "A": "LH-T",
+     "B": "SH-S",
+     "end": [
+      0,
+      -1
+     ],
+     "hp": [
+      0.69,
+      0.23
+     ],
+     "front_A": "-2:2",
+     "front_B": "1:21",
+     "held": true,
+     "events": [],
+     "lead": -0.5
+    },
+    {
+     "turn": 3,
+     "A": "TN-H",
+     "B": "SH-H",
+     "end": [
+      -2,
+      1
+     ],
+     "hp": [
+      0.58,
+      0.23
+     ],
+     "front_A": "-2:3",
+     "front_B": "1:17",
+     "held": true,
+     "events": [],
+     "lead": -0.83
+    },
+    {
+     "turn": 4,
+     "A": "LH-T",
+     "B": "SH-H",
+     "end": [
+      -1,
+      1
+     ],
+     "hp": [
+      0.5,
+      0.27
+     ],
+     "front_A": "-4:8",
+     "front_B": "0:8",
+     "held": false,
+     "events": [],
+     "lead": -0.99
+    },
+    {
+     "turn": 5,
+     "A": "SH-S",
+     "B": "SH-H",
+     "end": [
+      -2,
+      2
+     ],
+     "hp": [
+      0.52,
+      0.27
+     ],
+     "front_A": "0:0",
+     "front_B": "-2:8",
+     "held": false,
+     "events": [],
+     "lead": -0.59
+    },
+    {
+     "turn": 6,
+     "A": "TN-H",
+     "B": "TN-S",
+     "end": [
+      -2,
+      0
+     ],
+     "hp": [
+      0.52,
+      0.27
+     ],
+     "front_A": "-4:8",
+     "front_B": "0:8",
+     "held": false,
+     "events": [],
+     "lead": 0.31
+    },
+    {
+     "turn": 7,
+     "A": "SH-S",
+     "B": "SH-H",
+     "end": [
+      -2,
+      2
+     ],
+     "hp": [
+      0.52,
+      0.27
+     ],
+     "front_A": "0:0",
+     "front_B": "-2:8",
+     "held": false,
+     "events": [],
+     "lead": -0.19
+    },
+    {
+     "turn": 8,
+     "A": "SL-T",
+     "B": "TN-H",
+     "end": [
+      -2,
+      2
+     ],
+     "hp": [
+      0.52,
+      0.08
+     ],
+     "front_A": "-4:8",
+     "front_B": "0:8",
+     "held": false,
+     "events": [
+      "A trade lands"
+     ],
+     "lead": -0.79
+    },
+    {
+     "turn": 9,
+     "A": "LH-T",
+     "B": "TN-S",
+     "end": [
+      -1,
+      0
+     ],
+     "hp": [
+      0.49,
+      0.08
+     ],
+     "front_A": "-2:8",
+     "front_B": "-2:8",
+     "held": false,
+     "events": [],
+     "lead": -0.62
+    },
+    {
+     "turn": 10,
+     "A": "SL-H",
+     "B": "SH-S",
+     "end": [
+      -2,
+      -1
+     ],
+     "hp": [
+      0.51,
+      0.08
+     ],
+     "front_A": "-2:7",
+     "front_B": "0:8",
+     "held": false,
+     "events": [],
+     "lead": -0.02
+    },
+    {
+     "turn": 11,
+     "A": "SH-T",
+     "B": "RECALL",
+     "end": [
+      0,
+      -1
+     ],
+     "hp": [
+      0.51,
+      0.08
+     ],
+     "front_A": "-1:14",
+     "front_B": "1:3",
+     "held": true,
+     "events": [],
+     "lead": 0.43
+    },
+    {
+     "turn": 12,
+     "A": "LH-H",
+     "B": "SH-S",
+     "end": [
+      0,
+      -1
+     ],
+     "hp": [
+      0.51,
+      0.08
+     ],
+     "front_A": "0:12",
+     "front_B": "0:7",
+     "held": false,
+     "events": [],
+     "lead": 0.83
+    },
+    {
+     "turn": 13,
+     "A": "TN-H",
+     "B": "LH-S",
+     "end": [
+      0,
+      -1
+     ],
+     "hp": [
+      0.51,
+      0.08
+     ],
+     "front_A": "0:11",
+     "front_B": "0:3",
+     "held": false,
+     "events": [],
+     "lead": 1.23
+    },
+    {
+     "turn": 14,
+     "A": "TN-H",
+     "B": "SH-S",
+     "end": [
+      0,
+      -1
+     ],
+     "hp": [
+      0.51,
+      0.08
+     ],
+     "front_A": "0:17",
+     "front_B": "0:6",
+     "held": false,
+     "events": [],
+     "lead": 1.69
+    },
+    {
+     "turn": 15,
+     "A": "SL-H",
+     "B": "SL-S",
+     "end": [
+      0,
+      -1
+     ],
+     "hp": [
+      0.51,
+      0.12
+     ],
+     "front_A": "0:16",
+     "front_B": "0:1",
+     "held": false,
+     "events": [],
+     "lead": 2.21
+    },
+    {
+     "turn": 16,
+     "A": "SL-Y",
+     "B": "TN-S",
+     "end": [
+      -1,
+      -1
+     ],
+     "hp": [
+      0.54,
+      0.12
+     ],
+     "front_A": "0:23",
+     "front_B": "0:3",
+     "held": false,
+     "events": [],
+     "lead": 2.83
+    },
+    {
+     "turn": 17,
+     "A": "LH-H",
+     "B": "LH-S",
+     "end": [
+      1,
+      -1
+     ],
+     "hp": [
+      0.54,
+      0.05
+     ],
+     "front_A": "1:21",
+     "front_B": "-2:8",
+     "held": false,
+     "events": [],
+     "lead": 3.04
+    },
+    {
+     "turn": 18,
+     "A": "SL-H",
+     "B": "TN-S",
+     "end": [
+      1,
+      -2
+     ],
+     "hp": [
+      0.54,
+      0.05
+     ],
+     "front_A": "1:20",
+     "front_B": "-2:1",
+     "held": false,
+     "events": [],
+     "lead": 3.75
+    },
+    {
+     "turn": 19,
+     "A": "SH-H",
+     "B": "TN-S",
+     "end": [
+      1,
+      -2
+     ],
+     "hp": [
+      0.54,
+      0.05
+     ],
+     "front_A": "1:19",
+     "front_B": "0:0",
+     "held": false,
+     "events": [],
+     "lead": 4.69
+    },
+    {
+     "turn": 20,
+     "A": "SL-T",
+     "B": "SL-S",
+     "end": [
+      2,
+      -2
+     ],
+     "hp": [
+      1.0,
+      0.05
+     ],
+     "front_A": "0:8",
+     "front_B": "-4:8",
+     "held": false,
+     "events": [
+      "A dies"
+     ],
+     "lead": 2.09
+    },
+    {
+     "turn": 21,
+     "A": "--",
+     "B": "SH-H",
+     "end": [
+      -2,
+      -2
+     ],
+     "hp": [
+      1.0,
+      0.05
+     ],
+     "front_A": "-2:8",
+     "front_B": "-3:3",
+     "held": false,
+     "events": [],
+     "lead": 0.79
+    },
+    {
+     "turn": 22,
+     "A": "--",
+     "B": "RECALL",
+     "end": [
+      -2,
+      -2
+     ],
+     "hp": [
+      1.0,
+      1.0
+     ],
+     "front_A": "0:8",
+     "front_B": "-4:8",
+     "held": false,
+     "events": [
+      "B recalls"
+     ],
+     "lead": 0.79
+    },
+    {
+     "turn": 23,
+     "A": "--",
+     "B": "--",
+     "end": [
+      -2,
+      -2
+     ],
+     "hp": [
+      1.0,
+      1.0
+     ],
+     "front_A": "-2:8",
+     "front_B": "-3:6",
+     "held": false,
+     "events": [],
+     "lead": 0.79
+    },
+    {
+     "turn": 24,
+     "A": "--",
+     "B": "SL-Y",
+     "end": [
+      -2,
+      -2
+     ],
+     "hp": [
+      1.0,
+      1.0
+     ],
+     "front_A": "0:8",
+     "front_B": "-3:13",
+     "held": false,
+     "events": [],
+     "lead": -0.21
+    },
+    {
+     "turn": 25,
+     "A": "SH-H",
+     "B": "LH-H",
+     "end": [
+      0,
+      -2
+     ],
+     "hp": [
+      1.0,
+      1.0
+     ],
+     "front_A": "1:4",
+     "front_B": "-2:12",
+     "held": false,
+     "events": [],
+     "lead": -0.66
+    },
+    {
+     "turn": 26,
+     "A": "SH-Y",
+     "B": "SH-H",
+     "end": [
+      1,
+      -1
+     ],
+     "hp": [
+      0.88,
+      1.0
+     ],
+     "front_A": "0:5",
+     "front_B": "-1:2",
+     "held": false,
+     "events": [],
+     "lead": -0.32
+    },
+    {
+     "turn": 27,
+     "A": "TN-S",
+     "B": "SL-T",
+     "end": [
+      -1,
+      0
+     ],
+     "hp": [
+      0.88,
+      0.97
+     ],
+     "front_A": "-2:8",
+     "front_B": "-1:10",
+     "held": false,
+     "events": [],
+     "lead": -0.77
+    },
+    {
+     "turn": 28,
+     "A": "TN-T",
+     "B": "SL-T",
+     "end": [
+      -1,
+      0
+     ],
+     "hp": [
+      0.7,
+      0.56
+     ],
+     "front_A": "-1:6",
+     "front_B": "0:9",
+     "held": false,
+     "events": [
+      "A trade lands",
+      "B trade lands"
+     ],
+     "lead": -0.86
+    },
+    {
+     "turn": 29,
+     "A": "LH-T",
+     "B": "LH-H",
+     "end": [
+      -1,
+      0
+     ],
+     "hp": [
+      0.68,
+      0.37
+     ],
+     "front_A": "-1:13",
+     "front_B": "0:6",
+     "held": false,
+     "events": [
+      "A trade lands"
+     ],
+     "lead": -0.7
+    }
+   ],
+   "G20": 3.9629991496823607
+  },
+  {
+   "arm": "C1",
+   "cell": "freeze12 L8 equal hpB1",
+   "A": "passive",
+   "B": "policy",
+   "seed": 99600000,
+   "rows": [
+    {
+     "turn": 0,
+     "A": "TN-H",
+     "B": "SH-H",
+     "end": [
+      -2,
+      1
+     ],
+     "hp": [
+      1.0,
+      1.0
+     ],
+     "front_A": "-4:8",
+     "front_B": "1:15",
+     "held": false,
+     "events": [],
+     "lead": -0.34
+    },
+    {
+     "turn": 1,
+     "A": "SH-H",
+     "B": "SL-Y",
+     "end": [
+      -2,
+      1
+     ],
+     "hp": [
+      1.0,
+      1.0
+     ],
+     "front_A": "-3:5",
+     "front_B": "-2:8",
+     "held": false,
+     "events": [],
+     "lead": 0.76
+    },
+    {
+     "turn": 2,
+     "A": "SH-Y",
+     "B": "SH-H",
+     "end": [
+      -2,
+      2
+     ],
+     "hp": [
+      1.0,
+      1.0
+     ],
+     "front_A": "-4:8",
+     "front_B": "0:8",
+     "held": false,
+     "events": [],
+     "lead": 0.6
+    },
+    {
+     "turn": 3,
+     "A": "SH-Y",
+     "B": "TN-H",
+     "end": [
+      -2,
+      1
+     ],
+     "hp": [
+      0.87,
+      1.0
+     ],
+     "front_A": "-2:8",
+     "front_B": "-2:8",
+     "held": false,
+     "events": [],
+     "lead": 1.45
+    },
+    {
+     "turn": 4,
+     "A": "SL-T",
+     "B": "SH-S",
+     "end": [
+      0,
+      -1
+     ],
+     "hp": [
+      0.87,
+      1.0
+     ],
+     "front_A": "0:8",
+     "front_B": "0:5",
+     "held": false,
+     "events": [],
+     "lead": 1.72
+    },
+    {
+     "turn": 5,
+     "A": "SL-Y",
+     "B": "SH-T",
+     "end": [
+      -1,
+      0
+     ],
+     "hp": [
+      0.74,
+      1.0
+     ],
+     "front_A": "0:3",
+     "front_B": "0:3",
+     "held": false,
+     "events": [],
+     "lead": 1.5
+    },
+    {
+     "turn": 6,
+     "A": "SH-Y",
+     "B": "SL-Y",
+     "end": [
+      -1,
+      -1
+     ],
+     "hp": [
+      0.74,
+      1.0
+     ],
+     "front_A": "0:8",
+     "front_B": "0:2",
+     "held": false,
+     "events": [],
+     "lead": 2.17
+    },
+    {
+     "turn": 7,
+     "A": "SL-T",
+     "B": "SL-T",
+     "end": [
+      0,
+      0
+     ],
+     "hp": [
+      0.03,
+      0.8
+     ],
+     "front_A": "0:4",
+     "front_B": "0:1",
+     "held": false,
+     "events": [
+      "A trade lands",
+      "B trade lands"
+     ],
+     "lead": 1.9
+    },
+    {
+     "turn": 8,
+     "A": "TN-S",
+     "B": "SL-T",
+     "end": [
+      -2,
+      0
+     ],
+     "hp": [
+      0.03,
+      0.68
+     ],
+     "front_A": "0:7",
+     "front_B": "0:6",
+     "held": false,
+     "events": [],
+     "lead": 1.34
+    },
+    {
+     "turn": 9,
+     "A": "RECALL",
+     "B": "TN-T",
+     "end": [
+      -2,
+      2
+     ],
+     "hp": [
+      0.03,
+      0.55
+     ],
+     "front_A": "0:6",
+     "front_B": "0:5",
+     "held": false,
+     "events": [],
+     "lead": 1.34
+    },
+    {
+     "turn": 10,
+     "A": "RECALL",
+     "B": "SL-H",
+     "end": [
+      -2,
+      0
+     ],
+     "hp": [
+      1.0,
+      0.55
+     ],
+     "front_A": "0:8",
+     "front_B": "0:10",
+     "held": false,
+     "events": [
+      "A recalls"
+     ],
+     "lead": 0.66
+    },
+    {
+     "turn": 11,
+     "A": "--",
+     "B": "TN-H",
+     "end": [
+      -2,
+      0
+     ],
+     "hp": [
+      1.0,
+      0.55
+     ],
+     "front_A": "0:5",
+     "front_B": "0:9",
+     "held": false,
+     "events": [],
+     "lead": 0.32
+    },
+    {
+     "turn": 12,
+     "A": "LH-T",
+     "B": "SH-Y",
+     "end": [
+      0,
+      -2
+     ],
+     "hp": [
+      1.0,
+      0.55
+     ],
+     "front_A": "0:10",
+     "front_B": "0:13",
+     "held": false,
+     "events": [],
+     "lead": 0.62
+    },
+    {
+     "turn": 13,
+     "A": "SH-H",
+     "B": "TN-H",
+     "end": [
+      0,
+      0
+     ],
+     "hp": [
+      1.0,
+      0.55
+     ],
+     "front_A": "0:6",
+     "front_B": "0:4",
+     "held": false,
+     "events": [],
+     "lead": 1.19
+    },
+    {
+     "turn": 14,
+     "A": "TN-T",
+     "B": "SH-Y",
+     "end": [
+      0,
+      -1
+     ],
+     "hp": [
+      0.76,
+      0.55
+     ],
+     "front_A": "0:4",
+     "front_B": "0:8",
+     "held": false,
+     "events": [],
+     "lead": 0.42
+    },
+    {
+     "turn": 15,
+     "A": "TN-T",
+     "B": "TN-T",
+     "end": [
+      0,
+      -1
+     ],
+     "hp": [
+      0.74,
+      0.4
+     ],
+     "front_A": "0:3",
+     "front_B": "0:3",
+     "held": false,
+     "events": [
+      "A trade lands"
+     ],
+     "lead": 0.78
+    },
+    {
+     "turn": 16,
+     "A": "SL-T",
+     "B": "TN-S",
+     "end": [
+      0,
+      -2
+     ],
+     "hp": [
+      0.74,
+      0.4
+     ],
+     "front_A": "0:9",
+     "front_B": "0:7",
+     "held": false,
+     "events": [],
+     "lead": 1.23
+    },
+    {
+     "turn": 17,
+     "A": "LH-Y",
+     "B": "RECALL",
+     "end": [
+      -1,
+      -2
+     ],
+     "hp": [
+      0.74,
+      1.0
+     ],
+     "front_A": "0:8",
+     "front_B": "0:4",
+     "held": false,
+     "events": [
+      "B recalls"
+     ],
+     "lead": 1.57
+    },
+    {
+     "turn": 18,
+     "A": "SH-T",
+     "B": "--",
+     "end": [
+      0,
+      -2
+     ],
+     "hp": [
+      0.74,
+      1.0
+     ],
+     "front_A": "0:14",
+     "front_B": "0:1",
+     "held": false,
+     "events": [],
+     "lead": 2.81
+    },
+    {
+     "turn": 19,
+     "A": "LH-Y",
+     "B": "SL-T",
+     "end": [
+      -2,
+      0
+     ],
+     "hp": [
+      0.74,
+      1.0
+     ],
+     "front_A": "1:7",
+     "front_B": "-2:7",
+     "held": false,
+     "events": [],
+     "lead": 2.07
+    },
+    {
+     "turn": 20,
+     "A": "RECALL",
+     "B": "SL-S",
+     "end": [
+      -2,
+      -2
+     ],
+     "hp": [
+      1.0,
+      0.98
+     ],
+     "front_A": "1:14",
+     "front_B": "-2:6",
+     "held": false,
+     "events": [
+      "A recalls"
+     ],
+     "lead": 2.0
+    },
+    {
+     "turn": 21,
+     "A": "--",
+     "B": "SL-Y",
+     "end": [
+      -2,
+      -2
+     ],
+     "hp": [
+      1.0,
+      0.98
+     ],
+     "front_A": "1:7",
+     "front_B": "-2:11",
+     "held": false,
+     "events": [],
+     "lead": 1.21
+    },
+    {
+     "turn": 22,
+     "A": "LH-T",
+     "B": "SL-H",
+     "end": [
+      0,
+      -2
+     ],
+     "hp": [
+      1.0,
+      0.98
+     ],
+     "front_A": "1:12",
+     "front_B": "-2:9",
+     "held": false,
+     "events": [],
+     "lead": 0.87
+    },
+    {
+     "turn": 23,
+     "A": "SH-H",
+     "B": "SH-H",
+     "end": [
+      1,
+      -2
+     ],
+     "hp": [
+      1.0,
+      0.98
+     ],
+     "front_A": "-2:8",
+     "front_B": "-2:6",
+     "held": false,
+     "events": [],
+     "lead": 0.76
+    },
+    {
+     "turn": 24,
+     "A": "LH-Y",
+     "B": "LH-T",
+     "end": [
+      -1,
+      -1
+     ],
+     "hp": [
+      1.0,
+      0.98
+     ],
+     "front_A": "0:8",
+     "front_B": "0:5",
+     "held": false,
+     "events": [],
+     "lead": 0.81
+    },
+    {
+     "turn": 25,
+     "A": "SL-T",
+     "B": "SH-T",
+     "end": [
+      0,
+      0
+     ],
+     "hp": [
+      0.98,
+      0.81
+     ],
+     "front_A": "0:3",
+     "front_B": "0:3",
+     "held": false,
+     "events": [
+      "A trade lands"
+     ],
+     "lead": 0.54
+    },
+    {
+     "turn": 26,
+     "A": "SL-T",
+     "B": "LH-Y",
+     "end": [
+      0,
+      -1
+     ],
+     "hp": [
+      0.98,
+      0.81
+     ],
+     "front_A": "0:8",
+     "front_B": "0:7",
+     "held": false,
+     "events": [],
+     "lead": 0.56
+    },
+    {
+     "turn": 27,
+     "A": "TN-Y",
+     "B": "TN-T",
+     "end": [
+      -1,
+      0
+     ],
+     "hp": [
+      0.98,
+      0.81
+     ],
+     "front_A": "0:5",
+     "front_B": "0:5",
+     "held": false,
+     "events": [],
+     "lead": 0.52
+    },
+    {
+     "turn": 28,
+     "A": "SH-Y",
+     "B": "SH-Y",
+     "end": [
+      -1,
+      -1
+     ],
+     "hp": [
+      0.98,
+      0.81
+     ],
+     "front_A": "0:2",
+     "front_B": "0:2",
+     "held": false,
+     "events": [],
+     "lead": 0.52
+    },
+    {
+     "turn": 29,
+     "A": "LH-T",
+     "B": "LH-T",
+     "end": [
+      0,
+      0
+     ],
+     "hp": [
+      0.82,
+      0.67
+     ],
+     "front_A": "-2:8",
+     "front_B": "-2:8",
+     "held": false,
+     "events": [
+      "B trade lands"
+     ],
+     "lead": 0.52
+    }
+   ],
+   "G20": 1.910151308654184
+  },
+  {
+   "arm": "C1",
+   "cell": "freeze12 L8 equal hpB1",
+   "A": "passive",
+   "B": "policy",
+   "seed": 99600001,
+   "rows": [
+    {
+     "turn": 0,
+     "A": "LH-H",
+     "B": "SH-H",
+     "end": [
+      -2,
+      1
+     ],
+     "hp": [
+      1.0,
+      1.0
+     ],
+     "front_A": "-4:8",
+     "front_B": "1:18",
+     "held": false,
+     "events": [],
+     "lead": -0.68
+    },
+    {
+     "turn": 1,
+     "A": "SH-H",
+     "B": "SH-Y",
+     "end": [
+      -2,
+      1
+     ],
+     "hp": [
+      1.0,
+      1.0
+     ],
+     "front_A": "-3:5",
+     "front_B": "-2:8",
+     "held": false,
+     "events": [],
+     "lead": 0.43
+    },
+    {
+     "turn": 2,
+     "A": "SH-H",
+     "B": "SH-H",
+     "end": [
+      -2,
+      2
+     ],
+     "hp": [
+      1.0,
+      1.0
+     ],
+     "front_A": "-4:8",
+     "front_B": "0:8",
+     "held": false,
+     "events": [],
+     "lead": 0.56
+    },
+    {
+     "turn": 3,
+     "A": "SH-Y",
+     "B": "SH-H",
+     "end": [
+      -2,
+      1
+     ],
+     "hp": [
+      1.0,
+      1.0
+     ],
+     "front_A": "-2:5",
+     "front_B": "-2:8",
+     "held": false,
+     "events": [],
+     "lead": 1.07
+    },
+    {
+     "turn": 4,
+     "A": "LH-Y",
+     "B": "SH-H",
+     "end": [
+      -1,
+      0
+     ],
+     "hp": [
+      1.0,
+      1.0
+     ],
+     "front_A": "-4:8",
+     "front_B": "0:8",
+     "held": false,
+     "events": [],
+     "lead": 0.51
+    },
+    {
+     "turn": 5,
+     "A": "SH-Y",
+     "B": "LH-Y",
+     "end": [
+      -2,
+      1
+     ],
+     "hp": [
+      1.0,
+      1.0
+     ],
+     "front_A": "-2:8",
+     "front_B": "-2:8",
+     "held": false,
+     "events": [],
+     "lead": 1.36
+    },
+    {
+     "turn": 6,
+     "A": "SH-H",
+     "B": "SH-Y",
+     "end": [
+      0,
+      0
+     ],
+     "hp": [
+      0.73,
+      1.0
+     ],
+     "front_A": "0:1",
+     "front_B": "0:1",
+     "held": false,
+     "events": [],
+     "lead": 1.36
+    },
+    {
+     "turn": 7,
+     "A": "SL-Y",
+     "B": "TN-H",
+     "end": [
+      -1,
+      0
+     ],
+     "hp": [
+      0.73,
+      1.0
+     ],
+     "front_A": "-2:8",
+     "front_B": "-2:8",
+     "held": false,
+     "events": [],
+     "lead": 1.36
+    },
+    {
+     "turn": 8,
+     "A": "SL-T",
+     "B": "SL-Y",
+     "end": [
+      -1,
+      0
+     ],
+     "hp": [
+      0.71,
+      0.83
+     ],
+     "front_A": "0:6",
+     "front_B": "0:7",
+     "held": false,
+     "events": [
+      "A trade lands"
+     ],
+     "lead": 1.23
+    },
+    {
+     "turn": 9,
+     "A": "LH-T",
+     "B": "LH-T",
+     "end": [
+      -1,
+      0
+     ],
+     "hp": [
+      0.52,
+      0.64
+     ],
+     "front_A": "0:5",
+     "front_B": "0:6",
+     "held": false,
+     "events": [
+      "A trade lands",
+      "B trade lands"
+     ],
+     "lead": 1.23
+    },
+    {
+     "turn": 10,
+     "A": "SH-Y",
+     "B": "LH-T",
+     "end": [
+      -1,
+      0
+     ],
+     "hp": [
+      0.19,
+      0.57
+     ],
+     "front_A": "0:9",
+     "front_B": "0:7",
+     "held": false,
+     "events": [
+      "B trade lands"
+     ],
+     "lead": 1.65
+    },
+    {
+     "turn": 11,
+     "A": "RECALL",
+     "B": "LH-T",
+     "end": [
+      -1,
+      0
+     ],
+     "hp": [
+      1.0,
+      0.55
+     ],
+     "front_A": "0:7",
+     "front_B": "0:7",
+     "held": false,
+     "events": [
+      "A dies",
+      "B trade lands"
+     ],
+     "lead": -0.53
+    },
+    {
+     "turn": 12,
+     "A": "--",
+     "B": "SH-H",
+     "end": [
+      -2,
+      0
+     ],
+     "hp": [
+      1.0,
+      0.02
+     ],
+     "front_A": "0:5",
+     "front_B": "0:12",
+     "held": false,
+     "events": [],
+     "lead": -1.65
+    },
+    {
+     "turn": 13,
+     "A": "--",
+     "B": "SH-H",
+     "end": [
+      -2,
+      1
+     ],
+     "hp": [
+      1.0,
+      0.02
+     ],
+     "front_A": "-2:4",
+     "front_B": "1:10",
+     "held": true,
+     "events": [],
+     "lead": -2.66
+    },
+    {
+     "turn": 14,
+     "A": "--",
+     "B": "SH-Y",
+     "end": [
+      -2,
+      1
+     ],
+     "hp": [
+      1.0,
+      0.06
+     ],
+     "front_A": "-4:8",
+     "front_B": "0:8",
+     "held": false,
+     "events": [],
+     "lead": -3.11
+    },
+    {
+     "turn": 15,
+     "A": "--",
+     "B": "SH-H",
+     "end": [
+      -2,
+      2
+     ],
+     "hp": [
+      1.0,
+      0.06
+     ],
+     "front_A": "0:0",
+     "front_B": "-2:8",
+     "held": false,
+     "events": [],
+     "lead": -4.01
+    },
+    {
+     "turn": 16,
+     "A": "TN-T",
+     "B": "SH-S",
+     "end": [
+      -1,
+      0
+     ],
+     "hp": [
+      1.0,
+      0.06
+     ],
+     "front_A": "-4:8",
+     "front_B": "0:8",
+     "held": false,
+     "events": [],
+     "lead": -3.21
+    },
+    {
+     "turn": 17,
+     "A": "SH-H",
+     "B": "LH-S",
+     "end": [
+      -2,
+      -1
+     ],
+     "hp": [
+      1.0,
+      0.06
+     ],
+     "front_A": "-2:8",
+     "front_B": "-2:8",
+     "held": false,
+     "events": [],
+     "lead": -2.36
+    },
+    {
+     "turn": 18,
+     "A": "TN-T",
+     "B": "TN-S",
+     "end": [
+      0,
+      -2
+     ],
+     "hp": [
+      1.0,
+      0.06
+     ],
+     "front_A": "0:8",
+     "front_B": "0:6",
+     "held": false,
+     "events": [],
+     "lead": -2.14
+    },
+    {
+     "turn": 19,
+     "A": "LH-T",
+     "B": "RECALL",
+     "end": [
+      2,
+      -2
+     ],
+     "hp": [
+      0.86,
+      1.0
+     ],
+     "front_A": "0:8",
+     "front_B": "0:4",
+     "held": false,
+     "events": [
+      "A trade lands",
+      "B dies"
+     ],
+     "lead": -0.14
+    },
+    {
+     "turn": 20,
+     "A": "SH-H",
+     "B": "--",
+     "end": [
+      0,
+      -2
+     ],
+     "hp": [
+      0.37,
+      1.0
+     ],
+     "front_A": "0:14",
+     "front_B": "0:1",
+     "held": false,
+     "events": [],
+     "lead": 1.1
+    },
+    {
+     "turn": 21,
+     "A": "SH-Y",
+     "B": "--",
+     "end": [
+      -1,
+      -2
+     ],
+     "hp": [
+      0.37,
+      1.0
+     ],
+     "front_A": "1:12",
+     "front_B": "-2:7",
+     "held": false,
+     "events": [],
+     "lead": 1.21
+    },
+    {
+     "turn": 22,
+     "A": "SH-Y",
+     "B": "--",
+     "end": [
+      1,
+      -2
+     ],
+     "hp": [
+      0.37,
+      1.0
+     ],
+     "front_A": "1:19",
+     "front_B": "-4:8",
+     "held": false,
+     "events": [],
+     "lead": 2.0
+    },
+    {
+     "turn": 23,
+     "A": "LH-S",
+     "B": "--",
+     "end": [
+      -1,
+      -2
+     ],
+     "hp": [
+      0.37,
+      1.0
+     ],
+     "front_A": "-2:8",
+     "front_B": "-3:4",
+     "held": false,
+     "events": [],
+     "lead": 2.0
+    },
+    {
+     "turn": 24,
+     "A": "RECALL",
+     "B": "SL-Y",
+     "end": [
+      -2,
+      -2
+     ],
+     "hp": [
+      1.0,
+      1.0
+     ],
+     "front_A": "0:8",
+     "front_B": "-3:9",
+     "held": false,
+     "events": [
+      "A recalls"
+     ],
+     "lead": 0.8
+    },
+    {
+     "turn": 25,
+     "A": "--",
+     "B": "SH-H",
+     "end": [
+      -2,
+      -2
+     ],
+     "hp": [
+      1.0,
+      1.0
+     ],
+     "front_A": "-2:8",
+     "front_B": "-2:7",
+     "held": false,
+     "events": [],
+     "lead": -0.0
+    },
+    {
+     "turn": 26,
+     "A": "SL-Y",
+     "B": "LH-H",
+     "end": [
+      0,
+      -1
+     ],
+     "hp": [
+      1.0,
+      1.0
+     ],
+     "front_A": "0:8",
+     "front_B": "-1:5",
+     "held": false,
+     "events": [],
+     "lead": -0.19
+    },
+    {
+     "turn": 27,
+     "A": "SL-H",
+     "B": "SL-T",
+     "end": [
+      0,
+      -1
+     ],
+     "hp": [
+      0.85,
+      0.98
+     ],
+     "front_A": "0:3",
+     "front_B": "-1:12",
+     "held": false,
+     "events": [
+      "B trade lands"
+     ],
+     "lead": -0.53
+    },
+    {
+     "turn": 28,
+     "A": "SH-Y",
+     "B": "SL-T",
+     "end": [
+      0,
+      -1
+     ],
+     "hp": [
+      0.68,
+      0.95
+     ],
+     "front_A": "0:8",
+     "front_B": "-1:2",
+     "held": false,
+     "events": [
+      "B trade lands"
+     ],
+     "lead": 0.33
+    },
+    {
+     "turn": 29,
+     "A": "SH-S",
+     "B": "LH-H",
+     "end": [
+      -1,
+      -1
+     ],
+     "hp": [
+      0.68,
+      0.95
+     ],
+     "front_A": "0:5",
+     "front_B": "-1:9",
+     "held": false,
+     "events": [],
+     "lead": -0.01
+    }
+   ],
+   "G20": -0.18862669281612598
+  },
+  {
+   "arm": "C1",
+   "cell": "freeze12 L8 equal hpB1",
+   "A": "guard_walk",
+   "B": "policy",
+   "seed": 99600000,
+   "rows": [
+    {
+     "turn": 0,
+     "A": "TN-T",
+     "B": "SH-H",
+     "end": [
+      -1,
+      1
+     ],
+     "hp": [
+      0.89,
+      1.0
+     ],
+     "front_A": "-2:1",
+     "front_B": "1:15",
+     "held": true,
+     "events": [],
+     "lead": -0.34
+    },
+    {
+     "turn": 1,
+     "A": "LH-T",
+     "B": "SH-Y",
+     "end": [
+      -1,
+      1
+     ],
+     "hp": [
+      0.81,
+      1.0
+     ],
+     "front_A": "-2:2",
+     "front_B": "1:13",
+     "held": true,
+     "events": [],
+     "lead": -0.95
+    },
+    {
+     "turn": 2,
+     "A": "LH-T",
+     "B": "SL-H",
+     "end": [
+      -1,
+      1
+     ],
+     "hp": [
+      0.7,
+      0.83
+     ],
+     "front_A": "-2:1",
+     "front_B": "1:19",
+     "held": true,
+     "events": [
+      "A trade lands"
+     ],
+     "lead": -0.88
+    },
+    {
+     "turn": 3,
+     "A": "LH-T",
+     "B": "SH-H",
+     "end": [
+      -1,
+      1
+     ],
+     "hp": [
+      0.46,
+      0.5
+     ],
+     "front_A": "-2:2",
+     "front_B": "1:17",
+     "held": true,
+     "events": [
+      "A trade lands"
+     ],
+     "lead": -1.49
+    },
+    {
+     "turn": 4,
+     "A": "TN-H",
+     "B": "SH-H",
+     "end": [
+      -2,
+      1
+     ],
+     "hp": [
+      0.46,
+      0.5
+     ],
+     "front_A": "-4:8",
+     "front_B": "0:8",
+     "held": false,
+     "events": [],
+     "lead": -1.17
+    },
+    {
+     "turn": 5,
+     "A": "SH-S",
+     "B": "SH-H",
+     "end": [
+      -2,
+      2
+     ],
+     "hp": [
+      0.48,
+      0.52
+     ],
+     "front_A": "0:0",
+     "front_B": "-2:8",
+     "held": false,
+     "events": [],
+     "lead": -0.67
+    },
+    {
+     "turn": 6,
+     "A": "LH-S",
+     "B": "SL-H",
+     "end": [
+      -2,
+      2
+     ],
+     "hp": [
+      0.48,
+      0.52
+     ],
+     "front_A": "-4:8",
+     "front_B": "0:8",
+     "held": false,
+     "events": [],
+     "lead": -0.07
+    },
+    {
+     "turn": 7,
+     "A": "SH-S",
+     "B": "SL-S",
+     "end": [
+      -2,
+      0
+     ],
+     "hp": [
+      0.48,
+      0.52
+     ],
+     "front_A": "-2:7",
+     "front_B": "-2:8",
+     "held": false,
+     "events": [],
+     "lead": 0.33
+    },
+    {
+     "turn": 8,
+     "A": "LH-T",
+     "B": "SH-H",
+     "end": [
+      -2,
+      2
+     ],
+     "hp": [
+      0.48,
+      0.26
+     ],
+     "front_A": "-4:8",
+     "front_B": "0:8",
+     "held": false,
+     "events": [],
+     "lead": -1.14
+    },
+    {
+     "turn": 9,
+     "A": "SH-H",
+     "B": "SL-S",
+     "end": [
+      -2,
+      0
+     ],
+     "hp": [
+      0.48,
+      0.26
+     ],
+     "front_A": "-2:8",
+     "front_B": "-2:8",
+     "held": false,
+     "events": [],
+     "lead": -0.29
+    },
+    {
+     "turn": 10,
+     "A": "RECALL",
+     "B": "TN-S",
+     "end": [
+      -2,
+      -1
+     ],
+     "hp": [
+      1.0,
+      0.26
+     ],
+     "front_A": "0:7",
+     "front_B": "0:7",
+     "held": false,
+     "events": [
+      "A recalls"
+     ],
+     "lead": -0.34
+    },
+    {
+     "turn": 11,
+     "A": "--",
+     "B": "RECALL",
+     "end": [
+      -2,
+      -2
+     ],
+     "hp": [
+      1.0,
+      1.0
+     ],
+     "front_A": "0:6",
+     "front_B": "0:6",
+     "held": false,
+     "events": [
+      "B recalls"
+     ],
+     "lead": -0.34
+    },
+    {
+     "turn": 12,
+     "A": "LH-H",
+     "B": "--",
+     "end": [
+      0,
+      -2
+     ],
+     "hp": [
+      1.0,
+      1.0
+     ],
+     "front_A": "0:11",
+     "front_B": "0:10",
+     "held": false,
+     "events": [],
+     "lead": 0.11
+    },
+    {
+     "turn": 13,
+     "A": "SH-H",
+     "B": "LH-H",
+     "end": [
+      0,
+      0
+     ],
+     "hp": [
+      1.0,
+      1.0
+     ],
+     "front_A": "0:9",
+     "front_B": "-2:8",
+     "held": false,
+     "events": [],
+     "lead": 1.01
+    },
+    {
+     "turn": 14,
+     "A": "LH-T",
+     "B": "SH-Y",
+     "end": [
+      0,
+      -1
+     ],
+     "hp": [
+      0.73,
+      0.65
+     ],
+     "front_A": "1:9",
+     "front_B": "-1:5",
+     "held": false,
+     "events": [
+      "A trade lands"
+     ],
+     "lead": 0.38
+    },
+    {
+     "turn": 15,
+     "A": "SH-H",
+     "B": "SH-Y",
+     "end": [
+      1,
+      -2
+     ],
+     "hp": [
+      0.73,
+      0.65
+     ],
+     "front_A": "-2:8",
+     "front_B": "-2:4",
+     "held": false,
+     "events": [],
+     "lead": 0.43
+    },
+    {
+     "turn": 16,
+     "A": "SL-S",
+     "B": "RECALL",
+     "end": [
+      -1,
+      -2
+     ],
+     "hp": [
+      0.73,
+      1.0
+     ],
+     "front_A": "0:8",
+     "front_B": "0:3",
+     "held": false,
+     "events": [
+      "B recalls"
+     ],
+     "lead": 0.48
+    },
+    {
+     "turn": 17,
+     "A": "SH-H",
+     "B": "--",
+     "end": [
+      1,
+      -2
+     ],
+     "hp": [
+      0.73,
+      1.0
+     ],
+     "front_A": "1:6",
+     "front_B": "-2:4",
+     "held": false,
+     "events": [],
+     "lead": 1.27
+    },
+    {
+     "turn": 18,
+     "A": "SH-Y",
+     "B": "SH-Y",
+     "end": [
+      1,
+      -2
+     ],
+     "hp": [
+      0.73,
+      1.0
+     ],
+     "front_A": "0:8",
+     "front_B": "-4:8",
+     "held": false,
+     "events": [],
+     "lead": 1.05
+    },
+    {
+     "turn": 19,
+     "A": "LH-S",
+     "B": "SH-Y",
+     "end": [
+      -1,
+      -2
+     ],
+     "hp": [
+      0.73,
+      1.0
+     ],
+     "front_A": "-2:8",
+     "front_B": "-2:8",
+     "held": false,
+     "events": [],
+     "lead": 0.19
+    },
+    {
+     "turn": 20,
+     "A": "SH-S",
+     "B": "SL-S",
+     "end": [
+      -1,
+      -1
+     ],
+     "hp": [
+      0.73,
+      1.0
+     ],
+     "front_A": "0:7",
+     "front_B": "0:7",
+     "held": false,
+     "events": [],
+     "lead": 0.19
+    },
+    {
+     "turn": 21,
+     "A": "TN-Y",
+     "B": "SL-T",
+     "end": [
+      -2,
+      0
+     ],
+     "hp": [
+      0.73,
+      1.0
+     ],
+     "front_A": "0:4",
+     "front_B": "0:6",
+     "held": false,
+     "events": [],
+     "lead": -0.1
+    },
+    {
+     "turn": 22,
+     "A": "SH-T",
+     "B": "SL-H",
+     "end": [
+      -1,
+      0
+     ],
+     "hp": [
+      0.69,
+      0.68
+     ],
+     "front_A": "0:11",
+     "front_B": "0:7",
+     "held": false,
+     "events": [
+      "A trade lands"
+     ],
+     "lead": 0.42
+    },
+    {
+     "turn": 23,
+     "A": "TN-T",
+     "B": "SH-Y",
+     "end": [
+      0,
+      -1
+     ],
+     "hp": [
+      0.67,
+      0.34
+     ],
+     "front_A": "0:2",
+     "front_B": "0:5",
+     "held": false,
+     "events": [
+      "A trade lands"
+     ],
+     "lead": -0.41
+    },
+    {
+     "turn": 24,
+     "A": "LH-T",
+     "B": "SH-Y",
+     "end": [
+      0,
+      -1
+     ],
+     "hp": [
+      0.67,
+      0.37
+     ],
+     "front_A": "-4:8",
+     "front_B": "0:11",
+     "held": false,
+     "events": [],
+     "lead": -1.36
+    },
+    {
+     "turn": 25,
+     "A": "SH-T",
+     "B": "RECALL",
+     "end": [
+      0,
+      -1
+     ],
+     "hp": [
+      0.66,
+      0.21
+     ],
+     "front_A": "-2:7",
+     "front_B": "-2:8",
+     "held": false,
+     "events": [
+      "A trade lands"
+     ],
+     "lead": -1.09
+    },
+    {
+     "turn": 26,
+     "A": "SL-S",
+     "B": "LH-S",
+     "end": [
+      -2,
+      -1
+     ],
+     "hp": [
+      0.66,
+      0.21
+     ],
+     "front_A": "-2:6",
+     "front_B": "0:8",
+     "held": false,
+     "events": [],
+     "lead": -0.39
+    },
+    {
+     "turn": 27,
+     "A": "SH-T",
+     "B": "RECALL",
+     "end": [
+      0,
+      -1
+     ],
+     "hp": [
+      0.66,
+      0.21
+     ],
+     "front_A": "-1:13",
+     "front_B": "1:1",
+     "held": true,
+     "events": [],
+     "lead": 0.24
+    },
+    {
+     "turn": 28,
+     "A": "LH-H",
+     "B": "SL-S",
+     "end": [
+      0,
+      -1
+     ],
+     "hp": [
+      0.66,
+      0.21
+     ],
+     "front_A": "0:11",
+     "front_B": "0:7",
+     "held": false,
+     "events": [],
+     "lead": 0.42
+    },
+    {
+     "turn": 29,
+     "A": "LH-Y",
+     "B": "TN-S",
+     "end": [
+      -1,
+      -1
+     ],
+     "hp": [
+      0.66,
+      0.21
+     ],
+     "front_A": "0:10",
+     "front_B": "0:4",
+     "held": false,
+     "events": [],
+     "lead": 0.71
+    }
+   ],
+   "G20": 0.12913454155326398
+  },
+  {
+   "arm": "C1",
+   "cell": "freeze12 L8 equal hpB1",
+   "A": "guard_walk",
+   "B": "policy",
+   "seed": 99600001,
+   "rows": [
+    {
+     "turn": 0,
+     "A": "LH-T",
+     "B": "SH-H",
+     "end": [
+      -1,
+      1
+     ],
+     "hp": [
+      0.89,
+      0.67
+     ],
+     "front_A": "-2:1",
+     "front_B": "1:18",
+     "held": true,
+     "events": [
+      "A trade lands"
+     ],
+     "lead": -0.61
+    },
+    {
+     "turn": 1,
+     "A": "LH-T",
+     "B": "SH-H",
+     "end": [
+      -1,
+      1
+     ],
+     "hp": [
+      0.78,
+      0.67
+     ],
+     "front_A": "-2:2",
+     "front_B": "1:16",
+     "held": true,
+     "events": [],
+     "lead": -1.22
+    },
+    {
+     "turn": 2,
+     "A": "LH-T",
+     "B": "SH-Y",
+     "end": [
+      -1,
+      1
+     ],
+     "hp": [
+      0.7,
+      0.5
+     ],
+     "front_A": "-4:8",
+     "front_B": "0:8",
+     "held": false,
+     "events": [
+      "A trade lands"
+     ],
+     "lead": -1.26
+    },
+    {
+     "turn": 3,
+     "A": "SH-Y",
+     "B": "SH-H",
+     "end": [
+      -2,
+      2
+     ],
+     "hp": [
+      0.7,
+      0.5
+     ],
+     "front_A": "0:0",
+     "front_B": "-2:8",
+     "held": false,
+     "events": [],
+     "lead": -0.76
+    },
+    {
+     "turn": 4,
+     "A": "TN-H",
+     "B": "LH-H",
+     "end": [
+      -2,
+      2
+     ],
+     "hp": [
+      0.7,
+      0.5
+     ],
+     "front_A": "-4:8",
+     "front_B": "0:8",
+     "held": false,
+     "events": [],
+     "lead": 0.04
+    },
+    {
+     "turn": 5,
+     "A": "LH-T",
+     "B": "TN-Y",
+     "end": [
+      -1,
+      1
+     ],
+     "hp": [
+      0.69,
+      0.17
+     ],
+     "front_A": "-2:8",
+     "front_B": "-2:8",
+     "held": false,
+     "events": [
+      "A trade lands"
+     ],
+     "lead": 0.21
+    },
+    {
+     "turn": 6,
+     "A": "LH-H",
+     "B": "SH-S",
+     "end": [
+      -2,
+      -1
+     ],
+     "hp": [
+      0.69,
+      0.17
+     ],
+     "front_A": "-2:7",
+     "front_B": "0:8",
+     "held": false,
+     "events": [],
+     "lead": 0.81
+    },
+    {
+     "turn": 7,
+     "A": "SL-H",
+     "B": "RECALL",
+     "end": [
+      -1,
+      -2
+     ],
+     "hp": [
+      0.69,
+      1.0
+     ],
+     "front_A": "-1:14",
+     "front_B": "1:5",
+     "held": true,
+     "events": [
+      "B recalls"
+     ],
+     "lead": 1.15
+    },
+    {
+     "turn": 8,
+     "A": "TN-H",
+     "B": "--",
+     "end": [
+      -1,
+      -2
+     ],
+     "hp": [
+      0.69,
+      1.0
+     ],
+     "front_A": "-1:12",
+     "front_B": "1:9",
+     "held": true,
+     "events": [],
+     "lead": 1.6
+    },
+    {
+     "turn": 9,
+     "A": "LH-H",
+     "B": "SH-T",
+     "end": [
+      -1,
+      0
+     ],
+     "hp": [
+      0.52,
+      0.95
+     ],
+     "front_A": "-1:15",
+     "front_B": "1:6",
+     "held": true,
+     "events": [
+      "B trade lands"
+     ],
+     "lead": 1.48
+    },
+    {
+     "turn": 10,
+     "A": "TN-H",
+     "B": "TN-T",
+     "end": [
+      -1,
+      0
+     ],
+     "hp": [
+      0.18,
+      0.63
+     ],
+     "front_A": "-1:9",
+     "front_B": "1:13",
+     "held": true,
+     "events": [
+      "B trade lands"
+     ],
+     "lead": 1.06
+    },
+    {
+     "turn": 11,
+     "A": "TN-S",
+     "B": "SH-H",
+     "end": [
+      -1,
+      1
+     ],
+     "hp": [
+      0.18,
+      0.63
+     ],
+     "front_A": "-1:6",
+     "front_B": "1:10",
+     "held": true,
+     "events": [],
+     "lead": 0.04
+    },
+    {
+     "turn": 12,
+     "A": "SH-Y",
+     "B": "LH-Y",
+     "end": [
+      -2,
+      0
+     ],
+     "hp": [
+      0.18,
+      0.12
+     ],
+     "front_A": "-1:3",
+     "front_B": "1:10",
+     "held": true,
+     "events": [],
+     "lead": 0.61
+    },
+    {
+     "turn": 13,
+     "A": "SH-Y",
+     "B": "SH-H",
+     "end": [
+      -2,
+      1
+     ],
+     "hp": [
+      0.22,
+      0.12
+     ],
+     "front_A": "-2:4",
+     "front_B": "-2:8",
+     "held": false,
+     "events": [],
+     "lead": 0.78
+    },
+    {
+     "turn": 14,
+     "A": "LH-S",
+     "B": "LH-S",
+     "end": [
+      -1,
+      -1
+     ],
+     "hp": [
+      0.22,
+      0.12
+     ],
+     "front_A": "-1:2",
+     "front_B": "0:8",
+     "held": false,
+     "events": [],
+     "lead": 0.88
+    },
+    {
+     "turn": 15,
+     "A": "RECALL",
+     "B": "RECALL",
+     "end": [
+      -2,
+      -2
+     ],
+     "hp": [
+      1.0,
+      1.0
+     ],
+     "front_A": "-1:9",
+     "front_B": "0:6",
+     "held": false,
+     "events": [
+      "A recalls",
+      "B recalls"
+     ],
+     "lead": 0.88
+    },
+    {
+     "turn": 16,
+     "A": "--",
+     "B": "--",
+     "end": [
+      -2,
+      -2
+     ],
+     "hp": [
+      1.0,
+      1.0
+     ],
+     "front_A": "-1:6",
+     "front_B": "0:13",
+     "held": false,
+     "events": [],
+     "lead": 0.88
+    },
+    {
+     "turn": 17,
+     "A": "SH-H",
+     "B": "SH-H",
+     "end": [
+      -1,
+      0
+     ],
+     "hp": [
+      1.0,
+      1.0
+     ],
+     "front_A": "-2:8",
+     "front_B": "1:2",
+     "held": true,
+     "events": [],
+     "lead": 1.44
+    },
+    {
+     "turn": 18,
+     "A": "TN-H",
+     "B": "SH-Y",
+     "end": [
+      -2,
+      1
+     ],
+     "hp": [
+      1.0,
+      1.0
+     ],
+     "front_A": "-4:8",
+     "front_B": "0:8",
+     "held": false,
+     "events": [],
+     "lead": 0.77
+    },
+    {
+     "turn": 19,
+     "A": "SH-H",
+     "B": "TN-Y",
+     "end": [
+      -2,
+      1
+     ],
+     "hp": [
+      1.0,
+      0.64
+     ],
+     "front_A": "-2:8",
+     "front_B": "-2:8",
+     "held": false,
+     "events": [],
+     "lead": 1.63
+    },
+    {
+     "turn": 20,
+     "A": "SL-T",
+     "B": "SL-S",
+     "end": [
+      0,
+      -1
+     ],
+     "hp": [
+      1.0,
+      0.64
+     ],
+     "front_A": "0:8",
+     "front_B": "0:5",
+     "held": false,
+     "events": [],
+     "lead": 1.9
+    },
+    {
+     "turn": 21,
+     "A": "SL-T",
+     "B": "LH-Y",
+     "end": [
+      0,
+      -1
+     ],
+     "hp": [
+      0.98,
+      0.47
+     ],
+     "front_A": "0:7",
+     "front_B": "0:3",
+     "held": false,
+     "events": [
+      "A trade lands"
+     ],
+     "lead": 1.97
+    },
+    {
+     "turn": 22,
+     "A": "TN-T",
+     "B": "SH-Y",
+     "end": [
+      0,
+      -1
+     ],
+     "hp": [
+      0.98,
+      0.47
+     ],
+     "front_A": "0:4",
+     "front_B": "0:7",
+     "held": false,
+     "events": [],
+     "lead": 1.09
+    },
+    {
+     "turn": 23,
+     "A": "LH-Y",
+     "B": "RECALL",
+     "end": [
+      -1,
+      -2
+     ],
+     "hp": [
+      0.98,
+      1.0
+     ],
+     "front_A": "0:3",
+     "front_B": "0:5",
+     "held": false,
+     "events": [
+      "B recalls"
+     ],
+     "lead": 1.32
+    },
+    {
+     "turn": 24,
+     "A": "SL-T",
+     "B": "--",
+     "end": [
+      0,
+      -2
+     ],
+     "hp": [
+      0.86,
+      1.0
+     ],
+     "front_A": "0:8",
+     "front_B": "0:7",
+     "held": false,
+     "events": [],
+     "lead": 1.99
+    },
+    {
+     "turn": 25,
+     "A": "SH-H",
+     "B": "SH-Y",
+     "end": [
+      0,
+      -1
+     ],
+     "hp": [
+      0.86,
+      0.88
+     ],
+     "front_A": "-2:8",
+     "front_B": "-2:8",
+     "held": false,
+     "events": [],
+     "lead": 1.88
+    },
+    {
+     "turn": 26,
+     "A": "LH-H",
+     "B": "SH-H",
+     "end": [
+      99,
+      0
+     ],
+     "hp": [
+      0.86,
+      0.89
+     ],
+     "front_A": "-4:8",
+     "front_B": "0:8",
+     "held": false,
+     "events": [],
+     "lead": 0.98
+    },
+    {
+     "turn": 27,
+     "A": "SH-Y",
+     "B": "SL-S",
+     "end": [
+      -1,
+      -1
+     ],
+     "hp": [
+      0.86,
+      0.89
+     ],
+     "front_A": "-2:8",
+     "front_B": "-2:8",
+     "held": false,
+     "events": [],
+     "lead": 1.84
+    },
+    {
+     "turn": 28,
+     "A": "TN-T",
+     "B": "SL-T",
+     "end": [
+      0,
+      0
+     ],
+     "hp": [
+      0.67,
+      0.43
+     ],
+     "front_A": "0:6",
+     "front_B": "0:7",
+     "held": false,
+     "events": [
+      "A trade lands",
+      "B trade lands"
+     ],
+     "lead": 1.75
+    },
+    {
+     "turn": 29,
+     "A": "TN-T",
+     "B": "SH-H",
+     "end": [
+      0,
+      1
+     ],
+     "hp": [
+      0.66,
+      0.27
+     ],
+     "front_A": "-2:8",
+     "front_B": "0:4",
+     "held": false,
+     "events": [
+      "A trade lands"
+     ],
+     "lead": 1.35
+    }
+   ],
+   "G20": 1.423497809689532
+  }
+ ]
+}

@@ -1,0 +1,36 @@
+== M4.8 stage recheck (5 workers)
+  [recheck M4.7 P1] 1/32 done, 53 s
+  [recheck M4.7 P1] 2/32 done, 53 s
+  [recheck M4.7 P1] 3/32 done, 53 s
+  [recheck M4.7 P1] 4/32 done, 53 s
+  [recheck M4.7 P1] 5/32 done, 53 s
+  [recheck M4.7 P1] 6/32 done, 102 s
+  [recheck M4.7 P1] 7/32 done, 102 s
+  [recheck M4.7 P1] 8/32 done, 102 s
+  [recheck M4.7 P1] 9/32 done, 103 s
+  [recheck M4.7 P1] 10/32 done, 103 s
+  [recheck M4.7 P1] 11/32 done, 151 s
+  [recheck M4.7 P1] 12/32 done, 151 s
+  [recheck M4.7 P1] 13/32 done, 152 s
+  [recheck M4.7 P1] 14/32 done, 152 s
+  [recheck M4.7 P1] 15/32 done, 152 s
+  [recheck M4.7 P1] 16/32 done, 204 s
+  [recheck M4.7 P1] 17/32 done, 204 s
+  [recheck M4.7 P1] 18/32 done, 204 s
+  [recheck M4.7 P1] 19/32 done, 204 s
+  [recheck M4.7 P1] 20/32 done, 205 s
+  [recheck M4.7 P1] 21/32 done, 250 s
+  [recheck M4.7 P1] 22/32 done, 251 s
+  [recheck M4.7 P1] 23/32 done, 251 s
+  [recheck M4.7 P1] 24/32 done, 251 s
+  [recheck M4.7 P1] 25/32 done, 252 s
+  [recheck M4.7 P1] 26/32 done, 296 s
+  [recheck M4.7 P1] 27/32 done, 297 s
+  [recheck M4.7 P1] 28/32 done, 297 s
+  [recheck M4.7 P1] 29/32 done, 297 s
+  [recheck M4.7 P1] 30/32 done, 298 s
+  [recheck M4.7 P1] 31/32 done, 333 s
+  [recheck M4.7 P1] 32/32 done, 333 s
+  s0: raw +0.262 ± 0.171; E5 +0.192 ± 0.175; E10 +0.184 ± 0.174; E20 +0.170 ± 0.176; replay dev 1.1e-07
+  s1: raw -0.088 ± 0.169; E5 -0.103 ± 0.171; E10 -0.106 ± 0.170; E20 -0.138 ± 0.169; replay dev 1.1e-07
+== stage recheck done in 337 s

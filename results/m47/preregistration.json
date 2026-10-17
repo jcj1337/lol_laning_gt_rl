@@ -1,0 +1,23 @@
+{
+ "meta": {
+  "study": "M4.7",
+  "commit": "6b5d66f17d5eadc4e4e789aa01e5599505de45d7",
+  "working_tree_dirty": true,
+  "timestamp": "2026-10-16 20:43:07",
+  "torch": "2.14.1+cpu",
+  "numpy": "2.5.3",
+  "stage": "prereg"
+ },
+ "record": {
+  "document": "docs\\m4\\m4_7\\m4_7_preregistration.md",
+  "sha256": "cf7dae62477c806095511f61f38d5c99552e0e96a644f6ee4146d0033977b7d8",
+  "bytes": 15187
+ },
+ "note": "frozen after Stage 1 and the pilot smoke test, before any pilot training run",
+ "amendments": [
+  {
+   "time": "2026-10-16 21:40:13",
+   "note": "Analysis correction (not a protocol change). Pre-registration section 5 specifies within-seed intervals over paired game indices and short - control against fixed opponents on the same games. The first analysis code computed that difference with an unpaired (independent-error) interval. Corrected to per-game paired differences after the head-to-head and fixed-opponent results had been seen. Both versions are reported. With the unpaired interval, seed 1 pooled fixed-opponent G100 is -0.356 +- 0.360 and the regression flag R would not be raised (outcome 6, inconclusive); with the protocol paired interval it is -0.356 +- 0.209 and R is raised in both seeds (outcome 5)."
+  }
+ ]
+}

@@ -1,0 +1,23 @@
+{
+ "meta": {
+  "study": "M4.6e",
+  "commit": "6b5d66f17d5eadc4e4e789aa01e5599505de45d7",
+  "working_tree_dirty": true,
+  "timestamp": "2026-10-16 10:47:24",
+  "torch": "2.14.1+cpu",
+  "numpy": "2.5.3",
+  "stage": "prereg"
+ },
+ "record": {
+  "document": "docs\\m4\\m4_6\\m4_6e_preregistration.md",
+  "sha256": "fb440adc4508a479a823d79e99d5930f9f4def8d3346d39759b5f26e089353ec",
+  "bytes": 5970
+ },
+ "note": "frozen after the observation, exposure and label stages and before any supervised fit",
+ "amendments": [
+  {
+   "time": "2026-10-16 10:59:13",
+   "note": "amendment 1 (post hoc, after reading the main-split readouts): a sensitivity split \"reach\" = main without the constructed big variants whose investment exceeds 240 resources at the start (19 of 120 big variants, 2.6% of rows; two above 1,000 resources): B near C1 saturation makes a x1.3+ multiplier ratio reachable only with unrealistic investment. The pre-registered splits are unchanged and remain the primary readouts."
+  }
+ ]
+}

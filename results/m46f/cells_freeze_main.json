@@ -1,0 +1,6484 @@
+{
+ "jobs": [
+  {
+   "family": "freeze",
+   "idx": 0,
+   "label": "freezer L3 equal",
+   "meta": {
+    "group": "freeze L3",
+    "cond": "equal",
+    "L": 3,
+    "role": "freezer"
+   },
+   "tag": "s0_vs_shared",
+   "path": "results\\rl\\checkpoints\\m46f\\behaviour\\main\\freeze\\s0\\0_vs_shared.json.gz",
+   "horizon": 50,
+   "K": 32
+  },
+  {
+   "family": "freeze",
+   "idx": 0,
+   "label": "freezer L3 equal",
+   "meta": {
+    "group": "freeze L3",
+    "cond": "equal",
+    "L": 3,
+    "role": "freezer"
+   },
+   "tag": "s0_vs_separate",
+   "path": "results\\rl\\checkpoints\\m46f\\behaviour\\main\\freeze\\s0\\0_vs_separate.json.gz",
+   "horizon": 50,
+   "K": 32
+  },
+  {
+   "family": "freeze",
+   "idx": 1,
+   "label": "breaker L3 equal",
+   "meta": {
+    "group": "freeze L3",
+    "cond": "equal",
+    "L": 3,
+    "role": "breaker"
+   },
+   "tag": "s0_vs_shared",
+   "path": "results\\rl\\checkpoints\\m46f\\behaviour\\main\\freeze\\s0\\1_vs_shared.json.gz",
+   "horizon": 50,
+   "K": 32
+  },
+  {
+   "family": "freeze",
+   "idx": 1,
+   "label": "breaker L3 equal",
+   "meta": {
+    "group": "freeze L3",
+    "cond": "equal",
+    "L": 3,
+    "role": "breaker"
+   },
+   "tag": "s0_vs_separate",
+   "path": "results\\rl\\checkpoints\\m46f\\behaviour\\main\\freeze\\s0\\1_vs_separate.json.gz",
+   "horizon": 50,
+   "K": 32
+  },
+  {
+   "family": "freeze",
+   "idx": 2,
+   "label": "freezer L3 hp",
+   "meta": {
+    "group": "freeze L3",
+    "cond": "hp",
+    "L": 3,
+    "role": "freezer"
+   },
+   "tag": "s0_vs_shared",
+   "path": "results\\rl\\checkpoints\\m46f\\behaviour\\main\\freeze\\s0\\2_vs_shared.json.gz",
+   "horizon": 50,
+   "K": 32
+  },
+  {
+   "family": "freeze",
+   "idx": 2,
+   "label": "freezer L3 hp",
+   "meta": {
+    "group": "freeze L3",
+    "cond": "hp",
+    "L": 3,
+    "role": "freezer"
+   },
+   "tag": "s0_vs_separate",
+   "path": "results\\rl\\checkpoints\\m46f\\behaviour\\main\\freeze\\s0\\2_vs_separate.json.gz",
+   "horizon": 50,
+   "K": 32
+  },
+  {
+   "family": "freeze",
+   "idx": 3,
+   "label": "breaker L3 hp",
+   "meta": {
+    "group": "freeze L3",
+    "cond": "hp",
+    "L": 3,
+    "role": "breaker"
+   },
+   "tag": "s0_vs_shared",
+   "path": "results\\rl\\checkpoints\\m46f\\behaviour\\main\\freeze\\s0\\3_vs_shared.json.gz",
+   "horizon": 50,
+   "K": 32
+  },
+  {
+   "family": "freeze",
+   "idx": 3,
+   "label": "breaker L3 hp",
+   "meta": {
+    "group": "freeze L3",
+    "cond": "hp",
+    "L": 3,
+    "role": "breaker"
+   },
+   "tag": "s0_vs_separate",
+   "path": "results\\rl\\checkpoints\\m46f\\behaviour\\main\\freeze\\s0\\3_vs_separate.json.gz",
+   "horizon": 50,
+   "K": 32
+  },
+  {
+   "family": "freeze",
+   "idx": 4,
+   "label": "freezer L3 edge",
+   "meta": {
+    "group": "freeze L3",
+    "cond": "edge",
+    "L": 3,
+    "role": "freezer"
+   },
+   "tag": "s0_vs_shared",
+   "path": "results\\rl\\checkpoints\\m46f\\behaviour\\main\\freeze\\s0\\4_vs_shared.json.gz",
+   "horizon": 50,
+   "K": 32
+  },
+  {
+   "family": "freeze",
+   "idx": 4,
+   "label": "freezer L3 edge",
+   "meta": {
+    "group": "freeze L3",
+    "cond": "edge",
+    "L": 3,
+    "role": "freezer"
+   },
+   "tag": "s0_vs_separate",
+   "path": "results\\rl\\checkpoints\\m46f\\behaviour\\main\\freeze\\s0\\4_vs_separate.json.gz",
+   "horizon": 50,
+   "K": 32
+  },
+  {
+   "family": "freeze",
+   "idx": 5,
+   "label": "breaker L3 edge",
+   "meta": {
+    "group": "freeze L3",
+    "cond": "edge",
+    "L": 3,
+    "role": "breaker"
+   },
+   "tag": "s0_vs_shared",
+   "path": "results\\rl\\checkpoints\\m46f\\behaviour\\main\\freeze\\s0\\5_vs_shared.json.gz",
+   "horizon": 50,
+   "K": 32
+  },
+  {
+   "family": "freeze",
+   "idx": 5,
+   "label": "breaker L3 edge",
+   "meta": {
+    "group": "freeze L3",
+    "cond": "edge",
+    "L": 3,
+    "role": "breaker"
+   },
+   "tag": "s0_vs_separate",
+   "path": "results\\rl\\checkpoints\\m46f\\behaviour\\main\\freeze\\s0\\5_vs_separate.json.gz",
+   "horizon": 50,
+   "K": 32
+  },
+  {
+   "family": "freeze",
+   "idx": 6,
+   "label": "freezer L3 plaus",
+   "meta": {
+    "group": "freeze L3",
+    "cond": "plaus",
+    "L": 3,
+    "role": "freezer"
+   },
+   "tag": "s0_vs_shared",
+   "path": "results\\rl\\checkpoints\\m46f\\behaviour\\main\\freeze\\s0\\6_vs_shared.json.gz",
+   "horizon": 50,
+   "K": 32
+  },
+  {
+   "family": "freeze",
+   "idx": 6,
+   "label": "freezer L3 plaus",
+   "meta": {
+    "group": "freeze L3",
+    "cond": "plaus",
+    "L": 3,
+    "role": "freezer"
+   },
+   "tag": "s0_vs_separate",
+   "path": "results\\rl\\checkpoints\\m46f\\behaviour\\main\\freeze\\s0\\6_vs_separate.json.gz",
+   "horizon": 50,
+   "K": 32
+  },
+  {
+   "family": "freeze",
+   "idx": 7,
+   "label": "breaker L3 plaus",
+   "meta": {
+    "group": "freeze L3",
+    "cond": "plaus",
+    "L": 3,
+    "role": "breaker"
+   },
+   "tag": "s0_vs_shared",
+   "path": "results\\rl\\checkpoints\\m46f\\behaviour\\main\\freeze\\s0\\7_vs_shared.json.gz",
+   "horizon": 50,
+   "K": 32
+  },
+  {
+   "family": "freeze",
+   "idx": 7,
+   "label": "breaker L3 plaus",
+   "meta": {
+    "group": "freeze L3",
+    "cond": "plaus",
+    "L": 3,
+    "role": "breaker"
+   },
+   "tag": "s0_vs_separate",
+   "path": "results\\rl\\checkpoints\\m46f\\behaviour\\main\\freeze\\s0\\7_vs_separate.json.gz",
+   "horizon": 50,
+   "K": 32
+  },
+  {
+   "family": "freeze",
+   "idx": 8,
+   "label": "freezer L3 brk",
+   "meta": {
+    "group": "freeze L3",
+    "cond": "brk",
+    "L": 3,
+    "role": "freezer"
+   },
+   "tag": "s0_vs_shared",
+   "path": "results\\rl\\checkpoints\\m46f\\behaviour\\main\\freeze\\s0\\8_vs_shared.json.gz",
+   "horizon": 50,
+   "K": 32
+  },
+  {
+   "family": "freeze",
+   "idx": 8,
+   "label": "freezer L3 brk",
+   "meta": {
+    "group": "freeze L3",
+    "cond": "brk",
+    "L": 3,
+    "role": "freezer"
+   },
+   "tag": "s0_vs_separate",
+   "path": "results\\rl\\checkpoints\\m46f\\behaviour\\main\\freeze\\s0\\8_vs_separate.json.gz",
+   "horizon": 50,
+   "K": 32
+  },
+  {
+   "family": "freeze",
+   "idx": 9,
+   "label": "breaker L3 brk",
+   "meta": {
+    "group": "freeze L3",
+    "cond": "brk",
+    "L": 3,
+    "role": "breaker"
+   },
+   "tag": "s0_vs_shared",
+   "path": "results\\rl\\checkpoints\\m46f\\behaviour\\main\\freeze\\s0\\9_vs_shared.json.gz",
+   "horizon": 50,
+   "K": 32
+  },
+  {
+   "family": "freeze",
+   "idx": 9,
+   "label": "breaker L3 brk",
+   "meta": {
+    "group": "freeze L3",
+    "cond": "brk",
+    "L": 3,
+    "role": "breaker"
+   },
+   "tag": "s0_vs_separate",
+   "path": "results\\rl\\checkpoints\\m46f\\behaviour\\main\\freeze\\s0\\9_vs_separate.json.gz",
+   "horizon": 50,
+   "K": 32
+  },
+  {
+   "family": "freeze",
+   "idx": 10,
+   "label": "freezer L3 x1.76",
+   "meta": {
+    "group": "freeze L3",
+    "cond": "x1.76",
+    "L": 3,
+    "role": "freezer"
+   },
+   "tag": "s0_vs_shared",
+   "path": "results\\rl\\checkpoints\\m46f\\behaviour\\main\\freeze\\s0\\10_vs_shared.json.gz",
+   "horizon": 50,
+   "K": 32
+  },
+  {
+   "family": "freeze",
+   "idx": 10,
+   "label": "freezer L3 x1.76",
+   "meta": {
+    "group": "freeze L3",
+    "cond": "x1.76",
+    "L": 3,
+    "role": "freezer"
+   },
+   "tag": "s0_vs_separate",
+   "path": "results\\rl\\checkpoints\\m46f\\behaviour\\main\\freeze\\s0\\10_vs_separate.json.gz",
+   "horizon": 50,
+   "K": 32
+  },
+  {
+   "family": "freeze",
+   "idx": 11,
+   "label": "breaker L3 x1.76",
+   "meta": {
+    "group": "freeze L3",
+    "cond": "x1.76",
+    "L": 3,
+    "role": "breaker"
+   },
+   "tag": "s0_vs_shared",
+   "path": "results\\rl\\checkpoints\\m46f\\behaviour\\main\\freeze\\s0\\11_vs_shared.json.gz",
+   "horizon": 50,
+   "K": 32
+  },
+  {
+   "family": "freeze",
+   "idx": 11,
+   "label": "breaker L3 x1.76",
+   "meta": {
+    "group": "freeze L3",
+    "cond": "x1.76",
+    "L": 3,
+    "role": "breaker"
+   },
+   "tag": "s0_vs_separate",
+   "path": "results\\rl\\checkpoints\\m46f\\behaviour\\main\\freeze\\s0\\11_vs_separate.json.gz",
+   "horizon": 50,
+   "K": 32
+  },
+  {
+   "family": "freeze",
+   "idx": 12,
+   "label": "freezer L5 equal",
+   "meta": {
+    "group": "freeze L5",
+    "cond": "equal",
+    "L": 5,
+    "role": "freezer"
+   },
+   "tag": "s0_vs_shared",
+   "path": "results\\rl\\checkpoints\\m46f\\behaviour\\main\\freeze\\s0\\12_vs_shared.json.gz",
+   "horizon": 50,
+   "K": 32
+  },
+  {
+   "family": "freeze",
+   "idx": 12,
+   "label": "freezer L5 equal",
+   "meta": {
+    "group": "freeze L5",
+    "cond": "equal",
+    "L": 5,
+    "role": "freezer"
+   },
+   "tag": "s0_vs_separate",
+   "path": "results\\rl\\checkpoints\\m46f\\behaviour\\main\\freeze\\s0\\12_vs_separate.json.gz",
+   "horizon": 50,
+   "K": 32
+  },
+  {
+   "family": "freeze",
+   "idx": 13,
+   "label": "breaker L5 equal",
+   "meta": {
+    "group": "freeze L5",
+    "cond": "equal",
+    "L": 5,
+    "role": "breaker"
+   },
+   "tag": "s0_vs_shared",
+   "path": "results\\rl\\checkpoints\\m46f\\behaviour\\main\\freeze\\s0\\13_vs_shared.json.gz",
+   "horizon": 50,
+   "K": 32
+  },
+  {
+   "family": "freeze",
+   "idx": 13,
+   "label": "breaker L5 equal",
+   "meta": {
+    "group": "freeze L5",
+    "cond": "equal",
+    "L": 5,
+    "role": "breaker"
+   },
+   "tag": "s0_vs_separate",
+   "path": "results\\rl\\checkpoints\\m46f\\behaviour\\main\\freeze\\s0\\13_vs_separate.json.gz",
+   "horizon": 50,
+   "K": 32
+  },
+  {
+   "family": "freeze",
+   "idx": 14,
+   "label": "freezer L5 hp",
+   "meta": {
+    "group": "freeze L5",
+    "cond": "hp",
+    "L": 5,
+    "role": "freezer"
+   },
+   "tag": "s0_vs_shared",
+   "path": "results\\rl\\checkpoints\\m46f\\behaviour\\main\\freeze\\s0\\14_vs_shared.json.gz",
+   "horizon": 50,
+   "K": 32
+  },
+  {
+   "family": "freeze",
+   "idx": 14,
+   "label": "freezer L5 hp",
+   "meta": {
+    "group": "freeze L5",
+    "cond": "hp",
+    "L": 5,
+    "role": "freezer"
+   },
+   "tag": "s0_vs_separate",
+   "path": "results\\rl\\checkpoints\\m46f\\behaviour\\main\\freeze\\s0\\14_vs_separate.json.gz",
+   "horizon": 50,
+   "K": 32
+  },
+  {
+   "family": "freeze",
+   "idx": 15,
+   "label": "breaker L5 hp",
+   "meta": {
+    "group": "freeze L5",
+    "cond": "hp",
+    "L": 5,
+    "role": "breaker"
+   },
+   "tag": "s0_vs_shared",
+   "path": "results\\rl\\checkpoints\\m46f\\behaviour\\main\\freeze\\s0\\15_vs_shared.json.gz",
+   "horizon": 50,
+   "K": 32
+  },
+  {
+   "family": "freeze",
+   "idx": 15,
+   "label": "breaker L5 hp",
+   "meta": {
+    "group": "freeze L5",
+    "cond": "hp",
+    "L": 5,
+    "role": "breaker"
+   },
+   "tag": "s0_vs_separate",
+   "path": "results\\rl\\checkpoints\\m46f\\behaviour\\main\\freeze\\s0\\15_vs_separate.json.gz",
+   "horizon": 50,
+   "K": 32
+  },
+  {
+   "family": "freeze",
+   "idx": 16,
+   "label": "freezer L5 edge",
+   "meta": {
+    "group": "freeze L5",
+    "cond": "edge",
+    "L": 5,
+    "role": "freezer"
+   },
+   "tag": "s0_vs_shared",
+   "path": "results\\rl\\checkpoints\\m46f\\behaviour\\main\\freeze\\s0\\16_vs_shared.json.gz",
+   "horizon": 50,
+   "K": 32
+  },
+  {
+   "family": "freeze",
+   "idx": 16,
+   "label": "freezer L5 edge",
+   "meta": {
+    "group": "freeze L5",
+    "cond": "edge",
+    "L": 5,
+    "role": "freezer"
+   },
+   "tag": "s0_vs_separate",
+   "path": "results\\rl\\checkpoints\\m46f\\behaviour\\main\\freeze\\s0\\16_vs_separate.json.gz",
+   "horizon": 50,
+   "K": 32
+  },
+  {
+   "family": "freeze",
+   "idx": 17,
+   "label": "breaker L5 edge",
+   "meta": {
+    "group": "freeze L5",
+    "cond": "edge",
+    "L": 5,
+    "role": "breaker"
+   },
+   "tag": "s0_vs_shared",
+   "path": "results\\rl\\checkpoints\\m46f\\behaviour\\main\\freeze\\s0\\17_vs_shared.json.gz",
+   "horizon": 50,
+   "K": 32
+  },
+  {
+   "family": "freeze",
+   "idx": 17,
+   "label": "breaker L5 edge",
+   "meta": {
+    "group": "freeze L5",
+    "cond": "edge",
+    "L": 5,
+    "role": "breaker"
+   },
+   "tag": "s0_vs_separate",
+   "path": "results\\rl\\checkpoints\\m46f\\behaviour\\main\\freeze\\s0\\17_vs_separate.json.gz",
+   "horizon": 50,
+   "K": 32
+  },
+  {
+   "family": "freeze",
+   "idx": 18,
+   "label": "freezer L5 plaus",
+   "meta": {
+    "group": "freeze L5",
+    "cond": "plaus",
+    "L": 5,
+    "role": "freezer"
+   },
+   "tag": "s0_vs_shared",
+   "path": "results\\rl\\checkpoints\\m46f\\behaviour\\main\\freeze\\s0\\18_vs_shared.json.gz",
+   "horizon": 50,
+   "K": 32
+  },
+  {
+   "family": "freeze",
+   "idx": 18,
+   "label": "freezer L5 plaus",
+   "meta": {
+    "group": "freeze L5",
+    "cond": "plaus",
+    "L": 5,
+    "role": "freezer"
+   },
+   "tag": "s0_vs_separate",
+   "path": "results\\rl\\checkpoints\\m46f\\behaviour\\main\\freeze\\s0\\18_vs_separate.json.gz",
+   "horizon": 50,
+   "K": 32
+  },
+  {
+   "family": "freeze",
+   "idx": 19,
+   "label": "breaker L5 plaus",
+   "meta": {
+    "group": "freeze L5",
+    "cond": "plaus",
+    "L": 5,
+    "role": "breaker"
+   },
+   "tag": "s0_vs_shared",
+   "path": "results\\rl\\checkpoints\\m46f\\behaviour\\main\\freeze\\s0\\19_vs_shared.json.gz",
+   "horizon": 50,
+   "K": 32
+  },
+  {
+   "family": "freeze",
+   "idx": 19,
+   "label": "breaker L5 plaus",
+   "meta": {
+    "group": "freeze L5",
+    "cond": "plaus",
+    "L": 5,
+    "role": "breaker"
+   },
+   "tag": "s0_vs_separate",
+   "path": "results\\rl\\checkpoints\\m46f\\behaviour\\main\\freeze\\s0\\19_vs_separate.json.gz",
+   "horizon": 50,
+   "K": 32
+  },
+  {
+   "family": "freeze",
+   "idx": 20,
+   "label": "freezer L5 brk",
+   "meta": {
+    "group": "freeze L5",
+    "cond": "brk",
+    "L": 5,
+    "role": "freezer"
+   },
+   "tag": "s0_vs_shared",
+   "path": "results\\rl\\checkpoints\\m46f\\behaviour\\main\\freeze\\s0\\20_vs_shared.json.gz",
+   "horizon": 50,
+   "K": 32
+  },
+  {
+   "family": "freeze",
+   "idx": 20,
+   "label": "freezer L5 brk",
+   "meta": {
+    "group": "freeze L5",
+    "cond": "brk",
+    "L": 5,
+    "role": "freezer"
+   },
+   "tag": "s0_vs_separate",
+   "path": "results\\rl\\checkpoints\\m46f\\behaviour\\main\\freeze\\s0\\20_vs_separate.json.gz",
+   "horizon": 50,
+   "K": 32
+  },
+  {
+   "family": "freeze",
+   "idx": 21,
+   "label": "breaker L5 brk",
+   "meta": {
+    "group": "freeze L5",
+    "cond": "brk",
+    "L": 5,
+    "role": "breaker"
+   },
+   "tag": "s0_vs_shared",
+   "path": "results\\rl\\checkpoints\\m46f\\behaviour\\main\\freeze\\s0\\21_vs_shared.json.gz",
+   "horizon": 50,
+   "K": 32
+  },
+  {
+   "family": "freeze",
+   "idx": 21,
+   "label": "breaker L5 brk",
+   "meta": {
+    "group": "freeze L5",
+    "cond": "brk",
+    "L": 5,
+    "role": "breaker"
+   },
+   "tag": "s0_vs_separate",
+   "path": "results\\rl\\checkpoints\\m46f\\behaviour\\main\\freeze\\s0\\21_vs_separate.json.gz",
+   "horizon": 50,
+   "K": 32
+  },
+  {
+   "family": "freeze",
+   "idx": 22,
+   "label": "freezer L5 x1.76",
+   "meta": {
+    "group": "freeze L5",
+    "cond": "x1.76",
+    "L": 5,
+    "role": "freezer"
+   },
+   "tag": "s0_vs_shared",
+   "path": "results\\rl\\checkpoints\\m46f\\behaviour\\main\\freeze\\s0\\22_vs_shared.json.gz",
+   "horizon": 50,
+   "K": 32
+  },
+  {
+   "family": "freeze",
+   "idx": 22,
+   "label": "freezer L5 x1.76",
+   "meta": {
+    "group": "freeze L5",
+    "cond": "x1.76",
+    "L": 5,
+    "role": "freezer"
+   },
+   "tag": "s0_vs_separate",
+   "path": "results\\rl\\checkpoints\\m46f\\behaviour\\main\\freeze\\s0\\22_vs_separate.json.gz",
+   "horizon": 50,
+   "K": 32
+  },
+  {
+   "family": "freeze",
+   "idx": 23,
+   "label": "breaker L5 x1.76",
+   "meta": {
+    "group": "freeze L5",
+    "cond": "x1.76",
+    "L": 5,
+    "role": "breaker"
+   },
+   "tag": "s0_vs_shared",
+   "path": "results\\rl\\checkpoints\\m46f\\behaviour\\main\\freeze\\s0\\23_vs_shared.json.gz",
+   "horizon": 50,
+   "K": 32
+  },
+  {
+   "family": "freeze",
+   "idx": 23,
+   "label": "breaker L5 x1.76",
+   "meta": {
+    "group": "freeze L5",
+    "cond": "x1.76",
+    "L": 5,
+    "role": "breaker"
+   },
+   "tag": "s0_vs_separate",
+   "path": "results\\rl\\checkpoints\\m46f\\behaviour\\main\\freeze\\s0\\23_vs_separate.json.gz",
+   "horizon": 50,
+   "K": 32
+  },
+  {
+   "family": "freeze",
+   "idx": 24,
+   "label": "freezer L8 equal",
+   "meta": {
+    "group": "freeze L8",
+    "cond": "equal",
+    "L": 8,
+    "role": "freezer"
+   },
+   "tag": "s0_vs_shared",
+   "path": "results\\rl\\checkpoints\\m46f\\behaviour\\main\\freeze\\s0\\24_vs_shared.json.gz",
+   "horizon": 50,
+   "K": 32
+  },
+  {
+   "family": "freeze",
+   "idx": 24,
+   "label": "freezer L8 equal",
+   "meta": {
+    "group": "freeze L8",
+    "cond": "equal",
+    "L": 8,
+    "role": "freezer"
+   },
+   "tag": "s0_vs_separate",
+   "path": "results\\rl\\checkpoints\\m46f\\behaviour\\main\\freeze\\s0\\24_vs_separate.json.gz",
+   "horizon": 50,
+   "K": 32
+  },
+  {
+   "family": "freeze",
+   "idx": 25,
+   "label": "breaker L8 equal",
+   "meta": {
+    "group": "freeze L8",
+    "cond": "equal",
+    "L": 8,
+    "role": "breaker"
+   },
+   "tag": "s0_vs_shared",
+   "path": "results\\rl\\checkpoints\\m46f\\behaviour\\main\\freeze\\s0\\25_vs_shared.json.gz",
+   "horizon": 50,
+   "K": 32
+  },
+  {
+   "family": "freeze",
+   "idx": 25,
+   "label": "breaker L8 equal",
+   "meta": {
+    "group": "freeze L8",
+    "cond": "equal",
+    "L": 8,
+    "role": "breaker"
+   },
+   "tag": "s0_vs_separate",
+   "path": "results\\rl\\checkpoints\\m46f\\behaviour\\main\\freeze\\s0\\25_vs_separate.json.gz",
+   "horizon": 50,
+   "K": 32
+  },
+  {
+   "family": "freeze",
+   "idx": 26,
+   "label": "freezer L8 hp",
+   "meta": {
+    "group": "freeze L8",
+    "cond": "hp",
+    "L": 8,
+    "role": "freezer"
+   },
+   "tag": "s0_vs_shared",
+   "path": "results\\rl\\checkpoints\\m46f\\behaviour\\main\\freeze\\s0\\26_vs_shared.json.gz",
+   "horizon": 50,
+   "K": 32
+  },
+  {
+   "family": "freeze",
+   "idx": 26,
+   "label": "freezer L8 hp",
+   "meta": {
+    "group": "freeze L8",
+    "cond": "hp",
+    "L": 8,
+    "role": "freezer"
+   },
+   "tag": "s0_vs_separate",
+   "path": "results\\rl\\checkpoints\\m46f\\behaviour\\main\\freeze\\s0\\26_vs_separate.json.gz",
+   "horizon": 50,
+   "K": 32
+  },
+  {
+   "family": "freeze",
+   "idx": 27,
+   "label": "breaker L8 hp",
+   "meta": {
+    "group": "freeze L8",
+    "cond": "hp",
+    "L": 8,
+    "role": "breaker"
+   },
+   "tag": "s0_vs_shared",
+   "path": "results\\rl\\checkpoints\\m46f\\behaviour\\main\\freeze\\s0\\27_vs_shared.json.gz",
+   "horizon": 50,
+   "K": 32
+  },
+  {
+   "family": "freeze",
+   "idx": 27,
+   "label": "breaker L8 hp",
+   "meta": {
+    "group": "freeze L8",
+    "cond": "hp",
+    "L": 8,
+    "role": "breaker"
+   },
+   "tag": "s0_vs_separate",
+   "path": "results\\rl\\checkpoints\\m46f\\behaviour\\main\\freeze\\s0\\27_vs_separate.json.gz",
+   "horizon": 50,
+   "K": 32
+  },
+  {
+   "family": "freeze",
+   "idx": 28,
+   "label": "freezer L8 edge",
+   "meta": {
+    "group": "freeze L8",
+    "cond": "edge",
+    "L": 8,
+    "role": "freezer"
+   },
+   "tag": "s0_vs_shared",
+   "path": "results\\rl\\checkpoints\\m46f\\behaviour\\main\\freeze\\s0\\28_vs_shared.json.gz",
+   "horizon": 50,
+   "K": 32
+  },
+  {
+   "family": "freeze",
+   "idx": 28,
+   "label": "freezer L8 edge",
+   "meta": {
+    "group": "freeze L8",
+    "cond": "edge",
+    "L": 8,
+    "role": "freezer"
+   },
+   "tag": "s0_vs_separate",
+   "path": "results\\rl\\checkpoints\\m46f\\behaviour\\main\\freeze\\s0\\28_vs_separate.json.gz",
+   "horizon": 50,
+   "K": 32
+  },
+  {
+   "family": "freeze",
+   "idx": 29,
+   "label": "breaker L8 edge",
+   "meta": {
+    "group": "freeze L8",
+    "cond": "edge",
+    "L": 8,
+    "role": "breaker"
+   },
+   "tag": "s0_vs_shared",
+   "path": "results\\rl\\checkpoints\\m46f\\behaviour\\main\\freeze\\s0\\29_vs_shared.json.gz",
+   "horizon": 50,
+   "K": 32
+  },
+  {
+   "family": "freeze",
+   "idx": 29,
+   "label": "breaker L8 edge",
+   "meta": {
+    "group": "freeze L8",
+    "cond": "edge",
+    "L": 8,
+    "role": "breaker"
+   },
+   "tag": "s0_vs_separate",
+   "path": "results\\rl\\checkpoints\\m46f\\behaviour\\main\\freeze\\s0\\29_vs_separate.json.gz",
+   "horizon": 50,
+   "K": 32
+  },
+  {
+   "family": "freeze",
+   "idx": 30,
+   "label": "freezer L8 plaus",
+   "meta": {
+    "group": "freeze L8",
+    "cond": "plaus",
+    "L": 8,
+    "role": "freezer"
+   },
+   "tag": "s0_vs_shared",
+   "path": "results\\rl\\checkpoints\\m46f\\behaviour\\main\\freeze\\s0\\30_vs_shared.json.gz",
+   "horizon": 50,
+   "K": 32
+  },
+  {
+   "family": "freeze",
+   "idx": 30,
+   "label": "freezer L8 plaus",
+   "meta": {
+    "group": "freeze L8",
+    "cond": "plaus",
+    "L": 8,
+    "role": "freezer"
+   },
+   "tag": "s0_vs_separate",
+   "path": "results\\rl\\checkpoints\\m46f\\behaviour\\main\\freeze\\s0\\30_vs_separate.json.gz",
+   "horizon": 50,
+   "K": 32
+  },
+  {
+   "family": "freeze",
+   "idx": 31,
+   "label": "breaker L8 plaus",
+   "meta": {
+    "group": "freeze L8",
+    "cond": "plaus",
+    "L": 8,
+    "role": "breaker"
+   },
+   "tag": "s0_vs_shared",
+   "path": "results\\rl\\checkpoints\\m46f\\behaviour\\main\\freeze\\s0\\31_vs_shared.json.gz",
+   "horizon": 50,
+   "K": 32
+  },
+  {
+   "family": "freeze",
+   "idx": 31,
+   "label": "breaker L8 plaus",
+   "meta": {
+    "group": "freeze L8",
+    "cond": "plaus",
+    "L": 8,
+    "role": "breaker"
+   },
+   "tag": "s0_vs_separate",
+   "path": "results\\rl\\checkpoints\\m46f\\behaviour\\main\\freeze\\s0\\31_vs_separate.json.gz",
+   "horizon": 50,
+   "K": 32
+  },
+  {
+   "family": "freeze",
+   "idx": 32,
+   "label": "freezer L8 brk",
+   "meta": {
+    "group": "freeze L8",
+    "cond": "brk",
+    "L": 8,
+    "role": "freezer"
+   },
+   "tag": "s0_vs_shared",
+   "path": "results\\rl\\checkpoints\\m46f\\behaviour\\main\\freeze\\s0\\32_vs_shared.json.gz",
+   "horizon": 50,
+   "K": 32
+  },
+  {
+   "family": "freeze",
+   "idx": 32,
+   "label": "freezer L8 brk",
+   "meta": {
+    "group": "freeze L8",
+    "cond": "brk",
+    "L": 8,
+    "role": "freezer"
+   },
+   "tag": "s0_vs_separate",
+   "path": "results\\rl\\checkpoints\\m46f\\behaviour\\main\\freeze\\s0\\32_vs_separate.json.gz",
+   "horizon": 50,
+   "K": 32
+  },
+  {
+   "family": "freeze",
+   "idx": 33,
+   "label": "breaker L8 brk",
+   "meta": {
+    "group": "freeze L8",
+    "cond": "brk",
+    "L": 8,
+    "role": "breaker"
+   },
+   "tag": "s0_vs_shared",
+   "path": "results\\rl\\checkpoints\\m46f\\behaviour\\main\\freeze\\s0\\33_vs_shared.json.gz",
+   "horizon": 50,
+   "K": 32
+  },
+  {
+   "family": "freeze",
+   "idx": 33,
+   "label": "breaker L8 brk",
+   "meta": {
+    "group": "freeze L8",
+    "cond": "brk",
+    "L": 8,
+    "role": "breaker"
+   },
+   "tag": "s0_vs_separate",
+   "path": "results\\rl\\checkpoints\\m46f\\behaviour\\main\\freeze\\s0\\33_vs_separate.json.gz",
+   "horizon": 50,
+   "K": 32
+  },
+  {
+   "family": "freeze",
+   "idx": 34,
+   "label": "freezer L8 x1.76",
+   "meta": {
+    "group": "freeze L8",
+    "cond": "x1.76",
+    "L": 8,
+    "role": "freezer"
+   },
+   "tag": "s0_vs_shared",
+   "path": "results\\rl\\checkpoints\\m46f\\behaviour\\main\\freeze\\s0\\34_vs_shared.json.gz",
+   "horizon": 50,
+   "K": 32
+  },
+  {
+   "family": "freeze",
+   "idx": 34,
+   "label": "freezer L8 x1.76",
+   "meta": {
+    "group": "freeze L8",
+    "cond": "x1.76",
+    "L": 8,
+    "role": "freezer"
+   },
+   "tag": "s0_vs_separate",
+   "path": "results\\rl\\checkpoints\\m46f\\behaviour\\main\\freeze\\s0\\34_vs_separate.json.gz",
+   "horizon": 50,
+   "K": 32
+  },
+  {
+   "family": "freeze",
+   "idx": 35,
+   "label": "breaker L8 x1.76",
+   "meta": {
+    "group": "freeze L8",
+    "cond": "x1.76",
+    "L": 8,
+    "role": "breaker"
+   },
+   "tag": "s0_vs_shared",
+   "path": "results\\rl\\checkpoints\\m46f\\behaviour\\main\\freeze\\s0\\35_vs_shared.json.gz",
+   "horizon": 50,
+   "K": 32
+  },
+  {
+   "family": "freeze",
+   "idx": 35,
+   "label": "breaker L8 x1.76",
+   "meta": {
+    "group": "freeze L8",
+    "cond": "x1.76",
+    "L": 8,
+    "role": "breaker"
+   },
+   "tag": "s0_vs_separate",
+   "path": "results\\rl\\checkpoints\\m46f\\behaviour\\main\\freeze\\s0\\35_vs_separate.json.gz",
+   "horizon": 50,
+   "K": 32
+  },
+  {
+   "family": "freeze",
+   "idx": 0,
+   "label": "freezer L3 equal",
+   "meta": {
+    "group": "freeze L3",
+    "cond": "equal",
+    "L": 3,
+    "role": "freezer"
+   },
+   "tag": "s1_vs_shared",
+   "path": "results\\rl\\checkpoints\\m46f\\behaviour\\main\\freeze\\s1\\0_vs_shared.json.gz",
+   "horizon": 50,
+   "K": 32
+  },
+  {
+   "family": "freeze",
+   "idx": 0,
+   "label": "freezer L3 equal",
+   "meta": {
+    "group": "freeze L3",
+    "cond": "equal",
+    "L": 3,
+    "role": "freezer"
+   },
+   "tag": "s1_vs_separate",
+   "path": "results\\rl\\checkpoints\\m46f\\behaviour\\main\\freeze\\s1\\0_vs_separate.json.gz",
+   "horizon": 50,
+   "K": 32
+  },
+  {
+   "family": "freeze",
+   "idx": 1,
+   "label": "breaker L3 equal",
+   "meta": {
+    "group": "freeze L3",
+    "cond": "equal",
+    "L": 3,
+    "role": "breaker"
+   },
+   "tag": "s1_vs_shared",
+   "path": "results\\rl\\checkpoints\\m46f\\behaviour\\main\\freeze\\s1\\1_vs_shared.json.gz",
+   "horizon": 50,
+   "K": 32
+  },
+  {
+   "family": "freeze",
+   "idx": 1,
+   "label": "breaker L3 equal",
+   "meta": {
+    "group": "freeze L3",
+    "cond": "equal",
+    "L": 3,
+    "role": "breaker"
+   },
+   "tag": "s1_vs_separate",
+   "path": "results\\rl\\checkpoints\\m46f\\behaviour\\main\\freeze\\s1\\1_vs_separate.json.gz",
+   "horizon": 50,
+   "K": 32
+  },
+  {
+   "family": "freeze",
+   "idx": 2,
+   "label": "freezer L3 hp",
+   "meta": {
+    "group": "freeze L3",
+    "cond": "hp",
+    "L": 3,
+    "role": "freezer"
+   },
+   "tag": "s1_vs_shared",
+   "path": "results\\rl\\checkpoints\\m46f\\behaviour\\main\\freeze\\s1\\2_vs_shared.json.gz",
+   "horizon": 50,
+   "K": 32
+  },
+  {
+   "family": "freeze",
+   "idx": 2,
+   "label": "freezer L3 hp",
+   "meta": {
+    "group": "freeze L3",
+    "cond": "hp",
+    "L": 3,
+    "role": "freezer"
+   },
+   "tag": "s1_vs_separate",
+   "path": "results\\rl\\checkpoints\\m46f\\behaviour\\main\\freeze\\s1\\2_vs_separate.json.gz",
+   "horizon": 50,
+   "K": 32
+  },
+  {
+   "family": "freeze",
+   "idx": 3,
+   "label": "breaker L3 hp",
+   "meta": {
+    "group": "freeze L3",
+    "cond": "hp",
+    "L": 3,
+    "role": "breaker"
+   },
+   "tag": "s1_vs_shared",
+   "path": "results\\rl\\checkpoints\\m46f\\behaviour\\main\\freeze\\s1\\3_vs_shared.json.gz",
+   "horizon": 50,
+   "K": 32
+  },
+  {
+   "family": "freeze",
+   "idx": 3,
+   "label": "breaker L3 hp",
+   "meta": {
+    "group": "freeze L3",
+    "cond": "hp",
+    "L": 3,
+    "role": "breaker"
+   },
+   "tag": "s1_vs_separate",
+   "path": "results\\rl\\checkpoints\\m46f\\behaviour\\main\\freeze\\s1\\3_vs_separate.json.gz",
+   "horizon": 50,
+   "K": 32
+  },
+  {
+   "family": "freeze",
+   "idx": 4,
+   "label": "freezer L3 edge",
+   "meta": {
+    "group": "freeze L3",
+    "cond": "edge",
+    "L": 3,
+    "role": "freezer"
+   },
+   "tag": "s1_vs_shared",
+   "path": "results\\rl\\checkpoints\\m46f\\behaviour\\main\\freeze\\s1\\4_vs_shared.json.gz",
+   "horizon": 50,
+   "K": 32
+  },
+  {
+   "family": "freeze",
+   "idx": 4,
+   "label": "freezer L3 edge",
+   "meta": {
+    "group": "freeze L3",
+    "cond": "edge",
+    "L": 3,
+    "role": "freezer"
+   },
+   "tag": "s1_vs_separate",
+   "path": "results\\rl\\checkpoints\\m46f\\behaviour\\main\\freeze\\s1\\4_vs_separate.json.gz",
+   "horizon": 50,
+   "K": 32
+  },
+  {
+   "family": "freeze",
+   "idx": 5,
+   "label": "breaker L3 edge",
+   "meta": {
+    "group": "freeze L3",
+    "cond": "edge",
+    "L": 3,
+    "role": "breaker"
+   },
+   "tag": "s1_vs_shared",
+   "path": "results\\rl\\checkpoints\\m46f\\behaviour\\main\\freeze\\s1\\5_vs_shared.json.gz",
+   "horizon": 50,
+   "K": 32
+  },
+  {
+   "family": "freeze",
+   "idx": 5,
+   "label": "breaker L3 edge",
+   "meta": {
+    "group": "freeze L3",
+    "cond": "edge",
+    "L": 3,
+    "role": "breaker"
+   },
+   "tag": "s1_vs_separate",
+   "path": "results\\rl\\checkpoints\\m46f\\behaviour\\main\\freeze\\s1\\5_vs_separate.json.gz",
+   "horizon": 50,
+   "K": 32
+  },
+  {
+   "family": "freeze",
+   "idx": 6,
+   "label": "freezer L3 plaus",
+   "meta": {
+    "group": "freeze L3",
+    "cond": "plaus",
+    "L": 3,
+    "role": "freezer"
+   },
+   "tag": "s1_vs_shared",
+   "path": "results\\rl\\checkpoints\\m46f\\behaviour\\main\\freeze\\s1\\6_vs_shared.json.gz",
+   "horizon": 50,
+   "K": 32
+  },
+  {
+   "family": "freeze",
+   "idx": 6,
+   "label": "freezer L3 plaus",
+   "meta": {
+    "group": "freeze L3",
+    "cond": "plaus",
+    "L": 3,
+    "role": "freezer"
+   },
+   "tag": "s1_vs_separate",
+   "path": "results\\rl\\checkpoints\\m46f\\behaviour\\main\\freeze\\s1\\6_vs_separate.json.gz",
+   "horizon": 50,
+   "K": 32
+  },
+  {
+   "family": "freeze",
+   "idx": 7,
+   "label": "breaker L3 plaus",
+   "meta": {
+    "group": "freeze L3",
+    "cond": "plaus",
+    "L": 3,
+    "role": "breaker"
+   },
+   "tag": "s1_vs_shared",
+   "path": "results\\rl\\checkpoints\\m46f\\behaviour\\main\\freeze\\s1\\7_vs_shared.json.gz",
+   "horizon": 50,
+   "K": 32
+  },
+  {
+   "family": "freeze",
+   "idx": 7,
+   "label": "breaker L3 plaus",
+   "meta": {
+    "group": "freeze L3",
+    "cond": "plaus",
+    "L": 3,
+    "role": "breaker"
+   },
+   "tag": "s1_vs_separate",
+   "path": "results\\rl\\checkpoints\\m46f\\behaviour\\main\\freeze\\s1\\7_vs_separate.json.gz",
+   "horizon": 50,
+   "K": 32
+  },
+  {
+   "family": "freeze",
+   "idx": 8,
+   "label": "freezer L3 brk",
+   "meta": {
+    "group": "freeze L3",
+    "cond": "brk",
+    "L": 3,
+    "role": "freezer"
+   },
+   "tag": "s1_vs_shared",
+   "path": "results\\rl\\checkpoints\\m46f\\behaviour\\main\\freeze\\s1\\8_vs_shared.json.gz",
+   "horizon": 50,
+   "K": 32
+  },
+  {
+   "family": "freeze",
+   "idx": 8,
+   "label": "freezer L3 brk",
+   "meta": {
+    "group": "freeze L3",
+    "cond": "brk",
+    "L": 3,
+    "role": "freezer"
+   },
+   "tag": "s1_vs_separate",
+   "path": "results\\rl\\checkpoints\\m46f\\behaviour\\main\\freeze\\s1\\8_vs_separate.json.gz",
+   "horizon": 50,
+   "K": 32
+  },
+  {
+   "family": "freeze",
+   "idx": 9,
+   "label": "breaker L3 brk",
+   "meta": {
+    "group": "freeze L3",
+    "cond": "brk",
+    "L": 3,
+    "role": "breaker"
+   },
+   "tag": "s1_vs_shared",
+   "path": "results\\rl\\checkpoints\\m46f\\behaviour\\main\\freeze\\s1\\9_vs_shared.json.gz",
+   "horizon": 50,
+   "K": 32
+  },
+  {
+   "family": "freeze",
+   "idx": 9,
+   "label": "breaker L3 brk",
+   "meta": {
+    "group": "freeze L3",
+    "cond": "brk",
+    "L": 3,
+    "role": "breaker"
+   },
+   "tag": "s1_vs_separate",
+   "path": "results\\rl\\checkpoints\\m46f\\behaviour\\main\\freeze\\s1\\9_vs_separate.json.gz",
+   "horizon": 50,
+   "K": 32
+  },
+  {
+   "family": "freeze",
+   "idx": 10,
+   "label": "freezer L3 x1.76",
+   "meta": {
+    "group": "freeze L3",
+    "cond": "x1.76",
+    "L": 3,
+    "role": "freezer"
+   },
+   "tag": "s1_vs_shared",
+   "path": "results\\rl\\checkpoints\\m46f\\behaviour\\main\\freeze\\s1\\10_vs_shared.json.gz",
+   "horizon": 50,
+   "K": 32
+  },
+  {
+   "family": "freeze",
+   "idx": 10,
+   "label": "freezer L3 x1.76",
+   "meta": {
+    "group": "freeze L3",
+    "cond": "x1.76",
+    "L": 3,
+    "role": "freezer"
+   },
+   "tag": "s1_vs_separate",
+   "path": "results\\rl\\checkpoints\\m46f\\behaviour\\main\\freeze\\s1\\10_vs_separate.json.gz",
+   "horizon": 50,
+   "K": 32
+  },
+  {
+   "family": "freeze",
+   "idx": 11,
+   "label": "breaker L3 x1.76",
+   "meta": {
+    "group": "freeze L3",
+    "cond": "x1.76",
+    "L": 3,
+    "role": "breaker"
+   },
+   "tag": "s1_vs_shared",
+   "path": "results\\rl\\checkpoints\\m46f\\behaviour\\main\\freeze\\s1\\11_vs_shared.json.gz",
+   "horizon": 50,
+   "K": 32
+  },
+  {
+   "family": "freeze",
+   "idx": 11,
+   "label": "breaker L3 x1.76",
+   "meta": {
+    "group": "freeze L3",
+    "cond": "x1.76",
+    "L": 3,
+    "role": "breaker"
+   },
+   "tag": "s1_vs_separate",
+   "path": "results\\rl\\checkpoints\\m46f\\behaviour\\main\\freeze\\s1\\11_vs_separate.json.gz",
+   "horizon": 50,
+   "K": 32
+  },
+  {
+   "family": "freeze",
+   "idx": 12,
+   "label": "freezer L5 equal",
+   "meta": {
+    "group": "freeze L5",
+    "cond": "equal",
+    "L": 5,
+    "role": "freezer"
+   },
+   "tag": "s1_vs_shared",
+   "path": "results\\rl\\checkpoints\\m46f\\behaviour\\main\\freeze\\s1\\12_vs_shared.json.gz",
+   "horizon": 50,
+   "K": 32
+  },
+  {
+   "family": "freeze",
+   "idx": 12,
+   "label": "freezer L5 equal",
+   "meta": {
+    "group": "freeze L5",
+    "cond": "equal",
+    "L": 5,
+    "role": "freezer"
+   },
+   "tag": "s1_vs_separate",
+   "path": "results\\rl\\checkpoints\\m46f\\behaviour\\main\\freeze\\s1\\12_vs_separate.json.gz",
+   "horizon": 50,
+   "K": 32
+  },
+  {
+   "family": "freeze",
+   "idx": 13,
+   "label": "breaker L5 equal",
+   "meta": {
+    "group": "freeze L5",
+    "cond": "equal",
+    "L": 5,
+    "role": "breaker"
+   },
+   "tag": "s1_vs_shared",
+   "path": "results\\rl\\checkpoints\\m46f\\behaviour\\main\\freeze\\s1\\13_vs_shared.json.gz",
+   "horizon": 50,
+   "K": 32
+  },
+  {
+   "family": "freeze",
+   "idx": 13,
+   "label": "breaker L5 equal",
+   "meta": {
+    "group": "freeze L5",
+    "cond": "equal",
+    "L": 5,
+    "role": "breaker"
+   },
+   "tag": "s1_vs_separate",
+   "path": "results\\rl\\checkpoints\\m46f\\behaviour\\main\\freeze\\s1\\13_vs_separate.json.gz",
+   "horizon": 50,
+   "K": 32
+  },
+  {
+   "family": "freeze",
+   "idx": 14,
+   "label": "freezer L5 hp",
+   "meta": {
+    "group": "freeze L5",
+    "cond": "hp",
+    "L": 5,
+    "role": "freezer"
+   },
+   "tag": "s1_vs_shared",
+   "path": "results\\rl\\checkpoints\\m46f\\behaviour\\main\\freeze\\s1\\14_vs_shared.json.gz",
+   "horizon": 50,
+   "K": 32
+  },
+  {
+   "family": "freeze",
+   "idx": 14,
+   "label": "freezer L5 hp",
+   "meta": {
+    "group": "freeze L5",
+    "cond": "hp",
+    "L": 5,
+    "role": "freezer"
+   },
+   "tag": "s1_vs_separate",
+   "path": "results\\rl\\checkpoints\\m46f\\behaviour\\main\\freeze\\s1\\14_vs_separate.json.gz",
+   "horizon": 50,
+   "K": 32
+  },
+  {
+   "family": "freeze",
+   "idx": 15,
+   "label": "breaker L5 hp",
+   "meta": {
+    "group": "freeze L5",
+    "cond": "hp",
+    "L": 5,
+    "role": "breaker"
+   },
+   "tag": "s1_vs_shared",
+   "path": "results\\rl\\checkpoints\\m46f\\behaviour\\main\\freeze\\s1\\15_vs_shared.json.gz",
+   "horizon": 50,
+   "K": 32
+  },
+  {
+   "family": "freeze",
+   "idx": 15,
+   "label": "breaker L5 hp",
+   "meta": {
+    "group": "freeze L5",
+    "cond": "hp",
+    "L": 5,
+    "role": "breaker"
+   },
+   "tag": "s1_vs_separate",
+   "path": "results\\rl\\checkpoints\\m46f\\behaviour\\main\\freeze\\s1\\15_vs_separate.json.gz",
+   "horizon": 50,
+   "K": 32
+  },
+  {
+   "family": "freeze",
+   "idx": 16,
+   "label": "freezer L5 edge",
+   "meta": {
+    "group": "freeze L5",
+    "cond": "edge",
+    "L": 5,
+    "role": "freezer"
+   },
+   "tag": "s1_vs_shared",
+   "path": "results\\rl\\checkpoints\\m46f\\behaviour\\main\\freeze\\s1\\16_vs_shared.json.gz",
+   "horizon": 50,
+   "K": 32
+  },
+  {
+   "family": "freeze",
+   "idx": 16,
+   "label": "freezer L5 edge",
+   "meta": {
+    "group": "freeze L5",
+    "cond": "edge",
+    "L": 5,
+    "role": "freezer"
+   },
+   "tag": "s1_vs_separate",
+   "path": "results\\rl\\checkpoints\\m46f\\behaviour\\main\\freeze\\s1\\16_vs_separate.json.gz",
+   "horizon": 50,
+   "K": 32
+  },
+  {
+   "family": "freeze",
+   "idx": 17,
+   "label": "breaker L5 edge",
+   "meta": {
+    "group": "freeze L5",
+    "cond": "edge",
+    "L": 5,
+    "role": "breaker"
+   },
+   "tag": "s1_vs_shared",
+   "path": "results\\rl\\checkpoints\\m46f\\behaviour\\main\\freeze\\s1\\17_vs_shared.json.gz",
+   "horizon": 50,
+   "K": 32
+  },
+  {
+   "family": "freeze",
+   "idx": 17,
+   "label": "breaker L5 edge",
+   "meta": {
+    "group": "freeze L5",
+    "cond": "edge",
+    "L": 5,
+    "role": "breaker"
+   },
+   "tag": "s1_vs_separate",
+   "path": "results\\rl\\checkpoints\\m46f\\behaviour\\main\\freeze\\s1\\17_vs_separate.json.gz",
+   "horizon": 50,
+   "K": 32
+  },
+  {
+   "family": "freeze",
+   "idx": 18,
+   "label": "freezer L5 plaus",
+   "meta": {
+    "group": "freeze L5",
+    "cond": "plaus",
+    "L": 5,
+    "role": "freezer"
+   },
+   "tag": "s1_vs_shared",
+   "path": "results\\rl\\checkpoints\\m46f\\behaviour\\main\\freeze\\s1\\18_vs_shared.json.gz",
+   "horizon": 50,
+   "K": 32
+  },
+  {
+   "family": "freeze",
+   "idx": 18,
+   "label": "freezer L5 plaus",
+   "meta": {
+    "group": "freeze L5",
+    "cond": "plaus",
+    "L": 5,
+    "role": "freezer"
+   },
+   "tag": "s1_vs_separate",
+   "path": "results\\rl\\checkpoints\\m46f\\behaviour\\main\\freeze\\s1\\18_vs_separate.json.gz",
+   "horizon": 50,
+   "K": 32
+  },
+  {
+   "family": "freeze",
+   "idx": 19,
+   "label": "breaker L5 plaus",
+   "meta": {
+    "group": "freeze L5",
+    "cond": "plaus",
+    "L": 5,
+    "role": "breaker"
+   },
+   "tag": "s1_vs_shared",
+   "path": "results\\rl\\checkpoints\\m46f\\behaviour\\main\\freeze\\s1\\19_vs_shared.json.gz",
+   "horizon": 50,
+   "K": 32
+  },
+  {
+   "family": "freeze",
+   "idx": 19,
+   "label": "breaker L5 plaus",
+   "meta": {
+    "group": "freeze L5",
+    "cond": "plaus",
+    "L": 5,
+    "role": "breaker"
+   },
+   "tag": "s1_vs_separate",
+   "path": "results\\rl\\checkpoints\\m46f\\behaviour\\main\\freeze\\s1\\19_vs_separate.json.gz",
+   "horizon": 50,
+   "K": 32
+  },
+  {
+   "family": "freeze",
+   "idx": 20,
+   "label": "freezer L5 brk",
+   "meta": {
+    "group": "freeze L5",
+    "cond": "brk",
+    "L": 5,
+    "role": "freezer"
+   },
+   "tag": "s1_vs_shared",
+   "path": "results\\rl\\checkpoints\\m46f\\behaviour\\main\\freeze\\s1\\20_vs_shared.json.gz",
+   "horizon": 50,
+   "K": 32
+  },
+  {
+   "family": "freeze",
+   "idx": 20,
+   "label": "freezer L5 brk",
+   "meta": {
+    "group": "freeze L5",
+    "cond": "brk",
+    "L": 5,
+    "role": "freezer"
+   },
+   "tag": "s1_vs_separate",
+   "path": "results\\rl\\checkpoints\\m46f\\behaviour\\main\\freeze\\s1\\20_vs_separate.json.gz",
+   "horizon": 50,
+   "K": 32
+  },
+  {
+   "family": "freeze",
+   "idx": 21,
+   "label": "breaker L5 brk",
+   "meta": {
+    "group": "freeze L5",
+    "cond": "brk",
+    "L": 5,
+    "role": "breaker"
+   },
+   "tag": "s1_vs_shared",
+   "path": "results\\rl\\checkpoints\\m46f\\behaviour\\main\\freeze\\s1\\21_vs_shared.json.gz",
+   "horizon": 50,
+   "K": 32
+  },
+  {
+   "family": "freeze",
+   "idx": 21,
+   "label": "breaker L5 brk",
+   "meta": {
+    "group": "freeze L5",
+    "cond": "brk",
+    "L": 5,
+    "role": "breaker"
+   },
+   "tag": "s1_vs_separate",
+   "path": "results\\rl\\checkpoints\\m46f\\behaviour\\main\\freeze\\s1\\21_vs_separate.json.gz",
+   "horizon": 50,
+   "K": 32
+  },
+  {
+   "family": "freeze",
+   "idx": 22,
+   "label": "freezer L5 x1.76",
+   "meta": {
+    "group": "freeze L5",
+    "cond": "x1.76",
+    "L": 5,
+    "role": "freezer"
+   },
+   "tag": "s1_vs_shared",
+   "path": "results\\rl\\checkpoints\\m46f\\behaviour\\main\\freeze\\s1\\22_vs_shared.json.gz",
+   "horizon": 50,
+   "K": 32
+  },
+  {
+   "family": "freeze",
+   "idx": 22,
+   "label": "freezer L5 x1.76",
+   "meta": {
+    "group": "freeze L5",
+    "cond": "x1.76",
+    "L": 5,
+    "role": "freezer"
+   },
+   "tag": "s1_vs_separate",
+   "path": "results\\rl\\checkpoints\\m46f\\behaviour\\main\\freeze\\s1\\22_vs_separate.json.gz",
+   "horizon": 50,
+   "K": 32
+  },
+  {
+   "family": "freeze",
+   "idx": 23,
+   "label": "breaker L5 x1.76",
+   "meta": {
+    "group": "freeze L5",
+    "cond": "x1.76",
+    "L": 5,
+    "role": "breaker"
+   },
+   "tag": "s1_vs_shared",
+   "path": "results\\rl\\checkpoints\\m46f\\behaviour\\main\\freeze\\s1\\23_vs_shared.json.gz",
+   "horizon": 50,
+   "K": 32
+  },
+  {
+   "family": "freeze",
+   "idx": 23,
+   "label": "breaker L5 x1.76",
+   "meta": {
+    "group": "freeze L5",
+    "cond": "x1.76",
+    "L": 5,
+    "role": "breaker"
+   },
+   "tag": "s1_vs_separate",
+   "path": "results\\rl\\checkpoints\\m46f\\behaviour\\main\\freeze\\s1\\23_vs_separate.json.gz",
+   "horizon": 50,
+   "K": 32
+  },
+  {
+   "family": "freeze",
+   "idx": 24,
+   "label": "freezer L8 equal",
+   "meta": {
+    "group": "freeze L8",
+    "cond": "equal",
+    "L": 8,
+    "role": "freezer"
+   },
+   "tag": "s1_vs_shared",
+   "path": "results\\rl\\checkpoints\\m46f\\behaviour\\main\\freeze\\s1\\24_vs_shared.json.gz",
+   "horizon": 50,
+   "K": 32
+  },
+  {
+   "family": "freeze",
+   "idx": 24,
+   "label": "freezer L8 equal",
+   "meta": {
+    "group": "freeze L8",
+    "cond": "equal",
+    "L": 8,
+    "role": "freezer"
+   },
+   "tag": "s1_vs_separate",
+   "path": "results\\rl\\checkpoints\\m46f\\behaviour\\main\\freeze\\s1\\24_vs_separate.json.gz",
+   "horizon": 50,
+   "K": 32
+  },
+  {
+   "family": "freeze",
+   "idx": 25,
+   "label": "breaker L8 equal",
+   "meta": {
+    "group": "freeze L8",
+    "cond": "equal",
+    "L": 8,
+    "role": "breaker"
+   },
+   "tag": "s1_vs_shared",
+   "path": "results\\rl\\checkpoints\\m46f\\behaviour\\main\\freeze\\s1\\25_vs_shared.json.gz",
+   "horizon": 50,
+   "K": 32
+  },
+  {
+   "family": "freeze",
+   "idx": 25,
+   "label": "breaker L8 equal",
+   "meta": {
+    "group": "freeze L8",
+    "cond": "equal",
+    "L": 8,
+    "role": "breaker"
+   },
+   "tag": "s1_vs_separate",
+   "path": "results\\rl\\checkpoints\\m46f\\behaviour\\main\\freeze\\s1\\25_vs_separate.json.gz",
+   "horizon": 50,
+   "K": 32
+  },
+  {
+   "family": "freeze",
+   "idx": 26,
+   "label": "freezer L8 hp",
+   "meta": {
+    "group": "freeze L8",
+    "cond": "hp",
+    "L": 8,
+    "role": "freezer"
+   },
+   "tag": "s1_vs_shared",
+   "path": "results\\rl\\checkpoints\\m46f\\behaviour\\main\\freeze\\s1\\26_vs_shared.json.gz",
+   "horizon": 50,
+   "K": 32
+  },
+  {
+   "family": "freeze",
+   "idx": 26,
+   "label": "freezer L8 hp",
+   "meta": {
+    "group": "freeze L8",
+    "cond": "hp",
+    "L": 8,
+    "role": "freezer"
+   },
+   "tag": "s1_vs_separate",
+   "path": "results\\rl\\checkpoints\\m46f\\behaviour\\main\\freeze\\s1\\26_vs_separate.json.gz",
+   "horizon": 50,
+   "K": 32
+  },
+  {
+   "family": "freeze",
+   "idx": 27,
+   "label": "breaker L8 hp",
+   "meta": {
+    "group": "freeze L8",
+    "cond": "hp",
+    "L": 8,
+    "role": "breaker"
+   },
+   "tag": "s1_vs_shared",
+   "path": "results\\rl\\checkpoints\\m46f\\behaviour\\main\\freeze\\s1\\27_vs_shared.json.gz",
+   "horizon": 50,
+   "K": 32
+  },
+  {
+   "family": "freeze",
+   "idx": 27,
+   "label": "breaker L8 hp",
+   "meta": {
+    "group": "freeze L8",
+    "cond": "hp",
+    "L": 8,
+    "role": "breaker"
+   },
+   "tag": "s1_vs_separate",
+   "path": "results\\rl\\checkpoints\\m46f\\behaviour\\main\\freeze\\s1\\27_vs_separate.json.gz",
+   "horizon": 50,
+   "K": 32
+  },
+  {
+   "family": "freeze",
+   "idx": 28,
+   "label": "freezer L8 edge",
+   "meta": {
+    "group": "freeze L8",
+    "cond": "edge",
+    "L": 8,
+    "role": "freezer"
+   },
+   "tag": "s1_vs_shared",
+   "path": "results\\rl\\checkpoints\\m46f\\behaviour\\main\\freeze\\s1\\28_vs_shared.json.gz",
+   "horizon": 50,
+   "K": 32
+  },
+  {
+   "family": "freeze",
+   "idx": 28,
+   "label": "freezer L8 edge",
+   "meta": {
+    "group": "freeze L8",
+    "cond": "edge",
+    "L": 8,
+    "role": "freezer"
+   },
+   "tag": "s1_vs_separate",
+   "path": "results\\rl\\checkpoints\\m46f\\behaviour\\main\\freeze\\s1\\28_vs_separate.json.gz",
+   "horizon": 50,
+   "K": 32
+  },
+  {
+   "family": "freeze",
+   "idx": 29,
+   "label": "breaker L8 edge",
+   "meta": {
+    "group": "freeze L8",
+    "cond": "edge",
+    "L": 8,
+    "role": "breaker"
+   },
+   "tag": "s1_vs_shared",
+   "path": "results\\rl\\checkpoints\\m46f\\behaviour\\main\\freeze\\s1\\29_vs_shared.json.gz",
+   "horizon": 50,
+   "K": 32
+  },
+  {
+   "family": "freeze",
+   "idx": 29,
+   "label": "breaker L8 edge",
+   "meta": {
+    "group": "freeze L8",
+    "cond": "edge",
+    "L": 8,
+    "role": "breaker"
+   },
+   "tag": "s1_vs_separate",
+   "path": "results\\rl\\checkpoints\\m46f\\behaviour\\main\\freeze\\s1\\29_vs_separate.json.gz",
+   "horizon": 50,
+   "K": 32
+  },
+  {
+   "family": "freeze",
+   "idx": 30,
+   "label": "freezer L8 plaus",
+   "meta": {
+    "group": "freeze L8",
+    "cond": "plaus",
+    "L": 8,
+    "role": "freezer"
+   },
+   "tag": "s1_vs_shared",
+   "path": "results\\rl\\checkpoints\\m46f\\behaviour\\main\\freeze\\s1\\30_vs_shared.json.gz",
+   "horizon": 50,
+   "K": 32
+  },
+  {
+   "family": "freeze",
+   "idx": 30,
+   "label": "freezer L8 plaus",
+   "meta": {
+    "group": "freeze L8",
+    "cond": "plaus",
+    "L": 8,
+    "role": "freezer"
+   },
+   "tag": "s1_vs_separate",
+   "path": "results\\rl\\checkpoints\\m46f\\behaviour\\main\\freeze\\s1\\30_vs_separate.json.gz",
+   "horizon": 50,
+   "K": 32
+  },
+  {
+   "family": "freeze",
+   "idx": 31,
+   "label": "breaker L8 plaus",
+   "meta": {
+    "group": "freeze L8",
+    "cond": "plaus",
+    "L": 8,
+    "role": "breaker"
+   },
+   "tag": "s1_vs_shared",
+   "path": "results\\rl\\checkpoints\\m46f\\behaviour\\main\\freeze\\s1\\31_vs_shared.json.gz",
+   "horizon": 50,
+   "K": 32
+  },
+  {
+   "family": "freeze",
+   "idx": 31,
+   "label": "breaker L8 plaus",
+   "meta": {
+    "group": "freeze L8",
+    "cond": "plaus",
+    "L": 8,
+    "role": "breaker"
+   },
+   "tag": "s1_vs_separate",
+   "path": "results\\rl\\checkpoints\\m46f\\behaviour\\main\\freeze\\s1\\31_vs_separate.json.gz",
+   "horizon": 50,
+   "K": 32
+  },
+  {
+   "family": "freeze",
+   "idx": 32,
+   "label": "freezer L8 brk",
+   "meta": {
+    "group": "freeze L8",
+    "cond": "brk",
+    "L": 8,
+    "role": "freezer"
+   },
+   "tag": "s1_vs_shared",
+   "path": "results\\rl\\checkpoints\\m46f\\behaviour\\main\\freeze\\s1\\32_vs_shared.json.gz",
+   "horizon": 50,
+   "K": 32
+  },
+  {
+   "family": "freeze",
+   "idx": 32,
+   "label": "freezer L8 brk",
+   "meta": {
+    "group": "freeze L8",
+    "cond": "brk",
+    "L": 8,
+    "role": "freezer"
+   },
+   "tag": "s1_vs_separate",
+   "path": "results\\rl\\checkpoints\\m46f\\behaviour\\main\\freeze\\s1\\32_vs_separate.json.gz",
+   "horizon": 50,
+   "K": 32
+  },
+  {
+   "family": "freeze",
+   "idx": 33,
+   "label": "breaker L8 brk",
+   "meta": {
+    "group": "freeze L8",
+    "cond": "brk",
+    "L": 8,
+    "role": "breaker"
+   },
+   "tag": "s1_vs_shared",
+   "path": "results\\rl\\checkpoints\\m46f\\behaviour\\main\\freeze\\s1\\33_vs_shared.json.gz",
+   "horizon": 50,
+   "K": 32
+  },
+  {
+   "family": "freeze",
+   "idx": 33,
+   "label": "breaker L8 brk",
+   "meta": {
+    "group": "freeze L8",
+    "cond": "brk",
+    "L": 8,
+    "role": "breaker"
+   },
+   "tag": "s1_vs_separate",
+   "path": "results\\rl\\checkpoints\\m46f\\behaviour\\main\\freeze\\s1\\33_vs_separate.json.gz",
+   "horizon": 50,
+   "K": 32
+  },
+  {
+   "family": "freeze",
+   "idx": 34,
+   "label": "freezer L8 x1.76",
+   "meta": {
+    "group": "freeze L8",
+    "cond": "x1.76",
+    "L": 8,
+    "role": "freezer"
+   },
+   "tag": "s1_vs_shared",
+   "path": "results\\rl\\checkpoints\\m46f\\behaviour\\main\\freeze\\s1\\34_vs_shared.json.gz",
+   "horizon": 50,
+   "K": 32
+  },
+  {
+   "family": "freeze",
+   "idx": 34,
+   "label": "freezer L8 x1.76",
+   "meta": {
+    "group": "freeze L8",
+    "cond": "x1.76",
+    "L": 8,
+    "role": "freezer"
+   },
+   "tag": "s1_vs_separate",
+   "path": "results\\rl\\checkpoints\\m46f\\behaviour\\main\\freeze\\s1\\34_vs_separate.json.gz",
+   "horizon": 50,
+   "K": 32
+  },
+  {
+   "family": "freeze",
+   "idx": 35,
+   "label": "breaker L8 x1.76",
+   "meta": {
+    "group": "freeze L8",
+    "cond": "x1.76",
+    "L": 8,
+    "role": "breaker"
+   },
+   "tag": "s1_vs_shared",
+   "path": "results\\rl\\checkpoints\\m46f\\behaviour\\main\\freeze\\s1\\35_vs_shared.json.gz",
+   "horizon": 50,
+   "K": 32
+  },
+  {
+   "family": "freeze",
+   "idx": 35,
+   "label": "breaker L8 x1.76",
+   "meta": {
+    "group": "freeze L8",
+    "cond": "x1.76",
+    "L": 8,
+    "role": "breaker"
+   },
+   "tag": "s1_vs_separate",
+   "path": "results\\rl\\checkpoints\\m46f\\behaviour\\main\\freeze\\s1\\35_vs_separate.json.gz",
+   "horizon": 50,
+   "K": 32
+  },
+  {
+   "family": "freeze",
+   "idx": 0,
+   "label": "freezer L3 equal",
+   "meta": {
+    "group": "freeze L3",
+    "cond": "equal",
+    "L": 3,
+    "role": "freezer"
+   },
+   "tag": "s2_vs_shared",
+   "path": "results\\rl\\checkpoints\\m46f\\behaviour\\main\\freeze\\s2\\0_vs_shared.json.gz",
+   "horizon": 50,
+   "K": 32
+  },
+  {
+   "family": "freeze",
+   "idx": 0,
+   "label": "freezer L3 equal",
+   "meta": {
+    "group": "freeze L3",
+    "cond": "equal",
+    "L": 3,
+    "role": "freezer"
+   },
+   "tag": "s2_vs_separate",
+   "path": "results\\rl\\checkpoints\\m46f\\behaviour\\main\\freeze\\s2\\0_vs_separate.json.gz",
+   "horizon": 50,
+   "K": 32
+  },
+  {
+   "family": "freeze",
+   "idx": 1,
+   "label": "breaker L3 equal",
+   "meta": {
+    "group": "freeze L3",
+    "cond": "equal",
+    "L": 3,
+    "role": "breaker"
+   },
+   "tag": "s2_vs_shared",
+   "path": "results\\rl\\checkpoints\\m46f\\behaviour\\main\\freeze\\s2\\1_vs_shared.json.gz",
+   "horizon": 50,
+   "K": 32
+  },
+  {
+   "family": "freeze",
+   "idx": 1,
+   "label": "breaker L3 equal",
+   "meta": {
+    "group": "freeze L3",
+    "cond": "equal",
+    "L": 3,
+    "role": "breaker"
+   },
+   "tag": "s2_vs_separate",
+   "path": "results\\rl\\checkpoints\\m46f\\behaviour\\main\\freeze\\s2\\1_vs_separate.json.gz",
+   "horizon": 50,
+   "K": 32
+  },
+  {
+   "family": "freeze",
+   "idx": 2,
+   "label": "freezer L3 hp",
+   "meta": {
+    "group": "freeze L3",
+    "cond": "hp",
+    "L": 3,
+    "role": "freezer"
+   },
+   "tag": "s2_vs_shared",
+   "path": "results\\rl\\checkpoints\\m46f\\behaviour\\main\\freeze\\s2\\2_vs_shared.json.gz",
+   "horizon": 50,
+   "K": 32
+  },
+  {
+   "family": "freeze",
+   "idx": 2,
+   "label": "freezer L3 hp",
+   "meta": {
+    "group": "freeze L3",
+    "cond": "hp",
+    "L": 3,
+    "role": "freezer"
+   },
+   "tag": "s2_vs_separate",
+   "path": "results\\rl\\checkpoints\\m46f\\behaviour\\main\\freeze\\s2\\2_vs_separate.json.gz",
+   "horizon": 50,
+   "K": 32
+  },
+  {
+   "family": "freeze",
+   "idx": 3,
+   "label": "breaker L3 hp",
+   "meta": {
+    "group": "freeze L3",
+    "cond": "hp",
+    "L": 3,
+    "role": "breaker"
+   },
+   "tag": "s2_vs_shared",
+   "path": "results\\rl\\checkpoints\\m46f\\behaviour\\main\\freeze\\s2\\3_vs_shared.json.gz",
+   "horizon": 50,
+   "K": 32
+  },
+  {
+   "family": "freeze",
+   "idx": 3,
+   "label": "breaker L3 hp",
+   "meta": {
+    "group": "freeze L3",
+    "cond": "hp",
+    "L": 3,
+    "role": "breaker"
+   },
+   "tag": "s2_vs_separate",
+   "path": "results\\rl\\checkpoints\\m46f\\behaviour\\main\\freeze\\s2\\3_vs_separate.json.gz",
+   "horizon": 50,
+   "K": 32
+  },
+  {
+   "family": "freeze",
+   "idx": 4,
+   "label": "freezer L3 edge",
+   "meta": {
+    "group": "freeze L3",
+    "cond": "edge",
+    "L": 3,
+    "role": "freezer"
+   },
+   "tag": "s2_vs_shared",
+   "path": "results\\rl\\checkpoints\\m46f\\behaviour\\main\\freeze\\s2\\4_vs_shared.json.gz",
+   "horizon": 50,
+   "K": 32
+  },
+  {
+   "family": "freeze",
+   "idx": 4,
+   "label": "freezer L3 edge",
+   "meta": {
+    "group": "freeze L3",
+    "cond": "edge",
+    "L": 3,
+    "role": "freezer"
+   },
+   "tag": "s2_vs_separate",
+   "path": "results\\rl\\checkpoints\\m46f\\behaviour\\main\\freeze\\s2\\4_vs_separate.json.gz",
+   "horizon": 50,
+   "K": 32
+  },
+  {
+   "family": "freeze",
+   "idx": 5,
+   "label": "breaker L3 edge",
+   "meta": {
+    "group": "freeze L3",
+    "cond": "edge",
+    "L": 3,
+    "role": "breaker"
+   },
+   "tag": "s2_vs_shared",
+   "path": "results\\rl\\checkpoints\\m46f\\behaviour\\main\\freeze\\s2\\5_vs_shared.json.gz",
+   "horizon": 50,
+   "K": 32
+  },
+  {
+   "family": "freeze",
+   "idx": 5,
+   "label": "breaker L3 edge",
+   "meta": {
+    "group": "freeze L3",
+    "cond": "edge",
+    "L": 3,
+    "role": "breaker"
+   },
+   "tag": "s2_vs_separate",
+   "path": "results\\rl\\checkpoints\\m46f\\behaviour\\main\\freeze\\s2\\5_vs_separate.json.gz",
+   "horizon": 50,
+   "K": 32
+  },
+  {
+   "family": "freeze",
+   "idx": 6,
+   "label": "freezer L3 plaus",
+   "meta": {
+    "group": "freeze L3",
+    "cond": "plaus",
+    "L": 3,
+    "role": "freezer"
+   },
+   "tag": "s2_vs_shared",
+   "path": "results\\rl\\checkpoints\\m46f\\behaviour\\main\\freeze\\s2\\6_vs_shared.json.gz",
+   "horizon": 50,
+   "K": 32
+  },
+  {
+   "family": "freeze",
+   "idx": 6,
+   "label": "freezer L3 plaus",
+   "meta": {
+    "group": "freeze L3",
+    "cond": "plaus",
+    "L": 3,
+    "role": "freezer"
+   },
+   "tag": "s2_vs_separate",
+   "path": "results\\rl\\checkpoints\\m46f\\behaviour\\main\\freeze\\s2\\6_vs_separate.json.gz",
+   "horizon": 50,
+   "K": 32
+  },
+  {
+   "family": "freeze",
+   "idx": 7,
+   "label": "breaker L3 plaus",
+   "meta": {
+    "group": "freeze L3",
+    "cond": "plaus",
+    "L": 3,
+    "role": "breaker"
+   },
+   "tag": "s2_vs_shared",
+   "path": "results\\rl\\checkpoints\\m46f\\behaviour\\main\\freeze\\s2\\7_vs_shared.json.gz",
+   "horizon": 50,
+   "K": 32
+  },
+  {
+   "family": "freeze",
+   "idx": 7,
+   "label": "breaker L3 plaus",
+   "meta": {
+    "group": "freeze L3",
+    "cond": "plaus",
+    "L": 3,
+    "role": "breaker"
+   },
+   "tag": "s2_vs_separate",
+   "path": "results\\rl\\checkpoints\\m46f\\behaviour\\main\\freeze\\s2\\7_vs_separate.json.gz",
+   "horizon": 50,
+   "K": 32
+  },
+  {
+   "family": "freeze",
+   "idx": 8,
+   "label": "freezer L3 brk",
+   "meta": {
+    "group": "freeze L3",
+    "cond": "brk",
+    "L": 3,
+    "role": "freezer"
+   },
+   "tag": "s2_vs_shared",
+   "path": "results\\rl\\checkpoints\\m46f\\behaviour\\main\\freeze\\s2\\8_vs_shared.json.gz",
+   "horizon": 50,
+   "K": 32
+  },
+  {
+   "family": "freeze",
+   "idx": 8,
+   "label": "freezer L3 brk",
+   "meta": {
+    "group": "freeze L3",
+    "cond": "brk",
+    "L": 3,
+    "role": "freezer"
+   },
+   "tag": "s2_vs_separate",
+   "path": "results\\rl\\checkpoints\\m46f\\behaviour\\main\\freeze\\s2\\8_vs_separate.json.gz",
+   "horizon": 50,
+   "K": 32
+  },
+  {
+   "family": "freeze",
+   "idx": 9,
+   "label": "breaker L3 brk",
+   "meta": {
+    "group": "freeze L3",
+    "cond": "brk",
+    "L": 3,
+    "role": "breaker"
+   },
+   "tag": "s2_vs_shared",
+   "path": "results\\rl\\checkpoints\\m46f\\behaviour\\main\\freeze\\s2\\9_vs_shared.json.gz",
+   "horizon": 50,
+   "K": 32
+  },
+  {
+   "family": "freeze",
+   "idx": 9,
+   "label": "breaker L3 brk",
+   "meta": {
+    "group": "freeze L3",
+    "cond": "brk",
+    "L": 3,
+    "role": "breaker"
+   },
+   "tag": "s2_vs_separate",
+   "path": "results\\rl\\checkpoints\\m46f\\behaviour\\main\\freeze\\s2\\9_vs_separate.json.gz",
+   "horizon": 50,
+   "K": 32
+  },
+  {
+   "family": "freeze",
+   "idx": 10,
+   "label": "freezer L3 x1.76",
+   "meta": {
+    "group": "freeze L3",
+    "cond": "x1.76",
+    "L": 3,
+    "role": "freezer"
+   },
+   "tag": "s2_vs_shared",
+   "path": "results\\rl\\checkpoints\\m46f\\behaviour\\main\\freeze\\s2\\10_vs_shared.json.gz",
+   "horizon": 50,
+   "K": 32
+  },
+  {
+   "family": "freeze",
+   "idx": 10,
+   "label": "freezer L3 x1.76",
+   "meta": {
+    "group": "freeze L3",
+    "cond": "x1.76",
+    "L": 3,
+    "role": "freezer"
+   },
+   "tag": "s2_vs_separate",
+   "path": "results\\rl\\checkpoints\\m46f\\behaviour\\main\\freeze\\s2\\10_vs_separate.json.gz",
+   "horizon": 50,
+   "K": 32
+  },
+  {
+   "family": "freeze",
+   "idx": 11,
+   "label": "breaker L3 x1.76",
+   "meta": {
+    "group": "freeze L3",
+    "cond": "x1.76",
+    "L": 3,
+    "role": "breaker"
+   },
+   "tag": "s2_vs_shared",
+   "path": "results\\rl\\checkpoints\\m46f\\behaviour\\main\\freeze\\s2\\11_vs_shared.json.gz",
+   "horizon": 50,
+   "K": 32
+  },
+  {
+   "family": "freeze",
+   "idx": 11,
+   "label": "breaker L3 x1.76",
+   "meta": {
+    "group": "freeze L3",
+    "cond": "x1.76",
+    "L": 3,
+    "role": "breaker"
+   },
+   "tag": "s2_vs_separate",
+   "path": "results\\rl\\checkpoints\\m46f\\behaviour\\main\\freeze\\s2\\11_vs_separate.json.gz",
+   "horizon": 50,
+   "K": 32
+  },
+  {
+   "family": "freeze",
+   "idx": 12,
+   "label": "freezer L5 equal",
+   "meta": {
+    "group": "freeze L5",
+    "cond": "equal",
+    "L": 5,
+    "role": "freezer"
+   },
+   "tag": "s2_vs_shared",
+   "path": "results\\rl\\checkpoints\\m46f\\behaviour\\main\\freeze\\s2\\12_vs_shared.json.gz",
+   "horizon": 50,
+   "K": 32
+  },
+  {
+   "family": "freeze",
+   "idx": 12,
+   "label": "freezer L5 equal",
+   "meta": {
+    "group": "freeze L5",
+    "cond": "equal",
+    "L": 5,
+    "role": "freezer"
+   },
+   "tag": "s2_vs_separate",
+   "path": "results\\rl\\checkpoints\\m46f\\behaviour\\main\\freeze\\s2\\12_vs_separate.json.gz",
+   "horizon": 50,
+   "K": 32
+  },
+  {
+   "family": "freeze",
+   "idx": 13,
+   "label": "breaker L5 equal",
+   "meta": {
+    "group": "freeze L5",
+    "cond": "equal",
+    "L": 5,
+    "role": "breaker"
+   },
+   "tag": "s2_vs_shared",
+   "path": "results\\rl\\checkpoints\\m46f\\behaviour\\main\\freeze\\s2\\13_vs_shared.json.gz",
+   "horizon": 50,
+   "K": 32
+  },
+  {
+   "family": "freeze",
+   "idx": 13,
+   "label": "breaker L5 equal",
+   "meta": {
+    "group": "freeze L5",
+    "cond": "equal",
+    "L": 5,
+    "role": "breaker"
+   },
+   "tag": "s2_vs_separate",
+   "path": "results\\rl\\checkpoints\\m46f\\behaviour\\main\\freeze\\s2\\13_vs_separate.json.gz",
+   "horizon": 50,
+   "K": 32
+  },
+  {
+   "family": "freeze",
+   "idx": 14,
+   "label": "freezer L5 hp",
+   "meta": {
+    "group": "freeze L5",
+    "cond": "hp",
+    "L": 5,
+    "role": "freezer"
+   },
+   "tag": "s2_vs_shared",
+   "path": "results\\rl\\checkpoints\\m46f\\behaviour\\main\\freeze\\s2\\14_vs_shared.json.gz",
+   "horizon": 50,
+   "K": 32
+  },
+  {
+   "family": "freeze",
+   "idx": 14,
+   "label": "freezer L5 hp",
+   "meta": {
+    "group": "freeze L5",
+    "cond": "hp",
+    "L": 5,
+    "role": "freezer"
+   },
+   "tag": "s2_vs_separate",
+   "path": "results\\rl\\checkpoints\\m46f\\behaviour\\main\\freeze\\s2\\14_vs_separate.json.gz",
+   "horizon": 50,
+   "K": 32
+  },
+  {
+   "family": "freeze",
+   "idx": 15,
+   "label": "breaker L5 hp",
+   "meta": {
+    "group": "freeze L5",
+    "cond": "hp",
+    "L": 5,
+    "role": "breaker"
+   },
+   "tag": "s2_vs_shared",
+   "path": "results\\rl\\checkpoints\\m46f\\behaviour\\main\\freeze\\s2\\15_vs_shared.json.gz",
+   "horizon": 50,
+   "K": 32
+  },
+  {
+   "family": "freeze",
+   "idx": 15,
+   "label": "breaker L5 hp",
+   "meta": {
+    "group": "freeze L5",
+    "cond": "hp",
+    "L": 5,
+    "role": "breaker"
+   },
+   "tag": "s2_vs_separate",
+   "path": "results\\rl\\checkpoints\\m46f\\behaviour\\main\\freeze\\s2\\15_vs_separate.json.gz",
+   "horizon": 50,
+   "K": 32
+  },
+  {
+   "family": "freeze",
+   "idx": 16,
+   "label": "freezer L5 edge",
+   "meta": {
+    "group": "freeze L5",
+    "cond": "edge",
+    "L": 5,
+    "role": "freezer"
+   },
+   "tag": "s2_vs_shared",
+   "path": "results\\rl\\checkpoints\\m46f\\behaviour\\main\\freeze\\s2\\16_vs_shared.json.gz",
+   "horizon": 50,
+   "K": 32
+  },
+  {
+   "family": "freeze",
+   "idx": 16,
+   "label": "freezer L5 edge",
+   "meta": {
+    "group": "freeze L5",
+    "cond": "edge",
+    "L": 5,
+    "role": "freezer"
+   },
+   "tag": "s2_vs_separate",
+   "path": "results\\rl\\checkpoints\\m46f\\behaviour\\main\\freeze\\s2\\16_vs_separate.json.gz",
+   "horizon": 50,
+   "K": 32
+  },
+  {
+   "family": "freeze",
+   "idx": 17,
+   "label": "breaker L5 edge",
+   "meta": {
+    "group": "freeze L5",
+    "cond": "edge",
+    "L": 5,
+    "role": "breaker"
+   },
+   "tag": "s2_vs_shared",
+   "path": "results\\rl\\checkpoints\\m46f\\behaviour\\main\\freeze\\s2\\17_vs_shared.json.gz",
+   "horizon": 50,
+   "K": 32
+  },
+  {
+   "family": "freeze",
+   "idx": 17,
+   "label": "breaker L5 edge",
+   "meta": {
+    "group": "freeze L5",
+    "cond": "edge",
+    "L": 5,
+    "role": "breaker"
+   },
+   "tag": "s2_vs_separate",
+   "path": "results\\rl\\checkpoints\\m46f\\behaviour\\main\\freeze\\s2\\17_vs_separate.json.gz",
+   "horizon": 50,
+   "K": 32
+  },
+  {
+   "family": "freeze",
+   "idx": 18,
+   "label": "freezer L5 plaus",
+   "meta": {
+    "group": "freeze L5",
+    "cond": "plaus",
+    "L": 5,
+    "role": "freezer"
+   },
+   "tag": "s2_vs_shared",
+   "path": "results\\rl\\checkpoints\\m46f\\behaviour\\main\\freeze\\s2\\18_vs_shared.json.gz",
+   "horizon": 50,
+   "K": 32
+  },
+  {
+   "family": "freeze",
+   "idx": 18,
+   "label": "freezer L5 plaus",
+   "meta": {
+    "group": "freeze L5",
+    "cond": "plaus",
+    "L": 5,
+    "role": "freezer"
+   },
+   "tag": "s2_vs_separate",
+   "path": "results\\rl\\checkpoints\\m46f\\behaviour\\main\\freeze\\s2\\18_vs_separate.json.gz",
+   "horizon": 50,
+   "K": 32
+  },
+  {
+   "family": "freeze",
+   "idx": 19,
+   "label": "breaker L5 plaus",
+   "meta": {
+    "group": "freeze L5",
+    "cond": "plaus",
+    "L": 5,
+    "role": "breaker"
+   },
+   "tag": "s2_vs_shared",
+   "path": "results\\rl\\checkpoints\\m46f\\behaviour\\main\\freeze\\s2\\19_vs_shared.json.gz",
+   "horizon": 50,
+   "K": 32
+  },
+  {
+   "family": "freeze",
+   "idx": 19,
+   "label": "breaker L5 plaus",
+   "meta": {
+    "group": "freeze L5",
+    "cond": "plaus",
+    "L": 5,
+    "role": "breaker"
+   },
+   "tag": "s2_vs_separate",
+   "path": "results\\rl\\checkpoints\\m46f\\behaviour\\main\\freeze\\s2\\19_vs_separate.json.gz",
+   "horizon": 50,
+   "K": 32
+  },
+  {
+   "family": "freeze",
+   "idx": 20,
+   "label": "freezer L5 brk",
+   "meta": {
+    "group": "freeze L5",
+    "cond": "brk",
+    "L": 5,
+    "role": "freezer"
+   },
+   "tag": "s2_vs_shared",
+   "path": "results\\rl\\checkpoints\\m46f\\behaviour\\main\\freeze\\s2\\20_vs_shared.json.gz",
+   "horizon": 50,
+   "K": 32
+  },
+  {
+   "family": "freeze",
+   "idx": 20,
+   "label": "freezer L5 brk",
+   "meta": {
+    "group": "freeze L5",
+    "cond": "brk",
+    "L": 5,
+    "role": "freezer"
+   },
+   "tag": "s2_vs_separate",
+   "path": "results\\rl\\checkpoints\\m46f\\behaviour\\main\\freeze\\s2\\20_vs_separate.json.gz",
+   "horizon": 50,
+   "K": 32
+  },
+  {
+   "family": "freeze",
+   "idx": 21,
+   "label": "breaker L5 brk",
+   "meta": {
+    "group": "freeze L5",
+    "cond": "brk",
+    "L": 5,
+    "role": "breaker"
+   },
+   "tag": "s2_vs_shared",
+   "path": "results\\rl\\checkpoints\\m46f\\behaviour\\main\\freeze\\s2\\21_vs_shared.json.gz",
+   "horizon": 50,
+   "K": 32
+  },
+  {
+   "family": "freeze",
+   "idx": 21,
+   "label": "breaker L5 brk",
+   "meta": {
+    "group": "freeze L5",
+    "cond": "brk",
+    "L": 5,
+    "role": "breaker"
+   },
+   "tag": "s2_vs_separate",
+   "path": "results\\rl\\checkpoints\\m46f\\behaviour\\main\\freeze\\s2\\21_vs_separate.json.gz",
+   "horizon": 50,
+   "K": 32
+  },
+  {
+   "family": "freeze",
+   "idx": 22,
+   "label": "freezer L5 x1.76",
+   "meta": {
+    "group": "freeze L5",
+    "cond": "x1.76",
+    "L": 5,
+    "role": "freezer"
+   },
+   "tag": "s2_vs_shared",
+   "path": "results\\rl\\checkpoints\\m46f\\behaviour\\main\\freeze\\s2\\22_vs_shared.json.gz",
+   "horizon": 50,
+   "K": 32
+  },
+  {
+   "family": "freeze",
+   "idx": 22,
+   "label": "freezer L5 x1.76",
+   "meta": {
+    "group": "freeze L5",
+    "cond": "x1.76",
+    "L": 5,
+    "role": "freezer"
+   },
+   "tag": "s2_vs_separate",
+   "path": "results\\rl\\checkpoints\\m46f\\behaviour\\main\\freeze\\s2\\22_vs_separate.json.gz",
+   "horizon": 50,
+   "K": 32
+  },
+  {
+   "family": "freeze",
+   "idx": 23,
+   "label": "breaker L5 x1.76",
+   "meta": {
+    "group": "freeze L5",
+    "cond": "x1.76",
+    "L": 5,
+    "role": "breaker"
+   },
+   "tag": "s2_vs_shared",
+   "path": "results\\rl\\checkpoints\\m46f\\behaviour\\main\\freeze\\s2\\23_vs_shared.json.gz",
+   "horizon": 50,
+   "K": 32
+  },
+  {
+   "family": "freeze",
+   "idx": 23,
+   "label": "breaker L5 x1.76",
+   "meta": {
+    "group": "freeze L5",
+    "cond": "x1.76",
+    "L": 5,
+    "role": "breaker"
+   },
+   "tag": "s2_vs_separate",
+   "path": "results\\rl\\checkpoints\\m46f\\behaviour\\main\\freeze\\s2\\23_vs_separate.json.gz",
+   "horizon": 50,
+   "K": 32
+  },
+  {
+   "family": "freeze",
+   "idx": 24,
+   "label": "freezer L8 equal",
+   "meta": {
+    "group": "freeze L8",
+    "cond": "equal",
+    "L": 8,
+    "role": "freezer"
+   },
+   "tag": "s2_vs_shared",
+   "path": "results\\rl\\checkpoints\\m46f\\behaviour\\main\\freeze\\s2\\24_vs_shared.json.gz",
+   "horizon": 50,
+   "K": 32
+  },
+  {
+   "family": "freeze",
+   "idx": 24,
+   "label": "freezer L8 equal",
+   "meta": {
+    "group": "freeze L8",
+    "cond": "equal",
+    "L": 8,
+    "role": "freezer"
+   },
+   "tag": "s2_vs_separate",
+   "path": "results\\rl\\checkpoints\\m46f\\behaviour\\main\\freeze\\s2\\24_vs_separate.json.gz",
+   "horizon": 50,
+   "K": 32
+  },
+  {
+   "family": "freeze",
+   "idx": 25,
+   "label": "breaker L8 equal",
+   "meta": {
+    "group": "freeze L8",
+    "cond": "equal",
+    "L": 8,
+    "role": "breaker"
+   },
+   "tag": "s2_vs_shared",
+   "path": "results\\rl\\checkpoints\\m46f\\behaviour\\main\\freeze\\s2\\25_vs_shared.json.gz",
+   "horizon": 50,
+   "K": 32
+  },
+  {
+   "family": "freeze",
+   "idx": 25,
+   "label": "breaker L8 equal",
+   "meta": {
+    "group": "freeze L8",
+    "cond": "equal",
+    "L": 8,
+    "role": "breaker"
+   },
+   "tag": "s2_vs_separate",
+   "path": "results\\rl\\checkpoints\\m46f\\behaviour\\main\\freeze\\s2\\25_vs_separate.json.gz",
+   "horizon": 50,
+   "K": 32
+  },
+  {
+   "family": "freeze",
+   "idx": 26,
+   "label": "freezer L8 hp",
+   "meta": {
+    "group": "freeze L8",
+    "cond": "hp",
+    "L": 8,
+    "role": "freezer"
+   },
+   "tag": "s2_vs_shared",
+   "path": "results\\rl\\checkpoints\\m46f\\behaviour\\main\\freeze\\s2\\26_vs_shared.json.gz",
+   "horizon": 50,
+   "K": 32
+  },
+  {
+   "family": "freeze",
+   "idx": 26,
+   "label": "freezer L8 hp",
+   "meta": {
+    "group": "freeze L8",
+    "cond": "hp",
+    "L": 8,
+    "role": "freezer"
+   },
+   "tag": "s2_vs_separate",
+   "path": "results\\rl\\checkpoints\\m46f\\behaviour\\main\\freeze\\s2\\26_vs_separate.json.gz",
+   "horizon": 50,
+   "K": 32
+  },
+  {
+   "family": "freeze",
+   "idx": 27,
+   "label": "breaker L8 hp",
+   "meta": {
+    "group": "freeze L8",
+    "cond": "hp",
+    "L": 8,
+    "role": "breaker"
+   },
+   "tag": "s2_vs_shared",
+   "path": "results\\rl\\checkpoints\\m46f\\behaviour\\main\\freeze\\s2\\27_vs_shared.json.gz",
+   "horizon": 50,
+   "K": 32
+  },
+  {
+   "family": "freeze",
+   "idx": 27,
+   "label": "breaker L8 hp",
+   "meta": {
+    "group": "freeze L8",
+    "cond": "hp",
+    "L": 8,
+    "role": "breaker"
+   },
+   "tag": "s2_vs_separate",
+   "path": "results\\rl\\checkpoints\\m46f\\behaviour\\main\\freeze\\s2\\27_vs_separate.json.gz",
+   "horizon": 50,
+   "K": 32
+  },
+  {
+   "family": "freeze",
+   "idx": 28,
+   "label": "freezer L8 edge",
+   "meta": {
+    "group": "freeze L8",
+    "cond": "edge",
+    "L": 8,
+    "role": "freezer"
+   },
+   "tag": "s2_vs_shared",
+   "path": "results\\rl\\checkpoints\\m46f\\behaviour\\main\\freeze\\s2\\28_vs_shared.json.gz",
+   "horizon": 50,
+   "K": 32
+  },
+  {
+   "family": "freeze",
+   "idx": 28,
+   "label": "freezer L8 edge",
+   "meta": {
+    "group": "freeze L8",
+    "cond": "edge",
+    "L": 8,
+    "role": "freezer"
+   },
+   "tag": "s2_vs_separate",
+   "path": "results\\rl\\checkpoints\\m46f\\behaviour\\main\\freeze\\s2\\28_vs_separate.json.gz",
+   "horizon": 50,
+   "K": 32
+  },
+  {
+   "family": "freeze",
+   "idx": 29,
+   "label": "breaker L8 edge",
+   "meta": {
+    "group": "freeze L8",
+    "cond": "edge",
+    "L": 8,
+    "role": "breaker"
+   },
+   "tag": "s2_vs_shared",
+   "path": "results\\rl\\checkpoints\\m46f\\behaviour\\main\\freeze\\s2\\29_vs_shared.json.gz",
+   "horizon": 50,
+   "K": 32
+  },
+  {
+   "family": "freeze",
+   "idx": 29,
+   "label": "breaker L8 edge",
+   "meta": {
+    "group": "freeze L8",
+    "cond": "edge",
+    "L": 8,
+    "role": "breaker"
+   },
+   "tag": "s2_vs_separate",
+   "path": "results\\rl\\checkpoints\\m46f\\behaviour\\main\\freeze\\s2\\29_vs_separate.json.gz",
+   "horizon": 50,
+   "K": 32
+  },
+  {
+   "family": "freeze",
+   "idx": 30,
+   "label": "freezer L8 plaus",
+   "meta": {
+    "group": "freeze L8",
+    "cond": "plaus",
+    "L": 8,
+    "role": "freezer"
+   },
+   "tag": "s2_vs_shared",
+   "path": "results\\rl\\checkpoints\\m46f\\behaviour\\main\\freeze\\s2\\30_vs_shared.json.gz",
+   "horizon": 50,
+   "K": 32
+  },
+  {
+   "family": "freeze",
+   "idx": 30,
+   "label": "freezer L8 plaus",
+   "meta": {
+    "group": "freeze L8",
+    "cond": "plaus",
+    "L": 8,
+    "role": "freezer"
+   },
+   "tag": "s2_vs_separate",
+   "path": "results\\rl\\checkpoints\\m46f\\behaviour\\main\\freeze\\s2\\30_vs_separate.json.gz",
+   "horizon": 50,
+   "K": 32
+  },
+  {
+   "family": "freeze",
+   "idx": 31,
+   "label": "breaker L8 plaus",
+   "meta": {
+    "group": "freeze L8",
+    "cond": "plaus",
+    "L": 8,
+    "role": "breaker"
+   },
+   "tag": "s2_vs_shared",
+   "path": "results\\rl\\checkpoints\\m46f\\behaviour\\main\\freeze\\s2\\31_vs_shared.json.gz",
+   "horizon": 50,
+   "K": 32
+  },
+  {
+   "family": "freeze",
+   "idx": 31,
+   "label": "breaker L8 plaus",
+   "meta": {
+    "group": "freeze L8",
+    "cond": "plaus",
+    "L": 8,
+    "role": "breaker"
+   },
+   "tag": "s2_vs_separate",
+   "path": "results\\rl\\checkpoints\\m46f\\behaviour\\main\\freeze\\s2\\31_vs_separate.json.gz",
+   "horizon": 50,
+   "K": 32
+  },
+  {
+   "family": "freeze",
+   "idx": 32,
+   "label": "freezer L8 brk",
+   "meta": {
+    "group": "freeze L8",
+    "cond": "brk",
+    "L": 8,
+    "role": "freezer"
+   },
+   "tag": "s2_vs_shared",
+   "path": "results\\rl\\checkpoints\\m46f\\behaviour\\main\\freeze\\s2\\32_vs_shared.json.gz",
+   "horizon": 50,
+   "K": 32
+  },
+  {
+   "family": "freeze",
+   "idx": 32,
+   "label": "freezer L8 brk",
+   "meta": {
+    "group": "freeze L8",
+    "cond": "brk",
+    "L": 8,
+    "role": "freezer"
+   },
+   "tag": "s2_vs_separate",
+   "path": "results\\rl\\checkpoints\\m46f\\behaviour\\main\\freeze\\s2\\32_vs_separate.json.gz",
+   "horizon": 50,
+   "K": 32
+  },
+  {
+   "family": "freeze",
+   "idx": 33,
+   "label": "breaker L8 brk",
+   "meta": {
+    "group": "freeze L8",
+    "cond": "brk",
+    "L": 8,
+    "role": "breaker"
+   },
+   "tag": "s2_vs_shared",
+   "path": "results\\rl\\checkpoints\\m46f\\behaviour\\main\\freeze\\s2\\33_vs_shared.json.gz",
+   "horizon": 50,
+   "K": 32
+  },
+  {
+   "family": "freeze",
+   "idx": 33,
+   "label": "breaker L8 brk",
+   "meta": {
+    "group": "freeze L8",
+    "cond": "brk",
+    "L": 8,
+    "role": "breaker"
+   },
+   "tag": "s2_vs_separate",
+   "path": "results\\rl\\checkpoints\\m46f\\behaviour\\main\\freeze\\s2\\33_vs_separate.json.gz",
+   "horizon": 50,
+   "K": 32
+  },
+  {
+   "family": "freeze",
+   "idx": 34,
+   "label": "freezer L8 x1.76",
+   "meta": {
+    "group": "freeze L8",
+    "cond": "x1.76",
+    "L": 8,
+    "role": "freezer"
+   },
+   "tag": "s2_vs_shared",
+   "path": "results\\rl\\checkpoints\\m46f\\behaviour\\main\\freeze\\s2\\34_vs_shared.json.gz",
+   "horizon": 50,
+   "K": 32
+  },
+  {
+   "family": "freeze",
+   "idx": 34,
+   "label": "freezer L8 x1.76",
+   "meta": {
+    "group": "freeze L8",
+    "cond": "x1.76",
+    "L": 8,
+    "role": "freezer"
+   },
+   "tag": "s2_vs_separate",
+   "path": "results\\rl\\checkpoints\\m46f\\behaviour\\main\\freeze\\s2\\34_vs_separate.json.gz",
+   "horizon": 50,
+   "K": 32
+  },
+  {
+   "family": "freeze",
+   "idx": 35,
+   "label": "breaker L8 x1.76",
+   "meta": {
+    "group": "freeze L8",
+    "cond": "x1.76",
+    "L": 8,
+    "role": "breaker"
+   },
+   "tag": "s2_vs_shared",
+   "path": "results\\rl\\checkpoints\\m46f\\behaviour\\main\\freeze\\s2\\35_vs_shared.json.gz",
+   "horizon": 50,
+   "K": 32
+  },
+  {
+   "family": "freeze",
+   "idx": 35,
+   "label": "breaker L8 x1.76",
+   "meta": {
+    "group": "freeze L8",
+    "cond": "x1.76",
+    "L": 8,
+    "role": "breaker"
+   },
+   "tag": "s2_vs_separate",
+   "path": "results\\rl\\checkpoints\\m46f\\behaviour\\main\\freeze\\s2\\35_vs_separate.json.gz",
+   "horizon": 50,
+   "K": 32
+  },
+  {
+   "family": "freeze",
+   "idx": 0,
+   "label": "freezer L3 equal",
+   "meta": {
+    "group": "freeze L3",
+    "cond": "equal",
+    "L": 3,
+    "role": "freezer"
+   },
+   "tag": "s3_vs_shared",
+   "path": "results\\rl\\checkpoints\\m46f\\behaviour\\main\\freeze\\s3\\0_vs_shared.json.gz",
+   "horizon": 50,
+   "K": 32
+  },
+  {
+   "family": "freeze",
+   "idx": 0,
+   "label": "freezer L3 equal",
+   "meta": {
+    "group": "freeze L3",
+    "cond": "equal",
+    "L": 3,
+    "role": "freezer"
+   },
+   "tag": "s3_vs_separate",
+   "path": "results\\rl\\checkpoints\\m46f\\behaviour\\main\\freeze\\s3\\0_vs_separate.json.gz",
+   "horizon": 50,
+   "K": 32
+  },
+  {
+   "family": "freeze",
+   "idx": 1,
+   "label": "breaker L3 equal",
+   "meta": {
+    "group": "freeze L3",
+    "cond": "equal",
+    "L": 3,
+    "role": "breaker"
+   },
+   "tag": "s3_vs_shared",
+   "path": "results\\rl\\checkpoints\\m46f\\behaviour\\main\\freeze\\s3\\1_vs_shared.json.gz",
+   "horizon": 50,
+   "K": 32
+  },
+  {
+   "family": "freeze",
+   "idx": 1,
+   "label": "breaker L3 equal",
+   "meta": {
+    "group": "freeze L3",
+    "cond": "equal",
+    "L": 3,
+    "role": "breaker"
+   },
+   "tag": "s3_vs_separate",
+   "path": "results\\rl\\checkpoints\\m46f\\behaviour\\main\\freeze\\s3\\1_vs_separate.json.gz",
+   "horizon": 50,
+   "K": 32
+  },
+  {
+   "family": "freeze",
+   "idx": 2,
+   "label": "freezer L3 hp",
+   "meta": {
+    "group": "freeze L3",
+    "cond": "hp",
+    "L": 3,
+    "role": "freezer"
+   },
+   "tag": "s3_vs_shared",
+   "path": "results\\rl\\checkpoints\\m46f\\behaviour\\main\\freeze\\s3\\2_vs_shared.json.gz",
+   "horizon": 50,
+   "K": 32
+  },
+  {
+   "family": "freeze",
+   "idx": 2,
+   "label": "freezer L3 hp",
+   "meta": {
+    "group": "freeze L3",
+    "cond": "hp",
+    "L": 3,
+    "role": "freezer"
+   },
+   "tag": "s3_vs_separate",
+   "path": "results\\rl\\checkpoints\\m46f\\behaviour\\main\\freeze\\s3\\2_vs_separate.json.gz",
+   "horizon": 50,
+   "K": 32
+  },
+  {
+   "family": "freeze",
+   "idx": 3,
+   "label": "breaker L3 hp",
+   "meta": {
+    "group": "freeze L3",
+    "cond": "hp",
+    "L": 3,
+    "role": "breaker"
+   },
+   "tag": "s3_vs_shared",
+   "path": "results\\rl\\checkpoints\\m46f\\behaviour\\main\\freeze\\s3\\3_vs_shared.json.gz",
+   "horizon": 50,
+   "K": 32
+  },
+  {
+   "family": "freeze",
+   "idx": 3,
+   "label": "breaker L3 hp",
+   "meta": {
+    "group": "freeze L3",
+    "cond": "hp",
+    "L": 3,
+    "role": "breaker"
+   },
+   "tag": "s3_vs_separate",
+   "path": "results\\rl\\checkpoints\\m46f\\behaviour\\main\\freeze\\s3\\3_vs_separate.json.gz",
+   "horizon": 50,
+   "K": 32
+  },
+  {
+   "family": "freeze",
+   "idx": 4,
+   "label": "freezer L3 edge",
+   "meta": {
+    "group": "freeze L3",
+    "cond": "edge",
+    "L": 3,
+    "role": "freezer"
+   },
+   "tag": "s3_vs_shared",
+   "path": "results\\rl\\checkpoints\\m46f\\behaviour\\main\\freeze\\s3\\4_vs_shared.json.gz",
+   "horizon": 50,
+   "K": 32
+  },
+  {
+   "family": "freeze",
+   "idx": 4,
+   "label": "freezer L3 edge",
+   "meta": {
+    "group": "freeze L3",
+    "cond": "edge",
+    "L": 3,
+    "role": "freezer"
+   },
+   "tag": "s3_vs_separate",
+   "path": "results\\rl\\checkpoints\\m46f\\behaviour\\main\\freeze\\s3\\4_vs_separate.json.gz",
+   "horizon": 50,
+   "K": 32
+  },
+  {
+   "family": "freeze",
+   "idx": 5,
+   "label": "breaker L3 edge",
+   "meta": {
+    "group": "freeze L3",
+    "cond": "edge",
+    "L": 3,
+    "role": "breaker"
+   },
+   "tag": "s3_vs_shared",
+   "path": "results\\rl\\checkpoints\\m46f\\behaviour\\main\\freeze\\s3\\5_vs_shared.json.gz",
+   "horizon": 50,
+   "K": 32
+  },
+  {
+   "family": "freeze",
+   "idx": 5,
+   "label": "breaker L3 edge",
+   "meta": {
+    "group": "freeze L3",
+    "cond": "edge",
+    "L": 3,
+    "role": "breaker"
+   },
+   "tag": "s3_vs_separate",
+   "path": "results\\rl\\checkpoints\\m46f\\behaviour\\main\\freeze\\s3\\5_vs_separate.json.gz",
+   "horizon": 50,
+   "K": 32
+  },
+  {
+   "family": "freeze",
+   "idx": 6,
+   "label": "freezer L3 plaus",
+   "meta": {
+    "group": "freeze L3",
+    "cond": "plaus",
+    "L": 3,
+    "role": "freezer"
+   },
+   "tag": "s3_vs_shared",
+   "path": "results\\rl\\checkpoints\\m46f\\behaviour\\main\\freeze\\s3\\6_vs_shared.json.gz",
+   "horizon": 50,
+   "K": 32
+  },
+  {
+   "family": "freeze",
+   "idx": 6,
+   "label": "freezer L3 plaus",
+   "meta": {
+    "group": "freeze L3",
+    "cond": "plaus",
+    "L": 3,
+    "role": "freezer"
+   },
+   "tag": "s3_vs_separate",
+   "path": "results\\rl\\checkpoints\\m46f\\behaviour\\main\\freeze\\s3\\6_vs_separate.json.gz",
+   "horizon": 50,
+   "K": 32
+  },
+  {
+   "family": "freeze",
+   "idx": 7,
+   "label": "breaker L3 plaus",
+   "meta": {
+    "group": "freeze L3",
+    "cond": "plaus",
+    "L": 3,
+    "role": "breaker"
+   },
+   "tag": "s3_vs_shared",
+   "path": "results\\rl\\checkpoints\\m46f\\behaviour\\main\\freeze\\s3\\7_vs_shared.json.gz",
+   "horizon": 50,
+   "K": 32
+  },
+  {
+   "family": "freeze",
+   "idx": 7,
+   "label": "breaker L3 plaus",
+   "meta": {
+    "group": "freeze L3",
+    "cond": "plaus",
+    "L": 3,
+    "role": "breaker"
+   },
+   "tag": "s3_vs_separate",
+   "path": "results\\rl\\checkpoints\\m46f\\behaviour\\main\\freeze\\s3\\7_vs_separate.json.gz",
+   "horizon": 50,
+   "K": 32
+  },
+  {
+   "family": "freeze",
+   "idx": 8,
+   "label": "freezer L3 brk",
+   "meta": {
+    "group": "freeze L3",
+    "cond": "brk",
+    "L": 3,
+    "role": "freezer"
+   },
+   "tag": "s3_vs_shared",
+   "path": "results\\rl\\checkpoints\\m46f\\behaviour\\main\\freeze\\s3\\8_vs_shared.json.gz",
+   "horizon": 50,
+   "K": 32
+  },
+  {
+   "family": "freeze",
+   "idx": 8,
+   "label": "freezer L3 brk",
+   "meta": {
+    "group": "freeze L3",
+    "cond": "brk",
+    "L": 3,
+    "role": "freezer"
+   },
+   "tag": "s3_vs_separate",
+   "path": "results\\rl\\checkpoints\\m46f\\behaviour\\main\\freeze\\s3\\8_vs_separate.json.gz",
+   "horizon": 50,
+   "K": 32
+  },
+  {
+   "family": "freeze",
+   "idx": 9,
+   "label": "breaker L3 brk",
+   "meta": {
+    "group": "freeze L3",
+    "cond": "brk",
+    "L": 3,
+    "role": "breaker"
+   },
+   "tag": "s3_vs_shared",
+   "path": "results\\rl\\checkpoints\\m46f\\behaviour\\main\\freeze\\s3\\9_vs_shared.json.gz",
+   "horizon": 50,
+   "K": 32
+  },
+  {
+   "family": "freeze",
+   "idx": 9,
+   "label": "breaker L3 brk",
+   "meta": {
+    "group": "freeze L3",
+    "cond": "brk",
+    "L": 3,
+    "role": "breaker"
+   },
+   "tag": "s3_vs_separate",
+   "path": "results\\rl\\checkpoints\\m46f\\behaviour\\main\\freeze\\s3\\9_vs_separate.json.gz",
+   "horizon": 50,
+   "K": 32
+  },
+  {
+   "family": "freeze",
+   "idx": 10,
+   "label": "freezer L3 x1.76",
+   "meta": {
+    "group": "freeze L3",
+    "cond": "x1.76",
+    "L": 3,
+    "role": "freezer"
+   },
+   "tag": "s3_vs_shared",
+   "path": "results\\rl\\checkpoints\\m46f\\behaviour\\main\\freeze\\s3\\10_vs_shared.json.gz",
+   "horizon": 50,
+   "K": 32
+  },
+  {
+   "family": "freeze",
+   "idx": 10,
+   "label": "freezer L3 x1.76",
+   "meta": {
+    "group": "freeze L3",
+    "cond": "x1.76",
+    "L": 3,
+    "role": "freezer"
+   },
+   "tag": "s3_vs_separate",
+   "path": "results\\rl\\checkpoints\\m46f\\behaviour\\main\\freeze\\s3\\10_vs_separate.json.gz",
+   "horizon": 50,
+   "K": 32
+  },
+  {
+   "family": "freeze",
+   "idx": 11,
+   "label": "breaker L3 x1.76",
+   "meta": {
+    "group": "freeze L3",
+    "cond": "x1.76",
+    "L": 3,
+    "role": "breaker"
+   },
+   "tag": "s3_vs_shared",
+   "path": "results\\rl\\checkpoints\\m46f\\behaviour\\main\\freeze\\s3\\11_vs_shared.json.gz",
+   "horizon": 50,
+   "K": 32
+  },
+  {
+   "family": "freeze",
+   "idx": 11,
+   "label": "breaker L3 x1.76",
+   "meta": {
+    "group": "freeze L3",
+    "cond": "x1.76",
+    "L": 3,
+    "role": "breaker"
+   },
+   "tag": "s3_vs_separate",
+   "path": "results\\rl\\checkpoints\\m46f\\behaviour\\main\\freeze\\s3\\11_vs_separate.json.gz",
+   "horizon": 50,
+   "K": 32
+  },
+  {
+   "family": "freeze",
+   "idx": 12,
+   "label": "freezer L5 equal",
+   "meta": {
+    "group": "freeze L5",
+    "cond": "equal",
+    "L": 5,
+    "role": "freezer"
+   },
+   "tag": "s3_vs_shared",
+   "path": "results\\rl\\checkpoints\\m46f\\behaviour\\main\\freeze\\s3\\12_vs_shared.json.gz",
+   "horizon": 50,
+   "K": 32
+  },
+  {
+   "family": "freeze",
+   "idx": 12,
+   "label": "freezer L5 equal",
+   "meta": {
+    "group": "freeze L5",
+    "cond": "equal",
+    "L": 5,
+    "role": "freezer"
+   },
+   "tag": "s3_vs_separate",
+   "path": "results\\rl\\checkpoints\\m46f\\behaviour\\main\\freeze\\s3\\12_vs_separate.json.gz",
+   "horizon": 50,
+   "K": 32
+  },
+  {
+   "family": "freeze",
+   "idx": 13,
+   "label": "breaker L5 equal",
+   "meta": {
+    "group": "freeze L5",
+    "cond": "equal",
+    "L": 5,
+    "role": "breaker"
+   },
+   "tag": "s3_vs_shared",
+   "path": "results\\rl\\checkpoints\\m46f\\behaviour\\main\\freeze\\s3\\13_vs_shared.json.gz",
+   "horizon": 50,
+   "K": 32
+  },
+  {
+   "family": "freeze",
+   "idx": 13,
+   "label": "breaker L5 equal",
+   "meta": {
+    "group": "freeze L5",
+    "cond": "equal",
+    "L": 5,
+    "role": "breaker"
+   },
+   "tag": "s3_vs_separate",
+   "path": "results\\rl\\checkpoints\\m46f\\behaviour\\main\\freeze\\s3\\13_vs_separate.json.gz",
+   "horizon": 50,
+   "K": 32
+  },
+  {
+   "family": "freeze",
+   "idx": 14,
+   "label": "freezer L5 hp",
+   "meta": {
+    "group": "freeze L5",
+    "cond": "hp",
+    "L": 5,
+    "role": "freezer"
+   },
+   "tag": "s3_vs_shared",
+   "path": "results\\rl\\checkpoints\\m46f\\behaviour\\main\\freeze\\s3\\14_vs_shared.json.gz",
+   "horizon": 50,
+   "K": 32
+  },
+  {
+   "family": "freeze",
+   "idx": 14,
+   "label": "freezer L5 hp",
+   "meta": {
+    "group": "freeze L5",
+    "cond": "hp",
+    "L": 5,
+    "role": "freezer"
+   },
+   "tag": "s3_vs_separate",
+   "path": "results\\rl\\checkpoints\\m46f\\behaviour\\main\\freeze\\s3\\14_vs_separate.json.gz",
+   "horizon": 50,
+   "K": 32
+  },
+  {
+   "family": "freeze",
+   "idx": 15,
+   "label": "breaker L5 hp",
+   "meta": {
+    "group": "freeze L5",
+    "cond": "hp",
+    "L": 5,
+    "role": "breaker"
+   },
+   "tag": "s3_vs_shared",
+   "path": "results\\rl\\checkpoints\\m46f\\behaviour\\main\\freeze\\s3\\15_vs_shared.json.gz",
+   "horizon": 50,
+   "K": 32
+  },
+  {
+   "family": "freeze",
+   "idx": 15,
+   "label": "breaker L5 hp",
+   "meta": {
+    "group": "freeze L5",
+    "cond": "hp",
+    "L": 5,
+    "role": "breaker"
+   },
+   "tag": "s3_vs_separate",
+   "path": "results\\rl\\checkpoints\\m46f\\behaviour\\main\\freeze\\s3\\15_vs_separate.json.gz",
+   "horizon": 50,
+   "K": 32
+  },
+  {
+   "family": "freeze",
+   "idx": 16,
+   "label": "freezer L5 edge",
+   "meta": {
+    "group": "freeze L5",
+    "cond": "edge",
+    "L": 5,
+    "role": "freezer"
+   },
+   "tag": "s3_vs_shared",
+   "path": "results\\rl\\checkpoints\\m46f\\behaviour\\main\\freeze\\s3\\16_vs_shared.json.gz",
+   "horizon": 50,
+   "K": 32
+  },
+  {
+   "family": "freeze",
+   "idx": 16,
+   "label": "freezer L5 edge",
+   "meta": {
+    "group": "freeze L5",
+    "cond": "edge",
+    "L": 5,
+    "role": "freezer"
+   },
+   "tag": "s3_vs_separate",
+   "path": "results\\rl\\checkpoints\\m46f\\behaviour\\main\\freeze\\s3\\16_vs_separate.json.gz",
+   "horizon": 50,
+   "K": 32
+  },
+  {
+   "family": "freeze",
+   "idx": 17,
+   "label": "breaker L5 edge",
+   "meta": {
+    "group": "freeze L5",
+    "cond": "edge",
+    "L": 5,
+    "role": "breaker"
+   },
+   "tag": "s3_vs_shared",
+   "path": "results\\rl\\checkpoints\\m46f\\behaviour\\main\\freeze\\s3\\17_vs_shared.json.gz",
+   "horizon": 50,
+   "K": 32
+  },
+  {
+   "family": "freeze",
+   "idx": 17,
+   "label": "breaker L5 edge",
+   "meta": {
+    "group": "freeze L5",
+    "cond": "edge",
+    "L": 5,
+    "role": "breaker"
+   },
+   "tag": "s3_vs_separate",
+   "path": "results\\rl\\checkpoints\\m46f\\behaviour\\main\\freeze\\s3\\17_vs_separate.json.gz",
+   "horizon": 50,
+   "K": 32
+  },
+  {
+   "family": "freeze",
+   "idx": 18,
+   "label": "freezer L5 plaus",
+   "meta": {
+    "group": "freeze L5",
+    "cond": "plaus",
+    "L": 5,
+    "role": "freezer"
+   },
+   "tag": "s3_vs_shared",
+   "path": "results\\rl\\checkpoints\\m46f\\behaviour\\main\\freeze\\s3\\18_vs_shared.json.gz",
+   "horizon": 50,
+   "K": 32
+  },
+  {
+   "family": "freeze",
+   "idx": 18,
+   "label": "freezer L5 plaus",
+   "meta": {
+    "group": "freeze L5",
+    "cond": "plaus",
+    "L": 5,
+    "role": "freezer"
+   },
+   "tag": "s3_vs_separate",
+   "path": "results\\rl\\checkpoints\\m46f\\behaviour\\main\\freeze\\s3\\18_vs_separate.json.gz",
+   "horizon": 50,
+   "K": 32
+  },
+  {
+   "family": "freeze",
+   "idx": 19,
+   "label": "breaker L5 plaus",
+   "meta": {
+    "group": "freeze L5",
+    "cond": "plaus",
+    "L": 5,
+    "role": "breaker"
+   },
+   "tag": "s3_vs_shared",
+   "path": "results\\rl\\checkpoints\\m46f\\behaviour\\main\\freeze\\s3\\19_vs_shared.json.gz",
+   "horizon": 50,
+   "K": 32
+  },
+  {
+   "family": "freeze",
+   "idx": 19,
+   "label": "breaker L5 plaus",
+   "meta": {
+    "group": "freeze L5",
+    "cond": "plaus",
+    "L": 5,
+    "role": "breaker"
+   },
+   "tag": "s3_vs_separate",
+   "path": "results\\rl\\checkpoints\\m46f\\behaviour\\main\\freeze\\s3\\19_vs_separate.json.gz",
+   "horizon": 50,
+   "K": 32
+  },
+  {
+   "family": "freeze",
+   "idx": 20,
+   "label": "freezer L5 brk",
+   "meta": {
+    "group": "freeze L5",
+    "cond": "brk",
+    "L": 5,
+    "role": "freezer"
+   },
+   "tag": "s3_vs_shared",
+   "path": "results\\rl\\checkpoints\\m46f\\behaviour\\main\\freeze\\s3\\20_vs_shared.json.gz",
+   "horizon": 50,
+   "K": 32
+  },
+  {
+   "family": "freeze",
+   "idx": 20,
+   "label": "freezer L5 brk",
+   "meta": {
+    "group": "freeze L5",
+    "cond": "brk",
+    "L": 5,
+    "role": "freezer"
+   },
+   "tag": "s3_vs_separate",
+   "path": "results\\rl\\checkpoints\\m46f\\behaviour\\main\\freeze\\s3\\20_vs_separate.json.gz",
+   "horizon": 50,
+   "K": 32
+  },
+  {
+   "family": "freeze",
+   "idx": 21,
+   "label": "breaker L5 brk",
+   "meta": {
+    "group": "freeze L5",
+    "cond": "brk",
+    "L": 5,
+    "role": "breaker"
+   },
+   "tag": "s3_vs_shared",
+   "path": "results\\rl\\checkpoints\\m46f\\behaviour\\main\\freeze\\s3\\21_vs_shared.json.gz",
+   "horizon": 50,
+   "K": 32
+  },
+  {
+   "family": "freeze",
+   "idx": 21,
+   "label": "breaker L5 brk",
+   "meta": {
+    "group": "freeze L5",
+    "cond": "brk",
+    "L": 5,
+    "role": "breaker"
+   },
+   "tag": "s3_vs_separate",
+   "path": "results\\rl\\checkpoints\\m46f\\behaviour\\main\\freeze\\s3\\21_vs_separate.json.gz",
+   "horizon": 50,
+   "K": 32
+  },
+  {
+   "family": "freeze",
+   "idx": 22,
+   "label": "freezer L5 x1.76",
+   "meta": {
+    "group": "freeze L5",
+    "cond": "x1.76",
+    "L": 5,
+    "role": "freezer"
+   },
+   "tag": "s3_vs_shared",
+   "path": "results\\rl\\checkpoints\\m46f\\behaviour\\main\\freeze\\s3\\22_vs_shared.json.gz",
+   "horizon": 50,
+   "K": 32
+  },
+  {
+   "family": "freeze",
+   "idx": 22,
+   "label": "freezer L5 x1.76",
+   "meta": {
+    "group": "freeze L5",
+    "cond": "x1.76",
+    "L": 5,
+    "role": "freezer"
+   },
+   "tag": "s3_vs_separate",
+   "path": "results\\rl\\checkpoints\\m46f\\behaviour\\main\\freeze\\s3\\22_vs_separate.json.gz",
+   "horizon": 50,
+   "K": 32
+  },
+  {
+   "family": "freeze",
+   "idx": 23,
+   "label": "breaker L5 x1.76",
+   "meta": {
+    "group": "freeze L5",
+    "cond": "x1.76",
+    "L": 5,
+    "role": "breaker"
+   },
+   "tag": "s3_vs_shared",
+   "path": "results\\rl\\checkpoints\\m46f\\behaviour\\main\\freeze\\s3\\23_vs_shared.json.gz",
+   "horizon": 50,
+   "K": 32
+  },
+  {
+   "family": "freeze",
+   "idx": 23,
+   "label": "breaker L5 x1.76",
+   "meta": {
+    "group": "freeze L5",
+    "cond": "x1.76",
+    "L": 5,
+    "role": "breaker"
+   },
+   "tag": "s3_vs_separate",
+   "path": "results\\rl\\checkpoints\\m46f\\behaviour\\main\\freeze\\s3\\23_vs_separate.json.gz",
+   "horizon": 50,
+   "K": 32
+  },
+  {
+   "family": "freeze",
+   "idx": 24,
+   "label": "freezer L8 equal",
+   "meta": {
+    "group": "freeze L8",
+    "cond": "equal",
+    "L": 8,
+    "role": "freezer"
+   },
+   "tag": "s3_vs_shared",
+   "path": "results\\rl\\checkpoints\\m46f\\behaviour\\main\\freeze\\s3\\24_vs_shared.json.gz",
+   "horizon": 50,
+   "K": 32
+  },
+  {
+   "family": "freeze",
+   "idx": 24,
+   "label": "freezer L8 equal",
+   "meta": {
+    "group": "freeze L8",
+    "cond": "equal",
+    "L": 8,
+    "role": "freezer"
+   },
+   "tag": "s3_vs_separate",
+   "path": "results\\rl\\checkpoints\\m46f\\behaviour\\main\\freeze\\s3\\24_vs_separate.json.gz",
+   "horizon": 50,
+   "K": 32
+  },
+  {
+   "family": "freeze",
+   "idx": 25,
+   "label": "breaker L8 equal",
+   "meta": {
+    "group": "freeze L8",
+    "cond": "equal",
+    "L": 8,
+    "role": "breaker"
+   },
+   "tag": "s3_vs_shared",
+   "path": "results\\rl\\checkpoints\\m46f\\behaviour\\main\\freeze\\s3\\25_vs_shared.json.gz",
+   "horizon": 50,
+   "K": 32
+  },
+  {
+   "family": "freeze",
+   "idx": 25,
+   "label": "breaker L8 equal",
+   "meta": {
+    "group": "freeze L8",
+    "cond": "equal",
+    "L": 8,
+    "role": "breaker"
+   },
+   "tag": "s3_vs_separate",
+   "path": "results\\rl\\checkpoints\\m46f\\behaviour\\main\\freeze\\s3\\25_vs_separate.json.gz",
+   "horizon": 50,
+   "K": 32
+  },
+  {
+   "family": "freeze",
+   "idx": 26,
+   "label": "freezer L8 hp",
+   "meta": {
+    "group": "freeze L8",
+    "cond": "hp",
+    "L": 8,
+    "role": "freezer"
+   },
+   "tag": "s3_vs_shared",
+   "path": "results\\rl\\checkpoints\\m46f\\behaviour\\main\\freeze\\s3\\26_vs_shared.json.gz",
+   "horizon": 50,
+   "K": 32
+  },
+  {
+   "family": "freeze",
+   "idx": 26,
+   "label": "freezer L8 hp",
+   "meta": {
+    "group": "freeze L8",
+    "cond": "hp",
+    "L": 8,
+    "role": "freezer"
+   },
+   "tag": "s3_vs_separate",
+   "path": "results\\rl\\checkpoints\\m46f\\behaviour\\main\\freeze\\s3\\26_vs_separate.json.gz",
+   "horizon": 50,
+   "K": 32
+  },
+  {
+   "family": "freeze",
+   "idx": 27,
+   "label": "breaker L8 hp",
+   "meta": {
+    "group": "freeze L8",
+    "cond": "hp",
+    "L": 8,
+    "role": "breaker"
+   },
+   "tag": "s3_vs_shared",
+   "path": "results\\rl\\checkpoints\\m46f\\behaviour\\main\\freeze\\s3\\27_vs_shared.json.gz",
+   "horizon": 50,
+   "K": 32
+  },
+  {
+   "family": "freeze",
+   "idx": 27,
+   "label": "breaker L8 hp",
+   "meta": {
+    "group": "freeze L8",
+    "cond": "hp",
+    "L": 8,
+    "role": "breaker"
+   },
+   "tag": "s3_vs_separate",
+   "path": "results\\rl\\checkpoints\\m46f\\behaviour\\main\\freeze\\s3\\27_vs_separate.json.gz",
+   "horizon": 50,
+   "K": 32
+  },
+  {
+   "family": "freeze",
+   "idx": 28,
+   "label": "freezer L8 edge",
+   "meta": {
+    "group": "freeze L8",
+    "cond": "edge",
+    "L": 8,
+    "role": "freezer"
+   },
+   "tag": "s3_vs_shared",
+   "path": "results\\rl\\checkpoints\\m46f\\behaviour\\main\\freeze\\s3\\28_vs_shared.json.gz",
+   "horizon": 50,
+   "K": 32
+  },
+  {
+   "family": "freeze",
+   "idx": 28,
+   "label": "freezer L8 edge",
+   "meta": {
+    "group": "freeze L8",
+    "cond": "edge",
+    "L": 8,
+    "role": "freezer"
+   },
+   "tag": "s3_vs_separate",
+   "path": "results\\rl\\checkpoints\\m46f\\behaviour\\main\\freeze\\s3\\28_vs_separate.json.gz",
+   "horizon": 50,
+   "K": 32
+  },
+  {
+   "family": "freeze",
+   "idx": 29,
+   "label": "breaker L8 edge",
+   "meta": {
+    "group": "freeze L8",
+    "cond": "edge",
+    "L": 8,
+    "role": "breaker"
+   },
+   "tag": "s3_vs_shared",
+   "path": "results\\rl\\checkpoints\\m46f\\behaviour\\main\\freeze\\s3\\29_vs_shared.json.gz",
+   "horizon": 50,
+   "K": 32
+  },
+  {
+   "family": "freeze",
+   "idx": 29,
+   "label": "breaker L8 edge",
+   "meta": {
+    "group": "freeze L8",
+    "cond": "edge",
+    "L": 8,
+    "role": "breaker"
+   },
+   "tag": "s3_vs_separate",
+   "path": "results\\rl\\checkpoints\\m46f\\behaviour\\main\\freeze\\s3\\29_vs_separate.json.gz",
+   "horizon": 50,
+   "K": 32
+  },
+  {
+   "family": "freeze",
+   "idx": 30,
+   "label": "freezer L8 plaus",
+   "meta": {
+    "group": "freeze L8",
+    "cond": "plaus",
+    "L": 8,
+    "role": "freezer"
+   },
+   "tag": "s3_vs_shared",
+   "path": "results\\rl\\checkpoints\\m46f\\behaviour\\main\\freeze\\s3\\30_vs_shared.json.gz",
+   "horizon": 50,
+   "K": 32
+  },
+  {
+   "family": "freeze",
+   "idx": 30,
+   "label": "freezer L8 plaus",
+   "meta": {
+    "group": "freeze L8",
+    "cond": "plaus",
+    "L": 8,
+    "role": "freezer"
+   },
+   "tag": "s3_vs_separate",
+   "path": "results\\rl\\checkpoints\\m46f\\behaviour\\main\\freeze\\s3\\30_vs_separate.json.gz",
+   "horizon": 50,
+   "K": 32
+  },
+  {
+   "family": "freeze",
+   "idx": 31,
+   "label": "breaker L8 plaus",
+   "meta": {
+    "group": "freeze L8",
+    "cond": "plaus",
+    "L": 8,
+    "role": "breaker"
+   },
+   "tag": "s3_vs_shared",
+   "path": "results\\rl\\checkpoints\\m46f\\behaviour\\main\\freeze\\s3\\31_vs_shared.json.gz",
+   "horizon": 50,
+   "K": 32
+  },
+  {
+   "family": "freeze",
+   "idx": 31,
+   "label": "breaker L8 plaus",
+   "meta": {
+    "group": "freeze L8",
+    "cond": "plaus",
+    "L": 8,
+    "role": "breaker"
+   },
+   "tag": "s3_vs_separate",
+   "path": "results\\rl\\checkpoints\\m46f\\behaviour\\main\\freeze\\s3\\31_vs_separate.json.gz",
+   "horizon": 50,
+   "K": 32
+  },
+  {
+   "family": "freeze",
+   "idx": 32,
+   "label": "freezer L8 brk",
+   "meta": {
+    "group": "freeze L8",
+    "cond": "brk",
+    "L": 8,
+    "role": "freezer"
+   },
+   "tag": "s3_vs_shared",
+   "path": "results\\rl\\checkpoints\\m46f\\behaviour\\main\\freeze\\s3\\32_vs_shared.json.gz",
+   "horizon": 50,
+   "K": 32
+  },
+  {
+   "family": "freeze",
+   "idx": 32,
+   "label": "freezer L8 brk",
+   "meta": {
+    "group": "freeze L8",
+    "cond": "brk",
+    "L": 8,
+    "role": "freezer"
+   },
+   "tag": "s3_vs_separate",
+   "path": "results\\rl\\checkpoints\\m46f\\behaviour\\main\\freeze\\s3\\32_vs_separate.json.gz",
+   "horizon": 50,
+   "K": 32
+  },
+  {
+   "family": "freeze",
+   "idx": 33,
+   "label": "breaker L8 brk",
+   "meta": {
+    "group": "freeze L8",
+    "cond": "brk",
+    "L": 8,
+    "role": "breaker"
+   },
+   "tag": "s3_vs_shared",
+   "path": "results\\rl\\checkpoints\\m46f\\behaviour\\main\\freeze\\s3\\33_vs_shared.json.gz",
+   "horizon": 50,
+   "K": 32
+  },
+  {
+   "family": "freeze",
+   "idx": 33,
+   "label": "breaker L8 brk",
+   "meta": {
+    "group": "freeze L8",
+    "cond": "brk",
+    "L": 8,
+    "role": "breaker"
+   },
+   "tag": "s3_vs_separate",
+   "path": "results\\rl\\checkpoints\\m46f\\behaviour\\main\\freeze\\s3\\33_vs_separate.json.gz",
+   "horizon": 50,
+   "K": 32
+  },
+  {
+   "family": "freeze",
+   "idx": 34,
+   "label": "freezer L8 x1.76",
+   "meta": {
+    "group": "freeze L8",
+    "cond": "x1.76",
+    "L": 8,
+    "role": "freezer"
+   },
+   "tag": "s3_vs_shared",
+   "path": "results\\rl\\checkpoints\\m46f\\behaviour\\main\\freeze\\s3\\34_vs_shared.json.gz",
+   "horizon": 50,
+   "K": 32
+  },
+  {
+   "family": "freeze",
+   "idx": 34,
+   "label": "freezer L8 x1.76",
+   "meta": {
+    "group": "freeze L8",
+    "cond": "x1.76",
+    "L": 8,
+    "role": "freezer"
+   },
+   "tag": "s3_vs_separate",
+   "path": "results\\rl\\checkpoints\\m46f\\behaviour\\main\\freeze\\s3\\34_vs_separate.json.gz",
+   "horizon": 50,
+   "K": 32
+  },
+  {
+   "family": "freeze",
+   "idx": 35,
+   "label": "breaker L8 x1.76",
+   "meta": {
+    "group": "freeze L8",
+    "cond": "x1.76",
+    "L": 8,
+    "role": "breaker"
+   },
+   "tag": "s3_vs_shared",
+   "path": "results\\rl\\checkpoints\\m46f\\behaviour\\main\\freeze\\s3\\35_vs_shared.json.gz",
+   "horizon": 50,
+   "K": 32
+  },
+  {
+   "family": "freeze",
+   "idx": 35,
+   "label": "breaker L8 x1.76",
+   "meta": {
+    "group": "freeze L8",
+    "cond": "x1.76",
+    "L": 8,
+    "role": "breaker"
+   },
+   "tag": "s3_vs_separate",
+   "path": "results\\rl\\checkpoints\\m46f\\behaviour\\main\\freeze\\s3\\35_vs_separate.json.gz",
+   "horizon": 50,
+   "K": 32
+  },
+  {
+   "family": "freeze",
+   "idx": 0,
+   "label": "freezer L3 equal",
+   "meta": {
+    "group": "freeze L3",
+    "cond": "equal",
+    "L": 3,
+    "role": "freezer"
+   },
+   "tag": "s4_vs_shared",
+   "path": "results\\rl\\checkpoints\\m46f\\behaviour\\main\\freeze\\s4\\0_vs_shared.json.gz",
+   "horizon": 50,
+   "K": 32
+  },
+  {
+   "family": "freeze",
+   "idx": 0,
+   "label": "freezer L3 equal",
+   "meta": {
+    "group": "freeze L3",
+    "cond": "equal",
+    "L": 3,
+    "role": "freezer"
+   },
+   "tag": "s4_vs_separate",
+   "path": "results\\rl\\checkpoints\\m46f\\behaviour\\main\\freeze\\s4\\0_vs_separate.json.gz",
+   "horizon": 50,
+   "K": 32
+  },
+  {
+   "family": "freeze",
+   "idx": 1,
+   "label": "breaker L3 equal",
+   "meta": {
+    "group": "freeze L3",
+    "cond": "equal",
+    "L": 3,
+    "role": "breaker"
+   },
+   "tag": "s4_vs_shared",
+   "path": "results\\rl\\checkpoints\\m46f\\behaviour\\main\\freeze\\s4\\1_vs_shared.json.gz",
+   "horizon": 50,
+   "K": 32
+  },
+  {
+   "family": "freeze",
+   "idx": 1,
+   "label": "breaker L3 equal",
+   "meta": {
+    "group": "freeze L3",
+    "cond": "equal",
+    "L": 3,
+    "role": "breaker"
+   },
+   "tag": "s4_vs_separate",
+   "path": "results\\rl\\checkpoints\\m46f\\behaviour\\main\\freeze\\s4\\1_vs_separate.json.gz",
+   "horizon": 50,
+   "K": 32
+  },
+  {
+   "family": "freeze",
+   "idx": 2,
+   "label": "freezer L3 hp",
+   "meta": {
+    "group": "freeze L3",
+    "cond": "hp",
+    "L": 3,
+    "role": "freezer"
+   },
+   "tag": "s4_vs_shared",
+   "path": "results\\rl\\checkpoints\\m46f\\behaviour\\main\\freeze\\s4\\2_vs_shared.json.gz",
+   "horizon": 50,
+   "K": 32
+  },
+  {
+   "family": "freeze",
+   "idx": 2,
+   "label": "freezer L3 hp",
+   "meta": {
+    "group": "freeze L3",
+    "cond": "hp",
+    "L": 3,
+    "role": "freezer"
+   },
+   "tag": "s4_vs_separate",
+   "path": "results\\rl\\checkpoints\\m46f\\behaviour\\main\\freeze\\s4\\2_vs_separate.json.gz",
+   "horizon": 50,
+   "K": 32
+  },
+  {
+   "family": "freeze",
+   "idx": 3,
+   "label": "breaker L3 hp",
+   "meta": {
+    "group": "freeze L3",
+    "cond": "hp",
+    "L": 3,
+    "role": "breaker"
+   },
+   "tag": "s4_vs_shared",
+   "path": "results\\rl\\checkpoints\\m46f\\behaviour\\main\\freeze\\s4\\3_vs_shared.json.gz",
+   "horizon": 50,
+   "K": 32
+  },
+  {
+   "family": "freeze",
+   "idx": 3,
+   "label": "breaker L3 hp",
+   "meta": {
+    "group": "freeze L3",
+    "cond": "hp",
+    "L": 3,
+    "role": "breaker"
+   },
+   "tag": "s4_vs_separate",
+   "path": "results\\rl\\checkpoints\\m46f\\behaviour\\main\\freeze\\s4\\3_vs_separate.json.gz",
+   "horizon": 50,
+   "K": 32
+  },
+  {
+   "family": "freeze",
+   "idx": 4,
+   "label": "freezer L3 edge",
+   "meta": {
+    "group": "freeze L3",
+    "cond": "edge",
+    "L": 3,
+    "role": "freezer"
+   },
+   "tag": "s4_vs_shared",
+   "path": "results\\rl\\checkpoints\\m46f\\behaviour\\main\\freeze\\s4\\4_vs_shared.json.gz",
+   "horizon": 50,
+   "K": 32
+  },
+  {
+   "family": "freeze",
+   "idx": 4,
+   "label": "freezer L3 edge",
+   "meta": {
+    "group": "freeze L3",
+    "cond": "edge",
+    "L": 3,
+    "role": "freezer"
+   },
+   "tag": "s4_vs_separate",
+   "path": "results\\rl\\checkpoints\\m46f\\behaviour\\main\\freeze\\s4\\4_vs_separate.json.gz",
+   "horizon": 50,
+   "K": 32
+  },
+  {
+   "family": "freeze",
+   "idx": 5,
+   "label": "breaker L3 edge",
+   "meta": {
+    "group": "freeze L3",
+    "cond": "edge",
+    "L": 3,
+    "role": "breaker"
+   },
+   "tag": "s4_vs_shared",
+   "path": "results\\rl\\checkpoints\\m46f\\behaviour\\main\\freeze\\s4\\5_vs_shared.json.gz",
+   "horizon": 50,
+   "K": 32
+  },
+  {
+   "family": "freeze",
+   "idx": 5,
+   "label": "breaker L3 edge",
+   "meta": {
+    "group": "freeze L3",
+    "cond": "edge",
+    "L": 3,
+    "role": "breaker"
+   },
+   "tag": "s4_vs_separate",
+   "path": "results\\rl\\checkpoints\\m46f\\behaviour\\main\\freeze\\s4\\5_vs_separate.json.gz",
+   "horizon": 50,
+   "K": 32
+  },
+  {
+   "family": "freeze",
+   "idx": 6,
+   "label": "freezer L3 plaus",
+   "meta": {
+    "group": "freeze L3",
+    "cond": "plaus",
+    "L": 3,
+    "role": "freezer"
+   },
+   "tag": "s4_vs_shared",
+   "path": "results\\rl\\checkpoints\\m46f\\behaviour\\main\\freeze\\s4\\6_vs_shared.json.gz",
+   "horizon": 50,
+   "K": 32
+  },
+  {
+   "family": "freeze",
+   "idx": 6,
+   "label": "freezer L3 plaus",
+   "meta": {
+    "group": "freeze L3",
+    "cond": "plaus",
+    "L": 3,
+    "role": "freezer"
+   },
+   "tag": "s4_vs_separate",
+   "path": "results\\rl\\checkpoints\\m46f\\behaviour\\main\\freeze\\s4\\6_vs_separate.json.gz",
+   "horizon": 50,
+   "K": 32
+  },
+  {
+   "family": "freeze",
+   "idx": 7,
+   "label": "breaker L3 plaus",
+   "meta": {
+    "group": "freeze L3",
+    "cond": "plaus",
+    "L": 3,
+    "role": "breaker"
+   },
+   "tag": "s4_vs_shared",
+   "path": "results\\rl\\checkpoints\\m46f\\behaviour\\main\\freeze\\s4\\7_vs_shared.json.gz",
+   "horizon": 50,
+   "K": 32
+  },
+  {
+   "family": "freeze",
+   "idx": 7,
+   "label": "breaker L3 plaus",
+   "meta": {
+    "group": "freeze L3",
+    "cond": "plaus",
+    "L": 3,
+    "role": "breaker"
+   },
+   "tag": "s4_vs_separate",
+   "path": "results\\rl\\checkpoints\\m46f\\behaviour\\main\\freeze\\s4\\7_vs_separate.json.gz",
+   "horizon": 50,
+   "K": 32
+  },
+  {
+   "family": "freeze",
+   "idx": 8,
+   "label": "freezer L3 brk",
+   "meta": {
+    "group": "freeze L3",
+    "cond": "brk",
+    "L": 3,
+    "role": "freezer"
+   },
+   "tag": "s4_vs_shared",
+   "path": "results\\rl\\checkpoints\\m46f\\behaviour\\main\\freeze\\s4\\8_vs_shared.json.gz",
+   "horizon": 50,
+   "K": 32
+  },
+  {
+   "family": "freeze",
+   "idx": 8,
+   "label": "freezer L3 brk",
+   "meta": {
+    "group": "freeze L3",
+    "cond": "brk",
+    "L": 3,
+    "role": "freezer"
+   },
+   "tag": "s4_vs_separate",
+   "path": "results\\rl\\checkpoints\\m46f\\behaviour\\main\\freeze\\s4\\8_vs_separate.json.gz",
+   "horizon": 50,
+   "K": 32
+  },
+  {
+   "family": "freeze",
+   "idx": 9,
+   "label": "breaker L3 brk",
+   "meta": {
+    "group": "freeze L3",
+    "cond": "brk",
+    "L": 3,
+    "role": "breaker"
+   },
+   "tag": "s4_vs_shared",
+   "path": "results\\rl\\checkpoints\\m46f\\behaviour\\main\\freeze\\s4\\9_vs_shared.json.gz",
+   "horizon": 50,
+   "K": 32
+  },
+  {
+   "family": "freeze",
+   "idx": 9,
+   "label": "breaker L3 brk",
+   "meta": {
+    "group": "freeze L3",
+    "cond": "brk",
+    "L": 3,
+    "role": "breaker"
+   },
+   "tag": "s4_vs_separate",
+   "path": "results\\rl\\checkpoints\\m46f\\behaviour\\main\\freeze\\s4\\9_vs_separate.json.gz",
+   "horizon": 50,
+   "K": 32
+  },
+  {
+   "family": "freeze",
+   "idx": 10,
+   "label": "freezer L3 x1.76",
+   "meta": {
+    "group": "freeze L3",
+    "cond": "x1.76",
+    "L": 3,
+    "role": "freezer"
+   },
+   "tag": "s4_vs_shared",
+   "path": "results\\rl\\checkpoints\\m46f\\behaviour\\main\\freeze\\s4\\10_vs_shared.json.gz",
+   "horizon": 50,
+   "K": 32
+  },
+  {
+   "family": "freeze",
+   "idx": 10,
+   "label": "freezer L3 x1.76",
+   "meta": {
+    "group": "freeze L3",
+    "cond": "x1.76",
+    "L": 3,
+    "role": "freezer"
+   },
+   "tag": "s4_vs_separate",
+   "path": "results\\rl\\checkpoints\\m46f\\behaviour\\main\\freeze\\s4\\10_vs_separate.json.gz",
+   "horizon": 50,
+   "K": 32
+  },
+  {
+   "family": "freeze",
+   "idx": 11,
+   "label": "breaker L3 x1.76",
+   "meta": {
+    "group": "freeze L3",
+    "cond": "x1.76",
+    "L": 3,
+    "role": "breaker"
+   },
+   "tag": "s4_vs_shared",
+   "path": "results\\rl\\checkpoints\\m46f\\behaviour\\main\\freeze\\s4\\11_vs_shared.json.gz",
+   "horizon": 50,
+   "K": 32
+  },
+  {
+   "family": "freeze",
+   "idx": 11,
+   "label": "breaker L3 x1.76",
+   "meta": {
+    "group": "freeze L3",
+    "cond": "x1.76",
+    "L": 3,
+    "role": "breaker"
+   },
+   "tag": "s4_vs_separate",
+   "path": "results\\rl\\checkpoints\\m46f\\behaviour\\main\\freeze\\s4\\11_vs_separate.json.gz",
+   "horizon": 50,
+   "K": 32
+  },
+  {
+   "family": "freeze",
+   "idx": 12,
+   "label": "freezer L5 equal",
+   "meta": {
+    "group": "freeze L5",
+    "cond": "equal",
+    "L": 5,
+    "role": "freezer"
+   },
+   "tag": "s4_vs_shared",
+   "path": "results\\rl\\checkpoints\\m46f\\behaviour\\main\\freeze\\s4\\12_vs_shared.json.gz",
+   "horizon": 50,
+   "K": 32
+  },
+  {
+   "family": "freeze",
+   "idx": 12,
+   "label": "freezer L5 equal",
+   "meta": {
+    "group": "freeze L5",
+    "cond": "equal",
+    "L": 5,
+    "role": "freezer"
+   },
+   "tag": "s4_vs_separate",
+   "path": "results\\rl\\checkpoints\\m46f\\behaviour\\main\\freeze\\s4\\12_vs_separate.json.gz",
+   "horizon": 50,
+   "K": 32
+  },
+  {
+   "family": "freeze",
+   "idx": 13,
+   "label": "breaker L5 equal",
+   "meta": {
+    "group": "freeze L5",
+    "cond": "equal",
+    "L": 5,
+    "role": "breaker"
+   },
+   "tag": "s4_vs_shared",
+   "path": "results\\rl\\checkpoints\\m46f\\behaviour\\main\\freeze\\s4\\13_vs_shared.json.gz",
+   "horizon": 50,
+   "K": 32
+  },
+  {
+   "family": "freeze",
+   "idx": 13,
+   "label": "breaker L5 equal",
+   "meta": {
+    "group": "freeze L5",
+    "cond": "equal",
+    "L": 5,
+    "role": "breaker"
+   },
+   "tag": "s4_vs_separate",
+   "path": "results\\rl\\checkpoints\\m46f\\behaviour\\main\\freeze\\s4\\13_vs_separate.json.gz",
+   "horizon": 50,
+   "K": 32
+  },
+  {
+   "family": "freeze",
+   "idx": 14,
+   "label": "freezer L5 hp",
+   "meta": {
+    "group": "freeze L5",
+    "cond": "hp",
+    "L": 5,
+    "role": "freezer"
+   },
+   "tag": "s4_vs_shared",
+   "path": "results\\rl\\checkpoints\\m46f\\behaviour\\main\\freeze\\s4\\14_vs_shared.json.gz",
+   "horizon": 50,
+   "K": 32
+  },
+  {
+   "family": "freeze",
+   "idx": 14,
+   "label": "freezer L5 hp",
+   "meta": {
+    "group": "freeze L5",
+    "cond": "hp",
+    "L": 5,
+    "role": "freezer"
+   },
+   "tag": "s4_vs_separate",
+   "path": "results\\rl\\checkpoints\\m46f\\behaviour\\main\\freeze\\s4\\14_vs_separate.json.gz",
+   "horizon": 50,
+   "K": 32
+  },
+  {
+   "family": "freeze",
+   "idx": 15,
+   "label": "breaker L5 hp",
+   "meta": {
+    "group": "freeze L5",
+    "cond": "hp",
+    "L": 5,
+    "role": "breaker"
+   },
+   "tag": "s4_vs_shared",
+   "path": "results\\rl\\checkpoints\\m46f\\behaviour\\main\\freeze\\s4\\15_vs_shared.json.gz",
+   "horizon": 50,
+   "K": 32
+  },
+  {
+   "family": "freeze",
+   "idx": 15,
+   "label": "breaker L5 hp",
+   "meta": {
+    "group": "freeze L5",
+    "cond": "hp",
+    "L": 5,
+    "role": "breaker"
+   },
+   "tag": "s4_vs_separate",
+   "path": "results\\rl\\checkpoints\\m46f\\behaviour\\main\\freeze\\s4\\15_vs_separate.json.gz",
+   "horizon": 50,
+   "K": 32
+  },
+  {
+   "family": "freeze",
+   "idx": 16,
+   "label": "freezer L5 edge",
+   "meta": {
+    "group": "freeze L5",
+    "cond": "edge",
+    "L": 5,
+    "role": "freezer"
+   },
+   "tag": "s4_vs_shared",
+   "path": "results\\rl\\checkpoints\\m46f\\behaviour\\main\\freeze\\s4\\16_vs_shared.json.gz",
+   "horizon": 50,
+   "K": 32
+  },
+  {
+   "family": "freeze",
+   "idx": 16,
+   "label": "freezer L5 edge",
+   "meta": {
+    "group": "freeze L5",
+    "cond": "edge",
+    "L": 5,
+    "role": "freezer"
+   },
+   "tag": "s4_vs_separate",
+   "path": "results\\rl\\checkpoints\\m46f\\behaviour\\main\\freeze\\s4\\16_vs_separate.json.gz",
+   "horizon": 50,
+   "K": 32
+  },
+  {
+   "family": "freeze",
+   "idx": 17,
+   "label": "breaker L5 edge",
+   "meta": {
+    "group": "freeze L5",
+    "cond": "edge",
+    "L": 5,
+    "role": "breaker"
+   },
+   "tag": "s4_vs_shared",
+   "path": "results\\rl\\checkpoints\\m46f\\behaviour\\main\\freeze\\s4\\17_vs_shared.json.gz",
+   "horizon": 50,
+   "K": 32
+  },
+  {
+   "family": "freeze",
+   "idx": 17,
+   "label": "breaker L5 edge",
+   "meta": {
+    "group": "freeze L5",
+    "cond": "edge",
+    "L": 5,
+    "role": "breaker"
+   },
+   "tag": "s4_vs_separate",
+   "path": "results\\rl\\checkpoints\\m46f\\behaviour\\main\\freeze\\s4\\17_vs_separate.json.gz",
+   "horizon": 50,
+   "K": 32
+  },
+  {
+   "family": "freeze",
+   "idx": 18,
+   "label": "freezer L5 plaus",
+   "meta": {
+    "group": "freeze L5",
+    "cond": "plaus",
+    "L": 5,
+    "role": "freezer"
+   },
+   "tag": "s4_vs_shared",
+   "path": "results\\rl\\checkpoints\\m46f\\behaviour\\main\\freeze\\s4\\18_vs_shared.json.gz",
+   "horizon": 50,
+   "K": 32
+  },
+  {
+   "family": "freeze",
+   "idx": 18,
+   "label": "freezer L5 plaus",
+   "meta": {
+    "group": "freeze L5",
+    "cond": "plaus",
+    "L": 5,
+    "role": "freezer"
+   },
+   "tag": "s4_vs_separate",
+   "path": "results\\rl\\checkpoints\\m46f\\behaviour\\main\\freeze\\s4\\18_vs_separate.json.gz",
+   "horizon": 50,
+   "K": 32
+  },
+  {
+   "family": "freeze",
+   "idx": 19,
+   "label": "breaker L5 plaus",
+   "meta": {
+    "group": "freeze L5",
+    "cond": "plaus",
+    "L": 5,
+    "role": "breaker"
+   },
+   "tag": "s4_vs_shared",
+   "path": "results\\rl\\checkpoints\\m46f\\behaviour\\main\\freeze\\s4\\19_vs_shared.json.gz",
+   "horizon": 50,
+   "K": 32
+  },
+  {
+   "family": "freeze",
+   "idx": 19,
+   "label": "breaker L5 plaus",
+   "meta": {
+    "group": "freeze L5",
+    "cond": "plaus",
+    "L": 5,
+    "role": "breaker"
+   },
+   "tag": "s4_vs_separate",
+   "path": "results\\rl\\checkpoints\\m46f\\behaviour\\main\\freeze\\s4\\19_vs_separate.json.gz",
+   "horizon": 50,
+   "K": 32
+  },
+  {
+   "family": "freeze",
+   "idx": 20,
+   "label": "freezer L5 brk",
+   "meta": {
+    "group": "freeze L5",
+    "cond": "brk",
+    "L": 5,
+    "role": "freezer"
+   },
+   "tag": "s4_vs_shared",
+   "path": "results\\rl\\checkpoints\\m46f\\behaviour\\main\\freeze\\s4\\20_vs_shared.json.gz",
+   "horizon": 50,
+   "K": 32
+  },
+  {
+   "family": "freeze",
+   "idx": 20,
+   "label": "freezer L5 brk",
+   "meta": {
+    "group": "freeze L5",
+    "cond": "brk",
+    "L": 5,
+    "role": "freezer"
+   },
+   "tag": "s4_vs_separate",
+   "path": "results\\rl\\checkpoints\\m46f\\behaviour\\main\\freeze\\s4\\20_vs_separate.json.gz",
+   "horizon": 50,
+   "K": 32
+  },
+  {
+   "family": "freeze",
+   "idx": 21,
+   "label": "breaker L5 brk",
+   "meta": {
+    "group": "freeze L5",
+    "cond": "brk",
+    "L": 5,
+    "role": "breaker"
+   },
+   "tag": "s4_vs_shared",
+   "path": "results\\rl\\checkpoints\\m46f\\behaviour\\main\\freeze\\s4\\21_vs_shared.json.gz",
+   "horizon": 50,
+   "K": 32
+  },
+  {
+   "family": "freeze",
+   "idx": 21,
+   "label": "breaker L5 brk",
+   "meta": {
+    "group": "freeze L5",
+    "cond": "brk",
+    "L": 5,
+    "role": "breaker"
+   },
+   "tag": "s4_vs_separate",
+   "path": "results\\rl\\checkpoints\\m46f\\behaviour\\main\\freeze\\s4\\21_vs_separate.json.gz",
+   "horizon": 50,
+   "K": 32
+  },
+  {
+   "family": "freeze",
+   "idx": 22,
+   "label": "freezer L5 x1.76",
+   "meta": {
+    "group": "freeze L5",
+    "cond": "x1.76",
+    "L": 5,
+    "role": "freezer"
+   },
+   "tag": "s4_vs_shared",
+   "path": "results\\rl\\checkpoints\\m46f\\behaviour\\main\\freeze\\s4\\22_vs_shared.json.gz",
+   "horizon": 50,
+   "K": 32
+  },
+  {
+   "family": "freeze",
+   "idx": 22,
+   "label": "freezer L5 x1.76",
+   "meta": {
+    "group": "freeze L5",
+    "cond": "x1.76",
+    "L": 5,
+    "role": "freezer"
+   },
+   "tag": "s4_vs_separate",
+   "path": "results\\rl\\checkpoints\\m46f\\behaviour\\main\\freeze\\s4\\22_vs_separate.json.gz",
+   "horizon": 50,
+   "K": 32
+  },
+  {
+   "family": "freeze",
+   "idx": 23,
+   "label": "breaker L5 x1.76",
+   "meta": {
+    "group": "freeze L5",
+    "cond": "x1.76",
+    "L": 5,
+    "role": "breaker"
+   },
+   "tag": "s4_vs_shared",
+   "path": "results\\rl\\checkpoints\\m46f\\behaviour\\main\\freeze\\s4\\23_vs_shared.json.gz",
+   "horizon": 50,
+   "K": 32
+  },
+  {
+   "family": "freeze",
+   "idx": 23,
+   "label": "breaker L5 x1.76",
+   "meta": {
+    "group": "freeze L5",
+    "cond": "x1.76",
+    "L": 5,
+    "role": "breaker"
+   },
+   "tag": "s4_vs_separate",
+   "path": "results\\rl\\checkpoints\\m46f\\behaviour\\main\\freeze\\s4\\23_vs_separate.json.gz",
+   "horizon": 50,
+   "K": 32
+  },
+  {
+   "family": "freeze",
+   "idx": 24,
+   "label": "freezer L8 equal",
+   "meta": {
+    "group": "freeze L8",
+    "cond": "equal",
+    "L": 8,
+    "role": "freezer"
+   },
+   "tag": "s4_vs_shared",
+   "path": "results\\rl\\checkpoints\\m46f\\behaviour\\main\\freeze\\s4\\24_vs_shared.json.gz",
+   "horizon": 50,
+   "K": 32
+  },
+  {
+   "family": "freeze",
+   "idx": 24,
+   "label": "freezer L8 equal",
+   "meta": {
+    "group": "freeze L8",
+    "cond": "equal",
+    "L": 8,
+    "role": "freezer"
+   },
+   "tag": "s4_vs_separate",
+   "path": "results\\rl\\checkpoints\\m46f\\behaviour\\main\\freeze\\s4\\24_vs_separate.json.gz",
+   "horizon": 50,
+   "K": 32
+  },
+  {
+   "family": "freeze",
+   "idx": 25,
+   "label": "breaker L8 equal",
+   "meta": {
+    "group": "freeze L8",
+    "cond": "equal",
+    "L": 8,
+    "role": "breaker"
+   },
+   "tag": "s4_vs_shared",
+   "path": "results\\rl\\checkpoints\\m46f\\behaviour\\main\\freeze\\s4\\25_vs_shared.json.gz",
+   "horizon": 50,
+   "K": 32
+  },
+  {
+   "family": "freeze",
+   "idx": 25,
+   "label": "breaker L8 equal",
+   "meta": {
+    "group": "freeze L8",
+    "cond": "equal",
+    "L": 8,
+    "role": "breaker"
+   },
+   "tag": "s4_vs_separate",
+   "path": "results\\rl\\checkpoints\\m46f\\behaviour\\main\\freeze\\s4\\25_vs_separate.json.gz",
+   "horizon": 50,
+   "K": 32
+  },
+  {
+   "family": "freeze",
+   "idx": 26,
+   "label": "freezer L8 hp",
+   "meta": {
+    "group": "freeze L8",
+    "cond": "hp",
+    "L": 8,
+    "role": "freezer"
+   },
+   "tag": "s4_vs_shared",
+   "path": "results\\rl\\checkpoints\\m46f\\behaviour\\main\\freeze\\s4\\26_vs_shared.json.gz",
+   "horizon": 50,
+   "K": 32
+  },
+  {
+   "family": "freeze",
+   "idx": 26,
+   "label": "freezer L8 hp",
+   "meta": {
+    "group": "freeze L8",
+    "cond": "hp",
+    "L": 8,
+    "role": "freezer"
+   },
+   "tag": "s4_vs_separate",
+   "path": "results\\rl\\checkpoints\\m46f\\behaviour\\main\\freeze\\s4\\26_vs_separate.json.gz",
+   "horizon": 50,
+   "K": 32
+  },
+  {
+   "family": "freeze",
+   "idx": 27,
+   "label": "breaker L8 hp",
+   "meta": {
+    "group": "freeze L8",
+    "cond": "hp",
+    "L": 8,
+    "role": "breaker"
+   },
+   "tag": "s4_vs_shared",
+   "path": "results\\rl\\checkpoints\\m46f\\behaviour\\main\\freeze\\s4\\27_vs_shared.json.gz",
+   "horizon": 50,
+   "K": 32
+  },
+  {
+   "family": "freeze",
+   "idx": 27,
+   "label": "breaker L8 hp",
+   "meta": {
+    "group": "freeze L8",
+    "cond": "hp",
+    "L": 8,
+    "role": "breaker"
+   },
+   "tag": "s4_vs_separate",
+   "path": "results\\rl\\checkpoints\\m46f\\behaviour\\main\\freeze\\s4\\27_vs_separate.json.gz",
+   "horizon": 50,
+   "K": 32
+  },
+  {
+   "family": "freeze",
+   "idx": 28,
+   "label": "freezer L8 edge",
+   "meta": {
+    "group": "freeze L8",
+    "cond": "edge",
+    "L": 8,
+    "role": "freezer"
+   },
+   "tag": "s4_vs_shared",
+   "path": "results\\rl\\checkpoints\\m46f\\behaviour\\main\\freeze\\s4\\28_vs_shared.json.gz",
+   "horizon": 50,
+   "K": 32
+  },
+  {
+   "family": "freeze",
+   "idx": 28,
+   "label": "freezer L8 edge",
+   "meta": {
+    "group": "freeze L8",
+    "cond": "edge",
+    "L": 8,
+    "role": "freezer"
+   },
+   "tag": "s4_vs_separate",
+   "path": "results\\rl\\checkpoints\\m46f\\behaviour\\main\\freeze\\s4\\28_vs_separate.json.gz",
+   "horizon": 50,
+   "K": 32
+  },
+  {
+   "family": "freeze",
+   "idx": 29,
+   "label": "breaker L8 edge",
+   "meta": {
+    "group": "freeze L8",
+    "cond": "edge",
+    "L": 8,
+    "role": "breaker"
+   },
+   "tag": "s4_vs_shared",
+   "path": "results\\rl\\checkpoints\\m46f\\behaviour\\main\\freeze\\s4\\29_vs_shared.json.gz",
+   "horizon": 50,
+   "K": 32
+  },
+  {
+   "family": "freeze",
+   "idx": 29,
+   "label": "breaker L8 edge",
+   "meta": {
+    "group": "freeze L8",
+    "cond": "edge",
+    "L": 8,
+    "role": "breaker"
+   },
+   "tag": "s4_vs_separate",
+   "path": "results\\rl\\checkpoints\\m46f\\behaviour\\main\\freeze\\s4\\29_vs_separate.json.gz",
+   "horizon": 50,
+   "K": 32
+  },
+  {
+   "family": "freeze",
+   "idx": 30,
+   "label": "freezer L8 plaus",
+   "meta": {
+    "group": "freeze L8",
+    "cond": "plaus",
+    "L": 8,
+    "role": "freezer"
+   },
+   "tag": "s4_vs_shared",
+   "path": "results\\rl\\checkpoints\\m46f\\behaviour\\main\\freeze\\s4\\30_vs_shared.json.gz",
+   "horizon": 50,
+   "K": 32
+  },
+  {
+   "family": "freeze",
+   "idx": 30,
+   "label": "freezer L8 plaus",
+   "meta": {
+    "group": "freeze L8",
+    "cond": "plaus",
+    "L": 8,
+    "role": "freezer"
+   },
+   "tag": "s4_vs_separate",
+   "path": "results\\rl\\checkpoints\\m46f\\behaviour\\main\\freeze\\s4\\30_vs_separate.json.gz",
+   "horizon": 50,
+   "K": 32
+  },
+  {
+   "family": "freeze",
+   "idx": 31,
+   "label": "breaker L8 plaus",
+   "meta": {
+    "group": "freeze L8",
+    "cond": "plaus",
+    "L": 8,
+    "role": "breaker"
+   },
+   "tag": "s4_vs_shared",
+   "path": "results\\rl\\checkpoints\\m46f\\behaviour\\main\\freeze\\s4\\31_vs_shared.json.gz",
+   "horizon": 50,
+   "K": 32
+  },
+  {
+   "family": "freeze",
+   "idx": 31,
+   "label": "breaker L8 plaus",
+   "meta": {
+    "group": "freeze L8",
+    "cond": "plaus",
+    "L": 8,
+    "role": "breaker"
+   },
+   "tag": "s4_vs_separate",
+   "path": "results\\rl\\checkpoints\\m46f\\behaviour\\main\\freeze\\s4\\31_vs_separate.json.gz",
+   "horizon": 50,
+   "K": 32
+  },
+  {
+   "family": "freeze",
+   "idx": 32,
+   "label": "freezer L8 brk",
+   "meta": {
+    "group": "freeze L8",
+    "cond": "brk",
+    "L": 8,
+    "role": "freezer"
+   },
+   "tag": "s4_vs_shared",
+   "path": "results\\rl\\checkpoints\\m46f\\behaviour\\main\\freeze\\s4\\32_vs_shared.json.gz",
+   "horizon": 50,
+   "K": 32
+  },
+  {
+   "family": "freeze",
+   "idx": 32,
+   "label": "freezer L8 brk",
+   "meta": {
+    "group": "freeze L8",
+    "cond": "brk",
+    "L": 8,
+    "role": "freezer"
+   },
+   "tag": "s4_vs_separate",
+   "path": "results\\rl\\checkpoints\\m46f\\behaviour\\main\\freeze\\s4\\32_vs_separate.json.gz",
+   "horizon": 50,
+   "K": 32
+  },
+  {
+   "family": "freeze",
+   "idx": 33,
+   "label": "breaker L8 brk",
+   "meta": {
+    "group": "freeze L8",
+    "cond": "brk",
+    "L": 8,
+    "role": "breaker"
+   },
+   "tag": "s4_vs_shared",
+   "path": "results\\rl\\checkpoints\\m46f\\behaviour\\main\\freeze\\s4\\33_vs_shared.json.gz",
+   "horizon": 50,
+   "K": 32
+  },
+  {
+   "family": "freeze",
+   "idx": 33,
+   "label": "breaker L8 brk",
+   "meta": {
+    "group": "freeze L8",
+    "cond": "brk",
+    "L": 8,
+    "role": "breaker"
+   },
+   "tag": "s4_vs_separate",
+   "path": "results\\rl\\checkpoints\\m46f\\behaviour\\main\\freeze\\s4\\33_vs_separate.json.gz",
+   "horizon": 50,
+   "K": 32
+  },
+  {
+   "family": "freeze",
+   "idx": 34,
+   "label": "freezer L8 x1.76",
+   "meta": {
+    "group": "freeze L8",
+    "cond": "x1.76",
+    "L": 8,
+    "role": "freezer"
+   },
+   "tag": "s4_vs_shared",
+   "path": "results\\rl\\checkpoints\\m46f\\behaviour\\main\\freeze\\s4\\34_vs_shared.json.gz",
+   "horizon": 50,
+   "K": 32
+  },
+  {
+   "family": "freeze",
+   "idx": 34,
+   "label": "freezer L8 x1.76",
+   "meta": {
+    "group": "freeze L8",
+    "cond": "x1.76",
+    "L": 8,
+    "role": "freezer"
+   },
+   "tag": "s4_vs_separate",
+   "path": "results\\rl\\checkpoints\\m46f\\behaviour\\main\\freeze\\s4\\34_vs_separate.json.gz",
+   "horizon": 50,
+   "K": 32
+  },
+  {
+   "family": "freeze",
+   "idx": 35,
+   "label": "breaker L8 x1.76",
+   "meta": {
+    "group": "freeze L8",
+    "cond": "x1.76",
+    "L": 8,
+    "role": "breaker"
+   },
+   "tag": "s4_vs_shared",
+   "path": "results\\rl\\checkpoints\\m46f\\behaviour\\main\\freeze\\s4\\35_vs_shared.json.gz",
+   "horizon": 50,
+   "K": 32
+  },
+  {
+   "family": "freeze",
+   "idx": 35,
+   "label": "breaker L8 x1.76",
+   "meta": {
+    "group": "freeze L8",
+    "cond": "x1.76",
+    "L": 8,
+    "role": "breaker"
+   },
+   "tag": "s4_vs_separate",
+   "path": "results\\rl\\checkpoints\\m46f\\behaviour\\main\\freeze\\s4\\35_vs_separate.json.gz",
+   "horizon": 50,
+   "K": 32
+  },
+  {
+   "family": "freeze",
+   "idx": 0,
+   "label": "freezer L3 equal",
+   "meta": {
+    "group": "freeze L3",
+    "cond": "equal",
+    "L": 3,
+    "role": "freezer"
+   },
+   "tag": "s5_vs_shared",
+   "path": "results\\rl\\checkpoints\\m46f\\behaviour\\main\\freeze\\s5\\0_vs_shared.json.gz",
+   "horizon": 50,
+   "K": 32
+  },
+  {
+   "family": "freeze",
+   "idx": 0,
+   "label": "freezer L3 equal",
+   "meta": {
+    "group": "freeze L3",
+    "cond": "equal",
+    "L": 3,
+    "role": "freezer"
+   },
+   "tag": "s5_vs_separate",
+   "path": "results\\rl\\checkpoints\\m46f\\behaviour\\main\\freeze\\s5\\0_vs_separate.json.gz",
+   "horizon": 50,
+   "K": 32
+  },
+  {
+   "family": "freeze",
+   "idx": 1,
+   "label": "breaker L3 equal",
+   "meta": {
+    "group": "freeze L3",
+    "cond": "equal",
+    "L": 3,
+    "role": "breaker"
+   },
+   "tag": "s5_vs_shared",
+   "path": "results\\rl\\checkpoints\\m46f\\behaviour\\main\\freeze\\s5\\1_vs_shared.json.gz",
+   "horizon": 50,
+   "K": 32
+  },
+  {
+   "family": "freeze",
+   "idx": 1,
+   "label": "breaker L3 equal",
+   "meta": {
+    "group": "freeze L3",
+    "cond": "equal",
+    "L": 3,
+    "role": "breaker"
+   },
+   "tag": "s5_vs_separate",
+   "path": "results\\rl\\checkpoints\\m46f\\behaviour\\main\\freeze\\s5\\1_vs_separate.json.gz",
+   "horizon": 50,
+   "K": 32
+  },
+  {
+   "family": "freeze",
+   "idx": 2,
+   "label": "freezer L3 hp",
+   "meta": {
+    "group": "freeze L3",
+    "cond": "hp",
+    "L": 3,
+    "role": "freezer"
+   },
+   "tag": "s5_vs_shared",
+   "path": "results\\rl\\checkpoints\\m46f\\behaviour\\main\\freeze\\s5\\2_vs_shared.json.gz",
+   "horizon": 50,
+   "K": 32
+  },
+  {
+   "family": "freeze",
+   "idx": 2,
+   "label": "freezer L3 hp",
+   "meta": {
+    "group": "freeze L3",
+    "cond": "hp",
+    "L": 3,
+    "role": "freezer"
+   },
+   "tag": "s5_vs_separate",
+   "path": "results\\rl\\checkpoints\\m46f\\behaviour\\main\\freeze\\s5\\2_vs_separate.json.gz",
+   "horizon": 50,
+   "K": 32
+  },
+  {
+   "family": "freeze",
+   "idx": 3,
+   "label": "breaker L3 hp",
+   "meta": {
+    "group": "freeze L3",
+    "cond": "hp",
+    "L": 3,
+    "role": "breaker"
+   },
+   "tag": "s5_vs_shared",
+   "path": "results\\rl\\checkpoints\\m46f\\behaviour\\main\\freeze\\s5\\3_vs_shared.json.gz",
+   "horizon": 50,
+   "K": 32
+  },
+  {
+   "family": "freeze",
+   "idx": 3,
+   "label": "breaker L3 hp",
+   "meta": {
+    "group": "freeze L3",
+    "cond": "hp",
+    "L": 3,
+    "role": "breaker"
+   },
+   "tag": "s5_vs_separate",
+   "path": "results\\rl\\checkpoints\\m46f\\behaviour\\main\\freeze\\s5\\3_vs_separate.json.gz",
+   "horizon": 50,
+   "K": 32
+  },
+  {
+   "family": "freeze",
+   "idx": 4,
+   "label": "freezer L3 edge",
+   "meta": {
+    "group": "freeze L3",
+    "cond": "edge",
+    "L": 3,
+    "role": "freezer"
+   },
+   "tag": "s5_vs_shared",
+   "path": "results\\rl\\checkpoints\\m46f\\behaviour\\main\\freeze\\s5\\4_vs_shared.json.gz",
+   "horizon": 50,
+   "K": 32
+  },
+  {
+   "family": "freeze",
+   "idx": 4,
+   "label": "freezer L3 edge",
+   "meta": {
+    "group": "freeze L3",
+    "cond": "edge",
+    "L": 3,
+    "role": "freezer"
+   },
+   "tag": "s5_vs_separate",
+   "path": "results\\rl\\checkpoints\\m46f\\behaviour\\main\\freeze\\s5\\4_vs_separate.json.gz",
+   "horizon": 50,
+   "K": 32
+  },
+  {
+   "family": "freeze",
+   "idx": 5,
+   "label": "breaker L3 edge",
+   "meta": {
+    "group": "freeze L3",
+    "cond": "edge",
+    "L": 3,
+    "role": "breaker"
+   },
+   "tag": "s5_vs_shared",
+   "path": "results\\rl\\checkpoints\\m46f\\behaviour\\main\\freeze\\s5\\5_vs_shared.json.gz",
+   "horizon": 50,
+   "K": 32
+  },
+  {
+   "family": "freeze",
+   "idx": 5,
+   "label": "breaker L3 edge",
+   "meta": {
+    "group": "freeze L3",
+    "cond": "edge",
+    "L": 3,
+    "role": "breaker"
+   },
+   "tag": "s5_vs_separate",
+   "path": "results\\rl\\checkpoints\\m46f\\behaviour\\main\\freeze\\s5\\5_vs_separate.json.gz",
+   "horizon": 50,
+   "K": 32
+  },
+  {
+   "family": "freeze",
+   "idx": 6,
+   "label": "freezer L3 plaus",
+   "meta": {
+    "group": "freeze L3",
+    "cond": "plaus",
+    "L": 3,
+    "role": "freezer"
+   },
+   "tag": "s5_vs_shared",
+   "path": "results\\rl\\checkpoints\\m46f\\behaviour\\main\\freeze\\s5\\6_vs_shared.json.gz",
+   "horizon": 50,
+   "K": 32
+  },
+  {
+   "family": "freeze",
+   "idx": 6,
+   "label": "freezer L3 plaus",
+   "meta": {
+    "group": "freeze L3",
+    "cond": "plaus",
+    "L": 3,
+    "role": "freezer"
+   },
+   "tag": "s5_vs_separate",
+   "path": "results\\rl\\checkpoints\\m46f\\behaviour\\main\\freeze\\s5\\6_vs_separate.json.gz",
+   "horizon": 50,
+   "K": 32
+  },
+  {
+   "family": "freeze",
+   "idx": 7,
+   "label": "breaker L3 plaus",
+   "meta": {
+    "group": "freeze L3",
+    "cond": "plaus",
+    "L": 3,
+    "role": "breaker"
+   },
+   "tag": "s5_vs_shared",
+   "path": "results\\rl\\checkpoints\\m46f\\behaviour\\main\\freeze\\s5\\7_vs_shared.json.gz",
+   "horizon": 50,
+   "K": 32
+  },
+  {
+   "family": "freeze",
+   "idx": 7,
+   "label": "breaker L3 plaus",
+   "meta": {
+    "group": "freeze L3",
+    "cond": "plaus",
+    "L": 3,
+    "role": "breaker"
+   },
+   "tag": "s5_vs_separate",
+   "path": "results\\rl\\checkpoints\\m46f\\behaviour\\main\\freeze\\s5\\7_vs_separate.json.gz",
+   "horizon": 50,
+   "K": 32
+  },
+  {
+   "family": "freeze",
+   "idx": 8,
+   "label": "freezer L3 brk",
+   "meta": {
+    "group": "freeze L3",
+    "cond": "brk",
+    "L": 3,
+    "role": "freezer"
+   },
+   "tag": "s5_vs_shared",
+   "path": "results\\rl\\checkpoints\\m46f\\behaviour\\main\\freeze\\s5\\8_vs_shared.json.gz",
+   "horizon": 50,
+   "K": 32
+  },
+  {
+   "family": "freeze",
+   "idx": 8,
+   "label": "freezer L3 brk",
+   "meta": {
+    "group": "freeze L3",
+    "cond": "brk",
+    "L": 3,
+    "role": "freezer"
+   },
+   "tag": "s5_vs_separate",
+   "path": "results\\rl\\checkpoints\\m46f\\behaviour\\main\\freeze\\s5\\8_vs_separate.json.gz",
+   "horizon": 50,
+   "K": 32
+  },
+  {
+   "family": "freeze",
+   "idx": 9,
+   "label": "breaker L3 brk",
+   "meta": {
+    "group": "freeze L3",
+    "cond": "brk",
+    "L": 3,
+    "role": "breaker"
+   },
+   "tag": "s5_vs_shared",
+   "path": "results\\rl\\checkpoints\\m46f\\behaviour\\main\\freeze\\s5\\9_vs_shared.json.gz",
+   "horizon": 50,
+   "K": 32
+  },
+  {
+   "family": "freeze",
+   "idx": 9,
+   "label": "breaker L3 brk",
+   "meta": {
+    "group": "freeze L3",
+    "cond": "brk",
+    "L": 3,
+    "role": "breaker"
+   },
+   "tag": "s5_vs_separate",
+   "path": "results\\rl\\checkpoints\\m46f\\behaviour\\main\\freeze\\s5\\9_vs_separate.json.gz",
+   "horizon": 50,
+   "K": 32
+  },
+  {
+   "family": "freeze",
+   "idx": 10,
+   "label": "freezer L3 x1.76",
+   "meta": {
+    "group": "freeze L3",
+    "cond": "x1.76",
+    "L": 3,
+    "role": "freezer"
+   },
+   "tag": "s5_vs_shared",
+   "path": "results\\rl\\checkpoints\\m46f\\behaviour\\main\\freeze\\s5\\10_vs_shared.json.gz",
+   "horizon": 50,
+   "K": 32
+  },
+  {
+   "family": "freeze",
+   "idx": 10,
+   "label": "freezer L3 x1.76",
+   "meta": {
+    "group": "freeze L3",
+    "cond": "x1.76",
+    "L": 3,
+    "role": "freezer"
+   },
+   "tag": "s5_vs_separate",
+   "path": "results\\rl\\checkpoints\\m46f\\behaviour\\main\\freeze\\s5\\10_vs_separate.json.gz",
+   "horizon": 50,
+   "K": 32
+  },
+  {
+   "family": "freeze",
+   "idx": 11,
+   "label": "breaker L3 x1.76",
+   "meta": {
+    "group": "freeze L3",
+    "cond": "x1.76",
+    "L": 3,
+    "role": "breaker"
+   },
+   "tag": "s5_vs_shared",
+   "path": "results\\rl\\checkpoints\\m46f\\behaviour\\main\\freeze\\s5\\11_vs_shared.json.gz",
+   "horizon": 50,
+   "K": 32
+  },
+  {
+   "family": "freeze",
+   "idx": 11,
+   "label": "breaker L3 x1.76",
+   "meta": {
+    "group": "freeze L3",
+    "cond": "x1.76",
+    "L": 3,
+    "role": "breaker"
+   },
+   "tag": "s5_vs_separate",
+   "path": "results\\rl\\checkpoints\\m46f\\behaviour\\main\\freeze\\s5\\11_vs_separate.json.gz",
+   "horizon": 50,
+   "K": 32
+  },
+  {
+   "family": "freeze",
+   "idx": 12,
+   "label": "freezer L5 equal",
+   "meta": {
+    "group": "freeze L5",
+    "cond": "equal",
+    "L": 5,
+    "role": "freezer"
+   },
+   "tag": "s5_vs_shared",
+   "path": "results\\rl\\checkpoints\\m46f\\behaviour\\main\\freeze\\s5\\12_vs_shared.json.gz",
+   "horizon": 50,
+   "K": 32
+  },
+  {
+   "family": "freeze",
+   "idx": 12,
+   "label": "freezer L5 equal",
+   "meta": {
+    "group": "freeze L5",
+    "cond": "equal",
+    "L": 5,
+    "role": "freezer"
+   },
+   "tag": "s5_vs_separate",
+   "path": "results\\rl\\checkpoints\\m46f\\behaviour\\main\\freeze\\s5\\12_vs_separate.json.gz",
+   "horizon": 50,
+   "K": 32
+  },
+  {
+   "family": "freeze",
+   "idx": 13,
+   "label": "breaker L5 equal",
+   "meta": {
+    "group": "freeze L5",
+    "cond": "equal",
+    "L": 5,
+    "role": "breaker"
+   },
+   "tag": "s5_vs_shared",
+   "path": "results\\rl\\checkpoints\\m46f\\behaviour\\main\\freeze\\s5\\13_vs_shared.json.gz",
+   "horizon": 50,
+   "K": 32
+  },
+  {
+   "family": "freeze",
+   "idx": 13,
+   "label": "breaker L5 equal",
+   "meta": {
+    "group": "freeze L5",
+    "cond": "equal",
+    "L": 5,
+    "role": "breaker"
+   },
+   "tag": "s5_vs_separate",
+   "path": "results\\rl\\checkpoints\\m46f\\behaviour\\main\\freeze\\s5\\13_vs_separate.json.gz",
+   "horizon": 50,
+   "K": 32
+  },
+  {
+   "family": "freeze",
+   "idx": 14,
+   "label": "freezer L5 hp",
+   "meta": {
+    "group": "freeze L5",
+    "cond": "hp",
+    "L": 5,
+    "role": "freezer"
+   },
+   "tag": "s5_vs_shared",
+   "path": "results\\rl\\checkpoints\\m46f\\behaviour\\main\\freeze\\s5\\14_vs_shared.json.gz",
+   "horizon": 50,
+   "K": 32
+  },
+  {
+   "family": "freeze",
+   "idx": 14,
+   "label": "freezer L5 hp",
+   "meta": {
+    "group": "freeze L5",
+    "cond": "hp",
+    "L": 5,
+    "role": "freezer"
+   },
+   "tag": "s5_vs_separate",
+   "path": "results\\rl\\checkpoints\\m46f\\behaviour\\main\\freeze\\s5\\14_vs_separate.json.gz",
+   "horizon": 50,
+   "K": 32
+  },
+  {
+   "family": "freeze",
+   "idx": 15,
+   "label": "breaker L5 hp",
+   "meta": {
+    "group": "freeze L5",
+    "cond": "hp",
+    "L": 5,
+    "role": "breaker"
+   },
+   "tag": "s5_vs_shared",
+   "path": "results\\rl\\checkpoints\\m46f\\behaviour\\main\\freeze\\s5\\15_vs_shared.json.gz",
+   "horizon": 50,
+   "K": 32
+  },
+  {
+   "family": "freeze",
+   "idx": 15,
+   "label": "breaker L5 hp",
+   "meta": {
+    "group": "freeze L5",
+    "cond": "hp",
+    "L": 5,
+    "role": "breaker"
+   },
+   "tag": "s5_vs_separate",
+   "path": "results\\rl\\checkpoints\\m46f\\behaviour\\main\\freeze\\s5\\15_vs_separate.json.gz",
+   "horizon": 50,
+   "K": 32
+  },
+  {
+   "family": "freeze",
+   "idx": 16,
+   "label": "freezer L5 edge",
+   "meta": {
+    "group": "freeze L5",
+    "cond": "edge",
+    "L": 5,
+    "role": "freezer"
+   },
+   "tag": "s5_vs_shared",
+   "path": "results\\rl\\checkpoints\\m46f\\behaviour\\main\\freeze\\s5\\16_vs_shared.json.gz",
+   "horizon": 50,
+   "K": 32
+  },
+  {
+   "family": "freeze",
+   "idx": 16,
+   "label": "freezer L5 edge",
+   "meta": {
+    "group": "freeze L5",
+    "cond": "edge",
+    "L": 5,
+    "role": "freezer"
+   },
+   "tag": "s5_vs_separate",
+   "path": "results\\rl\\checkpoints\\m46f\\behaviour\\main\\freeze\\s5\\16_vs_separate.json.gz",
+   "horizon": 50,
+   "K": 32
+  },
+  {
+   "family": "freeze",
+   "idx": 17,
+   "label": "breaker L5 edge",
+   "meta": {
+    "group": "freeze L5",
+    "cond": "edge",
+    "L": 5,
+    "role": "breaker"
+   },
+   "tag": "s5_vs_shared",
+   "path": "results\\rl\\checkpoints\\m46f\\behaviour\\main\\freeze\\s5\\17_vs_shared.json.gz",
+   "horizon": 50,
+   "K": 32
+  },
+  {
+   "family": "freeze",
+   "idx": 17,
+   "label": "breaker L5 edge",
+   "meta": {
+    "group": "freeze L5",
+    "cond": "edge",
+    "L": 5,
+    "role": "breaker"
+   },
+   "tag": "s5_vs_separate",
+   "path": "results\\rl\\checkpoints\\m46f\\behaviour\\main\\freeze\\s5\\17_vs_separate.json.gz",
+   "horizon": 50,
+   "K": 32
+  },
+  {
+   "family": "freeze",
+   "idx": 18,
+   "label": "freezer L5 plaus",
+   "meta": {
+    "group": "freeze L5",
+    "cond": "plaus",
+    "L": 5,
+    "role": "freezer"
+   },
+   "tag": "s5_vs_shared",
+   "path": "results\\rl\\checkpoints\\m46f\\behaviour\\main\\freeze\\s5\\18_vs_shared.json.gz",
+   "horizon": 50,
+   "K": 32
+  },
+  {
+   "family": "freeze",
+   "idx": 18,
+   "label": "freezer L5 plaus",
+   "meta": {
+    "group": "freeze L5",
+    "cond": "plaus",
+    "L": 5,
+    "role": "freezer"
+   },
+   "tag": "s5_vs_separate",
+   "path": "results\\rl\\checkpoints\\m46f\\behaviour\\main\\freeze\\s5\\18_vs_separate.json.gz",
+   "horizon": 50,
+   "K": 32
+  },
+  {
+   "family": "freeze",
+   "idx": 19,
+   "label": "breaker L5 plaus",
+   "meta": {
+    "group": "freeze L5",
+    "cond": "plaus",
+    "L": 5,
+    "role": "breaker"
+   },
+   "tag": "s5_vs_shared",
+   "path": "results\\rl\\checkpoints\\m46f\\behaviour\\main\\freeze\\s5\\19_vs_shared.json.gz",
+   "horizon": 50,
+   "K": 32
+  },
+  {
+   "family": "freeze",
+   "idx": 19,
+   "label": "breaker L5 plaus",
+   "meta": {
+    "group": "freeze L5",
+    "cond": "plaus",
+    "L": 5,
+    "role": "breaker"
+   },
+   "tag": "s5_vs_separate",
+   "path": "results\\rl\\checkpoints\\m46f\\behaviour\\main\\freeze\\s5\\19_vs_separate.json.gz",
+   "horizon": 50,
+   "K": 32
+  },
+  {
+   "family": "freeze",
+   "idx": 20,
+   "label": "freezer L5 brk",
+   "meta": {
+    "group": "freeze L5",
+    "cond": "brk",
+    "L": 5,
+    "role": "freezer"
+   },
+   "tag": "s5_vs_shared",
+   "path": "results\\rl\\checkpoints\\m46f\\behaviour\\main\\freeze\\s5\\20_vs_shared.json.gz",
+   "horizon": 50,
+   "K": 32
+  },
+  {
+   "family": "freeze",
+   "idx": 20,
+   "label": "freezer L5 brk",
+   "meta": {
+    "group": "freeze L5",
+    "cond": "brk",
+    "L": 5,
+    "role": "freezer"
+   },
+   "tag": "s5_vs_separate",
+   "path": "results\\rl\\checkpoints\\m46f\\behaviour\\main\\freeze\\s5\\20_vs_separate.json.gz",
+   "horizon": 50,
+   "K": 32
+  },
+  {
+   "family": "freeze",
+   "idx": 21,
+   "label": "breaker L5 brk",
+   "meta": {
+    "group": "freeze L5",
+    "cond": "brk",
+    "L": 5,
+    "role": "breaker"
+   },
+   "tag": "s5_vs_shared",
+   "path": "results\\rl\\checkpoints\\m46f\\behaviour\\main\\freeze\\s5\\21_vs_shared.json.gz",
+   "horizon": 50,
+   "K": 32
+  },
+  {
+   "family": "freeze",
+   "idx": 21,
+   "label": "breaker L5 brk",
+   "meta": {
+    "group": "freeze L5",
+    "cond": "brk",
+    "L": 5,
+    "role": "breaker"
+   },
+   "tag": "s5_vs_separate",
+   "path": "results\\rl\\checkpoints\\m46f\\behaviour\\main\\freeze\\s5\\21_vs_separate.json.gz",
+   "horizon": 50,
+   "K": 32
+  },
+  {
+   "family": "freeze",
+   "idx": 22,
+   "label": "freezer L5 x1.76",
+   "meta": {
+    "group": "freeze L5",
+    "cond": "x1.76",
+    "L": 5,
+    "role": "freezer"
+   },
+   "tag": "s5_vs_shared",
+   "path": "results\\rl\\checkpoints\\m46f\\behaviour\\main\\freeze\\s5\\22_vs_shared.json.gz",
+   "horizon": 50,
+   "K": 32
+  },
+  {
+   "family": "freeze",
+   "idx": 22,
+   "label": "freezer L5 x1.76",
+   "meta": {
+    "group": "freeze L5",
+    "cond": "x1.76",
+    "L": 5,
+    "role": "freezer"
+   },
+   "tag": "s5_vs_separate",
+   "path": "results\\rl\\checkpoints\\m46f\\behaviour\\main\\freeze\\s5\\22_vs_separate.json.gz",
+   "horizon": 50,
+   "K": 32
+  },
+  {
+   "family": "freeze",
+   "idx": 23,
+   "label": "breaker L5 x1.76",
+   "meta": {
+    "group": "freeze L5",
+    "cond": "x1.76",
+    "L": 5,
+    "role": "breaker"
+   },
+   "tag": "s5_vs_shared",
+   "path": "results\\rl\\checkpoints\\m46f\\behaviour\\main\\freeze\\s5\\23_vs_shared.json.gz",
+   "horizon": 50,
+   "K": 32
+  },
+  {
+   "family": "freeze",
+   "idx": 23,
+   "label": "breaker L5 x1.76",
+   "meta": {
+    "group": "freeze L5",
+    "cond": "x1.76",
+    "L": 5,
+    "role": "breaker"
+   },
+   "tag": "s5_vs_separate",
+   "path": "results\\rl\\checkpoints\\m46f\\behaviour\\main\\freeze\\s5\\23_vs_separate.json.gz",
+   "horizon": 50,
+   "K": 32
+  },
+  {
+   "family": "freeze",
+   "idx": 24,
+   "label": "freezer L8 equal",
+   "meta": {
+    "group": "freeze L8",
+    "cond": "equal",
+    "L": 8,
+    "role": "freezer"
+   },
+   "tag": "s5_vs_shared",
+   "path": "results\\rl\\checkpoints\\m46f\\behaviour\\main\\freeze\\s5\\24_vs_shared.json.gz",
+   "horizon": 50,
+   "K": 32
+  },
+  {
+   "family": "freeze",
+   "idx": 24,
+   "label": "freezer L8 equal",
+   "meta": {
+    "group": "freeze L8",
+    "cond": "equal",
+    "L": 8,
+    "role": "freezer"
+   },
+   "tag": "s5_vs_separate",
+   "path": "results\\rl\\checkpoints\\m46f\\behaviour\\main\\freeze\\s5\\24_vs_separate.json.gz",
+   "horizon": 50,
+   "K": 32
+  },
+  {
+   "family": "freeze",
+   "idx": 25,
+   "label": "breaker L8 equal",
+   "meta": {
+    "group": "freeze L8",
+    "cond": "equal",
+    "L": 8,
+    "role": "breaker"
+   },
+   "tag": "s5_vs_shared",
+   "path": "results\\rl\\checkpoints\\m46f\\behaviour\\main\\freeze\\s5\\25_vs_shared.json.gz",
+   "horizon": 50,
+   "K": 32
+  },
+  {
+   "family": "freeze",
+   "idx": 25,
+   "label": "breaker L8 equal",
+   "meta": {
+    "group": "freeze L8",
+    "cond": "equal",
+    "L": 8,
+    "role": "breaker"
+   },
+   "tag": "s5_vs_separate",
+   "path": "results\\rl\\checkpoints\\m46f\\behaviour\\main\\freeze\\s5\\25_vs_separate.json.gz",
+   "horizon": 50,
+   "K": 32
+  },
+  {
+   "family": "freeze",
+   "idx": 26,
+   "label": "freezer L8 hp",
+   "meta": {
+    "group": "freeze L8",
+    "cond": "hp",
+    "L": 8,
+    "role": "freezer"
+   },
+   "tag": "s5_vs_shared",
+   "path": "results\\rl\\checkpoints\\m46f\\behaviour\\main\\freeze\\s5\\26_vs_shared.json.gz",
+   "horizon": 50,
+   "K": 32
+  },
+  {
+   "family": "freeze",
+   "idx": 26,
+   "label": "freezer L8 hp",
+   "meta": {
+    "group": "freeze L8",
+    "cond": "hp",
+    "L": 8,
+    "role": "freezer"
+   },
+   "tag": "s5_vs_separate",
+   "path": "results\\rl\\checkpoints\\m46f\\behaviour\\main\\freeze\\s5\\26_vs_separate.json.gz",
+   "horizon": 50,
+   "K": 32
+  },
+  {
+   "family": "freeze",
+   "idx": 27,
+   "label": "breaker L8 hp",
+   "meta": {
+    "group": "freeze L8",
+    "cond": "hp",
+    "L": 8,
+    "role": "breaker"
+   },
+   "tag": "s5_vs_shared",
+   "path": "results\\rl\\checkpoints\\m46f\\behaviour\\main\\freeze\\s5\\27_vs_shared.json.gz",
+   "horizon": 50,
+   "K": 32
+  },
+  {
+   "family": "freeze",
+   "idx": 27,
+   "label": "breaker L8 hp",
+   "meta": {
+    "group": "freeze L8",
+    "cond": "hp",
+    "L": 8,
+    "role": "breaker"
+   },
+   "tag": "s5_vs_separate",
+   "path": "results\\rl\\checkpoints\\m46f\\behaviour\\main\\freeze\\s5\\27_vs_separate.json.gz",
+   "horizon": 50,
+   "K": 32
+  },
+  {
+   "family": "freeze",
+   "idx": 28,
+   "label": "freezer L8 edge",
+   "meta": {
+    "group": "freeze L8",
+    "cond": "edge",
+    "L": 8,
+    "role": "freezer"
+   },
+   "tag": "s5_vs_shared",
+   "path": "results\\rl\\checkpoints\\m46f\\behaviour\\main\\freeze\\s5\\28_vs_shared.json.gz",
+   "horizon": 50,
+   "K": 32
+  },
+  {
+   "family": "freeze",
+   "idx": 28,
+   "label": "freezer L8 edge",
+   "meta": {
+    "group": "freeze L8",
+    "cond": "edge",
+    "L": 8,
+    "role": "freezer"
+   },
+   "tag": "s5_vs_separate",
+   "path": "results\\rl\\checkpoints\\m46f\\behaviour\\main\\freeze\\s5\\28_vs_separate.json.gz",
+   "horizon": 50,
+   "K": 32
+  },
+  {
+   "family": "freeze",
+   "idx": 29,
+   "label": "breaker L8 edge",
+   "meta": {
+    "group": "freeze L8",
+    "cond": "edge",
+    "L": 8,
+    "role": "breaker"
+   },
+   "tag": "s5_vs_shared",
+   "path": "results\\rl\\checkpoints\\m46f\\behaviour\\main\\freeze\\s5\\29_vs_shared.json.gz",
+   "horizon": 50,
+   "K": 32
+  },
+  {
+   "family": "freeze",
+   "idx": 29,
+   "label": "breaker L8 edge",
+   "meta": {
+    "group": "freeze L8",
+    "cond": "edge",
+    "L": 8,
+    "role": "breaker"
+   },
+   "tag": "s5_vs_separate",
+   "path": "results\\rl\\checkpoints\\m46f\\behaviour\\main\\freeze\\s5\\29_vs_separate.json.gz",
+   "horizon": 50,
+   "K": 32
+  },
+  {
+   "family": "freeze",
+   "idx": 30,
+   "label": "freezer L8 plaus",
+   "meta": {
+    "group": "freeze L8",
+    "cond": "plaus",
+    "L": 8,
+    "role": "freezer"
+   },
+   "tag": "s5_vs_shared",
+   "path": "results\\rl\\checkpoints\\m46f\\behaviour\\main\\freeze\\s5\\30_vs_shared.json.gz",
+   "horizon": 50,
+   "K": 32
+  },
+  {
+   "family": "freeze",
+   "idx": 30,
+   "label": "freezer L8 plaus",
+   "meta": {
+    "group": "freeze L8",
+    "cond": "plaus",
+    "L": 8,
+    "role": "freezer"
+   },
+   "tag": "s5_vs_separate",
+   "path": "results\\rl\\checkpoints\\m46f\\behaviour\\main\\freeze\\s5\\30_vs_separate.json.gz",
+   "horizon": 50,
+   "K": 32
+  },
+  {
+   "family": "freeze",
+   "idx": 31,
+   "label": "breaker L8 plaus",
+   "meta": {
+    "group": "freeze L8",
+    "cond": "plaus",
+    "L": 8,
+    "role": "breaker"
+   },
+   "tag": "s5_vs_shared",
+   "path": "results\\rl\\checkpoints\\m46f\\behaviour\\main\\freeze\\s5\\31_vs_shared.json.gz",
+   "horizon": 50,
+   "K": 32
+  },
+  {
+   "family": "freeze",
+   "idx": 31,
+   "label": "breaker L8 plaus",
+   "meta": {
+    "group": "freeze L8",
+    "cond": "plaus",
+    "L": 8,
+    "role": "breaker"
+   },
+   "tag": "s5_vs_separate",
+   "path": "results\\rl\\checkpoints\\m46f\\behaviour\\main\\freeze\\s5\\31_vs_separate.json.gz",
+   "horizon": 50,
+   "K": 32
+  },
+  {
+   "family": "freeze",
+   "idx": 32,
+   "label": "freezer L8 brk",
+   "meta": {
+    "group": "freeze L8",
+    "cond": "brk",
+    "L": 8,
+    "role": "freezer"
+   },
+   "tag": "s5_vs_shared",
+   "path": "results\\rl\\checkpoints\\m46f\\behaviour\\main\\freeze\\s5\\32_vs_shared.json.gz",
+   "horizon": 50,
+   "K": 32
+  },
+  {
+   "family": "freeze",
+   "idx": 32,
+   "label": "freezer L8 brk",
+   "meta": {
+    "group": "freeze L8",
+    "cond": "brk",
+    "L": 8,
+    "role": "freezer"
+   },
+   "tag": "s5_vs_separate",
+   "path": "results\\rl\\checkpoints\\m46f\\behaviour\\main\\freeze\\s5\\32_vs_separate.json.gz",
+   "horizon": 50,
+   "K": 32
+  },
+  {
+   "family": "freeze",
+   "idx": 33,
+   "label": "breaker L8 brk",
+   "meta": {
+    "group": "freeze L8",
+    "cond": "brk",
+    "L": 8,
+    "role": "breaker"
+   },
+   "tag": "s5_vs_shared",
+   "path": "results\\rl\\checkpoints\\m46f\\behaviour\\main\\freeze\\s5\\33_vs_shared.json.gz",
+   "horizon": 50,
+   "K": 32
+  },
+  {
+   "family": "freeze",
+   "idx": 33,
+   "label": "breaker L8 brk",
+   "meta": {
+    "group": "freeze L8",
+    "cond": "brk",
+    "L": 8,
+    "role": "breaker"
+   },
+   "tag": "s5_vs_separate",
+   "path": "results\\rl\\checkpoints\\m46f\\behaviour\\main\\freeze\\s5\\33_vs_separate.json.gz",
+   "horizon": 50,
+   "K": 32
+  },
+  {
+   "family": "freeze",
+   "idx": 34,
+   "label": "freezer L8 x1.76",
+   "meta": {
+    "group": "freeze L8",
+    "cond": "x1.76",
+    "L": 8,
+    "role": "freezer"
+   },
+   "tag": "s5_vs_shared",
+   "path": "results\\rl\\checkpoints\\m46f\\behaviour\\main\\freeze\\s5\\34_vs_shared.json.gz",
+   "horizon": 50,
+   "K": 32
+  },
+  {
+   "family": "freeze",
+   "idx": 34,
+   "label": "freezer L8 x1.76",
+   "meta": {
+    "group": "freeze L8",
+    "cond": "x1.76",
+    "L": 8,
+    "role": "freezer"
+   },
+   "tag": "s5_vs_separate",
+   "path": "results\\rl\\checkpoints\\m46f\\behaviour\\main\\freeze\\s5\\34_vs_separate.json.gz",
+   "horizon": 50,
+   "K": 32
+  },
+  {
+   "family": "freeze",
+   "idx": 35,
+   "label": "breaker L8 x1.76",
+   "meta": {
+    "group": "freeze L8",
+    "cond": "x1.76",
+    "L": 8,
+    "role": "breaker"
+   },
+   "tag": "s5_vs_shared",
+   "path": "results\\rl\\checkpoints\\m46f\\behaviour\\main\\freeze\\s5\\35_vs_shared.json.gz",
+   "horizon": 50,
+   "K": 32
+  },
+  {
+   "family": "freeze",
+   "idx": 35,
+   "label": "breaker L8 x1.76",
+   "meta": {
+    "group": "freeze L8",
+    "cond": "x1.76",
+    "L": 8,
+    "role": "breaker"
+   },
+   "tag": "s5_vs_separate",
+   "path": "results\\rl\\checkpoints\\m46f\\behaviour\\main\\freeze\\s5\\35_vs_separate.json.gz",
+   "horizon": 50,
+   "K": 32
+  }
+ ]
+}

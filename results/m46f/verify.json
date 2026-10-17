@@ -1,0 +1,414 @@
+{
+ "meta": {
+  "study": "M4.6f",
+  "commit": "6b5d66f17d5eadc4e4e789aa01e5599505de45d7",
+  "working_tree_dirty": true,
+  "timestamp": "2026-10-16 11:51:22",
+  "torch": "2.14.1+cpu",
+  "numpy": "2.5.3",
+  "stage": "verify"
+ },
+ "seeds": [
+  0,
+  1,
+  2,
+  3,
+  4,
+  5
+ ],
+ "per_seed": [
+  {
+   "seed": 0,
+   "observations": 532,
+   "max_abs_dprob_shared": 0.0,
+   "max_abs_dprob_separate": 0.0,
+   "max_abs_dvalue_shared": 0.0,
+   "max_abs_dvalue_separate": 0.0,
+   "value_fn_equals_forward": true,
+   "classes": [
+    "PolicyValueNet",
+    "SeparateCriticNet"
+   ],
+   "parameters": [
+    36158,
+    64318
+   ],
+   "start_actor_digest": "713dd7062e8413011808e3621274869925d283825bf47b9087a17369c6e6fb89",
+   "separate_actor_digest": "713dd7062e8413011808e3621274869925d283825bf47b9087a17369c6e6fb89",
+   "shared_storage": 0,
+   "critic_change_moves_actor": 0.0,
+   "critic_change_moves_value": 0.4478756785392761,
+   "routing_separate": {
+    "policy->trunk": 0.34647205357567284,
+    "policy->policy_head": 0.48834056758105954,
+    "policy->value_head": 0.0,
+    "policy->critic_trunk": 0.0,
+    "value->trunk": 0.0,
+    "value->policy_head": 0.0,
+    "value->value_head": 0.3314622416501861,
+    "value->critic_trunk": 0.04167998700592249
+   },
+   "routing_shared": {
+    "policy->trunk": 0.34647205357567284,
+    "policy->policy_head": 0.48834056758105954,
+    "policy->value_head": 0.0,
+    "value->trunk": 0.04167998700592249,
+    "value->policy_head": 0.0,
+    "value->value_head": 0.3314622416501861
+   },
+   "roundtrip_class": "SeparateCriticNet",
+   "roundtrip_digest_equal": true,
+   "start_loads_as": "PolicyValueNet",
+   "checks": {
+    "s0: shared arm initial = start (probabilities, values)": true,
+    "s0: separate arm initial = start (probabilities, values)": true,
+    "s0: separate actor parameters = start actor": true,
+    "s0: actor and critic share no storage": true,
+    "s0: changing the critic trunk leaves the actor unchanged": true,
+    "s0: separate: policy loss reaches no critic parameter": true,
+    "s0: separate: value loss reaches no actor parameter": true,
+    "s0: shared: value loss reaches the shared trunk": true,
+    "s0: checkpoint round trip (class, digest)": true,
+    "s0: start checkpoint loads as PolicyValueNet": true
+   }
+  },
+  {
+   "seed": 1,
+   "observations": 532,
+   "max_abs_dprob_shared": 0.0,
+   "max_abs_dprob_separate": 0.0,
+   "max_abs_dvalue_shared": 0.0,
+   "max_abs_dvalue_separate": 0.0,
+   "value_fn_equals_forward": true,
+   "classes": [
+    "PolicyValueNet",
+    "SeparateCriticNet"
+   ],
+   "parameters": [
+    36158,
+    64318
+   ],
+   "start_actor_digest": "52bf4d04dd23bb84f7978c18e208d68de8eea9ac7006b27deb2feb12d78a17e7",
+   "separate_actor_digest": "52bf4d04dd23bb84f7978c18e208d68de8eea9ac7006b27deb2feb12d78a17e7",
+   "shared_storage": 0,
+   "critic_change_moves_actor": 0.0,
+   "critic_change_moves_value": 0.6242467761039734,
+   "routing_separate": {
+    "policy->trunk": 0.4230839850342767,
+    "policy->policy_head": 0.5188692961909503,
+    "policy->value_head": 0.0,
+    "policy->critic_trunk": 0.0,
+    "value->trunk": 0.0,
+    "value->policy_head": 0.0,
+    "value->value_head": 0.2733544991107627,
+    "value->critic_trunk": 0.044934595555591435
+   },
+   "routing_shared": {
+    "policy->trunk": 0.4230839850342767,
+    "policy->policy_head": 0.5188692961909503,
+    "policy->value_head": 0.0,
+    "value->trunk": 0.044934595555591435,
+    "value->policy_head": 0.0,
+    "value->value_head": 0.2733544991107627
+   },
+   "roundtrip_class": "SeparateCriticNet",
+   "roundtrip_digest_equal": true,
+   "start_loads_as": "PolicyValueNet",
+   "checks": {
+    "s1: shared arm initial = start (probabilities, values)": true,
+    "s1: separate arm initial = start (probabilities, values)": true,
+    "s1: separate actor parameters = start actor": true,
+    "s1: actor and critic share no storage": true,
+    "s1: changing the critic trunk leaves the actor unchanged": true,
+    "s1: separate: policy loss reaches no critic parameter": true,
+    "s1: separate: value loss reaches no actor parameter": true,
+    "s1: shared: value loss reaches the shared trunk": true,
+    "s1: checkpoint round trip (class, digest)": true,
+    "s1: start checkpoint loads as PolicyValueNet": true
+   }
+  },
+  {
+   "seed": 2,
+   "observations": 532,
+   "max_abs_dprob_shared": 0.0,
+   "max_abs_dprob_separate": 0.0,
+   "max_abs_dvalue_shared": 0.0,
+   "max_abs_dvalue_separate": 0.0,
+   "value_fn_equals_forward": true,
+   "classes": [
+    "PolicyValueNet",
+    "SeparateCriticNet"
+   ],
+   "parameters": [
+    36158,
+    64318
+   ],
+   "start_actor_digest": "6a7f0f48cc7894c0af3abbaa6886cf937ba311047e00513aa8c7d732a354e940",
+   "separate_actor_digest": "6a7f0f48cc7894c0af3abbaa6886cf937ba311047e00513aa8c7d732a354e940",
+   "shared_storage": 0,
+   "critic_change_moves_actor": 0.0,
+   "critic_change_moves_value": 0.5177147388458252,
+   "routing_separate": {
+    "policy->trunk": 0.5364138266560925,
+    "policy->policy_head": 0.4546972910541312,
+    "policy->value_head": 0.0,
+    "policy->critic_trunk": 0.0,
+    "value->trunk": 0.0,
+    "value->policy_head": 0.0,
+    "value->value_head": 0.3182884553712864,
+    "value->critic_trunk": 0.03641850865716783
+   },
+   "routing_shared": {
+    "policy->trunk": 0.5364138266560925,
+    "policy->policy_head": 0.4546972910541312,
+    "policy->value_head": 0.0,
+    "value->trunk": 0.03641850865716783,
+    "value->policy_head": 0.0,
+    "value->value_head": 0.3182884553712864
+   },
+   "roundtrip_class": "SeparateCriticNet",
+   "roundtrip_digest_equal": true,
+   "start_loads_as": "PolicyValueNet",
+   "checks": {
+    "s2: shared arm initial = start (probabilities, values)": true,
+    "s2: separate arm initial = start (probabilities, values)": true,
+    "s2: separate actor parameters = start actor": true,
+    "s2: actor and critic share no storage": true,
+    "s2: changing the critic trunk leaves the actor unchanged": true,
+    "s2: separate: policy loss reaches no critic parameter": true,
+    "s2: separate: value loss reaches no actor parameter": true,
+    "s2: shared: value loss reaches the shared trunk": true,
+    "s2: checkpoint round trip (class, digest)": true,
+    "s2: start checkpoint loads as PolicyValueNet": true
+   }
+  },
+  {
+   "seed": 3,
+   "observations": 532,
+   "max_abs_dprob_shared": 0.0,
+   "max_abs_dprob_separate": 0.0,
+   "max_abs_dvalue_shared": 0.0,
+   "max_abs_dvalue_separate": 0.0,
+   "value_fn_equals_forward": true,
+   "classes": [
+    "PolicyValueNet",
+    "SeparateCriticNet"
+   ],
+   "parameters": [
+    36158,
+    64318
+   ],
+   "start_actor_digest": "51c5520a1548176532593914d1ef2895f0af62ecf3b3eec02c7ab7f5f2caf199",
+   "separate_actor_digest": "51c5520a1548176532593914d1ef2895f0af62ecf3b3eec02c7ab7f5f2caf199",
+   "shared_storage": 0,
+   "critic_change_moves_actor": 0.0,
+   "critic_change_moves_value": 0.4704028069972992,
+   "routing_separate": {
+    "policy->trunk": 0.4171889592396305,
+    "policy->policy_head": 0.40620350294908547,
+    "policy->value_head": 0.0,
+    "policy->critic_trunk": 0.0,
+    "value->trunk": 0.0,
+    "value->policy_head": 0.0,
+    "value->value_head": 0.2837831751394679,
+    "value->critic_trunk": 0.02887992507353682
+   },
+   "routing_shared": {
+    "policy->trunk": 0.4171889592396305,
+    "policy->policy_head": 0.40620350294908547,
+    "policy->value_head": 0.0,
+    "value->trunk": 0.02887992507353682,
+    "value->policy_head": 0.0,
+    "value->value_head": 0.2837831751394679
+   },
+   "roundtrip_class": "SeparateCriticNet",
+   "roundtrip_digest_equal": true,
+   "start_loads_as": "PolicyValueNet",
+   "checks": {
+    "s3: shared arm initial = start (probabilities, values)": true,
+    "s3: separate arm initial = start (probabilities, values)": true,
+    "s3: separate actor parameters = start actor": true,
+    "s3: actor and critic share no storage": true,
+    "s3: changing the critic trunk leaves the actor unchanged": true,
+    "s3: separate: policy loss reaches no critic parameter": true,
+    "s3: separate: value loss reaches no actor parameter": true,
+    "s3: shared: value loss reaches the shared trunk": true,
+    "s3: checkpoint round trip (class, digest)": true,
+    "s3: start checkpoint loads as PolicyValueNet": true
+   }
+  },
+  {
+   "seed": 4,
+   "observations": 532,
+   "max_abs_dprob_shared": 0.0,
+   "max_abs_dprob_separate": 0.0,
+   "max_abs_dvalue_shared": 0.0,
+   "max_abs_dvalue_separate": 0.0,
+   "value_fn_equals_forward": true,
+   "classes": [
+    "PolicyValueNet",
+    "SeparateCriticNet"
+   ],
+   "parameters": [
+    36158,
+    64318
+   ],
+   "start_actor_digest": "bc95c692f28c2e017db11ed0329cdbd224512d7ab742acbaed1d3ab7a43c94b4",
+   "separate_actor_digest": "bc95c692f28c2e017db11ed0329cdbd224512d7ab742acbaed1d3ab7a43c94b4",
+   "shared_storage": 0,
+   "critic_change_moves_actor": 0.0,
+   "critic_change_moves_value": 0.45818275213241577,
+   "routing_separate": {
+    "policy->trunk": 0.4030527627758275,
+    "policy->policy_head": 0.3856949040558551,
+    "policy->value_head": 0.0,
+    "policy->critic_trunk": 0.0,
+    "value->trunk": 0.0,
+    "value->policy_head": 0.0,
+    "value->value_head": 0.37778694309003075,
+    "value->critic_trunk": 0.048186693683212496
+   },
+   "routing_shared": {
+    "policy->trunk": 0.4030527627758275,
+    "policy->policy_head": 0.3856949040558551,
+    "policy->value_head": 0.0,
+    "value->trunk": 0.048186693683212496,
+    "value->policy_head": 0.0,
+    "value->value_head": 0.37778694309003075
+   },
+   "roundtrip_class": "SeparateCriticNet",
+   "roundtrip_digest_equal": true,
+   "start_loads_as": "PolicyValueNet",
+   "checks": {
+    "s4: shared arm initial = start (probabilities, values)": true,
+    "s4: separate arm initial = start (probabilities, values)": true,
+    "s4: separate actor parameters = start actor": true,
+    "s4: actor and critic share no storage": true,
+    "s4: changing the critic trunk leaves the actor unchanged": true,
+    "s4: separate: policy loss reaches no critic parameter": true,
+    "s4: separate: value loss reaches no actor parameter": true,
+    "s4: shared: value loss reaches the shared trunk": true,
+    "s4: checkpoint round trip (class, digest)": true,
+    "s4: start checkpoint loads as PolicyValueNet": true
+   }
+  },
+  {
+   "seed": 5,
+   "observations": 532,
+   "max_abs_dprob_shared": 0.0,
+   "max_abs_dprob_separate": 0.0,
+   "max_abs_dvalue_shared": 0.0,
+   "max_abs_dvalue_separate": 0.0,
+   "value_fn_equals_forward": true,
+   "classes": [
+    "PolicyValueNet",
+    "SeparateCriticNet"
+   ],
+   "parameters": [
+    36158,
+    64318
+   ],
+   "start_actor_digest": "b91e53ff7593ff33e38897ee4fdf6bd2c96985ec126f445b2bf859e3028b19e9",
+   "separate_actor_digest": "b91e53ff7593ff33e38897ee4fdf6bd2c96985ec126f445b2bf859e3028b19e9",
+   "shared_storage": 0,
+   "critic_change_moves_actor": 0.0,
+   "critic_change_moves_value": 0.5431200265884399,
+   "routing_separate": {
+    "policy->trunk": 0.5548398327895767,
+    "policy->policy_head": 0.40827500725643817,
+    "policy->value_head": 0.0,
+    "policy->critic_trunk": 0.0,
+    "value->trunk": 0.0,
+    "value->policy_head": 0.0,
+    "value->value_head": 0.2659033327095242,
+    "value->critic_trunk": 0.03636171903312694
+   },
+   "routing_shared": {
+    "policy->trunk": 0.5548398327895767,
+    "policy->policy_head": 0.40827500725643817,
+    "policy->value_head": 0.0,
+    "value->trunk": 0.03636171903312694,
+    "value->policy_head": 0.0,
+    "value->value_head": 0.2659033327095242
+   },
+   "roundtrip_class": "SeparateCriticNet",
+   "roundtrip_digest_equal": true,
+   "start_loads_as": "PolicyValueNet",
+   "checks": {
+    "s5: shared arm initial = start (probabilities, values)": true,
+    "s5: separate arm initial = start (probabilities, values)": true,
+    "s5: separate actor parameters = start actor": true,
+    "s5: actor and critic share no storage": true,
+    "s5: changing the critic trunk leaves the actor unchanged": true,
+    "s5: separate: policy loss reaches no critic parameter": true,
+    "s5: separate: value loss reaches no actor parameter": true,
+    "s5: shared: value loss reaches the shared trunk": true,
+    "s5: checkpoint round trip (class, digest)": true,
+    "s5: start checkpoint loads as PolicyValueNet": true
+   }
+  }
+ ],
+ "checks": {
+  "s0: shared arm initial = start (probabilities, values)": true,
+  "s0: separate arm initial = start (probabilities, values)": true,
+  "s0: separate actor parameters = start actor": true,
+  "s0: actor and critic share no storage": true,
+  "s0: changing the critic trunk leaves the actor unchanged": true,
+  "s0: separate: policy loss reaches no critic parameter": true,
+  "s0: separate: value loss reaches no actor parameter": true,
+  "s0: shared: value loss reaches the shared trunk": true,
+  "s0: checkpoint round trip (class, digest)": true,
+  "s0: start checkpoint loads as PolicyValueNet": true,
+  "s1: shared arm initial = start (probabilities, values)": true,
+  "s1: separate arm initial = start (probabilities, values)": true,
+  "s1: separate actor parameters = start actor": true,
+  "s1: actor and critic share no storage": true,
+  "s1: changing the critic trunk leaves the actor unchanged": true,
+  "s1: separate: policy loss reaches no critic parameter": true,
+  "s1: separate: value loss reaches no actor parameter": true,
+  "s1: shared: value loss reaches the shared trunk": true,
+  "s1: checkpoint round trip (class, digest)": true,
+  "s1: start checkpoint loads as PolicyValueNet": true,
+  "s2: shared arm initial = start (probabilities, values)": true,
+  "s2: separate arm initial = start (probabilities, values)": true,
+  "s2: separate actor parameters = start actor": true,
+  "s2: actor and critic share no storage": true,
+  "s2: changing the critic trunk leaves the actor unchanged": true,
+  "s2: separate: policy loss reaches no critic parameter": true,
+  "s2: separate: value loss reaches no actor parameter": true,
+  "s2: shared: value loss reaches the shared trunk": true,
+  "s2: checkpoint round trip (class, digest)": true,
+  "s2: start checkpoint loads as PolicyValueNet": true,
+  "s3: shared arm initial = start (probabilities, values)": true,
+  "s3: separate arm initial = start (probabilities, values)": true,
+  "s3: separate actor parameters = start actor": true,
+  "s3: actor and critic share no storage": true,
+  "s3: changing the critic trunk leaves the actor unchanged": true,
+  "s3: separate: policy loss reaches no critic parameter": true,
+  "s3: separate: value loss reaches no actor parameter": true,
+  "s3: shared: value loss reaches the shared trunk": true,
+  "s3: checkpoint round trip (class, digest)": true,
+  "s3: start checkpoint loads as PolicyValueNet": true,
+  "s4: shared arm initial = start (probabilities, values)": true,
+  "s4: separate arm initial = start (probabilities, values)": true,
+  "s4: separate actor parameters = start actor": true,
+  "s4: actor and critic share no storage": true,
+  "s4: changing the critic trunk leaves the actor unchanged": true,
+  "s4: separate: policy loss reaches no critic parameter": true,
+  "s4: separate: value loss reaches no actor parameter": true,
+  "s4: shared: value loss reaches the shared trunk": true,
+  "s4: checkpoint round trip (class, digest)": true,
+  "s4: start checkpoint loads as PolicyValueNet": true,
+  "s5: shared arm initial = start (probabilities, values)": true,
+  "s5: separate arm initial = start (probabilities, values)": true,
+  "s5: separate actor parameters = start actor": true,
+  "s5: actor and critic share no storage": true,
+  "s5: changing the critic trunk leaves the actor unchanged": true,
+  "s5: separate: policy loss reaches no critic parameter": true,
+  "s5: separate: value loss reaches no actor parameter": true,
+  "s5: shared: value loss reaches the shared trunk": true,
+  "s5: checkpoint round trip (class, digest)": true,
+  "s5: start checkpoint loads as PolicyValueNet": true
+ },
+ "all_passed": true
+}

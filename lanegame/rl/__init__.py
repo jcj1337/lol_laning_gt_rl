@@ -12,7 +12,7 @@ mixture (OpenAI Five-inspired, `shared`) and evaluation. Requires PyTorch (optio
 """
 
 from .agent import NetAgent, checkpoint_info, load_agent, load_checkpoint, save_checkpoint, weights_digest
-from .network import MASK_VALUE, MaskedCategorical, PolicyValueNet
+from .network import MASK_VALUE, MaskedCategorical, PolicyValueNet, SeparateCriticNet, build_network
 from .ppo import PPOConfig, compute_gae, explained_variance, ppo_update
 from .train import Collector, OpponentSampler, TrainResult, train_ppo
 from .evaluate import approximate_best_response, best_scripted_response, head_to_head, round_robin
@@ -20,7 +20,7 @@ from .selfplay import SelfPlayResult, SelfPlaySampler, SnapshotPool, train_selfp
 from .shared import (CURRENT, HISTORICAL, LEARNER, Matchup, MatchupSampler, SharedCollector, SharedConfig,
                      SharedResult, train_shared)
 
-__all__ = ["PolicyValueNet", "MaskedCategorical", "MASK_VALUE", "PPOConfig", "compute_gae", "explained_variance",
+__all__ = ["PolicyValueNet", "SeparateCriticNet", "build_network", "MaskedCategorical", "MASK_VALUE", "PPOConfig", "compute_gae", "explained_variance",
            "ppo_update", "Collector", "OpponentSampler", "TrainResult", "train_ppo", "NetAgent", "save_checkpoint",
            "load_checkpoint", "load_agent", "weights_digest", "checkpoint_info", "head_to_head", "round_robin",
            "best_scripted_response",

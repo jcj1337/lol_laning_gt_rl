@@ -51,6 +51,8 @@ Opt-in (M4.5c; both default to None, which is the behaviour above, bit for bit):
   * `collector_cls` (M4.6c): a SharedCollector subclass with the same constructor (e.g. a mixed start distribution);
     None = `SharedCollector`, unchanged. If the collector defines `describe_starts()`, its result is recorded in
     final.pt.
+  * `net` may be a `SeparateCriticNet` (M4.6f): collection, GAE and `ppo_update` are unchanged (one Adam over all
+    parameters, one global gradient-norm clip); only the critic's representation is its own. run.json records the class.
 """
 
 from __future__ import annotations
@@ -344,7 +346,7 @@ def train_shared(game_cfg: GameConfig, cfg: PPOConfig, scfg: SharedConfig, out_d
     hist_f = None
     meta_base = {"method": METHOD, "format_version": FORMAT_VERSION, "run": name, "seed": cfg.seed,
                  "ppo": cfg.to_dict(), "shared": scfg.to_dict(),
-                 "model": {"class": "PolicyValueNet", "activation": "tanh", **net.spec()}}
+                 "model": {"class": type(net).__name__, "activation": "tanh", **net.spec()}}
     if stop_at is not None:
         meta_base["stop_at"] = int(stop_at)
     if out_dir:

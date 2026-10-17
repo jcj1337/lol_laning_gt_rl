@@ -1,0 +1,5787 @@
+{
+ "meta": {
+  "study": "M4.6e",
+  "commit": "6b5d66f17d5eadc4e4e789aa01e5599505de45d7",
+  "working_tree_dirty": true,
+  "timestamp": "2026-10-16 11:02:26",
+  "torch": "2.14.1+cpu",
+  "numpy": "2.5.3",
+  "stage": "observation"
+ },
+ "pairs": {
+  "ext/C1:0": [
+   {
+    "base": "freeze L5",
+    "change": "invested +1",
+    "A_changed": {
+     "own_champ_invested_whole": 0.01404741033911705,
+     "own_champ_attack_power": 0.004942834377288818
+    },
+    "B_changed": {
+     "enemy_champ_invested_whole": 0.01404741033911705,
+     "enemy_champ_attack_power": 0.004942834377288818
+    },
+    "A_ok": true,
+    "B_ok": true,
+    "dV_A": 0.010102540254592896,
+    "dV_B": -0.006631314754486084,
+    "tv_actor_A": 0.0015776675703781874
+   },
+   {
+    "base": "freeze L5",
+    "change": "invested +3",
+    "A_changed": {
+     "own_champ_invested_whole": 0.04093816876411438,
+     "own_champ_attack_power": 0.014294981956481934
+    },
+    "B_changed": {
+     "enemy_champ_invested_whole": 0.04093816876411438,
+     "enemy_champ_attack_power": 0.014294981956481934
+    },
+    "A_ok": true,
+    "B_ok": true,
+    "dV_A": 0.029517412185668945,
+    "dV_B": -0.019305497407913208,
+    "tv_actor_A": 0.004596598564915412
+   },
+   {
+    "base": "freeze L5",
+    "change": "invested +8",
+    "A_changed": {
+     "own_champ_invested_whole": 0.10189054161310196,
+     "own_champ_attack_power": 0.03498759865760803
+    },
+    "B_changed": {
+     "enemy_champ_invested_whole": 0.10189054161310196,
+     "enemy_champ_attack_power": 0.03498759865760803
+    },
+    "A_ok": true,
+    "B_ok": true,
+    "dV_A": 0.07387876510620117,
+    "dV_B": -0.04793211817741394,
+    "tv_actor_A": 0.011424429519179507
+   },
+   {
+    "base": "freeze L5",
+    "change": "invested +32",
+    "A_changed": {
+     "own_champ_invested_whole": 0.30875924229621887,
+     "own_champ_attack_power": 0.10082119703292847
+    },
+    "B_changed": {
+     "enemy_champ_invested_whole": 0.30875924229621887,
+     "enemy_champ_attack_power": 0.10082119703292847
+    },
+    "A_ok": true,
+    "B_ok": true,
+    "dV_A": 0.22768408060073853,
+    "dV_B": -0.14386609196662903,
+    "tv_actor_A": 0.03419361887952194
+   },
+   {
+    "base": "freeze L5",
+    "change": "invested +0.5",
+    "A_changed": {
+     "own_champ_invested_frac": 0.4999999701976776,
+     "own_champ_attack_power": 0.002494722604751587
+    },
+    "B_changed": {
+     "enemy_champ_invested_frac": 0.4999999701976776,
+     "enemy_champ_attack_power": 0.002494722604751587
+    },
+    "A_ok": true,
+    "B_ok": true,
+    "dV_A": -0.01152724027633667,
+    "dV_B": 0.023004859685897827,
+    "tv_actor_A": 0.019578412324996616
+   },
+   {
+    "base": "freeze L5",
+    "change": "unspent gold +1",
+    "A_changed": {
+     "own_champ_gold_whole": 0.1111111119389534
+    },
+    "B_changed": {
+     "enemy_champ_gold_whole": 0.1111111119389534
+    },
+    "A_ok": true,
+    "B_ok": true,
+    "dV_A": -0.008068084716796875,
+    "dV_B": 6.690621376037598e-05,
+    "tv_actor_A": 0.012817105811749538
+   },
+   {
+    "base": "freeze L5",
+    "change": "unspent gold +4",
+    "A_changed": {
+     "own_champ_gold_whole": 0.3333333432674408
+    },
+    "B_changed": {
+     "enemy_champ_gold_whole": 0.3333333432674408
+    },
+    "A_ok": true,
+    "B_ok": true,
+    "dV_A": -0.02508595585823059,
+    "dV_B": -0.004026889801025391,
+    "tv_actor_A": 0.044991213371401835
+   },
+   {
+    "base": "freeze L5",
+    "change": "level +1",
+    "A_changed": {
+     "own_champ_hp_max": 0.02690911293029785,
+     "own_champ_level": 0.058823540806770325,
+     "own_champ_attack_power": 0.011374324560165405
+    },
+    "B_changed": {
+     "enemy_champ_hp_max": 0.02690911293029785,
+     "enemy_champ_level": 0.058823540806770325,
+     "enemy_champ_attack_power": 0.011374324560165405
+    },
+    "A_ok": true,
+    "B_ok": true,
+    "dV_A": -0.010002553462982178,
+    "dV_B": 0.03646448254585266,
+    "tv_actor_A": 0.009357659699022705
+   },
+   {
+    "base": "freeze L5",
+    "change": "XP within level",
+    "A_changed": {
+     "own_champ_xp_progress": 0.5
+    },
+    "B_changed": {
+     "enemy_champ_xp_progress": 0.5
+    },
+    "A_ok": true,
+    "B_ok": true,
+    "dV_A": -0.0055155158042907715,
+    "dV_B": -0.044033974409103394,
+    "tv_actor_A": 0.008323961042466459
+   },
+   {
+    "base": "freeze L5",
+    "change": "HP 60%",
+    "A_changed": {
+     "own_champ_hp_frac": -0.40054869651794434
+    },
+    "B_changed": {
+     "enemy_champ_hp_frac": -0.40054869651794434
+    },
+    "A_ok": true,
+    "B_ok": true,
+    "dV_A": -0.09896114468574524,
+    "dV_B": 0.43548136949539185,
+    "tv_actor_A": 0.1833747961327079
+   },
+   {
+    "base": "freeze L5",
+    "change": "HP 30%",
+    "A_changed": {
+     "own_champ_hp_frac": -0.6995884776115417
+    },
+    "B_changed": {
+     "enemy_champ_hp_frac": -0.6995884776115417
+    },
+    "A_ok": true,
+    "B_ok": true,
+    "dV_A": -0.3422027826309204,
+    "dV_B": 0.7884353026747704,
+    "tv_actor_A": 0.4848692083507869
+   },
+   {
+    "base": "freeze L5",
+    "change": "enemy HP 60%",
+    "A_changed": {
+     "enemy_champ_hp_frac": -0.40054869651794434
+    },
+    "B_changed": {
+     "own_champ_hp_frac": -0.40054869651794434
+    },
+    "A_ok": true,
+    "B_ok": true,
+    "dV_A": 0.6347151100635529,
+    "dV_B": -0.5495046079158783,
+    "tv_actor_A": 0.058326026929629085
+   },
+   {
+    "base": "freeze L5",
+    "change": "away 2 turns",
+    "A_changed": {
+     "own_champ_absent": 0.4000000059604645
+    },
+    "B_changed": {
+     "enemy_champ_absent": 0.4000000059604645
+    },
+    "A_ok": true,
+    "B_ok": true,
+    "dV_A": 0.06750613451004028,
+    "dV_B": 0.49669817090034485,
+    "tv_actor_A": 1.0
+   },
+   {
+    "base": "freeze L5",
+    "change": "one cell forward",
+    "A_changed": {
+     "own_champ_x-2": -1.0,
+     "own_champ_x-1": 1.0
+    },
+    "B_changed": {
+     "enemy_champ_x+1": 1.0,
+     "enemy_champ_x+2": -1.0
+    },
+    "A_ok": true,
+    "B_ok": true,
+    "dV_A": -0.15841320157051086,
+    "dV_B": 0.16259506344795227,
+    "tv_actor_A": 0.13314207310595924
+   },
+   {
+    "base": "freeze L5",
+    "change": "own front HP halved",
+    "A_changed": {
+     "own_front_hp": -0.1666666716337204
+    },
+    "B_changed": {
+     "enemy_front_hp": -0.1666666716337204
+    },
+    "A_ok": true,
+    "B_ok": true,
+    "dV_A": 0.3884175419807434,
+    "dV_B": -0.44812098145484924,
+    "tv_actor_A": 0.08023192261889274
+   },
+   {
+    "base": "freeze L5",
+    "change": "vision 3 turns",
+    "A_changed": {
+     "own_vision": 0.5
+    },
+    "B_changed": {
+     "enemy_vision": 0.5
+    },
+    "A_ok": true,
+    "B_ok": true,
+    "dV_A": -0.0676274299621582,
+    "dV_B": -0.03711894154548645,
+    "tv_actor_A": 0.0074903309047804996
+   },
+   {
+    "base": "freeze L5",
+    "change": "first plate dealt",
+    "A_changed": {
+     "own_tower_dmg": 0.2666666805744171,
+     "own_plates_broken": 0.3333333432674408,
+     "own_plates_left": -0.3333333134651184
+    },
+    "B_changed": {
+     "enemy_tower_dmg": 0.2666666805744171,
+     "enemy_plates_broken": 0.3333333432674408,
+     "enemy_plates_left": -0.3333333134651184
+    },
+    "A_ok": true,
+    "B_ok": true,
+    "dV_A": -0.3136266767978668,
+    "dV_B": 0.3002767264842987,
+    "tv_actor_A": 0.03653364545134103
+   },
+   {
+    "base": "freeze L5",
+    "change": "phase + 1",
+    "A_changed": {
+     "phase_0": 1.0,
+     "phase_3": -1.0
+    },
+    "B_changed": {
+     "phase_0": 1.0,
+     "phase_3": -1.0
+    },
+    "A_ok": true,
+    "B_ok": true,
+    "dV_A": 0.11655464768409729,
+    "dV_B": 0.24671882390975952,
+    "tv_actor_A": 0.10807832343276823
+   },
+   {
+    "base": "neutral L8",
+    "change": "invested +1",
+    "A_changed": {
+     "own_champ_invested_whole": 0.01122806966304779,
+     "own_champ_attack_power": 0.003783881664276123
+    },
+    "B_changed": {
+     "enemy_champ_invested_whole": 0.01122806966304779,
+     "enemy_champ_attack_power": 0.003783881664276123
+    },
+    "A_ok": true,
+    "B_ok": true,
+    "dV_A": 0.009165331721305847,
+    "dV_B": -0.007354170083999634,
+    "tv_actor_A": 0.0029517946425108585
+   },
+   {
+    "base": "neutral L8",
+    "change": "invested +3",
+    "A_changed": {
+     "own_champ_invested_whole": 0.03282052278518677,
+     "own_champ_attack_power": 0.010990679264068604
+    },
+    "B_changed": {
+     "enemy_champ_invested_whole": 0.03282052278518677,
+     "enemy_champ_attack_power": 0.010990679264068604
+    },
+    "A_ok": true,
+    "B_ok": true,
+    "dV_A": 0.026721060276031494,
+    "dV_B": -0.021538957953453064,
+    "tv_actor_A": 0.008571439184506485
+   },
+   {
+    "base": "neutral L8",
+    "change": "invested +8",
+    "A_changed": {
+     "own_champ_invested_whole": 0.0822490006685257,
+     "own_champ_attack_power": 0.027158647775650024
+    },
+    "B_changed": {
+     "enemy_champ_invested_whole": 0.0822490006685257,
+     "enemy_champ_attack_power": 0.027158647775650024
+    },
+    "A_ok": true,
+    "B_ok": true,
+    "dV_A": 0.06655938923358917,
+    "dV_B": -0.05421493202447891,
+    "tv_actor_A": 0.02114401235945172
+   },
+   {
+    "base": "neutral L8",
+    "change": "invested +32",
+    "A_changed": {
+     "own_champ_invested_whole": 0.2552024722099304,
+     "own_champ_attack_power": 0.08065721392631531
+    },
+    "B_changed": {
+     "enemy_champ_invested_whole": 0.2552024722099304,
+     "enemy_champ_attack_power": 0.08065721392631531
+    },
+    "A_ok": true,
+    "B_ok": true,
+    "dV_A": 0.2020726352930069,
+    "dV_B": -0.1706831157207489,
+    "tv_actor_A": 0.06190939034149364
+   },
+   {
+    "base": "neutral L8",
+    "change": "invested +0.5",
+    "A_changed": {
+     "own_champ_invested_whole": 0.01122806966304779,
+     "own_champ_invested_frac": -0.5,
+     "own_champ_attack_power": 0.0019076168537139893
+    },
+    "B_changed": {
+     "enemy_champ_invested_whole": 0.01122806966304779,
+     "enemy_champ_invested_frac": -0.5,
+     "enemy_champ_attack_power": 0.0019076168537139893
+    },
+    "A_ok": true,
+    "B_ok": true,
+    "dV_A": 0.04588223993778229,
+    "dV_B": 0.08057292550802231,
+    "tv_actor_A": 0.012844935984312602
+   },
+   {
+    "base": "neutral L8",
+    "change": "unspent gold +1",
+    "A_changed": {
+     "own_champ_gold_whole": 0.1111111119389534
+    },
+    "B_changed": {
+     "enemy_champ_gold_whole": 0.1111111119389534
+    },
+    "A_ok": true,
+    "B_ok": true,
+    "dV_A": -0.007433593273162842,
+    "dV_B": 0.008369684219360352,
+    "tv_actor_A": 0.035515639924145075
+   },
+   {
+    "base": "neutral L8",
+    "change": "unspent gold +4",
+    "A_changed": {
+     "own_champ_gold_whole": 0.3333333432674408
+    },
+    "B_changed": {
+     "enemy_champ_gold_whole": 0.3333333432674408
+    },
+    "A_ok": true,
+    "B_ok": true,
+    "dV_A": -0.02302110195159912,
+    "dV_B": 0.02423420548439026,
+    "tv_actor_A": 0.10664927463584392
+   },
+   {
+    "base": "neutral L8",
+    "change": "level +1",
+    "A_changed": {
+     "own_champ_hp_max": 0.030545473098754883,
+     "own_champ_level": 0.05882352590560913,
+     "own_champ_attack_power": 0.01204073429107666
+    },
+    "B_changed": {
+     "enemy_champ_hp_max": 0.030545473098754883,
+     "enemy_champ_level": 0.05882352590560913,
+     "enemy_champ_attack_power": 0.01204073429107666
+    },
+    "A_ok": true,
+    "B_ok": true,
+    "dV_A": 0.001072213053703308,
+    "dV_B": 0.027646273374557495,
+    "tv_actor_A": 0.0179647950586982
+   },
+   {
+    "base": "neutral L8",
+    "change": "XP within level",
+    "A_changed": {
+     "own_champ_xp_progress": 0.48275861144065857
+    },
+    "B_changed": {
+     "enemy_champ_xp_progress": 0.48275861144065857
+    },
+    "A_ok": true,
+    "B_ok": true,
+    "dV_A": -0.03814905881881714,
+    "dV_B": 0.0935189425945282,
+    "tv_actor_A": 0.036501876291073675
+   },
+   {
+    "base": "neutral L8",
+    "change": "HP 60%",
+    "A_changed": {
+     "own_champ_hp_frac": -0.400473952293396
+    },
+    "B_changed": {
+     "enemy_champ_hp_frac": -0.400473952293396
+    },
+    "A_ok": true,
+    "B_ok": true,
+    "dV_A": -0.40157198905944824,
+    "dV_B": 0.4821401461958885,
+    "tv_actor_A": 0.11961273454649365
+   },
+   {
+    "base": "neutral L8",
+    "change": "HP 30%",
+    "A_changed": {
+     "own_champ_hp_frac": -0.700236976146698
+    },
+    "B_changed": {
+     "enemy_champ_hp_frac": -0.700236976146698
+    },
+    "A_ok": true,
+    "B_ok": true,
+    "dV_A": -1.0150298848748207,
+    "dV_B": 1.2514781579375267,
+    "tv_actor_A": 0.3993203702768461
+   },
+   {
+    "base": "neutral L8",
+    "change": "enemy HP 60%",
+    "A_changed": {
+     "enemy_champ_hp_frac": -0.400473952293396
+    },
+    "B_changed": {
+     "own_champ_hp_frac": -0.400473952293396
+    },
+    "A_ok": true,
+    "B_ok": true,
+    "dV_A": 0.4821401461958885,
+    "dV_B": -0.40157198905944824,
+    "tv_actor_A": 0.26223105468921915
+   },
+   {
+    "base": "neutral L8",
+    "change": "away 2 turns",
+    "A_changed": {
+     "own_champ_x-2": 1.0,
+     "own_champ_x+0": -1.0,
+     "own_champ_absent": 0.4000000059604645
+    },
+    "B_changed": {
+     "enemy_champ_x+0": -1.0,
+     "enemy_champ_x+2": 1.0,
+     "enemy_champ_absent": 0.4000000059604645
+    },
+    "A_ok": true,
+    "B_ok": true,
+    "dV_A": 0.33672284334897995,
+    "dV_B": -0.18335998058319092,
+    "tv_actor_A": 0.9999999999999998
+   },
+   {
+    "base": "neutral L8",
+    "change": "one cell forward",
+    "A_changed": {
+     "own_champ_x+0": -1.0,
+     "own_champ_x+1": 1.0
+    },
+    "B_changed": {
+     "enemy_champ_x-1": 1.0,
+     "enemy_champ_x+0": -1.0
+    },
+    "A_ok": true,
+    "B_ok": true,
+    "dV_A": -0.0959942489862442,
+    "dV_B": 0.11378884315490723,
+    "tv_actor_A": 0.24958030953681404
+   },
+   {
+    "base": "neutral L8",
+    "change": "own front HP halved",
+    "A_changed": {
+     "own_front_hp": -0.1666666716337204
+    },
+    "B_changed": {
+     "enemy_front_hp": -0.1666666716337204
+    },
+    "A_ok": true,
+    "B_ok": true,
+    "dV_A": 0.393141470849514,
+    "dV_B": -0.43196771293878555,
+    "tv_actor_A": 0.09438458449429057
+   },
+   {
+    "base": "neutral L8",
+    "change": "vision 3 turns",
+    "A_changed": {
+     "own_vision": 0.5
+    },
+    "B_changed": {
+     "enemy_vision": 0.5
+    },
+    "A_ok": true,
+    "B_ok": true,
+    "dV_A": -0.06383851170539856,
+    "dV_B": 0.010059326887130737,
+    "tv_actor_A": 0.06932970186268696
+   },
+   {
+    "base": "neutral L8",
+    "change": "first plate dealt",
+    "A_changed": {
+     "own_tower_dmg": 0.2666666805744171,
+     "own_plates_broken": 0.3333333432674408,
+     "own_plates_left": -0.3333333134651184
+    },
+    "B_changed": {
+     "enemy_tower_dmg": 0.2666666805744171,
+     "enemy_plates_broken": 0.3333333432674408,
+     "enemy_plates_left": -0.3333333134651184
+    },
+    "A_ok": true,
+    "B_ok": true,
+    "dV_A": -0.27033835649490356,
+    "dV_B": 0.22225327789783478,
+    "tv_actor_A": 0.028740176549900437
+   },
+   {
+    "base": "neutral L8",
+    "change": "phase + 1",
+    "A_changed": {
+     "phase_2": -1.0,
+     "phase_3": 1.0
+    },
+    "B_changed": {
+     "phase_2": -1.0,
+     "phase_3": 1.0
+    },
+    "A_ok": true,
+    "B_ok": true,
+    "dV_A": -0.3681885078549385,
+    "dV_B": -0.3681885078549385,
+    "tv_actor_A": 0.05013692099739948
+   },
+   {
+    "base": "neutral L15",
+    "change": "invested +1",
+    "A_changed": {
+     "own_champ_invested_whole": 0.005860805511474609,
+     "own_champ_attack_power": 0.0017145872116088867
+    },
+    "B_changed": {
+     "enemy_champ_invested_whole": 0.005860805511474609,
+     "enemy_champ_attack_power": 0.0017145872116088867
+    },
+    "A_ok": true,
+    "B_ok": true,
+    "dV_A": 0.004267469048500061,
+    "dV_B": -0.0038735568523406982,
+    "tv_actor_A": 0.0003330637472848313
+   },
+   {
+    "base": "neutral L15",
+    "change": "invested +3",
+    "A_changed": {
+     "own_champ_invested_whole": 0.017253756523132324,
+     "own_champ_attack_power": 0.0050296783447265625
+    },
+    "B_changed": {
+     "enemy_champ_invested_whole": 0.017253756523132324,
+     "enemy_champ_attack_power": 0.0050296783447265625
+    },
+    "A_ok": true,
+    "B_ok": true,
+    "dV_A": 0.012544766068458557,
+    "dV_B": -0.011420398950576782,
+    "tv_actor_A": 0.0009734121362757826
+   },
+   {
+    "base": "neutral L15",
+    "change": "invested +8",
+    "A_changed": {
+     "own_champ_invested_whole": 0.04395604133605957,
+     "own_champ_attack_power": 0.012710392475128174
+    },
+    "B_changed": {
+     "enemy_champ_invested_whole": 0.04395604133605957,
+     "enemy_champ_attack_power": 0.012710392475128174
+    },
+    "A_ok": true,
+    "B_ok": true,
+    "dV_A": 0.03185093402862549,
+    "dV_B": -0.02919670194387436,
+    "tv_actor_A": 0.0024375628332716066
+   },
+   {
+    "base": "neutral L15",
+    "change": "invested +32",
+    "A_changed": {
+     "own_champ_invested_whole": 0.14479640126228333,
+     "own_champ_attack_power": 0.04073071479797363
+    },
+    "B_changed": {
+     "enemy_champ_invested_whole": 0.14479640126228333,
+     "enemy_champ_attack_power": 0.04073071479797363
+    },
+    "A_ok": true,
+    "B_ok": true,
+    "dV_A": 0.10361574590206146,
+    "dV_B": -0.09743660688400269,
+    "tv_actor_A": 0.007529084887771838
+   },
+   {
+    "base": "neutral L15",
+    "change": "invested +0.5",
+    "A_changed": {
+     "own_champ_invested_frac": 0.5,
+     "own_champ_attack_power": 0.0008621811866760254
+    },
+    "B_changed": {
+     "enemy_champ_invested_frac": 0.5,
+     "enemy_champ_attack_power": 0.0008621811866760254
+    },
+    "A_ok": true,
+    "B_ok": true,
+    "dV_A": -0.046121515333652496,
+    "dV_B": -0.10481875389814377,
+    "tv_actor_A": 0.010941883852250912
+   },
+   {
+    "base": "neutral L15",
+    "change": "unspent gold +1",
+    "A_changed": {
+     "own_champ_gold_whole": 0.1111111119389534
+    },
+    "B_changed": {
+     "enemy_champ_gold_whole": 0.1111111119389534
+    },
+    "A_ok": true,
+    "B_ok": true,
+    "dV_A": -0.004189983010292053,
+    "dV_B": -0.002172216773033142,
+    "tv_actor_A": 0.017434947810682104
+   },
+   {
+    "base": "neutral L15",
+    "change": "unspent gold +4",
+    "A_changed": {
+     "own_champ_gold_whole": 0.3333333432674408
+    },
+    "B_changed": {
+     "enemy_champ_gold_whole": 0.3333333432674408
+    },
+    "A_ok": true,
+    "B_ok": true,
+    "dV_A": -0.014633461833000183,
+    "dV_B": -0.010093972086906433,
+    "tv_actor_A": 0.058740755801610325
+   },
+   {
+    "base": "neutral L15",
+    "change": "level +1",
+    "A_changed": {
+     "own_champ_hp_max": 0.042909085750579834,
+     "own_champ_level": 0.05882352590560913,
+     "own_champ_attack_power": 0.011704504489898682
+    },
+    "B_changed": {
+     "enemy_champ_hp_max": 0.042909085750579834,
+     "enemy_champ_level": 0.05882352590560913,
+     "enemy_champ_attack_power": 0.011704504489898682
+    },
+    "A_ok": true,
+    "B_ok": true,
+    "dV_A": -0.0015641003847122192,
+    "dV_B": 0.024392828345298767,
+    "tv_actor_A": 0.006709676840379703
+   },
+   {
+    "base": "neutral L15",
+    "change": "XP within level",
+    "A_changed": {
+     "own_champ_xp_progress": 0.5
+    },
+    "B_changed": {
+     "enemy_champ_xp_progress": 0.5
+    },
+    "A_ok": true,
+    "B_ok": true,
+    "dV_A": -0.0909874215722084,
+    "dV_B": 0.02224557101726532,
+    "tv_actor_A": 0.0187975130501766
+   },
+   {
+    "base": "neutral L15",
+    "change": "HP 60%",
+    "A_changed": {
+     "own_champ_hp_frac": -0.3998316526412964
+    },
+    "B_changed": {
+     "enemy_champ_hp_frac": -0.3998316526412964
+    },
+    "A_ok": true,
+    "B_ok": true,
+    "dV_A": -0.38376785814762115,
+    "dV_B": 0.40151558816432953,
+    "tv_actor_A": 0.0605442869898811
+   },
+   {
+    "base": "neutral L15",
+    "change": "HP 30%",
+    "A_changed": {
+     "own_champ_hp_frac": -0.7003366947174072
+    },
+    "B_changed": {
+     "enemy_champ_hp_frac": -0.7003366947174072
+    },
+    "A_ok": true,
+    "B_ok": true,
+    "dV_A": -1.169579066336155,
+    "dV_B": 1.209459826350212,
+    "tv_actor_A": 0.19082417604315818
+   },
+   {
+    "base": "neutral L15",
+    "change": "enemy HP 60%",
+    "A_changed": {
+     "enemy_champ_hp_frac": -0.3998316526412964
+    },
+    "B_changed": {
+     "own_champ_hp_frac": -0.3998316526412964
+    },
+    "A_ok": true,
+    "B_ok": true,
+    "dV_A": 0.40151558816432953,
+    "dV_B": -0.38376785814762115,
+    "tv_actor_A": 0.21418055988676277
+   },
+   {
+    "base": "neutral L15",
+    "change": "away 2 turns",
+    "A_changed": {
+     "own_champ_x-2": 1.0,
+     "own_champ_x+0": -1.0,
+     "own_champ_absent": 0.4000000059604645
+    },
+    "B_changed": {
+     "enemy_champ_x+0": -1.0,
+     "enemy_champ_x+2": 1.0,
+     "enemy_champ_absent": 0.4000000059604645
+    },
+    "A_ok": true,
+    "B_ok": true,
+    "dV_A": 0.32868020236492157,
+    "dV_B": -0.17540659755468369,
+    "tv_actor_A": 1.0
+   },
+   {
+    "base": "neutral L15",
+    "change": "one cell forward",
+    "A_changed": {
+     "own_champ_x+0": -1.0,
+     "own_champ_x+1": 1.0
+    },
+    "B_changed": {
+     "enemy_champ_x-1": 1.0,
+     "enemy_champ_x+0": -1.0
+    },
+    "A_ok": true,
+    "B_ok": true,
+    "dV_A": -0.32986413687467575,
+    "dV_B": 0.09737446904182434,
+    "tv_actor_A": 0.15054722572446905
+   },
+   {
+    "base": "neutral L15",
+    "change": "own front HP halved",
+    "A_changed": {
+     "own_front_hp": -0.1666666716337204
+    },
+    "B_changed": {
+     "enemy_front_hp": -0.1666666716337204
+    },
+    "A_ok": true,
+    "B_ok": true,
+    "dV_A": 0.360160693526268,
+    "dV_B": -0.4222371056675911,
+    "tv_actor_A": 0.07744039747852527
+   },
+   {
+    "base": "neutral L15",
+    "change": "vision 3 turns",
+    "A_changed": {
+     "own_vision": 0.5
+    },
+    "B_changed": {
+     "enemy_vision": 0.5
+    },
+    "A_ok": true,
+    "B_ok": true,
+    "dV_A": -0.08872415870428085,
+    "dV_B": -0.006014034152030945,
+    "tv_actor_A": 0.031507375833335766
+   },
+   {
+    "base": "neutral L15",
+    "change": "first plate dealt",
+    "A_changed": {
+     "own_tower_dmg": 0.2666666805744171,
+     "own_plates_broken": 0.3333333432674408,
+     "own_plates_left": -0.3333333134651184
+    },
+    "B_changed": {
+     "enemy_tower_dmg": 0.2666666805744171,
+     "enemy_plates_broken": 0.3333333432674408,
+     "enemy_plates_left": -0.3333333134651184
+    },
+    "A_ok": true,
+    "B_ok": true,
+    "dV_A": -0.28701674193143845,
+    "dV_B": 0.20942337810993195,
+    "tv_actor_A": 0.01048474639376381
+   },
+   {
+    "base": "neutral L15",
+    "change": "phase + 1",
+    "A_changed": {
+     "phase_2": -1.0,
+     "phase_3": 1.0
+    },
+    "B_changed": {
+     "phase_2": -1.0,
+     "phase_3": 1.0
+    },
+    "A_ok": true,
+    "B_ok": true,
+    "dV_A": -0.4096102714538574,
+    "dV_B": -0.4096102714538574,
+    "tv_actor_A": 0.041225874353353745
+   }
+  ],
+  "ext/C1:1": [
+   {
+    "base": "freeze L5",
+    "change": "invested +1",
+    "A_changed": {
+     "own_champ_invested_whole": 0.01404741033911705,
+     "own_champ_attack_power": 0.004942834377288818
+    },
+    "B_changed": {
+     "enemy_champ_invested_whole": 0.01404741033911705,
+     "enemy_champ_attack_power": 0.004942834377288818
+    },
+    "A_ok": true,
+    "B_ok": true,
+    "dV_A": 0.009526759386062622,
+    "dV_B": -0.011174976825714111,
+    "tv_actor_A": 0.001853213330649676
+   },
+   {
+    "base": "freeze L5",
+    "change": "invested +3",
+    "A_changed": {
+     "own_champ_invested_whole": 0.04093816876411438,
+     "own_champ_attack_power": 0.014294981956481934
+    },
+    "B_changed": {
+     "enemy_champ_invested_whole": 0.04093816876411438,
+     "enemy_champ_attack_power": 0.014294981956481934
+    },
+    "A_ok": true,
+    "B_ok": true,
+    "dV_A": 0.027587562799453735,
+    "dV_B": -0.032516419887542725,
+    "tv_actor_A": 0.005423921144129185
+   },
+   {
+    "base": "freeze L5",
+    "change": "invested +8",
+    "A_changed": {
+     "own_champ_invested_whole": 0.10189054161310196,
+     "own_champ_attack_power": 0.03498759865760803
+    },
+    "B_changed": {
+     "enemy_champ_invested_whole": 0.10189054161310196,
+     "enemy_champ_attack_power": 0.03498759865760803
+    },
+    "A_ok": true,
+    "B_ok": true,
+    "dV_A": 0.06765872240066528,
+    "dV_B": -0.08061453700065613,
+    "tv_actor_A": 0.013622511606550829
+   },
+   {
+    "base": "freeze L5",
+    "change": "invested +32",
+    "A_changed": {
+     "own_champ_invested_whole": 0.30875924229621887,
+     "own_champ_attack_power": 0.10082119703292847
+    },
+    "B_changed": {
+     "enemy_champ_invested_whole": 0.30875924229621887,
+     "enemy_champ_attack_power": 0.10082119703292847
+    },
+    "A_ok": true,
+    "B_ok": true,
+    "dV_A": 0.19457682967185974,
+    "dV_B": -0.24025022983551025,
+    "tv_actor_A": 0.042302935633784136
+   },
+   {
+    "base": "freeze L5",
+    "change": "invested +0.5",
+    "A_changed": {
+     "own_champ_invested_frac": 0.4999999701976776,
+     "own_champ_attack_power": 0.002494722604751587
+    },
+    "B_changed": {
+     "enemy_champ_invested_frac": 0.4999999701976776,
+     "enemy_champ_attack_power": 0.002494722604751587
+    },
+    "A_ok": true,
+    "B_ok": true,
+    "dV_A": -0.003936737775802612,
+    "dV_B": -0.002969205379486084,
+    "tv_actor_A": 0.006646019863910873
+   },
+   {
+    "base": "freeze L5",
+    "change": "unspent gold +1",
+    "A_changed": {
+     "own_champ_gold_whole": 0.1111111119389534
+    },
+    "B_changed": {
+     "enemy_champ_gold_whole": 0.1111111119389534
+    },
+    "A_ok": true,
+    "B_ok": true,
+    "dV_A": -0.016949772834777832,
+    "dV_B": 0.020026415586471558,
+    "tv_actor_A": 0.0220102419276828
+   },
+   {
+    "base": "freeze L5",
+    "change": "unspent gold +4",
+    "A_changed": {
+     "own_champ_gold_whole": 0.3333333432674408
+    },
+    "B_changed": {
+     "enemy_champ_gold_whole": 0.3333333432674408
+    },
+    "A_ok": true,
+    "B_ok": true,
+    "dV_A": -0.05319908261299133,
+    "dV_B": 0.06381496787071228,
+    "tv_actor_A": 0.08101826180139586
+   },
+   {
+    "base": "freeze L5",
+    "change": "level +1",
+    "A_changed": {
+     "own_champ_hp_max": 0.02690911293029785,
+     "own_champ_level": 0.058823540806770325,
+     "own_champ_attack_power": 0.011374324560165405
+    },
+    "B_changed": {
+     "enemy_champ_hp_max": 0.02690911293029785,
+     "enemy_champ_level": 0.058823540806770325,
+     "enemy_champ_attack_power": 0.011374324560165405
+    },
+    "A_ok": true,
+    "B_ok": true,
+    "dV_A": 0.021112412214279175,
+    "dV_B": -0.0052835047245025635,
+    "tv_actor_A": 0.011977114006044634
+   },
+   {
+    "base": "freeze L5",
+    "change": "XP within level",
+    "A_changed": {
+     "own_champ_xp_progress": 0.5
+    },
+    "B_changed": {
+     "enemy_champ_xp_progress": 0.5
+    },
+    "A_ok": true,
+    "B_ok": true,
+    "dV_A": -0.059215426445007324,
+    "dV_B": -0.02553880214691162,
+    "tv_actor_A": 0.008817545742982278
+   },
+   {
+    "base": "freeze L5",
+    "change": "HP 60%",
+    "A_changed": {
+     "own_champ_hp_frac": -0.40054869651794434
+    },
+    "B_changed": {
+     "enemy_champ_hp_frac": -0.40054869651794434
+    },
+    "A_ok": true,
+    "B_ok": true,
+    "dV_A": -0.30910149216651917,
+    "dV_B": 0.15407338738441467,
+    "tv_actor_A": 0.18977425990691105
+   },
+   {
+    "base": "freeze L5",
+    "change": "HP 30%",
+    "A_changed": {
+     "own_champ_hp_frac": -0.6995884776115417
+    },
+    "B_changed": {
+     "enemy_champ_hp_frac": -0.6995884776115417
+    },
+    "A_ok": true,
+    "B_ok": true,
+    "dV_A": -0.6402979046106339,
+    "dV_B": 0.6274662911891937,
+    "tv_actor_A": 0.42207620020954273
+   },
+   {
+    "base": "freeze L5",
+    "change": "enemy HP 60%",
+    "A_changed": {
+     "enemy_champ_hp_frac": -0.40054869651794434
+    },
+    "B_changed": {
+     "own_champ_hp_frac": -0.40054869651794434
+    },
+    "A_ok": true,
+    "B_ok": true,
+    "dV_A": 0.36219701170921326,
+    "dV_B": -0.31678974628448486,
+    "tv_actor_A": 0.14513203949590886
+   },
+   {
+    "base": "freeze L5",
+    "change": "away 2 turns",
+    "A_changed": {
+     "own_champ_absent": 0.4000000059604645
+    },
+    "B_changed": {
+     "enemy_champ_absent": 0.4000000059604645
+    },
+    "A_ok": true,
+    "B_ok": true,
+    "dV_A": -0.17784088850021362,
+    "dV_B": 0.5616295337677002,
+    "tv_actor_A": 0.9999999999999999
+   },
+   {
+    "base": "freeze L5",
+    "change": "one cell forward",
+    "A_changed": {
+     "own_champ_x-2": -1.0,
+     "own_champ_x-1": 1.0
+    },
+    "B_changed": {
+     "enemy_champ_x+1": 1.0,
+     "enemy_champ_x+2": -1.0
+    },
+    "A_ok": true,
+    "B_ok": true,
+    "dV_A": -0.06875723600387573,
+    "dV_B": -0.13466298580169678,
+    "tv_actor_A": 0.08625168912463274
+   },
+   {
+    "base": "freeze L5",
+    "change": "own front HP halved",
+    "A_changed": {
+     "own_front_hp": -0.1666666716337204
+    },
+    "B_changed": {
+     "enemy_front_hp": -0.1666666716337204
+    },
+    "A_ok": true,
+    "B_ok": true,
+    "dV_A": 0.23534461855888367,
+    "dV_B": -0.3076307475566864,
+    "tv_actor_A": 0.02867905002707476
+   },
+   {
+    "base": "freeze L5",
+    "change": "vision 3 turns",
+    "A_changed": {
+     "own_vision": 0.5
+    },
+    "B_changed": {
+     "enemy_vision": 0.5
+    },
+    "A_ok": true,
+    "B_ok": true,
+    "dV_A": 0.03671988844871521,
+    "dV_B": 0.02664998173713684,
+    "tv_actor_A": 0.028046001049509356
+   },
+   {
+    "base": "freeze L5",
+    "change": "first plate dealt",
+    "A_changed": {
+     "own_tower_dmg": 0.2666666805744171,
+     "own_plates_broken": 0.3333333432674408,
+     "own_plates_left": -0.3333333134651184
+    },
+    "B_changed": {
+     "enemy_tower_dmg": 0.2666666805744171,
+     "enemy_plates_broken": 0.3333333432674408,
+     "enemy_plates_left": -0.3333333134651184
+    },
+    "A_ok": true,
+    "B_ok": true,
+    "dV_A": -0.09721696376800537,
+    "dV_B": 0.2579650282859802,
+    "tv_actor_A": 0.036407948100945615
+   },
+   {
+    "base": "freeze L5",
+    "change": "phase + 1",
+    "A_changed": {
+     "phase_0": 1.0,
+     "phase_3": -1.0
+    },
+    "B_changed": {
+     "phase_0": 1.0,
+     "phase_3": -1.0
+    },
+    "A_ok": true,
+    "B_ok": true,
+    "dV_A": -0.16608014702796936,
+    "dV_B": -0.0665806233882904,
+    "tv_actor_A": 0.044668436605859764
+   },
+   {
+    "base": "neutral L8",
+    "change": "invested +1",
+    "A_changed": {
+     "own_champ_invested_whole": 0.01122806966304779,
+     "own_champ_attack_power": 0.003783881664276123
+    },
+    "B_changed": {
+     "enemy_champ_invested_whole": 0.01122806966304779,
+     "enemy_champ_attack_power": 0.003783881664276123
+    },
+    "A_ok": true,
+    "B_ok": true,
+    "dV_A": 0.008373931050300598,
+    "dV_B": -0.00845976173877716,
+    "tv_actor_A": 0.0033932257235658255
+   },
+   {
+    "base": "neutral L8",
+    "change": "invested +3",
+    "A_changed": {
+     "own_champ_invested_whole": 0.03282052278518677,
+     "own_champ_attack_power": 0.010990679264068604
+    },
+    "B_changed": {
+     "enemy_champ_invested_whole": 0.03282052278518677,
+     "enemy_champ_attack_power": 0.010990679264068604
+    },
+    "A_ok": true,
+    "B_ok": true,
+    "dV_A": 0.024431869387626648,
+    "dV_B": -0.024807974696159363,
+    "tv_actor_A": 0.009993152302533925
+   },
+   {
+    "base": "neutral L8",
+    "change": "invested +8",
+    "A_changed": {
+     "own_champ_invested_whole": 0.0822490006685257,
+     "own_champ_attack_power": 0.027158647775650024
+    },
+    "B_changed": {
+     "enemy_champ_invested_whole": 0.0822490006685257,
+     "enemy_champ_attack_power": 0.027158647775650024
+    },
+    "A_ok": true,
+    "B_ok": true,
+    "dV_A": 0.06095893681049347,
+    "dV_B": -0.06261855363845825,
+    "tv_actor_A": 0.025470822172049427
+   },
+   {
+    "base": "neutral L8",
+    "change": "invested +32",
+    "A_changed": {
+     "own_champ_invested_whole": 0.2552024722099304,
+     "own_champ_attack_power": 0.08065721392631531
+    },
+    "B_changed": {
+     "enemy_champ_invested_whole": 0.2552024722099304,
+     "enemy_champ_attack_power": 0.08065721392631531
+    },
+    "A_ok": true,
+    "B_ok": true,
+    "dV_A": 0.18623843789100647,
+    "dV_B": -0.19881412386894226,
+    "tv_actor_A": 0.08356951506428055
+   },
+   {
+    "base": "neutral L8",
+    "change": "invested +0.5",
+    "A_changed": {
+     "own_champ_invested_whole": 0.01122806966304779,
+     "own_champ_invested_frac": -0.5,
+     "own_champ_attack_power": 0.0019076168537139893
+    },
+    "B_changed": {
+     "enemy_champ_invested_whole": 0.01122806966304779,
+     "enemy_champ_invested_frac": -0.5,
+     "enemy_champ_attack_power": 0.0019076168537139893
+    },
+    "A_ok": true,
+    "B_ok": true,
+    "dV_A": 0.025493502616882324,
+    "dV_B": -0.03157086670398712,
+    "tv_actor_A": 0.01537766335945592
+   },
+   {
+    "base": "neutral L8",
+    "change": "unspent gold +1",
+    "A_changed": {
+     "own_champ_gold_whole": 0.1111111119389534
+    },
+    "B_changed": {
+     "enemy_champ_gold_whole": 0.1111111119389534
+    },
+    "A_ok": true,
+    "B_ok": true,
+    "dV_A": -0.06839871406555176,
+    "dV_B": 0.020813792943954468,
+    "tv_actor_A": 0.019303020940787705
+   },
+   {
+    "base": "neutral L8",
+    "change": "unspent gold +4",
+    "A_changed": {
+     "own_champ_gold_whole": 0.3333333432674408
+    },
+    "B_changed": {
+     "enemy_champ_gold_whole": 0.3333333432674408
+    },
+    "A_ok": true,
+    "B_ok": true,
+    "dV_A": -0.19968971610069275,
+    "dV_B": 0.06587199866771698,
+    "tv_actor_A": 0.0567904859651591
+   },
+   {
+    "base": "neutral L8",
+    "change": "level +1",
+    "A_changed": {
+     "own_champ_hp_max": 0.030545473098754883,
+     "own_champ_level": 0.05882352590560913,
+     "own_champ_attack_power": 0.01204073429107666
+    },
+    "B_changed": {
+     "enemy_champ_hp_max": 0.030545473098754883,
+     "enemy_champ_level": 0.05882352590560913,
+     "enemy_champ_attack_power": 0.01204073429107666
+    },
+    "A_ok": true,
+    "B_ok": true,
+    "dV_A": 0.02084188163280487,
+    "dV_B": 0.007966682314872742,
+    "tv_actor_A": 0.019925381534894884
+   },
+   {
+    "base": "neutral L8",
+    "change": "XP within level",
+    "A_changed": {
+     "own_champ_xp_progress": 0.48275861144065857
+    },
+    "B_changed": {
+     "enemy_champ_xp_progress": 0.48275861144065857
+    },
+    "A_ok": true,
+    "B_ok": true,
+    "dV_A": -0.07725656032562256,
+    "dV_B": 0.04709586501121521,
+    "tv_actor_A": 0.041744631825884566
+   },
+   {
+    "base": "neutral L8",
+    "change": "HP 60%",
+    "A_changed": {
+     "own_champ_hp_frac": -0.400473952293396
+    },
+    "B_changed": {
+     "enemy_champ_hp_frac": -0.400473952293396
+    },
+    "A_ok": true,
+    "B_ok": true,
+    "dV_A": -0.5202245153486729,
+    "dV_B": 0.5206188559532166,
+    "tv_actor_A": 0.2623975771145005
+   },
+   {
+    "base": "neutral L8",
+    "change": "HP 30%",
+    "A_changed": {
+     "own_champ_hp_frac": -0.700236976146698
+    },
+    "B_changed": {
+     "enemy_champ_hp_frac": -0.700236976146698
+    },
+    "A_ok": true,
+    "B_ok": true,
+    "dV_A": -1.3769183307886124,
+    "dV_B": 1.013026013970375,
+    "tv_actor_A": 0.6657759326519891
+   },
+   {
+    "base": "neutral L8",
+    "change": "enemy HP 60%",
+    "A_changed": {
+     "enemy_champ_hp_frac": -0.400473952293396
+    },
+    "B_changed": {
+     "own_champ_hp_frac": -0.400473952293396
+    },
+    "A_ok": true,
+    "B_ok": true,
+    "dV_A": 0.5206188559532166,
+    "dV_B": -0.5202245153486729,
+    "tv_actor_A": 0.6194776214626005
+   },
+   {
+    "base": "neutral L8",
+    "change": "away 2 turns",
+    "A_changed": {
+     "own_champ_x-2": 1.0,
+     "own_champ_x+0": -1.0,
+     "own_champ_absent": 0.4000000059604645
+    },
+    "B_changed": {
+     "enemy_champ_x+0": -1.0,
+     "enemy_champ_x+2": 1.0,
+     "enemy_champ_absent": 0.4000000059604645
+    },
+    "A_ok": true,
+    "B_ok": true,
+    "dV_A": -0.2686663903295994,
+    "dV_B": -0.6333626993000507,
+    "tv_actor_A": 1.0
+   },
+   {
+    "base": "neutral L8",
+    "change": "one cell forward",
+    "A_changed": {
+     "own_champ_x+0": -1.0,
+     "own_champ_x+1": 1.0
+    },
+    "B_changed": {
+     "enemy_champ_x-1": 1.0,
+     "enemy_champ_x+0": -1.0
+    },
+    "A_ok": true,
+    "B_ok": true,
+    "dV_A": -0.337145421653986,
+    "dV_B": 0.29797330498695374,
+    "tv_actor_A": 0.26114061862090454
+   },
+   {
+    "base": "neutral L8",
+    "change": "own front HP halved",
+    "A_changed": {
+     "own_front_hp": -0.1666666716337204
+    },
+    "B_changed": {
+     "enemy_front_hp": -0.1666666716337204
+    },
+    "A_ok": true,
+    "B_ok": true,
+    "dV_A": 0.3844161331653595,
+    "dV_B": -0.43191516771912575,
+    "tv_actor_A": 0.08873403139680767
+   },
+   {
+    "base": "neutral L8",
+    "change": "vision 3 turns",
+    "A_changed": {
+     "own_vision": 0.5
+    },
+    "B_changed": {
+     "enemy_vision": 0.5
+    },
+    "A_ok": true,
+    "B_ok": true,
+    "dV_A": 0.07997788488864899,
+    "dV_B": -0.013548210263252258,
+    "tv_actor_A": 0.07145382023671656
+   },
+   {
+    "base": "neutral L8",
+    "change": "first plate dealt",
+    "A_changed": {
+     "own_tower_dmg": 0.2666666805744171,
+     "own_plates_broken": 0.3333333432674408,
+     "own_plates_left": -0.3333333134651184
+    },
+    "B_changed": {
+     "enemy_tower_dmg": 0.2666666805744171,
+     "enemy_plates_broken": 0.3333333432674408,
+     "enemy_plates_left": -0.3333333134651184
+    },
+    "A_ok": true,
+    "B_ok": true,
+    "dV_A": -0.17624318599700928,
+    "dV_B": 0.17908848822116852,
+    "tv_actor_A": 0.03831950476328713
+   },
+   {
+    "base": "neutral L8",
+    "change": "phase + 1",
+    "A_changed": {
+     "phase_2": -1.0,
+     "phase_3": 1.0
+    },
+    "B_changed": {
+     "phase_2": -1.0,
+     "phase_3": 1.0
+    },
+    "A_ok": true,
+    "B_ok": true,
+    "dV_A": -0.3336370922625065,
+    "dV_B": -0.3336370922625065,
+    "tv_actor_A": 0.18146213157614274
+   },
+   {
+    "base": "neutral L15",
+    "change": "invested +1",
+    "A_changed": {
+     "own_champ_invested_whole": 0.005860805511474609,
+     "own_champ_attack_power": 0.0017145872116088867
+    },
+    "B_changed": {
+     "enemy_champ_invested_whole": 0.005860805511474609,
+     "enemy_champ_attack_power": 0.0017145872116088867
+    },
+    "A_ok": true,
+    "B_ok": true,
+    "dV_A": 0.0037363171577453613,
+    "dV_B": -0.004881545901298523,
+    "tv_actor_A": 0.001086316993246119
+   },
+   {
+    "base": "neutral L15",
+    "change": "invested +3",
+    "A_changed": {
+     "own_champ_invested_whole": 0.017253756523132324,
+     "own_champ_attack_power": 0.0050296783447265625
+    },
+    "B_changed": {
+     "enemy_champ_invested_whole": 0.017253756523132324,
+     "enemy_champ_attack_power": 0.0050296783447265625
+    },
+    "A_ok": true,
+    "B_ok": true,
+    "dV_A": 0.010993778705596924,
+    "dV_B": -0.014393702149391174,
+    "tv_actor_A": 0.003200455094584254
+   },
+   {
+    "base": "neutral L15",
+    "change": "invested +8",
+    "A_changed": {
+     "own_champ_invested_whole": 0.04395604133605957,
+     "own_champ_attack_power": 0.012710392475128174
+    },
+    "B_changed": {
+     "enemy_champ_invested_whole": 0.04395604133605957,
+     "enemy_champ_attack_power": 0.012710392475128174
+    },
+    "A_ok": true,
+    "B_ok": true,
+    "dV_A": 0.027978047728538513,
+    "dV_B": -0.03680005669593811,
+    "tv_actor_A": 0.008169840040148778
+   },
+   {
+    "base": "neutral L15",
+    "change": "invested +32",
+    "A_changed": {
+     "own_champ_invested_whole": 0.14479640126228333,
+     "own_champ_attack_power": 0.04073071479797363
+    },
+    "B_changed": {
+     "enemy_champ_invested_whole": 0.14479640126228333,
+     "enemy_champ_attack_power": 0.04073071479797363
+    },
+    "A_ok": true,
+    "B_ok": true,
+    "dV_A": 0.09178817272186279,
+    "dV_B": -0.12278378009796143,
+    "tv_actor_A": 0.027159335986044444
+   },
+   {
+    "base": "neutral L15",
+    "change": "invested +0.5",
+    "A_changed": {
+     "own_champ_invested_frac": 0.5,
+     "own_champ_attack_power": 0.0008621811866760254
+    },
+    "B_changed": {
+     "enemy_champ_invested_frac": 0.5,
+     "enemy_champ_attack_power": 0.0008621811866760254
+    },
+    "A_ok": true,
+    "B_ok": true,
+    "dV_A": 0.0009424984455108643,
+    "dV_B": 0.0033282488584518433,
+    "tv_actor_A": 0.011661346738066486
+   },
+   {
+    "base": "neutral L15",
+    "change": "unspent gold +1",
+    "A_changed": {
+     "own_champ_gold_whole": 0.1111111119389534
+    },
+    "B_changed": {
+     "enemy_champ_gold_whole": 0.1111111119389534
+    },
+    "A_ok": true,
+    "B_ok": true,
+    "dV_A": -0.06097674369812012,
+    "dV_B": 0.02065114676952362,
+    "tv_actor_A": 0.01376648378415972
+   },
+   {
+    "base": "neutral L15",
+    "change": "unspent gold +4",
+    "A_changed": {
+     "own_champ_gold_whole": 0.3333333432674408
+    },
+    "B_changed": {
+     "enemy_champ_gold_whole": 0.3333333432674408
+    },
+    "A_ok": true,
+    "B_ok": true,
+    "dV_A": -0.18436864018440247,
+    "dV_B": 0.06338007748126984,
+    "tv_actor_A": 0.041956313036151105
+   },
+   {
+    "base": "neutral L15",
+    "change": "level +1",
+    "A_changed": {
+     "own_champ_hp_max": 0.042909085750579834,
+     "own_champ_level": 0.05882352590560913,
+     "own_champ_attack_power": 0.011704504489898682
+    },
+    "B_changed": {
+     "enemy_champ_hp_max": 0.042909085750579834,
+     "enemy_champ_level": 0.05882352590560913,
+     "enemy_champ_attack_power": 0.011704504489898682
+    },
+    "A_ok": true,
+    "B_ok": true,
+    "dV_A": 0.010963231325149536,
+    "dV_B": 0.001190677285194397,
+    "tv_actor_A": 0.01298666510988195
+   },
+   {
+    "base": "neutral L15",
+    "change": "XP within level",
+    "A_changed": {
+     "own_champ_xp_progress": 0.5
+    },
+    "B_changed": {
+     "enemy_champ_xp_progress": 0.5
+    },
+    "A_ok": true,
+    "B_ok": true,
+    "dV_A": -0.08138410747051239,
+    "dV_B": 0.04149734973907471,
+    "tv_actor_A": 0.039987612366675016
+   },
+   {
+    "base": "neutral L15",
+    "change": "HP 60%",
+    "A_changed": {
+     "own_champ_hp_frac": -0.3998316526412964
+    },
+    "B_changed": {
+     "enemy_champ_hp_frac": -0.3998316526412964
+    },
+    "A_ok": true,
+    "B_ok": true,
+    "dV_A": -0.49018295481801033,
+    "dV_B": 0.4972502589225769,
+    "tv_actor_A": 0.24243464077776006
+   },
+   {
+    "base": "neutral L15",
+    "change": "HP 30%",
+    "A_changed": {
+     "own_champ_hp_frac": -0.7003366947174072
+    },
+    "B_changed": {
+     "enemy_champ_hp_frac": -0.7003366947174072
+    },
+    "A_ok": true,
+    "B_ok": true,
+    "dV_A": -1.4662183076143265,
+    "dV_B": 1.227663904428482,
+    "tv_actor_A": 0.6026463919067715
+   },
+   {
+    "base": "neutral L15",
+    "change": "enemy HP 60%",
+    "A_changed": {
+     "enemy_champ_hp_frac": -0.3998316526412964
+    },
+    "B_changed": {
+     "own_champ_hp_frac": -0.3998316526412964
+    },
+    "A_ok": true,
+    "B_ok": true,
+    "dV_A": 0.4972502589225769,
+    "dV_B": -0.49018295481801033,
+    "tv_actor_A": 0.5242523947455576
+   },
+   {
+    "base": "neutral L15",
+    "change": "away 2 turns",
+    "A_changed": {
+     "own_champ_x-2": 1.0,
+     "own_champ_x+0": -1.0,
+     "own_champ_absent": 0.4000000059604645
+    },
+    "B_changed": {
+     "enemy_champ_x+0": -1.0,
+     "enemy_champ_x+2": 1.0,
+     "enemy_champ_absent": 0.4000000059604645
+    },
+    "A_ok": true,
+    "B_ok": true,
+    "dV_A": -0.42949603870511055,
+    "dV_B": -0.616824347525835,
+    "tv_actor_A": 1.0
+   },
+   {
+    "base": "neutral L15",
+    "change": "one cell forward",
+    "A_changed": {
+     "own_champ_x+0": -1.0,
+     "own_champ_x+1": 1.0
+    },
+    "B_changed": {
+     "enemy_champ_x-1": 1.0,
+     "enemy_champ_x+0": -1.0
+    },
+    "A_ok": true,
+    "B_ok": true,
+    "dV_A": -0.37601443007588387,
+    "dV_B": 0.28894662857055664,
+    "tv_actor_A": 0.28368183768789274
+   },
+   {
+    "base": "neutral L15",
+    "change": "own front HP halved",
+    "A_changed": {
+     "own_front_hp": -0.1666666716337204
+    },
+    "B_changed": {
+     "enemy_front_hp": -0.1666666716337204
+    },
+    "A_ok": true,
+    "B_ok": true,
+    "dV_A": 0.3775906562805176,
+    "dV_B": -0.4183402843773365,
+    "tv_actor_A": 0.07645016144196101
+   },
+   {
+    "base": "neutral L15",
+    "change": "vision 3 turns",
+    "A_changed": {
+     "own_vision": 0.5
+    },
+    "B_changed": {
+     "enemy_vision": 0.5
+    },
+    "A_ok": true,
+    "B_ok": true,
+    "dV_A": 0.047357603907585144,
+    "dV_B": -0.02115607261657715,
+    "tv_actor_A": 0.055602012011369356
+   },
+   {
+    "base": "neutral L15",
+    "change": "first plate dealt",
+    "A_changed": {
+     "own_tower_dmg": 0.2666666805744171,
+     "own_plates_broken": 0.3333333432674408,
+     "own_plates_left": -0.3333333134651184
+    },
+    "B_changed": {
+     "enemy_tower_dmg": 0.2666666805744171,
+     "enemy_plates_broken": 0.3333333432674408,
+     "enemy_plates_left": -0.3333333134651184
+    },
+    "A_ok": true,
+    "B_ok": true,
+    "dV_A": -0.21559424698352814,
+    "dV_B": 0.19449830055236816,
+    "tv_actor_A": 0.03808230147158911
+   },
+   {
+    "base": "neutral L15",
+    "change": "phase + 1",
+    "A_changed": {
+     "phase_2": -1.0,
+     "phase_3": 1.0
+    },
+    "B_changed": {
+     "phase_2": -1.0,
+     "phase_3": 1.0
+    },
+    "A_ok": true,
+    "B_ok": true,
+    "dV_A": -0.3511572815477848,
+    "dV_B": -0.3511572815477848,
+    "tv_actor_A": 0.17468230184045502
+   }
+  ],
+  "ext/C1:2": [
+   {
+    "base": "freeze L5",
+    "change": "invested +1",
+    "A_changed": {
+     "own_champ_invested_whole": 0.01404741033911705,
+     "own_champ_attack_power": 0.004942834377288818
+    },
+    "B_changed": {
+     "enemy_champ_invested_whole": 0.01404741033911705,
+     "enemy_champ_attack_power": 0.004942834377288818
+    },
+    "A_ok": true,
+    "B_ok": true,
+    "dV_A": 0.0010597705841064453,
+    "dV_B": -0.0038005411624908447,
+    "tv_actor_A": 0.0006619791981926276
+   },
+   {
+    "base": "freeze L5",
+    "change": "invested +3",
+    "A_changed": {
+     "own_champ_invested_whole": 0.04093816876411438,
+     "own_champ_attack_power": 0.014294981956481934
+    },
+    "B_changed": {
+     "enemy_champ_invested_whole": 0.04093816876411438,
+     "enemy_champ_attack_power": 0.014294981956481934
+    },
+    "A_ok": true,
+    "B_ok": true,
+    "dV_A": 0.003089308738708496,
+    "dV_B": -0.011016279458999634,
+    "tv_actor_A": 0.0019224877064999623
+   },
+   {
+    "base": "freeze L5",
+    "change": "invested +8",
+    "A_changed": {
+     "own_champ_invested_whole": 0.10189054161310196,
+     "own_champ_attack_power": 0.03498759865760803
+    },
+    "B_changed": {
+     "enemy_champ_invested_whole": 0.10189054161310196,
+     "enemy_champ_attack_power": 0.03498759865760803
+    },
+    "A_ok": true,
+    "B_ok": true,
+    "dV_A": 0.007688999176025391,
+    "dV_B": -0.027087032794952393,
+    "tv_actor_A": 0.004752836895289751
+   },
+   {
+    "base": "freeze L5",
+    "change": "invested +32",
+    "A_changed": {
+     "own_champ_invested_whole": 0.30875924229621887,
+     "own_champ_attack_power": 0.10082119703292847
+    },
+    "B_changed": {
+     "enemy_champ_invested_whole": 0.30875924229621887,
+     "enemy_champ_attack_power": 0.10082119703292847
+    },
+    "A_ok": true,
+    "B_ok": true,
+    "dV_A": 0.02319514751434326,
+    "dV_B": -0.07896125316619873,
+    "tv_actor_A": 0.014241238988252867
+   },
+   {
+    "base": "freeze L5",
+    "change": "invested +0.5",
+    "A_changed": {
+     "own_champ_invested_frac": 0.4999999701976776,
+     "own_champ_attack_power": 0.002494722604751587
+    },
+    "B_changed": {
+     "enemy_champ_invested_frac": 0.4999999701976776,
+     "enemy_champ_attack_power": 0.002494722604751587
+    },
+    "A_ok": true,
+    "B_ok": true,
+    "dV_A": -0.06301626563072205,
+    "dV_B": -0.03214061260223389,
+    "tv_actor_A": 0.007368886815011756
+   },
+   {
+    "base": "freeze L5",
+    "change": "unspent gold +1",
+    "A_changed": {
+     "own_champ_gold_whole": 0.1111111119389534
+    },
+    "B_changed": {
+     "enemy_champ_gold_whole": 0.1111111119389534
+    },
+    "A_ok": true,
+    "B_ok": true,
+    "dV_A": -0.025761425495147705,
+    "dV_B": 0.03743305802345276,
+    "tv_actor_A": 0.011134321660952663
+   },
+   {
+    "base": "freeze L5",
+    "change": "unspent gold +4",
+    "A_changed": {
+     "own_champ_gold_whole": 0.3333333432674408
+    },
+    "B_changed": {
+     "enemy_champ_gold_whole": 0.3333333432674408
+    },
+    "A_ok": true,
+    "B_ok": true,
+    "dV_A": -0.07925719022750854,
+    "dV_B": 0.11162877082824707,
+    "tv_actor_A": 0.033549882412890586
+   },
+   {
+    "base": "freeze L5",
+    "change": "level +1",
+    "A_changed": {
+     "own_champ_hp_max": 0.02690911293029785,
+     "own_champ_level": 0.058823540806770325,
+     "own_champ_attack_power": 0.011374324560165405
+    },
+    "B_changed": {
+     "enemy_champ_hp_max": 0.02690911293029785,
+     "enemy_champ_level": 0.058823540806770325,
+     "enemy_champ_attack_power": 0.011374324560165405
+    },
+    "A_ok": true,
+    "B_ok": true,
+    "dV_A": 0.01729816198348999,
+    "dV_B": 0.010814070701599121,
+    "tv_actor_A": 0.011271272528227882
+   },
+   {
+    "base": "freeze L5",
+    "change": "XP within level",
+    "A_changed": {
+     "own_champ_xp_progress": 0.5
+    },
+    "B_changed": {
+     "enemy_champ_xp_progress": 0.5
+    },
+    "A_ok": true,
+    "B_ok": true,
+    "dV_A": 0.02101883292198181,
+    "dV_B": 0.010866522789001465,
+    "tv_actor_A": 0.014244990455616141
+   },
+   {
+    "base": "freeze L5",
+    "change": "HP 60%",
+    "A_changed": {
+     "own_champ_hp_frac": -0.40054869651794434
+    },
+    "B_changed": {
+     "enemy_champ_hp_frac": -0.40054869651794434
+    },
+    "A_ok": true,
+    "B_ok": true,
+    "dV_A": -0.5006987601518631,
+    "dV_B": 0.24697273969650269,
+    "tv_actor_A": 0.14016435291680762
+   },
+   {
+    "base": "freeze L5",
+    "change": "HP 30%",
+    "A_changed": {
+     "own_champ_hp_frac": -0.6995884776115417
+    },
+    "B_changed": {
+     "enemy_champ_hp_frac": -0.6995884776115417
+    },
+    "A_ok": true,
+    "B_ok": true,
+    "dV_A": -0.83927221596241,
+    "dV_B": 0.5063558742403984,
+    "tv_actor_A": 0.20105201332192252
+   },
+   {
+    "base": "freeze L5",
+    "change": "enemy HP 60%",
+    "A_changed": {
+     "enemy_champ_hp_frac": -0.40054869651794434
+    },
+    "B_changed": {
+     "own_champ_hp_frac": -0.40054869651794434
+    },
+    "A_ok": true,
+    "B_ok": true,
+    "dV_A": 0.2947613596916199,
+    "dV_B": -0.8436721563339233,
+    "tv_actor_A": 0.3087132832581106
+   },
+   {
+    "base": "freeze L5",
+    "change": "away 2 turns",
+    "A_changed": {
+     "own_champ_absent": 0.4000000059604645
+    },
+    "B_changed": {
+     "enemy_champ_absent": 0.4000000059604645
+    },
+    "A_ok": true,
+    "B_ok": true,
+    "dV_A": 0.03140881657600403,
+    "dV_B": 0.11457383632659912,
+    "tv_actor_A": 1.0000000000000002
+   },
+   {
+    "base": "freeze L5",
+    "change": "one cell forward",
+    "A_changed": {
+     "own_champ_x-2": -1.0,
+     "own_champ_x-1": 1.0
+    },
+    "B_changed": {
+     "enemy_champ_x+1": 1.0,
+     "enemy_champ_x+2": -1.0
+    },
+    "A_ok": true,
+    "B_ok": true,
+    "dV_A": 0.015738606452941895,
+    "dV_B": -0.09475469589233398,
+    "tv_actor_A": 0.21024765545505936
+   },
+   {
+    "base": "freeze L5",
+    "change": "own front HP halved",
+    "A_changed": {
+     "own_front_hp": -0.1666666716337204
+    },
+    "B_changed": {
+     "enemy_front_hp": -0.1666666716337204
+    },
+    "A_ok": true,
+    "B_ok": true,
+    "dV_A": 0.35332798957824707,
+    "dV_B": -0.36701858043670654,
+    "tv_actor_A": 0.033843725604797634
+   },
+   {
+    "base": "freeze L5",
+    "change": "vision 3 turns",
+    "A_changed": {
+     "own_vision": 0.5
+    },
+    "B_changed": {
+     "enemy_vision": 0.5
+    },
+    "A_ok": true,
+    "B_ok": true,
+    "dV_A": -0.04987597465515137,
+    "dV_B": -0.07011473178863525,
+    "tv_actor_A": 0.0053372667903510244
+   },
+   {
+    "base": "freeze L5",
+    "change": "first plate dealt",
+    "A_changed": {
+     "own_tower_dmg": 0.2666666805744171,
+     "own_plates_broken": 0.3333333432674408,
+     "own_plates_left": -0.3333333134651184
+    },
+    "B_changed": {
+     "enemy_tower_dmg": 0.2666666805744171,
+     "enemy_plates_broken": 0.3333333432674408,
+     "enemy_plates_left": -0.3333333134651184
+    },
+    "A_ok": true,
+    "B_ok": true,
+    "dV_A": -0.2863207459449768,
+    "dV_B": 0.2366146445274353,
+    "tv_actor_A": 0.06175111879587791
+   },
+   {
+    "base": "freeze L5",
+    "change": "phase + 1",
+    "A_changed": {
+     "phase_0": 1.0,
+     "phase_3": -1.0
+    },
+    "B_changed": {
+     "phase_0": 1.0,
+     "phase_3": -1.0
+    },
+    "A_ok": true,
+    "B_ok": true,
+    "dV_A": 0.13093352317810059,
+    "dV_B": -0.1201978325843811,
+    "tv_actor_A": 0.05542358512239704
+   },
+   {
+    "base": "neutral L8",
+    "change": "invested +1",
+    "A_changed": {
+     "own_champ_invested_whole": 0.01122806966304779,
+     "own_champ_attack_power": 0.003783881664276123
+    },
+    "B_changed": {
+     "enemy_champ_invested_whole": 0.01122806966304779,
+     "enemy_champ_attack_power": 0.003783881664276123
+    },
+    "A_ok": true,
+    "B_ok": true,
+    "dV_A": 0.0012921914458274841,
+    "dV_B": -0.0043901801109313965,
+    "tv_actor_A": 0.002464071278781692
+   },
+   {
+    "base": "neutral L8",
+    "change": "invested +3",
+    "A_changed": {
+     "own_champ_invested_whole": 0.03282052278518677,
+     "own_champ_attack_power": 0.010990679264068604
+    },
+    "B_changed": {
+     "enemy_champ_invested_whole": 0.03282052278518677,
+     "enemy_champ_attack_power": 0.010990679264068604
+    },
+    "A_ok": true,
+    "B_ok": true,
+    "dV_A": 0.003774315118789673,
+    "dV_B": -0.01282673329114914,
+    "tv_actor_A": 0.007228146415775504
+   },
+   {
+    "base": "neutral L8",
+    "change": "invested +8",
+    "A_changed": {
+     "own_champ_invested_whole": 0.0822490006685257,
+     "own_champ_attack_power": 0.027158647775650024
+    },
+    "B_changed": {
+     "enemy_champ_invested_whole": 0.0822490006685257,
+     "enemy_champ_attack_power": 0.027158647775650024
+    },
+    "A_ok": true,
+    "B_ok": true,
+    "dV_A": 0.009442605078220367,
+    "dV_B": -0.03210585564374924,
+    "tv_actor_A": 0.01825101886340777
+   },
+   {
+    "base": "neutral L8",
+    "change": "invested +32",
+    "A_changed": {
+     "own_champ_invested_whole": 0.2552024722099304,
+     "own_champ_attack_power": 0.08065721392631531
+    },
+    "B_changed": {
+     "enemy_champ_invested_whole": 0.2552024722099304,
+     "enemy_champ_attack_power": 0.08065721392631531
+    },
+    "A_ok": true,
+    "B_ok": true,
+    "dV_A": 0.02908315509557724,
+    "dV_B": -0.09918602183461189,
+    "tv_actor_A": 0.05778449434952268
+   },
+   {
+    "base": "neutral L8",
+    "change": "invested +0.5",
+    "A_changed": {
+     "own_champ_invested_whole": 0.01122806966304779,
+     "own_champ_invested_frac": -0.5,
+     "own_champ_attack_power": 0.0019076168537139893
+    },
+    "B_changed": {
+     "enemy_champ_invested_whole": 0.01122806966304779,
+     "enemy_champ_invested_frac": -0.5,
+     "enemy_champ_attack_power": 0.0019076168537139893
+    },
+    "A_ok": true,
+    "B_ok": true,
+    "dV_A": 0.005633160471916199,
+    "dV_B": 0.02730652689933777,
+    "tv_actor_A": 0.030010723284197245
+   },
+   {
+    "base": "neutral L8",
+    "change": "unspent gold +1",
+    "A_changed": {
+     "own_champ_gold_whole": 0.1111111119389534
+    },
+    "B_changed": {
+     "enemy_champ_gold_whole": 0.1111111119389534
+    },
+    "A_ok": true,
+    "B_ok": true,
+    "dV_A": -0.041822679340839386,
+    "dV_B": 0.013063065707683563,
+    "tv_actor_A": 0.011842510916496664
+   },
+   {
+    "base": "neutral L8",
+    "change": "unspent gold +4",
+    "A_changed": {
+     "own_champ_gold_whole": 0.3333333432674408
+    },
+    "B_changed": {
+     "enemy_champ_gold_whole": 0.3333333432674408
+    },
+    "A_ok": true,
+    "B_ok": true,
+    "dV_A": -0.12885849922895432,
+    "dV_B": 0.03648083657026291,
+    "tv_actor_A": 0.03914389023843442
+   },
+   {
+    "base": "neutral L8",
+    "change": "level +1",
+    "A_changed": {
+     "own_champ_hp_max": 0.030545473098754883,
+     "own_champ_level": 0.05882352590560913,
+     "own_champ_attack_power": 0.01204073429107666
+    },
+    "B_changed": {
+     "enemy_champ_hp_max": 0.030545473098754883,
+     "enemy_champ_level": 0.05882352590560913,
+     "enemy_champ_attack_power": 0.01204073429107666
+    },
+    "A_ok": true,
+    "B_ok": true,
+    "dV_A": 0.018688924610614777,
+    "dV_B": 0.0154828280210495,
+    "tv_actor_A": 0.013869288402163291
+   },
+   {
+    "base": "neutral L8",
+    "change": "XP within level",
+    "A_changed": {
+     "own_champ_xp_progress": 0.48275861144065857
+    },
+    "B_changed": {
+     "enemy_champ_xp_progress": 0.48275861144065857
+    },
+    "A_ok": true,
+    "B_ok": true,
+    "dV_A": 0.09610079228878021,
+    "dV_B": -0.02932421863079071,
+    "tv_actor_A": 0.02846023073042488
+   },
+   {
+    "base": "neutral L8",
+    "change": "HP 60%",
+    "A_changed": {
+     "own_champ_hp_frac": -0.400473952293396
+    },
+    "B_changed": {
+     "enemy_champ_hp_frac": -0.400473952293396
+    },
+    "A_ok": true,
+    "B_ok": true,
+    "dV_A": -0.5055959150195122,
+    "dV_B": 0.3993102163076401,
+    "tv_actor_A": 0.38114719300960187
+   },
+   {
+    "base": "neutral L8",
+    "change": "HP 30%",
+    "A_changed": {
+     "own_champ_hp_frac": -0.700236976146698
+    },
+    "B_changed": {
+     "enemy_champ_hp_frac": -0.700236976146698
+    },
+    "A_ok": true,
+    "B_ok": true,
+    "dV_A": -1.1645331233739853,
+    "dV_B": 0.9992501884698868,
+    "tv_actor_A": 0.5859080749711204
+   },
+   {
+    "base": "neutral L8",
+    "change": "enemy HP 60%",
+    "A_changed": {
+     "enemy_champ_hp_frac": -0.400473952293396
+    },
+    "B_changed": {
+     "own_champ_hp_frac": -0.400473952293396
+    },
+    "A_ok": true,
+    "B_ok": true,
+    "dV_A": 0.3993102163076401,
+    "dV_B": -0.5055959150195122,
+    "tv_actor_A": 0.6219819874553328
+   },
+   {
+    "base": "neutral L8",
+    "change": "away 2 turns",
+    "A_changed": {
+     "own_champ_x-2": 1.0,
+     "own_champ_x+0": -1.0,
+     "own_champ_absent": 0.4000000059604645
+    },
+    "B_changed": {
+     "enemy_champ_x+0": -1.0,
+     "enemy_champ_x+2": 1.0,
+     "enemy_champ_absent": 0.4000000059604645
+    },
+    "A_ok": true,
+    "B_ok": true,
+    "dV_A": -0.04406854510307312,
+    "dV_B": -0.14159094542264938,
+    "tv_actor_A": 1.0
+   },
+   {
+    "base": "neutral L8",
+    "change": "one cell forward",
+    "A_changed": {
+     "own_champ_x+0": -1.0,
+     "own_champ_x+1": 1.0
+    },
+    "B_changed": {
+     "enemy_champ_x-1": 1.0,
+     "enemy_champ_x+0": -1.0
+    },
+    "A_ok": true,
+    "B_ok": true,
+    "dV_A": 0.08201859891414642,
+    "dV_B": 0.27013521641492844,
+    "tv_actor_A": 0.19629092112562715
+   },
+   {
+    "base": "neutral L8",
+    "change": "own front HP halved",
+    "A_changed": {
+     "own_front_hp": -0.1666666716337204
+    },
+    "B_changed": {
+     "enemy_front_hp": -0.1666666716337204
+    },
+    "A_ok": true,
+    "B_ok": true,
+    "dV_A": 0.3270237520337105,
+    "dV_B": -0.40622279047966003,
+    "tv_actor_A": 0.07401874152585759
+   },
+   {
+    "base": "neutral L8",
+    "change": "vision 3 turns",
+    "A_changed": {
+     "own_vision": 0.5
+    },
+    "B_changed": {
+     "enemy_vision": 0.5
+    },
+    "A_ok": true,
+    "B_ok": true,
+    "dV_A": 0.04892192780971527,
+    "dV_B": -0.06143525242805481,
+    "tv_actor_A": 0.0564268112164608
+   },
+   {
+    "base": "neutral L8",
+    "change": "first plate dealt",
+    "A_changed": {
+     "own_tower_dmg": 0.2666666805744171,
+     "own_plates_broken": 0.3333333432674408,
+     "own_plates_left": -0.3333333134651184
+    },
+    "B_changed": {
+     "enemy_tower_dmg": 0.2666666805744171,
+     "enemy_plates_broken": 0.3333333432674408,
+     "enemy_plates_left": -0.3333333134651184
+    },
+    "A_ok": true,
+    "B_ok": true,
+    "dV_A": -0.301671139895916,
+    "dV_B": 0.2646859735250473,
+    "tv_actor_A": 0.061080885636680564
+   },
+   {
+    "base": "neutral L8",
+    "change": "phase + 1",
+    "A_changed": {
+     "phase_2": -1.0,
+     "phase_3": 1.0
+    },
+    "B_changed": {
+     "phase_2": -1.0,
+     "phase_3": 1.0
+    },
+    "A_ok": true,
+    "B_ok": true,
+    "dV_A": -0.34467414021492004,
+    "dV_B": -0.34467414021492004,
+    "tv_actor_A": 0.15779004086242188
+   },
+   {
+    "base": "neutral L15",
+    "change": "invested +1",
+    "A_changed": {
+     "own_champ_invested_whole": 0.005860805511474609,
+     "own_champ_attack_power": 0.0017145872116088867
+    },
+    "B_changed": {
+     "enemy_champ_invested_whole": 0.005860805511474609,
+     "enemy_champ_attack_power": 0.0017145872116088867
+    },
+    "A_ok": true,
+    "B_ok": true,
+    "dV_A": 0.0004081055521965027,
+    "dV_B": -0.002528168261051178,
+    "tv_actor_A": 0.0006650677678345159
+   },
+   {
+    "base": "neutral L15",
+    "change": "invested +3",
+    "A_changed": {
+     "own_champ_invested_whole": 0.017253756523132324,
+     "own_champ_attack_power": 0.0050296783447265625
+    },
+    "B_changed": {
+     "enemy_champ_invested_whole": 0.017253756523132324,
+     "enemy_champ_attack_power": 0.0050296783447265625
+    },
+    "A_ok": true,
+    "B_ok": true,
+    "dV_A": 0.001198314130306244,
+    "dV_B": -0.007441826164722443,
+    "tv_actor_A": 0.001961393907116863
+   },
+   {
+    "base": "neutral L15",
+    "change": "invested +8",
+    "A_changed": {
+     "own_champ_invested_whole": 0.04395604133605957,
+     "own_champ_attack_power": 0.012710392475128174
+    },
+    "B_changed": {
+     "enemy_champ_invested_whole": 0.04395604133605957,
+     "enemy_champ_attack_power": 0.012710392475128174
+    },
+    "A_ok": true,
+    "B_ok": true,
+    "dV_A": 0.0030319765210151672,
+    "dV_B": -0.018950551748275757,
+    "tv_actor_A": 0.0050188486720953
+   },
+   {
+    "base": "neutral L15",
+    "change": "invested +32",
+    "A_changed": {
+     "own_champ_invested_whole": 0.14479640126228333,
+     "own_champ_attack_power": 0.04073071479797363
+    },
+    "B_changed": {
+     "enemy_champ_invested_whole": 0.14479640126228333,
+     "enemy_champ_attack_power": 0.04073071479797363
+    },
+    "A_ok": true,
+    "B_ok": true,
+    "dV_A": 0.009730421006679535,
+    "dV_B": -0.062314607203006744,
+    "tv_actor_A": 0.01682271822274976
+   },
+   {
+    "base": "neutral L15",
+    "change": "invested +0.5",
+    "A_changed": {
+     "own_champ_invested_frac": 0.5,
+     "own_champ_attack_power": 0.0008621811866760254
+    },
+    "B_changed": {
+     "enemy_champ_invested_frac": 0.5,
+     "enemy_champ_attack_power": 0.0008621811866760254
+    },
+    "A_ok": true,
+    "B_ok": true,
+    "dV_A": -0.0012208148837089539,
+    "dV_B": -0.032885484397411346,
+    "tv_actor_A": 0.02357564030441665
+   },
+   {
+    "base": "neutral L15",
+    "change": "unspent gold +1",
+    "A_changed": {
+     "own_champ_gold_whole": 0.1111111119389534
+    },
+    "B_changed": {
+     "enemy_champ_gold_whole": 0.1111111119389534
+    },
+    "A_ok": true,
+    "B_ok": true,
+    "dV_A": -0.029320083558559418,
+    "dV_B": 0.009240731596946716,
+    "tv_actor_A": 0.004410751850031633
+   },
+   {
+    "base": "neutral L15",
+    "change": "unspent gold +4",
+    "A_changed": {
+     "own_champ_gold_whole": 0.3333333432674408
+    },
+    "B_changed": {
+     "enemy_champ_gold_whole": 0.3333333432674408
+    },
+    "A_ok": true,
+    "B_ok": true,
+    "dV_A": -0.09057864546775818,
+    "dV_B": 0.025653541088104248,
+    "tv_actor_A": 0.012844195448136241
+   },
+   {
+    "base": "neutral L15",
+    "change": "level +1",
+    "A_changed": {
+     "own_champ_hp_max": 0.042909085750579834,
+     "own_champ_level": 0.05882352590560913,
+     "own_champ_attack_power": 0.011704504489898682
+    },
+    "B_changed": {
+     "enemy_champ_hp_max": 0.042909085750579834,
+     "enemy_champ_level": 0.05882352590560913,
+     "enemy_champ_attack_power": 0.011704504489898682
+    },
+    "A_ok": true,
+    "B_ok": true,
+    "dV_A": 0.009105019271373749,
+    "dV_B": 0.013794489204883575,
+    "tv_actor_A": 0.007093368259227726
+   },
+   {
+    "base": "neutral L15",
+    "change": "XP within level",
+    "A_changed": {
+     "own_champ_xp_progress": 0.5
+    },
+    "B_changed": {
+     "enemy_champ_xp_progress": 0.5
+    },
+    "A_ok": true,
+    "B_ok": true,
+    "dV_A": 0.09922165423631668,
+    "dV_B": -0.023625679314136505,
+    "tv_actor_A": 0.02393014659997116
+   },
+   {
+    "base": "neutral L15",
+    "change": "HP 60%",
+    "A_changed": {
+     "own_champ_hp_frac": -0.3998316526412964
+    },
+    "B_changed": {
+     "enemy_champ_hp_frac": -0.3998316526412964
+    },
+    "A_ok": true,
+    "B_ok": true,
+    "dV_A": -0.6843286752700806,
+    "dV_B": 0.4260396584868431,
+    "tv_actor_A": 0.336554072764696
+   },
+   {
+    "base": "neutral L15",
+    "change": "HP 30%",
+    "A_changed": {
+     "own_champ_hp_frac": -0.7003366947174072
+    },
+    "B_changed": {
+     "enemy_champ_hp_frac": -0.7003366947174072
+    },
+    "A_ok": true,
+    "B_ok": true,
+    "dV_A": -1.2642321363091469,
+    "dV_B": 1.0983921214938164,
+    "tv_actor_A": 0.5211331919590171
+   },
+   {
+    "base": "neutral L15",
+    "change": "enemy HP 60%",
+    "A_changed": {
+     "enemy_champ_hp_frac": -0.3998316526412964
+    },
+    "B_changed": {
+     "own_champ_hp_frac": -0.3998316526412964
+    },
+    "A_ok": true,
+    "B_ok": true,
+    "dV_A": 0.4260396584868431,
+    "dV_B": -0.6843286752700806,
+    "tv_actor_A": 0.4561829179200798
+   },
+   {
+    "base": "neutral L15",
+    "change": "away 2 turns",
+    "A_changed": {
+     "own_champ_x-2": 1.0,
+     "own_champ_x+0": -1.0,
+     "own_champ_absent": 0.4000000059604645
+    },
+    "B_changed": {
+     "enemy_champ_x+0": -1.0,
+     "enemy_champ_x+2": 1.0,
+     "enemy_champ_absent": 0.4000000059604645
+    },
+    "A_ok": true,
+    "B_ok": true,
+    "dV_A": 0.13401955366134644,
+    "dV_B": -0.3060438483953476,
+    "tv_actor_A": 1.0
+   },
+   {
+    "base": "neutral L15",
+    "change": "one cell forward",
+    "A_changed": {
+     "own_champ_x+0": -1.0,
+     "own_champ_x+1": 1.0
+    },
+    "B_changed": {
+     "enemy_champ_x-1": 1.0,
+     "enemy_champ_x+0": -1.0
+    },
+    "A_ok": true,
+    "B_ok": true,
+    "dV_A": -0.04669986665248871,
+    "dV_B": 0.24121005088090897,
+    "tv_actor_A": 0.14837480053970045
+   },
+   {
+    "base": "neutral L15",
+    "change": "own front HP halved",
+    "A_changed": {
+     "own_front_hp": -0.1666666716337204
+    },
+    "B_changed": {
+     "enemy_front_hp": -0.1666666716337204
+    },
+    "A_ok": true,
+    "B_ok": true,
+    "dV_A": 0.31891878694295883,
+    "dV_B": -0.3968801349401474,
+    "tv_actor_A": 0.09547694627754189
+   },
+   {
+    "base": "neutral L15",
+    "change": "vision 3 turns",
+    "A_changed": {
+     "own_vision": 0.5
+    },
+    "B_changed": {
+     "enemy_vision": 0.5
+    },
+    "A_ok": true,
+    "B_ok": true,
+    "dV_A": 0.03420192748308182,
+    "dV_B": -0.050234533846378326,
+    "tv_actor_A": 0.04335353384158243
+   },
+   {
+    "base": "neutral L15",
+    "change": "first plate dealt",
+    "A_changed": {
+     "own_tower_dmg": 0.2666666805744171,
+     "own_plates_broken": 0.3333333432674408,
+     "own_plates_left": -0.3333333134651184
+    },
+    "B_changed": {
+     "enemy_tower_dmg": 0.2666666805744171,
+     "enemy_plates_broken": 0.3333333432674408,
+     "enemy_plates_left": -0.3333333134651184
+    },
+    "A_ok": true,
+    "B_ok": true,
+    "dV_A": -0.2652866020798683,
+    "dV_B": 0.2390439435839653,
+    "tv_actor_A": 0.06790731593640507
+   },
+   {
+    "base": "neutral L15",
+    "change": "phase + 1",
+    "A_changed": {
+     "phase_2": -1.0,
+     "phase_3": 1.0
+    },
+    "B_changed": {
+     "phase_2": -1.0,
+     "phase_3": 1.0
+    },
+    "A_ok": true,
+    "B_ok": true,
+    "dV_A": -0.41220132261514664,
+    "dV_B": -0.41220132261514664,
+    "tv_actor_A": 0.17050525082308304
+   }
+  ],
+  "ext/C1:3": [
+   {
+    "base": "freeze L5",
+    "change": "invested +1",
+    "A_changed": {
+     "own_champ_invested_whole": 0.01404741033911705,
+     "own_champ_attack_power": 0.004942834377288818
+    },
+    "B_changed": {
+     "enemy_champ_invested_whole": 0.01404741033911705,
+     "enemy_champ_attack_power": 0.004942834377288818
+    },
+    "A_ok": true,
+    "B_ok": true,
+    "dV_A": 0.005882754921913147,
+    "dV_B": -0.0021170079708099365,
+    "tv_actor_A": 0.0041342307882088055
+   },
+   {
+    "base": "freeze L5",
+    "change": "invested +3",
+    "A_changed": {
+     "own_champ_invested_whole": 0.04093816876411438,
+     "own_champ_attack_power": 0.014294981956481934
+    },
+    "B_changed": {
+     "enemy_champ_invested_whole": 0.04093816876411438,
+     "enemy_champ_attack_power": 0.014294981956481934
+    },
+    "A_ok": true,
+    "B_ok": true,
+    "dV_A": 0.017131567001342773,
+    "dV_B": -0.006212890148162842,
+    "tv_actor_A": 0.012047616432967756
+   },
+   {
+    "base": "freeze L5",
+    "change": "invested +8",
+    "A_changed": {
+     "own_champ_invested_whole": 0.10189054161310196,
+     "own_champ_attack_power": 0.03498759865760803
+    },
+    "B_changed": {
+     "enemy_champ_invested_whole": 0.10189054161310196,
+     "enemy_champ_attack_power": 0.03498759865760803
+    },
+    "A_ok": true,
+    "B_ok": true,
+    "dV_A": 0.04256598651409149,
+    "dV_B": -0.0157049298286438,
+    "tv_actor_A": 0.029955278266822937
+   },
+   {
+    "base": "freeze L5",
+    "change": "invested +32",
+    "A_changed": {
+     "own_champ_invested_whole": 0.30875924229621887,
+     "own_champ_attack_power": 0.10082119703292847
+    },
+    "B_changed": {
+     "enemy_champ_invested_whole": 0.30875924229621887,
+     "enemy_champ_attack_power": 0.10082119703292847
+    },
+    "A_ok": true,
+    "B_ok": true,
+    "dV_A": 0.12813210487365723,
+    "dV_B": -0.04999533295631409,
+    "tv_actor_A": 0.08957291301572806
+   },
+   {
+    "base": "freeze L5",
+    "change": "invested +0.5",
+    "A_changed": {
+     "own_champ_invested_frac": 0.4999999701976776,
+     "own_champ_attack_power": 0.002494722604751587
+    },
+    "B_changed": {
+     "enemy_champ_invested_frac": 0.4999999701976776,
+     "enemy_champ_attack_power": 0.002494722604751587
+    },
+    "A_ok": true,
+    "B_ok": true,
+    "dV_A": -0.06363026797771454,
+    "dV_B": 0.04430994391441345,
+    "tv_actor_A": 0.042070314021771665
+   },
+   {
+    "base": "freeze L5",
+    "change": "unspent gold +1",
+    "A_changed": {
+     "own_champ_gold_whole": 0.1111111119389534
+    },
+    "B_changed": {
+     "enemy_champ_gold_whole": 0.1111111119389534
+    },
+    "A_ok": true,
+    "B_ok": true,
+    "dV_A": -0.00440642237663269,
+    "dV_B": 0.0037088990211486816,
+    "tv_actor_A": 0.04292336775498974
+   },
+   {
+    "base": "freeze L5",
+    "change": "unspent gold +4",
+    "A_changed": {
+     "own_champ_gold_whole": 0.3333333432674408
+    },
+    "B_changed": {
+     "enemy_champ_gold_whole": 0.3333333432674408
+    },
+    "A_ok": true,
+    "B_ok": true,
+    "dV_A": -0.01249358057975769,
+    "dV_B": 0.011289119720458984,
+    "tv_actor_A": 0.13549441059270698
+   },
+   {
+    "base": "freeze L5",
+    "change": "level +1",
+    "A_changed": {
+     "own_champ_hp_max": 0.02690911293029785,
+     "own_champ_level": 0.058823540806770325,
+     "own_champ_attack_power": 0.011374324560165405
+    },
+    "B_changed": {
+     "enemy_champ_hp_max": 0.02690911293029785,
+     "enemy_champ_level": 0.058823540806770325,
+     "enemy_champ_attack_power": 0.011374324560165405
+    },
+    "A_ok": true,
+    "B_ok": true,
+    "dV_A": 0.009062513709068298,
+    "dV_B": 0.021124929189682007,
+    "tv_actor_A": 0.026271008319914767
+   },
+   {
+    "base": "freeze L5",
+    "change": "XP within level",
+    "A_changed": {
+     "own_champ_xp_progress": 0.5
+    },
+    "B_changed": {
+     "enemy_champ_xp_progress": 0.5
+    },
+    "A_ok": true,
+    "B_ok": true,
+    "dV_A": 0.026294514536857605,
+    "dV_B": -0.022231340408325195,
+    "tv_actor_A": 0.046920736966768496
+   },
+   {
+    "base": "freeze L5",
+    "change": "HP 60%",
+    "A_changed": {
+     "own_champ_hp_frac": -0.40054869651794434
+    },
+    "B_changed": {
+     "enemy_champ_hp_frac": -0.40054869651794434
+    },
+    "A_ok": true,
+    "B_ok": true,
+    "dV_A": -0.38003452122211456,
+    "dV_B": 0.20111680030822754,
+    "tv_actor_A": 0.14663219098334665
+   },
+   {
+    "base": "freeze L5",
+    "change": "HP 30%",
+    "A_changed": {
+     "own_champ_hp_frac": -0.6995884776115417
+    },
+    "B_changed": {
+     "enemy_champ_hp_frac": -0.6995884776115417
+    },
+    "A_ok": true,
+    "B_ok": true,
+    "dV_A": -0.42080551385879517,
+    "dV_B": 0.9679225087165833,
+    "tv_actor_A": 0.6282319799674984
+   },
+   {
+    "base": "freeze L5",
+    "change": "enemy HP 60%",
+    "A_changed": {
+     "enemy_champ_hp_frac": -0.40054869651794434
+    },
+    "B_changed": {
+     "own_champ_hp_frac": -0.40054869651794434
+    },
+    "A_ok": true,
+    "B_ok": true,
+    "dV_A": 0.5029032379388809,
+    "dV_B": -0.4083612561225891,
+    "tv_actor_A": 0.33872968517248964
+   },
+   {
+    "base": "freeze L5",
+    "change": "away 2 turns",
+    "A_changed": {
+     "own_champ_absent": 0.4000000059604645
+    },
+    "B_changed": {
+     "enemy_champ_absent": 0.4000000059604645
+    },
+    "A_ok": true,
+    "B_ok": true,
+    "dV_A": 0.35537339746952057,
+    "dV_B": 0.7896110415458679,
+    "tv_actor_A": 1.0
+   },
+   {
+    "base": "freeze L5",
+    "change": "one cell forward",
+    "A_changed": {
+     "own_champ_x-2": -1.0,
+     "own_champ_x-1": 1.0
+    },
+    "B_changed": {
+     "enemy_champ_x+1": 1.0,
+     "enemy_champ_x+2": -1.0
+    },
+    "A_ok": true,
+    "B_ok": true,
+    "dV_A": 0.3496500104665756,
+    "dV_B": -0.13527989387512207,
+    "tv_actor_A": 0.10360863021499955
+   },
+   {
+    "base": "freeze L5",
+    "change": "own front HP halved",
+    "A_changed": {
+     "own_front_hp": -0.1666666716337204
+    },
+    "B_changed": {
+     "enemy_front_hp": -0.1666666716337204
+    },
+    "A_ok": true,
+    "B_ok": true,
+    "dV_A": 0.38651861250400543,
+    "dV_B": -0.30644357204437256,
+    "tv_actor_A": 0.07491428052973538
+   },
+   {
+    "base": "freeze L5",
+    "change": "vision 3 turns",
+    "A_changed": {
+     "own_vision": 0.5
+    },
+    "B_changed": {
+     "enemy_vision": 0.5
+    },
+    "A_ok": true,
+    "B_ok": true,
+    "dV_A": 0.19671551883220673,
+    "dV_B": -0.06621062755584717,
+    "tv_actor_A": 0.04862938111179549
+   },
+   {
+    "base": "freeze L5",
+    "change": "first plate dealt",
+    "A_changed": {
+     "own_tower_dmg": 0.2666666805744171,
+     "own_plates_broken": 0.3333333432674408,
+     "own_plates_left": -0.3333333134651184
+    },
+    "B_changed": {
+     "enemy_tower_dmg": 0.2666666805744171,
+     "enemy_plates_broken": 0.3333333432674408,
+     "enemy_plates_left": -0.3333333134651184
+    },
+    "A_ok": true,
+    "B_ok": true,
+    "dV_A": -0.3357589989900589,
+    "dV_B": 0.26522397994995117,
+    "tv_actor_A": 0.08219834527436559
+   },
+   {
+    "base": "freeze L5",
+    "change": "phase + 1",
+    "A_changed": {
+     "phase_0": 1.0,
+     "phase_3": -1.0
+    },
+    "B_changed": {
+     "phase_0": 1.0,
+     "phase_3": -1.0
+    },
+    "A_ok": true,
+    "B_ok": true,
+    "dV_A": 0.17534732818603516,
+    "dV_B": 0.22573471069335938,
+    "tv_actor_A": 0.2885939249092098
+   },
+   {
+    "base": "neutral L8",
+    "change": "invested +1",
+    "A_changed": {
+     "own_champ_invested_whole": 0.01122806966304779,
+     "own_champ_attack_power": 0.003783881664276123
+    },
+    "B_changed": {
+     "enemy_champ_invested_whole": 0.01122806966304779,
+     "enemy_champ_attack_power": 0.003783881664276123
+    },
+    "A_ok": true,
+    "B_ok": true,
+    "dV_A": 0.005316585302352905,
+    "dV_B": -0.005977898836135864,
+    "tv_actor_A": 0.003944996746179028
+   },
+   {
+    "base": "neutral L8",
+    "change": "invested +3",
+    "A_changed": {
+     "own_champ_invested_whole": 0.03282052278518677,
+     "own_champ_attack_power": 0.010990679264068604
+    },
+    "B_changed": {
+     "enemy_champ_invested_whole": 0.03282052278518677,
+     "enemy_champ_attack_power": 0.010990679264068604
+    },
+    "A_ok": true,
+    "B_ok": true,
+    "dV_A": 0.015549808740615845,
+    "dV_B": -0.017408430576324463,
+    "tv_actor_A": 0.011601096978568608
+   },
+   {
+    "base": "neutral L8",
+    "change": "invested +8",
+    "A_changed": {
+     "own_champ_invested_whole": 0.0822490006685257,
+     "own_champ_attack_power": 0.027158647775650024
+    },
+    "B_changed": {
+     "enemy_champ_invested_whole": 0.0822490006685257,
+     "enemy_champ_attack_power": 0.027158647775650024
+    },
+    "A_ok": true,
+    "B_ok": true,
+    "dV_A": 0.03901764750480652,
+    "dV_B": -0.04324190318584442,
+    "tv_actor_A": 0.0294476591862935
+   },
+   {
+    "base": "neutral L8",
+    "change": "invested +32",
+    "A_changed": {
+     "own_champ_invested_whole": 0.2552024722099304,
+     "own_champ_attack_power": 0.08065721392631531
+    },
+    "B_changed": {
+     "enemy_champ_invested_whole": 0.2552024722099304,
+     "enemy_champ_attack_power": 0.08065721392631531
+    },
+    "A_ok": true,
+    "B_ok": true,
+    "dV_A": 0.12152545154094696,
+    "dV_B": -0.12969329953193665,
+    "tv_actor_A": 0.09473121791389924
+   },
+   {
+    "base": "neutral L8",
+    "change": "invested +0.5",
+    "A_changed": {
+     "own_champ_invested_whole": 0.01122806966304779,
+     "own_champ_invested_frac": -0.5,
+     "own_champ_attack_power": 0.0019076168537139893
+    },
+    "B_changed": {
+     "enemy_champ_invested_whole": 0.01122806966304779,
+     "enemy_champ_invested_frac": -0.5,
+     "enemy_champ_attack_power": 0.0019076168537139893
+    },
+    "A_ok": true,
+    "B_ok": true,
+    "dV_A": 0.08204735815525055,
+    "dV_B": -0.002705901861190796,
+    "tv_actor_A": 0.035456782785775846
+   },
+   {
+    "base": "neutral L8",
+    "change": "unspent gold +1",
+    "A_changed": {
+     "own_champ_gold_whole": 0.1111111119389534
+    },
+    "B_changed": {
+     "enemy_champ_gold_whole": 0.1111111119389534
+    },
+    "A_ok": true,
+    "B_ok": true,
+    "dV_A": -0.020205825567245483,
+    "dV_B": 0.02605341374874115,
+    "tv_actor_A": 0.03897487684018396
+   },
+   {
+    "base": "neutral L8",
+    "change": "unspent gold +4",
+    "A_changed": {
+     "own_champ_gold_whole": 0.3333333432674408
+    },
+    "B_changed": {
+     "enemy_champ_gold_whole": 0.3333333432674408
+    },
+    "A_ok": true,
+    "B_ok": true,
+    "dV_A": -0.05996882915496826,
+    "dV_B": 0.08008584380149841,
+    "tv_actor_A": 0.11309393014216458
+   },
+   {
+    "base": "neutral L8",
+    "change": "level +1",
+    "A_changed": {
+     "own_champ_hp_max": 0.030545473098754883,
+     "own_champ_level": 0.05882352590560913,
+     "own_champ_attack_power": 0.01204073429107666
+    },
+    "B_changed": {
+     "enemy_champ_hp_max": 0.030545473098754883,
+     "enemy_champ_level": 0.05882352590560913,
+     "enemy_champ_attack_power": 0.01204073429107666
+    },
+    "A_ok": true,
+    "B_ok": true,
+    "dV_A": 0.0014854222536087036,
+    "dV_B": 0.0034420937299728394,
+    "tv_actor_A": 0.01666101968748233
+   },
+   {
+    "base": "neutral L8",
+    "change": "XP within level",
+    "A_changed": {
+     "own_champ_xp_progress": 0.48275861144065857
+    },
+    "B_changed": {
+     "enemy_champ_xp_progress": 0.48275861144065857
+    },
+    "A_ok": true,
+    "B_ok": true,
+    "dV_A": -0.04319719970226288,
+    "dV_B": -0.09270399808883667,
+    "tv_actor_A": 0.09252828641713434
+   },
+   {
+    "base": "neutral L8",
+    "change": "HP 60%",
+    "A_changed": {
+     "own_champ_hp_frac": -0.400473952293396
+    },
+    "B_changed": {
+     "enemy_champ_hp_frac": -0.400473952293396
+    },
+    "A_ok": true,
+    "B_ok": true,
+    "dV_A": -0.5952371656894684,
+    "dV_B": 0.6186084449291229,
+    "tv_actor_A": 0.40745267291701215
+   },
+   {
+    "base": "neutral L8",
+    "change": "HP 30%",
+    "A_changed": {
+     "own_champ_hp_frac": -0.700236976146698
+    },
+    "B_changed": {
+     "enemy_champ_hp_frac": -0.700236976146698
+    },
+    "A_ok": true,
+    "B_ok": true,
+    "dV_A": -1.7147263884544373,
+    "dV_B": 1.1830207705497742,
+    "tv_actor_A": 0.8061899665581149
+   },
+   {
+    "base": "neutral L8",
+    "change": "enemy HP 60%",
+    "A_changed": {
+     "enemy_champ_hp_frac": -0.400473952293396
+    },
+    "B_changed": {
+     "own_champ_hp_frac": -0.400473952293396
+    },
+    "A_ok": true,
+    "B_ok": true,
+    "dV_A": 0.6186084449291229,
+    "dV_B": -0.5952371656894684,
+    "tv_actor_A": 0.6126644755013926
+   },
+   {
+    "base": "neutral L8",
+    "change": "away 2 turns",
+    "A_changed": {
+     "own_champ_x-2": 1.0,
+     "own_champ_x+0": -1.0,
+     "own_champ_absent": 0.4000000059604645
+    },
+    "B_changed": {
+     "enemy_champ_x+0": -1.0,
+     "enemy_champ_x+2": 1.0,
+     "enemy_champ_absent": 0.4000000059604645
+    },
+    "A_ok": true,
+    "B_ok": true,
+    "dV_A": 0.6104544177651405,
+    "dV_B": 0.2412097156047821,
+    "tv_actor_A": 0.9999999999999999
+   },
+   {
+    "base": "neutral L8",
+    "change": "one cell forward",
+    "A_changed": {
+     "own_champ_x+0": -1.0,
+     "own_champ_x+1": 1.0
+    },
+    "B_changed": {
+     "enemy_champ_x-1": 1.0,
+     "enemy_champ_x+0": -1.0
+    },
+    "A_ok": true,
+    "B_ok": true,
+    "dV_A": -0.15777021646499634,
+    "dV_B": 0.08018016815185547,
+    "tv_actor_A": 0.16321125823776622
+   },
+   {
+    "base": "neutral L8",
+    "change": "own front HP halved",
+    "A_changed": {
+     "own_front_hp": -0.1666666716337204
+    },
+    "B_changed": {
+     "enemy_front_hp": -0.1666666716337204
+    },
+    "A_ok": true,
+    "B_ok": true,
+    "dV_A": 0.46195439994335175,
+    "dV_B": -0.36501169204711914,
+    "tv_actor_A": 0.1696431235309198
+   },
+   {
+    "base": "neutral L8",
+    "change": "vision 3 turns",
+    "A_changed": {
+     "own_vision": 0.5
+    },
+    "B_changed": {
+     "enemy_vision": 0.5
+    },
+    "A_ok": true,
+    "B_ok": true,
+    "dV_A": 0.1369670033454895,
+    "dV_B": -0.12321606278419495,
+    "tv_actor_A": 0.12321785532217698
+   },
+   {
+    "base": "neutral L8",
+    "change": "first plate dealt",
+    "A_changed": {
+     "own_tower_dmg": 0.2666666805744171,
+     "own_plates_broken": 0.3333333432674408,
+     "own_plates_left": -0.3333333134651184
+    },
+    "B_changed": {
+     "enemy_tower_dmg": 0.2666666805744171,
+     "enemy_plates_broken": 0.3333333432674408,
+     "enemy_plates_left": -0.3333333134651184
+    },
+    "A_ok": true,
+    "B_ok": true,
+    "dV_A": -0.31329840421676636,
+    "dV_B": 0.3122793138027191,
+    "tv_actor_A": 0.09675668985698631
+   },
+   {
+    "base": "neutral L8",
+    "change": "phase + 1",
+    "A_changed": {
+     "phase_2": -1.0,
+     "phase_3": 1.0
+    },
+    "B_changed": {
+     "phase_2": -1.0,
+     "phase_3": 1.0
+    },
+    "A_ok": true,
+    "B_ok": true,
+    "dV_A": -0.015079081058502197,
+    "dV_B": -0.015079081058502197,
+    "tv_actor_A": 0.2329158754770247
+   },
+   {
+    "base": "neutral L15",
+    "change": "invested +1",
+    "A_changed": {
+     "own_champ_invested_whole": 0.005860805511474609,
+     "own_champ_attack_power": 0.0017145872116088867
+    },
+    "B_changed": {
+     "enemy_champ_invested_whole": 0.005860805511474609,
+     "enemy_champ_attack_power": 0.0017145872116088867
+    },
+    "A_ok": true,
+    "B_ok": true,
+    "dV_A": 0.0029509514570236206,
+    "dV_B": -0.0028361380100250244,
+    "tv_actor_A": 0.002056124899663745
+   },
+   {
+    "base": "neutral L15",
+    "change": "invested +3",
+    "A_changed": {
+     "own_champ_invested_whole": 0.017253756523132324,
+     "own_champ_attack_power": 0.0050296783447265625
+    },
+    "B_changed": {
+     "enemy_champ_invested_whole": 0.017253756523132324,
+     "enemy_champ_attack_power": 0.0050296783447265625
+    },
+    "A_ok": true,
+    "B_ok": true,
+    "dV_A": 0.008687004446983337,
+    "dV_B": -0.008330866694450378,
+    "tv_actor_A": 0.006070217889929891
+   },
+   {
+    "base": "neutral L15",
+    "change": "invested +8",
+    "A_changed": {
+     "own_champ_invested_whole": 0.04395604133605957,
+     "own_champ_attack_power": 0.012710392475128174
+    },
+    "B_changed": {
+     "enemy_champ_invested_whole": 0.04395604133605957,
+     "enemy_champ_attack_power": 0.012710392475128174
+    },
+    "A_ok": true,
+    "B_ok": true,
+    "dV_A": 0.02213291823863983,
+    "dV_B": -0.021106228232383728,
+    "tv_actor_A": 0.015564301129476012
+   },
+   {
+    "base": "neutral L15",
+    "change": "invested +32",
+    "A_changed": {
+     "own_champ_invested_whole": 0.14479640126228333,
+     "own_champ_attack_power": 0.04073071479797363
+    },
+    "B_changed": {
+     "enemy_champ_invested_whole": 0.14479640126228333,
+     "enemy_champ_attack_power": 0.04073071479797363
+    },
+    "A_ok": true,
+    "B_ok": true,
+    "dV_A": 0.07292889058589935,
+    "dV_B": -0.0680571049451828,
+    "tv_actor_A": 0.05241125728645876
+   },
+   {
+    "base": "neutral L15",
+    "change": "invested +0.5",
+    "A_changed": {
+     "own_champ_invested_frac": 0.5,
+     "own_champ_attack_power": 0.0008621811866760254
+    },
+    "B_changed": {
+     "enemy_champ_invested_frac": 0.5,
+     "enemy_champ_attack_power": 0.0008621811866760254
+    },
+    "A_ok": true,
+    "B_ok": true,
+    "dV_A": -0.05061231553554535,
+    "dV_B": 0.015859827399253845,
+    "tv_actor_A": 0.04104263818901265
+   },
+   {
+    "base": "neutral L15",
+    "change": "unspent gold +1",
+    "A_changed": {
+     "own_champ_gold_whole": 0.1111111119389534
+    },
+    "B_changed": {
+     "enemy_champ_gold_whole": 0.1111111119389534
+    },
+    "A_ok": true,
+    "B_ok": true,
+    "dV_A": -0.02461761236190796,
+    "dV_B": 0.016403868794441223,
+    "tv_actor_A": 0.03621923501361559
+   },
+   {
+    "base": "neutral L15",
+    "change": "unspent gold +4",
+    "A_changed": {
+     "own_champ_gold_whole": 0.3333333432674408
+    },
+    "B_changed": {
+     "enemy_champ_gold_whole": 0.3333333432674408
+    },
+    "A_ok": true,
+    "B_ok": true,
+    "dV_A": -0.07283352315425873,
+    "dV_B": 0.05206577479839325,
+    "tv_actor_A": 0.10699962559021342
+   },
+   {
+    "base": "neutral L15",
+    "change": "level +1",
+    "A_changed": {
+     "own_champ_hp_max": 0.042909085750579834,
+     "own_champ_level": 0.05882352590560913,
+     "own_champ_attack_power": 0.011704504489898682
+    },
+    "B_changed": {
+     "enemy_champ_hp_max": 0.042909085750579834,
+     "enemy_champ_level": 0.05882352590560913,
+     "enemy_champ_attack_power": 0.011704504489898682
+    },
+    "A_ok": true,
+    "B_ok": true,
+    "dV_A": 0.002675876021385193,
+    "dV_B": 0.010562092065811157,
+    "tv_actor_A": 0.013123036422218496
+   },
+   {
+    "base": "neutral L15",
+    "change": "XP within level",
+    "A_changed": {
+     "own_champ_xp_progress": 0.5
+    },
+    "B_changed": {
+     "enemy_champ_xp_progress": 0.5
+    },
+    "A_ok": true,
+    "B_ok": true,
+    "dV_A": -0.023761317133903503,
+    "dV_B": -0.0596734881401062,
+    "tv_actor_A": 0.10239468503360542
+   },
+   {
+    "base": "neutral L15",
+    "change": "HP 60%",
+    "A_changed": {
+     "own_champ_hp_frac": -0.3998316526412964
+    },
+    "B_changed": {
+     "enemy_champ_hp_frac": -0.3998316526412964
+    },
+    "A_ok": true,
+    "B_ok": true,
+    "dV_A": -0.5451852828264236,
+    "dV_B": 0.600874200463295,
+    "tv_actor_A": 0.4202212605547733
+   },
+   {
+    "base": "neutral L15",
+    "change": "HP 30%",
+    "A_changed": {
+     "own_champ_hp_frac": -0.7003366947174072
+    },
+    "B_changed": {
+     "enemy_champ_hp_frac": -0.7003366947174072
+    },
+    "A_ok": true,
+    "B_ok": true,
+    "dV_A": -1.7629063874483109,
+    "dV_B": 1.2172218412160873,
+    "tv_actor_A": 0.7708759458191864
+   },
+   {
+    "base": "neutral L15",
+    "change": "enemy HP 60%",
+    "A_changed": {
+     "enemy_champ_hp_frac": -0.3998316526412964
+    },
+    "B_changed": {
+     "own_champ_hp_frac": -0.3998316526412964
+    },
+    "A_ok": true,
+    "B_ok": true,
+    "dV_A": 0.600874200463295,
+    "dV_B": -0.5451852828264236,
+    "tv_actor_A": 0.6547544810517953
+   },
+   {
+    "base": "neutral L15",
+    "change": "away 2 turns",
+    "A_changed": {
+     "own_champ_x-2": 1.0,
+     "own_champ_x+0": -1.0,
+     "own_champ_absent": 0.4000000059604645
+    },
+    "B_changed": {
+     "enemy_champ_x+0": -1.0,
+     "enemy_champ_x+2": 1.0,
+     "enemy_champ_absent": 0.4000000059604645
+    },
+    "A_ok": true,
+    "B_ok": true,
+    "dV_A": 0.7492759078741074,
+    "dV_B": 0.2501000463962555,
+    "tv_actor_A": 1.0
+   },
+   {
+    "base": "neutral L15",
+    "change": "one cell forward",
+    "A_changed": {
+     "own_champ_x+0": -1.0,
+     "own_champ_x+1": 1.0
+    },
+    "B_changed": {
+     "enemy_champ_x-1": 1.0,
+     "enemy_champ_x+0": -1.0
+    },
+    "A_ok": true,
+    "B_ok": true,
+    "dV_A": 0.1290794461965561,
+    "dV_B": 0.0963931530714035,
+    "tv_actor_A": 0.23429659111270784
+   },
+   {
+    "base": "neutral L15",
+    "change": "own front HP halved",
+    "A_changed": {
+     "own_front_hp": -0.1666666716337204
+    },
+    "B_changed": {
+     "enemy_front_hp": -0.1666666716337204
+    },
+    "A_ok": true,
+    "B_ok": true,
+    "dV_A": 0.48589132726192474,
+    "dV_B": -0.37666745483875275,
+    "tv_actor_A": 0.19275535483233794
+   },
+   {
+    "base": "neutral L15",
+    "change": "vision 3 turns",
+    "A_changed": {
+     "own_vision": 0.5
+    },
+    "B_changed": {
+     "enemy_vision": 0.5
+    },
+    "A_ok": true,
+    "B_ok": true,
+    "dV_A": 0.14036528766155243,
+    "dV_B": -0.1269691437482834,
+    "tv_actor_A": 0.09250584375163551
+   },
+   {
+    "base": "neutral L15",
+    "change": "first plate dealt",
+    "A_changed": {
+     "own_tower_dmg": 0.2666666805744171,
+     "own_plates_broken": 0.3333333432674408,
+     "own_plates_left": -0.3333333134651184
+    },
+    "B_changed": {
+     "enemy_tower_dmg": 0.2666666805744171,
+     "enemy_plates_broken": 0.3333333432674408,
+     "enemy_plates_left": -0.3333333134651184
+    },
+    "A_ok": true,
+    "B_ok": true,
+    "dV_A": -0.3094843029975891,
+    "dV_B": 0.27119483798742294,
+    "tv_actor_A": 0.07920132032611914
+   },
+   {
+    "base": "neutral L15",
+    "change": "phase + 1",
+    "A_changed": {
+     "phase_2": -1.0,
+     "phase_3": 1.0
+    },
+    "B_changed": {
+     "phase_2": -1.0,
+     "phase_3": 1.0
+    },
+    "A_ok": true,
+    "B_ok": true,
+    "dV_A": 0.006032288074493408,
+    "dV_B": 0.006032288074493408,
+    "tv_actor_A": 0.3182104622667002
+   }
+  ],
+  "ext/C1:4": [
+   {
+    "base": "freeze L5",
+    "change": "invested +1",
+    "A_changed": {
+     "own_champ_invested_whole": 0.01404741033911705,
+     "own_champ_attack_power": 0.004942834377288818
+    },
+    "B_changed": {
+     "enemy_champ_invested_whole": 0.01404741033911705,
+     "enemy_champ_attack_power": 0.004942834377288818
+    },
+    "A_ok": true,
+    "B_ok": true,
+    "dV_A": -0.004436969757080078,
+    "dV_B": 0.0008609890937805176,
+    "tv_actor_A": 0.0004669572704410904
+   },
+   {
+    "base": "freeze L5",
+    "change": "invested +3",
+    "A_changed": {
+     "own_champ_invested_whole": 0.04093816876411438,
+     "own_champ_attack_power": 0.014294981956481934
+    },
+    "B_changed": {
+     "enemy_champ_invested_whole": 0.04093816876411438,
+     "enemy_champ_attack_power": 0.014294981956481934
+    },
+    "A_ok": true,
+    "B_ok": true,
+    "dV_A": -0.0128994882106781,
+    "dV_B": 0.002523958683013916,
+    "tv_actor_A": 0.0013279274370362028
+   },
+   {
+    "base": "freeze L5",
+    "change": "invested +8",
+    "A_changed": {
+     "own_champ_invested_whole": 0.10189054161310196,
+     "own_champ_attack_power": 0.03498759865760803
+    },
+    "B_changed": {
+     "enemy_champ_invested_whole": 0.10189054161310196,
+     "enemy_champ_attack_power": 0.03498759865760803
+    },
+    "A_ok": true,
+    "B_ok": true,
+    "dV_A": -0.031933486461639404,
+    "dV_B": 0.006369799375534058,
+    "tv_actor_A": 0.0031212461606332335
+   },
+   {
+    "base": "freeze L5",
+    "change": "invested +32",
+    "A_changed": {
+     "own_champ_invested_whole": 0.30875924229621887,
+     "own_champ_attack_power": 0.10082119703292847
+    },
+    "B_changed": {
+     "enemy_champ_invested_whole": 0.30875924229621887,
+     "enemy_champ_attack_power": 0.10082119703292847
+    },
+    "A_ok": true,
+    "B_ok": true,
+    "dV_A": -0.09500071406364441,
+    "dV_B": 0.02029240131378174,
+    "tv_actor_A": 0.007705051987947616
+   },
+   {
+    "base": "freeze L5",
+    "change": "invested +0.5",
+    "A_changed": {
+     "own_champ_invested_frac": 0.4999999701976776,
+     "own_champ_attack_power": 0.002494722604751587
+    },
+    "B_changed": {
+     "enemy_champ_invested_frac": 0.4999999701976776,
+     "enemy_champ_attack_power": 0.002494722604751587
+    },
+    "A_ok": true,
+    "B_ok": true,
+    "dV_A": 0.08008420467376709,
+    "dV_B": -0.02938792109489441,
+    "tv_actor_A": 0.010298757746211591
+   },
+   {
+    "base": "freeze L5",
+    "change": "unspent gold +1",
+    "A_changed": {
+     "own_champ_gold_whole": 0.1111111119389534
+    },
+    "B_changed": {
+     "enemy_champ_gold_whole": 0.1111111119389534
+    },
+    "A_ok": true,
+    "B_ok": true,
+    "dV_A": -0.012448430061340332,
+    "dV_B": 0.010257959365844727,
+    "tv_actor_A": 0.009169143269202833
+   },
+   {
+    "base": "freeze L5",
+    "change": "unspent gold +4",
+    "A_changed": {
+     "own_champ_gold_whole": 0.3333333432674408
+    },
+    "B_changed": {
+     "enemy_champ_gold_whole": 0.3333333432674408
+    },
+    "A_ok": true,
+    "B_ok": true,
+    "dV_A": -0.03786340355873108,
+    "dV_B": 0.030920803546905518,
+    "tv_actor_A": 0.03366735922853232
+   },
+   {
+    "base": "freeze L5",
+    "change": "level +1",
+    "A_changed": {
+     "own_champ_hp_max": 0.02690911293029785,
+     "own_champ_level": 0.058823540806770325,
+     "own_champ_attack_power": 0.011374324560165405
+    },
+    "B_changed": {
+     "enemy_champ_hp_max": 0.02690911293029785,
+     "enemy_champ_level": 0.058823540806770325,
+     "enemy_champ_attack_power": 0.011374324560165405
+    },
+    "A_ok": true,
+    "B_ok": true,
+    "dV_A": -0.005850940942764282,
+    "dV_B": 0.000915825366973877,
+    "tv_actor_A": 0.003137309455004784
+   },
+   {
+    "base": "freeze L5",
+    "change": "XP within level",
+    "A_changed": {
+     "own_champ_xp_progress": 0.5
+    },
+    "B_changed": {
+     "enemy_champ_xp_progress": 0.5
+    },
+    "A_ok": true,
+    "B_ok": true,
+    "dV_A": -0.06534337997436523,
+    "dV_B": 0.0780467689037323,
+    "tv_actor_A": 0.008181069557469714
+   },
+   {
+    "base": "freeze L5",
+    "change": "HP 60%",
+    "A_changed": {
+     "own_champ_hp_frac": -0.40054869651794434
+    },
+    "B_changed": {
+     "enemy_champ_hp_frac": -0.40054869651794434
+    },
+    "A_ok": true,
+    "B_ok": true,
+    "dV_A": -0.23544929921627045,
+    "dV_B": 0.26178956031799316,
+    "tv_actor_A": 0.18895174332492615
+   },
+   {
+    "base": "freeze L5",
+    "change": "HP 30%",
+    "A_changed": {
+     "own_champ_hp_frac": -0.6995884776115417
+    },
+    "B_changed": {
+     "enemy_champ_hp_frac": -0.6995884776115417
+    },
+    "A_ok": true,
+    "B_ok": true,
+    "dV_A": -0.42514488101005554,
+    "dV_B": 0.6236130744218826,
+    "tv_actor_A": 0.3918618254694628
+   },
+   {
+    "base": "freeze L5",
+    "change": "enemy HP 60%",
+    "A_changed": {
+     "enemy_champ_hp_frac": -0.40054869651794434
+    },
+    "B_changed": {
+     "own_champ_hp_frac": -0.40054869651794434
+    },
+    "A_ok": true,
+    "B_ok": true,
+    "dV_A": 0.5706165730953217,
+    "dV_B": -0.4359634220600128,
+    "tv_actor_A": 0.35650634916035173
+   },
+   {
+    "base": "freeze L5",
+    "change": "away 2 turns",
+    "A_changed": {
+     "own_champ_absent": 0.4000000059604645
+    },
+    "B_changed": {
+     "enemy_champ_absent": 0.4000000059604645
+    },
+    "A_ok": true,
+    "B_ok": true,
+    "dV_A": 0.2535390853881836,
+    "dV_B": 0.1478762924671173,
+    "tv_actor_A": 1.0
+   },
+   {
+    "base": "freeze L5",
+    "change": "one cell forward",
+    "A_changed": {
+     "own_champ_x-2": -1.0,
+     "own_champ_x-1": 1.0
+    },
+    "B_changed": {
+     "enemy_champ_x+1": 1.0,
+     "enemy_champ_x+2": -1.0
+    },
+    "A_ok": true,
+    "B_ok": true,
+    "dV_A": -0.2313840389251709,
+    "dV_B": -0.01621842384338379,
+    "tv_actor_A": 0.14054202956969516
+   },
+   {
+    "base": "freeze L5",
+    "change": "own front HP halved",
+    "A_changed": {
+     "own_front_hp": -0.1666666716337204
+    },
+    "B_changed": {
+     "enemy_front_hp": -0.1666666716337204
+    },
+    "A_ok": true,
+    "B_ok": true,
+    "dV_A": 0.3789392113685608,
+    "dV_B": -0.22247105836868286,
+    "tv_actor_A": 0.05907771783373573
+   },
+   {
+    "base": "freeze L5",
+    "change": "vision 3 turns",
+    "A_changed": {
+     "own_vision": 0.5
+    },
+    "B_changed": {
+     "enemy_vision": 0.5
+    },
+    "A_ok": true,
+    "B_ok": true,
+    "dV_A": -0.03251567482948303,
+    "dV_B": -0.07459476590156555,
+    "tv_actor_A": 0.022179314328492877
+   },
+   {
+    "base": "freeze L5",
+    "change": "first plate dealt",
+    "A_changed": {
+     "own_tower_dmg": 0.2666666805744171,
+     "own_plates_broken": 0.3333333432674408,
+     "own_plates_left": -0.3333333134651184
+    },
+    "B_changed": {
+     "enemy_tower_dmg": 0.2666666805744171,
+     "enemy_plates_broken": 0.3333333432674408,
+     "enemy_plates_left": -0.3333333134651184
+    },
+    "A_ok": true,
+    "B_ok": true,
+    "dV_A": -0.2044747769832611,
+    "dV_B": 0.2532768249511719,
+    "tv_actor_A": 0.0206865176068625
+   },
+   {
+    "base": "freeze L5",
+    "change": "phase + 1",
+    "A_changed": {
+     "phase_0": 1.0,
+     "phase_3": -1.0
+    },
+    "B_changed": {
+     "phase_0": 1.0,
+     "phase_3": -1.0
+    },
+    "A_ok": true,
+    "B_ok": true,
+    "dV_A": 0.2753128111362457,
+    "dV_B": 0.22663116455078125,
+    "tv_actor_A": 0.1243027590038556
+   },
+   {
+    "base": "neutral L8",
+    "change": "invested +1",
+    "A_changed": {
+     "own_champ_invested_whole": 0.01122806966304779,
+     "own_champ_attack_power": 0.003783881664276123
+    },
+    "B_changed": {
+     "enemy_champ_invested_whole": 0.01122806966304779,
+     "enemy_champ_attack_power": 0.003783881664276123
+    },
+    "A_ok": true,
+    "B_ok": true,
+    "dV_A": -0.003916248679161072,
+    "dV_B": -0.0018755346536636353,
+    "tv_actor_A": 0.004154387314971301
+   },
+   {
+    "base": "neutral L8",
+    "change": "invested +3",
+    "A_changed": {
+     "own_champ_invested_whole": 0.03282052278518677,
+     "own_champ_attack_power": 0.010990679264068604
+    },
+    "B_changed": {
+     "enemy_champ_invested_whole": 0.03282052278518677,
+     "enemy_champ_attack_power": 0.010990679264068604
+    },
+    "A_ok": true,
+    "B_ok": true,
+    "dV_A": -0.011401847004890442,
+    "dV_B": -0.005476027727127075,
+    "tv_actor_A": 0.01219823922118309
+   },
+   {
+    "base": "neutral L8",
+    "change": "invested +8",
+    "A_changed": {
+     "own_champ_invested_whole": 0.0822490006685257,
+     "own_champ_attack_power": 0.027158647775650024
+    },
+    "B_changed": {
+     "enemy_champ_invested_whole": 0.0822490006685257,
+     "enemy_champ_attack_power": 0.027158647775650024
+    },
+    "A_ok": true,
+    "B_ok": true,
+    "dV_A": -0.028307512402534485,
+    "dV_B": -0.01368686556816101,
+    "tv_actor_A": 0.030847030407305354
+   },
+   {
+    "base": "neutral L8",
+    "change": "invested +32",
+    "A_changed": {
+     "own_champ_invested_whole": 0.2552024722099304,
+     "own_champ_attack_power": 0.08065721392631531
+    },
+    "B_changed": {
+     "enemy_champ_invested_whole": 0.2552024722099304,
+     "enemy_champ_attack_power": 0.08065721392631531
+    },
+    "A_ok": true,
+    "B_ok": true,
+    "dV_A": -0.08497148752212524,
+    "dV_B": -0.04197552800178528,
+    "tv_actor_A": 0.09752439794909161
+   },
+   {
+    "base": "neutral L8",
+    "change": "invested +0.5",
+    "A_changed": {
+     "own_champ_invested_whole": 0.01122806966304779,
+     "own_champ_invested_frac": -0.5,
+     "own_champ_attack_power": 0.0019076168537139893
+    },
+    "B_changed": {
+     "enemy_champ_invested_whole": 0.01122806966304779,
+     "enemy_champ_invested_frac": -0.5,
+     "enemy_champ_attack_power": 0.0019076168537139893
+    },
+    "A_ok": true,
+    "B_ok": true,
+    "dV_A": -0.045565590262413025,
+    "dV_B": -0.007204338908195496,
+    "tv_actor_A": 0.036518925265012415
+   },
+   {
+    "base": "neutral L8",
+    "change": "unspent gold +1",
+    "A_changed": {
+     "own_champ_gold_whole": 0.1111111119389534
+    },
+    "B_changed": {
+     "enemy_champ_gold_whole": 0.1111111119389534
+    },
+    "A_ok": true,
+    "B_ok": true,
+    "dV_A": -0.020291432738304138,
+    "dV_B": 0.027918890118598938,
+    "tv_actor_A": 0.009163805746782605
+   },
+   {
+    "base": "neutral L8",
+    "change": "unspent gold +4",
+    "A_changed": {
+     "own_champ_gold_whole": 0.3333333432674408
+    },
+    "B_changed": {
+     "enemy_champ_gold_whole": 0.3333333432674408
+    },
+    "A_ok": true,
+    "B_ok": true,
+    "dV_A": -0.05925498902797699,
+    "dV_B": 0.08450537919998169,
+    "tv_actor_A": 0.025318559069274972
+   },
+   {
+    "base": "neutral L8",
+    "change": "level +1",
+    "A_changed": {
+     "own_champ_hp_max": 0.030545473098754883,
+     "own_champ_level": 0.05882352590560913,
+     "own_champ_attack_power": 0.01204073429107666
+    },
+    "B_changed": {
+     "enemy_champ_hp_max": 0.030545473098754883,
+     "enemy_champ_level": 0.05882352590560913,
+     "enemy_champ_attack_power": 0.01204073429107666
+    },
+    "A_ok": true,
+    "B_ok": true,
+    "dV_A": -0.004602968692779541,
+    "dV_B": -5.7220458984375e-05,
+    "tv_actor_A": 0.013967995447453588
+   },
+   {
+    "base": "neutral L8",
+    "change": "XP within level",
+    "A_changed": {
+     "own_champ_xp_progress": 0.48275861144065857
+    },
+    "B_changed": {
+     "enemy_champ_xp_progress": 0.48275861144065857
+    },
+    "A_ok": true,
+    "B_ok": true,
+    "dV_A": -0.07200829684734344,
+    "dV_B": 0.022096410393714905,
+    "tv_actor_A": 0.034856567059690306
+   },
+   {
+    "base": "neutral L8",
+    "change": "HP 60%",
+    "A_changed": {
+     "own_champ_hp_frac": -0.400473952293396
+    },
+    "B_changed": {
+     "enemy_champ_hp_frac": -0.400473952293396
+    },
+    "A_ok": true,
+    "B_ok": true,
+    "dV_A": -0.5048811621963978,
+    "dV_B": 0.6284873746335506,
+    "tv_actor_A": 0.38247879033228976
+   },
+   {
+    "base": "neutral L8",
+    "change": "HP 30%",
+    "A_changed": {
+     "own_champ_hp_frac": -0.700236976146698
+    },
+    "B_changed": {
+     "enemy_champ_hp_frac": -0.700236976146698
+    },
+    "A_ok": true,
+    "B_ok": true,
+    "dV_A": -1.1351781524717808,
+    "dV_B": 1.2273602001369,
+    "tv_actor_A": 0.5103766225277337
+   },
+   {
+    "base": "neutral L8",
+    "change": "enemy HP 60%",
+    "A_changed": {
+     "enemy_champ_hp_frac": -0.400473952293396
+    },
+    "B_changed": {
+     "own_champ_hp_frac": -0.400473952293396
+    },
+    "A_ok": true,
+    "B_ok": true,
+    "dV_A": 0.6284873746335506,
+    "dV_B": -0.5048811621963978,
+    "tv_actor_A": 0.3871722531611618
+   },
+   {
+    "base": "neutral L8",
+    "change": "away 2 turns",
+    "A_changed": {
+     "own_champ_x-2": 1.0,
+     "own_champ_x+0": -1.0,
+     "own_champ_absent": 0.4000000059604645
+    },
+    "B_changed": {
+     "enemy_champ_x+0": -1.0,
+     "enemy_champ_x+2": 1.0,
+     "enemy_champ_absent": 0.4000000059604645
+    },
+    "A_ok": true,
+    "B_ok": true,
+    "dV_A": 0.6054291687905788,
+    "dV_B": -0.5968552269041538,
+    "tv_actor_A": 1.0
+   },
+   {
+    "base": "neutral L8",
+    "change": "one cell forward",
+    "A_changed": {
+     "own_champ_x+0": -1.0,
+     "own_champ_x+1": 1.0
+    },
+    "B_changed": {
+     "enemy_champ_x-1": 1.0,
+     "enemy_champ_x+0": -1.0
+    },
+    "A_ok": true,
+    "B_ok": true,
+    "dV_A": -0.4212505556643009,
+    "dV_B": 0.09011216461658478,
+    "tv_actor_A": 0.381926542677251
+   },
+   {
+    "base": "neutral L8",
+    "change": "own front HP halved",
+    "A_changed": {
+     "own_front_hp": -0.1666666716337204
+    },
+    "B_changed": {
+     "enemy_front_hp": -0.1666666716337204
+    },
+    "A_ok": true,
+    "B_ok": true,
+    "dV_A": 0.4482155852019787,
+    "dV_B": -0.3499768115580082,
+    "tv_actor_A": 0.14723692951555495
+   },
+   {
+    "base": "neutral L8",
+    "change": "vision 3 turns",
+    "A_changed": {
+     "own_vision": 0.5
+    },
+    "B_changed": {
+     "enemy_vision": 0.5
+    },
+    "A_ok": true,
+    "B_ok": true,
+    "dV_A": 0.02113722264766693,
+    "dV_B": 0.04208855330944061,
+    "tv_actor_A": 0.0830317500458291
+   },
+   {
+    "base": "neutral L8",
+    "change": "first plate dealt",
+    "A_changed": {
+     "own_tower_dmg": 0.2666666805744171,
+     "own_plates_broken": 0.3333333432674408,
+     "own_plates_left": -0.3333333134651184
+    },
+    "B_changed": {
+     "enemy_tower_dmg": 0.2666666805744171,
+     "enemy_plates_broken": 0.3333333432674408,
+     "enemy_plates_left": -0.3333333134651184
+    },
+    "A_ok": true,
+    "B_ok": true,
+    "dV_A": -0.26332788169384,
+    "dV_B": 0.2510279417037964,
+    "tv_actor_A": 0.037306745656771195
+   },
+   {
+    "base": "neutral L8",
+    "change": "phase + 1",
+    "A_changed": {
+     "phase_2": -1.0,
+     "phase_3": 1.0
+    },
+    "B_changed": {
+     "phase_2": -1.0,
+     "phase_3": 1.0
+    },
+    "A_ok": true,
+    "B_ok": true,
+    "dV_A": -0.007039308547973633,
+    "dV_B": -0.007039308547973633,
+    "tv_actor_A": 0.3156841328784207
+   },
+   {
+    "base": "neutral L15",
+    "change": "invested +1",
+    "A_changed": {
+     "own_champ_invested_whole": 0.005860805511474609,
+     "own_champ_attack_power": 0.0017145872116088867
+    },
+    "B_changed": {
+     "enemy_champ_invested_whole": 0.005860805511474609,
+     "enemy_champ_attack_power": 0.0017145872116088867
+    },
+    "A_ok": true,
+    "B_ok": true,
+    "dV_A": -0.0015764683485031128,
+    "dV_B": -0.0006801635026931763,
+    "tv_actor_A": 0.0020042480404113302
+   },
+   {
+    "base": "neutral L15",
+    "change": "invested +3",
+    "A_changed": {
+     "own_champ_invested_whole": 0.017253756523132324,
+     "own_champ_attack_power": 0.0050296783447265625
+    },
+    "B_changed": {
+     "enemy_champ_invested_whole": 0.017253756523132324,
+     "enemy_champ_attack_power": 0.0050296783447265625
+    },
+    "A_ok": true,
+    "B_ok": true,
+    "dV_A": -0.004627853631973267,
+    "dV_B": -0.0019988417625427246,
+    "tv_actor_A": 0.005902661684328574
+   },
+   {
+    "base": "neutral L15",
+    "change": "invested +8",
+    "A_changed": {
+     "own_champ_invested_whole": 0.04395604133605957,
+     "own_champ_attack_power": 0.012710392475128174
+    },
+    "B_changed": {
+     "enemy_champ_invested_whole": 0.04395604133605957,
+     "enemy_champ_attack_power": 0.012710392475128174
+    },
+    "A_ok": true,
+    "B_ok": true,
+    "dV_A": -0.011707693338394165,
+    "dV_B": -0.005070418119430542,
+    "tv_actor_A": 0.015049083752640764
+   },
+   {
+    "base": "neutral L15",
+    "change": "invested +32",
+    "A_changed": {
+     "own_champ_invested_whole": 0.14479640126228333,
+     "own_champ_attack_power": 0.04073071479797363
+    },
+    "B_changed": {
+     "enemy_champ_invested_whole": 0.14479640126228333,
+     "enemy_champ_attack_power": 0.04073071479797363
+    },
+    "A_ok": true,
+    "B_ok": true,
+    "dV_A": -0.03756597638130188,
+    "dV_B": -0.016420483589172363,
+    "tv_actor_A": 0.049557316202957676
+   },
+   {
+    "base": "neutral L15",
+    "change": "invested +0.5",
+    "A_changed": {
+     "own_champ_invested_frac": 0.5,
+     "own_champ_attack_power": 0.0008621811866760254
+    },
+    "B_changed": {
+     "enemy_champ_invested_frac": 0.5,
+     "enemy_champ_attack_power": 0.0008621811866760254
+    },
+    "A_ok": true,
+    "B_ok": true,
+    "dV_A": 0.03402233123779297,
+    "dV_B": -0.004980713129043579,
+    "tv_actor_A": 0.024878143930821505
+   },
+   {
+    "base": "neutral L15",
+    "change": "unspent gold +1",
+    "A_changed": {
+     "own_champ_gold_whole": 0.1111111119389534
+    },
+    "B_changed": {
+     "enemy_champ_gold_whole": 0.1111111119389534
+    },
+    "A_ok": true,
+    "B_ok": true,
+    "dV_A": -0.02356491982936859,
+    "dV_B": 0.02838611602783203,
+    "tv_actor_A": 0.020635304351683363
+   },
+   {
+    "base": "neutral L15",
+    "change": "unspent gold +4",
+    "A_changed": {
+     "own_champ_gold_whole": 0.3333333432674408
+    },
+    "B_changed": {
+     "enemy_champ_gold_whole": 0.3333333432674408
+    },
+    "A_ok": true,
+    "B_ok": true,
+    "dV_A": -0.06859332323074341,
+    "dV_B": 0.08535705506801605,
+    "tv_actor_A": 0.0560740096612511
+   },
+   {
+    "base": "neutral L15",
+    "change": "level +1",
+    "A_changed": {
+     "own_champ_hp_max": 0.042909085750579834,
+     "own_champ_level": 0.05882352590560913,
+     "own_champ_attack_power": 0.011704504489898682
+    },
+    "B_changed": {
+     "enemy_champ_hp_max": 0.042909085750579834,
+     "enemy_champ_level": 0.05882352590560913,
+     "enemy_champ_attack_power": 0.011704504489898682
+    },
+    "A_ok": true,
+    "B_ok": true,
+    "dV_A": 0.0010869652032852173,
+    "dV_B": -0.0012940168380737305,
+    "tv_actor_A": 0.01020375069995255
+   },
+   {
+    "base": "neutral L15",
+    "change": "XP within level",
+    "A_changed": {
+     "own_champ_xp_progress": 0.5
+    },
+    "B_changed": {
+     "enemy_champ_xp_progress": 0.5
+    },
+    "A_ok": true,
+    "B_ok": true,
+    "dV_A": -0.051074326038360596,
+    "dV_B": 0.021725520491600037,
+    "tv_actor_A": 0.03694039327025232
+   },
+   {
+    "base": "neutral L15",
+    "change": "HP 60%",
+    "A_changed": {
+     "own_champ_hp_frac": -0.3998316526412964
+    },
+    "B_changed": {
+     "enemy_champ_hp_frac": -0.3998316526412964
+    },
+    "A_ok": true,
+    "B_ok": true,
+    "dV_A": -0.4517754353582859,
+    "dV_B": 0.5493783764541149,
+    "tv_actor_A": 0.3815856824943008
+   },
+   {
+    "base": "neutral L15",
+    "change": "HP 30%",
+    "A_changed": {
+     "own_champ_hp_frac": -0.7003366947174072
+    },
+    "B_changed": {
+     "enemy_champ_hp_frac": -0.7003366947174072
+    },
+    "A_ok": true,
+    "B_ok": true,
+    "dV_A": -1.079693753272295,
+    "dV_B": 1.3044272921979427,
+    "tv_actor_A": 0.5214920538927033
+   },
+   {
+    "base": "neutral L15",
+    "change": "enemy HP 60%",
+    "A_changed": {
+     "enemy_champ_hp_frac": -0.3998316526412964
+    },
+    "B_changed": {
+     "own_champ_hp_frac": -0.3998316526412964
+    },
+    "A_ok": true,
+    "B_ok": true,
+    "dV_A": 0.5493783764541149,
+    "dV_B": -0.4517754353582859,
+    "tv_actor_A": 0.430761872503013
+   },
+   {
+    "base": "neutral L15",
+    "change": "away 2 turns",
+    "A_changed": {
+     "own_champ_x-2": 1.0,
+     "own_champ_x+0": -1.0,
+     "own_champ_absent": 0.4000000059604645
+    },
+    "B_changed": {
+     "enemy_champ_x+0": -1.0,
+     "enemy_champ_x+2": 1.0,
+     "enemy_champ_absent": 0.4000000059604645
+    },
+    "A_ok": true,
+    "B_ok": true,
+    "dV_A": 0.4223667085170746,
+    "dV_B": -0.5925986357033253,
+    "tv_actor_A": 1.0
+   },
+   {
+    "base": "neutral L15",
+    "change": "one cell forward",
+    "A_changed": {
+     "own_champ_x+0": -1.0,
+     "own_champ_x+1": 1.0
+    },
+    "B_changed": {
+     "enemy_champ_x-1": 1.0,
+     "enemy_champ_x+0": -1.0
+    },
+    "A_ok": true,
+    "B_ok": true,
+    "dV_A": -0.30402401462197304,
+    "dV_B": 0.10930173099040985,
+    "tv_actor_A": 0.4114341501976443
+   },
+   {
+    "base": "neutral L15",
+    "change": "own front HP halved",
+    "A_changed": {
+     "own_front_hp": -0.1666666716337204
+    },
+    "B_changed": {
+     "enemy_front_hp": -0.1666666716337204
+    },
+    "A_ok": true,
+    "B_ok": true,
+    "dV_A": 0.41251882910728455,
+    "dV_B": -0.30761832371354103,
+    "tv_actor_A": 0.16404344776155733
+   },
+   {
+    "base": "neutral L15",
+    "change": "vision 3 turns",
+    "A_changed": {
+     "own_vision": 0.5
+    },
+    "B_changed": {
+     "enemy_vision": 0.5
+    },
+    "A_ok": true,
+    "B_ok": true,
+    "dV_A": 0.04111453890800476,
+    "dV_B": 0.04516512155532837,
+    "tv_actor_A": 0.082120326593216
+   },
+   {
+    "base": "neutral L15",
+    "change": "first plate dealt",
+    "A_changed": {
+     "own_tower_dmg": 0.2666666805744171,
+     "own_plates_broken": 0.3333333432674408,
+     "own_plates_left": -0.3333333134651184
+    },
+    "B_changed": {
+     "enemy_tower_dmg": 0.2666666805744171,
+     "enemy_plates_broken": 0.3333333432674408,
+     "enemy_plates_left": -0.3333333134651184
+    },
+    "A_ok": true,
+    "B_ok": true,
+    "dV_A": -0.21186614409089088,
+    "dV_B": 0.22286757826805115,
+    "tv_actor_A": 0.03608502422081833
+   },
+   {
+    "base": "neutral L15",
+    "change": "phase + 1",
+    "A_changed": {
+     "phase_2": -1.0,
+     "phase_3": 1.0
+    },
+    "B_changed": {
+     "phase_2": -1.0,
+     "phase_3": 1.0
+    },
+    "A_ok": true,
+    "B_ok": true,
+    "dV_A": 0.02624720335006714,
+    "dV_B": 0.02624720335006714,
+    "tv_actor_A": 0.3098230394491294
+   }
+  ],
+  "ext/C1:5": [
+   {
+    "base": "freeze L5",
+    "change": "invested +1",
+    "A_changed": {
+     "own_champ_invested_whole": 0.01404741033911705,
+     "own_champ_attack_power": 0.004942834377288818
+    },
+    "B_changed": {
+     "enemy_champ_invested_whole": 0.01404741033911705,
+     "enemy_champ_attack_power": 0.004942834377288818
+    },
+    "A_ok": true,
+    "B_ok": true,
+    "dV_A": 0.004151239991188049,
+    "dV_B": -0.0016176700592041016,
+    "tv_actor_A": 0.0022499047075760547
+   },
+   {
+    "base": "freeze L5",
+    "change": "invested +3",
+    "A_changed": {
+     "own_champ_invested_whole": 0.04093816876411438,
+     "own_champ_attack_power": 0.014294981956481934
+    },
+    "B_changed": {
+     "enemy_champ_invested_whole": 0.04093816876411438,
+     "enemy_champ_attack_power": 0.014294981956481934
+    },
+    "A_ok": true,
+    "B_ok": true,
+    "dV_A": 0.012093409895896912,
+    "dV_B": -0.004755258560180664,
+    "tv_actor_A": 0.006507521203918848
+   },
+   {
+    "base": "freeze L5",
+    "change": "invested +8",
+    "A_changed": {
+     "own_champ_invested_whole": 0.10189054161310196,
+     "own_champ_attack_power": 0.03498759865760803
+    },
+    "B_changed": {
+     "enemy_champ_invested_whole": 0.10189054161310196,
+     "enemy_champ_attack_power": 0.03498759865760803
+    },
+    "A_ok": true,
+    "B_ok": true,
+    "dV_A": 0.030068829655647278,
+    "dV_B": -0.0120505690574646,
+    "tv_actor_A": 0.01592343364802906
+   },
+   {
+    "base": "freeze L5",
+    "change": "invested +32",
+    "A_changed": {
+     "own_champ_invested_whole": 0.30875924229621887,
+     "own_champ_attack_power": 0.10082119703292847
+    },
+    "B_changed": {
+     "enemy_champ_invested_whole": 0.30875924229621887,
+     "enemy_champ_attack_power": 0.10082119703292847
+    },
+    "A_ok": true,
+    "B_ok": true,
+    "dV_A": 0.09066708385944366,
+    "dV_B": -0.03832563757896423,
+    "tv_actor_A": 0.04558409104072439
+   },
+   {
+    "base": "freeze L5",
+    "change": "invested +0.5",
+    "A_changed": {
+     "own_champ_invested_frac": 0.4999999701976776,
+     "own_champ_attack_power": 0.002494722604751587
+    },
+    "B_changed": {
+     "enemy_champ_invested_frac": 0.4999999701976776,
+     "enemy_champ_attack_power": 0.002494722604751587
+    },
+    "A_ok": true,
+    "B_ok": true,
+    "dV_A": -0.007770135998725891,
+    "dV_B": 0.059233009815216064,
+    "tv_actor_A": 0.028995770316488992
+   },
+   {
+    "base": "freeze L5",
+    "change": "unspent gold +1",
+    "A_changed": {
+     "own_champ_gold_whole": 0.1111111119389534
+    },
+    "B_changed": {
+     "enemy_champ_gold_whole": 0.1111111119389534
+    },
+    "A_ok": true,
+    "B_ok": true,
+    "dV_A": -0.028818324208259583,
+    "dV_B": 0.016929805278778076,
+    "tv_actor_A": 0.016270183776006197
+   },
+   {
+    "base": "freeze L5",
+    "change": "unspent gold +4",
+    "A_changed": {
+     "own_champ_gold_whole": 0.3333333432674408
+    },
+    "B_changed": {
+     "enemy_champ_gold_whole": 0.3333333432674408
+    },
+    "A_ok": true,
+    "B_ok": true,
+    "dV_A": -0.09037651121616364,
+    "dV_B": 0.0562073290348053,
+    "tv_actor_A": 0.05046752413251007
+   },
+   {
+    "base": "freeze L5",
+    "change": "level +1",
+    "A_changed": {
+     "own_champ_hp_max": 0.02690911293029785,
+     "own_champ_level": 0.058823540806770325,
+     "own_champ_attack_power": 0.011374324560165405
+    },
+    "B_changed": {
+     "enemy_champ_hp_max": 0.02690911293029785,
+     "enemy_champ_level": 0.058823540806770325,
+     "enemy_champ_attack_power": 0.011374324560165405
+    },
+    "A_ok": true,
+    "B_ok": true,
+    "dV_A": 0.005925297737121582,
+    "dV_B": 0.013823062181472778,
+    "tv_actor_A": 0.017921801685518865
+   },
+   {
+    "base": "freeze L5",
+    "change": "XP within level",
+    "A_changed": {
+     "own_champ_xp_progress": 0.5
+    },
+    "B_changed": {
+     "enemy_champ_xp_progress": 0.5
+    },
+    "A_ok": true,
+    "B_ok": true,
+    "dV_A": -0.019530653953552246,
+    "dV_B": -0.0714130699634552,
+    "tv_actor_A": 0.03622962022405213
+   },
+   {
+    "base": "freeze L5",
+    "change": "HP 60%",
+    "A_changed": {
+     "own_champ_hp_frac": -0.40054869651794434
+    },
+    "B_changed": {
+     "enemy_champ_hp_frac": -0.40054869651794434
+    },
+    "A_ok": true,
+    "B_ok": true,
+    "dV_A": -0.18815457820892334,
+    "dV_B": 0.4326288402080536,
+    "tv_actor_A": 0.311005408058942
+   },
+   {
+    "base": "freeze L5",
+    "change": "HP 30%",
+    "A_changed": {
+     "own_champ_hp_frac": -0.6995884776115417
+    },
+    "B_changed": {
+     "enemy_champ_hp_frac": -0.6995884776115417
+    },
+    "A_ok": true,
+    "B_ok": true,
+    "dV_A": -0.4372057318687439,
+    "dV_B": 0.7849878817796707,
+    "tv_actor_A": 0.6264116121352216
+   },
+   {
+    "base": "freeze L5",
+    "change": "enemy HP 60%",
+    "A_changed": {
+     "enemy_champ_hp_frac": -0.40054869651794434
+    },
+    "B_changed": {
+     "own_champ_hp_frac": -0.40054869651794434
+    },
+    "A_ok": true,
+    "B_ok": true,
+    "dV_A": 0.44259414076805115,
+    "dV_B": -0.18828541040420532,
+    "tv_actor_A": 0.24327873966713542
+   },
+   {
+    "base": "freeze L5",
+    "change": "away 2 turns",
+    "A_changed": {
+     "own_champ_absent": 0.4000000059604645
+    },
+    "B_changed": {
+     "enemy_champ_absent": 0.4000000059604645
+    },
+    "A_ok": true,
+    "B_ok": true,
+    "dV_A": -0.4894714802503586,
+    "dV_B": 0.5466002225875854,
+    "tv_actor_A": 1.0
+   },
+   {
+    "base": "freeze L5",
+    "change": "one cell forward",
+    "A_changed": {
+     "own_champ_x-2": -1.0,
+     "own_champ_x-1": 1.0
+    },
+    "B_changed": {
+     "enemy_champ_x+1": 1.0,
+     "enemy_champ_x+2": -1.0
+    },
+    "A_ok": true,
+    "B_ok": true,
+    "dV_A": -0.05909852683544159,
+    "dV_B": 0.12063980102539062,
+    "tv_actor_A": 0.19478137132094764
+   },
+   {
+    "base": "freeze L5",
+    "change": "own front HP halved",
+    "A_changed": {
+     "own_front_hp": -0.1666666716337204
+    },
+    "B_changed": {
+     "enemy_front_hp": -0.1666666716337204
+    },
+    "A_ok": true,
+    "B_ok": true,
+    "dV_A": 0.2598568797111511,
+    "dV_B": -0.3116177022457123,
+    "tv_actor_A": 0.1197293599223742
+   },
+   {
+    "base": "freeze L5",
+    "change": "vision 3 turns",
+    "A_changed": {
+     "own_vision": 0.5
+    },
+    "B_changed": {
+     "enemy_vision": 0.5
+    },
+    "A_ok": true,
+    "B_ok": true,
+    "dV_A": 0.05235210061073303,
+    "dV_B": -0.03469035029411316,
+    "tv_actor_A": 0.04334938736667528
+   },
+   {
+    "base": "freeze L5",
+    "change": "first plate dealt",
+    "A_changed": {
+     "own_tower_dmg": 0.2666666805744171,
+     "own_plates_broken": 0.3333333432674408,
+     "own_plates_left": -0.3333333134651184
+    },
+    "B_changed": {
+     "enemy_tower_dmg": 0.2666666805744171,
+     "enemy_plates_broken": 0.3333333432674408,
+     "enemy_plates_left": -0.3333333134651184
+    },
+    "A_ok": true,
+    "B_ok": true,
+    "dV_A": -0.10900706052780151,
+    "dV_B": 0.36712124943733215,
+    "tv_actor_A": 0.04833446327066202
+   },
+   {
+    "base": "freeze L5",
+    "change": "phase + 1",
+    "A_changed": {
+     "phase_0": 1.0,
+     "phase_3": -1.0
+    },
+    "B_changed": {
+     "phase_0": 1.0,
+     "phase_3": -1.0
+    },
+    "A_ok": true,
+    "B_ok": true,
+    "dV_A": 0.11872023344039917,
+    "dV_B": 0.1597091555595398,
+    "tv_actor_A": 0.20826212593589666
+   },
+   {
+    "base": "neutral L8",
+    "change": "invested +1",
+    "A_changed": {
+     "own_champ_invested_whole": 0.01122806966304779,
+     "own_champ_attack_power": 0.003783881664276123
+    },
+    "B_changed": {
+     "enemy_champ_invested_whole": 0.01122806966304779,
+     "enemy_champ_attack_power": 0.003783881664276123
+    },
+    "A_ok": true,
+    "B_ok": true,
+    "dV_A": 0.005260035395622253,
+    "dV_B": -0.0026730261743068695,
+    "tv_actor_A": 0.004444723430099369
+   },
+   {
+    "base": "neutral L8",
+    "change": "invested +3",
+    "A_changed": {
+     "own_champ_invested_whole": 0.03282052278518677,
+     "own_champ_attack_power": 0.010990679264068604
+    },
+    "B_changed": {
+     "enemy_champ_invested_whole": 0.03282052278518677,
+     "enemy_champ_attack_power": 0.010990679264068604
+    },
+    "A_ok": true,
+    "B_ok": true,
+    "dV_A": 0.015414264053106308,
+    "dV_B": -0.007860809564590454,
+    "tv_actor_A": 0.01297550378361365
+   },
+   {
+    "base": "neutral L8",
+    "change": "invested +8",
+    "A_changed": {
+     "own_champ_invested_whole": 0.0822490006685257,
+     "own_champ_attack_power": 0.027158647775650024
+    },
+    "B_changed": {
+     "enemy_champ_invested_whole": 0.0822490006685257,
+     "enemy_champ_attack_power": 0.027158647775650024
+    },
+    "A_ok": true,
+    "B_ok": true,
+    "dV_A": 0.03884183242917061,
+    "dV_B": -0.019961893558502197,
+    "tv_actor_A": 0.03241577536316616
+   },
+   {
+    "base": "neutral L8",
+    "change": "invested +32",
+    "A_changed": {
+     "own_champ_invested_whole": 0.2552024722099304,
+     "own_champ_attack_power": 0.08065721392631531
+    },
+    "B_changed": {
+     "enemy_champ_invested_whole": 0.2552024722099304,
+     "enemy_champ_attack_power": 0.08065721392631531
+    },
+    "A_ok": true,
+    "B_ok": true,
+    "dV_A": 0.12246508151292801,
+    "dV_B": -0.06443105638027191,
+    "tv_actor_A": 0.09943271387917883
+   },
+   {
+    "base": "neutral L8",
+    "change": "invested +0.5",
+    "A_changed": {
+     "own_champ_invested_whole": 0.01122806966304779,
+     "own_champ_invested_frac": -0.5,
+     "own_champ_attack_power": 0.0019076168537139893
+    },
+    "B_changed": {
+     "enemy_champ_invested_whole": 0.01122806966304779,
+     "enemy_champ_invested_frac": -0.5,
+     "enemy_champ_attack_power": 0.0019076168537139893
+    },
+    "A_ok": true,
+    "B_ok": true,
+    "dV_A": 0.09841807186603546,
+    "dV_B": -0.02580985426902771,
+    "tv_actor_A": 0.040018045596992735
+   },
+   {
+    "base": "neutral L8",
+    "change": "unspent gold +1",
+    "A_changed": {
+     "own_champ_gold_whole": 0.1111111119389534
+    },
+    "B_changed": {
+     "enemy_champ_gold_whole": 0.1111111119389534
+    },
+    "A_ok": true,
+    "B_ok": true,
+    "dV_A": -0.03750313073396683,
+    "dV_B": 0.00891163945198059,
+    "tv_actor_A": 0.01238028497817388
+   },
+   {
+    "base": "neutral L8",
+    "change": "unspent gold +4",
+    "A_changed": {
+     "own_champ_gold_whole": 0.3333333432674408
+    },
+    "B_changed": {
+     "enemy_champ_gold_whole": 0.3333333432674408
+    },
+    "A_ok": true,
+    "B_ok": true,
+    "dV_A": -0.11830504983663559,
+    "dV_B": 0.027467720210552216,
+    "tv_actor_A": 0.04269566822604062
+   },
+   {
+    "base": "neutral L8",
+    "change": "level +1",
+    "A_changed": {
+     "own_champ_hp_max": 0.030545473098754883,
+     "own_champ_level": 0.05882352590560913,
+     "own_champ_attack_power": 0.01204073429107666
+    },
+    "B_changed": {
+     "enemy_champ_hp_max": 0.030545473098754883,
+     "enemy_champ_level": 0.05882352590560913,
+     "enemy_champ_attack_power": 0.01204073429107666
+    },
+    "A_ok": true,
+    "B_ok": true,
+    "dV_A": -0.014070700854063034,
+    "dV_B": 0.014341678470373154,
+    "tv_actor_A": 0.010288776094347083
+   },
+   {
+    "base": "neutral L8",
+    "change": "XP within level",
+    "A_changed": {
+     "own_champ_xp_progress": 0.48275861144065857
+    },
+    "B_changed": {
+     "enemy_champ_xp_progress": 0.48275861144065857
+    },
+    "A_ok": true,
+    "B_ok": true,
+    "dV_A": 0.026738066226243973,
+    "dV_B": -0.04631061106920242,
+    "tv_actor_A": 0.04530323210787384
+   },
+   {
+    "base": "neutral L8",
+    "change": "HP 60%",
+    "A_changed": {
+     "own_champ_hp_frac": -0.400473952293396
+    },
+    "B_changed": {
+     "enemy_champ_hp_frac": -0.400473952293396
+    },
+    "A_ok": true,
+    "B_ok": true,
+    "dV_A": -0.3341366723179817,
+    "dV_B": 0.31188055872917175,
+    "tv_actor_A": 0.35932717852676216
+   },
+   {
+    "base": "neutral L8",
+    "change": "HP 30%",
+    "A_changed": {
+     "own_champ_hp_frac": -0.700236976146698
+    },
+    "B_changed": {
+     "enemy_champ_hp_frac": -0.700236976146698
+    },
+    "A_ok": true,
+    "B_ok": true,
+    "dV_A": -0.8744675293564796,
+    "dV_B": 0.823083184659481,
+    "tv_actor_A": 0.5262736331371174
+   },
+   {
+    "base": "neutral L8",
+    "change": "enemy HP 60%",
+    "A_changed": {
+     "enemy_champ_hp_frac": -0.400473952293396
+    },
+    "B_changed": {
+     "own_champ_hp_frac": -0.400473952293396
+    },
+    "A_ok": true,
+    "B_ok": true,
+    "dV_A": 0.31188055872917175,
+    "dV_B": -0.3341366723179817,
+    "tv_actor_A": 0.41628596324533523
+   },
+   {
+    "base": "neutral L8",
+    "change": "away 2 turns",
+    "A_changed": {
+     "own_champ_x-2": 1.0,
+     "own_champ_x+0": -1.0,
+     "own_champ_absent": 0.4000000059604645
+    },
+    "B_changed": {
+     "enemy_champ_x+0": -1.0,
+     "enemy_champ_x+2": 1.0,
+     "enemy_champ_absent": 0.4000000059604645
+    },
+    "A_ok": true,
+    "B_ok": true,
+    "dV_A": -0.005157794803380966,
+    "dV_B": -0.4924294725060463,
+    "tv_actor_A": 1.0
+   },
+   {
+    "base": "neutral L8",
+    "change": "one cell forward",
+    "A_changed": {
+     "own_champ_x+0": -1.0,
+     "own_champ_x+1": 1.0
+    },
+    "B_changed": {
+     "enemy_champ_x-1": 1.0,
+     "enemy_champ_x+0": -1.0
+    },
+    "A_ok": true,
+    "B_ok": true,
+    "dV_A": -0.311867892742157,
+    "dV_B": 0.006209611892700195,
+    "tv_actor_A": 0.4134962366098456
+   },
+   {
+    "base": "neutral L8",
+    "change": "own front HP halved",
+    "A_changed": {
+     "own_front_hp": -0.1666666716337204
+    },
+    "B_changed": {
+     "enemy_front_hp": -0.1666666716337204
+    },
+    "A_ok": true,
+    "B_ok": true,
+    "dV_A": 0.4229745641350746,
+    "dV_B": -0.352681465446949,
+    "tv_actor_A": 0.11753665645280854
+   },
+   {
+    "base": "neutral L8",
+    "change": "vision 3 turns",
+    "A_changed": {
+     "own_vision": 0.5
+    },
+    "B_changed": {
+     "enemy_vision": 0.5
+    },
+    "A_ok": true,
+    "B_ok": true,
+    "dV_A": 0.05727466195821762,
+    "dV_B": -0.11301219463348389,
+    "tv_actor_A": 0.09181599192906442
+   },
+   {
+    "base": "neutral L8",
+    "change": "first plate dealt",
+    "A_changed": {
+     "own_tower_dmg": 0.2666666805744171,
+     "own_plates_broken": 0.3333333432674408,
+     "own_plates_left": -0.3333333134651184
+    },
+    "B_changed": {
+     "enemy_tower_dmg": 0.2666666805744171,
+     "enemy_plates_broken": 0.3333333432674408,
+     "enemy_plates_left": -0.3333333134651184
+    },
+    "A_ok": true,
+    "B_ok": true,
+    "dV_A": -0.1665770635008812,
+    "dV_B": 0.2929558977484703,
+    "tv_actor_A": 0.07390919059914298
+   },
+   {
+    "base": "neutral L8",
+    "change": "phase + 1",
+    "A_changed": {
+     "phase_2": -1.0,
+     "phase_3": 1.0
+    },
+    "B_changed": {
+     "phase_2": -1.0,
+     "phase_3": 1.0
+    },
+    "A_ok": true,
+    "B_ok": true,
+    "dV_A": -0.2350601926445961,
+    "dV_B": -0.2350601926445961,
+    "tv_actor_A": 0.08015034110433644
+   },
+   {
+    "base": "neutral L15",
+    "change": "invested +1",
+    "A_changed": {
+     "own_champ_invested_whole": 0.005860805511474609,
+     "own_champ_attack_power": 0.0017145872116088867
+    },
+    "B_changed": {
+     "enemy_champ_invested_whole": 0.005860805511474609,
+     "enemy_champ_attack_power": 0.0017145872116088867
+    },
+    "A_ok": true,
+    "B_ok": true,
+    "dV_A": 0.002681910991668701,
+    "dV_B": -0.002004764974117279,
+    "tv_actor_A": 0.00225652739589427
+   },
+   {
+    "base": "neutral L15",
+    "change": "invested +3",
+    "A_changed": {
+     "own_champ_invested_whole": 0.017253756523132324,
+     "own_champ_attack_power": 0.0050296783447265625
+    },
+    "B_changed": {
+     "enemy_champ_invested_whole": 0.017253756523132324,
+     "enemy_champ_attack_power": 0.0050296783447265625
+    },
+    "A_ok": true,
+    "B_ok": true,
+    "dV_A": 0.007888637483119965,
+    "dV_B": -0.0059141963720321655,
+    "tv_actor_A": 0.006612307868997244
+   },
+   {
+    "base": "neutral L15",
+    "change": "invested +8",
+    "A_changed": {
+     "own_champ_invested_whole": 0.04395604133605957,
+     "own_champ_attack_power": 0.012710392475128174
+    },
+    "B_changed": {
+     "enemy_champ_invested_whole": 0.04395604133605957,
+     "enemy_champ_attack_power": 0.012710392475128174
+    },
+    "A_ok": true,
+    "B_ok": true,
+    "dV_A": 0.020051635801792145,
+    "dV_B": -0.015134848654270172,
+    "tv_actor_A": 0.016659845309729592
+   },
+   {
+    "base": "neutral L15",
+    "change": "invested +32",
+    "A_changed": {
+     "own_champ_invested_whole": 0.14479640126228333,
+     "own_champ_attack_power": 0.04073071479797363
+    },
+    "B_changed": {
+     "enemy_champ_invested_whole": 0.14479640126228333,
+     "enemy_champ_attack_power": 0.04073071479797363
+    },
+    "A_ok": true,
+    "B_ok": true,
+    "dV_A": 0.06540320813655853,
+    "dV_B": -0.05059538409113884,
+    "tv_actor_A": 0.05247339486975568
+   },
+   {
+    "base": "neutral L15",
+    "change": "invested +0.5",
+    "A_changed": {
+     "own_champ_invested_frac": 0.5,
+     "own_champ_attack_power": 0.0008621811866760254
+    },
+    "B_changed": {
+     "enemy_champ_invested_frac": 0.5,
+     "enemy_champ_attack_power": 0.0008621811866760254
+    },
+    "A_ok": true,
+    "B_ok": true,
+    "dV_A": -0.08267557248473167,
+    "dV_B": 0.02483867108821869,
+    "tv_actor_A": 0.04350758188560307
+   },
+   {
+    "base": "neutral L15",
+    "change": "unspent gold +1",
+    "A_changed": {
+     "own_champ_gold_whole": 0.1111111119389534
+    },
+    "B_changed": {
+     "enemy_champ_gold_whole": 0.1111111119389534
+    },
+    "A_ok": true,
+    "B_ok": true,
+    "dV_A": -0.03260854631662369,
+    "dV_B": 0.012844093143939972,
+    "tv_actor_A": 0.008456264361540903
+   },
+   {
+    "base": "neutral L15",
+    "change": "unspent gold +4",
+    "A_changed": {
+     "own_champ_gold_whole": 0.3333333432674408
+    },
+    "B_changed": {
+     "enemy_champ_gold_whole": 0.3333333432674408
+    },
+    "A_ok": true,
+    "B_ok": true,
+    "dV_A": -0.10209508240222931,
+    "dV_B": 0.03586031496524811,
+    "tv_actor_A": 0.030311678408818765
+   },
+   {
+    "base": "neutral L15",
+    "change": "level +1",
+    "A_changed": {
+     "own_champ_hp_max": 0.042909085750579834,
+     "own_champ_level": 0.05882352590560913,
+     "own_champ_attack_power": 0.011704504489898682
+    },
+    "B_changed": {
+     "enemy_champ_hp_max": 0.042909085750579834,
+     "enemy_champ_level": 0.05882352590560913,
+     "enemy_champ_attack_power": 0.011704504489898682
+    },
+    "A_ok": true,
+    "B_ok": true,
+    "dV_A": -0.021149776875972748,
+    "dV_B": 0.015504080802202225,
+    "tv_actor_A": 0.006080379118326017
+   },
+   {
+    "base": "neutral L15",
+    "change": "XP within level",
+    "A_changed": {
+     "own_champ_xp_progress": 0.5
+    },
+    "B_changed": {
+     "enemy_champ_xp_progress": 0.5
+    },
+    "A_ok": true,
+    "B_ok": true,
+    "dV_A": 0.050003696233034134,
+    "dV_B": -0.0472487136721611,
+    "tv_actor_A": 0.02004072063458279
+   },
+   {
+    "base": "neutral L15",
+    "change": "HP 60%",
+    "A_changed": {
+     "own_champ_hp_frac": -0.3998316526412964
+    },
+    "B_changed": {
+     "enemy_champ_hp_frac": -0.3998316526412964
+    },
+    "A_ok": true,
+    "B_ok": true,
+    "dV_A": -0.406118668615818,
+    "dV_B": 0.3131900355219841,
+    "tv_actor_A": 0.47208965048921464
+   },
+   {
+    "base": "neutral L15",
+    "change": "HP 30%",
+    "A_changed": {
+     "own_champ_hp_frac": -0.7003366947174072
+    },
+    "B_changed": {
+     "enemy_champ_hp_frac": -0.7003366947174072
+    },
+    "A_ok": true,
+    "B_ok": true,
+    "dV_A": -0.9669065102934837,
+    "dV_B": 0.925799123942852,
+    "tv_actor_A": 0.6322750306343864
+   },
+   {
+    "base": "neutral L15",
+    "change": "enemy HP 60%",
+    "A_changed": {
+     "enemy_champ_hp_frac": -0.3998316526412964
+    },
+    "B_changed": {
+     "own_champ_hp_frac": -0.3998316526412964
+    },
+    "A_ok": true,
+    "B_ok": true,
+    "dV_A": 0.3131900355219841,
+    "dV_B": -0.406118668615818,
+    "tv_actor_A": 0.28197964022531635
+   },
+   {
+    "base": "neutral L15",
+    "change": "away 2 turns",
+    "A_changed": {
+     "own_champ_x-2": 1.0,
+     "own_champ_x+0": -1.0,
+     "own_champ_absent": 0.4000000059604645
+    },
+    "B_changed": {
+     "enemy_champ_x+0": -1.0,
+     "enemy_champ_x+2": 1.0,
+     "enemy_champ_absent": 0.4000000059604645
+    },
+    "A_ok": true,
+    "B_ok": true,
+    "dV_A": -0.10600041598081589,
+    "dV_B": -0.49424033612012863,
+    "tv_actor_A": 1.0
+   },
+   {
+    "base": "neutral L15",
+    "change": "one cell forward",
+    "A_changed": {
+     "own_champ_x+0": -1.0,
+     "own_champ_x+1": 1.0
+    },
+    "B_changed": {
+     "enemy_champ_x-1": 1.0,
+     "enemy_champ_x+0": -1.0
+    },
+    "A_ok": true,
+    "B_ok": true,
+    "dV_A": -0.4170326516032219,
+    "dV_B": 0.015511475503444672,
+    "tv_actor_A": 0.5537711179110033
+   },
+   {
+    "base": "neutral L15",
+    "change": "own front HP halved",
+    "A_changed": {
+     "own_front_hp": -0.1666666716337204
+    },
+    "B_changed": {
+     "enemy_front_hp": -0.1666666716337204
+    },
+    "A_ok": true,
+    "B_ok": true,
+    "dV_A": 0.4317714646458626,
+    "dV_B": -0.38355112075805664,
+    "tv_actor_A": 0.14856693447494917
+   },
+   {
+    "base": "neutral L15",
+    "change": "vision 3 turns",
+    "A_changed": {
+     "own_vision": 0.5
+    },
+    "B_changed": {
+     "enemy_vision": 0.5
+    },
+    "A_ok": true,
+    "B_ok": true,
+    "dV_A": -0.018284469842910767,
+    "dV_B": -0.1530262641608715,
+    "tv_actor_A": 0.05135252334807769
+   },
+   {
+    "base": "neutral L15",
+    "change": "first plate dealt",
+    "A_changed": {
+     "own_tower_dmg": 0.2666666805744171,
+     "own_plates_broken": 0.3333333432674408,
+     "own_plates_left": -0.3333333134651184
+    },
+    "B_changed": {
+     "enemy_tower_dmg": 0.2666666805744171,
+     "enemy_plates_broken": 0.3333333432674408,
+     "enemy_plates_left": -0.3333333134651184
+    },
+    "A_ok": true,
+    "B_ok": true,
+    "dV_A": -0.22381071001291275,
+    "dV_B": 0.23637454956769943,
+    "tv_actor_A": 0.09771307300735792
+   },
+   {
+    "base": "neutral L15",
+    "change": "phase + 1",
+    "A_changed": {
+     "phase_2": -1.0,
+     "phase_3": 1.0
+    },
+    "B_changed": {
+     "phase_2": -1.0,
+     "phase_3": 1.0
+    },
+    "A_ok": true,
+    "B_ok": true,
+    "dV_A": -0.20623750984668732,
+    "dV_B": -0.20623750984668732,
+    "tv_actor_A": 0.14128556457421917
+   }
+  ]
+ },
+ "reachable": {
+  "states": 5921,
+  "distinct_states": 5915,
+  "distinct_observations": 5915,
+  "mirror_mismatches": 0,
+  "decode_mismatches": 0,
+  "observation_collisions": 0,
+  "beyond_exact_decode": 1,
+  "beyond_exact_decode_invested": [
+   32811.86
+  ],
+  "plates_pending_nonzero": 0,
+  "entries_out_of_range": 0,
+  "invested_entry_max": 0.998053252696991,
+  "gold_entry_max": 0.7894737124443054,
+  "V_sum_mean": 0.12366541612089899,
+  "V_sum_absmean": 0.2952840169641622,
+  "V_sum_q": [
+   -0.4342086613178253,
+   0.10181605815887451,
+   0.7263296470046043
+  ],
+  "V_A_sd": 0.9831945348075855
+ },
+ "ranges": {
+  "natural_states": 2880,
+  "entries": {
+   "own_champ_level": {
+    "q05": 0.1764705926179886,
+    "q50": 1.0,
+    "q95": 1.0,
+    "sd": 0.27487990260124207,
+    "typical_turn_change": 0.05882352590560913
+   },
+   "own_champ_hp_frac": {
+    "q05": 0.07559999823570251,
+    "q50": 0.8305454254150391,
+    "q95": 1.0,
+    "sd": 0.295779287815094,
+    "typical_turn_change": 0.30181819200515747
+   },
+   "own_champ_hp_max": {
+    "q05": 0.5054545402526855,
+    "q50": 1.0,
+    "q95": 1.0,
+    "sd": 0.1712775081396103,
+    "typical_turn_change": 0.04145455360412598
+   },
+   "own_champ_invested_whole": {
+    "q05": 0.0,
+    "q50": 0.4576271176338196,
+    "q95": 0.6301641464233398,
+    "sd": 0.19445829093456268,
+    "typical_turn_change": 0.04093816876411438
+   },
+   "own_champ_gold_whole": {
+    "q05": 0.0,
+    "q50": 0.3333333432674408,
+    "q95": 0.6190476417541504,
+    "sd": 0.18884575366973877,
+    "typical_turn_change": 0.222222238779068
+   },
+   "own_champ_attack_power": {
+    "q05": 0.3465431332588196,
+    "q50": 0.6440894603729248,
+    "q95": 0.6945036053657532,
+    "sd": 0.1127522736787796,
+    "typical_turn_change": 0.01217508316040039
+   }
+  },
+  "natural_log_duel_q": [
+   -0.16954624578356742,
+   -0.05904350336641073,
+   -0.005691638449206948,
+   0.04226074740290642,
+   0.15697754696011537
+  ],
+  "contrasts": {
+   "L3 edge": {
+    "own_champ_level": 0.05882353335618973,
+    "own_champ_hp_frac": 0.0,
+    "own_champ_hp_max": 0.02399998903274536,
+    "own_champ_invested_whole": 0.04477611929178238,
+    "own_champ_gold_whole": 0.0,
+    "own_champ_attack_power": 0.02675044536590576,
+    "log_duel (explicit)": 0.2391401082277298
+   },
+   "L3 x1.76": {
+    "own_champ_level": 0.0,
+    "own_champ_hp_frac": 0.0,
+    "own_champ_hp_max": 0.0,
+    "own_champ_invested_whole": 0.4128440320491791,
+    "own_champ_gold_whole": 0.0,
+    "own_champ_attack_power": 0.13367927074432373,
+    "log_duel (explicit)": 1.1306766271591187
+   },
+   "L5 edge": {
+    "own_champ_level": 0.058823540806770325,
+    "own_champ_hp_frac": 0.0,
+    "own_champ_hp_max": 0.02690911293029785,
+    "own_champ_invested_whole": 0.04093816876411438,
+    "own_champ_gold_whole": 0.0,
+    "own_champ_attack_power": 0.025842010974884033,
+    "log_duel (explicit)": 0.2201106995344162
+   },
+   "L5 x1.76": {
+    "own_champ_level": 0.0,
+    "own_champ_hp_frac": 0.0,
+    "own_champ_hp_max": 0.0,
+    "own_champ_invested_whole": 0.3680679202079773,
+    "own_champ_gold_whole": 0.0,
+    "own_champ_attack_power": 0.11866158246994019,
+    "log_duel (explicit)": 1.13067626953125
+   },
+   "L8 edge": {
+    "own_champ_level": 0.05882352590560913,
+    "own_champ_hp_frac": 0.0,
+    "own_champ_hp_max": 0.030545473098754883,
+    "own_champ_invested_whole": 0.03282052278518677,
+    "own_champ_gold_whole": 0.0,
+    "own_champ_attack_power": 0.023087799549102783,
+    "log_duel (explicit)": 0.18678835034370422
+   },
+   "L8 x1.76": {
+    "own_champ_level": 0.0,
+    "own_champ_hp_frac": 0.0,
+    "own_champ_hp_max": 0.0,
+    "own_champ_invested_whole": 0.26617735624313354,
+    "own_champ_gold_whole": 0.0,
+    "own_champ_attack_power": 0.08329257369041443,
+    "log_duel (explicit)": 1.130676507949829
+   }
+  },
+  "explicit_log_duel_max_abs_error": 6.0766263629941086e-05
+ },
+ "compat": [
+  {
+   "spec": "ext/C1:0",
+   "inputs": 90,
+   "actions": 61,
+   "hidden": [
+    128,
+    128
+   ],
+   "game_config_matches_arm": true,
+   "reward_scale": 0.1,
+   "gamma": 0.99,
+   "vf_coef": 0.5,
+   "vf_clip": 0.5,
+   "gae_lambda": 0.95,
+   "ent_coef": 0.03,
+   "current_fraction": 1.0,
+   "C1_config_identical_obs_layout": true
+  },
+  {
+   "spec": "ext/C1:1",
+   "inputs": 90,
+   "actions": 61,
+   "hidden": [
+    128,
+    128
+   ],
+   "game_config_matches_arm": true,
+   "reward_scale": 0.1,
+   "gamma": 0.99,
+   "vf_coef": 0.5,
+   "vf_clip": 0.5,
+   "gae_lambda": 0.95,
+   "ent_coef": 0.03,
+   "current_fraction": 1.0,
+   "C1_config_identical_obs_layout": true
+  },
+  {
+   "spec": "ext/C1:2",
+   "inputs": 90,
+   "actions": 61,
+   "hidden": [
+    128,
+    128
+   ],
+   "game_config_matches_arm": true,
+   "reward_scale": 0.1,
+   "gamma": 0.99,
+   "vf_coef": 0.5,
+   "vf_clip": 0.5,
+   "gae_lambda": 0.95,
+   "ent_coef": 0.03,
+   "current_fraction": 1.0,
+   "C1_config_identical_obs_layout": true
+  },
+  {
+   "spec": "ext/C1:3",
+   "inputs": 90,
+   "actions": 61,
+   "hidden": [
+    128,
+    128
+   ],
+   "game_config_matches_arm": true,
+   "reward_scale": 0.1,
+   "gamma": 0.99,
+   "vf_coef": 0.5,
+   "vf_clip": 0.5,
+   "gae_lambda": 0.95,
+   "ent_coef": 0.03,
+   "current_fraction": 1.0,
+   "C1_config_identical_obs_layout": true
+  },
+  {
+   "spec": "ext/C1:4",
+   "inputs": 90,
+   "actions": 61,
+   "hidden": [
+    128,
+    128
+   ],
+   "game_config_matches_arm": true,
+   "reward_scale": 0.1,
+   "gamma": 0.99,
+   "vf_coef": 0.5,
+   "vf_clip": 0.5,
+   "gae_lambda": 0.95,
+   "ent_coef": 0.03,
+   "current_fraction": 1.0,
+   "C1_config_identical_obs_layout": true
+  },
+  {
+   "spec": "ext/C1:5",
+   "inputs": 90,
+   "actions": 61,
+   "hidden": [
+    128,
+    128
+   ],
+   "game_config_matches_arm": true,
+   "reward_scale": 0.1,
+   "gamma": 0.99,
+   "vf_coef": 0.5,
+   "vf_clip": 0.5,
+   "gae_lambda": 0.95,
+   "ent_coef": 0.03,
+   "current_fraction": 1.0,
+   "C1_config_identical_obs_layout": true
+  },
+  {
+   "spec": "ext/baseline:0",
+   "inputs": 90,
+   "actions": 61,
+   "hidden": [
+    128,
+    128
+   ],
+   "game_config_matches_arm": true,
+   "reward_scale": 0.1,
+   "gamma": 0.99,
+   "vf_coef": 0.5,
+   "vf_clip": 0.5,
+   "gae_lambda": 0.95,
+   "ent_coef": 0.03,
+   "current_fraction": 1.0,
+   "C1_config_identical_obs_layout": true
+  },
+  {
+   "spec": "ext/baseline:1",
+   "inputs": 90,
+   "actions": 61,
+   "hidden": [
+    128,
+    128
+   ],
+   "game_config_matches_arm": true,
+   "reward_scale": 0.1,
+   "gamma": 0.99,
+   "vf_coef": 0.5,
+   "vf_clip": 0.5,
+   "gae_lambda": 0.95,
+   "ent_coef": 0.03,
+   "current_fraction": 1.0,
+   "C1_config_identical_obs_layout": true
+  },
+  {
+   "spec": "ext/baseline:2",
+   "inputs": 90,
+   "actions": 61,
+   "hidden": [
+    128,
+    128
+   ],
+   "game_config_matches_arm": true,
+   "reward_scale": 0.1,
+   "gamma": 0.99,
+   "vf_coef": 0.5,
+   "vf_clip": 0.5,
+   "gae_lambda": 0.95,
+   "ent_coef": 0.03,
+   "current_fraction": 1.0,
+   "C1_config_identical_obs_layout": true
+  },
+  {
+   "spec": "ext/baseline:3",
+   "inputs": 90,
+   "actions": 61,
+   "hidden": [
+    128,
+    128
+   ],
+   "game_config_matches_arm": true,
+   "reward_scale": 0.1,
+   "gamma": 0.99,
+   "vf_coef": 0.5,
+   "vf_clip": 0.5,
+   "gae_lambda": 0.95,
+   "ent_coef": 0.03,
+   "current_fraction": 1.0,
+   "C1_config_identical_obs_layout": true
+  },
+  {
+   "spec": "ext/baseline:4",
+   "inputs": 90,
+   "actions": 61,
+   "hidden": [
+    128,
+    128
+   ],
+   "game_config_matches_arm": true,
+   "reward_scale": 0.1,
+   "gamma": 0.99,
+   "vf_coef": 0.5,
+   "vf_clip": 0.5,
+   "gae_lambda": 0.95,
+   "ent_coef": 0.03,
+   "current_fraction": 1.0,
+   "C1_config_identical_obs_layout": true
+  },
+  {
+   "spec": "ext/baseline:5",
+   "inputs": 90,
+   "actions": 61,
+   "hidden": [
+    128,
+    128
+   ],
+   "game_config_matches_arm": true,
+   "reward_scale": 0.1,
+   "gamma": 0.99,
+   "vf_coef": 0.5,
+   "vf_clip": 0.5,
+   "gae_lambda": 0.95,
+   "ent_coef": 0.03,
+   "current_fraction": 1.0,
+   "C1_config_identical_obs_layout": true
+  }
+ ],
+ "grad": {
+  "ext/C1:0": {
+   "minibatches": 32,
+   "policy_trunk_norm": 0.5708248019218445,
+   "value_trunk_norm": 0.004515794818871655,
+   "ratio_value_to_policy": 0.00823675681493962,
+   "cosine": 0.009763344925886486,
+   "value_head_norm": 0.03495523409219459,
+   "value_loss_scaled": 0.006694408497423865,
+   "value_loss_resources2": 0.6694408497423864
+  },
+  "ext/C1:1": {
+   "minibatches": 32,
+   "policy_trunk_norm": 0.6281888745725155,
+   "value_trunk_norm": 0.005451896708109416,
+   "ratio_value_to_policy": 0.008933648576238152,
+   "cosine": -0.020272040459531127,
+   "value_head_norm": 0.035386291157919914,
+   "value_loss_scaled": 0.006420937192160636,
+   "value_loss_resources2": 0.6420937192160635
+  },
+  "ext/C1:2": {
+   "minibatches": 32,
+   "policy_trunk_norm": 0.5950294965878129,
+   "value_trunk_norm": 0.0034848903087549843,
+   "ratio_value_to_policy": 0.00607094573332443,
+   "cosine": 0.011550380009794026,
+   "value_head_norm": 0.027246620215009898,
+   "value_loss_scaled": 0.0042220484392601065,
+   "value_loss_resources2": 0.4222048439260106
+  },
+  "ext/C1:3": {
+   "minibatches": 32,
+   "policy_trunk_norm": 0.5693130232393742,
+   "value_trunk_norm": 0.0038264364629867487,
+   "ratio_value_to_policy": 0.006855494034320157,
+   "cosine": 0.01886161031143274,
+   "value_head_norm": 0.03594085481017828,
+   "value_loss_scaled": 0.006154462127597071,
+   "value_loss_resources2": 0.615446212759707
+  },
+  "ext/C1:4": {
+   "minibatches": 32,
+   "policy_trunk_norm": 0.5915782563388348,
+   "value_trunk_norm": 0.004851366858929396,
+   "ratio_value_to_policy": 0.008483733958921737,
+   "cosine": 0.02001055765140336,
+   "value_head_norm": 0.03301602153806016,
+   "value_loss_scaled": 0.004701846417447086,
+   "value_loss_resources2": 0.47018464174470853
+  },
+  "ext/C1:5": {
+   "minibatches": 32,
+   "policy_trunk_norm": 0.5675330506637692,
+   "value_trunk_norm": 0.00400341230124468,
+   "ratio_value_to_policy": 0.007063245602338216,
+   "cosine": -0.0055350024631479755,
+   "value_head_norm": 0.033386989089194685,
+   "value_loss_scaled": 0.005497198639204726,
+   "value_loss_resources2": 0.5497198639204725
+  },
+  "ext/baseline:0": {
+   "minibatches": 32,
+   "policy_trunk_norm": 0.6340393526479602,
+   "value_trunk_norm": 0.0036898577454849146,
+   "ratio_value_to_policy": 0.006099112300861371,
+   "cosine": 0.008883316244464368,
+   "value_head_norm": 0.03174068289808929,
+   "value_loss_scaled": 0.005025660444516689,
+   "value_loss_resources2": 0.5025660444516687
+  },
+  "ext/baseline:1": {
+   "minibatches": 32,
+   "policy_trunk_norm": 0.6223943559452891,
+   "value_trunk_norm": 0.005684162337274756,
+   "ratio_value_to_policy": 0.009454210417390361,
+   "cosine": 0.014115273472270928,
+   "value_head_norm": 0.03695164032978937,
+   "value_loss_scaled": 0.006172451743623242,
+   "value_loss_resources2": 0.6172451743623241
+  },
+  "ext/baseline:2": {
+   "minibatches": 32,
+   "policy_trunk_norm": 0.6004019742831588,
+   "value_trunk_norm": 0.0045175847262726165,
+   "ratio_value_to_policy": 0.007973900413575893,
+   "cosine": 0.006896070519360364,
+   "value_head_norm": 0.03280419344082475,
+   "value_loss_scaled": 0.005191331416426692,
+   "value_loss_resources2": 0.5191331416426691
+  }
+ },
+ "elapsed_s": 20.635193899739534
+}

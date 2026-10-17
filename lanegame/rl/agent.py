@@ -10,7 +10,8 @@ Checkpoints (`save_checkpoint` / `load_checkpoint`) are torch files holding the 
 game configuration and free-form metadata (training configuration, step, seed, opponent mix, ...). Since format
 version 2 they also carry a SHA-256 digest of the weights (`digest`, also returned by `weights_digest`), which
 `load_checkpoint` verifies (a mismatch raises ValueError: the file was altered or truncated), and the library
-versions and git commit that wrote them (`provenance`). Version-1 files load unchanged.
+versions and git commit that wrote them (`provenance`). Version-1 files load unchanged. The network class is rebuilt
+from the stored spec (`network.build_network`): a `PolicyValueNet` unless the spec names a separate critic.
 """
 
 from __future__ import annotations
@@ -27,7 +28,7 @@ import torch
 
 from ..config import GameConfig
 from ..env.agents import sample
-from .network import PolicyValueNet
+from .network import PolicyValueNet, build_network
 
 CHECKPOINT_FORMAT = "lanegame.rl.checkpoint"
 CHECKPOINT_VERSION = 2
@@ -118,8 +119,7 @@ def load_checkpoint(path: str, verify: bool = True):
         raise ValueError(f"{path} is not a lanegame RL checkpoint")
     if verify and "digest" in d and weights_digest(d["state_dict"]) != d["digest"]:
         raise ValueError(f"{path}: the weights do not match the checkpoint's digest (altered or truncated file)")
-    spec = d["spec"]
-    net = PolicyValueNet(spec["obs_size"], spec["n_actions"], spec["hidden"])
+    net = build_network(d["spec"])
     net.load_state_dict(d["state_dict"])
     return net, GameConfig.from_dict(d["game_config"]), d["metadata"]
 

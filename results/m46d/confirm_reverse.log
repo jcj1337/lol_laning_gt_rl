@@ -1,0 +1,28 @@
+concurrent.futures.process._RemoteTraceback: 
+"""
+Traceback (most recent call last):
+  File "C:\Users\light\AppData\Local\Programs\Python\Python313\Lib\concurrent\futures\process.py", line 254, in _process_worker
+    r = call_item.fn(*call_item.args, **call_item.kwargs)
+  File "C:\Users\light\OneDrive\Desktop\projects\lol_gt_laning\lanegame\experiments\rl\m46d\matrix.py", line 75, in matrix_job
+    pa = P.build(job["a"][an], HZ.CRNNet(net, k0, sd, 0, H))
+                 ~~~~~~~~^^^^
+KeyError: 'guard_walk'
+"""
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\light\OneDrive\Desktop\projects\lol_gt_laning\results\m46d\run_confirm_reverse.py", line 15, in <module>
+    C.run_jobs(M.matrix_job, js, workers, "confirmation (reverse)")
+    ~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\light\OneDrive\Desktop\projects\lol_gt_laning\lanegame\experiments\rl\m45c\common.py", line 304, in run_jobs
+    return _rj(fn, jobs, workers, label, progress)
+  File "C:\Users\light\OneDrive\Desktop\projects\lol_gt_laning\lanegame\experiments\rl\m43b\common.py", line 241, in run_jobs
+    out[i] = fu.result()
+             ~~~~~~~~~^^
+  File "C:\Users\light\AppData\Local\Programs\Python\Python313\Lib\concurrent\futures\_base.py", line 449, in result
+    return self.__get_result()
+           ~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\light\AppData\Local\Programs\Python\Python313\Lib\concurrent\futures\_base.py", line 401, in __get_result
+    raise self._exception
+KeyError: 'guard_walk'

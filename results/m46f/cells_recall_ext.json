@@ -1,0 +1,4612 @@
+{
+ "jobs": [
+  {
+   "family": "recall",
+   "idx": 0,
+   "label": "strong L5 equal hpB0.5",
+   "meta": {
+    "group": "recallw L5 hpB0.5",
+    "cond": "equal",
+    "L": 5,
+    "hp": 0.5,
+    "role": "strong"
+   },
+   "tag": "s0_vs_shared",
+   "path": "results\\rl\\checkpoints\\m46f\\behaviour\\ext\\recall\\s0\\0_vs_shared.json.gz",
+   "horizon": 100,
+   "K": 32
+  },
+  {
+   "family": "recall",
+   "idx": 0,
+   "label": "strong L5 equal hpB0.5",
+   "meta": {
+    "group": "recallw L5 hpB0.5",
+    "cond": "equal",
+    "L": 5,
+    "hp": 0.5,
+    "role": "strong"
+   },
+   "tag": "s0_vs_separate",
+   "path": "results\\rl\\checkpoints\\m46f\\behaviour\\ext\\recall\\s0\\0_vs_separate.json.gz",
+   "horizon": 100,
+   "K": 32
+  },
+  {
+   "family": "recall",
+   "idx": 1,
+   "label": "weak L5 equal hpB0.5",
+   "meta": {
+    "group": "recallw L5 hpB0.5",
+    "cond": "equal",
+    "L": 5,
+    "hp": 0.5,
+    "role": "weak"
+   },
+   "tag": "s0_vs_shared",
+   "path": "results\\rl\\checkpoints\\m46f\\behaviour\\ext\\recall\\s0\\1_vs_shared.json.gz",
+   "horizon": 100,
+   "K": 32
+  },
+  {
+   "family": "recall",
+   "idx": 1,
+   "label": "weak L5 equal hpB0.5",
+   "meta": {
+    "group": "recallw L5 hpB0.5",
+    "cond": "equal",
+    "L": 5,
+    "hp": 0.5,
+    "role": "weak"
+   },
+   "tag": "s0_vs_separate",
+   "path": "results\\rl\\checkpoints\\m46f\\behaviour\\ext\\recall\\s0\\1_vs_separate.json.gz",
+   "horizon": 100,
+   "K": 32
+  },
+  {
+   "family": "recall",
+   "idx": 2,
+   "label": "strong L5 equal hpB0.35",
+   "meta": {
+    "group": "recallw L5 hpB0.35",
+    "cond": "equal",
+    "L": 5,
+    "hp": 0.35,
+    "role": "strong"
+   },
+   "tag": "s0_vs_shared",
+   "path": "results\\rl\\checkpoints\\m46f\\behaviour\\ext\\recall\\s0\\2_vs_shared.json.gz",
+   "horizon": 100,
+   "K": 32
+  },
+  {
+   "family": "recall",
+   "idx": 2,
+   "label": "strong L5 equal hpB0.35",
+   "meta": {
+    "group": "recallw L5 hpB0.35",
+    "cond": "equal",
+    "L": 5,
+    "hp": 0.35,
+    "role": "strong"
+   },
+   "tag": "s0_vs_separate",
+   "path": "results\\rl\\checkpoints\\m46f\\behaviour\\ext\\recall\\s0\\2_vs_separate.json.gz",
+   "horizon": 100,
+   "K": 32
+  },
+  {
+   "family": "recall",
+   "idx": 3,
+   "label": "weak L5 equal hpB0.35",
+   "meta": {
+    "group": "recallw L5 hpB0.35",
+    "cond": "equal",
+    "L": 5,
+    "hp": 0.35,
+    "role": "weak"
+   },
+   "tag": "s0_vs_shared",
+   "path": "results\\rl\\checkpoints\\m46f\\behaviour\\ext\\recall\\s0\\3_vs_shared.json.gz",
+   "horizon": 100,
+   "K": 32
+  },
+  {
+   "family": "recall",
+   "idx": 3,
+   "label": "weak L5 equal hpB0.35",
+   "meta": {
+    "group": "recallw L5 hpB0.35",
+    "cond": "equal",
+    "L": 5,
+    "hp": 0.35,
+    "role": "weak"
+   },
+   "tag": "s0_vs_separate",
+   "path": "results\\rl\\checkpoints\\m46f\\behaviour\\ext\\recall\\s0\\3_vs_separate.json.gz",
+   "horizon": 100,
+   "K": 32
+  },
+  {
+   "family": "recall",
+   "idx": 4,
+   "label": "strong L8 equal hpB0.5",
+   "meta": {
+    "group": "recallw L8 hpB0.5",
+    "cond": "equal",
+    "L": 8,
+    "hp": 0.5,
+    "role": "strong"
+   },
+   "tag": "s0_vs_shared",
+   "path": "results\\rl\\checkpoints\\m46f\\behaviour\\ext\\recall\\s0\\4_vs_shared.json.gz",
+   "horizon": 100,
+   "K": 32
+  },
+  {
+   "family": "recall",
+   "idx": 4,
+   "label": "strong L8 equal hpB0.5",
+   "meta": {
+    "group": "recallw L8 hpB0.5",
+    "cond": "equal",
+    "L": 8,
+    "hp": 0.5,
+    "role": "strong"
+   },
+   "tag": "s0_vs_separate",
+   "path": "results\\rl\\checkpoints\\m46f\\behaviour\\ext\\recall\\s0\\4_vs_separate.json.gz",
+   "horizon": 100,
+   "K": 32
+  },
+  {
+   "family": "recall",
+   "idx": 5,
+   "label": "weak L8 equal hpB0.5",
+   "meta": {
+    "group": "recallw L8 hpB0.5",
+    "cond": "equal",
+    "L": 8,
+    "hp": 0.5,
+    "role": "weak"
+   },
+   "tag": "s0_vs_shared",
+   "path": "results\\rl\\checkpoints\\m46f\\behaviour\\ext\\recall\\s0\\5_vs_shared.json.gz",
+   "horizon": 100,
+   "K": 32
+  },
+  {
+   "family": "recall",
+   "idx": 5,
+   "label": "weak L8 equal hpB0.5",
+   "meta": {
+    "group": "recallw L8 hpB0.5",
+    "cond": "equal",
+    "L": 8,
+    "hp": 0.5,
+    "role": "weak"
+   },
+   "tag": "s0_vs_separate",
+   "path": "results\\rl\\checkpoints\\m46f\\behaviour\\ext\\recall\\s0\\5_vs_separate.json.gz",
+   "horizon": 100,
+   "K": 32
+  },
+  {
+   "family": "recall",
+   "idx": 6,
+   "label": "strong L8 equal hpB0.35",
+   "meta": {
+    "group": "recallw L8 hpB0.35",
+    "cond": "equal",
+    "L": 8,
+    "hp": 0.35,
+    "role": "strong"
+   },
+   "tag": "s0_vs_shared",
+   "path": "results\\rl\\checkpoints\\m46f\\behaviour\\ext\\recall\\s0\\6_vs_shared.json.gz",
+   "horizon": 100,
+   "K": 32
+  },
+  {
+   "family": "recall",
+   "idx": 6,
+   "label": "strong L8 equal hpB0.35",
+   "meta": {
+    "group": "recallw L8 hpB0.35",
+    "cond": "equal",
+    "L": 8,
+    "hp": 0.35,
+    "role": "strong"
+   },
+   "tag": "s0_vs_separate",
+   "path": "results\\rl\\checkpoints\\m46f\\behaviour\\ext\\recall\\s0\\6_vs_separate.json.gz",
+   "horizon": 100,
+   "K": 32
+  },
+  {
+   "family": "recall",
+   "idx": 7,
+   "label": "weak L8 equal hpB0.35",
+   "meta": {
+    "group": "recallw L8 hpB0.35",
+    "cond": "equal",
+    "L": 8,
+    "hp": 0.35,
+    "role": "weak"
+   },
+   "tag": "s0_vs_shared",
+   "path": "results\\rl\\checkpoints\\m46f\\behaviour\\ext\\recall\\s0\\7_vs_shared.json.gz",
+   "horizon": 100,
+   "K": 32
+  },
+  {
+   "family": "recall",
+   "idx": 7,
+   "label": "weak L8 equal hpB0.35",
+   "meta": {
+    "group": "recallw L8 hpB0.35",
+    "cond": "equal",
+    "L": 8,
+    "hp": 0.35,
+    "role": "weak"
+   },
+   "tag": "s0_vs_separate",
+   "path": "results\\rl\\checkpoints\\m46f\\behaviour\\ext\\recall\\s0\\7_vs_separate.json.gz",
+   "horizon": 100,
+   "K": 32
+  },
+  {
+   "family": "recall",
+   "idx": 8,
+   "label": "strong L5 edge hpB0.5",
+   "meta": {
+    "group": "recallw L5 hpB0.5",
+    "cond": "edge",
+    "L": 5,
+    "hp": 0.5,
+    "role": "strong"
+   },
+   "tag": "s0_vs_shared",
+   "path": "results\\rl\\checkpoints\\m46f\\behaviour\\ext\\recall\\s0\\8_vs_shared.json.gz",
+   "horizon": 100,
+   "K": 32
+  },
+  {
+   "family": "recall",
+   "idx": 8,
+   "label": "strong L5 edge hpB0.5",
+   "meta": {
+    "group": "recallw L5 hpB0.5",
+    "cond": "edge",
+    "L": 5,
+    "hp": 0.5,
+    "role": "strong"
+   },
+   "tag": "s0_vs_separate",
+   "path": "results\\rl\\checkpoints\\m46f\\behaviour\\ext\\recall\\s0\\8_vs_separate.json.gz",
+   "horizon": 100,
+   "K": 32
+  },
+  {
+   "family": "recall",
+   "idx": 9,
+   "label": "weak L5 edge hpB0.5",
+   "meta": {
+    "group": "recallw L5 hpB0.5",
+    "cond": "edge",
+    "L": 5,
+    "hp": 0.5,
+    "role": "weak"
+   },
+   "tag": "s0_vs_shared",
+   "path": "results\\rl\\checkpoints\\m46f\\behaviour\\ext\\recall\\s0\\9_vs_shared.json.gz",
+   "horizon": 100,
+   "K": 32
+  },
+  {
+   "family": "recall",
+   "idx": 9,
+   "label": "weak L5 edge hpB0.5",
+   "meta": {
+    "group": "recallw L5 hpB0.5",
+    "cond": "edge",
+    "L": 5,
+    "hp": 0.5,
+    "role": "weak"
+   },
+   "tag": "s0_vs_separate",
+   "path": "results\\rl\\checkpoints\\m46f\\behaviour\\ext\\recall\\s0\\9_vs_separate.json.gz",
+   "horizon": 100,
+   "K": 32
+  },
+  {
+   "family": "recall",
+   "idx": 10,
+   "label": "strong L5 edge hpB0.35",
+   "meta": {
+    "group": "recallw L5 hpB0.35",
+    "cond": "edge",
+    "L": 5,
+    "hp": 0.35,
+    "role": "strong"
+   },
+   "tag": "s0_vs_shared",
+   "path": "results\\rl\\checkpoints\\m46f\\behaviour\\ext\\recall\\s0\\10_vs_shared.json.gz",
+   "horizon": 100,
+   "K": 32
+  },
+  {
+   "family": "recall",
+   "idx": 10,
+   "label": "strong L5 edge hpB0.35",
+   "meta": {
+    "group": "recallw L5 hpB0.35",
+    "cond": "edge",
+    "L": 5,
+    "hp": 0.35,
+    "role": "strong"
+   },
+   "tag": "s0_vs_separate",
+   "path": "results\\rl\\checkpoints\\m46f\\behaviour\\ext\\recall\\s0\\10_vs_separate.json.gz",
+   "horizon": 100,
+   "K": 32
+  },
+  {
+   "family": "recall",
+   "idx": 11,
+   "label": "weak L5 edge hpB0.35",
+   "meta": {
+    "group": "recallw L5 hpB0.35",
+    "cond": "edge",
+    "L": 5,
+    "hp": 0.35,
+    "role": "weak"
+   },
+   "tag": "s0_vs_shared",
+   "path": "results\\rl\\checkpoints\\m46f\\behaviour\\ext\\recall\\s0\\11_vs_shared.json.gz",
+   "horizon": 100,
+   "K": 32
+  },
+  {
+   "family": "recall",
+   "idx": 11,
+   "label": "weak L5 edge hpB0.35",
+   "meta": {
+    "group": "recallw L5 hpB0.35",
+    "cond": "edge",
+    "L": 5,
+    "hp": 0.35,
+    "role": "weak"
+   },
+   "tag": "s0_vs_separate",
+   "path": "results\\rl\\checkpoints\\m46f\\behaviour\\ext\\recall\\s0\\11_vs_separate.json.gz",
+   "horizon": 100,
+   "K": 32
+  },
+  {
+   "family": "recall",
+   "idx": 12,
+   "label": "strong L8 edge hpB0.5",
+   "meta": {
+    "group": "recallw L8 hpB0.5",
+    "cond": "edge",
+    "L": 8,
+    "hp": 0.5,
+    "role": "strong"
+   },
+   "tag": "s0_vs_shared",
+   "path": "results\\rl\\checkpoints\\m46f\\behaviour\\ext\\recall\\s0\\12_vs_shared.json.gz",
+   "horizon": 100,
+   "K": 32
+  },
+  {
+   "family": "recall",
+   "idx": 12,
+   "label": "strong L8 edge hpB0.5",
+   "meta": {
+    "group": "recallw L8 hpB0.5",
+    "cond": "edge",
+    "L": 8,
+    "hp": 0.5,
+    "role": "strong"
+   },
+   "tag": "s0_vs_separate",
+   "path": "results\\rl\\checkpoints\\m46f\\behaviour\\ext\\recall\\s0\\12_vs_separate.json.gz",
+   "horizon": 100,
+   "K": 32
+  },
+  {
+   "family": "recall",
+   "idx": 13,
+   "label": "weak L8 edge hpB0.5",
+   "meta": {
+    "group": "recallw L8 hpB0.5",
+    "cond": "edge",
+    "L": 8,
+    "hp": 0.5,
+    "role": "weak"
+   },
+   "tag": "s0_vs_shared",
+   "path": "results\\rl\\checkpoints\\m46f\\behaviour\\ext\\recall\\s0\\13_vs_shared.json.gz",
+   "horizon": 100,
+   "K": 32
+  },
+  {
+   "family": "recall",
+   "idx": 13,
+   "label": "weak L8 edge hpB0.5",
+   "meta": {
+    "group": "recallw L8 hpB0.5",
+    "cond": "edge",
+    "L": 8,
+    "hp": 0.5,
+    "role": "weak"
+   },
+   "tag": "s0_vs_separate",
+   "path": "results\\rl\\checkpoints\\m46f\\behaviour\\ext\\recall\\s0\\13_vs_separate.json.gz",
+   "horizon": 100,
+   "K": 32
+  },
+  {
+   "family": "recall",
+   "idx": 14,
+   "label": "strong L8 edge hpB0.35",
+   "meta": {
+    "group": "recallw L8 hpB0.35",
+    "cond": "edge",
+    "L": 8,
+    "hp": 0.35,
+    "role": "strong"
+   },
+   "tag": "s0_vs_shared",
+   "path": "results\\rl\\checkpoints\\m46f\\behaviour\\ext\\recall\\s0\\14_vs_shared.json.gz",
+   "horizon": 100,
+   "K": 32
+  },
+  {
+   "family": "recall",
+   "idx": 14,
+   "label": "strong L8 edge hpB0.35",
+   "meta": {
+    "group": "recallw L8 hpB0.35",
+    "cond": "edge",
+    "L": 8,
+    "hp": 0.35,
+    "role": "strong"
+   },
+   "tag": "s0_vs_separate",
+   "path": "results\\rl\\checkpoints\\m46f\\behaviour\\ext\\recall\\s0\\14_vs_separate.json.gz",
+   "horizon": 100,
+   "K": 32
+  },
+  {
+   "family": "recall",
+   "idx": 15,
+   "label": "weak L8 edge hpB0.35",
+   "meta": {
+    "group": "recallw L8 hpB0.35",
+    "cond": "edge",
+    "L": 8,
+    "hp": 0.35,
+    "role": "weak"
+   },
+   "tag": "s0_vs_shared",
+   "path": "results\\rl\\checkpoints\\m46f\\behaviour\\ext\\recall\\s0\\15_vs_shared.json.gz",
+   "horizon": 100,
+   "K": 32
+  },
+  {
+   "family": "recall",
+   "idx": 15,
+   "label": "weak L8 edge hpB0.35",
+   "meta": {
+    "group": "recallw L8 hpB0.35",
+    "cond": "edge",
+    "L": 8,
+    "hp": 0.35,
+    "role": "weak"
+   },
+   "tag": "s0_vs_separate",
+   "path": "results\\rl\\checkpoints\\m46f\\behaviour\\ext\\recall\\s0\\15_vs_separate.json.gz",
+   "horizon": 100,
+   "K": 32
+  },
+  {
+   "family": "recall",
+   "idx": 16,
+   "label": "strong L5 x1.76 hpB0.5",
+   "meta": {
+    "group": "recallw L5 hpB0.5",
+    "cond": "x1.76",
+    "L": 5,
+    "hp": 0.5,
+    "role": "strong"
+   },
+   "tag": "s0_vs_shared",
+   "path": "results\\rl\\checkpoints\\m46f\\behaviour\\ext\\recall\\s0\\16_vs_shared.json.gz",
+   "horizon": 100,
+   "K": 32
+  },
+  {
+   "family": "recall",
+   "idx": 16,
+   "label": "strong L5 x1.76 hpB0.5",
+   "meta": {
+    "group": "recallw L5 hpB0.5",
+    "cond": "x1.76",
+    "L": 5,
+    "hp": 0.5,
+    "role": "strong"
+   },
+   "tag": "s0_vs_separate",
+   "path": "results\\rl\\checkpoints\\m46f\\behaviour\\ext\\recall\\s0\\16_vs_separate.json.gz",
+   "horizon": 100,
+   "K": 32
+  },
+  {
+   "family": "recall",
+   "idx": 17,
+   "label": "weak L5 x1.76 hpB0.5",
+   "meta": {
+    "group": "recallw L5 hpB0.5",
+    "cond": "x1.76",
+    "L": 5,
+    "hp": 0.5,
+    "role": "weak"
+   },
+   "tag": "s0_vs_shared",
+   "path": "results\\rl\\checkpoints\\m46f\\behaviour\\ext\\recall\\s0\\17_vs_shared.json.gz",
+   "horizon": 100,
+   "K": 32
+  },
+  {
+   "family": "recall",
+   "idx": 17,
+   "label": "weak L5 x1.76 hpB0.5",
+   "meta": {
+    "group": "recallw L5 hpB0.5",
+    "cond": "x1.76",
+    "L": 5,
+    "hp": 0.5,
+    "role": "weak"
+   },
+   "tag": "s0_vs_separate",
+   "path": "results\\rl\\checkpoints\\m46f\\behaviour\\ext\\recall\\s0\\17_vs_separate.json.gz",
+   "horizon": 100,
+   "K": 32
+  },
+  {
+   "family": "recall",
+   "idx": 18,
+   "label": "strong L5 x1.76 hpB0.35",
+   "meta": {
+    "group": "recallw L5 hpB0.35",
+    "cond": "x1.76",
+    "L": 5,
+    "hp": 0.35,
+    "role": "strong"
+   },
+   "tag": "s0_vs_shared",
+   "path": "results\\rl\\checkpoints\\m46f\\behaviour\\ext\\recall\\s0\\18_vs_shared.json.gz",
+   "horizon": 100,
+   "K": 32
+  },
+  {
+   "family": "recall",
+   "idx": 18,
+   "label": "strong L5 x1.76 hpB0.35",
+   "meta": {
+    "group": "recallw L5 hpB0.35",
+    "cond": "x1.76",
+    "L": 5,
+    "hp": 0.35,
+    "role": "strong"
+   },
+   "tag": "s0_vs_separate",
+   "path": "results\\rl\\checkpoints\\m46f\\behaviour\\ext\\recall\\s0\\18_vs_separate.json.gz",
+   "horizon": 100,
+   "K": 32
+  },
+  {
+   "family": "recall",
+   "idx": 19,
+   "label": "weak L5 x1.76 hpB0.35",
+   "meta": {
+    "group": "recallw L5 hpB0.35",
+    "cond": "x1.76",
+    "L": 5,
+    "hp": 0.35,
+    "role": "weak"
+   },
+   "tag": "s0_vs_shared",
+   "path": "results\\rl\\checkpoints\\m46f\\behaviour\\ext\\recall\\s0\\19_vs_shared.json.gz",
+   "horizon": 100,
+   "K": 32
+  },
+  {
+   "family": "recall",
+   "idx": 19,
+   "label": "weak L5 x1.76 hpB0.35",
+   "meta": {
+    "group": "recallw L5 hpB0.35",
+    "cond": "x1.76",
+    "L": 5,
+    "hp": 0.35,
+    "role": "weak"
+   },
+   "tag": "s0_vs_separate",
+   "path": "results\\rl\\checkpoints\\m46f\\behaviour\\ext\\recall\\s0\\19_vs_separate.json.gz",
+   "horizon": 100,
+   "K": 32
+  },
+  {
+   "family": "recall",
+   "idx": 20,
+   "label": "strong L8 x1.76 hpB0.5",
+   "meta": {
+    "group": "recallw L8 hpB0.5",
+    "cond": "x1.76",
+    "L": 8,
+    "hp": 0.5,
+    "role": "strong"
+   },
+   "tag": "s0_vs_shared",
+   "path": "results\\rl\\checkpoints\\m46f\\behaviour\\ext\\recall\\s0\\20_vs_shared.json.gz",
+   "horizon": 100,
+   "K": 32
+  },
+  {
+   "family": "recall",
+   "idx": 20,
+   "label": "strong L8 x1.76 hpB0.5",
+   "meta": {
+    "group": "recallw L8 hpB0.5",
+    "cond": "x1.76",
+    "L": 8,
+    "hp": 0.5,
+    "role": "strong"
+   },
+   "tag": "s0_vs_separate",
+   "path": "results\\rl\\checkpoints\\m46f\\behaviour\\ext\\recall\\s0\\20_vs_separate.json.gz",
+   "horizon": 100,
+   "K": 32
+  },
+  {
+   "family": "recall",
+   "idx": 21,
+   "label": "weak L8 x1.76 hpB0.5",
+   "meta": {
+    "group": "recallw L8 hpB0.5",
+    "cond": "x1.76",
+    "L": 8,
+    "hp": 0.5,
+    "role": "weak"
+   },
+   "tag": "s0_vs_shared",
+   "path": "results\\rl\\checkpoints\\m46f\\behaviour\\ext\\recall\\s0\\21_vs_shared.json.gz",
+   "horizon": 100,
+   "K": 32
+  },
+  {
+   "family": "recall",
+   "idx": 21,
+   "label": "weak L8 x1.76 hpB0.5",
+   "meta": {
+    "group": "recallw L8 hpB0.5",
+    "cond": "x1.76",
+    "L": 8,
+    "hp": 0.5,
+    "role": "weak"
+   },
+   "tag": "s0_vs_separate",
+   "path": "results\\rl\\checkpoints\\m46f\\behaviour\\ext\\recall\\s0\\21_vs_separate.json.gz",
+   "horizon": 100,
+   "K": 32
+  },
+  {
+   "family": "recall",
+   "idx": 22,
+   "label": "strong L8 x1.76 hpB0.35",
+   "meta": {
+    "group": "recallw L8 hpB0.35",
+    "cond": "x1.76",
+    "L": 8,
+    "hp": 0.35,
+    "role": "strong"
+   },
+   "tag": "s0_vs_shared",
+   "path": "results\\rl\\checkpoints\\m46f\\behaviour\\ext\\recall\\s0\\22_vs_shared.json.gz",
+   "horizon": 100,
+   "K": 32
+  },
+  {
+   "family": "recall",
+   "idx": 22,
+   "label": "strong L8 x1.76 hpB0.35",
+   "meta": {
+    "group": "recallw L8 hpB0.35",
+    "cond": "x1.76",
+    "L": 8,
+    "hp": 0.35,
+    "role": "strong"
+   },
+   "tag": "s0_vs_separate",
+   "path": "results\\rl\\checkpoints\\m46f\\behaviour\\ext\\recall\\s0\\22_vs_separate.json.gz",
+   "horizon": 100,
+   "K": 32
+  },
+  {
+   "family": "recall",
+   "idx": 23,
+   "label": "weak L8 x1.76 hpB0.35",
+   "meta": {
+    "group": "recallw L8 hpB0.35",
+    "cond": "x1.76",
+    "L": 8,
+    "hp": 0.35,
+    "role": "weak"
+   },
+   "tag": "s0_vs_shared",
+   "path": "results\\rl\\checkpoints\\m46f\\behaviour\\ext\\recall\\s0\\23_vs_shared.json.gz",
+   "horizon": 100,
+   "K": 32
+  },
+  {
+   "family": "recall",
+   "idx": 23,
+   "label": "weak L8 x1.76 hpB0.35",
+   "meta": {
+    "group": "recallw L8 hpB0.35",
+    "cond": "x1.76",
+    "L": 8,
+    "hp": 0.35,
+    "role": "weak"
+   },
+   "tag": "s0_vs_separate",
+   "path": "results\\rl\\checkpoints\\m46f\\behaviour\\ext\\recall\\s0\\23_vs_separate.json.gz",
+   "horizon": 100,
+   "K": 32
+  },
+  {
+   "family": "recall",
+   "idx": 0,
+   "label": "strong L5 equal hpB0.5",
+   "meta": {
+    "group": "recallw L5 hpB0.5",
+    "cond": "equal",
+    "L": 5,
+    "hp": 0.5,
+    "role": "strong"
+   },
+   "tag": "s1_vs_shared",
+   "path": "results\\rl\\checkpoints\\m46f\\behaviour\\ext\\recall\\s1\\0_vs_shared.json.gz",
+   "horizon": 100,
+   "K": 32
+  },
+  {
+   "family": "recall",
+   "idx": 0,
+   "label": "strong L5 equal hpB0.5",
+   "meta": {
+    "group": "recallw L5 hpB0.5",
+    "cond": "equal",
+    "L": 5,
+    "hp": 0.5,
+    "role": "strong"
+   },
+   "tag": "s1_vs_separate",
+   "path": "results\\rl\\checkpoints\\m46f\\behaviour\\ext\\recall\\s1\\0_vs_separate.json.gz",
+   "horizon": 100,
+   "K": 32
+  },
+  {
+   "family": "recall",
+   "idx": 1,
+   "label": "weak L5 equal hpB0.5",
+   "meta": {
+    "group": "recallw L5 hpB0.5",
+    "cond": "equal",
+    "L": 5,
+    "hp": 0.5,
+    "role": "weak"
+   },
+   "tag": "s1_vs_shared",
+   "path": "results\\rl\\checkpoints\\m46f\\behaviour\\ext\\recall\\s1\\1_vs_shared.json.gz",
+   "horizon": 100,
+   "K": 32
+  },
+  {
+   "family": "recall",
+   "idx": 1,
+   "label": "weak L5 equal hpB0.5",
+   "meta": {
+    "group": "recallw L5 hpB0.5",
+    "cond": "equal",
+    "L": 5,
+    "hp": 0.5,
+    "role": "weak"
+   },
+   "tag": "s1_vs_separate",
+   "path": "results\\rl\\checkpoints\\m46f\\behaviour\\ext\\recall\\s1\\1_vs_separate.json.gz",
+   "horizon": 100,
+   "K": 32
+  },
+  {
+   "family": "recall",
+   "idx": 2,
+   "label": "strong L5 equal hpB0.35",
+   "meta": {
+    "group": "recallw L5 hpB0.35",
+    "cond": "equal",
+    "L": 5,
+    "hp": 0.35,
+    "role": "strong"
+   },
+   "tag": "s1_vs_shared",
+   "path": "results\\rl\\checkpoints\\m46f\\behaviour\\ext\\recall\\s1\\2_vs_shared.json.gz",
+   "horizon": 100,
+   "K": 32
+  },
+  {
+   "family": "recall",
+   "idx": 2,
+   "label": "strong L5 equal hpB0.35",
+   "meta": {
+    "group": "recallw L5 hpB0.35",
+    "cond": "equal",
+    "L": 5,
+    "hp": 0.35,
+    "role": "strong"
+   },
+   "tag": "s1_vs_separate",
+   "path": "results\\rl\\checkpoints\\m46f\\behaviour\\ext\\recall\\s1\\2_vs_separate.json.gz",
+   "horizon": 100,
+   "K": 32
+  },
+  {
+   "family": "recall",
+   "idx": 3,
+   "label": "weak L5 equal hpB0.35",
+   "meta": {
+    "group": "recallw L5 hpB0.35",
+    "cond": "equal",
+    "L": 5,
+    "hp": 0.35,
+    "role": "weak"
+   },
+   "tag": "s1_vs_shared",
+   "path": "results\\rl\\checkpoints\\m46f\\behaviour\\ext\\recall\\s1\\3_vs_shared.json.gz",
+   "horizon": 100,
+   "K": 32
+  },
+  {
+   "family": "recall",
+   "idx": 3,
+   "label": "weak L5 equal hpB0.35",
+   "meta": {
+    "group": "recallw L5 hpB0.35",
+    "cond": "equal",
+    "L": 5,
+    "hp": 0.35,
+    "role": "weak"
+   },
+   "tag": "s1_vs_separate",
+   "path": "results\\rl\\checkpoints\\m46f\\behaviour\\ext\\recall\\s1\\3_vs_separate.json.gz",
+   "horizon": 100,
+   "K": 32
+  },
+  {
+   "family": "recall",
+   "idx": 4,
+   "label": "strong L8 equal hpB0.5",
+   "meta": {
+    "group": "recallw L8 hpB0.5",
+    "cond": "equal",
+    "L": 8,
+    "hp": 0.5,
+    "role": "strong"
+   },
+   "tag": "s1_vs_shared",
+   "path": "results\\rl\\checkpoints\\m46f\\behaviour\\ext\\recall\\s1\\4_vs_shared.json.gz",
+   "horizon": 100,
+   "K": 32
+  },
+  {
+   "family": "recall",
+   "idx": 4,
+   "label": "strong L8 equal hpB0.5",
+   "meta": {
+    "group": "recallw L8 hpB0.5",
+    "cond": "equal",
+    "L": 8,
+    "hp": 0.5,
+    "role": "strong"
+   },
+   "tag": "s1_vs_separate",
+   "path": "results\\rl\\checkpoints\\m46f\\behaviour\\ext\\recall\\s1\\4_vs_separate.json.gz",
+   "horizon": 100,
+   "K": 32
+  },
+  {
+   "family": "recall",
+   "idx": 5,
+   "label": "weak L8 equal hpB0.5",
+   "meta": {
+    "group": "recallw L8 hpB0.5",
+    "cond": "equal",
+    "L": 8,
+    "hp": 0.5,
+    "role": "weak"
+   },
+   "tag": "s1_vs_shared",
+   "path": "results\\rl\\checkpoints\\m46f\\behaviour\\ext\\recall\\s1\\5_vs_shared.json.gz",
+   "horizon": 100,
+   "K": 32
+  },
+  {
+   "family": "recall",
+   "idx": 5,
+   "label": "weak L8 equal hpB0.5",
+   "meta": {
+    "group": "recallw L8 hpB0.5",
+    "cond": "equal",
+    "L": 8,
+    "hp": 0.5,
+    "role": "weak"
+   },
+   "tag": "s1_vs_separate",
+   "path": "results\\rl\\checkpoints\\m46f\\behaviour\\ext\\recall\\s1\\5_vs_separate.json.gz",
+   "horizon": 100,
+   "K": 32
+  },
+  {
+   "family": "recall",
+   "idx": 6,
+   "label": "strong L8 equal hpB0.35",
+   "meta": {
+    "group": "recallw L8 hpB0.35",
+    "cond": "equal",
+    "L": 8,
+    "hp": 0.35,
+    "role": "strong"
+   },
+   "tag": "s1_vs_shared",
+   "path": "results\\rl\\checkpoints\\m46f\\behaviour\\ext\\recall\\s1\\6_vs_shared.json.gz",
+   "horizon": 100,
+   "K": 32
+  },
+  {
+   "family": "recall",
+   "idx": 6,
+   "label": "strong L8 equal hpB0.35",
+   "meta": {
+    "group": "recallw L8 hpB0.35",
+    "cond": "equal",
+    "L": 8,
+    "hp": 0.35,
+    "role": "strong"
+   },
+   "tag": "s1_vs_separate",
+   "path": "results\\rl\\checkpoints\\m46f\\behaviour\\ext\\recall\\s1\\6_vs_separate.json.gz",
+   "horizon": 100,
+   "K": 32
+  },
+  {
+   "family": "recall",
+   "idx": 7,
+   "label": "weak L8 equal hpB0.35",
+   "meta": {
+    "group": "recallw L8 hpB0.35",
+    "cond": "equal",
+    "L": 8,
+    "hp": 0.35,
+    "role": "weak"
+   },
+   "tag": "s1_vs_shared",
+   "path": "results\\rl\\checkpoints\\m46f\\behaviour\\ext\\recall\\s1\\7_vs_shared.json.gz",
+   "horizon": 100,
+   "K": 32
+  },
+  {
+   "family": "recall",
+   "idx": 7,
+   "label": "weak L8 equal hpB0.35",
+   "meta": {
+    "group": "recallw L8 hpB0.35",
+    "cond": "equal",
+    "L": 8,
+    "hp": 0.35,
+    "role": "weak"
+   },
+   "tag": "s1_vs_separate",
+   "path": "results\\rl\\checkpoints\\m46f\\behaviour\\ext\\recall\\s1\\7_vs_separate.json.gz",
+   "horizon": 100,
+   "K": 32
+  },
+  {
+   "family": "recall",
+   "idx": 8,
+   "label": "strong L5 edge hpB0.5",
+   "meta": {
+    "group": "recallw L5 hpB0.5",
+    "cond": "edge",
+    "L": 5,
+    "hp": 0.5,
+    "role": "strong"
+   },
+   "tag": "s1_vs_shared",
+   "path": "results\\rl\\checkpoints\\m46f\\behaviour\\ext\\recall\\s1\\8_vs_shared.json.gz",
+   "horizon": 100,
+   "K": 32
+  },
+  {
+   "family": "recall",
+   "idx": 8,
+   "label": "strong L5 edge hpB0.5",
+   "meta": {
+    "group": "recallw L5 hpB0.5",
+    "cond": "edge",
+    "L": 5,
+    "hp": 0.5,
+    "role": "strong"
+   },
+   "tag": "s1_vs_separate",
+   "path": "results\\rl\\checkpoints\\m46f\\behaviour\\ext\\recall\\s1\\8_vs_separate.json.gz",
+   "horizon": 100,
+   "K": 32
+  },
+  {
+   "family": "recall",
+   "idx": 9,
+   "label": "weak L5 edge hpB0.5",
+   "meta": {
+    "group": "recallw L5 hpB0.5",
+    "cond": "edge",
+    "L": 5,
+    "hp": 0.5,
+    "role": "weak"
+   },
+   "tag": "s1_vs_shared",
+   "path": "results\\rl\\checkpoints\\m46f\\behaviour\\ext\\recall\\s1\\9_vs_shared.json.gz",
+   "horizon": 100,
+   "K": 32
+  },
+  {
+   "family": "recall",
+   "idx": 9,
+   "label": "weak L5 edge hpB0.5",
+   "meta": {
+    "group": "recallw L5 hpB0.5",
+    "cond": "edge",
+    "L": 5,
+    "hp": 0.5,
+    "role": "weak"
+   },
+   "tag": "s1_vs_separate",
+   "path": "results\\rl\\checkpoints\\m46f\\behaviour\\ext\\recall\\s1\\9_vs_separate.json.gz",
+   "horizon": 100,
+   "K": 32
+  },
+  {
+   "family": "recall",
+   "idx": 10,
+   "label": "strong L5 edge hpB0.35",
+   "meta": {
+    "group": "recallw L5 hpB0.35",
+    "cond": "edge",
+    "L": 5,
+    "hp": 0.35,
+    "role": "strong"
+   },
+   "tag": "s1_vs_shared",
+   "path": "results\\rl\\checkpoints\\m46f\\behaviour\\ext\\recall\\s1\\10_vs_shared.json.gz",
+   "horizon": 100,
+   "K": 32
+  },
+  {
+   "family": "recall",
+   "idx": 10,
+   "label": "strong L5 edge hpB0.35",
+   "meta": {
+    "group": "recallw L5 hpB0.35",
+    "cond": "edge",
+    "L": 5,
+    "hp": 0.35,
+    "role": "strong"
+   },
+   "tag": "s1_vs_separate",
+   "path": "results\\rl\\checkpoints\\m46f\\behaviour\\ext\\recall\\s1\\10_vs_separate.json.gz",
+   "horizon": 100,
+   "K": 32
+  },
+  {
+   "family": "recall",
+   "idx": 11,
+   "label": "weak L5 edge hpB0.35",
+   "meta": {
+    "group": "recallw L5 hpB0.35",
+    "cond": "edge",
+    "L": 5,
+    "hp": 0.35,
+    "role": "weak"
+   },
+   "tag": "s1_vs_shared",
+   "path": "results\\rl\\checkpoints\\m46f\\behaviour\\ext\\recall\\s1\\11_vs_shared.json.gz",
+   "horizon": 100,
+   "K": 32
+  },
+  {
+   "family": "recall",
+   "idx": 11,
+   "label": "weak L5 edge hpB0.35",
+   "meta": {
+    "group": "recallw L5 hpB0.35",
+    "cond": "edge",
+    "L": 5,
+    "hp": 0.35,
+    "role": "weak"
+   },
+   "tag": "s1_vs_separate",
+   "path": "results\\rl\\checkpoints\\m46f\\behaviour\\ext\\recall\\s1\\11_vs_separate.json.gz",
+   "horizon": 100,
+   "K": 32
+  },
+  {
+   "family": "recall",
+   "idx": 12,
+   "label": "strong L8 edge hpB0.5",
+   "meta": {
+    "group": "recallw L8 hpB0.5",
+    "cond": "edge",
+    "L": 8,
+    "hp": 0.5,
+    "role": "strong"
+   },
+   "tag": "s1_vs_shared",
+   "path": "results\\rl\\checkpoints\\m46f\\behaviour\\ext\\recall\\s1\\12_vs_shared.json.gz",
+   "horizon": 100,
+   "K": 32
+  },
+  {
+   "family": "recall",
+   "idx": 12,
+   "label": "strong L8 edge hpB0.5",
+   "meta": {
+    "group": "recallw L8 hpB0.5",
+    "cond": "edge",
+    "L": 8,
+    "hp": 0.5,
+    "role": "strong"
+   },
+   "tag": "s1_vs_separate",
+   "path": "results\\rl\\checkpoints\\m46f\\behaviour\\ext\\recall\\s1\\12_vs_separate.json.gz",
+   "horizon": 100,
+   "K": 32
+  },
+  {
+   "family": "recall",
+   "idx": 13,
+   "label": "weak L8 edge hpB0.5",
+   "meta": {
+    "group": "recallw L8 hpB0.5",
+    "cond": "edge",
+    "L": 8,
+    "hp": 0.5,
+    "role": "weak"
+   },
+   "tag": "s1_vs_shared",
+   "path": "results\\rl\\checkpoints\\m46f\\behaviour\\ext\\recall\\s1\\13_vs_shared.json.gz",
+   "horizon": 100,
+   "K": 32
+  },
+  {
+   "family": "recall",
+   "idx": 13,
+   "label": "weak L8 edge hpB0.5",
+   "meta": {
+    "group": "recallw L8 hpB0.5",
+    "cond": "edge",
+    "L": 8,
+    "hp": 0.5,
+    "role": "weak"
+   },
+   "tag": "s1_vs_separate",
+   "path": "results\\rl\\checkpoints\\m46f\\behaviour\\ext\\recall\\s1\\13_vs_separate.json.gz",
+   "horizon": 100,
+   "K": 32
+  },
+  {
+   "family": "recall",
+   "idx": 14,
+   "label": "strong L8 edge hpB0.35",
+   "meta": {
+    "group": "recallw L8 hpB0.35",
+    "cond": "edge",
+    "L": 8,
+    "hp": 0.35,
+    "role": "strong"
+   },
+   "tag": "s1_vs_shared",
+   "path": "results\\rl\\checkpoints\\m46f\\behaviour\\ext\\recall\\s1\\14_vs_shared.json.gz",
+   "horizon": 100,
+   "K": 32
+  },
+  {
+   "family": "recall",
+   "idx": 14,
+   "label": "strong L8 edge hpB0.35",
+   "meta": {
+    "group": "recallw L8 hpB0.35",
+    "cond": "edge",
+    "L": 8,
+    "hp": 0.35,
+    "role": "strong"
+   },
+   "tag": "s1_vs_separate",
+   "path": "results\\rl\\checkpoints\\m46f\\behaviour\\ext\\recall\\s1\\14_vs_separate.json.gz",
+   "horizon": 100,
+   "K": 32
+  },
+  {
+   "family": "recall",
+   "idx": 15,
+   "label": "weak L8 edge hpB0.35",
+   "meta": {
+    "group": "recallw L8 hpB0.35",
+    "cond": "edge",
+    "L": 8,
+    "hp": 0.35,
+    "role": "weak"
+   },
+   "tag": "s1_vs_shared",
+   "path": "results\\rl\\checkpoints\\m46f\\behaviour\\ext\\recall\\s1\\15_vs_shared.json.gz",
+   "horizon": 100,
+   "K": 32
+  },
+  {
+   "family": "recall",
+   "idx": 15,
+   "label": "weak L8 edge hpB0.35",
+   "meta": {
+    "group": "recallw L8 hpB0.35",
+    "cond": "edge",
+    "L": 8,
+    "hp": 0.35,
+    "role": "weak"
+   },
+   "tag": "s1_vs_separate",
+   "path": "results\\rl\\checkpoints\\m46f\\behaviour\\ext\\recall\\s1\\15_vs_separate.json.gz",
+   "horizon": 100,
+   "K": 32
+  },
+  {
+   "family": "recall",
+   "idx": 16,
+   "label": "strong L5 x1.76 hpB0.5",
+   "meta": {
+    "group": "recallw L5 hpB0.5",
+    "cond": "x1.76",
+    "L": 5,
+    "hp": 0.5,
+    "role": "strong"
+   },
+   "tag": "s1_vs_shared",
+   "path": "results\\rl\\checkpoints\\m46f\\behaviour\\ext\\recall\\s1\\16_vs_shared.json.gz",
+   "horizon": 100,
+   "K": 32
+  },
+  {
+   "family": "recall",
+   "idx": 16,
+   "label": "strong L5 x1.76 hpB0.5",
+   "meta": {
+    "group": "recallw L5 hpB0.5",
+    "cond": "x1.76",
+    "L": 5,
+    "hp": 0.5,
+    "role": "strong"
+   },
+   "tag": "s1_vs_separate",
+   "path": "results\\rl\\checkpoints\\m46f\\behaviour\\ext\\recall\\s1\\16_vs_separate.json.gz",
+   "horizon": 100,
+   "K": 32
+  },
+  {
+   "family": "recall",
+   "idx": 17,
+   "label": "weak L5 x1.76 hpB0.5",
+   "meta": {
+    "group": "recallw L5 hpB0.5",
+    "cond": "x1.76",
+    "L": 5,
+    "hp": 0.5,
+    "role": "weak"
+   },
+   "tag": "s1_vs_shared",
+   "path": "results\\rl\\checkpoints\\m46f\\behaviour\\ext\\recall\\s1\\17_vs_shared.json.gz",
+   "horizon": 100,
+   "K": 32
+  },
+  {
+   "family": "recall",
+   "idx": 17,
+   "label": "weak L5 x1.76 hpB0.5",
+   "meta": {
+    "group": "recallw L5 hpB0.5",
+    "cond": "x1.76",
+    "L": 5,
+    "hp": 0.5,
+    "role": "weak"
+   },
+   "tag": "s1_vs_separate",
+   "path": "results\\rl\\checkpoints\\m46f\\behaviour\\ext\\recall\\s1\\17_vs_separate.json.gz",
+   "horizon": 100,
+   "K": 32
+  },
+  {
+   "family": "recall",
+   "idx": 18,
+   "label": "strong L5 x1.76 hpB0.35",
+   "meta": {
+    "group": "recallw L5 hpB0.35",
+    "cond": "x1.76",
+    "L": 5,
+    "hp": 0.35,
+    "role": "strong"
+   },
+   "tag": "s1_vs_shared",
+   "path": "results\\rl\\checkpoints\\m46f\\behaviour\\ext\\recall\\s1\\18_vs_shared.json.gz",
+   "horizon": 100,
+   "K": 32
+  },
+  {
+   "family": "recall",
+   "idx": 18,
+   "label": "strong L5 x1.76 hpB0.35",
+   "meta": {
+    "group": "recallw L5 hpB0.35",
+    "cond": "x1.76",
+    "L": 5,
+    "hp": 0.35,
+    "role": "strong"
+   },
+   "tag": "s1_vs_separate",
+   "path": "results\\rl\\checkpoints\\m46f\\behaviour\\ext\\recall\\s1\\18_vs_separate.json.gz",
+   "horizon": 100,
+   "K": 32
+  },
+  {
+   "family": "recall",
+   "idx": 19,
+   "label": "weak L5 x1.76 hpB0.35",
+   "meta": {
+    "group": "recallw L5 hpB0.35",
+    "cond": "x1.76",
+    "L": 5,
+    "hp": 0.35,
+    "role": "weak"
+   },
+   "tag": "s1_vs_shared",
+   "path": "results\\rl\\checkpoints\\m46f\\behaviour\\ext\\recall\\s1\\19_vs_shared.json.gz",
+   "horizon": 100,
+   "K": 32
+  },
+  {
+   "family": "recall",
+   "idx": 19,
+   "label": "weak L5 x1.76 hpB0.35",
+   "meta": {
+    "group": "recallw L5 hpB0.35",
+    "cond": "x1.76",
+    "L": 5,
+    "hp": 0.35,
+    "role": "weak"
+   },
+   "tag": "s1_vs_separate",
+   "path": "results\\rl\\checkpoints\\m46f\\behaviour\\ext\\recall\\s1\\19_vs_separate.json.gz",
+   "horizon": 100,
+   "K": 32
+  },
+  {
+   "family": "recall",
+   "idx": 20,
+   "label": "strong L8 x1.76 hpB0.5",
+   "meta": {
+    "group": "recallw L8 hpB0.5",
+    "cond": "x1.76",
+    "L": 8,
+    "hp": 0.5,
+    "role": "strong"
+   },
+   "tag": "s1_vs_shared",
+   "path": "results\\rl\\checkpoints\\m46f\\behaviour\\ext\\recall\\s1\\20_vs_shared.json.gz",
+   "horizon": 100,
+   "K": 32
+  },
+  {
+   "family": "recall",
+   "idx": 20,
+   "label": "strong L8 x1.76 hpB0.5",
+   "meta": {
+    "group": "recallw L8 hpB0.5",
+    "cond": "x1.76",
+    "L": 8,
+    "hp": 0.5,
+    "role": "strong"
+   },
+   "tag": "s1_vs_separate",
+   "path": "results\\rl\\checkpoints\\m46f\\behaviour\\ext\\recall\\s1\\20_vs_separate.json.gz",
+   "horizon": 100,
+   "K": 32
+  },
+  {
+   "family": "recall",
+   "idx": 21,
+   "label": "weak L8 x1.76 hpB0.5",
+   "meta": {
+    "group": "recallw L8 hpB0.5",
+    "cond": "x1.76",
+    "L": 8,
+    "hp": 0.5,
+    "role": "weak"
+   },
+   "tag": "s1_vs_shared",
+   "path": "results\\rl\\checkpoints\\m46f\\behaviour\\ext\\recall\\s1\\21_vs_shared.json.gz",
+   "horizon": 100,
+   "K": 32
+  },
+  {
+   "family": "recall",
+   "idx": 21,
+   "label": "weak L8 x1.76 hpB0.5",
+   "meta": {
+    "group": "recallw L8 hpB0.5",
+    "cond": "x1.76",
+    "L": 8,
+    "hp": 0.5,
+    "role": "weak"
+   },
+   "tag": "s1_vs_separate",
+   "path": "results\\rl\\checkpoints\\m46f\\behaviour\\ext\\recall\\s1\\21_vs_separate.json.gz",
+   "horizon": 100,
+   "K": 32
+  },
+  {
+   "family": "recall",
+   "idx": 22,
+   "label": "strong L8 x1.76 hpB0.35",
+   "meta": {
+    "group": "recallw L8 hpB0.35",
+    "cond": "x1.76",
+    "L": 8,
+    "hp": 0.35,
+    "role": "strong"
+   },
+   "tag": "s1_vs_shared",
+   "path": "results\\rl\\checkpoints\\m46f\\behaviour\\ext\\recall\\s1\\22_vs_shared.json.gz",
+   "horizon": 100,
+   "K": 32
+  },
+  {
+   "family": "recall",
+   "idx": 22,
+   "label": "strong L8 x1.76 hpB0.35",
+   "meta": {
+    "group": "recallw L8 hpB0.35",
+    "cond": "x1.76",
+    "L": 8,
+    "hp": 0.35,
+    "role": "strong"
+   },
+   "tag": "s1_vs_separate",
+   "path": "results\\rl\\checkpoints\\m46f\\behaviour\\ext\\recall\\s1\\22_vs_separate.json.gz",
+   "horizon": 100,
+   "K": 32
+  },
+  {
+   "family": "recall",
+   "idx": 23,
+   "label": "weak L8 x1.76 hpB0.35",
+   "meta": {
+    "group": "recallw L8 hpB0.35",
+    "cond": "x1.76",
+    "L": 8,
+    "hp": 0.35,
+    "role": "weak"
+   },
+   "tag": "s1_vs_shared",
+   "path": "results\\rl\\checkpoints\\m46f\\behaviour\\ext\\recall\\s1\\23_vs_shared.json.gz",
+   "horizon": 100,
+   "K": 32
+  },
+  {
+   "family": "recall",
+   "idx": 23,
+   "label": "weak L8 x1.76 hpB0.35",
+   "meta": {
+    "group": "recallw L8 hpB0.35",
+    "cond": "x1.76",
+    "L": 8,
+    "hp": 0.35,
+    "role": "weak"
+   },
+   "tag": "s1_vs_separate",
+   "path": "results\\rl\\checkpoints\\m46f\\behaviour\\ext\\recall\\s1\\23_vs_separate.json.gz",
+   "horizon": 100,
+   "K": 32
+  },
+  {
+   "family": "recall",
+   "idx": 0,
+   "label": "strong L5 equal hpB0.5",
+   "meta": {
+    "group": "recallw L5 hpB0.5",
+    "cond": "equal",
+    "L": 5,
+    "hp": 0.5,
+    "role": "strong"
+   },
+   "tag": "s2_vs_shared",
+   "path": "results\\rl\\checkpoints\\m46f\\behaviour\\ext\\recall\\s2\\0_vs_shared.json.gz",
+   "horizon": 100,
+   "K": 32
+  },
+  {
+   "family": "recall",
+   "idx": 0,
+   "label": "strong L5 equal hpB0.5",
+   "meta": {
+    "group": "recallw L5 hpB0.5",
+    "cond": "equal",
+    "L": 5,
+    "hp": 0.5,
+    "role": "strong"
+   },
+   "tag": "s2_vs_separate",
+   "path": "results\\rl\\checkpoints\\m46f\\behaviour\\ext\\recall\\s2\\0_vs_separate.json.gz",
+   "horizon": 100,
+   "K": 32
+  },
+  {
+   "family": "recall",
+   "idx": 1,
+   "label": "weak L5 equal hpB0.5",
+   "meta": {
+    "group": "recallw L5 hpB0.5",
+    "cond": "equal",
+    "L": 5,
+    "hp": 0.5,
+    "role": "weak"
+   },
+   "tag": "s2_vs_shared",
+   "path": "results\\rl\\checkpoints\\m46f\\behaviour\\ext\\recall\\s2\\1_vs_shared.json.gz",
+   "horizon": 100,
+   "K": 32
+  },
+  {
+   "family": "recall",
+   "idx": 1,
+   "label": "weak L5 equal hpB0.5",
+   "meta": {
+    "group": "recallw L5 hpB0.5",
+    "cond": "equal",
+    "L": 5,
+    "hp": 0.5,
+    "role": "weak"
+   },
+   "tag": "s2_vs_separate",
+   "path": "results\\rl\\checkpoints\\m46f\\behaviour\\ext\\recall\\s2\\1_vs_separate.json.gz",
+   "horizon": 100,
+   "K": 32
+  },
+  {
+   "family": "recall",
+   "idx": 2,
+   "label": "strong L5 equal hpB0.35",
+   "meta": {
+    "group": "recallw L5 hpB0.35",
+    "cond": "equal",
+    "L": 5,
+    "hp": 0.35,
+    "role": "strong"
+   },
+   "tag": "s2_vs_shared",
+   "path": "results\\rl\\checkpoints\\m46f\\behaviour\\ext\\recall\\s2\\2_vs_shared.json.gz",
+   "horizon": 100,
+   "K": 32
+  },
+  {
+   "family": "recall",
+   "idx": 2,
+   "label": "strong L5 equal hpB0.35",
+   "meta": {
+    "group": "recallw L5 hpB0.35",
+    "cond": "equal",
+    "L": 5,
+    "hp": 0.35,
+    "role": "strong"
+   },
+   "tag": "s2_vs_separate",
+   "path": "results\\rl\\checkpoints\\m46f\\behaviour\\ext\\recall\\s2\\2_vs_separate.json.gz",
+   "horizon": 100,
+   "K": 32
+  },
+  {
+   "family": "recall",
+   "idx": 3,
+   "label": "weak L5 equal hpB0.35",
+   "meta": {
+    "group": "recallw L5 hpB0.35",
+    "cond": "equal",
+    "L": 5,
+    "hp": 0.35,
+    "role": "weak"
+   },
+   "tag": "s2_vs_shared",
+   "path": "results\\rl\\checkpoints\\m46f\\behaviour\\ext\\recall\\s2\\3_vs_shared.json.gz",
+   "horizon": 100,
+   "K": 32
+  },
+  {
+   "family": "recall",
+   "idx": 3,
+   "label": "weak L5 equal hpB0.35",
+   "meta": {
+    "group": "recallw L5 hpB0.35",
+    "cond": "equal",
+    "L": 5,
+    "hp": 0.35,
+    "role": "weak"
+   },
+   "tag": "s2_vs_separate",
+   "path": "results\\rl\\checkpoints\\m46f\\behaviour\\ext\\recall\\s2\\3_vs_separate.json.gz",
+   "horizon": 100,
+   "K": 32
+  },
+  {
+   "family": "recall",
+   "idx": 4,
+   "label": "strong L8 equal hpB0.5",
+   "meta": {
+    "group": "recallw L8 hpB0.5",
+    "cond": "equal",
+    "L": 8,
+    "hp": 0.5,
+    "role": "strong"
+   },
+   "tag": "s2_vs_shared",
+   "path": "results\\rl\\checkpoints\\m46f\\behaviour\\ext\\recall\\s2\\4_vs_shared.json.gz",
+   "horizon": 100,
+   "K": 32
+  },
+  {
+   "family": "recall",
+   "idx": 4,
+   "label": "strong L8 equal hpB0.5",
+   "meta": {
+    "group": "recallw L8 hpB0.5",
+    "cond": "equal",
+    "L": 8,
+    "hp": 0.5,
+    "role": "strong"
+   },
+   "tag": "s2_vs_separate",
+   "path": "results\\rl\\checkpoints\\m46f\\behaviour\\ext\\recall\\s2\\4_vs_separate.json.gz",
+   "horizon": 100,
+   "K": 32
+  },
+  {
+   "family": "recall",
+   "idx": 5,
+   "label": "weak L8 equal hpB0.5",
+   "meta": {
+    "group": "recallw L8 hpB0.5",
+    "cond": "equal",
+    "L": 8,
+    "hp": 0.5,
+    "role": "weak"
+   },
+   "tag": "s2_vs_shared",
+   "path": "results\\rl\\checkpoints\\m46f\\behaviour\\ext\\recall\\s2\\5_vs_shared.json.gz",
+   "horizon": 100,
+   "K": 32
+  },
+  {
+   "family": "recall",
+   "idx": 5,
+   "label": "weak L8 equal hpB0.5",
+   "meta": {
+    "group": "recallw L8 hpB0.5",
+    "cond": "equal",
+    "L": 8,
+    "hp": 0.5,
+    "role": "weak"
+   },
+   "tag": "s2_vs_separate",
+   "path": "results\\rl\\checkpoints\\m46f\\behaviour\\ext\\recall\\s2\\5_vs_separate.json.gz",
+   "horizon": 100,
+   "K": 32
+  },
+  {
+   "family": "recall",
+   "idx": 6,
+   "label": "strong L8 equal hpB0.35",
+   "meta": {
+    "group": "recallw L8 hpB0.35",
+    "cond": "equal",
+    "L": 8,
+    "hp": 0.35,
+    "role": "strong"
+   },
+   "tag": "s2_vs_shared",
+   "path": "results\\rl\\checkpoints\\m46f\\behaviour\\ext\\recall\\s2\\6_vs_shared.json.gz",
+   "horizon": 100,
+   "K": 32
+  },
+  {
+   "family": "recall",
+   "idx": 6,
+   "label": "strong L8 equal hpB0.35",
+   "meta": {
+    "group": "recallw L8 hpB0.35",
+    "cond": "equal",
+    "L": 8,
+    "hp": 0.35,
+    "role": "strong"
+   },
+   "tag": "s2_vs_separate",
+   "path": "results\\rl\\checkpoints\\m46f\\behaviour\\ext\\recall\\s2\\6_vs_separate.json.gz",
+   "horizon": 100,
+   "K": 32
+  },
+  {
+   "family": "recall",
+   "idx": 7,
+   "label": "weak L8 equal hpB0.35",
+   "meta": {
+    "group": "recallw L8 hpB0.35",
+    "cond": "equal",
+    "L": 8,
+    "hp": 0.35,
+    "role": "weak"
+   },
+   "tag": "s2_vs_shared",
+   "path": "results\\rl\\checkpoints\\m46f\\behaviour\\ext\\recall\\s2\\7_vs_shared.json.gz",
+   "horizon": 100,
+   "K": 32
+  },
+  {
+   "family": "recall",
+   "idx": 7,
+   "label": "weak L8 equal hpB0.35",
+   "meta": {
+    "group": "recallw L8 hpB0.35",
+    "cond": "equal",
+    "L": 8,
+    "hp": 0.35,
+    "role": "weak"
+   },
+   "tag": "s2_vs_separate",
+   "path": "results\\rl\\checkpoints\\m46f\\behaviour\\ext\\recall\\s2\\7_vs_separate.json.gz",
+   "horizon": 100,
+   "K": 32
+  },
+  {
+   "family": "recall",
+   "idx": 8,
+   "label": "strong L5 edge hpB0.5",
+   "meta": {
+    "group": "recallw L5 hpB0.5",
+    "cond": "edge",
+    "L": 5,
+    "hp": 0.5,
+    "role": "strong"
+   },
+   "tag": "s2_vs_shared",
+   "path": "results\\rl\\checkpoints\\m46f\\behaviour\\ext\\recall\\s2\\8_vs_shared.json.gz",
+   "horizon": 100,
+   "K": 32
+  },
+  {
+   "family": "recall",
+   "idx": 8,
+   "label": "strong L5 edge hpB0.5",
+   "meta": {
+    "group": "recallw L5 hpB0.5",
+    "cond": "edge",
+    "L": 5,
+    "hp": 0.5,
+    "role": "strong"
+   },
+   "tag": "s2_vs_separate",
+   "path": "results\\rl\\checkpoints\\m46f\\behaviour\\ext\\recall\\s2\\8_vs_separate.json.gz",
+   "horizon": 100,
+   "K": 32
+  },
+  {
+   "family": "recall",
+   "idx": 9,
+   "label": "weak L5 edge hpB0.5",
+   "meta": {
+    "group": "recallw L5 hpB0.5",
+    "cond": "edge",
+    "L": 5,
+    "hp": 0.5,
+    "role": "weak"
+   },
+   "tag": "s2_vs_shared",
+   "path": "results\\rl\\checkpoints\\m46f\\behaviour\\ext\\recall\\s2\\9_vs_shared.json.gz",
+   "horizon": 100,
+   "K": 32
+  },
+  {
+   "family": "recall",
+   "idx": 9,
+   "label": "weak L5 edge hpB0.5",
+   "meta": {
+    "group": "recallw L5 hpB0.5",
+    "cond": "edge",
+    "L": 5,
+    "hp": 0.5,
+    "role": "weak"
+   },
+   "tag": "s2_vs_separate",
+   "path": "results\\rl\\checkpoints\\m46f\\behaviour\\ext\\recall\\s2\\9_vs_separate.json.gz",
+   "horizon": 100,
+   "K": 32
+  },
+  {
+   "family": "recall",
+   "idx": 10,
+   "label": "strong L5 edge hpB0.35",
+   "meta": {
+    "group": "recallw L5 hpB0.35",
+    "cond": "edge",
+    "L": 5,
+    "hp": 0.35,
+    "role": "strong"
+   },
+   "tag": "s2_vs_shared",
+   "path": "results\\rl\\checkpoints\\m46f\\behaviour\\ext\\recall\\s2\\10_vs_shared.json.gz",
+   "horizon": 100,
+   "K": 32
+  },
+  {
+   "family": "recall",
+   "idx": 10,
+   "label": "strong L5 edge hpB0.35",
+   "meta": {
+    "group": "recallw L5 hpB0.35",
+    "cond": "edge",
+    "L": 5,
+    "hp": 0.35,
+    "role": "strong"
+   },
+   "tag": "s2_vs_separate",
+   "path": "results\\rl\\checkpoints\\m46f\\behaviour\\ext\\recall\\s2\\10_vs_separate.json.gz",
+   "horizon": 100,
+   "K": 32
+  },
+  {
+   "family": "recall",
+   "idx": 11,
+   "label": "weak L5 edge hpB0.35",
+   "meta": {
+    "group": "recallw L5 hpB0.35",
+    "cond": "edge",
+    "L": 5,
+    "hp": 0.35,
+    "role": "weak"
+   },
+   "tag": "s2_vs_shared",
+   "path": "results\\rl\\checkpoints\\m46f\\behaviour\\ext\\recall\\s2\\11_vs_shared.json.gz",
+   "horizon": 100,
+   "K": 32
+  },
+  {
+   "family": "recall",
+   "idx": 11,
+   "label": "weak L5 edge hpB0.35",
+   "meta": {
+    "group": "recallw L5 hpB0.35",
+    "cond": "edge",
+    "L": 5,
+    "hp": 0.35,
+    "role": "weak"
+   },
+   "tag": "s2_vs_separate",
+   "path": "results\\rl\\checkpoints\\m46f\\behaviour\\ext\\recall\\s2\\11_vs_separate.json.gz",
+   "horizon": 100,
+   "K": 32
+  },
+  {
+   "family": "recall",
+   "idx": 12,
+   "label": "strong L8 edge hpB0.5",
+   "meta": {
+    "group": "recallw L8 hpB0.5",
+    "cond": "edge",
+    "L": 8,
+    "hp": 0.5,
+    "role": "strong"
+   },
+   "tag": "s2_vs_shared",
+   "path": "results\\rl\\checkpoints\\m46f\\behaviour\\ext\\recall\\s2\\12_vs_shared.json.gz",
+   "horizon": 100,
+   "K": 32
+  },
+  {
+   "family": "recall",
+   "idx": 12,
+   "label": "strong L8 edge hpB0.5",
+   "meta": {
+    "group": "recallw L8 hpB0.5",
+    "cond": "edge",
+    "L": 8,
+    "hp": 0.5,
+    "role": "strong"
+   },
+   "tag": "s2_vs_separate",
+   "path": "results\\rl\\checkpoints\\m46f\\behaviour\\ext\\recall\\s2\\12_vs_separate.json.gz",
+   "horizon": 100,
+   "K": 32
+  },
+  {
+   "family": "recall",
+   "idx": 13,
+   "label": "weak L8 edge hpB0.5",
+   "meta": {
+    "group": "recallw L8 hpB0.5",
+    "cond": "edge",
+    "L": 8,
+    "hp": 0.5,
+    "role": "weak"
+   },
+   "tag": "s2_vs_shared",
+   "path": "results\\rl\\checkpoints\\m46f\\behaviour\\ext\\recall\\s2\\13_vs_shared.json.gz",
+   "horizon": 100,
+   "K": 32
+  },
+  {
+   "family": "recall",
+   "idx": 13,
+   "label": "weak L8 edge hpB0.5",
+   "meta": {
+    "group": "recallw L8 hpB0.5",
+    "cond": "edge",
+    "L": 8,
+    "hp": 0.5,
+    "role": "weak"
+   },
+   "tag": "s2_vs_separate",
+   "path": "results\\rl\\checkpoints\\m46f\\behaviour\\ext\\recall\\s2\\13_vs_separate.json.gz",
+   "horizon": 100,
+   "K": 32
+  },
+  {
+   "family": "recall",
+   "idx": 14,
+   "label": "strong L8 edge hpB0.35",
+   "meta": {
+    "group": "recallw L8 hpB0.35",
+    "cond": "edge",
+    "L": 8,
+    "hp": 0.35,
+    "role": "strong"
+   },
+   "tag": "s2_vs_shared",
+   "path": "results\\rl\\checkpoints\\m46f\\behaviour\\ext\\recall\\s2\\14_vs_shared.json.gz",
+   "horizon": 100,
+   "K": 32
+  },
+  {
+   "family": "recall",
+   "idx": 14,
+   "label": "strong L8 edge hpB0.35",
+   "meta": {
+    "group": "recallw L8 hpB0.35",
+    "cond": "edge",
+    "L": 8,
+    "hp": 0.35,
+    "role": "strong"
+   },
+   "tag": "s2_vs_separate",
+   "path": "results\\rl\\checkpoints\\m46f\\behaviour\\ext\\recall\\s2\\14_vs_separate.json.gz",
+   "horizon": 100,
+   "K": 32
+  },
+  {
+   "family": "recall",
+   "idx": 15,
+   "label": "weak L8 edge hpB0.35",
+   "meta": {
+    "group": "recallw L8 hpB0.35",
+    "cond": "edge",
+    "L": 8,
+    "hp": 0.35,
+    "role": "weak"
+   },
+   "tag": "s2_vs_shared",
+   "path": "results\\rl\\checkpoints\\m46f\\behaviour\\ext\\recall\\s2\\15_vs_shared.json.gz",
+   "horizon": 100,
+   "K": 32
+  },
+  {
+   "family": "recall",
+   "idx": 15,
+   "label": "weak L8 edge hpB0.35",
+   "meta": {
+    "group": "recallw L8 hpB0.35",
+    "cond": "edge",
+    "L": 8,
+    "hp": 0.35,
+    "role": "weak"
+   },
+   "tag": "s2_vs_separate",
+   "path": "results\\rl\\checkpoints\\m46f\\behaviour\\ext\\recall\\s2\\15_vs_separate.json.gz",
+   "horizon": 100,
+   "K": 32
+  },
+  {
+   "family": "recall",
+   "idx": 16,
+   "label": "strong L5 x1.76 hpB0.5",
+   "meta": {
+    "group": "recallw L5 hpB0.5",
+    "cond": "x1.76",
+    "L": 5,
+    "hp": 0.5,
+    "role": "strong"
+   },
+   "tag": "s2_vs_shared",
+   "path": "results\\rl\\checkpoints\\m46f\\behaviour\\ext\\recall\\s2\\16_vs_shared.json.gz",
+   "horizon": 100,
+   "K": 32
+  },
+  {
+   "family": "recall",
+   "idx": 16,
+   "label": "strong L5 x1.76 hpB0.5",
+   "meta": {
+    "group": "recallw L5 hpB0.5",
+    "cond": "x1.76",
+    "L": 5,
+    "hp": 0.5,
+    "role": "strong"
+   },
+   "tag": "s2_vs_separate",
+   "path": "results\\rl\\checkpoints\\m46f\\behaviour\\ext\\recall\\s2\\16_vs_separate.json.gz",
+   "horizon": 100,
+   "K": 32
+  },
+  {
+   "family": "recall",
+   "idx": 17,
+   "label": "weak L5 x1.76 hpB0.5",
+   "meta": {
+    "group": "recallw L5 hpB0.5",
+    "cond": "x1.76",
+    "L": 5,
+    "hp": 0.5,
+    "role": "weak"
+   },
+   "tag": "s2_vs_shared",
+   "path": "results\\rl\\checkpoints\\m46f\\behaviour\\ext\\recall\\s2\\17_vs_shared.json.gz",
+   "horizon": 100,
+   "K": 32
+  },
+  {
+   "family": "recall",
+   "idx": 17,
+   "label": "weak L5 x1.76 hpB0.5",
+   "meta": {
+    "group": "recallw L5 hpB0.5",
+    "cond": "x1.76",
+    "L": 5,
+    "hp": 0.5,
+    "role": "weak"
+   },
+   "tag": "s2_vs_separate",
+   "path": "results\\rl\\checkpoints\\m46f\\behaviour\\ext\\recall\\s2\\17_vs_separate.json.gz",
+   "horizon": 100,
+   "K": 32
+  },
+  {
+   "family": "recall",
+   "idx": 18,
+   "label": "strong L5 x1.76 hpB0.35",
+   "meta": {
+    "group": "recallw L5 hpB0.35",
+    "cond": "x1.76",
+    "L": 5,
+    "hp": 0.35,
+    "role": "strong"
+   },
+   "tag": "s2_vs_shared",
+   "path": "results\\rl\\checkpoints\\m46f\\behaviour\\ext\\recall\\s2\\18_vs_shared.json.gz",
+   "horizon": 100,
+   "K": 32
+  },
+  {
+   "family": "recall",
+   "idx": 18,
+   "label": "strong L5 x1.76 hpB0.35",
+   "meta": {
+    "group": "recallw L5 hpB0.35",
+    "cond": "x1.76",
+    "L": 5,
+    "hp": 0.35,
+    "role": "strong"
+   },
+   "tag": "s2_vs_separate",
+   "path": "results\\rl\\checkpoints\\m46f\\behaviour\\ext\\recall\\s2\\18_vs_separate.json.gz",
+   "horizon": 100,
+   "K": 32
+  },
+  {
+   "family": "recall",
+   "idx": 19,
+   "label": "weak L5 x1.76 hpB0.35",
+   "meta": {
+    "group": "recallw L5 hpB0.35",
+    "cond": "x1.76",
+    "L": 5,
+    "hp": 0.35,
+    "role": "weak"
+   },
+   "tag": "s2_vs_shared",
+   "path": "results\\rl\\checkpoints\\m46f\\behaviour\\ext\\recall\\s2\\19_vs_shared.json.gz",
+   "horizon": 100,
+   "K": 32
+  },
+  {
+   "family": "recall",
+   "idx": 19,
+   "label": "weak L5 x1.76 hpB0.35",
+   "meta": {
+    "group": "recallw L5 hpB0.35",
+    "cond": "x1.76",
+    "L": 5,
+    "hp": 0.35,
+    "role": "weak"
+   },
+   "tag": "s2_vs_separate",
+   "path": "results\\rl\\checkpoints\\m46f\\behaviour\\ext\\recall\\s2\\19_vs_separate.json.gz",
+   "horizon": 100,
+   "K": 32
+  },
+  {
+   "family": "recall",
+   "idx": 20,
+   "label": "strong L8 x1.76 hpB0.5",
+   "meta": {
+    "group": "recallw L8 hpB0.5",
+    "cond": "x1.76",
+    "L": 8,
+    "hp": 0.5,
+    "role": "strong"
+   },
+   "tag": "s2_vs_shared",
+   "path": "results\\rl\\checkpoints\\m46f\\behaviour\\ext\\recall\\s2\\20_vs_shared.json.gz",
+   "horizon": 100,
+   "K": 32
+  },
+  {
+   "family": "recall",
+   "idx": 20,
+   "label": "strong L8 x1.76 hpB0.5",
+   "meta": {
+    "group": "recallw L8 hpB0.5",
+    "cond": "x1.76",
+    "L": 8,
+    "hp": 0.5,
+    "role": "strong"
+   },
+   "tag": "s2_vs_separate",
+   "path": "results\\rl\\checkpoints\\m46f\\behaviour\\ext\\recall\\s2\\20_vs_separate.json.gz",
+   "horizon": 100,
+   "K": 32
+  },
+  {
+   "family": "recall",
+   "idx": 21,
+   "label": "weak L8 x1.76 hpB0.5",
+   "meta": {
+    "group": "recallw L8 hpB0.5",
+    "cond": "x1.76",
+    "L": 8,
+    "hp": 0.5,
+    "role": "weak"
+   },
+   "tag": "s2_vs_shared",
+   "path": "results\\rl\\checkpoints\\m46f\\behaviour\\ext\\recall\\s2\\21_vs_shared.json.gz",
+   "horizon": 100,
+   "K": 32
+  },
+  {
+   "family": "recall",
+   "idx": 21,
+   "label": "weak L8 x1.76 hpB0.5",
+   "meta": {
+    "group": "recallw L8 hpB0.5",
+    "cond": "x1.76",
+    "L": 8,
+    "hp": 0.5,
+    "role": "weak"
+   },
+   "tag": "s2_vs_separate",
+   "path": "results\\rl\\checkpoints\\m46f\\behaviour\\ext\\recall\\s2\\21_vs_separate.json.gz",
+   "horizon": 100,
+   "K": 32
+  },
+  {
+   "family": "recall",
+   "idx": 22,
+   "label": "strong L8 x1.76 hpB0.35",
+   "meta": {
+    "group": "recallw L8 hpB0.35",
+    "cond": "x1.76",
+    "L": 8,
+    "hp": 0.35,
+    "role": "strong"
+   },
+   "tag": "s2_vs_shared",
+   "path": "results\\rl\\checkpoints\\m46f\\behaviour\\ext\\recall\\s2\\22_vs_shared.json.gz",
+   "horizon": 100,
+   "K": 32
+  },
+  {
+   "family": "recall",
+   "idx": 22,
+   "label": "strong L8 x1.76 hpB0.35",
+   "meta": {
+    "group": "recallw L8 hpB0.35",
+    "cond": "x1.76",
+    "L": 8,
+    "hp": 0.35,
+    "role": "strong"
+   },
+   "tag": "s2_vs_separate",
+   "path": "results\\rl\\checkpoints\\m46f\\behaviour\\ext\\recall\\s2\\22_vs_separate.json.gz",
+   "horizon": 100,
+   "K": 32
+  },
+  {
+   "family": "recall",
+   "idx": 23,
+   "label": "weak L8 x1.76 hpB0.35",
+   "meta": {
+    "group": "recallw L8 hpB0.35",
+    "cond": "x1.76",
+    "L": 8,
+    "hp": 0.35,
+    "role": "weak"
+   },
+   "tag": "s2_vs_shared",
+   "path": "results\\rl\\checkpoints\\m46f\\behaviour\\ext\\recall\\s2\\23_vs_shared.json.gz",
+   "horizon": 100,
+   "K": 32
+  },
+  {
+   "family": "recall",
+   "idx": 23,
+   "label": "weak L8 x1.76 hpB0.35",
+   "meta": {
+    "group": "recallw L8 hpB0.35",
+    "cond": "x1.76",
+    "L": 8,
+    "hp": 0.35,
+    "role": "weak"
+   },
+   "tag": "s2_vs_separate",
+   "path": "results\\rl\\checkpoints\\m46f\\behaviour\\ext\\recall\\s2\\23_vs_separate.json.gz",
+   "horizon": 100,
+   "K": 32
+  },
+  {
+   "family": "recall",
+   "idx": 0,
+   "label": "strong L5 equal hpB0.5",
+   "meta": {
+    "group": "recallw L5 hpB0.5",
+    "cond": "equal",
+    "L": 5,
+    "hp": 0.5,
+    "role": "strong"
+   },
+   "tag": "s3_vs_shared",
+   "path": "results\\rl\\checkpoints\\m46f\\behaviour\\ext\\recall\\s3\\0_vs_shared.json.gz",
+   "horizon": 100,
+   "K": 32
+  },
+  {
+   "family": "recall",
+   "idx": 0,
+   "label": "strong L5 equal hpB0.5",
+   "meta": {
+    "group": "recallw L5 hpB0.5",
+    "cond": "equal",
+    "L": 5,
+    "hp": 0.5,
+    "role": "strong"
+   },
+   "tag": "s3_vs_separate",
+   "path": "results\\rl\\checkpoints\\m46f\\behaviour\\ext\\recall\\s3\\0_vs_separate.json.gz",
+   "horizon": 100,
+   "K": 32
+  },
+  {
+   "family": "recall",
+   "idx": 1,
+   "label": "weak L5 equal hpB0.5",
+   "meta": {
+    "group": "recallw L5 hpB0.5",
+    "cond": "equal",
+    "L": 5,
+    "hp": 0.5,
+    "role": "weak"
+   },
+   "tag": "s3_vs_shared",
+   "path": "results\\rl\\checkpoints\\m46f\\behaviour\\ext\\recall\\s3\\1_vs_shared.json.gz",
+   "horizon": 100,
+   "K": 32
+  },
+  {
+   "family": "recall",
+   "idx": 1,
+   "label": "weak L5 equal hpB0.5",
+   "meta": {
+    "group": "recallw L5 hpB0.5",
+    "cond": "equal",
+    "L": 5,
+    "hp": 0.5,
+    "role": "weak"
+   },
+   "tag": "s3_vs_separate",
+   "path": "results\\rl\\checkpoints\\m46f\\behaviour\\ext\\recall\\s3\\1_vs_separate.json.gz",
+   "horizon": 100,
+   "K": 32
+  },
+  {
+   "family": "recall",
+   "idx": 2,
+   "label": "strong L5 equal hpB0.35",
+   "meta": {
+    "group": "recallw L5 hpB0.35",
+    "cond": "equal",
+    "L": 5,
+    "hp": 0.35,
+    "role": "strong"
+   },
+   "tag": "s3_vs_shared",
+   "path": "results\\rl\\checkpoints\\m46f\\behaviour\\ext\\recall\\s3\\2_vs_shared.json.gz",
+   "horizon": 100,
+   "K": 32
+  },
+  {
+   "family": "recall",
+   "idx": 2,
+   "label": "strong L5 equal hpB0.35",
+   "meta": {
+    "group": "recallw L5 hpB0.35",
+    "cond": "equal",
+    "L": 5,
+    "hp": 0.35,
+    "role": "strong"
+   },
+   "tag": "s3_vs_separate",
+   "path": "results\\rl\\checkpoints\\m46f\\behaviour\\ext\\recall\\s3\\2_vs_separate.json.gz",
+   "horizon": 100,
+   "K": 32
+  },
+  {
+   "family": "recall",
+   "idx": 3,
+   "label": "weak L5 equal hpB0.35",
+   "meta": {
+    "group": "recallw L5 hpB0.35",
+    "cond": "equal",
+    "L": 5,
+    "hp": 0.35,
+    "role": "weak"
+   },
+   "tag": "s3_vs_shared",
+   "path": "results\\rl\\checkpoints\\m46f\\behaviour\\ext\\recall\\s3\\3_vs_shared.json.gz",
+   "horizon": 100,
+   "K": 32
+  },
+  {
+   "family": "recall",
+   "idx": 3,
+   "label": "weak L5 equal hpB0.35",
+   "meta": {
+    "group": "recallw L5 hpB0.35",
+    "cond": "equal",
+    "L": 5,
+    "hp": 0.35,
+    "role": "weak"
+   },
+   "tag": "s3_vs_separate",
+   "path": "results\\rl\\checkpoints\\m46f\\behaviour\\ext\\recall\\s3\\3_vs_separate.json.gz",
+   "horizon": 100,
+   "K": 32
+  },
+  {
+   "family": "recall",
+   "idx": 4,
+   "label": "strong L8 equal hpB0.5",
+   "meta": {
+    "group": "recallw L8 hpB0.5",
+    "cond": "equal",
+    "L": 8,
+    "hp": 0.5,
+    "role": "strong"
+   },
+   "tag": "s3_vs_shared",
+   "path": "results\\rl\\checkpoints\\m46f\\behaviour\\ext\\recall\\s3\\4_vs_shared.json.gz",
+   "horizon": 100,
+   "K": 32
+  },
+  {
+   "family": "recall",
+   "idx": 4,
+   "label": "strong L8 equal hpB0.5",
+   "meta": {
+    "group": "recallw L8 hpB0.5",
+    "cond": "equal",
+    "L": 8,
+    "hp": 0.5,
+    "role": "strong"
+   },
+   "tag": "s3_vs_separate",
+   "path": "results\\rl\\checkpoints\\m46f\\behaviour\\ext\\recall\\s3\\4_vs_separate.json.gz",
+   "horizon": 100,
+   "K": 32
+  },
+  {
+   "family": "recall",
+   "idx": 5,
+   "label": "weak L8 equal hpB0.5",
+   "meta": {
+    "group": "recallw L8 hpB0.5",
+    "cond": "equal",
+    "L": 8,
+    "hp": 0.5,
+    "role": "weak"
+   },
+   "tag": "s3_vs_shared",
+   "path": "results\\rl\\checkpoints\\m46f\\behaviour\\ext\\recall\\s3\\5_vs_shared.json.gz",
+   "horizon": 100,
+   "K": 32
+  },
+  {
+   "family": "recall",
+   "idx": 5,
+   "label": "weak L8 equal hpB0.5",
+   "meta": {
+    "group": "recallw L8 hpB0.5",
+    "cond": "equal",
+    "L": 8,
+    "hp": 0.5,
+    "role": "weak"
+   },
+   "tag": "s3_vs_separate",
+   "path": "results\\rl\\checkpoints\\m46f\\behaviour\\ext\\recall\\s3\\5_vs_separate.json.gz",
+   "horizon": 100,
+   "K": 32
+  },
+  {
+   "family": "recall",
+   "idx": 6,
+   "label": "strong L8 equal hpB0.35",
+   "meta": {
+    "group": "recallw L8 hpB0.35",
+    "cond": "equal",
+    "L": 8,
+    "hp": 0.35,
+    "role": "strong"
+   },
+   "tag": "s3_vs_shared",
+   "path": "results\\rl\\checkpoints\\m46f\\behaviour\\ext\\recall\\s3\\6_vs_shared.json.gz",
+   "horizon": 100,
+   "K": 32
+  },
+  {
+   "family": "recall",
+   "idx": 6,
+   "label": "strong L8 equal hpB0.35",
+   "meta": {
+    "group": "recallw L8 hpB0.35",
+    "cond": "equal",
+    "L": 8,
+    "hp": 0.35,
+    "role": "strong"
+   },
+   "tag": "s3_vs_separate",
+   "path": "results\\rl\\checkpoints\\m46f\\behaviour\\ext\\recall\\s3\\6_vs_separate.json.gz",
+   "horizon": 100,
+   "K": 32
+  },
+  {
+   "family": "recall",
+   "idx": 7,
+   "label": "weak L8 equal hpB0.35",
+   "meta": {
+    "group": "recallw L8 hpB0.35",
+    "cond": "equal",
+    "L": 8,
+    "hp": 0.35,
+    "role": "weak"
+   },
+   "tag": "s3_vs_shared",
+   "path": "results\\rl\\checkpoints\\m46f\\behaviour\\ext\\recall\\s3\\7_vs_shared.json.gz",
+   "horizon": 100,
+   "K": 32
+  },
+  {
+   "family": "recall",
+   "idx": 7,
+   "label": "weak L8 equal hpB0.35",
+   "meta": {
+    "group": "recallw L8 hpB0.35",
+    "cond": "equal",
+    "L": 8,
+    "hp": 0.35,
+    "role": "weak"
+   },
+   "tag": "s3_vs_separate",
+   "path": "results\\rl\\checkpoints\\m46f\\behaviour\\ext\\recall\\s3\\7_vs_separate.json.gz",
+   "horizon": 100,
+   "K": 32
+  },
+  {
+   "family": "recall",
+   "idx": 8,
+   "label": "strong L5 edge hpB0.5",
+   "meta": {
+    "group": "recallw L5 hpB0.5",
+    "cond": "edge",
+    "L": 5,
+    "hp": 0.5,
+    "role": "strong"
+   },
+   "tag": "s3_vs_shared",
+   "path": "results\\rl\\checkpoints\\m46f\\behaviour\\ext\\recall\\s3\\8_vs_shared.json.gz",
+   "horizon": 100,
+   "K": 32
+  },
+  {
+   "family": "recall",
+   "idx": 8,
+   "label": "strong L5 edge hpB0.5",
+   "meta": {
+    "group": "recallw L5 hpB0.5",
+    "cond": "edge",
+    "L": 5,
+    "hp": 0.5,
+    "role": "strong"
+   },
+   "tag": "s3_vs_separate",
+   "path": "results\\rl\\checkpoints\\m46f\\behaviour\\ext\\recall\\s3\\8_vs_separate.json.gz",
+   "horizon": 100,
+   "K": 32
+  },
+  {
+   "family": "recall",
+   "idx": 9,
+   "label": "weak L5 edge hpB0.5",
+   "meta": {
+    "group": "recallw L5 hpB0.5",
+    "cond": "edge",
+    "L": 5,
+    "hp": 0.5,
+    "role": "weak"
+   },
+   "tag": "s3_vs_shared",
+   "path": "results\\rl\\checkpoints\\m46f\\behaviour\\ext\\recall\\s3\\9_vs_shared.json.gz",
+   "horizon": 100,
+   "K": 32
+  },
+  {
+   "family": "recall",
+   "idx": 9,
+   "label": "weak L5 edge hpB0.5",
+   "meta": {
+    "group": "recallw L5 hpB0.5",
+    "cond": "edge",
+    "L": 5,
+    "hp": 0.5,
+    "role": "weak"
+   },
+   "tag": "s3_vs_separate",
+   "path": "results\\rl\\checkpoints\\m46f\\behaviour\\ext\\recall\\s3\\9_vs_separate.json.gz",
+   "horizon": 100,
+   "K": 32
+  },
+  {
+   "family": "recall",
+   "idx": 10,
+   "label": "strong L5 edge hpB0.35",
+   "meta": {
+    "group": "recallw L5 hpB0.35",
+    "cond": "edge",
+    "L": 5,
+    "hp": 0.35,
+    "role": "strong"
+   },
+   "tag": "s3_vs_shared",
+   "path": "results\\rl\\checkpoints\\m46f\\behaviour\\ext\\recall\\s3\\10_vs_shared.json.gz",
+   "horizon": 100,
+   "K": 32
+  },
+  {
+   "family": "recall",
+   "idx": 10,
+   "label": "strong L5 edge hpB0.35",
+   "meta": {
+    "group": "recallw L5 hpB0.35",
+    "cond": "edge",
+    "L": 5,
+    "hp": 0.35,
+    "role": "strong"
+   },
+   "tag": "s3_vs_separate",
+   "path": "results\\rl\\checkpoints\\m46f\\behaviour\\ext\\recall\\s3\\10_vs_separate.json.gz",
+   "horizon": 100,
+   "K": 32
+  },
+  {
+   "family": "recall",
+   "idx": 11,
+   "label": "weak L5 edge hpB0.35",
+   "meta": {
+    "group": "recallw L5 hpB0.35",
+    "cond": "edge",
+    "L": 5,
+    "hp": 0.35,
+    "role": "weak"
+   },
+   "tag": "s3_vs_shared",
+   "path": "results\\rl\\checkpoints\\m46f\\behaviour\\ext\\recall\\s3\\11_vs_shared.json.gz",
+   "horizon": 100,
+   "K": 32
+  },
+  {
+   "family": "recall",
+   "idx": 11,
+   "label": "weak L5 edge hpB0.35",
+   "meta": {
+    "group": "recallw L5 hpB0.35",
+    "cond": "edge",
+    "L": 5,
+    "hp": 0.35,
+    "role": "weak"
+   },
+   "tag": "s3_vs_separate",
+   "path": "results\\rl\\checkpoints\\m46f\\behaviour\\ext\\recall\\s3\\11_vs_separate.json.gz",
+   "horizon": 100,
+   "K": 32
+  },
+  {
+   "family": "recall",
+   "idx": 12,
+   "label": "strong L8 edge hpB0.5",
+   "meta": {
+    "group": "recallw L8 hpB0.5",
+    "cond": "edge",
+    "L": 8,
+    "hp": 0.5,
+    "role": "strong"
+   },
+   "tag": "s3_vs_shared",
+   "path": "results\\rl\\checkpoints\\m46f\\behaviour\\ext\\recall\\s3\\12_vs_shared.json.gz",
+   "horizon": 100,
+   "K": 32
+  },
+  {
+   "family": "recall",
+   "idx": 12,
+   "label": "strong L8 edge hpB0.5",
+   "meta": {
+    "group": "recallw L8 hpB0.5",
+    "cond": "edge",
+    "L": 8,
+    "hp": 0.5,
+    "role": "strong"
+   },
+   "tag": "s3_vs_separate",
+   "path": "results\\rl\\checkpoints\\m46f\\behaviour\\ext\\recall\\s3\\12_vs_separate.json.gz",
+   "horizon": 100,
+   "K": 32
+  },
+  {
+   "family": "recall",
+   "idx": 13,
+   "label": "weak L8 edge hpB0.5",
+   "meta": {
+    "group": "recallw L8 hpB0.5",
+    "cond": "edge",
+    "L": 8,
+    "hp": 0.5,
+    "role": "weak"
+   },
+   "tag": "s3_vs_shared",
+   "path": "results\\rl\\checkpoints\\m46f\\behaviour\\ext\\recall\\s3\\13_vs_shared.json.gz",
+   "horizon": 100,
+   "K": 32
+  },
+  {
+   "family": "recall",
+   "idx": 13,
+   "label": "weak L8 edge hpB0.5",
+   "meta": {
+    "group": "recallw L8 hpB0.5",
+    "cond": "edge",
+    "L": 8,
+    "hp": 0.5,
+    "role": "weak"
+   },
+   "tag": "s3_vs_separate",
+   "path": "results\\rl\\checkpoints\\m46f\\behaviour\\ext\\recall\\s3\\13_vs_separate.json.gz",
+   "horizon": 100,
+   "K": 32
+  },
+  {
+   "family": "recall",
+   "idx": 14,
+   "label": "strong L8 edge hpB0.35",
+   "meta": {
+    "group": "recallw L8 hpB0.35",
+    "cond": "edge",
+    "L": 8,
+    "hp": 0.35,
+    "role": "strong"
+   },
+   "tag": "s3_vs_shared",
+   "path": "results\\rl\\checkpoints\\m46f\\behaviour\\ext\\recall\\s3\\14_vs_shared.json.gz",
+   "horizon": 100,
+   "K": 32
+  },
+  {
+   "family": "recall",
+   "idx": 14,
+   "label": "strong L8 edge hpB0.35",
+   "meta": {
+    "group": "recallw L8 hpB0.35",
+    "cond": "edge",
+    "L": 8,
+    "hp": 0.35,
+    "role": "strong"
+   },
+   "tag": "s3_vs_separate",
+   "path": "results\\rl\\checkpoints\\m46f\\behaviour\\ext\\recall\\s3\\14_vs_separate.json.gz",
+   "horizon": 100,
+   "K": 32
+  },
+  {
+   "family": "recall",
+   "idx": 15,
+   "label": "weak L8 edge hpB0.35",
+   "meta": {
+    "group": "recallw L8 hpB0.35",
+    "cond": "edge",
+    "L": 8,
+    "hp": 0.35,
+    "role": "weak"
+   },
+   "tag": "s3_vs_shared",
+   "path": "results\\rl\\checkpoints\\m46f\\behaviour\\ext\\recall\\s3\\15_vs_shared.json.gz",
+   "horizon": 100,
+   "K": 32
+  },
+  {
+   "family": "recall",
+   "idx": 15,
+   "label": "weak L8 edge hpB0.35",
+   "meta": {
+    "group": "recallw L8 hpB0.35",
+    "cond": "edge",
+    "L": 8,
+    "hp": 0.35,
+    "role": "weak"
+   },
+   "tag": "s3_vs_separate",
+   "path": "results\\rl\\checkpoints\\m46f\\behaviour\\ext\\recall\\s3\\15_vs_separate.json.gz",
+   "horizon": 100,
+   "K": 32
+  },
+  {
+   "family": "recall",
+   "idx": 16,
+   "label": "strong L5 x1.76 hpB0.5",
+   "meta": {
+    "group": "recallw L5 hpB0.5",
+    "cond": "x1.76",
+    "L": 5,
+    "hp": 0.5,
+    "role": "strong"
+   },
+   "tag": "s3_vs_shared",
+   "path": "results\\rl\\checkpoints\\m46f\\behaviour\\ext\\recall\\s3\\16_vs_shared.json.gz",
+   "horizon": 100,
+   "K": 32
+  },
+  {
+   "family": "recall",
+   "idx": 16,
+   "label": "strong L5 x1.76 hpB0.5",
+   "meta": {
+    "group": "recallw L5 hpB0.5",
+    "cond": "x1.76",
+    "L": 5,
+    "hp": 0.5,
+    "role": "strong"
+   },
+   "tag": "s3_vs_separate",
+   "path": "results\\rl\\checkpoints\\m46f\\behaviour\\ext\\recall\\s3\\16_vs_separate.json.gz",
+   "horizon": 100,
+   "K": 32
+  },
+  {
+   "family": "recall",
+   "idx": 17,
+   "label": "weak L5 x1.76 hpB0.5",
+   "meta": {
+    "group": "recallw L5 hpB0.5",
+    "cond": "x1.76",
+    "L": 5,
+    "hp": 0.5,
+    "role": "weak"
+   },
+   "tag": "s3_vs_shared",
+   "path": "results\\rl\\checkpoints\\m46f\\behaviour\\ext\\recall\\s3\\17_vs_shared.json.gz",
+   "horizon": 100,
+   "K": 32
+  },
+  {
+   "family": "recall",
+   "idx": 17,
+   "label": "weak L5 x1.76 hpB0.5",
+   "meta": {
+    "group": "recallw L5 hpB0.5",
+    "cond": "x1.76",
+    "L": 5,
+    "hp": 0.5,
+    "role": "weak"
+   },
+   "tag": "s3_vs_separate",
+   "path": "results\\rl\\checkpoints\\m46f\\behaviour\\ext\\recall\\s3\\17_vs_separate.json.gz",
+   "horizon": 100,
+   "K": 32
+  },
+  {
+   "family": "recall",
+   "idx": 18,
+   "label": "strong L5 x1.76 hpB0.35",
+   "meta": {
+    "group": "recallw L5 hpB0.35",
+    "cond": "x1.76",
+    "L": 5,
+    "hp": 0.35,
+    "role": "strong"
+   },
+   "tag": "s3_vs_shared",
+   "path": "results\\rl\\checkpoints\\m46f\\behaviour\\ext\\recall\\s3\\18_vs_shared.json.gz",
+   "horizon": 100,
+   "K": 32
+  },
+  {
+   "family": "recall",
+   "idx": 18,
+   "label": "strong L5 x1.76 hpB0.35",
+   "meta": {
+    "group": "recallw L5 hpB0.35",
+    "cond": "x1.76",
+    "L": 5,
+    "hp": 0.35,
+    "role": "strong"
+   },
+   "tag": "s3_vs_separate",
+   "path": "results\\rl\\checkpoints\\m46f\\behaviour\\ext\\recall\\s3\\18_vs_separate.json.gz",
+   "horizon": 100,
+   "K": 32
+  },
+  {
+   "family": "recall",
+   "idx": 19,
+   "label": "weak L5 x1.76 hpB0.35",
+   "meta": {
+    "group": "recallw L5 hpB0.35",
+    "cond": "x1.76",
+    "L": 5,
+    "hp": 0.35,
+    "role": "weak"
+   },
+   "tag": "s3_vs_shared",
+   "path": "results\\rl\\checkpoints\\m46f\\behaviour\\ext\\recall\\s3\\19_vs_shared.json.gz",
+   "horizon": 100,
+   "K": 32
+  },
+  {
+   "family": "recall",
+   "idx": 19,
+   "label": "weak L5 x1.76 hpB0.35",
+   "meta": {
+    "group": "recallw L5 hpB0.35",
+    "cond": "x1.76",
+    "L": 5,
+    "hp": 0.35,
+    "role": "weak"
+   },
+   "tag": "s3_vs_separate",
+   "path": "results\\rl\\checkpoints\\m46f\\behaviour\\ext\\recall\\s3\\19_vs_separate.json.gz",
+   "horizon": 100,
+   "K": 32
+  },
+  {
+   "family": "recall",
+   "idx": 20,
+   "label": "strong L8 x1.76 hpB0.5",
+   "meta": {
+    "group": "recallw L8 hpB0.5",
+    "cond": "x1.76",
+    "L": 8,
+    "hp": 0.5,
+    "role": "strong"
+   },
+   "tag": "s3_vs_shared",
+   "path": "results\\rl\\checkpoints\\m46f\\behaviour\\ext\\recall\\s3\\20_vs_shared.json.gz",
+   "horizon": 100,
+   "K": 32
+  },
+  {
+   "family": "recall",
+   "idx": 20,
+   "label": "strong L8 x1.76 hpB0.5",
+   "meta": {
+    "group": "recallw L8 hpB0.5",
+    "cond": "x1.76",
+    "L": 8,
+    "hp": 0.5,
+    "role": "strong"
+   },
+   "tag": "s3_vs_separate",
+   "path": "results\\rl\\checkpoints\\m46f\\behaviour\\ext\\recall\\s3\\20_vs_separate.json.gz",
+   "horizon": 100,
+   "K": 32
+  },
+  {
+   "family": "recall",
+   "idx": 21,
+   "label": "weak L8 x1.76 hpB0.5",
+   "meta": {
+    "group": "recallw L8 hpB0.5",
+    "cond": "x1.76",
+    "L": 8,
+    "hp": 0.5,
+    "role": "weak"
+   },
+   "tag": "s3_vs_shared",
+   "path": "results\\rl\\checkpoints\\m46f\\behaviour\\ext\\recall\\s3\\21_vs_shared.json.gz",
+   "horizon": 100,
+   "K": 32
+  },
+  {
+   "family": "recall",
+   "idx": 21,
+   "label": "weak L8 x1.76 hpB0.5",
+   "meta": {
+    "group": "recallw L8 hpB0.5",
+    "cond": "x1.76",
+    "L": 8,
+    "hp": 0.5,
+    "role": "weak"
+   },
+   "tag": "s3_vs_separate",
+   "path": "results\\rl\\checkpoints\\m46f\\behaviour\\ext\\recall\\s3\\21_vs_separate.json.gz",
+   "horizon": 100,
+   "K": 32
+  },
+  {
+   "family": "recall",
+   "idx": 22,
+   "label": "strong L8 x1.76 hpB0.35",
+   "meta": {
+    "group": "recallw L8 hpB0.35",
+    "cond": "x1.76",
+    "L": 8,
+    "hp": 0.35,
+    "role": "strong"
+   },
+   "tag": "s3_vs_shared",
+   "path": "results\\rl\\checkpoints\\m46f\\behaviour\\ext\\recall\\s3\\22_vs_shared.json.gz",
+   "horizon": 100,
+   "K": 32
+  },
+  {
+   "family": "recall",
+   "idx": 22,
+   "label": "strong L8 x1.76 hpB0.35",
+   "meta": {
+    "group": "recallw L8 hpB0.35",
+    "cond": "x1.76",
+    "L": 8,
+    "hp": 0.35,
+    "role": "strong"
+   },
+   "tag": "s3_vs_separate",
+   "path": "results\\rl\\checkpoints\\m46f\\behaviour\\ext\\recall\\s3\\22_vs_separate.json.gz",
+   "horizon": 100,
+   "K": 32
+  },
+  {
+   "family": "recall",
+   "idx": 23,
+   "label": "weak L8 x1.76 hpB0.35",
+   "meta": {
+    "group": "recallw L8 hpB0.35",
+    "cond": "x1.76",
+    "L": 8,
+    "hp": 0.35,
+    "role": "weak"
+   },
+   "tag": "s3_vs_shared",
+   "path": "results\\rl\\checkpoints\\m46f\\behaviour\\ext\\recall\\s3\\23_vs_shared.json.gz",
+   "horizon": 100,
+   "K": 32
+  },
+  {
+   "family": "recall",
+   "idx": 23,
+   "label": "weak L8 x1.76 hpB0.35",
+   "meta": {
+    "group": "recallw L8 hpB0.35",
+    "cond": "x1.76",
+    "L": 8,
+    "hp": 0.35,
+    "role": "weak"
+   },
+   "tag": "s3_vs_separate",
+   "path": "results\\rl\\checkpoints\\m46f\\behaviour\\ext\\recall\\s3\\23_vs_separate.json.gz",
+   "horizon": 100,
+   "K": 32
+  },
+  {
+   "family": "recall",
+   "idx": 0,
+   "label": "strong L5 equal hpB0.5",
+   "meta": {
+    "group": "recallw L5 hpB0.5",
+    "cond": "equal",
+    "L": 5,
+    "hp": 0.5,
+    "role": "strong"
+   },
+   "tag": "s4_vs_shared",
+   "path": "results\\rl\\checkpoints\\m46f\\behaviour\\ext\\recall\\s4\\0_vs_shared.json.gz",
+   "horizon": 100,
+   "K": 32
+  },
+  {
+   "family": "recall",
+   "idx": 0,
+   "label": "strong L5 equal hpB0.5",
+   "meta": {
+    "group": "recallw L5 hpB0.5",
+    "cond": "equal",
+    "L": 5,
+    "hp": 0.5,
+    "role": "strong"
+   },
+   "tag": "s4_vs_separate",
+   "path": "results\\rl\\checkpoints\\m46f\\behaviour\\ext\\recall\\s4\\0_vs_separate.json.gz",
+   "horizon": 100,
+   "K": 32
+  },
+  {
+   "family": "recall",
+   "idx": 1,
+   "label": "weak L5 equal hpB0.5",
+   "meta": {
+    "group": "recallw L5 hpB0.5",
+    "cond": "equal",
+    "L": 5,
+    "hp": 0.5,
+    "role": "weak"
+   },
+   "tag": "s4_vs_shared",
+   "path": "results\\rl\\checkpoints\\m46f\\behaviour\\ext\\recall\\s4\\1_vs_shared.json.gz",
+   "horizon": 100,
+   "K": 32
+  },
+  {
+   "family": "recall",
+   "idx": 1,
+   "label": "weak L5 equal hpB0.5",
+   "meta": {
+    "group": "recallw L5 hpB0.5",
+    "cond": "equal",
+    "L": 5,
+    "hp": 0.5,
+    "role": "weak"
+   },
+   "tag": "s4_vs_separate",
+   "path": "results\\rl\\checkpoints\\m46f\\behaviour\\ext\\recall\\s4\\1_vs_separate.json.gz",
+   "horizon": 100,
+   "K": 32
+  },
+  {
+   "family": "recall",
+   "idx": 2,
+   "label": "strong L5 equal hpB0.35",
+   "meta": {
+    "group": "recallw L5 hpB0.35",
+    "cond": "equal",
+    "L": 5,
+    "hp": 0.35,
+    "role": "strong"
+   },
+   "tag": "s4_vs_shared",
+   "path": "results\\rl\\checkpoints\\m46f\\behaviour\\ext\\recall\\s4\\2_vs_shared.json.gz",
+   "horizon": 100,
+   "K": 32
+  },
+  {
+   "family": "recall",
+   "idx": 2,
+   "label": "strong L5 equal hpB0.35",
+   "meta": {
+    "group": "recallw L5 hpB0.35",
+    "cond": "equal",
+    "L": 5,
+    "hp": 0.35,
+    "role": "strong"
+   },
+   "tag": "s4_vs_separate",
+   "path": "results\\rl\\checkpoints\\m46f\\behaviour\\ext\\recall\\s4\\2_vs_separate.json.gz",
+   "horizon": 100,
+   "K": 32
+  },
+  {
+   "family": "recall",
+   "idx": 3,
+   "label": "weak L5 equal hpB0.35",
+   "meta": {
+    "group": "recallw L5 hpB0.35",
+    "cond": "equal",
+    "L": 5,
+    "hp": 0.35,
+    "role": "weak"
+   },
+   "tag": "s4_vs_shared",
+   "path": "results\\rl\\checkpoints\\m46f\\behaviour\\ext\\recall\\s4\\3_vs_shared.json.gz",
+   "horizon": 100,
+   "K": 32
+  },
+  {
+   "family": "recall",
+   "idx": 3,
+   "label": "weak L5 equal hpB0.35",
+   "meta": {
+    "group": "recallw L5 hpB0.35",
+    "cond": "equal",
+    "L": 5,
+    "hp": 0.35,
+    "role": "weak"
+   },
+   "tag": "s4_vs_separate",
+   "path": "results\\rl\\checkpoints\\m46f\\behaviour\\ext\\recall\\s4\\3_vs_separate.json.gz",
+   "horizon": 100,
+   "K": 32
+  },
+  {
+   "family": "recall",
+   "idx": 4,
+   "label": "strong L8 equal hpB0.5",
+   "meta": {
+    "group": "recallw L8 hpB0.5",
+    "cond": "equal",
+    "L": 8,
+    "hp": 0.5,
+    "role": "strong"
+   },
+   "tag": "s4_vs_shared",
+   "path": "results\\rl\\checkpoints\\m46f\\behaviour\\ext\\recall\\s4\\4_vs_shared.json.gz",
+   "horizon": 100,
+   "K": 32
+  },
+  {
+   "family": "recall",
+   "idx": 4,
+   "label": "strong L8 equal hpB0.5",
+   "meta": {
+    "group": "recallw L8 hpB0.5",
+    "cond": "equal",
+    "L": 8,
+    "hp": 0.5,
+    "role": "strong"
+   },
+   "tag": "s4_vs_separate",
+   "path": "results\\rl\\checkpoints\\m46f\\behaviour\\ext\\recall\\s4\\4_vs_separate.json.gz",
+   "horizon": 100,
+   "K": 32
+  },
+  {
+   "family": "recall",
+   "idx": 5,
+   "label": "weak L8 equal hpB0.5",
+   "meta": {
+    "group": "recallw L8 hpB0.5",
+    "cond": "equal",
+    "L": 8,
+    "hp": 0.5,
+    "role": "weak"
+   },
+   "tag": "s4_vs_shared",
+   "path": "results\\rl\\checkpoints\\m46f\\behaviour\\ext\\recall\\s4\\5_vs_shared.json.gz",
+   "horizon": 100,
+   "K": 32
+  },
+  {
+   "family": "recall",
+   "idx": 5,
+   "label": "weak L8 equal hpB0.5",
+   "meta": {
+    "group": "recallw L8 hpB0.5",
+    "cond": "equal",
+    "L": 8,
+    "hp": 0.5,
+    "role": "weak"
+   },
+   "tag": "s4_vs_separate",
+   "path": "results\\rl\\checkpoints\\m46f\\behaviour\\ext\\recall\\s4\\5_vs_separate.json.gz",
+   "horizon": 100,
+   "K": 32
+  },
+  {
+   "family": "recall",
+   "idx": 6,
+   "label": "strong L8 equal hpB0.35",
+   "meta": {
+    "group": "recallw L8 hpB0.35",
+    "cond": "equal",
+    "L": 8,
+    "hp": 0.35,
+    "role": "strong"
+   },
+   "tag": "s4_vs_shared",
+   "path": "results\\rl\\checkpoints\\m46f\\behaviour\\ext\\recall\\s4\\6_vs_shared.json.gz",
+   "horizon": 100,
+   "K": 32
+  },
+  {
+   "family": "recall",
+   "idx": 6,
+   "label": "strong L8 equal hpB0.35",
+   "meta": {
+    "group": "recallw L8 hpB0.35",
+    "cond": "equal",
+    "L": 8,
+    "hp": 0.35,
+    "role": "strong"
+   },
+   "tag": "s4_vs_separate",
+   "path": "results\\rl\\checkpoints\\m46f\\behaviour\\ext\\recall\\s4\\6_vs_separate.json.gz",
+   "horizon": 100,
+   "K": 32
+  },
+  {
+   "family": "recall",
+   "idx": 7,
+   "label": "weak L8 equal hpB0.35",
+   "meta": {
+    "group": "recallw L8 hpB0.35",
+    "cond": "equal",
+    "L": 8,
+    "hp": 0.35,
+    "role": "weak"
+   },
+   "tag": "s4_vs_shared",
+   "path": "results\\rl\\checkpoints\\m46f\\behaviour\\ext\\recall\\s4\\7_vs_shared.json.gz",
+   "horizon": 100,
+   "K": 32
+  },
+  {
+   "family": "recall",
+   "idx": 7,
+   "label": "weak L8 equal hpB0.35",
+   "meta": {
+    "group": "recallw L8 hpB0.35",
+    "cond": "equal",
+    "L": 8,
+    "hp": 0.35,
+    "role": "weak"
+   },
+   "tag": "s4_vs_separate",
+   "path": "results\\rl\\checkpoints\\m46f\\behaviour\\ext\\recall\\s4\\7_vs_separate.json.gz",
+   "horizon": 100,
+   "K": 32
+  },
+  {
+   "family": "recall",
+   "idx": 8,
+   "label": "strong L5 edge hpB0.5",
+   "meta": {
+    "group": "recallw L5 hpB0.5",
+    "cond": "edge",
+    "L": 5,
+    "hp": 0.5,
+    "role": "strong"
+   },
+   "tag": "s4_vs_shared",
+   "path": "results\\rl\\checkpoints\\m46f\\behaviour\\ext\\recall\\s4\\8_vs_shared.json.gz",
+   "horizon": 100,
+   "K": 32
+  },
+  {
+   "family": "recall",
+   "idx": 8,
+   "label": "strong L5 edge hpB0.5",
+   "meta": {
+    "group": "recallw L5 hpB0.5",
+    "cond": "edge",
+    "L": 5,
+    "hp": 0.5,
+    "role": "strong"
+   },
+   "tag": "s4_vs_separate",
+   "path": "results\\rl\\checkpoints\\m46f\\behaviour\\ext\\recall\\s4\\8_vs_separate.json.gz",
+   "horizon": 100,
+   "K": 32
+  },
+  {
+   "family": "recall",
+   "idx": 9,
+   "label": "weak L5 edge hpB0.5",
+   "meta": {
+    "group": "recallw L5 hpB0.5",
+    "cond": "edge",
+    "L": 5,
+    "hp": 0.5,
+    "role": "weak"
+   },
+   "tag": "s4_vs_shared",
+   "path": "results\\rl\\checkpoints\\m46f\\behaviour\\ext\\recall\\s4\\9_vs_shared.json.gz",
+   "horizon": 100,
+   "K": 32
+  },
+  {
+   "family": "recall",
+   "idx": 9,
+   "label": "weak L5 edge hpB0.5",
+   "meta": {
+    "group": "recallw L5 hpB0.5",
+    "cond": "edge",
+    "L": 5,
+    "hp": 0.5,
+    "role": "weak"
+   },
+   "tag": "s4_vs_separate",
+   "path": "results\\rl\\checkpoints\\m46f\\behaviour\\ext\\recall\\s4\\9_vs_separate.json.gz",
+   "horizon": 100,
+   "K": 32
+  },
+  {
+   "family": "recall",
+   "idx": 10,
+   "label": "strong L5 edge hpB0.35",
+   "meta": {
+    "group": "recallw L5 hpB0.35",
+    "cond": "edge",
+    "L": 5,
+    "hp": 0.35,
+    "role": "strong"
+   },
+   "tag": "s4_vs_shared",
+   "path": "results\\rl\\checkpoints\\m46f\\behaviour\\ext\\recall\\s4\\10_vs_shared.json.gz",
+   "horizon": 100,
+   "K": 32
+  },
+  {
+   "family": "recall",
+   "idx": 10,
+   "label": "strong L5 edge hpB0.35",
+   "meta": {
+    "group": "recallw L5 hpB0.35",
+    "cond": "edge",
+    "L": 5,
+    "hp": 0.35,
+    "role": "strong"
+   },
+   "tag": "s4_vs_separate",
+   "path": "results\\rl\\checkpoints\\m46f\\behaviour\\ext\\recall\\s4\\10_vs_separate.json.gz",
+   "horizon": 100,
+   "K": 32
+  },
+  {
+   "family": "recall",
+   "idx": 11,
+   "label": "weak L5 edge hpB0.35",
+   "meta": {
+    "group": "recallw L5 hpB0.35",
+    "cond": "edge",
+    "L": 5,
+    "hp": 0.35,
+    "role": "weak"
+   },
+   "tag": "s4_vs_shared",
+   "path": "results\\rl\\checkpoints\\m46f\\behaviour\\ext\\recall\\s4\\11_vs_shared.json.gz",
+   "horizon": 100,
+   "K": 32
+  },
+  {
+   "family": "recall",
+   "idx": 11,
+   "label": "weak L5 edge hpB0.35",
+   "meta": {
+    "group": "recallw L5 hpB0.35",
+    "cond": "edge",
+    "L": 5,
+    "hp": 0.35,
+    "role": "weak"
+   },
+   "tag": "s4_vs_separate",
+   "path": "results\\rl\\checkpoints\\m46f\\behaviour\\ext\\recall\\s4\\11_vs_separate.json.gz",
+   "horizon": 100,
+   "K": 32
+  },
+  {
+   "family": "recall",
+   "idx": 12,
+   "label": "strong L8 edge hpB0.5",
+   "meta": {
+    "group": "recallw L8 hpB0.5",
+    "cond": "edge",
+    "L": 8,
+    "hp": 0.5,
+    "role": "strong"
+   },
+   "tag": "s4_vs_shared",
+   "path": "results\\rl\\checkpoints\\m46f\\behaviour\\ext\\recall\\s4\\12_vs_shared.json.gz",
+   "horizon": 100,
+   "K": 32
+  },
+  {
+   "family": "recall",
+   "idx": 12,
+   "label": "strong L8 edge hpB0.5",
+   "meta": {
+    "group": "recallw L8 hpB0.5",
+    "cond": "edge",
+    "L": 8,
+    "hp": 0.5,
+    "role": "strong"
+   },
+   "tag": "s4_vs_separate",
+   "path": "results\\rl\\checkpoints\\m46f\\behaviour\\ext\\recall\\s4\\12_vs_separate.json.gz",
+   "horizon": 100,
+   "K": 32
+  },
+  {
+   "family": "recall",
+   "idx": 13,
+   "label": "weak L8 edge hpB0.5",
+   "meta": {
+    "group": "recallw L8 hpB0.5",
+    "cond": "edge",
+    "L": 8,
+    "hp": 0.5,
+    "role": "weak"
+   },
+   "tag": "s4_vs_shared",
+   "path": "results\\rl\\checkpoints\\m46f\\behaviour\\ext\\recall\\s4\\13_vs_shared.json.gz",
+   "horizon": 100,
+   "K": 32
+  },
+  {
+   "family": "recall",
+   "idx": 13,
+   "label": "weak L8 edge hpB0.5",
+   "meta": {
+    "group": "recallw L8 hpB0.5",
+    "cond": "edge",
+    "L": 8,
+    "hp": 0.5,
+    "role": "weak"
+   },
+   "tag": "s4_vs_separate",
+   "path": "results\\rl\\checkpoints\\m46f\\behaviour\\ext\\recall\\s4\\13_vs_separate.json.gz",
+   "horizon": 100,
+   "K": 32
+  },
+  {
+   "family": "recall",
+   "idx": 14,
+   "label": "strong L8 edge hpB0.35",
+   "meta": {
+    "group": "recallw L8 hpB0.35",
+    "cond": "edge",
+    "L": 8,
+    "hp": 0.35,
+    "role": "strong"
+   },
+   "tag": "s4_vs_shared",
+   "path": "results\\rl\\checkpoints\\m46f\\behaviour\\ext\\recall\\s4\\14_vs_shared.json.gz",
+   "horizon": 100,
+   "K": 32
+  },
+  {
+   "family": "recall",
+   "idx": 14,
+   "label": "strong L8 edge hpB0.35",
+   "meta": {
+    "group": "recallw L8 hpB0.35",
+    "cond": "edge",
+    "L": 8,
+    "hp": 0.35,
+    "role": "strong"
+   },
+   "tag": "s4_vs_separate",
+   "path": "results\\rl\\checkpoints\\m46f\\behaviour\\ext\\recall\\s4\\14_vs_separate.json.gz",
+   "horizon": 100,
+   "K": 32
+  },
+  {
+   "family": "recall",
+   "idx": 15,
+   "label": "weak L8 edge hpB0.35",
+   "meta": {
+    "group": "recallw L8 hpB0.35",
+    "cond": "edge",
+    "L": 8,
+    "hp": 0.35,
+    "role": "weak"
+   },
+   "tag": "s4_vs_shared",
+   "path": "results\\rl\\checkpoints\\m46f\\behaviour\\ext\\recall\\s4\\15_vs_shared.json.gz",
+   "horizon": 100,
+   "K": 32
+  },
+  {
+   "family": "recall",
+   "idx": 15,
+   "label": "weak L8 edge hpB0.35",
+   "meta": {
+    "group": "recallw L8 hpB0.35",
+    "cond": "edge",
+    "L": 8,
+    "hp": 0.35,
+    "role": "weak"
+   },
+   "tag": "s4_vs_separate",
+   "path": "results\\rl\\checkpoints\\m46f\\behaviour\\ext\\recall\\s4\\15_vs_separate.json.gz",
+   "horizon": 100,
+   "K": 32
+  },
+  {
+   "family": "recall",
+   "idx": 16,
+   "label": "strong L5 x1.76 hpB0.5",
+   "meta": {
+    "group": "recallw L5 hpB0.5",
+    "cond": "x1.76",
+    "L": 5,
+    "hp": 0.5,
+    "role": "strong"
+   },
+   "tag": "s4_vs_shared",
+   "path": "results\\rl\\checkpoints\\m46f\\behaviour\\ext\\recall\\s4\\16_vs_shared.json.gz",
+   "horizon": 100,
+   "K": 32
+  },
+  {
+   "family": "recall",
+   "idx": 16,
+   "label": "strong L5 x1.76 hpB0.5",
+   "meta": {
+    "group": "recallw L5 hpB0.5",
+    "cond": "x1.76",
+    "L": 5,
+    "hp": 0.5,
+    "role": "strong"
+   },
+   "tag": "s4_vs_separate",
+   "path": "results\\rl\\checkpoints\\m46f\\behaviour\\ext\\recall\\s4\\16_vs_separate.json.gz",
+   "horizon": 100,
+   "K": 32
+  },
+  {
+   "family": "recall",
+   "idx": 17,
+   "label": "weak L5 x1.76 hpB0.5",
+   "meta": {
+    "group": "recallw L5 hpB0.5",
+    "cond": "x1.76",
+    "L": 5,
+    "hp": 0.5,
+    "role": "weak"
+   },
+   "tag": "s4_vs_shared",
+   "path": "results\\rl\\checkpoints\\m46f\\behaviour\\ext\\recall\\s4\\17_vs_shared.json.gz",
+   "horizon": 100,
+   "K": 32
+  },
+  {
+   "family": "recall",
+   "idx": 17,
+   "label": "weak L5 x1.76 hpB0.5",
+   "meta": {
+    "group": "recallw L5 hpB0.5",
+    "cond": "x1.76",
+    "L": 5,
+    "hp": 0.5,
+    "role": "weak"
+   },
+   "tag": "s4_vs_separate",
+   "path": "results\\rl\\checkpoints\\m46f\\behaviour\\ext\\recall\\s4\\17_vs_separate.json.gz",
+   "horizon": 100,
+   "K": 32
+  },
+  {
+   "family": "recall",
+   "idx": 18,
+   "label": "strong L5 x1.76 hpB0.35",
+   "meta": {
+    "group": "recallw L5 hpB0.35",
+    "cond": "x1.76",
+    "L": 5,
+    "hp": 0.35,
+    "role": "strong"
+   },
+   "tag": "s4_vs_shared",
+   "path": "results\\rl\\checkpoints\\m46f\\behaviour\\ext\\recall\\s4\\18_vs_shared.json.gz",
+   "horizon": 100,
+   "K": 32
+  },
+  {
+   "family": "recall",
+   "idx": 18,
+   "label": "strong L5 x1.76 hpB0.35",
+   "meta": {
+    "group": "recallw L5 hpB0.35",
+    "cond": "x1.76",
+    "L": 5,
+    "hp": 0.35,
+    "role": "strong"
+   },
+   "tag": "s4_vs_separate",
+   "path": "results\\rl\\checkpoints\\m46f\\behaviour\\ext\\recall\\s4\\18_vs_separate.json.gz",
+   "horizon": 100,
+   "K": 32
+  },
+  {
+   "family": "recall",
+   "idx": 19,
+   "label": "weak L5 x1.76 hpB0.35",
+   "meta": {
+    "group": "recallw L5 hpB0.35",
+    "cond": "x1.76",
+    "L": 5,
+    "hp": 0.35,
+    "role": "weak"
+   },
+   "tag": "s4_vs_shared",
+   "path": "results\\rl\\checkpoints\\m46f\\behaviour\\ext\\recall\\s4\\19_vs_shared.json.gz",
+   "horizon": 100,
+   "K": 32
+  },
+  {
+   "family": "recall",
+   "idx": 19,
+   "label": "weak L5 x1.76 hpB0.35",
+   "meta": {
+    "group": "recallw L5 hpB0.35",
+    "cond": "x1.76",
+    "L": 5,
+    "hp": 0.35,
+    "role": "weak"
+   },
+   "tag": "s4_vs_separate",
+   "path": "results\\rl\\checkpoints\\m46f\\behaviour\\ext\\recall\\s4\\19_vs_separate.json.gz",
+   "horizon": 100,
+   "K": 32
+  },
+  {
+   "family": "recall",
+   "idx": 20,
+   "label": "strong L8 x1.76 hpB0.5",
+   "meta": {
+    "group": "recallw L8 hpB0.5",
+    "cond": "x1.76",
+    "L": 8,
+    "hp": 0.5,
+    "role": "strong"
+   },
+   "tag": "s4_vs_shared",
+   "path": "results\\rl\\checkpoints\\m46f\\behaviour\\ext\\recall\\s4\\20_vs_shared.json.gz",
+   "horizon": 100,
+   "K": 32
+  },
+  {
+   "family": "recall",
+   "idx": 20,
+   "label": "strong L8 x1.76 hpB0.5",
+   "meta": {
+    "group": "recallw L8 hpB0.5",
+    "cond": "x1.76",
+    "L": 8,
+    "hp": 0.5,
+    "role": "strong"
+   },
+   "tag": "s4_vs_separate",
+   "path": "results\\rl\\checkpoints\\m46f\\behaviour\\ext\\recall\\s4\\20_vs_separate.json.gz",
+   "horizon": 100,
+   "K": 32
+  },
+  {
+   "family": "recall",
+   "idx": 21,
+   "label": "weak L8 x1.76 hpB0.5",
+   "meta": {
+    "group": "recallw L8 hpB0.5",
+    "cond": "x1.76",
+    "L": 8,
+    "hp": 0.5,
+    "role": "weak"
+   },
+   "tag": "s4_vs_shared",
+   "path": "results\\rl\\checkpoints\\m46f\\behaviour\\ext\\recall\\s4\\21_vs_shared.json.gz",
+   "horizon": 100,
+   "K": 32
+  },
+  {
+   "family": "recall",
+   "idx": 21,
+   "label": "weak L8 x1.76 hpB0.5",
+   "meta": {
+    "group": "recallw L8 hpB0.5",
+    "cond": "x1.76",
+    "L": 8,
+    "hp": 0.5,
+    "role": "weak"
+   },
+   "tag": "s4_vs_separate",
+   "path": "results\\rl\\checkpoints\\m46f\\behaviour\\ext\\recall\\s4\\21_vs_separate.json.gz",
+   "horizon": 100,
+   "K": 32
+  },
+  {
+   "family": "recall",
+   "idx": 22,
+   "label": "strong L8 x1.76 hpB0.35",
+   "meta": {
+    "group": "recallw L8 hpB0.35",
+    "cond": "x1.76",
+    "L": 8,
+    "hp": 0.35,
+    "role": "strong"
+   },
+   "tag": "s4_vs_shared",
+   "path": "results\\rl\\checkpoints\\m46f\\behaviour\\ext\\recall\\s4\\22_vs_shared.json.gz",
+   "horizon": 100,
+   "K": 32
+  },
+  {
+   "family": "recall",
+   "idx": 22,
+   "label": "strong L8 x1.76 hpB0.35",
+   "meta": {
+    "group": "recallw L8 hpB0.35",
+    "cond": "x1.76",
+    "L": 8,
+    "hp": 0.35,
+    "role": "strong"
+   },
+   "tag": "s4_vs_separate",
+   "path": "results\\rl\\checkpoints\\m46f\\behaviour\\ext\\recall\\s4\\22_vs_separate.json.gz",
+   "horizon": 100,
+   "K": 32
+  },
+  {
+   "family": "recall",
+   "idx": 23,
+   "label": "weak L8 x1.76 hpB0.35",
+   "meta": {
+    "group": "recallw L8 hpB0.35",
+    "cond": "x1.76",
+    "L": 8,
+    "hp": 0.35,
+    "role": "weak"
+   },
+   "tag": "s4_vs_shared",
+   "path": "results\\rl\\checkpoints\\m46f\\behaviour\\ext\\recall\\s4\\23_vs_shared.json.gz",
+   "horizon": 100,
+   "K": 32
+  },
+  {
+   "family": "recall",
+   "idx": 23,
+   "label": "weak L8 x1.76 hpB0.35",
+   "meta": {
+    "group": "recallw L8 hpB0.35",
+    "cond": "x1.76",
+    "L": 8,
+    "hp": 0.35,
+    "role": "weak"
+   },
+   "tag": "s4_vs_separate",
+   "path": "results\\rl\\checkpoints\\m46f\\behaviour\\ext\\recall\\s4\\23_vs_separate.json.gz",
+   "horizon": 100,
+   "K": 32
+  },
+  {
+   "family": "recall",
+   "idx": 0,
+   "label": "strong L5 equal hpB0.5",
+   "meta": {
+    "group": "recallw L5 hpB0.5",
+    "cond": "equal",
+    "L": 5,
+    "hp": 0.5,
+    "role": "strong"
+   },
+   "tag": "s5_vs_shared",
+   "path": "results\\rl\\checkpoints\\m46f\\behaviour\\ext\\recall\\s5\\0_vs_shared.json.gz",
+   "horizon": 100,
+   "K": 32
+  },
+  {
+   "family": "recall",
+   "idx": 0,
+   "label": "strong L5 equal hpB0.5",
+   "meta": {
+    "group": "recallw L5 hpB0.5",
+    "cond": "equal",
+    "L": 5,
+    "hp": 0.5,
+    "role": "strong"
+   },
+   "tag": "s5_vs_separate",
+   "path": "results\\rl\\checkpoints\\m46f\\behaviour\\ext\\recall\\s5\\0_vs_separate.json.gz",
+   "horizon": 100,
+   "K": 32
+  },
+  {
+   "family": "recall",
+   "idx": 1,
+   "label": "weak L5 equal hpB0.5",
+   "meta": {
+    "group": "recallw L5 hpB0.5",
+    "cond": "equal",
+    "L": 5,
+    "hp": 0.5,
+    "role": "weak"
+   },
+   "tag": "s5_vs_shared",
+   "path": "results\\rl\\checkpoints\\m46f\\behaviour\\ext\\recall\\s5\\1_vs_shared.json.gz",
+   "horizon": 100,
+   "K": 32
+  },
+  {
+   "family": "recall",
+   "idx": 1,
+   "label": "weak L5 equal hpB0.5",
+   "meta": {
+    "group": "recallw L5 hpB0.5",
+    "cond": "equal",
+    "L": 5,
+    "hp": 0.5,
+    "role": "weak"
+   },
+   "tag": "s5_vs_separate",
+   "path": "results\\rl\\checkpoints\\m46f\\behaviour\\ext\\recall\\s5\\1_vs_separate.json.gz",
+   "horizon": 100,
+   "K": 32
+  },
+  {
+   "family": "recall",
+   "idx": 2,
+   "label": "strong L5 equal hpB0.35",
+   "meta": {
+    "group": "recallw L5 hpB0.35",
+    "cond": "equal",
+    "L": 5,
+    "hp": 0.35,
+    "role": "strong"
+   },
+   "tag": "s5_vs_shared",
+   "path": "results\\rl\\checkpoints\\m46f\\behaviour\\ext\\recall\\s5\\2_vs_shared.json.gz",
+   "horizon": 100,
+   "K": 32
+  },
+  {
+   "family": "recall",
+   "idx": 2,
+   "label": "strong L5 equal hpB0.35",
+   "meta": {
+    "group": "recallw L5 hpB0.35",
+    "cond": "equal",
+    "L": 5,
+    "hp": 0.35,
+    "role": "strong"
+   },
+   "tag": "s5_vs_separate",
+   "path": "results\\rl\\checkpoints\\m46f\\behaviour\\ext\\recall\\s5\\2_vs_separate.json.gz",
+   "horizon": 100,
+   "K": 32
+  },
+  {
+   "family": "recall",
+   "idx": 3,
+   "label": "weak L5 equal hpB0.35",
+   "meta": {
+    "group": "recallw L5 hpB0.35",
+    "cond": "equal",
+    "L": 5,
+    "hp": 0.35,
+    "role": "weak"
+   },
+   "tag": "s5_vs_shared",
+   "path": "results\\rl\\checkpoints\\m46f\\behaviour\\ext\\recall\\s5\\3_vs_shared.json.gz",
+   "horizon": 100,
+   "K": 32
+  },
+  {
+   "family": "recall",
+   "idx": 3,
+   "label": "weak L5 equal hpB0.35",
+   "meta": {
+    "group": "recallw L5 hpB0.35",
+    "cond": "equal",
+    "L": 5,
+    "hp": 0.35,
+    "role": "weak"
+   },
+   "tag": "s5_vs_separate",
+   "path": "results\\rl\\checkpoints\\m46f\\behaviour\\ext\\recall\\s5\\3_vs_separate.json.gz",
+   "horizon": 100,
+   "K": 32
+  },
+  {
+   "family": "recall",
+   "idx": 4,
+   "label": "strong L8 equal hpB0.5",
+   "meta": {
+    "group": "recallw L8 hpB0.5",
+    "cond": "equal",
+    "L": 8,
+    "hp": 0.5,
+    "role": "strong"
+   },
+   "tag": "s5_vs_shared",
+   "path": "results\\rl\\checkpoints\\m46f\\behaviour\\ext\\recall\\s5\\4_vs_shared.json.gz",
+   "horizon": 100,
+   "K": 32
+  },
+  {
+   "family": "recall",
+   "idx": 4,
+   "label": "strong L8 equal hpB0.5",
+   "meta": {
+    "group": "recallw L8 hpB0.5",
+    "cond": "equal",
+    "L": 8,
+    "hp": 0.5,
+    "role": "strong"
+   },
+   "tag": "s5_vs_separate",
+   "path": "results\\rl\\checkpoints\\m46f\\behaviour\\ext\\recall\\s5\\4_vs_separate.json.gz",
+   "horizon": 100,
+   "K": 32
+  },
+  {
+   "family": "recall",
+   "idx": 5,
+   "label": "weak L8 equal hpB0.5",
+   "meta": {
+    "group": "recallw L8 hpB0.5",
+    "cond": "equal",
+    "L": 8,
+    "hp": 0.5,
+    "role": "weak"
+   },
+   "tag": "s5_vs_shared",
+   "path": "results\\rl\\checkpoints\\m46f\\behaviour\\ext\\recall\\s5\\5_vs_shared.json.gz",
+   "horizon": 100,
+   "K": 32
+  },
+  {
+   "family": "recall",
+   "idx": 5,
+   "label": "weak L8 equal hpB0.5",
+   "meta": {
+    "group": "recallw L8 hpB0.5",
+    "cond": "equal",
+    "L": 8,
+    "hp": 0.5,
+    "role": "weak"
+   },
+   "tag": "s5_vs_separate",
+   "path": "results\\rl\\checkpoints\\m46f\\behaviour\\ext\\recall\\s5\\5_vs_separate.json.gz",
+   "horizon": 100,
+   "K": 32
+  },
+  {
+   "family": "recall",
+   "idx": 6,
+   "label": "strong L8 equal hpB0.35",
+   "meta": {
+    "group": "recallw L8 hpB0.35",
+    "cond": "equal",
+    "L": 8,
+    "hp": 0.35,
+    "role": "strong"
+   },
+   "tag": "s5_vs_shared",
+   "path": "results\\rl\\checkpoints\\m46f\\behaviour\\ext\\recall\\s5\\6_vs_shared.json.gz",
+   "horizon": 100,
+   "K": 32
+  },
+  {
+   "family": "recall",
+   "idx": 6,
+   "label": "strong L8 equal hpB0.35",
+   "meta": {
+    "group": "recallw L8 hpB0.35",
+    "cond": "equal",
+    "L": 8,
+    "hp": 0.35,
+    "role": "strong"
+   },
+   "tag": "s5_vs_separate",
+   "path": "results\\rl\\checkpoints\\m46f\\behaviour\\ext\\recall\\s5\\6_vs_separate.json.gz",
+   "horizon": 100,
+   "K": 32
+  },
+  {
+   "family": "recall",
+   "idx": 7,
+   "label": "weak L8 equal hpB0.35",
+   "meta": {
+    "group": "recallw L8 hpB0.35",
+    "cond": "equal",
+    "L": 8,
+    "hp": 0.35,
+    "role": "weak"
+   },
+   "tag": "s5_vs_shared",
+   "path": "results\\rl\\checkpoints\\m46f\\behaviour\\ext\\recall\\s5\\7_vs_shared.json.gz",
+   "horizon": 100,
+   "K": 32
+  },
+  {
+   "family": "recall",
+   "idx": 7,
+   "label": "weak L8 equal hpB0.35",
+   "meta": {
+    "group": "recallw L8 hpB0.35",
+    "cond": "equal",
+    "L": 8,
+    "hp": 0.35,
+    "role": "weak"
+   },
+   "tag": "s5_vs_separate",
+   "path": "results\\rl\\checkpoints\\m46f\\behaviour\\ext\\recall\\s5\\7_vs_separate.json.gz",
+   "horizon": 100,
+   "K": 32
+  },
+  {
+   "family": "recall",
+   "idx": 8,
+   "label": "strong L5 edge hpB0.5",
+   "meta": {
+    "group": "recallw L5 hpB0.5",
+    "cond": "edge",
+    "L": 5,
+    "hp": 0.5,
+    "role": "strong"
+   },
+   "tag": "s5_vs_shared",
+   "path": "results\\rl\\checkpoints\\m46f\\behaviour\\ext\\recall\\s5\\8_vs_shared.json.gz",
+   "horizon": 100,
+   "K": 32
+  },
+  {
+   "family": "recall",
+   "idx": 8,
+   "label": "strong L5 edge hpB0.5",
+   "meta": {
+    "group": "recallw L5 hpB0.5",
+    "cond": "edge",
+    "L": 5,
+    "hp": 0.5,
+    "role": "strong"
+   },
+   "tag": "s5_vs_separate",
+   "path": "results\\rl\\checkpoints\\m46f\\behaviour\\ext\\recall\\s5\\8_vs_separate.json.gz",
+   "horizon": 100,
+   "K": 32
+  },
+  {
+   "family": "recall",
+   "idx": 9,
+   "label": "weak L5 edge hpB0.5",
+   "meta": {
+    "group": "recallw L5 hpB0.5",
+    "cond": "edge",
+    "L": 5,
+    "hp": 0.5,
+    "role": "weak"
+   },
+   "tag": "s5_vs_shared",
+   "path": "results\\rl\\checkpoints\\m46f\\behaviour\\ext\\recall\\s5\\9_vs_shared.json.gz",
+   "horizon": 100,
+   "K": 32
+  },
+  {
+   "family": "recall",
+   "idx": 9,
+   "label": "weak L5 edge hpB0.5",
+   "meta": {
+    "group": "recallw L5 hpB0.5",
+    "cond": "edge",
+    "L": 5,
+    "hp": 0.5,
+    "role": "weak"
+   },
+   "tag": "s5_vs_separate",
+   "path": "results\\rl\\checkpoints\\m46f\\behaviour\\ext\\recall\\s5\\9_vs_separate.json.gz",
+   "horizon": 100,
+   "K": 32
+  },
+  {
+   "family": "recall",
+   "idx": 10,
+   "label": "strong L5 edge hpB0.35",
+   "meta": {
+    "group": "recallw L5 hpB0.35",
+    "cond": "edge",
+    "L": 5,
+    "hp": 0.35,
+    "role": "strong"
+   },
+   "tag": "s5_vs_shared",
+   "path": "results\\rl\\checkpoints\\m46f\\behaviour\\ext\\recall\\s5\\10_vs_shared.json.gz",
+   "horizon": 100,
+   "K": 32
+  },
+  {
+   "family": "recall",
+   "idx": 10,
+   "label": "strong L5 edge hpB0.35",
+   "meta": {
+    "group": "recallw L5 hpB0.35",
+    "cond": "edge",
+    "L": 5,
+    "hp": 0.35,
+    "role": "strong"
+   },
+   "tag": "s5_vs_separate",
+   "path": "results\\rl\\checkpoints\\m46f\\behaviour\\ext\\recall\\s5\\10_vs_separate.json.gz",
+   "horizon": 100,
+   "K": 32
+  },
+  {
+   "family": "recall",
+   "idx": 11,
+   "label": "weak L5 edge hpB0.35",
+   "meta": {
+    "group": "recallw L5 hpB0.35",
+    "cond": "edge",
+    "L": 5,
+    "hp": 0.35,
+    "role": "weak"
+   },
+   "tag": "s5_vs_shared",
+   "path": "results\\rl\\checkpoints\\m46f\\behaviour\\ext\\recall\\s5\\11_vs_shared.json.gz",
+   "horizon": 100,
+   "K": 32
+  },
+  {
+   "family": "recall",
+   "idx": 11,
+   "label": "weak L5 edge hpB0.35",
+   "meta": {
+    "group": "recallw L5 hpB0.35",
+    "cond": "edge",
+    "L": 5,
+    "hp": 0.35,
+    "role": "weak"
+   },
+   "tag": "s5_vs_separate",
+   "path": "results\\rl\\checkpoints\\m46f\\behaviour\\ext\\recall\\s5\\11_vs_separate.json.gz",
+   "horizon": 100,
+   "K": 32
+  },
+  {
+   "family": "recall",
+   "idx": 12,
+   "label": "strong L8 edge hpB0.5",
+   "meta": {
+    "group": "recallw L8 hpB0.5",
+    "cond": "edge",
+    "L": 8,
+    "hp": 0.5,
+    "role": "strong"
+   },
+   "tag": "s5_vs_shared",
+   "path": "results\\rl\\checkpoints\\m46f\\behaviour\\ext\\recall\\s5\\12_vs_shared.json.gz",
+   "horizon": 100,
+   "K": 32
+  },
+  {
+   "family": "recall",
+   "idx": 12,
+   "label": "strong L8 edge hpB0.5",
+   "meta": {
+    "group": "recallw L8 hpB0.5",
+    "cond": "edge",
+    "L": 8,
+    "hp": 0.5,
+    "role": "strong"
+   },
+   "tag": "s5_vs_separate",
+   "path": "results\\rl\\checkpoints\\m46f\\behaviour\\ext\\recall\\s5\\12_vs_separate.json.gz",
+   "horizon": 100,
+   "K": 32
+  },
+  {
+   "family": "recall",
+   "idx": 13,
+   "label": "weak L8 edge hpB0.5",
+   "meta": {
+    "group": "recallw L8 hpB0.5",
+    "cond": "edge",
+    "L": 8,
+    "hp": 0.5,
+    "role": "weak"
+   },
+   "tag": "s5_vs_shared",
+   "path": "results\\rl\\checkpoints\\m46f\\behaviour\\ext\\recall\\s5\\13_vs_shared.json.gz",
+   "horizon": 100,
+   "K": 32
+  },
+  {
+   "family": "recall",
+   "idx": 13,
+   "label": "weak L8 edge hpB0.5",
+   "meta": {
+    "group": "recallw L8 hpB0.5",
+    "cond": "edge",
+    "L": 8,
+    "hp": 0.5,
+    "role": "weak"
+   },
+   "tag": "s5_vs_separate",
+   "path": "results\\rl\\checkpoints\\m46f\\behaviour\\ext\\recall\\s5\\13_vs_separate.json.gz",
+   "horizon": 100,
+   "K": 32
+  },
+  {
+   "family": "recall",
+   "idx": 14,
+   "label": "strong L8 edge hpB0.35",
+   "meta": {
+    "group": "recallw L8 hpB0.35",
+    "cond": "edge",
+    "L": 8,
+    "hp": 0.35,
+    "role": "strong"
+   },
+   "tag": "s5_vs_shared",
+   "path": "results\\rl\\checkpoints\\m46f\\behaviour\\ext\\recall\\s5\\14_vs_shared.json.gz",
+   "horizon": 100,
+   "K": 32
+  },
+  {
+   "family": "recall",
+   "idx": 14,
+   "label": "strong L8 edge hpB0.35",
+   "meta": {
+    "group": "recallw L8 hpB0.35",
+    "cond": "edge",
+    "L": 8,
+    "hp": 0.35,
+    "role": "strong"
+   },
+   "tag": "s5_vs_separate",
+   "path": "results\\rl\\checkpoints\\m46f\\behaviour\\ext\\recall\\s5\\14_vs_separate.json.gz",
+   "horizon": 100,
+   "K": 32
+  },
+  {
+   "family": "recall",
+   "idx": 15,
+   "label": "weak L8 edge hpB0.35",
+   "meta": {
+    "group": "recallw L8 hpB0.35",
+    "cond": "edge",
+    "L": 8,
+    "hp": 0.35,
+    "role": "weak"
+   },
+   "tag": "s5_vs_shared",
+   "path": "results\\rl\\checkpoints\\m46f\\behaviour\\ext\\recall\\s5\\15_vs_shared.json.gz",
+   "horizon": 100,
+   "K": 32
+  },
+  {
+   "family": "recall",
+   "idx": 15,
+   "label": "weak L8 edge hpB0.35",
+   "meta": {
+    "group": "recallw L8 hpB0.35",
+    "cond": "edge",
+    "L": 8,
+    "hp": 0.35,
+    "role": "weak"
+   },
+   "tag": "s5_vs_separate",
+   "path": "results\\rl\\checkpoints\\m46f\\behaviour\\ext\\recall\\s5\\15_vs_separate.json.gz",
+   "horizon": 100,
+   "K": 32
+  },
+  {
+   "family": "recall",
+   "idx": 16,
+   "label": "strong L5 x1.76 hpB0.5",
+   "meta": {
+    "group": "recallw L5 hpB0.5",
+    "cond": "x1.76",
+    "L": 5,
+    "hp": 0.5,
+    "role": "strong"
+   },
+   "tag": "s5_vs_shared",
+   "path": "results\\rl\\checkpoints\\m46f\\behaviour\\ext\\recall\\s5\\16_vs_shared.json.gz",
+   "horizon": 100,
+   "K": 32
+  },
+  {
+   "family": "recall",
+   "idx": 16,
+   "label": "strong L5 x1.76 hpB0.5",
+   "meta": {
+    "group": "recallw L5 hpB0.5",
+    "cond": "x1.76",
+    "L": 5,
+    "hp": 0.5,
+    "role": "strong"
+   },
+   "tag": "s5_vs_separate",
+   "path": "results\\rl\\checkpoints\\m46f\\behaviour\\ext\\recall\\s5\\16_vs_separate.json.gz",
+   "horizon": 100,
+   "K": 32
+  },
+  {
+   "family": "recall",
+   "idx": 17,
+   "label": "weak L5 x1.76 hpB0.5",
+   "meta": {
+    "group": "recallw L5 hpB0.5",
+    "cond": "x1.76",
+    "L": 5,
+    "hp": 0.5,
+    "role": "weak"
+   },
+   "tag": "s5_vs_shared",
+   "path": "results\\rl\\checkpoints\\m46f\\behaviour\\ext\\recall\\s5\\17_vs_shared.json.gz",
+   "horizon": 100,
+   "K": 32
+  },
+  {
+   "family": "recall",
+   "idx": 17,
+   "label": "weak L5 x1.76 hpB0.5",
+   "meta": {
+    "group": "recallw L5 hpB0.5",
+    "cond": "x1.76",
+    "L": 5,
+    "hp": 0.5,
+    "role": "weak"
+   },
+   "tag": "s5_vs_separate",
+   "path": "results\\rl\\checkpoints\\m46f\\behaviour\\ext\\recall\\s5\\17_vs_separate.json.gz",
+   "horizon": 100,
+   "K": 32
+  },
+  {
+   "family": "recall",
+   "idx": 18,
+   "label": "strong L5 x1.76 hpB0.35",
+   "meta": {
+    "group": "recallw L5 hpB0.35",
+    "cond": "x1.76",
+    "L": 5,
+    "hp": 0.35,
+    "role": "strong"
+   },
+   "tag": "s5_vs_shared",
+   "path": "results\\rl\\checkpoints\\m46f\\behaviour\\ext\\recall\\s5\\18_vs_shared.json.gz",
+   "horizon": 100,
+   "K": 32
+  },
+  {
+   "family": "recall",
+   "idx": 18,
+   "label": "strong L5 x1.76 hpB0.35",
+   "meta": {
+    "group": "recallw L5 hpB0.35",
+    "cond": "x1.76",
+    "L": 5,
+    "hp": 0.35,
+    "role": "strong"
+   },
+   "tag": "s5_vs_separate",
+   "path": "results\\rl\\checkpoints\\m46f\\behaviour\\ext\\recall\\s5\\18_vs_separate.json.gz",
+   "horizon": 100,
+   "K": 32
+  },
+  {
+   "family": "recall",
+   "idx": 19,
+   "label": "weak L5 x1.76 hpB0.35",
+   "meta": {
+    "group": "recallw L5 hpB0.35",
+    "cond": "x1.76",
+    "L": 5,
+    "hp": 0.35,
+    "role": "weak"
+   },
+   "tag": "s5_vs_shared",
+   "path": "results\\rl\\checkpoints\\m46f\\behaviour\\ext\\recall\\s5\\19_vs_shared.json.gz",
+   "horizon": 100,
+   "K": 32
+  },
+  {
+   "family": "recall",
+   "idx": 19,
+   "label": "weak L5 x1.76 hpB0.35",
+   "meta": {
+    "group": "recallw L5 hpB0.35",
+    "cond": "x1.76",
+    "L": 5,
+    "hp": 0.35,
+    "role": "weak"
+   },
+   "tag": "s5_vs_separate",
+   "path": "results\\rl\\checkpoints\\m46f\\behaviour\\ext\\recall\\s5\\19_vs_separate.json.gz",
+   "horizon": 100,
+   "K": 32
+  },
+  {
+   "family": "recall",
+   "idx": 20,
+   "label": "strong L8 x1.76 hpB0.5",
+   "meta": {
+    "group": "recallw L8 hpB0.5",
+    "cond": "x1.76",
+    "L": 8,
+    "hp": 0.5,
+    "role": "strong"
+   },
+   "tag": "s5_vs_shared",
+   "path": "results\\rl\\checkpoints\\m46f\\behaviour\\ext\\recall\\s5\\20_vs_shared.json.gz",
+   "horizon": 100,
+   "K": 32
+  },
+  {
+   "family": "recall",
+   "idx": 20,
+   "label": "strong L8 x1.76 hpB0.5",
+   "meta": {
+    "group": "recallw L8 hpB0.5",
+    "cond": "x1.76",
+    "L": 8,
+    "hp": 0.5,
+    "role": "strong"
+   },
+   "tag": "s5_vs_separate",
+   "path": "results\\rl\\checkpoints\\m46f\\behaviour\\ext\\recall\\s5\\20_vs_separate.json.gz",
+   "horizon": 100,
+   "K": 32
+  },
+  {
+   "family": "recall",
+   "idx": 21,
+   "label": "weak L8 x1.76 hpB0.5",
+   "meta": {
+    "group": "recallw L8 hpB0.5",
+    "cond": "x1.76",
+    "L": 8,
+    "hp": 0.5,
+    "role": "weak"
+   },
+   "tag": "s5_vs_shared",
+   "path": "results\\rl\\checkpoints\\m46f\\behaviour\\ext\\recall\\s5\\21_vs_shared.json.gz",
+   "horizon": 100,
+   "K": 32
+  },
+  {
+   "family": "recall",
+   "idx": 21,
+   "label": "weak L8 x1.76 hpB0.5",
+   "meta": {
+    "group": "recallw L8 hpB0.5",
+    "cond": "x1.76",
+    "L": 8,
+    "hp": 0.5,
+    "role": "weak"
+   },
+   "tag": "s5_vs_separate",
+   "path": "results\\rl\\checkpoints\\m46f\\behaviour\\ext\\recall\\s5\\21_vs_separate.json.gz",
+   "horizon": 100,
+   "K": 32
+  },
+  {
+   "family": "recall",
+   "idx": 22,
+   "label": "strong L8 x1.76 hpB0.35",
+   "meta": {
+    "group": "recallw L8 hpB0.35",
+    "cond": "x1.76",
+    "L": 8,
+    "hp": 0.35,
+    "role": "strong"
+   },
+   "tag": "s5_vs_shared",
+   "path": "results\\rl\\checkpoints\\m46f\\behaviour\\ext\\recall\\s5\\22_vs_shared.json.gz",
+   "horizon": 100,
+   "K": 32
+  },
+  {
+   "family": "recall",
+   "idx": 22,
+   "label": "strong L8 x1.76 hpB0.35",
+   "meta": {
+    "group": "recallw L8 hpB0.35",
+    "cond": "x1.76",
+    "L": 8,
+    "hp": 0.35,
+    "role": "strong"
+   },
+   "tag": "s5_vs_separate",
+   "path": "results\\rl\\checkpoints\\m46f\\behaviour\\ext\\recall\\s5\\22_vs_separate.json.gz",
+   "horizon": 100,
+   "K": 32
+  },
+  {
+   "family": "recall",
+   "idx": 23,
+   "label": "weak L8 x1.76 hpB0.35",
+   "meta": {
+    "group": "recallw L8 hpB0.35",
+    "cond": "x1.76",
+    "L": 8,
+    "hp": 0.35,
+    "role": "weak"
+   },
+   "tag": "s5_vs_shared",
+   "path": "results\\rl\\checkpoints\\m46f\\behaviour\\ext\\recall\\s5\\23_vs_shared.json.gz",
+   "horizon": 100,
+   "K": 32
+  },
+  {
+   "family": "recall",
+   "idx": 23,
+   "label": "weak L8 x1.76 hpB0.35",
+   "meta": {
+    "group": "recallw L8 hpB0.35",
+    "cond": "x1.76",
+    "L": 8,
+    "hp": 0.35,
+    "role": "weak"
+   },
+   "tag": "s5_vs_separate",
+   "path": "results\\rl\\checkpoints\\m46f\\behaviour\\ext\\recall\\s5\\23_vs_separate.json.gz",
+   "horizon": 100,
+   "K": 32
+  }
+ ]
+}

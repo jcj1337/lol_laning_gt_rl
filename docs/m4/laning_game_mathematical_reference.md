@@ -1313,6 +1313,11 @@ $\mathbb E\bigl[\sum_{k<T}r_k\bigr]=\sum_k\Pr(T>k)\,\mathbb E[r_k]=\sum_k\gamma^
 At $\gamma=0.99$ this "hazard" has mean 100 turns and median 69; 37% of the weight lies beyond turn 100 and 5% beyond
 turn 300. This is the only sense in which the current game "ends".
 
+**No end at the lane phase (decision of 2026-10-17).** The laning phase of current play ends at about level 14,
+reached at turn 94 (M4.7). The game keeps the continuing objective above (γ 0.99, earned-gold reward, no terminal
+state): there is no termination at level 14 or at a fixed turn. Who leaves the lane better placed is measured at an
+*evaluation checkpoint* (the lane-exit readout, §9.3), not by ending the game.
+
 ### 9.2 Training: PPO with bootstrapped truncation
 
 `rl/ppo.py`, `rl/shared.py`, `PPOConfig.continuing` (M4.3b settings in `experiments/rl/m43b/common.py`):
@@ -1356,6 +1361,21 @@ exhausted towers.
   guaranteed bound on a single 300-turn return is 5.25.
 - **Protocols.** E1: from $s_0$ only (every headline number). E2: a held-out, mirror-closed archive of witnessed states
   (diagnostic only, never mixed with E1).
+- **Lane-exit readout** (evaluation only; M4.8, `diagnostics/lane_exit.py`). It applies at a checkpoint state $s$ of a
+  continuing game, for example turn 94:
+  $$E_h(s)=D_0(s)+\mathbb E\Bigl[\sum_{k<h}r_{A,k}\Bigr],\qquad D_0=E_A-E_B=(S_A+g_A)-(S_B+g_B)\ \text{(§7.2)}.$$
+  - It is the expected earned-gold lead $h$ turns after the checkpoint, under given continuation policies (by
+    default the policies that produced the state).
+  - It is estimated from $K$ continuations on common random numbers.
+  - It is undiscounted, with no critic tail or bootstrap. It is neither $J$ nor a discounted $G_h$, and it carries no
+    truncation bound because it is an expectation at a finite turn.
+  - Investing on a return moves $g$ into $S$, so spending never counts as earning again: $D_0$ plus the summed
+    rewards equals the lead at the end of the window exactly.
+  - XP, levels, HP, absence and the wave are reported beside $E_h$ and never converted into gold.
+  - Recommended presentation (M4.8, awaiting review): $D_0\to E_{20}$ with its 95% interval and the non-gold
+    dimensions. $h=20$ is about one reset cycle: by then the wave, absences and owed Recalls present at the checkpoint
+    have resolved in 95% of continuations
+    ([M4.8 report](m4_8/m4_8_lane_exit_report.md)).
 
 ### 9.4 What best responses and exploitability numbers mean
 
@@ -1583,6 +1603,7 @@ historical documents are records of their milestones and are **not** edited; thi
 | 2026-10-14 | M4.5a: new §14 (EXPERIMENTAL unified positional candidate `m45_unified()`: the movement graph and the shared Vision node W, Ward and its interruption, per-tick minion retaliation and positional aggro with exclusive targeting, minion damage on champions, the capped trade budget, the reach ball, XP range 2, the 90-entry observation); label M4.5A (§0), a §0.4 row and pointers in §5.4 and §6.4. Every CURRENT statement and every earlier preset is unchanged (checked byte-for-byte on 12 champion presets against the committed engine) | `config.py` (`m45_unified`, `M45_UNIFIED_FIELDS`), `positional.py` (new), `champions.py`, `champions_m4.py`, `mechanics.py`, `env/core.py`, `env/observation_m4.py`, `viewer/`, `experiments/m45a/` |
 | 2026-10-14 | M4.5a movement correction (revision 2 of `m45_unified()`): §14 intro (revisions), §14.1 row, §14.4, new §14.5a (champions walk tick by tick to the unchanged end cell; Hold, an unthreatened Yield and Safe follow the probe's per-tick front), §14.5 (positional aggro on each tick's post-movement positions, moved or not; the stationary condition removed; new situation table; revision-1 note). Revision 1 is kept as `m45_unified_r1()` (byte-identical to `ea3d9cb` on random games). Every CURRENT statement and every earlier preset is unchanged | `config.py` (`champion_movement_rule`, `m45_unified_r1`), `positional.py` (`tick_speeds`, `tick_path`, `MinionTarget.path`), `mechanics.py`, `champions_m4.py`, `env/core.py`, `viewer/session.py`, `experiments/m45a/movement.py` |
 | 2026-10-14 | M4.5b: new §15 (EXPERIMENTAL calibrated candidate `m45_calibrated()`: the farm-spot correction `farm_spot_rule = "last_front"` with its equation and measured effect, retaliation from the exchange tick `minion_retaliation_delay = 0`, the table of parameters changed and retained); label M4.5B (§0), a §0.4 row, a §14.10 pointer. Every CURRENT statement, §14 (revision 2) and every earlier preset are unchanged (`farm_spot_rule` keeps `"pre_crash_front"` and delay 1 everywhere else) | `config.py` (`m45_calibrated`, `M45_CALIBRATED_FIELDS`, the `"last_front"` value), `champions_m4.py` (`_last_front_cell`, step 1 and `_tick_goals`), `viewer/session.py`, `experiments/m45b/` |
+| 2026-10-17 | M4.8 (documentation of an evaluation convention and a decision; no rule, parameter, preset or objective changed): §9.1 records that the continuing objective is kept and that the lane phase ends in no terminal state (level 14 / turn 94 is an evaluation checkpoint); §9.3 adds the lane-exit readout $E_h$ (undiscounted earned-gold lead $h$ turns after a checkpoint, by repeated continuations; evaluation only) | `diagnostics/lane_exit.py`, `experiments/rl/m48/` (evaluation only) |
 
 ---
 

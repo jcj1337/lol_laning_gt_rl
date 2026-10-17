@@ -12,13 +12,13 @@ at the top) for where the project currently stands.
 
 ## Commands
 
-Run everything from the repo root. The venv is `.venv/` (Python 3.13, CPU torch). `lanegame` is not installed into it,
-so imports resolve only through the working directory (`tests/conftest.py` adds the root for pytest). Most experiment
-subpackages are also missing from `pyproject.toml`'s `packages` list.
+The venv is `.venv/` (Python 3.13, CPU torch), with `lanegame` installed editable. Packages are auto-discovered
+(`lanegame*` with an `__init__.py`), so a new milestone package needs no `pyproject.toml` entry. Run commands from the
+repo root anyway: experiment drivers write to relative `results/` paths.
 
 ```bash
-pip install -e ".[test,rl]"            # add ",viewer" for the Streamlit debugger
-python -m pytest                       # full suite, ~1,080 tests, ~8 min
+pip install -e ".[test,rl,viewer]"     # viewer = the Streamlit debugger
+python -m pytest                       # full suite, ~1,470 tests, ~11 min
 python -m pytest tests/test_m4_env.py                  # one file
 python -m pytest tests/test_m4_env.py::test_name       # one test (or -k pattern)
 python -m pytest --runslow             # also run @pytest.mark.slow (exhaustive enumerations, K=32 re-solve)
@@ -59,14 +59,18 @@ Viewer: `streamlit run lanegame/viewer/app.py` (replays recorded trajectories fr
 - `env/core.py` (`LaneEnv`) is the simultaneous-move environment. It dispatches on `cfg.is_m4` and
   `cfg.champion_mode`, with matching observation modules (`observation.py`, `observation_m4.py`) and scripted agents
   (`agents.py`, `agents_m4.py`). `pettingzoo_adapter.py` wraps it in the Parallel API. M4 rulesets run in continuing
-  time: there is no terminal state, episodes end only by truncation, and training bootstraps the truncation.
-- `rl/`: `network.py` (masked policy/value MLP), `ppo.py` (GAE plus the clipped update), `train.py` (collector,
+  time: there is no terminal state, episodes end only by truncation, and training bootstraps the truncation. The end of
+  the lane phase (about level 14, turn 94) is an evaluation checkpoint, never a terminal state (decision of 2026-10-17).
+- `rl/`: `network.py` (masked policy/value MLP; the opt-in `SeparateCriticNet` gives the critic its own trunk, M4.6f),
+  `ppo.py` (GAE plus the clipped update), `train.py` (collector,
   continuing-time `GameTimes`) and `shared.py` (shared-policy self-play: one network plays both seats against a
   current/historical mixture; this is the trainer every M4 campaign uses). `agent.py` has `NetAgent` and checkpoints,
   which carry a SHA-256 weights digest verified on load. `evaluate.py` covers head-to-head and approximate best
   responses.
-- `diagnostics/` holds action audits (`audit.py`) and paired counterfactual rollouts from restorable states
-  (`branch.py`).
+- `diagnostics/` holds action audits (`audit.py`), paired counterfactual rollouts from restorable states
+  (`branch.py`) and the lane-exit readout (`lane_exit.py`, M4.8). The readout is evaluation only: E_h = the
+  earned-gold lead now (invested + unspent) plus its expected change over h continuation turns, undiscounted, with no
+  critic tail. XP, HP, absence and the wave are reported beside it, never folded into it.
 - `experiments/` has one package per milestone, writing to `results/<milestone>/`. Shared code is reused across
   milestones by import (for example, M4.6c builds on m45c and m46b), not by copying.
 

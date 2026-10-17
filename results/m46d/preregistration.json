@@ -1,0 +1,39 @@
+{
+ "meta": {
+  "study": "M4.6d",
+  "commit": "6b5d66f17d5eadc4e4e789aa01e5599505de45d7",
+  "working_tree_dirty": true,
+  "timestamp": "2026-10-16 01:45:50",
+  "torch": "2.14.1+cpu",
+  "numpy": "2.5.3",
+  "stage": "prereg"
+ },
+ "record": {
+  "document": "docs\\m4\\m4_6\\m4_6d_preregistration.md",
+  "sha256": "116766163a1e39ca8d89c298c663e85d9353ee17db61f224fefd61cccc208230",
+  "bytes": 11103
+ },
+ "note": "frozen after the descriptive stage (records, freezes) and before any counterfactual stage",
+ "amendments": [
+  {
+   "time": "2026-10-16 01:53:40",
+   "note": "Before the critic and confirmation stages ran (A, AL and C1-verify running, no result read beyond L3 cells of A): (1) critic budget: the baseline-environment reference uses the gap and freeze cells only (natural states in C1 only); ranking uses K 16 per candidate; (2) confirmation selection (a) also covers the freezer side of A cells (a freezer plan beating the policy by >= 0.15 with the interval excluding 0) and breaker options in A cells against the freezer policy, with the same rule as for B and N."
+  },
+  {
+   "time": "2026-10-16 01:55:42",
+   "note": "Amendment 2, before stage B ran (A partially read: L3 and L5 cells): EXPLORATORY breaker option concede3 (Last Hit + Safe for at most 3 turns while frozen on, same return conditions as concede) added to stage B (freeze cells and controls), because the 10-turn concede was strongly dominated in A and a brief concession is the fair test of temporary concession. The pre-registered options and rules are unchanged; concede3 is reported as exploratory."
+  },
+  {
+   "time": "2026-10-16 01:57:31",
+   "note": "Amendment 3, before stages A2, B and N ran (A read for levels 3 and 5): a single-game trace showed that guard_sel does not trade the walk-up on turn 0 at equal power or at the plausible edge with both champions healthy, because the HP-aware duel edge of the defender in a freeze is slightly negative there (-0.02 equal, -0.002 edge: the minion hit modifier), while the turn-0 walk-up Shove breaks an unguarded freeze. EXPLORATORY freezer option guard_walk (guard_sel without the duel-edge condition, same disengagement and Recall release) added: stage A2 (the A cells, A seeds, guard_walk x the five breaker options, paired with A), stage B (third freezer option) and stage N (fifth freezer option). guard_sel stays the pre-registered selective guard."
+  },
+  {
+   "time": "2026-10-16 02:36:36",
+   "note": "Amendment 4, before the confirmation stage ran (A, A2, AL and B read; N and Ab running): the confirmation sample replicates, on independent seeds, every A cell freezer plan (including exploratory guard_walk) against the breaker policy (the pre-registered L3/L5 edge/plaus cells plus all other A cells, so that class-level contrasts are confirmed), the selected B contrasts (rule of the pre-registration), and the N kinds where a freezer plan or breaker option meets the selection rule (same states, new rollout seeds). Only confirmation estimates are reported as established."
+  },
+  {
+   "time": "2026-10-16 03:13:56",
+   "note": "Exploratory addition AFTER reading the critic ranking (labelled as such): at the eight constructed Recall-window states the weak side was re-tested with the evasive codes the actor actually uses (LH/SH + Yield) beside LH/SH + Safe, same design and seeds as the ranking (results/m46d/run_rank_yield.py), because the ranking flagged LH-Safe as rarely chosen while the actor puts 52-74% on Yield."
+  }
+ ]
+}

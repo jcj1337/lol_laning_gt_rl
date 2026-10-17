@@ -1,0 +1,23 @@
+{
+ "meta": {
+  "study": "M4.8",
+  "commit": "6b5d66f17d5eadc4e4e789aa01e5599505de45d7",
+  "working_tree_dirty": true,
+  "timestamp": "2026-10-16 23:50:55",
+  "torch": "2.14.1+cpu",
+  "numpy": "2.5.3",
+  "stage": "protocol"
+ },
+ "record": {
+  "document": "docs\\m4\\m4_8\\m4_8_protocol.md",
+  "sha256": "57c99a63a42d71b45b6f6225a254b4875bed7f65b94c348f7be2d5cd0721d40b",
+  "bytes": 13681
+ },
+ "note": "frozen after the throughput and variance pilot, before any Stage 1 or Stage 2 evaluation run",
+ "amendments": [
+  {
+   "time": "2026-10-17 00:08:28",
+   "note": "Supplementary re-check added before it was run (descriptive; not part of the section 7 classification or the window rule): M4.7 primary readout P1 (the short arm lane lead, turns 0-93, head to head against the control) recomputed with E_5 / E_10 / E_20 at turn 94. M4.7 head-to-head games are replayed exactly (seeds 58,400*10^4 + m, 2 seeds x 1,024 games x 2 orientations; checked against the stored streams); K 8 continuations of 20 turns by the same pair (root 59,400). Stage recheck, results/m48/recheck.json. Seen at this time: Stage 1 validation results only; no Stage 2 or re-check result."
+  }
+ ]
+}

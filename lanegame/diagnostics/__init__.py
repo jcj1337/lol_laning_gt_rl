@@ -3,6 +3,9 @@
     branch   restorable snapshots of reachable states and paired (common-random-number) counterfactual rollouts:
              commit one action (or a short scripted plan) at a state, then follow fixed policies to the end
     audit    per-turn legality, policy probabilities, choices, states and outcomes of a policy's decisions
+    lane_exit  (M4, evaluation only; import as `lanegame.diagnostics.lane_exit`) the lane-exit readout: the
+             earned-gold lead at a checkpoint plus its expected change over h repeated continuation turns, the exact
+             accounting, the checkpoint's non-gold dimensions and the per-seat event ledger of each continuation
 
 NumPy only: agents are queried through `distribution(obs)`; a `lanegame.rl.NetAgent` works as any other agent.
 """
