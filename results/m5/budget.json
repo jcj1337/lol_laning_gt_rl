@@ -1,0 +1,134 @@
+{
+ "workers": 6,
+ "throughput": {
+  "om": 1103.7698919030552,
+  "sp": 2535.0,
+  "om_bench": 1221.4977663176876,
+  "sp_bench": 2805.382589550926,
+  "calibration": 0.9036200657414761,
+  "om_full_run_calibration": 1.2748962701783053,
+  "om_full_run_estimate": 1557.282946309551
+ },
+ "calibration_note": "short-run rates x (sp full-run / sp short-run); OM2's full treatment runs (1,416-1,645 at 5 workers beside control runs) are a cross-check for om",
+ "training": {
+  "schedules_wall_hours": {
+   "W4_om_first": 16.10609784259266,
+   "W4_interleaved": 17.864754931411827,
+   "W5_om_first": 16.392498797587912,
+   "W5_interleaved": 16.86447502614242,
+   "W6_om_first": 11.837105536863689,
+   "W6_interleaved": 16.32835550720753,
+   "W8_om_first": 12.914445496528893,
+   "W8_interleaved": 13.571700606371243
+  },
+  "schedules_wall_hours_full_run_calibration": {
+   "W4_om_first": 13.393655170387394,
+   "W4_interleaved": 13.673579268622147,
+   "W5_om_first": 12.555700797348017,
+   "W5_interleaved": 12.94441236495142,
+   "W6_om_first": 9.435558175557926,
+   "W6_interleaved": 11.984987469859638,
+   "W8_om_first": 11.13147810529117,
+   "W8_interleaved": 10.926992287876969
+  },
+  "best": "W6_om_first",
+  "best_full_run_calibration": "W6_om_first",
+  "wall_hours_range": [
+   9.435558175557926,
+   11.837105536863689
+  ],
+  "om_run_hours_range_at_6": [
+   5.844937969553103,
+   8.246485330858867
+  ],
+  "run_hours": {
+   "om_at_6_om_only": 8.246485330858867,
+   "om_in_3+3_mix": 8.803748529978598,
+   "sp_at_6_sp_only": 3.5906202060048216,
+   "sp_in_3+3_mix": 3.5232571191088944
+  },
+  "wall_hours": 11.837105536863689,
+  "midpoint_wall_hours_if_stopped": 5.918552768431844
+ },
+ "evaluation": {
+  "M5b_monitor": {
+   "turns": {
+    "game_om1": 2688000.0,
+    "game_om2": 1152000.0,
+    "game_om0": 3840000.0
+   },
+   "worker_hours": 3.023732341378927,
+   "wall_hours": 0.5039553902298212
+  },
+  "M5c_battery": {
+   "turns": {
+    "battery_om": 49962240.0,
+    "battery_sp": 49962240.0
+   },
+   "worker_hours": 56.00376195893354,
+   "wall_hours": 9.333960326488922
+  },
+  "M5c_cells": {
+   "turns": {
+    "cells_om": 2246400.0,
+    "cells_sp": 2246400.0,
+    "cells_cross": 12825600.0
+   },
+   "worker_hours": 9.005049828825243,
+   "wall_hours": 1.5008416381375405
+  },
+  "M5d_families": {
+   "turns": {
+    "game_om1": 12076800.0,
+    "game_om0": 15148800.0,
+    "game_om2": 1536000.0
+   },
+   "worker_hours": 10.295325427547096,
+   "wall_hours": 1.7158875712578494
+  },
+  "M5d_attack_eval": {
+   "turns": {
+    "game_om2": 2304000.0,
+    "game_om1": 4608000.0
+   },
+   "worker_hours": 4.097425578633945,
+   "wall_hours": 0.6829042631056574
+  }
+ },
+ "attackers": {
+  "half": {
+   "budget_per_attacker": 16384000,
+   "tps": {
+    "om_target": 620.0623352047627,
+    "sp_target": 767.2929845712629
+   },
+   "wall_hours_18": 20.610914013619308,
+   "wall_hours_12_without_adaptation_test": 13.27115016615355
+  },
+  "quarter": {
+   "budget_per_attacker": 8192000,
+   "tps": {
+    "om_target": 620.0623352047627,
+    "sp_target": 767.2929845712629
+   },
+   "wall_hours_18": 10.305457006809654,
+   "wall_hours_12_without_adaptation_test": 6.635575083076775
+  }
+ },
+ "totals": {
+  "training_wall_h": 11.837105536863689,
+  "evaluation_wall_h": 13.737549189219791,
+  "attackers_half_wall_h": 20.610914013619308,
+  "attackers_quarter_wall_h": 10.305457006809654,
+  "without_attackers_wall_h": 25.57465472608348
+ },
+ "meta": {
+  "study": "M5",
+  "commit": "a6e9b63f3ab49a1b9d8da97021ab9b7c72739da6",
+  "working_tree_dirty": true,
+  "timestamp": "2026-10-17 18:37:49",
+  "torch": "2.14.1+cpu",
+  "numpy": "2.5.3",
+  "stage": "budget"
+ }
+}

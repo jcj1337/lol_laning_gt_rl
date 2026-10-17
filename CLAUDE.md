@@ -18,7 +18,7 @@ repo root anyway: experiment drivers write to relative `results/` paths.
 
 ```bash
 pip install -e ".[test,rl,viewer]"     # viewer = the Streamlit debugger
-python -m pytest                       # full suite, ~1,490 tests, ~8-11 min
+python -m pytest                       # full suite, ~1,510 tests, ~8-11 min
 python -m pytest tests/test_m4_env.py                  # one file
 python -m pytest tests/test_m4_env.py::test_name       # one test (or -k pattern)
 python -m pytest --runslow             # also run @pytest.mark.slow (exhaustive enumerations, K=32 re-solve)
@@ -75,8 +75,22 @@ Viewer: `streamlit run lanegame/viewer/app.py` (replays recorded trajectories fr
   (`branch.py`) and the lane-exit readout (`lane_exit.py`, M4.8). The readout is evaluation only: E_h = the
   earned-gold lead now (invested + unspent) plus its expected change over h continuation turns, undiscounted, with no
   critic tail. XP, HP, absence and the wave are reported beside it, never folded into it.
+- History-dependent policies in the instruments (M5). The shared rollout loops call an opt-in hook after every turn:
+  `observe_turn(cfg, lane, m4, k, codes)` (canonical in `diagnostics/lane_exit.py`). The loops are
+  `m45b.engine.play`, `m45c.horizon.rollout`, `m46a.engine.rollout` and `lane_exit.continuation`.
+  - Plan wrappers forward the hook through `inner_policies()`. `horizon.critic_value` asks such a policy for
+    `value_at`.
+  - Stateless policies are untouched: stored M4.5c, M4.6c and M4.6f records reproduce exactly (`tests/test_m5.py`).
+  - A stateful policy's `decide` must be pure, since the instruments call it outside the loop.
+  - `experiments/rl/m5/players.py` has `OMPolicy`, an OM2 network with its belief and the opponent's previous codes,
+    and `crn_policy` for any input width (90, 103 or 116).
 - `experiments/` has one package per milestone, writing to `results/<milestone>/`. Shared code is reused across
   milestones by import (for example, M4.6c builds on m45c and m46b), not by copying.
+- `experiments/rl/m5/` is the final campaign: arm A (opponent modelling, the OM2 treatment collector) against arm B
+  (pure self-play). Both continue `ext/baseline:s`; seeds are 70,000–70,999.
+  - Its design and frozen pre-registration are in `docs/m5/`.
+  - M5a readiness is `python -m lanegame.experiments.rl.m5 ready`.
+  - The campaign stages need `--confirm-m5-train`, `--confirm-m5-eval` or `--confirm-m5-attackers`.
 
 **The preset chain.** M4 presets build on each other, each as the previous preset plus opt-in fields:
 `m4 → m4_continuous → m4_emergent → m4_natural_prototype → m4_natural → m4_lane → m4_lasthit → m4_four_actions →

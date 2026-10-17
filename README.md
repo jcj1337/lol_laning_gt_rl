@@ -110,8 +110,19 @@ trained the same network with and without the belief:
 - Most exploitation comes from training against the styles at all. The belief adds about 40% more and protects
   competence, which the agent without it loses slightly.
 
-Next is the user's decision on opponent modelling in M5, the final training and evaluation campaign, then M6, the
-research presentation.
+The user then decided that opponent modelling enters M5, the final campaign, as a package compared with continued pure
+self-play. **M5a**, the campaign's design, pre-registration and readiness check, is complete
+([readiness report](docs/m5/m5a_readiness_report.md), [design](docs/m5/m5_design.md)). Its two arms:
+- A: OM2's modelling agent;
+- B: pure self-play.
+
+Both continue the same baseline policy for 32.768M transitions in six matched pairs. Readiness passed every check:
+- identical starts, and bit-identical re-runs;
+- every modelling input rebuilt independently by the evaluation code;
+- historical instruments reproduced exactly.
+
+The measured budget is about 34–36 h. **The campaign itself is not launched: it awaits the user's decisions** (seed
+count, attacker budget, the adaptation test) **and approval.** M6, the research presentation, follows.
 
 ## How we study it
 
@@ -162,10 +173,11 @@ top). In short:
 | M4 closeout | explicit C1-versus-baseline decision; final mechanics, objective and training setup; documented freeze conditions and limitations | **complete, reviewed**: ready for M5 with documented limitations; the baseline chosen for M5 on 2026-10-17, shared critic ([report](docs/m4/m4_closeout_report.md)) |
 | M4.7 early-lane horizon study | what part of play occurs before about level 14; baseline and C1 there; whether delayed rewards drive the early conclusions; a matched two-seed pilot of a shorter discount | **complete, reviewed**: keep γ 0.99; the shorter objective (H 60) gave no reliable lane-phase gain and cost later play ([report](docs/m4/m4_7/m4_7_horizon_report.md)) |
 | M4.8 lane-exit evaluation | an evaluation-only readout of who leaves the lane better placed (the earned-gold lead plus its expected change over h repeated continuation turns; XP, HP and the wave beside it), validated and applied to the matched baseline/C1 policies | **complete, reviewed**: useful (exact, calibrated against recorded continuations); E_20 adopted 2026-10-17 beside raw gold and the non-gold dimensions; raw gold misleads materially in about two thirds of natural lane-exit states; baseline and C1 indistinguishable there ([report](docs/m4/m4_8/m4_8_lane_exit_report.md)) |
-| OM1 opponent-modelling feasibility | identifiability of opponent styles in the lane phase and the value of knowing them, with existing policies; evaluation only | **complete, in review**: feasible and worthwhile; identified within 10–20 turns; switcher +0.90 ± 0.27 over the baseline policy, mostly against scripted styles; misspecified opponents are the risk ([report](docs/opponent_modelling/om1_feasibility_report.md)) |
-| OM2 Bayesian opponent modelling: design | beliefs about the opponent's style, updated during a game; scope C (robustness first); the opponent's previous action observed | **complete, in review** (opt-in; [design](docs/opponent_modelling/om2_design.md)) |
-| OM2 matched opponent-modelling pilot | the same opponent distribution in both arms, with and without the belief; 3 seed pairs × 4.096M | **complete, in review**: outcome 1, modelling pays and is safe; +2.03 ± 1.72 against recognizable styles, no loss against competent, mixed or head-to-head opponents ([report](docs/opponent_modelling/om2_pilot_report.md)) |
-| M5. Final training and evaluation campaign | multi-seed shared-policy PPO on the selected setup; learning progress, strategic counterfactuals, diverse opponents, cross-seed results, empirical exploitability; lane-phase outcomes read with the lane-exit readout | proposed, after the opponent-modelling design and pilot (scope proposal and first task M5a in the closeout report §8) |
+| OM1 opponent-modelling feasibility | identifiability of opponent styles in the lane phase and the value of knowing them, with existing policies; evaluation only | **complete**: feasible and worthwhile; identified within 10–20 turns; switcher +0.90 ± 0.27 over the baseline policy, mostly against scripted styles; misspecified opponents are the risk ([report](docs/opponent_modelling/om1_feasibility_report.md)) |
+| OM2 Bayesian opponent modelling: design | beliefs about the opponent's style, updated during a game; scope C (robustness first); the opponent's previous action observed | **complete** (opt-in; [design](docs/opponent_modelling/om2_design.md)); carried into M5 as the modelling arm |
+| OM2 matched opponent-modelling pilot | the same opponent distribution in both arms, with and without the belief; 3 seed pairs × 4.096M | **complete**: outcome 1, modelling pays and is safe; +2.03 ± 1.72 against recognizable styles, no loss against competent, mixed or head-to-head opponents ([report](docs/opponent_modelling/om2_pilot_report.md)) |
+| M5a. Campaign design, pre-registration and readiness | two arms (the opponent-modelling package against continued pure self-play), six matched pairs from the baseline policy, 32.768M each; drivers for both arms and every instrument; bounded readiness checks | **complete**: readiness 11/11; pre-registration frozen, awaiting campaign authorization; budget about 34–36 h ([report](docs/m5/m5a_readiness_report.md), [design](docs/m5/m5_design.md), [pre-registration](docs/m5/m5_preregistration.md)) |
+| M5b–M5e. Final training and evaluation campaign | training; strategic replication and the M4 limitations; opponent families, competence, cross-seed results and dedicated attackers; closeout | **planned, not launched**: awaits the user's decisions and approval |
 | M6. Research presentation and reproducibility | consolidated report, reproducible commands, figures, representative trajectories, visual demo, README | proposed |
 
 The documentation index is [docs/README.md](docs/README.md). **Every rule, equation and parameter of the current

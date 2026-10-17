@@ -4,10 +4,15 @@
 action, every rule of the turn resolution, every reward term and the RL objective. Each equation names the code that
 implements it.
 
-**Which game.** `GameConfig.m4_lasthit()`, the research preset of the M4.3b PPO pilot and its validation follow-up
-(code at commit `26f8c83`, branch `development/m4-3b-validation`). Everything in §1–§10 is **CURRENT**: implemented
-and verified against the code; the numbers in the examples were produced by the engine
-(`python -m lanegame.experiments.m43c examples`, `results/m43c/examples.md`).
+**Which game.** The research preset is **`GameConfig.m45_calibrated()`**. It has been the environment of every
+campaign since M4.5c, the user adopted it as the M5 baseline on 2026-10-17, and the M5 campaign is designed on it (§15).
+- **§1–§10** describe its base model `GameConfig.m4_lasthit()`, the research preset of the M4.3b PPO pilot and its
+  validation follow-up (code at commit `26f8c83`, branch `development/m4-3b-validation`). Everything there is
+  **CURRENT** for that base: implemented and verified against the code. The numbers in the examples were produced by
+  the engine (`python -m lanegame.experiments.m43c examples`, `results/m43c/examples.md`).
+- **§14–§15** give every difference of `m45_calibrated()`: the four-action economy of §4.10 and §8.7–§8.8, the M4.5a
+  positional rules and the M4.5b calibration.
+- *Labelling (2026-10-17, M5a):* until then this paragraph named `m4_lasthit()` as the research preset. No rule changed.
 
 **Labels used in this document**
 
@@ -1608,6 +1613,7 @@ historical documents are records of their milestones and are **not** edited; thi
 | 2026-10-14 | M4.5b: new §15 (EXPERIMENTAL calibrated candidate `m45_calibrated()`: the farm-spot correction `farm_spot_rule = "last_front"` with its equation and measured effect, retaliation from the exchange tick `minion_retaliation_delay = 0`, the table of parameters changed and retained); label M4.5B (§0), a §0.4 row, a §14.10 pointer. Every CURRENT statement, §14 (revision 2) and every earlier preset are unchanged (`farm_spot_rule` keeps `"pre_crash_front"` and delay 1 everywhere else) | `config.py` (`m45_calibrated`, `M45_CALIBRATED_FIELDS`, the `"last_front"` value), `champions_m4.py` (`_last_front_cell`, step 1 and `_tick_goals`), `viewer/session.py`, `experiments/m45b/` |
 | 2026-10-17 | M4.8 (documentation of an evaluation convention and a decision; no rule, parameter, preset or objective changed): §9.1 records that the continuing objective is kept and that the lane phase ends in no terminal state (level 14 / turn 94 is an evaluation checkpoint); §9.3 adds the lane-exit readout $E_h$ (undiscounted earned-gold lead $h$ turns after a checkpoint, by repeated continuations; evaluation only) | `diagnostics/lane_exit.py`, `experiments/rl/m48/` (evaluation only) |
 | 2026-10-17 | OM2: new §15.4 and a §2.4 pointer for the EXPERIMENTAL opt-in observation field `obs_last_action`: the opponent's previous action as 13 entries after the existing ones (103 with `m45_calibrated()`). A §15 status line records the user's adoption of `m45_calibrated()` as the M5 baseline. No rule, parameter, preset, objective or default changed | `config.py` (`obs_last_action`), `env/observation_m4.encode_last_action`, `env/observation.observe_full`, `env/core.py` (`last_actions`), `diagnostics/branch.py` (`Snapshot.last_actions`) |
+| 2026-10-17 | M5a (labelling only; no rule, parameter, preset, objective or default changed): the header now names `m45_calibrated()` as the research preset, with §1–§10 its base model `m4_lasthit()` and §14–§15 the differences; §15's opening says "the research preset" instead of "not the research preset"; §15.4 names its use in M5 | none (documentation); the M5 package `experiments/rl/m5/` uses the presets unchanged |
 
 ---
 
@@ -1804,7 +1810,7 @@ the M4.4 checkpoint guard (`experiments.rl.m44.common.load_policy`); `preset_nam
 
 ## 15. EXPERIMENTAL: the M4.5b calibrated candidate (`m45_calibrated()`)
 
-**Not the research preset.** `GameConfig.m45_calibrated()` is `m45_unified()` revision 2 (§14) with the two fields of
+**The research preset** (labelled so on 2026-10-17; no rule changed). `GameConfig.m45_calibrated()` is `m45_unified()` revision 2 (§14) with the two fields of
 `M45_CALIBRATED_FIELDS`: `farm_spot_rule = "last_front"` (a mechanical correction) and
 `minion_retaliation_delay = 0` (a numerical calibration). Everything else, including the action space (61 codes), the
 observation (90 entries), the reward and every other number of §14, is unchanged. Evidence and decisions:
@@ -1812,7 +1818,9 @@ observation (90 entries), the reward and every other number of §14, is unchange
 preset keeps `farm_spot_rule = "pre_crash_front"` and delay 1.
 
 *Status (2026-10-17):* the user adopted `m45_calibrated()` unchanged as the baseline of the M5 campaign (roadmap
-§AU). The main sections of this document still describe `m4_lasthit()`; §14–§15 give the differences.
+§AU). The M5 design ([m5_design.md](../m5/m5_design.md)) trains both arms on it; its modelling arm adds only the
+observation field of §15.4. The main sections of this document still describe `m4_lasthit()`; §14–§15 give the
+differences.
 
 ### 15.1 The farm spot of a front lost in the probe (`farm_spot_rule = "last_front"`)
 
@@ -1906,6 +1914,6 @@ its slot and, with the Pressure objective, the pressure entry.
 - **Compatibility.** The first 88 or 90 entries are unchanged, so a network trained without the field plays exactly as
   before on that prefix. A network trained with it has 103 or more inputs and cannot be used on the 90-entry
   observation.
-- **Use.** The OM2 opponent-modelling design
-  ([om2_design.md](../opponent_modelling/om2_design.md)). Its policies also receive a belief's 13 features. Those are
+- **Use.** The OM2 opponent-modelling design ([om2_design.md](../opponent_modelling/om2_design.md)) and arm A of the
+  M5 campaign ([m5_design.md](../m5/m5_design.md)). Their policies also receive a belief's 13 features. Those are
   inputs of the network, computed outside the game, not entries of this observation.

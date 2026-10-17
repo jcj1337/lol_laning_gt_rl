@@ -1,12 +1,13 @@
 # RL Research Roadmap: From Exact Stochastic Games to Multi-Agent Reinforcement Learning
 
-> **This is the canonical project roadmap.** The summary below (updated 2026-10-17, OM2 opponent-modelling pilot complete: outcome 1, modelling pays and is safe)
+> **This is the canonical project roadmap.** The summary below (updated 2026-10-17, M5a complete: the final campaign designed, pre-registered and readiness-checked; not launched, awaiting approval)
 > states where the project is and what comes next. Sections A–K are the original plan
 > written before M1 (kept unchanged for the record; its milestone list was later revised, see the notes in section D).
 > Sections L–AW record each milestone's outcome in the order it happened, with links to the full reports (M4.5b: §AJ;
 > M4.5c pilot: §AK; M4.5c training: §AL; M4.5c completion: §AM; M4.6a–b: §AN; M4.6c: §AO; M4.6d: §AP; M4.6e: §AQ;
 > M4.6f: §AR; M4 closeout: §AS; M4.7 horizon study: §AT; M4.8 lane-exit evaluation: §AU; OM1 opponent-modelling feasibility: §AV;
-> OM2 opponent-modelling design and matched pilot: §AW).
+> OM2 opponent-modelling design and matched pilot: §AW; M5a campaign design, pre-registration and readiness: §AX).
+> The M5 plan (M5a–M5e) is under "M5 plan" below.
 > The README's roadmap table and `docs/README.md` point here.
 
 ## Roadmap summary (current position, 2026-10-17)
@@ -165,7 +166,7 @@ policies; M4.6e diagnosed the critic, and M4.6f ran the one targeted learning pi
 3. **Next:** the opponent-modelling feasibility study OM1 (identifiability and value of information with existing
    policies, evaluation only), before the design itself.
 
-- **OM1 opponent-modelling feasibility** (this update, in review; §AV,
+- **OM1 opponent-modelling feasibility** (reviewed; §AV,
   [report](opponent_modelling/om1_feasibility_report.md)). Evaluation only, with existing policies; no training.
   - **Pre-registered outcome 1: feasible and worthwhile.**
   - **Identification is fast.** Within 10 observed turns the believed type already has the right best response in
@@ -186,7 +187,7 @@ policies; M4.6e diagnosed the critic, and M4.6f ran the one targeted learning pi
 learned opponents; train against mixed and switching opponents; a gain must come with no loss against competent or
 unfamiliar opponents), and the opponent's **previous action becomes an opt-in observation field**.
 
-- **OM2 opponent-modelling design and matched pilot** (this update, in review; §AW,
+- **OM2 opponent-modelling design and matched pilot** (reviewed: committed by the user, a6e9b63f; §AW,
   [report](opponent_modelling/om2_pilot_report.md), [design](opponent_modelling/om2_design.md),
   [pre-registration](opponent_modelling/om2_preregistration.md)).
   - **Design (proposed):**
@@ -217,8 +218,61 @@ unfamiliar opponents), and the opponent's **previous action becomes an opt-in ob
   - **Recommendation:** carry the tested form into the M5 design, and make exploitability (dedicated attackers, an
     imitate-then-switch opponent) and competence against pure self-play M5 measurements.
 
-**Open decisions for the user:** whether to carry Bayesian opponent modelling into M5, and in which form
-(recommended: the form the pilot tested, with its robustness measured in M5); then the M5 design (M5a).
+**Decision of 2026-10-17, after OM2** (the user, in the M5a brief; approved direction): opponent modelling enters M5,
+and M5 compares the whole package with continued pure self-play. The brief fixed:
+- the baseline `m45_calibrated()`;
+- the objective (gold difference, γ 0.99, continuing time, bootstrapped truncation, no termination at level 14);
+- the shared actor–critic;
+- D0 → E_20 lane-phase reporting with the non-gold panel;
+- rollout evidence in strength-gap states.
+
+It also gave the starting proposal: two arms, six seed pairs continuing `ext/baseline:s`, OM2's settings, a fixed
+library, and 32.768M transitions per run with a matched 16.384M checkpoint.
+
+- **M5a: the campaign's design, pre-registration and readiness** (this update, complete; §AX;
+  [readiness report](m5/m5a_readiness_report.md), [design](m5/m5_design.md),
+  [pre-registration](m5/m5_preregistration.md) frozen, awaiting campaign authorization).
+  - **The arms.**
+    - A, opponent modelling: OM2's treatment collector exactly, with the previous action, the 13-feature belief, 50%
+      self-play and 50% the 15 fixed opponents.
+    - B, pure self-play: the M4.6c continuation, verified to be 100% current-policy; its snapshot pool is never played.
+    - Both start as `ext/baseline:s` (verified bit-identical outputs) and continue 32.768M transitions, with
+      the M4.6c start mixture and PPO settings.
+    - The contrast estimates the package effect (information and opponent distribution together), not either
+      ingredient.
+  - **The package** `lanegame/experiments/rl/m5/`:
+    - training, manifests, restarts, health checks;
+    - the M5b–M5d instruments for both input formats;
+    - the attackers;
+    - the pre-registered statistics;
+    - gated stages.
+    - An opt-in `observe_turn` hook in the four shared rollout loops lets the historical instruments run a
+      history-dependent policy. Stored records reproduce exactly through it.
+  - **Readiness: 11 of 11 parts pass** (about 20 minutes of experimental compute).
+    - The lineage verified; a disjoint seed block; both smokes re-run bit-identical.
+    - Identical game starts in both arms.
+    - Every om training input rebuilt independently by the evaluation policy.
+    - Fixed-opponent games are 51% of games but 36–37% of learner transitions.
+    - Six workers is the efficient count.
+  - **Measured budget:** training 9.4–11.8 h, evaluation 13.7 h, attackers 10.3 h (a quarter of the target's
+    budget) or 20.6 h (half). About 34–36 h in all.
+  - **Proposals:**
+    - quarter-budget attackers;
+    - an adaptation-exploitation test;
+    - the full battery;
+    - six workers, om runs first.
+  - **A resolution caveat:** with six pairs, a near-zero competence effect would most likely be reported as
+    inconclusive.
+
+**Open decisions for the user** (design §12):
+1. Authorize M5b training (`--confirm-m5-train`).
+2. Seed count: six pairs (recommended) or ten.
+3. Attacker budget: a quarter (recommended) or half.
+4. Whether to include the adaptation test (recommended).
+5. The full or a reduced battery (full recommended).
+6. Confirm the protocol's rules, including the non-inferiority margin δ = 0.25.
+
+**M5 campaign status: not launched, awaiting approval.**
 
 **The agreed path to completion** (the sequence agreed with the user on 2026-10-16, extended on 2026-10-17; details
 in "Path to completion" below):
@@ -231,9 +285,9 @@ in "Path to completion" below):
 | **early-lane horizon study (M4.7)** | requested by the user before the final M5 campaign: what part of play occurs before about level 14; baseline and C1 there; whether delayed rewards drive the early conclusions; one bounded matched pilot of a shorter discount (opt-in, no new termination, rewards or mechanics) | **completed, reviewed** (§AT, [report](m4/m4_7/m4_7_horizon_report.md)): keep γ 0.99; the pilot (H 60) gave no reliable lane-phase gain and cost play later and against fixed opponents (pre-registered outcome 5); nothing adopted. An actual-ending experiment proposed afterwards was dropped on 2026-10-17 in favour of the lane-exit evaluation (M4.8) |
 | **1. validate the lane-exit evaluation (M4.8 Stage 1)** | the readout E_h (raw earned-gold lead plus its expected change over h continuation turns; undiscounted, no critic tail), exact accounting, restoration, paired randomness, orientation; selected wave/Recall cases, controlled variants, recorded-event accounting, calibration against recorded continuations | **completed, reviewed** (§AU, [report](m4/m4_8/m4_8_lane_exit_report.md)): exact accounting, orientation and restoration; the cases move as their mechanisms predict, with recorded-event accounting; predictions calibrated against the games' own continuations (slope 0.99); pre-registered classification **useful**, default window **E_20** |
 | **2. apply it to the matched baseline/C1 policies and settle configuration recommendations (M4.8 Stage 2)** | natural lane-exit checkpoints at turn 94 (84, 104 and 50 as checks) of the M4.6c 8.192M policies; how often raw gold misleads, why, stability, baseline vs C1, earlier conclusions re-checked | **completed, reviewed** (§AU): raw turn-94 gold differs materially from E_20 in about two thirds of natural states (true SD 1.16; leader flips in 4%), explained by reset status, HP and the wave; robust to the continuation policy (correlation 0.96–0.98); baseline and C1 indistinguishable at the lane exit; M4.7's curve contrast stands and its pilot conclusion is reinforced; **decided 2026-10-17: the baseline for M5, E_20 adopted** |
-| **3. design Bayesian opponent modelling** | beliefs about the opponent's style, updated during a game; type library, inference, the policy's use of the belief, evaluation design | **completed, in review**: the feasibility study OM1 is complete, in review (§AV, [report](opponent_modelling/om1_feasibility_report.md)): outcome 1, feasible and worthwhile; identification within 10–20 observed turns; switcher +0.90 ± 0.27 over π, mostly against scripted styles; misspecified (mixed) opponents are the risk. Scope C and the last-action observation decided 2026-10-17. **Design written and implemented behind opt-in switches** (§AW, [design](opponent_modelling/om2_design.md)), in review; its details are proposals |
-| **4. matched opponent-modelling pilot** | a controlled pilot with the same opponent distribution in both arms (with and without the belief), evaluated with the existing instruments and the lane-exit readout | **completed, in review** (§AW, [report](opponent_modelling/om2_pilot_report.md); compute approved 2026-10-17): pre-registered outcome 1, modelling pays and is safe: archetypes +2.03 ± 1.72 (every seed), no loss against competent, misspecified or head-to-head opponents; exploratory: both arms slightly below their start against competent opponents (control −0.59, treatment −0.16) |
-| **5. M5: final training and evaluation campaign** | multi-seed shared-policy PPO on the selected setup; existing evaluation infrastructure; learning progress, strategic counterfactuals, diverse opponents, cross-seed results, empirical exploitability; budget and initialization chosen from evidence | **future (proposed; not launched automatically)**; setup decided 2026-10-17 (the baseline `m45_calibrated()`, γ 0.99, the shared critic assumed; lane-phase outcomes read with E_20); steps 3–4 are complete, in review; whether M5 includes opponent modelling awaits the user; its first task remains M5a (closeout report §8) |
+| **3. design Bayesian opponent modelling** | beliefs about the opponent's style, updated during a game; type library, inference, the policy's use of the belief, evaluation design | **completed, reviewed** (committed by the user, a6e9b63f): the feasibility study OM1 is complete, reviewed (§AV, [report](opponent_modelling/om1_feasibility_report.md)): outcome 1, feasible and worthwhile; identification within 10–20 observed turns; switcher +0.90 ± 0.27 over π, mostly against scripted styles; misspecified (mixed) opponents are the risk. Scope C and the last-action observation decided 2026-10-17. **Design written and implemented behind opt-in switches** (§AW, [design](opponent_modelling/om2_design.md)), reviewed; carried into M5 as arm A |
+| **4. matched opponent-modelling pilot** | a controlled pilot with the same opponent distribution in both arms (with and without the belief), evaluated with the existing instruments and the lane-exit readout | **completed, reviewed** (§AW, [report](opponent_modelling/om2_pilot_report.md); compute approved 2026-10-17): pre-registered outcome 1, modelling pays and is safe: archetypes +2.03 ± 1.72 (every seed), no loss against competent, misspecified or head-to-head opponents; exploratory: both arms slightly below their start against competent opponents (control −0.59, treatment −0.16) |
+| **5. M5: final training and evaluation campaign** | two arms, opponent-modelling package against continued pure self-play, six matched pairs from `ext/baseline:s`; learning progress, strategic replication, the M4 limitations re-measured, opponent families, cross-seed and cross-arm results, dedicated attackers; lane phase read as D0 → E_20 | **M5a completed** (§AX): design, frozen pre-registration (awaiting campaign authorization), drivers, readiness 11/11, measured budget about 34–36 h. **M5b–M5e: planned, not launched, awaiting the user's decisions and approval** ("M5 plan" below). Opponent modelling in M5: approved direction (2026-10-17) |
 | **6. M6: research presentation and reproducibility** | consolidated report, reproducible commands, figures, representative trajectories, a visual demo and README; demonstrated findings kept apart from remaining hypotheses | **future (proposed)** |
 
 **Stopping principle.** A perfect critic, or the discovery of every recognizable laning strategy, is not required. A
@@ -262,8 +316,8 @@ deliberate simplification (`docs/design_philosophy.md`), not a perfect reproduct
 | **M2** Champion mechanics | positions, Hold / Yield / Trade / Safe / Recall, absence and return, stochastic trades with skill, ganks with HP damage, death and respawn | completed (verified: `tests/test_champion*.py`) | §E, §M, §N; [M2/M3 report](rl/m2_m3_implementation_report.md) |
 | **M3** Initial PPO / self-play research | masked PPO, frozen-snapshot and shared-policy (OpenAI Five-inspired) self-play, approximate best responses, strategic diagnostics | completed as an initial research milestone; it revealed weaknesses of the game design rather than meaningful strategy, which motivated M4 | §N, §O; [self-play](rl/openai_five_selfplay_report.md), [diagnostics](rl/openai_five_diagnostics_report.md) |
 | **M4** Integrated laning model and strategic validation | M4.1 design → M4.2 mechanics → M4.3 wave management and economics → M4.4 PPO self-play → M4.5 unified positional mechanics, calibration and retraining → M4.6 design review and diagnosis → M4 closeout | M4.1–M4.4c completed; M4.5a, M4.5b completed; M4.5c completed (6 × 8.192M and the 2× extension 6 × 16.384M trained; comprehensive evaluation, strategic battery and attackers done; GO WITH CAVEATS); M4.4d done within M4.5c (attackers); M4.6a–d completed; M4.6e and M4.6f (the targeted learning pilot) completed, in review; **M4 closeout completed and reviewed: M4 closed (ready for M5 with documented limitations); setup decided 2026-10-17: the baseline**; M4.7 early-lane horizon study completed (keep γ 0.99); M4.8 lane-exit evaluation completed (E_20 adopted) | below; §AS, §AT, §AU |
-| Bayesian opponent modelling (design, then a matched pilot) | beliefs about the opponent's style, updated during a game; designed first, then a controlled pilot with the same opponent distribution in both arms | approved direction (2026-10-17), not designed or implemented; comes before the final M5 campaign | "Path to completion" below |
-| **M5** Main training and evaluation campaign | multi-seed shared-policy PPO on the setup selected at M4 closeout; learning progress, strategic counterfactuals, diverse (historical, scripted, adaptive) opponents, cross-seed results and empirical exploitability with the existing instruments, with lane-phase outcomes read by the lane-exit readout (M4.8); budget and initialization from evidence | proposed (redefined 2026-10-16; absorbs the earlier adaptive-opponent proposal as its evaluation; placed after the opponent-modelling design and pilot on 2026-10-17); depends on the user's decision on the closeout setup; scope proposal and first task (M5a) in the [closeout report](m4/m4_closeout_report.md) §8 | "Path to completion" below |
+| Bayesian opponent modelling (OM1 feasibility, OM2 design and matched pilot) | beliefs about the opponent's style, updated during a game; designed first, then a controlled pilot with the same opponent distribution in both arms | **completed, reviewed** (committed by the user, a6e9b63f): OM1 outcome 1, feasible and worthwhile (§AV); OM2 implemented behind opt-in switches and its matched pilot run, pre-registered outcome 1, modelling pays and is safe (§AW). Carried into M5 as the modelling arm (approved direction, 2026-10-17) | §AV, §AW |
+| **M5** Main training and evaluation campaign | the opponent-modelling package against continued pure self-play: two arms, six matched pairs continuing `ext/baseline:s`, 32.768M each; M5b training, M5c strategic replication and the M4 limitations, M5d opponent families, cross-seed/cross-arm results and attackers, M5e closeout; lane phase read as D0 → E_20 | **M5a completed (§AX)**: design, pre-registration frozen and awaiting campaign authorization, drivers, readiness 11/11, budget measured. **M5b–M5e planned, not launched**: the user's decisions and approval are pending | "M5 plan" below; [design](m5/m5_design.md) |
 | **M6** Research presentation and reproducibility | consolidated report, reproducible commands, figures, representative trajectories, visual demo, README; demonstrated findings separated from hypotheses | proposed | "Path to completion" below |
 
 ### M4 in detail (repository names, in order)
@@ -284,14 +338,14 @@ deliberate simplification (`docs/design_philosophy.md`), not a perfect reproduct
 
 | category | items |
 |---|---|
-| **implemented and tested** | the exact game and its solver (legacy configurations bit-identical, pinned); `LaneEnv` and the PettingZoo adapter; the M4 ruleset and every preset up to `m4_four_actions_econ_aggro()`; masked PPO, GAE, shared-policy self-play, checkpoints with verified digests; the discounted evaluator with its guaranteed tail bound; counterfactual branching and action audits; the M4.3b (three-action) and M4.4 (four-action) diagnostic packages; the visual debugger; the M4.4b trained checkpoints (3 economies × 3 seeds at 2,048,000 and 4,096,000 transitions, git-ignored) and their supplementary analysis stages; the M4.4c multi-turn counterfactual package (`experiments/rl/m44c`: strategic plans, paired multi-turn engine, opponent styles, resumable runs); the M4.5a unified positional mechanics (`positional.py`; the Ward, minion-targeting, trade-budget and reach rules; the 90-entry observation; the viewer's W node; `experiments/m45a` demonstrations and smoke study); the M4.5b calibration package (`experiments/m45b`: paired engine and ledger, exact one-turn enumeration, contingent strategies, freeze / trade / Vision / zoning / matrix / timing studies, sensitivity, holdout validation, learned reference, recordings) and the opt-in farm-spot rule `"last_front"`; the opt-in separate-critic network `SeparateCriticNet` (M4.6f: exact initialization from a shared network, checkpoint-compatible); the lane-exit readout `diagnostics/lane_exit.py` (M4.8: evaluation only; exact accounting, checkpoint descriptors, repeated CRN continuations with a per-seat event ledger, window extraction, resolution times) and the M4.8 study package `experiments/rl/m48`; the OM1 feasibility package `experiments/rl/om1`; the opponent-modelling building blocks of OM2 (all opt-in: the observation field `obs_last_action`, the belief module `lanegame/opponent/`, the trainer's collector hooks `augment` / `observe_step`, `widen_inputs`) and the OM2 study package `experiments/rl/om2` |
+| **implemented and tested** | the exact game and its solver (legacy configurations bit-identical, pinned); `LaneEnv` and the PettingZoo adapter; the M4 ruleset and every preset up to `m4_four_actions_econ_aggro()`; masked PPO, GAE, shared-policy self-play, checkpoints with verified digests; the discounted evaluator with its guaranteed tail bound; counterfactual branching and action audits; the M4.3b (three-action) and M4.4 (four-action) diagnostic packages; the visual debugger; the M4.4b trained checkpoints (3 economies × 3 seeds at 2,048,000 and 4,096,000 transitions, git-ignored) and their supplementary analysis stages; the M4.4c multi-turn counterfactual package (`experiments/rl/m44c`: strategic plans, paired multi-turn engine, opponent styles, resumable runs); the M4.5a unified positional mechanics (`positional.py`; the Ward, minion-targeting, trade-budget and reach rules; the 90-entry observation; the viewer's W node; `experiments/m45a` demonstrations and smoke study); the M4.5b calibration package (`experiments/m45b`: paired engine and ledger, exact one-turn enumeration, contingent strategies, freeze / trade / Vision / zoning / matrix / timing studies, sensitivity, holdout validation, learned reference, recordings) and the opt-in farm-spot rule `"last_front"`; the opt-in separate-critic network `SeparateCriticNet` (M4.6f: exact initialization from a shared network, checkpoint-compatible); the lane-exit readout `diagnostics/lane_exit.py` (M4.8: evaluation only; exact accounting, checkpoint descriptors, repeated CRN continuations with a per-seat event ledger, window extraction, resolution times) and the M4.8 study package `experiments/rl/m48`; the OM1 feasibility package `experiments/rl/om1`; the opponent-modelling building blocks of OM2 (all opt-in: the observation field `obs_last_action`, the belief module `lanegame/opponent/`, the trainer's collector hooks `augment` / `observe_step`, `widen_inputs`) and the OM2 study package `experiments/rl/om2`; the M5 package `experiments/rl/m5` (M5a: both arms' training drivers, the history-dependent evaluation policy `OMPolicy`, the M5b–M5d instruments for both input formats, attackers, the pre-registered statistics, readiness checks R0–R10; `tests/test_m5.py`) and the opt-in `observe_turn` hook of the four shared rollout loops (stored M4.5c / M4.6c / M4.6f / OM2 records reproduce exactly) |
 | **experimental candidates** (opt-in, not defaults) | `m45_calibrated()` (M4.5b; the environment of every campaign since M4.5c; chosen by the user on 2026-10-17 as the M5 configuration); C1 = `m45_calibrated(invest_gain=3.24, invest_scale=64.0)` (a keyword override; provisional, not adopted; M4.6c, §AS); `m45_unified()` (M4.5a revision 2, the M4.5b baseline) and `m45_unified_r1()`; `m4_four_actions()`, `m4_four_actions_econ()`, `m4_four_actions_econ_aggro()` (the M4.4 comparison); opt-in fields `xp_reward_weight`, `death_turns_by_level`, `terminal_rule = "final_plate"` (not recommended); the earlier experiments `m4_continuous()`, `m4_emergent()`; the training option `SeparateCriticNet` (M4.6f: better critic values in strength states, no material behavioural improvement demonstrated within the tested budget; recommended at closeout as an opt-in, not an M5 factor); the objective override `m45_calibrated(gamma=1 - 1/60)` (M4.7's pilot arm: a keyword override of the existing `gamma` field, not a preset; not recommended, §AT) |
 | **adopted research baselines** | objective: the discounted gold lead, γ = 0.99, continuing time, no terminal state (unchanged since M4.2); reference preset of the living [mathematical reference](m4/laning_game_mathematical_reference.md) §1–§10: `m4_lasthit()` (`m45_calibrated()` is described in its §15); **research preset in use since M4.5c: `m45_calibrated()`**, with the M4.5c PPO settings (entropy 0.03, 100% current-policy shared self-play, 16 × 128-turn segments, 512-turn bootstrapped games, lr 3·10⁻⁴ annealed); evaluation: paired seats, E1 from s0, W = 1000 headline; strategic counterfactuals by rollouts, with no-bootstrap returns in strength-gap states (M4.6d–e); lane-phase outcomes: the raw earned-gold lead at a lane-exit checkpoint read together with the lane-exit readout E_h and the non-gold dimensions beside it (M4.8, E_20 adopted by the user on 2026-10-17; evaluation only, the objective is unchanged). Earlier baselines, for the record: the M4.3b `ent03` condition on `m4_lasthit()`, and the M4.4 candidate `m4_four_actions_econ_aggro()` |
-| **underway** | none. M4.6 is complete (§AN–§AR). The M4 closeout review (§AS) is complete and in review: it recommends closing M4 and starting M5 with documented limitations, and the setup decision awaits the user. The M4.7 horizon study (§AT) is complete and in review: keep γ 0.99. The M4.8 lane-exit evaluation (§AU) is complete and reviewed. OM1, the opponent-modelling feasibility study (§AV), is complete and in review. OM2 (§AW): the design is implemented behind opt-in switches and the matched pilot is complete, in review (outcome 1, modelling pays and is safe). Next: the user's decision on opponent modelling in M5, then M5a. Mechanics changes and further investment experiments stay paused by the user's decision; actual lane termination and further discount experiments are not the immediate plan (2026-10-17) |
+| **underway** | none. M4 and the opponent-modelling steps are complete and reviewed (OM1 §AV, OM2 §AW). **M5a is complete (§AX)**: the campaign is designed, pre-registered (frozen, awaiting campaign authorization) and readiness-checked; **the M5 campaign (M5b–M5e) is not launched and awaits the user's decisions and approval**. Mechanics changes and further investment or discount experiments stay paused by the user's decisions; there is no lane termination (2026-10-17) |
 | **conditional** | none (the one targeted learning pilot ran as M4.6f, §AR) |
-| **approved direction** (2026-10-17) | the Bayesian opponent-modelling design (scope C, robustness first; the opponent's previous action observed; now written and implemented, §AW); then a matched opponent-modelling pilot with the same opponent distribution in both arms (run 2026-10-17: outcome 1); then the final M5 campaign; then M6 |
-| **proposed** | M5, the main training and evaluation campaign (scope proposal and first task M5a in the [closeout report](m4/m4_closeout_report.md) §8); M6, the research presentation and reproducibility ("Path to completion" below) |
-| **unresolved questions** | Answered by M4.4c (§AH): the interrupted Recall is a rational guessing game (Recall is the best default; a small ≈ 0.1-resource conditional gap); freezes pay only against opponents that concede them; the stronger side does zone, through kills and forced Recalls; Vision-first does not pay in typical (short) sieges; Last Hit / Thin / Slow Push coincide in 68–77% of turns. Open: How exploitable are four-action policies (no four-action attacker yet)? How much value do they leave against conceding / passive opponents (+0.4 to +1.0 measured in probes)? Does Vision-first pay in long sieges (positive trend, unresolved)? **Design decisions after review**: Vision, combat-wave coupling, minion aggro and the XP range were revised together in M4.5a (§AI), to be calibrated in M4.5b; still open: whether to keep three non-Shove wave actions that coincide in most states, whether a champion may step into its own tower cell by choice. **Answered by M4.5b** (§AJ): Ward value is situational and contestable; early trades into big waves cost HP with retaliation from the exchange tick; freezes held with Thin + Trade pay conditionally (mid- and late game; punishing walk-ups when stronger); Safe costs 0.15–0.56 farm per turn and threat-only zoning exists near the weaker side's tower; scripted restricted games are Shove-centred, which learned policies beat. **Open after M4.5b**: accept the 21% mid-to-late minion share or adopt `minion_damage_growth = 1.12` after fresh validation; whether PPO on the candidate learns freezes, wards and selective trading (M4.5c). Structural limits documented earlier remain: contact geometry at the tower, ganks independent of the opponent, a weak XP economy on a five-cell lane. The M4.3c objective / termination proposal remains undecided (*superseded 2026-10-17*: the continuing objective is kept and no termination is added; see the decisions in the summary). **Carried forward by the M4 closeout (§AS)**, as M5 measurements rather than M4 work: guarding in the narrow favourable-freeze window, large-gap conversion, the weak side's Safe at Recall windows, value left against conceding styles, exploitability at larger attacker budgets, the isolated effect of archive starts, and whether Last Hit / Thin / Slow Push still coincide on `m45_calibrated()`. Accepted as documented limitations: the narrow freeze window, late leads that fade, the shared critic's strength blindness. **Answered by M4.7 (§AT)**: the γ 0.99 objective does not make the early-lane conclusions depend on post-lane rewards, and a shorter objective (H 60) does not improve lane-phase play in a matched continuation; not tested: a from-scratch short-horizon campaign, H 80, a short-horizon C1. **Answered by M4.8 (§AU)**: raw earned gold at the lane exit misstates the economic position materially in about two thirds of natural turn-94 states, because of pending resets, HP and the wave; a 20-turn repeated-continuation readout resolves 95% of the pending items, is calibrated against recorded continuations and is robust to in-distribution continuation policies; at the lane exit baseline and C1 do not differ. Open: the readout's dependence on unfamiliar continuation styles; how to value XP, HP and position (deliberately not converted). **Answered by OM2 (§AW)**: a Bayesian belief over opponent types, trained with library opponents, mixtures and switchers, adds +2.0 at the lane exit against recognizable styles over an equally trained agent without it, and protects competence against competent opponents. Open: exploitability by a dedicated or deceptive attacker (the belief follows switches only in 10–60 turns), the effect of the last-action field alone, and what a fixed-opponent share costs pure self-play competence. |
+| **approved direction** (2026-10-17) | the Bayesian opponent-modelling design and matched pilot (done: OM1, OM2); **M5 with the opponent-modelling package compared with continued pure self-play** (decided in the M5a brief; the baseline `m45_calibrated()`, the continuing γ 0.99 objective, the shared critic, D0 → E_20 reporting and rollout evidence fixed); then M6 |
+| **proposed** | the M5 campaign details (M5b–M5e, "M5 plan" below; [design](m5/m5_design.md), [pre-registration](m5/m5_preregistration.md)): six pairs × 32.768M, quarter-budget attackers with an adaptation-exploitation test, the full battery, six workers; M6, the research presentation and reproducibility ("Path to completion" below) |
+| **unresolved questions** | Answered by M4.4c (§AH): the interrupted Recall is a rational guessing game (Recall is the best default; a small ≈ 0.1-resource conditional gap); freezes pay only against opponents that concede them; the stronger side does zone, through kills and forced Recalls; Vision-first does not pay in typical (short) sieges; Last Hit / Thin / Slow Push coincide in 68–77% of turns. Open: How exploitable are four-action policies (no four-action attacker yet)? How much value do they leave against conceding / passive opponents (+0.4 to +1.0 measured in probes)? Does Vision-first pay in long sieges (positive trend, unresolved)? **Design decisions after review**: Vision, combat-wave coupling, minion aggro and the XP range were revised together in M4.5a (§AI), to be calibrated in M4.5b; still open: whether to keep three non-Shove wave actions that coincide in most states, whether a champion may step into its own tower cell by choice. **Answered by M4.5b** (§AJ): Ward value is situational and contestable; early trades into big waves cost HP with retaliation from the exchange tick; freezes held with Thin + Trade pay conditionally (mid- and late game; punishing walk-ups when stronger); Safe costs 0.15–0.56 farm per turn and threat-only zoning exists near the weaker side's tower; scripted restricted games are Shove-centred, which learned policies beat. **Open after M4.5b**: accept the 21% mid-to-late minion share or adopt `minion_damage_growth = 1.12` after fresh validation; whether PPO on the candidate learns freezes, wards and selective trading (M4.5c). Structural limits documented earlier remain: contact geometry at the tower, ganks independent of the opponent, a weak XP economy on a five-cell lane. The M4.3c objective / termination proposal remains undecided (*superseded 2026-10-17*: the continuing objective is kept and no termination is added; see the decisions in the summary). **Carried forward by the M4 closeout (§AS)**, as M5 measurements rather than M4 work: guarding in the narrow favourable-freeze window, large-gap conversion, the weak side's Safe at Recall windows, value left against conceding styles, exploitability at larger attacker budgets, the isolated effect of archive starts, and whether Last Hit / Thin / Slow Push still coincide on `m45_calibrated()`. Accepted as documented limitations: the narrow freeze window, late leads that fade, the shared critic's strength blindness. **Answered by M4.7 (§AT)**: the γ 0.99 objective does not make the early-lane conclusions depend on post-lane rewards, and a shorter objective (H 60) does not improve lane-phase play in a matched continuation; not tested: a from-scratch short-horizon campaign, H 80, a short-horizon C1. **Answered by M4.8 (§AU)**: raw earned gold at the lane exit misstates the economic position materially in about two thirds of natural turn-94 states, because of pending resets, HP and the wave; a 20-turn repeated-continuation readout resolves 95% of the pending items, is calibrated against recorded continuations and is robust to in-distribution continuation policies; at the lane exit baseline and C1 do not differ. Open: the readout's dependence on unfamiliar continuation styles; how to value XP, HP and position (deliberately not converted). **Answered by OM2 (§AW)**: a Bayesian belief over opponent types, trained with library opponents, mixtures and switchers, adds +2.0 at the lane exit against recognizable styles over an equally trained agent without it, and protects competence against competent opponents. Open: exploitability by a dedicated or deceptive attacker (the belief follows switches only in 10–60 turns), the effect of the last-action field alone, and what a fixed-opponent share costs pure self-play competence. **Open for M5 (§AX)**: the user's decisions on seed count, attacker budget, the adaptation test and the battery size; whether six pairs resolve a near-zero competence effect (most likely inconclusive under OM2's variance); exploitability of the modelling agent by a dedicated or deceptive learned attacker. |
 
 ### M4.4 plan
 
@@ -375,6 +429,82 @@ available for historical comparisons)
 | completion criteria | as M4.4b, plus the exploitability and robustness measures of the former M4.4d |
 | dependencies | M4.5b reviewed (done; minion share accepted at 1.08); the M4.4 diagnostics adapted to W and minion targeting, with the M4.5b ledger quantities in the health checks (done in the pilot: `experiments/rl/m45c`); the M4.5b scripted strategies as fixed evaluation opponents (done) |
 | progress | pilot complete (§AK): pipeline verified on the preset, one seed × 1,024,000 transitions, learning curve, behaviour, throughput; runtime audit and horizon study; **6 seeds × 8,192,000 trained** (§AL: 55 min concurrent, all checks pass, seed-0 re-run, limited health evaluation, framework prepared and gated); **completed (§AM)**: matched 2× extension 6 × 16,384,000; budget comparison; comprehensive standard evaluation; 50-turn strategic battery with validation and exception 3; six best-response attackers; GO WITH CAVEATS |
+
+### M5 plan
+
+The final campaign ([design](m5/m5_design.md), [pre-registration](m5/m5_preregistration.md),
+[M5a readiness report](m5/m5a_readiness_report.md), §AX).
+
+**Its three questions:**
+1. Which strategic findings replicate on the final policies?
+2. What does the opponent-modelling package add beyond continued pure self-play?
+3. Does it preserve competence, and how exploitable are the agents?
+
+**The arms.**
+- **A, opponent modelling (`om`):** OM2's treatment, with the previous action, the 13-feature belief (λ 0.97) and a
+  fixed library, 50% self-play and 50% the 15 fixed opponents.
+- **B, pure self-play (`sp`):** 100% current-policy shared self-play, as M4.6c.
+- **Both:** start from `ext/baseline:s` (24.576M prior transitions, the same outputs); s = 0…5; 32.768M additional
+  transitions each, with a matched 16.384M checkpoint; the M4.6c start mixture and PPO settings; PPO seed 70,000 + s.
+- **What the contrast estimates:** the package effect. Information and opponent distribution change together, the
+  archive-start effect is not isolated, and the arms' trajectories diverge after the first update.
+
+| configuration item | status |
+|---|---|
+| opponent modelling in M5, compared as a package with pure self-play | **approved direction** (2026-10-17) |
+| `m45_calibrated()`, gold-difference reward, γ 0.99, continuing time, no termination at level 14, the shared critic, D0 → E_20 with the panel, rollout evidence | **approved (fixed by the brief)** |
+| two arms, six pairs, continuation of `ext/baseline:s`, OM2's settings, a fixed library | approved as the starting proposal; kept by M5a |
+| 32.768M per run, a 16.384M matched checkpoint | proposal (brief), kept; budget not yet approved |
+| quarter-budget attackers (8.192M); the adaptation-exploitation test; the full battery; six workers, om runs first | **proposed by M5a**, awaiting decision |
+| six pairs given the competence resolution (null case 42% conclusive; ten pairs 71%) | **unresolved: the user's decision** |
+| the non-inferiority margin δ = 0.25 and the classifications | proposed and frozen in the pre-registration; any change is an amendment |
+
+**M5a — design, pre-registration and readiness** (completed, §AX)
+
+| | |
+|---|---|
+| objective | a concrete, reviewable campaign: the design, the frozen pre-registration, drivers for both arms and every instrument, and bounded readiness checks |
+| deliverables | `docs/m5/` (design, pre-registration, readiness protocol, readiness report); `lanegame/experiments/rl/m5/`; `tests/test_m5.py`; `results/m5/` (`readiness.json`, `budget.json`, `preregistration.json`, `report.md`, benchmark records) |
+| completion criteria | readiness R0–R10 passed and the regression suite green; the pre-registration frozen with its SHA-256; the budget measured |
+| outcome | all met: 11 of 11 readiness parts; the pre-registration frozen, awaiting campaign authorization; the budget about 34–36 h |
+
+**M5b — training** (planned, not launched; gate `--confirm-m5-train`)
+
+| | |
+|---|---|
+| objective | the 12 runs, healthy and reproducible, with their learning curves and convergence probe |
+| tasks | training (6 workers, om runs first); the pre-registered health checks; restarts only for technical failures, with an exact-prefix re-run; monitoring: 16-point curves against a fixed panel, history against 25 / 50 / 75% snapshots and the start, the final-vs-75% convergence probe |
+| deliverables | finals and snapshots (git-ignored); `results/m5/train_main.json`; run manifests; the monitoring records |
+| completion criteria | every health check passed; no extension, since the 32.768M results are final |
+| dependencies | the user's decisions and approval |
+| estimated cost | 9.4–11.8 h of training; 0.5 h of monitoring |
+
+**M5c — strategic evaluation** (planned; gate `--confirm-m5-eval`)
+
+| | |
+|---|---|
+| objective | which M4.5c findings replicate, and every M4 limitation re-measured, per arm and between arms |
+| tasks | the full M4.5c battery with the M4.6b corrections on all 12 finals; the M4 limitation families: weaker side, lead premium, strength use, freeze and breaker cells, Recall windows, natural states, large gaps with a gap specialist; D0 → E_20 and the panel from every game |
+| criteria | a verdict replicates when, in at least 5 of 6 seeds, no fixed alternative beats the policy by more than 0.2; every closeout class labelled used / missed / weak / open |
+| dependencies | M5b's finals |
+| estimated cost | 10.8 h (battery 9.3 h, cells 1.5 h) |
+
+**M5d — opponent modelling and robustness** (planned; gates `--confirm-m5-eval`, `--confirm-m5-attackers`)
+
+| | |
+|---|---|
+| objective | the package's exploitation gain, its competence and its exploitability |
+| tasks | **families from s0:** library and held-out styles (including conditional styles on a competent base), misspecified mixtures and switchers, imitate-then-switch, competent historical and final opponents, the head to head (same seed and cross-seed), the 500-turn objective, the midpoints. **Attackers:** dedicated attackers against both arms and against the om final without in-game adaptation, with parity starts, the om input format and a matched budget, evaluated on independent games; the belief mechanism |
+| criteria | P1, exploitation gain (≥ +0.25, interval above 0); P2a and P2b, competence by non-inferiority with δ 0.25 (inconclusive is never reported as preserved); the headline outcomes 1–5; the secondary endpoints Holm-adjusted |
+| dependencies | M5b's finals |
+| estimated cost | 2.4 h of evaluation; attackers 10.3 h (quarter) or 20.6 h (half) |
+
+**M5e — closeout** (planned)
+
+| | |
+|---|---|
+| objective | strategic replication; learning progress and convergence limits; exploitation gains with competence and robustness trade-offs, side by side; exploitability lower bounds; the recommended final configuration for M6; reproducibility materials and representative viewer traces |
+| dependencies | M5b–M5d |
 
 ### Path to completion (agreed sequence, 2026-10-16; extended 2026-10-17)
 
@@ -486,18 +616,30 @@ The remaining sequence, numbered as agreed on 2026-10-17 (it continues the 2026-
   - the baseline stays the recommended configuration;
   - no default changed.
 
-**3c. Step 3: design Bayesian opponent modelling** (next; approved direction, not designed or implemented)
-- A desired addition since 2026-10-16: beliefs about the opponent's style, updated during a game.
-- The design is the next task. Scope, type library, inference, how the policy uses the belief and the evaluation
-  design are open until the user reviews a proposal. The original section H sketch (type library, inference,
-  policies to compare) is a starting point, not a commitment.
+**3c. Step 3: design Bayesian opponent modelling** (completed, reviewed; §AV, §AW)
+- OM1, the feasibility study (evaluation only): outcome 1, feasible and worthwhile
+  ([report](opponent_modelling/om1_feasibility_report.md)).
+- The design is written and implemented behind opt-in switches ([design](opponent_modelling/om2_design.md)):
+  - the previous-action observation field;
+  - the belief over 11 library types and two catch-alls;
+  - the collector hooks;
+  - zero-weight widening.
+- *Correction (2026-10-17, M5a):* until this update the entry read "not designed or implemented", which had been
+  stale since OM2.
 
-**3d. Step 4: matched opponent-modelling pilot** (planned direction; not specified)
-- A controlled pilot with the same opponent distribution in both arms (with and without the belief), so the effect
-  of modelling is not confounded with a change of opponents.
-- Evaluated with the existing instruments, lane-phase outcomes read with the lane-exit readout.
+**3d. Step 4: matched opponent-modelling pilot** (completed, reviewed; §AW,
+[report](opponent_modelling/om2_pilot_report.md))
+- Control (belief at the prior) against treatment (the belief), 3 seed pairs × 4.096M from `ext/baseline:s`.
+- Pre-registered outcome 1: modelling pays and is safe.
+- Exploratory, against the common start: the belief protects competence that the 50% fixed-opponent mix otherwise
+  erodes slightly.
 
-**4. Step 5: M5, the final training and evaluation campaign** (proposed; not launched automatically)
+**4. Step 5: M5, the final training and evaluation campaign** (M5a completed, §AX; M5b–M5e planned, not launched,
+awaiting the user's decisions and approval; the full plan is "M5 plan" above and [m5_design.md](m5/m5_design.md))
+- *Superseded 2026-10-17.* M5 now compares the opponent-modelling package with continued pure self-play (the user's
+  decision in the M5a brief). The proposal below, from the closeout, is kept for the record: its fresh initialization
+  was replaced by continuations of `ext/baseline:s`, and its "adaptive opponents" by the modelling arm with M5d's
+  opponent families and attackers.
 - The commitments below are the agreed sequence of 2026-10-16. The closeout report §8 lists what they leave
   underspecified and proposes a concrete scope, labelled as a proposal:
   - an objective;
@@ -2921,3 +3063,97 @@ minutes.
   self-play part of M5's evaluation.
 - The fixed-opponent share, the library's growth and continuing versus training from scratch remain M5 design
   choices.
+
+## AX. M5a campaign design, pre-registration and readiness (2026-10-17)
+
+Report: [m5a_readiness_report.md](m5/m5a_readiness_report.md); design: [m5_design.md](m5/m5_design.md) (proposed,
+awaiting decisions); pre-registration: [m5_preregistration.md](m5/m5_preregistration.md) (frozen, awaiting campaign
+authorization; SHA-256 `d2424022bd07535f…af7304` in `results/m5/preregistration.json`); readiness protocol:
+[m5a_readiness_protocol.md](m5/m5a_readiness_protocol.md) (recorded before the first check); code:
+`lanegame/experiments/rl/m5/`; tests: `tests/test_m5.py` (20); records: `results/m5/`.
+
+**The brief (the user, 2026-10-17).**
+- M5 includes opponent modelling and compares the whole package with continued pure self-play.
+- Kept fixed:
+  - the baseline;
+  - the continuing γ 0.99 objective with bootstrapped truncation and no level-14 termination;
+  - the shared critic;
+  - D0 → E_20 reporting;
+  - rollout evidence;
+  - no new mechanics, curves, discounts, critics or algorithms.
+- The starting proposal: two arms, six pairs continuing `ext/baseline:s`, OM2's settings, a fixed library, 32.768M per
+  run with a 16.384M matched checkpoint.
+
+**Design (proposed).**
+- **Arm A** is OM2's treatment collector, imported unchanged.
+- **Arm B** is the M4.6c continuation. It is verified to be 100% current-policy shared self-play: the snapshot pool
+  exists but is never played.
+- **The primary contrast** A − B is the package effect: information and opponent distribution together.
+- **M5b:**
+  - health checks, curves, history and the final-vs-75% probe;
+  - restart rules with an exact-prefix re-run;
+  - no extension rule.
+- **M5c:** the full M4.5c battery with the M4.6b corrections, and the seven M4 limitation families. Replication needs
+  at least 5 of 6 seeds within 0.2.
+- **M5d:**
+  - style, misspecified, imitate-then-switch, competent-historical and competent-final families;
+  - head to head, the 500-turn objective and the midpoints;
+  - parity-start attackers in the om input format, and an adaptation-exploitation test against the om final with its
+    belief frozen at typical self-play values.
+- **Statistics:**
+  - seeds as units, t intervals with the game-level and seed-level variance kept apart;
+  - P1 (gain ≥ +0.25), and P2a / P2b by non-inferiority with δ = 0.25 (inconclusive never reported as preserved);
+  - headline outcomes 1–5, style gains and competence never netted;
+  - Holm for the secondary claims.
+
+**Implementation.**
+- The package covers:
+  - training and manifests;
+  - the history-dependent evaluation policy `OMPolicy`;
+  - the M5b–M5d instruments for both formats;
+  - attackers;
+  - statistics;
+  - readiness;
+  - gated stages (`--confirm-m5-train` / `-eval` / `-attackers`).
+- One opt-in library change: the `observe_turn` hook in the four shared rollout loops, with `inner_policies` in six plan
+  wrappers and `value_at` in the critic bootstrap. No change for existing policies.
+
+**Readiness (11 of 11 parts pass; about 20 minutes of experimental compute).**
+- Lineage verified: M4.5c fresh 16.384M → M4.6c 8.192M → M5 32.768M, 57.344M cumulative over three schedules.
+- The seed block 70,000–70,999 is disjoint from every other study's roots.
+- The widened start equals `ext/baseline:s` bit for bit in batched evaluation.
+- Pins pass, and stored M4.5c, M4.6c, M4.6f (C1) and OM2 records reproduce exactly through the hooked loops.
+- Both smokes re-run bit-identical.
+- The first 200 game starts are identical in both arms.
+- One full om rollout's 2,863 training inputs and 14 truncation bootstraps were rebuilt independently by the evaluation
+  policy: the state and previous action exact, the belief within 2.9·10⁻⁶. The first run's bit-exact belief comparison
+  failed on float32 rounding and is reported.
+- Fixed-opponent games are 51% of games and 36–37% of learner transitions.
+- Six workers is the efficient count (om aggregate +3% at 8).
+- Every instrument ran at reduced samples, with steady-state costs measured.
+
+**Budget** (6 workers):
+- training 9.4–11.8 h (om runs 5.8–8.3 h, sp 3.6 h);
+- evaluation 13.7 h (the battery 9.3 h: om turns cost about 3× with the belief);
+- attackers 10.3 h (18 × a quarter budget) or 20.6 h (half);
+- about 34–36 h in all.
+
+**Evidence-backed proposals** (design §11; none adopted):
+1. quarter-budget attackers;
+2. the adaptation test;
+3. the full battery;
+4. six workers with the om runs first;
+5. the common start's natural states for the cross-arm cells.
+
+Six pairs are kept, with an honest resolution statement: under OM2's variance a near-zero competence effect is
+conclusive only 42% of the time (ten pairs 71%).
+
+**Decisions for the user** (design §12):
+1. Authorize training.
+2. The seed count.
+3. The attacker budget.
+4. The adaptation test.
+5. The battery size.
+6. The protocol's rules.
+
+**M5 campaign status: not launched, awaiting approval.**

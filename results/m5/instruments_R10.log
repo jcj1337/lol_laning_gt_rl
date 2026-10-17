@@ -1,0 +1,38 @@
+== M5 stage R10 (6 workers)
+  [R10 instruments] 1/19 done, 4 s
+  [R10 instruments] 2/19 done, 5 s
+  [R10 instruments] 3/19 done, 6 s
+  [R10 instruments] 4/19 done, 8 s
+  [R10 instruments] 5/19 done, 8 s
+  [R10 instruments] 6/19 done, 8 s
+  [R10 instruments] 7/19 done, 9 s
+  [R10 instruments] 8/19 done, 9 s
+  [R10 instruments] 9/19 done, 10 s
+  [R10 instruments] 10/19 done, 13 s
+  [R10 instruments] 11/19 done, 13 s
+  [R10 instruments] 12/19 done, 13 s
+  [R10 instruments] 13/19 done, 14 s
+  [R10 instruments] 14/19 done, 14 s
+  [R10 instruments] 15/19 done, 15 s
+  [R10 instruments] 16/19 done, 15 s
+  [R10 instruments] 17/19 done, 16 s
+  [R10 instruments] 18/19 done, 17 s
+  [R10 instruments] 19/19 done, 17 s
+  [R10 steady rates] 1/9 done, 5 s
+  [R10 steady rates] 2/9 done, 6 s
+  [R10 steady rates] 3/9 done, 8 s
+  [R10 steady rates] 4/9 done, 10 s
+  [R10 steady rates] 5/9 done, 10 s
+  [R10 steady rates] 6/9 done, 11 s
+  [R10 steady rates] 7/9 done, 12 s
+  [R10 steady rates] 8/9 done, 13 s
+  [R10 steady rates] 9/9 done, 14 s
+  PASS  every instrument ran end to end
+  PASS  all readouts finite
+  PASS  lane-exit panel recorded in s0 games
+  PASS  om focals' belief traces vary
+  PASS  battery jobs restore recorded beliefs for natural om states
+  PASS  lane-exit continuations exact (accounting) and their E_20 within 3 SE of the recorded lead at 114
+  PASS  steady-state cost measured for every class
+  R10: passed
+== R10 done in 34 s

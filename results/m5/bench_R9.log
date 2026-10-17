@@ -1,0 +1,61 @@
+== M5 stage R9 (6 workers)
+  [bench om4] 1/4 done, 81 s
+  [bench om4] 2/4 done, 82 s
+  [bench om4] 3/4 done, 82 s
+  [bench om4] 4/4 done, 85 s
+  [bench om4] {'om': 1429.59891936974} aggregate 5718.39567747896
+  [bench om5] 1/5 done, 96 s
+  [bench om5] 2/5 done, 97 s
+  [bench om5] 3/5 done, 97 s
+  [bench om5] 4/5 done, 99 s
+  [bench om5] 5/5 done, 99 s
+  [bench om5] {'om': 1200.4898247807614} aggregate 6002.449123903807
+  [bench om6] 1/6 done, 95 s
+  [bench om6] 2/6 done, 95 s
+  [bench om6] 3/6 done, 96 s
+  [bench om6] 4/6 done, 96 s
+  [bench om6] 5/6 done, 98 s
+  [bench om6] 6/6 done, 98 s
+  [bench om6] {'om': 1221.4977663176876} aggregate 7328.986597906125
+  [bench om8] 1/8 done, 120 s
+  [bench om8] 2/8 done, 121 s
+  [bench om8] 3/8 done, 122 s
+  [bench om8] 4/8 done, 122 s
+  [bench om8] 5/8 done, 122 s
+  [bench om8] 6/8 done, 124 s
+  [bench om8] 7/8 done, 124 s
+  [bench om8] 8/8 done, 124 s
+  [bench om8] {'om': 945.2486983771412} aggregate 7561.989587017129
+  [bench sp6] 1/6 done, 50 s
+  [bench sp6] 2/6 done, 51 s
+  [bench sp6] 3/6 done, 51 s
+  [bench sp6] 4/6 done, 51 s
+  [bench sp6] 5/6 done, 51 s
+  [bench sp6] 6/6 done, 51 s
+  [bench sp6] {'sp': 2805.382589550926} aggregate 16832.295537305556
+  [bench sp8] 1/8 done, 57 s
+  [bench sp8] 2/8 done, 57 s
+  [bench sp8] 3/8 done, 57 s
+  [bench sp8] 4/8 done, 57 s
+  [bench sp8] 5/8 done, 57 s
+  [bench sp8] 6/8 done, 57 s
+  [bench sp8] 7/8 done, 57 s
+  [bench sp8] 8/8 done, 58 s
+  [bench sp8] {'sp': 2443.335469674972} aggregate 19546.683757399776
+  [bench mix6] 1/6 done, 49 s
+  [bench mix6] 2/6 done, 49 s
+  [bench mix6] 3/6 done, 50 s
+  [bench mix6] 4/6 done, 93 s
+  [bench mix6] 5/6 done, 94 s
+  [bench mix6] 6/6 done, 96 s
+  [bench mix6] {'om': 1144.1789116664118, 'sp': 2859.020239250485} aggregate 12009.597452750691
+  [bench att6] 1/6 done, 77 s
+  [bench att6] 2/6 done, 77 s
+  [bench att6] 3/6 done, 77 s
+  [bench att6] 4/6 done, 92 s
+  [bench att6] 5/6 done, 92 s
+  [bench att6] 6/6 done, 92 s
+  [bench att6] {'att_om': 686.1980590215902, 'att_sp': 849.1322998030722} aggregate 4605.991076473987
+  PASS  every benchmark configuration ran
+  R9: passed
+== R9 done in 715 s

@@ -170,6 +170,9 @@ class Plan:
         self.forced += 1
         return legal[sl[j]], f"[{self.name}]"
 
+    def inner_policies(self):
+        return (self.own,)                               # M5 opt-in hook (m45b.engine.observe_turn)
+
 
 # plan specifications: name -> (rule, n, condition, release HP); "policy" and "reset" are special
 FREEZER = {"policy": None,

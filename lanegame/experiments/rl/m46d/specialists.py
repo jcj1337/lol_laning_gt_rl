@@ -110,6 +110,9 @@ class TwoNet:
     def decide(self, cfg, lane, m4, s: int, i: int):
         return (self.s if self.pick(i) else self.g).decide(cfg, lane, m4, s, i)
 
+    def inner_policies(self):
+        return (self.g, self.s)                          # M5 opt-in hook (m45b.engine.observe_turn)
+
 
 def state_class(cfg, lane, m4) -> str:
     from .plans import catchable, hp

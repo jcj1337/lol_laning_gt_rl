@@ -1,0 +1,1906 @@
+{
+ "meta": {
+  "study": "M5",
+  "commit": "a6e9b63f3ab49a1b9d8da97021ab9b7c72739da6",
+  "working_tree_dirty": true,
+  "timestamp": "2026-10-17 18:35:12",
+  "torch": "2.14.1+cpu",
+  "numpy": "2.5.3",
+  "stage": "readiness"
+ },
+ "parts": {
+  "R0": {
+   "time": "2026-10-17 18:10:22",
+   "checks": {
+    "s0: M4.6c 8.192M continuation, PPO seed 98,000 + s": true,
+    "s0: started from the M4.5c 16.384M final of the same seed (digest)": true,
+    "s0: the M4.5c final is a fresh s0-only 100%-self-play schedule (seed s)": true,
+    "s0: archive share of the M4.6c continuation 0.20-0.30": true,
+    "s1: M4.6c 8.192M continuation, PPO seed 98,000 + s": true,
+    "s1: started from the M4.5c 16.384M final of the same seed (digest)": true,
+    "s1: the M4.5c final is a fresh s0-only 100%-self-play schedule (seed s)": true,
+    "s1: archive share of the M4.6c continuation 0.20-0.30": true,
+    "s2: M4.6c 8.192M continuation, PPO seed 98,000 + s": true,
+    "s2: started from the M4.5c 16.384M final of the same seed (digest)": true,
+    "s2: the M4.5c final is a fresh s0-only 100%-self-play schedule (seed s)": true,
+    "s2: archive share of the M4.6c continuation 0.20-0.30": true,
+    "s3: M4.6c 8.192M continuation, PPO seed 98,000 + s": true,
+    "s3: started from the M4.5c 16.384M final of the same seed (digest)": true,
+    "s3: the M4.5c final is a fresh s0-only 100%-self-play schedule (seed s)": true,
+    "s3: archive share of the M4.6c continuation 0.20-0.30": true,
+    "s4: M4.6c 8.192M continuation, PPO seed 98,000 + s": true,
+    "s4: started from the M4.5c 16.384M final of the same seed (digest)": true,
+    "s4: the M4.5c final is a fresh s0-only 100%-self-play schedule (seed s)": true,
+    "s4: archive share of the M4.6c continuation 0.20-0.30": true,
+    "s5: M4.6c 8.192M continuation, PPO seed 98,000 + s": true,
+    "s5: started from the M4.5c 16.384M final of the same seed (digest)": true,
+    "s5: the M4.5c final is a fresh s0-only 100%-self-play schedule (seed s)": true,
+    "s5: archive share of the M4.6c continuation 0.20-0.30": true,
+    "every dependency present": true
+   },
+   "data": {
+    "starts": {
+     "0": {
+      "identity": {
+       "path": "results/rl/checkpoints/m46c/train/ext/baseline/s0/final.pt",
+       "file_sha256": "e9e2ef86e07eb4949217ab9e0ef3cd1cc768abf3f7bb8887f15128f602f9b7ac",
+       "weights_digest": "3a7a81ad866d207fd87674b7007999dc578a7dec6b7744e71d2f509c8a592bcf",
+       "obs_size": 90,
+       "n_actions": 61,
+       "metadata": {
+        "name": "m46c_baseline_s0",
+        "kind": "final",
+        "run": "m46c_baseline_s0",
+        "seed": 98000,
+        "agent_transitions": 8192000,
+        "env_turns": 4096000,
+        "update": 2000,
+        "snapshot_id": "final@8192000"
+       },
+       "schedule_total_steps": 8192000,
+       "provenance_commit": "2080667d74a84098c63207a3ccbe8055cd90d127"
+      },
+      "lineage": {
+       "m46c_ext": {
+        "agent_transitions": 8192000,
+        "schedule": 8192000,
+        "ppo_seed": 98000,
+        "lr": 0.0003,
+        "archive_share": 0.254613922346014,
+        "initial_digest": "4db220749f6f751b3b88121e2f01bc5e7add3c236906a3f7126c502b7ff5a5d3"
+       },
+       "m45c_ext": {
+        "path": "results/rl/checkpoints/m45c/ext/s0/final.pt",
+        "agent_transitions": 16384000,
+        "schedule": 16384000,
+        "ppo_seed": 0,
+        "current_fraction": 1.0,
+        "archive_starts": false,
+        "digest": "4db220749f6f751b3b88121e2f01bc5e7add3c236906a3f7126c502b7ff5a5d3"
+       }
+      }
+     },
+     "1": {
+      "identity": {
+       "path": "results/rl/checkpoints/m46c/train/ext/baseline/s1/final.pt",
+       "file_sha256": "6c17a58951196841ab9ff53263fc42d17dedae0a5f151f67b2efeaf9b5b0f7b1",
+       "weights_digest": "92515523a7d1ef2cfaa06a4e807d222f9ed7dd34a2a2d0efc083df18d282c039",
+       "obs_size": 90,
+       "n_actions": 61,
+       "metadata": {
+        "name": "m46c_baseline_s1",
+        "kind": "final",
+        "run": "m46c_baseline_s1",
+        "seed": 98001,
+        "agent_transitions": 8192000,
+        "env_turns": 4096000,
+        "update": 2000,
+        "snapshot_id": "final@8192000"
+       },
+       "schedule_total_steps": 8192000,
+       "provenance_commit": "2080667d74a84098c63207a3ccbe8055cd90d127"
+      },
+      "lineage": {
+       "m46c_ext": {
+        "agent_transitions": 8192000,
+        "schedule": 8192000,
+        "ppo_seed": 98001,
+        "lr": 0.0003,
+        "archive_share": 0.2498455705630126,
+        "initial_digest": "16d79ed50b0a30a625af7560a416bc6290e81b8c1044c7cee877f8d2096025e8"
+       },
+       "m45c_ext": {
+        "path": "results/rl/checkpoints/m45c/ext/s1/final.pt",
+        "agent_transitions": 16384000,
+        "schedule": 16384000,
+        "ppo_seed": 1,
+        "current_fraction": 1.0,
+        "archive_starts": false,
+        "digest": "16d79ed50b0a30a625af7560a416bc6290e81b8c1044c7cee877f8d2096025e8"
+       }
+      }
+     },
+     "2": {
+      "identity": {
+       "path": "results/rl/checkpoints/m46c/train/ext/baseline/s2/final.pt",
+       "file_sha256": "f010b739c4c7140eba040febd624a10682231af0da4ac6359b757e9f63ecfa27",
+       "weights_digest": "f7498e97cd2a5b6772ee3afd4ee754bff38d4ddd710cf7f260d94efde379d483",
+       "obs_size": 90,
+       "n_actions": 61,
+       "metadata": {
+        "name": "m46c_baseline_s2",
+        "kind": "final",
+        "run": "m46c_baseline_s2",
+        "seed": 98002,
+        "agent_transitions": 8192000,
+        "env_turns": 4096000,
+        "update": 2000,
+        "snapshot_id": "final@8192000"
+       },
+       "schedule_total_steps": 8192000,
+       "provenance_commit": "2080667d74a84098c63207a3ccbe8055cd90d127"
+      },
+      "lineage": {
+       "m46c_ext": {
+        "agent_transitions": 8192000,
+        "schedule": 8192000,
+        "ppo_seed": 98002,
+        "lr": 0.0003,
+        "archive_share": 0.2520472063128825,
+        "initial_digest": "f9fb36ca6818916948bae94416fa3cdb8704d0ba4f6da6cb4f765f4775b3731b"
+       },
+       "m45c_ext": {
+        "path": "results/rl/checkpoints/m45c/ext/s2/final.pt",
+        "agent_transitions": 16384000,
+        "schedule": 16384000,
+        "ppo_seed": 2,
+        "current_fraction": 1.0,
+        "archive_starts": false,
+        "digest": "f9fb36ca6818916948bae94416fa3cdb8704d0ba4f6da6cb4f765f4775b3731b"
+       }
+      }
+     },
+     "3": {
+      "identity": {
+       "path": "results/rl/checkpoints/m46c/train/ext/baseline/s3/final.pt",
+       "file_sha256": "c847b485e7bcd93128eb4ab2967e427899bf1365daf8449739d2a850dc39b6c4",
+       "weights_digest": "652b36d1f5dce467ddc056d26bc56cb05e43e8505cdaec67d562b99bd0c9ae71",
+       "obs_size": 90,
+       "n_actions": 61,
+       "metadata": {
+        "name": "m46c_baseline_s3",
+        "kind": "final",
+        "run": "m46c_baseline_s3",
+        "seed": 98003,
+        "agent_transitions": 8192000,
+        "env_turns": 4096000,
+        "update": 2000,
+        "snapshot_id": "final@8192000"
+       },
+       "schedule_total_steps": 8192000,
+       "provenance_commit": "2080667d74a84098c63207a3ccbe8055cd90d127"
+      },
+      "lineage": {
+       "m46c_ext": {
+        "agent_transitions": 8192000,
+        "schedule": 8192000,
+        "ppo_seed": 98003,
+        "lr": 0.0003,
+        "archive_share": 0.2521835853406129,
+        "initial_digest": "cacb7a49c24930c59ead387c793f87f008e20c00f74b5bc5e9648befd79d7179"
+       },
+       "m45c_ext": {
+        "path": "results/rl/checkpoints/m45c/ext/s3/final.pt",
+        "agent_transitions": 16384000,
+        "schedule": 16384000,
+        "ppo_seed": 3,
+        "current_fraction": 1.0,
+        "archive_starts": false,
+        "digest": "cacb7a49c24930c59ead387c793f87f008e20c00f74b5bc5e9648befd79d7179"
+       }
+      }
+     },
+     "4": {
+      "identity": {
+       "path": "results/rl/checkpoints/m46c/train/ext/baseline/s4/final.pt",
+       "file_sha256": "01e66d2d460846f798f18c9fcd8adb4cae1650de1f52a7a7822fd051e10112fb",
+       "weights_digest": "b320d4e9ef4b821e9a14907e592d1c94489c002d40843f8afa31a5fd474197d6",
+       "obs_size": 90,
+       "n_actions": 61,
+       "metadata": {
+        "name": "m46c_baseline_s4",
+        "kind": "final",
+        "run": "m46c_baseline_s4",
+        "seed": 98004,
+        "agent_transitions": 8192000,
+        "env_turns": 4096000,
+        "update": 2000,
+        "snapshot_id": "final@8192000"
+       },
+       "schedule_total_steps": 8192000,
+       "provenance_commit": "2080667d74a84098c63207a3ccbe8055cd90d127"
+      },
+      "lineage": {
+       "m46c_ext": {
+        "agent_transitions": 8192000,
+        "schedule": 8192000,
+        "ppo_seed": 98004,
+        "lr": 0.0003,
+        "archive_share": 0.24875719395496404,
+        "initial_digest": "820e6159da351773ddf3a9cba40a0d9798d580fe889c61d6322e5fefb6aa9131"
+       },
+       "m45c_ext": {
+        "path": "results/rl/checkpoints/m45c/ext/s4/final.pt",
+        "agent_transitions": 16384000,
+        "schedule": 16384000,
+        "ppo_seed": 4,
+        "current_fraction": 1.0,
+        "archive_starts": false,
+        "digest": "820e6159da351773ddf3a9cba40a0d9798d580fe889c61d6322e5fefb6aa9131"
+       }
+      }
+     },
+     "5": {
+      "identity": {
+       "path": "results/rl/checkpoints/m46c/train/ext/baseline/s5/final.pt",
+       "file_sha256": "2208b5dd36f51d5e1009ec7ae27a03e2d5ae7925ec6cc67e8e7f6c710badaf97",
+       "weights_digest": "ef6ad0cd92e7611cf786ad204147ba90901ca3664b04ea50c98267ead9279fef",
+       "obs_size": 90,
+       "n_actions": 61,
+       "metadata": {
+        "name": "m46c_baseline_s5",
+        "kind": "final",
+        "run": "m46c_baseline_s5",
+        "seed": 98005,
+        "agent_transitions": 8192000,
+        "env_turns": 4096000,
+        "update": 2000,
+        "snapshot_id": "final@8192000"
+       },
+       "schedule_total_steps": 8192000,
+       "provenance_commit": "2080667d74a84098c63207a3ccbe8055cd90d127"
+      },
+      "lineage": {
+       "m46c_ext": {
+        "agent_transitions": 8192000,
+        "schedule": 8192000,
+        "ppo_seed": 98005,
+        "lr": 0.0003,
+        "archive_share": 0.24906064384163745,
+        "initial_digest": "8e07f3b634fd9fde0725f5d708ffe06073a9b7c8593124218f8e8e33a46698d4"
+       },
+       "m45c_ext": {
+        "path": "results/rl/checkpoints/m45c/ext/s5/final.pt",
+        "agent_transitions": 16384000,
+        "schedule": 16384000,
+        "ppo_seed": 5,
+        "current_fraction": 1.0,
+        "archive_starts": false,
+        "digest": "8e07f3b634fd9fde0725f5d708ffe06073a9b7c8593124218f8e8e33a46698d4"
+       }
+      }
+     }
+    },
+    "dependencies": {
+     "archive": {
+      "path": "results/rl/checkpoints/m46c/archive/train_archive.json.gz",
+      "file_sha256": "c3b2539c7647fcd4eaaf83fb71e8c1937e6419c327748e609e7df1383d69b63c"
+     },
+     "library:peer": {
+      "path": "results/rl/checkpoints/m45c/full/s3/final.pt",
+      "file_sha256": "fa91f284a59ace64d85358398cf096304e9a32b9e8e1655ba56965b4d7664cd6",
+      "weights_digest": "644343ca5b1f49e773133c70c243ac17a8d05d629d8e26c934507ec3978e32b2",
+      "obs_size": 90,
+      "n_actions": 61,
+      "metadata": {
+       "name": "s3",
+       "kind": "final",
+       "run": "s3",
+       "seed": 3,
+       "agent_transitions": 8192000,
+       "env_turns": 4096000,
+       "update": 2000,
+       "snapshot_id": "final@8192000"
+      },
+      "schedule_total_steps": 8192000,
+      "provenance_commit": "45b7dfa7fa5564194e124af59b26b45433fb56f9"
+     },
+     "library:attacker": {
+      "path": "results/rl/checkpoints/m45c/attack/ext_s3/final.pt",
+      "file_sha256": "e6f5deebeb434bc7cc5abbaa2e685495db1ed77f9c13f66a24f4dfa8bd0e9f20",
+      "weights_digest": "bb44bbf76b43a50469eae1b8bc00b9b785419a34537f438b457e19c3bec68e97",
+      "obs_size": 90,
+      "n_actions": 61,
+      "metadata": {
+       "name": "attack_final_ext_3"
+      },
+      "schedule_total_steps": 4096000,
+      "provenance_commit": "45b7dfa7fa5564194e124af59b26b45433fb56f9"
+     },
+     "library:freezer": {
+      "path": "results/rl/checkpoints/m46a/e4/freeze_s2/final.pt",
+      "file_sha256": "51e1a2787062af6debccfe6e11e5a814da82f5bae8c5ff96c7d4b8cfe2b56f4f",
+      "weights_digest": "6462996a4e5479d97d5b81a1419e7b5e2156c050468ea89d6707bcca07ae146c",
+      "obs_size": 90,
+      "n_actions": 61,
+      "metadata": {
+       "name": "m46a_freeze_s2"
+      },
+      "schedule_total_steps": 4096000,
+      "provenance_commit": "11860c88632cf8a90f1c0f7fc10c4126e63dec3b"
+     },
+     "library:gapper": {
+      "path": "results/rl/checkpoints/m46a/e4/gap_s2/final.pt",
+      "file_sha256": "e4aa64fb18e342a6b45b1afaaf56496726f8860a3baaaea6068100de50884f15",
+      "weights_digest": "5d86682c684db3d299b736a071ad133f2763d204a4aea7a6701bbef6f0096854",
+      "obs_size": 90,
+      "n_actions": 61,
+      "metadata": {
+       "name": "m46a_gap_s2"
+      },
+      "schedule_total_steps": 4096000,
+      "provenance_commit": "11860c88632cf8a90f1c0f7fc10c4126e63dec3b"
+     },
+     "library:short": {
+      "path": "results/rl/checkpoints/m47/train/main/short/s0/final.pt",
+      "file_sha256": "17c2507453dd9e7a3d1fb7b20c8a1fe55f1903b75296b1b75a23d537cf97934d",
+      "weights_digest": "4063614c827e8d809fc96a9086557e5a23f0552e9c6a4d2ef378a9cd715e8f2c",
+      "obs_size": 90,
+      "n_actions": 61,
+      "metadata": {
+       "name": "m47_short_s0",
+       "kind": "final",
+       "run": "m47_short_s0",
+       "seed": 58300,
+       "agent_transitions": 4096000,
+       "env_turns": 2048000,
+       "update": 1000,
+       "snapshot_id": "final@4096000"
+      },
+      "schedule_total_steps": 4096000,
+      "provenance_commit": "6b5d66f17d5eadc4e4e789aa01e5599505de45d7"
+     },
+     "heldout:attacker_b": {
+      "path": "results/rl/checkpoints/m45c/attack/ext_s0/final.pt",
+      "file_sha256": "c9745dae5f41cf8081ea9ea11935e97805c3b7cf3a4fc6df9d45692ec844ae4d",
+      "weights_digest": "a59e8cccd95f4f440cc9872c03fe98c551777a1e75c0ce5db7e14b96878652c9",
+      "obs_size": 90,
+      "n_actions": 61,
+      "metadata": {
+       "name": "attack_final_ext_0"
+      },
+      "schedule_total_steps": 4096000,
+      "provenance_commit": "45b7dfa7fa5564194e124af59b26b45433fb56f9"
+     },
+     "heldout:freezer_b": {
+      "path": "results/rl/checkpoints/m46a/e4/freeze_s4/final.pt",
+      "file_sha256": "af021111995cb2f54218d4e416dc67936d70eec854395ec037446166d28b611f",
+      "weights_digest": "ac05e982ecc80acdd76707ca153a4f23f6175215ff913653f9876a0de34ad12e",
+      "obs_size": 90,
+      "n_actions": 61,
+      "metadata": {
+       "name": "m46a_freeze_s4"
+      },
+      "schedule_total_steps": 4096000,
+      "provenance_commit": "11860c88632cf8a90f1c0f7fc10c4126e63dec3b"
+     },
+     "heldout:gapper_b": {
+      "path": "results/rl/checkpoints/m46a/e4/gap_s4/final.pt",
+      "file_sha256": "b5d3b16ed0142572b728971e7c8847c6686e61e0596871faa6d5ecd5fbf28335",
+      "weights_digest": "4faccc13be036b3933c9f738874901e43db17a59db0f9fa37a3e153b72ba6b0b",
+      "obs_size": 90,
+      "n_actions": 61,
+      "metadata": {
+       "name": "m46a_gap_s4"
+      },
+      "schedule_total_steps": 4096000,
+      "provenance_commit": "11860c88632cf8a90f1c0f7fc10c4126e63dec3b"
+     },
+     "heldout:short_b": {
+      "path": "results/rl/checkpoints/m47/train/main/short/s1/final.pt",
+      "file_sha256": "56f5c5a8a8252c757095ec16f349139f3dbf98c69272f0715ac0ca618f539003",
+      "weights_digest": "1da1469a3e8644944b828564d609a8dc7d2afb3a1d794f14e4b205f8381149ba",
+      "obs_size": 90,
+      "n_actions": 61,
+      "metadata": {
+       "name": "m47_short_s1",
+       "kind": "final",
+       "run": "m47_short_s1",
+       "seed": 58301,
+       "agent_transitions": 4096000,
+       "env_turns": 2048000,
+       "update": 1000,
+       "snapshot_id": "final@4096000"
+      },
+      "schedule_total_steps": 4096000,
+      "provenance_commit": "6b5d66f17d5eadc4e4e789aa01e5599505de45d7"
+     },
+     "heldout:c1_policy": {
+      "path": "results/rl/checkpoints/m46c/train/ext/C1/s2/final.pt",
+      "file_sha256": "20ea134b63f1a858bda37e09556273ea532af5450dc3055f56f913dc12683f56",
+      "weights_digest": "2b96922f5bacf69145a39bd2f5b432cb50cfa38ed56a43479afd2f2c7c91187a",
+      "obs_size": 90,
+      "n_actions": 61,
+      "metadata": {
+       "name": "m46c_C1_s2",
+       "kind": "final",
+       "run": "m46c_C1_s2",
+       "seed": 98002,
+       "agent_transitions": 8192000,
+       "env_turns": 4096000,
+       "update": 2000,
+       "snapshot_id": "final@8192000"
+      },
+      "schedule_total_steps": 8192000,
+      "provenance_commit": "2080667d74a84098c63207a3ccbe8055cd90d127"
+     },
+     "gap_specialist:s0": {
+      "path": "results/rl/checkpoints/m46a/e4/gap_s0/final.pt",
+      "file_sha256": "3ff74ec625972735e09b0e477bc04d55ddd3e336cd07ef5776237269711897e7",
+      "weights_digest": "56d75e135030f57c068236065e02897ec58ff7f70f1cbdb0e3ee7406bfc82fda",
+      "obs_size": 90,
+      "n_actions": 61,
+      "metadata": {
+       "name": "m46a_gap_s0"
+      },
+      "schedule_total_steps": 4096000,
+      "provenance_commit": "11860c88632cf8a90f1c0f7fc10c4126e63dec3b"
+     },
+     "gap_specialist:s2": {
+      "path": "results/rl/checkpoints/m46a/e4/gap_s2/final.pt",
+      "file_sha256": "e4aa64fb18e342a6b45b1afaaf56496726f8860a3baaaea6068100de50884f15",
+      "weights_digest": "5d86682c684db3d299b736a071ad133f2763d204a4aea7a6701bbef6f0096854",
+      "obs_size": 90,
+      "n_actions": 61,
+      "metadata": {
+       "name": "m46a_gap_s2"
+      },
+      "schedule_total_steps": 4096000,
+      "provenance_commit": "11860c88632cf8a90f1c0f7fc10c4126e63dec3b"
+     },
+     "gap_specialist:s4": {
+      "path": "results/rl/checkpoints/m46a/e4/gap_s4/final.pt",
+      "file_sha256": "b5d3b16ed0142572b728971e7c8847c6686e61e0596871faa6d5ecd5fbf28335",
+      "weights_digest": "4faccc13be036b3933c9f738874901e43db17a59db0f9fa37a3e153b72ba6b0b",
+      "obs_size": 90,
+      "n_actions": 61,
+      "metadata": {
+       "name": "m46a_gap_s4"
+      },
+      "schedule_total_steps": 4096000,
+      "provenance_commit": "11860c88632cf8a90f1c0f7fc10c4126e63dec3b"
+     },
+     "freeze_specialist:s0": {
+      "path": "results/rl/checkpoints/m46a/e4/freeze_s0/final.pt",
+      "file_sha256": "d72b4568cf88e7ea030d5892e1f26812f0de6e223f83061b8f0efbbc4ae9c945",
+      "weights_digest": "1a9f816b25e03e8bcc0be5f347b22489257f0c32d722e22f4fce60c3ef1ae051",
+      "obs_size": 90,
+      "n_actions": 61,
+      "metadata": {
+       "name": "m46a_freeze_s0"
+      },
+      "schedule_total_steps": 4096000,
+      "provenance_commit": "11860c88632cf8a90f1c0f7fc10c4126e63dec3b"
+     },
+     "freeze_specialist:s2": {
+      "path": "results/rl/checkpoints/m46a/e4/freeze_s2/final.pt",
+      "file_sha256": "51e1a2787062af6debccfe6e11e5a814da82f5bae8c5ff96c7d4b8cfe2b56f4f",
+      "weights_digest": "6462996a4e5479d97d5b81a1419e7b5e2156c050468ea89d6707bcca07ae146c",
+      "obs_size": 90,
+      "n_actions": 61,
+      "metadata": {
+       "name": "m46a_freeze_s2"
+      },
+      "schedule_total_steps": 4096000,
+      "provenance_commit": "11860c88632cf8a90f1c0f7fc10c4126e63dec3b"
+     },
+     "freeze_specialist:s4": {
+      "path": "results/rl/checkpoints/m46a/e4/freeze_s4/final.pt",
+      "file_sha256": "af021111995cb2f54218d4e416dc67936d70eec854395ec037446166d28b611f",
+      "weights_digest": "ac05e982ecc80acdd76707ca153a4f23f6175215ff913653f9876a0de34ad12e",
+      "obs_size": 90,
+      "n_actions": 61,
+      "metadata": {
+       "name": "m46a_freeze_s4"
+      },
+      "schedule_total_steps": 4096000,
+      "provenance_commit": "11860c88632cf8a90f1c0f7fc10c4126e63dec3b"
+     },
+     "m45c_final:s0": {
+      "path": "results/rl/checkpoints/m45c/ext/s0/final.pt",
+      "file_sha256": "23ef99085b301831f6797cc5431d945f1a9512e35b3dbc84c92d6a501adb980a",
+      "weights_digest": "4db220749f6f751b3b88121e2f01bc5e7add3c236906a3f7126c502b7ff5a5d3",
+      "obs_size": 90,
+      "n_actions": 61,
+      "metadata": {
+       "name": "s0",
+       "kind": "final",
+       "run": "s0",
+       "seed": 0,
+       "agent_transitions": 16384000,
+       "env_turns": 8192000,
+       "update": 4000,
+       "snapshot_id": "final@16384000"
+      },
+      "schedule_total_steps": 16384000,
+      "provenance_commit": "45b7dfa7fa5564194e124af59b26b45433fb56f9"
+     },
+     "m45c_final:s1": {
+      "path": "results/rl/checkpoints/m45c/ext/s1/final.pt",
+      "file_sha256": "ca328d0b7bc084c39ca71d622b8db6ec09b334003c14a3098b73668b01167cc2",
+      "weights_digest": "16d79ed50b0a30a625af7560a416bc6290e81b8c1044c7cee877f8d2096025e8",
+      "obs_size": 90,
+      "n_actions": 61,
+      "metadata": {
+       "name": "s1",
+       "kind": "final",
+       "run": "s1",
+       "seed": 1,
+       "agent_transitions": 16384000,
+       "env_turns": 8192000,
+       "update": 4000,
+       "snapshot_id": "final@16384000"
+      },
+      "schedule_total_steps": 16384000,
+      "provenance_commit": "45b7dfa7fa5564194e124af59b26b45433fb56f9"
+     },
+     "m45c_final:s2": {
+      "path": "results/rl/checkpoints/m45c/ext/s2/final.pt",
+      "file_sha256": "2174ccb8fd19c8be2e573ddf8328570a8123a60de8d3833f8b0a7a19d1b5a2eb",
+      "weights_digest": "f9fb36ca6818916948bae94416fa3cdb8704d0ba4f6da6cb4f765f4775b3731b",
+      "obs_size": 90,
+      "n_actions": 61,
+      "metadata": {
+       "name": "s2",
+       "kind": "final",
+       "run": "s2",
+       "seed": 2,
+       "agent_transitions": 16384000,
+       "env_turns": 8192000,
+       "update": 4000,
+       "snapshot_id": "final@16384000"
+      },
+      "schedule_total_steps": 16384000,
+      "provenance_commit": "45b7dfa7fa5564194e124af59b26b45433fb56f9"
+     },
+     "m45c_final:s3": {
+      "path": "results/rl/checkpoints/m45c/ext/s3/final.pt",
+      "file_sha256": "bba6628fe1e17e22cb8ab02343152717229d2bf4534816fdc02b01f8fc1337ac",
+      "weights_digest": "cacb7a49c24930c59ead387c793f87f008e20c00f74b5bc5e9648befd79d7179",
+      "obs_size": 90,
+      "n_actions": 61,
+      "metadata": {
+       "name": "s3",
+       "kind": "final",
+       "run": "s3",
+       "seed": 3,
+       "agent_transitions": 16384000,
+       "env_turns": 8192000,
+       "update": 4000,
+       "snapshot_id": "final@16384000"
+      },
+      "schedule_total_steps": 16384000,
+      "provenance_commit": "45b7dfa7fa5564194e124af59b26b45433fb56f9"
+     },
+     "m45c_final:s4": {
+      "path": "results/rl/checkpoints/m45c/ext/s4/final.pt",
+      "file_sha256": "5add8e2d36d5b20c375415a22a5da1945f3da7d5969e9173d15c9e3bc233354a",
+      "weights_digest": "820e6159da351773ddf3a9cba40a0d9798d580fe889c61d6322e5fefb6aa9131",
+      "obs_size": 90,
+      "n_actions": 61,
+      "metadata": {
+       "name": "s4",
+       "kind": "final",
+       "run": "s4",
+       "seed": 4,
+       "agent_transitions": 16384000,
+       "env_turns": 8192000,
+       "update": 4000,
+       "snapshot_id": "final@16384000"
+      },
+      "schedule_total_steps": 16384000,
+      "provenance_commit": "45b7dfa7fa5564194e124af59b26b45433fb56f9"
+     },
+     "m45c_final:s5": {
+      "path": "results/rl/checkpoints/m45c/ext/s5/final.pt",
+      "file_sha256": "e455299ac2d55017311dcf031bd72073e905df8dbb83e5a110d8c3c4f68beb7d",
+      "weights_digest": "8e07f3b634fd9fde0725f5d708ffe06073a9b7c8593124218f8e8e33a46698d4",
+      "obs_size": 90,
+      "n_actions": 61,
+      "metadata": {
+       "name": "s5",
+       "kind": "final",
+       "run": "s5",
+       "seed": 5,
+       "agent_transitions": 16384000,
+       "env_turns": 8192000,
+       "update": 4000,
+       "snapshot_id": "final@16384000"
+      },
+      "schedule_total_steps": 16384000,
+      "provenance_commit": "45b7dfa7fa5564194e124af59b26b45433fb56f9"
+     },
+     "standin_om:s0": {
+      "path": "results/rl/checkpoints/om2/train/main/treatment/s0/final.pt",
+      "file_sha256": "d0913c230fbc3cac47dfc06d2f0a09f27d56ee875659292fcc73c83d570ad225",
+      "weights_digest": "99def6a86de23055317c4de589868e899de1eabc6027cb282832a2d41b098b6d",
+      "obs_size": 116,
+      "n_actions": 61,
+      "metadata": {
+       "name": "om2_treatment_s0",
+       "kind": "final",
+       "run": "om2_treatment_s0",
+       "seed": 61000,
+       "agent_transitions": 4097441,
+       "env_turns": 2734080,
+       "update": 1335,
+       "snapshot_id": "final@4097441"
+      },
+      "schedule_total_steps": 4096000,
+      "provenance_commit": "e051b4278db59e4906ef2d0c79249152d6a899d9"
+     },
+     "standin_om:s1": {
+      "path": "results/rl/checkpoints/om2/train/main/treatment/s1/final.pt",
+      "file_sha256": "b302b25db0a6cec27aa7a62dd26bcda2b3a793656f4c6b4bc4b41a2b4ca36cc2",
+      "weights_digest": "7660798fdcc7755c118e703263c642589f206e07ccff206f66b6e9fcd0bccb2d",
+      "obs_size": 116,
+      "n_actions": 61,
+      "metadata": {
+       "name": "om2_treatment_s1",
+       "kind": "final",
+       "run": "om2_treatment_s1",
+       "seed": 61001,
+       "agent_transitions": 4098698,
+       "env_turns": 2732032,
+       "update": 1334,
+       "snapshot_id": "final@4098698"
+      },
+      "schedule_total_steps": 4096000,
+      "provenance_commit": "e051b4278db59e4906ef2d0c79249152d6a899d9"
+     },
+     "standin_om:s2": {
+      "path": "results/rl/checkpoints/om2/train/main/treatment/s2/final.pt",
+      "file_sha256": "7381455ee5d0847096abafbb2b7c57f0a31a6639f82ee9fe0ce5fb707bb1cdfe",
+      "weights_digest": "55833a50bd65c78ac5f2d8aae7044d0bf5c4022bd424c9bb1d41ecb94f73d88c",
+      "obs_size": 116,
+      "n_actions": 61,
+      "metadata": {
+       "name": "om2_treatment_s2",
+       "kind": "final",
+       "run": "om2_treatment_s2",
+       "seed": 61002,
+       "agent_transitions": 4096601,
+       "env_turns": 2721792,
+       "update": 1329,
+       "snapshot_id": "final@4096601"
+      },
+      "schedule_total_steps": 4096000,
+      "provenance_commit": "e051b4278db59e4906ef2d0c79249152d6a899d9"
+     },
+     "standin_sp:s0": {
+      "path": "results/rl/checkpoints/m47/train/main/control/s0/final.pt",
+      "file_sha256": "662c638da9568c85cc90c825f7336d58c3d14898d1a50c2d8584567026916a32",
+      "weights_digest": "09c68fd2917820b868dd9dcee239c43297a8c58879b102bc749acf6972ddace7",
+      "obs_size": 90,
+      "n_actions": 61,
+      "metadata": {
+       "name": "m47_control_s0",
+       "kind": "final",
+       "run": "m47_control_s0",
+       "seed": 58300,
+       "agent_transitions": 4096000,
+       "env_turns": 2048000,
+       "update": 1000,
+       "snapshot_id": "final@4096000"
+      },
+      "schedule_total_steps": 4096000,
+      "provenance_commit": "6b5d66f17d5eadc4e4e789aa01e5599505de45d7"
+     },
+     "standin_sp:s1": {
+      "path": "results/rl/checkpoints/m47/train/main/control/s1/final.pt",
+      "file_sha256": "06a82b1a5323d2b63f09825fbf981ef88f8f27fb085a39ebb9b50b16ba543092",
+      "weights_digest": "24b66298179fbd645a40d55f14b97f9a9fa1e6c525f418c913eb8f788d018175",
+      "obs_size": 90,
+      "n_actions": 61,
+      "metadata": {
+       "name": "m47_control_s1",
+       "kind": "final",
+       "run": "m47_control_s1",
+       "seed": 58301,
+       "agent_transitions": 4096000,
+       "env_turns": 2048000,
+       "update": 1000,
+       "snapshot_id": "final@4096000"
+      },
+      "schedule_total_steps": 4096000,
+      "provenance_commit": "6b5d66f17d5eadc4e4e789aa01e5599505de45d7"
+     }
+    },
+    "archive_states": 4800,
+    "missing": [],
+    "prior_transitions": 24576000,
+    "cumulative_after_m5": 57344000
+   },
+   "passed": true
+  },
+  "R1": {
+   "time": "2026-10-17 18:09:47",
+   "checks": {
+    "every M5 root inside 70,000-70,999": true,
+    "M5 roots distinct": true,
+    "no other study's root constant inside the block": true,
+    "M5 training seeds 70,000-70,005 inside the block": true
+   },
+   "data": {
+    "roots": {
+     "TRAIN_SEED": 70000,
+     "BENCH_ROOT": 70050,
+     "CURVE_ROOT": 70100,
+     "HIST_ROOT": 70150,
+     "H2H_ROOT": 70200,
+     "FAMILY_ROOT": 70300,
+     "BATTERY_STATE_ROOT": 70400,
+     "BATTERY_ROLL_ROOT": 70450,
+     "CELL_ROOT": 70500,
+     "LANE_EXIT_ROOT": 70550,
+     "ATTACK_TRAIN_ROOT": 70600,
+     "ATTACK_EVAL_ROOT": 70700,
+     "READY_ROOT": 70800,
+     "TRACE_ROOT": 70900
+    },
+    "files_scanned": 40,
+    "clashes": {},
+    "note": "OM2 (61,000-61,999) overlaps M4.3b's evaluation roots 61,000-69,999 (an existing overlap; distinct generators and derivations, not an M5 issue)"
+   },
+   "passed": true
+  },
+  "R2": {
+   "time": "2026-10-17 18:09:47",
+   "checks": {
+    "s0: om start = ext/baseline:s in batched evaluation (any belief, any previous action)": true,
+    "s0: single-row differences <= 1e-5 (float32 rounding)": true,
+    "s0: sp start = ext/baseline:s": true,
+    "s1: om start = ext/baseline:s in batched evaluation (any belief, any previous action)": true,
+    "s1: single-row differences <= 1e-5 (float32 rounding)": true,
+    "s1: sp start = ext/baseline:s": true,
+    "s2: om start = ext/baseline:s in batched evaluation (any belief, any previous action)": true,
+    "s2: single-row differences <= 1e-5 (float32 rounding)": true,
+    "s2: sp start = ext/baseline:s": true,
+    "s3: om start = ext/baseline:s in batched evaluation (any belief, any previous action)": true,
+    "s3: single-row differences <= 1e-5 (float32 rounding)": true,
+    "s3: sp start = ext/baseline:s": true,
+    "s4: om start = ext/baseline:s in batched evaluation (any belief, any previous action)": true,
+    "s4: single-row differences <= 1e-5 (float32 rounding)": true,
+    "s4: sp start = ext/baseline:s": true,
+    "s5: om start = ext/baseline:s in batched evaluation (any belief, any previous action)": true,
+    "s5: single-row differences <= 1e-5 (float32 rounding)": true,
+    "s5: sp start = ext/baseline:s": true
+   },
+   "data": {
+    "states": 1160,
+    "s0": {
+     "prior": {
+      "batched_bit_exact": true,
+      "batched_bit_exact_varied_last_action": true,
+      "single_row_max_abs_logit_diff": 9.5367431640625e-07
+     },
+     "random": {
+      "batched_bit_exact": true,
+      "batched_bit_exact_varied_last_action": true,
+      "single_row_max_abs_logit_diff": 9.5367431640625e-07
+     },
+     "sp_copy_identical": true
+    },
+    "s1": {
+     "prior": {
+      "batched_bit_exact": true,
+      "batched_bit_exact_varied_last_action": true,
+      "single_row_max_abs_logit_diff": 1.9073486328125e-06
+     },
+     "random": {
+      "batched_bit_exact": true,
+      "batched_bit_exact_varied_last_action": true,
+      "single_row_max_abs_logit_diff": 1.9073486328125e-06
+     },
+     "sp_copy_identical": true
+    },
+    "s2": {
+     "prior": {
+      "batched_bit_exact": true,
+      "batched_bit_exact_varied_last_action": true,
+      "single_row_max_abs_logit_diff": 9.5367431640625e-07
+     },
+     "random": {
+      "batched_bit_exact": true,
+      "batched_bit_exact_varied_last_action": true,
+      "single_row_max_abs_logit_diff": 9.5367431640625e-07
+     },
+     "sp_copy_identical": true
+    },
+    "s3": {
+     "prior": {
+      "batched_bit_exact": true,
+      "batched_bit_exact_varied_last_action": true,
+      "single_row_max_abs_logit_diff": 1.430511474609375e-06
+     },
+     "random": {
+      "batched_bit_exact": true,
+      "batched_bit_exact_varied_last_action": true,
+      "single_row_max_abs_logit_diff": 1.430511474609375e-06
+     },
+     "sp_copy_identical": true
+    },
+    "s4": {
+     "prior": {
+      "batched_bit_exact": true,
+      "batched_bit_exact_varied_last_action": true,
+      "single_row_max_abs_logit_diff": 1.9073486328125e-06
+     },
+     "random": {
+      "batched_bit_exact": true,
+      "batched_bit_exact_varied_last_action": true,
+      "single_row_max_abs_logit_diff": 1.9073486328125e-06
+     },
+     "sp_copy_identical": true
+    },
+    "s5": {
+     "prior": {
+      "batched_bit_exact": true,
+      "batched_bit_exact_varied_last_action": true,
+      "single_row_max_abs_logit_diff": 1.9073486328125e-06
+     },
+     "random": {
+      "batched_bit_exact": true,
+      "batched_bit_exact_varied_last_action": true,
+      "single_row_max_abs_logit_diff": 1.9073486328125e-06
+     },
+     "sp_copy_identical": true
+    }
+   },
+   "passed": true
+  },
+  "R5": {
+   "time": "2026-10-17 18:09:47",
+   "checks": {
+    "the first 200 game starts are identical in both arms (kind, archive state, mirroring, length, chance seed)": true
+   },
+   "data": {
+    "n": 200,
+    "identical": 200,
+    "kinds": {
+     "initial": 84,
+     "archive": 116
+    },
+    "first": [
+     "initial||404|32e2b8e3ff115fa3",
+     "archive|zone|55|feeaa957987dddb9",
+     "archive|natural|19|3400dce8476e993f"
+    ]
+   },
+   "passed": true
+  },
+  "R3": {
+   "time": "2026-10-17 18:34:32",
+   "checks": {
+    "historical digest pins and OM2's default-trainer pin pass": true,
+    "M4.5c battery records reproduced exactly (hooked loops)": true,
+    "M4.6c weaker-side records reproduced exactly": true,
+    "M4.6f cross-candidate freeze records reproduced exactly (C1)": true,
+    "OM2 evaluation games reproduced exactly (both arms)": true
+   },
+   "data": {
+    "pytest": {
+     "args": [
+      "tests/test_legacy_pins.py",
+      "tests/test_om2.py::test_collector_hooks_leave_default_training_bit_identical",
+      "-k",
+      "pin or bit_identical or digest"
+     ],
+     "returncode": 0,
+     "tail": [
+      "...........s.                                                            [100%]",
+      "12 passed, 1 skipped in 14.21s"
+     ],
+     "wall_s": 16.05120149999857
+    },
+    "battery": {
+     "A_wave/0/policy": {
+      "exact": true,
+      "horizon": 50,
+      "K": 2
+     },
+     "B_freeze/0/policy": {
+      "exact": true,
+      "horizon": 60,
+      "K": 2
+     },
+     "B_freeze/0/wk_shove": {
+      "exact": true,
+      "horizon": 60,
+      "K": 2
+     },
+     "F_freeze_c/0/policy": {
+      "exact": true,
+      "horizon": 300,
+      "K": 2
+     }
+    },
+    "weak": {
+     "weak early neutral +8": {
+      "exact": true
+     },
+     "strong early neutral +8": {
+      "exact": true
+     },
+     "strong early b_push +8": {
+      "exact": true
+     }
+    },
+    "m46f_freeze": {
+     "freezer L3 equal vs shared": {
+      "exact": true
+     },
+     "freezer L3 equal vs separate": {
+      "exact": true
+     },
+     "breaker L3 equal vs shared": {
+      "exact": true
+     },
+     "breaker L3 equal vs separate": {
+      "exact": true
+     }
+    },
+    "om2": {
+     "E|g_shove": {
+      "treatment_exact": true,
+      "control_exact": true,
+      "trace_max_abs_diff": 0.0
+     },
+     "R1|base:3": {
+      "treatment_exact": true,
+      "control_exact": true,
+      "trace_max_abs_diff": 0.0
+     },
+     "R2|switch_bully_farm_50": {
+      "treatment_exact": true,
+      "control_exact": true,
+      "trace_max_abs_diff": 0.0
+     }
+    }
+   },
+   "passed": true
+  },
+  "R4": {
+   "time": "2026-10-17 18:16:18",
+   "checks": {
+    "om: both runs completed": true,
+    "om: finite losses and gradients": true,
+    "om: no illegal action sampled": true,
+    "om: approximate KL in (0, 0.05)": true,
+    "om: initial weights = the arm's start": true,
+    "om: archive games started": true,
+    "om: input width 116": true,
+    "om: no stop condition": true,
+    "om: re-run bit-identical weights": true,
+    "om: re-run identical histories": true,
+    "om: fixed-opponent games drawn": true,
+    "om: self-play games drawn": true,
+    "om: belief inputs vary": true,
+    "om: belief inputs are posteriors": true,
+    "om: previous-action field shows game starts and actions": true,
+    "om: beliefs updated": true,
+    "sp: both runs completed": true,
+    "sp: finite losses and gradients": true,
+    "sp: no illegal action sampled": true,
+    "sp: approximate KL in (0, 0.05)": true,
+    "sp: initial weights = the arm's start": true,
+    "sp: archive games started": true,
+    "sp: input width 90": true,
+    "sp: no stop condition": true,
+    "sp: re-run bit-identical weights": true,
+    "sp: re-run identical histories": true,
+    "sp: 100% current-policy": true,
+    "sp: both seats trained equally": true
+   },
+   "data": {
+    "runs": {
+     "om": {
+      "updates": 11,
+      "agent_transitions": 33030,
+      "transitions_per_s": 1562.5965682843264,
+      "digest": "63457c3d20f61c1347bf43ccd8802d27ac7fd3941d67fd52fd6a4146d5f3c9f2",
+      "rerun_digest": "63457c3d20f61c1347bf43ccd8802d27ac7fd3941d67fd52fd6a4146d5f3c9f2",
+      "shares": {
+       "agent_transitions": 33030,
+       "learner_transitions_fixed_opponent": 12026,
+       "learner_transition_share_fixed_opponent": 0.3640932485619134,
+       "games_finished_self_play": 40,
+       "games_finished_fixed_opponent": 42,
+       "game_share_fixed_opponent": 0.5121951219512195,
+       "env_turns": 22528,
+       "transitions_per_env_turn": 1.4661754261363635
+      },
+      "starts": {
+       "archive": "results\\rl\\checkpoints\\m46c\\archive\\train_archive.json.gz",
+       "archive_states": 4800,
+       "beta": 0.532,
+       "archive_length": 150,
+       "game_length": 512,
+       "mirror_p": 0.5,
+       "games_started": {
+        "initial": 37,
+        "archive": 61,
+        "mirrored": 33
+       },
+       "archive_by_label": {
+        "zone": 10,
+        "natural": 25,
+        "natural+lead": 18,
+        "freeze": 8
+       },
+       "joint_steps_finished": {
+        "initial": 11877,
+        "archive": 7483
+       },
+       "joint_steps_finished_by_label": {
+        "freeze": 911,
+        "natural": 3102,
+        "zone": 1275,
+        "natural+lead": 2195
+       },
+       "archive_transition_share_finished": 0.3865185950413223,
+       "om2": {
+        "arm": "treatment",
+        "belief_types": [
+         "g_farm",
+         "g_safe",
+         "g_bully",
+         "g_shove",
+         "fz_guard_sh",
+         "g_shove_ward",
+         "peer",
+         "attacker",
+         "freezer",
+         "gapper",
+         "short",
+         "mixed",
+         "unknown"
+        ],
+        "lambda": 0.97,
+        "library": {
+         "p_lib": 0.5,
+         "opponents": [
+          "g_farm",
+          "g_safe",
+          "g_bully",
+          "g_shove",
+          "fz_guard_sh",
+          "g_shove_ward",
+          "peer",
+          "attacker",
+          "freezer",
+          "gapper",
+          "short",
+          "mix_bully_safe",
+          "mix_shove_farm",
+          "switch_farm_bully_40",
+          "switch_shove_safe_60"
+         ],
+         "draws": {
+          "lib:g_shove_ward": 6,
+          "self": 44,
+          "lib:switch_farm_bully_40": 4,
+          "lib:attacker": 5,
+          "lib:mix_shove_farm": 5,
+          "lib:gapper": 5,
+          "lib:mix_bully_safe": 4,
+          "lib:short": 6,
+          "lib:g_farm": 4,
+          "lib:g_shove": 2,
+          "lib:peer": 5,
+          "lib:fz_guard_sh": 3,
+          "lib:g_safe": 1,
+          "lib:g_bully": 2,
+          "lib:freezer": 2
+         }
+        },
+        "belief_updates": 33030
+       }
+      },
+      "memory": {
+       "rss_mb": 486.4296875,
+       "peak_mb": 490.37890625
+      },
+      "wall_s": 25.48988400027156
+     },
+     "sp": {
+      "updates": 10,
+      "agent_transitions": 40960,
+      "transitions_per_s": 3719.8472933713833,
+      "digest": "8bffa2dbdcbaf84947ed3a88dc1997d79d0247af99a92c851c246ebeddd71ea5",
+      "rerun_digest": "8bffa2dbdcbaf84947ed3a88dc1997d79d0247af99a92c851c246ebeddd71ea5",
+      "shares": {
+       "agent_transitions": 40960,
+       "learner_transitions_fixed_opponent": 0,
+       "learner_transition_share_fixed_opponent": 0.0,
+       "games_finished_self_play": 77,
+       "games_finished_fixed_opponent": 0,
+       "game_share_fixed_opponent": 0.0,
+       "env_turns": 20480,
+       "transitions_per_env_turn": 2.0
+      },
+      "starts": {
+       "archive": "results\\rl\\checkpoints\\m46c\\archive\\train_archive.json.gz",
+       "archive_states": 4800,
+       "beta": 0.532,
+       "archive_length": 150,
+       "game_length": 512,
+       "mirror_p": 0.5,
+       "games_started": {
+        "initial": 35,
+        "archive": 58,
+        "mirrored": 31
+       },
+       "archive_by_label": {
+        "zone": 10,
+        "natural": 24,
+        "natural+lead": 16,
+        "freeze": 8
+       },
+       "joint_steps_finished": {
+        "initial": 11877,
+        "archive": 6733
+       },
+       "joint_steps_finished_by_label": {
+        "freeze": 761,
+        "natural": 2952,
+        "zone": 1125,
+        "natural+lead": 1895
+       },
+       "archive_transition_share_finished": 0.361794734013971
+      },
+      "memory": {
+       "rss_mb": 469.3671875,
+       "peak_mb": 473.55078125
+      },
+      "wall_s": 15.401644699741155
+     }
+    }
+   },
+   "passed": true
+  },
+  "R6": {
+   "time": "2026-10-17 18:34:37",
+   "checks": {
+    "sp: every network input is exactly the 90-entry observation": true,
+    "om: 116 inputs": true,
+    "om: the belief is the prior at every game start (s0 and archive)": true,
+    "om: the belief moves after game starts": true,
+    "om: every training input rebuilt by OMPolicy from the start-of-turn state and past codes (state and previous action bit-exact, belief within 1e-5)": true,
+    "om: truncation bootstraps read the post-step belief": true,
+    "smoke (R4) input checks passed": true
+   },
+   "data": {
+    "om": {
+     "width": 116,
+     "turns": 128,
+     "finished_games": 10,
+     "rows_at_game_start": 38,
+     "prior_at_every_game_start": true,
+     "belief_moves_later": true,
+     "inputs_reconstructed": 2863,
+     "bootstraps_reconstructed": 14,
+     "mismatches": 0,
+     "max_abs_diff_by_block": {
+      "state": 0.0,
+      "last": 0.0,
+      "belief": 2.86102294921875e-06
+     },
+     "belief_tolerance": 1e-05,
+     "first_run_note": "the first run of 2026-10-17 compared the whole input bit for bit and failed on the belief block only (max 2.9e-6, float32 rounding of batched vs single-item likelihoods); state and previous-action blocks were exact"
+    },
+    "sp": {
+     "width": 90,
+     "turns": 128,
+     "finished_games": 10,
+     "inputs_are_the_observation": true
+    }
+   },
+   "passed": true
+  },
+  "R7": {
+   "time": "2026-10-17 18:16:36",
+   "checks": {
+    "all 15 fixed opponents drawn": true,
+    "fixed-opponent game share 0.49-0.51 of draws": true,
+    "each opponent within 10% of uniform": true
+   },
+   "data": {
+    "simulated_games": 70000,
+    "draws": {
+     "lib:g_shove_ward": 2420,
+     "self": 34916,
+     "lib:switch_farm_bully_40": 2405,
+     "lib:attacker": 2290,
+     "lib:mix_shove_farm": 2300,
+     "lib:gapper": 2377,
+     "lib:mix_bully_safe": 2295,
+     "lib:short": 2314,
+     "lib:g_farm": 2350,
+     "lib:g_shove": 2296,
+     "lib:peer": 2298,
+     "lib:fz_guard_sh": 2323,
+     "lib:g_safe": 2302,
+     "lib:g_bully": 2401,
+     "lib:freezer": 2387,
+     "lib:switch_shove_safe_60": 2326
+    },
+    "smoke_shares": {
+     "om": {
+      "agent_transitions": 33030,
+      "learner_transitions_fixed_opponent": 12026,
+      "learner_transition_share_fixed_opponent": 0.3640932485619134,
+      "games_finished_self_play": 40,
+      "games_finished_fixed_opponent": 42,
+      "game_share_fixed_opponent": 0.5121951219512195,
+      "env_turns": 22528,
+      "transitions_per_env_turn": 1.4661754261363635
+     },
+     "sp": {
+      "agent_transitions": 40960,
+      "learner_transitions_fixed_opponent": 0,
+      "learner_transition_share_fixed_opponent": 0.0,
+      "games_finished_self_play": 77,
+      "games_finished_fixed_opponent": 0,
+      "game_share_fixed_opponent": 0.0,
+      "env_turns": 20480,
+      "transitions_per_env_turn": 2.0
+     }
+    },
+    "bench_shares_om": null
+   },
+   "passed": true
+  },
+  "R8": {
+   "time": "2026-10-17 18:34:37",
+   "checks": {
+    "widened om start = 90-input start in a battery job (G and Q within 1e-5, same first codes)": true,
+    "decide is pure (repeated decide / probs leave belief and input unchanged)": true,
+    "the opponent's code enters the input only after observe_turn (previous-action entries and belief)": true
+   },
+   "data": {
+    "battery_max_abs_diff": 4.0429029279920314e-07,
+    "first_codes_equal": true
+   },
+   "passed": true
+  },
+  "R9": {
+   "time": "2026-10-17 18:29:41",
+   "checks": {
+    "every benchmark configuration ran": true
+   },
+   "data": {
+    "configs": {
+     "om4": {
+      "mix": {
+       "om": 4
+      },
+      "wall_s": 85.86113120010123,
+      "window_s": 58.965662717819214,
+      "per_run": [
+       1409.2662171856548,
+       1422.7862951941916,
+       1439.14147554857,
+       1447.2016895505437
+      ],
+      "aggregate": 5718.39567747896,
+      "peak_mb": [
+       644.1484375,
+       643.9765625,
+       644.44140625,
+       643.625
+      ],
+      "per_run_by_kind": {
+       "om": 1429.59891936974
+      }
+     },
+     "om5": {
+      "mix": {
+       "om": 5
+      },
+      "wall_s": 100.0319002000615,
+      "window_s": 72.812260389328,
+      "per_run": [
+       1186.648325289073,
+       1199.8224617422227,
+       1205.1558105803726,
+       1218.854879487974,
+       1191.9676468041657
+      ],
+      "aggregate": 6002.449123903807,
+      "peak_mb": [
+       645.5625,
+       643.5078125,
+       644.91015625,
+       644.5,
+       644.4921875
+      ],
+      "per_run_by_kind": {
+       "om": 1200.4898247807614
+      }
+     },
+     "om6": {
+      "mix": {
+       "om": 6
+      },
+      "wall_s": 99.18122270004824,
+      "window_s": 71.27794790267944,
+      "per_run": [
+       1200.367601701839,
+       1211.9953839868458,
+       1222.8638268568018,
+       1233.347289552098,
+       1214.5653948677548,
+       1245.8471009407854
+      ],
+      "aggregate": 7328.986597906125,
+      "peak_mb": [
+       644.7734375,
+       643.50390625,
+       643.76953125,
+       643.640625,
+       643.9765625,
+       645.53515625
+      ],
+      "per_run_by_kind": {
+       "om": 1221.4977663176876
+      }
+     },
+     "om8": {
+      "mix": {
+       "om": 8
+      },
+      "wall_s": 125.12919780006632,
+      "window_s": 95.75995135307312,
+      "per_run": [
+       926.0887600220426,
+       939.8646271566342,
+       941.3459723468624,
+       952.2019848255134,
+       934.3507210677685,
+       964.2409716621851,
+       960.4562017871485,
+       943.4403481489743
+      ],
+      "aggregate": 7561.989587017129,
+      "peak_mb": [
+       639.59375,
+       640.37109375,
+       640.5625,
+       641.953125,
+       638.4453125,
+       637.64453125,
+       640.91796875,
+       638.03515625
+      ],
+      "per_run_by_kind": {
+       "om": 945.2486983771412
+      }
+     },
+     "sp6": {
+      "mix": {
+       "sp": 6
+      },
+      "wall_s": 52.46667860029265,
+      "window_s": 27.43637228012085,
+      "per_run": [
+       2800.0487163520147,
+       2769.0441659860744,
+       2827.601597278427,
+       2747.1109082131247,
+       2831.4123274968506,
+       2857.0778219790654
+      ],
+      "aggregate": 16832.295537305556,
+      "peak_mb": [
+       636.78125,
+       637.72265625,
+       637.34375,
+       638.37109375,
+       638.109375,
+       636.90234375
+      ],
+      "per_run_by_kind": {
+       "sp": 2805.382589550926
+      }
+     },
+     "sp8": {
+      "mix": {
+       "sp": 8
+      },
+      "wall_s": 58.721855599898845,
+      "window_s": 32.568026304244995,
+      "per_run": [
+       2417.524950898972,
+       2416.5298434990095,
+       2437.163492555802,
+       2415.6526558815276,
+       2461.211329976663,
+       2489.7546168122412,
+       2448.0309763663895,
+       2460.8158914091714
+      ],
+      "aggregate": 19546.683757399776,
+      "peak_mb": [
+       637.05078125,
+       637.5390625,
+       636.19140625,
+       636.84375,
+       637.1484375,
+       635.76171875,
+       636.3359375,
+       636.35546875
+      ],
+      "per_run_by_kind": {
+       "sp": 2443.335469674972
+      }
+     },
+     "mix6": {
+      "mix": {
+       "om": 3,
+       "sp": 3
+      },
+      "wall_s": 97.32752529997379,
+      "window_s": 24.46483087539673,
+      "per_run": [
+       1154.6649947247076,
+       1118.2680986115413,
+       1159.6036416629863,
+       2788.7012797836637,
+       2882.2265012075873,
+       2906.132936760204
+      ],
+      "aggregate": 12009.597452750691,
+      "peak_mb": [
+       644.4765625,
+       643.68359375,
+       644.8046875,
+       636.75,
+       636.84375,
+       637.1875
+      ],
+      "per_run_by_kind": {
+       "om": 1144.1789116664118,
+       "sp": 2859.020239250485
+      }
+     },
+     "att6": {
+      "mix": {
+       "att_om": 3,
+       "att_sp": 3
+      },
+      "wall_s": 93.42583389999345,
+      "window_s": 53.282224893569946,
+      "per_run": [
+       683.4775437860806,
+       684.4026580433291,
+       690.7139752353611,
+       850.8503164594717,
+       845.3100126796684,
+       851.2365702700762
+      ],
+      "aggregate": 4605.991076473987,
+      "peak_mb": [
+       null,
+       null,
+       null,
+       null,
+       null,
+       null
+      ],
+      "per_run_by_kind": {
+       "att_om": 686.1980590215902,
+       "att_sp": 849.1322998030722
+      }
+     }
+    },
+    "shares_om": [
+     {
+      "agent_transitions": 110895,
+      "learner_transitions_fixed_opponent": 40657,
+      "learner_transition_share_fixed_opponent": 0.3666260877406556,
+      "games_finished_self_play": 120,
+      "games_finished_fixed_opponent": 127,
+      "game_share_fixed_opponent": 0.5141700404858299,
+      "env_turns": 75776,
+      "transitions_per_env_turn": 1.4634580869932432
+     },
+     {
+      "agent_transitions": 114024,
+      "learner_transitions_fixed_opponent": 41624,
+      "learner_transition_share_fixed_opponent": 0.36504595523749384,
+      "games_finished_self_play": 112,
+      "games_finished_fixed_opponent": 127,
+      "game_share_fixed_opponent": 0.5313807531380753,
+      "env_turns": 77824,
+      "transitions_per_env_turn": 1.4651521381578947
+     },
+     {
+      "agent_transitions": 110684,
+      "learner_transitions_fixed_opponent": 36772,
+      "learner_transition_share_fixed_opponent": 0.33222507318130895,
+      "games_finished_self_play": 122,
+      "games_finished_fixed_opponent": 112,
+      "game_share_fixed_opponent": 0.47863247863247865,
+      "env_turns": 73728,
+      "transitions_per_env_turn": 1.5012478298611112
+     }
+    ],
+    "historical_full_runs": {
+     "sp_full_6": [
+      2450,
+      2620
+     ],
+     "om_full_5": [
+      1416,
+      1645
+     ]
+    },
+    "wall_s": 712.1465871999972,
+    "machine": {
+     "logical_cpus": 12,
+     "physical_cpus": 6,
+     "ram_gib": 15.872119903564453
+    },
+    "recommendation": {
+     "om_aggregate_by_workers": {
+      "om4": 5718.39567747896,
+      "om5": 6002.449123903807,
+      "om6": 7328.986597906125,
+      "om8": 7561.989587017129
+     },
+     "best": "om8",
+     "workers": 8,
+     "sp_aggregate": {
+      "sp6": 16832.295537305556,
+      "sp8": 19546.683757399776
+     }
+    }
+   },
+   "passed": true
+  },
+  "R10": {
+   "time": "2026-10-17 18:35:12",
+   "checks": {
+    "every instrument ran end to end": true,
+    "all readouts finite": true,
+    "lane-exit panel recorded in s0 games": true,
+    "om focals' belief traces vary": true,
+    "battery jobs restore recorded beliefs for natural om states": true,
+    "lane-exit continuations exact (accounting) and their E_20 within 3 SE of the recorded lead at 114": true,
+    "steady-state cost measured for every class": true
+   },
+   "data": {
+    "jobs": [
+     {
+      "label": "om_proxy",
+      "kind": "battery_om",
+      "turns": 2140,
+      "elapsed_s": 8.44107330031693,
+      "rate": 253.52226237860665,
+      "collect_s": 4.953970099799335,
+      "jobs": 3,
+      "finite": true,
+      "belief_start": [
+       "recorded",
+       "recorded",
+       "prior"
+      ]
+     },
+     {
+      "label": "sp_proxy",
+      "kind": "battery_sp",
+      "turns": 2140,
+      "elapsed_s": 2.9182811002247036,
+      "rate": 733.3083848006358,
+      "collect_s": 3.2595800003036857,
+      "jobs": 3,
+      "finite": true,
+      "belief_start": [
+       "prior",
+       "prior",
+       "prior"
+      ]
+     },
+     {
+      "label": "om_lane_exit",
+      "kind": "lane_exit_om",
+      "turns": 3480,
+      "elapsed_s": 17.765443900134414,
+      "rate": 195.88590184192753,
+      "states": 8,
+      "rows": [
+       {
+        "D0": 3.295,
+        "E20_recorded_beliefs": 2.2509375,
+        "E20_prior_beliefs": 1.0287499999999996,
+        "recorded_lead_114": 2.8225
+       },
+       {
+        "D0": -8.305,
+        "E20_recorded_beliefs": -6.938124999999999,
+        "E20_prior_beliefs": -6.145312499999999,
+        "recorded_lead_114": -7.89
+       },
+       {
+        "D0": 0.3825,
+        "E20_recorded_beliefs": 2.8646875,
+        "E20_prior_beliefs": 3.2240624999999996,
+        "recorded_lead_114": 5.6175
+       },
+       {
+        "D0": 3.645,
+        "E20_recorded_beliefs": 3.974375,
+        "E20_prior_beliefs": 2.5481249999999998,
+        "recorded_lead_114": 9.29
+       },
+       {
+        "D0": 1.5175,
+        "E20_recorded_beliefs": 2.615,
+        "E20_prior_beliefs": 2.09375,
+        "recorded_lead_114": -3.525
+       },
+       {
+        "D0": -3.215,
+        "E20_recorded_beliefs": -3.615625,
+        "E20_prior_beliefs": -2.3359375,
+        "recorded_lead_114": -1.225
+       },
+       {
+        "D0": 10.8125,
+        "E20_recorded_beliefs": 9.8434375,
+        "E20_prior_beliefs": 9.2596875,
+        "recorded_lead_114": 8.2825
+       },
+       {
+        "D0": -0.655,
+        "E20_recorded_beliefs": 0.2996875,
+        "E20_prior_beliefs": -1.17875,
+        "recorded_lead_114": 0.7025
+       }
+      ],
+      "mean_error_recorded": -0.3475781249999996,
+      "se_recorded": 1.2109145213113566,
+      "mean_error_prior": -0.6975781249999999,
+      "se_prior": 1.2736933350456368
+     },
+     {
+      "label": "om_vs_g_shove",
+      "kind": "game_om1",
+      "turns": 1800,
+      "elapsed_s": 6.729966500308365,
+      "rate": 267.4604695160852,
+      "lead114": 14.97104263305664,
+      "finite": true,
+      "panel_present": true,
+      "belief_trace_varies": true
+     },
+     {
+      "label": "sp_vs_g_shove",
+      "kind": "game_om0",
+      "turns": 1800,
+      "elapsed_s": 4.1722885998897254,
+      "rate": 431.41790336545137,
+      "lead114": 5.244791507720947,
+      "finite": true,
+      "panel_present": true,
+      "belief_trace_varies": false
+     },
+     {
+      "label": "start_vs_its",
+      "kind": "game_om0",
+      "turns": 1200,
+      "elapsed_s": 3.869026900269091,
+      "rate": 310.1555070388732,
+      "lead114": 1.664062738418579,
+      "finite": true,
+      "panel_present": true,
+      "belief_trace_varies": false
+     },
+     {
+      "label": "om_vs_its",
+      "kind": "game_om1",
+      "turns": 1200,
+      "elapsed_s": 3.1256472999230027,
+      "rate": 383.92047625768936,
+      "lead114": 1.484375238418579,
+      "finite": true,
+      "panel_present": true,
+      "belief_trace_varies": true
+     },
+     {
+      "label": "om_vs_style",
+      "kind": "game_om1",
+      "turns": 1200,
+      "elapsed_s": 3.2055941000580788,
+      "rate": 374.3455854183967,
+      "lead114": 4.439374923706055,
+      "finite": true,
+      "panel_present": true,
+      "belief_trace_varies": true
+     },
+     {
+      "label": "om_vs_base3",
+      "kind": "game_om1",
+      "turns": 1200,
+      "elapsed_s": 2.94427639991045,
+      "rate": 407.5704305602891,
+      "lead114": -2.2781248092651367,
+      "finite": true,
+      "panel_present": true,
+      "belief_trace_varies": true
+     },
+     {
+      "label": "om_vs_om1_long",
+      "kind": "game_om2",
+      "turns": 2000,
+      "elapsed_s": 7.610329899936914,
+      "rate": 262.8006967236176,
+      "lead114": 2.6143743991851807,
+      "finite": true,
+      "panel_present": true,
+      "belief_trace_varies": true,
+      "discounted": 1.3710866723539898
+     },
+     {
+      "label": "om_vs_sp_long",
+      "kind": "game_om1",
+      "turns": 2000,
+      "elapsed_s": 5.152412899769843,
+      "rate": 388.16764861553304,
+      "lead114": 0.9881244897842407,
+      "finite": true,
+      "panel_present": true,
+      "belief_trace_varies": true,
+      "discounted": 0.511719480538667
+     },
+     {
+      "label": "om_table",
+      "kind": "game_om2",
+      "turns": 200,
+      "elapsed_s": 0.7254563001915812,
+      "rate": 275.68855621928327,
+      "shape": [
+       100,
+       13
+      ],
+      "rows_sum_to_one": true
+     },
+     {
+      "label": "cells_weak",
+      "kind": "cells_mixed",
+      "turns": 1600,
+      "elapsed_s": 4.1984266000799835,
+      "rate": 381.0951464459373,
+      "jobs": 4,
+      "cands": [
+       "policy",
+       "threaten",
+       "hold"
+      ],
+      "finite": true
+     },
+     {
+      "label": "cells_premium",
+      "kind": "cells_mixed",
+      "turns": 200,
+      "elapsed_s": 0.567142500076443,
+      "rate": 352.6450582931852,
+      "jobs": 2,
+      "cands": [
+       "self"
+      ],
+      "finite": true
+     },
+     {
+      "label": "cells_conv",
+      "kind": "cells_cross",
+      "turns": 1200,
+      "elapsed_s": 3.1590354000218213,
+      "rate": 379.86278975908624,
+      "jobs": 2,
+      "cands": [
+       "om",
+       "sp"
+      ],
+      "finite": true
+     },
+     {
+      "label": "cells_freeze",
+      "kind": "cells_cross",
+      "turns": 400,
+      "elapsed_s": 1.0148017001338303,
+      "rate": 394.1656778336582,
+      "jobs": 2,
+      "cands": [
+       "om",
+       "sp"
+      ],
+      "finite": true
+     },
+     {
+      "label": "cells_recall",
+      "kind": "cells_cross",
+      "turns": 800,
+      "elapsed_s": 1.9429677999578416,
+      "rate": 411.7412548048189,
+      "jobs": 2,
+      "cands": [
+       "om",
+       "sp"
+      ],
+      "finite": true
+     },
+     {
+      "label": "cells_natural",
+      "kind": "cells_cross",
+      "turns": 1200,
+      "elapsed_s": 3.1585490996949375,
+      "rate": 379.92127464977506,
+      "jobs": 2,
+      "cands": [
+       "om",
+       "sp"
+      ],
+      "finite": true
+     },
+     {
+      "label": "cells_gaps",
+      "kind": "cells_cross",
+      "turns": 1800,
+      "elapsed_s": 4.303460500203073,
+      "rate": 418.2680426403498,
+      "jobs": 2,
+      "cands": [
+       "om",
+       "sp",
+       "gap_specialist"
+      ],
+      "finite": true
+     }
+    ],
+    "rates": {
+     "game_om0": 1359.781260035237,
+     "game_om1": 559.6959686802714,
+     "game_om2": 353.499431089788,
+     "battery_sp": 990.2500529536758,
+     "battery_om": 330.52689677399565,
+     "cells_cross": 519.7703908466295,
+     "cells_om": 395.26414267366806,
+     "cells_sp": 1090.8135951256766,
+     "lane_exit_om": 325.23187511474424
+    },
+    "workers": 6,
+    "small_job_rates": {
+     "battery_om": 253.52226237860665,
+     "battery_sp": 733.3083848006358,
+     "lane_exit_om": 195.88590184192753,
+     "game_om1": 364.2929220735987,
+     "game_om0": 370.7867052021623,
+     "game_om2": 269.24462647145043,
+     "cells_mixed": 366.8701023695612,
+     "cells_cross": 396.79180793753767
+    },
+    "wall_s": 34.836727399844676,
+    "note": "stand-ins: OM2 treatment finals (om format), M4.7 control finals (sp format); reduced samples: pipeline and cost checks, weak evidence about values"
+   },
+   "passed": true
+  }
+ },
+ "protocol": {
+  "document": "docs/m5/m5a_readiness_protocol.md",
+  "sha256": "46079f0b77c3aaa8d91468112ee2a670543cc94ad7046e5a9665a68477cc4ca6",
+  "bytes": 5125
+ },
+ "all_passed": true
+}

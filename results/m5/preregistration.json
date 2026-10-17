@@ -1,0 +1,23 @@
+{
+ "meta": {
+  "study": "M5",
+  "commit": "a6e9b63f3ab49a1b9d8da97021ab9b7c72739da6",
+  "working_tree_dirty": true,
+  "timestamp": "2026-10-17 18:56:56",
+  "torch": "2.14.1+cpu",
+  "numpy": "2.5.3",
+  "stage": "prereg"
+ },
+ "record": {
+  "document": "docs/m5/m5_preregistration.md",
+  "sha256": "d2424022bd07535fb6e809bfde20536edfff4e565eb67b26d7bdcfaaf9af7304",
+  "bytes": 14520
+ },
+ "design": {
+  "document": "docs/m5/m5_design.md",
+  "sha256": "00ce88b49fd2d7e14cfa1d5a02e992bb75de8459f56ac131d2e5ed8fbf504d71",
+  "bytes": 35806
+ },
+ "status": "awaiting campaign authorization",
+ "note": "frozen after the M5a readiness checks, before any M5 campaign run; changes need a dated amendment"
+}

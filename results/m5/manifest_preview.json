@@ -1,0 +1,438 @@
+{
+ "meta": {
+  "study": "M5",
+  "commit": "a6e9b63f3ab49a1b9d8da97021ab9b7c72739da6",
+  "working_tree_dirty": true,
+  "timestamp": "2026-10-17 18:48:30",
+  "torch": "2.14.1+cpu",
+  "numpy": "2.5.3",
+  "stage": "manifest",
+  "phase": "main"
+ },
+ "phase": "main",
+ "arms": [
+  "om",
+  "sp"
+ ],
+ "seeds": [
+  0,
+  1,
+  2,
+  3,
+  4,
+  5
+ ],
+ "budget": 32768000,
+ "spec": {
+  "arms": {
+   "om": {
+    "label": "A: opponent modelling",
+    "environment": "GameConfig.m45_calibrated(obs_last_action=True)",
+    "network": {
+     "class": "PolicyValueNet",
+     "inputs": 116,
+     "hidden": [
+      128,
+      128
+     ],
+     "outputs": 61,
+     "initialization": "widen_inputs(ext/baseline:s, 116): zero weights on the 26 new inputs"
+    },
+    "collector": "om2.collector.om_collector_cls('treatment'): M4.6c start mixture + OM2 library mix (P_LIB 0.5 over 15 fixed opponents, only the learner trains) + one belief per learner seat",
+    "opponents": {
+     "self_play_share_of_games": 0.5,
+     "fixed_opponents": [
+      "g_farm",
+      "g_safe",
+      "g_bully",
+      "g_shove",
+      "fz_guard_sh",
+      "g_shove_ward",
+      "peer",
+      "attacker",
+      "freezer",
+      "gapper",
+      "short",
+      "mix_bully_safe",
+      "mix_shove_farm",
+      "switch_farm_bully_40",
+      "switch_shove_safe_60"
+     ],
+     "historical_snapshots_sampled": false
+    },
+    "belief": {
+     "types": [
+      "g_farm",
+      "g_safe",
+      "g_bully",
+      "g_shove",
+      "fz_guard_sh",
+      "g_shove_ward",
+      "peer",
+      "attacker",
+      "freezer",
+      "gapper",
+      "short",
+      "mixed",
+      "unknown"
+     ],
+     "lambda": 0.97,
+     "eps": 0.05,
+     "reset": "at every game start (s0 and archive starts)",
+     "library": "fixed"
+    },
+    "ppo": {
+     "n_envs": 16,
+     "n_steps": 64,
+     "epochs": 4,
+     "minibatch_size": 256,
+     "lr": 0.0003,
+     "anneal_lr": true,
+     "gamma": 0.99,
+     "gae_lambda": 0.95,
+     "clip_coef": 0.2,
+     "clip_vloss": true,
+     "vf_clip": 0.5,
+     "vf_coef": 0.5,
+     "ent_coef": 0.03,
+     "max_grad_norm": 0.5,
+     "target_kl": null,
+     "norm_adv": true,
+     "reward_scale": 0.1,
+     "hidden": [
+      128,
+      128
+     ],
+     "torch_threads": 1,
+     "max_turns": null,
+     "lane_cache": 5000,
+     "expected_gank_reward": false,
+     "skill_levels": null,
+     "segment_length": 128,
+     "game_length": 512,
+     "start_archive": null,
+     "start_mix": 0.0,
+     "allow_gamma_mismatch": false
+    },
+    "shared": {
+     "current_fraction": 1.0,
+     "snapshot_every": 25600,
+     "pool_size": 8,
+     "snapshot_initial": false
+    }
+   },
+   "sp": {
+    "label": "B: pure self-play",
+    "environment": "GameConfig.m45_calibrated()",
+    "network": {
+     "class": "PolicyValueNet",
+     "inputs": 90,
+     "hidden": [
+      128,
+      128
+     ],
+     "outputs": 61,
+     "initialization": "a copy of ext/baseline:s"
+    },
+    "collector": "m46c.train.collector(): M4.6c start mixture",
+    "opponents": {
+     "self_play_share_of_games": 1.0,
+     "fixed_opponents": [],
+     "historical_snapshots_sampled": false
+    },
+    "belief": null,
+    "ppo": {
+     "n_envs": 16,
+     "n_steps": 64,
+     "epochs": 4,
+     "minibatch_size": 256,
+     "lr": 0.0003,
+     "anneal_lr": true,
+     "gamma": 0.99,
+     "gae_lambda": 0.95,
+     "clip_coef": 0.2,
+     "clip_vloss": true,
+     "vf_clip": 0.5,
+     "vf_coef": 0.5,
+     "ent_coef": 0.03,
+     "max_grad_norm": 0.5,
+     "target_kl": null,
+     "norm_adv": true,
+     "reward_scale": 0.1,
+     "hidden": [
+      128,
+      128
+     ],
+     "torch_threads": 1,
+     "max_turns": null,
+     "lane_cache": 5000,
+     "expected_gank_reward": false,
+     "skill_levels": null,
+     "segment_length": 128,
+     "game_length": 512,
+     "start_archive": null,
+     "start_mix": 0.0,
+     "allow_gamma_mismatch": false
+    },
+    "shared": {
+     "current_fraction": 1.0,
+     "snapshot_every": 25600,
+     "pool_size": 8,
+     "snapshot_initial": false
+    }
+   }
+  },
+  "budget": 32768000,
+  "midpoint": 16384000,
+  "p75": 24576000,
+  "snap_every": 25600,
+  "start": "ext/baseline:s (M4.6c 8.192M continuation of the M4.5c 16.384M final; 24.576M prior transitions over two schedules)",
+  "starts": {
+   "beta": 0.532,
+   "archive_length": 150,
+   "game_length": 512,
+   "mirror_p": 0.5,
+   "target_transition_share": 0.25
+  },
+  "optimizer": "fresh Adam (eps 1e-5), lr 3e-4 annealed linearly to 0 over the budget",
+  "seeds": {
+   "ppo": "70000 + s, the same in both arms of a pair",
+   "pairs": [
+    0,
+    1,
+    2,
+    3,
+    4,
+    5
+   ]
+  }
+ },
+ "code": {
+  "git_commit": "a6e9b63f3ab49a1b9d8da97021ab9b7c72739da6",
+  "working_tree_dirty": true,
+  "python_files": 386,
+  "sources_sha256": "02f198746627796591f4fff21be0a66c72a9e16e72354c5d6279922e799b2a6f",
+  "diff_stat": [
+   " 12 files changed, 384 insertions(+), 47 deletions(-)"
+  ]
+ },
+ "start_checkpoints": {
+  "0": {
+   "path": "results/rl/checkpoints/m46c/train/ext/baseline/s0/final.pt",
+   "file_sha256": "e9e2ef86e07eb4949217ab9e0ef3cd1cc768abf3f7bb8887f15128f602f9b7ac",
+   "weights_digest": "3a7a81ad866d207fd87674b7007999dc578a7dec6b7744e71d2f509c8a592bcf",
+   "obs_size": 90,
+   "n_actions": 61,
+   "metadata": {
+    "name": "m46c_baseline_s0",
+    "kind": "final",
+    "run": "m46c_baseline_s0",
+    "seed": 98000,
+    "agent_transitions": 8192000,
+    "env_turns": 4096000,
+    "update": 2000,
+    "snapshot_id": "final@8192000"
+   },
+   "schedule_total_steps": 8192000,
+   "provenance_commit": "2080667d74a84098c63207a3ccbe8055cd90d127"
+  },
+  "1": {
+   "path": "results/rl/checkpoints/m46c/train/ext/baseline/s1/final.pt",
+   "file_sha256": "6c17a58951196841ab9ff53263fc42d17dedae0a5f151f67b2efeaf9b5b0f7b1",
+   "weights_digest": "92515523a7d1ef2cfaa06a4e807d222f9ed7dd34a2a2d0efc083df18d282c039",
+   "obs_size": 90,
+   "n_actions": 61,
+   "metadata": {
+    "name": "m46c_baseline_s1",
+    "kind": "final",
+    "run": "m46c_baseline_s1",
+    "seed": 98001,
+    "agent_transitions": 8192000,
+    "env_turns": 4096000,
+    "update": 2000,
+    "snapshot_id": "final@8192000"
+   },
+   "schedule_total_steps": 8192000,
+   "provenance_commit": "2080667d74a84098c63207a3ccbe8055cd90d127"
+  },
+  "2": {
+   "path": "results/rl/checkpoints/m46c/train/ext/baseline/s2/final.pt",
+   "file_sha256": "f010b739c4c7140eba040febd624a10682231af0da4ac6359b757e9f63ecfa27",
+   "weights_digest": "f7498e97cd2a5b6772ee3afd4ee754bff38d4ddd710cf7f260d94efde379d483",
+   "obs_size": 90,
+   "n_actions": 61,
+   "metadata": {
+    "name": "m46c_baseline_s2",
+    "kind": "final",
+    "run": "m46c_baseline_s2",
+    "seed": 98002,
+    "agent_transitions": 8192000,
+    "env_turns": 4096000,
+    "update": 2000,
+    "snapshot_id": "final@8192000"
+   },
+   "schedule_total_steps": 8192000,
+   "provenance_commit": "2080667d74a84098c63207a3ccbe8055cd90d127"
+  },
+  "3": {
+   "path": "results/rl/checkpoints/m46c/train/ext/baseline/s3/final.pt",
+   "file_sha256": "c847b485e7bcd93128eb4ab2967e427899bf1365daf8449739d2a850dc39b6c4",
+   "weights_digest": "652b36d1f5dce467ddc056d26bc56cb05e43e8505cdaec67d562b99bd0c9ae71",
+   "obs_size": 90,
+   "n_actions": 61,
+   "metadata": {
+    "name": "m46c_baseline_s3",
+    "kind": "final",
+    "run": "m46c_baseline_s3",
+    "seed": 98003,
+    "agent_transitions": 8192000,
+    "env_turns": 4096000,
+    "update": 2000,
+    "snapshot_id": "final@8192000"
+   },
+   "schedule_total_steps": 8192000,
+   "provenance_commit": "2080667d74a84098c63207a3ccbe8055cd90d127"
+  },
+  "4": {
+   "path": "results/rl/checkpoints/m46c/train/ext/baseline/s4/final.pt",
+   "file_sha256": "01e66d2d460846f798f18c9fcd8adb4cae1650de1f52a7a7822fd051e10112fb",
+   "weights_digest": "b320d4e9ef4b821e9a14907e592d1c94489c002d40843f8afa31a5fd474197d6",
+   "obs_size": 90,
+   "n_actions": 61,
+   "metadata": {
+    "name": "m46c_baseline_s4",
+    "kind": "final",
+    "run": "m46c_baseline_s4",
+    "seed": 98004,
+    "agent_transitions": 8192000,
+    "env_turns": 4096000,
+    "update": 2000,
+    "snapshot_id": "final@8192000"
+   },
+   "schedule_total_steps": 8192000,
+   "provenance_commit": "2080667d74a84098c63207a3ccbe8055cd90d127"
+  },
+  "5": {
+   "path": "results/rl/checkpoints/m46c/train/ext/baseline/s5/final.pt",
+   "file_sha256": "2208b5dd36f51d5e1009ec7ae27a03e2d5ae7925ec6cc67e8e7f6c710badaf97",
+   "weights_digest": "ef6ad0cd92e7611cf786ad204147ba90901ca3664b04ea50c98267ead9279fef",
+   "obs_size": 90,
+   "n_actions": 61,
+   "metadata": {
+    "name": "m46c_baseline_s5",
+    "kind": "final",
+    "run": "m46c_baseline_s5",
+    "seed": 98005,
+    "agent_transitions": 8192000,
+    "env_turns": 4096000,
+    "update": 2000,
+    "snapshot_id": "final@8192000"
+   },
+   "schedule_total_steps": 8192000,
+   "provenance_commit": "2080667d74a84098c63207a3ccbe8055cd90d127"
+  }
+ },
+ "library_networks": {
+  "peer": {
+   "path": "results/rl/checkpoints/m45c/full/s3/final.pt",
+   "file_sha256": "fa91f284a59ace64d85358398cf096304e9a32b9e8e1655ba56965b4d7664cd6",
+   "weights_digest": "644343ca5b1f49e773133c70c243ac17a8d05d629d8e26c934507ec3978e32b2",
+   "obs_size": 90,
+   "n_actions": 61,
+   "metadata": {
+    "name": "s3",
+    "kind": "final",
+    "run": "s3",
+    "seed": 3,
+    "agent_transitions": 8192000,
+    "env_turns": 4096000,
+    "update": 2000,
+    "snapshot_id": "final@8192000"
+   },
+   "schedule_total_steps": 8192000,
+   "provenance_commit": "45b7dfa7fa5564194e124af59b26b45433fb56f9"
+  },
+  "attacker": {
+   "path": "results/rl/checkpoints/m45c/attack/ext_s3/final.pt",
+   "file_sha256": "e6f5deebeb434bc7cc5abbaa2e685495db1ed77f9c13f66a24f4dfa8bd0e9f20",
+   "weights_digest": "bb44bbf76b43a50469eae1b8bc00b9b785419a34537f438b457e19c3bec68e97",
+   "obs_size": 90,
+   "n_actions": 61,
+   "metadata": {
+    "name": "attack_final_ext_3"
+   },
+   "schedule_total_steps": 4096000,
+   "provenance_commit": "45b7dfa7fa5564194e124af59b26b45433fb56f9"
+  },
+  "freezer": {
+   "path": "results/rl/checkpoints/m46a/e4/freeze_s2/final.pt",
+   "file_sha256": "51e1a2787062af6debccfe6e11e5a814da82f5bae8c5ff96c7d4b8cfe2b56f4f",
+   "weights_digest": "6462996a4e5479d97d5b81a1419e7b5e2156c050468ea89d6707bcca07ae146c",
+   "obs_size": 90,
+   "n_actions": 61,
+   "metadata": {
+    "name": "m46a_freeze_s2"
+   },
+   "schedule_total_steps": 4096000,
+   "provenance_commit": "11860c88632cf8a90f1c0f7fc10c4126e63dec3b"
+  },
+  "gapper": {
+   "path": "results/rl/checkpoints/m46a/e4/gap_s2/final.pt",
+   "file_sha256": "e4aa64fb18e342a6b45b1afaaf56496726f8860a3baaaea6068100de50884f15",
+   "weights_digest": "5d86682c684db3d299b736a071ad133f2763d204a4aea7a6701bbef6f0096854",
+   "obs_size": 90,
+   "n_actions": 61,
+   "metadata": {
+    "name": "m46a_gap_s2"
+   },
+   "schedule_total_steps": 4096000,
+   "provenance_commit": "11860c88632cf8a90f1c0f7fc10c4126e63dec3b"
+  },
+  "short": {
+   "path": "results/rl/checkpoints/m47/train/main/short/s0/final.pt",
+   "file_sha256": "17c2507453dd9e7a3d1fb7b20c8a1fe55f1903b75296b1b75a23d537cf97934d",
+   "weights_digest": "4063614c827e8d809fc96a9086557e5a23f0552e9c6a4d2ef378a9cd715e8f2c",
+   "obs_size": 90,
+   "n_actions": 61,
+   "metadata": {
+    "name": "m47_short_s0",
+    "kind": "final",
+    "run": "m47_short_s0",
+    "seed": 58300,
+    "agent_transitions": 4096000,
+    "env_turns": 2048000,
+    "update": 1000,
+    "snapshot_id": "final@4096000"
+   },
+   "schedule_total_steps": 4096000,
+   "provenance_commit": "6b5d66f17d5eadc4e4e789aa01e5599505de45d7"
+  }
+ },
+ "archive": {
+  "path": "results/rl/checkpoints/m46c/archive/train_archive.json.gz",
+  "file_sha256": "c3b2539c7647fcd4eaaf83fb71e8c1937e6419c327748e609e7df1383d69b63c"
+ },
+ "ppo_seeds": {
+  "0": 70000,
+  "1": 70001,
+  "2": 70002,
+  "3": 70003,
+  "4": 70004,
+  "5": 70005
+ },
+ "preregistration": null,
+ "run_dirs": {
+  "om_s0": "results/rl/checkpoints/m5/train/main/om/s0",
+  "sp_s0": "results/rl/checkpoints/m5/train/main/sp/s0",
+  "om_s1": "results/rl/checkpoints/m5/train/main/om/s1",
+  "sp_s1": "results/rl/checkpoints/m5/train/main/sp/s1",
+  "om_s2": "results/rl/checkpoints/m5/train/main/om/s2",
+  "sp_s2": "results/rl/checkpoints/m5/train/main/sp/s2",
+  "om_s3": "results/rl/checkpoints/m5/train/main/om/s3",
+  "sp_s3": "results/rl/checkpoints/m5/train/main/sp/s3",
+  "om_s4": "results/rl/checkpoints/m5/train/main/om/s4",
+  "sp_s4": "results/rl/checkpoints/m5/train/main/sp/s4",
+  "om_s5": "results/rl/checkpoints/m5/train/main/om/s5",
+  "sp_s5": "results/rl/checkpoints/m5/train/main/sp/s5"
+ }
+}

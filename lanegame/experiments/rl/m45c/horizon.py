@@ -122,7 +122,11 @@ class CRNNet:
 
 
 def critic_value(net, cfg, lane, m4, k: int, s: int = 0) -> float:
-    """The pilot critic's value of seat s's observation, in resources (V / reward_scale)."""
+    """The pilot critic's value of seat s's observation, in resources (V / reward_scale). Opt-in (M5): a
+    history-dependent policy object with `value_at(cfg, lane, m4, k, s)` supplies its own value (its input includes
+    what it has observed); a network is evaluated as before."""
+    if hasattr(net, "value_at"):
+        return float(net.value_at(cfg, lane, m4, k, s))
     import torch
     from ....diagnostics.branch import Snapshot, observation
     obs = observation(cfg, Snapshot(lane, m4, k, (cfg.skill_a, cfg.skill_b)), s)
@@ -174,6 +178,8 @@ def rollout(cfg, start, pa, pb, seed: int, horizon: int, checkpoints: Sequence[i
         a = E.decide(pa, cfg, lane, m4, 0, i)
         b = E.decide(pb, cfg, lane, m4, 1, i)
         t = resolve_turn_m4(lane, m4, k0 + i, a, b, cfg, lane_step=ls, u=u, ctx=ctx)
+        E.observe_turn(pa, cfg, lane, m4, k0 + i, (a, b))
+        E.observe_turn(pb, cfg, lane, m4, k0 + i, (a, b))
         led.add(t, lane)
         G += GAMMA ** i * t.reward
         lane, m4 = t.lane.state, t.champ

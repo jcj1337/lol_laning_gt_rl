@@ -111,6 +111,9 @@ def decide(pol, cfg, lane, m4, s: int, i: int) -> int:
     return int(pol(cfg, lane, m4, s, i))
 
 
+from ...diagnostics.lane_exit import observe_turn  # noqa: E402,F401  (M5 opt-in hook; canonical in diagnostics)
+
+
 class Ledger:
     """Accumulates the per-side ledger of the module docstring turn by turn."""
 
@@ -277,6 +280,8 @@ def play(cfg: GameConfig, start: Start, pa, pb, seed: int, turns: int, keep_stat
                     raise ValueError(f"seat {'AB'[s]} chose illegal action {c} at turn {i} "
                                      f"(legal {champion_legal_actions(lane, m4, s, cfg)})")
         t = resolve_turn_m4(lane, m4, k0 + i, a, b, cfg, lane_step=ls, u=u, ctx=ctx)
+        observe_turn(pa, cfg, lane, m4, k0 + i, (a, b))
+        observe_turn(pb, cfg, lane, m4, k0 + i, (a, b))
         led.add(t, lane)
         if rows is not None:
             rows.append(row_of(t, lane, m4, tb))
@@ -333,6 +338,9 @@ class Then:
     def act(self, cfg, lane, m4, s: int, i: int) -> int:
         return self.decide(cfg, lane, m4, s, i)[0]
 
+    def inner_policies(self):
+        return (self.first, self.after)
+
 
 class Fixed:
     """A fixed action code when legal, else `fallback` (a policy)."""
@@ -347,6 +355,9 @@ class Fixed:
 
     def act(self, cfg, lane, m4, s: int, i: int) -> int:
         return self.decide(cfg, lane, m4, s, i)[0]
+
+    def inner_policies(self):
+        return (self.fallback,)
 
 
 # ---------------------------------------------------------------------------------------------- state collection

@@ -4,9 +4,9 @@ Three documents are the entry points every milestone refers to:
 
 | document | what it is |
 |---|---|
-| [m4/laning_game_mathematical_reference.md](m4/laning_game_mathematical_reference.md) | **the living mathematical reference of the current game** (`GameConfig.m4_lasthit()`): state, actions, wave mechanics, farming and XP, combat, progression, towers, reward, the RL objective, worked examples; updated with every rule change |
+| [m4/laning_game_mathematical_reference.md](m4/laning_game_mathematical_reference.md) | **the living mathematical reference of the game** (§1–§10 describe the base model `GameConfig.m4_lasthit()`; §14–§15 give the differences of the research preset `m45_calibrated()`): state, actions, wave mechanics, farming and XP, combat, progression, towers, reward, the RL objective, worked examples; updated with every rule change |
 | [design_philosophy.md](design_philosophy.md) | the standard every mechanic is judged against: simplify how League works without changing why its laning strategies work |
-| [rl_research_roadmap.md](rl_research_roadmap.md) | **the canonical roadmap**: a current-position summary at the top (milestones M1–M6, the M4 subphases, what is implemented / experimental / adopted / planned / unresolved, the path to completion), then one section per milestone (A–AW) with the decision and the link to its full report |
+| [rl_research_roadmap.md](rl_research_roadmap.md) | **the canonical roadmap**: a current-position summary at the top (milestones M1–M6, the M4 subphases, what is implemented / experimental / adopted / planned / unresolved, the path to completion), then one section per milestone (A–AX) with the decision and the link to its full report; the M5 plan (M5a–M5e) |
 
 The reports are grouped by phase. Within a folder the files are listed in the order they were written.
 
@@ -77,10 +77,19 @@ The reports are grouped by phase. Within a folder the files are listed in the or
 | document | milestone |
 |---|---|
 | [om1_protocol.md](opponent_modelling/om1_protocol.md) | OM1 protocol (frozen before any game): identifiability and value of information with existing policies |
-| [om2_design.md](opponent_modelling/om2_design.md) | OM2 design (proposed, in review; scope C and the last-action observation decided by the user): the opt-in observation field `obs_last_action`, a Bayesian belief over 11 library types plus the catch-alls "mixed" and "unknown" with forgetting, a belief-conditioned policy widened from the baseline, training against mixtures and style switchers, the evaluation families; implemented behind opt-in switches |
+| [om2_design.md](opponent_modelling/om2_design.md) | OM2 design (reviewed; carried into M5 as arm A; scope C and the last-action observation decided by the user): the opt-in observation field `obs_last_action`, a Bayesian belief over 11 library types plus the catch-alls "mixed" and "unknown" with forgetting, a belief-conditioned policy widened from the baseline, training against mixtures and style switchers, the evaluation families; implemented behind opt-in switches |
 | [om2_preregistration.md](opponent_modelling/om2_preregistration.md) | OM2 pilot pre-registration (frozen after the readiness smoke, before any training): control (belief at the prior) vs treatment (belief), 3 seed pairs × 4.096M; families E / R1 / R2 / R3; outcomes 1–4 |
 | [om2_pilot_report.md](opponent_modelling/om2_pilot_report.md) | OM2 matched pilot: pre-registered outcome 1, modelling pays and is safe (+2.03 ± 1.72 against the archetypes in every seed; no loss against competent, misspecified or head-to-head opponents); identification, switch tracking and belief-swap probes; exploratory reference against the common start (the belief adds +2.0 on top of +5.1 from training against the styles; it protects competence the control loses slightly); recommendation for M5 |
 | [om1_feasibility_report.md](opponent_modelling/om1_feasibility_report.md) | OM1 opponent-modelling feasibility: the lane phase reveals the opponent's style within 10–20 observed turns (decision-relevant); a Bayesian switcher between existing policies beats the baseline policy by +0.90 ± 0.27 at the lane-exit readout, mostly against scripted styles, and loses against misspecified (mixed) opponents; outcome 1, feasible and worthwhile; design proposals for step 3 |
+
+## m5/ — the final training and evaluation campaign (M5a complete; M5b–M5e not launched)
+
+| document | milestone |
+|---|---|
+| [m5_design.md](m5/m5_design.md) | M5 design (proposed, awaiting the user's decisions): the opponent-modelling package (arm A, OM2's treatment) against continued pure self-play (arm B), six matched pairs continuing `ext/baseline:s` for 32.768M; belief and previous-action handling in every instrument; M5b training, M5c strategic replication and the M4 limitations, M5d opponent families, competence and attackers, M5e closeout; the statistics; the measured budget; deviations from the brief; the decisions needed |
+| [m5_preregistration.md](m5/m5_preregistration.md) | M5 pre-registration (frozen after readiness, awaiting campaign authorization): arms, health checks and restart rules, families, attackers, the primary endpoints P1 (exploitation gain) and P2a / P2b (competence by non-inferiority, δ = 0.25), headline outcomes 1–5, secondary endpoints with Holm, the resolution stated in advance |
+| [m5a_readiness_protocol.md](m5/m5a_readiness_protocol.md) | M5a readiness protocol (recorded before the first check): checks R0–R11, pass rules, the compute ceiling |
+| [m5a_readiness_report.md](m5/m5a_readiness_report.md) | M5a readiness report: all 11 experimental checks pass (lineage, seeds, identical start, exact reproductions through the hooked shared loops, bit-identical smokes, common starts, training inputs rebuilt by the evaluation policy, shares, concurrency, every instrument at reduced samples); failures and fixes; the measured budget |
 
 ## natural_waves/ — natural wave mechanics and the lane candidate (M4.2e)
 

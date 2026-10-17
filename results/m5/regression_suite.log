@@ -1,0 +1,42 @@
+........................................................................ [  4%]
+........................................................................ [  9%]
+........................................................................ [ 14%]
+........................................................................ [ 18%]
+...................................s.................................... [ 23%]
+........................................................................ [ 28%]
+........................................................................ [ 33%]
+........................................................................ [ 37%]
+........................................................................ [ 42%]
+........................................................................ [ 47%]
+........................................................................ [ 52%]
+........................................................................ [ 56%]
+........................................................................ [ 61%]
+...........................x..x......................................... [ 66%]
+...................................ss................................... [ 71%]
+........................................................s............... [ 75%]
+........................................................................ [ 80%]
+........................................................................ [ 85%]
+........................................................................ [ 90%]
+........................................................................ [ 94%]
+........................................................................ [ 99%]
+.....                                                                    [100%]
+============================== warnings summary ===============================
+tests/test_pettingzoo_m4.py::test_official_aec_api_test_passes_through_the_conversion
+  C:\Users\light\OneDrive\Desktop\projects\lol_gt_laning\.venv\Lib\site-packages\pettingzoo\test\api_test.py:240: UserWarning: Observation space for each agent probably should be gymnasium.spaces.box or gymnasium.spaces.discrete
+    warnings.warn(
+
+tests/test_pettingzoo_m4.py::test_official_aec_api_test_passes_through_the_conversion
+  C:\Users\light\OneDrive\Desktop\projects\lol_gt_laning\.venv\Lib\site-packages\pettingzoo\test\api_test.py:257: UserWarning: We recommend agents to be named in the format <descriptor>_<number>, like "player_0"
+    warnings.warn(
+
+tests/test_pettingzoo_m4.py::test_official_aec_api_test_passes_through_the_conversion
+  C:\Users\light\OneDrive\Desktop\projects\lol_gt_laning\.venv\Lib\site-packages\pettingzoo\test\api_test.py:138: UserWarning: Observation is not a NumPy array
+    warnings.warn("Observation is not a NumPy array")
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+=========================== short test summary info ===========================
+SKIPPED [1] tests\test_legacy_pins.py:76: slow; run with --runslow
+SKIPPED [1] tests\test_m4_observation.py:55: slow; run with --runslow
+SKIPPED [1] tests\test_m4_observation.py:65: slow; run with --runslow
+SKIPPED [1] tests\test_m4_tower.py:81: slow; run with --runslow
+1511 passed, 4 skipped, 2 xfailed, 3 warnings in 487.50s (0:08:07)

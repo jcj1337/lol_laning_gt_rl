@@ -74,6 +74,8 @@ def rollout(cfg, start, pa, pb, seed: int, horizon: int, cps, lcps, critic=None)
         a = E.decide(pa, cfg, lane, m4, 0, i)
         b = E.decide(pb, cfg, lane, m4, 1, i)
         t = resolve_turn_m4(lane, m4, k0 + i, a, b, cfg, lane_step=ls, u=u, ctx=ctx)
+        E.observe_turn(pa, cfg, lane, m4, k0 + i, (a, b))
+        E.observe_turn(pb, cfg, lane, m4, k0 + i, (a, b))
         led.add(t, lane)
         G += GAMMA ** i * t.reward
         lane, m4 = t.lane.state, t.champ

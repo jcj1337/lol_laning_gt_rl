@@ -200,6 +200,8 @@ def continuation(cfg, start, pa, pb, seed: int, T: int, lane_step=None, mirror: 
         a = _decide(pa, cfg, lane, m4, A, i)
         b = _decide(pb, cfg, lane, m4, B, i)
         t = resolve_turn_m4(lane, m4, k0 + i, a, b, cfg, lane_step=lane_step, u=u, ctx=ctx)
+        _observe_turn(pa, cfg, lane, m4, k0 + i, (a, b))
+        _observe_turn(pb, cfg, lane, m4, k0 + i, (a, b))
         units += t.reward_units
         r[i] = t.reward
         lane, m4 = t.lane.state, t.champ
@@ -233,6 +235,31 @@ def _decide(pol, cfg, lane, m4, s: int, i: int) -> int:
     if hasattr(pol, "decide"):
         return int(pol.decide(cfg, lane, m4, s, i)[0])
     return int(pol(cfg, lane, m4, s, i))
+
+
+def observe_turn(pol, cfg, lane, m4, k: int, codes) -> None:
+    """Opt-in hook (M5, docs/m5/m5_design.md §5): after a turn that started in (lane, m4, k) and in which the seats
+    played `codes` = (A's code, B's code), tell every history-dependent policy inside `pol`, once each. Such a policy
+    defines `observe_turn(cfg, lane, m4, k, codes)` (e.g. a belief about the opponent); a composite policy (a plan
+    around an inner policy) lists its inner policies in `inner_policies()`. Policies with neither attribute (every
+    policy before M5) are not touched, so every earlier result is unchanged bit for bit. A history-dependent policy's
+    `decide` must be pure: the instruments also call it outside the turn loop."""
+    if not (hasattr(pol, "observe_turn") or hasattr(pol, "inner_policies")):
+        return
+    seen, stack = set(), [pol]
+    while stack:
+        p = stack.pop()
+        if p is None or id(p) in seen:
+            continue
+        seen.add(id(p))
+        if hasattr(p, "observe_turn"):
+            p.observe_turn(cfg, lane, m4, k, codes)
+        inner = getattr(p, "inner_policies", None)
+        if inner is not None:
+            stack.extend(inner())
+
+
+_observe_turn = observe_turn
 
 
 def continuations(cfg, start, make_policies: Callable[[int], Tuple[object, object]], seeds: Sequence[int], T: int,

@@ -148,6 +148,9 @@ class BehaviorPlan:
         self.forced += 1
         return legal[sl[j]], f"[{self.name}] {comps}"
 
+    def inner_policies(self):
+        return (self.own,)                               # M5 opt-in hook (m45b.engine.observe_turn)
+
 
 class ResetPlan:
     """M4.6b: reset now. While present and not yet recalled (turn index < n): Recall when it is legal, otherwise the
@@ -171,6 +174,9 @@ class ResetPlan:
             return rec, "[reset] Recall"
         self.forced += 1
         return self.safe.decide(cfg, lane, m4, s, i)
+
+    def inner_policies(self):
+        return (self.own,)                               # M5 opt-in hook (m45b.engine.observe_turn)
 
 
 def build(cspec: tuple, own: HZ.CRNNet):
