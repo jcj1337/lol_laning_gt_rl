@@ -72,8 +72,8 @@ def champ_features(cfg: GameConfig) -> int:
 
 def obs_size(cfg: GameConfig) -> int:
     if cfg.is_m4:
-        from .observation_m4 import m4_obs_size
-        return m4_obs_size(cfg)
+        from .observation_m4 import LAST_ACTION_SIZE, m4_obs_size
+        return m4_obs_size(cfg) + (LAST_ACTION_SIZE if cfg.obs_last_action else 0)
     n = (2 if cfg.time_features else 0) + cfg.phase_period + 2 * (2 * cfg.base + 1) + 2 * SIDE_FEATURES
     if cfg.champion_mode:
         n += 2 * champ_features(cfg)
@@ -82,8 +82,9 @@ def obs_size(cfg: GameConfig) -> int:
 
 def feature_names(cfg: GameConfig) -> List[str]:
     if cfg.is_m4:
-        from .observation_m4 import m4_feature_names
-        return m4_feature_names(cfg)
+        from .observation_m4 import LAST_ACTION_NAMES, m4_feature_names
+        tail = [f"opp_last_{n}" for n in LAST_ACTION_NAMES] if cfg.obs_last_action else []
+        return m4_feature_names(cfg) + tail
     names = ["turn_fraction", "turns_remaining_fraction"] if cfg.time_features else []
     names += [f"phase_{p}" for p in range(cfg.phase_period)]
     names += [f"own_minions_x{x:+d}" for x in range(-cfg.base, cfg.base + 1)]
@@ -104,6 +105,21 @@ def _side_features(fx, fh, rears, siege, vision, plates, cfg: GameConfig, v: lis
     v[o + 2] = plates / cfg.plates_cap if cfg.plates_cap > 0 else 0.0
     v[o + 3] = 1.0 if (cfg.objectives and siege > 0) else 0.0
     v[o + 4] = 1.0 if fh > 0 else 0.0
+
+
+def observe_full(state: State, k: int, side: int, cfg: GameConfig, champ=None, last_actions=None) -> np.ndarray:
+    """The complete observation vector of `side`: `observe` (a function of the state only) followed, under the OM2
+    opt-in `cfg.obs_last_action`, by the encoding of the OPPONENT's previous action (`last_actions` = (code of A,
+    code of B), -1 = none). With the field on, `last_actions` must be given."""
+    v = observe(state, k, side, cfg, champ)
+    if not cfg.obs_last_action:
+        return v
+    if last_actions is None:
+        raise ValueError("obs_last_action: the observation needs the previous actions (pass last_actions, (-1, -1) at "
+                         "a game start)")
+    from .observation_m4 import encode_last_action
+    tail = np.asarray(encode_last_action(int(last_actions[1 - side]), cfg), dtype=np.float32)
+    return np.concatenate([v, tail])
 
 
 def observe(state: State, k: int, side: int, cfg: GameConfig, champ=None) -> np.ndarray:

@@ -323,6 +323,9 @@ The encoding is exactly invertible (`decode_m4`) while invested gold stays below
 below 8,184 resources (never reached in play), and while at most 4 rear packets share a cell (enforced: the
 observation raises otherwise).
 
+The M4.5 presets add a Vision entry per champion (90 entries, §14.9). The opt-in field `obs_last_action` appends 13
+entries for the opponent's previous action (§15.4).
+
 **Diagnostic statistics** (`lanegame/experiments/rl/m43b/behavior.turn_features`) are *derived from* the state for
 analysis only and never enter the game: contact cell, power ratio (expected hit on the opponent in the opponent's HP
 units over the reverse), situation masks ("neutral lane", "freeze-like", "defending", …).
@@ -1372,7 +1375,7 @@ exhausted towers.
   - Investing on a return moves $g$ into $S$, so spending never counts as earning again: $D_0$ plus the summed
     rewards equals the lead at the end of the window exactly.
   - XP, levels, HP, absence and the wave are reported beside $E_h$ and never converted into gold.
-  - Recommended presentation (M4.8, awaiting review): $D_0\to E_{20}$ with its 95% interval and the non-gold
+  - Standard presentation (M4.8; adopted by the user on 2026-10-17): $D_0\to E_{20}$ with its 95% interval and the non-gold
     dimensions. $h=20$ is about one reset cycle: by then the wave, absences and owed Recalls present at the checkpoint
     have resolved in 95% of continuations
     ([M4.8 report](m4_8/m4_8_lane_exit_report.md)).
@@ -1604,6 +1607,7 @@ historical documents are records of their milestones and are **not** edited; thi
 | 2026-10-14 | M4.5a movement correction (revision 2 of `m45_unified()`): §14 intro (revisions), §14.1 row, §14.4, new §14.5a (champions walk tick by tick to the unchanged end cell; Hold, an unthreatened Yield and Safe follow the probe's per-tick front), §14.5 (positional aggro on each tick's post-movement positions, moved or not; the stationary condition removed; new situation table; revision-1 note). Revision 1 is kept as `m45_unified_r1()` (byte-identical to `ea3d9cb` on random games). Every CURRENT statement and every earlier preset is unchanged | `config.py` (`champion_movement_rule`, `m45_unified_r1`), `positional.py` (`tick_speeds`, `tick_path`, `MinionTarget.path`), `mechanics.py`, `champions_m4.py`, `env/core.py`, `viewer/session.py`, `experiments/m45a/movement.py` |
 | 2026-10-14 | M4.5b: new §15 (EXPERIMENTAL calibrated candidate `m45_calibrated()`: the farm-spot correction `farm_spot_rule = "last_front"` with its equation and measured effect, retaliation from the exchange tick `minion_retaliation_delay = 0`, the table of parameters changed and retained); label M4.5B (§0), a §0.4 row, a §14.10 pointer. Every CURRENT statement, §14 (revision 2) and every earlier preset are unchanged (`farm_spot_rule` keeps `"pre_crash_front"` and delay 1 everywhere else) | `config.py` (`m45_calibrated`, `M45_CALIBRATED_FIELDS`, the `"last_front"` value), `champions_m4.py` (`_last_front_cell`, step 1 and `_tick_goals`), `viewer/session.py`, `experiments/m45b/` |
 | 2026-10-17 | M4.8 (documentation of an evaluation convention and a decision; no rule, parameter, preset or objective changed): §9.1 records that the continuing objective is kept and that the lane phase ends in no terminal state (level 14 / turn 94 is an evaluation checkpoint); §9.3 adds the lane-exit readout $E_h$ (undiscounted earned-gold lead $h$ turns after a checkpoint, by repeated continuations; evaluation only) | `diagnostics/lane_exit.py`, `experiments/rl/m48/` (evaluation only) |
+| 2026-10-17 | OM2: new §15.4 and a §2.4 pointer for the EXPERIMENTAL opt-in observation field `obs_last_action`: the opponent's previous action as 13 entries after the existing ones (103 with `m45_calibrated()`). A §15 status line records the user's adoption of `m45_calibrated()` as the M5 baseline. No rule, parameter, preset, objective or default changed | `config.py` (`obs_last_action`), `env/observation_m4.encode_last_action`, `env/observation.observe_full`, `env/core.py` (`last_actions`), `diagnostics/branch.py` (`Snapshot.last_actions`) |
 
 ---
 
@@ -1807,6 +1811,9 @@ observation (90 entries), the reward and every other number of §14, is unchange
 [m4_5b_calibration_report.md](m4_5/m4_5b_calibration_report.md); generated tables: `results/m45b/report.md`. Every earlier
 preset keeps `farm_spot_rule = "pre_crash_front"` and delay 1.
 
+*Status (2026-10-17):* the user adopted `m45_calibrated()` unchanged as the baseline of the M5 campaign (roadmap
+§AU). The main sections of this document still describe `m4_lasthit()`; §14–§15 give the differences.
+
 ### 15.1 The farm spot of a front lost in the probe (`farm_spot_rule = "last_front"`)
 
 The probe (§14.4 step 2) resolves the turn under full champion support: every champion that plays the lane damages
@@ -1870,3 +1877,35 @@ with $\delta=1$).
 | `vision_turns`, `vision_reduction` | 6, ×0.25 | retained (sensitive in magnitude) | Vision already conditional; 8 turns scales it without changing where it pays |
 | `ward_exposure` | 0 | retained | −1 helps Vision slightly, +1 / +2 hurt it; no defect |
 | `xp_range` | 2 | fixed by design | not tuned |
+
+### 15.4 EXPERIMENTAL opt-in: the opponent's previous action in the observation (`obs_last_action`)
+
+`GameConfig.obs_last_action` is `False` in every preset and is valid for `ruleset = "m4"` only. When it is on, each
+seat's observation gains 13 entries after the existing 88 or 90 (103 with `m45_calibrated()`). The entries encode the
+code $a^{1-s}_{k-1}$ that the **opponent** chose on the previous turn (`env/observation_m4.encode_last_action`):
+
+| entry | set when the opponent's previous code was |
+|---|---|
+| none | no previous turn: after `reset`, or a restored state without recorded actions |
+| absent | Absent |
+| ward | Ward (`vision_rule = "ward"`); under `vision_rule = "siege"`, a lane action with the Vision objective, beside its behaviour and slot |
+| recall | Recall |
+| hold, yield, trade, safe | a lane action: its behaviour |
+| last hit, thin, slow push, shove | a lane action: its wave slot (Shove is Clear before the four-action model) |
+| pressure | a lane action with the Pressure objective |
+
+Every entry is 0 or 1. Exactly one of none, absent, ward or recall is set; otherwise a lane action sets its behaviour,
+its slot and, with the Pressure objective, the pressure entry.
+
+- **No rule changes.** The dynamics, legality, reward and chance draws are the preset's exactly; only the observation
+  grows. The previous turn's codes are kept for the observation only: `LaneEnv.last_actions`, set to $(-1,-1)$ by
+  `reset`, and `Snapshot.last_actions` in the diagnostics, swapped with the seats by the mirror.
+- **Information.** Both players saw the previous turn resolve, so the field reveals nothing about the current
+  simultaneous move. It does name the opponent's choice where the state change alone may not identify it. Showing it
+  is an assumption of the OM2 design, approved by the user on 2026-10-17.
+- **Compatibility.** The first 88 or 90 entries are unchanged, so a network trained without the field plays exactly as
+  before on that prefix. A network trained with it has 103 or more inputs and cannot be used on the 90-entry
+  observation.
+- **Use.** The OM2 opponent-modelling design
+  ([om2_design.md](../opponent_modelling/om2_design.md)). Its policies also receive a belief's 13 features. Those are
+  inputs of the network, computed outside the game, not entries of this observation.

@@ -576,6 +576,11 @@ class GameConfig:
     # wave_reach_rule "line" = a champion damages enemy minions at every cell at or behind its reach line (historical);
     # "ball" = only within farm_reach (graph distance) of its end cell, Safe / retreat also not ahead of min(end, -1)
     wave_reach_rule: str = "line"
+    # OM2 (opt-in, docs/opponent_modelling/om2_design.md §2; ruleset "m4" only): each seat's observation gains 13
+    # entries AFTER the state encoding, the opponent's action of the previous turn (none / absent / ward / recall,
+    # behaviour, wave slot, Pressure; observation_m4.encode_last_action). The dynamics are unchanged; only the
+    # observation (and so the network input size) of this variant differs. Off in every preset.
+    obs_last_action: bool = False
 
     # ------------------------------------------------------------------ presets
     @classmethod
@@ -968,6 +973,10 @@ class GameConfig:
 
     def validate(self) -> None:
         self._validate_ruleset()
+        if not isinstance(self.obs_last_action, bool):
+            raise ValueError("obs_last_action must be a bool")
+        if self.obs_last_action and not self.is_m4:
+            raise ValueError(f"ruleset {self.ruleset!r}: obs_last_action applies to ruleset 'm4' only")
         assert self.base > self.tower > 0
         assert self.spawn_interval % self.ticks_per_turn == 0
         assert self.damage_law in ("lanchester", "lanchester_ceil", "lanchester_half", "linear", "pressure")

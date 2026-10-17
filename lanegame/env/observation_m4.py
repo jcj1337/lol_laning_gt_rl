@@ -69,6 +69,44 @@ TOWER_NAMES = ("tower_dmg", "plates_broken", "plate_progress", "plates_left")
 SIDE_NAMES = ("siege_mass", "vision", "siege_eligible")
 
 
+# OM2 opt-in (GameConfig.obs_last_action): the opponent's action of the previous turn, appended after the state
+# encoding. "none" = no previous turn (a game start or a restored state without a recorded action, code -1).
+LAST_ACTION_NAMES = ("none", "absent", "ward", "recall", "hold", "yield", "trade", "safe", "last_hit", "thin",
+                     "slow_push", "shove", "pressure")
+LAST_ACTION_SIZE = len(LAST_ACTION_NAMES)
+
+
+def encode_last_action(code: int, cfg: GameConfig) -> List[float]:
+    """The 13-entry encoding of one action code (module constant LAST_ACTION_NAMES): exactly one of none / absent /
+    ward / recall, or a lane action as its behaviour, its wave slot and the Pressure flag. Under vision_rule "siege"
+    the Vision objective sets the "ward" entry beside the behaviour and wave slot."""
+    from ..config import (B_RECALL, CHAMP_ABSENT, CHAMP_WARD, PRESSURE, VISION, W_HOLD, W_SHOVE, W_SLOWPUSH, W_THIN,
+                          champ_behavior, champ_objective, champ_wave)
+    v = [0.0] * LAST_ACTION_SIZE
+    code = int(code)
+    if code < 0:
+        v[0] = 1.0
+        return v
+    if code == CHAMP_ABSENT:
+        v[1] = 1.0
+        return v
+    if code == CHAMP_WARD and cfg.vision_rule == "ward":
+        v[2] = 1.0
+        return v
+    b = champ_behavior(code)
+    if b == B_RECALL:
+        v[3] = 1.0
+        return v
+    v[4 + b] = 1.0
+    v[{W_HOLD: 8, W_THIN: 9, W_SLOWPUSH: 10, W_SHOVE: 11}[champ_wave(code)]] = 1.0
+    obj = champ_objective(code)
+    if obj == PRESSURE:
+        v[12] = 1.0
+    elif obj == VISION:
+        v[2] = 1.0
+    return v
+
+
 def compressed_exact_max(ref: int) -> int:
     """Largest whole-resource count n whose "compressed" entry n / (n + ref) decodes exactly from float32: the
     float32 rounding error (<= 2^-25) times dn/dx = (n + ref)^2 / ref stays <= 1/4 for n + ref <= sqrt(ref 2^23)."""

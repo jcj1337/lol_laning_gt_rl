@@ -57,10 +57,13 @@ class Snapshot:
     champ: ChampState
     k: int
     skills: Tuple[float, float] = (0.5, 0.5)
+    # OM2 (GameConfig.obs_last_action): the (A, B) actions of the turn before this state; None = not recorded (an
+    # observation of an obs_last_action configuration then refuses to be built; (-1, -1) = no previous turn)
+    last_actions: Optional[Tuple[int, int]] = None
 
     @classmethod
     def from_env(cls, env: LaneEnv) -> "Snapshot":
-        return cls(env.state, env.champ, env.k, (env.cfg.skill_a, env.cfg.skill_b))
+        return cls(env.state, env.champ, env.k, (env.cfg.skill_a, env.cfg.skill_b), tuple(env.last_actions))
 
     @classmethod
     def from_info(cls, info: dict, skills: Tuple[float, float]) -> "Snapshot":
@@ -70,24 +73,29 @@ class Snapshot:
 
     def mirror(self) -> "Snapshot":
         """The same situation with the seats swapped (seat B's view becomes seat A's)."""
-        return Snapshot(self.lane.mirror(), self.champ.mirror(), self.k, (self.skills[1], self.skills[0]))
+        la = None if self.last_actions is None else (self.last_actions[1], self.last_actions[0])
+        return Snapshot(self.lane.mirror(), self.champ.mirror(), self.k, (self.skills[1], self.skills[0]), la)
 
     def with_side(self, seat: int, **kw) -> "Snapshot":
         """The snapshot with one champion's record changed (pos, hp, absent); used for HP-value comparisons."""
         sides = [self.champ.a, self.champ.b]
         sides[seat] = sides[seat]._replace(**kw)
-        return Snapshot(self.lane, type(self.champ)(*sides), self.k, self.skills)
+        return Snapshot(self.lane, type(self.champ)(*sides), self.k, self.skills, self.last_actions)
 
     def config(self, base: GameConfig) -> GameConfig:
         return base.with_(skill_a=self.skills[0], skill_b=self.skills[1])
 
     def to_dict(self) -> dict:
-        return {"lane": self.lane.to_list(), "champ": self.champ.to_list(), "k": self.k, "skills": list(self.skills)}
+        d = {"lane": self.lane.to_list(), "champ": self.champ.to_list(), "k": self.k, "skills": list(self.skills)}
+        if self.last_actions is not None:
+            d["last_actions"] = list(self.last_actions)
+        return d
 
     @classmethod
     def from_dict(cls, d: dict) -> "Snapshot":
+        la = d.get("last_actions")
         return cls(State.from_list(d["lane"]), champ_from_list(d["champ"]), int(d["k"]),
-                   (float(d["skills"][0]), float(d["skills"][1])))
+                   (float(d["skills"][0]), float(d["skills"][1])), None if la is None else (int(la[0]), int(la[1])))
 
 
 def champ_from_list(v):
@@ -101,13 +109,13 @@ def champ_from_list(v):
 def observation(cfg: GameConfig, snap: Snapshot, seat: int):
     """The Observation seat `seat` receives in `snap` (exactly what LaneEnv would hand it)."""
     from ..env.core import Observation
-    from ..env.observation import legal_set, n_actions, observe
+    from ..env.observation import legal_set, n_actions, observe_full
     c = snap.config(cfg)
     legal = legal_set(snap.lane, seat, c, snap.champ)
     mask = np.zeros(n_actions(c), dtype=bool)
     mask[list(legal)] = True
-    return Observation(snap.k, seat, snap.lane, legal, observe(snap.lane, snap.k, seat, c, snap.champ), mask,
-                       snap.champ, c)
+    vec = observe_full(snap.lane, snap.k, seat, c, snap.champ, snap.last_actions)
+    return Observation(snap.k, seat, snap.lane, legal, vec, mask, snap.champ, c)
 
 
 def restore(env: LaneEnv, snap: Snapshot, seed):
@@ -117,7 +125,7 @@ def restore(env: LaneEnv, snap: Snapshot, seed):
                          f"{snap.skills}; build it with snap.config(base)")
     if not env.cfg.champion_mode:
         raise ValueError("snapshots are champion-mode states")
-    return env.reset(seed=seed, root=snap.lane, k0=snap.k, champ=snap.champ)
+    return env.reset(seed=seed, root=snap.lane, k0=snap.k, champ=snap.champ, last_actions=snap.last_actions)
 
 
 def rollout_seed(root: int, m: int, *key: int) -> np.random.SeedSequence:

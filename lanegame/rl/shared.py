@@ -53,6 +53,12 @@ Opt-in (M4.5c; both default to None, which is the behaviour above, bit for bit):
     final.pt.
   * `net` may be a `SeparateCriticNet` (M4.6f): collection, GAE and `ppo_update` are unchanged (one Adam over all
     parameters, one global gradient-norm clip); only the critic's representation is its own. run.json records the class.
+  * Collector hooks (OM2, docs/opponent_modelling/om2_design.md §5): `SharedCollector.extra_obs` (default 0) extra
+    network inputs per learner seat, `augment(i, seat, vector)` (default: the vector itself) building every network
+    input of a learner seat (rollout, truncation bootstrap, final bootstrap), and `observe_step(i, actions, result)`
+    (default: nothing) called right after each environment step, while `self.obs[i]` still holds the observations the
+    actions were chosen on. A subclass (e.g. one that maintains a belief about the opponent) overrides them; with the
+    defaults, collection is unchanged bit for bit.
 """
 
 from __future__ import annotations
@@ -151,6 +157,15 @@ class SharedCollector:
     """`n_envs` environments in lock-step, two trajectory slots each (slot 2i + seat). All trainable seats of a
     step are evaluated in one batched forward pass of the current network."""
 
+    extra_obs = 0                          # OM2 hook: extra network inputs per learner seat (module docstring)
+
+    def augment(self, i: int, seat: int, vector: np.ndarray) -> np.ndarray:
+        """The network input of learner `seat` in environment i from its observation vector (hook; identity)."""
+        return vector
+
+    def observe_step(self, i: int, actions, result) -> None:
+        """Called after environment i stepped with `actions` (hook; nothing by default)."""
+
     def __init__(self, game_cfg: GameConfig, cfg: PPOConfig, sampler: MatchupSampler, seed: int):
         if cfg.expected_gank_reward and game_cfg.champion_mode:
             raise ValueError("expected_gank_reward applies to legacy configurations only")
@@ -210,7 +225,7 @@ class SharedCollector:
             if self.match[i] is not self._game_match[i]:
                 raise RuntimeError(f"environment {i}: the matchup changed during a game; matchups may change only at "
                                    "game boundaries")
-        m, n_act = self.envs[0].obs_size, self.envs[0].n_actions
+        m, n_act = self.envs[0].obs_size + self.extra_obs, self.envs[0].n_actions
         obs_buf = np.zeros((T, S, m), dtype=np.float32)
         mask_buf = np.zeros((T, S, n_act), dtype=bool)
         act_buf = np.zeros((T, S), dtype=np.int64)
@@ -230,7 +245,7 @@ class SharedCollector:
                     if ctrl[s] is LEARNER:
                         j = 2 * i + s
                         o = self.obs[i][s]
-                        obs_buf[t, j] = o.vector
+                        obs_buf[t, j] = self.augment(i, s, o.vector)
                         mask_buf[t, j] = o.mask
                         active[t, j] = True
                         hist_slot[t, j] = self.match[i].kind == HISTORICAL
@@ -252,13 +267,14 @@ class SharedCollector:
                     acts[s] = int(act_buf[t, 2 * i + s]) if ctrl[s] is LEARNER else \
                         ctrl[s].act(self.obs[i][s], self.agent_rng[i][s])
                 r = env.step(acts[0], acts[1])
+                self.observe_step(i, acts, r)
                 for s in (0, 1):
                     j = 2 * i + s
                     term_buf[t, j], trunc_buf[t, j] = r.terminated, r.truncated
                     if ctrl[s] is LEARNER:
                         rew_buf[t, j] = r.rewards[s] * cfg.reward_scale
                         if r.truncated:
-                            trunc_final.append((j, r.obs[s].vector))
+                            trunc_final.append((j, self.augment(i, s, r.obs[s].vector)))
                 self.logs[i].add(r)
                 self.payoff[i] += r.rewards[0]
                 self.obs[i] = r.obs
@@ -276,7 +292,7 @@ class SharedCollector:
         live = active[T - 1] & ~(term_buf[T - 1] | trunc_buf[T - 1])
         if live.any():
             js = np.flatnonzero(live)
-            last = np.stack([self.obs[j // 2][j % 2].vector for j in js])
+            last = np.stack([self.augment(j // 2, j % 2, self.obs[j // 2][j % 2].vector) for j in js])
             with torch.no_grad():
                 next_val[T - 1, js] = net.value(torch.as_tensor(last)).numpy()
         counts = {"env_turns": T * N, "agent_transitions": int(active.sum()),

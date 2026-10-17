@@ -61,6 +61,29 @@ class PolicyValueNet(nn.Module):
         return self.trunk(obs)
 
 
+def widen_inputs(net: "PolicyValueNet", obs_size: int) -> "PolicyValueNet":
+    """A PolicyValueNet with `obs_size` >= net.obs_size inputs whose first net.obs_size inputs carry net's weights and
+    whose extra inputs have zero weights (OM2): its outputs on [x, anything] equal net's on x exactly. The source is
+    not modified."""
+    if type(net) is not PolicyValueNet:
+        raise TypeError("widen_inputs supports PolicyValueNet")
+    if obs_size < net.obs_size:
+        raise ValueError(f"cannot narrow {net.obs_size} inputs to {obs_size}")
+    out = PolicyValueNet(obs_size, net.n_actions, net.hidden)
+    src = net.state_dict()
+    dst = out.state_dict()
+    with torch.no_grad():
+        for k, v in src.items():
+            if k == "trunk.0.weight":
+                w = torch.zeros_like(dst[k])
+                w[:, :net.obs_size] = v
+                dst[k] = w
+            else:
+                dst[k] = v.clone()
+    out.load_state_dict(dst)
+    return out
+
+
 def _trunk(n_in: int, hidden: Sequence[int]) -> Tuple[nn.Sequential, int]:
     layers, n = [], n_in
     for h in hidden:

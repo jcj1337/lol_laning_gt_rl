@@ -1,0 +1,17 @@
+{
+ "meta": {
+  "study": "OM2",
+  "commit": "e051b4278db59e4906ef2d0c79249152d6a899d9",
+  "working_tree_dirty": true,
+  "timestamp": "2026-10-17 04:46:18",
+  "torch": "2.14.1+cpu",
+  "numpy": "2.5.3",
+  "stage": "prereg"
+ },
+ "record": {
+  "document": "docs\\opponent_modelling\\om2_preregistration.md",
+  "sha256": "42f279736539ffa1c8ec4237d7f7e8264403e170483aaa9133edd1664331b5ad",
+  "bytes": 6491
+ },
+ "note": "frozen after the readiness checks and throughput, before any pilot training run"
+}

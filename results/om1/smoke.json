@@ -1,0 +1,45 @@
+{
+ "meta": {
+  "study": "OM1",
+  "commit": "e051b4278db59e4906ef2d0c79249152d6a899d9",
+  "working_tree_dirty": true,
+  "timestamp": "2026-10-17 01:47:01",
+  "torch": "2.14.1+cpu",
+  "numpy": "2.5.3",
+  "stage": "smoke"
+ },
+ "checks": {
+  "deterministic re-run": true,
+  "self-play pair lead is exactly 0": true,
+  "posterior normalized": true,
+  "switcher runs and records": true,
+  "switcher equals pi until its first switch": true
+ },
+ "tracking": {
+  "g_bully": {
+   "p_true_60": 1.0,
+   "sum": 1.0,
+   "map": "g_bully"
+  },
+  "attacker": {
+   "p_true_60": 0.9999999843462096,
+   "sum": 1.0000000000000002,
+   "map": "attacker"
+  }
+ },
+ "switch": {
+  "switched_turns": 58,
+  "first_switch": 2,
+  "choices": {
+   "pi": 2,
+   "g_bully": 58
+  }
+ },
+ "turns_per_s_one_worker": {
+  "script_vs_script": 4644.140174301417,
+  "pi_vs_script": 1201.7555236595788,
+  "pi_vs_net": 1061.981737948801,
+  "pi_vs_net_tracked": 370.5500642716336,
+  "switch_vs_script": 345.83243482719485
+ }
+}

@@ -18,7 +18,7 @@ repo root anyway: experiment drivers write to relative `results/` paths.
 
 ```bash
 pip install -e ".[test,rl,viewer]"     # viewer = the Streamlit debugger
-python -m pytest                       # full suite, ~1,470 tests, ~11 min
+python -m pytest                       # full suite, ~1,490 tests, ~8-11 min
 python -m pytest tests/test_m4_env.py                  # one file
 python -m pytest tests/test_m4_env.py::test_name       # one test (or -k pattern)
 python -m pytest --runslow             # also run @pytest.mark.slow (exhaustive enumerations, K=32 re-solve)
@@ -61,12 +61,16 @@ Viewer: `streamlit run lanegame/viewer/app.py` (replays recorded trajectories fr
   (`agents.py`, `agents_m4.py`). `pettingzoo_adapter.py` wraps it in the Parallel API. M4 rulesets run in continuing
   time: there is no terminal state, episodes end only by truncation, and training bootstraps the truncation. The end of
   the lane phase (about level 14, turn 94) is an evaluation checkpoint, never a terminal state (decision of 2026-10-17).
-- `rl/`: `network.py` (masked policy/value MLP; the opt-in `SeparateCriticNet` gives the critic its own trunk, M4.6f),
-  `ppo.py` (GAE plus the clipped update), `train.py` (collector,
+- `rl/`: `network.py` (masked policy/value MLP; the opt-in `SeparateCriticNet` gives the critic its own trunk, M4.6f;
+  `widen_inputs` adds zero-weight inputs), `ppo.py` (GAE plus the clipped update), `train.py` (collector,
   continuing-time `GameTimes`) and `shared.py` (shared-policy self-play: one network plays both seats against a
-  current/historical mixture; this is the trainer every M4 campaign uses). `agent.py` has `NetAgent` and checkpoints,
+  current/historical mixture; this is the trainer every M4 campaign uses). `SharedCollector` has opt-in hooks
+  (`extra_obs` / `augment`, `observe_step`) for policy inputs computed outside the game, such as OM2's belief; with the
+  defaults, training is bit-identical (pinned in `tests/test_om2.py`). `agent.py` has `NetAgent` and checkpoints,
   which carry a SHA-256 weights digest verified on load. `evaluate.py` covers head-to-head and approximate best
   responses.
+- `opponent/` (OM2): opponent agents (scripted, network, per-turn mixture, style switcher) and the Bayesian belief over
+  a library of opponent types (`Belief` with forgetting, batched `loglik`, the catch-alls "mixed" and "unknown").
 - `diagnostics/` holds action audits (`audit.py`), paired counterfactual rollouts from restorable states
   (`branch.py`) and the lane-exit readout (`lane_exit.py`, M4.8). The readout is evaluation only: E_h = the
   earned-gold lead now (invested + unspent) plus its expected change over h continuation turns, undiscounted, with no
@@ -87,7 +91,8 @@ example, is `m45_calibrated(invest_gain=3.24, invest_scale=64.0)`. Rules for cha
   plus `test_historical_presets_are_pinned` in `test_m45a_mechanics.py` and the pins in `test_m45b_candidate.py`. A
   failing pin is a regression. Never update the digest to make it pass.
 - The action space has 61 codes (Slow Push is 46–60, Ward is 30). The observation has 88 entries, or 90 with the M4.5
-  Vision node. A change to the observation or to its scales invalidates trained checkpoints.
+  Vision node; the opt-in field `obs_last_action` appends 13 entries for the opponent's previous action (103 with
+  `m45_calibrated()`, used by OM2). A change to the observation or to its scales invalidates trained checkpoints.
 
 **Determinism is a tested contract.** The env draws a fixed number of chance uniforms per turn, whatever the actions,
 so that policies are compared on common random numbers. Same seed plus same actions gives a bit-identical rollout. The

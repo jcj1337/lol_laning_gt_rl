@@ -75,7 +75,7 @@ from ..config import B_TRADE, BEHAVIOR_NAMES, GameConfig, objective_of
 from ..game import apply_choice, champion_exposure, crash_options, turn_farm, turn_gank_probabilities
 from ..mechanics import TurnResult, initial_state, step_turn
 from ..state import State
-from .observation import legal_mask, legal_set, n_actions, obs_size, observe
+from .observation import legal_mask, legal_set, n_actions, obs_size, observe, observe_full
 
 A, B = 0, 1
 
@@ -149,6 +149,7 @@ class LaneEnv:
         self._k0 = 0
         self._done = True
         self._legal: Tuple[Tuple[int, ...], Tuple[int, ...]] = ((), ())
+        self._last: Tuple[int, int] = (-1, -1)  # OM2 obs_last_action: (A's, B's) action of the previous turn
 
     # ------------------------------------------------------------------ introspection
     @property
@@ -183,6 +184,11 @@ class LaneEnv:
         return self._champ
 
     @property
+    def last_actions(self) -> Tuple[int, int]:
+        """(A's, B's) action code of the previous turn of this episode, -1 before the first (or as restored)."""
+        return self._last
+
+    @property
     def champion_mode(self) -> bool:
         return self.cfg.champion_mode
 
@@ -213,12 +219,14 @@ class LaneEnv:
         return self._observe()
 
     # ------------------------------------------------------------------ episode control
-    def reset(self, seed=None, root: Optional[State] = None, k0: int = 0, champ=None) -> Tuple[Observation, Observation]:
+    def reset(self, seed=None, root: Optional[State] = None, k0: int = 0, champ=None,
+              last_actions: Optional[Tuple[int, int]] = None) -> Tuple[Observation, Observation]:
         """Start an episode at decision index k0 (default: the standard initial state at k0 = 0).
 
         `seed` seeds the environment's chance generator (int, SeedSequence or None for fresh entropy).
         Champion mode: `champ` is the starting champion state (default: both at their own tower, full HP; M4: the
-        M4State of champions_m4.initial_m4). Continuing time: any k0 >= 0, of which only k0 mod phase_period is kept."""
+        M4State of champions_m4.initial_m4). Continuing time: any k0 >= 0, of which only k0 mod phase_period is kept.
+        `last_actions`: the (A, B) actions of the turn before a restored state (OM2 obs_last_action; default none)."""
         if self.cfg.continuing:
             if k0 < 0:
                 raise ValueError(f"k0 must be >= 0; got {k0}")
@@ -239,6 +247,7 @@ class LaneEnv:
             from ..champions import initial_champions
             self._champ = initial_champions(self.cfg) if champ is None else champ
         self._k = self._k0 = int(k0)
+        self._last = (-1, -1) if last_actions is None else (int(last_actions[0]), int(last_actions[1]))
         self._done = False
         return self._observe()
 
@@ -398,6 +407,7 @@ class LaneEnv:
         s2 = res.state
         self._state, self._champ = s2, ct.champ
         self._k = k + 1
+        self._last = (a, b)
         # M4.3c terminal_rule "final_plate" (EXPERIMENTAL): the game itself ends; otherwise only a run's time limit
         terminated = bool(ct.terminal)
         truncated = (not terminated) and self.max_turns is not None and (self._k - self._k0) >= self.max_turns
@@ -478,8 +488,11 @@ class LaneEnv:
         ma[list(la)] = True
         mb = np.zeros(n, dtype=bool)
         mb[list(lb)] = True
-        return (Observation(k, A, s, la, observe(s, k, A, cfg, ch), ma, ch, cfg),
-                Observation(k, B, s, lb, observe(s, k, B, cfg, ch), mb, ch, cfg))
+        if cfg.obs_last_action:
+            va, vb = observe_full(s, k, A, cfg, ch, self._last), observe_full(s, k, B, cfg, ch, self._last)
+        else:
+            va, vb = observe(s, k, A, cfg, ch), observe(s, k, B, cfg, ch)
+        return (Observation(k, A, s, la, va, ma, ch, cfg), Observation(k, B, s, lb, vb, mb, ch, cfg))
 
     def _lane_turn(self, s: State, k: int, a: int, b: int, reach=None, budget=None, targets=None) -> TurnResult:
         rec = self.record_ticks

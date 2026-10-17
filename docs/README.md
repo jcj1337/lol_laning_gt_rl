@@ -6,7 +6,7 @@ Three documents are the entry points every milestone refers to:
 |---|---|
 | [m4/laning_game_mathematical_reference.md](m4/laning_game_mathematical_reference.md) | **the living mathematical reference of the current game** (`GameConfig.m4_lasthit()`): state, actions, wave mechanics, farming and XP, combat, progression, towers, reward, the RL objective, worked examples; updated with every rule change |
 | [design_philosophy.md](design_philosophy.md) | the standard every mechanic is judged against: simplify how League works without changing why its laning strategies work |
-| [rl_research_roadmap.md](rl_research_roadmap.md) | **the canonical roadmap**: a current-position summary at the top (milestones M1–M6, the M4 subphases, what is implemented / experimental / adopted / planned / unresolved, the path to completion), then one section per milestone (A–AU) with the decision and the link to its full report |
+| [rl_research_roadmap.md](rl_research_roadmap.md) | **the canonical roadmap**: a current-position summary at the top (milestones M1–M6, the M4 subphases, what is implemented / experimental / adopted / planned / unresolved, the path to completion), then one section per milestone (A–AW) with the decision and the link to its full report |
 
 The reports are grouped by phase. Within a folder the files are listed in the order they were written.
 
@@ -71,6 +71,16 @@ The reports are grouped by phase. Within a folder the files are listed in the or
 | [m4_7/](m4/m4_7/) | M4.7 early-lane horizon study ([report](m4/m4_7/m4_7_horizon_report.md), [pre-registration](m4/m4_7/m4_7_preregistration.md)): the lane phase (before about level 14, turns 0–93) in current play, baseline and C1 there, delayed rewards in the early conclusions, and a matched two-seed pilot of a shorter discount (H 60); keep γ 0.99 |
 | [m4_8/](m4/m4_8/) | M4.8 lane-exit evaluation ([report](m4/m4_8/m4_8_lane_exit_report.md), [protocol](m4/m4_8/m4_8_protocol.md)): an evaluation-only readout of who leaves the lane better placed, E_h = the earned-gold lead plus its expected change over h continuation turns (undiscounted, no critic tail), with XP, HP, absence and the wave reported beside it; validated on selected wave/Recall cases, controlled variants and recorded continuations, then applied to the matched baseline/C1 policies at turn 94; useful, with E_20 as the default window; raw gold misleads materially in about two thirds of natural lane-exit states; baseline and C1 indistinguishable at the lane exit |
 | [m4_closeout_report.md](m4/m4_closeout_report.md) | M4 closeout review: strategic acceptance table for every laning goal (used / missed / weak / open), configuration recommendations (baseline `m45_calibrated()` over C1, shared critic; awaiting the user's decision), accepted limitations, corrections to the M4.6e–f interpretations, M5's verified commitments and proposed scope with its first task (M5a); ready for M5 with documented limitations |
+
+## opponent_modelling/ — Bayesian opponent modelling (step 3 of the agreed sequence, after M4)
+
+| document | milestone |
+|---|---|
+| [om1_protocol.md](opponent_modelling/om1_protocol.md) | OM1 protocol (frozen before any game): identifiability and value of information with existing policies |
+| [om2_design.md](opponent_modelling/om2_design.md) | OM2 design (proposed, in review; scope C and the last-action observation decided by the user): the opt-in observation field `obs_last_action`, a Bayesian belief over 11 library types plus the catch-alls "mixed" and "unknown" with forgetting, a belief-conditioned policy widened from the baseline, training against mixtures and style switchers, the evaluation families; implemented behind opt-in switches |
+| [om2_preregistration.md](opponent_modelling/om2_preregistration.md) | OM2 pilot pre-registration (frozen after the readiness smoke, before any training): control (belief at the prior) vs treatment (belief), 3 seed pairs × 4.096M; families E / R1 / R2 / R3; outcomes 1–4 |
+| [om2_pilot_report.md](opponent_modelling/om2_pilot_report.md) | OM2 matched pilot: pre-registered outcome 1, modelling pays and is safe (+2.03 ± 1.72 against the archetypes in every seed; no loss against competent, misspecified or head-to-head opponents); identification, switch tracking and belief-swap probes; exploratory reference against the common start (the belief adds +2.0 on top of +5.1 from training against the styles; it protects competence the control loses slightly); recommendation for M5 |
+| [om1_feasibility_report.md](opponent_modelling/om1_feasibility_report.md) | OM1 opponent-modelling feasibility: the lane phase reveals the opponent's style within 10–20 observed turns (decision-relevant); a Bayesian switcher between existing policies beats the baseline policy by +0.90 ± 0.27 at the lane-exit readout, mostly against scripted styles, and loses against misspecified (mixed) opponents; outcome 1, feasible and worthwhile; design proposals for step 3 |
 
 ## natural_waves/ — natural wave mechanics and the lane candidate (M4.2e)
 
