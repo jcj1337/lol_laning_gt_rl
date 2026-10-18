@@ -59,6 +59,10 @@ Opt-in (M4.5c; both default to None, which is the behaviour above, bit for bit):
     (default: nothing) called right after each environment step, while `self.obs[i]` still holds the observations the
     actions were chosen on. A subclass (e.g. one that maintains a belief about the opponent) overrides them; with the
     defaults, collection is unchanged bit for bit.
+  * `on_update(entry)` (M5 runtime health monitoring): called with each update's history entry after it is written to
+    history.jsonl (and after that update's snapshot). It reads the entry and must not modify it or anything else of
+    the run, so a run with it is the run without it, bit for bit; it may raise to end the run at that update (the
+    history up to it stays on disk, final.pt is not written). None = no call.
 """
 
 from __future__ import annotations
@@ -341,11 +345,12 @@ def train_shared(game_cfg: GameConfig, cfg: PPOConfig, scfg: SharedConfig, out_d
                  net: Optional[PolicyValueNet] = None, name: str = "shared", verbose: bool = True,
                  overwrite: bool = False, stop_at: Optional[int] = None,
                  rollout_stats: Optional[Callable[[dict, list], dict]] = None,
-                 collector_cls: Optional[type] = None) -> SharedResult:
+                 collector_cls: Optional[type] = None,
+                 on_update: Optional[Callable[[dict], None]] = None) -> SharedResult:
     """PPO with shared-policy self-play and a current / historical mixture (see the module docstring).
     `cfg.total_steps` is the budget in AGENT TRANSITIONS; `cfg.n_envs x cfg.n_steps` environment steps per
-    rollout. With `out_dir`: run.json, history.jsonl, snapshots/ and final.pt. `stop_at`, `rollout_stats` and
-    `collector_cls`: see the module docstring (opt-in)."""
+    rollout. With `out_dir`: run.json, history.jsonl, snapshots/ and final.pt. `stop_at`, `rollout_stats`,
+    `collector_cls` and `on_update`: see the module docstring (opt-in)."""
     scfg.validate()
     if stop_at is not None and not 0 < stop_at <= cfg.total_steps:
         raise ValueError("stop_at must be in (0, total_steps]")
@@ -442,6 +447,8 @@ def train_shared(game_cfg: GameConfig, cfg: PPOConfig, scfg: SharedConfig, out_d
                 print(f"[{name}] update {u} transitions {res.agent_transitions} turns {res.env_turns} "
                       f"hist {len(hist)}/{len(finished)} ent {stats['entropy']:.2f} kl {stats['approx_kl']:.4f} "
                       f"ev {entry['explained_variance']:.2f} {entry['sps']:.0f} sps", flush=True)
+            if on_update is not None:
+                on_update(entry)
     finally:
         if hist_f:
             hist_f.close()

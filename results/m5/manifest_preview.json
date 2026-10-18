@@ -1,9 +1,9 @@
 {
  "meta": {
   "study": "M5",
-  "commit": "a6e9b63f3ab49a1b9d8da97021ab9b7c72739da6",
+  "commit": "8256882791407a58ffe59abf2c7d7439e3e7bc9a",
   "working_tree_dirty": true,
-  "timestamp": "2026-10-17 18:48:30",
+  "timestamp": "2026-10-17 20:38:28",
   "torch": "2.14.1+cpu",
   "numpy": "2.5.3",
   "stage": "manifest",
@@ -208,12 +208,12 @@
   }
  },
  "code": {
-  "git_commit": "a6e9b63f3ab49a1b9d8da97021ab9b7c72739da6",
+  "git_commit": "8256882791407a58ffe59abf2c7d7439e3e7bc9a",
   "working_tree_dirty": true,
-  "python_files": 386,
-  "sources_sha256": "02f198746627796591f4fff21be0a66c72a9e16e72354c5d6279922e799b2a6f",
+  "python_files": 388,
+  "sources_sha256": "b79af0f3d1fad02bce6aee835ca9209d88d3601ce6937a655618bae01f83b500",
   "diff_stat": [
-   " 12 files changed, 384 insertions(+), 47 deletions(-)"
+   " 13 files changed, 1711 insertions(+), 309 deletions(-)"
   ]
  },
  "start_checkpoints": {
@@ -420,7 +420,17 @@
   "4": 70004,
   "5": 70005
  },
- "preregistration": null,
+ "preregistration": {
+  "document": "docs/m5/m5_preregistration.md",
+  "sha256": "d2424022bd07535fb6e809bfde20536edfff4e565eb67b26d7bdcfaaf9af7304",
+  "bytes": 14520
+ },
+ "preregistration_active": {
+  "version": 1,
+  "sha256": "21e35e074cdd2628e2c4816ccc7dab4b13a62e77a803fa8936027cf5bcb396e8",
+  "document": "docs/m5/m5_preregistration.md",
+  "date": "2026-10-17"
+ },
  "run_dirs": {
   "om_s0": "results/rl/checkpoints/m5/train/main/om/s0",
   "sp_s0": "results/rl/checkpoints/m5/train/main/sp/s0",

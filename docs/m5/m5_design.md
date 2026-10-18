@@ -1,9 +1,11 @@
 # M5 design: the final training and evaluation campaign
 
-*2026-10-17. Status: **proposed design, awaiting the user's decisions and campaign authorization.** M5a (this design,
-the pre-registration, the drivers and the readiness check) is complete; no part of the campaign has run. Readiness:
-[m5a_readiness_report.md](m5a_readiness_report.md). The frozen protocol:
-[m5_preregistration.md](m5_preregistration.md).*
+*2026-10-17. Status: **design amended by the M5a correction pass (amendment 1,
+[m5_amendment_1.md](m5_amendment_1.md)); main training and the initial evaluations (monitoring, opponent families and
+head to head) authorized by the user on 2026-10-17. The strategic battery, the limitation cells and the attackers await
+separate review and approval.** Readiness: [m5a_readiness_report.md](m5a_readiness_report.md) (the M5a record,
+unchanged). The protocol: [m5_preregistration.md](m5_preregistration.md), frozen and amended once before training.
+Campaign progress and results: [m5b_initial_report.md](m5b_initial_report.md).*
 
 **Approved direction** (the user, 2026-10-17, in the M5a brief): M5 includes opponent modelling and compares the whole
 package with continued pure self-play. Kept fixed by that brief:
@@ -100,7 +102,9 @@ are in §10.
 | `cells.py` | the M4.6 limitation families for both formats |
 | `attackers.py` | attacker training against frozen targets (live or tabled belief) and their evaluation |
 | `evaluate.py` | the M5b–M5d designs as job lists, the gated stage drivers, `plan()` |
-| `analysis.py` | the pre-registered statistics and classifications |
+| `analysis.py` | the pre-registered statistics and classifications (amendment 1: completeness, the fixed Holm family, the headline with outcome 6), the lane-exit panel, monitoring and the convergence probe |
+| `strategic.py` | S8: per-arm strategic replication from the battery and weaker-side records, the cross-arm cell contrasts, coverage and the horizon-validation path (amendment 1) |
+| `health.py` | runtime health: the stop conditions watched during training, the coordinator's failure policy, progress logging, resolutions and the evaluation gate (amendment 1) |
 | `readiness.py`, `bench.py`, `instruments.py` | the M5a checks R0–R10, the concurrency benchmark and the budget |
 | `report.py`, `__main__.py` | generated tables; the CLI and its gates |
 
@@ -146,15 +150,20 @@ likelihood forward passes across environments, while the evaluator runs them one
   - the start checkpoints' file SHA-256s and weight digests, the library networks and the archive file;
   - the seeds and the pre-registration hash.
 - **Gates.** `train` needs `--confirm-m5-train`; the evaluation stages (`monitor`, `battery`, `cells`, `families`)
-  need `--confirm-m5-eval`; the attacker stages need `--confirm-m5-attackers`. Every campaign stage refuses to start
-  without the frozen pre-registration.
-- **Resuming.** The trainer stores no optimizer or collector state, so a run cannot resume mid-schedule.
+  need `--confirm-m5-eval`; the attacker stages need `--confirm-m5-attackers` (the optional om_table ablation also
+  `--include-om-table`). Every campaign stage refuses to start unless the pre-registration's amendment chain verifies
+  and the document is its active version (amendment 1). Every evaluation stage also refuses to start unless the
+  training check passed, or each failed check has a recorded classification, and it verifies the checkpoints'
+  SHA-256 against the check's record and writes its own identity manifest (`results/m5/eval_<stage>.json`).
+- **Resuming.** The trainer stores no optimizer or collector state, so a run cannot resume mid-schedule. Recovery is a
+  deterministic restart from the original start checkpoint, which repeats the lost work (up to one run's wall time).
   - Complete runs are skipped.
   - An incomplete run directory is refused, unless `--restart-incomplete` is passed. That flag moves it intact to
     `train/main/partial/<run>_<time>/` and restarts the run from its start.
   - By the determinism contract (R4: re-runs bit-identical), the restart must reproduce the preserved history prefix
     exactly, and `train.prefix_check` verifies this.
-  - Evaluation cells are resumable file by file.
+  - Evaluation cells are resumable file by file; existing outputs are reused only when the stage manifest's
+    checkpoint identities and protocol version match.
 
 ## 5. M5b: training
 
@@ -172,6 +181,13 @@ likelihood forward passes across environments, while the evaluator runs them one
     never-legal code);
   - sp: 100% current-policy and equal seats;
   - om: a fixed-opponent game share of 0.45–0.55.
+- **Runtime monitoring (amendment 1).** The stop conditions are watched during training by `health.RunMonitor`, an
+  opt-in `train_shared(on_update=...)` hook that only reads each update's history entry. The OM2 trainer pin and both
+  arms' stored smoke runs are reproduced bit for bit with it attached.
+  - A defect alarm (non-finite statistic, illegal action, never-legal code) ends the run.
+  - An investigate alarm (sustained KL, gradient norm, entropy floor) is recorded and the run continues.
+  - The coordinator (`health.run_campaign`) logs progress every minute and stops the campaign when more than two
+    pairs fail technically.
 - **Learning curves** (monitoring): every run's 16 snapshots (every 2.048M) against a fixed panel: its own start
   `ext/baseline:s`, another seed's start, `g_farm`, `g_shove` and `g_bully`. 16 pairs × 150 turns, read at turn 114.
 - **History.** Each final against its own 25%, 50% and 75% snapshots and against `ext/baseline:s`, 64 pairs × 500
@@ -254,25 +270,34 @@ exploratory reference only, the common start `ext/baseline:s`, all on the same g
 
 ### 7.1 Attackers
 
+*Amendment 1: the **core** attacker stage is the 12 quarter-budget attackers against the finals of both arms. It still
+awaits its own approval. The 6 `om_table` attackers are an **optional follow-up** that needs a separate decision.*
+
 | item | proposal |
 |---|---|
-| targets | each arm's final (12); for the adaptation test, the om final with its belief inputs replaced by the mean belief of its own self-play at that turn (`om_table`, 6): the same network without in-game adaptation |
+| targets | core: each arm's final (12). Optional: the om final with its belief inputs replaced by the mean belief of its own self-play at that turn (`om_table`, 6), the same network without in-game adaptation |
 | access | black box: the attacker plays the target. The om target's belief is live, updated from the attacker's actions exactly as in deployment; no weights, belief or gradients are read |
 | observation | the om input format for every attacker: the state, the target's previous action, and the attacker's own belief over the OM2 library (116). Attackers of both arms have the same information channel as arm A |
 | start | a copy of the target in that format: an om target's own weights; an sp target widened with zero weights. This is the parity start of M4.5c, so a gain measures exploitability, not catching up |
 | objective | the training objective unchanged: zero-sum gold difference, γ 0.99, continuing time, the learner in a random seat, only the learner trains. **No reward for deception or for moving the target's belief.** Whether exploiting the adaptation emerges is measured |
 | games | s0 starts, 512-turn bootstrapped games (the M4.5c attacker protocol); the M4.6c PPO settings; fresh Adam, lr annealed over the attacker's budget |
-| budget | **recommended: quarter = 8,192,000 transitions**, a quarter of the target's M5 continuation budget (32.768M), M4.5c's ratio. The 24.576M of prior training is shared by both arms' targets and inherited by every attacker through its parity start, so it is not in the denominator. **Alternative: half = 16,384,000**, as the closeout and M4.5c proposed; half of the cumulative 57.344M would be 28.672M. The quarter budget is recommended for cost (§10–§11): 10.3 h against 20.6 h for the 18 attackers |
+| budget | **recommended: quarter = 8,192,000 transitions**, a quarter of the target's M5 continuation budget (32.768M), M4.5c's ratio. The 24.576M of prior training is shared by both arms' targets and inherited by every attacker through its parity start, so it is not in the denominator. **Alternative: half = 16,384,000**, as the closeout and M4.5c proposed; half of the cumulative 57.344M would be 28.672M. Core 12 at the quarter budget: 6.6 h of training (13.3 h at half); the optional 6 add 3.7 h (7.3 h at half) |
 | evaluation | independent games from s0, 128 pairs × 500 turns: the lead at 114 and the discounted lead. Transfer: against the other arm's final of the seed and against the common start. The om target's belief trace against its attacker |
 | reading | exploitability lower bounds, limited by budget, network and optimizer. A − B in exploitability, paired by seed |
 
-- **Adaptation-exploitation test.** Exploitability of `om` (live belief) minus exploitability of `om_table`, each
-  against its own dedicated attacker of the same budget.
-  - Positive: the live adaptation is a channel a learned attacker exploits.
-  - Negative: the adaptation protects the agent.
-  - Cross-evaluation (each attacker against the other target) separates target-specific tuning from the channel.
-  - The attacker's policy is stateless: it can condition on the state, the target's last action and its own belief,
-    but it has no clock. A deliberately timed deception is covered only by the scheduled imitate-then-switch.
+- **The optional adaptation ablation** (amendment 1; exploratory, outside the Holm family). Exploitability of `om`
+  (live belief) minus exploitability of `om_table`, each against its own dedicated attacker of the same budget. Its
+  reading is limited:
+  - it compares two approximate lower bounds, so a difference can come from what each attacker learned, not only from
+    the targets;
+  - removing the live belief can change the target's competence, and it creates state-belief combinations the network
+    never saw in training;
+  - it therefore does not isolate a causal adaptation vulnerability. It is not evidence of deliberate deception
+    either: the attacker is stateless (no clock), and a timed deception is covered only by the scheduled
+    imitate-then-switch games of the families stage;
+  - the cross-evaluation (each attacker against the other target form, on the same games as the other attacker's own
+    target cell) is implemented as job definitions (`attackers.eval_jobs`, tested). It helps separate target-specific
+    tuning from the channel, but it does not remove the limits above.
 
 ## 8. M5e: closeout
 
@@ -321,18 +346,27 @@ exploratory reference only, the common start `ext/baseline:s`, all on the same g
   - More games per cell help little: the seed part dominates.
   - **Six pairs therefore resolve large effects but probably not a near-zero competence effect.** This is a decision
     for the user (§12).
-- **Headline outcomes:**
+- **Headline outcomes** (amendment 1; the competence status is reported with every outcome):
   1. pays and preserves competence;
   2. pays at a competence cost;
   3. pays, competence unresolved;
-  4. no material gain;
-  5. harmful.
+  4. no material gain: a material gain **ruled out** (U < 0.25), no material competence loss;
+  5. harmful;
+  6. gain not demonstrated: P1 inconclusive or materiality unresolved, no material competence loss. An inconclusive
+     result is never reported as "no material gain".
+- **Completeness.** Every endpoint needs all six seeds' records before it is classified; partial results are shown as
+  partial, and nothing missing shrinks a family.
 - **Secondary endpoints.**
-  - The members: robustness family M; the long-horizon competence; cross-seed head to head; the midpoints;
-    exploitability A − B; the adaptation test.
-  - Claimed only when Holm-adjusted (familywise 0.05).
+  - The members: robustness family M (S1); the long-horizon competence (S2) and head to head (S3); cross-seed head to
+    head (S4); the midpoints, S5a (gain, as P1) and S5b (competence against the historical opponents only, not P2a);
+    exploitability A − B (S6). The midpoint head to head is descriptive; the adaptation ablation is exploratory and
+    optional.
+  - Every permitted claim is a fixed one-sided t test: preserved / loss, gain / material gain ruled out, increase /
+    decrease / equivalence (TOST). The 15 hypotheses form one Holm family (familywise 0.05). A claim needs its
+    interval condition and Holm's rejection. Until every hypothesis has data, only claims with p <= 0.05 / 15 are
+    "secured".
   - Robustness families use the same non-inferiority rule.
-- **Exploratory.** Each arm against the common start; per-opponent tables; the belief mechanism.
+- **Exploratory.** Each arm against the common start; per-opponent tables; the belief mechanism; the lane-exit panel.
 
 ## 10. Measured costs and the campaign budget
 
@@ -396,13 +430,64 @@ scripted decisions) dominate. An exact saving of the repeated configuration copi
 | M5c battery | the full M4.5c design with M4.6b's twins (8.33M turns per final; M4.5c ran 6.54M before the twins) × 12 finals | 9.3 h |
 | M5c cells | the seven limitation families, 17.3M turns | 1.5 h |
 | M5d families | 546 cells, 28.8M turns | 1.7 h |
-| M5d attackers, quarter (recommended) | 18 × 8.192M (6 without the adaptation test: 12 × 8.192M) | 10.3 h (6.6 h) |
-| M5d attackers, half (alternative) | 18 × 16.384M (12 × 16.384M) | 20.6 h (13.3 h) |
-| attacker evaluation and belief tables | 54 cells; 6 tables | 0.7 h |
-| **total** | with quarter attackers / with half | **≈ 34–36 h / ≈ 44–46 h** |
+| M5d attackers, quarter (recommended) | core 12 × 8.192M (amendment 1); the optional om_table 6 add 3.7 h | 6.6 h (+3.7 h) |
+| M5d attackers, half (alternative) | core 12 × 16.384M (optional 6: +7.3 h) | 13.3 h (+7.3 h) |
+| attacker evaluation and belief tables | core: 36 cells; optional: +30 cells including the 12 live/table cross-evaluation cells, and 6 tables | 0.5 h (+0.45 h) |
+| **total** | with the core quarter attackers / with half | **≈ 30–32 h / ≈ 37–39 h** (M5a's 34–36 h included the 6 optional attackers) |
 
 Training must finish before the evaluation and the attackers. The finals are their inputs; the om finals' self-play
-tables are inputs of the adaptation test.
+tables are inputs of the optional adaptation ablation.
+
+### 10.1 Horizons of the future strategic stages (amendment 1; for the review after the authorized stage)
+
+The standard strategic horizon is 50 turns (the user's decision). The battery and the cells inherit several longer
+horizons. Their cost, at the measured R10 rates with six workers over all twelve finals
+(`python -m lanegame.experiments.rl.m5 plan_future`):
+
+| part | horizon | purpose | wall h (om + sp) |
+|---|---|---|---|
+| battery | 50 | the standard continuation of every family | 4.45 (3.34 + 1.11) |
+| battery | 60 | exception 1: the 20-turn sustained freeze plans (B_freeze, F_freeze_c) get plan length + 40 | 1.65 (1.23 + 0.41) |
+| battery | 300 | the validation subset: max(8, 15%) of each natural family's states and every constructed cell, protocol "policy", run to 300 turns instead of h | 3.23 (2.42 + 0.81) |
+| battery | 150 | contingent only: exception 3, the re-run of a (policy, family) that fails validation | 0.3–3.9 per family over all twelve finals |
+| cells | 50 | weaker side, lead premium, freezes, natural freezes | 0.53 |
+| cells | 100 | Recall windows (M4.6f B4) | 0.16 |
+| cells | 150 | strength use (M4.6f B2), large gaps (M4.6a E4), natural leader / trailer states (M4.6f B5) | 0.81 |
+
+**What each exception buys.**
+- **Exception 1 (60 turns).** A 20-turn plan evaluated over 50 turns leaves 30 turns for the consequences of its end
+  (the wave crash and the reset after a sustained freeze). Truncating would favour plans that defer their costs. The
+  requirement comes from the candidate plans, not from the policies, so it applies to the new policies unchanged.
+  - A reduction to 50 turns would save about 0.3 h and bias the freeze verdicts, which S8 replicates.
+  - Recommendation: keep.
+- **The 300-turn validation subset.** This is the only check that the 50-turn statistic of *these* policies agrees
+  with their long-run consequences (bias, slope and contradictions, per policy and family). It costs about a third of
+  the battery.
+  - It is necessary for the om finals. They are a new kind of policy, history-dependent, whose belief can keep adapting
+    after 50 turns, and no earlier validation covers them.
+  - For the sp finals it partly duplicates M4.5c's evidence on the same lineage (M4.5c's 150-turn re-runs changed
+    nothing). But the sp finals are continuations to 57M transitions, so they are not the policies M4.5c validated.
+- **Exception 3 (150 turns).** It is not optional: it is the registered consequence of a failed validation, and the
+  battery approval should carry a contingency for it.
+- **The 100- and 150-turn cells.** They reproduce the registered horizons of the M4.6 instruments, so the M5 values are
+  comparable with the M4 limitation records (strength conversion and large gaps pay out over many trades and Recall
+  cycles). They cost about 1 h together.
+  - Shortening them to 50 turns would lose that comparability and the conversion value that accrues after turn 50.
+  - Recommendation: keep.
+- **Not exceptions.** The 500-turn games of the families stage (S2, S3: the discounted lead, the training objective's
+  horizon) and of the history comparisons are whole games from s0, separately registered and already authorized.
+  They are not strategic continuations, and nothing in this section concerns them.
+
+**Reductions available, with what each loses** (none adopted; a decision for the review):
+
+| option | saving | evidence lost |
+|---|---|---|
+| R1: no 300-turn validation for the sp finals | about 0.8 h | the horizon check of the sp finals; reliance on M4.5c's lineage evidence instead |
+| R2: validate at 150 instead of 300 turns, both arms | about 2.0 h | detection of disagreements that arise between turns 150 and 300 (about 22% of the γ 0.99 objective's weight from a state lies beyond 150 turns) |
+| R3: the reduced battery (24 natural / 12 early states) | about 3 h | half the natural states per family, so wider intervals in every replication verdict |
+
+The recommendation is the full design for the om finals. R1 is the only reduction whose loss is largely covered by
+established evidence.
 
 ## 11. Deviations from the brief and evidence-backed changes
 
@@ -411,8 +496,8 @@ its status. Nothing proposed here is adopted until the user decides.
 
 | # | item | original | evidence | proposed / done | effect on interpretation | status |
 |---|---|---|---|---|---|---|
-| 1 | attacker budget | half the target's budget (closeout §8.3; M4.5c's recommendation) | R9/R10: 620–770 transitions/s per attacker; 18 attackers cost 20.6 h at half, 10.3 h at a quarter | **quarter (8.192M)**, M4.5c's ratio; half documented as the alternative | weaker lower bounds than at half; M4.5c's quarter-budget attackers still found +1.0 | **proposed, needs a decision** |
-| 2 | adaptation-exploitation test | "a specified test" (brief) | none needed | dedicated attackers against `om_table` (the om final without in-game adaptation), matched budget; 6 extra attackers | separates exploitation of the adaptation from general exploitability | **proposed, needs a decision** |
+| 1 | attacker budget | half the target's budget (closeout §8.3; M4.5c's recommendation) | R9/R10: 620–770 transitions/s per attacker; 18 attackers cost 20.6 h at half, 10.3 h at a quarter | **quarter (8.192M)**, M4.5c's ratio; half documented as the alternative | weaker lower bounds than at half; M4.5c's quarter-budget attackers still found +1.0 | **proposed for the core 12 attackers; awaiting the attacker-stage approval** |
+| 2 | adaptation-exploitation test | "a specified test" (brief) | none needed | dedicated attackers against `om_table` (the om final without in-game adaptation), matched budget; 6 extra attackers | as originally proposed it would have separated exploitation of the adaptation from general exploitability; amendment 1 corrects this reading (§7.1) | **optional follow-up (amendment 1)**, a separate decision |
 | 3 | attacker observation and start | to be defined (brief) | parity start is M4.5c's protocol; one input format for both arms keeps the attackers matched | the om input format for every attacker; a copy of its target | equal information channels across arms; the attacker has no clock | proposed |
 | 4 | seed count | six pairs (brief) | `analysis.ni_resolution` with OM2's competent-opponent SD: a near-zero competence effect is called preserved only 42% of the time | **kept at six**; ten pairs documented (null case 71%) | a small competence effect is likely to be reported as inconclusive | **kept; the alternative needs a decision** |
 | 5 | workers and run order | "five, six or fewer" to be investigated (brief) | R9 and the simulation (§10) | 6 workers, om runs first | none | proposed |
@@ -424,29 +509,48 @@ its status. Nothing proposed here is adopted until the user decides.
 | 11 | lane-exit reporting | D0 → E_20 with the panel (approved) | OM2's estimand: the lead at turn 114 in s0 games is E_20 at turn 94 in expectation; R10 checked the per-state readout on recorded om states | population D0 / E_20 / panel from every M5d game; the per-state continuation readout available, not budgeted | none | proposed |
 | 12 | R6, first run | — | the first reconstruction demanded the whole input bit for bit and failed on the belief block only (max 2.9·10⁻⁶: float32 rounding of batched against single likelihoods) | state and previous action bit-exact, belief within 10⁻⁵, the same tolerance as R2 and R8; both runs reported | none | done |
 | 13 | extension | — | — | none: the 32.768M results are final | non-convergence is reported as a limitation | proposed |
+| 14 | headline and P1 classes | an inconclusive P1 mapped to "no material gain" | the M5a review | outcome 4 needs a material gain ruled out; outcome 6 "gain not demonstrated"; P1's "detected" class split by U; the competence status reported with every outcome | an inconclusive result stays inconclusive; thresholds unchanged | **amendment 1** |
+| 15 | secondary tests and Holm | one-sided increase p-values only; family undefined for partial data | the M5a review | 15 fixed hypotheses (preserved / loss, gain / ruled out, increase / decrease / TOST equivalence), one Holm family, the interval and Holm both required, "secured" before the family is complete | no direction chosen after the results | **amendment 1** |
+| 16 | midpoint endpoint | "P2a at 16.384M" | it is C_hist only | S5a (gain), S5b (competence against historical opponents, not P2a); midpoint head to head descriptive | the label matches the computation | **amendment 1** |
+| 17 | completeness and S8 | missing seeds skipped; S8 unassembled | the M5a review | six seeds required; S8 implemented (`strategic`) with coverage, protocol, statistic and validation path fixed | nothing partial is classified | **amendment 1** |
+| 18 | runtime health and gates | post-hoc checks only; evaluation not gated; amendments unchecked | the M5a review | live monitoring (defect / investigate), the coordinator's failure rule, the evaluation gate with checkpoint identities, the verifiable amendment chain | failures cannot slip into evaluation; healthy runs unchanged (bit-identical, tested) | **amendment 1** |
+| 19 | attackers | 18 (6 om, 6 sp, 6 om_table) | the user's brief (2026-10-17) | core 12 (om, sp); om_table optional follow-up, exploratory, with the corrected reading; the cross-evaluation implemented | the core estimate excludes the optional 3.7 h | **amendment 1** (the stage awaits approval) |
+| 20 | battery horizons | inherited, not broken down | the user's brief | §10.1: work by horizon and purpose, what each exception buys, three reductions with their losses | none yet: a review decision | proposed |
 
-## 12. Decisions and approvals needed before the campaign
+## 12. Decisions, approvals and status
 
 **Approved by the user** (the M5a brief, 2026-10-17):
 - the direction: opponent modelling enters M5 as a package compared with continued pure self-play;
 - the fixed items listed at the top of this document;
 - the starting proposal: two arms, six seed pairs, continuation of `ext/baseline:s`, OM2's settings, the fixed
-  library, and 32.768M with a 16.384M matched checkpoint as a proposal.
+  library, and 32.768M with a 16.384M matched checkpoint.
 
-**Decisions needed before the campaign:**
+**Authorized by the user** (the correction-and-campaign brief, 2026-10-17):
+- the M5a correction pass (amendment 1);
+- M5b training, 12 runs × 32.768M (`--confirm-m5-train`), and the training-health review;
+- monitoring and history, the opponent families, head to head, midpoints and long games (`--confirm-m5-eval` for
+  `monitor` and `families` only);
+- the analysis, the report and the documentation of those stages.
 
-| # | decision | options | recommendation | consequence |
-|---|---|---|---|---|
-| 1 | **authorize M5b training** | 12 runs × 32.768M on 6 workers | yes, as pre-registered | 9.4–11.8 h; `--confirm-m5-train` |
-| 2 | **seed count** | six pairs; ten pairs | six (as proposed) | ten: +8 runs (about +7 h of training, +67% of the per-seed evaluation), and a near-zero competence effect is resolved 71% instead of 42% of the time |
-| 3 | **attacker budget** | quarter (8.192M); half (16.384M) | quarter | half: +10.3 h, tighter lower bounds |
-| 4 | **the adaptation test** | include (6 more attackers); omit | include | omit: −3.7 h at a quarter budget; S7 is not measured |
-| 5 | **evaluation budget** | the full battery; a reduced battery | full | reduced: about −3 h, half the natural states per family |
-| 6 | **the protocol's rules** | δ = 0.25, the classes, the families, the replication rule, Holm for secondary claims | as frozen | any change is a dated amendment before training |
+**Not authorized:** the battery, the cells, every attacker stage (core or optional), extra seeds, arms or extensions,
+and any change of mechanics, reward, discount, architecture or hyperparameters.
+
+**Status (2026-10-18).** The correction pass (amendment 1), M5b training (12/12 runs healthy, 10.9 h) and the
+authorized evaluations (monitoring, opponent families, head to head, midpoints, long games) are complete. The
+pre-registered headline is outcome 2: the package pays at a competence cost (P1 +9.26 ± 0.30; P2a −0.63 ± 0.35, P2b
+−0.44 ± 0.28). See [m5b_initial_report.md](m5b_initial_report.md). The cost estimates of the remaining stages there
+use the measured evaluation rates (×1.09 the R10-based figures above).
+
+**Decisions for the review after the authorized stage:**
+
+| # | decision | options | recommendation |
+|---|---|---|---|
+| 1 | the strategic battery and the limitation cells | the full design; with R1 (no sp validation, −0.8 h); R2 (validation at 150 turns, −2.0 h); R3 (reduced battery, −3 h) | the full design (§10.1) |
+| 2 | the core attackers | 12 at the quarter budget; at half | quarter |
+| 3 | the optional om_table ablation | include (+3.7 h + 0.03 h + 0.45 h); omit | a separate decision, read with its limits (§7.1) |
+| 4 | the protocol's rules | as amended | any further change is a dated amendment |
 
 **Approvals needed, by flag:**
 - training: `--confirm-m5-train`;
 - evaluation (M5b monitoring, M5c, M5d families): `--confirm-m5-eval`;
-- attackers, their tables and their evaluation: `--confirm-m5-attackers`.
-
-**Campaign status: not launched, awaiting approval.**
+- core attackers and their evaluation: `--confirm-m5-attackers`; the optional ablation also `--include-om-table`.

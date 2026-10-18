@@ -245,9 +245,11 @@ def test_holm_and_variance_split_and_resolution():
     assert abs(sum(v for k, v in AN.ni_resolution(0.0, 0.3, 6, sims=4000).items() if k != "mean_half_width") - 1) < 1e-9
 
 
-def test_secondary_endpoints_are_empty_without_records():
+def test_secondary_endpoints_are_pending_without_records():
+    """Amendment 1: missing records never shrink the family; without records nothing is claimed and Holm is pending."""
     out = AN.secondary({})
-    assert out == {"holm": {}}
+    assert not out["holm"]["final"] and len(out["holm"]["pending"]) == len(AN.SECONDARY_HYPOTHESES)
+    assert all(v["claim"] == "not available" for v in out["endpoints"].values())
     st = _st([0.3, 0.2, 0.4, 0.25, 0.35, 0.3])
     assert AN.t_pvalue_one_sided(st, 0.0, "greater") < 0.001 < AN.t_pvalue_one_sided(st, 0.0, "less")
 

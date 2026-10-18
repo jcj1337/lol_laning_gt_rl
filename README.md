@@ -121,8 +121,18 @@ Both continue the same baseline policy for 32.768M transitions in six matched pa
 - every modelling input rebuilt independently by the evaluation code;
 - historical instruments reproduced exactly.
 
-The measured budget is about 34–36 h. **The campaign itself is not launched: it awaits the user's decisions** (seed
-count, attacker budget, the adaptation test) **and approval.** M6, the research presentation, follows.
+**M5 is under way (2026-10-18; [first review package](docs/m5/m5b_initial_report.md)).**
+- **Correction pass.** A correction pass fixed the analysis, the training monitoring and the amendment bookkeeping
+  before any training ([amendment 1](docs/m5/m5_amendment_1.md); no threshold, arm or budget changed).
+- **Training.** 12 runs × 32.768M, healthy, 10.9 h.
+- **Initial evaluations: pre-registered outcome 2, the modelling package pays at a competence cost.**
+  - It beats library-like scripted opponents far more often (+9.26 ± 0.30 at the lane exit, demonstrated) and is
+    robust to mixtures and switchers.
+  - It is materially weaker than pure self-play against competent opponents (−0.63 ± 0.35) and head to head
+    (−0.44 ± 0.28), in every seed.
+  - Pure self-play kept improving over the common start; the package did not.
+- **Still awaiting review and approval:** the strategic battery, the M4 limitation cells and the dedicated attackers.
+  M5e (closeout) and M6, the research presentation, follow.
 
 ## How we study it
 
@@ -176,8 +186,13 @@ top). In short:
 | OM1 opponent-modelling feasibility | identifiability of opponent styles in the lane phase and the value of knowing them, with existing policies; evaluation only | **complete**: feasible and worthwhile; identified within 10–20 turns; switcher +0.90 ± 0.27 over the baseline policy, mostly against scripted styles; misspecified opponents are the risk ([report](docs/opponent_modelling/om1_feasibility_report.md)) |
 | OM2 Bayesian opponent modelling: design | beliefs about the opponent's style, updated during a game; scope C (robustness first); the opponent's previous action observed | **complete** (opt-in; [design](docs/opponent_modelling/om2_design.md)); carried into M5 as the modelling arm |
 | OM2 matched opponent-modelling pilot | the same opponent distribution in both arms, with and without the belief; 3 seed pairs × 4.096M | **complete**: outcome 1, modelling pays and is safe; +2.03 ± 1.72 against recognizable styles, no loss against competent, mixed or head-to-head opponents ([report](docs/opponent_modelling/om2_pilot_report.md)) |
-| M5a. Campaign design, pre-registration and readiness | two arms (the opponent-modelling package against continued pure self-play), six matched pairs from the baseline policy, 32.768M each; drivers for both arms and every instrument; bounded readiness checks | **complete**: readiness 11/11; pre-registration frozen, awaiting campaign authorization; budget about 34–36 h ([report](docs/m5/m5a_readiness_report.md), [design](docs/m5/m5_design.md), [pre-registration](docs/m5/m5_preregistration.md)) |
-| M5b–M5e. Final training and evaluation campaign | training; strategic replication and the M4 limitations; opponent families, competence, cross-seed results and dedicated attackers; closeout | **planned, not launched**: awaits the user's decisions and approval |
+| M5a. Campaign design, pre-registration and readiness | two arms (the opponent-modelling package against continued pure self-play), six matched pairs from the baseline policy, 32.768M each; drivers for both arms and every instrument; bounded readiness checks | **complete**: readiness 11/11 ([report](docs/m5/m5a_readiness_report.md), [design](docs/m5/m5_design.md), [pre-registration](docs/m5/m5_preregistration.md)) |
+| M5a corrections and readiness | the review's eight findings: headline, multiplicity, completeness, S8 analysis, attacker scope, runtime health monitoring and evaluation gate, the amendment chain | **complete** (2026-10-17): [amendment 1](docs/m5/m5_amendment_1.md) before training; full suite 1,534 passed; monitored smoke bit-identical |
+| M5b training and the initial M5d evaluations | 12 runs × 32.768M; health; learning curves and history; opponent families, competence, head to head, midpoints, long games | **complete** (2026-10-18): healthy, 10.9 h; **outcome 2, pays at a competence cost** (P1 +9.26 ± 0.30; P2a −0.63 ± 0.35, P2b −0.44 ± 0.28) ([report](docs/m5/m5b_initial_report.md), [tables](results/m5/report.md)) |
+| M5c strategic battery and limitation cells | strategic replication per arm and the M4 limitations re-measured | **awaiting review and approval** (about 11.8 h at the measured rates) |
+| M5d core attackers | 12 quarter-budget attackers (6 against each arm's finals) | **proposed, separately gated** (about 7.1 h) |
+| M5d optional adaptation ablation | 6 attackers against the om finals with their belief tabled, and the live/table cross-evaluation | **optional follow-up** (about +4.2 h), exploratory |
+| M5e closeout | the final report, reproducibility materials | future |
 | M6. Research presentation and reproducibility | consolidated report, reproducible commands, figures, representative trajectories, visual demo, README | proposed |
 
 The documentation index is [docs/README.md](docs/README.md). **Every rule, equation and parameter of the current

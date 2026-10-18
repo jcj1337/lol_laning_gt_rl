@@ -1,0 +1,152 @@
+{
+ "meta": {
+  "study": "M5",
+  "commit": "8256882791407a58ffe59abf2c7d7439e3e7bc9a",
+  "working_tree_dirty": true,
+  "timestamp": "2026-10-18 08:17:49",
+  "torch": "2.14.1+cpu",
+  "numpy": "2.5.3",
+  "stage": "eval_families"
+ },
+ "stage": "families",
+ "jobs": 546,
+ "identities": {
+  "om:0": {
+   "path": "results/rl/checkpoints/m5/train/main/om/s0/final.pt",
+   "file_sha256": "ba3d26f2e7d35dba474acdd150790ecbcc729832cca5cc1df4e919c2b640c561"
+  },
+  "om:0@16384000": {
+   "path": "results/rl/checkpoints/m5/train/main/om/s0/snapshots/snap_016384472.pt",
+   "file_sha256": "cd5e47f4c76fd304759ce8fb4d1c6b91e7f3d5d780fe97cf6e3364b8dc449186"
+  },
+  "om:1": {
+   "path": "results/rl/checkpoints/m5/train/main/om/s1/final.pt",
+   "file_sha256": "8453fa5643fd4fab37f5a5e9f9e6a83e27aa684f93dc654d69bea1be30661a99"
+  },
+  "om:1@16384000": {
+   "path": "results/rl/checkpoints/m5/train/main/om/s1/snapshots/snap_016384339.pt",
+   "file_sha256": "c0427dda45a155cef5acc04ebc2127c1d00f1c133247711b24d23a62e6663ef9"
+  },
+  "om:2": {
+   "path": "results/rl/checkpoints/m5/train/main/om/s2/final.pt",
+   "file_sha256": "51f9fb1257ab325eb31edb54aef61b66358aadcae48fd8ff8f83fe8e4a784e29"
+  },
+  "om:2@16384000": {
+   "path": "results/rl/checkpoints/m5/train/main/om/s2/snapshots/snap_016385726.pt",
+   "file_sha256": "a6b976fffb7337c313d0f01c956c7a048fa9bc4f151a719d6f5cccfa8fd1d6bc"
+  },
+  "om:3": {
+   "path": "results/rl/checkpoints/m5/train/main/om/s3/final.pt",
+   "file_sha256": "a722f1114b54c3475cec682e685831ff261ae1206357bc484b95204443ef6af9"
+  },
+  "om:3@16384000": {
+   "path": "results/rl/checkpoints/m5/train/main/om/s3/snapshots/snap_016384788.pt",
+   "file_sha256": "ee7650c58f12017f281a4d9b6a11f8189815d1c890037a024259374dab73e111"
+  },
+  "om:4": {
+   "path": "results/rl/checkpoints/m5/train/main/om/s4/final.pt",
+   "file_sha256": "86c42974e8c0b2da035201f99c0617407e4928fae0b0cb450bcf014cfb692604"
+  },
+  "om:4@16384000": {
+   "path": "results/rl/checkpoints/m5/train/main/om/s4/snapshots/snap_016384977.pt",
+   "file_sha256": "a2fbc46857f2dd5d8da99b724a6ed95ebcd642bb88f9947ad497d080e3b69dc5"
+  },
+  "om:5": {
+   "path": "results/rl/checkpoints/m5/train/main/om/s5/final.pt",
+   "file_sha256": "4ec586a6658f8c34ea491fa57b85126c7749410f81b7ec1128ec563a56aeb873"
+  },
+  "om:5@16384000": {
+   "path": "results/rl/checkpoints/m5/train/main/om/s5/snapshots/snap_016386269.pt",
+   "file_sha256": "a10ea30398204c00b3bb077e8ff2a586edce4c3e78bc7524687eec4432a4d129"
+  },
+  "sp:0": {
+   "path": "results/rl/checkpoints/m5/train/main/sp/s0/final.pt",
+   "file_sha256": "be46074e6a019b6f2fa3fdb0b30dc6229d7c8ddfc3d7dacccadb377138a252e5"
+  },
+  "sp:0@16384000": {
+   "path": "results/rl/checkpoints/m5/train/main/sp/s0/snapshots/snap_016384000.pt",
+   "file_sha256": "1d8aac48f68e2b059226e037fcbc08fd7ffa4eb62144d6550277ebf4b1a01b9b"
+  },
+  "sp:1": {
+   "path": "results/rl/checkpoints/m5/train/main/sp/s1/final.pt",
+   "file_sha256": "aeb5399d5dada0b3c1b69cd17a1db36adbde6cba25a706d3c0170ab04825807d"
+  },
+  "sp:1@16384000": {
+   "path": "results/rl/checkpoints/m5/train/main/sp/s1/snapshots/snap_016384000.pt",
+   "file_sha256": "a8b91cd961daf508a3d88d87fe6a4c6115a86bd1d3bcdf0bbc8512c644f1d66d"
+  },
+  "sp:2": {
+   "path": "results/rl/checkpoints/m5/train/main/sp/s2/final.pt",
+   "file_sha256": "dc01114c3eebfa38c2b407fc3a21cc2245355c3f3822a64e88202c672c4119b4"
+  },
+  "sp:2@16384000": {
+   "path": "results/rl/checkpoints/m5/train/main/sp/s2/snapshots/snap_016384000.pt",
+   "file_sha256": "6735c898498c9b38b70da7987c2263e805c63999b26bbdbb520a70499c864cd7"
+  },
+  "sp:3": {
+   "path": "results/rl/checkpoints/m5/train/main/sp/s3/final.pt",
+   "file_sha256": "413c316a8e7f9cab6fac8fcb164c111c89e31871c2fa23ed5c14c7ac2a4793b9"
+  },
+  "sp:3@16384000": {
+   "path": "results/rl/checkpoints/m5/train/main/sp/s3/snapshots/snap_016384000.pt",
+   "file_sha256": "54b468c2d7bb3df0ce3a78098f35ae5e0013c0f6ce032839bca8e97680a46160"
+  },
+  "sp:4": {
+   "path": "results/rl/checkpoints/m5/train/main/sp/s4/final.pt",
+   "file_sha256": "bbe0f9ae7f9e61f0f2e2785c0c2883a79b580e23b5d2c1dc55b6edad1bfcfa12"
+  },
+  "sp:4@16384000": {
+   "path": "results/rl/checkpoints/m5/train/main/sp/s4/snapshots/snap_016384000.pt",
+   "file_sha256": "55eb1231e7eb8aa969ff9f0aa99996837f45fb8087a65aa2f2cdfcaa81f49e37"
+  },
+  "sp:5": {
+   "path": "results/rl/checkpoints/m5/train/main/sp/s5/final.pt",
+   "file_sha256": "689e94e54006e8ce082d23ca6840740c9ab5ea151ae9ae82719dbdad40e1ef3d"
+  },
+  "sp:5@16384000": {
+   "path": "results/rl/checkpoints/m5/train/main/sp/s5/snapshots/snap_016384000.pt",
+   "file_sha256": "e8aa8ed9c4951962d04da6ffce466dbfc68f0aa66e42ed61e77842bb8bb04586"
+  },
+  "start:0": {
+   "path": "results/rl/checkpoints/m46c/train/ext/baseline/s0/final.pt",
+   "file_sha256": "e9e2ef86e07eb4949217ab9e0ef3cd1cc768abf3f7bb8887f15128f602f9b7ac"
+  },
+  "start:1": {
+   "path": "results/rl/checkpoints/m46c/train/ext/baseline/s1/final.pt",
+   "file_sha256": "6c17a58951196841ab9ff53263fc42d17dedae0a5f151f67b2efeaf9b5b0f7b1"
+  },
+  "start:2": {
+   "path": "results/rl/checkpoints/m46c/train/ext/baseline/s2/final.pt",
+   "file_sha256": "f010b739c4c7140eba040febd624a10682231af0da4ac6359b757e9f63ecfa27"
+  },
+  "start:3": {
+   "path": "results/rl/checkpoints/m46c/train/ext/baseline/s3/final.pt",
+   "file_sha256": "c847b485e7bcd93128eb4ab2967e427899bf1365daf8449739d2a850dc39b6c4"
+  },
+  "start:4": {
+   "path": "results/rl/checkpoints/m46c/train/ext/baseline/s4/final.pt",
+   "file_sha256": "01e66d2d460846f798f18c9fcd8adb4cae1650de1f52a7a7822fd051e10112fb"
+  },
+  "start:5": {
+   "path": "results/rl/checkpoints/m46c/train/ext/baseline/s5/final.pt",
+   "file_sha256": "2208b5dd36f51d5e1009ec7ae27a03e2d5ae7925ec6cc67e8e7f6c710badaf97"
+  }
+ },
+ "preregistration_active": {
+  "version": 1,
+  "sha256": "21e35e074cdd2628e2c4816ccc7dab4b13a62e77a803fa8936027cf5bcb396e8",
+  "document": "docs/m5/m5_preregistration.md",
+  "date": "2026-10-17"
+ },
+ "code": {
+  "git_commit": "8256882791407a58ffe59abf2c7d7439e3e7bc9a",
+  "working_tree_dirty": true,
+  "python_files": 388,
+  "sources_sha256": "dd9476714ff21a028fab724673d788330f1a77c0294fdc2e742329be3cd81eec",
+  "diff_stat": [
+   " 15 files changed, 1846 insertions(+), 320 deletions(-)"
+  ]
+ },
+ "existing_outputs": 0,
+ "previous": null
+}

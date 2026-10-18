@@ -1,0 +1,4 @@
+ts	phase	decision	why	evidence	result
+2026-10-18T15:26:15Z	frame	run the full battery and cells design, no reduction	user approved battery and cells without naming a reduction; full design was the recommendation in report section 10	docs/m5/m5b_initial_report.md section 9-10	open
+2026-10-18T15:26:16Z	frame	done predicate: every battery and cell record present, no pending validation family, S8 complete, docs updated	a checkable end state before a 12+ hour run	strategic.battery_coverage, strategic.cross_arm statuses	open
+2026-10-18T15:26:16Z	frame	verify the untested 150-turn re-run path first, on real finals at tiny sizes	riskiest unknown first; it has never executed and the battery approval includes it	strategic.extension_jobs	open

@@ -1,9 +1,11 @@
 # M5 pre-registration: the final training and evaluation campaign
 
-*2026-10-17. Status: **frozen, awaiting campaign authorization.** Frozen after the M5a readiness checks (`results/m5/
-readiness.json`) and before any M5 campaign run; its SHA-256 is in `results/m5/preregistration.json`. Any change
-before or during the campaign is a dated amendment recorded there. The user's open decisions (design §12) are
-approvals of this protocol; choosing an alternative listed there is such an amendment, made before training.*
+*2026-10-17. Status: **frozen after the M5a readiness checks, amended once before any campaign training (amendment 1,
+2026-10-17: [m5_amendment_1.md](m5_amendment_1.md), the M5a correction pass).** The chain of versions is in
+`results/m5/preregistration.json`: the original record (SHA-256 `d2424022…af7304`, archived under
+`results/m5/prereg_versions/`), each amendment's date, reason, replaced and new hashes, and its rationale document.
+Every campaign stage validates the chain and runs only on its active version. Any further change is a dated amendment.
+This document does not track the campaign's progress (see the design document and `results/m5/`).*
 
 *Seen at freezing time: the readiness checks, the measured throughputs and costs, and pipeline outputs of stand-in
 policies (OM2 and M4.7 finals) at reduced samples. They carry no information about M5's outcomes.*
@@ -53,13 +55,29 @@ effect.
     illegal or never-legal code);
   - sp: no fixed-opponent transition and equal seat counts;
   - om: a fixed-opponent game share of 0.45–0.55.
-- **A crash or interruption.** The run is restarted from its start (`--restart-incomplete`). It must reproduce the
-  preserved history prefix exactly (`train.prefix_check`); if it does not, stop and investigate.
+- **Runtime monitoring (amendment 1).** The stop conditions are watched during training, update by update
+  (`m5.health.RunMonitor`, an opt-in trainer hook that only reads; a monitored run is the unmonitored run bit for bit).
+  The first occurrence of each alarm is recorded with its evidence in the run's `health.jsonl`.
+  - **Defect alarms** (a non-finite statistic, an illegal action sampled, a never-legal code offered) end the run at
+    that update. Its history stays on disk, and the run is a technical failure until investigated.
+  - **Investigate alarms** (sustained KL, gradient norm, entropy floor) are recorded, and the run continues to its
+    budget. Such a run is kept as it is if the alarm turns out to be a property of learning, and it is restarted
+    anyway if it is a defect.
+  - The coordinator logs progress (`results/m5/progress_main.json` / `.jsonl`) and applies the failure rule below.
+- **A crash or interruption.** The trainer stores no optimizer or collector state, so a run cannot resume mid-schedule.
+  The run is restarted deterministically from its original start (`--restart-incomplete`), which repeats the lost work.
+  It must reproduce the preserved history prefix exactly (`train.prefix_check`, enforced by the health check); if it
+  does not, stop and investigate.
 - **A failed health check or a stop condition.** Investigate.
   - An implementation defect is fixed and every affected run restarted: both runs of a pair when the defect touches
     both arms. It is reported.
   - A training outcome that is not a defect stays as it is and is reported. It is never replaced by another seed.
-  - If more than two pairs fail for technical reasons, stop and report.
+  - If more than two pairs fail for technical reasons, stop and report. The coordinator enforces this: the remaining
+    runs are cancelled or terminated and the stop is recorded.
+- **The evaluation gate (amendment 1).** No evaluation stage runs unless the training check passed, or every failed
+  check has a recorded classification as a property of training (`train_resolve`), and every run is complete. Each
+  stage also verifies that the checkpoints it evaluates are the files whose SHA-256 the check recorded, and records the
+  identities of everything it reads.
 - **No extension rule.** The 32.768M results are final. Non-convergence is reported as a limitation. An extension would
   need new approval and an amendment, would apply to both arms equally, and may not depend on the direction of a
   result.
@@ -128,14 +146,47 @@ of om − sp. H2H is om's own lead.
     timing (E_recall).
   - Every M4 closeout class is re-measured and labelled used / missed / weak / open by the closeout's definitions.
     There are no target values.
+- **The statistic, fixed by amendment 1** (`m5.strategic`):
+  - A battery family's gap in a seed is the largest family mean of (alternative − policy) over its fixed alternatives
+    (one-turn candidates and sustained plans).
+    - It is measured under protocol **"policy"**, the policy's own sampling play. The scripted protocols measure value
+      against conceding styles and are reported only.
+    - It uses the primary statistic at 50 turns: Q in natural families, G in the constructed H_zone_c.
+  - The weaker-side gap is the larger, over the +8 and +16 leads, of the best forced weak-side response (hold, safe,
+    trade, reset) minus the policy at G50 over every weak-focal cell (M4.6c §5.1).
+  - A verdict holds in a seed when every one of its families holds. The verdicts are not in the Holm family.
+- **Completeness and coverage.** A family's value needs every expected (state, protocol) record. A seed with missing
+  records is unknown, never counted as holding; the verdict stays "partial" unless the missing seeds cannot change it.
+  A natural family whose state collection found fewer states than designed is analysed on the states it has and
+  flagged.
+- **Horizon validation** (M4.5c's rule, applied to each policy and family on its 300-turn subset):
+  - pass: the 50-turn statistic stands;
+  - fail: the registered handling is M4.5c's exception 3, a re-run of that family at 150 turns for all its states and
+    protocols. Until it exists the family, and every verdict using it, is "pending"; then the 150-turn statistic
+    replaces the 50-turn one;
+  - fewer than 3 validation pairs: used and flagged "unvalidated".
 
 ## 8. Attackers
 
-- **Targets and starts.** 18 attackers:
-  - 6 against `om:s` (belief live), 6 against `sp:s`, and 6 against `om_table:s` (the om final with its belief inputs
-    replaced by the per-turn mean belief of its own self-play: 32 games × 512 turns, seeds 70,750 · 10⁷ + g);
+*Amendment 1: the attacker stage still awaits its own approval. Its **core** is the 12 attackers against `om:s` and
+`sp:s`. The 6 attackers against `om_table:s` are an **optional follow-up** needing a separate decision; they are
+exploratory and outside the Holm family (§9).*
+
+- **Targets and starts.** 12 core attackers, plus 6 optional:
+  - core: 6 against `om:s` (belief live) and 6 against `sp:s`;
+  - optional: 6 against `om_table:s` (the om final with its belief inputs replaced by the per-turn mean belief of its
+    own self-play: 32 games × 512 turns, seeds 70,750 · 10⁷ + g);
   - each starts as a copy of its target in the 116-input om format (an sp target widened with zero weights);
   - each observes the state, the target's previous action and its own OM2 belief about the target.
+- **Reading the optional ablation.**
+  - om − om_table compares two approximate lower bounds, so a difference can come from what each attacker learned,
+    not only from the targets.
+  - Removing the live belief can change the target's competence, and it creates state-belief combinations the network
+    never saw in training.
+  - It does not isolate a causal adaptation vulnerability, and the attackers are stateless, so it is not evidence of
+    deliberate deception.
+  - If run, it includes the live/table cross-evaluation: each attacker against the other target form, on the same
+    games as the other attacker's own target cell.
 - **Training:**
   - s0 starts, 512-turn games, the M4.6c PPO settings;
   - PPO seed 70,600 + 10 · kind + s (kind 0 om, 1 sp, 2 om_table);
@@ -154,13 +205,18 @@ of om − sp. H2H is om's own lead.
 Each seed's game-level SE and the split of the between-seed variance (the game part, and τ² = max(0, s² − mean SE²))
 are reported for every family.
 
+**Completeness (amendment 1).** An endpoint is classified only when the records of all six seeds exist. Otherwise it
+is reported as "partial (n/6)" with its missing records listed and no class. A missing record never shrinks the
+replication count or the multiplicity family. The headline needs P1, P2a and P2b complete.
+
 **Primary endpoints** (finals, lead at 114):
 - **P1, exploitation gain:** the seed values ½ S_in + ½ S_out. Demonstrated when mean ≥ +0.25 and L > 0. The other
-  classes:
-  - detected, below materiality (L > 0);
-  - no material gain (U < 0.25);
-  - loss (U < 0);
-  - inconclusive.
+  classes (amendment 1 splits the first one by U; thresholds unchanged):
+  - detected, below materiality: L > 0 and U < 0.25 (a material gain ruled out);
+  - detected, materiality unresolved: L > 0, mean < 0.25 ≤ U;
+  - loss: U < 0 (a material gain ruled out);
+  - no material gain: U < 0.25 and L ≤ 0 (a material gain ruled out);
+  - inconclusive: L ≤ 0 and U ≥ 0.25 (a material gain neither shown nor ruled out).
 - **P2a, competence against competent opponents:** ½ C_hist + ½ C_cross.
 - **P2b, competence head to head:** H2H (om:s vs sp:s, 128 pairs).
 
@@ -170,21 +226,26 @@ P2a and P2b are classified by non-inferiority with margin δ = 0.25:
 - loss, materiality unresolved: U < 0;
 - inconclusive: otherwise. Insufficient precision is reported as inconclusive, never as preserved.
 
-**Headline:**
+**Competence status** (reported with every outcome): preserved (P2a and P2b preserved); material loss (either); loss
+detected, materiality unresolved (either); otherwise unresolved.
+
+**Headline** (amendment 1: an inconclusive P1 is never "no material gain"):
 
 | outcome | condition |
 |---|---|
-| 1 pays and preserves competence | P1 demonstrated; P2a and P2b preserved |
-| 2 pays at a competence cost | P1 demonstrated; P2a or P2b a material loss |
+| 1 pays and preserves competence | P1 demonstrated; competence preserved |
+| 2 pays at a competence cost | P1 demonstrated; a material competence loss |
 | 3 pays, competence unresolved | P1 demonstrated; otherwise |
-| 4 no material gain | P1 not demonstrated; no material loss |
-| 5 harmful | P1 not demonstrated; a material loss |
+| 4 no material gain | P1 rules out a material gain (no material gain, loss, or detected below materiality); no material competence loss |
+| 5 harmful | P1 not demonstrated; a material competence loss |
+| 6 gain not demonstrated | P1 inconclusive or detected with materiality unresolved; no material competence loss |
 
-Style gains and competence results are always reported side by side, never netted. The conjunction needs no
-adjustment, because each part must meet its own interval criterion.
+Style gains and competence results are always reported side by side, never netted. Outcome 1 needs no adjustment,
+because each part must meet its own interval criterion. A material loss in either of P2a and P2b is two one-sided
+tests at 0.025, within 0.05 together. The headline covers P1, P2a and P2b only. It does not imply anything about
+strategic replication (S8), the limitation cells or exploitability (S6), which are reported with their own status.
 
-**Secondary endpoints** (claims of "demonstrated" Holm-adjusted together, familywise 0.05, one-sided seed-level t
-tests in the stated direction):
+**Secondary endpoints:**
 
 | id | endpoint | classification |
 |---|---|---|
@@ -192,10 +253,28 @@ tests in the stated direction):
 | S2 | long-horizon competence: ½ C_hist + ½ C_cross at 500 turns, discounted | non-inferiority, δ 0.25 |
 | S3 | long-horizon head to head, discounted | non-inferiority, δ 0.25 |
 | S4 | cross-seed head to head, om:s vs sp:p (mean over p) | non-inferiority, δ 0.25 |
-| S5 | the midpoints: P1 and P2a at 16.384M | as P1 / P2a |
-| S6 | exploitability, om − sp (each attacker's lead at turn 114 against its own target; the discounted 500-turn lead beside it) | increase demonstrated: L > 0 and mean ≥ 0.25; decrease demonstrated: U < 0 and mean ≤ −0.25; no material difference: L > −0.25 and U < 0.25; otherwise inconclusive |
-| S7 | the adaptation test: exploitability of `om` − of `om_table` | as S6 |
-| S8 | strategic replication per arm (§7) and om − sp in the cross-arm M5c families | §7; the cross-arm contrasts descriptive with intervals |
+| S5a | midpoint (16.384M) exploitation gain: ½ S_in + ½ S_out of the midpoints, om − sp | as P1 |
+| S5b | midpoint (16.384M) competence against the **historical** competent opponents only (C_hist), om − sp. Not P2a: the cross-arm finals are not played at the midpoint | non-inferiority, δ 0.25 |
+| S6 | exploitability, om − sp (each core attacker's lead at turn 114 against its own target; the discounted 500-turn lead beside it) | increase demonstrated: L > 0 and mean ≥ 0.25; decrease demonstrated: U < 0 and mean ≤ −0.25; no material difference: L > −0.25 and U < 0.25; otherwise inconclusive |
+| S8 | strategic replication per arm (§7) and om − sp in the cross-arm M5c families | §7; the cross-arm contrasts descriptive with intervals; not in the Holm family |
+
+*Amendment 1:* the midpoint head to head is descriptive. The former S7 (the adaptation test, exploitability of `om`
+minus that of `om_table`) is exploratory, because its attackers are an optional follow-up (§8).
+
+**Tests and multiplicity (amendment 1).** Every permitted claim of S1–S6 is a one-sided seed-level t test (df 5),
+fixed now, independent of the results:
+- S1, S2, S3, S4, S5b: "preserved" (H0 μ ≤ −δ) and "loss" (H0 μ ≥ 0);
+- S5a: "gain" (H0 μ ≤ 0) and "material gain ruled out" (H0 μ ≥ 0.25);
+- S6: "increase" (H0 μ ≤ 0), "decrease" (H0 μ ≥ 0) and "equivalence" (two one-sided tests of H0 |μ| ≥ δ; p is the
+  larger one-sided p).
+
+These **15 hypotheses form one Holm family** at familywise 0.05. A secondary claim is made only when its interval
+condition holds and Holm rejects its hypothesis; the unadjusted interval class is reported beside it. A class is
+assembled from the supported claims only (for example, "material loss" needs "loss" supported and mean ≤ −δ).
+- Holm is final only when every hypothesis has a p-value.
+- Before that, a claim is "secured" when p ≤ 0.05 / 15, since Holm rejects it whatever the pending p-values are.
+  Every other claim is "pending".
+- If the user declines a stage, its hypotheses enter with p = 1, which keeps the error control.
 
 **Exploratory, not pre-registered as tests:**
 - each arm against `ext/baseline:s` (the common start);
@@ -203,6 +282,8 @@ tests in the stated direction):
 - the post-switch window of the imitate-then-switch games;
 - the belief mechanism (identification, catch-all mass, switch tracking, belief-swap probes);
 - attacker transfer;
+- the optional adaptation ablation, om − om_table (§8), with its live/table cross-evaluation;
+- the midpoint head to head;
 - the battery's ledger channels.
 
 ## 10. Resolution, stated in advance
@@ -226,3 +307,9 @@ An inconclusive competence result is therefore a likely outcome of a near-zero e
 - **The contrast.** A − B is a package contrast at equal agent transitions. A plays about 36% more environment turns
   and gets about a third fewer self-play transitions.
 - **Coverage.** Values beyond 500 turns are not measured.
+
+## 12. Amendments
+
+| # | date | document | summary |
+|---|---|---|---|
+| 1 | 2026-10-17, before any campaign training | [m5_amendment_1.md](m5_amendment_1.md) | the M5a correction pass: the headline no longer maps an inconclusive gain to "no material gain" (outcome 6), P1's classes split by U, fixed tests and one 15-hypothesis Holm family for S1–S6 with an interim rule, S5 renamed (S5a, S5b, descriptive midpoint head to head), six-seed completeness, the S8 statistic and validation path, runtime health monitoring with the evaluation gate, the core / optional attackers, the verifiable amendment chain. No threshold, arm, budget or family changed |

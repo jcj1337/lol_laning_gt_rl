@@ -1,0 +1,4297 @@
+{
+ "replication": {
+  "replication": {
+   "om": {
+    "conditional wave management": {
+     "per_seed_gap": {},
+     "replication": {
+      "holds": {},
+      "n_holds": 0,
+      "n_seeds": 0,
+      "complete": false,
+      "replicates": false,
+      "verdict": "partial (0/6 seeds)",
+      "margin": 0.2
+     },
+     "component_status": {
+      "0": [
+       "A_wave: missing"
+      ],
+      "1": [
+       "A_wave: missing"
+      ],
+      "2": [
+       "A_wave: missing"
+      ],
+      "3": [
+       "A_wave: missing"
+      ],
+      "4": [
+       "A_wave: missing"
+      ],
+      "5": [
+       "A_wave: missing"
+      ]
+     },
+     "components": [
+      "A_wave"
+     ]
+    },
+    "conditional freezing and the reply to freezes": {
+     "per_seed_gap": {},
+     "replication": {
+      "holds": {},
+      "n_holds": 0,
+      "n_seeds": 0,
+      "complete": false,
+      "replicates": false,
+      "verdict": "partial (0/6 seeds)",
+      "margin": 0.2
+     },
+     "component_status": {
+      "0": [
+       "B_freeze: missing",
+       "B_frozen: missing"
+      ],
+      "1": [
+       "B_freeze: missing",
+       "B_frozen: missing"
+      ],
+      "2": [
+       "B_freeze: missing",
+       "B_frozen: missing"
+      ],
+      "3": [
+       "B_freeze: missing",
+       "B_frozen: missing"
+      ],
+      "4": [
+       "B_freeze: missing",
+       "B_frozen: missing"
+      ],
+      "5": [
+       "B_freeze: missing",
+       "B_frozen: missing"
+      ]
+     },
+     "components": [
+      "B_freeze",
+      "B_frozen"
+     ]
+    },
+    "selective trading": {
+     "per_seed_gap": {},
+     "replication": {
+      "holds": {},
+      "n_holds": 0,
+      "n_seeds": 0,
+      "complete": false,
+      "replicates": false,
+      "verdict": "partial (0/6 seeds)",
+      "margin": 0.2
+     },
+     "component_status": {
+      "0": [
+       "C_trade: missing"
+      ],
+      "1": [
+       "C_trade: missing"
+      ],
+      "2": [
+       "C_trade: missing"
+      ],
+      "3": [
+       "C_trade: missing"
+      ],
+      "4": [
+       "C_trade: missing"
+      ],
+      "5": [
+       "C_trade: missing"
+      ]
+     },
+     "components": [
+      "C_trade"
+     ]
+    },
+    "concession under threat": {
+     "per_seed_gap": {},
+     "replication": {
+      "holds": {},
+      "n_holds": 0,
+      "n_seeds": 0,
+      "complete": false,
+      "replicates": false,
+      "verdict": "partial (0/6 seeds)",
+      "margin": 0.2
+     },
+     "component_status": {
+      "0": [
+       "H_zone_c: missing",
+       "weak side: partial records"
+      ],
+      "1": [
+       "H_zone_c: missing",
+       "weak side: partial records"
+      ],
+      "2": [
+       "H_zone_c: missing",
+       "weak side: partial records"
+      ],
+      "3": [
+       "H_zone_c: missing",
+       "weak side: partial records"
+      ],
+      "4": [
+       "H_zone_c: missing",
+       "weak side: partial records"
+      ],
+      "5": [
+       "H_zone_c: missing",
+       "weak side: partial records"
+      ]
+     },
+     "components": [
+      "H_zone_c",
+      "weak side"
+     ]
+    },
+    "Recall timing": {
+     "per_seed_gap": {},
+     "replication": {
+      "holds": {},
+      "n_holds": 0,
+      "n_seeds": 0,
+      "complete": false,
+      "replicates": false,
+      "verdict": "partial (0/6 seeds)",
+      "margin": 0.2
+     },
+     "component_status": {
+      "0": [
+       "E_recall: missing"
+      ],
+      "1": [
+       "E_recall: missing"
+      ],
+      "2": [
+       "E_recall: missing"
+      ],
+      "3": [
+       "E_recall: missing"
+      ],
+      "4": [
+       "E_recall: missing"
+      ],
+      "5": [
+       "E_recall: missing"
+      ]
+     },
+     "components": [
+      "E_recall"
+     ]
+    }
+   },
+   "sp": {
+    "conditional wave management": {
+     "per_seed_gap": {},
+     "replication": {
+      "holds": {},
+      "n_holds": 0,
+      "n_seeds": 0,
+      "complete": false,
+      "replicates": false,
+      "verdict": "partial (0/6 seeds)",
+      "margin": 0.2
+     },
+     "component_status": {
+      "0": [
+       "A_wave: missing"
+      ],
+      "1": [
+       "A_wave: missing"
+      ],
+      "2": [
+       "A_wave: missing"
+      ],
+      "3": [
+       "A_wave: missing"
+      ],
+      "4": [
+       "A_wave: missing"
+      ],
+      "5": [
+       "A_wave: missing"
+      ]
+     },
+     "components": [
+      "A_wave"
+     ]
+    },
+    "conditional freezing and the reply to freezes": {
+     "per_seed_gap": {},
+     "replication": {
+      "holds": {},
+      "n_holds": 0,
+      "n_seeds": 0,
+      "complete": false,
+      "replicates": false,
+      "verdict": "partial (0/6 seeds)",
+      "margin": 0.2
+     },
+     "component_status": {
+      "0": [
+       "B_freeze: missing",
+       "B_frozen: missing"
+      ],
+      "1": [
+       "B_freeze: missing",
+       "B_frozen: missing"
+      ],
+      "2": [
+       "B_freeze: missing",
+       "B_frozen: missing"
+      ],
+      "3": [
+       "B_freeze: missing",
+       "B_frozen: missing"
+      ],
+      "4": [
+       "B_freeze: missing",
+       "B_frozen: missing"
+      ],
+      "5": [
+       "B_freeze: missing",
+       "B_frozen: missing"
+      ]
+     },
+     "components": [
+      "B_freeze",
+      "B_frozen"
+     ]
+    },
+    "selective trading": {
+     "per_seed_gap": {},
+     "replication": {
+      "holds": {},
+      "n_holds": 0,
+      "n_seeds": 0,
+      "complete": false,
+      "replicates": false,
+      "verdict": "partial (0/6 seeds)",
+      "margin": 0.2
+     },
+     "component_status": {
+      "0": [
+       "C_trade: missing"
+      ],
+      "1": [
+       "C_trade: missing"
+      ],
+      "2": [
+       "C_trade: missing"
+      ],
+      "3": [
+       "C_trade: missing"
+      ],
+      "4": [
+       "C_trade: missing"
+      ],
+      "5": [
+       "C_trade: missing"
+      ]
+     },
+     "components": [
+      "C_trade"
+     ]
+    },
+    "concession under threat": {
+     "per_seed_gap": {},
+     "replication": {
+      "holds": {},
+      "n_holds": 0,
+      "n_seeds": 0,
+      "complete": false,
+      "replicates": false,
+      "verdict": "partial (0/6 seeds)",
+      "margin": 0.2
+     },
+     "component_status": {
+      "0": [
+       "H_zone_c: missing",
+       "weak side: partial records"
+      ],
+      "1": [
+       "H_zone_c: missing",
+       "weak side: partial records"
+      ],
+      "2": [
+       "H_zone_c: missing",
+       "weak side: partial records"
+      ],
+      "3": [
+       "H_zone_c: missing",
+       "weak side: partial records"
+      ],
+      "4": [
+       "H_zone_c: missing",
+       "weak side: partial records"
+      ],
+      "5": [
+       "H_zone_c: missing",
+       "weak side: partial records"
+      ]
+     },
+     "components": [
+      "H_zone_c",
+      "weak side"
+     ]
+    },
+    "Recall timing": {
+     "per_seed_gap": {},
+     "replication": {
+      "holds": {},
+      "n_holds": 0,
+      "n_seeds": 0,
+      "complete": false,
+      "replicates": false,
+      "verdict": "partial (0/6 seeds)",
+      "margin": 0.2
+     },
+     "component_status": {
+      "0": [
+       "E_recall: missing"
+      ],
+      "1": [
+       "E_recall: missing"
+      ],
+      "2": [
+       "E_recall: missing"
+      ],
+      "3": [
+       "E_recall: missing"
+      ],
+      "4": [
+       "E_recall: missing"
+      ],
+      "5": [
+       "E_recall: missing"
+      ]
+     },
+     "components": [
+      "E_recall"
+     ]
+    }
+   }
+  },
+  "detail": {
+   "om_s0": {
+    "battery": {
+     "A_wave": {
+      "status": "missing",
+      "coverage": {
+       "designed_states": 48,
+       "collected_states": null,
+       "state_coverage": "unknown (no manifest)",
+       "expected_records": 96,
+       "present_records": 0,
+       "missing_records": [
+        "0|modal",
+        "0|policy",
+        "1|modal",
+        "1|policy",
+        "2|modal",
+        "2|policy",
+        "3|modal",
+        "3|policy",
+        "4|modal",
+        "4|policy",
+        "... 86 more"
+       ],
+       "records": "missing"
+      },
+      "validation": null
+     },
+     "A_wave_early": {
+      "status": "missing",
+      "coverage": {
+       "designed_states": 24,
+       "collected_states": null,
+       "state_coverage": "unknown (no manifest)",
+       "expected_records": 48,
+       "present_records": 0,
+       "missing_records": [
+        "0|modal",
+        "0|policy",
+        "1|modal",
+        "1|policy",
+        "2|modal",
+        "2|policy",
+        "3|modal",
+        "3|policy",
+        "4|modal",
+        "4|policy",
+        "... 38 more"
+       ],
+       "records": "missing"
+      },
+      "validation": null
+     },
+     "B_freeze": {
+      "status": "missing",
+      "coverage": {
+       "designed_states": 48,
+       "collected_states": null,
+       "state_coverage": "unknown (no manifest)",
+       "expected_records": 240,
+       "present_records": 0,
+       "missing_records": [
+        "0|modal",
+        "0|policy",
+        "0|wk_back",
+        "0|wk_shove",
+        "0|wk_shove_reset",
+        "1|modal",
+        "1|policy",
+        "1|wk_back",
+        "1|wk_shove",
+        "1|wk_shove_reset",
+        "... 230 more"
+       ],
+       "records": "missing"
+      },
+      "validation": null
+     },
+     "B_frozen": {
+      "status": "missing",
+      "coverage": {
+       "designed_states": 48,
+       "collected_states": null,
+       "state_coverage": "unknown (no manifest)",
+       "expected_records": 240,
+       "present_records": 0,
+       "missing_records": [
+        "0|fz_bully_sh",
+        "0|fz_guard_sh",
+        "0|fz_passive_sh",
+        "0|modal",
+        "0|policy",
+        "1|fz_bully_sh",
+        "1|fz_guard_sh",
+        "1|fz_passive_sh",
+        "1|modal",
+        "1|policy",
+        "... 230 more"
+       ],
+       "records": "missing"
+      },
+      "validation": null
+     },
+     "C_trade": {
+      "status": "missing",
+      "coverage": {
+       "designed_states": 48,
+       "collected_states": null,
+       "state_coverage": "unknown (no manifest)",
+       "expected_records": 144,
+       "present_records": 0,
+       "missing_records": [
+        "0|g_wary",
+        "0|modal",
+        "0|policy",
+        "1|g_wary",
+        "1|modal",
+        "1|policy",
+        "2|g_wary",
+        "2|modal",
+        "2|policy",
+        "3|g_wary",
+        "... 134 more"
+       ],
+       "records": "missing"
+      },
+      "validation": null
+     },
+     "C_trade_early": {
+      "status": "missing",
+      "coverage": {
+       "designed_states": 24,
+       "collected_states": null,
+       "state_coverage": "unknown (no manifest)",
+       "expected_records": 72,
+       "present_records": 0,
+       "missing_records": [
+        "0|g_wary",
+        "0|modal",
+        "0|policy",
+        "1|g_wary",
+        "1|modal",
+        "1|policy",
+        "2|g_wary",
+        "2|modal",
+        "2|policy",
+        "3|g_wary",
+        "... 62 more"
+       ],
+       "records": "missing"
+      },
+      "validation": null
+     },
+     "D_ward": {
+      "status": "missing",
+      "coverage": {
+       "designed_states": 48,
+       "collected_states": null,
+       "state_coverage": "unknown (no manifest)",
+       "expected_records": 144,
+       "present_records": 0,
+       "missing_records": [
+        "0|g_bully",
+        "0|modal",
+        "0|policy",
+        "1|g_bully",
+        "1|modal",
+        "1|policy",
+        "2|g_bully",
+        "2|modal",
+        "2|policy",
+        "3|g_bully",
+        "... 134 more"
+       ],
+       "records": "missing"
+      },
+      "validation": null
+     },
+     "E_recall": {
+      "status": "missing",
+      "coverage": {
+       "designed_states": 48,
+       "collected_states": null,
+       "state_coverage": "unknown (no manifest)",
+       "expected_records": 96,
+       "present_records": 0,
+       "missing_records": [
+        "0|modal",
+        "0|policy",
+        "1|modal",
+        "1|policy",
+        "2|modal",
+        "2|policy",
+        "3|modal",
+        "3|policy",
+        "4|modal",
+        "4|policy",
+        "... 86 more"
+       ],
+       "records": "missing"
+      },
+      "validation": null
+     },
+     "F_freeze_c": {
+      "status": "missing",
+      "coverage": {
+       "designed_states": 10,
+       "collected_states": 10,
+       "state_coverage": "complete",
+       "expected_records": 50,
+       "present_records": 0,
+       "missing_records": [
+        "0|modal",
+        "0|policy",
+        "0|wk_back",
+        "0|wk_shove",
+        "0|wk_shove_reset",
+        "1|modal",
+        "1|policy",
+        "1|wk_back",
+        "1|wk_shove",
+        "1|wk_shove_reset",
+        "... 40 more"
+       ],
+       "records": "missing"
+      },
+      "validation": null
+     },
+     "G_trade_c": {
+      "status": "missing",
+      "coverage": {
+       "designed_states": 12,
+       "collected_states": 12,
+       "state_coverage": "complete",
+       "expected_records": 36,
+       "present_records": 0,
+       "missing_records": [
+        "0|g_wary",
+        "0|modal",
+        "0|policy",
+        "1|g_wary",
+        "1|modal",
+        "1|policy",
+        "2|g_wary",
+        "2|modal",
+        "2|policy",
+        "3|g_wary",
+        "... 26 more"
+       ],
+       "records": "missing"
+      },
+      "validation": null
+     },
+     "H_zone_c": {
+      "status": "missing",
+      "coverage": {
+       "designed_states": 12,
+       "collected_states": 12,
+       "state_coverage": "complete",
+       "expected_records": 36,
+       "present_records": 0,
+       "missing_records": [
+        "0|g_wary",
+        "0|modal",
+        "0|policy",
+        "1|g_wary",
+        "1|modal",
+        "1|policy",
+        "2|g_wary",
+        "2|modal",
+        "2|policy",
+        "3|g_wary",
+        "... 26 more"
+       ],
+       "records": "missing"
+      },
+      "validation": null
+     },
+     "I_ward_c": {
+      "status": "missing",
+      "coverage": {
+       "designed_states": 8,
+       "collected_states": 8,
+       "state_coverage": "complete",
+       "expected_records": 24,
+       "present_records": 0,
+       "missing_records": [
+        "0|g_bully",
+        "0|modal",
+        "0|policy",
+        "1|g_bully",
+        "1|modal",
+        "1|policy",
+        "2|g_bully",
+        "2|modal",
+        "2|policy",
+        "3|g_bully",
+        "... 14 more"
+       ],
+       "records": "missing"
+      },
+      "validation": null
+     }
+    },
+    "weak": {
+     "status": "partial records",
+     "missing": [
+      0,
+      4,
+      8,
+      12,
+      16,
+      20,
+      24,
+      28,
+      32
+     ]
+    }
+   },
+   "om_s1": {
+    "battery": {
+     "A_wave": {
+      "status": "missing",
+      "coverage": {
+       "designed_states": 48,
+       "collected_states": null,
+       "state_coverage": "unknown (no manifest)",
+       "expected_records": 96,
+       "present_records": 0,
+       "missing_records": [
+        "0|modal",
+        "0|policy",
+        "1|modal",
+        "1|policy",
+        "2|modal",
+        "2|policy",
+        "3|modal",
+        "3|policy",
+        "4|modal",
+        "4|policy",
+        "... 86 more"
+       ],
+       "records": "missing"
+      },
+      "validation": null
+     },
+     "A_wave_early": {
+      "status": "missing",
+      "coverage": {
+       "designed_states": 24,
+       "collected_states": null,
+       "state_coverage": "unknown (no manifest)",
+       "expected_records": 48,
+       "present_records": 0,
+       "missing_records": [
+        "0|modal",
+        "0|policy",
+        "1|modal",
+        "1|policy",
+        "2|modal",
+        "2|policy",
+        "3|modal",
+        "3|policy",
+        "4|modal",
+        "4|policy",
+        "... 38 more"
+       ],
+       "records": "missing"
+      },
+      "validation": null
+     },
+     "B_freeze": {
+      "status": "missing",
+      "coverage": {
+       "designed_states": 48,
+       "collected_states": null,
+       "state_coverage": "unknown (no manifest)",
+       "expected_records": 240,
+       "present_records": 0,
+       "missing_records": [
+        "0|modal",
+        "0|policy",
+        "0|wk_back",
+        "0|wk_shove",
+        "0|wk_shove_reset",
+        "1|modal",
+        "1|policy",
+        "1|wk_back",
+        "1|wk_shove",
+        "1|wk_shove_reset",
+        "... 230 more"
+       ],
+       "records": "missing"
+      },
+      "validation": null
+     },
+     "B_frozen": {
+      "status": "missing",
+      "coverage": {
+       "designed_states": 48,
+       "collected_states": null,
+       "state_coverage": "unknown (no manifest)",
+       "expected_records": 240,
+       "present_records": 0,
+       "missing_records": [
+        "0|fz_bully_sh",
+        "0|fz_guard_sh",
+        "0|fz_passive_sh",
+        "0|modal",
+        "0|policy",
+        "1|fz_bully_sh",
+        "1|fz_guard_sh",
+        "1|fz_passive_sh",
+        "1|modal",
+        "1|policy",
+        "... 230 more"
+       ],
+       "records": "missing"
+      },
+      "validation": null
+     },
+     "C_trade": {
+      "status": "missing",
+      "coverage": {
+       "designed_states": 48,
+       "collected_states": null,
+       "state_coverage": "unknown (no manifest)",
+       "expected_records": 144,
+       "present_records": 0,
+       "missing_records": [
+        "0|g_wary",
+        "0|modal",
+        "0|policy",
+        "1|g_wary",
+        "1|modal",
+        "1|policy",
+        "2|g_wary",
+        "2|modal",
+        "2|policy",
+        "3|g_wary",
+        "... 134 more"
+       ],
+       "records": "missing"
+      },
+      "validation": null
+     },
+     "C_trade_early": {
+      "status": "missing",
+      "coverage": {
+       "designed_states": 24,
+       "collected_states": null,
+       "state_coverage": "unknown (no manifest)",
+       "expected_records": 72,
+       "present_records": 0,
+       "missing_records": [
+        "0|g_wary",
+        "0|modal",
+        "0|policy",
+        "1|g_wary",
+        "1|modal",
+        "1|policy",
+        "2|g_wary",
+        "2|modal",
+        "2|policy",
+        "3|g_wary",
+        "... 62 more"
+       ],
+       "records": "missing"
+      },
+      "validation": null
+     },
+     "D_ward": {
+      "status": "missing",
+      "coverage": {
+       "designed_states": 48,
+       "collected_states": null,
+       "state_coverage": "unknown (no manifest)",
+       "expected_records": 144,
+       "present_records": 0,
+       "missing_records": [
+        "0|g_bully",
+        "0|modal",
+        "0|policy",
+        "1|g_bully",
+        "1|modal",
+        "1|policy",
+        "2|g_bully",
+        "2|modal",
+        "2|policy",
+        "3|g_bully",
+        "... 134 more"
+       ],
+       "records": "missing"
+      },
+      "validation": null
+     },
+     "E_recall": {
+      "status": "missing",
+      "coverage": {
+       "designed_states": 48,
+       "collected_states": null,
+       "state_coverage": "unknown (no manifest)",
+       "expected_records": 96,
+       "present_records": 0,
+       "missing_records": [
+        "0|modal",
+        "0|policy",
+        "1|modal",
+        "1|policy",
+        "2|modal",
+        "2|policy",
+        "3|modal",
+        "3|policy",
+        "4|modal",
+        "4|policy",
+        "... 86 more"
+       ],
+       "records": "missing"
+      },
+      "validation": null
+     },
+     "F_freeze_c": {
+      "status": "missing",
+      "coverage": {
+       "designed_states": 10,
+       "collected_states": 10,
+       "state_coverage": "complete",
+       "expected_records": 50,
+       "present_records": 0,
+       "missing_records": [
+        "0|modal",
+        "0|policy",
+        "0|wk_back",
+        "0|wk_shove",
+        "0|wk_shove_reset",
+        "1|modal",
+        "1|policy",
+        "1|wk_back",
+        "1|wk_shove",
+        "1|wk_shove_reset",
+        "... 40 more"
+       ],
+       "records": "missing"
+      },
+      "validation": null
+     },
+     "G_trade_c": {
+      "status": "missing",
+      "coverage": {
+       "designed_states": 12,
+       "collected_states": 12,
+       "state_coverage": "complete",
+       "expected_records": 36,
+       "present_records": 0,
+       "missing_records": [
+        "0|g_wary",
+        "0|modal",
+        "0|policy",
+        "1|g_wary",
+        "1|modal",
+        "1|policy",
+        "2|g_wary",
+        "2|modal",
+        "2|policy",
+        "3|g_wary",
+        "... 26 more"
+       ],
+       "records": "missing"
+      },
+      "validation": null
+     },
+     "H_zone_c": {
+      "status": "missing",
+      "coverage": {
+       "designed_states": 12,
+       "collected_states": 12,
+       "state_coverage": "complete",
+       "expected_records": 36,
+       "present_records": 0,
+       "missing_records": [
+        "0|g_wary",
+        "0|modal",
+        "0|policy",
+        "1|g_wary",
+        "1|modal",
+        "1|policy",
+        "2|g_wary",
+        "2|modal",
+        "2|policy",
+        "3|g_wary",
+        "... 26 more"
+       ],
+       "records": "missing"
+      },
+      "validation": null
+     },
+     "I_ward_c": {
+      "status": "missing",
+      "coverage": {
+       "designed_states": 8,
+       "collected_states": 8,
+       "state_coverage": "complete",
+       "expected_records": 24,
+       "present_records": 0,
+       "missing_records": [
+        "0|g_bully",
+        "0|modal",
+        "0|policy",
+        "1|g_bully",
+        "1|modal",
+        "1|policy",
+        "2|g_bully",
+        "2|modal",
+        "2|policy",
+        "3|g_bully",
+        "... 14 more"
+       ],
+       "records": "missing"
+      },
+      "validation": null
+     }
+    },
+    "weak": {
+     "status": "partial records",
+     "missing": [
+      0,
+      4,
+      8,
+      12,
+      16,
+      20,
+      24,
+      28,
+      32
+     ]
+    }
+   },
+   "om_s2": {
+    "battery": {
+     "A_wave": {
+      "status": "missing",
+      "coverage": {
+       "designed_states": 48,
+       "collected_states": null,
+       "state_coverage": "unknown (no manifest)",
+       "expected_records": 96,
+       "present_records": 0,
+       "missing_records": [
+        "0|modal",
+        "0|policy",
+        "1|modal",
+        "1|policy",
+        "2|modal",
+        "2|policy",
+        "3|modal",
+        "3|policy",
+        "4|modal",
+        "4|policy",
+        "... 86 more"
+       ],
+       "records": "missing"
+      },
+      "validation": null
+     },
+     "A_wave_early": {
+      "status": "missing",
+      "coverage": {
+       "designed_states": 24,
+       "collected_states": null,
+       "state_coverage": "unknown (no manifest)",
+       "expected_records": 48,
+       "present_records": 0,
+       "missing_records": [
+        "0|modal",
+        "0|policy",
+        "1|modal",
+        "1|policy",
+        "2|modal",
+        "2|policy",
+        "3|modal",
+        "3|policy",
+        "4|modal",
+        "4|policy",
+        "... 38 more"
+       ],
+       "records": "missing"
+      },
+      "validation": null
+     },
+     "B_freeze": {
+      "status": "missing",
+      "coverage": {
+       "designed_states": 48,
+       "collected_states": null,
+       "state_coverage": "unknown (no manifest)",
+       "expected_records": 240,
+       "present_records": 0,
+       "missing_records": [
+        "0|modal",
+        "0|policy",
+        "0|wk_back",
+        "0|wk_shove",
+        "0|wk_shove_reset",
+        "1|modal",
+        "1|policy",
+        "1|wk_back",
+        "1|wk_shove",
+        "1|wk_shove_reset",
+        "... 230 more"
+       ],
+       "records": "missing"
+      },
+      "validation": null
+     },
+     "B_frozen": {
+      "status": "missing",
+      "coverage": {
+       "designed_states": 48,
+       "collected_states": null,
+       "state_coverage": "unknown (no manifest)",
+       "expected_records": 240,
+       "present_records": 0,
+       "missing_records": [
+        "0|fz_bully_sh",
+        "0|fz_guard_sh",
+        "0|fz_passive_sh",
+        "0|modal",
+        "0|policy",
+        "1|fz_bully_sh",
+        "1|fz_guard_sh",
+        "1|fz_passive_sh",
+        "1|modal",
+        "1|policy",
+        "... 230 more"
+       ],
+       "records": "missing"
+      },
+      "validation": null
+     },
+     "C_trade": {
+      "status": "missing",
+      "coverage": {
+       "designed_states": 48,
+       "collected_states": null,
+       "state_coverage": "unknown (no manifest)",
+       "expected_records": 144,
+       "present_records": 0,
+       "missing_records": [
+        "0|g_wary",
+        "0|modal",
+        "0|policy",
+        "1|g_wary",
+        "1|modal",
+        "1|policy",
+        "2|g_wary",
+        "2|modal",
+        "2|policy",
+        "3|g_wary",
+        "... 134 more"
+       ],
+       "records": "missing"
+      },
+      "validation": null
+     },
+     "C_trade_early": {
+      "status": "missing",
+      "coverage": {
+       "designed_states": 24,
+       "collected_states": null,
+       "state_coverage": "unknown (no manifest)",
+       "expected_records": 72,
+       "present_records": 0,
+       "missing_records": [
+        "0|g_wary",
+        "0|modal",
+        "0|policy",
+        "1|g_wary",
+        "1|modal",
+        "1|policy",
+        "2|g_wary",
+        "2|modal",
+        "2|policy",
+        "3|g_wary",
+        "... 62 more"
+       ],
+       "records": "missing"
+      },
+      "validation": null
+     },
+     "D_ward": {
+      "status": "missing",
+      "coverage": {
+       "designed_states": 48,
+       "collected_states": null,
+       "state_coverage": "unknown (no manifest)",
+       "expected_records": 144,
+       "present_records": 0,
+       "missing_records": [
+        "0|g_bully",
+        "0|modal",
+        "0|policy",
+        "1|g_bully",
+        "1|modal",
+        "1|policy",
+        "2|g_bully",
+        "2|modal",
+        "2|policy",
+        "3|g_bully",
+        "... 134 more"
+       ],
+       "records": "missing"
+      },
+      "validation": null
+     },
+     "E_recall": {
+      "status": "missing",
+      "coverage": {
+       "designed_states": 48,
+       "collected_states": null,
+       "state_coverage": "unknown (no manifest)",
+       "expected_records": 96,
+       "present_records": 0,
+       "missing_records": [
+        "0|modal",
+        "0|policy",
+        "1|modal",
+        "1|policy",
+        "2|modal",
+        "2|policy",
+        "3|modal",
+        "3|policy",
+        "4|modal",
+        "4|policy",
+        "... 86 more"
+       ],
+       "records": "missing"
+      },
+      "validation": null
+     },
+     "F_freeze_c": {
+      "status": "missing",
+      "coverage": {
+       "designed_states": 10,
+       "collected_states": 10,
+       "state_coverage": "complete",
+       "expected_records": 50,
+       "present_records": 0,
+       "missing_records": [
+        "0|modal",
+        "0|policy",
+        "0|wk_back",
+        "0|wk_shove",
+        "0|wk_shove_reset",
+        "1|modal",
+        "1|policy",
+        "1|wk_back",
+        "1|wk_shove",
+        "1|wk_shove_reset",
+        "... 40 more"
+       ],
+       "records": "missing"
+      },
+      "validation": null
+     },
+     "G_trade_c": {
+      "status": "missing",
+      "coverage": {
+       "designed_states": 12,
+       "collected_states": 12,
+       "state_coverage": "complete",
+       "expected_records": 36,
+       "present_records": 0,
+       "missing_records": [
+        "0|g_wary",
+        "0|modal",
+        "0|policy",
+        "1|g_wary",
+        "1|modal",
+        "1|policy",
+        "2|g_wary",
+        "2|modal",
+        "2|policy",
+        "3|g_wary",
+        "... 26 more"
+       ],
+       "records": "missing"
+      },
+      "validation": null
+     },
+     "H_zone_c": {
+      "status": "missing",
+      "coverage": {
+       "designed_states": 12,
+       "collected_states": 12,
+       "state_coverage": "complete",
+       "expected_records": 36,
+       "present_records": 0,
+       "missing_records": [
+        "0|g_wary",
+        "0|modal",
+        "0|policy",
+        "1|g_wary",
+        "1|modal",
+        "1|policy",
+        "2|g_wary",
+        "2|modal",
+        "2|policy",
+        "3|g_wary",
+        "... 26 more"
+       ],
+       "records": "missing"
+      },
+      "validation": null
+     },
+     "I_ward_c": {
+      "status": "missing",
+      "coverage": {
+       "designed_states": 8,
+       "collected_states": 8,
+       "state_coverage": "complete",
+       "expected_records": 24,
+       "present_records": 0,
+       "missing_records": [
+        "0|g_bully",
+        "0|modal",
+        "0|policy",
+        "1|g_bully",
+        "1|modal",
+        "1|policy",
+        "2|g_bully",
+        "2|modal",
+        "2|policy",
+        "3|g_bully",
+        "... 14 more"
+       ],
+       "records": "missing"
+      },
+      "validation": null
+     }
+    },
+    "weak": {
+     "status": "partial records",
+     "missing": [
+      0,
+      4,
+      8,
+      12,
+      16,
+      20,
+      24,
+      28,
+      32
+     ]
+    }
+   },
+   "om_s3": {
+    "battery": {
+     "A_wave": {
+      "status": "missing",
+      "coverage": {
+       "designed_states": 48,
+       "collected_states": null,
+       "state_coverage": "unknown (no manifest)",
+       "expected_records": 96,
+       "present_records": 0,
+       "missing_records": [
+        "0|modal",
+        "0|policy",
+        "1|modal",
+        "1|policy",
+        "2|modal",
+        "2|policy",
+        "3|modal",
+        "3|policy",
+        "4|modal",
+        "4|policy",
+        "... 86 more"
+       ],
+       "records": "missing"
+      },
+      "validation": null
+     },
+     "A_wave_early": {
+      "status": "missing",
+      "coverage": {
+       "designed_states": 24,
+       "collected_states": null,
+       "state_coverage": "unknown (no manifest)",
+       "expected_records": 48,
+       "present_records": 0,
+       "missing_records": [
+        "0|modal",
+        "0|policy",
+        "1|modal",
+        "1|policy",
+        "2|modal",
+        "2|policy",
+        "3|modal",
+        "3|policy",
+        "4|modal",
+        "4|policy",
+        "... 38 more"
+       ],
+       "records": "missing"
+      },
+      "validation": null
+     },
+     "B_freeze": {
+      "status": "missing",
+      "coverage": {
+       "designed_states": 48,
+       "collected_states": null,
+       "state_coverage": "unknown (no manifest)",
+       "expected_records": 240,
+       "present_records": 0,
+       "missing_records": [
+        "0|modal",
+        "0|policy",
+        "0|wk_back",
+        "0|wk_shove",
+        "0|wk_shove_reset",
+        "1|modal",
+        "1|policy",
+        "1|wk_back",
+        "1|wk_shove",
+        "1|wk_shove_reset",
+        "... 230 more"
+       ],
+       "records": "missing"
+      },
+      "validation": null
+     },
+     "B_frozen": {
+      "status": "missing",
+      "coverage": {
+       "designed_states": 48,
+       "collected_states": null,
+       "state_coverage": "unknown (no manifest)",
+       "expected_records": 240,
+       "present_records": 0,
+       "missing_records": [
+        "0|fz_bully_sh",
+        "0|fz_guard_sh",
+        "0|fz_passive_sh",
+        "0|modal",
+        "0|policy",
+        "1|fz_bully_sh",
+        "1|fz_guard_sh",
+        "1|fz_passive_sh",
+        "1|modal",
+        "1|policy",
+        "... 230 more"
+       ],
+       "records": "missing"
+      },
+      "validation": null
+     },
+     "C_trade": {
+      "status": "missing",
+      "coverage": {
+       "designed_states": 48,
+       "collected_states": null,
+       "state_coverage": "unknown (no manifest)",
+       "expected_records": 144,
+       "present_records": 0,
+       "missing_records": [
+        "0|g_wary",
+        "0|modal",
+        "0|policy",
+        "1|g_wary",
+        "1|modal",
+        "1|policy",
+        "2|g_wary",
+        "2|modal",
+        "2|policy",
+        "3|g_wary",
+        "... 134 more"
+       ],
+       "records": "missing"
+      },
+      "validation": null
+     },
+     "C_trade_early": {
+      "status": "missing",
+      "coverage": {
+       "designed_states": 24,
+       "collected_states": null,
+       "state_coverage": "unknown (no manifest)",
+       "expected_records": 72,
+       "present_records": 0,
+       "missing_records": [
+        "0|g_wary",
+        "0|modal",
+        "0|policy",
+        "1|g_wary",
+        "1|modal",
+        "1|policy",
+        "2|g_wary",
+        "2|modal",
+        "2|policy",
+        "3|g_wary",
+        "... 62 more"
+       ],
+       "records": "missing"
+      },
+      "validation": null
+     },
+     "D_ward": {
+      "status": "missing",
+      "coverage": {
+       "designed_states": 48,
+       "collected_states": null,
+       "state_coverage": "unknown (no manifest)",
+       "expected_records": 144,
+       "present_records": 0,
+       "missing_records": [
+        "0|g_bully",
+        "0|modal",
+        "0|policy",
+        "1|g_bully",
+        "1|modal",
+        "1|policy",
+        "2|g_bully",
+        "2|modal",
+        "2|policy",
+        "3|g_bully",
+        "... 134 more"
+       ],
+       "records": "missing"
+      },
+      "validation": null
+     },
+     "E_recall": {
+      "status": "missing",
+      "coverage": {
+       "designed_states": 48,
+       "collected_states": null,
+       "state_coverage": "unknown (no manifest)",
+       "expected_records": 96,
+       "present_records": 0,
+       "missing_records": [
+        "0|modal",
+        "0|policy",
+        "1|modal",
+        "1|policy",
+        "2|modal",
+        "2|policy",
+        "3|modal",
+        "3|policy",
+        "4|modal",
+        "4|policy",
+        "... 86 more"
+       ],
+       "records": "missing"
+      },
+      "validation": null
+     },
+     "F_freeze_c": {
+      "status": "missing",
+      "coverage": {
+       "designed_states": 10,
+       "collected_states": 10,
+       "state_coverage": "complete",
+       "expected_records": 50,
+       "present_records": 0,
+       "missing_records": [
+        "0|modal",
+        "0|policy",
+        "0|wk_back",
+        "0|wk_shove",
+        "0|wk_shove_reset",
+        "1|modal",
+        "1|policy",
+        "1|wk_back",
+        "1|wk_shove",
+        "1|wk_shove_reset",
+        "... 40 more"
+       ],
+       "records": "missing"
+      },
+      "validation": null
+     },
+     "G_trade_c": {
+      "status": "missing",
+      "coverage": {
+       "designed_states": 12,
+       "collected_states": 12,
+       "state_coverage": "complete",
+       "expected_records": 36,
+       "present_records": 0,
+       "missing_records": [
+        "0|g_wary",
+        "0|modal",
+        "0|policy",
+        "1|g_wary",
+        "1|modal",
+        "1|policy",
+        "2|g_wary",
+        "2|modal",
+        "2|policy",
+        "3|g_wary",
+        "... 26 more"
+       ],
+       "records": "missing"
+      },
+      "validation": null
+     },
+     "H_zone_c": {
+      "status": "missing",
+      "coverage": {
+       "designed_states": 12,
+       "collected_states": 12,
+       "state_coverage": "complete",
+       "expected_records": 36,
+       "present_records": 0,
+       "missing_records": [
+        "0|g_wary",
+        "0|modal",
+        "0|policy",
+        "1|g_wary",
+        "1|modal",
+        "1|policy",
+        "2|g_wary",
+        "2|modal",
+        "2|policy",
+        "3|g_wary",
+        "... 26 more"
+       ],
+       "records": "missing"
+      },
+      "validation": null
+     },
+     "I_ward_c": {
+      "status": "missing",
+      "coverage": {
+       "designed_states": 8,
+       "collected_states": 8,
+       "state_coverage": "complete",
+       "expected_records": 24,
+       "present_records": 0,
+       "missing_records": [
+        "0|g_bully",
+        "0|modal",
+        "0|policy",
+        "1|g_bully",
+        "1|modal",
+        "1|policy",
+        "2|g_bully",
+        "2|modal",
+        "2|policy",
+        "3|g_bully",
+        "... 14 more"
+       ],
+       "records": "missing"
+      },
+      "validation": null
+     }
+    },
+    "weak": {
+     "status": "partial records",
+     "missing": [
+      0,
+      4,
+      8,
+      12,
+      16,
+      20,
+      24,
+      28,
+      32
+     ]
+    }
+   },
+   "om_s4": {
+    "battery": {
+     "A_wave": {
+      "status": "missing",
+      "coverage": {
+       "designed_states": 48,
+       "collected_states": null,
+       "state_coverage": "unknown (no manifest)",
+       "expected_records": 96,
+       "present_records": 0,
+       "missing_records": [
+        "0|modal",
+        "0|policy",
+        "1|modal",
+        "1|policy",
+        "2|modal",
+        "2|policy",
+        "3|modal",
+        "3|policy",
+        "4|modal",
+        "4|policy",
+        "... 86 more"
+       ],
+       "records": "missing"
+      },
+      "validation": null
+     },
+     "A_wave_early": {
+      "status": "missing",
+      "coverage": {
+       "designed_states": 24,
+       "collected_states": null,
+       "state_coverage": "unknown (no manifest)",
+       "expected_records": 48,
+       "present_records": 0,
+       "missing_records": [
+        "0|modal",
+        "0|policy",
+        "1|modal",
+        "1|policy",
+        "2|modal",
+        "2|policy",
+        "3|modal",
+        "3|policy",
+        "4|modal",
+        "4|policy",
+        "... 38 more"
+       ],
+       "records": "missing"
+      },
+      "validation": null
+     },
+     "B_freeze": {
+      "status": "missing",
+      "coverage": {
+       "designed_states": 48,
+       "collected_states": null,
+       "state_coverage": "unknown (no manifest)",
+       "expected_records": 240,
+       "present_records": 0,
+       "missing_records": [
+        "0|modal",
+        "0|policy",
+        "0|wk_back",
+        "0|wk_shove",
+        "0|wk_shove_reset",
+        "1|modal",
+        "1|policy",
+        "1|wk_back",
+        "1|wk_shove",
+        "1|wk_shove_reset",
+        "... 230 more"
+       ],
+       "records": "missing"
+      },
+      "validation": null
+     },
+     "B_frozen": {
+      "status": "missing",
+      "coverage": {
+       "designed_states": 48,
+       "collected_states": null,
+       "state_coverage": "unknown (no manifest)",
+       "expected_records": 240,
+       "present_records": 0,
+       "missing_records": [
+        "0|fz_bully_sh",
+        "0|fz_guard_sh",
+        "0|fz_passive_sh",
+        "0|modal",
+        "0|policy",
+        "1|fz_bully_sh",
+        "1|fz_guard_sh",
+        "1|fz_passive_sh",
+        "1|modal",
+        "1|policy",
+        "... 230 more"
+       ],
+       "records": "missing"
+      },
+      "validation": null
+     },
+     "C_trade": {
+      "status": "missing",
+      "coverage": {
+       "designed_states": 48,
+       "collected_states": null,
+       "state_coverage": "unknown (no manifest)",
+       "expected_records": 144,
+       "present_records": 0,
+       "missing_records": [
+        "0|g_wary",
+        "0|modal",
+        "0|policy",
+        "1|g_wary",
+        "1|modal",
+        "1|policy",
+        "2|g_wary",
+        "2|modal",
+        "2|policy",
+        "3|g_wary",
+        "... 134 more"
+       ],
+       "records": "missing"
+      },
+      "validation": null
+     },
+     "C_trade_early": {
+      "status": "missing",
+      "coverage": {
+       "designed_states": 24,
+       "collected_states": null,
+       "state_coverage": "unknown (no manifest)",
+       "expected_records": 72,
+       "present_records": 0,
+       "missing_records": [
+        "0|g_wary",
+        "0|modal",
+        "0|policy",
+        "1|g_wary",
+        "1|modal",
+        "1|policy",
+        "2|g_wary",
+        "2|modal",
+        "2|policy",
+        "3|g_wary",
+        "... 62 more"
+       ],
+       "records": "missing"
+      },
+      "validation": null
+     },
+     "D_ward": {
+      "status": "missing",
+      "coverage": {
+       "designed_states": 48,
+       "collected_states": null,
+       "state_coverage": "unknown (no manifest)",
+       "expected_records": 144,
+       "present_records": 0,
+       "missing_records": [
+        "0|g_bully",
+        "0|modal",
+        "0|policy",
+        "1|g_bully",
+        "1|modal",
+        "1|policy",
+        "2|g_bully",
+        "2|modal",
+        "2|policy",
+        "3|g_bully",
+        "... 134 more"
+       ],
+       "records": "missing"
+      },
+      "validation": null
+     },
+     "E_recall": {
+      "status": "missing",
+      "coverage": {
+       "designed_states": 48,
+       "collected_states": null,
+       "state_coverage": "unknown (no manifest)",
+       "expected_records": 96,
+       "present_records": 0,
+       "missing_records": [
+        "0|modal",
+        "0|policy",
+        "1|modal",
+        "1|policy",
+        "2|modal",
+        "2|policy",
+        "3|modal",
+        "3|policy",
+        "4|modal",
+        "4|policy",
+        "... 86 more"
+       ],
+       "records": "missing"
+      },
+      "validation": null
+     },
+     "F_freeze_c": {
+      "status": "missing",
+      "coverage": {
+       "designed_states": 10,
+       "collected_states": 10,
+       "state_coverage": "complete",
+       "expected_records": 50,
+       "present_records": 0,
+       "missing_records": [
+        "0|modal",
+        "0|policy",
+        "0|wk_back",
+        "0|wk_shove",
+        "0|wk_shove_reset",
+        "1|modal",
+        "1|policy",
+        "1|wk_back",
+        "1|wk_shove",
+        "1|wk_shove_reset",
+        "... 40 more"
+       ],
+       "records": "missing"
+      },
+      "validation": null
+     },
+     "G_trade_c": {
+      "status": "missing",
+      "coverage": {
+       "designed_states": 12,
+       "collected_states": 12,
+       "state_coverage": "complete",
+       "expected_records": 36,
+       "present_records": 0,
+       "missing_records": [
+        "0|g_wary",
+        "0|modal",
+        "0|policy",
+        "1|g_wary",
+        "1|modal",
+        "1|policy",
+        "2|g_wary",
+        "2|modal",
+        "2|policy",
+        "3|g_wary",
+        "... 26 more"
+       ],
+       "records": "missing"
+      },
+      "validation": null
+     },
+     "H_zone_c": {
+      "status": "missing",
+      "coverage": {
+       "designed_states": 12,
+       "collected_states": 12,
+       "state_coverage": "complete",
+       "expected_records": 36,
+       "present_records": 0,
+       "missing_records": [
+        "0|g_wary",
+        "0|modal",
+        "0|policy",
+        "1|g_wary",
+        "1|modal",
+        "1|policy",
+        "2|g_wary",
+        "2|modal",
+        "2|policy",
+        "3|g_wary",
+        "... 26 more"
+       ],
+       "records": "missing"
+      },
+      "validation": null
+     },
+     "I_ward_c": {
+      "status": "missing",
+      "coverage": {
+       "designed_states": 8,
+       "collected_states": 8,
+       "state_coverage": "complete",
+       "expected_records": 24,
+       "present_records": 0,
+       "missing_records": [
+        "0|g_bully",
+        "0|modal",
+        "0|policy",
+        "1|g_bully",
+        "1|modal",
+        "1|policy",
+        "2|g_bully",
+        "2|modal",
+        "2|policy",
+        "3|g_bully",
+        "... 14 more"
+       ],
+       "records": "missing"
+      },
+      "validation": null
+     }
+    },
+    "weak": {
+     "status": "partial records",
+     "missing": [
+      0,
+      4,
+      8,
+      12,
+      16,
+      20,
+      24,
+      28,
+      32
+     ]
+    }
+   },
+   "om_s5": {
+    "battery": {
+     "A_wave": {
+      "status": "missing",
+      "coverage": {
+       "designed_states": 48,
+       "collected_states": null,
+       "state_coverage": "unknown (no manifest)",
+       "expected_records": 96,
+       "present_records": 0,
+       "missing_records": [
+        "0|modal",
+        "0|policy",
+        "1|modal",
+        "1|policy",
+        "2|modal",
+        "2|policy",
+        "3|modal",
+        "3|policy",
+        "4|modal",
+        "4|policy",
+        "... 86 more"
+       ],
+       "records": "missing"
+      },
+      "validation": null
+     },
+     "A_wave_early": {
+      "status": "missing",
+      "coverage": {
+       "designed_states": 24,
+       "collected_states": null,
+       "state_coverage": "unknown (no manifest)",
+       "expected_records": 48,
+       "present_records": 0,
+       "missing_records": [
+        "0|modal",
+        "0|policy",
+        "1|modal",
+        "1|policy",
+        "2|modal",
+        "2|policy",
+        "3|modal",
+        "3|policy",
+        "4|modal",
+        "4|policy",
+        "... 38 more"
+       ],
+       "records": "missing"
+      },
+      "validation": null
+     },
+     "B_freeze": {
+      "status": "missing",
+      "coverage": {
+       "designed_states": 48,
+       "collected_states": null,
+       "state_coverage": "unknown (no manifest)",
+       "expected_records": 240,
+       "present_records": 0,
+       "missing_records": [
+        "0|modal",
+        "0|policy",
+        "0|wk_back",
+        "0|wk_shove",
+        "0|wk_shove_reset",
+        "1|modal",
+        "1|policy",
+        "1|wk_back",
+        "1|wk_shove",
+        "1|wk_shove_reset",
+        "... 230 more"
+       ],
+       "records": "missing"
+      },
+      "validation": null
+     },
+     "B_frozen": {
+      "status": "missing",
+      "coverage": {
+       "designed_states": 48,
+       "collected_states": null,
+       "state_coverage": "unknown (no manifest)",
+       "expected_records": 240,
+       "present_records": 0,
+       "missing_records": [
+        "0|fz_bully_sh",
+        "0|fz_guard_sh",
+        "0|fz_passive_sh",
+        "0|modal",
+        "0|policy",
+        "1|fz_bully_sh",
+        "1|fz_guard_sh",
+        "1|fz_passive_sh",
+        "1|modal",
+        "1|policy",
+        "... 230 more"
+       ],
+       "records": "missing"
+      },
+      "validation": null
+     },
+     "C_trade": {
+      "status": "missing",
+      "coverage": {
+       "designed_states": 48,
+       "collected_states": null,
+       "state_coverage": "unknown (no manifest)",
+       "expected_records": 144,
+       "present_records": 0,
+       "missing_records": [
+        "0|g_wary",
+        "0|modal",
+        "0|policy",
+        "1|g_wary",
+        "1|modal",
+        "1|policy",
+        "2|g_wary",
+        "2|modal",
+        "2|policy",
+        "3|g_wary",
+        "... 134 more"
+       ],
+       "records": "missing"
+      },
+      "validation": null
+     },
+     "C_trade_early": {
+      "status": "missing",
+      "coverage": {
+       "designed_states": 24,
+       "collected_states": null,
+       "state_coverage": "unknown (no manifest)",
+       "expected_records": 72,
+       "present_records": 0,
+       "missing_records": [
+        "0|g_wary",
+        "0|modal",
+        "0|policy",
+        "1|g_wary",
+        "1|modal",
+        "1|policy",
+        "2|g_wary",
+        "2|modal",
+        "2|policy",
+        "3|g_wary",
+        "... 62 more"
+       ],
+       "records": "missing"
+      },
+      "validation": null
+     },
+     "D_ward": {
+      "status": "missing",
+      "coverage": {
+       "designed_states": 48,
+       "collected_states": null,
+       "state_coverage": "unknown (no manifest)",
+       "expected_records": 144,
+       "present_records": 0,
+       "missing_records": [
+        "0|g_bully",
+        "0|modal",
+        "0|policy",
+        "1|g_bully",
+        "1|modal",
+        "1|policy",
+        "2|g_bully",
+        "2|modal",
+        "2|policy",
+        "3|g_bully",
+        "... 134 more"
+       ],
+       "records": "missing"
+      },
+      "validation": null
+     },
+     "E_recall": {
+      "status": "missing",
+      "coverage": {
+       "designed_states": 48,
+       "collected_states": null,
+       "state_coverage": "unknown (no manifest)",
+       "expected_records": 96,
+       "present_records": 0,
+       "missing_records": [
+        "0|modal",
+        "0|policy",
+        "1|modal",
+        "1|policy",
+        "2|modal",
+        "2|policy",
+        "3|modal",
+        "3|policy",
+        "4|modal",
+        "4|policy",
+        "... 86 more"
+       ],
+       "records": "missing"
+      },
+      "validation": null
+     },
+     "F_freeze_c": {
+      "status": "missing",
+      "coverage": {
+       "designed_states": 10,
+       "collected_states": 10,
+       "state_coverage": "complete",
+       "expected_records": 50,
+       "present_records": 0,
+       "missing_records": [
+        "0|modal",
+        "0|policy",
+        "0|wk_back",
+        "0|wk_shove",
+        "0|wk_shove_reset",
+        "1|modal",
+        "1|policy",
+        "1|wk_back",
+        "1|wk_shove",
+        "1|wk_shove_reset",
+        "... 40 more"
+       ],
+       "records": "missing"
+      },
+      "validation": null
+     },
+     "G_trade_c": {
+      "status": "missing",
+      "coverage": {
+       "designed_states": 12,
+       "collected_states": 12,
+       "state_coverage": "complete",
+       "expected_records": 36,
+       "present_records": 0,
+       "missing_records": [
+        "0|g_wary",
+        "0|modal",
+        "0|policy",
+        "1|g_wary",
+        "1|modal",
+        "1|policy",
+        "2|g_wary",
+        "2|modal",
+        "2|policy",
+        "3|g_wary",
+        "... 26 more"
+       ],
+       "records": "missing"
+      },
+      "validation": null
+     },
+     "H_zone_c": {
+      "status": "missing",
+      "coverage": {
+       "designed_states": 12,
+       "collected_states": 12,
+       "state_coverage": "complete",
+       "expected_records": 36,
+       "present_records": 0,
+       "missing_records": [
+        "0|g_wary",
+        "0|modal",
+        "0|policy",
+        "1|g_wary",
+        "1|modal",
+        "1|policy",
+        "2|g_wary",
+        "2|modal",
+        "2|policy",
+        "3|g_wary",
+        "... 26 more"
+       ],
+       "records": "missing"
+      },
+      "validation": null
+     },
+     "I_ward_c": {
+      "status": "missing",
+      "coverage": {
+       "designed_states": 8,
+       "collected_states": 8,
+       "state_coverage": "complete",
+       "expected_records": 24,
+       "present_records": 0,
+       "missing_records": [
+        "0|g_bully",
+        "0|modal",
+        "0|policy",
+        "1|g_bully",
+        "1|modal",
+        "1|policy",
+        "2|g_bully",
+        "2|modal",
+        "2|policy",
+        "3|g_bully",
+        "... 14 more"
+       ],
+       "records": "missing"
+      },
+      "validation": null
+     }
+    },
+    "weak": {
+     "status": "partial records",
+     "missing": [
+      0,
+      4,
+      8,
+      12,
+      16,
+      20,
+      24,
+      28,
+      32
+     ]
+    }
+   },
+   "sp_s0": {
+    "battery": {
+     "A_wave": {
+      "status": "missing",
+      "coverage": {
+       "designed_states": 48,
+       "collected_states": null,
+       "state_coverage": "unknown (no manifest)",
+       "expected_records": 96,
+       "present_records": 0,
+       "missing_records": [
+        "0|modal",
+        "0|policy",
+        "1|modal",
+        "1|policy",
+        "2|modal",
+        "2|policy",
+        "3|modal",
+        "3|policy",
+        "4|modal",
+        "4|policy",
+        "... 86 more"
+       ],
+       "records": "missing"
+      },
+      "validation": null
+     },
+     "A_wave_early": {
+      "status": "missing",
+      "coverage": {
+       "designed_states": 24,
+       "collected_states": null,
+       "state_coverage": "unknown (no manifest)",
+       "expected_records": 48,
+       "present_records": 0,
+       "missing_records": [
+        "0|modal",
+        "0|policy",
+        "1|modal",
+        "1|policy",
+        "2|modal",
+        "2|policy",
+        "3|modal",
+        "3|policy",
+        "4|modal",
+        "4|policy",
+        "... 38 more"
+       ],
+       "records": "missing"
+      },
+      "validation": null
+     },
+     "B_freeze": {
+      "status": "missing",
+      "coverage": {
+       "designed_states": 48,
+       "collected_states": null,
+       "state_coverage": "unknown (no manifest)",
+       "expected_records": 240,
+       "present_records": 0,
+       "missing_records": [
+        "0|modal",
+        "0|policy",
+        "0|wk_back",
+        "0|wk_shove",
+        "0|wk_shove_reset",
+        "1|modal",
+        "1|policy",
+        "1|wk_back",
+        "1|wk_shove",
+        "1|wk_shove_reset",
+        "... 230 more"
+       ],
+       "records": "missing"
+      },
+      "validation": null
+     },
+     "B_frozen": {
+      "status": "missing",
+      "coverage": {
+       "designed_states": 48,
+       "collected_states": null,
+       "state_coverage": "unknown (no manifest)",
+       "expected_records": 240,
+       "present_records": 0,
+       "missing_records": [
+        "0|fz_bully_sh",
+        "0|fz_guard_sh",
+        "0|fz_passive_sh",
+        "0|modal",
+        "0|policy",
+        "1|fz_bully_sh",
+        "1|fz_guard_sh",
+        "1|fz_passive_sh",
+        "1|modal",
+        "1|policy",
+        "... 230 more"
+       ],
+       "records": "missing"
+      },
+      "validation": null
+     },
+     "C_trade": {
+      "status": "missing",
+      "coverage": {
+       "designed_states": 48,
+       "collected_states": null,
+       "state_coverage": "unknown (no manifest)",
+       "expected_records": 144,
+       "present_records": 0,
+       "missing_records": [
+        "0|g_wary",
+        "0|modal",
+        "0|policy",
+        "1|g_wary",
+        "1|modal",
+        "1|policy",
+        "2|g_wary",
+        "2|modal",
+        "2|policy",
+        "3|g_wary",
+        "... 134 more"
+       ],
+       "records": "missing"
+      },
+      "validation": null
+     },
+     "C_trade_early": {
+      "status": "missing",
+      "coverage": {
+       "designed_states": 24,
+       "collected_states": null,
+       "state_coverage": "unknown (no manifest)",
+       "expected_records": 72,
+       "present_records": 0,
+       "missing_records": [
+        "0|g_wary",
+        "0|modal",
+        "0|policy",
+        "1|g_wary",
+        "1|modal",
+        "1|policy",
+        "2|g_wary",
+        "2|modal",
+        "2|policy",
+        "3|g_wary",
+        "... 62 more"
+       ],
+       "records": "missing"
+      },
+      "validation": null
+     },
+     "D_ward": {
+      "status": "missing",
+      "coverage": {
+       "designed_states": 48,
+       "collected_states": null,
+       "state_coverage": "unknown (no manifest)",
+       "expected_records": 144,
+       "present_records": 0,
+       "missing_records": [
+        "0|g_bully",
+        "0|modal",
+        "0|policy",
+        "1|g_bully",
+        "1|modal",
+        "1|policy",
+        "2|g_bully",
+        "2|modal",
+        "2|policy",
+        "3|g_bully",
+        "... 134 more"
+       ],
+       "records": "missing"
+      },
+      "validation": null
+     },
+     "E_recall": {
+      "status": "missing",
+      "coverage": {
+       "designed_states": 48,
+       "collected_states": null,
+       "state_coverage": "unknown (no manifest)",
+       "expected_records": 96,
+       "present_records": 0,
+       "missing_records": [
+        "0|modal",
+        "0|policy",
+        "1|modal",
+        "1|policy",
+        "2|modal",
+        "2|policy",
+        "3|modal",
+        "3|policy",
+        "4|modal",
+        "4|policy",
+        "... 86 more"
+       ],
+       "records": "missing"
+      },
+      "validation": null
+     },
+     "F_freeze_c": {
+      "status": "missing",
+      "coverage": {
+       "designed_states": 10,
+       "collected_states": 10,
+       "state_coverage": "complete",
+       "expected_records": 50,
+       "present_records": 0,
+       "missing_records": [
+        "0|modal",
+        "0|policy",
+        "0|wk_back",
+        "0|wk_shove",
+        "0|wk_shove_reset",
+        "1|modal",
+        "1|policy",
+        "1|wk_back",
+        "1|wk_shove",
+        "1|wk_shove_reset",
+        "... 40 more"
+       ],
+       "records": "missing"
+      },
+      "validation": null
+     },
+     "G_trade_c": {
+      "status": "missing",
+      "coverage": {
+       "designed_states": 12,
+       "collected_states": 12,
+       "state_coverage": "complete",
+       "expected_records": 36,
+       "present_records": 0,
+       "missing_records": [
+        "0|g_wary",
+        "0|modal",
+        "0|policy",
+        "1|g_wary",
+        "1|modal",
+        "1|policy",
+        "2|g_wary",
+        "2|modal",
+        "2|policy",
+        "3|g_wary",
+        "... 26 more"
+       ],
+       "records": "missing"
+      },
+      "validation": null
+     },
+     "H_zone_c": {
+      "status": "missing",
+      "coverage": {
+       "designed_states": 12,
+       "collected_states": 12,
+       "state_coverage": "complete",
+       "expected_records": 36,
+       "present_records": 0,
+       "missing_records": [
+        "0|g_wary",
+        "0|modal",
+        "0|policy",
+        "1|g_wary",
+        "1|modal",
+        "1|policy",
+        "2|g_wary",
+        "2|modal",
+        "2|policy",
+        "3|g_wary",
+        "... 26 more"
+       ],
+       "records": "missing"
+      },
+      "validation": null
+     },
+     "I_ward_c": {
+      "status": "missing",
+      "coverage": {
+       "designed_states": 8,
+       "collected_states": 8,
+       "state_coverage": "complete",
+       "expected_records": 24,
+       "present_records": 0,
+       "missing_records": [
+        "0|g_bully",
+        "0|modal",
+        "0|policy",
+        "1|g_bully",
+        "1|modal",
+        "1|policy",
+        "2|g_bully",
+        "2|modal",
+        "2|policy",
+        "3|g_bully",
+        "... 14 more"
+       ],
+       "records": "missing"
+      },
+      "validation": null
+     }
+    },
+    "weak": {
+     "status": "partial records",
+     "missing": [
+      0,
+      4,
+      8,
+      12,
+      16,
+      20,
+      24,
+      28,
+      32
+     ]
+    }
+   },
+   "sp_s1": {
+    "battery": {
+     "A_wave": {
+      "status": "missing",
+      "coverage": {
+       "designed_states": 48,
+       "collected_states": null,
+       "state_coverage": "unknown (no manifest)",
+       "expected_records": 96,
+       "present_records": 0,
+       "missing_records": [
+        "0|modal",
+        "0|policy",
+        "1|modal",
+        "1|policy",
+        "2|modal",
+        "2|policy",
+        "3|modal",
+        "3|policy",
+        "4|modal",
+        "4|policy",
+        "... 86 more"
+       ],
+       "records": "missing"
+      },
+      "validation": null
+     },
+     "A_wave_early": {
+      "status": "missing",
+      "coverage": {
+       "designed_states": 24,
+       "collected_states": null,
+       "state_coverage": "unknown (no manifest)",
+       "expected_records": 48,
+       "present_records": 0,
+       "missing_records": [
+        "0|modal",
+        "0|policy",
+        "1|modal",
+        "1|policy",
+        "2|modal",
+        "2|policy",
+        "3|modal",
+        "3|policy",
+        "4|modal",
+        "4|policy",
+        "... 38 more"
+       ],
+       "records": "missing"
+      },
+      "validation": null
+     },
+     "B_freeze": {
+      "status": "missing",
+      "coverage": {
+       "designed_states": 48,
+       "collected_states": null,
+       "state_coverage": "unknown (no manifest)",
+       "expected_records": 240,
+       "present_records": 0,
+       "missing_records": [
+        "0|modal",
+        "0|policy",
+        "0|wk_back",
+        "0|wk_shove",
+        "0|wk_shove_reset",
+        "1|modal",
+        "1|policy",
+        "1|wk_back",
+        "1|wk_shove",
+        "1|wk_shove_reset",
+        "... 230 more"
+       ],
+       "records": "missing"
+      },
+      "validation": null
+     },
+     "B_frozen": {
+      "status": "missing",
+      "coverage": {
+       "designed_states": 48,
+       "collected_states": null,
+       "state_coverage": "unknown (no manifest)",
+       "expected_records": 240,
+       "present_records": 0,
+       "missing_records": [
+        "0|fz_bully_sh",
+        "0|fz_guard_sh",
+        "0|fz_passive_sh",
+        "0|modal",
+        "0|policy",
+        "1|fz_bully_sh",
+        "1|fz_guard_sh",
+        "1|fz_passive_sh",
+        "1|modal",
+        "1|policy",
+        "... 230 more"
+       ],
+       "records": "missing"
+      },
+      "validation": null
+     },
+     "C_trade": {
+      "status": "missing",
+      "coverage": {
+       "designed_states": 48,
+       "collected_states": null,
+       "state_coverage": "unknown (no manifest)",
+       "expected_records": 144,
+       "present_records": 0,
+       "missing_records": [
+        "0|g_wary",
+        "0|modal",
+        "0|policy",
+        "1|g_wary",
+        "1|modal",
+        "1|policy",
+        "2|g_wary",
+        "2|modal",
+        "2|policy",
+        "3|g_wary",
+        "... 134 more"
+       ],
+       "records": "missing"
+      },
+      "validation": null
+     },
+     "C_trade_early": {
+      "status": "missing",
+      "coverage": {
+       "designed_states": 24,
+       "collected_states": null,
+       "state_coverage": "unknown (no manifest)",
+       "expected_records": 72,
+       "present_records": 0,
+       "missing_records": [
+        "0|g_wary",
+        "0|modal",
+        "0|policy",
+        "1|g_wary",
+        "1|modal",
+        "1|policy",
+        "2|g_wary",
+        "2|modal",
+        "2|policy",
+        "3|g_wary",
+        "... 62 more"
+       ],
+       "records": "missing"
+      },
+      "validation": null
+     },
+     "D_ward": {
+      "status": "missing",
+      "coverage": {
+       "designed_states": 48,
+       "collected_states": null,
+       "state_coverage": "unknown (no manifest)",
+       "expected_records": 144,
+       "present_records": 0,
+       "missing_records": [
+        "0|g_bully",
+        "0|modal",
+        "0|policy",
+        "1|g_bully",
+        "1|modal",
+        "1|policy",
+        "2|g_bully",
+        "2|modal",
+        "2|policy",
+        "3|g_bully",
+        "... 134 more"
+       ],
+       "records": "missing"
+      },
+      "validation": null
+     },
+     "E_recall": {
+      "status": "missing",
+      "coverage": {
+       "designed_states": 48,
+       "collected_states": null,
+       "state_coverage": "unknown (no manifest)",
+       "expected_records": 96,
+       "present_records": 0,
+       "missing_records": [
+        "0|modal",
+        "0|policy",
+        "1|modal",
+        "1|policy",
+        "2|modal",
+        "2|policy",
+        "3|modal",
+        "3|policy",
+        "4|modal",
+        "4|policy",
+        "... 86 more"
+       ],
+       "records": "missing"
+      },
+      "validation": null
+     },
+     "F_freeze_c": {
+      "status": "missing",
+      "coverage": {
+       "designed_states": 10,
+       "collected_states": 10,
+       "state_coverage": "complete",
+       "expected_records": 50,
+       "present_records": 0,
+       "missing_records": [
+        "0|modal",
+        "0|policy",
+        "0|wk_back",
+        "0|wk_shove",
+        "0|wk_shove_reset",
+        "1|modal",
+        "1|policy",
+        "1|wk_back",
+        "1|wk_shove",
+        "1|wk_shove_reset",
+        "... 40 more"
+       ],
+       "records": "missing"
+      },
+      "validation": null
+     },
+     "G_trade_c": {
+      "status": "missing",
+      "coverage": {
+       "designed_states": 12,
+       "collected_states": 12,
+       "state_coverage": "complete",
+       "expected_records": 36,
+       "present_records": 0,
+       "missing_records": [
+        "0|g_wary",
+        "0|modal",
+        "0|policy",
+        "1|g_wary",
+        "1|modal",
+        "1|policy",
+        "2|g_wary",
+        "2|modal",
+        "2|policy",
+        "3|g_wary",
+        "... 26 more"
+       ],
+       "records": "missing"
+      },
+      "validation": null
+     },
+     "H_zone_c": {
+      "status": "missing",
+      "coverage": {
+       "designed_states": 12,
+       "collected_states": 12,
+       "state_coverage": "complete",
+       "expected_records": 36,
+       "present_records": 0,
+       "missing_records": [
+        "0|g_wary",
+        "0|modal",
+        "0|policy",
+        "1|g_wary",
+        "1|modal",
+        "1|policy",
+        "2|g_wary",
+        "2|modal",
+        "2|policy",
+        "3|g_wary",
+        "... 26 more"
+       ],
+       "records": "missing"
+      },
+      "validation": null
+     },
+     "I_ward_c": {
+      "status": "missing",
+      "coverage": {
+       "designed_states": 8,
+       "collected_states": 8,
+       "state_coverage": "complete",
+       "expected_records": 24,
+       "present_records": 0,
+       "missing_records": [
+        "0|g_bully",
+        "0|modal",
+        "0|policy",
+        "1|g_bully",
+        "1|modal",
+        "1|policy",
+        "2|g_bully",
+        "2|modal",
+        "2|policy",
+        "3|g_bully",
+        "... 14 more"
+       ],
+       "records": "missing"
+      },
+      "validation": null
+     }
+    },
+    "weak": {
+     "status": "partial records",
+     "missing": [
+      0,
+      4,
+      8,
+      12,
+      16,
+      20,
+      24,
+      28,
+      32
+     ]
+    }
+   },
+   "sp_s2": {
+    "battery": {
+     "A_wave": {
+      "status": "missing",
+      "coverage": {
+       "designed_states": 48,
+       "collected_states": null,
+       "state_coverage": "unknown (no manifest)",
+       "expected_records": 96,
+       "present_records": 0,
+       "missing_records": [
+        "0|modal",
+        "0|policy",
+        "1|modal",
+        "1|policy",
+        "2|modal",
+        "2|policy",
+        "3|modal",
+        "3|policy",
+        "4|modal",
+        "4|policy",
+        "... 86 more"
+       ],
+       "records": "missing"
+      },
+      "validation": null
+     },
+     "A_wave_early": {
+      "status": "missing",
+      "coverage": {
+       "designed_states": 24,
+       "collected_states": null,
+       "state_coverage": "unknown (no manifest)",
+       "expected_records": 48,
+       "present_records": 0,
+       "missing_records": [
+        "0|modal",
+        "0|policy",
+        "1|modal",
+        "1|policy",
+        "2|modal",
+        "2|policy",
+        "3|modal",
+        "3|policy",
+        "4|modal",
+        "4|policy",
+        "... 38 more"
+       ],
+       "records": "missing"
+      },
+      "validation": null
+     },
+     "B_freeze": {
+      "status": "missing",
+      "coverage": {
+       "designed_states": 48,
+       "collected_states": null,
+       "state_coverage": "unknown (no manifest)",
+       "expected_records": 240,
+       "present_records": 0,
+       "missing_records": [
+        "0|modal",
+        "0|policy",
+        "0|wk_back",
+        "0|wk_shove",
+        "0|wk_shove_reset",
+        "1|modal",
+        "1|policy",
+        "1|wk_back",
+        "1|wk_shove",
+        "1|wk_shove_reset",
+        "... 230 more"
+       ],
+       "records": "missing"
+      },
+      "validation": null
+     },
+     "B_frozen": {
+      "status": "missing",
+      "coverage": {
+       "designed_states": 48,
+       "collected_states": null,
+       "state_coverage": "unknown (no manifest)",
+       "expected_records": 240,
+       "present_records": 0,
+       "missing_records": [
+        "0|fz_bully_sh",
+        "0|fz_guard_sh",
+        "0|fz_passive_sh",
+        "0|modal",
+        "0|policy",
+        "1|fz_bully_sh",
+        "1|fz_guard_sh",
+        "1|fz_passive_sh",
+        "1|modal",
+        "1|policy",
+        "... 230 more"
+       ],
+       "records": "missing"
+      },
+      "validation": null
+     },
+     "C_trade": {
+      "status": "missing",
+      "coverage": {
+       "designed_states": 48,
+       "collected_states": null,
+       "state_coverage": "unknown (no manifest)",
+       "expected_records": 144,
+       "present_records": 0,
+       "missing_records": [
+        "0|g_wary",
+        "0|modal",
+        "0|policy",
+        "1|g_wary",
+        "1|modal",
+        "1|policy",
+        "2|g_wary",
+        "2|modal",
+        "2|policy",
+        "3|g_wary",
+        "... 134 more"
+       ],
+       "records": "missing"
+      },
+      "validation": null
+     },
+     "C_trade_early": {
+      "status": "missing",
+      "coverage": {
+       "designed_states": 24,
+       "collected_states": null,
+       "state_coverage": "unknown (no manifest)",
+       "expected_records": 72,
+       "present_records": 0,
+       "missing_records": [
+        "0|g_wary",
+        "0|modal",
+        "0|policy",
+        "1|g_wary",
+        "1|modal",
+        "1|policy",
+        "2|g_wary",
+        "2|modal",
+        "2|policy",
+        "3|g_wary",
+        "... 62 more"
+       ],
+       "records": "missing"
+      },
+      "validation": null
+     },
+     "D_ward": {
+      "status": "missing",
+      "coverage": {
+       "designed_states": 48,
+       "collected_states": null,
+       "state_coverage": "unknown (no manifest)",
+       "expected_records": 144,
+       "present_records": 0,
+       "missing_records": [
+        "0|g_bully",
+        "0|modal",
+        "0|policy",
+        "1|g_bully",
+        "1|modal",
+        "1|policy",
+        "2|g_bully",
+        "2|modal",
+        "2|policy",
+        "3|g_bully",
+        "... 134 more"
+       ],
+       "records": "missing"
+      },
+      "validation": null
+     },
+     "E_recall": {
+      "status": "missing",
+      "coverage": {
+       "designed_states": 48,
+       "collected_states": null,
+       "state_coverage": "unknown (no manifest)",
+       "expected_records": 96,
+       "present_records": 0,
+       "missing_records": [
+        "0|modal",
+        "0|policy",
+        "1|modal",
+        "1|policy",
+        "2|modal",
+        "2|policy",
+        "3|modal",
+        "3|policy",
+        "4|modal",
+        "4|policy",
+        "... 86 more"
+       ],
+       "records": "missing"
+      },
+      "validation": null
+     },
+     "F_freeze_c": {
+      "status": "missing",
+      "coverage": {
+       "designed_states": 10,
+       "collected_states": 10,
+       "state_coverage": "complete",
+       "expected_records": 50,
+       "present_records": 0,
+       "missing_records": [
+        "0|modal",
+        "0|policy",
+        "0|wk_back",
+        "0|wk_shove",
+        "0|wk_shove_reset",
+        "1|modal",
+        "1|policy",
+        "1|wk_back",
+        "1|wk_shove",
+        "1|wk_shove_reset",
+        "... 40 more"
+       ],
+       "records": "missing"
+      },
+      "validation": null
+     },
+     "G_trade_c": {
+      "status": "missing",
+      "coverage": {
+       "designed_states": 12,
+       "collected_states": 12,
+       "state_coverage": "complete",
+       "expected_records": 36,
+       "present_records": 0,
+       "missing_records": [
+        "0|g_wary",
+        "0|modal",
+        "0|policy",
+        "1|g_wary",
+        "1|modal",
+        "1|policy",
+        "2|g_wary",
+        "2|modal",
+        "2|policy",
+        "3|g_wary",
+        "... 26 more"
+       ],
+       "records": "missing"
+      },
+      "validation": null
+     },
+     "H_zone_c": {
+      "status": "missing",
+      "coverage": {
+       "designed_states": 12,
+       "collected_states": 12,
+       "state_coverage": "complete",
+       "expected_records": 36,
+       "present_records": 0,
+       "missing_records": [
+        "0|g_wary",
+        "0|modal",
+        "0|policy",
+        "1|g_wary",
+        "1|modal",
+        "1|policy",
+        "2|g_wary",
+        "2|modal",
+        "2|policy",
+        "3|g_wary",
+        "... 26 more"
+       ],
+       "records": "missing"
+      },
+      "validation": null
+     },
+     "I_ward_c": {
+      "status": "missing",
+      "coverage": {
+       "designed_states": 8,
+       "collected_states": 8,
+       "state_coverage": "complete",
+       "expected_records": 24,
+       "present_records": 0,
+       "missing_records": [
+        "0|g_bully",
+        "0|modal",
+        "0|policy",
+        "1|g_bully",
+        "1|modal",
+        "1|policy",
+        "2|g_bully",
+        "2|modal",
+        "2|policy",
+        "3|g_bully",
+        "... 14 more"
+       ],
+       "records": "missing"
+      },
+      "validation": null
+     }
+    },
+    "weak": {
+     "status": "partial records",
+     "missing": [
+      0,
+      4,
+      8,
+      12,
+      16,
+      20,
+      24,
+      28,
+      32
+     ]
+    }
+   },
+   "sp_s3": {
+    "battery": {
+     "A_wave": {
+      "status": "missing",
+      "coverage": {
+       "designed_states": 48,
+       "collected_states": null,
+       "state_coverage": "unknown (no manifest)",
+       "expected_records": 96,
+       "present_records": 0,
+       "missing_records": [
+        "0|modal",
+        "0|policy",
+        "1|modal",
+        "1|policy",
+        "2|modal",
+        "2|policy",
+        "3|modal",
+        "3|policy",
+        "4|modal",
+        "4|policy",
+        "... 86 more"
+       ],
+       "records": "missing"
+      },
+      "validation": null
+     },
+     "A_wave_early": {
+      "status": "missing",
+      "coverage": {
+       "designed_states": 24,
+       "collected_states": null,
+       "state_coverage": "unknown (no manifest)",
+       "expected_records": 48,
+       "present_records": 0,
+       "missing_records": [
+        "0|modal",
+        "0|policy",
+        "1|modal",
+        "1|policy",
+        "2|modal",
+        "2|policy",
+        "3|modal",
+        "3|policy",
+        "4|modal",
+        "4|policy",
+        "... 38 more"
+       ],
+       "records": "missing"
+      },
+      "validation": null
+     },
+     "B_freeze": {
+      "status": "missing",
+      "coverage": {
+       "designed_states": 48,
+       "collected_states": null,
+       "state_coverage": "unknown (no manifest)",
+       "expected_records": 240,
+       "present_records": 0,
+       "missing_records": [
+        "0|modal",
+        "0|policy",
+        "0|wk_back",
+        "0|wk_shove",
+        "0|wk_shove_reset",
+        "1|modal",
+        "1|policy",
+        "1|wk_back",
+        "1|wk_shove",
+        "1|wk_shove_reset",
+        "... 230 more"
+       ],
+       "records": "missing"
+      },
+      "validation": null
+     },
+     "B_frozen": {
+      "status": "missing",
+      "coverage": {
+       "designed_states": 48,
+       "collected_states": null,
+       "state_coverage": "unknown (no manifest)",
+       "expected_records": 240,
+       "present_records": 0,
+       "missing_records": [
+        "0|fz_bully_sh",
+        "0|fz_guard_sh",
+        "0|fz_passive_sh",
+        "0|modal",
+        "0|policy",
+        "1|fz_bully_sh",
+        "1|fz_guard_sh",
+        "1|fz_passive_sh",
+        "1|modal",
+        "1|policy",
+        "... 230 more"
+       ],
+       "records": "missing"
+      },
+      "validation": null
+     },
+     "C_trade": {
+      "status": "missing",
+      "coverage": {
+       "designed_states": 48,
+       "collected_states": null,
+       "state_coverage": "unknown (no manifest)",
+       "expected_records": 144,
+       "present_records": 0,
+       "missing_records": [
+        "0|g_wary",
+        "0|modal",
+        "0|policy",
+        "1|g_wary",
+        "1|modal",
+        "1|policy",
+        "2|g_wary",
+        "2|modal",
+        "2|policy",
+        "3|g_wary",
+        "... 134 more"
+       ],
+       "records": "missing"
+      },
+      "validation": null
+     },
+     "C_trade_early": {
+      "status": "missing",
+      "coverage": {
+       "designed_states": 24,
+       "collected_states": null,
+       "state_coverage": "unknown (no manifest)",
+       "expected_records": 72,
+       "present_records": 0,
+       "missing_records": [
+        "0|g_wary",
+        "0|modal",
+        "0|policy",
+        "1|g_wary",
+        "1|modal",
+        "1|policy",
+        "2|g_wary",
+        "2|modal",
+        "2|policy",
+        "3|g_wary",
+        "... 62 more"
+       ],
+       "records": "missing"
+      },
+      "validation": null
+     },
+     "D_ward": {
+      "status": "missing",
+      "coverage": {
+       "designed_states": 48,
+       "collected_states": null,
+       "state_coverage": "unknown (no manifest)",
+       "expected_records": 144,
+       "present_records": 0,
+       "missing_records": [
+        "0|g_bully",
+        "0|modal",
+        "0|policy",
+        "1|g_bully",
+        "1|modal",
+        "1|policy",
+        "2|g_bully",
+        "2|modal",
+        "2|policy",
+        "3|g_bully",
+        "... 134 more"
+       ],
+       "records": "missing"
+      },
+      "validation": null
+     },
+     "E_recall": {
+      "status": "missing",
+      "coverage": {
+       "designed_states": 48,
+       "collected_states": null,
+       "state_coverage": "unknown (no manifest)",
+       "expected_records": 96,
+       "present_records": 0,
+       "missing_records": [
+        "0|modal",
+        "0|policy",
+        "1|modal",
+        "1|policy",
+        "2|modal",
+        "2|policy",
+        "3|modal",
+        "3|policy",
+        "4|modal",
+        "4|policy",
+        "... 86 more"
+       ],
+       "records": "missing"
+      },
+      "validation": null
+     },
+     "F_freeze_c": {
+      "status": "missing",
+      "coverage": {
+       "designed_states": 10,
+       "collected_states": 10,
+       "state_coverage": "complete",
+       "expected_records": 50,
+       "present_records": 0,
+       "missing_records": [
+        "0|modal",
+        "0|policy",
+        "0|wk_back",
+        "0|wk_shove",
+        "0|wk_shove_reset",
+        "1|modal",
+        "1|policy",
+        "1|wk_back",
+        "1|wk_shove",
+        "1|wk_shove_reset",
+        "... 40 more"
+       ],
+       "records": "missing"
+      },
+      "validation": null
+     },
+     "G_trade_c": {
+      "status": "missing",
+      "coverage": {
+       "designed_states": 12,
+       "collected_states": 12,
+       "state_coverage": "complete",
+       "expected_records": 36,
+       "present_records": 0,
+       "missing_records": [
+        "0|g_wary",
+        "0|modal",
+        "0|policy",
+        "1|g_wary",
+        "1|modal",
+        "1|policy",
+        "2|g_wary",
+        "2|modal",
+        "2|policy",
+        "3|g_wary",
+        "... 26 more"
+       ],
+       "records": "missing"
+      },
+      "validation": null
+     },
+     "H_zone_c": {
+      "status": "missing",
+      "coverage": {
+       "designed_states": 12,
+       "collected_states": 12,
+       "state_coverage": "complete",
+       "expected_records": 36,
+       "present_records": 0,
+       "missing_records": [
+        "0|g_wary",
+        "0|modal",
+        "0|policy",
+        "1|g_wary",
+        "1|modal",
+        "1|policy",
+        "2|g_wary",
+        "2|modal",
+        "2|policy",
+        "3|g_wary",
+        "... 26 more"
+       ],
+       "records": "missing"
+      },
+      "validation": null
+     },
+     "I_ward_c": {
+      "status": "missing",
+      "coverage": {
+       "designed_states": 8,
+       "collected_states": 8,
+       "state_coverage": "complete",
+       "expected_records": 24,
+       "present_records": 0,
+       "missing_records": [
+        "0|g_bully",
+        "0|modal",
+        "0|policy",
+        "1|g_bully",
+        "1|modal",
+        "1|policy",
+        "2|g_bully",
+        "2|modal",
+        "2|policy",
+        "3|g_bully",
+        "... 14 more"
+       ],
+       "records": "missing"
+      },
+      "validation": null
+     }
+    },
+    "weak": {
+     "status": "partial records",
+     "missing": [
+      0,
+      4,
+      8,
+      12,
+      16,
+      20,
+      24,
+      28,
+      32
+     ]
+    }
+   },
+   "sp_s4": {
+    "battery": {
+     "A_wave": {
+      "status": "missing",
+      "coverage": {
+       "designed_states": 48,
+       "collected_states": null,
+       "state_coverage": "unknown (no manifest)",
+       "expected_records": 96,
+       "present_records": 0,
+       "missing_records": [
+        "0|modal",
+        "0|policy",
+        "1|modal",
+        "1|policy",
+        "2|modal",
+        "2|policy",
+        "3|modal",
+        "3|policy",
+        "4|modal",
+        "4|policy",
+        "... 86 more"
+       ],
+       "records": "missing"
+      },
+      "validation": null
+     },
+     "A_wave_early": {
+      "status": "missing",
+      "coverage": {
+       "designed_states": 24,
+       "collected_states": null,
+       "state_coverage": "unknown (no manifest)",
+       "expected_records": 48,
+       "present_records": 0,
+       "missing_records": [
+        "0|modal",
+        "0|policy",
+        "1|modal",
+        "1|policy",
+        "2|modal",
+        "2|policy",
+        "3|modal",
+        "3|policy",
+        "4|modal",
+        "4|policy",
+        "... 38 more"
+       ],
+       "records": "missing"
+      },
+      "validation": null
+     },
+     "B_freeze": {
+      "status": "missing",
+      "coverage": {
+       "designed_states": 48,
+       "collected_states": null,
+       "state_coverage": "unknown (no manifest)",
+       "expected_records": 240,
+       "present_records": 0,
+       "missing_records": [
+        "0|modal",
+        "0|policy",
+        "0|wk_back",
+        "0|wk_shove",
+        "0|wk_shove_reset",
+        "1|modal",
+        "1|policy",
+        "1|wk_back",
+        "1|wk_shove",
+        "1|wk_shove_reset",
+        "... 230 more"
+       ],
+       "records": "missing"
+      },
+      "validation": null
+     },
+     "B_frozen": {
+      "status": "missing",
+      "coverage": {
+       "designed_states": 48,
+       "collected_states": null,
+       "state_coverage": "unknown (no manifest)",
+       "expected_records": 240,
+       "present_records": 0,
+       "missing_records": [
+        "0|fz_bully_sh",
+        "0|fz_guard_sh",
+        "0|fz_passive_sh",
+        "0|modal",
+        "0|policy",
+        "1|fz_bully_sh",
+        "1|fz_guard_sh",
+        "1|fz_passive_sh",
+        "1|modal",
+        "1|policy",
+        "... 230 more"
+       ],
+       "records": "missing"
+      },
+      "validation": null
+     },
+     "C_trade": {
+      "status": "missing",
+      "coverage": {
+       "designed_states": 48,
+       "collected_states": null,
+       "state_coverage": "unknown (no manifest)",
+       "expected_records": 144,
+       "present_records": 0,
+       "missing_records": [
+        "0|g_wary",
+        "0|modal",
+        "0|policy",
+        "1|g_wary",
+        "1|modal",
+        "1|policy",
+        "2|g_wary",
+        "2|modal",
+        "2|policy",
+        "3|g_wary",
+        "... 134 more"
+       ],
+       "records": "missing"
+      },
+      "validation": null
+     },
+     "C_trade_early": {
+      "status": "missing",
+      "coverage": {
+       "designed_states": 24,
+       "collected_states": null,
+       "state_coverage": "unknown (no manifest)",
+       "expected_records": 72,
+       "present_records": 0,
+       "missing_records": [
+        "0|g_wary",
+        "0|modal",
+        "0|policy",
+        "1|g_wary",
+        "1|modal",
+        "1|policy",
+        "2|g_wary",
+        "2|modal",
+        "2|policy",
+        "3|g_wary",
+        "... 62 more"
+       ],
+       "records": "missing"
+      },
+      "validation": null
+     },
+     "D_ward": {
+      "status": "missing",
+      "coverage": {
+       "designed_states": 48,
+       "collected_states": null,
+       "state_coverage": "unknown (no manifest)",
+       "expected_records": 144,
+       "present_records": 0,
+       "missing_records": [
+        "0|g_bully",
+        "0|modal",
+        "0|policy",
+        "1|g_bully",
+        "1|modal",
+        "1|policy",
+        "2|g_bully",
+        "2|modal",
+        "2|policy",
+        "3|g_bully",
+        "... 134 more"
+       ],
+       "records": "missing"
+      },
+      "validation": null
+     },
+     "E_recall": {
+      "status": "missing",
+      "coverage": {
+       "designed_states": 48,
+       "collected_states": null,
+       "state_coverage": "unknown (no manifest)",
+       "expected_records": 96,
+       "present_records": 0,
+       "missing_records": [
+        "0|modal",
+        "0|policy",
+        "1|modal",
+        "1|policy",
+        "2|modal",
+        "2|policy",
+        "3|modal",
+        "3|policy",
+        "4|modal",
+        "4|policy",
+        "... 86 more"
+       ],
+       "records": "missing"
+      },
+      "validation": null
+     },
+     "F_freeze_c": {
+      "status": "missing",
+      "coverage": {
+       "designed_states": 10,
+       "collected_states": 10,
+       "state_coverage": "complete",
+       "expected_records": 50,
+       "present_records": 0,
+       "missing_records": [
+        "0|modal",
+        "0|policy",
+        "0|wk_back",
+        "0|wk_shove",
+        "0|wk_shove_reset",
+        "1|modal",
+        "1|policy",
+        "1|wk_back",
+        "1|wk_shove",
+        "1|wk_shove_reset",
+        "... 40 more"
+       ],
+       "records": "missing"
+      },
+      "validation": null
+     },
+     "G_trade_c": {
+      "status": "missing",
+      "coverage": {
+       "designed_states": 12,
+       "collected_states": 12,
+       "state_coverage": "complete",
+       "expected_records": 36,
+       "present_records": 0,
+       "missing_records": [
+        "0|g_wary",
+        "0|modal",
+        "0|policy",
+        "1|g_wary",
+        "1|modal",
+        "1|policy",
+        "2|g_wary",
+        "2|modal",
+        "2|policy",
+        "3|g_wary",
+        "... 26 more"
+       ],
+       "records": "missing"
+      },
+      "validation": null
+     },
+     "H_zone_c": {
+      "status": "missing",
+      "coverage": {
+       "designed_states": 12,
+       "collected_states": 12,
+       "state_coverage": "complete",
+       "expected_records": 36,
+       "present_records": 0,
+       "missing_records": [
+        "0|g_wary",
+        "0|modal",
+        "0|policy",
+        "1|g_wary",
+        "1|modal",
+        "1|policy",
+        "2|g_wary",
+        "2|modal",
+        "2|policy",
+        "3|g_wary",
+        "... 26 more"
+       ],
+       "records": "missing"
+      },
+      "validation": null
+     },
+     "I_ward_c": {
+      "status": "missing",
+      "coverage": {
+       "designed_states": 8,
+       "collected_states": 8,
+       "state_coverage": "complete",
+       "expected_records": 24,
+       "present_records": 0,
+       "missing_records": [
+        "0|g_bully",
+        "0|modal",
+        "0|policy",
+        "1|g_bully",
+        "1|modal",
+        "1|policy",
+        "2|g_bully",
+        "2|modal",
+        "2|policy",
+        "3|g_bully",
+        "... 14 more"
+       ],
+       "records": "missing"
+      },
+      "validation": null
+     }
+    },
+    "weak": {
+     "status": "partial records",
+     "missing": [
+      0,
+      4,
+      8,
+      12,
+      16,
+      20,
+      24,
+      28,
+      32
+     ]
+    }
+   },
+   "sp_s5": {
+    "battery": {
+     "A_wave": {
+      "status": "missing",
+      "coverage": {
+       "designed_states": 48,
+       "collected_states": null,
+       "state_coverage": "unknown (no manifest)",
+       "expected_records": 96,
+       "present_records": 0,
+       "missing_records": [
+        "0|modal",
+        "0|policy",
+        "1|modal",
+        "1|policy",
+        "2|modal",
+        "2|policy",
+        "3|modal",
+        "3|policy",
+        "4|modal",
+        "4|policy",
+        "... 86 more"
+       ],
+       "records": "missing"
+      },
+      "validation": null
+     },
+     "A_wave_early": {
+      "status": "missing",
+      "coverage": {
+       "designed_states": 24,
+       "collected_states": null,
+       "state_coverage": "unknown (no manifest)",
+       "expected_records": 48,
+       "present_records": 0,
+       "missing_records": [
+        "0|modal",
+        "0|policy",
+        "1|modal",
+        "1|policy",
+        "2|modal",
+        "2|policy",
+        "3|modal",
+        "3|policy",
+        "4|modal",
+        "4|policy",
+        "... 38 more"
+       ],
+       "records": "missing"
+      },
+      "validation": null
+     },
+     "B_freeze": {
+      "status": "missing",
+      "coverage": {
+       "designed_states": 48,
+       "collected_states": null,
+       "state_coverage": "unknown (no manifest)",
+       "expected_records": 240,
+       "present_records": 0,
+       "missing_records": [
+        "0|modal",
+        "0|policy",
+        "0|wk_back",
+        "0|wk_shove",
+        "0|wk_shove_reset",
+        "1|modal",
+        "1|policy",
+        "1|wk_back",
+        "1|wk_shove",
+        "1|wk_shove_reset",
+        "... 230 more"
+       ],
+       "records": "missing"
+      },
+      "validation": null
+     },
+     "B_frozen": {
+      "status": "missing",
+      "coverage": {
+       "designed_states": 48,
+       "collected_states": null,
+       "state_coverage": "unknown (no manifest)",
+       "expected_records": 240,
+       "present_records": 0,
+       "missing_records": [
+        "0|fz_bully_sh",
+        "0|fz_guard_sh",
+        "0|fz_passive_sh",
+        "0|modal",
+        "0|policy",
+        "1|fz_bully_sh",
+        "1|fz_guard_sh",
+        "1|fz_passive_sh",
+        "1|modal",
+        "1|policy",
+        "... 230 more"
+       ],
+       "records": "missing"
+      },
+      "validation": null
+     },
+     "C_trade": {
+      "status": "missing",
+      "coverage": {
+       "designed_states": 48,
+       "collected_states": null,
+       "state_coverage": "unknown (no manifest)",
+       "expected_records": 144,
+       "present_records": 0,
+       "missing_records": [
+        "0|g_wary",
+        "0|modal",
+        "0|policy",
+        "1|g_wary",
+        "1|modal",
+        "1|policy",
+        "2|g_wary",
+        "2|modal",
+        "2|policy",
+        "3|g_wary",
+        "... 134 more"
+       ],
+       "records": "missing"
+      },
+      "validation": null
+     },
+     "C_trade_early": {
+      "status": "missing",
+      "coverage": {
+       "designed_states": 24,
+       "collected_states": null,
+       "state_coverage": "unknown (no manifest)",
+       "expected_records": 72,
+       "present_records": 0,
+       "missing_records": [
+        "0|g_wary",
+        "0|modal",
+        "0|policy",
+        "1|g_wary",
+        "1|modal",
+        "1|policy",
+        "2|g_wary",
+        "2|modal",
+        "2|policy",
+        "3|g_wary",
+        "... 62 more"
+       ],
+       "records": "missing"
+      },
+      "validation": null
+     },
+     "D_ward": {
+      "status": "missing",
+      "coverage": {
+       "designed_states": 48,
+       "collected_states": null,
+       "state_coverage": "unknown (no manifest)",
+       "expected_records": 144,
+       "present_records": 0,
+       "missing_records": [
+        "0|g_bully",
+        "0|modal",
+        "0|policy",
+        "1|g_bully",
+        "1|modal",
+        "1|policy",
+        "2|g_bully",
+        "2|modal",
+        "2|policy",
+        "3|g_bully",
+        "... 134 more"
+       ],
+       "records": "missing"
+      },
+      "validation": null
+     },
+     "E_recall": {
+      "status": "missing",
+      "coverage": {
+       "designed_states": 48,
+       "collected_states": null,
+       "state_coverage": "unknown (no manifest)",
+       "expected_records": 96,
+       "present_records": 0,
+       "missing_records": [
+        "0|modal",
+        "0|policy",
+        "1|modal",
+        "1|policy",
+        "2|modal",
+        "2|policy",
+        "3|modal",
+        "3|policy",
+        "4|modal",
+        "4|policy",
+        "... 86 more"
+       ],
+       "records": "missing"
+      },
+      "validation": null
+     },
+     "F_freeze_c": {
+      "status": "missing",
+      "coverage": {
+       "designed_states": 10,
+       "collected_states": 10,
+       "state_coverage": "complete",
+       "expected_records": 50,
+       "present_records": 0,
+       "missing_records": [
+        "0|modal",
+        "0|policy",
+        "0|wk_back",
+        "0|wk_shove",
+        "0|wk_shove_reset",
+        "1|modal",
+        "1|policy",
+        "1|wk_back",
+        "1|wk_shove",
+        "1|wk_shove_reset",
+        "... 40 more"
+       ],
+       "records": "missing"
+      },
+      "validation": null
+     },
+     "G_trade_c": {
+      "status": "missing",
+      "coverage": {
+       "designed_states": 12,
+       "collected_states": 12,
+       "state_coverage": "complete",
+       "expected_records": 36,
+       "present_records": 0,
+       "missing_records": [
+        "0|g_wary",
+        "0|modal",
+        "0|policy",
+        "1|g_wary",
+        "1|modal",
+        "1|policy",
+        "2|g_wary",
+        "2|modal",
+        "2|policy",
+        "3|g_wary",
+        "... 26 more"
+       ],
+       "records": "missing"
+      },
+      "validation": null
+     },
+     "H_zone_c": {
+      "status": "missing",
+      "coverage": {
+       "designed_states": 12,
+       "collected_states": 12,
+       "state_coverage": "complete",
+       "expected_records": 36,
+       "present_records": 0,
+       "missing_records": [
+        "0|g_wary",
+        "0|modal",
+        "0|policy",
+        "1|g_wary",
+        "1|modal",
+        "1|policy",
+        "2|g_wary",
+        "2|modal",
+        "2|policy",
+        "3|g_wary",
+        "... 26 more"
+       ],
+       "records": "missing"
+      },
+      "validation": null
+     },
+     "I_ward_c": {
+      "status": "missing",
+      "coverage": {
+       "designed_states": 8,
+       "collected_states": 8,
+       "state_coverage": "complete",
+       "expected_records": 24,
+       "present_records": 0,
+       "missing_records": [
+        "0|g_bully",
+        "0|modal",
+        "0|policy",
+        "1|g_bully",
+        "1|modal",
+        "1|policy",
+        "2|g_bully",
+        "2|modal",
+        "2|policy",
+        "3|g_bully",
+        "... 14 more"
+       ],
+       "records": "missing"
+      },
+      "validation": null
+     }
+    },
+    "weak": {
+     "status": "partial records",
+     "missing": [
+      0,
+      4,
+      8,
+      12,
+      16,
+      20,
+      24,
+      28,
+      32
+     ]
+    }
+   }
+  }
+ },
+ "per_arm_cells": {
+  "premium": {},
+  "weak": {}
+ },
+ "cross_arm": {
+  "conv": {
+   "family": "conv",
+   "complete_seeds": [],
+   "status": "partial (0/6)",
+   "missing_records": {
+    "0": 108,
+    "1": 108,
+    "2": 108,
+    "3": 108,
+    "4": 108,
+    "5": 108
+   },
+   "stats": {}
+  },
+  "freeze": {
+   "family": "freeze",
+   "complete_seeds": [],
+   "status": "partial (0/6)",
+   "missing_records": {
+    "0": 72,
+    "1": 72,
+    "2": 72,
+    "3": 72,
+    "4": 72,
+    "5": 72
+   },
+   "stats": {}
+  },
+  "recall": {
+   "family": "recall",
+   "complete_seeds": [],
+   "status": "partial (0/6)",
+   "missing_records": {
+    "0": 48,
+    "1": 48,
+    "2": 48,
+    "3": 48,
+    "4": 48,
+    "5": 48
+   },
+   "stats": {}
+  },
+  "natural": {
+   "family": "natural",
+   "complete_seeds": [],
+   "status": "partial (0/6)",
+   "missing_records": {
+    "0": 160,
+    "1": 160,
+    "2": 160,
+    "3": 160,
+    "4": 160,
+    "5": 160
+   },
+   "stats": {}
+  },
+  "gaps": {
+   "family": "gaps",
+   "complete_seeds": [],
+   "status": "partial (0/6)",
+   "missing_records": {
+    "0": 72,
+    "1": 72,
+    "2": 72,
+    "3": 72,
+    "4": 72,
+    "5": 72
+   },
+   "stats": {}
+  }
+ },
+ "rule": {
+  "margin": 0.2,
+  "min_seeds": 5,
+  "protocol": "policy",
+  "statistic": "Q50 natural / G50 constructed (Q150 / G150 after a failed validation and its re-run); weaker side G50"
+ },
+ "meta": {
+  "study": "M5",
+  "commit": "8256882791407a58ffe59abf2c7d7439e3e7bc9a",
+  "working_tree_dirty": true,
+  "timestamp": "2026-10-18 10:14:13",
+  "torch": "2.14.1+cpu",
+  "numpy": "2.5.3",
+  "stage": "strategic"
+ }
+}

@@ -1,0 +1,923 @@
+{
+ "horizon_breakdown": {
+  "rows": [
+   {
+    "part": "M5c battery",
+    "arm": "om",
+    "family": "A_wave",
+    "horizon": 50,
+    "purpose": "standard (50)",
+    "turns": 2419200,
+    "worker_h": 2.0331174453844625
+   },
+   {
+    "part": "M5c battery",
+    "arm": "om",
+    "family": "A_wave",
+    "horizon": 300,
+    "purpose": "validation subset to 300 turns",
+    "turns": 1008000,
+    "worker_h": 0.8471322689101928
+   },
+   {
+    "part": "M5c battery",
+    "arm": "om",
+    "family": "A_wave",
+    "horizon": 150,
+    "purpose": "CONTINGENT: exception 3 re-run at 150 (only a failed family)",
+    "turns": 7257600,
+    "worker_h": 6.099352336153388
+   },
+   {
+    "part": "M5c battery",
+    "arm": "sp",
+    "family": "A_wave",
+    "horizon": 50,
+    "purpose": "standard (50)",
+    "turns": 2419200,
+    "worker_h": 0.6786164746930202
+   },
+   {
+    "part": "M5c battery",
+    "arm": "sp",
+    "family": "A_wave",
+    "horizon": 300,
+    "purpose": "validation subset to 300 turns",
+    "turns": 1008000,
+    "worker_h": 0.2827568644554251
+   },
+   {
+    "part": "M5c battery",
+    "arm": "sp",
+    "family": "A_wave",
+    "horizon": 150,
+    "purpose": "CONTINGENT: exception 3 re-run at 150 (only a failed family)",
+    "turns": 7257600,
+    "worker_h": 2.0358494240790606
+   },
+   {
+    "part": "M5c battery",
+    "arm": "om",
+    "family": "A_wave_early",
+    "horizon": 50,
+    "purpose": "standard (50)",
+    "turns": 1209600,
+    "worker_h": 1.0165587226922312
+   },
+   {
+    "part": "M5c battery",
+    "arm": "om",
+    "family": "A_wave_early",
+    "horizon": 300,
+    "purpose": "validation subset to 300 turns",
+    "turns": 1008000,
+    "worker_h": 0.8471322689101928
+   },
+   {
+    "part": "M5c battery",
+    "arm": "om",
+    "family": "A_wave_early",
+    "horizon": 150,
+    "purpose": "CONTINGENT: exception 3 re-run at 150 (only a failed family)",
+    "turns": 3628800,
+    "worker_h": 3.049676168076694
+   },
+   {
+    "part": "M5c battery",
+    "arm": "sp",
+    "family": "A_wave_early",
+    "horizon": 50,
+    "purpose": "standard (50)",
+    "turns": 1209600,
+    "worker_h": 0.3393082373465101
+   },
+   {
+    "part": "M5c battery",
+    "arm": "sp",
+    "family": "A_wave_early",
+    "horizon": 300,
+    "purpose": "validation subset to 300 turns",
+    "turns": 1008000,
+    "worker_h": 0.2827568644554251
+   },
+   {
+    "part": "M5c battery",
+    "arm": "sp",
+    "family": "A_wave_early",
+    "horizon": 150,
+    "purpose": "CONTINGENT: exception 3 re-run at 150 (only a failed family)",
+    "turns": 3628800,
+    "worker_h": 1.0179247120395303
+   },
+   {
+    "part": "M5c battery",
+    "arm": "om",
+    "family": "B_freeze",
+    "horizon": 60,
+    "purpose": "exception 1: sustained plans (60)",
+    "turns": 6220800,
+    "worker_h": 5.228016288131475
+   },
+   {
+    "part": "M5c battery",
+    "arm": "om",
+    "family": "B_freeze",
+    "horizon": 300,
+    "purpose": "validation subset to 300 turns",
+    "turns": 829440,
+    "worker_h": 0.6970688384175301
+   },
+   {
+    "part": "M5c battery",
+    "arm": "om",
+    "family": "B_freeze",
+    "horizon": 150,
+    "purpose": "CONTINGENT: exception 3 re-run at 150 (only a failed family)",
+    "turns": 15552000,
+    "worker_h": 13.070040720328688
+   },
+   {
+    "part": "M5c battery",
+    "arm": "sp",
+    "family": "B_freeze",
+    "horizon": 60,
+    "purpose": "exception 1: sustained plans (60)",
+    "turns": 6220800,
+    "worker_h": 1.7450137920677662
+   },
+   {
+    "part": "M5c battery",
+    "arm": "sp",
+    "family": "B_freeze",
+    "horizon": 300,
+    "purpose": "validation subset to 300 turns",
+    "turns": 829440,
+    "worker_h": 0.2326685056090355
+   },
+   {
+    "part": "M5c battery",
+    "arm": "sp",
+    "family": "B_freeze",
+    "horizon": 150,
+    "purpose": "CONTINGENT: exception 3 re-run at 150 (only a failed family)",
+    "turns": 15552000,
+    "worker_h": 4.3625344801694155
+   },
+   {
+    "part": "M5c battery",
+    "arm": "om",
+    "family": "B_frozen",
+    "horizon": 50,
+    "purpose": "standard (50)",
+    "turns": 6912000,
+    "worker_h": 5.80890698681275
+   },
+   {
+    "part": "M5c battery",
+    "arm": "om",
+    "family": "B_frozen",
+    "horizon": 300,
+    "purpose": "validation subset to 300 turns",
+    "turns": 1152000,
+    "worker_h": 0.9681511644687918
+   },
+   {
+    "part": "M5c battery",
+    "arm": "om",
+    "family": "B_frozen",
+    "horizon": 150,
+    "purpose": "CONTINGENT: exception 3 re-run at 150 (only a failed family)",
+    "turns": 20736000,
+    "worker_h": 17.426720960438253
+   },
+   {
+    "part": "M5c battery",
+    "arm": "sp",
+    "family": "B_frozen",
+    "horizon": 50,
+    "purpose": "standard (50)",
+    "turns": 6912000,
+    "worker_h": 1.9389042134086292
+   },
+   {
+    "part": "M5c battery",
+    "arm": "sp",
+    "family": "B_frozen",
+    "horizon": 300,
+    "purpose": "validation subset to 300 turns",
+    "turns": 1152000,
+    "worker_h": 0.3231507022347715
+   },
+   {
+    "part": "M5c battery",
+    "arm": "sp",
+    "family": "B_frozen",
+    "horizon": 150,
+    "purpose": "CONTINGENT: exception 3 re-run at 150 (only a failed family)",
+    "turns": 20736000,
+    "worker_h": 5.816712640225887
+   },
+   {
+    "part": "M5c battery",
+    "arm": "om",
+    "family": "C_trade",
+    "horizon": 50,
+    "purpose": "standard (50)",
+    "turns": 3628800,
+    "worker_h": 3.049676168076694
+   },
+   {
+    "part": "M5c battery",
+    "arm": "om",
+    "family": "C_trade",
+    "horizon": 300,
+    "purpose": "validation subset to 300 turns",
+    "turns": 1008000,
+    "worker_h": 0.8471322689101928
+   },
+   {
+    "part": "M5c battery",
+    "arm": "om",
+    "family": "C_trade",
+    "horizon": 150,
+    "purpose": "CONTINGENT: exception 3 re-run at 150 (only a failed family)",
+    "turns": 10886400,
+    "worker_h": 9.149028504230081
+   },
+   {
+    "part": "M5c battery",
+    "arm": "sp",
+    "family": "C_trade",
+    "horizon": 50,
+    "purpose": "standard (50)",
+    "turns": 3628800,
+    "worker_h": 1.0179247120395303
+   },
+   {
+    "part": "M5c battery",
+    "arm": "sp",
+    "family": "C_trade",
+    "horizon": 300,
+    "purpose": "validation subset to 300 turns",
+    "turns": 1008000,
+    "worker_h": 0.2827568644554251
+   },
+   {
+    "part": "M5c battery",
+    "arm": "sp",
+    "family": "C_trade",
+    "horizon": 150,
+    "purpose": "CONTINGENT: exception 3 re-run at 150 (only a failed family)",
+    "turns": 10886400,
+    "worker_h": 3.053774136118591
+   },
+   {
+    "part": "M5c battery",
+    "arm": "om",
+    "family": "C_trade_early",
+    "horizon": 50,
+    "purpose": "standard (50)",
+    "turns": 1814400,
+    "worker_h": 1.524838084038347
+   },
+   {
+    "part": "M5c battery",
+    "arm": "om",
+    "family": "C_trade_early",
+    "horizon": 300,
+    "purpose": "validation subset to 300 turns",
+    "turns": 1008000,
+    "worker_h": 0.8471322689101928
+   },
+   {
+    "part": "M5c battery",
+    "arm": "om",
+    "family": "C_trade_early",
+    "horizon": 150,
+    "purpose": "CONTINGENT: exception 3 re-run at 150 (only a failed family)",
+    "turns": 5443200,
+    "worker_h": 4.574514252115041
+   },
+   {
+    "part": "M5c battery",
+    "arm": "sp",
+    "family": "C_trade_early",
+    "horizon": 50,
+    "purpose": "standard (50)",
+    "turns": 1814400,
+    "worker_h": 0.5089623560197651
+   },
+   {
+    "part": "M5c battery",
+    "arm": "sp",
+    "family": "C_trade_early",
+    "horizon": 300,
+    "purpose": "validation subset to 300 turns",
+    "turns": 1008000,
+    "worker_h": 0.2827568644554251
+   },
+   {
+    "part": "M5c battery",
+    "arm": "sp",
+    "family": "C_trade_early",
+    "horizon": 150,
+    "purpose": "CONTINGENT: exception 3 re-run at 150 (only a failed family)",
+    "turns": 5443200,
+    "worker_h": 1.5268870680592954
+   },
+   {
+    "part": "M5c battery",
+    "arm": "om",
+    "family": "D_ward",
+    "horizon": 50,
+    "purpose": "standard (50)",
+    "turns": 1555200,
+    "worker_h": 1.3070040720328688
+   },
+   {
+    "part": "M5c battery",
+    "arm": "om",
+    "family": "D_ward",
+    "horizon": 300,
+    "purpose": "validation subset to 300 turns",
+    "turns": 432000,
+    "worker_h": 0.3630566866757969
+   },
+   {
+    "part": "M5c battery",
+    "arm": "om",
+    "family": "D_ward",
+    "horizon": 150,
+    "purpose": "CONTINGENT: exception 3 re-run at 150 (only a failed family)",
+    "turns": 4665600,
+    "worker_h": 3.9210122160986067
+   },
+   {
+    "part": "M5c battery",
+    "arm": "sp",
+    "family": "D_ward",
+    "horizon": 50,
+    "purpose": "standard (50)",
+    "turns": 1555200,
+    "worker_h": 0.43625344801694155
+   },
+   {
+    "part": "M5c battery",
+    "arm": "sp",
+    "family": "D_ward",
+    "horizon": 300,
+    "purpose": "validation subset to 300 turns",
+    "turns": 432000,
+    "worker_h": 0.12118151333803932
+   },
+   {
+    "part": "M5c battery",
+    "arm": "sp",
+    "family": "D_ward",
+    "horizon": 150,
+    "purpose": "CONTINGENT: exception 3 re-run at 150 (only a failed family)",
+    "turns": 4665600,
+    "worker_h": 1.3087603440508246
+   },
+   {
+    "part": "M5c battery",
+    "arm": "om",
+    "family": "E_recall",
+    "horizon": 50,
+    "purpose": "standard (50)",
+    "turns": 1382400,
+    "worker_h": 1.1617813973625502
+   },
+   {
+    "part": "M5c battery",
+    "arm": "om",
+    "family": "E_recall",
+    "horizon": 300,
+    "purpose": "validation subset to 300 turns",
+    "turns": 576000,
+    "worker_h": 0.4840755822343959
+   },
+   {
+    "part": "M5c battery",
+    "arm": "om",
+    "family": "E_recall",
+    "horizon": 150,
+    "purpose": "CONTINGENT: exception 3 re-run at 150 (only a failed family)",
+    "turns": 4147200,
+    "worker_h": 3.4853441920876502
+   },
+   {
+    "part": "M5c battery",
+    "arm": "sp",
+    "family": "E_recall",
+    "horizon": 50,
+    "purpose": "standard (50)",
+    "turns": 1382400,
+    "worker_h": 0.3877808426817258
+   },
+   {
+    "part": "M5c battery",
+    "arm": "sp",
+    "family": "E_recall",
+    "horizon": 300,
+    "purpose": "validation subset to 300 turns",
+    "turns": 576000,
+    "worker_h": 0.16157535111738575
+   },
+   {
+    "part": "M5c battery",
+    "arm": "sp",
+    "family": "E_recall",
+    "horizon": 150,
+    "purpose": "CONTINGENT: exception 3 re-run at 150 (only a failed family)",
+    "turns": 4147200,
+    "worker_h": 1.1633425280451775
+   },
+   {
+    "part": "M5c battery",
+    "arm": "om",
+    "family": "F_freeze_c",
+    "horizon": 60,
+    "purpose": "exception 1: sustained plans (60)",
+    "turns": 2592000,
+    "worker_h": 2.1783401200547816
+   },
+   {
+    "part": "M5c battery",
+    "arm": "om",
+    "family": "F_freeze_c",
+    "horizon": 300,
+    "purpose": "validation subset to 300 turns",
+    "turns": 2073600,
+    "worker_h": 1.7426720960438251
+   },
+   {
+    "part": "M5c battery",
+    "arm": "om",
+    "family": "F_freeze_c",
+    "horizon": 150,
+    "purpose": "CONTINGENT: exception 3 re-run at 150 (only a failed family)",
+    "turns": 6480000,
+    "worker_h": 5.445850300136954
+   },
+   {
+    "part": "M5c battery",
+    "arm": "sp",
+    "family": "F_freeze_c",
+    "horizon": 60,
+    "purpose": "exception 1: sustained plans (60)",
+    "turns": 2592000,
+    "worker_h": 0.7270890800282359
+   },
+   {
+    "part": "M5c battery",
+    "arm": "sp",
+    "family": "F_freeze_c",
+    "horizon": 300,
+    "purpose": "validation subset to 300 turns",
+    "turns": 2073600,
+    "worker_h": 0.5816712640225887
+   },
+   {
+    "part": "M5c battery",
+    "arm": "sp",
+    "family": "F_freeze_c",
+    "horizon": 150,
+    "purpose": "CONTINGENT: exception 3 re-run at 150 (only a failed family)",
+    "turns": 6480000,
+    "worker_h": 1.8177227000705898
+   },
+   {
+    "part": "M5c battery",
+    "arm": "om",
+    "family": "G_trade_c",
+    "horizon": 50,
+    "purpose": "standard (50)",
+    "turns": 1814400,
+    "worker_h": 1.524838084038347
+   },
+   {
+    "part": "M5c battery",
+    "arm": "om",
+    "family": "G_trade_c",
+    "horizon": 300,
+    "purpose": "validation subset to 300 turns",
+    "turns": 3024000,
+    "worker_h": 2.5413968067305786
+   },
+   {
+    "part": "M5c battery",
+    "arm": "om",
+    "family": "G_trade_c",
+    "horizon": 150,
+    "purpose": "CONTINGENT: exception 3 re-run at 150 (only a failed family)",
+    "turns": 5443200,
+    "worker_h": 4.574514252115041
+   },
+   {
+    "part": "M5c battery",
+    "arm": "sp",
+    "family": "G_trade_c",
+    "horizon": 50,
+    "purpose": "standard (50)",
+    "turns": 1814400,
+    "worker_h": 0.5089623560197651
+   },
+   {
+    "part": "M5c battery",
+    "arm": "sp",
+    "family": "G_trade_c",
+    "horizon": 300,
+    "purpose": "validation subset to 300 turns",
+    "turns": 3024000,
+    "worker_h": 0.8482705933662752
+   },
+   {
+    "part": "M5c battery",
+    "arm": "sp",
+    "family": "G_trade_c",
+    "horizon": 150,
+    "purpose": "CONTINGENT: exception 3 re-run at 150 (only a failed family)",
+    "turns": 5443200,
+    "worker_h": 1.5268870680592954
+   },
+   {
+    "part": "M5c battery",
+    "arm": "om",
+    "family": "H_zone_c",
+    "horizon": 50,
+    "purpose": "standard (50)",
+    "turns": 2592000,
+    "worker_h": 2.1783401200547816
+   },
+   {
+    "part": "M5c battery",
+    "arm": "om",
+    "family": "H_zone_c",
+    "horizon": 300,
+    "purpose": "validation subset to 300 turns",
+    "turns": 4320000,
+    "worker_h": 3.630566866757969
+   },
+   {
+    "part": "M5c battery",
+    "arm": "om",
+    "family": "H_zone_c",
+    "horizon": 150,
+    "purpose": "CONTINGENT: exception 3 re-run at 150 (only a failed family)",
+    "turns": 7776000,
+    "worker_h": 6.535020360164344
+   },
+   {
+    "part": "M5c battery",
+    "arm": "sp",
+    "family": "H_zone_c",
+    "horizon": 50,
+    "purpose": "standard (50)",
+    "turns": 2592000,
+    "worker_h": 0.7270890800282359
+   },
+   {
+    "part": "M5c battery",
+    "arm": "sp",
+    "family": "H_zone_c",
+    "horizon": 300,
+    "purpose": "validation subset to 300 turns",
+    "turns": 4320000,
+    "worker_h": 1.2118151333803933
+   },
+   {
+    "part": "M5c battery",
+    "arm": "sp",
+    "family": "H_zone_c",
+    "horizon": 150,
+    "purpose": "CONTINGENT: exception 3 re-run at 150 (only a failed family)",
+    "turns": 7776000,
+    "worker_h": 2.1812672400847077
+   },
+   {
+    "part": "M5c battery",
+    "arm": "om",
+    "family": "I_ward_c",
+    "horizon": 50,
+    "purpose": "standard (50)",
+    "turns": 518400,
+    "worker_h": 0.4356680240109563
+   },
+   {
+    "part": "M5c battery",
+    "arm": "om",
+    "family": "I_ward_c",
+    "horizon": 300,
+    "purpose": "validation subset to 300 turns",
+    "turns": 864000,
+    "worker_h": 0.7261133733515938
+   },
+   {
+    "part": "M5c battery",
+    "arm": "om",
+    "family": "I_ward_c",
+    "horizon": 150,
+    "purpose": "CONTINGENT: exception 3 re-run at 150 (only a failed family)",
+    "turns": 1555200,
+    "worker_h": 1.3070040720328688
+   },
+   {
+    "part": "M5c battery",
+    "arm": "sp",
+    "family": "I_ward_c",
+    "horizon": 50,
+    "purpose": "standard (50)",
+    "turns": 518400,
+    "worker_h": 0.14541781600564718
+   },
+   {
+    "part": "M5c battery",
+    "arm": "sp",
+    "family": "I_ward_c",
+    "horizon": 300,
+    "purpose": "validation subset to 300 turns",
+    "turns": 864000,
+    "worker_h": 0.24236302667607865
+   },
+   {
+    "part": "M5c battery",
+    "arm": "sp",
+    "family": "I_ward_c",
+    "horizon": 150,
+    "purpose": "CONTINGENT: exception 3 re-run at 150 (only a failed family)",
+    "turns": 1555200,
+    "worker_h": 0.43625344801694155
+   },
+   {
+    "part": "M5c cells",
+    "arm": "om",
+    "family": "weak (om)",
+    "horizon": 50,
+    "purpose": "M4.6c weaker side, G50",
+    "turns": 1382400.0,
+    "worker_h": 0.9715022400021551
+   },
+   {
+    "part": "M5c cells",
+    "arm": "om",
+    "family": "premium (om)",
+    "horizon": 50,
+    "purpose": "M4.6c lead premium J1, G20/G50",
+    "turns": 864000.0,
+    "worker_h": 0.6071889000013471
+   },
+   {
+    "part": "M5c cells",
+    "arm": "sp",
+    "family": "weak (sp)",
+    "horizon": 50,
+    "purpose": "M4.6c weaker side, G50",
+    "turns": 1382400.0,
+    "worker_h": 0.35203081600368025
+   },
+   {
+    "part": "M5c cells",
+    "arm": "sp",
+    "family": "premium (sp)",
+    "horizon": 50,
+    "purpose": "M4.6c lead premium J1, G20/G50",
+    "turns": 864000.0,
+    "worker_h": 0.22001926000230015
+   },
+   {
+    "part": "M5c cells",
+    "arm": "cross",
+    "family": "conv",
+    "horizon": 150,
+    "purpose": "M4.6f B2 strength use (G150 registered)",
+    "turns": 3110400.0,
+    "worker_h": 1.6622724480181932
+   },
+   {
+    "part": "M5c cells",
+    "arm": "cross",
+    "family": "freeze",
+    "horizon": 50,
+    "purpose": "M4.6f B3 freezes, G50",
+    "turns": 1382400.0,
+    "worker_h": 0.7387877546747526
+   },
+   {
+    "part": "M5c cells",
+    "arm": "cross",
+    "family": "recall",
+    "horizon": 100,
+    "purpose": "M4.6f B4 Recall windows (G100 registered)",
+    "turns": 1843200.0,
+    "worker_h": 0.9850503395663367
+   },
+   {
+    "part": "M5c cells",
+    "arm": "cross",
+    "family": "gaps",
+    "horizon": 150,
+    "purpose": "M4.6a E4 large gaps (G150 registered)",
+    "turns": 3110400.0,
+    "worker_h": 1.6622724480181932
+   },
+   {
+    "part": "M5c cells",
+    "arm": "cross",
+    "family": "natural leader/trailer",
+    "horizon": 150,
+    "purpose": "M4.6f B5 natural states of the common start",
+    "turns": 2764800,
+    "worker_h": 1.477575509349505
+   },
+   {
+    "part": "M5c cells",
+    "arm": "cross",
+    "family": "natural freezer/breaker",
+    "horizon": 50,
+    "purpose": "M4.6f B5 natural states of the common start",
+    "turns": 614400,
+    "worker_h": 0.3283501131887789
+   },
+   {
+    "part": "M5b monitor",
+    "arm": "game_om0",
+    "family": "curve",
+    "horizon": 150,
+    "purpose": "whole game from s0 (lead at 114; the 500-turn games add the discounted objective)",
+    "turns": 2304000.0,
+    "worker_h": 0.470663936038812
+   },
+   {
+    "part": "M5b monitor",
+    "arm": "game_om1",
+    "family": "curve",
+    "horizon": 150,
+    "purpose": "whole game from s0 (lead at 114; the 500-turn games add the discounted objective)",
+    "turns": 2304000.0,
+    "worker_h": 1.1434779519836107
+   },
+   {
+    "part": "M5b monitor",
+    "arm": "game_om0",
+    "family": "hist",
+    "horizon": 500,
+    "purpose": "whole game from s0 (lead at 114; the 500-turn games add the discounted objective)",
+    "turns": 1536000.0,
+    "worker_h": 0.313775957359208
+   },
+   {
+    "part": "M5b monitor",
+    "arm": "game_om1",
+    "family": "hist",
+    "horizon": 500,
+    "purpose": "whole game from s0 (lead at 114; the 500-turn games add the discounted objective)",
+    "turns": 384000.0,
+    "worker_h": 0.19057965866393514
+   },
+   {
+    "part": "M5b monitor",
+    "arm": "game_om2",
+    "family": "hist",
+    "horizon": 500,
+    "purpose": "whole game from s0 (lead at 114; the 500-turn games add the discounted objective)",
+    "turns": 1152000.0,
+    "worker_h": 0.9052348373333613
+   },
+   {
+    "part": "M5d families",
+    "arm": "game_om0",
+    "family": "fam",
+    "horizon": 150,
+    "purpose": "whole game from s0 (lead at 114; the 500-turn games add the discounted objective)",
+    "turns": 8064000.0,
+    "worker_h": 1.647323776135842
+   },
+   {
+    "part": "M5d families",
+    "arm": "game_om1",
+    "family": "fam",
+    "horizon": 150,
+    "purpose": "whole game from s0 (lead at 114; the 500-turn games add the discounted objective)",
+    "turns": 5184000.0,
+    "worker_h": 2.572825391963124
+   },
+   {
+    "part": "M5d families",
+    "arm": "game_om2",
+    "family": "fam",
+    "horizon": 150,
+    "purpose": "whole game from s0 (lead at 114; the 500-turn games add the discounted objective)",
+    "turns": 576000.0,
+    "worker_h": 0.45261741866668065
+   },
+   {
+    "part": "M5d families",
+    "arm": "game_om1",
+    "family": "h2h",
+    "horizon": 150,
+    "purpose": "whole game from s0 (lead at 114; the 500-turn games add the discounted objective)",
+    "turns": 518400.0,
+    "worker_h": 0.25728253919631244
+   },
+   {
+    "part": "M5d families",
+    "arm": "game_om1",
+    "family": "h2h",
+    "horizon": 500,
+    "purpose": "whole game from s0 (lead at 114; the 500-turn games add the discounted objective)",
+    "turns": 192000.0,
+    "worker_h": 0.09528982933196757
+   },
+   {
+    "part": "M5d families",
+    "arm": "game_om0",
+    "family": "long",
+    "horizon": 500,
+    "purpose": "whole game from s0 (lead at 114; the 500-turn games add the discounted objective)",
+    "turns": 5760000.0,
+    "worker_h": 1.17665984009703
+   },
+   {
+    "part": "M5d families",
+    "arm": "game_om1",
+    "family": "long",
+    "horizon": 500,
+    "purpose": "whole game from s0 (lead at 114; the 500-turn games add the discounted objective)",
+    "turns": 4800000.0,
+    "worker_h": 2.382245733299189
+   },
+   {
+    "part": "M5d families",
+    "arm": "game_om2",
+    "family": "long",
+    "horizon": 500,
+    "purpose": "whole game from s0 (lead at 114; the 500-turn games add the discounted objective)",
+    "turns": 960000.0,
+    "worker_h": 0.7543623644444678
+   },
+   {
+    "part": "M5d families",
+    "arm": "game_om0",
+    "family": "mid",
+    "horizon": 150,
+    "purpose": "whole game from s0 (lead at 114; the 500-turn games add the discounted objective)",
+    "turns": 1324800.0,
+    "worker_h": 0.2706317632223169
+   },
+   {
+    "part": "M5d families",
+    "arm": "game_om1",
+    "family": "mid",
+    "horizon": 150,
+    "purpose": "whole game from s0 (lead at 114; the 500-turn games add the discounted objective)",
+    "turns": 1382400.0,
+    "worker_h": 0.6860867711901665
+   }
+  ],
+  "rates": {
+   "game_om0": 1359.781260035237,
+   "game_om1": 559.6959686802714,
+   "game_om2": 353.499431089788,
+   "battery_sp": 990.2500529536758,
+   "battery_om": 330.52689677399565,
+   "cells_cross": 519.7703908466295,
+   "cells_om": 395.26414267366806,
+   "cells_sp": 1090.8135951256766,
+   "lane_exit_om": 325.23187511474424
+  },
+  "workers": 6,
+  "wall_h_by_part": {
+   "M5c battery": 9.333960326488926,
+   "M5c cells": 1.5008416381375405,
+   "M5b monitor": 0.5039553902298212,
+   "M5d families": 1.7158875712578496
+  },
+  "note": "wall hours = worker hours / workers (the R10 steady-state rates with six classes at once); contingent rows are excluded from the totals"
+ },
+ "attackers": {
+  "budget_per_attacker": 8192000,
+  "tps": {
+   "om_target": 620.0623352047627,
+   "sp_target": 767.2929845712629
+  },
+  "core_12": {
+   "training_wall_h": 6.635575083076774,
+   "eval_wall_h": 0.45526950873710487
+  },
+  "optional_om_table_6": {
+   "training_wall_h_added": 3.669881923732878,
+   "tables_wall_h": 0.025748902039704497,
+   "eval_wall_h_added": 0.4287980515537439
+  }
+ },
+ "meta": {
+  "study": "M5",
+  "commit": "8256882791407a58ffe59abf2c7d7439e3e7bc9a",
+  "working_tree_dirty": true,
+  "timestamp": "2026-10-17 20:24:25",
+  "torch": "2.14.1+cpu",
+  "numpy": "2.5.3",
+  "stage": "plan_future"
+ }
+}

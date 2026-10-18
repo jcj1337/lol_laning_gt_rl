@@ -8,11 +8,16 @@ Everything is imported, nothing re-implemented:
 Both: `m46c.train.shared_config()`, the M4.6c PPO settings (`ppo_config`), PPO seed TRAIN_SEED + s, a fresh Adam,
 lr 3e-4 annealed to 0 over BUDGET agent transitions.
 
-Runs write results/rl/checkpoints/m5/train/<phase>/<arm>/s<seed>/ (run.json, history.jsonl, snapshots/, final.pt,
-summary.json, m5_run.json). A run directory is never overwritten outside the smoke and bench phases. An interrupted run
+Runs write results/rl/checkpoints/m5/train/<phase>/<arm>/s<seed>/ (run.json, history.jsonl, health.jsonl, snapshots/,
+final.pt, summary.json). A run directory is never overwritten outside the smoke and bench phases. An interrupted run
 cannot be resumed mid-schedule (the trainer stores no optimizer or collector state); with `restart_incomplete` its
 directory is moved, intact, to train/<phase>/partial/<arm>_s<seed>_<time>/ and the run restarts from its start: by the
-determinism contract the restart must reproduce the preserved history prefix exactly, which `prefix_check` verifies.
+determinism contract the restart must reproduce the preserved history prefix exactly, which `prefix_check` verifies and
+`check` enforces. A restart repeats the lost work, so it adds up to one run's wall time.
+
+Runtime health (amendment 1, `health`): every run is watched by `health.RunMonitor` (the registered stop conditions,
+update by update; a DEFECT alarm ends the run, an INVESTIGATE alarm is recorded and blocks evaluation until resolved),
+and the campaign runs under `health.run_campaign` (progress log, more than two failed pairs stop the campaign).
 """
 
 from __future__ import annotations
@@ -170,9 +175,11 @@ def shares(h: List[dict]) -> dict:
 
 
 def train_job(args) -> dict:
-    """(phase, arm, seed, total, stop or None, overwrite, out_dir or None, ppo_seed or None): one run; writes
-    summary.json and m5_run.json into the run directory; returns the summary (an error record instead of raising)."""
-    phase, arm, seed, total, stop, overwrite, out, ppo_seed = args
+    """(phase, arm, seed, total, stop or None, overwrite, out_dir or None, ppo_seed or None[, monitor]): one run under
+    `health.RunMonitor` (unless monitor is False); writes summary.json into the run directory; returns the summary (an
+    error record instead of raising: status "failed", or "stopped" for a DEFECT stop condition)."""
+    phase, arm, seed, total, stop, overwrite, out, ppo_seed, *rest = args
+    monitor = rest[0] if rest else True
     out = out or C.run_dir(arm, seed, phase)
     started = time.strftime("%Y-%m-%d %H:%M:%S")
     t0 = time.perf_counter()
@@ -183,13 +190,14 @@ def train_job(args) -> dict:
         from ....rl import checkpoint_info, train_shared, weights_digest
         from ..m43b.train import summarize_history
         from ..m45c.train import rollout_summary
+        from .health import RunMonitor
         cfg = C.setup(arm)
         ppo = ppo_config(arm, seed, total, ppo_seed)
         net = initial_net(arm, seed)
         init_digest = weights_digest(net.state_dict())
         res = train_shared(cfg, ppo, shared_config(), out_dir=out, net=net, name=f"m5_{arm}_s{seed}",
                            verbose=phase == "main", overwrite=overwrite, stop_at=stop, rollout_stats=Stats(arm, ppo),
-                           collector_cls=collector_cls(arm))
+                           collector_cls=collector_cls(arm), on_update=RunMonitor(out) if monitor else None)
         end_epoch = time.time()
         env = LaneEnv(cfg, max_turns=1)
         o = env.reset(seed=0)
@@ -220,9 +228,11 @@ def train_job(args) -> dict:
                   "train_start_epoch": end_epoch - res.elapsed, "train_end_epoch": end_epoch})
     except BaseException as ex:                            # noqa: BLE001 - recorded, never swallowed silently
         import traceback
-        s = {"status": "failed", "name": f"{arm}_s{seed}", "phase": phase, "arm": arm, "seed": seed, "run_dir": out,
-             "error": repr(ex), "traceback": traceback.format_exc(), "started": started,
-             "wall_s": time.perf_counter() - t0}
+        from .health import StopCondition
+        s = {"status": "stopped" if isinstance(ex, StopCondition) else "failed", "name": f"{arm}_s{seed}",
+             "phase": phase, "arm": arm, "seed": seed, "run_dir": out, "error": repr(ex),
+             "traceback": traceback.format_exc(), "started": started, "wall_s": time.perf_counter() - t0,
+             "updates_written": len(history(out))}
     if os.path.isdir(out):
         C.jdump(os.path.join(out, "summary.json"), s)
     return s
@@ -247,6 +257,7 @@ def run_manifest(phase: str, arms: Sequence[str], seeds: Sequence[int], total: i
             "archive": {"path": ap.replace("\\", "/"), "file_sha256": C.file_sha256(ap)},
             "ppo_seeds": {s: C.TRAIN_SEED + s for s in seeds},
             "preregistration": (pre or {}).get("record"),
+            "preregistration_active": C.active_version(pre) if pre else None,
             "run_dirs": {f"{a}_s{s}": C.run_dir(a, s, phase).replace("\\", "/") for s in seeds for a in arms}}
 
 
@@ -306,33 +317,82 @@ def run_order(todo: List[tuple], order: str) -> List[tuple]:
 
 def train(workers: int, arms: Sequence[str] = C.ARMS, seeds: Sequence[int] = C.SEEDS,
           restart_incomplete: bool = False, order: str = "om_first") -> dict:
-    """The M5b campaign (12 runs). The caller has checked the user's approval (--confirm-m5-train)."""
+    """The M5b campaign (12 runs) under the coordinator's failure policy (`health.run_campaign`), with the progress
+    log; then the health check. The caller has checked the user's approval (--confirm-m5-train)."""
     C.require_prereg()
     from ..m46c.train import ResourceLog
+    from . import health as HL
     todo = plan_runs("main", arms, seeds, restart_incomplete)
     man = run_manifest("main", arms, seeds, C.BUDGET)
     todo = run_order(todo, order)
-    man["run_order"], man["workers"] = [f"{j[1]}_s{j[2]}" for j in todo], workers
-    C.save_json(f"manifest_main_{time.strftime('%Y%m%d-%H%M%S')}", man)
+    names = [f"{j[1]}_s{j[2]}" for j in todo]
+    stamp = time.strftime("%Y%m%d-%H%M%S")
+    man["run_order"], man["workers"] = names, workers
+    C.save_json(f"manifest_main_{stamp}", man)
     log = ResourceLog(os.path.join(C.OUT, "resources_main.jsonl"))
+    prog = HL.Progress("main", names, workers, C.BUDGET)
     log.start()
+    prog.start()
     t0 = time.perf_counter()
+    started = time.strftime("%Y-%m-%d %H:%M:%S")
     try:
-        res = C.run_jobs(train_job, todo, workers, "M5 training")
+        out = HL.run_campaign(train_job, todo, names, workers)
     finally:
         log.stop_flag.set()
-    C.jdump(os.path.join(C.OUT, "wall_main.json"), {"runs": [r["name"] for r in res], "workers": workers,
-                                                    "wall_s": time.perf_counter() - t0,
-                                                    "finished": time.strftime("%Y-%m-%d %H:%M:%S")})
+        prog.stop_flag.set()
+        try:
+            prog.write()
+        except Exception:                                  # pragma: no cover
+            pass
+    rec = {"manifest": f"manifest_main_{stamp}.json", "runs": names, "workers": workers, "started": started,
+           "wall_s": time.perf_counter() - t0, "finished": time.strftime("%Y-%m-%d %H:%M:%S"),
+           "status": {n: r.get("status") for n, r in out["results"].items()}, "stopped": out["stopped"],
+           "run_wall_h": {n: (r.get("wall_s") or 0) / 3600 for n, r in out["results"].items()}}
+    C.jdump(os.path.join(C.OUT, f"wall_main_{stamp}.json"), rec)
+    C.jdump(os.path.join(C.OUT, "wall_main.json"), rec)
     return check("main")
 
 
 # ---------------------------------------------------------------------------------------------- health checks
+def identities(arm: str, seed: int, phase: str = "main", points: Sequence[int] = C.CURVE_POINTS) -> Dict[str, dict]:
+    """File identities (path, SHA-256, transitions) of a run's final and of the snapshots the evaluation reads: the
+    curve points (which include the 25%, 50% = matched midpoint and 75% snapshots)."""
+    out = {}
+    p = C.policy_path(f"{'' if phase == 'main' else phase + '/'}{arm}:{seed}")
+    if os.path.exists(p):
+        out["final"] = {"path": p.replace("\\", "/"), "file_sha256": C.file_sha256(p)}
+    for n in points:
+        if n >= C.BUDGET:
+            continue
+        try:
+            q = C.snapshot_at(arm, seed, n, phase)
+        except FileNotFoundError:
+            continue
+        out[f"@{n}"] = {"path": q.replace("\\", "/"), "file_sha256": C.file_sha256(q),
+                        "transitions": int(os.path.basename(q)[5:-3])}
+    return out
+
+
+def restart_checks(phase: str = "main") -> Dict[str, dict]:
+    """Every restart of this phase (results/m5/restarts.json): the restarted run must reproduce the preserved prefix."""
+    out = {}
+    for rec in (C.load("restarts") or {}).get("restarts", []):
+        if rec.get("phase") != phase:
+            continue
+        arm, s = rec["run"].split("_s")
+        out[f"{rec['run']} ({rec['moved_to'].split('/')[-1]})"] = prefix_check(rec["moved_to"],
+                                                                                 C.run_dir(arm, int(s), phase))
+    return out
+
+
 def check(phase: str = "main", total: int = C.BUDGET, seeds: Sequence[int] = C.SEEDS, save: bool = True) -> dict:
-    """The pre-registered technical health checks (pre-registration §4), rebuilt from the run directories."""
+    """The pre-registered technical health checks (pre-registration §3), rebuilt from the run directories; with the
+    runtime monitor's records, the restart prefix checks, the technical-failure summary and the identities of every
+    checkpoint the evaluation will read (amendment 1)."""
     from ....env.discounted import tail_constant
     from ..m45c.full import stability_scan
-    runs, checks, scans = {}, {}, {}
+    from . import health as HL
+    runs, checks, scans, ids, live = {}, {}, {}, {}, {}
     for s in seeds:
         for a in C.ARMS:
             name = f"{a}_s{s}"
@@ -340,10 +400,16 @@ def check(phase: str = "main", total: int = C.BUDGET, seeds: Sequence[int] = C.S
             r = C.jload(os.path.join(d, "summary.json"))
             h = history(d)
             scans[name] = stability_scan(h)
+            live[name] = HL.alarms(d)
             if r is None or r.get("status") != "complete":
-                runs[name] = {"status": (r or {}).get("status") or ("missing" if not h else f"incomplete ({len(h)})")}
+                runs[name] = {"status": (r or {}).get("status") or ("missing" if not h else f"incomplete ({len(h)})"),
+                              "error": (r or {}).get("error"), "updates_written": len(h),
+                              "alarms": [x["alarm"] for x in live[name]]}
                 continue
             runs[name] = r
+            ids[name] = identities(a, s, phase)
+            checks[f"{name}: runtime monitor agrees with the post-hoc scan"] = \
+                sorted(x["alarm"] for x in live[name]) == sorted(scans[name].get("alarms", []))
             omega = tail_constant(C.arm_cfg(a))
             sh = r["shares"]
             st = r.get("starts") or {}
@@ -366,9 +432,18 @@ def check(phase: str = "main", total: int = C.BUDGET, seeds: Sequence[int] = C.S
                 checks[f"{name}: both seats trained equally"] = r["transitions_seat_a"] == r["transitions_seat_b"]
             else:
                 checks[f"{name}: fixed-opponent game share 0.45-0.55"] = 0.45 <= sh["game_share_fixed_opponent"] <= 0.55
+    for k, v in restart_checks(phase).items():
+        checks[f"restart {k}: reproduces the preserved history prefix"] = bool(v["identical"])
     complete = [n for n, r in runs.items() if r.get("status") == "complete"]
+    tech = {n: r for n, r in runs.items() if r.get("status") != "complete"}
+    fp = sorted({int(n.split("_s")[1]) for n in tech})
     data = {"meta": C.meta(stage="train_check", phase=phase), "runs": runs, "stability": scans, "checks": checks,
-            "complete": complete,
+            "live_alarms": {n: v for n, v in live.items() if v}, "complete": complete,
+            "technical_failures": {"runs": {n: {"status": r["status"], "error": r.get("error"),
+                                                "alarms": r.get("alarms")} for n, r in tech.items()},
+                                   "pairs": fp, "policy_stop": len(fp) > HL.MAX_FAILED_PAIRS},
+            "restarts": restart_checks(phase), "identities": ids,
+            "failed_checks": [k for k, v in checks.items() if not v],
             "all_passed": bool(checks) and all(checks.values()) and len(complete) == len(C.ARMS) * len(seeds)}
     if save:
         C.save_json(f"train_{phase}", data)
@@ -418,4 +493,4 @@ def status(phase: str = "main", seeds: Sequence[int] = C.SEEDS) -> dict:
 
 __all__ = ["ppo_config", "shared_config", "collector_cls", "initial_net", "training_spec", "Stats", "train_job",
            "history", "shares", "run_manifest", "preserve_partial", "prefix_check", "plan_runs", "train", "check",
-           "status", "start_digest", "run_order", "SMOKE_UPDATES"]
+           "status", "start_digest", "run_order", "SMOKE_UPDATES", "identities", "restart_checks"]

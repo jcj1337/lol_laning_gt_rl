@@ -635,6 +635,99 @@ def r8_equivalence() -> dict:
     return _record("R8", {"checks": checks, "data": {"battery_max_abs_diff": diff, "first_codes_equal": codes_equal}})
 
 
+# ---------------------------------------------------------------------------------------------- amendment 1 checks
+# The M5a correction pass's own checks (results/m5/corrections_readiness.json; the M5a record readiness.json is left
+# as it was): A1 the monitored smoke reproduces the stored R4 smoke runs, A2 the inputs of the main training (the
+# amended pre-registration, every start checkpoint and archive, the run manifest), A3 the targeted tests, A4 the full
+# regression suite.
+CORR_PARTS = ("A1", "A2", "A3", "A4")
+
+
+def _record_corr(part: str, data: dict) -> dict:
+    rec = C.load("corrections_readiness") or {"meta": C.meta(stage="corrections"), "parts": {}}
+    data = {"time": time.strftime("%Y-%m-%d %H:%M:%S"), **data}
+    if "checks" in data:
+        data["passed"] = bool(data["checks"]) and all(bool(v) for v in data["checks"].values())
+    prev = rec["parts"].get(part)
+    if prev is not None:                                   # every attempt is kept (both runs are reported)
+        data["earlier_attempts"] = prev.pop("earlier_attempts", []) + [prev]
+    rec["parts"][part] = data
+    rec["meta"] = C.meta(stage="corrections")
+    rec["all_passed"] = all(p.get("passed", True) for p in rec["parts"].values())
+    C.save_json("corrections_readiness", rec)
+    return data
+
+
+def a1_monitored_smoke(workers: int = 2) -> dict:
+    """Both arms' R4 smoke (seed 0, the real schedule stopped at SMOKE_STOP) re-run with the runtime monitor attached:
+    weights, snapshots and every non-wall-clock history field must equal the stored M5a run made without it; the live
+    alarms must equal the post-hoc scan."""
+    from . import health as HL
+    from . import train as T
+    from ..m44.train import _histories_equal
+    from ..m45c.full import stability_scan
+    jobs = [("smoke", arm, 0, C.BUDGET, SMOKE_STOP[arm], True,
+             os.path.join(C.CKPT, "train", "smoke", f"{arm}_monitored"), None, True) for arm in C.ARMS]
+    res = C.run_jobs(T.train_job, jobs, workers, "M5 monitored smoke")
+    checks, data = {}, {}
+    for (j, r) in zip(jobs, res):
+        arm = j[1]
+        ref = os.path.join(C.CKPT, "train", "smoke", f"{arm}_run")
+        refs = C.jload(os.path.join(ref, "summary.json")) or {}
+        checks[f"{arm}: monitored run completed"] = r.get("status") == "complete"
+        if r.get("status") != "complete":
+            data[arm] = r
+            continue
+        from ....rl import checkpoint_info
+        snaps = lambda d: sorted(os.listdir(os.path.join(d, "snapshots")))
+        wd = lambda d, f: checkpoint_info(os.path.join(d, "snapshots", f))["digest"]
+        same_snaps = snaps(ref) == snaps(j[6]) and all(wd(ref, f) == wd(j[6], f) for f in snaps(ref))
+        live = sorted(a["alarm"] for a in HL.alarms(j[6]))
+        post = sorted(stability_scan(T.history(j[6]))["alarms"])
+        checks.update({f"{arm}: final weights equal the stored M5a smoke run": r["digest"] == refs.get("digest"),
+                       f"{arm}: snapshot weights identical (same names, same digests)": same_snaps,
+                       f"{arm}: histories identical (non-wall-clock fields)": _histories_equal(ref, j[6]),
+                       f"{arm}: live alarms equal the post-hoc scan": live == post})
+        data[arm] = {"digest": r["digest"], "reference_digest": refs.get("digest"), "updates": r["updates"],
+                     "live_alarms": live, "post_hoc_alarms": post, "wall_s": r["wall_s"]}
+    return _record_corr("A1", {"checks": checks, "data": data})
+
+
+def a2_campaign_inputs() -> dict:
+    """The main training's inputs: the amended pre-registration verifies; every start checkpoint, library network and
+    the archive loads with its digest; the arms' initial networks are the starts; the run manifest builds; no main run
+    directory exists yet (or every existing one is complete)."""
+    from . import train as T
+    checks: Dict[str, bool] = {}
+    pre = C.require_prereg()
+    act = C.active_version(pre)
+    checks["pre-registration chain verified, document = active version 1"] = act["version"] == 1
+    man = T.run_manifest("main", C.ARMS, C.SEEDS, C.BUDGET)
+    C.save_json("manifest_preview", man)
+    checks["run manifest builds (starts, library, archive identities)"] = bool(man["start_checkpoints"]) and \
+        len(man["library_networks"]) == 5 and bool(man["archive"]["file_sha256"])
+    checks["manifest records the active pre-registration"] = (man.get("preregistration_active") or {}).get(
+        "sha256") == act["sha256"]
+    for s in C.SEEDS:
+        for a in C.ARMS:
+            checks[f"{a}_s{s}: initial network digest"] = bool(T.start_digest(a, s))
+    todo = T.plan_runs("main", C.ARMS, C.SEEDS, restart_incomplete=False)
+    checks["every main run still to do (none started)"] = len(todo) == len(C.ARMS) * len(C.SEEDS)
+    return _record_corr("A2", {"checks": checks, "data": {"active": act, "runs_to_do": len(todo),
+                                                           "code": man["code"]}})
+
+
+def corr_pytest(part: str, args: List[str], log: str) -> dict:
+    """A3 / A4: a pytest run with its output kept in results/m5/<log>."""
+    t0 = time.perf_counter()
+    r = subprocess.run([sys.executable, "-m", "pytest", *args], capture_output=True, text=True)
+    with open(os.path.join(C.OUT, log), "w", encoding="utf-8", newline="\n") as f:
+        f.write(r.stdout[-200_000:] + "\n" + r.stderr[-20_000:])
+    tail = [x for x in r.stdout.strip().splitlines() if x.strip()][-1:] or [""]
+    return _record_corr(part, {"checks": {f"pytest {' '.join(args)}: exit 0": r.returncode == 0},
+                               "data": {"summary": tail[0], "seconds": time.perf_counter() - t0, "log": log}})
+
+
 __all__ = ["freeze_protocol", "r0_artifacts", "r1_seeds", "r2_init", "r3_defaults", "r4_smoke", "r5_crn", "r6_inputs",
            "r7_shares", "r8_equivalence", "probe_inputs", "start_schedule", "scan_roots", "om_proxy", "sp_proxy",
-           "PARTS", "RDIR"]
+           "PARTS", "RDIR", "CORR_PARTS", "a1_monitored_smoke", "a2_campaign_inputs", "corr_pytest"]

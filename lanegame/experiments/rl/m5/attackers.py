@@ -28,6 +28,15 @@ Proposal (every item is in the pre-registration's attacker section and is a revi
 The collector keeps one belief per learner seat (the attacker's) and one target instance per game (the target's belief
 lives in it); both beliefs are updated after every step from the other seat's code on its start-of-turn observation,
 batched across environments before any decision of the next step.
+
+Scope (amendment 1, 2026-10-17). The CORE attacker stage is 12 attackers: CORE_KINDS = (om, sp) x six seeds at the
+quarter budget, still awaiting its own approval (--confirm-m5-attackers). The six om_table attackers (OPTIONAL_KINDS)
+are an optional follow-up that needs a separate decision (--include-om-table on top of that flag). Their reading is
+limited: om - om_table compares two approximate lower bounds, so a difference can come from what each attacker learned,
+not only from the targets; removing the live belief can change the target's competence and creates state-belief
+combinations the network never saw in training; neither isolates a causal adaptation vulnerability, and neither is
+evidence of deliberate deception (the attackers are stateless). The live/table cross-evaluation (each attacker against
+the other target form) is implemented in `eval_jobs` when both kinds are included.
 """
 
 from __future__ import annotations
@@ -45,7 +54,9 @@ AOUT = os.path.join(C.CKPT, "attack")
 HALF_BUDGET = 16_384_000        # half of the target's M5 continuation budget (32,768,000)
 QUARTER_BUDGET = 8_192_000      # a quarter of it (M4.5c's ratio)
 ATTACK_BUDGET = QUARTER_BUDGET  # the M5a recommendation (design §7.1, §11): quarter, for cost; half is the alternative
-TARGET_KINDS = ("om", "sp", "om_table")
+TARGET_KINDS = ("om", "sp", "om_table")    # every kind (index = the PPO seed offset; unchanged)
+CORE_KINDS = ("om", "sp")                   # the core attacker stage (12 attackers)
+OPTIONAL_KINDS = ("om_table",)              # the optional adaptation ablation (6 attackers), a separate decision
 N_EVAL = 128
 SMOKE_UPDATES = 8
 
@@ -272,9 +283,13 @@ def train_job(args) -> dict:
     return s
 
 
-def eval_jobs(kinds=("om", "sp"), seeds=C.SEEDS, phase: str = "main", N: int = N_EVAL) -> List[dict]:
+def eval_jobs(kinds=CORE_KINDS, seeds=C.SEEDS, phase: str = "main", N: int = N_EVAL) -> List[dict]:
     """The attackers' independent evaluation cells (games.cell_job): each attacker against its target, the other arm's
-    final and the common start; plus, for om targets, the om final against the attacker with its belief traced."""
+    final and the common start (the target's belief trace is recorded in the om-target cells). When both om and
+    om_table are included, the live/table cross-evaluation is added: the om attacker against the table-belief target
+    ("cross_table", on the games of the om_table attacker's own target cell) and the om_table attacker against the live
+    target ("cross_live", on the games of the om attacker's own target cell). Each target form is then played by both
+    attackers on the same games, so target-specific tuning can be told apart from the channel."""
     js = []
     for s in seeds:
         for kind in kinds:
@@ -284,13 +299,25 @@ def eval_jobs(kinds=("om", "sp"), seeds=C.SEEDS, phase: str = "main", N: int = N
             targets = {"target": ("net", f"{tgt_kind}:{s}", mode),
                        "other_arm": ("net", f"{'sp' if tgt_kind == 'om' else 'om'}:{s}"),
                        "start": ("net", f"start:{s}")}
+            if "om" in kinds and "om_table" in kinds and kind in ("om", "om_table"):
+                if kind == "om":
+                    targets["cross_table"] = ("net", f"om:{s}", f"table:{table_path(s, phase)}")
+                else:
+                    targets["cross_live"] = ("net", f"om:{s}", "live")
             for c, (name, opp) in enumerate(targets.items()):
+                if name == "cross_table":
+                    cell = 100 * s + 10 * TARGET_KINDS.index("om_table")
+                elif name == "cross_live":
+                    cell = 100 * s + 10 * TARGET_KINDS.index("om")
+                else:
+                    cell = 100 * s + 10 * TARGET_KINDS.index(kind) + c
                 js.append({"key": f"attack|{phase}|{kind}|s{s}|{name}",
                            "path": os.path.join(AOUT, "eval", phase, f"{kind}_s{s}__{name}.npz"),
                            "focals": [att], "opponent": opp, "N": N, "T": 500, "root": C.ATTACK_EVAL_ROOT,
-                           "cell": 100 * s + 10 * TARGET_KINDS.index(kind) + c})
+                           "cell": cell})
     return js
 
 
 __all__ = ["TargetAgent", "attack_collector_cls", "initial_net", "ppo_config", "attacker_dir", "train_job",
-           "eval_jobs", "self_play_table", "ATTACK_BUDGET", "HALF_BUDGET", "QUARTER_BUDGET", "TARGET_KINDS", "N_EVAL"]
+           "eval_jobs", "self_play_table", "ATTACK_BUDGET", "HALF_BUDGET", "QUARTER_BUDGET", "TARGET_KINDS", "N_EVAL",
+           "CORE_KINDS", "OPTIONAL_KINDS"]

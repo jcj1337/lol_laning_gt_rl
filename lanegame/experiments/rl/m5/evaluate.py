@@ -23,14 +23,20 @@ on the same games):
     long     C_hist, C_cross and the same-seed head to head at 500 turns (the objective's discounted lead), LONG_N pairs
     H2H      om:s vs sp:s (H2H_N pairs x 150, and LONG_N x 500), om:s vs sp:o for o != s (XSEED_N x 150)
     mid      the midpoints on S_in, S_out, C_hist and the same-seed head to head, MID_N pairs x 150
-Attackers: `attackers` (training) and their evaluation cells.
+Attackers: `attackers` (training) and their evaluation cells; the core stage is 12 attackers (om, sp), the om_table
+ablation an optional follow-up (amendment 1).
+
+Gates (amendment 1). Every evaluation stage first requires a passed (or fully resolved) training check whose recorded
+checkpoint identities match the files (`health.require_training_ok`), then writes a stage manifest with the identities of
+every network it reads (results/m5/eval_<stage>.json). Cell files are resumable; before an existing manifest's partial
+outputs are reused, the identities and the active pre-registration version must match it.
 """
 
 from __future__ import annotations
 
 import os
 import time
-from typing import Dict, List
+from typing import Dict, List, Optional
 
 import numpy as np
 
@@ -194,42 +200,225 @@ def cells_turns() -> Dict[str, float]:
     return out
 
 
-def plan() -> Dict[str, Dict[str, float]]:
-    """Simulated turns per evaluation part and cost class (budget)."""
+def plan(include_optional: bool = False) -> Dict[str, Dict[str, float]]:
+    """Simulated turns per evaluation part and cost class (budget). The attacker evaluation counts the core attackers
+    (12) unless include_optional (the om_table ablation and its cross-evaluation added)."""
+    from .attackers import CORE_KINDS, OPTIONAL_KINDS, eval_jobs
     fam = _game_turns(family_jobs())
     mon = _game_turns(monitor_jobs())
-    from .attackers import eval_jobs
-    att = _game_turns([{**j, "focals": [("net", "om:0")], "opponent": j["opponent"]} for j in eval_jobs(("om", "sp", "om_table"))])
+    kinds = CORE_KINDS + (OPTIONAL_KINDS if include_optional else ())
+    att = _game_turns([{**j, "focals": [("net", "om:0")], "opponent": j["opponent"]} for j in eval_jobs(kinds)])
     return {"M5b_monitor": mon, "M5c_battery": {"battery_om": 6 * battery_turns("om"), "battery_sp": 6 * battery_turns("sp")},
             "M5c_cells": cells_turns(), "M5d_families": fam, "M5d_attack_eval": att}
 
 
+def battery_breakdown() -> List[dict]:
+    """The M4.5c battery design for ONE final, by family, horizon and purpose (simulated turns): the standard
+    continuation (the family horizon: 50, or exception 1's plan horizon), the validation subset's extension from the
+    family horizon to 300 turns (the "policy" jobs of the subset run 300 turns instead of h), and, contingent on a failed
+    validation, exception 3's re-run of the whole family at 150 turns."""
+    from ..m45c import battery as B
+    rows = []
+    for fam, (kind, _, _, protos) in B.FAMILIES.items():
+        n = len(B.GRIDS[fam]) if kind == "constructed" else (B.N_EARLY if kind == "early" else B.N_NATURAL)
+        K = B.K_CONSTRUCTED if kind == "constructed" else B.K_NATURAL
+        ncand = 1 + len(B.candidates(fam))
+        h = B.family_horizon(fam)
+        nval = n if kind == "constructed" else len(B.validation_indices(fam, n))
+        std = n * K * ncand * h * len(protos)
+        val = nval * K * ncand * (B.VALIDATION_H - h) if "policy" in protos else 0
+        ext = n * K * ncand * B.EXTENDED_H * len(protos)
+        rows.append({"family": fam, "kind": kind, "states": n, "K": K, "candidates": ncand, "protocols": len(protos),
+                     "horizon": h, "purpose": "standard (50)" if h == B.DEFAULT_H else
+                     f"exception 1: sustained plans ({h})", "standard_turns": std, "validation_states": nval,
+                     "validation_turns_beyond_h": val, "contingent_extension_turns_150": ext})
+    return rows
+
+
+def cells_breakdown() -> List[dict]:
+    """The M5c limitation cells for all six seeds by family and horizon (simulated turns; no checkpoint read)."""
+    from . import cells as CE
+    from ..m46f import behaviour as BH
+    rows = []
+
+    def add(name, js, kind, mult, purpose):
+        by_h: Dict[int, float] = {}
+        for j in js:
+            by_h[j["horizon"]] = by_h.get(j["horizon"], 0.0) + mult * len(j["roll"]) * len(j["cands"]) * j["horizon"]
+        for hh, t in sorted(by_h.items()):
+            rows.append({"family": name, "cost_class": kind, "horizon": hh, "turns": t, "purpose": purpose})
+    for a in C.ARMS:
+        add(f"weak ({a})", CE.weak_jobs({f"{a}_s0": f"{a}:0"}), f"cells_{a}", 6, "M4.6c weaker side, G50")
+        add(f"premium ({a})", CE.premium_jobs({f"{a}_s0": f"{a}:0"}), f"cells_{a}", 6, "M4.6c lead premium J1, G20/G50")
+    specs = CE.arm_specs(0)
+    add("conv", CE.conv_jobs(0, specs), "cells_cross", 6, "M4.6f B2 strength use (G150 registered)")
+    add("freeze", CE.freeze_jobs(0, specs), "cells_cross", 6, "M4.6f B3 freezes, G50")
+    add("recall", CE.recall_jobs(0, specs), "cells_cross", 6, "M4.6f B4 Recall windows (G100 registered)")
+    add("gaps", CE.gaps_jobs(0, specs), "cells_cross", 6, "M4.6a E4 large gaps (G150 registered)")
+    for role, n, hh in (("natural leader/trailer", 48, BH.H_NAT), ("natural freezer/breaker", 32, BH.H_NATFZ)):
+        rows.append({"family": role, "cost_class": "cells_cross", "horizon": hh,
+                     "turns": 6 * 2 * 2 * BH.K_NAT * n * hh, "purpose": "M4.6f B5 natural states of the common start"})
+    return rows
+
+
+def horizon_breakdown(workers: int = 6) -> dict:
+    """Every evaluation part's simulated turns by horizon and purpose, with worker and wall hours at the R10 rates
+    (readiness record): the input of the future battery proposal (amendment 1, design §10)."""
+    rates = (((C.load("readiness") or {}).get("parts", {}).get("R10") or {}).get("data") or {}).get("rates", {})
+    rows = []
+    for r in battery_breakdown():
+        for arm in C.ARMS:
+            rt = rates.get(f"battery_{arm}", float("nan"))
+            for purpose, key, hh in ((r["purpose"], "standard_turns", r["horizon"]),
+                                     ("validation subset to 300 turns", "validation_turns_beyond_h", 300),
+                                     ("CONTINGENT: exception 3 re-run at 150 (only a failed family)",
+                                      "contingent_extension_turns_150", 150)):
+                t = 6 * r[key]
+                if t:
+                    rows.append({"part": "M5c battery", "arm": arm, "family": r["family"], "horizon": hh,
+                                 "purpose": purpose, "turns": t, "worker_h": t / rt / 3600 if rt == rt else None})
+    for r in cells_breakdown():
+        rt = rates.get(r["cost_class"], float("nan"))
+        rows.append({"part": "M5c cells", "arm": r["cost_class"].split("_")[1], "family": r["family"],
+                     "horizon": r["horizon"], "purpose": r["purpose"], "turns": r["turns"],
+                     "worker_h": r["turns"] / rt / 3600 if rt == rt else None})
+    for part, js in (("M5b monitor", monitor_jobs()), ("M5d families", family_jobs())):
+        agg: Dict[tuple, float] = {}
+        for j in js:
+            for f in j["focals"]:
+                k = (j["key"].split("|")[0], j["T"], _kind_of([f, j["opponent"]]))
+                agg[k] = agg.get(k, 0.0) + 2 * j["N"] * j["T"]
+        for (grp, T, kind), t in sorted(agg.items()):
+            rt = rates.get(kind, float("nan"))
+            rows.append({"part": part, "arm": kind, "family": grp, "horizon": T,
+                         "purpose": "whole game from s0 (lead at 114; the 500-turn games add the discounted objective)",
+                         "turns": t, "worker_h": t / rt / 3600 if rt == rt else None})
+    tot: Dict[str, float] = {}
+    for r in rows:
+        if r["worker_h"] is not None and not r["purpose"].startswith("CONTINGENT"):
+            tot[r["part"]] = tot.get(r["part"], 0.0) + r["worker_h"]
+    return {"rows": rows, "rates": rates, "workers": workers,
+            "wall_h_by_part": {k: v / workers for k, v in tot.items()},
+            "note": "wall hours = worker hours / workers (the R10 steady-state rates with six classes at once); "
+                    "contingent rows are excluded from the totals"}
+
+
 # ---------------------------------------------------------------------------------------------- stage drivers
-def _run_cells(js: List[dict], workers: int, label: str) -> None:
+def _net_specs(js: List[dict]) -> List[str]:
+    out = set()
+    for j in js:
+        for f in list(j["focals"]) + [j["opponent"]]:
+            if tuple(f)[0] == "net":
+                out.add(tuple(f)[1])
+    return sorted(out)
+
+
+def stage_manifest(stage: str, js: Optional[List[dict]] = None, check_reuse: bool = True,
+                   specs: Optional[List[str]] = None, existing: Optional[int] = None) -> dict:
+    """The identities of every network a stage reads (and the active pre-registration version); refuses to reuse the
+    partial outputs of a previous run of the stage made with other checkpoints or another protocol version. `js`:
+    game-cell jobs; or `specs` (policy specifications) and `existing` (the number of outputs already on disk)."""
+    pre = C.require_prereg()
+    ids = {}
+    for sp in (specs if specs is not None else _net_specs(js or [])):
+        p = C.policy_path(sp)
+        ids[sp] = {"path": p.replace("\\", "/"), "file_sha256": C.file_sha256(p) if os.path.exists(p) else None}
+    man = {"meta": C.meta(stage=f"eval_{stage}"), "stage": stage, "jobs": len(js) if js is not None else None,
+           "identities": ids, "preregistration_active": C.active_version(pre), "code": C.code_digest(),
+           "existing_outputs": existing if existing is not None else
+           sum(1 for j in (js or []) if os.path.exists(j["path"]))}
+    old = C.load(f"eval_{stage}")
+    if check_reuse and old and man["existing_outputs"]:
+        bad = [k for k, v in ids.items() if (old.get("identities") or {}).get(k, {}).get("file_sha256") !=
+               v["file_sha256"]]
+        if bad or (old.get("preregistration_active") or {}).get("sha256") != man["preregistration_active"]["sha256"]:
+            raise SystemExit(f"stage {stage}: existing outputs were made with other checkpoints or another protocol "
+                             f"version ({bad[:5] or 'pre-registration'}); inspect them before rerunning")
+    man["previous"] = (old or {}).get("meta")
+    C.save_json(f"eval_{stage}", man)
+    return man
+
+
+def _run_cells(js: List[dict], workers: int, label: str, stage: Optional[str] = None) -> dict:
     from . import games as G
+    if stage:
+        stage_manifest(stage, js)
     js = sorted(js, key=lambda j: -len(j["focals"]) * j["N"] * j["T"])
     t0 = time.perf_counter()
-    C.run_jobs(G.cell_job, js, workers, label)
-    C.jdump(os.path.join(C.OUT, f"wall_{label.replace(' ', '_')}.json"), {"jobs": len(js),
-                                                                         "wall_s": time.perf_counter() - t0})
+    started = time.strftime("%Y-%m-%d %H:%M:%S")
+    res = C.run_jobs(G.cell_job, js, workers, label)
+    cached = sum(1 for _, r in res if r.get("cached"))
+    rec = {"jobs": len(js), "computed": len(js) - cached, "reused": cached, "workers": workers, "started": started,
+           "finished": time.strftime("%Y-%m-%d %H:%M:%S"), "wall_s": time.perf_counter() - t0,
+           "job_seconds": float(sum(r.get("elapsed", 0.0) for _, r in res))}
+    C.jdump(os.path.join(C.OUT, f"wall_{label.replace(' ', '_')}.json"), rec)
+    return rec
+
+
+def _gate() -> None:
+    from .health import require_training_ok
+    require_training_ok("main")
 
 
 def stage_monitor(workers: int) -> None:
-    _run_cells(monitor_jobs(), workers, "M5b monitor")
+    _gate()
+    _run_cells(monitor_jobs(), workers, "M5b monitor", "monitor")
 
 
 def stage_families(workers: int) -> None:
-    _run_cells(family_jobs(), workers, "M5d families")
+    _gate()
+    _run_cells(family_jobs(), workers, "M5d families", "families")
 
 
 def stage_battery(workers: int) -> None:
+    _gate()
     from . import battery as MB
+    import glob
+    finals = [f"{a}:{s}" for s in C.SEEDS for a in C.ARMS]
+    stage_manifest("battery", specs=finals,
+                   existing=len(glob.glob(os.path.join(MB.BOUT, "*", "partial", "*.json.gz"))))
     for s in C.SEEDS:
         for a in C.ARMS:
             MB.run_policy(f"{a}:{s}", f"{a}_s{s}", workers)
 
 
+def extension_plan(seeds=C.SEEDS) -> Dict[str, List[str]]:
+    """{final tag: the battery families whose horizon validation failed} (M4.5c's exception 3 applies to them)."""
+    from . import strategic as ST
+    return {f"{a}_s{s}": ST.failed_families(f"{a}_s{s}") for s in seeds for a in C.ARMS}
+
+
+def stage_battery_extend(workers: int) -> dict:
+    """M4.5c's exception 3, part of the registered battery: every (final, family) whose horizon validation failed is
+    re-run at 150 turns for all its states and protocols, decided by the pass rule alone. The failed natural families'
+    states are re-collected in parallel (deterministic), then the re-run jobs run resumably."""
+    _gate()
+    from ..m45c import battery as B
+    from . import battery as MB
+    from . import strategic as ST
+    plan = extension_plan()
+    t0 = time.perf_counter()
+    cjobs = [(f"{tag.split('_s')[0]}:{tag.split('_s')[1]}", f, ST.expected_states(f)) for tag, fams in plan.items()
+             for f in fams if B.FAMILIES[f][0] != "constructed"]
+    nat: Dict[str, Dict[str, list]] = {}
+    for (spec, fam), v in C.run_jobs(MB.collect_job, cjobs, workers, "M5 battery extension states"):
+        nat.setdefault(spec.replace(":", "_s"), {})[fam] = v["states"]
+    js = []
+    for tag, fams in plan.items():
+        if fams:
+            spec = f"{tag.split('_s')[0]}:{tag.split('_s')[1]}"
+            js += ST.extension_jobs(spec, tag, fams, nat.get(tag, {}))
+    t1 = time.perf_counter()
+    res = dict(C.run_jobs(MB.state_job, js, workers, "M5 battery extension")) if js else {}
+    rec = {"meta": C.meta(stage="battery_extend"), "plan": plan, "jobs": len(js),
+           "collect_s": t1 - t0, "rollouts_s": time.perf_counter() - t1,
+           "turns": int(sum(v.get("turns", 0) for v in res.values()))}
+    C.save_json("battery_extension", rec)
+    return rec
+
+
 def stage_cells(workers: int) -> None:
+    _gate()
     from . import cells as CE
     fin = {f"{a}_s{s}": f"{a}:{s}" for s in C.SEEDS for a in C.ARMS}
     js = CE.weak_jobs(fin) + CE.premium_jobs(fin)
@@ -237,10 +426,17 @@ def stage_cells(workers: int) -> None:
         sp = CE.arm_specs(s)
         js += CE.conv_jobs(s, sp) + CE.freeze_jobs(s, sp) + CE.recall_jobs(s, sp) + CE.gaps_jobs(s, sp)
         js += CE.natural_jobs(s, sp, CE.natural_states(s))
+    specs = sorted(set(fin.values()) | {c[1] for j in js for c in j["cands"].values() if c[0] == "net"}
+                   | {f"start:{s}" for s in C.SEEDS})
+    stage_manifest("cells", specs=specs, existing=sum(1 for j in js if os.path.exists(j["path"])))
     CE.run(js, workers, "M5c cells")
 
 
-def stage_attack_tables(workers: int) -> None:
+def stage_attack_tables(workers: int, include_optional: bool = False) -> None:
+    """The om finals' self-play belief tables: needed only by the OPTIONAL om_table ablation."""
+    if not include_optional:
+        raise SystemExit("the belief tables serve only the optional om_table ablation: pass --include-om-table")
+    _gate()
     from . import attackers as AT
     os.makedirs(os.path.dirname(AT.table_path(0)), exist_ok=True)
     for s in C.SEEDS:
@@ -249,10 +445,11 @@ def stage_attack_tables(workers: int) -> None:
             np.save(p, AT.self_play_table(f"om:{s}"))
 
 
-def stage_attackers(workers: int) -> None:
+def stage_attackers(workers: int, include_optional: bool = False) -> None:
+    _gate()
     from . import attackers as AT
     js = []
-    for kind in AT.TARGET_KINDS:
+    for kind in AT.CORE_KINDS + (AT.OPTIONAL_KINDS if include_optional else ()):
         for s in C.SEEDS:
             d = AT.attacker_dir(kind, s)
             if os.path.exists(os.path.join(d, "summary.json")) and \
@@ -265,14 +462,20 @@ def stage_attackers(workers: int) -> None:
     C.save_json("attackers_train", {"meta": C.meta(stage="attackers"), "runs": res})
 
 
-def stage_attack_eval(workers: int) -> None:
+def stage_attack_eval(workers: int, include_optional: bool = False) -> None:
+    _gate()
     from . import attackers as AT
-    _run_cells(AT.eval_jobs(AT.TARGET_KINDS), workers, "M5d attack eval")
+    kinds = AT.CORE_KINDS + (AT.OPTIONAL_KINDS if include_optional else ())
+    _run_cells(AT.eval_jobs(kinds), workers, "M5d attack eval", "attack_eval")
 
 
 def stage_analyse(workers: int) -> None:
+    """Every analysis from whatever records exist (statuses explicit): M5d endpoints, monitoring, S8."""
     from . import analysis as AN
+    from . import strategic as ST
     AN.analyse()
+    AN.monitoring()
+    ST.assemble()
 
 
 def stage_report(workers: int) -> None:
@@ -282,4 +485,5 @@ def stage_report(workers: int) -> None:
 
 __all__ = ["families", "family_jobs", "monitor_jobs", "plan", "battery_turns", "cells_turns", "other", "REF_PANEL",
            "stage_monitor", "stage_families", "stage_battery", "stage_cells", "stage_attack_tables",
-           "stage_attackers", "stage_attack_eval", "stage_analyse", "stage_report"]
+           "stage_attackers", "stage_attack_eval", "stage_analyse", "stage_report", "battery_breakdown",
+           "cells_breakdown", "horizon_breakdown", "stage_manifest", "extension_plan", "stage_battery_extend"]

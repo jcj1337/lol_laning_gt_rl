@@ -1,0 +1,148 @@
+{
+ "meta": {
+  "study": "M5",
+  "commit": "8256882791407a58ffe59abf2c7d7439e3e7bc9a",
+  "working_tree_dirty": true,
+  "timestamp": "2026-10-17 20:48:00",
+  "torch": "2.14.1+cpu",
+  "numpy": "2.5.3",
+  "stage": "corrections"
+ },
+ "parts": {
+  "A1": {
+   "time": "2026-10-17 20:38:28",
+   "checks": {
+    "om: monitored run completed": true,
+    "om: final weights equal the stored M5a smoke run": true,
+    "om: snapshot weights identical (same names, same digests)": true,
+    "om: histories identical (non-wall-clock fields)": true,
+    "om: live alarms equal the post-hoc scan": true,
+    "sp: monitored run completed": true,
+    "sp: final weights equal the stored M5a smoke run": true,
+    "sp: snapshot weights identical (same names, same digests)": true,
+    "sp: histories identical (non-wall-clock fields)": true,
+    "sp: live alarms equal the post-hoc scan": true
+   },
+   "data": {
+    "om": {
+     "digest": "63457c3d20f61c1347bf43ccd8802d27ac7fd3941d67fd52fd6a4146d5f3c9f2",
+     "reference_digest": "63457c3d20f61c1347bf43ccd8802d27ac7fd3941d67fd52fd6a4146d5f3c9f2",
+     "updates": 11,
+     "live_alarms": [],
+     "post_hoc_alarms": [],
+     "wall_s": 24.050012200139463
+    },
+    "sp": {
+     "digest": "8bffa2dbdcbaf84947ed3a88dc1997d79d0247af99a92c851c246ebeddd71ea5",
+     "reference_digest": "8bffa2dbdcbaf84947ed3a88dc1997d79d0247af99a92c851c246ebeddd71ea5",
+     "updates": 10,
+     "live_alarms": [],
+     "post_hoc_alarms": [],
+     "wall_s": 14.323860100004822
+    }
+   },
+   "passed": true,
+   "earlier_attempts": [
+    {
+     "time": "2026-10-17 20:37:38",
+     "checks": {
+      "om: monitored run completed": true,
+      "om: final weights equal the stored M5a smoke run": true,
+      "om: snapshot files identical": false,
+      "om: histories identical (non-wall-clock fields)": true,
+      "om: live alarms equal the post-hoc scan": true,
+      "sp: monitored run completed": true,
+      "sp: final weights equal the stored M5a smoke run": true,
+      "sp: snapshot files identical": false,
+      "sp: histories identical (non-wall-clock fields)": true,
+      "sp: live alarms equal the post-hoc scan": true
+     },
+     "data": {
+      "om": {
+       "digest": "63457c3d20f61c1347bf43ccd8802d27ac7fd3941d67fd52fd6a4146d5f3c9f2",
+       "reference_digest": "63457c3d20f61c1347bf43ccd8802d27ac7fd3941d67fd52fd6a4146d5f3c9f2",
+       "updates": 11,
+       "live_alarms": [],
+       "post_hoc_alarms": [],
+       "wall_s": 23.820756600238383
+      },
+      "sp": {
+       "digest": "8bffa2dbdcbaf84947ed3a88dc1997d79d0247af99a92c851c246ebeddd71ea5",
+       "reference_digest": "8bffa2dbdcbaf84947ed3a88dc1997d79d0247af99a92c851c246ebeddd71ea5",
+       "updates": 10,
+       "live_alarms": [],
+       "post_hoc_alarms": [],
+       "wall_s": 14.110473199747503
+      }
+     },
+     "passed": false
+    }
+   ]
+  },
+  "A2": {
+   "time": "2026-10-17 20:38:28",
+   "checks": {
+    "pre-registration chain verified, document = active version 1": true,
+    "run manifest builds (starts, library, archive identities)": true,
+    "manifest records the active pre-registration": true,
+    "om_s0: initial network digest": true,
+    "sp_s0: initial network digest": true,
+    "om_s1: initial network digest": true,
+    "sp_s1: initial network digest": true,
+    "om_s2: initial network digest": true,
+    "sp_s2: initial network digest": true,
+    "om_s3: initial network digest": true,
+    "sp_s3: initial network digest": true,
+    "om_s4: initial network digest": true,
+    "sp_s4: initial network digest": true,
+    "om_s5: initial network digest": true,
+    "sp_s5: initial network digest": true,
+    "every main run still to do (none started)": true
+   },
+   "data": {
+    "active": {
+     "version": 1,
+     "sha256": "21e35e074cdd2628e2c4816ccc7dab4b13a62e77a803fa8936027cf5bcb396e8",
+     "document": "docs/m5/m5_preregistration.md",
+     "date": "2026-10-17"
+    },
+    "runs_to_do": 12,
+    "code": {
+     "git_commit": "8256882791407a58ffe59abf2c7d7439e3e7bc9a",
+     "working_tree_dirty": true,
+     "python_files": 388,
+     "sources_sha256": "b79af0f3d1fad02bce6aee835ca9209d88d3601ce6937a655618bae01f83b500",
+     "diff_stat": [
+      " 13 files changed, 1711 insertions(+), 309 deletions(-)"
+     ]
+    }
+   },
+   "passed": true
+  },
+  "A3": {
+   "time": "2026-10-17 20:39:24",
+   "checks": {
+    "pytest tests/test_m5.py tests/test_m5_corrections.py tests/test_om2.py tests/test_legacy_pins.py tests/test_m45a_mechanics.py::test_historical_presets_are_pinned tests/test_m45b_candidate.py -q: exit 0": true
+   },
+   "data": {
+    "summary": "88 passed, 1 skipped in 45.55s",
+    "seconds": 47.45137970009819,
+    "log": "targeted_tests_amendment1.log"
+   },
+   "passed": true
+  },
+  "A4": {
+   "time": "2026-10-17 20:47:58",
+   "checks": {
+    "pytest : exit 0": true
+   },
+   "data": {
+    "summary": "===== 1534 passed, 4 skipped, 2 xfailed, 3 warnings in 500.56s (0:08:20) ======",
+    "seconds": 502.9080805000849,
+    "log": "regression_suite_amendment1.log"
+   },
+   "passed": true
+  }
+ },
+ "all_passed": true
+}

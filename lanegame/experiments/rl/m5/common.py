@@ -285,43 +285,147 @@ def jload(path: str):
 
 
 # ---------------------------------------------------------------------------------------------- pre-registration
+# The amendment chain. results/m5/preregistration.json keeps the original frozen "record" (never rewritten) and an
+# ordered list of "amendments"; each amendment records its date, reason, the hash of the version it replaces, the hash
+# of the amended document, the hash of its own amendment document (the dated rationale) and the stage authorization it
+# was made under. Every version of the document is archived byte for byte under results/m5/prereg_versions/. The
+# ACTIVE version is the last amendment's document (or the original record without amendments); a campaign stage runs
+# only when the chain verifies and the document on disk is exactly the active version.
 def doc_record(path: str) -> dict:
     with open(path, "rb") as f:
         b = f.read()
     return {"document": path.replace("\\", "/"), "sha256": hashlib.sha256(b).hexdigest(), "bytes": len(b)}
 
 
-def write_prereg(status: str = "awaiting campaign authorization") -> dict:
+def _sha_bytes(path: str) -> str:
+    with open(path, "rb") as f:
+        return hashlib.sha256(f.read()).hexdigest()
+
+
+def version_path(sha: str, out: str = OUT) -> str:
+    return os.path.join(out, "prereg_versions", f"m5_preregistration_{sha[:16]}.md")
+
+
+def write_prereg(status: str = "awaiting campaign authorization", out: str = OUT, doc: str = PREREG_DOC,
+                 design: str = DESIGN_DOC) -> dict:
     """Freeze the pre-registration (SHA-256 and time). A frozen record is never rewritten: a changed document must be
     recorded as a dated amendment (`amend`), never re-frozen."""
-    path = os.path.join(OUT, "preregistration.json")
+    path = os.path.join(out, "preregistration.json")
     if os.path.exists(path):
-        old = load("preregistration")
-        if old["record"]["sha256"] != doc_record(PREREG_DOC)["sha256"]:
+        old = load("preregistration", out)
+        if active_version(old)["sha256"] != doc_record(doc)["sha256"]:
             raise SystemExit("the M5 pre-registration changed after it was frozen; record a dated amendment instead")
         return old
-    d = {"meta": meta(stage="prereg"), "record": doc_record(PREREG_DOC), "design": doc_record(DESIGN_DOC),
+    d = {"meta": meta(stage="prereg"), "record": doc_record(doc), "design": doc_record(design),
          "status": status, "note": "frozen after the M5a readiness checks, before any M5 campaign run; changes need a "
          "dated amendment"}
-    save_json("preregistration", d)
+    save_json("preregistration", d, out)
     return d
 
 
-def require_prereg() -> dict:
-    path = os.path.join(OUT, "preregistration.json")
+def active_version(d: dict) -> dict:
+    """{"version": 0 (the original) or the amendment id, "sha256", "document"} of a pre-registration record."""
+    am = d.get("amendments") or []
+    if not am:
+        return {"version": 0, "sha256": d["record"]["sha256"], "document": d["record"]["document"]}
+    a = am[-1]
+    return {"version": int(a["id"]), "sha256": a["document"]["sha256"], "document": a["document"]["document"],
+            "date": a.get("date")}
+
+
+def verify_chain(d: dict, out: str = OUT) -> List[str]:
+    """Problems of the amendment chain (empty = valid): consecutive ids, each amendment replacing the version before
+    it, every superseded version archived and hashing to its recorded SHA-256, every amendment document unchanged, and
+    the recorded active version equal to the chain's end."""
+    problems = []
+    am = d.get("amendments") or []
+    prev = d["record"]["sha256"]
+    for i, a in enumerate(am, start=1):
+        if int(a.get("id", -1)) != i:
+            problems.append(f"amendment {i}: id {a.get('id')!r} is not consecutive")
+        if a.get("previous_sha256") != prev:
+            problems.append(f"amendment {i}: replaces {str(a.get('previous_sha256'))[:16]}, not the version before "
+                            f"it {prev[:16]}")
+        p = version_path(prev, out)
+        if not os.path.exists(p) or _sha_bytes(p) != prev:
+            problems.append(f"amendment {i}: the superseded version {prev[:16]} is not archived intact ({p})")
+        ad = a.get("amendment_document") or {}
+        if not ad.get("document") or not os.path.exists(ad["document"]) or _sha_bytes(ad["document"]) != ad["sha256"]:
+            problems.append(f"amendment {i}: its amendment document {ad.get('document')} is missing or changed")
+        prev = a["document"]["sha256"]
+    act = d.get("active")
+    if am and (not act or act.get("sha256") != prev):
+        problems.append("the recorded active version is not the end of the amendment chain")
+    return problems
+
+
+def require_prereg(out: str = OUT, doc: str = PREREG_DOC) -> dict:
+    """The gate of every campaign stage: the chain verifies and the document is exactly its active version."""
+    path = os.path.join(out, "preregistration.json")
     if not os.path.exists(path):
         raise SystemExit("freeze the M5 pre-registration first (stage prereg)")
-    d = load("preregistration")
-    if d["record"]["sha256"] != doc_record(PREREG_DOC)["sha256"]:
-        raise SystemExit("the M5 pre-registration document differs from its frozen SHA-256")
+    d = load("preregistration", out)
+    problems = verify_chain(d, out)
+    if problems:
+        raise SystemExit("the M5 pre-registration's amendment chain does not verify: " + "; ".join(problems))
+    act = active_version(d)
+    if doc_record(doc)["sha256"] != act["sha256"]:
+        raise SystemExit(f"the M5 pre-registration document differs from its active version (version {act['version']}, "
+                         f"SHA-256 {act['sha256'][:16]}): an undocumented change. Record a dated amendment (stage "
+                         "amend) or restore the document")
     return d
 
 
-def amend(note: str, document_sha256: Optional[str] = None) -> dict:
-    d = load("preregistration") or {}
-    d.setdefault("amendments", []).append({"time": time.strftime("%Y-%m-%d %H:%M:%S"), "note": note,
-                                           "document_sha256": document_sha256})
-    save_json("preregistration", d)
+def archive_active(out: str = OUT, doc: str = PREREG_DOC) -> str:
+    """Archive the active version's bytes before the document is edited (the document must still be that version)."""
+    d = load("preregistration", out)
+    act = active_version(d)
+    if doc_record(doc)["sha256"] != act["sha256"]:
+        raise SystemExit("the document already differs from its active version; restore it before archiving")
+    p = version_path(act["sha256"], out)
+    os.makedirs(os.path.dirname(p), exist_ok=True)
+    if not os.path.exists(p):
+        with open(doc, "rb") as f, open(p, "wb") as g:
+            g.write(f.read())
+    if _sha_bytes(p) != act["sha256"]:
+        raise SystemExit(f"{p} exists with other content")
+    return p
+
+
+def amend(reason: str, amendment_doc: str, authorization: str = "", out: str = OUT, doc: str = PREREG_DOC,
+          design: str = DESIGN_DOC) -> dict:
+    """Record the edited document as the next version of the chain (module comment). Refused when the chain does not
+    verify, when the version it replaces was not archived before the edit, or when nothing changed."""
+    d = load("preregistration", out)
+    if not d:
+        raise SystemExit("freeze the M5 pre-registration first (stage prereg)")
+    problems = verify_chain(d, out)
+    if problems:
+        raise SystemExit("the amendment chain does not verify: " + "; ".join(problems))
+    prev = active_version(d)
+    pp = version_path(prev["sha256"], out)
+    if not os.path.exists(pp) or _sha_bytes(pp) != prev["sha256"]:
+        raise SystemExit("the active version was not archived before the edit (stage prereg_archive); restore the "
+                         "document, archive it, then edit and amend")
+    cur = doc_record(doc)
+    if cur["sha256"] == prev["sha256"]:
+        raise SystemExit("the document is unchanged: nothing to amend")
+    if not os.path.exists(amendment_doc):
+        raise SystemExit(f"{amendment_doc}: the dated amendment document is missing")
+    n = len(d.get("amendments") or []) + 1
+    a = {"id": n, "date": time.strftime("%Y-%m-%d"), "time": time.strftime("%Y-%m-%d %H:%M:%S"), "reason": reason,
+         "authorization": authorization, "previous_sha256": prev["sha256"], "document": cur,
+         "amendment_document": doc_record(amendment_doc), "design": doc_record(design),
+         "archived_previous": pp.replace("\\", "/"), "code": code_digest()}
+    p = version_path(cur["sha256"], out)
+    os.makedirs(os.path.dirname(p), exist_ok=True)
+    with open(doc, "rb") as f, open(p, "wb") as g:
+        g.write(f.read())
+    a["archived"] = p.replace("\\", "/")
+    d.setdefault("amendments", []).append(a)
+    d["active"] = {"version": n, "sha256": cur["sha256"], "document": cur["document"], "date": a["date"]}
+    d["status"] = f"amended (version {n}, {a['date']})"
+    save_json("preregistration", d, out)
     return d
 
 
@@ -348,4 +452,5 @@ __all__ = ["NAME", "OUT", "CKPT", "ARMS", "SEEDS", "PHASES", "BUDGET", "MIDPOINT
            "SEED_BLOCK", "ROOTS", "arm_cfg", "net_inputs", "setup", "run_dir", "start_spec", "start_path",
            "snapshot_at", "policy_path", "arm_of", "file_sha256", "checkpoint_identity", "code_digest", "meta",
            "save_json", "load", "write_md", "run_jobs", "jdump", "jload", "doc_record", "write_prereg",
-           "require_prereg", "amend", "seed_stats", "t95", "fci", "mean_se"]
+           "require_prereg", "amend", "archive_active", "active_version", "verify_chain", "version_path", "seed_stats",
+           "t95", "fci", "mean_se"]

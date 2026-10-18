@@ -18,6 +18,48 @@
   "sha256": "00ce88b49fd2d7e14cfa1d5a02e992bb75de8459f56ac131d2e5ed8fbf504d71",
   "bytes": 35806
  },
- "status": "awaiting campaign authorization",
- "note": "frozen after the M5a readiness checks, before any M5 campaign run; changes need a dated amendment"
+ "status": "amended (version 1, 2026-10-17)",
+ "note": "frozen after the M5a readiness checks, before any M5 campaign run; changes need a dated amendment",
+ "amendments": [
+  {
+   "id": 1,
+   "date": "2026-10-17",
+   "time": "2026-10-17 20:36:18",
+   "reason": "M5a correction pass before training: headline and P1 classes (an inconclusive gain stays inconclusive, outcome 6); fixed one-sided tests and one 15-hypothesis Holm family for S1-S6 with an interim rule; S5 renamed (S5a, S5b, descriptive midpoint head to head); six-seed completeness; the S8 statistic and validation path; runtime health monitoring, the coordinator's failure rule and the evaluation gate; core 12 / optional om_table attackers; the verifiable amendment chain. No threshold, arm, budget, family or readout changed; no campaign result existed.",
+   "authorization": "the user's brief of 2026-10-17: the correction pass, main training (--confirm-m5-train), training health, monitor and families (--confirm-m5-eval for those stages only), analysis and reporting; not battery, cells or any attacker stage",
+   "previous_sha256": "d2424022bd07535fb6e809bfde20536edfff4e565eb67b26d7bdcfaaf9af7304",
+   "document": {
+    "document": "docs/m5/m5_preregistration.md",
+    "sha256": "21e35e074cdd2628e2c4816ccc7dab4b13a62e77a803fa8936027cf5bcb396e8",
+    "bytes": 22432
+   },
+   "amendment_document": {
+    "document": "docs/m5/m5_amendment_1.md",
+    "sha256": "1ba368e3a2294530c6ff208aa7b72120a5973313885ef659bef774b2078d3b9d",
+    "bytes": 10781
+   },
+   "design": {
+    "document": "docs/m5/m5_design.md",
+    "sha256": "06ef80769032578f2f18c37eceabd500946fe5aee1b0bfd5f96b5d446172d6f4",
+    "bytes": 46248
+   },
+   "archived_previous": "results/m5/prereg_versions/m5_preregistration_d2424022bd07535f.md",
+   "code": {
+    "git_commit": "8256882791407a58ffe59abf2c7d7439e3e7bc9a",
+    "working_tree_dirty": true,
+    "python_files": 388,
+    "sources_sha256": "10c31ecac6439ec69441168b8099259634f18134686fe5b228e2f7bc4e3fdbfc",
+    "diff_stat": [
+     " 11 files changed, 1556 insertions(+), 305 deletions(-)"
+    ]
+   },
+   "archived": "results/m5/prereg_versions/m5_preregistration_21e35e074cdd2628.md"
+  }
+ ],
+ "active": {
+  "version": 1,
+  "sha256": "21e35e074cdd2628e2c4816ccc7dab4b13a62e77a803fa8936027cf5bcb396e8",
+  "document": "docs/m5/m5_preregistration.md",
+  "date": "2026-10-17"
+ }
 }

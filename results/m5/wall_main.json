@@ -1,0 +1,50 @@
+{
+ "manifest": "manifest_main_20261017-204945.json",
+ "runs": [
+  "om_s0",
+  "om_s1",
+  "om_s2",
+  "om_s3",
+  "om_s4",
+  "om_s5",
+  "sp_s0",
+  "sp_s1",
+  "sp_s2",
+  "sp_s3",
+  "sp_s4",
+  "sp_s5"
+ ],
+ "workers": 6,
+ "started": "2026-10-17 20:49:45",
+ "wall_s": 39223.40831670025,
+ "finished": "2026-10-18 07:43:29",
+ "status": {
+  "om_s3": "complete",
+  "om_s5": "complete",
+  "om_s0": "complete",
+  "om_s2": "complete",
+  "om_s4": "complete",
+  "om_s1": "complete",
+  "sp_s0": "complete",
+  "sp_s2": "complete",
+  "sp_s1": "complete",
+  "sp_s3": "complete",
+  "sp_s4": "complete",
+  "sp_s5": "complete"
+ },
+ "stopped": null,
+ "run_wall_h": {
+  "om_s3": 7.672410941250079,
+  "om_s5": 7.686253431083299,
+  "om_s0": 7.6884479372777665,
+  "om_s2": 7.691020010583258,
+  "om_s4": 7.698736507305616,
+  "om_s1": 7.73803442705552,
+  "sp_s0": 3.14632670880567,
+  "sp_s2": 3.1478033594167534,
+  "sp_s1": 3.152614056666692,
+  "sp_s3": 3.160694414833302,
+  "sp_s4": 3.1545981440277924,
+  "sp_s5": 3.1568506767777986
+ }
+}

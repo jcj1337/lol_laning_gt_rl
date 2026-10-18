@@ -66,7 +66,9 @@ Viewer: `streamlit run lanegame/viewer/app.py` (replays recorded trajectories fr
   continuing-time `GameTimes`) and `shared.py` (shared-policy self-play: one network plays both seats against a
   current/historical mixture; this is the trainer every M4 campaign uses). `SharedCollector` has opt-in hooks
   (`extra_obs` / `augment`, `observe_step`) for policy inputs computed outside the game, such as OM2's belief; with the
-  defaults, training is bit-identical (pinned in `tests/test_om2.py`). `agent.py` has `NetAgent` and checkpoints,
+  defaults, training is bit-identical (pinned in `tests/test_om2.py`). `train_shared(on_update=...)` (M5) passes each
+  update's history entry to a read-only callback (M5's runtime health monitor); a monitored run is bit-identical (pinned
+  in `tests/test_m5_corrections.py`). `agent.py` has `NetAgent` and checkpoints,
   which carry a SHA-256 weights digest verified on load. `evaluate.py` covers head-to-head and approximate best
   responses.
 - `opponent/` (OM2): opponent agents (scripted, network, per-turn mixture, style switcher) and the Bayesian belief over
@@ -88,9 +90,21 @@ Viewer: `streamlit run lanegame/viewer/app.py` (replays recorded trajectories fr
   milestones by import (for example, M4.6c builds on m45c and m46b), not by copying.
 - `experiments/rl/m5/` is the final campaign: arm A (opponent modelling, the OM2 treatment collector) against arm B
   (pure self-play). Both continue `ext/baseline:s`; seeds are 70,000–70,999.
-  - Its design and frozen pre-registration are in `docs/m5/`.
-  - M5a readiness is `python -m lanegame.experiments.rl.m5 ready`.
-  - The campaign stages need `--confirm-m5-train`, `--confirm-m5-eval` or `--confirm-m5-attackers`.
+  - Its design, pre-registration and amendments are in `docs/m5/`.
+    - The pre-registration has a verifiable amendment chain (`common.amend`, `results/m5/preregistration.json`, every
+      version archived under `results/m5/prereg_versions/`).
+    - Every campaign stage runs only when the document is the chain's active version.
+    - To change the protocol: `prereg_archive`, then edit, then `amend --reason ... --amendment-doc ...`.
+  - M5a readiness is `python -m lanegame.experiments.rl.m5 ready`; the correction pass's checks are `corrections`.
+  - The campaign stages need `--confirm-m5-train`, `--confirm-m5-eval` or `--confirm-m5-attackers` (the optional
+    om_table ablation also `--include-om-table`).
+  - Training runs under `health.py`:
+    - live stop conditions: defect alarms end a run, investigate alarms are recorded and block evaluation;
+    - the coordinator's rule: more than two failed pairs stop the campaign;
+    - a progress log in `results/m5/progress_main.json`.
+  - Every evaluation stage refuses to start unless `train_check` passed or each failed check has a `train_resolve`
+    record, and it verifies the checkpoints' SHA-256.
+  - `analysis.py` classifies an endpoint only with all six seeds. `strategic.py` is S8 (battery and cell replication).
 
 **The preset chain.** M4 presets build on each other, each as the previous preset plus opt-in fields:
 `m4 → m4_continuous → m4_emergent → m4_natural_prototype → m4_natural → m4_lane → m4_lasthit → m4_four_actions →
