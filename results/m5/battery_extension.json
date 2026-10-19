@@ -1,0 +1,92 @@
+{
+ "meta": {
+  "study": "M5",
+  "commit": "384eea13b099c08a83598875c54fc5fb9a85faa6",
+  "working_tree_dirty": true,
+  "timestamp": "2026-10-19 03:57:37",
+  "torch": "2.14.1+cpu",
+  "numpy": "2.5.3",
+  "stage": "battery_extend"
+ },
+ "plan": {
+  "om_s0": [
+   "B_frozen"
+  ],
+  "sp_s0": [
+   "A_wave_early",
+   "B_freeze",
+   "B_frozen",
+   "C_trade",
+   "C_trade_early",
+   "F_freeze_c",
+   "G_trade_c"
+  ],
+  "om_s1": [
+   "B_frozen",
+   "F_freeze_c",
+   "H_zone_c"
+  ],
+  "sp_s1": [
+   "A_wave_early",
+   "C_trade"
+  ],
+  "om_s2": [
+   "C_trade",
+   "C_trade_early",
+   "D_ward",
+   "G_trade_c"
+  ],
+  "sp_s2": [
+   "B_frozen",
+   "C_trade_early",
+   "E_recall",
+   "G_trade_c",
+   "I_ward_c"
+  ],
+  "om_s3": [
+   "A_wave",
+   "A_wave_early",
+   "I_ward_c"
+  ],
+  "sp_s3": [
+   "A_wave_early",
+   "B_freeze",
+   "B_frozen",
+   "C_trade",
+   "C_trade_early",
+   "D_ward"
+  ],
+  "om_s4": [
+   "B_frozen",
+   "C_trade",
+   "C_trade_early",
+   "G_trade_c",
+   "I_ward_c"
+  ],
+  "sp_s4": [
+   "C_trade",
+   "H_zone_c",
+   "I_ward_c"
+  ],
+  "om_s5": [
+   "A_wave",
+   "A_wave_early",
+   "C_trade",
+   "C_trade_early",
+   "E_recall",
+   "G_trade_c"
+  ],
+  "sp_s5": [
+   "A_wave_early",
+   "B_frozen",
+   "C_trade",
+   "C_trade_early",
+   "G_trade_c",
+   "H_zone_c"
+  ]
+ },
+ "jobs": 5296,
+ "collect_s": 139.37417799979448,
+ "rollouts_s": 19834.671249100007,
+ "turns": 71755200
+}

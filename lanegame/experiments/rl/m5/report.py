@@ -252,15 +252,58 @@ def strategic_section() -> str:
     s = C.load("strategic_main")
     if not s:
         return "## M5c strategic evaluation (S8)\n\nNot run (the battery and cells stages await approval).\n"
-    lines = ["## M5c strategic evaluation (S8, descriptive)", ""]
+    lines = ["## M5c strategic evaluation (S8, descriptive)", "",
+             f"Rule: a verdict holds in a seed when no fixed alternative beats the policy by more than "
+             f"{s['rule']['margin']} ({s['rule']['statistic']}, protocol {s['rule']['protocol']}); it replicates with "
+             f"at least {s['rule']['min_seeds']} of 6 seeds. Beside it, the same rule on the other statistic at 50 turns (G50 "
+             "in natural families, Q50 in constructed ones); for a family re-run at 150 turns that reading also changes "
+             "the horizon.", ""]
     rows = []
     for arm, vs in s["replication"]["replication"].items():
         for v, r in vs.items():
-            rows.append([arm, v, r["replication"]["verdict"], f"{r['replication']['n_holds']}/{r['replication']['n_seeds']}",
-                         " ".join(f"{float(x):+.2f}" for x in r["per_seed_gap"].values())])
-    lines += [_t(["arm", "verdict", "replication", "seeds holding / complete", "per-seed gap"], rows), ""]
+            rows.append([arm, v, r["replication"]["verdict"],
+                         f"{r['replication']['n_holds']}/{r['replication']['n_seeds']}",
+                         " ".join(f"{float(x):+.2f}" for x in r["per_seed_gap"].values()),
+                         r.get("other_rule_reading", "")])
+    lines += [_t(["arm", "verdict", "replication", "seeds holding / complete", "per-seed gap",
+                  "rule on the other statistic at 50"], rows), ""]
+    det = s["replication"]["detail"]
+    nfail = sum(1 for d in det.values() for r in d["battery"].values() if str(r.get("validation", "")).startswith("fail"))
+    ntot = sum(len(d["battery"]) for d in det.values())
+    n150 = [r.get("validation_150_diagnostic") for d in det.values() for r in d["battery"].values()
+            if r.get("validation_150_diagnostic")]
+    lines += [f"Horizon validation (50 against 300 turns): {nfail} of {ntot} (final, family) pairs failed and were "
+              f"re-run at 150 turns. Diagnostic (not registered): the same rule at 150 against 300 passes in "
+              f"{sum(1 for v in n150 if v['verdict'] == 'pass')} of {len(n150)} failed pairs.", ""]
+    fs = s.get("family_summary") or {}
+    if fs:
+        rows = []
+        for k, r in fs.items():
+            b = r.get("best_stat") or {}
+            rows.append([r["arm"], r["family"], r["n_seeds"], "/".join(r["statistics"]), r["validation_failed"],
+                         r["best"] or "n/a", _ci(b) if b else "n/a", b.get("pos", ""), b.get("neg", "")])
+        lines += ["Battery families, protocol \"policy\": the best fixed alternative's margin over the policy, pooled "
+                  "over the seeds (seed mean ± 95%; positive = the alternative beats the policy):", "",
+                  _t(["arm", "family", "seeds", "statistic", "validation failed", "best alternative", "margin",
+                      "seeds +", "seeds −"], rows), ""]
+    rows = []
     for f, c in s["cross_arm"].items():
-        lines += [f"Cross-arm {f}: {c['status']}."]
+        for k, st in c["stats"].items():
+            if k.startswith(("om - sp", "specialist")):
+                rows.append([f, *k.split(" | "), _ci(st), st.get("pos", ""), st.get("neg", "")])
+    lines += ["Cross-arm limitation cells: both finals in seat A on the same rollouts, averaged over the two seat-B "
+              "finals (" + "; ".join(f"{f} {c['status']}" for f, c in s["cross_arm"].items()) + "):", "",
+              _t(["family", "contrast", "cell group", "horizon", "mean ± 95%", "seeds +", "seeds −"], rows), ""]
+    rows = []
+    for name, tab in (s.get("per_arm_cells") or {}).items():
+        for k, row in tab.items():
+            rows.append([name, k.replace("|", " "), *[_ci(row.get(a)) for a in ("om", "sp", "om - sp")]])
+    if rows:
+        lines += ["Per-arm cells (each final against its own policy):", "",
+                  _t(["family", "quantity", "om", "sp", "om − sp"], rows), ""]
+    if s.get("battery_tables"):
+        lines += ["M4.5c-style battery tables per arm: " + ", ".join(f"`{v}`" for v in s["battery_tables"].values()),
+                  ""]
     return "\n".join(lines) + "\n"
 
 
@@ -277,7 +320,7 @@ def plan_section() -> str:
         turns[k] += r["turns"]
     rows = [[k[0], k[1], k[2], f"{turns[k] / 1e6:.2f}", _f(agg[k] / hb["workers"], 2)] for k in sorted(agg)]
     at = p["attackers"]
-    return "\n".join(["## Future stages (proposal, not authorized): work by horizon and purpose", "",
+    return "\n".join(["## Evaluation work by horizon and purpose (M5a estimates; the attackers remain proposed)", "",
                       _t(["part", "purpose", "horizon", "M turns", "wall h (6 workers)"], rows), "",
                       f"Attackers at the quarter budget: core 12 — training {_f(at['core_12']['training_wall_h'], 1)} h, "
                       f"evaluation {_f(at['core_12']['eval_wall_h'], 1)} h; optional om_table 6 — +"
@@ -305,6 +348,18 @@ def runtime_actual() -> dict:
                           "worker_h": r["job_seconds"] / 3600, "estimate_worker_h": e["worker_hours"],
                           "worker_ratio": r["job_seconds"] / 3600 / e["worker_hours"],
                           "wall_ratio": r["wall_s"] / 3600 / e["wall_hours"]}
+    import os
+    import re
+    wb = ((C.load("plan_future") or {}).get("horizon_breakdown") or {}).get("wall_h_by_part", {})
+    est = {"battery": wb.get("M5c battery"), "cells": wb.get("M5c cells"),
+           "battery_extend": (C.load("battery_extension_estimate") or {}).get("wall_h")}
+    for log in ("m5c_main.log", "m5c_extend.log"):
+        path = os.path.join(C.OUT, log)
+        if os.path.exists(path):
+            with open(path, encoding="utf-8", errors="replace") as f:
+                for m in re.finditer(r"^== (\w+) done in (\d+) s", f.read(), re.M):
+                    out[f"M5c {m.group(1)}"] = {"wall_h": int(m.group(2)) / 3600,
+                                                "estimate_wall_h": est.get(m.group(1)), "source": f"results/m5/{log}"}
     ev = [v["worker_ratio"] for k, v in out.items() if "worker_ratio" in v]
     out["evaluation_rate_ratio"] = float(sum(ev) / len(ev)) if ev else None
     return out
@@ -320,7 +375,8 @@ def runtime_section() -> str:
             continue
         est = v.get("estimate_h") or v.get("estimate_wall_h")
         est = f"{est[0]:.1f}–{est[1]:.1f}" if isinstance(est, list) else _f(est, 2)
-        rows.append([k, _f(v["wall_h"], 2), est, _f(v.get("worker_ratio"), 2) if "worker_ratio" in v else ""])
+        rows.append([k, _f(v["wall_h"], 2), est if est is not None else "n/a",
+                     _f(v.get("worker_ratio"), 2) if "worker_ratio" in v else ""])
     lines = ["## Runtime: measured against the M5a estimate", "",
              _t(["stage", "wall h", "estimate (wall h)", "worker-time ratio (measured / R10 rates)"], rows), ""]
     p = C.load("plan_future")
@@ -333,11 +389,9 @@ def runtime_section() -> str:
         rr = {a: sum(tr["runs"][f"{a}_s{s}"]["transitions_per_s"] for s in C.SEEDS) / len(C.SEEDS) / bt[f"{a}_bench"]
               for a in C.ARMS if tr.get("runs") and f"{a}_bench" in bt}
         lines += [f"Measured evaluation worker time was ×{ratio:.2f} the R10-based estimate (the instruments ran about "
-                  f"{(1 - 1 / ratio) * 100:.0f}% slower than the readiness rates). Updated estimates for the stages "
-                  f"still to come (R10-based estimate × {ratio:.2f}): M5c battery {wb['M5c battery'] * ratio:.1f} h "
-                  f"(estimate {wb['M5c battery']:.1f}), M5c cells {wb['M5c cells'] * ratio:.1f} h "
-                  f"({wb['M5c cells']:.1f}), core attacker evaluation "
-                  f"{at['core_12']['eval_wall_h'] * ratio:.1f} h; core attacker training "
+                  f"{(1 - 1 / ratio) * 100:.0f}% slower than the readiness rates); the M5c battery ran faster than its "
+                  "estimate and the cells slower. The stage still to come, the core attackers: evaluation "
+                  f"{at['core_12']['eval_wall_h'] * ratio:.1f} h (R10-based × {ratio:.2f}), training "
                   f"{at['core_12']['training_wall_h']:.1f} h (R9 rates; the main training ran at "
                   + ", ".join(f"{a} ×{v:.2f}" for a, v in rr.items()) + " of its R9 benchmark rates).", ""]
     return "\n".join(lines)

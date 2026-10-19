@@ -4,6 +4,7 @@ M5a readiness (bounded compute; docs/m5/m5a_readiness_protocol.md):
     ready_protocol  record the readiness protocol's SHA-256 (before the first check)
     R0 ... R10      one readiness check each (R4 = the smoke and its re-run, R9 = the concurrency benchmark, R10 = the
                     instruments at reduced samples); `ready` runs R0-R10 in order
+    B1              the battery and cells instruments on the real finals at tiny sizes, before M5c (scratch root)
     A1 ... A4       the correction pass's checks (results/m5/corrections_readiness.json): A1 the monitored smoke
                     against the stored R4 runs, A2 the main training's inputs, A3 the targeted tests and digest pins,
                     A4 the full regression suite; `corrections` runs A1-A4
@@ -161,6 +162,7 @@ def main(argv=None) -> None:
             print(f"  {st}: {'passed' if d.get('passed') else 'NOT passed'}", flush=True)
         elif st in R.CORR_PARTS:
             fn = {"A1": lambda: R.a1_monitored_smoke(), "A2": R.a2_campaign_inputs,
+                  "B1": lambda: R.b1_battery_smoke(args.workers),
                   "A3": lambda: R.corr_pytest("A3", TARGETED_TESTS, "targeted_tests_amendment1.log"),
                   "A4": lambda: R.corr_pytest("A4", [], "regression_suite_amendment1.log")}[st]
             d = fn()

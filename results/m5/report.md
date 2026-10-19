@@ -40,8 +40,11 @@ Campaign wall time: 10.90 h (6 workers; started 2026-10-17 20:49:45, finished 20
 | M5b training | 10.90 | 9.4–11.8 |  |
 | M5b monitor | 0.56 | 0.50 | 1.10 |
 | M5d families | 1.87 | 1.72 | 1.09 |
+| M5c battery | 8.73 | 9.33 |  |
+| M5c cells | 2.11 | 1.50 |  |
+| M5c battery_extend | 5.58 | 6.63 |  |
 
-Measured evaluation worker time was ×1.09 the R10-based estimate (the instruments ran about 9% slower than the readiness rates). Updated estimates for the stages still to come (R10-based estimate × 1.09): M5c battery 10.2 h (estimate 9.3), M5c cells 1.6 h (1.5), core attacker evaluation 0.5 h; core attacker training 6.6 h (R9 rates; the main training ran at om ×0.97, sp ×1.03 of its R9 benchmark rates).
+Measured evaluation worker time was ×1.09 the R10-based estimate (the instruments ran about 9% slower than the readiness rates); the M5c battery ran faster than its estimate and the cells slower. The stage still to come, the core attackers: evaluation 0.5 h (R10-based × 1.09), training 6.6 h (R9 rates; the main training ran at om ×0.97, sp ×1.03 of its R9 benchmark rates).
 
 ## M5b monitoring (never selects a checkpoint, never changes an endpoint)
 
@@ -335,26 +338,159 @@ Secondary family: 15 hypotheses, Holm at familywise 0.05; NOT final (pending: S6
 
 ## M5c strategic evaluation (S8, descriptive)
 
-| arm | verdict | replication | seeds holding / complete | per-seed gap |
+Rule: a verdict holds in a seed when no fixed alternative beats the policy by more than 0.2 (Q50 natural / G50 constructed (Q150 / G150 after a failed validation and its re-run); weaker side G50, protocol policy); it replicates with at least 5 of 6 seeds. Beside it, the same rule on the other statistic at 50 turns (G50 in natural families, Q50 in constructed ones); for a family re-run at 150 turns that reading also changes the horizon.
+
+| arm | verdict | replication | seeds holding / complete | per-seed gap | rule on the other statistic at 50 |
+|---|---|---|---|---|---|
+| om | conditional wave management | replicates | 6/6 | -0.14 -0.14 -0.15 -0.03 +0.07 -0.03 | replicates |
+| om | conditional freezing and the reply to freezes | replicates | 6/6 | -0.15 +0.10 +0.00 +0.10 +0.12 -0.10 | replicates |
+| om | selective trading | replicates | 6/6 | -0.09 -0.02 -0.05 -0.10 +0.14 -0.06 | replicates |
+| om | concession under threat | does not replicate | 3/6 | +0.28 +0.10 +0.14 +0.26 +0.42 +0.15 | does not replicate |
+| om | Recall timing | replicates | 6/6 | -0.08 -0.16 -0.13 +0.01 -0.26 -0.27 | replicates |
+| sp | conditional wave management | replicates | 6/6 | -0.08 -0.11 -0.05 -0.27 -0.24 -0.13 | replicates |
+| sp | conditional freezing and the reply to freezes | replicates | 6/6 | +0.19 +0.18 +0.17 +0.10 -0.03 +0.08 | does not replicate |
+| sp | selective trading | replicates | 6/6 | -0.09 -0.13 -0.08 +0.00 -0.21 -0.13 | replicates |
+| sp | concession under threat | does not replicate | 4/6 | -0.09 +0.02 +0.02 +0.09 +0.21 +0.33 | replicates |
+| sp | Recall timing | replicates | 6/6 | -0.04 -0.09 -0.24 -0.21 -0.18 -0.08 | replicates |
+
+Horizon validation (50 against 300 turns): 51 of 144 (final, family) pairs failed and were re-run at 150 turns. Diagnostic (not registered): the same rule at 150 against 300 passes in 51 of 51 failed pairs.
+
+Battery families, protocol "policy": the best fixed alternative's margin over the policy, pooled over the seeds (seed mean ± 95%; positive = the alternative beats the policy):
+
+| arm | family | seeds | statistic | validation failed | best alternative | margin | seeds + | seeds − |
+|---|---|---|---|---|---|---|---|---|
+| om | A_wave | 6 | Q150/Q50 | 2 | 1t:SH | -0.11 ± 0.10 | 1 | 5 |
+| om | A_wave_early | 6 | Q150/Q50 | 2 | 1t:SL | -0.02 ± 0.09 | 2 | 4 |
+| om | B_freeze | 6 | Q50 | 0 | 1t:guard | -0.10 ± 0.21 | 2 | 4 |
+| om | B_frozen | 6 | Q150/Q50 | 3 | 1t:shove | -0.14 ± 0.17 | 2 | 4 |
+| om | C_trade | 6 | Q150/Q50 | 3 | 1t:safe | -0.08 ± 0.11 | 1 | 5 |
+| om | C_trade_early | 6 | Q150/Q50 | 3 | 1t:hold_beh | -0.21 ± 0.14 | 0 | 6 |
+| om | D_ward | 6 | Q150/Q50 | 1 | 1t:farm | -0.16 ± 0.14 | 1 | 5 |
+| om | E_recall | 6 | Q150/Q50 | 1 | 1t:recall | -0.15 ± 0.11 | 1 | 5 |
+| om | F_freeze_c | 6 | G150/G50 | 1 | plan:guard | +0.53 ± 0.40 | 6 | 0 |
+| om | G_trade_c | 6 | G150/G50 | 3 | 1t:safe | +0.12 ± 0.24 | 4 | 2 |
+| om | H_zone_c | 6 | G150/G50 | 1 | 1t:shove | +0.17 ± 0.17 | 6 | 0 |
+| om | I_ward_c | 6 | G150/G50 | 2 | 1t:farm | -0.28 ± 0.31 | 1 | 5 |
+| sp | A_wave | 6 | Q50 | 0 | 1t:SH | -0.20 ± 0.08 | 0 | 6 |
+| sp | A_wave_early | 6 | Q150/Q50 | 4 | 1t:SH | -0.24 ± 0.31 | 1 | 5 |
+| sp | B_freeze | 6 | Q150/Q50 | 2 | 1t:guard | -0.07 ± 0.18 | 2 | 4 |
+| sp | B_frozen | 6 | Q150/Q50 | 4 | 1t:shove | -0.04 ± 0.17 | 4 | 2 |
+| sp | C_trade | 6 | Q150/Q50 | 5 | 1t:safe_beh | -0.13 ± 0.07 | 0 | 6 |
+| sp | C_trade_early | 6 | Q150/Q50 | 4 | 1t:hold_beh | -0.02 ± 0.12 | 4 | 2 |
+| sp | D_ward | 6 | Q150/Q50 | 1 | 1t:ward | -0.18 ± 0.10 | 0 | 6 |
+| sp | E_recall | 6 | Q150/Q50 | 1 | 1t:recall | -0.16 ± 0.08 | 0 | 6 |
+| sp | F_freeze_c | 6 | G150/G50 | 1 | 1t:guard | +0.24 ± 0.13 | 6 | 0 |
+| sp | G_trade_c | 6 | G150/G50 | 3 | 1t:trade | +0.04 ± 0.23 | 2 | 4 |
+| sp | H_zone_c | 6 | G150/G50 | 2 | 1t:hold_beh | +0.03 ± 0.19 | 3 | 3 |
+| sp | I_ward_c | 6 | G150/G50 | 2 | 1t:farm | -0.10 ± 0.15 | 2 | 4 |
+
+Cross-arm limitation cells: both finals in seat A on the same rollouts, averaged over the two seat-B finals (conv complete; freeze complete; recall complete; natural complete; gaps complete):
+
+| family | contrast | cell group | horizon | mean ± 95% | seeds + | seeds − |
+|---|---|---|---|---|---|---|
+| conv | om - sp | all | G150 | -0.53 ± 0.13 | 0 | 6 |
+| conv | om - sp | all | G50 | -0.29 ± 0.14 | 0 | 6 |
+| conv | om - sp | conversion | G150 | -0.62 ± 0.22 | 0 | 6 |
+| conv | om - sp | conversion | G50 | -0.31 ± 0.17 | 0 | 6 |
+| conv | om - sp | defence | G150 | -0.45 ± 0.23 | 0 | 6 |
+| conv | om - sp | defence | G50 | -0.26 ± 0.21 | 0 | 6 |
+| conv | om - sp | equal | G150 | -0.52 ± 0.11 | 0 | 6 |
+| conv | om - sp | equal | G50 | -0.32 ± 0.14 | 0 | 6 |
+| conv | om - sp | other (x1.76) | G150 | -0.29 ± 0.57 | 2 | 4 |
+| conv | om - sp | other (x1.76) | G50 | -0.17 ± 0.42 | 2 | 4 |
+| freeze | om - sp | all | G50 | -0.26 ± 0.14 | 0 | 6 |
+| freeze | om - sp | breaker favourable (edge, plaus, hp) | G50 | -0.31 ± 0.25 | 0 | 6 |
+| freeze | om - sp | breaker | G50 | -0.29 ± 0.16 | 0 | 6 |
+| freeze | om - sp | freezer favourable (edge, plaus, hp) | G50 | -0.32 ± 0.22 | 0 | 6 |
+| freeze | om - sp | freezer | G50 | -0.23 ± 0.19 | 0 | 6 |
+| recall | om - sp | all | G100 | -0.42 ± 0.26 | 0 | 6 |
+| recall | om - sp | all | G50 | -0.27 ± 0.19 | 0 | 6 |
+| recall | om - sp | strong | G100 | -0.43 ± 0.37 | 1 | 5 |
+| recall | om - sp | strong | G50 | -0.23 ± 0.29 | 2 | 4 |
+| recall | om - sp | strong, advantaged | G100 | -0.36 ± 0.49 | 2 | 4 |
+| recall | om - sp | strong, advantaged | G50 | -0.20 ± 0.41 | 2 | 4 |
+| recall | om - sp | weak vs a stronger opponent | G100 | -0.42 ± 0.31 | 0 | 6 |
+| recall | om - sp | weak vs a stronger opponent | G50 | -0.30 ± 0.23 | 1 | 5 |
+| recall | om - sp | weak | G100 | -0.41 ± 0.25 | 0 | 6 |
+| recall | om - sp | weak | G50 | -0.32 ± 0.21 | 1 | 5 |
+| natural | om - sp | all | G150 | -0.54 ± 0.09 | 0 | 6 |
+| natural | om - sp | all | G50 | -0.27 ± 0.08 | 0 | 6 |
+| natural | om - sp | breaker | G50 | -0.22 ± 0.14 | 0 | 6 |
+| natural | om - sp | freezer | G50 | -0.28 ± 0.23 | 0 | 6 |
+| natural | om - sp | leader | G150 | -0.54 ± 0.09 | 0 | 6 |
+| natural | om - sp | leader | G50 | -0.26 ± 0.10 | 0 | 6 |
+| natural | om - sp | trailer | G150 | -0.54 ± 0.12 | 0 | 6 |
+| natural | om - sp | trailer | G50 | -0.30 ± 0.06 | 0 | 6 |
+| gaps | om - sp | all | G150 | -0.39 ± 0.25 | 0 | 6 |
+| gaps | om - sp | all | G50 | -0.10 ± 0.16 | 2 | 4 |
+| gaps | om - sp | equal cells | G150 | -0.65 ± 0.44 | 0 | 6 |
+| gaps | om - sp | equal cells | G50 | -0.31 ± 0.26 | 1 | 5 |
+| gaps | om - sp | gap cells | G150 | -0.30 ± 0.30 | 0 | 6 |
+| gaps | om - sp | gap cells | G50 | -0.02 ± 0.22 | 3 | 3 |
+| gaps | om - sp | gap equal | G150 | -0.65 ± 0.44 | 0 | 6 |
+| gaps | om - sp | gap equal | G50 | -0.31 ± 0.26 | 1 | 5 |
+| gaps | om - sp | gap x1.5 | G150 | -0.46 ± 0.36 | 1 | 5 |
+| gaps | om - sp | gap x1.5 | G50 | -0.11 ± 0.26 | 2 | 4 |
+| gaps | om - sp | gap x1.76 | G150 | -0.42 ± 0.31 | 1 | 5 |
+| gaps | om - sp | gap x1.76 | G50 | -0.13 ± 0.22 | 2 | 4 |
+| gaps | om - sp | gap x2.2 | G150 | -0.02 ± 0.58 | 4 | 2 |
+| gaps | om - sp | gap x2.2 | G50 | +0.17 ± 0.51 | 4 | 2 |
+| gaps | specialist - om | all | G150 | -0.01 ± 1.35 | 4 | 2 |
+| gaps | specialist - om | all | G50 | +0.30 ± 0.66 | 4 | 2 |
+| gaps | specialist - om | equal cells | G150 | -1.48 ± 1.06 | 0 | 6 |
+| gaps | specialist - om | equal cells | G50 | -0.72 ± 0.72 | 2 | 4 |
+| gaps | specialist - om | gap cells | G150 | +0.48 ± 1.57 | 4 | 2 |
+| gaps | specialist - om | gap cells | G50 | +0.63 ± 0.77 | 5 | 1 |
+| gaps | specialist - om | gap equal | G150 | -1.48 ± 1.06 | 0 | 6 |
+| gaps | specialist - om | gap equal | G50 | -0.72 ± 0.72 | 2 | 4 |
+| gaps | specialist - om | gap x1.5 | G150 | -0.20 ± 1.67 | 4 | 2 |
+| gaps | specialist - om | gap x1.5 | G50 | +0.29 ± 0.89 | 5 | 1 |
+| gaps | specialist - om | gap x1.76 | G150 | +0.28 ± 1.51 | 4 | 2 |
+| gaps | specialist - om | gap x1.76 | G50 | +0.56 ± 0.83 | 4 | 2 |
+| gaps | specialist - om | gap x2.2 | G150 | +1.38 ± 1.68 | 5 | 1 |
+| gaps | specialist - om | gap x2.2 | G50 | +1.06 ± 0.93 | 5 | 1 |
+| gaps | specialist - sp | all | G150 | +0.38 ± 0.50 | 4 | 2 |
+| gaps | specialist - sp | all | G50 | +0.64 ± 0.41 | 6 | 0 |
+| gaps | specialist - sp | equal cells | G150 | -1.56 ± 0.45 | 0 | 6 |
+| gaps | specialist - sp | equal cells | G50 | -0.67 ± 0.37 | 0 | 6 |
+| gaps | specialist - sp | gap cells | G150 | +1.03 ± 0.58 | 6 | 0 |
+| gaps | specialist - sp | gap cells | G50 | +1.07 ± 0.47 | 6 | 0 |
+| gaps | specialist - sp | gap equal | G150 | -1.56 ± 0.45 | 0 | 6 |
+| gaps | specialist - sp | gap equal | G50 | -0.67 ± 0.37 | 0 | 6 |
+| gaps | specialist - sp | gap x1.5 | G150 | -0.05 ± 0.66 | 1 | 5 |
+| gaps | specialist - sp | gap x1.5 | G50 | +0.35 ± 0.26 | 6 | 0 |
+| gaps | specialist - sp | gap x1.76 | G150 | +0.80 ± 0.83 | 5 | 1 |
+| gaps | specialist - sp | gap x1.76 | G50 | +1.05 ± 0.70 | 6 | 0 |
+| gaps | specialist - sp | gap x2.2 | G150 | +2.32 ± 0.89 | 6 | 0 |
+| gaps | specialist - sp | gap x2.2 | G50 | +1.82 ± 0.72 | 6 | 0 |
+
+Per-arm cells (each final against its own policy):
+
+| family | quantity | om | sp | om − sp |
 |---|---|---|---|---|
-| om | conditional wave management | partial (0/6 seeds) | 0/0 |  |
-| om | conditional freezing and the reply to freezes | partial (0/6 seeds) | 0/0 |  |
-| om | selective trading | partial (0/6 seeds) | 0/0 |  |
-| om | concession under threat | partial (0/6 seeds) | 0/0 |  |
-| om | Recall timing | partial (0/6 seeds) | 0/0 |  |
-| sp | conditional wave management | partial (0/6 seeds) | 0/0 |  |
-| sp | conditional freezing and the reply to freezes | partial (0/6 seeds) | 0/0 |  |
-| sp | selective trading | partial (0/6 seeds) | 0/0 |  |
-| sp | concession under threat | partial (0/6 seeds) | 0/0 |  |
-| sp | Recall timing | partial (0/6 seeds) | 0/0 |  |
+| premium | early +8 G20 | +0.36 ± 0.09 | +0.31 ± 0.07 | +0.06 ± 0.13 |
+| premium | early +8 G50 | +0.60 ± 0.16 | +0.59 ± 0.12 | +0.01 ± 0.22 |
+| premium | early +16 G20 | +0.71 ± 0.11 | +0.57 ± 0.11 | +0.14 ± 0.18 |
+| premium | early +16 G50 | +1.21 ± 0.13 | +1.14 ± 0.11 | +0.07 ± 0.19 |
+| premium | mid +8 G20 | +0.14 ± 0.14 | +0.12 ± 0.05 | +0.02 ± 0.14 |
+| premium | mid +8 G50 | +0.31 ± 0.12 | +0.24 ± 0.13 | +0.08 ± 0.18 |
+| premium | mid +16 G20 | +0.24 ± 0.10 | +0.21 ± 0.09 | +0.03 ± 0.17 |
+| premium | mid +16 G50 | +0.45 ± 0.14 | +0.49 ± 0.16 | -0.04 ± 0.29 |
+| premium | late +8 G20 | +0.14 ± 0.02 | +0.08 ± 0.07 | +0.07 ± 0.08 |
+| premium | late +8 G50 | +0.15 ± 0.09 | +0.16 ± 0.10 | -0.02 ± 0.14 |
+| premium | late +16 G20 | +0.19 ± 0.06 | +0.11 ± 0.10 | +0.08 ± 0.11 |
+| premium | late +16 G50 | +0.20 ± 0.10 | +0.20 ± 0.07 | -0.01 ± 0.16 |
+| weak | weak side +8: best forced - policy (G50) | -0.58 ± 0.24 | -0.32 ± 0.14 | -0.26 ± 0.25 |
+| weak | weak side +16: best forced - policy (G50) | -0.57 ± 0.21 | -0.29 ± 0.10 | -0.29 ± 0.27 |
+| weak | strong side +8: threaten - policy (G50) | -0.47 ± 0.36 | -0.43 ± 0.14 | -0.04 ± 0.45 |
+| weak | strong side +8: hold - policy (G50) | -0.50 ± 0.22 | -0.28 ± 0.22 | -0.22 ± 0.27 |
+| weak | strong side +16: threaten - policy (G50) | -0.57 ± 0.28 | -0.69 ± 0.15 | +0.12 ± 0.30 |
+| weak | strong side +16: hold - policy (G50) | -0.43 ± 0.22 | -0.42 ± 0.33 | -0.01 ± 0.24 |
 
-Cross-arm conv: partial (0/6).
-Cross-arm freeze: partial (0/6).
-Cross-arm recall: partial (0/6).
-Cross-arm natural: partial (0/6).
-Cross-arm gaps: partial (0/6).
+M4.5c-style battery tables per arm: `results/m5/battery/battery_om.md`, `results/m5/battery/battery_sp.md`
 
-## Future stages (proposal, not authorized): work by horizon and purpose
+
+## Evaluation work by horizon and purpose (M5a estimates; the attackers remain proposed)
 
 | part | purpose | horizon | M turns | wall h (6 workers) |
 |---|---|---|---|---|

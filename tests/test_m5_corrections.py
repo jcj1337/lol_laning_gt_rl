@@ -354,6 +354,17 @@ def test_battery_family_gap_coverage_and_the_validation_path(tmp_path):
             json.dump(r, f)
     g = ST.family_gap(B.load("om_s0", root2), fam)
     assert g["validation"]["verdict"].startswith("fail") and g["status"].startswith("pending")
+    assert ST.failed_families("om_s0", root2) == [fam]
+    assert ST.validate_at(B.load("om_s0", root2), fam, 150)["verdict"] == "fail"     # 300 was shifted, 150 was not
+    assert ST.validate_at(B.load("om_s0", root), fam, 150)["verdict"] == "pass"
+    assert g["validation_150_diagnostic"]["verdict"] == "fail"
+    fake = [{"start": ("lane", "m4", 30 + i), "info": None, "seat": 0, "turn": 30 + i, "seed": i} for i in range(3)]
+    ext = ST.extension_jobs("om:0", "om_s0", [fam, "A_wave"], {"A_wave": fake}, root2)
+    assert len(ext) == n * len(B.FAMILIES[fam][3]) + 3 * len(B.FAMILIES["A_wave"][3])
+    assert {j[7] for j in ext} == {B.EXTENDED_H} and {j[2] for j in ext} == {fam, "A_wave"}
+    paths = {B.job_path(j[1], j[2], j[3], j[6], j[7], j[10]) for j in ext}
+    assert len(paths) == len(ext) and all(p.endswith("__h150.json.gz") for p in paths)
+    assert not any(os.path.exists(p) for p in paths)                   # the 300-turn records are never overwritten
     for i in range(n):
         for p in B.FAMILIES[fam][3]:
             _battery_record(root2, "om_s0", fam, i, p, B.EXTENDED_H, {cand: 0.3}, rng=rng)

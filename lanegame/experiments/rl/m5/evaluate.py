@@ -388,6 +388,20 @@ def extension_plan(seeds=C.SEEDS) -> Dict[str, List[str]]:
     return {f"{a}_s{s}": ST.failed_families(f"{a}_s{s}") for s in seeds for a in C.ARMS}
 
 
+def extension_estimate(plan: Dict[str, List[str]], workers: int = 6, slowdown: float = 1.09) -> dict:
+    """Wall hours of a 150-turn re-run plan: each failed (final, family) at its design size (every state and protocol,
+    EXTENDED_H turns), at the R10 battery rate of its arm times the measured evaluation slowdown."""
+    rates = (((C.load("readiness") or {}).get("parts", {}).get("R10") or {}).get("data") or {}).get("rates", {})
+    rows = {r["family"]: r for r in battery_breakdown()}
+    per = {}
+    for tag, fams in plan.items():
+        arm = tag.split("_s")[0]
+        t = sum(rows[f]["contingent_extension_turns_150"] for f in fams)
+        per[tag] = t / rates[f"battery_{arm}"] / 3600 * slowdown
+    return {"worker_h": sum(per.values()), "wall_h": sum(per.values()) / workers, "per_final_worker_h": per,
+            "pairs": sum(len(v) for v in plan.values())}
+
+
 def stage_battery_extend(workers: int) -> dict:
     """M4.5c's exception 3, part of the registered battery: every (final, family) whose horizon validation failed is
     re-run at 150 turns for all its states and protocols, decided by the pass rule alone. The failed natural families'

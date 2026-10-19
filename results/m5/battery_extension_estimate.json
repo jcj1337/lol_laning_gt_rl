@@ -1,0 +1,29 @@
+{
+ "worker_h": 39.78848647445183,
+ "wall_h": 6.631414412408638,
+ "per_final_worker_h": {
+  "om_s0": 3.165854307812949,
+  "sp_s0": 3.4739104428615737,
+  "om_s1": 5.342379144434352,
+  "sp_s1": 0.7396919574153921,
+  "om_s2": 4.03646424246151,
+  "sp_s2": 1.9020650333538653,
+  "om_s3": 1.8995125846877696,
+  "sp_s3": 3.1040644641538773,
+  "om_s4": 6.727440404102517,
+  "sp_s4": 1.0302852264000104,
+  "om_s5": 5.619391396367985,
+  "sp_s5": 2.7474272704000273
+ },
+ "pairs": 51,
+ "meta": {
+  "study": "M5",
+  "commit": "384eea13b099c08a83598875c54fc5fb9a85faa6",
+  "working_tree_dirty": true,
+  "timestamp": "2026-10-19 04:05:08",
+  "torch": "2.14.1+cpu",
+  "numpy": "2.5.3",
+  "stage": "battery_extension_estimate"
+ },
+ "note": "computed from the validation verdicts before battery_extend ran (decision log 2026-10-18T20:2x); recomputed here from the same plan"
+}

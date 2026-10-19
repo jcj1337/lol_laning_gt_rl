@@ -105,6 +105,8 @@ Viewer: `streamlit run lanegame/viewer/app.py` (replays recorded trajectories fr
   - Every evaluation stage refuses to start unless `train_check` passed or each failed check has a `train_resolve`
     record, and it verifies the checkpoints' SHA-256.
   - `analysis.py` classifies an endpoint only with all six seeds. `strategic.py` is S8 (battery and cell replication).
+  - The `battery_extend` stage runs M4.5c's exception 3 after `battery`: every (final, family) that fails horizon
+    validation is re-run at 150 turns, and S8 then reads the 150-turn statistic for it.
 
 **The preset chain.** M4 presets build on each other, each as the previous preset plus opt-in fields:
 `m4 → m4_continuous → m4_emergent → m4_natural_prototype → m4_natural → m4_lane → m4_lasthit → m4_four_actions →

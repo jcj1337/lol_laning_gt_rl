@@ -1,9 +1,9 @@
 {
  "meta": {
   "study": "M5",
-  "commit": "8256882791407a58ffe59abf2c7d7439e3e7bc9a",
+  "commit": "384eea13b099c08a83598875c54fc5fb9a85faa6",
   "working_tree_dirty": true,
-  "timestamp": "2026-10-17 20:48:00",
+  "timestamp": "2026-10-18 11:30:31",
   "torch": "2.14.1+cpu",
   "numpy": "2.5.3",
   "stage": "corrections"
@@ -140,6 +140,79 @@
     "summary": "===== 1534 passed, 4 skipped, 2 xfailed, 3 warnings in 500.56s (0:08:20) ======",
     "seconds": 502.9080805000849,
     "log": "regression_suite_amendment1.log"
+   },
+   "passed": true
+  },
+  "B1": {
+   "time": "2026-10-18 11:30:31",
+   "checks": {
+    "om: A_wave records complete for the collected states": true,
+    "om: H_zone_c records complete": true,
+    "om: validation verdicts computed": true,
+    "om: re-collected natural states identical (seed, turn, seat)": true,
+    "om: every 150-turn re-run record written": true,
+    "om: the analysis reads the re-run at 150": true,
+    "sp: A_wave records complete for the collected states": true,
+    "sp: H_zone_c records complete": true,
+    "sp: validation verdicts computed": true,
+    "sp: re-collected natural states identical (seed, turn, seat)": true,
+    "sp: every 150-turn re-run record written": true,
+    "sp: the analysis reads the re-run at 150": true,
+    "cells: weaker-side and cross-arm records written": true,
+    "cells: the cross-arm analysis reads them (om - sp present, partial status)": true
+   },
+   "data": {
+    "om": {
+     "records": 42,
+     "extension_jobs": 42,
+     "turns": 66600,
+     "families": {
+      "A_wave": {
+       "statistic": "Q150",
+       "gap": 4.056743321115174,
+       "best": "1t:LH",
+       "status": "ok"
+      },
+      "H_zone_c": {
+       "statistic": "G150",
+       "gap": 0.028168191955162552,
+       "best": "1t:trade_beh",
+       "status": "ok"
+      }
+     },
+     "validation_before": {
+      "A_wave": "fail -> re-run the family at 150 turns",
+      "H_zone_c": "fail -> re-run the family at 150 turns"
+     }
+    },
+    "sp": {
+     "records": 42,
+     "extension_jobs": 42,
+     "turns": 66600,
+     "families": {
+      "A_wave": {
+       "statistic": "Q150",
+       "gap": -0.37517108557934525,
+       "best": "plan:TNx4",
+       "status": "ok"
+      },
+      "H_zone_c": {
+       "statistic": "G150",
+       "gap": 0.9473214991515904,
+       "best": "1t:hold",
+       "status": "ok"
+      }
+     },
+     "validation_before": {
+      "A_wave": "fail -> re-run the family at 150 turns",
+      "H_zone_c": "fail -> re-run the family at 150 turns"
+     }
+    },
+    "cells": {
+     "status": "partial (0/1)",
+     "stats": 12
+    },
+    "wall_s": 127.30518170027062
    },
    "passed": true
   }

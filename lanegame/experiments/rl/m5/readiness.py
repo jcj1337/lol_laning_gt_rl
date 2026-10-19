@@ -640,7 +640,7 @@ def r8_equivalence() -> dict:
 # as it was): A1 the monitored smoke reproduces the stored R4 smoke runs, A2 the inputs of the main training (the
 # amended pre-registration, every start checkpoint and archive, the run manifest), A3 the targeted tests, A4 the full
 # regression suite.
-CORR_PARTS = ("A1", "A2", "A3", "A4")
+CORR_PARTS = ("A1", "A2", "A3", "A4", "B1")
 
 
 def _record_corr(part: str, data: dict) -> dict:
@@ -717,6 +717,66 @@ def a2_campaign_inputs() -> dict:
                                                            "code": man["code"]}})
 
 
+def b1_battery_smoke(workers: int = 6) -> dict:
+    """Before the M5c battery and cells: the instruments on the real finals at tiny sizes in a scratch root, analysed
+    by S8. A natural family (A_wave, 3 states, K 2) and a constructed one (H_zone_c, every cell, K 1) for om:0 and
+    sp:0; the natural states re-collected and compared with the battery's own collection (the 150-turn re-run relies on
+    it); every 150-turn re-run job of both families executed and read back by `strategic.family_gap`; two weaker-side and
+    two cross-arm strength-use cells. Nothing here enters an M5 record."""
+    from . import battery as MB
+    from . import cells as CE
+    from . import strategic as ST
+    from ..m45c import battery as B
+    root = os.path.join(RDIR, "battery_smoke")
+    croot = os.path.join(RDIR, "cells_smoke")
+    checks: Dict[str, bool] = {}
+    data: Dict[str, dict] = {}
+    t0 = time.perf_counter()
+    for arm in C.ARMS:
+        spec, tag = f"{arm}:0", f"smoke_{arm}_s0"
+        man = MB.run_policy(spec, tag, workers, families=("A_wave", "H_zone_c"), n_natural=3, k_nat=2, k_con=1,
+                            root=root)
+        jobs = B.load(tag, root)
+        seed = ST.battery_seed(tag, root)
+        fa, fh = seed["families"]["A_wave"], seed["families"]["H_zone_c"]
+        checks[f"{arm}: A_wave records complete for the collected states"] = \
+            fa["coverage"]["present_records"] == fa["coverage"]["expected_records"] > 0
+        checks[f"{arm}: H_zone_c records complete"] = fh["coverage"]["records"] == "complete"
+        checks[f"{arm}: validation verdicts computed"] = all(
+            x.get("validation", {}).get("verdict") in ("pass", "insufficient") or
+            str(x.get("validation", {}).get("verdict", "")).startswith("fail") for x in (fa, fh))
+        recol = MB.collect_job((spec, "A_wave", 3))[1]["states"]
+        same = [(s["seed"], s["turn"], s["seat"]) for s in recol] == \
+            [(s["seed"], s["turn"], s["seat"]) for s in man["states"]["A_wave"]["states"]]
+        checks[f"{arm}: re-collected natural states identical (seed, turn, seat)"] = same
+        ext = ST.extension_jobs(spec, tag, ["A_wave", "H_zone_c"], {"A_wave": recol}, root, k_nat=2, k_con=1)
+        res = dict(C.run_jobs(MB.state_job, ext, workers, f"M5 battery smoke extension {arm}"))
+        paths = [B.job_path(j[1], j[2], j[3], j[6], j[7], j[10]) for j in ext]
+        checks[f"{arm}: every 150-turn re-run record written"] = all(os.path.exists(p) for p in paths)
+        after = ST.battery_seed(tag, root)["families"]
+        checks[f"{arm}: the analysis reads the re-run at 150"] = all(
+            after[f]["extended"] and after[f]["statistic"].endswith("150") and after[f]["status"] == "ok"
+            for f in ("A_wave", "H_zone_c"))
+        data[arm] = {"records": len(jobs), "extension_jobs": len(ext),
+                     "turns": int(sum(v.get("turns", 0) for v in res.values())),
+                     "families": {f: {k: after[f].get(k) for k in ("statistic", "gap", "best", "status")}
+                                  for f in ("A_wave", "H_zone_c")},
+                     "validation_before": {"A_wave": fa["validation"].get("verdict"),
+                                           "H_zone_c": fh["validation"].get("verdict")}}
+    cj = CE.weak_jobs({"smoke_om_s0": "om:0"}, K=2, root=croot)[:2]
+    xj = CE.conv_jobs(0, CE.arm_specs(0), root=croot)[:2]
+    for j in xj:
+        j["roll"] = j["roll"][:2]
+    CE.run(cj + xj, workers, "M5 cells smoke")
+    checks["cells: weaker-side and cross-arm records written"] = all(os.path.exists(j["path"]) for j in cj + xj)
+    x = ST.cross_arm("conv", seeds=(0,), root=croot)
+    checks["cells: the cross-arm analysis reads them (om - sp present, partial status)"] = \
+        any(k.startswith("om - sp") for k in x["stats"]) and x["status"].startswith("partial")
+    data["cells"] = {"status": x["status"], "stats": len(x["stats"])}
+    data["wall_s"] = time.perf_counter() - t0
+    return _record_corr("B1", {"checks": checks, "data": data})
+
+
 def corr_pytest(part: str, args: List[str], log: str) -> dict:
     """A3 / A4: a pytest run with its output kept in results/m5/<log>."""
     t0 = time.perf_counter()
@@ -730,4 +790,5 @@ def corr_pytest(part: str, args: List[str], log: str) -> dict:
 
 __all__ = ["freeze_protocol", "r0_artifacts", "r1_seeds", "r2_init", "r3_defaults", "r4_smoke", "r5_crn", "r6_inputs",
            "r7_shares", "r8_equivalence", "probe_inputs", "start_schedule", "scan_roots", "om_proxy", "sp_proxy",
-           "PARTS", "RDIR", "CORR_PARTS", "a1_monitored_smoke", "a2_campaign_inputs", "corr_pytest"]
+           "PARTS", "RDIR", "CORR_PARTS", "a1_monitored_smoke", "a2_campaign_inputs", "b1_battery_smoke",
+           "corr_pytest"]

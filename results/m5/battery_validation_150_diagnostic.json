@@ -1,0 +1,1328 @@
+{
+ "om_s0|B_frozen": {
+  "100": {
+   "verdict": "pass",
+   "bias": -0.03778010530466165,
+   "two_se": 0.09754198154646884,
+   "slope": 1.0220666144930741,
+   "contradictions": 0,
+   "pairs": 52
+  },
+  "150": {
+   "verdict": "pass",
+   "bias": 0.01499630767942071,
+   "two_se": 0.06073359649234302,
+   "slope": 1.0492948915133102,
+   "contradictions": 0,
+   "pairs": 52
+  },
+  "200": {
+   "verdict": "pass",
+   "bias": -0.019953718557846088,
+   "two_se": 0.029800887708374316,
+   "slope": 1.0052190316027403,
+   "contradictions": 0,
+   "pairs": 52
+  }
+ },
+ "sp_s0|A_wave_early": {
+  "100": {
+   "verdict": "pass",
+   "bias": 0.015049438820452518,
+   "two_se": 0.07379051029061669,
+   "slope": 1.0421599824400016,
+   "contradictions": 0,
+   "pairs": 48
+  },
+  "150": {
+   "verdict": "pass",
+   "bias": -0.013687349771592847,
+   "two_se": 0.06337070569414105,
+   "slope": 0.9872722667106579,
+   "contradictions": 0,
+   "pairs": 48
+  },
+  "200": {
+   "verdict": "pass",
+   "bias": 0.011201550403459553,
+   "two_se": 0.02826205196195588,
+   "slope": 0.9890040989457682,
+   "contradictions": 0,
+   "pairs": 48
+  }
+ },
+ "sp_s0|B_freeze": {
+  "100": {
+   "verdict": "pass",
+   "bias": 0.004196110682702703,
+   "two_se": 0.08257592059265666,
+   "slope": 1.1505402378391247,
+   "contradictions": 0,
+   "pairs": 40
+  },
+  "150": {
+   "verdict": "pass",
+   "bias": -0.11296246169169291,
+   "two_se": 0.07217394437068278,
+   "slope": 0.9702382538245381,
+   "contradictions": 0,
+   "pairs": 40
+  },
+  "200": {
+   "verdict": "pass",
+   "bias": -0.06099792907742711,
+   "two_se": 0.04093373862823241,
+   "slope": 0.9955206457870002,
+   "contradictions": 0,
+   "pairs": 40
+  }
+ },
+ "sp_s0|B_frozen": {
+  "100": {
+   "verdict": "pass",
+   "bias": -0.08335546662461409,
+   "two_se": 0.09285526168498773,
+   "slope": 1.0231592044766624,
+   "contradictions": 0,
+   "pairs": 50
+  },
+  "150": {
+   "verdict": "pass",
+   "bias": -0.007133054764528492,
+   "two_se": 0.04762839925962844,
+   "slope": 0.9942395804564373,
+   "contradictions": 0,
+   "pairs": 50
+  },
+  "200": {
+   "verdict": "pass",
+   "bias": -0.005209114541165818,
+   "two_se": 0.028257372012014226,
+   "slope": 0.9633181842769095,
+   "contradictions": 0,
+   "pairs": 50
+  }
+ },
+ "sp_s0|C_trade": {
+  "100": {
+   "verdict": "pass",
+   "bias": -0.10733622947573812,
+   "two_se": 0.07506239245333815,
+   "slope": 1.048014204167873,
+   "contradictions": 0,
+   "pairs": 48
+  },
+  "150": {
+   "verdict": "pass",
+   "bias": -0.011144123555270606,
+   "two_se": 0.044519335401357864,
+   "slope": 1.0410290881987712,
+   "contradictions": 0,
+   "pairs": 48
+  },
+  "200": {
+   "verdict": "pass",
+   "bias": -0.010907447671465209,
+   "two_se": 0.02381400694041527,
+   "slope": 0.988990154689895,
+   "contradictions": 0,
+   "pairs": 48
+  }
+ },
+ "sp_s0|C_trade_early": {
+  "100": {
+   "verdict": "fail",
+   "bias": -0.2379899520171179,
+   "two_se": 0.10711613956945562,
+   "slope": 1.1077448205452365,
+   "contradictions": 0,
+   "pairs": 48
+  },
+  "150": {
+   "verdict": "pass",
+   "bias": -0.0941807352870598,
+   "two_se": 0.057948816833333736,
+   "slope": 0.987790062974861,
+   "contradictions": 0,
+   "pairs": 48
+  },
+  "200": {
+   "verdict": "pass",
+   "bias": -0.03514526426064645,
+   "two_se": 0.03477756345379784,
+   "slope": 0.9960960664505358,
+   "contradictions": 0,
+   "pairs": 48
+  }
+ },
+ "sp_s0|F_freeze_c": {
+  "100": {
+   "verdict": "pass",
+   "bias": 0.053977513691815554,
+   "two_se": 0.0738556218436141,
+   "slope": 0.8967905606506617,
+   "contradictions": 0,
+   "pairs": 50
+  },
+  "150": {
+   "verdict": "pass",
+   "bias": 0.05869845065108443,
+   "two_se": 0.04769358088763485,
+   "slope": 0.9408045355677478,
+   "contradictions": 0,
+   "pairs": 50
+  },
+  "200": {
+   "verdict": "pass",
+   "bias": -0.011593709533511944,
+   "two_se": 0.023188134897395404,
+   "slope": 0.9513507086425759,
+   "contradictions": 0,
+   "pairs": 50
+  }
+ },
+ "sp_s0|G_trade_c": {
+  "100": {
+   "verdict": "pass",
+   "bias": 0.09984037959438932,
+   "two_se": 0.0674962912369262,
+   "slope": 1.0143193196349791,
+   "contradictions": 0,
+   "pairs": 72
+  },
+  "150": {
+   "verdict": "pass",
+   "bias": 0.036220817014430945,
+   "two_se": 0.03555534474831746,
+   "slope": 0.9672067375975398,
+   "contradictions": 0,
+   "pairs": 72
+  },
+  "200": {
+   "verdict": "pass",
+   "bias": 0.04002706538647484,
+   "two_se": 0.025193121839269268,
+   "slope": 0.9672990373384858,
+   "contradictions": 0,
+   "pairs": 72
+  }
+ },
+ "om_s1|B_frozen": {
+  "100": {
+   "verdict": "fail",
+   "bias": -0.2737949410397401,
+   "two_se": 0.10854064720641371,
+   "slope": 0.8195546811596339,
+   "contradictions": 0,
+   "pairs": 50
+  },
+  "150": {
+   "verdict": "pass",
+   "bias": -0.09956729040789745,
+   "two_se": 0.0766381478722631,
+   "slope": 0.8694496450633575,
+   "contradictions": 0,
+   "pairs": 50
+  },
+  "200": {
+   "verdict": "pass",
+   "bias": -0.050248563080976784,
+   "two_se": 0.039734470815106844,
+   "slope": 0.9493642912698824,
+   "contradictions": 0,
+   "pairs": 50
+  }
+ },
+ "om_s1|F_freeze_c": {
+  "100": {
+   "verdict": "pass",
+   "bias": -0.09112228761443582,
+   "two_se": 0.09386665877319203,
+   "slope": 1.017877537254738,
+   "contradictions": 0,
+   "pairs": 50
+  },
+  "150": {
+   "verdict": "pass",
+   "bias": 0.04790536988735099,
+   "two_se": 0.051025352167172806,
+   "slope": 0.9849715341335378,
+   "contradictions": 0,
+   "pairs": 50
+  },
+  "200": {
+   "verdict": "pass",
+   "bias": -0.015260078992565936,
+   "two_se": 0.04705179137484981,
+   "slope": 0.9885043345478819,
+   "contradictions": 0,
+   "pairs": 50
+  }
+ },
+ "om_s1|H_zone_c": {
+  "100": {
+   "verdict": "pass",
+   "bias": -0.0773382724811027,
+   "two_se": 0.07009550314539137,
+   "slope": 0.9217705475379004,
+   "contradictions": 0,
+   "pairs": 108
+  },
+  "150": {
+   "verdict": "pass",
+   "bias": -0.04308970042682168,
+   "two_se": 0.025719637567572548,
+   "slope": 0.9898830281128479,
+   "contradictions": 0,
+   "pairs": 108
+  },
+  "200": {
+   "verdict": "pass",
+   "bias": -0.031750592047180844,
+   "two_se": 0.01771635959817643,
+   "slope": 0.968427342110194,
+   "contradictions": 0,
+   "pairs": 108
+  }
+ },
+ "sp_s1|A_wave_early": {
+  "100": {
+   "verdict": "fail",
+   "bias": -0.19294019740007448,
+   "two_se": 0.10508213375800672,
+   "slope": 1.0975012840930667,
+   "contradictions": 0,
+   "pairs": 48
+  },
+  "150": {
+   "verdict": "pass",
+   "bias": -0.0378204433260703,
+   "two_se": 0.05235249604921303,
+   "slope": 1.0140497724581476,
+   "contradictions": 0,
+   "pairs": 48
+  },
+  "200": {
+   "verdict": "pass",
+   "bias": 0.018667398590174505,
+   "two_se": 0.03667381154232848,
+   "slope": 1.0015707024166651,
+   "contradictions": 0,
+   "pairs": 48
+  }
+ },
+ "sp_s1|C_trade": {
+  "100": {
+   "verdict": "pass",
+   "bias": 0.09422576331231003,
+   "two_se": 0.07983429676474538,
+   "slope": 0.8694300626044043,
+   "contradictions": 0,
+   "pairs": 48
+  },
+  "150": {
+   "verdict": "pass",
+   "bias": -0.031057464222034665,
+   "two_se": 0.0646654195346992,
+   "slope": 0.8528662112798853,
+   "contradictions": 0,
+   "pairs": 48
+  },
+  "200": {
+   "verdict": "pass",
+   "bias": -0.010355321470713606,
+   "two_se": 0.027843063872254558,
+   "slope": 0.9797931202050721,
+   "contradictions": 0,
+   "pairs": 48
+  }
+ },
+ "om_s2|C_trade": {
+  "100": {
+   "verdict": "pass",
+   "bias": 0.07096137415717167,
+   "two_se": 0.0933143898112203,
+   "slope": 0.8855649195284956,
+   "contradictions": 0,
+   "pairs": 48
+  },
+  "150": {
+   "verdict": "pass",
+   "bias": -0.005193509902520185,
+   "two_se": 0.05264995869801476,
+   "slope": 0.9649428958841001,
+   "contradictions": 0,
+   "pairs": 48
+  },
+  "200": {
+   "verdict": "pass",
+   "bias": 0.023632726777536816,
+   "two_se": 0.03510737071401715,
+   "slope": 0.9705931062565576,
+   "contradictions": 0,
+   "pairs": 48
+  }
+ },
+ "om_s2|C_trade_early": {
+  "100": {
+   "verdict": "pass",
+   "bias": 0.10512067863900433,
+   "two_se": 0.11477840011507129,
+   "slope": 1.0835436400339589,
+   "contradictions": 0,
+   "pairs": 48
+  },
+  "150": {
+   "verdict": "pass",
+   "bias": 0.031314917641775374,
+   "two_se": 0.06360725795712294,
+   "slope": 1.0927197823836534,
+   "contradictions": 0,
+   "pairs": 48
+  },
+  "200": {
+   "verdict": "pass",
+   "bias": 0.00015100360915949276,
+   "two_se": 0.03020261003955463,
+   "slope": 0.9733770663790962,
+   "contradictions": 0,
+   "pairs": 48
+  }
+ },
+ "om_s2|D_ward": {
+  "100": {
+   "verdict": "pass",
+   "bias": 0.05385887570791776,
+   "two_se": 0.12313287481898699,
+   "slope": 0.8846342032422762,
+   "contradictions": 0,
+   "pairs": 16
+  },
+  "150": {
+   "verdict": "pass",
+   "bias": -0.10466103406280056,
+   "two_se": 0.10529282553141933,
+   "slope": 0.9017243650805917,
+   "contradictions": 0,
+   "pairs": 16
+  },
+  "200": {
+   "verdict": "pass",
+   "bias": -0.0590018666382018,
+   "two_se": 0.044212424202964125,
+   "slope": 1.0020613478700837,
+   "contradictions": 0,
+   "pairs": 16
+  }
+ },
+ "om_s2|G_trade_c": {
+  "100": {
+   "verdict": "fail",
+   "bias": 0.09899594682561373,
+   "two_se": 0.08386884739385941,
+   "slope": 0.7921137096536824,
+   "contradictions": 0,
+   "pairs": 72
+  },
+  "150": {
+   "verdict": "pass",
+   "bias": 0.036261307473846656,
+   "two_se": 0.0396275107655569,
+   "slope": 0.982137214916442,
+   "contradictions": 0,
+   "pairs": 72
+  },
+  "200": {
+   "verdict": "pass",
+   "bias": -0.0074197460478940365,
+   "two_se": 0.022927109630312408,
+   "slope": 0.9992886583112567,
+   "contradictions": 0,
+   "pairs": 72
+  }
+ },
+ "sp_s2|B_frozen": {
+  "100": {
+   "verdict": "pass",
+   "bias": 0.11484183501083096,
+   "two_se": 0.08230185858525724,
+   "slope": 0.9087155533908045,
+   "contradictions": 0,
+   "pairs": 52
+  },
+  "150": {
+   "verdict": "pass",
+   "bias": 0.0500040495446299,
+   "two_se": 0.06154973850928627,
+   "slope": 0.8794677996794108,
+   "contradictions": 0,
+   "pairs": 52
+  },
+  "200": {
+   "verdict": "pass",
+   "bias": 0.02228126589567623,
+   "two_se": 0.03067476397587509,
+   "slope": 0.9825497154121742,
+   "contradictions": 0,
+   "pairs": 52
+  }
+ },
+ "sp_s2|C_trade_early": {
+  "100": {
+   "verdict": "pass",
+   "bias": -0.09812696475486582,
+   "two_se": 0.10540793894483994,
+   "slope": 1.102890834777927,
+   "contradictions": 0,
+   "pairs": 48
+  },
+  "150": {
+   "verdict": "pass",
+   "bias": -0.08414516125397598,
+   "two_se": 0.06671757529565651,
+   "slope": 1.039521044186899,
+   "contradictions": 0,
+   "pairs": 48
+  },
+  "200": {
+   "verdict": "pass",
+   "bias": -0.016624419830085405,
+   "two_se": 0.04151031797522841,
+   "slope": 1.0026864148530912,
+   "contradictions": 0,
+   "pairs": 48
+  }
+ },
+ "sp_s2|E_recall": {
+  "100": {
+   "verdict": "pass",
+   "bias": -0.06886504857401994,
+   "two_se": 0.11524339253420908,
+   "slope": 1.0320287506192831,
+   "contradictions": 0,
+   "pairs": 24
+  },
+  "150": {
+   "verdict": "pass",
+   "bias": -0.06468113438444405,
+   "two_se": 0.08481652727117726,
+   "slope": 1.034391594324565,
+   "contradictions": 0,
+   "pairs": 24
+  },
+  "200": {
+   "verdict": "pass",
+   "bias": -0.06722964147766307,
+   "two_se": 0.04410266191978014,
+   "slope": 1.0045719679341365,
+   "contradictions": 0,
+   "pairs": 24
+  }
+ },
+ "sp_s2|G_trade_c": {
+  "100": {
+   "verdict": "pass",
+   "bias": 0.14261495942930724,
+   "two_se": 0.05609963931517507,
+   "slope": 1.0661218434974098,
+   "contradictions": 0,
+   "pairs": 72
+  },
+  "150": {
+   "verdict": "pass",
+   "bias": -0.010974847568841803,
+   "two_se": 0.04491448125309527,
+   "slope": 1.0563670295936771,
+   "contradictions": 0,
+   "pairs": 72
+  },
+  "200": {
+   "verdict": "pass",
+   "bias": -0.01919787361951219,
+   "two_se": 0.022203688120637936,
+   "slope": 0.9933237219617084,
+   "contradictions": 0,
+   "pairs": 72
+  }
+ },
+ "sp_s2|I_ward_c": {
+  "100": {
+   "verdict": "fail",
+   "bias": -0.05432750882850271,
+   "two_se": 0.1328449700599082,
+   "slope": 0.7468971702947226,
+   "contradictions": 0,
+   "pairs": 16
+  },
+  "150": {
+   "verdict": "pass",
+   "bias": 0.013563098257970193,
+   "two_se": 0.09253353636148488,
+   "slope": 0.9234601859690844,
+   "contradictions": 0,
+   "pairs": 16
+  },
+  "200": {
+   "verdict": "pass",
+   "bias": 0.012539900145471336,
+   "two_se": 0.05931206026221527,
+   "slope": 1.0465401467826858,
+   "contradictions": 0,
+   "pairs": 16
+  }
+ },
+ "om_s3|A_wave": {
+  "100": {
+   "verdict": "fail",
+   "bias": 0.21421868092505636,
+   "two_se": 0.15132969393501208,
+   "slope": 1.2397065159349434,
+   "contradictions": 0,
+   "pairs": 48
+  },
+  "150": {
+   "verdict": "pass",
+   "bias": 0.009356007304360146,
+   "two_se": 0.055959017876689394,
+   "slope": 1.0257099681886632,
+   "contradictions": 0,
+   "pairs": 48
+  },
+  "200": {
+   "verdict": "pass",
+   "bias": 0.00017993600979740684,
+   "two_se": 0.03329263190331272,
+   "slope": 0.9841196761002788,
+   "contradictions": 0,
+   "pairs": 48
+  }
+ },
+ "om_s3|A_wave_early": {
+  "100": {
+   "verdict": "pass",
+   "bias": -0.0562960101291115,
+   "two_se": 0.11241313327072988,
+   "slope": 0.8729092276064413,
+   "contradictions": 0,
+   "pairs": 48
+  },
+  "150": {
+   "verdict": "pass",
+   "bias": 0.011638593314955334,
+   "two_se": 0.05745745004387047,
+   "slope": 1.0456651922092979,
+   "contradictions": 0,
+   "pairs": 48
+  },
+  "200": {
+   "verdict": "pass",
+   "bias": -0.012021299425304518,
+   "two_se": 0.0388722934560334,
+   "slope": 0.9709064425408718,
+   "contradictions": 0,
+   "pairs": 48
+  }
+ },
+ "om_s3|I_ward_c": {
+  "100": {
+   "verdict": "fail",
+   "bias": 0.006677180710472089,
+   "two_se": 0.18552889791670865,
+   "slope": 0.7468779044149411,
+   "contradictions": 0,
+   "pairs": 16
+  },
+  "150": {
+   "verdict": "pass",
+   "bias": 0.031780166824283154,
+   "two_se": 0.07524630478588147,
+   "slope": 0.9326922097631236,
+   "contradictions": 0,
+   "pairs": 16
+  },
+  "200": {
+   "verdict": "pass",
+   "bias": -0.04935821363083831,
+   "two_se": 0.04050723341682221,
+   "slope": 0.9817190611164075,
+   "contradictions": 0,
+   "pairs": 16
+  }
+ },
+ "sp_s3|A_wave_early": {
+  "100": {
+   "verdict": "pass",
+   "bias": 0.05564412567825203,
+   "two_se": 0.10341056628243436,
+   "slope": 0.9587362994573333,
+   "contradictions": 0,
+   "pairs": 48
+  },
+  "150": {
+   "verdict": "pass",
+   "bias": -0.06844924650750253,
+   "two_se": 0.04349179480322071,
+   "slope": 1.0045535703962873,
+   "contradictions": 0,
+   "pairs": 48
+  },
+  "200": {
+   "verdict": "pass",
+   "bias": -0.05004483715857744,
+   "two_se": 0.047226614018838764,
+   "slope": 1.0140264655666755,
+   "contradictions": 0,
+   "pairs": 48
+  }
+ },
+ "sp_s3|B_freeze": {
+  "100": {
+   "verdict": "pass",
+   "bias": -0.12165617307785845,
+   "two_se": 0.10808962934936267,
+   "slope": 0.9411329918726206,
+   "contradictions": 0,
+   "pairs": 40
+  },
+  "150": {
+   "verdict": "pass",
+   "bias": -0.03500521419148683,
+   "two_se": 0.05059741799331949,
+   "slope": 0.9558445257988742,
+   "contradictions": 0,
+   "pairs": 40
+  },
+  "200": {
+   "verdict": "pass",
+   "bias": -0.0008813580512616701,
+   "two_se": 0.03207085006563879,
+   "slope": 0.9883735946670168,
+   "contradictions": 0,
+   "pairs": 40
+  }
+ },
+ "sp_s3|B_frozen": {
+  "100": {
+   "verdict": "pass",
+   "bias": 0.14029848341290704,
+   "two_se": 0.10040407325514486,
+   "slope": 1.0446672866310163,
+   "contradictions": 0,
+   "pairs": 52
+  },
+  "150": {
+   "verdict": "pass",
+   "bias": 0.03497134361852537,
+   "two_se": 0.05697073899479016,
+   "slope": 1.01013135660928,
+   "contradictions": 0,
+   "pairs": 52
+  },
+  "200": {
+   "verdict": "pass",
+   "bias": 0.054833153873515124,
+   "two_se": 0.035477467006846765,
+   "slope": 0.9876594847294541,
+   "contradictions": 0,
+   "pairs": 52
+  }
+ },
+ "sp_s3|C_trade": {
+  "100": {
+   "verdict": "pass",
+   "bias": -0.05101912654693035,
+   "two_se": 0.08814210200459752,
+   "slope": 1.0660221178468057,
+   "contradictions": 0,
+   "pairs": 48
+  },
+  "150": {
+   "verdict": "pass",
+   "bias": -0.0686839370866373,
+   "two_se": 0.06198190901760079,
+   "slope": 1.0819343609998342,
+   "contradictions": 0,
+   "pairs": 48
+  },
+  "200": {
+   "verdict": "pass",
+   "bias": -0.0267307292183183,
+   "two_se": 0.02834475034139357,
+   "slope": 1.059772745996202,
+   "contradictions": 0,
+   "pairs": 48
+  }
+ },
+ "sp_s3|C_trade_early": {
+  "100": {
+   "verdict": "pass",
+   "bias": -0.001850025246256747,
+   "two_se": 0.09616167834277038,
+   "slope": 0.92238114148356,
+   "contradictions": 0,
+   "pairs": 48
+  },
+  "150": {
+   "verdict": "pass",
+   "bias": -0.0050562670632957754,
+   "two_se": 0.06245608488728709,
+   "slope": 1.0168718933987186,
+   "contradictions": 0,
+   "pairs": 48
+  },
+  "200": {
+   "verdict": "pass",
+   "bias": 0.020726252602895172,
+   "two_se": 0.031218657922506866,
+   "slope": 0.9813204482510867,
+   "contradictions": 0,
+   "pairs": 48
+  }
+ },
+ "sp_s3|D_ward": {
+  "100": {
+   "verdict": "pass",
+   "bias": 0.0857005188338937,
+   "two_se": 0.09586686186625126,
+   "slope": 0.8812070845760813,
+   "contradictions": 0,
+   "pairs": 16
+  },
+  "150": {
+   "verdict": "pass",
+   "bias": -0.011209722546296451,
+   "two_se": 0.11000793414057757,
+   "slope": 0.9460807550045227,
+   "contradictions": 0,
+   "pairs": 16
+  },
+  "200": {
+   "verdict": "pass",
+   "bias": 0.0031566264888764576,
+   "two_se": 0.06104676061967528,
+   "slope": 0.9550796227879234,
+   "contradictions": 0,
+   "pairs": 16
+  }
+ },
+ "om_s4|B_frozen": {
+  "100": {
+   "verdict": "pass",
+   "bias": 0.05866051091901335,
+   "two_se": 0.10741996163790127,
+   "slope": 0.9824391244683116,
+   "contradictions": 0,
+   "pairs": 50
+  },
+  "150": {
+   "verdict": "pass",
+   "bias": 0.020506920112808268,
+   "two_se": 0.06937347086431764,
+   "slope": 1.00396712562744,
+   "contradictions": 0,
+   "pairs": 50
+  },
+  "200": {
+   "verdict": "pass",
+   "bias": -0.0069125312546428706,
+   "two_se": 0.034692640635719085,
+   "slope": 0.9879631543667223,
+   "contradictions": 0,
+   "pairs": 50
+  }
+ },
+ "om_s4|C_trade": {
+  "100": {
+   "verdict": "pass",
+   "bias": -0.04546093310111434,
+   "two_se": 0.09880205474315112,
+   "slope": 0.8508879939474491,
+   "contradictions": 0,
+   "pairs": 48
+  },
+  "150": {
+   "verdict": "pass",
+   "bias": -0.0063128691486199805,
+   "two_se": 0.0640197922131306,
+   "slope": 0.9596067475842286,
+   "contradictions": 0,
+   "pairs": 48
+  },
+  "200": {
+   "verdict": "pass",
+   "bias": -0.032182937110936005,
+   "two_se": 0.041509781895898476,
+   "slope": 0.9817051388064364,
+   "contradictions": 0,
+   "pairs": 48
+  }
+ },
+ "om_s4|C_trade_early": {
+  "100": {
+   "verdict": "pass",
+   "bias": -0.021149086438347453,
+   "two_se": 0.09759717774812891,
+   "slope": 0.88755150513928,
+   "contradictions": 0,
+   "pairs": 48
+  },
+  "150": {
+   "verdict": "pass",
+   "bias": 0.034696678852638226,
+   "two_se": 0.06678308315175381,
+   "slope": 0.9207827157042463,
+   "contradictions": 0,
+   "pairs": 48
+  },
+  "200": {
+   "verdict": "pass",
+   "bias": 0.0014862344131741877,
+   "two_se": 0.0329070448039719,
+   "slope": 0.992431188170145,
+   "contradictions": 0,
+   "pairs": 48
+  }
+ },
+ "om_s4|G_trade_c": {
+  "100": {
+   "verdict": "pass",
+   "bias": -0.04043842148793859,
+   "two_se": 0.08255429670936724,
+   "slope": 0.935974175242388,
+   "contradictions": 0,
+   "pairs": 72
+  },
+  "150": {
+   "verdict": "pass",
+   "bias": 0.007738274880406723,
+   "two_se": 0.04022866698059976,
+   "slope": 1.0181236931769717,
+   "contradictions": 0,
+   "pairs": 72
+  },
+  "200": {
+   "verdict": "pass",
+   "bias": 0.0030028594166205185,
+   "two_se": 0.02471839552064791,
+   "slope": 1.0221618110089332,
+   "contradictions": 0,
+   "pairs": 72
+  }
+ },
+ "om_s4|I_ward_c": {
+  "100": {
+   "verdict": "pass",
+   "bias": -0.026257948227635608,
+   "two_se": 0.1166917919446783,
+   "slope": 1.0583413132517294,
+   "contradictions": 0,
+   "pairs": 16
+  },
+  "150": {
+   "verdict": "pass",
+   "bias": -0.07558865846146617,
+   "two_se": 0.06867467624472726,
+   "slope": 0.9636386907579425,
+   "contradictions": 0,
+   "pairs": 16
+  },
+  "200": {
+   "verdict": "pass",
+   "bias": 0.03405174996841908,
+   "two_se": 0.04326879725753453,
+   "slope": 0.9335552241489206,
+   "contradictions": 0,
+   "pairs": 16
+  }
+ },
+ "sp_s4|C_trade": {
+  "100": {
+   "verdict": "pass",
+   "bias": -0.017194899889077506,
+   "two_se": 0.08503724722687431,
+   "slope": 1.003256616572409,
+   "contradictions": 0,
+   "pairs": 48
+  },
+  "150": {
+   "verdict": "pass",
+   "bias": -0.027442648065178335,
+   "two_se": 0.04669387221013511,
+   "slope": 0.9694276808958605,
+   "contradictions": 0,
+   "pairs": 48
+  },
+  "200": {
+   "verdict": "pass",
+   "bias": -0.028037241610163518,
+   "two_se": 0.025866813651758424,
+   "slope": 0.9914221503430768,
+   "contradictions": 0,
+   "pairs": 48
+  }
+ },
+ "sp_s4|H_zone_c": {
+  "100": {
+   "verdict": "pass",
+   "bias": -0.0746808949295802,
+   "two_se": 0.05935771240500525,
+   "slope": 0.9870883847361238,
+   "contradictions": 0,
+   "pairs": 108
+  },
+  "150": {
+   "verdict": "pass",
+   "bias": -0.007536643957821349,
+   "two_se": 0.031520143891300915,
+   "slope": 0.982925366226861,
+   "contradictions": 0,
+   "pairs": 108
+  },
+  "200": {
+   "verdict": "pass",
+   "bias": -0.016055191678598684,
+   "two_se": 0.019093756413845916,
+   "slope": 0.9799896864940558,
+   "contradictions": 0,
+   "pairs": 108
+  }
+ },
+ "sp_s4|I_ward_c": {
+  "100": {
+   "verdict": "pass",
+   "bias": -0.08865435308428866,
+   "two_se": 0.1877978592225222,
+   "slope": 0.9406488149488528,
+   "contradictions": 0,
+   "pairs": 16
+  },
+  "150": {
+   "verdict": "pass",
+   "bias": -0.002984267455391966,
+   "two_se": 0.0795140385111045,
+   "slope": 0.932705958616801,
+   "contradictions": 0,
+   "pairs": 16
+  },
+  "200": {
+   "verdict": "pass",
+   "bias": 0.030831920644654922,
+   "two_se": 0.04099478169835955,
+   "slope": 0.9741702668895219,
+   "contradictions": 0,
+   "pairs": 16
+  }
+ },
+ "om_s5|A_wave": {
+  "100": {
+   "verdict": "pass",
+   "bias": 0.022328508334569744,
+   "two_se": 0.10391956488086906,
+   "slope": 0.9192593648535808,
+   "contradictions": 0,
+   "pairs": 48
+  },
+  "150": {
+   "verdict": "pass",
+   "bias": -0.008486451769133306,
+   "two_se": 0.047369311812362445,
+   "slope": 1.0112609084275899,
+   "contradictions": 0,
+   "pairs": 48
+  },
+  "200": {
+   "verdict": "pass",
+   "bias": 0.030760012717894494,
+   "two_se": 0.03285763032125518,
+   "slope": 0.979903100832074,
+   "contradictions": 0,
+   "pairs": 48
+  }
+ },
+ "om_s5|A_wave_early": {
+  "100": {
+   "verdict": "pass",
+   "bias": -0.12703118561941734,
+   "two_se": 0.08702061909558957,
+   "slope": 0.9398044899530664,
+   "contradictions": 0,
+   "pairs": 48
+  },
+  "150": {
+   "verdict": "pass",
+   "bias": -0.11669523613734008,
+   "two_se": 0.06401925282031702,
+   "slope": 0.9136288317356316,
+   "contradictions": 0,
+   "pairs": 48
+  },
+  "200": {
+   "verdict": "pass",
+   "bias": -0.07349778428417898,
+   "two_se": 0.043472677251124504,
+   "slope": 0.9431496672980517,
+   "contradictions": 0,
+   "pairs": 48
+  }
+ },
+ "om_s5|C_trade": {
+  "100": {
+   "verdict": "pass",
+   "bias": 0.013240892239136617,
+   "two_se": 0.086869669644287,
+   "slope": 0.9555861600042272,
+   "contradictions": 0,
+   "pairs": 48
+  },
+  "150": {
+   "verdict": "pass",
+   "bias": 0.031027783147503596,
+   "two_se": 0.057560900449566535,
+   "slope": 1.036387703083519,
+   "contradictions": 0,
+   "pairs": 48
+  },
+  "200": {
+   "verdict": "pass",
+   "bias": 0.050533098587600835,
+   "two_se": 0.030996771645322427,
+   "slope": 1.011357079573655,
+   "contradictions": 0,
+   "pairs": 48
+  }
+ },
+ "om_s5|C_trade_early": {
+  "100": {
+   "verdict": "pass",
+   "bias": 0.03799790027977411,
+   "two_se": 0.13343757179689014,
+   "slope": 0.846539689732817,
+   "contradictions": 0,
+   "pairs": 48
+  },
+  "150": {
+   "verdict": "pass",
+   "bias": -0.02802326815935538,
+   "two_se": 0.06671965444073863,
+   "slope": 0.9666945288237428,
+   "contradictions": 0,
+   "pairs": 48
+  },
+  "200": {
+   "verdict": "pass",
+   "bias": -0.021895389016944582,
+   "two_se": 0.03600539718902519,
+   "slope": 0.9838645510426676,
+   "contradictions": 0,
+   "pairs": 48
+  }
+ },
+ "om_s5|E_recall": {
+  "100": {
+   "verdict": "fail",
+   "bias": -0.21862439303788253,
+   "two_se": 0.11051015474736833,
+   "slope": 0.8798809474264422,
+   "contradictions": 0,
+   "pairs": 24
+  },
+  "150": {
+   "verdict": "pass",
+   "bias": 0.0030468654827226446,
+   "two_se": 0.08094660325985348,
+   "slope": 0.9123887123314843,
+   "contradictions": 0,
+   "pairs": 24
+  },
+  "200": {
+   "verdict": "pass",
+   "bias": -0.003633133255989421,
+   "two_se": 0.05260561293320486,
+   "slope": 0.9490242375024869,
+   "contradictions": 0,
+   "pairs": 24
+  }
+ },
+ "om_s5|G_trade_c": {
+  "100": {
+   "verdict": "pass",
+   "bias": -0.05675257424115813,
+   "two_se": 0.05803643627221742,
+   "slope": 0.9336674935529796,
+   "contradictions": 0,
+   "pairs": 72
+  },
+  "150": {
+   "verdict": "pass",
+   "bias": 0.005547770405556263,
+   "two_se": 0.037559097691824285,
+   "slope": 1.009945024974498,
+   "contradictions": 0,
+   "pairs": 72
+  },
+  "200": {
+   "verdict": "pass",
+   "bias": 0.010230142765786638,
+   "two_se": 0.022392541852867043,
+   "slope": 1.0044097795729414,
+   "contradictions": 0,
+   "pairs": 72
+  }
+ },
+ "sp_s5|A_wave_early": {
+  "100": {
+   "verdict": "pass",
+   "bias": 0.09574281696467966,
+   "two_se": 0.09670384254617793,
+   "slope": 1.0396190111088586,
+   "contradictions": 0,
+   "pairs": 48
+  },
+  "150": {
+   "verdict": "pass",
+   "bias": 0.04247787052059263,
+   "two_se": 0.04460850935938842,
+   "slope": 1.0073417361677501,
+   "contradictions": 0,
+   "pairs": 48
+  },
+  "200": {
+   "verdict": "pass",
+   "bias": 0.003808476859024261,
+   "two_se": 0.03498088430743498,
+   "slope": 1.0473446997594325,
+   "contradictions": 0,
+   "pairs": 48
+  }
+ },
+ "sp_s5|B_frozen": {
+  "100": {
+   "verdict": "pass",
+   "bias": 0.05717092519789734,
+   "two_se": 0.06361369429180981,
+   "slope": 0.9105345528943576,
+   "contradictions": 0,
+   "pairs": 51
+  },
+  "150": {
+   "verdict": "pass",
+   "bias": 0.013449781975335555,
+   "two_se": 0.037125986329669874,
+   "slope": 1.0236751099785975,
+   "contradictions": 0,
+   "pairs": 51
+  },
+  "200": {
+   "verdict": "pass",
+   "bias": -0.01621052982500469,
+   "two_se": 0.03436967099957359,
+   "slope": 0.9773028030238344,
+   "contradictions": 0,
+   "pairs": 51
+  }
+ },
+ "sp_s5|C_trade": {
+  "100": {
+   "verdict": "pass",
+   "bias": -0.12034577965850927,
+   "two_se": 0.06590801594657551,
+   "slope": 1.0265400269762406,
+   "contradictions": 0,
+   "pairs": 48
+  },
+  "150": {
+   "verdict": "pass",
+   "bias": -0.016277527642195838,
+   "two_se": 0.05024869569963455,
+   "slope": 0.9970340943136039,
+   "contradictions": 0,
+   "pairs": 48
+  },
+  "200": {
+   "verdict": "pass",
+   "bias": 0.041979117808971435,
+   "two_se": 0.030635839837629096,
+   "slope": 0.9639970544121065,
+   "contradictions": 0,
+   "pairs": 48
+  }
+ },
+ "sp_s5|C_trade_early": {
+  "100": {
+   "verdict": "fail",
+   "bias": -0.1630197745533394,
+   "two_se": 0.06420792902696629,
+   "slope": 1.0087892548097792,
+   "contradictions": 0,
+   "pairs": 48
+  },
+  "150": {
+   "verdict": "pass",
+   "bias": -0.10349883477519134,
+   "two_se": 0.07060715756239745,
+   "slope": 1.0039138836954125,
+   "contradictions": 0,
+   "pairs": 48
+  },
+  "200": {
+   "verdict": "pass",
+   "bias": -0.014615882598607898,
+   "two_se": 0.033987985323039906,
+   "slope": 0.9995560975565585,
+   "contradictions": 0,
+   "pairs": 48
+  }
+ },
+ "sp_s5|G_trade_c": {
+  "100": {
+   "verdict": "pass",
+   "bias": 0.04016181574348822,
+   "two_se": 0.07093251473060477,
+   "slope": 0.8480697627325464,
+   "contradictions": 0,
+   "pairs": 72
+  },
+  "150": {
+   "verdict": "pass",
+   "bias": 0.03553292340279502,
+   "two_se": 0.036476515887272486,
+   "slope": 0.9239493116459894,
+   "contradictions": 0,
+   "pairs": 72
+  },
+  "200": {
+   "verdict": "pass",
+   "bias": 0.038541950206905,
+   "two_se": 0.019595374270207373,
+   "slope": 0.9717605993886229,
+   "contradictions": 0,
+   "pairs": 72
+  }
+ },
+ "sp_s5|H_zone_c": {
+  "100": {
+   "verdict": "pass",
+   "bias": -0.009349593873919737,
+   "two_se": 0.04491302724380672,
+   "slope": 0.9102267148195556,
+   "contradictions": 0,
+   "pairs": 108
+  },
+  "150": {
+   "verdict": "pass",
+   "bias": 0.045460974089323744,
+   "two_se": 0.02717293547741942,
+   "slope": 0.9396484887375852,
+   "contradictions": 0,
+   "pairs": 108
+  },
+  "200": {
+   "verdict": "pass",
+   "bias": 0.03164107805306772,
+   "two_se": 0.015837937218080328,
+   "slope": 0.979182839258661,
+   "contradictions": 0,
+   "pairs": 108
+  }
+ }
+}

@@ -541,6 +541,11 @@ pre-registered headline is outcome 2: the package pays at a competence cost (P1 
 −0.44 ± 0.28). See [m5b_initial_report.md](m5b_initial_report.md). The cost estimates of the remaining stages there
 use the measured evaluation rates (×1.09 the R10-based figures above).
 
+**Status (2026-10-19).** The user approved the strategic battery and the limitation cells on 2026-10-18, with no
+reduction named. The full design ran, with the registered 150-turn re-runs of the 51 failed (final, family) pairs:
+16.4 h in all. See [m5c_strategic_report.md](m5c_strategic_report.md). Decisions 1 (the battery) and 4 below are
+settled. The core attackers (2) and the optional ablation (3) remain open.
+
 **Decisions for the review after the authorized stage:**
 
 | # | decision | options | recommendation |

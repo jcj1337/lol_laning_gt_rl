@@ -91,6 +91,40 @@ def battery_coverage(tag: str, jobs: List[dict], root: Optional[str] = None) -> 
     return out
 
 
+def validate_at(jobs: List[dict], fam: str, h: int) -> dict:
+    """M4.5c's validation pass rule with h in place of 50: the h-turn primary statistic against its 300-turn value on
+    the validation units. An unregistered diagnostic of the 150-turn re-run's horizon (the 300-turn records hold
+    every checkpoint up to 300)."""
+    import math
+    B = _B()
+    X = B.primary_statistic(fam)
+    pairs = []
+    for j in jobs:
+        if j["family"] != fam or j["protocol"] != "policy" or j["horizon"] < B.VALIDATION_H:
+            continue
+        for cand in j["GQ"]:
+            if cand == "policy":
+                continue
+            us = B.units([j], fam, "policy", cand, X)
+            if us and h in us[0][1]:
+                pairs.append((j["index"], cand, us[0][1][h], us[0][1][B.VALIDATION_H]))
+    if len(pairs) < 3:
+        return {"verdict": "insufficient", "pairs": len(pairs), "h": h}
+    a = np.array([p[2].mean() for p in pairs])
+    b = np.array([p[3].mean() for p in pairs])
+    se = float((a - b).std(ddof=1) / math.sqrt(len(a)))
+    slope = float(np.polyfit(a, b, 1)[0]) if np.ptp(a) > 0 else float("nan")
+
+    def sig(x):
+        s = x.std(ddof=1) / math.sqrt(len(x)) if len(x) > 1 else np.inf
+        return 0 if abs(x.mean()) <= 2 * s else int(np.sign(x.mean()))
+    contra = [(i, c) for i, c, x, y in pairs if sig(x) and sig(y) and sig(x) != sig(y)]
+    bias = float((a - b).mean())
+    ok = abs(bias) <= max(0.15, 2 * se) and np.isfinite(slope) and 0.8 <= slope <= 1.25 and not contra
+    return {"verdict": "pass" if ok else "fail", "h": h, "bias": bias, "bias_se": se, "slope": slope,
+            "contradictions": len(contra), "pairs": len(pairs)}
+
+
 def family_gap(jobs: List[dict], fam: str, protocol: str = REPLICATION_PROTOCOL) -> dict:
     """The replication statistic of one battery family in one seed (module docstring), with its validation."""
     B = _B()
@@ -105,7 +139,14 @@ def family_gap(jobs: List[dict], fam: str, protocol: str = REPLICATION_PROTOCOL)
         a = B.aggregate(B.units(tj, fam, protocol, c, X), h)
         if a is not None:
             by[c] = {"mean": a["mean"], "ci": a["ci"], "n_states": a["n"]}
+    Y = "G" if X == "Q" else "Q"                          # the other statistic at 50 turns, reported beside it
+    other = {}
+    for c in B.candidates(fam):
+        a = B.aggregate(B.units(fj, fam, protocol, c, Y), B.DEFAULT_H)
+        if a is not None:
+            other[c] = a["mean"]
     v = val.get("verdict", "")
+    val150 = validate_at(fj, fam, B.EXTENDED_H) if v.startswith("fail") else None
     if v.startswith("fail") and not extended:
         status = "pending (horizon validation failed; the 150-turn re-run is not available)"
     elif not by:
@@ -115,7 +156,10 @@ def family_gap(jobs: List[dict], fam: str, protocol: str = REPLICATION_PROTOCOL)
     best = max(by, key=lambda c: by[c]["mean"]) if by else None
     return {"statistic": f"{X}{h}", "protocol": protocol, "extended": extended, "validation": val,
             "validation_flag": "unvalidated (insufficient validation pairs)" if v == "insufficient" else v,
-            "by_candidate": by, "best": best, "gap": by[best]["mean"] if best else float("nan"), "status": status}
+            "by_candidate": by, "best": best, "gap": by[best]["mean"] if best else float("nan"), "status": status,
+            "validation_150_diagnostic": val150,
+            "other_statistic": f"{Y}{B.DEFAULT_H}", "other_by_candidate": other,
+            "other_gap": max(other.values()) if other else float("nan")}
 
 
 def battery_seed(tag: str, root: Optional[str] = None) -> dict:
@@ -327,20 +371,24 @@ def replication_tables(seeds: Sequence[int] = C.SEEDS, broot: Optional[str] = No
     for a in C.ARMS:
         arm = {}
         for verdict, comps in VERDICTS.items():
-            gaps, status = {}, {}
+            gaps, other, status = {}, {}, {}
             for s in seeds:
-                vals, st = [], []
+                vals, ovals, st = [], [], []
                 for kind, name in comps:
                     rec = (seeds_data[(a, s)]["battery"]["families"][name] if kind == "battery"
                            else seeds_data[(a, s)]["weak"])
                     st.append(f"{name}: {rec.get('status')}")
                     if rec.get("status") == "ok":
                         vals.append(rec["gap"])
+                        ovals.append(rec.get("other_gap", rec["gap"]))
                 status[str(s)] = st
                 if len(vals) == len(comps):
                     gaps[s] = float(max(vals))
+                    other[s] = float(max(ovals))
             rep = AN.replication(gaps, expected=len(seeds))
             arm[verdict] = {"per_seed_gap": {str(k): v for k, v in gaps.items()}, "replication": rep,
+                            "per_seed_other_gap": {str(k): v for k, v in other.items()},
+                            "other_rule_reading": AN.replication(other, expected=len(seeds))["verdict"],
                             "component_status": status, "components": [n for _, n in comps]}
         out[a] = arm
     detail = {f"{a}_s{s}": {"battery": {f: {k: v for k, v in r.items() if k != "validation"}
@@ -349,6 +397,31 @@ def replication_tables(seeds: Sequence[int] = C.SEEDS, broot: Optional[str] = No
                             "weak": d["weak"]}
               for (a, s), d in seeds_data.items()}
     return {"replication": out, "detail": detail}
+
+
+def family_summary(detail: Dict[str, dict], seeds: Sequence[int] = C.SEEDS) -> dict:
+    """Per arm and battery family, protocol "policy": every alternative's margin over the policy pooled over the seeds
+    (seed mean, t interval), the best alternative by that mean, how many seeds have the family's value (not pending),
+    the statistics the seeds used (Q50 / G50, or Q150 / G150 after a re-run), and the validation counts."""
+    B = _B()
+    out: Dict[str, dict] = {}
+    for a in C.ARMS:
+        for fam in B.FAMILIES:
+            recs = {s: detail[f"{a}_s{s}"]["battery"].get(fam, {}) for s in seeds if f"{a}_s{s}" in detail}
+            ok = {s: r for s, r in recs.items() if r.get("status") == "ok"}
+            cands: Dict[str, Dict[int, float]] = defaultdict(dict)
+            for s, r in ok.items():
+                for c, v in (r.get("by_candidate") or {}).items():
+                    cands[c][s] = v["mean"]
+            stats = {c: {**AN.interval(v), "n_seeds": len(v)} for c, v in cands.items()}
+            best = max(stats, key=lambda c: stats[c]["mean"]) if stats else None
+            out[f"{a}|{fam}"] = {"arm": a, "family": fam, "n_seeds": len(ok), "best": best,
+                                 "best_stat": stats.get(best) if best else None, "candidates": stats,
+                                 "statistics": sorted({r.get("statistic") for r in ok.values()}),
+                                 "validation_failed": sum(1 for r in recs.values()
+                                                          if str(r.get("validation", "")).startswith("fail")),
+                                 "extended": sum(1 for r in ok.values() if r.get("extended"))}
+    return out
 
 
 def per_arm_cells(seeds: Sequence[int] = C.SEEDS, croot: Optional[str] = None) -> dict:
@@ -383,10 +456,28 @@ def per_arm_cells(seeds: Sequence[int] = C.SEEDS, croot: Optional[str] = None) -
     return out
 
 
+def battery_tables(seeds: Sequence[int] = C.SEEDS, broot: Optional[str] = None, out: str = C.OUT) -> Dict[str, str]:
+    """M4.5c's battery report per arm (`m45c.battery.report`: every family, protocol and candidate, pooled over the
+    six finals with each final's value), written to results/m5/battery/battery_<arm>.md, once all six finals of the arm
+    have records."""
+    B = _B()
+    root = broot or battery_root()
+    made = {}
+    for a in C.ARMS:
+        tags = [f"{a}_s{s}" for s in seeds]
+        if all(os.path.isdir(os.path.join(root, t, "partial")) for t in tags):
+            B.report(tags, root=root, name=f"battery_{a}", out=os.path.join(out, "battery"))
+            made[a] = os.path.join(out, "battery", f"battery_{a}.md").replace("\\", "/")
+    return made
+
+
 def assemble(seeds: Sequence[int] = C.SEEDS, broot: Optional[str] = None, croot: Optional[str] = None,
              out: str = C.OUT, save: bool = True) -> dict:
     """S8 in full from whatever battery and cell records exist (status explicit everywhere)."""
-    res = {"replication": replication_tables(seeds, broot, croot), "per_arm_cells": per_arm_cells(seeds, croot),
+    rep = replication_tables(seeds, broot, croot)
+    res = {"replication": rep, "family_summary": family_summary(rep["detail"], seeds),
+           "per_arm_cells": per_arm_cells(seeds, croot),
+           "battery_tables": battery_tables(seeds, broot, out) if save else {},
            "cross_arm": {f: cross_arm(f, seeds, croot) for f in CROSS},
            "rule": {"margin": AN.REPLICATION_MARGIN, "min_seeds": AN.REPLICATION_MIN_SEEDS,
                     "protocol": REPLICATION_PROTOCOL, "statistic": "Q50 natural / G50 constructed (Q150 / G150 after "

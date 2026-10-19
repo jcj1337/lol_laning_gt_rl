@@ -131,8 +131,11 @@ Both continue the same baseline policy for 32.768M transitions in six matched pa
   - It is materially weaker than pure self-play against competent opponents (−0.63 ± 0.35) and head to head
     (−0.44 ± 0.28), in every seed.
   - Pure self-play kept improving over the common start; the package did not.
-- **Still awaiting review and approval:** the strategic battery, the M4 limitation cells and the dedicated attackers.
-  M5e (closeout) and M6, the research presentation, follow.
+- **Strategic battery and limitation cells (M5c, 2026-10-19; [report](docs/m5/m5c_strategic_report.md)).**
+  - Four of five M4.5c strategic verdicts replicate in both arms. Concession under threat does not.
+  - In every M4 limitation family the modelling finals do worse than the pure self-play finals from the same states.
+    The competence cost is general, not one missing skill.
+- **Still awaiting approval:** the dedicated attackers. M5e (closeout) and M6, the research presentation, follow.
 
 ## How we study it
 
@@ -189,8 +192,8 @@ top). In short:
 | M5a. Campaign design, pre-registration and readiness | two arms (the opponent-modelling package against continued pure self-play), six matched pairs from the baseline policy, 32.768M each; drivers for both arms and every instrument; bounded readiness checks | **complete**: readiness 11/11 ([report](docs/m5/m5a_readiness_report.md), [design](docs/m5/m5_design.md), [pre-registration](docs/m5/m5_preregistration.md)) |
 | M5a corrections and readiness | the review's eight findings: headline, multiplicity, completeness, S8 analysis, attacker scope, runtime health monitoring and evaluation gate, the amendment chain | **complete** (2026-10-17): [amendment 1](docs/m5/m5_amendment_1.md) before training; full suite 1,534 passed; monitored smoke bit-identical |
 | M5b training and the initial M5d evaluations | 12 runs × 32.768M; health; learning curves and history; opponent families, competence, head to head, midpoints, long games | **complete** (2026-10-18): healthy, 10.9 h; **outcome 2, pays at a competence cost** (P1 +9.26 ± 0.30; P2a −0.63 ± 0.35, P2b −0.44 ± 0.28) ([report](docs/m5/m5b_initial_report.md), [tables](results/m5/report.md)) |
-| M5c strategic battery and limitation cells | strategic replication per arm and the M4 limitations re-measured | **awaiting review and approval** (about 11.8 h at the measured rates) |
-| M5d core attackers | 12 quarter-budget attackers (6 against each arm's finals) | **proposed, separately gated** (about 7.1 h) |
+| M5c strategic battery and limitation cells | strategic replication per arm and the M4 limitations re-measured | **complete** (2026-10-19, 16.4 h): four of five verdicts replicate in both arms, concession under threat does not; the modelling finals are worse in every limitation family ([report](docs/m5/m5c_strategic_report.md)) |
+| M5d core attackers | 12 quarter-budget attackers (6 against each arm's finals) | **proposed, separately gated** (about 7.1 h); the recommended next step |
 | M5d optional adaptation ablation | 6 attackers against the om finals with their belief tabled, and the live/table cross-evaluation | **optional follow-up** (about +4.2 h), exploratory |
 | M5e closeout | the final report, reproducibility materials | future |
 | M6. Research presentation and reproducibility | consolidated report, reproducible commands, figures, representative trajectories, visual demo, README | proposed |
