@@ -162,8 +162,21 @@ def monitoring_section() -> str:
     return "\n".join(lines)
 
 
-def analysis_section() -> str:
-    a = C.load("analysis_main")
+def _endpoint_row(k: str, e: dict) -> list:
+    ps = " ".join(f"{float(v):+.2f}" for v in e.get("per_seed", {}).values())
+    var = e.get("variance") or {}
+    return [k, e["role"], e["status"], _ci(e) if e.get("n_seeds") else "n/a", e["class"], ps,
+            f"{var.get('tau', float('nan')):.2f} / {var.get('mean_game_se', float('nan')):.2f}" if var else "n/a",
+            e["description"]]
+
+
+ENDPOINT_HEAD = ["endpoint", "role", "status", "mean ± 95% (seeds)", "interval class", "per seed", "tau / mean game SE",
+                 "definition"]
+
+
+def analysis_section(a: Optional[dict] = None) -> str:
+    from .analysis import ATTACK_ENDPOINTS
+    a = a or C.load("analysis_main")
     if not a:
         return "## M5d analysis\n\nNot run.\n"
     eps = a["endpoints"]
@@ -173,15 +186,8 @@ def analysis_section() -> str:
         lines += [f"**Headline: outcome {h['outcome']}, {h['name']}** — {h['statement']}. Scope: {h['scope']}.", ""]
     else:
         lines += [f"**Headline: {h['name']}** ({h.get('status')}).", ""]
-    rows = []
-    for k, e in eps.items():
-        ps = " ".join(f"{float(v):+.2f}" for v in e.get("per_seed", {}).values())
-        var = e.get("variance") or {}
-        rows.append([k, e["role"], e["status"], _ci(e) if e.get("n_seeds") else "n/a", e["class"], ps,
-                     f"{var.get('tau', float('nan')):.2f} / {var.get('mean_game_se', float('nan')):.2f}"
-                     if var else "n/a", e["description"]])
-    lines += [_t(["endpoint", "role", "status", "mean ± 95% (seeds)", "interval class", "per seed", "tau / mean game SE",
-                  "definition"], rows), ""]
+    rows = [_endpoint_row(k, e) for k, e in eps.items() if k == "S6" or k not in ATTACK_ENDPOINTS]
+    lines += [_t(ENDPOINT_HEAD, rows), ""]
     sec = a["secondary"]
     hs = sec["holm"]
     lines += [f"Secondary family: {len(sec['family'])} hypotheses, Holm at familywise {sec['alpha']}; "
@@ -194,6 +200,75 @@ def analysis_section() -> str:
     lines += [_t(["endpoint", "status", "unadjusted interval class", "claim after Holm", "hypotheses"], rows), ""]
     lines += [panel_section(a.get("panel") or {}), versus_start_section(a.get("versus_start") or {}),
               switch_section(a.get("switch_windows") or {}), belief_section(a.get("belief") or {})]
+    return "\n".join(lines)
+
+
+def attack_section(a: Optional[dict] = None, chk: Optional[dict] = None) -> str:
+    """The M5d attackers: training health, S6 with the readouts beside it, transfer, the lane-exit panel and the om
+    target's belief about its attacker."""
+    from .analysis import ATTACK_ENDPOINTS
+    a = a or C.load("analysis_main") or {}
+    chk = chk if chk is not None else C.load("attack_check_main")
+    lines = ["## M5d attackers (12 core; exploitability lower bounds)", ""]
+    if chk:
+        st = chk.get("stability") or {}
+        rows = []
+        for n, r in (chk.get("runs") or {}).items():
+            sc = st.get(n) or {}
+            rows.append([n, r.get("status"), _f(r.get("agent_transitions")), _f((r.get("wall_s") or 0) / 3600, 2),
+                         _f(r.get("transitions_per_s")), f"{sc.get('entropy_min', float('nan')):.2f}",
+                         f"{sc.get('approx_kl_max_10_update_mean', float('nan')):.4f}",
+                         f"{sc.get('grad_norm_max', float('nan')):.1f}", ", ".join(sc.get("alarms") or []) or "none"])
+        fc = chk.get("failed_checks") or []
+        lines += [f"The attacker check {'passed' if chk.get('all_passed') else 'did NOT pass'}, with "
+                  f"{sum(1 for v in chk.get('checks', {}).values() if v)} of {len(chk.get('checks', {}))} checks "
+                  "passing." + (f" Failed checks are {', '.join(fc)}." if fc else ""), "",
+                  _t(["attacker", "status", "transitions", "wall h", "transitions/s", "entropy min",
+                      "max 10-update KL", "max grad norm", "alarms"], rows), ""]
+    else:
+        lines += ["No attacker check record exists.", ""]
+    eps = a.get("endpoints") or {}
+    rows = [_endpoint_row(k, eps[k]) for k in ATTACK_ENDPOINTS if k in eps and k != "X_table"]
+    if rows:
+        lines += ["The focal of every attacker cell is the attacker, so a positive lead means the attacker is ahead. "
+                  "S6 is the registered contrast, tested in the Holm family above. Every other row is descriptive or "
+                  "exploratory.", "", _t(ENDPOINT_HEAD, rows), ""]
+    pan = a.get("attack_panel") or {}
+    if any(d.get("quantities") for d in pan.values()):
+        qs = [q for q in PANEL_ORDER if any(q in d["quantities"] for d in pan.values())]
+        lines += ["### The attackers' lane exit against their own targets (exploratory)", "",
+                  "Each value is the attacker's side at turn 94, a seed mean with its 95% interval.", "", _t(["quantity", *[f"{g} ({d['status']})" for g, d in pan.items()]],
+                         [[q, *[_ci(d["quantities"].get(q)) for d in pan.values()]] for q in qs]), ""]
+    beh = C.load("attack_behaviour")
+    if beh:
+        lines += ["### What the attackers play differently (exploratory)", "",
+                  "Each row is a share of turns with an action component, the attacker minus its starting point. Both "
+                  f"play the same {beh['pairs']} pairs of the attacker's own-target cell. Values are seed means with "
+                  "95% intervals. The table lists components that move by at least 0.01.", ""]
+        for kind, d in beh["difference_attacker_minus_start"].items():
+            rows = []
+            for w, x in d.items():
+                for who, comp in x.items():
+                    for c, st in comp.items():
+                        if abs(st["mean"]) >= 0.01:
+                            rows.append([w, "attacker" if who == "attacker" else "target", c, _ci(st, 3)])
+            lines += [f"**The {kind} attackers.**", "",
+                      _t(["window", "seat", "component", "share difference"], rows) if rows else "none", ""]
+    tr = C.load("traces")
+    if tr:
+        lines += ["### Representative games (viewer recordings, results/m5/traces/)", "", tr.get("rule", ""), "",
+                  _t(["recording", "seed", "A", "B", "focal lead at 114", "cell mean"],
+                     [[n, r["seed"], r["names"][0], r["names"][1], f"{r['selection']['lead_114']:+.2f}",
+                       f"{r['selection']['cell_mean_lead_114']:+.2f}"] for n, r in tr["recordings"].items()]), ""]
+    bel = a.get("attack_belief") or {}
+    if bel:
+        turns = (5, 20, 94)
+        keys = sorted({q.rsplit(" at ", 1)[0] for q in bel})
+        rows = [[k, *[_ci(bel.get(f"{k} at {t}")) for t in turns]] for k in keys
+                if any((bel.get(f"{k} at {t}") or {}).get("mean", 0) > 0.02 for t in turns)]
+        lines += ["### The om target's belief about its attacker (descriptive)", "",
+                  "Belief movement alone does not show that the attacker manipulated the belief.", "",
+                  _t(["quantity", *[f"turn {t}" for t in turns]], rows), ""]
     return "\n".join(lines)
 
 
@@ -320,7 +395,9 @@ def plan_section() -> str:
         turns[k] += r["turns"]
     rows = [[k[0], k[1], k[2], f"{turns[k] / 1e6:.2f}", _f(agg[k] / hb["workers"], 2)] for k in sorted(agg)]
     at = p["attackers"]
-    return "\n".join(["## Evaluation work by horizon and purpose (M5a estimates; the attackers remain proposed)", "",
+    done = "the core attackers have run; the om_table ablation was not run" if C.load("wall_attack_main") else \
+        "the attackers remain proposed"
+    return "\n".join([f"## Evaluation work by horizon and purpose (M5a estimates; {done})", "",
                       _t(["part", "purpose", "horizon", "M turns", "wall h (6 workers)"], rows), "",
                       f"Attackers at the quarter budget: core 12 — training {_f(at['core_12']['training_wall_h'], 1)} h, "
                       f"evaluation {_f(at['core_12']['eval_wall_h'], 1)} h; optional om_table 6 — +"
@@ -360,6 +437,14 @@ def runtime_actual() -> dict:
                 for m in re.finditer(r"^== (\w+) done in (\d+) s", f.read(), re.M):
                     out[f"M5c {m.group(1)}"] = {"wall_h": int(m.group(2)) / 3600,
                                                 "estimate_wall_h": est.get(m.group(1)), "source": f"results/m5/{log}"}
+    wa = C.load("wall_attack_main")
+    if wa:
+        out["M5d core attackers"] = {"wall_h": wa["wall_s"] / 3600, "estimate_wall_h": wa.get("estimate_wall_h"),
+                                     "run_wall_h": wa.get("run_wall_h")}
+    we, ee = C.load("wall_M5d_attack_eval"), ((C.load("plan_future") or {}).get("attackers") or {}).get("core_12")
+    if we and ee:
+        out["M5d attacker evaluation"] = {"wall_h": we["wall_s"] / 3600, "estimate_wall_h": ee["eval_wall_h"],
+                                          "worker_h": we["job_seconds"] / 3600}
     ev = [v["worker_ratio"] for k, v in out.items() if "worker_ratio" in v]
     out["evaluation_rate_ratio"] = float(sum(ev) / len(ev)) if ev else None
     return out
@@ -388,19 +473,21 @@ def runtime_section() -> str:
         bt = (C.load("budget") or {}).get("throughput") or {}
         rr = {a: sum(tr["runs"][f"{a}_s{s}"]["transitions_per_s"] for s in C.SEEDS) / len(C.SEEDS) / bt[f"{a}_bench"]
               for a in C.ARMS if tr.get("runs") and f"{a}_bench" in bt}
+        est = (f"the core attackers' estimate: evaluation {at['core_12']['eval_wall_h'] * ratio:.1f} h (R10-based × "
+               f"{ratio:.2f}), training {at['core_12']['training_wall_h']:.1f} h (R9 rates; the main training ran at "
+               + ", ".join(f"{a} ×{v:.2f}" for a, v in rr.items()) + " of its R9 benchmark rates)")
         lines += [f"Measured evaluation worker time was ×{ratio:.2f} the R10-based estimate (the instruments ran about "
                   f"{(1 - 1 / ratio) * 100:.0f}% slower than the readiness rates); the M5c battery ran faster than its "
-                  "estimate and the cells slower. The stage still to come, the core attackers: evaluation "
-                  f"{at['core_12']['eval_wall_h'] * ratio:.1f} h (R10-based × {ratio:.2f}), training "
-                  f"{at['core_12']['training_wall_h']:.1f} h (R9 rates; the main training ran at "
-                  + ", ".join(f"{a} ×{v:.2f}" for a, v in rr.items()) + " of its R9 benchmark rates).", ""]
+                  "estimate and the cells slower. " + ("Before launch, " + est if "M5d core attackers" in r else
+                                                      "The stage still to come, " + est) + ".", ""]
     return "\n".join(lines)
 
 
 def report() -> str:
     text = "\n".join(["# M5 generated tables", "", "*Generated by `python -m lanegame.experiments.rl.m5 report`.*", "",
                       prereg_section(), training_section(), runtime_section(), monitoring_section(),
-                      analysis_section(), strategic_section(), plan_section(), readiness_section(), budget_section()])
+                      analysis_section(), attack_section(), strategic_section(), plan_section(), readiness_section(),
+                      budget_section()])
     C.write_md("report", text)
     return text
 

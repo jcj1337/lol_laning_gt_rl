@@ -212,7 +212,9 @@ class Progress(threading.Thread):
     """The coordinator's progress log (module docstring)."""
 
     def __init__(self, phase: str, names: Sequence[str], workers: int, budget: int, every: float = PROGRESS_EVERY,
-                 out: str = C.OUT):
+                 out: str = C.OUT, rates: Optional[Dict[str, float]] = None, estimate=None, dir_of=None):
+        """`rates`, `estimate` and `dir_of` (name -> run directory) default to the main training's (the attackers
+        pass their own)."""
         super().__init__(daemon=True)
         self.phase, self.names, self.workers, self.budget, self.every = phase, list(names), workers, budget, every
         self.path_now = os.path.join(out, f"progress_{phase}.json")
@@ -221,14 +223,14 @@ class Progress(threading.Thread):
         self.t0 = time.time()
         b = C.load("budget") or {}
         th = b.get("throughput") or {}
-        self.rates = {"om": th.get("om", 1100.0), "sp": th.get("sp", 2535.0)}
-        self.estimate = (b.get("training") or {}).get("wall_hours_range")
+        self.rates = rates or {"om": th.get("om", 1100.0), "sp": th.get("sp", 2535.0)}
+        self.estimate = estimate if estimate is not None else (b.get("training") or {}).get("wall_hours_range")
+        self.dir_of = dir_of or (lambda n: C.run_dir(n.split("_s")[0], int(n.split("_s")[1]), phase))
 
     def snapshot(self) -> dict:
         runs = {}
         for n in self.names:
-            arm, s = n.split("_s")
-            runs[n] = run_progress(C.run_dir(arm, int(s), self.phase), self.budget)
+            runs[n] = run_progress(self.dir_of(n), self.budget)
         rates = dict(self.rates)
         for arm in C.ARMS:
             obs = [r["tps_overall"] for n, r in runs.items() if n.startswith(arm) and r["state"] == "running"

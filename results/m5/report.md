@@ -43,8 +43,10 @@ Campaign wall time: 10.90 h (6 workers; started 2026-10-17 20:49:45, finished 20
 | M5c battery | 8.73 | 9.33 |  |
 | M5c cells | 2.11 | 1.50 |  |
 | M5c battery_extend | 5.58 | 6.63 |  |
+| M5d core attackers | 5.96 | 6.64 |  |
+| M5d attacker evaluation | 0.52 | 0.46 |  |
 
-Measured evaluation worker time was ×1.09 the R10-based estimate (the instruments ran about 9% slower than the readiness rates); the M5c battery ran faster than its estimate and the cells slower. The stage still to come, the core attackers: evaluation 0.5 h (R10-based × 1.09), training 6.6 h (R9 rates; the main training ran at om ×0.97, sp ×1.03 of its R9 benchmark rates).
+Measured evaluation worker time was ×1.09 the R10-based estimate (the instruments ran about 9% slower than the readiness rates); the M5c battery ran faster than its estimate and the cells slower. Before launch, the core attackers' estimate: evaluation 0.5 h (R10-based × 1.09), training 6.6 h (R9 rates; the main training ran at om ×0.97, sp ×1.03 of its R9 benchmark rates).
 
 ## M5b monitoring (never selects a checkpoint, never changes an endpoint)
 
@@ -126,20 +128,19 @@ Cycling flag (M4.5c's rule: the final losing significantly to an earlier snapsho
 | S5a | secondary | complete | +8.29 ± 0.81 | demonstrated | +8.91 +8.67 +8.43 +8.89 +6.87 +7.98 | 0.75 / 0.21 | midpoint (16.384M) exploitation gain, 1/2 S_in + 1/2 S_out, lead at 114 (as P1) |
 | S5b | secondary | complete | -0.80 ± 0.40 | material loss | -0.80 -0.94 -1.25 -0.34 -1.12 -0.36 | 0.28 / 0.26 | midpoint (16.384M) competence against HISTORICAL competent opponents only (C_hist; not P2a: the cross-arm finals C_cross are not played at the midpoint), lead at 114 |
 | S5_h2h | descriptive | complete | -0.51 ± 0.88 | descriptive (inconclusive) | -0.59 -1.58 -0.81 +0.45 -1.06 +0.52 | 0.55 / 0.63 | midpoint head to head, om@16.384M vs sp@16.384M (descriptive, not a claim) |
-| S6 | secondary | missing | n/a | not available |  | n/a | exploitability om - sp: each core attacker's lead at 114 against its own target |
-| X_table | exploratory | missing | n/a | not available |  | n/a | OPTIONAL adaptation ablation: exploitability of om - of om_table (exploratory; not a test of deliberate deception) |
+| S6 | secondary | complete | +1.81 ± 2.38 | inconclusive | +2.04 -0.13 +1.35 +6.18 +1.00 +0.45 | 2.22 / 0.42 | exploitability om - sp: each core attacker's lead at 114 against its own target |
 
-Secondary family: 15 hypotheses, Holm at familywise 0.05; NOT final (pending: S6: decrease, S6: equivalence, S6: increase).
+Secondary family: 15 hypotheses, Holm at familywise 0.05; final.
 
 | endpoint | status | unadjusted interval class | claim after Holm | hypotheses |
 |---|---|---|---|---|
-| S1 | complete | preserved | preserved (determined: no pending result can change it) | preserved: p 0.0000, interval yes, Holm secured; loss: p 1.0000, interval no, Holm not rejectable |
-| S2 | complete | material loss | material loss (determined: no pending result can change it) | preserved: p 0.9919, interval no, Holm not rejectable; loss: p 0.0008, interval yes, Holm secured |
-| S3 | complete | material loss | material loss (determined: no pending result can change it) | preserved: p 0.9945, interval no, Holm not rejectable; loss: p 0.0014, interval yes, Holm secured |
-| S4 | complete | material loss | material loss (determined: no pending result can change it) | preserved: p 0.9939, interval no, Holm not rejectable; loss: p 0.0009, interval yes, Holm secured |
-| S5a | complete | demonstrated | demonstrated (determined: no pending result can change it) | gain: p 0.0000, interval yes, Holm secured; material gain ruled out: p 1.0000, interval no, Holm not rejectable |
-| S5b | complete | material loss | material loss (determined: no pending result can change it) | preserved: p 0.9917, interval no, Holm not rejectable; loss: p 0.0018, interval yes, Holm secured |
-| S6 | missing | n/a | not available |  |
+| S1 | complete | preserved | preserved | preserved: p 0.0000, interval yes, Holm rejected; loss: p 1.0000, interval no, Holm not rejected |
+| S2 | complete | material loss | material loss | preserved: p 0.9919, interval no, Holm not rejected; loss: p 0.0008, interval yes, Holm rejected |
+| S3 | complete | material loss | material loss | preserved: p 0.9945, interval no, Holm not rejected; loss: p 0.0014, interval yes, Holm rejected |
+| S4 | complete | material loss | material loss | preserved: p 0.9939, interval no, Holm not rejected; loss: p 0.0009, interval yes, Holm rejected |
+| S5a | complete | demonstrated | demonstrated | gain: p 0.0000, interval yes, Holm rejected; material gain ruled out: p 1.0000, interval no, Holm not rejected |
+| S5b | complete | material loss | material loss | preserved: p 0.9917, interval no, Holm not rejected; loss: p 0.0018, interval yes, Holm rejected |
+| S6 | complete | inconclusive | inconclusive | increase: p 0.0534, interval no, Holm not rejected; decrease: p 0.9466, interval no, Holm not rejected; equivalence: p 0.9244, interval no, Holm not rejected |
 
 ### Lane exit: D0 → E_20 with the non-gold panel (turn 94; focal orientation; seed mean ± 95%)
 
@@ -336,6 +337,181 @@ Secondary family: 15 hypotheses, Holm at familywise 0.05; NOT final (pending: S6
 | M | its:g_safe:20:o | catch-all mass | +0.00 ± 0.00 | +0.00 ± 0.00 | +0.00 ± 0.00 | +1.00 ± 0.00 | +0.28 ± 0.11 |
 | M | its:g_shove:40:o | catch-all mass | +0.00 ± 0.00 | +0.00 ± 0.00 | +0.00 ± 0.00 | +0.00 ± 0.00 | +0.44 ± 0.08 |
 
+## M5d attackers (12 core; exploitability lower bounds)
+
+The attacker check passed, with 180 of 180 checks passing.
+
+| attacker | status | transitions | wall h | transitions/s | entropy min | max 10-update KL | max grad norm | alarms |
+|---|---|---|---|---|---|---|---|---|
+| om_s0 | complete | 8,192,000 | 3.30 | 690 | 1.26 | 0.0072 | 1.4 | none |
+| om_s1 | complete | 8,192,000 | 3.30 | 690 | 1.39 | 0.0070 | 1.5 | none |
+| om_s2 | complete | 8,192,000 | 3.35 | 680 | 1.40 | 0.0072 | 1.7 | none |
+| om_s3 | complete | 8,192,000 | 3.26 | 699 | 1.22 | 0.0070 | 1.7 | none |
+| om_s4 | complete | 8,192,000 | 3.32 | 685 | 1.38 | 0.0071 | 1.5 | none |
+| om_s5 | complete | 8,192,000 | 3.32 | 685 | 1.47 | 0.0071 | 1.4 | none |
+| sp_s0 | complete | 8,192,000 | 2.62 | 869 | 1.49 | 0.0070 | 1.6 | none |
+| sp_s1 | complete | 8,192,000 | 2.61 | 870 | 1.53 | 0.0072 | 1.8 | none |
+| sp_s2 | complete | 8,192,000 | 2.61 | 872 | 1.46 | 0.0068 | 1.8 | none |
+| sp_s3 | complete | 8,192,000 | 2.61 | 872 | 1.47 | 0.0069 | 1.5 | none |
+| sp_s4 | complete | 8,192,000 | 2.58 | 881 | 1.50 | 0.0067 | 1.6 | none |
+| sp_s5 | complete | 8,192,000 | 2.61 | 873 | 1.43 | 0.0069 | 1.5 | none |
+
+The focal of every attacker cell is the attacker, so a positive lead means the attacker is ahead. S6 is the registered contrast, tested in the Holm family above. Every other row is descriptive or exploratory.
+
+| endpoint | role | status | mean ± 95% (seeds) | interval class | per seed | tau / mean game SE | definition |
+|---|---|---|---|---|---|---|---|
+| S6 | secondary | complete | +1.81 ± 2.38 | inconclusive | +2.04 -0.13 +1.35 +6.18 +1.00 +0.45 | 2.22 / 0.42 | exploitability om - sp: each core attacker's lead at 114 against its own target |
+| S6_disc | descriptive | complete | +1.68 ± 2.12 | descriptive (inconclusive) | +2.36 +0.19 +0.77 +5.49 +0.92 +0.34 | 2.00 / 0.25 | exploitability om - sp on the discounted 500-turn lead (the objective's readout), reported beside S6 |
+| X_om | descriptive | complete | +2.96 ± 2.65 | descriptive (positive (L > 0)) | +3.15 +2.17 +1.49 +7.91 +1.98 +1.08 | 2.50 / 0.30 | exploitability lower bound of om:s: its attacker's lead at 114 against it |
+| X_sp | descriptive | complete | +1.15 ± 0.81 | descriptive (positive (L > 0)) | +1.12 +2.30 +0.14 +1.73 +0.98 +0.63 | 0.71 / 0.30 | exploitability lower bound of sp:s: its attacker's lead at 114 against it |
+| X_om_disc | descriptive | complete | +2.70 ± 2.28 | descriptive (positive (L > 0)) | +3.29 +1.83 +1.40 +6.85 +1.76 +1.08 | 2.16 / 0.18 | the om:s attacker's discounted 500-turn lead against om:s |
+| X_sp_disc | descriptive | complete | +1.02 ± 0.41 | descriptive (positive (L > 0)) | +0.92 +1.64 +0.63 +1.37 +0.84 +0.73 | 0.35 / 0.18 | the sp:s attacker's discounted 500-turn lead against sp:s |
+| T_om_other | exploratory | complete | -1.39 ± 0.71 | negative (U < 0) | -1.97 -1.66 -0.34 -2.04 -0.80 -1.53 | 0.60 / 0.32 | transfer: the om:s attacker's lead at 114 against sp:s |
+| T_sp_other | exploratory | complete | -0.04 ± 0.27 | interval includes 0 | -0.11 +0.38 -0.41 -0.03 -0.12 +0.06 | 0.00 / 0.30 | transfer: the sp:s attacker's lead at 114 against om:s |
+| T_om_start | exploratory | complete | -0.13 ± 0.75 | interval includes 0 | +0.93 -0.94 -0.32 -0.50 +0.54 -0.49 | 0.64 / 0.32 | transfer: the om:s attacker's lead at 114 against ext/baseline:s |
+| T_sp_start | exploratory | complete | +0.03 ± 0.76 | interval includes 0 | +0.80 -0.58 -0.92 -0.31 +0.43 +0.75 | 0.65 / 0.32 | transfer: the sp:s attacker's lead at 114 against ext/baseline:s |
+| T_om_other_gain | exploratory | complete | -0.95 ± 0.76 | negative (U < 0) | -1.17 -1.58 +0.17 -1.77 -0.50 -0.86 | 0.59 / 0.42 | the om:s attacker against sp:s minus om:s against sp:s (M5d head to head): what the attack gained against the other arm |
+| T_sp_other_gain | exploratory | complete | -0.48 ± 0.48 | negative (U < 0) | -0.91 +0.30 -0.93 -0.31 -0.42 -0.61 | 0.22 / 0.40 | the sp:s attacker against om:s minus sp:s against om:s (minus the M5d head to head): what the attack gained against the other arm |
+| T_om_start_gain | exploratory | complete | -0.33 ± 0.75 | interval includes 0 | +0.28 -1.02 -0.55 -1.22 +0.02 +0.53 | 0.50 / 0.51 | the om:s attacker against ext/baseline:s minus om:s against it (M5b history) |
+| T_sp_start_gain | exploratory | complete | -0.92 ± 0.64 | negative (U < 0) | -1.11 -1.21 -1.55 -1.32 -0.05 -0.26 | 0.33 / 0.51 | the sp:s attacker against ext/baseline:s minus sp:s against it (M5b history) |
+
+### The attackers' lane exit against their own targets (exploratory)
+
+Each value is the attacker's side at turn 94, a seed mean with its 95% interval.
+
+| quantity | attack:om (complete) | attack:sp (complete) |
+|---|---|---|
+| D0 (earned lead at 94) | +2.30 ± 2.11 | +1.03 ± 0.63 |
+| E_20 (lead at 114) | +2.96 ± 2.65 | +1.15 ± 0.81 |
+| E_20 - D0 | +0.66 ± 0.64 | +0.12 ± 0.27 |
+| level_diff | +0.15 ± 0.19 | +0.09 ± 0.12 |
+| xp_diff | +4.61 ± 5.95 | +3.76 ± 3.11 |
+| hp_diff | +0.03 ± 0.05 | +0.05 ± 0.05 |
+| stock_diff | -1.54 ± 0.98 | -1.13 ± 0.39 |
+| focal away (share) | +0.09 ± 0.03 | +0.08 ± 0.02 |
+| opponent away (share) | +0.12 ± 0.05 | +0.11 ± 0.03 |
+| focal dead (share) | +0.05 ± 0.03 | +0.04 ± 0.01 |
+| opponent dead (share) | +0.09 ± 0.06 | +0.06 ± 0.04 |
+| returns_in focal - opponent | -0.11 ± 0.11 | -0.06 ± 0.07 |
+| since_return focal - opponent | -0.77 ± 0.48 | +0.90 ± 0.67 |
+| unspent focal - opponent | -0.22 ± 0.17 | +0.51 ± 0.54 |
+| invested focal - opponent | +2.52 ± 2.11 | +0.51 ± 0.59 |
+
+### What the attackers play differently (exploratory)
+
+Each row is a share of turns with an action component, the attacker minus its starting point. Both play the same 16 pairs of the attacker's own-target cell. Values are seed means with 95% intervals. The table lists components that move by at least 0.01.
+
+**The om attackers.**
+
+| window | seat | component | share difference |
+|---|---|---|---|
+| lane (0-113) | attacker | hold | +0.056 ± 0.026 |
+| lane (0-113) | attacker | yield | -0.083 ± 0.058 |
+| lane (0-113) | attacker | trade | +0.054 ± 0.060 |
+| lane (0-113) | attacker | safe | -0.032 ± 0.011 |
+| lane (0-113) | attacker | last_hit | +0.060 ± 0.065 |
+| lane (0-113) | attacker | thin | -0.014 ± 0.024 |
+| lane (0-113) | attacker | slow_push | -0.037 ± 0.035 |
+| lane (0-113) | attacker | shove | -0.014 ± 0.054 |
+| lane (0-113) | attacker | pressure | +0.013 ± 0.008 |
+| lane (0-113) | target | absent | +0.015 ± 0.027 |
+| lane (0-113) | target | recall | +0.021 ± 0.018 |
+| lane (0-113) | target | hold | -0.012 ± 0.038 |
+| lane (0-113) | target | yield | -0.016 ± 0.028 |
+| lane (0-113) | target | trade | -0.015 ± 0.022 |
+| lane (0-113) | target | last_hit | -0.017 ± 0.023 |
+| lane (0-113) | target | slow_push | -0.012 ± 0.007 |
+| lane (0-113) | target | shove | -0.011 ± 0.039 |
+| after (114-499) | attacker | hold | +0.026 ± 0.022 |
+| after (114-499) | attacker | yield | -0.050 ± 0.071 |
+| after (114-499) | attacker | trade | +0.092 ± 0.091 |
+| after (114-499) | attacker | safe | -0.071 ± 0.035 |
+| after (114-499) | attacker | last_hit | +0.093 ± 0.099 |
+| after (114-499) | attacker | slow_push | -0.020 ± 0.055 |
+| after (114-499) | attacker | shove | -0.069 ± 0.071 |
+| after (114-499) | target | absent | +0.040 ± 0.053 |
+| after (114-499) | target | recall | +0.031 ± 0.028 |
+| after (114-499) | target | hold | -0.043 ± 0.034 |
+| after (114-499) | target | yield | -0.036 ± 0.036 |
+| after (114-499) | target | trade | -0.013 ± 0.030 |
+| after (114-499) | target | safe | +0.011 ± 0.071 |
+| after (114-499) | target | thin | -0.012 ± 0.015 |
+| after (114-499) | target | slow_push | -0.016 ± 0.016 |
+| after (114-499) | target | shove | -0.044 ± 0.054 |
+
+**The sp attackers.**
+
+| window | seat | component | share difference |
+|---|---|---|---|
+| lane (0-113) | attacker | recall | -0.011 ± 0.005 |
+| lane (0-113) | attacker | yield | -0.018 ± 0.035 |
+| lane (0-113) | attacker | trade | +0.032 ± 0.038 |
+| lane (0-113) | attacker | safe | -0.017 ± 0.037 |
+| lane (0-113) | attacker | last_hit | +0.023 ± 0.035 |
+| lane (0-113) | attacker | thin | +0.016 ± 0.027 |
+| lane (0-113) | attacker | slow_push | +0.013 ± 0.024 |
+| lane (0-113) | attacker | shove | -0.046 ± 0.027 |
+| lane (0-113) | target | absent | +0.012 ± 0.012 |
+| lane (0-113) | target | recall | +0.010 ± 0.018 |
+| lane (0-113) | target | hold | -0.010 ± 0.023 |
+| lane (0-113) | target | yield | -0.020 ± 0.014 |
+| lane (0-113) | target | trade | -0.015 ± 0.016 |
+| lane (0-113) | target | safe | +0.023 ± 0.042 |
+| after (114-499) | attacker | hold | +0.011 ± 0.044 |
+| after (114-499) | attacker | trade | +0.053 ± 0.058 |
+| after (114-499) | attacker | safe | -0.045 ± 0.021 |
+| after (114-499) | attacker | last_hit | +0.032 ± 0.027 |
+| after (114-499) | attacker | thin | +0.030 ± 0.014 |
+| after (114-499) | attacker | slow_push | +0.039 ± 0.014 |
+| after (114-499) | attacker | shove | -0.087 ± 0.035 |
+| after (114-499) | target | absent | +0.019 ± 0.024 |
+| after (114-499) | target | recall | +0.024 ± 0.024 |
+| after (114-499) | target | hold | -0.028 ± 0.014 |
+| after (114-499) | target | yield | -0.038 ± 0.013 |
+| after (114-499) | target | trade | -0.022 ± 0.020 |
+| after (114-499) | target | safe | +0.047 ± 0.034 |
+| after (114-499) | target | shove | -0.037 ± 0.028 |
+
+### Representative games (viewer recordings, results/m5/traces/)
+
+A rule fixed before any trace was read picks one game per traced cell. It takes the game whose
+focal lead at turn 114 is the upper median of the cell's 2N games (pairs times seat orientations), and breaks ties by
+pair, then orientation. The traced games are every core attacker against its own target (12), the seed-0 head to head
+om:0 against sp:0 (M5d P2b), and om:0 and sp:0 against the S_in archetype g_shove (seed 0).
+
+| recording | seed | A | B | focal lead at 114 | cell mean |
+|---|---|---|---|---|---|
+| attacker_om_s0_vs_target | 707000000122 | om:0 | spec:results\rl\checkpoints\m5\attack\main\om_s0\final.pt | +3.21 | +3.15 |
+| attacker_sp_s0_vs_target | 707000100034 | spec:results\rl\checkpoints\m5\attack\main\sp_s0\final.pt | sp:0 | +0.70 | +1.12 |
+| attacker_om_s1_vs_target | 707001000120 | spec:results\rl\checkpoints\m5\attack\main\om_s1\final.pt | om:1 | +2.39 | +2.17 |
+| attacker_sp_s1_vs_target | 707001100108 | sp:1 | spec:results\rl\checkpoints\m5\attack\main\sp_s1\final.pt | +2.44 | +2.30 |
+| attacker_om_s2_vs_target | 707002000010 | om:2 | spec:results\rl\checkpoints\m5\attack\main\om_s2\final.pt | +1.78 | +1.49 |
+| attacker_sp_s2_vs_target | 707002100066 | sp:2 | spec:results\rl\checkpoints\m5\attack\main\sp_s2\final.pt | -0.04 | +0.14 |
+| attacker_om_s3_vs_target | 707003000038 | spec:results\rl\checkpoints\m5\attack\main\om_s3\final.pt | om:3 | +8.31 | +7.91 |
+| attacker_sp_s3_vs_target | 707003100059 | sp:3 | spec:results\rl\checkpoints\m5\attack\main\sp_s3\final.pt | +1.50 | +1.73 |
+| attacker_om_s4_vs_target | 707004000020 | om:4 | spec:results\rl\checkpoints\m5\attack\main\om_s4\final.pt | +1.69 | +1.98 |
+| attacker_sp_s4_vs_target | 707004100064 | sp:4 | spec:results\rl\checkpoints\m5\attack\main\sp_s4\final.pt | +1.24 | +0.98 |
+| attacker_om_s5_vs_target | 707005000104 | om:5 | spec:results\rl\checkpoints\m5\attack\main\om_s5\final.pt | +1.11 | +1.08 |
+| attacker_sp_s5_vs_target | 707005100113 | sp:5 | spec:results\rl\checkpoints\m5\attack\main\sp_s5\final.pt | +0.79 | +0.63 |
+| h2h_om_s0_vs_sp_s0 | 702000000127 | sp:0 | om:0 | -0.91 | -0.79 |
+| om_s0_vs_g_shove | 703000030004 | g_shove | om:0 | +17.83 | +17.63 |
+| sp_s0_vs_g_shove | 703000030042 | sp:0 | g_shove | +4.90 | +4.50 |
+
+### The om target's belief about its attacker (descriptive)
+
+Belief movement alone does not show that the attacker manipulated the belief.
+
+| quantity | turn 5 | turn 20 | turn 94 |
+|---|---|---|---|
+| catch-all mass | +0.28 ± 0.23 | +0.24 ± 0.29 | +0.29 ± 0.38 |
+| modal type attacker | +0.13 ± 0.09 | +0.21 ± 0.12 | +0.13 ± 0.09 |
+| modal type freezer | +0.13 ± 0.14 | +0.12 ± 0.14 | +0.12 ± 0.07 |
+| modal type gapper | +0.11 ± 0.07 | +0.03 ± 0.03 | +0.04 ± 0.02 |
+| modal type mixed | +0.17 ± 0.24 | +0.20 ± 0.30 | +0.29 ± 0.38 |
+| modal type peer | +0.19 ± 0.13 | +0.23 ± 0.12 | +0.19 ± 0.13 |
+| modal type short | +0.16 ± 0.05 | +0.18 ± 0.09 | +0.22 ± 0.17 |
+| modal type unknown | +0.09 ± 0.04 | +0.03 ± 0.05 | +0.01 ± 0.02 |
+
 ## M5c strategic evaluation (S8, descriptive)
 
 Rule: a verdict holds in a seed when no fixed alternative beats the policy by more than 0.2 (Q50 natural / G50 constructed (Q150 / G150 after a failed validation and its re-run); weaker side G50, protocol policy); it replicates with at least 5 of 6 seeds. Beside it, the same rule on the other statistic at 50 turns (G50 in natural families, Q50 in constructed ones); for a family re-run at 150 turns that reading also changes the horizon.
@@ -490,7 +666,7 @@ Per-arm cells (each final against its own policy):
 M4.5c-style battery tables per arm: `results/m5/battery/battery_om.md`, `results/m5/battery/battery_sp.md`
 
 
-## Evaluation work by horizon and purpose (M5a estimates; the attackers remain proposed)
+## Evaluation work by horizon and purpose (M5a estimates; the core attackers have run; the om_table ablation was not run)
 
 | part | purpose | horizon | M turns | wall h (6 workers) |
 |---|---|---|---|---|

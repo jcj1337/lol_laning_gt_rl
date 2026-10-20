@@ -1,0 +1,3587 @@
+{
+ "schema": "lanegame.viewer_recording",
+ "version": 1,
+ "config": "m45_calibrated",
+ "scenario": "s0",
+ "gap": "equal",
+ "seed": 707003000038,
+ "names": [
+  "spec:results\\rl\\checkpoints\\m5\\attack\\main\\om_s3\\final.pt",
+  "om:3"
+ ],
+ "label": "the om:3 attacker (focal) against its own target om:3",
+ "actions": [
+  [
+   9,
+   5
+  ],
+  [
+   3,
+   0
+  ],
+  [
+   47,
+   46
+  ],
+  [
+   0,
+   1
+  ],
+  [
+   0,
+   0
+  ],
+  [
+   0,
+   3
+  ],
+  [
+   1,
+   46
+  ],
+  [
+   0,
+   5
+  ],
+  [
+   1,
+   8
+  ],
+  [
+   4,
+   47
+  ],
+  [
+   12,
+   3
+  ],
+  [
+   45,
+   46
+  ],
+  [
+   1,
+   5
+  ],
+  [
+   6,
+   48
+  ],
+  [
+   2,
+   0
+  ],
+  [
+   9,
+   4
+  ],
+  [
+   48,
+   47
+  ],
+  [
+   1,
+   47
+  ],
+  [
+   3,
+   48
+  ],
+  [
+   0,
+   5
+  ],
+  [
+   1,
+   12
+  ],
+  [
+   0,
+   45
+  ],
+  [
+   0,
+   5
+  ],
+  [
+   6,
+   6
+  ],
+  [
+   6,
+   5
+  ],
+  [
+   6,
+   5
+  ],
+  [
+   10,
+   47
+  ],
+  [
+   10,
+   48
+  ],
+  [
+   12,
+   8
+  ],
+  [
+   48,
+   5
+  ],
+  [
+   12,
+   30
+  ],
+  [
+   45,
+   5
+  ],
+  [
+   6,
+   5
+  ],
+  [
+   0,
+   12
+  ],
+  [
+   7,
+   45
+  ],
+  [
+   1,
+   1
+  ],
+  [
+   16,
+   47
+  ],
+  [
+   51,
+   48
+  ],
+  [
+   0,
+   4
+  ],
+  [
+   9,
+   46
+  ],
+  [
+   30,
+   6
+  ],
+  [
+   6,
+   8
+  ],
+  [
+   6,
+   6
+  ],
+  [
+   4,
+   6
+  ],
+  [
+   8,
+   47
+  ],
+  [
+   30,
+   8
+  ],
+  [
+   6,
+   5
+  ],
+  [
+   8,
+   4
+  ],
+  [
+   6,
+   12
+  ],
+  [
+   4,
+   45
+  ],
+  [
+   0,
+   45
+  ],
+  [
+   4,
+   45
+  ],
+  [
+   0,
+   45
+  ],
+  [
+   17,
+   47
+  ],
+  [
+   10,
+   1
+  ],
+  [
+   9,
+   46
+  ],
+  [
+   12,
+   7
+  ],
+  [
+   12,
+   3
+  ],
+  [
+   45,
+   7
+  ],
+  [
+   1,
+   6
+  ],
+  [
+   7,
+   16
+  ],
+  [
+   0,
+   11
+  ],
+  [
+   1,
+   9
+  ],
+  [
+   6,
+   11
+  ],
+  [
+   6,
+   12
+  ],
+  [
+   6,
+   12
+  ],
+  [
+   4,
+   45
+  ],
+  [
+   45,
+   45
+  ],
+  [
+   45,
+   45
+  ],
+  [
+   45,
+   45
+  ],
+  [
+   45,
+   46
+  ],
+  [
+   1,
+   1
+  ],
+  [
+   30,
+   4
+  ],
+  [
+   6,
+   1
+  ],
+  [
+   6,
+   7
+  ],
+  [
+   6,
+   6
+  ],
+  [
+   6,
+   1
+  ],
+  [
+   1,
+   8
+  ],
+  [
+   6,
+   30
+  ],
+  [
+   8,
+   11
+  ],
+  [
+   6,
+   11
+  ],
+  [
+   48,
+   12
+  ],
+  [
+   7,
+   12
+  ],
+  [
+   6,
+   12
+  ],
+  [
+   6,
+   12
+  ],
+  [
+   1,
+   45
+  ],
+  [
+   10,
+   45
+  ],
+  [
+   12,
+   45
+  ],
+  [
+   45,
+   45
+  ],
+  [
+   1,
+   45
+  ],
+  [
+   1,
+   1
+  ],
+  [
+   46,
+   1
+  ],
+  [
+   0,
+   4
+  ],
+  [
+   10,
+   48
+  ],
+  [
+   6,
+   3
+  ],
+  [
+   6,
+   8
+  ],
+  [
+   6,
+   48
+  ],
+  [
+   6,
+   4
+  ],
+  [
+   6,
+   49
+  ],
+  [
+   6,
+   12
+  ],
+  [
+   47,
+   1
+  ],
+  [
+   49,
+   16
+  ],
+  [
+   6,
+   16
+  ],
+  [
+   0,
+   10
+  ],
+  [
+   1,
+   49
+  ],
+  [
+   6,
+   10
+  ],
+  [
+   6,
+   12
+  ],
+  [
+   4,
+   45
+  ],
+  [
+   7,
+   45
+  ],
+  [
+   4,
+   45
+  ],
+  [
+   17,
+   45
+  ],
+  [
+   51,
+   45
+  ],
+  [
+   16,
+   4
+  ],
+  [
+   11,
+   2
+  ],
+  [
+   9,
+   5
+  ],
+  [
+   12,
+   5
+  ],
+  [
+   45,
+   5
+  ],
+  [
+   6,
+   46
+  ],
+  [
+   8,
+   48
+  ],
+  [
+   4,
+   48
+  ],
+  [
+   30,
+   5
+  ],
+  [
+   1,
+   3
+  ],
+  [
+   30,
+   4
+  ],
+  [
+   9,
+   48
+  ],
+  [
+   6,
+   30
+  ],
+  [
+   9,
+   4
+  ],
+  [
+   1,
+   6
+  ],
+  [
+   6,
+   47
+  ],
+  [
+   6,
+   48
+  ],
+  [
+   0,
+   9
+  ],
+  [
+   8,
+   12
+  ],
+  [
+   6,
+   12
+  ],
+  [
+   6,
+   10
+  ],
+  [
+   8,
+   12
+  ],
+  [
+   6,
+   12
+  ],
+  [
+   6,
+   12
+  ],
+  [
+   6,
+   12
+  ],
+  [
+   45,
+   12
+  ],
+  [
+   45,
+   45
+  ],
+  [
+   45,
+   5
+  ],
+  [
+   45,
+   4
+  ],
+  [
+   45,
+   47
+  ],
+  [
+   1,
+   3
+  ],
+  [
+   30,
+   8
+  ],
+  [
+   1,
+   48
+  ],
+  [
+   6,
+   46
+  ],
+  [
+   2,
+   4
+  ],
+  [
+   46,
+   8
+  ],
+  [
+   6,
+   46
+  ],
+  [
+   6,
+   4
+  ],
+  [
+   1,
+   11
+  ],
+  [
+   6,
+   12
+  ],
+  [
+   46,
+   10
+  ],
+  [
+   6,
+   49
+  ],
+  [
+   8,
+   12
+  ],
+  [
+   47,
+   45
+  ],
+  [
+   1,
+   45
+  ],
+  [
+   2,
+   45
+  ],
+  [
+   9,
+   45
+  ],
+  [
+   12,
+   45
+  ],
+  [
+   45,
+   46
+  ],
+  [
+   1,
+   11
+  ],
+  [
+   30,
+   4
+  ],
+  [
+   0,
+   8
+  ],
+  [
+   48,
+   8
+  ],
+  [
+   8,
+   6
+  ],
+  [
+   6,
+   1
+  ],
+  [
+   6,
+   8
+  ],
+  [
+   4,
+   1
+  ],
+  [
+   6,
+   11
+  ],
+  [
+   7,
+   49
+  ],
+  [
+   9,
+   12
+  ],
+  [
+   12,
+   45
+  ],
+  [
+   45,
+   8
+  ],
+  [
+   48,
+   47
+  ],
+  [
+   0,
+   6
+  ],
+  [
+   8,
+   5
+  ],
+  [
+   6,
+   4
+  ],
+  [
+   1,
+   1
+  ],
+  [
+   0,
+   49
+  ],
+  [
+   6,
+   12
+  ],
+  [
+   49,
+   6
+  ],
+  [
+   6,
+   1
+  ],
+  [
+   1,
+   49
+  ],
+  [
+   6,
+   12
+  ],
+  [
+   6,
+   6
+  ],
+  [
+   7,
+   1
+  ],
+  [
+   0,
+   9
+  ],
+  [
+   6,
+   12
+  ],
+  [
+   0,
+   45
+  ],
+  [
+   3,
+   45
+  ],
+  [
+   1,
+   45
+  ],
+  [
+   7,
+   45
+  ],
+  [
+   9,
+   45
+  ],
+  [
+   9,
+   10
+  ],
+  [
+   10,
+   8
+  ],
+  [
+   6,
+   1
+  ],
+  [
+   0,
+   10
+  ],
+  [
+   7,
+   12
+  ],
+  [
+   6,
+   12
+  ],
+  [
+   6,
+   12
+  ],
+  [
+   0,
+   12
+  ],
+  [
+   12,
+   45
+  ],
+  [
+   45,
+   0
+  ],
+  [
+   9,
+   1
+  ],
+  [
+   6,
+   6
+  ],
+  [
+   11,
+   48
+  ],
+  [
+   7,
+   4
+  ],
+  [
+   48,
+   11
+  ],
+  [
+   1,
+   6
+  ],
+  [
+   11,
+   10
+  ],
+  [
+   12,
+   8
+  ],
+  [
+   12,
+   30
+  ],
+  [
+   45,
+   8
+  ],
+  [
+   48,
+   1
+  ],
+  [
+   2,
+   2
+  ],
+  [
+   10,
+   5
+  ],
+  [
+   6,
+   48
+  ],
+  [
+   7,
+   1
+  ],
+  [
+   3,
+   49
+  ],
+  [
+   8,
+   49
+  ],
+  [
+   8,
+   12
+  ],
+  [
+   7,
+   10
+  ],
+  [
+   8,
+   12
+  ],
+  [
+   8,
+   12
+  ],
+  [
+   8,
+   12
+  ],
+  [
+   1,
+   45
+  ],
+  [
+   9,
+   45
+  ],
+  [
+   12,
+   45
+  ],
+  [
+   45,
+   45
+  ],
+  [
+   0,
+   45
+  ],
+  [
+   9,
+   46
+  ],
+  [
+   1,
+   4
+  ],
+  [
+   9,
+   6
+  ],
+  [
+   48,
+   5
+  ],
+  [
+   6,
+   8
+  ],
+  [
+   6,
+   47
+  ],
+  [
+   6,
+   6
+  ],
+  [
+   6,
+   6
+  ],
+  [
+   6,
+   0
+  ],
+  [
+   6,
+   5
+  ],
+  [
+   6,
+   5
+  ],
+  [
+   1,
+   45
+  ],
+  [
+   7,
+   45
+  ],
+  [
+   11,
+   45
+  ],
+  [
+   12,
+   45
+  ],
+  [
+   45,
+   45
+  ],
+  [
+   6,
+   47
+  ],
+  [
+   30,
+   4
+  ],
+  [
+   2,
+   48
+  ],
+  [
+   6,
+   6
+  ],
+  [
+   8,
+   6
+  ],
+  [
+   1,
+   8
+  ],
+  [
+   6,
+   6
+  ],
+  [
+   6,
+   49
+  ],
+  [
+   0,
+   12
+  ],
+  [
+   1,
+   45
+  ],
+  [
+   49,
+   5
+  ],
+  [
+   9,
+   10
+  ],
+  [
+   49,
+   8
+  ],
+  [
+   8,
+   48
+  ],
+  [
+   9,
+   3
+  ],
+  [
+   12,
+   30
+  ],
+  [
+   45,
+   5
+  ],
+  [
+   8,
+   8
+  ],
+  [
+   8,
+   4
+  ],
+  [
+   6,
+   12
+  ],
+  [
+   8,
+   4
+  ],
+  [
+   1,
+   45
+  ],
+  [
+   1,
+   45
+  ],
+  [
+   6,
+   45
+  ],
+  [
+   9,
+   45
+  ],
+  [
+   1,
+   45
+  ],
+  [
+   9,
+   10
+  ],
+  [
+   9,
+   7
+  ],
+  [
+   48,
+   6
+  ],
+  [
+   6,
+   10
+  ],
+  [
+   6,
+   4
+  ],
+  [
+   7,
+   12
+  ],
+  [
+   6,
+   12
+  ],
+  [
+   7,
+   45
+  ],
+  [
+   5,
+   45
+  ],
+  [
+   1,
+   45
+  ],
+  [
+   9,
+   45
+  ],
+  [
+   9,
+   45
+  ],
+  [
+   49,
+   48
+  ],
+  [
+   12,
+   2
+  ],
+  [
+   45,
+   47
+  ],
+  [
+   6,
+   1
+  ],
+  [
+   6,
+   8
+  ],
+  [
+   2,
+   1
+  ],
+  [
+   4,
+   49
+  ],
+  [
+   7,
+   12
+  ],
+  [
+   6,
+   6
+  ],
+  [
+   7,
+   11
+  ],
+  [
+   8,
+   3
+  ],
+  [
+   1,
+   47
+  ],
+  [
+   9,
+   4
+  ],
+  [
+   9,
+   10
+  ],
+  [
+   12,
+   12
+  ],
+  [
+   45,
+   45
+  ],
+  [
+   48,
+   48
+  ],
+  [
+   0,
+   9
+  ],
+  [
+   6,
+   4
+  ],
+  [
+   1,
+   49
+  ],
+  [
+   6,
+   10
+  ],
+  [
+   6,
+   12
+  ],
+  [
+   1,
+   45
+  ],
+  [
+   8,
+   45
+  ],
+  [
+   21,
+   45
+  ],
+  [
+   21,
+   45
+  ],
+  [
+   47,
+   45
+  ],
+  [
+   1,
+   1
+  ],
+  [
+   9,
+   6
+  ],
+  [
+   30,
+   7
+  ],
+  [
+   8,
+   4
+  ],
+  [
+   1,
+   7
+  ],
+  [
+   6,
+   49
+  ],
+  [
+   1,
+   49
+  ],
+  [
+   0,
+   8
+  ],
+  [
+   48,
+   7
+  ],
+  [
+   9,
+   8
+  ],
+  [
+   8,
+   1
+  ],
+  [
+   10,
+   9
+  ],
+  [
+   48,
+   12
+  ],
+  [
+   6,
+   6
+  ],
+  [
+   49,
+   30
+  ],
+  [
+   49,
+   8
+  ],
+  [
+   12,
+   8
+  ],
+  [
+   9,
+   47
+  ],
+  [
+   12,
+   30
+  ],
+  [
+   45,
+   2
+  ],
+  [
+   48,
+   1
+  ],
+  [
+   1,
+   11
+  ],
+  [
+   7,
+   12
+  ],
+  [
+   6,
+   12
+  ],
+  [
+   6,
+   6
+  ],
+  [
+   6,
+   12
+  ],
+  [
+   6,
+   12
+  ],
+  [
+   6,
+   12
+  ],
+  [
+   0,
+   11
+  ],
+  [
+   8,
+   10
+  ],
+  [
+   8,
+   4
+  ],
+  [
+   23,
+   5
+  ],
+  [
+   1,
+   45
+  ],
+  [
+   11,
+   45
+  ],
+  [
+   12,
+   45
+  ],
+  [
+   45,
+   45
+  ],
+  [
+   46,
+   45
+  ],
+  [
+   30,
+   10
+  ],
+  [
+   48,
+   48
+  ],
+  [
+   48,
+   4
+  ],
+  [
+   6,
+   6
+  ],
+  [
+   6,
+   8
+  ],
+  [
+   7,
+   1
+  ],
+  [
+   0,
+   11
+  ],
+  [
+   7,
+   9
+  ],
+  [
+   8,
+   12
+  ],
+  [
+   1,
+   45
+  ],
+  [
+   9,
+   45
+  ],
+  [
+   12,
+   45
+  ],
+  [
+   45,
+   45
+  ],
+  [
+   0,
+   45
+  ],
+  [
+   46,
+   6
+  ],
+  [
+   10,
+   1
+  ],
+  [
+   3,
+   6
+  ],
+  [
+   7,
+   8
+  ],
+  [
+   6,
+   2
+  ],
+  [
+   6,
+   30
+  ],
+  [
+   1,
+   6
+  ],
+  [
+   12,
+   30
+  ],
+  [
+   45,
+   5
+  ],
+  [
+   1,
+   47
+  ],
+  [
+   0,
+   47
+  ],
+  [
+   6,
+   7
+  ],
+  [
+   6,
+   6
+  ],
+  [
+   4,
+   8
+  ],
+  [
+   9,
+   30
+  ],
+  [
+   12,
+   48
+  ],
+  [
+   12,
+   30
+  ],
+  [
+   45,
+   2
+  ],
+  [
+   6,
+   46
+  ],
+  [
+   1,
+   7
+  ],
+  [
+   6,
+   12
+  ],
+  [
+   6,
+   10
+  ],
+  [
+   6,
+   12
+  ],
+  [
+   8,
+   12
+  ],
+  [
+   6,
+   48
+  ],
+  [
+   1,
+   45
+  ],
+  [
+   9,
+   45
+  ],
+  [
+   12,
+   45
+  ],
+  [
+   45,
+   45
+  ],
+  [
+   0,
+   45
+  ],
+  [
+   30,
+   2
+  ],
+  [
+   30,
+   8
+  ],
+  [
+   8,
+   48
+  ],
+  [
+   48,
+   48
+  ],
+  [
+   2,
+   6
+  ],
+  [
+   5,
+   8
+  ],
+  [
+   6,
+   6
+  ],
+  [
+   6,
+   30
+  ],
+  [
+   6,
+   4
+  ],
+  [
+   1,
+   9
+  ],
+  [
+   8,
+   9
+  ],
+  [
+   8,
+   12
+  ],
+  [
+   4,
+   45
+  ],
+  [
+   9,
+   45
+  ],
+  [
+   12,
+   45
+  ],
+  [
+   45,
+   45
+  ],
+  [
+   11,
+   45
+  ],
+  [
+   30,
+   7
+  ],
+  [
+   1,
+   8
+  ],
+  [
+   12,
+   30
+  ],
+  [
+   45,
+   47
+  ],
+  [
+   3,
+   47
+  ],
+  [
+   30,
+   8
+  ],
+  [
+   11,
+   8
+  ],
+  [
+   6,
+   6
+  ],
+  [
+   4,
+   6
+  ],
+  [
+   10,
+   3
+  ],
+  [
+   12,
+   47
+  ],
+  [
+   45,
+   1
+  ],
+  [
+   4,
+   11
+  ],
+  [
+   6,
+   6
+  ],
+  [
+   0,
+   49
+  ],
+  [
+   6,
+   4
+  ],
+  [
+   1,
+   11
+  ],
+  [
+   8,
+   12
+  ],
+  [
+   0,
+   9
+  ],
+  [
+   6,
+   4
+  ],
+  [
+   1,
+   11
+  ],
+  [
+   8,
+   12
+  ],
+  [
+   6,
+   9
+  ],
+  [
+   6,
+   12
+  ],
+  [
+   6,
+   12
+  ],
+  [
+   6,
+   10
+  ],
+  [
+   7,
+   12
+  ],
+  [
+   8,
+   12
+  ],
+  [
+   1,
+   45
+  ],
+  [
+   4,
+   45
+  ],
+  [
+   22,
+   45
+  ],
+  [
+   9,
+   45
+  ],
+  [
+   9,
+   45
+  ],
+  [
+   10,
+   49
+  ],
+  [
+   12,
+   7
+  ],
+  [
+   12,
+   47
+  ],
+  [
+   45,
+   1
+  ],
+  [
+   1,
+   30
+  ],
+  [
+   1,
+   49
+  ],
+  [
+   6,
+   8
+  ],
+  [
+   6,
+   4
+  ],
+  [
+   3,
+   8
+  ],
+  [
+   1,
+   1
+  ],
+  [
+   10,
+   3
+  ],
+  [
+   1,
+   49
+  ],
+  [
+   1,
+   48
+  ],
+  [
+   8,
+   7
+  ],
+  [
+   6,
+   30
+  ],
+  [
+   6,
+   8
+  ],
+  [
+   6,
+   47
+  ],
+  [
+   6,
+   12
+  ],
+  [
+   6,
+   12
+  ],
+  [
+   6,
+   12
+  ],
+  [
+   48,
+   12
+  ],
+  [
+   6,
+   12
+  ],
+  [
+   48,
+   12
+  ],
+  [
+   45,
+   1
+  ],
+  [
+   45,
+   7
+  ],
+  [
+   45,
+   10
+  ],
+  [
+   45,
+   12
+  ],
+  [
+   45,
+   45
+  ],
+  [
+   6,
+   47
+  ],
+  [
+   46,
+   1
+  ],
+  [
+   5,
+   10
+  ],
+  [
+   1,
+   11
+  ],
+  [
+   9,
+   8
+  ],
+  [
+   8,
+   1
+  ],
+  [
+   9,
+   30
+  ],
+  [
+   1,
+   5
+  ],
+  [
+   9,
+   48
+  ],
+  [
+   8,
+   1
+  ],
+  [
+   0,
+   11
+  ],
+  [
+   48,
+   4
+  ],
+  [
+   6,
+   11
+  ],
+  [
+   3,
+   48
+  ],
+  [
+   48,
+   48
+  ],
+  [
+   7,
+   10
+  ],
+  [
+   6,
+   6
+  ],
+  [
+   6,
+   30
+  ],
+  [
+   6,
+   8
+  ],
+  [
+   6,
+   3
+  ],
+  [
+   8,
+   0
+  ],
+  [
+   6,
+   10
+  ],
+  [
+   8,
+   12
+  ],
+  [
+   6,
+   12
+  ],
+  [
+   45,
+   12
+  ],
+  [
+   45,
+   45
+  ],
+  [
+   45,
+   2
+  ],
+  [
+   45,
+   4
+  ],
+  [
+   45,
+   3
+  ]
+ ],
+ "events": [
+  [
+   3,
+   "A reaches level 2"
+  ],
+  [
+   3,
+   "B reaches level 2"
+  ],
+  [
+   6,
+   "B reaches level 3"
+  ],
+  [
+   7,
+   "A reaches level 3"
+  ],
+  [
+   9,
+   "A reaches level 4"
+  ],
+  [
+   10,
+   "A recalls (HP 374, gold 3.7 unspent)"
+  ],
+  [
+   10,
+   "B reaches level 4"
+  ],
+  [
+   11,
+   "A returns next turn, invests 3.7"
+  ],
+  [
+   15,
+   "B reaches level 5"
+  ],
+  [
+   16,
+   "A reaches level 5"
+  ],
+  [
+   19,
+   "B reaches level 6"
+  ],
+  [
+   20,
+   "A reaches level 6"
+  ],
+  [
+   20,
+   "B recalls (HP 564, gold 7.6 unspent)"
+  ],
+  [
+   21,
+   "B returns next turn, invests 7.6"
+  ],
+  [
+   26,
+   "A reaches level 7"
+  ],
+  [
+   27,
+   "B reaches level 7"
+  ],
+  [
+   28,
+   "A's recall is interrupted"
+  ],
+  [
+   30,
+   "A recalls (HP 105, gold 6.7 unspent)"
+  ],
+  [
+   31,
+   "A returns next turn, invests 6.7"
+  ],
+  [
+   33,
+   "B recalls (HP 387, gold 4.1 unspent)"
+  ],
+  [
+   34,
+   "A reaches level 8"
+  ],
+  [
+   34,
+   "B returns next turn, invests 4.1"
+  ],
+  [
+   35,
+   "A crashes 11 HP into the enemy tower"
+  ],
+  [
+   35,
+   "B reaches level 8"
+  ],
+  [
+   36,
+   "A crashes 8 HP into the enemy tower"
+  ],
+  [
+   37,
+   "A breaks a plate (+1.0)"
+  ],
+  [
+   38,
+   "A crashes 4 HP into the enemy tower"
+  ],
+  [
+   40,
+   "B reaches level 9"
+  ],
+  [
+   43,
+   "A reaches level 9"
+  ],
+  [
+   48,
+   "B dies (trade; HP 36 before, gold 6.4 unspent)"
+  ],
+  [
+   48,
+   "B's recall is interrupted"
+  ],
+  [
+   49,
+   "A reaches level 10"
+  ],
+  [
+   52,
+   "A crashes 19 HP into the enemy tower"
+  ],
+  [
+   52,
+   "B returns next turn, invests 6.4"
+  ],
+  [
+   53,
+   "B reaches level 10"
+  ],
+  [
+   56,
+   "A's recall is interrupted"
+  ],
+  [
+   57,
+   "A recalls (HP 128, gold 12.7 unspent)"
+  ],
+  [
+   58,
+   "A returns next turn, invests 12.7"
+  ],
+  [
+   58,
+   "B reaches level 11"
+  ],
+  [
+   59,
+   "B crashes 7 HP into the enemy tower"
+  ],
+  [
+   60,
+   "A reaches level 11"
+  ],
+  [
+   60,
+   "B crashes 8 HP into the enemy tower"
+  ],
+  [
+   62,
+   "B crashes 3 HP into the enemy tower"
+  ],
+  [
+   64,
+   "B's recall is interrupted"
+  ],
+  [
+   65,
+   "B dies (trade; HP 9 before, gold 6.1 unspent)"
+  ],
+  [
+   65,
+   "B's recall is interrupted"
+  ],
+  [
+   66,
+   "A dies (ganked; HP 122 before, gold 5.1 unspent)"
+  ],
+  [
+   69,
+   "B returns next turn, invests 8.1"
+  ],
+  [
+   70,
+   "A returns next turn, invests 6.2"
+  ],
+  [
+   71,
+   "A reaches level 12"
+  ],
+  [
+   71,
+   "B reaches level 12"
+  ],
+  [
+   72,
+   "A crashes 13 HP into the enemy tower"
+  ],
+  [
+   81,
+   "B's recall is interrupted"
+  ],
+  [
+   81,
+   "B reaches level 13"
+  ],
+  [
+   82,
+   "B's recall is interrupted"
+  ],
+  [
+   83,
+   "A reaches level 13"
+  ],
+  [
+   83,
+   "B's recall is interrupted"
+  ],
+  [
+   84,
+   "B dies (trade; HP 100 before, gold 5.7 unspent)"
+  ],
+  [
+   84,
+   "B's recall is interrupted"
+  ],
+  [
+   86,
+   "A crashes 17 HP into the enemy tower"
+  ],
+  [
+   87,
+   "A recalls (HP 159, gold 6.9 unspent)"
+  ],
+  [
+   88,
+   "A returns next turn, invests 6.9"
+  ],
+  [
+   89,
+   "B returns next turn, invests 5.7"
+  ],
+  [
+   91,
+   "A crashes 3 HP into the enemy tower"
+  ],
+  [
+   92,
+   "A crashes 2 HP into the enemy tower"
+  ],
+  [
+   97,
+   "A reaches level 14"
+  ],
+  [
+   97,
+   "B reaches level 14"
+  ],
+  [
+   99,
+   "B's recall is interrupted"
+  ],
+  [
+   100,
+   "B crashes 12 HP into the enemy tower"
+  ],
+  [
+   101,
+   "B breaks a plate (+1.0)"
+  ],
+  [
+   102,
+   "B crashes 8 HP into the enemy tower"
+  ],
+  [
+   103,
+   "B breaks a plate (+1.0)"
+  ],
+  [
+   104,
+   "B crashes 8 HP into the enemy tower"
+  ],
+  [
+   106,
+   "B dies (trade; HP 167 before, gold 9.2 unspent)"
+  ],
+  [
+   106,
+   "B's recall is interrupted"
+  ],
+  [
+   107,
+   "A reaches level 15"
+  ],
+  [
+   109,
+   "A crashes 9 HP into the enemy tower"
+  ],
+  [
+   110,
+   "A crashes 8 HP into the enemy tower"
+  ],
+  [
+   110,
+   "A breaks a plate (+1.0)"
+  ],
+  [
+   111,
+   "B returns next turn, invests 9.2"
+  ],
+  [
+   112,
+   "A crashes 8 HP into the enemy tower"
+  ],
+  [
+   112,
+   "A breaks a plate (+1.0)"
+  ],
+  [
+   114,
+   "A crashes 5 HP into the enemy tower"
+  ],
+  [
+   114,
+   "B reaches level 15"
+  ],
+  [
+   115,
+   "A recalls (HP 883, gold 14.3 unspent)"
+  ],
+  [
+   116,
+   "A returns next turn, invests 14.3"
+  ],
+  [
+   119,
+   "A reaches level 16"
+  ],
+  [
+   120,
+   "A crashes 7 HP into the enemy tower"
+  ],
+  [
+   122,
+   "A crashes 1 HP into the enemy tower"
+  ],
+  [
+   125,
+   "B reaches level 16"
+  ],
+  [
+   126,
+   "B crashes 4 HP into the enemy tower"
+  ],
+  [
+   130,
+   "B's recall is interrupted"
+  ],
+  [
+   131,
+   "B's recall is interrupted"
+  ],
+  [
+   133,
+   "B's recall is interrupted"
+  ],
+  [
+   134,
+   "A reaches level 17"
+  ],
+  [
+   134,
+   "B's recall is interrupted"
+  ],
+  [
+   135,
+   "B's recall is interrupted"
+  ],
+  [
+   136,
+   "A dies (tower; HP 117 before, gold 6.5 unspent)"
+  ],
+  [
+   136,
+   "B's recall is interrupted"
+  ],
+  [
+   137,
+   "B recalls (HP 13, gold 9.4 unspent)"
+  ],
+  [
+   138,
+   "B returns next turn, invests 9.4"
+  ],
+  [
+   140,
+   "A crashes 26 HP into the enemy tower"
+  ],
+  [
+   141,
+   "A returns next turn, invests 6.5"
+  ],
+  [
+   141,
+   "B reaches level 17"
+  ],
+  [
+   142,
+   "A crashes 6 HP into the enemy tower"
+  ],
+  [
+   144,
+   "A crashes 5 HP into the enemy tower"
+  ],
+  [
+   150,
+   "B crashes 1 HP into the enemy tower"
+  ],
+  [
+   151,
+   "B's recall is interrupted"
+  ],
+  [
+   154,
+   "A reaches level 18"
+  ],
+  [
+   154,
+   "B dies (trade; HP 200 before, gold 7.4 unspent)"
+  ],
+  [
+   154,
+   "B's recall is interrupted"
+  ],
+  [
+   157,
+   "A crashes 15 HP into the enemy tower"
+  ],
+  [
+   158,
+   "A crashes 8 HP into the enemy tower"
+  ],
+  [
+   159,
+   "A recalls (HP 75, gold 8.9 unspent)"
+  ],
+  [
+   159,
+   "B returns next turn, invests 7.4"
+  ],
+  [
+   160,
+   "A returns next turn, invests 8.9"
+  ],
+  [
+   160,
+   "A crashes 8 HP into the enemy tower"
+  ],
+  [
+   161,
+   "B reaches level 18"
+  ],
+  [
+   168,
+   "B crashes 3 HP into the enemy tower"
+  ],
+  [
+   171,
+   "B recalls (HP 386, gold 5.7 unspent)"
+  ],
+  [
+   172,
+   "A recalls (HP 548, gold 4.1 unspent)"
+  ],
+  [
+   172,
+   "B returns next turn, invests 5.7"
+  ],
+  [
+   173,
+   "A returns next turn, invests 4.1"
+  ],
+  [
+   178,
+   "B crashes 2 HP into the enemy tower"
+  ],
+  [
+   180,
+   "B's recall is interrupted"
+  ],
+  [
+   180,
+   "B crashes 7 HP into the enemy tower"
+  ],
+  [
+   182,
+   "B crashes 6 HP into the enemy tower"
+  ],
+  [
+   184,
+   "B's recall is interrupted"
+  ],
+  [
+   184,
+   "B crashes 7 HP into the enemy tower"
+  ],
+  [
+   186,
+   "B crashes 1 HP into the enemy tower"
+  ],
+  [
+   188,
+   "B dies (trade; HP 429 before, gold 6.6 unspent)"
+  ],
+  [
+   188,
+   "B's recall is interrupted"
+  ],
+  [
+   192,
+   "A crashes 20 HP into the enemy tower"
+  ],
+  [
+   193,
+   "B returns next turn, invests 6.6"
+  ],
+  [
+   194,
+   "A crashes 8 HP into the enemy tower"
+  ],
+  [
+   197,
+   "B crashes 3 HP into the enemy tower"
+  ],
+  [
+   198,
+   "B's recall is interrupted"
+  ],
+  [
+   198,
+   "B crashes 3 HP into the enemy tower"
+  ],
+  [
+   199,
+   "B's recall is interrupted"
+  ],
+  [
+   200,
+   "B's recall is interrupted"
+  ],
+  [
+   201,
+   "B recalls (HP 3, gold 3.5 unspent)"
+  ],
+  [
+   202,
+   "A recalls (HP 687, gold 11.5 unspent)"
+  ],
+  [
+   202,
+   "B returns next turn, invests 3.5"
+  ],
+  [
+   203,
+   "A returns next turn, invests 11.5"
+  ],
+  [
+   209,
+   "A crashes 3 HP into the enemy tower"
+  ],
+  [
+   210,
+   "A crashes 8 HP into the enemy tower"
+  ],
+  [
+   211,
+   "A's recall is interrupted"
+  ],
+  [
+   212,
+   "A recalls (HP 432, gold 3.2 unspent)"
+  ],
+  [
+   213,
+   "A returns next turn, invests 3.2"
+  ],
+  [
+   215,
+   "B crashes 4 HP into the enemy tower"
+  ],
+  [
+   216,
+   "B crashes 8 HP into the enemy tower"
+  ],
+  [
+   221,
+   "B's recall is interrupted"
+  ],
+  [
+   223,
+   "B's recall is interrupted"
+  ],
+  [
+   224,
+   "B's recall is interrupted"
+  ],
+  [
+   225,
+   "B dies (trade; HP 53 before, gold 7.6 unspent)"
+  ],
+  [
+   225,
+   "B's recall is interrupted"
+  ],
+  [
+   227,
+   "A crashes 17 HP into the enemy tower"
+  ],
+  [
+   228,
+   "A recalls (HP 280, gold 6.9 unspent)"
+  ],
+  [
+   228,
+   "A crashes 8 HP into the enemy tower"
+  ],
+  [
+   229,
+   "A returns next turn, invests 6.9"
+  ],
+  [
+   230,
+   "A crashes 8 HP into the enemy tower"
+  ],
+  [
+   230,
+   "B returns next turn, invests 7.6"
+  ],
+  [
+   241,
+   "B dies (trade; HP 266 before, gold 3.8 unspent)"
+  ],
+  [
+   244,
+   "A crashes 21 HP into the enemy tower"
+  ],
+  [
+   245,
+   "A recalls (HP 120, gold 7.5 unspent)"
+  ],
+  [
+   246,
+   "A returns next turn, invests 7.5"
+  ],
+  [
+   246,
+   "A crashes 8 HP into the enemy tower"
+  ],
+  [
+   246,
+   "B returns next turn, invests 3.9"
+  ],
+  [
+   255,
+   "B recalls (HP 478, gold 3.2 unspent)"
+  ],
+  [
+   256,
+   "B returns next turn, invests 3.2"
+  ],
+  [
+   257,
+   "A crashes 12 HP into the enemy tower"
+  ],
+  [
+   258,
+   "A crashes 8 HP into the enemy tower"
+  ],
+  [
+   262,
+   "A recalls (HP 451, gold 5.2 unspent)"
+  ],
+  [
+   263,
+   "A returns next turn, invests 5.2"
+  ],
+  [
+   266,
+   "B's recall is interrupted"
+  ],
+  [
+   267,
+   "B dies (trade; HP 60 before, gold 5.2 unspent)"
+  ],
+  [
+   267,
+   "B crashes 7 HP into the enemy tower"
+  ],
+  [
+   268,
+   "B crashes 4 HP into the enemy tower"
+  ],
+  [
+   270,
+   "A crashes 7 HP into the enemy tower"
+  ],
+  [
+   272,
+   "A crashes 7 HP into the enemy tower"
+  ],
+  [
+   272,
+   "B returns next turn, invests 6.0"
+  ],
+  [
+   278,
+   "B's recall is interrupted"
+  ],
+  [
+   278,
+   "B crashes 5 HP into the enemy tower"
+  ],
+  [
+   279,
+   "B dies (trade; HP 315 before, gold 3.2 unspent)"
+  ],
+  [
+   279,
+   "B's recall is interrupted"
+  ],
+  [
+   282,
+   "A crashes 12 HP into the enemy tower"
+  ],
+  [
+   284,
+   "A crashes 8 HP into the enemy tower"
+  ],
+  [
+   284,
+   "B returns next turn, invests 3.2"
+  ],
+  [
+   286,
+   "A recalls (HP 683, gold 13.0 unspent)"
+  ],
+  [
+   286,
+   "A crashes 4 HP into the enemy tower"
+  ],
+  [
+   287,
+   "A returns next turn, invests 13.0"
+  ],
+  [
+   290,
+   "B crashes 12 HP into the enemy tower"
+  ],
+  [
+   292,
+   "B's recall is interrupted"
+  ],
+  [
+   292,
+   "B crashes 3 HP into the enemy tower"
+  ],
+  [
+   296,
+   "A crashes 9 HP into the enemy tower"
+  ],
+  [
+   298,
+   "A crashes 8 HP into the enemy tower"
+  ],
+  [
+   299,
+   "A recalls (HP 764, gold 4.9 unspent)"
+  ],
+  [
+   299,
+   "B recalls (HP 425, gold 6.0 unspent)"
+  ],
+  [
+   300,
+   "A returns next turn, invests 4.9"
+  ],
+  [
+   300,
+   "B returns next turn, invests 6.0"
+  ],
+  [
+   304,
+   "B crashes 1 HP into the enemy tower"
+  ],
+  [
+   306,
+   "B dies (trade; HP 204 before, gold 2.4 unspent)"
+  ],
+  [
+   306,
+   "B's recall is interrupted"
+  ],
+  [
+   308,
+   "A crashes 14 HP into the enemy tower"
+  ],
+  [
+   311,
+   "B returns next turn, invests 2.4"
+  ],
+  [
+   314,
+   "A crashes 2 HP into the enemy tower"
+  ],
+  [
+   322,
+   "B crashes 9 HP into the enemy tower"
+  ],
+  [
+   324,
+   "B's recall is interrupted"
+  ],
+  [
+   324,
+   "B crashes 5 HP into the enemy tower"
+  ],
+  [
+   328,
+   "A's recall is interrupted"
+  ],
+  [
+   330,
+   "A recalls (HP 292, gold 12.1 unspent)"
+  ],
+  [
+   331,
+   "A returns next turn, invests 12.1"
+  ],
+  [
+   333,
+   "B crashes 8 HP into the enemy tower"
+  ],
+  [
+   334,
+   "B's recall is interrupted"
+  ],
+  [
+   334,
+   "B crashes 3 HP into the enemy tower"
+  ],
+  [
+   335,
+   "B's recall is interrupted"
+  ],
+  [
+   337,
+   "B's recall is interrupted"
+  ],
+  [
+   338,
+   "B's recall is interrupted"
+  ],
+  [
+   339,
+   "B's recall is interrupted"
+  ],
+  [
+   342,
+   "A crashes 21 HP into the enemy tower"
+  ],
+  [
+   343,
+   "B dies (trade; HP 50 before, gold 11.2 unspent)"
+  ],
+  [
+   345,
+   "A crashes 10 HP into the enemy tower"
+  ],
+  [
+   346,
+   "A recalls (HP 284, gold 9.1 unspent)"
+  ],
+  [
+   346,
+   "A crashes 8 HP into the enemy tower"
+  ],
+  [
+   347,
+   "A returns next turn, invests 9.1"
+  ],
+  [
+   348,
+   "A crashes 8 HP into the enemy tower"
+  ],
+  [
+   348,
+   "B returns next turn, invests 12.4"
+  ],
+  [
+   357,
+   "B dies (trade; HP 198 before, gold 4.2 unspent)"
+  ],
+  [
+   357,
+   "B's recall is interrupted"
+  ],
+  [
+   359,
+   "A crashes 6 HP into the enemy tower"
+  ],
+  [
+   360,
+   "A recalls (HP 536, gold 6.8 unspent)"
+  ],
+  [
+   360,
+   "A crashes 8 HP into the enemy tower"
+  ],
+  [
+   361,
+   "A returns next turn, invests 6.8"
+  ],
+  [
+   362,
+   "B returns next turn, invests 4.2"
+  ],
+  [
+   370,
+   "A recalls (HP 351, gold 3.6 unspent)"
+  ],
+  [
+   371,
+   "A returns next turn, invests 3.6"
+  ],
+  [
+   378,
+   "A's recall is interrupted"
+  ],
+  [
+   379,
+   "A recalls (HP 211, gold 2.7 unspent)"
+  ],
+  [
+   380,
+   "A returns next turn, invests 2.7"
+  ],
+  [
+   383,
+   "B's recall is interrupted"
+  ],
+  [
+   384,
+   "A crashes 8 HP into the enemy tower"
+  ],
+  [
+   385,
+   "B's recall is interrupted"
+  ],
+  [
+   386,
+   "B's recall is interrupted"
+  ],
+  [
+   387,
+   "B dies (trade; HP 14 before, gold 9.0 unspent)"
+  ],
+  [
+   389,
+   "A crashes 11 HP into the enemy tower"
+  ],
+  [
+   390,
+   "A recalls (HP 361, gold 6.3 unspent)"
+  ],
+  [
+   390,
+   "A crashes 8 HP into the enemy tower"
+  ],
+  [
+   391,
+   "A returns next turn, invests 6.3"
+  ],
+  [
+   392,
+   "A crashes 8 HP into the enemy tower"
+  ],
+  [
+   392,
+   "B returns next turn, invests 9.0"
+  ],
+  [
+   402,
+   "B crashes 4 HP into the enemy tower"
+  ],
+  [
+   404,
+   "B dies (trade; HP 59 before, gold 4.6 unspent)"
+  ],
+  [
+   404,
+   "B's recall is interrupted"
+  ],
+  [
+   406,
+   "A crashes 14 HP into the enemy tower"
+  ],
+  [
+   407,
+   "A recalls (HP 429, gold 7.9 unspent)"
+  ],
+  [
+   408,
+   "A returns next turn, invests 7.9"
+  ],
+  [
+   408,
+   "A crashes 8 HP into the enemy tower"
+  ],
+  [
+   409,
+   "B returns next turn, invests 4.6"
+  ],
+  [
+   412,
+   "A recalls (HP 467, gold 1.9 unspent)"
+  ],
+  [
+   413,
+   "A returns next turn, invests 1.9"
+  ],
+  [
+   420,
+   "A recalls (HP 482, gold 2.2 unspent)"
+  ],
+  [
+   421,
+   "A returns next turn, invests 2.2"
+  ],
+  [
+   422,
+   "B crashes 3 HP into the enemy tower"
+  ],
+  [
+   427,
+   "B's recall is interrupted"
+  ],
+  [
+   431,
+   "B's recall is interrupted"
+  ],
+  [
+   433,
+   "B's recall is interrupted"
+  ],
+  [
+   434,
+   "B's recall is interrupted"
+  ],
+  [
+   436,
+   "B's recall is interrupted"
+  ],
+  [
+   437,
+   "B dies (trade; HP 47 before, gold 8.8 unspent)"
+  ],
+  [
+   437,
+   "B's recall is interrupted"
+  ],
+  [
+   439,
+   "A crashes 17 HP into the enemy tower"
+  ],
+  [
+   440,
+   "A crashes 8 HP into the enemy tower"
+  ],
+  [
+   442,
+   "A crashes 8 HP into the enemy tower"
+  ],
+  [
+   442,
+   "B returns next turn, invests 8.8"
+  ],
+  [
+   444,
+   "A's recall is interrupted"
+  ],
+  [
+   445,
+   "A recalls (HP 367, gold 10.2 unspent)"
+  ],
+  [
+   446,
+   "A returns next turn, invests 10.2"
+  ],
+  [
+   447,
+   "B crashes 11 HP into the enemy tower"
+  ],
+  [
+   456,
+   "A crashes 2 HP into the enemy tower"
+  ],
+  [
+   460,
+   "B's recall is interrupted"
+  ],
+  [
+   461,
+   "B's recall is interrupted"
+  ],
+  [
+   462,
+   "B's recall is interrupted"
+  ],
+  [
+   463,
+   "B's recall is interrupted"
+  ],
+  [
+   464,
+   "B's recall is interrupted"
+  ],
+  [
+   465,
+   "A dies (ganked; HP 130 before, gold 7.9 unspent)"
+  ],
+  [
+   465,
+   "B's recall is interrupted"
+  ],
+  [
+   467,
+   "B crashes 2 HP into the enemy tower"
+  ],
+  [
+   468,
+   "B crashes 8 HP into the enemy tower"
+  ],
+  [
+   469,
+   "B recalls (HP 307, gold 13.0 unspent)"
+  ],
+  [
+   470,
+   "A returns next turn, invests 8.5"
+  ],
+  [
+   470,
+   "B returns next turn, invests 13.0"
+  ],
+  [
+   473,
+   "B crashes 4 HP into the enemy tower"
+  ],
+  [
+   477,
+   "B crashes 3 HP into the enemy tower"
+  ],
+  [
+   481,
+   "B crashes 2 HP into the enemy tower"
+  ],
+  [
+   482,
+   "B crashes 5 HP into the enemy tower"
+  ],
+  [
+   493,
+   "B's recall is interrupted"
+  ],
+  [
+   494,
+   "A dies (ganked; HP 517 before, gold 9.2 unspent)"
+  ],
+  [
+   494,
+   "B's recall is interrupted"
+  ],
+  [
+   495,
+   "B recalls (HP 52, gold 9.8 unspent)"
+  ],
+  [
+   496,
+   "B returns next turn, invests 9.8"
+  ],
+  [
+   498,
+   "A crashes 23 HP into the enemy tower"
+  ],
+  [
+   499,
+   "A returns next turn, invests 9.7"
+  ]
+ ],
+ "payoff_A": 31.567499999999992,
+ "turns": 500,
+ "counters": {
+  "deaths": [
+   4,
+   16
+  ],
+  "recalls": [
+   24,
+   9
+  ],
+  "crashes": [
+   57,
+   37
+  ],
+  "plates": [
+   3,
+   2
+  ],
+  "trades_connected": [
+   170,
+   90
+  ],
+  "farm": [
+   168.01000000000028,
+   161.4425000000002
+  ],
+  "invested": [
+   203.01,
+   167.90500000000006
+  ],
+  "returns_after_death": [
+   4,
+   16
+  ],
+  "returns_after_recall": [
+   24,
+   9
+  ]
+ },
+ "final": {
+  "levels": [
+   18,
+   18
+  ],
+  "gold_earned_units": null
+ },
+ "m5": {
+  "cell": "attack|main|om|s3|target",
+  "focal": 0,
+  "focal_seat": "A",
+  "selection": {
+   "pair": 38,
+   "orientation": 0,
+   "lead_114": 8.307499885559082,
+   "games": 256,
+   "cell_mean_lead_114": 7.907001972198486
+  },
+  "rule": "upper median of the focal's lead at turn 114 over the cell's games",
+  "lead_114_A": 8.307499885559082,
+  "component_shares_turns_0_113": {
+   "0": {
+    "absent": 0.0702,
+    "ward": 0.0263,
+    "recall": 0.0526,
+    "hold": 0.3158,
+    "yield": 0.0965,
+    "trade": 0.3421,
+    "safe": 0.0965,
+    "last_hit": 0.4298,
+    "thin": 0.0614,
+    "slow_push": 0.0789,
+    "shove": 0.2807,
+    "pressure": 0.0526
+   },
+   "1": {
+    "absent": 0.1754,
+    "ward": 0.0175,
+    "recall": 0.0965,
+    "hold": 0.193,
+    "yield": 0.2544,
+    "trade": 0.1842,
+    "safe": 0.0789,
+    "last_hit": 0.1228,
+    "thin": 0.193,
+    "slow_push": 0.1842,
+    "shove": 0.2105,
+    "pressure": 0.0263
+   }
+  },
+  "belief_log_posterior": {
+   "A": [
+    [
+     -5.160039901733398,
+     -5.160039901733398,
+     -5.160039901733398,
+     -5.160039901733398,
+     -5.160039901733398,
+     -5.160039901733398,
+     -1.4849133491516113,
+     -2.008652448654175,
+     -2.595444917678833,
+     -1.5756869316101074,
+     -2.0040512084960938,
+     -2.606881618499756,
+     -2.1643075942993164
+    ],
+    [
+     -5.756991386413574,
+     -11.364312171936035,
+     -5.756991386413574,
+     -11.364312171936035,
+     -11.364312171936035,
+     -11.364312171936035,
+     -0.8893591165542603,
+     -2.05661940574646,
+     -2.0792884826660156,
+     -2.8381333351135254,
+     -2.7786903381347656,
+     -1.9799209833145142,
+     -2.6440353393554688
+    ],
+    [
+     -6.269009590148926,
+     -17.325681686401367,
+     -12.049753189086914,
+     -11.718360900878906,
+     -11.718360900878906,
+     -17.325681686401367,
+     -2.194734573364258,
+     -1.9980989694595337,
+     -3.3252511024475098,
+     -8.507325172424316,
+     -1.8193614482879639,
+     -0.6678298711776733,
+     -3.2191803455352783
+    ],
+    [
+     -21.64690589904785,
+     -31.141647338867188,
+     -26.611026763916016,
+     -26.326448440551758,
+     -26.326448440551758,
+     -31.141647338867188,
+     -1.946284532546997,
+     -0.33285027742385864,
+     -8.945879936218262,
+     -19.448579788208008,
+     -2.0963330268859863,
+     -4.605828285217285,
+     -4.921412944793701
+    ],
+    [
+     -40.577693939208984,
+     -52.592403411865234,
+     -49.25141525268555,
+     -49.041561126708984,
+     -49.041561126708984,
+     -52.592403411865234,
+     -2.0328354835510254,
+     -0.5897701382637024,
+     -11.23434829711914,
+     -23.99919891357422,
+     -1.1605762243270874,
+     -7.865288257598877,
+     -7.036737442016602
+    ],
+    [
+     -67.7525863647461,
+     -74.69650268554688,
+     -69.0688247680664,
+     -67.52664184570312,
+     -72.644287109375,
+     -65.04823303222656,
+     -1.8645439147949219,
+     -1.372658133506775,
+     -4.951888561248779,
+     -22.094139099121094,
+     -0.5405200123786926,
+     -9.19516658782959,
+     -6.222714424133301
+    ],
+    [
+     -79.18879699707031,
+     -83.4541244506836,
+     -68.43511962890625,
+     -74.08588409423828,
+     -77.22942352294922,
+     -72.56351470947266,
+     -1.6498315334320068,
+     -1.7224489450454712,
+     -3.4303817749023438,
+     -16.616910934448242,
+     -0.6171518564224243,
+     -6.939708709716797,
+     -2.8740880489349365
+    ],
+    [
+     -102.91573333740234,
+     -104.90753173828125,
+     -93.965087890625,
+     -75.67984771728516,
+     -85.9020004272461,
+     -74.75653839111328,
+     -5.398739337921143,
+     -0.021453848108649254,
+     -5.90602445602417,
+     -12.497044563293457,
+     -4.374577045440674,
+     -6.583591938018799,
+     -24.824020385742188
+    ]
+   ],
+   "B": [
+    [
+     -6.0623698234558105,
+     -0.2816263437271118,
+     -6.0623698234558105,
+     -6.0623698234558105,
+     -6.0623698234558105,
+     -6.0623698234558105,
+     -3.982234239578247,
+     -4.874358654022217,
+     -4.084685802459717,
+     -3.1440329551696777,
+     -3.8373923301696777,
+     -2.5326037406921387,
+     -3.0666375160217285
+    ],
+    [
+     -10.346620559692383,
+     -4.907519340515137,
+     -10.346620559692383,
+     -10.346620559692383,
+     -10.346620559692383,
+     -10.346620559692383,
+     -1.3498433828353882,
+     -1.824823260307312,
+     -3.707716226577759,
+     -3.652745008468628,
+     -1.659101963043213,
+     -2.0061073303222656,
+     -1.626343846321106
+    ],
+    [
+     -5.24510383605957,
+     -11.570795059204102,
+     -16.688446044921875,
+     -16.688446044921875,
+     -16.688446044921875,
+     -16.688446044921875,
+     -1.0503777265548706,
+     -1.8744077682495117,
+     -3.8528363704681396,
+     -8.675782203674316,
+     -1.8395894765853882,
+     -1.4457638263702393,
+     -2.581944704055786
+    ],
+    [
+     -12.121296882629395,
+     -28.110136032104492,
+     -32.50483703613281,
+     -21.621585845947266,
+     -21.621585845947266,
+     -32.50483703613281,
+     -1.512153148651123,
+     -5.90608024597168,
+     -6.6138200759887695,
+     -16.386323928833008,
+     -7.590357303619385,
+     -0.257314532995224,
+     -6.284602165222168
+    ],
+    [
+     -31.28024673461914,
+     -44.155540466308594,
+     -47.798980712890625,
+     -34.23054885864258,
+     -34.23054885864258,
+     -47.94343566894531,
+     -8.620136260986328,
+     -10.942940711975098,
+     -15.97305965423584,
+     -32.478511810302734,
+     -14.035014152526855,
+     -0.00035948256845586,
+     -8.737956047058105
+    ],
+    [
+     -52.05372619628906,
+     -70.85009765625,
+     -45.318458557128906,
+     -56.981117248535156,
+     -56.981117248535156,
+     -78.75438690185547,
+     -13.136433601379395,
+     -11.8916654586792,
+     -10.634899139404297,
+     -22.39639663696289,
+     -18.458393096923828,
+     -3.2926331186899915e-05,
+     -17.16193199157715
+    ],
+    [
+     -71.40177154541016,
+     -76.31224060058594,
+     -52.35694885253906,
+     -68.38338470458984,
+     -74.16412353515625,
+     -77.21582794189453,
+     -18.126272201538086,
+     -6.759932994842529,
+     -11.413601875305176,
+     -15.818273544311523,
+     -22.830142974853516,
+     -0.0015191469574347138,
+     -7.9647626876831055
+    ],
+    [
+     -86.58704376220703,
+     -96.76432800292969,
+     -60.43324661254883,
+     -73.76451110839844,
+     -79.81498718261719,
+     -79.54832458496094,
+     -11.210440635681152,
+     -4.197535037994385,
+     -11.666216850280762,
+     -16.682626724243164,
+     -7.453141212463379,
+     -0.015758203342556953,
+     -14.94627857208252
+    ]
+   ]
+  },
+  "belief_turns": [
+   1,
+   3,
+   5,
+   10,
+   20,
+   40,
+   60,
+   94
+  ],
+  "belief_types": [
+   "g_farm",
+   "g_safe",
+   "g_bully",
+   "g_shove",
+   "fz_guard_sh",
+   "g_shove_ward",
+   "peer",
+   "attacker",
+   "freezer",
+   "gapper",
+   "short",
+   "mixed",
+   "unknown"
+  ]
+ }
+}

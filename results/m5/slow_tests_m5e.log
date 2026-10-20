@@ -1,0 +1,10 @@
+....                                                                     [100%]
+============================== slowest durations ==============================
+259.05s call     tests/test_m4_observation.py::test_o1_lane_block_roundtrip_on_the_exhaustive_reachable_lane
+251.85s call     tests/test_m4_tower.py::test_b1_enumerated_lane_bounds
+173.59s call     tests/test_legacy_pins.py::test_siege_k32_solution_resolves_identically
+0.13s call     tests/test_m4_observation.py::test_o2_m2_aliased_lane_states_have_distinct_m4_encodings
+
+(8 durations < 0.005s hidden.  Use -vv to show these durations.)
+4 passed, 24 deselected in 684.73s (0:11:24)
+exit 0 wall_s 695

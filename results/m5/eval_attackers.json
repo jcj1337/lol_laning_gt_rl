@@ -1,0 +1,80 @@
+{
+ "meta": {
+  "study": "M5",
+  "commit": "312d118d949a52bbf66ad8516920375643d8ff4c",
+  "working_tree_dirty": true,
+  "timestamp": "2026-10-19 11:56:28",
+  "torch": "2.14.1+cpu",
+  "numpy": "2.5.3",
+  "stage": "eval_attackers"
+ },
+ "stage": "attackers",
+ "jobs": null,
+ "identities": {
+  "om:0": {
+   "path": "results/rl/checkpoints/m5/train/main/om/s0/final.pt",
+   "file_sha256": "ba3d26f2e7d35dba474acdd150790ecbcc729832cca5cc1df4e919c2b640c561"
+  },
+  "om:1": {
+   "path": "results/rl/checkpoints/m5/train/main/om/s1/final.pt",
+   "file_sha256": "8453fa5643fd4fab37f5a5e9f9e6a83e27aa684f93dc654d69bea1be30661a99"
+  },
+  "om:2": {
+   "path": "results/rl/checkpoints/m5/train/main/om/s2/final.pt",
+   "file_sha256": "51f9fb1257ab325eb31edb54aef61b66358aadcae48fd8ff8f83fe8e4a784e29"
+  },
+  "om:3": {
+   "path": "results/rl/checkpoints/m5/train/main/om/s3/final.pt",
+   "file_sha256": "a722f1114b54c3475cec682e685831ff261ae1206357bc484b95204443ef6af9"
+  },
+  "om:4": {
+   "path": "results/rl/checkpoints/m5/train/main/om/s4/final.pt",
+   "file_sha256": "86c42974e8c0b2da035201f99c0617407e4928fae0b0cb450bcf014cfb692604"
+  },
+  "om:5": {
+   "path": "results/rl/checkpoints/m5/train/main/om/s5/final.pt",
+   "file_sha256": "4ec586a6658f8c34ea491fa57b85126c7749410f81b7ec1128ec563a56aeb873"
+  },
+  "sp:0": {
+   "path": "results/rl/checkpoints/m5/train/main/sp/s0/final.pt",
+   "file_sha256": "be46074e6a019b6f2fa3fdb0b30dc6229d7c8ddfc3d7dacccadb377138a252e5"
+  },
+  "sp:1": {
+   "path": "results/rl/checkpoints/m5/train/main/sp/s1/final.pt",
+   "file_sha256": "aeb5399d5dada0b3c1b69cd17a1db36adbde6cba25a706d3c0170ab04825807d"
+  },
+  "sp:2": {
+   "path": "results/rl/checkpoints/m5/train/main/sp/s2/final.pt",
+   "file_sha256": "dc01114c3eebfa38c2b407fc3a21cc2245355c3f3822a64e88202c672c4119b4"
+  },
+  "sp:3": {
+   "path": "results/rl/checkpoints/m5/train/main/sp/s3/final.pt",
+   "file_sha256": "413c316a8e7f9cab6fac8fcb164c111c89e31871c2fa23ed5c14c7ac2a4793b9"
+  },
+  "sp:4": {
+   "path": "results/rl/checkpoints/m5/train/main/sp/s4/final.pt",
+   "file_sha256": "bbe0f9ae7f9e61f0f2e2785c0c2883a79b580e23b5d2c1dc55b6edad1bfcfa12"
+  },
+  "sp:5": {
+   "path": "results/rl/checkpoints/m5/train/main/sp/s5/final.pt",
+   "file_sha256": "689e94e54006e8ce082d23ca6840740c9ab5ea151ae9ae82719dbdad40e1ef3d"
+  }
+ },
+ "preregistration_active": {
+  "version": 1,
+  "sha256": "21e35e074cdd2628e2c4816ccc7dab4b13a62e77a803fa8936027cf5bcb396e8",
+  "document": "docs/m5/m5_preregistration.md",
+  "date": "2026-10-17"
+ },
+ "code": {
+  "git_commit": "312d118d949a52bbf66ad8516920375643d8ff4c",
+  "working_tree_dirty": true,
+  "python_files": 388,
+  "sources_sha256": "b5d0c756954723e4bcc249bdaa9a070ed3401f9db8b80319861e007a2aa0b742",
+  "diff_stat": [
+   " 10 files changed, 2006 insertions(+), 64 deletions(-)"
+  ]
+ },
+ "existing_outputs": 0,
+ "previous": null
+}

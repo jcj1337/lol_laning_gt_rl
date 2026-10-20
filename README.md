@@ -121,7 +121,7 @@ Both continue the same baseline policy for 32.768M transitions in six matched pa
 - every modelling input rebuilt independently by the evaluation code;
 - historical instruments reproduced exactly.
 
-**M5 is under way (2026-10-18; [first review package](docs/m5/m5b_initial_report.md)).**
+**M5 is complete (2026-10-19; [final report](docs/m5/m5e_closeout_report.md)).**
 - **Correction pass.** A correction pass fixed the analysis, the training monitoring and the amendment bookkeeping
   before any training ([amendment 1](docs/m5/m5_amendment_1.md); no threshold, arm or budget changed).
 - **Training.** 12 runs × 32.768M, healthy, 10.9 h.
@@ -135,7 +135,20 @@ Both continue the same baseline policy for 32.768M transitions in six matched pa
   - Four of five M4.5c strategic verdicts replicate in both arms. Concession under threat does not.
   - In every M4 limitation family the modelling finals do worse than the pure self-play finals from the same states.
     The competence cost is general, not one missing skill.
-- **Still awaiting approval:** the dedicated attackers. M5e (closeout) and M6, the research presentation, follow.
+- **Dedicated attackers (M5d, 2026-10-19).** Twelve attackers, each starting as a copy of its target, found
+  profitable deviations against both arms. They lead the modelling finals by +2.96 and the pure self-play finals by
+  +1.15 at the lane exit, in every seed. The registered comparison of the two (+1.81, interval −0.56 to +4.19) is
+  inconclusive. The attacks are target-specific. Against other opponents each attacker does worse than its starting
+  point.
+- **Conclusion.** Neither arm is better overall. M6 will present both, the modelling package for recognizable,
+  exploitable opponent styles and pure self-play for competent play. M5 compares the packages as a whole. It does
+  not say whether the competence cost comes from the belief, the opponent mix or the reduced self-play.
+- **Next: M6**, presentation, demonstration and reproducibility. The commands, seeds and SHA-256 of every result are
+  in `results/m5/reproducibility.md`, and 15 representative games open in the lane debugger.
+- **The M6 plan** ([plan](docs/m6/m6_plan.md), in review) is a new web application in which a visitor plays one
+  seat against either M5 policy, replays the verified research games and reads the findings with their limits. It
+  also covers a shorter README and three reproduction bundles. The application is planned, not implemented. The
+  Streamlit debugger stays as it is until M6 archives it.
 
 ## How we study it
 
@@ -193,10 +206,10 @@ top). In short:
 | M5a corrections and readiness | the review's eight findings: headline, multiplicity, completeness, S8 analysis, attacker scope, runtime health monitoring and evaluation gate, the amendment chain | **complete** (2026-10-17): [amendment 1](docs/m5/m5_amendment_1.md) before training; full suite 1,534 passed; monitored smoke bit-identical |
 | M5b training and the initial M5d evaluations | 12 runs × 32.768M; health; learning curves and history; opponent families, competence, head to head, midpoints, long games | **complete** (2026-10-18): healthy, 10.9 h; **outcome 2, pays at a competence cost** (P1 +9.26 ± 0.30; P2a −0.63 ± 0.35, P2b −0.44 ± 0.28) ([report](docs/m5/m5b_initial_report.md), [tables](results/m5/report.md)) |
 | M5c strategic battery and limitation cells | strategic replication per arm and the M4 limitations re-measured | **complete** (2026-10-19, 16.4 h): four of five verdicts replicate in both arms, concession under threat does not; the modelling finals are worse in every limitation family ([report](docs/m5/m5c_strategic_report.md)) |
-| M5d core attackers | 12 quarter-budget attackers (6 against each arm's finals) | **proposed, separately gated** (about 7.1 h); the recommended next step |
-| M5d optional adaptation ablation | 6 attackers against the om finals with their belief tabled, and the live/table cross-evaluation | **optional follow-up** (about +4.2 h), exploratory |
-| M5e closeout | the final report, reproducibility materials | future |
-| M6. Research presentation and reproducibility | consolidated report, reproducible commands, figures, representative trajectories, visual demo, README | proposed |
+| M5d core attackers | 12 quarter-budget attackers (6 against each arm's finals) | **complete** (2026-10-19, 6.5 h): both arms exploitable (+2.96 modelling, +1.15 pure self-play); the registered difference is inconclusive; no transfer ([report](docs/m5/m5e_closeout_report.md)) |
+| M5d optional adaptation ablation | 6 attackers against the om finals with their belief tabled, and the live/table cross-evaluation | **not run** (an optional follow-up) |
+| M5e closeout | the final report, reproducibility materials | **complete** (2026-10-19, in review): present both arms as a trade-off ([report](docs/m5/m5e_closeout_report.md), [reproducibility](results/m5/reproducibility.md)) |
+| M6. Presentation, interactive demonstration and reproducibility | a new web application (a human against either M5 policy, verified replays, the findings), a concise README and research overview, reproduction bundles, the Streamlit debugger archived; milestones M6a to M6e | **next, planned** (approved direction, 2026-10-19; [plan](docs/m6/m6_plan.md) in review); not started, nothing implemented |
 
 The documentation index is [docs/README.md](docs/README.md). **Every rule, equation and parameter of the current
 research game is in one place: [docs/m4/laning_game_mathematical_reference.md](docs/m4/laning_game_mathematical_reference.md)**

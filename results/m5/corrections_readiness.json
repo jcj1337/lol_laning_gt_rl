@@ -1,9 +1,9 @@
 {
  "meta": {
   "study": "M5",
-  "commit": "384eea13b099c08a83598875c54fc5fb9a85faa6",
+  "commit": "312d118d949a52bbf66ad8516920375643d8ff4c",
   "working_tree_dirty": true,
-  "timestamp": "2026-10-18 11:30:31",
+  "timestamp": "2026-10-19 11:54:57",
   "torch": "2.14.1+cpu",
   "numpy": "2.5.3",
   "stage": "corrections"
@@ -215,6 +215,1313 @@
     "wall_s": 127.30518170027062
    },
    "passed": true
+  },
+  "C1": {
+   "time": "2026-10-19 11:54:57",
+   "checks": {
+    "the stage plans exactly 12 core attackers (6 om, 6 sp), none of them om_table": true,
+    "every planned attacker runs 8,192,000 transitions": true,
+    "every target is the approved final (file SHA-256 = the training check's identity)": true,
+    "12 initial networks: logits and values identical to the target's": true,
+    "6 sp initial networks: the 26 widened input columns are zero": true,
+    "PPO settings = the main training's except seed and schedule length": true,
+    "PPO seeds 70,600 + 10 kind + s": true,
+    "4 smoke runs complete": true,
+    "smoke check om_s0: complete, budget reached (within one update)": true,
+    "smoke check om_s0: finite losses and gradients": true,
+    "smoke check om_s0: never terminated; one truncation per finished game": true,
+    "smoke check om_s0: critic bounded (|V| <= Omega)": true,
+    "smoke check om_s0: no illegal action sampled": true,
+    "smoke check om_s0: runtime monitor attached and agreeing with the post-hoc scan": true,
+    "smoke check om_s0: no pre-registered stop condition": true,
+    "smoke check om_s0: initial weights = the target copied into the om format": true,
+    "smoke check om_s0: target = the approved final (file SHA-256)": true,
+    "smoke check om_s0: target frozen (in-memory weights = the file's, before and after)": true,
+    "smoke check om_s0: s0 starts, 512-turn games, schedule 8192000": true,
+    "smoke check om_s0: every game against the target": true,
+    "smoke check om_s0: attacker belief updated on every turn": true,
+    "smoke check om_s0: target belief updated on every turn iff a live om target": true,
+    "smoke check sp_s0: complete, budget reached (within one update)": true,
+    "smoke check sp_s0: finite losses and gradients": true,
+    "smoke check sp_s0: never terminated; one truncation per finished game": true,
+    "smoke check sp_s0: critic bounded (|V| <= Omega)": true,
+    "smoke check sp_s0: no illegal action sampled": true,
+    "smoke check sp_s0: runtime monitor attached and agreeing with the post-hoc scan": true,
+    "smoke check sp_s0: no pre-registered stop condition": true,
+    "smoke check sp_s0: initial weights = the target copied into the om format": true,
+    "smoke check sp_s0: target = the approved final (file SHA-256)": true,
+    "smoke check sp_s0: target frozen (in-memory weights = the file's, before and after)": true,
+    "smoke check sp_s0: s0 starts, 512-turn games, schedule 8192000": true,
+    "smoke check sp_s0: every game against the target": true,
+    "smoke check sp_s0: attacker belief updated on every turn": true,
+    "smoke check sp_s0: target belief updated on every turn iff a live om target": true,
+    "om:0 re-run: bit-identical weights and histories": true,
+    "om:0 without the monitor: bit-identical weights and histories": true,
+    "the attacker's belief inputs are posteriors (rows sum to 1, within 1e-5)": true,
+    "interrupted run left an incomplete directory (no summary, some updates)": true,
+    "the stage refuses an incomplete attacker directory": true,
+    "restart_incomplete preserves it under partial/ and plans the run again": true,
+    "the restart reproduces the preserved history prefix": true,
+    "6 smoke evaluation cells written": true,
+    "cells play the designed opponents (own target live, other arm, start) with the attacker as focal": true,
+    "the om target's belief trace is stored in its cell and moves from the prior": true,
+    "no target belief trace where the opponent has none (sp target, start)": true,
+    "records hold R [2 pairs, 2 seats, 500 turns] and the turn-94 panel (D0 in every game)": true,
+    "S6 reads the attacker records: partial (1/6), no class": true,
+    "S6 seed value = the attacker leads computed directly (om - sp, lead at 114)": true,
+    "S6 discounted, per-arm values and transfer read the records (partial 1/6)": true,
+    "the Holm family keeps 15 hypotheses, S6's 3 pending": true,
+    "the S1-S5 claims are unchanged by the attacker records": true,
+    "the report renders the attacker section and the S6 row": true,
+    "main attacker evaluation: 36 core cells, 128 pairs x 500 turns, no om_table or cross cell": true,
+    "attacker game seeds distinct and disjoint from every other M5 evaluation cell": true
+   },
+   "data": {
+    "targets": {
+     "om_s0": {
+      "spec": "om:0",
+      "path": "results/rl/checkpoints/m5/train/main/om/s0/final.pt",
+      "file_sha256": "ba3d26f2e7d35dba474acdd150790ecbcc729832cca5cc1df4e919c2b640c561",
+      "stored_digest": "3d0eedf0ad331f45a4fc3028bcc84878f5d620fa940a02375b98f50e32651bab"
+     },
+     "om_s1": {
+      "spec": "om:1",
+      "path": "results/rl/checkpoints/m5/train/main/om/s1/final.pt",
+      "file_sha256": "8453fa5643fd4fab37f5a5e9f9e6a83e27aa684f93dc654d69bea1be30661a99",
+      "stored_digest": "13ed2a026ed68f34da3d34e2efe3bcfbbe67fcc4e5b271e6eec44718f0b35aa0"
+     },
+     "om_s2": {
+      "spec": "om:2",
+      "path": "results/rl/checkpoints/m5/train/main/om/s2/final.pt",
+      "file_sha256": "51f9fb1257ab325eb31edb54aef61b66358aadcae48fd8ff8f83fe8e4a784e29",
+      "stored_digest": "decb9a81b573d39318c182ff7e7a6778b772ebcbf3762d6d3f4c2b51f44b9e6a"
+     },
+     "om_s3": {
+      "spec": "om:3",
+      "path": "results/rl/checkpoints/m5/train/main/om/s3/final.pt",
+      "file_sha256": "a722f1114b54c3475cec682e685831ff261ae1206357bc484b95204443ef6af9",
+      "stored_digest": "f7421c3047222d03e2f9a8f3bf052c921378327e84f1f91eb411d6b091a5e2ed"
+     },
+     "om_s4": {
+      "spec": "om:4",
+      "path": "results/rl/checkpoints/m5/train/main/om/s4/final.pt",
+      "file_sha256": "86c42974e8c0b2da035201f99c0617407e4928fae0b0cb450bcf014cfb692604",
+      "stored_digest": "1edddaae53ff7ebfe3de3a21f577954de57d56cde4bc168f8332554921b56203"
+     },
+     "om_s5": {
+      "spec": "om:5",
+      "path": "results/rl/checkpoints/m5/train/main/om/s5/final.pt",
+      "file_sha256": "4ec586a6658f8c34ea491fa57b85126c7749410f81b7ec1128ec563a56aeb873",
+      "stored_digest": "a8646b848ccc5f0043c9edb758a5979256e600076ab9824997c12293d59fda6d"
+     },
+     "sp_s0": {
+      "spec": "sp:0",
+      "path": "results/rl/checkpoints/m5/train/main/sp/s0/final.pt",
+      "file_sha256": "be46074e6a019b6f2fa3fdb0b30dc6229d7c8ddfc3d7dacccadb377138a252e5",
+      "stored_digest": "4af8b22774bb9e360f481c6a22acb8fddede0468ee58092b3acdcf7db74291bb"
+     },
+     "sp_s1": {
+      "spec": "sp:1",
+      "path": "results/rl/checkpoints/m5/train/main/sp/s1/final.pt",
+      "file_sha256": "aeb5399d5dada0b3c1b69cd17a1db36adbde6cba25a706d3c0170ab04825807d",
+      "stored_digest": "e5578447db9bc2b248ed9533b70a91696af7e34290baafa1a430188416813c38"
+     },
+     "sp_s2": {
+      "spec": "sp:2",
+      "path": "results/rl/checkpoints/m5/train/main/sp/s2/final.pt",
+      "file_sha256": "dc01114c3eebfa38c2b407fc3a21cc2245355c3f3822a64e88202c672c4119b4",
+      "stored_digest": "af53baac88329f90786c0dd27268ef1f4a46af07e2ed552bf3747a26011f7e35"
+     },
+     "sp_s3": {
+      "spec": "sp:3",
+      "path": "results/rl/checkpoints/m5/train/main/sp/s3/final.pt",
+      "file_sha256": "413c316a8e7f9cab6fac8fcb164c111c89e31871c2fa23ed5c14c7ac2a4793b9",
+      "stored_digest": "453854b21447c1bcf7f3a0be9e8bb80a8f33242527282569014432924412eb19"
+     },
+     "sp_s4": {
+      "spec": "sp:4",
+      "path": "results/rl/checkpoints/m5/train/main/sp/s4/final.pt",
+      "file_sha256": "bbe0f9ae7f9e61f0f2e2785c0c2883a79b580e23b5d2c1dc55b6edad1bfcfa12",
+      "stored_digest": "e71b743885a23d1fd55873f69e6fc61a559d98a548e116822eb247ead244813c"
+     },
+     "sp_s5": {
+      "spec": "sp:5",
+      "path": "results/rl/checkpoints/m5/train/main/sp/s5/final.pt",
+      "file_sha256": "689e94e54006e8ce082d23ca6840740c9ab5ea151ae9ae82719dbdad40e1ef3d",
+      "stored_digest": "b45819f49800bf444bc28f1ac29fedec60d47b57922dc6955861f3f9d47851eb"
+     }
+    },
+    "ppo": {
+     "attacker": {
+      "total_steps": 8192000,
+      "n_envs": 16,
+      "n_steps": 64,
+      "epochs": 4,
+      "minibatch_size": 256,
+      "lr": 0.0003,
+      "anneal_lr": true,
+      "gamma": 0.99,
+      "gae_lambda": 0.95,
+      "clip_coef": 0.2,
+      "clip_vloss": true,
+      "vf_clip": 0.5,
+      "vf_coef": 0.5,
+      "ent_coef": 0.03,
+      "max_grad_norm": 0.5,
+      "target_kl": null,
+      "norm_adv": true,
+      "reward_scale": 0.1,
+      "hidden": [
+       128,
+       128
+      ],
+      "seed": 70600,
+      "torch_threads": 1,
+      "max_turns": null,
+      "lane_cache": 5000,
+      "expected_gank_reward": false,
+      "skill_levels": null,
+      "segment_length": 128,
+      "game_length": 512,
+      "start_archive": null,
+      "start_mix": 0.0,
+      "allow_gamma_mismatch": false
+     },
+     "differs_from_main_training_in": [
+      "seed",
+      "total_steps"
+     ]
+    },
+    "smoke": {
+     "om": {
+      "status": "complete",
+      "agent_transitions": 16384,
+      "env_turns": 16384,
+      "updates": 8,
+      "transitions_per_s": 811.6857582103717,
+      "wall_s": 24.387563900090754,
+      "digest": "83c527acf1dd8086d1cf00670e115dd5d591d8710a302c22f5cefaad2b30f12f",
+      "collector": {
+       "attack": {
+        "target": {
+         "target": "om:0",
+         "draws": {
+          "target:om": 48
+         }
+        },
+        "belief_updates": {
+         "att": 16384,
+         "tgt": 16384
+        }
+       }
+      }
+     },
+     "sp": {
+      "status": "complete",
+      "agent_transitions": 16384,
+      "env_turns": 16384,
+      "updates": 8,
+      "transitions_per_s": 999.156504319355,
+      "wall_s": 20.680649400223047,
+      "digest": "a17c7da17e767f7b120a3576ac2d202e8877b4f1ce5ccafc17d4bcf8021ead28",
+      "collector": {
+       "attack": {
+        "target": {
+         "target": "sp:0",
+         "draws": {
+          "target:sp": 48
+         }
+        },
+        "belief_updates": {
+         "att": 16384,
+         "tgt": 0
+        }
+       }
+      }
+     },
+     "om_rerun": {
+      "status": "complete",
+      "agent_transitions": 16384,
+      "env_turns": 16384,
+      "updates": 8,
+      "transitions_per_s": 826.2425485897361,
+      "wall_s": 24.089911099988967,
+      "digest": "83c527acf1dd8086d1cf00670e115dd5d591d8710a302c22f5cefaad2b30f12f",
+      "collector": {
+       "attack": {
+        "target": {
+         "target": "om:0",
+         "draws": {
+          "target:om": 48
+         }
+        },
+        "belief_updates": {
+         "att": 16384,
+         "tgt": 16384
+        }
+       }
+      }
+     },
+     "om_unmonitored": {
+      "status": "complete",
+      "agent_transitions": 16384,
+      "env_turns": 16384,
+      "updates": 8,
+      "transitions_per_s": 813.6495674386557,
+      "wall_s": 24.33419690001756,
+      "digest": "83c527acf1dd8086d1cf00670e115dd5d591d8710a302c22f5cefaad2b30f12f",
+      "collector": {
+       "attack": {
+        "target": {
+         "target": "om:0",
+         "draws": {
+          "target:om": 48
+         }
+        },
+        "belief_updates": {
+         "att": 16384,
+         "tgt": 16384
+        }
+       }
+      }
+     }
+    },
+    "smoke_check": {
+     "checks": {
+      "om_s0: complete, budget reached (within one update)": true,
+      "om_s0: finite losses and gradients": true,
+      "om_s0: never terminated; one truncation per finished game": true,
+      "om_s0: critic bounded (|V| <= Omega)": true,
+      "om_s0: no illegal action sampled": true,
+      "om_s0: runtime monitor attached and agreeing with the post-hoc scan": true,
+      "om_s0: no pre-registered stop condition": true,
+      "om_s0: initial weights = the target copied into the om format": true,
+      "om_s0: target = the approved final (file SHA-256)": true,
+      "om_s0: target frozen (in-memory weights = the file's, before and after)": true,
+      "om_s0: s0 starts, 512-turn games, schedule 8192000": true,
+      "om_s0: every game against the target": true,
+      "om_s0: the learner's seats balanced (within 5%)": true,
+      "om_s0: attacker belief updated on every turn": true,
+      "om_s0: target belief updated on every turn iff a live om target": true,
+      "sp_s0: complete, budget reached (within one update)": true,
+      "sp_s0: finite losses and gradients": true,
+      "sp_s0: never terminated; one truncation per finished game": true,
+      "sp_s0: critic bounded (|V| <= Omega)": true,
+      "sp_s0: no illegal action sampled": true,
+      "sp_s0: runtime monitor attached and agreeing with the post-hoc scan": true,
+      "sp_s0: no pre-registered stop condition": true,
+      "sp_s0: initial weights = the target copied into the om format": true,
+      "sp_s0: target = the approved final (file SHA-256)": true,
+      "sp_s0: target frozen (in-memory weights = the file's, before and after)": true,
+      "sp_s0: s0 starts, 512-turn games, schedule 8192000": true,
+      "sp_s0: every game against the target": true,
+      "sp_s0: the learner's seats balanced (within 5%)": false,
+      "sp_s0: attacker belief updated on every turn": true,
+      "sp_s0: target belief updated on every turn iff a live om target": true
+     },
+     "seat_balance_not_required": [
+      "om_s0: the learner's seats balanced (within 5%)",
+      "sp_s0: the learner's seats balanced (within 5%)"
+     ]
+    },
+    "restart": {
+     "updates_preserved": 3,
+     "moved_to": "results/rl/checkpoints/m5/attack/ready_c1/partial/attack_om_s1_20261019-115353",
+     "prefix": {
+      "attack_om_s1 (attack_om_s1_20261019-115353)": {
+       "compared_updates": 3,
+       "partial_updates": 3,
+       "mismatches": [],
+       "identical": true
+      }
+     }
+    },
+    "analysis": {
+     "S6": {
+      "status": "partial (1/6)",
+      "per_seed": {
+       "0": -0.45999956130981445
+      },
+      "class": "partial: not classified"
+     },
+     "S6_disc": {
+      "status": "partial (1/6)",
+      "per_seed": {
+       "0": 0.5384753696088065
+      },
+      "class": "partial: not classified"
+     },
+     "X_om": {
+      "status": "partial (1/6)",
+      "per_seed": {
+       "0": 1.692500352859497
+      },
+      "class": "partial: not classified"
+     },
+     "X_sp": {
+      "status": "partial (1/6)",
+      "per_seed": {
+       "0": 2.1524999141693115
+      },
+      "class": "partial: not classified"
+     },
+     "X_om_disc": {
+      "status": "partial (1/6)",
+      "per_seed": {
+       "0": 1.0299943100224778
+      },
+      "class": "partial: not classified"
+     },
+     "X_sp_disc": {
+      "status": "partial (1/6)",
+      "per_seed": {
+       "0": 0.49151894041367133
+      },
+      "class": "partial: not classified"
+     },
+     "T_om_other": {
+      "status": "partial (1/6)",
+      "per_seed": {
+       "0": -0.38437509536743164
+      },
+      "class": "partial: not classified"
+     },
+     "T_sp_other": {
+      "status": "partial (1/6)",
+      "per_seed": {
+       "0": 2.6787500381469727
+      },
+      "class": "partial: not classified"
+     },
+     "T_om_start": {
+      "status": "partial (1/6)",
+      "per_seed": {
+       "0": 3.9375
+      },
+      "class": "partial: not classified"
+     },
+     "T_sp_start": {
+      "status": "partial (1/6)",
+      "per_seed": {
+       "0": 0.7512497901916504
+      },
+      "class": "partial: not classified"
+     },
+     "T_om_other_gain": {
+      "status": "partial (1/6)",
+      "per_seed": {
+       "0": 0.40942370891571045
+      },
+      "class": "partial: not classified"
+     },
+     "T_sp_other_gain": {
+      "status": "partial (1/6)",
+      "per_seed": {
+       "0": 1.8849512338638306
+      },
+      "class": "partial: not classified"
+     },
+     "T_om_start_gain": {
+      "status": "partial (1/6)",
+      "per_seed": {
+       "0": 3.286425828933716
+      },
+      "class": "partial: not classified"
+     },
+     "T_sp_start_gain": {
+      "status": "partial (1/6)",
+      "per_seed": {
+       "0": -1.1539652347564697
+      },
+      "class": "partial: not classified"
+     },
+     "X_table": {
+      "status": "missing",
+      "per_seed": {},
+      "class": "not available"
+     }
+    },
+    "eval_design": {
+     "cells": 36,
+     "seed_min": 707000000000,
+     "seed_max": 707005120127,
+     "other_seed_max": 703050820031
+    },
+    "wall_s": 100.62441159971058
+   },
+   "passed": true,
+   "earlier_attempts": [
+    {
+     "time": "2026-10-19 11:50:53",
+     "checks": {
+      "the stage plans exactly 12 core attackers (6 om, 6 sp), none of them om_table": true,
+      "every planned attacker runs 8,192,000 transitions": true,
+      "every target is the approved final (file SHA-256 = the training check's identity)": true,
+      "12 initial networks: logits and values identical to the target's": true,
+      "6 sp initial networks: the 26 widened input columns are zero": true,
+      "PPO settings = the main training's except seed and schedule length": true,
+      "PPO seeds 70,600 + 10 kind + s": true,
+      "4 smoke runs complete": true,
+      "smoke check om_s0: complete, budget reached (within one update)": true,
+      "smoke check om_s0: finite losses and gradients": true,
+      "smoke check om_s0: never terminated; one truncation per finished game": true,
+      "smoke check om_s0: critic bounded (|V| <= Omega)": true,
+      "smoke check om_s0: no illegal action sampled": true,
+      "smoke check om_s0: runtime monitor attached and agreeing with the post-hoc scan": true,
+      "smoke check om_s0: no pre-registered stop condition": true,
+      "smoke check om_s0: initial weights = the target copied into the om format": true,
+      "smoke check om_s0: target = the approved final (file SHA-256)": true,
+      "smoke check om_s0: target frozen (in-memory weights = the file's, before and after)": true,
+      "smoke check om_s0: s0 starts, 512-turn games, schedule 8192000": true,
+      "smoke check om_s0: every game against the target": true,
+      "smoke check om_s0: attacker belief updated on every turn": true,
+      "smoke check om_s0: target belief updated on every turn iff a live om target": true,
+      "smoke check sp_s0: complete, budget reached (within one update)": true,
+      "smoke check sp_s0: finite losses and gradients": true,
+      "smoke check sp_s0: never terminated; one truncation per finished game": true,
+      "smoke check sp_s0: critic bounded (|V| <= Omega)": true,
+      "smoke check sp_s0: no illegal action sampled": true,
+      "smoke check sp_s0: runtime monitor attached and agreeing with the post-hoc scan": true,
+      "smoke check sp_s0: no pre-registered stop condition": true,
+      "smoke check sp_s0: initial weights = the target copied into the om format": true,
+      "smoke check sp_s0: target = the approved final (file SHA-256)": true,
+      "smoke check sp_s0: target frozen (in-memory weights = the file's, before and after)": true,
+      "smoke check sp_s0: s0 starts, 512-turn games, schedule 8192000": true,
+      "smoke check sp_s0: every game against the target": true,
+      "smoke check sp_s0: attacker belief updated on every turn": true,
+      "smoke check sp_s0: target belief updated on every turn iff a live om target": true,
+      "om:0 re-run: bit-identical weights and histories": true,
+      "om:0 without the monitor: bit-identical weights and histories": true,
+      "the attacker's belief inputs are posteriors (rows sum to 1, within 1e-5)": true,
+      "interrupted run left an incomplete directory (no summary, some updates)": true,
+      "the stage refuses an incomplete attacker directory": true,
+      "restart_incomplete preserves it under partial/ and plans the run again": true,
+      "the restart reproduces the preserved history prefix": true,
+      "6 smoke evaluation cells written": true,
+      "cells play the designed opponents (own target live, other arm, start) with the attacker as focal": true,
+      "the om target's belief trace is stored in its cell and moves from the prior": true,
+      "no target belief trace where the opponent has none (sp target, start)": true,
+      "records hold R [2 pairs, 2 seats, 500 turns] and the turn-94 panel": false,
+      "S6 reads the attacker records: partial (1/6), no class": true,
+      "S6 seed value = the attacker leads computed directly (om - sp, lead at 114)": true,
+      "S6 discounted, per-arm values and transfer read the records (partial 1/6)": true,
+      "the Holm family keeps 15 hypotheses, S6's 3 pending": true,
+      "the S1-S5 claims are unchanged by the attacker records": true,
+      "the report renders the attacker section and the S6 row": true,
+      "main attacker evaluation: 36 core cells, 128 pairs x 500 turns, no om_table or cross cell": true,
+      "attacker game seeds distinct and disjoint from every other M5 evaluation cell": true
+     },
+     "data": {
+      "targets": {
+       "om_s0": {
+        "spec": "om:0",
+        "path": "results/rl/checkpoints/m5/train/main/om/s0/final.pt",
+        "file_sha256": "ba3d26f2e7d35dba474acdd150790ecbcc729832cca5cc1df4e919c2b640c561",
+        "stored_digest": "3d0eedf0ad331f45a4fc3028bcc84878f5d620fa940a02375b98f50e32651bab"
+       },
+       "om_s1": {
+        "spec": "om:1",
+        "path": "results/rl/checkpoints/m5/train/main/om/s1/final.pt",
+        "file_sha256": "8453fa5643fd4fab37f5a5e9f9e6a83e27aa684f93dc654d69bea1be30661a99",
+        "stored_digest": "13ed2a026ed68f34da3d34e2efe3bcfbbe67fcc4e5b271e6eec44718f0b35aa0"
+       },
+       "om_s2": {
+        "spec": "om:2",
+        "path": "results/rl/checkpoints/m5/train/main/om/s2/final.pt",
+        "file_sha256": "51f9fb1257ab325eb31edb54aef61b66358aadcae48fd8ff8f83fe8e4a784e29",
+        "stored_digest": "decb9a81b573d39318c182ff7e7a6778b772ebcbf3762d6d3f4c2b51f44b9e6a"
+       },
+       "om_s3": {
+        "spec": "om:3",
+        "path": "results/rl/checkpoints/m5/train/main/om/s3/final.pt",
+        "file_sha256": "a722f1114b54c3475cec682e685831ff261ae1206357bc484b95204443ef6af9",
+        "stored_digest": "f7421c3047222d03e2f9a8f3bf052c921378327e84f1f91eb411d6b091a5e2ed"
+       },
+       "om_s4": {
+        "spec": "om:4",
+        "path": "results/rl/checkpoints/m5/train/main/om/s4/final.pt",
+        "file_sha256": "86c42974e8c0b2da035201f99c0617407e4928fae0b0cb450bcf014cfb692604",
+        "stored_digest": "1edddaae53ff7ebfe3de3a21f577954de57d56cde4bc168f8332554921b56203"
+       },
+       "om_s5": {
+        "spec": "om:5",
+        "path": "results/rl/checkpoints/m5/train/main/om/s5/final.pt",
+        "file_sha256": "4ec586a6658f8c34ea491fa57b85126c7749410f81b7ec1128ec563a56aeb873",
+        "stored_digest": "a8646b848ccc5f0043c9edb758a5979256e600076ab9824997c12293d59fda6d"
+       },
+       "sp_s0": {
+        "spec": "sp:0",
+        "path": "results/rl/checkpoints/m5/train/main/sp/s0/final.pt",
+        "file_sha256": "be46074e6a019b6f2fa3fdb0b30dc6229d7c8ddfc3d7dacccadb377138a252e5",
+        "stored_digest": "4af8b22774bb9e360f481c6a22acb8fddede0468ee58092b3acdcf7db74291bb"
+       },
+       "sp_s1": {
+        "spec": "sp:1",
+        "path": "results/rl/checkpoints/m5/train/main/sp/s1/final.pt",
+        "file_sha256": "aeb5399d5dada0b3c1b69cd17a1db36adbde6cba25a706d3c0170ab04825807d",
+        "stored_digest": "e5578447db9bc2b248ed9533b70a91696af7e34290baafa1a430188416813c38"
+       },
+       "sp_s2": {
+        "spec": "sp:2",
+        "path": "results/rl/checkpoints/m5/train/main/sp/s2/final.pt",
+        "file_sha256": "dc01114c3eebfa38c2b407fc3a21cc2245355c3f3822a64e88202c672c4119b4",
+        "stored_digest": "af53baac88329f90786c0dd27268ef1f4a46af07e2ed552bf3747a26011f7e35"
+       },
+       "sp_s3": {
+        "spec": "sp:3",
+        "path": "results/rl/checkpoints/m5/train/main/sp/s3/final.pt",
+        "file_sha256": "413c316a8e7f9cab6fac8fcb164c111c89e31871c2fa23ed5c14c7ac2a4793b9",
+        "stored_digest": "453854b21447c1bcf7f3a0be9e8bb80a8f33242527282569014432924412eb19"
+       },
+       "sp_s4": {
+        "spec": "sp:4",
+        "path": "results/rl/checkpoints/m5/train/main/sp/s4/final.pt",
+        "file_sha256": "bbe0f9ae7f9e61f0f2e2785c0c2883a79b580e23b5d2c1dc55b6edad1bfcfa12",
+        "stored_digest": "e71b743885a23d1fd55873f69e6fc61a559d98a548e116822eb247ead244813c"
+       },
+       "sp_s5": {
+        "spec": "sp:5",
+        "path": "results/rl/checkpoints/m5/train/main/sp/s5/final.pt",
+        "file_sha256": "689e94e54006e8ce082d23ca6840740c9ab5ea151ae9ae82719dbdad40e1ef3d",
+        "stored_digest": "b45819f49800bf444bc28f1ac29fedec60d47b57922dc6955861f3f9d47851eb"
+       }
+      },
+      "ppo": {
+       "attacker": {
+        "total_steps": 8192000,
+        "n_envs": 16,
+        "n_steps": 64,
+        "epochs": 4,
+        "minibatch_size": 256,
+        "lr": 0.0003,
+        "anneal_lr": true,
+        "gamma": 0.99,
+        "gae_lambda": 0.95,
+        "clip_coef": 0.2,
+        "clip_vloss": true,
+        "vf_clip": 0.5,
+        "vf_coef": 0.5,
+        "ent_coef": 0.03,
+        "max_grad_norm": 0.5,
+        "target_kl": null,
+        "norm_adv": true,
+        "reward_scale": 0.1,
+        "hidden": [
+         128,
+         128
+        ],
+        "seed": 70600,
+        "torch_threads": 1,
+        "max_turns": null,
+        "lane_cache": 5000,
+        "expected_gank_reward": false,
+        "skill_levels": null,
+        "segment_length": 128,
+        "game_length": 512,
+        "start_archive": null,
+        "start_mix": 0.0,
+        "allow_gamma_mismatch": false
+       },
+       "differs_from_main_training_in": [
+        "seed",
+        "total_steps"
+       ]
+      },
+      "smoke": {
+       "om": {
+        "status": "complete",
+        "agent_transitions": 16384,
+        "env_turns": 16384,
+        "updates": 8,
+        "transitions_per_s": 707.3287290629363,
+        "wall_s": 27.90482519986108,
+        "digest": "83c527acf1dd8086d1cf00670e115dd5d591d8710a302c22f5cefaad2b30f12f",
+        "collector": {
+         "attack": {
+          "target": {
+           "target": "om:0",
+           "draws": {
+            "target:om": 48
+           }
+          },
+          "belief_updates": {
+           "att": 16384,
+           "tgt": 16384
+          }
+         }
+        }
+       },
+       "sp": {
+        "status": "complete",
+        "agent_transitions": 16384,
+        "env_turns": 16384,
+        "updates": 8,
+        "transitions_per_s": 864.3519798189138,
+        "wall_s": 23.713329300284386,
+        "digest": "a17c7da17e767f7b120a3576ac2d202e8877b4f1ce5ccafc17d4bcf8021ead28",
+        "collector": {
+         "attack": {
+          "target": {
+           "target": "sp:0",
+           "draws": {
+            "target:sp": 48
+           }
+          },
+          "belief_updates": {
+           "att": 16384,
+           "tgt": 0
+          }
+         }
+        }
+       },
+       "om_rerun": {
+        "status": "complete",
+        "agent_transitions": 16384,
+        "env_turns": 16384,
+        "updates": 8,
+        "transitions_per_s": 700.6351139308543,
+        "wall_s": 28.065549799706787,
+        "digest": "83c527acf1dd8086d1cf00670e115dd5d591d8710a302c22f5cefaad2b30f12f",
+        "collector": {
+         "attack": {
+          "target": {
+           "target": "om:0",
+           "draws": {
+            "target:om": 48
+           }
+          },
+          "belief_updates": {
+           "att": 16384,
+           "tgt": 16384
+          }
+         }
+        }
+       },
+       "om_unmonitored": {
+        "status": "complete",
+        "agent_transitions": 16384,
+        "env_turns": 16384,
+        "updates": 8,
+        "transitions_per_s": 695.0247541309452,
+        "wall_s": 28.24795150011778,
+        "digest": "83c527acf1dd8086d1cf00670e115dd5d591d8710a302c22f5cefaad2b30f12f",
+        "collector": {
+         "attack": {
+          "target": {
+           "target": "om:0",
+           "draws": {
+            "target:om": 48
+           }
+          },
+          "belief_updates": {
+           "att": 16384,
+           "tgt": 16384
+          }
+         }
+        }
+       }
+      },
+      "smoke_check": {
+       "checks": {
+        "om_s0: complete, budget reached (within one update)": true,
+        "om_s0: finite losses and gradients": true,
+        "om_s0: never terminated; one truncation per finished game": true,
+        "om_s0: critic bounded (|V| <= Omega)": true,
+        "om_s0: no illegal action sampled": true,
+        "om_s0: runtime monitor attached and agreeing with the post-hoc scan": true,
+        "om_s0: no pre-registered stop condition": true,
+        "om_s0: initial weights = the target copied into the om format": true,
+        "om_s0: target = the approved final (file SHA-256)": true,
+        "om_s0: target frozen (in-memory weights = the file's, before and after)": true,
+        "om_s0: s0 starts, 512-turn games, schedule 8192000": true,
+        "om_s0: every game against the target": true,
+        "om_s0: the learner's seats balanced (within 5%)": true,
+        "om_s0: attacker belief updated on every turn": true,
+        "om_s0: target belief updated on every turn iff a live om target": true,
+        "sp_s0: complete, budget reached (within one update)": true,
+        "sp_s0: finite losses and gradients": true,
+        "sp_s0: never terminated; one truncation per finished game": true,
+        "sp_s0: critic bounded (|V| <= Omega)": true,
+        "sp_s0: no illegal action sampled": true,
+        "sp_s0: runtime monitor attached and agreeing with the post-hoc scan": true,
+        "sp_s0: no pre-registered stop condition": true,
+        "sp_s0: initial weights = the target copied into the om format": true,
+        "sp_s0: target = the approved final (file SHA-256)": true,
+        "sp_s0: target frozen (in-memory weights = the file's, before and after)": true,
+        "sp_s0: s0 starts, 512-turn games, schedule 8192000": true,
+        "sp_s0: every game against the target": true,
+        "sp_s0: the learner's seats balanced (within 5%)": false,
+        "sp_s0: attacker belief updated on every turn": true,
+        "sp_s0: target belief updated on every turn iff a live om target": true
+       },
+       "seat_balance_not_required": [
+        "om_s0: the learner's seats balanced (within 5%)",
+        "sp_s0: the learner's seats balanced (within 5%)"
+       ]
+      },
+      "restart": {
+       "updates_preserved": 3,
+       "moved_to": "results/rl/checkpoints/m5/attack/ready_c1/partial/attack_om_s1_20261019-114947",
+       "prefix": {
+        "attack_om_s1 (attack_om_s1_20261019-114947)": {
+         "compared_updates": 3,
+         "partial_updates": 3,
+         "mismatches": [],
+         "identical": true
+        }
+       }
+      },
+      "analysis": {
+       "S6": {
+        "status": "partial (1/6)",
+        "per_seed": {
+         "0": -0.45999956130981445
+        },
+        "class": "partial: not classified"
+       },
+       "S6_disc": {
+        "status": "partial (1/6)",
+        "per_seed": {
+         "0": 0.5384753696088065
+        },
+        "class": "partial: not classified"
+       },
+       "X_om": {
+        "status": "partial (1/6)",
+        "per_seed": {
+         "0": 1.692500352859497
+        },
+        "class": "partial: not classified"
+       },
+       "X_sp": {
+        "status": "partial (1/6)",
+        "per_seed": {
+         "0": 2.1524999141693115
+        },
+        "class": "partial: not classified"
+       },
+       "X_om_disc": {
+        "status": "partial (1/6)",
+        "per_seed": {
+         "0": 1.0299943100224778
+        },
+        "class": "partial: not classified"
+       },
+       "X_sp_disc": {
+        "status": "partial (1/6)",
+        "per_seed": {
+         "0": 0.49151894041367133
+        },
+        "class": "partial: not classified"
+       },
+       "T_om_other": {
+        "status": "partial (1/6)",
+        "per_seed": {
+         "0": -0.38437509536743164
+        },
+        "class": "partial: not classified"
+       },
+       "T_sp_other": {
+        "status": "partial (1/6)",
+        "per_seed": {
+         "0": 2.6787500381469727
+        },
+        "class": "partial: not classified"
+       },
+       "T_om_start": {
+        "status": "partial (1/6)",
+        "per_seed": {
+         "0": 3.9375
+        },
+        "class": "partial: not classified"
+       },
+       "T_sp_start": {
+        "status": "partial (1/6)",
+        "per_seed": {
+         "0": 0.7512497901916504
+        },
+        "class": "partial: not classified"
+       },
+       "T_om_other_gain": {
+        "status": "partial (1/6)",
+        "per_seed": {
+         "0": 0.40942370891571045
+        },
+        "class": "partial: not classified"
+       },
+       "T_sp_other_gain": {
+        "status": "partial (1/6)",
+        "per_seed": {
+         "0": 1.8849512338638306
+        },
+        "class": "partial: not classified"
+       },
+       "T_om_start_gain": {
+        "status": "partial (1/6)",
+        "per_seed": {
+         "0": 3.286425828933716
+        },
+        "class": "partial: not classified"
+       },
+       "T_sp_start_gain": {
+        "status": "partial (1/6)",
+        "per_seed": {
+         "0": -1.1539652347564697
+        },
+        "class": "partial: not classified"
+       },
+       "X_table": {
+        "status": "missing",
+        "per_seed": {},
+        "class": "not available"
+       }
+      },
+      "eval_design": {
+       "cells": 36,
+       "seed_min": 707000000000,
+       "seed_max": 707005120127,
+       "other_seed_max": 703050820031
+      },
+      "wall_s": 107.67617450002581
+     },
+     "passed": false
+    },
+    {
+     "time": "2026-10-19 11:52:58",
+     "checks": {
+      "the stage plans exactly 12 core attackers (6 om, 6 sp), none of them om_table": true,
+      "every planned attacker runs 8,192,000 transitions": true,
+      "every target is the approved final (file SHA-256 = the training check's identity)": true,
+      "12 initial networks: logits and values identical to the target's": true,
+      "6 sp initial networks: the 26 widened input columns are zero": true,
+      "PPO settings = the main training's except seed and schedule length": true,
+      "PPO seeds 70,600 + 10 kind + s": true,
+      "4 smoke runs complete": true,
+      "smoke check om_s0: complete, budget reached (within one update)": true,
+      "smoke check om_s0: finite losses and gradients": true,
+      "smoke check om_s0: never terminated; one truncation per finished game": true,
+      "smoke check om_s0: critic bounded (|V| <= Omega)": true,
+      "smoke check om_s0: no illegal action sampled": true,
+      "smoke check om_s0: runtime monitor attached and agreeing with the post-hoc scan": true,
+      "smoke check om_s0: no pre-registered stop condition": true,
+      "smoke check om_s0: initial weights = the target copied into the om format": true,
+      "smoke check om_s0: target = the approved final (file SHA-256)": true,
+      "smoke check om_s0: target frozen (in-memory weights = the file's, before and after)": true,
+      "smoke check om_s0: s0 starts, 512-turn games, schedule 8192000": true,
+      "smoke check om_s0: every game against the target": true,
+      "smoke check om_s0: attacker belief updated on every turn": true,
+      "smoke check om_s0: target belief updated on every turn iff a live om target": true,
+      "smoke check sp_s0: complete, budget reached (within one update)": true,
+      "smoke check sp_s0: finite losses and gradients": true,
+      "smoke check sp_s0: never terminated; one truncation per finished game": true,
+      "smoke check sp_s0: critic bounded (|V| <= Omega)": true,
+      "smoke check sp_s0: no illegal action sampled": true,
+      "smoke check sp_s0: runtime monitor attached and agreeing with the post-hoc scan": true,
+      "smoke check sp_s0: no pre-registered stop condition": true,
+      "smoke check sp_s0: initial weights = the target copied into the om format": true,
+      "smoke check sp_s0: target = the approved final (file SHA-256)": true,
+      "smoke check sp_s0: target frozen (in-memory weights = the file's, before and after)": true,
+      "smoke check sp_s0: s0 starts, 512-turn games, schedule 8192000": true,
+      "smoke check sp_s0: every game against the target": true,
+      "smoke check sp_s0: attacker belief updated on every turn": true,
+      "smoke check sp_s0: target belief updated on every turn iff a live om target": true,
+      "om:0 re-run: bit-identical weights and histories": true,
+      "om:0 without the monitor: bit-identical weights and histories": true,
+      "the attacker's belief inputs are posteriors (rows sum to 1, within 1e-5)": true,
+      "interrupted run left an incomplete directory (no summary, some updates)": true,
+      "the stage refuses an incomplete attacker directory": true,
+      "restart_incomplete preserves it under partial/ and plans the run again": true,
+      "the restart reproduces the preserved history prefix": true,
+      "6 smoke evaluation cells written": true,
+      "cells play the designed opponents (own target live, other arm, start) with the attacker as focal": true,
+      "the om target's belief trace is stored in its cell and moves from the prior": true,
+      "no target belief trace where the opponent has none (sp target, start)": true,
+      "records hold R [2 pairs, 2 seats, 500 turns] and the turn-94 panel": false,
+      "S6 reads the attacker records: partial (1/6), no class": true,
+      "S6 seed value = the attacker leads computed directly (om - sp, lead at 114)": true,
+      "S6 discounted, per-arm values and transfer read the records (partial 1/6)": true,
+      "the Holm family keeps 15 hypotheses, S6's 3 pending": true,
+      "the S1-S5 claims are unchanged by the attacker records": true,
+      "the report renders the attacker section and the S6 row": true,
+      "main attacker evaluation: 36 core cells, 128 pairs x 500 turns, no om_table or cross cell": true,
+      "attacker game seeds distinct and disjoint from every other M5 evaluation cell": true
+     },
+     "data": {
+      "targets": {
+       "om_s0": {
+        "spec": "om:0",
+        "path": "results/rl/checkpoints/m5/train/main/om/s0/final.pt",
+        "file_sha256": "ba3d26f2e7d35dba474acdd150790ecbcc729832cca5cc1df4e919c2b640c561",
+        "stored_digest": "3d0eedf0ad331f45a4fc3028bcc84878f5d620fa940a02375b98f50e32651bab"
+       },
+       "om_s1": {
+        "spec": "om:1",
+        "path": "results/rl/checkpoints/m5/train/main/om/s1/final.pt",
+        "file_sha256": "8453fa5643fd4fab37f5a5e9f9e6a83e27aa684f93dc654d69bea1be30661a99",
+        "stored_digest": "13ed2a026ed68f34da3d34e2efe3bcfbbe67fcc4e5b271e6eec44718f0b35aa0"
+       },
+       "om_s2": {
+        "spec": "om:2",
+        "path": "results/rl/checkpoints/m5/train/main/om/s2/final.pt",
+        "file_sha256": "51f9fb1257ab325eb31edb54aef61b66358aadcae48fd8ff8f83fe8e4a784e29",
+        "stored_digest": "decb9a81b573d39318c182ff7e7a6778b772ebcbf3762d6d3f4c2b51f44b9e6a"
+       },
+       "om_s3": {
+        "spec": "om:3",
+        "path": "results/rl/checkpoints/m5/train/main/om/s3/final.pt",
+        "file_sha256": "a722f1114b54c3475cec682e685831ff261ae1206357bc484b95204443ef6af9",
+        "stored_digest": "f7421c3047222d03e2f9a8f3bf052c921378327e84f1f91eb411d6b091a5e2ed"
+       },
+       "om_s4": {
+        "spec": "om:4",
+        "path": "results/rl/checkpoints/m5/train/main/om/s4/final.pt",
+        "file_sha256": "86c42974e8c0b2da035201f99c0617407e4928fae0b0cb450bcf014cfb692604",
+        "stored_digest": "1edddaae53ff7ebfe3de3a21f577954de57d56cde4bc168f8332554921b56203"
+       },
+       "om_s5": {
+        "spec": "om:5",
+        "path": "results/rl/checkpoints/m5/train/main/om/s5/final.pt",
+        "file_sha256": "4ec586a6658f8c34ea491fa57b85126c7749410f81b7ec1128ec563a56aeb873",
+        "stored_digest": "a8646b848ccc5f0043c9edb758a5979256e600076ab9824997c12293d59fda6d"
+       },
+       "sp_s0": {
+        "spec": "sp:0",
+        "path": "results/rl/checkpoints/m5/train/main/sp/s0/final.pt",
+        "file_sha256": "be46074e6a019b6f2fa3fdb0b30dc6229d7c8ddfc3d7dacccadb377138a252e5",
+        "stored_digest": "4af8b22774bb9e360f481c6a22acb8fddede0468ee58092b3acdcf7db74291bb"
+       },
+       "sp_s1": {
+        "spec": "sp:1",
+        "path": "results/rl/checkpoints/m5/train/main/sp/s1/final.pt",
+        "file_sha256": "aeb5399d5dada0b3c1b69cd17a1db36adbde6cba25a706d3c0170ab04825807d",
+        "stored_digest": "e5578447db9bc2b248ed9533b70a91696af7e34290baafa1a430188416813c38"
+       },
+       "sp_s2": {
+        "spec": "sp:2",
+        "path": "results/rl/checkpoints/m5/train/main/sp/s2/final.pt",
+        "file_sha256": "dc01114c3eebfa38c2b407fc3a21cc2245355c3f3822a64e88202c672c4119b4",
+        "stored_digest": "af53baac88329f90786c0dd27268ef1f4a46af07e2ed552bf3747a26011f7e35"
+       },
+       "sp_s3": {
+        "spec": "sp:3",
+        "path": "results/rl/checkpoints/m5/train/main/sp/s3/final.pt",
+        "file_sha256": "413c316a8e7f9cab6fac8fcb164c111c89e31871c2fa23ed5c14c7ac2a4793b9",
+        "stored_digest": "453854b21447c1bcf7f3a0be9e8bb80a8f33242527282569014432924412eb19"
+       },
+       "sp_s4": {
+        "spec": "sp:4",
+        "path": "results/rl/checkpoints/m5/train/main/sp/s4/final.pt",
+        "file_sha256": "bbe0f9ae7f9e61f0f2e2785c0c2883a79b580e23b5d2c1dc55b6edad1bfcfa12",
+        "stored_digest": "e71b743885a23d1fd55873f69e6fc61a559d98a548e116822eb247ead244813c"
+       },
+       "sp_s5": {
+        "spec": "sp:5",
+        "path": "results/rl/checkpoints/m5/train/main/sp/s5/final.pt",
+        "file_sha256": "689e94e54006e8ce082d23ca6840740c9ab5ea151ae9ae82719dbdad40e1ef3d",
+        "stored_digest": "b45819f49800bf444bc28f1ac29fedec60d47b57922dc6955861f3f9d47851eb"
+       }
+      },
+      "ppo": {
+       "attacker": {
+        "total_steps": 8192000,
+        "n_envs": 16,
+        "n_steps": 64,
+        "epochs": 4,
+        "minibatch_size": 256,
+        "lr": 0.0003,
+        "anneal_lr": true,
+        "gamma": 0.99,
+        "gae_lambda": 0.95,
+        "clip_coef": 0.2,
+        "clip_vloss": true,
+        "vf_clip": 0.5,
+        "vf_coef": 0.5,
+        "ent_coef": 0.03,
+        "max_grad_norm": 0.5,
+        "target_kl": null,
+        "norm_adv": true,
+        "reward_scale": 0.1,
+        "hidden": [
+         128,
+         128
+        ],
+        "seed": 70600,
+        "torch_threads": 1,
+        "max_turns": null,
+        "lane_cache": 5000,
+        "expected_gank_reward": false,
+        "skill_levels": null,
+        "segment_length": 128,
+        "game_length": 512,
+        "start_archive": null,
+        "start_mix": 0.0,
+        "allow_gamma_mismatch": false
+       },
+       "differs_from_main_training_in": [
+        "seed",
+        "total_steps"
+       ]
+      },
+      "smoke": {
+       "om": {
+        "status": "complete",
+        "agent_transitions": 16384,
+        "env_turns": 16384,
+        "updates": 8,
+        "transitions_per_s": 756.4810873099835,
+        "wall_s": 26.044338199775666,
+        "digest": "83c527acf1dd8086d1cf00670e115dd5d591d8710a302c22f5cefaad2b30f12f",
+        "collector": {
+         "attack": {
+          "target": {
+           "target": "om:0",
+           "draws": {
+            "target:om": 48
+           }
+          },
+          "belief_updates": {
+           "att": 16384,
+           "tgt": 16384
+          }
+         }
+        }
+       },
+       "sp": {
+        "status": "complete",
+        "agent_transitions": 16384,
+        "env_turns": 16384,
+        "updates": 8,
+        "transitions_per_s": 906.4082376280419,
+        "wall_s": 22.506973200012,
+        "digest": "a17c7da17e767f7b120a3576ac2d202e8877b4f1ce5ccafc17d4bcf8021ead28",
+        "collector": {
+         "attack": {
+          "target": {
+           "target": "sp:0",
+           "draws": {
+            "target:sp": 48
+           }
+          },
+          "belief_updates": {
+           "att": 16384,
+           "tgt": 0
+          }
+         }
+        }
+       },
+       "om_rerun": {
+        "status": "complete",
+        "agent_transitions": 16384,
+        "env_turns": 16384,
+        "updates": 8,
+        "transitions_per_s": 757.518790103844,
+        "wall_s": 26.084365699905902,
+        "digest": "83c527acf1dd8086d1cf00670e115dd5d591d8710a302c22f5cefaad2b30f12f",
+        "collector": {
+         "attack": {
+          "target": {
+           "target": "om:0",
+           "draws": {
+            "target:om": 48
+           }
+          },
+          "belief_updates": {
+           "att": 16384,
+           "tgt": 16384
+          }
+         }
+        }
+       },
+       "om_unmonitored": {
+        "status": "complete",
+        "agent_transitions": 16384,
+        "env_turns": 16384,
+        "updates": 8,
+        "transitions_per_s": 754.2061458532652,
+        "wall_s": 26.175007000099868,
+        "digest": "83c527acf1dd8086d1cf00670e115dd5d591d8710a302c22f5cefaad2b30f12f",
+        "collector": {
+         "attack": {
+          "target": {
+           "target": "om:0",
+           "draws": {
+            "target:om": 48
+           }
+          },
+          "belief_updates": {
+           "att": 16384,
+           "tgt": 16384
+          }
+         }
+        }
+       }
+      },
+      "smoke_check": {
+       "checks": {
+        "om_s0: complete, budget reached (within one update)": true,
+        "om_s0: finite losses and gradients": true,
+        "om_s0: never terminated; one truncation per finished game": true,
+        "om_s0: critic bounded (|V| <= Omega)": true,
+        "om_s0: no illegal action sampled": true,
+        "om_s0: runtime monitor attached and agreeing with the post-hoc scan": true,
+        "om_s0: no pre-registered stop condition": true,
+        "om_s0: initial weights = the target copied into the om format": true,
+        "om_s0: target = the approved final (file SHA-256)": true,
+        "om_s0: target frozen (in-memory weights = the file's, before and after)": true,
+        "om_s0: s0 starts, 512-turn games, schedule 8192000": true,
+        "om_s0: every game against the target": true,
+        "om_s0: the learner's seats balanced (within 5%)": true,
+        "om_s0: attacker belief updated on every turn": true,
+        "om_s0: target belief updated on every turn iff a live om target": true,
+        "sp_s0: complete, budget reached (within one update)": true,
+        "sp_s0: finite losses and gradients": true,
+        "sp_s0: never terminated; one truncation per finished game": true,
+        "sp_s0: critic bounded (|V| <= Omega)": true,
+        "sp_s0: no illegal action sampled": true,
+        "sp_s0: runtime monitor attached and agreeing with the post-hoc scan": true,
+        "sp_s0: no pre-registered stop condition": true,
+        "sp_s0: initial weights = the target copied into the om format": true,
+        "sp_s0: target = the approved final (file SHA-256)": true,
+        "sp_s0: target frozen (in-memory weights = the file's, before and after)": true,
+        "sp_s0: s0 starts, 512-turn games, schedule 8192000": true,
+        "sp_s0: every game against the target": true,
+        "sp_s0: the learner's seats balanced (within 5%)": false,
+        "sp_s0: attacker belief updated on every turn": true,
+        "sp_s0: target belief updated on every turn iff a live om target": true
+       },
+       "seat_balance_not_required": [
+        "om_s0: the learner's seats balanced (within 5%)",
+        "sp_s0: the learner's seats balanced (within 5%)"
+       ]
+      },
+      "restart": {
+       "updates_preserved": 3,
+       "moved_to": "results/rl/checkpoints/m5/attack/ready_c1/partial/attack_om_s1_20261019-115156",
+       "prefix": {
+        "attack_om_s1 (attack_om_s1_20261019-115156)": {
+         "compared_updates": 3,
+         "partial_updates": 3,
+         "mismatches": [],
+         "identical": true
+        }
+       }
+      },
+      "analysis": {
+       "S6": {
+        "status": "partial (1/6)",
+        "per_seed": {
+         "0": -0.45999956130981445
+        },
+        "class": "partial: not classified"
+       },
+       "S6_disc": {
+        "status": "partial (1/6)",
+        "per_seed": {
+         "0": 0.5384753696088065
+        },
+        "class": "partial: not classified"
+       },
+       "X_om": {
+        "status": "partial (1/6)",
+        "per_seed": {
+         "0": 1.692500352859497
+        },
+        "class": "partial: not classified"
+       },
+       "X_sp": {
+        "status": "partial (1/6)",
+        "per_seed": {
+         "0": 2.1524999141693115
+        },
+        "class": "partial: not classified"
+       },
+       "X_om_disc": {
+        "status": "partial (1/6)",
+        "per_seed": {
+         "0": 1.0299943100224778
+        },
+        "class": "partial: not classified"
+       },
+       "X_sp_disc": {
+        "status": "partial (1/6)",
+        "per_seed": {
+         "0": 0.49151894041367133
+        },
+        "class": "partial: not classified"
+       },
+       "T_om_other": {
+        "status": "partial (1/6)",
+        "per_seed": {
+         "0": -0.38437509536743164
+        },
+        "class": "partial: not classified"
+       },
+       "T_sp_other": {
+        "status": "partial (1/6)",
+        "per_seed": {
+         "0": 2.6787500381469727
+        },
+        "class": "partial: not classified"
+       },
+       "T_om_start": {
+        "status": "partial (1/6)",
+        "per_seed": {
+         "0": 3.9375
+        },
+        "class": "partial: not classified"
+       },
+       "T_sp_start": {
+        "status": "partial (1/6)",
+        "per_seed": {
+         "0": 0.7512497901916504
+        },
+        "class": "partial: not classified"
+       },
+       "T_om_other_gain": {
+        "status": "partial (1/6)",
+        "per_seed": {
+         "0": 0.40942370891571045
+        },
+        "class": "partial: not classified"
+       },
+       "T_sp_other_gain": {
+        "status": "partial (1/6)",
+        "per_seed": {
+         "0": 1.8849512338638306
+        },
+        "class": "partial: not classified"
+       },
+       "T_om_start_gain": {
+        "status": "partial (1/6)",
+        "per_seed": {
+         "0": 3.286425828933716
+        },
+        "class": "partial: not classified"
+       },
+       "T_sp_start_gain": {
+        "status": "partial (1/6)",
+        "per_seed": {
+         "0": -1.1539652347564697
+        },
+        "class": "partial: not classified"
+       },
+       "X_table": {
+        "status": "missing",
+        "per_seed": {},
+        "class": "not available"
+       }
+      },
+      "eval_design": {
+       "cells": 36,
+       "seed_min": 707000000000,
+       "seed_max": 707005120127,
+       "other_seed_max": 703050820031
+      },
+      "wall_s": 102.08702800003812
+     },
+     "passed": false
+    }
+   ]
   }
  },
  "all_passed": true

@@ -85,8 +85,9 @@ def _seat(spec: tuple, sd: int, seat: int, T: int):
     raise ValueError(spec)
 
 
-def play(a_spec: tuple, b_spec: tuple, sd: int, T: int, panel: bool = True, lane_step=None) -> dict:
-    """One game from s0 (module docstring): {"r": [T], "trace": {seat: [len(CHECK_TURNS), K]}, "panel": {...}}."""
+def play(a_spec: tuple, b_spec: tuple, sd: int, T: int, panel: bool = True, lane_step=None, record: bool = False) -> dict:
+    """One game from s0 (module docstring): {"r": [T], "trace": {seat: [len(CHECK_TURNS), K]}, "panel": {...}}; with
+    `record`, also "codes" [T, 2] (both seats' actions) and "lp" {om seat: [T, K]} (its belief after every turn)."""
     from ....champions import N_CHANCE
     from ....champions_m4 import context, resolve_turn_m4
     from ....diagnostics import lane_exit as LX
@@ -108,6 +109,8 @@ def play(a_spec: tuple, b_spec: tuple, sd: int, T: int, panel: bool = True, lane
     checks = {t: j for j, t in enumerate(CHECK_TURNS)}
     absent = [[], []]
     pan = None
+    codes_all = np.zeros((T, 2), dtype=np.int16) if record else None
+    lp_all = {s: np.zeros((T, C.K), dtype=np.float32) for s in om} if record else None
     for i in range(T):
         u = rng.random(N_CHANCE)
         if panel:
@@ -130,13 +133,20 @@ def play(a_spec: tuple, b_spec: tuple, sd: int, T: int, panel: bool = True, lane
         for s, p in enumerate(seats):
             if p[0] == "net":
                 E.observe_turn(p[1], cfg, lane, m4, k0 + i, (codes[0], codes[1]))
+        if record:
+            codes_all[i] = codes
+            for s, pol in om.items():
+                lp_all[s][i] = pol.belief.lp
         if (i + 1) in checks:
             for s, pol in om.items():
                 trace[s][checks[i + 1]] = pol.belief.lp
         r[i] = t.reward
         lane, m4 = t.lane.state, t.champ
         last = (codes[0], codes[1])
-    return {"r": r, "trace": trace, "panel": pan}
+    out = {"r": r, "trace": trace, "panel": pan}
+    if record:
+        out.update({"codes": codes_all, "lp": lp_all})
+    return out
 
 
 # ---------------------------------------------------------------------------------------------- cells
@@ -147,7 +157,9 @@ def game_seed(root: int, cell: int, m: int) -> int:
 def cell_job(j: dict) -> tuple:
     """`j`: key, path, focals (list of seat specs), opponent (seat spec), N, T, root, cell. Every focal plays the
     opponent on the same N paired-seat games; stores R [N, 2, T] (the focal's reward, orientation 0 = focal in seat A),
-    the focal's belief traces and the lane-exit panels (focal orientation). Resumable: an existing file is returned."""
+    the focal's belief traces, the opponent's belief traces when the opponent has a belief (f<i>__opp_trace: an om
+    target's belief about the focal) and the lane-exit panels (focal orientation). Resumable: an existing file is
+    returned."""
     path = j["path"]
     if os.path.exists(path):
         return j["key"], {"path": path, "cached": True}
@@ -160,6 +172,8 @@ def cell_job(j: dict) -> tuple:
         focal = tuple(focal)
         R = np.zeros((N, 2, T), dtype=np.float32)
         tr = np.zeros((N, 2, len(CHECK_TURNS), C.K), dtype=np.float32)
+        otr = np.zeros((N, 2, len(CHECK_TURNS), C.K), dtype=np.float32)
+        opp_belief = False
         pan = np.full((N, 2, len(PANEL_KEYS)), np.nan, dtype=np.float32)
         for m in range(N):
             sd = game_seed(j["root"], j["cell"], m)
@@ -168,10 +182,14 @@ def cell_job(j: dict) -> tuple:
                 R[m, o] = g["r"] if o == 0 else -g["r"]
                 if o in g["trace"]:
                     tr[m, o] = g["trace"][o]
+                if 1 - o in g["trace"]:
+                    otr[m, o], opp_belief = g["trace"][1 - o], True
                 if g["panel"] is not None:
                     p = g["panel"]
                     pan[m, o] = [p[k] if o == 0 else _mirror_panel(k, p) for k in PANEL_KEYS]
         out[f"f{f}__r"], out[f"f{f}__trace"], out[f"f{f}__panel"] = R, tr, pan
+        if opp_belief:
+            out[f"f{f}__opp_trace"] = otr
     os.makedirs(os.path.dirname(path), exist_ok=True)
     tmp = path + f".{os.getpid()}.tmp.npz"
     np.savez_compressed(tmp, **out, focals=np.asarray([repr(tuple(x)) for x in j["focals"]]),

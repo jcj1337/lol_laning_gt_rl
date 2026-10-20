@@ -152,11 +152,20 @@ def _peak_memory_mb() -> Dict[str, float]:
 
 
 def history(out: str) -> List[dict]:
+    """The run's history entries; a truncated LAST line (a process killed while writing it) is dropped."""
     p = os.path.join(out, "history.jsonl")
     if not os.path.exists(p):
         return []
     with open(p, encoding="utf-8") as f:
-        return [json.loads(x) for x in f if x.strip()]
+        lines = [x for x in f if x.strip()]
+    out_ = []
+    for i, x in enumerate(lines):
+        try:
+            out_.append(json.loads(x))
+        except ValueError:
+            if i < len(lines) - 1:
+                raise
+    return out_
 
 
 def shares(h: List[dict]) -> dict:
@@ -267,15 +276,17 @@ def _complete(d: str) -> bool:
     return os.path.exists(p) and (C.jload(p) or {}).get("status") == "complete"
 
 
-def preserve_partial(d: str, phase: str, name: str) -> str:
-    """Move an incomplete run directory, intact, under train/<phase>/partial/ (never deleted); returns the new path."""
-    dst = os.path.join(C.CKPT, "train", phase, "partial", f"{name}_{time.strftime('%Y%m%d-%H%M%S')}")
+def preserve_partial(d: str, phase: str, name: str, root: Optional[str] = None, out: str = C.OUT) -> str:
+    """Move an incomplete run directory, intact, under train/<phase>/partial/ or `root` (never deleted), recording the
+    move in <out>/restarts.json; returns the new path."""
+    dst = os.path.join(root or os.path.join(C.CKPT, "train", phase, "partial"),
+                       f"{name}_{time.strftime('%Y%m%d-%H%M%S')}")
     os.makedirs(os.path.dirname(dst), exist_ok=True)
     shutil.move(d, dst)
-    rec = C.load("restarts") or {"restarts": []}
+    rec = C.load("restarts", out) or {"restarts": []}
     rec["restarts"].append({"run": name, "phase": phase, "moved_to": dst.replace("\\", "/"),
                             "updates_preserved": len(history(dst)), "time": time.strftime("%Y-%m-%d %H:%M:%S")})
-    C.save_json("restarts", rec)
+    C.save_json("restarts", rec, out)
     return dst
 
 

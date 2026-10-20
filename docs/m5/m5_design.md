@@ -2,10 +2,12 @@
 
 *2026-10-17. Status: **design amended by the M5a correction pass (amendment 1,
 [m5_amendment_1.md](m5_amendment_1.md)); main training and the initial evaluations (monitoring, opponent families and
-head to head) authorized by the user on 2026-10-17. The strategic battery, the limitation cells and the attackers await
-separate review and approval.** Readiness: [m5a_readiness_report.md](m5a_readiness_report.md) (the M5a record,
-unchanged). The protocol: [m5_preregistration.md](m5_preregistration.md), frozen and amended once before training.
-Campaign progress and results: [m5b_initial_report.md](m5b_initial_report.md).*
+head to head) authorized by the user on 2026-10-17. The strategic battery and the limitation cells were approved on
+2026-10-18, and the 12 core attackers on 2026-10-19. All have run. The optional om_table ablation has not.**
+Readiness: [m5a_readiness_report.md](m5a_readiness_report.md) (the M5a record, unchanged). The protocol:
+[m5_preregistration.md](m5_preregistration.md), frozen and amended once before training. Results: the final report
+[m5e_closeout_report.md](m5e_closeout_report.md), and the stage reports [m5b_initial_report.md](m5b_initial_report.md)
+and [m5c_strategic_report.md](m5c_strategic_report.md).*
 
 **Approved direction** (the user, 2026-10-17, in the M5a brief): M5 includes opponent modelling and compares the whole
 package with continued pure self-play. Kept fixed by that brief:

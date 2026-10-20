@@ -459,27 +459,23 @@ def stage_attack_tables(workers: int, include_optional: bool = False) -> None:
             np.save(p, AT.self_play_table(f"om:{s}"))
 
 
-def stage_attackers(workers: int, include_optional: bool = False) -> None:
+def stage_attackers(workers: int, include_optional: bool = False, restart_incomplete: bool = False) -> dict:
+    """The attacker training (`attackers.train`: the coordinator, the monitor, restarts, then `attackers.check`), after
+    the training gate and with a manifest of the target identities."""
     _gate()
     from . import attackers as AT
-    js = []
-    for kind in AT.CORE_KINDS + (AT.OPTIONAL_KINDS if include_optional else ()):
-        for s in C.SEEDS:
-            d = AT.attacker_dir(kind, s)
-            if os.path.exists(os.path.join(d, "summary.json")) and \
-                    (C.jload(os.path.join(d, "summary.json")) or {}).get("status") == "complete":
-                continue
-            if os.path.isdir(d) and os.listdir(d):
-                raise SystemExit(f"{d} exists and is incomplete: inspect it (attacker runs are never overwritten)")
-            js.append((kind, s, AT.ATTACK_BUDGET, None, "main", False))
-    res = C.run_jobs(AT.train_job, js, workers, "M5d attackers")
-    C.save_json("attackers_train", {"meta": C.meta(stage="attackers"), "runs": res})
+    kinds = AT.CORE_KINDS + (AT.OPTIONAL_KINDS if include_optional else ())
+    targets = sorted({AT.target_spec(k, s) for k in kinds for s in C.SEEDS})
+    stage_manifest("attackers", specs=targets,
+                   existing=sum(1 for k in kinds for s in C.SEEDS if AT._complete(AT.attacker_dir(k, s))))
+    return AT.train(workers, kinds, restart_incomplete=restart_incomplete)
 
 
 def stage_attack_eval(workers: int, include_optional: bool = False) -> None:
     _gate()
     from . import attackers as AT
     kinds = AT.CORE_KINDS + (AT.OPTIONAL_KINDS if include_optional else ())
+    AT.require_ok("main", kinds)
     _run_cells(AT.eval_jobs(kinds), workers, "M5d attack eval", "attack_eval")
 
 

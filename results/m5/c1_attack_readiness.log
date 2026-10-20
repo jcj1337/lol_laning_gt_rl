@@ -1,0 +1,70 @@
+== M5 stage C1 (4 workers)
+  [M5 C1 attacker smoke] 1/4 done, 21 s
+  [M5 C1 attacker smoke] 2/4 done, 24 s
+  [M5 C1 attacker smoke] 3/4 done, 25 s
+  [M5 C1 attacker smoke] 4/4 done, 25 s
+  [M5 C1 attacker eval] 1/6 done, 9 s
+  [M5 C1 attacker eval] 2/6 done, 9 s
+  [M5 C1 attacker eval] 3/6 done, 9 s
+  [M5 C1 attacker eval] 4/6 done, 11 s
+  [M5 C1 attacker eval] 5/6 done, 13 s
+  [M5 C1 attacker eval] 6/6 done, 14 s
+  PASS  the stage plans exactly 12 core attackers (6 om, 6 sp), none of them om_table
+  PASS  every planned attacker runs 8,192,000 transitions
+  PASS  every target is the approved final (file SHA-256 = the training check's identity)
+  PASS  12 initial networks: logits and values identical to the target's
+  PASS  6 sp initial networks: the 26 widened input columns are zero
+  PASS  PPO settings = the main training's except seed and schedule length
+  PASS  PPO seeds 70,600 + 10 kind + s
+  PASS  4 smoke runs complete
+  PASS  smoke check om_s0: complete, budget reached (within one update)
+  PASS  smoke check om_s0: finite losses and gradients
+  PASS  smoke check om_s0: never terminated; one truncation per finished game
+  PASS  smoke check om_s0: critic bounded (|V| <= Omega)
+  PASS  smoke check om_s0: no illegal action sampled
+  PASS  smoke check om_s0: runtime monitor attached and agreeing with the post-hoc scan
+  PASS  smoke check om_s0: no pre-registered stop condition
+  PASS  smoke check om_s0: initial weights = the target copied into the om format
+  PASS  smoke check om_s0: target = the approved final (file SHA-256)
+  PASS  smoke check om_s0: target frozen (in-memory weights = the file's, before and after)
+  PASS  smoke check om_s0: s0 starts, 512-turn games, schedule 8192000
+  PASS  smoke check om_s0: every game against the target
+  PASS  smoke check om_s0: attacker belief updated on every turn
+  PASS  smoke check om_s0: target belief updated on every turn iff a live om target
+  PASS  smoke check sp_s0: complete, budget reached (within one update)
+  PASS  smoke check sp_s0: finite losses and gradients
+  PASS  smoke check sp_s0: never terminated; one truncation per finished game
+  PASS  smoke check sp_s0: critic bounded (|V| <= Omega)
+  PASS  smoke check sp_s0: no illegal action sampled
+  PASS  smoke check sp_s0: runtime monitor attached and agreeing with the post-hoc scan
+  PASS  smoke check sp_s0: no pre-registered stop condition
+  PASS  smoke check sp_s0: initial weights = the target copied into the om format
+  PASS  smoke check sp_s0: target = the approved final (file SHA-256)
+  PASS  smoke check sp_s0: target frozen (in-memory weights = the file's, before and after)
+  PASS  smoke check sp_s0: s0 starts, 512-turn games, schedule 8192000
+  PASS  smoke check sp_s0: every game against the target
+  PASS  smoke check sp_s0: attacker belief updated on every turn
+  PASS  smoke check sp_s0: target belief updated on every turn iff a live om target
+  PASS  om:0 re-run: bit-identical weights and histories
+  PASS  om:0 without the monitor: bit-identical weights and histories
+  PASS  the attacker's belief inputs are posteriors (rows sum to 1, within 1e-5)
+  PASS  interrupted run left an incomplete directory (no summary, some updates)
+  PASS  the stage refuses an incomplete attacker directory
+  PASS  restart_incomplete preserves it under partial/ and plans the run again
+  PASS  the restart reproduces the preserved history prefix
+  PASS  6 smoke evaluation cells written
+  PASS  cells play the designed opponents (own target live, other arm, start) with the attacker as focal
+  PASS  the om target's belief trace is stored in its cell and moves from the prior
+  PASS  no target belief trace where the opponent has none (sp target, start)
+  PASS  records hold R [2 pairs, 2 seats, 500 turns] and the turn-94 panel (D0 in every game)
+  PASS  S6 reads the attacker records: partial (1/6), no class
+  PASS  S6 seed value = the attacker leads computed directly (om - sp, lead at 114)
+  PASS  S6 discounted, per-arm values and transfer read the records (partial 1/6)
+  PASS  the Holm family keeps 15 hypotheses, S6's 3 pending
+  PASS  the S1-S5 claims are unchanged by the attacker records
+  PASS  the report renders the attacker section and the S6 row
+  PASS  main attacker evaluation: 36 core cells, 128 pairs x 500 turns, no om_table or cross cell
+  PASS  attacker game seeds distinct and disjoint from every other M5 evaluation cell
+  C1: passed 
+== C1 done in 103 s
+exit 0

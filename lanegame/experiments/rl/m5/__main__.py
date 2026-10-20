@@ -7,7 +7,8 @@ M5a readiness (bounded compute; docs/m5/m5a_readiness_protocol.md):
     B1              the battery and cells instruments on the real finals at tiny sizes, before M5c (scratch root)
     A1 ... A4       the correction pass's checks (results/m5/corrections_readiness.json): A1 the monitored smoke
                     against the stored R4 runs, A2 the main training's inputs, A3 the targeted tests and digest pins,
-                    A4 the full regression suite; `corrections` runs A1-A4
+                    A4 the full regression suite; `corrections` runs A1-A4, B1 and C1
+    C1              the attacker path on the real finals at tiny sizes, before the core attackers (scratch phase)
     budget          the campaign budget from the measured rates (results/m5/budget.json, the M5a record)
     plan_future     the evaluation work by horizon and purpose and the core / optional attacker estimate
                     (results/m5/plan_future.json; no compute)
@@ -31,10 +32,14 @@ The campaign (each stage needs the user's approval of its compute budget, given 
                                                                    --confirm-m5-eval
     cells           M5c M4 limitation families                     --confirm-m5-eval
     families        M5d opponent families and head to head         --confirm-m5-eval
-    attackers       M5d core attacker training (12)                --confirm-m5-attackers
+    attackers       M5d core attacker training (12)                --confirm-m5-attackers  [--restart-incomplete]
+    attack_check    the attackers' health and identity checks (no compute)
     attack_eval     the attackers' independent evaluation          --confirm-m5-attackers
     attack_tables   the om finals' self-play belief tables (optional ablation only)
                                                                    --confirm-m5-attackers --include-om-table
+    traces          representative games as viewer recordings (results/m5/traces/; exploratory, a few minutes)
+    attack_behaviour the attackers' action components against their starting point (exploratory, a few minutes)
+    reproduce       the artifact inventory with SHA-256 and the stage commands (results/m5/reproducibility.md)
     analyse         the pre-registered analyses from the records that exist (no compute beyond reading records)
     report          generated tables (results/m5/report.md)
 `--include-om-table` adds the OPTIONAL om_table adaptation ablation (6 attackers and its cross-evaluation) to the attacker
@@ -119,7 +124,7 @@ def main(argv=None) -> None:
     ap.add_argument("--workers", type=int, default=6)
     ap.add_argument("--priority", choices=("normal", "below_normal"), default="normal")
     ap.add_argument("--restart-incomplete", action="store_true",
-                    help="train: preserve an incomplete run directory under partial/ and restart that run")
+                    help="train, attackers: preserve an incomplete run directory under partial/ and restart that run")
     ap.add_argument("--confirm-m5-train", action="store_true", help="the user approved the M5b training budget")
     ap.add_argument("--confirm-m5-eval", action="store_true", help="the user approved the M5b-M5d evaluation budget")
     ap.add_argument("--confirm-m5-attackers", action="store_true", help="the user approved the attacker budget")
@@ -163,6 +168,7 @@ def main(argv=None) -> None:
         elif st in R.CORR_PARTS:
             fn = {"A1": lambda: R.a1_monitored_smoke(), "A2": R.a2_campaign_inputs,
                   "B1": lambda: R.b1_battery_smoke(args.workers),
+                  "C1": lambda: R.c1_attack_readiness(min(4, args.workers)),
                   "A3": lambda: R.corr_pytest("A3", TARGETED_TESTS, "targeted_tests_amendment1.log"),
                   "A4": lambda: R.corr_pytest("A4", [], "regression_suite_amendment1.log")}[st]
             d = fn()
@@ -218,11 +224,35 @@ def main(argv=None) -> None:
         elif st == "report":
             from .report import report
             report()
+        elif st == "traces":
+            from .traces import export_all
+            d = export_all(args.workers)
+            print(f"{len(d['recordings'])} recordings in results/m5/traces", flush=True)
+        elif st == "attack_behaviour":
+            from .traces import behaviour
+            behaviour(args.workers)
+        elif st == "reproduce":
+            from .reproduce import inventory
+            d = inventory()
+            print({k: (v["files"], v["digest"][:12]) for k, v in d["records"].items()}, flush=True)
         elif st in ("monitor", "battery", "battery_extend", "cells", "families", "analyse"):
             C.require_prereg()
             from . import evaluate as EV
             getattr(EV, f"stage_{st}")(args.workers)
-        elif st in ("attack_tables", "attackers", "attack_eval"):
+        elif st == "attackers":
+            C.require_prereg()
+            from . import evaluate as EV
+            d = EV.stage_attackers(args.workers, include_optional=args.include_om_table,
+                                   restart_incomplete=args.restart_incomplete)
+            print("all passed:", d["all_passed"], flush=True)
+            if not d["all_passed"]:
+                print("  failed checks:", d.get("failed_checks"), flush=True)
+        elif st == "attack_check":
+            from .attackers import CORE_KINDS, OPTIONAL_KINDS, check
+            d = check("main", CORE_KINDS + (OPTIONAL_KINDS if args.include_om_table else ()))
+            _print_checks(d)
+            print("all passed:", d["all_passed"], flush=True)
+        elif st in ("attack_tables", "attack_eval"):
             C.require_prereg()
             from . import evaluate as EV
             getattr(EV, f"stage_{st}")(args.workers, include_optional=args.include_om_table)

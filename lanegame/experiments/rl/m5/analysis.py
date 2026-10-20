@@ -120,7 +120,19 @@ def classify_exploit(st: dict, delta: float = DELTA) -> str:
     return "inconclusive"
 
 
-CLASSIFIERS = {"gain": classify_gain, "ni": classify_ni, "exploit": classify_exploit}
+def classify_level(st: dict) -> str:
+    """A descriptive quantity's sign as its interval shows it (no claim; outside the Holm family)."""
+    L, U = st["L"], st["U"]
+    if not (np.isfinite(L) and np.isfinite(U)):
+        return "inconclusive"
+    if L > 0:
+        return "positive (L > 0)"
+    if U < 0:
+        return "negative (U < 0)"
+    return "interval includes 0"
+
+
+CLASSIFIERS = {"gain": classify_gain, "ni": classify_ni, "exploit": classify_exploit, "level": classify_level}
 
 
 def competence(p2a: str, p2b: str) -> str:
@@ -320,6 +332,11 @@ def _half(a: dict, b: dict) -> dict:
     return {"mean": 0.5 * (a["mean"] + b["mean"]), "se": 0.5 * math.sqrt(a["se"] ** 2 + b["se"] ** 2)}
 
 
+def _diff(a: dict, b: dict, sign: float = -1.0) -> dict:
+    """a + sign * b of two independent values (different games): a - b by default."""
+    return {"mean": a["mean"] + sign * b["mean"], "se": math.hypot(a["se"], b["se"])}
+
+
 # ---------------------------------------------------------------------------------------------- the endpoints
 def seed_paths(s: int, root: Optional[str] = None) -> Dict[str, List[str]]:
     """Every M5d record of seed s by group (the job design of `evaluate.family_jobs`)."""
@@ -337,13 +354,21 @@ def seed_paths(s: int, root: Optional[str] = None) -> Dict[str, List[str]]:
     for name in ("S_in", "S_out", "C_hist"):
         out[f"mid:{name}"] = [os.path.join(root, "mid", f"s{s}", f"{name}__{EV._opp_tag(o)}.npz") for o in fam[name]]
     out["mid:h2h"] = [os.path.join(root, "mid", f"s{s}", "h2h.npz")]
+    for a in C.ARMS:
+        out[f"hist:{a}:start"] = [os.path.join(root, "history", f"{a}_s{s}", "vs_start.npz")]
     return out
 
 
 def attack_paths(s: int, root: Optional[str] = None) -> Dict[str, List[str]]:
+    """The attackers' evaluation cells of seed s (`attackers.eval_jobs`): "attack:<kind>" against its own target,
+    "attack:<kind>:other_arm" and "attack:<kind>:start"."""
     from . import attackers as AT
     root = root or os.path.join(AT.AOUT, "eval", "main")
-    return {f"attack:{k}": [os.path.join(root, f"{k}_s{s}__target.npz")] for k in AT.TARGET_KINDS}
+    out = {}
+    for k in AT.TARGET_KINDS:
+        for cell in ("target", "other_arm", "start"):
+            out[f"attack:{k}" + ("" if cell == "target" else f":{cell}")] = [os.path.join(root, f"{k}_s{s}__{cell}.npz")]
+    return out
 
 
 # name: (groups, value function of {group: paths}, kind, role, description)
@@ -379,12 +404,56 @@ ENDPOINTS: Dict[str, Tuple[Tuple[str, ...], EndpointFn, str, str, str]] = {
            lambda g: {"mean": own_lead(g["attack:om"])["mean"] - own_lead(g["attack:sp"])["mean"],
                       "se": math.hypot(own_lead(g["attack:om"])["se"], own_lead(g["attack:sp"])["se"])},
            "exploit", "secondary", "exploitability om - sp: each core attacker's lead at 114 against its own target"),
+    # Beside S6 (pre-registration §8, §9: "the discounted 500-turn lead beside it"; "exploitability of a target = its
+    # attacker's value against it, a lower bound") and the exploratory transfer (§9). None is in the Holm family. The
+    # transfer gains subtract the attacker's starting point: it starts as a copy of its target, so before training its
+    # lead against an opponent is the target's own (om:s against sp:s = the M5d head to head; a final against the start
+    # = the M5b history games); against its own target it is 0 by symmetry.
+    "S6_disc": (("attack:om", "attack:sp"),
+                lambda g: _diff(own_lead(g["attack:om"], readout="discounted"),
+                                own_lead(g["attack:sp"], readout="discounted")),
+                "exploit", "descriptive", "exploitability om - sp on the discounted 500-turn lead (the objective's "
+                "readout), reported beside S6"),
+    "X_om": (("attack:om",), lambda g: own_lead(g["attack:om"]), "level", "descriptive",
+             "exploitability lower bound of om:s: its attacker's lead at 114 against it"),
+    "X_sp": (("attack:sp",), lambda g: own_lead(g["attack:sp"]), "level", "descriptive",
+             "exploitability lower bound of sp:s: its attacker's lead at 114 against it"),
+    "X_om_disc": (("attack:om",), lambda g: own_lead(g["attack:om"], readout="discounted"), "level", "descriptive",
+                  "the om:s attacker's discounted 500-turn lead against om:s"),
+    "X_sp_disc": (("attack:sp",), lambda g: own_lead(g["attack:sp"], readout="discounted"), "level", "descriptive",
+                  "the sp:s attacker's discounted 500-turn lead against sp:s"),
+    "T_om_other": (("attack:om:other_arm",), lambda g: own_lead(g["attack:om:other_arm"]), "level", "exploratory",
+                   "transfer: the om:s attacker's lead at 114 against sp:s"),
+    "T_sp_other": (("attack:sp:other_arm",), lambda g: own_lead(g["attack:sp:other_arm"]), "level", "exploratory",
+                   "transfer: the sp:s attacker's lead at 114 against om:s"),
+    "T_om_start": (("attack:om:start",), lambda g: own_lead(g["attack:om:start"]), "level", "exploratory",
+                   "transfer: the om:s attacker's lead at 114 against ext/baseline:s"),
+    "T_sp_start": (("attack:sp:start",), lambda g: own_lead(g["attack:sp:start"]), "level", "exploratory",
+                   "transfer: the sp:s attacker's lead at 114 against ext/baseline:s"),
+    "T_om_other_gain": (("attack:om:other_arm", "h2h"),
+                        lambda g: _diff(own_lead(g["attack:om:other_arm"]), own_lead(g["h2h"])), "level",
+                        "exploratory", "the om:s attacker against sp:s minus om:s against sp:s (M5d head to head): "
+                        "what the attack gained against the other arm"),
+    "T_sp_other_gain": (("attack:sp:other_arm", "h2h"),
+                        lambda g: _diff(own_lead(g["attack:sp:other_arm"]), own_lead(g["h2h"]), +1.0), "level",
+                        "exploratory", "the sp:s attacker against om:s minus sp:s against om:s (minus the M5d head to "
+                        "head): what the attack gained against the other arm"),
+    "T_om_start_gain": (("attack:om:start", "hist:om:start"),
+                        lambda g: _diff(own_lead(g["attack:om:start"]), own_lead(g["hist:om:start"])), "level",
+                        "exploratory", "the om:s attacker against ext/baseline:s minus om:s against it (M5b history)"),
+    "T_sp_start_gain": (("attack:sp:start", "hist:sp:start"),
+                        lambda g: _diff(own_lead(g["attack:sp:start"]), own_lead(g["hist:sp:start"])), "level",
+                        "exploratory", "the sp:s attacker against ext/baseline:s minus sp:s against it (M5b history)"),
     "X_table": (("attack:om", "attack:om_table"),
                 lambda g: {"mean": own_lead(g["attack:om"])["mean"] - own_lead(g["attack:om_table"])["mean"],
                            "se": math.hypot(own_lead(g["attack:om"])["se"], own_lead(g["attack:om_table"])["se"])},
                 "exploit", "exploratory", "OPTIONAL adaptation ablation: exploitability of om - of om_table "
                 "(exploratory; not a test of deliberate deception)"),
 }
+
+ATTACK_ENDPOINTS = ("S6", "S6_disc", "X_om", "X_sp", "X_om_disc", "X_sp_disc", "T_om_other", "T_sp_other",
+                    "T_om_start", "T_sp_start", "T_om_other_gain", "T_sp_other_gain", "T_om_start_gain",
+                    "T_sp_start_gain", "X_table")
 
 SECONDARY_HYPOTHESES: Tuple[Tuple[str, str, str, float], ...] = (
     ("S1", "preserved", ">", -DELTA), ("S1", "loss", "<", 0.0),
@@ -696,6 +765,52 @@ def belief_mechanism(paths_of: Callable[[int], Dict[str, List[str]]], seeds: Seq
     return out
 
 
+def attack_panel(paths_of: Callable[[int], Dict[str, List[str]]], seeds: Sequence[int] = C.SEEDS) -> dict:
+    """Exploratory: the lane-exit panel (D0 -> E_20 and the non-gold quantities at turn 94) of each core attacker
+    against its own target, from the attacker's side (seed means with intervals)."""
+    out = {}
+    for grp in ("attack:om", "attack:sp"):
+        per: Dict[str, Dict[int, float]] = {}
+        n = 0
+        for s in seeds:
+            ps = paths_of(s).get(grp, [])
+            if not ps or not all(os.path.exists(p) for p in ps):
+                continue
+            n += 1
+            for q, d in lane_panel(ps, (0,)).items():
+                per.setdefault(q, {})[s] = d.get(0, float("nan"))
+        out[grp] = {"n_seeds": n, "status": "complete" if n == len(seeds) else f"partial ({n}/{len(seeds)})",
+                    "quantities": {q: interval(v) for q, v in per.items()}}
+    return out
+
+
+def attack_belief(paths_of: Callable[[int], Dict[str, List[str]]], seeds: Sequence[int] = C.SEEDS) -> dict:
+    """Exploratory (descriptive): the om target's posterior about its attacker (f0__opp_trace of the om-target cells)
+    at games.CHECK_TURNS: the catch-all mass ("mixed" + "unknown") and, per library type, the share of games whose most
+    probable type it is. Belief movement alone does not show that the attacker manipulated the belief, or that any
+    manipulation caused its gain."""
+    from . import games as G
+    types = list(C.BELIEF_TYPES)
+    catch = [types.index("mixed"), types.index("unknown")]
+    acc: Dict[str, Dict[int, float]] = {}
+    for s in seeds:
+        ps = paths_of(s).get("attack:om", [])
+        if not ps or not os.path.exists(ps[0]):
+            continue
+        tr = _load(ps[0]).get("f0__opp_trace")
+        if tr is None:
+            continue
+        lp = tr.reshape(-1, tr.shape[-2], tr.shape[-1]).astype(np.float64)
+        p = np.exp(lp - lp.max(-1, keepdims=True))
+        p /= p.sum(-1, keepdims=True)
+        for c, turn in enumerate(G.CHECK_TURNS):
+            acc.setdefault(f"catch-all mass at {turn}", {})[s] = float(p[:, c, catch].sum(-1).mean())
+            mode = p[:, c].argmax(-1)
+            for k, t in enumerate(types):
+                acc.setdefault(f"modal type {t} at {turn}", {})[s] = float((mode == k).mean())
+    return {q: {**interval(d), "n_seeds": len(d)} for q, d in acc.items()}
+
+
 # ---------------------------------------------------------------------------------------------- the campaign analysis
 def analyse(phase: str = "main", root: Optional[str] = None, attack_root: Optional[str] = None, out: str = C.OUT,
             save: bool = True, declined: Sequence[str] = ()) -> dict:
@@ -720,6 +835,8 @@ def analyse(phase: str = "main", root: Optional[str] = None, attack_root: Option
     res["versus_start"] = versus_start(paths_of)
     res["switch_windows"] = switch_windows(paths_of)
     res["belief"] = belief_mechanism(paths_of)
+    res["attack_panel"] = attack_panel(paths_of)
+    res["attack_belief"] = attack_belief(paths_of)
     res["meta"] = C.meta(stage="analyse", phase=phase)
     if save:
         C.save_json(f"analysis_{phase}", res, out)
@@ -800,5 +917,6 @@ def monitoring(root: Optional[str] = None, out: str = C.OUT, save: bool = True, 
 __all__ = ["DELTA", "GAIN_MIN", "ALPHA", "interval", "classify_gain", "classify_ni", "classify_exploit", "competence",
            "headline", "holm", "holm_status", "p_one_sided", "p_equivalence", "t_pvalue_one_sided", "secondary",
            "variance_split", "ni_resolution", "family_contrast", "own_lead", "replication", "endpoint", "ENDPOINTS",
-           "SECONDARY_HYPOTHESES", "seed_paths", "attack_paths", "analyse", "monitoring", "panel", "lane_panel",
+           "SECONDARY_HYPOTHESES", "ATTACK_ENDPOINTS", "attack_panel", "attack_belief",
+           "classify_level", "seed_paths", "attack_paths", "analyse", "monitoring", "panel", "lane_panel",
            "adjusted_class", "GAIN_RULED_OUT"]

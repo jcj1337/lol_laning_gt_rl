@@ -640,7 +640,7 @@ def r8_equivalence() -> dict:
 # as it was): A1 the monitored smoke reproduces the stored R4 smoke runs, A2 the inputs of the main training (the
 # amended pre-registration, every start checkpoint and archive, the run manifest), A3 the targeted tests, A4 the full
 # regression suite.
-CORR_PARTS = ("A1", "A2", "A3", "A4", "B1")
+CORR_PARTS = ("A1", "A2", "A3", "A4", "B1", "C1")
 
 
 def _record_corr(part: str, data: dict) -> dict:
@@ -777,6 +777,198 @@ def b1_battery_smoke(workers: int = 6) -> dict:
     return _record_corr("B1", {"checks": checks, "data": data})
 
 
+C1_STOP = 8 * 2048                      # 8 updates of the real attacker schedule (one learner seat x 16 envs x 128)
+C1_INTERRUPT_STOP = 20 * 2048
+
+
+def _await_history(d: str, n: int, proc, timeout: float = 300.0) -> int:
+    from .train import history
+    t0 = time.perf_counter()
+    while time.perf_counter() - t0 < timeout and proc.is_alive():
+        k = len(history(d))
+        if k >= n:
+            return k
+        time.sleep(0.5)
+    return len(history(d))
+
+
+def c1_attack_readiness(workers: int = 4) -> dict:
+    """Before the M5d core attackers: the attacker path on the real finals, at tiny sizes, in the scratch phase
+    "ready_c1" (attack/ready_c1/, attack/eval/ready_c1/, restart records under readiness/c1/). Nothing here enters an
+    M5 record. Checks:
+      * the stage plans exactly the 12 core attackers (om:s, sp:s; no om_table), each at 8,192,000 transitions, and
+        every target is the approved final (file SHA-256 = the training check's identity);
+      * each initial network is the target copied into the om format (identical logits and values on random 116-input
+        probes, the sp target reading its first 90 inputs; the 26 widened columns zero);
+      * the PPO settings equal the main training's except the seed (70,600 + 10 kind + s) and the schedule length;
+      * the real schedule run for 8 updates (om:0 twice, om:0 without the monitor, sp:0): `attackers.check` passes on
+        it (except the seat balance, which needs a full run), the re-run and the unmonitored run are bit-identical;
+      * an interrupted run is refused, preserved under partial/ with restart_incomplete, and its restart reproduces
+        the preserved history prefix;
+      * the evaluation cells of the smoke attackers (2 pairs x 500 turns) are written with the designed opponents, the
+        om target's belief trace stored, and are read by the S6 analysis (partial 1/6, per-seed values equal to a
+        direct computation, the Holm family still 15 with S6 pending, S1-S5 claims unchanged) and the report;
+      * the main evaluation design: 36 core cells, 128 pairs x 500 turns, no om_table or cross cell, game seeds
+        distinct and disjoint from every other M5 evaluation cell."""
+    import multiprocessing as mp
+    import torch
+    from ....rl import weights_digest
+    from ..m44.train import _histories_equal
+    from . import analysis as AN
+    from . import attackers as AT
+    from . import evaluate as EV
+    from . import games as G
+    from . import report as RP
+    from . import train as T
+    phase = "ready_c1"
+    rout = os.path.join(RDIR, "c1")
+    os.makedirs(rout, exist_ok=True)
+    checks: Dict[str, bool] = {}
+    data: Dict[str, object] = {}
+    t0 = time.perf_counter()
+    tc = C.load("train_main") or {}
+    plan = AT.plan_runs(AT.CORE_KINDS, C.SEEDS, "main")
+    checks["the stage plans exactly 12 core attackers (6 om, 6 sp), none of them om_table"] = \
+        sorted((j[0], j[1]) for j in plan) == sorted((k, s) for k in ("om", "sp") for s in C.SEEDS)
+    checks["every planned attacker runs 8,192,000 transitions"] = all(j[2] == 8_192_000 for j in plan)
+    ids = {f"{k}_s{s}": AT.target_identity(k, s) for k in AT.CORE_KINDS for s in C.SEEDS}
+    checks["every target is the approved final (file SHA-256 = the training check's identity)"] = all(
+        v["file_sha256"] == ((tc.get("identities") or {}).get(n) or {}).get("final", {}).get("file_sha256")
+        for n, v in ids.items())
+    data["targets"] = ids
+    g = torch.Generator().manual_seed(C.READY_ROOT)
+    x = torch.randn(64, C.NET_IN_OM, generator=g)
+    same, zero = [], []
+    for k in AT.CORE_KINDS:
+        for s_ in C.SEEDS:
+            tgt, ini = AT.target_net(k, s_), AT.initial_net(k, s_)
+            with torch.no_grad():
+                lt, vt = tgt(x if tgt.obs_size == C.NET_IN_OM else x[:, :C.OBS_SP])
+                li, vi = ini(x)
+            same.append(bool(torch.equal(lt, li) and torch.equal(vt, vi)))
+            if tgt.obs_size == C.OBS_SP:
+                w = next(ini.parameters())
+                zero.append(bool((w[:, C.OBS_SP:] == 0).all()))
+    checks["12 initial networks: logits and values identical to the target's"] = len(same) == 12 and all(same)
+    checks["6 sp initial networks: the 26 widened input columns are zero"] = len(zero) == 6 and all(zero)
+    d_at = AT.ppo_config("om", 0, AT.ATTACK_BUDGET).to_dict()
+    d_tr = T.ppo_config("om", 0, C.BUDGET).to_dict()
+    diff = sorted(k for k in set(d_at) | set(d_tr) if d_at.get(k) != d_tr.get(k))
+    checks["PPO settings = the main training's except seed and schedule length"] = diff == ["seed", "total_steps"]
+    checks["PPO seeds 70,600 + 10 kind + s"] = all(
+        AT.ppo_config(k, s_, 1).seed == 70_600 + 10 * AT.TARGET_KINDS.index(k) + s_ for k in AT.CORE_KINDS
+        for s_ in C.SEEDS)
+    data["ppo"] = {"attacker": d_at, "differs_from_main_training_in": diff}
+    import shutil
+    base = os.path.join(AT.AOUT, phase)
+    for d in (base, os.path.join(AT.AOUT, "eval", phase)):
+        if os.path.isdir(d):
+            shutil.rmtree(d)
+    for p in ("restarts.json",):
+        if os.path.exists(os.path.join(rout, p)):
+            os.remove(os.path.join(rout, p))
+    dirs = {"om": AT.attacker_dir("om", 0, phase), "sp": AT.attacker_dir("sp", 0, phase),
+            "om_rerun": os.path.join(base, "om_s0_rerun"), "om_unmonitored": os.path.join(base, "om_s0_unmonitored")}
+    jobs = [("om", 0, AT.ATTACK_BUDGET, C1_STOP, phase, True, "om:0", dirs["om"]),     # the MAIN finals as targets
+            ("om", 0, AT.ATTACK_BUDGET, C1_STOP, phase, True, "om:0", dirs["om_rerun"]),
+            ("om", 0, AT.ATTACK_BUDGET, C1_STOP, phase, True, "om:0", dirs["om_unmonitored"], False),
+            ("sp", 0, AT.ATTACK_BUDGET, C1_STOP, phase, True, "sp:0", dirs["sp"])]
+    res = C.run_jobs(AT.train_job, jobs, workers, "M5 C1 attacker smoke")
+    checks["4 smoke runs complete"] = all(r.get("status") == "complete" for r in res)
+    chk = AT.check(phase, AT.CORE_KINDS, (0,), save=False, out=rout)
+    seat = [k for k in chk["checks"] if "seats balanced" in k]
+    for k, v in chk["checks"].items():
+        if k not in seat:
+            checks[f"smoke check {k}"] = bool(v)
+    rr = {n: C.jload(os.path.join(d, "summary.json")) or {} for n, d in dirs.items()}
+    checks["om:0 re-run: bit-identical weights and histories"] = rr["om"].get("digest") == rr["om_rerun"].get(
+        "digest") and _histories_equal(dirs["om"], dirs["om_rerun"])
+    checks["om:0 without the monitor: bit-identical weights and histories"] = rr["om"].get("digest") == \
+        rr["om_unmonitored"].get("digest") and _histories_equal(dirs["om"], dirs["om_unmonitored"])
+    h = T.history(dirs["om"])
+    checks["the attacker's belief inputs are posteriors (rows sum to 1, within 1e-5)"] = bool(h) and all(
+        e["belief_rowsum_dev"] < 1e-5 and e["belief_min"] >= 0 for e in h)
+    data["smoke"] = {n: {k: r.get(k) for k in ("status", "agent_transitions", "env_turns", "updates",
+                                               "transitions_per_s", "wall_s", "digest", "collector")}
+                     for n, r in rr.items()}
+    data["smoke_check"] = {"checks": chk["checks"], "seat_balance_not_required": seat}
+    idir = AT.attacker_dir("om", 1, phase)
+    ctx = mp.get_context("spawn")
+    pr = ctx.Process(target=AT.train_job, args=(("om", 1, AT.ATTACK_BUDGET, C1_INTERRUPT_STOP, phase, False, "om:1",
+                                                  idir),))
+    pr.start()
+    got = _await_history(idir, 3, pr)
+    pr.terminate()
+    pr.join(30)
+    checks["interrupted run left an incomplete directory (no summary, some updates)"] = got >= 3 and \
+        not os.path.exists(os.path.join(idir, "summary.json"))
+    try:
+        AT.plan_runs(("om",), (1,), phase)
+        refused = False
+    except SystemExit:
+        refused = True
+    checks["the stage refuses an incomplete attacker directory"] = refused
+    todo = AT.plan_runs(("om",), (1,), phase, restart_incomplete=True, total=AT.ATTACK_BUDGET, out=rout)
+    moved = ((C.load("restarts", rout) or {}).get("restarts") or [{}])[-1].get("moved_to", "")
+    checks["restart_incomplete preserves it under partial/ and plans the run again"] = len(todo) == 1 and \
+        os.path.isdir(moved) and len(T.history(moved)) == got and not os.path.exists(idir)
+    C.run_jobs(AT.train_job, [("om", 1, AT.ATTACK_BUDGET, C1_INTERRUPT_STOP, phase, False, "om:1", idir)], 1,
+               "M5 C1 restart")
+    rc = AT.restart_checks(phase, rout)
+    checks["the restart reproduces the preserved history prefix"] = bool(rc) and all(v["identical"] for v in rc.values())
+    data["restart"] = {"updates_preserved": got, "moved_to": moved, "prefix": rc}
+    js = AT.eval_jobs(AT.CORE_KINDS, (0,), phase, N=2)
+    C.run_jobs(G.cell_job, js, workers, "M5 C1 attacker eval")
+    by = {j["key"].split("|")[2] + "|" + j["key"].split("|")[4]: j for j in js}
+    checks["6 smoke evaluation cells written"] = len(js) == 6 and all(os.path.exists(j["path"]) for j in js)
+    want = {"om|target": ("net", "om:0", "live"), "om|other_arm": ("net", "sp:0"), "om|start": ("net", "start:0"),
+            "sp|target": ("net", "sp:0", "live"), "sp|other_arm": ("net", "om:0"), "sp|start": ("net", "start:0")}
+    checks["cells play the designed opponents (own target live, other arm, start) with the attacker as focal"] = all(
+        tuple(by[k]["opponent"]) == v and G.load(by[k]["path"])["opponent"].item() == repr(v) and
+        by[k]["focals"][0][1].endswith(os.path.join(phase, f"{k.split('|')[0]}_s0", "final.pt"))
+        for k, v in want.items())
+    om_t = G.load(by["om|target"]["path"])
+    checks["the om target's belief trace is stored in its cell and moves from the prior"] = \
+        "f0__opp_trace" in om_t and float(np.abs(om_t["f0__opp_trace"]).max()) > 0
+    checks["no target belief trace where the opponent has none (sp target, start)"] = all(
+        "f0__opp_trace" not in G.load(by[k]["path"]) for k in ("sp|target", "om|start", "sp|start", "om|other_arm"))
+    checks["records hold R [2 pairs, 2 seats, 500 turns] and the turn-94 panel (D0 in every game)"] = \
+        om_t["f0__r"].shape == (2, 2, 500) and om_t["f0__panel"].shape == (2, 2, len(G.PANEL_KEYS)) and \
+        np.isfinite(om_t["f0__panel"][..., G.PANEL_KEYS.index("D0")]).all()
+    a = AN.analyse(attack_root=os.path.join(AT.AOUT, "eval", phase), save=False)
+    e = a["endpoints"]
+    direct = G.lead_at(om_t["f0__r"]).mean() - G.lead_at(G.load(by["sp|target"]["path"])["f0__r"]).mean()
+    checks["S6 reads the attacker records: partial (1/6), no class"] = e["S6"]["status"] == "partial (1/6)" and \
+        e["S6"]["class"] == "partial: not classified"
+    checks["S6 seed value = the attacker leads computed directly (om - sp, lead at 114)"] = \
+        abs(e["S6"]["per_seed"]["0"] - direct) < 1e-9
+    checks["S6 discounted, per-arm values and transfer read the records (partial 1/6)"] = all(
+        e[k]["status"] == "partial (1/6)" for k in AN.ATTACK_ENDPOINTS if k != "X_table")
+    old = C.load("analysis_main") or {}
+    sec = a["secondary"]
+    checks["the Holm family keeps 15 hypotheses, S6's 3 pending"] = sec["holm"]["m"] == 15 and \
+        sorted(sec["holm"]["pending"]) == ["S6: decrease", "S6: equivalence", "S6: increase"]
+    checks["the S1-S5 claims are unchanged by the attacker records"] = all(
+        sec["endpoints"][k]["claim"] == old["secondary"]["endpoints"][k]["claim"]
+        for k in ("S1", "S2", "S3", "S4", "S5a", "S5b"))
+    sect = RP.attack_section(a, chk) + RP.analysis_section(a)
+    checks["the report renders the attacker section and the S6 row"] = "| S6 | secondary | partial (1/6)" in sect \
+        and "| X_om | descriptive | partial (1/6)" in sect and "The attacker check" in sect
+    data["analysis"] = {k: {kk: e[k].get(kk) for kk in ("status", "per_seed", "class")} for k in AN.ATTACK_ENDPOINTS}
+    mj = AT.eval_jobs()
+    checks["main attacker evaluation: 36 core cells, 128 pairs x 500 turns, no om_table or cross cell"] = \
+        len(mj) == 36 and all(j["N"] == 128 and j["T"] == 500 and j["root"] == C.ATTACK_EVAL_ROOT for j in mj) and \
+        not any("om_table" in j["key"] or "cross" in j["key"] for j in mj)
+    att = {G.game_seed(j["root"], j["cell"], m) for j in mj for m in range(j["N"])}
+    others = {G.game_seed(j["root"], j["cell"], m) for j in EV.family_jobs() + EV.monitor_jobs() for m in range(j["N"])}
+    checks["attacker game seeds distinct and disjoint from every other M5 evaluation cell"] = \
+        len(att) == 36 * 128 and not (att & others)
+    data["eval_design"] = {"cells": len(mj), "seed_min": min(att), "seed_max": max(att),
+                           "other_seed_max": max(others)}
+    data["wall_s"] = time.perf_counter() - t0
+    return _record_corr("C1", {"checks": {k: bool(v) for k, v in checks.items()}, "data": data})
+
+
 def corr_pytest(part: str, args: List[str], log: str) -> dict:
     """A3 / A4: a pytest run with its output kept in results/m5/<log>."""
     t0 = time.perf_counter()
@@ -791,4 +983,5 @@ def corr_pytest(part: str, args: List[str], log: str) -> dict:
 __all__ = ["freeze_protocol", "r0_artifacts", "r1_seeds", "r2_init", "r3_defaults", "r4_smoke", "r5_crn", "r6_inputs",
            "r7_shares", "r8_equivalence", "probe_inputs", "start_schedule", "scan_roots", "om_proxy", "sp_proxy",
            "PARTS", "RDIR", "CORR_PARTS", "a1_monitored_smoke", "a2_campaign_inputs", "b1_battery_smoke",
+           "c1_attack_readiness",
            "corr_pytest"]

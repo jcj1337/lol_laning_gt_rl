@@ -4,8 +4,10 @@ LOWER bounds (limited by the attacker's budget, network and optimizer; never a c
 Proposal (every item is in the pre-registration's attacker section and is a review decision):
     target       a frozen final: om (its belief live, updated from the attacker's actions exactly as in deployment), sp,
                  or for the adaptation test om_table (the om final with its belief inputs replaced by the mean belief of
-                 its own self-play at that turn: the same network without in-game adaptation). Black-box access only:
-                 the attacker plays the target; it never reads the target's weights, belief or gradients.
+                 its own self-play at that turn: the same network without in-game adaptation). Access: the attacker is
+                 INITIALIZED from the target's weights (see start), so the procedure is not black-box as a whole; during
+                 play it sees only the game state, the target's previous action and its own belief, never the target's
+                 weights, belief, logits or gradients.
     observation  the om input format for every attacker: the obs_last_action observation (103: the state and the
                  target's previous action) plus the attacker's own belief over the OM2 library (13), the same
                  information channel the om arm has, for attackers of either arm
@@ -24,6 +26,14 @@ Proposal (every item is in the pre-registration's attacker section and is a revi
     evaluation   independent games from s0 (ATTACK_EVAL_ROOT), N_EVAL paired-seat pairs: the lead at turn 114 (lane exit)
                  and the discounted lead over 500 turns (the objective); transfer: the attacker against the other arm's
                  final of its seed and against the common start; the target's belief trace against the attacker
+                 (`games.cell_job` stores it as f0__opp_trace in the om-target cells)
+
+Runs (amendment 1's recovery rules of the main training, pre-registration §3, applied to the attackers): every run is
+watched by `health.RunMonitor` (a DEFECT alarm ends it; an INVESTIGATE alarm is recorded and the run continues), the
+coordinator `health.run_campaign` logs progress (results/m5/progress_attack_main.json) and stops after more than two
+failed seeds, an interrupted run is preserved under attack/<phase>/partial/ and restarted from its start
+(`restart_incomplete`; no mid-run resume exists) and must reproduce the preserved history prefix. `check` is the
+post-hoc health and identity check (results/m5/attack_check_<phase>.json); `require_ok` gates the evaluation on it.
 
 The collector keeps one belief per learner seat (the attacker's) and one target instance per game (the target's belief
 lives in it); both beliefs are updated after every step from the other seat's code on its start-of-turn observation,
@@ -246,41 +256,262 @@ def attacker_dir(kind: str, seed: int, phase: str = "main") -> str:
     return os.path.join(AOUT, phase, f"{kind}_s{seed}")
 
 
+def target_identity(kind: str, seed: int, phase: str = "main", spec: Optional[str] = None) -> dict:
+    """The target checkpoint: its specification, path, file SHA-256 and stored weights digest."""
+    from ....rl import checkpoint_info
+    sp = spec or target_spec(kind, seed, phase)
+    p = sp if (sp.endswith(".pt") and not sp.startswith("spec:")) else C.policy_path(sp)
+    return {"spec": sp, "path": p.replace("\\", "/"), "file_sha256": C.file_sha256(p),
+            "stored_digest": checkpoint_info(p)["digest"]}
+
+
 def train_job(args) -> dict:
-    """(kind, seed, total, stop or None, phase, overwrite[, target spec, out dir]): one attacker; writes summary.json.
-    The optional target spec replaces the M5 final (readiness stand-ins)."""
+    """(kind, seed, total, stop or None, phase, overwrite[, target spec, out dir[, monitor]]): one attacker under
+    `health.RunMonitor` (unless monitor is False); writes summary.json. The optional target spec replaces the M5 final
+    (readiness stand-ins). The summary records the target's identity and its in-memory weights digest before and after
+    training (the target must stay frozen)."""
     kind, seed, total, stop, phase, overwrite, *rest = args
     spec = rest[0] if rest else None
     out = (rest[1] if len(rest) > 1 else None) or attacker_dir(kind, seed, phase) + ("_smoke" if stop else "")
+    monitor = rest[2] if len(rest) > 2 else True
     t0 = time.perf_counter()
+    started = time.strftime("%Y-%m-%d %H:%M:%S")
     try:
         import torch
         torch.set_num_threads(1)
         from ....rl import checkpoint_info, train_shared, weights_digest
+        from ..m43b.train import summarize_history
+        from ..m45c.train import rollout_summary
         from ..m46c.train import shared_config
+        from .health import RunMonitor
+        from .train import Stats
         cfg = C.setup("om")
         ppo = ppo_config(kind, seed, total)
+        target = target_identity(kind, seed, phase, spec)
+        tnet = target_net(kind, seed, phase, spec)         # the object the collector plays (net_of caches it)
+        target["digest_start"] = weights_digest(tnet.state_dict())
         net = initial_net(kind, seed, phase, spec)
+        init_digest = weights_digest(net.state_dict())
         res = train_shared(cfg, ppo, shared_config(), out_dir=out, net=net, name=f"m5_attack_{kind}_s{seed}",
-                           verbose=False, overwrite=overwrite, stop_at=stop,
-                           collector_cls=attack_collector_cls(kind, seed, phase, spec))
+                           verbose=False, overwrite=overwrite, stop_at=stop, rollout_stats=Stats("om", ppo),
+                           collector_cls=attack_collector_cls(kind, seed, phase, spec),
+                           on_update=RunMonitor(out) if monitor else None)
         end_epoch = time.time()
+        target["digest_end"] = weights_digest(tnet.state_dict())
         h = res.history
-        s = {"status": "complete", "kind": kind, "seed": seed, "phase": phase, "agent_transitions": res.agent_transitions,
-             "updates": len(h), "elapsed_s": res.elapsed, "transitions_per_s": res.agent_transitions / res.elapsed,
-             "steady_transitions_per_s": float(np.median([e["sps"] for e in h[len(h) // 3:]])) if h else None,
-             "historical_return_last": h[-1]["historical_return"] if h else None,
-             "digest": weights_digest(res.net.state_dict()), "run_dir": out, "wall_s": time.perf_counter() - t0,
-             "target_spec": spec or target_spec(kind, seed, phase), "train_start_epoch": end_epoch - res.elapsed,
-             "train_end_epoch": end_epoch,
-             "collector": (checkpoint_info(os.path.join(out, "final.pt")).get("metadata") or {}).get("starts")}
-    except BaseException as ex:                            # noqa: BLE001
+        s = summarize_history(h, ppo.reward_scale)
+        s.pop("curve", None)
+        s.update({"status": "complete", "name": f"{kind}_s{seed}", "kind": kind, "seed": seed, "phase": phase,
+                  "schedule_total_steps": int(total), "stop_at": stop, "budget": stop or int(total),
+                  "agent_transitions": res.agent_transitions, "env_turns": res.env_turns,
+                  "elapsed_s": res.elapsed, "transitions_per_s": res.agent_transitions / res.elapsed,
+                  "steady_transitions_per_s": float(np.median([e["sps"] for e in h[len(h) // 3:]])) if h else None,
+                  "historical_return_last": h[-1]["historical_return"] if h else None,
+                  "digest": weights_digest(res.net.state_dict()), "initial_digest": init_digest,
+                  "run_dir": out, "target": target, "target_spec": target["spec"], "ppo": ppo.to_dict(),
+                  "rollout": rollout_summary(h), "monitored": bool(monitor), "started": started,
+                  "finished": time.strftime("%Y-%m-%d %H:%M:%S"), "wall_s": time.perf_counter() - t0,
+                  "train_start_epoch": end_epoch - res.elapsed, "train_end_epoch": end_epoch,
+                  "collector": (checkpoint_info(os.path.join(out, "final.pt")).get("metadata") or {}).get("starts")})
+    except BaseException as ex:                            # noqa: BLE001 - recorded, never swallowed silently
         import traceback
-        s = {"status": "failed", "kind": kind, "seed": seed, "error": repr(ex), "traceback": traceback.format_exc(),
-             "wall_s": time.perf_counter() - t0}
+        from .health import StopCondition
+        from .train import history
+        s = {"status": "stopped" if isinstance(ex, StopCondition) else "failed", "name": f"{kind}_s{seed}",
+             "kind": kind, "seed": seed, "phase": phase, "run_dir": out, "error": repr(ex),
+             "traceback": traceback.format_exc(), "started": started, "wall_s": time.perf_counter() - t0,
+             "updates_written": len(history(out))}
     if os.path.isdir(out):
         C.jdump(os.path.join(out, "summary.json"), s)
     return s
+
+
+# ---------------------------------------------------------------------------------------------- the stage
+def _complete(d: str) -> bool:
+    p = os.path.join(d, "summary.json")
+    return os.path.exists(p) and (C.jload(p) or {}).get("status") == "complete"
+
+
+def plan_runs(kinds=CORE_KINDS, seeds=C.SEEDS, phase: str = "main", restart_incomplete: bool = False,
+              total: int = ATTACK_BUDGET, out: str = C.OUT) -> List[tuple]:
+    """The attacker runs still to do, the longer om-target runs first: complete runs are skipped; an incomplete
+    directory is refused unless restart_incomplete, in which case it is preserved under attack/<phase>/partial/ first
+    (runs are never overwritten)."""
+    from .train import preserve_partial
+    todo = []
+    for kind in kinds:
+        for s in seeds:
+            d = attacker_dir(kind, s, phase)
+            if _complete(d):
+                continue
+            if os.path.isdir(d) and os.listdir(d):
+                if not restart_incomplete:
+                    raise SystemExit(f"{d} exists and is incomplete: inspect it, then pass --restart-incomplete to "
+                                     "preserve it under partial/ and restart the run (runs are never overwritten)")
+                preserve_partial(d, f"attack_{phase}", f"attack_{kind}_s{s}", root=os.path.join(AOUT, phase, "partial"),
+                                 out=out)
+            todo.append((kind, s, int(total), None, phase, False))
+    return todo
+
+
+def train(workers: int, kinds=CORE_KINDS, seeds=C.SEEDS, phase: str = "main", restart_incomplete: bool = False) -> dict:
+    """The attacker stage under the main training's failure policy (`health.run_campaign`) with the progress and
+    resource logs, then `check`. The caller has checked the user's approval (--confirm-m5-attackers) and the gate."""
+    from ..m46c.train import ResourceLog
+    from . import health as HL
+    todo = plan_runs(kinds, seeds, phase, restart_incomplete)
+    names = [f"{j[0]}_s{j[1]}" for j in todo]
+    q = ((C.load("budget") or {}).get("attackers") or {}).get("quarter") or {}
+    rates = {"om": (q.get("tps") or {}).get("om_target", 620.0), "sp": (q.get("tps") or {}).get("sp_target", 767.0)}
+    est = ((C.load("plan_future") or {}).get("attackers") or {}).get("core_12", {}).get("training_wall_h")
+    log = ResourceLog(os.path.join(C.OUT, f"resources_attack_{phase}.jsonl"))
+    prog = HL.Progress(f"attack_{phase}", names, workers, ATTACK_BUDGET, rates=rates, estimate=est,
+                       dir_of=lambda n: attacker_dir(n.split("_s")[0], int(n.split("_s")[1]), phase))
+    log.start()
+    prog.start()
+    t0 = time.perf_counter()
+    started = time.strftime("%Y-%m-%d %H:%M:%S")
+    try:
+        out = HL.run_campaign(train_job, todo, names, workers)
+    finally:
+        log.stop_flag.set()
+        prog.stop_flag.set()
+        try:
+            prog.write()
+        except Exception:                                  # pragma: no cover
+            pass
+    rec = {"runs": names, "workers": workers, "started": started, "finished": time.strftime("%Y-%m-%d %H:%M:%S"),
+           "wall_s": time.perf_counter() - t0, "status": {n: r.get("status") for n, r in out["results"].items()},
+           "stopped": out["stopped"], "run_wall_h": {n: (r.get("wall_s") or 0) / 3600 for n, r in out["results"].items()},
+           "estimate_wall_h": est, "rates_estimated": rates}
+    C.save_json(f"wall_attack_{phase}", rec)
+    return check(phase, kinds, seeds)
+
+
+# ---------------------------------------------------------------------------------------------- health check and gate
+def restart_checks(phase: str = "main", out_dir: str = C.OUT) -> Dict[str, dict]:
+    """Every attacker restart of this phase (results/m5/restarts.json): the restart must reproduce the preserved prefix."""
+    from .train import prefix_check
+    out = {}
+    for rec in (C.load("restarts", out_dir) or {}).get("restarts", []):
+        if rec.get("phase") != f"attack_{phase}":
+            continue
+        kind, s = rec["run"][len("attack_"):].split("_s")
+        out[f"{rec['run']} ({rec['moved_to'].split('/')[-1]})"] = prefix_check(rec["moved_to"],
+                                                                                 attacker_dir(kind, int(s), phase))
+    return out
+
+
+def check(phase: str = "main", kinds=CORE_KINDS, seeds=C.SEEDS, total: int = ATTACK_BUDGET, save: bool = True,
+          out: str = C.OUT, target_ids: Optional[Dict[str, dict]] = None) -> dict:
+    """The attackers' health and identity check, rebuilt from the run directories (the main training's checks where
+    they apply, pre-registration §3): complete, the budget within one update, finite statistics, no termination and
+    one truncation per game, a bounded critic, no illegal action, the runtime monitor agreeing with the post-hoc scan,
+    no stop condition; the initial weights = the designed copy of the target; the target = the approved final (file
+    SHA-256 recorded by the training check) and frozen (its in-memory weights equal to the file's before and after
+    training); s0 starts and 512-turn games; every game against the target, the learner's seats balanced; the
+    attacker's belief updated on every turn and the target's on every turn exactly when it is a live om target; every
+    restart reproducing its preserved prefix. `target_ids`: {target spec: {"file_sha256"}} in place of the training
+    check's identities (readiness stand-ins)."""
+    from ....env.discounted import tail_constant
+    from ....rl import weights_digest
+    from ..m45c.full import stability_scan
+    from . import health as HL
+    from .train import history
+    if target_ids is None:
+        tc = C.load("train_main") or {}
+        target_ids = {f"{a}:{s}": ((tc.get("identities") or {}).get(f"{a}_s{s}") or {}).get("final") or {}
+                      for a in C.ARMS for s in C.SEEDS}
+    runs, checks, scans, live, ids = {}, {}, {}, {}, {}
+    one_update = 16 * 128                                   # one learner seat per game: n_envs x rollout length
+    omega = tail_constant(C.arm_cfg("om"))
+    for kind in kinds:
+        for s in seeds:
+            name = f"{kind}_s{s}"
+            d = attacker_dir(kind, s, phase)
+            r = C.jload(os.path.join(d, "summary.json"))
+            h = history(d)
+            scans[name] = stability_scan(h)
+            live[name] = HL.alarms(d)
+            if r is None or r.get("status") != "complete":
+                runs[name] = {"status": (r or {}).get("status") or ("missing" if not h else f"incomplete ({len(h)})"),
+                              "error": (r or {}).get("error"), "updates_written": len(h),
+                              "alarms": [x["alarm"] for x in live[name]]}
+                continue
+            runs[name] = r
+            fin = os.path.join(d, "final.pt")
+            ids[name] = {"path": fin.replace("\\", "/"), "file_sha256": C.file_sha256(fin)}
+            tg = r["target"]
+            col = (r.get("collector") or {}).get("attack") or {}
+            draws = (col.get("target") or {}).get("draws") or {}
+            bu = col.get("belief_updates") or {}
+            seats = r["transitions_seat_a"] + r["transitions_seat_b"]
+            ppo = r.get("ppo") or {}
+            checks.update({
+                f"{name}: complete, budget reached (within one update)":
+                    total <= r["agent_transitions"] < total + one_update if r.get("stop_at") is None
+                    else r["agent_transitions"] >= r["stop_at"],
+                f"{name}: finite losses and gradients": bool(r["finite_losses_and_gradients"]),
+                f"{name}: never terminated; one truncation per finished game": r["terminations"] == 0 and
+                r["truncations"] == r["games_finished"],
+                f"{name}: critic bounded (|V| <= Omega)": r["value_absmax_resources"] <= omega,
+                f"{name}: no illegal action sampled": r["rollout"].get("illegal_sampled_total", 1) == 0,
+                f"{name}: runtime monitor attached and agreeing with the post-hoc scan": bool(r.get("monitored")) and
+                sorted(x["alarm"] for x in live[name]) == sorted(scans[name].get("alarms", [])),
+                f"{name}: no pre-registered stop condition": not scans[name]["alarms"],
+                f"{name}: initial weights = the target copied into the om format":
+                    r["initial_digest"] == weights_digest(initial_net(kind, s, phase, tg["spec"]).state_dict()),
+                f"{name}: target = the approved final (file SHA-256)":
+                    tg["file_sha256"] == (target_ids.get(tg["spec"]) or {}).get("file_sha256"),
+                f"{name}: target frozen (in-memory weights = the file's, before and after)":
+                    tg["digest_start"] == tg["digest_end"] == tg["stored_digest"],
+                f"{name}: s0 starts, 512-turn games, schedule {total}": ppo.get("start_mix") == 0.0 and
+                ppo.get("game_length") == 512 and r["schedule_total_steps"] == total,
+                f"{name}: every game against the target": set(draws) == {f"target:{kind}"} and
+                sum(draws.values()) >= r["games_finished"],
+                f"{name}: the learner's seats balanced (within 5%)":
+                    seats > 0 and abs(r["transitions_seat_a"] - r["transitions_seat_b"]) <= 0.05 * seats,
+                f"{name}: attacker belief updated on every turn": bu.get("att") == r["env_turns"],
+                f"{name}: target belief updated on every turn iff a live om target":
+                    bu.get("tgt") == (r["env_turns"] if kind == "om" else 0)})
+    rs = restart_checks(phase, out)
+    for k, v in rs.items():
+        checks[f"restart {k}: reproduces the preserved history prefix"] = bool(v["identical"])
+    complete = [n for n, r in runs.items() if r.get("status") == "complete"]
+    tech = {n: r for n, r in runs.items() if r.get("status") != "complete"}
+    data = {"meta": C.meta(stage="attack_check", phase=phase), "runs": runs, "stability": scans, "checks": checks,
+            "live_alarms": {n: v for n, v in live.items() if v}, "complete": complete,
+            "technical_failures": {n: {"status": r["status"], "error": r.get("error"), "alarms": r.get("alarms")}
+                                   for n, r in tech.items()},
+            "restarts": rs, "identities": ids,
+            "failed_checks": [k for k, v in checks.items() if not v],
+            "all_passed": bool(checks) and all(checks.values()) and len(complete) == len(kinds) * len(seeds)}
+    if save:
+        C.save_json(f"attack_check_{phase}", data, out)
+    return data
+
+
+def require_ok(phase: str = "main", kinds=CORE_KINDS, out: str = C.OUT) -> dict:
+    """The gate of the attacker evaluation: the attacker check exists, every run of `kinds` is complete, every failed
+    check has a recorded resolution as a training property (`health.resolve` with phase "attack_<phase>"), and the
+    evaluated attackers are the files the check recorded (SHA-256)."""
+    from . import health as HL
+    d = C.load(f"attack_check_{phase}", out)
+    if not d:
+        raise SystemExit(f"no attacker check (results/m5/attack_check_{phase}.json): run stage attack_check first")
+    names = [f"{k}_s{s}" for k in kinds for s in C.SEEDS]
+    missing = [n for n in names if n not in d.get("complete", [])]
+    if missing:
+        raise SystemExit(f"attackers incomplete or failed ({missing}): evaluation refused; investigate (§3 rules)")
+    res = HL.resolutions(f"attack_{phase}", out)
+    open_ = [k for k, v in d["checks"].items() if not v
+             and (res.get(k) or {}).get("classification") != "training property (not a defect)"]
+    if open_:
+        raise SystemExit("failed attacker checks without a recorded resolution: " + "; ".join(open_))
+    bad = [n for n in names if C.file_sha256(d["identities"][n]["path"]) != d["identities"][n]["file_sha256"]]
+    if bad:
+        raise SystemExit(f"attacker checkpoints differ from the check's identities: {bad}")
+    return d
 
 
 def eval_jobs(kinds=CORE_KINDS, seeds=C.SEEDS, phase: str = "main", N: int = N_EVAL) -> List[dict]:
@@ -319,5 +550,6 @@ def eval_jobs(kinds=CORE_KINDS, seeds=C.SEEDS, phase: str = "main", N: int = N_E
 
 
 __all__ = ["TargetAgent", "attack_collector_cls", "initial_net", "ppo_config", "attacker_dir", "train_job",
+           "target_identity", "plan_runs", "train", "check", "require_ok", "restart_checks",
            "eval_jobs", "self_play_table", "ATTACK_BUDGET", "HALF_BUDGET", "QUARTER_BUDGET", "TARGET_KINDS", "N_EVAL",
            "CORE_KINDS", "OPTIONAL_KINDS"]

@@ -107,6 +107,16 @@ Viewer: `streamlit run lanegame/viewer/app.py` (replays recorded trajectories fr
   - `analysis.py` classifies an endpoint only with all six seeds. `strategic.py` is S8 (battery and cell replication).
   - The `battery_extend` stage runs M4.5c's exception 3 after `battery`: every (final, family) that fails horizon
     validation is re-run at 150 turns, and S8 then reads the 150-turn statistic for it.
+  - The `attackers` stage follows the training's rules (the runtime monitor, the coordinator, `--restart-incomplete`
+    with a prefix check) and ends with `attack_check`. `attack_eval` refuses to start until that check passed or each
+    failure has a resolution.
+  - `traces` exports viewer recordings of selected evaluation games, `attack_behaviour` summarizes the attackers'
+    actions, and `reproduce` writes `results/m5/reproducibility.md` with the SHA-256 of every network and record.
+  - M5 is complete (2026-10-19, [final report](docs/m5/m5e_closeout_report.md)). M6, presentation, demonstration
+    and reproducibility, is next.
+- M6 is planned, not started ([plan](docs/m6/m6_plan.md), in review). It is a new web application in which a human
+  plays against either M5 policy (`sp:0`, `om:0`). The Streamlit viewer stays where it is until M6d archives its UI.
+  M6 adds no mechanics, rewards or training.
 
 **The preset chain.** M4 presets build on each other, each as the previous preset plus opt-in fields:
 `m4 → m4_continuous → m4_emergent → m4_natural_prototype → m4_natural → m4_lane → m4_lasthit → m4_four_actions →
