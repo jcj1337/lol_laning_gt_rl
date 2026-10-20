@@ -1,8 +1,11 @@
 # M4 documentation
 
-The living description of the current game is
+The living description of the current game, the research preset `m45_calibrated()`, is
 [laning_game_mathematical_reference.md](laning_game_mathematical_reference.md). It stays at this level because every
-milestone refers to it. Everything else is grouped by milestone; documents are historical records of their milestone
+milestone refers to it. Its version before the 2026-10-20 rewrite, which described `m4_lasthit()` with the research
+preset's differences in separate sections, is archived beside it as
+[laning_game_mathematical_reference_m4_lasthit.md](laning_game_mathematical_reference_m4_lasthit.md); reports written
+before that date cite its section numbers. Everything else is grouped by milestone; documents are historical records of their milestone
 and are not edited after the fact (corrections live in later reports and in the reference's §12).
 
 | folder | milestone | documents |
@@ -19,7 +22,7 @@ and are not edited after the fact (corrections live in later reports and in the 
 The M4-wide closeout record sits at this level, beside the reference:
 [m4_closeout_report.md](m4_closeout_report.md) (2026-10-16). It contains:
 - the strategic acceptance assessment of every laning goal;
-- configuration recommendations (awaiting the user's decision);
+- configuration recommendations (the user chose the recommended baseline and shared critic on 2026-10-17);
 - accepted limitations and corrections to the M4.6e–f interpretations;
 - M5's verified commitments and proposed scope.
 

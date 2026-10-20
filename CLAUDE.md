@@ -18,7 +18,7 @@ repo root anyway: experiment drivers write to relative `results/` paths.
 
 ```bash
 pip install -e ".[test,rl,viewer]"     # viewer = the Streamlit debugger
-python -m pytest                       # full suite, ~1,510 tests, ~8-11 min
+python -m pytest                       # full suite, ~1,550 tests, ~8-11 min
 python -m pytest tests/test_m4_env.py                  # one file
 python -m pytest tests/test_m4_env.py::test_name       # one test (or -k pattern)
 python -m pytest --runslow             # also run @pytest.mark.slow (exhaustive enumerations, K=32 re-solve)
@@ -30,13 +30,16 @@ are absent.
 
 Main CLI: `python -m lanegame <command>`. The module docstring of `lanegame/__main__.py` lists every command. The most
 common are `solve` / `scenarios` / `exploit` (exact game, `--model siege|revised|v1`), `env-demo` (scripted agents
-through the env) and `rl-shared --model <preset>` (shared-policy PPO).
+through the env) and `rl-shared --model <preset>` (shared-policy PPO; it accepts presets up to
+`m4_four_actions_econ_aggro()`, and the M4.5 and later campaigns train through their milestone drivers).
 
 Each milestone's experiments run as `python -m lanegame.experiments[.rl].<milestone> <stage> [<stage> ...] [--workers N]`,
-for example `python -m lanegame.experiments.rl.m46c train`. The stage list is in that package's `__main__.py`
-docstring. Expensive stages (training campaigns, batteries, attackers) refuse to start without a
-`--confirm-<milestone>-<stage>` flag. That flag means the user approved the compute budget, so never pass it on your own
-initiative. Long stages are resumable and write partial results under `results/<milestone>/.../partial/`.
+for example `python -m lanegame.experiments.m45b validate`. The stage list is in that package's `__main__.py`
+docstring. Most expensive stages (training campaigns, batteries, attackers) refuse to start without a confirm flag
+such as `--confirm-m44b`, `--confirm-m45c-full` or `--confirm-m5-train`. That flag means the user approved the compute
+budget, so never pass it on your own initiative. A few earlier training stages (`m46a e4_train`, `m46c train`,
+`m46f train`) have no flag and are gated only by their pre-registration; ask before running those too. Long stages
+are resumable and write partial results under `results/<milestone>/.../partial/`.
 
 Viewer: `streamlit run lanegame/viewer/app.py` (replays recorded trajectories from actions).
 
@@ -130,8 +133,8 @@ example, is `m45_calibrated(invest_gain=3.24, invest_scale=64.0)`. Rules for cha
 - Earlier presets are guarded by digest pins: `tests/test_legacy_pins.py` (v1, v2, siege, champions and solver values),
   plus `test_historical_presets_are_pinned` in `test_m45a_mechanics.py` and the pins in `test_m45b_candidate.py`. A
   failing pin is a regression. Never update the digest to make it pass.
-- The action space has 61 codes (Slow Push is 46–60, Ward is 30). The observation has 88 entries, or 90 with the M4.5
-  Vision node; the opt-in field `obs_last_action` appends 13 entries for the opponent's previous action (103 with
+- The action space has 61 codes from `m4_four_actions()` on (Slow Push is 46–60, Ward is 30; earlier M4 presets have
+  46). The observation has 88 entries, or 90 with the M4.5 Vision node; the opt-in field `obs_last_action` appends 13 entries for the opponent's previous action (103 with
   `m45_calibrated()`, used by OM2). A change to the observation or to its scales invalidates trained checkpoints.
 
 **Determinism is a tested contract.** The env draws a fixed number of chance uniforms per turn, whatever the actions,
@@ -141,16 +144,23 @@ action-dependent RNG consumption or unseeded randomness.
 
 ## Documentation conventions
 
-- `docs/m4/laning_game_mathematical_reference.md` is the living description of the game. Any change to a rule, a
-  parameter or the objective must update the matching equation, table or example there in the same piece of work and
-  add a line to its §13 change log.
-- Milestone reports (`docs/phase1/`, `docs/rl/`, `docs/m4/m4_X/`, `docs/natural_waves/`) are historical records. Don't
-  edit them after the fact; corrections go in later reports and in the reference's §12.
+- `docs/m4/laning_game_mathematical_reference.md` is the living description of the game, written for the research
+  preset `m45_calibrated()`. Any change to a rule, a parameter or the objective must update the matching equation,
+  table or example there in the same piece of work and add a line to its §13 change log. Its engine-computed
+  examples and measurements come from `python -m lanegame.experiments.reference` (results/reference/), and
+  `tests/test_reference_examples.py` pins the deterministic ones. The version before the 2026-10-20 rewrite, which
+  described `m4_lasthit()`, is archived as `docs/m4/laning_game_mathematical_reference_m4_lasthit.md`; earlier
+  reports cite its section numbers.
+- Milestone reports (`docs/phase1/`, `docs/rl/`, `docs/m4/m4_X/`, `docs/natural_waves/`, `docs/opponent_modelling/`,
+  `docs/m5/`) are historical records. Don't edit them after the fact; corrections go in later reports and in the
+  reference's §12.
 - A milestone usually produces a pre-registration (written before training or evaluation), a report under `docs/`, and
   generated tables at `results/<milestone>/report.md`. It also updates the roadmap summary,
   `docs/README.md` / `docs/m4/README.md` and the README's roadmap table.
 - `docs/design_philosophy.md` is the standard for any mechanic: simplify how League works without changing why its
   laning strategies work.
 - Terminology: the midpoint cell x = 0 is "the lane" (never "river"). The full-capacity wave slot is "Shove" in the
-  four-action presets and "Clear" in `m4_lasthit()` and earlier; it is the same code.
+  four-action presets and "Clear" in `m4_lasthit()` and earlier; it is the same code. The reward term paid for a
+  champion's death is "kills" (never "bounty"). The config field `kill_bounty` and the `info` keys `bounty` /
+  `bounty_units` keep the old word, as do reports written before 2026-10-20.
 - `legacy/` is the original Q-learning prototype, kept unchanged for reference.

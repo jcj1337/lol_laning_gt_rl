@@ -29,20 +29,21 @@ observable, and its equilibria have to be the product of its rules, not of its r
    themselves. A strategy such as freezing or slow pushing is a pattern of inputs that the physics rewards, not a mode
    the engine switches into.
 3. **Resources are conserved and accounted for exactly.** Every minion HP that dies is a farm opportunity for exactly
-   one side; gold, XP, plates and bounties are integer ledgers; the reward is their exact zero-sum difference. Nothing
-   is created by a formula and nothing silently disappears.
+   one side; gold, XP, plates and kills are integer ledgers; the reward is the exact zero-sum difference of the gold
+   the two sides earn (farm, plate gold and kills). Nothing is created by a formula and nothing silently disappears.
 4. **Power is earned and bounded.** Levels and investment make a champion stronger in combat and in wave control,
    through one monotone, saturating map. A lead must matter and must keep mattering, but no state may allow a
    one-turn kill from full health or an unbounded snowball.
-5. **Positions matter because reach is limited.** Farming, wave damage, trading and experience each have a reach, and
-   the reaches differ. Standing somewhere is a commitment: a champion in reach of the enemy at the start of a turn
+5. **Positions matter because reach is limited.** Farming, wave damage, trading and experience each have a reach: one
+   cell for the first three and two cells for experience in the research preset. Standing somewhere is a commitment: a champion in reach of the enemy at the start of a turn
    cannot undo that by reacting to the enemy's action.
 6. **Symmetry and determinism.** The game is mirror-symmetric between the seats; the only randomness is an explicit
    per-turn chance vector that both policies see identically; every trajectory is replayable from (state, actions,
    chance).
 7. **Markov and lossless observation.** Each player observes everything it needs to act optimally from the current
    state, and nothing else. Hidden state is forbidden; the observation is decodable back to the state.
-8. **Small enough to be understood.** Five lane cells, three wave intents, five behaviours, two siege objectives.
+8. **Small enough to be understood.** Five lane cells and one Vision node, four wave actions, five behaviours, one
+   siege objective and one Ward.
    Every mechanic added must earn its place by changing which strategies are rational, and must be removable by a
    configuration switch that reproduces the previous game bit for bit.
 
@@ -75,19 +76,22 @@ The following are deliberate. They are not bugs to fix, though any of them may b
 is what breaks a relationship in section 2.
 
 - **Geometry.** One lane of five champion cells (own tower, one cell, the lane, one cell, enemy tower) and nine minion
-  cells. "Next to the tower" and "just outside tower range" are the same cell.
+  cells, plus one off-lane Vision node attached to the lane cell, where a champion places a ward. "Next to the tower"
+  and "just outside tower range" are the same cell.
 - **Time.** Two-tick decision turns, waves every four ticks, a continuing game with discounting instead of a match
-  clock. Death timers and recall times are constants, not level-dependent.
+  clock. The recall time is a constant; the death timer grows with level in three steps (3, 4 and 5 turns).
 - **Minions.** One HP pool per packet, an integer Lanchester law, caps on merged packets, no minion types, no
-  cannon waves, no minion aggro on champions.
+  cannon waves. Minions attack a champion only when it trades their champion or stands uncovered in their cell, and
+  that damage falls with the champion's level.
 - **Champions.** Identical champions distinguished only by a mechanical skill constant. No abilities, cooldowns,
   mana, ranges or crowd control: a trade is a probabilistic exchange whose damage scales with attack power; combat
   decisiveness is a matter of exchanges per turn and of the gap in power, not of a kit.
 - **Progression.** One experience curve, one saturating investment curve bought automatically at base, no item
   choices, no runes. Investment is an abstract power stat, not a shop.
-- **Economy.** Gold and XP per minion HP; plates and kill bounties as the only other income; no jungle, no
+- **Economy.** Gold and XP per minion HP; plates and champion kills as the only other income; no jungle, no
   objectives, no roaming, no tower kills.
-- **Information.** Perfect information about the state, no vision game beyond the siege vision objective, no fog.
+- **Information.** Perfect information about the state and no fog. Vision is one contestable ward at the shared
+  Vision node, which lowers the gank rate for six turns.
 - **Ganks.** An abstract threat whose probability depends on exposure and wave state, resolved as damage events.
 - **Towers.** One target rule (crashed mass), a tower shot on divers and on traders next to the tower, plates by
   cumulative damage; no tower aggro mechanics.
@@ -110,7 +114,7 @@ inefficiencies in their own right.
   (no chance events); strategic claims on sampled windows with common random numbers and on solved policy games;
   learned play is the final test and is never used to tune mechanics.
 - **Correctness guarantees are preserved by every change:** mirror symmetry, deterministic replay, exact zero-sum
-  accounting (gold, XP, plates, bounties), state invariants, legal-action masks that equal the engine's legal sets,
+  accounting (gold, XP, plates, kills), state invariants, legal-action masks that equal the engine's legal sets,
   a lossless bounded observation, and a bounded per-turn reward with a known evaluation tail.
 - **Performance budget.** A resolver turn must stay in the hundreds of microseconds; the lane step in the tens.
 - **Reports distinguish observed from hypothesised.** Observed results carry their method and budget; hypotheses and
