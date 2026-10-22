@@ -1,0 +1,93 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Laning Lab · Board</title>
+  <meta name="description" content="M6a prototype B: a schematic tactical lane with a move list.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <script>
+    window.__errors = [];
+    window.addEventListener('error', (e) => window.__errors.push(String(e.message || e)));
+    window.addEventListener('unhandledrejection', (e) => window.__errors.push(String(e.reason && (e.reason.stack || e.reason))));
+  </script>
+</head>
+<body>
+  <a class="skip" href="#board">Skip to the lane</a>
+  <header class="top">
+    <div class="brand">
+      <svg viewBox="0 0 28 28" aria-hidden="true" class="mark"><rect x="2" y="12" width="24" height="4" rx="2"/><circle cx="8" cy="14" r="5"/><rect x="16" y="9" width="10" height="10" rx="1.5" transform="rotate(45 21 14)"/></svg>
+      <div><b>Laning Lab</b><span>Prototype B · Board</span></div>
+    </div>
+    <nav class="modes" aria-label="Mode">
+      <div class="seg" role="radiogroup" aria-label="Mode" id="modeSwitch">
+        <button role="radio" data-mode="play">Play</button>
+        <button role="radio" data-mode="watch">Watch</button>
+      </div>
+      <label class="picker"><span class="sr">Game</span><select id="gamePicker" aria-label="Recorded game"></select></label>
+    </nav>
+    <div class="prov">
+      <span class="badge" id="provBadge"></span>
+      <button class="ghost small" id="aboutBtn" aria-expanded="false" aria-controls="aboutPop">About this game</button>
+      <div class="pop" id="aboutPop" hidden></div>
+    </div>
+  </header>
+
+  <main class="layout">
+    <section class="stage" aria-label="Lane and status">
+      <div class="banner" id="banner" aria-live="polite"></div>
+      <div class="boardWrap">
+        <svg id="board" viewBox="0 0 1000 300" role="img" aria-labelledby="boardTitle boardDesc" tabindex="0">
+          <title id="boardTitle">The lane</title>
+          <desc id="boardDesc"></desc>
+          <defs>
+            <pattern id="hatchA" width="6" height="6" patternUnits="userSpaceOnUse" patternTransform="rotate(45)"><rect width="6" height="6" class="hatchBgA"/><line x1="0" y1="0" x2="0" y2="6" class="hatchLnA"/></pattern>
+            <pattern id="hatchB" width="6" height="6" patternUnits="userSpaceOnUse" patternTransform="rotate(-45)"><rect width="6" height="6" class="hatchBgB"/><line x1="0" y1="0" x2="0" y2="6" class="hatchLnB"/></pattern>
+          </defs>
+          <g id="gGrid"></g>
+          <g id="gStatic"></g>
+          <g id="gContact"></g>
+          <g id="gPackets"></g>
+          <g id="gChamps"></g>
+          <g id="gFx"></g>
+        </svg>
+        <div class="frameTag" id="frameTag"></div>
+        <div class="boardHint" aria-hidden="true">swipe the lane ⇆</div>
+        <p class="sr" id="laneText" aria-live="polite"></p>
+      </div>
+      <div class="status" id="status"></div>
+      <div class="outcome" id="outcome"></div>
+      <div class="bottom" id="bottom">
+        <div class="act" id="act"></div>
+        <div class="detail" id="detail" hidden></div>
+      </div>
+    </section>
+
+    <aside class="side" aria-label="Turn history">
+      <div class="listHead">
+        <span class="num">#</span><span id="colA">A</span><span id="colB">B</span><span class="tags">outcome</span>
+      </div>
+      <ol class="moves" id="moves" aria-label="Turns, one row per simultaneous turn"></ol>
+      <div class="nav" id="nav">
+        <div class="transport" role="group" aria-label="Navigate turns">
+          <button id="bFirst" aria-label="First position (Home)" title="First (Home)"><svg viewBox="0 0 20 20"><path d="M5 4v12M15 4l-7 6 7 6z"/></svg></button>
+          <button id="bPrev" aria-label="Previous turn (Left arrow)" title="Previous (←)"><svg viewBox="0 0 20 20"><path d="M13 4l-7 6 7 6z"/></svg></button>
+          <button id="bPlay" class="playBtn" aria-label="Play" title="Play / pause (Space)"><svg viewBox="0 0 20 20" id="playIcon"><path d="M6 4l10 6-10 6z"/></svg></button>
+          <button id="bNext" aria-label="Next turn (Right arrow)" title="Next (→)"><svg viewBox="0 0 20 20"><path d="M7 4l7 6-7 6z"/></svg></button>
+          <button id="bLast" aria-label="Latest position (End)" title="Latest (End)"><svg viewBox="0 0 20 20"><path d="M15 4v12M5 4l7 6-7 6z"/></svg></button>
+        </div>
+        <div class="speed" role="radiogroup" aria-label="Playback speed" id="speed"></div>
+        <div class="navInfo" id="navInfo"></div>
+        <div class="keys">← → step · Home End · Space play · Esc current turn</div>
+      </div>
+      <div class="detailToggle">
+        <button class="ghost" id="detailBtn" aria-expanded="false" aria-controls="detail">Details: events, wave, ticks, belief</button>
+      </div>
+    </aside>
+  </main>
+  <script type="module" src="app.js"></script>
+</body>
+</html>

@@ -1,0 +1,35 @@
+{
+ "schema": "lanegame.demo_manifest",
+ "version": 1,
+ "source": "results/m5/inventory.json (the M5e reproduce stage); tests/test_demo_session.py checks every entry against it",
+ "files": {
+  "results/rl/checkpoints/m5/train/main/sp/s0/final.pt": {
+   "sha256": "be46074e6a019b6f2fa3fdb0b30dc6229d7c8ddfc3d7dacccadb377138a252e5",
+   "role": "model sp:0"
+  },
+  "results/rl/checkpoints/m5/train/main/om/s0/final.pt": {
+   "sha256": "ba3d26f2e7d35dba474acdd150790ecbcc729832cca5cc1df4e919c2b640c561",
+   "role": "model om:0"
+  },
+  "results/rl/checkpoints/m45c/full/s3/final.pt": {
+   "sha256": "fa91f284a59ace64d85358398cf096304e9a32b9e8e1655ba56965b4d7664cd6",
+   "role": "belief library: peer"
+  },
+  "results/rl/checkpoints/m45c/attack/ext_s3/final.pt": {
+   "sha256": "e6f5deebeb434bc7cc5abbaa2e685495db1ed77f9c13f66a24f4dfa8bd0e9f20",
+   "role": "belief library: attacker"
+  },
+  "results/rl/checkpoints/m46a/e4/freeze_s2/final.pt": {
+   "sha256": "51e1a2787062af6debccfe6e11e5a814da82f5bae8c5ff96c7d4b8cfe2b56f4f",
+   "role": "belief library: freezer"
+  },
+  "results/rl/checkpoints/m46a/e4/gap_s2/final.pt": {
+   "sha256": "e4aa64fb18e342a6b45b1afaaf56496726f8860a3baaaea6068100de50884f15",
+   "role": "belief library: gapper"
+  },
+  "results/rl/checkpoints/m47/train/main/short/s0/final.pt": {
+   "sha256": "17c2507453dd9e7a3d1fb7b20c8a1fe55f1903b75296b1b75a23d537cf97934d",
+   "role": "belief library: short"
+  }
+ }
+}

@@ -1,0 +1,87 @@
+[
+ {
+  "name": "01_play_quiet",
+  "path": "story/index.html?game=h2h_om_s0_vs_sp_s0&mode=play&progress=128&still",
+  "steps": [
+   "window.__story.select({wave: 2, beh: 0})"
+  ]
+ },
+ {
+  "name": "02_crash",
+  "path": "story/index.html?game=h2h_om_s0_vs_sp_s0&mode=watch&view=31&still"
+ },
+ {
+  "name": "03_trade",
+  "path": "story/index.html?game=h2h_om_s0_vs_sp_s0&mode=play&progress=146&still",
+  "steps": [
+   "window.__story.select({wave: 2, beh: 0})",
+   "window.__story.submit()"
+  ]
+ },
+ {
+  "name": "04_death_absent",
+  "path": "story/index.html?game=om_s0_vs_g_shove&mode=play&progress=11&still"
+ },
+ {
+  "name": "05_history",
+  "path": "story/index.html?game=h2h_om_s0_vs_sp_s0&mode=play&progress=61&view=37&still",
+  "steps": [
+   "window.__story.select({wave: 1, beh: 2})",
+   "window.__story.ctrl.goto(37)"
+  ]
+ },
+ {
+  "name": "06_watch",
+  "path": "story/index.html?game=sim_om_vs_sp&mode=watch&view=29&speed=2",
+  "steps": [
+   "window.__story.ctrl.play()"
+  ],
+  "wait_ms": 330
+ },
+ {
+  "name": "07_detail",
+  "path": "story/index.html?game=h2h_om_s0_vs_sp_s0&mode=play&progress=61&belief=shown&detail=belief&still"
+ },
+ {
+  "name": "08_narrow",
+  "path": "story/index.html?game=h2h_om_s0_vs_sp_s0&mode=play&progress=40&still",
+  "width": 390,
+  "height": 844,
+  "steps": [
+   "window.__story.select({wave: 3, beh: 0})"
+  ]
+ },
+ {
+  "name": "09_summary",
+  "path": "story/index.html?game=h2h_om_s0_vs_sp_s0&mode=play&progress=120&still",
+  "steps": [
+   "window.__story.stop()"
+  ]
+ },
+ {
+  "name": "10_ticks",
+  "path": "story/index.html?game=h2h_om_s0_vs_sp_s0&mode=watch&view=31&detail=ticks&still"
+ },
+ {
+  "name": "11_tickframe",
+  "path": "story/index.html?game=h2h_om_s0_vs_sp_s0&mode=watch&view=31&still",
+  "steps": [
+   "window.__story.showFrame(31, 1)"
+  ]
+ },
+ {
+  "name": "12_ward",
+  "path": "story/index.html?game=h2h_om_s0_vs_sp_s0&mode=watch&view=67&still"
+ },
+ {
+  "name": "13_about",
+  "path": "story/index.html?game=h2h_om_s0_vs_sp_s0&mode=play&progress=20&still",
+  "steps": [
+   "window.__story.openAbout()"
+  ]
+ },
+ {
+  "name": "14_hidden_belief",
+  "path": "story/index.html?game=h2h_om_s0_vs_sp_s0&mode=play&progress=20&detail=belief&still"
+ }
+]

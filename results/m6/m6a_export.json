@@ -1,0 +1,99 @@
+{
+ "meta": {
+  "study": "M6a",
+  "preset": "m45_calibrated",
+  "commit": "b94200f769c0907121e775ca3ca9ecaf7e877caa",
+  "working_tree_dirty": true,
+  "timestamp": "2026-10-21 09:32:50",
+  "elapsed_s": 4.5
+ },
+ "games": {
+  "h2h_om_s0_vs_sp_s0": {
+   "turns": 150,
+   "verification": {
+    "actions": 150,
+    "payoff_A": -0.41500000000000026,
+    "belief_max_abs_diff": 0.0
+   },
+   "situations": {
+    "quiet": 2,
+    "stacked_crash": 2,
+    "trade_hit": 20,
+    "trade_miss": 22,
+    "trade_no_contact": 25,
+    "recall": 16,
+    "recall_interrupted": 8,
+    "death": 0,
+    "forced_absent_A": 7,
+    "ward": 3,
+    "plate": 2
+   }
+  },
+  "om_s0_vs_g_shove": {
+   "turns": 150,
+   "verification": {
+    "actions": 150,
+    "payoff_A": -27.139999999999983,
+    "belief_max_abs_diff": 0.0
+   },
+   "situations": {
+    "quiet": 0,
+    "stacked_crash": 6,
+    "trade_hit": 27,
+    "trade_miss": 25,
+    "trade_no_contact": 7,
+    "recall": 6,
+    "recall_interrupted": 22,
+    "death": 6,
+    "forced_absent_A": 27,
+    "ward": 4,
+    "plate": 3
+   }
+  },
+  "sp_s0_vs_g_shove": {
+   "turns": 150,
+   "verification": {
+    "actions": 150,
+    "payoff_A": 5.274999999999999
+   },
+   "situations": {
+    "quiet": 1,
+    "stacked_crash": 5,
+    "trade_hit": 16,
+    "trade_miss": 13,
+    "trade_no_contact": 8,
+    "recall": 12,
+    "recall_interrupted": 7,
+    "death": 2,
+    "forced_absent_A": 6,
+    "ward": 2,
+    "plate": 6
+   }
+  },
+  "sim_om_vs_sp": {
+   "turns": 150,
+   "verification": {
+    "turns": 150,
+    "lead_A": -1.8075,
+    "codes_recomputed": [
+     "A",
+     "B"
+    ],
+    "digests_checked": 150
+   },
+   "situations": {
+    "quiet": 0,
+    "stacked_crash": 6,
+    "trade_hit": 22,
+    "trade_miss": 20,
+    "trade_no_contact": 18,
+    "recall": 15,
+    "recall_interrupted": 11,
+    "death": 3,
+    "forced_absent_A": 17,
+    "ward": 2,
+    "plate": 6
+   }
+  }
+ }
+}

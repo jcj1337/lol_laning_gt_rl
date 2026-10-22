@@ -1,0 +1,22 @@
+[
+  {"name": "01_quiet_lane", "path": "refined/?mode=watch&game=h2h_om_s0_vs_sp_s0&view=127&still", "width": 1440, "height": 900},
+  {"name": "02_busy_turn", "path": "refined/?mode=watch&game=h2h_om_s0_vs_sp_s0&view=147&still", "width": 1440, "height": 900},
+  {"name": "03_actions", "path": "refined/?mode=play&opp=om:0&seed=110901&still", "width": 1440, "height": 900,
+   "steps": ["(async () => { for (let i = 0; i < 5; i++) { const m = window.__demo.state().menu; await window.__demo.submit(m.forced !== null ? 45 : (i === 2 ? 7 : 2)); } window.__demo.select({kind: 'lane', wave: 3, beh: 2}); })()"]},
+  {"name": "04_history", "path": "refined/?mode=play&opp=om:0&seed=110902&still", "width": 1440, "height": 900,
+   "steps": ["(async () => { for (let i = 0; i < 9; i++) { const m = window.__demo.state().menu; await window.__demo.submit(m.forced !== null ? 45 : (m.legal.includes(1) ? 1 : m.legal[0])); } window.__demo.select({kind: 'lane', wave: 1, beh: 0}); await window.__demo.goto(4); })()"]},
+  {"name": "05_watch", "path": "refined/?mode=watch&game=sim_om_vs_sp&view=40&speed=2", "width": 1440, "height": 900,
+   "steps": ["document.getElementById('btnPlay').click()"], "wait_ms": 1500},
+  {"name": "06_details", "path": "refined/?mode=watch&game=h2h_om_s0_vs_sp_s0&view=31&detail=waves&still", "width": 1440, "height": 900},
+  {"name": "07_graph", "path": "refined/?mode=watch&game=h2h_om_s0_vs_sp_s0&view=60&still", "width": 1440, "height": 900,
+   "steps": ["window.__demo.hover(96)"]},
+  {"name": "07b_graph_events", "path": "refined/?mode=watch&game=om_s0_vs_g_shove&view=52&still", "width": 1440, "height": 900,
+   "steps": ["(() => { const e = document.getElementById('gEvents'); e.checked = true; e.dispatchEvent(new Event('change')); })()"]},
+  {"name": "08_away", "path": "refined/?mode=play&opp=sp:0&seed=110903&still", "width": 1440, "height": 900,
+   "steps": ["window.__demo.submit(12)"]},
+  {"name": "09_summary", "path": "refined/?mode=play&opp=om:0&belief=shown&seed=110904&still", "width": 1440, "height": 900,
+   "steps": ["(async () => { for (let i = 0; i < 12; i++) { const m = window.__demo.state().menu; await window.__demo.submit(m.forced !== null ? 45 : (m.legal.includes(48) ? 48 : m.legal[0])); } await window.__demo.stop(); })()"]},
+  {"name": "10_narrow", "path": "refined/?mode=watch&game=h2h_om_s0_vs_sp_s0&view=31&still", "width": 390, "height": 844},
+  {"name": "11_medium", "path": "refined/?mode=play&opp=om:0&seed=110905&still", "width": 1024, "height": 768,
+   "steps": ["(async () => { for (let i = 0; i < 4; i++) { const m = window.__demo.state().menu; await window.__demo.submit(m.forced !== null ? 45 : m.legal[1]); } window.__demo.select({kind: 'lane', wave: 2, beh: 0}); })()"]}
+]

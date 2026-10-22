@@ -116,10 +116,24 @@ Viewer: `streamlit run lanegame/viewer/app.py` (replays recorded trajectories fr
   - `traces` exports viewer recordings of selected evaluation games, `attack_behaviour` summarizes the attackers'
     actions, and `reproduce` writes `results/m5/reproducibility.md` with the SHA-256 of every network and record.
   - M5 is complete (2026-10-19, [final report](docs/m5/m5e_closeout_report.md)). M6, presentation, demonstration
-    and reproducibility, is next.
-- M6 is planned, not started ([plan](docs/m6/m6_plan.md), in review). It is a new web application in which a human
-  plays against either M5 policy (`sp:0`, `om:0`). The Streamlit viewer stays where it is until M6d archives its UI.
-  M6 adds no mechanics, rewards or training.
+    and reproducibility, follows.
+- M6 ([plan](docs/m6/m6_plan.md)) is a new web application with two modes: Play (a human against `sp:0` or `om:0`)
+  and Watch (a bounded bot match explored through a timeline). M6 adds no mechanics, rewards or training. The
+  Streamlit viewer stays where it is until M6d archives its UI, and it is not a visual template.
+  - M6a is in progress: the backend is done, and the user chose prototype C with A's action controls. The refined
+    interface `prototypes/m6a/refined/` (live Play) awaits the user's review ([decision record](docs/m6/m6a_decision_record.md)).
+    The earlier `arena/`, `board/` and `story/` prototypes are superseded staged walkthroughs. The production frontend
+    goes in `web/` (M6b, not started).
+  - `.venv/Scripts/python.exe prototypes/m6a/serve.py` serves the prototypes and, through `lanegame/demo/service.py`,
+    live sessions on 127.0.0.1:8765. The service holds one lock around all simulation.
+  - `lanegame/demo/` is the headless session core ([technical report](docs/m6/m6a_technical_report.md)). `registry.py`
+    checks the 7 checkpoint files against `manifest.json` before any is unpickled. Never load a demo checkpoint
+    another way.
+  - `session.py`: bot seats decide before the human's code is accepted; submissions are idempotent by turn number; a
+    drawn chance seed and the policy seed stay secret until the session stops. `record.py` has state digests and
+    replay. `frames.py` and `actions.py` give the frames and the menu, with reasons from the legality predicates.
+  - `python -m lanegame.experiments.m6a verify measure export` re-checks the research recordings, measures the
+    costs and writes the prototypes' data. `tests/test_demo_session.py` covers the correctness rules.
 
 **The preset chain.** M4 presets build on each other, each as the previous preset plus opt-in fields:
 `m4 → m4_continuous → m4_emergent → m4_natural_prototype → m4_natural → m4_lane → m4_lasthit → m4_four_actions →
