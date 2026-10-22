@@ -19,3 +19,7 @@ results/rl/m43b_artifacts/
 # results/m44c/MANIFEST.json) and the resumable-run scratch folder
 results/m44c/*.json.gz
 results/m44c/partial/
+
+# the demo frontend's toolchain and build (M6b): cd web && npm install && npm run build
+web/node_modules/
+web/dist/

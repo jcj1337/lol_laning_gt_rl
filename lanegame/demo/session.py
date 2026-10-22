@@ -448,6 +448,17 @@ class GameSession:
                                   "posteriors": {_seat_letter(s): v for s, v in self.beliefs.items()}}
             return rec
 
+    def bundle(self, name: str, label: str) -> dict:
+        """A whole game for playback (Watch and the research replays): the recording's meta block, positions 0..n,
+        turns 1..n, the beliefs the session may show, and the recording itself (replayable). Hidden information
+        follows the recording's rules, so an active session's bundle withholds its seeds and hidden beliefs."""
+        rec, h = self.recording(), self.history()
+        meta = {k: rec[k] for k in ("provenance", "config", "seeds", "policy_rule", "seats", "belief_mode",
+                                    "turn_cap", "status", "lead_A", "marks")}
+        return {"name": name, "label": label, "meta": meta, "positions": h["positions"], "turns": h["turns"],
+                "beliefs": rec.get("beliefs"), "recording": rec, "lane_exit_position": LANE_EXIT,
+                "read_position": READ_TURN}
+
     def _secret_record(self) -> dict:
         """The recording with its seeds, for the server's own replay (never sent while active)."""
         rec = self.recording()

@@ -1,11 +1,13 @@
 # M6 plan: presentation, interactive demonstration and reproducibility
 
-*Written 2026-10-19, revised 2026-10-21. Status: **M6a complete; M6b next.** The headless session core is built and
-verified ([M6a technical report](m6a_technical_report.md)). After six review rounds, the user approved the final
-interface design on 2026-10-21. It is one frosted glass dock over a diagonal top-down lane, with live Play through a
-local service over the session core ([M6a decision record](m6a_decision_record.md) §7). Its reference implementation
-is `prototypes/m6a/glass/`. The production frontend (M6b) has not started, and `web/` does not exist yet. The
-Streamlit viewer has not been archived and works as before. No hosting has been chosen, paid for or deployed.*
+*Written 2026-10-19, revised 2026-10-21 and 2026-10-22. Status: **M6a and M6b complete; M6c next.** The headless
+session core is built and verified ([M6a technical report](m6a_technical_report.md)). After six review rounds, the
+user approved the final interface design on 2026-10-21: one frosted glass dock over a diagonal top-down lane, with
+live Play through the session core ([M6a decision record](m6a_decision_record.md) §7). M6b built the maintained
+application from it on 2026-10-22 ([M6b report](m6b_report.md)): `web/` (React, TypeScript, Vite) served by
+`python -m lanegame.demo` (FastAPI over the session core, with Watch simulations in a separate worker process). The
+M6a prototypes were removed; the approved one's code is archived at `legacy/m6a_glass_prototype/`. The Streamlit
+viewer has not been archived and works as before. No hosting has been chosen, paid for or deployed.*
 
 *The 2026-10-21 revision records the user's M6a brief. Live bot-versus-bot simulation (Watch) is now part of the
 initial release. A Chess.com-style turn history governs navigation in Play and Watch. The frontend has explicit
@@ -40,7 +42,8 @@ Status labels follow the roadmap's legend.
 | React with TypeScript and Vite in `web/` in this repository, FastAPI over the Python simulator, one container | approved by the user on 2026-10-21, unless a concrete blocker appears; M6a found none |
 | `docs/` tracked in git | approved (the user, 2026-10-21) and done: the blanket ignore rule is removed |
 | the headless session core and the rules it proves (M6a) | completed and verified ([technical report](m6a_technical_report.md)) |
-| the visual design | approved by the user on 2026-10-21 after six review rounds ([decision record](m6a_decision_record.md) §7); the reference is `prototypes/m6a/glass/` |
+| the visual design | approved by the user on 2026-10-21 after six review rounds ([decision record](m6a_decision_record.md) §7); the reference was `prototypes/m6a/glass/`, archived at `legacy/m6a_glass_prototype/` since M6b implemented it in `web/` |
+| the playable application (M6b): the FastAPI layer, the frontend, the lifecycle and limits, the browser verification | completed 2026-10-22 ([M6b report](m6b_report.md)); the user's acceptance of the build is pending |
 | the milestones, the bundles and the safeguards | proposed (this plan) |
 | a hosting provider, spending and public deployment | not decided; a checkpoint in M6e |
 
@@ -219,7 +222,8 @@ The proposed layout keeps everything in this repository:
   session core is testable with pytest only. A new optional extra, `demo` (FastAPI and uvicorn), installs the server
   in M6b.
 - `web/` holds the frontend with its own `package.json` (approved by the user on 2026-10-21; created in M6b).
-- `prototypes/m6a/` holds the throwaway M6a prototypes, isolated from `web/`. They need no build step.
+- `prototypes/m6a/` held the throwaway M6a prototypes, isolated from `web/`, with no build step. M6b removed them
+  once `web/` worked; the approved glass prototype's code is archived unchanged at `legacy/m6a_glass_prototype/`.
 - `deploy/` holds the Dockerfile and the deployment notes.
 
 ## 5. Experience requirements
@@ -340,6 +344,11 @@ rough, and the main uncertainty is named for each milestone.
 - **Effort.** S for the session core (as estimated). M in all, with most of it in the six design rounds.
 
 ### M6b. The playable application
+
+*Status (2026-10-22): complete ([report](m6b_report.md)). Deliverables: `lanegame/demo/api.py`, `schemas.py`,
+`worker.py`, `__main__.py`; `web/`; `tests/test_demo_api.py` and `web/src/game/*.test.ts`; the `web-demo` feature of
+`verify-lanegame`; `python -m lanegame.experiments.m6b browser`. Scripted opponents were not added (optional, still
+undecided).*
 
 - **Objective and outcome.** A visitor plays a full game against either opponent, and watches a bounded bot match,
   on a local install. This is the first playable milestone. In Play the visitor chooses an opponent, starts a seeded

@@ -13,7 +13,8 @@ described in the decision record and `prototypes/m6a/README.md`.
 - *Records:* `results/m6/m6a_verify.json`, `results/m6/m6a_measurements.json`, `results/m6/m6a_export.json`,
   `results/m6/regression_suite_m6a.log`.
 - *Commands:* `python -m lanegame.experiments.m6a verify measure export` (about 35 s; needs the 7 checkpoint files).
-  Tests: `python -m pytest tests/test_demo_session.py` (29 tests, about 11 s).
+  Tests: `python -m pytest tests/test_demo_session.py` (29 tests, about 11 s). *2026-10-22: the `export` stage, which
+  wrote the prototypes' data files, went with the prototypes in M6b; `verify measure` remain.*
 
 ## Summary
 
@@ -244,7 +245,11 @@ None blocks M6b.
   networks as registry entries, 12 more manifest files. M6c decides whether its bundle build needs that or the action
   replay suffices.
 - **The prototypes' data files** contain whole recorded games, because Play is staged against them. The production
-  client never receives an unresolved turn.
+  client never receives an unresolved turn. *Correction (2026-10-22, M6b): this sentence predates the refinement
+  round. From that round on (§7) Play was live through the service in every later prototype, and only the three first
+  directions staged it; the data files served Watch and the review of recorded games. M6b removed the files with the
+  prototypes. The application's Watch receives whole bot games from the API, and its Play receives only resolved
+  turns ([M6b report](m6b_report.md)).*
 - **The demo frames and the Streamlit viewer** differ in one deliberate place (§1, last row).
 - **Scripted opponents** are supported by the core and their inclusion is undecided ([decision record](m6a_decision_record.md)).
 

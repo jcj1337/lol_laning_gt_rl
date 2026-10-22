@@ -9,8 +9,10 @@ Run it with the repo's venv, from the repo root:
     doctor   [--run RUN]                    read-only health check: venv, editable install, git, deps, our instances
     cli      --run RUN --label L -- ARGS    `python -m lanegame ARGS` in RUN/work/cli, transcript + created files kept
     viewer   start|stop --run RUN [--port N]
+    demo     start|stop --run RUN [--port N]  the M6 web demo (python -m lanegame.demo: the API and the built frontend)
     browser  start|stop --run RUN
-    browser  open       --run RUN [--url U] [--wait-text T]
+    browser  open       --run RUN [--url U] [--wait-text T | --ready-js EXPR]
+    browser  js         --run RUN --expr EXPR [--label L]   evaluate JavaScript in the page (the demo's window.__demo hooks)
     browser  click      --run RUN --text T [--key K | --scope sidebar|main] [--contains] [--nth N] [--no-settle]
     browser  select     --run RUN --key K --option T
     browser  fill       --run RUN --key K --value V
@@ -45,6 +47,7 @@ WIN = os.name == "nt"
 VENV_PY = REPO / ".venv" / ("Scripts/python.exe" if WIN else "bin/python")
 ROOT = Path(os.environ.get("LANEGAME_VERIFY_ROOT") or Path(tempfile.gettempdir()) / "lanegame-verify")
 VIEWER_PORTS = range(8600, 8700)              # never 8501, the port a user's own `streamlit run` takes
+DEMO_PORTS = range(8700, 8800)                # never 8765, the port a user's own `python -m lanegame.demo` takes
 COPY_LIMIT = 2_000_000                        # created files up to this size are copied into the evidence
 BROWSERS = [os.environ.get("LANEGAME_VERIFY_BROWSER", ""),
             r"C:\Program Files (x86)\Microsoft\Edge\Application\msedge.exe",
@@ -227,6 +230,16 @@ def cmd_doctor(a) -> None:
             except Exception as e:                                   # noqa: BLE001
                 h = f"error: {e}"
             check("viewer health endpoint", h.strip() == "ok", h.strip()[:80])
+        d = state(run, "demo")
+        if d:
+            alive = pid_alive(d["pid"])
+            check("demo process (ours)", alive, f"pid {d['pid']}")
+            try:
+                st = json.loads(http_get(f"{d['url']}api/status"))
+                h = "ready" if st.get("ready") else f"engine unavailable: {st.get('error')}"
+            except Exception as e:                                   # noqa: BLE001
+                h = f"error: {e}"
+            check("demo status endpoint", alive and not h.startswith("error"), h[:80], fatal=False)
         b = state(run, "browser")
         if b:
             alive = pid_alive(b["pid"])
@@ -351,6 +364,53 @@ def cmd_viewer(a) -> None:
         sys.exit(f"viewer not healthy after {a.timeout}s; see {run / 'evidence' / 'viewer.log'}")
     log(run, f"viewer start pid {pid} {url}")
     print(f"viewer up at {url} (pid {pid}); server healthy. Open it with `browser open` to confirm the page renders.")
+
+
+def cmd_demo(a) -> None:
+    """The M6 web demo: `python -m lanegame.demo` on a free port in 8700-8799, from the repo root (it reads the
+    checkpoints relative to it and serves web/dist); ready when /api/status answers (ready or not: without the
+    checkpoints Play says the engine is unavailable)."""
+    run = run_dir(a.run)
+    if a.action == "stop":
+        v = state(run, "demo")
+        if v:
+            kill_tree(v["pid"])
+            set_state(run, "demo", None)
+            log(run, f"demo stop pid {v['pid']}")
+            print(f"stopped demo pid {v['pid']}")
+        else:
+            print("no demo recorded for this run")
+        return
+    v = state(run, "demo")
+    if v and pid_alive(v["pid"]):
+        sys.exit(f"this run already has a demo at {v['url']} (pid {v['pid']})")
+    port = a.port or next((p for p in DEMO_PORTS if port_free(p)), None)
+    if port is None or not port_free(port):
+        sys.exit(f"port {port} is busy; pick another with --port")
+    if not (REPO / "web" / "dist" / "index.html").is_file():
+        sys.exit("the frontend is not built: cd web && npm install && npm run build")
+    cmd = [str(VENV_PY), "-m", "lanegame.demo", "--port", str(port)]
+    pid = spawn(cmd, REPO, run / "evidence" / "demo.log")
+    url = f"http://127.0.0.1:{port}/"
+    set_state(run, "demo", {"pid": pid, "port": port, "url": url, "started": now()})
+    t0 = time.time()
+    st = {}
+    while time.time() - t0 < a.timeout:
+        if not pid_alive(pid):
+            sys.exit(f"demo exited during start; see {run / 'evidence' / 'demo.log'}")
+        try:
+            st = json.loads(http_get(f"{url}api/status", 2))
+            if port_owner_ok(pid, port):
+                break
+        except Exception:                                            # noqa: BLE001
+            pass
+        time.sleep(0.5)
+    else:
+        sys.exit(f"demo not answering after {a.timeout}s; see {run / 'evidence' / 'demo.log'}")
+    engine = "ready" if st.get("ready") else f"unavailable: {st.get('error')}"
+    log(run, f"demo start pid {pid} {url} engine {engine}")
+    print(f"demo up at {url} (pid {pid}); engine {engine}. Open it with `browser open --run RUN` "
+          "(it waits for the page's ready flag).")
 
 
 # ---------------------------------------------------------------------------------------------------- browser (CDP)
@@ -547,15 +607,35 @@ def cmd_browser(a) -> None:
 
 
 def page_action(a, run: Path, ev: Path, c: CDP) -> None:
+    if a.action == "js":
+        v = c.js(a.expr)
+        if a.label:
+            (ev / f"{a.label}.json").write_text(json.dumps(v, indent=1, ensure_ascii=False), encoding="utf-8")
+            log(run, f"browser js {a.expr[:80]!r} -> {a.label}.json")
+        else:
+            log(run, f"browser js {a.expr[:80]!r}")
+        print(json.dumps(v, indent=1, ensure_ascii=False))
+        return
     if a.action == "open":
         v = state(run, "viewer")
-        url = a.url or (v and v["url"])
+        d = state(run, "demo")
+        url = a.url or (v and v["url"]) or (d and d["url"])
         if not url:
-            sys.exit("no --url and no viewer started in this run")
+            sys.exit("no --url and no viewer or demo started in this run")
         if not a.url and v and not port_owner_ok(v["pid"], v["port"]):
             sys.exit("the recorded viewer port is not owned by this run's process; run doctor")
         c.call("Page.navigate", url=url)
         t0 = time.time()
+        demo_page = d and url.startswith(d["url"])
+        ready_js = a.ready_js or ("document.body && document.body.dataset.ready === '1'" if demo_page else None)
+        if ready_js:
+            while not c.js(ready_js):
+                if time.time() - t0 > a.timeout:
+                    sys.exit(f"page not ready within {a.timeout}s ({ready_js})")
+                time.sleep(0.2)
+            log(run, f"browser open {url} (ready: {ready_js})")
+            print(f"opened {url}; ready after {round(time.time() - t0, 1)}s")
+            return
         while a.wait_text not in (page_text(c, None) or ""):
             if time.time() - t0 > a.timeout:
                 sys.exit(f"{a.wait_text!r} did not appear within {a.timeout}s")
@@ -677,7 +757,7 @@ def page_action(a, run: Path, ev: Path, c: CDP) -> None:
 # ---------------------------------------------------------------------------------------------------- cleanup
 def cmd_cleanup(a) -> None:
     run = run_dir(a.run)
-    for name in ("browser", "viewer"):
+    for name in ("browser", "viewer", "demo"):
         s = state(run, name)
         if s:
             kill_tree(s["pid"])
@@ -718,12 +798,20 @@ def main() -> None:
     p.add_argument("--port", type=int)
     p.add_argument("--timeout", type=float, default=60)
     p.set_defaults(fn=cmd_viewer)
+    p = sub.add_parser("demo")
+    p.add_argument("action", choices=["start", "stop"])
+    p.add_argument("--run", required=True)
+    p.add_argument("--port", type=int)
+    p.add_argument("--timeout", type=float, default=120)
+    p.set_defaults(fn=cmd_demo)
     p = sub.add_parser("browser")
     p.add_argument("action", choices=["start", "stop", "open", "click", "select", "fill", "wait", "text", "widgets",
-                                      "screenshot"])
+                                      "screenshot", "js"])
     p.add_argument("--run", required=True)
     p.add_argument("--url")
     p.add_argument("--wait-text", default="Lane debugger")
+    p.add_argument("--ready-js", help="open: wait until this JavaScript expression is truthy (the demo's default)")
+    p.add_argument("--expr", help="js: the expression to evaluate (a promise is awaited)")
     p.add_argument("--text")
     p.add_argument("--key")
     p.add_argument("--scope", choices=["sidebar", "main"])

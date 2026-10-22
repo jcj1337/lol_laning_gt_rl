@@ -80,17 +80,28 @@ pip install -e ".[test,rl,viewer]"
 python -m pytest                    # about 1,550 tests, 8 to 11 minutes
 ```
 
+### Play against the agents
+
+The demo is a web page where you play one side against a trained agent, or watch two agents play a generated match,
+with every turn explained. It needs the trained networks (not in the repository, see below), Node 20 or later for the
+one-time frontend build, and the `demo` extra.
+
+```bash
+pip install -e ".[demo]"
+cd web && npm install && npm run build && cd ..
+python -m lanegame.demo                 # then open http://127.0.0.1:8765/
+```
+
 ### Watch recorded games
 
-The repository includes 15 recorded games from the final campaign. The viewer replays them turn by turn in the
-browser.
+The repository includes 15 recorded games from the final campaign. The demo's Watch mode replays the three seed-0
+games. The older Streamlit viewer replays all 15 turn by turn:
 
 ```bash
 streamlit run lanegame/viewer/app.py
 ```
 
-In the sidebar, choose **Recorded trajectory** and set the folder to `results/m5/traces`. A web app where you can play
-against the trained agents is planned.
+In the sidebar, choose **Recorded trajectory** and set the folder to `results/m5/traces`.
 
 ### Solve the small game
 
@@ -149,12 +160,12 @@ lanegame/                 the game, the RL environment, training and analysis
   diagnostics/            counterfactual replays and the end-of-lane score
   experiments/            one package per milestone, each writing to results/<milestone>/
   viewer/                 the Streamlit replay viewer
-  demo/                   the web demo's game sessions, recordings and frames (no web server yet)
-prototypes/               throwaway design prototypes of the web demo (M6a)
-tests/                    about 1,550 tests, including bit-for-bit reproducibility checks
+  demo/                   the web demo's API, game sessions, recordings and frames
+web/                      the web demo's frontend (React and TypeScript, built by Vite)
+tests/                    about 1,600 tests, including bit-for-bit reproducibility checks
 results/                  the output of every experiment
 docs/                     designs, pre-registrations and reports
-legacy/                   the original Q-learning prototype
+legacy/                   the original Q-learning prototype and the archived M6a interface prototype
 ```
 
 ## Documentation
@@ -174,4 +185,4 @@ legacy/                   the original Q-learning prototype
 | M4 | Built and calibrated the full laning model, trained PPO self-play on it, and diagnosed what the agents miss | Complete ([closeout](docs/m4/m4_closeout_report.md)) |
 | Opponent modelling | Tested whether a Bayesian belief about the opponent's style helps, first with existing agents, then in a matched training pilot | Complete ([pilot](docs/opponent_modelling/om2_pilot_report.md)) |
 | M5 | The final training, opponent modelling against pure self-play, in 12 runs of 32.8 million transitions each | Complete, 2026-10-19 ([final report](docs/m5/m5e_closeout_report.md)) |
-| M6 | A web app to play against the trained agents, watch them play each other and replay research games, plus reproduction bundles | In progress (the game-session backend and the interface design are done; the playable app is next) |
+| M6 | A web app to play against the trained agents, watch them play each other and replay research games, plus reproduction bundles | In progress (the playable app is done, [report](docs/m6/m6b_report.md); the research replays and the findings page are next) |

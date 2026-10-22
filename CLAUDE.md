@@ -17,8 +17,8 @@ The venv is `.venv/` (Python 3.13, CPU torch), with `lanegame` installed editabl
 repo root anyway: experiment drivers write to relative `results/` paths.
 
 ```bash
-pip install -e ".[test,rl,viewer]"     # viewer = the Streamlit debugger
-python -m pytest                       # full suite, ~1,550 tests, ~8-11 min
+pip install -e ".[test,rl,viewer,demo]"   # viewer = the Streamlit debugger, demo = the M6 web demo's API
+python -m pytest                       # full suite, ~1,600 tests, ~9-12 min
 python -m pytest tests/test_m4_env.py                  # one file
 python -m pytest tests/test_m4_env.py::test_name       # one test (or -k pattern)
 python -m pytest --runslow             # also run @pytest.mark.slow (exhaustive enumerations, K=32 re-solve)
@@ -120,20 +120,33 @@ Viewer: `streamlit run lanegame/viewer/app.py` (replays recorded trajectories fr
 - M6 ([plan](docs/m6/m6_plan.md)) is a new web application with two modes: Play (a human against `sp:0` or `om:0`)
   and Watch (a bounded bot match explored through a timeline). M6 adds no mechanics, rewards or training. The
   Streamlit viewer stays where it is until M6d archives its UI, and it is not a visual template.
-  - M6a is complete (2026-10-21). The user approved the glass interface `prototypes/m6a/glass/` (live Play), which is
-    the design reference for M6b ([decision record](docs/m6/m6a_decision_record.md) §7). The other prototype folders
-    (`arena/`, `board/`, `story/`, `refined/`, `hud/`) are history. The production frontend goes in `web/` (M6b, next,
-    not started).
-  - `.venv/Scripts/python.exe prototypes/m6a/serve.py` serves the prototypes and, through `lanegame/demo/service.py`,
-    live sessions on 127.0.0.1:8765. The service holds one lock around all simulation.
+  - M6a (complete, 2026-10-21) built the session core, and the user approved the glass interface design
+    ([decision record](docs/m6/m6a_decision_record.md) §7). M6b (complete, 2026-10-22,
+    [report](docs/m6/m6b_report.md)) built the maintained application from it. The prototypes are gone: the approved
+    prototype's code is archived unchanged at `legacy/m6a_glass_prototype/` (it does not run) and its screenshots
+    stay in `results/m6/prototypes/`. M6c (research replays and the findings page) is next.
+  - The application is `web/` (React, TypeScript, Vite; `cd web && npm install && npm run build`), served by
+    `python -m lanegame.demo` on 127.0.0.1:8765 (`lanegame/demo/api.py`, FastAPI, the `demo` extra). `npm run dev`
+    in `web/` proxies `/api` to it. `web/openapi.json` and `web/src/api/schema.d.ts` are generated from
+    `lanegame/demo/schemas.py` (`python -m lanegame.demo --openapi web/openapi.json`, then `npm run types`);
+    `tests/test_demo_api.py` fails when the committed schema drifts. The browser computes no game rule.
   - `lanegame/demo/` is the headless session core ([technical report](docs/m6/m6a_technical_report.md)). `registry.py`
     checks the 7 checkpoint files against `manifest.json` before any is unpickled. Never load a demo checkpoint
-    another way.
+    another way. `service.py` is the JSON layer: one lock around all simulation in a process, sessions that expire
+    after 30 idle minutes, the three seed-0 research replays verified at startup. `worker.py` runs Watch simulations in
+    a separate spawned process with its own registry and caches; never simulate on a second thread of the serving
+    process (the M5 modules' caches are unlocked).
   - `session.py`: bot seats decide before the human's code is accepted; submissions are idempotent by turn number; a
     drawn chance seed and the policy seed stay secret until the session stops. `record.py` has state digests and
     replay. `frames.py` and `actions.py` give the frames and the menu, with reasons from the legality predicates.
-  - `python -m lanegame.experiments.m6a verify measure export` re-checks the research recordings, measures the
-    costs and writes the prototypes' data. `tests/test_demo_session.py` covers the correctness rules.
+  - The frontend keeps the resolved turns and the viewed position apart (`web/src/game/controller.ts`), tags every
+    request with a generation so a late response from a replaced game is dropped, and re-reads the server after an
+    unanswered submission before it offers a retry (`web/src/game/store.ts`).
+  - `python -m lanegame.experiments.m6a verify measure` re-checks the research recordings and measures the costs.
+    `python -m lanegame.experiments.m6b browser` drives the built app through the whole visitor journey in headless
+    Edge (evidence in `results/m6/m6b_browser.json` and `results/m6/m6b/`). `tests/test_demo_session.py` and
+    `tests/test_demo_api.py` cover the correctness rules and the API; `npm test` in `web/` covers the history and
+    stale-response rules.
 
 **The preset chain.** M4 presets build on each other, each as the previous preset plus opt-in fields:
 `m4 → m4_continuous → m4_emergent → m4_natural_prototype → m4_natural → m4_lane → m4_lasthit → m4_four_actions →

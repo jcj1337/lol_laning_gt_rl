@@ -1,0 +1,413 @@
+{
+ "meta": {
+  "study": "M6b",
+  "commit": "1ee8c08134fb1f0a212a63c0c0865f8a0fe7b017",
+  "working_tree_dirty": true,
+  "timestamp": "2026-10-22 00:37:11",
+  "elapsed_s": 264.0,
+  "browser": "C:\\Program Files (x86)\\Microsoft\\Edge\\Application\\msedge.exe",
+  "frontend": "web/dist"
+ },
+ "passed": 71,
+ "failed": 0,
+ "checks": [
+  {
+   "check": "1. a live game starts against the self-play agent",
+   "ok": true,
+   "detail": "{\"live\": true, \"mode\": \"play\", \"progress\": 0, \"canSubmit\": true, \"kind\": \"human_game\"}"
+  },
+  {
+   "check": "1. the opponent is shown as having chosen, without what",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "check": "1. the view carries no secret seed and no belief while active",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "check": "start: no page errors",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "check": "a turn steps through start, tick 1, tick 2 and the end",
+   "ok": true,
+   "detail": "['Both actions revealed', 'Tick 1 of 2', 'Tick 2 of 2', 'End of turn 1']"
+  },
+  {
+   "check": "2. the first submitted action resolved as chosen (Slow push, Hold = 46)",
+   "ok": true,
+   "detail": "[[46, 12]]"
+  },
+  {
+   "check": "2. turn 2 resolved with the chosen code 7",
+   "ok": true,
+   "detail": "[[46, 12], [7, 45]]"
+  },
+  {
+   "check": "2. turn 3 resolved with the chosen code 9",
+   "ok": true,
+   "detail": "[[46, 12], [7, 45], [9, 6]]"
+  },
+  {
+   "check": "2. turn 4 resolved with the chosen code 5",
+   "ok": true,
+   "detail": "[[46, 12], [7, 45], [9, 6], [5, 2]]"
+  },
+  {
+   "check": "2. turn 5 resolved with the chosen code 1",
+   "ok": true,
+   "detail": "[[46, 12], [7, 45], [9, 6], [5, 2], [1, 2]]"
+  },
+  {
+   "check": "2. the client's positions and turns equal the server's re-simulated history",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "check": "2. the server resolved exactly the turns the interface submitted",
+   "ok": true,
+   "detail": "[[46, 12], [7, 45], [9, 6], [5, 2], [1, 2]]"
+  },
+  {
+   "check": "3. a Trade outcome is shown with its result in Details",
+   "ok": true,
+   "detail": "Your new wave joined its frontYou reached the opponent but the trade missedYou reached level 3"
+  },
+  {
+   "check": "3. trade results observed in this game (no contact, miss and hit are the three the engine distinguishes)",
+   "ok": true,
+   "detail": "seen ['hit', 'miss'] by turn 40"
+  },
+  {
+   "check": "4. clicking turn 2 shows position 2 and changes nothing",
+   "ok": true,
+   "detail": "{\"view\": 2, \"progress\": 40, \"canSubmit\": false}"
+  },
+  {
+   "check": "4. the banner names the viewed turn and the game's turn",
+   "ok": true,
+   "detail": "Viewing turn 2 \u00b7 the game is at turn 41"
+  },
+  {
+   "check": "4. the submit control is replaced by Return while browsing",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "check": "4. the gold graph marks the viewed position",
+   "ok": true,
+   "detail": "Turn 2: You +0.56"
+  },
+  {
+   "check": "4. the status chips follow the viewed position (the lane shows position 2)",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "check": "4. Return to current turn restores the decision point",
+   "ok": true,
+   "detail": "{\"view\": 40, \"progress\": 40, \"canSubmit\": true}"
+  },
+  {
+   "check": "4. the server's position did not move while browsing",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "check": "5. a reload resumes the same session at the same turn",
+   "ok": true,
+   "detail": "{\"sid\": \"427b8fef24334f6aa02509ae82461831\", \"progress\": 40, \"recovered\": \"ok\"}"
+  },
+  {
+   "check": "5. the rebuilt history equals what the client had before the reload",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "check": "after reload: no page errors",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "check": "6. stopping declares no winner and reveals the seeds",
+   "ok": true,
+   "detail": "You stopped the game after turn 40. Stopping declares no winner; the lane shows the state at the stop. Gold lead \u22127.29. "
+  },
+  {
+   "check": "6. the belief history is absent for a self-play opponent",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "check": "6. the record downloads as a JSON file",
+   "ok": true,
+   "detail": "['laning-game-427b8fef.json']"
+  },
+  {
+   "check": "7. the downloaded record replays bit for bit in Python",
+   "ok": true,
+   "detail": "{\"turns\": 40, \"lead_A\": -7.29, \"codes_recomputed\": [\"B\"], \"digests_checked\": 40}"
+  },
+  {
+   "check": "7. the record is a human game with its seats, mode and marks",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "check": "8. Watch opens a verified research recording, labelled as such",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "check": "8. the simulation worker process is ready",
+   "ok": true,
+   "detail": "ready"
+  },
+  {
+   "check": "8. a generated match is labelled as such and holds 150 turns",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "check": "8. the generated match's record replays bit for bit in Python",
+   "ok": true,
+   "detail": "{\"turns\": 150, \"lead_A\": 8.7775, \"codes_recomputed\": [\"A\", \"B\"], \"digests_checked\": 150}"
+  },
+  {
+   "check": "8. Play advances the match",
+   "ok": true,
+   "detail": "{\"playing\": true, \"view\": 1}"
+  },
+  {
+   "check": "8. Pause stops it",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "check": "8. the playback speed changes",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "check": "8. Last shows the final position",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "check": "8. First shows the start",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "check": "8. Next shows the next turn",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "check": "8. Previous steps back",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "check": "8. clicking a history row shows that turn",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "check": "8. clicking the gold graph jumps to a turn",
+   "ok": true,
+   "detail": "86"
+  },
+  {
+   "check": "8. Play restarts playback from the viewed position",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "check": "watch: no page errors",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "check": "9. Recall is offered at the start and selected on click",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "check": "9. after a Recall the only action is Absent, and the choices say why",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "check": "9. Continue plays the away turn as Absent and the champion returns",
+   "ok": true,
+   "detail": "[[12, 5], [45, 10]]"
+  },
+  {
+   "check": "10. two simultaneous identical submissions resolve the turn once",
+   "ok": true,
+   "detail": "{\"a\": 200, \"b\": 200, \"same\": true, \"pa\": 3, \"pb\": 3, \"conflict\": 409, \"position\": 3}"
+  },
+  {
+   "check": "10. a conflicting resubmission is refused with 409",
+   "ok": true,
+   "detail": "{\"a\": 200, \"b\": 200, \"same\": true, \"pa\": 3, \"pb\": 3, \"conflict\": 409, \"position\": 3}"
+  },
+  {
+   "check": "10. a submission the server had already resolved differently is reported, and the client catches up",
+   "ok": true,
+   "detail": "{\"progress\": 3, \"error\": \"turn 3 is already resolved with another action\"}"
+  },
+  {
+   "check": "11. an unanswered submission leaves the game where it was and says so",
+   "ok": true,
+   "detail": "{\"kind\": \"unanswered\", \"message\": \"The server could not be reached. Nothing changed on the server; you can try the same action again.\"}"
+  },
+  {
+   "check": "11. the retry resolves the same action once",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "check": "11. a lost answer is recovered from the server's history without a duplicate turn",
+   "ok": true,
+   "detail": "{\"progress\": 5, \"problem\": null}"
+  },
+  {
+   "check": "12. a lost session is reported with a way out",
+   "ok": true,
+   "detail": "{\"kind\": \"lost\", \"message\": \"no such session: it expired, the server restarted, or the id is wrong Start a new game to continue.\"}"
+  },
+  {
+   "check": "12. the way out opens the New game dialog",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "check": "13. hidden mode: no belief data in the view or the client",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "check": "13. hidden mode: Details says the belief is hidden until the end",
+   "ok": true,
+   "detail": "BeliefHidden in this game, as chosen when it started. It appears when the game ends.The adaptive agent compares how its "
+  },
+  {
+   "check": "13. hidden mode: the belief history appears after the stop",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "check": "13. shown mode: the belief's 13 types are listed with their probabilities during play",
+   "ok": true,
+   "detail": "13"
+  },
+  {
+   "check": "14. a turn result that arrives after a new game started is dropped",
+   "ok": true,
+   "detail": "{\"a\": \"e78faff4f27a44dab4be3eac7d7f57c7\", \"b\": \"ee49c48733a94ea2afd186fa8591b761\", \"progress\": 0, \"turns\": 0, \"busy\": false, \"serverA\": 1}"
+  },
+  {
+   "check": "15. the arrow keys browse the history",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "check": "15. Home shows the start",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "check": "15. End shows the latest position",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "check": "15. Escape returns to the current turn",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "check": "15. Space on a focused choice selects it",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "check": "15. Enter plays the chosen action",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "check": "15. the turn buttons work from the keyboard",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "check": "keyboard: no page errors",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "check": "16. with reduced motion a turn shows its end state at once, without stepping",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "check": "17. no panel covers a champion, wave, tower or the ward spot (80 of 80 cases)",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "check": "end of the journey: no page errors",
+   "ok": true,
+   "detail": ""
+  }
+ ],
+ "trade_results_seen": [
+  "hit",
+  "miss"
+ ],
+ "screenshots": [
+  "results/m6/m6b/01_play_start.png",
+  "results/m6/m6b/02a_both_actions_revealed.png",
+  "results/m6/m6b/02b_tick_1.png",
+  "results/m6/m6b/02c_end_of_turn.png",
+  "results/m6/m6b/02d_after_five_turns.png",
+  "results/m6/m6b/03_trade_details.png",
+  "results/m6/m6b/04_review_turn_2.png",
+  "results/m6/m6b/05_after_reload.png",
+  "results/m6/m6b/06_stopped.png",
+  "results/m6/m6b/07_watch_research.png",
+  "results/m6/m6b/08a_watch_history_open.png",
+  "results/m6/m6b/08b_watch_generated.png",
+  "results/m6/m6b/08c_watch_graph_expanded.png",
+  "results/m6/m6b/09_away_turn.png",
+  "results/m6/m6b/10_unanswered_request.png",
+  "results/m6/m6b/11_lost_session.png",
+  "results/m6/m6b/12_belief_shown.png",
+  "results/m6/m6b/13_desktop_light_busy_graph.png",
+  "results/m6/m6b/13_desktop_light_play_default.png",
+  "results/m6/m6b/13_desktop_light_play_history.png",
+  "results/m6/m6b/13_desktop_dark_busy_default.png",
+  "results/m6/m6b/13_small_light_busy_graph.png",
+  "results/m6/m6b/13_small_light_play_default.png",
+  "results/m6/m6b/13_small_light_play_history.png",
+  "results/m6/m6b/13_small_dark_busy_default.png",
+  "results/m6/m6b/13_phone_landscape_light_busy_graph.png",
+  "results/m6/m6b/13_phone_landscape_light_play_default.png",
+  "results/m6/m6b/13_phone_landscape_light_play_history.png",
+  "results/m6/m6b/13_phone_landscape_dark_busy_default.png",
+  "results/m6/m6b/13_phone_landscape_tall_light_busy_graph.png",
+  "results/m6/m6b/13_phone_landscape_tall_light_play_default.png",
+  "results/m6/m6b/13_phone_landscape_tall_light_play_history.png",
+  "results/m6/m6b/13_phone_landscape_tall_dark_busy_default.png",
+  "results/m6/m6b/13_phone_portrait_light_busy_graph.png",
+  "results/m6/m6b/13_phone_portrait_light_play_default.png",
+  "results/m6/m6b/13_phone_portrait_light_play_history.png",
+  "results/m6/m6b/13_phone_portrait_dark_busy_default.png"
+ ]
+}

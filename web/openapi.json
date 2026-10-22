@@ -1,0 +1,2859 @@
+{
+ "components": {
+  "schemas": {
+   "Away": {
+    "additionalProperties": false,
+    "properties": {
+     "returns_in": {
+      "title": "Returns In",
+      "type": "integer"
+     },
+     "status": {
+      "enum": [
+       "recall",
+       "dead"
+      ],
+      "title": "Status",
+      "type": "string"
+     }
+    },
+    "required": [
+     "status",
+     "returns_in"
+    ],
+    "title": "Away",
+    "type": "object"
+   },
+   "BeliefHistory": {
+    "additionalProperties": false,
+    "properties": {
+     "posteriors": {
+      "items": {
+       "items": {
+        "type": "number"
+       },
+       "type": "array"
+      },
+      "title": "Posteriors",
+      "type": "array"
+     },
+     "types": {
+      "items": {
+       "type": "string"
+      },
+      "title": "Types",
+      "type": "array"
+     }
+    },
+    "required": [
+     "types",
+     "posteriors"
+    ],
+    "title": "BeliefHistory",
+    "type": "object"
+   },
+   "BeliefNow": {
+    "additionalProperties": false,
+    "properties": {
+     "posterior": {
+      "items": {
+       "type": "number"
+      },
+      "title": "Posterior",
+      "type": "array"
+     },
+     "types": {
+      "items": {
+       "type": "string"
+      },
+      "title": "Types",
+      "type": "array"
+     }
+    },
+    "required": [
+     "types",
+     "posterior"
+    ],
+    "title": "BeliefNow",
+    "type": "object"
+   },
+   "BundleMeta": {
+    "additionalProperties": false,
+    "properties": {
+     "belief_mode": {
+      "enum": [
+       "hidden",
+       "shown"
+      ],
+      "title": "Belief Mode",
+      "type": "string"
+     },
+     "config": {
+      "additionalProperties": {
+       "type": "string"
+      },
+      "title": "Config",
+      "type": "object"
+     },
+     "lead_A": {
+      "title": "Lead A",
+      "type": "number"
+     },
+     "marks": {
+      "$ref": "#/components/schemas/Marks"
+     },
+     "policy_rule": {
+      "title": "Policy Rule",
+      "type": "string"
+     },
+     "provenance": {
+      "$ref": "#/components/schemas/Provenance"
+     },
+     "seats": {
+      "maxItems": 2,
+      "minItems": 2,
+      "prefixItems": [
+       {
+        "$ref": "#/components/schemas/SeatPublic"
+       },
+       {
+        "$ref": "#/components/schemas/SeatPublic"
+       }
+      ],
+      "title": "Seats",
+      "type": "array"
+     },
+     "seeds": {
+      "$ref": "#/components/schemas/Seeds"
+     },
+     "status": {
+      "$ref": "#/components/schemas/RecordStatus"
+     },
+     "turn_cap": {
+      "title": "Turn Cap",
+      "type": "integer"
+     }
+    },
+    "required": [
+     "provenance",
+     "config",
+     "seeds",
+     "policy_rule",
+     "seats",
+     "belief_mode",
+     "turn_cap",
+     "status",
+     "lead_A",
+     "marks"
+    ],
+    "title": "BundleMeta",
+    "type": "object"
+   },
+   "ChampionStatus": {
+    "additionalProperties": false,
+    "properties": {
+     "at_ward": {
+      "title": "At Ward",
+      "type": "boolean"
+     },
+     "attack_power": {
+      "title": "Attack Power",
+      "type": "number"
+     },
+     "capacity": {
+      "anyOf": [
+       {
+        "type": "integer"
+       },
+       {
+        "type": "null"
+       }
+      ],
+      "title": "Capacity"
+     },
+     "cell": {
+      "anyOf": [
+       {
+        "type": "integer"
+       },
+       {
+        "type": "null"
+       }
+      ],
+      "title": "Cell"
+     },
+     "gold_earned": {
+      "title": "Gold Earned",
+      "type": "number"
+     },
+     "gold_unspent": {
+      "title": "Gold Unspent",
+      "type": "number"
+     },
+     "hp": {
+      "title": "Hp",
+      "type": "integer"
+     },
+     "hp_max": {
+      "title": "Hp Max",
+      "type": "integer"
+     },
+     "invested": {
+      "title": "Invested",
+      "type": "number"
+     },
+     "level": {
+      "title": "Level",
+      "type": "integer"
+     },
+     "returns_in": {
+      "title": "Returns In",
+      "type": "integer"
+     },
+     "status": {
+      "enum": [
+       "present",
+       "recall",
+       "dead"
+      ],
+      "title": "Status",
+      "type": "string"
+     },
+     "vision": {
+      "title": "Vision",
+      "type": "integer"
+     },
+     "wave_budgets": {
+      "additionalProperties": {
+       "type": "integer"
+      },
+      "title": "Wave Budgets",
+      "type": "object"
+     },
+     "xp": {
+      "title": "Xp",
+      "type": "integer"
+     },
+     "xp_level": {
+      "title": "Xp Level",
+      "type": "integer"
+     },
+     "xp_next": {
+      "anyOf": [
+       {
+        "type": "integer"
+       },
+       {
+        "type": "null"
+       }
+      ],
+      "title": "Xp Next"
+     }
+    },
+    "required": [
+     "level",
+     "hp",
+     "hp_max",
+     "xp",
+     "xp_level",
+     "xp_next",
+     "gold_earned",
+     "gold_unspent",
+     "invested",
+     "attack_power",
+     "status",
+     "returns_in",
+     "cell",
+     "at_ward",
+     "vision",
+     "capacity",
+     "wave_budgets"
+    ],
+    "title": "ChampionStatus",
+    "type": "object"
+   },
+   "CodeParts": {
+    "additionalProperties": false,
+    "properties": {
+     "behaviour": {
+      "anyOf": [
+       {
+        "type": "integer"
+       },
+       {
+        "type": "null"
+       }
+      ],
+      "title": "Behaviour"
+     },
+     "kind": {
+      "enum": [
+       "lane",
+       "recall",
+       "ward",
+       "absent"
+      ],
+      "title": "Kind",
+      "type": "string"
+     },
+     "objective": {
+      "anyOf": [
+       {
+        "type": "integer"
+       },
+       {
+        "type": "null"
+       }
+      ],
+      "title": "Objective"
+     },
+     "wave": {
+      "anyOf": [
+       {
+        "type": "integer"
+       },
+       {
+        "type": "null"
+       }
+      ],
+      "title": "Wave"
+     }
+    },
+    "required": [
+     "kind"
+    ],
+    "title": "CodeParts",
+    "type": "object"
+   },
+   "CreateRequest": {
+    "additionalProperties": false,
+    "properties": {
+     "belief": {
+      "default": "hidden",
+      "enum": [
+       "hidden",
+       "shown"
+      ],
+      "title": "Belief",
+      "type": "string"
+     },
+     "opponent": {
+      "default": "sp:0",
+      "enum": [
+       "sp:0",
+       "om:0"
+      ],
+      "title": "Opponent",
+      "type": "string"
+     },
+     "seed": {
+      "anyOf": [
+       {
+        "exclusiveMaximum": 9007199254740992.0,
+        "minimum": 0.0,
+        "type": "integer"
+       },
+       {
+        "type": "null"
+       }
+      ],
+      "description": "a chosen chance seed (recorded as chosen)",
+      "title": "Seed"
+     }
+    },
+    "title": "CreateRequest",
+    "type": "object"
+   },
+   "CreateResponse": {
+    "additionalProperties": false,
+    "properties": {
+     "history": {
+      "$ref": "#/components/schemas/History"
+     },
+     "session": {
+      "title": "Session",
+      "type": "string"
+     },
+     "view": {
+      "$ref": "#/components/schemas/View"
+     }
+    },
+    "required": [
+     "session",
+     "view",
+     "history"
+    ],
+    "title": "CreateResponse",
+    "type": "object"
+   },
+   "Delta": {
+    "additionalProperties": false,
+    "properties": {
+     "farm": {
+      "title": "Farm",
+      "type": "number"
+     },
+     "gold": {
+      "title": "Gold",
+      "type": "number"
+     },
+     "hp": {
+      "title": "Hp",
+      "type": "integer"
+     },
+     "hp_taken": {
+      "title": "Hp Taken",
+      "type": "integer"
+     },
+     "xp": {
+      "title": "Xp",
+      "type": "integer"
+     }
+    },
+    "required": [
+     "gold",
+     "farm",
+     "xp",
+     "hp",
+     "hp_taken"
+    ],
+    "title": "Delta",
+    "type": "object"
+   },
+   "ErrorBody": {
+    "additionalProperties": false,
+    "properties": {
+     "error": {
+      "title": "Error",
+      "type": "string"
+     },
+     "message": {
+      "title": "Message",
+      "type": "string"
+     }
+    },
+    "required": [
+     "error",
+     "message"
+    ],
+    "title": "ErrorBody",
+    "type": "object"
+   },
+   "GameBundle": {
+    "additionalProperties": false,
+    "description": "A whole bot game for Watch: a new simulation, or a verified research recording. Positions 0..n, turns 1..n,\nthe recording (replayable) and the beliefs the game may show.",
+    "properties": {
+     "beliefs": {
+      "anyOf": [
+       {
+        "$ref": "#/components/schemas/RecordingBeliefs"
+       },
+       {
+        "type": "null"
+       }
+      ]
+     },
+     "label": {
+      "title": "Label",
+      "type": "string"
+     },
+     "lane_exit_position": {
+      "title": "Lane Exit Position",
+      "type": "integer"
+     },
+     "meta": {
+      "$ref": "#/components/schemas/BundleMeta"
+     },
+     "name": {
+      "title": "Name",
+      "type": "string"
+     },
+     "positions": {
+      "items": {
+       "$ref": "#/components/schemas/Position"
+      },
+      "title": "Positions",
+      "type": "array"
+     },
+     "read_position": {
+      "title": "Read Position",
+      "type": "integer"
+     },
+     "recording": {
+      "$ref": "#/components/schemas/Recording"
+     },
+     "turns": {
+      "items": {
+       "$ref": "#/components/schemas/Turn"
+      },
+      "title": "Turns",
+      "type": "array"
+     },
+     "verification": {
+      "anyOf": [
+       {
+        "additionalProperties": true,
+        "type": "object"
+       },
+       {
+        "type": "null"
+       }
+      ],
+      "title": "Verification"
+     }
+    },
+    "required": [
+     "name",
+     "label",
+     "meta",
+     "positions",
+     "turns",
+     "beliefs",
+     "recording",
+     "lane_exit_position",
+     "read_position"
+    ],
+    "title": "GameBundle",
+    "type": "object"
+   },
+   "HTTPValidationError": {
+    "properties": {
+     "detail": {
+      "items": {
+       "$ref": "#/components/schemas/ValidationError"
+      },
+      "title": "Detail",
+      "type": "array"
+     }
+    },
+    "title": "HTTPValidationError",
+    "type": "object"
+   },
+   "History": {
+    "additionalProperties": false,
+    "properties": {
+     "beliefs": {
+      "anyOf": [
+       {
+        "additionalProperties": {
+         "$ref": "#/components/schemas/BeliefHistory"
+        },
+        "propertyNames": {
+         "enum": [
+          "A",
+          "B"
+         ]
+        },
+        "type": "object"
+       },
+       {
+        "type": "null"
+       }
+      ],
+      "title": "Beliefs"
+     },
+     "from": {
+      "title": "From",
+      "type": "integer"
+     },
+     "positions": {
+      "items": {
+       "$ref": "#/components/schemas/Position"
+      },
+      "title": "Positions",
+      "type": "array"
+     },
+     "session": {
+      "title": "Session",
+      "type": "string"
+     },
+     "to": {
+      "title": "To",
+      "type": "integer"
+     },
+     "turns": {
+      "items": {
+       "$ref": "#/components/schemas/Turn"
+      },
+      "title": "Turns",
+      "type": "array"
+     }
+    },
+    "required": [
+     "session",
+     "from",
+     "to",
+     "positions",
+     "turns"
+    ],
+    "title": "History",
+    "type": "object"
+   },
+   "LaneExitMark": {
+    "additionalProperties": false,
+    "properties": {
+     "panel": {
+      "additionalProperties": {
+       "type": "number"
+      },
+      "title": "Panel",
+      "type": "object"
+     },
+     "position": {
+      "title": "Position",
+      "type": "integer"
+     }
+    },
+    "required": [
+     "position",
+     "panel"
+    ],
+    "title": "LaneExitMark",
+    "type": "object"
+   },
+   "LaneView": {
+    "additionalProperties": false,
+    "properties": {
+     "contact": {
+      "anyOf": [
+       {
+        "type": "number"
+       },
+       {
+        "type": "null"
+       }
+      ],
+      "title": "Contact"
+     },
+     "packets": {
+      "additionalProperties": {
+       "items": {
+        "maxItems": 3,
+        "minItems": 3,
+        "prefixItems": [
+         {
+          "type": "integer"
+         },
+         {
+          "type": "integer"
+         },
+         {
+          "type": "boolean"
+         }
+        ],
+        "type": "array"
+       },
+       "type": "array"
+      },
+      "propertyNames": {
+       "enum": [
+        "A",
+        "B"
+       ]
+      },
+      "title": "Packets",
+      "type": "object"
+     },
+     "siege": {
+      "additionalProperties": {
+       "maxItems": 2,
+       "minItems": 2,
+       "prefixItems": [
+        {
+         "type": "integer"
+        },
+        {
+         "type": "integer"
+        }
+       ],
+       "type": "array"
+      },
+      "propertyNames": {
+       "enum": [
+        "A",
+        "B"
+       ]
+      },
+      "title": "Siege",
+      "type": "object"
+     }
+    },
+    "required": [
+     "packets",
+     "siege",
+     "contact"
+    ],
+    "title": "LaneView",
+    "type": "object"
+   },
+   "LeadMark": {
+    "additionalProperties": false,
+    "properties": {
+     "lead_A": {
+      "title": "Lead A",
+      "type": "number"
+     },
+     "note": {
+      "title": "Note",
+      "type": "string"
+     },
+     "position": {
+      "title": "Position",
+      "type": "integer"
+     }
+    },
+    "required": [
+     "position",
+     "lead_A",
+     "note"
+    ],
+    "title": "LeadMark",
+    "type": "object"
+   },
+   "Marks": {
+    "additionalProperties": false,
+    "properties": {
+     "lane_exit": {
+      "anyOf": [
+       {
+        "$ref": "#/components/schemas/LaneExitMark"
+       },
+       {
+        "type": "null"
+       }
+      ]
+     },
+     "lead_114": {
+      "anyOf": [
+       {
+        "$ref": "#/components/schemas/LeadMark"
+       },
+       {
+        "type": "null"
+       }
+      ]
+     }
+    },
+    "title": "Marks",
+    "type": "object"
+   },
+   "Menu": {
+    "additionalProperties": false,
+    "properties": {
+     "away": {
+      "anyOf": [
+       {
+        "$ref": "#/components/schemas/Away"
+       },
+       {
+        "type": "null"
+       }
+      ]
+     },
+     "behaviours": {
+      "items": {
+       "$ref": "#/components/schemas/MenuChoice"
+      },
+      "title": "Behaviours",
+      "type": "array"
+     },
+     "forced": {
+      "anyOf": [
+       {
+        "type": "integer"
+       },
+       {
+        "type": "null"
+       }
+      ],
+      "title": "Forced"
+     },
+     "lane_codes": {
+      "additionalProperties": {
+       "type": "integer"
+      },
+      "title": "Lane Codes",
+      "type": "object"
+     },
+     "legal": {
+      "items": {
+       "type": "integer"
+      },
+      "title": "Legal",
+      "type": "array"
+     },
+     "objectives": {
+      "items": {
+       "$ref": "#/components/schemas/MenuChoice"
+      },
+      "title": "Objectives",
+      "type": "array"
+     },
+     "singles": {
+      "items": {
+       "$ref": "#/components/schemas/MenuSingle"
+      },
+      "title": "Singles",
+      "type": "array"
+     },
+     "waves": {
+      "items": {
+       "$ref": "#/components/schemas/MenuChoice"
+      },
+      "title": "Waves",
+      "type": "array"
+     }
+    },
+    "required": [
+     "legal",
+     "forced",
+     "away",
+     "waves",
+     "behaviours",
+     "objectives",
+     "singles",
+     "lane_codes"
+    ],
+    "title": "Menu",
+    "type": "object"
+   },
+   "MenuChoice": {
+    "additionalProperties": false,
+    "properties": {
+     "help": {
+      "anyOf": [
+       {
+        "type": "string"
+       },
+       {
+        "type": "null"
+       }
+      ],
+      "title": "Help"
+     },
+     "id": {
+      "title": "Id",
+      "type": "integer"
+     },
+     "legal": {
+      "title": "Legal",
+      "type": "boolean"
+     },
+     "name": {
+      "title": "Name",
+      "type": "string"
+     },
+     "reason": {
+      "anyOf": [
+       {
+        "type": "string"
+       },
+       {
+        "type": "null"
+       }
+      ],
+      "title": "Reason"
+     },
+     "with": {
+      "anyOf": [
+       {
+        "items": {
+         "type": "string"
+        },
+        "type": "array"
+       },
+       {
+        "type": "null"
+       }
+      ],
+      "title": "With"
+     }
+    },
+    "required": [
+     "id",
+     "name",
+     "legal"
+    ],
+    "title": "MenuChoice",
+    "type": "object"
+   },
+   "MenuSingle": {
+    "additionalProperties": false,
+    "properties": {
+     "code": {
+      "title": "Code",
+      "type": "integer"
+     },
+     "help": {
+      "title": "Help",
+      "type": "string"
+     },
+     "legal": {
+      "title": "Legal",
+      "type": "boolean"
+     },
+     "name": {
+      "title": "Name",
+      "type": "string"
+     },
+     "reason": {
+      "anyOf": [
+       {
+        "type": "string"
+       },
+       {
+        "type": "null"
+       }
+      ],
+      "title": "Reason"
+     }
+    },
+    "required": [
+     "code",
+     "name",
+     "legal",
+     "help"
+    ],
+    "title": "MenuSingle",
+    "type": "object"
+   },
+   "MinionFire": {
+    "additionalProperties": false,
+    "properties": {
+     "cause": {
+      "title": "Cause",
+      "type": "string"
+     },
+     "units": {
+      "title": "Units",
+      "type": "integer"
+     }
+    },
+    "required": [
+     "cause",
+     "units"
+    ],
+    "title": "MinionFire",
+    "type": "object"
+   },
+   "ModelCard": {
+    "additionalProperties": false,
+    "properties": {
+     "arm": {
+      "enum": [
+       "sp",
+       "om"
+      ],
+      "title": "Arm",
+      "type": "string"
+     },
+     "config": {
+      "title": "Config",
+      "type": "string"
+     },
+     "dependencies": {
+      "items": {
+       "type": "string"
+      },
+      "title": "Dependencies",
+      "type": "array"
+     },
+     "description": {
+      "title": "Description",
+      "type": "string"
+     },
+     "evidence": {
+      "items": {
+       "type": "string"
+      },
+      "title": "Evidence",
+      "type": "array"
+     },
+     "file_sha256": {
+      "title": "File Sha256",
+      "type": "string"
+     },
+     "id": {
+      "title": "Id",
+      "type": "string"
+     },
+     "inputs": {
+      "title": "Inputs",
+      "type": "integer"
+     },
+     "label": {
+      "title": "Label",
+      "type": "string"
+     },
+     "seed": {
+      "title": "Seed",
+      "type": "integer"
+     },
+     "training": {
+      "title": "Training",
+      "type": "string"
+     },
+     "weights_digest": {
+      "title": "Weights Digest",
+      "type": "string"
+     }
+    },
+    "required": [
+     "id",
+     "arm",
+     "seed",
+     "label",
+     "description",
+     "config",
+     "inputs",
+     "file_sha256",
+     "weights_digest",
+     "dependencies",
+     "training",
+     "evidence"
+    ],
+    "title": "ModelCard",
+    "type": "object"
+   },
+   "Outcome": {
+    "additionalProperties": false,
+    "properties": {
+     "data": {
+      "anyOf": [
+       {
+        "additionalProperties": {
+         "anyOf": [
+          {
+           "type": "integer"
+          },
+          {
+           "type": "number"
+          },
+          {
+           "type": "string"
+          }
+         ]
+        },
+        "type": "object"
+       },
+       {
+        "type": "null"
+       }
+      ],
+      "title": "Data"
+     },
+     "kind": {
+      "title": "Kind",
+      "type": "string"
+     },
+     "major": {
+      "title": "Major",
+      "type": "boolean"
+     },
+     "seat": {
+      "anyOf": [
+       {
+        "enum": [
+         "A",
+         "B"
+        ],
+        "type": "string"
+       },
+       {
+        "type": "null"
+       }
+      ],
+      "title": "Seat"
+     },
+     "text": {
+      "title": "Text",
+      "type": "string"
+     }
+    },
+    "required": [
+     "kind",
+     "seat",
+     "major",
+     "text"
+    ],
+    "title": "Outcome",
+    "type": "object"
+   },
+   "Position": {
+    "additionalProperties": false,
+    "properties": {
+     "champions": {
+      "additionalProperties": {
+       "$ref": "#/components/schemas/ChampionStatus"
+      },
+      "propertyNames": {
+       "enum": [
+        "A",
+        "B"
+       ]
+      },
+      "title": "Champions",
+      "type": "object"
+     },
+     "k": {
+      "title": "K",
+      "type": "integer"
+     },
+     "lane": {
+      "$ref": "#/components/schemas/LaneView"
+     },
+     "lead_A": {
+      "title": "Lead A",
+      "type": "number"
+     },
+     "p": {
+      "title": "P",
+      "type": "integer"
+     },
+     "towers": {
+      "additionalProperties": {
+       "$ref": "#/components/schemas/Tower"
+      },
+      "propertyNames": {
+       "enum": [
+        "A",
+        "B"
+       ]
+      },
+      "title": "Towers",
+      "type": "object"
+     },
+     "wave_status": {
+      "title": "Wave Status",
+      "type": "string"
+     }
+    },
+    "required": [
+     "p",
+     "k",
+     "lane",
+     "champions",
+     "towers",
+     "lead_A",
+     "wave_status"
+    ],
+    "title": "Position",
+    "type": "object"
+   },
+   "Provenance": {
+    "additionalProperties": false,
+    "properties": {
+     "kind": {
+      "enum": [
+       "research_record",
+       "new_simulation",
+       "human_game"
+      ],
+      "title": "Kind",
+      "type": "string"
+     },
+     "note": {
+      "anyOf": [
+       {
+        "type": "string"
+       },
+       {
+        "type": "null"
+       }
+      ],
+      "title": "Note"
+     },
+     "source": {
+      "anyOf": [
+       {
+        "additionalProperties": true,
+        "type": "object"
+       },
+       {
+        "type": "null"
+       }
+      ],
+      "title": "Source"
+     }
+    },
+    "required": [
+     "kind"
+    ],
+    "title": "Provenance",
+    "type": "object"
+   },
+   "RecordStatus": {
+    "additionalProperties": false,
+    "properties": {
+     "state": {
+      "enum": [
+       "awaiting_action",
+       "stopped"
+      ],
+      "title": "State",
+      "type": "string"
+     },
+     "stop_reason": {
+      "anyOf": [
+       {
+        "enum": [
+         "visitor",
+         "turn_cap",
+         "expired"
+        ],
+        "type": "string"
+       },
+       {
+        "type": "null"
+       }
+      ],
+      "title": "Stop Reason"
+     },
+     "turns": {
+      "title": "Turns",
+      "type": "integer"
+     }
+    },
+    "required": [
+     "state",
+     "stop_reason",
+     "turns"
+    ],
+    "title": "RecordStatus",
+    "type": "object"
+   },
+   "Recording": {
+    "additionalProperties": false,
+    "properties": {
+     "belief_mode": {
+      "enum": [
+       "hidden",
+       "shown"
+      ],
+      "title": "Belief Mode",
+      "type": "string"
+     },
+     "beliefs": {
+      "anyOf": [
+       {
+        "$ref": "#/components/schemas/RecordingBeliefs"
+       },
+       {
+        "type": "null"
+       }
+      ]
+     },
+     "config": {
+      "additionalProperties": {
+       "type": "string"
+      },
+      "title": "Config",
+      "type": "object"
+     },
+     "lead_A": {
+      "title": "Lead A",
+      "type": "number"
+     },
+     "marks": {
+      "$ref": "#/components/schemas/Marks"
+     },
+     "policy_rule": {
+      "title": "Policy Rule",
+      "type": "string"
+     },
+     "provenance": {
+      "$ref": "#/components/schemas/Provenance"
+     },
+     "schema": {
+      "title": "Schema",
+      "type": "string"
+     },
+     "seats": {
+      "maxItems": 2,
+      "minItems": 2,
+      "prefixItems": [
+       {
+        "$ref": "#/components/schemas/SeatPublic"
+       },
+       {
+        "$ref": "#/components/schemas/SeatPublic"
+       }
+      ],
+      "title": "Seats",
+      "type": "array"
+     },
+     "seeds": {
+      "$ref": "#/components/schemas/Seeds"
+     },
+     "start": {
+      "title": "Start",
+      "type": "string"
+     },
+     "status": {
+      "$ref": "#/components/schemas/RecordStatus"
+     },
+     "turn_cap": {
+      "title": "Turn Cap",
+      "type": "integer"
+     },
+     "turns": {
+      "items": {
+       "maxItems": 3,
+       "minItems": 3,
+       "prefixItems": [
+        {
+         "type": "integer"
+        },
+        {
+         "type": "integer"
+        },
+        {
+         "type": "string"
+        }
+       ],
+       "type": "array"
+      },
+      "title": "Turns",
+      "type": "array"
+     },
+     "version": {
+      "title": "Version",
+      "type": "integer"
+     }
+    },
+    "required": [
+     "schema",
+     "version",
+     "provenance",
+     "config",
+     "start",
+     "seeds",
+     "policy_rule",
+     "seats",
+     "belief_mode",
+     "turn_cap",
+     "status",
+     "turns",
+     "lead_A",
+     "marks"
+    ],
+    "title": "Recording",
+    "type": "object"
+   },
+   "RecordingBeliefs": {
+    "additionalProperties": false,
+    "properties": {
+     "posteriors": {
+      "additionalProperties": {
+       "items": {
+        "items": {
+         "type": "number"
+        },
+        "type": "array"
+       },
+       "type": "array"
+      },
+      "propertyNames": {
+       "enum": [
+        "A",
+        "B"
+       ]
+      },
+      "title": "Posteriors",
+      "type": "object"
+     },
+     "types": {
+      "items": {
+       "type": "string"
+      },
+      "title": "Types",
+      "type": "array"
+     }
+    },
+    "required": [
+     "types",
+     "posteriors"
+    ],
+    "title": "RecordingBeliefs",
+    "type": "object"
+   },
+   "ReplayEntry": {
+    "additionalProperties": false,
+    "properties": {
+     "kind": {
+      "enum": [
+       "research_record",
+       "new_simulation",
+       "human_game"
+      ],
+      "title": "Kind",
+      "type": "string"
+     },
+     "label": {
+      "title": "Label",
+      "type": "string"
+     },
+     "name": {
+      "title": "Name",
+      "type": "string"
+     },
+     "seats": {
+      "maxItems": 2,
+      "minItems": 2,
+      "prefixItems": [
+       {
+        "$ref": "#/components/schemas/SeatPublic"
+       },
+       {
+        "$ref": "#/components/schemas/SeatPublic"
+       }
+      ],
+      "title": "Seats",
+      "type": "array"
+     },
+     "turns": {
+      "title": "Turns",
+      "type": "integer"
+     }
+    },
+    "required": [
+     "name",
+     "label",
+     "kind",
+     "turns",
+     "seats"
+    ],
+    "title": "ReplayEntry",
+    "type": "object"
+   },
+   "SeatPublic": {
+    "additionalProperties": false,
+    "properties": {
+     "arm": {
+      "anyOf": [
+       {
+        "enum": [
+         "sp",
+         "om"
+        ],
+        "type": "string"
+       },
+       {
+        "type": "null"
+       }
+      ],
+      "title": "Arm"
+     },
+     "file_sha256": {
+      "anyOf": [
+       {
+        "type": "string"
+       },
+       {
+        "type": "null"
+       }
+      ],
+      "title": "File Sha256"
+     },
+     "id": {
+      "anyOf": [
+       {
+        "type": "string"
+       },
+       {
+        "type": "null"
+       }
+      ],
+      "title": "Id"
+     },
+     "kind": {
+      "enum": [
+       "human",
+       "model",
+       "scripted"
+      ],
+      "title": "Kind",
+      "type": "string"
+     },
+     "label": {
+      "anyOf": [
+       {
+        "type": "string"
+       },
+       {
+        "type": "null"
+       }
+      ],
+      "title": "Label"
+     },
+     "rule": {
+      "anyOf": [
+       {
+        "type": "string"
+       },
+       {
+        "type": "null"
+       }
+      ],
+      "title": "Rule"
+     },
+     "sampling": {
+      "anyOf": [
+       {
+        "type": "string"
+       },
+       {
+        "type": "null"
+       }
+      ],
+      "title": "Sampling"
+     },
+     "seat": {
+      "enum": [
+       "A",
+       "B"
+      ],
+      "title": "Seat",
+      "type": "string"
+     },
+     "seed": {
+      "anyOf": [
+       {
+        "type": "integer"
+       },
+       {
+        "type": "null"
+       }
+      ],
+      "title": "Seed"
+     },
+     "weights_digest": {
+      "anyOf": [
+       {
+        "type": "string"
+       },
+       {
+        "type": "null"
+       }
+      ],
+      "title": "Weights Digest"
+     }
+    },
+    "required": [
+     "seat",
+     "kind"
+    ],
+    "title": "SeatPublic",
+    "type": "object"
+   },
+   "Seeds": {
+    "additionalProperties": false,
+    "properties": {
+     "chance": {
+      "anyOf": [
+       {
+        "type": "integer"
+       },
+       {
+        "type": "null"
+       }
+      ],
+      "title": "Chance"
+     },
+     "chance_chosen": {
+      "title": "Chance Chosen",
+      "type": "boolean"
+     },
+     "policy": {
+      "anyOf": [
+       {
+        "type": "integer"
+       },
+       {
+        "type": "null"
+       }
+      ],
+      "title": "Policy"
+     },
+     "policy_rule": {
+      "title": "Policy Rule",
+      "type": "string"
+     }
+    },
+    "required": [
+     "chance",
+     "chance_chosen",
+     "policy",
+     "policy_rule"
+    ],
+    "title": "Seeds",
+    "type": "object"
+   },
+   "SimulateRequest": {
+    "additionalProperties": false,
+    "properties": {
+     "a": {
+      "default": "om:0",
+      "enum": [
+       "sp:0",
+       "om:0"
+      ],
+      "title": "A",
+      "type": "string"
+     },
+     "b": {
+      "default": "sp:0",
+      "enum": [
+       "sp:0",
+       "om:0"
+      ],
+      "title": "B",
+      "type": "string"
+     },
+     "turns": {
+      "default": 150,
+      "maximum": 150.0,
+      "minimum": 1.0,
+      "title": "Turns",
+      "type": "integer"
+     }
+    },
+    "title": "SimulateRequest",
+    "type": "object"
+   },
+   "Status": {
+    "additionalProperties": false,
+    "properties": {
+     "error": {
+      "anyOf": [
+       {
+        "type": "string"
+       },
+       {
+        "type": "null"
+       }
+      ],
+      "title": "Error"
+     },
+     "lane_exit_position": {
+      "anyOf": [
+       {
+        "type": "integer"
+       },
+       {
+        "type": "null"
+       }
+      ],
+      "title": "Lane Exit Position"
+     },
+     "models": {
+      "items": {
+       "$ref": "#/components/schemas/ModelCard"
+      },
+      "title": "Models",
+      "type": "array"
+     },
+     "read_position": {
+      "anyOf": [
+       {
+        "type": "integer"
+       },
+       {
+        "type": "null"
+       }
+      ],
+      "title": "Read Position"
+     },
+     "ready": {
+      "title": "Ready",
+      "type": "boolean"
+     },
+     "replays": {
+      "default": 0,
+      "title": "Replays",
+      "type": "integer"
+     },
+     "sessions": {
+      "default": 0,
+      "title": "Sessions",
+      "type": "integer"
+     },
+     "simulations": {
+      "default": "unavailable",
+      "enum": [
+       "ready",
+       "starting",
+       "in_process",
+       "unavailable"
+      ],
+      "title": "Simulations",
+      "type": "string"
+     },
+     "turn_cap": {
+      "anyOf": [
+       {
+        "type": "integer"
+       },
+       {
+        "type": "null"
+       }
+      ],
+      "title": "Turn Cap"
+     }
+    },
+    "required": [
+     "ready",
+     "models"
+    ],
+    "title": "Status",
+    "type": "object"
+   },
+   "StopResponse": {
+    "additionalProperties": false,
+    "properties": {
+     "history": {
+      "$ref": "#/components/schemas/History"
+     },
+     "recording": {
+      "$ref": "#/components/schemas/Recording"
+     },
+     "summary": {
+      "$ref": "#/components/schemas/Summary"
+     },
+     "view": {
+      "$ref": "#/components/schemas/View"
+     }
+    },
+    "required": [
+     "summary",
+     "recording",
+     "history",
+     "view"
+    ],
+    "title": "StopResponse",
+    "type": "object"
+   },
+   "SubmitRequest": {
+    "additionalProperties": false,
+    "properties": {
+     "code": {
+      "title": "Code",
+      "type": "integer"
+     },
+     "turn": {
+      "title": "Turn",
+      "type": "integer"
+     }
+    },
+    "required": [
+     "turn",
+     "code"
+    ],
+    "title": "SubmitRequest",
+    "type": "object"
+   },
+   "Summary": {
+    "additionalProperties": false,
+    "properties": {
+     "marks": {
+      "$ref": "#/components/schemas/Marks"
+     },
+     "note": {
+      "title": "Note",
+      "type": "string"
+     },
+     "panel": {
+      "additionalProperties": {
+       "type": "number"
+      },
+      "title": "Panel",
+      "type": "object"
+     },
+     "position": {
+      "$ref": "#/components/schemas/Position"
+     },
+     "session": {
+      "title": "Session",
+      "type": "string"
+     },
+     "state": {
+      "enum": [
+       "awaiting_action",
+       "stopped"
+      ],
+      "title": "State",
+      "type": "string"
+     },
+     "stop_reason": {
+      "anyOf": [
+       {
+        "enum": [
+         "visitor",
+         "turn_cap",
+         "expired"
+        ],
+        "type": "string"
+       },
+       {
+        "type": "null"
+       }
+      ],
+      "title": "Stop Reason"
+     },
+     "turns": {
+      "title": "Turns",
+      "type": "integer"
+     }
+    },
+    "required": [
+     "session",
+     "state",
+     "stop_reason",
+     "turns",
+     "position",
+     "panel",
+     "marks",
+     "note"
+    ],
+    "title": "Summary",
+    "type": "object"
+   },
+   "Tick": {
+    "additionalProperties": false,
+    "properties": {
+     "at_ward": {
+      "additionalProperties": {
+       "type": "boolean"
+      },
+      "propertyNames": {
+       "enum": [
+        "A",
+        "B"
+       ]
+      },
+      "title": "At Ward",
+      "type": "object"
+     },
+     "cells": {
+      "additionalProperties": {
+       "anyOf": [
+        {
+         "type": "integer"
+        },
+        {
+         "type": "null"
+        }
+       ]
+      },
+      "propertyNames": {
+       "enum": [
+        "A",
+        "B"
+       ]
+      },
+      "title": "Cells",
+      "type": "object"
+     },
+     "contact": {
+      "anyOf": [
+       {
+        "type": "number"
+       },
+       {
+        "type": "null"
+       }
+      ],
+      "title": "Contact"
+     },
+     "crashed": {
+      "additionalProperties": {
+       "type": "integer"
+      },
+      "propertyNames": {
+       "enum": [
+        "A",
+        "B"
+       ]
+      },
+      "title": "Crashed",
+      "type": "object"
+     },
+     "minion_fire": {
+      "additionalProperties": {
+       "$ref": "#/components/schemas/MinionFire"
+      },
+      "propertyNames": {
+       "enum": [
+        "A",
+        "B"
+       ]
+      },
+      "title": "Minion Fire",
+      "type": "object"
+     },
+     "packets": {
+      "additionalProperties": {
+       "items": {
+        "maxItems": 3,
+        "minItems": 3,
+        "prefixItems": [
+         {
+          "type": "integer"
+         },
+         {
+          "type": "integer"
+         },
+         {
+          "type": "boolean"
+         }
+        ],
+        "type": "array"
+       },
+       "type": "array"
+      },
+      "propertyNames": {
+       "enum": [
+        "A",
+        "B"
+       ]
+      },
+      "title": "Packets",
+      "type": "object"
+     },
+     "siege": {
+      "additionalProperties": {
+       "maxItems": 2,
+       "minItems": 2,
+       "prefixItems": [
+        {
+         "type": "integer"
+        },
+        {
+         "type": "integer"
+        }
+       ],
+       "type": "array"
+      },
+      "propertyNames": {
+       "enum": [
+        "A",
+        "B"
+       ]
+      },
+      "title": "Siege",
+      "type": "object"
+     },
+     "tick": {
+      "title": "Tick",
+      "type": "integer"
+     },
+     "wave_removed": {
+      "additionalProperties": {
+       "type": "integer"
+      },
+      "propertyNames": {
+       "enum": [
+        "A",
+        "B"
+       ]
+      },
+      "title": "Wave Removed",
+      "type": "object"
+     }
+    },
+    "required": [
+     "tick",
+     "packets",
+     "siege",
+     "contact",
+     "cells",
+     "at_ward",
+     "wave_removed",
+     "crashed",
+     "minion_fire"
+    ],
+    "title": "Tick",
+    "type": "object"
+   },
+   "Tower": {
+    "additionalProperties": false,
+    "properties": {
+     "damage": {
+      "title": "Damage",
+      "type": "integer"
+     },
+     "damage_max": {
+      "title": "Damage Max",
+      "type": "integer"
+     },
+     "plates_lost": {
+      "title": "Plates Lost",
+      "type": "integer"
+     },
+     "plates_total": {
+      "title": "Plates Total",
+      "type": "integer"
+     }
+    },
+    "required": [
+     "damage",
+     "damage_max",
+     "plates_lost",
+     "plates_total"
+    ],
+    "title": "Tower",
+    "type": "object"
+   },
+   "Turn": {
+    "additionalProperties": false,
+    "properties": {
+     "codes": {
+      "maxItems": 2,
+      "minItems": 2,
+      "prefixItems": [
+       {
+        "type": "integer"
+       },
+       {
+        "type": "integer"
+       }
+      ],
+      "title": "Codes",
+      "type": "array"
+     },
+     "delta": {
+      "additionalProperties": {
+       "$ref": "#/components/schemas/Delta"
+      },
+      "propertyNames": {
+       "enum": [
+        "A",
+        "B"
+       ]
+      },
+      "title": "Delta",
+      "type": "object"
+     },
+     "k": {
+      "title": "K",
+      "type": "integer"
+     },
+     "modes": {
+      "items": {
+       "type": "string"
+      },
+      "title": "Modes",
+      "type": "array"
+     },
+     "names": {
+      "maxItems": 2,
+      "minItems": 2,
+      "prefixItems": [
+       {
+        "type": "string"
+       },
+       {
+        "type": "string"
+       }
+      ],
+      "title": "Names",
+      "type": "array"
+     },
+     "outcomes": {
+      "items": {
+       "$ref": "#/components/schemas/Outcome"
+      },
+      "title": "Outcomes",
+      "type": "array"
+     },
+     "parts": {
+      "maxItems": 2,
+      "minItems": 2,
+      "prefixItems": [
+       {
+        "$ref": "#/components/schemas/CodeParts"
+       },
+       {
+        "$ref": "#/components/schemas/CodeParts"
+       }
+      ],
+      "title": "Parts",
+      "type": "array"
+     },
+     "reward_A": {
+      "title": "Reward A",
+      "type": "number"
+     },
+     "t": {
+      "title": "T",
+      "type": "integer"
+     },
+     "ticks": {
+      "items": {
+       "$ref": "#/components/schemas/Tick"
+      },
+      "title": "Ticks",
+      "type": "array"
+     }
+    },
+    "required": [
+     "t",
+     "k",
+     "codes",
+     "names",
+     "parts",
+     "modes",
+     "ticks",
+     "outcomes",
+     "delta",
+     "reward_A"
+    ],
+    "title": "Turn",
+    "type": "object"
+   },
+   "TurnResult": {
+    "additionalProperties": false,
+    "properties": {
+     "belief": {
+      "anyOf": [
+       {
+        "additionalProperties": {
+         "$ref": "#/components/schemas/BeliefNow"
+        },
+        "propertyNames": {
+         "enum": [
+          "A",
+          "B"
+         ]
+        },
+        "type": "object"
+       },
+       {
+        "type": "null"
+       }
+      ],
+      "title": "Belief"
+     },
+     "position": {
+      "$ref": "#/components/schemas/Position"
+     },
+     "turn": {
+      "$ref": "#/components/schemas/Turn"
+     },
+     "view": {
+      "$ref": "#/components/schemas/View"
+     }
+    },
+    "required": [
+     "turn",
+     "position",
+     "view"
+    ],
+    "title": "TurnResult",
+    "type": "object"
+   },
+   "ValidationError": {
+    "properties": {
+     "ctx": {
+      "title": "Context",
+      "type": "object"
+     },
+     "input": {
+      "title": "Input"
+     },
+     "loc": {
+      "items": {
+       "anyOf": [
+        {
+         "type": "string"
+        },
+        {
+         "type": "integer"
+        }
+       ]
+      },
+      "title": "Location",
+      "type": "array"
+     },
+     "msg": {
+      "title": "Message",
+      "type": "string"
+     },
+     "type": {
+      "title": "Error Type",
+      "type": "string"
+     }
+    },
+    "required": [
+     "loc",
+     "msg",
+     "type"
+    ],
+    "title": "ValidationError",
+    "type": "object"
+   },
+   "View": {
+    "additionalProperties": false,
+    "properties": {
+     "belief": {
+      "anyOf": [
+       {
+        "additionalProperties": {
+         "$ref": "#/components/schemas/BeliefNow"
+        },
+        "propertyNames": {
+         "enum": [
+          "A",
+          "B"
+         ]
+        },
+        "type": "object"
+       },
+       {
+        "type": "null"
+       }
+      ],
+      "title": "Belief"
+     },
+     "belief_mode": {
+      "enum": [
+       "hidden",
+       "shown"
+      ],
+      "title": "Belief Mode",
+      "type": "string"
+     },
+     "current": {
+      "$ref": "#/components/schemas/Position"
+     },
+     "human_seat": {
+      "anyOf": [
+       {
+        "enum": [
+         "A",
+         "B"
+        ],
+        "type": "string"
+       },
+       {
+        "type": "null"
+       }
+      ],
+      "title": "Human Seat"
+     },
+     "kind": {
+      "enum": [
+       "research_record",
+       "new_simulation",
+       "human_game"
+      ],
+      "title": "Kind",
+      "type": "string"
+     },
+     "lane_exit_position": {
+      "title": "Lane Exit Position",
+      "type": "integer"
+     },
+     "marks": {
+      "$ref": "#/components/schemas/Marks"
+     },
+     "menu": {
+      "anyOf": [
+       {
+        "$ref": "#/components/schemas/Menu"
+       },
+       {
+        "type": "null"
+       }
+      ]
+     },
+     "next_turn": {
+      "anyOf": [
+       {
+        "type": "integer"
+       },
+       {
+        "type": "null"
+       }
+      ],
+      "title": "Next Turn"
+     },
+     "opponent_ready": {
+      "anyOf": [
+       {
+        "type": "boolean"
+       },
+       {
+        "type": "null"
+       }
+      ],
+      "title": "Opponent Ready"
+     },
+     "position": {
+      "title": "Position",
+      "type": "integer"
+     },
+     "read_position": {
+      "title": "Read Position",
+      "type": "integer"
+     },
+     "seats": {
+      "maxItems": 2,
+      "minItems": 2,
+      "prefixItems": [
+       {
+        "$ref": "#/components/schemas/SeatPublic"
+       },
+       {
+        "$ref": "#/components/schemas/SeatPublic"
+       }
+      ],
+      "title": "Seats",
+      "type": "array"
+     },
+     "seeds": {
+      "$ref": "#/components/schemas/Seeds"
+     },
+     "session": {
+      "title": "Session",
+      "type": "string"
+     },
+     "state": {
+      "enum": [
+       "awaiting_action",
+       "stopped"
+      ],
+      "title": "State",
+      "type": "string"
+     },
+     "stop_reason": {
+      "anyOf": [
+       {
+        "enum": [
+         "visitor",
+         "turn_cap",
+         "expired"
+        ],
+        "type": "string"
+       },
+       {
+        "type": "null"
+       }
+      ],
+      "title": "Stop Reason"
+     },
+     "turn_cap": {
+      "title": "Turn Cap",
+      "type": "integer"
+     }
+    },
+    "required": [
+     "session",
+     "kind",
+     "state",
+     "stop_reason",
+     "position",
+     "next_turn",
+     "turn_cap",
+     "lane_exit_position",
+     "read_position",
+     "seats",
+     "belief_mode",
+     "seeds",
+     "current",
+     "marks"
+    ],
+    "title": "View",
+    "type": "object"
+   }
+  }
+ },
+ "info": {
+  "description": "The M6 demo: Play against a trained M5 agent, Watch two agents, replay research games.",
+  "title": "Laning simulator demo API",
+  "version": "1.0.0"
+ },
+ "openapi": "3.1.0",
+ "paths": {
+  "/api/models": {
+   "get": {
+    "operationId": "models_api_models_get",
+    "responses": {
+     "200": {
+      "content": {
+       "application/json": {
+        "schema": {
+         "items": {
+          "$ref": "#/components/schemas/ModelCard"
+         },
+         "title": "Response Models Api Models Get",
+         "type": "array"
+        }
+       }
+      },
+      "description": "Successful Response"
+     }
+    },
+    "summary": "Models"
+   }
+  },
+  "/api/replays": {
+   "get": {
+    "operationId": "replays_index_api_replays_get",
+    "responses": {
+     "200": {
+      "content": {
+       "application/json": {
+        "schema": {
+         "items": {
+          "$ref": "#/components/schemas/ReplayEntry"
+         },
+         "title": "Response Replays Index Api Replays Get",
+         "type": "array"
+        }
+       }
+      },
+      "description": "Successful Response"
+     }
+    },
+    "summary": "Replays Index"
+   }
+  },
+  "/api/replays/{name}": {
+   "get": {
+    "operationId": "replay_api_replays__name__get",
+    "parameters": [
+     {
+      "in": "path",
+      "name": "name",
+      "required": true,
+      "schema": {
+       "title": "Name",
+       "type": "string"
+      }
+     }
+    ],
+    "responses": {
+     "200": {
+      "content": {
+       "application/json": {
+        "schema": {
+         "$ref": "#/components/schemas/GameBundle"
+        }
+       }
+      },
+      "description": "Successful Response"
+     },
+     "404": {
+      "content": {
+       "application/json": {
+        "schema": {
+         "$ref": "#/components/schemas/ErrorBody"
+        }
+       }
+      },
+      "description": "Not Found"
+     },
+     "422": {
+      "content": {
+       "application/json": {
+        "schema": {
+         "$ref": "#/components/schemas/HTTPValidationError"
+        }
+       }
+      },
+      "description": "Validation Error"
+     }
+    },
+    "summary": "Replay"
+   }
+  },
+  "/api/sessions": {
+   "post": {
+    "operationId": "create_api_sessions_post",
+    "requestBody": {
+     "content": {
+      "application/json": {
+       "schema": {
+        "$ref": "#/components/schemas/CreateRequest"
+       }
+      }
+     },
+     "required": true
+    },
+    "responses": {
+     "200": {
+      "content": {
+       "application/json": {
+        "schema": {
+         "$ref": "#/components/schemas/CreateResponse"
+        }
+       }
+      },
+      "description": "Successful Response"
+     },
+     "422": {
+      "content": {
+       "application/json": {
+        "schema": {
+         "$ref": "#/components/schemas/HTTPValidationError"
+        }
+       }
+      },
+      "description": "Validation Error"
+     },
+     "503": {
+      "content": {
+       "application/json": {
+        "schema": {
+         "$ref": "#/components/schemas/ErrorBody"
+        }
+       }
+      },
+      "description": "Service Unavailable"
+     }
+    },
+    "summary": "Create"
+   }
+  },
+  "/api/sessions/{sid}": {
+   "get": {
+    "operationId": "view_api_sessions__sid__get",
+    "parameters": [
+     {
+      "in": "path",
+      "name": "sid",
+      "required": true,
+      "schema": {
+       "title": "Sid",
+       "type": "string"
+      }
+     }
+    ],
+    "responses": {
+     "200": {
+      "content": {
+       "application/json": {
+        "schema": {
+         "$ref": "#/components/schemas/View"
+        }
+       }
+      },
+      "description": "Successful Response"
+     },
+     "404": {
+      "content": {
+       "application/json": {
+        "schema": {
+         "$ref": "#/components/schemas/ErrorBody"
+        }
+       }
+      },
+      "description": "Not Found"
+     },
+     "422": {
+      "content": {
+       "application/json": {
+        "schema": {
+         "$ref": "#/components/schemas/HTTPValidationError"
+        }
+       }
+      },
+      "description": "Validation Error"
+     }
+    },
+    "summary": "View"
+   }
+  },
+  "/api/sessions/{sid}/history": {
+   "get": {
+    "operationId": "history_api_sessions__sid__history_get",
+    "parameters": [
+     {
+      "in": "path",
+      "name": "sid",
+      "required": true,
+      "schema": {
+       "title": "Sid",
+       "type": "string"
+      }
+     },
+     {
+      "in": "query",
+      "name": "from",
+      "required": false,
+      "schema": {
+       "default": 0,
+       "minimum": 0,
+       "title": "From",
+       "type": "integer"
+      }
+     },
+     {
+      "in": "query",
+      "name": "to",
+      "required": false,
+      "schema": {
+       "anyOf": [
+        {
+         "minimum": 0,
+         "type": "integer"
+        },
+        {
+         "type": "null"
+        }
+       ],
+       "title": "To"
+      }
+     }
+    ],
+    "responses": {
+     "200": {
+      "content": {
+       "application/json": {
+        "schema": {
+         "$ref": "#/components/schemas/History"
+        }
+       }
+      },
+      "description": "Successful Response"
+     },
+     "403": {
+      "content": {
+       "application/json": {
+        "schema": {
+         "$ref": "#/components/schemas/ErrorBody"
+        }
+       }
+      },
+      "description": "Forbidden"
+     },
+     "422": {
+      "content": {
+       "application/json": {
+        "schema": {
+         "$ref": "#/components/schemas/HTTPValidationError"
+        }
+       }
+      },
+      "description": "Validation Error"
+     }
+    },
+    "summary": "History"
+   }
+  },
+  "/api/sessions/{sid}/record": {
+   "get": {
+    "operationId": "record_api_sessions__sid__record_get",
+    "parameters": [
+     {
+      "in": "path",
+      "name": "sid",
+      "required": true,
+      "schema": {
+       "title": "Sid",
+       "type": "string"
+      }
+     }
+    ],
+    "responses": {
+     "200": {
+      "content": {
+       "application/json": {
+        "schema": {
+         "$ref": "#/components/schemas/Recording"
+        }
+       }
+      },
+      "description": "Successful Response"
+     },
+     "422": {
+      "content": {
+       "application/json": {
+        "schema": {
+         "$ref": "#/components/schemas/HTTPValidationError"
+        }
+       }
+      },
+      "description": "Validation Error"
+     }
+    },
+    "summary": "Record"
+   }
+  },
+  "/api/sessions/{sid}/stop": {
+   "post": {
+    "operationId": "stop_api_sessions__sid__stop_post",
+    "parameters": [
+     {
+      "in": "path",
+      "name": "sid",
+      "required": true,
+      "schema": {
+       "title": "Sid",
+       "type": "string"
+      }
+     }
+    ],
+    "responses": {
+     "200": {
+      "content": {
+       "application/json": {
+        "schema": {
+         "$ref": "#/components/schemas/StopResponse"
+        }
+       }
+      },
+      "description": "Successful Response"
+     },
+     "422": {
+      "content": {
+       "application/json": {
+        "schema": {
+         "$ref": "#/components/schemas/HTTPValidationError"
+        }
+       }
+      },
+      "description": "Validation Error"
+     }
+    },
+    "summary": "Stop"
+   }
+  },
+  "/api/sessions/{sid}/turns": {
+   "post": {
+    "operationId": "submit_api_sessions__sid__turns_post",
+    "parameters": [
+     {
+      "in": "path",
+      "name": "sid",
+      "required": true,
+      "schema": {
+       "title": "Sid",
+       "type": "string"
+      }
+     }
+    ],
+    "requestBody": {
+     "content": {
+      "application/json": {
+       "schema": {
+        "$ref": "#/components/schemas/SubmitRequest"
+       }
+      }
+     },
+     "required": true
+    },
+    "responses": {
+     "200": {
+      "content": {
+       "application/json": {
+        "schema": {
+         "$ref": "#/components/schemas/TurnResult"
+        }
+       }
+      },
+      "description": "Successful Response"
+     },
+     "409": {
+      "content": {
+       "application/json": {
+        "schema": {
+         "$ref": "#/components/schemas/ErrorBody"
+        }
+       }
+      },
+      "description": "Conflict"
+     },
+     "410": {
+      "content": {
+       "application/json": {
+        "schema": {
+         "$ref": "#/components/schemas/ErrorBody"
+        }
+       }
+      },
+      "description": "Gone"
+     },
+     "422": {
+      "content": {
+       "application/json": {
+        "schema": {
+         "$ref": "#/components/schemas/ErrorBody"
+        }
+       }
+      },
+      "description": "Unprocessable Content"
+     }
+    },
+    "summary": "Submit"
+   }
+  },
+  "/api/simulations": {
+   "post": {
+    "operationId": "simulate_api_simulations_post",
+    "requestBody": {
+     "content": {
+      "application/json": {
+       "schema": {
+        "$ref": "#/components/schemas/SimulateRequest"
+       }
+      }
+     },
+     "required": true
+    },
+    "responses": {
+     "200": {
+      "content": {
+       "application/json": {
+        "schema": {
+         "$ref": "#/components/schemas/GameBundle"
+        }
+       }
+      },
+      "description": "Successful Response"
+     },
+     "422": {
+      "content": {
+       "application/json": {
+        "schema": {
+         "$ref": "#/components/schemas/HTTPValidationError"
+        }
+       }
+      },
+      "description": "Validation Error"
+     },
+     "429": {
+      "content": {
+       "application/json": {
+        "schema": {
+         "$ref": "#/components/schemas/ErrorBody"
+        }
+       }
+      },
+      "description": "Too Many Requests"
+     }
+    },
+    "summary": "Simulate"
+   }
+  },
+  "/api/status": {
+   "get": {
+    "operationId": "status_api_status_get",
+    "responses": {
+     "200": {
+      "content": {
+       "application/json": {
+        "schema": {
+         "$ref": "#/components/schemas/Status"
+        }
+       }
+      },
+      "description": "Successful Response"
+     }
+    },
+    "summary": "Status"
+   }
+  }
+ }
+}

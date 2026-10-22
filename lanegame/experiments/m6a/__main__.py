@@ -5,7 +5,9 @@
     verify    re-simulate the three seed-0 M5 recordings through the session core, and replay the 12 attacker
               recordings from their actions (about 10 s)
     measure   turn cost with frames, history replay, recording size and bot-versus-bot generation (about 1 minute)
-    export    the prototypes' data files, prototypes/m6a/data/ (a few seconds)
+
+The `export` stage of M6a wrote the throwaway prototypes' data files; it went with the prototypes in M6b
+(docs/m6/m6b_report.md), and the app serves the same recordings through its API (lanegame/demo/service.py).
 
 Every stage needs the 7 checkpoint files of lanegame/demo/manifest.json (git-ignored) and stops with a message when
 they are missing. None trains, and none changes a recording or a result of an earlier milestone.
@@ -42,14 +44,6 @@ def _measure():
     t0 = time.time()
     r = M.measure()
     Cm.save_json("m6a_measurements", {"meta": Cm.meta(elapsed_s=round(time.time() - t0, 1)), **r})
-
-
-@stage("export")
-def _export():
-    from . import export as X
-    t0 = time.time()
-    r = X.run()
-    Cm.save_json("m6a_export", {"meta": Cm.meta(elapsed_s=round(time.time() - t0, 1)), "games": r})
 
 
 def main(argv) -> None:

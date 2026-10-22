@@ -12,6 +12,10 @@ environment and PPO self-play for the champion rulesets. Its user touches two su
   `lanegame/__main__.py`. Everything is CPU and seconds-scale at the sizes this skill uses.
 - **The lane debugger** (secondary): a Streamlit app, `lanegame/viewer/app.py`, that replays games from (setup,
   actions) and lets a person play side A by hand.
+- **The web demo** (M6): `python -m lanegame.demo` serves the API and the built frontend (`web/dist`). `$VL demo
+  start` runs it on a free port in 8700-8799, `browser open` waits for the page's ready flag, and `browser js` reads
+  the app's state hook. The feature file is `features/web-demo.md`; the scripted journey with screenshots is
+  `python -m lanegame.experiments.m6b browser`.
 
 Not driven by this skill:
 - The milestone experiment drivers (`python -m lanegame.experiments[.rl].<milestone> <stage>`). They write into the

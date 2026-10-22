@@ -1,0 +1,262 @@
+{
+ "schema": "lanegame.demo_recording",
+ "version": 1,
+ "provenance": {
+  "kind": "human_game",
+  "note": "One game, shown as an example. It is not evidence for or against M5's aggregate findings, which use all six seeds and many games per comparison.",
+  "source": null
+ },
+ "config": {
+  "name": "m45_calibrated",
+  "digest": "50111b38ef60e2bdd1f37a73eaadbca69a7f03dc704a2a66e294a9a6b693274e"
+ },
+ "start": "s0",
+ "seeds": {
+  "chance": 1133465142880731,
+  "chance_chosen": false,
+  "policy": 23164180400895,
+  "policy_rule": "drawn by the server, secret until the session stops"
+ },
+ "policy_rule": "drawn",
+ "seats": [
+  {
+   "seat": "A",
+   "kind": "human",
+   "id": null,
+   "label": null,
+   "arm": null,
+   "seed": null,
+   "file_sha256": null,
+   "weights_digest": null,
+   "sampling": null,
+   "rule": null
+  },
+  {
+   "seat": "B",
+   "kind": "model",
+   "id": "sp:0",
+   "label": "Pure self-play",
+   "arm": "sp",
+   "seed": 0,
+   "file_sha256": "be46074e6a019b6f2fa3fdb0b30dc6229d7c8ddfc3d7dacccadb377138a252e5",
+   "weights_digest": "4af8b22774bb9e360f481c6a22acb8fddede0468ee58092b3acdcf7db74291bb",
+   "sampling": "sampled, as M5 evaluated it",
+   "rule": null
+  }
+ ],
+ "belief_mode": "hidden",
+ "turn_cap": 150,
+ "status": {
+  "state": "stopped",
+  "stop_reason": "visitor",
+  "turns": 40
+ },
+ "turns": [
+  [
+   46,
+   12,
+   "222d58483880c535"
+  ],
+  [
+   7,
+   45,
+   "e0db670f28eedd51"
+  ],
+  [
+   9,
+   6,
+   "a3bb1aa1ca399bf9"
+  ],
+  [
+   5,
+   2,
+   "15712ae881c9adbb"
+  ],
+  [
+   1,
+   2,
+   "170af4b1287258a0"
+  ],
+  [
+   7,
+   5,
+   "6452433392e4d78e"
+  ],
+  [
+   7,
+   0,
+   "820445b04ad9e912"
+  ],
+  [
+   7,
+   2,
+   "f2f1a0b8e4de6e73"
+  ],
+  [
+   7,
+   2,
+   "ca61233edefc675c"
+  ],
+  [
+   7,
+   9,
+   "f87ebd3e1c0af70f"
+  ],
+  [
+   7,
+   3,
+   "14f5c8b3d9fb1c2a"
+  ],
+  [
+   7,
+   47,
+   "1711659aa2bada59"
+  ],
+  [
+   7,
+   47,
+   "9676f50e111d2f45"
+  ],
+  [
+   45,
+   4,
+   "7ac605652bf9e491"
+  ],
+  [
+   45,
+   12,
+   "2eb06baefe1acbe6"
+  ],
+  [
+   45,
+   45,
+   "4504c74d2b1b5f89"
+  ],
+  [
+   7,
+   2,
+   "a673695cf92d8e61"
+  ],
+  [
+   7,
+   47,
+   "92f64d25498e8344"
+  ],
+  [
+   7,
+   1,
+   "0138ae7cb36ff569"
+  ],
+  [
+   7,
+   6,
+   "fe1b3297cd518342"
+  ],
+  [
+   7,
+   48,
+   "cc6eca23438f41da"
+  ],
+  [
+   7,
+   48,
+   "718eb0af223dea86"
+  ],
+  [
+   45,
+   12,
+   "4c8426721fd97417"
+  ],
+  [
+   45,
+   45,
+   "ecd88a5e247d3d18"
+  ],
+  [
+   45,
+   6,
+   "7155ab6dab6d4508"
+  ],
+  [
+   7,
+   46,
+   "e374d8e9e40e0378"
+  ],
+  [
+   7,
+   4,
+   "048087b2d916ccef"
+  ],
+  [
+   7,
+   48,
+   "97e147e0f79385ad"
+  ],
+  [
+   7,
+   48,
+   "7b61c3a3db61dbb4"
+  ],
+  [
+   7,
+   6,
+   "461840a23fd6c0d6"
+  ],
+  [
+   7,
+   48,
+   "55edb2e9d385130b"
+  ],
+  [
+   7,
+   8,
+   "638d49339c0566a3"
+  ],
+  [
+   45,
+   12,
+   "390120d7bea3df80"
+  ],
+  [
+   45,
+   45,
+   "0955e478e47adf61"
+  ],
+  [
+   45,
+   1,
+   "61adc026eaa9a925"
+  ],
+  [
+   45,
+   7,
+   "b3e94bae8599b286"
+  ],
+  [
+   7,
+   46,
+   "812ed4f0252c0eca"
+  ],
+  [
+   7,
+   16,
+   "5932b2eb4c66ff4c"
+  ],
+  [
+   7,
+   11,
+   "d45f150e39a3e4b3"
+  ],
+  [
+   7,
+   16,
+   "917a0c8ec3c1ced3"
+  ]
+ ],
+ "lead_A": -7.29,
+ "marks": {
+  "lane_exit": null,
+  "lead_114": null
+ },
+ "beliefs": null
+}

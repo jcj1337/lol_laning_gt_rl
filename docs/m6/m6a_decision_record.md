@@ -6,6 +6,11 @@ M6b builds from. M6b has not started.*
 
 The record separates what the user decided, what I proposed and what remains open. Plan: [m6_plan.md](m6_plan.md).
 
+*2026-10-22 (M6b): the production application `web/` implements the design of §7 ([M6b report](m6b_report.md)). The
+prototype folders were removed. The approved glass prototype's code is archived unchanged at
+`legacy/m6a_glass_prototype/` (it no longer runs: its server and data files went with the prototypes), and the
+screenshots of every round stay in `results/m6/prototypes/`. Paths under `prototypes/m6a/` below describe that time.*
+
 ## 1. Approved requirements (the user's M6a brief, 2026-10-21)
 
 - **Scope.** M6 presents the existing research. It changes no mechanic, reward, training objective, trained network or

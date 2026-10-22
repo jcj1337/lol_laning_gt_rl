@@ -68,3 +68,5 @@ Keep implementation details out. Name only user paths, stable handles, required 
   and the detail tabs.
 - [Viewer manual play](./viewer-manual.md): playing side A by hand, undo, auto-play, branching, and taking over from
   a matchup.
+- [Web demo](./web-demo.md): the M6 application (`python -m lanegame.demo` and the built `web/`): Play against a
+  trained agent, Watch a generated match, history review, reload recovery, the record download, layouts.
