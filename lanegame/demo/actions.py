@@ -45,14 +45,14 @@ BEHAVIOUR_HELP = {B_HOLD: "Stand at your farm spot and farm; never step away.",
                   B_SAFE: "Farm without going past your side of the lane; step away from an incoming Trade."}
 PRESSURE_HELP = "Walk into the enemy tower cell and damage the tower; each plate pays 1 gold."
 RECALL_HELP = "Channel this turn, sit out the next, then return with full HP and your gold invested."
-WARD_HELP = ("Walk to the Vision node W and place a ward: ganks are a quarter as likely for 6 turns. No wave damage "
-             "or gold this turn.")
+WARD_HELP = ("Walk to the ward spot (the bush beside the middle of the lane) and place a ward: ganks are a quarter as "
+             "likely for 6 turns. No wave damage or gold this turn.")
 
 
 def cell_words(pos: int, cfg: GameConfig) -> str:
     """A seat's own cell in words."""
     if pos == WARD:
-        return "the Vision node W"
+        return "the ward spot"
     if pos <= -cfg.tower:
         return "your tower"
     if pos >= cfg.tower:
@@ -78,7 +78,8 @@ def recall_reason(m4, s: int, cfg: GameConfig) -> Optional[str]:
         return None
     pos = m4.side(s).pos
     if pos == WARD:
-        return "You cannot Recall from the Vision node W."
+        return ("You can't Recall from the ward spot. Choose Safe to step back to your side of the lane, then Recall "
+                "next turn.")
     return (f"Recall needs you on your own side of the lane (cell {cfg.recall_line:+d} or nearer your tower); you "
             f"stand at {cell_words(pos, cfg)}.")
 
@@ -87,7 +88,7 @@ def ward_reason(m4, s: int, cfg: GameConfig) -> Optional[str]:
     if ward_legal(m4, s, cfg):
         return None
     pos = m4.side(s).pos
-    return (f"The Vision node W is {graph_dist(pos, WARD)} steps from {cell_words(pos, cfg)}; a champion moves "
+    return (f"The ward spot is {graph_dist(pos, WARD)} steps from {cell_words(pos, cfg)}; a champion moves "
             f"{cfg.champion_speed}.")
 
 

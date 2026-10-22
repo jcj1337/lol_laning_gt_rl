@@ -1,0 +1,123 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Laning simulator</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body class="lay-dock">
+<svg id="lane" class="scene" role="img" aria-labelledby="laneText"></svg>
+<p id="laneText" class="sr-only" aria-live="polite"></p>
+
+<!-- One glass surface holds every control. The three layouts (?layout=dock|rail|console) place the same zones
+     differently; app.js moves the top bar and the turn buttons between them and keeps the lane clear of the surface. -->
+<div class="hud" id="hud">
+  <header class="glass topbar" id="topbar">
+    <div class="seg" role="group" aria-label="Mode">
+      <button id="modePlay" aria-pressed="false">Play</button>
+      <button id="modeWatch" aria-pressed="false">Watch</button>
+    </div>
+    <div class="context" id="context"></div>
+    <span class="rectype" id="recType"></span>
+    <span class="tb-end">
+      <button class="linkbtn" id="aboutBtn">About</button>
+      <button class="pillbtn" id="detailsBtn" aria-expanded="false" aria-controls="details">Details</button>
+    </span>
+  </header>
+
+  <section class="glass surface" id="surface" aria-label="Game controls">
+    <!-- the zones; the wrapper is invisible to the dock's and console's grids and scrolls inside a phone's rail -->
+    <div class="z-scroll" id="zScroll">
+    <div class="z-status" id="zStatus">
+      <div class="st" id="stA" aria-label="Seat A"></div>
+      <div class="st" id="stB" aria-label="Seat B"></div>
+    </div>
+
+    <div class="z-line" id="zLine">
+      <span class="turnlabel" id="turnPill"><span id="turnLabel"></span></span>
+      <span class="banner" id="banner" hidden role="status">
+        <span id="bannerText"></span>
+        <button class="pillbtn small" id="btnReturn">Return to current turn</button>
+      </span>
+      <div class="summary" id="summary" aria-live="polite"></div>
+    </div>
+
+    <div class="z-hist" id="zHist" aria-label="Turn history">
+      <div class="h-top">
+        <span class="h-title">Turns</span>
+        <button class="iconbtn" id="hToggle" aria-expanded="false" aria-controls="zHist" title="Show all turns" aria-label="Show all turns">
+          <svg viewBox="0 0 16 16" aria-hidden="true"><path d="M4 10l4-4 4 4"/></svg></button>
+      </div>
+      <div class="h-head"><span>#</span><span id="hA"></span><span id="hB"></span></div>
+      <ol class="h-list" id="hList"></ol>
+      <div class="nav" id="nav" role="group" aria-label="Move through the turns">
+        <button id="btnFirst" title="First (Home)" aria-label="First position"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M4.5 3.5v9M11.5 3.5 7 8l4.5 4.5"/></svg></button>
+        <button id="btnPrev" title="Previous (Left arrow)" aria-label="Previous turn"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M10 3.5 5.5 8l4.5 4.5"/></svg></button>
+        <button id="btnNext" title="Next (Right arrow)" aria-label="Next turn"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="m6 3.5 4.5 4.5L6 12.5"/></svg></button>
+        <button id="btnLast" title="Latest (End)" aria-label="Latest position"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M11.5 3.5v9M4.5 3.5 9 8l-4.5 4.5"/></svg></button>
+      </div>
+    </div>
+
+    <div class="z-main" aria-label="Actions"><div class="controls" id="controls"></div></div>
+
+    <div class="z-graph" id="graphPanel" aria-labelledby="gTitle">
+      <div class="g-head">
+        <h2 id="gTitle">Gold lead</h2>
+        <span class="g-val" id="gVal"></span>
+        <button class="linkbtn" id="gExpand" aria-expanded="false" aria-controls="graphBig">Expand</button>
+      </div>
+      <div id="graph" class="g-plot"></div>
+    </div>
+
+    <div class="z-big" id="graphBig" hidden aria-labelledby="gbTitle">
+      <div class="g-head">
+        <h2 id="gbTitle">Gold lead</h2>
+        <span class="g-note" id="gNote"></span>
+        <label class="g-toggle"><input type="checkbox" id="gEvents"> Show events</label>
+        <button class="linkbtn" id="gCollapse">Collapse</button>
+      </div>
+      <div id="graphB" class="g-plot"></div>
+    </div>
+
+    <div class="z-bar" id="zBar">
+      <button class="pillbtn small" id="cHist" aria-expanded="false" aria-controls="zHist">Turns</button>
+    </div>
+    </div>
+    <!-- a phone's rail: the main button and Stop, kept in view below the scrolling zones -->
+    <div class="z-foot" id="zFoot"></div>
+  </section>
+</div>
+
+<aside class="details" id="details" hidden aria-label="Details">
+  <div class="d-head"><h2 id="dTitle">Details</h2><button class="pillbtn" id="dClose">Close</button></div>
+  <div class="d-body" id="dBody"></div>
+</aside>
+
+<dialog id="about" aria-labelledby="aboutTitle"><div id="aboutBody"></div></dialog>
+<dialog id="newGame" aria-labelledby="ngTitle">
+  <form method="dialog" id="ngForm">
+    <h2 id="ngTitle">New game</h2>
+    <fieldset><legend>Play against</legend>
+      <label><input type="radio" name="opp" value="sp:0" checked> Self-play agent <span class="muted">learned only by playing against itself</span></label>
+      <label><input type="radio" name="opp" value="om:0"> Adaptive agent <span class="muted">guesses your style and adjusts to it</span></label>
+    </fieldset>
+    <fieldset><legend>The adaptive agent's guess about your style</legend>
+      <label><input type="radio" name="belief" value="hidden" checked> Hidden until the game ends</label>
+      <label><input type="radio" name="belief" value="shown"> Shown during the game</label>
+    </fieldset>
+    <div class="row-end"><button class="pillbtn" value="cancel">Cancel</button><button class="pillbtn gold" value="ok">Start</button></div>
+  </form>
+</dialog>
+<dialog id="newSim" aria-labelledby="nsTitle">
+  <form method="dialog" id="nsForm">
+    <h2 id="nsTitle">New game between two agents</h2>
+    <p class="muted">The engine plays 150 turns, then you watch them.</p>
+    <label class="sel">Left (A) <select name="a"><option value="om:0">Adaptive agent</option><option value="sp:0">Self-play agent</option></select></label>
+    <label class="sel">Right (B) <select name="b"><option value="sp:0">Self-play agent</option><option value="om:0">Adaptive agent</option></select></label>
+    <div class="row-end"><button class="pillbtn" value="cancel">Cancel</button><button class="pillbtn gold" value="ok">Simulate</button></div>
+  </form>
+</dialog>
+<script type="module" src="app.js"></script>
+</body>
+</html>

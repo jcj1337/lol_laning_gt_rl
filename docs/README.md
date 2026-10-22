@@ -96,13 +96,13 @@ The reports are grouped by phase. Within a folder the files are listed in the or
 | [m5a_readiness_protocol.md](m5/m5a_readiness_protocol.md) | M5a readiness protocol (recorded before the first check): checks R0–R11, pass rules, the compute ceiling |
 | [m5a_readiness_report.md](m5/m5a_readiness_report.md) | M5a readiness report: all 11 experimental checks pass (lineage, seeds, identical start, exact reproductions through the hooked shared loops, bit-identical smokes, common starts, training inputs rebuilt by the evaluation policy, shares, concurrency, every instrument at reduced samples); failures and fixes; the measured budget |
 
-## m6/ for presentation, interactive demonstration and reproducibility (M6a in progress)
+## m6/ for presentation, interactive demonstration and reproducibility (M6a complete, M6b next)
 
 | document | milestone |
 |---|---|
 | [m6_plan.md](m6/m6_plan.md) | the M6 plan (written 2026-10-19, revised 2026-10-21 after the user's approval): a new web application with two primary modes, Play (a human against either M5 policy) and Watch (a bounded bot match explored through a timeline), plus verified research replays and the findings; what exists and is reused; thirteen correctness rules; the Chess.com-style turn history and the clarity requirements; the architecture (React with TypeScript and Vite in `web/`, FastAPI, one container); milestones M6a to M6e; the initial release; the demo, evidence and training bundles; how to present the M5 findings; the decisions |
 | [m6a_technical_report.md](m6/m6a_technical_report.md) | M6a's backend (2026-10-21): the session core `lanegame/demo/` (checked checkpoint loading, human, model and scripted seats, recordings with state digests, replay, frames, the action menu with the engine's reasons); every acceptance check and its result; the proposed API, recording and frame contracts; the measured costs and what they imply |
-| [m6a_decision_record.md](m6/m6a_decision_record.md) | M6a's decision record (2026-10-21, pending design approval): approved requirements, proposed choices and unresolved decisions; the three clickable prototypes compared, with a recommendation; how to launch them; scripted opponents assessed |
+| [m6a_decision_record.md](m6/m6a_decision_record.md) | M6a's decision record (2026-10-21, complete): approved requirements, proposed choices and unresolved decisions; scripted opponents assessed; the three first prototypes and the six review rounds; the final glass design the user approved, which M6b builds from |
 
 ## natural_waves/ — natural wave mechanics and the lane candidate (M4.2e)
 

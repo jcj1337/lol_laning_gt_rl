@@ -3,7 +3,8 @@
     .venv/Scripts/python.exe prototypes/m6a/tools/shoot.py <shots.json> [<out dir>]
 
 <shots.json> is a list of {"name", "path" (relative to prototypes/m6a, with query), "width", "height",
-"steps" (optional: JavaScript expressions run in order after the page is ready, each awaited), "wait_ms"}.
+"steps" (optional: JavaScript expressions run in order after the page is ready, each awaited), "wait_ms",
+"clip_js" (optional: an expression returning the {x, y, width, height} to crop to), "clip_scale"}.
 A page signals readiness by setting document.body.dataset.ready = "1". The tool starts the launcher's server
 (serve.py) on a free local port, drives a throwaway headless Edge profile over DevTools, and writes
 <out dir>/<name>.png (default results/m6/prototypes). Nothing else is written.
@@ -107,7 +108,10 @@ def main(spec: str, out: str) -> None:
                 c.js(step)
                 time.sleep(0.25)
             time.sleep(s.get("wait_ms", 600) / 1000)
-            png = c.call("Page.captureScreenshot", format="png", captureBeyondViewport=False)["data"]
+            shot = {"format": "png", "captureBeyondViewport": False}
+            if s.get("clip_js"):                       # optional: crop to a box the page reports {x, y, width, height}
+                shot["clip"] = {**c.js(s["clip_js"]), "scale": s.get("clip_scale", 1)}
+            png = c.call("Page.captureScreenshot", **shot)["data"]
             p = Path(out) / f"{s['name']}.png"
             p.write_bytes(base64.b64decode(png))
             errs = c.js("window.__errors ? window.__errors.join(' | ') : ''")

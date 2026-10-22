@@ -202,7 +202,7 @@ def outcomes(cfg: GameConfig, info: dict) -> List[dict]:
     for s, n in seats:
         if info.get("ward") and info["ward"][s]:
             if info["ward_placed"][s]:
-                ev.append(_ev("ward", n, True, f"{{{n}}} placed a ward at W (vision for {cfg.vision_turns} turns)"))
+                ev.append(_ev("ward", n, True, f"{{{n}}} placed a ward in the bush (vision for {cfg.vision_turns} turns)"))
             else:
                 ev.append(_ev("ward_interrupted", n, True, f"{{{n}}}'s ward was interrupted"))
         if info["recalled"][s]:

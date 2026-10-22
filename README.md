@@ -174,4 +174,4 @@ legacy/                   the original Q-learning prototype
 | M4 | Built and calibrated the full laning model, trained PPO self-play on it, and diagnosed what the agents miss | Complete ([closeout](docs/m4/m4_closeout_report.md)) |
 | Opponent modelling | Tested whether a Bayesian belief about the opponent's style helps, first with existing agents, then in a matched training pilot | Complete ([pilot](docs/opponent_modelling/om2_pilot_report.md)) |
 | M5 | The final training, opponent modelling against pure self-play, in 12 runs of 32.8 million transitions each | Complete, 2026-10-19 ([final report](docs/m5/m5e_closeout_report.md)) |
-| M6 | A web app to play against the trained agents, watch them play each other and replay research games, plus reproduction bundles | In progress (the game-session backend is done; the visual design is in review) |
+| M6 | A web app to play against the trained agents, watch them play each other and replay research games, plus reproduction bundles | In progress (the game-session backend and the interface design are done; the playable app is next) |

@@ -1,6 +1,6 @@
 # RL Research Roadmap: From Exact Stochastic Games to Multi-Agent Reinforcement Learning
 
-> **This is the canonical project roadmap.** The summary below (updated 2026-10-21: M5 is complete, committed by the user in a07e3fdf. Its pre-registered outcome 2 is that the opponent-modelling package pays at a competence cost. Both arms retain four of five strategic findings. Dedicated attackers exploit both arms, and the difference between the arms is inconclusive. M6 has started. M6a's session core is built and verified, and three clickable prototypes await the user's choice of a visual direction)
+> **This is the canonical project roadmap.** The summary below (updated 2026-10-21: M5 is complete, committed by the user in a07e3fdf. Its pre-registered outcome 2 is that the opponent-modelling package pays at a competence cost. Both arms retain four of five strategic findings. Dedicated attackers exploit both arms, and the difference between the arms is inconclusive. M6 has started. M6a is complete. Its session core is built and verified, and the user approved the interface design. M6b, the playable application, is next)
 > states where the project is and what comes next. Sections A–K are the original plan
 > written before M1 (kept unchanged for the record; its milestone list was later revised, see the notes in section D).
 > Sections L–BA record each milestone's outcome in the order it happened, with links to the full reports (M4.5b: §AJ;
@@ -397,30 +397,33 @@ Public deployment is an intended capability, not an authorization to deploy or t
   tracked again.
 - Scripted opponents are a design decision. Their inclusion is not a prerequisite for M6a.
 
-- **M6a: the session core and the prototypes** (in progress, §BC; [technical report](m6/m6a_technical_report.md),
-  [decision record](m6/m6a_decision_record.md)).
+- **M6a: the session core and the interface design** (completed 2026-10-21, §BC;
+  [technical report](m6/m6a_technical_report.md), [decision record](m6/m6a_decision_record.md)).
   - **The session core** (`lanegame/demo/`) is built and verified. It has a registry that checks all 7 checkpoint
     files against a tracked manifest before any is unpickled, sessions with human, model and scripted seats, a
     recording with per-turn state digests, deterministic replay, history frames, and an action menu whose reasons
     come from the engine's legality predicates.
   - **Verified on the real finals.** The three seed-0 M5 recordings re-simulate exactly (actions, `payoff_A` to the
-    last bit, belief log posteriors identical). Every check of the brief has a passing test (27 tests). Nothing in
+    last bit, belief log posteriors identical). Every check of the brief has a passing test (29 tests). Nothing in
     the game, the networks or the results changed.
   - **Measured.** A full turn with frames and JSON costs 1.4 ms (`sp:0`) and 2.3 ms (`om:0`). A 150-turn history
     rebuild takes about 0.09 s (22 KB gzipped). A bounded 150-turn bot game takes 0.27 to 0.48 s. About 0.1 MB per
     session.
   - **Three prototypes** (a game-like arena, a schematic board, a narrated timeline) ran from `prototypes/m6a/`,
     staged against verified recordings. After trying them, the user chose C with A's action controls and a better
-    gold-lead graph. One refined interface with **live Play** (a local JSON service over the session core) awaits the
-    user's visual review.
+    gold-lead graph.
+  - **The approved design** (decision record §7) came out of six review rounds. One frosted glass dock sits over a
+    diagonal top-down lane, with minions drawn as balls (one per HP), the ward spot as a bush, stepped ticks, dark
+    mode and a rail layout on a phone held sideways. Play is **live** through a local JSON service over the session
+    core. The reference implementation is `prototypes/m6a/glass/`.
 
-**Open decisions for the user.** The review of the refined M6a interface (the direction was chosen on 2026-10-21).
-Whether scripted styles are offered as opponents, and which ones ([decision record](m6/m6a_decision_record.md)). Later, a license before any
+**Open decisions for the user.** Whether scripted styles are offered as opponents, and which ones ([decision
+record](m6/m6a_decision_record.md) §4); M6b needs this before it builds the opponent picker. Later, a license before any
 bundle is published, and at the M6e checkpoint the provider, budget and deployment. Further mechanics or training
 experiments are optional future research, not prerequisites ([M5e report §14](m5/m5e_closeout_report.md)).
 
 **M5 status: complete (2026-10-19), committed by the user (a07e3fdf). The optional om_table ablation was not run.
-M6 status: M6a in progress. The backend is complete, and M6a is pending the user's design approval.**
+M6 status: M6a complete (2026-10-21). M6b, the playable application, is next and has not started.**
 
 **The agreed path to completion** (the sequence agreed with the user on 2026-10-16, extended on 2026-10-17; details
 in "Path to completion" below):
@@ -436,7 +439,7 @@ in "Path to completion" below):
 | **3. design Bayesian opponent modelling** | beliefs about the opponent's style, updated during a game; type library, inference, the policy's use of the belief, evaluation design | **completed, reviewed** (committed by the user, a6e9b63f): the feasibility study OM1 is complete, reviewed (§AV, [report](opponent_modelling/om1_feasibility_report.md)): outcome 1, feasible and worthwhile; identification within 10–20 observed turns; switcher +0.90 ± 0.27 over π, mostly against scripted styles; misspecified (mixed) opponents are the risk. Scope C and the last-action observation decided 2026-10-17. **Design written and implemented behind opt-in switches** (§AW, [design](opponent_modelling/om2_design.md)), reviewed; carried into M5 as arm A |
 | **4. matched opponent-modelling pilot** | a controlled pilot with the same opponent distribution in both arms (with and without the belief), evaluated with the existing instruments and the lane-exit readout | **completed, reviewed** (§AW, [report](opponent_modelling/om2_pilot_report.md); compute approved 2026-10-17): pre-registered outcome 1, modelling pays and is safe: archetypes +2.03 ± 1.72 (every seed), no loss against competent, misspecified or head-to-head opponents; exploratory: both arms slightly below their start against competent opponents (control −0.59, treatment −0.16) |
 | **5. M5: final training and evaluation campaign** | two arms, opponent-modelling package against continued pure self-play, six matched pairs from `ext/baseline:s`; learning progress, strategic replication, the M4 limitations re-measured, opponent families, cross-seed and cross-arm results, dedicated attackers; lane phase read as D0 → E_20 | **M5a completed** (§AX). **M5a corrections completed** (§AY, amendment 1). **M5b training and the initial M5d evaluations completed** (§AY): outcome 2, pays at a competence cost. **M5c battery and cells completed** (§AZ): four of five verdicts replicate in both arms; the om finals are worse in every limitation family. **Core attackers and M5e completed** (§BA; committed by the user, a07e3fdf): both arms exploitable, S6 inconclusive, no transfer; recommendation: present both arms as a trade-off. **om_table ablation: optional, not run** ("M5 plan" below) |
-| **6. M6: presentation, interactive demonstration and reproducibility** | a new web application where a human plays against either M5 arm, with verified research replays and the findings; a concise README and research overview; reproducible commands and three bundles (demo, evidence, training); the Streamlit viewer archived as legacy; demonstrated findings kept apart from remaining hypotheses | **approved direction** (the user, 2026-10-19: presentation, demonstration and reproducibility; a new web application with human versus policy at its centre; 2026-10-21: Play and Watch in the initial release). **M6a in progress** (§BB, §BC, [plan](m6/m6_plan.md)): the session core is built and verified; three prototypes await the user's choice of a direction; M6b to M6e not started; the viewer not yet archived |
+| **6. M6: presentation, interactive demonstration and reproducibility** | a new web application where a human plays against either M5 arm, with verified research replays and the findings; a concise README and research overview; reproducible commands and three bundles (demo, evidence, training); the Streamlit viewer archived as legacy; demonstrated findings kept apart from remaining hypotheses | **approved direction** (the user, 2026-10-19: presentation, demonstration and reproducibility; a new web application with human versus policy at its centre; 2026-10-21: Play and Watch in the initial release). **M6a completed** (§BB, §BC, [plan](m6/m6_plan.md)): the session core is built and verified; the user approved the interface design on 2026-10-21; M6b to M6e not started; the viewer not yet archived |
 
 **Stopping principle.** A perfect critic, or the discovery of every recognizable laning strategy, is not required. A
 remaining weakness that is small, confined to unusual states, or resistant to one justified targeted intervention is
@@ -466,7 +469,7 @@ deliberate simplification (`docs/design_philosophy.md`), not a perfect reproduct
 | **M4** Integrated laning model and strategic validation | M4.1 design → M4.2 mechanics → M4.3 wave management and economics → M4.4 PPO self-play → M4.5 unified positional mechanics, calibration and retraining → M4.6 design review and diagnosis → M4 closeout | M4.1–M4.4c completed; M4.5a, M4.5b completed; M4.5c completed (6 × 8.192M and the 2× extension 6 × 16.384M trained; comprehensive evaluation, strategic battery and attackers done; GO WITH CAVEATS); M4.4d done within M4.5c (attackers); M4.6a–d completed; M4.6e and M4.6f (the targeted learning pilot) completed, reviewed; **M4 closeout completed and reviewed: M4 closed (ready for M5 with documented limitations); setup decided 2026-10-17: the baseline**; M4.7 early-lane horizon study completed (keep γ 0.99); M4.8 lane-exit evaluation completed (E_20 adopted) | below; §AS, §AT, §AU |
 | Bayesian opponent modelling (OM1 feasibility, OM2 design and matched pilot) | beliefs about the opponent's style, updated during a game; designed first, then a controlled pilot with the same opponent distribution in both arms | **completed, reviewed** (committed by the user, a6e9b63f): OM1 outcome 1, feasible and worthwhile (§AV); OM2 implemented behind opt-in switches and its matched pilot run, pre-registered outcome 1, modelling pays and is safe (§AW). Carried into M5 as the modelling arm (approved direction, 2026-10-17) | §AV, §AW |
 | **M5** Main training and evaluation campaign | the opponent-modelling package against continued pure self-play: two arms, six matched pairs continuing `ext/baseline:s`, 32.768M each; M5b training, M5c strategic replication and the M4 limitations, M5d opponent families, cross-seed/cross-arm results and attackers, M5e closeout; lane phase read as D0 → E_20 | **M5a and its corrections completed (§AX, §AY)**; **M5b training and the initial M5d evaluations completed (§AY)**: outcome 2, the package pays at a competence cost. **M5c completed (§AZ)**. **The core attackers and M5e completed (§BA); M5 committed by the user (a07e3fdf)**: S6 inconclusive; both arms exploitable; present both arms as a trade-off. The optional om_table ablation was not run | "M5 plan" below; [design](m5/m5_design.md), reports [M5b](m5/m5b_initial_report.md), [M5c](m5/m5c_strategic_report.md), [M5e](m5/m5e_closeout_report.md) |
-| **M6** Presentation, interactive demonstration and reproducibility | a new web application (human versus either M5 arm, verified replays, the findings), README and research overview, reproduction bundles, the Streamlit viewer archived; demonstrated findings separated from hypotheses | approved direction (2026-10-19, extended 2026-10-21); **M6a in progress** (the session core done; the design choice pending) | "M6 plan" below; §BB, §BC; [plan](m6/m6_plan.md) |
+| **M6** Presentation, interactive demonstration and reproducibility | a new web application (human versus either M5 arm, verified replays, the findings), README and research overview, reproduction bundles, the Streamlit viewer archived; demonstrated findings separated from hypotheses | approved direction (2026-10-19, extended 2026-10-21); **M6a completed** (the session core and the approved interface design, 2026-10-21); M6b next | "M6 plan" below; §BB, §BC; [plan](m6/m6_plan.md) |
 
 ### M4 in detail (repository names, in order)
 
@@ -489,7 +492,7 @@ deliberate simplification (`docs/design_philosophy.md`), not a perfect reproduct
 | **implemented and tested** | the exact game and its solver (legacy configurations bit-identical, pinned); `LaneEnv` and the PettingZoo adapter; the M4 ruleset and every preset up to `m4_four_actions_econ_aggro()`; masked PPO, GAE, shared-policy self-play, checkpoints with verified digests; the discounted evaluator with its guaranteed tail bound; counterfactual branching and action audits; the M4.3b (three-action) and M4.4 (four-action) diagnostic packages; the visual debugger; the M4.4b trained checkpoints (3 economies × 3 seeds at 2,048,000 and 4,096,000 transitions, git-ignored) and their supplementary analysis stages; the M4.4c multi-turn counterfactual package (`experiments/rl/m44c`: strategic plans, paired multi-turn engine, opponent styles, resumable runs); the M4.5a unified positional mechanics (`positional.py`; the Ward, minion-targeting, trade-budget and reach rules; the 90-entry observation; the viewer's W node; `experiments/m45a` demonstrations and smoke study); the M4.5b calibration package (`experiments/m45b`: paired engine and ledger, exact one-turn enumeration, contingent strategies, freeze / trade / Vision / zoning / matrix / timing studies, sensitivity, holdout validation, learned reference, recordings) and the opt-in farm-spot rule `"last_front"`; the opt-in separate-critic network `SeparateCriticNet` (M4.6f: exact initialization from a shared network, checkpoint-compatible); the lane-exit readout `diagnostics/lane_exit.py` (M4.8: evaluation only; exact accounting, checkpoint descriptors, repeated CRN continuations with a per-seat event ledger, window extraction, resolution times) and the M4.8 study package `experiments/rl/m48`; the OM1 feasibility package `experiments/rl/om1`; the opponent-modelling building blocks of OM2 (all opt-in: the observation field `obs_last_action`, the belief module `lanegame/opponent/`, the trainer's collector hooks `augment` / `observe_step`, `widen_inputs`) and the OM2 study package `experiments/rl/om2`; the M5 package `experiments/rl/m5` (M5a: both arms' training drivers, the history-dependent evaluation policy `OMPolicy`, the M5b–M5d instruments for both input formats, attackers, the pre-registered statistics, readiness checks R0–R10; `tests/test_m5.py`) and the opt-in `observe_turn` hook of the four shared rollout loops (stored M4.5c / M4.6c / M4.6f / OM2 records reproduce exactly); the M5a corrections (amendment 1: the opt-in read-only trainer hook `train_shared(on_update=...)`, `m5/health.py` runtime monitoring, coordinator and evaluation gate, `m5/strategic.py` (S8), the amended analysis, the verifiable amendment chain; `tests/test_m5_corrections.py`); the M5c–M5e stages (`battery_extend`; the core attacker stage `m5/attackers.py` under the runtime monitor and the coordinator, with `attack_check` gating `attack_eval`; the exploratory `traces` and `attack_behaviour` stages in `m5/traces.py`; the `reproduce` inventory in `m5/reproduce.py`; `tests/test_m5_attackers.py`) |
 | **experimental candidates** (opt-in, not defaults) | C1 = `m45_calibrated(invest_gain=3.24, invest_scale=64.0)` (a keyword override; provisional, not adopted; M4.6c, §AS); `m45_unified()` (M4.5a revision 2, the M4.5b baseline) and `m45_unified_r1()`; `m4_four_actions()`, `m4_four_actions_econ()`, `m4_four_actions_econ_aggro()` (the M4.4 comparison); opt-in fields `xp_reward_weight`, `death_turns_by_level`, `terminal_rule = "final_plate"` (not recommended); the earlier experiments `m4_continuous()`, `m4_emergent()`; the training option `SeparateCriticNet` (M4.6f: better critic values in strength states, no material behavioural improvement demonstrated within the tested budget; recommended at closeout as an opt-in, not an M5 factor); the objective override `m45_calibrated(gamma=1 - 1/60)` (M4.7's pilot arm: a keyword override of the existing `gamma` field, not a preset; not recommended, §AT) |
 | **adopted research baselines** | objective: the discounted gold lead, γ = 0.99, continuing time, no terminal state (unchanged since M4.2); the living [mathematical reference](m4/laning_game_mathematical_reference.md) describes `m45_calibrated()` directly (rewritten 2026-10-20; the earlier presets are its §14 and the opt-in fields its §15; the earlier version, whose §1–§10 described `m4_lasthit()`, is archived unchanged as [laning_game_mathematical_reference_m4_lasthit.md](m4/laning_game_mathematical_reference_m4_lasthit.md)); **research preset in use since M4.5c: `m45_calibrated()`** (M4.5b; chosen by the user on 2026-10-17 as the M5 configuration; a preset, not the `GameConfig()` default), with the M4.5c PPO settings (entropy 0.03, 100% current-policy shared self-play, 16 × 128-turn segments, 512-turn bootstrapped games, lr 3·10⁻⁴ annealed); evaluation: paired seats, E1 from s0, W = 1000 headline; strategic counterfactuals by rollouts, with no-bootstrap returns in strength-gap states (M4.6d–e); lane-phase outcomes: the raw earned-gold lead at a lane-exit checkpoint read together with the lane-exit readout E_h and the non-gold dimensions beside it (M4.8, E_20 adopted by the user on 2026-10-17; evaluation only, the objective is unchanged). Earlier baselines, for the record: the M4.3b `ent03` condition on `m4_lasthit()`, and the M4.4 candidate `m4_four_actions_econ_aggro()` |
-| **underway** | nothing. **M5 is complete, committed by the user in a07e3fdf** (§AX to §BA): outcome 2, the package pays at a competence cost; four of five strategic findings retained in both arms; both arms exploitable, S6 inconclusive. M6a is in progress: the session core is built and verified, and the prototypes await the user's design choice (§BC). Mechanics changes and further investment or discount experiments stay paused by the user's decisions; there is no lane termination (2026-10-17) |
+| **underway** | nothing. **M5 is complete, committed by the user in a07e3fdf** (§AX to §BA): outcome 2, the package pays at a competence cost; four of five strategic findings retained in both arms; both arms exploitable, S6 inconclusive. M6a is complete (§BC). The session core is built and verified, and the user approved the interface design. M6b is next and has not started. Mechanics changes and further investment or discount experiments stay paused by the user's decisions; there is no lane termination (2026-10-17) |
 | **conditional** | none (the one targeted learning pilot ran as M4.6f, §AR) |
 | **approved direction** (2026-10-17, 2026-10-19) | the Bayesian opponent-modelling design and matched pilot (done: OM1, OM2); **M5 with the opponent-modelling package compared with continued pure self-play** (decided in the M5a brief; the baseline `m45_calibrated()`, the continuing γ 0.99 objective, the shared critic, D0 → E_20 reporting and rollout evidence fixed); then M6. **2026-10-19:** M6 builds a new web application, later deployable in public, with a human playing against either M5 arm at its centre; the Streamlit viewer is archived as legacy during implementation, not reworked; policy-versus-policy observation and guided replay are supporting modes to consider |
 | **proposed** | the M6 plan's details, in review ([plan](m6/m6_plan.md)): the five milestones M6a to M6e, the initial release, the architecture (React with TypeScript and Vite, FastAPI, one container), the session and record design, the three bundles and the safeguards. Optional future research, none required ([M5e report §14](m5/m5e_closeout_report.md)): isolating the cause of the competence cost (a matched arm with the fixed opponents but no belief, or the belief with equal self-play exposure), the om_table adaptation ablation, larger attacker budgets, and the zoning and favourable-freeze gaps both arms share |
@@ -669,7 +672,7 @@ The final campaign ([design](m5/m5_design.md), [pre-registration](m5/m5_preregis
 
 ### M6 plan
 
-The full plan is [m6_plan.md](m6/m6_plan.md) (§BB, revised 2026-10-21). M6a is in progress (§BC). Every later
+The full plan is [m6_plan.md](m6/m6_plan.md) (§BB, revised 2026-10-21). M6a is complete (§BC). Every later
 milestone is **planned, not started**. M6 adds no mechanics, rewards, objectives or training.
 
 | item | status |
@@ -681,13 +684,14 @@ milestone is **planned, not started**. M6 adds no mechanics, rewards, objectives
 | guided replay of verified research games as a supporting mode | approved direction to consider it; the initial release has the verified replays |
 | React with TypeScript and Vite in `web/`, FastAPI over the unchanged Python simulator and policies, one container | **approved** (the user, 2026-10-21), unless a concrete blocker appears; M6a found none |
 | the headless session core and the backend's correctness rules | **completed** (M6a, §BC) |
-| the visual direction; scripted styles as opponents | **unresolved** (the M6a decision record) |
+| the interface design | **approved** (the user, 2026-10-21, after six review rounds; decision record §7, reference `prototypes/m6a/glass/`) |
+| scripted styles as opponents | **unresolved** (the M6a decision record §4) |
 | the bundles and the safeguards | proposed |
 | a hosting provider, spending and public deployment | not decided; the M6e approval checkpoint |
 
 | milestone | objective | effort | user decision |
 |---|---|---|---|
-| **M6a** product definition and technical readiness (**in progress**: the backend done, the design pending) | the headless session core with the correctness rules proved on the real seed-0 finals; journeys and the API, recording and frame contracts; two or three clickable prototypes of the lane view, the turn history and Play and Watch; after the user's choice, one refinement | M (the session core alone S) | the prototype direction |
+| **M6a** product definition and technical readiness (**completed** 2026-10-21) | the headless session core with the correctness rules proved on the real seed-0 finals; journeys and the API, recording and frame contracts; two or three clickable prototypes of the lane view, the turn history and Play and Watch; after the user's choice, refinement (six review rounds in the event) | M (the session core alone S) | the prototype direction (given) |
 | **M6b** the playable application | FastAPI and the new frontend; a visitor plays a full game against either opponent, with legal actions explained, both actions revealed together, the belief hidden or shown, history navigation and a record that replays bit for bit; Watch generates a bounded bot match and plays it back | L (the frontend is the repository's first production JavaScript) | acceptance of the playable build |
 | **M6c** research demonstration and explanation | the 15 verified M5 recordings as static replays with provenance and guided notes; the findings page with the six-seed numbers and links | M | the findings text |
 | **M6d** documentation and reproducibility | a concise README, a research overview, the reproduction guide, three bundles with SHA-256 manifests, `reproduce` re-run on the committed tree, the Streamlit UI moved to `legacy/` after a tag | M | a license; where the evidence and training bundles are published |
@@ -853,7 +857,7 @@ completed, §BA; M5 committed by the user, a07e3fdf; the full plan is "M5 plan" 
   the pilot.
 
 **5. Step 6: M6, presentation, interactive demonstration and reproducibility** (approved direction, 2026-10-19,
-extended 2026-10-21; M6a in progress, §BC; the full plan is "M6 plan" above and [m6_plan.md](m6/m6_plan.md))
+extended 2026-10-21; M6a completed, §BC; the full plan is "M6 plan" above and [m6_plan.md](m6/m6_plan.md))
 - A new web application in which a human plays against either M5 arm (Play) and watches a bounded bot match
   (Watch), with the verified research replays and the findings. A concise README, a research overview, reproducible commands and three bundles. The Streamlit viewer is
   archived as legacy.
@@ -3575,9 +3579,9 @@ Watch added to the initial release, and M6a has started (§BC).
 ## BC. M6a: the session core, the contracts and the prototypes (2026-10-21)
 
 Reports: [m6a_technical_report.md](m6/m6a_technical_report.md) (the backend) and
-[m6a_decision_record.md](m6/m6a_decision_record.md) (requirements, choices and the prototypes). Status: **in progress.
-The backend is complete. M6a is pending the user's choice of a visual direction.** No mechanic, reward, objective,
-network or stored result changed, and no training ran.
+[m6a_decision_record.md](m6/m6a_decision_record.md) (requirements, choices, the prototypes and the final design).
+Status: **completed (2026-10-21).** The backend is verified, and the user approved the interface design. No mechanic,
+reward, objective, network or stored result changed, and no training ran.
 
 **The brief (the user, 2026-10-21; approved direction).** Two primary modes in the initial release, Play and Watch,
 with Watch moved from "later" into it. A Chess.com-style turn history shared by both. Explicit frontend clarity
@@ -3591,8 +3595,9 @@ prototypes on verified recordings before any production frontend, then a pause f
   - the recording format with per-turn state digests, and replay;
   - frames for the lane and the history;
   - the action menu, with the engine's reasons for every unavailable choice.
-- `lanegame/experiments/m6a/` (stages `verify`, `measure`, `export`) and `tests/test_demo_session.py` (27 tests).
-- `prototypes/m6a/`: three directions on a shared history controller, with screenshots in `results/m6/prototypes/`.
+- `lanegame/experiments/m6a/` (stages `verify`, `measure`, `export`) and `tests/test_demo_session.py` (29 tests).
+- `prototypes/m6a/`: three directions on a shared history controller, then the refined and glass interfaces, with
+  screenshots in `results/m6/prototypes/`.
 - `.gitignore` no longer ignores `docs/`. The 85 docs files on disk (the 81 untracked by `b94200f7` and four newer
   ones) plus the M6a documents are tracked again.
 
@@ -3608,8 +3613,8 @@ prototypes on verified recordings before any production frontend, then a pause f
 to the last bit, belief log posteriors identical). The 12 attacker recordings replay exactly from their actions.
 Tests cover every check of the brief: the opponent's code fixed before the human acts, illegal submissions changing
 nothing, isolation, idempotency, bit-for-bit replay, refusal of a tampered checkpoint before loading, and history that
-neither changes the session nor reveals hidden information. The full suite passed: 1,578 passed, 4 skipped (the
-`--runslow` tests), 2 expected failures.
+neither changes the session nor reveals hidden information. The full suite passed on the final M6a tree: 1,580
+passed, 4 skipped (the `--runslow` tests), 2 expected failures.
 
 **Measured.** One turn with frames and JSON costs 1.4 ms (`sp:0`) and 2.3 ms (`om:0`), with a 2 KB gzipped response. A
 bounded 150-turn bot game takes 0.27 to 0.48 s plus 0.1 s of frames and is at most 35 KB gzipped. A session retains
@@ -3618,9 +3623,8 @@ about 0.1 MB. The cold start took 2.4 s.
 **Proposed.** The API, recording and frame contracts of the technical report §4: Watch as one bounded simulation
 response played back by the client; history navigation on the client; the separate simulation worker of plan §8.2.
 
-**Decisions for the user.** The visual direction. Whether scripted styles are offered as opponents. After the choice,
-M6a refines the chosen direction into a representative Play and Watch experience and records the final decisions
-before it is declared complete.
+**Decisions for the user.** The visual direction (given, below). Whether scripted styles are offered as opponents
+(still open).
 
 **The refinement round (2026-10-21; the user's choice, approved direction).** Playing the prototypes showed that staged
 Play looked like a game while it replayed recorded actions. The user chose prototype C as the foundation, with A's
@@ -3628,5 +3632,16 @@ bottom action controls and a better gold-lead graph, under explicit restraint ru
 branding or decoration, no duplicated values, details in one collapsed panel. They asked for live Play if the session
 core could be connected with modest work. It could. `lanegame/demo/service.py` serves the sessions as JSON through the
 local `prototypes/m6a/serve.py`, and connecting it exposed one defect, fixed: drawn seeds now stay below 2^53, so a
-browser keeps them exact. The refined interface is `prototypes/m6a/refined/`. M6a waits for the user's visual review
-([decision record](m6/m6a_decision_record.md) §6).
+browser keeps them exact. The refined interface is `prototypes/m6a/refined/` ([decision record](m6/m6a_decision_record.md)
+§6).
+
+**The design rounds and the close (2026-10-21; the user's choices, approved).** Five more rounds followed the
+refinement. The research ids left the visible interface for plain names ("Self-play agent", "Adaptive agent",
+"Always-push bot"). The gold graph became LoL-style. Minions became balls, one per HP. A top-down diagonal lane fills
+the window, and the panels merged into one frosted glass dock with an automatic rail layout on a phone held sideways
+and a dark mode. The ward spot became a bush, a champion in it is drawn see-through, and each turn steps through its
+two ticks with plain descriptions. A report of being stuck after warding was not a bug. Any lane action leaves the ward
+spot, and the rules forbid Recall there. The demo's wording now says so. The user approved this design, and
+`prototypes/m6a/glass/` is the reference for M6b (decision record §7). The overlap check passed in 240 of 240 cases
+across two themes and five window sizes, and every live-play check resolved the submitted action. **M6a is complete.
+M6b is next.**

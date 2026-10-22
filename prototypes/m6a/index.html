@@ -45,19 +45,29 @@
 <body>
 <main>
   <h1>Laning simulator demo</h1>
-  <p class="lede">Play against a trained agent, or watch two agents play, in the refined interface. Play runs on the
-    local engine: your action is the one that resolves.</p>
+  <p class="lede">Play against a trained agent, or watch two agents play. Play runs on the local engine, and your
+    action is the one that resolves. This is the approved M6a design, the reference for the production app.</p>
   <div class="primary" style="margin-bottom:28px">
-    <a class="btn" href="hud/?mode=play">Play</a>
-    <a class="btn alt" href="hud/?mode=watch">Watch</a>
-    <a class="btn alt" href="refined/?mode=play">Previous layout</a>
+    <a class="btn" href="glass/?mode=play">Play</a>
+    <a class="btn alt" href="glass/?mode=watch">Watch</a>
   </div>
-  <h2 style="font-size:16px;margin:0 0 6px">Earlier directions (superseded, kept for reference)</h2>
+  <h2 style="font-size:16px;margin:0 0 6px">Force a layout (the default follows the window's shape)</h2>
+  <div class="primary" style="margin-bottom:28px">
+    <a class="btn alt" href="glass/?layout=dock&amp;mode=play">Dock</a>
+    <a class="btn alt" href="glass/?layout=rail&amp;mode=play">Rail</a>
+    <a class="btn alt" href="glass/?layout=console&amp;mode=play">Console</a>
+  </div>
+  <h2 style="font-size:16px;margin:0 0 6px">Earlier versions (live Play, superseded)</h2>
+  <div class="primary" style="margin-bottom:28px">
+    <a class="btn alt" href="hud/?mode=play">Game view with panels</a>
+    <a class="btn alt" href="refined/?mode=play">Stacked layout</a>
+  </div>
+  <h2 style="font-size:16px;margin:0 0 6px">First directions (superseded, kept for reference)</h2>
   <p class="note"><strong>These are staged walkthroughs, not games.</strong> Their Play screens replay a verified
-    recording: whatever you select, the recorded action resolves. The refined interface above replaced them.</p>
+    recording: whatever you select, the recorded action resolves. The interfaces above replaced them.</p>
   <div class="grid" id="grid"></div>
   <footer>Data: <code>prototypes/m6a/data/</code>, exported by <code>python -m lanegame.experiments.m6a export</code> from
-    verified recordings. Screenshots: <code>results/m6/prototypes/</code>. Comparison and recommendation:
+    verified recordings. Screenshots: <code>results/m6/prototypes/</code>. Decisions and the final design:
     <code>docs/m6/m6a_decision_record.md</code>.</footer>
 </main>
 <script type="module">

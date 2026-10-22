@@ -1,11 +1,11 @@
 # M6 plan: presentation, interactive demonstration and reproducibility
 
-*Written 2026-10-19, revised 2026-10-21. Status: **M6a in progress.** The headless session core is built and
-verified ([M6a technical report](m6a_technical_report.md)). After trying three clickable prototypes, the user chose
-prototype C with prototype A's action controls and a better gold-lead graph ([M6a decision record](m6a_decision_record.md)
-§6). One refined interface, with live Play through a local service over the session core, awaits the user's visual
-review, so M6a is still pending. The production frontend (M6b) has not started, and `web/` does not exist yet. The Streamlit viewer has not been archived and works as
-before. No hosting has been chosen, paid for or deployed.*
+*Written 2026-10-19, revised 2026-10-21. Status: **M6a complete; M6b next.** The headless session core is built and
+verified ([M6a technical report](m6a_technical_report.md)). After six review rounds, the user approved the final
+interface design on 2026-10-21. It is one frosted glass dock over a diagonal top-down lane, with live Play through a
+local service over the session core ([M6a decision record](m6a_decision_record.md) §7). Its reference implementation
+is `prototypes/m6a/glass/`. The production frontend (M6b) has not started, and `web/` does not exist yet. The
+Streamlit viewer has not been archived and works as before. No hosting has been chosen, paid for or deployed.*
 
 *The 2026-10-21 revision records the user's M6a brief. Live bot-versus-bot simulation (Watch) is now part of the
 initial release. A Chess.com-style turn history governs navigation in Play and Watch. The frontend has explicit
@@ -40,7 +40,7 @@ Status labels follow the roadmap's legend.
 | React with TypeScript and Vite in `web/` in this repository, FastAPI over the Python simulator, one container | approved by the user on 2026-10-21, unless a concrete blocker appears; M6a found none |
 | `docs/` tracked in git | approved (the user, 2026-10-21) and done: the blanket ignore rule is removed |
 | the headless session core and the rules it proves (M6a) | completed and verified ([technical report](m6a_technical_report.md)) |
-| the visual direction | unresolved; the user chooses among the M6a prototypes |
+| the visual design | approved by the user on 2026-10-21 after six review rounds ([decision record](m6a_decision_record.md) §7); the reference is `prototypes/m6a/glass/` |
 | the milestones, the bundles and the safeguards | proposed (this plan) |
 | a hosting provider, spending and public deployment | not decided; a checkpoint in M6e |
 
@@ -305,8 +305,7 @@ rough, and the main uncertainty is named for each milestone.
 
 ### M6a. Product definition and technical readiness
 
-*Status (2026-10-21): the backend outcome is complete, and the design outcome awaits the user's choice of a
-direction.*
+*Status (2026-10-21): complete. The backend is verified, and the user approved the final design.*
 
 - **Objective and outcome.** Two outcomes: a trustworthy game-session backend, and a frontend direction the user has
   reviewed. The backend meets the correctness rules before any UI is built. The user sees two or three clickable
@@ -316,26 +315,29 @@ direction.*
   - The headless session core (§11): done.
   - Frame exports of verified recordings for the prototypes: done (the three seed-0 games and one new simulation).
   - The user journeys and the API, recording and frame contracts: done, proposed ([technical report](m6a_technical_report.md) §4).
-  - Three throwaway prototypes of the lane view, the turn history and the turn loop in Play and Watch: built,
-    awaiting review.
-  - A short decision record ([m6a_decision_record.md](m6a_decision_record.md)), including the deployment structure.
-  - After the user's choice: one refinement of the chosen direction, and the final decisions recorded.
+  - Three throwaway prototypes of the lane view, the turn history and the turn loop in Play and Watch: done.
+  - A short decision record ([m6a_decision_record.md](m6a_decision_record.md)), including the deployment structure:
+    done.
+  - After the user's choice, refinement of the chosen direction and the final decisions recorded: done, in six
+    review rounds rather than one (decision record §6, §7).
 - **Exclusions.** The production frontend, deployment itself, hosting, publishing bundles and the Streamlit archive.
 - **Dependencies.** The user's review of this plan (given in the 2026-10-21 brief).
 - **Deliverables.**
   - `lanegame/demo/` (registry, manifest, session, record, frames, action menu), `lanegame/experiments/m6a/`
     (stages `verify`, `measure`, `export`) and `tests/test_demo_session.py`: done.
   - `docs/m6/m6a_technical_report.md` and `docs/m6/m6a_decision_record.md` (the plan's "product definition"
-    split in two): done, the decision record pending the design choice.
-  - `prototypes/m6a/` (code, isolated from `web/`, no build step) and screenshots under `results/m6/prototypes/`.
+    split in two): done.
+  - `prototypes/m6a/` (code, isolated from `web/`, no build step) and screenshots under `results/m6/prototypes/`:
+    done. `prototypes/m6a/glass/` is the design reference for M6b, and the other folders are history.
   - The measured cost of a full turn view with frames, of a history and of a bounded bot game: done.
 - **Acceptance checks.**
-  - Rules 1 to 5 and 7 of §3 pass in pytest on the real seed-0 finals: passed (27 tests).
+  - Rules 1 to 5 and 7 of §3 pass in pytest on the real seed-0 finals: passed (29 tests).
   - The session core reproduces `h2h_om_s0_vs_sp_s0.json` when its policies drive both seats: passed, exactly, and
     so do the two seed-0 `g_shove` games.
-  - The user chooses a prototype direction from the running prototypes and their screenshots: pending.
-- **User decision.** The prototype direction, then acceptance of its refinement.
-- **Effort.** S for the session core (as estimated). M in all. The design iteration remains the uncertainty.
+  - The user chooses a prototype direction from the running prototypes and their screenshots: passed. The user chose
+    C with A's action controls, then approved the refined glass design on 2026-10-21.
+- **User decision.** The prototype direction, then acceptance of its refinement. Both given.
+- **Effort.** S for the session core (as estimated). M in all, with most of it in the six design rounds.
 
 ### M6b. The playable application
 
@@ -347,14 +349,15 @@ direction.*
 - **Scope.**
   - The FastAPI app over the session core, with the legality explanations, the turn view, the history endpoint and
     the bounded simulation endpoint (run in a separate worker, §8.2).
-  - The lane view, the turn history and the playback controls in the chosen direction, shared by Play and Watch.
+  - The lane view, the turn history and the playback controls in the approved design (`prototypes/m6a/glass/`,
+    [decision record](m6a_decision_record.md) §7), shared by Play and Watch.
   - The belief view in both modes.
   - The stop summary and the record download.
   - The lane-exit panel (the turn-94 marker and the turn-114 lead).
   - End-to-end browser checks, and a new feature file in `verify-lanegame` for the web app.
 - **Exclusions.** Research replays and the findings (M6c), release hardening (M6e), continuation-based E_20, record
   import.
-- **Dependencies.** M6a, including the chosen direction.
+- **Dependencies.** M6a (complete) and the scripted-opponent decision (§10, item 5).
 - **Deliverables.** `lanegame/demo/api.py`, `web/`, their tests, and the `verify-lanegame` feature.
 - **Acceptance checks.**
   - Rules 6, 10, 11, 12 and 13 pass their checks, and so does rule 8 for the records the app writes. Rules 1 to 5 and
@@ -573,12 +576,16 @@ The three decisions the first version asked for were settled in the user's M6a b
 2. **The `docs/` line in `.gitignore`: removed.** The reports and this plan are tracked.
 3. **Where the frontend lives: `web/` in this repository**, React with TypeScript and Vite over FastAPI.
 
+Settled during M6a:
+
+4. **The visual design.** *Decided on 2026-10-21.* The user chose C as the foundation, with A's action controls and a
+   better gold-lead graph, and approved the refined glass design after six review rounds ([decision
+   record](m6a_decision_record.md) §6, §7).
+
 Open now:
 
-4. **The visual direction**, chosen from the M6a prototypes. *Decided on 2026-10-21:* C as the foundation, with A's
-   action controls and a better gold-lead graph ([decision record](m6a_decision_record.md) §6). Open: the user's review
-   of the refined interface, which M6a waits for.
-5. **Scripted opponents** in Play or Watch, and which ones (the decision record assesses a small selection).
+5. **Scripted opponents** in Play or Watch, and which ones (the decision record assesses a small selection). M6b
+   needs this before it builds the opponent picker.
 
 Later:
 

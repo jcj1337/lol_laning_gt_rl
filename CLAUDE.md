@@ -120,10 +120,10 @@ Viewer: `streamlit run lanegame/viewer/app.py` (replays recorded trajectories fr
 - M6 ([plan](docs/m6/m6_plan.md)) is a new web application with two modes: Play (a human against `sp:0` or `om:0`)
   and Watch (a bounded bot match explored through a timeline). M6 adds no mechanics, rewards or training. The
   Streamlit viewer stays where it is until M6d archives its UI, and it is not a visual template.
-  - M6a is in progress: the backend is done, and the user chose prototype C with A's action controls. The refined
-    interface `prototypes/m6a/refined/` (live Play) awaits the user's review ([decision record](docs/m6/m6a_decision_record.md)).
-    The earlier `arena/`, `board/` and `story/` prototypes are superseded staged walkthroughs. The production frontend
-    goes in `web/` (M6b, not started).
+  - M6a is complete (2026-10-21). The user approved the glass interface `prototypes/m6a/glass/` (live Play), which is
+    the design reference for M6b ([decision record](docs/m6/m6a_decision_record.md) §7). The other prototype folders
+    (`arena/`, `board/`, `story/`, `refined/`, `hud/`) are history. The production frontend goes in `web/` (M6b, next,
+    not started).
   - `.venv/Scripts/python.exe prototypes/m6a/serve.py` serves the prototypes and, through `lanegame/demo/service.py`,
     live sessions on 127.0.0.1:8765. The service holds one lock around all simulation.
   - `lanegame/demo/` is the headless session core ([technical report](docs/m6/m6a_technical_report.md)). `registry.py`

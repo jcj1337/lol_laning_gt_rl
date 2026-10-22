@@ -1,8 +1,8 @@
 # M6a technical report: the session core, its contracts and its costs
 
-*2026-10-21. Status: **the backend part of M6a is complete. M6a as a whole is pending the user's choice of a visual
-direction** ([decision record](m6a_decision_record.md)). Nothing here changes a mechanic, a reward, a training
-objective, a trained network or a stored research result. No training ran.*
+*2026-10-21. Status: **complete.** The backend is verified, and the user approved the interface design
+([decision record](m6a_decision_record.md) §7), so M6a as a whole is complete. Nothing here changes a mechanic, a
+reward, a training objective, a trained network or a stored research result. No training ran.*
 
 M6a has two outcomes, a trustworthy game-session backend and a reviewed frontend direction. This report covers the
 first. The session core is the Python package `lanegame/demo/`. The plan's correctness rules 1 to 5 and 7 pass on the
@@ -124,12 +124,12 @@ All checkpoint-dependent tests ran on the real files. None skipped. The full reg
 
 ### 3.1 Regression suite
 
-`python -m pytest` on the M6a tree: **1,578 passed, 4 skipped, 2 expected failures, 3 warnings, in 9 minutes 8 s**
-(`results/m6/regression_suite_m6a.log`). The 4 skips are the `--runslow` tests and the 2 expected failures come from
-earlier milestones, the same as in the M5e run (1,541 passed then). The 3 warnings come from PettingZoo's API
-checker. The 37 additional passing tests are this milestone's 27 and the reference generator's, added after M5e.
-The run started before two later edits to `lanegame/demo` (compact belief storage, the package `__init__`). The
-demo tests were run again after them and pass.
+`python -m pytest` on the final M6a tree: **1,580 passed, 4 skipped, 2 expected failures, 3 warnings, in 10 minutes
+31 s** (`results/m6/regression_suite_m6a.log`). The 4 skips are the `--runslow` tests and the 2 expected failures come
+from earlier milestones, the same as in the M5e run (1,541 passed then). The 3 warnings come from PettingZoo's API
+checker. The 39 additional passing tests are this milestone's 29 and the reference generator's, added after M5e. The
+run covers every later edit to `lanegame/demo`, including the service and the ward-spot wording of the design rounds.
+An earlier run, before the service existed, passed 1,578.
 
 ## 4. Contracts (proposed for M6b)
 
@@ -268,5 +268,6 @@ and asked for live Play if the session core could be connected with modest work.
   status, hidden beliefs absent until the stop, the record replaying after a JSON round trip, a bounded simulation) and
   `test_drawn_seeds_stay_exact_as_browser_json_numbers`.
 
-The refined interface (`prototypes/m6a/refined/`) uses this service, so its Play is live. The three earlier
-directions keep their staged walkthroughs and are marked as such.
+The refined interface (`prototypes/m6a/refined/`) and every later one, including the approved `prototypes/m6a/glass/`,
+use this service, so their Play is live. The three earlier directions keep their staged walkthroughs and are marked
+as such.

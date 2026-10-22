@@ -1,0 +1,122 @@
+[
+ {
+  "name": "v1_light_empty",
+  "path": "glass/?mode=watch&game=h2h_om_s0_vs_sp_s0&view=10&still=1&bush=1&theme=light",
+  "width": 1440,
+  "height": 900,
+  "clip_js": "(() => { const r = document.querySelector('.wnode').getBoundingClientRect(); const p = 70; return {x: Math.max(0, r.left - p - 60), y: Math.max(0, r.top - p), width: r.width + 2 * p + 120, height: r.height + 2 * p + 40}; })()",
+  "clip_scale": 2
+ },
+ {
+  "name": "v1_dark_empty",
+  "path": "glass/?mode=watch&game=h2h_om_s0_vs_sp_s0&view=10&still=1&bush=1&theme=dark",
+  "width": 1440,
+  "height": 900,
+  "clip_js": "(() => { const r = document.querySelector('.wnode').getBoundingClientRect(); const p = 70; return {x: Math.max(0, r.left - p - 60), y: Math.max(0, r.top - p), width: r.width + 2 * p + 120, height: r.height + 2 * p + 40}; })()",
+  "clip_scale": 2
+ },
+ {
+  "name": "v1_light_warded",
+  "path": "glass/?mode=watch&game=h2h_om_s0_vs_sp_s0&view=67&still=1&bush=1&theme=light",
+  "width": 1440,
+  "height": 900,
+  "clip_js": "(() => { const r = document.querySelector('.wnode').getBoundingClientRect(); const p = 70; return {x: Math.max(0, r.left - p - 60), y: Math.max(0, r.top - p), width: r.width + 2 * p + 120, height: r.height + 2 * p + 40}; })()",
+  "clip_scale": 2
+ },
+ {
+  "name": "v1_full",
+  "path": "glass/?mode=watch&game=h2h_om_s0_vs_sp_s0&view=10&still=1&bush=1&theme=light",
+  "width": 1440,
+  "height": 900
+ },
+ {
+  "name": "v2_light_empty",
+  "path": "glass/?mode=watch&game=h2h_om_s0_vs_sp_s0&view=10&still=1&bush=2&theme=light",
+  "width": 1440,
+  "height": 900,
+  "clip_js": "(() => { const r = document.querySelector('.wnode').getBoundingClientRect(); const p = 70; return {x: Math.max(0, r.left - p - 60), y: Math.max(0, r.top - p), width: r.width + 2 * p + 120, height: r.height + 2 * p + 40}; })()",
+  "clip_scale": 2
+ },
+ {
+  "name": "v2_dark_empty",
+  "path": "glass/?mode=watch&game=h2h_om_s0_vs_sp_s0&view=10&still=1&bush=2&theme=dark",
+  "width": 1440,
+  "height": 900,
+  "clip_js": "(() => { const r = document.querySelector('.wnode').getBoundingClientRect(); const p = 70; return {x: Math.max(0, r.left - p - 60), y: Math.max(0, r.top - p), width: r.width + 2 * p + 120, height: r.height + 2 * p + 40}; })()",
+  "clip_scale": 2
+ },
+ {
+  "name": "v2_light_warded",
+  "path": "glass/?mode=watch&game=h2h_om_s0_vs_sp_s0&view=67&still=1&bush=2&theme=light",
+  "width": 1440,
+  "height": 900,
+  "clip_js": "(() => { const r = document.querySelector('.wnode').getBoundingClientRect(); const p = 70; return {x: Math.max(0, r.left - p - 60), y: Math.max(0, r.top - p), width: r.width + 2 * p + 120, height: r.height + 2 * p + 40}; })()",
+  "clip_scale": 2
+ },
+ {
+  "name": "v2_full",
+  "path": "glass/?mode=watch&game=h2h_om_s0_vs_sp_s0&view=10&still=1&bush=2&theme=light",
+  "width": 1440,
+  "height": 900
+ },
+ {
+  "name": "v3_light_empty",
+  "path": "glass/?mode=watch&game=h2h_om_s0_vs_sp_s0&view=10&still=1&bush=3&theme=light",
+  "width": 1440,
+  "height": 900,
+  "clip_js": "(() => { const r = document.querySelector('.wnode').getBoundingClientRect(); const p = 70; return {x: Math.max(0, r.left - p - 60), y: Math.max(0, r.top - p), width: r.width + 2 * p + 120, height: r.height + 2 * p + 40}; })()",
+  "clip_scale": 2
+ },
+ {
+  "name": "v3_dark_empty",
+  "path": "glass/?mode=watch&game=h2h_om_s0_vs_sp_s0&view=10&still=1&bush=3&theme=dark",
+  "width": 1440,
+  "height": 900,
+  "clip_js": "(() => { const r = document.querySelector('.wnode').getBoundingClientRect(); const p = 70; return {x: Math.max(0, r.left - p - 60), y: Math.max(0, r.top - p), width: r.width + 2 * p + 120, height: r.height + 2 * p + 40}; })()",
+  "clip_scale": 2
+ },
+ {
+  "name": "v3_light_warded",
+  "path": "glass/?mode=watch&game=h2h_om_s0_vs_sp_s0&view=67&still=1&bush=3&theme=light",
+  "width": 1440,
+  "height": 900,
+  "clip_js": "(() => { const r = document.querySelector('.wnode').getBoundingClientRect(); const p = 70; return {x: Math.max(0, r.left - p - 60), y: Math.max(0, r.top - p), width: r.width + 2 * p + 120, height: r.height + 2 * p + 40}; })()",
+  "clip_scale": 2
+ },
+ {
+  "name": "v3_full",
+  "path": "glass/?mode=watch&game=h2h_om_s0_vs_sp_s0&view=10&still=1&bush=3&theme=light",
+  "width": 1440,
+  "height": 900
+ },
+ {
+  "name": "v4_light_empty",
+  "path": "glass/?mode=watch&game=h2h_om_s0_vs_sp_s0&view=10&still=1&bush=4&theme=light",
+  "width": 1440,
+  "height": 900,
+  "clip_js": "(() => { const r = document.querySelector('.wnode').getBoundingClientRect(); const p = 70; return {x: Math.max(0, r.left - p - 60), y: Math.max(0, r.top - p), width: r.width + 2 * p + 120, height: r.height + 2 * p + 40}; })()",
+  "clip_scale": 2
+ },
+ {
+  "name": "v4_dark_empty",
+  "path": "glass/?mode=watch&game=h2h_om_s0_vs_sp_s0&view=10&still=1&bush=4&theme=dark",
+  "width": 1440,
+  "height": 900,
+  "clip_js": "(() => { const r = document.querySelector('.wnode').getBoundingClientRect(); const p = 70; return {x: Math.max(0, r.left - p - 60), y: Math.max(0, r.top - p), width: r.width + 2 * p + 120, height: r.height + 2 * p + 40}; })()",
+  "clip_scale": 2
+ },
+ {
+  "name": "v4_light_warded",
+  "path": "glass/?mode=watch&game=h2h_om_s0_vs_sp_s0&view=67&still=1&bush=4&theme=light",
+  "width": 1440,
+  "height": 900,
+  "clip_js": "(() => { const r = document.querySelector('.wnode').getBoundingClientRect(); const p = 70; return {x: Math.max(0, r.left - p - 60), y: Math.max(0, r.top - p), width: r.width + 2 * p + 120, height: r.height + 2 * p + 40}; })()",
+  "clip_scale": 2
+ },
+ {
+  "name": "v4_full",
+  "path": "glass/?mode=watch&game=h2h_om_s0_vs_sp_s0&view=10&still=1&bush=4&theme=light",
+  "width": 1440,
+  "height": 900
+ }
+]
