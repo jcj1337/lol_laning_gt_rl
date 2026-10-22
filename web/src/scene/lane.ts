@@ -9,11 +9,14 @@
 // The drawing is fitted around whatever the glass surface covers (the top bar, the surface, an open sheet), at the
 // largest scale at which every box of the drawing finds a place, and refitted only on a resize or when a section
 // opens or closes, never as turns advance. This file computes no game rule: it draws the frames the server sent.
-// Imperative SVG, mounted by LaneView.tsx; colours come from the theme's CSS variables.
+// Imperative SVG, mounted by LaneView.tsx; colours come from the theme's CSS variables. A sequence's highlight
+// (`highlight`) is drawn with every frame as a ring around one entity, from the same geometry.
 import type { Frame } from '../game/frames';
-import type { Names, Seat, Turn } from '../game/types';
+import { type Arrow, arrowsFor } from '../game/moves';
+import type { GuideHighlight, Names, Place, Seat, Turn } from '../game/types';
 import { SEATS, other } from '../game/types';
-import { BUSH_NOTE, turnsWord } from '../game/words';
+import { BUSH_NOTE, arrowWords, turnsWord } from '../game/words';
+import { type Body, type Pt, heading, trail } from './trail';
 
 const NS = 'http://www.w3.org/2000/svg';
 const COL: Record<Seat, string> = { A: 'var(--a)', B: 'var(--b)' };
@@ -30,13 +33,12 @@ interface Sizes {
   maxCols: number; maxRows: number; R: number; D: number; halfH: number; half: number; tw: number; wv: number;
 }
 interface Extents extends Box { boxes: Box[] }
-interface Cluster { g: SVGGElement; list: SVGCircleElement[]; label: SVGTextElement; title: SVGTitleElement; w: number; h: number }
+interface Cluster { g: SVGGElement; list: SVGCircleElement[]; label: SVGTextElement; title: SVGTitleElement; w: number; h: number; cx: number; cy: number }
 interface Chip {
   g: SVGGElement; bg: SVGRectElement; nm: SVGTSpanElement; lv: SVGTSpanElement; bar0: SVGRectElement; bar: SVGRectElement;
   t2: SVGTextElement; hp: SVGTSpanElement; fx: SVGTSpanElement; aw: SVGTextElement; t1: SVGTextElement; title: SVGTitleElement; placed: boolean;
 }
-interface Pin { g: SVGGElement; head: SVGElement; title: SVGTitleElement }
-type Pt = { x: number; y: number };
+interface Pin { g: SVGGElement; head: SVGElement; title: SVGTitleElement; placed: boolean }
 
 function svg<K extends keyof SVGElementTagNameMap>(tag: K, attrs: Record<string, string | number | null | undefined> = {}, parent: Element | null = null): SVGElementTagNameMap[K] {
   const e = document.createElementNS(NS, tag);
@@ -88,6 +90,7 @@ export class Lane {
   el: SVGSVGElement;
   ctx: () => LaneContext;
   labels = true;
+  highlight: GuideHighlight | null = null;
   packets = new Map<string, Cluster>();
   private fxKey = '';
   private key = '';
@@ -95,7 +98,7 @@ export class Lane {
   hr = 0; rt = 0; tok = 0; wr = 0; we = 0; pw = 0; ph = 0; maxCols = 8; maxRows = 3; R = 5; D = 12; halfH = 0; half = 0; tw = 0; wv = 0;
   safe: Box = { x0: 0, y0: 0, x1: 0, y1: 0 };
   bounds: Box = { x0: 0, y0: 0, x1: 0, y1: 0 };
-  legend = { x: 0, y: 0, text: '' };
+  legend = { x: 0, y: 0, text: '', arrows: '' };
   block: Box[] = [];
   fixed: Box[] = [];
   chipBoxes: Partial<Record<Seat, Box>> = {};
@@ -103,7 +106,7 @@ export class Lane {
   private chips: Partial<Record<Seat, Chip>> = {};
   private pins: Partial<Record<Seat, Pin>> = {};
   private gPlates!: SVGGElement; private gSiege!: SVGGElement; private gPk!: SVGGElement; private gContact!: SVGGElement;
-  private gChips!: SVGGElement; private gPins!: SVGGElement; private gFx!: SVGGElement;
+  private gChips!: SVGGElement; private gPins!: SVGGElement; private gFx!: SVGGElement; private gHl!: SVGGElement; private gMoves!: SVGGElement;
 
   constructor(el: SVGSVGElement, ctx: () => LaneContext) { this.el = el; this.ctx = ctx; }
 
@@ -171,8 +174,9 @@ export class Lane {
     this.key = key;
     this.W = W; this.H = H; this.safe = free;
     const short = free.x1 - free.x0 < 640;
-    this.legend = { x: free.x0 + 6, y: free.y0 + 12, text: short ? 'Each ball is 1 HP of minions' : 'Each ball is 1 HP of minions (a new wave is 8)' };
-    this.block = [...obs, { x0: free.x0, y0: free.y0, x1: free.x0 + (short ? 200 : 300), y1: free.y0 + 22 }];
+    this.legend = { x: free.x0 + 6, y: free.y0 + 12, text: short ? 'Each ball is 1 HP of minions' : 'Each ball is 1 HP of minions (a new wave is 8)',
+      arrows: short ? "Arrows: last turn's moves" : 'Arrows: how each champion and leading wave moved last turn' };
+    this.block = [...obs, { x0: free.x0, y0: free.y0, x1: free.x0 + (short ? 200 : 400), y1: free.y0 + 40 }];
     const e = 14, B: Box = { x0: e, y0: e, x1: W - e, y1: H - e };
     this.bounds = B;
     const t0 = Math.round(Math.max(25, Math.min(55, (Math.atan2(free.y1 - free.y0, free.x1 - free.x0) * 180) / Math.PI)));
@@ -214,6 +218,14 @@ export class Lane {
   at(c: number, v = 0): Pt { return this.P(c * this.sp, v); }
   towerAt(n: Seat): Pt { return n === 'A' ? this.at(-2, this.tw) : this.at(2, -this.tw); }
   wAt(): Pt { return this.at(0, -this.wv); }
+  /** Where a champion's token stands for a place: its unit on its road edge, its side of the bush, or its base. */
+  champAt(n: Seat, q: Place): Pt {
+    const side = n === 'A' ? -1 : 1;
+    if (q === 'W') { const w = this.wAt(); return { x: w.x + side * (this.pw / 2 - this.tok - 5), y: w.y }; }
+    return q === 'base' ? this.at(side * 4, (-side * this.hr) / 2) : this.at(q, side * this.hr);
+  }
+  /** The offset across the road of a side's waves: the middle of its own half. */
+  waveV(n: Seat): number { return n === 'A' ? -this.hr / 2 + 1 : this.hr / 2 - 1; }
 
   /** The bush at the ward spot: one silhouette whose top edge is a row of grass spikes, in the bases' style. */
   private drawBush(g: SVGGElement, w: Pt, pw: number, ph: number): void {
@@ -248,7 +260,7 @@ export class Lane {
     let it = this.packets.get(key);
     if (!it) {
       const g = svg('g', { class: 'mv cl' }, opts.parent || this.gPk);
-      it = { g, list: [], label: svg('text', { class: 'dot-count', y: 4 }, g), title: svg('title', {}, g), w: 0, h: 0 };
+      it = { g, list: [], label: svg('text', { class: 'dot-count', y: 4 }, g), title: svg('title', {}, g), w: 0, h: 0, cx, cy };
       this.packets.set(key, it);
       g.style.transform = `translate(${cx}px, ${cy}px)`;
     }
@@ -278,6 +290,8 @@ export class Lane {
     it.g.style.transform = `translate(${cx}px, ${cy}px)`;
     it.w = L.w;
     it.h = L.h;
+    it.cx = cx;
+    it.cy = cy;
     return it;
   }
 
@@ -319,10 +333,14 @@ export class Lane {
       this.towerG[n] = { g, title: svg('title', {}, g) };
       lab(tp, `${word[n]} tower`, n === 'A' ? this.rt + 22 : -this.rt - 14);
     }
-    const lg = svg('g', { transform: `translate(${this.legend.x} ${this.legend.y})` }, s);
-    svg('circle', { r: Math.min(this.R, 6), cx: Math.min(this.R, 6), cy: -4, class: 'legend-dot' }, lg);
-    const lt = svg('text', { x: 2 * Math.min(this.R, 6) + 7, y: 0, class: 'l-label' }, lg);
-    lt.textContent = this.legend.text;
+    this.gMoves = svg('g', {}, s);
+    const lg = svg('g', { class: 'lane-legend', transform: `translate(${this.legend.x} ${this.legend.y})` }, s), lr = Math.min(this.R, 6);
+    svg('circle', { r: lr, cx: lr, cy: -4, class: 'legend-dot' }, lg);
+    svg('path', { d: `M0.5 13H${lr}`, class: 'legend-arrow' }, lg);
+    svg('path', { d: `M${lr - 1} 8.5L${2 * lr} 13L${lr - 1} 17.5Z`, class: 'legend-dot' }, lg);
+    for (const [y, text] of [[0, this.legend.text], [17, this.legend.arrows]] as const) {
+      svg('text', { x: 2 * lr + 7, y, class: 'l-label' }, lg).textContent = text;
+    }
     this.gPlates = svg('g', {}, s);
     this.gSiege = svg('g', {}, s);
     this.gPk = svg('g', {}, s);
@@ -330,6 +348,7 @@ export class Lane {
     this.gChips = svg('g', {}, s);
     this.gPins = svg('g', {}, s);
     this.gFx = svg('g', {}, s);
+    this.gHl = svg('g', {}, s);
     this.pins = {};
     const bx = (p: Pt, bw: number, bh: number, dy = 0, dx = 0): Box => ({ x0: p.x + dx - bw / 2, x1: p.x + dx + bw / 2, y0: p.y + dy - bh / 2, y1: p.y + dy + bh / 2 });
     this.fixed = [...this.block];
@@ -361,7 +380,7 @@ export class Lane {
         : svg('rect', { x: -r * 0.82, y: -r * 0.82, width: r * 1.64, height: r * 1.64, rx: 2, transform: 'rotate(45)', fill: COL[n], 'stroke-width': 2, class: 'head' }, g);
       const letter = svg('text', { y: 4.3, 'text-anchor': 'middle', class: 'pin-letter' }, g);
       letter.textContent = n;
-      this.pins[n] = { g, head, title: svg('title', {}, g) };
+      this.pins[n] = { g, head, title: svg('title', {}, g), placed: false };
     }
     this.fxKey = '';
   }
@@ -412,7 +431,7 @@ export class Lane {
     }
     const seen = new Set(['SA', 'SB']);
     for (const n of SEATS) {
-      const v = n === 'A' ? -hr / 2 + 1 : hr / 2 - 1;
+      const v = this.waveV(n);
       let lastX: number | null = null, stack = 0;
       f.lane.packets[n].forEach(([cx, hp, front], i) => {
         const key = `${n}${i}`;
@@ -434,14 +453,14 @@ export class Lane {
     }
     const pos = {} as Record<Seat, Pt & { mode: 'lane' | 'ward' | 'away' }>;
     for (const n of SEATS) {
-      const cell = f.cells[n];
-      if (cell !== null && cell !== undefined) pos[n] = { ...this.at(cell, n === 'A' ? -hr : hr), mode: 'lane' };
-      else if (f.at_ward[n]) { const w = this.wAt(); pos[n] = { x: w.x + (n === 'A' ? -1 : 1) * (this.pw / 2 - this.tok - 5), y: w.y, mode: 'ward' }; }
-      else pos[n] = { ...this.at(n === 'A' ? -4 : 4, n === 'A' ? hr / 2 : -hr / 2), mode: 'away' };
+      const q: Place = f.cells[n] ?? (f.at_ward[n] ? 'W' : 'base');
+      pos[n] = { ...this.champAt(n, q), mode: q === 'W' ? 'ward' : q === 'base' ? 'away' : 'lane' };
     }
     for (const n of SEATS) {
       const p = pos[n], pin = this.pins[n]!, st = f.status[n];
+      if (!pin.placed) { pin.g.style.transition = 'none'; pin.placed = true; }   // the first placement jumps, as the chips' does
       pin.g.style.transform = `translate(${p.x}px, ${p.y}px)`;
+      if (pin.g.style.transition) requestAnimationFrame(() => { pin.g.style.transition = ''; });
       pin.g.style.opacity = p.mode === 'away' ? '0.42' : '1';
       pin.g.classList.toggle('inbush', p.mode === 'ward');
       pin.head.setAttribute('stroke-dasharray', p.mode === 'away' ? '3 3' : '');
@@ -454,7 +473,9 @@ export class Lane {
     if (this.labels && f.sub === 'end' && f.turn) {
       for (const n of SEATS) { const h = C.turns[f.turn - 1]?.delta[n].hp_taken ?? 0; if (h > 0 && pos[n].mode !== 'away') chipFx[n] = `−${h} HP`; }
     }
+    this.drawMoves(f, pos, occ);
     if (this.labels) this.placeChips(f, pos, occ, chipFx);
+    this.drawHighlight(f, pos);
     const key = `${f.turn || ''}:${f.sub}:${f.label}`;
     if (key === this.fxKey) return;
     this.fxKey = key;
@@ -485,6 +506,100 @@ export class Lane {
         }
       }
     }
+  }
+
+  /** An arrow's two places on its mover's own line, and the mover as drawn in this frame; null when it is not drawn.
+   * A champion's places are where its token stands for them, and the mover is its token. A wave's places are units on
+   * the middle of its half, and the mover is its leading cluster; a crash ends at the crashed minions and belongs to
+   * them, or, when none are drawn, to the enemy tower. */
+  private mover(a: Arrow, f: Frame, pos: Record<Seat, Pt>): { p0: Pt; p1: Pt; body: Body } | null {
+    if (a.what === 'champion') return { p0: this.champAt(a.seat, a.from), p1: this.champAt(a.seat, a.to), body: { c: pos[a.seat], r: tokHalf(a.seat, this.tok) } };
+    const v = this.waveV(a.seat), p0 = this.at(a.from, v);
+    if (a.kind === 'crash') {
+      const s = this.packets.get(`S${a.seat}`);
+      if (s) { const c = { x: s.cx, y: s.cy }; return { p0, p1: c, body: { c, w: s.w, h: s.h } }; }
+      const t = this.towerAt(other(a.seat));
+      return { p0, p1: t, body: { c: t, r: this.rt + 3 } };
+    }
+    const i = f.lane.packets[a.seat].findIndex((q) => q[2]), it = i < 0 ? undefined : this.packets.get(`${a.seat}${i}`);
+    return it ? { p0, p1: this.at(a.to, v), body: { c: { x: it.cx, y: it.cy }, w: it.w, h: it.h } } : null;
+  }
+
+  /** The arrows of the turn that produced this frame (moves.ts), under every ball, chip and token. Each is a short
+   * trail (trail.ts), about a third of a unit long, that ends just behind its mover and points the way it went: from
+   * the start place to the end place, both on the mover's own line. An arrow whose mover is not drawn, or whose two
+   * places are one point, is left out. Every kind but a plain walk is labelled beside the arrow, at the first of six
+   * spots (its middle, then a third from either end, the seat's side first) that covers nothing drawn, or else the one
+   * that covers least. The arrows and the labels join `occ`, so the chips keep clear of them. */
+  private drawMoves(f: Frame, pos: Record<Seat, Pt>, occ: Box[]): void {
+    this.gMoves.innerHTML = '';
+    const C = this.ctx(), marks: Box[] = [], L = Math.max(24, Math.min(40, 0.32 * this.sp));
+    const labels: { t: SVGTextElement; tail: Pt; tip: Pt; nx: number; ny: number; out: number }[] = [];
+    const r1 = (n: number) => n.toFixed(1);
+    for (const a of arrowsFor(f, C.turns)) {
+      const m = this.mover(a, f, pos), u = m && heading(m.p0, m.p1);
+      if (!m || !u) continue;
+      const side = a.seat === 'A' ? -1 : 1, champ = a.what === 'champion', sw = champ ? 3 : 2.5, hl = 3.6 * sw, hw = 2 * sw, nx = -u.y, ny = u.x;
+      const { tip, tail } = trail(u, m.body, L), base = { x: tip.x - u.x * hl, y: tip.y - u.y * hl };
+      const words = arrowWords(a, C.names);
+      const g = svg('g', { class: 'mv-arrow', 'data-seat': a.seat, 'data-what': a.what, 'data-kind': a.kind, 'data-from': a.from, 'data-to': a.to,
+        'data-tip-x': r1(tip.x), 'data-tip-y': r1(tip.y), 'data-tail-x': r1(tail.x), 'data-tail-y': r1(tail.y) }, this.gMoves);
+      svg('title', {}, g).textContent = words.text;
+      const body = svg('g', { opacity: champ ? 0.7 : 0.55 }, g);
+      svg('path', { d: `M${r1(tail.x)} ${r1(tail.y)}L${r1(base.x)} ${r1(base.y)}`, fill: 'none', stroke: COL[a.seat], 'stroke-width': sw,
+        'stroke-linecap': 'round', 'stroke-dasharray': a.kind === 'walk' || a.kind === 'crash' ? null : '6 5' }, body);
+      svg('path', { d: `M${r1(tip.x)} ${r1(tip.y)}L${r1(base.x + nx * hw)} ${r1(base.y + ny * hw)}L${r1(base.x - nx * hw)} ${r1(base.y - ny * hw)}Z`, fill: COL[a.seat] }, body);
+      for (let d = 0; d <= L; d += 8) {
+        const x = tail.x + u.x * d, y = tail.y + u.y * d;
+        marks.push({ x0: x - hw, x1: x + hw, y0: y - hw, y1: y + hw });
+      }
+      if (!words.label) continue;
+      const t = svg('text', { class: 'mv-label', fill: COL[a.seat], 'text-anchor': 'middle' }, g);
+      t.textContent = words.label;
+      labels.push({ t, tail, tip, nx, ny, out: Math.sign(nx * this.sa + ny * this.ca) * side || 1 });   // the normal towards the seat's side
+    }
+    const avoid = [...this.fixed, ...occ, ...marks, ...SEATS.map((n): Box => {
+      const e = tokHalf(n, this.tok) + 2;
+      return { x0: pos[n].x - e, x1: pos[n].x + e, y0: pos[n].y - e, y1: pos[n].y + e };
+    })];
+    for (const { t, tail, tip, nx, ny, out } of labels) {
+      const w = t.getComputedTextLength() + 6, h = 15, off = (w / 2) * Math.abs(nx) + (h / 2) * Math.abs(ny) + 3;
+      let best: { b: Box; cost: number } | null = null;
+      for (const [k, sg] of [[0.5, out], [0.5, -out], [0.3, out], [0.3, -out], [0.7, out], [0.7, -out]]) {
+        const x = tail.x + (tip.x - tail.x) * k + nx * sg * off, y = tail.y + (tip.y - tail.y) * k + ny * sg * off;
+        const b: Box = { x0: x - w / 2, x1: x + w / 2, y0: y - h / 2, y1: y + h / 2 };
+        const cost = avoid.reduce((c, o) => c + overlap(b, o), 0) + 4 * (w * h - overlap(b, this.bounds));   // off the screen counts four times
+        if (!best || cost < best.cost) best = { b, cost };
+        if (cost === 0) break;
+      }
+      const b = best!.b;
+      t.setAttribute('x', ((b.x0 + b.x1) / 2).toFixed(1));
+      t.setAttribute('y', ((b.y0 + b.y1) / 2 + 4).toFixed(1));
+      avoid.push(b);
+      occ.push(b);
+    }
+    occ.push(...marks);
+  }
+
+  /** The sequence's ring around the highlighted entity, from the scene's own geometry; nothing when the entity is absent
+   * from this frame (a champion away, no front wave, no crashed minions). */
+  private drawHighlight(f: Frame, pos: Record<Seat, Pt & { mode: string }>): void {
+    this.gHl.innerHTML = '';
+    const h = this.highlight;
+    if (!h) return;
+    const n: Seat = h.seat ?? 'A';
+    const ring = (tag: 'circle' | 'rect', attrs: Record<string, number>) => svg(tag, { ...attrs, class: 'hl-ring' }, this.gHl);
+    const around = (x: number, y: number, w: number, hh: number) => ring('rect', { x: x - w / 2, y: y - hh / 2, width: w, height: hh, rx: 8 });
+    const cluster = (key: string) => { const it = this.packets.get(key); if (it) around(it.cx, it.cy, it.w + 12, it.h + 12); };
+    switch (h.kind) {
+      case 'champion': if (pos[n].mode !== 'away') ring('circle', { cx: pos[n].x, cy: pos[n].y, r: tokHalf(n, this.tok) + 7 }); break;
+      case 'tower': { const t = this.towerAt(n); ring('circle', { cx: t.x, cy: t.y, r: this.rt + 13 }); break; }
+      case 'wave': { const i = f.lane.packets[n].findIndex((q) => q[2]); if (i >= 0) cluster(`${n}${i}`); break; }
+      case 'crashed': cluster(`S${n}`); break;
+      case 'ward_spot': { const w = this.wAt(); around(w.x, w.y, this.pw + 10, this.ph + 10); break; }
+    }
+    const el = this.gHl.firstChild;
+    if (el) svg('title', {}, el as Element).textContent = "The event's note is about this";
   }
 
   /** Each champion's chip goes to the first spot around its token that covers nothing; if every spot covers

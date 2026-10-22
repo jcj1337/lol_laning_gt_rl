@@ -176,7 +176,9 @@ a seed of an active session.
 
 `replay(recording)` re-simulates with the policies, recomputes every bot code and checks every digest. The 15 M5
 recordings stay in their v1 viewer format. `from_research` converts the three seed-0 games, and M6c's bundle build
-converts the rest.
+converts the rest. *Clarification (2026-10-22): M6c was narrowed to guided replays over the three seed-0 games the
+server already verifies ([M6c report](m6c_guided_replays.md)). No bundle build converts the other twelve, which stay
+research artifacts under `results/m5/traces/`.*
 
 ### 4.3 Frames (`lanegame.demo_frames`, version 1)
 

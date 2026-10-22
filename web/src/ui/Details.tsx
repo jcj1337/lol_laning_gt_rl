@@ -30,7 +30,7 @@ export function Details() {
     const st = pos.champions[n], ln = pos.lane, front = ln.packets[n].find((q) => q[2]);
     return <>
       <tr><th colSpan={2}><Glyph n={n} /> {S.names[n]}</th></tr>
-      <tr><td>Front wave</td><td>{front ? `${front[1]} HP at cell ${front[0] > 0 ? '+' : ''}${front[0]}` : 'none'}</td></tr>
+      <tr><td>Front wave</td><td>{front ? `${front[1]} HP at unit ${front[0] > 0 ? '+' : ''}${front[0]}` : 'none'}</td></tr>
       <tr><td>Waves behind</td><td>{ln.packets[n].filter((q) => !q[2]).map((q) => `${q[1]} HP`).join(', ') || 'none'}</td></tr>
       <tr><td>Crashed under the enemy tower</td><td>{ln.siege[n][1]} HP</td></tr>
       <tr><td>Wave damage per turn</td><td>{st.capacity ?? '–'} HP</td></tr>
@@ -41,8 +41,8 @@ export function Details() {
   const pk = (l: [number, number, boolean][]) => l.map((q) => `${q[1]}@${q[0] > 0 ? '+' : ''}${q[0]}`).join(' ') || '–';
   const ticks = tr && (
     <>
-      <p className="muted">Waves are listed as HP@cell (global cells, A's tower at −2). Cells are where each champion stands after the frame.</p>
-      <table className="dt"><thead><tr><th>Frame</th><th>A waves</th><th>B waves</th><th>Cells A / B</th><th>Minion hits A / B</th></tr></thead><tbody>
+      <p className="muted">Waves are listed as HP@unit (units counted from the lane: A's tower at −2, B's at +2). Units are where each champion stands after the frame.</p>
+      <table className="dt"><thead><tr><th>Frame</th><th>A waves</th><th>B waves</th><th>Units A / B</th><th>Minion hits A / B</th></tr></thead><tbody>
         {turnSubframes(G, v).map((f, i) => <tr key={i}><td>{f.sub === 'tick' ? 'tick ' + f.tick!.tick : f.sub}</td><td>{pk(f.lane.packets.A)}</td><td>{pk(f.lane.packets.B)}</td>
           <td>{f.cells.A ?? (f.at_ward.A ? 'W' : '–')} / {f.cells.B ?? (f.at_ward.B ? 'W' : '–')}</td>
           <td>{f.tick ? `${f.tick.minion_fire.A.units} / ${f.tick.minion_fire.B.units}` : ''}</td></tr>)}

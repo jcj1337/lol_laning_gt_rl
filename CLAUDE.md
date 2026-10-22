@@ -124,7 +124,19 @@ Viewer: `streamlit run lanegame/viewer/app.py` (replays recorded trajectories fr
     ([decision record](docs/m6/m6a_decision_record.md) §7). M6b (complete, 2026-10-22,
     [report](docs/m6/m6b_report.md)) built the maintained application from it. The prototypes are gone: the approved
     prototype's code is archived unchanged at `legacy/m6a_glass_prototype/` (it does not run) and its screenshots
-    stay in `results/m6/prototypes/`. M6c (research replays and the findings page) is next.
+    stay in `results/m6/prototypes/`. M6c was narrowed on 2026-10-22 to a small collection of optional guided
+    replays within Watch, shown to visitors as Sequences ([report](docs/m6/m6c_guided_replays.md)); there is no findings page, and the research
+    explanation belongs in M6d's documentation. Its step 1 (the format and the first example) is done and awaits the
+    user's review; steps 2 (review) and 3 (a few more examples) follow.
+  - A sequence is one JSON file in `lanegame/demo/guides/` (the code calls it a guide; the first,
+    `stacking-to-crashing.json`, is the template): a
+    verified research replay, a start position and three to five events (the JSON field is `checkpoints`) whose
+    notes form a chain, each grounded in a rule of the engine, with an optional highlight. In a guide, Next event and
+    Play walk the turns to the next event without tick frames and stop there. `guides.py` validates the file at the boundary and the service checks every position and highlight
+    against the verified replay at startup, so a bad guide stops the server with a message naming the file and the
+    rule. Position t is the state after t turns. `tests/test_demo_guides.py` pins the first guide's numbers to the
+    recording; a new guide gets the same kind of test. The guide state lives in the Watch store
+    (`web/src/game/store.ts`, panel `web/src/ui/Guide.tsx`); it never appears in a live game.
   - The application is `web/` (React, TypeScript, Vite; `cd web && npm install && npm run build`), served by
     `python -m lanegame.demo` on 127.0.0.1:8765 (`lanegame/demo/api.py`, FastAPI, the `demo` extra). `npm run dev`
     in `web/` proxies `/api` to it. `web/openapi.json` and `web/src/api/schema.d.ts` are generated from
@@ -139,14 +151,18 @@ Viewer: `streamlit run lanegame/viewer/app.py` (replays recorded trajectories fr
   - `session.py`: bot seats decide before the human's code is accepted; submissions are idempotent by turn number; a
     drawn chance seed and the policy seed stay secret until the session stops. `record.py` has state digests and
     replay. `frames.py` and `actions.py` give the frames and the menu, with reasons from the legality predicates.
+    Every turn frame carries `moves`, each seat's champion move and leading-wave move, which the lane draws as
+    arrows; `frames.moves` holds the rule (a wave move only while the turn's leading packet survives) and
+    `tests/test_demo_moves.py` checks it against every turn of the three replays.
   - The frontend keeps the resolved turns and the viewed position apart (`web/src/game/controller.ts`), tags every
     request with a generation so a late response from a replaced game is dropped, and re-reads the server after an
     unanswered submission before it offers a retry (`web/src/game/store.ts`).
   - `python -m lanegame.experiments.m6a verify measure` re-checks the research recordings and measures the costs.
     `python -m lanegame.experiments.m6b browser` drives the built app through the whole visitor journey in headless
-    Edge (evidence in `results/m6/m6b_browser.json` and `results/m6/m6b/`). `tests/test_demo_session.py` and
-    `tests/test_demo_api.py` cover the correctness rules and the API; `npm test` in `web/` covers the history and
-    stale-response rules.
+    Edge (evidence in `results/m6/m6b_browser.json` and `results/m6/m6b/`), and `python -m lanegame.experiments.m6c
+    browser` does the same for the sequences (`results/m6/m6c_browser.json`, `results/m6/m6c/`).
+    `tests/test_demo_session.py` and `tests/test_demo_api.py` cover the correctness rules and the API; `npm test`
+    in `web/` covers the history, stale-response and guide rules.
 
 **The preset chain.** M4 presets build on each other, each as the previous preset plus opt-in fields:
 `m4 → m4_continuous → m4_emergent → m4_natural_prototype → m4_natural → m4_lane → m4_lasthit → m4_four_actions →

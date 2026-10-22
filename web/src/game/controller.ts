@@ -4,9 +4,10 @@
 // Position p is the state after p turns (0 = the initial position); turn t moves position t - 1 to position t.
 // Navigation never changes progress and never submits. A turn is shown frame by frame (start, tick 1, tick 2, end),
 // stepped by the visitor or played on its own; a jump cancels the stepping and shows the end state. Reduced motion
-// skips the frames. The class is a typed port of the approved prototype's controller, with the environment injected
-// so it can be tested without a browser.
-import { BASE_FRAME_MS, Frame, positionFrame, prefersReducedMotion, SPEEDS, Speed, TICK_MS, turnSubframes } from './frames';
+// skips the frames but keeps the pace. A walk (playTo) shows each position up to a target without the frames. The
+// class is a typed port of the approved prototype's controller, with the environment injected so it can be tested
+// without a browser.
+import { BASE_FRAME_MS, Frame, positionFrame, prefersReducedMotion, SPEEDS, Speed, TICK_MS, turnSubframes, WALK_MS } from './frames';
 import type { BeliefMode, Game, History, Menu, Position, RecordingBeliefs, Seat, Turn, TurnResult, View } from './types';
 
 export interface Env {
@@ -40,6 +41,7 @@ export class Controller {
   private timer: ReturnType<typeof setTimeout> | undefined;
   private timer2: ReturnType<typeof setTimeout> | undefined;
   private anim = 0;
+  private target: number | null = null;
 
   constructor(game: Game, opts: ControllerOptions = {}) {
     this.game = game;
@@ -50,7 +52,8 @@ export class Controller {
     this.stopped = true;                                     // a whole bot game has no decision left
     this.progress = this.n;
     this.view = clamp(opts.view ?? 0, 0, this.progress);
-    this.speed = (SPEEDS as readonly number[]).includes(opts.speed ?? 1) ? (opts.speed as Speed) : 1;
+    const speed = opts.speed ?? 1;
+    this.speed = (SPEEDS as readonly number[]).includes(speed) ? (speed as Speed) : 1;
     this.frame = positionFrame(game, this.view);
   }
 
@@ -62,6 +65,8 @@ export class Controller {
   get historical(): boolean { return this.view < this.progress; }
   get atCurrent(): boolean { return this.view === this.progress; }
   get stepping(): boolean { return this.step !== null; }
+  /** The position a walk is heading for, or null. */
+  get walkingTo(): number | null { return this.target; }
   get canSubmit(): boolean { return false; }
   menu(): Menu | null { return null; }
   forced(): boolean { return false; }
@@ -108,6 +113,7 @@ export class Controller {
   pause(): void {
     if (!this.playing) return;
     this.playing = false;
+    this.target = null;
     clearTimeout(this.timer);
     if (this.step) { this.step.auto = false; clearTimeout(this.timer2); }   // stop between frames
     this.emit();
@@ -117,10 +123,32 @@ export class Controller {
   private playStep(): void {
     if (!this.playing) return;
     if (this.view >= this.progress) { this.playing = false; this.emit(); return; }
-    void this.animateTurn(this.view + 1).then(() => {
-      if (!this.playing) return;
-      this.timer = setTimeout(() => this.playStep(), (BASE_FRAME_MS * 0.8) / this.speed);
+    const t = this.view + 1;
+    void this.animateTurn(t).then(() => {
+      if (!this.playing || this.target !== null) return;     // paused, or a walk replaced the playback
+      // without the frames, wait as long as they would have shown, so a speed setting means one pace
+      const wait = this.env.reduced() ? turnSubframes(this.game, t).length * TICK_MS : BASE_FRAME_MS * 0.8;
+      this.timer = setTimeout(() => this.playStep(), wait / this.speed);
     });
+  }
+  /** Walk forward to position `to`, one position at a time without the frames, then stop. */
+  playTo(to: number): void {
+    this.pause();
+    this.cancelAnim();
+    to = clamp(to, 0, this.progress);
+    if (to <= this.view) { this.goto(to); return; }
+    this.playing = true;
+    this.target = to;
+    this.emit();
+    this.timer = setTimeout(() => this.walkStep(), WALK_MS / this.speed);
+  }
+  private walkStep(): void {
+    if (this.target === null) return;
+    this.view++;
+    this.frame = positionFrame(this.game, this.view);
+    if (this.view >= this.target) { this.playing = false; this.target = null; }
+    else this.timer = setTimeout(() => this.walkStep(), WALK_MS / this.speed);
+    this.emit();
   }
 
   // ---- a turn shown frame by frame

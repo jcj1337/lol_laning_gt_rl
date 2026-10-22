@@ -215,6 +215,49 @@ def outcomes(cfg: GameConfig, info: dict) -> List[dict]:
     return ev
 
 
+def _place(c: dict):
+    """Where a champion stands in a position view: its global cell, "W" at the ward spot, or "base" while away."""
+    if c["status"] != "present":
+        return "base"
+    return "W" if c["at_ward"] else c["cell"]
+
+
+def _front(lane: dict, n: str) -> Optional[int]:
+    return next((x for x, _, front in lane["packets"][n] if front), None)
+
+
+def moves(cfg: GameConfig, info: dict, pre: dict, post: dict) -> Dict[str, dict]:
+    """Per seat, how its champion and its leading wave moved over the turn, for the lane's arrows. Places are global
+    cells, "W" or "base". A champion walks from its start place to its end place, or recalls, returns or dies (to
+    and from its base). A wave move follows the leading packet the turn started with: packets die or crash only as
+    the leading packet (mechanics: `P[s].pop(0)`), so it is the same packet at the end when the seat lost none and
+    crashed none (the viewer's front-arrow rule, `viewer.session.frame_view`); it walks to the end front's cell, or
+    crashes into the enemy tower when the turn's crash was its only loss. Otherwise there is no wave move."""
+    out = {}
+    for s, n in enumerate(SEATS):
+        c0, c1 = pre["champions"][n], post["champions"][n]
+        p0, p1 = _place(c0), _place(c1)
+        if info["died"][s]:
+            champ = {"kind": "death", "from": p0, "to": "base"}
+        elif info["recalled"][s]:
+            champ = {"kind": "recall", "from": p0, "to": "base"}
+        elif info["returned"][s]:
+            champ = {"kind": "return", "from": "base", "to": p1}
+        elif p0 != p1 and "base" not in (p0, p1):
+            champ = {"kind": "walk", "from": p0, "to": p1}
+        else:
+            champ = None
+        f0, f1 = _front(pre["lane"], n), _front(post["lane"], n)
+        wave = None
+        if f0 is not None and not info["events"]["died"][s]:
+            if info["crash_hp"][s]:
+                wave = {"kind": "crash", "from": f0, "to": cfg.tower if s == 0 else -cfg.tower}
+            elif f1 is not None and f1 != f0:
+                wave = {"kind": "walk", "from": f0, "to": f1}
+        out[n] = {"champion": champ, "wave": wave}
+    return out
+
+
 def turn(cfg: GameConfig, info: dict, pre: dict, post: dict) -> dict:
     """Turn t = pre["p"] + 1 (module docstring); `pre` and `post` are its two `position` views."""
     a, b = (int(x) for x in info["actions"])
@@ -228,7 +271,8 @@ def turn(cfg: GameConfig, info: dict, pre: dict, post: dict) -> dict:
     return {"t": pre["p"] + 1, "k": int(info["k"]), "codes": [a, b],
             "names": [VS.action_name(cfg, a), VS.action_name(cfg, b)], "parts": [code_parts(a), code_parts(b)],
             "modes": list(info["modes"]), "ticks": ticks(cfg, info), "outcomes": outcomes(cfg, info),
-            "delta": delta, "reward_A": _r(info["reward"], 7)}
+            "delta": delta, "reward_A": _r(info["reward"], 7), "moves": moves(cfg, info, pre, post)}
 
 
-__all__ = ["FRAME_SCHEMA", "FRAME_VERSION", "position", "turn", "ticks", "outcomes", "champion_status", "lane_view"]
+__all__ = ["FRAME_SCHEMA", "FRAME_VERSION", "position", "turn", "ticks", "outcomes", "moves", "champion_status",
+           "lane_view"]

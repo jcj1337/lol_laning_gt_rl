@@ -4,6 +4,40 @@
  */
 
 export interface paths {
+    "/api/guides": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /** Guides Index */
+        get: operations["guides_index_api_guides_get"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/api/guides/{gid}": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /** Guide */
+        get: operations["guide_api_guides__gid__get"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
     "/api/models": {
         parameters: {
             query?: never;
@@ -246,6 +280,18 @@ export interface components {
             /** Turn Cap */
             turn_cap: number;
         };
+        /** ChampionMove */
+        ChampionMove: {
+            /** From */
+            from: number | ("W" | "base");
+            /**
+             * Kind
+             * @enum {string}
+             */
+            kind: "walk" | "recall" | "return" | "death";
+            /** To */
+            to: number | ("W" | "base");
+        };
         /** ChampionStatus */
         ChampionStatus: {
             /** At Ward */
@@ -374,6 +420,60 @@ export interface components {
             verification?: {
                 [key: string]: unknown;
             } | null;
+        };
+        /**
+         * Guide
+         * @description A sequence (guides.py, which calls it a guide): events at positions of one research replay, position p being
+         *     the state after p turns; `end` is null when the walk ends with the recording.
+         */
+        Guide: {
+            /** Checkpoints */
+            checkpoints: components["schemas"]["GuideCheckpoint"][];
+            /** End */
+            end?: number | null;
+            /** Id */
+            id: string;
+            /** Intro */
+            intro: string;
+            /** Replay */
+            replay: string;
+            /** Start */
+            start: number;
+            /** Title */
+            title: string;
+        };
+        /** GuideCheckpoint */
+        GuideCheckpoint: {
+            highlight?: components["schemas"]["GuideHighlight"] | null;
+            /** Id */
+            id: string;
+            /** Position */
+            position: number;
+            /** Text */
+            text: string;
+            /** Title */
+            title: string;
+        };
+        /** GuideEntry */
+        GuideEntry: {
+            /** Checkpoints */
+            checkpoints: number;
+            /** Id */
+            id: string;
+            /** Replay */
+            replay: string;
+            /** Title */
+            title: string;
+        };
+        /** GuideHighlight */
+        GuideHighlight: {
+            /**
+             * Kind
+             * @enum {string}
+             */
+            kind: "champion" | "tower" | "wave" | "crashed" | "ward_spot";
+            /** Seat */
+            seat?: ("A" | "B") | null;
         };
         /** HTTPValidationError */
         HTTPValidationError: {
@@ -654,6 +754,15 @@ export interface components {
             /** Turns */
             turns: number;
         };
+        /**
+         * SeatMoves
+         * @description How a seat's champion and leading wave moved over the turn (frames.moves); null when they did not, or when the
+         *     leading wave the turn started with was lost.
+         */
+        SeatMoves: {
+            champion?: components["schemas"]["ChampionMove"] | null;
+            wave?: components["schemas"]["WaveMove"] | null;
+        };
         /** SeatPublic */
         SeatPublic: {
             /** Arm */
@@ -718,6 +827,11 @@ export interface components {
         Status: {
             /** Error */
             error?: string | null;
+            /**
+             * Guides
+             * @default 0
+             */
+            guides: number;
             /** Lane Exit Position */
             lane_exit_position?: number | null;
             /** Models */
@@ -849,6 +963,10 @@ export interface components {
             k: number;
             /** Modes */
             modes: string[];
+            /** Moves */
+            moves: {
+                [key: string]: components["schemas"]["SeatMoves"];
+            };
             /** Names */
             names: [
                 string,
@@ -940,6 +1058,18 @@ export interface components {
             /** Turn Cap */
             turn_cap: number;
         };
+        /** WaveMove */
+        WaveMove: {
+            /** From */
+            from: number;
+            /**
+             * Kind
+             * @enum {string}
+             */
+            kind: "walk" | "crash";
+            /** To */
+            to: number;
+        };
     };
     responses: never;
     parameters: never;
@@ -949,6 +1079,66 @@ export interface components {
 }
 export type $defs = Record<string, never>;
 export interface operations {
+    guides_index_api_guides_get: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["GuideEntry"][];
+                };
+            };
+        };
+    };
+    guide_api_guides__gid__get: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                gid: string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["Guide"];
+                };
+            };
+            /** @description Not Found */
+            404: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorBody"];
+                };
+            };
+            /** @description Validation Error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HTTPValidationError"];
+                };
+            };
+        };
+    };
     models_api_models_get: {
         parameters: {
             query?: never;

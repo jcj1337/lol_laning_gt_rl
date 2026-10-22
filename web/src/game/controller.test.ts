@@ -1,8 +1,10 @@
 // The history rules of plan §5.1 and rule 13, on the controller alone: progress and the viewed position are separate,
 // browsing never changes progress, submission is impossible while browsing, and a history catch-up appends only the
-// turns that continue what the client has.
-import { describe, expect, it } from 'vitest';
+// turns that continue what the client has. A walk shows each position up to its target and stops there, and playback
+// without motion keeps the pace of the animated turns.
+import { afterEach, describe, expect, it, vi } from 'vitest';
 import { Controller, Live } from './controller';
+import { TICK_MS, WALK_MS } from './frames';
 import type { Game, History, Position, Turn, View } from './types';
 
 const env = { reduced: () => true, ticksAuto: () => false, forcedRun: () => false };
@@ -19,7 +21,8 @@ function turn(t: number, a = 2, b = 2): Turn {
   const tick = { tick: 1, packets: { A: [], B: [] }, siege: { A: [-2, 0] as [number, number], B: [2, 0] as [number, number] }, contact: null, cells: { A: -2, B: 2 },
     at_ward: { A: false, B: false }, wave_removed: { A: 0, B: 0 }, crashed: { A: 0, B: 0 }, minion_fire: { A: { cause: '', units: 0 }, B: { cause: '', units: 0 } } };
   return { t, k: t, codes: [a, b], names: ['x', 'y'], parts: [{ kind: 'lane', wave: 0, behaviour: 0, objective: 0 }, { kind: 'lane', wave: 0, behaviour: 0, objective: 0 }],
-    modes: ['farm', 'farm'], ticks: [tick, { ...tick, tick: 2 }], outcomes: [], delta: { A: { gold: 0, farm: 0, xp: 0, hp: 0, hp_taken: 0 }, B: { gold: 0, farm: 0, xp: 0, hp: 0, hp_taken: 0 } }, reward_A: 0 };
+    modes: ['farm', 'farm'], ticks: [tick, { ...tick, tick: 2 }], outcomes: [], delta: { A: { gold: 0, farm: 0, xp: 0, hp: 0, hp_taken: 0 }, B: { gold: 0, farm: 0, xp: 0, hp: 0, hp_taken: 0 } }, reward_A: 0,
+    moves: { A: { champion: null, wave: null }, B: { champion: null, wave: null } } };
 }
 
 function game(n: number): Game {
@@ -65,6 +68,60 @@ describe('Controller (a whole bot game)', () => {
     live.stopped = true;
     expect(live.belief(2)?.bySeat.B).toEqual([0.7, 0.3]);
     expect(new Live(G, 150, { belief: 'shown', env }).belief(1)?.bySeat.B).toEqual([0.6, 0.4]);
+  });
+});
+
+describe('Controller timing', () => {
+  afterEach(() => { vi.useRealTimers(); });
+
+  it('walks to a position one position per interval and stops there', () => {
+    vi.useFakeTimers();
+    const c = new Controller(game(10), { mode: 'watch', view: 3, env });
+    c.playTo(7);
+    expect(c.view).toBe(3);
+    expect(c.playing).toBe(true);
+    expect(c.walkingTo).toBe(7);
+    const seen: number[] = [];
+    for (let i = 0; i < 3; i++) { vi.advanceTimersByTime(WALK_MS); seen.push(c.view); }
+    expect(seen).toEqual([4, 5, 6]);
+    expect(c.playing).toBe(true);
+    vi.advanceTimersByTime(WALK_MS);
+    expect(c.view).toBe(7);
+    expect(c.playing).toBe(false);
+    expect(c.walkingTo).toBeNull();
+    vi.advanceTimersByTime(WALK_MS * 10);
+    expect(c.view).toBe(7);
+    expect(c.frame.p).toBe(7);
+  });
+
+  it('stops a walk on any jump', () => {
+    vi.useFakeTimers();
+    const c = new Controller(game(10), { mode: 'watch', view: 3, env });
+    c.playTo(9);
+    vi.advanceTimersByTime(WALK_MS);
+    expect(c.view).toBe(4);
+    c.goto(5);
+    expect(c.playing).toBe(false);
+    expect(c.walkingTo).toBeNull();
+    expect(c.view).toBe(5);
+    vi.advanceTimersByTime(WALK_MS * 10);
+    expect(c.view).toBe(5);
+  });
+
+  it('plays without motion at the pace of the animated turns', async () => {
+    vi.useFakeTimers();
+    const c = new Controller(game(10), { mode: 'watch', env });
+    const turnMs = 4 * TICK_MS;                                // a turn of two ticks: start, tick 1, tick 2, end
+    c.play();
+    expect(c.view).toBe(1);
+    await vi.advanceTimersByTimeAsync(turnMs - 1);
+    expect(c.view).toBe(1);
+    await vi.advanceTimersByTimeAsync(1);
+    expect(c.view).toBe(2);
+    await vi.advanceTimersByTimeAsync(turnMs);
+    expect(c.view).toBe(3);
+    expect(c.playing).toBe(true);
+    c.pause();
   });
 });
 

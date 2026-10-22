@@ -15,12 +15,13 @@ Routes (every response shape is a model of `schemas.py`, published at /openapi.j
     GET  /api/sessions/{id}/record         the recording (seeds and hidden beliefs withheld while active)
     POST /api/simulations                  {a, b, turns?} -> a game bundle (Watch), generated in the worker process
     GET  /api/replays, /api/replays/{name} the verified seed-0 research recordings as game bundles
+    GET  /api/guides, /api/guides/{id}     the guided replays over those recordings: the index, one guide's notes
     GET  /{anything else}                  the built frontend (web/dist), with the single-page fallback
 
 Refusals are JSON {error, message} with the status the service assigns: 400 for a malformed request, 403 for an
-unresolved position, 404 for an unknown session or replay, 409 for a conflict or a turn out of order, 410 after the
-stop, 413 for a large body, 422 for an illegal action (the message is the menu's reason), 429 over a rate limit, 503
-while the engine is unavailable.
+unresolved position, 404 for an unknown session, replay or guide, 409 for a conflict or a turn out of order, 410
+after the stop, 413 for a large body, 422 for an illegal action (the message is the menu's reason), 429 over a rate
+limit, 503 while the engine is unavailable.
 
 Concurrency (plan §8.2, §3 rule 3). Human turns, histories and research replays run on the serving process's one
 simulation lock. Bounded bot games run in `worker.py`'s separate process, which has its own registry and caches, so
@@ -150,6 +151,7 @@ def create_app(service: Optional[DemoService] = None, *, sim_workers: int = 1, s
         if st["ready"] and replays:
             n = len(await asyncio.to_thread(svc.replays))
             log.info("research replays: %d verified", n)
+            log.info("guided replays: %d loaded", len(await asyncio.to_thread(svc.guides)))
         pool = None
         if st["ready"] and sim_workers > 0:
             pool = SimulationPool(sim_workers)
@@ -220,6 +222,8 @@ def create_app(service: Optional[DemoService] = None, *, sim_workers: int = 1, s
         d["simulations"] = ("in_process" if request.app.state.in_process else pool.state if pool else "unavailable")
         if d["ready"] and s._replays is not None:
             d["replays"] = len(s._replays)
+        if d["ready"] and s._guides is not None:
+            d["guides"] = len(s._guides)
         d["sessions"] = s.count() if s is not None else 0
         return d
 
@@ -274,6 +278,14 @@ def create_app(service: Optional[DemoService] = None, *, sim_workers: int = 1, s
     @app.get("/api/replays/{name}", response_model=M.GameBundle, responses={404: {"model": M.ErrorBody}})
     def replay(name: str, request: Request):
         return svc(request).replay(name)
+
+    @app.get("/api/guides", response_model=list[M.GuideEntry])
+    def guides_index(request: Request):
+        return svc(request).guides()
+
+    @app.get("/api/guides/{gid}", response_model=M.Guide, responses={404: {"model": M.ErrorBody}})
+    def guide(gid: str, request: Request):
+        return svc(request).guide(gid)
 
     # ------------------------------------------------------------------ the frontend
     index = os.path.join(static_dir, "index.html") if static_dir else None

@@ -1,0 +1,490 @@
+{
+ "meta": {
+  "study": "M6c",
+  "commit": "87e9abd0d08513e337f76eabbecf91b2f2599796",
+  "working_tree_dirty": true,
+  "timestamp": "2026-10-22 18:25:14",
+  "elapsed_s": 43.9,
+  "browser": "C:\\Program Files (x86)\\Microsoft\\Edge\\Application\\msedge.exe",
+  "frontend": "web/dist"
+ },
+ "passed": 83,
+ "failed": 0,
+ "checks": [
+  {
+   "check": "1. the address opens the sequence on its research replay, paused at the sequence's start",
+   "ok": true,
+   "detail": "{\"mode\": \"watch\", \"kind\": \"research_record\", \"name\": \"sp_s0_vs_g_shove\", \"view\": 74, \"playing\": false}"
+  },
+  {
+   "check": "1. the sequence starts at its introduction with the notes shown",
+   "ok": true,
+   "detail": "{\"id\": \"stacking-to-crashing\", \"at\": null, \"notes\": true, \"atEvent\": true, \"walking\": false, \"position\": 74}"
+  },
+  {
+   "check": "1. the top bar names the record and selects the sequence",
+   "ok": true,
+   "detail": "'Recorded research game' 'guide:stacking-to-crashing'"
+  },
+  {
+   "check": "1. the Watch select lists Stacking to Crashing under Sequences",
+   "ok": true,
+   "detail": "[\"Stacking to Crashing\"]"
+  },
+  {
+   "check": "1. the panel shows the sequence's title",
+   "ok": true,
+   "detail": "'Stacking to Crashing'"
+  },
+  {
+   "check": "1. the panel's kicker at the introduction reads Sequence",
+   "ok": true,
+   "detail": "'Sequence'"
+  },
+  {
+   "check": "open: no page errors",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "check": "2. the server's sequence has the five events at positions 77, 80, 81, 82 and 84",
+   "ok": true,
+   "detail": "[77, 80, 81, 82, 84]"
+  },
+  {
+   "check": "2. Next event to event 1: the walk starts at once with the walk line in place of the note",
+   "ok": true,
+   "detail": "{\"guide\": {\"id\": \"stacking-to-crashing\", \"at\": 0, \"notes\": true, \"atEvent\": false, \"walking\": true, \"position\": 77}, \"playing\": true, \"line\": \"Playing to turn 77: now at turn 74.\"}"
+  },
+  {
+   "check": "2. Next event to event 1: the view rises one position at a time from 74 to 77 and stops there",
+   "ok": true,
+   "detail": "{\"views\": [74, 75, 76, 77], \"end_view\": 77}"
+  },
+  {
+   "check": "2. Next event to event 1: the note panel stays on screen at every sample and the tick step panel never appears",
+   "ok": true,
+   "detail": "[]"
+  },
+  {
+   "check": "2. event 1 at position 77: its note, title and ring, and the next event's title",
+   "ok": true,
+   "detail": "{\"view\": 77, \"guide\": {\"id\": \"stacking-to-crashing\", \"at\": 0, \"notes\": true, \"atEvent\": true, \"walking\": false, \"position\": 77}, \"title\": \"Trades keep the bot from going back to base\", \"ring\": true, \"next\": \"Next: Nobody clears the wave, so it stacks\"}"
+  },
+  {
+   "check": "2. event 1: the bot's lane chip shows the 105 HP the note quotes",
+   "ok": true,
+   "detail": "'105'"
+  },
+  {
+   "check": "2. Next event to event 2: the walk starts at once with the walk line in place of the note",
+   "ok": true,
+   "detail": "{\"guide\": {\"id\": \"stacking-to-crashing\", \"at\": 1, \"notes\": true, \"atEvent\": false, \"walking\": true, \"position\": 80}, \"playing\": true, \"line\": \"Playing to turn 80: now at turn 77.\"}"
+  },
+  {
+   "check": "2. Next event to event 2: the view rises one position at a time from 77 to 80 and stops there",
+   "ok": true,
+   "detail": "{\"views\": [77, 78, 79, 80], \"end_view\": 80}"
+  },
+  {
+   "check": "2. Next event to event 2: the note panel stays on screen at every sample and the tick step panel never appears",
+   "ok": true,
+   "detail": "[]"
+  },
+  {
+   "check": "2. event 2 at position 80: its note, title and ring, and the next event's title",
+   "ok": true,
+   "detail": "{\"view\": 80, \"guide\": {\"id\": \"stacking-to-crashing\", \"at\": 1, \"notes\": true, \"atEvent\": true, \"walking\": false, \"position\": 80}, \"title\": \"Nobody clears the wave, so it stacks\", \"ring\": true, \"next\": \"Next: The stacked wave crashes\"}"
+  },
+  {
+   "check": "2. Next event to event 3: the walk starts at once with the walk line in place of the note",
+   "ok": true,
+   "detail": "{\"guide\": {\"id\": \"stacking-to-crashing\", \"at\": 2, \"notes\": true, \"atEvent\": false, \"walking\": true, \"position\": 81}, \"playing\": true, \"line\": \"Playing to turn 81: now at turn 80.\"}"
+  },
+  {
+   "check": "2. Next event to event 3: the view rises one position at a time from 80 to 81 and stops there",
+   "ok": true,
+   "detail": "{\"views\": [80, 81], \"end_view\": 81}"
+  },
+  {
+   "check": "2. Next event to event 3: the note panel stays on screen at every sample and the tick step panel never appears",
+   "ok": true,
+   "detail": "[]"
+  },
+  {
+   "check": "2. event 3 at position 81: its note, title and ring, and the next event's title",
+   "ok": true,
+   "detail": "{\"view\": 81, \"guide\": {\"id\": \"stacking-to-crashing\", \"at\": 2, \"notes\": true, \"atEvent\": true, \"walking\": false, \"position\": 81}, \"title\": \"The stacked wave crashes\", \"ring\": true, \"next\": \"Next: Pressure on the crash breaks a plate\"}"
+  },
+  {
+   "check": "2. Next event to event 4: the walk starts at once with the walk line in place of the note",
+   "ok": true,
+   "detail": "{\"guide\": {\"id\": \"stacking-to-crashing\", \"at\": 3, \"notes\": true, \"atEvent\": false, \"walking\": true, \"position\": 82}, \"playing\": true, \"line\": \"Playing to turn 82: now at turn 81.\"}"
+  },
+  {
+   "check": "2. Next event to event 4: the view rises one position at a time from 81 to 82 and stops there",
+   "ok": true,
+   "detail": "{\"views\": [81, 82], \"end_view\": 82}"
+  },
+  {
+   "check": "2. Next event to event 4: the note panel stays on screen at every sample and the tick step panel never appears",
+   "ok": true,
+   "detail": "[]"
+  },
+  {
+   "check": "2. event 4 at position 82: its note, title and ring, and the next event's title",
+   "ok": true,
+   "detail": "{\"view\": 82, \"guide\": {\"id\": \"stacking-to-crashing\", \"at\": 3, \"notes\": true, \"atEvent\": true, \"walking\": false, \"position\": 82}, \"title\": \"Pressure on the crash breaks a plate\", \"ring\": true, \"next\": \"Next: A second plate while the bot is away\"}"
+  },
+  {
+   "check": "2. event 4: the graph marks turn 82 with the agent's lead of 2.98 the note quotes",
+   "ok": true,
+   "detail": "Turn 82: Self-play +2.98"
+  },
+  {
+   "check": "2. Next event to event 5: the walk starts at once with the walk line in place of the note",
+   "ok": true,
+   "detail": "{\"guide\": {\"id\": \"stacking-to-crashing\", \"at\": 4, \"notes\": true, \"atEvent\": false, \"walking\": true, \"position\": 84}, \"playing\": true, \"line\": \"Playing to turn 84: now at turn 82.\"}"
+  },
+  {
+   "check": "2. Next event to event 5: the view rises one position at a time from 82 to 84 and stops there",
+   "ok": true,
+   "detail": "{\"views\": [82, 83, 84], \"end_view\": 84}"
+  },
+  {
+   "check": "2. Next event to event 5: the note panel stays on screen at every sample and the tick step panel never appears",
+   "ok": true,
+   "detail": "[]"
+  },
+  {
+   "check": "2. event 5 at position 84: its note, title and ring, and the next event's title",
+   "ok": true,
+   "detail": "{\"view\": 84, \"guide\": {\"id\": \"stacking-to-crashing\", \"at\": 4, \"notes\": true, \"atEvent\": true, \"walking\": false, \"position\": 84}, \"title\": \"A second plate while the bot is away\", \"ring\": true, \"next\": null}"
+  },
+  {
+   "check": "2. event 5: the graph shows the lead of 3.63 and the bot's tower has lost its second plate",
+   "ok": true,
+   "detail": "{\"label\": \"Turn 84: Self-play +3.63\", \"plates_lost\": 2, \"tower\": \"Always-push bot's tower: 1 of 3 plates left, damage 4306 of 6000\"}"
+  },
+  {
+   "check": "2. at the last event Next is disabled and no next title is shown",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "check": "3. Previous event jumps back to event 4 without a walk",
+   "ok": true,
+   "detail": "{\"view\": 82, \"guide\": {\"id\": \"stacking-to-crashing\", \"at\": 3, \"notes\": true, \"atEvent\": true, \"walking\": false, \"position\": 82}, \"playing\": false, \"walkingTo\": null, \"kind\": \"research_record\"}"
+  },
+  {
+   "check": "4. a turn shown after the event keeps its note and says which position the note describes",
+   "ok": true,
+   "detail": "{\"stepped\": true, \"view\": 83, \"guide\": {\"id\": \"stacking-to-crashing\", \"at\": 3, \"notes\": true, \"atEvent\": false, \"walking\": false, \"position\": 82}, \"away\": \"This note describes the position after turn 82. Return to this event\"}"
+  },
+  {
+   "check": "4. Return to this event restores the position and the ring",
+   "ok": true,
+   "detail": "{\"view\": 82, \"guide\": {\"id\": \"stacking-to-crashing\", \"at\": 3, \"notes\": true, \"atEvent\": true, \"walking\": false, \"position\": 82}, \"playing\": false, \"walkingTo\": null, \"kind\": \"research_record\"}"
+  },
+  {
+   "check": "5. Play from event 1: the walk starts at once with the walk line in place of the note",
+   "ok": true,
+   "detail": "{\"guide\": {\"id\": \"stacking-to-crashing\", \"at\": 1, \"notes\": true, \"atEvent\": false, \"walking\": true, \"position\": 80}, \"playing\": true, \"line\": \"Playing to turn 80: now at turn 77.\"}"
+  },
+  {
+   "check": "5. Play from event 1: the view rises one position at a time from 77 to 80 and stops there",
+   "ok": true,
+   "detail": "{\"views\": [77, 78, 79, 80], \"end_view\": 80}"
+  },
+  {
+   "check": "5. Play from event 1: the note panel stays on screen at every sample and the tick step panel never appears",
+   "ok": true,
+   "detail": "[]"
+  },
+  {
+   "check": "5. Play stops at event 2 with its note",
+   "ok": true,
+   "detail": "{\"view\": 80, \"guide\": {\"id\": \"stacking-to-crashing\", \"at\": 1, \"notes\": true, \"atEvent\": true, \"walking\": false, \"position\": 80}, \"playing\": false, \"walkingTo\": null, \"kind\": \"research_record\"}"
+  },
+  {
+   "check": "5. Play from event 2: the walk starts at once with the walk line in place of the note",
+   "ok": true,
+   "detail": "{\"guide\": {\"id\": \"stacking-to-crashing\", \"at\": 2, \"notes\": true, \"atEvent\": false, \"walking\": true, \"position\": 81}, \"playing\": true, \"line\": \"Playing to turn 81: now at turn 80.\"}"
+  },
+  {
+   "check": "5. Play from event 2: the view rises one position at a time from 80 to 81 and stops there",
+   "ok": true,
+   "detail": "{\"views\": [80, 81], \"end_view\": 81}"
+  },
+  {
+   "check": "5. Play from event 2: the note panel stays on screen at every sample and the tick step panel never appears",
+   "ok": true,
+   "detail": "[]"
+  },
+  {
+   "check": "5. Play at the last event walks on toward the end of the recording",
+   "ok": true,
+   "detail": "{\"view\": 84, \"guide\": {\"id\": \"stacking-to-crashing\", \"at\": 4, \"notes\": true, \"atEvent\": true, \"walking\": false, \"position\": 84}, \"playing\": true, \"walkingTo\": 150, \"kind\": \"research_record\"}"
+  },
+  {
+   "check": "5. three seconds later the view is past the last event, the sequence still open on it, no tick step panel",
+   "ok": true,
+   "detail": "{\"view\": 88, \"guide\": {\"id\": \"stacking-to-crashing\", \"at\": 4, \"notes\": true, \"atEvent\": false, \"walking\": false, \"position\": 84}, \"playing\": true, \"walkingTo\": 150, \"kind\": \"research_record\"}"
+  },
+  {
+   "check": "5. Pause stops it",
+   "ok": true,
+   "detail": "{\"view\": 88, \"guide\": {\"id\": \"stacking-to-crashing\", \"at\": 4, \"notes\": true, \"atEvent\": false, \"walking\": false, \"position\": 84}, \"playing\": false, \"walkingTo\": null, \"kind\": \"research_record\"}"
+  },
+  {
+   "check": "6. Hide notes collapses the panel to one line, drops the ring and shrinks the dock",
+   "ok": true,
+   "detail": "{\"guide\": {\"id\": \"stacking-to-crashing\", \"at\": 4, \"notes\": false, \"atEvent\": true, \"walking\": false, \"position\": 84}, \"surface_shown\": 272, \"surface_hidden\": 194}"
+  },
+  {
+   "check": "6. Show notes restores the panel, the ring and the dock",
+   "ok": true,
+   "detail": "{\"id\": \"stacking-to-crashing\", \"at\": 4, \"notes\": true, \"atEvent\": true, \"walking\": false, \"position\": 84}"
+  },
+  {
+   "check": "7. Close sequence leaves the replay on screen where it was",
+   "ok": true,
+   "detail": "{\"label\": \"Close sequence\", \"view\": 84, \"guide\": null, \"playing\": false, \"walkingTo\": null, \"kind\": \"research_record\"}"
+  },
+  {
+   "check": "8. a new live game carries no sequence",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "check": "8. the Watch select opens the sequence",
+   "ok": true,
+   "detail": "'guide:stacking-to-crashing'"
+  },
+  {
+   "check": "8. the live game is still on the server, at its first turn",
+   "ok": true,
+   "detail": "{\"status\": 200, \"position\": 0}"
+  },
+  {
+   "check": "8. Play returns to the same game, ready for its first turn",
+   "ok": true,
+   "detail": "{\"sid\": \"a3e438d86fc7447d82e7ff32e8f648d2\", \"mode\": \"play\", \"canSubmit\": true, \"guide\": null, \"dialog\": null}"
+  },
+  {
+   "check": "live game: no page errors",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "check": "9. the simulation worker is ready",
+   "ok": true,
+   "detail": "ready"
+  },
+  {
+   "check": "9. a generated match replaces the sequence and carries none",
+   "ok": true,
+   "detail": "{\"view\": 0, \"guide\": null, \"playing\": false, \"walkingTo\": null, \"kind\": \"new_simulation\"}"
+  },
+  {
+   "check": "10. an unknown sequence is reported as an error in the server's words",
+   "ok": true,
+   "detail": "{\"problem\": {\"kind\": \"error\", \"message\": \"no sequence named 'nope'\"}, \"text\": \"Something went wrong. no sequence named 'nope'Try againDismiss\"}"
+  },
+  {
+   "check": "11. no panel covers a champion, wave, tower or the ward spot, and the note panel fits, at 3 sizes in both themes",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "check": "11. the note panel fits at every note (the measured heights are the detail)",
+   "ok": true,
+   "detail": "{\"desktop\": {\"panel\": {\"intro\": 120, \"event1\": 102, \"event2\": 102, \"event3\": 102, \"event4\": 102, \"event5\": 102}, \"surface\": 272, \"controls\": 218}, \"small\": {\"panel\": {\"intro\": 137, \"event1\": 120, \"event2\": 137, \"event3\": 102, \"event4\": 120, \"event5\": 120}, \"surface\": 300, \"controls\": 246}, \"phone_portrait\": {\"panel\": {\"intro\": 161, \"event1\": 161, \"event2\": 161, \"event3\": 161, \"event4\": 161, \"event5\": 134}, \"surface\": 505, \"controls\": 300}}"
+  },
+  {
+   "check": "11. the lane's legend shows its two lines (the balls, the arrows) clear of the top bar and the surface, at 3 sizes in both themes",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "check": "12. with reduced motion, Play at 1x shows one turn in the first two seconds (a turn takes 4.4 s, as animated)",
+   "ok": true,
+   "detail": "{\"view\": 1, \"playing\": true}"
+  },
+  {
+   "check": "12. at 4x the next 2.6 s add one to three turns",
+   "ok": true,
+   "detail": "{\"before\": 1, \"after\": 2}"
+  },
+  {
+   "check": "12. Pause stops it",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "check": "13. after turn 81: each arrow is 20 to 40.5 px long and its tip sits just behind the token or wave that moved",
+   "ok": true,
+   "detail": "{\"faults\": {}, \"arrows\": [{\"move\": [\"A\", \"champion\", \"walk\", \"2\", \"1\"], \"tip\": [809.4, 245.2], \"tail\": [841.2, 230.4], \"mover\": \"champion_A\", \"mover_box\": [767.6544189453125, 235.31967163085938, 807.6544189453125, 275.3196716308594]}, {\"move\": [\"A\", \"wave\", \"crash\", \"0\", \"2\"], \"tip\": [770.4, 212.2], \"tail\": [753.7, 243], \"mover\": \"wave_SA\", \"mover_box\": [718.09912109375, 175.6471405029297, 815.2400512695312, 208.4528350830078]}, {\"move\": [\"B\", \"wave\", \"walk\", \"4\", \"2\"], \"tip\": [957.6, 292.5], \"tail\": [989.4, 277.6], \"mover\": \"wave_B0\", \"mover_box\": [909.3739624023438, 294.0240173339844, 965.8978271484375, 315.1813049316406]}]}"
+  },
+  {
+   "check": "13. after turn 81: exactly three arrows, A's wave crashing 0 -> 2 (labelled Crash), A walking 2 -> 1 and B's wave walking 4 -> 2",
+   "ok": true,
+   "detail": "[{\"move\": [\"A\", \"champion\", \"walk\", \"2\", \"1\"], \"label\": null, \"title\": \"Self-play agent moved this turn\", \"box\": [809, 230, 841, 246], \"under_panel\": [], \"label_covered_by\": null, \"tip\": [809.4, 245.2], \"tail\": [841.2, 230.4], \"mover\": \"champion_A\", \"mover_box\": [767.6544189453125, 235.31967163085938, 807.6544189453125, 275.3196716308594]}, {\"move\": [\"A\", \"wave\", \"crash\", \"0\", \"2\"], \"label\": \"Crash\", \"title\": \"Self-play agent's leading wave crashed into the tower\", \"box\": [726, 212, 771, 243], \"under_panel\": [], \"label_covered_by\": [], \"tip\": [770.4, 212.2], \"tail\": [753.7, 243], \"mover\": \"wave_SA\", \"mover_box\": [718.09912109375, 175.6471405029297, 815.2400512695312, 208.4528350830078]}, {\"move\": [\"B\", \"wave\", \"walk\", \"4\", \"2\"], \"label\": null, \"title\": \"Always-push bot's leading wave walked forward\", \"box\": [958, 278, 989, 293], \"under_panel\": [], \"label_covered_by\": null, \"tip\": [957.6, 292.5], \"tail\": [989.4, 277.6], \"mover\": \"wave_B0\", \"mover_box\": [909.3739624023438, 294.0240173339844, 965.8978271484375, 315.1813049316406]}]"
+  },
+  {
+   "check": "13. after turn 82: each arrow is 20 to 40.5 px long and its tip sits just behind the token or wave that moved",
+   "ok": true,
+   "detail": "{\"faults\": {}, \"arrows\": [{\"move\": [\"A\", \"champion\", \"walk\", \"1\", \"2\"], \"tip\": [865.3, 219.1], \"tail\": [833.5, 234], \"mover\": \"champion_A\", \"mover_box\": [867.0147705078125, 188.9871826171875, 907.0147705078125, 228.9871826171875]}, {\"move\": [\"B\", \"champion\", \"recall\", \"2\", \"base\"], \"tip\": [1083.5, 169.8], \"tail\": [1061.3, 197], \"mover\": \"champion_B\", \"mover_box\": [1077.5452880859375, 125.30303955078125, 1123.9315185546875, 171.68923950195312]}]}"
+  },
+  {
+   "check": "13. after turn 82: B recalls 2 -> base with its label Recall in the clear, and A walks 1 -> 2",
+   "ok": true,
+   "detail": "[{\"move\": [\"A\", \"champion\", \"walk\", \"1\", \"2\"], \"label\": null, \"title\": \"Self-play agent moved this turn\", \"box\": [834, 218, 865, 234], \"under_panel\": [], \"label_covered_by\": null, \"tip\": [865.3, 219.1], \"tail\": [833.5, 234], \"mover\": \"champion_A\", \"mover_box\": [867.0147705078125, 188.9871826171875, 907.0147705078125, 228.9871826171875]}, {\"move\": [\"B\", \"champion\", \"recall\", \"2\", \"base\"], \"label\": \"Recall\", \"title\": \"Always-push bot recalled to base\", \"box\": [1061, 170, 1108, 198], \"under_panel\": [], \"label_covered_by\": [], \"tip\": [1083.5, 169.8], \"tail\": [1061.3, 197], \"mover\": \"champion_B\", \"mover_box\": [1077.5452880859375, 125.30303955078125, 1123.9315185546875, 171.68923950195312]}]"
+  },
+  {
+   "check": "13. after turn 83: each arrow is 20 to 40.5 px long and its tip sits just behind the token or wave that moved",
+   "ok": true,
+   "detail": "{\"faults\": {}, \"arrows\": [{\"move\": [\"B\", \"champion\", \"return\", \"base\", \"2\"], \"tip\": [964.3, 316.4], \"tail\": [986.4, 289.2], \"mover\": \"champion_B\", \"mover_box\": [923.8334350585938, 314.4897766113281, 970.2196655273438, 360.8760070800781]}]}"
+  },
+  {
+   "check": "13. after turn 83: B comes back base -> 2 with its label Back from base in the clear",
+   "ok": true,
+   "detail": "[{\"move\": [\"B\", \"champion\", \"return\", \"base\", \"2\"], \"label\": \"Back from base\", \"title\": \"Always-push bot came back from base\", \"box\": [911, 264, 987, 316], \"under_panel\": [], \"label_covered_by\": [], \"tip\": [964.3, 316.4], \"tail\": [986.4, 289.2], \"mover\": \"champion_B\", \"mover_box\": [923.8334350585938, 314.4897766113281, 970.2196655273438, 360.8760070800781]}]"
+  },
+  {
+   "check": "13. after turn 74: each arrow is 20 to 40.5 px long and its tip sits just behind the token or wave that moved",
+   "ok": true,
+   "detail": "{\"faults\": {}, \"arrows\": [{\"move\": [\"A\", \"champion\", \"walk\", \"0\", \"W\"], \"tip\": [621.9, 234.4], \"tail\": [646.5, 259.4], \"mover\": \"champion_A\", \"mover_box\": [584.9906005859375, 197.3655242919922, 624.9906005859375, 237.3655242919922]}, {\"move\": [\"A\", \"wave\", \"walk\", \"-2\", \"-1\"], \"tip\": [578.3, 393.2], \"tail\": [546.5, 408], \"mover\": \"wave_A0\", \"mover_box\": [570.21875, 370.4862060546875, 614.93798828125, 391.64349365234375]}]}"
+  },
+  {
+   "check": "13. after turn 74: A walks 0 -> the ward spot W, and A's wave walks -2 -> -1",
+   "ok": true,
+   "detail": "[{\"move\": [\"A\", \"champion\", \"walk\", \"0\", \"W\"], \"label\": null, \"title\": \"Self-play agent moved this turn\", \"box\": [622, 234, 647, 259], \"under_panel\": [], \"label_covered_by\": null, \"tip\": [621.9, 234.4], \"tail\": [646.5, 259.4], \"mover\": \"champion_A\", \"mover_box\": [584.9906005859375, 197.3655242919922, 624.9906005859375, 237.3655242919922]}, {\"move\": [\"A\", \"wave\", \"walk\", \"-2\", \"-1\"], \"label\": null, \"title\": \"Self-play agent's leading wave walked forward\", \"box\": [547, 393, 578, 408], \"under_panel\": [], \"label_covered_by\": null, \"tip\": [578.3, 393.2], \"tail\": [546.5, 408], \"mover\": \"wave_A0\", \"mover_box\": [570.21875, 370.4862060546875, 614.93798828125, 391.64349365234375]}]"
+  },
+  {
+   "check": "13. the initial position has no arrows",
+   "ok": true,
+   "detail": "[]"
+  },
+  {
+   "check": "13. a stepped turn's start frame has no arrows (its frames animate the motion)",
+   "ok": true,
+   "detail": "{\"step\": {\"t\": 81, \"i\": 0, \"n\": 4, \"sub\": \"start\", \"auto\": false, \"head\": \"Both actions revealed\", \"text\": \"Self-play chose Slow push, Yield; Push bot chose Last hit, Safe. Two ticks follow: the champions move, and the waves walk, fight and lose HP.\"}, \"arrows\": []}"
+  },
+  {
+   "check": "13. at the end frame of turn 81: each arrow is 20 to 40.5 px long and its tip sits just behind the token or wave that moved",
+   "ok": true,
+   "detail": "{\"faults\": {}, \"arrows\": [{\"move\": [\"A\", \"champion\", \"walk\", \"2\", \"1\"], \"tip\": [809.4, 245.2], \"tail\": [841.2, 230.4], \"mover\": \"champion_A\", \"mover_box\": [767.6544189453125, 235.31967163085938, 807.6544189453125, 275.3196716308594]}, {\"move\": [\"A\", \"wave\", \"crash\", \"0\", \"2\"], \"tip\": [770.4, 212.2], \"tail\": [753.7, 243], \"mover\": \"wave_SA\", \"mover_box\": [718.09912109375, 175.6471405029297, 815.2400512695312, 208.4528350830078]}, {\"move\": [\"B\", \"wave\", \"walk\", \"4\", \"2\"], \"tip\": [957.6, 292.5], \"tail\": [989.4, 277.6], \"mover\": \"wave_B0\", \"mover_box\": [909.3739624023438, 294.0240173339844, 965.8978271484375, 315.1813049316406]}]}"
+  },
+  {
+   "check": "13. its end frame has the three arrows of turn 81",
+   "ok": true,
+   "detail": "[{\"move\": [\"A\", \"champion\", \"walk\", \"2\", \"1\"], \"label\": null, \"title\": \"Self-play agent moved this turn\", \"box\": [809, 230, 841, 246], \"under_panel\": [], \"label_covered_by\": null, \"tip\": [809.4, 245.2], \"tail\": [841.2, 230.4], \"mover\": \"champion_A\", \"mover_box\": [767.6544189453125, 235.31967163085938, 807.6544189453125, 275.3196716308594]}, {\"move\": [\"A\", \"wave\", \"crash\", \"0\", \"2\"], \"label\": \"Crash\", \"title\": \"Self-play agent's leading wave crashed into the tower\", \"box\": [726, 212, 771, 243], \"under_panel\": [], \"label_covered_by\": [], \"tip\": [770.4, 212.2], \"tail\": [753.7, 243], \"mover\": \"wave_SA\", \"mover_box\": [718.09912109375, 175.6471405029297, 815.2400512695312, 208.4528350830078]}, {\"move\": [\"B\", \"wave\", \"walk\", \"4\", \"2\"], \"label\": null, \"title\": \"Always-push bot's leading wave walked forward\", \"box\": [958, 278, 989, 293], \"under_panel\": [], \"label_covered_by\": null, \"tip\": [957.6, 292.5], \"tail\": [989.4, 277.6], \"mover\": \"wave_B0\", \"mover_box\": [909.3739624023438, 294.0240173339844, 965.8978271484375, 315.1813049316406]}]"
+  },
+  {
+   "check": "13. the lane's screen-reader text after turn 82 ends with a sentence per arrow",
+   "ok": true,
+   "detail": "{\"text\": \"After turn 82. Self-play agent: level 13, 714 of 1078 HP, unit 2; wave 14 HP at unit 1. Always-push bot: level 12, recall; wave 4 HP at unit 2. Self-play agent moved this turn. Always-push bot recalled to base.\", \"want\": \"Self-play agent moved this turn. Always-push bot recalled to base.\"}"
+  },
+  {
+   "check": "arrows in Watch: no page errors",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "check": "13. at the end of a live Recall turn: each arrow is 20 to 40.5 px long and its tip sits just behind the token or wave that moved",
+   "ok": true,
+   "detail": "{\"faults\": {}, \"arrows\": [{\"move\": [\"A\", \"champion\", \"recall\", \"-2\", \"base\"], \"tip\": [351, 564.9], \"tail\": [373.1, 537.6], \"mover\": \"champion_A\", \"mover_box\": [315.86163330078125, 563.5038452148438, 355.86163330078125, 603.5038452148438]}, {\"move\": [\"A\", \"wave\", \"walk\", \"-4\", \"-2\"], \"tip\": [479, 439.5], \"tail\": [447.2, 454.4], \"mover\": \"wave_A0\", \"mover_box\": [470.85845947265625, 416.8186950683594, 527.22607421875, 437.9759826660156]}, {\"move\": [\"B\", \"champion\", \"recall\", \"2\", \"base\"], \"tip\": [1083.5, 169.8], \"tail\": [1061.3, 197], \"mover\": \"champion_B\", \"mover_box\": [1077.5452880859375, 125.30303955078125, 1123.9315185546875, 171.68923950195312]}, {\"move\": [\"B\", \"wave\", \"walk\", \"4\", \"2\"], \"tip\": [957.6, 292.5], \"tail\": [989.4, 277.6], \"mover\": \"wave_B0\", \"mover_box\": [909.3739624023438, 294.0240173339844, 965.8978271484375, 315.1813049316406]}]}"
+  },
+  {
+   "check": "13. a live game: at the end of turn 1 your Recall is drawn from -2 to base, titled in the second person",
+   "ok": true,
+   "detail": "{\"heads\": [\"Both actions revealed\", \"Tick 1 of 2\", \"Tick 2 of 2\", \"End of turn 1\"], \"arrows\": [{\"move\": [\"A\", \"champion\", \"recall\", \"-2\", \"base\"], \"label\": \"Recall\", \"title\": \"You recalled to base\", \"box\": [335, 524, 373, 565], \"under_panel\": [], \"label_covered_by\": [], \"tip\": [351, 564.9], \"tail\": [373.1, 537.6], \"mover\": \"champion_A\", \"mover_box\": [315.86163330078125, 563.5038452148438, 355.86163330078125, 603.5038452148438]}, {\"move\": [\"A\", \"wave\", \"walk\", \"-4\", \"-2\"], \"label\": null, \"title\": \"Your leading wave walked forward\", \"box\": [447, 439, 479, 454], \"under_panel\": [], \"label_covered_by\": null, \"tip\": [479, 439.5], \"tail\": [447.2, 454.4], \"mover\": \"wave_A0\", \"mover_box\": [470.85845947265625, 416.8186950683594, 527.22607421875, 437.9759826660156]}, {\"move\": [\"B\", \"champion\", \"recall\", \"2\", \"base\"], \"label\": \"Recall\", \"title\": \"Self-play agent recalled to base\", \"box\": [1061, 170, 1099, 209], \"under_panel\": [], \"label_covered_by\": [], \"tip\": [1083.5, 169.8], \"tail\": [1061.3, 197], \"mover\": \"champion_B\", \"mover_box\": [1077.5452880859375, 125.30303955078125, 1123.9315185546875, 171.68923950195312]}, {\"move\": [\"B\", \"wave\", \"walk\", \"4\", \"2\"], \"label\": null, \"title\": \"Self-play agent's leading wave walked forward\", \"box\": [958, 278, 989, 293], \"under_panel\": [], \"label_covered_by\": null, \"tip\": [957.6, 292.5], \"tail\": [989.4, 277.6], \"mover\": \"wave_B0\", \"mover_box\": [909.3739624023438, 294.0240173339844, 965.8978271484375, 315.1813049316406]}]}"
+  },
+  {
+   "check": "arrows in a live game: no page errors",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "check": "13. at the sequence's event 3: each arrow is 20 to 40.5 px long and its tip sits just behind the token or wave that moved",
+   "ok": true,
+   "detail": "{\"faults\": {}, \"arrows\": [{\"move\": [\"A\", \"champion\", \"walk\", \"2\", \"1\"], \"tip\": [976.6, 208.4], \"tail\": [1005.6, 194.8], \"mover\": \"champion_A\", \"mover_box\": [938.6585083007812, 199.64938354492188, 974.6585083007812, 235.64938354492188]}, {\"move\": [\"A\", \"wave\", \"crash\", \"0\", \"2\"], \"tip\": [940.2, 178.6], \"tail\": [925.1, 206.8], \"mover\": \"wave_SA\", \"mover_box\": [891.0149536132812, 144.99945068359375, 981.1287841796875, 174.9403076171875]}, {\"move\": [\"B\", \"wave\", \"walk\", \"4\", \"2\"], \"tip\": [1112.1, 251.6], \"tail\": [1141.1, 238.1], \"mover\": \"wave_B0\", \"mover_box\": [1067.838623046875, 253.16683959960938, 1120.386962890625, 272.4765319824219]}]}"
+  },
+  {
+   "check": "13. the sequence's event 3 (the crash) shows the crash arrow on the open lane together with the sequence's ring",
+   "ok": true,
+   "detail": "{\"guide\": {\"id\": \"stacking-to-crashing\", \"at\": 2, \"notes\": true, \"atEvent\": true, \"walking\": false, \"position\": 81}, \"ring\": [902, 138, 999, 182], \"arrows\": [{\"move\": [\"A\", \"champion\", \"walk\", \"2\", \"1\"], \"label\": null, \"title\": \"Self-play agent moved this turn\", \"box\": [977, 195, 1006, 209], \"under_panel\": [], \"label_covered_by\": null, \"tip\": [976.6, 208.4], \"tail\": [1005.6, 194.8], \"mover\": \"champion_A\", \"mover_box\": [938.6585083007812, 199.64938354492188, 974.6585083007812, 235.64938354492188]}, {\"move\": [\"A\", \"wave\", \"crash\", \"0\", \"2\"], \"label\": \"Crash\", \"title\": \"Self-play agent's leading wave crashed into the tower\", \"box\": [897, 179, 940, 207], \"under_panel\": [], \"label_covered_by\": [], \"tip\": [940.2, 178.6], \"tail\": [925.1, 206.8], \"mover\": \"wave_SA\", \"mover_box\": [891.0149536132812, 144.99945068359375, 981.1287841796875, 174.9403076171875]}, {\"move\": [\"B\", \"wave\", \"walk\", \"4\", \"2\"], \"label\": null, \"title\": \"Always-push bot's leading wave walked forward\", \"box\": [1112, 238, 1141, 252], \"under_panel\": [], \"label_covered_by\": null, \"tip\": [1112.1, 251.6], \"tail\": [1141.1, 238.1], \"mover\": \"wave_B0\", \"mover_box\": [1067.838623046875, 253.16683959960938, 1120.386962890625, 272.4765319824219]}]}"
+  },
+  {
+   "check": "arrows in the sequence: no page errors",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "check": "end of the check: no page errors",
+   "ok": true,
+   "detail": ""
+  }
+ ],
+ "walks": {
+  "2. Next event to event 1": [
+   74,
+   75,
+   76,
+   77
+  ],
+  "2. Next event to event 2": [
+   77,
+   78,
+   79,
+   80
+  ],
+  "2. Next event to event 3": [
+   80,
+   81
+  ],
+  "2. Next event to event 4": [
+   81,
+   82
+  ],
+  "2. Next event to event 5": [
+   82,
+   83,
+   84
+  ],
+  "5. Play from event 1": [
+   77,
+   78,
+   79,
+   80
+  ],
+  "5. Play from event 2": [
+   80,
+   81
+  ]
+ },
+ "screenshots": [
+  "results/m6/m6c/01_intro.png",
+  "results/m6/m6c/02_event1.png",
+  "results/m6/m6c/07_walking.png",
+  "results/m6/m6c/03_event2.png",
+  "results/m6/m6c/04_event3.png",
+  "results/m6/m6c/05_event4.png",
+  "results/m6/m6c/06_event5.png",
+  "results/m6/m6c/08_away_from_event.png",
+  "results/m6/m6c/09_notes_hidden.png",
+  "results/m6/m6c/10_unknown_sequence.png",
+  "results/m6/m6c/11_desktop_light.png",
+  "results/m6/m6c/11_desktop_dark.png",
+  "results/m6/m6c/11_small_light.png",
+  "results/m6/m6c/11_small_dark.png",
+  "results/m6/m6c/11_phone_portrait_light.png",
+  "results/m6/m6c/11_phone_portrait_dark.png",
+  "results/m6/m6c/12_arrows_crash.png",
+  "results/m6/m6c/13_arrows_recall.png",
+  "results/m6/m6c/14_arrows_return.png",
+  "results/m6/m6c/15_live_recall.png",
+  "results/m6/m6c/16_sequence_crash_arrows.png"
+ ]
+}

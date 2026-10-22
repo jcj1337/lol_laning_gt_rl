@@ -33,7 +33,9 @@ prototypes are gone, and the documentation points at the application.
 - **Cleaned up.** The prototypes, their server, their generated data and the stage that wrote it are removed; the
   approved prototype's code is archived; the documents point at the application (§7).
 - **Open.** Scripted opponents (the user's decision), static replays and the findings (M6c), hosting-grade
-  safeguards (M6e), and a few inherited interface limits (§8).
+  safeguards (M6e), and a few inherited interface limits (§8). *Clarification (2026-10-22): M6c was narrowed the
+  same day to guided replays within Watch ([M6c report](m6c_guided_replays.md)). Static replay files are not
+  planned, and the findings move to M6d's documentation.*
 
 ## 1. The audit of the M6a work
 

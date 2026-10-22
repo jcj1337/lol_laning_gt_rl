@@ -40,10 +40,11 @@ WAVE_HELP = {W_HOLD: "Take only the last hit: 1 HP of enemy minions.",
              W_SLOWPUSH: "Remove one HP more than Thin, so your wave slowly builds and pushes.",
              W_SHOVE: "Spend your full wave damage on enemy minions; your wave pushes and crashes sooner."}
 BEHAVIOUR_HELP = {B_HOLD: "Stand at your farm spot and farm; never step away.",
-                  B_YIELD: "Farm from a stand-off cell and step away from an incoming Trade.",
+                  B_YIELD: "Farm from the rearmost unit still within one unit of the enemy wave, and step away from an "
+                           "incoming Trade.",
                   B_TRADE: "Chase the enemy champion and deal damage if you reach it.",
                   B_SAFE: "Farm without going past your side of the lane; step away from an incoming Trade."}
-PRESSURE_HELP = "Walk into the enemy tower cell and damage the tower; each plate pays 1 gold."
+PRESSURE_HELP = "Walk under the enemy tower and damage it; each plate pays 1 gold."
 RECALL_HELP = "Channel this turn, sit out the next, then return with full HP and your gold invested."
 WARD_HELP = ("Walk to the ward spot (the bush beside the middle of the lane) and place a ward: ganks are a quarter as "
              "likely for 6 turns. No wave damage or gold this turn.")
@@ -58,7 +59,7 @@ def cell_words(pos: int, cfg: GameConfig) -> str:
     if pos >= cfg.tower:
         return "the enemy tower"
     return {-1: "your side of the lane", 0: "the lane (midpoint)", 1: "the enemy side of the lane"}.get(
-        pos, f"cell {pos:+d}")
+        pos, f"unit {pos:+d}")
 
 
 def pressure_reason(lane, m4, s: int, cfg: GameConfig) -> Optional[str]:
@@ -80,7 +81,7 @@ def recall_reason(m4, s: int, cfg: GameConfig) -> Optional[str]:
     if pos == WARD:
         return ("You can't Recall from the ward spot. Choose Safe to step back to your side of the lane, then Recall "
                 "next turn.")
-    return (f"Recall needs you on your own side of the lane (cell {cfg.recall_line:+d} or nearer your tower); you "
+    return (f"Recall needs you on your own side of the lane (unit {cfg.recall_line:+d} or nearer your tower); you "
             f"stand at {cell_words(pos, cfg)}.")
 
 

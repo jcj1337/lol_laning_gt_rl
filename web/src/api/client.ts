@@ -55,6 +55,8 @@ export const api = {
   simulate: (body: S['SimulateRequest']) => post<S['GameBundle']>('/api/simulations', body, 120_000),
   replays: () => get<S['ReplayEntry'][]>('/api/replays'),
   replay: (name: string) => get<S['GameBundle']>(`/api/replays/${encodeURIComponent(name)}`),
+  guides: () => get<S['GuideEntry'][]>('/api/guides'),
+  guide: (id: string) => get<S['Guide']>('/api/guides/' + encodeURIComponent(id)),
 };
 
 export type Api = typeof api;

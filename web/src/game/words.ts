@@ -3,7 +3,8 @@
 // turn-level events (trades, tower shots at champions, ganks, deaths, Recalls, wards, levels, gold) appear only at the
 // end frame, in the turn's own outcome text.
 import type { Frame } from './frames';
-import type { CodeParts, Game, Names, Outcome, Seat, SeatPublic } from './types';
+import type { Arrow } from './moves';
+import type { ChampionMove, CodeParts, Game, Names, Outcome, Seat, SeatPublic, WaveMove } from './types';
 import { SEATS, other } from './types';
 
 export const WAVE: Record<number, string> = { 0: 'Last hit', 2: 'Thin', 3: 'Slow push', 1: 'Shove' };
@@ -178,6 +179,25 @@ export function frameWords(game: Game, t: number, frames: Frame[], i: number, sh
     more: extra > 0 ? `+${extra} more` : null };
 }
 
+// ---- the lane's arrows: a sentence for each (the hover title and the screen-reader text) and a label for each kind
+// except a plain walk. {X} stands for the seat, so a seat named "You" reads "Your leading wave" (fillText).
+type ArrowWords = { text: string; label: string | null };
+const CHAMPION_MOVE: Record<ChampionMove['kind'], ArrowWords> = {
+  walk: { text: '{X} moved this turn', label: null },
+  recall: { text: '{X} recalled to base', label: 'Recall' },
+  return: { text: '{X} came back from base', label: 'Back from base' },
+  death: { text: '{X} died and went back to base', label: 'Died' },
+};
+const WAVE_MOVE: Record<WaveMove['kind'], ArrowWords> = {
+  walk: { text: "{X}'s leading wave walked forward", label: null },
+  crash: { text: "{X}'s leading wave crashed into the tower", label: 'Crash' },
+};
+
+export function arrowWords(a: Arrow, names: Names): ArrowWords {
+  const w = a.what === 'champion' ? CHAMPION_MOVE[a.kind] : WAVE_MOVE[a.kind];
+  return { text: fillText(w.text.replace('{X}', `{${a.seat}}`), names), label: w.label };
+}
+
 export const GUESS: Record<string, string> = {
   g_farm: 'Farming bot', g_safe: 'Cautious bot', g_bully: 'Aggressive bot', g_shove: 'Always-push bot',
   fz_guard_sh: 'Freezing bot', g_shove_ward: 'Push-and-ward bot', peer: 'A trained agent like itself',
@@ -191,3 +211,6 @@ export const BUSH_NOTE = 'The bush hides no one in this simulator: the other sid
   + 'see-through token only marks that it stands in the bush.';
 export const GRAPH_NOTE = 'How much more gold one side has earned so far. Not a chance of winning.';
 export const EXAMPLE_NOTE = "One game is an example, not evidence for M5's findings. See About.";
+export const DOCS_URL = 'https://github.com/jcj1337/lol_game_theory_laning/blob/main/docs/README.md';
+/** A position in words: the state after turn p, or the start. */
+export const afterTurn = (p: number): string => (p === 0 ? 'the start' : `after turn ${p}`);

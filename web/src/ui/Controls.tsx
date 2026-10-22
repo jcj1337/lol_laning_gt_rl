@@ -1,8 +1,10 @@
 // The primary interaction: the action rows in Play (a wave action, a behaviour, Pressure, or Recall or Ward, and the
 // submit button that names the choice), the one control for forced away turns, the step panel of a turn shown frame
-// by frame, and playback in Watch and after a stop. Unavailable choices stay visible and explain why, with the
-// engine's own reason. Browsing history disables submission and offers "Return to current turn".
+// by frame, and playback in Watch and after a stop, with the sequence's notes above it when one is open.
+// Unavailable choices stay visible and explain why, with the engine's own reason. Browsing history disables
+// submission and offers "Return to current turn".
 import { useState } from 'react';
+import { GuidePanel } from './Guide';
 import { Glyph } from './Surface';
 import { useStore } from './useStore';
 import { Live } from '../game/controller';
@@ -32,7 +34,7 @@ export function PlaybackRow({ primary = true }: { primary?: boolean }) {
   const c = S.ctrl!;
   return (
     <div className="pb">
-      <button className={`btn${primary ? ' primary' : ''}`} id="btnPlay" onClick={() => c.toggle()}>{c.playing ? 'Pause' : c.view >= c.progress ? 'Play from the start' : 'Play'}</button>
+      <button className={`btn${primary ? ' primary' : ''}`} id="btnPlay" onClick={() => S.togglePlay()}>{c.playing ? 'Pause' : c.view >= c.progress ? 'Play from the start' : 'Play'}</button>
       <div className="seg speed" role="group" aria-label="Playback speed">
         {SPEEDS.map((x) => <button key={x} aria-pressed={x === c.speed} data-s={x} onClick={() => S.setSpeed(x)}>{x}×</button>)}
       </div>
@@ -86,6 +88,7 @@ function Playback() {
   const live = S.mode === 'play' && !!S.live && !!S.ctrl?.stopped;
   return (
     <>
+      {S.guide && <GuidePanel />}
       <PlaybackRow />
       {live && <StopSummary />}
       {S.mode === 'watch' && <TurnCard />}

@@ -89,6 +89,9 @@ export function App() {
       history: (open: boolean) => store.setHistory(open), graph: (big: boolean) => store.setGraphBig(big),
       layout: (name: string) => store.setLayout(name), theme: (name: 'auto' | 'light' | 'dark') => store.applyTheme(name),
       download: () => store.downloadRecord(),
+      guide: (id: string) => store.openGuide(id), guideNext: () => store.guideNext(), guidePrev: () => store.guidePrev(),
+      guideSelect: (i: number | null) => store.guideSelect(i), guideReturn: () => store.guideReturn(), guideNotes: (on: boolean) => store.setGuideNotes(on),
+      guideClose: () => store.closeGuide(), returnToPlay: () => store.returnToPlay(), togglePlay: () => store.togglePlay(),
       boxes: () => (store.lane && store.ctrl ? store.lane.objectBoxes(store.ctrl.frame) : {}),
       state: () => {
         const c = store.ctrl;
@@ -97,11 +100,13 @@ export function App() {
           lane: store.lane ? { scale: +store.lane.a.toFixed(3), angle: Math.round((store.lane.t * 180) / Math.PI) } : null,
           mode: store.mode, progress: c?.progress ?? null, view: c?.view ?? null, stopped: c?.stopped ?? null, live: !!store.live, sid: store.live?.sid ?? null,
           turns: store.game?.turns.map((t) => t.codes) ?? [], menu: c?.menu() ?? null, error: store.error, problem: store.problem ? { kind: store.problem.kind, message: store.problem.message } : null,
-          busy: store.busy, loading: store.loading, canSubmit: c?.canSubmit ?? false, ticksAuto: store.ticksAuto, playing: c?.playing ?? false,
+          busy: store.busy, loading: store.loading, canSubmit: c?.canSubmit ?? false, ticksAuto: store.ticksAuto, playing: c?.playing ?? false, walkingTo: c?.walkingTo ?? null,
           recovered: store.recovered, engine: store.engine ? { ready: store.engine.ready, simulations: store.engine.simulations } : null,
           replays: store.replays.map((r) => r.name), kind: store.game?.meta.provenance.kind ?? null, name: store.game?.name ?? null,
           seeds: store.game?.meta.seeds ?? null, marks: store.game?.meta.marks ?? null, beliefs: !!store.game?.beliefs, speed: c?.speed ?? null,
           histOpen: store.histOpen, graphBig: store.graphBig, detailsOpen: store.detailsOpen, dialog: store.dialog,
+          guides: store.guides.map((g) => g.id),
+          guide: store.guide ? { id: store.guide.guide.id, at: store.guide.at, notes: store.guide.notes, atEvent: store.guideAtEvent(), walking: store.guideWalking(), position: store.guidePosition() } : null,
           step: c?.step ? { t: c.step.t, i: c.step.i, n: c.step.frames.length, sub: c.frame.sub, auto: c.step.auto,
             head: document.querySelector('.st-head b')?.textContent, text: document.querySelector('.st-desc')?.textContent } : null,
         };

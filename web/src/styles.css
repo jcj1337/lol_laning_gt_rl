@@ -1,6 +1,7 @@
 /* The laning simulator demo's stylesheet: the approved M6a glass design (docs/m6/m6a_decision_record.md section 7),
    carried over from the prototype with the additions M6b needed (problem and loading blocks, the stop summary's
-   download control, the recovery note). Light by default, dark by the system setting or the About switch. Three
+   download control, the recovery note) and M6c's sequences (the note panel and the highlight ring). Light by
+   default, dark by the system setting or the About switch. Three
    arrangements of one surface: the dock (default), the rail (a phone held sideways) and the console (a narrow
    window), each a class on <body>. */
 /* ---------------------------------------------------------------- theme: light by default, dark by system or choice */
@@ -129,6 +130,9 @@ body.historical .field { fill: var(--field-past); }
 .l-label { font: 12px var(--font); fill: var(--muted); }
 .l-label.strong { font-weight: 600; fill: var(--ink); }
 .legend-dot { fill: var(--muted); }
+.legend-arrow { fill: none; stroke: var(--muted); stroke-width: 2; stroke-linecap: round; }
+/* the arrows of the last turn's moves; each label's fill is its team's colour, set by the scene */
+.mv-label { font: 600 11px var(--font); paint-order: stroke; stroke: var(--field); stroke-width: 4px; stroke-linejoin: round; }
 .pin-letter { font: 700 12px var(--font); fill: var(--on-team); pointer-events: none; }
 .tok .head { stroke: var(--tok-edge); }
 .contact { fill: var(--paper); stroke: var(--ink); }
@@ -539,3 +543,31 @@ dialog .field { display: flex; align-items: center; gap: 10px; margin: 2px 0 8px
 dialog .field input[type="number"] { width: 180px; height: 30px; border: 1px solid var(--ctl-edge); border-radius: 6px; background: var(--ctl); color: inherit; padding: 0 8px; }
 dialog details summary { font-size: 13px; color: var(--muted); cursor: pointer; margin-bottom: 6px; }
 .h-list .row:focus-visible { outline: 2px solid var(--focus); outline-offset: -2px; }
+
+/* ---------------------------------------------------------------- M6c additions: the sequences */
+/* the ring around the entity an event's note is about, drawn by the scene */
+.hl-ring { fill: none; stroke: var(--gold-edge); stroke-width: 3; animation: hl-pulse 1.6s ease-in-out infinite; }
+@keyframes hl-pulse { 50% { stroke-opacity: .35; } }
+body.reduced .hl-ring { animation: none; }
+@media (prefers-reduced-motion: reduce) { .hl-ring { animation: none; } }
+/* the note panel, above the playback row */
+.guide { flex: none; font-size: 12.5px; line-height: 1.4; min-width: 0; }
+.gd-head, .guide.collapsed { display: flex; align-items: baseline; gap: 8px; min-width: 0; white-space: nowrap; }
+.gd-head b, .guide.collapsed b { overflow: hidden; text-overflow: ellipsis; }
+.gd-kicker { font-size: 11px; font-weight: 600; letter-spacing: .04em; text-transform: uppercase; color: var(--muted); }
+.gd-tools { margin-left: auto; display: flex; gap: 12px; flex: none; padding-left: 8px; }
+.gd-text { margin: 2px 0 4px; }
+.gd-nav { display: flex; align-items: baseline; gap: 10px; flex-wrap: wrap; }
+.gd-away { color: var(--muted); }
+.guide .linkbtn { font-size: 12.5px; text-decoration: none; }
+.guide .linkbtn:hover { text-decoration: underline; }
+/* the dock grows while the notes are shown and the lane is fitted around it; the turn card keeps its actions line and
+   drops its outcome list (the history rows and Details still carry the outcomes) */
+body.guide-notes { --dock-h: 272px; }
+@media (max-height: 760px) { body.guide-notes { --dock-h: 262px; } }
+@media (max-width: 1150px) { body.guide-notes { --dock-h: 300px; } }
+.phone .gd-head .muted { display: none; }                     /* the turn label just above it names the position */
+body.guide-notes.lay-console { --con-main: 240px; }
+body.guide-notes.phone.lay-console { --con-main: 300px; }
+.phone .gd-text { max-height: 84px; overflow-y: auto; }
+body.guide-notes .tc-list { display: none; }

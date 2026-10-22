@@ -1,10 +1,10 @@
 """The demo API's typed contract (M6b): pydantic models for every request and response of `lanegame.demo.api`.
 
 They describe the shapes the session core already produces (`session.view`, `frames.position`, `frames.turn`,
-`actions.menu`, `session.recording`, `session.bundle`), so that FastAPI publishes them as an OpenAPI schema and the
-frontend's TypeScript types are generated from it (`web/openapi.json`, `web/src/api/schema.d.ts`). Every model forbids
-unknown fields, and a test validates the core's real output against them, so a field added on one side fails on the
-other.
+`actions.menu`, `session.recording`, `session.bundle`, `guides.Guide.public`), so that FastAPI publishes them as an
+OpenAPI schema and the frontend's TypeScript types are generated from it (`web/openapi.json`,
+`web/src/api/schema.d.ts`). Every model forbids unknown fields, and a test validates the core's real output against
+them, so a field added on one side fails on the other.
 
 The models change no value: the API serializes the core's dicts through them. Field names follow the core, including
 `from`, `with` and `schema`, which Python spells with an alias.
@@ -55,6 +55,7 @@ class Status(Strict):
     read_position: Optional[int] = None
     simulations: Literal["ready", "starting", "in_process", "unavailable"] = "unavailable"
     replays: int = 0
+    guides: int = 0
     sessions: int = 0
 
 
@@ -142,6 +143,28 @@ class Delta(Strict):
     hp_taken: int
 
 
+Place = Union[StrictInt, Literal["W", "base"]]      # a global cell, the ward spot, or the champion's base
+
+
+class ChampionMove(Strict):
+    kind: Literal["walk", "recall", "return", "death"]
+    from_: Place = Field(alias="from")
+    to: Place
+
+
+class WaveMove(Strict):
+    kind: Literal["walk", "crash"]
+    from_: int = Field(alias="from")
+    to: int
+
+
+class SeatMoves(Strict):
+    """How a seat's champion and leading wave moved over the turn (frames.moves); null when they did not, or when the
+    leading wave the turn started with was lost."""
+    champion: Optional[ChampionMove] = None
+    wave: Optional[WaveMove] = None
+
+
 class Turn(Strict):
     t: int
     k: int
@@ -153,6 +176,7 @@ class Turn(Strict):
     outcomes: List[Outcome]
     delta: Dict[Seat, Delta]
     reward_A: float
+    moves: Dict[Seat, SeatMoves]
 
 
 # ---------------------------------------------------------------------------------------------- the menu
@@ -384,6 +408,39 @@ class ReplayEntry(Strict):
     kind: Kind
     turns: int
     seats: Tuple[SeatPublic, SeatPublic]
+
+
+# ---------------------------------------------------------------------------------------------- guided replays
+class GuideHighlight(Strict):
+    kind: Literal["champion", "tower", "wave", "crashed", "ward_spot"]
+    seat: Optional[Seat] = None
+
+
+class GuideCheckpoint(Strict):
+    id: str
+    position: int
+    title: str
+    text: str
+    highlight: Optional[GuideHighlight] = None
+
+
+class Guide(Strict):
+    """A sequence (guides.py, which calls it a guide): events at positions of one research replay, position p being
+    the state after p turns; `end` is null when the walk ends with the recording."""
+    id: str
+    title: str
+    intro: str
+    replay: str
+    start: int
+    end: Optional[int] = None
+    checkpoints: List[GuideCheckpoint]
+
+
+class GuideEntry(Strict):
+    id: str
+    title: str
+    replay: str
+    checkpoints: int
 
 
 class ErrorBody(Strict):

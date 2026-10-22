@@ -149,6 +149,58 @@
     "title": "BundleMeta",
     "type": "object"
    },
+   "ChampionMove": {
+    "additionalProperties": false,
+    "properties": {
+     "from": {
+      "anyOf": [
+       {
+        "type": "integer"
+       },
+       {
+        "enum": [
+         "W",
+         "base"
+        ],
+        "type": "string"
+       }
+      ],
+      "title": "From"
+     },
+     "kind": {
+      "enum": [
+       "walk",
+       "recall",
+       "return",
+       "death"
+      ],
+      "title": "Kind",
+      "type": "string"
+     },
+     "to": {
+      "anyOf": [
+       {
+        "type": "integer"
+       },
+       {
+        "enum": [
+         "W",
+         "base"
+        ],
+        "type": "string"
+       }
+      ],
+      "title": "To"
+     }
+    },
+    "required": [
+     "kind",
+     "from",
+     "to"
+    ],
+    "title": "ChampionMove",
+    "type": "object"
+   },
    "ChampionStatus": {
     "additionalProperties": false,
     "properties": {
@@ -514,6 +566,164 @@
      "read_position"
     ],
     "title": "GameBundle",
+    "type": "object"
+   },
+   "Guide": {
+    "additionalProperties": false,
+    "description": "A sequence (guides.py, which calls it a guide): events at positions of one research replay, position p being\nthe state after p turns; `end` is null when the walk ends with the recording.",
+    "properties": {
+     "checkpoints": {
+      "items": {
+       "$ref": "#/components/schemas/GuideCheckpoint"
+      },
+      "title": "Checkpoints",
+      "type": "array"
+     },
+     "end": {
+      "anyOf": [
+       {
+        "type": "integer"
+       },
+       {
+        "type": "null"
+       }
+      ],
+      "title": "End"
+     },
+     "id": {
+      "title": "Id",
+      "type": "string"
+     },
+     "intro": {
+      "title": "Intro",
+      "type": "string"
+     },
+     "replay": {
+      "title": "Replay",
+      "type": "string"
+     },
+     "start": {
+      "title": "Start",
+      "type": "integer"
+     },
+     "title": {
+      "title": "Title",
+      "type": "string"
+     }
+    },
+    "required": [
+     "id",
+     "title",
+     "intro",
+     "replay",
+     "start",
+     "checkpoints"
+    ],
+    "title": "Guide",
+    "type": "object"
+   },
+   "GuideCheckpoint": {
+    "additionalProperties": false,
+    "properties": {
+     "highlight": {
+      "anyOf": [
+       {
+        "$ref": "#/components/schemas/GuideHighlight"
+       },
+       {
+        "type": "null"
+       }
+      ]
+     },
+     "id": {
+      "title": "Id",
+      "type": "string"
+     },
+     "position": {
+      "title": "Position",
+      "type": "integer"
+     },
+     "text": {
+      "title": "Text",
+      "type": "string"
+     },
+     "title": {
+      "title": "Title",
+      "type": "string"
+     }
+    },
+    "required": [
+     "id",
+     "position",
+     "title",
+     "text"
+    ],
+    "title": "GuideCheckpoint",
+    "type": "object"
+   },
+   "GuideEntry": {
+    "additionalProperties": false,
+    "properties": {
+     "checkpoints": {
+      "title": "Checkpoints",
+      "type": "integer"
+     },
+     "id": {
+      "title": "Id",
+      "type": "string"
+     },
+     "replay": {
+      "title": "Replay",
+      "type": "string"
+     },
+     "title": {
+      "title": "Title",
+      "type": "string"
+     }
+    },
+    "required": [
+     "id",
+     "title",
+     "replay",
+     "checkpoints"
+    ],
+    "title": "GuideEntry",
+    "type": "object"
+   },
+   "GuideHighlight": {
+    "additionalProperties": false,
+    "properties": {
+     "kind": {
+      "enum": [
+       "champion",
+       "tower",
+       "wave",
+       "crashed",
+       "ward_spot"
+      ],
+      "title": "Kind",
+      "type": "string"
+     },
+     "seat": {
+      "anyOf": [
+       {
+        "enum": [
+         "A",
+         "B"
+        ],
+        "type": "string"
+       },
+       {
+        "type": "null"
+       }
+      ],
+      "title": "Seat"
+     }
+    },
+    "required": [
+     "kind"
+    ],
+    "title": "GuideHighlight",
     "type": "object"
    },
    "HTTPValidationError": {
@@ -1426,6 +1636,34 @@
     "title": "ReplayEntry",
     "type": "object"
    },
+   "SeatMoves": {
+    "additionalProperties": false,
+    "description": "How a seat's champion and leading wave moved over the turn (frames.moves); null when they did not, or when the\nleading wave the turn started with was lost.",
+    "properties": {
+     "champion": {
+      "anyOf": [
+       {
+        "$ref": "#/components/schemas/ChampionMove"
+       },
+       {
+        "type": "null"
+       }
+      ]
+     },
+     "wave": {
+      "anyOf": [
+       {
+        "$ref": "#/components/schemas/WaveMove"
+       },
+       {
+        "type": "null"
+       }
+      ]
+     }
+    },
+    "title": "SeatMoves",
+    "type": "object"
+   },
    "SeatPublic": {
     "additionalProperties": false,
     "properties": {
@@ -1634,6 +1872,11 @@
        }
       ],
       "title": "Error"
+     },
+     "guides": {
+      "default": 0,
+      "title": "Guides",
+      "type": "integer"
      },
      "lane_exit_position": {
       "anyOf": [
@@ -2045,6 +2288,19 @@
       "title": "Modes",
       "type": "array"
      },
+     "moves": {
+      "additionalProperties": {
+       "$ref": "#/components/schemas/SeatMoves"
+      },
+      "propertyNames": {
+       "enum": [
+        "A",
+        "B"
+       ]
+      },
+      "title": "Moves",
+      "type": "object"
+     },
      "names": {
       "maxItems": 2,
       "minItems": 2,
@@ -2106,7 +2362,8 @@
      "ticks",
      "outcomes",
      "delta",
-     "reward_A"
+     "reward_A",
+     "moves"
     ],
     "title": "Turn",
     "type": "object"
@@ -2365,6 +2622,34 @@
     ],
     "title": "View",
     "type": "object"
+   },
+   "WaveMove": {
+    "additionalProperties": false,
+    "properties": {
+     "from": {
+      "title": "From",
+      "type": "integer"
+     },
+     "kind": {
+      "enum": [
+       "walk",
+       "crash"
+      ],
+      "title": "Kind",
+      "type": "string"
+     },
+     "to": {
+      "title": "To",
+      "type": "integer"
+     }
+    },
+    "required": [
+     "kind",
+     "from",
+     "to"
+    ],
+    "title": "WaveMove",
+    "type": "object"
    }
   }
  },
@@ -2375,6 +2660,77 @@
  },
  "openapi": "3.1.0",
  "paths": {
+  "/api/guides": {
+   "get": {
+    "operationId": "guides_index_api_guides_get",
+    "responses": {
+     "200": {
+      "content": {
+       "application/json": {
+        "schema": {
+         "items": {
+          "$ref": "#/components/schemas/GuideEntry"
+         },
+         "title": "Response Guides Index Api Guides Get",
+         "type": "array"
+        }
+       }
+      },
+      "description": "Successful Response"
+     }
+    },
+    "summary": "Guides Index"
+   }
+  },
+  "/api/guides/{gid}": {
+   "get": {
+    "operationId": "guide_api_guides__gid__get",
+    "parameters": [
+     {
+      "in": "path",
+      "name": "gid",
+      "required": true,
+      "schema": {
+       "title": "Gid",
+       "type": "string"
+      }
+     }
+    ],
+    "responses": {
+     "200": {
+      "content": {
+       "application/json": {
+        "schema": {
+         "$ref": "#/components/schemas/Guide"
+        }
+       }
+      },
+      "description": "Successful Response"
+     },
+     "404": {
+      "content": {
+       "application/json": {
+        "schema": {
+         "$ref": "#/components/schemas/ErrorBody"
+        }
+       }
+      },
+      "description": "Not Found"
+     },
+     "422": {
+      "content": {
+       "application/json": {
+        "schema": {
+         "$ref": "#/components/schemas/HTTPValidationError"
+        }
+       }
+      },
+      "description": "Validation Error"
+     }
+    },
+    "summary": "Guide"
+   }
+  },
   "/api/models": {
    "get": {
     "operationId": "models_api_models_get",

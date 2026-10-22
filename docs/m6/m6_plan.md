@@ -1,6 +1,7 @@
 # M6 plan: presentation, interactive demonstration and reproducibility
 
-*Written 2026-10-19, revised 2026-10-21 and 2026-10-22. Status: **M6a and M6b complete; M6c next.** The headless
+*Written 2026-10-19, revised 2026-10-21 and 2026-10-22. Status: **M6a and M6b complete; M6c narrowed, its first
+step built and awaiting the user's review.** The headless
 session core is built and verified ([M6a technical report](m6a_technical_report.md)). After six review rounds, the
 user approved the final interface design on 2026-10-21: one frosted glass dock over a diagonal top-down lane, with
 live Play through the session core ([M6a decision record](m6a_decision_record.md) §7). M6b built the maintained
@@ -14,16 +15,26 @@ initial release. A Chess.com-style turn history governs navigation in Play and W
 clarity requirements. The three decisions of the first version are settled (§10). Sections that the brief or the M6a
 work changed say so.*
 
+*The second 2026-10-22 revision narrows M6c (the user's decision). The application stays a simple research
+demonstration with Play and Watch. M6c is a small collection of optional guided replays within Watch (shown to
+visitors as Sequences since the fourth review), built in
+three steps: the format and one complete example ([M6c report](m6c_guided_replays.md), done), the user's review,
+then a few more examples. The separate findings page, the in-app research explanation and a prominent gallery of
+all 15 recordings are dropped. The research question, the method, the aggregate results, the comparisons and the
+limitations move to M6d's research overview. The 15 recordings stay as research artifacts.*
+
 M5 is complete ([final report](../m5/m5e_closeout_report.md)). M6 makes its findings understandable, playable and
 reproducible. Its centre is a new web application with two primary modes. In **Play**, a visitor chooses discrete
 actions for one seat against a trained M5 policy, either pure self-play or the opponent-modelling package. In
 **Watch**, two bots play a bounded simulated match that the visitor explores through a timeline. The same application
-replays verified research games and explains what M5 found and what it did not. M6 adds no mechanics, rewards,
+replays verified research games, a few of them with short guided notes. What M5 found and what it did not is
+explained in the documentation, which the application links to. M6 adds no mechanics, rewards,
 training objectives or training runs. Further research stays optional and is never a prerequisite for finishing M6.
 
 The work runs in five milestones: M6a (product definition and technical readiness), M6b (the playable application),
-M6c (research demonstration and explanation), M6d (documentation and reproducibility) and M6e (release readiness).
-The initial release is complete at the end of M6e, and public deployment waits for the user's approval there.
+M6c (sequences within Watch), M6d (documentation, the research overview and reproducibility) and M6e (release
+readiness). The initial release is complete at the end of M6e, and public deployment waits for the user's approval
+there.
 
 ## 1. Status of each part
 
@@ -38,7 +49,8 @@ Status labels follow the roadmap's legend.
 | scripted strategies as additional opponents | a design decision, assessed in the [decision record](m6a_decision_record.md); the session core supports them |
 | a Chess.com-style turn history shared by Play and Watch, and the frontend clarity requirements (§5.1, §5.2) | approved requirements (the user, 2026-10-21) |
 | the Streamlit viewer archived as legacy during implementation, not reworked | approved direction; planned for M6d, not done. The old UI is not a visual template |
-| guided replay of verified research games as a supporting mode | approved direction to consider it; its scope in §7 is proposed |
+| sequences (first called guided replays) of verified research games within Watch, as M6c's whole content | approved direction (the user, 2026-10-22); the format and the first example are built ([M6c report](m6c_guided_replays.md)), the user's review of them is pending |
+| a separate findings page and research explanation inside the application | dropped (the user, 2026-10-22); the research overview is M6d documentation, linked from the application |
 | React with TypeScript and Vite in `web/` in this repository, FastAPI over the Python simulator, one container | approved by the user on 2026-10-21, unless a concrete blocker appears; M6a found none |
 | `docs/` tracked in git | approved (the user, 2026-10-21) and done: the blanket ignore rule is removed |
 | the headless session core and the rules it proves (M6a) | completed and verified ([technical report](m6a_technical_report.md)) |
@@ -116,6 +128,9 @@ Every requirement below is a rule of the design and an acceptance check. M6a pro
 finals before any UI exists. **It did so on 2026-10-21** ([technical report](m6a_technical_report.md) §3). It also
 implements rules 10 to 13 in the session core, where tests cover them. M6b proves rules 6, 10, 11, 12 and 13 through
 the API and the browser, and rule 8 for the records the app writes. M6c proves rule 8 for research records, and rule 9.
+*2026-10-22:* M6b already proves rule 8 for the three seed-0 recordings (re-simulated and checked at every start), and
+M6c's guides are validated against those verified replays; rule 9's copy review covers the guide notes in M6c and the
+research overview in M6d.
 Rule 13 was added on 2026-10-21. Rule 5 now also keeps a drawn chance seed secret until the session stops, because a
 known chance seed foresees the trade, gank and tower rolls.
 
@@ -129,7 +144,7 @@ known chance seed foresees the trade, gank and tower rolls.
 | 6 | faithful animation | The frontend animates only per-tick facts that the engine records and Python serializes into frames. Turn-level events appear as turn outcomes, never at an invented tick. The frontend computes no game rule | A schema test traces every frame field to an engine field. The frontend's frames for one recording equal `frame_view` |
 | 7 | model identity | A registry describes each opponent: arm, seed, training budget, configuration, input width, file SHA-256, the library networks it needs and a link to the M5 evidence. The server checks every file's SHA-256 before loading and refuses to start on a mismatch. The play screen always names the opponent | A corrupted file stops the server at start-up. Each record's model fields match the registry |
 | 8 | replay provenance | Every record carries one of three kinds: *research record* (an M5 recording, its SHA-256 in the bundle manifest, re-verified when the bundle is built), *new simulation* (both seats are policies, generated by the app) and *human game*. The kind is shown wherever a record is shown. The initial release opens only bundled research records and records the app itself generated; importing files is out of scope | The bundle build refuses a research record whose replay differs from its stored payoff. Each record view shows its kind |
-| 9 | research claims | The app never claims performance against humans. M5 measured the policies against scripted styles, other policies and learned attackers only. The wording rules are in §9 | A copy review against §9 in M6c |
+| 9 | research claims | The app never claims performance against humans. M5 measured the policies against scripted styles, other policies and learned attackers only. The wording rules are in §9 | A copy review against §9: the guide notes in M6c, the research overview in M6d |
 | 10 | session ending | A visitor can stop at any turn. Stopping is not a terminal state, carries no reward and declares no winner. The turn cap (proposed: 150) is a demo limit, stated as such. The stop summary describes the state (earned-gold lead, XP, levels, HP, absence, the wave), not a result | No win or loss wording anywhere. The summary names the stop turn and the reason |
 | 11 | lane-exit assessment | Turn 94 is marked as the lane exit. A visitor who plays to turn 114 sees the undiscounted lead after 114 turns. M5 used that lead to realize E_20 at the turn-94 lane exit (`games.READ_TURN`). The app labels it as one game, not an expectation. No policy plays the visitor's seat for it. A continuation-based E_20 is not in the initial release. If it is added later, the screen names the continuation policy that takes over the visitor's seat and labels the number as that policy's expected result from the position | The panel's values equal the lead computed from the record. No E_20 appears without its continuation policy |
 | 12 | belief visibility | The visitor chooses at the start whether the modelling opponent's belief is hidden (default) or shown. Showing it changes what the visitor knows, so the record stores the mode. After the session stops, the belief history is available in either mode. The belief view states that the library holds 6 scripted styles, 5 learned policies, a mixture and "unknown", and no human. In shown mode a visitor can try to steer the belief on purpose. M5 never tested deliberate deception, so the app makes no claim about it | In hidden mode the API returns no belief data during play. The record carries the mode |
@@ -191,7 +206,8 @@ recording and menu formats. History navigation runs on the client's cache of the
   setting M5 used.
 - **Static replay.** Research recordings become frame files at build time, verified by re-simulation. The frontend
   reads them as static assets, so replay and the findings stay available when the inference backend is down or not
-  deployed.
+  deployed. *2026-10-22:* not built. M6b serves the three seed-0 replays from the API, re-simulated and checked at
+  every start, and M6c's guides use that path. Static frame files are not planned for the initial release.
 - **A typed boundary.** FastAPI's pydantic models produce an OpenAPI schema, and the frontend's TypeScript types are
   generated from it, so a field renamed on one side fails the build on the other.
 
@@ -261,8 +277,11 @@ The user journeys are:
 2. **Watch a new simulation.** Choose a bot for each seat. The server generates a bounded match, and the visitor
    explores it through the timeline with autoplay and speed control. It is labelled a new simulation.
 3. **Watch a research game.** Pick a verified recording, see its provenance and what it shows, and step or play
-   through it.
-4. **Learn the findings.** Read the findings page, then jump into replays at specific turns and into the reports.
+   through it. Or open a sequence (M6c): the same recording starts paused at a chosen position with a short
+   note, and "Next event" plays the turns to each of a few annotated positions in turn.
+4. **Learn the findings.** Follow the application's link to the research documentation (the research overview,
+   M6d), then come back to the replays and the reports. *Revised 2026-10-22:* there is no findings page in the
+   application.
 5. **Reproduce.** Run the demo from the README and its bundle, or regenerate the analysis from the evidence bundle.
 
 ### 5.1 The turn history (approved requirement, 2026-10-21)
@@ -382,42 +401,66 @@ undecided).*
 - **Effort.** L. The frontend is the first production JavaScript in the repository, and the lane view, the history
   and the action selection may need several iterations. The backend part is S to M, since the core exists.
 
-### M6c. Research demonstration and explanation
+### M6c. Sequences within Watch
 
-- **Objective and outcome.** A visitor learns what M5 found and sees it in games. The outcome is a findings page and
-  replays of the 15 verified recordings with provenance and short guided notes.
-- **Scope.**
-  - A bundle build that converts the M5 recordings to the app format, verifies each by re-simulation and writes
-    frame files.
-  - Guided notes for the three seed-0 demonstration games (`h2h_om_s0_vs_sp_s0`, `om_s0_vs_g_shove`,
-    `sp_s0_vs_g_shove`) and an overview of the 12 attacker games. The two `g_shove` games have different seeds and
-    seats. Each was selected separately as a median game, so the notes never present them as a paired comparison.
-  - The findings page (§9), with the six-seed numbers, what one unit of lead means (from the mathematical reference)
-    and links to the evidence.
-  - Figures only from existing records.
-- **Exclusions.** New evaluations, new statistics, new training, and choosing recordings by their performance. The
-  recordings were selected by M5's fixed upper-median rule, and M6 keeps that selection.
-- **Dependencies.** M6b's shared lane view and timeline; M6a's frame format.
-- **Deliverables.** The bundle build in `lanegame/demo/`, the findings and replay views in `web/`, and the reviewed
-  text.
+*Revised 2026-10-22 (the user's decision). Until then this milestone was "research demonstration and explanation":
+a bundle build converting all 15 recordings to static frame files, guided notes for the three seed-0 games and an
+overview of the 12 attacker games, and a findings page with the six-seed numbers. The application stays a simple
+research demonstration focused on Play and Watch, and the detailed research explanation belongs in the documentation
+(M6d). Step 1 is done ([M6c report](m6c_guided_replays.md)).*
+
+- **Objective and outcome.** A visitor who opens Watch can choose one of a few sequences (first called guided
+  replays): a verified research
+  recording that starts paused at a chosen position and walks through three to five annotated events, each leading to the next. The outcome
+  is a lightweight guide format, a small collection of examples, and the Watch integration.
+- **Scope, in three steps.**
+  1. The guide format and one complete example, prepared for review: a readable data file per guide
+     (`lanegame/demo/guides/<id>.json`) with a stable id, a title, a short introduction, the recording it refers to,
+     a start position, an optional end position and an ordered list of checkpoints (id, position, title, a concise
+     explanation, an optional highlight of a champion, tower, wave, crashed minions or the ward spot). Position t is
+     the state after t turns. The server validates every guide against the verified replay at startup. Watch gets a
+     modest way to open a guide, a compact note panel with "Previous event" and "Next event", and keeps ordinary
+     playback, speed, history navigation and the gold graph.
+  2. The user's review and refinement: the chosen sequence, the starting point, the checkpoint positions, the
+     wording, the highlights and the note panel's placement.
+  3. A small number of additional examples in the accepted format.
+- **Retained from the earlier scope.** The existing Play and Watch experience; the clear label of a recorded research
+  game against a generated simulation; deterministic verification of every recording a guide uses; a simple link to
+  the research documentation.
+- **Moved to M6d.** The research question, the method, the aggregate results, the comparisons and the limitations
+  (the research overview). The 15 recordings remain available as research artifacts; nothing is deleted.
+- **Exclusions.** A findings page, extensive in-app research explanation, a prominent gallery of all 15 recordings,
+  a general tutorial engine or authoring interface, dynamic coaching in live games, new evaluations, new statistics,
+  new training, and choosing recordings by their performance (M5's fixed upper-median selection stands).
+- **Dependencies.** M6b's replay path, Watch controller, timeline and frame data.
+- **Deliverables.** `lanegame/demo/guides.py` and `lanegame/demo/guides/`, the API routes and schemas, the Watch
+  integration in `web/`, `tests/test_demo_guides.py`, the browser check `python -m lanegame.experiments.m6c
+  browser`, and the format documentation with authoring instructions in the M6c report.
 - **Acceptance checks.**
-  - The build refuses any recording whose replay differs from its record.
-  - A script checks every number on the findings page against `results/m5/analysis_main.json` and
-    `strategic_main.json`.
-  - Replays and the findings work with the API stopped.
-  - The text passes the review against §9. Rule 8 for research records and rule 9 pass their checks.
-- **User decision.** Approval of the findings text.
-- **Effort.** M. Writing explanations a newcomer can follow is the main work. How much explanation is enough is
-  the uncertainty, and a reading by someone new to the project settles it.
+  - Every guide's recording exists and passes the existing replay verification; every checkpoint position exists and
+    the positions increase; a guide that breaks a rule stops the server with a message naming the file and the rule.
+  - Every explanation agrees with the recorded states and events (a test pins the first guide's numbers to the
+    replay).
+  - Previous and Next open the right position and note; manual navigation, playback and hidden notes stay
+    coherent; guide content never appears in a live game or a generated match; a loading failure shows a readable
+    message; the note panel fits the approved layout at desktop and a smaller window.
+  - The notes pass the review against §9: observed facts apart from interpretation, no claim about the agents'
+    intentions, no single game offered as evidence for an aggregate finding.
+- **User decision.** Acceptance of the format and the first example (step 2), then of each further example.
+- **Effort.** S for each step. Writing notes that are accurate and useful is the main work.
 
-### M6d. Documentation and reproducibility
+### M6d. Documentation, the research overview and reproducibility
 
-- **Objective and outcome.** A reader can run the demo, regenerate the M5 analysis or rerun the campaign from the
-  documentation alone. The outcome is a concise README, an accessible research overview and a reproduction guide with
-  three bundles.
+- **Objective and outcome.** A reader can run the demo, understand what M5 asked and found, regenerate the M5
+  analysis or rerun the campaign from the documentation alone. The outcome is a concise README, an accessible research
+  overview and a reproduction guide with three bundles.
 - **Scope.**
   - A shorter README that links to the overview, the roadmap and the reports.
-  - `docs/m6/research_overview.md`, written for a newcomer.
+  - `docs/m6/research_overview.md`, written for a newcomer: the research question, the method, the aggregate
+    results with all six seeds, the comparisons between the arms, and the limitations, under the wording rules of
+    §9, with what one unit of lead means (from the mathematical reference) and links to the evidence. A script
+    checks every number in it against `results/m5/analysis_main.json` and `strategic_main.json`. *Moved here from
+    M6c on 2026-10-22; the application links to it instead of carrying a findings page.*
   - The reproduction guide with three paths: run the demo, regenerate the analysis, rerun the campaign.
   - A packing command that writes each bundle and its SHA-256 manifest (§8).
   - A re-run of `reproduce` on the committed tree, with the 5 library networks added to the key-checkpoint table.
@@ -443,7 +486,9 @@ undecided).*
     attack_check analyse report` reproduces `results/m5/report.md`.
   - The tag runs the old viewer, and the full suite passes after the move.
   - Every manifest's SHA-256 matches its files.
-- **User decisions.** A license, and where the evidence and training bundles are published.
+  - The research overview's numbers match the analysis files, and its text passes the review against §9.
+- **User decisions.** Approval of the research overview's text; a license; where the evidence and training bundles
+  are published.
 - **Effort.** M. Uncertainty is low. The fresh-environment run may expose path assumptions, such as the Windows paths
   inside the v1 recordings.
 
@@ -486,9 +531,10 @@ and Watch is its second primary mode (the user, 2026-10-21).
 | stop at any turn, a 150-turn cap, a summary without a winner | ✓ | | |
 | the lane-exit marker at turn 94 and the turn-114 lead | ✓ | | |
 | download one's own record, replayable bit for bit | ✓ | | |
-| replays of the 15 verified M5 recordings with provenance | ✓ | | |
-| guided notes for the three seed-0 games | ✓ | more recordings with notes | |
-| the findings page with the six-seed numbers and links | ✓ | | |
+| replays of the three verified seed-0 recordings with provenance, re-simulated and checked at every start (M6b) | ✓ | | |
+| replays of the other 12 recordings (the attacker games) | | possible; they stay research artifacts under `results/m5/traces/` (revised 2026-10-22) | |
+| a small collection of sequences within Watch (M6c): the first one | ✓ (built, in review) | a few more after the format is accepted | |
+| the findings page with the six-seed numbers and links | | | ✓ (dropped 2026-10-22: the research overview is M6d documentation, linked from the application) |
 | continuation-based E_20 with a named continuation policy | | a user decision | |
 | importing a record file | | possible | |
 | a visible commitment to the opponent's action (a hash revealed after the turn) | | possible | |
@@ -531,7 +577,8 @@ Visitors never download the evidence or training bundles. The app needs only the
   downloads their own. The server logs only aggregate counters and errors.
 - **Same origin.** The process serves the API and the static frontend, so no CORS configuration is needed.
 - **Replay without inference.** Replays and the findings are static files. They can also be hosted on a static host
-  without the API, in which case play is shown as unavailable.
+  without the API, in which case play is shown as unavailable. *2026-10-22:* not built (§4.2); the replays and the
+  guides come from the API.
 
 ### 8.3 Scaling later
 

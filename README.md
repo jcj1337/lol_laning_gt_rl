@@ -76,15 +76,19 @@ Python 3.10 or later.
 ```bash
 python -m venv .venv
 .venv/Scripts/activate              # macOS/Linux: source .venv/bin/activate
-pip install -e ".[test,rl,viewer]"
-python -m pytest                    # about 1,550 tests, 8 to 11 minutes
+pip install -e ".[test,rl]"
+python -m pytest                    # about 1,600 tests, 9 to 12 minutes
 ```
 
-### Play against the agents
+### Play against the agents, or watch them
 
-The demo is a web page where you play one side against a trained agent, or watch two agents play a generated match,
-with every turn explained. It needs the trained networks (not in the repository, see below), Node 20 or later for the
-one-time frontend build, and the `demo` extra.
+The demo is a web page with two modes. In Play you take one side against a trained agent, with every turn explained
+and arrows on the lane showing how each champion and minion wave moved.
+In Watch you follow a match the engine generates between the two agents, or one of three recorded research games
+that the server re-simulates and checks when it starts. One recorded game has a sequence, "Stacking to Crashing": five events in a chain, from
+trades that keep the opponent from going back to base, to a wave that stacks and crashes into its tower, to the tower plates
+that crash pays for. The demo needs the trained networks (not in
+the repository, see below), Node 22.12 or later for the one-time frontend build, and the `demo` extra.
 
 ```bash
 pip install -e ".[demo]"
@@ -92,16 +96,10 @@ cd web && npm install && npm run build && cd ..
 python -m lanegame.demo                 # then open http://127.0.0.1:8765/
 ```
 
-### Watch recorded games
-
-The repository includes 15 recorded games from the final campaign. The demo's Watch mode replays the three seed-0
-games. The older Streamlit viewer replays all 15 turn by turn:
-
-```bash
-streamlit run lanegame/viewer/app.py
-```
-
-In the sidebar, choose **Recorded trajectory** and set the folder to `results/m5/traces`.
+To open it, switch to **Watch** and pick it under **Sequences**, or open
+http://127.0.0.1:8765/?mode=watch&sequence=stacking-to-crashing. The notes and the format are described in
+[docs/m6/m6c_guided_replays.md](docs/m6/m6c_guided_replays.md). All 15 recorded games of the final campaign stay
+under `results/m5/traces/` as research artifacts.
 
 ### Solve the small game
 
@@ -159,8 +157,8 @@ lanegame/                 the game, the RL environment, training and analysis
   opponent/               scripted opponent styles and the Bayesian belief about them
   diagnostics/            counterfactual replays and the end-of-lane score
   experiments/            one package per milestone, each writing to results/<milestone>/
-  viewer/                 the Streamlit replay viewer
-  demo/                   the web demo's API, game sessions, recordings and frames
+  viewer/                 replay helpers used by the experiments, and an earlier viewer due to be archived
+  demo/                   the web demo's API, game sessions, recordings, frames and sequences
 web/                      the web demo's frontend (React and TypeScript, built by Vite)
 tests/                    about 1,600 tests, including bit-for-bit reproducibility checks
 results/                  the output of every experiment
@@ -185,4 +183,4 @@ legacy/                   the original Q-learning prototype and the archived M6a
 | M4 | Built and calibrated the full laning model, trained PPO self-play on it, and diagnosed what the agents miss | Complete ([closeout](docs/m4/m4_closeout_report.md)) |
 | Opponent modelling | Tested whether a Bayesian belief about the opponent's style helps, first with existing agents, then in a matched training pilot | Complete ([pilot](docs/opponent_modelling/om2_pilot_report.md)) |
 | M5 | The final training, opponent modelling against pure self-play, in 12 runs of 32.8 million transitions each | Complete, 2026-10-19 ([final report](docs/m5/m5e_closeout_report.md)) |
-| M6 | A web app to play against the trained agents, watch them play each other and replay research games, plus reproduction bundles | In progress (the playable app is done, [report](docs/m6/m6b_report.md); the research replays and the findings page are next) |
+| M6 | A web app to play against the trained agents, watch them play each other and replay research games, plus documentation and reproduction bundles | In progress. Done: the playable app ([report](docs/m6/m6b_report.md)) and the first sequence ([notes](docs/m6/m6c_guided_replays.md), under review). Planned: a few more sequences, the research overview and reproduction guide (M6d), release readiness (M6e) |

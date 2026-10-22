@@ -10,7 +10,7 @@ import { api as realApi, ApiError } from '../api/client';
 import type { Api } from '../api/client';
 import { Controller, Live } from './controller';
 import { prefersReducedMotion } from './frames';
-import type { BeliefMode, Game, ModelId, Names, ReplayEntry, Status, View } from './types';
+import type { BeliefMode, Game, Guide, GuideCheckpoint, GuideEntry, GuideHighlight, ModelId, Names, ReplayEntry, Status, View } from './types';
 import { gameFromBundle } from './types';
 import { AGENTS, nameSets } from './words';
 import type { Lane } from '../scene/lane';
@@ -24,6 +24,9 @@ export const THEMES: Theme[] = ['auto', 'light', 'dark'];
 export interface Selection { kind: 'lane' | 'recall' | 'ward' | null; wave: number | null; beh: number | null; pressure: boolean }
 export interface LiveSession { sid: string; opp: ModelId; belief: BeliefMode; cap: number }
 export interface Problem { kind: 'lost' | 'engine' | 'unanswered' | 'error'; message: string; retry?: () => void }
+/** The open sequence: the selected checkpoint's index (null = the introduction, shown at the sequence's start) and
+ * whether the note panel is shown. The viewed position is the controller's; whether it is at the event is derived. */
+export interface GuideView { guide: Guide; at: number | null; notes: boolean }
 
 const KEYS = { theme: 'lanegame-demo-theme', ticks: 'lanegame-demo-ticks', session: 'lanegame-demo-session' };
 export const empty = (): Selection => ({ kind: null, wave: null, beh: null, pressure: false });
@@ -36,7 +39,7 @@ function loadJSON<T>(key: string): T | null { try { const v = storage()?.getItem
 function saveJSON(key: string, v: unknown): void { try { if (v === null) storage()?.removeItem(key); else storage()?.setItem(key, JSON.stringify(v)); } catch { /* unavailable */ } }
 
 export interface Params {
-  mode: Mode; opp: ModelId; belief: BeliefMode; seed: number | null; game: string | null; view: number | null;
+  mode: Mode; opp: ModelId; belief: BeliefMode; seed: number | null; game: string | null; guide: string | null; view: number | null;
   layout: LayoutChoice; theme: Theme | null; ticks: 'auto' | 'manual' | null; still: boolean; history: boolean;
   graph: boolean; detail: string; speed: number; fresh: boolean;
 }
@@ -45,10 +48,10 @@ export function readParams(search = typeof location === 'undefined' ? '' : locat
   const q = new URLSearchParams(search);
   const num = (k: string): number | null => (q.has(k) && q.get(k) !== '' && !isNaN(+q.get(k)!) ? +q.get(k)! : null);
   return {
-    mode: q.get('mode') === 'watch' ? 'watch' : 'play',
+    mode: q.get('mode') === 'watch' || q.has('sequence') ? 'watch' : 'play',
     opp: q.get('opp') === 'om:0' ? 'om:0' : 'sp:0',
     belief: q.get('belief') === 'shown' ? 'shown' : 'hidden',
-    seed: num('seed'), game: q.get('game'), view: num('view'),
+    seed: num('seed'), game: q.get('game'), guide: q.get('sequence'), view: num('view'),
     layout: (LAYOUTS as string[]).includes(q.get('layout') ?? '') ? (q.get('layout') as Layout) : 'auto',
     theme: (THEMES as string[]).includes(q.get('theme') ?? '') ? (q.get('theme') as Theme) : null,
     ticks: q.get('ticks') === 'auto' ? 'auto' : q.get('ticks') === 'manual' ? 'manual' : null,
@@ -73,6 +76,8 @@ export class AppStore {
   live: LiveSession | null = null;
   engine: Status | null = null;
   replays: ReplayEntry[] = [];
+  guides: GuideEntry[] = [];
+  guide: GuideView | null = null;                           // only ever set in Watch, on a research replay
   names: Names = { A: 'A', B: 'B' };
   short: Names = { A: 'A', B: 'B' };
   head: Names = { A: 'A', B: 'B' };
@@ -101,6 +106,7 @@ export class AppStore {
   private gen = 0;
   private started = false;
   private unsubscribeCtrl: (() => void) | null = null;
+  private parked: LiveSession | null = null;               // the live game a switch to Watch left on the server
 
   api: Api;
 
@@ -122,9 +128,11 @@ export class AppStore {
     this.arrange(true);
     try { this.engine = await this.api.status(); } catch { this.engine = null; }
     try { this.replays = this.engine?.ready ? await this.api.replays() : []; } catch { this.replays = []; }
+    try { this.guides = this.engine?.ready ? await this.api.guides() : []; } catch { this.guides = []; }
     this.emit();
     if (P.mode === 'watch') {
-      if (P.game) await this.watch(P.game, P.view ?? 0);
+      if (P.guide) await this.openGuide(P.guide);
+      else if (P.game) await this.watch(P.game, P.view ?? 0);
       else if (this.replays.length) await this.watch(this.replays[0].name, P.view ?? 0);
       else this.showIdle();
     } else if (!P.fresh && await this.resume()) {
@@ -161,8 +169,7 @@ export class AppStore {
   }
 
   /** Resume the session the browser remembers, if the server still holds it. */
-  private async resume(): Promise<boolean> {
-    const saved = loadJSON<LiveSession>(KEYS.session);
+  private async resume(saved: LiveSession | null = loadJSON<LiveSession>(KEYS.session)): Promise<boolean> {
     if (!saved || !this.engine?.ready) return false;
     const gen = ++this.gen;
     try {
@@ -179,7 +186,7 @@ export class AppStore {
       return true;
     } catch (e) {
       if (gen !== this.gen) return true;
-      if (e instanceof ApiError && e.status === 404) { saveJSON(KEYS.session, null); this.recovered = 'gone'; return false; }
+      if (e instanceof ApiError && e.status === 404) { saveJSON(KEYS.session, null); this.parked = null; this.recovered = 'gone'; return false; }
       this.problem = { kind: e instanceof ApiError && e.unanswered ? 'unanswered' : 'error', message: (e as Error).message,
         retry: () => { this.problem = null; void this.resume().then((ok) => { if (!ok) void this.newGame(); }); } };
       this.emit();
@@ -213,6 +220,7 @@ export class AppStore {
       const bel = v.belief ? { types: Object.values(v.belief)[0].types, posteriors: Object.fromEntries(Object.entries(v.belief).map(([s, b]) => [s, [b.posterior]])) } : null;
       const G = this.liveGame(v, d.history.positions, [], bel);
       this.live = { sid: d.session, opp, belief, cap: v.turn_cap };
+      this.parked = null;
       saveJSON(KEYS.session, this.live);
       this.recovered = null;
       const c = new Live(G, v.turn_cap, { belief, speed: this.ctrl ? this.ctrl.speed : this.params.speed, env: this.env() });
@@ -227,45 +235,50 @@ export class AppStore {
   }
 
   async watch(name: string, view = 0): Promise<void> {
-    this.ctrl?.pause();
-    const gen = ++this.gen;
-    this.mode = 'watch';
-    this.loading = 'Loading the game…';
-    this.problem = null;
-    this.dialog = null;
-    this.emit();
-    try {
-      const b = await this.api.replay(name);
-      if (gen !== this.gen) return;
-      this.live = null;
-      const G = gameFromBundle(b);
-      this.install(G, new Controller(G, { mode: 'watch', view, speed: this.ctrl ? this.ctrl.speed : this.params.speed, env: this.env() }));
-    } catch (e) {
-      if (gen !== this.gen) return;
-      this.failed(e, () => this.watch(name, view));
-    } finally {
-      if (gen === this.gen) { this.loading = null; this.emit(); }
-    }
+    await this.loadWatch('Loading the game…', async () => ({ game: gameFromBundle(await this.api.replay(name)), view }), () => this.watch(name, view));
   }
 
   async simulate(a: ModelId = 'om:0', b: ModelId = 'sp:0'): Promise<void> {
+    await this.loadWatch('The engine is playing 150 turns…', async () => {
+      const G = gameFromBundle(await this.api.simulate({ a, b, turns: 150 }));
+      G.label = `New game: ${AGENTS[a].name} vs. ${AGENTS[b].name.toLowerCase()}`;
+      return { game: G };
+    }, () => this.simulate(a, b));
+  }
+
+  /** A sequence: its recording paused at the sequence's start, with the introduction shown. */
+  async openGuide(id: string): Promise<void> {
+    let guide: Guide | null = null;
+    await this.loadWatch('Loading the sequence…', async () => {
+      // a missing sequence is not a lost game: its 404 reads as a plain error, in the server's words
+      guide = await this.api.guide(id).catch((e: unknown) => { throw e instanceof ApiError && e.status === 404 ? new Error(e.message) : e; });
+      return { game: gameFromBundle(await this.api.replay(guide.replay)), view: guide.start };
+    }, () => this.openGuide(id), () => {
+      this.guide = { guide: guide!, at: null, notes: true };
+      this.notesClass(true);
+      this.refit();
+    });
+  }
+
+  /** A game into Watch: pause whatever plays, fetch, drop a stale answer, park the live game, install, then `after`. */
+  private async loadWatch(loading: string, fetchGame: () => Promise<{ game: Game; view?: number }>, retry: () => void, after?: () => void): Promise<void> {
     this.ctrl?.pause();
     const gen = ++this.gen;
     this.mode = 'watch';
-    this.loading = 'The engine is playing 150 turns…';
+    this.loading = loading;
     this.problem = null;
     this.dialog = null;
     this.emit();
     try {
-      const bundle = await this.api.simulate({ a, b, turns: 150 });
+      const r = await fetchGame();
       if (gen !== this.gen) return;
+      this.parked = this.live ?? this.parked;
       this.live = null;
-      const G = gameFromBundle(bundle);
-      G.label = `New game: ${AGENTS[a].name} vs. ${AGENTS[b].name.toLowerCase()}`;
-      this.install(G, new Controller(G, { mode: 'watch', view: 0, speed: this.ctrl ? this.ctrl.speed : this.params.speed, env: this.env() }));
+      this.install(r.game, new Controller(r.game, { mode: 'watch', view: r.view ?? 0, speed: this.ctrl ? this.ctrl.speed : this.params.speed, env: this.env() }));
+      after?.();
     } catch (e) {
       if (gen !== this.gen) return;
-      this.failed(e, () => this.simulate(a, b));
+      this.failed(e, retry);
     } finally {
       if (gen === this.gen) { this.loading = null; this.emit(); }
     }
@@ -279,6 +292,7 @@ export class AppStore {
   }
 
   private install(G: Game, ctrl: Controller): void {
+    if (this.guide) this.closeGuide();
     this.ctrl?.dispose();
     this.unsubscribeCtrl?.();
     this.game = G;
@@ -408,6 +422,69 @@ export class AppStore {
     }
   }
 
+  // ---- the sequence (Watch only)
+  guideCheckpoint(): GuideCheckpoint | null { const g = this.guide; return g && g.at !== null ? g.guide.checkpoints[g.at] : null; }
+  /** The position the open note describes: the sequence's start for the introduction, else the checkpoint's. */
+  guidePosition(): number { const g = this.guide; return g ? (g.at === null ? g.guide.start : g.guide.checkpoints[g.at].position) : 0; }
+  guideAtEvent(): boolean { const c = this.ctrl; return !!this.guide && !!c && !c.stepping && c.view === this.guidePosition(); }
+  /** The replay is walking to the selected event (its note waits until the view gets there). */
+  guideWalking(): boolean { const c = this.ctrl; return !!this.guide && !!c && c.playing && c.walkingTo === this.guidePosition(); }
+  guideHighlight(): GuideHighlight | null { const cp = this.guideCheckpoint(); return cp && this.guide!.notes && this.guideAtEvent() ? cp.highlight ?? null : null; }
+
+  /** Select a checkpoint (or the introduction) and jump to it, or with `walk` play the turns up to it. */
+  guideSelect(at: number | null, walk = false): void {
+    const g = this.guide;
+    if (!g || (at !== null && !g.guide.checkpoints[at])) return;
+    this.guide = { ...g, at };
+    if (walk) this.ctrl?.playTo(this.guidePosition()); else this.ctrl?.goto(this.guidePosition());
+    this.emit();
+  }
+  guideNext(): void { const g = this.guide; if (g) this.guideSelect(g.at === null ? 0 : g.at + 1, true); }
+  guidePrev(): void { const g = this.guide; if (g && g.at !== null) this.guideSelect(g.at === 0 ? null : g.at - 1); }
+  guideReturn(): void { if (this.guide) this.ctrl?.goto(this.guidePosition()); }
+  setGuideNotes(on: boolean): void {
+    if (!this.guide) return;
+    this.guide = { ...this.guide, notes: on };
+    this.notesClass(on);
+    this.refit();
+  }
+  /** The sequence goes; its replay stays on screen. */
+  closeGuide(): void {
+    if (!this.guide) return;
+    this.guide = null;
+    this.notesClass(false);
+    this.refit();
+  }
+  private notesClass(on: boolean): void { if (hasDOM) document.body.classList.toggle('guide-notes', on); }
+
+  /** Play and Pause. In a sequence, Play walks to the next event and stops there; past the last one, to the end; at
+   * the end ("Play from the start"), back to the sequence's introduction and on to its first event. */
+  togglePlay(): void {
+    const c = this.ctrl, g = this.guide;
+    if (!c) return;
+    if (!g) { c.toggle(); return; }
+    if (c.playing) { c.pause(); return; }
+    const at = g.guide.checkpoints.findIndex((cp) => cp.position > c.view);
+    if (at >= 0) this.guideSelect(at, true);
+    else if (c.view < c.progress) c.playTo(c.progress);
+    else { this.guideSelect(null); this.guideSelect(0, true); }
+  }
+
+  /** Back to the live game a switch to Watch left on the server (or the one the browser remembers); without one, the
+   * New game dialog. */
+  async returnToPlay(): Promise<void> {
+    if (this.mode === 'play') return;
+    const saved = this.parked ?? loadJSON<LiveSession>(KEYS.session);
+    if (!saved || !this.engine?.ready) { this.openDialog('newGame'); return; }
+    this.ctrl?.pause();
+    this.loading = 'Returning to your game…';
+    this.emit();
+    const ok = await this.resume(saved);
+    this.loading = null;
+    this.emit();
+    if (!ok) this.openDialog('newGame');
+  }
+
   // ---- selection
   selectionCode(): number | null {
     const m = this.ctrl?.menu(), s = this.sel;
@@ -535,7 +612,7 @@ export class AppStore {
       case ' ':
         if (c.stepping && !c.playing) { c.advance(); return true; }
         if (live && !c.stopped) return false;
-        c.toggle();
+        this.togglePlay();
         return true;
       case 'Enter':
         if (live && c.canSubmit) { void this.submit(this.selectionCode()); return true; }

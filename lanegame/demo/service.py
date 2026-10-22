@@ -14,6 +14,8 @@ are not locked, so no second thread may simulate in the same process.
     simulate(a, b, turns)            a bounded bot game (Watch), generated in full, as a game bundle
     replays(), replay(name)          the verified seed-0 research recordings as game bundles (M6b; M6c builds the
                                      full bundle)
+    guides(), guide(id)              the sequences over those recordings (M6c; guides.py, which calls them guides):
+                                     the index, one sequence's events
 
 Sessions live in memory. A session idle for `idle_seconds` expires (`expire`, called by the API's sweeper), and the
 least recently active one is dropped beyond `max_sessions`.
@@ -25,8 +27,9 @@ import os
 import threading
 import time
 from collections import OrderedDict
-from typing import Dict, Optional
+from typing import Dict, Optional, Tuple
 
+from . import guides as G
 from . import session as S
 from .registry import Registry
 
@@ -74,7 +77,8 @@ def _int(x, name: str) -> int:
 
 class DemoService:
     def __init__(self, registry: Optional[Registry] = None, max_sessions: int = MAX_SESSIONS,
-                 idle_seconds: float = IDLE_SECONDS, traces: str = TRACES, load: bool = True):
+                 idle_seconds: float = IDLE_SECONDS, traces: str = TRACES, guides: str = G.GUIDES_DIR,
+                 load: bool = True):
         """`registry`: a loaded registry to use; otherwise the service loads one (`load`), or stays without an
         engine (`load=False`: the frontend serves, Play and Watch report the engine unavailable)."""
         self._lock = threading.Lock()
@@ -82,6 +86,9 @@ class DemoService:
         self.max_sessions, self.idle_seconds, self.traces = int(max_sessions), float(idle_seconds), traces
         self.registry, self.error = registry, None
         self._replays: Optional[Dict[str, dict]] = None
+        self.guides_dir = guides
+        self._guides: Optional["OrderedDict[str, G.Guide]"] = None
+        self._guide_skipped: Dict[str, str] = {}
         if self.registry is None and not load:
             self.error = "the engine was not loaded"
         elif self.registry is None:
@@ -225,6 +232,38 @@ class DemoService:
         if b is None:
             raise ServiceError(404, "unknown_replay", f"no research replay named {name!r}")
         return b
+
+    # ------------------------------------------------------------------ guided replays
+    def _build_guides(self) -> Tuple["OrderedDict[str, G.Guide]", Dict[str, str]]:
+        out: "OrderedDict[str, G.Guide]" = OrderedDict()
+        skipped: Dict[str, str] = {}
+        for g in G.read_guides(self.guides_dir):
+            b = (self._replays or {}).get(g.replay)
+            if b is None:
+                skipped[g.id] = (f"the sequence {g.id!r} walks through the research recording {g.replay!r}, which is "
+                                 "not on disk")
+                continue
+            G.check_guide(g, b)
+            out[g.id] = g
+        return out, skipped
+
+    def guides(self) -> list:
+        """The index of the guided replays this process serves (guides.py), built once under the lock after the
+        replays: a guide whose recording is not on disk is skipped and the reason kept for `guide`; a guide that
+        breaks a rule against its recording is a startup failure, like a recording that does not reproduce."""
+        self.replays()
+        with self._lock:
+            if self._guides is None:
+                self._guides, self._guide_skipped = self._build_guides()
+            return [{"id": g.id, "title": g.title, "replay": g.replay, "checkpoints": len(g.checkpoints)}
+                    for g in self._guides.values()]
+
+    def guide(self, gid: str) -> dict:
+        self.guides()
+        g = (self._guides or {}).get(gid)
+        if g is None:
+            raise ServiceError(404, "unknown_guide", self._guide_skipped.get(gid) or f"no sequence named {gid!r}")
+        return g.public()
 
 
 __all__ = ["DemoService", "ServiceError", "MODELS", "RESEARCH_REPLAYS", "IDLE_SECONDS", "MAX_SESSIONS"]

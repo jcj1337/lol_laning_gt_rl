@@ -8,6 +8,7 @@ export const SPEEDS = [0.5, 1, 2, 4] as const;
 export type Speed = (typeof SPEEDS)[number];
 export const BASE_FRAME_MS = 420;            // one sub-frame at 1x, when frames are not stepped
 export const TICK_MS = 1100;                 // one stepped frame at 1x when ticks play on their own
+export const WALK_MS = 750;                  // one position of a walk at 1x: the lane's CSS transitions (~0.4 s) finish first
 
 export type Sub = 'position' | 'start' | 'tick' | 'end';
 

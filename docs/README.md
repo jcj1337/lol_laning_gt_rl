@@ -6,7 +6,7 @@ Three documents are the entry points every milestone refers to:
 |---|---|
 | [m4/laning_game_mathematical_reference.md](m4/laning_game_mathematical_reference.md) | **the living mathematical reference of the game**, written for the research preset `GameConfig.m45_calibrated()` (rewritten 2026-10-20): state, actions, wave mechanics, farming and XP, combat, progression, towers, reward, the RL objective and its evaluation, worked examples and measurements computed by `python -m lanegame.experiments.reference`; the earlier presets in §14, the opt-in fields in §15; updated with every rule change |
 | [design_philosophy.md](design_philosophy.md) | the standard every mechanic is judged against: simplify how League works without changing why its laning strategies work |
-| [rl_research_roadmap.md](rl_research_roadmap.md) | **the canonical roadmap**: a current-position summary at the top (milestones M1–M6, the M4 subphases, what is implemented / experimental / adopted / planned / unresolved, the path to completion), then one section per milestone (A–BC) with the decision and the link to its full report; the M5 plan (M5a–M5e); the M6 plan (M6a to M6e) |
+| [rl_research_roadmap.md](rl_research_roadmap.md) | **the canonical roadmap**: a current-position summary at the top (milestones M1–M6, the M4 subphases, what is implemented / experimental / adopted / planned / unresolved, the path to completion), then one section per milestone (A to BE) with the decision and the link to its full report; the M5 plan (M5a–M5e); the M6 plan (M6a to M6e) |
 
 The reports are grouped by phase. Within a folder the files are listed in the order they were written.
 
@@ -96,14 +96,15 @@ The reports are grouped by phase. Within a folder the files are listed in the or
 | [m5a_readiness_protocol.md](m5/m5a_readiness_protocol.md) | M5a readiness protocol (recorded before the first check): checks R0–R11, pass rules, the compute ceiling |
 | [m5a_readiness_report.md](m5/m5a_readiness_report.md) | M5a readiness report: all 11 experimental checks pass (lineage, seeds, identical start, exact reproductions through the hooked shared loops, bit-identical smokes, common starts, training inputs rebuilt by the evaluation policy, shares, concurrency, every instrument at reduced samples); failures and fixes; the measured budget |
 
-## m6/ for presentation, interactive demonstration and reproducibility (M6a and M6b complete, M6c next)
+## m6/ for presentation, interactive demonstration and reproducibility (M6a and M6b complete; M6c step 1 awaiting review)
 
 | document | milestone |
 |---|---|
-| [m6_plan.md](m6/m6_plan.md) | the M6 plan (written 2026-10-19, revised 2026-10-21 after the user's approval): a new web application with two primary modes, Play (a human against either M5 policy) and Watch (a bounded bot match explored through a timeline), plus verified research replays and the findings; what exists and is reused; thirteen correctness rules; the Chess.com-style turn history and the clarity requirements; the architecture (React with TypeScript and Vite in `web/`, FastAPI, one container); milestones M6a to M6e; the initial release; the demo, evidence and training bundles; how to present the M5 findings; the decisions |
+| [m6_plan.md](m6/m6_plan.md) | the M6 plan (written 2026-10-19, revised 2026-10-21 after the user's approval and 2026-10-22 for M6c's narrower scope): a new web application with two primary modes, Play (a human against either M5 policy) and Watch (a bounded bot match explored through a timeline), with verified research replays and a few guided replays; what exists and is reused; thirteen correctness rules; the Chess.com-style turn history and the clarity requirements; the architecture (React with TypeScript and Vite in `web/`, FastAPI, one container); milestones M6a to M6e; the initial release; the demo, evidence and training bundles; how to present the M5 findings (in the documentation since 2026-10-22); the decisions |
 | [m6a_technical_report.md](m6/m6a_technical_report.md) | M6a's backend (2026-10-21): the session core `lanegame/demo/` (checked checkpoint loading, human, model and scripted seats, recordings with state digests, replay, frames, the action menu with the engine's reasons); every acceptance check and its result; the proposed API, recording and frame contracts; the measured costs and what they imply |
 | [m6a_decision_record.md](m6/m6a_decision_record.md) | M6a's decision record (2026-10-21, complete): approved requirements, proposed choices and unresolved decisions; scripted opponents assessed; the three first prototypes and the six review rounds; the final glass design the user approved, which M6b builds from |
 | [m6b_report.md](m6/m6b_report.md) | M6b (2026-10-22, complete): the maintained application, `web/` (React, TypeScript, Vite) over the FastAPI layer `lanegame/demo/api.py`; the audit of the M6a work; the concurrency model (Watch in a separate worker process); the typed contract; Play, Watch, history and recovery; the browser verification with screenshots; the cleanup of the prototypes; the remaining limitations |
+| [m6c_guided_replays.md](m6/m6c_guided_replays.md) | M6c, step 1 (2026-10-22, awaiting the user's review): the narrowed scope (a small collection of optional guided replays within Watch, shown to visitors as Sequences; the research explanation moves to M6d's documentation); the format (`lanegame/demo/guides/*.json`, validated against the verified replay at startup) and how to add a sequence; the first one, "Stacking to Crashing" (turns 75 to 84 of the self-play agent against the always-push bot), a chain of five events, with why it was chosen and what the user's reviews changed; the Watch integration and its decisions (placement, notes away from a checkpoint, hidden notes, returning to a live game); the verification; the limitations and what the review decides |
 
 ## natural_waves/ — natural wave mechanics and the lane candidate (M4.2e)
 
@@ -114,6 +115,12 @@ The reports are grouped by phase. Within a folder the files are listed in the or
 | [m4_2e_zoning_report.md](natural_waves/m4_2e_zoning_report.md) | M4.2e-B: design philosophy and combat-driven zoning (`m4_lane()`) |
 | [m4_2e_wave_actions_report.md](natural_waves/m4_2e_wave_actions_report.md) | M4.2e-C: wave actions as shares of one capacity, the half-wave law (`m4_lasthit()`) |
 | [m4_2e_debugger.md](natural_waves/m4_2e_debugger.md) | M4.2e-D: the local visual simulation debugger (`streamlit run lanegame/viewer/app.py`) |
+
+## audit/
+
+| document | content |
+|---|---|
+| [repository_audit_2026-10-22.md](audit/repository_audit_2026-10-22.md) | a read-only audit of the whole repository at 87e9abd0 plus the uncommitted M6c step 1: implementation defects, research-validity risks, documentation drift and design limitations with evidence, impact, confidence and a fix each; the deep dives; an ordered remediation plan; the coverage gaps |
 
 Raw results and the commands that produced them are under `results/`, one folder per study; the drivers are in
 `lanegame/experiments/`.

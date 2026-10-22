@@ -1,0 +1,62 @@
+{
+ "schema": "lanegame.demo_guide",
+ "version": 1,
+ "id": "stacking-to-crashing",
+ "title": "Stacking to Crashing",
+ "replay": "sp_s0_vs_g_shove",
+ "start": 74,
+ "end": 84,
+ "intro": "Turns 75 to 84 of a recorded game between the self-play agent (A, blue) and the always-push bot (B, red), a fixed rule with no learning. The five events form a chain. Trades keep the bot from going back to base, so nothing clears the agent's wave. The wave stacks and crashes into the bot's tower, and the crashed minions let the agent hit the tower for plate gold. Press Next event to watch the turns that lead to each one.",
+ "checkpoints": [
+  {
+   "id": "no-way-to-base",
+   "position": 77,
+   "title": "Trades keep the bot from going back to base",
+   "text": "The bot is at 274 of 1026 HP, and its rule is to Recall at 40% HP or less. It chose Recall in turns 75 and 77. Both times the agent chose Trade and reached it, which interrupts a Recall, so the bot stayed and did nothing to the waves. The hit in turn 77 left the bot at 105 HP. Standing under the bot's tower to do it cost the agent 125 HP.",
+   "highlight": {
+    "kind": "champion",
+    "seat": "B"
+   }
+  },
+  {
+   "id": "stack",
+   "position": 80,
+   "title": "Nobody clears the wave, so it stacks",
+   "text": "In turns 78 to 80 the bot played Last hit + Safe or tried to Recall again, interrupted again in turn 80, and its champion removed none of the agent's minions. The agent chose Slow push twice, then Thin + Trade, taking about 1 HP of the bot's minions a turn. Its wave, grown to 22 HP as new waves joined it, beat two small bot waves and reached the lane with 20 HP and nothing in front of it.",
+   "highlight": {
+    "kind": "wave",
+    "seat": "A"
+   }
+  },
+  {
+   "id": "crash",
+   "position": 81,
+   "title": "The stacked wave crashes",
+   "text": "In turn 81 the agent's 20 HP wave reached the bot's tower and crashed into it, so 20 HP of its minions now sit under that tower. A champion can choose Pressure only while its own minions are crashed under the enemy tower, so this crash is what makes the next event possible.",
+   "highlight": {
+    "kind": "crashed",
+    "seat": "A"
+   }
+  },
+  {
+   "id": "plate",
+   "position": 82,
+   "title": "Pressure on the crash breaks a plate",
+   "text": "In turn 82 the agent chose Thin + Hold + Pressure. With its crashed minions under the tower, it damaged the tower by 1602, just past the first plate's threshold of 1600, which pays +1.00 gold. The bot's Recall finally went through. The agent earned 1.34 gold in the turn and the bot nothing. The agent's gold lead went from 1.64 to 2.98.",
+   "highlight": {
+    "kind": "tower",
+    "seat": "B"
+   }
+  },
+  {
+   "id": "second-plate",
+   "position": 84,
+   "title": "A second plate while the bot is away",
+   "text": "In turns 83 and 84 the bot was at base, then came back. The agent kept up Pressure (1402, then 1302 tower damage) and passed the second plate's threshold of 3600 in turn 84, for another +1.00 gold. Since the bot's first Recall attempt in turn 75, the gold lead has moved from the bot's 1.03 to the agent's 3.63. One game shows the chain. It does not measure how often it happens.",
+   "highlight": {
+    "kind": "tower",
+    "seat": "B"
+   }
+  }
+ ]
+}

@@ -24,4 +24,4 @@ testpaths = ["tests"]
 
 [tool.setuptools.package-data]
 lanegame = ["data/*.json"]
-"lanegame.demo" = ["manifest.json"]
+"lanegame.demo" = ["manifest.json", "guides/*.json"]
