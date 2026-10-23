@@ -1,71 +1,44 @@
 # Laning as a Two-Player Game
 
 Can a reinforcement learning agent learn League of Legends laning strategy without anyone teaching it? This project
-builds a simplified model of the laning phase, solves a small version of it exactly with game theory, and trains
-self-play agents on the full version. The reward function is modelled as the gold they earn minus the gold their opponent
-earns. No strategy is explicitly coded, agents need to discover
-them themselves. 
+builds a simplified model of the laning phase, abstracting it exactly with game theory, and trains
+self-play agents on the full version. The reward is the gold an agent earns minus the gold its opponent earns; the agents have to discover strategies on their own.
 
-## The question
+## Rules of The Game
 
 Every game of League of Legends opens with the laning phase. Two opposing players share a lane while waves of
 computer-controlled minions march toward each other and fight. Players earn gold by landing the killing blow on enemy
 minions (last-hitting) and can spend this gold in base to get stronger.
 
-The general rules of the game : 
+A few general rules of laning:
 
-- Pushing your wave into the enemy tower costs your opponent minions and gives you time to go back to base. It also
-  leaves you far from your own tower, where the enemy jungler can ambush you (a gank).
-- A level lead / item lead means youre stronger than your opponent and will win an even fight
-- Holding the wave just outside your own tower (a freeze) starves your opponent of gold, but only while you can keep
-  it there.
-- Damaging the enemy tower early pays extra gold through tower plates.
+- Pushing your wave into the enemy tower costs your opponent minions and gives you time to go back to base. 
+- A level or item lead makes you stronger than your opponent, so you will win an otherwise
+even fight
+- It is harder to get ganked on your "side" of the map, e.g. near your tower
+- Damaging the enemy tower early pays extra gold through tower plates, along with
+last hitting minions and killing enemy players. 
 
-In real LoL, good players exploit these interactions all the time. This project asks simply put whether a computer (RL agent) can learn to exploit them as well. Just like a humanm, it sees only the game state, its legal moves and prioritizes building advantges (getting gold/xp) to "win". If freezing, well-timed trips to base or selective trading show up, the agents found them on their own.
-
-## What we found
-
-- **The small game has an exact answer.** Wave management on its own is small enough to solve exactly. In its
-  equilibrium, the pair of strategies neither player can improve on, the lane stays even and contested. An opponent can
-  punish every fixed, predictable strategy, some of them heavily.
-- **Self-play agents found real laning strategies on their own.** They manage the wave differently depending on the
-  situation, freeze when freezing pays and break the opponent's freeze, pick their fights, and time their trips back to
-  base. We tested each behaviour by restoring the exact game moment, making a different choice and comparing how the
-  game played out.
-- **They also skip strategies that don't pay in this model.** Wards, long freezes and bullying a competent opponent
-  cost more than they return here, and the agents learned to avoid them.
-- **Modelling the opponent is a trade-off.** The final experiment gave one agent a running Bayesian estimate of its
-  opponent's play style. Against predictable opponents it built about three times the lead of a pure self-play agent,
-  and two and a half times the lead against styles it never met in training. Against strong opponents it was weaker,
-  and it lost head-to-head to the pure self-play agent in all six matched pairs.
-- **Neither final agent is unbeatable.** Attacker agents, each trained against one frozen final agent, found ways to
-  beat both kinds. Each attack worked only against its own target.
-- **Some strategies only partly emerge.** Freezing pays only in a narrow early window, leads tend to fade later in the
-  lane, and the agents don't fully exploit large power gaps.
-
-
-## How we study it
-
-1. **Solve a small version exactly.** The wave-management game is a two-player game in which one side's gain is the
-   other's loss. Over 32 turns it has 172,907 decision points, few enough for backward induction and linear
-   programming to find the exact equilibrium, the exact best response to any fixed strategy, and how much an
-   opponent can exploit each strategy. These exact answers also give a ground truth for testing the learning code.
-2. **Build a fuller game that can't be solved.** The full model adds champions with health, levels and experience,
-   gold and spending, trades, ganks, deaths, trips back to base, tower plates, a ward spot and minions that attack
-   champions. Both players move at the same time each turn, choosing from 61 moves. The game has no fixed end, and we
-   score who leaves the laning phase ahead (around turn 94, when the champions reach level 14). The environment
-   implements PettingZoo, the standard interface for multi-agent RL.
-3. **Train with self-play.** One neural network plays both sides and learns with PPO, a standard RL algorithm. OpenAI
-   Five trained its Dota 2 agents with the same shared-policy self-play. An early study tested OpenAI Five's mix of
-   80% games against the current network and 20% against past versions. The later researcg train sagainst the
-   current network only.
-4. **Measure carefully.** Agents play scripted opponents and each other on matched random seeds, and every result
-   comes with a confidence interval over independent training runs. Attacker agents trained to beat one frozen agent
-   show how exploitable a strategy is. Counterfactual replays restore an exact game moment, change one decision and play on,
-   which shows whether a behaviour actually pays. 
+Good LoL players exploit these interactions all the time. Our agents are limited to represent that of a human player, it sees only the current game state and its legal moves (e.g. you can't "Freeze" if you're on the enemy's side of the map), and it is
+rewarded only for building a gold lead. That means strategies like "freezing" a wave, recalling on timers, and warding on timers show up on their own through the agents' training.
 
 Every rule follows the project's [design philosophy](docs/design_philosophy.md), which is to simplify how League works
-without changing why its laning strategies work. The numbers are stylized, not real League statistics.
+without changing why its laning strategies work. 
+
+## Current Findings (10/22/2026) :
+
+- **Self-play agents found real laning strategies on their own.** They manage the wave differently depending on the
+  situation. They freeze when freezing pays, picking their fights based on game state, and time their trips back to
+  base in situations that make sense. Part of testing, was that we tested each behaviour by restoring the exact game moment, making a different choice and comparing how the
+  game played out.
+- **Agents can skip strategies that don't pay.** Warding on certain timers, unnecessarily long freezes and bullying a competent opponent
+  cost more than they return here, and the agents learned to avoid them.
+- **Modelling the opponent is a trade-off.** The final experiment gave one agent a running Bayesian estimate of its
+  opponent's play style. Against the scripted styles it trained with, it built about three and a half times the lead
+  of a pure self-play agent. Against new variants of those styles the gain was nearly as large on average, still good, but against
+  styles built on a strong learned policy it gained nothing. Against strong opponents it was weaker, and it lost head
+  to head to the pure self-play agent in all six matched pairs.
+- **Limitations.** Freezing pays only in a narrow early window, and the agents don't fully exploit large power gaps as much as they probably should. Still exploring why this is. 
 
 ## Try it
 
@@ -82,13 +55,10 @@ python -m pytest                    # about 1,600 tests, 9 to 12 minutes
 
 ### Play against the agents, or watch them
 
-The demo is a web page with two modes. In Play you take one side against a trained agent, with every turn explained
-and arrows on the lane showing how each champion and minion wave moved.
-In Watch you follow a match the engine generates between the two agents, or one of three recorded research games
-that the server re-simulates and checks when it starts. One recorded game has a sequence, "Stacking to Crashing": five events in a chain, from
-trades that keep the opponent from going back to base, to a wave that stacks and crashes into its tower, to the tower plates
-that crash pays for. The demo needs the trained networks (not in
-the repository, see below), Node 22.12 or later for the one-time frontend build, and the `demo` extra.
+The demo is a web page with two modes. In Play you take one side against a trained agent, with every turn explained. In Watch you follow a match the engine
+generates between the two agents, or one of three recorded research games that the server re-simulates and checks
+when it starts. The demo needs the trained networks, Node 22.12 or later for the
+one-time frontend build, and the `demo` extra.
 
 ```bash
 pip install -e ".[demo]"
@@ -96,10 +66,10 @@ cd web && npm install && npm run build && cd ..
 python -m lanegame.demo                 # then open http://127.0.0.1:8765/
 ```
 
-To open it, switch to **Watch** and pick it under **Sequences**, or open
-http://127.0.0.1:8765/?mode=watch&sequence=stacking-to-crashing. The notes and the format are described in
-[docs/m6/m6c_guided_replays.md](docs/m6/m6c_guided_replays.md). All 15 recorded games of the final campaign stay
-under `results/m5/traces/` as research artifacts.
+Watch also has sequences: short walkthroughs of a recorded game in which each event leads to the next. The first,
+"Stacking to Crashing", sequence, follows a pattern League players (good ones) know. Trades keep a low-health opponent from going back to
+base, the wave nobody clears stacks and crashes into its tower, and the crash lets the agent take two tower plates.
+Pick it under **Sequences** in Watch, or open http://127.0.0.1:8765/?mode=watch&sequence=stacking-to-crashing.
 
 ### Solve the small game
 
@@ -108,79 +78,13 @@ python -m lanegame solve --horizon 16     # about 10 seconds; --horizon 32 takes
 python -m lanegame exploit --horizon 16   # how much a best response gains against each scripted strategy
 ```
 
-### Use the environment
-
-```python
-from lanegame import GameConfig
-from lanegame.env import LaneEnv
-from lanegame.env.pettingzoo_adapter import LaneParallelEnv
-
-env = LaneEnv(GameConfig.m45_calibrated(), max_turns=512)   # the version of the game the research uses
-obs_a, obs_b = env.reset(seed=0)                     # each player's view, 90 numbers plus a mask of legal moves
-result = env.step(obs_a.legal[0], obs_b.legal[0])    # both players move at once; the rewards are (r, -r)
-
-pz = LaneParallelEnv(GameConfig.m45_calibrated(), max_turns=512)
-observations, infos = pz.reset(seed=0)               # {"A": {"observation", "action_mask"}, "B": ...}
-```
-
-### Train an agent
-
-```python
-from lanegame import GameConfig
-from lanegame.rl import PPOConfig, SharedConfig, train_shared
-
-cfg = GameConfig.m45_calibrated()
-ppo = PPOConfig.continuing(cfg, total_steps=102_400, seed=0)
-train_shared(cfg, ppo, SharedConfig(current_fraction=1.0), out_dir="results/rl/checkpoints/demo")
-```
-
-This short run takes about 30 seconds on one CPU core. The research runs used 8 to 33 million transitions each.
-
 ### Reproduce the research
 
 Each milestone has a package under `lanegame/experiments/` that writes its results to `results/<milestone>/`.
 [results/m5/reproducibility.md](results/m5/reproducibility.md) lists the commands, seeds and SHA-256 checksums behind
-the final campaign. Trained networks are too large for git, so the repository doesn't include them. Expensive stages
-refuse to start without a `--confirm-...` flag. The docstring of `lanegame/__main__.py` lists every command-line
-command.
-
-## Repository layout
-
-```
-lanegame/                 the game, the RL environment, training and analysis
-  mechanics.py, game.py   the minion wave and the small exact game
-  solver.py               the exact equilibrium solver (backward induction and linear programming)
-  champions_m4.py         the full laning model, with progression.py and positional.py
-  config.py               every game version and its parameters
-  env/                    the RL environment and its PettingZoo adapter
-  rl/                     PPO, shared-policy self-play, evaluation and checkpoints
-  opponent/               scripted opponent styles and the Bayesian belief about them
-  diagnostics/            counterfactual replays and the end-of-lane score
-  experiments/            one package per milestone, each writing to results/<milestone>/
-  viewer/                 replay helpers used by the experiments, and an earlier viewer due to be archived
-  demo/                   the web demo's API, game sessions, recordings, frames and sequences
-web/                      the web demo's frontend (React and TypeScript, built by Vite)
-tests/                    about 1,600 tests, including bit-for-bit reproducibility checks
-results/                  the output of every experiment
-docs/                     designs, pre-registrations and reports
-legacy/                   the original Q-learning prototype and the archived M6a interface prototype
-```
+the final campaign. Trained networks are too large for git, so the repository doesn't include them.
 
 ## Documentation
 
-- [docs/README.md](docs/README.md) indexes every design document and report.
-- The [research roadmap](docs/rl_research_roadmap.md) records each milestone's decisions and links its report.
-- The [mathematical reference](docs/m4/laning_game_mathematical_reference.md) gives every rule and equation
-  of the current game.
-- The [design philosophy](docs/design_philosophy.md) sets the standard for every mechanic.
+- A final report on the mathematical model, roadmap, and findings is WIP but on the way.
 
-## Roadmap
-
-| Stage | What it did | Status |
-|---|---|---|
-| Phase 1 | Solved a small wave-management game exactly, with equilibria, best responses and exploitability | Complete ([study](docs/phase1/phase1_siege_vision_study.md)) |
-| M1 to M3 | Built the RL environment and champion mechanics, wrote masked PPO and self-play, and ran an OpenAI Five-style self-play study | Complete ([study](docs/rl/openai_five_selfplay_report.md)) |
-| M4 | Built and calibrated the full laning model, trained PPO self-play on it, and diagnosed what the agents miss | Complete ([closeout](docs/m4/m4_closeout_report.md)) |
-| Opponent modelling | Tested whether a Bayesian belief about the opponent's style helps, first with existing agents, then in a matched training pilot | Complete ([pilot](docs/opponent_modelling/om2_pilot_report.md)) |
-| M5 | The final training, opponent modelling against pure self-play, in 12 runs of 32.8 million transitions each | Complete, 2026-10-19 ([final report](docs/m5/m5e_closeout_report.md)) |
-| M6 | A web app to play against the trained agents, watch them play each other and replay research games, plus documentation and reproduction bundles | In progress. Done: the playable app ([report](docs/m6/m6b_report.md)) and the first sequence ([notes](docs/m6/m6c_guided_replays.md), under review). Planned: a few more sequences, the research overview and reproduction guide (M6d), release readiness (M6e) |

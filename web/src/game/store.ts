@@ -334,7 +334,7 @@ export class AppStore {
       this.emit();
       await anim;
       if (gen !== this.gen) return;
-      if (c.stopped) await this.finish(sid, gen);
+      if (c.stopped) await this.finishAtCap(sid, gen);
     } finally {
       if (gen === this.gen) { this.busy = false; this.emit(); }
     }
@@ -356,7 +356,7 @@ export class AppStore {
         c.appendHistory(h, v);
         this.sel = empty();
       } else c.adopt(v);
-      if (c.stopped) { await this.finish(sid, gen); return; }
+      if (c.stopped) { await this.finishAtCap(sid, gen); return; }
       if (err?.status === 409 || err?.status === 410) { this.error = err.message; return; }
       if (advanced) return;                                   // the server had resolved it; the turn is on screen now
       this.problem = { kind: 'unanswered', message: `${(e as Error).message} Nothing changed on the server; you can try the same action again.`,
@@ -390,6 +390,12 @@ export class AppStore {
     c.conclude(d.recording.beliefs ?? null, d.view);
     this.game!.recording = d.recording;
     this.emit();
+  }
+
+  /** The server stopped the game at the turn cap; its recording and hidden belief come with the stop, so a failed stop
+   * offers a retry instead of leaving them unshown. */
+  private async finishAtCap(sid: string, gen: number): Promise<void> {
+    try { await this.finish(sid, gen); } catch (e) { if (gen === this.gen) this.failed(e, () => void this.finishAtCap(sid, gen)); }
   }
 
   async stopGame(): Promise<void> {

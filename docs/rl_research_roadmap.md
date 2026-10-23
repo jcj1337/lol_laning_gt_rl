@@ -1,6 +1,6 @@
 # RL Research Roadmap: From Exact Stochastic Games to Multi-Agent Reinforcement Learning
 
-> **This is the canonical project roadmap.** The summary below (updated 2026-10-22: M5 is complete, committed by the user in a07e3fdf. Its pre-registered outcome 2 is that the opponent-modelling package pays at a competence cost. Both arms retain four of five strategic findings. Dedicated attackers exploit both arms, and the difference between the arms is inconclusive. M6 is under way. M6a built and verified the session core, and the user approved the interface design. M6b built the maintained application, `web/` over the FastAPI layer, verified in the browser and awaiting the user's acceptance. M6c was narrowed on 2026-10-22 to a small collection of guided replays within Watch; its format and first example are built and await the user's review, §BE)
+> **This is the canonical project roadmap.** The summary below (updated 2026-10-22: M5 is complete, committed by the user in a07e3fdf. Its pre-registered outcome 2 is that the opponent-modelling package pays at a competence cost. Both arms retain four of five strategic findings. Dedicated attackers exploit both arms, and the difference between the arms is inconclusive. M6 is under way. M6a built and verified the session core, and the user approved the interface design. M6b built the maintained application, `web/` over the FastAPI layer, verified in the browser and awaiting the user's acceptance. M6c was narrowed on 2026-10-22 to a small collection of guided replays within Watch, shown as Sequences; the user approved the format and the first sequence and put further sequences on hold, §BE. M6d has started: the demo's misstatements found by the audit are fixed and the research overview is written, §BF)
 > states where the project is and what comes next. Sections A–K are the original plan
 > written before M1 (kept unchanged for the record; its milestone list was later revised, see the notes in section D).
 > Sections L–BA record each milestone's outcome in the order it happened, with links to the full reports (M4.5b: §AJ;
@@ -9,9 +9,10 @@
 > OM2 opponent-modelling design and matched pilot: §AW; M5a campaign design, pre-registration and readiness: §AX; M5a
 > correction pass, M5b training and the initial evaluations: §AY; M5c strategic battery and limitation cells: §AZ;
 > M5d core attackers and the M5e closeout: §BA; the M6 plan: §BB; M6a, the session core and the prototypes: §BC;
-> M6b, the playable application: §BD; M6c step 1, the guided-replay format and the first example: §BE).
+> M6b, the playable application: §BD; M6c step 1, the guided-replay format and the first example: §BE; M6d part 1,
+> the demo corrections and the research overview: §BF).
 > The M5 plan (M5a–M5e) is under "M5 plan" below, and the M6 plan (M6a to M6e) under "M6 plan".
-> The README's roadmap table and `docs/README.md` point here.
+> The README and `docs/README.md` link here.
 
 ## Roadmap summary (current position, 2026-10-22)
 
@@ -314,8 +315,11 @@ library, and 32.768M transitions per run with a matched 16.384M checkpoint.
   - **Replication.** Conditional wave management, conditional freezing and the reply to freezes, selective trading,
     and Recall timing replicate in both arms (6 of 6 seeds).
     - **Concession under threat does not replicate in either arm** (om 3 of 6, sp 4 of 6). The failure is in the
-      constructed zoning cells only; the weaker-side lead cells hold.
-    - The sp freezing verdict is fragile: three seeds sit within 0.03 of the margin.
+      constructed zoning cells only; the weaker-side lead cells hold. *Qualifier added 2026-10-22 (audit R2):* sp
+      fails only in seeds 4 and 5, whose zoning family the registered rule re-read at 150 turns; at 50 turns sp
+      holds in all six. The om failures are at 50 turns.
+    - The sp freezing verdict is fragile: three seeds sit within 0.035 of the margin (0.014, 0.015 and 0.034;
+      corrected 2026-10-22 from "within 0.03").
   - **Cross-arm limitation cells.** The om finals are worse than the sp finals in every family, from the same
     states: strength use −0.53, freezes −0.26, Recall windows −0.42, natural states −0.54, large gaps −0.39. Equal
     and lead states suffer alike, matching the M5d competence loss. One caveat: the om final starts these cells with
@@ -450,8 +454,10 @@ training experiments are optional future research, not prerequisites ([M5e repor
 
 **M5 status: complete (2026-10-19), committed by the user (a07e3fdf). The optional om_table ablation was not run.
 M6 status: M6a complete (2026-10-21), M6b complete (2026-10-22, acceptance pending). M6c, narrowed on 2026-10-22 to
-sequences within Watch (first called guided replays): step 1 (the format and the first example) complete and awaiting review (§BE); steps 2
-and 3 (the review, a few more examples) follow. M6d and M6e not started.**
+sequences within Watch (first called guided replays): step 1 (the format and the first example) complete and approved
+by the user (§BE); further sequences are on hold at the user's request. M6d started on 2026-10-22: the demo's
+misstatements are fixed and the research overview is written, awaiting the user's approval (§BF); the reproduction
+guide, the bundles, the `reproduce` re-run and the Streamlit archive follow. M6e not started.**
 
 **The agreed path to completion** (the sequence agreed with the user on 2026-10-16, extended on 2026-10-17; details
 in "Path to completion" below):
@@ -467,7 +473,7 @@ in "Path to completion" below):
 | **3. design Bayesian opponent modelling** | beliefs about the opponent's style, updated during a game; type library, inference, the policy's use of the belief, evaluation design | **completed, reviewed** (committed by the user, a6e9b63f): the feasibility study OM1 is complete, reviewed (§AV, [report](opponent_modelling/om1_feasibility_report.md)): outcome 1, feasible and worthwhile; identification within 10–20 observed turns; switcher +0.90 ± 0.27 over π, mostly against scripted styles; misspecified (mixed) opponents are the risk. Scope C and the last-action observation decided 2026-10-17. **Design written and implemented behind opt-in switches** (§AW, [design](opponent_modelling/om2_design.md)), reviewed; carried into M5 as arm A |
 | **4. matched opponent-modelling pilot** | a controlled pilot with the same opponent distribution in both arms (with and without the belief), evaluated with the existing instruments and the lane-exit readout | **completed, reviewed** (§AW, [report](opponent_modelling/om2_pilot_report.md); compute approved 2026-10-17): pre-registered outcome 1, modelling pays and is safe: archetypes +2.03 ± 1.72 (every seed), no loss against competent, misspecified or head-to-head opponents; exploratory: both arms slightly below their start against competent opponents (control −0.59, treatment −0.16) |
 | **5. M5: final training and evaluation campaign** | two arms, opponent-modelling package against continued pure self-play, six matched pairs from `ext/baseline:s`; learning progress, strategic replication, the M4 limitations re-measured, opponent families, cross-seed and cross-arm results, dedicated attackers; lane phase read as D0 → E_20 | **M5a completed** (§AX). **M5a corrections completed** (§AY, amendment 1). **M5b training and the initial M5d evaluations completed** (§AY): outcome 2, pays at a competence cost. **M5c battery and cells completed** (§AZ): four of five verdicts replicate in both arms; the om finals are worse in every limitation family. **Core attackers and M5e completed** (§BA; committed by the user, a07e3fdf): both arms exploitable, S6 inconclusive, no transfer; recommendation: present both arms as a trade-off. **om_table ablation: optional, not run** ("M5 plan" below) |
-| **6. M6: presentation, interactive demonstration and reproducibility** | a new web application where a human plays against either M5 arm, with verified research replays and the findings; a concise README and research overview; reproducible commands and three bundles (demo, evidence, training); the Streamlit viewer archived as legacy; demonstrated findings kept apart from remaining hypotheses | **approved direction** (the user, 2026-10-19: presentation, demonstration and reproducibility; a new web application with human versus policy at its centre; 2026-10-21: Play and Watch in the initial release). **M6a completed** (§BB, §BC, [plan](m6/m6_plan.md)): the session core is built and verified; the user approved the interface design on 2026-10-21. **M6b completed** (§BD, [report](m6/m6b_report.md)): the maintained application `web/` over the FastAPI layer, verified in the browser; acceptance pending. **M6c narrowed to guided replays within Watch (2026-10-22); its step 1 completed** (§BE, [report](m6/m6c_guided_replays.md)): the format and the first example, review pending. M6d and M6e not started; the viewer not yet archived |
+| **6. M6: presentation, interactive demonstration and reproducibility** | a new web application where a human plays against either M5 arm, with verified research replays and the findings; a concise README and research overview; reproducible commands and three bundles (demo, evidence, training); the Streamlit viewer archived as legacy; demonstrated findings kept apart from remaining hypotheses | **approved direction** (the user, 2026-10-19: presentation, demonstration and reproducibility; a new web application with human versus policy at its centre; 2026-10-21: Play and Watch in the initial release). **M6a completed** (§BB, §BC, [plan](m6/m6_plan.md)): the session core is built and verified; the user approved the interface design on 2026-10-21. **M6b completed** (§BD, [report](m6/m6b_report.md)): the maintained application `web/` over the FastAPI layer, verified in the browser; acceptance pending. **M6c narrowed to guided replays within Watch (2026-10-22); its step 1 completed** (§BE, [report](m6/m6c_guided_replays.md)): the format and the first sequence, approved by the user; further sequences on hold. **M6d started** (§BF): the demo corrections and the [research overview](m6/research_overview.md), awaiting approval. M6e not started; the viewer not yet archived |
 
 **Stopping principle.** A perfect critic, or the discovery of every recognizable laning strategy, is not required. A
 remaining weakness that is small, confined to unusual states, or resistant to one justified targeted intervention is
@@ -497,7 +503,7 @@ deliberate simplification (`docs/design_philosophy.md`), not a perfect reproduct
 | **M4** Integrated laning model and strategic validation | M4.1 design → M4.2 mechanics → M4.3 wave management and economics → M4.4 PPO self-play → M4.5 unified positional mechanics, calibration and retraining → M4.6 design review and diagnosis → M4 closeout | M4.1–M4.4c completed; M4.5a, M4.5b completed; M4.5c completed (6 × 8.192M and the 2× extension 6 × 16.384M trained; comprehensive evaluation, strategic battery and attackers done; GO WITH CAVEATS); M4.4d done within M4.5c (attackers); M4.6a–d completed; M4.6e and M4.6f (the targeted learning pilot) completed, reviewed; **M4 closeout completed and reviewed: M4 closed (ready for M5 with documented limitations); setup decided 2026-10-17: the baseline**; M4.7 early-lane horizon study completed (keep γ 0.99); M4.8 lane-exit evaluation completed (E_20 adopted) | below; §AS, §AT, §AU |
 | Bayesian opponent modelling (OM1 feasibility, OM2 design and matched pilot) | beliefs about the opponent's style, updated during a game; designed first, then a controlled pilot with the same opponent distribution in both arms | **completed, reviewed** (committed by the user, a6e9b63f): OM1 outcome 1, feasible and worthwhile (§AV); OM2 implemented behind opt-in switches and its matched pilot run, pre-registered outcome 1, modelling pays and is safe (§AW). Carried into M5 as the modelling arm (approved direction, 2026-10-17) | §AV, §AW |
 | **M5** Main training and evaluation campaign | the opponent-modelling package against continued pure self-play: two arms, six matched pairs continuing `ext/baseline:s`, 32.768M each; M5b training, M5c strategic replication and the M4 limitations, M5d opponent families, cross-seed/cross-arm results and attackers, M5e closeout; lane phase read as D0 → E_20 | **M5a and its corrections completed (§AX, §AY)**; **M5b training and the initial M5d evaluations completed (§AY)**: outcome 2, the package pays at a competence cost. **M5c completed (§AZ)**. **The core attackers and M5e completed (§BA); M5 committed by the user (a07e3fdf)**: S6 inconclusive; both arms exploitable; present both arms as a trade-off. The optional om_table ablation was not run | "M5 plan" below; [design](m5/m5_design.md), reports [M5b](m5/m5b_initial_report.md), [M5c](m5/m5c_strategic_report.md), [M5e](m5/m5e_closeout_report.md) |
-| **M6** Presentation, interactive demonstration and reproducibility | a new web application (human versus either M5 arm, verified replays, the findings), README and research overview, reproduction bundles, the Streamlit viewer archived; demonstrated findings separated from hypotheses | approved direction (2026-10-19, extended 2026-10-21, M6c narrowed 2026-10-22); **M6a completed** (the session core and the approved interface design, 2026-10-21); **M6b completed** (the maintained application, 2026-10-22, acceptance pending); **M6c step 1 completed** (the guided-replay format and the first example, 2026-10-22, review pending) | "M6 plan" below; §BB, §BC, §BD, §BE; [plan](m6/m6_plan.md) |
+| **M6** Presentation, interactive demonstration and reproducibility | a new web application (human versus either M5 arm, verified replays, the findings), README and research overview, reproduction bundles, the Streamlit viewer archived; demonstrated findings separated from hypotheses | approved direction (2026-10-19, extended 2026-10-21, M6c narrowed 2026-10-22); **M6a completed** (the session core and the approved interface design, 2026-10-21); **M6b completed** (the maintained application, 2026-10-22, acceptance pending); **M6c step 1 completed** (the guided-replay format and the first example, 2026-10-22, approved; further sequences on hold); **M6d started** (the research overview, 2026-10-22, approval pending) | "M6 plan" below; §BB, §BC, §BD, §BE; [plan](m6/m6_plan.md) |
 
 ### M4 in detail (repository names, in order)
 
@@ -702,7 +708,8 @@ The final campaign ([design](m5/m5_design.md), [pre-registration](m5/m5_preregis
 
 The full plan is [m6_plan.md](m6/m6_plan.md) (§BB, revised 2026-10-21 and 2026-10-22). M6a (§BC) and M6b (§BD)
 are complete. M6c was narrowed on 2026-10-22 to guided replays within Watch, and its first step is complete (§BE).
-M6d and M6e are **planned, not started**. M6 adds no mechanics, rewards, objectives or training.
+M6d started on 2026-10-22 with the demo corrections and the research overview (§BF); M6e is **planned, not
+started**. M6 adds no mechanics, rewards, objectives or training.
 
 | item | status |
 |---|---|
@@ -710,7 +717,8 @@ M6d and M6e are **planned, not started**. M6 adds no mechanics, rewards, objecti
 | Play and Watch (a bounded bot-versus-bot match, generated first and played back) as the two primary modes of the initial release | **approved direction** (the user, 2026-10-21) |
 | a Chess.com-style turn history shared by Play and Watch; the frontend clarity requirements | **approved requirements** (the user, 2026-10-21; plan §5.1, §5.2) |
 | the Streamlit viewer archived as legacy during implementation, not reworked | **approved direction**; planned for M6d, not done |
-| sequences (first called guided replays) of verified research games within Watch, as M6c's whole content | **approved direction** (the user, 2026-10-22); the format and the first example are **completed** (§BE), the user's review is pending |
+| sequences (first called guided replays) of verified research games within Watch, as M6c's whole content | **approved direction** (the user, 2026-10-22); the format and the first sequence are **completed** and approved (§BE); further sequences are on hold at the user's request |
+| the research overview | **completed** (2026-10-22, §BF, [overview](m6/research_overview.md)); its numbers are checked against the M5 records; the user's approval of the text is pending |
 | a separate findings page and research explanation inside the application | **dropped** (the user, 2026-10-22); the research overview is M6d documentation, linked from the application |
 | React with TypeScript and Vite in `web/`, FastAPI over the unchanged Python simulator and policies, one container | **approved** (the user, 2026-10-21), unless a concrete blocker appears; M6a found none |
 | the headless session core and the backend's correctness rules | **completed** (M6a, §BC) |
@@ -725,7 +733,7 @@ M6d and M6e are **planned, not started**. M6 adds no mechanics, rewards, objecti
 | **M6a** product definition and technical readiness (**completed** 2026-10-21) | the headless session core with the correctness rules proved on the real seed-0 finals; journeys and the API, recording and frame contracts; two or three clickable prototypes of the lane view, the turn history and Play and Watch; after the user's choice, refinement (six review rounds in the event) | M (the session core alone S) | the prototype direction (given) |
 | **M6b** the playable application (**completed** 2026-10-22, §BD) | FastAPI and the new frontend; a visitor plays a full game against either opponent, with legal actions explained, both actions revealed together, the belief hidden or shown, history navigation and a record that replays bit for bit; Watch generates a bounded bot match and plays it back | L (the frontend is the repository's first production JavaScript) | acceptance of the playable build (pending) |
 | **M6c** sequences within Watch (first called guided replays; narrowed 2026-10-22; **step 1 completed**, §BE) | a lightweight format over the verified research replays (a JSON file per guide, validated against the replay at startup), a compact note panel in Watch with Previous and Next, and a small collection of examples: the format and the first example (step 1), the user's review (step 2), a few more examples (step 3) | S per step | acceptance of the format and the first example, then of each further example |
-| **M6d** documentation, the research overview and reproducibility | a concise README, the research overview (the question, the method, the six-seed results, the comparisons and the limitations; moved here from M6c), the reproduction guide, three bundles with SHA-256 manifests, `reproduce` re-run on the committed tree, the Streamlit UI moved to `legacy/` after a tag | M | the research overview's text; a license; where the evidence and training bundles are published |
+| **M6d** documentation, the research overview and reproducibility (**started** 2026-10-22, §BF: the research overview written) | a concise README, the research overview (the question, the method, the six-seed results, the comparisons and the limitations; moved here from M6c), the reproduction guide, three bundles with SHA-256 manifests, `reproduce` re-run on the committed tree, the Streamlit UI moved to `legacy/` after a tag | M | the research overview's text; a license; where the evidence and training bundles are published |
 | **M6e** release readiness | clean-install checks, a load measurement, proportionate safeguards, a container image, deployment notes, the approval checkpoint | M | provider, budget, go or no-go |
 
 The first implementation task, the headless session core of M6a (the plan's §11), is done (§BC).
@@ -3779,3 +3787,49 @@ The 15 recordings stay as research artifacts; nothing was deleted.
 
 **Decisions for the user (step 2).** The chosen sequence, the start position, the checkpoint positions, the
 wording, the highlights and the note panel's placement; then a few more examples in the accepted format (step 3).
+
+## BF. M6d part 1: the demo corrections and the research overview (2026-10-22)
+
+Overview: [research_overview.md](m6/research_overview.md). Status: **the demo corrections and the research overview
+are completed (2026-10-22); the user's approval of the overview's text is pending, and nothing is committed.** No
+mechanic, reward, objective, network or stored research result changed, and no training ran.
+
+**The decision (the user, 2026-10-22).** The user approved the first sequence, "Stacking to Crashing", put further
+sequences on hold, and asked for everything up to the M6d research overview, plus a README section on the sequence and
+how it translates to real League.
+
+**The demo corrections** (the audit's findings, [audit](audit/repository_audit_2026-10-22.md) §3).
+- D1. A trade, tower shot, gank or minion fire now quotes its damage as damage, since durability from invested gold
+  divides the sum. A new minor outcome, `hp_lost`, gives the HP a seat lost whenever the two differ. A test over the
+  450 turns of the three research replays rebuilds the resolver's sum and its reduction for every seat.
+- D2. A fight between two adjacent units is narrated as "between" them, no longer as "at a base".
+- D3. Each tick frame carries `packets_lost`, the minion packets each seat lost in that tick, and the narration says a
+  front wave "is cleared" instead of "walks" when it died. The count matches the engine's own death counter on 1,800
+  ticks (the three replays and three random games).
+- D6. A failed stop at the turn cap offers a retry instead of leaving the record and the belief unshown.
+- D7. The API test that depended on a drawn chance seed is seeded and recalls at the first legal turn.
+- W2 and W3. The "computes no game rule" claim now says what the browser narrates, and the About dialog states the
+  competence cost as a loss in all six pairs, the attackers' margins as lower bounds and that pure self-play was still
+  improving, with a link to the overview.
+
+**The research overview.** A newcomer's account of M5: the question, the game and what one unit of gold means, the two
+arms, the measurement, the results with all six pairs and their 95% intervals, the arms side by side, the
+limitations, what the demo shows, and the corrections to earlier wording. `python -m lanegame.experiments.m6d
+overview` checks every number against `analysis_main.json`, `strategic_main.json`, `monitoring_main.json` and the
+battery summaries, and fails on any signed number it cannot trace.
+
+**Corrections to earlier wording** (made in the living summaries, the plan's §9 and the overview; the reports stay as
+written).
+- The held-out family's +6.4 averages four scripted variants (+3.7 to +14.4, mean +11.4) and three conditional styles
+  (−0.2 to −0.7); "+6.4 against held-out scripted variants" understated the gain against scripted styles (audit W1).
+- Pure self-play fails concession under threat only in the two seeds re-read at 150 turns and holds in all six at 50
+  turns (audit R2).
+- The sp freezing margins are 0.014, 0.015 and 0.034, not all "within 0.03"; the C_cross interval of the om arm against
+  its start, [+0.004, +0.55], excludes 0; the README's "about three times" is 3.6 times (audit W6).
+
+**The README.** A section on "Stacking to Crashing" maps each event to League: damage cancels a recall, a slow push
+stacks a wave, a crashed wave lets a champion hit the tower, plates pay gold until 14 minutes, and a late recall costs
+plates. It names what the model simplifies and that one game is an example.
+
+**Not done in M6d yet.** The reproduction guide, the three bundles, the `reproduce` re-run on a clean commit (audit
+R1) and the Streamlit archive.

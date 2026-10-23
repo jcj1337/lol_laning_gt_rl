@@ -1,6 +1,7 @@
 # M6c: sequences within Watch (step 1, the format and the first sequence)
 
-*2026-10-22. Status: **step 1 revised after the user's first review (§8), awaiting review again.** M6c was
+*2026-10-22. Status: **step 1 approved by the user on 2026-10-22, after four review rounds (§8); further sequences
+are on hold at the user's request.** M6c was
 narrowed on 2026-10-22 to a small
 collection of optional guided replays within Watch (§1), which visitors see as **Sequences** since the fourth review
 (§8): each sequence is a chain of events in one recorded game. The code and the file format keep the word guide. This document is the format's reference, the authoring

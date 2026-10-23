@@ -923,6 +923,10 @@ export interface components {
                     boolean
                 ][];
             };
+            /** Packets Lost */
+            packets_lost: {
+                [key: string]: number;
+            };
             /** Siege */
             siege: {
                 [key: string]: [

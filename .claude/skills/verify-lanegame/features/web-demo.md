@@ -2,7 +2,7 @@
 
 The M6 web application: a visitor plays one seat against a trained M5 agent (Play) or watches a bounded match between
 two agents (Watch), with a turn history that never changes the game, stepped ticks, a gold-lead graph, Details and a
-downloadable record. The Python server is authoritative; the page computes no rule.
+downloadable record. The Python server is authoritative. The page computes no rule; it narrates the facts in the server's frames.
 
 ## Sub-features
 

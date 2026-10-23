@@ -18,7 +18,7 @@ const still: SeatMoves = { champion: null, wave: null };
 
 function turn(t: number, A: SeatMoves = still, B: SeatMoves = still): Turn {
   const tick = { tick: 1, packets: { A: [], B: [] }, siege: { A: [-2, 0] as [number, number], B: [2, 0] as [number, number] }, contact: null, cells: { A: -2, B: 2 },
-    at_ward: { A: false, B: false }, wave_removed: { A: 0, B: 0 }, crashed: { A: 0, B: 0 }, minion_fire: { A: { cause: '', units: 0 }, B: { cause: '', units: 0 } } };
+    at_ward: { A: false, B: false }, wave_removed: { A: 0, B: 0 }, crashed: { A: 0, B: 0 }, packets_lost: { A: 0, B: 0 }, minion_fire: { A: { cause: '', units: 0 }, B: { cause: '', units: 0 } } };
   return { t, k: t, codes: [2, 2], names: ['x', 'y'], parts: [{ kind: 'lane', wave: 0, behaviour: 0, objective: 0 }, { kind: 'lane', wave: 0, behaviour: 0, objective: 0 }],
     modes: ['farm', 'farm'], ticks: [tick, { ...tick, tick: 2 }], outcomes: [], delta: { A: { gold: 0, farm: 0, xp: 0, hp: 0, hp_taken: 0 }, B: { gold: 0, farm: 0, xp: 0, hp: 0, hp_taken: 0 } },
     reward_A: 0, moves: { A, B } };

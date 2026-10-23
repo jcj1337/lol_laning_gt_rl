@@ -2163,6 +2163,19 @@
       "title": "Packets",
       "type": "object"
      },
+     "packets_lost": {
+      "additionalProperties": {
+       "type": "integer"
+      },
+      "propertyNames": {
+       "enum": [
+        "A",
+        "B"
+       ]
+      },
+      "title": "Packets Lost",
+      "type": "object"
+     },
      "siege": {
       "additionalProperties": {
        "maxItems": 2,
@@ -2213,6 +2226,7 @@
      "at_ward",
      "wave_removed",
      "crashed",
+     "packets_lost",
      "minion_fire"
     ],
     "title": "Tick",

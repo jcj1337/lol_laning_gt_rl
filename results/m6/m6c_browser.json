@@ -1,10 +1,10 @@
 {
  "meta": {
   "study": "M6c",
-  "commit": "87e9abd0d08513e337f76eabbecf91b2f2599796",
+  "commit": "48790dc291dccda4c5e16bee123818988c1778b7",
   "working_tree_dirty": true,
-  "timestamp": "2026-10-22 18:25:14",
-  "elapsed_s": 43.9,
+  "timestamp": "2026-10-22 18:58:40",
+  "elapsed_s": 43.8,
   "browser": "C:\\Program Files (x86)\\Microsoft\\Edge\\Application\\msedge.exe",
   "frontend": "web/dist"
  },
@@ -269,7 +269,7 @@
   {
    "check": "8. Play returns to the same game, ready for its first turn",
    "ok": true,
-   "detail": "{\"sid\": \"a3e438d86fc7447d82e7ff32e8f648d2\", \"mode\": \"play\", \"canSubmit\": true, \"guide\": null, \"dialog\": null}"
+   "detail": "{\"sid\": \"f70f2e2cca884e919d1832311d21822e\", \"mode\": \"play\", \"canSubmit\": true, \"guide\": null, \"dialog\": null}"
   },
   {
    "check": "live game: no page errors",
@@ -394,12 +394,12 @@
   {
    "check": "13. at the end of a live Recall turn: each arrow is 20 to 40.5 px long and its tip sits just behind the token or wave that moved",
    "ok": true,
-   "detail": "{\"faults\": {}, \"arrows\": [{\"move\": [\"A\", \"champion\", \"recall\", \"-2\", \"base\"], \"tip\": [351, 564.9], \"tail\": [373.1, 537.6], \"mover\": \"champion_A\", \"mover_box\": [315.86163330078125, 563.5038452148438, 355.86163330078125, 603.5038452148438]}, {\"move\": [\"A\", \"wave\", \"walk\", \"-4\", \"-2\"], \"tip\": [479, 439.5], \"tail\": [447.2, 454.4], \"mover\": \"wave_A0\", \"mover_box\": [470.85845947265625, 416.8186950683594, 527.22607421875, 437.9759826660156]}, {\"move\": [\"B\", \"champion\", \"recall\", \"2\", \"base\"], \"tip\": [1083.5, 169.8], \"tail\": [1061.3, 197], \"mover\": \"champion_B\", \"mover_box\": [1077.5452880859375, 125.30303955078125, 1123.9315185546875, 171.68923950195312]}, {\"move\": [\"B\", \"wave\", \"walk\", \"4\", \"2\"], \"tip\": [957.6, 292.5], \"tail\": [989.4, 277.6], \"mover\": \"wave_B0\", \"mover_box\": [909.3739624023438, 294.0240173339844, 965.8978271484375, 315.1813049316406]}]}"
+   "detail": "{\"faults\": {}, \"arrows\": [{\"move\": [\"A\", \"champion\", \"recall\", \"-2\", \"base\"], \"tip\": [351, 564.9], \"tail\": [373.1, 537.6], \"mover\": \"champion_A\", \"mover_box\": [315.86163330078125, 563.5038452148438, 355.86163330078125, 603.5038452148438]}, {\"move\": [\"A\", \"wave\", \"walk\", \"-4\", \"-2\"], \"tip\": [479, 439.5], \"tail\": [447.2, 454.4], \"mover\": \"wave_A0\", \"mover_box\": [470.85845947265625, 416.8186950683594, 527.22607421875, 437.9759826660156]}, {\"move\": [\"B\", \"wave\", \"walk\", \"4\", \"2\"], \"tip\": [957.6, 292.5], \"tail\": [989.4, 277.6], \"mover\": \"wave_B0\", \"mover_box\": [909.3739624023438, 294.0240173339844, 965.8978271484375, 315.1813049316406]}]}"
   },
   {
    "check": "13. a live game: at the end of turn 1 your Recall is drawn from -2 to base, titled in the second person",
    "ok": true,
-   "detail": "{\"heads\": [\"Both actions revealed\", \"Tick 1 of 2\", \"Tick 2 of 2\", \"End of turn 1\"], \"arrows\": [{\"move\": [\"A\", \"champion\", \"recall\", \"-2\", \"base\"], \"label\": \"Recall\", \"title\": \"You recalled to base\", \"box\": [335, 524, 373, 565], \"under_panel\": [], \"label_covered_by\": [], \"tip\": [351, 564.9], \"tail\": [373.1, 537.6], \"mover\": \"champion_A\", \"mover_box\": [315.86163330078125, 563.5038452148438, 355.86163330078125, 603.5038452148438]}, {\"move\": [\"A\", \"wave\", \"walk\", \"-4\", \"-2\"], \"label\": null, \"title\": \"Your leading wave walked forward\", \"box\": [447, 439, 479, 454], \"under_panel\": [], \"label_covered_by\": null, \"tip\": [479, 439.5], \"tail\": [447.2, 454.4], \"mover\": \"wave_A0\", \"mover_box\": [470.85845947265625, 416.8186950683594, 527.22607421875, 437.9759826660156]}, {\"move\": [\"B\", \"champion\", \"recall\", \"2\", \"base\"], \"label\": \"Recall\", \"title\": \"Self-play agent recalled to base\", \"box\": [1061, 170, 1099, 209], \"under_panel\": [], \"label_covered_by\": [], \"tip\": [1083.5, 169.8], \"tail\": [1061.3, 197], \"mover\": \"champion_B\", \"mover_box\": [1077.5452880859375, 125.30303955078125, 1123.9315185546875, 171.68923950195312]}, {\"move\": [\"B\", \"wave\", \"walk\", \"4\", \"2\"], \"label\": null, \"title\": \"Self-play agent's leading wave walked forward\", \"box\": [958, 278, 989, 293], \"under_panel\": [], \"label_covered_by\": null, \"tip\": [957.6, 292.5], \"tail\": [989.4, 277.6], \"mover\": \"wave_B0\", \"mover_box\": [909.3739624023438, 294.0240173339844, 965.8978271484375, 315.1813049316406]}]}"
+   "detail": "{\"heads\": [\"Both actions revealed\", \"Tick 1 of 2\", \"Tick 2 of 2\", \"End of turn 1\"], \"arrows\": [{\"move\": [\"A\", \"champion\", \"recall\", \"-2\", \"base\"], \"label\": \"Recall\", \"title\": \"You recalled to base\", \"box\": [335, 524, 373, 565], \"under_panel\": [], \"label_covered_by\": [], \"tip\": [351, 564.9], \"tail\": [373.1, 537.6], \"mover\": \"champion_A\", \"mover_box\": [315.86163330078125, 563.5038452148438, 355.86163330078125, 603.5038452148438]}, {\"move\": [\"A\", \"wave\", \"walk\", \"-4\", \"-2\"], \"label\": null, \"title\": \"Your leading wave walked forward\", \"box\": [447, 439, 479, 454], \"under_panel\": [], \"label_covered_by\": null, \"tip\": [479, 439.5], \"tail\": [447.2, 454.4], \"mover\": \"wave_A0\", \"mover_box\": [470.85845947265625, 416.8186950683594, 527.22607421875, 437.9759826660156]}, {\"move\": [\"B\", \"wave\", \"walk\", \"4\", \"2\"], \"label\": null, \"title\": \"Self-play agent's leading wave walked forward\", \"box\": [958, 278, 989, 293], \"under_panel\": [], \"label_covered_by\": null, \"tip\": [957.6, 292.5], \"tail\": [989.4, 277.6], \"mover\": \"wave_B0\", \"mover_box\": [909.3739624023438, 294.0240173339844, 965.8978271484375, 315.1813049316406]}]}"
   },
   {
    "check": "arrows in a live game: no page errors",

@@ -8,7 +8,8 @@ Two shapes, both JSON-ready and both computed by Python only (the browser comput
                   `summary` of that state, so they are the numbers the Streamlit debugger shows.
     turn(t)       the turn that moves position t - 1 to position t: both codes and their names, the authoritative tick
                   trace (packets, crashed masses, the contact and each champion's cell after every tick, the wave HP
-                  each champion removed in that tick and the minion fire it took), and the turn's outcomes in the
+                  each champion removed in that tick, the minion packets each seat lost in it and the minion fire each
+                  champion took), and the turn's outcomes in the
                   resolver's order (champions_m4 steps 9 to 14), each marked major or minor.
 
 Per-tick facts are only those the engine records per tick (`info["lane_trace"]`, `info["champion_path"]`). Trades,
@@ -30,8 +31,10 @@ from typing import Dict, List, Optional, Tuple
 from ..champions_m4 import context
 from ..config import GameConfig
 from ..diagnostics import lane_exit as LX
+from ..mechanics import _fronts_in_contact, _merge
 from ..positional import WARD
 from ..progression import plates_broken
+from ..state import State
 from ..viewer import session as VS
 from .actions import code_parts
 
@@ -97,10 +100,39 @@ def _cell(pos: int, s: int) -> Optional[int]:
     return int(pos) if s == 0 else -int(pos)
 
 
+def packets_lost(cfg: GameConfig, info: dict) -> List[Tuple[int, int]]:
+    """Per tick of the turn, how many of each seat's minion packets died in it (crashes excluded). The trace records
+    the packets after each tick but not the deaths, and a count also falls when a rear packet merges into the front.
+    So each tick's movement and merging (mechanics._tick_natural steps 1 and 2) are replayed on the packets before it;
+    after them a packet leaves the lane only from the front, by dying or crashing (at most one crash per tick)."""
+    lane = State.from_list(info["state_before"])
+    P = []
+    for s in (0, 1):
+        fx, fh, rears = lane.side(s)[:3]
+        P.append(([[fx, fh]] if fh > 0 else []) + [[x, cfg.wave_hp] for x in rears])
+    siege = [lane.asg, lane.bsg]
+    out = []
+    for tk in info.get("lane_trace") or []:
+        contact = _fronts_in_contact(P)
+        lost = []
+        for s, n in enumerate(SEATS):
+            pk = [list(p) for p in P[s]]
+            if pk and not contact and not (siege[1 - s] > 0 and pk[0][0] >= -cfg.tower - 1):
+                pk[0][0] += 1
+            for p in pk[1:]:
+                if p[0] + 1 < pk[0][0]:
+                    p[0] += 1
+            lost.append(len(_merge(pk, cfg.hp_cap, block=True)) - len(tk[n]) - (1 if tk["crashed"][s] else 0))
+        out.append((lost[0], lost[1]))
+        P, siege = [tk["A"], tk["B"]], tk["siege"]
+    return out
+
+
 def ticks(cfg: GameConfig, info: dict) -> List[dict]:
     """The authoritative tick trace of a turn in global coordinates (module docstring)."""
     out = []
     path = info.get("champion_path")
+    lost = packets_lost(cfg, info)
     for j, tk in enumerate(info.get("lane_trace") or []):
         objs = VS.trace_objects(tk, cfg)
         cells, ward = {}, {}
@@ -120,6 +152,7 @@ def ticks(cfg: GameConfig, info: dict) -> List[dict]:
                     "contact": VS.contact_of(objs), "cells": cells, "at_ward": ward,
                     "wave_removed": {n: int(tk["champion"][s]) for s, n in enumerate(SEATS)},
                     "crashed": {n: int(tk["crashed"][s]) for s, n in enumerate(SEATS)},
+                    "packets_lost": {n: int(lost[j][s]) for s, n in enumerate(SEATS)},
                     "minion_fire": fire})
     return out
 
@@ -133,7 +166,8 @@ def _ev(kind: str, seat: Optional[str], major: bool, text: str, **data) -> dict:
 
 def outcomes(cfg: GameConfig, info: dict) -> List[dict]:
     """The turn's outcomes in the resolver's order. `text` names the seats {A} and {B} (format placeholders the
-    client fills with its display names). Gold in resources, HP in centi-HP."""
+    client fills with its display names). Gold in resources, damage and HP in centi-HP. A trade, tower shot, gank or
+    minion fire quotes its damage before durability; `hp_lost` gives the HP a seat lost when the two differ."""
     sc = cfg.gold_scale
     ev: List[dict] = []
     seats = list(enumerate(SEATS))
@@ -160,7 +194,7 @@ def outcomes(cfg: GameConfig, info: dict) -> List[dict]:
                 ev.append(_ev("trade", n, False, f"{{{n}}} tried to trade but could not reach {{{o}}}",
                               result="no_contact"))
             elif info["trade_damage"][s] > 0:
-                ev.append(_ev("trade", n, True, f"{{{n}}} hit {{{o}}} in a trade for {info['trade_damage'][s]} HP",
+                ev.append(_ev("trade", n, True, f"{{{n}}} hit {{{o}}} in a trade for {info['trade_damage'][s]} damage",
                               result="hit", damage=int(info["trade_damage"][s]), hit_p=_r(info["hit_p"][s], 3)))
             else:
                 ev.append(_ev("trade", n, True, f"{{{n}}} reached {{{o}}} but the trade missed", result="miss",
@@ -168,14 +202,22 @@ def outcomes(cfg: GameConfig, info: dict) -> List[dict]:
     for s, n in seats:
         o = SEATS[1 - s]
         if info["tower_damage"][s]:
-            ev.append(_ev("tower_shot", n, True, f"{{{o}}}'s tower shot {{{n}}} for {info['tower_damage'][s]} HP",
+            ev.append(_ev("tower_shot", n, True, f"{{{o}}}'s tower shot {{{n}}} for {info['tower_damage'][s]} damage",
                           damage=int(info["tower_damage"][s])))
         if info["ganked"][s]:
-            ev.append(_ev("gank", n, True, f"{{{n}}} was ganked for {info['gank_damage'][s]} HP",
+            ev.append(_ev("gank", n, True, f"{{{n}}} was ganked for {info['gank_damage'][s]} damage",
                           damage=int(info["gank_damage"][s]), p=_r(info["gank_p"][s], 3)))
         if info.get("minion_hits") and info["minion_hits"][s]:
-            ev.append(_ev("minion_fire", n, False, f"{{{o}}}'s minions hit {{{n}}} for {info['minion_damage'][s]} HP",
+            ev.append(_ev("minion_fire", n, False, f"{{{o}}}'s minions hit {{{n}}} for {info['minion_damage'][s]} damage",
                           damage=int(info["minion_damage"][s]), units=int(info["minion_hits"][s])))
+    # step 9b: the resolver divides each seat's summed damage by its durability M(S) (invest_durability)
+    for s, n in seats:
+        damage = int(info["trade_damage"][1 - s] + info["tower_damage"][s] + info["gank_damage"][s]
+                     + (info["minion_damage"][s] if "minion_damage" in info else 0))
+        hp = int(info["damage_taken"][s])
+        if damage != hp:
+            ev.append(_ev("hp_lost", n, False, f"{{{n}}} lost {hp} HP from {damage} damage; invested gold reduces "
+                          "damage taken", damage=damage, hp=hp))
     # step 10: deaths and kills
     for s, n in seats:
         o = SEATS[1 - s]
@@ -274,5 +316,5 @@ def turn(cfg: GameConfig, info: dict, pre: dict, post: dict) -> dict:
             "delta": delta, "reward_A": _r(info["reward"], 7), "moves": moves(cfg, info, pre, post)}
 
 
-__all__ = ["FRAME_SCHEMA", "FRAME_VERSION", "position", "turn", "ticks", "outcomes", "moves", "champion_status",
-           "lane_view"]
+__all__ = ["FRAME_SCHEMA", "FRAME_VERSION", "position", "turn", "ticks", "packets_lost", "outcomes", "moves",
+           "champion_status", "lane_view"]

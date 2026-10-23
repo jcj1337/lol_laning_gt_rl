@@ -117,6 +117,7 @@ class Tick(Strict):
     at_ward: Dict[Seat, bool]
     wave_removed: Dict[Seat, int]
     crashed: Dict[Seat, int]
+    packets_lost: Dict[Seat, int]          # the seat's minion packets that died in this tick (crashes excluded)
     minion_fire: Dict[Seat, MinionFire]
 
 

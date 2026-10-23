@@ -126,8 +126,12 @@ Viewer: `streamlit run lanegame/viewer/app.py` (replays recorded trajectories fr
     prototype's code is archived unchanged at `legacy/m6a_glass_prototype/` (it does not run) and its screenshots
     stay in `results/m6/prototypes/`. M6c was narrowed on 2026-10-22 to a small collection of optional guided
     replays within Watch, shown to visitors as Sequences ([report](docs/m6/m6c_guided_replays.md)); there is no findings page, and the research
-    explanation belongs in M6d's documentation. Its step 1 (the format and the first example) is done and awaits the
-    user's review; steps 2 (review) and 3 (a few more examples) follow.
+    explanation belongs in M6d's documentation. Its step 1 (the format and the first example) is done and the user
+    approved it on 2026-10-22; further sequences are on hold at the user's request.
+  - M6d started on 2026-10-22: [docs/m6/research_overview.md](docs/m6/research_overview.md) explains M5 for
+    newcomers, and `python -m lanegame.experiments.m6d overview` checks each of its numbers against the M5 records
+    (`results/m6/m6d_overview_check.json`). A number added to the overview needs a check there. The reproduction
+    guide, the bundles, the `reproduce` re-run and the Streamlit archive are still to do.
   - A sequence is one JSON file in `lanegame/demo/guides/` (the code calls it a guide; the first,
     `stacking-to-crashing.json`, is the template): a
     verified research replay, a start position and three to five events (the JSON field is `checkpoints`) whose
@@ -141,7 +145,9 @@ Viewer: `streamlit run lanegame/viewer/app.py` (replays recorded trajectories fr
     `python -m lanegame.demo` on 127.0.0.1:8765 (`lanegame/demo/api.py`, FastAPI, the `demo` extra). `npm run dev`
     in `web/` proxies `/api` to it. `web/openapi.json` and `web/src/api/schema.d.ts` are generated from
     `lanegame/demo/schemas.py` (`python -m lanegame.demo --openapi web/openapi.json`, then `npm run types`);
-    `tests/test_demo_api.py` fails when the committed schema drifts. The browser computes no game rule.
+    `tests/test_demo_api.py` fails when the committed schema drifts. The browser computes no game rule. Its words
+    for a tick restate facts the frames carry (the contact, `crashed`, `packets_lost`, `wave_removed`) or the
+    change between two frames, and `web/src/game/words.test.ts` pins them.
   - `lanegame/demo/` is the headless session core ([technical report](docs/m6/m6a_technical_report.md)). `registry.py`
     checks the 7 checkpoint files against `manifest.json` before any is unpickled. Never load a demo checkpoint
     another way. `service.py` is the JSON layer: one lock around all simulation in a process, sessions that expire
@@ -153,7 +159,11 @@ Viewer: `streamlit run lanegame/viewer/app.py` (replays recorded trajectories fr
     replay. `frames.py` and `actions.py` give the frames and the menu, with reasons from the legality predicates.
     Every turn frame carries `moves`, each seat's champion move and leading-wave move, which the lane draws as
     arrows; `frames.moves` holds the rule (a wave move only while the turn's leading packet survives) and
-    `tests/test_demo_moves.py` checks it against every turn of the three replays.
+    `tests/test_demo_moves.py` checks it against every turn of the three replays. A tick's `packets_lost` is rebuilt
+    from the trace by replaying that tick's movement and merging (`frames.packets_lost`, since the trace records no
+    deaths); `tests/test_demo_narration.py` checks it against the engine's own death count on every tick. Trade,
+    tower, gank and minion outcomes quote damage before durability, and an `hp_lost` outcome gives the HP a seat
+    lost whenever durability reduced it.
   - The frontend keeps the resolved turns and the viewed position apart (`web/src/game/controller.ts`), tags every
     request with a generation so a late response from a replaced game is dropped, and re-reads the server after an
     unanswered submission before it offers a retry (`web/src/game/store.ts`).
@@ -198,8 +208,8 @@ action-dependent RNG consumption or unseeded randomness.
   `docs/m5/`) are historical records. Don't edit them after the fact; corrections go in later reports and in the
   reference's §12.
 - A milestone usually produces a pre-registration (written before training or evaluation), a report under `docs/`, and
-  generated tables at `results/<milestone>/report.md`. It also updates the roadmap summary,
-  `docs/README.md` / `docs/m4/README.md` and the README's roadmap table.
+  generated tables at `results/<milestone>/report.md`. It also updates the roadmap summary and
+  `docs/README.md` / `docs/m4/README.md`. The README has no roadmap table or status log; it links the roadmap.
 - `docs/design_philosophy.md` is the standard for any mechanic: simplify how League works without changing why its
   laning strategies work.
 - Terminology: the midpoint cell x = 0 is "the lane" (never "river"). The full-capacity wave slot is "Shove" in the

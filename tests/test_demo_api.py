@@ -168,9 +168,18 @@ def test_a_live_game_through_the_api(client, reg):
 
 
 def test_history_after_a_reload_equals_the_turn_results_and_hides_the_future(client):
-    g = client.post("/api/sessions", json={"opponent": "sp:0"}).json()
+    g = client.post("/api/sessions", json={"opponent": "sp:0", "seed": 20261022}).json()
     sid = g["session"]
-    results = play(client, sid, 14, pick=lambda t, m: 12 if (t == 3 and 12 in m["legal"]) else m["legal"][-1])
+    recalled = []
+
+    def pick(t, m):                         # Recall at the first turn it is legal, else the last legal code
+        if not recalled and 12 in m["legal"]:
+            recalled.append(t)
+            return 12
+        return m["legal"][-1]
+
+    results = play(client, sid, 14, pick=pick)
+    assert recalled, "Recall was legal in some turn"
     h = client.get(f"/api/sessions/{sid}/history").json()
     assert [p["p"] for p in h["positions"]] == list(range(15))
     assert h["turns"] == [r["turn"] for r in results]

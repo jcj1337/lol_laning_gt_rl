@@ -4,8 +4,10 @@ The visitor-facing application of the M6 demo: **Play** against a trained M5 age
 the glass design approved in M6a ([decision record](../docs/m6/m6a_decision_record.md) §7). Watch also opens the
 sequences the server serves (M6c, [report](../docs/m6/m6c_guided_replays.md)): a verified research recording
 with a chain of events, each a short note at a chosen position. React with TypeScript,
-built by Vite, served by the Python API (`python -m lanegame.demo`). The browser computes no game rule: every number
-it shows comes from the server's frames, and every note comes from a sequence file the server validated.
+built by Vite, served by the Python API (`python -m lanegame.demo`). The browser computes no game rule. Every number
+it shows comes from the server's frames, its tick narration restates facts those frames carry or the change
+between two of them (pinned in `src/game/words.test.ts`), and every note comes from a sequence file the server
+validated.
 
 ## Run it
 

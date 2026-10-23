@@ -1,13 +1,14 @@
 // The store against a fake server: a late response from an earlier game never acts on the new one, an unanswered
-// submission re-reads the server and appends what it missed (or offers a retry when nothing changed), and a lost
-// session is reported as such. A sequence walks to its events on the controller (Next and Play stop at each one),
-// goes with the next game, and a sequence opened over a live game leaves the way back to it.
+// submission re-reads the server and appends what it missed (or offers a retry when nothing changed), a failed stop at
+// the turn cap offers a retry, and a lost session is reported as such. A sequence walks to its events on the controller
+// (Next and Play stop at each one), goes with the next game, and a sequence opened over a live game leaves the way back
+// to it.
 import { afterEach, describe, expect, it, vi } from 'vitest';
 import { ApiError } from '../api/client';
 import type { Api } from '../api/client';
 import { WALK_MS } from './frames';
 import { AppStore, readParams } from './store';
-import type { CreateResponse, GameBundle, Guide, History, Position, Turn, TurnResult, View } from './types';
+import type { CreateResponse, GameBundle, Guide, History, Position, Recording, StopResponse, Turn, TurnResult, View } from './types';
 
 function position(p: number): Position {
   const champ = { level: 1, hp: 600, hp_max: 600, xp: 0, xp_level: 0, xp_next: 10, gold_earned: 0, gold_unspent: 0, invested: 0, attack_power: 1,
@@ -160,6 +161,32 @@ describe('AppStore', () => {
     await S.submit(2);
     expect(S.problem?.kind).toBe('lost');
     expect(S.ctrl!.progress).toBe(0);
+  });
+
+  it('offers a retry when the stop at the turn cap fails, and the retry shows the recording', async () => {
+    const api = fakeApi();
+    const S = new AppStore(params(), api);
+    await S.newGame('sp:0');
+    const submit = api.submitTurn;
+    const stopped = (v: View): View => ({ ...v, state: 'stopped', stop_reason: 'turn_cap', menu: null });
+    api.submitTurn = async (sid, t, code) => { const r = await submit(sid, t, code); return { ...r, view: stopped(r.view) }; };
+    const recording = { turns: [[7, 2, 'digest']] } as unknown as Recording;
+    let stops = 0;
+    api.stop = async (sid) => {
+      if (++stops === 1) throw new ApiError(0, 'timeout', 'The server did not answer in time.');
+      return { recording, view: stopped(view(sid, 1)) } as unknown as StopResponse;
+    };
+    await S.submit(7);
+    expect(S.ctrl!.progress).toBe(1);
+    expect(S.ctrl!.stopped).toBe(true);
+    expect(S.problem?.kind).toBe('unanswered');
+    expect(S.game!.recording).toBeUndefined();
+    expect(S.busy).toBe(false);
+    S.problem!.retry!();
+    await delay(5);
+    expect(stops).toBe(2);
+    expect(S.problem).toBeNull();
+    expect(S.game!.recording).toBe(recording);
   });
 
   it('keeps the selection rules: Pressure only with Hold or Trade', async () => {

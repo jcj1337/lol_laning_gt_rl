@@ -122,6 +122,9 @@ function cellName(c: number, short: Names): string {
   return d === 1 ? `${own(n, short)} side of the lane` : d === 2 ? `${own(n, short)} tower` : d === 3 ? `behind ${own(n, short)} tower` : `${own(n, short)} base`;
 }
 const toCell = (c: number, short: Names) => (Math.abs(c) === 3 ? cellName(c, short) : `to ${cellName(c, short)}`);
+/** Where the fronts fight: the contact is a unit, or halfway between two adjacent units when the fronts stand on both. */
+const contactPlace = (c: number, short: Names) =>
+  (Number.isInteger(c) ? `at ${cellName(c, short)}` : `between ${cellName(Math.floor(c), short)} and ${cellName(Math.ceil(c), short)}`);
 const placeOf = (f: Frame, n: Seat): number | 'W' | null => (f.at_ward[n] ? 'W' : f.cells[n] === null || f.cells[n] === undefined ? null : f.cells[n]);
 const frontOf = (f: Frame, n: Seat) => f.lane.packets[n].find((q) => q[2]) || null;
 
@@ -134,14 +137,12 @@ export function tickWords(prev: Frame, f: Frame, short: Names): string[] {
     else if (a === 'W') out.push(`${they(n, short)} ${verb(n, short, 'leave', 'leaves')} the bush and ${verb(n, short, 'move', 'moves')} ${toCell(b, short)}.`);
     else out.push(`${they(n, short)} ${verb(n, short, 'move', 'moves')} ${toCell(b, short)}.`);
   }
-  const ct = f.lane.contact;
-  if (ct !== null && ct !== undefined) {
-    out.push(`${Cap(own('A', short))} wave and ${own('B', short)} wave ${prev.lane.contact === ct ? 'keep fighting' : 'fight'} at ${cellName(ct, short)}.`);
-  } else {
-    for (const n of SEATS) {
-      const a = frontOf(prev, n), b = frontOf(f, n);
-      if (a && b && a[0] !== b[0] && !tk.crashed[n]) out.push(`${Cap(own(n, short))} wave walks ${toCell(b[0], short)}.`);
-    }
+  const ct = f.lane.contact, fighting = ct !== null && ct !== undefined;
+  if (fighting) out.push(`${Cap(own('A', short))} wave and ${own('B', short)} wave ${prev.lane.contact === ct ? 'keep fighting' : 'fight'} ${contactPlace(ct, short)}.`);
+  for (const n of SEATS) {
+    if (tk.packets_lost[n] > 0) { out.push(`${Cap(own(n, short))} front wave is cleared.`); continue; }
+    const a = frontOf(prev, n), b = frontOf(f, n);
+    if (!fighting && a && b && a[0] !== b[0] && !tk.crashed[n]) out.push(`${Cap(own(n, short))} wave walks ${toCell(b[0], short)}.`);
   }
   const r = tk.wave_removed;
   if (r.A > 0 && r.B > 0) out.push(`${they('A', short)} ${verb('A', short, 'remove', 'removes')} ${r.A} HP of enemy minions; ${short.B} ${verb('B', short, 'remove', 'removes')} ${r.B}.`);
@@ -212,5 +213,6 @@ export const BUSH_NOTE = 'The bush hides no one in this simulator: the other sid
 export const GRAPH_NOTE = 'How much more gold one side has earned so far. Not a chance of winning.';
 export const EXAMPLE_NOTE = "One game is an example, not evidence for M5's findings. See About.";
 export const DOCS_URL = 'https://github.com/jcj1337/lol_game_theory_laning/blob/main/docs/README.md';
+export const OVERVIEW_URL = 'https://github.com/jcj1337/lol_game_theory_laning/blob/main/docs/m6/research_overview.md';
 /** A position in words: the state after turn p, or the start. */
 export const afterTurn = (p: number): string => (p === 0 ? 'the start' : `after turn ${p}`);

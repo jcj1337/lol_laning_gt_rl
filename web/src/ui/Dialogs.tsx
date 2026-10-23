@@ -4,7 +4,7 @@ import { useEffect, useRef } from 'react';
 import { useStore } from './useStore';
 import { LAYOUTS, THEMES } from '../game/store';
 import type { ModelId } from '../game/types';
-import { AGENTS, BOTS, DOCS_URL, gameTitle } from '../game/words';
+import { AGENTS, BOTS, OVERVIEW_URL, gameTitle } from '../game/words';
 
 function useDialog(open: boolean, onClose: () => void) {
   const ref = useRef<HTMLDialogElement>(null);
@@ -104,10 +104,10 @@ export function AboutDialog() {
           <li><b>Always-push bot</b>: {BOTS.g_shove.about}. It is not trained.</li></ul>
         <p className="muted">Both agents are the final models of the research's last training run, and both pick their actions with some randomness, as they did in the research.</p>
         <h3>What the research found</h3>
-        <ul><li>Against simple bots like the ones it trained against, the adaptive agent ends the lane far ahead: about 9 gold more than the self-play agent manages.</li>
-          <li>Against strong opponents, including the self-play agent, it does slightly worse: about 0.4 to 0.6 gold.</li>
-          <li>Opponents trained specially to beat them can beat both.</li></ul>
-        <p>Neither agent is better overall, and neither was ever tested against people. The full numbers are in the research report (<a href={DOCS_URL} target="_blank" rel="noreferrer">the research documentation</a>).</p>
+        <ul><li>Against simple scripted bots like the ones it trained against, the adaptive agent ends the lane about 9 gold further ahead than the self-play agent does. This is the average over six matched pairs of training runs.</li>
+          <li>Against strong opponents, including the self-play agent, the adaptive agent does worse in all six pairs, by about 0.4 to 0.6 gold.</li>
+          <li>Attacker agents, each trained against one frozen agent, beat both kinds. Their margins are lower bounds on how far each agent can be exploited.</li></ul>
+        <p>Neither agent is better overall. The self-play agent was still improving when training stopped, and neither agent was ever tested against people. The intervals and the limitations are in the <a href={OVERVIEW_URL} target="_blank" rel="noreferrer">research overview</a>.</p>
         <h3>Layout</h3>
         <div className="lay-pick"><div className="seg" role="group" aria-label="Layout">{(['auto', ...LAYOUTS] as const).map((l) =>
           <button key={l} data-lay={l} aria-pressed={l === S.layoutChoice} onClick={() => { S.closeDialog(); S.setLayout(l); }}>{l[0].toUpperCase() + l.slice(1)}</button>)}</div>

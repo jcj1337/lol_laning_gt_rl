@@ -49,7 +49,8 @@ Status labels follow the roadmap's legend.
 | scripted strategies as additional opponents | a design decision, assessed in the [decision record](m6a_decision_record.md); the session core supports them |
 | a Chess.com-style turn history shared by Play and Watch, and the frontend clarity requirements (§5.1, §5.2) | approved requirements (the user, 2026-10-21) |
 | the Streamlit viewer archived as legacy during implementation, not reworked | approved direction; planned for M6d, not done. The old UI is not a visual template |
-| sequences (first called guided replays) of verified research games within Watch, as M6c's whole content | approved direction (the user, 2026-10-22); the format and the first example are built ([M6c report](m6c_guided_replays.md)), the user's review of them is pending |
+| sequences (first called guided replays) of verified research games within Watch, as M6c's whole content | approved direction (the user, 2026-10-22); the format and the first sequence are built ([M6c report](m6c_guided_replays.md)) and the user approved them on 2026-10-22; further sequences are on hold at the user's request |
+| the research overview (M6d) | written 2026-10-22 ([research overview](research_overview.md)); `python -m lanegame.experiments.m6d overview` checks its numbers against the M5 records; the user's approval of the text is pending |
 | a separate findings page and research explanation inside the application | dropped (the user, 2026-10-22); the research overview is M6d documentation, linked from the application |
 | React with TypeScript and Vite in `web/` in this repository, FastAPI over the Python simulator, one container | approved by the user on 2026-10-21, unless a concrete blocker appears; M6a found none |
 | `docs/` tracked in git | approved (the user, 2026-10-21) and done: the blanket ignore rule is removed |
@@ -451,6 +452,11 @@ research demonstration focused on Play and Watch, and the detailed research expl
 
 ### M6d. Documentation, the research overview and reproducibility
 
+*Status 2026-10-22: the research overview is written ([research_overview.md](research_overview.md)) and its numbers
+are checked by `python -m lanegame.experiments.m6d overview`; the user's approval of its text is pending. The README
+describes the first sequence and its League counterparts. The reproduction guide, the bundles, the `reproduce`
+re-run and the Streamlit archive are not started.*
+
 - **Objective and outcome.** A reader can run the demo, understand what M5 asked and found, regenerate the M5
   analysis or rerun the campaign from the documentation alone. The outcome is a concise README, an accessible research
   overview and a reproduction guide with three bundles.
@@ -596,9 +602,9 @@ turns, which realizes E_20 at the turn-94 lane exit.
 
 | claim | evidence (M5e report) |
 |---|---|
-| Both arms retain four registered strategic findings, in 6 of 6 seeds each: conditional wave management, conditional freezing and the reply to freezes, selective trading, and Recall timing. Concession under threat does not replicate in either arm | §4.1; `results/m5/strategic_main.json` |
-| The modelling package gains substantially against library-like scripted styles, by +9.26 [+8.95, +9.56]. The gain is largest against the library archetypes (+12.2), smaller against held-out scripted variants (+6.4) and absent against conditional styles built on a competent policy (−0.2 to −0.7) | §3.1 |
-| Pure self-play is better against competent opponents. The package is −0.63 [−0.98, −0.27] against competent finals and −0.44 [−0.72, −0.16] head to head, in every seed | §3.1 |
+| Both arms retain four registered strategic findings, in 6 of 6 seeds each: conditional wave management, conditional freezing and the reply to freezes, selective trading, and Recall timing. Concession under threat does not replicate in either arm under the registered rule. Pure self-play fails it only in the two seeds re-read at 150 turns and holds in all six at 50 turns (qualifier added 2026-10-22, audit R2) | §4.1; `results/m5/strategic_main.json`; `results/m5/battery/summary_battery_sp.json.gz` |
+| The modelling package gains substantially against library-like scripted styles, by +9.26 [+8.95, +9.56]. The gain is largest against the library archetypes (+12.2) and nearly as large against the held-out scripted variants (+3.7 to +14.4, mean +11.4). It is absent against conditional styles built on a competent policy (−0.2 to −0.7). The held-out family's mean, +6.4, averages the two kinds (corrected 2026-10-22, audit W1) | §3.1; `results/m5/analysis_main.json` `per_opponent` |
+| Pure self-play is better against competent opponents. The package is −0.63 [−0.98, −0.27] against competent opponents (historical policies and finals) and −0.44 [−0.72, −0.16] head to head, in every seed | §3.1 |
 | Both arms are exploitable by dedicated attackers. The attackers' lower bounds are +2.96 [+0.32, +5.61] against the modelling finals and +1.15 [+0.34, +1.96] against the pure self-play finals, positive in every seed | §5.2 |
 | The difference between the two lower bounds (+1.81 [−0.56, +4.19]) is inconclusive. Neither "more exploitable" nor "equally exploitable" is shown | §3.2, §5.2 |
 | M5 compares whole packages. It does not show whether the competence cost comes from the belief inputs, the fixed-opponent games or the reduced self-play exposure | §6, §11 |

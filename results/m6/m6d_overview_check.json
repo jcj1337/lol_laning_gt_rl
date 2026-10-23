@@ -1,0 +1,2161 @@
+{
+ "overview": "docs/m6/research_overview.md",
+ "ok": true,
+ "summary": {
+  "claims": 48,
+  "claims_failed": 0,
+  "constants": 16,
+  "constants_failed": 0,
+  "verdicts": 18,
+  "verdicts_failed": 0,
+  "tokens": 92,
+  "unaccounted": 0
+ },
+ "claims": [
+  {
+   "id": "P1",
+   "section": "5.1",
+   "expected": "+9.26 [+8.95, +9.56]",
+   "produced": "+9.26 [+8.95, +9.56]",
+   "found": true,
+   "lines": [
+    92
+   ],
+   "value": {
+    "mean": 9.256732437434414,
+    "L": 8.95430215642335,
+    "U": 9.559162718445478
+   },
+   "error": null,
+   "pass": true
+  },
+  {
+   "id": "P1_pairs",
+   "section": "5.1",
+   "expected": "positive in all six pairs",
+   "produced": "positive in all six pairs",
+   "found": true,
+   "lines": [
+    92
+   ],
+   "value": [
+    6,
+    6
+   ],
+   "error": null,
+   "pass": true
+  },
+  {
+   "id": "S_in_row",
+   "section": "5.1",
+   "expected": "library styles | +16.87 | +4.72 | +12.15 [+11.77, +12.54]",
+   "produced": "library styles | +16.87 | +4.72 | +12.15 [+11.77, +12.54]",
+   "found": true,
+   "lines": [
+    96
+   ],
+   "value": {
+    "om": {
+     "mean": 16.87085305319892,
+     "L": 16.40665405717722,
+     "U": 17.33505204922062
+    },
+    "sp": {
+     "mean": 4.716578910748164,
+     "L": 4.4088269815985806,
+     "U": 5.024330839897748
+    },
+    "om - sp": {
+     "mean": 12.154274142450758,
+     "L": 11.76570690333797,
+     "U": 12.542841381563546
+    }
+   },
+   "error": null,
+   "pass": true
+  },
+  {
+   "id": "S_out_row",
+   "section": "5.1",
+   "expected": "held-out styles | +10.62 | +4.26 | +6.36 [+5.80, +6.92]",
+   "produced": "held-out styles | +10.62 | +4.26 | +6.36 [+5.80, +6.92]",
+   "found": true,
+   "lines": [
+    97
+   ],
+   "value": {
+    "om": {
+     "mean": 10.621497575725828,
+     "L": 10.374817688175554,
+     "U": 10.868177463276101
+    },
+    "sp": {
+     "mean": 4.262306555396035,
+     "L": 3.8758299774636753,
+     "U": 4.648783133328394
+    },
+    "om - sp": {
+     "mean": 6.359191020329793,
+     "L": 5.798591779441336,
+     "U": 6.91979026121825
+    }
+   },
+   "error": null,
+   "pass": true
+  },
+  {
+   "id": "M_row",
+   "section": "5.1",
+   "expected": "misspecified | +9.59 | +4.39 | +5.20 [+4.82, +5.59]",
+   "produced": "misspecified | +9.59 | +4.39 | +5.20 [+4.82, +5.59]",
+   "found": true,
+   "lines": [
+    98
+   ],
+   "value": {
+    "om": {
+     "mean": 9.593637954621087,
+     "L": 9.328839707258469,
+     "U": 9.858436201983706
+    },
+    "sp": {
+     "mean": 4.391998743017514,
+     "L": 4.085384910730557,
+     "U": 4.698612575304471
+    },
+    "om - sp": {
+     "mean": 5.201639211603574,
+     "L": 4.817646959154971,
+     "U": 5.5856314640521765
+    }
+   },
+   "error": null,
+   "pass": true
+  },
+  {
+   "id": "variants_mean",
+   "section": "5.1",
+   "expected": "averaged +11.39",
+   "produced": "averaged +11.39",
+   "found": true,
+   "lines": [
+    102
+   ],
+   "value": 11.391948541005453,
+   "error": null,
+   "pass": true
+  },
+  {
+   "id": "variants_each",
+   "section": "5.1",
+   "expected": "+14.33, +14.42 and +13.12, and the fourth +3.70",
+   "produced": "+14.33, +14.42 and +13.12, and the fourth +3.70",
+   "found": true,
+   "lines": [
+    102
+   ],
+   "value": [
+    14.326702435811361,
+    14.420608838399252,
+    13.12119197845459,
+    3.699290911356608
+   ],
+   "error": null,
+   "pass": true
+  },
+  {
+   "id": "conditional_each",
+   "section": "5.1",
+   "expected": "the differences were -0.18, -0.67 and -0.20",
+   "produced": "the differences were -0.18, -0.67 and -0.20",
+   "found": true,
+   "lines": [
+    104
+   ],
+   "value": [
+    -0.18324549992879233,
+    -0.6695182720820109,
+    -0.20069332917531332
+   ],
+   "error": null,
+   "pass": true
+  },
+  {
+   "id": "P2a_every_pair",
+   "section": "5.2",
+   "expected": "did worse than the sp agents, in every pair",
+   "produced": "did worse than the sp agents, in every pair",
+   "found": true,
+   "lines": [
+    113
+   ],
+   "value": [
+    6,
+    6
+   ],
+   "error": null,
+   "pass": true
+  },
+  {
+   "id": "P2a_row",
+   "section": "5.2",
+   "expected": "competent opponents (historical and finals) | -0.63 [-0.98, -0.27] | 6 of 6",
+   "produced": "competent opponents (historical and finals) | -0.63 [-0.98, -0.27] | 6 of 6",
+   "found": true,
+   "lines": [
+    117
+   ],
+   "value": {
+    "mean": -0.625239262667795,
+    "L": -0.9784135499028048,
+    "U": -0.27206497543278507,
+    "neg": 6,
+    "n_seeds": 6
+   },
+   "error": null,
+   "pass": true
+  },
+  {
+   "id": "P2b_row",
+   "section": "5.2",
+   "expected": "head to head, om against sp of the same pair | -0.44 [-0.72, -0.16] | 6 of 6",
+   "produced": "head to head, om against sp of the same pair | -0.44 [-0.72, -0.16] | 6 of 6",
+   "found": true,
+   "lines": [
+    118
+   ],
+   "value": {
+    "mean": -0.4388476585348447,
+    "L": -0.7192461051338543,
+    "U": -0.158449211935835,
+    "neg": 6,
+    "n_seeds": 6
+   },
+   "error": null,
+   "pass": true
+  },
+  {
+   "id": "S2_row",
+   "section": "5.2",
+   "expected": "competent opponents, 500-turn games | -0.60 [-0.85, -0.35] | 6 of 6",
+   "produced": "competent opponents, 500-turn games | -0.60 [-0.85, -0.35] | 6 of 6",
+   "found": true,
+   "lines": [
+    119
+   ],
+   "value": {
+    "mean": -0.5978057230950974,
+    "L": -0.848527434868075,
+    "U": -0.34708401132211975,
+    "neg": 6,
+    "n_seeds": 6
+   },
+   "error": null,
+   "pass": true
+  },
+  {
+   "id": "S3_row",
+   "section": "5.2",
+   "expected": "head to head, 500-turn games | -0.90 [-1.33, -0.48] | 6 of 6",
+   "produced": "head to head, 500-turn games | -0.90 [-1.33, -0.48] | 6 of 6",
+   "found": true,
+   "lines": [
+    120
+   ],
+   "value": {
+    "mean": -0.9028225777925568,
+    "L": -1.3293556110084495,
+    "U": -0.4762895445766641,
+    "neg": 6,
+    "n_seeds": 6
+   },
+   "error": null,
+   "pass": true
+  },
+  {
+   "id": "S4_row",
+   "section": "5.2",
+   "expected": "head to head, om against the other pairs' sp | -0.68 [-0.96, -0.39] | 6 of 6",
+   "produced": "head to head, om against the other pairs' sp | -0.68 [-0.96, -0.39] | 6 of 6",
+   "found": true,
+   "lines": [
+    121
+   ],
+   "value": {
+    "mean": -0.6762708157300948,
+    "L": -0.9622499427810798,
+    "U": -0.39029168867910996,
+    "neg": 6,
+    "n_seeds": 6
+   },
+   "error": null,
+   "pass": true
+  },
+  {
+   "id": "C_hist_leads",
+   "section": "5.2",
+   "expected": "om agents' lead was +0.70 and the sp agents' +1.35",
+   "produced": "om agents' lead was +0.70 and the sp agents' +1.35",
+   "found": true,
+   "lines": [
+    123
+   ],
+   "value": [
+    0.6954309732963643,
+    1.3459124377618235
+   ],
+   "error": null,
+   "pass": true
+  },
+  {
+   "id": "C_cross_leads",
+   "section": "5.2",
+   "expected": "om agents' lead was -0.31 and the sp agents' +0.29",
+   "produced": "om agents' lead was -0.31 and the sp agents' +0.29",
+   "found": true,
+   "lines": [
+    124
+   ],
+   "value": [
+    -0.30928091866274676,
+    0.29071615760525066
+   ],
+   "error": null,
+   "pass": true
+  },
+  {
+   "id": "headline",
+   "section": "5.2",
+   "expected": "outcome 2, \"pays at a competence cost\"",
+   "produced": "outcome 2, \"pays at a competence cost\"",
+   "found": true,
+   "lines": [
+    127
+   ],
+   "value": [
+    2,
+    "pays at a competence cost"
+   ],
+   "error": null,
+   "pass": true
+  },
+  {
+   "id": "attackers_every_pair",
+   "section": "5.3",
+   "expected": "Every attacker beat its target, in every pair",
+   "produced": "Every attacker beat its target, in every pair",
+   "found": true,
+   "lines": [
+    132
+   ],
+   "value": [
+    6,
+    6
+   ],
+   "error": null,
+   "pass": true
+  },
+  {
+   "id": "X_om_row",
+   "section": "5.3",
+   "expected": "om final agents | +2.96 [+0.32, +5.61]",
+   "produced": "om final agents | +2.96 [+0.32, +5.61]",
+   "found": true,
+   "lines": [
+    136
+   ],
+   "value": {
+    "mean": 2.964550773302714,
+    "L": 0.3188731119479775,
+    "U": 5.610228434657451
+   },
+   "error": null,
+   "pass": true
+  },
+  {
+   "id": "X_sp_row",
+   "section": "5.3",
+   "expected": "sp final agents | +1.15 [+0.34, +1.96]",
+   "produced": "sp final agents | +1.15 [+0.34, +1.96]",
+   "found": true,
+   "lines": [
+    137
+   ],
+   "value": {
+    "mean": 1.1495653887589772,
+    "L": 0.33841370151535755,
+    "U": 1.960717076002597
+   },
+   "error": null,
+   "pass": true
+  },
+  {
+   "id": "S6",
+   "section": "5.3",
+   "expected": "+1.81 [-0.56, +4.19]",
+   "produced": "+1.81 [-0.56, +4.19]",
+   "found": true,
+   "lines": [
+    139
+   ],
+   "value": {
+    "mean": 1.8149853845437367,
+    "L": -0.5609304088834188,
+    "U": 4.1909011779708925
+   },
+   "error": null,
+   "pass": true
+  },
+  {
+   "id": "X_om_largest",
+   "section": "5.3",
+   "expected": "pair 3, whose attacker led by +7.91",
+   "produced": "pair 3, whose attacker led by +7.91",
+   "found": true,
+   "lines": [
+    141
+   ],
+   "value": [
+    3,
+    7.907001972198486
+   ],
+   "error": null,
+   "pass": true
+  },
+  {
+   "id": "wave_row",
+   "section": "5.4",
+   "expected": "wave management that depends on the situation | 6 of 6 | 6 of 6 | replicates in both",
+   "produced": "wave management that depends on the situation | 6 of 6 | 6 of 6 | replicates in both",
+   "found": true,
+   "lines": [
+    148
+   ],
+   "value": {
+    "om": {
+     "n_holds": 6,
+     "n_seeds": 6,
+     "verdict": "replicates"
+    },
+    "sp": {
+     "n_holds": 6,
+     "n_seeds": 6,
+     "verdict": "replicates"
+    }
+   },
+   "error": null,
+   "pass": true
+  },
+  {
+   "id": "freezing_row",
+   "section": "5.4",
+   "expected": "freezing when it pays, and breaking the opponent's freeze | 6 of 6 | 6 of 6 | replicates in both",
+   "produced": "freezing when it pays, and breaking the opponent's freeze | 6 of 6 | 6 of 6 | replicates in both",
+   "found": true,
+   "lines": [
+    149
+   ],
+   "value": {
+    "om": {
+     "n_holds": 6,
+     "n_seeds": 6,
+     "verdict": "replicates"
+    },
+    "sp": {
+     "n_holds": 6,
+     "n_seeds": 6,
+     "verdict": "replicates"
+    }
+   },
+   "error": null,
+   "pass": true
+  },
+  {
+   "id": "trading_row",
+   "section": "5.4",
+   "expected": "choosing when to trade | 6 of 6 | 6 of 6 | replicates in both",
+   "produced": "choosing when to trade | 6 of 6 | 6 of 6 | replicates in both",
+   "found": true,
+   "lines": [
+    150
+   ],
+   "value": {
+    "om": {
+     "n_holds": 6,
+     "n_seeds": 6,
+     "verdict": "replicates"
+    },
+    "sp": {
+     "n_holds": 6,
+     "n_seeds": 6,
+     "verdict": "replicates"
+    }
+   },
+   "error": null,
+   "pass": true
+  },
+  {
+   "id": "recall_row",
+   "section": "5.4",
+   "expected": "Recall timing | 6 of 6 | 6 of 6 | replicates in both",
+   "produced": "Recall timing | 6 of 6 | 6 of 6 | replicates in both",
+   "found": true,
+   "lines": [
+    151
+   ],
+   "value": {
+    "om": {
+     "n_holds": 6,
+     "n_seeds": 6,
+     "verdict": "replicates"
+    },
+    "sp": {
+     "n_holds": 6,
+     "n_seeds": 6,
+     "verdict": "replicates"
+    }
+   },
+   "error": null,
+   "pass": true
+  },
+  {
+   "id": "concession_row",
+   "section": "5.4",
+   "expected": "giving ground when weaker and threatened | 3 of 6 | 4 of 6 | replicates in neither",
+   "produced": "giving ground when weaker and threatened | 3 of 6 | 4 of 6 | replicates in neither",
+   "found": true,
+   "lines": [
+    152
+   ],
+   "value": {
+    "om": {
+     "n_holds": 3,
+     "n_seeds": 6,
+     "verdict": "does not replicate"
+    },
+    "sp": {
+     "n_holds": 4,
+     "n_seeds": 6,
+     "verdict": "does not replicate"
+    }
+   },
+   "error": null,
+   "pass": true
+  },
+  {
+   "id": "om_concession_fails",
+   "section": "5.4",
+   "expected": "fail in pairs 0, 3 and 4 on the registered 50-turn measure",
+   "produced": "fail in pairs 0, 3 and 4 on the registered 50-turn measure",
+   "found": true,
+   "lines": [
+    156
+   ],
+   "value": {
+    "pairs": [
+     0,
+     3,
+     4
+    ],
+    "statistics": [
+     "G50",
+     "G50",
+     "G50"
+    ],
+    "gaps": [
+     0.2799123385481276,
+     0.2638977355538616,
+     0.4194805681474843
+    ],
+    "gaps_50": [
+     0.2799123385481276,
+     0.2638977355538616,
+     0.4194805681474843
+    ]
+   },
+   "error": null,
+   "pass": true
+  },
+  {
+   "id": "sp_concession_fails",
+   "section": "5.4",
+   "expected": "fail only in pairs 4 and 5, and only on a 150-turn re-run",
+   "produced": "fail only in pairs 4 and 5, and only on a 150-turn re-run",
+   "found": true,
+   "lines": [
+    157
+   ],
+   "value": {
+    "pairs": [
+     4,
+     5
+    ],
+    "statistics": [
+     "G150",
+     "G150"
+    ],
+    "gaps": [
+     0.2115596933490236,
+     0.3291138392242538
+    ],
+    "gaps_50": [
+     0.058273242970187766,
+     0.045384042712979224
+    ]
+   },
+   "error": null,
+   "pass": true
+  },
+  {
+   "id": "sp_concession_150",
+   "section": "5.4",
+   "expected": "beat the agent's play by +0.212 and +0.329",
+   "produced": "beat the agent's play by +0.212 and +0.329",
+   "found": true,
+   "lines": [
+    158
+   ],
+   "value": [
+    0.2115596933490236,
+    0.3291138392242538
+   ],
+   "error": null,
+   "pass": true
+  },
+  {
+   "id": "sp_concession_50",
+   "section": "5.4",
+   "expected": "the margins were only +0.058 and +0.045",
+   "produced": "the margins were only +0.058 and +0.045",
+   "found": true,
+   "lines": [
+    159
+   ],
+   "value": [
+    0.058273242970187766,
+    0.045384042712979224
+   ],
+   "error": null,
+   "pass": true
+  },
+  {
+   "id": "sp_concession_50_holds",
+   "section": "5.4",
+   "expected": "pure self-play holds in all six pairs",
+   "produced": "pure self-play holds in all six pairs",
+   "found": true,
+   "lines": [
+    160
+   ],
+   "value": 6,
+   "error": null,
+   "pass": true
+  },
+  {
+   "id": "sp_freezing_narrow",
+   "section": "5.4",
+   "expected": "In sp pairs 0, 1 and 2 the best alternative comes within 0.014, 0.015 and 0.034",
+   "produced": "In sp pairs 0, 1 and 2 the best alternative comes within 0.014, 0.015 and 0.034",
+   "found": true,
+   "lines": [
+    161
+   ],
+   "value": [
+    [
+     0,
+     0.014017668824475277
+    ],
+    [
+     1,
+     0.015120791509023929
+    ],
+    [
+     2,
+     0.034493939881223235
+    ]
+   ],
+   "error": null,
+   "pass": true
+  },
+  {
+   "id": "side_P1",
+   "section": "6",
+   "expected": "gain against scripted styles, om - sp | +9.26 [+8.95, +9.56]",
+   "produced": "gain against scripted styles, om - sp | +9.26 [+8.95, +9.56]",
+   "found": true,
+   "lines": [
+    168
+   ],
+   "value": {
+    "mean": 9.256732437434414,
+    "L": 8.95430215642335,
+    "U": 9.559162718445478
+   },
+   "error": null,
+   "pass": true
+  },
+  {
+   "id": "side_P2a",
+   "section": "6",
+   "expected": "against competent opponents, om - sp | -0.63 [-0.98, -0.27]",
+   "produced": "against competent opponents, om - sp | -0.63 [-0.98, -0.27]",
+   "found": true,
+   "lines": [
+    169
+   ],
+   "value": {
+    "mean": -0.625239262667795,
+    "L": -0.9784135499028048,
+    "U": -0.27206497543278507
+   },
+   "error": null,
+   "pass": true
+  },
+  {
+   "id": "side_P2b",
+   "section": "6",
+   "expected": "head to head, om's lead | -0.44 [-0.72, -0.16]",
+   "produced": "head to head, om's lead | -0.44 [-0.72, -0.16]",
+   "found": true,
+   "lines": [
+    170
+   ],
+   "value": {
+    "mean": -0.4388476585348447,
+    "L": -0.7192461051338543,
+    "U": -0.158449211935835
+   },
+   "error": null,
+   "pass": true
+  },
+  {
+   "id": "side_attackers",
+   "section": "6",
+   "expected": "attacker's lead against it | +2.96 [+0.32, +5.61] | +1.15 [+0.34, +1.96]",
+   "produced": "attacker's lead against it | +2.96 [+0.32, +5.61] | +1.15 [+0.34, +1.96]",
+   "found": true,
+   "lines": [
+    171
+   ],
+   "value": [
+    {
+     "mean": 2.964550773302714,
+     "L": 0.3188731119479775,
+     "U": 5.610228434657451
+    },
+    {
+     "mean": 1.1495653887589772,
+     "L": 0.33841370151535755,
+     "U": 1.960717076002597
+    }
+   ],
+   "error": null,
+   "pass": true
+  },
+  {
+   "id": "side_replicate",
+   "section": "6",
+   "expected": "strategic behaviours that replicate | four of five | four of five",
+   "produced": "strategic behaviours that replicate | four of five | four of five",
+   "found": true,
+   "lines": [
+    172
+   ],
+   "value": {
+    "om": [
+     true,
+     true,
+     true,
+     true,
+     false
+    ],
+    "sp": [
+     true,
+     true,
+     true,
+     true,
+     false
+    ]
+   },
+   "error": null,
+   "pass": true
+  },
+  {
+   "id": "side_convergence",
+   "section": "6",
+   "expected": "still improving when training stopped | not shown | yes",
+   "produced": "still improving when training stopped | not shown | yes",
+   "found": true,
+   "lines": [
+    173
+   ],
+   "value": [
+    "not shown to be still improving",
+    "still improving (non-convergence: a limitation)"
+   ],
+   "error": null,
+   "pass": true
+  },
+  {
+   "id": "convergence_sp",
+   "section": "6",
+   "expected": "75% checkpoints by +0.59 [+0.14, +1.05]",
+   "produced": "75% checkpoints by +0.59 [+0.14, +1.05]",
+   "found": true,
+   "lines": [
+    177
+   ],
+   "value": {
+    "mean": 0.5943196763594946,
+    "L": 0.13990971490274318,
+    "U": 1.0487296378162458
+   },
+   "error": null,
+   "pass": true
+  },
+  {
+   "id": "convergence_om",
+   "section": "6",
+   "expected": "om agents' difference was -0.08 [-0.40, +0.24]",
+   "produced": "om agents' difference was -0.08 [-0.40, +0.24]",
+   "found": true,
+   "lines": [
+    177
+   ],
+   "value": {
+    "mean": -0.08133789027730624,
+    "L": -0.40332512880397275,
+    "U": 0.24064934824936024
+   },
+   "error": null,
+   "pass": true
+  },
+  {
+   "id": "quote_held_out",
+   "section": "9",
+   "expected": "+6.4 against held-out scripted variants",
+   "produced": "+6.4 against held-out scripted variants",
+   "found": true,
+   "lines": [
+    217
+   ],
+   "value": 6.359191020329793,
+   "error": null,
+   "pass": true
+  },
+  {
+   "id": "variants_mean_9",
+   "section": "9",
+   "expected": "average +11.39",
+   "produced": "average +11.39",
+   "found": true,
+   "lines": [
+    218
+   ],
+   "value": 11.391948541005453,
+   "error": null,
+   "pass": true
+  },
+  {
+   "id": "sp_concession_150_pairs",
+   "section": "9",
+   "expected": "150-turn re-run of two pairs",
+   "produced": "150-turn re-run of two pairs",
+   "found": true,
+   "lines": [
+    220
+   ],
+   "value": {
+    "pairs": [
+     4,
+     5
+    ],
+    "statistics": [
+     "G150",
+     "G150"
+    ],
+    "gaps": [
+     0.2115596933490236,
+     0.3291138392242538
+    ],
+    "gaps_50": [
+     0.058273242970187766,
+     0.045384042712979224
+    ]
+   },
+   "error": null,
+   "pass": true
+  },
+  {
+   "id": "sp_freezing_farthest",
+   "section": "9",
+   "expected": "one of them is 0.034 away",
+   "produced": "one of them is 0.034 away",
+   "found": true,
+   "lines": [
+    221
+   ],
+   "value": 0.034493939881223235,
+   "error": null,
+   "pass": true
+  },
+  {
+   "id": "quote_om_vs_start",
+   "section": "9",
+   "expected": "om about +0.25 against the start",
+   "produced": "om about +0.25 against the start",
+   "found": true,
+   "lines": [
+    222
+   ],
+   "value": 0.24301186812420686,
+   "error": null,
+   "pass": true
+  },
+  {
+   "id": "om_vs_start",
+   "section": "9",
+   "expected": "The value is +0.24",
+   "produced": "The value is +0.24",
+   "found": true,
+   "lines": [
+    223
+   ],
+   "value": 0.24301186812420686,
+   "error": null,
+   "pass": true
+  },
+  {
+   "id": "om_vs_start_C_cross",
+   "section": "9",
+   "expected": "[+0.004, +0.55]",
+   "produced": "[+0.004, +0.55]",
+   "found": true,
+   "lines": [
+    224
+   ],
+   "value": {
+    "mean": 0.27645734362304214,
+    "L": 0.004055190847790102,
+    "U": 0.5488594963982942
+   },
+   "error": null,
+   "pass": true
+  }
+ ],
+ "constants": [
+  {
+   "id": "lane_exit_turn",
+   "section": "2",
+   "expected": "around turn 94",
+   "found": true,
+   "lines": [
+    25
+   ],
+   "source": "docs/m4/laning_game_mathematical_reference.md §5.4",
+   "quote": "A side reaches level 14 at a median turn of 94",
+   "quote_found": true,
+   "produced": "around turn 94",
+   "value": 94,
+   "error": null,
+   "pass": true
+  },
+  {
+   "id": "lead_turn",
+   "section": "2",
+   "expected": "after 114 turns",
+   "found": true,
+   "lines": [
+    28
+   ],
+   "source": "docs/m5/m5_preregistration.md §5",
+   "quote": "earned-gold lead at turn 114",
+   "quote_found": true,
+   "produced": "after 114 turns",
+   "value": 114,
+   "error": null,
+   "pass": true
+  },
+  {
+   "id": "readout_horizon",
+   "section": "2",
+   "expected": "the next 20 turns",
+   "found": true,
+   "lines": [
+    30
+   ],
+   "source": "docs/m4/laning_game_mathematical_reference.md §9.3",
+   "quote": "$h=20$ is about one reset cycle",
+   "quote_found": true,
+   "produced": "the next 20 turns",
+   "value": 20,
+   "error": null,
+   "pass": true
+  },
+  {
+   "id": "income",
+   "section": "2",
+   "expected": "about 0.39 a turn",
+   "found": true,
+   "lines": [
+    38
+   ],
+   "source": "docs/m4/laning_game_mathematical_reference.md §5.1",
+   "quote": "a side earns 0.39 resources per turn",
+   "quote_found": true,
+   "pass": true
+  },
+  {
+   "id": "lane_exit_gold",
+   "section": "2",
+   "expected": "about 37 by the end of the laning phase",
+   "found": true,
+   "lines": [
+    38
+   ],
+   "source": "docs/m4/laning_game_mathematical_reference.md §7.4",
+   "quote": "| earned (resources) | 19.5 | 37.4 |",
+   "quote_found": true,
+   "pass": true
+  },
+  {
+   "id": "death_cost",
+   "section": "2",
+   "expected": "about 3.5 to 4",
+   "found": true,
+   "lines": [
+    37
+   ],
+   "source": "docs/m4/laning_game_mathematical_reference.md §6.7",
+   "quote": "a death costs about 3.5–4 resources",
+   "quote_found": true,
+   "pass": true
+  },
+  {
+   "id": "budget",
+   "section": "3",
+   "expected": "32,768,000 agent decisions",
+   "found": true,
+   "lines": [
+    53
+   ],
+   "source": "docs/m5/m5_preregistration.md §2",
+   "quote": "BUDGET = 32,768,000 additional agent transitions",
+   "quote_found": true,
+   "produced": "32,768,000 agent decisions",
+   "value": 32768000,
+   "error": null,
+   "pass": true
+  },
+  {
+   "id": "attacker_budget",
+   "section": "4",
+   "expected": "8,192,000 decisions",
+   "found": true,
+   "lines": [
+    79
+   ],
+   "source": "docs/m5/m5_preregistration.md §8",
+   "quote": "budget 8,192,000 transitions per attacker",
+   "quote_found": true,
+   "pass": true
+  },
+  {
+   "id": "family_pairs",
+   "section": "4",
+   "expected": "64 pairs of games",
+   "found": true,
+   "lines": [
+    70
+   ],
+   "source": "docs/m5/m5_preregistration.md §6",
+   "quote": "`g_shove_ward` | 64 × 150",
+   "quote_found": true,
+   "pass": true
+  },
+  {
+   "id": "h2h_pairs",
+   "section": "4",
+   "expected": "128 such pairs",
+   "found": true,
+   "lines": [
+    71
+   ],
+   "source": "docs/m5/m5_preregistration.md §6",
+   "quote": "| H2H | om:s vs sp:s | 128 × 150",
+   "quote_found": true,
+   "produced": "128 such pairs",
+   "value": 128,
+   "error": null,
+   "pass": true
+  },
+  {
+   "id": "gain_rule",
+   "section": "4",
+   "expected": "at least +0.25",
+   "found": true,
+   "lines": [
+    75
+   ],
+   "source": "docs/m5/m5_preregistration.md §9",
+   "quote": "Demonstrated when mean ≥ +0.25 and L > 0",
+   "quote_found": true,
+   "pass": true
+  },
+  {
+   "id": "loss_rule",
+   "section": "4",
+   "expected": "the mean is -0.25 or worse",
+   "found": true,
+   "lines": [
+    76
+   ],
+   "source": "docs/m5/m5_preregistration.md §9",
+   "quote": "non-inferiority with margin δ = 0.25",
+   "quote_found": true,
+   "pass": true
+  },
+  {
+   "id": "margin",
+   "section": "4",
+   "expected": "more than 0.2 gold",
+   "found": true,
+   "lines": [
+    84
+   ],
+   "source": "docs/m5/m5_preregistration.md §7",
+   "quote": "beats the policy by more than 0.2",
+   "quote_found": true,
+   "produced": "more than 0.2 gold",
+   "value": 0.2,
+   "error": null,
+   "pass": true
+  },
+  {
+   "id": "min_pairs",
+   "section": "4",
+   "expected": "at least five of the six pairs",
+   "found": true,
+   "lines": [
+    84
+   ],
+   "source": "docs/m5/m5_preregistration.md §7",
+   "quote": "It replicates with ≥ 5 of 6",
+   "quote_found": true,
+   "produced": "at least five of the six pairs",
+   "value": 5,
+   "error": null,
+   "pass": true
+  },
+  {
+   "id": "long_games",
+   "section": "5.2",
+   "expected": "500-turn games",
+   "found": true,
+   "lines": [
+    119,
+    120
+   ],
+   "source": "docs/m5/m5_preregistration.md §6",
+   "quote": "32 × 500",
+   "quote_found": true,
+   "produced": "500-turn games",
+   "value": 500,
+   "error": null,
+   "pass": true
+  },
+  {
+   "id": "threshold",
+   "section": "5.4",
+   "expected": "the 0.2 threshold",
+   "found": true,
+   "lines": [
+    162
+   ],
+   "source": "docs/m5/m5_preregistration.md §7",
+   "quote": "beats the policy by more than 0.2",
+   "quote_found": true,
+   "produced": "the 0.2 threshold",
+   "value": 0.2,
+   "error": null,
+   "pass": true
+  }
+ ],
+ "verdicts": [
+  {
+   "id": "P1",
+   "section": "5.1",
+   "expected": "demonstrated",
+   "value": "demonstrated",
+   "relies": "Against scripted styles, the om agents built much larger leads",
+   "found": true,
+   "lines": [
+    91
+   ],
+   "error": null,
+   "pass": true
+  },
+  {
+   "id": "S1",
+   "section": "5.1",
+   "expected": "preserved",
+   "value": "preserved",
+   "relies": "the registered test that the gain was preserved passed",
+   "found": true,
+   "lines": [
+    108
+   ],
+   "error": null,
+   "pass": true
+  },
+  {
+   "id": "P2a",
+   "section": "5.2",
+   "expected": "material loss",
+   "value": "material loss",
+   "relies": "Each of these meets the registered rule for a material loss",
+   "found": true,
+   "lines": [
+    123
+   ],
+   "error": null,
+   "pass": true
+  },
+  {
+   "id": "P2b",
+   "section": "5.2",
+   "expected": "material loss",
+   "value": "material loss",
+   "relies": "Each of these meets the registered rule for a material loss",
+   "found": true,
+   "lines": [
+    123
+   ],
+   "error": null,
+   "pass": true
+  },
+  {
+   "id": "S2",
+   "section": "5.2",
+   "expected": "material loss",
+   "value": "material loss",
+   "relies": "Each of these meets the registered rule for a material loss",
+   "found": true,
+   "lines": [
+    123
+   ],
+   "error": null,
+   "pass": true
+  },
+  {
+   "id": "S3",
+   "section": "5.2",
+   "expected": "material loss",
+   "value": "material loss",
+   "relies": "Each of these meets the registered rule for a material loss",
+   "found": true,
+   "lines": [
+    123
+   ],
+   "error": null,
+   "pass": true
+  },
+  {
+   "id": "S4",
+   "section": "5.2",
+   "expected": "material loss",
+   "value": "material loss",
+   "relies": "Each of these meets the registered rule for a material loss",
+   "found": true,
+   "lines": [
+    123
+   ],
+   "error": null,
+   "pass": true
+  },
+  {
+   "id": "S6",
+   "section": "5.3",
+   "expected": "inconclusive",
+   "value": "inconclusive",
+   "relies": "That is inconclusive",
+   "found": true,
+   "lines": [
+    139
+   ],
+   "error": null,
+   "pass": true
+  },
+  {
+   "id": "om conditional wave management",
+   "section": "5.4",
+   "expected": "replicates",
+   "value": "replicates",
+   "relies": "wave management that depends on the situation",
+   "found": true,
+   "lines": [
+    148
+   ],
+   "error": null,
+   "pass": true
+  },
+  {
+   "id": "sp conditional wave management",
+   "section": "5.4",
+   "expected": "replicates",
+   "value": "replicates",
+   "relies": "wave management that depends on the situation",
+   "found": true,
+   "lines": [
+    148
+   ],
+   "error": null,
+   "pass": true
+  },
+  {
+   "id": "om conditional freezing and the reply to freezes",
+   "section": "5.4",
+   "expected": "replicates",
+   "value": "replicates",
+   "relies": "freezing when it pays, and breaking the opponent's freeze",
+   "found": true,
+   "lines": [
+    149
+   ],
+   "error": null,
+   "pass": true
+  },
+  {
+   "id": "sp conditional freezing and the reply to freezes",
+   "section": "5.4",
+   "expected": "replicates",
+   "value": "replicates",
+   "relies": "freezing when it pays, and breaking the opponent's freeze",
+   "found": true,
+   "lines": [
+    149
+   ],
+   "error": null,
+   "pass": true
+  },
+  {
+   "id": "om selective trading",
+   "section": "5.4",
+   "expected": "replicates",
+   "value": "replicates",
+   "relies": "choosing when to trade",
+   "found": true,
+   "lines": [
+    150
+   ],
+   "error": null,
+   "pass": true
+  },
+  {
+   "id": "sp selective trading",
+   "section": "5.4",
+   "expected": "replicates",
+   "value": "replicates",
+   "relies": "choosing when to trade",
+   "found": true,
+   "lines": [
+    150
+   ],
+   "error": null,
+   "pass": true
+  },
+  {
+   "id": "om Recall timing",
+   "section": "5.4",
+   "expected": "replicates",
+   "value": "replicates",
+   "relies": "Recall timing",
+   "found": true,
+   "lines": [
+    151
+   ],
+   "error": null,
+   "pass": true
+  },
+  {
+   "id": "sp Recall timing",
+   "section": "5.4",
+   "expected": "replicates",
+   "value": "replicates",
+   "relies": "Recall timing",
+   "found": true,
+   "lines": [
+    151
+   ],
+   "error": null,
+   "pass": true
+  },
+  {
+   "id": "om concession under threat",
+   "section": "5.4",
+   "expected": "does not replicate",
+   "value": "does not replicate",
+   "relies": "giving ground when weaker and threatened",
+   "found": true,
+   "lines": [
+    152
+   ],
+   "error": null,
+   "pass": true
+  },
+  {
+   "id": "sp concession under threat",
+   "section": "5.4",
+   "expected": "does not replicate",
+   "value": "does not replicate",
+   "relies": "giving ground when weaker and threatened",
+   "found": true,
+   "lines": [
+    152
+   ],
+   "error": null,
+   "pass": true
+  }
+ ],
+ "reverse": {
+  "tokens": [
+   {
+    "token": "+0.25",
+    "line": 75,
+    "section": "4",
+    "accounted_by": [
+     "constant gain_rule"
+    ]
+   },
+   {
+    "token": "-0.25",
+    "line": 76,
+    "section": "4",
+    "accounted_by": [
+     "constant loss_rule"
+    ]
+   },
+   {
+    "token": "+9.26",
+    "line": 92,
+    "section": "5.1",
+    "accounted_by": [
+     "claim P1"
+    ]
+   },
+   {
+    "token": "+8.95",
+    "line": 92,
+    "section": "5.1",
+    "accounted_by": [
+     "claim P1"
+    ]
+   },
+   {
+    "token": "+9.56",
+    "line": 92,
+    "section": "5.1",
+    "accounted_by": [
+     "claim P1"
+    ]
+   },
+   {
+    "token": "+16.87",
+    "line": 96,
+    "section": "5.1",
+    "accounted_by": [
+     "claim S_in_row"
+    ]
+   },
+   {
+    "token": "+4.72",
+    "line": 96,
+    "section": "5.1",
+    "accounted_by": [
+     "claim S_in_row"
+    ]
+   },
+   {
+    "token": "+12.15",
+    "line": 96,
+    "section": "5.1",
+    "accounted_by": [
+     "claim S_in_row"
+    ]
+   },
+   {
+    "token": "+11.77",
+    "line": 96,
+    "section": "5.1",
+    "accounted_by": [
+     "claim S_in_row"
+    ]
+   },
+   {
+    "token": "+12.54",
+    "line": 96,
+    "section": "5.1",
+    "accounted_by": [
+     "claim S_in_row"
+    ]
+   },
+   {
+    "token": "+10.62",
+    "line": 97,
+    "section": "5.1",
+    "accounted_by": [
+     "claim S_out_row"
+    ]
+   },
+   {
+    "token": "+4.26",
+    "line": 97,
+    "section": "5.1",
+    "accounted_by": [
+     "claim S_out_row"
+    ]
+   },
+   {
+    "token": "+6.36",
+    "line": 97,
+    "section": "5.1",
+    "accounted_by": [
+     "claim S_out_row"
+    ]
+   },
+   {
+    "token": "+5.80",
+    "line": 97,
+    "section": "5.1",
+    "accounted_by": [
+     "claim S_out_row"
+    ]
+   },
+   {
+    "token": "+6.92",
+    "line": 97,
+    "section": "5.1",
+    "accounted_by": [
+     "claim S_out_row"
+    ]
+   },
+   {
+    "token": "+9.59",
+    "line": 98,
+    "section": "5.1",
+    "accounted_by": [
+     "claim M_row"
+    ]
+   },
+   {
+    "token": "+4.39",
+    "line": 98,
+    "section": "5.1",
+    "accounted_by": [
+     "claim M_row"
+    ]
+   },
+   {
+    "token": "+5.20",
+    "line": 98,
+    "section": "5.1",
+    "accounted_by": [
+     "claim M_row"
+    ]
+   },
+   {
+    "token": "+4.82",
+    "line": 98,
+    "section": "5.1",
+    "accounted_by": [
+     "claim M_row"
+    ]
+   },
+   {
+    "token": "+5.59",
+    "line": 98,
+    "section": "5.1",
+    "accounted_by": [
+     "claim M_row"
+    ]
+   },
+   {
+    "token": "+11.39",
+    "line": 102,
+    "section": "5.1",
+    "accounted_by": [
+     "claim variants_mean"
+    ]
+   },
+   {
+    "token": "+14.33",
+    "line": 102,
+    "section": "5.1",
+    "accounted_by": [
+     "claim variants_each"
+    ]
+   },
+   {
+    "token": "+14.42",
+    "line": 103,
+    "section": "5.1",
+    "accounted_by": [
+     "claim variants_each"
+    ]
+   },
+   {
+    "token": "+13.12",
+    "line": 103,
+    "section": "5.1",
+    "accounted_by": [
+     "claim variants_each"
+    ]
+   },
+   {
+    "token": "+3.70",
+    "line": 103,
+    "section": "5.1",
+    "accounted_by": [
+     "claim variants_each"
+    ]
+   },
+   {
+    "token": "-0.18",
+    "line": 104,
+    "section": "5.1",
+    "accounted_by": [
+     "claim conditional_each"
+    ]
+   },
+   {
+    "token": "-0.67",
+    "line": 104,
+    "section": "5.1",
+    "accounted_by": [
+     "claim conditional_each"
+    ]
+   },
+   {
+    "token": "-0.20",
+    "line": 104,
+    "section": "5.1",
+    "accounted_by": [
+     "claim conditional_each"
+    ]
+   },
+   {
+    "token": "-0.63",
+    "line": 117,
+    "section": "5.2",
+    "accounted_by": [
+     "claim P2a_row"
+    ]
+   },
+   {
+    "token": "-0.98",
+    "line": 117,
+    "section": "5.2",
+    "accounted_by": [
+     "claim P2a_row"
+    ]
+   },
+   {
+    "token": "-0.27",
+    "line": 117,
+    "section": "5.2",
+    "accounted_by": [
+     "claim P2a_row"
+    ]
+   },
+   {
+    "token": "-0.44",
+    "line": 118,
+    "section": "5.2",
+    "accounted_by": [
+     "claim P2b_row"
+    ]
+   },
+   {
+    "token": "-0.72",
+    "line": 118,
+    "section": "5.2",
+    "accounted_by": [
+     "claim P2b_row"
+    ]
+   },
+   {
+    "token": "-0.16",
+    "line": 118,
+    "section": "5.2",
+    "accounted_by": [
+     "claim P2b_row"
+    ]
+   },
+   {
+    "token": "-0.60",
+    "line": 119,
+    "section": "5.2",
+    "accounted_by": [
+     "claim S2_row"
+    ]
+   },
+   {
+    "token": "-0.85",
+    "line": 119,
+    "section": "5.2",
+    "accounted_by": [
+     "claim S2_row"
+    ]
+   },
+   {
+    "token": "-0.35",
+    "line": 119,
+    "section": "5.2",
+    "accounted_by": [
+     "claim S2_row"
+    ]
+   },
+   {
+    "token": "-0.90",
+    "line": 120,
+    "section": "5.2",
+    "accounted_by": [
+     "claim S3_row"
+    ]
+   },
+   {
+    "token": "-1.33",
+    "line": 120,
+    "section": "5.2",
+    "accounted_by": [
+     "claim S3_row"
+    ]
+   },
+   {
+    "token": "-0.48",
+    "line": 120,
+    "section": "5.2",
+    "accounted_by": [
+     "claim S3_row"
+    ]
+   },
+   {
+    "token": "-0.68",
+    "line": 121,
+    "section": "5.2",
+    "accounted_by": [
+     "claim S4_row"
+    ]
+   },
+   {
+    "token": "-0.96",
+    "line": 121,
+    "section": "5.2",
+    "accounted_by": [
+     "claim S4_row"
+    ]
+   },
+   {
+    "token": "-0.39",
+    "line": 121,
+    "section": "5.2",
+    "accounted_by": [
+     "claim S4_row"
+    ]
+   },
+   {
+    "token": "+0.70",
+    "line": 124,
+    "section": "5.2",
+    "accounted_by": [
+     "claim C_hist_leads"
+    ]
+   },
+   {
+    "token": "+1.35",
+    "line": 124,
+    "section": "5.2",
+    "accounted_by": [
+     "claim C_hist_leads"
+    ]
+   },
+   {
+    "token": "-0.31",
+    "line": 124,
+    "section": "5.2",
+    "accounted_by": [
+     "claim C_cross_leads"
+    ]
+   },
+   {
+    "token": "+0.29",
+    "line": 125,
+    "section": "5.2",
+    "accounted_by": [
+     "claim C_cross_leads"
+    ]
+   },
+   {
+    "token": "+2.96",
+    "line": 136,
+    "section": "5.3",
+    "accounted_by": [
+     "claim X_om_row"
+    ]
+   },
+   {
+    "token": "+0.32",
+    "line": 136,
+    "section": "5.3",
+    "accounted_by": [
+     "claim X_om_row"
+    ]
+   },
+   {
+    "token": "+5.61",
+    "line": 136,
+    "section": "5.3",
+    "accounted_by": [
+     "claim X_om_row"
+    ]
+   },
+   {
+    "token": "+1.15",
+    "line": 137,
+    "section": "5.3",
+    "accounted_by": [
+     "claim X_sp_row"
+    ]
+   },
+   {
+    "token": "+0.34",
+    "line": 137,
+    "section": "5.3",
+    "accounted_by": [
+     "claim X_sp_row"
+    ]
+   },
+   {
+    "token": "+1.96",
+    "line": 137,
+    "section": "5.3",
+    "accounted_by": [
+     "claim X_sp_row"
+    ]
+   },
+   {
+    "token": "+1.81",
+    "line": 139,
+    "section": "5.3",
+    "accounted_by": [
+     "claim S6"
+    ]
+   },
+   {
+    "token": "-0.56",
+    "line": 139,
+    "section": "5.3",
+    "accounted_by": [
+     "claim S6"
+    ]
+   },
+   {
+    "token": "+4.19",
+    "line": 139,
+    "section": "5.3",
+    "accounted_by": [
+     "claim S6"
+    ]
+   },
+   {
+    "token": "+7.91",
+    "line": 141,
+    "section": "5.3",
+    "accounted_by": [
+     "claim X_om_largest"
+    ]
+   },
+   {
+    "token": "+0.212",
+    "line": 159,
+    "section": "5.4",
+    "accounted_by": [
+     "claim sp_concession_150"
+    ]
+   },
+   {
+    "token": "+0.329",
+    "line": 159,
+    "section": "5.4",
+    "accounted_by": [
+     "claim sp_concession_150"
+    ]
+   },
+   {
+    "token": "+0.058",
+    "line": 159,
+    "section": "5.4",
+    "accounted_by": [
+     "claim sp_concession_50"
+    ]
+   },
+   {
+    "token": "+0.045",
+    "line": 159,
+    "section": "5.4",
+    "accounted_by": [
+     "claim sp_concession_50"
+    ]
+   },
+   {
+    "token": "0.014",
+    "line": 161,
+    "section": "5.4",
+    "accounted_by": [
+     "claim sp_freezing_narrow"
+    ]
+   },
+   {
+    "token": "0.015",
+    "line": 162,
+    "section": "5.4",
+    "accounted_by": [
+     "claim sp_freezing_narrow"
+    ]
+   },
+   {
+    "token": "0.034",
+    "line": 162,
+    "section": "5.4",
+    "accounted_by": [
+     "claim sp_freezing_narrow"
+    ]
+   },
+   {
+    "token": "0.2",
+    "line": 162,
+    "section": "5.4",
+    "accounted_by": [
+     "constant threshold"
+    ]
+   },
+   {
+    "token": "+9.26",
+    "line": 168,
+    "section": "6",
+    "accounted_by": [
+     "claim side_P1"
+    ]
+   },
+   {
+    "token": "+8.95",
+    "line": 168,
+    "section": "6",
+    "accounted_by": [
+     "claim side_P1"
+    ]
+   },
+   {
+    "token": "+9.56",
+    "line": 168,
+    "section": "6",
+    "accounted_by": [
+     "claim side_P1"
+    ]
+   },
+   {
+    "token": "-0.63",
+    "line": 169,
+    "section": "6",
+    "accounted_by": [
+     "claim side_P2a"
+    ]
+   },
+   {
+    "token": "-0.98",
+    "line": 169,
+    "section": "6",
+    "accounted_by": [
+     "claim side_P2a"
+    ]
+   },
+   {
+    "token": "-0.27",
+    "line": 169,
+    "section": "6",
+    "accounted_by": [
+     "claim side_P2a"
+    ]
+   },
+   {
+    "token": "-0.44",
+    "line": 170,
+    "section": "6",
+    "accounted_by": [
+     "claim side_P2b"
+    ]
+   },
+   {
+    "token": "-0.72",
+    "line": 170,
+    "section": "6",
+    "accounted_by": [
+     "claim side_P2b"
+    ]
+   },
+   {
+    "token": "-0.16",
+    "line": 170,
+    "section": "6",
+    "accounted_by": [
+     "claim side_P2b"
+    ]
+   },
+   {
+    "token": "+2.96",
+    "line": 171,
+    "section": "6",
+    "accounted_by": [
+     "claim side_attackers"
+    ]
+   },
+   {
+    "token": "+0.32",
+    "line": 171,
+    "section": "6",
+    "accounted_by": [
+     "claim side_attackers"
+    ]
+   },
+   {
+    "token": "+5.61",
+    "line": 171,
+    "section": "6",
+    "accounted_by": [
+     "claim side_attackers"
+    ]
+   },
+   {
+    "token": "+1.15",
+    "line": 171,
+    "section": "6",
+    "accounted_by": [
+     "claim side_attackers"
+    ]
+   },
+   {
+    "token": "+0.34",
+    "line": 171,
+    "section": "6",
+    "accounted_by": [
+     "claim side_attackers"
+    ]
+   },
+   {
+    "token": "+1.96",
+    "line": 171,
+    "section": "6",
+    "accounted_by": [
+     "claim side_attackers"
+    ]
+   },
+   {
+    "token": "+0.59",
+    "line": 177,
+    "section": "6",
+    "accounted_by": [
+     "claim convergence_sp"
+    ]
+   },
+   {
+    "token": "+0.14",
+    "line": 177,
+    "section": "6",
+    "accounted_by": [
+     "claim convergence_sp"
+    ]
+   },
+   {
+    "token": "+1.05",
+    "line": 177,
+    "section": "6",
+    "accounted_by": [
+     "claim convergence_sp"
+    ]
+   },
+   {
+    "token": "-0.08",
+    "line": 178,
+    "section": "6",
+    "accounted_by": [
+     "claim convergence_om"
+    ]
+   },
+   {
+    "token": "-0.40",
+    "line": 178,
+    "section": "6",
+    "accounted_by": [
+     "claim convergence_om"
+    ]
+   },
+   {
+    "token": "+0.24",
+    "line": 178,
+    "section": "6",
+    "accounted_by": [
+     "claim convergence_om"
+    ]
+   },
+   {
+    "token": "+6.4",
+    "line": 217,
+    "section": "9",
+    "accounted_by": [
+     "claim quote_held_out"
+    ]
+   },
+   {
+    "token": "+11.39",
+    "line": 218,
+    "section": "9",
+    "accounted_by": [
+     "claim variants_mean_9"
+    ]
+   },
+   {
+    "token": "+0.25",
+    "line": 222,
+    "section": "9",
+    "accounted_by": [
+     "claim quote_om_vs_start"
+    ]
+   },
+   {
+    "token": "+0.24",
+    "line": 223,
+    "section": "9",
+    "accounted_by": [
+     "claim om_vs_start"
+    ]
+   },
+   {
+    "token": "+0.004",
+    "line": 224,
+    "section": "9",
+    "accounted_by": [
+     "claim om_vs_start_C_cross"
+    ]
+   },
+   {
+    "token": "+0.55",
+    "line": 224,
+    "section": "9",
+    "accounted_by": [
+     "claim om_vs_start_C_cross"
+    ]
+   }
+  ],
+  "unaccounted": []
+ }
+}
