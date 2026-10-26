@@ -53,9 +53,9 @@ pip install -e ".[test,rl]"
 python -m pytest                    # about 1,600 tests, 9 to 12 minutes
 ```
 
-### Play against the agents, or watch them
+### Play against or watch the agents
 
-The demo is a web page with two modes. In Play you take one side against a trained agent, with every turn explained. In Watch you follow a match the engine
+The demo is a web page with two modes. Basically, in Play you take one side against a trained agent, with every turn explained. In Watch you follow a match the engine
 generates between the two agents, or one of three recorded research games that the server re-simulates and checks
 when it starts. The demo needs the trained networks, Node 22.12 or later for the
 one-time frontend build, and the `demo` extra.
@@ -66,17 +66,10 @@ cd web && npm install && npm run build && cd ..
 python -m lanegame.demo                 # then open http://127.0.0.1:8765/
 ```
 
-Watch also has sequences: short walkthroughs of a recorded game in which each event leads to the next. The first,
+Watch also has sequences (i.e. sequence analyses): short walkthroughs of a recorded game in which each event leads to the next. The first,
 "Stacking to Crashing", sequence, follows a pattern League players (good ones) know. Trades keep a low-health opponent from going back to
 base, the wave nobody clears stacks and crashes into its tower, and the crash lets the agent take two tower plates.
 Pick it under **Sequences** in Watch, or open http://127.0.0.1:8765/?mode=watch&sequence=stacking-to-crashing.
-
-### Solve the small game
-
-```bash
-python -m lanegame solve --horizon 16     # about 10 seconds; --horizon 32 takes about 4 minutes and 3 GB
-python -m lanegame exploit --horizon 16   # how much a best response gains against each scripted strategy
-```
 
 ### Reproduce the research
 
