@@ -27,21 +27,6 @@ rewarded only for building a gold lead. That means strategies like "freezing" a 
 Every rule follows the project's [design philosophy](docs/design_philosophy.md), which is to simplify how League works
 without changing why its laning strategies work. 
 
-## Current Findings (10/22/2026) :
-
-- **Self-play agents found real laning strategies on their own.** They manage the wave differently depending on the
-  situation. They freeze when freezing pays, picking their fights based on game state, and time their trips back to
-  base in situations that make sense. Part of testing, was that we tested each behaviour by restoring the exact game moment, making a different choice and comparing how the
-  game played out.
-- **Agents can skip strategies that don't pay.** Warding on certain timers, unnecessarily long freezes and bullying a competent opponent
-  cost more than they return here, and the agents learned to avoid them.
-- **Modelling the opponent is a trade-off.** The final experiment gave one agent a running Bayesian estimate of its
-  opponent's play style. Against the scripted styles it trained with, it built about three and a half times the lead
-  of a pure self-play agent. Against new variants of those styles the gain was nearly as large on average, still good, but against
-  styles built on a strong learned policy it gained nothing. Against strong opponents it was weaker, and it lost head
-  to head to the pure self-play agent in all six matched pairs.
-- **Limitations.** Freezing pays only in a narrow early window, and the agents don't fully exploit large power gaps as much as they probably should. Still exploring why this is. 
-
 ## Try it
 
 ### Install
@@ -76,9 +61,8 @@ Pick it under **Sequences** in Watch, or open http://127.0.0.1:8765/?mode=watch&
 ### Reproduce the research
 
 Each milestone has a package under `lanegame/experiments/` that writes its results to `results/<milestone>/`.
-[results/m5/reproducibility.md](results/m5/reproducibility.md) lists the commands, seeds and SHA-256 checksums behind
-the final campaign. Only the 7 networks the demo uses, about 1 MB in all, are in the repository. The rest are too large
-for git.
+[results/m5/reproducibility.md](results/m5/reproducibility.md) lists the commands, seeds and SHA-256 checksums (to confirm identical files) in
+the final run. Do note only the 7 networks the demo uses are in the repository (the rest are too large for git).
 
 ## Documentation
 
