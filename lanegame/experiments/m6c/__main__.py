@@ -20,9 +20,14 @@
               (20 to 40.5 px) and its tip just behind the token or wave that moved. Screenshots go to
               results/m6/m6c/, the checks and the walks' recorded positions to results/m6/m6c_browser.json (under a
               minute)
+    site      the sequence's pictures for the project's web page: the whole app at event 4, and the same crop of the
+              lane (the bot's half) at the introduction and at each event, dark theme, no animation, twice the
+              window's pixel density, each taken only once the replay stands at that event. Pictures go to
+              results/m6/site/, with the crop and each scene object's box inside it in results/m6/site/site_shots.json
+              (under half a minute)
 
-The stage needs the 7 checkpoint files of lanegame/demo/manifest.json (git-ignored), the built frontend
-(cd web && npm install && npm run build) and Microsoft Edge or Chrome. It trains nothing and changes no recording.
+The stages need the 7 checkpoint files of lanegame/demo/manifest.json, the built frontend
+(cd web && npm install && npm run build) and Microsoft Edge or Chrome. They train nothing and change no recording.
 """
 
 from __future__ import annotations
@@ -46,6 +51,12 @@ def _browser():
     ok = G.run()
     if not ok:
         raise SystemExit("the sequence check had failing checks (see results/m6/m6c_browser.json)")
+
+
+@stage("site")
+def _site():
+    from . import site_shots as S
+    S.run()
 
 
 def main(argv) -> None:

@@ -1,6 +1,6 @@
 """M6a: the demo's headless session core (lanegame/demo; docs/m6/m6_plan.md §3 rules 1 to 5, 7, 10 to 12, §11).
 
-The checks that need the 7 git-ignored checkpoints of lanegame/demo/manifest.json skip when any is missing, so a
+The checks that need the 7 checkpoints of lanegame/demo/manifest.json skip when any is missing, so a
 skipped run proves nothing about rules 1 to 5; the manifest and tampering checks need no checkpoint."""
 
 import copy
@@ -21,13 +21,13 @@ from lanegame.demo import session as S
 TRACES = os.path.join("results", "m5", "traces")
 H2H = os.path.join(TRACES, "h2h_om_s0_vs_sp_s0.json")
 need_ckpt = pytest.mark.skipif(not REG.Registry().available(),
-                               reason="needs the 7 git-ignored checkpoints of lanegame/demo/manifest.json")
+                               reason="needs the 7 checkpoints of lanegame/demo/manifest.json")
 
 
 @pytest.fixture(scope="module")
 def reg():
     if not REG.Registry().available():
-        pytest.skip("needs the 7 git-ignored checkpoints of lanegame/demo/manifest.json")
+        pytest.skip("needs the 7 checkpoints of lanegame/demo/manifest.json")
     return REG.Registry().load()
 
 

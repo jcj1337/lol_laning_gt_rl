@@ -4,7 +4,7 @@ A registry entry is a `ModelCard`: one trained M5 policy that a session may seat
 input width, checkpoint file and the files it needs at serve time. `om:0` needs the 5 learned networks of its belief's
 library (`om2.common.LEARNED`) besides its own checkpoint, so the demo depends on 7 files in all.
 
-Trust. The files are git-ignored, and `torch.load` unpickles them, so a file must be checked before it is read as a
+Trust. `torch.load` unpickles the files, so a file must be checked before it is read as a
 checkpoint. `manifest.json` (tracked, beside this module) holds each file's SHA-256, copied from
 `results/m5/inventory.json`. `Registry.load` reads every file's bytes once, hashes those bytes, refuses the whole
 registry on any mismatch or missing file, and only then unpickles the same bytes (no second read, so nothing can change

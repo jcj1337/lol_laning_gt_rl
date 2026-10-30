@@ -10,7 +10,8 @@
 > correction pass, M5b training and the initial evaluations: §AY; M5c strategic battery and limitation cells: §AZ;
 > M5d core attackers and the M5e closeout: §BA; the M6 plan: §BB; M6a, the session core and the prototypes: §BC;
 > M6b, the playable application: §BD; M6c step 1, the guided-replay format and the first example: §BE; M6d part 1,
-> the demo corrections and the research overview: §BF).
+> the demo corrections and the research overview: §BF; NC1, the experimental network capacity study on the branch
+> `experiment/nc1-capacity`: §BG).
 > The M5 plan (M5a–M5e) is under "M5 plan" below, and the M6 plan (M6a to M6e) under "M6 plan".
 > The README and `docs/README.md` link here.
 
@@ -445,7 +446,7 @@ Public deployment is an intended capability, not an authorization to deploy or t
     always-push bot: trades keep the bot from recalling, nothing clears the agent's wave, the wave stacks and
     crashes, and Pressure on the crash breaks two plates. Its five notes are pinned to the recording by a test.
 
-**Open decisions for the user.** Acceptance of the M6b build. The review of M6c's format and first example (the
+**Open decisions for the user.** The review of NC1 (§BG, experimental and uncommitted on its own branch): its recommendation keeps the 2 × 128 network, and the strength features stay a candidate, not an adoption. Acceptance of the M6b build. The review of M6c's format and first example (the
 sequence, the start, the checkpoint positions, the wording, the highlights and the note panel's placement), after
 which a few more examples follow. Whether scripted styles are offered as opponents, and
 which ones ([decision record](m6/m6a_decision_record.md) §4); M6b offered the two trained agents only. Later, a license
@@ -3833,3 +3834,31 @@ plates. It names what the model simplifies and that one game is an example.
 
 **Not done in M6d yet.** The reproduction guide, the three bundles, the `reproduce` re-run on a clean commit (audit
 R1) and the Streamlit archive.
+
+## BG. NC1: the network capacity study (2026-10-29, experimental)
+
+Report: [nc1_report.md](capacity/nc1_report.md). Pre-registration: [nc1_preregistration.md](capacity/nc1_preregistration.md).
+Status: **completed (2026-10-29), awaiting the user's review. Experimental: the work is uncommitted on the branch
+`experiment/nc1-capacity`.** No rule, observation, reward, default or stored checkpoint changed. The library gained the
+opt-in, function-preserving `widen_hidden` and `StrengthFeatureNet`.
+
+**The decision (the user, 2026-10-29).** The user asked whether the 2 × 128 tanh network had ever been varied (it had
+not; M3a chose it by convention), chose the larger scope (a supervised diagnostic plus a PPO pilot, 4–6 hours) and
+granted autonomy for the run.
+
+**What it found** (completed work).
+- Stage 1, what a network can represent. A single fresh 2 × 128 network copies the M4.5c generalist and M4.6a's gap
+  specialist together and keeps 98% of the specialist's +2.1 G100 in play, with no natural loss (registered verdict
+  "2 × 128 suffices"). A 2 × 256 value network recovers no more of the critic's missing strength value than 2 × 128;
+  six observation-derived strength features recover much more. The M5 finals' second layer is 61–67% saturated (no
+  dead units), up from 33–36% in the M4.5c finals.
+- Stage 2 and 3, what a network learns. Two arms continued `ext/baseline:s` under M5's pure self-play protocol to
+  16,384,000 transitions, paired with M5's snapshots. W (2 × 256) lost to its control head to head (−0.67 ± 0.59) and
+  in the conversion and power-gap families, with updates about 50% larger at the same learning rate. F (2 × 128 plus
+  the six features as zero-weight inputs) was level head to head (−0.17 ± 0.42), worse in no family, better at Recall
+  windows for the weak side (+0.46 ± 0.27), and its critic predicts about a fifth of the power-gap premium instead of
+  3%. Neither arm meets the registered "improves play".
+
+**Recommendation** (proposed, the user's decision). Keep the 2 × 128 tanh network; do not widen it at M5's learning
+rate. The strength features are a safe candidate for a strength-aware critic, not an adoption. Second-layer saturation
+is the open network question; NC1 does not recommend testing it now.

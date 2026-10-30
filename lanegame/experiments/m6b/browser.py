@@ -15,6 +15,7 @@ from __future__ import annotations
 import base64
 import json
 import os
+import signal
 import socket
 import subprocess
 import sys
@@ -55,7 +56,7 @@ class Server:
     def __enter__(self) -> "Server":
         cmd = [sys.executable, "-m", "lanegame.demo", "--port", str(self.port)] + (["--static", self.static] if self.static else []) + list(self.extra)
         self.log = open(os.path.join(tempfile.gettempdir(), f"lanegame-demo-{self.port}.log"), "w", encoding="utf-8")
-        self.proc = subprocess.Popen(cmd, cwd=REPO, stdout=self.log, stderr=subprocess.STDOUT)
+        self.proc = subprocess.Popen(cmd, cwd=REPO, stdout=self.log, stderr=subprocess.STDOUT, start_new_session=os.name != "nt")
         t0 = time.time()
         while True:
             try:
@@ -86,7 +87,11 @@ class Server:
 
     def __exit__(self, *exc) -> None:
         if self.proc and self.proc.poll() is None:
-            self.proc.kill()
+            # end the whole tree: killing only the server leaves its spawned simulation worker (about 1 GB) running
+            if os.name == "nt":
+                subprocess.run(["taskkill", "/F", "/T", "/PID", str(self.proc.pid)], capture_output=True)
+            else:
+                os.killpg(self.proc.pid, signal.SIGKILL)
             self.proc.wait(timeout=10)
         self.log.close()
 

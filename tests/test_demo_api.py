@@ -31,7 +31,7 @@ TRACES = os.path.join("results", "m5", "traces")
 @pytest.fixture(scope="module")
 def reg():
     if not REG.Registry().available():
-        pytest.skip("needs the 7 git-ignored checkpoints of lanegame/demo/manifest.json")
+        pytest.skip("needs the 7 checkpoints of lanegame/demo/manifest.json")
     return REG.Registry().load()
 
 

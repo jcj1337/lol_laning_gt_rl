@@ -4,6 +4,10 @@ Can a reinforcement learning agent learn League of Legends laning strategy witho
 builds a simplified model of the laning phase, abstracting it exactly with game theory, and trains
 self-play agents on the full version. The reward is the gold an agent earns minus the gold its opponent earns; the agents have to discover strategies on their own.
 
+![The demo's Watch mode at the fourth event of the "Stacking to Crashing" sequence: the lane, the turn list, the sequence's note and the gold lead](results/m6/site/hero.png)
+
+There's a walkthrough of the project, with screenshots, at [jcj1337.github.io/laning.html](https://jcj1337.github.io/laning.html).
+
 ## Rules of The Game
 
 Every game of League of Legends opens with the laning phase. Two opposing players share a lane while waves of
@@ -57,7 +61,7 @@ python -m pytest                    # about 1,600 tests, 9 to 12 minutes
 
 The demo is a web page with two modes. Basically, in Play you take one side against a trained agent, with every turn explained. In Watch you follow a match the engine
 generates between the two agents, or one of three recorded research games that the server re-simulates and checks
-when it starts. The demo needs the trained networks, Node 22.12 or later for the
+when it starts. The demo needs the 7 trained networks included in the repository, Node 22.12 or later for the
 one-time frontend build, and the `demo` extra.
 
 ```bash
@@ -75,7 +79,8 @@ Pick it under **Sequences** in Watch, or open http://127.0.0.1:8765/?mode=watch&
 
 Each milestone has a package under `lanegame/experiments/` that writes its results to `results/<milestone>/`.
 [results/m5/reproducibility.md](results/m5/reproducibility.md) lists the commands, seeds and SHA-256 checksums behind
-the final campaign. Trained networks are too large for git, so the repository doesn't include them.
+the final campaign. Only the 7 networks the demo uses, about 1 MB in all, are in the repository. The rest are too large
+for git.
 
 ## Documentation
 

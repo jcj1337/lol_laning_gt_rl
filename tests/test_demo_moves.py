@@ -58,7 +58,7 @@ def test_the_rule_on_hand_made_frames():
 @pytest.fixture(scope="module")
 def replays():
     if not REG.Registry().available():
-        pytest.skip("needs the 7 git-ignored checkpoints of lanegame/demo/manifest.json")
+        pytest.skip("needs the 7 checkpoints of lanegame/demo/manifest.json")
     if not os.path.isfile(os.path.join(TRACES, "sp_s0_vs_g_shove.json")):
         pytest.skip("results/m5/traces is not on disk")
     from lanegame.demo.service import DemoService

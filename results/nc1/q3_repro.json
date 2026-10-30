@@ -1,0 +1,17 @@
+{
+ "meta": {
+  "study": "NC1",
+  "commit": "3645f961e704cd0c8db854cf3b90d97ffbb7bca3",
+  "working_tree_dirty": true,
+  "timestamp": "2026-10-29 09:28:43",
+  "python": "3.13.9",
+  "torch": "2.14.1+cpu",
+  "numpy": "2.5.3",
+  "environment": "GameConfig.m45_calibrated()",
+  "stage": "q3_repro"
+ },
+ "policy": "ext/C1:0",
+ "pred_identical": true,
+ "ext_identical": true,
+ "max_abs_diff": 0.0
+}

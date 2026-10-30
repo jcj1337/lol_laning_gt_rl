@@ -5,7 +5,7 @@ boundary: `read_guides` for the format's rules and `check_guide` against the rec
 the rules (each refusal names the file and the rule), the bundle rules against the real seed-0 recording, the API and
 the status count, and the facts the first guide's notes quote, read from the recording itself and compared with the
 numbers as the notes print them. The tests that need the
-engine skip without the 7 git-ignored checkpoints of lanegame/demo/manifest.json or without the trace file."""
+engine skip without the 7 checkpoints of lanegame/demo/manifest.json or without the trace file."""
 
 import copy
 import json
@@ -30,7 +30,7 @@ SHIPPED = os.path.join(G.GUIDES_DIR, f"{FIRST}.json")
 @pytest.fixture(scope="module")
 def reg():
     if not REG.Registry().available():
-        pytest.skip("needs the 7 git-ignored checkpoints of lanegame/demo/manifest.json")
+        pytest.skip("needs the 7 checkpoints of lanegame/demo/manifest.json")
     return REG.Registry().load()
 
 

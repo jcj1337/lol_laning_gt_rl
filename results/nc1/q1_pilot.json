@@ -1,0 +1,483 @@
+{
+ "meta": {
+  "study": "NC1",
+  "commit": "3645f961e704cd0c8db854cf3b90d97ffbb7bca3",
+  "working_tree_dirty": true,
+  "timestamp": "2026-10-29 13:24:46",
+  "python": "3.13.9",
+  "torch": "2.14.1+cpu",
+  "numpy": "2.5.3",
+  "environment": "GameConfig.m45_calibrated()",
+  "stage": "q1_pilot"
+ },
+ "networks": {
+  "W:0": {
+   "network": "W:0",
+   "spec": "results\\rl\\checkpoints\\nc1\\train\\main\\W\\s0\\final.pt",
+   "inputs": 90,
+   "states": 6200,
+   "hidden": [
+    256,
+    256
+   ],
+   "layers": [
+    {
+     "units": 256,
+     "inactive": 0,
+     "saturation_share": 0.007379032258064516,
+     "effective_rank": 113.75239243033735,
+     "components_99": 116
+    },
+    {
+     "units": 256,
+     "inactive": 0,
+     "saturation_share": 0.6039144405241935,
+     "effective_rank": 181.13323629676412,
+     "components_99": 218
+    }
+   ]
+  },
+  "W:1": {
+   "network": "W:1",
+   "spec": "results\\rl\\checkpoints\\nc1\\train\\main\\W\\s1\\final.pt",
+   "inputs": 90,
+   "states": 6200,
+   "hidden": [
+    256,
+    256
+   ],
+   "layers": [
+    {
+     "units": 256,
+     "inactive": 0,
+     "saturation_share": 0.0062487399193548385,
+     "effective_rank": 115.82263920012248,
+     "components_99": 120
+    },
+    {
+     "units": 256,
+     "inactive": 0,
+     "saturation_share": 0.6366362147177419,
+     "effective_rank": 177.91772585585147,
+     "components_99": 209
+    }
+   ]
+  },
+  "W:2": {
+   "network": "W:2",
+   "spec": "results\\rl\\checkpoints\\nc1\\train\\main\\W\\s2\\final.pt",
+   "inputs": 90,
+   "states": 6200,
+   "hidden": [
+    256,
+    256
+   ],
+   "layers": [
+    {
+     "units": 256,
+     "inactive": 0,
+     "saturation_share": 0.007115675403225806,
+     "effective_rank": 115.72335520670457,
+     "components_99": 119
+    },
+    {
+     "units": 256,
+     "inactive": 2,
+     "saturation_share": 0.6401575100806451,
+     "effective_rank": 178.77750067990934,
+     "components_99": 210
+    }
+   ]
+  },
+  "W:3": {
+   "network": "W:3",
+   "spec": "results\\rl\\checkpoints\\nc1\\train\\main\\W\\s3\\final.pt",
+   "inputs": 90,
+   "states": 6200,
+   "hidden": [
+    256,
+    256
+   ],
+   "layers": [
+    {
+     "units": 256,
+     "inactive": 0,
+     "saturation_share": 0.009210559475806452,
+     "effective_rank": 114.02550853842737,
+     "components_99": 117
+    },
+    {
+     "units": 256,
+     "inactive": 1,
+     "saturation_share": 0.6410534274193549,
+     "effective_rank": 178.2865945232434,
+     "components_99": 209
+    }
+   ]
+  },
+  "W:4": {
+   "network": "W:4",
+   "spec": "results\\rl\\checkpoints\\nc1\\train\\main\\W\\s4\\final.pt",
+   "inputs": 90,
+   "states": 6200,
+   "hidden": [
+    256,
+    256
+   ],
+   "layers": [
+    {
+     "units": 256,
+     "inactive": 0,
+     "saturation_share": 0.005734627016129032,
+     "effective_rank": 115.43865024340924,
+     "components_99": 120
+    },
+    {
+     "units": 256,
+     "inactive": 0,
+     "saturation_share": 0.6453647933467742,
+     "effective_rank": 180.63699463877037,
+     "components_99": 213
+    }
+   ]
+  },
+  "W:5": {
+   "network": "W:5",
+   "spec": "results\\rl\\checkpoints\\nc1\\train\\main\\W\\s5\\final.pt",
+   "inputs": 90,
+   "states": 6200,
+   "hidden": [
+    256,
+    256
+   ],
+   "layers": [
+    {
+     "units": 256,
+     "inactive": 0,
+     "saturation_share": 0.009206149193548388,
+     "effective_rank": 112.91103620506968,
+     "components_99": 114
+    },
+    {
+     "units": 256,
+     "inactive": 0,
+     "saturation_share": 0.6397763356854839,
+     "effective_rank": 177.08801298586673,
+     "components_99": 209
+    }
+   ]
+  },
+  "F:0": {
+   "network": "F:0",
+   "spec": "results\\rl\\checkpoints\\nc1\\train\\main\\F\\s0\\final.pt",
+   "inputs": 90,
+   "states": 6200,
+   "hidden": [
+    128,
+    128
+   ],
+   "layers": [
+    {
+     "units": 128,
+     "inactive": 0,
+     "saturation_share": 0.022035030241935483,
+     "effective_rank": 76.10482038464053,
+     "components_99": 89
+    },
+    {
+     "units": 128,
+     "inactive": 0,
+     "saturation_share": 0.6128099798387097,
+     "effective_rank": 92.37838422849207,
+     "components_99": 109
+    }
+   ]
+  },
+  "F:1": {
+   "network": "F:1",
+   "spec": "results\\rl\\checkpoints\\nc1\\train\\main\\F\\s1\\final.pt",
+   "inputs": 90,
+   "states": 6200,
+   "hidden": [
+    128,
+    128
+   ],
+   "layers": [
+    {
+     "units": 128,
+     "inactive": 0,
+     "saturation_share": 0.027159778225806452,
+     "effective_rank": 76.2478202651552,
+     "components_99": 88
+    },
+    {
+     "units": 128,
+     "inactive": 0,
+     "saturation_share": 0.5960987903225806,
+     "effective_rank": 93.68133393633785,
+     "components_99": 112
+    }
+   ]
+  },
+  "F:2": {
+   "network": "F:2",
+   "spec": "results\\rl\\checkpoints\\nc1\\train\\main\\F\\s2\\final.pt",
+   "inputs": 90,
+   "states": 6200,
+   "hidden": [
+    128,
+    128
+   ],
+   "layers": [
+    {
+     "units": 128,
+     "inactive": 0,
+     "saturation_share": 0.026136592741935485,
+     "effective_rank": 76.62562117311118,
+     "components_99": 89
+    },
+    {
+     "units": 128,
+     "inactive": 0,
+     "saturation_share": 0.6118813004032259,
+     "effective_rank": 93.1069029538847,
+     "components_99": 109
+    }
+   ]
+  },
+  "F:3": {
+   "network": "F:3",
+   "spec": "results\\rl\\checkpoints\\nc1\\train\\main\\F\\s3\\final.pt",
+   "inputs": 90,
+   "states": 6200,
+   "hidden": [
+    128,
+    128
+   ],
+   "layers": [
+    {
+     "units": 128,
+     "inactive": 0,
+     "saturation_share": 0.025375504032258064,
+     "effective_rank": 75.59361748065854,
+     "components_99": 88
+    },
+    {
+     "units": 128,
+     "inactive": 0,
+     "saturation_share": 0.6210496471774194,
+     "effective_rank": 93.77318239928763,
+     "components_99": 110
+    }
+   ]
+  },
+  "F:4": {
+   "network": "F:4",
+   "spec": "results\\rl\\checkpoints\\nc1\\train\\main\\F\\s4\\final.pt",
+   "inputs": 90,
+   "states": 6200,
+   "hidden": [
+    128,
+    128
+   ],
+   "layers": [
+    {
+     "units": 128,
+     "inactive": 0,
+     "saturation_share": 0.028084677419354838,
+     "effective_rank": 76.91411329889984,
+     "components_99": 89
+    },
+    {
+     "units": 128,
+     "inactive": 0,
+     "saturation_share": 0.601000504032258,
+     "effective_rank": 94.37044346201624,
+     "components_99": 111
+    }
+   ]
+  },
+  "F:5": {
+   "network": "F:5",
+   "spec": "results\\rl\\checkpoints\\nc1\\train\\main\\F\\s5\\final.pt",
+   "inputs": 90,
+   "states": 6200,
+   "hidden": [
+    128,
+    128
+   ],
+   "layers": [
+    {
+     "units": 128,
+     "inactive": 0,
+     "saturation_share": 0.026447832661290322,
+     "effective_rank": 76.32724381012952,
+     "components_99": 89
+    },
+    {
+     "units": 128,
+     "inactive": 0,
+     "saturation_share": 0.6295073084677419,
+     "effective_rank": 92.26110694954399,
+     "components_99": 105
+    }
+   ]
+  },
+  "control:0": {
+   "network": "control:0",
+   "spec": "results\\rl\\checkpoints\\m5\\train\\main\\sp\\s0\\snapshots\\snap_016384000.pt",
+   "inputs": 90,
+   "states": 6200,
+   "hidden": [
+    128,
+    128
+   ],
+   "layers": [
+    {
+     "units": 128,
+     "inactive": 0,
+     "saturation_share": 0.013918850806451612,
+     "effective_rank": 72.29095545294918,
+     "components_99": 80
+    },
+    {
+     "units": 128,
+     "inactive": 0,
+     "saturation_share": 0.6086164314516129,
+     "effective_rank": 93.18000913633237,
+     "components_99": 110
+    }
+   ]
+  },
+  "control:1": {
+   "network": "control:1",
+   "spec": "results\\rl\\checkpoints\\m5\\train\\main\\sp\\s1\\snapshots\\snap_016384000.pt",
+   "inputs": 90,
+   "states": 6200,
+   "hidden": [
+    128,
+    128
+   ],
+   "layers": [
+    {
+     "units": 128,
+     "inactive": 0,
+     "saturation_share": 0.013629032258064517,
+     "effective_rank": 74.94914992602827,
+     "components_99": 85
+    },
+    {
+     "units": 128,
+     "inactive": 0,
+     "saturation_share": 0.5979548891129032,
+     "effective_rank": 92.92084338546319,
+     "components_99": 108
+    }
+   ]
+  },
+  "control:2": {
+   "network": "control:2",
+   "spec": "results\\rl\\checkpoints\\m5\\train\\main\\sp\\s2\\snapshots\\snap_016384000.pt",
+   "inputs": 90,
+   "states": 6200,
+   "hidden": [
+    128,
+    128
+   ],
+   "layers": [
+    {
+     "units": 128,
+     "inactive": 0,
+     "saturation_share": 0.015405745967741935,
+     "effective_rank": 73.18201183549402,
+     "components_99": 81
+    },
+    {
+     "units": 128,
+     "inactive": 0,
+     "saturation_share": 0.5985761088709678,
+     "effective_rank": 92.55145977775203,
+     "components_99": 108
+    }
+   ]
+  },
+  "control:3": {
+   "network": "control:3",
+   "spec": "results\\rl\\checkpoints\\m5\\train\\main\\sp\\s3\\snapshots\\snap_016384000.pt",
+   "inputs": 90,
+   "states": 6200,
+   "hidden": [
+    128,
+    128
+   ],
+   "layers": [
+    {
+     "units": 128,
+     "inactive": 0,
+     "saturation_share": 0.01959929435483871,
+     "effective_rank": 74.54441390229054,
+     "components_99": 83
+    },
+    {
+     "units": 128,
+     "inactive": 0,
+     "saturation_share": 0.6111542338709678,
+     "effective_rank": 93.01309512868,
+     "components_99": 108
+    }
+   ]
+  },
+  "control:4": {
+   "network": "control:4",
+   "spec": "results\\rl\\checkpoints\\m5\\train\\main\\sp\\s4\\snapshots\\snap_016384000.pt",
+   "inputs": 90,
+   "states": 6200,
+   "hidden": [
+    128,
+    128
+   ],
+   "layers": [
+    {
+     "units": 128,
+     "inactive": 0,
+     "saturation_share": 0.012786038306451614,
+     "effective_rank": 73.64661839878615,
+     "components_99": 83
+    },
+    {
+     "units": 128,
+     "inactive": 0,
+     "saturation_share": 0.6089427923387096,
+     "effective_rank": 93.88753777278825,
+     "components_99": 110
+    }
+   ]
+  },
+  "control:5": {
+   "network": "control:5",
+   "spec": "results\\rl\\checkpoints\\m5\\train\\main\\sp\\s5\\snapshots\\snap_016384000.pt",
+   "inputs": 90,
+   "states": 6200,
+   "hidden": [
+    128,
+    128
+   ],
+   "layers": [
+    {
+     "units": 128,
+     "inactive": 0,
+     "saturation_share": 0.01495085685483871,
+     "effective_rank": 74.72151140716937,
+     "components_99": 84
+    },
+    {
+     "units": 128,
+     "inactive": 0,
+     "saturation_share": 0.6083077116935484,
+     "effective_rank": 92.80486373363186,
+     "components_99": 109
+    }
+   ]
+  }
+ }
+}

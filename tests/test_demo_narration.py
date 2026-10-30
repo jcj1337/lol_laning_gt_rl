@@ -8,7 +8,7 @@ that tick (crashes excluded). The engine counts deaths only per turn (`info["eve
 oracle wraps mechanics._tick_natural in the test and reads the counter before and after each tick.
 
 The replay tests re-simulate the three verified research replays from their recordings to read the engine's `info`
-beside the frames the service serves; they skip without the 7 git-ignored checkpoints of lanegame/demo/manifest.json
+beside the frames the service serves; they skip without the 7 checkpoints of lanegame/demo/manifest.json
 or without the trace files."""
 
 import os
@@ -31,7 +31,7 @@ H2H = "h2h_om_s0_vs_sp_s0"
 @pytest.fixture(scope="module")
 def replays():
     if not REG.Registry().available():
-        pytest.skip("needs the 7 git-ignored checkpoints of lanegame/demo/manifest.json")
+        pytest.skip("needs the 7 checkpoints of lanegame/demo/manifest.json")
     if not os.path.isfile(os.path.join(TRACES, f"{H2H}.json")):
         pytest.skip("results/m5/traces is not on disk")
     from lanegame.demo.service import DemoService

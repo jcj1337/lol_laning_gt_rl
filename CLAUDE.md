@@ -26,7 +26,8 @@ python -m pytest --runslow             # also run @pytest.mark.slow (exhaustive 
 
 There is no linter or formatter configured. Tests needing torch, pettingzoo or plotly skip themselves when those
 packages are missing. Tests that need git-ignored checkpoints (`results/rl/checkpoints/`, `*.pt`) skip when the files
-are absent.
+are absent. The demo's 7 checkpoints, listed in `lanegame/demo/manifest.json`, are the exception. Git tracks them so
+that a clone can run the demo.
 
 Main CLI: `python -m lanegame <command>`. The module docstring of `lanegame/__main__.py` lists every command. The most
 common are `solve` / `scenarios` / `exploit` (exact game, `--model siege|revised|v1`), `env-demo` (scripted agents

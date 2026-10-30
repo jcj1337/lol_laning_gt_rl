@@ -1,0 +1,488 @@
+{
+ "meta": {
+  "study": "NC1",
+  "commit": "3645f961e704cd0c8db854cf3b90d97ffbb7bca3",
+  "working_tree_dirty": true,
+  "timestamp": "2026-10-29 09:44:35",
+  "python": "3.13.9",
+  "torch": "2.14.1+cpu",
+  "numpy": "2.5.3",
+  "environment": "GameConfig.m45_calibrated()",
+  "stage": "q1"
+ },
+ "networks": {
+  "sp:0": {
+   "network": "sp:0",
+   "spec": "sp:0",
+   "inputs": 90,
+   "states": 6200,
+   "hidden": [
+    128,
+    128
+   ],
+   "layers": [
+    {
+     "units": 128,
+     "inactive": 0,
+     "saturation_share": 0.021071068548387098,
+     "effective_rank": 74.26678831162529,
+     "components_99": 83
+    },
+    {
+     "units": 128,
+     "inactive": 0,
+     "saturation_share": 0.6237563004032258,
+     "effective_rank": 92.02852263106315,
+     "components_99": 107
+    }
+   ]
+  },
+  "sp:1": {
+   "network": "sp:1",
+   "spec": "sp:1",
+   "inputs": 90,
+   "states": 6200,
+   "hidden": [
+    128,
+    128
+   ],
+   "layers": [
+    {
+     "units": 128,
+     "inactive": 0,
+     "saturation_share": 0.016508316532258066,
+     "effective_rank": 75.13786221010342,
+     "components_99": 85
+    },
+    {
+     "units": 128,
+     "inactive": 0,
+     "saturation_share": 0.6145690524193549,
+     "effective_rank": 91.4229765989087,
+     "components_99": 106
+    }
+   ]
+  },
+  "sp:2": {
+   "network": "sp:2",
+   "spec": "sp:2",
+   "inputs": 90,
+   "states": 6200,
+   "hidden": [
+    128,
+    128
+   ],
+   "layers": [
+    {
+     "units": 128,
+     "inactive": 0,
+     "saturation_share": 0.019899193548387095,
+     "effective_rank": 75.07085024479672,
+     "components_99": 84
+    },
+    {
+     "units": 128,
+     "inactive": 0,
+     "saturation_share": 0.6147064012096775,
+     "effective_rank": 93.37572442832398,
+     "components_99": 109
+    }
+   ]
+  },
+  "sp:3": {
+   "network": "sp:3",
+   "spec": "sp:3",
+   "inputs": 90,
+   "states": 6200,
+   "hidden": [
+    128,
+    128
+   ],
+   "layers": [
+    {
+     "units": 128,
+     "inactive": 0,
+     "saturation_share": 0.021441532258064517,
+     "effective_rank": 75.39243966690518,
+     "components_99": 84
+    },
+    {
+     "units": 128,
+     "inactive": 0,
+     "saturation_share": 0.613461441532258,
+     "effective_rank": 94.46852971452145,
+     "components_99": 110
+    }
+   ]
+  },
+  "sp:4": {
+   "network": "sp:4",
+   "spec": "sp:4",
+   "inputs": 90,
+   "states": 6200,
+   "hidden": [
+    128,
+    128
+   ],
+   "layers": [
+    {
+     "units": 128,
+     "inactive": 0,
+     "saturation_share": 0.016451612903225808,
+     "effective_rank": 74.8717281884688,
+     "components_99": 84
+    },
+    {
+     "units": 128,
+     "inactive": 0,
+     "saturation_share": 0.6225592237903226,
+     "effective_rank": 93.3871788997053,
+     "components_99": 107
+    }
+   ]
+  },
+  "sp:5": {
+   "network": "sp:5",
+   "spec": "sp:5",
+   "inputs": 90,
+   "states": 6200,
+   "hidden": [
+    128,
+    128
+   ],
+   "layers": [
+    {
+     "units": 128,
+     "inactive": 0,
+     "saturation_share": 0.017971270161290322,
+     "effective_rank": 75.16003753865847,
+     "components_99": 85
+    },
+    {
+     "units": 128,
+     "inactive": 0,
+     "saturation_share": 0.6236252520161291,
+     "effective_rank": 92.35009290130996,
+     "components_99": 108
+    }
+   ]
+  },
+  "om:0": {
+   "network": "om:0",
+   "spec": "om:0",
+   "inputs": 116,
+   "states": 6200,
+   "hidden": [
+    128,
+    128
+   ],
+   "layers": [
+    {
+     "units": 128,
+     "inactive": 0,
+     "saturation_share": 0.023269909274193548,
+     "effective_rank": 80.52283136313687,
+     "components_99": 92
+    },
+    {
+     "units": 128,
+     "inactive": 1,
+     "saturation_share": 0.6365662802419355,
+     "effective_rank": 92.72418635984042,
+     "components_99": 107
+    }
+   ]
+  },
+  "om:1": {
+   "network": "om:1",
+   "spec": "om:1",
+   "inputs": 116,
+   "states": 6200,
+   "hidden": [
+    128,
+    128
+   ],
+   "layers": [
+    {
+     "units": 128,
+     "inactive": 0,
+     "saturation_share": 0.023218245967741937,
+     "effective_rank": 81.10386155664347,
+     "components_99": 93
+    },
+    {
+     "units": 128,
+     "inactive": 1,
+     "saturation_share": 0.6174042338709678,
+     "effective_rank": 91.63762811555401,
+     "components_99": 105
+    }
+   ]
+  },
+  "om:2": {
+   "network": "om:2",
+   "spec": "om:2",
+   "inputs": 116,
+   "states": 6200,
+   "hidden": [
+    128,
+    128
+   ],
+   "layers": [
+    {
+     "units": 128,
+     "inactive": 0,
+     "saturation_share": 0.02720640120967742,
+     "effective_rank": 81.79632991391622,
+     "components_99": 94
+    },
+    {
+     "units": 128,
+     "inactive": 1,
+     "saturation_share": 0.6685874495967742,
+     "effective_rank": 91.46879439384169,
+     "components_99": 101
+    }
+   ]
+  },
+  "om:3": {
+   "network": "om:3",
+   "spec": "om:3",
+   "inputs": 116,
+   "states": 6200,
+   "hidden": [
+    128,
+    128
+   ],
+   "layers": [
+    {
+     "units": 128,
+     "inactive": 0,
+     "saturation_share": 0.02526335685483871,
+     "effective_rank": 79.87400617232282,
+     "components_99": 91
+    },
+    {
+     "units": 128,
+     "inactive": 0,
+     "saturation_share": 0.6276915322580645,
+     "effective_rank": 93.7260410786789,
+     "components_99": 107
+    }
+   ]
+  },
+  "om:4": {
+   "network": "om:4",
+   "spec": "om:4",
+   "inputs": 116,
+   "states": 6200,
+   "hidden": [
+    128,
+    128
+   ],
+   "layers": [
+    {
+     "units": 128,
+     "inactive": 0,
+     "saturation_share": 0.020598538306451614,
+     "effective_rank": 80.77327059345095,
+     "components_99": 93
+    },
+    {
+     "units": 128,
+     "inactive": 1,
+     "saturation_share": 0.6334173387096774,
+     "effective_rank": 92.78113501701023,
+     "components_99": 106
+    }
+   ]
+  },
+  "om:5": {
+   "network": "om:5",
+   "spec": "om:5",
+   "inputs": 116,
+   "states": 6200,
+   "hidden": [
+    128,
+    128
+   ],
+   "layers": [
+    {
+     "units": 128,
+     "inactive": 0,
+     "saturation_share": 0.034717741935483874,
+     "effective_rank": 81.13929764426013,
+     "components_99": 93
+    },
+    {
+     "units": 128,
+     "inactive": 2,
+     "saturation_share": 0.6591544858870968,
+     "effective_rank": 92.03098339849745,
+     "components_99": 105
+    }
+   ]
+  },
+  "ext:0": {
+   "network": "ext:0",
+   "spec": "results\\rl\\checkpoints\\m45c\\ext\\s0\\final.pt",
+   "inputs": 90,
+   "states": 6200,
+   "hidden": [
+    128,
+    128
+   ],
+   "layers": [
+    {
+     "units": 128,
+     "inactive": 0,
+     "saturation_share": 0.001649445564516129,
+     "effective_rank": 65.69745546448047,
+     "components_99": 61
+    },
+    {
+     "units": 128,
+     "inactive": 0,
+     "saturation_share": 0.3305141129032258,
+     "effective_rank": 83.70561196585338,
+     "components_99": 102
+    }
+   ]
+  },
+  "ext:2": {
+   "network": "ext:2",
+   "spec": "results\\rl\\checkpoints\\m45c\\ext\\s2\\final.pt",
+   "inputs": 90,
+   "states": 6200,
+   "hidden": [
+    128,
+    128
+   ],
+   "layers": [
+    {
+     "units": 128,
+     "inactive": 0,
+     "saturation_share": 0.0007736895161290322,
+     "effective_rank": 66.46847746026471,
+     "components_99": 63
+    },
+    {
+     "units": 128,
+     "inactive": 0,
+     "saturation_share": 0.34442792338709677,
+     "effective_rank": 82.36096172965624,
+     "components_99": 99
+    }
+   ]
+  },
+  "ext:4": {
+   "network": "ext:4",
+   "spec": "results\\rl\\checkpoints\\m45c\\ext\\s4\\final.pt",
+   "inputs": 90,
+   "states": 6200,
+   "hidden": [
+    128,
+    128
+   ],
+   "layers": [
+    {
+     "units": 128,
+     "inactive": 0,
+     "saturation_share": 0.000868195564516129,
+     "effective_rank": 65.67636631689214,
+     "components_99": 63
+    },
+    {
+     "units": 128,
+     "inactive": 0,
+     "saturation_share": 0.36069304435483873,
+     "effective_rank": 83.88884132506683,
+     "components_99": 101
+    }
+   ]
+  },
+  "gap_attacker:0": {
+   "network": "gap_attacker:0",
+   "spec": "results\\rl\\checkpoints\\m46a\\e4\\gap_s0\\final.pt",
+   "inputs": 90,
+   "states": 6200,
+   "hidden": [
+    128,
+    128
+   ],
+   "layers": [
+    {
+     "units": 128,
+     "inactive": 0,
+     "saturation_share": 0.0038684475806451614,
+     "effective_rank": 68.07900372434604,
+     "components_99": 67
+    },
+    {
+     "units": 128,
+     "inactive": 0,
+     "saturation_share": 0.3778251008064516,
+     "effective_rank": 85.9818478102946,
+     "components_99": 105
+    }
+   ]
+  },
+  "gap_attacker:2": {
+   "network": "gap_attacker:2",
+   "spec": "results\\rl\\checkpoints\\m46a\\e4\\gap_s2\\final.pt",
+   "inputs": 90,
+   "states": 6200,
+   "hidden": [
+    128,
+    128
+   ],
+   "layers": [
+    {
+     "units": 128,
+     "inactive": 0,
+     "saturation_share": 0.002561743951612903,
+     "effective_rank": 67.75441472063349,
+     "components_99": 68
+    },
+    {
+     "units": 128,
+     "inactive": 0,
+     "saturation_share": 0.37886844758064514,
+     "effective_rank": 84.6038782738221,
+     "components_99": 103
+    }
+   ]
+  },
+  "gap_attacker:4": {
+   "network": "gap_attacker:4",
+   "spec": "results\\rl\\checkpoints\\m46a\\e4\\gap_s4\\final.pt",
+   "inputs": 90,
+   "states": 6200,
+   "hidden": [
+    128,
+    128
+   ],
+   "layers": [
+    {
+     "units": 128,
+     "inactive": 0,
+     "saturation_share": 0.0015927419354838709,
+     "effective_rank": 66.45424495811501,
+     "components_99": 65
+    },
+    {
+     "units": 128,
+     "inactive": 0,
+     "saturation_share": 0.4098475302419355,
+     "effective_rank": 85.07528955896903,
+     "components_99": 103
+    }
+   ]
+  }
+ },
+ "rule": {
+  "median_inactive_layer2": 0.0,
+  "median_saturation_layer2": 0.6160553175403226,
+  "leaves_width_unused": true
+ }
+}

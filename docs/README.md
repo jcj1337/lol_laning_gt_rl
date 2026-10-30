@@ -107,6 +107,13 @@ The reports are grouped by phase. Within a folder the files are listed in the or
 | [research_overview.md](m6/research_overview.md) | **the research overview** (M6d, 2026-10-22, approval pending): the final campaign explained for newcomers; the question, the game and what one unit of gold means, the two arms, how they were measured, the results with all six training pairs and their intervals, the arms side by side, the limitations, what the demo shows, and the corrections to earlier wording; `python -m lanegame.experiments.m6d overview` checks every number against the M5 records |
 | [m6c_guided_replays.md](m6/m6c_guided_replays.md) | M6c, step 1 (2026-10-22, approved by the user; further sequences on hold): the narrowed scope (a small collection of optional guided replays within Watch, shown to visitors as Sequences; the research explanation moves to M6d's documentation); the format (`lanegame/demo/guides/*.json`, validated against the verified replay at startup) and how to add a sequence; the first one, "Stacking to Crashing" (turns 75 to 84 of the self-play agent against the always-push bot), a chain of five events, with why it was chosen and what the user's reviews changed; the Watch integration and its decisions (placement, notes away from a checkpoint, hidden notes, returning to a live game); the verification; the limitations and what the review decides |
 
+## capacity/ for the network capacity study (NC1, experimental, uncommitted on `experiment/nc1-capacity`)
+
+| document | content |
+|---|---|
+| [nc1_preregistration.md](capacity/nc1_preregistration.md) | NC1 pre-registration (frozen 2026-10-29 after the smoke stage, before any fit or training): stage 1 asks what a network can represent (unit usage, a distillation probe of a generalist plus a gap specialist at five network shapes, value refits at three widths); stage 2 is a PPO pilot of two function-preserving arms, 2 × 256 (W) and 2 × 128 plus six strength features (F), paired with M5's pure self-play arm at 16,384,000 transitions; stage 3 evaluates them with M5's head to head and limitation cells |
+| [nc1_report.md](capacity/nc1_report.md) | NC1 report (2026-10-29, awaiting review): one 2 × 128 network represents a gap specialist's play beside the generalist's (98% retention), and a wider value network recovers no more strength value; the M5 finals' second layer is 61–67% saturated; the 2 × 256 arm lost to its paired M5 control at M5's learning rate (−0.67 ± 0.59), and the strength-feature arm was level head to head with a more strength-aware critic; recommendation, keep 2 × 128 |
+
 ## natural_waves/ — natural wave mechanics and the lane candidate (M4.2e)
 
 | document | milestone |

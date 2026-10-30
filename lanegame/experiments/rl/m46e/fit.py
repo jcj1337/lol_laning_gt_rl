@@ -157,18 +157,22 @@ def ridge_predict(m, F) -> np.ndarray:
     return np.c_[np.ones(len(F)), (F - m["mu"]) / m["sd"]] @ m["beta"]
 
 
-def make_mlp(n_in: int):
+def make_mlp(n_in: int, hidden=(128, 128)):
+    """The critic's shape by default; NC1's Q3 passes other widths (opt-in, the default builds the same network)."""
     from ....rl.network import _layer
     from torch import nn
-    return nn.Sequential(_layer(n_in, 128, np.sqrt(2.0)), nn.Tanh(), _layer(128, 128, np.sqrt(2.0)), nn.Tanh(),
-                         _layer(128, 1, 1.0))
+    layers, n = [], n_in
+    for h in hidden:
+        layers += [_layer(n, h, np.sqrt(2.0)), nn.Tanh()]
+        n = h
+    return nn.Sequential(*layers, _layer(n, 1, 1.0))
 
 
-def mlp_fit(X, y, w, Xv, yv, wv, seed: int):
+def mlp_fit(X, y, w, Xv, yv, wv, seed: int, hidden=(128, 128)):
     import torch
     torch.manual_seed(C.FIT_ROOT + seed)
     gen = torch.Generator().manual_seed(C.FIT_ROOT + seed)
-    m = make_mlp(X.shape[1])
+    m = make_mlp(X.shape[1], hidden)
     opt = torch.optim.Adam(m.parameters(), lr=LR, eps=1e-5)
     Xt, yt, wt = (torch.as_tensor(X, dtype=torch.float32), torch.as_tensor(y * C.REWARD_SCALE, dtype=torch.float32),
                   torch.as_tensor(w, dtype=torch.float32))

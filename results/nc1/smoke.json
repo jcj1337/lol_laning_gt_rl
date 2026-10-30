@@ -1,0 +1,154 @@
+{
+ "meta": {
+  "study": "NC1",
+  "commit": "3645f961e704cd0c8db854cf3b90d97ffbb7bca3",
+  "working_tree_dirty": true,
+  "timestamp": "2026-10-29 09:21:58",
+  "python": "3.13.9",
+  "torch": "2.14.1+cpu",
+  "numpy": "2.5.3",
+  "environment": "GameConfig.m45_calibrated()",
+  "stage": "smoke",
+  "updates": 25,
+  "concurrent": 6
+ },
+ "runs": {
+  "C_s0": {
+   "status": "complete",
+   "error": null,
+   "updates": 25,
+   "identical_to_m5_updates": 25,
+   "first_rollout_identical": true,
+   "steady_transitions_per_s": 3663.805421975294,
+   "transitions_per_s": 3555.0441970055845,
+   "spec": {
+    "obs_size": 90,
+    "n_actions": 61,
+    "hidden": [
+     128,
+     128
+    ]
+   }
+  },
+  "C_s1": {
+   "status": "complete",
+   "error": null,
+   "updates": 25,
+   "identical_to_m5_updates": 25,
+   "first_rollout_identical": true,
+   "steady_transitions_per_s": 3638.3527143798224,
+   "transitions_per_s": 3568.6371882124995,
+   "spec": {
+    "obs_size": 90,
+    "n_actions": 61,
+    "hidden": [
+     128,
+     128
+    ]
+   }
+  },
+  "W_s0": {
+   "status": "complete",
+   "error": null,
+   "updates": 25,
+   "identical_to_m5_updates": 0,
+   "first_rollout_identical": true,
+   "steady_transitions_per_s": 3321.9662502960146,
+   "transitions_per_s": 3211.511401688598,
+   "spec": {
+    "obs_size": 90,
+    "n_actions": 61,
+    "hidden": [
+     256,
+     256
+    ]
+   }
+  },
+  "W_s1": {
+   "status": "complete",
+   "error": null,
+   "updates": 25,
+   "identical_to_m5_updates": 0,
+   "first_rollout_identical": true,
+   "steady_transitions_per_s": 3443.2537740887105,
+   "transitions_per_s": 3260.226126673465,
+   "spec": {
+    "obs_size": 90,
+    "n_actions": 61,
+    "hidden": [
+     256,
+     256
+    ]
+   }
+  },
+  "F_s0": {
+   "status": "complete",
+   "error": null,
+   "updates": 25,
+   "identical_to_m5_updates": 0,
+   "first_rollout_identical": true,
+   "steady_transitions_per_s": 3498.7156993105755,
+   "transitions_per_s": 3318.6461312122565,
+   "spec": {
+    "obs_size": 90,
+    "n_actions": 61,
+    "hidden": [
+     128,
+     128
+    ],
+    "features": "strength6",
+    "feature_index": [
+     72,
+     89,
+     62,
+     79,
+     64,
+     81
+    ]
+   }
+  },
+  "F_s1": {
+   "status": "complete",
+   "error": null,
+   "updates": 25,
+   "identical_to_m5_updates": 0,
+   "first_rollout_identical": true,
+   "steady_transitions_per_s": 3504.9159099376666,
+   "transitions_per_s": 3314.990096771505,
+   "spec": {
+    "obs_size": 90,
+    "n_actions": 61,
+    "hidden": [
+     128,
+     128
+    ],
+    "features": "strength6",
+    "feature_index": [
+     72,
+     89,
+     62,
+     79,
+     64,
+     81
+    ]
+   }
+  }
+ },
+ "checks": {
+  "control_reproduces_m5": true,
+  "arms_first_rollout_identical": true,
+  "all_complete": true
+ },
+ "throughput": {
+  "steady_transitions_per_s": {
+   "C": 3651.079068177558,
+   "W": 3382.610012192363,
+   "F": 3501.815804624121
+  },
+  "projected_run_h": {
+   "C": 1.2465112439711707,
+   "W": 1.3454436351536163,
+   "F": 1.2996432037063181
+  }
+ }
+}

@@ -5,7 +5,7 @@
     python -m lanegame.demo --openapi web/openapi.json          write the API schema (no engine needed)
 
 It runs from the repository root (the registry reads the checkpoints relative to it), loads the engine (about 3 s;
-the 7 git-ignored checkpoint files of lanegame/demo/manifest.json), verifies the three seed-0 research replays, starts
+the 7 checkpoint files of lanegame/demo/manifest.json), verifies the three seed-0 research replays, starts
 the simulation worker process, and serves http://127.0.0.1:8765/. Without the checkpoints the frontend still loads and
 says that the engine is unavailable. Only this machine can connect unless --host says otherwise. Ctrl+C stops.
 """

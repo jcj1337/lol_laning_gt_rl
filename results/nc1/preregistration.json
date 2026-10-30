@@ -1,0 +1,19 @@
+{
+ "meta": {
+  "study": "NC1",
+  "commit": "3645f961e704cd0c8db854cf3b90d97ffbb7bca3",
+  "working_tree_dirty": true,
+  "timestamp": "2026-10-29 09:24:05",
+  "python": "3.13.9",
+  "torch": "2.14.1+cpu",
+  "numpy": "2.5.3",
+  "environment": "GameConfig.m45_calibrated()",
+  "stage": "prereg"
+ },
+ "record": {
+  "document": "docs/capacity/nc1_preregistration.md",
+  "sha256": "75adc051058e301832426186620b5c2673f9fdbb084f1e76e1c12f6e559a5916",
+  "bytes": 14154
+ },
+ "note": "frozen after the smoke stage and before any fit, behaviour rollout or PPO training"
+}

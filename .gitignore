@@ -7,7 +7,8 @@ build/
 dist/
 .ipynb_checkpoints/
 
-# RL network checkpoints (large, regenerable)
+# RL network checkpoints (large, regenerable). Git still tracks the demo's 7, listed in lanegame/demo/manifest.json,
+# because they were added with `git add -f` and git keeps tracking a file once it is added.
 results/rl/checkpoints/
 *.pt
 results/m4_design/scripts/*.npz

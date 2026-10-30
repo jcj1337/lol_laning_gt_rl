@@ -10,7 +10,7 @@
               play, reduced motion, and the layouts at five window sizes in both themes with the overlap check.
               Screenshots go to results/m6/m6b/, the checks to results/m6/m6b_browser.json (about 3 minutes)
 
-The stage needs the 7 checkpoint files of lanegame/demo/manifest.json (git-ignored), the built frontend
+The stage needs the 7 checkpoint files of lanegame/demo/manifest.json, the built frontend
 (cd web && npm install && npm run build) and Microsoft Edge or Chrome. It trains nothing and changes no recording.
 """
 
