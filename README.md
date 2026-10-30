@@ -4,8 +4,6 @@ Can a reinforcement learning agent learn League of Legends laning strategy witho
 builds a simplified model of the laning phase, abstracting it exactly with game theory, and trains
 self-play agents on the full version. The reward is the gold an agent earns minus the gold its opponent earns; the agents have to discover strategies on their own.
 
-![The demo's Watch mode at the fourth event of the "Stacking to Crashing" sequence: the lane, the turn list, the sequence's note and the gold lead](results/m6/site/hero.png)
-
 There's a walkthrough of the project, with screenshots, at [jcj1337.github.io/laning.html](https://jcj1337.github.io/laning.html).
 
 ## Rules of The Game
