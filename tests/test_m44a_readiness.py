@@ -1,4 +1,4 @@
-"""M4.4a: PPO readiness of the four-action game (docs/m4/m4_4/m4_4a_ppo_readiness.md).
+"""M4.4a: PPO readiness of the four-action game (docs/archive/m4/m4_4/m4_4a_ppo_readiness.md).
 
 The three environments (m4_four_actions / _econ / _econ_aggro) and their identical training settings; four-action
 decoding, the codes that can ever be legal, masks; shared-policy self-play on every environment (own-perspective
@@ -16,16 +16,16 @@ import numpy as np
 import pytest
 
 from lanegame import GameConfig
-from lanegame.champions_m4 import M4State
-from lanegame.config import (B_HOLD, B_RECALL, B_SAFE, B_TRADE, CHAMP_ABSENT, NONE, PRESSURE, VISION, W_HOLD, W_SHOVE,
+from lanegame.engine.champions_m4 import M4State
+from lanegame.engine.config import (B_HOLD, B_RECALL, B_SAFE, B_TRADE, CHAMP_ABSENT, NONE, PRESSURE, VISION, W_HOLD, W_SHOVE,
                              W_SLOWPUSH, W_THIN, champ_act, champ_behavior, champ_objective, champ_wave)
 from lanegame.env import LaneEnv, UniformAgent
-from lanegame.experiments.rl.m44 import actions as AC
-from lanegame.experiments.rl.m44 import common as C
-from lanegame.experiments.rl.m44 import interventions as IV
-from lanegame.experiments.rl.m44 import metrics as M
-from lanegame.experiments.rl.m44 import records as R
-from lanegame.state import State
+from experiments.m44 import actions as AC
+from experiments.m44 import common as C
+from experiments.m44 import interventions as IV
+from experiments.m44 import metrics as M
+from experiments.m44 import records as R
+from lanegame.engine.state import State
 
 ENVS = list(C.ENV_ORDER)
 A, B = 0, 1
@@ -136,7 +136,7 @@ def _ppo(key, **kw):
 @pytest.mark.parametrize("key", ENVS)
 def test_shared_self_play_trains_both_seats_from_their_own_perspective_on_every_environment(key):
     torch = pytest.importorskip("torch")
-    from lanegame.champions import swap_seats
+    from lanegame.engine.champions import swap_seats
     from lanegame.env import observe
     from lanegame.env.observation_m4 import decode_m4
     from lanegame.rl import MatchupSampler, PolicyValueNet, SharedCollector, SnapshotPool
@@ -168,7 +168,7 @@ def test_shared_self_play_trains_both_seats_from_their_own_perspective_on_every_
 def test_training_is_reproducible_and_a_seed_initializes_identically_in_every_environment(tmp_path):
     pytest.importorskip("torch")
     from lanegame.rl import load_checkpoint, train_shared, weights_digest
-    from lanegame.experiments.rl.m44.train import _initial_digest
+    from experiments.m44.train import _initial_digest
     scfg = C.shared_config()
     a = train_shared(C.env_cfg("aggro"), _ppo("aggro"), scfg, out_dir=str(tmp_path / "a"), verbose=False)
     b = train_shared(C.env_cfg("aggro"), _ppo("aggro"), scfg, verbose=False)
@@ -224,7 +224,7 @@ def test_a_four_action_checkpoint_loads_only_on_its_preset_unless_cross_evaluati
 # ---------------------------------------------------------------------------------------------- records
 def test_a_record_is_the_same_game_as_the_evaluator_plays_and_classifies_every_wave():
     from lanegame.env.discounted import _play
-    from lanegame.experiments.rl.m44.references import reference_suite
+    from experiments.m44.references import reference_suite
     cfg = C.env_cfg("aggro")
     suite = reference_suite()
     x, y = suite["slowpush4"], suite["thin4"]
@@ -269,7 +269,7 @@ def _lane(ax, ah, bx, bh, ar=(), br=(), asg=0, bsg=0):
 
 
 def test_the_freeze_state_is_a_lane_state_not_an_action():
-    from lanegame.experiments.m43c.harness import start
+    from experiments.m43c.harness import start
     cfg = C.env_cfg("econ")
     lane, m4, k = start("freeze", cfg)
     assert R.holds_freeze(lane, A) and not R.holds_freeze(lane, B)      # B's wave held at A's -1 by A
@@ -331,9 +331,9 @@ def test_choosing_thin_is_not_a_freeze_and_a_freeze_does_not_need_thin():
 
 # ---------------------------------------------------------------------------------------------- dives, vision, plates
 def test_plates_left_come_from_the_tower_damage_state():
-    from lanegame.champions_m4 import initial_m4
-    from lanegame.mechanics import initial_state
-    from lanegame.champions_m4 import context
+    from lanegame.engine.champions_m4 import initial_m4
+    from lanegame.engine.mechanics import initial_state
+    from lanegame.engine.champions_m4 import context
     cfg = C.env_cfg("aggro")
     ctx = context(cfg)
     lane = initial_state(cfg)
@@ -355,7 +355,7 @@ def test_plate_phase_metrics_split_by_the_simulation_state_not_the_turn():
 
 
 def test_dives_and_the_busy_condition_come_from_the_turn_outcome():
-    from lanegame.champions_m4 import context
+    from lanegame.engine.champions_m4 import context
     cfg = C.env_cfg("aggro")
     ctx = context(cfg)
     lane = _lane(1, 8, 1, 8, asg=6)
@@ -416,7 +416,7 @@ def test_interventions_change_one_component_and_never_leave_the_legal_set():
 # ---------------------------------------------------------------------------------------------- counterfactuals
 @pytest.fixture(scope="module")
 def recorded():
-    from lanegame.experiments.rl.m44.references import reference_suite
+    from experiments.m44.references import reference_suite
     cfg = C.env_cfg("econ")
     s = reference_suite()
     rec = R.play_record(cfg, (s["grow_crash_recall4"], s["freeze_hunt4"]), np.random.SeedSequence(4), 80,
@@ -431,7 +431,7 @@ def test_a_snapshot_restores_the_recorded_decision_state_exactly(recorded):
     for t in (5, 31, 77):
         snap = rec.snapshots[t]
         obs = restore(env, snap, 0)
-        ctx = __import__("lanegame.champions_m4", fromlist=["context"]).context(cfg)
+        ctx = __import__("lanegame.engine.champions_m4", fromlist=["context"]).context(cfg)
         st = R.decision_state(cfg, ctx, obs[0].state, obs[0].champ, obs[0].k, A, obs[0].legal)
         for f in ("pos", "own_fh", "en_fh", "wave_adv", "held", "plates_left", "own_siege", "hp_frac"):
             assert st[f] == rec.data[f][t, 0] or (np.isnan(st[f]) and np.isnan(rec.data[f][t, 0]))
@@ -479,7 +479,7 @@ def test_an_impossible_intervention_is_refused_at_the_branch_turn_and_skipped_la
 
 def test_the_counterfactual_harness_reports_frequency_measurement_and_critic_separately():
     torch = pytest.importorskip("torch")
-    from lanegame.experiments.rl.m44 import counterfactual as CF
+    from experiments.m44 import counterfactual as CF
     from lanegame.rl import NetAgent, PolicyValueNet
     torch.manual_seed(1)
     ag = NetAgent(PolicyValueNet(88, 61, (16,)), "net")
@@ -511,7 +511,7 @@ def _keys(d, prefix=""):
 
 
 def test_metric_reports_have_the_same_structure_in_every_environment():
-    from lanegame.experiments.rl.m44.references import reference_suite
+    from experiments.m44.references import reference_suite
     shapes = []
     for k in ENVS:
         s = reference_suite()
@@ -524,8 +524,8 @@ def test_metric_reports_have_the_same_structure_in_every_environment():
 
 
 def test_natural_and_initialized_games_are_never_pooled():
-    from lanegame.experiments.m43c.harness import start
-    from lanegame.experiments.rl.m44.references import reference_suite
+    from experiments.m43c.harness import start
+    from experiments.m44.references import reference_suite
     cfg = C.env_cfg("econ")
     s = reference_suite()
     r1 = R.play_record(cfg, (s["farm4"], s["thin4"]), np.random.SeedSequence(1), 20)
@@ -537,18 +537,12 @@ def test_natural_and_initialized_games_are_never_pooled():
 
 # ---------------------------------------------------------------------------------------------- viewer and CLI
 def test_a_four_action_recording_replays_in_the_viewer(tmp_path):
-    from lanegame.experiments.rl.m44.trace import export, verify
+    from experiments.m44.trace import export, verify
     from lanegame.viewer import session as ss
     assert {"m4_four_actions_econ", "m4_four_actions_econ_aggro"} <= set(ss.CONFIGS)
     rec = export("t", "aggro", "ref:shove_hunt4", "ref:farm4", 5, 40, "test", out_dir=str(tmp_path))
     v = verify(rec["path"])
     assert v["config"] == "m4_four_actions_econ_aggro" and v["turns"] == 40 and v["actions_equal"] and v["payoff_equal"]
-
-
-def test_the_m44b_training_budget_cannot_start_by_accident():
-    from lanegame.experiments.rl.m44.__main__ import main
-    with pytest.raises(SystemExit, match="confirm-m44b"):
-        main(["train_main"])
 
 
 def test_the_cli_offers_the_two_calibrated_presets():

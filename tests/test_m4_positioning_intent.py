@@ -1,15 +1,60 @@
 """M4.2d-B: the opt-in positioning rule `GameConfig.position_rule` ("m2" default, "pin", "standoff";
-docs/m4/m4_2/m4_positioning_report.md)."""
+docs/archive/m4/m4_2/m4_positioning_report.md)."""
 
 import numpy as np
 import pytest
 
 from lanegame import GameConfig
-from lanegame.champions import N_CHANCE, in_contact, mirror_chance, swap_seats
-from lanegame.champions_m4 import check_invariants, resolve_turn_m4, yield_target
-from lanegame.config import B_HOLD, B_SAFE, B_TRADE, B_YIELD, N_CHAMP_ACTIONS, SP, champ_act
+from lanegame.engine.champions import N_CHANCE, in_contact, mirror_chance, swap_seats
+from lanegame.engine.champions_m4 import check_invariants, resolve_turn_m4, yield_target
+from lanegame.engine.config import B_HOLD, B_SAFE, B_TRADE, B_YIELD, N_CHAMP_ACTIONS, SP, champ_act
 from lanegame.env.observation_m4 import m4_obs_size
-from lanegame.experiments.m4.wave_readiness import end_state, hold, play
+
+from lanegame.engine.champions import champion_legal_actions
+from lanegame.engine.champions_m4 import initial_m4
+from lanegame.engine.config import B_RECALL, CHAMP_ABSENT, F, NONE
+from lanegame.engine.mechanics import initial_state, wave_actions
+
+A, B = 0, 1
+
+
+# The scripted driver of the M4.2d-A wave-readiness study (formerly experiments.m4.wave_readiness, retired with that
+# study on 2026-11-08): each side plays (wave, behaviour) wishes, mapped onto a legal code.
+def _code(cfg, lane, m4, s, want) -> int:
+    legal = champion_legal_actions(lane, m4, s, cfg)
+    if legal == (CHAMP_ABSENT,):
+        return CHAMP_ABSENT
+    w, b = want
+    if b == B_RECALL:
+        c = champ_act(SP, B_RECALL)
+        return c if c in legal else champ_act(SP, B_SAFE)
+    if w == F and F not in wave_actions(lane, s, cfg):
+        w = SP
+    c = champ_act(w, b, NONE)
+    assert c in legal, (want, legal)
+    return c
+
+
+def play(cfg, pa, pb, turns, lane=None, m4=None, k0=0):
+    lane = lane if lane is not None else initial_state(cfg)
+    m4 = m4 if m4 is not None else initial_m4(cfg)
+    rows = []
+    for i in range(turns):
+        k = k0 + i
+        a, b = _code(cfg, lane, m4, A, pa(cfg, lane, m4, A, k)), _code(cfg, lane, m4, B, pb(cfg, lane, m4, B, k))
+        t = resolve_turn_m4(lane, m4, k, a, b, cfg, u=None)
+        rows.append({"k": k, "pre": lane, "t": t})
+        lane, m4 = t.lane.state, t.champ
+    return rows
+
+
+def end_state(rows):
+    t = rows[-1]["t"]
+    return t.lane.state, t.champ, rows[-1]["k"] + 1
+
+
+def hold(cfg, lane, m4, s, k):
+    return (SP, B_HOLD)
 
 M2, PIN, STANDOFF = (GameConfig.m4(position_rule=r) for r in ("m2", "pin", "standoff"))
 H, Y, T_, S = (champ_act(SP, b) for b in (B_HOLD, B_YIELD, B_TRADE, B_SAFE))
@@ -37,7 +82,7 @@ def test_default_is_m2_and_the_field_is_validated():
 
 def test_action_space_masks_and_observation_are_unchanged():
     st = neutral(M2)
-    from lanegame.champions_m4 import champion_legal_actions
+    from lanegame.engine.champions_m4 import champion_legal_actions
     for cfg in (PIN, STANDOFF):
         assert m4_obs_size(cfg) == m4_obs_size(M2) and N_CHAMP_ACTIONS == 46
         for s in (0, 1):

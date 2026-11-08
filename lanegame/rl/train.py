@@ -30,7 +30,7 @@ from typing import Callable, Dict, List, Optional, Sequence
 import numpy as np
 import torch
 
-from ..config import GameConfig
+from ..engine.config import GameConfig
 from ..env import LaneEnv
 from ..env.agents import episode_streams
 from ..env.trace import EpisodeLog

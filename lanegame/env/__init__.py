@@ -1,12 +1,12 @@
 """Simultaneous-move RL environment around the existing laning game (roadmap Milestone 1).
 
     from lanegame.env import LaneEnv, ScriptedAgent, run_episodes
-    from lanegame.baselines import aggressive, passive_safe
+    from lanegame.exact.baselines import aggressive, passive_safe
 
     env = LaneEnv(GameConfig())
     stats = run_episodes(env, ScriptedAgent(aggressive()), ScriptedAgent(passive_safe()), episodes=200, seed=42)
 
-NumPy only; the game mechanics come from `lanegame.mechanics` / `lanegame.game` unchanged. The optional
+NumPy only; the game mechanics come from `lanegame.engine.mechanics` / `lanegame.engine.game` unchanged. The optional
 PettingZoo adapter is in `lanegame.env.pettingzoo_adapter`.
 """
 

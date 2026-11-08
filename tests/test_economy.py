@@ -10,11 +10,11 @@ import numpy as np
 import pytest
 
 from lanegame import CONTEST, SAFE, SH_C, SH_S, SP_C, SP_S, GameConfig, LaneGame
-from lanegame.baselines import uniform
-from lanegame.game import collection_efficiency, turn_farm
-from lanegame.mechanics import step_turn, total_hp
-from lanegame.simulate import play_episode
-from lanegame.state import State
+from lanegame.exact.baselines import uniform
+from lanegame.engine.game import collection_efficiency, turn_farm
+from lanegame.engine.mechanics import step_turn, total_hp
+from lanegame.exact.simulate import play_episode
+from lanegame.engine.state import State
 
 from conftest import all_transitions
 

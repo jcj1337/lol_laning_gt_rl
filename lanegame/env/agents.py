@@ -4,7 +4,7 @@ Three kinds of agent are distinguished, because only the first two can be evalua
 
 * An agent with an EXPLICIT action distribution: `distribution(obs)` returns probabilities aligned with
   `obs.legal`, and `act(obs, rng)` samples from it with the agent's own generator. `ScriptedAgent` (a
-  `lanegame.policy.Policy` behind an Observation) and `GreedyObservationAgent` (a deterministic argmax of
+  `lanegame.exact.policy.Policy` behind an Observation) and `GreedyObservationAgent` (a deterministic argmax of
   a linear score, i.e. a one-hot distribution) are of this kind. Because the observation is a function of
   (k, state, side), such an agent IS a time-dependent Markov policy of the exact game, and `as_policy`
   turns it into a `Policy` for `evaluate`, `best_response_value`, `exploitability` and `path_statistics`.
@@ -36,10 +36,10 @@ from typing import Callable, List, Optional, Protocol, Sequence, Tuple, runtime_
 
 import numpy as np
 
-from ..config import (B_HOLD, B_RECALL, B_SAFE, B_TRADE, B_YIELD, CHAMP_ABSENT, CONTEST, F, NONE, PRESSURE, SH, SP,
+from ..engine.config import (B_HOLD, B_RECALL, B_SAFE, B_TRADE, B_YIELD, CHAMP_ABSENT, CONTEST, F, NONE, PRESSURE, SH, SP,
                       VISION, GameConfig, champ_act, objective_of, posture_of, wave_of)
-from ..mechanics import legal_actions
-from ..policy import Policy, greedy_resources
+from ..engine.mechanics import legal_actions
+from ..exact.policy import Policy, greedy_resources
 from .core import Chooser, LaneEnv, Observation
 from .observation import n_actions, obs_size, observe
 from .trace import EpisodeLog, EpisodeStats
@@ -275,7 +275,7 @@ def champion_agents(cfg: GameConfig) -> dict:
     """Named champion-mode agents: fixed behaviors without any recall (hold, yield, trade, safe, ...), uniform
     play, the M2e scripted suite (`champion_suite`), and the legacy siege baselines mapped into champion
     actions (`legacy:<name>`)."""
-    from ..baselines import siege_baselines
+    from ..exact.baselines import siege_baselines
     agents = [ChampionRuleAgent("hold", SP, B_HOLD), ChampionRuleAgent("yield", SP, B_YIELD),
               ChampionRuleAgent("trade", SP, B_TRADE), ChampionRuleAgent("safe", SP, B_SAFE),
               ChampionRuleAgent("shove_hold", SH, B_HOLD), ChampionRuleAgent("shove_trade", SH, B_TRADE),

@@ -4,7 +4,7 @@ The adapter is the project's standard multi-agent interface for external tooling
 `LaneEnv`: every observation, mask, reward, truncation flag and info record is the underlying environment's own
 (tests/test_pettingzoo_m4.py checks trajectory equality turn by turn), and nothing in the game mechanics is touched.
 The training code (lanegame.rl) steps `LaneEnv` directly, for its per-seat bookkeeping and batched forward passes;
-see docs/rl/m4_3a_rl_infrastructure_report.md for that decision.
+see docs/archive/rl/m4_3a_rl_infrastructure_report.md for that decision.
 
 Agents are "A" and "B"; both act every turn (the Parallel API is simultaneous by construction). Each observation is
 {"observation": float32 vector in [0, 1], "action_mask": int8 mask}, the convention PettingZoo's tests and most
@@ -37,9 +37,9 @@ from typing import Optional
 
 import numpy as np
 
-from ..config import GameConfig
-from ..render import state_row
-from ..state import State
+from ..engine.config import GameConfig
+from ..engine.render import state_row
+from ..engine.state import State
 from .core import LaneEnv
 
 try:                                                  # optional dependencies

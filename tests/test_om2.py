@@ -8,7 +8,7 @@ import numpy as np
 import pytest
 
 from lanegame import GameConfig
-from lanegame.config import (B_HOLD, B_RECALL, B_TRADE, CHAMP_ABSENT, CHAMP_WARD, PRESSURE, SH, SP, W_SLOWPUSH,
+from lanegame.engine.config import (B_HOLD, B_RECALL, B_TRADE, CHAMP_ABSENT, CHAMP_WARD, PRESSURE, SH, SP, W_SLOWPUSH,
                              W_THIN, champ_act)
 from lanegame.env import LaneEnv
 from lanegame.env.observation import feature_names, obs_size
@@ -17,7 +17,7 @@ from lanegame.opponent import Belief, UniformType, loglik, prior_features
 
 BASE = GameConfig.m45_calibrated()
 OM = GameConfig.m45_calibrated(obs_last_action=True)
-START = os.path.join("results", "rl", "checkpoints", "m46c", "train", "ext", "baseline", "s0", "final.pt")
+START = os.path.join("runs", "checkpoints", "m46c", "train", "ext", "baseline", "s0", "final.pt")
 
 
 def _names(v):
@@ -126,7 +126,7 @@ class _Fixed:
         self.name, self.w = name, weights
 
     def probs(self, cfg, lane, m4, s, k):
-        from lanegame.champions import champion_legal_actions
+        from lanegame.engine.champions import champion_legal_actions
         legal = tuple(int(c) for c in champion_legal_actions(lane, m4, s, cfg))
         p = np.array([self.w.get(c, 1.0) for c in legal], float)
         return legal, p / p.sum()
@@ -153,8 +153,8 @@ def test_belief_is_exact_bayes_forgets_and_skips_uninformative_turns():
 def test_catch_alls_take_mixtures_and_random_play_but_not_a_single_style():
     """"mixed" (a different library style each turn) wins against a per-turn mixture of two styles, "unknown"
     (uniform) against random play, and the style itself against a consistent opponent."""
-    from lanegame.experiments.m45b import states as S
-    from lanegame.champions import champion_legal_actions
+    from experiments.m45b import states as S
+    from lanegame.engine.champions import champion_legal_actions
     from lanegame.opponent import LibraryMixtureType
     lane, m4, k = S.s0(BASE)
     legal = champion_legal_actions(lane, m4, 1, BASE)
@@ -177,7 +177,7 @@ def test_catch_alls_take_mixtures_and_random_play_but_not_a_single_style():
 @pytest.mark.skipif(not os.path.exists(START), reason="checkpoints absent")
 def test_precomputed_observation_likelihood_equals_rebuilt():
     pytest.importorskip("torch")
-    from lanegame.experiments.rl.om2 import common as C
+    from experiments.om2 import common as C
     types = C.belief_types()
     env = LaneEnv(OM, max_turns=60)
     obs = env.reset(seed=5)
@@ -195,8 +195,8 @@ def test_precomputed_observation_likelihood_equals_rebuilt():
 @pytest.mark.skipif(not os.path.exists(START), reason="checkpoints absent")
 def test_om2_collector_feeds_the_belief_to_the_treatment_and_the_prior_to_the_control():
     torch = pytest.importorskip("torch")
-    from lanegame.experiments.rl.om2 import common as C
-    from lanegame.experiments.rl.om2.collector import om_collector_cls
+    from experiments.om2 import common as C
+    from experiments.om2.collector import om_collector_cls
     from lanegame.rl import PPOConfig, SharedConfig
     from lanegame.rl.shared import MatchupSampler
     from lanegame.rl.selfplay import SnapshotPool
@@ -204,7 +204,7 @@ def test_om2_collector_feeds_the_belief_to_the_treatment_and_the_prior_to_the_co
     cfg = C.setup()
     ppo = PPOConfig.continuing(cfg, total_steps=1000, n_envs=3, segment_length=24, game_length=60, seed=4,
                                lane_cache=500, start_mix=0.0)
-    net = __import__("lanegame.experiments.rl.om2.train", fromlist=["x"]).initial_net(0)
+    net = __import__("experiments.om2.train", fromlist=["x"]).initial_net(0)
     out = {}
     for arm in C.ARMS:
         col = om_collector_cls(arm)(cfg, ppo, MatchupSampler(SnapshotPool(2, keep_first=False), 1.0), 9)
@@ -221,10 +221,10 @@ def test_reference_player_plays_like_the_widened_start_in_the_control():
     """The exploratory reference plays pi_s (90 inputs) on the evaluation's games; at initialization the control is
     pi_s widened with zero weights, so both must play the same game."""
     pytest.importorskip("torch")
-    from lanegame.experiments.m45b import engine as E
-    from lanegame.experiments.rl.om2 import common as C
-    from lanegame.experiments.rl.om2 import evaluate as EV
-    from lanegame.experiments.rl.om2.train import initial_net
+    from experiments.m45b import engine as E
+    from experiments.om2 import common as C
+    from experiments.om2 import evaluate as EV
+    from experiments.om2.train import initial_net
     cfg = C.setup()
     types = C.belief_types()
     ls = E.lane_cache(cfg)

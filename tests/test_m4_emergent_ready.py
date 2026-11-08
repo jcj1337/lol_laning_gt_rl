@@ -1,4 +1,4 @@
-"""M4.2d integration: the opt-in experimental preset `GameConfig.m4_emergent()` (docs/m4/m4_2/m4_emergent_parallel_report.md).
+"""M4.2d integration: the opt-in experimental preset `GameConfig.m4_emergent()` (docs/archive/m4/m4_2/m4_emergent_parallel_report.md).
 Joint correctness checks (mirror symmetry, masks, replay, accounting, conservation, invariants, observations, zero-sum)
 and pins of the joint feasibility findings."""
 
@@ -6,17 +6,19 @@ import numpy as np
 import pytest
 
 from lanegame import GameConfig
-from lanegame.champions import N_CHANCE, mirror_chance, swap_seats
-from lanegame.champions_m4 import check_invariants, resolve_turn_m4
-from lanegame.config import B_HOLD, B_YIELD, N_CHAMP_ACTIONS
+from lanegame.engine.champions import N_CHANCE, mirror_chance, swap_seats
+from lanegame.engine.champions_m4 import check_invariants, resolve_turn_m4
+from lanegame.engine.config import B_HOLD, B_YIELD, N_CHAMP_ACTIONS
 from lanegame.env import LaneEnv, UniformAgent, legal_set, play_episode
 from lanegame.env.agents_m4 import m4_suite
 from lanegame.env.observation_m4 import decode_m4, m4_obs_size, observe_m4
-from lanegame.experiments.m4 import positioning as po
-from lanegame.experiments.m4 import wave_readiness as wr
-from lanegame.experiments.m4.investment_readiness import READY
 
 from test_m4_env import soak
+
+# The bounded investment curve the M4.2d-D readiness study recommended (formerly
+# experiments.m4.investment_readiness.READY, retired with that study on 2026-11-08).
+READY = dict(invest_curve="saturating", invest_gain=1.5, invest_scale=16.0, invest_obs_encoding="compressed",
+             invest_obs_ref=64, invest_obs_gold_ref=8)
 
 EM = GameConfig.m4_emergent()
 
@@ -113,24 +115,3 @@ def test_one_turn_mirror_with_unequal_skills(seed):
 
 
 # ---------------------------------------------------------------------- pins of the joint findings
-def test_findings_wave_stacks_and_crashes_without_a_bounce():
-    st = wr.starts(EM)
-    rows = wr.play(EM, wr.Pusher(shove=False), wr.hold, 48, *st["pushed"])
-    s = wr.summarize(rows, EM)
-    assert max(r["t"].lane.state.ah for r in rows) >= 9 and [c["hp"] for c in s["crashes"][0]][:3] == [3, 9, 7]
-    assert not s["bounce"]
-    ctrl = wr.play(EM, wr.Pusher(8), wr.control, 48, *st["pushed"])          # the defender can prevent the crash
-    assert wr.summarize(ctrl, EM)["crashes"][0] == [] and max(r["t"].lane.state.ah for r in ctrl) <= EM.wave_hp
-
-
-def test_findings_forward_standoff_is_pinned_and_power_scales_the_threat():
-    lane, m4, k = wr.end_state(wr.play(EM, wr.hold, wr.hold, 9))
-    g = EM.gold_scale
-    line = lambda cfg, m: po.summarize(po.play(cfg, po.periodic_trade(4), po.fixed(B_YIELD), po.W, lane, m, k), cfg)
-    eq = line(EM, m4)
-    big = line(EM, m4.replace_side(0, items=50 * g))
-    old = line(GameConfig.m4_emergent(position_rule="m2"), m4)
-    assert eq["trades_connected"][0] == big["trades_connected"][0] == 6 and old["trades_connected"][0] == 0
-    assert big["expected_damage_taken"][1] > 1.5 * eq["expected_damage_taken"][1]
-    hold = po.summarize(po.play(EM, po.fixed(B_HOLD), po.respect, po.W, lane, m4, k), EM)
-    assert hold["trades_connected"] == [0, 0] and hold["farm_per_turn"][0] > hold["farm_per_turn"][1]

@@ -7,9 +7,9 @@ import os
 import numpy as np
 import pytest
 
-from lanegame.experiments.rl.m5 import analysis as AN
-from lanegame.experiments.rl.m5 import attackers as AT
-from lanegame.experiments.rl.m5 import common as C
+from experiments.m5 import analysis as AN
+from experiments.m5 import attackers as AT
+from experiments.m5 import common as C
 
 
 def _dump(path, obj):
@@ -38,7 +38,7 @@ def test_incomplete_attacker_runs_are_refused_then_preserved_and_replanned(tmp_p
 
 
 def test_the_attacker_evaluation_needs_a_passed_or_resolved_check_and_unchanged_files(tmp_path):
-    from lanegame.experiments.rl.m5 import health as HL
+    from experiments.m5 import health as HL
     out = str(tmp_path)
     with pytest.raises(SystemExit, match="no attacker check"):
         AT.require_ok(out=out)
@@ -73,7 +73,7 @@ def test_the_attacker_evaluation_needs_a_passed_or_resolved_check_and_unchanged_
 
 
 def test_history_drops_only_a_truncated_last_line(tmp_path):
-    from lanegame.experiments.rl.m5 import train as T
+    from experiments.m5 import train as T
     p = tmp_path / "history.jsonl"
     p.write_text('{"update": 1}\n{"update": 2}\n{"upd', encoding="utf-8")
     assert [e["update"] for e in T.history(str(tmp_path))] == [1, 2]
@@ -85,7 +85,7 @@ def test_history_drops_only_a_truncated_last_line(tmp_path):
 def _cell(path, lead, late=0.0, N=4, T=500, opp_type=None):
     """A games.cell_job record whose focal 0 leads by `lead` at turn 114 (paid on turn 0) and earns `late` more on
     turn 200 (the discounted readout only)."""
-    from lanegame.experiments.rl.m5 import games as G
+    from experiments.m5 import games as G
     os.makedirs(os.path.dirname(path), exist_ok=True)
     R = np.zeros((N, 2, T), dtype=np.float32)
     R[:, :, 0] = lead + np.linspace(-0.01, 0.01, 2 * N).reshape(N, 2)
@@ -156,7 +156,7 @@ def test_s6_completes_the_holm_family_with_fifteen_hypotheses():
 
 
 def test_the_trace_rule_picks_the_upper_median_game_by_the_focal_lead(tmp_path):
-    from lanegame.experiments.rl.m5 import traces as TR
+    from experiments.m5 import traces as TR
     R = np.zeros((3, 2, 150), dtype=np.float32)
     leads = np.array([[5.0, -1.0], [0.5, 2.0], [-3.0, 1.0]])            # sorted: -3, -1, 0.5, 1, 2, 5
     R[:, :, 0] = leads

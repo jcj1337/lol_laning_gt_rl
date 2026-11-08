@@ -17,16 +17,16 @@ import pytest
 torch = pytest.importorskip("torch")
 
 from lanegame import GameConfig                                                          # noqa: E402
-from lanegame.champions import champion_legal_actions                                    # noqa: E402
-from lanegame.config import CHAMP_ABSENT                                                  # noqa: E402
+from lanegame.engine.champions import champion_legal_actions                                    # noqa: E402
+from lanegame.engine.config import CHAMP_ABSENT                                                  # noqa: E402
 from lanegame.env import LaneEnv                                                         # noqa: E402
 from lanegame.env.agents import UniformAgent, episode_streams                            # noqa: E402
 from lanegame.rl import (MatchupSampler, MaskedCategorical, NetAgent, PolicyValueNet, PPOConfig,   # noqa: E402
                          SharedCollector, SharedConfig, SnapshotPool, checkpoint_info, ppo_update, save_checkpoint,
                          train_shared, weights_digest)
 from lanegame.rl.shared import rollout_batch                                             # noqa: E402
-from lanegame.experiments.rl.m45c import actions as AC                                   # noqa: E402
-from lanegame.experiments.rl.m45c import common as C                                     # noqa: E402
+from experiments.m45c import actions as AC                                   # noqa: E402
+from experiments.m45c import common as C                                     # noqa: E402
 
 CFG = GameConfig.m45_calibrated()
 ENV = LaneEnv(CFG)
@@ -168,7 +168,7 @@ def _strip(h):
 
 
 def test_rollout_stats_hook_reports_and_does_not_change_training():
-    from lanegame.experiments.rl.m45c.train import RolloutStats
+    from experiments.m45c.train import RolloutStats
     a = train_shared(CFG, ppo(total_steps=576), SharedConfig(current_fraction=1.0), verbose=False)
     b = train_shared(CFG, ppo(total_steps=576), SharedConfig(current_fraction=1.0), verbose=False,
                      rollout_stats=RolloutStats(ppo()))
@@ -209,7 +209,7 @@ def test_stop_at_is_an_exact_prefix_of_the_full_schedule(tmp_path):
 
 # ---------------------------------------------------------------------------------------------- checkpoints
 def test_m44_networks_are_refused_and_the_ood_adapter_is_explicit(tmp_path):
-    from lanegame.experiments.rl.m44.common import load_policy
+    from experiments.m44.common import load_policy
     aggro = GameConfig.m4_four_actions_econ_aggro()
     old = PolicyValueNet(LaneEnv(aggro).obs_size, 61, (32, 32))
     p = str(tmp_path / "m44.pt")
@@ -240,7 +240,7 @@ def test_initial_agent_is_train_shareds_initialization():
 
 # ---------------------------------------------------------------------------------------------- decoding and records
 def test_m45_action_categories():
-    from lanegame.experiments.rl.m44.actions import decode
+    from experiments.m44.actions import decode
     assert len(AC.EVER_LEGAL) == 27 and len(AC.NEVER_LEGAL) == 34
     assert AC.category(30) == "Ward" and decode(30).label() == "Last Hit + Hold + Vision"   # why Ward is separate
     assert AC.category(12) == "Recall" and AC.category(45) == "Absent"
@@ -251,7 +251,7 @@ def test_m45_action_categories():
 
 
 def test_record_ward_rule_and_ward_mass_are_exact():
-    from lanegame.experiments.rl.m44.actions import masses
+    from experiments.m44.actions import masses
     agent = NetAgent(net(5), "p")
     e = LaneEnv(CFG, max_turns=150)
     _, ss, ra, rb = episode_streams(np.random.SeedSequence(92_901))
@@ -276,7 +276,7 @@ def test_record_ward_rule_and_ward_mass_are_exact():
 
 
 def test_fixed_opponents_are_legal_from_both_seats():
-    from lanegame.experiments.rl.m45c.references import SUITE, reference
+    from experiments.m45c.references import SUITE, reference
     e = LaneEnv(CFG, max_turns=120)
     for name in SUITE:
         for seat in (0, 1):
@@ -294,7 +294,7 @@ def test_fixed_opponents_are_legal_from_both_seats():
 
 # ---------------------------------------------------------------------------------------------- specification
 def test_pilot_specification_and_seed_ranges():
-    from lanegame.experiments.rl.m45c import evaluate as EV
+    from experiments.m45c import evaluate as EV
     assert C.TRANSITIONS_PER_UPDATE == 4096 and C.PILOT_STOP % C.TRANSITIONS_PER_UPDATE == 0
     assert C.PILOT_STOP < C.PILOT_SCHEDULE and C.PILOT_STOP // C.TRANSITIONS_PER_UPDATE == 250
     assert C.PILOT_SEED not in C.CAMPAIGN_SEEDS
@@ -308,8 +308,3 @@ def test_pilot_specification_and_seed_ranges():
     spec = C.training_spec()
     assert spec["network"]["obs_size"] == 90 and spec["accounting"]["gradient_steps_per_update"] == 64
 
-
-def test_full_campaign_is_gated():
-    from lanegame.experiments.rl.m45c.__main__ import main
-    with pytest.raises(SystemExit, match="NOT part of the pilot"):
-        main(["train_full"])

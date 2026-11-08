@@ -20,8 +20,8 @@ import pytest
 sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
 from lanegame import GameConfig, LaneGame  # noqa: E402
-from lanegame.baselines import all_baselines, siege_baselines, v1_baselines  # noqa: E402
-from lanegame.solver import solve_equilibrium  # noqa: E402
+from lanegame.exact.baselines import all_baselines, siege_baselines, v1_baselines  # noqa: E402
+from lanegame.exact.solver import solve_equilibrium  # noqa: E402
 
 HORIZON = 16
 MODELS = {"v1": GameConfig.v1(horizon=HORIZON), "revised": GameConfig.v2(horizon=HORIZON),

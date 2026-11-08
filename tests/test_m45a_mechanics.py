@@ -1,4 +1,4 @@
-"""M4.5a unified positional mechanics (GameConfig.m45_unified(); docs/m4/m4_5/m4_5a_unified_mechanics_spec.md).
+"""M4.5a unified positional mechanics (GameConfig.m45_unified(); docs/archive/m4/m4_5/m4_5a_unified_mechanics_spec.md).
 
 Deterministic scenario tests of every new rule (the movement graph and the Vision node W, Ward placement and its
 interruption, per-tick minion retaliation and positional aggro with exclusive targeting, minion damage scaling, the
@@ -13,18 +13,18 @@ import json
 import numpy as np
 import pytest
 
-from lanegame.champions import (N_CHANCE, U_TRADE_HIT, champion_legal_actions, champion_gank_probability,
+from lanegame.engine.champions import (N_CHANCE, U_TRADE_HIT, champion_legal_actions, champion_gank_probability,
                                 in_contact, mirror_chance)
-from lanegame.champions_m4 import (FARM, M4State, check_invariants, collection_units, context, initial_m4,
+from lanegame.engine.champions_m4 import (FARM, M4State, check_invariants, collection_units, context, initial_m4,
                                    resolve_turn_m4)
-from lanegame.config import (B_HOLD, B_SAFE, B_TRADE, B_YIELD, CHAMP_ABSENT, CHAMP_WARD, F, PRESSURE, SH, SP,
+from lanegame.engine.config import (B_HOLD, B_SAFE, B_TRADE, B_YIELD, CHAMP_ABSENT, CHAMP_WARD, F, PRESSURE, SH, SP,
                              VISION, GameConfig, champ_act)
 from lanegame.env import LaneEnv
 from lanegame.env.observation import feature_names
 from lanegame.env.observation_m4 import decode_m4
-from lanegame.mechanics import step_turn, total_hp
-from lanegame.positional import WARD, dist, in_contact as graph_contact, minion_damage_centi, move
-from lanegame.state import State
+from lanegame.engine.mechanics import step_turn, total_hp
+from lanegame.engine.positional import WARD, dist, in_contact as graph_contact, minion_damage_centi, move
+from lanegame.engine.state import State
 
 CFG = GameConfig.m45_unified()
 T = CFG.tower
@@ -526,7 +526,7 @@ def test_pettingzoo_parallel_api_on_the_m45_preset():
 
 def test_checkpoint_guard_refuses_88_input_networks_and_names_the_preset(tmp_path):
     torch = pytest.importorskip("torch")
-    from lanegame.experiments.rl.m44.common import load_policy, preset_name
+    from experiments.m44.common import load_policy, preset_name
     from lanegame.rl import PolicyValueNet, save_checkpoint
     assert preset_name(CFG) == "m45_unified"
     old = GameConfig.m4_four_actions_econ_aggro()
@@ -561,30 +561,3 @@ def test_historical_presets_are_pinned(name, digest):
 
 
 # ---------------------------------------------------------------------------------------------- viewer and demonstrations
-def test_viewer_helpers_and_w_rendering():
-    from lanegame.viewer import render
-    from lanegame.viewer import session as ss
-    assert ss.cell_text(WARD) == "W" and ss.cell_text(None) == "W" and ss.cell_text(-1) == "-1"
-    assert ss.reach_text((-1, 1)) == "-1..+1" and ss.reach_text(-10 ** 6) == "none" and ss.reach_text(2) == "<= +2"
-    rec = ss.play(ss.Setup("m45_unified", "neutral", "equal", 0), prefix=[(CHAMP_WARD, TRADE)], turns=0)
-    view = ss.frame_view(rec, 0, rec.cfg.ticks_per_turn + 1)
-    assert view["ward_node"] and view["champions"]["A"]["at_ward"] and view["champions"]["A"]["pos_global"] is None
-    assert view["ward"]["A"] in ("placed", "interrupted") and view["minion_fire"] is not None
-    render.lane_figure(view, rec.cfg)
-    assert any("ward" in e for e in ss.turn_events(rec.turns[0].info, rec.cfg))
-    assert ss.action_name(rec.cfg, CHAMP_WARD) == "Ward (Vision at W)"
-
-
-@pytest.mark.parametrize("name", ["m45a_E2_ward_interrupted", "m45a_C1_bigwave_level2"])
-def test_demonstrations_show_their_event_and_replay_exactly(name, tmp_path):
-    from lanegame.experiments.m45a import demos
-    from lanegame.experiments.rl.m44.trace import verify
-    demo = next(d for d in demos.DEMOS if d.name == name)
-    r = demos.export(demo, str(tmp_path))
-    v = verify(r["path"])
-    assert v["actions_equal"] and v["payoff_equal"]
-    s = r["summary"]
-    if name == "m45a_E2_ward_interrupted":
-        assert s["A"]["wards_interrupted"] >= 1
-    else:
-        assert s["A"]["retaliation_ticks_taken"] >= 1 and s["A"]["minion_centi_taken"] > 0

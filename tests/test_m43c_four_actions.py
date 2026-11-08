@@ -1,24 +1,24 @@
-"""M4.3c four-action wave management (docs/m4/m4_3/m4_3c_four_action_wave_redesign.md): the EXPERIMENTAL preset
+"""M4.3c four-action wave management (docs/archive/m4/m4_3/m4_3c_four_action_wave_redesign.md): the EXPERIMENTAL preset
 GameConfig.m4_four_actions() (Last Hit / Thin / Slow Push / Shove; the report calls slot SH Clear), the 61-code action
 encoding and its compatibility with every historical code, the window-strength target (mechanics.window_strength /
 strength_need), the budgets, the global correctness guarantees on the new preset, the RL interfaces, and pins of the
-report's findings. The `CL` names below are the redesign study's own (lanegame.experiments.m43c.four_actions)."""
+report's findings. The `CL` names below are the redesign study's own (experiments.m43c.four_actions)."""
 
 import numpy as np
 import pytest
 
 from lanegame import GameConfig
-from lanegame.champions import N_CHANCE, champion_legal_actions, mirror_chance, swap_seats
-from lanegame.champions_m4 import context, initial_m4, resolve_turn_m4
-from lanegame.config import (B_HOLD, B_RECALL, B_SAFE, B_TRADE, CHAMP_ABSENT, CHAMP_SLOWPUSH_BASE, F, N_CHAMP_ACTIONS,
+from lanegame.engine.champions import N_CHANCE, champion_legal_actions, mirror_chance, swap_seats
+from lanegame.engine.champions_m4 import context, initial_m4, resolve_turn_m4
+from lanegame.engine.config import (B_HOLD, B_RECALL, B_SAFE, B_TRADE, CHAMP_ABSENT, CHAMP_SLOWPUSH_BASE, F, N_CHAMP_ACTIONS,
                              N_CHAMP_ACTIONS_FOUR, NATURAL_WAVE_SHORT, CHAMP_ACTION_SHORT, PRESSURE, SH, SP, VISION,
                              W_CLEAR, W_HOLD, W_SLOWPUSH, W_THIN, WAVE_SHORT, champ_act, champ_behavior,
                              champ_objective, champ_wave)
 from lanegame.env import LaneEnv, UniformAgent
-from lanegame.experiments.m43c import four_actions as fa
-from lanegame.mechanics import (STRENGTH_MARGIN, initial_state, start_packets, strength_need, total_hp, wave_actions,
+from experiments.m43c import four_actions as fa
+from lanegame.engine.mechanics import (STRENGTH_MARGIN, initial_state, start_packets, strength_need, total_hp, wave_actions,
                                 window_strength)
-from lanegame.state import State
+from lanegame.engine.state import State
 
 FOUR = GameConfig.m4_four_actions()
 LASTHIT = GameConfig.m4_lasthit()
@@ -32,7 +32,7 @@ def _lane(ax, ah, bx, bh, ar=(), br=(), asg=0, bsg=0):
 
 @pytest.fixture(scope="module")
 def starts():
-    from lanegame.experiments.m4.zoning_natural import starts as make
+    from experiments.m4.zoning_natural import starts as make
     return make(GameConfig.m4_lasthit())
 
 

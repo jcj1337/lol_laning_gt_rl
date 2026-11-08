@@ -20,7 +20,7 @@ from typing import Dict, Optional, Sequence, Tuple
 
 import numpy as np
 
-from ..config import GameConfig
+from ..engine.config import GameConfig
 from ..env import LaneEnv, run_episodes
 from .train import OpponentSampler, train_ppo
 from .ppo import PPOConfig

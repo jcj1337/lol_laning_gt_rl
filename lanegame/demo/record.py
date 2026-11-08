@@ -1,5 +1,5 @@
 """Recordings of the M6 demo: the versioned app format, state digests and deterministic replay
-(docs/m6/m6_plan.md §3 rules 5 and 8, §4.1 `Recording`; the contract is docs/m6/m6a_technical_report.md §4).
+(docs/archive/m6/m6_plan.md §3 rules 5 and 8, §4.1 `Recording`; the contract is docs/archive/m6/m6a_technical_report.md §4).
 
 A recording is a pure function of (configuration, chance seed, both seats' codes). It holds:
 
@@ -26,7 +26,7 @@ import hashlib
 import json
 from typing import Dict, List, Optional, Sequence, Tuple
 
-from ..config import GameConfig
+from ..engine.config import GameConfig
 
 RECORD_SCHEMA = "lanegame.demo_recording"
 RECORD_VERSION = 1

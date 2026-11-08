@@ -1,11 +1,11 @@
 """S3b required Freeze-gate cases (plan §7 S3b: F+, SHx, F0) on fixed scenarios with fixed chance vectors.
 
 Fixed scenarios: the design §6.4 parked starts (the prototype's harness) and the deterministic reachable scenario set of
-lanegame.experiments.m4.freeze_gate (witnessed Freeze-legal states). Fixed chance vectors: no chance event (every
+experiments.m4.freeze_gate (witnessed Freeze-legal states). Fixed chance vectors: no chance event (every
 uniform 1.0), as in the design prototype. Policies: the S3b gate defenders and attackers (lanegame.env.agents_m4).
 
 Two of the plan's required statements do not hold on the implemented environment. They are kept as STRICT expected
-failures (they would flag if they started to hold) and are reported in docs/m4/m4_2/m4_implementation_report.md:
+failures (they would flag if they started to hold) and are reported in docs/archive/m4/m4_2/m4_implementation_report.md:
   * SHx "the freeze breaks within 6 turns" against a presser with a 3-5 HP front: measured 6-9 turns (the reach-loss
     of a Shove + Hold breaker on the turns its probe predicts a crash, see tests/test_m4_integration.py);
   * F0 "a 6-8 HP front against the stacker: Freeze's return is below Slow Push's" on the parked starts: Freeze is
@@ -17,12 +17,12 @@ import numpy as np
 import pytest
 
 from lanegame import GameConfig
-from lanegame.champions_m4 import M4State
+from lanegame.engine.champions_m4 import M4State
 from lanegame.env import LaneEnv
 from lanegame.env.agents_m4 import gate_attackers, gate_defenders
-from lanegame.scenarios_m4 import DESIGN_HOLD_TABLE, parked_state
-from lanegame.config import SP
-from lanegame.state import State
+from m4_scenarios import DESIGN_HOLD_TABLE, parked_state
+from lanegame.engine.config import SP
+from lanegame.engine.state import State
 
 M4 = GameConfig.m4()
 H = 120
@@ -107,17 +107,3 @@ def test_f0_stacker_parked_starts_freeze_below_slow_push():
         for ph in range(4):
             assert parked(e, ph, "freeze", "stacker")[0] < parked(e, ph, "slowpush", "stacker")[0]
 
-
-def test_f0_stacker_reachable_scenarios_freeze_is_worse_in_some():
-    from lanegame.experiments.m4.freeze_gate import find_scenarios
-    sel = [s for s in find_scenarios(M4) if -s["lane"][4] == -1 and 6 <= s["lane"][5] <= 8]
-    assert len(sel) >= 20
-    diffs = []
-    for s in sel:
-        lane, m4 = State.from_list(s["lane"]), M4State.from_list(s["champ"])
-        f = play(lane, m4, s["phase"], "freeze", "stacker")[0]
-        p = play(lane, m4, s["phase"], "slowpush", "stacker")[0]
-        diffs.append(f - p)
-    d = np.array(diffs)
-    assert np.sum(d < -0.05) >= 1                         # Freeze not beneficial in some reachable scenarios
-    assert np.sum(d > 0.05) >= 1                          # ... and beneficial in others: no dominance either way

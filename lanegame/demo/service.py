@@ -1,4 +1,4 @@
-"""The JSON service over the session core (docs/m6/m6a_technical_report.md §4.1; the M6b API in `api.py` is a thin
+"""The JSON service over the session core (docs/archive/m6/m6a_technical_report.md §4.1; the M6b API in `api.py` is a thin
 layer over it, and `worker.py` runs a copy of it in the simulation process).
 
 Every method takes and returns JSON-ready values, and every refusal is a `ServiceError` with an HTTP status. One lock
@@ -38,7 +38,7 @@ BELIEF_MODES = S.BELIEF_MODES
 MAX_SIM_TURNS = S.TURN_CAP
 IDLE_SECONDS = 30 * 60                  # plan §8.2 (proposed: 30 minutes)
 MAX_SESSIONS = 256
-TRACES = os.path.join("results", "m5", "traces")
+TRACES = os.path.join("artifacts", "m5", "traces")
 RESEARCH_REPLAYS = OrderedDict([
     ("h2h_om_s0_vs_sp_s0", "Pure self-play (A) against opponent modelling (B): the seed-0 head to head"),
     ("om_s0_vs_g_shove", "The scripted g_shove (A) against opponent modelling (B)"),

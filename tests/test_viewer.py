@@ -5,16 +5,16 @@ import random
 
 import pytest
 
-from lanegame.champions import CHAMP_ABSENT
-from lanegame.champions_m4 import context
-from lanegame.config import B_HOLD, W_CLEAR, W_HOLD, W_THIN, champ_act
+from lanegame.engine.champions import CHAMP_ABSENT
+from lanegame.engine.champions_m4 import context
+from lanegame.engine.config import B_HOLD, W_CLEAR, W_HOLD, W_THIN, champ_act
 from lanegame.env import LaneEnv
-from lanegame.experiments.m43c import strategies as st
-from lanegame.experiments.m45a import scenarios as m45s
-from lanegame.experiments.m4 import zoning_natural as zn
-from lanegame.mechanics import step_turn
-from lanegame.positional import MinionTarget
-from lanegame.viewer import policies as pl
+from experiments.m43c import strategies as st
+from experiments.m45a import scenarios as m45s
+from experiments.m4 import zoning_natural as zn
+from lanegame.engine.mechanics import step_turn
+from lanegame.engine.positional import MinionTarget
+from experiments.m43b import viewer_policies as pl
 from lanegame.viewer import session as ss
 
 A, B = 0, 1
@@ -237,30 +237,9 @@ def test_frame_views_follow_the_engine():
             assert v["towers"]["B"]["damage"] == rec.champs[j].a.tower_dmg
 
 
-def test_render_builds_every_frame():
-    pytest.importorskip("plotly")
-    from lanegame.viewer import render
-    rec = matchup("6. Crash and Recall")
-    for i in range(rec.n + 1):
-        for f in range(ss.n_frames(rec, i)):
-            v = ss.frame_view(rec, i, f)
-            fig = render.lane_figure(v, rec.cfg)
-            hover = next(t for t in fig.data if t.name == "packets")
-            # one hover point per tower, per leading packet, per reinforcement cell and per crashed mass
-            cells = {n: len({x for x, _, fr in v["packets"][n] if not fr}) + sum(1 for *_, fr in v["packets"][n] if fr)
-                     + (1 if v["siege"][n][1] else 0) for n in ss.SIDES}
-            assert len(hover.x) == 2 + cells["A"] + cells["B"]
-            champs = next(t for t in fig.data if t.name == "champions")
-            for n, s in (("A", 0), ("B", 1)):
-                d = v["champions"][n]
-                if not d["absent"]:
-                    assert abs(champs.x[s] - d["pos_global"]) <= 0.25
-    render.timeline_figure(ss.timeline(rec), 0)
-
-
 # ---------------------------------------------------------------------- M4.3c stabilization: the four-action model
 def test_four_action_matchups_play_all_four_wave_actions_with_shove_labels():
-    from lanegame.config import W_SHOVE, W_SLOWPUSH
+    from lanegame.engine.config import W_SHOVE, W_SLOWPUSH
     seen, labels = set(), set()
     for name in FOUR:
         rec = matchup(name)
@@ -280,7 +259,7 @@ def test_four_action_matchups_play_all_four_wave_actions_with_shove_labels():
 def test_wave_panel_reports_calculated_and_applied_damage(name):
     """The panel's budget is the engine's (info["wave_budget"], = the four-action rule on the start-of-turn lane); the
     applied damage is the tick trace's and the lane events', never above the budget."""
-    from lanegame.mechanics import start_packets, strength_need
+    from lanegame.engine.mechanics import start_packets, strength_need
     rec = matchup(name)
     cfg, ctx = rec.cfg, context(rec.cfg)
     for i, t in enumerate(rec.turns):
@@ -321,7 +300,7 @@ def test_derived_scenarios_and_the_b_ahead_gap():
 
 
 def test_manual_play_accepts_every_four_action_wave_and_rejects_slow_push_elsewhere():
-    from lanegame.config import W_SHOVE, W_SLOWPUSH
+    from lanegame.engine.config import W_SHOVE, W_SLOWPUSH
     setup = ss.Setup("m4_four_actions", "neutral")
     codes = [champ_act(w, B_HOLD) for w in (W_HOLD, W_THIN, W_SLOWPUSH, W_SHOVE)]
     rec = ss.play(setup, prefix=[(c, champ_act(W_HOLD, B_HOLD)) for c in codes])
@@ -340,18 +319,3 @@ def test_scheduled_strategy_replays_from_its_actions():
     waves = [t.info["waves"][A] for t in rec.turns if t.info["actions"][A] != CHAMP_ABSENT]
     assert st.SL in waves[:10] and st.SH in waves[10:]
 
-
-def test_render_four_action_frames_label_the_wave_damage():
-    pytest.importorskip("plotly")
-    from lanegame.viewer import render
-    rec = matchup("4A-1. Slow Push -> Last Hit -> Shove")
-    for i in range(rec.n + 1):
-        for f in range(ss.n_frames(rec, i)):
-            v = ss.frame_view(rec, i, f)
-            fig = render.lane_figure(v, rec.cfg)
-            texts = [a.text for a in fig.layout.annotations]
-            for n in ss.SIDES:
-                if not v["champions"][n]["absent"]:
-                    assert any(x.startswith(f"L{v['champions'][n]['level']}") for x in texts)
-            if i < rec.n and f > 0 and v["wave"]["A"]["dealt"] is not None and not rec.turns[i].info["away"][A]:
-                assert any(f"{v['wave']['A']['dealt']}/{v['wave']['A']['budget']}" in x for x in texts)

@@ -1,5 +1,5 @@
 """Shared-policy self-play with a current / historical opponent mixture (OpenAI Five-inspired; see
-docs/rl/openai_five_adaptation.md for what is taken from Berner et al. 2019 and what is our own choice).
+docs/archive/rl/openai_five_adaptation.md for what is taken from Berner et al. 2019 and what is our own choice).
 
 One trainable network pi_theta(a | o) plays the game. At every episode reset, independently:
 
@@ -19,7 +19,7 @@ so a rollout never sees the pool change.
 Rewards. Each seat's reward is its own zero-sum game reward, exactly `StepResult.rewards[seat]` (r to A, -r to
 B), times `reward_scale`; nothing is negated a second time and nothing is added. In a current-policy game the
 two seats' returns cancel by construction, so training returns of those games say nothing about progress:
-progress is measured against fixed references (lanegame.experiments.rl.openai_five).
+progress is measured against fixed references (experiments.openai_five).
 
 PPO. A rollout is collected with ONE fixed parameter vector: the network is not updated during collection, and
 each recorded log-probability is that of the action actually sampled under it. Every environment has two
@@ -53,7 +53,7 @@ Opt-in (M4.5c; both default to None, which is the behaviour above, bit for bit):
     final.pt.
   * `net` may be a `SeparateCriticNet` (M4.6f): collection, GAE and `ppo_update` are unchanged (one Adam over all
     parameters, one global gradient-norm clip); only the critic's representation is its own. run.json records the class.
-  * Collector hooks (OM2, docs/opponent_modelling/om2_design.md §5): `SharedCollector.extra_obs` (default 0) extra
+  * Collector hooks (OM2, docs/archive/opponent_modelling/om2_design.md §5): `SharedCollector.extra_obs` (default 0) extra
     network inputs per learner seat, `augment(i, seat, vector)` (default: the vector itself) building every network
     input of a learner seat (rollout, truncation bootstrap, final bootstrap), and `observe_step(i, actions, result)`
     (default: nothing) called right after each environment step, while `self.obs[i]` still holds the observations the
@@ -76,7 +76,7 @@ from typing import Callable, Dict, List, Optional, Tuple
 import numpy as np
 import torch
 
-from ..config import GameConfig
+from ..engine.config import GameConfig
 from ..env import LaneEnv
 from ..env.agents import episode_streams
 from ..env.trace import EpisodeLog

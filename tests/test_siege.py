@@ -7,14 +7,14 @@ import pytest
 
 from lanegame import (CONTEST, NONE, PRESSURE, SAFE, SH, SH_C, SH_S, SP, SP_C, SP_S, VISION, GameConfig, LaneGame,
                       act, base_of, objective_of, posture_of, wave_of)
-from lanegame.baselines import all_baselines, siege_baselines, stack_builder
-from lanegame.best_response import exploitability
-from lanegame.game import collection_efficiency, gank_probability, turn_farm
-from lanegame.mechanics import initial_state, legal_actions, step_turn, thinning_target, total_hp
-from lanegame.reachability import (ALL_EVENTS, SIEGE_EVENTS, explore_events, find_vision_strategy, replay,
+from lanegame.exact.baselines import all_baselines, siege_baselines, stack_builder
+from lanegame.exact.best_response import exploitability
+from lanegame.engine.game import collection_efficiency, gank_probability, turn_farm
+from lanegame.engine.mechanics import initial_state, legal_actions, step_turn, thinning_target, total_hp
+from lanegame.exact.reachability import (ALL_EVENTS, SIEGE_EVENTS, explore_events, find_vision_strategy, replay,
                                    strategy_complete, strategy_trace)
-from lanegame.solver import solve_equilibrium
-from lanegame.state import State
+from lanegame.exact.solver import solve_equilibrium
+from lanegame.engine.state import State
 
 from conftest import all_transitions
 
@@ -396,7 +396,7 @@ def test_vision_shove_crash_pressure_strategy_is_reachable(vision_strategy):
     # the strategy predicate holds on a direct replay of the plan's last turn
     s = g.initial_state()
     flag = 0
-    from lanegame.reachability import _next_flag
+    from lanegame.exact.reachability import _next_flag
     for k, (a, b) in enumerate(w.plan[:-1]):
         r = step_turn(s, k, a, b, cfg)
         flag = _next_flag(flag, s, a, r, 0)

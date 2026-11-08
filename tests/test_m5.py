@@ -7,12 +7,12 @@ import os
 import numpy as np
 import pytest
 
-from lanegame.experiments.rl.m5 import analysis as AN
-from lanegame.experiments.rl.m5 import common as C
+from experiments.m5 import analysis as AN
+from experiments.m5 import common as C
 
-START0 = os.path.join("results", "rl", "checkpoints", "m46c", "train", "ext", "baseline", "s0", "final.pt")
-OM2_T0 = os.path.join("results", "rl", "checkpoints", "om2", "train", "main", "treatment", "s0", "final.pt")
-ARCHIVE = os.path.join("results", "rl", "checkpoints", "m46c", "archive", "train_archive.json.gz")
+START0 = os.path.join("runs", "checkpoints", "m46c", "train", "ext", "baseline", "s0", "final.pt")
+OM2_T0 = os.path.join("runs", "checkpoints", "om2", "train", "main", "treatment", "s0", "final.pt")
+ARCHIVE = os.path.join("runs", "checkpoints", "m46c", "archive", "train_archive.json.gz")
 need_start = pytest.mark.skipif(not (os.path.exists(START0) and os.path.exists(ARCHIVE)),
                                 reason="needs the git-ignored ext/baseline checkpoints and the M4.6c archive")
 need_om2 = pytest.mark.skipif(not os.path.exists(OM2_T0), reason="needs the git-ignored OM2 checkpoints")
@@ -20,7 +20,7 @@ need_om2 = pytest.mark.skipif(not os.path.exists(OM2_T0), reason="needs the git-
 
 # ---------------------------------------------------------------------------------------------- seeds and specs
 def test_seed_block_is_disjoint_from_every_other_study():
-    from lanegame.experiments.rl.m5.readiness import scan_roots
+    from experiments.m5.readiness import scan_roots
     lo, hi = C.SEED_BLOCK
     assert all(lo <= v <= hi for v in C.ROOTS.values())
     assert len(set(C.ROOTS.values())) == len(C.ROOTS)
@@ -43,7 +43,7 @@ def test_policy_specifications():
 
 
 def test_campaign_stages_refuse_without_their_flag():
-    from lanegame.experiments.rl.m5.__main__ import main
+    from experiments.m5.__main__ import main
     for st in ("train", "families", "battery", "attackers"):
         with pytest.raises(SystemExit, match="needs --confirm-m5"):
             main([st])
@@ -55,7 +55,7 @@ class _Counting:
         self.calls = []
 
     def decide(self, cfg, lane, m4, s, i):
-        from lanegame.champions import champion_legal_actions
+        from lanegame.engine.champions import champion_legal_actions
         return int(champion_legal_actions(lane, m4, s, cfg)[0]), ""
 
     def observe_turn(self, cfg, lane, m4, k, codes):
@@ -63,8 +63,8 @@ class _Counting:
 
 
 def test_observe_turn_reaches_each_stateful_policy_once_and_ignores_the_rest():
-    from lanegame.experiments.m45b import engine as E
-    from lanegame.experiments.m45b import states as S
+    from experiments.m45b import engine as E
+    from experiments.m45b import states as S
     cfg = C.arm_cfg("sp")
     own = _Counting()
     plan = E.Then("p", E.Fixed("f", 0, own), own, 3)          # own is reachable twice: told once per turn
@@ -77,11 +77,11 @@ def test_observe_turn_reaches_each_stateful_policy_once_and_ignores_the_rest():
 
 def test_stateless_rollouts_are_unchanged_by_the_hook():
     """The hook adds nothing for stateless policies: two plays of scripted strategies agree with a manual loop."""
-    from lanegame.champions import N_CHANCE
-    from lanegame.champions_m4 import context, resolve_turn_m4
-    from lanegame.experiments.m45b import engine as E
-    from lanegame.experiments.m45b import states as S
-    from lanegame.experiments.m45b.strategies import get
+    from lanegame.engine.champions import N_CHANCE
+    from lanegame.engine.champions_m4 import context, resolve_turn_m4
+    from experiments.m45b import engine as E
+    from experiments.m45b import states as S
+    from experiments.m45b.strategies import get
     cfg = C.arm_cfg("sp")
     pa, pb = get("g_shove"), get("g_bully")
     out = E.play(cfg, S.s0(cfg), pa, pb, seed=11, turns=40, keep_rows=True)
@@ -99,7 +99,7 @@ def test_stateless_rollouts_are_unchanged_by_the_hook():
 
 def test_mirror_info_swaps_the_seats_records():
     info = {0: {"lp": [0.0], "last": [3, 7]}, 1: {"lp": [1.0], "last": [3, 7]}}
-    m = __import__("lanegame.experiments.rl.m5.players", fromlist=["mirror_info"]).mirror_info(info)
+    m = __import__("experiments.m5.players", fromlist=["mirror_info"]).mirror_info(info)
     assert m[1]["lp"] == [0.0] and m[0]["lp"] == [1.0] and m[0]["last"] == [7, 3] and m[1]["last"] == [7, 3]
 
 
@@ -107,9 +107,9 @@ def test_mirror_info_swaps_the_seats_records():
 @need_start
 def test_widened_start_computes_the_start_exactly_in_batches():
     import torch
-    from lanegame.experiments.rl.m5.readiness import probe_states
-    from lanegame.experiments.rl.m5.train import initial_net
-    from lanegame.experiments.rl.m46c import common as C46
+    from experiments.m5.readiness import probe_states
+    from experiments.m5.train import initial_net
+    from experiments.m46c import common as C46
     X = np.stack([v for v, _ in probe_states(n_games=1, turns=40)]).astype(np.float32)
     src, w = C46.net_of("ext/baseline:0"), initial_net("om", 0)
     extra = np.random.default_rng(0).dirichlet(np.ones(13), len(X)).astype(np.float32)
@@ -120,7 +120,7 @@ def test_widened_start_computes_the_start_exactly_in_batches():
 
 @need_start
 def test_game_starts_are_common_to_both_arms():
-    from lanegame.experiments.rl.m5.readiness import start_schedule
+    from experiments.m5.readiness import start_schedule
     a, b = start_schedule("om", 40), start_schedule("sp", 40)
     assert a == b and any(x.startswith("archive") for x in a) and any(x.startswith("initial") for x in a)
 
@@ -129,7 +129,7 @@ def test_game_starts_are_common_to_both_arms():
 def test_training_inputs_equal_the_evaluation_policys_inputs():
     """Every om training input of one rollout (s0 and archive games, game starts, previous actions, beliefs) and every
     truncation bootstrap is rebuilt by players.OMPolicy from the start-of-turn states and past codes only."""
-    from lanegame.experiments.rl.m5.readiness import BELIEF_TOL, probe_inputs
+    from experiments.m5.readiness import BELIEF_TOL, probe_inputs
     om = probe_inputs("om")
     assert om["width"] == 116 and om["prior_at_every_game_start"] and om["belief_moves_later"]
     assert om["inputs_reconstructed"] > 1000 and om["bootstraps_reconstructed"] > 0 and om["mismatches"] == 0
@@ -142,10 +142,10 @@ def test_training_inputs_equal_the_evaluation_policys_inputs():
 @need_start
 @need_om2
 def test_m5_games_reproduce_the_om2_evaluation_games():
-    from lanegame.experiments.m45b import engine as E
-    from lanegame.experiments.rl.m5 import games as G
-    from lanegame.experiments.rl.om2 import common as O2
-    from lanegame.experiments.rl.om2 import evaluate as OE
+    from experiments.m45b import engine as E
+    from experiments.m5 import games as G
+    from experiments.om2 import common as O2
+    from experiments.om2 import evaluate as OE
     cfg = O2.setup()
     types = O2.belief_types()
     net = O2.om_net(OM2_T0)
@@ -158,9 +158,9 @@ def test_m5_games_reproduce_the_om2_evaluation_games():
 
 @need_om2
 def test_om_policy_decide_is_pure_and_observe_turn_moves_the_input():
-    from lanegame.experiments.m45b import states as S
-    from lanegame.experiments.m45b.strategies import get
-    from lanegame.experiments.rl.m5 import players as PL
+    from experiments.m45b import states as S
+    from experiments.m45b.strategies import get
+    from experiments.m5 import players as PL
     cfg = C.arm_cfg("sp")
     pol = PL.crn_policy("om2:treatment:0", 0, 3, 0, 10)
     assert isinstance(pol, PL.OMPolicy) and pol.has_belief
@@ -177,7 +177,7 @@ def test_om_policy_decide_is_pure_and_observe_turn_moves_the_input():
 
 
 def test_belief_modes():
-    from lanegame.experiments.rl.m5 import players as PL
+    from experiments.m5 import players as PL
     from lanegame.opponent import Belief, prior_features
     b = Belief(13, 0.97)
     b.update(np.log(np.linspace(0.1, 1.0, 13)))
@@ -188,20 +188,20 @@ def test_belief_modes():
 
 
 # ---------------------------------------------------------------------------------------------- cells and the battery
-CELL_REF = os.path.join("results", "rl", "checkpoints", "m46c", "eval", "battery_ext", "baseline", "bat_baseline_s0",
+CELL_REF = os.path.join("runs", "checkpoints", "m46c", "eval", "battery_ext", "baseline", "bat_baseline_s0",
                         "0.json.gz")
 
 
 @need_start
 @pytest.mark.skipif(not os.path.exists(CELL_REF), reason="needs the git-ignored M4.6c weaker-side records")
 def test_cells_paired_job_reproduces_an_m46c_record():
-    from lanegame.experiments.rl.m5.readiness import reproduce_weak
+    from experiments.m5.readiness import reproduce_weak
     out = reproduce_weak(K=1)
     assert out and all(v["exact"] for v in out.values())
 
 
 def test_family_jobs_have_unique_paths_and_seeds():
-    from lanegame.experiments.rl.m5 import evaluate as EV
+    from experiments.m5 import evaluate as EV
     js = EV.family_jobs() + EV.monitor_jobs()
     assert len({j["path"] for j in js}) == len(js)
     fam = [j for j in EV.family_jobs()]
@@ -263,7 +263,7 @@ def test_replication_rule():
 # ---------------------------------------------------------------------------------------------- training bookkeeping
 def test_shares_and_prefix_check(tmp_path):
     import json
-    from lanegame.experiments.rl.m5 import train as T
+    from experiments.m5 import train as T
     h = [{"agent_transitions": 3000, "rollout_transitions_historical": 1000, "games_current": 2, "games_historical": 2,
           "rollout_env_turns": 2048},
          {"agent_transitions": 6100, "rollout_transitions_historical": 1100, "games_current": 1, "games_historical": 1,
@@ -280,6 +280,6 @@ def test_shares_and_prefix_check(tmp_path):
 
 
 def test_schedule_wall():
-    from lanegame.experiments.rl.m5.bench import schedule_wall
+    from experiments.m5.bench import schedule_wall
     assert schedule_wall([6, 6, 6, 3, 3, 3], 3) == 9
     assert schedule_wall([5] * 12, 6) == 10

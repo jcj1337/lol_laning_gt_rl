@@ -4,12 +4,12 @@ import numpy as np
 import pytest
 
 from lanegame import GameConfig, LaneGame
-from lanegame.best_response import best_response_value, evaluate, exploitability
-from lanegame.game import apply_choice
-from lanegame.matrix_game import support_enumeration
-from lanegame.policy import ScriptedPolicy
-from lanegame.solver import solve_equilibrium
-from lanegame.state import State
+from lanegame.exact.best_response import best_response_value, evaluate, exploitability
+from lanegame.engine.game import apply_choice
+from lanegame.exact.matrix_game import support_enumeration
+from lanegame.exact.policy import ScriptedPolicy
+from lanegame.exact.solver import solve_equilibrium
+from lanegame.engine.state import State
 
 
 def tree_minimax(game, s, k):

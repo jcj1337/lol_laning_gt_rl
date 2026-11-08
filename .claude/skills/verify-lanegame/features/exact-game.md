@@ -26,7 +26,7 @@ Carlo play with the exact expected payoff, and list which events are reachable. 
 
 Preconditions:
 
-- A run exists (`RUN`) and `$VL doctor --run "$RUN"` exits 0. No viewer or browser is needed.
+- A run exists (`RUN`) and `$VL doctor --run "$RUN"` exits 0. No demo or browser is needed.
 
 - **Solve siege.** Run `$VL cli --run "$RUN" --label exact-solve-siege -- solve --horizon 8 --out solve_siege_K8.json --no-q`.
   Exit 0. Stdout starts `[siege] horizon 8: V*(s0) = 0; 189 decision nodes, 16 mixed; max certified gap` followed by a
@@ -58,11 +58,11 @@ Preconditions:
 ## Gotchas
 
 - Siege (the default) at the default `--horizon 32` takes minutes and gigabytes. Always pass `--horizon 8`.
-- Without `--out`, `solve` writes `results/<ruleset>/solution_K<K>.json` relative to the working directory. Under
+- Without `--out`, `solve` writes `runs/solution_<model>_K<K>.json` relative to the working directory. Under
   `vl.py` that is inside `RUN/work/cli`, but pass `--out` anyway so the evidence names the file.
 - V*(s0) = 0 is expected: the game is symmetric. A non-zero value at the start state is a finding.
 - `scenarios` prints a lane diagram per scenario and its output is long. Assert with `grep` on the stdout file, not on
   the printed tail.
 - The reference numbers above were observed on 2026-10-18 at commit 82568827. A rule change can legitimately move
-  them. Check the change against `docs/m4/laning_game_mathematical_reference.md` before calling it a regression, and
+  them. Check the change against `docs/model.md` before calling it a regression, and
   never update the digest pins in `tests/test_legacy_pins.py` to match.

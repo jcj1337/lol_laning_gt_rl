@@ -14,7 +14,7 @@ pytest.importorskip("gymnasium")
 from pettingzoo.test import api_test, parallel_api_test                              # noqa: E402
 
 from lanegame import GameConfig                                                       # noqa: E402
-from lanegame.champions_m4 import M4State                                             # noqa: E402
+from lanegame.engine.champions_m4 import M4State                                             # noqa: E402
 from lanegame.env import LaneEnv, UniformAgent, play_episode                          # noqa: E402
 from lanegame.env.agents import episode_streams                                       # noqa: E402
 from lanegame.env.agents_m4 import natural_suite                                      # noqa: E402
@@ -136,7 +136,7 @@ def test_custom_start_states_m4state_startstate_and_list_forms():
         _, rew, _, _, infos = ad.step({"A": a, "B": b})
         assert rew["A"] == want.rewards[0] and infos["A"]["champ_after"] == want.info["champ_after"]
     # a legacy champion-mode list form is still read as a ChampState
-    from lanegame.champions import ChampState, initial_champions
+    from lanegame.engine.champions import ChampState, initial_champions
     legacy = GameConfig.champions()
     ad = LaneParallelEnv(legacy)
     ad.reset(seed=0, options={"champ": initial_champions(legacy).to_list()})

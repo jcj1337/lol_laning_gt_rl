@@ -30,7 +30,7 @@ Continuing time (rulesets "m2c" / "m4"; plan WP9). A game never ends, so a rollo
 then carries the M4State (positions, centi-HP, absence, XP, items, gold, tower damage) and the phase k mod P, which
 is all the dynamics depend on. An optional critic bootstrap adds gamma^W V_hat(s_W); it is an APPROXIMATION whose
 bias gamma^W E[V_hat - V] is unknown (design §10.5.4), and results carrying it are labelled. These are approximate
-champion-game measurements; exact values exist only for the legacy games (lanegame.solver).
+champion-game measurements; exact values exist only for the legacy games (lanegame.exact.solver).
 """
 
 from __future__ import annotations
@@ -40,11 +40,11 @@ from typing import Callable, Dict, List, Optional, Sequence, Tuple
 
 import numpy as np
 
-from ..champions import ChampSide, ChampState
-from ..config import GameConfig
+from ..engine.champions import ChampSide, ChampState
+from ..engine.config import GameConfig
 from ..env import LaneEnv
 from ..env.agents import episode_streams
-from ..state import State
+from ..engine.state import State
 
 A, B = 0, 1
 
@@ -101,7 +101,7 @@ class Snapshot:
 def champ_from_list(v):
     """ChampState (M2: [pos, hp, absent] per side) or M4State (M4: seven fields per side) from its list form."""
     if len(v[0]) == 7:
-        from ..champions_m4 import M4State
+        from ..engine.champions_m4 import M4State
         return M4State.from_list(v)
     return ChampState.from_list(v)
 

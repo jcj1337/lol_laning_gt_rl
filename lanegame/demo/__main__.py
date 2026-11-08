@@ -1,4 +1,4 @@
-"""Run the demo server: the API over the session core and the built frontend (docs/m6/m6b_report.md).
+"""Run the demo server: the API over the session core and the built frontend (docs/archive/m6/m6b_report.md).
 
     python -m lanegame.demo [--host 127.0.0.1] [--port 8765] [--no-worker] [--static web/dist]
                             [--idle-minutes 30] [--max-sessions 256]

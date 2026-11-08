@@ -51,8 +51,8 @@ from typing import Callable, Dict, Iterable, Optional, Sequence, Tuple
 
 import numpy as np
 
-from ..champions import N_CHANCE, mirror_chance
-from ..champions_m4 import M4State, context, resolve_turn_m4
+from ..engine.champions import N_CHANCE, mirror_chance
+from ..engine.champions_m4 import M4State, context, resolve_turn_m4
 
 A, B = 0, 1
 SIDE_KEYS = ("earned", "farm", "plate", "bounty", "avail", "away", "died", "recalled", "returned", "xpg", "hp",
@@ -238,7 +238,7 @@ def _decide(pol, cfg, lane, m4, s: int, i: int) -> int:
 
 
 def observe_turn(pol, cfg, lane, m4, k: int, codes) -> None:
-    """Opt-in hook (M5, docs/m5/m5_design.md §5): after a turn that started in (lane, m4, k) and in which the seats
+    """Opt-in hook (M5, docs/archive/m5/m5_design.md §5): after a turn that started in (lane, m4, k) and in which the seats
     played `codes` = (A's code, B's code), tell every history-dependent policy inside `pol`, once each. Such a policy
     defines `observe_turn(cfg, lane, m4, k, codes)` (e.g. a belief about the opponent); a composite policy (a plan
     around an inner policy) lists its inner policies in `inner_policies()`. Policies with neither attribute (every

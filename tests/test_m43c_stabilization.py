@@ -1,4 +1,4 @@
-"""M4.3c stabilization, Stage A (docs/m4/m4_3/m4_3c_strategic_economics_calibration.md): the Shove terminology of the
+"""M4.3c stabilization, Stage A (docs/archive/m4/m4_3/m4_3c_strategic_economics_calibration.md): the Shove terminology of the
 four-action model, the four-action strategy library, the paired-seed harness and pins of the Stage A3 sequence
 findings. Nothing here changes the game; every preset's codes, masks and checkpoints keep their meaning."""
 
@@ -6,13 +6,13 @@ import numpy as np
 import pytest
 
 from lanegame import GameConfig
-from lanegame.champions import CHAMP_ABSENT, champion_legal_actions
-from lanegame.config import (FOUR_WAVE_NAMES, FOUR_WAVE_SHORT, NATURAL_WAVE_NAMES, SH, W_CLEAR, W_HOLD, W_SHOVE,
+from lanegame.engine.champions import CHAMP_ABSENT, champion_legal_actions
+from lanegame.engine.config import (FOUR_WAVE_NAMES, FOUR_WAVE_SHORT, NATURAL_WAVE_NAMES, SH, W_CLEAR, W_HOLD, W_SHOVE,
                              W_SLOWPUSH, W_THIN, champ_act, wave_display_names)
 from lanegame.env import LaneEnv, UniformAgent
-from lanegame.experiments.m43c import harness as h
-from lanegame.experiments.m43c import sequences as sq
-from lanegame.experiments.m43c import strategies as st
+from experiments.m43c import harness as h
+from experiments.m43c import sequences as sq
+from experiments.m43c import strategies as st
 
 FOUR = GameConfig.m4_four_actions()
 LASTHIT = GameConfig.m4_lasthit()
@@ -34,8 +34,8 @@ def test_shove_is_the_full_capacity_slot_and_only_the_four_action_names_changed(
 
 def test_shove_budget_is_the_capacity_as_before():
     """The rename changes no budget: Shove spends C on every state (the redesign's Clear)."""
-    from lanegame.champions_m4 import context
-    from lanegame.mechanics import initial_state
+    from lanegame.engine.champions_m4 import context
+    from lanegame.engine.mechanics import initial_state
     ctx = context(FOUR)
     lane = initial_state(FOUR)
     for C in range(4, 24):
@@ -85,7 +85,7 @@ def test_schedules_and_recall_rules_are_memoryless():
 
 def test_recall_in_contact_option_only_changes_the_contact_case():
     lane, m4, k = h.start("neutral", FOUR)
-    t = __import__("lanegame.champions_m4", fromlist=["context"]).context(FOUR).t
+    t = __import__("lanegame.engine.champions_m4", fromlist=["context"]).context(FOUR).t
     low = m4.replace_side(A, hp=int(0.3 * t.hp_max[3]), pos=-1)             # A at -1 in contact with B at the lane cell
     base = st.Strategy("x")
     brave = st.Strategy("y", recall_in_contact=True)

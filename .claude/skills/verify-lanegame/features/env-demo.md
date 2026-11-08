@@ -22,7 +22,7 @@ on champion mode, which has no exact solver.
 
 Preconditions:
 
-- A run exists (`RUN`) and `$VL doctor --run "$RUN"` exits 0. No viewer or browser is needed.
+- A run exists (`RUN`) and `$VL doctor --run "$RUN"` exits 0. No demo or browser is needed.
 
 - **Pair, exact and trace.** Run `$VL cli --run "$RUN" --label env-demo-trace-a -- env-demo --horizon 8 --episodes 200 --seed 42 --exact --trace trace42.json`.
   Exit 0. Stdout contains `aggressive (A) vs passive_safe (B): 200 episodes, 1600 turns`,

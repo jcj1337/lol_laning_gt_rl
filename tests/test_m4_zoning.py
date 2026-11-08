@@ -1,4 +1,4 @@
-"""M4.2d-C: the opt-in `zoning_rule` (docs/m4/m4_2/m4_zoning_report.md). "presence" (default) is the M2 proximity zone;
+"""M4.2d-C: the opt-in `zoning_rule` (docs/archive/m4/m4_2/m4_zoning_report.md). "presence" (default) is the M2 proximity zone;
 "contact" zones only a collector hit by a connected enemy Trade; "none" never zones."""
 
 from fractions import Fraction
@@ -7,11 +7,15 @@ import numpy as np
 import pytest
 
 from lanegame import GameConfig
-from lanegame.champions import (AWAY, CHANNEL, FARM, N_CHANCE, RETREAT, SAFE_MODE, TRADING, champion_collection,
+from lanegame.engine.champions import (AWAY, CHANNEL, FARM, N_CHANCE, RETREAT, SAFE_MODE, TRADING, champion_collection,
                                 mirror_chance, swap_seats)
-from lanegame.champions_m4 import check_invariants, collection_units, resolve_turn_m4
-from lanegame.config import B_HOLD, B_TRADE, B_YIELD, SP, champ_act
-from lanegame.experiments.m4 import zoning as zx
+from lanegame.engine.champions_m4 import check_invariants, collection_units, resolve_turn_m4
+from lanegame.engine.config import B_HOLD, B_TRADE, B_YIELD, SP, champ_act
+
+from lanegame.engine.champions import champion_legal_actions
+from lanegame.engine.champions_m4 import M4State, context, initial_m4
+from lanegame.engine.config import NONE, SH
+from lanegame.engine.mechanics import initial_state
 
 RULES = ("presence", "contact", "none")
 CFG = {r: GameConfig.m4(zoning_rule=r) for r in RULES}
@@ -115,7 +119,38 @@ def test_the_rule_changes_gold_only_and_is_mirror_equivariant():
 
 @pytest.fixture(scope="module")
 def starts():
-    return zx.starts(GameConfig.m4())
+    """The three start states of the M4.2e zoning prototype (formerly experiments.m4.zoning.starts, retired with that
+    study on 2026-11-08). neutral: 9 turns of mutual Slow Push + Hold from s0. forward: A shoves on turns 5-7, then
+    both hold; at k = 10 B's reached 1-HP front is replaced by a 4-HP front (a controlled counterfactual). tower: the
+    same line at k = 13. Both champions then share the larger XP, full HP, no gold and no items."""
+    cfg = GameConfig.m4()
+
+    def step(lane, m4, k, wa, ba, wb, bb):
+        a, b = champ_act(wa, ba, NONE), champ_act(wb, bb, NONE)
+        assert a in champion_legal_actions(lane, m4, 0, cfg) and b in champion_legal_actions(lane, m4, 1, cfg)
+        return resolve_turn_m4(lane, m4, k, a, b, cfg, u=None)
+
+    out = {}
+    lane, m4 = initial_state(cfg), initial_m4(cfg)
+    for k in range(9):
+        t = step(lane, m4, k, SP, B_HOLD, SP, B_HOLD)
+        lane, m4 = t.lane.state, t.champ
+    out["neutral"] = (lane, m4, 9)
+    lane, m4 = initial_state(cfg), initial_m4(cfg)
+    for k in range(13):
+        t = step(lane, m4, k, SH if 5 <= k < 8 else SP, B_HOLD, SP, B_HOLD)
+        lane, m4 = t.lane.state, t.champ
+        if k + 1 == 10:
+            assert (lane.ax, lane.ah, lane.bx, lane.bh) == (0, 6, -1, 1) and (m4.a.pos, m4.b.pos) == (0, -1)
+            out["forward"] = (lane._replace(bh=cfg.wave_hp), m4, 10)
+    out["tower"] = (lane, m4, 13)
+    tb = context(cfg).t
+    for n, (lane, m4, k) in out.items():
+        xp = max(m4.a.xp, m4.b.xp)
+        hp = tb.hp_max[tb.level_by_xp[xp]]
+        out[n] = (lane, M4State(m4.a._replace(xp=xp, hp=hp, gold=0, items=0),
+                                m4.b._replace(xp=xp, hp=hp, gold=0, items=0)), k)
+    return out
 
 
 def _turn(rule, start, ba, bb):
@@ -140,15 +175,3 @@ def test_new_behavior_at_the_lane(starts):
     assert th["presence"].farm_units == (157_500, 315_000)         # both zoned by proximity
     assert sum(_turn("none", s, B_HOLD, B_HOLD).farm_units) <= 2 * 0.5 * mu
 
-
-def test_gold_attribution_sums_exactly_and_has_no_zone_part_under_none(starts):
-    cfg = CFG["none"]
-    for name, st in starts.items():
-        for ba in zx.BEHAVIORS:
-            for bb in zx.BEHAVIORS:
-                for row in zx.run_pair(cfg, st, ba, bb, horizon=2):
-                    for s in (0, 1):
-                        g = row["gold"][s]
-                        assert g["zone"] == 0.0
-                        assert abs(sum(v for k, v in g.items() if k != "available") - g["available"]) < 1e-12
-                        assert row["xp"][s] <= row["xp_available"][s]

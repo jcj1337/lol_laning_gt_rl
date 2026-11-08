@@ -50,7 +50,7 @@ from typing import Dict, List, Optional, Sequence, Tuple
 
 import numpy as np
 
-from ..config import GameConfig
+from ..engine.config import GameConfig
 from ..io import STATE_FIELDS, dump_json
 from .observation import feature_names, n_actions, obs_size
 
@@ -185,7 +185,7 @@ def trace_dict(log: EpisodeLog, cfg: GameConfig) -> dict:
          "n_actions": n_actions(cfg), "actions": {str(a): cfg.label(a) for a in cfg.action_codes()},
          "obs_size": obs_size(cfg), "features": feature_names(cfg), "state_fields": STATE_FIELDS}
     if cfg.is_m4:
-        from ..champions_m4 import M4_SIDE_FIELDS
+        from ..engine.champions_m4 import M4_SIDE_FIELDS
         d["ruleset"] = "m4"
         d["champion_fields"] = [("invested" if f == "items" and cfg.continuous_items else f) for f in M4_SIDE_FIELDS]
         d["gold_scale"] = cfg.gold_scale

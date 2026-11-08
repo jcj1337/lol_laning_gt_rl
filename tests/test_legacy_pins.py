@@ -3,8 +3,9 @@
 The digests below were computed on the unchanged engine before any M4 code existed (branch design/m4-integrated,
 085908d). They cover every legacy ruleset: v1, v2, the siege default and champions() (lane steps, observations,
 champion resolution with chance vectors, a 200-episode scripted rollout, an M3b checkpoint's head-to-head) and the
-exact solver (K = 16 values of the three conftest models; the K = 32 siege solution's metadata). A failing pin means
-a legacy output changed: that is a regression, never a reason to update the digest.
+exact solver (K = 16 values of the three conftest models; the K = 32 siege solution's metadata, read from
+artifacts/siege/solution_K32_summary.json, which holds the stored solution's config, value and statistics). A failing
+pin means a legacy output changed: that is a regression, never a reason to update the digest.
 """
 
 import json
@@ -16,6 +17,8 @@ import legacy_pins as pins
 from lanegame import GameConfig
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+# the K = 32 siege solution of results/siege/solution_K32.json (68 MB, at commit f613f0a0) reduced to its metadata
+K32_SUMMARY = os.path.join(ROOT, "artifacts", "siege", "solution_K32_summary.json")
 
 LANE = {
     "v1": "1862f1edd2fd4859c867f10952e0bacbf495f5453665fd5c0f07f61b34ddef51",
@@ -66,7 +69,7 @@ def test_solver_k16_values_are_pinned(solution, model):
 
 
 def test_siege_k32_solution_metadata_is_pinned():
-    with open(os.path.join(ROOT, "results", "siege", "solution_K32.json"), encoding="utf-8") as f:
+    with open(K32_SUMMARY, encoding="utf-8") as f:
         d = json.load(f)
     cur = GameConfig(horizon=32).to_dict()
     assert all(cur[k] == v for k, v in d["config"].items()), "the K = 32 siege configuration changed"
@@ -76,8 +79,8 @@ def test_siege_k32_solution_metadata_is_pinned():
 @pytest.mark.slow
 def test_siege_k32_solution_resolves_identically():
     from lanegame import LaneGame
-    from lanegame.solver import solve_equilibrium
-    with open(os.path.join(ROOT, "results", "siege", "solution_K32.json"), encoding="utf-8") as f:
+    from lanegame.exact.solver import solve_equilibrium
+    with open(K32_SUMMARY, encoding="utf-8") as f:
         d = json.load(f)
     g = LaneGame(GameConfig(horizon=32))
     layers = g.reachable()

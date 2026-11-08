@@ -9,10 +9,10 @@ import numpy as np
 import pytest
 
 from lanegame import GameConfig
-from lanegame.champions import N_CHANCE, champion_legal_actions, initial_champions, resolve_turn
+from lanegame.engine.champions import N_CHANCE, champion_legal_actions, initial_champions, resolve_turn
 from lanegame.env import LaneEnv, UniformAgent, champion_suite, play_episode
 from lanegame.env.observation import feature_names, observe
-from lanegame.mechanics import initial_state
+from lanegame.engine.mechanics import initial_state
 
 M2C = GameConfig.champions_continuing()
 M4 = GameConfig.m4()
@@ -266,7 +266,7 @@ def test_t1_11_discounted_evaluator(monkeypatch):
     assert r["estimate"] == pytest.approx(c * (1 - g ** W) / (1 - g), rel=1e-12)
     assert r["tail_bound"]["guaranteed"] == pytest.approx(g ** W * D.tail_constant(M4))
     assert D.tail_constant(M4) == pytest.approx(68.339, abs=1e-3)
-    st = StartState(initial_state(M4), __import__("lanegame.champions_m4", fromlist=["x"]).initial_m4(M4), 1)
+    st = StartState(initial_state(M4), __import__("lanegame.engine.champions_m4", fromlist=["x"]).initial_m4(M4), 1)
     with pytest.raises(ValueError, match="E1"):
         D.evaluate_discounted(M4, x, y, episodes=2, window=10, protocol="E1", archive=[st])
     lane2 = initial_state(M4)._replace(ah=3)
@@ -304,7 +304,7 @@ def test_t1_13_skill_levels_keep_gank_reward():
     from lanegame.rl import OpponentSampler, PPOConfig
     from lanegame.rl.train import Collector
     from lanegame.env.agents import ScriptedAgent
-    from lanegame.baselines import siege_baselines
+    from lanegame.exact.baselines import siege_baselines
     cfg = PPOConfig(total_steps=64, n_envs=2, n_steps=8, expected_gank_reward=True, skill_levels=(0.3, 0.7), seed=0)
     col = Collector(GameConfig(), cfg, OpponentSampler([ScriptedAgent(siege_baselines()[0])]), seed=0)
     assert all(e.gank_reward == "expected" for e in col.envs)
@@ -337,12 +337,12 @@ def test_stateful_agents_get_lifecycle_hooks_in_the_discounted_evaluator():
     """evaluate_discounted calls reset() per game and notify(info, side) per turn. From the witnessed equal-power
     freeze, the AdaptiveBreaker parks (Slow Push) until it has observed a maintained Freeze and Shoves afterwards; it
     starts every game unaware. Without the hooks it would never Shove."""
-    from lanegame.config import SH, SP
+    from lanegame.engine.config import SH, SP
     from lanegame.env import discounted as D
     from lanegame.env.agents import episode_streams
     from lanegame.env.agents_m4 import AdaptiveBreaker, gate_defenders
     from lanegame.env.starts import StartState
-    from lanegame.scenarios_m4 import load_witnesses, replay
+    from m4_scenarios import load_witnesses, replay
     w = replay("1_equal_power_freeze", load_witnesses()["1_equal_power_freeze"])
     st = StartState(w.state, w.champ, w.k)
     freezer = gate_defenders()["freeze"]

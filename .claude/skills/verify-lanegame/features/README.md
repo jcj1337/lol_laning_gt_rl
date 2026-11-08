@@ -15,19 +15,16 @@ RUN=$($VL new-run | sed -n 's/^RUN=//p')
 - `$VL doctor --run "$RUN"` exits 0, and its "repo untouched since new-run" line is PASS.
 - CLI journeys need nothing else. Every `$VL cli` call runs in `RUN/work/cli`, so relative output paths stay out of
   the repo.
-- Viewer journeys also need `$VL viewer start`, `$VL browser start` and `$VL browser open` to have succeeded in this
-  run. A fresh `browser open` lands in Strategy matchup on the first matchup, `M4.5-1. Ward from a neutral lane`, at
-  `Turn 0 of 30 · start · k = 1 · equal power · seed 0`.
-- Never drive a viewer or browser this run did not start, and never pass a `--confirm-*` flag.
+- Web demo journeys also need the built frontend (`cd web && npm run build`) and `$VL demo start`, `$VL browser
+  start` and `$VL browser open` to have succeeded in this run.
+- Never drive a demo or browser this run did not start, and never pass a `--confirm-*` flag.
 
 ## Driving conventions
 
-- Start each recipe from its stated preconditions. For the viewer, set every setup field the journey depends on
-  explicitly: Streamlit session state carries values across modes and matchups.
-- Treat commands as literal. Keep quoted texts, keys and flags unchanged.
-- Prefer widget keys (`--key`) and exact visible text over `--contains` and `--nth`.
-- Read selectbox and number values with `browser widgets`, never from the page text.
-- The state line is the second line of `browser text --scope main` (`Turn i of n · frame · k = … · gap · seed s`).
+- Start each recipe from its stated preconditions.
+- Treat commands as literal. Keep quoted texts and flags unchanged.
+- Prefer exact visible text over `--contains` and `--nth`, and read the demo's state with `browser js` and its
+  `window.__demo` hooks rather than from the page text.
 - Exact-game journeys use `--horizon 8`, and training journeys use `--steps 4096 --n-envs 4`. Bigger budgets add
   nothing to a proof and can take hours.
 
@@ -64,9 +61,5 @@ Keep implementation details out. Name only user paths, stable handles, required 
   same-seed determinism, and champion mode.
 - [Training and evaluation](./rl-train-eval.md): shared-policy PPO self-play to a checkpoint, bit-identical
   retraining, and head-to-head evaluation.
-- [Viewer replay](./viewer-replay.md): Strategy matchup and Recorded trajectory playback, turn and tick navigation,
-  and the detail tabs.
-- [Viewer manual play](./viewer-manual.md): playing side A by hand, undo, auto-play, branching, and taking over from
-  a matchup.
 - [Web demo](./web-demo.md): the M6 application (`python -m lanegame.demo` and the built `web/`): Play against a
   trained agent, Watch a generated match, history review, reload recovery, the record download, layouts.

@@ -52,7 +52,7 @@ Preconditions: `$VL demo start --run "$RUN"` printed `engine ready`, `$VL browse
   current turn"` restores `view` = `progress`.
 - **WD-5 reload, stop, download.** `$VL browser open --run "$RUN" --url "<demo url>"` (no `?fresh`): `state().sid`
   and `progress` unchanged. `--text "Stop game"`: `stopped` true, `seeds.chance` a number, the summary says
-  "declares no winner". `python -m lanegame.experiments.m6b browser` performs the download and the Python replay;
+  "declares no winner". `python -m experiments.m6b browser` performs the download and the Python replay;
   by hand, "Download the record" saves `laning-game-<id>.json`, and
   `python -c "import json; from lanegame.demo import registry, session; print(session.replay(registry.Registry().load(), json.load(open('laning-game-<id>.json'))))"`
   reports `turns` equal to the game's length.
@@ -77,9 +77,9 @@ Preconditions: `$VL demo start --run "$RUN"` printed `engine ready`, `$VL browse
   the replay and clears `state().guide`. In a live game `state().guide` is always null.
 
 The complete scripted journey, with screenshots and the overlap check at five window sizes in both themes, is
-`python -m lanegame.experiments.m6b browser` (about 4 minutes; evidence in `results/m6/m6b_browser.json` and
-`results/m6/m6b/`). The sequences' own check is `python -m lanegame.experiments.m6c browser` (evidence in
-`results/m6/m6c_browser.json` and `results/m6/m6c/`).
+`python -m experiments.m6b browser` (about 4 minutes; evidence in `artifacts/m6/m6b_browser.json`,
+screenshots in `runs/m6/m6b/`). The sequences' own check is `python -m experiments.m6c browser` (evidence in
+`artifacts/m6/m6c_browser.json`, screenshots in `runs/m6/m6c/`).
 
 ## Gotchas
 

@@ -16,7 +16,7 @@ from lanegame.rl import (MaskedCategorical, PolicyValueNet, PPOConfig, SeparateC
 
 CFG = GameConfig.champions(horizon=10)
 OBS, NACT = LaneEnv(CFG).obs_size, LaneEnv(CFG).n_actions
-START = os.path.join("results", "rl", "checkpoints", "m46c", "train", "ext", "C1", "s0", "final.pt")
+START = os.path.join("runs", "checkpoints", "m46c", "train", "ext", "C1", "s0", "final.pt")
 
 
 def _ppo(**kw):
@@ -159,43 +159,9 @@ def test_without_a_value_loss_the_separate_critic_never_moves():
     assert not torch.equal(res.net.value(x).detach(), v0)
 
 
-def test_gradient_probe_is_read_only():
-    from lanegame.experiments.rl.m46f.train import GradProbe
-
-    class Probe(GradProbe):
-        def __init__(self, ppo, net):
-            self.base, self.ppo, self.net, self.every, self.n_mb, self.calls = (lambda r, f: {}), ppo, net, 1, 2, 0
-
-    digests, recs = [], []
-    for hook in (False, True):
-        for kind in ("shared", "separate"):
-            net = _shared() if kind == "shared" else SeparateCriticNet.from_shared(_shared())
-            ppo = _ppo()
-            res = train_shared(CFG, ppo, SharedConfig(current_fraction=1.0), net=net, verbose=False,
-                               rollout_stats=Probe(ppo, net) if hook else None)
-            digests.append((kind, weights_digest(res.net.state_dict())))
-            if hook:
-                recs.append((kind, res.history[0]))
-    assert digests[:2] == digests[2:]
-    for kind, e in recs:
-        assert e["gp_total_norm"] > 0 and e["gp_actor_norm"] > 0 and 0 < e["gp_clip_shrink"] <= 1.0
-        assert (e["gp_trunk_val"] == 0.0) == (kind == "separate")
-        assert (e["gp_ctrunk_val"] > 0.0) == (kind == "separate")
-
-
-def test_classification_rules():
-    from lanegame.experiments.rl.m46f.analysis import classify
-    assert classify({"mean": 0.30, "ci": 0.10}, 0.2, 0.3) == "benefit"
-    assert classify({"mean": -0.30, "ci": 0.10}, 0.2, 0.3) == "regression"
-    assert classify({"mean": 0.10, "ci": 0.05}, 0.2, 0.3) == "small"
-    assert classify({"mean": 0.05, "ci": 0.15}, 0.2, 0.3) == "no material difference"
-    assert classify({"mean": 0.10, "ci": 0.30}, 0.2, 0.3) == "inconclusive"
-    assert classify({"mean": float("nan"), "ci": 0.1}, 0.2, 0.3) == "n/a"
-
-
 def test_policy_specifications_and_cells():
-    from lanegame.experiments.rl.m46f import behaviour as B
-    from lanegame.experiments.rl.m46f import common as C
+    from experiments.m46f import behaviour as B
+    from experiments.m46f import common as C
     assert C.policy_path("separate:2").endswith(os.path.join("train", "main", "separate", "s2", "final.pt"))
     assert C.policy_path("ext/shared:1@2048000").endswith(os.path.join("ext", "shared", "s1", "snapshots",
                                                                         "snap_002048000.pt"))
@@ -219,9 +185,3 @@ def test_policy_specifications_and_cells():
         strong = m4.b if m["role"] == "weak" else m4.a
         assert weak.hp < strong.hp
 
-
-@pytest.mark.skipif(not os.path.exists(START), reason="needs the git-ignored M4.6c checkpoint")
-def test_initial_equivalence_on_the_real_start():
-    from lanegame.experiments.rl.m46f import verify
-    rec = verify.check_seed(0)
-    assert all(rec["checks"].values()), [k for k, v in rec["checks"].items() if not v]

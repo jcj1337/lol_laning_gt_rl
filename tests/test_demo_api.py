@@ -1,4 +1,4 @@
-"""M6b: the demo API over the session core (lanegame/demo/api.py; docs/m6/m6_plan.md §3 rules 1 to 5, 7, 8, 10 to 13
+"""M6b: the demo API over the session core (lanegame/demo/api.py; docs/archive/m6/m6_plan.md §3 rules 1 to 5, 7, 8, 10 to 13
 through the API, §8.2 lifecycle and limits).
 
 The core's own rules are tested in test_demo_session.py; these tests cover what the API layer adds: the typed
@@ -25,7 +25,7 @@ from lanegame.demo.api import MAX_BODY, create_app  # noqa: E402
 from lanegame.demo.service import DemoService, ServiceError  # noqa: E402
 
 OPENAPI = os.path.join("web", "openapi.json")
-TRACES = os.path.join("results", "m5", "traces")
+TRACES = os.path.join("artifacts", "m5", "traces")
 
 
 @pytest.fixture(scope="module")
@@ -258,7 +258,7 @@ def test_a_simulation_bundle_is_labelled_consistent_and_replays(client, reg):
 
 def test_the_research_replays_are_verified_bundles(client):
     if not os.path.isfile(os.path.join(TRACES, "h2h_om_s0_vs_sp_s0.json")):
-        pytest.skip("results/m5/traces is not on disk")
+        pytest.skip("artifacts/m5/traces is not on disk")
     idx = client.get("/api/replays").json()
     assert [e["name"] for e in idx] == ["h2h_om_s0_vs_sp_s0", "om_s0_vs_g_shove", "sp_s0_vs_g_shove"]
     assert all(e["kind"] == "research_record" and e["turns"] == 150 for e in idx)

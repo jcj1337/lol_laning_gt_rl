@@ -7,16 +7,15 @@ import pytest
 
 torch = pytest.importorskip("torch")
 
-from lanegame.experiments.rl.m46e import analysis as AN
-from lanegame.experiments.rl.m46e import common as C
-from lanegame.experiments.rl.m46e import exposure as X
-from lanegame.experiments.rl.m46e import fit as F
-from lanegame.experiments.rl.m46e import labels as LB
-from lanegame.experiments.rl.m46e import observation as O
-from lanegame.experiments.rl.m46e.features import StateFeatures, explicit, obs_index
+from experiments.m46e import analysis as AN
+from experiments.m46e import common as C
+from experiments.m46e import fit as F
+from experiments.m46e import labels as LB
+from experiments.m46e import observation as O
+from experiments.m46e.features import StateFeatures, explicit, obs_index
 
-CKPT = os.path.join("results", "rl", "checkpoints", "m46c", "train", "ext", "C1", "s0", "final.pt")
-CALIB = os.path.join("results", "rl", "checkpoints", "m46d", "critic", "calib", "C1", "s0", "gap_3.json.gz")
+CKPT = os.path.join("runs", "checkpoints", "m46c", "train", "ext", "C1", "s0", "final.pt")
+CALIB = os.path.join("runs", "checkpoints", "m46d", "critic", "calib", "C1", "s0", "gap_3.json.gz")
 
 
 def _cfg():
@@ -44,7 +43,7 @@ def test_expected_entry_check_rejects_a_wrong_block():
 
 
 def test_explicit_log_duel_equals_the_state_duel_ratio():
-    from lanegame.experiments.rl.m46d import cells as CL
+    from experiments.m46d import cells as CL
     cfg = _cfg()
     sf, idx = StateFeatures(cfg), obs_index(cfg)
     for cond in ("equal", "edge", "x1.76", "brk"):
@@ -55,28 +54,8 @@ def test_explicit_log_duel_equals_the_state_duel_ratio():
             assert abs(x[2] - 0.6) < 1e-2                                # the enemy's HP fraction
 
 
-def test_families_on_a_synthetic_state():
-    cols = {c: i for i, c in enumerate(X.COLS)}
-    x = np.zeros((3, 2, len(X.COLS)))
-    x[:, :, cols["present"]] = 1
-    x[:, :, cols["L"]] = 5
-    x[:, :, cols["hp"]] = 1.0
-    x[:, :, cols["dist"]] = -1
-    x[0, 0, cols["duel"]], x[0, 1, cols["duel"]] = 1.3, 1 / 1.3          # plausible early edge for A
-    x[1, 0, cols["duel"]], x[1, 1, cols["duel"]] = 1 / 3.2, 3.2          # extreme gap for B
-    x[2, 0, cols["duel"]], x[2, 1, cols["duel"]] = 1.2, 1 / 1.2          # A freezes, B damaged and walked up
-    x[2, 0, cols["held"]], x[2, 0, cols["held_hp"]] = 1, 12
-    x[2, 1, cols["hp"]] = 0.4
-    x[2, 1, cols["catch_o"]], x[2, 1, cols["dist"]] = 1, 1
-    f = X.families(x)
-    assert f["plaus_early"].tolist() == [True, False, True] and f["plaus_early_125"].tolist() == [True, False, False]
-    assert f["extreme"].tolist() == [False, True, False] and f["large"].tolist() == [False, True, False]
-    assert f["fav_freeze"].tolist() == [False, False, True] and f["fav_freeze_dmg"].tolist() == [False, False, True]
-    assert f["weak_window"].tolist() == [False, False, True]
-
-
 def test_label_variants_change_only_the_intended_quantity():
-    from lanegame.experiments.m45b import states as S
+    from experiments.m45b import states as S
     cfg = _cfg()
     sf = StateFeatures(cfg)
     lane, pa, pb, _ = S.ZONING_SITUATIONS["neutral"]
@@ -128,7 +107,7 @@ def test_pair_premiums_on_synthetic_examples():
 
 @pytest.mark.skipif(not (os.path.exists(CKPT) and os.path.exists(CALIB)), reason="needs the M4.6c/M4.6d records")
 def test_rollout_core_reproduces_an_m46d_calibration_rollout():
-    from lanegame.experiments.rl.m46d import common as D
+    from experiments.m46d import common as D
     cfg = C.setup(C.ARM)
     rec = C.load_gz(CALIB)
     start = {(f, i): st for f, i, st, _ in LB._m46d_cells(cfg)}[("gap", 3)]

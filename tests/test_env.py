@@ -10,15 +10,15 @@ import numpy as np
 import pytest
 
 from lanegame import GameConfig, LaneGame, SH_C, SP_S
-from lanegame.analysis import path_statistics
-from lanegame.baselines import (aggressive, always_shove, always_slowpush, defensive_freeze, freeze_contest,
+from lanegame.exact.analysis import path_statistics
+from lanegame.exact.baselines import (aggressive, always_shove, always_slowpush, defensive_freeze, freeze_contest,
                                 passive_safe, prefer, stack_builder, uniform)
-from lanegame.best_response import evaluate, exploitability
+from lanegame.exact.best_response import evaluate, exploitability
 from lanegame.env import (TRACE_SCHEMA, TRACE_VERSION, AgentPolicy, GreedyObservationAgent, LaneEnv, ScriptedAgent,
                           as_policy, feature_names, legal_mask, n_actions, obs_size, observe, play_episode,
                           read_trace, run_episodes, write_trace)
-from lanegame.policy import ScriptedPolicy
-from lanegame.state import State
+from lanegame.exact.policy import ScriptedPolicy
+from lanegame.engine.state import State
 
 from conftest import all_transitions
 

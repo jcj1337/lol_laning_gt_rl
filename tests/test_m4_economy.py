@@ -5,13 +5,13 @@ import numpy as np
 import pytest
 
 from lanegame import GameConfig
-from lanegame import progression as pg
-from lanegame.champions import N_CHANCE, U_TRADE_DOUBLE, U_TRADE_HIT
-from lanegame.champions_m4 import M4Side, M4State, check_invariants, initial_m4, resolve_turn_m4
-from lanegame.config import B_HOLD, B_RECALL, B_SAFE, B_TRADE, CHAMP_ABSENT, PRESSURE, SH, SP, champ_act
+from lanegame.engine import progression as pg
+from lanegame.engine.champions import N_CHANCE, U_TRADE_DOUBLE, U_TRADE_HIT
+from lanegame.engine.champions_m4 import M4Side, M4State, check_invariants, initial_m4, resolve_turn_m4
+from lanegame.engine.config import B_HOLD, B_RECALL, B_SAFE, B_TRADE, CHAMP_ABSENT, PRESSURE, SH, SP, champ_act
 from lanegame.env import LaneEnv, UniformAgent, champion_suite
-from lanegame.mechanics import initial_state
-from lanegame.state import State
+from lanegame.engine.mechanics import initial_state
+from lanegame.engine.state import State
 
 M4 = GameConfig.m4()
 T = M4.tower

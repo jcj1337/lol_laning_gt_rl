@@ -16,7 +16,7 @@ import pytest
 torch = pytest.importorskip("torch")
 
 from lanegame import GameConfig                                                          # noqa: E402
-from lanegame.champions import swap_seats                                                # noqa: E402
+from lanegame.engine.champions import swap_seats                                                # noqa: E402
 from lanegame.env import LaneEnv, observe                                                # noqa: E402
 from lanegame.env.discounted import evaluate_discounted                                  # noqa: E402
 from lanegame.rl import (CURRENT, HISTORICAL, MatchupSampler, NetAgent, PolicyValueNet, PPOConfig,   # noqa: E402

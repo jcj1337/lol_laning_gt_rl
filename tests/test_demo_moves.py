@@ -10,11 +10,11 @@ import os
 
 import pytest
 
-from lanegame.config import GameConfig
+from lanegame.engine.config import GameConfig
 from lanegame.demo import frames as F
 from lanegame.demo import registry as REG
 
-TRACES = os.path.join("results", "m5", "traces")
+TRACES = os.path.join("artifacts", "m5", "traces")
 
 
 def _champ(status="present", cell=0, at_ward=False):
@@ -60,7 +60,7 @@ def replays():
     if not REG.Registry().available():
         pytest.skip("needs the 7 checkpoints of lanegame/demo/manifest.json")
     if not os.path.isfile(os.path.join(TRACES, "sp_s0_vs_g_shove.json")):
-        pytest.skip("results/m5/traces is not on disk")
+        pytest.skip("artifacts/m5/traces is not on disk")
     from lanegame.demo.service import DemoService
     svc = DemoService(registry=REG.Registry().load())
     return {e["name"]: svc.replay(e["name"]) for e in svc.replays()}

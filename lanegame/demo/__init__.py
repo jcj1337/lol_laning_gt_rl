@@ -1,4 +1,4 @@
-"""The M6 demo (docs/m6/m6_plan.md, docs/m6/m6a_technical_report.md, docs/m6/m6b_report.md).
+"""The M6 demo (docs/archive/m6/m6_plan.md, docs/archive/m6/m6a_technical_report.md, docs/archive/m6/m6b_report.md).
 
 The headless core: the model registry with its checked checkpoint manifest (`registry`), game sessions with human,
 model and scripted seats (`session`), the recording format and replay (`record`), frames for the lane view and the

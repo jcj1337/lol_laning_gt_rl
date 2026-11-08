@@ -1,5 +1,5 @@
 """Frames of the M6 demo: what the lane view, the status panel and the turn history show (the frame contract,
-docs/m6/m6a_technical_report.md §4).
+docs/archive/m6/m6a_technical_report.md §4).
 
 Two shapes, both JSON-ready and both computed by Python only (the browser computes no game rule):
 
@@ -28,13 +28,13 @@ from __future__ import annotations
 
 from typing import Dict, List, Optional, Tuple
 
-from ..champions_m4 import context
-from ..config import GameConfig
+from ..engine.champions_m4 import context
+from ..engine.config import GameConfig
 from ..diagnostics import lane_exit as LX
-from ..mechanics import _fronts_in_contact, _merge
-from ..positional import WARD
-from ..progression import plates_broken
-from ..state import State
+from ..engine.mechanics import _fronts_in_contact, _merge
+from ..engine.positional import WARD
+from ..engine.progression import plates_broken
+from ..engine.state import State
 from ..viewer import session as VS
 from .actions import code_parts
 

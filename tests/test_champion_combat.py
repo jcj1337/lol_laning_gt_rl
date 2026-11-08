@@ -8,12 +8,12 @@ import numpy as np
 import pytest
 
 from lanegame import GameConfig
-from lanegame.champions import (CHANNEL, N_CHANCE, RECALL, TRADING, U_TOWER, U_TRADE_DOUBLE, U_TRADE_HIT, ChampSide,
+from lanegame.engine.champions import (CHANNEL, N_CHANCE, RECALL, TRADING, U_TOWER, U_TRADE_DOUBLE, U_TRADE_HIT, ChampSide,
                                 ChampState, mirror_chance, resolve_turn, swap_seats, trade_damage_distribution,
                                 trade_double_probability, trade_hit_probability)
-from lanegame.config import B_HOLD, B_RECALL, B_SAFE, B_TRADE, B_YIELD, CHAMP_ABSENT, SH, SP, champ_act
+from lanegame.engine.config import B_HOLD, B_RECALL, B_SAFE, B_TRADE, B_YIELD, CHAMP_ABSENT, SH, SP, champ_act
 from lanegame.env import LaneEnv, play_episode
-from lanegame.state import State
+from lanegame.engine.state import State
 
 CFG = GameConfig.champions(horizon=16)
 T = CFG.tower

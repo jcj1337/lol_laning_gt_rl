@@ -6,15 +6,15 @@ import numpy as np
 import pytest
 
 from lanegame import GameConfig
-from lanegame.champions import (CHANNEL, N_CHANCE, TRADING, ChampSide, ChampState, champion_legal_actions,
+from lanegame.engine.champions import (CHANNEL, N_CHANCE, TRADING, ChampSide, ChampState, champion_legal_actions,
                                 in_contact, initial_champions, mirror_chance, resolve_turn, swap_seats)
-from lanegame.champions_m4 import (M4Side, M4State, contact_cell_target, initial_m4, m2_chase_target,
+from lanegame.engine.champions_m4 import (M4Side, M4State, contact_cell_target, initial_m4, m2_chase_target,
                                    resolve_turn_m4)
-from lanegame.config import B_HOLD, B_SAFE, B_TRADE, CHAMP_ABSENT, F, NONE, SH, SP, champ_act, champ_behavior, \
+from lanegame.engine.config import B_HOLD, B_SAFE, B_TRADE, CHAMP_ABSENT, F, NONE, SH, SP, champ_act, champ_behavior, \
     champ_objective, champ_wave
-from lanegame.mechanics import initial_state, step_turn
-from lanegame.progression import hp_max
-from lanegame.state import State
+from lanegame.engine.mechanics import initial_state, step_turn
+from lanegame.engine.progression import hp_max
+from lanegame.engine.state import State
 
 M2 = GameConfig.champions()
 M4 = GameConfig.m4()

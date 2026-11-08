@@ -6,11 +6,11 @@ import numpy as np
 import pytest
 import torch
 
-from lanegame.config import B_HOLD, B_TRADE, GameConfig, champ_behavior
-from lanegame.experiments.rl.m46a import engine as EN
-from lanegame.experiments.rl.m46a import policies as P
-from lanegame.experiments.rl.m46a.common import env_cfg, net_of, setup_worker, spec
-from lanegame.experiments.rl.m46a.states import freeze_gap_state, invest_pair_mult, zoning_gap_state
+from lanegame.engine.config import B_HOLD, B_TRADE, GameConfig, champ_behavior
+from experiments.m46a import engine as EN
+from experiments.m46a import policies as P
+from experiments.m46a.common import env_cfg, net_of, setup_worker, spec
+from experiments.m46a.states import freeze_gap_state, invest_pair_mult, zoning_gap_state
 
 
 def test_environment_is_the_calibrated_preset():
@@ -18,7 +18,7 @@ def test_environment_is_the_calibrated_preset():
 
 
 def test_gap_multiplier():
-    from lanegame.experiments.m45b.states import multiplier
+    from experiments.m45b.states import multiplier
     cfg = env_cfg()
     for L in (6, 10, 14):
         for m in (1.24, 1.5, 1.76, 2.2):
@@ -27,7 +27,7 @@ def test_gap_multiplier():
 
 
 def _tiny_train(collector_cls=None, archive=None, mix=0.0):
-    from lanegame.experiments.rl.m45c.common import agent_from_spec, ppo_config
+    from experiments.m45c.common import agent_from_spec, ppo_config
     from lanegame.rl import OpponentSampler, train_ppo
     cfg = env_cfg()
     kw = dict(lane_cache=200, n_envs=2, segment_length=16)
@@ -47,8 +47,8 @@ def test_default_trainer_unchanged_by_the_collector_option():
 
 def test_focal_collector_mirrors_for_seat_b(tmp_path):
     from lanegame.env.starts import StartState, save_archive
-    from lanegame.experiments.rl.m45c.common import agent_from_spec, ppo_config
-    from lanegame.experiments.rl.m46a.e4 import focal_collector_cls
+    from experiments.m45c.common import agent_from_spec, ppo_config
+    from experiments.m46a.e4 import focal_collector_cls
     from lanegame.rl import OpponentSampler
     cfg = env_cfg()
     st = zoning_gap_state(cfg, "a_push", 10, "x1.76")
@@ -69,7 +69,7 @@ def test_focal_collector_mirrors_for_seat_b(tmp_path):
 
 
 def test_behavior_plan_forces_its_component_and_shares_randomness():
-    from lanegame.experiments.rl.m45c import horizon as HZ
+    from experiments.m45c import horizon as HZ
     cfg = setup_worker()
     st = zoning_gap_state(cfg, "neutral", 10, "x1.76")
     net = net_of(spec(0))
@@ -84,7 +84,7 @@ def test_behavior_plan_forces_its_component_and_shares_randomness():
 
 
 def test_release_hands_low_hp_turns_to_the_policy():
-    from lanegame.experiments.rl.m45c import horizon as HZ
+    from experiments.m45c import horizon as HZ
     cfg = setup_worker()
     st = P.variant_hp(cfg, zoning_gap_state(cfg, "neutral", 10, "x1.76"), 0.7)
     net = net_of(spec(0))

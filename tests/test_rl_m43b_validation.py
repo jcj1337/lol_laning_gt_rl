@@ -6,13 +6,12 @@ import numpy as np
 import pytest
 
 from lanegame import GameConfig
-from lanegame.config import (B_HOLD, B_RECALL, B_SAFE, B_TRADE, CHAMP_ABSENT, PRESSURE, W_CLEAR, W_HOLD, W_THIN,
+from lanegame.engine.config import (B_HOLD, B_RECALL, B_SAFE, B_TRADE, CHAMP_ABSENT, PRESSURE, W_CLEAR, W_HOLD, W_THIN,
                              champ_act, champ_behavior, champ_objective, champ_wave)
 from lanegame.diagnostics import DEFER, FollowPolicy, FunctionPlan, ProbCache, Snapshot, branch, observation, rollout
 from lanegame.env import LaneEnv, Observation, play_episode
-from lanegame.experiments.rl.m43b import intervene as iv
-from lanegame.experiments.rl.m43b import validation as val
-from lanegame.experiments.rl.m43b.references import reference_suite
+from experiments.m43b import intervene as iv
+from experiments.m43b.references import reference_suite
 
 CFG = GameConfig.m4_lasthit()
 RECALL = champ_act(W_HOLD, B_RECALL)
@@ -145,7 +144,7 @@ def test_wave_functions_read_the_state_from_the_observers_side():
         iv.slow_push_schedule(oa, None)
     assert iv.freeze_controller(oa, 0) == W_HOLD and iv.shove_away(oa, 0) == W_HOLD      # no enemy front at s0, enemy present
     # a freeze-like lane from each side: the enemy front at own -1 with >= 14 HP -> Thin for that side only
-    from lanegame.state import State
+    from lanegame.engine.state import State
     lane = State(ax=-2, ah=8, ar=(), asg=0, bx=1, bh=16, br=(), bsg=0, va=0, vb=0, ap=0, bp=0)
     o_a = Observation(0, 0, lane, oa.legal, oa.vector, oa.mask, oa.champ, CFG)
     o_b = Observation(0, 1, lane, ob.legal, ob.vector, ob.mask, ob.champ, CFG)
@@ -251,47 +250,12 @@ def test_intervention_agent_matches_the_rule_and_plays_legal_games():
 
 
 # ---------------------------------------------------------------------------------------------- stage helpers
-def test_candidate_sets_and_summaries():
-    c = val.candidates()
-    assert set(c) == {"policy"} | {f"m:{k}" for k in val.MARGINAL} | {f"c:{k}" for k in val.CONDITIONAL} | {f"f:{k}" for k in val.FULL}
-    assert all(isinstance(c[f"m:{k}"], iv.WavePlan) and c[f"m:{k}"].turns == val.PLAN_TURNS[k] for k in val.MARGINAL)
-    assert "f:hold" not in val.candidates(include_full=False)
-    states = [{"adv": {"m:hold": [-1.0, 0.1], "m:thin": [0.5, 0.1]},
-               "decomposition": {"policy": {"farm_diff": 1.0, "deaths": [1, 1]}, "m:hold": {"farm_diff": 0.0, "deaths": [2, 1]},
-                                 "m:thin": {"farm_diff": 1.5, "deaths": [1, 1]}}},
-              {"adv": {"m:hold": [-2.0, 0.1], "m:thin": [0.1, 0.2]},
-               "decomposition": {"policy": {"farm_diff": 1.0, "deaths": [1, 1]}, "m:hold": {"farm_diff": -1.0, "deaths": [2, 1]},
-                                 "m:thin": {"farm_diff": 1.1, "deaths": [1, 1]}}}]
-    s = val.summarize_states(states, ["m:hold", "m:thin"])
-    assert s["n_states"] == 2 and s["m:hold"]["mean_adv"] == -1.5 and s["m:hold"]["share_neg"] == 1.0
-    assert s["m:thin"]["share_pos"] == 0.5 and s["m:hold"]["farm_diff"] == pytest.approx(-1.5)
-    results = {"final:base:0|self|neutral": {"summary": s}, "final:base:1|self|neutral": {"summary": s}}
-    a = val.across_seeds(results, ["final:base:0", "final:base:1", "final:base:2"], lambda sp: f"{sp}|self|neutral", ["m:hold"])
-    assert a["m:hold"]["n_seeds"] == 2 and a["m:hold"]["mean"] == -1.5
-
-
-def test_held_turns_counts_the_enemy_front_at_own_minus_one():
-    from lanegame.state import State
-    held = State(ax=-2, ah=8, ar=(), asg=0, bx=1, bh=16, br=(), bsg=0, va=0, vb=0, ap=0, bp=0)
-    crashed = State(ax=-2, ah=8, ar=(), asg=0, bx=2, bh=0, br=(), bsg=10, va=0, vb=0, ap=0, bp=0)
-    infos = [{"state_after": held.to_list()}] * 3 + [{"state_after": crashed.to_list()}] * 2
-    assert val.held_turns(infos, 0, watch=20) == 3 and val.held_turns(infos, 1, watch=20) == 0
-
-
-def test_paired_values_are_reproducible_and_seat_paired():
-    suite = reference_suite(CFG)
-    v1 = val.paired_values(CFG, suite["push_punish"], suite["farm"], 3, 11, 40)
-    v2 = val.paired_values(CFG, suite["push_punish"], suite["farm"], 3, 11, 40)
-    assert v1 == v2 and len(v1["pair"]) == 3
-    assert v1["pair"] == pytest.approx((0.5 * (np.array(v1["seat_A"]) + np.array(v1["seat_B"]))).tolist())
-
-
 # ---------------------------------------------------------------------------------------------- with a network
 torch = pytest.importorskip("torch")
 
 
 def test_intervened_network_policy_is_consistent_with_the_engine_and_the_rules():
-    from lanegame.experiments.rl.m43b.common import agent_from_spec
+    from experiments.m43b.common import agent_from_spec
     agent = agent_from_spec("initial:0")                               # the untrained network: no checkpoint needed
     env = LaneEnv(CFG, max_turns=80, cache_size=5000)
     obs = env.reset(seed=1)

@@ -1,6 +1,6 @@
 """Cross-mechanic integration tests (plan §4, tests 1-12) on constructed scenarios and scripted play.
 
-Finding documented here and in docs/m4/m4_2/m4_implementation_report.md (S3): design §6.4's crash table was measured on the
+Finding documented here and in docs/archive/m4/m4_2/m4_implementation_report.md (S3): design §6.4's crash table was measured on the
 lane alone with full champion reach. On the implemented resolver the Slow Push rows reproduce exactly, but a
 Shove + Hold breaker does not keep its reach on every turn: when the probe pass (design §5 step 1, M2's rule) predicts
 that its front breaks the hold and crashes, its farm spot becomes its next packet, the champion walks back, its reach
@@ -24,15 +24,15 @@ import numpy as np
 import pytest
 
 from lanegame import GameConfig
-from lanegame import progression as pg
-from lanegame.champions import N_CHANCE, U_TRADE_HIT, mirror_chance, swap_seats
-from lanegame.champions_m4 import M4Side, M4State, initial_m4, resolve_turn_m4
-from lanegame.config import B_HOLD, B_SAFE, B_TRADE, CHAMP_ABSENT, F, NONE, SH, SP, champ_act
+from lanegame.engine import progression as pg
+from lanegame.engine.champions import N_CHANCE, U_TRADE_HIT, mirror_chance, swap_seats
+from lanegame.engine.champions_m4 import M4Side, M4State, initial_m4, resolve_turn_m4
+from lanegame.engine.config import B_HOLD, B_SAFE, B_TRADE, CHAMP_ABSENT, F, NONE, SH, SP, champ_act
 from lanegame.env import LaneEnv, play_episode
 from lanegame.env.agents_m4 import M4ScriptAgent, m4_suite
-from lanegame.mechanics import _blob_hp, initial_state, step_turn, wave_actions
-from lanegame.scenarios_m4 import DESIGN_HOLD_TABLE, hold_run, parked_state
-from lanegame.state import State
+from lanegame.engine.mechanics import _blob_hp, initial_state, step_turn, wave_actions
+from m4_scenarios import DESIGN_HOLD_TABLE, hold_run, parked_state
+from lanegame.engine.state import State
 
 M4 = GameConfig.m4()
 T = M4.tower
@@ -121,7 +121,7 @@ def test_3_shove_breaks_a_freeze_without_automatic_punishment():
             assert lane_only_hold(e, SH, ph, True) <= 6                            # the always-reaching breaker
             # no automatic penalty: until the break the breaker loses no HP (no trade, no gank), and its farm is the
             # ordinary collection rule at its cell, which never reads the defender's wave action
-            from lanegame.champions_m4 import collection_units
+            from lanegame.engine.champions_m4 import collection_units
             lane, m4 = parked_state(e, M4)
             for i in range(r["first_crash"] + 1):
                 wa = F if F in wave_actions(lane, 0, M4) else SP

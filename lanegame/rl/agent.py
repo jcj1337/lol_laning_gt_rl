@@ -26,7 +26,8 @@ from typing import Optional
 import numpy as np
 import torch
 
-from ..config import GameConfig
+from ..engine.config import GameConfig
+from ..paths import checkpoint as checkpoint_path
 from ..env.agents import sample
 from .network import PolicyValueNet, build_network
 
@@ -113,7 +114,10 @@ def save_checkpoint(path: str, net: PolicyValueNet, game_cfg: GameConfig, metada
 
 def load_checkpoint(path: str, verify: bool = True):
     """(network, game configuration, metadata). With `verify` (default) a version-2 file whose weights do not match
-    its digest raises ValueError."""
+    its digest raises ValueError. A path under runs/checkpoints/ that is missing falls back to the shipped copy under
+    artifacts/checkpoints/ (`lanegame.paths.checkpoint`; a fresh clone has only the demo's 7 networks)."""
+    if isinstance(path, (str, os.PathLike)):
+        path = checkpoint_path(os.fspath(path))
     d = torch.load(path, map_location="cpu", weights_only=False)
     if d.get("format") != CHECKPOINT_FORMAT:
         raise ValueError(f"{path} is not a lanegame RL checkpoint")
@@ -126,7 +130,7 @@ def load_checkpoint(path: str, verify: bool = True):
 
 def checkpoint_info(path: str) -> dict:
     """Format version, digest, provenance and metadata of a checkpoint without building the network."""
-    d = torch.load(path, map_location="cpu", weights_only=False)
+    d = torch.load(checkpoint_path(os.fspath(path)), map_location="cpu", weights_only=False)
     return {"version": d.get("version"), "digest": d.get("digest"), "provenance": d.get("provenance"),
             "spec": d.get("spec"), "metadata": d.get("metadata")}
 

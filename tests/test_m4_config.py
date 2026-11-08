@@ -5,7 +5,7 @@ import json
 import pytest
 
 from lanegame import GameConfig
-from lanegame.config import M4_ECONOMY_FIELDS, _FIELD_DEFAULTS
+from lanegame.engine.config import M4_ECONOMY_FIELDS, _FIELD_DEFAULTS
 
 
 def test_c1_presets_round_trip_through_json():

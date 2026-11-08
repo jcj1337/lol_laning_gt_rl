@@ -7,13 +7,13 @@ import numpy as np
 import pytest
 
 from lanegame import GameConfig
-from lanegame import progression as pg
-from lanegame.champions import swap_seats
-from lanegame.champions_m4 import M4State, check_invariants
+from lanegame.engine import progression as pg
+from lanegame.engine.champions import swap_seats
+from lanegame.engine.champions_m4 import M4State, check_invariants
 from lanegame.env import (TRACE_VERSION_M4, LaneEnv, UniformAgent, feature_names, legal_set, observe, play_episode,
                           read_trace, write_trace)
 from lanegame.env.agents_m4 import m4_suite
-from lanegame.mechanics import total_hp
+from lanegame.engine.mechanics import total_hp
 
 M4 = GameConfig.m4()
 
@@ -121,7 +121,7 @@ def test_trace_version_2_round_trip(tmp_path):
 
 
 def test_m4_env_rejects_legacy_champion_state_and_expected_gank_reward():
-    from lanegame.champions import initial_champions
+    from lanegame.engine.champions import initial_champions
     env = LaneEnv(M4, max_turns=5)
     with pytest.raises(TypeError):
         env.reset(seed=0, champ=initial_champions(M4))

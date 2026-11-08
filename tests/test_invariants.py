@@ -3,10 +3,10 @@
 import numpy as np
 
 from lanegame import GameConfig, LaneGame
-from lanegame.game import apply_choice
-from lanegame.matrix_game import solve_matrix_game
-from lanegame.mechanics import step_turn
-from lanegame.solver import solve_equilibrium
+from lanegame.engine.game import apply_choice
+from lanegame.exact.matrix_game import solve_matrix_game
+from lanegame.engine.mechanics import step_turn
+from lanegame.exact.solver import solve_equilibrium
 
 from conftest import all_transitions
 

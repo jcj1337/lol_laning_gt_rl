@@ -1,8 +1,8 @@
 # The laning simulator's web frontend
 
 The visitor-facing application of the M6 demo: **Play** against a trained M5 agent and **Watch** two agents play, in
-the glass design approved in M6a ([decision record](../docs/m6/m6a_decision_record.md) §7). Watch also opens the
-sequences the server serves (M6c, [report](../docs/m6/m6c_guided_replays.md)): a verified research recording
+the glass design approved in M6a ([decision record](../docs/archive/m6/m6a_decision_record.md) §7). Watch also opens the
+sequences the server serves (M6c, [report](../docs/archive/m6/m6c_guided_replays.md)): a verified research recording
 with a chain of events, each a short note at a chosen position. React with TypeScript,
 built by Vite, served by the Python API (`python -m lanegame.demo`). The browser computes no game rule. Every number
 it shows comes from the server's frames, its tick narration restates facts those frames carry or the change
@@ -55,7 +55,7 @@ cd web && npm run types
 | `src/ui/*.tsx` | the top bar, the surface and its zones, the controls, the graph, Details, the dialogs, and the guide's note panel (`Guide.tsx`) |
 | `src/styles.css` | the glass design's stylesheet |
 
-The browser verification (`python -m lanegame.experiments.m6b browser`) drives the built app through real clicks
-and the app's `window.__demo` hooks; its evidence is in `results/m6/m6b_browser.json` and `results/m6/m6b/`. The
-sequences have their own check, `python -m lanegame.experiments.m6c browser` (`results/m6/m6c_browser.json`,
-`results/m6/m6c/`). `?mode=watch&sequence=<id>` opens a sequence directly.
+The browser verification (`python -m experiments.m6b browser`) drives the built app through real clicks
+and the app's `window.__demo` hooks; its verdict is in `artifacts/m6/m6b_browser.json` and its screenshots in `runs/m6/m6b/`. The
+sequences have their own check, `python -m experiments.m6c browser` (`artifacts/m6/m6c_browser.json`,
+screenshots in `runs/m6/m6c/`). `?mode=watch&sequence=<id>` opens a sequence directly.

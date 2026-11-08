@@ -1,4 +1,4 @@
-"""M4.2e-C: the wave action redesign (docs/natural_waves/m4_2e_wave_actions_report.md).
+"""M4.2e-C: the wave action redesign (docs/archive/natural_waves/m4_2e_wave_actions_report.md).
 
 The opt-in engine fields (wave_clear_scaling "capacity" with wave_hold_fraction / wave_thin_fraction, damage_law
 "lanchester_half") and their default preservation; the candidate preset `GameConfig.m4_lasthit()`; the global
@@ -10,17 +10,17 @@ import numpy as np
 import pytest
 
 from lanegame import GameConfig
-from lanegame.champions import N_CHANCE, NO_REACH, mirror_chance, swap_seats, champion_legal_actions
-from lanegame.champions_m4 import M4State, check_invariants, context, initial_m4, resolve_turn_m4
-from lanegame.config import SH, SP, F, W_CLEAR, W_HOLD, W_THIN
+from lanegame.engine.champions import N_CHANCE, NO_REACH, mirror_chance, swap_seats, champion_legal_actions
+from lanegame.engine.champions_m4 import M4State, check_invariants, context, initial_m4, resolve_turn_m4
+from lanegame.engine.config import SH, SP, F, W_CLEAR, W_HOLD, W_THIN
 from lanegame.env import LaneEnv, UniformAgent
 from lanegame.env.discounted import max_champion_wave_budget, per_turn_bound
 from lanegame.env.observation_m4 import decode_m4, m4_obs_size, observe_m4
-from lanegame.experiments.m4 import natural_waves as nw
-from lanegame.experiments.m4 import natural_waves_final as nf
-from lanegame.experiments.m4 import wave_actions as wa
-from lanegame.mechanics import initial_state, minion_damage, step_turn, total_hp
-from lanegame.state import State
+from experiments.m4 import natural_waves as nw
+from experiments.m4 import natural_waves_final as nf
+from experiments.m4 import wave_actions as wa
+from lanegame.engine.mechanics import initial_state, minion_damage, step_turn, total_hp
+from lanegame.engine.state import State
 
 from test_m4_env import soak
 

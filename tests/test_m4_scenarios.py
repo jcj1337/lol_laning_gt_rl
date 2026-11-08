@@ -4,14 +4,14 @@ import numpy as np
 import pytest
 
 from lanegame import GameConfig
-from lanegame import progression as pg
-from lanegame.champions import N_CHANCE, U_TRADE_HIT, trade_hit_probability
-from lanegame.champions_m4 import level, resolve_turn_m4
-from lanegame.config import B_HOLD, B_RECALL, B_SAFE, B_TRADE, CHAMP_ABSENT, F, SH, SP, champ_act
+from lanegame.engine import progression as pg
+from lanegame.engine.champions import N_CHANCE, U_TRADE_HIT, trade_hit_probability
+from lanegame.engine.champions_m4 import level, resolve_turn_m4
+from lanegame.engine.config import B_HOLD, B_RECALL, B_SAFE, B_TRADE, CHAMP_ABSENT, F, SH, SP, champ_act
 from lanegame.env.agents_m4 import duel_edge
 from lanegame.env.observation import feature_names, observe
-from lanegame.mechanics import wave_actions
-from lanegame.scenarios_m4 import load_witnesses, replay, scenario_config, scenario_predicates
+from lanegame.engine.mechanics import wave_actions
+from m4_scenarios import load_witnesses, replay, scenario_config, scenario_predicates
 
 W = load_witnesses()
 T = 2

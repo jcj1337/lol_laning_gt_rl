@@ -17,7 +17,7 @@ from typing import Iterator, List, Tuple
 import numpy as np
 
 from lanegame import GameConfig
-from lanegame.mechanics import initial_state, legal_actions, step_turn
+from lanegame.engine.mechanics import initial_state, legal_actions, step_turn
 
 N_TUPLES = 2000
 PRESETS = {"v1": GameConfig.v1, "v2": GameConfig.v2, "siege": GameConfig, "champions": GameConfig.champions}
@@ -82,7 +82,7 @@ def _champ_turn_repr(ct) -> str:
 def champion_digest(n: int = N_TUPLES, seed: int = 20261011) -> str:
     """champions(): lane step under every champion reach of the walk, resolve_turn with random chance vectors,
     champion legal sets and both observations."""
-    from lanegame.champions import N_CHANCE, champion_legal_actions, initial_champions, resolve_turn
+    from lanegame.engine.champions import N_CHANCE, champion_legal_actions, initial_champions, resolve_turn
     from lanegame.env.observation import observe
     cfg = GameConfig.champions()
     rng = random.Random(seed)
@@ -138,7 +138,7 @@ def _jsonable(x):
     return x
 
 
-M3B_CHECKPOINT = "results/rl/checkpoints/m3b_equal_s0/final.pt"
+M3B_CHECKPOINT = "runs/checkpoints/m3b_equal_s0/final.pt"
 
 
 def checkpoint_digest(path: str = M3B_CHECKPOINT, episodes: int = 40, seed: int = 10_000) -> str:
@@ -169,7 +169,7 @@ def solution_digest(sol) -> str:
 def solver_values() -> List[Tuple[float, int, str]]:
     """(root value, reachable states, solution digest) of the three K = 16 conftest models (v1, revised, siege)."""
     from lanegame import LaneGame
-    from lanegame.solver import solve_equilibrium
+    from lanegame.exact.solver import solve_equilibrium
     out = []
     for cfg in (GameConfig.v1(horizon=16), GameConfig.v2(horizon=16), GameConfig(horizon=16)):
         g = LaneGame(cfg)

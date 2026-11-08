@@ -213,6 +213,6 @@ export const BUSH_NOTE = 'The bush hides no one in this simulator: the other sid
 export const GRAPH_NOTE = 'How much more gold one side has earned so far. Not a chance of winning.';
 export const EXAMPLE_NOTE = "One game is an example, not evidence for M5's findings. See About.";
 export const DOCS_URL = 'https://github.com/jcj1337/lol_game_theory_laning/blob/main/docs/README.md';
-export const OVERVIEW_URL = 'https://github.com/jcj1337/lol_game_theory_laning/blob/main/docs/m6/research_overview.md';
+export const OVERVIEW_URL = 'https://github.com/jcj1337/lol_game_theory_laning/blob/main/docs/research_overview.md';
 /** A position in words: the state after turn p, or the start. */
 export const afterTurn = (p: number): string => (p === 0 ? 'the start' : `after turn ${p}`);

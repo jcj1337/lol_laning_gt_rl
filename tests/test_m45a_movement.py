@@ -1,4 +1,4 @@
-"""M4.5a movement correction (champion_movement_rule "tick"; docs/m4/m4_5/m4_5a_unified_mechanics_report.md §10).
+"""M4.5a movement correction (champion_movement_rule "tick"; docs/archive/m4/m4_5/m4_5a_unified_mechanics_report.md §10).
 
 Champions walk tick by tick to their unchanged end cell; Hold, an unthreatened Yield and Safe follow their wave's front
 of each tick; positional aggro is evaluated on each tick's positions after its movement, whether the champion moved
@@ -14,12 +14,12 @@ import json
 import numpy as np
 import pytest
 
-from lanegame.champions import N_CHANCE, mirror_chance
-from lanegame.champions_m4 import resolve_turn_m4
-from lanegame.config import B_HOLD, B_YIELD, SP, GameConfig, champ_act
+from lanegame.engine.champions import N_CHANCE, mirror_chance
+from lanegame.engine.champions_m4 import resolve_turn_m4
+from lanegame.engine.config import B_HOLD, B_YIELD, SP, GameConfig, champ_act
 from lanegame.env import LaneEnv
-from lanegame.experiments.m45a import movement as mv
-from lanegame.positional import WARD, dist, tick_path, tick_speeds
+from experiments.m45a import movement as mv
+from lanegame.engine.positional import WARD, dist, tick_path, tick_speeds
 
 R2, R1 = GameConfig.m45_unified(), GameConfig.m45_unified_r1()
 T = R2.tower
@@ -294,39 +294,3 @@ def test_recordings_carry_and_route_the_rules_revision(tmp_path):
     with pytest.raises(ValueError):
         ss.load_recording(str(bad))
 
-
-def test_viewer_draws_champions_at_their_tick_cells():
-    from lanegame.viewer import render
-    from lanegame.viewer import session as ss
-    hold = champ_act(SP, B_HOLD)
-    rec = ss.play(ss.Setup("m45_unified", "walk_back", "equal", 0), prefix=[(hold, hold)])
-    path = rec.turns[0].info["champion_path"]
-    assert path[0] == (1, 0)
-    for f in (1, 2):
-        view = ss.frame_view(rec, 0, f)
-        assert view["champions"]["A"]["pos_global"] == path[0][f - 1]
-        assert view["champions"]["B"]["pos_global"] == -path[1][f - 1]
-        render.lane_figure(view, rec.cfg)
-    assert ss.frame_view(rec, 0, 3)["champions"]["A"]["pos_global"] == rec.champs[1].a.pos
-
-
-@pytest.mark.parametrize("name", ["m45a_M1_hold_follows", "m45a_M2_chase_missed", "m45a_M3_chase_landed",
-                                  "m45a_M4_walk_back"])
-def test_movement_demonstrations_show_their_event_and_replay_exactly(name, tmp_path):
-    from lanegame.experiments.m45a import demos
-    from lanegame.experiments.rl.m44.trace import verify
-    demo = next(d for d in demos.DEMOS if d.name == name)
-    r = demos.export(demo, str(tmp_path))
-    v = verify(r["path"])
-    assert v["actions_equal"] and v["payoff_equal"] and v["config"] == "m45_unified"
-    with open(r["path"], encoding="utf-8") as f:
-        assert json.load(f)["rules_revision"] == 2
-    a = r["summary"]["A"]
-    if name == "m45a_M1_hold_follows":
-        assert a["minion_units_taken"] == 0
-    elif name == "m45a_M2_chase_missed":
-        assert a["positional_ticks_taken"] >= 1 and a["retaliation_ticks_taken"] == 0
-    elif name == "m45a_M3_chase_landed":
-        assert a["positional_ticks_taken"] >= 1 and a["retaliation_ticks_taken"] >= 1
-    else:
-        assert a["positional_ticks_taken"] == 1

@@ -27,13 +27,14 @@ version 1 no combined actions):
 from __future__ import annotations
 
 import json
+import os
 from typing import Dict
 
 import numpy as np
 
-from .config import ACTION_NAMES, GameConfig
-from .solver import EquilibriumSolution
-from .state import State
+from .engine.config import ACTION_NAMES, GameConfig
+from .exact.solver import EquilibriumSolution
+from .engine.state import State
 
 STATE_FIELDS = ["ax", "ah", "ar", "asg", "bx", "bh", "br", "bsg", "va", "vb", "ap", "bp"]
 
@@ -96,6 +97,7 @@ class _Enc(json.JSONEncoder):
 
 
 def dump_json(obj, path: str) -> None:
+    os.makedirs(os.path.dirname(path) or ".", exist_ok=True)
     with open(path, "w", encoding="utf-8") as f:
         json.dump(obj, f, cls=_Enc, indent=1)
 

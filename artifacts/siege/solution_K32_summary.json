@@ -1,0 +1,172 @@
+{
+ "schema": "lanegame.solution_summary",
+ "version": 1,
+ "source": {
+  "file": "results/siege/solution_K32.json",
+  "sha256": "55762d80036dbca794839d8a64dd25f03217803cd9b828c08f6cfc7b5df13cd7",
+  "bytes": 68162009,
+  "schema": "lanegame.solution",
+  "schema_version": 3,
+  "commit": "f613f0a00a2d46fe717de7e8c79077fa9e0310c3"
+ },
+ "note": "The K = 32 equilibrium of the default model GameConfig(horizon=32), reduced to its metadata on 2026-11-08 (the full 68 MB file is in git history at the commit above). Regenerate the full solution with `python -m lanegame solve --horizon 32` (tests/test_legacy_pins.py::test_siege_k32_solution_resolves_identically re-solves it under --runslow).",
+ "config": {
+  "base": 4,
+  "tower": 2,
+  "ticks_per_turn": 2,
+  "spawn_interval": 4,
+  "horizon": 32,
+  "wave_hp": 4,
+  "max_stacks": 2,
+  "cap_rule": "block",
+  "queue_fights": true,
+  "positioning": true,
+  "damage_law": "lanchester",
+  "shove_damage": 1,
+  "tower_damage": 1,
+  "pressure_kappa": [
+   0,
+   1,
+   0
+  ],
+  "slowpush_line": 0,
+  "slowpush_mode": "stack_creep",
+  "slowpush_creep_period": 2,
+  "freeze_line": -1,
+  "freeze_break_threshold": 10,
+  "freeze_break_push": [
+   0,
+   4,
+   0
+  ],
+  "freeze_legal_max": -1,
+  "tower_mode": "mass",
+  "tower_consumption_per_turn": 1,
+  "tower_siege_damage": 1,
+  "siege_engage": false,
+  "siege_cap": 48,
+  "siege_mode": "objective",
+  "plate_mode": "crash",
+  "plate_grant": [
+   1,
+   2,
+   3
+  ],
+  "plates_cap": 6,
+  "plates_per_tower": 5,
+  "plates_per_turn": 1,
+  "plate_value": 1.0,
+  "thin_damage": 1,
+  "thin_reach": 1,
+  "crash_options": [
+   [
+    [
+     1.0,
+     false
+    ],
+    [
+     0.0,
+     true
+    ]
+   ],
+   [
+    [
+     2.0,
+     false
+    ],
+    [
+     0.0,
+     true
+    ]
+   ],
+   [
+    [
+     3.0,
+     false
+    ],
+    [
+     2.0,
+     true
+    ]
+   ]
+  ],
+  "vision_turns": 6,
+  "vision_reduction": 0.75,
+  "farm_per_hp": 0.25,
+  "collect_contest": 0.9,
+  "collect_contest_enemy_tower": 0.5,
+  "collect_safe": 0.8,
+  "collect_safe_slope": 0.2,
+  "zone_contest": 0.3,
+  "zone_under_tower": 0.15,
+  "gank_base": 0.15,
+  "gank_position": 0.1,
+  "gank_action": [
+   0.02,
+   0.05,
+   0.02,
+   0.0,
+   0.0,
+   0.0
+  ],
+  "gank_strength": 0.02,
+  "gank_max": 0.4,
+  "gank_loss": 5.0,
+  "posture_cap": [
+   null,
+   null,
+   null,
+   -1,
+   -1,
+   -1
+  ]
+ },
+ "horizon": 32,
+ "value": 0.0,
+ "stats": {
+  "states": 172907,
+  "move_games": 172907,
+  "choice_games": 0,
+  "methods": {
+   "saddle": 164777,
+   "lp": 8130
+  },
+  "mixed_states": 8042,
+  "max_gap": 4.440892098500626e-15,
+  "seconds": 171.4258594000712,
+  "layer_sizes": [
+   1,
+   1,
+   4,
+   8,
+   19,
+   30,
+   54,
+   72,
+   82,
+   156,
+   202,
+   410,
+   504,
+   916,
+   972,
+   1520,
+   1586,
+   2614,
+   2368,
+   3984,
+   3826,
+   5802,
+   4592,
+   7168,
+   6628,
+   11782,
+   9770,
+   16080,
+   14392,
+   25526,
+   19978,
+   31860
+  ]
+ }
+}

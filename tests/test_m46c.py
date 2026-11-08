@@ -4,12 +4,12 @@ the archive's constructed states and held-out cells, the premium statistic)."""
 import numpy as np
 import pytest
 
-from lanegame.config import GameConfig
+from lanegame.engine.config import GameConfig
 
 
 def test_arms_differ_only_in_the_investment_curve():
-    from lanegame.experiments.rl.m46b.curves import ARMS as B_ARMS
-    from lanegame.experiments.rl.m46c import common as C
+    from experiments.m46b.curves import ARMS as B_ARMS
+    from experiments.m46c import common as C
     base, c1 = C.arm_cfg("baseline").to_dict(), C.arm_cfg("C1").to_dict()
     assert base == GameConfig.m45_calibrated().to_dict()
     assert C.arm_overrides("C1") == B_ARMS["C1"]["overrides"] == {"invest_gain": 3.24, "invest_scale": 64.0}
@@ -18,7 +18,7 @@ def test_arms_differ_only_in_the_investment_curve():
 
 
 def test_policy_specifications():
-    from lanegame.experiments.rl.m46c import common as C
+    from experiments.m46c import common as C
     assert C.policy_path("start:3").replace("\\", "/").endswith("m45c/ext/s3/final.pt")
     assert C.policy_path("C1:2").replace("\\", "/").endswith("m46c/train/main/C1/s2/final.pt")
     assert C.policy_path("baseline:1@2048000").replace("\\", "/").endswith(
@@ -53,7 +53,7 @@ def test_collector_hook_default_is_bit_identical():
 
 def _archive(tmp_path, cfg):
     from lanegame.env.starts import StartState, save_archive
-    from lanegame.experiments.rl.m46c.archive import freeze_draw, zone_draw
+    from experiments.m46c.archive import freeze_draw, zone_draw
     rng = np.random.default_rng(0)
     sts = []
     for i in range(6):
@@ -67,7 +67,7 @@ def _archive(tmp_path, cfg):
 
 
 def test_mixed_collector_beta_zero_equals_shared_collector(tmp_path):
-    from lanegame.experiments.rl.m46c.collector import mixed_collector_cls
+    from experiments.m46c.collector import mixed_collector_cls
     from lanegame.rl import SharedConfig, train_shared
     cfg = GameConfig.m45_calibrated()
     ppo, sc = _tiny_ppo(cfg), SharedConfig(current_fraction=1.0, snapshot_every=10_000)
@@ -77,7 +77,7 @@ def test_mixed_collector_beta_zero_equals_shared_collector(tmp_path):
 
 
 def test_mixed_collector_starts_lengths_and_mirrors(tmp_path):
-    from lanegame.experiments.rl.m46c.collector import mixed_collector_cls
+    from experiments.m46c.collector import mixed_collector_cls
     from lanegame.rl import MatchupSampler, SnapshotPool
     import torch
     from lanegame.rl import PolicyValueNet
@@ -102,8 +102,8 @@ def test_mixed_collector_starts_lengths_and_mirrors(tmp_path):
 
 def test_constructed_states_are_valid_in_both_arms_and_disjoint_from_evaluation_cells():
     from lanegame.env import LaneEnv
-    from lanegame.experiments.rl.m46c import common as C
-    from lanegame.experiments.rl.m46c.archive import eval_keys, freeze_draw, lead_cell, s_of_level, zone_draw
+    from experiments.m46c import common as C
+    from experiments.m46c.archive import eval_keys, freeze_draw, lead_cell, s_of_level, zone_draw
     base = C.arm_cfg("baseline")
     keys = eval_keys(base)
     rng = np.random.default_rng(1)
@@ -121,7 +121,7 @@ def test_constructed_states_are_valid_in_both_arms_and_disjoint_from_evaluation_
 
 
 def test_premium_cancels_the_equal_cell_and_seat_effects():
-    from lanegame.experiments.rl.m46c.analysis import CELL_IDX, premium_of
+    from experiments.m46c.analysis import CELL_IDX, premium_of
     rng = np.random.default_rng(0)
     recs = {}
     for (st, sit, c), i in CELL_IDX.items():
@@ -133,7 +133,7 @@ def test_premium_cancels_the_equal_cell_and_seat_effects():
 
 
 def test_seed_stats_t_interval():
-    from lanegame.experiments.rl.m46c.common import seed_stats
+    from experiments.m46c.common import seed_stats
     st = seed_stats({0: 1.0, 1: 2.0, 2: 3.0, 3: 4.0, 4: 5.0, 5: 6.0})
     assert st["mean"] == pytest.approx(3.5)
     assert st["ci"] == pytest.approx(2.571 * np.std([1, 2, 3, 4, 5, 6], ddof=1) / np.sqrt(6))

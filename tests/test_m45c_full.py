@@ -13,11 +13,10 @@ import pytest
 
 torch = pytest.importorskip("torch")
 
-from lanegame.experiments.rl.m45c import battery as B                                     # noqa: E402
-from lanegame.experiments.rl.m45c import common as C                                      # noqa: E402
-from lanegame.experiments.rl.m45c import full as F                                        # noqa: E402
-from lanegame.experiments.rl.m45c import health as H                                      # noqa: E402
-from lanegame.experiments.rl.m45c import health_report as R                               # noqa: E402
+from experiments.m45c import battery as B                                     # noqa: E402
+from experiments.m45c import common as C                                      # noqa: E402
+from experiments.m45c import full as F                                        # noqa: E402
+from experiments.m45c import health as H                                      # noqa: E402
 
 
 # ---------------------------------------------------------------------------------------------- training stage
@@ -34,25 +33,13 @@ def test_campaign_specification():
     assert p.lane_cache == 5000 and p.total_steps == F.FULL_BUDGET and p.lr == 3e-4 and p.anneal_lr
 
 
-def test_train_full_is_gated_and_refuses_existing_runs(tmp_path, monkeypatch):
-    from lanegame.experiments.rl.m45c.__main__ import main
-    with pytest.raises(SystemExit, match="confirm-m45c-full"):
-        main(["train_full"])
-    monkeypatch.setattr(C, "CKPT", str(tmp_path))
-    d = C.run_dir("full", 3)
-    os.makedirs(d)
-    open(os.path.join(d, "history.jsonl"), "w").close()
-    with pytest.raises(SystemExit, match="never overwrites"):
-        F.train((3,), False, "test")
-
-
 def test_a_failed_run_writes_an_error_record(tmp_path, monkeypatch):
     monkeypatch.setattr(C, "CKPT", str(tmp_path))
     os.makedirs(C.run_dir("smoke", 7, "_x"))
 
     def boom(args):
         raise RuntimeError("simulated failure")
-    import lanegame.experiments.rl.m45c.train as T
+    import experiments.m45c.train as T
     monkeypatch.setattr(T, "train_one", boom)
     r = F._job(("smoke", 7, 4096, None, "_x"))
     assert r["status"] == "failed" and "simulated failure" in r["error"]
@@ -99,33 +86,6 @@ def test_health_design_uses_reserved_seeds_and_existing_checkpoints():
         assert len({j[4] for j in js}) == 1                      # one seed per part: every comparison is paired
     assert len(H.cross_jobs()) == 15 and len(H.h2h_jobs()) == 12
     assert len(H.curve_jobs()) == 6 * 13 * 10
-
-
-def test_pre_registered_rules():
-    seeds = (0, 1, 2)
-    cv = {"final_minus_q3": {"per_seed": {"0": {"scripted": 0.1}, "1": {"scripted": 0.5}, "2": {"scripted": 0.05}}}}
-    hh = {"final_vs_q3": {"per_seed": {"0": {"estimate": 0.1, "half": 0.3}, "1": {"estimate": 0.2, "half": 0.3},
-                                       "2": {"estimate": 0.25, "half": 0.2}}},
-          "final_vs_mid": {"per_seed": {s: {"estimate": 0.8, "half": 0.3} for s in "012"}, "pooled": [0.8, 0.2]}}
-    cy = {"stop_criterion_met": False}
-    cr = {"seeds_disagree": False}
-    r = R.rules(cv, hh, cy, cr, None, seeds)
-    assert r["plateau"]["0"]["plateaued"]                         # both conditions hold
-    assert not r["plateau"]["1"]["plateaued"]                     # the curve moved 0.5 over the last quarter
-    assert not r["plateau"]["2"]["plateaued"]                     # the head-to-head interval excludes 0
-    assert not r["extension"]["criterion_met"]                    # only 2 runs not plateaued (needs >= 3)
-    hh["final_vs_q3"]["per_seed"]["0"]["estimate"] = 0.6
-    r = R.rules(cv, hh, cy, cr, None, seeds)
-    assert r["extension"]["criterion_met"] and len(r["extension"]["seeds_individually_above_0.5_and_significant"]) == 3
-
-
-def test_cross_play_matrix_is_antisymmetric():
-    ev = {"cross": {f"final:full:{a}|final:full:{b}": {"estimate": a - b + 0.5, "ci95": [a - b, a - b + 1.0]}
-                    for a in range(3) for b in range(a + 1, 3)}}
-    cr = R.cross(ev, (0, 1, 2))
-    M = np.asarray(cr["matrix"])
-    assert np.allclose(M[np.triu_indices(3, 1)], -M.T[np.triu_indices(3, 1)])
-    assert cr["pairs"] == 3 and cr["max_abs"] == pytest.approx(1.5) and cr["seeds_disagree"] is False
 
 
 # ---------------------------------------------------------------------------------------------- battery
@@ -190,12 +150,6 @@ def test_battery_validation_rule():
     assert r["verdict"].startswith("fail") and r["contradictions"] and not r["slope_ok"]
 
 
-def test_battery_is_gated():
-    from lanegame.experiments.rl.m45c.__main__ import main
-    with pytest.raises(SystemExit, match="confirm-m45c-battery"):
-        main(["battery"])
-
-
 @pytest.mark.skipif(not os.path.exists(C.final_path("pilot", C.PILOT_SEED)), reason="pilot checkpoint not present")
 def test_battery_state_job_is_paired_and_resumable(tmp_path):
     cfg = C.env_cfg()
@@ -209,21 +163,6 @@ def test_battery_state_job_is_paired_and_resumable(tmp_path):
         assert json.load(f)["GQ"] == d["GQ"]
     _, d2 = B.state_job(args)
     assert d2["GQ"] == d["GQ"]
-
-
-def test_comprehensive_parts_and_attackers_are_gated():
-    from lanegame.experiments.rl.m45c.__main__ import main
-    with pytest.raises(SystemExit, match="confirm-m45c-comprehensive"):
-        main(["health_eval", "--health-parts", "headline"])
-    with pytest.raises(SystemExit, match="confirm-m45c-attackers"):
-        main(["attackers"])
-    from lanegame.experiments.rl.m45c import attackers as A
-    assert A.ATTACK_BUDGET_F == F.FULL_BUDGET // 2
-    assert C.FULL_RESERVED[0] <= A.ATTACK_TRAIN_SEED_F and A.ATTACK_EVAL_SEED_F <= C.FULL_RESERVED[1]
-    sched = set(C.snapshot_schedule(F.FULL_BUDGET))
-    assert len(H.TOURNAMENT) == 9 and set(H.TOURNAMENT) <= sched and len(H.tournament_jobs()) == 6 * 36
-    rest = {int(j[0].split(":")[-1]) for j in H.curve_rest_jobs() if j[0].startswith("snap")}
-    assert rest | set(H.CHECKPOINTS) == set(H.GRID_POINTS) and not rest & set(H.CHECKPOINTS)
 
 
 def test_battery_report_pools_policies_and_reports_validation(tmp_path):
@@ -243,9 +182,9 @@ def test_battery_report_pools_policies_and_reports_validation(tmp_path):
 
 @pytest.mark.skipif(not os.path.exists(C.final_path("pilot", C.PILOT_SEED)), reason="pilot checkpoint not present")
 def test_trace_export_replays_exactly_in_the_viewer(tmp_path):
-    from lanegame.experiments.rl.m44.records import play_record
-    from lanegame.experiments.rl.m44.trace import verify
-    from lanegame.experiments.rl.m45c import traces as TR
+    from experiments.m44.records import play_record
+    from experiments.m44.trace import verify
+    from experiments.m45c import traces as TR
     cfg = C.env_cfg()
     x = C.agent_from_spec("final:pilot:100", cfg)
     for start, scen, gap in ((None, "s0", "equal"), (TR._gap_start(), "neutral", "large")):
@@ -269,18 +208,3 @@ def test_battery_mechanics_are_exact_one_turn_expectations():
     agg = d["aggregate"]["policy (modal)"]
     assert agg["immediate_lead_diff"] == 0 and agg["same_code_as_policy"] == 1.0
 
-
-def test_extension_campaign_scales_every_fraction_and_compares_budgets():
-    sched = set(C.snapshot_schedule(F.EXT_BUDGET))
-    assert F.CAMPAIGNS["ext"] == (16_384_000, F.EXT_OUT, False) and "ext" in C.PHASES
-    assert H.EXT.checkpoints == tuple(2 * n for n in H.MAIN.checkpoints) and set(H.EXT.checkpoints) <= sched
-    assert H.EXT.mid == F.EXT_MIDPOINT == 8_192_000 and H.EXT.q3 == 12_288_000 and set(H.EXT.grid) <= sched
-    assert H.spec(3, "final", H.EXT) == "final:ext:3" and H.spec(3, 8_192_000, H.EXT) == "snap:ext:3:8192000"
-    vs = H.vs_main_jobs()
-    assert len(vs) == 36 and {j[0].split(":")[1] for j in vs} == {"ext"} and {j[1].split(":")[1] for j in vs} == {"full"}
-    an = H.anneal_jobs()
-    assert all(j[0].startswith("final:full:") and j[1].endswith(":8192000") for j in an) and len(an) == 36
-    assert {"vs_main", "anneal", "historical", "headline_main"} <= set(H.COMPREHENSIVE)
-    assert all(j[0].startswith("final:full:") for j in H.headline_main_jobs())
-    from lanegame.experiments.rl.m45c import attackers as A
-    assert A.attacker_dir(2, phase="ext").endswith(os.path.join("attack", "ext_s2"))

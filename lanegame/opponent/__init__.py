@@ -1,4 +1,4 @@
-"""Bayesian opponent modelling (OM2, docs/opponent_modelling/om2_design.md): opponent types that play and report
+"""Bayesian opponent modelling (OM2, docs/archive/opponent_modelling/om2_design.md): opponent types that play and report
 action likelihoods (`types`), and the belief over them (`belief`). Opt-in research code: nothing in the game, the
 environment's defaults or the trainer's defaults depends on it."""
 

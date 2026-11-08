@@ -1,4 +1,4 @@
-"""The Bayesian belief about the opponent (OM2, docs/opponent_modelling/om2_design.md §3).
+"""The Bayesian belief about the opponent (OM2, docs/archive/opponent_modelling/om2_design.md §3).
 
 A log posterior over K belief types (lanegame.opponent.types; the last is usually the catch-all "unknown"), uniform
 prior. After each turn the opponent's observed action updates it:

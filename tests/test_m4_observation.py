@@ -7,13 +7,13 @@ import numpy as np
 import pytest
 
 from lanegame import GameConfig
-from lanegame import progression as pg
-from lanegame.champions import N_CHANCE, champion_legal_actions, swap_seats
-from lanegame.champions_m4 import M4_SIDE_FIELDS, M4Side, M4State, initial_m4, resolve_turn_m4
+from lanegame.engine import progression as pg
+from lanegame.engine.champions import N_CHANCE, champion_legal_actions, swap_seats
+from lanegame.engine.champions_m4 import M4_SIDE_FIELDS, M4Side, M4State, initial_m4, resolve_turn_m4
 from lanegame.env.observation import feature_names, obs_size, observe
 from lanegame.env.observation_m4 import decode_m4
-from lanegame.mechanics import initial_state
-from lanegame.state import State
+from lanegame.engine.mechanics import initial_state
+from lanegame.engine.state import State
 
 M4 = GameConfig.m4()
 ASYM = GameConfig.m4(skill_a=0.7, skill_b=0.35)
@@ -54,7 +54,7 @@ def test_o1_full_state_roundtrip_on_a_random_legal_soak():
 
 @pytest.mark.slow
 def test_o1_lane_block_roundtrip_on_the_exhaustive_reachable_lane():
-    from lanegame.lane_enum import reachable_lane
+    from lanegame.engine.lane_enum import reachable_lane
     seen = reachable_lane(M4)
     assert len(seen) == 20572
     m4 = initial_m4(M4)
@@ -64,7 +64,7 @@ def test_o1_lane_block_roundtrip_on_the_exhaustive_reachable_lane():
 
 @pytest.mark.slow
 def test_o2_m2_aliased_lane_states_have_distinct_m4_encodings():
-    from lanegame.lane_enum import reachable_lane
+    from lanegame.engine.lane_enum import reachable_lane
     legacy = GameConfig()
     groups = collections.defaultdict(list)
     for lane, ph in reachable_lane(M4):

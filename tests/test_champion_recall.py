@@ -6,13 +6,13 @@ import numpy as np
 import pytest
 
 from lanegame import GameConfig
-from lanegame.champions import (AWAY, CHANNEL, FARM, NO_REACH, RECALL, TRADING, ChampSide, ChampState,
+from lanegame.engine.champions import (AWAY, CHANNEL, FARM, NO_REACH, RECALL, TRADING, ChampSide, ChampState,
                                 champion_collection, champion_legal_actions, initial_champions, recall_legal,
                                 resolve_turn, swap_seats)
-from lanegame.config import B_HOLD, B_RECALL, B_SAFE, B_TRADE, CHAMP_ABSENT, SH, SP, champ_act
+from lanegame.engine.config import B_HOLD, B_RECALL, B_SAFE, B_TRADE, CHAMP_ABSENT, SH, SP, champ_act
 from lanegame.env import LaneEnv, feature_names, play_episode
-from lanegame.mechanics import step_turn
-from lanegame.state import State
+from lanegame.engine.mechanics import step_turn
+from lanegame.engine.state import State
 
 CFG = GameConfig.champions(horizon=16)
 T = CFG.tower

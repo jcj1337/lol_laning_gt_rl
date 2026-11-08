@@ -12,14 +12,14 @@ import numpy as np
 import pytest
 
 from lanegame import GameConfig
-from lanegame.champions_m4 import champion_legal_actions, check_invariants
-from lanegame.config import B_RECALL, champ_behavior
+from lanegame.engine.champions_m4 import champion_legal_actions, check_invariants
+from lanegame.engine.config import B_RECALL, champ_behavior
 from lanegame.diagnostics import lane_exit as LX
-from lanegame.experiments.m45b import states as S
+from experiments.m45b import states as S
 
 CFG = GameConfig.m45_calibrated()
-RECORD = os.path.join("results", "rl", "checkpoints", "m46d", "records", "baseline", "ext_baseline_0.npz")
-CKPT = os.path.join("results", "rl", "checkpoints", "m46c", "train", "ext", "baseline", "s0", "final.pt")
+RECORD = os.path.join("runs", "checkpoints", "m46d", "records", "baseline", "ext_baseline_0.npz")
+CKPT = os.path.join("runs", "checkpoints", "m46c", "train", "ext", "baseline", "s0", "final.pt")
 
 
 class RandomLegal:
@@ -98,7 +98,7 @@ def test_since_return():
 
 # ---------------------------------------------------------------------------------------------- restoration
 def test_restored_checkpoint_continues_identically():
-    from lanegame.experiments.rl.m46a.common import state_from_list, state_to_list
+    from experiments.m46a.common import state_from_list, state_to_list
     st = _state()
     back = state_from_list(state_to_list(st))
     assert back[0] == st[0] and back[1] == st[1] and back[2] == st[2]
@@ -106,19 +106,6 @@ def test_restored_checkpoint_continues_identically():
     b = LX.continuation(CFG, back, *_pols(9, 30), 9, 30)
     for k in LX.SIDE_KEYS + ("r",):
         assert np.array_equal(a[k], b[k])
-
-
-@pytest.mark.skipif(not (os.path.exists(RECORD) and os.path.exists(CKPT)), reason="M4.6d records / checkpoints absent")
-def test_replays_reproduce_the_recorded_games():
-    pytest.importorskip("torch")
-    from lanegame.experiments.rl.m48 import states as ST
-    z = np.load(RECORD)
-    rec = {k: z[k] for k in z.files}
-    game = ST.play("baseline", 0, ST.rec_seed(0, 1), 60, record_horizon=ST.REC_TURNS)
-    ST.verify(rec, 1, game, 60, CFG.gold_scale)                   # raises on any difference
-    assert LX.lead(game["states"][60][1], CFG) == pytest.approx(rec["r"][1, :60].sum(), abs=1e-9)
-    with pytest.raises(AssertionError):                          # a wrong game index is detected
-        ST.verify(rec, 2, game, 60, CFG.gold_scale)
 
 
 # ---------------------------------------------------------------------------------------------- paired randomness
@@ -216,21 +203,6 @@ def test_first_turn_return_and_stock_times():
 
 
 # ---------------------------------------------------------------------------------------------- the study's variants and cases
-def test_controlled_variants_keep_the_raw_lead():
-    from lanegame.experiments.rl.m48 import rollouts as R
-    st = _state(60)
-    D0 = LX.lead(st[1], CFG)
-    for name in ("A_fresh", "A_away1"):
-        v = R.VARIANTS[name](CFG, st)
-        check_invariants(v[1], CFG)
-        assert LX.lead(v[1], CFG) == pytest.approx(D0) and v[1].b == st[1].b and v[0] == st[0]
-    f = R.VARIANTS["A_fresh"](CFG, st)[1].a
-    assert f.gold == 0 and f.absent == 0 and f.pos == -CFG.tower and f.items == st[1].a.items + st[1].a.gold
-    a1 = R.VARIANTS["A_away1"](CFG, st)[1].a
-    assert a1.absent == 1 and a1.gold == st[1].a.gold and LX.seat_status(R.VARIANTS["A_away1"](CFG, st)[1], 0) in (
-        "recall", "dead")
-
-
 def _desc(**kw):
     base = {"D0": 0.0, "xp_diff": 0.0, "hp_diff": 0.0, "stock_diff": 0.0}
     for x in ("A", "B"):
@@ -241,91 +213,4 @@ def _desc(**kw):
     return base
 
 
-def test_case_criteria_read_the_checkpoint_and_are_mirror_symmetric():
-    from lanegame.experiments.rl.m48 import states as ST
-    ret = _desc(status_A=1.0, returns_in_A=1.0, stock_A=24.0, near_A=16.0, since_return_B=15.0, unspent_B=4.0,
-                hp_diff=float("nan"))
-    assert ("returner", "A") in ST.cases_of(ret)
-    mir = {}
-    for k, v in ret.items():
-        if k.endswith("_A"):
-            mir[k[:-2] + "_B"] = v
-        elif k.endswith("_B"):
-            mir[k[:-2] + "_A"] = v
-        else:
-            mir[k] = -v if k in ("D0", "xp_diff", "hp_diff", "stock_diff") else v
-    assert ("returner", "B") in ST.cases_of(mir)
-    assert ("returner", "A") not in ST.cases_of({**ret, "since_return_B": 5.0})        # B not due
-    assert ("lost", "B") in ST.cases_of(_desc(status_B=2.0, returns_in_B=3.0, hp_B=1.0, near_B=16.0,
-                                              hp_diff=float("nan")))
-    assert ("stable", "A") in ST.cases_of(_desc())
-    assert ("opposing", "A") in ST.cases_of(_desc(D0=1.5, xp_diff=-20.0))
-    assert ("denied", "A") in ST.cases_of(_desc(holds_freeze_B=1.0))
-
-
-@pytest.mark.skipif(not os.path.exists(CKPT), reason="M4.6c checkpoints absent")
-def test_job_writes_exact_mirrors_and_consistent_window_sums(tmp_path):
-    pytest.importorskip("torch")
-    from lanegame.experiments.rl.m48 import common as C
-    from lanegame.experiments.rl.m48 import families as F
-    from lanegame.experiments.rl.m48 import rollouts as R
-    cfg = C.setup("baseline")
-    from lanegame.experiments.rl.m47 import streams as SM
-    st = SM.self_play_state(cfg, C.net_of("ext/baseline:0"), S.s0(cfg), 4242, 50)
-    j = {"key": "t", "path": str(tmp_path / "t.npz"), "start": C.state_to_list(st), "index": 1, "root": 1, "K": 3,
-         "T": C.T_MAX, "full": True,
-         "combos": {"own": F.own("baseline", 0), "mirror": F.own("baseline", 0, mirror=True),
-                    "fresh": F.own("baseline", 0, "A_fresh")}}
-    R.job(j)
-    d = R.load(j["path"])
-    assert np.array_equal(d["own"]["r"], -d["mirror"]["r"])
-    assert np.all(d["own"]["acct"] == 0) and np.all(d["fresh"]["acct"] == 0)
-    for h in C.WINDOWS:
-        assert np.allclose(d["own"][f"c{h}_farm"], d["own"]["f__farm"][:, :h].sum(1), atol=1e-4)
-        assert np.allclose(d["own"][f"c{h}_farm"], d["mirror"][f"c{h}_farm"][:, ::-1], atol=1e-6)
-    r1 = np.asarray(d["own"]["r"], float)
-    e = (d["own"]["f__earned"][..., 0] - d["own"]["f__earned"][..., 1]).astype(float)
-    assert np.allclose(r1, e, atol=1e-5)
-    assert C.roll_seed(1, 1, 0) != C.roll_seed(1, 2, 0) and C.roll_seed(1, 1, 0) != C.roll_seed(1, 1, 1)
-
-
 # ---------------------------------------------------------------------------------------------- analysis helpers
-def test_pending_items_categories_and_resolution():
-    from lanegame.experiments.rl.m48 import analysis as AN
-    d = _desc(status_A=1.0, returns_in_A=1.0, since_return_B=14.0, stock_A=16.0, stock_B=0.0, stock_diff=16.0)
-    p = AN.pending_items(d)
-    assert p == {"absent": [0], "stock": [0], "due": [1]}
-    assert AN.category(d) == ("recall_away", "A")
-    assert AN.category(_desc(status_B=2.0))[0] == "dead"
-    assert AN.category(_desc(since_return_A=1.0)) == ("fresh", "A")
-    assert AN.category(_desc(since_return_A=4.0, since_return_B=13.0)) == ("due_asym", "A")
-    assert AN.category(_desc(stock_diff=-20.0)) == ("stock_asym", "B")
-    assert AN.category(_desc()) == ("ordinary", "A")
-    x = {"ret": np.array([[1.0, 5.0], [1.0, np.inf]]), "stock_t": np.array([[3.0, 0.0], [2.0, 0.0]])}
-    assert AN.resolution(d, x).tolist() == [5.0, np.inf]                  # max over the absent, due and stock items
-    assert AN.resolution(d, x, ("absent", "stock")).tolist() == [3.0, 2.0]
-
-
-def test_cross_validated_r2_and_robust_slope():
-    from lanegame.experiments.rl.m48 import analysis as AN
-    rng = np.random.default_rng(0)
-    X = rng.normal(size=(400, 2))
-    y = 2.0 * X[:, 0] + rng.normal(scale=0.5, size=400)
-    folds = np.arange(400) % 5
-    assert AN.cv_r2(y, X, folds) == pytest.approx(AN.r2(y, X), abs=0.03)
-    noise = rng.normal(size=(400, 12))
-    assert AN.cv_r2(y, noise, folds) < AN.r2(y, noise)                    # out-of-fold R2 does not reward overfitting
-    f = AN.ols(y, X[:, 0])
-    assert f["slope"] == pytest.approx(2.0, abs=0.1) and f["ci"] > 0
-
-
-@pytest.mark.skipif(not os.path.exists(os.path.join("results", "rl", "checkpoints", "m47", "eval", "h2h", "s0")),
-                    reason="M4.7 head-to-head records absent")
-def test_recheck_replays_m47_head_to_head_games(tmp_path):
-    pytest.importorskip("torch")
-    from lanegame.experiments.rl.m48 import common as C
-    from lanegame.experiments.rl.m48 import recheck as RC
-    _, info = RC.job({"key": "t", "s": 0, "games": [3], "path": str(tmp_path / "r.json.gz")})
-    assert info["max_dev"] < 1e-6                                         # float32 storage of M4.7's streams
-    d = C.load_gz(str(tmp_path / "r.json.gz"))
-    assert len(d["D0"]) == 1 and set(d["E"]) == {"5", "10", "20"}

@@ -47,7 +47,7 @@ Preconditions:
 ## Gotchas
 
 - The `--steps` default is 307,200 transitions, which takes minutes. Always pass `--steps 4096 --n-envs 4`.
-- The default `--out` is `results/rl/checkpoints/rl_shared`. Under `vl.py` it resolves inside `RUN/work/cli`, but pass
+- The default `--out` is `runs/checkpoints/rl_shared`. Under `vl.py` it resolves inside `RUN/work/cli`, but pass
   `--out` so the evidence names the run.
 - Raw `final.pt` bytes differ between identical runs, because the checkpoint carries provenance. `history.jsonl` also
   differs, but only in the timing fields `collect_s`, `update_s` and `elapsed`. Compare weights digests and evaluation

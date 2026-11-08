@@ -1,4 +1,4 @@
-"""M4.2c continuous gold investment (GameConfig.m4_continuous(), an experiment; docs/m4/m4_2/m4_continuous_investment_report.md):
+"""M4.2c continuous gold investment (GameConfig.m4_continuous(), an experiment; docs/archive/m4/m4_2/m4_continuous_investment_report.md):
 every return to base invests all unspent gold, AP(L, S) = AP(L, 0) [1 + alpha ((1 + S)^p - 1)], no tiers, no clamp.
 The validated two-tier m4() is untouched (tests/test_m4_economy.py)."""
 
@@ -6,15 +6,15 @@ import numpy as np
 import pytest
 
 from lanegame import GameConfig
-from lanegame import progression as pg
-from lanegame.champions import N_CHANCE, U_TRADE_HIT
-from lanegame.champions_m4 import M4Side, M4State, check_invariants, context, resolve_turn_m4
-from lanegame.config import B_HOLD, B_RECALL, B_TRADE, CHAMP_ABSENT, SP, champ_act
+from lanegame.engine import progression as pg
+from lanegame.engine.champions import N_CHANCE, U_TRADE_HIT
+from lanegame.engine.champions_m4 import M4Side, M4State, check_invariants, context, resolve_turn_m4
+from lanegame.engine.config import B_HOLD, B_RECALL, B_TRADE, CHAMP_ABSENT, SP, champ_act
 from lanegame.env import LaneEnv, UniformAgent
 from lanegame.env.agents_m4 import m4_suite
 from lanegame.env.discounted import per_turn_bound
 from lanegame.env.observation_m4 import decode_m4, observe_m4
-from lanegame.state import State
+from lanegame.engine.state import State
 
 C = GameConfig.m4_continuous()
 INV = pg.investment(C)

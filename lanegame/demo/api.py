@@ -1,5 +1,5 @@
-"""The demo's HTTP API (M6b): FastAPI over the session core, and the built frontend (docs/m6/m6_plan.md §4, §8.2;
-docs/m6/m6a_technical_report.md §4.1 for the contract it implements).
+"""The demo's HTTP API (M6b): FastAPI over the session core, and the built frontend (docs/archive/m6/m6_plan.md §4, §8.2;
+docs/archive/m6/m6a_technical_report.md §4.1 for the contract it implements).
 
     create_app(...)   the application; `python -m lanegame.demo` serves it with uvicorn on 127.0.0.1:8765
 

@@ -1,4 +1,4 @@
-"""Diagnostics tools (lanegame.diagnostics, docs/rl/openai_five_diagnostics_report.md): restorable snapshots and replay
+"""Diagnostics tools (lanegame.diagnostics, docs/archive/rl/openai_five_diagnostics_report.md): restorable snapshots and replay
 consistency, paired counterfactual rollouts (legal actions, reproducibility, frozen policies, no information about
 the other seat's uncommitted action, common random numbers), reward accounting, seat symmetry, seed separation, the
 action audit's attribution of rewards and action frequencies, rule overlays and the Phase D helpers."""
@@ -7,13 +7,13 @@ import numpy as np
 import pytest
 
 from lanegame import GameConfig
-from lanegame.champions import RECALL, N_CHANCE, ChampSide, ChampState, swap_seats
-from lanegame.config import B_HOLD, B_SAFE, B_TRADE, CHAMP_ABSENT, SH, SP, champ_act
+from lanegame.engine.champions import RECALL, N_CHANCE, ChampSide, ChampState, swap_seats
+from lanegame.engine.config import B_HOLD, B_SAFE, B_TRADE, CHAMP_ABSENT, SH, SP, champ_act
 from lanegame.diagnostics import (DEFER, Commit, FollowPolicy, FunctionPlan, ProbCache, Snapshot, audit_games, branch,
                                   legality_table, observation, restore, rollout, rollout_seed, sample_index, summarize)
 from lanegame.env import ChampionRuleAgent, LaneEnv, UniformAgent, champion_agents, observe, play_episode, run_episodes
-from lanegame.mechanics import initial_state
-from lanegame.champions import initial_champions
+from lanegame.engine.mechanics import initial_state
+from lanegame.engine.champions import initial_champions
 
 CFG = GameConfig.champions(horizon=12)
 AGENTS = champion_agents(CFG)
@@ -293,69 +293,3 @@ def test_audit_assigns_skills_to_players_not_seats():
 
 
 # ---------------------------------------------------------------------------------------------- experiment helpers
-def test_rule_overlay_plays_the_rule_where_it_fires_and_the_base_policy_elsewhere():
-    from lanegame.experiments.rl.diagnostics import RuleOverlay, overlay_rules
-    rules = overlay_rules()
-    ov = RuleOverlay(UNIFORM, rules["recall_hp2"], "u+recall")
-    env = LaneEnv(CFG)
-    oa, _ = env.reset(seed=0)
-    assert np.allclose(ov.distribution(oa), UNIFORM.distribution(oa))          # full HP: base policy
-    low = Snapshot(env.state, env.champ, 0, (0.5, 0.5)).with_side(0, hp=2)
-    ob = observation(CFG, low, 0)
-    p = ov.distribution(ob)
-    assert p.sum() == 1.0 and p[ob.legal.index(RECALL)] == 1.0                # at its tower: Recall is legal
-    mid = Snapshot(env.state, ChampState(ChampSide(0, 2, 0), env.champ.b), 3, (0.5, 0.5))
-    om = observation(CFG, mid, 0)
-    assert RECALL not in om.legal and ov.distribution(om)[om.legal.index(champ_act(SP, B_SAFE))] == 1.0
-    stats = run_episodes(env, ov, TRADER, 5, 3)
-    assert np.isfinite(stats.mean)
-
-
-def test_scenario_plans_stay_legal_when_the_champion_dies_or_recalls_mid_plan():
-    """Regression: the walk-back-and-recall plan once kept choosing Safe after its champion died on the way back.
-    Every scenario plan must hand over (None) or choose a legal action on any turn, including absent turns."""
-    from lanegame.experiments.rl.diagnostics import _plans
-    snap = _mid_snapshot(seed=2, k=5)[0]
-    away = snap.with_side(0, pos=-CFG.tower, hp=0, absent=CFG.death_turns)
-    lane = snap.with_side(0, pos=0, hp=1)
-    for sc in ("low_hp_lane", "enemy_away", "siege"):
-        for name, plan in _plans(sc, CFG).items():
-            for t in range(4):
-                for sn in (away, lane):
-                    ob = observation(CFG, sn, 0)
-                    a = plan.act(ob, t)
-                    assert a is None or a == DEFER or a in ob.legal, (sc, name, t, a, ob.legal)
-            assert plan.act(observation(CFG, away, 0), 1) is None
-    env = LaneEnv(CFG)
-    for m in range(20):                                                       # and whole rollouts run through
-        rollout(env, lane, 0, _plans("low_hp_lane", CFG)["back_recall"], (UNIFORM, TRADER), rollout_seed(9, m))
-
-
-def test_diagnostics_seed_roots_are_disjoint_from_training_and_earlier_evaluation():
-    from lanegame.experiments.rl import diagnostics as D
-    from lanegame.experiments.rl import robustness as R
-    from lanegame.experiments.rl import openai_five_eval as E
-    ours = {D.AUDIT_ROOT, D.AUDIT_ROOT + 1, D.AUDIT_ROOT + 2, D.HP_ROOT, D.CF_STATE_ROOT, D.CF_ROLL_ROOT,
-            D.OVERLAY_ROOT, D.OVERLAY_ROOT + 1, R.EVAL_ROOT}
-    earlier = {10_000, 20_000, 30_000, 30_001, E.EVAL_SEED, E.CURVE_SEED, E.BR_SEED, E.DETAIL_SEED, 77_777}
-    training = set(range(0, 10)) | set(range(200, 203)) | set(range(500, 503)) | set(range(700, 703)) | \
-        set(range(900, 913))
-    assert not ours & earlier and not ours & training
-    assert min(ours) >= 50_000
-    # the per-(scenario, policy) roots of the counterfactual stage (root + 100 * scenario + policy) never reach the
-    # next stage's root
-    top = 100 * (len(D.SCENARIOS) - 1) + len(D.policies()) - 1
-    assert D.CF_STATE_ROOT + top < D.CF_ROLL_ROOT and D.CF_ROLL_ROOT + top < D.OVERLAY_ROOT
-
-
-def test_phase_d_attacker_plan_and_paired_difference():
-    from lanegame.experiments.rl import robustness as R
-    att = R.attackers()
-    assert len(att) == 9 * len(R.WARM_SEEDS) + len(R.SCRATCH_TARGETS)
-    assert len({a[0] for a in att}) == len(att)                                # unique attacker ids / directories
-    assert not {a[4] for a in att} & {900, 901, 902}                          # new training seeds
-    assert all(s % 1024 == 0 for s in R.CURVE_STEPS) and R.CURVE_STEPS[-1] == R.BR_STEPS
-    p = [1.0, 2.0, 3.0, 4.0]                               # 2 seeds: seat A games [1, 2], then seat B games [3, 4]
-    q = [0.5, 2.0, 2.0, 5.0, 9.0, 9.0]                     # 3 seeds: seat A [0.5, 2, 2], seat B [5, 9, 9]
-    m, h = R.paired_diff(p, q)                             # common seeds: the first 2 of each seat block
-    assert m == pytest.approx(np.mean([0.5, 0.0, -2.0, -5.0]))

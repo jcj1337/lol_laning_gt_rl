@@ -1,8 +1,8 @@
-"""Opponent types (OM2, docs/opponent_modelling/om2_design.md §3).
+"""Opponent types (OM2, docs/archive/opponent_modelling/om2_design.md §3).
 
 A BELIEF TYPE reports the probability of every legal action of the opponent's seat in a state (`probs`), the likelihood
 a modeller assigns to an observed action:
-    ScriptedType   a deterministic scripted strategy (lanegame.experiments.m45b.strategies); the likelihood trembles:
+    ScriptedType   a deterministic scripted strategy (experiments.m45b.strategies); the likelihood trembles:
                    (1 - eps) on the scripted action, eps spread evenly over the legal codes
     NetType        a learned network on the state encoding (its first `net.obs_size` observation entries); its exact
                    masked-softmax distribution; `probs_batch` evaluates many states in one forward pass
@@ -22,7 +22,7 @@ from typing import List, Optional, Sequence, Tuple
 
 import numpy as np
 
-from ..champions import champion_legal_actions
+from ..engine.champions import champion_legal_actions
 
 
 def _decide(strategy, cfg, lane, m4, s: int) -> int:
@@ -93,7 +93,7 @@ class ScriptedType:
 
     def __init__(self, name: str, eps: float = 0.05, strategy=None):
         if strategy is None:
-            from ..experiments.m45b.strategies import get
+            from experiments.m45b.strategies import get
             strategy = get(name)
         self.name, self.eps, self.strategy = name, float(eps), strategy
 

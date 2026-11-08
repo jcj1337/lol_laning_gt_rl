@@ -1,4 +1,4 @@
-"""M4.3c wave-control screen (docs/m4/m4_3/m4_3c_wave_control_screen.md): the EXPERIMENTAL opt-in fields wave_hold_cap and
+"""M4.3c wave-control screen (docs/archive/m4/m4_3/m4_3c_wave_control_screen.md): the EXPERIMENTAL opt-in fields wave_hold_cap and
 wave_thin_rule "adaptive", their default preservation, the adaptive Thin target (mechanics.thin_need), the global
 correctness guarantees under the adaptive rule, and pins of the screen's key findings."""
 
@@ -6,12 +6,12 @@ import numpy as np
 import pytest
 
 from lanegame import GameConfig
-from lanegame.champions import NO_REACH
-from lanegame.champions_m4 import context
-from lanegame.config import B_HOLD, F, SH, SP, W_CLEAR, W_HOLD, W_THIN, champ_act
-from lanegame.experiments.m43c import wave_control as wc
-from lanegame.mechanics import initial_state, step_turn, thin_need, total_hp
-from lanegame.state import State
+from lanegame.engine.champions import NO_REACH
+from lanegame.engine.champions_m4 import context
+from lanegame.engine.config import B_HOLD, F, SH, SP, W_CLEAR, W_HOLD, W_THIN, champ_act
+from experiments.m43c import wave_control as wc
+from lanegame.engine.mechanics import initial_state, step_turn, thin_need, total_hp
+from lanegame.engine.state import State
 
 BASE = GameConfig.m4_lasthit()
 HOLD1 = GameConfig.m4_lasthit(wave_hold_cap=1)
@@ -117,7 +117,7 @@ def test_hp_conservation_and_mirror_symmetry_under_the_adaptive_rule():
 # ---------------------------------------------------------------------- pins of the screen
 @pytest.fixture(scope="module")
 def starts():
-    from lanegame.experiments.m4.zoning_natural import starts as st
+    from experiments.m4.zoning_natural import starts as st
     return st(BASE)
 
 

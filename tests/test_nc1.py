@@ -53,8 +53,8 @@ def test_widened_spec_rebuilds():
 
 
 def _feature_index():
-    from lanegame.config import GameConfig
-    from lanegame.experiments.rl.m46e.features import obs_index
+    from lanegame.engine.config import GameConfig
+    from experiments.m46e.features import obs_index
     idx = obs_index(GameConfig.m45_calibrated())
     return [idx[k] for k in ("own_champ_attack_power", "enemy_champ_attack_power", "own_champ_hp_frac",
                              "enemy_champ_hp_frac", "own_champ_absent", "enemy_champ_absent")], idx
@@ -62,7 +62,7 @@ def _feature_index():
 
 def test_strength_features_match_m46e_explicit():
     import numpy as np
-    from lanegame.experiments.rl.m46e.features import explicit
+    from experiments.m46e.features import explicit
     from lanegame.rl.network import strength_features
     index, idx = _feature_index()
     rng = np.random.default_rng(0)
@@ -95,7 +95,7 @@ def test_with_strength_features_keeps_outputs_and_rebuilds():
 def test_m46e_make_mlp_default_is_the_critic_shape():
     import numpy as np
     from torch import nn
-    from lanegame.experiments.rl.m46e.fit import make_mlp
+    from experiments.m46e.fit import make_mlp
     from lanegame.rl.network import _layer
     torch.manual_seed(11)
     old = nn.Sequential(_layer(90, 128, np.sqrt(2.0)), nn.Tanh(), _layer(128, 128, np.sqrt(2.0)), nn.Tanh(),

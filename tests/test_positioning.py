@@ -4,9 +4,9 @@ import pytest
 
 from lanegame import (CONTEST, F, F_C, F_S, PRESSURE, SAFE, SH, SH_C, SH_S, SP, SP_C, SP_S, GameConfig, LaneGame,
                       act, base_of, objective_of, posture_of, wave_of)
-from lanegame.game import champion_exposure, gank_probability, turn_gank_probabilities
-from lanegame.mechanics import legal_actions, step_turn
-from lanegame.state import State
+from lanegame.engine.game import champion_exposure, gank_probability, turn_gank_probabilities
+from lanegame.engine.mechanics import legal_actions, step_turn
+from lanegame.engine.state import State
 
 from conftest import all_transitions
 

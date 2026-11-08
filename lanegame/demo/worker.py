@@ -1,4 +1,4 @@
-"""The simulation worker of the demo API (M6b; docs/m6/m6_plan.md §8.2).
+"""The simulation worker of the demo API (M6b; docs/archive/m6/m6_plan.md §8.2).
 
 A bounded bot game (Watch) takes 0.3 to 0.5 s of simulation, which would stall every human turn behind the single
 simulation lock. It therefore runs in a separate *process*, started with the "spawn" context, that loads its own

@@ -3,7 +3,7 @@
 import numpy as np
 import pytest
 
-from lanegame.matrix_game import certify, solve_matrix_game, support_enumeration
+from lanegame.exact.matrix_game import certify, solve_matrix_game, support_enumeration
 
 TOL = 1e-9
 

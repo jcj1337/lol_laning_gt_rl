@@ -28,12 +28,12 @@ from typing import Dict, List, Optional
 
 import numpy as np
 
-from ..champions import objective_reachable, recall_legal
-from ..config import (B_HOLD, B_RECALL, B_SAFE, B_TRADE, B_YIELD, CHAMP_ABSENT, F, PRESSURE, SH, SP, VISION,
+from ..engine.champions import objective_reachable, recall_legal
+from ..engine.config import (B_HOLD, B_RECALL, B_SAFE, B_TRADE, B_YIELD, CHAMP_ABSENT, F, PRESSURE, SH, SP, VISION,
                       GameConfig, champ_behavior, champ_objective, champ_wave)
 from ..env import LaneEnv
 from ..env.agents import episode_streams
-from ..mechanics import wave_actions
+from ..engine.mechanics import wave_actions
 
 BEHAVIORS = ("Hold", "Yield", "Trade", "Safe", "Recall")
 WAVES = ("SP", "SH", "F")
@@ -85,8 +85,8 @@ class Turns:
 def _hp6(cfg: GameConfig, side) -> int:
     if not cfg.is_m4:
         return side.hp
-    from ..champions_m4 import level
-    from ..progression import tables
+    from ..engine.champions_m4 import level
+    from ..engine.progression import tables
     t = tables(cfg)
     return int(-(-6 * side.hp // t.hp_max[level(side, t)]))
 
@@ -109,8 +109,8 @@ def _row(env: LaneEnv, ob, opp_ob, x, y, seat: int, ep: int, n_act: int) -> dict
            "legal_objective": present and objective_reachable(lane, champ, seat, cfg),
            "hp6": _hp6(cfg, me), "ehp6": _hp6(cfg, en), "phase": k % cfg.phase_period}
     if cfg.is_m4:
-        from ..champions_m4 import level
-        from ..progression import tables
+        from ..engine.champions_m4 import level
+        from ..engine.progression import tables
         t = tables(cfg)
         row.update({"level": level(me, t), "elevel": level(en, t), "items": me.items, "eitems": en.items,
                     "gold": me.gold, "egold": en.gold, "xp": me.xp, "exp": en.xp, "tower_dmg": me.tower_dmg,

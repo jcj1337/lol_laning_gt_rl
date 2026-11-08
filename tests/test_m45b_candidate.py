@@ -1,4 +1,4 @@
-"""M4.5b candidate `GameConfig.m45_calibrated()` (docs/m4/m4_5/m4_5b_calibration_report.md): `m45_unified()` revision 2 with
+"""M4.5b candidate `GameConfig.m45_calibrated()` (docs/archive/m4/m4_5/m4_5b_calibration_report.md): `m45_unified()` revision 2 with
 the mechanical correction farm_spot_rule "last_front" and the calibration minion_retaliation_delay 0.
 
 Tests: the parameter contract (exactly the two fields; validation; every earlier preset unchanged), the correction's
@@ -13,15 +13,15 @@ import json
 import numpy as np
 import pytest
 
-from lanegame.champions import N_CHANCE, U_TRADE_DOUBLE, U_TRADE_HIT, mirror_chance
-from lanegame.champions_m4 import _last_front_cell, check_invariants, initial_m4, resolve_turn_m4
-from lanegame.config import B_HOLD, B_TRADE, SH, W_HOLD, GameConfig, champ_act
+from lanegame.engine.champions import N_CHANCE, U_TRADE_DOUBLE, U_TRADE_HIT, mirror_chance
+from lanegame.engine.champions_m4 import _last_front_cell, check_invariants, initial_m4, resolve_turn_m4
+from lanegame.engine.config import B_HOLD, B_TRADE, SH, W_HOLD, GameConfig, champ_act
 from lanegame.env import LaneEnv
 from lanegame.env.observation_m4 import decode_m4
-from lanegame.experiments.m45b import states as S
-from lanegame.experiments.m45b import timing as TM
-from lanegame.positional import WARD
-from lanegame.state import State
+from experiments.m45b import states as S
+from experiments.m45b import timing as TM
+from lanegame.engine.positional import WARD
+from lanegame.engine.state import State
 
 CAL, R2 = GameConfig.m45_calibrated(), GameConfig.m45_unified()
 SHOVE_HOLD = champ_act(SH, B_HOLD)
@@ -197,7 +197,7 @@ def test_candidate_seeded_replay_is_deterministic():
 
 
 def test_viewer_replays_the_candidate():
-    from lanegame.experiments.m45b import strategies as ST
+    from experiments.m45b import strategies as ST
     from lanegame.viewer import session as ss
     assert "m45_calibrated" in ss.CONFIGS
     setup = ss.Setup("m45_calibrated", "m45b_freeze_10_large_h12", "equal", 87_900)
@@ -207,7 +207,7 @@ def test_viewer_replays_the_candidate():
 
 
 def test_checkpoint_guard_knows_the_candidate():
-    from lanegame.experiments.rl.m44.common import preset_name
+    from experiments.m44.common import preset_name
     assert preset_name(CAL) == "m45_calibrated" and preset_name(R2) == "m45_unified"
 
 
@@ -231,5 +231,5 @@ def _digest(name):
                                          ("m4_four_actions_econ_aggro", "0d2fbd9f972838fc")])
 def test_earlier_presets_reproduce_the_committed_engine(name, digest):
     """Digests computed with the committed engine (8dc5acf, before M4.5b): turn records, tick traces and observations
-    of random games are unchanged (results/m45b/compatibility.json covers 14 presets)."""
+    of random games are unchanged (artifacts/m45b/compatibility.json covers 14 presets)."""
     assert _digest(name) == digest

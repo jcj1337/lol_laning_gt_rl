@@ -37,7 +37,7 @@ same action sequences produce identical chance draws; the uniform draws themselv
 `info["gank_draws"]` so that policies can be compared on common random numbers.
 
 Champion mode (`GameConfig.champions()`, roadmap M2). The environment additionally holds the champion
-state (`env.champ`, lanegame.champions.ChampState), legality comes from `champion_legal_actions`, and one
+state (`env.champ`, lanegame.engine.champions.ChampState), legality comes from `champion_legal_actions`, and one
 step is `champions.resolve_turn` (positions, Hold / Yield / Trade / Safe / Recall, absence, trades, tower
 shots, ganks with HP damage, death). Each champion-mode turn draws exactly N_CHANCE uniforms from the
 chance generator (champions.U_* layout), whatever the actions, so two policies are compared on identical
@@ -71,10 +71,10 @@ from typing import Callable, Optional, Tuple
 
 import numpy as np
 
-from ..config import B_TRADE, BEHAVIOR_NAMES, GameConfig, objective_of
-from ..game import apply_choice, champion_exposure, crash_options, turn_farm, turn_gank_probabilities
-from ..mechanics import TurnResult, initial_state, step_turn
-from ..state import State
+from ..engine.config import B_TRADE, BEHAVIOR_NAMES, GameConfig, objective_of
+from ..engine.game import apply_choice, champion_exposure, crash_options, turn_farm, turn_gank_probabilities
+from ..engine.mechanics import TurnResult, initial_state, step_turn
+from ..engine.state import State
 from .observation import legal_mask, legal_set, n_actions, obs_size, observe, observe_full
 
 A, B = 0, 1
@@ -238,13 +238,13 @@ class LaneEnv:
         self._rng = np.random.default_rng(seed)
         self._state = initial_state(self.cfg) if root is None else root
         if self.cfg.is_m4:
-            from ..champions_m4 import M4State, context, initial_m4
+            from ..engine.champions_m4 import M4State, context, initial_m4
             if champ is not None and not isinstance(champ, M4State):
                 raise TypeError("ruleset m4: the champion state must be a champions_m4.M4State")
             self._champ = initial_m4(self.cfg) if champ is None else champ
             self._ctx = context(self.cfg)
         elif self.cfg.champion_mode:
-            from ..champions import initial_champions
+            from ..engine.champions import initial_champions
             self._champ = initial_champions(self.cfg) if champ is None else champ
         self._k = self._k0 = int(k0)
         self._last = (-1, -1) if last_actions is None else (int(last_actions[0]), int(last_actions[1]))
@@ -270,7 +270,7 @@ class LaneEnv:
         # ---- MOVE stage: deterministic lane step, farm, plates (exactly LaneGame.transition's numbers;
         #      champion mode: champions.resolve_turn)
         if cfg.champion_mode:
-            from ..champions import N_CHANCE, resolve_turn
+            from ..engine.champions import N_CHANCE, resolve_turn
             u = self._rng.random(N_CHANCE)
             ct = resolve_turn(s, champ_before, k, a, b, cfg, lane_step=self._lane_turn, u=u)
             res = ct.lane
@@ -293,7 +293,7 @@ class LaneEnv:
             ub = self._rng.random()
             ga, gb = bool(ua < pa), bool(ub < pb)
         else:
-            from ..champions import U_GANK
+            from ..engine.champions import U_GANK
             ua, ub = float(u[U_GANK[A]]), float(u[U_GANK[B]])
             ga, gb = bool(ct.ganked[A]), bool(ct.ganked[B])
         # legacy: the realized gank costs gank_loss resources; champion mode: the gank's cost is its HP damage and
@@ -397,8 +397,8 @@ class LaneEnv:
 
     # ------------------------------------------------------------------ ruleset m4
     def _step_m4(self, a: int, b: int) -> StepResult:
-        from ..champions import N_CHANCE, U_GANK
-        from ..champions_m4 import resolve_turn_m4
+        from ..engine.champions import N_CHANCE, U_GANK
+        from ..engine.champions_m4 import resolve_turn_m4
         cfg, s, k, champ_before = self.cfg, self._state, self._k, self._champ
         la, lb = self._legal
         u = self._rng.random(N_CHANCE)
@@ -458,7 +458,7 @@ class LaneEnv:
         }
         if cfg.m45_mechanics:
             # M4.5a (EXPERIMENTAL): Ward, minion targeting and the capped trade budget. Positions may be the Vision
-            # node W, reported as lanegame.positional.WARD (99) in champ_start / champ_end / champ_before / champ_after
+            # node W, reported as lanegame.engine.positional.WARD (99) in champ_start / champ_end / champ_before / champ_after
             info.update({
                 "ward": ct.warding, "ward_placed": ct.ward_placed, "ward_interrupted": ct.ward_interrupted,
                 "minion_hits": ct.minion_hits, "minion_damage": ct.minion_damage, "retaliation": ct.retaliation,

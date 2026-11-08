@@ -4,11 +4,11 @@ import numpy as np
 import pytest
 
 from lanegame import GameConfig, LaneGame
-from lanegame.analysis import path_statistics
-from lanegame.baselines import (aggressive, always_shove, always_slowpush, defensive_freeze, freeze_contest,
+from lanegame.exact.analysis import path_statistics
+from lanegame.exact.baselines import (aggressive, always_shove, always_slowpush, defensive_freeze, freeze_contest,
                                 passive_safe, stack_builder, uniform)
-from lanegame.best_response import evaluate
-from lanegame.simulate import simulate
+from lanegame.exact.best_response import evaluate
+from lanegame.exact.simulate import simulate
 
 PAIRS = {
     "v1": [("eq", "eq"), ("eq", uniform), ("uniform", always_shove), (defensive_freeze, always_slowpush),

@@ -23,12 +23,12 @@ from __future__ import annotations
 
 from typing import Dict, List, Optional
 
-from ..champions import champion_legal_actions, objective_reachable, recall_legal, ward_legal
-from ..config import (B_HOLD, B_RECALL, B_SAFE, B_TRADE, B_YIELD, BEHAVIOR_NAMES, CHAMP_ABSENT, CHAMP_WARD, NONE,
+from ..engine.champions import champion_legal_actions, objective_reachable, recall_legal, ward_legal
+from ..engine.config import (B_HOLD, B_RECALL, B_SAFE, B_TRADE, B_YIELD, BEHAVIOR_NAMES, CHAMP_ABSENT, CHAMP_WARD, NONE,
                       PRESSURE, SP, VISION, W_SHOVE, W_SLOWPUSH, W_THIN, W_HOLD, GameConfig, champ_act, champ_behavior,
                       champ_objective, champ_wave, wave_display_names)
-from ..mechanics import siege_eligible
-from ..positional import WARD, dist as graph_dist
+from ..engine.mechanics import siege_eligible
+from ..engine.positional import WARD, dist as graph_dist
 
 RECALL_CODE = champ_act(SP, B_RECALL)                    # 12
 WAVE_ORDER = (W_HOLD, W_THIN, W_SLOWPUSH, W_SHOVE)       # least to most wave damage

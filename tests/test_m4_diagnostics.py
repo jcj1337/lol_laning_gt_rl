@@ -4,9 +4,9 @@ import numpy as np
 import pytest
 
 from lanegame import GameConfig
-from lanegame.champions import N_CHANCE
-from lanegame.champions_m4 import M4State
-from lanegame.config import B_HOLD, B_RECALL, B_SAFE, B_TRADE, CHAMP_ABSENT, F, SH, SP, champ_act
+from lanegame.engine.champions import N_CHANCE
+from lanegame.engine.champions_m4 import M4State
+from lanegame.engine.config import B_HOLD, B_RECALL, B_SAFE, B_TRADE, CHAMP_ABSENT, F, SH, SP, champ_act
 from lanegame.diagnostics import (Commit, FollowPolicy, ProbCache, Snapshot, audit_games, branch, observation, restore,
                                   rollout, rollout_seed, summarize)
 from lanegame.env import LaneEnv, UniformAgent, play_episode

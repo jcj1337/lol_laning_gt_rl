@@ -1,4 +1,4 @@
-"""M4.3c stabilization, Stage B (docs/m4/m4_3/m4_3c_strategic_economics_calibration.md): the EXPERIMENTAL opt-in economic
+"""M4.3c stabilization, Stage B (docs/archive/m4/m4_3/m4_3c_strategic_economics_calibration.md): the EXPERIMENTAL opt-in economic
 fields (xp_reward_weight, death_turns_by_level, terminal_rule) and the study's instruments. Every default reproduces
 every earlier preset exactly."""
 
@@ -6,12 +6,12 @@ import numpy as np
 import pytest
 
 from lanegame import GameConfig
-from lanegame.champions import N_CHANCE, champion_legal_actions, mirror_chance, swap_seats
-from lanegame.champions_m4 import context, initial_m4, resolve_turn_m4
-from lanegame.config import B_HOLD, B_TRADE, PRESSURE, W_HOLD, W_SHOVE, champ_act
+from lanegame.engine.champions import N_CHANCE, champion_legal_actions, mirror_chance, swap_seats
+from lanegame.engine.champions_m4 import context, initial_m4, resolve_turn_m4
+from lanegame.engine.config import B_HOLD, B_TRADE, PRESSURE, W_HOLD, W_SHOVE, champ_act
 from lanegame.env import LaneEnv, UniformAgent
 from lanegame.env.discounted import tail_constant
-from lanegame.mechanics import initial_state
+from lanegame.engine.mechanics import initial_state
 
 FOUR = GameConfig.m4_four_actions()
 A, B = 0, 1
@@ -166,28 +166,11 @@ def test_termination_semantics_in_training_and_evaluation():
 
 
 # ---------------------------------------------------------------------- the calibrated candidate preset
-def test_candidate_preset_changes_only_its_documented_fields():
-    cand = GameConfig.m4_four_actions_econ()
-    cand.validate()
-    changed = {k for k, v in cand.to_dict().items() if FOUR.to_dict()[k] != v}
-    assert changed == set(GameConfig.M4_FOUR_ECON_FIELDS)
-    assert (cand.collect_contest_own_tower, cand.trade_farm_factor, cand.kill_bounty) == (0.8, 0.8, 2.0)
-    assert cand.death_turns_by_level == tuple([3] * 6 + [4] * 6 + [5] * 6) and cand.champion_absent_max == 5
-    assert (cand.xp_reward_weight, cand.terminal_rule) == (0.0, "none")       # gold-only reward, continuing time
-    env = LaneEnv(cand)
-    assert (env.n_actions, env.obs_size) == (61, 88)
-    from lanegame.experiments.m43c.economics import variant_cfg
-    assert variant_cfg("candidate") == variant_cfg("ot80_tf80_k2_dS1") == cand
-    for cfg in (FOUR, GameConfig.m4_lasthit()):                                # the baselines are untouched
-        assert (cfg.collect_contest_own_tower, cfg.trade_farm_factor, cfg.kill_bounty) == (0.6, 0.5, 0.5)
-        assert cfg.death_turns_by_level == () and cfg.champion_absent_max == 3
-
-
 def test_candidate_keeps_the_four_action_wave_physics():
     """Without chance events (no trade lands, nobody is ganked or dies) the candidate's lane is the four-action
     baseline's turn by turn: only the economy differs (collection rates, bounty, death absence)."""
-    from lanegame.experiments.m43c import harness as hh
-    from lanegame.experiments.m43c import strategies as st
+    from experiments.m43c import harness as hh
+    from experiments.m43c import strategies as st
     cand = GameConfig.m4_four_actions_econ()
     for start, a, b in (("neutral", "grow_shove4", "farm4"), ("freeze", "freeze_hunt4", "walk_up4"),
                         ("neutral", "slowpush4", "thin4")):

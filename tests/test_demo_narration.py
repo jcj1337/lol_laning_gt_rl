@@ -16,15 +16,15 @@ import os
 import numpy as np
 import pytest
 
-from lanegame import mechanics as M
-from lanegame.champions_m4 import M4State, context
-from lanegame.config import GameConfig
+from lanegame.engine import mechanics as M
+from lanegame.engine.champions_m4 import M4State, context
+from lanegame.engine.config import GameConfig
 from lanegame.demo import frames as F
 from lanegame.demo import record as R
 from lanegame.demo import registry as REG
 from lanegame.env import LaneEnv
 
-TRACES = os.path.join("results", "m5", "traces")
+TRACES = os.path.join("artifacts", "m5", "traces")
 H2H = "h2h_om_s0_vs_sp_s0"
 
 
@@ -33,7 +33,7 @@ def replays():
     if not REG.Registry().available():
         pytest.skip("needs the 7 checkpoints of lanegame/demo/manifest.json")
     if not os.path.isfile(os.path.join(TRACES, f"{H2H}.json")):
-        pytest.skip("results/m5/traces is not on disk")
+        pytest.skip("artifacts/m5/traces is not on disk")
     from lanegame.demo.service import DemoService
     svc = DemoService(registry=REG.Registry().load())
     return {e["name"]: svc.replay(e["name"]) for e in svc.replays()}

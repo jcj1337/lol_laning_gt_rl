@@ -1,4 +1,4 @@
-"""M4.2e-A.1: the final natural-wave preset `GameConfig.m4_natural()` (docs/natural_waves/m4_2e_natural_waves_final_review.md).
+"""M4.2e-A.1: the final natural-wave preset `GameConfig.m4_natural()` (docs/archive/natural_waves/m4_2e_natural_waves_final_review.md).
 
 Correctness of the four changes against the M4.2e-A prototype (entry crash, tower damage, tower reach, attack-power
 wave clear), the global invariants on the final preset, and pins of the review's findings. The prototype keeps its own
@@ -8,17 +8,17 @@ import numpy as np
 import pytest
 
 from lanegame import GameConfig
-from lanegame.champions import N_CHANCE, NO_REACH, mirror_chance, swap_seats
-from lanegame.champions_m4 import M4Side, M4State, check_invariants, context, initial_m4, resolve_turn_m4
-from lanegame.config import SH, W_CLEAR, W_HOLD, W_THIN
+from lanegame.engine.champions import N_CHANCE, NO_REACH, mirror_chance, swap_seats
+from lanegame.engine.champions_m4 import M4Side, M4State, check_invariants, context, initial_m4, resolve_turn_m4
+from lanegame.engine.config import SH, W_CLEAR, W_HOLD, W_THIN
 from lanegame.env import LaneEnv, UniformAgent
 from lanegame.env.agents_m4 import natural_suite
 from lanegame.env.discounted import max_champion_wave_budget, per_turn_bound
 from lanegame.env.observation_m4 import decode_m4, m4_obs_size, observe_m4
-from lanegame.experiments.m4 import natural_waves as nw
-from lanegame.experiments.m4 import natural_waves_final as nf
-from lanegame.mechanics import initial_state, step_turn, total_hp
-from lanegame.state import State
+from experiments.m4 import natural_waves as nw
+from experiments.m4 import natural_waves_final as nf
+from lanegame.engine.mechanics import initial_state, step_turn, total_hp
+from lanegame.engine.state import State
 
 from test_m4_env import soak
 

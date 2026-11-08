@@ -5,9 +5,9 @@ import os
 import numpy as np
 import pytest
 
-from lanegame.experiments.rl.m46d import cells as CL
-from lanegame.experiments.rl.m46d import common as C
-from lanegame.experiments.rl.m46d import plans as P
+from experiments.m46d import cells as CL
+from experiments.m46d import common as C
+from experiments.m46d import plans as P
 
 torch = pytest.importorskip("torch")
 
@@ -18,7 +18,7 @@ needs_spec = pytest.mark.skipif(not HAVE_SPEC, reason="M4.6a specialist / M4.6c 
 
 
 def test_strength_conditions_match_their_description():
-    from lanegame.experiments.rl.m46d.freezes import Strength
+    from experiments.m46d.freezes import Strength
     cfg = C.arm_cfg("C1")
     st = Strength(cfg)
     for L in CL.A_LEVELS:
@@ -32,8 +32,8 @@ def test_strength_conditions_match_their_description():
 
 
 def test_cells_are_legal_states_with_the_intended_layout():
-    from lanegame.champions import champion_legal_actions
-    from lanegame.experiments.rl.m44.records import holds_freeze
+    from lanegame.engine.champions import champion_legal_actions
+    from experiments.m44.records import holds_freeze
     cfg = C.arm_cfg("C1")
     for cell in CL.grid_a() + CL.grid_b():
         lane, m4, k = CL.cell_start(cfg, cell)
@@ -44,7 +44,7 @@ def test_cells_are_legal_states_with_the_intended_layout():
 
 
 def test_episode_classifier_on_a_synthetic_record():
-    from lanegame.experiments.rl.m46d.freezes import Strength, episodes
+    from experiments.m46d.freezes import Strength, episodes
     T = 8
     keys = ("held0", "crash", "fh", "fx", "L", "S", "hp", "absent", "pos", "rear_near", "nrear", "mass", "C", "V",
             "wave", "beh", "earned", "farm", "avail", "bounty", "plate", "xpg", "died", "recalled", "away", "taken",
@@ -74,7 +74,7 @@ def test_plan_restricts_to_its_slice_and_releases():
             self.u = np.full(50, 0.5)
 
         def probs(self, cfg, lane, m4, s, i):
-            from lanegame.champions import champion_legal_actions
+            from lanegame.engine.champions import champion_legal_actions
             legal = champion_legal_actions(lane, m4, s, cfg)
             return legal, np.full(len(legal), 1.0 / len(legal))
 
@@ -82,7 +82,7 @@ def test_plan_restricts_to_its_slice_and_releases():
             legal, p = self.probs(cfg, lane, m4, s, i)
             return legal[int(self.u[i] * len(legal))], "fake"
 
-    from lanegame.config import champ_behavior, champ_wave
+    from lanegame.engine.config import champ_behavior, champ_wave
     lane, m4, k = CL.build(cfg, "freeze", "equal", 5)
     own = Fake()
     plan = P.build(P.BREAKER["commit"], own)
@@ -96,33 +96,11 @@ def test_plan_restricts_to_its_slice_and_releases():
     assert champ_wave(c) in (P.LH, P.TN) and champ_behavior(c) == 0
 
 
-@needs_c1
-def test_matrix_job_policy_pair_equals_the_engine_and_is_deterministic(tmp_path):
-    from lanegame.experiments.rl.m46a import engine as EN
-    from lanegame.experiments.rl.m45c import horizon as HZ
-    from lanegame.experiments.rl.m46d import matrix as M
-    cfg = C.setup("C1")
-    st = CL.build(cfg, "freeze", "edge", 5, 0.6)
-    job = M.mk("test", "C1", C.general("C1", 0), "t", 0, st, P.A_FREEZER, P.A_BREAKER,
-               [("policy", "policy"), ("guard_sel", "concede")], 2, 12, 7)
-    job["path"] = str(tmp_path / "a.npz")
-    M.matrix_job(job)
-    d1 = M.load(job["path"])
-    net = C.net_of(C.general("C1", 0))
-    sd = 7 * 1000
-    out = EN.rollout(cfg, st, HZ.CRNNet(net, st[2], sd, 0, 12), HZ.CRNNet(net, st[2], sd, 1, 12), sd, 12,
-                     M.cps_for(12), (), None)
-    assert d1["G"][0, 0, -1] == pytest.approx(out[12]["G"], abs=1e-12)
-    job["path"] = str(tmp_path / "b.npz")
-    M.matrix_job(job)
-    assert np.array_equal(M.load(job["path"])["G"], d1["G"])
-
-
 @needs_spec
 def test_switch_design_identity(tmp_path):
     """S1 (the specialist at turn 0 only, then the general) and U0 (the specialist's choice at turn 0) are the same
     candidate: equal returns rollout by rollout."""
-    from lanegame.experiments.rl.m46d import specialists as SP
+    from experiments.m46d import specialists as SP
     j = dict(SP.decomp_jobs()[0])
     j.update({"K": 2, "H": 12, "path": str(tmp_path / "d.npz")})
     SP.decomp_job(j)

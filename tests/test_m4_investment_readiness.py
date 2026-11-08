@@ -1,4 +1,4 @@
-"""M4.2d-D investment readiness (docs/m4/m4_2/m4_investment_readiness_report.md): the opt-in bounded investment curve
+"""M4.2d-D investment readiness (docs/archive/m4/m4_2/m4_investment_readiness_report.md): the opt-in bounded investment curve
 (invest_curve = "saturating") and the opt-in compressed observation entries (invest_obs_encoding = "compressed").
 The defaults of GameConfig.m4() and GameConfig.m4_continuous() are unchanged."""
 
@@ -8,15 +8,19 @@ import numpy as np
 import pytest
 
 from lanegame import GameConfig
-from lanegame import progression as pg
-from lanegame.champions import N_CHANCE
-from lanegame.champions_m4 import M4Side, M4State, check_invariants, resolve_turn_m4
-from lanegame.config import B_HOLD, CHAMP_ABSENT, SP, champ_act
+from lanegame.engine import progression as pg
+from lanegame.engine.champions import N_CHANCE
+from lanegame.engine.champions_m4 import M4Side, M4State, check_invariants, resolve_turn_m4
+from lanegame.engine.config import B_HOLD, CHAMP_ABSENT, SP, champ_act
 from lanegame.env import LaneEnv
 from lanegame.env.agents_m4 import m4_suite
 from lanegame.env.observation_m4 import compressed_exact_max, decode_m4, m4_feature_names, m4_obs_size, observe_m4
-from lanegame.experiments.m4.investment_readiness import READY
-from lanegame.state import State
+from lanegame.engine.state import State
+
+# The bounded investment curve the M4.2d-D readiness study recommended (formerly
+# experiments.m4.investment_readiness.READY, retired with that study on 2026-11-08).
+READY = dict(invest_curve="saturating", invest_gain=1.5, invest_scale=16.0, invest_obs_encoding="compressed",
+             invest_obs_ref=64, invest_obs_gold_ref=8)
 
 R = GameConfig.m4_continuous(**READY)          # the primary recommendation
 P = GameConfig.m4_continuous()                 # the M4.2c defaults (power curve, linear encoding)

@@ -23,17 +23,17 @@ import json
 from dataclasses import dataclass, field
 from typing import Dict, Iterable, List, Optional, Sequence, Tuple
 
-from ..config import GameConfig
-from ..state import State
+from ..engine.config import GameConfig
+from ..engine.state import State
 
 ARCHIVE_SCHEMA = "lanegame.start_archive"
 
 
 def champ_from_list(cfg: GameConfig, v):
     if cfg.is_m4:
-        from ..champions_m4 import M4State
+        from ..engine.champions_m4 import M4State
         return M4State.from_list(v)
-    from ..champions import ChampState
+    from ..engine.champions import ChampState
     return ChampState.from_list(v)
 
 

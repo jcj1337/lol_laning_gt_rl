@@ -11,10 +11,10 @@ import numpy as np
 import pytest
 
 from lanegame import F, SH, SP, SH_C, SP_C, GameConfig, LaneGame
-from lanegame.game import apply_choice, crash_options, gank_probability
-from lanegame.mechanics import initial_state, lane_packets, legal_actions, step_turn, total_packets
-from lanegame.scenarios import all_scenarios, run_scenario
-from lanegame.state import State
+from lanegame.engine.game import apply_choice, crash_options, gank_probability
+from lanegame.engine.mechanics import initial_state, lane_packets, legal_actions, step_turn, total_packets
+from lanegame.exact.scenarios import all_scenarios, run_scenario
+from lanegame.engine.state import State
 
 from conftest import all_transitions
 
@@ -253,9 +253,9 @@ def test_v1_freeze_legality(v1_cfg):
 
 def test_v1_reproduces_original_solution():
     """GameConfig.v1() is the original Phase 1 model: same state space, same equilibrium, same exploitability."""
-    from lanegame.baselines import v1_baselines
-    from lanegame.best_response import exploitability
-    from lanegame.solver import solve_equilibrium
+    from lanegame.exact.baselines import v1_baselines
+    from lanegame.exact.best_response import exploitability
+    from lanegame.exact.solver import solve_equilibrium
     g = LaneGame(GameConfig.v1(horizon=32))
     sol = solve_equilibrium(g)
     assert sol.stats.states == 905 and sol.stats.mixed_states == 52

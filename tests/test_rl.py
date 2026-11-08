@@ -8,8 +8,8 @@ import pytest
 torch = pytest.importorskip("torch")
 
 from lanegame import GameConfig, LaneGame                                   # noqa: E402
-from lanegame.best_response import evaluate                                 # noqa: E402
-from lanegame.baselines import passive_safe                                 # noqa: E402
+from lanegame.exact.best_response import evaluate                                 # noqa: E402
+from lanegame.exact.baselines import passive_safe                                 # noqa: E402
 from lanegame.env import LaneEnv, ScriptedAgent, as_policy, champion_agents, run_episodes   # noqa: E402
 from lanegame.rl import (Collector, MaskedCategorical, NetAgent, OpponentSampler, PolicyValueNet, PPOConfig,  # noqa: E402
                          compute_gae, load_checkpoint, ppo_update, save_checkpoint, train_ppo)

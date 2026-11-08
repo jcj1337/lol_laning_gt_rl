@@ -5,10 +5,10 @@ import random
 import pytest
 
 from lanegame import GameConfig
-from lanegame.config import PRESSURE, SH, SP, act
-from lanegame.lane_enum import DEFAULT_LANE_BOUNDS, lane_bounds, lane_signature
-from lanegame.mechanics import initial_state, legal_actions, minion_damage, step_turn
-from lanegame.state import State
+from lanegame.engine.config import PRESSURE, SH, SP, act
+from lanegame.engine.lane_enum import DEFAULT_LANE_BOUNDS, lane_bounds, lane_signature
+from lanegame.engine.mechanics import initial_state, legal_actions, minion_damage, step_turn
+from lanegame.engine.state import State
 
 CFG = GameConfig.m4()
 

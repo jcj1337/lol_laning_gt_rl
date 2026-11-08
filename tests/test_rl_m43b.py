@@ -9,14 +9,13 @@ import numpy as np
 import pytest
 
 from lanegame import GameConfig
-from lanegame.champions import CHAMP_ABSENT
-from lanegame.champions_m4 import check_invariants
-from lanegame.config import B_HOLD, B_RECALL, W_HOLD, champ_act
+from lanegame.engine.champions import CHAMP_ABSENT
+from lanegame.engine.champions_m4 import check_invariants
+from lanegame.engine.config import B_HOLD, B_RECALL, W_HOLD, champ_act
 from lanegame.env import LaneEnv, play_episode
-from lanegame.experiments.m4 import zoning_natural as zn
-from lanegame.experiments.rl.m43b import behavior as bh
-from lanegame.experiments.rl.m43b import common
-from lanegame.experiments.rl.m43b.references import CURVE_REFS, HEAD_REFS, ReactiveAgent, reference_suite
+from experiments.m4 import zoning_natural as zn
+from experiments.m43b import common
+from experiments.m43b.references import CURVE_REFS, HEAD_REFS, ReactiveAgent, reference_suite
 
 CFG = GameConfig.m4_lasthit()
 RECALL = champ_act(W_HOLD, B_RECALL)
@@ -49,57 +48,6 @@ def test_reference_suite_plays_legal_deterministic_actions_and_matches_the_zonin
 
 
 # ---------------------------------------------------------------------------------------------- features, rows
-def test_turn_features_at_s0_and_after_a_death_variant():
-    env = LaneEnv(CFG, max_turns=10)
-    oa, ob = env.reset(seed=0)
-    f = bh.turn_features(oa, CFG)
-    assert f["pos"] == -CFG.tower and f["epos"] == CFG.tower and f["dist"] == 2 * CFG.tower
-    assert f["recall_legal"] and not f["enemy_absent"] and not f["contact"] and f["power"] == 1.0
-    assert f["gold"] == 0 and f["hp_frac"] == 1.0 and f["level"] == 1 and f["n_legal"] == len(oa.legal)
-    fb = bh.turn_features(ob, CFG)
-    assert fb["pos"] == f["pos"] and fb["epos"] == f["epos"]                      # own perspective of each seat
-    p = bh.category_masses(bh.full_distribution(reference_suite(CFG)["farm"], oa))
-    assert p["wave"][0] == 1.0 and p["beh"][B_HOLD] == 1.0 and p["entropy"] == 0.0
-
-
-def test_play_rows_pairing_return_to_go_and_situation_masks():
-    suite = reference_suite(CFG)
-    R = bh.play_rows(CFG, suite["push_punish"], suite["farm"], 2, 40, 7)
-    cnt = R.pop("_counters")
-    n = len(R["k"])
-    assert n > 0 and set(np.unique(R["seat"])) == {0, 1} and len(cnt) == 4           # both seats, 2 games each
-    # the return to go follows the recursion g_t = r_t + gamma g_{t+1} along a game (present turns only, so check
-    # consecutive present turns)
-    for seat in (0, 1):
-        for ep in (0, 1):
-            m = (R["seat"] == seat) & (R["ep"] == ep)
-            turns, g, r = R["turn"][m], R["ret_to_go"][m], R["reward"][m]
-            for i in range(len(turns) - 1):
-                if turns[i + 1] == turns[i] + 1:
-                    assert g[i] == pytest.approx(r[i] + CFG.gamma * g[i + 1])
-    S = bh.situations(R)
-    assert all(len(v) == n for v in S.values()) and S["all present turns"].all()
-    assert S["Recall legal"].sum() == R["recall_legal"].sum()
-    tab = bh.conditional_tables(R)
-    assert tab["all present turns"]["n"] == n and abs(sum(tab["all present turns"][f"chose_{w}"] for w in bh.WAVES) - 1) < 1e-9
-    # a deterministic policy has zero entropy everywhere and its wave choice is a function of the state
-    assert tab["all present turns"]["entropy"] == 0.0
-    sd = bh.state_dependence(R)
-    assert sd["wave"]["H_action_given_state"] <= sd["wave"]["H_action"] + 1e-12
-    # the self-play profile of a constant policy: Hold everywhere, no state dependence of the wave choice
-    prof = bh.profile(CFG, suite["farm"], 2, 40, 3)
-    assert prof["waves"]["Hold"] == 1.0 and prof["state_dependence"]["wave"]["mutual_information"] == 0.0
-
-
-def test_candidate_set_is_legal_and_recall_only_where_legal():
-    env = LaneEnv(CFG, max_turns=5)
-    oa, _ = env.reset(seed=0)
-    c = bh.candidate_set(CFG, oa.legal)
-    assert "Recall" in c and "policy" in c and all(x.action in oa.legal for n, x in c.items() if n != "policy")
-    legal_no_recall = tuple(a for a in oa.legal if a != RECALL)
-    assert "Recall" not in bh.candidate_set(CFG, legal_no_recall)
-
-
 # ---------------------------------------------------------------------------------------------- recall variants
 def test_dead_and_recalled_state_variants_are_valid_and_return_on_schedule():
     from lanegame.diagnostics import FollowPolicy, ProbCache, Snapshot, rollout
@@ -127,22 +75,9 @@ def test_dead_and_recalled_state_variants_are_valid_and_return_on_schedule():
     assert dead.lane == snap.lane == rec.lane and dead.champ.side(1) == snap.champ.side(1)
 
 
-def test_recall_masks_require_legality():
-    from lanegame.experiments.rl.m43b.recall import RECALL_CLASSES, recall_masks
-    suite = reference_suite(CFG)
-    R = bh.play_rows(CFG, suite["push_punish"], suite["farm"], 1, 40, 9)
-    R.pop("_counters")
-    S = bh.situations(R)
-    masks = recall_masks()
-    assert set(masks) == set(RECALL_CLASSES)
-    for cls, fn in masks.items():
-        m = fn(R, S)
-        assert len(m) == len(R["k"]) and not (m & ~R["recall_legal"]).any()
-
-
 # ---------------------------------------------------------------------------------------------- viewer recordings
 def test_exported_recording_replays_identically_in_the_viewer_session(tmp_path, monkeypatch):
-    from lanegame.experiments.rl.m43b import trajectories as tj
+    from experiments.m43b import trajectories as tj
     from lanegame.viewer import session as ss
     monkeypatch.setattr(tj, "TRAJ_DIR", str(tmp_path))
     suite = reference_suite(CFG)
@@ -187,7 +122,7 @@ def test_continuing_time_attacker_trains_both_seats_against_a_frozen_target():
 
 def test_driver_end_to_end_tiny(tmp_path, monkeypatch):
     """One update of the baseline condition through the driver's worker, then the curve points and the agent specs."""
-    from lanegame.experiments.rl.m43b.train import health_checks, train_one
+    from experiments.m43b.train import health_checks, train_one
     monkeypatch.setattr(common, "CKPT", str(tmp_path / "ckpt"))
     monkeypatch.setattr(common, "OUT", str(tmp_path / "out"))
     steps = common.N_ENVS * 128 * 2                                          # exactly one update
@@ -205,39 +140,3 @@ def test_driver_end_to_end_tiny(tmp_path, monkeypatch):
     run = json.load(open(os.path.join(common.run_dir("base", 0), "run.json"), encoding="utf-8"))
     assert run["ppo"]["ent_coef"] == 0.01 and run["shared"]["current_fraction"] == 1.0
 
-
-def test_archive_states_are_witnessed_mirror_closed_and_usable_as_training_starts(tmp_path):
-    from lanegame.env.starts import load_archive, mirror_closed, verify_witness
-    from lanegame.experiments.rl.m43b import archive as ar
-    from lanegame.rl import PPOConfig, SharedConfig, train_shared
-    path = str(tmp_path / "archive.json")
-    info = ar.build_archive(turns=100, targets={"neutral": 2, "crash_imminent": 2, "enemy_pushing": 2, "other": 2},
-                            path=path, verify=True)
-    states = load_archive(path, CFG)
-    assert info["states"] == len(states) >= 4 and mirror_closed(states)
-    assert all(verify_witness(CFG, s) for s in states)
-    assert all(12 <= len(s.witness["actions"]) <= 100 for s in states)
-    ppo = PPOConfig.continuing(CFG, total_steps=2 * 4 * 16, n_envs=4, segment_length=16, game_length=20,
-                               minibatch_size=32, epochs=1, seed=2, hidden=(32, 32), lane_cache=2000,
-                               start_archive=path, start_mix=0.5)
-    res = train_shared(CFG, ppo, SharedConfig(current_fraction=1.0, snapshot_every=10_000), verbose=False)
-    assert res.history[-1]["rollout_terminations"] == 0
-
-
-def test_plan_definitions_are_legal_and_bounded():
-    from lanegame.experiments.rl.m43b.plans import PLAN_SITUATIONS, make_plan
-    env = LaneEnv(CFG, max_turns=10)
-    oa, ob = env.reset(seed=0)
-    names = sorted({p for ps in PLAN_SITUATIONS.values() for p in ps})
-    for name in names:
-        plan = make_plan(name)
-        for t in range(0, 25):
-            a = plan.act(oa, t)
-            assert a is None or a in oa.legal
-        assert plan.act(oa, 30) is None                                   # every plan ends
-    assert make_plan("slow_push").act(oa, 0) == champ_act(2, B_HOLD) and make_plan("slow_push").act(oa, 2) == champ_act(W_HOLD, B_HOLD)
-    assert make_plan("shove_away").act(oa, 0) is None                     # the enemy is present at s0
-    # an absent champion hands control back
-    from lanegame.env import Observation
-    absent = Observation(0, 0, oa.state, (CHAMP_ABSENT,), oa.vector, oa.mask, oa.champ, CFG)
-    assert all(make_plan(n).act(absent, 0) is None for n in names)

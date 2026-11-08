@@ -17,7 +17,7 @@ the same physics; only the wave budgets differ), its wave budgets depend on the 
 M4.5a: the EXPERIMENTAL candidate `m45_unified()` adds the shared Vision node W (a champion there is drawn above the
 lane cell 0; `summary` reports `at_ward` and the vision timer), Ward placement and interruption, minion fire on
 champions per tick (`frame_view`'s "minion_fire": cause and minion damage units, with the turn's centi-HP), and
-hand-built start states (`lanegame.experiments.m45a.scenarios.STARTS`). The M4.5a correction (rules revision 2):
+hand-built start states (`experiments.m45a.scenarios.STARTS`). The M4.5a correction (rules revision 2):
 tick frames draw the champions where they stand after each tick (info["champion_path"]); recordings carry
 "rules_revision", and an m45_unified recording without it replays under `m45_unified_r1()` (`load_recording`).
 """
@@ -28,18 +28,18 @@ from dataclasses import dataclass, field
 from functools import lru_cache
 from typing import Dict, List, Optional, Sequence, Tuple
 
-from ..champions_m4 import M4State, context, initial_m4
-from ..config import (BEHAVIOR_NAMES, CHAMP_ABSENT, CHAMP_WARD, OBJECTIVE_NAMES, GameConfig, champ_behavior,
+from ..engine.champions_m4 import M4State, context, initial_m4
+from ..engine.config import (BEHAVIOR_NAMES, CHAMP_ABSENT, CHAMP_WARD, OBJECTIVE_NAMES, GameConfig, champ_behavior,
                       champ_objective, champ_wave, wave_display_names)
-from ..experiments.m45a import scenarios as m45s
-from ..experiments.m45b import scenarios as m45bs
+from experiments.m45a import scenarios as m45s
+from experiments.m45b import scenarios as m45bs
 from ..env import LaneEnv
-from ..experiments.m4 import natural_waves as nw
-from ..experiments.m4 import zoning_natural as zn
-from ..mechanics import _blob_hp, initial_state, start_packets, strength_need, window_strength
-from ..positional import WARD
-from ..progression import plates_broken
-from ..state import State
+from experiments.m4 import natural_waves as nw
+from experiments.m4 import zoning_natural as zn
+from ..engine.mechanics import _blob_hp, initial_state, start_packets, strength_need, window_strength
+from ..engine.positional import WARD
+from ..engine.progression import plates_broken
+from ..engine.state import State
 
 A, B = 0, 1
 SIDES = ("A", "B")
@@ -50,7 +50,7 @@ CONFIGS = {"m45_calibrated": GameConfig.m45_calibrated,           # M4.5b: the E
            "m45_unified_r1": GameConfig.m45_unified_r1,
            "m4_four_actions": GameConfig.m4_four_actions,
            # M4.4a: the two EXPERIMENTAL calibrated economies of the PPO comparison (recordings of their checkpoints
-           # name them; lanegame/experiments/rl/m44/trace.py)
+           # name them; experiments/m44/trace.py)
            "m4_four_actions_econ": GameConfig.m4_four_actions_econ,
            "m4_four_actions_econ_aggro": GameConfig.m4_four_actions_econ_aggro,
            "m4_lasthit": GameConfig.m4_lasthit, "m4_lane": GameConfig.m4_lane, "m4_natural": GameConfig.m4_natural}
@@ -62,7 +62,7 @@ START_SOURCE = {"m4_four_actions": "m4_lasthit", "m4_four_actions_econ": "m4_las
 # Rules revisions of a configuration name whose rules changed after recordings were made under it. A recording of
 # such a configuration carries "rules_revision" (`recording_stamp`); one without it predates the change and replays
 # under the preset that keeps the old rules: m45_unified revision 1 (M4.5a as first implemented, ea3d9cb) is
-# m45_unified_r1() (docs/m4/m4_5/m4_5a_unified_mechanics_report.md §10).
+# m45_unified_r1() (docs/archive/m4/m4_5/m4_5a_unified_mechanics_report.md §10).
 RULES_REVISION = {"m45_unified": 2}
 REVISION_PRESETS = {("m45_unified", 1): "m45_unified_r1"}
 
@@ -186,7 +186,7 @@ def play(setup: Setup, prefix: Sequence[Tuple[int, int]] = (), policies=(None, N
          prefix_note: str = "manual") -> Recording:
     """Replay `prefix` (pairs of action codes) from the setup's start and seed, then play `turns` more turns with the
     policies. A policy decides from the same pre-turn state for both sides (simultaneous moves) and the turn index i
-    of the recording (turn schedules of lanegame.experiments.m43c.strategies; every other policy ignores it). Illegal
+    of the recording (turn schedules of experiments.m43c.strategies; every other policy ignores it). Illegal
     actions raise (the environment's own check). `prefix_note` labels prefix actions of a side without a policy
     ("manual", or "recorded" for an exported trajectory)."""
     cfg = config(setup.config)
@@ -221,7 +221,7 @@ RECORDING_SCHEMA = "lanegame.viewer_recording"
 
 
 def load_recording(path: str) -> Tuple[Setup, List[Tuple[int, int]], dict]:
-    """An exported trajectory (lanegame.experiments.rl.m43b.trajectories): (Setup, actions, metadata). Replaying it
+    """An exported trajectory (experiments.m43b.trajectories): (Setup, actions, metadata). Replaying it
     with `play(setup, prefix=actions, prefix_note="recorded")` reproduces the recorded game exactly, because the
     recording was played from the same start with the same integer chance seed."""
     import json

@@ -41,14 +41,14 @@ def service(reg):
 
 @pytest.fixture(scope="module")
 def bundle(service):
-    if not os.path.isfile(os.path.join("results", "m5", "traces", f"{H2H}.json")):
-        pytest.skip("results/m5/traces is not on disk")
+    if not os.path.isfile(os.path.join("artifacts", "m5", "traces", f"{H2H}.json")):
+        pytest.skip("artifacts/m5/traces is not on disk")
     return service.replay(H2H)
 
 @pytest.fixture(scope="module")
 def guide_bundle(service):
-    if not os.path.isfile(os.path.join("results", "m5", "traces", f"{SHOVE}.json")):
-        pytest.skip("results/m5/traces is not on disk")
+    if not os.path.isfile(os.path.join("artifacts", "m5", "traces", f"{SHOVE}.json")):
+        pytest.skip("artifacts/m5/traces is not on disk")
     return service.replay(SHOVE)
 
 
@@ -179,8 +179,8 @@ def test_the_first_guides_facts_match_the_recording(guide_bundle):
     in its note as the browser prints it (toFixed rounds an exact tie up: 3.625 is shown as 3.63)."""
     from decimal import ROUND_HALF_UP, Decimal
 
-    from lanegame.config import GameConfig
-    from lanegame.experiments.m4 import zoning_natural as zn
+    from lanegame.engine.config import GameConfig
+    from experiments.m4 import zoning_natural as zn
 
     P, T = guide_bundle["positions"], guide_bundle["turns"]
     notes = {c.id: c.text for c in next(g for g in G.read_guides() if g.id == FIRST).checkpoints}

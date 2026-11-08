@@ -12,9 +12,9 @@ import pytest
 torch = pytest.importorskip("torch")
 
 from lanegame import GameConfig                                                          # noqa: E402
-from lanegame.experiments.m45b import engine as E                                        # noqa: E402
-from lanegame.experiments.m45b import states as S                                        # noqa: E402
-from lanegame.experiments.rl.m45c import horizon as H                                    # noqa: E402
+from experiments.m45b import engine as E                                        # noqa: E402
+from experiments.m45b import states as S                                        # noqa: E402
+from experiments.m45c import horizon as H                                    # noqa: E402
 from lanegame.rl import PolicyValueNet                                                   # noqa: E402
 
 CFG = GameConfig.m45_calibrated()

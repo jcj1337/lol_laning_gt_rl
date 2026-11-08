@@ -1,16 +1,14 @@
 """M4.2d-A: the opt-in farm-spot correction `farm_spot_rule="pre_crash_front"` and the wave-bounce finding
-(docs/m4/m4_2/m4_wave_readiness_report.md)."""
+(docs/archive/m4/m4_2/m4_wave_readiness_report.md)."""
 
 import numpy as np
 import pytest
 
 from lanegame import GameConfig
-from lanegame.champions import N_CHANCE, mirror_chance, swap_seats
-from lanegame.champions_m4 import check_invariants, resolve_turn_m4
-from lanegame.config import F, SH, SP
-from lanegame.experiments.m4.calibration import keep_reach_hold_run
-from lanegame.experiments.m4.wave_readiness import LINES, play, starts, summarize
-from lanegame.scenarios_m4 import DESIGN_HOLD_TABLE, hold_run
+from lanegame.engine.champions import N_CHANCE, mirror_chance, swap_seats
+from lanegame.engine.champions_m4 import check_invariants, resolve_turn_m4
+from lanegame.engine.config import F, SH, SP
+from m4_scenarios import DESIGN_HOLD_TABLE, hold_run
 
 PCF = GameConfig.m4(farm_spot_rule="pre_crash_front")
 
@@ -22,17 +20,6 @@ def test_default_is_the_m2_rule_and_the_field_is_validated():
         GameConfig.m4(farm_spot_rule="keep").validate()
     with pytest.raises(ValueError, match="farm_spot_rule"):
         GameConfig.champions(farm_spot_rule="pre_crash_front").validate()
-
-
-def test_pre_crash_front_reproduces_the_design_freeze_table_and_the_keep_reach_prototype():
-    base = GameConfig.m4()
-    for e in range(2, 10):
-        for bw in (SP, SH):
-            got = [hold_run(e, bw, ph, F, PCF)["first_crash"] for ph in range(4)]
-            assert got == DESIGN_HOLD_TABLE[(e, bw)][0], (e, bw)
-            assert got == [keep_reach_hold_run(e, bw, ph, base) for ph in range(4)], (e, bw)
-    # the default keeps the M4.2 behavior (finding 1 of the M4.2 report)
-    assert [hold_run(4, SH, ph, F, base)["first_crash"] for ph in range(4)] == [9, 8, 9, 8]
 
 
 def test_pre_crash_front_is_mirror_equivariant_bounded_and_fires_only_on_probe_crashes():
@@ -64,20 +51,6 @@ def test_pre_crash_front_is_mirror_equivariant_bounded_and_fires_only_on_probe_c
         if r.done:
             break
     assert fired > 0
-
-
-def test_wave_lines_are_deterministic_and_a_pushed_lane_does_not_bounce():
-    """Documents the M4.2d-A finding (report section 1): against a passive defender a pushed lane stays pushed under
-    either farm-spot rule. Crashes repeat and the defender's wave never reaches the crasher's half."""
-    for cfg in (GameConfig.m4(), PCF):
-        st = starts(cfg)
-        start, fa, pb, w = LINES["hold"]
-        lane, m4, k0 = st[start]
-        r1 = summarize(play(cfg, fa(), pb, w, lane, m4, k0), cfg)
-        r2 = summarize(play(cfg, fa(), pb, w, lane, m4, k0), cfg)
-        assert r1 == r2
-        assert len(r1["crashes"][0]) >= 3 and not r1["bounce"] and r1["earned_A_minus_B"] < -5
-        assert max(c["clear_turns"] for c in r1["crashes"][0]) == 5          # the 9-HP crash: 5 turns to clear
 
 
 def test_pre_crash_front_meets_the_sh_x_gate_that_the_default_misses(monkeypatch):

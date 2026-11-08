@@ -1,6 +1,6 @@
 """Command-line interface.
 
-  python -m lanegame solve [--model siege|revised|v1] [--horizon 32] [--out results/siege/solution_K32.json]
+  python -m lanegame solve [--model siege|revised|v1] [--horizon 32] [--out runs/solution_siege_K32.json]
   python -m lanegame scenarios [--model siege|revised|v1]
   python -m lanegame exploit [--model siege|revised|v1] [--horizon 32]
   python -m lanegame simulate --a equilibrium --b uniform [--model ...] [--episodes 2000 --seed 0]
@@ -8,45 +8,32 @@
   python -m lanegame strategy [--horizon 24] [--vision-turns 6]   (Vision -> Shove -> Crash -> Pressure witness)
   python -m lanegame env-demo [--model siege|revised|v1|champions] --a aggressive --b passive_safe [--episodes 200 --seed 42 --exact --trace t.json]
                                              (two scripted agents through the RL environment, lanegame.env)
-  python -m lanegame experiments-siege all | controlled siege_options ... (siege model, results/siege/)
-  python -m lanegame experiments-champions all | invariants tournament skill concerns benchmark   (champion mode, results/champions/)
-  python -m lanegame experiments-rl scripted | legacy | selfplay | evaluation                    (PPO, results/rl/; needs torch)
-  python -m lanegame rl-train --opponents hold_farmer,aggressive_trader [--steps 100000 --seed 0 --out results/rl/checkpoints/run]
-  python -m lanegame rl-selfplay [--init results/rl/checkpoints/run/final.pt --steps 200000 --seed 0 --out ...]
+  python -m lanegame rl-train --opponents hold_farmer,aggressive_trader [--steps 100000 --seed 0 --out runs/checkpoints/run]
+  python -m lanegame rl-selfplay [--init runs/checkpoints/run/final.pt --steps 200000 --seed 0 --out ...]
   python -m lanegame rl-shared [--model champions|m4_lasthit|... --current-fraction 0.8 --steps 307200 --seed 0 --skill-levels 0.2,0.5,0.8 --out ...]
                                              (shared-policy self-play, current / historical mixture; lanegame.rl.shared;
                                               an M4 preset trains under continuing time, PPOConfig.continuing)
-  python -m lanegame experiments-rl openai_five                    (the OpenAI Five-inspired study, results/rl/openai_five/)
-  python -m lanegame experiments-rl m43a_smoke                     (the M4.3a PPO smoke test on m4_lasthit, results/rl/m43a_smoke.md)
-  python -m lanegame experiments-rl m43b_pilot                     (the M4.3b PPO self-play pilot, results/rl/m43b/; stages: python -m lanegame.experiments.rl.m43b)
   python -m lanegame rl-eval CHECKPOINT [--opponents ... --episodes 500 --skill 0.5,0.5]
   python -m lanegame rl-br CHECKPOINT [--steps 100000 --seed 0]          (approximate best response to a frozen policy)
-  python -m lanegame experiments all | before_after model_comparison ...   (previous revision, results/revision/)
-  python -m lanegame experiments-v1 all | audit_legacy model_comparison ... (original model, results/)
 
 The default model ("siege") is GameConfig(); "revised" is GameConfig.v2() and "v1" is GameConfig.v1().
+This CLI drives the library only. The research studies run from the repository root as
+`python -m experiments.<study> <stage>` (experiments/README.md).
 """
 
 from __future__ import annotations
 
 import argparse
-import importlib
 import os
 import sys
 import time
 
 from . import GameConfig, LaneGame
-from .baselines import all_baselines, siege_baselines, v1_baselines
-from .best_response import evaluate, exploitability
+from .exact.baselines import all_baselines, siege_baselines, v1_baselines
+from .exact.best_response import evaluate, exploitability
 
-EXPERIMENTS = ["before_after", "model_comparison", "reachability", "farm_economy", "contest_safe",
-               "baselines", "sensitivity", "horizon_benchmark", "verification", "figures"]
-EXPERIMENTS_V1 = ["audit_legacy", "model_comparison", "horizon_benchmark", "baselines",
-                  "equilibrium_structure", "sensitivity", "verification", "figures"]
-EXPERIMENTS_SIEGE = ["benchmark", "timing", "controlled", "siege_options", "crash_value", "vision_sweep",
-                     "ablations", "sensitivity", "equilibrium", "verification", "figures"]
-EXPERIMENTS_CHAMPIONS = ["invariants", "tournament", "skill", "concerns", "benchmark"]
-EXPERIMENTS_RL = ["scripted", "legacy", "selfplay", "evaluation", "br_warm", "figures", "openai_five", "m43a_smoke", "m43b_pilot"]
+SCRIPTED = ["hold_farmer", "yield_farmer", "aggressive_trader", "safe_player", "shover", "conservative_recaller",
+            "opportunistic_trader", "vision_player", "punisher", "hold", "trade", "yield", "safe"]   # rl-selfplay's scripted pool
 RL_MODELS = ("champions", "m4", "m4_emergent", "m4_natural", "m4_lane", "m4_lasthit", "m4_four_actions",
              "m4_four_actions_econ", "m4_four_actions_econ_aggro")
 
@@ -79,7 +66,7 @@ def _policy(name, sol, side, args):
 
 def cmd_solve(args):
     from .io import write_solution
-    from .solver import solve_equilibrium
+    from .exact.solver import solve_equilibrium
     cfg = _cfg(args, horizon=args.horizon)
     g = LaneGame(cfg)
     t = time.perf_counter()
@@ -91,15 +78,13 @@ def cmd_solve(args):
           f"{time.perf_counter() - t:.2f}s")
     print("equilibrium at s0: A", {cfg.label(a): round(float(p), 4) for a, p in zip(la, sol.x[0][s0])},
           "B", {cfg.label(b): round(float(p), 4) for b, p in zip(lb, sol.y[0][s0])})
-    out = args.out or {"v1": f"results/solution_K{args.horizon}.json",
-                       "revised": f"results/revision/solution_K{args.horizon}.json",
-                       "siege": f"results/siege/solution_K{args.horizon}.json"}[args.model]
+    out = args.out or os.path.join("runs", f"solution_{args.model}_K{args.horizon}.json")
     write_solution(sol, out, include_q=not args.no_q)
     print("wrote", out)
 
 
 def cmd_scenarios(args):
-    from .scenarios import all_scenarios, run_scenario
+    from .exact.scenarios import all_scenarios, run_scenario
     cfg = _cfg(args)
     bad = 0
     for sc in all_scenarios(cfg):
@@ -112,7 +97,7 @@ def cmd_scenarios(args):
 
 
 def cmd_exploit(args):
-    from .solver import solve_equilibrium
+    from .exact.solver import solve_equilibrium
     g = LaneGame(_cfg(args, horizon=args.horizon))
     sol = solve_equilibrium(g)
     print(f"[{args.model}] V*(s0) = {sol.value:.6g}")
@@ -123,8 +108,8 @@ def cmd_exploit(args):
 
 
 def cmd_simulate(args):
-    from .simulate import simulate
-    from .solver import solve_equilibrium
+    from .exact.simulate import simulate
+    from .exact.solver import solve_equilibrium
     g = LaneGame(_cfg(args, horizon=args.horizon))
     sol = solve_equilibrium(g)
     pa, pb = _policy(args.a, sol, 0, args), _policy(args.b, sol, 1, args)
@@ -135,7 +120,7 @@ def cmd_simulate(args):
 
 
 def cmd_reach(args):
-    from .reachability import events_for, explore_events
+    from .exact.reachability import events_for, explore_events
     cfg = _cfg(args, horizon=args.horizon)
     rep = explore_events(LaneGame(cfg))
     print(f"[{args.model}] {rep.states} reachable decision nodes, {rep.distinct_states} distinct states")
@@ -147,7 +132,7 @@ def cmd_reach(args):
 
 def cmd_strategy(args):
     """Search the game tree from s_0 for the Vision -> Shove -> Crash -> Pressure sequence and print its trace."""
-    from .reachability import find_vision_strategy
+    from .exact.reachability import find_vision_strategy
     cfg = GameConfig(horizon=args.horizon, vision_turns=args.vision_turns, tower_siege_damage=args.tower_damage)
     g = LaneGame(cfg)
     t = time.perf_counter()
@@ -186,7 +171,7 @@ def cmd_env_demo(args):
         return
     sol = None
     if "equilibrium" in (args.a, args.b):
-        from .solver import solve_equilibrium
+        from .exact.solver import solve_equilibrium
         print(f"solving the {args.model} game at K = {args.horizon} for the equilibrium policy "
               f"(minutes and gigabytes at K = 32 for the siege model) ...")
         sol = solve_equilibrium(LaneGame(cfg))
@@ -195,7 +180,7 @@ def cmd_env_demo(args):
     print(f"[{args.model}] K = {args.horizon}, seed {args.seed}, realized ganks, zero-sum rewards (payoff to A)")
     print(stats.format())
     if args.exact:
-        from .best_response import evaluate
+        from .exact.best_response import evaluate
         g = LaneGame(cfg)
         layers = sol.layers if sol is not None else g.reachable()
         exact = evaluate(g, layers, pa, pb)
@@ -204,37 +189,6 @@ def cmd_env_demo(args):
     if args.trace:
         write_trace(stats.first_log, cfg, args.trace)
         print("wrote", args.trace)
-
-
-def _run_experiments(names, available, package):
-    names = available if "all" in names else names
-    for n in names:
-        if n not in available:
-            raise SystemExit(f"unknown experiment {n}; choose from {available}")
-        print(f"\n===== {n} =====")
-        t = time.perf_counter()
-        importlib.import_module(f"{package}.{n}").run()
-        print(f"[{n}: {time.perf_counter() - t:.1f}s]")
-
-
-def cmd_experiments(args):
-    _run_experiments(args.names, EXPERIMENTS, "lanegame.experiments")
-
-
-def cmd_experiments_v1(args):
-    _run_experiments(args.names, EXPERIMENTS_V1, "lanegame.experiments.v1")
-
-
-def cmd_experiments_siege(args):
-    _run_experiments(args.names, EXPERIMENTS_SIEGE, "lanegame.experiments.siege")
-
-
-def cmd_experiments_champions(args):
-    _run_experiments(args.names, EXPERIMENTS_CHAMPIONS, "lanegame.experiments.champions")
-
-
-def cmd_experiments_rl(args):
-    _run_experiments(args.names, EXPERIMENTS_RL, "lanegame.experiments.rl")
 
 
 def _rl_opponents(cfg, names):
@@ -270,11 +224,11 @@ def cmd_rl_train(args):
 
 
 def cmd_rl_selfplay(args):
-    from .experiments.rl.common import SCRIPTED, scripted_agents
+    from .env import champion_agents
     from .rl import PPOConfig, load_checkpoint, train_selfplay
     cfg = _rl_cfg(args)
     init = load_checkpoint(args.init)[0] if args.init else None
-    res = train_selfplay(cfg, PPOConfig(total_steps=args.steps, seed=args.seed), list(scripted_agents(cfg, SCRIPTED).values()),
+    res = train_selfplay(cfg, PPOConfig(total_steps=args.steps, seed=args.seed), [champion_agents(cfg)[n] for n in SCRIPTED],
                          init_net=init, pool_size=args.pool, snapshot_every=args.snapshot_every,
                          p_scripted=args.p_scripted, p_latest=args.p_latest, out_dir=args.out,
                          name=os.path.basename(args.out.rstrip("/\\")))
@@ -368,19 +322,13 @@ def main(argv=None):
     s.add_argument("--no-plate", action="store_true", help="do not require a plate to be claimed on the pressure turn")
     s.add_argument("--min-crash-hp", type=int, default=1, help="minimum HP of the crash after the vision (4 = a full wave)")
     s.set_defaults(fn=cmd_strategy)
-    s = sub.add_parser("experiments-siege")
-    s.add_argument("names", nargs="+")
-    s.set_defaults(fn=cmd_experiments_siege)
-    s = sub.add_parser("experiments-rl")
-    s.add_argument("names", nargs="+")
-    s.set_defaults(fn=cmd_experiments_rl)
     s = sub.add_parser("rl-train")
     s.add_argument("--opponents", default="hold_farmer")
     s.add_argument("--steps", type=int, default=102_400)
     s.add_argument("--seed", type=int, default=0)
     s.add_argument("--horizon", type=int, default=32)
     s.add_argument("--skill", help="seat skills 'a,b'")
-    s.add_argument("--out", default=os.path.join("results", "rl", "checkpoints", "rl_train"))
+    s.add_argument("--out", default=os.path.join("runs", "checkpoints", "rl_train"))
     s.set_defaults(fn=cmd_rl_train)
     s = sub.add_parser("rl-selfplay")
     s.add_argument("--init", help="checkpoint to start from (its policy is the first snapshot)")
@@ -392,7 +340,7 @@ def main(argv=None):
     s.add_argument("--snapshot-every", type=int, default=20)
     s.add_argument("--p-scripted", type=float, default=0.3)
     s.add_argument("--p-latest", type=float, default=0.35)
-    s.add_argument("--out", default=os.path.join("results", "rl", "checkpoints", "rl_selfplay"))
+    s.add_argument("--out", default=os.path.join("runs", "checkpoints", "rl_selfplay"))
     s.set_defaults(fn=cmd_rl_selfplay)
     s = sub.add_parser("rl-shared")
     s.add_argument("--model", choices=RL_MODELS, default="champions",
@@ -406,7 +354,7 @@ def main(argv=None):
     s.add_argument("--skill-levels", help="per-episode skills per seat drawn from these levels, e.g. 0.2,0.5,0.8")
     s.add_argument("--pool", type=int, default=8)
     s.add_argument("--snapshot-every", type=int, default=25_600, help="agent transitions between snapshots")
-    s.add_argument("--out", default=os.path.join("results", "rl", "checkpoints", "rl_shared"))
+    s.add_argument("--out", default=os.path.join("runs", "checkpoints", "rl_shared"))
     s.set_defaults(fn=cmd_rl_shared)
     s = sub.add_parser("rl-eval")
     s.add_argument("checkpoint")
@@ -426,15 +374,6 @@ def main(argv=None):
     s.add_argument("--horizon", type=int, default=32)
     s.add_argument("--out")
     s.set_defaults(fn=cmd_rl_br)
-    s = sub.add_parser("experiments-champions")
-    s.add_argument("names", nargs="+")
-    s.set_defaults(fn=cmd_experiments_champions)
-    s = sub.add_parser("experiments")
-    s.add_argument("names", nargs="+")
-    s.set_defaults(fn=cmd_experiments)
-    s = sub.add_parser("experiments-v1")
-    s.add_argument("names", nargs="+")
-    s.set_defaults(fn=cmd_experiments_v1)
     args = p.parse_args(argv)
     args.fn(args)
 

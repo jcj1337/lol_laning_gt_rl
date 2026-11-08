@@ -1,4 +1,4 @@
-"""M4.2e-A: the natural-wave prototype, `GameConfig.m4_natural_prototype()` (docs/natural_waves/m4_2e_natural_waves_report.md).
+"""M4.2e-A: the natural-wave prototype, `GameConfig.m4_natural_prototype()` (docs/archive/natural_waves/m4_2e_natural_waves_report.md).
 
 Correctness (validation, legality, movement, conservation, mirror symmetry, accounting, observation) and pins of the
 report's mechanical findings (neutral symmetry, Hold / Thin / Clear, stacking, crash, bounce, freeze, Recall, reach).
@@ -8,17 +8,17 @@ import numpy as np
 import pytest
 
 from lanegame import GameConfig
-from lanegame.champions import N_CHANCE, NO_REACH, champion_legal_actions, mirror_chance, swap_seats
-from lanegame.champions_m4 import check_invariants, initial_m4, resolve_turn_m4
-from lanegame.config import (B_HOLD, B_SAFE, B_TRADE, CHAMP_ABSENT, NATURAL_WAVE_HP, W_CLEAR, W_HOLD, W_THIN,
+from lanegame.engine.champions import N_CHANCE, NO_REACH, champion_legal_actions, mirror_chance, swap_seats
+from lanegame.engine.champions_m4 import check_invariants, initial_m4, resolve_turn_m4
+from lanegame.engine.config import (B_HOLD, B_SAFE, B_TRADE, CHAMP_ABSENT, NATURAL_WAVE_HP, W_CLEAR, W_HOLD, W_THIN,
                              champ_act)
 from lanegame.env import LaneEnv, UniformAgent
 from lanegame.env.agents_m4 import natural_suite
 from lanegame.env.discounted import per_turn_bound, tail_constant
 from lanegame.env.observation_m4 import decode_m4, m4_obs_size, observe_m4
-from lanegame.experiments.m4 import natural_waves as nw
-from lanegame.mechanics import initial_state, step_turn, total_hp, wave_actions
-from lanegame.state import State
+from experiments.m4 import natural_waves as nw
+from lanegame.engine.mechanics import initial_state, step_turn, total_hp, wave_actions
+from lanegame.engine.state import State
 
 from test_m4_env import soak
 

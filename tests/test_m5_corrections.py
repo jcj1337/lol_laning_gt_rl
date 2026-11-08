@@ -10,8 +10,8 @@ import os
 import numpy as np
 import pytest
 
-from lanegame.experiments.rl.m5 import analysis as AN
-from lanegame.experiments.rl.m5 import common as C
+from experiments.m5 import analysis as AN
+from experiments.m5 import common as C
 
 
 # ---------------------------------------------------------------------------------------------- the amendment chain
@@ -164,7 +164,7 @@ def test_replication_never_counts_a_missing_seed():
 # ---------------------------------------------------------------------------------------------- synthetic M5d records
 def _cell(path, n_focal, values, T, rng, N=4, panel_scale=0.8):
     """A games.cell_job record: focal f's lead at every horizon is values[f] (+ game noise) on turn 0."""
-    from lanegame.experiments.rl.m5 import games as G
+    from experiments.m5 import games as G
     os.makedirs(os.path.dirname(path), exist_ok=True)
     out = {}
     for f in range(n_focal):
@@ -221,7 +221,7 @@ def test_analysis_end_to_end_on_synthetic_records(tmp_path):
 
 
 def test_switch_windows_and_belief_readouts_on_synthetic_records(tmp_path):
-    from lanegame.experiments.rl.m5 import evaluate as EV
+    from experiments.m5 import evaluate as EV
     root = str(tmp_path / "eval")
     rng = np.random.default_rng(6)
     _fixture(root, rng)
@@ -264,7 +264,7 @@ def test_missing_records_leave_endpoints_partial_and_the_headline_unavailable(tm
 
 
 def test_report_tables_from_synthetic_analysis(tmp_path, monkeypatch):
-    from lanegame.experiments.rl.m5 import report as RP
+    from experiments.m5 import report as RP
     root, out = str(tmp_path / "eval"), str(tmp_path / "out")
     _fixture(root, np.random.default_rng(3))
     a = AN.analyse(root=root, attack_root=str(tmp_path / "none"), save=False)
@@ -276,7 +276,7 @@ def test_report_tables_from_synthetic_analysis(tmp_path, monkeypatch):
 
 
 def test_monitoring_and_convergence_on_synthetic_records(tmp_path):
-    from lanegame.experiments.rl.m5 import evaluate as EV
+    from experiments.m5 import evaluate as EV
     root = str(tmp_path / "eval")
     rng = np.random.default_rng(4)
     for a in C.ARMS:
@@ -297,8 +297,8 @@ def test_monitoring_and_convergence_on_synthetic_records(tmp_path):
 
 # ---------------------------------------------------------------------------------------------- S8 on synthetic records
 def _battery_record(root, tag, fam, idx, proto, horizon, gaps, K=4, rng=None):
-    from lanegame.experiments.rl.m45c import battery as B
-    from lanegame.experiments.rl.m45c.horizon_report import intended
+    from experiments.m45c import battery as B
+    from experiments.m45c.horizon_report import intended
     rng = rng or np.random.default_rng(0)
     cands = {"policy": None, **{n: list(s) for n, s in B.candidates(fam).items()}}
     cps = B.checkpoints(horizon)
@@ -317,8 +317,8 @@ def _battery_record(root, tag, fam, idx, proto, horizon, gaps, K=4, rng=None):
 
 
 def test_battery_family_gap_coverage_and_the_validation_path(tmp_path):
-    from lanegame.experiments.rl.m45c import battery as B
-    from lanegame.experiments.rl.m5 import strategic as ST
+    from experiments.m45c import battery as B
+    from experiments.m5 import strategic as ST
     root = str(tmp_path / "battery")
     fam = "H_zone_c"                                                   # constructed: 12 cells, every cell validated
     cand = next(iter(B.candidates(fam)))
@@ -379,8 +379,8 @@ def _paired_record(path, cands, G, meta=None, K=4, H=50):
 
 
 def test_weak_side_and_cross_arm_cells_on_synthetic_records(tmp_path):
-    from lanegame.experiments.rl.m46c.evaluate import STRONG_CANDS, WEAK_CANDS
-    from lanegame.experiments.rl.m5 import strategic as ST
+    from experiments.m46c.evaluate import STRONG_CANDS, WEAK_CANDS
+    from experiments.m5 import strategic as ST
     root = str(tmp_path / "cells")
     cells = ST.weak_cells()
     for i, c in cells.items():
@@ -393,7 +393,7 @@ def test_weak_side_and_cross_arm_cells_on_synthetic_records(tmp_path):
     assert ST.weak_gap(ST._load_dir("weak", "sp_s0", root))["status"] == "partial records"
     # a cross-arm family: om - sp = +0.2 in every cell, for seeds 0..4 only (seed 5 missing)
     n = ST.expected_items("freeze")
-    from lanegame.experiments.rl.m46f import behaviour as BH
+    from experiments.m46f import behaviour as BH
     metas = [m for _, _, m in BH.freeze_cells(C.arm_cfg("sp"))]
     for s in range(5):
         for opp in C.ARMS:
@@ -416,8 +416,8 @@ def _entry(u, **kw):
 
 
 def test_run_monitor_matches_the_post_hoc_scan_and_stops_only_on_defects(tmp_path):
-    from lanegame.experiments.rl.m45c.full import stability_scan
-    from lanegame.experiments.rl.m5 import health as HL
+    from experiments.m45c.full import stability_scan
+    from experiments.m5 import health as HL
     hist = [_entry(u) for u in range(1, 40)]
     for u in range(12, 22):
         hist[u - 1]["approx_kl"] = 0.08                               # sustained KL (investigate)
@@ -448,7 +448,7 @@ def test_monitored_training_is_bit_identical_to_the_unmonitored_pin(tmp_path):
     """The OM2 trainer pin (test_om2) reproduced with the runtime monitor attached."""
     torch = pytest.importorskip("torch")
     from lanegame import GameConfig
-    from lanegame.experiments.rl.m5.health import RunMonitor
+    from experiments.m5.health import RunMonitor
     from lanegame.rl import PolicyValueNet, SharedConfig, train_shared, weights_digest
     from lanegame.rl.ppo import PPOConfig
     base = GameConfig.m45_calibrated()
@@ -464,7 +464,7 @@ def test_monitored_training_is_bit_identical_to_the_unmonitored_pin(tmp_path):
 
 
 def test_tail_reading_and_campaign_projection(tmp_path):
-    from lanegame.experiments.rl.m5 import health as HL
+    from experiments.m5 import health as HL
     p = tmp_path / "history.jsonl"
     p.write_text("\n".join(json.dumps(_entry(u, sps=100.0 + u, elapsed=float(u))) for u in range(1, 501)) + "\n")
     t = HL.tail_entries(str(p), n=5, chunk=256)
@@ -475,7 +475,7 @@ def test_tail_reading_and_campaign_projection(tmp_path):
 
 
 def test_coordinator_stops_after_more_than_two_failed_pairs():
-    from lanegame.experiments.rl.m5 import health as HL
+    from experiments.m5 import health as HL
     names = ["om_s0", "om_s1", "om_s2", "om_s3", "om_s4", "om_s5"]
     jobs = [(n, st, 0.0) for n, st in zip(names, ("failed", "complete", "stopped", "complete", "complete", "complete"))]
     out = HL.run_campaign(HL._probe_job, jobs, names, 2)
@@ -486,7 +486,7 @@ def test_coordinator_stops_after_more_than_two_failed_pairs():
 
 
 def test_evaluation_gate_refuses_failed_unresolved_or_changed_training(tmp_path):
-    from lanegame.experiments.rl.m5 import health as HL
+    from experiments.m5 import health as HL
     out = str(tmp_path)
     with pytest.raises(SystemExit, match="no training check"):
         HL.require_training_ok(out=out)
@@ -514,7 +514,7 @@ def test_evaluation_gate_refuses_failed_unresolved_or_changed_training(tmp_path)
 
 
 def test_restart_prefix_checks_are_enforced(tmp_path, monkeypatch):
-    from lanegame.experiments.rl.m5 import train as T
+    from experiments.m5 import train as T
     a, b = tmp_path / "partial", tmp_path / "run"
     for d, ent in ((a, 1.0), (b, 1.0)):
         d.mkdir()
@@ -530,7 +530,7 @@ def test_restart_prefix_checks_are_enforced(tmp_path, monkeypatch):
 
 # ---------------------------------------------------------------------------------------------- the future stages
 def test_attacker_core_and_optional_job_definitions():
-    from lanegame.experiments.rl.m5 import attackers as AT
+    from experiments.m5 import attackers as AT
     core = AT.eval_jobs(AT.CORE_KINDS)
     assert len(core) == 12 * 3 and not any("om_table" in j["key"] or "cross" in j["key"] for j in core)
     full = AT.eval_jobs(AT.CORE_KINDS + AT.OPTIONAL_KINDS)
@@ -546,13 +546,13 @@ def test_attacker_core_and_optional_job_definitions():
 
 
 def test_cli_refuses_the_optional_tables_without_their_flag():
-    from lanegame.experiments.rl.m5.__main__ import main
+    from experiments.m5.__main__ import main
     with pytest.raises(SystemExit, match="include-om-table"):
         main(["attack_tables", "--confirm-m5-attackers"])
 
 
 def test_horizon_breakdown_reproduces_the_budget_plan():
-    from lanegame.experiments.rl.m5 import evaluate as EV
+    from experiments.m5 import evaluate as EV
     rows = EV.battery_breakdown()
     total = sum(r["standard_turns"] + r["validation_turns_beyond_h"] for r in rows)
     assert total == pytest.approx(EV.battery_turns("om"))

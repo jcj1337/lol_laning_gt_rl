@@ -1,7 +1,7 @@
 # Design Philosophy
 
 *Established 2026-10-12 (milestone M4.2e-B). This document is the standard against which mechanics are evaluated. It
-is deliberately short on numbers: parameters belong in `lanegame/config.py` and in the milestone reports.*
+is deliberately short on numbers: parameters belong in `lanegame/engine/config.py` and in the milestone reports.*
 
 ## The central idea
 

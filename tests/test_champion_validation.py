@@ -2,7 +2,7 @@
 the scripted suite, and the behavioral properties the M2e experiments established: degenerate strategies
 lose, Yield is Hold against a non-trader, Hold is not a free win against Trade, a trade must pay its opportunity
 cost, skill improves execution, and the legacy configurations are untouched. Research-size runs live in
-lanegame/experiments/champions (results/champions/)."""
+experiments/champions (artifacts/champions/)."""
 
 import numpy as np
 import pytest
@@ -10,19 +10,8 @@ import pytest
 from lanegame import GameConfig
 from lanegame.env import LaneEnv, champion_agents, champion_suite, play_episode, run_episodes
 from lanegame.env.observation import obs_size
-from lanegame.experiments.champions.invariants import sweep
 
 CFG = GameConfig.champions()
-
-
-def test_invariant_sweep_has_no_violations():
-    pairs = [("uniform", "uniform"), ("aggressive_trader", "hold_farmer"), ("shover", "yield_farmer"),
-             ("trade", "trade"), ("opportunistic_trader", "punisher"), ("recall_spammer", "vision_player")]
-    for cfg in (CFG, CFG.with_(skill_a=0.9, skill_b=0.1, kill_bounty=0.0, recall_turns=3)):
-        r = sweep(cfg, pairs, episodes=6, seed=3)
-        assert r["violations"] == {}, r["violations"]
-        assert r["turns"] == 6 * len(pairs) * cfg.horizon
-        assert r["events"]["death"] > 0 and r["events"]["recall"] > 0 and r["events"]["trade_landed"] > 0
 
 
 def test_scripted_suite_is_complete_and_deterministic():

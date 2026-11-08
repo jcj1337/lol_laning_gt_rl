@@ -4,23 +4,23 @@ battery candidates) and the investment arms (opt-in, validated, strength-matched
 import numpy as np
 import pytest
 
-from lanegame.config import B_HOLD, B_RECALL, B_SAFE, B_TRADE, GameConfig, champ_behavior
-from lanegame.positional import WARD
+from lanegame.engine.config import B_HOLD, B_RECALL, B_SAFE, B_TRADE, GameConfig, champ_behavior
+from lanegame.engine.positional import WARD
 
 
 def test_lane_only_positions_and_ward_share():
-    from lanegame.experiments.rl.m44.metrics import lane_mean, ward_share
+    from experiments.m44.metrics import lane_mean, ward_share
     assert lane_mean([-1, 0, WARD, 1]) == pytest.approx(0.0)
     assert ward_share([-1, 0, WARD, 1]) == pytest.approx(0.25)
     assert np.isnan(lane_mean([WARD, WARD]))
 
 
 def test_record_distance_uses_the_movement_graph():
-    from lanegame.experiments.rl.m45c.common import env_cfg
-    from lanegame.experiments.m45b import states as S
-    from lanegame.champions_m4 import context
-    from lanegame.experiments.rl.m44.records import decision_state
-    from lanegame.champions import champion_legal_actions
+    from experiments.m45c.common import env_cfg
+    from experiments.m45b import states as S
+    from lanegame.engine.champions_m4 import context
+    from experiments.m44.records import decision_state
+    from lanegame.engine.champions import champion_legal_actions
     cfg = env_cfg()
     lane, m4, k = S.zoning_state(cfg, "neutral", level=6, gap="equal")
     ctx = context(cfg)
@@ -32,10 +32,10 @@ def test_record_distance_uses_the_movement_graph():
 
 
 def test_ledger_channels_are_an_accounting_identity():
-    from lanegame.experiments.m45b import engine as E
-    from lanegame.experiments.m45b import states as S
-    from lanegame.experiments.m45b.strategies import get
-    from lanegame.experiments.rl.m45c.common import env_cfg
+    from experiments.m45b import engine as E
+    from experiments.m45b import states as S
+    from experiments.m45b.strategies import get
+    from experiments.m45c.common import env_cfg
     cfg = env_cfg()
     g = E.play(cfg, S.s0(cfg), get("g_bully"), get("g_shove_sr"), 11, 150)["summary"]
     for s in ("A", "B"):
@@ -46,9 +46,9 @@ def test_ledger_channels_are_an_accounting_identity():
 
 
 def test_behaviour_only_battery_candidates_force_only_the_behaviour():
-    from lanegame.experiments.rl.m45c import horizon as HZ
-    from lanegame.experiments.rl.m46a.common import net_of, setup_worker, spec
-    from lanegame.experiments.m45b import states as S
+    from experiments.m45c import horizon as HZ
+    from experiments.m46a.common import net_of, setup_worker, spec
+    from experiments.m45b import states as S
     cfg = setup_worker()
     lane, m4, k = S.zoning_state(cfg, "neutral", level=10, gap="large")
     net = net_of(spec(0))
@@ -65,8 +65,8 @@ def test_behaviour_only_battery_candidates_force_only_the_behaviour():
 
 
 def test_arms_are_opt_in_validated_and_strength_matched():
-    from lanegame.experiments.rl.m46b.common import arm_cfg
-    from lanegame.experiments.rl.m46b.curves import ARMS, multiplier
+    from experiments.m46b.common import arm_cfg
+    from experiments.m46b.curves import ARMS, multiplier
     assert arm_cfg("baseline") == GameConfig.m45_calibrated()
     assert GameConfig.m45_calibrated().invest_gain == 1.5 and GameConfig.m45_calibrated().invest_scale == 16.0
     for arm in ARMS:
@@ -88,12 +88,12 @@ def test_arms_are_opt_in_validated_and_strength_matched():
 
 
 def test_reset_plan_recalls_once_and_resets_between_rollouts():
-    from lanegame.experiments.rl.m45c import horizon as HZ
-    from lanegame.experiments.rl.m46a.common import net_of, setup_worker, spec
-    from lanegame.experiments.rl.m46a.policies import ResetPlan
-    from lanegame.experiments.m45b import states as S
-    from lanegame.champions import champion_legal_actions
-    from lanegame.config import W_HOLD
+    from experiments.m45c import horizon as HZ
+    from experiments.m46a.common import net_of, setup_worker, spec
+    from experiments.m46a.policies import ResetPlan
+    from experiments.m45b import states as S
+    from lanegame.engine.champions import champion_legal_actions
+    from lanegame.engine.config import W_HOLD
     cfg = setup_worker()
     lane, m4, k = S.zoning_state(cfg, "b_push", level=10, gap="equal")
     m4 = m4._replace(a=m4.a._replace(pos=-1))                          # Recall legal at the own -1
@@ -106,5 +106,5 @@ def test_reset_plan_recalls_once_and_resets_between_rollouts():
 
 
 def champ_act_recall(w):
-    from lanegame.config import champ_act
+    from lanegame.engine.config import champ_act
     return champ_act(w, B_RECALL)

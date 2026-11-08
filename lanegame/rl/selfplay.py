@@ -21,7 +21,7 @@ from typing import Dict, List, Optional, Sequence
 
 import numpy as np
 
-from ..config import GameConfig
+from ..engine.config import GameConfig
 from .agent import NetAgent, save_checkpoint
 from .network import PolicyValueNet
 from .ppo import PPOConfig

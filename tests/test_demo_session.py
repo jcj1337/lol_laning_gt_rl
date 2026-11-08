@@ -1,4 +1,4 @@
-"""M6a: the demo's headless session core (lanegame/demo; docs/m6/m6_plan.md §3 rules 1 to 5, 7, 10 to 12, §11).
+"""M6a: the demo's headless session core (lanegame/demo; docs/archive/m6/m6_plan.md §3 rules 1 to 5, 7, 10 to 12, §11).
 
 The checks that need the 7 checkpoints of lanegame/demo/manifest.json skip when any is missing, so a
 skipped run proves nothing about rules 1 to 5; the manifest and tampering checks need no checkpoint."""
@@ -18,7 +18,7 @@ from lanegame.demo import record as R
 from lanegame.demo import registry as REG
 from lanegame.demo import session as S
 
-TRACES = os.path.join("results", "m5", "traces")
+TRACES = os.path.join("artifacts", "m5", "traces")
 H2H = os.path.join(TRACES, "h2h_om_s0_vs_sp_s0.json")
 need_ckpt = pytest.mark.skipif(not REG.Registry().available(),
                                reason="needs the 7 checkpoints of lanegame/demo/manifest.json")
@@ -75,10 +75,11 @@ def keys_of(x, acc=None):
 
 # ---------------------------------------------------------------------------------------------- rule 7: identity
 def test_the_manifest_is_m5s_inventory_and_names_every_file_the_cards_need():
-    inv = json.load(open(os.path.join("results", "m5", "inventory.json"), encoding="utf-8"))["networks"]
-    by_path = {}
+    from lanegame.paths import relocated, shipped
+    inv = json.load(open(os.path.join("artifacts", "m5", "inventory.json"), encoding="utf-8"))["networks"]
+    by_path = {}                     # the inventory names the files as they were on 2026-10-19: map them to the shipped copies
     for v in inv.values():
-        by_path.setdefault(v["path"], set()).add(v["file_sha256"])
+        by_path.setdefault(shipped(relocated(v["path"])), set()).add(v["file_sha256"])
     files = REG.read_manifest()
     assert len(files) == 7
     for rel, d in files.items():
@@ -86,8 +87,9 @@ def test_the_manifest_is_m5s_inventory_and_names_every_file_the_cards_need():
     r = REG.Registry()
     assert set(r.cards) == {"sp:0", "om:0"}
     assert set(r.cards["om:0"].dependencies) == set(REG.LIBRARY_FILES.values())
-    from lanegame.experiments.rl.om2 import common as O2
-    assert {k: v.replace("\\", "/") for k, v in O2.LEARNED.items()} == REG.LIBRARY_FILES
+    from experiments.om2 import common as O2
+    # the same 5 library networks: OM2 names them where runs keep them, the registry where the repository ships them
+    assert {k: shipped(v) for k, v in O2.LEARNED.items()} == REG.LIBRARY_FILES
     assert REG.SCRIPTED_STYLES == O2.ARCHETYPES
 
 
@@ -142,7 +144,7 @@ def test_a_tampered_real_checkpoint_copy_is_refused(tmp_path, monkeypatch):
 
 
 def test_the_session_constants_are_m5s():
-    from lanegame.experiments.rl.m5 import games as G
+    from experiments.m5 import games as G
     assert (S.LANE_EXIT, S.READ_TURN, S.TURN_CAP) == (G.LANE_END, G.READ_TURN, G.T_EVAL)
 
 
@@ -202,7 +204,7 @@ def test_the_opponent_code_is_fixed_before_the_human_acts_and_equals_a_fresh_rep
 
 @need_ckpt
 def test_the_belief_updates_after_both_codes_with_the_pre_turn_state(reg):
-    from lanegame.experiments.rl.m5 import players as PL
+    from experiments.m5 import players as PL
     s = S.GameSession(reg, (S.Seat.human(), S.Seat.model("om:0")), chance_seed=110_803, policy_seed=110_804)
     pol = s._bots[1]
     before = pol.belief.lp.copy()
@@ -474,7 +476,7 @@ def test_frames_equal_the_viewers_and_hold_only_per_tick_facts_in_ticks(viewer_r
 
 
 def test_the_menu_marks_exactly_the_engines_legal_codes_and_explains_the_rest(viewer_rec):
-    from lanegame.champions import champion_legal_actions
+    from lanegame.engine.champions import champion_legal_actions
     rec = viewer_rec
     cfg = rec.cfg
     seen_reasons = set()

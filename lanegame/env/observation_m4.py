@@ -1,4 +1,4 @@
-"""The M4 observation (docs/m4/m4_1/m4_integrated_design.md §12; plan WP7): lossless, own-perspective, fixed length, every
+"""The M4 observation (docs/archive/m4/m4_1/m4_integrated_design.md §12; plan WP7): lossless, own-perspective, fixed length, every
 entry in [0, 1], a function of (k mod P, lane, M4 champion state, side) only. No absolute time, no countdown.
 
 Layout (88 entries with the default geometry):
@@ -41,7 +41,7 @@ Both quantities are unbounded in the game, so the encoding is lossless only whil
 (the whole-resource entry is then < 1); at or beyond a reference the entry saturates at 1.0, the observation is no
 longer injective and `decode_m4` raises. `observe_m4` does NOT raise there (the game itself has no cap).
 
-M4.2d opt-in (invest_obs_encoding = "compressed", docs/m4/m4_2/m4_investment_readiness_report.md): the two whole-resource
+M4.2d opt-in (invest_obs_encoding = "compressed", docs/archive/m4/m4_2/m4_investment_readiness_report.md): the two whole-resource
 entries become n / (n + R) (n = floor(S / g) or floor(G / g); R = invest_obs_ref or invest_obs_gold_ref, now the
 half-point), the other three entries are unchanged and the length stays 88. The entry is monotone, < 1 for every
 reachable n (no saturation), well resolved near 0 (one resource of unspent gold moves it by about 1 / R), and
@@ -56,10 +56,10 @@ from typing import List, Tuple
 
 import numpy as np
 
-from ..config import GameConfig
-from ..positional import WARD
-from ..progression import tables
-from ..state import State
+from ..engine.config import GameConfig
+from ..engine.positional import WARD
+from ..engine.progression import tables
+from ..engine.state import State
 
 CHAMP_TAIL = ("hp_frac", "hp_max", "absent", "skill", "level", "xp_progress", "items", "gold", "can_buy",
               "can_buy_two", "attack_power")
@@ -80,7 +80,7 @@ def encode_last_action(code: int, cfg: GameConfig) -> List[float]:
     """The 13-entry encoding of one action code (module constant LAST_ACTION_NAMES): exactly one of none / absent /
     ward / recall, or a lane action as its behaviour, its wave slot and the Pressure flag. Under vision_rule "siege"
     the Vision objective sets the "ward" entry beside the behaviour and wave slot."""
-    from ..config import (B_RECALL, CHAMP_ABSENT, CHAMP_WARD, PRESSURE, VISION, W_HOLD, W_SHOVE, W_SLOWPUSH, W_THIN,
+    from ..engine.config import (B_RECALL, CHAMP_ABSENT, CHAMP_WARD, PRESSURE, VISION, W_HOLD, W_SHOVE, W_SLOWPUSH, W_THIN,
                           champ_behavior, champ_objective, champ_wave)
     v = [0.0] * LAST_ACTION_SIZE
     code = int(code)
@@ -216,7 +216,7 @@ def observe_m4(state: State, k: int, side: int, cfg: GameConfig, champ) -> np.nd
     gscale = t.gold_cap[0]
     inv = None
     if cfg.continuous_items:
-        from ..progression import investment
+        from ..engine.progression import investment
         inv = investment(cfg)
         g1, ref_s, ref_g = cfg.gold_scale, cfg.invest_obs_ref, cfg.invest_obs_gold_ref
         ap_ref = t.ap[cap][0] * inv.one
@@ -269,7 +269,7 @@ def decode_m4(vec, cfg: GameConfig) -> Tuple[int, State, object, Tuple[float, fl
     own perspective: the observer is side A. Exact on every reachable state (design §12.2). Under item_model
     "continuous" it is exact while invested and unspent gold are below their observation references and raises
     ValueError on a saturated entry (the value is then not recoverable)."""
-    from ..champions_m4 import M4Side, M4State
+    from ..engine.champions_m4 import M4Side, M4State
     t = tables(cfg)
     vec = np.asarray(vec, dtype=np.float32)
     P = cfg.phase_period

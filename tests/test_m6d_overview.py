@@ -1,5 +1,5 @@
-"""M6d's overview check (lanegame/experiments/m6d/overview_check.py): every result number in
-docs/m6/research_overview.md against the M5 records, and proof that the check reports a changed number, a number no
+"""M6d's overview check (experiments/m6d/overview_check.py): every result number in
+docs/research_overview.md against the M5 records, and proof that the check reports a changed number, a number no
 check accounts for, a changed record value, a changed class and a citation its source no longer supports."""
 
 import copy
@@ -7,7 +7,7 @@ import json
 
 import pytest
 
-from lanegame.experiments.m6d import overview_check as O
+from experiments.m6d import overview_check as O
 
 
 @pytest.fixture(scope="module")

@@ -3,9 +3,9 @@
 import pytest
 
 from lanegame import F_C, SH_C, SH_S, SP_C, SP_S, GameConfig, LaneGame
-from lanegame.mechanics import step_turn
-from lanegame.reachability import EVENTS, explore_events, replay
-from lanegame.state import State
+from lanegame.engine.mechanics import step_turn
+from lanegame.exact.reachability import EVENTS, explore_events, replay
+from lanegame.engine.state import State
 
 
 def _turns_to_clear(cfg, hp):

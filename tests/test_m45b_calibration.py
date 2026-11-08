@@ -1,4 +1,4 @@
-"""M4.5b calibration infrastructure (lanegame/experiments/m45b; docs/m4/m4_5/m4_5b_calibration_report.md).
+"""M4.5b calibration infrastructure (experiments/m45b; docs/archive/m4/m4_5/m4_5b_calibration_report.md).
 
 The experiments must measure the real game: the paired game loop reproduces the viewer (and so the environment) turn
 for turn; the exact one-turn enumeration agrees with Monte Carlo; every scripted strategy only plays legal actions; the
@@ -9,15 +9,15 @@ recomputation equals the resolver's own probe; the M4.5b starts replay in the vi
 import numpy as np
 import pytest
 
-from lanegame.champions import N_CHANCE
-from lanegame.champions_m4 import check_invariants, resolve_turn_m4
-from lanegame.experiments.m45b import common as Cm
-from lanegame.experiments.m45b import engine as E
-from lanegame.experiments.m45b import exact as X
-from lanegame.experiments.m45b import states as S
-from lanegame.experiments.m45b import strategies as ST
-from lanegame.experiments.m45b import timing as TM
-from lanegame.experiments.m45b import trades as T
+from lanegame.engine.champions import N_CHANCE
+from lanegame.engine.champions_m4 import check_invariants, resolve_turn_m4
+from experiments.m45b import common as Cm
+from experiments.m45b import engine as E
+from experiments.m45b import exact as X
+from experiments.m45b import states as S
+from experiments.m45b import strategies as ST
+from experiments.m45b import timing as TM
+from experiments.m45b import trades as T
 from lanegame.viewer import session as ss
 
 R2 = Cm.cfg("r2")
@@ -167,7 +167,7 @@ def test_probe_override_with_the_probe_itself_changes_nothing():
 
 # ---------------------------------------------------------------------------------------------- viewer
 def test_m45b_starts_are_registered_with_the_viewer():
-    from lanegame.experiments.m45b.scenarios import STARTS
+    from experiments.m45b.scenarios import STARTS
     for name in STARTS:
         assert name in ss.SCENARIOS
         rec1 = ss.play(ss.Setup("m45_unified", name, "equal", 87_900), policies=(ST.get("g_guard"), ST.get("g_shove")),

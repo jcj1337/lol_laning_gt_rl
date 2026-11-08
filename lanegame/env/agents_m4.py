@@ -47,11 +47,11 @@ from typing import Dict, Optional
 
 import numpy as np
 
-from ..champions import champion_legal_actions, trade_double_probability, trade_hit_probability
-from ..champions_m4 import context
-from ..config import (B_HOLD, B_RECALL, B_SAFE, B_TRADE, CHAMP_ABSENT, F, NONE, PRESSURE, SH, SP, VISION, W_CLEAR,
+from ..engine.champions import champion_legal_actions, trade_double_probability, trade_hit_probability
+from ..engine.champions_m4 import context
+from ..engine.config import (B_HOLD, B_RECALL, B_SAFE, B_TRADE, CHAMP_ABSENT, F, NONE, PRESSURE, SH, SP, VISION, W_CLEAR,
                       W_HOLD, W_THIN, champ_act, champ_wave)
-from ..progression import tables
+from ..engine.progression import tables
 from .core import Observation
 
 ABSENT_ONLY = (CHAMP_ABSENT,)
@@ -301,7 +301,7 @@ NATURAL_WAVE_RULES = ("hold", "thin", "clear", "slow_push", "freeze", "build_cle
 
 
 class NaturalWaveAgent(M4ScriptAgent):
-    """M4ScriptAgent whose wave rule (rule 5) is mechanical, for wave_dynamics "natural" (lanegame.config.W_HOLD etc.):
+    """M4ScriptAgent whose wave rule (rule 5) is mechanical, for wave_dynamics "natural" (lanegame.engine.config.W_HOLD etc.):
 
       hold         Hold
       thin         Thin

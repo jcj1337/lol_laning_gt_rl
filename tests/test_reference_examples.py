@@ -1,10 +1,10 @@
-"""The deterministic numbers that docs/m4/laning_game_mathematical_reference.md quotes from
-`lanegame.experiments.reference.examples` and `.actions` (§3.2, §4.5, §4.8–§4.10, §6.5, §8.6, §9.3, §10.1, §10.3). A
+"""The deterministic numbers that docs/model.md quotes from
+`experiments.reference.examples` and `.actions` (§3.2, §4.5, §4.8–§4.10, §6.5, §8.6, §9.3, §10.1, §10.3). A
 failure means the reference is stale: update the section and its §13 change log together with these values."""
 
 import pytest
 
-from lanegame.experiments.reference import examples as E
+from experiments.reference import examples as E
 
 
 @pytest.fixture(scope="module")
@@ -82,6 +82,6 @@ def test_the_low_hp_death_odds():
 
 
 def test_the_codes_that_can_ever_be_legal():
-    from lanegame.experiments.reference.actions import exhaustive
+    from experiments.reference.actions import exhaustive
     ex = exhaustive()
     assert ex["n_ever_legal"] == 27 and max(ex["size_by_position"].values()) == 25

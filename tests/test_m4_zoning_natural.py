@@ -1,4 +1,4 @@
-"""M4.2e-B: combat-driven zoning on natural waves (docs/natural_waves/m4_2e_zoning_report.md).
+"""M4.2e-B: combat-driven zoning on natural waves (docs/archive/natural_waves/m4_2e_zoning_report.md).
 
 The opt-in engine fields of the study (trade_exchanges, trade_farm_rule "loser", invest_durability,
 collect_contest_own_tower) and their default preservation; the candidate preset `GameConfig.m4_lane()`; the global
@@ -11,15 +11,15 @@ import numpy as np
 import pytest
 
 from lanegame import GameConfig
-from lanegame.champions import N_CHANCE, mirror_chance, swap_seats
-from lanegame.champions_m4 import (M4State, check_invariants, collection_units, context, initial_m4, resolve_turn_m4,
+from lanegame.engine.champions import N_CHANCE, mirror_chance, swap_seats
+from lanegame.engine.champions_m4 import (M4State, check_invariants, collection_units, context, initial_m4, resolve_turn_m4,
                                    trade_damage_distribution_n, trade_damage_n)
-from lanegame.champions import AWAY, FARM, RETREAT, SAFE_MODE, TRADING, champion_legal_actions
-from lanegame.config import B_HOLD, B_SAFE, B_TRADE, B_YIELD, NONE, W_HOLD, champ_act
+from lanegame.engine.champions import AWAY, FARM, RETREAT, SAFE_MODE, TRADING, champion_legal_actions
+from lanegame.engine.config import B_HOLD, B_SAFE, B_TRADE, B_YIELD, NONE, W_HOLD, champ_act
 from lanegame.env import LaneEnv, UniformAgent
 from lanegame.env.observation_m4 import decode_m4, observe_m4
-from lanegame.mechanics import initial_state
-from lanegame.progression import tables
+from lanegame.engine.mechanics import initial_state
+from lanegame.engine.progression import tables
 
 from test_m4_env import soak
 

@@ -1,4 +1,4 @@
-"""The model registry of the M6 demo (docs/m6/m6_plan.md §3 rule 7, §4.1 `ModelCard`).
+"""The model registry of the M6 demo (docs/archive/m6/m6_plan.md §3 rule 7, §4.1 `ModelCard`).
 
 A registry entry is a `ModelCard`: one trained M5 policy that a session may seat, with its arm, seed, configuration,
 input width, checkpoint file and the files it needs at serve time. `om:0` needs the 5 learned networks of its belief's
@@ -6,7 +6,7 @@ library (`om2.common.LEARNED`) besides its own checkpoint, so the demo depends o
 
 Trust. `torch.load` unpickles the files, so a file must be checked before it is read as a
 checkpoint. `manifest.json` (tracked, beside this module) holds each file's SHA-256, copied from
-`results/m5/inventory.json`. `Registry.load` reads every file's bytes once, hashes those bytes, refuses the whole
+`artifacts/m5/inventory.json`. `Registry.load` reads every file's bytes once, hashes those bytes, refuses the whole
 registry on any mismatch or missing file, and only then unpickles the same bytes (no second read, so nothing can change
 between the check and the load). The weights digest stored in each checkpoint is verified as well
 (`rl.load_checkpoint`).
@@ -18,7 +18,7 @@ objects. Sessions then build their policies with M5's own `players.crn_policy`, 
 
 Scripted seats are the six library archetypes of OM2 (`om2.common.ARCHETYPES`); they need no file. They exist in the
 core so that the two seed-0 research recordings against `g_shove` can be re-simulated. Offering them to visitors is an
-open design decision (docs/m6/m6a_decision_record.md).
+open design decision (docs/archive/m6/m6a_decision_record.md).
 """
 
 from __future__ import annotations
@@ -33,7 +33,7 @@ from typing import Dict, Optional, Tuple
 MANIFEST = os.path.join(os.path.dirname(os.path.abspath(__file__)), "manifest.json")
 MANIFEST_SCHEMA = "lanegame.demo_manifest"
 
-_CK = "results/rl/checkpoints"
+_CK = "artifacts/checkpoints"          # the 7 shipped networks (lanegame.paths.SHIPPED)
 LIBRARY_FILES = {                     # om2.common.LEARNED, in the belief's type order
     "peer": f"{_CK}/m45c/full/s3/final.pt",
     "attacker": f"{_CK}/m45c/attack/ext_s3/final.pt",
@@ -77,14 +77,14 @@ CARDS = (
     ModelCard("sp:0", "sp", 0, "Pure self-play",
               "M5 arm B: trained only against itself. Stronger against competent opponents in M5's evaluation.",
               "m45_calibrated", 90, f"{_CK}/m5/train/main/sp/s0/final.pt", training=_TRAINING,
-              evidence=("docs/m5/m5e_closeout_report.md#7-configuration-for-m6", "results/m5/analysis_main.json")),
+              evidence=("docs/archive/m5/m5e_closeout_report.md#7-configuration-for-m6", "artifacts/m5/analysis_main.json")),
     ModelCard("om:0", "om", 0, "Opponent modelling",
               "M5 arm A: keeps a Bayesian belief about its opponent's style and sees the opponent's previous action; "
               "half of its training games were against 15 fixed opponents. Gains most against recognizable scripted "
               "styles in M5's evaluation.",
               "m45_calibrated(obs_last_action=True)", 116, f"{_CK}/m5/train/main/om/s0/final.pt",
               dependencies=tuple(LIBRARY_FILES.values()), training=_TRAINING,
-              evidence=("docs/m5/m5e_closeout_report.md#7-configuration-for-m6", "results/m5/analysis_main.json")),
+              evidence=("docs/archive/m5/m5e_closeout_report.md#7-configuration-for-m6", "artifacts/m5/analysis_main.json")),
 )
 
 
@@ -140,9 +140,10 @@ class Registry:
         if self.loaded:
             return self
         import torch
-        from ..experiments.rl.m5 import common as C
-        from ..experiments.rl.m5 import players as PL
-        from ..experiments.rl.om2 import common as O2
+        from experiments.m5 import common as C
+        from experiments.m5 import players as PL
+        from experiments.om2 import common as O2
+        from ..paths import shipped
         from ..rl import load_checkpoint, weights_digest
         torch.set_num_threads(1)
         blobs = self.verify()                                   # all 7 files checked before the first unpickle
@@ -161,7 +162,7 @@ class Registry:
         if dict(O2.LEARNED).keys() != LIBRARY_FILES.keys():
             raise ValueError("the OM2 library changed; update lanegame/demo/registry.py and its manifest")
         for name, key in O2.LEARNED.items():
-            if key.replace("\\", "/") != LIBRARY_FILES[name]:
+            if shipped(key) != LIBRARY_FILES[name]:             # OM2 names the run's copy, the registry the shipped one
                 raise ValueError(f"library type {name}: {key} is not {LIBRARY_FILES[name]}")
             net, _ = nets[LIBRARY_FILES[name]]
             if net.obs_size != 90:
@@ -181,7 +182,7 @@ class Registry:
     def policy(self, model_id: str, seat: int, policy_seed: int, horizon: int):
         """M5's engine policy for a seat (players.crn_policy: CRNNet for sp, OMPolicy with a live belief for om),
         sampling with the uniforms of default_rng([policy_seed, 7, seat]) for `horizon` turns."""
-        from ..experiments.rl.m5 import players as PL
+        from experiments.m5 import players as PL
         if not self.loaded:
             raise RuntimeError("Registry.load() first")
         self.card(model_id)
@@ -197,13 +198,13 @@ def scripted_agent(name: str):
     """A scripted library archetype as an agent (om2.common.agent), the only scripted seats the core accepts."""
     if name not in SCRIPTED_STYLES:
         raise KeyError(f"unknown scripted style {name!r}; choose from {list(SCRIPTED_STYLES)}")
-    from ..experiments.rl.om2 import common as O2
+    from experiments.om2 import common as O2
     return O2.agent(name)
 
 
 def scripted_description(name: str) -> str:
     """The archetype's own rule, as its strategy states it (experiments/m45b/strategies.py)."""
-    from ..experiments.m45b.strategies import get
+    from experiments.m45b.strategies import get
     return get(name).description
 
 

@@ -7,22 +7,14 @@ build/
 dist/
 .ipynb_checkpoints/
 
-# RL network checkpoints (large, regenerable). Git still tracks the demo's 7, listed in lanegame/demo/manifest.json,
-# because they were added with `git add -f` and git keeps tracking a file once it is added.
-results/rl/checkpoints/
+# Everything runs write that is not curated: checkpoints, partial results, new outputs (lanegame/paths.py)
+runs/
+
+# Network checkpoints are large and regenerable. The 7 networks the demo ships with are tracked in
+# artifacts/checkpoints/ (lanegame/demo/manifest.json lists them with their SHA-256).
 *.pt
-results/m4_design/scripts/*.npz
+!artifacts/checkpoints/**/*.pt
 
-# research artifact bundles (checkpoint tarballs; see results/rl/m43b/MANIFEST.json)
-results/rl/m43b_artifacts/
-
-# M4.4c raw per-state counterfactual results (large, regenerable with deterministic seeds; sha256 and commands in
-# results/m44c/MANIFEST.json) and the resumable-run scratch folder
-results/m44c/*.json.gz
-results/m44c/partial/
-
-# the demo frontend's toolchain and build (M6b): cd web && npm install && npm run build
+# The web frontend's toolchain and build: cd web && npm install && npm run build
 web/node_modules/
 web/dist/
-
-docs/

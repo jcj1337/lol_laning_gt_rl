@@ -50,9 +50,9 @@ from typing import List
 
 import numpy as np
 
-from ..config import GameConfig
-from ..mechanics import legal_actions
-from ..state import State
+from ..engine.config import GameConfig
+from ..engine.mechanics import legal_actions
+from ..engine.state import State
 
 SIDE_FEATURES = 5
 CHAMP_FEATURE_TAIL = ("hp", "absent", "skill")
@@ -124,7 +124,7 @@ def observe_full(state: State, k: int, side: int, cfg: GameConfig, champ=None, l
 
 def observe(state: State, k: int, side: int, cfg: GameConfig, champ=None) -> np.ndarray:
     """Own-perspective feature vector of side `side` at decision index k (float32, values in [0, 1]).
-    Champion mode needs the champion state `champ` (lanegame.champions.ChampState; M4: champions_m4.M4State)."""
+    Champion mode needs the champion state `champ` (lanegame.engine.champions.ChampState; M4: champions_m4.M4State)."""
     if cfg.is_m4:
         from .observation_m4 import observe_m4
         return observe_m4(state, k, side, cfg, champ)
@@ -181,7 +181,7 @@ def legal_set(state: State, side: int, cfg: GameConfig, champ=None):
     """The engine's legal action codes: mechanics.legal_actions, or in champion mode
     champions.champion_legal_actions (which builds on the lane's own wave and siege rules)."""
     if cfg.champion_mode:
-        from ..champions import champion_legal_actions
+        from ..engine.champions import champion_legal_actions
         if champ is None:
             raise ValueError("champion mode: the legal set needs the champion state")
         return champion_legal_actions(state, champ, side, cfg)

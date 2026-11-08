@@ -8,19 +8,19 @@ import numpy as np
 import pytest
 
 from lanegame import GameConfig, LaneGame
-from lanegame.champions import (FARM, NO_REACH, RECALL, RETREAT, SAFE_MODE, TRADING, ChampSide, ChampState,
+from lanegame.engine.champions import (FARM, NO_REACH, RECALL, RETREAT, SAFE_MODE, TRADING, ChampSide, ChampState,
                                 champion_collection, champion_gank_probability, champion_legal_actions,
                                 in_contact, initial_champions, objective_reachable, recall_legal, resolve_turn,
                                 swap_seats)
-from lanegame.config import (B_HOLD, B_RECALL, B_SAFE, B_TRADE, B_YIELD, CHAMP_ABSENT, CHAMP_BEHAVIORS, CONTEST, F,
+from lanegame.engine.config import (B_HOLD, B_RECALL, B_SAFE, B_TRADE, B_YIELD, CHAMP_ABSENT, CHAMP_BEHAVIORS, CONTEST, F,
                              N_CHAMP_ACTIONS, NONE, PRESSURE, SAFE, SH, SP, VISION, act, champ_act, champ_behavior,
                              champ_objective, champ_wave)
 from lanegame.env import (LaneEnv, LegacyChampionAgent, ScriptedAgent, UniformAgent, as_policy, champion_agents,
                           feature_names, legal_mask, obs_size, observe, play_episode, run_episodes)
-from lanegame.baselines import aggressive, passive_safe
-from lanegame.game import gank_probability
-from lanegame.mechanics import initial_state, legal_actions, step_turn, wave_actions
-from lanegame.state import State
+from lanegame.exact.baselines import aggressive, passive_safe
+from lanegame.engine.game import gank_probability
+from lanegame.engine.mechanics import initial_state, legal_actions, step_turn, wave_actions
+from lanegame.engine.state import State
 
 CFG = GameConfig.champions(horizon=16)
 ASYM = GameConfig.champions(horizon=16, skill_a=0.8, skill_b=0.3)

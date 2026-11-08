@@ -7,8 +7,8 @@ import numpy as np
 import pytest
 
 from lanegame import GameConfig, LaneGame
-from lanegame.baselines import aggressive, freeze_contest, passive_safe, uniform
-from lanegame.best_response import evaluate
+from lanegame.exact.baselines import aggressive, freeze_contest, passive_safe, uniform
+from lanegame.exact.best_response import evaluate
 from lanegame.env import LaneEnv, ScriptedAgent, run_episodes
 
 CFG = GameConfig(horizon=8)

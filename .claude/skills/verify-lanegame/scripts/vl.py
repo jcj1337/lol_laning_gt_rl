@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""verify-lanegame harness: drive lanegame's CLI and Streamlit viewer the way a user does, and keep the evidence.
+"""verify-lanegame harness: drive lanegame's CLI and web demo the way a user does, and keep the evidence.
 
 Run it with the repo's venv, from the repo root:
 
@@ -8,7 +8,6 @@ Run it with the repo's venv, from the repo root:
     new-run                                 create a run folder (prints RUN); every other command takes --run RUN
     doctor   [--run RUN]                    read-only health check: venv, editable install, git, deps, our instances
     cli      --run RUN --label L -- ARGS    `python -m lanegame ARGS` in RUN/work/cli, transcript + created files kept
-    viewer   start|stop --run RUN [--port N]
     demo     start|stop --run RUN [--port N]  the M6 web demo (python -m lanegame.demo: the API and the built frontend)
     browser  start|stop --run RUN
     browser  open       --run RUN [--url U] [--wait-text T | --ready-js EXPR]
@@ -46,7 +45,6 @@ REPO = Path(__file__).resolve().parents[4]
 WIN = os.name == "nt"
 VENV_PY = REPO / ".venv" / ("Scripts/python.exe" if WIN else "bin/python")
 ROOT = Path(os.environ.get("LANEGAME_VERIFY_ROOT") or Path(tempfile.gettempdir()) / "lanegame-verify")
-VIEWER_PORTS = range(8600, 8700)              # never 8501, the port a user's own `streamlit run` takes
 DEMO_PORTS = range(8700, 8800)                # never 8765, the port a user's own `python -m lanegame.demo` takes
 COPY_LIMIT = 2_000_000                        # created files up to this size are copied into the evidence
 BROWSERS = [os.environ.get("LANEGAME_VERIFY_BROWSER", ""),
@@ -107,10 +105,10 @@ def repo_snapshot() -> dict:
         rel = line[3:].split(" -> ")[-1].strip('"')
         p = REPO / rel
         snap[rel] = f"{line[:2]} {sha256(p) if p.is_file() else '-'}"
-    ck = REPO / "results" / "rl" / "checkpoints"
+    ck = REPO / "runs" / "checkpoints"
     if ck.is_dir():
         for e in os.scandir(ck):
-            snap[f"[ignored] results/rl/checkpoints/{e.name}"] = str(e.stat().st_mtime_ns)
+            snap[f"[ignored] runs/checkpoints/{e.name}"] = str(e.stat().st_mtime_ns)
     return snap
 
 
@@ -210,26 +208,16 @@ def cmd_doctor(a) -> None:
           and Path(lines[0]).resolve().is_relative_to(REPO), " ".join(lines) or r.stderr.strip()[-200:])
     head = git("rev-parse", "--short", "HEAD").strip()
     check("git", bool(head), f"HEAD {head}, {len(git('status', '--porcelain').splitlines())} dirty entries", fatal=False)
-    for mod in ("torch", "streamlit", "plotly", "psutil", "websockets"):
+    for mod in ("torch", "fastapi", "psutil", "websockets"):
         r = subprocess.run([str(VENV_PY), "-c", f"import {mod}; print(getattr({mod}, '__version__', 'ok'))"],
                            capture_output=True, text=True)
         need = mod in ("psutil", "websockets")
         check(f"module {mod}", r.returncode == 0, r.stdout.strip() or "missing", fatal=need)
     br = next((b for b in BROWSERS if b and Path(b).is_file()), None)
-    check("browser for the viewer", br is not None, br or "no Edge/Chrome found; set LANEGAME_VERIFY_BROWSER", fatal=False)
+    check("browser (Edge or Chrome)", br is not None, br or "no Edge/Chrome found; set LANEGAME_VERIFY_BROWSER", fatal=False)
     if a.run:
         run = run_dir(a.run)
         check("run folder", True, str(run))
-        v = state(run, "viewer")
-        if v:
-            alive = pid_alive(v["pid"])
-            check("viewer process (ours)", alive, f"pid {v['pid']}")
-            check("viewer port owned by our process", alive and port_owner_ok(v["pid"], v["port"]), f"port {v['port']}")
-            try:
-                h = http_get(f"{v['url']}_stcore/health")
-            except Exception as e:                                   # noqa: BLE001
-                h = f"error: {e}"
-            check("viewer health endpoint", h.strip() == "ok", h.strip()[:80])
         d = state(run, "demo")
         if d:
             alive = pid_alive(d["pid"])
@@ -323,47 +311,6 @@ def cmd_cli(a) -> None:
         print(f"REPO CHANGED during this command: {changed}")
         sys.exit(3)
     sys.exit(code if isinstance(code, int) else 124)
-
-
-# ---------------------------------------------------------------------------------------------------- viewer
-def cmd_viewer(a) -> None:
-    run = run_dir(a.run)
-    if a.action == "stop":
-        v = state(run, "viewer")
-        if v:
-            kill_tree(v["pid"])
-            set_state(run, "viewer", None)
-            log(run, f"viewer stop pid {v['pid']}")
-            print(f"stopped viewer pid {v['pid']}")
-        else:
-            print("no viewer recorded for this run")
-        return
-    v = state(run, "viewer")
-    if v and pid_alive(v["pid"]):
-        sys.exit(f"this run already has a viewer at {v['url']} (pid {v['pid']})")
-    port = a.port or next((p for p in VIEWER_PORTS if port_free(p)), None)
-    if port is None or not port_free(port):
-        sys.exit(f"port {port} is busy; pick another with --port")
-    cmd = [str(VENV_PY), "-m", "streamlit", "run", "lanegame/viewer/app.py", "--server.headless", "true",
-           "--server.address", "127.0.0.1", "--server.port", str(port), "--browser.gatherUsageStats", "false",
-           "--server.fileWatcherType", "none", "--server.runOnSave", "false"]
-    pid = spawn(cmd, REPO, run / "evidence" / "viewer.log")
-    url = f"http://127.0.0.1:{port}/"
-    set_state(run, "viewer", {"pid": pid, "port": port, "url": url, "started": now()})
-    t0 = time.time()
-    while time.time() - t0 < a.timeout:
-        if not pid_alive(pid):
-            sys.exit(f"viewer exited during start; see {run / 'evidence' / 'viewer.log'}")
-        try:
-            if http_get(f"{url}_stcore/health", 2).strip() == "ok" and port_owner_ok(pid, port):
-                break
-        except Exception:                                            # noqa: BLE001
-            pass
-        time.sleep(0.5)
-    else:
-        sys.exit(f"viewer not healthy after {a.timeout}s; see {run / 'evidence' / 'viewer.log'}")
-    log(run, f"viewer start pid {pid} {url}")
-    print(f"viewer up at {url} (pid {pid}); server healthy. Open it with `browser open` to confirm the page renders.")
 
 
 def cmd_demo(a) -> None:
@@ -617,13 +564,10 @@ def page_action(a, run: Path, ev: Path, c: CDP) -> None:
         print(json.dumps(v, indent=1, ensure_ascii=False))
         return
     if a.action == "open":
-        v = state(run, "viewer")
         d = state(run, "demo")
-        url = a.url or (v and v["url"]) or (d and d["url"])
+        url = a.url or (d and d["url"])
         if not url:
-            sys.exit("no --url and no viewer or demo started in this run")
-        if not a.url and v and not port_owner_ok(v["pid"], v["port"]):
-            sys.exit("the recorded viewer port is not owned by this run's process; run doctor")
+            sys.exit("no --url and no demo started in this run")
         c.call("Page.navigate", url=url)
         t0 = time.time()
         demo_page = d and url.startswith(d["url"])
@@ -757,7 +701,7 @@ def page_action(a, run: Path, ev: Path, c: CDP) -> None:
 # ---------------------------------------------------------------------------------------------------- cleanup
 def cmd_cleanup(a) -> None:
     run = run_dir(a.run)
-    for name in ("browser", "viewer", "demo"):
+    for name in ("browser", "demo"):
         s = state(run, name)
         if s:
             kill_tree(s["pid"])
@@ -792,12 +736,6 @@ def main() -> None:
     p.add_argument("--tail", type=int, default=15)
     p.add_argument("args", nargs=argparse.REMAINDER)
     p.set_defaults(fn=cmd_cli)
-    p = sub.add_parser("viewer")
-    p.add_argument("action", choices=["start", "stop"])
-    p.add_argument("--run", required=True)
-    p.add_argument("--port", type=int)
-    p.add_argument("--timeout", type=float, default=60)
-    p.set_defaults(fn=cmd_viewer)
     p = sub.add_parser("demo")
     p.add_argument("action", choices=["start", "stop"])
     p.add_argument("--run", required=True)
@@ -823,7 +761,7 @@ def main() -> None:
     p.add_argument("--full", action="store_true", help="screenshot: the whole page, not one screen")
     p.add_argument("--here", action="store_true", help="screenshot: keep the current scroll position (default: top)")
     p.add_argument("--no-settle", action="store_true",
-                   help="click/wait: do not wait for the page to stop changing (needed while the viewer is playing)")
+                   help="click/wait: do not wait for the page to stop changing (needed while the page keeps changing, e.g. Watch playing)")
     p.add_argument("--timeout", type=float, default=30)
     p.add_argument("--width", type=int, default=1600)
     p.add_argument("--height", type=int, default=1100)
@@ -832,7 +770,7 @@ def main() -> None:
     p.add_argument("--run", required=True)
     p.set_defaults(fn=cmd_cleanup)
     a = ap.parse_args()
-    for stream in (sys.stdout, sys.stderr):          # the viewer's text has ⏮ ▶ ·; a cp1252 console cannot print them
+    for stream in (sys.stdout, sys.stderr):          # the demo's text has ⏮ ▶ ·; a cp1252 console cannot print them
         stream.reconfigure(encoding="utf-8", errors="replace")
     a.fn(a)
 

@@ -17,7 +17,7 @@ Error terms, reported separately:
         Omega = a + b / (1 - gamma) + bounty / (1 - gamma^(death_turns + 1)) + n_plates * plate_gold,
         a = f_max (A_max + wave_hp (s - 1) / s),  b = f_max wave_hp / s,  s = spawn_every_turns,
     with f_max the largest per-HP farm value and A_max = 32 the enumerated largest alive minion HP of one side
-    (lanegame.lane_enum). At gamma = 0.99, Omega = 68.3: the bound is 0.0030 at W = 1000 and 0.671 at W = 460.
+    (lanegame.engine.lane_enum). At gamma = 0.99, Omega = 68.3: the bound is 0.0030 at W = 1000 and 0.671 at W = 460.
   * optionally (tail_episodes > 0) an EMPIRICAL tail estimate on a subsample extended to tail_window turns. It is
     labelled as an estimate: it is not a guarantee.
 
@@ -36,7 +36,7 @@ from typing import Dict, List, Optional, Sequence, Tuple
 
 import numpy as np
 
-from ..config import GameConfig, exact_safe_base
+from ..engine.config import GameConfig, exact_safe_base
 from .agents import episode_streams
 from .core import LaneEnv
 
@@ -65,7 +65,7 @@ def tail_constant(cfg: GameConfig, gamma: Optional[float] = None, a_max: Optiona
     """Omega of design §10.5.3 (the truncation bound is gamma^W Omega). M4.3c opt-ins: the farm terms count the XP
     channel of xp_reward_weight too (the same bound on the minion HP dying per turn, times farm value + lambda xi), and
     the bounty term uses the shortest death absence of death_turns_by_level (deaths can then be most frequent)."""
-    from ..lane_enum import recorded_bounds
+    from ..engine.lane_enum import recorded_bounds
     g = cfg.gamma if gamma is None else gamma
     if a_max is None:
         a_max = recorded_bounds(cfg)["A_max"]
@@ -89,12 +89,12 @@ def max_champion_wave_budget(cfg: GameConfig) -> int:
     items: AP(level_cap, tiers); saturating investment: below AP(level_cap, 0) (1 + invest_gain)); with an unbounded
     investment curve, the most HP the enemy can have alive (lane_enum.natural_lane_bounds)."""
     import math
-    from ..progression import tables
+    from ..engine.progression import tables
     base = cfg.ticks_per_turn * max(cfg.champion_wave_damage)
     if cfg.wave_clear_scaling == "none":
         return base
     if cfg.wave_clear_scaling == "capacity":              # M4.2e-C: Clear is the capacity and the largest budget
-        from ..config import SH
+        from ..engine.config import SH
         base = cfg.ticks_per_turn * cfg.champion_wave_damage[SH]
     t = tables(cfg)
     if not cfg.continuous_items:
@@ -102,7 +102,7 @@ def max_champion_wave_budget(cfg: GameConfig) -> int:
     elif cfg.invest_curve == "saturating":
         ap = t.ap[t.level_cap][0] * (1 + cfg.invest_gain)
     else:
-        from ..lane_enum import natural_lane_bounds
+        from ..engine.lane_enum import natural_lane_bounds
         return natural_lane_bounds(cfg)["A_max"]
     return max(base, math.ceil(base * ap / 10_000) + 1)
 
@@ -110,8 +110,8 @@ def max_champion_wave_budget(cfg: GameConfig) -> int:
 def per_turn_bound(cfg: GameConfig) -> float:
     """A guaranteed bound on |r_k| for one turn (design §10.5.3): farm on at most 2 hp_cap fight HP, tower fire and
     thinning, plus the plates one turn can cross, plus one bounty."""
-    from ..progression import tables
-    from ..mechanics import minion_damage
+    from ..engine.progression import tables
+    from ..engine.mechanics import minion_damage
     f = reward_per_hp(cfg)
     kills = cfg.ticks_per_turn * cfg.hp_cap + cfg.ticks_per_turn * cfg.tower_siege_damage + cfg.thin_damage
     if cfg.wave_dynamics == "natural":

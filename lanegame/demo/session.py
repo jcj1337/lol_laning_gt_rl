@@ -1,4 +1,4 @@
-"""The headless game session of the M6 demo (docs/m6/m6_plan.md §3 rules 1 to 5 and 10 to 12, §4.1, §11).
+"""The headless game session of the M6 demo (docs/archive/m6/m6_plan.md §3 rules 1 to 5 and 10 to 12, §4.1, §11).
 
 A `GameSession` owns one game: its environment and chance stream, one policy object per bot seat (its own sampling
 stream and, for `om`, its own belief), the stored bot codes of the turn being decided, and the record of every resolved
@@ -6,7 +6,7 @@ turn. Only immutable objects are shared between sessions: the registry's network
 configuration, the stateless belief and scripted types. The core has no web dependency; the API (M6b) is a thin layer
 over it and must run all simulation on one thread, which also serializes the M5 modules' caches.
 
-The turn loop is M5's (`experiments/rl/m5/games.play`, verified in the M6 plan §2.2), on `LaneEnv(m45_calibrated(),
+The turn loop is M5's (`experiments/m5/games.play`, verified in the M6 plan §2.2), on `LaneEnv(m45_calibrated(),
 record_ticks=True)` from s0 with k0 = 0:
 
     1  when a turn begins, every bot seat decides from the pre-turn state (and its history up to the previous turn) and
@@ -58,8 +58,8 @@ from .registry import Registry, scripted_agent, scripted_description
 HUMAN, MODEL, SCRIPTED = "human", "model", "scripted"
 TURN_CAP = 150                 # the demo's limit (plan §10), not a rule of the game
 MAX_TURNS = 500                # the longest M5 recording
-LANE_EXIT = 94                 # experiments/rl/m5/games.LANE_END
-READ_TURN = 114                # experiments/rl/m5/games.READ_TURN
+LANE_EXIT = 94                 # experiments/m5/games.LANE_END
+READ_TURN = 114                # experiments/m5/games.READ_TURN
 AWAITING, STOPPED = "awaiting_action", "stopped"
 STOP_REASONS = ("visitor", "turn_cap", "expired")
 BELIEF_MODES = ("hidden", "shown")
@@ -112,13 +112,13 @@ class _ScriptedSeat:
     observation and its own generator."""
 
     def __init__(self, name: str, policy_seed: int, seat: int):
-        from ..experiments.rl.m5 import common as C
+        from experiments.m5 import common as C
         self.agent, self.seat = scripted_agent(name), int(seat)
         self.rng = np.random.default_rng([int(policy_seed), 11, int(seat)])
         self.cfg_om = C.arm_cfg("om")
 
     def decide(self, lane, m4, k: int, last) -> int:
-        from ..experiments.rl.m5 import players as PL
+        from experiments.m5 import players as PL
         return int(self.agent.act(PL.observation_of(self.cfg_om, lane, m4, k, last, self.seat), self.rng))
 
 
@@ -146,7 +146,7 @@ class GameSession:
                  turn_cap: int = TURN_CAP, session_id: Optional[str] = None, provenance: Optional[dict] = None,
                  _chance_chosen: Optional[bool] = None):
         from ..env import LaneEnv
-        from ..experiments.rl.m5 import common as C
+        from experiments.m5 import common as C
         seats = tuple(seats)
         if len(seats) != 2 or not all(isinstance(x, Seat) for x in seats):
             raise ValueError("a session has two Seat entries (A, B)")
@@ -221,7 +221,7 @@ class GameSession:
 
     def _begin_turn(self) -> None:
         """Step 1 of the module docstring: every bot seat decides now, from the pre-turn state."""
-        from ..experiments.m45b import engine as E
+        from experiments.m45b import engine as E
         lane, m4, k, i = self.env.state, self.env.champ, self.env.k, self.env.turns
         pending = {}
         for s, p in self._bots.items():
@@ -236,7 +236,7 @@ class GameSession:
         return len(self.turns)
 
     def _resolve(self, human_code: Optional[int]) -> dict:
-        from ..experiments.m45b import engine as E
+        from experiments.m45b import engine as E
         lane, m4, k, i = self.env.state, self.env.champ, self.env.k, self.env.turns
         codes = [human_code if s == self.human else self._pending[s] for s in (0, 1)]
         pre = F.position(self.cfg, lane, m4, k, i)
@@ -342,7 +342,7 @@ class GameSession:
     def _belief_at(self, p: int) -> Optional[dict]:
         if not self.beliefs_visible():
             return None
-        from ..experiments.rl.m5 import common as C
+        from experiments.m5 import common as C
         return {_seat_letter(s): {"types": list(C.BELIEF_TYPES), "posterior": self._posterior(s, p)} for s in self._om}
 
     def _result(self, t: int) -> dict:
@@ -415,7 +415,7 @@ class GameSession:
         pos, trn = R.replay_frames(self.cfg, seed, turns, p_from, p_to)
         out = {"session": self.id, "from": p_from, "to": p_to, "positions": pos, "turns": trn}
         if vis:
-            from ..experiments.rl.m5 import common as C
+            from experiments.m5 import common as C
             out["beliefs"] = {_seat_letter(s): {"types": list(C.BELIEF_TYPES), "posteriors": v[p_from:p_to + 1]}
                               for s, v in beliefs.items()}
         return out
@@ -433,7 +433,7 @@ class GameSession:
     # ------------------------------------------------------------------ recordings
     def recording(self) -> dict:
         """The app recording (record.py). While the session is active, secrets and hidden beliefs are withheld."""
-        from ..experiments.rl.m5 import common as C
+        from experiments.m5 import common as C
         with self._lock:
             rec = {"schema": R.RECORD_SCHEMA, "version": R.RECORD_VERSION, "provenance": dict(self.provenance),
                    "config": {"name": "m45_calibrated", "digest": R.config_digest(self.cfg)}, "start": "s0",
@@ -511,7 +511,7 @@ _RESEARCH_SEATS = {"sp:0": Seat.model("sp:0"), "om:0": Seat.model("om:0"), "g_sh
 
 
 def from_research(registry: Registry, path: str) -> Tuple[GameSession, dict]:
-    """Re-simulate a v1 M5 recording (results/m5/traces) whose seats are registry models or scripted archetypes,
+    """Re-simulate a v1 M5 recording (artifacts/m5/traces) whose seats are registry models or scripted archetypes,
     with M5's research convention (policy seed = chance seed). The actions must reproduce exactly, and so must
     `payoff_A`; returns the session and the comparison (the belief's recorded log posteriors at M5's check turns
     against the session's, which must agree within float32 precision)."""
