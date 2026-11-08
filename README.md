@@ -6,7 +6,7 @@ self-play agents on the full version. The reward is the gold an agent earns minu
 
 There's a walkthrough of the project, with screenshots, at [jcj1337.github.io/laning.html](https://jcj1337.github.io/laning.html).
 
-## Rules of The Game
+## Motivation
 
 Every game of League of Legends opens with the laning phase. Two opposing players share a lane while waves of
 computer-controlled minions march toward each other and fight. Players earn gold by landing the killing blow on enemy
@@ -23,9 +23,6 @@ last hitting minions and killing enemy players.
 
 Good LoL players exploit these interactions all the time. Our agents are limited to represent that of a human player, it sees only the current game state and its legal moves (e.g. you can't "Freeze" if you're on the enemy's side of the map), and it is
 rewarded only for building a gold lead. That means strategies like "freezing" a wave, recalling on timers, and warding on timers show up on their own through the agents' training.
-
-Every rule follows the project's [design philosophy](docs/design_philosophy.md), which is to simplify how League works
-without changing why its laning strategies work. 
 
 ## Try it
 
