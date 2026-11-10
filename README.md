@@ -1,112 +1,168 @@
 # Laning as a Two-Player Game
 
-Can a reinforcement learning agent learn League of Legends laning strategy without anyone teaching it? This project
-builds a simplified model of the laning phase, solves a small version of it exactly with game theory, and trains
-self-play agents on the full version. The reward is the gold an agent earns minus the gold its opponent earns; the
-agents have to discover strategies on their own.
+Can a reinforcement learning agent learn League of Legends laning strategy without being explicitly taught how to play?
 
-There's a walkthrough of the project, with screenshots, at [jcj1337.github.io/laning.html](https://jcj1337.github.io/laning.html).
+I built a simplified simulator of the laning phase to explore this. The project starts with a smaller game that can be
+solved exactly using game theory, then moves to a more complete version where agents learn through self-play using
+PPO.
 
-## Motivation / Intro
+The agents are rewarded based on their gold lead over the opponent. They aren't explicitly taught strategies like
+freezing, slow pushing, or timing recalls. The idea is to see whether these behaviours emerge naturally from training.
 
-Every game of League of Legends opens with the laning phase. Two opposing players share a lane while waves of
-computer-controlled minions march toward each other and fight. Players earn gold by landing the killing blow on enemy
-minions (last-hitting) and can spend this gold in base to get stronger.
+A more detailed walkthrough, including screenshots, is available [here](https://jcj1337.github.io/laning.html).
 
-A few general rules of laning:
+## Motivation
 
-- Pushing your wave into the enemy tower costs your opponent minions and gives you time to go back to base.
-- A level or item lead makes you stronger than your opponent, so you will win an otherwise even fight.
-- It is harder to get ganked on your "side" of the map, for example near your tower.
-- Damaging the enemy tower early pays extra gold through tower plates, along with last-hitting minions and killing
-  the enemy champion.
+In League of Legends, the laning phase is where two opposing players compete for gold and experience while managing
+waves of minions.
 
-Good players exploit these interactions all the time. Our agents see only what a player would, the current game
-state and their legal moves (you can't "freeze" the wave from the enemy's side of the map, for example). They are
-rewarded only for building a gold lead, so any strategy they use, such as freezing a wave or timing a trip back to
-base, has to show up on its own through training.
+There are a few basic interactions that make laning interesting:
 
-## What the simulator models
+- Pushing a wave into the enemy tower can cause the opponent to lose minions, while giving you time to recall.
+- Having a level or item advantage makes it easier to win trades against your opponent.
+- Your position in the lane affects how vulnerable you are to enemy ganks.
+- Attacking the enemy tower gives additional gold through tower plates.
 
-Two champions share one lane of a few cells between two towers. Each turn both choose at the same time what to do
-with the minion wave (last-hit, thin it, push slowly or shove it), how to behave towards the other champion (hold,
-trade, give ground, play safe) and whether to hit the tower, place a ward or go back to base. Minions fight by fixed
-rules; champions earn gold and experience, level up, spend gold on stronger items, take tower plates and can be
-ganked or killed. The game runs without a fixed end, and the laning phase ends around turn 94, at level 14.
-[docs/model.md](docs/model.md) gives every rule.
+These mechanics create strategies that experienced players recognize, like freezing waves near their tower, building
+slow pushes, or recalling after crashing a wave.
 
-## What was applied
+I wanted to see whether an RL agent could discover these same strategies without being told when or why to use them.
 
-- **Game theory.** A small version with only the minion waves is solved exactly: equilibria, best responses and how
-  much a fixed style can be exploited.
-- **Reinforcement learning.** The full game is too large to solve, so one network trained by PPO plays both sides
-  against itself. Its strategies are tested by restoring game states and comparing its play with fixed alternatives,
-  and its weaknesses by training dedicated attackers against it.
-- **Opponent modelling.** The final campaign compared plain self-play with agents that also keep a Bayesian estimate
-  of which known play style the opponent resembles.
+Rather than trying to recreate every mechanic in League, the simulator focuses on the higher-level decisions
+involved in laning.
 
-## What was found
+## The simulator
 
-- In the small exact game, best play is passive. Neither side gains by crashing waves into the tower, while simple
-  fixed styles are easy to exploit.
-- Self-play agents learned laning behaviour that depends on the situation, each shown to pay against the
-  alternatives: managing the wave, freezing it when the opponent backs off, choosing when to trade and when to go
-  back to base. They also learned what does not pay here, such as warding or bullying a competent opponent.
-- Several times the "missing" strategy turned out to be the game's incentive, not a failure to learn. When the
-  agents shoved every wave, shoving really was the best reply until the economy was changed.
-- Modelling the opponent pays against recognizable scripted styles (a lead about 9 units of gold larger, where one
-  unit is a full wave of minions) but costs against competent opponents (about 0.6 units). Neither kind of agent is
-  better overall, and both can be beaten by a trained attacker.
+The game consists of two champions sharing a lane, with minion waves moving between two towers.
 
-[docs/findings.md](docs/findings.md) has the evidence for each of these, and
-[docs/research_overview.md](docs/research_overview.md) explains the final campaign for newcomers.
+Both players choose their actions simultaneously each turn. They can manipulate the wave (last-hit, thin, slow push,
+shove), interact with their opponent (trade, hold position, play safe), recall, ward, or attack the tower.
+
+The simulator also models gold, experience, leveling, item purchases, tower plates, ganks, and deaths.
+
+The laning phase typically ends around turn 94, at roughly level 14, although there isn't a fixed turn limit.
+
+All of the mechanics and rules are documented in [docs/model.md](docs/model.md).
+
+## Approach
+
+I explored three main approaches:
+
+- **Game theory:** I first built a smaller version of the simulator containing only wave management. Since the state
+  space is manageable, I could solve it exactly and study equilibria, best responses, and how exploitable different
+  strategies are.
+- **Reinforcement learning:** For the full simulator, I used PPO with self-play, where a shared network controls both
+  sides. I then evaluated the trained agents by replaying specific states, comparing their decisions against fixed
+  alternatives, and training dedicated opponents to exploit them.
+- **Opponent modelling:** I also experimented with giving agents a Bayesian estimate of their opponent's play style,
+  to see whether adapting to the opponent actually improves performance compared to regular self-play.
+
+## Results
+
+A few interesting things came out of the experiments.
+
+### 1. The exact game favours passive play
+
+In the smaller wave-only game, neither player benefits from aggressively crashing waves into the enemy tower. The
+equilibrium is relatively passive, although simple fixed strategies can still be exploited.
+
+### 2. Self-play learned several recognizable laning behaviours
+
+In the full simulator, the agents learned to adjust their decisions depending on the game state. This included
+managing waves, freezing when the opponent gave up space, choosing when to trade, and finding opportunities to recall.
+
+These behaviours were evaluated against alternative actions from the same states, rather than just identified from
+watching games.
+
+Some strategies, like warding or repeatedly pressuring a competent opponent, didn't provide enough value under the
+simulator's rules.
+
+### 3. The simulator's incentives matter a lot
+
+One of the more interesting parts of the project was figuring out whether a missing strategy was an RL problem or a
+problem with the game itself.
+
+For example, earlier versions of the simulator produced agents that shoved almost every wave. After investigating, it
+turned out that shoving genuinely was the best response under those rules. The economy had to be adjusted before other
+strategies became worthwhile.
+
+This was a recurring theme: an agent not learning a particular strategy doesn't necessarily mean the training failed.
+
+### 4. Opponent modelling helps, but not consistently
+
+The opponent-modelling agents performed noticeably better against recognizable scripted play styles, gaining roughly
+9 additional gold units compared to regular self-play (one unit represents a full minion wave).
+
+However, they performed slightly worse against competent learned opponents, losing about 0.6 units relative to the
+baseline.
+
+Overall, neither approach was consistently better, and both could still be exploited by specifically trained attackers.
+
+The full results and supporting experiments are in [docs/findings.md](docs/findings.md). There's also a more accessible
+summary of the final training campaign in [docs/research_overview.md](docs/research_overview.md).
 
 ## Try it
 
-### Install
+### Installation
 
-Python 3.10 or later.
+Requires Python 3.10 or later.
 
 ```bash
 python -m venv .venv
 .venv/Scripts/activate              # macOS/Linux: source .venv/bin/activate
 pip install -e ".[test,rl]"
-python -m pytest                    # about 1,500 tests, 9 to 12 minutes
+python -m pytest                    # ~1,500 tests, 9–12 minutes
 ```
 
-### Play against or watch the agents
+### Play against the agents
 
-The demo is a web page with two modes. In Play you take one side against a trained agent, with every turn
-explained. In Watch you follow a match the engine generates between the two agents, or one of three recorded
-research games that the server re-simulates and checks when it starts. The demo needs the 7 trained networks
-included in the repository, Node 22.12 or later for the one-time frontend build, and the `demo` extra.
+I also built a small web demo for interacting with the trained agents.
+
+There are two modes:
+
+- **Play:** Play one side of the lane against a trained agent, with explanations of what happens each turn.
+- **Watch:** Watch matches between trained agents or replay one of three recorded research games. The server
+  re-simulates and verifies the recorded games when it starts.
+
+The demo uses 7 trained networks included in the repository. It also requires Node 22.12 or later for the initial
+frontend build.
 
 ```bash
 pip install -e ".[demo]"
 cd web && npm install && npm run build && cd ..
-python -m lanegame.demo                 # then open http://127.0.0.1:8765/
+python -m lanegame.demo
 ```
 
-Watch also has Sequences: short walkthroughs of a recorded game in which each event leads to the next. The first,
-"Stacking to Crashing", follows a pattern good League players know. Trades keep a low-health opponent from going back
-to base, the wave nobody clears stacks and crashes into its tower, and the crash lets the agent take two tower plates.
-Pick it under **Sequences** in Watch, or open http://127.0.0.1:8765/?mode=watch&sequence=stacking-to-crashing.
+Then open [http://127.0.0.1:8765/](http://127.0.0.1:8765/).
 
-### Reproduce the research
+Watch mode also includes **Sequences**, which are short walkthroughs of interesting moments from recorded games.
 
-Run everything from the repository root.
+For example, *Stacking to Crashing* shows how an agent uses trades to prevent a low-health opponent from recalling,
+allowing a minion wave to build up and eventually crash into the tower. This creates an opportunity to take two tower
+plates.
+
+You can find it under **Sequences** in Watch mode, or open it
+[directly](http://127.0.0.1:8765/?mode=watch&sequence=stacking-to-crashing).
+
+### Reproducing the experiments
+
+All commands should be run from the repository root.
 
 ```bash
-python -m lanegame solve --horizon 32        # the exact game's equilibrium (a few minutes, about 3 GB of memory)
-python -m experiments.siege all              # the exact game's studies, written to artifacts/siege/
-python -m experiments.reference examples     # the engine-computed examples the model document quotes
-python -m experiments.m5 prereg_check report # check the final campaign's protocol and rebuild its report from the records
-python -m experiments.m6d overview           # check every number of the research overview against the records
+python -m lanegame solve --horizon 32        # Exact-game equilibrium (~3 GB memory)
+python -m experiments.siege all              # Exact-game experiments
+python -m experiments.reference examples     # Examples used in the model documentation
+python -m experiments.m5 prereg_check report # Verify and rebuild the final campaign report
+python -m experiments.m6d overview           # Verify the research overview against recorded results
 ```
 
-The records of every study are in [artifacts/](artifacts/README.md). For the final run,
-[artifacts/m5/reproducibility.md](artifacts/m5/reproducibility.md) lists the commands, seeds and SHA-256 checksums.
-Only the 7 networks the demo uses are in the repository; the rest are too large for git, and rerunning the campaign
-from scratch takes about 36 hours (if on six workers). Training and other expensive stages refuse to start without an
-explicit confirm flag.
+The experimental records are stored in [artifacts/](artifacts/README.md).
 
+For the final training campaign, [artifacts/m5/reproducibility.md](artifacts/m5/reproducibility.md) contains the
+commands, random seeds, and SHA-256 checksums needed for reproduction.
+
+Only the 7 networks used by the demo are included in the repository, since the remaining checkpoints are too large for
+Git.
+
+Reproducing the entire training campaign takes approximately 36 hours with six workers. Expensive training stages
+require an explicit confirmation flag to avoid running them accidentally.
