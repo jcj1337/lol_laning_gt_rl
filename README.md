@@ -77,7 +77,7 @@ watching games.
 Some strategies, like warding or repeatedly pressuring a competent opponent, didn't provide enough value under the
 simulator's rules.
 
-### 3. The simulator's incentives matter a lot
+### 3. The simulator's design was iterated upon many times
 
 One of the more interesting parts of the project was figuring out whether a missing strategy was an RL problem or a
 problem with the game itself.
@@ -88,7 +88,7 @@ strategies became worthwhile.
 
 This was a recurring theme: an agent not learning a particular strategy doesn't necessarily mean the training failed.
 
-### 4. Opponent modelling helps, but not consistently
+### 4. Opponent modelling results
 
 The opponent-modelling agents performed noticeably better against recognizable scripted play styles, gaining roughly
 9 additional gold units compared to regular self-play (one unit represents a full minion wave).

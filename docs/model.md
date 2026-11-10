@@ -1,12 +1,12 @@
 # The Laning Game: Mathematical Reference
 
-**What this is.** The central, living description of the game the agents play: every state variable, every action,
+**What this is.** The living description of the game the agents play: every state variable, every action,
 every rule of the turn resolution, every reward term and the RL objective. Each equation names the code that
 implements it.
 
 **Which game.** Every section describes the research preset **`GameConfig.m45_calibrated()`**. It is the game of
-every campaign since M4.5c: M4.6, M4.7, M4.8, OM2 and the completed M5 campaign (2026-10-19). The user adopted it as
-the M5 baseline on 2026-10-17.
+every campaign since M4.5c: M4.6, M4.7, M4.8, OM2 and the completed M5 campaign (2026-10-19). We adopted it as the M5
+baseline on 2026-10-17.
 - Statements carry no label when they describe this preset. **OPT-IN** marks a configuration field that exists but is
   off in it (§15). **HISTORICAL** marks a rule of an earlier preset (§14).
 - How the preset was built from `GameConfig.m4()`, and every field in which it differs from `m4_lasthit()`, the base
@@ -1819,7 +1819,7 @@ $M(50)^2=1.761^2=\times3.10$.
 buy $\times1.25$ in a duel around turn 35, $\times1.06$ around turn 120 and $\times1.02$ around turn 270. The
 elasticity $d\ln M/d\ln S$ falls from 0.17 to 0.09 over the game, so the curve compresses a relative investment lead
 6–11 times. The investment-curve override C1, `m45_calibrated(invest_gain=3.24, invest_scale=64.0)`, studied in M4.6b
-and piloted in M4.6c, is OPT-IN and not part of the preset; on 2026-10-17 the user kept the baseline curve for M5
+and piloted in M4.6c, is OPT-IN and not part of the preset; on 2026-10-17 we kept the baseline curve for M5
 (§15.3).
 
 ### 7.4 Progression in play
@@ -1988,7 +1988,7 @@ growing.
 `terminal_rule = "final_plate"` is on. An episode ends only by truncation at `max_turns`, a limit of the run that
 training bootstraps and evaluation truncates (§9.2, §9.3). The objective is the discounted gold lead over an unbounded
 horizon (§9.1). The end of the lane phase, before level 14 at about turn 94, is an evaluation checkpoint, the lane
-exit (§9.3), never a terminal state. The user decided on 2026-10-17 to keep the continuing objective and to add no
+exit (§9.3), never a terminal state. On 2026-10-17 we decided to keep the continuing objective and to add no
 termination around level 14 ([rl_research_roadmap.md](archive/rl_research_roadmap.md), decisions of 2026-10-17). The same
 decisions superseded the termination rule that M4.3c had proposed
 ([m4_3c_economic_objective_design.md](archive/m4/m4_3/m4_3c_economic_objective_design.md)); `terminal_rule = "final_plate"`
@@ -2290,7 +2290,7 @@ $$E_h(s)=D_0(s)+\mathbb E\Bigl[\sum_{k<h}r_{A,k}\Bigr],\qquad D_0=E_A-E_B=(S_A+g
 - Investing on a return moves $g$ into $S$, so spending never counts as earning again, and $D_0$ plus the summed
   rewards equals the lead at the end of the window exactly.
 - XP, levels, HP, absence and the wave are reported beside $E_h$ and never converted into gold.
-- The standard presentation (M4.8; adopted by the user on 2026-10-17) is $D_0\to E_{20}$ with its 95% interval and
+- The standard presentation (M4.8; adopted on 2026-10-17) is $D_0\to E_{20}$ with its 95% interval and
   the non-gold dimensions. $h=20$ is about one reset cycle. By then the wave, absences and owed Recalls present at the
   checkpoint have resolved in 95% of continuations ([m4_8_lane_exit_report.md](archive/m4/m4_8/m4_8_lane_exit_report.md)).
   M5's lead at turn 114 from $s_0$ is this readout at turn 94 under the playing policies.
@@ -2730,6 +2730,7 @@ describe. The archive is not edited; this list is the correction.
 | 2026-10-20 | Terminology only (no rule, parameter, preset, objective or default changed). The reward term for a champion's death is now called **kills**, not the bounty, in §0.2, §0.3, §6.5, §6.7, §7.2, §8.6, §8.7, §9.3, §10.3, the glossary and §12. §10.2 says "first-tower gold" for League's first-tower bounty. The config field `kill_bounty`, the `info` keys `bounty` and `bounty_units`, and the historical reports keep the old word | none (documentation) |
 | 2026-10-20 | Full rewrite for the research preset (decision of the user, 2026-10-20). Every section now describes `m45_calibrated()` directly, and every statement was checked against the code by a section-by-section audit. The previous version is archived unchanged as [laning_game_mathematical_reference_m4_lasthit.md](archive/m4/laning_game_mathematical_reference_m4_lasthit.md); §12.3 lists its errors. Structure: the four-action model (old §4.10), the economy of `m4_four_actions_econ()` and the tower rule of `m4_four_actions_econ_aggro()` (old §8.7–§8.8), the M4.5a rules (old §14) and the M4.5b calibration (old §15) are now part of §2–§8; §4.10 is minions and champions; §8.7 and §8.8 no longer exist; §14 is how the preset was built from `m4()` (HISTORICAL); §15 lists the opt-in fields, with `obs_last_action` still §15.4. Every worked example and measurement was recomputed on the preset by the new generator (`experiments/reference/`), with learned play by the M5 policy `sp:0`: the four wave actions (§4.9), the worked reward (§8.6), level and plate timing (§5.4, §7.4, §8.5) and the cost of a death and of a Recall (§6.7; a death now costs about 3.5–4 resources, not 0.7–1.4). §9 gives the M5 training and evaluation settings in place of the M4.3b pilot's. No rule, parameter, preset, objective or default changed | `experiments/reference/` (new), `tests/test_reference_examples.py` (new) |
 | 2026-11-08 | Relocation only (no rule, parameter, preset, objective or default changed). This file moved from `docs/m4/laning_game_mathematical_reference.md` to `docs/model.md` in the repository reorganization; links and code paths, including those in the rows above, now follow the new layout (`lanegame/engine/`, `lanegame/exact/`, `experiments/`, `artifacts/`, `runs/`, `docs/archive/`). Code of study packages that were removed, and every path a row names in the old layout, is at commit `f613f0a0` | none (documentation) |
+| 2026-11-10 | Wording only (no rule, parameter, preset, objective or default changed). The decisions cited in the header, §7.3, §8.5, §9.3, §15.2, §15.3 and §15.4 no longer attribute themselves to "the user"; the rows above keep their wording | none (documentation) |
 
 ---
 
@@ -2969,7 +2970,7 @@ The M4.3c design proposed ending the laning phase this way
 ([m4_3c_economic_objective_design.md](archive/m4/m4_3/m4_3c_economic_objective_design.md) Part C). The M4.3c stabilization
 implemented the opt-in and did not recommend it. On `m4_four_actions()` it changed no equilibrium, except that
 far-ahead games ended early (Shove v Last Hit +5.08 instead of +9.25), which gives a leader a reason to avoid the last
-plate ([m4_3c_strategic_economics_calibration.md](archive/m4/m4_3/m4_3c_strategic_economics_calibration.md) §7). The user's
+plate ([m4_3c_strategic_economics_calibration.md](archive/m4/m4_3/m4_3c_strategic_economics_calibration.md) §7). The
 decisions of 2026-10-17 superseded the proposal. They keep the continuing objective with no terminal state, and they
 make the lane exit near level 14 (turn 94) an evaluation checkpoint (§9.1, §9.3). In `sp:0` self-play the first
 tower's last plate falls at median turn 143 (range 78–374, 32 games, artifacts/reference/selfplay.json, key
@@ -2999,7 +3000,7 @@ C1 went further than the others. M4.6c piloted it against the baseline in matche
 statistic was inconclusive (+0.09 ± 0.11, ×1.32), and a mid-game +16 lead was converted ×1.76 more
 ([m4_6c_report.md](archive/m4/m4_6/m4_6c_report.md)). C1 was an arm of M4.6d, M4.6e, M4.6f, M4.7 Stage 1 and M4.8, whose lane-exit
 readout showed no difference from the baseline ([m4_8_lane_exit_report.md](archive/m4/m4_8/m4_8_lane_exit_report.md)). M5
-trained both arms on the baseline curve, which the user chose on 2026-10-17. M4.6b alone evaluated C2 and C3, with
+trained both arms on the baseline curve, chosen on 2026-10-17. M4.6b alone evaluated C2 and C3, with
 fixed policies.
 
 **Other opt-in rules.**
@@ -3063,7 +3064,7 @@ its slot and, with the Pressure objective, the pressure entry.
   diagnostics, which the mirror swaps with the seats.
 - **Information.** Both players saw the previous turn resolve, so the field reveals nothing about the current
   simultaneous move. It names the opponent's choice where the state change alone may not identify it. Showing it is an
-  assumption of the OM2 design, which the user approved on 2026-10-17.
+  assumption of the OM2 design, approved on 2026-10-17.
 - **Compatibility.** The first 88 or 90 entries are unchanged. `rl.network.widen_inputs` adds zero-weight inputs to a
   network trained without the field, which then plays exactly as before. A network trained with the field cannot play
   on the 90-entry observation, because `load_policy` refuses any shape mismatch.

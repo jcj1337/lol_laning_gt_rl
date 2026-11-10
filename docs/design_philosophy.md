@@ -1,28 +1,28 @@
 # Design Philosophy
 
-*Established 2026-10-12 (milestone M4.2e-B). This document is the standard against which mechanics are evaluated. It
-is deliberately short on numbers: parameters belong in `lanegame/engine/config.py` and in the milestone reports.*
+*First written on 2026-10-12 (milestone M4.2e-B) as the standard every mechanic is judged against. It has few
+numbers on purpose. Parameters belong in `lanegame/engine/config.py` and in the milestone reports.*
 
 ## The central idea
 
 **Simplify how League of Legends works without fundamentally changing why its laning strategies work.**
 
-The simulator is an abstraction of one lane. It does not reproduce League's numbers, champions, abilities or minion
-AI, and it is not meant to. What it must preserve is the *causal structure* that makes League's laning strategies
-correct: wave management, trading, zoning, recalls and sieges should be good or bad here for the same reasons they
-are good or bad in League. If a strategy works in the simulator for a reason that does not exist in League, or fails
-for a reason League does not have, the mechanics are wrong even if the numbers look plausible.
+The simulator is an abstraction of one lane. It doesn't try to reproduce League's numbers, champions, abilities or
+minion AI. What it has to keep is the causal structure that makes League's laning strategies correct. Wave
+management, trading, zoning, recalls and sieges should be good or bad here for the same reasons they are good or bad
+in League. If a strategy works in the simulator for a reason that doesn't exist in League, or fails for a reason
+League doesn't have, the mechanics are wrong even if the numbers look plausible.
 
-The environment exists to train and study agents with multi-agent reinforcement learning (PPO self-play) and to
-compare them with exact game-theoretic baselines. It therefore has to stay compact, fast, mathematically coherent and
-observable, and its equilibria have to be the product of its rules, not of its reward shaping.
+We use the environment to train and study agents with multi-agent reinforcement learning (PPO self-play) and to
+compare them with exact game-theoretic baselines. So it has to stay compact, fast, mathematically coherent and
+observable, and its equilibria have to come from its rules, not from reward shaping.
 
 ## 1. Core design principles
 
 1. **Consequences, not labels.** A champion's income, safety and options follow from where it stands, what the
    minions do, what the opponent can do to it and what it did last turn. No rule may pay or penalise an action because
    of what the action is called or because of who the opponent is. In particular, there are no farming penalties that
-   activate merely because a stronger champion is nearby: zoning has to come from a credible threat and its
+   switch on just because a stronger champion is nearby. Zoning has to come from a credible threat and its
    consequences.
 2. **One set of physical rules.** Minions walk, fight, merge, crash and die by the same rules whatever the players
    choose. Champion actions change the inputs to those rules (damage on minions, position, presence), never the rules
@@ -35,8 +35,9 @@ observable, and its equilibria have to be the product of its rules, not of its r
    through one monotone, saturating map. A lead must matter and must keep mattering, but no state may allow a
    one-turn kill from full health or an unbounded snowball.
 5. **Positions matter because reach is limited.** Farming, wave damage, trading and experience each have a reach: one
-   cell for the first three and two cells for experience in the research preset. Standing somewhere is a commitment: a champion in reach of the enemy at the start of a turn
-   cannot undo that by reacting to the enemy's action.
+   cell for the first three and two cells for experience in the research preset. Standing somewhere is a
+   commitment. A champion in reach of the enemy at the start of a turn cannot undo that by reacting to the enemy's
+   action.
 6. **Symmetry and determinism.** The game is mirror-symmetric between the seats; the only randomness is an explicit
    per-turn chance vector that both policies see identically; every trajectory is replayable from (state, actions,
    chance).
@@ -49,8 +50,8 @@ observable, and its equilibria have to be the product of its rules, not of its r
 
 ## 2. Intended qualitative similarities to League
 
-These are the relationships we want to recognise in the simulator's equilibria. They are intentions, not guarantees:
-the point is that *when* they appear, they appear for League's reasons.
+These are the relationships we want to see in the simulator's equilibria. They are intentions, not guarantees. What
+matters is that when they do appear, they appear for League's reasons.
 
 - **Wave advantages accumulate.** A small edge in a minion fight grows through reinforcements into a stack; a stack
   crashes; a crash under a tower comes back as a bounce. Slow pushing, fast pushing, freezing, crashing and bouncing
@@ -72,8 +73,8 @@ the point is that *when* they appear, they appear for League's reasons.
 
 ## 3. Accepted simplifications and departures from League
 
-The following are deliberate. They are not bugs to fix, though any of them may be revisited if a milestone shows it
-is what breaks a relationship in section 2.
+These are deliberate, not bugs to fix. Any of them can be revisited if a milestone shows that it is what breaks a
+relationship in section 2.
 
 - **Geometry.** One lane of five champion cells (own tower, one cell, the lane, one cell, enemy tower) and nine minion
   cells, plus one off-lane Vision node attached to the lane cell, where a champion places a ward. "Next to the tower"
@@ -96,10 +97,10 @@ is what breaks a relationship in section 2.
 - **Towers.** One target rule (crashed mass), a tower shot on divers and on traders next to the tower, plates by
   cumulative damage; no tower aggro mechanics.
 
-What is *not* accepted is a hidden proxy: a constant that stands in for a consequence the rules are supposed to
-produce. Where such constants exist for historical reasons (collection rates by posture or by tower cell are the
-examples found in M4.2e-B), they are to be replaced by explicit consequences or justified as mechanical
-inefficiencies in their own right.
+What we don't accept is a hidden proxy, meaning a constant that stands in for a consequence the rules are supposed to
+produce. Where such constants exist for historical reasons (M4.2e-B found collection rates by posture and by tower
+cell), they should be replaced by explicit consequences or justified as mechanical inefficiencies in their own
+right.
 
 ## 4. Research and validation standards
 
@@ -122,10 +123,10 @@ inefficiencies in their own right.
 
 ## 5. How to use this document
 
-When proposing a mechanic, answer four questions: which relationship in section 2 does it serve, which principle in
-section 1 could it violate, which simplification in section 3 does it touch, and what experiment in the spirit of
-section 4 would show it works. A mechanic that serves no relationship in section 2 is decoration; one that violates
-principle 1 is a proxy; one that cannot be tested is a guess.
+A proposed mechanic has to answer four questions. Which relationship in section 2 does it serve? Which principle in
+section 1 could it violate? Which simplification in section 3 does it touch? And what experiment, in the spirit of
+section 4, would show that it works? A mechanic that serves no relationship in section 2 is decoration. One that
+violates principle 1 is a proxy, and one that can't be tested is a guess.
 
-This document is not a specification. It does not forbid new actions, new state or new geometry, and it does not fix
-any parameter. It fixes what the game is *for*.
+This isn't a specification. It doesn't forbid new actions, new state or new geometry, and it doesn't fix any
+parameter. It only says what the game is for.

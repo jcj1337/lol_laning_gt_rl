@@ -1,14 +1,15 @@
 # Methodology
 
-How the project builds its games, solves or trains on them, and measures the result. The rules themselves are in
-the [model](model.md); what the methods found is in [findings](findings.md). Section numbers of archived reports refer
+This is how we built the games, solved or trained on them, and measured the results. The rules themselves are in the
+[model](model.md), and what the methods found is in [findings](findings.md). Section numbers of archived reports refer
 to the documents in the [archive](archive/README.md).
 
 ## 1. The modelling standard
 
 Every mechanic follows [design_philosophy.md](design_philosophy.md), whose standard is to simplify how League works
-without changing why its laning strategies work. A rule is added only to create the incentive behind a real strategy, never to make an
-agent behave in a recognizable way, and a fixed constant may not stand in for a consequence the game can produce.
+without changing why its laning strategies work. A rule is added only to create the incentive behind a real
+strategy, never to make an agent behave in a recognizable way, and a fixed constant may not stand in for a
+consequence the game can produce.
 
 The reward is fixed across the champion game. It is the zero-sum difference of earned gold (farm, tower plates and
 kills), discounted at γ 0.99 in continuing time. There is no terminal state. Games end by truncation, and training
@@ -52,8 +53,8 @@ and [the project history](archive/history.md) lists the rules that were tried an
 duality gap certified. `exact/best_response.py` evaluates any policy pair exactly and computes best responses and
 exploitability. The finite horizon K is 32 in the published results (172,907 decision nodes in the siege model).
 
-The exact game remained the project's oracle: M3 calibrated PPO against exact best responses on the K = 16 arena,
-which is how frozen-snapshot self-play was shown to raise exploitability (findings §2).
+The exact game stayed in use as an oracle. M3 calibrated PPO against exact best responses on the K = 16 arena, which
+is how frozen-snapshot self-play was found to raise exploitability (findings §2).
 
 ## 4. The environment contract
 
@@ -88,7 +89,8 @@ Budgets count agent transitions (two per joint turn). Runs are seeded from disjo
 reproduce bit for bit; checkpoints carry a SHA-256 digest of their weights, verified on load. Opt-in hooks
 (`SharedCollector.extra_obs`, `observe_step`, `train_shared(on_update=...)`, `SeparateCriticNet`, network widening)
 let a study add inputs, monitoring or a separate critic while default training stays bit-identical, which the tests
-pin. Stages that cost real compute refuse to start without a confirm flag that records the user's approval.
+pin. Stages that cost real compute refuse to start without a confirm flag, so a long run only starts once its
+budget has been approved.
 
 ## 6. Evaluation instruments
 
@@ -115,9 +117,9 @@ controlled comparisons.
 
 ## 7. Statistics and pre-registration
 
-From M4.6a on, each study froze a pre-registration document before any training or evaluation: arms, seeds,
-budgets, endpoints, decision thresholds and an outcome table that maps results to a classification. Earlier studies
-(M4.4b, M4.5b, M4.5c) fixed their criteria inside their plans before running.
+From M4.6a on, we froze a pre-registration document for each study before any training or evaluation. It fixes the
+arms, seeds, budgets, endpoints, decision thresholds and an outcome table that maps results to a classification.
+Earlier studies (M4.4b, M4.5b, M4.5c) fixed their criteria inside their plans before running.
 
 - Seeds are the units. Results are means over seeds with t intervals (M5 used six pairs, t = 2.571).
 - A gain counts only when its mean reaches the registered threshold and its interval excludes zero; an inconclusive

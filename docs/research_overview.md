@@ -1,8 +1,8 @@
 # Research overview: what the final campaign found
 
-*Written 2026-10-22 for readers new to the project (M6d). It summarizes the final training campaign, M5, and adds no
-new analysis. Every result below is read from the M5 records, and `python -m experiments.m6d overview`
-checks each one against them. The full account is the [M5 final report](archive/m5/m5e_closeout_report.md).*
+*Written on 2026-10-22 (M6d) for readers new to the project. It summarizes the final training campaign, M5, and adds
+no new analysis. Every result below comes from the M5 records, and `python -m experiments.m6d overview` checks each
+one against them. The full account is in the [M5 final report](archive/m5/m5e_closeout_report.md).*
 
 ## 1. The question
 
@@ -41,8 +41,8 @@ So a lead of 9 is about nine waves of minions, and a lead of half a unit is abou
 
 ## 3. What was trained
 
-Two kinds of agent, the two **arms**, continued from the same six trained starting points from the previous
-milestone. Pair s means the two runs that start from the same starting point s and use the same training seed.
+We trained two kinds of agent, the two **arms**, both continuing from the same six starting points trained in the
+previous milestone. Pair s means the two runs that start from the same starting point s and use the same training seed.
 
 - **Opponent modelling (om).** This arm sees the opponent's previous action and a running Bayesian estimate of which
   of eleven known play styles the opponent resembles, with two extra entries for "mixed" and "unknown". Half of its
