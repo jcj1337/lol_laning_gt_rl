@@ -7,7 +7,7 @@ agents have to discover strategies on their own.
 
 There's a walkthrough of the project, with screenshots, at [jcj1337.github.io/laning.html](https://jcj1337.github.io/laning.html).
 
-## Motivation
+## Motivation / Intro
 
 Every game of League of Legends opens with the laning phase. Two opposing players share a lane while waves of
 computer-controlled minions march toward each other and fight. Players earn gold by landing the killing blow on enemy
@@ -35,7 +35,7 @@ rules; champions earn gold and experience, level up, spend gold on stronger item
 ganked or killed. The game runs without a fixed end, and the laning phase ends around turn 94, at level 14.
 [docs/model.md](docs/model.md) gives every rule.
 
-## How it is studied
+## What was applied
 
 - **Game theory.** A small version with only the minion waves is solved exactly: equilibria, best responses and how
   much a fixed style can be exploited.
@@ -45,7 +45,7 @@ ganked or killed. The game runs without a fixed end, and the laning phase ends a
 - **Opponent modelling.** The final campaign compared plain self-play with agents that also keep a Bayesian estimate
   of which known play style the opponent resembles.
 
-## What we found
+## What was found
 
 - In the small exact game, best play is passive. Neither side gains by crashing waves into the tower, while simple
   fixed styles are easy to exploit.
@@ -104,16 +104,9 @@ python -m experiments.m5 prereg_check report # check the final campaign's protoc
 python -m experiments.m6d overview           # check every number of the research overview against the records
 ```
 
-The records of every study are in [artifacts/](artifacts/README.md). For the final campaign,
+The records of every study are in [artifacts/](artifacts/README.md). For the final run,
 [artifacts/m5/reproducibility.md](artifacts/m5/reproducibility.md) lists the commands, seeds and SHA-256 checksums.
 Only the 7 networks the demo uses are in the repository; the rest are too large for git, and rerunning the campaign
 from scratch takes about 36 hours (if on six workers). Training and other expensive stages refuse to start without an
 explicit confirm flag.
 
-## Documentation
-
-- [docs/README.md](docs/README.md): the index.
-- [docs/findings.md](docs/findings.md): what the project found.
-- [docs/model.md](docs/model.md): the game, rule by rule.
-- [docs/methodology.md](docs/methodology.md): how the games are solved, trained on and measured.
-- [docs/archive/](docs/archive/README.md): every original report, and [the project history](docs/archive/history.md).
